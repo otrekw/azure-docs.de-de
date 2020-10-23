@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.date: 02/21/2020
+ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318027"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397078"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -90,11 +90,11 @@ Wenn einige Metriken oder Protokolle nicht nach Azure Monitor gestreamt werden, 
 
 Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Überwachungsdashboard angezeigt.
 
-![Azure SQL-Analyse – Übersicht](./media/azure-sql/azure-sql-sol-overview.png)
+![Screenshot des Überwachungsdashboards](./media/azure-sql/azure-sql-sol-overview.png)
 
 Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
-![Azure SQL-Analyse – Zeitlimits](./media/azure-sql/azure-sql-sol-metrics.png)
+![Screenshot des Drilldownberichts in eine bestimmte Perspektive](./media/azure-sql/azure-sql-sol-metrics.png)
 
 Jede Perspektive in dieser Ansicht enthält Zusammenfassungen zu den Ebenen für Abonnement, Server, Pool für elastische Datenbanken und Datenbank. Darüber hinaus zeigt jede Perspektive auf der rechten Seite eine Perspektive an, die für den Bericht spezifisch ist. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown fortgesetzt.
 
@@ -230,6 +230,9 @@ AzureMetrics
 > - Die Ausgabe ist eine Liste von Datenbankressourcen, die im definierten Zeitbereich den Speicherschwellenwert überschreiten.
 
 #### <a name="alert-on-intelligent-insights"></a>Warnung in Intelligent Insights
+
+> [!IMPORTANT]
+> Wenn die Leistung einer Datenbank zufriedenstellend war und keine Intelligent Insights-Ergebnisse erzeugt werden konnten, wird für diese Abfrage folgende Fehlermeldung zurückgegeben: „Failed to resolve scalar expression named 'rootCauseAnalysis_s'“ (Der Skalarausdruck namens „rootCauseAnalysis_s“ konnte nicht aufgelöst werden). Dieses Verhalten ist für alle Fälle zu erwarten, in denen keine Intelligent Insights-Ergebnisse für die Datenbank vorhanden sind.
 
 ```
 let alert_run_interval = 1h;

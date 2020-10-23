@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757026"
 ---
 # <a name="how-to-manage-settings"></a>Verwalten von Einstellungen
 
@@ -51,6 +51,8 @@ Wenn Sie über kein Abonnement verfügen, gehen Sie folgendermaßen vor:
 
     ![Dialogfeld „Neuen Arbeitsbereich erstellen“](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>Der benutzerdefinierte Translator unterstützt nicht das Erstellen eines Arbeitsbereichs für eine Textübersetzungs-API-Ressource (auch als Azure-Abonnementschlüssel bezeichnet), die innerhalb von [Enabled VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) erstellt wurde.
 
 ### <a name="modify-existing-key"></a>Ändern eines vorhandenen Schlüssels
 
@@ -61,7 +63,7 @@ Wenn Sie über kein Abonnement verfügen, gehen Sie folgendermaßen vor:
 
 3. Geben Sie im Dialogfeld den Schlüssel für Ihr Translator-Abonnement ein, und klicken Sie dann auf die Schaltfläche „Speichern“.
 
-    ![Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![Dialogfenster zum Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>Verwalten Ihres Arbeitsbereichs
 

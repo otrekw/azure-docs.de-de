@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738641"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530339"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Einrichten einer Authentifikator-App als Methode für die zweistufige Überprüfung
 
@@ -33,7 +33,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
 
 2. Wählen Sie im Bereich **Wie möchten Sie die mobile App verwenden?** die Option **Benachrichtigungen zur Überprüfung empfangen** und anschließend **Einrichten** aus.
 
-    ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit mobiler App und Benachrichtigungsoption](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![Screenshot der Seite „Zusätzliche Sicherheitsüberprüfung“ mit der Auswahl „Mobile App“ und „Benachrichtigungen zur Überprüfung empfangen“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     Die Seite **Mobile App konfigurieren** wird angezeigt.
 
@@ -48,7 +48,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
 
 5. Vergewissern Sie sich auf dem Computer auf der Seite **Zusätzliche Sicherheitsüberprüfung**, dass Sie die Nachricht mit der Bestätigung der erfolgreichen Konfiguration erhalten, und wählen Sie dann **Weiter** aus.
 
-    ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Erfolgsmeldung](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![Screenshot der Seite „Zusätzliche Sicherheitsüberprüfung“ mit der hervorgehobenen Erfolgsmeldung „Mobile App wurde konfiguriert ...“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     Die Authentifikator-App sendet als Test eine Benachrichtigung an Ihr mobiles Gerät.
 

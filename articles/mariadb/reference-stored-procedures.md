@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 453cb28b3053ee2fd2706a5537dc71b6cdca4174
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79529989"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539842"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MariaDB-Verwaltung
 
@@ -21,17 +21,17 @@ Gespeicherte Prozeduren sind auf Azure Database for MariaDB-Servern verfügbar, 
 
 Mithilfe der Datenreplikation können Sie Daten von einem MariaDB-Server, der lokal, auf virtuellen Computern oder von Datenbankdiensten ausgeführt wird, die von anderen Cloudanbietern gehostet werden, mit dem Azure Database for MariaDB-Dienst synchronisieren.
 
-Mit den folgenden gespeicherten Prozeduren wird die Datenreplikation zwischen einem Master und einem Replikat eingerichtet oder entfernt.
+Mit den folgenden gespeicherten Prozeduren wird die Datenreplikation zwischen einer Quelle und einem Replikat eingerichtet oder entfernt.
 
 |**Name der gespeicherten Prozedur**|**Eingabeparameter**|**Ausgabeparameter**|**Hinweis zur Verwendung**|
 |-----|-----|-----|-----|
 |*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Um Daten im SSL-Modus zu übertragen, übergeben Sie im Parameter „master_ssl_ca“ den Kontext des Zertifizierungsstellenzertifikats. </br><br>Um Daten ohne SSL zu übertragen, übergeben Sie im Parameter „master_ssl_ca“ eine leere Zeichenfolge.|
 |*mysql.az_replication _start*|–|–|Startet die Replikation.|
 |*mysql.az_replication _stop*|–|–|Beendet die Replikation.|
-|*mysql.az_replication _remove_master*|–|–|Entfernt die Replikationsbeziehung zwischen dem Master und dem Replikat|
+|*mysql.az_replication _remove_master*|–|–|Entfernt die Replikationsbeziehung zwischen der Quelle und dem Replikat.|
 |*mysql.az_replication_skip_counter*|–|–|Überspringt einen Replikationsfehler.|
 
-Informationen zum Einrichten der Datenreplikation zwischen einem Master und einem Replikat in Azure Database for MariaDB finden Sie unter [Konfigurieren der Replikation eingehender Daten](howto-data-in-replication.md).
+Informationen zum Einrichten der Datenreplikation zwischen einer Quelle und einem Replikat in Azure Database for MariaDB finden Sie unter [Konfigurieren der Datenreplikation in Azure Database for MariaDB](howto-data-in-replication.md).
 
 ## <a name="other-stored-procedures"></a>Andere gespeicherte Prozeduren
 

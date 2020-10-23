@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029534"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714425"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorisierung des Zugriffs auf Daten in Azure Storage
 
@@ -33,11 +33,11 @@ In der folgenden Tabelle werden die Optionen beschrieben, die in Azure Storage z
 
 Im Anschluss werden die einzelnen Autorisierungsoptionen kurz erläutert:
 
-- **Integration von Azure Active Directory (Azure AD)** für Blobs und Warteschlangen. Azure AD bietet rollenbasierte Zugriffssteuerung (RBAC, Role-Based Access Control) zur Steuerung des Zugriffs eines Clients auf Ressourcen in einem Speicherkonto. Weitere Informationen zur Azure AD-Integration für Blobs und Warteschlangen finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
+- **Integration von Azure Active Directory (Azure AD)** für Blobs und Warteschlangen. Azure bietet rollenbasierte Zugriffssteuerung in Azure (Azure RBAC, Azure Role-Based Access Control) für eine Steuerung des Zugriffs eines Clients auf Ressourcen in einem Speicherkonto. Weitere Informationen zur Azure AD-Integration für Blobs und Warteschlangen finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
-- **Azure Active Directory Domain Services-Authentifizierung (Azure AD DS)** für Azure Files. Azure Files unterstützt die identitätsbasierte Autorisierung per Server Message Block (SMB) über Azure AD DS. Sie können die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Clientzugriffs auf Azure Files-Ressourcen in einem Speicherkonto verwenden. Weitere Informationen zur Azure Files-Authentifizierung mithilfe von Domänendiensten finden Sie in der [Übersicht](../files/storage-files-active-directory-overview.md).
+- **Azure Active Directory Domain Services-Authentifizierung (Azure AD DS)** für Azure Files. Azure Files unterstützt die identitätsbasierte Autorisierung per Server Message Block (SMB) über Azure AD DS. Sie können die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) für eine präzise Steuerung des Clientzugriffs auf Azure Files-Ressourcen in einem Speicherkonto verwenden. Weitere Informationen zur Azure Files-Authentifizierung mithilfe von Domänendiensten finden Sie in der [Übersicht](../files/storage-files-active-directory-overview.md).
 
-- **Authentifizierung mit lokalen Active Directory Domain Services (AD DS oder lokale AD DS, Vorschau)** für Azure Files. Azure Files unterstützen die identitätsbasierte Autorisierung über SMB durch AD DS. Ihre AD DS-Umgebung kann auf lokalen Computern oder auf Azure-VMs gehostet werden. Der SMB-Zugriff auf Dateien wird mithilfe von AD DS-Anmeldeinformationen von Computern aus unterstützt, die in die Domäne eingebunden sind – entweder lokal oder in Azure. Sie können eine Kombination aus RBAC für die Zugriffssteuerung auf Freigabeebene und aus NTFS-DACLs für die Berechtigungserzwingung auf Verzeichnis-/Dateiebene verwenden. Weitere Informationen zur Azure Files-Authentifizierung mithilfe von Domänendiensten finden Sie in der [Übersicht](../files/storage-files-active-directory-overview.md).
+- **Authentifizierung mit lokalen Active Directory Domain Services (AD DS oder lokale AD DS, Vorschau)** für Azure Files. Azure Files unterstützen die identitätsbasierte Autorisierung über SMB durch AD DS. Ihre AD DS-Umgebung kann auf lokalen Computern oder auf Azure-VMs gehostet werden. Der SMB-Zugriff auf Dateien wird mithilfe von AD DS-Anmeldeinformationen von Computern aus unterstützt, die in die Domäne eingebunden sind – entweder lokal oder in Azure. Sie können eine Kombination aus Azure RBAC für die Zugriffssteuerung auf Freigabeebene und aus NTFS-DACLs für die Berechtigungserzwingung auf Verzeichnis-/Dateiebene verwenden. Weitere Informationen zur Azure Files-Authentifizierung mithilfe von Domänendiensten finden Sie in der [Übersicht](../files/storage-files-active-directory-overview.md).
 
 - **Autorisierung mit gemeinsam verwendetem Schlüssel** für Blobs, Dateien, Warteschlangen und Tabellen. Ein Client mit gemeinsam verwendetem Schlüssel übergibt mit jeder Anforderung einen Header, der mit dem Speicherkonto-Zugriffsschlüssel signiert wird. Weitere Informationen finden Sie unter [Authentifizieren mit gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key/).
 - **Shared Access Signatures** für Blobs, Dateien, Warteschlangen und Tabellen. Shared Access Signatures (SAS) ermöglichen den begrenzten delegierten Zugriff auf Ressourcen in einem Speicherkonto. Einschränkungen des Zeitintervalls, für das die Signatur gültig ist, oder von Berechtigungen, die sie gewährt, bieten Flexibilität beim Verwalten des Zugriffs. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).

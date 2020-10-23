@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Initiativendefinitionen
 description: Beschreibt, wie Initiativendefinitionen von Richtlinien verwendet werden, um Richtliniendefinitionen für die Bereitstellung in Azure-Ressourcen in Ihrer Organisation zu gruppieren.
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048498"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876174"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktur von Azure Policy-Initiativendefinitionen
 
@@ -248,19 +248,18 @@ Im Folgenden finden Sie ein Beispiel für `policyDefinitions` mit zwei enthalten
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>Richtliniendefinitionsgruppen (Vorschau)
+## <a name="policy-definition-groups"></a>Richtliniendefinitionsgruppen
 
-Im Rahmen des Features zur [Einhaltung gesetzlicher Bestimmungen](./regulatory-compliance.md) (Vorschauversion) von Azure Policy können in einer Initiativendefinition enthaltene Richtliniendefinitionen gruppiert werden. Diese Informationen sind in der _Arrayeigenschaft_ `policyDefinitionGroups` definiert. Diese Gruppierungen weisen weitere Details wie z. B. **Kontrolle** und **Compliancedomäne** auf, für die die Richtliniendefinition eine Abdeckung bereitstellt.
-Weitere Gruppierungsdetails finden Sie in einem von Microsoft erstellten **policyMetadata**-Objekt. Weitere Informationen finden Sie unter [Metadatenobjekte](#metadata-objects).
+Richtliniendefinitionen in einer Initiativdefinition können gruppiert und kategorisiert werden. Die Azure Policy-Funktion [Einhaltung gesetzlicher Bestimmungen](./regulatory-compliance.md) (Vorschauversion) verwendet diese Eigenschaft zum Gruppieren von Definitionen in **Kontrollen** und **Compliancedomänen**. Diese Informationen sind in der _Arrayeigenschaft_ `policyDefinitionGroups` definiert. Weitere Gruppierungsdetails finden Sie in einem von Microsoft erstellten **policyMetadata**-Objekt. Weitere Informationen finden Sie unter [Metadatenobjekte](#metadata-objects).
 
 ### <a name="policy-definition-groups-parameters"></a>Parameter von Richtliniendefinitionsgruppen
 
 Jedes _Arrayelement_ in `policyDefinitionGroups` muss die beiden folgenden Eigenschaften aufweisen:
 
-- `name` (Zeichenfolge) \[erforderlich\]: Der Kurzname der **Kontrolle**. Der Wert dieser Eigenschaft wird von `groupNames` in `policyDefinitions` verwendet.
-- `category` (Zeichenfolge): Die **Compliancedomäne** der Kontrolle.
-- `displayName` (Zeichenfolge): Der Anzeigename für die **Kontrolle**. Wird im Portal verwendet.
-- `description` (Zeichenfolge): Eine Beschreibung der Funktion der **Kontrolle**.
+- `name` (Zeichenfolge) \[erforderlich\]: Der Kurzname der **Gruppe**. Bei der Einhaltung gesetzlicher Bestimmungen die **Kontrolle**. Der Wert dieser Eigenschaft wird von `groupNames` in `policyDefinitions` verwendet.
+- `category` (Zeichenfolge): Die Hierarchie, der die Gruppe angehört. Bei der Einhaltung gesetzlicher Bestimmungen die **Compliancedomäne** der Kontrolle.
+- `displayName` (Zeichenfolge): Der Anzeigename für die **Gruppe** oder **Kontrolle**. Wird im Portal verwendet.
+- `description` (Zeichenfolge): Eine Beschreibung des Umfangs der **Gruppe** oder **Kontrolle**.
 - `additionalMetadataId` (Zeichenfolge): Der Speicherort des [policyMetadata](#metadata-objects)-Objekts, das weitere Details zur **Kontrolle** und zur **Compliancedomäne** enthält.
 
   > [!NOTE]

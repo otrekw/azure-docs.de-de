@@ -7,27 +7,27 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 08ede149c24d8ba4921c0e0b75f5e6eff3f2250f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669408"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565138"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](automated-backup-sql-2014.md)
-> * [SQL Server 2016/2017](automated-backup.md)
+> * [SQL Server 2016 und höher](automated-backup.md)
 
-Die automatisierte Sicherung v2 konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einem virtuellen Azure-Computer, auf dem die Standard-, Enterprise- oder Developer-Edition von SQL Server 2016/2017 ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure Blob Storage nutzen. Die automatisierte Sicherung v2 basiert auf der [SQL Server-IaaS-Agent-Erweiterung (Infrastructure-as-a-Service)](sql-server-iaas-agent-extension-automate-management.md).
+Die automatisierte Sicherung (v2) konfiguriert automatisch [SQL Server Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einer Azure-VM, auf der die Standard-, Enterprise- oder Developer-Version von SQL Server 2016 oder höher ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure Blob Storage nutzen. Die automatisierte Sicherung v2 basiert auf der [SQL Server-IaaS-Agent-Erweiterung (Infrastructure-as-a-Service)](sql-server-iaas-agent-extension-automate-management.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -42,17 +42,14 @@ Um die automatisierte Sicherung v2 verwenden zu können, müssen die folgenden V
 
 - SQL Server 2016 oder höher: Developer, Standard oder Enterprise
 
-> [!IMPORTANT]
-> Die automatisierte Sicherung v2 kann mit SQL Server 2016 oder höher verwendet werden. Wenn Sie SQL Server 2014 verwenden, können Sie Ihre Datenbanken mithilfe der automatisierten Sicherung v1 sichern. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)](automated-backup-sql-2014.md).
+> [!NOTE]
+> Für SQL Server 2014 finden Sie die Informationen unter [Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)](automated-backup-sql-2014.md).
 
 **Datenbankkonfiguration:**
 
-- Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
-- Für Systemdatenbanken muss nicht das vollständige Wiederherstellungsmodell verwendet werden. Wenn Sie allerdings Protokollsicherungen für das Modell oder für msdb benötigen, müssen Sie das vollständige Wiederherstellungsmodell verwenden.
-- Zieldatenbanken müssen sich entweder in der SQL Server-Standardinstanz oder in einer [ordnungsgemäß installierten](frequently-asked-questions-faq.md#administration) benannten Instanz befinden. 
-
-> [!NOTE]
-> Die automatisierte Sicherung basiert auf der **Erweiterung für den SQL Server-IaaS-Agent**. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md).
+- _Zielbenutzerdatenbanken_ müssen das vollständige Wiederherstellungsmodell verwenden. Für Systemdatenbanken muss nicht das vollständige Wiederherstellungsmodell verwendet werden. Wenn Sie allerdings Protokollsicherungen für das Modell oder für msdb benötigen, müssen Sie das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx). 
+- Die SQL Server-VM wurde mit dem SQL-VM-Ressourcenanbieter im [vollständigen Verwaltungsmodus](sql-vm-resource-provider-register.md#upgrade-to-full) registriert. 
+-  Die automatisierte Sicherung basiert auf der vollständigen [Erweiterung für den SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md). Daher wird die automatisierte Sicherung nur für Zieldatenbanken von der Standardinstanz oder für eine einzelne benannte Instanz unterstützt. Wenn keine Standardinstanz und mehrere benannte Instanzen vorhanden sind, kann die SQL-IaaS-Erweiterung nicht ausgeführt werden, und die automatisierte Sicherung funktioniert nicht. 
 
 ## <a name="settings"></a>Einstellungen
 In der folgenden Tabelle werden die Optionen beschrieben, die für die automatisierte Sicherung v2 konfiguriert werden können. Die tatsächlichen Konfigurationsschritte variieren abhängig davon, ob Sie das Azure-Portal oder Azure Windows PowerShell-Befehle verwenden.
@@ -159,9 +156,9 @@ $resourcegroupname = "resourcegroupname"
 (Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions 
 ```
 
-Wenn die SQL Server-IaaS-Agent-Erweiterung installiert ist, sollte diese als „SqlIaaSAgent“ oder „SQLIaaSExtension“ aufgeführt sein. Außerdem sollte für die Erweiterung unter **ProvisioningState** der Zustand „Succeeded“ angezeigt werden. 
+Wenn die SQL Server-IaaS-Agent-Erweiterung installiert ist, wird „SqlIaaSAgent“ oder „SQLIaaSExtension“ aufgeführt. Außerdem muss für die Erweiterung unter **ProvisioningState** der Zustand „Succeeded“ angezeigt werden. 
 
-Wenn die Erweiterung nicht installiert ist oder bei der Bereitstellung ein Fehler aufgetreten ist, können Sie sie mit dem folgenden Befehl installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet.
+Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet.
 
 ```powershell
 $region = "EASTUS2"
@@ -330,5 +327,5 @@ Weitere Informationen zur Sicherung und Wiederherstellung für SQL Server auf Az
 
 Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](sql-server-iaas-agent-extension-automate-management.md).
 
-Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](sql-server-on-azure-vm-iaas-what-is-overview.md).
+Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf Azure-VMs](sql-server-on-azure-vm-iaas-what-is-overview.md).
 

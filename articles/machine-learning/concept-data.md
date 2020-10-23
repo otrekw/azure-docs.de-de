@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651177"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446690"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -48,7 +48,7 @@ Wenn Sie bereit sind, die Daten in ihrer cloudbasierten Speicherlösung zu verwe
 
 In der folgenden Abbildung ist dieser empfohlene Workflow dargestellt.
 
-![Abbildung mit Datenkonzept](./media/concept-data/data-concept-diagram.svg)
+![Die Abbildung zeigt den Azure Storage-Dienst mit einem Flow in einen Datenspeicher, der wiederum einen Flow in ein Dataset aufweist. Das Dataset weist einen Flow in das Modelltraining auf, dieses wiederum einen Flow in einen Datendrift, der wiederum einen Flow zurück zum Dataset aufweist.](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>Datenspeicher
 
@@ -67,7 +67,7 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 
 ## <a name="datasets"></a>Datasets
 
-Azure Machine Learning-Datasets sind Verweise auf die Daten in Ihrem Speicherdienst. Sie sind keine Kopien Ihrer Daten. Durch Erstellen eines Azure Machine Learning-Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. 
+Bei Azure Machine Learning-Datasets handelt es sich nicht um Kopien Ihrer Daten. Durch Erstellen eines Datasets erstellen Sie einen Verweis auf die Daten in ihrem Speicherdienst sowie eine Kopie der zugehörigen Metadaten. 
 
 Da Datasets nur langsam ausgewertet werden und die Daten am vorhandenen Speicherort verbleiben, profitieren Sie von folgenden Vorteilen:
 

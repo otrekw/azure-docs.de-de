@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617875"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973307"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden i
 
 ### <a name="distributed-transactions"></a>Verteilte Transaktionen
 
-MS DTC und [elastische Transaktionen](../database/elastic-transactions-overview.md) werden in SQL Managed Instance derzeit nicht unterstützt.
+Derzeit werden [verteilte Transaktionen](../database/elastic-transactions-overview.md) teilweise in der öffentlichen Vorschau unterstützt. Folgende Szenarios werden unterstützt:
+* Transaktionen, an denen nur Azure SQL Managed Instances beteiligt sind, die zur [Serververtrauensgruppe](https://aka.ms/mitrusted-groups) gehören.
+* Von .NET (TransactionScope-Klasse) und Transact-SQL initiierte Transaktionen.
+
+Azure SQL Managed Instance unterstützt derzeit keine anderen Szenarios, die regelmäßig von MSDTC lokal oder in Azure Virtual Machines unterstützt werden.
 
 ### <a name="extended-events"></a>Erweiterte Ereignisse
 

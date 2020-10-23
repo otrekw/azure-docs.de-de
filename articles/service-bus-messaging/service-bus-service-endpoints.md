@@ -4,12 +4,12 @@ description: In diesem Artikel werden Informationen zum Hinzufügen eines Micros
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552984"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843378"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace aus bestimmten virtuellen Netzwerken
 
@@ -54,6 +54,10 @@ Dies bedeutet, dass Ihre sicherheitsrelevanten Cloudlösungen nicht nur Zugriff 
 Das Binden eines Service Bus-Namespace an ein virtuelles Netzwerk ist ein Prozess mit zwei Schritten. Zunächst müssen Sie einen **VNET-Dienstendpunkt** in einem Virtual Network-Subnetz erstellen und für **Microsoft.ServiceBus** aktivieren, wie unter [Übersicht über Dienstendpunkte][vnet-sep] beschrieben. Nachdem Sie den Dienstendpunkt hinzugefügt haben, binden Sie den Service Bus-Namespace mit einer **VNET-Regel** daran.
 
 Die VNET-Regel ist eine Zuordnung des Service Bus-Namespace zu einem Subnetz eines virtuellen Netzwerks. Während die Regel vorhanden ist, wird allen Workloads, die an das Subnetz gebunden sind, Zugriff auf den Service Bus-Namespace gewährt. Service Bus stellt selbst niemals ausgehende Verbindungen her, muss keinen Zugriff erhalten und erhält daher niemals die Gewährung des Zugriffs auf Ihr Subnetz, indem diese Regel aktiviert wird.
+
+> [!NOTE]
+> Beachten Sie, dass ein Netzwerkdienstendpunkt in einem virtuellen Netzwerk ausgeführte Anwendungen für den Zugriff auf den Service Bus-Namespace bereitstellt. Das virtuelle Netzwerk steuert die Erreichbarkeit des Endpunkts, aber nicht die Vorgänge, die auf Service Bus-Entitäten (Warteschlangen, Themen oder Abonnements) durchgeführt werden können. Verwenden Sie Azure Active Directory (Azure AD), um Vorgänge zu autorisieren, die die Anwendung für den Namespace und seine Entitäten ausführen können. Weitere Informationen finden Sie unter [Authentifizieren und Autorisieren einer Anwendung mit Azure Active Directory für den Zugriff auf Azure Service Bus-Entitäten](authenticate-application.md).
+
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienstendpunkt hinzufügen. Zum Beschränken des Zugriffs müssen Sie den VNET-Dienstendpunkt für diesen Event Hubs-Namespace integrieren.

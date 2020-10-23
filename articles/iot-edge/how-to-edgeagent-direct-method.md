@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240347"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972542"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Kommunikation mit edgeAgent über integrierte direkte Methoden
 
@@ -69,13 +69,14 @@ Rufen Sie im Azure-Portal die Methode mit dem Namen `RestartModule` und der folg
 
 ![Aufruf der direkten Methode „RestartModule“ im Azure-Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>Experimentelle Methoden
+## <a name="diagnostic-direct-methods"></a>Direkte Diagnosemethoden
 
-Optionen für neue direkte Methoden können als experimentelle Features getestet werden. Dazu zählen u. a.:
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs): Rufen Sie Modulprotokolle inline in der Antwort der direkten Methode ab.
+* [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs): Rufen Sie Modulprotokolle ab, und laden Sie sie in Azure Blob Storage hoch.
+* [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics): Rufen Sie Modulprotokolle mithilfe eines Supportbundles ab, und laden Sie eine ZIP-Datei in Azure BLOB Storage hoch.
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status): Überprüfen Sie den Status einer Anforderung zum Hochladen von Protokollen oder einer Supportbundleanforderung.
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): Rufen Sie Modulprotokolle ab, und laden Sie sie in Azure Blob Storage hoch.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Überprüfen Sie den Status einer Anforderung zum Hochladen von Protokollen.
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): Rufen Sie Modulprotokolle inline in der Antwort der direkten Methode ab.
+Diese direkten Diagnosemethoden sind ab Version 1.0.10 verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

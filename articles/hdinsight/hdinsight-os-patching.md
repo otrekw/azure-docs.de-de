@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019664"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91447205"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster
 
 > [!IMPORTANT]
-> Ubuntu-Images stehen für die Erstellung neuer Azure HDInsight-Cluster innerhalb von drei Monaten nach der Veröffentlichung zur Verfügung. Seit Januar 2019 werden laufende Cluster nicht automatisch gepatcht. Kunden müssen Skriptaktionen oder andere Mechanismen verwenden, um einen laufenden Cluster zu patchen. Neu erstellte Cluster verfügen immer über die aktuellen verfügbaren Updates, einschließlich der neuesten Sicherheitspatches.
+> Ubuntu-Images stehen für die Erstellung neuer Azure HDInsight-Cluster innerhalb von drei Monaten nach der Veröffentlichung zur Verfügung. Ausgeführte Cluster werden nicht automatisch gepatcht. Kunden müssen Skriptaktionen oder andere Mechanismen verwenden, um einen laufenden Cluster zu patchen. Es hat sich bewährt, diese Skriptaktionen auszuführen und direkt nach der Clustererstellung Sicherheitsupdates durchzuführen.
 
 HDInsight bietet Unterstützung für die Durchführung allgemeiner Aufgaben in Ihrem Cluster, z. B. Installieren von Betriebssystempatches, Sicherheitsupdates und Neustarts von Knoten. Diese Aufgaben werden mithilfe der folgenden beiden Skripts ausgeführt, die als [Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) ausgeführt werden können und mit Parametern konfiguriert werden:
 

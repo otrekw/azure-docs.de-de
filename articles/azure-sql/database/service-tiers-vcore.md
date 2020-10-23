@@ -8,14 +8,14 @@ ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
-ms.date: 08/14/2020
-ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.reviewer: sashan, moslake
+ms.date: 09/30/2020
+ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614426"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Übersicht über das Modell für virtuelle Kerne – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,11 @@ Fsv2-series wird von der Dienstebene „Universell“ nicht unterstützt. Weiter
 - Die M-Serie ist eine arbeitsspeicheroptimierte Hardwareoption für Workloads, die mehr Arbeitsspeicher und höhere Computegrenzwerte erfordert, als von Gen5 bereitgestellt werden.
 - Die M-Serie bietet 29 GB pro V-Kern und bis zu 128 V-Kerne. Dadurch erhöht sich der Grenzwert für den Arbeitsspeicher im Vergleich zu Gen5 um das Achtfache auf fast 4 TB.
 
-Die M-Serie wird nur auf der Dienstebene „Unternehmenskritisch“ unterstützt und unterstützt keine Zonenredundanz.  Das Abonnement muss ein kostenpflichtiger Angebotstyp sein, einschließlich nutzungsbasierter Bezahlung oder Enterprise Agreement (EA). Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series-1).
+Die M-Serie wird nur auf der Dienstebene „Unternehmenskritisch“ unterstützt und unterstützt keine Zonenredundanz.  Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series-1).
+
+#### <a name="azure-offer-types-supported-by-m-series"></a>Von der M-Serie unterstützte Azure-Angebotstypen
+
+Für den Zugriff auf die M-Serie muss das Abonnement ein kostenpflichtiger Angebotstyp sein, einschließlich nutzungsbasierter Bezahlung oder Enterprise Agreement (EA).  Eine vollständige Liste mit den von der M-Serie unterstützten Azure-Angebotstypen finden Sie unter [Aktuelle Angebote ohne Ausgabenlimits](https://azure.microsoft.com/support/legal/offer-details).
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

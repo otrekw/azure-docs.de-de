@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256559"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932446"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -30,7 +30,7 @@ Application Insights bietet bereits standardmäßig umfassende Service Fabric-Fu
 
 ![Application Insights-Übersicht](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../azure-monitor/app/api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden weitere Details angezeigt, wie in der folgenden Abbildung zu sehen. Sie umfassen unter anderem Service Fabric-spezifische Daten, die im Application Insights Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
+Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../azure-monitor/app/api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden wie in der folgenden Abbildung dargestellt weitere Details angezeigt. Sie umfassen unter anderem für Service Fabric spezifische Daten, die im Application Insights Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
 
 ![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
@@ -57,11 +57,11 @@ Stellen Sie sicher, dass Sie die erforderlichen Änderungen in Ihren Filtern vor
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Es empfiehlt sich, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Das heißt, wenn Sie die Ausgaben von EventFlow ändern möchten, ist keine Änderung der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von Application Insights entscheiden und nicht planen, auf eine andere Plattform umzusteigen, empfiehlt es sich ggf., das neue SDK von Application Insights zu verwenden, um Ereignisse zu aggregieren und an Application Insights zu senden. Das bedeutet, dass Sie EventFlow nicht mehr zum Senden der Daten an Application Insights konfigurieren müssen, sondern stattdessen das Service Fabric-NuGet-Paket von Application Insights installieren. Details zu diesem Paket finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
+Es empfiehlt sich, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Das heißt, wenn Sie die Ausgaben von EventFlow ändern möchten, ist keine Änderung der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung der Konfigurationsdatei erforderlich. Wenn Sie sich für die Verwendung von Application Insights entscheiden und nicht planen, auf eine andere Plattform umzusteigen, empfiehlt es sich ggf., das neue SDK von Application Insights zu verwenden, um Ereignisse zu aggregieren und an Application Insights zu senden. Das bedeutet, dass Sie EventFlow nicht mehr zum Senden der Daten an Application Insights konfigurieren müssen, sondern stattdessen das Service Fabric-NuGet-Paket von Application Insights installieren. Details zu diesem Paket finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
 Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit Application Insights verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren Lokalisierung eines Problems im Workflow einer Anwendung oder eines Diensts bei).
 
-Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und Application Insights als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, empfiehlt es sich, das Application Insights SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen zu den ersten Schritten mit Application Insights zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../azure-monitor/app/asp-net-more.md) und [hier](../azure-monitor/app/asp-net-trace-logs.md).
+Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und Application Insights als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, empfiehlt es sich, das Application Insights SDK für den Workflow der Überwachung und Diagnose zu verwenden. Lesen Sie die [Application Insights-Dokumentation](../azure-monitor/azure-monitor-app-hub.yml) und den Artikel [Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights](../azure-monitor/app/asp-net-trace-logs.md), um mit der Verwendung von Application Insights zum Erfassen und Anzeigen Ihrer Protokolle zu beginnen.
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigieren zur Application Insights-Ressource im Azure-Portal
 

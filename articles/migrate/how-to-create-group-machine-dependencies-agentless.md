@@ -3,12 +3,12 @@ title: Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serv
 description: Hier erfahren Sie, wie Sie die Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung einrichten.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536437"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667468"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analysieren von Computerabhängigkeiten (ohne Agent)
 
@@ -25,7 +25,7 @@ In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in de
 
 - In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server zu einer Gruppe hinzufügen oder daraus entfernen.
 - Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
-- Die Sammlung von Abhängigkeitsdaten kann gleichzeitig für 400 Server eingerichtet werden. Sie können eine höhere Anzahl von Servern analysieren, indem Sie eine Reihe von Batches von jeweils 400 Servern erstellen.
+- Die Sammlung von Abhängigkeitsdaten kann gleichzeitig für 1.000 Server eingerichtet werden. Sie können eine höhere Anzahl von Servern analysieren, indem Sie eine Reihe von Batches mit jeweils 1.000 Servern erstellen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -57,7 +57,7 @@ Fügen Sie das Benutzerkonto zur Appliance hinzu.
 
 ## <a name="start-dependency-discovery"></a>Starten der Abhängigkeitsermittlung
 
-Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung aktivieren möchten.
+Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung aktivieren möchten. 
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie auf das Symbol **Abhängigkeitsanalyse**.
@@ -68,7 +68,7 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung aktivie
 
     ![Starten der Abhängigkeitsermittlung](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-Ungefähr sechs Stunden nach dem Start der Abhängigkeitsermittlung können Sie die Abhängigkeiten visualisieren.
+Ungefähr sechs Stunden nach dem Start der Abhängigkeitsermittlung können Sie die Abhängigkeiten visualisieren. Falls Sie die Aktivierung für mehrere Computer durchführen möchten, können Sie [PowerShell](#start-or-stop-dependency-discovery-using-powershell) verwenden.
 
 ## <a name="visualize-dependencies"></a>Visualisieren von Abhängigkeiten
 
@@ -125,7 +125,7 @@ Zielport | Die Portnummer auf dem Zielcomputer.
 
 ## <a name="stop-dependency-discovery"></a>Beenden der Abhängigkeitsermittlung
 
-Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung beenden möchten.
+Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung beenden möchten. 
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie auf das Symbol **Abhängigkeitsanalyse**.
@@ -133,6 +133,114 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung beenden
 3. Wählen Sie auf der Seite **Server entfernen** die **Appliance** aus, die die virtuellen Computer ermittelt, auf denen die Abhängigkeitsermittlung beendet werden soll.
 4. Wählen Sie in der Liste der Computer die Computer aus.
 5. Klicken Sie auf **Server entfernen**.
+
+Falls Sie die Abhängigkeitsermittlung auf mehreren Computern beenden möchten, können Sie [PowerShell](#start-or-stop-dependency-discovery-using-powershell) verwenden.
+
+
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>Starten oder Beenden der Abhängigkeitsermittlung mit PowerShell
+
+Laden Sie das PowerShell-Modul aus dem GitHub-Repository mit den [Azure PowerShell-Beispielen](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) herunter.
+
+
+### <a name="log-in-to-azure"></a>Anmelden an Azure
+
+1. Melden Sie sich mit dem Cmdlet „Connect-AzAccount“ bei Ihrem Azure-Abonnement an.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+    Verwenden Sie den folgenden Befehl, falls Sie Azure Government nutzen.
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+2. Wählen Sie das Abonnement aus, unter dem Sie das Azure Migrate-Projekt erstellt haben. 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. Importieren Sie das heruntergeladene PowerShell-Modul „AzMig_Dependencies“.
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+### <a name="enable-or-disable-dependency-data-collection"></a>Aktivieren oder Deaktivieren der Sammlung von Abhängigkeitsdaten
+
+1. Verwenden Sie die folgenden Befehle, um die Liste mit den ermittelten VMware-VMs in Ihrem Azure Migrate-Projekt abzurufen. Im Beispiel unten lautet der Projektname „FabrikamDemoProject“ und die zugehörige Ressourcengruppe „FabrikamDemoRG“. Die Liste mit den Computern wird in der Datei „FabrikamDemo_VMs.csv“ gespeichert.
+
+    ```PowerShell
+    Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
+    ```
+
+    Der Datei können Sie den Anzeigenamen der VM, den aktuellen Status der Abhängigkeitssammlung und die ARM-ID aller ermittelten VMs entnehmen. 
+
+2. Erstellen Sie eine CSV-Eingabedatei, um Abhängigkeiten zu aktivieren oder zu deaktivieren. Die Datei muss eine Spalte mit der Überschrift „ARM ID“ enthalten. Alle zusätzlichen Überschriften in der CSV-Datei werden ignoriert. Sie können die CSV-Datei erstellen, indem Sie die im vorherigen Schritt generierte Datei verwenden. Erstellen Sie eine Kopie der Datei, und behalten Sie die VMs bei, für die Sie Abhängigkeiten aktivieren oder deaktivieren möchten. 
+
+    Im folgenden Beispiel wird die Abhängigkeitsanalyse in der Liste mit den VMs in der Eingabedatei „FabrikamDemo_VMs_Enable.csv“ aktiviert.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
+    ```
+
+    Im folgenden Beispiel wird die Abhängigkeitsanalyse in der Liste mit den VMs in der Eingabedatei „FabrikamDemo_VMs_Disable.csv“ deaktiviert.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
+    ```
+
+## <a name="visualize-network-connections-in-power-bi"></a>Visualisieren von Netzwerkverbindungen in Power BI
+
+Azure Migrate verfügt über eine Power BI-Vorlage, die Sie zum gleichzeitigen Visualisieren der Netzwerkverbindungen vieler Server und zum Filtern nach Prozess und Server verwenden können. Laden Sie Power BI zum Visualisieren mit Abhängigkeitsdaten, indem Sie die unten angegebene Anleitung verwenden.
+
+1. Laden Sie das PowerShell-Modul und die Power BI-Vorlage aus dem GitHub-Repository mit den [Azure PowerShell-Beispielen](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) herunter.
+
+2. Melden Sie sich bei Azure an, indem Sie die folgende Anleitung befolgen: 
+- Melden Sie sich mit dem Cmdlet „Connect-AzAccount“ bei Ihrem Azure-Abonnement an.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+
+- Verwenden Sie den folgenden Befehl, falls Sie Azure Government nutzen.
+
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+- Wählen Sie das Abonnement aus, unter dem Sie das Azure Migrate-Projekt erstellt haben. 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. Importieren Sie das heruntergeladene PowerShell-Modul „AzMig_Dependencies“.
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+4. Führen Sie den folgenden Befehl aus. Mit diesem Befehl werden die Abhängigkeitsdaten in eine CSV-Datei heruntergeladen und verarbeitet, um eine Liste mit eindeutigen Abhängigkeiten zu generieren, die für die Visualisierung in Power BI genutzt werden können. Im Beispiel unten lautet der Projektname „FabrikamDemoProject“ und die zugehörige Ressourcengruppe „FabrikamDemoRG“. Die Abhängigkeiten werden für Computer heruntergeladen, die über FabrikamAppliance ermittelt werden. Die eindeutigen Abhängigkeiten werden in der Datei „FabrikamDemo_Dependencies.csv“ gespeichert.
+
+    ```PowerShell
+    Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
+    ```
+
+5. Öffnen Sie die heruntergeladene Power BI-Vorlage.
+
+6. Laden Sie die heruntergeladenen Abhängigkeitsdaten in Power BI.
+    - Öffnen Sie die Vorlage in Power BI.
+    - Klicken Sie in der Symbolleiste auf **Daten abrufen**. 
+    - Wählen Sie in der Liste mit den häufig verwendeten Datenquellen die Option **Text/CSV** aus.
+    - Wählen Sie die heruntergeladene Datei mit den Abhängigkeiten aus.
+    - Klicken Sie auf **Laden**.
+    - Sie sehen, dass eine Tabelle mit dem Namen der CSV-Datei importiert wird. Die Tabelle wird rechts in der Felderleiste angezeigt. Benennen Sie sie in „AzMig_Dependencies“ um.
+    - Klicken Sie in der Symbolleiste auf „Aktualisieren“.
+
+    Die importierten Daten sollten nun im Diagramm mit den Netzwerkverbindungen und unter den Slicern für den Namen des Quellservers, Zielservers, Quellprozesses und Zielprozesses widergespiegelt werden.
+
+7. Visualisieren Sie die Karte mit den Netzwerkverbindungen, die nach Servern und Prozessen gefiltert wurde. Speichern Sie die Datei.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

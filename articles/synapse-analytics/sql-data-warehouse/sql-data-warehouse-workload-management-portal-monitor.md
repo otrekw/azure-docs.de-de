@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b0dc3af524b16430408f8a920c7477c412414d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208687"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362728"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals
 
@@ -59,7 +59,8 @@ Das folgende Diagramm ist wie folgt konfiguriert:<br>
 Metrik 1: *Effektive Mindestanzahl von Ressourcen (Prozent)* (Avg-Aggregation, `blue line`)<br>
 Metrik 2: *Zuordnung von Arbeitsauslastungsgruppen nach Systemprozentsatz* (Avg-Aggregation, `purple line`)<br>
 Filter: [Arbeitsauslastungsgruppe] = `wgPriority`<br>
-![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) Das Diagramm zeigt, dass bei einer Arbeitsauslastungsisolation von 25 % nur durchschnittlich 10 % verwendet werden.  In diesem Fall könnte der `MIN_PERCENTAGE_RESOURCE`-Parameter auf einen Wert zwischen 10 und 15 verringert werden, sodass andere Arbeitsauslastungen im System die Ressourcen nutzen können.
+![Screenshot eines Diagramms mit den beiden Metriken und einem Filter](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png)
+Das Diagramm zeigt, dass bei einer Arbeitsauslastungsisolation von 25 Prozent nur durchschnittlich 10 Prozent verwendet werden.  In diesem Fall könnte der `MIN_PERCENTAGE_RESOURCE`-Parameter auf einen Wert zwischen 10 und 15 verringert werden, sodass andere Arbeitsauslastungen im System die Ressourcen nutzen können.
 
 ### <a name="workload-group-bottleneck"></a>Arbeitsauslastungsgruppen-Engpass
 
@@ -81,7 +82,8 @@ Metrik 1: *Effektives Ressourcenlimit (Prozent)* (Avg-Aggregation, `blue line`)<
 Metrik 2: *Zuordnung von Arbeitsauslastungsgruppen nach maximalem Ressourcenprozentsatz* (Avg-Aggregation, `purple line`)<br>
 Metrik 3: *In der Warteschlange befindliche Abfragen der Arbeitsauslastungsgruppe* (Sum-Aggregation, `turquoise line`)<br>
 Filter: [Arbeitsauslastungsgruppe] = `wgDataAnalyst`<br>
-![bottle-necked-wg](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) Das Diagramm zeigt, dass die Arbeitsauslastungsgruppe bei einer Begrenzung der Ressourcen auf 9 % zu 90 %+ (der Metrik *Zuordnung von Arbeitsauslastungsgruppen nach maximalem Ressourcenprozentsatz*) ausgelastet ist.  Abfragen werden kontinuierlich in die Warteschlange gestellt, wie die *Metrik für in der Warteschlange befindliche Abfragen der Arbeitsauslastungsgruppe* zeigt.  Wenn Sie in diesem Fall `CAP_PERCENTAGE_RESOURCE` auf einen Wert über 9 % erhöhen, können mehrere Abfragen gleichzeitig ausgeführt werden.  Das Erhöhen von `CAP_PERCENTAGE_RESOURCE` setzt voraus, dass genügend Ressourcen verfügbar sind und nicht von anderen Arbeitsauslastungsgruppen isoliert werden.  Überprüfen Sie das erhöhte Limit anhand der Metrik *Effektives Ressourcenlimit (Prozent)* .  Wenn mehr Durchsatz gewünscht ist, sollten Sie auch `REQUEST_MIN_RESOURCE_GRANT_PERCENT` auf einen Wert über 3 erhöhen.  Durch Erhöhen von `REQUEST_MIN_RESOURCE_GRANT_PERCENT` könnten Abfragen schneller ausgeführt werden.
+![Screenshot eines Diagramms mit den drei Metriken und einem Filter](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png)
+Das Diagramm zeigt, dass die Arbeitsauslastungsgruppe bei einer Begrenzung der Ressourcen auf neun Prozent zu mehr als 90 Prozent ausgelastet ist (Metrik *Workload group allocation by max resource percent* (Zuordnung von Arbeitsauslastungsgruppen nach maximalem Ressourcenprozentsatz)).  Abfragen werden kontinuierlich in die Warteschlange gestellt, wie die *Metrik für in der Warteschlange befindliche Abfragen der Arbeitsauslastungsgruppe* zeigt.  Wenn Sie in diesem Fall `CAP_PERCENTAGE_RESOURCE` auf einen Wert über 9 % erhöhen, können mehrere Abfragen gleichzeitig ausgeführt werden.  Das Erhöhen von `CAP_PERCENTAGE_RESOURCE` setzt voraus, dass genügend Ressourcen verfügbar sind und nicht von anderen Arbeitsauslastungsgruppen isoliert werden.  Überprüfen Sie das erhöhte Limit anhand der Metrik *Effektives Ressourcenlimit (Prozent)* .  Wenn mehr Durchsatz gewünscht ist, sollten Sie auch `REQUEST_MIN_RESOURCE_GRANT_PERCENT` auf einen Wert über 3 erhöhen.  Durch Erhöhen von `REQUEST_MIN_RESOURCE_GRANT_PERCENT` könnten Abfragen schneller ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

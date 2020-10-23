@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852360"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361499"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
@@ -71,7 +71,7 @@ Die von Azure Machine Learning Studio (klassisch) bereitgestellten Codeausschnit
 
 Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer verfügbar, deren Rolle als **Besitzer** für den Arbeitsbereich eingestellt ist. Die Rolle wird in Azure Machine Learning Studio (klassisch) auf der Seite **BENUTZER** unter **Einstellungen** angezeigt.
 
-![Sicherheit][security]
+![Screenshot mit den Einstellungen auf der Seite „USERS“ (Benutzer) von Azure Machine Learning Studio][security]
 
 Wenn Ihre Rolle nicht als **Besitzer**festgelegt ist, können Sie darum bitten, erneut als Besitzer eingeladen zu werden, oder den Besitzer des Arbeitsbereichs darum bitten, Ihnen den Codeausschnitt zu stellen.
 
@@ -92,7 +92,7 @@ Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTEL
 2. Wählen Sie das Dataset, auf das Sie zugreifen möchten. Wählen Sie eines der Datasets aus der Liste **MEINE DATASETS** oder aus der Liste **BEISPIELE** aus.
 3. Klicken Sie auf der unteren Symbolleiste auf **Datenzugriffscode generieren**. Diese Schaltfläche ist deaktiviert, wenn die Daten ein mit der Python-Clientbibliothek nicht kompatibles Format haben.
    
-    ![Datasets][datasets]
+    ![Screenshot mit Datasets mit der Schaltfläche US GENERATE DATA ACCESS CODE („Datei für den Datenzugriffscode generieren“)][datasets]
 4. Wählen Sie den Codeausschnitt aus dem Fenster, das angezeigt wird und kopieren Sie ihn in die Zwischenablage.
    
     ![Schaltfläche „Generate data access code“ (Datei für den Datenzugriffscode generieren)][dataset-access-code]

@@ -1,17 +1,17 @@
 ---
 title: Geschäftskontinuität – Azure Database for PostgreSQL – Einzelserver
 description: Dieser Artikel bietet Informationen zur Geschäftskontinuität (Point-in-Time-Wiederherstellung, Rechenzentrumsausfälle, Geowiederherstellung, Replikate), wenn Sie den Dienst Azure Database for PostgreSQL verwenden.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612017"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939867"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
@@ -19,16 +19,19 @@ Diese Übersicht beschreibt die Funktionen, die Azure Database for PostgreSQL f�
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Features zum Sicherstellen der Geschäftskontinuität
 
-Azure Database for PostgreSQL bietet Features für Geschäftskontinuität, die automatisierte Sicherungen umfassen und Benutzern die Möglichkeit geben, eine Geowiederherstellung zu initiieren. Jedes Feature weist unterschiedliche Eigenschaften für die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT) sowie für mögliche Datenverluste auf. Estimated Recovery Time (ERT) ist die geschätzte Dauer, bis die Datenbank nach einer Wiederherstellungs-/Failoveranforderung wieder voll funktionsfähig ist. Wenn Sie diese Optionen kennen, können Sie die richtigen Optionen auswählen und in unterschiedlichen Szenarien auch miteinander kombinieren. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie ermitteln, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist – diese Zeitspanne ist Ihre RTO (Recovery Time Objective). Sie müssen auch herausfinden, wie viele kürzlich durchgeführte Datenupdates (in einem bestimmten Zeitraum) verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird – diese Zeitspanne ist Ihre RPO (Recovery Point Objective).
+Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie ermitteln, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist – diese Zeitspanne ist Ihre RTO (Recovery Time Objective). Sie müssen auch herausfinden, wie viele kürzlich durchgeführte Datenupdates (in einem bestimmten Zeitraum) verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird – diese Zeitspanne ist Ihre RPO (Recovery Point Objective).
 
-Die folgende Tabelle vergleicht ERT und RPO für die verfügbaren Features:
+Azure Database for PostgreSQL bietet Geschäftskontinuitätsfeatures, die georedundante Sicherungen mit der Möglichkeit zum Initiieren der Geowiederherstellung und zum Bereitstellen von Lesereplikaten in einer anderen Region umfassen. Jedes Feature weist unterschiedliche Eigenschaften für die Wiederherstellungszeit und mögliche Datenverluste auf. Beim Feature für die [Geowiederherstellung](concepts-backup.md) wird ein neuer Server mithilfe der Sicherungsdaten erstellt, die aus einer anderen Region repliziert werden. Die Gesamtzeit der Wiederherstellung hängt von der Größe der Datenbank und der Anzahl der wiederherzustellenden Protokolle ab. Die Gesamtzeit zum Einrichten des Servers variiert von wenigen Minuten bis zu einigen Stunden. Mit [Lesereplikaten](concepts-read-replicas.md) werden Transaktionsprotokolle vom primären Standort asynchron an das Replikat gestreamt. Die Verzögerung zwischen dem primären Standort und dem Replikat hängt von der Wartezeit zwischen den Standorten und der Menge der zu übertragenden Daten ab. Bei einem Ausfall eines primären Standorts (z. B. einem Verfügbarkeitszonenfehler) ermöglicht das Heraufstufen des Replikats kürzere RTOs und geringere Datenverluste. 
+
+In der folgenden Tabelle werden RTO und RPO in einem typischen Szenario verglichen:
 
 | **Funktion** | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Point-in-Time-Wiederherstellung von Sicherung | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer |
-| Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | ERT < 12 Stunden<br/>RPO < 1 Stunde | ERT < 12 Stunden<br/>RPO < 1 Stunde |
+| Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | RTO: variiert <br/>RPO < 1 Stunde | RTO: variiert <br/>RPO < 1 Stunde |
+| Lesereplikate | RTO: mehrere Minuten <br/>RPO < 5 Min.* | RTO: mehrere Minuten <br/>RPO < 5 Min.*| RTO: mehrere Minuten <br/>RPO < 5 Min.*|
 
-Sie können auch die Verwendung von [Lesereplikaten](concepts-read-replicas.md) erwägen.
+\* Die RPO kann in einigen Fällen in Abhängigkeit von verschiedenen Faktoren wie der Workload der primären Datenbank und der Wartezeit zwischen Regionen höher sein. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Wiederherstellen eines Servers nach einem Benutzer- oder Anwendungsfehler
 

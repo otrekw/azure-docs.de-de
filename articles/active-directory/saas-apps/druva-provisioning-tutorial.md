@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323514"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851151"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Druva für die automatische Benutzerbereitstellung
 
@@ -58,15 +58,15 @@ Bevor Sie Druva für die automatische Benutzerbereitstellung mit Azure AD konfi
 
 2. Navigieren Sie zu **Manage** > **Deployments** > **Users** (Verwalten > Bereitstellungen > Benutzer).
 
-    ![Druva: Hinzufügen von SCIM](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Screenshot der Druva-Verwaltungskonsole. Die Option „Verwalten“ ist hervorgehoben, und das Menü „Verwalten“ wird angezeigt. In diesem Menü ist unter „Bereitstellungen“ die Option „Benutzer“ hervorgehoben." border="false":::
 
 3.  Navigieren zu **Einstellungen**. Klicken Sie dann auf **Generate Token** (Token generieren).
 
-    ![Druva: Hinzufügen von SCIM](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Screenshot der Druva-Verwaltungskonsole. Die Option „Verwalten“ ist hervorgehoben, und das Menü „Verwalten“ wird angezeigt. In diesem Menü ist unter „Bereitstellungen“ die Option „Benutzer“ hervorgehoben." border="false":::
 
 4.  Kopieren Sie den Wert von **Auth token** (Authentifizierungstoken). Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Druva-Anwendung in das Feld **Geheimes Token** eingegeben.
     
-    ![Druva: Hinzufügen von SCIM](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Screenshot der Druva-Verwaltungskonsole. Die Option „Verwalten“ ist hervorgehoben, und das Menü „Verwalten“ wird angezeigt. In diesem Menü ist unter „Bereitstellungen“ die Option „Benutzer“ hervorgehoben." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Hinzufügen von Druva aus dem Katalog
 

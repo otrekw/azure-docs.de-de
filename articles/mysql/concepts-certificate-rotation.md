@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 437fe4636fd5b93656758c9fa55f2b18d64a4b6b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985772"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540692"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MySQL
 
@@ -30,6 +30,7 @@ Das neue Zertifikat wird ab dem 26. Oktober 2020 verwendet. Wenn Sie beim Herste
 Alle Anwendungen, die SSL/TLS verwenden und das Stammzertifikat überprüfen, müssen das Stammzertifikat aktualisieren. Durch Überprüfen der Verbindungszeichenfolge können Sie ermitteln, ob Ihre Verbindungen das Stammzertifikat überprüfen.
 -   Wenn Ihre Verbindungszeichenfolge `sslmode=verify-ca` oder `sslmode=verify-full` enthält, müssen Sie das Zertifikat aktualisieren.
 -   Wenn Ihre Verbindungszeichenfolge `sslmode=disable`, `sslmode=allow`, `sslmode=prefer` oder `sslmode=require` enthält, müssen Sie keine Zertifikate aktualisieren. 
+-  Wenn Sie Java-Connectors verwenden und die Verbindungszeichenfolge „useSSL=false“ oder „requireSSL=false“ enthält, müssen Zertifikate nicht aktualisiert werden.
 -   Wenn in Ihrer Verbindungszeichenfolge „sslmode“ nicht angegeben ist, müssen Sie keine Zertifikat aktualisieren.
 
 Wenn Sie einen Client verwenden, der die Verbindungszeichenfolge abstrahiert, lesen Sie die Dokumentation des Clients, um zu ermitteln, ob Zertifikate überprüft werden.
@@ -119,10 +120,10 @@ Für Server, die nach dem 26. Oktober 2020 erstellt werden, können Sie das neu 
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Wie oft aktualisiert Microsoft seine Zertifikate bzw. welche Ablaufrichtlinie gilt?
 Diese von Azure Database for MySQL verwendeten Zertifikate werden von vertrauenswürdigen Zertifizierungsstellen (ZS) bereitgestellt. Die Unterstützung dieser Zertifikate in Azure Database for MySQL ist also an die Unterstützung dieser Zertifikate durch die ZS gebunden. Wie in diesem Fall kann es jedoch zu unvorhergesehenen Fehlern in diesen vordefinierten Zertifikaten kommen, die schnellstmöglich behoben werden müssen.
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem Masterserver oder für die gelesenen Replikate ausführen?
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem Quellserver oder für die gelesenen Replikate ausführen?
 Da dieses Update eine clientseitige Änderung ist, müssen Sie die Änderungen auch für diese Clients anwenden, wenn der Client Daten vom Replikatserver gelesen hat.
 
-### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Muss ich, wenn ich die Datenreplikation verwende, eine Aktion ausführen?
+### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Muss ich bei Verwendung der Datenreplikation eine Aktion ausführen?
 Wenn Sie die [Datenreplikation](concepts-data-in-replication.md) verwenden, um eine Verbindung mit Azure Database for MySQL herzustellen, müssen Sie zwei Punkte berücksichtigen:
 *   Wenn die Datenreplikation von einem virtuellen Computer (lokal oder Azure-VM) zu Azure Database for MySQL erfolgt, müssen Sie überprüfen, ob zum Erstellen des Replikats SSL verwendet wird. Führen Sie **SHOW SLAVE STATUS** aus, und überprüfen Sie die folgende Einstellung.  
 
@@ -137,13 +138,13 @@ Wenn Sie die [Datenreplikation](concepts-data-in-replication.md) verwenden, um e
 
     Wenn das Zertifikat für CA_file, SSL_Cert und SSL_Key bereitgestellt wird, müssen Sie die Datei aktualisieren, indem Sie das [neue Zertifikat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) hinzufügen.
 
-*   Wenn die Datenreplikation zwischen zwei Azure Database for MySQL-Instanzen erfolgt, müssen Sie das Replikat zurücksetzen, indem Sie **CALL mysql.az_replication_change_master** ausführen und das neue duale Stammzertifikat als letzten Parameter ([master_ssl_ca](howto-data-in-replication.md#link-master-and-replica-servers-to-start-data-in-replication)) bereitstellen.
+*   Wenn die Datenreplikation zwischen zwei Azure Database for MySQL-Instanzen erfolgt, müssen Sie das Replikat zurücksetzen, indem Sie **CALL mysql.az_replication_change_master** ausführen und das neue duale Stammzertifikat als letzten Parameter ([master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)) bereitstellen.
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. Gibt es eine serverseitige Abfrage, um zu überprüfen, ob SSL verwendet wird?
 Um zu überprüfen, ob Sie eine SSL-Verbindung zum Herstellen einer Verbindung mit dem Server verwenden, lesen Sie die Informationen unter [Überprüfen der SSL-Verbindung](howto-configure-ssl.md#step-4-verify-the-ssl-connection).
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. Ist eine Aktion erforderlich, wenn sich DigiCertGlobalRootG2 bereits in meiner Zertifikatsdatei befindet?
-Nein Ist **DigiCertGlobalRootG2** bereits in Ihrer Zertifikatsdatei enthalten, ist keine Aktion erforderlich.
+Nein Wenn in Ihrer Zertifikatsdatei **DigiCertGlobalRootG2** bereits enthalten ist, ist keine Aktion erforderlich.
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. Wie gehe ich vor, wenn ich weitere Fragen habe?
 Bei Fragen können Sie Antworten von Communityexperten auf [Microsoft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com) erhalten. Wenn Sie über einen Supportplan verfügen und technische Hilfe benötigen, [kontaktieren Sie uns](mailto:AzureDatabaseforMySQL@service.microsoft.com).

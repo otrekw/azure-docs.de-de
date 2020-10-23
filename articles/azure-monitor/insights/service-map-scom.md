@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441510"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in System Center Operations Manager
 
@@ -73,11 +73,11 @@ Gehen Sie zum Konfigurieren der Integration des Zuordnungsfeatures von Azure Mon
 
 6. Optional: Wählen Sie den Ressourcenpool für alle Verwaltungsserver für die Kommunikation mit Log Analytics aus, und klicken Sie dann auf **Arbeitsbereich hinzufügen**.
 
-    ![Der Operations Manager-Konfigurationsressourcenpool](media/service-map-scom/scom-config-pool.png)
+    ![Screenshot: Bildschirm „Serverpool“ unter „Add Microsoft Operations Management Suite Workspace“ (Microsoft Operations Management Suite-Arbeitsbereich hinzufügen), auf dem „All Management Servers Resource Pool“ (Ressourcenpool für alle Verwaltungsserver) ausgewählt ist](media/service-map-scom/scom-config-pool.png)
 
     Es kann eine Minute dauern, den Log Analytics-Arbeitsbereich zu konfigurieren und registrieren. Nach Abschluss der Konfiguration des Arbeitsbereichs initiiert Operations Manager die erste Zuordnungssynchronisierung.
 
-    ![Der Operations Manager-Konfigurationsressourcenpool](media/service-map-scom/scom-config-success.png)
+    ![Screenshot: Bildschirm „Abschluss“ unter „Add Microsoft Operations Management Suite Workspace“ (Microsoft Operations Management Suite-Arbeitsbereich hinzufügen) mit der Bestätigung, dass der Arbeitsbereich hinzugefügt wurde](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>Überwachen der Integration
 
@@ -98,11 +98,11 @@ Der Ordner „Service Map“ umfasst vier Knoten:
 
 * **Computerabhängigkeitsansichten**: Listet alle Computergruppen auf, die über das Zuordnungsfeature synchronisiert werden. Sie können auf eine beliebige Gruppe klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
 
-    ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/service-map-scom/scom-group-dad.png)
+    ![Screenshot: Dienstzuordnung mit einem Diagramm mit Bildern für die einzelnen Computergruppen sowie Linien, die die Abhängigkeiten dazwischen darstellen](media/service-map-scom/scom-group-dad.png)
 
 * **Serverabhängigkeitsansichten**: Listet alle Server auf, die über das Zuordnungsfeature synchronisiert werden. Sie können auf einen beliebigen Server klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
 
-    ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/service-map-scom/scom-dad.png)
+    ![Screenshot: Dienstzuordnung mit einem Diagramm mit Bildern für die einzelnen Servern sowie Linien, die die Abhängigkeiten dazwischen darstellen](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Bearbeiten oder Löschen des Arbeitsbereichs
 

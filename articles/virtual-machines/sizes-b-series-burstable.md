@@ -3,17 +3,17 @@ title: 'Burstable-Computer der B-Serie: Azure Virtual Machines'
 description: In diesem Artikel werden die Größen von Burstable Azure-VMs der B-Serie beschrieben.
 services: virtual-machines
 ms.subservice: sizes
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: ayshak
-ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: sttsinar
+ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654734"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968921"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
@@ -21,13 +21,14 @@ Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierli
 
 Die B-Serie ist in den folgenden VM-Größen erhältlich:
 
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[Azure-Compute-Einheit (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): Variiert*<br>
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+<br>
+*VMs der B-Serie sind burstfähig, daher variieren die ACU-Nummern je nach Workloads und Kernnutzung.
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Anfängliche Guthaben | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

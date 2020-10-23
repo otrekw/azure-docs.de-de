@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090192"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761548"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenz zum JavaScript-SDK für den Plastischen Reader (v1.1)
 
@@ -43,7 +43,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="launchasync-parameters"></a>launchAsync-Parameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | `token` | Zeichenfolge | Das Azure AD-Authentifizierungstoken. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Ressource für den plastischen Reader](./how-to-create-immersive-reader.md). |
 | `subdomain` | Zeichenfolge | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Ressource für den plastischen Reader](./how-to-create-immersive-reader.md). |
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons-Parameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | `options` | [renderButtons options](#renderbuttons-options) | Optionen zum Konfigurieren bestimmter Verhaltensweisen der Funktion „renderButtons“. Optional. |
 
@@ -131,11 +131,11 @@ Optionen für das Rendering der Schaltflächen des Plastischen Readers.
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons Options-Parameter
 
-| Einstellung | Typ | Beschreibung |
+| Einstellung | type | Beschreibung |
 | ------- | ---- | ----------- |
 | Elemente | HTMLDivElement[] | Elemente, in denen die Schaltflächen des plastischen Readers gerendert werden. |
 
-##### `-elements`
+##### `elements`
 ```Parameters
 Type: HTMLDivElement[]
 Required: false
@@ -156,7 +156,7 @@ Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten 
 
 #### <a name="launchresponse-parameters"></a>LaunchResponse-Parameter
 
-| Einstellung | Typ | Beschreibung |
+| Einstellung | type | Beschreibung |
 | ------- | ---- | ----------- |
 | Container | HTMLDivElement | HTML-Element, das das „iframe“ des plastischen Readers enthält. |
 | sessionID | String | Global eindeutiger Bezeichner für diese Sitzung, der zum Debuggen verwendet wird. |
@@ -174,7 +174,7 @@ Enthält Informationen zu einem Fehler.
 
 #### <a name="error-parameters"></a>Fehlerparameter
 
-| Einstellung | Typ | Beschreibung |
+| Einstellung | type | Beschreibung |
 | ------- | ---- | ----------- |
 | code | String | Einer aus einer Reihe von Fehlercodes. Weitere Informationen finden Sie unter [Fehlercodes](#error-codes). |
 | message | String | Lesbare Darstellung des Fehlers. |
@@ -205,19 +205,19 @@ Enthält den Inhalt, der im Plastischen Reader angezeigt werden soll.
 
 #### <a name="content-parameters"></a>Inhaltsparameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | title | String | Titeltext, der oben auf dem plastischen Reader angezeigt wird (optional). |
 | Blöcke | [Chunk[]](#chunk) | Array von Blöcken |
 
-##### `-title`
+##### `title`
 ```Parameters
 Type: String
 Required: false
 Default value: "Immersive Reader" 
 ```
 
-##### `-chunks`
+##### `chunks`
 ```Parameters
 Type: Chunk[]
 Required: true
@@ -240,27 +240,27 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 
 #### <a name="chunk-parameters"></a>Blockparameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | Inhalt | String | Die Zeichenfolge, die den an den plastischen Reader gesendeten Inhalt enthält. |
 | lang | String | Sprache des Texts, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „en“, „es-ES“. Die Sprache wird automatisch erkannt, wenn sie nicht angegeben ist. Siehe [Unterstützte Sprachen](#supported-languages). |
 | mimeType | Zeichenfolge | Nur-Text-, MathML-, HTML- und Microsoft Word DOCX-Formate werden unterstützt. Weitere Informationen finden Sie unter [Unterstützte MIME-Typen](#supported-mime-types). |
 
-##### `-content`
+##### `content`
 ```Parameters
 Type: String
 Required: true
 Default value: null 
 ```
 
-##### `-lang`
+##### `lang`
 ```Parameters
 Type: String
 Required: false
 Default value: Automatically detected 
 ```
 
-##### `-mimeType`
+##### `mimeType`
 ```Parameters
 Type: String
 Required: false
@@ -305,7 +305,7 @@ Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers k
 
 #### <a name="options-parameters"></a>Optionsparameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | uiLang | String | Sprache der Benutzeroberfläche, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „en“, „es-ES“. Standardmäßig wird die Browsersprache verwendet, falls nicht angegeben. |
 | timeout | Nr. | Dauer (in Millisekunden) bevor bei [launchAsync](#launchasync) ein Timeoutfehler auftritt (Standard ist 15000 ms). Dieser Timeout gilt nur für den anfänglichen Start der Seite „Reader“, wobei der Erfolg beim Öffnen der Seite „Reader“ und dem Start des Drehfelds beobachtet wird. Die Anpassung des Timeouts sollte nicht erforderlich sein. |
@@ -323,38 +323,38 @@ Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers k
 | onPreferencesChanged | Funktion | Wird ausgeführt, wenn sich die Voreinstellungen des Benutzers geändert haben. Weitere Informationen finden Sie unter [Vorgehensweise: Speichern der Benutzereinstellungen](./how-to-store-user-preferences.md). |
 | customDomain | String | Für die interne Verwendung reserviert. Benutzerdefinierte Domäne, in der die Web-App des plastischen Readers gehostet wird (der Standardwert ist „NULL“). |
 
-##### `-uiLang`
+##### `uiLang`
 ```Parameters
 Type: String
 Required: false
 Default value: User's browser language 
 ```
 
-##### `-timeout`
+##### `timeout`
 ```Parameters
 Type: Number
 Required: false
 Default value: 15000
 ```
 
-##### `-uiZIndex`
+##### `uiZIndex`
 ```Parameters
 Type: Number
 Required: false
 Default value: 1000
 ```
 
-##### `-onExit`
+##### `onExit`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-preferences`
+##### `preferences`
 
 > [!CAUTION]
-> **WICHTIG** Versuchen Sie nicht, die Werte der `-preferences`-Zeichenfolge, die an die und von der Plastischer Reader-Anwendung gesendet werden, programmgesteuert zu ändern, da dies zu unerwartetem Verhalten führen kann, das die Benutzerfreundlichkeit für Ihre Kunden verringert.
+> **WICHTIG** Versuchen Sie nicht, die Werte der `-preferences`-Zeichenfolge, die an die und von der Plastischer Reader-Anwendung gesendet werden, programmgesteuert zu ändern, da dies zu unerwartetem Verhalten führen kann, das die Benutzerfreundlichkeit für Ihre Kunden verringert. Hostanwendungen sollten der Zeichenfolge `-preferences` niemals einen benutzerdefinierten Wert zuweisen oder sie manipulieren. Wenn Sie die Zeichenfolgenoption `-preferences` verwenden, verwenden Sie nur genau den Wert, der von der Rückrufoption `-onPreferencesChanged` zurückgegeben wurde.
 
 ```Parameters
 Type: String
@@ -362,14 +362,14 @@ Required: false
 Default value: null
 ```
 
-##### `-onPreferencesChanged`
+##### `onPreferencesChanged`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-customDomain`
+##### `customDomain`
 ```Parameters
 Type: String
 Required: false
@@ -390,13 +390,13 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>ReadAloudOptions-Parameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | voice | String | Stimme, entweder „Weiblich“ oder „Männlich“. Beachten Sie, dass nicht alle Sprachen beide Geschlechter unterstützen. |
 | Geschwindigkeit | Nr. | Die Wiedergabegeschwindigkeit muss zwischen 0,5 und 2,5 (einschließlich) liegen. |
 | autoPlay | Boolean | Starten Sie automatisch das laute Vorlesen, wenn der plastische Reader geladen wird. |
 
-##### `-voice`
+##### `voice`
 ```Parameters
 Type: String
 Required: false
@@ -404,7 +404,7 @@ Default value: "Female" or "Male" (determined by language)
 Values available: "Female", "Male"
 ```
 
-##### `-speed`
+##### `speed`
 ```Parameters
 Type: Number
 Required: false
@@ -429,13 +429,13 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions-Parameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | language | String | Legt die Übersetzungssprache fest, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „fr-FR“, „es-MX“, „zh-Hans-CN“. Erforderlich zur automatischen Aktivierung der Wort- oder Dokumentübersetzung. |
 | autoEnableDocumentTranslation | Boolean | Übersetzen Sie automatisch das gesamte Dokument. |
 | autoEnableWordTranslation | Boolean | Aktivieren Sie automatisch die Übersetzung von Wörtern. |
 
-##### `-language`
+##### `language`
 ```Parameters
 Type: String
 Required: true
@@ -457,13 +457,13 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions-Parameter
 
-| Name | Typ | Beschreibung |
+| Name | type | Beschreibung |
 | ---- | ---- |------------ |
 | textSize | Nr. | Legt die gewählte Textgröße fest. |
 | increaseSpacing | Boolean | Legt fest, ob der Textabstand aktiviert oder deaktiviert wird. |
 | fontFamily | String | Legt die gewählte Schriftart fest („Calibri“, „ComicSans“ oder „Sitka“). |
 
-##### `-textSize`
+##### `textSize`
 ```Parameters
 Type: Number
 Required: false
@@ -471,7 +471,7 @@ Default value: 20, 36 or 42 (Determined by screen size)
 Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
 ```
 
-##### `-fontFamily`
+##### `fontFamily`
 ```Parameters
 Type: String
 Required: false
@@ -491,7 +491,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="settings-parameters"></a>Parameter für Einstellungen
 
-| Einstellung | Typ | Beschreibung |
+| Einstellung | type | Beschreibung |
 | ------- | ---- | ----------- |
 | textSize | Nr. | Legt die gewählte Textgröße fest. |
 | fontFamily | String | Legt die gewählte Schriftart fest („Calibri“, „ComicSans“ oder „Sitka“). |
@@ -514,7 +514,7 @@ enum CookiePolicy { Disable, Enable }
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 
-Das Übersetzungsfeature des plastischen Readers unterstützt viele Sprachen. Weitere Informationen finden Sie [in diesem Artikel](https://www.onenote.com/learningtools/languagesupport) .
+Das Übersetzungsfeature des plastischen Readers unterstützt viele Sprachen. Weitere Informationen finden Sie unter [Sprachunterstützung](./language-support.md).
 
 <br>
 

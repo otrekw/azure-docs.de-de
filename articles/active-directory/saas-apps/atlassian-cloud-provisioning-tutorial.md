@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ca2284e3e2f581d1935a8978d26fd674154d581b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549386"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333508"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Atlassian Cloud
 
@@ -49,11 +49,12 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 1. Navigieren Sie zu [Atlassian Organization Manager](https://admin.atlassian.com), wählen Sie die Organisation aus, und klicken Sie auf **Verzeichnis**.
 
-    ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+    ![Screenshot: Seite „Verwaltung“ mit hervorgehobener Option „Directory“ (Verzeichnis)](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
 2. Klicken Sie auf **Benutzerbereitstellung** und dann auf **Verzeichnis erstellen**. Kopieren Sie die **Verzeichnisbasis-URL** und das **Bearertoken**. Diese Werte werden im Azure AD-Portal auf der Registerkarte „Bereitstellung“ Ihrer Atlassian Cloud-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben.
 
-    ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+    ![Screenshot: Seite „Verwaltung“ mit hervorgehobener Option „User provisioning“ (Benutzerbereitstellung)](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Screenshot: Seite „Create a token“ (Token erstellen)](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    ![Screenshot der Seite „demo-time-directory-token“](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
 
 ## <a name="step-3-add-atlassian-cloud-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Atlassian Cloud aus dem Azure AD-Anwendungskatalog
@@ -85,11 +86,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **Mandanten-URL** und **Geheimes Token** ein, die Sie zuvor aus Ihrem Atlassian Cloud-Konto abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Atlassian Cloud herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Atlassian Cloud-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
 

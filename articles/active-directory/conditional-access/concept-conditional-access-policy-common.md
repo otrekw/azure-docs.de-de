@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 114f26c71ee1aecdb1a0ad3d1c01e558843c0969
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024382"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91705057"
 ---
 # <a name="common-conditional-access-policies"></a>Allgemeine Richtlinien für bedingten Zugriff
 

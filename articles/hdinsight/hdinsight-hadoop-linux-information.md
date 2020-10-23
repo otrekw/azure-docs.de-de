@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961811"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856584"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -101,15 +101,15 @@ Beispieldaten und JAR-Dateien finden Sie im Hadoop Distributed File System unter
 
 In den meisten Hadoop-Distributionen werden die Daten in HDFS gespeichert. HDFS wird auf den Computern im Cluster durch lokalen Speicher gesichert. Die Nutzung von lokalem Speicher kann für eine cloudbasierte Lösung mit zeitabhängiger Abrechnung (pro Stunde oder pro Minute) für Computeressourcen kostenintensiv sein.
 
-Bei Verwendung von HDInsight werden die Datendateien anpassbar und zuverlässig mithilfe von Azure Blob Storage und optional Azure Data Lake Storage in der Cloud gespeichert. Diese Dienste bieten die folgenden Vorteile:
+Bei Verwendung von HDInsight werden die Datendateien anpassbar und zuverlässig mithilfe von Azure Blob Storage und optional Azure Data Lake Storage Gen1/Gen2 in der Cloud gespeichert. Diese Dienste bieten die folgenden Vorteile:
 
 * Kostengünstige langfristige Speicherung
 * Zugriff über externe Dienste wie Websites, Hilfsprogramme zum Hochladen/Herunterladen von Dateien, SDKs für verschiedene Sprachen und Webbrowser
 * Große Dateikapazität und großer anpassbarer Speicher.
 
-Weitere Informationen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs (Erläuterungen zu Blockblobs, Anfügeblobs und Seitenblobs)](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) und [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
+Weitere Informationen finden Sie unter [Einführung in die zentralen Azure Storage-Dienste](../storage/common/storage-introduction.md), [Was ist Azure Data Lake Storage Gen1?](../data-lake-store/data-lake-store-overview.md) und [Einführung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
-Wenn Sie entweder Azure Storage oder Data Lake Storage nutzen, müssen Sie in HDInsight für den Datenzugriff keine besonderen Schritte ausführen. Mit dem folgenden Befehl werden Dateien im Ordner `/example/data` beispielsweise unabhängig davon aufgelistet, ob dieser in Azure Storage oder Data Lake Storage gespeichert ist:
+Wenn Sie entweder Azure Blob Storage oder Azure Data Lake Storage Gen1 bzw. Gen2 nutzen, müssen Sie in HDInsight für den Datenzugriff keine besonderen Schritte ausführen. Mit dem folgenden Befehl werden Dateien im Ordner `/example/data` beispielsweise unabhängig davon aufgelistet, ob dieser in Azure Storage oder Data Lake Storage gespeichert ist:
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ Nutzen Sie bei Verwendung von [**Azure Data Lake Storage Gen2**](./hdinsight-had
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
-Nutzen Sie bei Verwendung von [**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) eines der folgenden URI-Schemas:
+Nutzen Sie bei Verwendung von [**Azure Data Lake Storage Gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md) eines der folgenden URI-Schemas:
 
 * `adl:///`: Zugriff auf die standardmäßige Data Lake Storage-Instanz für den Cluster
 
@@ -189,7 +189,7 @@ Sie können die Speicherinformationen auch über das Azure-Portal finden, indem 
 
 Es gibt viele verschiedene Möglichkeiten, wie Sie außerhalb des HDInsight-Clusters auf Daten zugreifen können. Es folgen einige Links zu Hilfsprogrammen und SDKs, die zum Arbeiten mit Ihren Daten verwendet werden können:
 
-Wenn Sie __Azure Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
+Wenn Sie __Azure Blob Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Befehlszeilenschnittstelle für die Arbeit mit Azure. Verwenden Sie nach der Installation den Befehl `az storage`, um Hilfe zur Speicherung abzurufen, oder `az storage blob` für blobspezifische Befehle.
 * [blobxfer.py](https://github.com/Azure/blobxfer): Python-Skript zum Arbeiten mit Blobs in Azure Storage.
@@ -203,7 +203,7 @@ Wenn Sie __Azure Storage__ nutzen, finden Sie unter den folgenden Links Methoden
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-Wenn Sie __Azure Data Lake Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
+Wenn Sie __Azure Data Lake Storage Gen1__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

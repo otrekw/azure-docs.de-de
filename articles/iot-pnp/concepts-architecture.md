@@ -3,22 +3,22 @@ title: Architektur von IoT Plug & Play | Microsoft-Dokumentation
 description: Hier finden Sie als Lösungsentwickler Informationen zu den Hauptelementen der Architektur von IoT Plug & Play.
 author: ridomin
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475684"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91574319"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>Architektur von IoT Plug & Play (Vorschau)
+# <a name="iot-plug-and-play-architecture"></a>IoT Plug & Play-Architektur
 
-IoT Plug & Play (Vorschau) ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren. Das Herzstück von IoT Plug & Play ist ein _Gerätemodell_, das die Funktionen eines Geräts für eine IoT Plug & Play-fähige Anwendung beschreibt. Dieses Modell ist als ein Satz von Schnittstellen strukturiert, die Folgendes definieren:
+IoT Plug & Play ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren. Das Herzstück von IoT Plug & Play ist ein _Gerätemodell_, das die Funktionen eines Geräts für eine IoT Plug & Play-fähige Anwendung beschreibt. Dieses Modell ist als ein Satz von Schnittstellen strukturiert, die Folgendes definieren:
 
 - _Eigenschaften_, die den schreibgeschützten oder schreibbaren Status eines Geräts oder einer anderen Entität darstellen. Beispielsweise kann eine Geräteseriennummer eine schreibgeschützte Eigenschaft sein und die Zieltemperatur eines Thermostats eine schreibbare Eigenschaft.
 - _Telemetriedaten_, d. h. die von einem Gerät ausgegebenen Daten – unabhängig davon, ob es sich bei den Daten um einen regulären Datenstrom von Sensormesswerten, einen gelegentlichen Fehler oder eine Informationsmeldung handelt.
@@ -43,9 +43,27 @@ Das Modellrepository verwendet RBAC, damit Sie den Zugriff auf Schnittstellendef
 Ein Geräteentwickler implementiert den Code, der auf einem intelligenten IoT-Gerät ausgeführt werden soll, mithilfe eines der [Azure IoT-Geräte-SDKs](./libraries-sdks.md). Mithilfe der Geräte-SDKs können Geräteentwickler folgende Aktionen ausführen:
 
 - Eine sichere Verbindung mit einem IoT-Hub herstellen.
-- Das Gerät beim IoT-Hub registrieren und die Modell-ID ankündigen, die die Sammlung von Schnittstellen angibt, die das Gerät implementiert.
-- Aktualisieren der Eigenschaften, die in den vom Gerät implementierten DTDL-Schnittstellen definiert sind. Diese Eigenschaften werden mithilfe digitaler Zwillinge implementiert, die die Synchronisierung mit dem IoT-Hub verwalten.
-- Hinzufügen von Befehlshandlern für die Befehle, die in den vom Gerät implementierten DTDL-Schnittstellen definiert sind.
+- Registrieren des Geräts beim IoT-Hub und Ankündigen der Modell-ID, die die Sammlung der vom Gerät implementierten DTDL-Schnittstellen angibt
+- Synchronisieren der Eigenschaften, die in den DTDL-Schnittstellen zwischen dem Gerät und Ihrem IoT-Hub definiert sind
+- Hinzufügen von Befehlshandlern für die Befehle, die in den DTDL-Schnittstellen definiert sind
+- Senden von Telemetriedaten an den IoT-Hub.
+
+## <a name="iot-edge-gateway"></a>IoT Edge-Gateway
+
+Ein IoT Edge-Gateway fungiert als Vermittler zum Verbinden von IoT Plug & Play-Geräten, die keine direkte Verbindung mit einem IoT-Hub herstellen können. Weitere Informationen finden Sie unter [Verwendung eines IoT Edge-Geräts als Gateway](../iot-edge/iot-edge-as-gateway.md).
+
+## <a name="iot-edge-modules"></a>IoT Edge-Module
+
+Ein _IoT Edge-Modul_ ermöglicht Ihnen die Bereitstellung und Verwaltung von Geschäftslogik im Edge. Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit und kann Azure-Dienste (wie Azure Stream Analytics) oder Ihren eigenen lösungsspezifischen Code enthalten.
+
+Der _IoT Edge-Hub_ ist eines der Module, aus denen die Azure IoT Edge-Runtime besteht. Er fungiert als lokaler Proxy für IoT Hub, indem er die gleichen Protokollendpunkte wie IoT Hub verfügbar macht. Diese Konsistenz bedeutet, dass Clients (ob Geräte oder Module) auf die gleiche Weise eine Verbindung mit der IoT Edge-Laufzeit wie mit IoT Hub herstellen können.
+
+Mithilfe der Geräte-SDKs können Modulentwickler folgende Aktionen ausführen:
+
+- Verwenden des IoT Edge-Hubs, um eine sichere Verbindung mit Ihrem IoT-Hub herzustellen
+- Registrieren des Geräts beim IoT-Hub und Ankündigen der Modell-ID, die die Sammlung der vom Gerät implementierten DTDL-Schnittstellen angibt
+- Synchronisieren der Eigenschaften, die in den DTDL-Schnittstellen zwischen dem Gerät und Ihrem IoT-Hub definiert sind
+- Hinzufügen von Befehlshandlern für die Befehle, die in den DTDL-Schnittstellen definiert sind
 - Senden von Telemetriedaten an den IoT-Hub.
 
 ## <a name="iot-hub"></a>IoT Hub
@@ -80,4 +98,4 @@ Nachdem Sie nun einen Überblick über die Architektur einer IoT Plug & Play-L
 
 - [Modellrepository](./concepts-model-repository.md)
 - [Integration von digitale Zwillingsmodellen](./concepts-model-discovery.md)
-- [Entwicklung für IoT Plug & Play](./concepts-developer-guide.md)
+- [Entwicklung für IoT Plug & Play](./concepts-developer-guide-device-csharp.md)

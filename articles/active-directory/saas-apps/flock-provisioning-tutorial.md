@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312561"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850873"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Flock für die automatische Benutzerbereitstellung
 
@@ -54,15 +54,15 @@ Bevor Sie Flock für die automatische Benutzerbereitstellung mit Azure AD konfi
 
 1. Melden Sie sich bei [Flock](https://web.flock.com/?) an. Klicken Sie auf das **Einstellungssymbol** > **Manage your team** (Team verwalten).
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Screenshot der Flock-Website. Das Symbol für Einstellungen ist hervorgehoben, und das Kontextmenü wird angezeigt. In diesem Menü ist die Option „Team verwalten“ hervorgehoben." border="false":::
 
 2. Wählen Sie **Auth and Provisioning** (Authentifizierung und Bereitstellung) aus.
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Screenshot der Flock-Website. Das Symbol für Einstellungen ist hervorgehoben, und das Kontextmenü wird angezeigt. In diesem Menü ist die Option „Team verwalten“ hervorgehoben." border="false":::
 
 3. Kopieren Sie das **API-Token**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Flock-Anwendung in das Feld **Geheimes Token** eingegeben.
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Screenshot der Flock-Website. Das Symbol für Einstellungen ist hervorgehoben, und das Kontextmenü wird angezeigt. In diesem Menü ist die Option „Team verwalten“ hervorgehoben." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Hinzufügen von Flock aus dem Katalog

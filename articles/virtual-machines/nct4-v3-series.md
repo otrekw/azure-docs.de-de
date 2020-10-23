@@ -8,30 +8,29 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7c3423e8bd5cd3e38c05205842845bec2243ed83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653501"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3-Serie (Vorschau) 
 
-Die virtuellen Computer der NCasT4_v3-Serie basieren auf GPUs vom Typ [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) sowie auf CPUs vom Typ AMD EPYC 7V12(Rome). Die VMs verfügen über bis zu 4 NVIDIA T4-GPUs mit jeweils 16 GB Arbeitsspeicher, bis zu 64 AMD EPYC 7V12(Rome)-Prozessorkerne ohne Multithreading und 440 GiB Systemspeicher. Diese virtuellen Computer eignen sich ideal für die Ausführung von ML- und KI-Workloads unter Verwendung von CUDA, TensorFlow, Pytorch, Caffe und anderen Frameworks oder von Grafikworkloads mit NVIDIA GRID-Technologie. Die NCasT4_v3-Serie eignet sich ideal für die Ausführung von Rückschlussworkloads.
+Die virtuellen Computer der NCasT4_v3-Serie basieren auf GPUs vom Typ [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) sowie auf CPUs vom Typ AMD EPYC 7V12(Rome). Die VMs verfügen über bis zu vier NVIDIA T4-GPUs mit jeweils 16 GB Arbeitsspeicher, bis zu 64 AMD EPYC 7V12 (Rome)-Prozessorkerne ohne Multithreading und 440 GiB Systemspeicher. Diese virtuellen Computer eignen sich ideal für das Bereitstellen von KI-Diensten wie Rückschlüsse in Echtzeit im Zusammenhang mit vom Benutzer generierten Anforderungen oder für interaktive Grafiken und Visualisierungsworkloads mit dem GRID-Treiber und der vGPU-Technologie von NVIDIA. GPU-Standardcomputeworkloads, die auf CUDA, TensorRT, Caffe, ONNX und anderen Frameworks basieren, sowie auf OpenGL und DirectX basierende und durch GPU beschleunigte grafische Anwendungen können in der NCasT4_v3-Reihe wirtschaftlich und in unmittelbarer Nähe zu den Benutzern bereitgestellt werden.
 
-Sie können eine [Anfrage senden](https://aka.ms/NCT4v3Preview), um am Vorschauprogramm teilzunehmen.
+> [!NOTe]
+> [Übermitteln Sie eine Anforderung](https://aka.ms/NCT4v3Preview), um am Vorschauprogramm teilzunehmen.
 
 <br>
 
-ACU: 230 – 260
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Nicht unterstützt
-
-Updates mit Speicherbeibehaltung: Nicht unterstützt
+[ACU:](acu.md) 230 – 260<br>
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs |
 | --- | --- | --- | --- | --- | --- | --- | --- |

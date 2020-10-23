@@ -2,14 +2,14 @@
 title: Verwenden privater Endpunkte mit Azure Batch-Konten
 description: Erfahren Sie, wie Sie eine private Verbindung mit einem Azure Batch-Konto mithilfe privater Endpunkte herstellen.
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814109"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542137"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Verwenden privater Endpunkte mit Azure Batch-Konten
 
@@ -20,7 +20,7 @@ Durch Verwendung von [Azure Private Link](../private-link/private-link-overview.
 Private Link ermöglicht Benutzern den Zugriff auf ein Azure Batch-Konto innerhalb des virtuellen Netzwerks oder über ein mittels Peering verbundenes Netzwerk. Auf Ressourcen, die Private Link zugeordnet sind, kann auch lokal über privates Peering über VPN oder [Azure ExpressRoute](../expressroute/expressroute-introduction.md) zugegriffen werden. Mithilfe der [automatischen oder manuellen Genehmigungsmethode](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) können Sie eine Verbindung mit einem Azure Batch-Konto herstellen, das über Private Link konfiguriert wurde.
 
 > [!IMPORTANT]
-> Unterstützung für private Konnektivität in Azure Batch ist zurzeit in den folgenden Regionen verfügbar: USA, Mitte, USA, Norden-Mitte, USA, Süden-Mitte, USA, Westen-Mitte, USA, Osten, USA, Osten 2, USA, Westen, USA, Westen 2, Asien, Osten, Asien-Pazifik, Frankreich, Mitte, Vereinigtes Königreich, Süden, Europa, Norden, Europa, Westen, Japan, Osten, Japan, Westen, Australien, Osten, sämtliche Gov (US)- und DoD (US)-Regionen.
+> Private Verbindungen in Azure Batch sind derzeit mit Ausnahme von Deutschland, Mitte und Deutschland, Nordosten für alle öffentlichen Regionen verfügbar.
 
 In diesem Artikel werden die Schritte zum Erstellen eines privaten Batch-Kontos und für den Zugriff darauf mithilfe eines privaten Endpunkts beschrieben.
 
@@ -35,7 +35,7 @@ Gehen Sie wie folgt vor, um ein privates Batch-Konto über das Azure-Portal zu e
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Private Endpunktverbindungen":::
 5. Geben Sie im Bereich **Grundlagen** das Abonnement, die Ressourcengruppe, den Ressourcennamen des privaten Endpunkts und die Regionsdetails ein, oder wählen Sie diese aus, und wählen Sie dann **Weiter: Ressource** aus.
 6. Legen Sie im Bereich **Ressource** den **Ressourcentyp** auf **Microsoft.Batch/batchAccounts** fest. Wählen Sie das private Batch-Konto aus, auf das Sie zugreifen möchten, und wählen Sie dann **Weiter: Konfiguration** aus.
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Erstellen eines privaten Endpunkts: Bereich „Ressourcen“":::
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Private Endpunktverbindungen":::
 7. Geben Sie diese Informationen im Bereich **Konfiguration** ein, oder wählen Sie sie aus:
    - **Virtuelles Netzwerk:** Wählen Sie Ihr virtuelles Netzwerk aus.
    - **Subnetz**: Wählen Sie das Subnetz aus.
@@ -50,7 +50,7 @@ Nachdem der private Endpunkt bereitgestellt wurde, können Sie über den private
 2. Suchen Sie nach dem privaten Endpunkt, den Sie zuvor erstellt haben.
 3. Wählen Sie die Registerkarte **Übersicht** aus, um die DNS-Einstellungen und IP-Adressen anzuzeigen.
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="DNS-Einstellungen und IP-Adressen des privaten Endpunkts":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Private Endpunktverbindungen":::
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 
@@ -106,5 +106,6 @@ Berücksichtigen Sie bei der Erstellung des privaten Batch-Kontos Folgendes:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lernen Sie, wie Sie [Batch-Pools in virtuellen Netzwerken erstellen](batch-virtual-network.md).
+- Informationen zum [Erstellen von Batchpools ohne öffentliche IP-Adresse](batch-pool-no-public-ip-address.md)
 - Erfahren Sie, wie Sie [Batch-Pools mit angegebenen öffentlichen IP-Adressen erstellen](create-pool-public-ip.md).
 - Erfahren Sie mehr über [Azure Private Link](../private-link/private-link-overview.md).

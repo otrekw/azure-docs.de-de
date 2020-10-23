@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440523"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951085"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -40,7 +40,7 @@ Als Hilfe ist hier angegeben, für welche Fälle in den Tipps zur Leistungsoptim
 | Bezogen auf den Datenspeicher   | Laden von Daten in **Azure Synpase Analytics (vormals SQL DW)** : Es wird vorgeschlagen, PolyBase oder eine COPY-Anweisung zu verwenden, falls dies nicht bereits genutzt wird. |
 | &nbsp;                | Kopieren von Daten für **Azure SQL-Datenbank**: Wenn für die DTU eine hohe Auslastung besteht, wird ein Upgrade auf einen höheren Tarif vorgeschlagen. |
 | &nbsp;                | Kopieren von Daten für **Azure Cosmos DB**: Wenn für die RU eine hohe Auslastung besteht, wird ein Upgrade auf eine höhere RU vorgeschlagen. |
-|                       | Kopieren von Daten aus **SAP Table**: Es wird vorgeschlagen, beim Kopieren von großen Datenmengen die Partitionsoption des SAP-Connectors zum Aktivieren der parallelen Last und zur Erhöhung der maximalen Partitionsnummer zu nutzen. |
+|                       | Kopieren von Daten aus **SAP Table**: Es wird vorgeschlagen, beim Kopieren von großen Datenmengen die Partitionsoption des SAP-Connectors zum Aktivieren der parallelen Last und zur Erhöhung der maximalen Partitionsanzahl zu nutzen. |
 | &nbsp;                | Erfassen von Daten aus **Amazon Redshift**: Es wird vorgeschlagen, UNLOAD zu verwenden, falls dies nicht bereits genutzt wird. |
 | Drosselung des Datenspeichers | Wenn beim Kopieren vom Datenspeicher einige Lese-/Schreibvorgänge gedrosselt werden, wird vorgeschlagen, die zulässige Anforderungsrate für den Datenspeicher zu überprüfen und zu erhöhen oder die gleichzeitige Arbeitsauslastung zu reduzieren. |
 | Integration Runtime  | Wenn Sie eine **selbstgehostete Integration Runtime (IR)** nutzen und die Kopieraktivität lange in der Warteschlange verbleibt, bis die IR über die verfügbare Ressource für die Ausführung verfügt, wird das horizontale bzw. vertikale Hochskalieren Ihrer IR vorgeschlagen. |
@@ -74,7 +74,7 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 
     - Überprüfen Sie, ob Sie [Dateien basierend auf einem Dateipfad oder -namen mit datetime-Partition kopieren](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) können. Diese Vorgehensweise ist nicht mit einer höheren Belastung bei der Auflistung aufseiten der Quelle verbunden.
 
-    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können (z. B. **prefix** für Amazon S3 und Azure Blob). Der prefix-Filter ist ein serverseitiger Datenspeicherfilter mit einer deutlich besseren Leistung.
+    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können, also „**prefix**“ für Amazon S3/Azure Blob/Azure File Storage und „**listAfter/listBefore**“ für ADLS Gen1. Diese Filter sind serverseitige Datenspeicherfilter mit einer deutlich besseren Leistung.
 
     - Erwägen Sie, große Einzeldatasets in mehrere kleinere Datasets zu unterteilen, und ermöglichen Sie die gleichzeitige Ausführung dieser Kopieraufträge, die jeweils für einen Teil der Daten bestimmt sind. Hierfür können Sie „Lookup/GetMetadata + ForEach + Copy“ verwenden. Die Lösungsvorlagen [Kopieren von Dateien aus mehreren Containern](solution-template-copy-files-multiple-containers.md) und [Migrieren von Daten aus Amazon S3 zu ADLS Gen2](solution-template-migration-s3-azure.md) dienen hier als allgemeine Beispiele.
 
@@ -128,7 +128,7 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
 
     - Überprüfen Sie, ob Sie [Dateien basierend auf einem Dateipfad oder -namen mit datetime-Partition kopieren](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) können. Diese Vorgehensweise ist nicht mit einer höheren Belastung bei der Auflistung aufseiten der Quelle verbunden.
 
-    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können (z. B. **prefix** für Amazon S3 und Azure Blob). Der prefix-Filter ist ein serverseitiger Datenspeicherfilter mit einer deutlich besseren Leistung.
+    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können, also „**prefix**“ für Amazon S3/Azure Blob/Azure File Storage und „**listAfter/listBefore**“ für ADLS Gen1. Diese Filter sind serverseitige Datenspeicherfilter mit einer deutlich besseren Leistung.
 
     - Erwägen Sie, große Einzeldatasets in mehrere kleinere Datasets zu unterteilen, und ermöglichen Sie die gleichzeitige Ausführung dieser Kopieraufträge, die jeweils für einen Teil der Daten bestimmt sind. Hierfür können Sie „Lookup/GetMetadata + ForEach + Copy“ verwenden. Die Lösungsvorlagen [Kopieren von Dateien aus mehreren Containern](solution-template-copy-files-multiple-containers.md) und [Migrieren von Daten aus Amazon S3 zu ADLS Gen2](solution-template-migration-s3-azure.md) dienen hier als allgemeine Beispiele.
 

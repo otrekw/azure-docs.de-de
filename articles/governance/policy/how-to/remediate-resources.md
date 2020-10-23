@@ -1,14 +1,14 @@
 ---
 title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651350"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876327"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -17,12 +17,16 @@ Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht k
 ## <a name="how-remediation-security-works"></a>Sicherheit durch Wiederherstellung
 
 Wenn Azure Policy die Vorlage in der Richtliniendefinition **deployIfNotExists** ausführt, wird hierfür eine [Verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) verwendet.
-Azure Policy erstellt für jede Ihrer Zuweisungen eine verwaltete Identität, muss jedoch wissen, welchen Rollen die verwaltete Identität gewährt werden soll. Wenn der der verwalteten Identität Rollen fehlen, wird dieser Fehler während der Zuweisung der Richtlinie oder in einer Initiative angezeigt. Bei Verwendung des Portals gewährt Azure Policy der verwalteten Identität automatisch die aufgelisteten Rollen, sobald die Zuweisung ausgelöst wurde. Der _Speicherort_ der verwalteten Identität hat keinen Einfluss auf die Funktionsweise mit Azure Policy.
+Azure Policy erstellt für jede Ihrer Zuweisungen eine verwaltete Identität, muss jedoch wissen, welchen Rollen die verwaltete Identität gewährt werden soll. Wenn der verwalteten Identität Rollen fehlen, wird während der Zuweisung der Richtlinie oder in einer Initiative ein Fehler angezeigt. Bei Verwendung des Portals gewährt Azure Policy der verwalteten Identität automatisch die aufgelisteten Rollen, sobald die Zuweisung ausgelöst wurde. Wenn Sie das SDK verwenden, müssen die Rollen der verwalteten Identität manuell erteilt werden. Der _Speicherort_ der verwalteten Identität hat keinen Einfluss auf die Funktionsweise mit Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
 > [!IMPORTANT]
-> Wenn eine Ressource durch **deployIfNotExists** oder **modify** geänderte Ressource außerhalb des Bereichs der Richtlinienzuweisung liegt oder die Vorlage auf Eigenschaften in Ressourcen außerhalb des Bereichs der Richtlinienzuweisung zugreift, muss der verwalteten Identität der Zuweisung [manuell Zugriff gewährt werden](#manually-configure-the-managed-identity). Andernfalls schlägt die Bereitstellung der Wiederherstellung fehl.
+> In den folgenden Szenarios muss der verwalteten Identität der Zuweisung [manuell der Zugriff erteilt werden](#manually-configure-the-managed-identity), da andernfalls ein Fehler bei der Wartungsbereitstellung auftritt.
+>
+> - Die Zuweisung wird über das SDK erstellt.
+> - Eine von **deployIfNotExists** oder **modify** geänderte Ressource liegt außerhalb des Bereichs der Richtlinienzuweisung.
+> - Die Vorlage greift auf Eigenschaften von Ressourcen außerhalb des Bereichs der Richtlinienzuweisung zu.
 
 ## <a name="configure-policy-definition"></a>Konfigurieren einer Richtliniendefinition
 

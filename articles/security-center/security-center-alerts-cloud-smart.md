@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 742d7122c60b383e8ab7aa73f73b11b47843a9d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73686492"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613820"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Korrelation von intelligenten Cloudwarnungen in Azure Security Center (Incidents)
 
@@ -36,7 +36,11 @@ Da Angriffe häufig mandantenübergreifend auftreten, kann Security Center KI-Al
 
 Bei der Untersuchung eines Incidents benötigen Analysten häufig zusätzlichen Kontext, um die Art der Bedrohung und mögliche Gegenmaßnahmen einschätzen zu können. Selbst wenn also beispielsweise eine Netzwerkanomalie erkannt wurde, ist es schwer, angemessen darauf zu reagieren, wenn die weiteren Vorgänge in Bezug auf das Netzwerk oder die betroffenen Ressourcen nicht klar sind. Ein Sicherheitsincident kann hier mit Artefakten, verwandten Ereignissen und Informationen weiterhelfen. Welche zusätzlichen Informationen für Sicherheitsincidents verfügbar sind, hängt von der Art der erkannten Bedrohung und der Konfiguration Ihrer Umgebung ab. 
 
-![Screenshot: Bericht zu erkanntem Sicherheitsincident](./media/security-center-alerts-cloud-smart/security-incident.png)
+> [!TIP]
+> Eine Liste der Warnungen für Sicherheitsvorfälle, die von Fusion-Analysen erzeugt werden, finden Sie in der [Verweistabelle zu Warnungen](alerts-reference.md#alerts-fusion).
 
-Weitere Informationen zu Sicherheitsincidents finden Sie unter [Behandeln von Sicherheitsincidents in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident).
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="Screenshot des Berichts zu erkanntem Sicherheitsvorfall":::
+
+
+Weitere Informationen zu Sicherheitsvorfällen finden Sie unter [Verwalten von Sicherheitsvorfällen in Azure Security Center](security-center-incident.md).
 

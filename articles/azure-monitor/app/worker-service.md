@@ -4,12 +4,12 @@ description: Überwachen von .NET Core- und .NET Framework-Apps ohne HTTP mit Az
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3d02b6e70d0832b92ae88db237b4c554b92e7f3b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816399"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875069"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)
 
@@ -44,7 +44,7 @@ Spezielle Anweisungen für die einzelnen Anwendungstypen finden Sie in den folge
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3.0-Workerdienstanwendung
 
-Das vollständige Beispiel finden Sie [hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights).
+Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights).
 
 1. Laden Sie [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) herunter, und installieren Sie es.
 2. Erstellen Sie mit einer Visual Studio-Projektvorlage oder mit der Befehlszeile `dotnet new worker` ein neues Workerdienstprojekt.
@@ -136,7 +136,7 @@ In der Regel wird mit `APPINSIGHTS_INSTRUMENTATIONKEY` der Instrumentierungsschl
 
 In [diesem Dokument](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) wird das Erstellen von Hintergrundaufgaben in einer ASP.NET Core 2.1/2.2-Anwendung beschrieben.
 
-Das vollständige Beispiel finden Sie [hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService).
+Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService).
 
 1. Installieren Sie das Paket [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
 2. Fügen Sie wie im folgenden Beispiel dargestellt `services.AddApplicationInsightsTelemetryWorkerService();` der `ConfigureServices()`-Methode hinzu:
@@ -223,7 +223,7 @@ Im folgenden Code für `TimedHostedService` befindet sich die Hintergrundaufgabe
 
 Wie am Anfang dieses Artikels erwähnt, kann das neue Paket verwendet werden, um Application Insights-Telemetrie sogar aus einer regulären Konsolenanwendung zu aktivieren. Dieses Paket ist für [`NetStandard2.0`](/dotnet/standard/net-standard) vorgesehen und kann daher für Konsolenanwendungen in .NET Core 2.0 oder höher und .NET Framework 4.7.2 oder höher verwendet werden.
 
-Das vollständige Beispiel finden Sie [hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights).
+Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights).
 
 1. Installieren Sie das Paket [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
 
@@ -333,19 +333,18 @@ Sie können das Application Insights SDK für Workerdienstanwendungen anpassen, 
 Sie können wie im folgenden Beispiel einige allgemeine Einstellungen ändern, indem Sie der `AddApplicationInsightsTelemetryWorkerService`-Methode `ApplicationInsightsServiceOptions` übergeben:
 
 ```csharp
-    using Microsoft.ApplicationInsights.WorkerService;
+using Microsoft.ApplicationInsights.WorkerService;
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions aiOptions
-                    = new Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions();
-        // Disables adaptive sampling.
-        aiOptions.EnableAdaptiveSampling = false;
+public void ConfigureServices(IServiceCollection services)
+{
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    // Disables adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
 
-        // Disables QuickPulse (Live Metrics stream).
-        aiOptions.EnableQuickPulseMetricStream = false;
-        services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
-    }
+    // Disables QuickPulse (Live Metrics stream).
+    aiOptions.EnableQuickPulseMetricStream = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+}
 ```
 
 Beachten Sie, dass sich `ApplicationInsightsServiceOptions` in diesem SDK im Namespace `Microsoft.ApplicationInsights.WorkerService` befindet, während es sich im ASP.NET Core SDK im Namespace `Microsoft.ApplicationInsights.AspNetCore.Extensions` befindet.
@@ -364,7 +363,37 @@ Die aktuelle Liste finden Sie unter den [konfigurierbaren Einstellungen in `Appl
 
 ### <a name="sampling"></a>Stichproben
 
-Das Application Insights SDK für Workerdienstanwendungen unterstützt sowohl die feste als auch die adaptive Stichprobenerstellung. Die adaptive Stichprobenerstellung ist standardmäßig aktiviert. Das Konfigurieren der Stichprobenentnahme für Workerdienstanwendungen erfolgt auf die gleiche Weise wie für [ASP.NET Core-Anwendungen](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
+Das Application Insights SDK für Workerdienstanwendungen unterstützt sowohl die feste als auch die adaptive Stichprobenerstellung. Die adaptive Stichprobenerstellung ist standardmäßig aktiviert. Die Stichprobenentnahme kann über die Option `EnableAdaptiveSampling` in [ApplicationInsightsServiceOptions](#using-applicationinsightsserviceoptions) deaktiviert werden.
+
+Das folgende Beispiel kann verwendet werden, um zusätzliche Einstellungen für die Stichprobenentnahme zu konfigurieren.
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.WorkerService;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    
+    // Disable adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+
+    // Add Adaptive Sampling with custom settings.
+    // the following adds adaptive sampling with 15 items per sec.
+    services.Configure<TelemetryConfiguration>((telemetryConfig) =>
+        {
+            var builder = telemetryConfig.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond: 15);
+            builder.Build();
+        });
+    //...
+}
+```
+
+Weitere Informationen finden Sie im Dokument zur [Stichprobenentnahme](#sampling).
 
 ### <a name="adding-telemetryinitializers"></a>Hinzufügen von TelemetryInitializers
 
@@ -532,15 +561,17 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>Beispielanwendungen
 
-[.NET Core-Konsolenanwendung](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie eine Konsolenanwendung verwenden, die in .NET Core (2.0 oder höher) oder .NET Framework (4.7.2 oder höher) geschrieben ist.
+[.NET Core-Konsolenanwendung](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie eine Konsolenanwendung verwenden, die in .NET Core (2.0 oder höher) oder .NET Framework (4.7.2 oder höher) geschrieben ist.
 
-[ASP .NET Core-Hintergrundaufgaben mit gehosteten Diensten](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Nutzen Sie dieses Beispiel, wenn Sie in ASP.NET Core 2.1/2.2 Hintergrundaufgaben gemäß der offiziellen Anleitung[(hier) ](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) erstellen.
+[ASP .NET Core-Hintergrundaufgaben mit gehosteten Diensten](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Nutzen Sie dieses Beispiel, wenn Sie in ASP.NET Core 2.1/2.2 Hintergrundaufgaben gemäß der offiziellen Anleitung[(hier) ](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) erstellen.
 
-[.NET Core 3.0-Workerdienst](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie über eine .NET Core 3.0-Workerdienstanwendung gemäß der offiziellen Anleitung [(hier)](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template) verfügen.
+[.NET Core 3.0-Workerdienst](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie über eine .NET Core 3.0-Workerdienstanwendung gemäß der offiziellen Anleitung [(hier)](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template) verfügen.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 
-[Lesen und Hinzufügen von Code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
+* [Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./release-notes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

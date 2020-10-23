@@ -1,14 +1,14 @@
 ---
 title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598219"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
@@ -38,6 +38,8 @@ Beispiele für diese Dateiformate sind im [Azure Policy-GitHub-Repository](https
 
 - Richtliniendefinition: [Tag zu Ressourcen hinzufügen](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Initiativdefinition: [Abrechnung von Tags](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+
+Lesen Sie außerdem [Exportieren von Azure Policy-Ressourcen](../how-to/export-resources.md), um Ihre vorhandenen Definitionen und Zuweisungen in die Verwaltungsumgebung des Quellcodes, [GitHub](https://www.github.com), zu übertragen.
 
 ## <a name="workflow-overview"></a>Übersicht über Workflow
 

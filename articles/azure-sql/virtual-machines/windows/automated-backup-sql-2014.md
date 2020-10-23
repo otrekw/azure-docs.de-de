@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8e563e53ad0d5ec90fb9b728c8ffe2d239cf0763
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920596"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565121"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,27 +34,24 @@ Die automatisierte Sicherung konfiguriert automatisch [Managed Backup für Micro
 ## <a name="prerequisites"></a>Voraussetzungen
 Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Voraussetzungen:
 
+
 **Betriebssystem**:
 
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 und höher 
 
 **SQL Server-Version/-Edition:**
 
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
-> [!IMPORTANT]
-> Die automatisierte Sicherung funktioniert mit SQL Server 2014. Bei Einsatz von SQL Server 2016/2017 können Sie die automatisierte Sicherung v2 zum Sichern Ihrer Datenbanken verwenden. Weitere Informationen finden Sie unter [Automatisierte Sicherung v2 für SQL Server 2016-VMs in Azure (Resource Manager)](automated-backup.md).
+> [!NOTE]
+> Informationen zu SQL 2016 und höher finden Sie unter [Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)](automated-backup.md).
 
 **Datenbankkonfiguration:**
 
-- Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
-- Zieldatenbanken müssen die Standardinstanz von SQL Server aufweisen. Die Erweiterung für den SQL Server-IaaS-Agent unterstützt keine benannten Instanzen.
-
-> [!NOTE]
-> Die automatisierte Sicherung basiert auf der Erweiterung für den SQL Server-IaaS-Agent. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md).
+- _Zielbenutzerdatenbanken_ müssen das vollständige Wiederherstellungsmodell verwenden. Für Systemdatenbanken muss nicht das vollständige Wiederherstellungsmodell verwendet werden. Wenn Sie allerdings Protokollsicherungen für das Modell oder für msdb benötigen, müssen Sie das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx). 
+- Die SQL Server-VM wurde mit dem SQL-VM-Ressourcenanbieter im [vollständigen Verwaltungsmodus](sql-vm-resource-provider-register.md#upgrade-to-full) registriert. 
+-  Die automatisierte Sicherung basiert auf der vollständigen [Erweiterung für den SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md). Daher wird die automatisierte Sicherung nur für Zieldatenbanken von der Standardinstanz oder eine einzelne benannte Instanz unterstützt. Wenn keine Standardinstanz und mehrere benannte Instanzen vorhanden sind, kann die SQL-IaaS-Erweiterung nicht ausgeführt werden, und die automatisierte Sicherung funktioniert nicht. 
 
 ## <a name="settings"></a>Einstellungen
 

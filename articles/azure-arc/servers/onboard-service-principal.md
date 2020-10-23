@@ -1,14 +1,14 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure im großen Stil
 description: In diesem Artikel erfahren Sie, wie Sie Computer über Azure Arc-fähige Server unter Verwendung eines Dienstprinzipals mit Azure verbinden.
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 545d8abd6dd17e1e413852735c096ddc9261b972
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908335"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91713412"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 
@@ -67,7 +67,7 @@ Die Werte der folgenden Eigenschaften werden mit Parametern verwendet, die an `a
 > Stellen Sie sicher, dass Sie die Eigenschaft **ApplicationId** des Dienstprinzipals verwenden, nicht die Eigenschaft **Id**.
 >
 
-Die Rolle **Onboarding von Azure Connected Machine** umfasst nur die Berechtigungen, die für das Onboarding eines Computers erforderlich sind. Sie können die Dienstprinzipalberechtigung zuweisen, damit deren Umfang eine Ressourcengruppe oder ein Abonnement umfasst. Informationen zum Hinzufügen von Rollenzuweisungen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und Azure CLI](../../role-based-access-control/role-assignments-cli.md).
+Die Rolle **Onboarding von Azure Connected Machine** umfasst nur die Berechtigungen, die für das Onboarding eines Computers erforderlich sind. Sie können die Dienstprinzipalberechtigung zuweisen, damit deren Umfang eine Ressourcengruppe oder ein Abonnement umfasst. Informationen zum Hinzufügen von Rollenzuweisungen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Installieren des Agents und Herstellen einer Verbindung mit Azure
 
@@ -138,6 +138,8 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
 - Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 

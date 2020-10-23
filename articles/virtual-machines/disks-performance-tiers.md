@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743725"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939016"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Leistungsstufen für verwaltete Datenträger (Vorschau)
 
@@ -58,7 +58,7 @@ Informationen zur Abrechnung finden Sie unter [Verwaltete Datenträger – Preis
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Die Möglichkeit zum Anpassen der Leistungsstufe eines verwalteten Datenträgers ist zurzeit nur für SSD Premium in der Region „USA, Westen-Mitte“ verfügbar. 
+Die Möglichkeit zum Anpassen der Leistungsstufe eines verwalteten Datenträgers besteht zurzeit nur für SSDs Premium in folgenden Regionen: USA, Osten 2; USA, Süden-Mitte; USA, Westen-Mitte und Australien, Südosten
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Erstellen/Aktualisieren eines Datenträgers mit einer höheren Stufe als der Baselinestufe
 

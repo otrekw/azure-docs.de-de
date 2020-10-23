@@ -1,18 +1,18 @@
 ---
 title: Verschieben zwischen Regionen – Azure-Portal – Azure Database for PostgreSQL (Einzelserver)
 description: Verschieben Sie einen Azure Database for PostgreSQL-Server mithilfe eines Lesereplikats und des Azure-Portals aus einer Azure-Region in eine andere.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 00cd291824eabfe8e1b43f35bc3618bfd793077d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567607"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707658"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Azure Database for PostgreSQL-Einzelservers mithilfe des Azure-Portals in eine andere Region
 
@@ -35,8 +35,8 @@ Führen Sie die folgenden Schritte aus, um den Quellserver für Replikation mit 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie den vorhandenen Azure Database for PostgreSQL-Server aus, den Sie als Quellserver verwenden möchten. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
-1. Wählen Sie im Menü des Servers **Replikation** aus. Wenn die Azure-Replikationsunterstützung mindestens auf **Replikat** festgelegt ist, können Sie Lesereplikate erstellen. 
-1. Wenn die Azure-Replikationsunterstützung nicht auf mindestens **Replikat** festgelegt ist, legen Sie sie entsprechend fest. Wählen Sie **Speichern** aus.
+1. Wählen Sie im Menü des Servers **Replikation** aus. Wenn die Azure-Replikationsunterstützung mindestens auf **Replica** festgelegt ist, können Sie Lesereplikate erstellen. 
+1. Wenn die Azure-Replikationsunterstützung nicht auf mindestens **Replica** festgelegt ist, legen Sie sie entsprechend fest. Wählen Sie **Speichern** aus.
 1. Starten Sie den Server neu, um die Änderung zu übernehmen, indem Sie **Ja** auswählen.
 1. Sie erhalten zwei Azure-Portalbenachrichtigungen, sobald der Vorgang abgeschlossen ist. Es gibt eine Benachrichtigung zur Aktualisierung des Serverparameters. Eine weitere Benachrichtigung bezieht sich auf den Neustart des Servers, der unmittelbar erfolgt.
 1. Aktualisieren Sie die Azure-Portalseite zum Aktualisieren der Replikationssymbolleiste. Sie können jetzt schreibgeschützte Replikate für diesen Server erstellen.
@@ -47,11 +47,11 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals einen regi
 1. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 1. Wählen Sie **Replikat hinzufügen**.
 1. Geben Sie einen Namen für den Replikatserver ein.
-1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Masterservers identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
-1. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen. Während der Replikaterstellung werden die Daten vom Quellserver in das Replikat kopiert. Die Erstellung kann mehrere Minuten oder sogar länger dauern. Dies hängt von der Größe des Quellservers ab.
+1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des primären Servers identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
+1. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen. Während der Replikaterstellung werden die Daten vom Quellserver auf das Replikat kopiert. Die Erstellung kann mehrere Minuten oder sogar länger dauern, dies hängt von der Größe des Quellservers ab.
 
 >[!NOTE]
-> Wenn Sie ein Replikat erstellen, erbt dieses weder die Firewallregeln noch die VNET-Dienstendpunkte des Masterservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
+> Wenn Sie ein Replikat erstellen, erbt dieses weder die Firewallregeln noch die VNET-Dienstendpunkte des primären Servers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
 
 ## <a name="move"></a>Move
 

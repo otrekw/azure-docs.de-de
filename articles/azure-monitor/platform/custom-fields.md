@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974709"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448561"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor (Vorschauversion)
 
@@ -101,7 +101,7 @@ Wir markieren den Namen des Diensts in der **RenderedDescription**-Eigenschaft u
 
 Wir stellen fest, dass der Dienstname nicht bei allen Datensätzen korrekt ermittelt wird.   In den **Suchergebnissen** sehen wir, dass bei **WMI-Leistungsadapter** ein Teil des Namens nicht ausgewählt wurde.  Die **Zusammenfassung** zeigt, dass ein Datensatz **Modules Installer** anstelle von **Windows Modules Installer** identifiziert hat.  
 
-![Suchergebnisse](media/custom-fields/search-results-01.png)
+![Screenshot mit hervorgehobenen Teilen des Dienstnamens im Bereich „Suchergebnisse“ und einem unter „Zusammenfassung“ hervorgehobenen falschen Dienstnamen](media/custom-fields/search-results-01.png)
 
 Kümmern wir uns zunächst um den Datensatz **WMI Performance Adapter** .  Wir klicken auf das Bearbeitungssymbol und anschließend auf **Modify this highlight**(Diese Markierung ändern).  
 
@@ -113,7 +113,7 @@ Wir erweitern die Markierung um das Wort **WMI** und wiederholen dann den Extrak
 
 Wir sehen, dass Log Analytics auf der Grundlage dieser Informationen nicht nur die Einträge für **WMI-Leistungsadapter**, sondern auch die Einträge für **Windows Modules Installer** korrigiert hat.
 
-![Suchergebnisse](media/custom-fields/search-results-02.png)
+![Screenshot des vollständig hervorgehobenen Dienstnamens im Bereich „Suchergebnisse“ und der unter „Zusammenfassung“ hervorgehobenen richtigen Dienstnamen](media/custom-fields/search-results-02.png)
 
 Wir können jetzt eine Abfrage ausführen, die überprüft, ob **Service_CF** zwar erstellt, aber noch keinen Datensätzen hinzugefügt wurde. Dies liegt daran, dass das benutzerdefinierte Feld für bestehende Datensätze nicht funktioniert, sodass wir warten müssen, bis neue Datensätze gesammelt werden.
 

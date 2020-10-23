@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398561"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91440931"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -67,7 +67,7 @@ Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünsch
 
 * [VNETs im gleichen Abonnement](#samesub): Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet4.
 
-  ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![Diagramm mit der Darstellung der VNet-zu-VNet-Schritte für VNets, die sich im gleichen Abonnement befinden](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [VNETs in unterschiedlichen Abonnements](#difsub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet5 verwendet.
 
@@ -203,7 +203,7 @@ In den Beispielen werden die folgenden Werte verwendet:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Nachdem Sie die Befehle fertig gestellt haben, dauert es bis zu 45 Minuten, um dieses Gateway zu erstellen. Wenn Sie Azure Cloud Shell verwenden, können Sie Ihre Cloud Shell-Sitzung neu starten, indem Sie auf die linke obere Ecke des Cloud Shell-Terminal klicken und dann „TestVNet4“ konfigurieren. Sie müssen nicht warten, bis das Gateway „TestVNet1“ fertig ist.
+Nachdem Sie die Befehle fertig gestellt haben, dauert es bis zu 45 Minuten, um dieses Gateway zu erstellen. Wenn Sie Azure Cloud Shell verwenden, können Sie Ihre Cloud Shell-Sitzung neu starten, indem Sie auf die linke obere Ecke des Cloud Shell-Terminals klicken und dann „TestVNet4“ konfigurieren. Sie müssen nicht warten, bis das Gateway „TestVNet1“ fertig ist.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Schritt 3: Erstellen und Konfigurieren von TestVNet4
 
@@ -448,7 +448,7 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
    PS C:\> $vnet5gw.Id
    /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
    ```
-3. **[Abonnement 1]** Erstellen Sie die Verbindung zwischen „TestVNet1“ und „TestVNet5“. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet5. Der Unterschied hierbei ist, dass „$vnet5gw“ nicht direkt abgerufen werden kann, da es sich in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die in den obigen Schritten aus Abonnement 1 übermittelt wurden. Sehen Sie sich das Beispiel unten an. Ersetzen Sie Name, ID und gemeinsam verwendeten Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
+3. **[Abonnement 1]** Erstellen Sie die Verbindung zwischen „TestVNet1“ und „TestVNet5“. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet5. Der Unterschied hierbei ist, dass „$vnet5gw“ nicht direkt abgerufen werden kann, da es sich in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die in den obigen Schritten aus Abonnement 1 übermittelt wurden. Sehen Sie sich das Beispiel unten an. Ersetzen Sie Name, ID und gemeinsam verwendete Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
 
    Stellen Sie eine Verbindung mit Abonnement 1 her, bevor Sie das folgende Beispiel ausführen:
 
@@ -475,7 +475,7 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 

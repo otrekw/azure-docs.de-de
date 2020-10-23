@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708630"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619983"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Aufgrund der Vertraulichkeit der Daten in einer verwalteten Instanz erfordert di
 1. Wählen Sie in den Einstellungen für die **Sicherheit** die Registerkarte **Virtuelles Netzwerk** aus.
 1. Wählen Sie auf der Seite „Konfiguration von virtuellen Netzwerken“ die Option **Aktivieren** und dann das Symbol **Speichern** aus, um die Konfiguration zu aktualisieren.
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![Screenshot: Seite für virtuelles Netzwerk von SQL Managed Instance mit aktivierter Option „Öffentlicher Endpunkt“](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Aktivieren des öffentlichen Endpunkts für eine verwaltete Instanz mit PowerShell
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Wenn die Konfigurationsseite der verwalteten Instanz noch geöffnet ist, navigieren Sie zur Registerkarte **Übersicht**. Andernfalls wechseln Sie zurück zu Ihrer **Verwaltete SQL-Instanz**-Ressource. Wählen Sie den Link **Virtuelles Netzwerk/Subnetz** aus, sodass Sie zu der Konfigurationsseite „Virtuelles Netzwerk“ gelangen.
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![Screenshot: Konfigurationsseite für virtuelles Netzwerk zum Suchen des Werts des virtuellen Netzwerks bzw. Subnetzes](./media/public-endpoint-configure/mi-overview.png)
 
 1. Wählen Sie im linken Konfigurationsbereich Ihres virtuellen Netzwerks die Registerkarte **Subnetze** aus, und notieren Sie sich die **SICHERHEITSGRUPPE** für Ihre verwaltete Instanz.
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![Screenshot: Registerkarte „Subnetz“ zum Abrufen der Sicherheitsgruppe für die verwaltete Instanz](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Wechseln Sie zurück zur Ressourcengruppe, die Ihre verwaltete Instanz enthält. Daraufhin sollte der oben notierte Name der **Netzwerksicherheitsgruppe** angezeigt werden. Wählen Sie den Namen aus, um die Konfigurationsseite der Netzwerksicherheitsgruppe zu öffnen.
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Aktion**     |Allow         |Lassen Sie eingehenden Datenverkehr zur verwalteten Instanz über den öffentlichen Endpunkt zu |
     |**Priority**     |1300         |Stellen Sie sicher, dass diese Regel höhere Priorität hat als die Regel **deny_all_inbound** |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![Screenshot: Sicherheitsregeln für eingehenden Datenverkehr mit der neuen Regel „public_endpoint_inbound“ über der Regel „deny_all_inbound“](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Port 3342 wird für Verbindungen des öffentlichen Endpunkts mit der verwalteten Instanz verwendet und kann an dieser Stelle nicht geändert werden.
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Navigieren Sie zur Konfigurationsseite der verwalteten Instanz, die für den öffentlichen Endpunkt aktiviert wurde. Wählen Sie die Registerkarte **Verbindungszeichenfolgen** im Konfigurationsabschnitt **Einstellungen** aus.
 1. Beachten Sie, dass der Hostname des öffentlichen Endpunkts das Format <mi_name>.**public**.<dns_zone>.database.windows.net hat und der Port 3342 für die Verbindung verwendet wird.
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![Screenshot: Verbindungszeichenfolgen für die öffentlichen und privaten Endpunkte](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

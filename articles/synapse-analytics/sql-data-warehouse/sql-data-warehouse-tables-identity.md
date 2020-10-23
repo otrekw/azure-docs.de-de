@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121322"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876004"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Erstellen von Ersatzschlüsseln im Synapse SQL-Pool mit IDENTITY
 
@@ -26,7 +26,8 @@ In diesem Artikel finden Sie Empfehlungen und Beispiele zum Erstellen von Ersatz
 
 Ein Ersatzschlüssel für eine Tabelle ist eine Spalte mit einem eindeutigen Bezeichner für jede Zeile. Der Schlüssel wird nicht aus den Tabellendaten generiert. Datenmodellierer erstellen häufig Ersatzschlüssel in ihren Tabellen, während sie Data Warehouse-Modelle erstellen. Mit der IDENTITY-Eigenschaft können Sie dies einfach und effektiv durchführen, ohne die Leistung beim Laden zu beeinträchtigen.
 > [!NOTE]
-> Es ist nicht garantiert, dass der IDENTITY-Wert in Synapse SQL eindeutig ist, wenn der Benutzer explizit einen doppelten Wert mit „SET IDENTITY_INSERT ON“ einfügt oder ein erneutes Seeding von IDENTITY durchführt. Details finden Sie unter [CREATE TABLE (Transact-SQL) IDENTITY (Eigenschaft)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+> In Azure Synapse Analytics wird der IDENTITY-Wert automatisch mit jeder Verteilung erhöht und überschneidet sich nicht mit den IDENTITY-Werten in anderen Verteilungen.  Es ist nicht garantiert, dass der IDENTITY-Wert in Synapse eindeutig ist, wenn der Benutzer explizit einen doppelten Wert mit „SET IDENTITY_INSERT ON“ einfügt oder ein erneutes Seeding von IDENTITY durchführt. Details finden Sie unter [CREATE TABLE (Transact-SQL) IDENTITY (Eigenschaft)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Erstellen einer Tabelle mit einer IDENTITY-Spalte
 

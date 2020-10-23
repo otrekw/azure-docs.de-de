@@ -3,12 +3,12 @@ title: Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Eve
 description: Hier wird beschrieben, wie Sie Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440795"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629504"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Service Bus** ist einer dieser Dienste. 
@@ -51,7 +51,7 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="message-properties"></a>Nachrichteneigenschaften
-Wenn Sie ein **Service Bus-Thema oder eine Service Bus-Warteschlange** als Ereignishandler für Ereignisse von Event Grid verwenden, legen Sie die folgenden Nachrichtenheader fest: 
+Wenn Sie ein **Service Bus-Thema oder eine Service Bus-Warteschlange** als Ereignishandler für Ereignisse von Event Grid verwenden, erhalten Sie die folgenden Eigenschaften in den Nachrichtenheadern: 
 
 | Eigenschaftenname | BESCHREIBUNG |
 | ------------- | ----------- | 

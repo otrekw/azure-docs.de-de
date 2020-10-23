@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 6adfd9bc778318b406d5ce27cadccdad02d73d69
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437461"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398305"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Netzwerkkonnektivitätsprobleme
 
@@ -51,16 +51,16 @@ Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wen
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (151196)
 
 > [!NOTE]
-> Falls die VMs hinter einem internen Lastenausgleichsmodul vom Typ **Standard** angeordnet sind, besteht standardmäßig kein Zugriff auf die IP-Adressen von Office 365, z. B. `login.microsoftonline.com`. Ändern Sie dies entweder in den Typ **Basic** für das interne Lastenausgleichsmodul, oder ermöglichen Sie den Zugriff in ausgehender Richtung, wie dies im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration) beschrieben ist.
+> Falls die VMs hinter einem internen Lastenausgleichsmodul vom Typ **Standard** angeordnet sind, besteht standardmäßig kein Zugriff auf die IP-Adressen von Microsoft 365 ( z. B. `login.microsoftonline.com`). Ändern Sie dies entweder in den Typ **Basic** für das interne Lastenausgleichsmodul, oder ermöglichen Sie den Zugriff in ausgehender Richtung, wie dies im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration) beschrieben ist.
 
 #### <a name="possible-cause"></a>Mögliche Ursache
 
-Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von Office 365 kann nicht hergestellt werden.
+Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von Microsoft 365 kann nicht hergestellt werden.
 
 #### <a name="resolution"></a>Lösung
 
-- Azure Site Recovery benötigt für die Authentifizierung Zugriff auf die IP-Adressbereiche von Office 365.
-- Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit den IP-Adressbereichen von Office 365 zulassen. Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (Azure AD)](../virtual-network/security-overview.md#service-tags), das den Zugriff auf alle IP-Adressen für Azure AD zulässt.
+- Azure Site Recovery benötigt für die Authentifizierung Zugriff auf die IP-Adressbereiche von Microsoft 365.
+- Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppenregeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit den IP-Adressbereichen von Microsoft 365 zulassen. Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (Azure AD)](../virtual-network/security-overview.md#service-tags), das den Zugriff auf alle IP-Adressen für Azure AD zulässt.
 - Wenn Azure AD später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
 
 ### <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
@@ -74,11 +74,11 @@ Dieses Beispiel zeigt, wie NSG-Regeln für eine zu replizierende VM konfiguriert
 
 1. Erstellen Sie eine HTTPS-Ausgangssicherheitsregel für die NSG. Dies ist im folgenden Screenshot dargestellt. In diesem Beispiel werden das **Zieldiensttag** _Storage.EastUS_ und der **Zielportbereich** _443_ verwendet.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="storage-tag":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-error":::
 
 1. Erstellen Sie eine HTTPS-Ausgangssicherheitsregel für die NSG. Dies ist im folgenden Screenshot dargestellt. In diesem Beispiel werden das **Zieldiensttag** _AzureActiveDirectory_ und der **Zielportbereich** _443_ verwendet.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-error":::
 
 1. Erstellen Sie (ähnlich zu den oben erstellten Sicherheitsregeln) eine Sicherheitsregel für ausgehenden HTTPS-Datenverkehr (443) für „EventHub.CentralUS“ für die NSG, die dem Zielstandort entspricht. Dies ermöglicht den Zugriff auf Site Recovery-Überwachung.
 1. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureSiteRecovery“. Dies ermöglicht den Zugriff auf den Site Recovery-Dienst in jeder beliebigen Region.

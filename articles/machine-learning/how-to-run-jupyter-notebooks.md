@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897388"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460032"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -80,15 +80,20 @@ So greifen Sie auf das Terminal zu
 1. Wählen Sie ein **Computeziel** aus, oder erstellen Sie ein neues Ziel, und warten Sie, bis es ausgeführt wird.
 1. Wählen Sie das Symbol **Terminal öffnen** aus.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Öffnen Sie ein Terminal.":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Erstellen einer neuen Datei":::
 
 1. Wird das Symbol nicht angezeigt, wählen Sie **...** rechts neben dem Computeziel und dann **Terminal öffnen** aus.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminal öffnen über...":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Erstellen einer neuen Datei":::
 
 
 Erfahren Sie mehr über das [Klonen von Git-Repositorys in Ihrem Arbeitsbereichsdateisystem](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
 
+### <a name="copy-and-paste-in-terminal"></a>Kopieren und Einfügen in das Terminal
+
+> * Windows: Drücken Sie `Ctrl-Insert` zum Kopieren und `Ctrl-Shift-v` oder `Shift-Insert` zum Einfügen.
+> * Mac OS: Drücken Sie `Cmd-c` zum Kopieren und `Cmd-v` zum Einfügen.
+> * FireFox/IE unterstützen die Berechtigungen für die Zwischenablage möglicherweise nicht ordnungsgemäß.
 
 ### <a name="share-notebooks-and-other-files"></a>Freigeben von Notebooks und anderen Dateien
 
@@ -121,7 +126,7 @@ Im Laufe der Erstellung eines Notebooks verfügen Sie in der Regel über Zellen,
 1. Führen Sie alle Notebookzellen aus.
 1. Wählen Sie die Zelle aus mit dem Code aus, den das neue Notebook ausführen soll, beispielsweise Code zum Übermitteln eines Experiments oder vielleicht Code zum Registrieren eines Modells.
 1. Wählen Sie das Symbol **Sammeln** aus, das auf der Symbolleiste für Zellen angezeigt wird.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Screenshot: Auswählen des Symbols „Sammeln“":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Erstellen einer neuen Datei":::
 1. Geben Sie den Namen für das neue „gesammelte“ Notebook ein.  
 
 Das neue Notebook enthält nur Codezellen. Dabei müssen alle Zellen die gleichen Ergebnisse wie die Zelle generieren, die Sie für die Sammlung ausgewählt haben.
@@ -132,7 +137,7 @@ Azure Machine Learning erstellt eine Prüfpunktdatei, wenn Sie eine  *IPYNB*
 
 Wählen Sie in der Notebook-Symbolleiste das Menü und dann **Datei&gt;Save and Checkpoint** (Speichern und Prüfpunkt), um das Notebook manuell zu speichern. Dadurch wird eine dem Notebook zugeordnete Prüfpunktdatei hinzugefügt.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Screenshot des Speichertools auf der Notebook-Symbolleiste":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Erstellen einer neuen Datei":::
 
 Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Das automatische Speichern aktualisiert nur die ursprüngliche  *IPYNB* -Datei, nicht die Prüfpunktdatei.
  

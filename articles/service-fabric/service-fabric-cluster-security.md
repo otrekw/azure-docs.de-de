@@ -4,12 +4,12 @@ description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Clu
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261071"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946194"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 
@@ -134,7 +134,7 @@ Das Konzept der Erstellung sicherer Cluster ist für Linux und Windows identisch
 
 ### <a name="client-authentication-certificates-optional"></a>Clientauthentifizierungszertifikate (optional)
 
-Eine beliebige Anzahl weiterer Zertifikate kann für Administrator- oder Benutzerclientvorgänge angegeben werden. Der Client kann dieses Zertifikat verwenden, wenn eine gegenseitige Authentifizierung erforderlich ist. Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizierungsstelle ausgestellt. Stattdessen enthält der persönliche Speicher des aktuellen Benutzerspeicherorts in der Regel Clientzertifikate, die dort von einer Stammzertifizierungsstelle bereitgestellt werden. Das Zertifikat sollte als Wert für **Beabsichtigte Zwecke** die Angabe **Clientauthentifizierung** aufweisen.  
+Eine beliebige Anzahl weiterer Zertifikate kann für Administrator- oder Benutzerclientvorgänge angegeben werden. Der Client kann diese Zertifikate verwenden, wenn eine gegenseitige Authentifizierung erforderlich ist. Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizierungsstelle ausgestellt. Stattdessen enthält der persönliche Speicher des aktuellen Benutzerspeicherorts in der Regel Clientzertifikate, die dort von einer Stammzertifizierungsstelle bereitgestellt werden. Das Zertifikat sollte als Wert für **Beabsichtigte Zwecke** die Angabe **Clientauthentifizierung** aufweisen.  
 
 Standardmäßig hat das Clusterzertifikat Administratorrechte für den Client. Diese zusätzlichen Clientzertifikate sollten nicht im Cluster installiert werden, sondern werden in der Clusterkonfiguration als zulässig angegeben.  Die Clientzertifikate müssen jedoch auf den Clientcomputern installiert werden, um eine Verbindung mit dem Cluster herzustellen und Vorgänge auszuführen.
 

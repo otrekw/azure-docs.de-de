@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434400"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444476"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -89,19 +89,19 @@ Um Ihrer Instanz von SQL Managed Instance über das Azure-Portal Leseberechtigun
 
 3. Navigieren Sie zu der Instanz von SQL Managed Instance, die Sie für die Azure AD-Integration verwenden möchten.
 
-   ![AAD](./media/authentication-aad-configure/aad.png)
+   ![Screenshot: Azure-Portal mit der geöffneten Active Directory-Administratorseite für die ausgewählte verwaltete SQL-Instanz](./media/authentication-aad-configure/aad.png)
 
 4. Wählen Sie oben auf der Seite „Active Directory-Administrator“ das Banner aus, und erteilen Sie dem aktuellen Benutzer die Berechtigung.
 
-    ![Erteilen von Berechtigungen – Portal](./media/authentication-aad-configure/grant-permissions.png)
+    ![Screenshot: Dialogfeld zum Erteilen von Berechtigungen für eine verwaltete SQL-Instanz zum Zugreifen auf Active Directory. Die Schaltfläche „Berechtigungen erteilen“ ist ausgewählt.](./media/authentication-aad-configure/grant-permissions.png)
 
 5. Nachdem der Vorgang erfolgreich abgeschlossen wurde, wird in der oberen rechten Ecke die folgende Benachrichtigung angezeigt:
 
-    ![Erfolgreicher Vorgang](./media/authentication-aad-configure/success.png)
+    ![Screenshot: Benachrichtigung, die bestätigt, dass Active Directory-Leseberechtigungen für die verwaltete Instanz erfolgreich aktualisiert wurden](./media/authentication-aad-configure/success.png)
 
 6. Nun können Sie Ihren Azure AD-Administrator für Ihre Instanz von SQL Managed Instance auswählen. Wählen Sie hierzu auf der Seite „Active Directory-Administrator“ **Administrator festlegen** aus.
 
-    ![Administrator festlegen](./media/authentication-aad-configure/set-admin.png)
+    ![Screenshot: Hervorgehobene Option „Administrator festlegen“ auf der Active Directory-Administratorseite für die ausgewählte verwaltete SQL-Instanz](./media/authentication-aad-configure/set-admin.png)
 
 7. Suchen Sie auf der Azure AD-Administratorseite nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und klicken Sie dann auf **Auswählen**.
 
@@ -111,7 +111,7 @@ Um Ihrer Instanz von SQL Managed Instance über das Azure-Portal Leseberechtigun
 
 8. Wählen Sie oben auf der Seite „Active Directory-Administrator“ **Speichern** aus.
 
-    ![Speichern](./media/authentication-aad-configure/save.png)
+    ![Screenshot: Active Directory-Administratorseite mit der Schaltfläche „Speichern“ in der oberen Zeile neben den Schaltflächen „Administrator festlegen“ und „Administrator entfernen“](./media/authentication-aad-configure/save.png)
 
     Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld „Active Directory-Administrator“ angezeigt.
 
@@ -190,7 +190,7 @@ Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure
 
 Zum Bereitstellen und Verwalten des Azure AD-Administrators für Ihre Instanz von SQL Managed Instance stehen folgende Cmdlets zur Verfügung:
 
-| Cmdlet-Name | BESCHREIBUNG |
+| Cmdlet-Name | Beschreibung |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Stellt einen Azure AD-Administrator für SQL Managed Instance im aktuellen Abonnement bereit. (Muss aus dem aktuellen Abonnement stammen.)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Entfernt einen Azure AD-Administrator für SQL Managed Instance aus dem aktuellen Abonnement. |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Sie können einen Azure AD-Administrator für SQL Managed Instance auch mithilfe der folgenden CLI-Befehle bereitstellen:
 
-| Befehl | BESCHREIBUNG |
+| Befehl | Beschreibung |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Stellt einen Azure AD-Administrator für SQL Managed Instance bereit (muss aus dem aktuellen Abonnement stammen). |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für SQL Managed Instance. |
@@ -279,7 +279,7 @@ Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und
 
 Zum Bereitstellen und Verwalten des Azure AD-Administrators für Azure SQL-Datenbank und Azure Synapse stehen folgende Cmdlets zur Verfügung:
 
-| Cmdlet-Name | BESCHREIBUNG |
+| Cmdlet-Name | Beschreibung |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Stellt einen Azure Active Directory-Administrator für den Server bereit, der SQL-Datenbank oder Azure Synapse hostet. (Muss aus dem aktuellen Abonnement stammen.) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Entfernt einen Azure Active Directory-Administrator für den Server, der SQL-Datenbank oder Azure Synapse hostet.|
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Sie können einen Azure AD-Administrator bereitstellen, indem Sie die folgenden CLI-Befehle aufrufen:
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Stellt einen Azure Active Directory-Administrator für den Server bereit, der SQL-Datenbank oder Azure Synapse hostet. (Muss aus dem aktuellen Abonnement stammen.) |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für den Server, der SQL-Datenbank oder Azure Synapse hostet. |

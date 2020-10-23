@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319319"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448150"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor
 Sie können Ihre Microsoft Endpoint Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  
@@ -135,7 +135,7 @@ Nachdem Sie die Erstkonfiguration für den Import von Gerätesammlungen aus Ihre
 4. Wählen Sie hierzu **Computergruppen** und anschließend **SCCM** aus.  
 5. Wählen Sie **Configuration Manager-Sammlungsmitgliedschaften importieren**aus, und klicken Sie anschließend auf **Speichern**.  
    
-    ![Computergruppen – Registerkarte „SCCM“](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Screenshot der erweiterten Einstellungen für Computergruppen für SCCM mit der Option „Hiermit werden Configuration Manager-Sammlungsmitgliedschaften importiert“](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Anzeigen von Daten aus Configuration Manager
 
@@ -143,7 +143,7 @@ Nachdem Sie eine Log Analytics-Verbindung mit Configuration Manager hinzugefügt
 
 Nach dem Import der Sammlungen können Sie sehen, wie viele Computer mit Sammlungsmitgliedschaften erkannt wurden. Sie sehen auch die Anzahl der Sammlungen, die importiert wurden.
 
-![Computergruppen – Registerkarte „SCCM“](./media/collect-sccm/sccm-computer-groups02.png)
+![Screenshot der erweiterten Einstellungen für Computergruppen für SCCM mit ausgewählter Option „Hiermit werden Configuration Manager-Sammlungsmitgliedschaften importiert“](./media/collect-sccm/sccm-computer-groups02.png)
 
 Wenn Sie auf eine der Optionen klicken, wird die Protokollabfragen-Editor geöffnet, wobei entweder alle importierten Gruppen oder alle Computer angezeigt werden, die zu den einzelnen Gruppen gehören. Mithilfe der [Protokollsuche](../log-query/log-query-overview.md) können Sie eine ausführlichere Analyse der Sammlungsmitgliedschaftsdaten durchführen.
 

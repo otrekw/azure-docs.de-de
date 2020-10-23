@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089971"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91928978"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Neustarten von VMs für HDInsight-Cluster
 
@@ -31,8 +31,8 @@ Bei einem Neustart eines Knotens wird der Cluster möglicherweise fehlerhaft, un
 - Der temporäre Datenträger auf dem Knoten ist voll.
 - Die Prozesstabelle auf der VM enthält viele Einträge, in denen der Prozess abgeschlossen wurde, jedoch mit dem Status „Beendet“ aufgeführt ist.
 
-> [!WARNING]
-> Gehen Sie vorsichtig vor, wenn Sie VMs für **HBase**- und **Kafka**-Cluster neu starten, da das Neustarten zu Datenverlusten führen kann.
+> [!NOTE]
+> Das Neustarten von VMs wird für **HBase**- und **Kafka**-Cluster nicht unterstützt, da das Neustarten zu Datenverlusten führen kann.
 
 ## <a name="use-powershell-to-reboot-vms"></a>Verwenden von PowerShell zum Neustarten von VMs
 

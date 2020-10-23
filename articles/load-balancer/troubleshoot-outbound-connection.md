@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: cd98d5b8d2d4a959a48bfb04fe2eb9e16c4113c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851131"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628994"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Problembehandlung für Fehler bei ausgehenden Verbindungen
 
@@ -44,7 +44,7 @@ Wenn die für [PAT](load-balancer-outbound-connections.md) verwendeten [vorab zu
 Kurzlebige Ports haben ein Leerlauftimeout von vier Minuten (nicht veränderbar). Wenn die Wiederholungen zu aggressiv sind, besteht keine Möglichkeit, dass sich die Überlastung von alleine erholt. Daher ist die Überlegung, wie und wie oft Ihre Anwendung Transaktionen wiederholen soll, ein wichtiger Aspekt des Entwurfs.
 
 ## <a name="assign-a-public-ip-to-each-vm"></a><a name="assignilpip"></a>Zuweisen einer öffentlichen IP-Adresse zu jedem virtuellen Computer
-Durch das Zuweisen einer öffentlichen IP-Adresse ändert sich das Szenario zu einem Szenario mit einem [virtuellen Computer mit öffentlicher IP-Adresse](load-balancer-outbound-connections.md). Alle kurzlebigen Ports für die öffentliche IP-Adresse, die für jeden virtuellen Computer verwendet werden, sind für den virtuellen Computer verfügbar. (Das steht im Gegensatz zu Szenarien, bei denen kurzlebige Ports für eine öffentliche IP-Adresse von allen virtuellen Computern, die dem entsprechenden Back-End-Pool zugeordnet sind, gemeinsam genutzt werden.) Es müssen auch Nachteile berücksichtigt werden, wie beispielsweise zusätzliche Kosten für öffentliche IP-Adressen und mögliche Auswirkungen des Whitelistings für eine große Anzahl einzelner IP-Adressen.
+Durch das Zuweisen einer öffentlichen IP-Adresse ändert sich das Szenario zu einem Szenario mit einem [virtuellen Computer mit öffentlicher IP-Adresse](load-balancer-outbound-connections.md). Alle kurzlebigen Ports für die öffentliche IP-Adresse, die für jeden virtuellen Computer verwendet werden, sind für den virtuellen Computer verfügbar. (Das steht im Gegensatz zu Szenarien, bei denen kurzlebige Ports für eine öffentliche IP-Adresse von allen virtuellen Computern, die dem entsprechenden Back-End-Pool zugeordnet sind, gemeinsam genutzt werden.) Es müssen auch Nachteile berücksichtigt werden, wie beispielsweise zusätzliche Kosten für öffentliche IP-Adressen und mögliche Auswirkungen des Filterns einer großen Anzahl einzelner IP-Adressen.
 
 >[!NOTE] 
 >Diese Option ist für Webworkerrollen nicht verfügbar.

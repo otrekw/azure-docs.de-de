@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744203"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445392"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Aktivieren und Verwenden von Bastion-Ressourcenprotokollen
 
@@ -22,13 +22,13 @@ Wenn Benutzer mithilfe von Azure Bastion eine Verbindung mit Workloads herstelle
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu ihrer Azure Bastion-Ressource, und wählen Sie auf der Azure Bastion-Seite **Diagnoseeinstellungen** aus.
 
-   ![Diagnoseeinstellungen](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![Screenshot: Seite „Diagnoseeinstellungen“](./media/diagnostic-logs/1diagnostics-settings.png)
 2. Wählen Sie **Diagnoseeinstellungen** und dann **+ Diagnoseeinstellung hinzufügen** aus, um ein Ziel für die Protokolle hinzuzufügen.
 
-   ![Diagnoseeinstellung hinzufügen](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![Screenshot: Seite „Diagnoseeinstellungen“ mit der ausgewählten Schaltfläche „Diagnoseeinstellung hinzufügen“](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. Wählen Sie auf der Seite **Diagnoseeinstellungen** den Typ des Speicherkontos aus, das zum Speichern der Diagnoseprotokolle verwendet werden soll.
 
-   ![Speicherort auswählen](./media/diagnostic-logs/3add-storage-account.png)
+   ![Screenshot: Seite „Diagnoseeinstellungen“, auf der der Abschnitt zum Auswählen eines Speicherorts hervorgehoben ist](./media/diagnostic-logs/3add-storage-account.png)
 4. Nachdem Sie die Einstellungen festgelegt haben, sieht das Ergebnis in etwa wie im folgenden Beispiel aus:
 
    ![Beispieleinstellungen](./media/diagnostic-logs/4example-settings.png)

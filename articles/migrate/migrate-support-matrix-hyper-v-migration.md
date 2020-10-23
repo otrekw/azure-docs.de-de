@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Migration in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Hyper-V-Migration mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051150"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91442301"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Unterstützungsmatrix für die Hyper-V-Migration
 
@@ -38,12 +38,12 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 | :----------------------------- | :------------------- |
 | **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](../virtual-machines/linux/endorsed-distros.md)-Betriebssysteme, die von Azure unterstützt werden |
 **Windows Server 2003** | Bei virtuellen Computern mit Windows Server 2003 müssen Sie [vor der Migration die Hyper-V-Integrationsdienste](prepare-windows-server-2003-migration.md) installieren. | 
-**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8. Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#linux-machines) manuell vor.
+**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x<br/> – Cent OS 7.7, 7.6, 7.5, 7.4, 6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>– Ubuntu 19.04, 19.10, 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7.7, 7.7-CI<br/> Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
 | **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Nehmen Sie vor der Migration Anpassungen manuell vor. Die entsprechenden Artikel enthalten Anweisungen zur Vorgehensweise. |
 | **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken. |
-| **UEFI-Start**                  | Unterstützt. Wählen Sie eine VM-Größe aus, die für Azure-VMs der Generation 2 unterstützt wird.  |
+| **UEFI-Start**                  | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert.  |
 | **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.|
-| **Datenträgergröße**                  | 2 TB für den Betriebssystemdatenträger, 4 TB für Datenträger|
+| **Datenträgergröße**                  | 2 TB für den Betriebssystemdatenträger (BIOS-Start), 4 TB für den Betriebssystemdatenträger (UEFI-Start), 4 TB für Datenträger für Daten.|
 | **Anzahl der Datenträger** | Maximal 16 Datenträger pro virtuellem Computer|
 | **Verschlüsselte Datenträger/Volumes**    | Nicht unterstützt für die Migration.|
 | **RDM-Datenträger/Pass-Through-Datenträger**      | Nicht unterstützt für die Migration.|

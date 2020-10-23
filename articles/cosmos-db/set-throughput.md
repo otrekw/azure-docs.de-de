@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605731"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777793"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Es wird empfohlen, den Durchsatz auf Containerebene zu konfigurieren, wenn Sie e
 
 Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen eines Containers hostet:
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Physische Partition" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Hosten einer oder mehrerer logischer Partitionen eines Containers über eine physische Partition" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Festlegen des Durchsatzes für eine Datenbank
 
@@ -75,7 +75,7 @@ Wenn Ihr Azure Cosmos DB-Konto bereits eine gemeinsam genutzte Durchsatzdatenban
 
 Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Physische Partition" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Hosten einer oder mehrerer logischer Partitionen eines Containers über eine physische Partition" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Festlegen des Durchsatzes für eine Datenbank und einen Container
 
@@ -84,7 +84,7 @@ Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf
 * Sie können eine Azure Cosmos-Datenbank namens *Z* mit standardmäßig (manuell) bereitgestelltem Durchsatz von *K* RUs erstellen. 
 * Als Nächstes erstellen Sie die fünf Container *A*, *B*, *C*, *D* und *E* innerhalb der Datenbank. Achten Sie beim Erstellen von Container B darauf, die **Option zum Bereitstellen von dediziertem Durchsatz für diesen Container**zu aktivieren, und konfigurieren Sie explizit *P* RUs des bereitgestellten Durchsatzes für diesen Container. Beachten Sie, dass Sie freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren können. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Festlegen des Durchsatzes auf Containerebene":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Hosten einer oder mehrerer logischer Partitionen eines Containers über eine physische Partition":::
 
 * Der Durchsatz von *K* RUs ist für die vier Container *A*, *C*, *D*, und *E* freigegeben. Die genaue für *A*, *C*, *D* oder *E* verfügbare Durchsatzmenge variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
 * Für den Container *B* wird jederzeit ein Durchsatz von *P* RUs sichergestellt. Er wird durch SLAs abgedeckt.
@@ -105,11 +105,11 @@ Um den [bereitgestellten Mindestdurchsatz](concepts-limits.md#storage-and-databa
 
 Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren. Sie können [Azure Monitor-Metriken](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) verwenden, um den Verlauf des bereitgestellten Durchsatzes (RU/s) und des Speichers für eine Ressource anzuzeigen.
 
-Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmgesteuert mithilfe der SDKs abrufen oder den Wert im Azure-Portal anzeigen. Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. Bei Verwendung des Java SDK ermöglicht Ihnen die [RequestOptions.setOfferThroughput](sql-api-java-sdk-samples.md)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. 
+Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmgesteuert mithilfe der SDKs abrufen oder den Wert im Azure-Portal anzeigen. Bei Verwendung des .NET SDK ermöglicht Ihnen die [container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. Bei Verwendung des Java-SDK ermöglicht Ihnen die [CosmosContainer.replaceProvisionedThroughput](sql-api-java-sdk-samples.md)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz.
 
-Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet)-Methode das Abrufen des Mindestdurchsatzes eines Containers oder einer Datenbank. 
+Bei Verwendung des .NET SDK ermöglicht Ihnen die [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true)-Methode das Abrufen des Mindestdurchsatzes eines Containers oder einer Datenbank. 
 
-Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Wenn ein Skalierungsvorgang ausgeführt wird, um den Durchsatz zu erhöhen, kann sich der Zeitaufwand aufgrund der Systemtasks für die Bereitstellung der erforderlichen Ressourcen erhöhen. Sie können den Status des Skalierungsvorgangs im Azure-Portal oder programmgesteuert mit den SDKs überprüfen. Bei Verwendung des .NET SDK können Sie den Status des Skalierungsvorgangs mithilfe der Methode `DocumentClient.ReadOfferAsync` abrufen.
+Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Wenn ein Skalierungsvorgang ausgeführt wird, um den Durchsatz zu erhöhen, kann sich der Zeitaufwand aufgrund der Systemtasks für die Bereitstellung der erforderlichen Ressourcen erhöhen. Sie können den Status des Skalierungsvorgangs im Azure-Portal oder programmgesteuert mit den SDKs überprüfen. Bei Verwendung des .NET SDK können Sie den Status des Skalierungsvorgangs mithilfe der Methode `Container.ReadThroughputAsync` abrufen.
 
 ## <a name="comparison-of-models"></a>Vergleich der Modelle
 Diese Tabelle zeigt einen Vergleich zwischen dem standardmäßig (manuell) bereitgestellten Durchsatz in einer Datenbank und in einem Container. 

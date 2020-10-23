@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 09/29/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392453"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612743"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -52,6 +52,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
+### <a name="managed-identities"></a>Verwaltete Identitäten
+
+Zum Abrufen der ID einer verwalteten Identität können Sie die Befehle [Get-AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) oder [az ad sp](/cli/azure/ad/sp) verwenden.
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
+```
+
 ### <a name="application"></a>Application
 
 Zum Abrufen eines Dienstprinzipals (eine von einer Anwendung verwendete Identität) können Sie die Befehle [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) oder [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
@@ -77,7 +89,7 @@ Die folgende Vorlage zeigt eine einfache Möglichkeit zum Hinzufügen einer Roll
 Um die Vorlage zu verwenden, müssen Sie folgendermaßen vorgehen:
 
 - Erstellen Sie eine neue JSON-Datei, und kopieren Sie die Vorlage.
-- Ersetzen Sie `<your-principal-id>` durch den die ID eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird.
+- Ersetzen Sie `<your-principal-id>` durch die ID eines Benutzers, einer Gruppe, einer verwalteten Identität oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird.
 
 ```json
 {
@@ -120,7 +132,7 @@ Die vorherige Vorlage ist nicht sehr flexibel. Die folgende Vorlage enthält Par
 
 Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 
-- Die ID eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
+- Die ID eines Benutzers, einer Gruppe, einer verwalteten Identität oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
 - Eine eindeutige ID, die für die Rollenzuweisung verwendet wird (oder alternativ die Standard-ID)
 
 ```json
@@ -214,7 +226,7 @@ Die folgende Vorlage veranschaulicht Folgendes:
 
 Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 
-- Die ID eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
+- Die ID eines Benutzers, einer Gruppe, einer verwalteten Identität oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
 
 ```json
 {
@@ -365,7 +377,7 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
 - [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-a-role-assignment)
+- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-role-assignment)
 - [REST-API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,12 +14,12 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b0b026b75b9b77c94451245ac4f18d487fc2e4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783517"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91529693"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Microsoft Graph-APIs für Privileged Identity Management (Vorschauversion)
 
@@ -51,7 +51,7 @@ Beim Testen Ihrer Aufrufe mit Graph-Tester können Sie die Berechtigungen im Too
 
 1. Klicken Sie auf **Berechtigungen ändern**.
 
-    ![Graph-Tester: Berechtigungen ändern](./media/pim-apis/graph-explorer.png)
+    ![Screenshot: Seite „Graph-Tester“ mit der ausgewählten Aktion „Berechtigungen ändern“](./media/pim-apis/graph-explorer.png)
 
 1. Aktivieren Sie die Kontrollkästchen neben den gewünschten Berechtigungen. `PrivilegedAccess.ReadWrite.AzureAD` ist in Graph-Tester noch nicht verfügbar.
 

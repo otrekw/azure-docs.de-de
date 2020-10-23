@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851052"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341752"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
 Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Security Center konfigurieren.
@@ -33,7 +33,7 @@ Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Security Center konf
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Was ist die adaptive Netzwerkhärtung?
-Der Einsatz von [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) zur Filterung von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
+Der Einsatz von [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md) zur Filterung von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
 
 Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen.
 
@@ -93,7 +93,7 @@ Im Folgenden finden Sie einige wichtige Richtlinien, die Sie beim Ändern einer 
 * Regeln können nicht von „Zulassen“ in „Verweigern“ geändert werden. 
 
   > [!NOTE]
-  > Das Erstellen und Ändern von Verweigerungsregeln erfolgt direkt in der NSG. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > Das Erstellen und Ändern von Verweigerungsregeln erfolgt direkt in der NSG. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md).
 
 * Die einzige Regel vom Typ „Verweigern“, die hier ggf. angezeigt wird, ist eine Regel zum **Verweigern des gesamten Datenverkehrs**, und diese Regel kann nicht geändert werden. Sie kann allerdings gelöscht werden (siehe [Löschen einer Regel](#delete-rule)).
   > [!NOTE]
@@ -121,7 +121,7 @@ Im Folgenden finden Sie einige wichtige Richtlinien, die Sie beim Ändern einer 
 Sie können eine Regel vom Typ „Zulassen“ hinzufügen, die nicht von Security Center empfohlen wurde.
 
 > [!NOTE]
-> Nur Regeln vom Typ „Zulassen“ können hier hinzugefügt werden. Regeln vom Typ „Verweigern“ können direkt in der Netzwerksicherheitsgruppe hinzugefügt werden. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Nur Regeln vom Typ „Zulassen“ können hier hinzugefügt werden. Regeln vom Typ „Verweigern“ können direkt in der Netzwerksicherheitsgruppe hinzugefügt werden. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md).
 
 *So fügen Sie eine Regel der adaptiven Netzwerkhärtung hinzu:*
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/07/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005925"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534436"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>„Ermittlung und Erkenntnisse (Vorschau)“ für Azure AD-Rollen (früher Sicherheits-Assistent)
 
@@ -29,9 +29,9 @@ Wenn Sie mit Privileged Identity Management (PIM) in Ihrer Azure AD-Organisatio
 
 Bevor Ihre Organisation Privileged Identity Management einsetzte, waren alle Rollenzuweisungen permanent. Benutzer befinden sich immer in den zugewiesenen Rollen, auch wenn sie deren Berechtigungen nicht benötigen. „Ermittlung und Erkenntnisse (Vorschau)“ ersetzt den früheren Sicherheits-Assistenten und zeigt Ihnen eine Liste privilegierter Rollen an sowie die Anzahl der Benutzer, die derzeit über diese Rollen verfügen. Sie können die Zuweisungen für eine Rolle auflisten, um mehr über die zugewiesenen Benutzer zu erfahren, wenn einer oder mehrere davon nicht vertraut sind.
 
-:heavy_check_mark: **Microsoft empfiehlt** Ihnen, zwei Konten für den Notfallzugriff zu verwalten, die dauerhaft der Rolle „globaler Administrator“ zugewiesen sind, für die bei der Anmeldung keine Multi-Factor Authentication erforderlich ist. Sie können diese in jedem Notfallzugriffsszenario oder in Fällen verwenden, in denen niemand die Rolle „globaler Administrator“ einnehmen kann.
+:heavy_check_mark: **Microsoft empfiehlt** Ihnen, zwei Konten für den Notfallzugriff zu verwalten, die dauerhaft der Rolle „Globaler Administrator“ zugewiesen sind. Stellen Sie sicher, dass für diese Konten nicht der gleiche MFA-Mechanismus wie für die normalen Verwaltungskonten zum Anmelden verwendet wird. Weitere Informationen finden Sie unter [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md).
 
-Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype oder Outlook.com). Wenn Sie in einer solchen Rolle die Aktivierung der Multi-Factor Authentication fordern, wird der Benutzer gesperrt.
+Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype oder Outlook.com). Wenn mehrstufige Authentifizierung für einen Benutzer mit einem Microsoft-Konto benötigt wird, um eine Rollenzuweisung zu aktivieren, wird der Benutzer gesperrt.
 
 ## <a name="open-discovery-and-insights-preview"></a>Öffnen von „Ermittlung und Erkenntnisse (Vorschau)“
 
@@ -45,11 +45,11 @@ Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ei
 
 1. Wählen Sie **Anzahl globaler Administratoren verringern**.
 
-    ![Anzahl globaler Administratoren verringern – Rollenbereich mit allen Mitgliedern](./media/pim-security-wizard/new-preview-page.png)
+    ![Screenshot: „Ermittlung und Erkenntnisse (Vorschau)“ mit der ausgewählten Aktion „Anzahl globaler Administratoren verringern“](./media/pim-security-wizard/new-preview-page.png)
 
 1. Untersuchen Sie die Liste mit den Rollenzuweisungen „Globaler Administrator“.
 
-    ![Anzahl globaler Administratoren verringern – Rollenbereich mit allen Mitgliedern](./media/pim-security-wizard/new-global-administrator-list.png)
+    ![Anzahl globaler Administratoren verringern – Rollenbereich mit allen globalen Administratoren](./media/pim-security-wizard/new-global-administrator-list.png)
 
 1. Wählen Sie **Weiter** aus, um die Benutzer oder Gruppen auszuwählen, die Sie berechtigen möchten, und wählen Sie dann **Als berechtigt festlegen** oder **Zuweisung entfernen** aus.
 

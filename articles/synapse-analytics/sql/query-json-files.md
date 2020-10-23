@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930848"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -58,7 +58,7 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Diese Abfrage gibt jedes JSON-Dokument als separate Zeile des Resultsets zurück. Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei mit einem SAS-Schlüssel oder einer benutzerdefinierten Identität geschützt ist, müssen Sie [Anmeldeinformationen auf Serverebene für die SQL-Anmeldung](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential) einrichten. 
+Das JSON-Dokument in der obigen Beispielabfrage enthält ein Array von Objekten. Die Abfrage gibt jedes Objekt als separate Zeile im Resultset zurück. Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei mit einem SAS-Schlüssel oder einer benutzerdefinierten Identität geschützt ist, müssen Sie [Anmeldeinformationen auf Serverebene für die SQL-Anmeldung](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential) einrichten. 
 
 ### <a name="data-source-usage"></a>Datenquellennutzung
 

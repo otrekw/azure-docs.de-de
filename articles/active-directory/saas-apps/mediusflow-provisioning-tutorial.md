@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850080"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MediusFlow für die automatische Benutzerbereitstellung
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  Melden Sie sich bei der [MediusFlow-Verwaltungskonsole](https://office365.cloudapp.mediusflow.com/) an, indem Sie die Mandanten-ID angeben.
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 2. Überprüfen Sie die Verbindung mit Azure MediusFlow.
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Speichern Sie die Konfiguration.
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 5. Wählen Sie „Benutzerbereitstellung“ aus, und klicken Sie auf **OK**.
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 6. Klicken Sie auf **Geheimen Schlüssel generieren**. Kopieren und speichern Sie diesen Wert. Er wird im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer MediusFlow-Anwendung in das Feld **Geheimes Token** eingegeben.
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 7. Klicken Sie auf **OK**.
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 8. Damit die Benutzer mit einem vordefinierten Satz von Rollen, Unternehmen und anderen allgemeinen Konfigurationen in MediusFlow importiert werden können, müssen Sie dies zuerst konfigurieren. Fügen Sie zunächst die Konfiguration hinzu, indem Sie auf **Neue Konfiguration hinzufügen** klicken.
 
-    ![Konfigurieren von Benutzern](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 9. Geben Sie die Standardeinstellungen für die Benutzer an. In dieser Ansicht ist es möglich, das Standardattribut festzulegen. Wenn die Standardeinstellungen in Ordnung sind, genügt es, nur einen gültigen Firmennamen bereitzustellen. Da diese Konfigurationseinstellungen aus MediusFlow abgerufen werden, müssen Sie zuerst konfiguriert werden. Weitere Informationen finden Sie im Abschnitt **Voraussetzungen** in diesem Artikel.
 
-    ![Konfigurieren von Benutzern](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 10. Klicken Sie auf **Speichern**, um die Konfiguration zu speichern.
 
-    ![Konfigurieren von Benutzern](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 11. Um den Link zur Benutzerbereitstellung abzurufen, klicken Sie auf **SCIM-Link kopieren**. Kopieren und speichern Sie diesen Wert. Diese Werte werden im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer MediusFlow-Anwendung in das Feld **Mandanten-URL** eingegeben.
  
-    ![Konfigurieren von Benutzern](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von MediusFlow aus dem Azure AD-Anwendungskatalog
 

@@ -1,14 +1,14 @@
 ---
 title: Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 description: Erfahren Sie, wie Sie die Computer und Kubernetes-Cluster Ihrer Kunden außerhalb von Azure effektiv verwalten.
-ms.date: 09/15/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ffbe9019398896c594b7cb0e0424d2b5f4dc37a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605312"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336614"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 
@@ -16,19 +16,16 @@ Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure L
 
 [Azure Arc](../../azure-arc/overview.md) hilft beim Vereinfachen komplexer und verteilter Umgebungen für lokale, Edge- und Multicloudumgebungen. Dadurch ermöglicht es die Bereitstellung von Azure-Diensten an jedem Ort und erweitert die Azure-Verwaltung auf alle Infrastrukturen.
 
-Mit [Azure Arc-fähigen Servern (Vorschau)](../../azure-arc/servers/overview.md) können Kunden Windows- und Linux-Computer, die außerhalb von Azure in ihrem Unternehmensnetzwerk gehostet werden, genauso verwalten wie native virtuelle Azure-Computer. Durch das Verbinden eines Hybridcomputers mit Azure wird dieser vernetzt und als Ressource in Azure behandelt. Dienstanbieter können diese Nicht-Azure-Computer zusammen mit den Azure-Ressourcen ihrer Kunden verwalten.
+Mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) können Kunden Windows- und Linux-Computer, die außerhalb von Azure in ihrem Unternehmensnetzwerk gehostet werden, genauso verwalten wie native Azure-VMs. Durch das Verbinden eines Hybridcomputers mit Azure wird dieser vernetzt und als Ressource in Azure behandelt. Dienstanbieter können diese Nicht-Azure-Computer zusammen mit den Azure-Ressourcen ihrer Kunden verwalten.
 
 [Kubernetes mit Azure Arc-Aktivierung (Vorschau)](../../azure-arc/kubernetes/overview.md) ermöglicht Kunden, Kubernetes-Cluster innerhalb oder außerhalb von Azure anzufügen und zu konfigurieren. Wenn ein Kubernetes-Cluster an Azure Arc angefügt wird, wird er im Azure-Portal mit einer Azure Resource Manager-ID und einer verwalteten Identität angezeigt. Cluster sind an Azure-Standardabonnements angefügt, befinden sich in einer Ressourcengruppe und können wie jede andere Azure-Ressource Tags erhalten.
 
-Dieses Thema bietet eine Übersicht darüber, wie Dienstanbieter mit Azure Arc-fähigen Servern (Vorschau) und Kubernetes mit Azure Arc-Aktivierung (Vorschau) auf skalierbare Weise die Hybridumgebung ihrer Kunden mit Sichtbarkeit für alle verwalteten Kundenmandanten verwalten können.
+Dieses Thema bietet eine Übersicht darüber, wie Dienstanbieter mit Azure Arc-fähigen Servern und Kubernetes mit Azure Arc-Aktivierung (Vorschau) auf skalierbare Weise die Hybridumgebung ihrer Kunden mit Sichtbarkeit für alle verwalteten Kundenmandanten verwalten können.
 
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers-preview"></a>Verwalten von Hybridservern im großen Stil mit Azure Arc-fähigen Servern (Vorschau)
-
-> [!NOTE]
-> Azure Arc-fähige Server befinden sich derzeit in der Vorschauphase. Sie sollten derzeit nicht für Produktionsworkloads verwendet werden.
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>Skaliertes Verwalten von Hybridservern mit Azure Arc-fähigen Servern
 
 Als Dienstanbieter können Sie lokale Computer mit Windows Server oder Linux außerhalb von Azure verwalten, wenn Ihre Kunden diese über den [Azure Connected Machine-Agent](../../azure-arc/servers/agent-overview.md) mit ihrem Abonnement verbunden haben.
 

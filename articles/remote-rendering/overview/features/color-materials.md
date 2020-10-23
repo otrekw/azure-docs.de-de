@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 93fde2d20aaa5b7bac4adc6f1d7fb076569e4bb8
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613778"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893559"
 ---
 # <a name="color-materials"></a>Farbmaterialien
 
@@ -36,6 +36,8 @@ Diese Eigenschaften gelten für alle Materialien:
 * **useVertexColor**: Wenn das Gittermodell :::no-loc text="vertex":::-Farben enthält und diese Option aktiviert ist, werden die :::no-loc text="vertex":::-Farben des Gittermodells in *albedoColor* und *albedoMap* multipliziert. Standardmäßig ist *useVertexColor* deaktiviert.
 
 * **isDoubleSided**: Wenn Doppelseitigkeit auf „true“ festgelegt ist, werden Dreiecke mit diesem Material auch dann gerendert, wenn die Kamera auf die Rückseite des Materials gerichtet ist. Diese Option ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [:::no-loc text="Single-sided":::-Rendering](single-sided-rendering.md).
+
+* **TransparencyWritesDepth:** Wenn das TransparencyWritesDepth-Flag für das Material festgelegt und das Material transparent ist, leisten Objekte, die dieses Material verwenden, einen Beitrag zum letzten Tiefenpuffer. Weitere Informationen zur Farbmaterialeigenschaft *transparencyMode* finden Sie im nächsten Abschnitt. Es wird empfohlen, dieses Feature zu aktivieren, wenn Ihr Anwendungsfall einen plausibleren [Farbverschiebungsausgleich](late-stage-reprojection.md) für vollständig transparente Szenen erfordert. Bei Szenen, die teilweise transparent und teilweise nicht transparent sind, kann diese Einstellung zu nicht plausiblem Reprojektionsverhalten oder nicht plausiblen Reprojektionsartefakten führen. Aus diesem Grund wird dieses Flag für normale Anwendungsfälle standardmäßig deaktiviert. Diese Einstellung wird auch empfohlen. Die geschriebenen Tiefenwerte werden der pixelbasierten Tiefenebene des Objekts entnommen, das sich der Kamera am nächsten befindet.
 
 ## <a name="color-material-properties"></a>Farbmaterialeigenschaften
 

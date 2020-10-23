@@ -1,14 +1,14 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 08/20/2020
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483795"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873212"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -33,9 +33,6 @@ Für das Onboarding des Mandanten eines Kunden muss dieser ein aktives Azure-Abo
 - Die Mandanten-ID des Mandanten des Dienstanbieters (wo Sie die Ressourcen des Kunden verwalten werden)
 - Die Mandanten-ID des Mandanten des Kunden (der über Ressourcen verfügt, die vom Dienstanbieter verwaltet werden)
 - Die Abonnement-IDs für jedes einzelne Abonnement im Mandanten des Kunden, das vom Dienstanbieter verwaltet wird (oder das die Ressourcengruppen enthält, die vom Dienstanbieter verwaltet werden).
-
-> [!NOTE]
-> Auch wenn Sie nur Ressourcengruppen innerhalb eines Abonnements integrieren möchten, muss die Bereitstellung auf Abonnementebene erfolgen. Daher benötigen Sie die Abonnement-ID.
 
 Wenn Sie diese ID-Werte nicht schon besitzen, können Sie sie mit einer der folgenden Methoden abrufen. Achten Sie darauf, dass Sie diese genauen Werte in Ihrer Bereitstellung verwenden.
 
@@ -72,7 +69,7 @@ Um die Verwaltung zu vereinfachen, empfiehlt es sich, Azure AD-Benutzergruppen 
 Achten Sie beim Definieren der Autorisierungen darauf, das Prinzip der geringsten Rechte zu befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen ihrer Aufgaben erforderlich sind. Richtlinien und Informationen zu unterstützten Rollen finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
 
 > [!IMPORTANT]
-> Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** **Sicherheit** und nicht **Office 365** lauten. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Der **Gruppentyp** muss auf **Sicherheit** festgelegt werden, um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, jede Benutzergruppe oder jeden Dienstprinzipal im Dienstanbietermandanten kennen, dem bzw. der Sie Zugriff gewähren möchten. Außerdem benötigen Sie die Rollendefinitions-ID für jede integrierten Rolle, die Sie zuweisen möchten. Wenn Sie über diese nicht bereits verfügen, können Sie sie abrufen, indem Sie die folgenden Befehle aus dem Dienstanbietermandanten ausführen.
 
@@ -128,6 +125,11 @@ Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](../../
 
 Der Onboardingvorgang erfordert eine Azure Resource Manager-Vorlage (die wir in unserem [Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/) bereitstellen) und eine zugehörige Parameterdatei, die Sie so ändern müssen, dass sie Ihrer Konfiguration entspricht und Ihre Autorisierungen definiert.
 
+> [!IMPORTANT]
+> Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung. Dies gilt selbst dann, wenn Sie Abonnements im gleichen Kundenmandanten integrieren. Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements im gleichen Kundenmandanten integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung erfolgen.
+>
+> Separate Bereitstellungen sind auch erforderlich für mehrere Angebote, die auf dasselbe Abonnement (oder dieselben Ressourcengruppen in einem Abonnement) angewendet werden. Für jedes angewendete Angebot muss ein anderer **mspOfferName** verwendet werden.
+
 Die ausgewählte Vorlage hängt davon ab, ob Sie ein gesamtes Abonnement, eine Ressourcengruppe oder mehrere Ressourcengruppen innerhalb eines Abonnements integrieren. Wir stellen auch eine Vorlage bereit, die für Kunden verwendet werden kann, die ein Angebot für verwaltete Dienste gekauft haben, das Sie im Azure Marketplace veröffentlicht haben, wenn Sie deren Abonnement(s) lieber auf diese Weise integrieren möchten.
 
 |So führen Sie das Onboarding durch  |Verwenden Sie diese Azure Resource Manager-Vorlage:  |Ändern Sie außerdem diese Parameterdatei: |
@@ -137,10 +139,8 @@ Die ausgewählte Vorlage hängt davon ab, ob Sie ein gesamtes Abonnement, eine R
 |Mehrere Ressourcengruppen in einem Abonnement   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Abonnement (bei Verwendung eines in Azure Marketplace veröffentlichten Angebots)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
-> [!IMPORTANT]
-> Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung. Dies gilt selbst dann, wenn Sie Abonnements im gleichen Kundenmandanten integrieren. Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements im gleichen Kundenmandanten integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung erfolgen.
->
-> Separate Bereitstellungen sind auch erforderlich für mehrere Angebote, die auf dasselbe Abonnement (oder dieselben Ressourcengruppen in einem Abonnement) angewendet werden. Für jedes angewendete Angebot muss ein anderer **mspOfferName** verwendet werden.
+> [!TIP]
+> Sie können zwar kein Onboarding für eine gesamte Verwaltungsgruppe in einer Bereitstellung durchführen, Sie können jedoch [eine Richtlinie auf Verwaltungsgruppenebene bereitstellen](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Die Richtlinie überprüft, ob die einzelnen Abonnements in der Verwaltungsgruppe an den angegebenen Verwaltungsmandanten delegiert wurden. Ist dies nicht der Fall, wird die Zuweisung basierend auf den von Ihnen angegebenen Werten erstellt.
 
 Das folgende Beispiel zeigt eine geänderte Datei **delegatedResourceManagement.parameters.json**, die für das Onboarding eines Abonnements verwendet werden kann. Die Ressourcengruppen-Parameterdateien (im Ordner [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management)) sind ähnlich, enthalten aber auch einen **rgName**-Parameter, um die spezifische(n) Ressourcengruppe(n) zu identifizieren, die integriert werden soll(en).
 
@@ -288,7 +288,7 @@ Im Mandanten des Kunden:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

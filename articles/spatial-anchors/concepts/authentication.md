@@ -5,16 +5,16 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 05/28/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 133b565bc54feaf49a2fec9dd0056ca8e7ef43f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997165"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857723"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -22,7 +22,7 @@ In diesem Abschnitt wird erläutert, welche verschiedenen Möglichkeiten Ihnen z
 
 ## <a name="overview"></a>Übersicht
 
-![Übersicht über die Authentifizierung bei Azure Spatial Anchors](./media/spatial-anchors-authentication-overview.png)
+![Abbildung der Übersicht über die Authentifizierung bei Azure Spatial Anchors](./media/spatial-anchors-authentication-overview.png)
 
 Um auf ein bestimmtes Azure Spatial Anchors-Konto zuzugreifen, müssen Clients zuerst ein Zugriffstoken aus dem Azure Mixed Reality-Sicherheitstokendienst (Security Token Service, STS) abrufen. Aus dem STS abgerufene Token sind 24 Stunden lang gültig und enthalten Informationen, mit denen Spatial Anchors-Dienste Autorisierungsentscheidungen für ein Konto treffen können. Diese Informationen stellen sicher, dass nur autorisierte Prinzipale auf dieses Konto zugreifen können.
 
@@ -37,9 +37,9 @@ Azure AD-Authentifizierungstoken können auf zwei Arten abgerufen werden:
 
 ## <a name="account-keys"></a>Kontoschlüssel
 
-Die Verwendung von Kontoschlüsseln für den Zugriff auf Ihr Azure Spatial Anchors-Konto ist die einfachste Möglichkeit für den Einstieg. Sie finden Ihre Kontoschlüssel im Azure-Portal. Navigieren Sie zu Ihrem Konto, und wählen Sie die Registerkarte „Schlüssel“ aus.
+Die Verwendung von Kontoschlüsseln für den Zugriff auf Ihr Azure Spatial Anchors-Konto ist die einfachste Möglichkeit für den Einstieg. Sie finden Ihre Kontoschlüssel im Azure-Portal. Navigieren Sie zu Ihrem Konto, und klicken Sie auf die Registerkarte „Schlüssel“.
 
-![Übersicht über die Authentifizierung bei Azure Spatial Anchors](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Screenshot der Seite „Schlüssel“ mit hervorgehobener Schaltfläche „Kopieren“ für den „Primärschlüssel“](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 Zwei Schlüssel stehen zur Verfügung, und beide sind gleichzeitig für den Zugriff auf das Spatial Anchors-Konto gültig. Es wird empfohlen, den Schlüssel, den Sie für den Zugriff auf das Konto verwenden, regelmäßig zu aktualisieren. Da zwei separate gültige Schlüssel verfügbar sind, sind solche Updates ohne Ausfallzeiten möglich: Sie müssen nur den primären und den sekundären Schlüssel abwechselnd aktualisieren.
 
@@ -95,28 +95,28 @@ Sobald das geschehen ist, verarbeitet das SDK den Austausch des Kontoschlüssels
 Für Anwendungen, die an Azure Active Directory-Benutzer gerichtet sind, wird empfohlen, ein Azure AD-Token für den Benutzer zu verwenden, das Sie mithilfe der [MSAL-Bibliothek](../../active-directory/develop/msal-overview.md) abrufen können. Befolgen Sie die Schritte im [Schnellstart zum Registrieren einer App](../../active-directory/develop/quickstart-register-app.md), einschließlich der folgenden:
 
 1. Konfiguration im Azure-Portal
-    1.  Registrieren Sie Ihre Anwendung in Azure AD als **native Anwendung**. Im Rahmen der Registrierung müssen Sie festlegen, ob Ihre Anwendung mehrinstanzenfähig sein soll oder nicht, und Sie müssen die Umleitungs-URLs angeben, die für Ihre Anwendung zugelassen sind.
+    1.    Registrieren Sie Ihre Anwendung in Azure AD als **native Anwendung**. Im Rahmen der Registrierung müssen Sie festlegen, ob Ihre Anwendung mehrinstanzenfähig sein soll oder nicht, und Sie müssen die Umleitungs-URLs angeben, die für Ihre Anwendung zugelassen sind.
         1.  Wechseln Sie zur Registerkarte **API-Berechtigungen**.
         2.  Wählen Sie **Berechtigung hinzufügen** aus.
-            1.  Klicken Sie auf der Registerkarte **Von meiner Organisation verwendete APIs** auf **Microsoft Mixed Reality**.
+            1.  Wählen Sie auf der Registerkarte **Von meiner Organisation verwendete APIs** die Option **Mixed Reality Resource Provider** (Mixed Reality-Ressourcenanbieter) aus.
             2.  Wählen Sie **Delegierte Berechtigungen** aus.
             3.  Aktivieren Sie das Kontrollkästchen **mixedreality.signin** unter **mixedreality**.
             4.  Wählen Sie **Berechtigungen hinzufügen** aus.
         3.  Wählen Sie **Administratoreinwilligung erteilen** aus.
-    2.  Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
-        1.  Navigieren Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
-        2.  Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
-        3.  Klicken Sie auf **Rollenzuweisung hinzufügen**.
-            1.  [Wählen Sie eine Rolle aus](#role-based-access-control).
-            2.  Geben Sie im Feld **Auswählen** die Namen der Benutzer, Gruppen und/oder Anwendungen ein, denen Sie Zugriff gewähren möchten.
-            3.  Klicken Sie auf **Speichern**.
+    2.    Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
+        1.    Navigieren Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
+        2.    Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
+        3.    Klicken Sie auf **Rollenzuweisung hinzufügen**.
+            1.    [Wählen Sie eine Rolle aus](#role-based-access-control).
+            2.    Geben Sie im Feld **Auswählen** die Namen der Benutzer, Gruppen und/oder Anwendungen ein, denen Sie Zugriff gewähren möchten.
+            3.    Klicken Sie auf **Speichern**.
 2. Gehen Sie im Code folgendermaßen vor:
-    1.  Achten Sie darauf, die **Anwendungs-ID** und den **Umleitungs-URI** Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID** und **Umleitungs-URI** in MSAL zu verwenden.
-    2.  Legen Sie die Informationen zum Mandanten fest:
-        1.  Wenn Ihre Anwendung **Nur meine Organisation** unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
-        2.  Wenn Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch **Organisationen**.
-        3.  Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, ersetzen Sie diesen Wert durch **Allgemein**.
-    3.  Legen Sie in der Tokenanforderung den **Bereich** auf „https://sts.mixedreality.azure.com//.default“ fest. Dieser Bereich informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Sicherheitstokendienst (Security Token Service, STS) Mixed Reality anfordert.
+    1.    Achten Sie darauf, die **Anwendungs-ID** und den **Umleitungs-URI** Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID** und **Umleitungs-URI** in MSAL zu verwenden.
+    2.    Legen Sie die Informationen zum Mandanten fest:
+        1.    Wenn Ihre Anwendung **Nur meine Organisation** unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
+        2.    Wenn Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch **Organisationen**.
+        3.    Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, ersetzen Sie diesen Wert durch **Allgemein**.
+    3.    Legen Sie in der Tokenanforderung den **Bereich** auf „https://sts.mixedreality.azure.com//.default“ fest. Dieser Bereich informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Sicherheitstokendienst (Security Token Service, STS) Mixed Reality anfordert.
 
 Damit sollte Ihre Anwendung in der Lage sein, von MSAL ein Azure AD-Token abzurufen. Sie können dieses Azure AD-Token als **authenticationToken** im config-Objekt Ihrer Cloudsitzung festlegen.
 
@@ -170,24 +170,24 @@ Hier wird davon ausgegangen, dass Ihre App einen eigenen Mechanismus (z.B. Micro
 
 Das Azure AD-Zugriffstoken wird mithilfe der [MSAL-Bibliothek](../../active-directory/develop/msal-overview.md) abgerufen. Befolgen Sie die Schritte im [Schnellstart zum Registrieren einer App](../../active-directory/develop/quickstart-register-app.md), einschließlich der folgenden:
 
-1.  Konfiguration im Azure-Portal:
-    1.  Registrieren Ihrer Anwendung bei Azure AD:
-        1.  Navigieren Sie im Azure-Portal zu **Azure Active Directory**, und wählen Sie **App-Registrierungen** aus.
-        2.  Wählen Sie **Registrierung einer neuen Anwendung** aus.
-        3.  Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie dann auf **Erstellen**.
-        4.  Klicken Sie in dieser Anwendung auf **Einstellungen**, und wählen Sie die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und klicken Sie auf **Hinzufügen**. Sie müssen den Wert des geheimen Schlüssels speichern, da Sie ihn in den Code Ihres Webdienstes einschließen müssen.
-    2.  Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
-        1.  Navigieren Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
-        2.  Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
-        3.  Klicken Sie auf **Rollenzuweisung hinzufügen**.
-        1.  [Wählen Sie eine Rolle aus](#role-based-access-control).
-        2.  Geben Sie im Feld **Auswählen** die Namen der Anwendungen ein, die Sie erstellt haben und denen Sie Zugriff gewähren möchten. Wenn Sie möchten, dass die Benutzer Ihrer App unterschiedliche Rollen im Spatial Anchors-Konto einnehmen, müssen Sie mehrere Anwendungen in Azure AD erstellen und jeder eine separate Rolle zuweisen. Implementieren Sie dann Ihre Autorisierungslogik, damit die richtige Rolle für Ihre Benutzer verwendet wird.
-        3.  Hinweis: Es empfiehlt sich, in der Auswahl **Rollenzuweisung hinzufügen** die Option **Zugriff zuweisen zu** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ festzulegen.
-    3.  Klicken Sie auf **Speichern**.
-2.  Gehen Sie in Ihrem Code folgendermaßen vor (Hinweis: Sie können das Dienstbeispiel aus GitHub verwenden):
-    1.  Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für Client-ID, Geheimnis und Umleitungs-URI in MSAL verwenden.
-    2.  Legen Sie die Mandanten-ID im authority-Parameter in MSAL auf Ihre eigene Azure ADD-Mandanten-ID fest.
-    3.  Legen Sie in der Tokenanforderung den **Bereich** auf „https://sts.mixedreality.azure.com//.default“ fest.
+1.    Konfiguration im Azure-Portal:
+    1.    Registrieren Ihrer Anwendung bei Azure AD:
+        1.    Navigieren Sie im Azure-Portal zu **Azure Active Directory**, und wählen Sie **App-Registrierungen** aus.
+        2.    Wählen Sie **Registrierung einer neuen Anwendung** aus.
+        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie dann auf **Erstellen**.
+        4.    Klicken Sie in dieser Anwendung auf **Einstellungen**, und wählen Sie die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und klicken Sie auf **Hinzufügen**. Sie müssen den Wert des Geheimnisses speichern, da Sie ihn in den Code Ihres Webdiensts einschließen müssen.
+    2.    Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
+        1.    Navigieren Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
+        2.    Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
+        3.    Klicken Sie auf **Rollenzuweisung hinzufügen**.
+        1.    [Wählen Sie eine Rolle aus](#role-based-access-control).
+        2.    Geben Sie im Feld **Auswählen** die Namen der Anwendungen ein, die Sie erstellt haben und denen Sie Zugriff gewähren möchten. Wenn Sie möchten, dass die Benutzer Ihrer App unterschiedliche Rollen im Spatial Anchors-Konto einnehmen, müssen Sie mehrere Anwendungen in Azure AD erstellen und jeder eine separate Rolle zuweisen. Implementieren Sie dann Ihre Autorisierungslogik, damit die richtige Rolle für Ihre Benutzer verwendet wird.
+        3.    Hinweis: Es empfiehlt sich, in der Auswahl **Rollenzuweisung hinzufügen** die Option **Zugriff zuweisen zu** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ festzulegen.
+    3.    Klicken Sie auf **Speichern**.
+2.    Gehen Sie in Ihrem Code folgendermaßen vor (Hinweis: Sie können das Dienstbeispiel aus GitHub verwenden):
+    1.    Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für Client-ID, Geheimnis und Umleitungs-URI in MSAL verwenden.
+    2.    Legen Sie die Mandanten-ID im authority-Parameter in MSAL auf Ihre eigene Azure ADD-Mandanten-ID fest.
+    3.    Legen Sie in der Tokenanforderung den **Bereich** auf „https://sts.mixedreality.azure.com//.default“ fest.
 
 Damit kann Ihr Back-End-Dienst ein Azure AD-Token abrufen. Der Dienst kann dieses Token gegen ein MR-Token austauschen, das er dann an den Client zurückgibt. Der Abruf eines MR-Tokens mithilfe eines Azure AD-Tokens erfolgt über einen REST-Aufruf. Im Folgenden sehen Sie einen Beispielaufruf:
 

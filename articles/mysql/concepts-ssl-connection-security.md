@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052935"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439941"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-Konnektivität in Azure Database for MySQL
 
@@ -61,6 +61,17 @@ Wenn Sie diese Mindesteinstellung für die TLS-Version beispielsweise auf TLS 1
 > Wenn Sie eine TLS-Mindestversion erzwingen, kann diese Erzwingung später nicht mehr deaktiviert werden.
 
 Informationen zum Festlegen der TLS-Einstellung für Ihren Azure Database for MySQL finden Sie unter [Konfigurieren der TLS-Einstellung](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Unterstützung für Verschlüsselungsverfahren durch Azure Database for MySQL Single Server
+
+Im Rahmen der SSL/TLS-Kommunikation werden die Verschlüsselungssammlungen überprüft. Nur Sammlungen, die mit dem Datenbankserver kommunizieren dürfen, werden zugelassen. Die Überprüfung der Verschlüsselungssammlungen wird in der [Gatewayschicht](concepts-connectivity-architecture.md#connectivity-architecture) gesteuert, nicht explizit auf dem Knoten selbst. Wenn die Sammlungen keiner der unten aufgeführten Sammlungen entsprechen, werden eingehende Clientverbindungen abgelehnt.
+
+### <a name="cipher-suite-supported"></a>Unterstützte Verschlüsselungssammlungen
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Nächste Schritte
 

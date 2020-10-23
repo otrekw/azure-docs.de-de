@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449415"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -83,9 +83,9 @@ In den folgenden Abschnitten wird beschrieben, wie Sie die Blätter im Applicati
 
 Klicken Sie auf die Kachel **Application Insights**, um das **Application Insights**-Dashboard zu öffnen und die folgenden Blätter anzuzeigen.
 
-![Application Insights-Dashboard](./media/app-insights-connector/app-insights-dash01.png)
+![Screenshot des Application Insights-Dashboards mit den Blättern „Anwendungen“, „Datenvolumen“ und „Verfügbarkeit“](./media/app-insights-connector/app-insights-dash01.png)
 
-![Application Insights-Dashboard](./media/app-insights-connector/app-insights-dash02.png)
+![Screenshot des Application Insights-Dashboards mit den Blättern „Serveranforderungen“, „Fehler“ und „Ausnahmen“](./media/app-insights-connector/app-insights-dash02.png)
 
 Das Dashboard enthält die in der Tabelle aufgeführten Blätter. Auf jedem Blatt sind bis zu 10 Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, wenn Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
 

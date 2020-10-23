@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über den Defender für IoT-Sicherheitsdienst und
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931472"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851232"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Grundlegendes zur lokalen Konfigurationsdatei (C#-Agent)
 
 Der Defender für IoT-Sicherheits-Agent verwendet Konfigurationen aus einer lokalen Konfigurationsdatei.
 
-Der Sicherheits-Agent liest die Konfigurationsdatei einmal bei seinem Start. Die Konfigurationen in der lokalen Konfigurationsdatei enthalten sowohl die Authentifizierungskonfiguration als auch andere Konfigurationen im Zusammenhang mit dem Agent.
+Der Sicherheits-Agent liest die Konfigurationsdatei einmal bei Beginn seiner Ausführung. Die Konfigurationen in der lokalen Konfigurationsdatei enthalten sowohl die Authentifizierungskonfiguration als auch andere Konfigurationen im Zusammenhang mit dem Agent.
 
 Der C#-Sicherheits-Agent verwendet mehrere Konfigurationsdateien:
 
@@ -57,7 +57,7 @@ Windows:
 | highPriorityQueueSizePercentage | 0 < Zahl < 1 | Der Teil des gesamten Caches, der für Nachrichten mit hoher Priorität reserviert ist. |
 | logLevel | „Off“, „Fatal“, „Error“, „Warning“, „Information“, „Debug“  | Protokollmeldungen gleich und über diesem Schweregrad werden in der Debugging-Konsole („Syslog“ unter Linux) protokolliert. |
 | fileLogLevel |  „Off“, „Fatal“, „Error“, „Warning“, „Information“, „Debug“| Protokollmeldungen gleich und über diesem Schweregrad werden in einer Datei („Syslog“ unter Linux) protokolliert. |
-| diagnosticVerbosityLevel | „None“, „Some“, „All“ | Ausführlichkeitsgrad von Diagnoseereignissen. „None“ – Diagnoseereignisse werden nicht gesendet; „Some“ – Nur Diagnoseereignisse mit hoher Wichtigkeit werden gesendet; „All“ – Alle Protokolle werden auch als Diagnoseereignisse gesendet. |
+| diagnosticVerbosityLevel | „None“, „Some“, „All“ | Ausführlichkeitsgrad von Diagnoseereignissen. None: Diagnoseereignisse werden nicht gesendet. Some: Nur einige Diagnoseereignisse mit hoher Wichtigkeit werden gesendet. All: Alle Protokolle werden ebenfalls als Diagnoseereignisse gesendet. |
 | logFilePath | Pfad zur Datei | Wenn „fileLogLevel > Off“ lautet, werden Protokolle in diese Datei geschrieben. |
 | defaultEventPriority | „High“, „Low“, „Off“ | Standardereignispriorität. |
 
@@ -85,10 +85,11 @@ Windows:
 | Konfigurationsname | Mögliche Werte | Details |
 |:-----------|:---------------|:--------|
 | moduleName | Zeichenfolge | Name der Sicherheitsmodulidentität. Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
-| deviceId | Zeichenfolge | ID des Geräts (wie in Azure IoT Hub registriert). || schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
+| deviceId | Zeichenfolge | ID des Geräts (wie in Azure IoT Hub registriert). |
+| schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
 | gatewayHostname | Zeichenfolge | Hostname des Azure IoT Hubs. Normalerweise <mein-hub>.azure-devices.net |
 | filePath | Zeichenfolge – Pfad zur Datei | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält.|
-| type | „SymmetricKey“, „SelfSignedCertificate“ | Das Benutzergeheimnis für die Authentifizierung. Wählen Sie *SymmetricKey* aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist; wählen Sie *SelfSignedCertificate* aus, wenn das Geheimnis ein selbstsigniertes Zertifikat ist. |
+| type | „SymmetricKey“, „SelfSignedCertificate“ | Das Benutzergeheimnis für die Authentifizierung. Wählen Sie *SymmetricKey* aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist. Wählen Sie *SelfSignedCertificate* aus, wenn das Geheimnis ein selbstsigniertes Zertifikat ist. |
 | identity | „DPS“, „Module“, „Device“ | Authentifizierungsidentität – „DPS“, wenn die Authentifizierung über DPS erfolgt, „Module“, wenn sie mit Anmeldeinformationen für das Modul erfolgt, oder „Device“, wenn sie mit Geräteanmeldeinformationen erfolgt.
 | certificateLocationKind |  „LocalFile“, „Store“ | „LocalFile“, wenn das Zertifikat in einer Datei gespeichert ist; „Store“, wenn sich das Zertifikat in einem Zertifikatspeicher befindet. |
 | idScope | Zeichenfolge | ID-Bereich von DPS |

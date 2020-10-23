@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: c4ac4a17e577ea69f4359e1e9b321e5fcc839697
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761429"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941091"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Apple Business Manager für die automatische Benutzerbereitstellung
 
@@ -55,7 +55,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 1. Melden Sie sich in Apple Business Manager mit einem Konto mit der Rolle „Administrator“ oder „People Manager“ an.
 2. Klicken Sie unten in der Seitenleiste auf „Settings“ (Einstellungen), klicken Sie unter „Organization Settings“ (Organisationseinstellungen) auf „Data Source“ (Datenquelle), und klicken Sie dann auf „Connect to Data Source“ (Verbindung mit Datenquelle herstellen).
 3. Klicken Sie neben „SCIM“ auf „Connect“ (Verbinden), lesen Sie die Warnung sorgfältig durch, klicken Sie auf „Copy“ (Kopieren) und dann auf „Close“ (Schließen).
-[Das Fenster „Connect to SCIM“ (Mit SCIM verbinden) mit Token und Schaltfläche „Copy“ (Kopieren).] Lassen Sie dieses Fenster geöffnet, um die Mandanten-URL von Apple Business Manager in Azure AD zu kopieren. Dies ist: https://federation.apple.com/feeds/business/scim
+[Das Fenster „Connect to SCIM“ (Mit SCIM verbinden) mit einem Token und der Schaltfläche „Kopieren“ darunter] Lassen Sie dieses Fenster geöffnet, um die Mandanten-URL von Apple School Manager in Azure AD zu kopieren. Dies ist „https://federation.apple.com/feeds/business/scim“.
 
     ![Apple Business Manager](media/applebusinessmanager-provisioning-tutorial/scim-token.png)
 
@@ -151,15 +151,16 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [SCIM-Voraussetzungen für Apple Business Manager überprüfen](URL=https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
-* [Verwendung der Personen-ID in Apple Business Manager](URL=https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
-* [SCIM zum Importieren von Benutzern in Apple Business Manager verwenden](URL=https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
-* [SCIM-Benutzer-Account-Konflikte in Apple Business Manager lösen](URL=https://support.apple.com/guide/apple-business-manager/apd313013d12)
-* [Azure AD-Accounts in Apple Business Manager löschen](URL=https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
-* [SCIM-Aktivität in Apple Business Manager anzeigen](URL=https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
-* [Vorhandene SCIM-Token in Apple Business Manager verwalten](URL=https://support.apple.com/guide/apple-business-manager/apdc9a823611)
-* [SCIM-Verbindung in Apple Business Manager trennen](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61)* [Apple Business Manager – Benutzerhandbuch](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [Probleme mit der SCIM-Verbindung in Apple Business Manager beheben](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [SCIM-Voraussetzungen für Apple Business Manager überprüfen](https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
+* [Verwendung der Personen-ID in Apple Business Manager](https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
+* [SCIM zum Importieren von Benutzern in Apple Business Manager verwenden](https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
+* [SCIM-Benutzer-Account-Konflikte in Apple Business Manager lösen](https://support.apple.com/guide/apple-business-manager/apd313013d12)
+* [Azure AD-Accounts in Apple Business Manager löschen](https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
+* [SCIM-Aktivität in Apple Business Manager anzeigen](https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
+* [Vorhandene SCIM-Token in Apple Business Manager verwalten](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
+* [Trennen der SCIM-Verbindung in Apple Business Manager](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
+* [Vorhandene SCIM-Token in Apple Business Manager verwalten](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
+* [Probleme mit der SCIM-Verbindung in Apple Business Manager beheben](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

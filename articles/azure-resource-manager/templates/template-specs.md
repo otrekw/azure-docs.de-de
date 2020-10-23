@@ -2,21 +2,21 @@
 title: Übersicht der Vorlagenspezifikationen
 description: Beschreibt, wie Sie Vorlagenspezifikationen erstellen und diese mit anderen Benutzern in Ihrer Organisation teilen.
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fad7ca60e98dcaabc5f6fc106e0d2c1b77085d67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227881"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91728470"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager-Vorlagenspezifikationen (Vorschau)
 
-Eine Vorlagenspezifikation ist ein neuer Ressourcentyp zum Speichern einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure für die spätere Bereitstellung. Mit diesem Ressourcentyp können Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation teilen. Wie bei jeder anderen Azure-Ressource können Sie die rollenbasierte Zugriffssteuerung (RBAC) verwenden, um die Vorlagenspezifikation zu teilen.
+Eine Vorlagenspezifikation ist ein Ressourcentyp zum Speichern einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure für die spätere Bereitstellung. Mit diesem Ressourcentyp können Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation teilen. Wie bei jeder anderen Azure-Ressource können Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) verwenden, um die Vorlagenspezifikation zu teilen.
 
-**Microsoft.Resources/templateSpecs** ist der neue Ressourcentyp für Vorlagenspezifikationen. Er besteht aus einer Hauptvorlage und einer beliebigen Anzahl von verknüpften Vorlagen. Azure speichert Vorlagenspezifikationen sicher in Ressourcengruppen. Vorlagenspezifikationen unterstützen [Versionsverwaltung](#versioning).
+**Microsoft.Resources/templateSpecs** ist der Ressourcentyp für Vorlagenspezifikationen. Er besteht aus einer Hauptvorlage und einer beliebigen Anzahl von verknüpften Vorlagen. Azure speichert Vorlagenspezifikationen sicher in Ressourcengruppen. Vorlagenspezifikationen unterstützen [Versionsverwaltung](#versioning).
 
 Zum Bereitstellen der Vorlagenspezifikation verwenden Sie Azure-Standardtools wie PowerShell, Azure CLI, Azure-Portal, REST und andere unterstützte SDKs und Clients. Sie verwenden dieselben Befehle wie für die Vorlage.
 
@@ -27,7 +27,7 @@ Zum Bereitstellen der Vorlagenspezifikation verwenden Sie Azure-Standardtools wi
 
 Wenn Sie Ihre Vorlagen derzeit in einem GitHub-Repository oder Speicherkonto aufbewahren, stellen sich mehrere Herausforderungen in Ihren Weg, wenn Sie versuchen, die Vorlagen freizugeben und zu verwenden. Damit ein Benutzer eine Vorlage bereitstellen kann, muss diese entweder lokal vorhanden sein oder die URL für die Vorlage muss öffentlich zugänglich sein. Zum Umgehen dieser Einschränkung können Sie Kopien der Vorlage für Benutzer freigeben, die sie bereitstellen müssen, oder den Zugriff auf das Repository oder das Speicherkonto öffnen. Wenn Benutzer über lokale Kopien einer Vorlage verfügen, können diese Kopien von der ursprünglichen Vorlage abweichen. Wenn Sie den öffentlichen Zugriff auf ein Repository oder Speicherkonto gestatten, erlauben Sie möglicherweise auch unerwünschten Benutzern den Zugriff auf die Vorlage.
 
-Der Vorteil von Vorlagenspezifikationen besteht darin, dass Sie kanonische Vorlagen erstellen und mit Teams in Ihrer Organisation teilen können. Die Vorlagenspezifikationen sind sicher, weil sie für die Bereitstellung für den Azure Resource Manager verfügbar sind, aber nicht für Benutzer ohne Berechtigungen der rollenbasierten Zugriffssteuerung zugänglich sind. Benutzer benötigen nur Lesezugriff auf die Vorlagenspezifikation, um die zugehörige Vorlage bereitzustellen, sodass Sie die Vorlage teilen können, ohne anderen Benutzern das Ändern zu gestatten.
+Der Vorteil von Vorlagenspezifikationen besteht darin, dass Sie kanonische Vorlagen erstellen und mit Teams in Ihrer Organisation teilen können. Die Vorlagenspezifikationen sind sicher, weil sie für die Bereitstellung für den Azure Resource Manager verfügbar aber nicht für Benutzer ohne Berechtigungen der rollenbasierten Zugriffssteuerung in Azure zugänglich sind. Benutzer benötigen nur Lesezugriff auf die Vorlagenspezifikation, um die zugehörige Vorlage bereitzustellen, sodass Sie die Vorlage teilen können, ohne anderen Benutzern das Ändern zu gestatten.
 
 Die Vorlagen, die Sie in eine Vorlagenspezifikation aufnehmen, sollten von Administratoren in Ihrer Organisation überprüft werden, damit sie die Anforderungen und Richtlinien der Organisation einhalten.
 
@@ -73,7 +73,7 @@ Erstellen einer Vorlagenspezifikation mittels:
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateJsonFile ./mainTemplate.json
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateFile ./mainTemplate.json
 ```
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
@@ -165,7 +165,7 @@ In der Praxis führen Sie in der Regel `Get-AzTemplateSpec` aus, um die ID der V
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Versions.Id
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG `

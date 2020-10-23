@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a8c1a5da4f4d46d98e01eeb0bf210567af19a95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cd7496690ec88fbe4297386c32d1b8a2c3234577
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007232"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540760"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>Anpassen des Feeds für Benutzer von Windows Virtual Desktop (klassisch)
 
@@ -37,7 +37,7 @@ Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Screenshot des PowerShell-Cmdlets Get-RDSRemoteApp mit hervorgehobenem Namen und Anzeigenamen.](../media/get-rdsremoteapp.png)
+> ![Screenshot des PowerShell-Cmdlets Get-RDSRemoteApp mit hervorgehobenem Namen und Anzeigenamen, um einen Anzeigenamen anzupassen](../media/get-rdsremoteapp.png)
 
 Um einer RemoteApp einen Anzeigenamen zuzuweisen, führen Sie das folgende PowerShell-Cmdlet aus:
 
@@ -46,7 +46,7 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Screenshot des PowerShell-Cmdlets „Set-RDSRemoteApp“ mit hervorgehobenem Namen und neuem Anzeigenamen.](../media/set-rdsremoteapp.png)
+> ![Screenshot des PowerShell-Cmdlets Set-RDSRemoteApp mit neuem hervorgehobenem Namen und neuem Anzeigenamen.](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Anpassen des Anzeigenamens für einen Remotedesktop
 

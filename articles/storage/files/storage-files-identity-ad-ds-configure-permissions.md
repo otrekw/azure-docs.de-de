@@ -5,20 +5,42 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999614"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761140"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Teil 3: Konfigurieren von Berechtigungen auf Verzeichnis- und Dateiebene über SMB 
 
 Lesen Sie den vorherigen Artikel [Zuweisen von Berechtigungen auf Freigabeebene zu einer Identität](storage-files-identity-ad-ds-assign-permissions.md), bevor Sie mit diesem Artikel beginnen, um sicherzustellen, dass Ihre Berechtigungen auf Freigabeebene eingerichtet wurden.
 
-Nachdem Sie mit RBAC Berechtigungen auf Freigabeebene zugewiesen haben, müssen Sie die richtigen Windows-ACLs (Zugriffssteuerungslisten) auf Stamm-, Verzeichnis- oder Dateiebene konfigurieren, um die granulare Zugriffssteuerung nutzen zu können. Stellen Sie sich die RBAC-Berechtigungen auf der Freigabeebene als allgemeinen Gatekeeper vor, der festlegt, ob ein Benutzer auf die Freigabe zugreifen kann. Die Windows-ACLs agieren hingegen auf einer granulareren Ebene und legen fest, welche Vorgänge der Benutzer auf der Verzeichnis- oder Dateiebene ausführen kann. Sowohl die Berechtigungen auf Freigabeebene als auch auf Datei- und Verzeichnisebene werden erzwungen, wenn ein Benutzer versucht, auf eine Datei oder ein Verzeichnis zuzugreifen. Wenn es zwischen diesen also einen Unterschied gibt, wird nur die restriktivste Berechtigung angewendet. Wenn ein Benutzer beispielsweise über Lese- und Schreibzugriff auf Dateiebene, aber nur über Schreibzugriff auf Freigabeebene verfügt, kann er diese Datei nur lesen. Dies gilt auch umgekehrt: Wenn ein Benutzer über Lese- und Schreibzugriff auf Freigabeebene, aber nur über Lesezugriff auf Dateiebene verfügt, kann er die Datei ebenfalls nur lesen.
+Nachdem Sie mit Azure RBAC Berechtigungen auf Freigabeebene zugewiesen haben, müssen Sie die richtigen Windows-ACLs (Zugriffssteuerungslisten) auf Stamm-, Verzeichnis- oder Dateiebene konfigurieren, um die granulare Zugriffssteuerung nutzen zu können. Stellen Sie sich die Azure RBAC-Berechtigungen auf der Freigabeebene als allgemeinen Gatekeeper vor, der festlegt, ob ein Benutzer auf die Freigabe zugreifen kann. Die Windows-ACLs agieren hingegen auf einer granulareren Ebene und legen fest, welche Vorgänge der Benutzer auf der Verzeichnis- oder Dateiebene ausführen kann. Sowohl die Berechtigungen auf Freigabeebene als auch auf Datei- und Verzeichnisebene werden erzwungen, wenn ein Benutzer versucht, auf eine Datei oder ein Verzeichnis zuzugreifen. Wenn es zwischen diesen also einen Unterschied gibt, wird nur die restriktivste Berechtigung angewendet. Wenn ein Benutzer beispielsweise über Lese- und Schreibzugriff auf Dateiebene, aber nur über Schreibzugriff auf Freigabeebene verfügt, kann er diese Datei nur lesen. Dies gilt auch umgekehrt: Wenn ein Benutzer über Lese- und Schreibzugriff auf Freigabeebene, aber nur über Lesezugriff auf Dateiebene verfügt, kann er die Datei ebenfalls nur lesen.
+
+## <a name="azure-rbac-permissions"></a>Azure RBAC-Berechtigungen
+
+In der folgenden Tabelle sind die Azure RBAC-Berechtigungen zu dieser Konfiguration aufgeführt:
+
+
+| Integrierte Rolle  | NTFS-Berechtigung  | Resultierende Zugriffsrechte  |
+|---------|---------|---------|
+|Speicherdateidaten-SMB-Freigabeleser | Vollzugriff, Ändern, Lesen, Schreiben, Ausführen | Lesen und Ausführen  |
+|     |   Lesen |     Lesen  |
+|Speicherdateidaten-SMB-Freigabemitwirkender  |  Vollzugriff    |  Ändern, Lesen, Schreiben, Ausführen |
+|     |  Ändern         |  Ändern    |
+|     |  Lesen und Ausführen |  Lesen und Ausführen |
+|     |  Lesen           |  Lesen    |
+|     |  Schreiben          |  Schreiben   |
+|Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten | Vollzugriff  |  Ändern, Lesen, Schreiben, Bearbeiten, Ausführen |
+|     |  Ändern          |  Ändern |
+|     |  Lesen und Ausführen  |  Lesen und Ausführen |
+|     |  Lesen            |  Lesen   |
+|     |  Schreiben           |  Schreiben  |
+
+
 
 ## <a name="supported-permissions"></a>Unterstützte Berechtigungen
 
@@ -63,7 +85,7 @@ else
 
 ```
 
-Wenn beim Herstellen einer Verbindung mit Azure Files Probleme auftreten, können Sie das [Problembehandlungstool verwenden, das für Azure Files-Einbindungsfehler unter Windows veröffentlicht wurde](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Außerdem stehen [Anleitungen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) zur Umgehung von Szenarien bereit, wenn Port 445 blockiert ist. 
+Wenn beim Herstellen einer Verbindung mit Azure Files Probleme auftreten, können Sie das [Problembehandlungstool verwenden, das für Azure Files-Einbindungsfehler unter Windows veröffentlicht wurde](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Außerdem stehen [Anleitungen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) zur Umgehung von Szenarien bereit, wenn Port 445 blockiert ist. 
 
 ## <a name="configure-windows-acls"></a>Konfigurieren von Windows-ACLs
 

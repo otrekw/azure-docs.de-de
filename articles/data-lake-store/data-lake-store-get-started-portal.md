@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509199"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578579"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
 
@@ -50,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
      * Wählen Sie **Von Data Lake Storage Gen1 verwaltete Schlüssel verwenden** aus, wenn Ihre Verschlüsselungsschlüssel von Data Lake Storage Gen1 verwaltet werden sollen.
      * **Schlüssel aus Ihrem eigenen Schlüsseltresor verwenden**. Sie können eine vorhandene Azure Key Vault-Instanz auswählen oder eine neue Key Vault-Instanz erstellen. Wenn Sie die Schlüssel aus einer Key Vault-Instanz verwenden möchten, müssen Sie dem Data Lake Storage Gen1-Konto Berechtigungen zum Zugreifen auf die Azure Key Vault-Instanz zuweisen. Eine entsprechende Anleitung finden Sie unter [Zuweisen von Berechtigungen zu Azure Key Vault](#assign-permissions-to-azure-key-vault).
 
-        ![Data Lake Storage Gen1-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1-Verschlüsselung")
+        ![Screenshot: Blatt „New Data Lake Storage Gen 1“ (Neue Data Lake Store Gen 1-Instanz) und Blatt „Verschlüsselungseinstellungen“](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1-Verschlüsselung")
 
         Klicken Sie auf dem Blatt **Verschlüsselungseinstellungen** auf **OK**.
 
@@ -64,10 +64,10 @@ Wenn Sie Schlüssel aus einem Azure Key Vault zum Konfigurieren der Verschlüsse
 
 1. Wenn Sie Schlüssel aus dem Azure Key Vault verwendet haben, wird oben auf dem Blatt für das Data Lake Storage Gen1-Konto eine Warnung angezeigt. Klicken Sie auf die Warnung, um das Blatt **Verschlüsselung** zu öffnen.
 
-    ![Data Lake Storage Gen1-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1-Verschlüsselung")
+    ![Screenshot: Blatt „Data Lake Storage Gen1-Konto“ mit der Warnung „Die Key Vault-Berechtigung muss konfiguriert werden. Klicken Sie hier, um sie einzurichten.“](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1-Verschlüsselung")
 2. Das Blatt enthält zwei Optionen zum Konfigurieren des Zugriffs.
 
-    ![Data Lake Storage Gen1-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1-Verschlüsselung")
+    ![Screenshot des Blatts „Verschlüsselung“](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1-Verschlüsselung")
 
    * Klicken Sie unter der ersten Option auf **Berechtigungen erteilen**, um den Zugriff zu konfigurieren. Die erste Option ist nur aktiviert, wenn der Benutzer, der das Data Lake Storage Gen1-Konto erstellt hat, auch ein Azure Key Vault-Administrator ist.
    * Mit der anderen Option wird das PowerShell-Cmdlet ausgeführt, das auf dem Blatt angezeigt wird. Sie müssen der Besitzer der Azure Key Vault-Instanz sein oder Berechtigungen für Azure Key Vault gewähren können. Wechseln Sie nach dem Ausführen des Cmdlets zurück zum Blatt, und klicken Sie auf **Aktivieren**, um den Zugriff zu konfigurieren.
@@ -87,10 +87,10 @@ Sie können in Ihrem Data Lake Storage Gen1-Konto Ordner zum Verwalten und Speic
 1. Öffnen Sie das von Ihnen erstellte Data Lake Storage Gen1-Konto. Klicken Sie im linken Bereich auf **Alle Ressourcen** und dann auf dem Blatt **Alle Ressourcen** auf den Kontonamen, unter dem Sie Ordner erstellen möchten. Wenn Sie das Konto an das Startmenü angeheftet haben, klicken Sie auf die Kontokachel.
 2. Klicken Sie auf dem Blatt für Ihr Data Lake Storage Gen1-Konto auf **Daten-Explorer**.
 
-    ![Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto")
+    ![Screenshot: Blatt „Data Lake Storage Gen 1-Konto“ mit hervorgehobener Option „Daten-Explorer“](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto")
 3. Klicken Sie auf dem Blatt „Daten-Explorer“ auf **Neuer Ordner**, geben Sie einen Namen für den neuen Ordner ein, und klicken Sie dann auf **OK**.
 
-    ![Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto")
+    ![Screenshot: Blatt „Daten-Explorer“, auf dem die Option „Neuer Ordner“ und das Textfeld „Neuen Ordner erstellen“ hervorgehoben sind](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto")
 
     Der neu erstellte Ordner wird auf dem Blatt **Daten-Explorer** angezeigt. Sie können geschachtelte Ordner mit beliebig vielen Schachtelungsebenen erstellen.
 

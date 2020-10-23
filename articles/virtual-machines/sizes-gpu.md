@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: fb534ae4a59c9a5c87a7eb7ab268a40b9771fdb2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876225"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Für GPU optimierte VM-Größen
 
 GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen, mehreren oder Teil-GPUs verfügbar. Diese Größen sind für rechenintensive, grafikintensive und visualisierungsorientierte Workloads vorgesehen. Dieser Artikel enthält Informationen über die Anzahlen und Typen von GPUs, vCPUs, Datenträgern und NICs. Der Speicherdurchsatz und die Netzwerkbandbreite sind für die jeweiligen Größen in dieser Gruppe ebenfalls enthalten.
 
-- Die Größen der [NC-Serie](nc-series.md), der [NCv2-Serie](ncv2-series.md), der [NCv3-Serie](ncv3-series.md) und der [NCT4_v3-Serie](nct4-v3-series.md) sind für rechen- und netzwerkintensive Anwendungen und Algorithmen optimiert. Einige Beispiele sind CUDA- und OpenCL-basierte Anwendungen und Simulationen, KI und Deep Learning. Die NCT4v3-Serie ist speziell auf Rückschlussworkloads mit der Tesla T4-GPU von NVIDIA und dem AMD EPYC2 Rome-Prozessor ausgelegt. Die NCv3-Serie ist für High Performance Computing-Workloads, die mit der Tesla V100-GPU von NVIDIA ausgestattet sind, konzipiert. Virtuelle Computer der NC-Serie verwenden den Prozessor Intel Xeon E5-2690 v3 mit 2,60 GHz (Haswell) und virtuelle Computer der NCv2- und der NCv3-Serie den Prozessor Intel Xeon E5-2690 v4 (Broadwell).
+- Die Größen der [NCv3-](ncv3-series.md) und [NC T4_v3-Reihe](nct4-v3-series.md) sind für computeintensive GPU-beschleunigte Anwendungen optimiert. Einige Beispiele sind CUDA- und OpenCL-basierte Anwendungen und Simulationen, KI und Deep Learning. Die NC T4 v3-Reihe ist speziell auf Rückschlussworkloads mit der Tesla T4-GPU von NVIDIA und dem AMD EPYC2 Rome-Prozessor ausgelegt. Die NCv3-Reihe ist außerdem für Hochleistungscomputing- und entsprechende KI-Workloads konzipiert, die mit der Tesla V100-GPU von NVIDIA ausgestattet sind.
 
-- Die Größen der [ND-Serie](nd-series.md) und der [NDv2-Serie](ndv2-series.md) sind speziell auf Trainings- und Rückschlussszenarien für Deep Learning ausgelegt. Sie nutzen die GPU NVIDIA Tesla P40 und den Prozessor Intel Xeon E5-2690 v4 (Broadwell). Für die NDv2-Serie wird der Intel Xeon Platinum 8168-Prozessor (Skylake) verwendet.
+- Der Fokus der Größe der [NDv2-Reihe](ndv2-series.md) liegt auf dem Hochskalieren und Herunterskalieren von Deep-Learning-Trainingsanwendungen. Für die NDv2-Reihe wird der Nvidia Volta V100- und der Intel Xeon Platinum 8168-Prozessor (Skylake) verwendet.
 
 - Die Größen der [NV-Serie](nv-series.md) und der [NVv3-Serie](nvv3-series.md) sind für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX konzipiert und optimiert. Diese VMs werden von der NVIDIA Tesla M60-GPU unterstützt.
 
@@ -31,7 +31,7 @@ GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einze
 
 Um die GPU-Funktionen von Azure-VMs der N-Serie nutzen zu können, müssen NVIDIA- oder AMD-GPU-Treiber installiert sein.
 
-- Bei VMs mit NVIDIA-GPUs werden mit der [NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-windows.md) die entsprechenden NVIDIA-CUDA- oder -GRID-Treiber installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-windows.md). Allgemeine Informationen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](./extensions/overview.md).
+- Bei VMs mit NVIDIA-GPUs werden mit der [NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-windows.md) die entsprechenden NVIDIA-CUDA- oder -GRID-Treiber installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-windows.md). Allgemeine Informationen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](./extensions/overview.md).   
 
    Alternativ dazu können Sie NVIDIA-GPU-Treiber manuell installieren. Informationen zu unterstützten Betriebssystemen, Treibern sowie Installations- und Überprüfungsschritten finden Sie unter [Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows](./windows/n-series-driver-setup.md) bzw. [Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux](./linux/n-series-driver-setup.md).
 

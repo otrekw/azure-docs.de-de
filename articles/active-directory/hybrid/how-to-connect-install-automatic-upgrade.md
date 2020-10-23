@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053285"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317615"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische Upgrade
 Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](reference-connect-version-history.md) eingeführt.  Dieses Feature wurde in [Build 1.1.561](reference-connect-version-history.md) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
@@ -64,7 +64,7 @@ Möglicherweise erhalten Sie auch ein Ergebnis, das kein UpgradeResult ist, d. h
 Stellen Sie dann sicher, dass Sie die erforderlichen URLs in Ihrem Proxy oder in der Firewall geöffnet haben. Die automatische Aktualisierung verwendet Azure AD Connect Health wie in der [Übersicht](#overview)beschrieben. Wenn Sie einen Proxy verwenden, muss Health für die Verwendung eines [Proxyservers](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)konfiguriert sein. Prüfen Sie auch die [Verbindung von Health](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) zu Azure AD.
 
 Wenn Sie die Verbindung mit Azure AD überprüft haben, prüfen Sie die Ereignisprotokolle. Starten Sie die Ereignisanzeige, und sehen Sie sich das Ereignisprotokoll für die **Anwendung** an. Fügen Sie einen Ereignisprotokollfilter für die Quelle **Azure AD Connect Upgrade** und den Ereignis-ID-Bereich **300-399** hinzu.  
-![Ereignisprotokollfilter für das automatische Upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+![Screenshot des Fensters „Aktuelles Protokoll filtern“, auf dem das Feld „Ereignisquellen“ sowie das Feld „Einschließen/ausschließen“ für die Event-ID hervorgehobenen werden](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 So können Sie alle Ereignisprotokolle anzeigen, die dem Status für das automatische Upgrade zugeordnet sind.  
 ![Ereignisprotokollfilter für das automatische Upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  

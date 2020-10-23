@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900278"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567144"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
 
@@ -52,7 +52,7 @@ Der Analysespeicher, bei dem es sich um einen Spaltenspeicher handelt, ist für 
 
 In der folgenden Abbildung ist der Transaktions- bzw. Zeilenspeicher im Vergleich zum Analyse- bzw. Spaltenspeicher in Azure Cosmos DB dargestellt:
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Transaktions-/Zeilenspeicher im Vergleich zum Analyse-/Spaltenspeicher in Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Beispiel für eine operative Tabelle" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Entkoppelte Leistung für Analyseworkloads
 
@@ -60,7 +60,7 @@ Analytische Abfragen haben keine Auswirkung auf die Leistung der Transaktionswor
 
 ### <a name="auto-sync"></a>Automatische Synchronisierung
 
-Die automatische Synchronisierung bezieht sich auf die vollständig verwaltete Funktion von Azure Cosmos DB, bei der Einfüge-, Aktualisierungs- und Löschvorgänge für operative Daten automatisch innerhalb von fünf Minuten nahezu in Echtzeit vom Transaktionsspeicher in den Analysespeicher synchronisiert werden.
+Die automatische Synchronisierung bezieht sich auf die vollständig verwaltete Funktion von Azure Cosmos DB, bei der Einfüge-, Aktualisierungs- und Löschvorgänge für operative Daten automatisch nahezu in Echtzeit vom Transaktionsspeicher in den Analysespeicher synchronisiert werden. Die Wartezeit für die automatische Synchronisierung liegt normalerweise innerhalb von 2 Minuten. In Fällen, in denen eine Datenbank mit gemeinsam genutztem Durchsatz und einer großen Anzahl von Containern verwendet wird, kann die Wartezeit für die automatische Synchronisierung einzelner Containern länger sein und bis zu 5 Minuten betragen. Wir möchten gerne mehr darüber erfahren, inwieweit diese Wartezeit für Ihre Szenarien geeignet ist. Wenden Sie sich dazu an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
 
 Die Funktion der automatischen Synchronisierung bietet zusammen mit dem Analysespeicher die folgenden wichtigen Vorteile:
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-Die Blatteigenschaft `streetName` innerhalb des geschachtelten Objekts `address` wird im Analysespeicherschema als die Spalte `address.object.streetName.int32` dargestellt. Der Datentyp wird der Spalte als Suffix hinzugefügt. Wenn dem Transaktionsspeicher ein weiteres Dokument hinzugefügt wird, in dem der Wert der Blatteigenschaft `streetNo` „123“ lautet (dies ist eine Zeichenfolge), wird das Schema des Analysespeichers automatisch weiterentwickelt, ohne dass dadurch der Typ einer zuvor geschriebenen Spalte geändert wird. Dem Analysespeicher wurde eine neue Spalte als `address.object.streetName.string` hinzugefügt. Darin wird dieser Wert „123“ gespeichert.
+Die Blatteigenschaft `streetNo` innerhalb des geschachtelten Objekts `address` wird im Analysespeicherschema als die Spalte `address.object.streetNo.int32` dargestellt. Der Datentyp wird der Spalte als Suffix hinzugefügt. Wenn dem Transaktionsspeicher ein weiteres Dokument hinzugefügt wird, in dem der Wert der Blatteigenschaft `streetNo` „123“ lautet (dies ist eine Zeichenfolge), wird das Schema des Analysespeichers automatisch weiterentwickelt, ohne dass dadurch der Typ einer zuvor geschriebenen Spalte geändert wird. Dem Analysespeicher wurde eine neue Spalte als `address.object.streetNo.string` hinzugefügt. Darin wird dieser Wert „123“ gespeichert.
 
 **Zuordnung des Datentyps „An-Suffix“**
 
@@ -171,7 +171,7 @@ Wenn Sie über ein global verteiltes Azure Cosmos DB-Konto verfügen, ist es na
 
 ### <a name="security"></a>Sicherheit
 
-Die Authentifizierung beim Analysespeicher erfolgt genauso wie beim Transaktionsspeicher für eine bestimmte Datenbank. Sie können Hauptschlüssel oder Schlüssel mit Leseberechtigung für die Authentifizierung verwenden. Sie können den verknüpften Dienst in Synapse Studio nutzen, um zu verhindern, dass die Azure Cosmos DB-Schlüssel in den Spark-Notebooks eingefügt werden. Der Zugriff auf diesen verknüpften Dienst steht jedem Benutzer zur Verfügung, der Zugriff auf den Arbeitsbereich hat.
+Die Authentifizierung beim Analysespeicher erfolgt genauso wie beim Transaktionsspeicher für eine bestimmte Datenbank. Sie können Primärschlüssel oder Schlüssel mit Leseberechtigung für die Authentifizierung verwenden. Sie können den verknüpften Dienst in Synapse Studio nutzen, um zu verhindern, dass die Azure Cosmos DB-Schlüssel in den Spark-Notebooks eingefügt werden. Der Zugriff auf diesen verknüpften Dienst steht jedem Benutzer zur Verfügung, der Zugriff auf den Arbeitsbereich hat.
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Unterstützung für mehrere Azure Synapse Analytics-Laufzeiten
 

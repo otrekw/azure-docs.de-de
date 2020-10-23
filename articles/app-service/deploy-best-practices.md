@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961872"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708151"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -47,7 +47,7 @@ Wenn Ihr Projekt designierte Branches für Tests, QA und Staging hat, sollte jed
 
 Continuous Deployment sollte nie für Ihren Produktionsslot aktiviert werden. Stattdessen sollte Ihr Produktionsbranch (häufig Master) in einem Nicht-Produktionsslot bereitgestellt werden. Wenn Sie bereit sind, den Basisbranch freizugeben, tauschen Sie ihn in den Produktionsslot. Der Austausch in die Produktion – anstatt in der Produktion bereitzustellen – verhindert Ausfallzeiten und ermöglicht es Ihnen, ein Rollback der Änderungen auszuführen, indem Sie einen erneuten Austausch vornehmen. 
 
-![Visualisierung der Slotverwendung](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Diagramm: Flow zwischen Entwicklungs-, Staging- und Masterbranches und Slots, in denen diese bereitgestellt sind](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Kontinuierliches Bereitstellen von Containern
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629011"
 ---
 # <a name="on-demand-provisioning"></a>Bedarfsorientierte Bereitstellung
 Mit der bedarfsorientierten Bereitstellung können Sie einen Benutzer innerhalb von Sekunden in einer Anwendung bereitstellen. Unter anderem können Sie dieses Feature für Folgendes verwenden:
@@ -28,12 +28,15 @@ Mit der bedarfsorientierten Bereitstellung können Sie einen Benutzer innerhalb 
 ## <a name="how-to-use-on-demand-provisioning"></a>Verwenden der bedarfsorientierten Bereitstellung
 
 1. Melden Sie sich beim **Azure-Portal** an.
-2. Navigieren Sie zu **Alle Dienste** > **Unternehmensanwendungen**.
-3. Wählen Sie Ihre Anwendung aus, und wechseln Sie zur Konfigurationsseite für die Bereitstellung.
-4. Konfigurieren Sie die Bereitstellung, indem Sie Ihre Administratoranmeldeinformationen angeben.
-5. Klicken Sie auf **Bei Bedarf bereitstellen**.
-6. Suchen Sie anhand von Vorname, Nachname, Anzeigename, Benutzerprinzipalname oder E-Mail-Adresse nach einem Benutzer.
-7. Klicken Sie unten auf der Seite auf **Bereitstellen**.
+1. Navigieren Sie zu **Alle Dienste** > **Unternehmensanwendungen**.
+1. Wählen Sie Ihre Anwendung aus, und wechseln Sie zur Konfigurationsseite für die Bereitstellung.
+1. Konfigurieren Sie die Bereitstellung, indem Sie Ihre Administratoranmeldeinformationen angeben.
+1. Klicken Sie auf **Bei Bedarf bereitstellen**.
+1. Suchen Sie anhand von Vorname, Nachname, Anzeigename, Benutzerprinzipalname oder E-Mail-Adresse nach einem Benutzer.
+   > [!NOTE]
+   > Für die HR-Cloudbereitstellungs-App (Workday/SuccessFactors zu AD/Azure AD) wird ein anderer Eingabewert verwendet. Geben Sie bei einem Workday-Szenario für den Benutzer in Workday „WID“ an. Geben Sie bei einem SuccessFactors-Szenario den Wert „personIdExternal“ des Benutzers in SuccessFactors an. 
+ 
+1. Klicken Sie unten auf der Seite auf **Bereitstellen**.
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Screenshot: Benutzeroberfläche des Azure-Portals für die bedarfsorientierte Benutzerbereitstellung":::
 
@@ -121,7 +124,7 @@ Schließlich führt der Bereitstellungsdienst eine Aktion (z. B. Erstellen, Akt
 
 Hier sehen Sie ein Beispiel für die Anzeige nach der erfolgreichen bedarfsorientierten Bereitstellung eines Benutzers:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Screenshot: erfolgreiche bedarfsorientierte Bereitstellung eines Benutzers":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Screenshot: Benutzeroberfläche des Azure-Portals für die bedarfsorientierte Benutzerbereitstellung":::
 
 #### <a name="view-details"></a>Anzeigen der Details
 
@@ -144,7 +147,7 @@ Zurzeit gibt es einige bekannte Einschränkungen bei der bedarfsorientierten Ber
 > [!NOTE]
 > Die folgenden Einschränkungen gelten nur für die bedarfsorientierte Bereitstellung. Weitere Informationen dazu, ob eine Anwendung Bereitstellungsgruppen, Löschungen oder andere Features unterstützt, finden Sie im Tutorial für die jeweilige Anwendung.
 
-* Workday, Amazon Web Services (AWS) und SuccessFactors unterstützen die bedarfsorientierte Bereitstellung nicht. 
+* Die AWS-Anwendung (Amazon Web Services) unterstützt die bedarfsgesteuerte Bereitstellung nicht. 
 * Die bedarfsorientierte Bereitstellung von Gruppen und Rollen wird nicht unterstützt.
 * Die bedarfsorientierte Bereitstellung unterstützt das Deaktivieren von Benutzern, deren Zuweisung zur Anwendung aufgehoben wurde. Das Deaktivieren oder Löschen von Benutzern, die in Azure AD deaktiviert oder gelöscht wurden, wird jedoch nicht unterstützt. Diese Benutzer werden bei der Benutzersuche nicht angezeigt.
 

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001943"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91758304"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Erstellen einer Dienst-SAS für einen Container oder ein Blob mit .NET
 
@@ -30,7 +30,7 @@ Mit dem folgenden Codebeispiel wird eine SAS für einen Container erstellt. Wenn
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-Erstellen Sie ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Element. Rufen Sie dann [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen. 
+Eine Dienst-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential)-Klasse, um die Informationen zu erstellen, die zum Signieren der SAS verwendet werden. Erstellen Sie als Nächstes ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Objekt, und rufen Sie [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
@@ -86,7 +86,7 @@ Mit dem folgenden Codebeispiel wird eine SAS für ein Blob erstellt. Wenn der Na
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-Erstellen Sie ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Element. Rufen Sie dann [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen. 
+Eine Dienst-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential)-Klasse, um die Informationen zu erstellen, die zum Signieren der SAS verwendet werden. Erstellen Sie als Nächstes ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Objekt, und rufen Sie [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 
@@ -136,6 +136,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]

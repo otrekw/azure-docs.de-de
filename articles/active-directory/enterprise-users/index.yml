@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: 'Dokumentation zur Verwaltung von Unternehmensbenutzern: Azure AD'
+summary: Azure AD bietet Benutzerverwaltungsdienste wie Gruppen und Lizenzen und unterstützt Sie dabei, Ihre wichtigsten Benutzerverwaltungsaufgaben schnell auszuführen. Sie können Lizenzen zuweisen, Anwendungszugriff für Gruppen oder Benutzer zuweisen und Domänennamen hinzufügen oder verwalten.
+metadata:
+  title: Dokumentation zu Benutzern, Gruppen, Lizenzen und Domänen in Azure Active Directory
+  description: Hier erfahren Sie, wie Sie Gruppen, Domänennamen und Lizenzen verwenden, um die Benutzerauthentifizierung in Ihrer Azure AD-Organisation zu verwalten.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: enterprise-users
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 3918c28d9657b077eefd5226be656ab6ad5a7dbf
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372729"
+landingContent:
+- title: Informationen zur Verwaltung von Unternehmensbenutzern
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Benutzer, Gruppen, Domänen und Lizenzen
+      url: directory-overview-user-model.md
+    - text: Übersicht über benutzerdefinierte Rollen
+      url: ../roles/custom-overview.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Unabhängigkeit von Azure AD-Organisationen
+      url: licensing-directory-independence.md
+    - text: Verwalten des Zugriffs mithilfe von Gruppen
+      url: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Hinzufügen eines Benutzers
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Festlegen einer Ablaufrichtlinie für Gruppen
+      url: groups-quickstart-expiration.md
+    - text: Zuweisen von Lizenzen zu Benutzern
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Verwalten von Azure AD-Domänennamen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hinzufügen Ihrer benutzerdefinierten Domänennamens
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Verwalten benutzerdefinierter Domänennamen
+      url: domains-manage.md
+- title: Verwalten von Gruppen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer dynamischen Gruppe
+      url: groups-create-rule.md
+    - text: Gruppeneinstellungen in PowerShell
+      url: groups-settings-v2-cmdlets.md
+    - text: Festlegen einer Benennungsrichtlinie für Gruppen
+      url: groups-naming-policy.md
+- title: Hinzufügen von Domänen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hinzufügen eines benutzerdefinierten Domänennamens
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Verwalten benutzerdefinierter Domänennamen
+      url: domains-manage.md

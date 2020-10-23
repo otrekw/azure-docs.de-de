@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955912"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570440"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 
@@ -30,7 +30,7 @@ Wenn eine App den Durchsatz in einem Cosmos-Container mithilfe von Cosmos DB ela
 
 Wie in der folgenden Abbildung gezeigt wird, sind die Daten in einem Container über zwei Dimensionen verteilt – innerhalb einer Region und regionsübergreifend, weltweit:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Physische Partitionen" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Systemtopologie" border="false":::
 
 Eine physische Partition wird durch eine Gruppe von Replikaten implementiert, die als *Replikatgruppe* bezeichnet wird. Jeder Computer hostet Hunderte von Replikaten für verschiedene physische Partitionen innerhalb eines festen Satzes von Prozessen, wie in der Abbildung oben gezeigt. Die zu den physischen Partitionen gehörenden Replikate werden dynamisch und mit Lastenausgleich auf die Computer in einem Cluster sowie die Rechenzentren in einer Region verteilt.  
 
@@ -52,7 +52,7 @@ Eine physische Partition ist eine selbst verwaltete Gruppe von Replikaten mit dy
 
 Eine Gruppe physischer Partitionen (jeweils eine aus jeder für die Cosmos-Datenbank konfigurierten Region) dient der Verwaltung derselben Schlüsselsätze, die in allen konfigurierten Regionen repliziert werden. Dieses höhere Koordinationselement wird als *Partitionsgruppe* bezeichnet. Es stellt eine geografisch verteilte, dynamische Überlagerung der physischen Partitionen für die Verwaltung eines bestimmten Schlüsselsatzes dar. Während der Gültigkeitsbereich einer physischen Partition (einer Replikatgruppe) auf einen Cluster beschränkt ist, kann eine Partitionsgruppe Cluster, Rechenzentren und geografische Regionen überschreiten, wie die folgende Abbildung zeigt:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Partitionsgruppen" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Systemtopologie" border="false":::
 
 Sie können sich eine Partitionsgruppe als eine geografisch verteilte „Superreplikatgruppe“ vorstellen, die mehrere Replikatgruppen mit denselben Schlüsselsätzen umfasst. Wie bei einer Replikatgruppe ist auch bei einer Partitionsgruppe die Mitgliedschaft dynamisch. Sie variiert in Abhängigkeit von impliziten Vorgängen zur Verwaltung physischer Partitionen beim Hinzufügen/Entfernen von Partitionen in einer Partitionsgruppe (wenn Sie z.B. den Durchsatz in einem Container aufskalieren, in Ihrer Cosmos-Datenbank eine Region hinzufügen/entfernen, oder bei Ausfällen). Damit die einzelnen Partitionen (einer Partitionsgruppe) die festgelegte Mitgliedschaft in der eigenen Replikatgruppe verwalten können, ist die Mitgliedschaft vollständig dezentralisiert und hochverfügbar angelegt. Während der Neukonfiguration einer Partitionsgruppe wird auch die Topologie der Überlagerung zwischen physischen Partitionen eingerichtet. Die Topologie wird dynamisch basierend auf der Konsistenzstufe, dem geografischen Abstand und der zwischen den physischen Quell- und Zielpartitionen verfügbaren Netzwerkbandbreite ausgewählt.  
 
@@ -62,7 +62,7 @@ Der Dienst ermöglicht es Ihnen, Ihre Cosmos-Datenbanken mit einer einzelnen ode
 
 Unser Ansatz zur Updateverteilung, Konfliktlösung und Ursachenverfolgung beruht auf der Vorarbeit zu [epidemischen Algorithmen](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) und dem [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf)-System. Teile dieser Ideen haben überlebt und stellen einen passenden Referenzrahmen für die Beschreibung des Systementwurfs von Cosmos DB dar, sie haben aber auch eine erhebliche Transformation durchlaufen, während sie auf das Cosmos DB-System übertragen wurden. Diese Anpassungen waren erforderlich, da bei früheren Systemen weder die Ressourcenverwaltung noch die angestrebte Zielskalierung von Cosmos DB noch die erforderlichen Funktionen (z.B. Konsistenz mit begrenzter Veraltung) gegeben waren. Auch konnten ohne die Änderungen die strikten und umfassenden SLAs von Cosmos DB für die Kunden nicht erreicht werden.  
 
-Denken Sie sich daran, dass eine Partitionsgruppe über mehrere Regionen verteilt ist und das (Multimaster-)Replikationsprotokoll von Cosmos DB bei der Replikation der Daten auf den physischen Partitionen einer Partitionsgruppe befolgt. Jede physische Partition (einer Partitionsgruppe) akzeptiert Schreibanforderungen und verarbeitet Leseanforderungen in der Regel für die Clients in derselben Region. Die von einer physischen Partition akzeptierten Schreibanforderungen innerhalb einer Region werden dauerhaft committet und innerhalb der physischen Partition hochverfügbar gemacht, bevor sie dem Client bestätigt werden. Dies sind vorläufige Schreibvorgänge, die über einen Anti-Entropie-Kanal an andere physische Partitionen in der Partitionsgruppe übermittelt werden. Clients können über einen Anforderungsheader vorläufige oder committete Schreibvorgänge anfordern. Die Anti-Entropie-Übertragung ist (einschließlich ihrer Häufigkeit) dynamisch. Sie basiert auf der Topologie der Partitionsgruppe, der regionalen Nähe der physischen Partitionen und der konfigurierten Konsistenzstufe. Innerhalb einer Partitionsgruppe befolgt Cosmos DB ein Schema mit einem primären Commit mit einer dynamisch ausgewählten Vermittlungspartition. Die Vermittlungsauswahl ist dynamisch und ein integraler Bestandteil der Neukonfiguration der Partitionsgruppe basierend auf der Topologie der Überlagerung. Für die committeten Schreibvorgänge (einschließlich mehrzeiliger/Batchupdates) wird die Sortierung garantiert. 
+Denken Sie sich daran, dass eine Partitionsgruppe über mehrere Regionen verteilt ist und das Replikationsprotokoll (für Schreibvorgänge für mehrere Regionen) von Cosmos DB bei der Replikation der Daten auf den physischen Partitionen einer Partitionsgruppe befolgt. Jede physische Partition (einer Partitionsgruppe) akzeptiert Schreibanforderungen und verarbeitet Leseanforderungen in der Regel für die Clients in derselben Region. Die von einer physischen Partition akzeptierten Schreibanforderungen innerhalb einer Region werden dauerhaft committet und innerhalb der physischen Partition hochverfügbar gemacht, bevor sie dem Client bestätigt werden. Dies sind vorläufige Schreibvorgänge, die über einen Anti-Entropie-Kanal an andere physische Partitionen in der Partitionsgruppe übermittelt werden. Clients können über einen Anforderungsheader vorläufige oder committete Schreibvorgänge anfordern. Die Anti-Entropie-Übertragung ist (einschließlich ihrer Häufigkeit) dynamisch. Sie basiert auf der Topologie der Partitionsgruppe, der regionalen Nähe der physischen Partitionen und der konfigurierten Konsistenzstufe. Innerhalb einer Partitionsgruppe befolgt Cosmos DB ein Schema mit einem primären Commit mit einer dynamisch ausgewählten Vermittlungspartition. Die Vermittlungsauswahl ist dynamisch und ein integraler Bestandteil der Neukonfiguration der Partitionsgruppe basierend auf der Topologie der Überlagerung. Für die committeten Schreibvorgänge (einschließlich mehrzeiliger/Batchupdates) wird die Sortierung garantiert. 
 
 Wir nutzen codierte Vektoruhren (mit Regions-ID und logischen Taktungen für die einzelnen Konsensstufen der Replikat- bzw. Partitionsgruppe) für die Ursachenverfolgung und Versionsvektoren für das Erkennen und Beheben von Updatekonflikten. Die Topologie und der Peerauswahlalgorithmus sollen sicherstellen, dass für die Versionsvektoren nur ein fester und sehr geringer Mehraufwand in Bezug auf Speicher und Netzwerk entsteht. Der Algorithmus garantiert strikte Konvergenz.  
 

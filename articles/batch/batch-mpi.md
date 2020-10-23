@@ -4,12 +4,12 @@ description: Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithi
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dc52d13cf41347e7382872e887d87fc9b25a95b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850624"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108081"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
@@ -95,8 +95,8 @@ Suchen Sie in den folgenden Artikeln nach den Größen, für die „RDMA-fähig�
   * [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) (nur Windows)
 * **VirtualMachineConfiguration**-Pools
 
-  * [Größen für virtuelle Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Größen für virtuelle Computer in Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux)
+  * [Größen für virtuelle Computer in Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows)
 
 > [!NOTE]
 > Zum Nutzen von RDMA auf [Linux-Computeknoten](batch-linux-nodes.md) müssen Sie **Intel MPI** auf den Knoten verwenden.

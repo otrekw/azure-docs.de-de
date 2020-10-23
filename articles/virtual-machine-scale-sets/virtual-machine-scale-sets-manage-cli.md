@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502901"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570529"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+Sie können auch ausführliche *instanceView*-Informationen für alle Instanzen in einem API-Befehl abrufen, um die API-Einschränkung bei großen Installationen zu vermeiden. Geben Sie eigene Werte für `--resource-group`, `--subscription` und `--name` an.
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>Auflisten von Verbindungsinformationen für virtuelle Computer
 Wenn Sie eine Verbindung mit den virtuellen Computern in einer Skalierungsgruppe herstellen möchten, stellen Sie eine SSH- oder RDP-Verbindung mit einer zugewiesenen öffentlichen IP-Adresse und Portnummer her. Standardmäßig werden dem Azure-Lastenausgleich, der den Datenverkehr von Remoteverbindungen an die einzelnen virtuellen Computer weiterleitet, Regeln für die Netzwerkadressübersetzung (Network Address Translation, NAT) hinzugefügt. Verwenden Sie [az vmss list-instance-connection-info](/cli/azure/vmss), um die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe aufzulisten. Im folgenden Beispiel werden Verbindungsinformationen für VM-Instanzen in der Skalierungsgruppe namens *myScaleSet* und in der Ressourcengruppe *myResourceGroup* aufgeführt. Geben Sie für diese Namen Ihre eigenen Werte an:

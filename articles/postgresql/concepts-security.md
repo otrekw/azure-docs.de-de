@@ -1,17 +1,17 @@
 ---
 title: Sicherheit in Azure Database for PostgreSQL – Einzelserver
 description: Eine Übersicht über die Sicherheitsfeatures in Azure Database for PostgreSQL– Einzelserver.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: b95e02046b2f05dd89ec8fce5da438380a8894e9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375788"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710480"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Sicherheit in Azure Database for PostgreSQL – Einzelserver
 
@@ -54,6 +54,9 @@ Sie können [Advanced Threat Protection](concepts-data-access-and-security-threa
 
 Aktivitäten in Ihren Datenbanken können mithilfe der [Überwachungsprotokollierung](concepts-audit.md) nachverfolgt werden. 
 
+## <a name="migrating-from-oracle"></a>Migrieren aus Oracle
+
+Oracle unterstützt Transparent Data Encryption (TDE) zum Verschlüsseln von Tabellen- und Tabellenbereichsdaten. In Azure for PostgreSQL werden die Daten automatisch auf verschiedenen Ebenen verschlüsselt. Weitere Informationen finden Sie auf dieser Seite im Abschnitt „Ruhende Daten“ sowie in verschiedenen Themen zur Sicherheit, z. B. zu [kundenseitig verwalteten Schlüsseln](./concepts-data-encryption-postgresql.md) und zur [doppelten Infrastrukturverschlüsselung](./concepts-infrastructure-double-encryption.md). Sie können auch die Verwendung der Erweiterung [pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html) in Erwägung ziehen, die in [Azure for PostgreSQL](./concepts-extensions.md) unterstützt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Aktivieren von Firewallregeln für [IP-Adressen](concepts-firewall-rules.md) oder [virtuelle Netzwerke](concepts-data-access-and-security-vnet.md)

@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/02/2020
+ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513764"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761514"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen und Anforderungen für Azure Data Share 
 
@@ -35,11 +35,10 @@ Im Folgenden finden Sie eine Zusammenfassung der Rollen, die der verwalteten Ide
 |Azure Blob Storage| Leser von Speicherblobdaten | Mitwirkender an Storage-Blobdaten
 |Azure Data Lake Gen1 | Besitzer | Nicht unterstützt
 |Azure Data Lake Gen2 | Leser von Speicherblobdaten | Mitwirkender an Storage-Blobdaten
-|Azure SQL Server | Mitwirkender von SQL DB | Mitwirkender von SQL DB
 |Azure Data Explorer-Cluster | Mitwirkender | Mitwirkender
 |
 
-Bei SQL-basierter Freigabe muss ein SQL-Benutzer über einen externen Anbieter in Azure SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Nachstehend finden Sie eine Zusammenfassung der für den SQL-Benutzer erforderlichen Berechtigung.
+Bei SQL-basierter Freigabe muss ein SQL-Benutzer über einen externen Anbieter in Azure SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Zum Erstellen dieses Benutzers ist eine Azure Active Directory-Administratorberechtigung erforderlich. Nachstehend finden Sie eine Zusammenfassung der für den SQL-Benutzer erforderlichen Berechtigung.
 
 |**SQL-Datenbanktyp**|**SQL-Benutzerberechtigung des Datenanbieters**|**SQL-Benutzerberechtigung des Datenconsumers**|
 |---|---|---|

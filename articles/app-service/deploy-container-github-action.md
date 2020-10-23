@@ -3,45 +3,65 @@ title: Benutzerdefinierte Container-CI/CD aus GitHub-Aktionen
 description: Erfahren Sie, wie Sie mithilfe von GitHub-Aktionen Ihren benutzerdefinierten Linux-Container aus einer CI/CD-Pipeline in App Service bereitstellen.
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2019
+ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 6af23aba28ce3cda9982878ed08ec515aa25633a
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: github-actions-azure
+ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962603"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893355"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Bereitstellen eines benutzerdefinierten Containers in App Service mithilfe von GitHub-Aktionen
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) bietet Ihnen die Flexibilität, einen automatisierten Workflow für den Softwareentwicklungs-Lebenszyklus zu erstellen. Mit der [Azure App Service-Aktion für Container](https://github.com/Azure/webapps-container-deploy) können Sie Ihren Workflow automatisieren, um mithilfe von GitHub-Aktionen [benutzerdefinierte App Service-Container](overview.md) bereitzustellen.
+[GitHub Actions](https://help.github.com/en/articles/about-github-actions) bietet Ihnen die Flexibilität, einen automatisierten Softwareentwicklungsworkflow zu erstellen. Mit der [Azure Web Deploy-Aktion](https://github.com/Azure/webapps-deploy) können Sie Ihren Workflow automatisieren, um mithilfe von GitHub Actions benutzerdefinierte [App Service](overview.md)-Container bereitzustellen.
 
-> [!IMPORTANT]
-> GitHub Actions liegt zurzeit in einer Betaversion vor. Sie müssen sich zunächst mit Ihrem GitHub-Konto [registrieren, um die Vorschau nutzen zu können](https://github.com/features/actions).
-> 
-
-Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
+Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter im Workflow.
 
 Bei einem Azure App Service-Containerworkflow umfasst die Datei drei Abschnitte:
 
 |`Section`  |Aufgaben  |
 |---------|---------|
-|**Authentifizierung** | 1. Definieren eines Dienstprinzipals. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
-|**Build** | 1. Einrichten der Umgebung. <br /> 2. Erstellen des Containerimages |
+|**Authentifizierung** | 1. Abrufen eines Dienstprinzipals oder Veröffentlichungsprofils. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
+|**Build** | 1. Erstellen Sie die Umgebung. <br /> 2. Erstellen des Containerimages |
 |**Bereitstellen** | 1. Bereitstellen des Containerimages |
 
-## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
+## <a name="prerequisites"></a>Voraussetzungen
 
-Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
+- Ein Azure-Konto mit einem aktiven Abonnement. [Kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Ein GitHub-Konto. Falls Sie noch nicht über ein Konto verfügen, können Sie sich [kostenlos](https://github.com/join) registrieren.  
+- Eine funktionierende Containerregistrierung und eine Azure App Service-App für Container. In diesem Beispiel wird Azure Container Registry verwendet. 
+    - [Hier erfahren Sie, wie Sie eine Node.js-Containeranwendung mithilfe von Docker zu erstellen, das Containerimage in eine Registrierung pushen und das Image dann in Azure App Service bereitzustellen.](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+
+## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
+
+Die empfohlene Vorgehensweise für die Authentifizierung mit Azure App Services für GitHub Actions verwendet ein Veröffentlichungsprofil. Sie können sich auch mit einem Dienstprinzipal authentifizieren, für diesen Vorgang sind jedoch weitere Schritte erforderlich. 
+
+Speichern Sie die Anmeldeinformationen des Veröffentlichungsprofils oder den Dienstprinzipal als [GitHub-Geheimnis](https://docs.github.com/en/actions/reference/encrypted-secrets), um sich bei Azure zu authentifizieren. In Ihrem Workflow greifen Sie auf das Geheimnis zu. 
+
+# <a name="publish-profile"></a>[Veröffentlichungsprofil](#tab/publish-profile)
+
+Ein Veröffentlichungsprofil stellt Anmeldeinformationen auf App-Ebene dar. Richten Sie Ihr Veröffentlichungsprofil als GitHub-Geheimnis ein. 
+
+1. Wechseln Sie im Azure-Portal zu Ihrem App Service. 
+
+1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen**.
+
+1. Speichern Sie die heruntergeladene Datei. Zum Erstellen eines GitHub-Geheimnisses verwenden Sie den Inhalt der Datei.
+
+# <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
+
+Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Führen Sie diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** aus.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
-                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name> \
+                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
                             --sdk-auth
 ```
 
-Ersetzen Sie im obigen Beispiel die Platzhalter durch Ihre Abonnement-ID und den Ressourcengruppennamen. Die Ausgabe ist ein JSON-Objekt mit den Anmeldeinformationen für die Rollenzuweisung, die ähnlich wie unten Zugriff auf Ihre App Service-App gewähren. Kopieren Sie dieses JSON-Objekt zur späteren Verwendung.
+Ersetzen Sie im Beispiel die Platzhalter durch Ihre Abonnement-ID, den Ressourcengruppennamen und den App-Namen. Die Ausgabe ist ein JSON-Objekt mit den Anmeldeinformationen für die Rollenzuweisung, die Zugriff auf Ihre App Service-App gewähren. Kopieren Sie dieses JSON-Objekt zur späteren Verwendung.
 
 ```output 
   {
@@ -54,13 +74,15 @@ Ersetzen Sie im obigen Beispiel die Platzhalter durch Ihre Abonnement-ID und den
 ```
 
 > [!IMPORTANT]
-> Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Sie können den Bereich im obigen Azure CLI-Befehl auf die spezifische App Service-App und die Azure Container Registry-Instanz einschränken, in die die Containerimages mithilfe von Push übertragen werden.
+> Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Der Bereich im vorherigen Beispiel ist auf die spezifische App Service-App und nicht auf die gesamte Ressourcengruppe beschränkt.
+
+---
 
 ## <a name="configure-the-github-secret"></a>Konfigurieren des GitHub-Geheimnisses
 
 Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
 
-Fügen Sie den Inhalt der JSON-Ausgabe aus [Erstellen eines Dienstprinzipals](#create-a-service-principal) als Wert der Geheimnisvariablen ein. Geben Sie dem Geheimnis einen Namen wie `AZURE_CREDENTIALS`.
+Fügen Sie die Inhalte der JSON-Ausgabe als Wert der Geheimnisvariablen ein. Geben Sie dem Geheimnis einen Namen wie `AZURE_CREDENTIALS`.
 
 Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis für die Eingabe `creds` der Azure-Anmeldeaktion. Beispiel:
 
@@ -70,57 +92,145 @@ Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis f�
     creds: ${{ secrets.AZURE_CREDENTIALS }}
 ```
 
-Definieren Sie in gleicher Weise die folgenden zusätzlichen Geheimnisse für die Containerregistrierungs-Anmeldeinformationen, und legen Sie sie in der Aktion für die Docker-Anmeldung fest.
+## <a name="configure-the-github-secret-for-authentication"></a>Konfigurieren des GitHub-Geheimnisses für die Authentifizierung
 
-- REGISTRY_USERNAME
-- REGISTRY_PASSWORD
+# <a name="publish-profile"></a>[Veröffentlichungsprofil](#tab/publish-profile)
+
+Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
+
+Um [Anmeldeinformationen auf App-Ebene](#generate-deployment-credentials) zu verwenden, fügen Sie den Inhalt der heruntergeladenen Veröffentlichungsprofildatei in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_WEBAPP_PUBLISH_PROFILE`.
+
+Wenn Sie Ihren GitHub-Workflow konfigurieren, verwenden Sie `AZURE_WEBAPP_PUBLISH_PROFILE` in der Bereitstellungsaktion für die Azure-Web-App. Beispiel:
+    
+```yaml
+- uses: azure/webapps-deploy@v2
+  with:
+    publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+```
+
+# <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
+
+Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
+
+Um [Anmeldeinformationen auf Benutzerebene](#generate-deployment-credentials) zu verwenden, fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis einen Namen wie `AZURE_CREDENTIALS`.
+
+Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis für die Eingabe `creds` der Azure-Anmeldeaktion. Beispiel:
+
+```yaml
+- uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+```
+
+---
+
+## <a name="configure-github-secrets-for-your-registry"></a>Konfigurieren von GitHub-Geheimnissen für die Registrierung
+
+Definieren Sie Geheimnisse für die Docker-Anmeldeaktion. 
+
+1. Wechseln Sie im Azure-Portal oder in Docker zu Ihrem Container, und kopieren Sie den Benutzernamen und das Kennwort. 
+
+2. Definieren Sie ein neues Geheimnis für den Registrierungsbenutzer mit dem Namen `REGISTRY_USERNAME`. 
+
+3. Definieren Sie ein neues Geheimnis für das Registrierungskennwort mit dem Namen `REGISTRY_PASSWORD`. 
 
 ## <a name="build-the-container-image"></a>Erstellen des Containerimages
 
-Das folgende Beispiel zeigt einen Teil des Workflows zum Erstellen des Docker-Images.
+Das folgende Beispiel zeigt einen Teil des Workflows zum Erstellen eines Node.js-Docker-Images. Melden Sie sich über die [Docker-Anmeldung](https://github.com/azure/docker-login) bei einer privaten Containerregistrierung an. In diesem Beispiel wird Azure Container Registry verwendet, die gleiche Aktion funktioniert jedoch auch mit anderen Registrierungen. 
+
 
 ```yaml
+name: Linux Container Node Workflow
+
 on: [push]
 
-name: Linux_Container_Node_Workflow
-
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-    
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
+    - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
+        login-server: mycontainer.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-    
     - run: |
-        docker build . -t contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
-        docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
+```
+
+Sie können auch die [Docker-Anmeldung](https://github.com/azure/docker-login) verwenden, um sich gleichzeitig bei mehreren Containerregistrierungen anzumelden. Dieses Beispiel enthält zwei neue GitHub-Geheimnisse für die Authentifizierung mit docker.io.
+
+```yml
+name: Linux Container Node Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: mycontainer.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.DOCKERIO_USERNAME }}
+        password: ${{ secrets.DOCKERIO_PASSWORD }}
+    - run: |
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
 ## <a name="deploy-to-an-app-service-container"></a>Bereitstellung in einem App Service-Container
 
-Um Ihr Image in einem benutzerdefinierten Container in App Service bereitzustellen, verwenden Sie die Aktion `azure/webapps-container-deploy@v1`. Diese Aktion umfasst fünf Parameter:
+Um Ihr Image in einem benutzerdefinierten Container in App Service bereitzustellen, verwenden Sie die Aktion `azure/webapps-deploy@v2`. Diese Aktion umfasst fünf Parameter:
 
 | **Parameter**  | **Erklärung**  |
 |---------|---------|
 | **app-name** | (Erforderlich): Name der App Service-App. | 
+| **publish-profile** | (Optional) Veröffentlichungsprofil-Dateiinhalte mit Web Deploy-Geheimnissen. |
+| **images** | Der vollqualifizierte Name der Containerimages. Beispiel: „myregistry.azurecr.io/nginx:latest“ oder „python:3.7.2-alpine/“. In einem Szenario mit mehreren Containern können mehrere Namen von Containerimages angegeben werden (mehrere getrennte Zeilen). |
 | **slot-name** | (Optional): Geben Sie einen vorhandene Slot ein, bei dem es sich nicht um den Produktionsslot handelt. |
-| **images** | (Erforderlich): Geben Sie den vollqualifizierten Namen des bzw. der Containerimages an. Beispiel: „myregistry.azurecr.io/nginx:latest“ oder „python:3.7.2-alpine/“. Für eine App mit mehreren Containern können mehrere Namen von Containerimages angegeben werden (mehrere getrennte Zeilen). |
-| **configuration-file** | (Optional): Der Pfad der Docker-Compose-Datei. Es muss sich um einen vollqualifizierten Pfad oder einen Pfad relativ zum Standardarbeitsverzeichnis handeln. Dieser Parameter ist beim Konfigurieren von Apps mit mehreren Containern erforderlich. |
-| **container-command** | (Optional): Geben Sie den Startbefehl ein. Beispiel: „dotnet run“ oder „dotnet filename.dll“. |
+| **configuration-file** | (Optional): Der Pfad der Docker-Compose-Datei |
 
-Nachstehend wird ein Beispielworkflow zum Erstellen und Bereitstellen einer Node.js-App in einem benutzerdefinierten Container in App Service angezeigt. Beachten Sie, wie die `creds`-Eingabe auf das `AZURE_CREDENTIALS`-Geheimnis verweist, das Sie zuvor erstellt haben.
+# <a name="publish-profile"></a>[Veröffentlichungsprofil](#tab/publish-profile)
+
+```yaml
+name: Linux Container Node Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: mycontainer.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'myapp'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        images: 'mycontainer.azurecr.io/myapp:${{ github.sha }}'
+```
+# <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
 
 ```yaml
 on: [push]
@@ -142,23 +252,24 @@ jobs:
     
     - uses: azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
+        login-server: mycontainer.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-    
     - run: |
-        docker build . -t contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
-        docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }} 
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
       
-    - uses: azure/webapps-container-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'node-rnc'
-        images: 'contoso.azurecr.io/nodejssampleapp:${{ github.sha }}'
+        app-name: 'myapp'
+        images: 'mycontainer.azurecr.io/myapp:${{ github.sha }}'
     
     - name: Azure logout
       run: |
         az logout
 ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -169,8 +280,6 @@ Die verfügbaren Aktionen sind auf verschiedene GitHub-Repositorys verteilt, jew
 - [Azure-Anmeldung](https://github.com/Azure/login)
 
 - [Azure-Web-App](https://github.com/Azure/webapps-deploy)
-
-- [Azure-Web-App für Container](https://github.com/Azure/webapps-container-deploy)
 
 - [Docker-Anmeldung/-Abmeldung](https://github.com/Azure/docker-login)
 

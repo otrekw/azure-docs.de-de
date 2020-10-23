@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287800"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631510"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection: Entwerfen robuster Lösungen
 
@@ -54,7 +54,7 @@ Wählen Sie für [Azure App Service](/azure/app-service/app-service-value-prop-w
 
 Hinter der tiefgehenden Verteidigung steht die Idee, dem Risiko mit verschiedenen Verteidigungsstrategien zu begegnen. Abwehrmaßnahmen in die Schichten einer Anwendung zu integrieren reduziert die Wahrscheinlichkeit eines erfolgreichen Angriffs. Sie sollten sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform implementieren.
 
-Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) und [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](/azure/virtual-network/security-overview) kann die angreifbare Oberfläche ebenfalls reduziert werden.
+Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung einer Genehmigungsliste verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) und [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](/azure/virtual-network/security-overview) kann die angreifbare Oberfläche ebenfalls reduziert werden.
 Sie können mit [Diensttags](/azure/virtual-network/security-overview#service-tags) und [Anwendungssicherheitsgruppen](/azure/virtual-network/security-overview#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
 
 Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](/azure/virtual-network/virtual-networks-overview) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von [Dienstendpunkten](/azure/virtual-network/virtual-network-service-endpoints-overview) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614049"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449325"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -73,15 +73,15 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 
    - Für eine einzelne Ressource klicken Sie im Ressourcenmenü unter **Überwachen** auf **Diagnoseeinstellungen**.
 
-        ![Diagnoseeinstellungen](media/diagnostic-settings/menu-resource.png)
+        ![Screenshot des Bereichs „Überwachung“ eines Ressourcenmenüs im Azure-Portal mit hervorgehobener Option „Diagnoseeinstellungen“](media/diagnostic-settings/menu-resource.png)
 
    - Für eine oder mehrere Ressourcen klicken Sie im Azure Monitor-Menü unter **Einstellungen** auf **Diagnoseeinstellungen**, und klicken Sie dann auf die Ressource.
 
-      ![Diagnoseeinstellungen](media/diagnostic-settings/menu-monitor.png)
+        ![Screenshot des Abschnitts „Einstellungen“ im Azure Monitor-Menü mit hervorgehobener Option „Diagnoseeinstellungen“](media/diagnostic-settings/menu-monitor.png)
 
    - Für das Aktivitätsprotokoll klicken Sie im **Azure Monitor**-Menü auf **Aktivitätsprotokoll** und dann auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass Sie alle Legacykonfigurationen für das Aktivitätsprotokoll deaktivieren. Ausführliche Informationen dazu finden Sie unter [Deaktivieren vorhandener Einstellungen](./activity-log.md#legacy-collection-methods).
 
-        ![Diagnoseeinstellungen](media/diagnostic-settings/menu-activity-log.png)
+        ![Screenshot des Azure Monitor-Menüs mit ausgewähltem Aktivitätsprotokoll und hervorgehobener Option „Diagnoseeinstellungen“ in der Menüleiste „Aktivitätsprotokoll“ in Azure Monitor](media/diagnostic-settings/menu-activity-log.png)
 
 2. Wenn keine Einstellungen für die Ressource vorhanden sind, die Sie ausgewählt haben, werden Sie aufgefordert, eine Einstellung zu erstellen. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4476e20772c0736f35c074b200ea9fd47a0ae81c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575536"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109169"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Storage Gen1
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Azure Data Lake Storage Gen1-Konto aktivieren und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -46,7 +46,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
         
         * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Monitor-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit Azure Monitor-Protokollen gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md).
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Monitor-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit Azure Monitor-Protokollen gesammelten Daten](../azure-monitor/log-query/get-started-portal.md).
      
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.
@@ -182,7 +182,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | StreamName |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 ## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
-Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Monitor-Protokolle (Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit der Azure Monitor-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
+Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Monitor-Protokolle (Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit der Azure Monitor-Protokollsuche gesammelten Daten](../azure-monitor/log-query/get-started-portal.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
 
 ```
 search *
@@ -196,4 +196,3 @@ Azure Data Lake Storage Gen1 stellt ein Muster bereit, nach dem die Protokolldat
 ## <a name="see-also"></a>Weitere Informationen
 * [Übersicht über Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
-

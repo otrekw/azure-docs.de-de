@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527087"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91774577"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 Business Central
 
@@ -36,7 +36,8 @@ Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Par
 Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
 - Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
-- Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Die Angebots-ID darf zusammen mit der Herausgeber-ID nicht länger als 40 Zeichen lang sein.
+- Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen. Wenn die Herausgeber-ID z. B. „testpublisherid“ heißt und Sie hier **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1`.
 - Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
 Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
@@ -56,11 +57,11 @@ Wählen Sie die Option aus, die Sie für dieses Angebot verwenden möchten.
 
 #### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
 
-Listen Sie Ihr Angebot für Kunden als kostenlos, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/my-app`.
+Listen Sie Ihr Angebot für Kunden als kostenlos auf.
 
 #### <a name="free-trial-listing"></a>Kostenlose Testversion (Listing)
 
-Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion auf, indem Sie eine gültige URL (mit `http` oder `https` beginnend) angeben, über die auf die Testversion zugegriffen werden kann.  Beispiel: `https://contoso.com/trial/my-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
+Listen Sie Ihr Angebot für Kunden als kostenlos auf, und stellen Sie einen Link zu einer kostenlose Testversion bereit. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
 
 > [!NOTE]
 > Die Token, die Ihre Anwendung über den Testlink erhält, können nur verwendet werden, um zum Automatisieren der Kontoerstellung in Ihrer App Benutzerinformationen aus Azure Active Directory (Azure AD) abzurufen. Die Authentifizierung mit diesem Token wird für Microsoft-Konten nicht unterstützt.
@@ -256,9 +257,8 @@ Laden Sie die Erweiterungspaketdatei (APP-Datei) für Ihr Angebot hoch.
 
 Erforderlich, wenn Ihr Angebot zusammen mit einer anderen Erweiterung installiert werden muss, die nicht im Marketplace veröffentlicht wird. Wenn dies der Fall ist, laden Sie deren APP-Datei hier hoch.
 
-#### <a name="dependency-package-file"></a>Abhängigkeitspaketdatei
-
-Erforderlich, wenn Ihr Angebot zusammen mit einer anderen Erweiterung installiert werden muss, die bereits im Marketplace veröffentlicht wurde. Wenn dies der Fall ist, laden Sie die zugehörige `.app`- oder `.zip`-Datei hier hoch.
+>[!NOTE]
+>Die Abhängigkeitspaketdatei wird nicht mehr verwendet. Laden Sie stattdessen eine Bibliothekspaketdatei hoch.
 
 ### <a name="url-to-app-installation"></a>URL zur App-Installation
 

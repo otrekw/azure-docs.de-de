@@ -7,18 +7,18 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708593"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
-In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Onlineshops im kommerziellen Marketplace](comparing-appsource-azure-marketplace.md), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
+In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Onlineshops im kommerziellen Marketplace](overview.md#commercial-marketplace-online-stores), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
 
-Sie können neue oder bestehende Angebote für die Verfügbarkeit im CSP-Programm auf Abonnementbasis konfigurieren, sodass CSP-Partner Ihre Produkte verkaufen und gebündelte Lösungen für Kunden erstellen können.
+Sie können neue oder bestehende Angebote für die Verfügbarkeit im CSP-Programm auf Abonnementbasis konfigurieren, sodass CSP-Partner Ihre Produkte verkaufen und umfassende Lösungen für Kunden erstellen können.
 
 Die Herausgeber sind verantwortlich für die Bereitstellung des Supports zum Beheben von Problemen für den Endkunden. Außerdem müssen sie einen Mechanismus für Partner im CSP-Programm und/oder Kunden zur Kontaktaufnahme mit dem Support bereitstellen. Es hat sich bewährt, den Partnern im CSP-Programm Benutzerdokumentationen, Schulungen und Benachrichtigungen über Dienstintegrität/Dienstausfall (wie zutreffend) bereitzustellen, sodass die Partner im CSP-Programm für die Behandlung von Supportanforderungen der Ebene 1 von Kunden ausgerüstet sind.  
 
@@ -60,7 +60,7 @@ Wählen Sie zwischen drei Optionen aus:
 
 Wenn Sie diese Option auswählen, autorisieren Sie die Partner im CSP-Programm, die zum Weiterverkaufen Ihres Angebots berechtigt sind.
 
-Um Partner zu autorisieren, klicken Sie auf **CSP-Partner auswählen**. Ein Menü wird angezeigt, in dem Sie nach Partnername oder CSP-Azure Active Directory (AAD)-Mandanten-ID suchen können.
+Klicken Sie auf **CSP-Partner auswählen**, um Partner zu autorisieren. Ein Menü wird angezeigt, in dem Sie nach Partnername oder CSP-Azure Active Directory-Mandanten-ID (Azure AD) suchen können.
 
 ![Menü „CSP auswählen“](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
@@ -170,14 +170,11 @@ Um es Partnern im Cloud Solution Provider-Programm zu ermöglichen, Ihr Angebot 
 
 ### <a name="partner-center-csp-channel"></a>Partner Center-CSP-Kanal
 
-Wenn Sie den CSP-Kanal im Partner Center abonniert haben, müssen Herausgeber im CSP-Kanal unter dem Angebotslisten-Modul eine URL eingeben, unter der die relevanten Marketingmaterialien und Kontaktinformationen für den Kanal gehostet werden:
+Wenn Sie den CSP-Kanal im Partner Center abonniert haben, müssen Herausgeber unter dem Angebotslistenmodul eine URL eingeben, unter der die relevanten Marketingmaterialien und Kontaktinformationen für den Kanal gehostet werden.
 
 ![CSP-Zusatzinformationen im Partner Center](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](marketplace-publishers-guide.md).
-
-Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-GTM-Diensten zu erhalten.
-
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
+- Informieren Sie sich über [Go-to-market-Dienste](https://partner.microsoft.com/reach-customers/gtm).
+- Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.

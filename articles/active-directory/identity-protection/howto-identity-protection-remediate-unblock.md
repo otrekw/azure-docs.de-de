@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463959"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776101"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Behandeln von Risiken und Aufheben der Blockierung von Benutzern
 
@@ -88,6 +88,10 @@ Zum Aufheben einer Blockierung eines Kontos, das basierend auf Anmelderisiken bl
 1. **Anmelden über einen bekannten Ort oder ein bekanntes Gerät:** Die Blockierung einer verdächtigen Anmeldung ist häufig auf Anmeldeversuche über einen unbekannten Ort oder ein unbekanntes Gerät zurückzuführen. Um zu ermitteln, ob dies die Ursache für die Blockierung ist, muss sich der betroffene Benutzer lediglich über einen bekannten Ort oder über ein bekanntes Gerät anmelden.
 1. **Benutzer von der Richtlinie ausschließen**: Wenn Sie vermuten, dass die aktuelle Konfiguration Ihrer Anmelderichtlinie Probleme für bestimmte Benutzer verursacht, können Sie diese Benutzer von der Richtlinie ausschließen. Weitere Informationen finden Sie im Abschnitt „Ausschlüsse“ im Artikel [ Konfigurieren und Aktivieren von Risikorichtlinien](howto-identity-protection-configure-risk-policies.md#exclusions).
 1. **Deaktivieren der Richtlinie:** Wenn Sie vermuten, dass Ihre Richtlinienkonfiguration Probleme für alle Benutzer verursacht, können Sie die Richtlinie deaktivieren. Weitere Informationen finden Sie im Artikel [ Konfigurieren und Aktivieren von Risikorichtlinien](howto-identity-protection-configure-risk-policies.md).
+
+## <a name="powershell-preview"></a>Vorschauversion von PowerShell
+
+Mithilfe des PowerShell SDK-Vorschaumoduls von Microsoft Graph können Organisationen das Risiko unter Verwendung von PowerShell verwalten. Die Vorschaumodule und den Beispielcode finden Sie im [GitHub-Repository für Azure AD](https://github.com/AzureAD/IdentityProtectionTools).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

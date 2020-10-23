@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875732"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150248"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -25,7 +25,7 @@ ms.locfileid: "91875732"
 
 Alle App Service-Umgebungen – extern und ILB – besitzen eine virtuelle IP (VIP), die für eingehenden Verwaltungsdatenverkehr sowie bei Internetaufrufen aus der ASE als Absenderadresse verwendet wird. Die Aufrufe, die von einer ASE aus ins Internet erfolgen, verlassen das VNET über die der ASE zugewiesene VIP. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNet oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNet befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNet. Wenn das VNet mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE ohne zusätzliche Konfiguration über Zugriff auf die dort enthaltenen Ressourcen.
 
-![Externe ASE][1] 
+![Externe ASE][1] 
 
 Wenn Sie über eine externe ASE verfügen, ist die öffentliche VIP auch der Endpunkt, auf den die ASE-Apps aufgelöst werden für:
 
@@ -182,7 +182,7 @@ Wenn die Anforderungen in Bezug auf ein- und ausgehenden Datenverkehr berücksic
 
 Eine Standardregel ermöglicht den IPs im VNet die Kommunikation mit dem ASE-Subnetz. Eine weitere Standardregel ermöglicht dem Lastenausgleich (auch als öffentliche VIP-Adresse bezeichnet) die Kommunikation mit der ASE. Sie können die Standardregeln anzeigen lassen, indem Sie neben dem Symbol **Hinzufügen** auf **Standardregeln** klicken. Wenn Sie vor den Standardregeln eine Ablehnungsregel für alles andere hinzufügen, unterbinden Sie den Datenverkehr zwischen der VIP und der ASE. Wenn Sie Datenverkehr aus dem VNet verhindern möchten, fügen Sie eine eigene Regel zum Zulassen von eingehendem Datenverkehr hinzu. Verwenden Sie eine auf AzureLoadBalancer festgelegte Quelle mit dem Ziel **Beliebig** und einem Portbereich von **\*** . Da die NSG-Regel auf das ASE-Subnetz angewendet wird, müssen Sie kein spezifisches Ziel angeben.
 
-Wenn Sie der App eine IP-Adresse zugewiesen haben, müssen Sie die Ports geöffnet halten. Sie können die Ports anzeigen lassen, indem Sie **App Service-Umgebung** > **IP-Adressen** auswählen.  
+Wenn Sie der App eine IP-Adresse zugewiesen haben, müssen Sie die Ports geöffnet halten. Sie können die Ports anzeigen lassen, indem Sie **App Service-Umgebung** > **IP-Adressen** auswählen.  
 
 Alle Elemente in den folgenden Regeln für ausgehenden Datenverkehr sind mit Ausnahme des letzten Elements erforderlich. Durch sie ist der Netzwerkzugriff auf die weiter oben im vorliegenden Artikel beschriebenen ASE-Abhängigkeiten möglich. Wenn Sie diese sperren, funktioniert die ASE nicht mehr. Das letzte Listenelement ermöglicht der ASE die Kommunikation mit anderen Ressourcen in Ihrem VNet.
 
@@ -241,7 +241,7 @@ Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werd
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop

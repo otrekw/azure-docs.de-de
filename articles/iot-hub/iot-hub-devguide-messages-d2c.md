@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b762b77788c3df05fbd0db349457abadcbe39b51
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766941"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147735"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -59,7 +59,7 @@ IoT Hub unterstützt das Schreiben von Daten in Azure Storage in den Formaten [A
 
 Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt für Blobspeicher konfiguriert wurde. Bei einem vorhandenen Endpunkt kann es nicht bearbeitet werden. Wenn Sie Codierungsformate bei einem vorhandenen Endpunkt wechseln möchten, müssen Sie den benutzerdefinierten Endpunkt löschen und mit dem gewünschten Format neu erstellen. Eine hilfreiche Strategie könnte das Erstellen eines neuen benutzerdefinierten Endpunkts mit Ihrem gewünschten Codierungsformat und das Hinzufügen einer parallelen Route zu diesem Endpunkt sein. Auf diese Weise können Sie Ihre Daten überprüfen, bevor Sie den vorhandenen Endpunkt löschen.
 
-Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder die [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint). Die folgende Abbildung zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
+Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder die [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint). Die folgende Abbildung zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
 
 ![Endpunktcodierung für Blobspeicher](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -71,7 +71,7 @@ IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in den Speicher, w
 
 Sie können eine beliebige Dateibenennungskonvention verwenden, müssen jedoch alle aufgelisteten Tokens verwenden. IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
 
-Wir empfehlen, die Blobs oder Dateien aufzulisten und anschließend zu durchlaufen, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) mithilfe der [Liste der Blobs-APIs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Das folgende Beispiel dient als Anleitung.
+Wir empfehlen, die Blobs oder Dateien aufzulisten und anschließend zu durchlaufen, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](/rest/api/storageservices/datalakestoragegen2/path/list) mithilfe der [Liste der Blobs-APIs](/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Das folgende Beispiel dient als Anleitung.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
@@ -115,12 +115,12 @@ Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus e
 
 * Lesen aus [Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 
-* Lesen aus [Service Bus-Themen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
+* Lesen aus [Service Bus-Themen](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 
 ## <a name="fallback-route"></a>Fallbackroute
 
-Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](/azure/event-hubs/) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
+Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](../event-hubs/index.yml) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
 
 Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
 
@@ -148,7 +148,7 @@ In den meisten Fällen beträgt der durchschnittliche Latenzanstieg weniger als 
 
 ## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
 
-IoT Hub bietet mehrere Metriken in Bezug auf Routing und Endpunkte, um Ihnen einen Überblick über die Integrität Ihres Hubs und der gesendeten Nachrichten zu verschaffen. Unter [IoT Hub-Metriken](iot-hub-metrics.md) werden alle Metriken aufgeführt, die standardmäßig für Ihren IoT Hub aktiviert sind. Mithilfe der Diagnoseprotokolle für **Routen** in den Azure Monitor-[Diagnoseeinstellungen](../iot-hub/iot-hub-monitor-resource-health.md) können Sie Fehler bei der Auswertung einer Routingabfrage und der Endpunktintegrität nachverfolgen, die von IoT Hub registriert werden. Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. 
+IoT Hub bietet mehrere Metriken in Bezug auf Routing und Endpunkte, um Ihnen einen Überblick über die Integrität Ihres Hubs und der gesendeten Nachrichten zu verschaffen. Unter [IoT Hub-Metriken](iot-hub-metrics.md) werden alle Metriken aufgeführt, die standardmäßig für Ihren IoT Hub aktiviert sind. Mithilfe der Diagnoseprotokolle für **Routen** in den Azure Monitor-[Diagnoseeinstellungen](../iot-hub/iot-hub-monitor-resource-health.md) können Sie Fehler bei der Auswertung einer Routingabfrage und der Endpunktintegrität nachverfolgen, die von IoT Hub registriert werden. Sie können die REST-API [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. 
 
 Im [Leitfaden zur Problembehandlung beim Routing](troubleshoot-message-routing.md) finden Sie weitere Informationen und Unterstützung bei der Behandlung von Routingproblemen.
 

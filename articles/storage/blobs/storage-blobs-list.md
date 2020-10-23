@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009541"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91280095"
 ---
 # <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
 
@@ -59,7 +59,7 @@ Wenn ein Auflistungsvorgang mehr als 5000 Blobs zurückgibt oder die Anzahl der
 
 ### <a name="filter-results-with-a-prefix"></a>Filtern von Ergebnissen mit einem Präfix
 
-Um die Liste der Container zu filtern, geben Sie für den `prefix`-Parameter eine Zeichenfolge an. Die Präfixzeichenfolge kann ein oder mehrere Zeichen enthalten. Dann gibt Azure Storage nur die Blobs zurück, deren Namen mit diesem Präfix beginnen.
+Um die Liste der Blobs zu filtern, geben Sie für den `prefix`-Parameter eine Zeichenfolge an. Die Präfixzeichenfolge kann ein oder mehrere Zeichen enthalten. Dann gibt Azure Storage nur die Blobs zurück, deren Namen mit diesem Präfix beginnen.
 
 ### <a name="return-metadata"></a>Zurückgeben von Metadaten
 

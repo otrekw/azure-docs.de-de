@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049042"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628263"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Bedingter Zugriff: Risikobasierter bedingter Zugriff beim Anmelden
 
@@ -37,7 +37,7 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
-1. Legen Sie unter **Bedingungen** > **Benutzerrisiko** die Option **Konfigurieren** auf **Ja**fest. Wählen Sie unter **Anmelderisikostufe auswählen, auf die diese Richtlinie angewendet werden soll** 
+1. Legen Sie unter **Bedingungen** > **Anmelderisiko** die Option **Konfigurieren** auf **Ja** fest. Wählen Sie unter **Anmelderisikostufe auswählen, auf die diese Richtlinie angewendet werden soll** 
    1. entweder **Hoch** oder **Mittel** aus.
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.

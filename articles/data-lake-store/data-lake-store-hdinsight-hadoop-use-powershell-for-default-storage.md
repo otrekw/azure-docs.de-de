@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857009"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell
 
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgend
     >Sie können einen Dienstprinzipal nur dann erstellen, wenn Sie ein Azure AD-Administrator sind. Ihr Azure AD-Administrator muss zunächst einen Dienstprinzipal erstellen, bevor Sie einen HDInsight-Cluster mit Data Lake Storage Gen1 erstellen können. Der Dienstprinzipal muss mit einem Zertifikat erstellt werden, wie unter [Erstellen eines Dienstprinzipals mit Zertifikat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority) beschrieben.
     >
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Erstellen eines Data Lake Storage Gen1-Kontos
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Erstellen eines Azure Data Lake Storage Gen1-Kontos
 
 Führen Sie die folgenden Schritte aus, um ein Data Lake Storage Gen1-Konto zu erstellen:
 
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte aus, um ein Data Lake Storage Gen1-Konto zu e
     ```
 
     > [!NOTE]
-    > Wenn Sie den Data Lake Storage Gen1-Ressourcenanbieter registrieren und einen Fehler erhalten, der in etwa `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` lautet, ist Ihr Abonnement unter Umständen nicht in der Zulassungsliste für Data Lake Storage Gen1 enthalten. Befolgen Sie die Anleitung unter [Erste Schritte mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-get-started-portal.md), um Ihr Azure-Abonnement für Data Lake Storage Gen1 zu aktivieren.
+    > Wenn Sie den Data Lake Storage Gen1-Ressourcenanbieter registrieren und einen Fehler erhalten, der in etwa `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` lautet, ist Ihr Abonnement unter Umständen nicht für Data Lake Storage Gen1 zugelassen. Befolgen Sie die Anleitung unter [Erste Schritte mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-get-started-portal.md), um Ihr Azure-Abonnement für Data Lake Storage Gen1 zu aktivieren.
     >
 
 2. Ein Data Lake Storage Gen1-Konto wird einer Azure-Ressourcengruppe zugeordnet. Beginnen Sie, indem Sie eine Ressourcengruppe erstellen.
@@ -282,7 +282,7 @@ hdfs dfs -ls adl:///
 Sie können auch den Befehl `hdfs dfs -put` verwenden, um Dateien in Data Lake Storage Gen1 hochzuladen, und dann mit `hdfs dfs -ls` überprüfen, ob der Upload der Dateien erfolgreich war.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure-Portal: Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

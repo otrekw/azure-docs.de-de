@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794204"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538907"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Bewährte Methoden für die Entwicklung von Anwendungen mit Azure Database for MySQL 
 
@@ -69,9 +69,9 @@ Bei Ihrer Anwendung können [vorübergehende Fehler](https://docs.microsoft.com/
 Es wird empfohlen, vor dem ersten Wiederholungsversuch fünf Sekunden zu warten. Erhöhen Sie dann nach jeder Wiederholung die Wartezeit nach und nach auf bis zu 60 Sekunden. Legen Sie eine maximale Anzahl von Wiederholungen fest, nach denen Ihre Anwendung den Vorgang als fehlerhaft ansieht, damit Sie weitere Untersuchungen anstellen können. Weitere Informationen finden Sie unter [Beheben von Verbindungsproblemen](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues). 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Aktivieren von Lesereplikaten zum Minimieren von Failovervorgängen
-Für Failoverszenarien können Sie die [Datenreplikation](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) verwenden. Bei Lesereplikaten erfolgt zwischen Master- und Replikatservern kein automatisiertes Failover. 
+Für Failoverszenarien können Sie die [Datenreplikation](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) verwenden. Bei Lesereplikaten erfolgt zwischen Quell- und Replikatservern kein automatisiertes Failover. 
 
-Sie werden eine Verzögerung zwischen Master und Replikat feststellen, da die Replikation asynchron verläuft. Die Netzwerkverzögerung kann durch viele Faktoren beeinflusst werden, z. B. durch die Größe der Workload auf dem Masterserver und die Latenz zwischen Rechenzentren. In den meisten Fällen beträgt die Replikatverzögerung einige Sekunden bis zu einigen Minuten.
+Sie werden eine Verzögerung zwischen Quelle und Replikat feststellen, da die Replikation asynchron verläuft. Die Netzwerkverzögerung kann durch viele Faktoren beeinflusst werden, z. B. durch die Größe der Workload auf dem Quellserver und die Latenz zwischen Rechenzentren. In den meisten Fällen beträgt die Replikatverzögerung einige Sekunden bis zu einigen Minuten.
 
 ## <a name="database-deployment"></a>Datenbankbereitstellung 
 

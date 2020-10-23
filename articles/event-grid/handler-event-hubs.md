@@ -3,12 +3,12 @@ title: Event Hub als Ereignishandler für Azure Event Grid-Ereignisse
 description: Hier wird beschrieben, wie Sie Event Hubs als Ereignishandler für Azure Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fa8fdd66eb153f6a972753eb359261100f19cd15
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105828"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629623"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Event Hub als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses eine Maßnahme. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Event Hubs** ist einer dieser Dienste. 
@@ -24,7 +24,7 @@ Hierzu folgende Beispiele:
 | [Resource Manager-Vorlage: Erstellen eines benutzerdefinierten Event Grid-Themas und Senden von Ereignissen an einen Event Hub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
 
 ## <a name="message-properties"></a>Nachrichteneigenschaften
-Wenn Sie einen **Event Hub** als Ereignishandler für Ereignisse von Event Grid verwenden, legen Sie die folgenden Nachrichtenheader fest: 
+Wenn Sie einen **Event Hub** als Ereignishandler für Ereignisse von Event Grid verwenden, erhalten Sie die folgenden Eigenschaften in den Nachrichtenheadern: 
 
 | Eigenschaftenname | BESCHREIBUNG |
 | ------------- | ----------- | 

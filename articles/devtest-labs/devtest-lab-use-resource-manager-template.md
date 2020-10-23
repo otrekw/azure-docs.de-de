@@ -3,12 +3,12 @@ title: Anzeigen und Verwenden der Azure Resource Manager-Vorlage eines virtuelle
 description: Es wird beschrieben, wie Sie die Azure Resource Manager-Vorlage eines virtuellen Computers verwenden, um andere virtuelle Computer zu erstellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91282492"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -23,7 +23,7 @@ Es gibt zwei Möglichkeiten zum Erstellen von VMs in DevTest Labs mit einer Reso
 
 - Mit Resource Manager-Vorlagen, für die der Ressourcentyp „Microsoft.DevTestLab/labs/virtualmachines“ verwendet wird (wie in der „resource“-Eigenschaft der Vorlage deklariert), können einzelne Lab-VMs bereitgestellt werden. Jede VM wird in der DevTest Labs-Liste mit den virtuellen Computern dann als einzelner Eintrag angezeigt:
 
-   ![Liste mit VMs als einzelne Einträge in der DevTest Labs-Liste mit den virtuellen Computern](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
+   ![Screenshot der Liste mit VMs als einzelne Elemente in der Liste mit DevTest Labs-VMs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
    Diese Art von Resource Manager-Vorlage kann mit dem Azure PowerShell-Befehl **New-AzResourceGroupDeployment** oder dem Azure CLI-Befehl **az group deployment create** bereitgestellt werden. Hierfür sind Administratorberechtigungen erforderlich, sodass Benutzer, denen eine DevTest Labs-Benutzerrolle zugewiesen ist, die Bereitstellung nicht durchführen können. 
 

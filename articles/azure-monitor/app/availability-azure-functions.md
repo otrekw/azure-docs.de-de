@@ -2,15 +2,13 @@
 title: Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions
 description: In diesem Dokument wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvailability()“ erstellen, die gemäß der Konfiguration der Funktion „TimerTrigger“ regelmäßig ausgeführt wird. Die Ergebnisse dieses Tests werden an Ihre Application Insights-Ressource gesendet. Dort können Sie für die Ergebnisdaten zur Verfügbarkeit Abfragen durchführen und Warnungen einrichten. Mit angepassten Tests können Sie komplexere Verfügbarkeitstests als bei Verwendung der Portalbenutzeroberfläche schreiben, eine App in Ihrem virtuellen Azure-Netzwerk (VNET) überwachen, die Endpunktadresse ändern oder einen Verfügbarkeitstest erstellen, falls er in Ihrer Region nicht verfügbar ist.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320628"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945650"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions
 
@@ -135,7 +133,7 @@ Wählen Sie rechts unter „Dateien anzeigen“ die Option **Hinzufügen** aus. 
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.2" /> <!-- Ensure you’re using the latest version -->
+        <PackageReference Include="Microsoft.ApplicationInsights" Version="2.15.0" /> <!-- Ensure you’re using the latest version -->
     </ItemGroup>
 </Project>
 
@@ -183,7 +181,7 @@ Sie können „Protokolle (Analytics)“ verwenden, um Ihre Verfügbarkeitsergeb
 >![Verfügbarkeitsergebnisse](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![Abhängigkeiten](media/availability-azure-functions/dependencies.png)
+>![Screenshot der Registerkarte „Neue Abfrage“ mit den auf 50 beschränkten Abhängigkeiten](media/availability-azure-functions/dependencies.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

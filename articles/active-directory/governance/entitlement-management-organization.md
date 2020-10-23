@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783942"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449863"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -66,6 +66,8 @@ Führen Sie die Anweisungen in diesem Abschnitt aus, um ein externes Azure AD-Ve
 
     ![„Verbundene Organisation hinzufügen“, Bereich „Grundlagen“](./media/entitlement-management-organization/organization-basics.png)
 
+1. Der Zustand wird automatisch auf **Konfiguriert** festgelegt, wenn Sie eine neue verbundene Organisation erstellen. Weitere Informationen zu den Zustandseigenschaften finden Sie unter [Zustandseigenschaften verbundener Organisationen](#state-properties-of-connected-organizations).
+
 1. Wählen Sie die Registerkarte **Verzeichnis + Domäne** und dann **Verzeichnis und Domäne hinzufügen** aus.
 
     Der Bereich **Verzeichnisse und Domänen auswählen** wird geöffnet.
@@ -109,7 +111,7 @@ Wenn die verbundene Organisation in eine andere Domäne wechselt, sich der Name 
 
 1. Wählen Sie im linken Bereich **Verbundene Organisationen** aus, und wählen Sie dann die verbundene Organisation aus, um diese zu öffnen.
 
-1. Wählen Sie im Übersichtsbereich der verbundenen Organisation **Bearbeiten** aus, um den Organisationsnamen oder die Beschreibung zu ändern.  
+1. Wählen Sie im Übersichtsbereich der verbundenen Organisation die Option **Bearbeiten** aus, um den Namen, die Beschreibung oder den Zustand der Organisation zu ändern.  
 
 1. Wählen Sie im Bereich **Verzeichnis und Domäne** die Option **Verzeichnis und Domäne aktualisieren** aus, um zu einem anderen Verzeichnis oder eine anderen Domäne zu wechseln.
 
@@ -135,6 +137,23 @@ Wenn die Beziehung mit einem externen Azure AD-Verzeichnis bzw. einer externe Do
 ## <a name="managing-a-connected-organization-programmatically"></a>Programmgesteuertes Verwalten einer verbundenen Organisation
 
 Mit Microsoft Graph können Sie auch verbundene Organisationen erstellen, auflisten, aktualisieren und löschen. Ein Benutzer mit einer entsprechenden Rolle und einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta)-Objekte aufzurufen und Sponsoren dafür festzulegen.
+
+## <a name="state-properties-of-connected-organizations"></a>Zustandseigenschaften von verbundenen Organisationen
+
+Derzeit gibt es bei der Azure AD-Berechtigungsverwaltung für verbundene Organisationen zwei verschiedene Arten von Zustandseigenschaften, nämlich „Konfiguriert“ und „Vorgeschlagen“: 
+
+- Wenn sich eine verbundene Organisation im Zustand „Konfiguriert“ befindet, ist sie voll funktionsfähig, und Benutzer der Organisation können auf Zugriffspakete zugreifen. Wenn ein Administrator im Azure-Portal eine neue verbundene Organisation erstellt, befindet sich diese standardmäßig im Zustand **Konfiguriert**. Der Grund ist, dass der Administrator diese verbundene Organisation erstellt hat, weil er sie nutzen möchte. Wenn eine verbundene Organisation programmgesteuert über die API erstellt wird, sollte der Standardzustand **Konfiguriert** lauten, sofern nicht explizit ein anderer Zustand festgelegt wurde. 
+
+    Konfigurierte verbundene Organisationen werden in den entsprechenden Auswahloptionen angezeigt und bei allen Richtlinien einbezogen, die auf „alle“ verbundenen Organisationen abzielen.
+
+- Wenn sich eine verbundene Organisation im Zustand „Vorgeschlagen“ befindet, wurde sie automatisch erstellt, und die Erstellung oder der Genehmigungsvorgang wurde nicht von einem Administrator durchgeführt. Wenn sich ein Benutzer außerhalb einer konfigurierten verbundenen Organisation für ein Zugriffspaket registriert, befinden sich alle automatisch erstellten verbundenen Organisationen im Zustand **Vorgeschlagen**, da diese Partnerschaft nicht von einem Administrator des Mandanten eingerichtet wurde. 
+    
+    Vorgeschlagene verbundene Organisationen werden nicht in den Auswahloptionen für konfigurierte verbundene Organisationen angezeigt und bei der Richtlinieneinstellung „Alle konfigurierten verbundenen Organisationen“ nicht einbezogen. 
+
+Nur Benutzer aus konfigurierten verbundenen Organisationen können Zugriffspakete anfordern, die für Benutzer aus allen konfigurierten Organisationen verfügbar sind. Für Benutzer aus vorgeschlagenen verbundenen Organisationen erscheint es, als ob keine verbundene Organisation für die Domäne vorhanden ist. Diese Benutzer haben erst dann Zugriff auf das Zugriffspaket, wenn der Zustand von einem Administrator geändert wird.
+
+> [!NOTE]
+> Im Rahmen des Rollouts dieses neuen Features wurden alle verbundenen Organisationen, die vor dem 09.09.2020 erstellt wurden, als **Konfiguriert** angesehen. Falls Sie über ein Zugriffspaket verfügt haben, mit dem sich Benutzer aus allen Organisationen registrieren konnten, sollten Sie Ihre Liste mit den verbundenen Organisationen überprüfen, die vor diesem Datum erstellt wurden. Stellen Sie sicher, dass keine falsche Kategorisierung als **Konfiguriert** vorliegt.  Ein Administrator kann die Zustandseigenschaft (**State**) wie gewünscht aktualisieren. Eine Anleitung hierzu finden Sie unter [Aktualisieren einer verbundenen Organisation](#update-a-connected-organization).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

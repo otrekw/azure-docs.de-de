@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie permanente Timer in der Erweiterung Du
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056229"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876446"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timer in Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Sie erstellen einen dauerhaften Timer, indem Sie die Methode `CreateTimer` (.NET
 Wenn Sie einen Timer erstellen, der um 16:30 Uhr abläuft, stellt das zugrunde liegende Durable Task Framework eine Nachricht in die Warteschlange, die nur um 16:30 Uhr sichtbar ist. Bei Ausführung im Verbrauchstarif von Azure Functions stellt der neu sichtbare Timer sicher, dass die Funktions-App auf einem entsprechenden virtuellen Computer aktiviert wird.
 
 > [!NOTE]
-> * Dauerhafte Timer sind zurzeit auf 7 Tage beschränkt. Wenn längere Verzögerungen erforderlich sind, können Sie mithilfe der Timer-APIs in einer `while`-Schleife simuliert werden.
+> * Ab [Version 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) der Durable-Erweiterung sind permanente Timer unbegrenzt. In früheren Versionen der Erweiterung sind permanente Timer auf sieben Tage beschränkt. Wenn Sie eine frühere Version verwenden und eine Verzögerung von mehr als sieben Tagen benötigen, verwenden Sie die Timer-APIs in einer `while`-Schleife, um diese Verzögerung zu simulieren.
 > * Verwenden Sie beim Berechnen der Startzeit für dauerhafte Timer immer `CurrentUtcDateTime` anstelle von `DateTime.UtcNow` in .NET oder `currentUtcDateTime` anstelle von `Date.now` oder `Date.UTC` in JavaScript. Weitere Informationen finden Sie im Artikel [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md).
 
 ## <a name="usage-for-delay"></a>Verwendung für Verzögerung

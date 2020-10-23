@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291108"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875103"
 ---
 # <a name="safe-url-list"></a>Liste der sicheren URLs
 
@@ -19,17 +19,19 @@ Sie müssen bestimmte URLs freigeben,damit Ihre Windows Virtual Desktop-Bereitst
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 
-Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs verfügen:
+Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs in der kommerziellen Azure-Cloud verfügen:
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
 |*.wvd.microsoft.com|443|Dienstdatenverkehr|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
-|*.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
-|*.servicebus.windows.net|443|Agent-Datenverkehr|AzureCloud|
 |gcs.prod.monitoring.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
+|*xt.blob.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
+|*eh.servicebus.windows.net|443|Agent-Datenverkehr|AzureCloud|
+|*xt.table.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivierung von Windows|Internet|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Unterstützung des Azure-Portals|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
 | 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/security-overview.md#azure-platform-considerations) | – |
@@ -39,16 +41,33 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 >
 >Wir empfehlen Ihnen, FQDN- oder Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu verhindern. Die aufgeführten URLs und Tags beziehen sich nur auf Windows Virtual Desktop-Websites und -Ressourcen. Sie enthalten keine URLs für andere Dienste, z. B. Azure Active Directory.
 
-In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuellen Azure-Computer Zugriff haben können:
+Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs in der Azure Government-Cloud verfügen:
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
-|*.microsoftonline.com|443|Authentifizierung bei Microsoft Online Services|Keine|
+|*.wvd.microsoft.us|443|Dienstdatenverkehr|WindowsVirtualDesktop|
+|gcs.monitoring.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
+|monitoring.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
+|fairfax.warmpath.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
+|*xt.blob.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
+|*.servicebus.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
+|*xt.table.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
+|Kms.core.usgovcloudapi.net|1688|Aktivierung von Windows|Internet|
+|mrsglobalstugviffx.core.usgovcloudapi.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
+|wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Unterstützung des Azure-Portals|AzureCloud|
+| 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
+| 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/security-overview.md#azure-platform-considerations) | – |
+
+In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuellen Azure-Computer Zugriff haben können:
+
+|Adresse|Ausgehender TCP-Port|Zweck|Azure Gov|
+|---|---|---|---|
+|*.microsoftonline.com|443|Authentifizierung bei Microsoft Online Services|login.microsoftonline.us|
 |*.events.data.microsoft.com|443|Telemetriedienst|Keine|
 |www.msftconnecttest.com|443|Ermittelt, ob das Betriebssystem mit dem Internet verbunden ist.|Keine|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows-Update|Keine|
-|login.windows.net|443|Anmelden bei Microsoft Online Services, Microsoft 365|Keine|
-|*.sfx.ms|443|Updates für die OneDrive-Clientsoftware|Keine|
+|login.windows.net|443|Anmelden bei Microsoft Online Services, Microsoft 365|login.microsoftonline.us|
+|*.sfx.ms|443|Updates für die OneDrive-Clientsoftware|oneclient.sfx.ms|
 |*.digicert.com|443|Überprüfung der Zertifikatsperre|Keine|
 
 >[!NOTE]
@@ -66,15 +85,15 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 
 Alle von Ihnen verwendeten Remotedesktopclients müssen auf die folgenden URLs zugreifen können:
 
-|Adresse|Ausgehender TCP-Port|Zweck|Client(s)|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|Dienstdatenverkehr|All|
-|*.servicebus.windows.net|443|Problembehandlung für Daten|All|
-|go.microsoft.com|443|Microsoft FWLinks|All|
-|aka.ms|443|Microsoft-URL-Verkürzung|All|
-|docs.microsoft.com|443|Dokumentation|All|
-|privacy.microsoft.com|443|Datenschutzbestimmungen|All|
-|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows Desktop|
+|Adresse|Ausgehender TCP-Port|Zweck|Client(s)|Azure Gov|
+|---|---|---|---|---|
+|*.wvd.microsoft.com|443|Dienstdatenverkehr|All|*.wvd.microsoft.us|
+|*.servicebus.windows.net|443|Problembehandlung für Daten|All|*.servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft FWLinks|All|Keine|
+|aka.ms|443|Microsoft-URL-Verkürzung|All|Keine|
+|docs.microsoft.com|443|Dokumentation|All|Keine|
+|privacy.microsoft.com|443|Datenschutzbestimmungen|All|Keine|
+|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows Desktop|Keine|
 
 >[!IMPORTANT]
 >Das Öffnen dieser URLs ist für einen zuverlässigen Clientbetrieb von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt.

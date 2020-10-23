@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07eae453441ea8bff81d7cdb60f9c46c08a22829
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752611"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851171"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>Konfigurieren einer benutzerdefinierten IPsec-Richtlinie für Virtual WAN über das Portal
 
-Sie können eine benutzerdefinierte IPsec-Richtlinie für Virtual WAN über das Azure-Portal konfigurieren. Benutzerdefinierte Richtlinien sind hilfreich, wenn beide Seiten (lokale und Azure-VPN-Gateways) die gleichen Einstellungen für IKE Phase 1 und IKE Phase 2 verwenden sollen.
+Sie können eine benutzerdefinierte IPsec-Richtlinie für eine Virtual WAN-VPN-Verbindung über das Azure-Portal konfigurieren. Benutzerdefinierte Richtlinien sind hilfreich, wenn beide Seiten (lokale und Azure-VPN-Gateways) die gleichen Einstellungen für IKE Phase 1 und IKE Phase 2 verwenden sollen.
 
 ## <a name="working-with-custom-policies"></a>Arbeiten mit benutzerdefinierten Richtlinien
 
@@ -24,14 +24,14 @@ Sie können eine benutzerdefinierte IPsec-Richtlinie für Virtual WAN über das 
 
 ## <a name="configure-a-policy"></a>Konfigurieren einer Richtlinie
 
-1. **Suchen Sie den virtuellen Hub.** Navigieren Sie in einem Browser zum [Azure-Portal](https://aka.ms/azurevirtualwanpreviewfeatures) , und melden Sie sich mit Ihrem Azure-Konto an. Suchen Sie den virtuellen Hub für Ihre Website.
-2. **Wählen Sie den VPN-Standort aus.** Wählen Sie auf der Seite für den Hub den VPN-Standort aus, für den Sie eine benutzerdefinierte Richtlinie einrichten möchten.
+1. **Suchen Sie den virtuellen Hub.** Navigieren Sie in einem Browser zum [Azure-Portal](https://aka.ms/azurevirtualwanpreviewfeatures) , und melden Sie sich mit Ihrem Azure-Konto an. Navigieren Sie zu Ihrer Virtual WAN-Ressource, und suchen Sie den virtuellen Hub, mit dem Ihr VPN-Standort verbunden ist.
+2. **Wählen Sie den VPN-Standort aus.** Klicken Sie auf der Seite „Übersicht“ des Hubs auf **VPN (Site-to-Site)** , und wählen Sie den VPN-Standort aus, für den Sie eine benutzerdefinierte IPSec-Richtlinie einrichten möchten.
 
    ![select](./media/virtual-wan-custom-ipsec-portal/locate.png)
 3. **Bearbeiten Sie die VPN-Verbindung.** Wählen Sie im **Kontextmenü** zuerst **...** und dann  **VPN-Verbindung bearbeiten** aus.
 
    ![Bearbeiten](./media/virtual-wan-custom-ipsec-portal/contextmenu.png)
-4. **Konfigurieren Sie die Einstellungen.** Konfigurieren Sie auf der Seite **VPN-Verbindung bearbeiten** die Einstellungen. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
+4. **Konfigurieren Sie die Einstellungen.** Ändern Sie auf der Seite **VPN-Verbindung bearbeiten** die IPSec-Einstellung von der Standardeinstellung in „Benutzerdefiniert“, und passen Sie die IPSec-Richtlinie an. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
 
    ![Konfigurieren und speichern](./media/virtual-wan-custom-ipsec-portal/edit.png)
 

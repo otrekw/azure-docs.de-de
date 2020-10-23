@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200969"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629368"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Schützen einer Datenbank in Azure Synapse
 
@@ -33,7 +33,7 @@ In diesem Artikel werden die Grundlagen zum Schützen Ihres Synapse SQL-Pools er
 
 Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
-Firewallregeln werden vom [logischen SQL-Server](../../azure-sql/database/logical-servers.md) und den zugehörigen Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder über PowerShell eine Firewallregel auf Serverebene erstellen.
+Firewallregeln werden vom [logischen SQL-Server](../../azure-sql/database/logical-servers.md) und den zugehörigen Datenbanken verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit genehmigt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder über PowerShell eine Firewallregel auf Serverebene erstellen.
 
 Eine bewährte Methode besteht darin, die von der Firewall auf Serverebene zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Wenn Sie vom lokalen Computer aus auf einen SQL-Pool zugreifen möchten, stellen Sie sicher, dass von der Firewall im Netzwerk und auf dem lokalen Computer ausgehende Kommunikation über den TCP-Port 1433 zugelassen wird.  
 

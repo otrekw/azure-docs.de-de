@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: a108459985f235f0280354ef7b4fa0cb181f5dda
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: b23783080e976f70ba8c5e02f67dcee36bbc9c34
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054244"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444963"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>SSL/TLS-Konnektivität in Azure Database for MariaDB
 Azure Database for MariaDB unterstützt die Verbindung Ihres Datenbankservers mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -56,6 +56,17 @@ Wenn Sie diese Mindesteinstellung für die TLS-Version beispielsweise auf TLS 1
 > Wenn Sie eine TLS-Mindestversion erzwingen, kann diese Erzwingung später nicht mehr deaktiviert werden.
 
 Informationen zum Festlegen der TLS-Einstellung für Ihren Azure Database for MariaDB finden Sie unter [Konfigurieren der TLS-Einstellung](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-mariadb"></a>Unterstützung für Verschlüsselungsverfahren durch Azure Database for MariaDB
+
+Im Rahmen der SSL/TLS-Kommunikation werden die Verschlüsselungssammlungen überprüft. Nur Sammlungen, die mit dem Datenbankserver kommunizieren dürfen, werden zugelassen. Die Überprüfung der Verschlüsselungssammlungen wird in der [Gatewayschicht](concepts-connectivity-architecture.md#connectivity-architecture) gesteuert, nicht explizit im Knoten selbst. Wenn die Sammlungen keiner der unten aufgeführten Sammlungen entsprechen, werden eingehende Clientverbindungen abgelehnt.
+
+### <a name="cipher-suite-supported"></a>Unterstützte Verschlüsselungssammlung
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Firewallregeln des Azure Database for MariaDB-Servers](concepts-firewall-rules.md).

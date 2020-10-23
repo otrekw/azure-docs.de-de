@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302042"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950736"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
 
@@ -33,7 +33,7 @@ Verwenden Sie diese Ansicht und ihre Filter zur Beantwortung folgender Fragen:
 Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weiter. 
 
 > [!TIP]
-> Die Sicherheitsempfehlungen sind identisch mit denen auf der Seite **Empfehlungen**, aber hier werden sie nach dem von Ihnen ausgewählten Ressourcentyp gefiltert. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
+> Die Sicherheitsempfehlungen auf der Ressourcenbestandsseite sind identisch mit denen auf der Seite **Empfehlungen**, aber hier werden sie nach betroffener Ressource gefiltert. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
 
 ## <a name="availability"></a>Verfügbarkeit

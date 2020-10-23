@@ -3,14 +3,14 @@ title: Bereitstellen eines Hybrid Runbook Workers unter Linux in Azure Automatio
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Automation-Hybrid Runbook Worker bereitstellen, mit dem Sie Runbooks auf Linux-basierten Computern in Ihrem lokalen Rechenzentrum oder einer Cloudumgebung ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987230"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776271"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -45,6 +45,10 @@ Um Ihrem Arbeitsbereich die Funktion „Änderungsnachverfolgung und Bestand“ 
 ### <a name="log-analytics-agent"></a>Log Analytics-Agent
 
 Die „Hybrid Runbook Worker“-Rolle erfordert den [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) für das unterstützte Linux-Betriebssystem.
+
+>[!NOTE]
+>Nach der Installation des Log Analytics-Agents für Linux sollten Sie die Berechtigungen für den `sudoers.d`-Ordner oder seine Eigentümerschaft nicht ändern. sudo-Berechtigungen sind für das **nxautomation**-Konto erforderlich. Dabei handelt es sich um den Benutzerkontext, unter dem der Hybrid Runbook Worker ausgeführt wird. Diese Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle könnte zu einem Breaking Change führen.
+>
 
 ### <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
 

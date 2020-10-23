@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659526"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91294865"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -55,7 +55,7 @@ Die folgende Tabelle hilft Ihnen bei der Bestimmung der Vor- und Nachteile der f
 | Strategie | Vorteile | Nachteile |
 | --- | --- | --- |
 | **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation erforderlich. Keine zusätzliche Hardware erforderlich.<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden <br> Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
-| **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
+| **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud. |
 | **Im Verbund** |Benutzer können einmaliges Anmelden (Single Sign-On, SSO) nutzen <br>Wenn ein Benutzer aufhört oder das Unternehmen verlässt, kann das Konto sofort deaktiviert und der Zugriff widerrufen werden.<br> Unterstützt erweiterte Szenarien, die mit Synchronisierung nicht möglich sind |Mehr Schritte für Einrichtung und Konfiguration <br> Höherer Wartungsaufwand <br> Erfordert ggf. zusätzliche Hardware für die STS-Infrastruktur <br> Möglicherweise muss zusätzliche Hardware auf dem Verbundserver installiert werden. Bei Verwendung von AD FS ist zusätzliche Software erforderlich <br> Erfordert umfangreiches Einrichtung für SSO <br> Kritischer Point of Failure: Wenn der Verbundserver ausfällt, können sich die Benutzer nicht authentifizieren. |
 
 ### <a name="client-experience"></a>Clienterfahrung

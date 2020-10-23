@@ -3,15 +3,15 @@ title: Erweitern eines vorhandenen Hostpools um neue Sitzungshosts – Azure
 description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostpool in Windows Virtual Desktop um neue Sitzungshosts erweitern.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002448"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929590"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -56,7 +56,7 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 8. Geben Sie die Anzahl der Sitzungshosts, die Sie zu Ihrem Hostpool hinzufügen möchten, in **Anzahl von VMs** ein. Wenn Sie z. B. Ihren Hostpool um fünf Hosts erweitern möchten, geben Sie **5** ein.
 
     >[!NOTE]
-    >Sie können die Größe oder das Image der VMs nicht bearbeiten, da es wichtig ist, sicherzustellen, dass alle VMs im Hostpool die gleiche Größe besitzen.
+    >Obwohl es möglich ist, das Image und das Präfix der VM zu bearbeiten, wird die Bearbeitung nicht empfohlen, wenn Sie über VMs mit verschiedenen Images im selben Hostpool verfügen. Bearbeiten Sie das Image und das Präfix nur, wenn Sie die VMs mit älteren Images aus dem betroffenen Hostpool entfernen möchten.
 
 9. Wählen Sie als **Informationen zum virtuellen Netzwerk** das virtuelle Netzwerk und das Subnetz aus, mit dem die virtuellen Computer verknüpft werden sollen. Sie können dasselbe virtuelle Netzwerk auswählen, das zurzeit bereits von Ihren vorhandenen Computern verwendet wird, oder ein anderes virtuelles Netzwerk auswählen, das besser für die Region geeignet ist, die Sie in Schritt 7 ausgewählt haben.
 

@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/10/2020
-ms.openlocfilehash: dff5e73f9bb02357a6a6f74f5d0db08eee13e76e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.openlocfilehash: 38f3aaeddbdedb073d83a64a508eb9f4578f1c97
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332269"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948424"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
 
@@ -242,6 +242,9 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
 >[!NOTE]
+>Wenn für Ihr Blobkonto die Option [Vorläufiges Löschen](../storage/blobs/soft-delete-blob-overview.md) freigeschaltet ist, wird die Authentifizierung des Dienstprinzipals in Datenflüssen nicht unterstützt.
+
+>[!NOTE]
 >Die Dienstprinzipalauthentifizierung wird nur durch den verknüpften Dienst vom Typ „AzureBlobStorage“unterstützt, nicht jedoch vom vorherigen verknüpften Dienst vom Typ „AzureStorage“.
 
 **Beispiel:**
@@ -293,6 +296,9 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. |Ja |
 | accountKind | Geben Sie die Art Ihres Speicherkontos an. Zulässige Werte sind: **Storage** (Universell v1), **StorageV2** (Universell v2), **BlobStorage** oder **BlockBlobStorage**. <br/> Bei einer Verwendung des mit Azure Blob verknüpften Diensts im Datenfluss wird die Authentifizierung von verwalteten Identitäten oder Dienstprinzipalen nicht unterstützt, wenn die „accountKind“ leer ist oder der Wert „Storage“ lautet. Geben Sie die richtige Kontoart an, wählen Sie eine andere Authentifizierung aus, oder aktualisieren Sie Ihr Speicherkonto auf „Universell v2“. |Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
+
+> [!NOTE]
+> Wenn für Ihr Blobkonto die Option [Vorläufiges Löschen](../storage/blobs/soft-delete-blob-overview.md) freigeschaltet ist, wird die Authentifizierung von verwalteten Identitäten in Datenflüssen nicht unterstützt.
 
 > [!NOTE]
 > Verwaltete Identitäten für die Azure-Ressourcenauthentifizierung werden nur vom verknüpften Dienst vom Typ „AzureBlobStorage“ unterstützt, nicht jedoch vom vorherigen verknüpften Dienst vom Typ „AzureStorage“.
@@ -382,8 +388,8 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 | deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft ist nur im Szenario zum Kopieren von Binärdateien gültig. Standardwert: FALSE. |Nein |
 | modifiedDatetimeStart    | Die Dateien werden anhand des Attributs „Letzte Änderung“ gefiltert. <br>Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewendet. <br> Die Eigenschaften können **NULL** sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewendet wird.  Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.<br/>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. | Nein                                            |
 | modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
-| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **false** (Standard) und **true**. | Nein                                            |
-| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Ohne Angabe gilt standardmäßig Folgendes:<br/>- Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/>Wenn Sie Präfix verwenden, ist der Stammpfad der Partition ein Unterpfad vor dem letzten „/“. <br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>- Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten in den Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>- Wenn kein Stammpfad für die Partition angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
+| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **FALSE** (Standard) und **TRUE**. | Nein                                            |
+| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Falls nicht angegeben, gilt standardmäßig:<br/>Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/>Wenn Sie Präfix verwenden, ist der Stammpfad der Partition ein Unterpfad vor dem letzten „/“. <br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten innerhalb der Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>Wenn der Stammpfad der Partition nicht angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
 | maxConcurrentConnections | Die Anzahl gleichzeitiger Verbindungen mit dem Speicher. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |
 
 > [!NOTE]
@@ -619,7 +625,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 >[!NOTE]
->Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Data Factory-Benutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Data Factory-Erstellungsoberfläche wurde für die Generierung des neuen Modells angepasst.
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 

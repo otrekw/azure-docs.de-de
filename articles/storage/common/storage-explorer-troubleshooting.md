@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534854"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714455"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -21,13 +21,13 @@ Microsoft Azure Storage-Explorer ist eine eigenständige App, mit der Sie unter 
 
 In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme im Storage-Explorer zusammengefasst.
 
-## <a name="rbac-permissions-issues"></a>RBAC-Berechtigungsprobleme
+## <a name="azure-rbac-permissions-issues"></a>Azure RBAC-Berechtigungsprobleme
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)) ermöglicht eine hochgradig anpassbare Zugriffsverwaltung von Azure-Ressourcen, indem Berechtigungssätze in _Rollen_ kombiniert werden. Hier folgen einige Strategien, um RBAC im Storage-Explorer optimal zu nutzen.
+Die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)) ermöglicht eine hochgradig anpassbare Zugriffsverwaltung von Azure-Ressourcen, indem mehrere Berechtigungen in _Rollen_ kombiniert werden. Hier folgen einige Strategien, um Azure RBAC im Storage-Explorer optimal zu nutzen.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Wie kann ich im Storage-Explorer auf meine Ressourcen zugreifen?
 
-Falls Sie Probleme beim Zugreifen auf Speicherressourcen per RBAC haben, wurden Ihnen möglicherweise nicht die entsprechenden Rollen zugewiesen. In den folgenden Abschnitten werden die Berechtigungen beschrieben, die von Storage-Explorer derzeit zum Zugreifen auf Ihre Speicherressourcen benötigt werden. Wenden Sie sich an Ihren Azure-Kontoadministrator, falls Sie nicht sicher sind, ob Sie über die richtigen Rollen oder Berechtigungen verfügen.
+Falls Sie Probleme beim Zugreifen auf Speicherressourcen per Azure RBAC haben, wurden Ihnen möglicherweise nicht die entsprechenden Rollen zugewiesen. In den folgenden Abschnitten werden die Berechtigungen beschrieben, die von Storage-Explorer derzeit zum Zugreifen auf Ihre Speicherressourcen benötigt werden. Wenden Sie sich an Ihren Azure-Kontoadministrator, falls Sie nicht sicher sind, ob Sie über die richtigen Rollen oder Berechtigungen verfügen.
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>„Lesen: Auflisten/Abrufen von Speicherkonten“ – Berechtigungsproblem
 
@@ -65,7 +65,7 @@ Wenn Sie auf Blobcontainer oder Warteschlangen zugreifen möchten, können Sie d
 3. Wählen Sie das Benutzerkonto und den Mandanten aus, die der Ressource zugeordnet sind, die angefügt werden soll. Klicken Sie auf Weiter.
 4. Wählen Sie den Ressourcentyp aus, geben Sie die URL für die Ressource ein, und geben Sie einen eindeutigen Anzeigenamen für die Verbindung ein. Klicken Sie auf Weiter. Klicken Sie auf „Verbinden“.
 
-Für andere Ressourcentypen verfügen wir derzeit nicht über eine RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Für andere Ressourcentypen verfügen wir derzeit nicht über eine Azure RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Empfohlene in Azure integrierte Rollen
 

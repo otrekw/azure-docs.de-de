@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 2604a1608f21d7239db755027e15b8198fb3f9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f3a58d3a7470867ab23249bbd645289e010ad89
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81791674"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92223199"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x und höher
 
@@ -31,7 +31,7 @@ ms.locfileid: "81791674"
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |maxBatchSize|10|Die maximale Ereignisanzahl, die pro Empfangsschleife empfangen wird.|
-|prefetchCount|300|Die standardmäßige Vorabrufanzahl, die vom zugrunde liegenden `EventProcessorHost` verwendet wird.|
+|prefetchCount|300|Die standardmäßige Vorabrufanzahl, die vom zugrunde liegenden `EventProcessorHost` verwendet wird. Der minimal zulässige Wert ist 10.|
 |batchCheckpointFrequency|1|Die Anzahl der zu verarbeitenden Ereignisbatches, bevor ein EventHub-Cursorprüfpunkt erstellt wird.|
 
 > [!NOTE]
@@ -57,4 +57,3 @@ ms.locfileid: "81791674"
 
 > [!NOTE]
 > Eine Referenz für „host.json“ in Azure Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](../articles/azure-functions/functions-host-json-v1.md).
-

@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d838fe1d1015e1913c8aa28a122b06d108fb4676
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594304"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446646"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit interner Umleitung mithilfe von Azure PowerShell
 
-Sie können mit Azure PowerShell [eine Umleitung des Webdatenverkehrs](multiple-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](overview.md) erstellen. In diesem Tutorial definieren Sie mithilfe einer VM-Skalierungsgruppe einen Back-End-Pool. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr an die richtigen Pools gesendet wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen, und es werden Beispiele zu *www\.contoso.com* und *www\.contoso.org* verwendet.
+Sie können mit Azure PowerShell [eine Umleitung des Webdatenverkehrs](multiple-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](overview.md) erstellen. In diesem Artikel definieren Sie mithilfe einer VM-Skalierungsgruppe einen Back-End-Pool. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr an die richtigen Pools gesendet wird. In diesem Artikel wird vorausgesetzt, dass Sie mehrere Domänen besitzen, und es werden Beispiele zu *www\.contoso.com* und *www\.contoso.org* verwendet.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -106,7 +106,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>Erstellen des ersten Listeners und der ersten Regel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Tutorial erstellen Sie zwei Listener für Ihre beiden Domänen. In diesem Beispiel werden Listener für die Domänen *www\.contoso.com* und *www\.contoso.org* erstellt.
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Artikel erstellen Sie zwei Listener für Ihre beiden Domänen. In diesem Beispiel werden Listener für die Domänen *www\.contoso.com* und *www\.contoso.org* erstellt.
 
 Erstellen Sie den ersten Listener namens *contosoComListener* mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *contosoComRule*.
 
@@ -299,11 +299,4 @@ Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Z.B. `http
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit den Back-End-Pools
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+- [Übersicht über die Umleitung in Application Gateway](redirect-overview.md)

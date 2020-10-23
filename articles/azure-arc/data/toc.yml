@@ -66,8 +66,16 @@
       items:
         - name: Überwachen mit Grafana und Kibana
           href: monitor-grafana-kibana.md
-        - name: Hochladen von Metriken und Protokollen
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Hochladen in Azure Monitor
+          items:
+            - name: Voraussetzungen für das Hochladen
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: Protokolle hochladen
+              href: upload-logs.md
+            - name: Hochladen von Metriken
+              href: upload-metrics.md
+            - name: Hochladen von Nutzungsdaten
+              href: upload-usage-data.md
         - name: Ermitteln des Bestands an Datenbankinstanzen
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Abrufen von Benutzername und Kennwort für den Datencontroller

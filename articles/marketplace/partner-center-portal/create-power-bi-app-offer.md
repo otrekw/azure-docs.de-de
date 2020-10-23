@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646688"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710650"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Erstellen eines Power BI-App-Angebots
 
-In diesem Artikel wird beschrieben, wie Sie ein Power BI-App-Angebot erstellen und in Microsoft [AppSource](https://appsource.microsoft.com/) veröffentlichen.
+In diesem Artikel wird beschrieben, wie Sie ein Power BI-App-Angebot erstellen und in [Microsoft AppSource](https://appsource.microsoft.com/) veröffentlichen.
 
 Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
@@ -58,7 +58,7 @@ Sie enthält Links zum Durchführen von Vorgängen für dieses Angebot auf der G
 - Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](update-existing-offer.md#delete-a-draft-offer) (Angebotsentwurf löschen)
 - Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
 - Wenn das Angebot in der Vorschau ist: [Go-live](publishing-status.md#publisher-approval) (Live schalten)
-- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: [Cancel publishing](update-existing-offer.md#cancel-publishing) (Veröffentlichung abbrechen)
+- Wenn Sie die Veröffentlichung nicht abgeschlossen haben: [Veröffentlichung abbrechen](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
@@ -73,7 +73,7 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](commercial-marketplace-lead-management-instructions-azure-table.md) oder einen [HTTPS-Endpunkt](commercial-marketplace-lead-management-instructions-https.md), um die Leaddaten von Kunden zu speichern. Exportieren Sie die Daten dann in Ihr CRM-System.
+    > Wenn Ihr CRM-System nicht in dieser Liste aufgeführt ist, verwenden Sie eine [Azure-Tabelle](commercial-marketplace-lead-management-instructions-azure-table.md) oder einen [HTTPS-Endpunkt](commercial-marketplace-lead-management-instructions-https.md), um die Leaddaten von Kunden zu speichern. Exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
 3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
@@ -81,10 +81,10 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
-- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
+- [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Häufige Fragen zur Leadverwaltung](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problembehandlung bei Leadkonfigurationsfehlern](../lead-management-faq.md#publishing-config-errors)
+- [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)-PDF-Datei (vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -202,7 +202,7 @@ Geben Sie mindestens ein und bis zu drei verwandte Marketingdokumente im PDF-For
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst `https://upload.xboxlive.com` nicht blockiert.
@@ -218,7 +218,7 @@ Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots
 

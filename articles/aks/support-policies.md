@@ -4,12 +4,12 @@ description: Hier erhalten Sie Informationen zu AKS-Unterstützungsrichtlinien (
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888981"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892709"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -130,8 +130,7 @@ Sie können die NGSs nur für benutzerdefinierte Subnetze anpassen. NSGs können
 
 ## <a name="stopped-or-de-allocated-clusters"></a>Beendete Cluster oder Cluster mit aufgehobener Zuordnung
 
-Wie oben beschrieben, wird ein Cluster nicht mehr unterstützt, wenn die Zuordnung aller Clusterknoten manuell über die IaaS-APIs, die IaaS-CLI oder das IaaS-Portal aufgehoben wird.
-Das einzige unterstützte Verfahren zum Beenden aller Knoten/Aufheben der Zuordnung aller Knoten besteht darin, den AKS-Cluster zu beenden, wodurch der Clusterstatus bis zu 12 Monate lang erhalten bleibt.
+Wie oben beschrieben, wird ein Cluster nicht mehr unterstützt, wenn die Zuordnung aller Clusterknoten manuell über die IaaS-APIs, die IaaS-CLI oder das IaaS-Portal aufgehoben wird. Das einzige unterstützte Verfahren zum Beenden aller Knoten/Aufheben der Zuordnung aller Knoten besteht darin, den [AKS-Cluster zu beenden](start-stop-cluster.md#stop-an-aks-cluster), wodurch der Clusterstatus bis zu 12 Monate lang erhalten bleibt.
 
 Der Status von Clustern, die vor mehr als 12 Monaten beendet wurden, bleibt nicht erhalten. 
 

@@ -2,13 +2,13 @@
 title: 'Azure Batch: Taskstartereignis'
 description: Referenzinformationen zum Taskstartereignis in Batch. Dieses Ereignis wird einmal ausgegeben, nachdem ein Task vom Scheduler für den Start auf einem Computeknoten geplant wurde.
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: ed7b3014279fc87fbaae6f1c270f056e95073aaf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/08/2020
+ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965092"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851015"
 ---
 # <a name="task-start-event"></a>Taskstartereignis
 
@@ -23,6 +23,7 @@ ms.locfileid: "85965092"
     "id": "myTask",
     "taskType": "User",
     "systemTaskVersion": 220192842,
+    "requiredSlots": 1,
     "nodeInfo": {
         "poolId": "pool-001",
         "nodeId": "tvm-257509324_1-20160908t162728z"
@@ -45,6 +46,7 @@ ms.locfileid: "85965092"
 |`id`|String|Die ID des Tasks.|
 |`taskType`|String|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist.|
 |`systemTaskVersion`|Int32|Dies ist der interne Wiederholungszähler für einen Task. Der Batch-Dienst kann intern einen Task wiederholen, um vorübergehende Probleme zu berücksichtigen. Bei diesen Problemen kann es sich um interne Planungsfehler oder Versuche handeln, Computeknoten mit einem fehlerhaften Status wiederherzustellen.|
+|`requiredSlots`|Int32|Die erforderlichen Slots zum Ausführen des Tasks|
 |[`nodeInfo`](#nodeInfo)|Komplexer Typ|Enthält Informationen zu den Computeknoten, auf dem der Task ausgeführt wurde.|
 |[`multiInstanceSettings`](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Details finden Sie unter [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task).|
 |[`constraints`](#constraints)|Komplexer Typ|Die Ausführungseinschränkungen, die für diesen Task gelten.|
@@ -55,7 +57,7 @@ ms.locfileid: "85965092"
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
 |`poolId`|String|Die ID des Pools, auf den der Task angewendet wurde.|
-|`nodeId`|String|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
+|`nodeId`|Zeichenfolge|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 

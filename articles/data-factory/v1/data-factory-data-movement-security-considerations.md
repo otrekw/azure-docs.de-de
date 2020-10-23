@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441934"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619915"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -142,7 +142,7 @@ Die folgenden Abbildungen veranschaulichen die Verwendung von Datenverwaltungsga
 
 ![IPSec-VPN mit Gateway](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Firewallkonfigurationen und Whitelist-IP-Adresse des Gateways
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Firewallkonfigurationen und Filtern der IP-Adresse des Gateways
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk  
 In einem Unternehmen wird eine **Unternehmensfirewall** auf dem zentralen Router der Organisation ausgeführt. Außerdem wird die **Windows-Firewall** als Daemon auf dem lokalen Computer ausgeführt, auf dem das Gateway installiert ist. 
@@ -158,7 +158,7 @@ Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und di
 | `*.azuredatalakestore.net` | 443 | (OPTIONAL) Erforderlich, wenn Ihr Ziel Azure Data Lake Store ist. | 
 
 > [!NOTE] 
-> Möglicherweise müssen Sie Ports/Whitelistdomänen auf Ebene der Unternehmensfirewall verwalten, wie dies für die jeweiligen Datenquellen erforderlich ist. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.   
+> Sie müssen Ports bzw. Filterdomänen je nach Vorgabe der jeweiligen Datenquelle möglicherweise auf Ebene der Unternehmensfirewall verwalten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.   
 
 Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für die **Windows-Firewall**.
 
@@ -168,10 +168,10 @@ Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für d
 
 ![Gatewayportanforderungen](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>IP-Konfigurationen/Whitelists in Datenspeicher
-Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Computers, über den auf sie zugegriffen wird, in der Whitelist enthalten sind. Stellen Sie sicher, dass die IP-Adresse des Gatewaycomputers in der Firewall ordnungsgemäß in der Whitelist enthalten bzw. ordnungsgemäß konfiguriert ist.
+#### <a name="ip-configurationsfiltering-in-data-store"></a>Konfiguration und Filtern der IP-Adresse im Datenspeicher
+Einige Datenspeicher in der Cloud erfordern auch die Genehmigung der IP-Adresse des Computers, über den auf sie zugegriffen wird. Stellen Sie sicher, dass die IP-Adresse des Gatewaycomputers ordnungsgemäß in der Firewall genehmigt bzw. konfiguriert ist.
 
-Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycomputers in der Whitelist enthalten ist. Einige dieser Datenspeicher erfordern standardmäßig möglicherweise nicht, dass die IP-Adresse in der Whitelist enthalten ist. 
+Die folgenden Clouddatenspeicher erfordern die Genehmigung der IP-Adresse des Gatewaycomputers. Einige dieser Datenspeicher erfordern möglicherweise standardmäßig keine Genehmigung der IP-Adresse. 
 
 - [Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycompu
 **Antwort:** Dieses Feature wird noch nicht unterstützt. Wir arbeiten mit Hochdruck daran.
 
 **Frage:** Welche Portanforderungen müssen erfüllt sein, damit das Gateway funktioniert?
-**Antwort:** Das Gateway stellt ausgehende HTTP-basierte Verbindungen mit dem offenen Internet her. Die **ausgehenden Ports 443 und 80** müssen geöffnet sein, damit das Gateway diese Verbindung herstellen kann. Öffnen Sie den **eingehenden Port 8050** nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung „Anmeldeinformationsverwaltung“. Wenn Azure SQL-Datenbank oder Azure Synapse Analytics als Quelle/Ziel verwendet wird, müssen Sie auch Port **1433** öffnen. Weitere Informationen finden Sie im Abschnitt [IP-Konfigurationen/Whitelists in Datenspeicher](#firewall-configurations-and-whitelisting-ip-address-of gateway). 
+**Antwort:** Das Gateway stellt ausgehende HTTP-basierte Verbindungen mit dem offenen Internet her. Die **ausgehenden Ports 443 und 80** müssen geöffnet sein, damit das Gateway diese Verbindung herstellen kann. Öffnen Sie den **eingehenden Port 8050** nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung „Anmeldeinformationsverwaltung“. Wenn Azure SQL-Datenbank oder Azure Synapse Analytics als Quelle/Ziel verwendet wird, müssen Sie auch Port **1433** öffnen. Weitere Informationen finden Sie im Abschnitt [Firewallkonfigurationen und Filtern von IP-Adressen](#firewall-configurations-and-filtering-ip-address-of gateway). 
 
 **Frage:** Welche Zertifikatanforderungen gelten für das Gateway?
 **Antwort:** Das aktuelle Gateway benötigt ein Zertifikat, das von der Anwendung „Anmeldeinformationsverwaltung“ verwendet wird, um Datenspeicher-Anmeldeinformationen sicher festzulegen. Dieses Zertifikat ist ein selbst signiertes Zertifikat, das beim Gatewaysetup erstellt und konfiguriert wird. Sie können stattdessen Ihr eigenes TLS/SSL-Zertifikat verwenden. Weitere Informationen finden Sie im Abschnitt [ClickOnce-Anwendung „Anmeldeinformationsverwaltung“](#click-once-credentials-manager-app). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Leistung der Kopieraktivität finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md).
-
- 

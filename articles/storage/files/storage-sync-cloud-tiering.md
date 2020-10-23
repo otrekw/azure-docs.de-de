@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e5aafaa02f503582bd0050f8a6389d78b52eaa76
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033120"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939152"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -48,9 +48,9 @@ Die Mindestdateigröße für Dateien, für die ein Tiering durchgeführt werden 
 |8 KB (8192)                 | 16 KB   |
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 KB   |
-|64 KB (65536)               | 128 KB  |
+|64 KB (65536)    | 128 KB  |
 
-Mit Windows Server 2019 und Version 12 oder höher des Azure-Dateisynchronisierungs-Agents werden auch Clustergrößen von bis zu 2 MB unterstützt. Das Tiering funktioniert in diesen Größen auf die gleiche Weise. Ältere Betriebssystem- oder Agent-Versionen unterstützen Clustergrößen bis 64 KB.
+Aktuell werden Clustergrößen bis zu 64 KB unterstützt, für größere Größen ist Cloudtiering jedoch nicht verfügbar.
 
 Alle von Windows verwendeten Dateisysteme organisieren Ihre Festplatte auf Grundlage der Clustergröße (auch als Größe der Zuordnungseinheiten bezeichnet). Die Clustergröße stellt die kleinste Menge an Speicherplatz dar, die zum Speichern einer Datei verwendet werden kann. Wenn Dateigrößen kein gerades Vielfaches der Clustergröße ergeben, muss zum Speichern der Datei zusätzlicher Speicherplatz verwendet werden – bis zum nächsten Vielfachen der Clustergröße.
 
@@ -85,11 +85,23 @@ Wenn auf einem Volume mehrere Serverendpunkte vorhanden sind, gilt als freier Sp
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Wie funktioniert die datumsbasierte Tieringrichtlinie in Verbindung mit der Tieringrichtlinie für freien Speicherplatz auf dem Volume? 
 Wenn Sie Cloudtiering auf einem Serverendpunkt aktivieren, legen Sie eine Richtlinie für freien Speicherplatz auf dem Volume fest. Diese Richtlinie hat immer Vorrang vor allen anderen Richtlinien, einschließlich der Datumsrichtlinie. Optional können Sie eine Datumsrichtlinie für jeden Serverendpunkt auf diesem Volume aktivieren. Diese Richtlinie sorgt dafür, dass nur Dateien lokal aufbewahrt werden, auf die in der in dieser Richtlinie beschriebenen Zeitspanne zugegriffen wird (d. h., es erfolgen Lese- oder Schreibzugriffe auf sie). Dateien, auf die nicht in der angegebenen Anzahl von Tagen zugegriffen wird, werden ausgelagert. 
 
-Beim Cloudtiering wird der Zeitpunkt des letzten Zugriffs verwendet, um festzulegen, welche Dateien ausgelagert werden sollen. Der Cloudtiering-Filtertreiber („storagesync.sys“) verfolgt den Zeitpunkt des letzten Zugriffs und protokolliert die Informationen im Cloudtiering-Wärmespeicher. Sie können den Wärmespeicher mithilfe eines lokalen PowerShell-Cmdlets anzeigen.
+Beim Cloudtiering wird der Zeitpunkt des letzten Zugriffs verwendet, um festzulegen, welche Dateien ausgelagert werden sollen. Der Cloudtiering-Filtertreiber („storagesync.sys“) verfolgt den Zeitpunkt des letzten Zugriffs und protokolliert die Informationen im Cloudtiering-Wärmespeicher. Sie können den Speicherzustand abrufen und in einer CSV-Datei speichern, indem Sie ein server-local-PowerShell-Cmdlet verwenden.
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]

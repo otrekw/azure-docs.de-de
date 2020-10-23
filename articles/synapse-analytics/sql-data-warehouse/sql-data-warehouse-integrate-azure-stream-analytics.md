@@ -2,27 +2,27 @@
 title: Verwenden von Azure Stream Analytics
 description: Tipps für die Verwendung von Azure Stream Analytics mit Ihrem Data Warehouse in Azure Synapse für die Entwicklung von Echtzeitlösungen.
 services: synapse-analytics
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 2/5/2020
-ms.author: martinle
+ms.date: 9/25/2020
+ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213345"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449518"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Verwenden von Azure Stream Analytics mit Azure Synapse Analytics
 
 Azure Stream Analytics ist ein vollständig verwalteter Dienst, der eine geringe Latenz, hohe Verfügbarkeit und eine skalierbare komplexe Ereignisverarbeitung durch das Streaming von Daten in der Cloud bietet. Die Grundlagen finden Sie unter [Einführung in Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). In [Erste Schritte mit Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) können Sie sich dann mit dem Erstellen einer End-to-End-Lösung mit Stream Analytics vertraut machen.
 
-In diesem Artikel erfahren Sie, wie Sie Ihr Data Warehouse als Ausgabesenke für Azure Stream Analytics-Aufgaben verwenden.
+In diesem Artikel erfahren Sie, wie Sie Ihr Data Warehouse als Ausgabesenke für Datenerfassung mit hohem Durchsatz mit Azure Stream Analytics-Aufträgen verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihr Data Warehouse als Ausgabesenke für
     2. Konfigurieren und starten der Ereignisgenerator-Anwendung
     3. Bereitstellen eines Stream Analytics-Auftrags
     4. Festlegen der Auftragseingabe und -abfrage
-* Ein SQL-Pool-Data Warehouse in Azure Synapse. Befolgen Sie zum Erstellen eines neuen Data Warehouse die Schritte im [Schnellstart zum Erstellen eines neuen Data Warehouse](create-data-warehouse-portal.md).
+* Ein Azure Synapse SQL-Pool für Ihr Data Warehouse. Befolgen Sie zum Erstellen eines neuen Data Warehouse die Schritte im [Schnellstart zum Erstellen eines neuen Data Warehouse](create-data-warehouse-portal.md).
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Festlegen der Streamingausgabe an Ihr Data Warehouse
 
@@ -42,9 +42,9 @@ Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics Auftrag, und klicken Si
 
 ### <a name="step-2"></a>Schritt 2
 
-Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie im Dropdownmenü die Option **SQL-Datenbank** aus.
+Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie im Dropdownmenü die Option **Azure Synapse Analytics** aus.
 
-![Auswählen der SQL-Datenbank](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![Auswählen von Azure Synapse Analytics](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output.png)
 
 ### <a name="step-3"></a>Schritt 3
 
@@ -52,15 +52,15 @@ Geben Sie die folgenden Werte ein:
 
 * *Ausgabealias:* Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
 * *Abonnement*:
-  * Befindet sich Ihr Data Warehouse im selben Abonnement wie der Stream Analytics-Auftrag, klicken Sie auf ***SQL-Datenbank aus Ihren Abonnements auswählen***.
-  * Wenn sich die Datenbank in einem anderen Abonnement befindet, klicken Sie auf „SQL-Datenbankeinstellungen manuell bereitstellen“.
+  * Befindet sich Ihr Data Warehouse im selben Abonnement wie der Stream Analytics-Auftrag, klicken Sie auf ***Select Azure Synapse Analytics from your subscriptions*** (Azure Synapse Analytics aus Abonnements auswählen).
+  * Wenn sich das Data Warehouse in einem anderen Abonnement befindet, klicken Sie auf „Provide Azure Synapse Analytics settings manually“ (Azure Synapse Analytics-Einstellungen manuell bereitstellen).
 * *Datenbank*: Wählen Sie in der Dropdownliste die Zieldatenbank aus.
 * *Benutzername*: Geben Sie den Benutzernamen eines Kontos mit Schreibberechtigungen für die Datenbank an.
 * *Kennwort*: Geben Sie das Kennwort für das angegebene Benutzerkonto an.
 * *Tabelle*: Geben Sie den Namen der Zieltabelle in der Datenbank an.
 * Klicken Sie auf die Schaltfläche **Speichern**.
 
-![Vervollständigtes SQL-Datenbank-Formular](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Ausgefülltes Azure Synapse Analytics-Formular](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
 
 ### <a name="step-4"></a>Schritt 4
 

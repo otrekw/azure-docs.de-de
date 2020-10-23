@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996685"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856483"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -147,7 +147,7 @@ Um die Systemvariablen **WindowStart** und **WindowEnd** in der Pipelinedefiniti
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Ausführungsreihenfolge von Fenstern in einem Abgleichsszenario
 
-Wenn „startTime“ für den Trigger in der Vergangenheit liegt, generiert der Trigger basierend auf der Formel „M=(CurrentTime - TriggerStartTime)/TriggerSliceSize“ parallel Ausführungen vom Typ „{M} backfill(past)“. Hierbei wird die Triggerparallelität berücksichtigt, bevor die zukünftigen Ausführungen erfolgen. Die Ausführungsreihenfolge für Fenster ist deterministisch, und die ältesten Intervalle werden zuerst ausgeführt. Dieses Verhalten kann derzeit nicht geändert werden.
+Wenn „startTime“ für den Trigger in der Vergangenheit liegt, generiert der Trigger basierend auf der Formel „M=(CurrentTime - TriggerStartTime)/TumblingWindowSize“ parallel Ausführungen vom Typ „{M} backfill(past)“. Hierbei wird die Triggerparallelität berücksichtigt, bevor die zukünftigen Ausführungen erfolgen. Die Ausführungsreihenfolge für Fenster ist deterministisch, und die ältesten Intervalle werden zuerst ausgeführt. Dieses Verhalten kann derzeit nicht geändert werden.
 
 ### <a name="existing-triggerresource-elements"></a>Vorhandene TriggerResource-Elemente
 

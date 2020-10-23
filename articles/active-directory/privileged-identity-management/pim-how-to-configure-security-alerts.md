@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 706770db4309d1a909bc1161ab9d6657b6c5310a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419987"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533547"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in Privileged Identity Management
 
@@ -38,7 +38,7 @@ Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Sicherheitswarn
 
 # <a name="new-version"></a>[Neue Version](#tab/new)
 
-![Azure AD-Rollen – Warnungsbereich mit Auflistung von Warnungen und Schweregrad](./media/pim-how-to-configure-security-alerts/view-alerts.png)
+![Screenshot der Seite „Warnungen“ mit einer Liste von Warnungen mit jeweiligem Schweregrad](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 
@@ -108,8 +108,8 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie alle Benutzer, die nicht unbedingt die Rolle „Globaler Administrator“ benötigen. </br>Weisen Sie diesen Benutzern stattdessen weniger privilegierte Rollen zu. |
 | **Prävention** | Weisen Sie Benutzern die am wenigsten privilegierte Rolle zu, die sie benötigen. |
 | **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
-| **Trigger** | Wird ausgelöst, wenn zwei verschiedene Kriterien erfüllt sind, und Sie können beide konfigurieren. Erstens müssen Sie einen bestimmten Schwellenwert für globale Administratoren erreichen. Zweitens muss ein bestimmter Prozentsatz aller Rollenzuweisungen globale Administratoren betreffen. Wenn nur eines dieser Kriterien erfüllt ist, wird die Warnung nicht angezeigt. |
-| **Mindestanzahl globaler Administratoren** | Diese Einstellung gibt die Anzahl von globalen Administratoren (von 2 bis 100) an, die Sie für Ihre Azure AD-Organisation als zu gering betrachten. |
+| **Trigger** | Wird ausgelöst, wenn zwei verschiedene Kriterien erfüllt sind, und Sie können beide konfigurieren. Erstens müssen Sie einen bestimmten Schwellenwert für Rollenzuweisungen für globale Administratoren erreichen. Zweitens muss ein bestimmter Prozentsatz aller Rollenzuweisungen globale Administratoren betreffen. Wenn nur eines dieser Kriterien erfüllt ist, wird die Warnung nicht angezeigt. |
+| **Mindestanzahl globaler Administratoren** | Diese Einstellung gibt die Anzahl von Rollenzuweisungen für globale Administratoren (von 2 bis 100) an, die Sie für Ihre Azure AD-Organisation als zu gering betrachten. |
 | **Prozentsatz von globalen Administratoren** | Diese Einstellung gibt den Mindestprozentsatz von globalen Administratoren (von 0 % bis 100 %) an, unter den Ihre Azure AD-Organisation nicht fallen soll. |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Rollen werden zu häufig aktiviert
@@ -125,21 +125,21 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 | **Zeitrahmen für Aktivierungsverlängerung** | Diese Einstellung gibt den Zeitraum in Tagen, Stunden, Minuten und Sekunden an, den Sie verwenden möchten, um verdächtige Verlängerungen nachzuverfolgen. |
 | **Anzahl von Aktivierungsverlängerungen** | Diese Einstellung gibt die Anzahl von Aktivierungen (von 2 bis 100) im gewählten Zeitraum an, über die Sie benachrichtigt werden möchten. Sie können diese Einstellung mithilfe des Schiebereglers oder durch Eingabe einer Zahl in das Textfeld ändern. |
 
-## <a name="configure-security-alert-settings"></a>Konfigurieren der Einstellungen für Sicherheitswarnungen
+## <a name="customize-security-alert-settings"></a>Anpassen der Einstellungen für Sicherheitswarnungen
 
-Navigieren Sie auf der Seite „Warnungen“ zu **Einstellungen**.
+Klicken Sie auf der Seite **Warnungen** auf **Einstellungen**.
 
 ![Seite „Warnungen“ mit hervorgehobenen „Einstellungen“](media/pim-how-to-configure-security-alerts/alert-settings.png)
 
 Passen Sie die Einstellungen für die verschiedenen Warnungen so an, dass sie für Ihre Umgebung und Sicherheitsziele funktionieren.
 
-![Einstellungenseite für eine Warnung zum Aktivieren und Konfigurieren von Einstellungen](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![Einstellungenseite für eine Warnung zum Aktivieren und Konfigurieren von Einstellungen](media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
-![Azure AD-Rollen – Warnungsbereich mit Auflistung von Warnungen und Schweregrad](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD-Rollen: Warnungsbereich mit Auflistung von Warnungen und Schweregrad](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
-## <a name="security-alerts"></a>Sicherheitswarnungen
+## <a name="security-alert-details"></a>Details der Sicherheitswarnung
 
 Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie Informationen zur Behebung und Vermeidung. Der Schweregrad hat folgende Bedeutung:
 

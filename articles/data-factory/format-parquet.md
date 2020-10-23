@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 91455e4797324f28f911dd8a928410517a951728
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531745"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946143"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Parquet-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 | Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ParquetSink** festgelegt werden. | Ja      |
+| type          | Die „type“-Eigenschaft der Senke der Kopieraktivität muss auf **ParquetSink** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Parquet-Schreibeinstellungen** finden Sie in der Tabelle unten. |    Nein      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Schreiben von Daten in einen Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Schreibeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
 
@@ -108,6 +108,7 @@ In der folgenden Tabelle sind die von einer Parquet-Quelle unterstützten Eigens
 | Spalte, in der der Dateiname gespeichert wird | Erstellt eine neue Spalte mit dem Namen und Pfad der Quelldatei. | nein | String | rowUrlColumn |
 | Nach Abschluss | Löscht oder verschiebt die Dateien nach der Verarbeitung. Dateipfad beginnt mit dem Containerstamm | nein | Löschen: `true` oder `false` <br> Verschieben: `[<from>, <to>]` | purgeFiles <br> moveFiles |
 | Nach der letzten Änderung filtern | Filtern Sie Dateien nach dem Zeitpunkt ihrer letzten Änderung. | nein | Timestamp | modifiedAfter <br> modifiedBefore |
+| Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Quellbeispiel
 
@@ -126,7 +127,7 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-properties"></a>Senkeneigenschaften
 
-In der folgenden Tabelle sind die von einer Parquet-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
+In der folgenden Tabelle sind die von einer Parquet-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
 | Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
@@ -155,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>Datentypunterstützung
 
-Komplexe Parquet-Datentypen (wie MAP, LIST und STRUCT) werden derzeit nicht unterstützt.
+Komplexe Parquet-Datentypen (z. B. MAP, LIST, STRUCT) werden derzeit nur in Datenflüssen, aber nicht in der Kopieraktivität unterstützt. Wenn Sie komplexe Typen in Datenflüssen verwenden möchten, importieren Sie das Dateischema nicht in das Dataset und lassen das Schema im Dataset leer. Importieren Sie dann die Projektion in die Quelltransformation.
 
 ## <a name="using-self-hosted-integration-runtime"></a>Verwendung der selbstgehosteten Integration Runtime
 

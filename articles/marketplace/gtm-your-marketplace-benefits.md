@@ -4,21 +4,21 @@ description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705553"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91368252"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
 Sie haben Ihr Angebot im kommerziellen Microsoft-Marketplace veröffentlicht und möchten nun natürlich, dass es auf Interesse stößt. Wir bieten Ihnen vom Vertrieb über die technische Umsetzung bis hin zum Marketing Vorteile, die Ihrem Angebot schneller zum Erfolg verhelfen können.
 
-Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
+Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Sehen Sie sich das Marketplace Rewards-[Demovideo](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4) an, um einen Überblick darüber zu erhalten, wie Sie sich für Marketplace Rewards registrieren und von den Vorteilen in Partner Center profitieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
 
 ## <a name="marketplace-rewards"></a>Marketplace-Prämien
 
@@ -32,7 +32,7 @@ Sie werden basierend auf Ihrer Berechtigung von einem Mitglied des Prämienteams
 
 Bei Transaktionspartnern ermöglichen Sie durch die Steigerung der abgerechneten Verkäufe über die kommerzielle Marketplace-Plattform größere Vorteile pro Ebene.
 
-Die Mindestanforderung für die Veröffentlichung in den Onlinestores ist eine MPN-ID – diese Vorteile stehen also allen Partnern unabhängig von ihrem MPN-Kompetenzstatus und ihrem Partnertyp zur Verfügung. Jeder Partner kann sein Geschäft über den kommerziellen Marketplace als Plattform vergrößern.
+Die Mindestanforderung für die Veröffentlichung in den Onlineshops ist eine MPN-ID – diese Vorteile stehen also allen Partnern unabhängig von ihrem MPN-Kompetenzstatus oder ihrem Partnertyp zur Verfügung. Jeder Partner kann sein Geschäft über den kommerziellen Marketplace als Plattform vergrößern.
 
 Sie erhalten Unterstützung beim Verständnis der für Sie verfügbaren Ressourcen und der Implementierung bewährter Methoden, die Sie auch [eigenständig lesen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) können.
 
@@ -44,13 +44,12 @@ Der Anfang ist denkbar einfach:
 2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
 3. Um Verkaufs- und Marketingvorteile zu aktivieren, weisen Sie einen Marketingkontakt zu. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
 4. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
-
     1. Wählen Sie in der Liste einen Benutzer aus. Wenn der Benutzer, den Sie zuweisen möchten, nicht in der Liste enthalten ist, können Sie unter **Kontoeinstellungen** neue Benutzer hinzufügen.
     1. Geben Sie eine E-Mail-Adresse für den Benutzer an, die nicht mit der E-Mail-Adresse des Partner Center-Kontos Ihres Unternehmens identisch ist. Wir senden Anweisungen zur Nutzung Ihres Vorteils im Rahmen des Marketplace-Prämienprogramms an die E-Mail-Adresse des genannten Marketingkontakts.
     1. Geben Sie die Telefonnummer und die bevorzugte Sprache für diesen Marketingkontakt an. Nachdem Sie diese Informationen eingegeben haben, wählen Sie **Benutzer zuweisen** aus.
     1. Nachdem Sie den Marketingkontakt aktualisiert haben, wählen Sie für den Vorteil, den Sie verwenden möchten, die Option **Aktivieren** aus. Sobald Sie einen Vorteil aktiviert haben, wird Ihr Marketingkontakt innerhalb einer Woche von einem Mitglied des Prämienteams kontaktiert.
 
-**Technische Vorteile**
+### <a name="technical-benefits"></a>Technische Vorteile
 
 1. Sie können Ihre technischen Vorteile nutzen, um während der Presales-, Entwurfs-, Bereitstellungs- und App-Entwicklungsphasen Ihrer Cloud- und Hybridlösungen technische Unterstützung anzufordern. Zum Anfordern von Unterstützung füllen Sie das Anforderungsformular aus, und wählen Sie dann **Anforderung übermitteln** aus.
 2. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
@@ -79,7 +78,7 @@ Wenn Sie Ihr transaktionsfähiges Angebot in Microsoft AppSource oder im Azure M
 
 Diese Vorteile sollen Sie bei Marketing-, Vertriebs- und technischen Aktivitäten unterstützen und Ihnen dadurch dabei helfen, mehr Besucher und mehr Leads zu erhalten und mehr Geschäfte zu verwirklichen.
 
-Alle Partner mit einem aktiven Angebot können gemeinsam mit einem dedizierten Engagement-Manager die optimalen Aktivitäten für Ihr Portfolio von Angeboten im kommerziellen Marketplace auswählen. Dieses Engagement beginnt mit jedem Angebot neu, d. h., Sie können Ihre Aktivitäten und den zeitlichen Ablauf dieser Aktivitäten mit der zeitlichen Planung der allgemeineren Marketing- und Verkaufsstrategien Ihres Unternehmens abstimmen. 
+Alle Partner mit einem aktiven Angebot können gemeinsam mit einem dedizierten Engagement-Manager die optimalen Aktivitäten für Ihr Portfolio von Angeboten im kommerziellen Marketplace auswählen. Dieses Engagement beginnt mit jedem Angebot neu, d. h., Sie können Ihre Aktivitäten und den zeitlichen Ablauf dieser Aktivitäten mit der zeitlichen Planung der allgemeineren Marketing- und Verkaufsstrategien Ihres Unternehmens abstimmen.
 
 ![Marketingvorteile](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -97,23 +96,23 @@ Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dyn
 
 ### <a name="publisher-agreement"></a>Herausgebervereinbarung
 
-Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) abgedeckt und fallen unter die Ergänzung zum kommerziellen Prämien-Programm.
+Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) von Microsoft abgedeckt und fallen unter die Ergänzung zum kommerziellen Prämien-Programm.
 
 ### <a name="cancellation-policy"></a>Kündigung
 
-Herausgeber der Stufen [List und Trial](determine-your-listing-type.md) können sich pro Angebotsveröffentlichung für die Aktivitäten anmelden oder von diesen abmelden. Partner können sich jederzeit von jedem Engagement abmelden. 
+Herausgeber der Stufen [List und Trial](determine-your-listing-type.md) können sich pro Angebotsveröffentlichung für die Aktivitäten anmelden oder von diesen abmelden. Partner können sich jederzeit von jedem Engagement abmelden.
 
-Microsoft behält sich vor, Marketplace-Prämienvorteile für Herausgeber zu widerrufen und zu beenden, für die Folgendes gilt: 
+Microsoft behält sich vor, Marketplace-Prämienvorteile für Herausgeber zu widerrufen und zu beenden, für die Folgendes gilt:
 
 * Sie beteiligen sich mithilfe ihres Marketplace-Angebots an illegalen Aktivitäten.
 * Sie schließen einen Kaufvorgang ab, der als betrügerisch erkannt oder als vermutlich betrügerisch eingestuft wird.
-* Sie wurden aus dem kommerziellen Marketplace entfernt. 
+* Sie wurden aus dem kommerziellen Marketplace entfernt.
 * Sie nutzen ihr Angebot, um Marketing oder andere Inhalte anzuzeigen, die gegen Urheberrechte oder Markengesetze verstoßen.
 * Sie verstoßen gegen die Richtlinien des [Azure Sponsorship-Programms](https://azure.microsoft.com/offers/ms-azr-0036p/), einschließlich, jedoch nicht beschränkt auf die Verwendung von Azure Sponsorship-Mitteln für eigene interne Vorgänge oder Bitcoin-Mining.
 
 Microsoft behält sich vor, Marketplace-Prämienvorteile in folgenden Fällen zu widerrufen und zu beenden:
 
-* Der Kunde hat den Kaufvorgang versehentlich abgeschlossen und möchte den Auftrag stornieren. 
+* Der Kunde hat den Kaufvorgang versehentlich abgeschlossen und möchte den Auftrag stornieren.
 * Der Kunde storniert den Auftrag, bevor das Produkt des Partners verwendet wurde.
 
 ### <a name="offer-availability"></a>Angebotsverfügbarkeit
@@ -124,10 +123,7 @@ Transaktionen, die sich als betrügerisch erweisen, werden nicht zur Ebene des a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) an, um Ihr Angebot zu erstellen oder zu konfigurieren.
-
-Aktivieren Sie Ihre Marketplace-Prämienvorteile in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
-
-Sehen Sie sich [die für Sie verfügbaren Self-Service-Ressourcen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) an.
-
-Registrieren Sie sich für das [Communityforum zu Microsoft AppSource und Azure Marketplace](https://aka.ms/MarketplaceCommunity), und informieren Sie sich über relevante Themen, oder nehmen Sie an der Diskussion teil.
+- Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) an, um Ihr Angebot zu erstellen oder zu konfigurieren.
+- Aktivieren Sie Ihre Marketplace-Prämienvorteile in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
+- Sehen Sie sich [die für Sie verfügbaren Self-Service-Ressourcen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) an.
+- Registrieren Sie sich für das [Communityforum zu Microsoft AppSource und Azure Marketplace](https://aka.ms/MarketplaceCommunity), und informieren Sie sich über relevante Themen, oder nehmen Sie an der Diskussion teil.

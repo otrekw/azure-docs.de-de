@@ -3,12 +3,12 @@ title: 'Event Hubs: Erfassen von Streamingereignissen über das Azure-Portal'
 description: In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal die Erfassung von über Azure Event Hubs gestreamten Ereignissen aktivieren.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315740"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613576"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Aktivieren der Erfassung von über Azure Event Hubs gestreamten Ereignissen
 
@@ -17,6 +17,9 @@ Mit Azure [Event Hubs Capture][capture-overview] können Sie die Streamingdaten 
 Sie können Capture über das [Azure-Portal](https://portal.azure.com) zum Zeitpunkt der Event Hub-Erstellung konfigurieren. Die Daten können entweder in einem Azure [Blob Storage](https://azure.microsoft.com/services/storage/blobs/)-Container oder in einem [Azure Data Lake Storage Gen1 oder Gen 2](https://azure.microsoft.com/services/data-lake-store/)-Konto erfasst werden.
 
 Weitere Informationen finden Sie in der [Übersicht über Event Hubs Capture][capture-overview].
+
+> [!IMPORTANT]
+> Das Zielspeicherkonto (Azure Storage oder Azure Data Lake Storage) muss sich im gleichen Abonnement wie der Event Hub befinden.
 
 ## <a name="capture-data-to-azure-storage"></a>Erfassen von Daten in Azure Storage
 
@@ -34,7 +37,7 @@ Das Standadzeitfenster beträgt fünf Minuten. Der Mindestwert ist 1, der Höchs
 1. Folgen Sie dem Artikel [Speicherkonto erstellen](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account), um ein Azure Storage-Konto zu erstellen. Legen Sie auf der Registerkarte **Erweitert** die Option **Hierarchischer Namespace** auf **Aktiviert** fest, um daraus ein Azure Data Lake Storage Gen 2-Konto zu machen.
 2. Führen Sie die folgenden Schritte aus, wenn Sie einen Event Hub erstellen: 
 
-    1. Wählen Sie für **Capture** **Ein** aus. 
+    1. Wählen Sie für **Capture****Ein** aus. 
     2. Wählen Sie **Azure Storage** als Erfassungsanbieter aus. Die **Azure Data Lake Store**-Option, die für den **Erfassungsanbieter** angezeigt wird, ist für Gen 1 von Azure Data Lake Storage. Um einen Azure Data Lake Storage der Gen 2 zu verwenden, wählen Sie **Azure Storage** aus.
     2. Wählen Sie die Schaltfläche **Container auswählen** aus. 
 

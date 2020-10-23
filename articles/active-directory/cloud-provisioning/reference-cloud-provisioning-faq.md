@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658376"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628671"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Häufig gestellte Fragen zur Azure Active Directory Connect-Cloudbereitstellung
 
@@ -83,6 +83,18 @@ Nein. Die Installation des Agents unter Server Core wird nicht unterstützt.
 **F:  Kann ich zusammen mit dem Cloudbereitstellungs-Agent einen Stagingserver verwenden?**
 
 Nein, Stagingserver werden nicht unterstützt.
+
+**F:  Können Gastbenutzerkonten synchronisiert werden?**
+
+Nein, das Synchronisieren von Gastbenutzerkonten wird nicht unterstützt.
+
+**F:  Was geschieht, wenn ich einen Benutzer aus einer Organisationseinheit, deren Gültigkeitsbereich die Cloudbereitstellung ist, in eine Organisationseinheit verschiebe, deren Gültigkeitsbereich Azure AD Connect ist?**
+
+Der Benutzer wird gelöscht und neu erstellt.  Das Verschieben eines Benutzers aus einer Organisationseinheit, deren Gültigkeitsbereich die Cloudbereitstellung ist, wird als Löschvorgang betrachtet.  Wenn der Benutzer in eine Organisationseinheit verschoben wird, die von Azure AD Connect verwaltet wird, wird er wieder Azure AD bereitgestellt, und es wird ein neuer Benutzer erstellt.
+
+**F:  Was geschieht mit dem Benutzer, der in Azure AD erstellt wurde, wenn ich die Organisationseinheit umbenenne oder verschiebe, deren Gültigkeitsbereich der Cloudbereitstellungsfilter ist?**
+
+Nichts.  Die Benutzer werden nicht gelöscht, wenn die Organisationseinheit umbenannt oder verschoben wird.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

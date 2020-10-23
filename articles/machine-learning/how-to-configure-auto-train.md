@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/10/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: c5e81b07bf43b86543af546ab5453563e7cf4004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886215"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91709086"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -44,7 +44,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 * Installation des Azure Machine Learning Python SDK,
     zum Installieren des SDK können Sie wie folgt vorgehen: 
-    * Erstellen Sie eine Compute-Instanz, wodurch das SDK automatisch installiert und für ML-Workflows vorkonfiguriert wird. Weitere Informationen hierzu finden Sie unter [Was ist eine Azure Machine Learning-Compute-Instanz?](concept-compute-instance.md#managing-a-compute-instance) 
+    * Erstellen Sie eine Compute-Instanz, wodurch das SDK automatisch installiert und für ML-Workflows vorkonfiguriert wird. Weitere Informationen hierzu finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md). 
 
     * [Installieren Sie das SDK selbst](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Stellen Sie sicher, dass Sie `automl` zusätzlich installieren. 
 
@@ -117,7 +117,7 @@ Legen Sie als Nächstes die Instanz fest, auf der das Modell trainiert werden so
 
     Ein Remotebeispiel mit Azure Machine Learning Managed Compute finden Sie in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). 
 
-* Ein **Azure Databricks-Cluster** im Azure-Abonnement. Weitere Informationen finden Sie hier: [Einrichten eines Azure Databricks-Clusters für automatisiertes maschinelles Lernen](how-to-configure-environment.md#azure-databricks). Beispielnotebooks mit Azure Databricks finden Sie auf der [GitHub-Website](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl).
+* Ein **Azure Databricks-Cluster** im Azure-Abonnement. Weitere Informationen finden Sie hier: [Einrichten eines Azure Databricks-Clusters für automatisiertes maschinelles Lernen](how-to-configure-environment.md#aml-databricks). Beispielnotebooks mit Azure Databricks finden Sie auf der [GitHub-Website](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl).
 
 <a name='configure-experiment'></a>
 
@@ -179,8 +179,29 @@ Beispiele hierfür sind:
 
 Beim automatisierten maschinellen Lernen werden während des Automatisierungs- und Optimierungsprozesses verschiedene Modelle und Algorithmen getestet. Als Benutzer müssen Sie den Algorithmus nicht angeben. 
 
-Die drei unterschiedlichen `task`-Parameterwerte (der dritte Tasktyp ist `forecasting` und verwendet einen ähnlichen Algorithmuspool wie `regression`-Tasks) bestimmen die Liste der anzuwendenden Algorithmen und Modelle. Verwenden Sie die Parameter `allowed_models` oder `blocked_models`, um Iterationen mit den verfügbaren Modellen, die eingeschlossen oder ausgeschlossen werden sollen, weiter zu ändern. Die Liste der unterstützten Modelle finden Sie unter [SupportedModels-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) für [Klassifizierung](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Vorhersagen](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting) und [Regression](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression).
+Die drei verschiedenen Werte des Parameters `task` bestimmen die Liste der anzuwendenden Algorithmen oder Modelle. Verwenden Sie die Parameter `allowed_models` oder `blocked_models`, um Iterationen mit den verfügbaren Modellen, die eingeschlossen oder ausgeschlossen werden sollen, weiter zu ändern. 
 
+In der folgenden Tabelle werden die unterstützten Modelle anhand des Tasktyps zusammengefasst. 
+
+> [!NOTE]
+> Wenn Sie vorhaben, Ihre mit ML automatisch erstellten Modelle in ein [ONNX-Modell](concept-onnx.md) zu exportieren, beachten Sie, dass nur Algorithmen, die mit einem Sternchen (*) angegeben sind, in das ONNX-Format konvertiert werden können. Erfahren Sie mehr über das [Konvertieren von Modellen zu ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Beachten Sie auch, dass ONNX zurzeit nur Klassifizierungs- und Regressionsaufgaben unterstützt. 
+
+Klassifizierung | Regression | Zeitreihe und Vorhersage
+|-- |-- |--
+[Logistische Regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastisches Netz](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastisches Netz](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Gradient Boosting](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Gradient Boosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Gradient Boosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Entscheidungsstruktur](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Entscheidungsstruktur](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Entscheidungsstruktur](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K nächste Nachbarn](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K nächste Nachbarn](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K nächste Nachbarn](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineare SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS-Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Support Vector Classification (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastisches Gradientenabstiegsverfahren (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastisches Gradientenabstiegsverfahren (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Zufällige Gesamtstruktur](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Zufällige Gesamtstruktur](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[XGBoost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[XGBoost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[Averaged Perceptron Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[Online Gradient Descent Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Schneller linearer Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Stochastisches Gradientenabstiegsverfahren (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[Linearer SVM-Klassifizierer](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
 
 ### <a name="primary-metric"></a>Primäre Metrik
 Der Parameter `primary metric` bestimmt die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die verfügbaren Metriken, die Sie auswählen können, werden vom ausgewählten Tasktyp bestimmt. In der folgenden Tabelle werden gültige primäre Metriken für jeden Tasktyp aufgeführt.
@@ -329,7 +350,6 @@ Eine Zusammenfassung der Featurisierung und Informationen zu den Features, die z
 ## <a name="register-and-deploy-models"></a>Registrieren und Bereitstellen von Modellen
 
 Details zum Herunterladen oder Registrieren eines Modells für die Bereitstellung in einem Webdienst finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
-
 
 <a name="explain"></a>
 

@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500333"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461222"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -101,6 +101,10 @@ Sie können die umbenannte Datenbank auswählen und den Schutz dafür konfigurie
 Eine Datenbank, die Sie [einer automatisch geschützten Instanz hinzufügen](backup-sql-server-database-azure-vms.md#enable-auto-protection), wird ggf. nicht sofort unter den geschützten Elementen angezeigt. Dies liegt daran, dass die Ermittlung in der Regel alle 8 Stunden ausgeführt wird. Sie können neue Datenbanken aber sofort erkennen und schützen, wenn Sie manuell eine Ermittlung durchführen, indem Sie **Datenbanken neu ermitteln**  auswählen. Dies ist in der folgenden Abbildung dargestellt:
 
   ![Manuelles Ermitteln einer neu hinzugefügten Datenbank](./media/backup-azure-sql-database/view-newly-added-database.png)
+  
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Kann ich Datenbanken schützen, für die TDE (Transparent Data Encryption) aktiviert ist, und bleibt die Datenbank während des gesamten Sicherungsprozesses verschlüsselt?
+
+Ja, Azure Backup unterstützt die Sicherung von Datenbanken und Servern in SQL Server mit aktivierter TDE. Backup unterstützt [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) mit Schlüsseln, die von Azure verwaltet werden, oder mit kundenseitig verwalteten Schlüssen (Bring Your Own Key, BYOK).  Backup führt im Rahmen des Sicherungsprozesses keine SQL-Verschlüsselung durch, daher bleibt die Datenbank bei der Sicherung verschlüsselt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

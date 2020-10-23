@@ -3,12 +3,12 @@ title: Übersicht über den Connected Machine-Agent für Windows
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822186"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979154"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -85,6 +85,7 @@ Diensttags:
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureResourceManager
 * AzureArcInfrastructure
 
 URLs:
@@ -94,10 +95,15 @@ URLs:
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
-|`agentserviceapi.azure-automation.net`|Gastkonfiguration|
-|`*-agentservice-prod-1.azure-automation.net`|Gastkonfiguration|
 |`*.guestconfiguration.azure.com` |Gastkonfiguration|
 |`*.his.arc.azure.com`|Hybrididentitätsdienst|
+
+Vorschau-Agents (Version 0.11 und niedriger) benötigen außerdem Zugriff auf die folgenden URLs:
+
+| Agent-Ressource | BESCHREIBUNG |
+|---------|---------|
+|`agentserviceapi.azure-automation.net`|Gastkonfiguration|
+|`*-agentservice-prod-1.azure-automation.net`|Gastkonfiguration|
 
 Eine Liste der IP-Adressen für die einzelnen Diensttags/Regionen finden Sie in der JSON-Datei unter [Azure-IP-Bereiche und -Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft veröffentlicht wöchentliche Updates zu den einzelnen Azure-Diensten und den dafür genutzten IP-Adressbereichen. Weitere Informationen finden Sie unter [Diensttags](../../virtual-network/security-overview.md#service-tags).
 

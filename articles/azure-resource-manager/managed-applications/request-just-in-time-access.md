@@ -3,18 +3,18 @@ title: Anfordern des Just-In-Time-Zugriffs
 description: Beschreibt, wie Herausgeber von Azure Managed Applications den Just-In-time-Zugriff auf eine verwaltete Anwendung anfordern.
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649482"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371563"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Aktivieren und Anfordern des Just-In-time-Zugriffs für Azure Managed Applications
 
-Consumer Ihrer verwalteten Anwendung scheuen sich möglicherweise, Ihnen permanenten Zugriff auf die Gruppe der verwalteten Ressourcen zu gewähren. Als Herausgeber einer verwalteten Anwendung bevorzugen Sie es möglicherweise, dass die Consumer genau wissen, wann Sie auf die verwalteten Ressourcen zugreifen müssen. Damit Consumer eine umfassendere Kontrolle über die Erteilung des Zugriffs auf verwaltete Ressourcen haben, bietet Azure Managed Applications ein Feature namens Just-In-time-Zugriff (JIT), das sich derzeit in der Vorschauversion befindet.
+Consumer Ihrer verwalteten Anwendung scheuen sich möglicherweise, Ihnen permanenten Zugriff auf die Gruppe der verwalteten Ressourcen zu gewähren. Als Herausgeber einer verwalteten Anwendung bevorzugen Sie es möglicherweise, dass die Consumer genau wissen, wann Sie auf die verwalteten Ressourcen zugreifen müssen. Damit Consumer eine umfassendere Kontrolle über die Erteilung des Zugriffs auf verwaltete Ressourcen haben, bietet Azure Managed Applications ein Feature namens Just-In-Time-Zugriff (JIT). Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
 Der JIT-Zugriff ermöglicht es Ihnen, erhöhte Zugriffsrechte auf die Ressourcen einer verwalteten Anwendung zur Problembehandlung oder Wartung anzufordern. Sie verfügen immer über Lesezugriff auf die Ressourcen, aber für einen bestimmten Zeitraum können Sie über erhöhte Zugriffsrechte verfügen.
 
@@ -34,9 +34,7 @@ Dieser Artikel konzentriert sich auf die Maßnahmen, die Herausgeber durchführe
 
 ## <a name="add-jit-access-step-to-ui"></a>Hinzufügen des Schritts für den JIT-Zugriff zur Benutzeroberfläche
 
-Ihre „CreateUiDefinition.json“-Datei entspricht genau der Datei der Benutzeroberfläche, die Sie für den permanenten Zugriff erstellen, mit der Ausnahme, dass Sie einen Schritt hinzufügen müssen, mit dem Consumer den JIT-Zugriff aktivieren können. Weitere Informationen zum Veröffentlichen Ihres ersten Angebots für verwaltete Anwendungen im Azure Marketplace finden Sie unter [Azure Managed Applications im Marketplace](publish-marketplace-app.md).
-
-Damit Ihr Angebot die JIT-Funktionen unterstützt, fügen Sie den folgenden Inhalt zu Ihrer „CreateUiDefinition.json“-Datei hinzu:
+Nehmen Sie in die Datei „CreateUiDefinition.json“ einen Schritt auf, in dem Consumer JIT-Zugriff aktivieren können. Damit Ihr Angebot die JIT-Funktionen unterstützt, fügen Sie den folgenden Inhalt zu Ihrer Datei „CreateUiDefinition.json“ hinzu:
 
 Unter „steps“ (Schritte):
 
@@ -58,7 +56,7 @@ Unter „steps“ (Schritte):
     ]
 }
 ```
- 
+
 Unter „outputs“ (Ausgaben):
 
 ```json
@@ -70,15 +68,17 @@ Unter „outputs“ (Ausgaben):
 
 ## <a name="enable-jit-access"></a>Aktivieren des JIT-Zugriffs
 
-Achten Sie bei der Definition Ihres Angebots im Marketplace darauf, dass Sie den JIT-Zugriff aktivieren.
+Aktivieren Sie beim Erstellen Ihres Angebots in Partner Center unbedingt JIT-Zugriff.
 
-1. Melden Sie sich beim [Cloud-Partnerveröffentlichungsportal](https://cloudpartner.azure.com) an.
+1. Melden Sie sich in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) beim kommerziellen Marketplace-Portal an.
 
-1. Stellen Sie Werte bereit, um Ihre verwaltete Anwendung im Marketplace zu veröffentlichen. Wählen Sie **Ja** für **JIT-Zugriff aktivieren?** aus.
+1. Anleitungen zum Erstellen einer neuen verwalteten Anwendung finden Sie unter [Erstellen eines Azure-Anwendungsangebots](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
 
-   ![Aktivieren des Just-in-Time-Zugriffs](./media/request-just-in-time-access/marketplace-enable.png)
+1. Aktivieren Sie auf der Seite **Technische Konfiguration** das Kontrollkästchen **Just-in-Time-Zugriff (JIT) aktivieren**.
 
-Sie haben Ihrer Benutzeroberfläche einen JIT-Konfigurationsschritt hinzugefügt und den JIT-Zugriff für das Marketplace-Angebot aktiviert. Wenn Consumer Ihre verwaltete Anwendung bereitstellen, können sie den [JIT-Zugriff für ihre Instanz aktivieren](approve-just-in-time-access.md#enable-during-deployment).
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="Aktivieren des Just-in-Time-Zugriffs":::
+
+Sie haben Ihrer Benutzeroberfläche einen JIT-Konfigurationsschritt hinzugefügt und den JIT-Zugriff für das Angebot im kommerziellen Marketplace aktiviert. Wenn Consumer Ihre verwaltete Anwendung bereitstellen, können sie den [JIT-Zugriff für ihre Instanz aktivieren](approve-just-in-time-access.md#enable-during-deployment).
 
 ## <a name="request-access"></a>Zugriff anfordern
 

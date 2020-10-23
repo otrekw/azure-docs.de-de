@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 9e8bd56655adfa1f7cdb769ac6cd282193b1bcf2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901351"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946092"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -29,40 +29,44 @@ In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung d
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
-|Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
+|Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md).<br>Die Überwachung der Dateiintegrität lädt Daten in den Log Analytics-Arbeitsbereich hoch. Die Gebühren für diese Daten hängen von der hochgeladenen Datenmenge ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).|
 |Erforderliche Rollen und Berechtigungen:|Der **Besitzer des Arbeitsbereichs** kann FIM aktivieren/deaktivieren (weitere Informationen finden Sie unter [Azure-Rolles für Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Leser** können Ergebnisse anzeigen.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov, andere Gov<br>Wird nur in Regionen unterstützt, in denen die Änderungsnachverfolgungslösung von Azure Automation verfügbar ist.<br>Siehe [Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich](../automation/how-to/region-mappings.md).<br>Informieren Sie sich über die [Änderungsnachverfolgung](../automation/change-tracking.md).|
 |||
 
-
-
-
-
 ## <a name="what-is-fim-in-security-center"></a>Was ist die Überwachung der Dateiintegrität in Security Center?
-Die Überwachung der Dateiintegrität, auch als Überwachung von Änderungen bekannt, untersucht unter anderem Dateien und Registrierungen des Betriebssystems nach Änderungen, die auf einen Angriff deuten. Eine Vergleichsmethode wird verwendet, um zu bestimmen, ob der aktuelle Status der Datei sich von der letzten Überprüfung der Datei unterscheidet. Sie können diesen Vergleich nutzen, um zu bestimmen, ob gültige oder verdächtige Änderungen an Ihren Dateien vorgenommen wurden.
+Die Überwachung der Dateiintegrität, auch als Überwachung von Änderungen bezeichnet, untersucht unter anderem Betriebssystemdateien und Windows-Registrierungen, Anwendungssoftware und Linux-Systemdateien auf Änderungen, die auf einen Angriff hindeuten. 
 
-Die Überwachung der Dateiintegrität von Security Center überprüft die Integrität von Windows-Dateien, Windows-Registrierungen und Linux-Dateien. Sie können die zu überwachenden Dateien auswählen, indem Sie die Überwachung der Dateiintegrität aktivieren. In Security Center werden Dateien überwacht, indem die Überwachung der Dateiintegrität für folgende Aktivitäten aktiviert wird:
+Security Center empfiehlt Entitäten, die mit der Überwachung der Dateiintegrität überwacht werden sollen. Sie können auch eigene Richtlinien oder Entitäten für die Überwachung definieren. Die Überwachung der Dateiintegrität warnt Sie bei verdächtigen Aktivitäten wie den Folgenden:
 
-- Erstellen und Löschen von Dateien und Registrierungen
+- Erstellen und Löschen von Dateien und Registrierungsschlüsseln
 - Änderungen an Dateien (an der Dateigröße, der Zugriffssteuerungsliste und dem Hash des Inhalts)
 - Änderungen an Registrierungen (an der Größe, der Zugriffssteuerungsliste, am Typ und am Inhalt)
 
-In Security Center erhalten Sie Empfehlungen dafür, welche Entitäten überwacht werden sollen. Für diese können Sie die Überwachung der Dateiintegrität einfach aktivieren. Sie können ebenfalls eigene Richtlinien oder Entitäten zur Überwachung durch die Überwachung der Dateiintegrität definieren. Dies wird in der exemplarischen Vorgehensweise erläutert.
+In diesem Tutorial lernen Sie Folgendes:
 
-> [!NOTE]
-> Das Feature „Überwachung der Dateiintegrität“ (File Integrity Monitoring, FIM) funktioniert auf physischen und virtuellen Windows- und Linux-Computern und ist nur verfügbar, wenn **Azure Defender für Server** aktiviert ist. Weitere Informationen finden Sie in der [Preisübersicht](security-center-pricing.md). Die Überwachung der Dateiintegrität lädt Daten in den Log Analytics-Arbeitsbereich hoch. Die Gebühren für diese Daten hängen von der hochgeladenen Datenmenge ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+> [!div class="checklist"]
+> * Auswerten der Liste der Entitäten, für die eine Überwachung der Dateiintegrität empfohlen wird
+> * Definieren Ihrer eigenen benutzerdefinierten Regeln für die Überwachung der Dateiintegrität
+> * Überwachen von Änderungen an Ihren überwachten Entitäten
+> * Verwenden von Platzhaltern, um die verzeichnisübergreifende Nachverfolgung zu vereinfachen
 
-Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn die Überwachung der Dateiintegrität aktiviert ist, besitzen Sie die Ressource **Änderungsnachverfolgung** vom Typ **Lösung**. Informationen zur Häufigkeit der Datensammlung für die Azure-Änderungsnachverfolgung finden Sie unter [Details zur Datensammlung für die Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
+
+## <a name="how-does-fim-work"></a>Wie funktioniert die Überwachung der Dateiintegrität?
+
+Indem der aktuelle Zustand dieser Elemente mit dem Zustand während des vorherigen Scans verglichen wird, werden Sie von der Überwachung der Dateiintegrität benachrichtigt, wenn verdächtige Änderungen vorgenommen wurden.
+
+Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn die Überwachung der Dateiintegrität aktiviert ist, verfügen Sie über eine Ressource für die **Änderungsnachverfolgung** vom Typ **Lösung**. Informationen zur Häufigkeit der Datensammlung für die Azure-Änderungsnachverfolgung finden Sie unter [Details zur Datensammlung für die Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
 > [!NOTE]
 > Wenn Sie die Ressource **Änderungsnachverfolgung** entfernen, deaktivieren Sie damit auch das Feature „Überwachung der Dateiintegrität“ in Security Center.
 
 ## <a name="which-files-should-i-monitor"></a>Welche Dateien sollten überwacht werden?
-Sie sollten sich überlegen, welche Dateien für Ihr System und Ihre Anwendungen entscheidend sind, wenn Sie auswählen, welche Dateien überwacht werden sollen. Sie sollten Dateien auswählen, von denen Sie keine ungeplanten Änderungen erwarten. Wenn Sie Dateien auswählen, die häufig von Anwendungen oder dem Betriebssystem geändert werden (z.B. Protokoll- und Textdateien), werden viele Aktionen generiert, die das Identifizieren eines Angriffs erschweren.
+Beim Auswählen der zu überwachenden Dateien sollten Sie berücksichtigen, welche Dateien für Ihr System und Ihre Anwendungen unentbehrlich sind. Überwachen Sie Dateien, bei denen Sie keine ungeplanten Änderungen erwarten. Wenn Sie Dateien auswählen, die häufig von Anwendungen oder dem Betriebssystem geändert werden (z. B. Protokoll- und Textdateien), werden viele Meldungen generiert, die das Identifizieren eines Angriffs erschweren.
 
-Security Center bietet die folgende Liste empfohlener Elemente, die auf der Grundlage bekannter Angriffsmuster überwacht werden sollen. Dazu gehören Dateien und Windows-Registrierungsschlüssel. Alle Schlüssel befinden sich unter HKEY_LOCAL_MACHINE („HKLM“ in der Tabelle).
+Security Center bietet die folgende Liste empfohlener Elemente, die auf der Grundlage bekannter Angriffsmuster überwacht werden sollen.
 
-|**Linux-Dateien**|**Windows-Dateien**|**Windows-Registrierungsschlüssel**|
+|Linux-Dateien|Windows-Dateien|Windows-Registrierungsschlüssel (HKLM = HKEY_LOCAL_MACHINE)|
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
@@ -95,45 +99,45 @@ Security Center bietet die folgende Liste empfohlener Elemente, die auf der Grun
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 
-## <a name="using-file-integrity-monitoring"></a>Verwenden der Überwachung der Dateiintegrität
+## <a name="enable-file-integrity-monitoring"></a>Aktivieren der Überwachung der Dateiintegrität 
 
-1. Öffnen Sie das **Azure Defender**-Dashboard.
+Die Überwachung der Dateiintegrität ist nur auf den Security Center-Seiten im Azure-Portal verfügbar. Derzeit gibt es keine REST-API für die Arbeit mit der Überwachung der Dateiintegrität.
 
-1. Wählen Sie im Bereich **Advanced protection** (Erweiterter Schutz) die Option **Überwachung der Dateiintegrität** aus.
+1. Wählen Sie im **Azure Defender**-Dashboard im Bereich **Erweiterter Schutz** die Option **Überwachung der Dateiintegrität** aus.
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="Starten von FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+   :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="Starten von FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+
+    Die Seite zur Konfiguration der **Überwachung der Dateiintegrität** wird geöffnet.
+
+    Folgende Informationen werden für jeden Arbeitsbereich angegeben:
+
+    - Die Gesamtanzahl der Änderungen, die in der letzten Woche aufgetreten sind (wenn die Überwachung der Dateiintegrität im Arbeitsbereich deaktiviert ist, wird „–“ angezeigt)
+    - Die Gesamtanzahl der physischen und virtuellen Computer, die Berichte an den Arbeitsbereich senden
+    - Der geografische Standort des Arbeitsbereichs
+    - Das Azure-Abonnement, dem der Arbeitsbereich unterliegt
+
+1. Auf dieser Seite können Sie folgende Aktionen durchführen:
+
+    - Zugreifen auf den Status und die Einstellungen der einzelnen Arbeitsbereiche
+
+    - ![Upgradeplansymbol][4] Aktualisieren Sie den Arbeitsbereich für die Verwendung von Azure Defender. Dieses Symbol zeigt an, dass der Arbeitsbereich oder das Abonnement nicht durch Azure Defender geschützt wird. Ihr Abonnement muss durch Azure Defender geschützt werden, damit Sie die Funktionen der Überwachung der Dateiintegrität verwenden können. [Weitere Informationen](security-center-pricing.md).
+
+    - ![Symbol „Aktivieren“][3] Aktivieren Sie die Überwachung der Dateiintegrität auf allen Computern im Arbeitsbereich, und konfigurieren Sie die entsprechenden Optionen. Dieses Symbol zeigt an, dass die Überwachung der Dateiintegrität für den Arbeitsbereich nicht aktiviert ist.
+
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="Starten von FIM":::
 
 
-    Die **Überwachung der Dateiintegrität** wird geöffnet.
-    ![Security Center-Dashboard][2]
+    > [!TIP]
+    > Wenn keine Schaltfläche zum Aktivieren oder Aktualisieren vorhanden ist und der Bereich leer ist, bedeutet dies, dass die Überwachung der Dateiintegrität bereits für den Arbeitsbereich aktiviert ist.
 
-Folgende Informationen werden für jeden Arbeitsbereich angegeben:
 
-- Die Gesamtanzahl der Änderungen, die in der letzten Woche aufgetreten sind (wenn die Überwachung der Dateiintegrität im Arbeitsbereich deaktiviert ist, wird „–“ angezeigt)
-- Die Gesamtanzahl der physischen und virtuellen Computer, die Berichte an den Arbeitsbereich senden
-- Der geografische Standort des Arbeitsbereichs
-- Das Azure-Abonnement, dem der Arbeitsbereich unterliegt
+1. Wählen Sie **AKTIVIEREN** aus. Die Details des Arbeitsbereichs einschließlich der Anzahl der Windows- und Linux-Computer im Arbeitsbereich werden angezeigt.
 
-Außerdem können folgende Schaltflächen für einen Arbeitsbereich angezeigt werden:
-
-- ![Symbol „Aktivieren“][3] Gibt an, dass die Überwachung der Dateiintegrität nicht für den Arbeitsbereich aktiviert ist. Durch das Auswählen des Arbeitsbereichs können Sie die Überwachung der Dateiintegrität auf allen Computern im Arbeitsbereich aktivieren.
-- ![Symbol für das Tarifupgrade][4] Gibt an, dass der Arbeitsbereich oder das Abonnement nicht durch Azure Defender geschützt wird. Ihr Abonnement muss durch Azure Defender geschützt werden, damit Sie das Feature „Überwachung der Dateiintegrität“ verwenden können.  Wenn Sie den Arbeitsbereich auswählen, können Sie ein Upgrade durchführen.
-- Wenn keine Schaltfläche vorhanden ist, bedeutet das, dass die Überwachung der Dateiintegrität für den Arbeitsbereich bereits aktiviert ist.
-
-Unter **Überwachung der Dateiintegrität** können Sie einen Arbeitsbereich auswählen, für den diese aktiviert werden soll, das Dashboard „Überwachung der Dateiintegrität“ für diesen Arbeitsbereich anzeigen oder den Arbeitsbereich für die Verwendung von Azure Defender [upgraden](security-center-pricing.md).
-
-## <a name="enable-fim"></a>Aktivieren der Überwachung der Dateiintegrität
-So aktivieren Sie die Überwachung der Dateiintegrität in einem Arbeitsbereich:
-
-1. Wählen Sie unter **Überwachung der Dateiintegrität** einen Arbeitsbereich mithilfe der Schaltfläche **Aktivieren** aus.
-
-1. Mithilfe von **Überwachung der Dateiintegrität aktivieren** wird die Anzahl von Windows- und Linux-Computern im Arbeitsbereich angezeigt.
-
-   ![Aktivieren der Überwachung der Dateiintegrität][5]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="Starten von FIM":::
 
    Die empfohlenen Einstellungen für Windows und Linux werden ebenfalls aufgeführt.  Erweitern Sie **Windows-Dateien**, **Registrierung** und **Linux-Dateien**, um die vollständige Liste der empfohlenen Elemente anzuzeigen.
 
-1. Deaktivieren Sie die Kontrollkästchen für alle empfohlenen Entitäten, auf die Sie die Überwachung der Dateiintegrität nicht anwenden möchten.
+1. Deaktivieren Sie die Kontrollkästchen für alle empfohlenen Entitäten, die nicht von der Überwachung der Dateiintegrität überwacht werden sollen.
 
 1. Klicken Sie auf **Überwachung der Dateiintegrität anwenden**, um die Überwachung der Dateiintegrität zu aktivieren.
 
@@ -141,10 +145,12 @@ So aktivieren Sie die Überwachung der Dateiintegrität in einem Arbeitsbereich:
 > Sie können die Einstellungen jederzeit ändern. Weitere Informationen finden Sie im Folgenden unter [Edit monitored entities (Bearbeiten überwachter Entitäten)](#edit-monitored-entities).
 
 
-## <a name="view-the-fim-dashboard"></a>Anzeigen des Dashboards „Überwachung der Dateiintegrität“
+
+## <a name="audit-monitored-workspaces"></a>Überprüfen überwachter Arbeitsbereiche 
+
 Das Dashboard **Überwachung der Dateiintegrität** zeigt die Arbeitsbereiche an, für den die Überwachung der Dateiintegrität aktiviert ist. Das Dashboard „Überwachung der Dateiintegrität“ wird geöffnet, nachdem Sie die Überwachung der Dateiintegrität für einen Arbeitsbereich aktiviert haben oder wenn Sie einen Arbeitsbereich im Fenster **Überwachung der Dateiintegrität** auswählen, für den diese bereits aktiviert ist.
 
-![Dashboard „Überwachung der Dateiintegrität“][6]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="Starten von FIM":::
 
 Im Dashboard „Überwachung der Dateiintegrität“ für einen Arbeitsbereich werden folgende Details angezeigt:
 
@@ -153,11 +159,11 @@ Im Dashboard „Überwachung der Dateiintegrität“ für einen Arbeitsbereich w
 - Eine Aufschlüsselung des Änderungstyps (Dateien, Registrierungen)
 - Eine Aufschlüsselung der Änderungskategorie (Geändert, Hinzugefügt, Entfernt)
 
-Wenn Sie im oberen Bereich des Dashboards auf „Filter“ klicken, können Sie den Zeitraum auswählen, für den die Änderungen angezeigt werden sollen.
+Wählen Sie oben im Dashboard die Option **Filter** aus, um den Zeitraum zu ändern, für den Änderungen angezeigt werden.
 
-![Filter „Zeitraum“][7]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="Starten von FIM":::
 
-Die Registerkarte **Computer** (siehe oben) führt alle Computer auf, die Berichte an diesen Arbeitsbereich senden. Für jeden Computer führt das Dashboard Folgendes auf:
+Auf der Registerkarte **Server** werden die Computer aufgelistet, die Meldungen an diesen Arbeitsbereich ausgeben. Für jeden Computer führt das Dashboard Folgendes auf:
 
 - Die Gesamtanzahl der Änderungen, die im ausgewählten Zeitraum aufgetreten sind
 - Eine Aufschlüsselung der Gesamtanzahl der Änderungen in Änderungen von Dateien oder Registrierungen
@@ -218,7 +224,7 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
 
    ![Auswählen eines Arbeitsbereichs, bei dem die Überwachung der Dateiintegrität aktiviert ist][16]
 
-3. Klicken Sie unter „Überwachung der Dateiintegrität“ auf **Einstellungen**.
+3. Wählen Sie unter „Überwachung der Dateiintegrität“ **Einstellungen** aus.
 
    ![Klicken auf „Einstellungen“][17]
 
@@ -260,11 +266,9 @@ In diesem Artikel haben Sie mehr darüber erfahren, wie die Überwachung der Dat
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
-[2]: ./media/security-center-file-integrity-monitoring/file-integrity-monitoring.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
 [5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[6]: ./media/security-center-file-integrity-monitoring/fim-dashboard.png
 [7]: ./media/security-center-file-integrity-monitoring/filter.png
 [8]: ./media/security-center-file-integrity-monitoring/log-search.png
 [9]: ./media/security-center-file-integrity-monitoring/changes-tab.png

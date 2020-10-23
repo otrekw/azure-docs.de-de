@@ -7,16 +7,20 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602192"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578120"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Erstellen eines Intune-Profils zum Bereitstellen für VPN-Clientprofile
 
 Sie können Profile für Azure-VPN-Clients (Windows 10) mit Microsoft Intune bereitstellen. Dieser Artikel unterstützt Sie beim Erstellen eines Intune-Profils mit benutzerdefinierten Einstellungen.
+
+> [!NOTE]
+> Diese Methode eignet sich nur für Bereitstellungsprofile, die Azure Active Directory oder ein gängiges Zertifikat für die Clientauthentifizierung verwenden. Wenn eindeutige Clientzertifikate genutzt werden, muss jeder Benutzer das korrekte Zertifikat manuell im Azure VPN Client auswählen.
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

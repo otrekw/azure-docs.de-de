@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321768"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369483"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services-Containerimagetags
 
@@ -120,6 +120,8 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | Imagetags            | Notizen |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.5.0-amd64`         |       |
+| `2.4.0-amd64-preview` |       |
 | `2.3.1-amd64-preview` |       | 
 | `2.3.0-amd64-preview` |       |
 | `2.2.0-amd64-preview` |       |
@@ -137,6 +139,8 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | Imagetags            | Notizen |
 |-----------------------|:------|
 | `latest`              |       |
+| `1.7.0-amd64`         |       |
+| `1.6.0-amd64-preview` |       |
 | `1.6.0-amd64-preview` |       |
 | `1.5.0-amd64-preview` |       |
 | `1.4.0-amd64-preview` |       |
@@ -145,13 +149,52 @@ Dieses Containerimage verfügt über die folgenden Tags:
 ## <a name="speech-to-text"></a>Spracherkennung
 
 Das Containerimage [Spracherkennung][sp-stt] befindet sich in der `containerpreview.azurecr.io`-Containerregistrierung. Es befindet sich im Repository `microsoft` und trägt den Namen `cognitive-services-speech-to-text`. Der vollqualifizierte Containerimagename lautet `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`.
-Die *US Government Virginia*-Version von Spracherkennungsimages wird in v2.4.0 unterstützt und befindet sich auf `containerpreview.azurecr.io/microsoft/fairfax/cognitive-services-speech-to-text`.
+Images von Sprache-in-Text v2.5.0 werden in der Region *US Government Virginia* unterstützt. Verwenden Sie den Abrechnungsendpunkt sowie die API-Schlüssel der Region *US Government Virginia*, um es zu testen.
 
 Dieses Containerimage verfügt über die folgenden Tags:
 
 | Imagetags                  | Notizen                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Containerimage mit dem Gebietsschema `en-US`. |
+| `2.5.0-amd64-ar-ae`         | Containerimage mit dem Gebietsschema `ar-AE`. |
+| `2.5.0-amd64-ar-eg`         | Containerimage mit dem Gebietsschema `ar-EG`. |
+| `2.5.0-amd64-ar-kw`         | Containerimage mit dem Gebietsschema `ar-KW`. |
+| `2.5.0-amd64-ar-qa`         | Containerimage mit dem Gebietsschema `ar-QA`. |
+| `2.5.0-amd64-ar-sa`         | Containerimage mit dem Gebietsschema `ar-SA`. |
+| `2.5.0-amd64-ca-es`         | Containerimage mit dem Gebietsschema `ca-ES`. |
+| `2.5.0-amd64-da-dk`         | Containerimage mit dem Gebietsschema `da-DK`. |
+| `2.5.0-amd64-de-de`         | Containerimage mit dem Gebietsschema `de-DE`. |
+| `2.5.0-amd64-en-au`         | Containerimage mit dem Gebietsschema `en-AU`. |
+| `2.5.0-amd64-en-ca`         | Containerimage mit dem Gebietsschema `en-CA`. |
+| `2.5.0-amd64-en-gb`         | Containerimage mit dem Gebietsschema `en-GB`. |
+| `2.5.0-amd64-en-in`         | Containerimage mit dem Gebietsschema `en-IN`. |
+| `2.5.0-amd64-en-nz`         | Containerimage mit dem Gebietsschema `en-NZ`. |
+| `2.5.0-amd64-en-us`         | Containerimage mit dem Gebietsschema `en-US`. |
+| `2.5.0-amd64-es-es`         | Containerimage mit dem Gebietsschema `es-ES`. |
+| `2.5.0-amd64-es-mx`         | Containerimage mit dem Gebietsschema `es-MX`. |
+| `2.5.0-amd64-fi-fi`         | Containerimage mit dem Gebietsschema `fi-FI`. |
+| `2.5.0-amd64-fr-ca`         | Containerimage mit dem Gebietsschema `fr-CA`. |
+| `2.5.0-amd64-fr-fr`         | Containerimage mit dem Gebietsschema `fr-FR`. |
+| `2.5.0-amd64-gu-in`         | Containerimage mit dem Gebietsschema `gu-IN`. |
+| `2.5.0-amd64-hi-in`         | Containerimage mit dem Gebietsschema `hi-IN`. |
+| `2.5.0-amd64-it-it`         | Containerimage mit dem Gebietsschema `it-IT`. |
+| `2.5.0-amd64-ja-jp`         | Containerimage mit dem Gebietsschema `ja-JP`. |
+| `2.5.0-amd64-ko-kr`         | Containerimage mit dem Gebietsschema `ko-KR`. |
+| `2.5.0-amd64-mr-in`         | Containerimage mit dem Gebietsschema `mr-IN`. |
+| `2.5.0-amd64-nb-no`         | Containerimage mit dem Gebietsschema `nb-NO`. |
+| `2.5.0-amd64-nl-nl`         | Containerimage mit dem Gebietsschema `nl-NL`. |
+| `2.5.0-amd64-pl-pl`         | Containerimage mit dem Gebietsschema `pl-PL`. |
+| `2.5.0-amd64-pt-br`         | Containerimage mit dem Gebietsschema `pt-BR`. |
+| `2.5.0-amd64-pt-pt`         | Containerimage mit dem Gebietsschema `pt-PT`. |
+| `2.5.0-amd64-ru-ru`         | Containerimage mit dem Gebietsschema `ru-RU`. |
+| `2.5.0-amd64-sv-se`         | Containerimage mit dem Gebietsschema `sv-SE`. |
+| `2.5.0-amd64-ta-in`         | Containerimage mit dem Gebietsschema `ta-IN`. |
+| `2.5.0-amd64-te-in`         | Containerimage mit dem Gebietsschema `te-IN`. |
+| `2.5.0-amd64-th-th`         | Containerimage mit dem Gebietsschema `th-TH`. |
+| `2.5.0-amd64-tr-tr`         | Containerimage mit dem Gebietsschema `tr-TR`. |
+| `2.5.0-amd64-zh-cn`         | Containerimage mit dem Gebietsschema `zh-CN`. |
+| `2.5.0-amd64-zh-hk`         | Containerimage mit dem Gebietsschema `zh-HK`. |
+| `2.5.0-amd64-zh-tw`         | Containerimage mit dem Gebietsschema `zh-TW`. |
 | `2.4.0-amd64-ar-ae-preview` | Containerimage mit dem Gebietsschema `ar-AE`. |
 | `2.4.0-amd64-ar-eg-preview` | Containerimage mit dem Gebietsschema `ar-EG`. |
 | `2.4.0-amd64-ar-kw-preview` | Containerimage mit dem Gebietsschema `ar-KW`. |
@@ -591,6 +634,87 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | Imagetags                                  | Notizen                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaRUS`.         |
+| `1.7.0-amd64-ar-eg-hoda`                    | Containerimage mit dem Gebietsschema `ar-EG` und der Stimme `ar-EG-Hoda`.            |
+| `1.7.0-amd64-ar-sa-naayf`                   | Containerimage mit dem Gebietsschema `ar-SA` und der Stimme `ar-SA-Naayf`.           |
+| `1.7.0-amd64-bg-bg-ivan`                    | Containerimage mit dem Gebietsschema `bg-BG` und der Stimme `bg-BG-Ivan`.            |
+| `1.7.0-amd64-ca-es-herenarus`               | Containerimage mit dem Gebietsschema `ca-ES` und der Stimme `ca-ES-HerenaRUS`.       |
+| `1.7.0-amd64-cs-cz-jakub`                   | Containerimage mit dem Gebietsschema `cs-CZ` und der Stimme `cs-CZ-Jakub`.           |
+| `1.7.0-amd64-da-dk-hellerus`                | Containerimage mit dem Gebietsschema `da-DK` und der Stimme `da-DK-HelleRUS`.        |
+| `1.7.0-amd64-de-at-michael`                 | Containerimage mit dem Gebietsschema `de-AT` und der Stimme `de-AT-Michael`.         |
+| `1.7.0-amd64-de-ch-karsten`                 | Containerimage mit dem Gebietsschema `de-CH` und der Stimme `de-CH-Karsten`.         |
+| `1.7.0-amd64-de-de-hedda`                   | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-Hedda`.           |
+| `1.7.0-amd64-de-de-heddarus`                | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-Hedda`.           |
+| `1.7.0-amd64-de-de-stefan-apollo`           | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-Stefan-Apollo`.   |
+| `1.7.0-amd64-el-gr-stefanos`                | Containerimage mit dem Gebietsschema `el-GR` und der Stimme `el-GR-Stefanos`.        |
+| `1.7.0-amd64-en-au-catherine`               | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-Catherine`.       |
+| `1.7.0-amd64-en-au-hayleyrus`               | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-HayleyRUS`.       |
+| `1.7.0-amd64-en-ca-heatherrus`              | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-HeatherRUS`.      |
+| `1.7.0-amd64-en-ca-linda`                   | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-Linda`.           |
+| `1.7.0-amd64-en-gb-george-apollo`           | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-George-Apollo`.   |
+| `1.7.0-amd64-en-gb-hazelrus`                | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-HazelRUS`.        |
+| `1.7.0-amd64-en-gb-susan-apollo`            | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-Susan-Apollo`.    |
+| `1.7.0-amd64-en-ie-sean`                    | Containerimage mit dem Gebietsschema `en-IE` und der Stimme `en-IE-Sean`.            |
+| `1.7.0-amd64-en-in-heera-apollo`            | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-Heera-Apollo`.    |
+| `1.7.0-amd64-en-in-priyarus`                | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-PriyaRUS`.        |
+| `1.7.0-amd64-en-in-ravi-apollo`             | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-Ravi-Apollo`.     |
+| `1.7.0-amd64-en-us-benjaminrus`             | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-BenjaminRUS`.     |
+| `1.7.0-amd64-en-us-guy24krus`               | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Guy24kRUS`.       |
+| `1.7.0-amd64-en-us-aria24krus`              | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Aria24kRUS`.      |
+| `1.7.0-amd64-en-us-ariarus`                 | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaRUS`.         |
+| `1.7.0-amd64-en-us-zirarus`                 | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-ZiraRUS`.         |
+| `1.7.0-amd64-es-es-helenarus`               | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-HelenaRUS`.       |
+| `1.7.0-amd64-es-es-laura-apollo`            | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-Laura-Apollo`.    |
+| `1.7.0-amd64-es-es-pablo-apollo`            | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-Pablo-Apollo`.    |
+| `1.7.0-amd64-es-mx-hildarus`                | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-HildaRUS`.        |
+| `1.7.0-amd64-es-mx-raul-apollo`             | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-Raul-Apollo`.     |
+| `1.7.0-amd64-fi-fi-heidirus`                | Containerimage mit dem Gebietsschema `fi-FI` und der Stimme `fi-FI-HeidiRUS`.        |
+| `1.7.0-amd64-fr-ca-caroline`                | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-Caroline`.        |
+| `1.7.0-amd64-fr-ca-harmonierus`             | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-HarmonieRUS`.     |
+| `1.7.0-amd64-fr-ch-guillaume`               | Containerimage mit dem Gebietsschema `fr-CH` und der Stimme `fr-CH-Guillaume`.       |
+| `1.7.0-amd64-fr-fr-hortenserus`             | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-HortenseRUS`.     |
+| `1.7.0-amd64-fr-fr-julie-apollo`            | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-Julie-Apollo`.    |
+| `1.7.0-amd64-fr-fr-paul-apollo`             | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-Paul-Apollo`.     |
+| `1.7.0-amd64-he-il-asaf`                    | Containerimage mit dem Gebietsschema `he-IL` und der Stimme `he-IL-Asaf`.            |
+| `1.7.0-amd64-hi-in-hemant`                  | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Hemant`.          |
+| `1.7.0-amd64-hi-in-kalpana-apollo`          | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Kalpana-Apollo`.  |
+| `1.7.0-amd64-hi-in-kalpana`                 | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Kalpana`.         |
+| `1.7.0-amd64-hr-hr-matej`                   | Containerimage mit dem Gebietsschema `hr-HR` und der Stimme `hr-HR-Matej`.           |
+| `1.7.0-amd64-hu-hu-szabolcs`                | Containerimage mit dem Gebietsschema `hu-HU` und der Stimme `hu-HU-Szabolcs`.        |
+| `1.7.0-amd64-id-id-andika`                  | Containerimage mit dem Gebietsschema `id-ID` und der Stimme `id-ID-Andika`.          |
+| `1.7.0-amd64-it-it-cosimo-apollo`           | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-Cosimo-Apollo`.   |
+| `1.7.0-amd64-it-it-luciarus`                | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-LuciaRUS`.        |
+| `1.7.0-amd64-ja-jp-ayumi-apollo`            | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-Ayumi-Apollo`.    |
+| `1.7.0-amd64-ja-jp-harukarus`               | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-HarukaRUS`.       |
+| `1.7.0-amd64-ja-jp-ichiro-apollo`           | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-Ichiro-Apollo`.   |
+| `1.7.0-amd64-ko-kr-heamirus`                | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-HeamiRUS`.        |
+| `1.7.0-amd64-ms-my-rizwan`                  | Containerimage mit dem Gebietsschema `ms-MY` und der Stimme `ms-MY-Rizwan`.          |
+| `1.7.0-amd64-nb-no-huldarus`                | Containerimage mit dem Gebietsschema `nb-NO` und der Stimme `nb-NO-HuldaRUS`.        |
+| `1.7.0-amd64-nl-nl-hannarus`                | Containerimage mit dem Gebietsschema `nl-NL` und der Stimme `nl-NL-HannaRUS`.        |
+| `1.7.0-amd64-pl-pl-paulinarus`              | Containerimage mit dem Gebietsschema `pl-PL` und der Stimme `pl-PL-PaulinaRUS`.      |
+| `1.7.0-amd64-pt-br-daniel-apollo`           | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-Daniel-Apollo`.   |
+| `1.7.0-amd64-pt-br-heloisarus`              | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-HeloisaRUS`.      |
+| `1.7.0-amd64-pt-pt-heliarus`                | Containerimage mit dem Gebietsschema `pt-PT` und der Stimme `pt-PT-HeliaRUS`.        |
+| `1.7.0-amd64-ro-ro-andrei`                  | Containerimage mit dem Gebietsschema `ro-RO` und der Stimme `ro-RO-Andrei`.          |
+| `1.7.0-amd64-ru-ru-ekaterinarus`            | Containerimage mit dem Gebietsschema `ru-RU` und der Stimme `ru-RU-EkaterinaRUS`.    |
+| `1.7.0-amd64-ru-ru-irina-apollo`            | Containerimage mit dem Gebietsschema `ru-RU` und der Stimme `ru-RU-Irina-Apollo`.    |
+| `1.7.0-amd64-ru-ru-pavel-apollo`            | Containerimage mit dem Gebietsschema `ru-RU` und der Stimme `ru-RU-Pavel-Apollo`.    |
+| `1.7.0-amd64-sk-sk-filip`                   | Containerimage mit dem Gebietsschema `sk-SK` und der Stimme `sk-SK-Filip`.           |
+| `1.7.0-amd64-sl-si-lado`                    | Containerimage mit dem Gebietsschema `sl-SI` und der Stimme `sl-SI-Lado`.            |
+| `1.7.0-amd64-sv-se-hedvigrus`               | Containerimage mit dem Gebietsschema `sv-SE` und der Stimme `sv-SE-HedvigRUS`.       |
+| `1.7.0-amd64-ta-in-valluvar`                | Containerimage mit dem Gebietsschema `ta-IN` und der Stimme `ta-IN-Valluvar`.        |
+| `1.7.0-amd64-te-in-chitra`                  | Containerimage mit dem Gebietsschema `te-IN` und der Stimme `te-IN-Chitra`.          |
+| `1.7.0-amd64-th-th-pattara`                 | Containerimage mit dem Gebietsschema `th-TH` und der Stimme `th-TH-Pattara`.         |
+| `1.7.0-amd64-tr-tr-sedarus`                 | Containerimage mit dem Gebietsschema `tr-TR` und der Stimme `tr-TR-SedaRUS`.         |
+| `1.7.0-amd64-vi-vn-an`                      | Containerimage mit dem Gebietsschema `vi-VN` und der Stimme `vi-VN-An`.              |
+| `1.7.0-amd64-zh-cn-huihuirus`               | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-HuihuiRUS`.       |
+| `1.7.0-amd64-zh-cn-kangkang-apollo`         | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-Kangkang-Apollo`. |
+| `1.7.0-amd64-zh-cn-yaoyao-apollo`           | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-Yaoyao-Apollo`.   |
+| `1.7.0-amd64-zh-hk-danny-apollo`            | Containerimage mit dem Gebietsschema `zh-HK` und der Stimme `zh-HK-Danny-Apollo`.    |
+| `1.7.0-amd64-zh-hk-tracy-apollo`            | Containerimage mit dem Gebietsschema `zh-HK` und der Stimme `zh-HK-Tracy-Apollo`.    |
+| `1.7.0-amd64-zh-hk-tracyrus`                | Containerimage mit dem Gebietsschema `zh-HK` und der Stimme `zh-HK-TracyRUS`.        |
+| `1.7.0-amd64-zh-tw-hanhanrus`               | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-HanHanRUS`.       |
+| `1.7.0-amd64-zh-tw-yating-apollo`           | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-Yating-Apollo`.   |
+| `1.7.0-amd64-zh-tw-zhiwei-apollo`           | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-Zhiwei-Apollo`.   |
 | `1.6.0-amd64-ar-eg-hoda-preview`            | Containerimage mit dem Gebietsschema `ar-EG` und der Stimme `ar-EG-Hoda`.            |
 | `1.6.0-amd64-ar-sa-naayf-preview`           | Containerimage mit dem Gebietsschema `ar-SA` und der Stimme `ar-SA-Naayf`.           |
 | `1.6.0-amd64-bg-bg-ivan-preview`            | Containerimage mit dem Gebietsschema `bg-BG` und der Stimme `bg-BG-Ivan`.            |
@@ -616,8 +740,8 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | `1.6.0-amd64-en-in-ravi-apollo-preview`     | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-Ravi-Apollo`.     |
 | `1.6.0-amd64-en-us-benjaminrus-preview`     | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-BenjaminRUS`.     |
 | `1.6.0-amd64-en-us-guy24krus-preview`       | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Guy24kRUS`.       |
-| `1.6.0-amd64-en-us-aria24krus-preview`      | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Aria24kRUS`.     |
-| `1.6.0-amd64-en-us-ariarus-preview`         | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaRUS`.        |
+| `1.6.0-amd64-en-us-aria24krus-preview`      | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Aria24kRUS`.      |
+| `1.6.0-amd64-en-us-ariarus-preview`         | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaRUS`.         |
 | `1.6.0-amd64-en-us-zirarus-preview`         | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-ZiraRUS`.         |
 | `1.6.0-amd64-es-es-helenarus-preview`       | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-HelenaRUS`.       |
 | `1.6.0-amd64-es-es-laura-apollo-preview`    | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-Laura-Apollo`.    |
@@ -1007,22 +1131,22 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | Imagetags                                  | Notizen                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-KatjaNeural`.     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-NatashaNeural`.   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-ClaraNeural`.     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-LibbyNeural`.     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-MiaNeural`.       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-GuyNeural`.       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-ElviraNeural`.    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-DaliaNeural`.     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-SylvieNeural`.    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-DeniseNeural`.    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-ElsaNeural`.      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-NanamiNeural`.    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-SunHiNeural`.     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-FranciscaNeural`. |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-XiaoxiaoNeural`.  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-KatjaNeural`.     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-NatashaNeural`.   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-ClaraNeural`.     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-LibbyNeural`.     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-MiaNeural`.       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-GuyNeural`.       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-ElviraNeural`.    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-DaliaNeural`.     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-SylvieNeural`.    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-DeniseNeural`.    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-ElsaNeural`.      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-NanamiNeural`.    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-SunHiNeural`.     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-FranciscaNeural`. |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-XiaoxiaoNeural`.  |
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 

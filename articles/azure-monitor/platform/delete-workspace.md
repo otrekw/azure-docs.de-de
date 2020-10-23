@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: ba079e76ea806bb12bff16eb636d0fa21b0e152b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448527"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -86,11 +86,11 @@ Während des Zeitraums des vorläufigen Löschens kann der Arbeitsbereich wieder
 2. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus. Die Liste der Arbeitsbereiche im ausgewählten Bereich wird angezeigt.
 3. Klicken Sie im Menü oben links auf **Wiederherstellen**, um eine Seite mit Arbeitsbereichen im Zustand des vorläufigen Löschens, die wiederhergestellt werden können, zu öffnen.
 
-   ![Wiederherstellen eines Arbeitsbereichs](media/delete-workspace/recover-menu.png)
+   ![Screenshot der Anzeige von Log Analytics-Arbeitsbereichen im Azure-Portal mit in der Menüleiste hervorgehobener Option „Wiederherstellen“](media/delete-workspace/recover-menu.png)
 
 4. Wählen Sie den Arbeitsbereich aus, und klicken Sie zum Wiederherstellen dieses Arbeitsbereichs auf **Wiederherstellen**.
 
-   ![Wiederherstellen eines Arbeitsbereichs](media/delete-workspace/recover-workspace.png)
+   ![Screenshot des Dialogfelds „Recover deleted Log Analytics workspaces“ (Wiederherstellen gelöschter Log Analytics-Arbeitsbereiche) im Azure-Portal mit hervorgehobenem Arbeitsbereich und ausgewählter Schaltfläche „Wiederherstellen“](media/delete-workspace/recover-workspace.png)
 
 
 ### <a name="powershell"></a>PowerShell

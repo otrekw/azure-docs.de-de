@@ -11,59 +11,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894559"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946218"
 ---
 # <a name="monitor-identity-and-access"></a>Überwachen der Identität und des Zugriffs
 
-> [!TIP]
-> Ab März 2020 sind Identitäts- und Zugriffsempfehlungen von Azure Security Center in allen Abonnements des Tarifs „Free“ enthalten. Wenn Sie über Abonnements für den Free-Tarif verfügen, wird deren Sicherheitsbewertung beeinträchtigt, da sie nicht vorab im Hinblick auf ihre Identitäts- und Zugriffssicherheit bewertet wurden. 
+Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Aufgrund dieser Entwicklung geht es bei der Sicherheit weniger um die Verteidigung Ihres Netzwerks, sondern mehr um die Verwaltung der Sicherheit Ihrer Apps, Daten und Benutzer.
 
-Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
+Durch die Überwachung von Aktivitäten und Konfigurationseinstellungen zu Identitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder auf einen Angriffsversuch reagieren.
 
-Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Bei der Sicherheit geht es immer weniger um die Verteidigung Ihres Netzwerks und immer mehr um die Verteidigung Ihrer Daten sowie um die Verwaltung der Sicherheit Ihrer Apps und Benutzer. Da heutzutage jedoch immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
+## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>Welche Vorkehrungen zum Schutz von Identitäten und Zugriff bietet Security Center? 
 
-Durch die Überwachung von Identitätsaktivitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder einen Angriffsversuch abwehren. Beispielsweise kann Security Center als veraltet markierte Konten (Konten, die nicht mehr benötigt werden und für die Anmeldung durch Azure Active Directory blockiert sind) zum Entfernen markieren. 
+Azure Security Center verfügt über zwei dedizierte Sicherheitskontrollen, mit denen Sie die Identitäts- und Sicherheitsanforderungen Ihrer Organisation erfüllen: 
 
-Beispiele für Empfehlungen, die möglicherweise im Abschnitt zur Ressourcensicherheit von **Identität und Zugriff** von Azure Security Center angezeigt werden, sind:
+ - **Verwalten des Zugriffs und der Berechtigungen**: Es wird empfohlen, dem [Modell eines Zugriffs mit den geringsten Rechten](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) zu folgen und sicherzustellen, dass Ihre Benutzer nur über den für die Ausführung ihrer Aufgaben benötigten Zugriff verfügen. Diese Steuerung enthält auch Empfehlungen zum Implementieren der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/overview.md), um den Zugriff auf Ihre Ressourcen zu kontrollieren.
+ 
+ - **Aktivieren der MFA**: Wenn [Multi-Factor Authentication (MFA)](https://www.microsoft.com/security/business/identity/mfa) aktiviert ist, sind Ihre Konten sicherer, und Benutzer können sich weiterhin bei nahezu allen Anwendungen mit der einmaligen Anmeldung (Single Sign-On, SSO) authentifizieren.
+
+### <a name="example-recommendations-for-identity-and-access"></a>Beispiele für Empfehlungen für Identität und Zugriff
+
+Beispiele für Empfehlungen, die möglicherweise im Security Center auf der Seite **Empfehlungen** unter den beiden Steuerungen angezeigt werden:
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 - Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden
-- Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
+- Veraltete Konten müssen aus Ihrem Abonnement entfernt werden. (Veraltete Konten sind Konten, die nicht mehr benötigt werden und bei denen die Anmeldung bei Azure Active Directory blockiert wurde.)
 
-Weitere Informationen zu diesen Empfehlungen sowie eine vollständige Liste der Empfehlungen, die hier angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identity).
+> [!TIP]
+> Weitere Informationen zu diesen und anderen Empfehlungen, die in diesen Steuerungen angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identity).
 
-> [!NOTE]
-> Wenn Ihr Abonnement mehr als 600 Konten umfasst, kann das Security Center nicht die Identitätsempfehlungen für Ihr Abonnement ausführen. Empfehlungen, die nicht ausgeführt werden, werden unter „Nicht verfügbare Bewertungen“ aufgeführt.
-Im Security Center können keine Identitätsempfehlungen für Administrator-Agents eines Cloud Solution Provider-Partners (CSP) ausgeführt werden.
->
+### <a name="limitations"></a>Einschränkungen
 
+Es gibt einige Einschränkungen beim Identitäts- und Zugriffsschutz im Security Center:
 
-Alle Empfehlungen für Identität und Zugriff sind innerhalb von zwei Sicherheitskontrollen auf der Seite **Empfehlungen** verfügbar:
+- Empfehlungen zu Identitäten werden für Abonnements mit mehr als 600 Konten nicht angeboten. In solchen Fällen werden diese Empfehlungen unter „Nicht verfügbare Bewertungen“ aufgeführt.
+- Für die Administrator-Agents des CSP-Partners (Cloud Solution Provider) sind keine Empfehlungen zu Identitäten verfügbar.
+- Mit Empfehlungen zu Identitäten werden keine Konten identifiziert, die mit einem PIM-System (Privileged Identity Management) verwaltet werden. Wenn Sie ein PIM-Tool verwenden, werden unter der Steuerung **Zugriff und Berechtigungen verwalten** möglicherweise falsche Ergebnisse angezeigt.
 
-- Zugriff und Berechtigungen verwalten 
-- MFA aktivieren
+## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Mehrstufige Authentifizierung (MFA) und Azure Active Directory 
 
-![Die zwei Sicherheitskontrollen mit Empfehlungen für Identität und Zugriff](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
-
-
-## <a name="enable-multi-factor-authentication-mfa"></a>Mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) aktivieren
-
-Zum Aktivieren von MFA sind [Berechtigungen für Azure Active Directory (AD)-Mandanten](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) erforderlich. 
+Zum Aktivieren von MFA sind [Berechtigungen für Azure Active Directory (AD)-Mandanten](../active-directory/users-groups-roles/directory-assign-admin-roles.md) erforderlich.
 
 - Wenn Sie eine Premium-Edition von AD besitzen, können Sie MFA über den [bedingten Zugriff](../active-directory/conditional-access/concept-conditional-access-policy-common.md) aktivieren.
+- Wenn Sie die AD Free-Edition verwenden, aktivieren Sie **Sicherheitsstandards**, wie in der [Azure Active Directory-Dokumentation](../active-directory/fundamentals/concept-fundamentals-security-defaults.md) beschrieben.
 
-- Wenn Sie die AD Free-Edition verwenden, aktivieren Sie **Sicherheitsstandards** in Azure Active Directory, wie in der [AD-Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) beschrieben.
+## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>Identifizieren von Konten ohne aktivierte mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)
+
+Verwenden Sie die folgende Azure Resource Graph-Abfrage, um anzuzeigen, für welche Konten MFA nicht aktiviert ist. Die Abfrage gibt alle fehlerhaften Ressourcen (Konten) zur Empfehlung „MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein“ zurück. 
+
+1. Öffnen Sie den **Azure Resource Graph-Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+
+1. Geben Sie die folgende Abfrage ein, und wählen Sie **Abfrage ausführen** aus.
+
+    ```kusto
+    securityresources
+     | where type == "microsoft.security/assessments"
+     | where properties.displayName == "MFA should be enabled on accounts with owner permissions on your subscription"
+     | where properties.status.code == "Unhealthy"
+    ```
+
+1. Mit der `additionalData`-Eigenschaft lässt sich die Liste der Kontoobjekt-IDs für Konten anzeigen, für die MFA nicht erzwungen wird. 
+
+    > [!NOTE]
+    > Die Konten werden mit ihrer Objekt-ID und nicht mit ihrem Kontonamen angezeigt, um den Datenschutz für die Kontoinhaber sicherzustellen.
+
+> [!TIP]
+> Sie können auch die REST-API-Methode [Assessments – Get](https://docs.microsoft.com/rest/api/securitycenter/assessments/get) im Security Center verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie im folgenden Artikel:
 
 - [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)

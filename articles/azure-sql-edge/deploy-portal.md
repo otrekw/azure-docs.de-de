@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445729"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973579"
 ---
 # <a name="deploy-azure-sql-edge"></a>Bereitstellen von Azure SQL Edge 
 
@@ -25,8 +25,7 @@ Azure SQL Edge ist eine optimierte Relationale-Datenbank-Engine für IoT- und Az
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
 * Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 * Erstellen Sie einen [Azure IoT Hub](../iot-hub/iot-hub-create-through-portal.md).
-* Registrieren Sie ein [IoT Edge-Gerät über das Azure-Portal](../iot-edge/how-to-register-device-portal.md).
-* Bereiten Sie das IoT Edge-Gerät zum [Bereitstellen des IoT Edge-Moduls über das Azure-Portal](../iot-edge/how-to-deploy-modules-portal.md) vor.
+* Erstellen Sie ein [Azure IoT Edge-Gerät](../iot-edge/how-to-install-iot-edge.md).
 
 > [!NOTE]   
 > Informationen zum Bereitstellen einer Azure Linux-VM als IoT Edge-Gerät finden Sie in dieser [Schnellstartanleitung](../iot-edge/quickstart-linux.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509755"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356884"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Entwickeln von ARM-Vorlagen für Cloudkonsistenz
 
@@ -655,7 +655,7 @@ Beim Erstellen einer Vorlage ist es eine Herausforderung, alle damit verbundenen
 
 Die folgende Abbildung zeigt ein typisches Beispiel eines Entwicklungsprozesses eines Teams mit einer integrierten Entwicklungsumgebung (IDE). In verschiedenen Phasen auf der Zeitachse erfolgen verschiedene Arten von Tests. Hier arbeiten zwei Entwickler an der gleichen Lösung, aber dieses Szenario gilt gleichermaßen für einen einzelnen Entwickler oder ein großes Team. Jeder Entwickler erstellt in der Regel eine lokale Kopie eines zentralen Repositorys, sodass jeder an der lokalen Kopie arbeiten kann, ohne die anderen zu beeinträchtigen, die möglicherweise an denselben Dateien arbeiten.
 
-![Workflow](./media/templates-cloud-consistency/workflow.png)
+![Eine Abbildung zeigt jeweils zwei Komponententests und Integrationstests, die parallel in einer lokalen integrierten Entwicklungsumgebung ausgeführt werden und im CI/CD-Entwicklungsflow zuerst in Komponententests, dann in Integrationstests und dann in die Testbereitstellung mit anschließender Bereitstellung zusammenlaufen.](./media/templates-cloud-consistency/workflow.png)
 
 Befolgen Sie die folgenden Tipps für Tests und Automatisierung:
 

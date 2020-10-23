@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888711"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945395"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -45,7 +45,7 @@ Sicherheit und Datenschutz gehören zu den wichtigsten Prioritäten für Azure- 
 Für Azure Spring Cloud gelten die folgenden bekannten Einschränkungen:
     
 * `spring.application.name` wird durch den Anwendungsnamen überschrieben, der zum Erstellen der einzelnen Anwendungen verwendet wird.
-* Der Standardwert für `server.port` ist Port 1025. Wenn ein anderer Wert angewandt wird, wird er in den Wert „1025“ geändert.
+* Der Standardwert für `server.port` ist Port 1025. Wenn ein anderer Wert angewandt wird, wird er in den Wert geändert. Beachten Sie auch diese Einstellung, und geben Sie im Code keinen Serverport an.
 * Das Hochladen von Anwendungspaketen wird vom Azure-Portal und von Azure Resource Manager-Vorlagen nicht unterstützt. Sie können Anwendungspakete nur hochladen, indem Sie die Anwendung über die Azure CLI bereitstellen.
 
 ### <a name="what-pricing-tiers-are-available"></a>Welche Tarife sind verfügbar? 

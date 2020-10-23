@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: de75ea1bc0a1cf63c74be3f7d9e486e1fe38db6f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 05b0ff7d4f56a61c5c91848044a30cb9bf1d0f46
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614003"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565308"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Häufig gestellte Fragen zur Azure Cosmos DB-API für MongoDB
 
-Die Azure Cosmos DB-API für MongoDB ist eine Wire Protocol-Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte SDKs und Treiber für MongoDB mit der nativen Azure Cosmos-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z. B. globale Verteilung mit Multimasterreplikation, automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
+Die Azure Cosmos DB-API für MongoDB ist eine Wire Protocol-Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte SDKs und Treiber für MongoDB mit der nativen Azure Cosmos-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z. B. globale Verteilung mit Schreibvorgängen für mehrere Regionen, automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
 
 ## <a name="how-do-i-connect-to-my-database"></a>Wie stelle ich eine Verbindung mit meiner Datenbank her?
 

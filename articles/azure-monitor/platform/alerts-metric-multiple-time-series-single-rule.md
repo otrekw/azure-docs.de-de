@@ -4,14 +4,14 @@ description: Bedarfsorientierte Warnung mithilfe einer einzelnen Warnungsregel f
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f7ca91ca49d9357285e1307c5051ef5685ad24c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186783"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704479"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Überwachen mehrerer Zeitreihen in einer einzelnen Metrikwarnungsregel
 
@@ -174,6 +174,11 @@ Die Preise für Metrikwarnungsregeln finden Sie auf der [Preisübersichtsseite f
 Beim Erstellen einer Metrikwarnungsregel basiert die angegebene Preisschätzung auf den ausgewählten Funktionen und der Anzahl der überwachten Zeitreihen, die anhand der Regelkonfiguration und der aktuellen Metrikwerte ermittelt werden. Die monatlichen Kosten basieren jedoch auf den tatsächlichen Auswertungen der Zeitreihen und können daher von der ursprünglichen Schätzung abweichen, wenn bei einige Zeitreihen keine Daten auszuwerten sind oder wenn die Warnungsregel Funktionen verwendet, durch die eine dynamische Skalierung erfolgt.
 
 Für eine Warnungsregel kann z. B. eine hohe Preisschätzung angegeben sein, wenn sie die Funktion für mehrere Dimensionen nutzt und eine große Anzahl von Kombinationen für Dimensionswerte ausgewählt ist, was zur Überwachung vieler Zeitreihen führt. Die tatsächlichen Kosten für diese Warnungsregel können jedoch niedriger sein, wenn nicht bei allen Zeitreihen, die sich aus den Kombinationen von Dimensionswerten ergeben, tatsächlich Daten auszuwerten sind.
+
+## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>Anzahl der von einer einzelnen Warnungsregel überwachten Zeitreihen
+
+Jede Warnungsregel kann standardmäßig bis zu 5.000 Zeitreihen überwachen, damit überschüssige Kosten vermieden werden. Wenn Sie dieses Limit für Ihr Abonnement aufheben möchten, können Sie ein Supportticket eröffnen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018364"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445062"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Um sicherzustellen, dass Ihre Anwendung nach einem Failover sofort auf die neue 
 
 ## <a name="configuring-secondary-database"></a>Konfigurieren einer sekundären Datenbank
 
-Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, die sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Wenn in der primären Datenbank schreibintensive Workloads verarbeitet werden, ist eine sekundäre Datenbank mit einer geringeren Computegröße möglicherweise nicht in der Lage mitzuhalten. Dadurch wird die Wiederholungsverzögerung für die sekundäre Datenbank verursacht, sodass sie potenziell nicht verfügbar ist. Um diese Risiken zu mindern, drosselt die aktive Georeplikation die Transaktionsprotokollrate der primären Datenbank, damit die sekundären Datenbanken aufholen können.
+Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, die sekundäre Datenbank mit der gleichen Sicherungsspeicherredundanz und Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Wenn in der primären Datenbank schreibintensive Workloads verarbeitet werden, ist eine sekundäre Datenbank mit einer geringeren Computegröße möglicherweise nicht in der Lage mitzuhalten. Dadurch wird die Wiederholungsverzögerung für die sekundäre Datenbank verursacht, sodass sie potenziell nicht verfügbar ist. Um diese Risiken zu mindern, drosselt die aktive Georeplikation die Transaktionsprotokollrate der primären Datenbank, damit die sekundären Datenbanken aufholen können.
 
 Wenn die sekundäre Datenbank nicht angemessen konfiguriert ist, kann es außerdem passieren, dass die Anwendungsleistung nach einem Failover beeinträchtigt wird, da die neue primäre Datenbank nicht genügend Computekapazität aufweist. In diesem Fall muss das Ziel des Datenbankdiensts auf die erforderliche Stufe hochskaliert werden, was beträchtliche Zeit und Computeressourcen beanspruchen kann und ein [Hochverfügbarkeits-Failover](high-availability-sla.md) am Ende des Hochskalierungsprozesses erfordert.
 
@@ -126,8 +126,13 @@ Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen
 
 Die Drosselung der Transaktionsprotokollrate für die primäre Datenbank aufgrund einer niedrigeren Computegröße in einer sekundären Datenbank wird über den Wartetyp HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO gemeldet, der in den Datenbanksichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) angezeigt wird.
 
+Die Sicherungsspeicherredundanz der sekundären Datenbank ist standardmäßig identisch mit der der primären Datenbank. Sie können die sekundäre Datenbank mit einer anderen Sicherungsspeicherredundanz konfigurieren. Sicherungen werden stets in der primären Datenbank erstellt. Wird die sekundäre Datenbank mit einer anderen Sicherungsspeicherredundanz konfiguriert, gilt Folgendes: Sicherungen werden nach dem Failover beim Heraufstufen der sekundären Datenbank zur primären Datenbank gemäß der Speicherredundanz abgerechnet, die für die neue primäre Datenbank (zuvor die sekundäre Datenbank) ausgewählt wurde. 
+
 > [!NOTE]
 > Die Transaktionsprotokollrate der primären Datenbank kann aus Gründen gedrosselt werden, die nicht mit einer niedrigeren Computegröße einer sekundären Datenbank zusammenhängen. Diese Art der Drosselung kann auch auftreten, wenn die sekundäre Datenbank dieselbe Computegröße wie die primäre Datenbank oder eine höhere aufweist. Weitere Einzelheiten, einschließlich der Wartetypen für unterschiedliche Arten von Protokollratendrosselungen, finden Sie unter [Transaktionsprotokollratengovernance](resource-limits-logical-server.md#transaction-log-rate-governance).
+
+> [!NOTE]
+> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist derzeit nur in der Azure-Region „Asien, Südosten“ in öffentlicher Vorschau verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsredundanz erstellt, wird in der Vorschauversion das Erstellen einer sekundären Datenbank in einer anderen Azure-Region nicht unterstützt. 
 
 Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](purchasing-models.md).
 
@@ -248,9 +253,9 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover. |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden. |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover. |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden. |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Gibt Informationen über alle vorhandenen Replikationsverknüpfungen für alle Datenbanken auf einem Server zurück |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Ruft den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über die Replikationsverknüpfung für eine angegebene Datenbank ab. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zeigt den Status für alle Datenbankvorgänge an, einschließlich des Status der Replikationsverknüpfungen. |

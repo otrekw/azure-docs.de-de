@@ -3,18 +3,20 @@ title: Steuern Ihres Sicherungsbestands mit Backup Center
 description: Erfahren Sie, wie Sie Ihre Azure-Umgebung so steuern, dass sichergestellt ist, dass sämtliche Ihrer Ressourcen aus Sicherungssicht zu Backup Center konform sind.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 009ee461b0372a3fb73ffb3b0ee5151b77bd8ef8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614325"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Steuern Ihres Sicherungsbestands mit Backup Center
 
 Backup Center unterstützt Sie dabei, Ihre Azure-Umgebung so zu steuern, dass sichergestellt ist, dass sämtliche Ihrer Ressourcen aus Sicherungssicht zu Backup Center konform sind. Nachstehend sind einige der Steuerungsfunktionen von Backup Center aufgeführt:
 
 * Anzeigen und Zuweisen von Azure-Richtlinien für Sicherungen
+
+* Anzeigen der Compliance Ihrer Ressourcen für alle integrierten Azure-Richtlinien für die Sicherung
 
 * Anzeigen aller Datenquellen, die nicht für eine Sicherung konfiguriert wurden
 
@@ -29,6 +31,12 @@ Um alle [Azure-Richtlinien](https://docs.microsoft.com/azure/governance/policy/o
 Nachdem Sie eine der Definitionen ausgewählt haben, können Sie [die Richtlinie einem Bereich zuweisen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy).
 
 ![Azure Policy-Definitionen auswählen](./media/backup-center-govern-environment/azure-policy-definitions.png)
+
+## <a name="backup-compliance"></a>Sicherungskonformität
+
+Wenn Sie auf das Menüelement „Backup Compliance“ (Sicherungskonformität) klicken, können Sie die [Konformität](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) Ihrer Ressourcen entsprechend den verschiedenen integrierten Richtlinien anzeigen, die Sie Ihrer Azure-Umgebung zugewiesen haben. Sie können den Prozentsatz der Ressourcen, die mit allen Richtlinien konform sind, sowie die Richtlinien mit mindestens einer nicht konformen Ressource anzeigen.
+
+![Anzeigen der Sicherungskonformität](./media/backup-center-govern-environment/azure-policy-compliance.png)
 
 ## <a name="protectable-datasources"></a>Schützbare Datenquellen
 

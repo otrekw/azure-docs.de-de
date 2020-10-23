@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401621"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569525"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-Sicherheitsbaseline für Cosmos DB
 
@@ -290,7 +290,7 @@ Azure Cosmos DB bietet für gängige Verwaltungsszenarien eine integrierte RBAC.
 
 Sie können auch das Azure AD PowerShell-Modul verwenden, um Ad-hoc-Abfragen zum Ermitteln von Konten durchzuführen, die Mitglieder von Verwaltungsgruppen sind. 
 
-Darüber hinaus können einige Aktionen in Azure Cosmos DB mit Azure Active Directory und kontospezifischen Hauptschlüsseln gesteuert werden.  Verwenden Sie die Kontoeinstellung „disableKeyBasedMetadataWriteAccess“, um den Schlüsselzugriff zu steuern.
+Darüber hinaus können einige Aktionen in Azure Cosmos DB mit Azure Active Directory und kontospezifischen Primärschlüsseln gesteuert werden.  Verwenden Sie die Kontoeinstellung „disableKeyBasedMetadataWriteAccess“, um den Schlüsselzugriff zu steuern.
 
 Informationen zur rollenbasierten Zugriffssteuerung in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Erstellen Sie Ihre eigenen benutzerdefinierten Rollen mithilfe von Azure Cosmos 
 
 Erstellen einer neuen Rolle in Azure Active Directory: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-Abrufen einer Verzeichnisrolle in Azure Active Directory mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Abrufen einer Verzeichnisrolle in Azure Active Directory mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-Abrufen von Mitgliedern einer Verzeichnisrolle in Azure Active Directory mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Abrufen von Mitgliedern einer Verzeichnisrolle in Azure Active Directory mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 Beschränken des Benutzerzugriffs ausschließlich auf Datenvorgänge: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ Beschränken des Benutzerzugriffs ausschließlich auf Datenvorgänge: https://do
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändern von Standardkennwörtern bei Bedarf
 
-**Leitfaden**: Das Konzept von Standardkennwörtern oder leeren Kennwörtern gibt es in Bezug auf Azure AD oder Azure Cosmos DB nicht. Stattdessen verwendet Azure Cosmos DB zwei Arten von Schlüsseln, um Benutzer zu authentifizieren und den Zugriff auf Daten und Ressourcen zu ermöglichen: Hauptschlüssel und Ressourcentoken. Die Schlüssel können jederzeit neu generiert werden.
+**Leitfaden**: Das Konzept von Standardkennwörtern oder leeren Kennwörtern gibt es in Bezug auf Azure AD oder Azure Cosmos DB nicht. Stattdessen verwendet Azure Cosmos DB zwei Arten von Schlüsseln, um Benutzer zu authentifizieren und den Zugriff auf Daten und Ressourcen zu ermöglichen: Primärschlüssel und Ressourcentoken. Die Schlüssel können jederzeit neu generiert werden.
 
 Informationen zum sicheren Zugriff auf Daten in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -640,7 +640,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Informationen zur rollenbasierten Zugriffssteuerung in Azure: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 - Cosmos DB sollte einen VNET-Dienstendpunkt verwenden
 
-Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 **Leitfaden**: Wenn Sie für Ihre Cosmos DB-Ressourcen oder für verwandte Ressourcen benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure Repos, um Ihren Code sicher zu speichern und zu verwalten.
 
-Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Wiederherstellen von Azure Key Vault-Geheimnissen:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

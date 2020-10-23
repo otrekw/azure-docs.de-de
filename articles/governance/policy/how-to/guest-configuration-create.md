@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728929"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893117"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-Nach dem Erstellen des Konfigurationspakets – aber vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder die CI/CD-Umgebung testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
+Nach dem Erstellen des Konfigurationspakets – und vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder CI/CD-Umgebung (Continuous Integration/Continuous Deployment) testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
 
 Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten. Für den Test werden nur im Inhaltspaket enthaltene Module verwendet.
 
@@ -233,7 +233,7 @@ Das Cmdlet unterstützt auch Eingaben aus der PowerShell-Pipeline. Fügen Sie di
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Im nächsten Schritt wird die Datei im Blobspeicher veröffentlicht. Das folgende Skript enthält eine Funktion, mit der Sie diese Aufgabe automatisieren können. Für die in der `publish`-Funktion verwendeten Befehle ist das `Az.Storage`-Modul erforderlich.
+Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht. Das folgende Skript enthält eine Funktion, mit der Sie diese Aufgabe automatisieren können. Für die in der `publish`-Funktion verwendeten Befehle ist das `Az.Storage`-Modul erforderlich.
 
 ```azurepowershell-interactive
 function publish {

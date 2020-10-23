@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 14722f46f06351504583da7231179d206f7a3c26
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330314"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893729"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zu Azure DB for PostgreSQL
 
@@ -81,6 +81,8 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
+## <a name="size-limitations"></a>Größenbeschränkungen
+- Sie können mit einem einzigen DMS-Dienst bis zu 2 TB Daten von PostgreSQL zu Azure DB for PostgreSQL migrieren.
 ## <a name="datatype-limitations"></a>Einschränkungen bei Datentypen
 
   **Einschränkung**: Wenn kein Primärschlüssel für Tabellen vorhanden ist, werden Änderungen möglicherweise nicht mit der Zieldatenbank synchronisiert.

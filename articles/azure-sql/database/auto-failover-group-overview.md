@@ -5,19 +5,19 @@ description: Mit Autofailover-Gruppen können Sie die Replikation und das automa
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2, devx-track-azurecli
+ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076513"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627226"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
   
 - **Anfängliches Seeding**
 
-  Beim Hinzufügen von Datenbanken, Pools für elastische Datenbanken oder verwalteten Instanzen zu einer Failovergruppe gibt es eine anfängliche Seedingphase, bevor die Datenreplikation startet. Die anfängliche Seedingphase ist der längste und aufwendigste Vorgang. Sobald das anfängliche Seeding abgeschlossen ist, werden die Daten synchronisiert, und anschließend werden nur nachfolgende Datenänderungen repliziert. Die Zeit, die für das anfängliche Seeding benötigt wird, hängt von der Größe Ihrer Daten, der Anzahl der replizierten Datenbanken und der Geschwindigkeit der Verbindung zwischen den Entitäten in der Failovergruppe ab. Unter normalen Umständen beträgt die übliche Seedinggeschwindigkeit 50 bis 500 GB pro Stunde für eine einzelne SQL-Datenbank-Instanz und 18 bis 35 GB pro Stunde für eine SQL Managed Instance. Das Seeding wird für alle Datenbanken parallel ausgeführt. Anhand der angegebenen Seedinggeschwindigkeit zusammen mit der Anzahl der Datenbanken und der Gesamtgröße der Daten können Sie abschätzen, wie lange die anfängliche Seedingphase vor dem Starten der Datenreplikation dauern wird.
+  Beim Hinzufügen von Datenbanken, Pools für elastische Datenbanken oder verwalteten Instanzen zu einer Failovergruppe gibt es eine anfängliche Seedingphase, bevor die Datenreplikation startet. Die anfängliche Seedingphase ist der längste und aufwendigste Vorgang. Sobald das anfängliche Seeding abgeschlossen ist, werden die Daten synchronisiert, und anschließend werden nur nachfolgende Datenänderungen repliziert. Die Zeit, die für das anfängliche Seeding benötigt wird, hängt von der Größe Ihrer Daten, der Anzahl der replizierten Datenbanken und der Geschwindigkeit der Verbindung zwischen den Entitäten in der Failovergruppe ab. Unter normalen Umständen beträgt die mögliche Seedinggeschwindigkeit bis zu 500 GB pro Stunde für SQL-Datenbank und bis zu 360 GB pro Stunde für SQL Managed Instance. Das Seeding wird für alle Datenbanken parallel ausgeführt.
 
-  Bei SQL Managed Instance muss zum Abschätzen der Zeit für die anfängliche Seedingphase auch die Geschwindigkeit der ExpressRoute-Verbindung zwischen den beiden Instanzen berücksichtigt werden. Wenn die Geschwindigkeit der Verbindung zwischen den beiden Instanzen langsamer als erforderlich ist, wirkt sich dies wahrscheinlich erheblich auf die Zeit für das Seeding aus. Anhand der angegebenen Seedinggeschwindigkeit, der Anzahl der Datenbanken, der Gesamtgröße der Daten und der Verbindungsgeschwindigkeit können Sie abschätzen, wie lange die anfängliche Seedingphase vor dem Starten der Datenreplikation dauern wird. Beispielsweise würde für eine einzelne Datenbank mit 100 GB die anfängliche Seedingphase zwischen 2,8 und 5,5 Stunden dauern, wenn die Verbindung eine Pushübertragung von 35 GB pro Stunde ermöglicht. Können über die Verbindung nur 10 GB pro Stunde übertragen werden, dauert das Seeding einer 100-GB-Datenbank ungefähr 10 Stunden. Wenn mehrere Datenbanken zu replizieren sind, wird das Seeding parallel ausgeführt, und in Kombination mit einer niedrigen Verbindungsgeschwindigkeit kann die anfängliche Seedingphase erheblich länger dauern, insbesondere dann, wenn das parallele Seeding von Daten aus allen Datenbanken die verfügbare Verbindungsbandbreite überschreitet. Wenn die Netzwerkbandbreite zwischen zwei Instanzen begrenzt ist und Sie einer Failovergruppe mehrere verwaltete Instanzen hinzufügen, sollten Sie der Failovergruppe mehrere verwaltete Instanzen ggf. einzeln nacheinander hinzufügen.
+  Bei SQL Managed Instance muss zum Abschätzen der Zeit für die anfängliche Seedingphase auch die Geschwindigkeit der ExpressRoute-Verbindung zwischen den beiden Instanzen berücksichtigt werden. Wenn die Geschwindigkeit der Verbindung zwischen den beiden Instanzen langsamer als erforderlich ist, wirkt sich dies wahrscheinlich erheblich auf die Zeit für das Seeding aus. Anhand der angegebenen Seedinggeschwindigkeit, der Anzahl der Datenbanken, der Gesamtgröße der Daten und der Verbindungsgeschwindigkeit können Sie abschätzen, wie lange die anfängliche Seedingphase vor dem Starten der Datenreplikation dauern wird. Beispielsweise würde für eine einzelne Datenbank mit 100 GB die anfängliche Seedingphase etwa 1,2 Stunden dauern, wenn die Verbindung eine Pushübertragung von 84 GB pro Stunde ermöglicht und für keine anderen Datenbanken ein Seeding ausgeführt wird. Können über die Verbindung nur 10 GB pro Stunde übertragen werden, dauert das Seeding einer 100-GB-Datenbank ungefähr 10 Stunden. Wenn mehrere Datenbanken zu replizieren sind, wird das Seeding parallel ausgeführt, und in Kombination mit einer niedrigen Verbindungsgeschwindigkeit kann die anfängliche Seedingphase erheblich länger dauern, insbesondere dann, wenn das parallele Seeding von Daten aus allen Datenbanken die verfügbare Verbindungsbandbreite überschreitet. Wenn die Netzwerkbandbreite zwischen zwei Instanzen begrenzt ist und Sie einer Failovergruppe mehrere verwaltete Instanzen hinzufügen, sollten Sie der Failovergruppe mehrere verwaltete Instanzen ggf. einzeln nacheinander hinzufügen. Wenn eine Gateway-SKU mit entsprechender Größe zwischen den beiden verwalteten Instanzen vorhanden ist und die Bandbreite des Unternehmensnetzwerks dies zulässt, können Geschwindigkeiten von bis zu 360 GB pro Stunde erreicht werden.  
 
 - **DNS-Zone**
 
@@ -153,7 +153,7 @@ Zum Erstellen eines Failovers für eine Failovergruppe benötigen Sie RBAC-Schre
 
 Die Autofailover-Gruppe muss auf dem primären Server konfiguriert werden und stellt eine Verbindung mit dem sekundären Server in einer anderen Azure-Region her. Die Gruppen können alle oder einige Datenbanken auf diesen Servern umfassen. Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit mehreren Datenbanken und einer Autofailover-Gruppe.
 
-![Autofailover](./media/auto-failover-group-overview/auto-failover-group.png)
+![Das Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit mehreren Datenbanken und einer Autofailover-Gruppe.](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > Ein ausführliches Tutorial zum Hinzufügen einer Datenbank in SQL-Datenbank zu einer Failovergruppe finden Sie unter [Hinzufügen einer SQL-Datenbank-Instanz zu einer Failovergruppe](failover-group-add-single-database-tutorial.md).
@@ -217,7 +217,7 @@ Die Autofailover-Gruppe muss auf der primären Instanz konfiguriert werden und s
 
 Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit einer verwalteten Instanz und Autofailover-Gruppe.
 
-![Autofailover](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![Autofailoverdiagramm](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > Eine ausführliche schrittweise Anleitung zum Hinzufügen einer SQL Managed Instance zum Verwenden einer Failovergruppe finden Sie unter [Hinzufügen einer verwalteten Instanz zu einer Failovergruppe](../managed-instance/failover-group-add-instance-tutorial.md).
@@ -232,6 +232,10 @@ Um eine unterbrechungsfreie Verbindung mit der primären SQL Managed Instance na
 > Die erste im Subnetz erstellte verwaltete Instanz bestimmt die DNS-Zone für alle nachfolgenden Instanzen im gleichen Subnetz. Dies bedeutet, dass zwei Instanzen aus dem gleichen Subnetz nicht zu verschiedenen DNS-Zonen gehören können.
 
 Weitere Informationen zum Erstellen der sekundären SQL Managed Instance in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
+
+### <a name="using-geo-paired-regions"></a>Verwenden von geografisch gekoppelten Regionen
+
+Stellen Sie beide verwalteten Instanzen aus Leistungsgründen in [gekoppelten Regionen](../../best-practices-availability-paired-regions.md) bereit. Verwaltete Instanzen in geografisch gekoppelten Regionen weisen eine deutlich bessere Leistung auf als Instanzen in nicht gekoppelten Regionen. 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen
 
@@ -355,7 +359,11 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären SQL Managed Inst
 - Die beiden Instanzen von SQL Managed Instance müssen sich in verschiedenen Azure-Regionen befinden.
 - Die beiden Instanzen von SQL Managed Instance müssen dieselbe Dienstebene und Speichergröße aufweisen.
 - Ihre sekundäre Instanz von SQL Managed Instances muss leer sein (ohne Benutzerdatenbanken).
-- Die von den Instanzen von SQL Managed Instance verwendeten virtuellen Netzwerke müssen per [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird nicht unterstützt.
+- Die von den Instanzen von SQL Managed Instance verwendeten virtuellen Netzwerke müssen per [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird unterstützt. Die einzige Einschränkung ist im folgenden Hinweis beschrieben.
+
+   > [!IMPORTANT]
+   > [Am 22.09.2020 haben wir globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
+
 - Die VNETs der beiden SQL Managed Instances dürfen keine überlappenden IP-Adressen aufweisen.
 - Sie müssen die Netzwerksicherheitsgruppen (NSGs) so einrichten, dass die Ports 5022 und der Bereich von 11.000 bis 12.000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz geöffnet sind. Hierdurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
 

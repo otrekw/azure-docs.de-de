@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855790"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667196"
 ---
 # <a name="what-is-virtual-network-nat"></a>Was ist Virtual Network NAT?
 
@@ -32,7 +32,7 @@ Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) 
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -43,7 +43,7 @@ Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) 
 
 Die ausgehende Konnektivität kann für jedes Subnetz mit NAT definiert werden.  Mehrere Subnetze desselben virtuellen Netzwerks können über unterschiedliche NATs verfügen. Ein Subnetz wird konfiguriert, indem angegeben wird, welche NAT-Gatewayressource verwendet werden soll. Für alle ausgehenden UDP- und TCP-Datenflüsse einer VM-Instanz wird NAT genutzt. 
 
-NAT ist mit Ressourcen für öffentliche IP-Adressen und Präfixressourcen für öffentliche IP-Adressen der Standard-SKU kompatibel (bzw. einer Kombination dieser Ressourcen).  Sie können das Präfix einer öffentlichen IP-Adresse direkt nutzen, oder die öffentlichen IP-Adressen des Präfixes auf mehrere NAT-Gatewayressourcen verteilen. Mit NAT wird der gesamte Datenverkehr auf den IP-Adressbereich des Präfixes bereinigt.  Das IP-Whitelisting ist für Ihre Bereitstellungen somit jetzt sehr einfach.
+NAT ist mit Ressourcen für öffentliche IP-Adressen und Präfixressourcen für öffentliche IP-Adressen der Standard-SKU kompatibel (bzw. einer Kombination dieser Ressourcen).  Sie können das Präfix einer öffentlichen IP-Adresse direkt nutzen, oder die öffentlichen IP-Adressen des Präfixes auf mehrere NAT-Gatewayressourcen verteilen. Mit NAT wird der gesamte Datenverkehr auf den IP-Adressbereich des Präfixes bereinigt.  Das Filtern von IP-Adressen Ihrer Bereitstellungen ist jetzt sehr einfach.
 
 Der gesamte ausgehende Datenverkehr für das Subnetz wird per NAT ohne Konfiguration durch den Kunden automatisch verarbeitet.  Benutzerdefinierte Routen sind nicht erforderlich. NAT hat Vorrang vor anderen Ausgangsszenarien und ersetzt das Standard-Internetziel eines Subnetzes.
 
@@ -51,11 +51,11 @@ Der gesamte ausgehende Datenverkehr für das Subnetz wird per NAT ohne Konfigura
 
 Für NAT wird die „Port-Netzwerkadressenübersetzung“ (Port Network Address Translation, PNAT/PAT) verwendet. Diese Vorgehensweise wird für die meisten Workloads empfohlen. Dynamische oder divergente Workloads können über die bedarfsgesteuerte Datenflusszuteilung in ausgehender Richtung problemlos abgedeckt werden. Eine umfassende Vorabplanung, Vorabzuteilung und damit verbundene Überbereitstellung von Ausgangsressourcen wird vermieden. SNAT-Portressourcen werden gemeinsam genutzt und sind in allen Subnetzen verfügbar, indem eine spezifische NAT-Gatewayressource verwendet und bei Bedarf bereitgestellt wird.
 
-Eine mit NAT verknüpfte öffentliche IP-Adresse stellt bis zu 64.000 gleichzeitige Datenflüsse für UDP und TCP bereit. Sie können mit einer einzelnen IP-Adresse beginnen und bis auf 16 öffentliche IP-Adressen hochskalieren.
+Eine mit NAT verknüpfte öffentliche IP-Adresse stellt jeweils bis zu 64.000 gleichzeitige Flows für UDP und TCP bereit. Sie können mit einer einzelnen IP-Adresse beginnen und durch öffentliche IP-Adressen, Präfixe für öffentliche IP-Adressen oder beides auf bis zu 16 IP-Adressen hochskalieren.  Eine NAT-Gatewayressource verwendet alle der Ressource für ausgehende Verbindungen aus allen Subnetzen zugeordneten IP-Adressen, die mit derselben NAT-Gatewayressource konfiguriert sind.
 
 Bei NAT können Datenflüsse aus dem virtuellen Netzwerk ins Internet erstellt werden. Aus dem Internet zurückfließender Datenverkehr ist nur als Antwort auf einen aktiven Datenfluss zulässig.
 
-Im Gegensatz zu SNAT in ausgehender Richtung für Load Balancer gelten bei NAT keine Einschränkungen in Bezug darauf, welche private IP-Adresse einer VM-Instanz ausgehende Verbindungen herstellen kann.  Für sekundäre IP-Konfigurationen kann eine ausgehende Internetverbindung mit NAT erstellt werden.
+Im Gegensatz zu SNAT in ausgehender Richtung für Load Balancer gelten bei NAT keine Einschränkungen in Bezug darauf, welche private IP-Adresse einer VM-Instanz ausgehende Verbindungen herstellen kann.  Für primäre und sekundäre IP-Konfigurationen kann eine ausgehende Internetverbindung mit NAT erstellt werden.
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>Koexistenz von eingehenden und ausgehenden Verbindungen
 
@@ -145,4 +145,3 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Unter [UserVoice fü
 
 * Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
 * [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
-

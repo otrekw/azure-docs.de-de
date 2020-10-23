@@ -2,13 +2,13 @@
 title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1d4f49fe6b90e672b65aa97971426186384da02f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605208"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91652481"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
@@ -16,14 +16,14 @@ Jedes Mal, wenn Sie eine Vorlage bereitstellen, werden Informationen über die B
 
 Azure Resource Manager löscht Bereitstellungen automatisch aus dem Verlauf, wenn der Grenzwert fast erreicht ist. Die automatische Löschung unterscheidet sich vom bisherigen Verhalten. Zuvor mussten Sie Bereitstellungen manuell aus dem Bereitstellungsverlauf löschen, um einen Fehler zu vermeiden. Diese Änderung wurde am 6. August 2020 implementiert.
 
-**Automatische Löschungen werden für Ressourcengruppenbereitstellungen unterstützt. Aktuell werden Bereitstellungen im Bereitstellungsverlauf für Bereitstellungen vom Typ [Abonnement](deploy-to-subscription.md), [Verwaltungsgruppe](deploy-to-management-group.md) und [Mandant](deploy-to-tenant.md) nicht gelöscht.**
+**Automatische Löschungen werden für Ressourcengruppenbereitstellungen unterstützt. Aktuell werden Bereitstellungen im Verlauf für Bereitstellungen vom Typ [Abonnement](deploy-to-subscription.md), [Verwaltungsgruppe](deploy-to-management-group.md)und [Mandant](deploy-to-tenant.md) nicht automatisch gelöscht.**
 
 > [!NOTE]
 > Das Löschen einer Bereitstellung aus dem Verlauf hat keinerlei Auswirkungen auf die bereitgestellten Ressourcen.
 
 ## <a name="when-deployments-are-deleted"></a>Wann Bereitstellungen gelöscht werden
 
-Bereitstellungen werden aus Ihrem Verlauf gelöscht, wenn Sie den Grenzwert von 775 Bereitstellungen erreicht haben. Azure Resource Manager löscht Bereitstellungen, bis der Verlauf wieder 750 Bereitstellungen enthält. Die ältesten Bereitstellungen werden immer zuerst gelöscht.
+Bereitstellungen werden aus Ihrem Verlauf gelöscht, wenn der Grenzwert von 775 Bereitstellungen überschritten wird. Azure Resource Manager löscht Bereitstellungen, bis der Verlauf wieder 750 Bereitstellungen enthält. Die ältesten Bereitstellungen werden immer zuerst gelöscht.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Löschungen aus dem Bereitstellungsverlauf":::
 

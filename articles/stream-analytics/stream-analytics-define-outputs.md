@@ -6,13 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: contperfq1
+ms.date: 10/2/2020
+ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907156"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708434"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Ausgaben von Azure Stream Analytics
 
@@ -25,10 +26,10 @@ Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt,
 | Ausgabetyp | Partitionierung | Sicherheit | 
 |-------------|--------------|----------|
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory-Benutzer </br> MSI|
-|[Azure SQL-Datenbank](sql-database-output.md)|Ja, muss aktiviert sein.|SQL-Benutzerauthentifizierung </br> MSI (Vorschau)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Nein|SQL-Benutzerauthentifizierung|
+|[Azure SQL-Datenbank](sql-database-output.md)|Ja, optional|SQL-Benutzerauthentifizierung </br> MSI (Vorschau)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL-Benutzerauthentifizierung|
 |[Blob Storage und Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|MSI </br> Zugriffsschüssel|
-|[Azure Event Hubs](event-hubs-output.md)|Ja|Zugriffsschüssel|
+|[Azure Event Hubs](event-hubs-output.md)|Ja, Sie müssen die Partitionsschlüsselspalte in der Ausgabekonfiguration festlegen.|Zugriffsschüssel|
 |[Power BI](power-bi-output.md)|Nein|Azure Active Directory-Benutzer </br> MSI|
 |[Azure Table Storage](table-storage-output.md)|Ja|Kontoschlüssel|
 |[Azure Service Bus-Warteschlangen](service-bus-queues-output.md)|Ja|Zugriffsschüssel|
@@ -40,7 +41,7 @@ Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt,
 
 Stream Analytics unterstützt Partitionen für alle Ausgaben außer für Power BI. Weitere Informationen zu Partitionsschlüsseln und der Anzahl von Ausgabeschreibern finden Sie im Artikel zum jeweiligen Ausgabetyp. In der Tabelle oben finden Sie Links zu den Artikeln für die verschiedenen Ausgabetypen.  
 
-Sie können die Anzahl von Ausgabeschreibern mithilfe einer `INTO <partition count>`-Klausel (siehe [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in Ihrer Abfrage steuern. Dies kann hilfreich sein, um die gewünschte Auftragstopologie zu erzielen. Wenn der Ausgabeadapter nicht partitioniert ist, führt das Fehlen von Daten in einer Eingabepartition zu einer Verzögerung. Diese kann die gesamte Zeitspanne der Eingangsverzögerung umfassen. In solchen Fällen wird die Ausgabe in einen einzigen Writer zusammengeführt, was Engpässe in Ihrer Pipeline verursachen kann. Weitere Informationen zur Richtlinie bei Eingangsverzögerung finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
+Wenn Sie die Partitionen zusätzlich weiter optimieren möchten, können Sie die Anzahl von Ausgabeschreibern mithilfe einer `INTO <partition count>`-Klausel (siehe [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in Ihrer Abfrage steuern. Dies kann hilfreich sein, um die gewünschte Auftragstopologie zu erzielen. Wenn der Ausgabeadapter nicht partitioniert ist, führt das Fehlen von Daten in einer Eingabepartition zu einer Verzögerung. Diese kann die gesamte Zeitspanne der Eingangsverzögerung umfassen. In solchen Fällen wird die Ausgabe in einen einzigen Writer zusammengeführt, was Engpässe in Ihrer Pipeline verursachen kann. Weitere Informationen zur Richtlinie bei Eingangsverzögerung finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 

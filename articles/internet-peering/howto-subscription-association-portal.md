@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
-ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710846"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540267"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
 
@@ -70,12 +70,12 @@ Als Internetdienstanbieter oder Internet Exchange-Anbieter können Sie eine neue
 1. Klicken Sie dann auf **Überprüfen + Erstellen**, und beachten Sie, dass das Portal eine grundlegende Überprüfung der eingegebenen Informationen ausführt. Dies wird in einem Menüband oben auf der Seite angezeigt, als *Abschließende Überprüfung wird ausgeführt...* .
 
     > [!div class="mx-imgBorder"]
-    > ![Registerkarte „PeerAsn überprüfen“](./media/peerasn-review-tab-validation.png)
+    > ![Screenshot der Registerkarte „Basics“ (Grundeinstellungen) unter „Associate a Peer ASN“ (Peer-ASN zuweisen)](./media/peerasn-review-tab-validation.png)
 
 1. Sobald die Nachricht im Menüband zu *Überprüfung bestanden* wechselt, überprüfen Sie Ihre Informationen, und reichen Sie die Anforderung ein, indem Sie auf **Erstellen** klicken. Wenn die Überprüfung nicht bestanden wird, klicken Sie auf **Zurück**, und wiederholen Sie die Schritte oben, um Ihre Anforderung zu ändern und sicherzustellen, dass die eingegebenen Werte frei von Fehlern sind.
 
     > [!div class="mx-imgBorder"]
-    > ![Registerkarte „PeerAsn überprüfen“](./media/peerasn-review-tab.png)
+    > ![Screenshot der Registerkarte „Basics“ (Grundeinstellungen) unter „Associate a Peer ASN“ (Peer-ASN zuweisen) mit der Angabe „Validation passed“ (Überprüfung erfolgreich)](./media/peerasn-review-tab.png)
 
 1. Nachdem Sie die Anforderung übermittelt haben, warten Sie, bis die Bereitstellung beendet ist. Wenn bei der Bereitstellung ein Fehler auftritt, wenden Sie sich an [Microsoft Peering](mailto:peering@microsoft.com). Eine erfolgreiche Bereitstellung wird wie unten dargestellt angezeigt.
 

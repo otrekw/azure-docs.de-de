@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759069"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932582"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -52,8 +52,11 @@ Ein allgemeiner Anwendungsfall ist die Verwendung einer Zugriffssteuerungsliste 
 
 Diese Art der Autorisierung wird häufig für Daemons und Dienstkonten eingesetzt, die auf Daten zugreifen müssen, die sich im Besitz von Privatnutzern mit persönlichen Microsoft-Konten befinden. Für Daten, die Organisationen gehören, empfiehlt es sich, die erforderliche Autorisierung über Anwendungsberechtigungen zu erhalten.
 
-> [!NOTE]
-> Zum Aktivieren dieses Autorisierungsmusters, das auf der Zugriffssteuerungsliste basiert, setzt Azure AD nicht voraus, dass die Anwendungen zum Abrufen von Token für eine andere Anwendung autorisiert sind – daher können reine App-Token ohne einen `roles`-Anspruch ausgestellt werden. Bei Anwendungen, die APIs verfügbar machen, müssen zum Akzeptieren von Token Berechtigungsüberprüfungen implementiert werden.
+#### <a name="controlling-tokens-without-the-roles-claim"></a>Steuern von Token ohne den `roles`-Anspruch
+
+Azure AD setzt nicht voraus, dass Anwendungen zum Abrufen von Token für eine andere Anwendung autorisiert sind, um dieses ACL-basierte Autorisierungsmuster zu aktivieren. Daher können nur für Apps gültige Token ohne einen `roles`-Anspruch ausgestellt werden. Bei Anwendungen, die APIs verfügbar machen, müssen zum Akzeptieren von Token Berechtigungsüberprüfungen implementiert werden.
+
+Wenn Sie verhindern möchten, dass Anwendungen nur für Apps gültige Zugriffstoken ohne Rollen abrufen, [sollten Sie sicherstellen, dass die Benutzerzuweisungsanforderungen für Ihre App aktiviert sind](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Dadurch wird verhindert, dass Benutzer und Anwendungen ohne zugewiesene Rollen ein Token für diese Anwendung abrufen können. 
 
 ### <a name="application-permissions"></a>Anwendungsberechtigungen
 

@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330331"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893746"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Onlinemigrationsprobleme und Einschränkungen bei Azure DB for MySQL mit Azure Database Migration Service
 
@@ -82,12 +82,12 @@ LOB-Spalten (Large Object) sind Spalten, die groß werden können. Bei MySQL sin
 
     **Problemumgehung**: Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
 
-- **Einschränkung**: Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
+- **Einschränkung**: Wenn die Länge der LOB-Spalte (Large Object) den Parameter „LOB-Größe beschränken“ überschreitet (sollte nicht größer als 64 KB sein), werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam.
+    **Problemumgehung**: Wenn Sie über ein LOB-Objekt verfügen, das größer als 64 KB ist, verwenden Sie den Parameter „Unbegrenzte LOB-Größe zulassen“. Beachten Sie, dass Migrationen mit dem Parameter „Unbegrenzte LOB-Größe zulassen“ langsamer als Migrationen mit dem Parameter „LOB-Größe beschränken“ sind.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Einschränkungen bei der Onlinemigration von AWS RDS MySQL
 
@@ -136,7 +136,7 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
 
 - In Azure Database Migration Service ist die Anzahl der in einer einzelnen Migrationsaktivität zu migrierenden Datenbanken auf vier Datenbanken beschränkt.
 
-- Azure DMS unterstützt die referenzielle CASCADE-Aktion nicht, die verwendet werden kann, um eine übereinstimmende Zeile in der untergeordneten Tabelle automatisch zu löschen oder zu aktualisieren, wenn eine Zeile in der übergeordneten Tabelle gelöscht oder aktualisiert wird. Weitere Informationen finden Sie in der MySQL-Dokumentation im Abschnitt „Referenzielle Aktionen“ des Artikels [FOREIGN KEY-Einschränkungen](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html). Azure DMS erfordert, dass Sie Fremdschlüsseleinschränkungen auf dem Zieldatenbankserver während des anfänglichen Ladens von Daten löschen. Zudem können Sie keine referenziellen Aktionen verwenden. Wenn Ihre Workload von der Aktualisierung einer zugehörigen untergeordneten Tabelle über diese referenzielle Aktion abhängt, empfiehlt es sich, stattdessen eine [Sicherung und Wiederherstellung](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) durchzuführen. 
+- Azure DMS unterstützt die referenzielle CASCADE-Aktion nicht, die verwendet werden kann, um eine übereinstimmende Zeile in der untergeordneten Tabelle automatisch zu löschen oder zu aktualisieren, wenn eine Zeile in der übergeordneten Tabelle gelöscht oder aktualisiert wird. Weitere Informationen finden Sie in der MySQL-Dokumentation im Abschnitt „Referential Actions“ (referenzielle Aktionen) des Artikels [FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html). Azure DMS erfordert, dass Sie Fremdschlüsseleinschränkungen auf dem Zieldatenbankserver während des anfänglichen Ladens von Daten löschen. Zudem können Sie keine referenziellen Aktionen verwenden. Wenn Ihre Workload von der Aktualisierung einer zugehörigen untergeordneten Tabelle über diese referenzielle Aktion abhängt, empfiehlt es sich, stattdessen eine [Sicherung und Wiederherstellung](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) durchzuführen. 
 
 - **Fehler:** Zeile zu groß (> 8126). Das Ändern einiger Spalten in TEXT oder BLOB kann helfen. Beim aktuellen Zeilenformat wird das BLOB-Präfix von 0 Byte inline gespeichert.
 

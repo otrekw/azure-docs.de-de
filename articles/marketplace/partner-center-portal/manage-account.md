@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400688"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -306,7 +306,7 @@ Weitere Informationen zum Verwalten von Rollen und Berechtigungen in anderen Ber
 
 ## <a name="manage-tenants"></a>Verwalten von Mandanten
 
-Ein Azure AD-Mandant (Active Directory), in dieser Dokumentation auch als „Geschäftskonto“ bezeichnet, spiegelt Ihre Organisationseinrichtung im Azure-Portal wider und hilft Ihnen, eine bestimmte Instanz der Microsoft-Clouddienste für Ihre internen und externen Benutzer zu verwalten. Wenn Ihre Organisation einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 abonniert hat, wurde ein Azure AD-Mandant für Sie erstellt.
+Ein Azure AD-Mandant (Active Directory), in dieser Dokumentation auch als „Geschäftskonto“ bezeichnet, spiegelt Ihre Organisationseinrichtung im Azure-Portal wider und hilft Ihnen, eine bestimmte Instanz der Microsoft-Clouddienste für Ihre internen und externen Benutzer zu verwalten. Wenn Ihre Organisation einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Microsoft 365 abonniert hat, wurde ein Azure AD-Mandant für Sie erstellt.
 
 Sie können mehrere Mandanten für die Verwendung mit Partner Center einrichten. Jeder Benutzer mit der **Manager**-Rolle im Partner Center-Konto hat die Möglichkeit, Azure AD-Mandanten im Konto hinzuzufügen und zu entfernen.  
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514610"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91447365"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -107,24 +107,19 @@ Führen Sie die Abfrage als Benutzer aus, der über Folgendes verfügt:
 - mindestens Zugriff auf Leserebene für die Azure-Abonnements
 - Lesezugriff auf Azure Resource Graph
 
-Wenn Sie ein globaler Administrator des Mandanten Ihrer Organisation sind, erhöhen Sie die Rechte Ihres Kontos, um Zugriff auf das gesamte Abonnement Ihrer Organisation zu erhalten. Gehen Sie dazu wie unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) beschrieben vor.
+Wenn Sie ein globaler Administrator des Mandanten Ihrer Organisation sind, erhöhen Sie die Rechte Ihres Kontos, um Zugriff auf das gesamte Abonnement Ihrer Organisation zu erhalten. Gehen Sie dazu wie unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](../../role-based-access-control/elevate-access-global-admin.md) beschrieben vor.
 
 
 > [!TIP]
-> Bei Azure Resource Graph gelten Drosselungs- und Auslagerungsgrenzwerte, die in umfangreichen Azure-Umgebungen berücksichtigt werden müssen. [Erfahren Sie mehr](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) über das Arbeiten mit großen Datasets von Azure-Ressourcen. 
+> Bei Azure Resource Graph gelten Drosselungs- und Auslagerungsgrenzwerte, die in umfangreichen Azure-Umgebungen berücksichtigt werden müssen. 
+> 
+> Weitere Informationen finden Sie unter [Arbeiten mit großen Datasets von Azure-Ressourcen](../../governance/resource-graph/concepts/work-with-data.md).
 > 
 > Das Tool verwendet eine Batchverarbeitung für Abonnements, um diese Einschränkungen zu vermeiden.
 
 ### <a name="run-the-script"></a>Ausführen des Skripts
 
-Das Skript ist in zwei Versionen verfügbar. Beide haben die gleichen Eingabeparameter und liefern eine ähnliche Ausgabe:
-
-|Skript  |Information  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |Der parallele Modus wird erst ab der PowerShell-Version 7 unterstützt. Andernfalls wird der serielle Modus verwendet.|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |Wird nur in PowerShell Desktop bzw. in Versionen vor der Version 6 unterstützt, da in diesem Skript [Windows Workflow Foundation](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview) verwendet wird.|
-
-Unter https://aka.ms/DanglingDNSDomains finden Sie weitere Informationen und können die PowerShell-Skripts von GitHub herunterladen.
+Unter https://aka.ms/DanglingDNSDomains können Sie das PowerShell-Skript **Get-DanglingDnsRecords.ps1** von GitHub herunterladen, und Sie erhalten weitere Informationen dazu.
 
 ## <a name="remediate-dangling-dns-entries"></a>Behandeln verwaister DNS-Einträge 
 
@@ -152,7 +147,7 @@ Einige Azure-Dienste bieten Features, die Sie bei der Erstellung vorbeugender Ma
 
 ### <a name="use-azure-dns-alias-records"></a>Verwenden von Azure DNS-Aliaseinträgen
 
-Azure DNS-[Aliaseinträge](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) verhindern verwaiste Verweise durch eine Kopplung des Lebenszyklus eines DNS-Eintrags mit einer Azure-Ressource. Stellen Sie sich beispielsweise einen DNS-Eintrag vor, der als Aliaseintrag qualifiziert wird, um auf eine öffentliche IP-Adresse oder auf ein Traffic Manager-Profil zu verweisen. Wenn Sie diese zugrunde liegenden Ressourcen löschen, wird der DNS-Aliaseintrag ein leerer Eintragssatz. Er verweist nicht mehr auf die gelöschte Ressource. Beachten Sie jedoch, dass es Grenzen in Bezug darauf gibt, was Sie mit Aliaseinträgen schützen können. Dies ist derzeit auf Folgendes beschränkt:
+Azure DNS-[Aliaseinträge](../../dns/dns-alias.md#scenarios) verhindern verwaiste Verweise durch eine Kopplung des Lebenszyklus eines DNS-Eintrags mit einer Azure-Ressource. Stellen Sie sich beispielsweise einen DNS-Eintrag vor, der als Aliaseintrag qualifiziert wird, um auf eine öffentliche IP-Adresse oder auf ein Traffic Manager-Profil zu verweisen. Wenn Sie diese zugrunde liegenden Ressourcen löschen, wird der DNS-Aliaseintrag ein leerer Eintragssatz. Er verweist nicht mehr auf die gelöschte Ressource. Beachten Sie jedoch, dass es Grenzen in Bezug darauf gibt, was Sie mit Aliaseinträgen schützen können. Dies ist derzeit auf Folgendes beschränkt:
 
 - Azure Front Door
 - Traffic Manager-Profile
@@ -161,7 +156,7 @@ Azure DNS-[Aliaseinträge](https://docs.microsoft.com/azure/dns/dns-alias#scenar
 
 Trotz der aktuell begrenzten Dienstangebote empfiehlt es sich, nach Möglichkeit Aliaseinträge zu verwenden, um sich vor Unterdomänenübernahmen zu schützen.
 
-[Erfahren Sie mehr](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) über die Funktionen von Azure DNS-Aliaseinträgen.
+Unter [Funktionen](../../dns/dns-alias.md#capabilities) erhalten Sie weitere Informationen zu den Funktionen von Aliaseinträgen von Azure DNS.
 
 
 
@@ -171,7 +166,7 @@ Wenn Sie DNS-Einträge für Azure App Service erstellen, erstellen Sie auch eine
 
 Diese Datensätze verhindern nicht, dass jemand den Azure App Service mit dem gleichen Namen wie in Ihrem CNAME-Eintrag erstellt. Wenn Bedrohungsakteure nicht nachweisen können, dass sie Besitzer des Domänennamens sind, können sie keinen Datenverkehr empfangen oder den Inhalt kontrollieren.
 
-[Erfahren Sie mehr](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) darüber, wie Azure App Service ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird.
+Unter [Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md) erhalten Sie weitere Informationen.
 
 
 
@@ -185,13 +180,13 @@ Entwickler und Betriebsteams müssen häufig Bereinigungsprozesse durchführen, 
 
     - Nehmen Sie „DNS-Eintrag entfernen“ auf die Liste der Punkte auf, die bei der Außerbetriebsetzung eines Diensts beachtet werden müssen.
 
-    - Legen Sie [Löschsperren](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) für alle Ressourcen mit einem benutzerdefinierten DNS-Eintrag fest. Eine Löschsperre dient als Indikator dafür, dass die Zuordnung entfernt werden muss, bevor die Bereitstellung der Ressource aufgehoben wird. Maßnahmen wie diese funktionieren nur in Kombination mit internen Schulungsprogrammen.
+    - Legen Sie [Löschsperren](../../azure-resource-manager/management/lock-resources.md) für alle Ressourcen mit einem benutzerdefinierten DNS-Eintrag fest. Eine Löschsperre dient als Indikator dafür, dass die Zuordnung entfernt werden muss, bevor die Bereitstellung der Ressource aufgehoben wird. Maßnahmen wie diese funktionieren nur in Kombination mit internen Schulungsprogrammen.
 
 - **Erstellen von Verfahren zur Ermittlung:**
 
     - Überprüfen Sie Ihre DNS-Einträge regelmäßig, um sicherzustellen, dass alle Ihre Unterdomänen Azure-Ressourcen zugeordnet sind, auf die Folgendes zutrifft:
 
-        - Vorhanden – fragen Sie die DNS-Zonen in Bezug auf Ressourcen ab, die auf Azure-Unterdomänen wie *.azurewebsites.net oder *.cloudapp.azure.com verweisen (siehe dazu [diese Referenzliste](azure-domains.md)).
+        - Vorhanden: Fragen Sie die DNS-Zonen in Bezug auf Ressourcen ab, die auf Azure-Unterdomänen wie *.azurewebsites.net oder *.cloudapp.azure.com verweisen. Weitere Informationen dazu finden Sie unter [Referenzliste von Azure-Domänen (nicht vollständig)](azure-domains.md).
         - In Ihrem Besitz – stellen Sie sicher, dass Sie alle Ressourcen besitzen, auf die Ihre DNS-Unterdomänen verweisen.
 
     - Pflegen Sie einen Dienstkatalog mit Ihren Azure-FQDN-Endpunkten (Fully Qualified Domain Name, vollqualifizierter Domänenname) und den Anwendungsbesitzern. Führen Sie zum Erstellen des Dienstkatalogs das folgende Azure Resource Graph-Abfrageskript aus. Das Skript projiziert die FQDN-Endpunktinformationen der Ressourcen, auf die Sie Zugriff haben, und gibt sie in einer CSV-Datei aus. Wenn Sie Zugriff auf alle Abonnements Ihres Mandanten haben, berücksichtigt das Skript all diese Abonnements, wie im folgenden Beispielskript gezeigt. Um die Ergebnisse auf eine bestimmte Gruppe von Abonnements zu beschränken, bearbeiten Sie das Skript wie gezeigt.
@@ -207,8 +202,8 @@ Entwickler und Betriebsteams müssen häufig Bereinigungsprozesse durchführen, 
 
 Weitere Informationen zu verwandten Diensten und Azure-Features, die Sie verwenden können, um sich vor Unterdomänenübernahmen zu schützen, finden Sie auf den folgenden Seiten.
 
-- [Azure DNS unterstützt die Verwendung von Aliaseinträgen für benutzerdefinierte Domänen](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [Vermeiden verwaister DNS-Einträge](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Verwenden der Verifizierungs-ID für eine Domäne beim Hinzufügen benutzerdefinierter Domänen in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Abrufen der Verifizierungs-ID für eine Domäne](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell](../../governance/resource-graph/first-query-powershell.md)

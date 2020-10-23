@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985013"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332711"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -39,6 +39,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
+**Zonenredundanter Speicher (ZRS)** | Verfügbar in den Regionen „Vereinigtes Königreich, Süden (UKS)“ und „Asien, Südosten (SEA)“
 
 ## <a name="on-premises-backup-support"></a>Unterstützung von lokalen Sicherungen
 
@@ -150,9 +151,9 @@ In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung h
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen und souveränen Clouds.  |
-| SQL/SAP HANA | Ja                                                          | Alle öffentlichen Azure-Regionen und souveränen Clouds.             |
-| MARS-Agent/lokal  | Nein                                                           | –               |
-| AFS                    | Nein                                                           | –               |
+| SQL/SAP HANA | Ja                                                          | USA, Westen 2 (WUS2); USA, Westen-Mitte (WCUS); Kanada, Mitte (CNC); Kanada, Osten (CNE); USA, Osten (EUS); USA, Westen (WUS); Japan, Osten (JPE); Japan, Osten (JPE) |
+| MARS-Agent/lokal  | Nein                                                           | N/V               |
+| AFS (Azure-Dateifreigaben)                 | Nein                                                           | –               |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

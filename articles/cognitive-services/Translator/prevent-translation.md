@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996175"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742059"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Verhindern der Übersetzung von Inhalten mit Translator
 
@@ -37,13 +37,26 @@ Mit Translator können Sie Inhalte kennzeichnen, die nicht übersetzt werden sol
    <div>This will be translated. </div>
    ```
 
-2. Verwenden Sie das [dynamische Wörterbuch](dynamic-dictionary.md), um eine bestimmte Übersetzung vorzuschreiben.
+2. Kennzeichnen Sie Ihren Inhalt mit `translate="no"`. Dies funktioniert nur, wenn textType für die Eingabe auf HTML festgelegt ist.
 
-3. Übergeben Sie die Zeichenfolge nicht zur Übersetzung an Translator.
+   Beispiel:
 
-4. Benutzerdefinierter Translator: Verwenden Sie ein [Wörterbuch in „Benutzerdefinierter Translator“](custom-translator/what-is-dictionary.md), um die Übersetzung eines Ausdrucks mit einer Wahrscheinlichkeit von 100% vorzuschreiben.
+   ```html
+   <span translate="no">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
+   ```html
+   <div translate="no">This will not be translated.</div>
+   <div>This will be translated. </div>
+
+3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+
+4. Don't pass the string to the Translator for translation.
+
+5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Next steps
 > [!div class="nextstepaction"]
-> [Vermeiden einer Übersetzung in Ihrem Translator-Aufruf](reference/v3-0-translate.md)
+> [Use the Translate operation to translate text](reference/v3-0-translate.md)

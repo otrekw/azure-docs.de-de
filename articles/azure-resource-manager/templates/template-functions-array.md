@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Arrays
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Arrays verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: a5cf73203cf59a0b9f2b5f49c923d0a077c065fc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677847"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979137"
 ---
 # <a name="array-functions-for-arm-templates"></a>Arrayfunktionen für ARM-Vorlagen
 
@@ -278,12 +278,11 @@ Erstellt ein Array auf der Grundlage der Parameter.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Zeichenfolge, ganze Zahl, Array oder Objekt |Der erste Wert im Array. |
-| zusätzliche Argumente |Nein  |Zeichenfolge, ganze Zahl, Array oder Objekt |Weitere Werte im Array. |
+| args |Nein |Zeichenfolge, ganze Zahl, Array oder Objekt |Die Werte im Array. |
 
 ### <a name="return-value"></a>Rückgabewert
 
-Ein -Array.
+Ein -Array. Wenn keine Parameter angegeben werden, wird ein leeres Array zurückgegeben.
 
 ### <a name="example"></a>Beispiel
 
@@ -321,6 +320,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
         "arrayArray": {
             "type": "array",
             "value": "[createArray(parameters('arrayToTest'))]"
+        },
+        "emptyArray": {
+            "type": "array",
+            "value": "[createArray()]"
         }
     }
 }
@@ -334,6 +337,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | intArray | Array | [1, 2, 3] |
 | objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
 | arrayArray | Array | [["one", "two", "three"]] |
+| emptyArray | Array | [] |
 
 ## <a name="empty"></a>empty
 

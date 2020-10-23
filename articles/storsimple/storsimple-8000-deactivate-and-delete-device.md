@@ -1,6 +1,6 @@
 ---
 title: Deaktivieren und Löschen eines Geräts der StorSimple 8000-Serie| Microsoft-Dokumentation
-description: Beschreibt, wie ein StorSimple-Gerät aus dem Dienst entfernt wird, indem es zunächst deaktiviert und anschließend gelöscht wird.
+description: Hier erfahren Sie, wie Sie ein StorSimple-Gerät deaktivieren und löschen, das mit einem StorSimple-Geräte-Manager-Dienst verbunden ist.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514032"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777818"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Deaktivieren und Löschen eines StorSimple-Geräts
 
@@ -63,16 +63,16 @@ Wenn Sie das Gerät vollständig löschen und die Daten auf dem Gerät nicht bei
         ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. Geben Sie auf dem Blatt **Deaktivieren** den zu bestätigenden Gerätenamen ein, und klicken Sie anschließend auf **Deaktivieren**. Der Deaktivierungsvorgang beginnt und kann einige Minuten in Anspruch nehmen.
 
-        ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+        ![Deaktivieren des StorSimple-Geräts 2](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
 3. Sie können nach der Deaktivierung das Gerät vollständig löschen. Das Löschen eines Geräts entfernt es aus der Liste der mit dem Dienst verbundenen Geräte. Der Dienst kann das gelöschte Gerät dann nicht mehr länger verwalten. Führen Sie die folgenden Schritte aus, um das Gerät zu löschen:
    
    1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und klicken Sie auf **Geräte**. Wählen Sie auf dem Blatt **Geräte** das deaktivierte Gerät aus, das Sie löschen möchten. Klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Löschen**.
 
-        ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+        ![Deaktivieren des StorSimple-Geräts 3](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. Geben Sie auf dem Blatt **Löschen** den zu bestätigenden Gerätenamen ein, und klicken Sie anschließend auf **Löschen**. Der Löschvorgang kann einige Minuten dauern.
 
-        ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+        ![Deaktivieren des StorSimple-Geräts 4](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Nachdem der Löschvorgang erfolgreich abgeschlossen wurde, werden Sie benachrichtigt. Die Geräteliste wird dem Löschvorgang entsprechend aktualisiert.
 
 ## <a name="deactivate-and-retain-data"></a>Deaktivieren und Beibehalten von Daten
@@ -85,19 +85,19 @@ Wenn Sie das Gerät löschen, aber die Daten beibehalten möchten, führen Sie d
    
    1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und klicken Sie auf **Geräte**. Klicken Sie auf dem Blatt **Geräte** auf das Gerät, das Sie deaktivieren möchten. Klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Deaktivieren**.
 
-         ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+         ![Deaktivieren des StorSimple-Geräts 5](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. Geben Sie auf dem Blatt **Deaktivieren** den zu bestätigenden Gerätenamen ein, und klicken Sie anschließend auf **Deaktivieren**. Der Deaktivierungsvorgang beginnt und kann einige Minuten in Anspruch nehmen.
 
-         ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+         ![Deaktivieren des StorSimple-Geräts 6](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 2. Sie können nun ein Failover der Volumecontainer und der zugehörigen Momentaufnahmen durchführen. Informationen zu den Verfahren finden Sie unter [Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät](storsimple-8000-device-failover-disaster-recovery.md).
 3. Sie können nach der Deaktivierung und der Ausführung des Failovers das Gerät vollständig löschen. Das Löschen eines Geräts entfernt es aus der Liste der mit dem Dienst verbundenen Geräte. Der Dienst kann das gelöschte Gerät dann nicht mehr länger verwalten. Führen Sie die folgenden Schritte aus, um das Gerät zu löschen:
    
    1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und klicken Sie auf **Geräte**. Wählen Sie auf dem Blatt **Geräte** das deaktivierte Gerät aus, das Sie löschen möchten. Klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Löschen**.
 
-       ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+       ![Deaktivieren des StorSimple-Geräts 7](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. Geben Sie auf dem Blatt **Löschen** den zu bestätigenden Gerätenamen ein, und klicken Sie anschließend auf **Löschen**. Der Löschvorgang kann einige Minuten dauern.
 
-       ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+       ![Deaktivieren des StorSimple-Geräts 8](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Nachdem der Löschvorgang erfolgreich abgeschlossen wurde, werden Sie benachrichtigt. Die Geräteliste wird dem Löschvorgang entsprechend aktualisiert.
 
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Deaktivieren und Löschen eines Cloudgeräts

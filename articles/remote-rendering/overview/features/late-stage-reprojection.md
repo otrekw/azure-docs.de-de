@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022179"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893202"
 ---
 # <a name="late-stage-reprojection"></a>LSR (Late State Reprojection)
 
@@ -34,7 +34,9 @@ Wenn dies der Fall ist, verwendet Ihre App Tiefen-LSR, andernfalls wird Planar-L
 
 Damit Tiefen-LSR funktioniert, muss die Clientanwendung einen gültigen Tiefenpuffer bereitstellen, der die gesamte relevante Geometrie enthält, die während des LSR-Vorgangs berücksichtigt werden muss.
 
-Tiefen-LSR versucht, den Videoframe basierend auf dem Inhalt des angegebenen Tiefenpuffers zu stabilisieren. Folglich können Inhalte, die nicht in ihm gerendert wurden (z. B. transparente Objekte), nicht von LSR angepasst werden, und es kann zu Instabilität und Umprojizierungsartefakten kommen.
+Tiefen-LSR versucht, den Videoframe basierend auf dem Inhalt des angegebenen Tiefenpuffers zu stabilisieren. Folglich können Inhalte, die nicht in ihm gerendert wurden (z. B. transparente Objekte), nicht von LSR angepasst werden, und es kann zu Instabilität und Umprojizierungsartefakten kommen. 
+
+Um Instabilitäten der Neuprojektion bei transparenten Objekten zu vermeiden, können Sie das Schreiben von Tiefenpuffern erzwingen. Weitere Informationen zu den [Farb](color-materials.md)- und [PBR](pbr-materials.md)-Materialien finden Sie im Materialflag *TransparencyWritesDepth*. Beachten Sie jedoch, dass die visuelle Qualität der Interaktion zwischen transparenten/nicht transparenten Objekten beim Aktivieren dieses Flags beeinträchtigt werden kann.
 
 ## <a name="planar-lsr"></a>Planar-LSR
 

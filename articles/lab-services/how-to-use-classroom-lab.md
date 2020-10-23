@@ -3,12 +3,12 @@ title: Zugreifen auf ein Classroom-Lab in Azure Lab Services | Microsoft-Dokumen
 description: Hier wird beschrieben, wie Sie sich bei einem Classroom-Lab registrieren, alle Labs anzeigen, auf die Sie zugreifen können, einen virtuellen Computer im Lab starten/beenden und eine Verbindung mit dem virtuellen Computer herstellen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334054"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946109"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registrieren, alle Labs anzeigen, auf die Sie zugreifen können, einen virtuellen Computer im Lab starten/beenden und eine Verbindung mit dem virtuellen Computer herstellen. 

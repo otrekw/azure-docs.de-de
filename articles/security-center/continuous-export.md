@@ -1,32 +1,37 @@
 ---
-title: Exportieren von Azure Security Center-Warnungen und -Empfehlungen in SIEMs | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export von Sicherheitswarnungen und -empfehlungen in SIEMs einrichten.
+title: Fortlaufender Export kann Azure Security Center-Warnungen und -Empfehlungen an Log Analytics Arbeitsbereiche oder Azure-Event Hubs senden
+description: Hier erfahren Sie, wie Sie den fortlaufenden Export von Sicherheitswarnungen und -empfehlungen in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: d0ada1b615d4673f696c6f1b003288f3e7aa02e4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449165"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945277"
 ---
-# <a name="export-security-alerts-and-recommendations"></a>Exportieren von Sicherheitswarnungen und -empfehlungen
+# <a name="continuously-export-security-alerts-and-recommendations"></a>Fortlaufendes Exportieren von Sicherheitswarnungen und -empfehlungen
 
-Azure Security Center generiert detaillierte Sicherheitswarnungen und -empfehlungen. Sie können diese im Portal oder über programmgesteuerte Tools anzeigen. Möglicherweise müssen Sie diese Informationen auch exportieren oder an andere Überwachungstools in Ihrer Umgebung senden. 
+Azure Security Center generiert detaillierte Sicherheitswarnungen und -empfehlungen. Sie können diese im Portal oder über programmgesteuerte Tools anzeigen. Möglicherweise müssen Sie diese Informationen auch ganz oder teilweise für die Nachverfolgung mit anderen Überwachungstools in Ihrer Umgebung exportieren. 
 
-In diesem Artikel werden die Tools beschrieben, mit denen Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich fortlaufend exportieren können.
+Mit dem **fortlaufenden Export** können Sie umfassend anpassen, *was* exportiert wird und *wohin*. Sie können z. B. die folgenden Konfigurationen vornehmen:
 
-Mit diesen Tools können Sie folgende Aktionen ausführen:
+- Alle Warnungen mit einem hohen Schweregrad werden an eine Azure Event Hub-Instanz gesendet.
+- Alle Ergebnisse mit einem mittleren oder höheren Schweregrad bei Überprüfungen der Sicherheitsrisikobewertung Ihrer SQL Server-Instanzen werden an einen bestimmten Log Analytics-Arbeitsbereich gesendet.
+- Bestimmte Empfehlungen werden bei Erstellung an eine Event Hub-Instanz oder einen Log Analytics-Arbeitsbereich gesendet. 
 
-* Fortlaufender Export in Log Analytics-Arbeitsbereiche
-* Fortlaufender Export in Azure Event Hubs (für Integrationen mit Drittanbieter-SIEMs)
-* Export in das CSV-Format (einmalig)
+In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
 
+> [!NOTE]
+> Wenn Sie Security Center mit SIEM integrieren müssen, lesen Sie [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Service-Management-Lösung](export-to-siem.md), um mehr über die verschiedenen Möglichkeiten zu erfahren.
+
+> [!TIP]
+> Security Center bietet auch die Möglichkeit, einen einmaligen manuellen Export in eine CSV-Datei auszuführen. Weitere Informationen finden Sie unter [Manueller einmaliger Export von Warnungen und Empfehlungen](#manual-one-time-export-of-alerts-and-recommendations).
 
 
 ## <a name="availability"></a>Verfügbarkeit
@@ -35,28 +40,30 @@ Mit diesen Tools können Sie folgende Aktionen ausführen:
 |----|:----|
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|Kostenlos|
-|Erforderliche Rollen und Berechtigungen:|**Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich|
+|Erforderliche Rollen und Berechtigungen:|<ul><li>**Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe</li><li>Schreibberechtigungen für die Zielressource</li><li>Wenn Sie die unten beschriebenen „DeployIfNotExist“-Richtlinien von Azure Policy verwenden, benötigen Sie auch die Berechtigungen zum Zuweisen von Richtlinien.</li></ul>|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China Gov (zu Event Hub), andere Gov|
 |||
 
 
 
-## <a name="set-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports
+
+
+## <a name="set-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports 
+
+Sie können den fortlaufenden Export auf den Security Center-Seiten im Azure-Portal, über die Security Center-REST-API oder im großen Stil mithilfe der bereitgestellten Azure Policy-Vorlagen konfigurieren. Klicken Sie auf die entsprechende Registerkarte, um Details zu den einzelnen Möglichkeiten anzuzeigen.
+
+### <a name="use-the-azure-portal"></a>[**Verwenden des Azure-Portals**](#tab/azure-portal)
+
+### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Konfigurieren des fortlaufenden Exports auf den Security Center-Seiten im Azure-Portal
 
 Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlaufenden Export in einen Log Analytics-Arbeitsbereich oder in Azure Event Hubs einrichten.
 
 1. Wählen Sie auf der Security Center-Randleiste **Preise & Einstellungen** aus.
-
 1. Wählen Sie das Abonnement aus, für das Sie den Datenexport konfigurieren möchten.
-    
 1. Wählen Sie auf der Randleiste der Seite „Einstellungen“ für dieses Abonnement **Fortlaufender Export** aus.
-
     [![Exportoptionen in Azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) Hier werden die Exportoptionen angezeigt. Es gibt eine Registerkarte für jedes verfügbare Exportziel. 
-
 1. Wählen Sie den Datentyp, den Sie exportieren möchten, und dann Filter für die einzelnen Typen aus (z. B. nur Warnungen mit hohem Schweregrad exportieren).
-
 1. Wenn Ihre Auswahl eine dieser vier Empfehlungen enthält, können Sie optional die Ergebnisse der Sicherheitsrisikobewertung mit aufnehmen:
-
     - Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Datenbanken müssen beseitigt werden
     - Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Server-Instanzen auf Computern müssen beseitigt werden (Vorschau)
     - Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden (unterstützt von Qualys).
@@ -66,15 +73,14 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
 
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export" :::
 
-
 1. Wählen Sie im Bereich „Exportziel“ aus, wo die Daten gespeichert werden sollen. Daten können in einem Ziel in einem anderen Abonnement gespeichert werden (z.B. in einer Central Event Hub-Instanz oder in einem zentralen Log Analytics-Arbeitsbereich).
-
 1. Wählen Sie **Speichern** aus.
 
+### <a name="use-the-rest-api"></a>[**Verwenden der REST-API**](#tab/rest-api)
 
-## <a name="set-up-continuous-export-via-the-rest-api"></a>Einrichten des fortlaufenden Exports über die REST-API
+### <a name="configure-continuous-export-using-the-rest-api"></a>Konfigurieren des fortlaufenden Exports über die REST-API
 
-Das Feature des fortlaufenden Exports kann über die [Automatisierungs-API](https://docs.microsoft.com/rest/api/securitycenter/automations) von Azure Security Center konfiguriert und verwaltet werden. Verwenden Sie diese API, um Automatisierungen für den Export in eines der folgenden möglichen Ziele zu erstellen oder zu aktualisieren:
+Der fortlaufende Export kann über die [Automatisierungs-API](https://docs.microsoft.com/rest/api/securitycenter/automations) in Azure Security Center konfiguriert und verwaltet werden. Verwenden Sie diese API, um Regeln für den Export an eines der folgenden möglichen Ziele zu erstellen oder zu aktualisieren:
 
 - Azure Event Hub
 - Log Analytics-Arbeitsbereich
@@ -95,47 +101,67 @@ Weitere Informationen zur Automatisierungen-API finden Sie in der [REST-API-Doku
 
 
 
-## <a name="configure-siem-integration-via-azure-event-hubs"></a>Konfigurieren der SIEM-Integration über Azure Event Hubs
-
-Azure Event Hubs eignet sich hervorragend, um Streamingdaten programmgesteuert zu nutzen. Für Azure Security Center-Warnungen und Empfehlungen ist dies die bevorzugte Methode für eine SIEM-Drittanbieterintegration.
-
-> [!NOTE]
-> Die effektivste Methode zum Streamen von Überwachungsdaten an externe Tools ist in den meisten Fällen die Verwendung von Azure Event Hubs. [Dieser Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs) enthält eine kurze Beschreibung der Vorgehensweise beim Streamen von Überwachungsdaten aus verschiedenen Quellen an einen Event Hub und Links zu ausführlichen Anleitungen.
-
-> [!NOTE]
-> Wenn Sie Security Center-Warnungen zuvor mithilfe des Azure-Aktivitätsprotokolls in eine SIEM-Lösung exportiert haben, wird diese Methodik durch das folgende Verfahren ersetzt.
-
-Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Event Hub-Ereignisschemas](https://aka.ms/ASCAutomationSchemas).
 
 
-### <a name="to-integrate-with-a-siem"></a>So führen Sie die Integration in eine SIEM-Lösung durch 
+### <a name="deploy-at-scale-with-azure-policy"></a>[**Bereitstellung im großen Stil mit Azure Policy**](#tab/azure-policy)
 
-Nachdem Sie den fortlaufenden Export der ausgewählten Security Center-Daten in Azure Event Hubs konfiguriert haben, können Sie den entsprechenden Connector für Ihre SIEM-Lösung einrichten.
+### <a name="configure-continuous-export-at-scale-using-the-supplied-policies"></a>Konfigurieren des fortlaufenden Exports im großen Stil mithilfe der bereitgestellten Richtlinien
 
-* **Azure Sentinel** – Verwenden Sie den hier angebotenen nativen [Datenconnector](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center) für Azure Security Center-Warnungen.
-* **Splunk**: Verwenden Sie das [Azure Monitor-Add-On für Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md)
-* **IBM QRadar**: Verwenden Sie [eine manuell konfigurierte Protokollquelle](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/t_dsm_guide_microsoft_azure_enable_event_hubs.html)
-* **ArcSight**: Verwenden Sie [SmartConnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)
+Die Automatisierung der Prozesse Ihrer Organisation zur Überwachung und Reaktion auf Vorfälle kann die Zeit, die zum Untersuchen von Sicherheitsvorfällen und zur Durchführung entsprechender Gegenmaßnahmen benötigt wird, erheblich verkürzen.
 
-Wenn Sie die kontinuierlich exportierten Daten automatisch aus dem konfigurierten Event Hub in Azure Data Explorer verschieben möchten, befolgen Sie zudem die Anweisungen unter [Erfassen von Daten aus Event Hub in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub).
+Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufenden Export in Ihrer Organisation die unten beschriebenen von Azure Policy bereitgestellten „DeployIfNotExist“-Richtlinien zum Erstellen und Konfigurieren von Prozeduren für den fortlaufenden Export.
 
+**So implementieren Sie diese Richtlinien**
 
+1. Klicken Sie in der folgenden Tabelle auf die Richtlinie, die Sie anwenden möchten:
 
-## <a name="continuous-export-to-a-log-analytics-workspace"></a>Fortlaufender Export in einen Log Analytics-Arbeitsbereich
+    |Zielsetzung  |Richtlinie  |Richtlinien-ID  |
+    |---------|---------|---------|
+    |Fortlaufender Export zu einem Event Hub|[Bereitstellen eines Exports für Azure Security Center-Warnungen und -Empfehlungen in Event Hub](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Fortlaufender Export in einen Log Analytics-Arbeitsbereich|[Bereitstellen eines Exports für Azure Security Center-Warnungen und -Empfehlungen in Log Analytics-Arbeitsbereichen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    ||||
 
-Wenn Sie Azure Security Center-Daten in einem Log Analytics-Arbeitsbereich analysieren oder Azure-Warnungen gemeinsam mit Security Center verwenden möchten, richten Sie den fortlaufenden Export für Ihren Log Analytics-Arbeitsbereich ein.
+    > [!TIP]
+    > Sie können auch in Azure Policy nach diesen Richtlinien suchen:
+    > 1. Öffnen Sie Azure Policy.
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export":::
+    > 2. Klicken Sie im Azure Policy-Menü auf **Definitionen**, und suchen Sie nach dem Namen der gewünschten Richtlinie. 
 
-Um Daten in einen Log Analytics-Arbeitsbereich exportieren zu können, müssen in Ihrem Arbeitsbereich Log Analytics-Lösungen von Security Center aktiviert sein. Wenn Sie das Azure-Portal verwenden, wird die kostenlose Security Center-Lösung automatisch aktiviert, sobald Sie den fortlaufenden Export aktivieren. Wenn Sie die Einstellungen für den fortlaufenden Export jedoch programmgesteuert konfigurieren, müssen Sie Azure Defender auf der Seite **Preise und Einstellungen** manuell aktivieren oder deaktivieren.
+1. Klicken Sie auf der entsprechenden Azure Policy-Seite auf **Zuweisen**.
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export":::
+
+1. Öffnen Sie alle Registerkarten, und legen Sie die Parameter wie gewünscht fest:
+    1. Legen Sie auf der Registerkarte **Grundeinstellungen** den Bereich für die Richtlinie fest. Weisen Sie die Richtlinie für eine zentrale Verwaltung der Verwaltungsgruppe mit den Abonnements zu, die die Konfiguration für den fortlaufenden Export verwenden sollen. 
+    1. Legen Sie auf der Registerkarte **Parameter** die Ressourcengruppe und die Details für den Datentyp fest. 
+        > [!TIP]
+        > Jeder Parameter verfügt über eine QuickInfo, in der die verfügbaren Optionen erläutert werden.
+        >
+        > Die Registerkarte „Parameter“ in Azure Policy (1) bietet ähnliche Konfigurationsoptionen wie die Seite „Fortlaufender Export“ in Security Center (2).
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+    1. Wenn Sie diese Zuweisung auf vorhandene Abonnements anwenden möchten, können Sie die Registerkarte **Wartung** öffnen und die Option zum Erstellen eines Wartungstasks auswählen.
+1. Überprüfen Sie die Seite „Zusammenfassung“, und klicken Sie auf **Erstellen**.
+
+--- 
+
+## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Informationen zum Export in einen Log Analytics-Arbeitsbereich
+
+Wenn Sie Azure Security Center-Daten in einem Log Analytics-Arbeitsbereich analysieren oder Azure-Warnungen zusammen mit Security Center-Warnungen verwenden möchten, richten Sie einen fortlaufenden Export für Ihren Log Analytics-Arbeitsbereich ein.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics-Tabellen und -Schemas
 
-Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendations* gespeichert. Der Name der Log Analytics-Lösung, in der diese Tabellen enthalten sind, hängt davon ab, ob Sie Azure Defender aktiviert haben: Security („Sicherheit und Überwachung“) oder SecurityCenterFree.
+Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendations* gespeichert. 
+
+Der Name der Log Analytics-Lösung, in der diese Tabellen enthalten sind, hängt davon ab, ob Sie Azure Defender aktiviert haben: Security („Sicherheit und Überwachung“) oder SecurityCenterFree. 
+
+> [!TIP]
+> Sie müssen die Lösung **Sicherheit und Überwachung** oder **SecurityCenterFree** aktivieren, um die Daten im Zielarbeitsbereich anzuzeigen.
 
 ![Die Tabelle *SecurityAlert* in Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 
 Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Log Analytics-Tabellenschemas](https://aka.ms/ASCAutomationSchemas).
 
-###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Anzeigen von exportierten Sicherheitswarnungen und Empfehlungen in Azure Monitor
+
+##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Anzeigen exportierter Warnungen und Empfehlungen in Azure Monitor
 
 In einigen Fällen können Sie die exportierten Sicherheitswarnungen und/oder Empfehlungen in [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) anzeigen. 
 
@@ -156,9 +182,9 @@ Konfigurieren Sie eine Warnungsregel, die auf Log Analytics-Abfragen (Protokollw
     * Konfigurieren Sie optional die [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups), die Sie auslösen möchten. Aktionsgruppen können das Senden von E-Mails-, ITSM-Tickets, WebHooks und vieles mehr auslösen.
     ![Azure Monitor-Warnungsregel](./media/continuous-export/azure-monitor-alert-rule.png)
 
-Nun sehen Sie in Azure Monitor-Warnungen neue Azure Security Center-Warnungen oder -Empfehlungen (abhängig von Ihrer Konfiguration), wobei eine Aktionsgruppe automatisch ausgelöst wird (sofern vorhanden).
+Ihnen werden nun neue Azure Security Center-Warnungen oder -Empfehlungen (abhängig von Ihren konfigurierten Regeln für den fortlaufenden Export und den in Ihrer Azure Monitor-Warnungsregel definierten Bedingungen) in den Azure Monitor-Warnungen angezeigt, und eine Aktionsgruppe (sofern vorhanden) wird automatisch ausgelöst.
 
-## <a name="manual-one-time-export-of-security-alerts"></a>Manueller einmaliger Export von Sicherheitswarnungen
+## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Manueller einmaliger Export von Warnungen und Empfehlungen
 
 Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen**, und wählen Sie **CSV-Bericht herunterladen** aus.
 
@@ -166,7 +192,6 @@ Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möcht
 
 > [!NOTE]
 > Diese Berichte enthalten Warnungen und Empfehlungen für Ressourcen in den aktuell ausgewählten Abonnements.
-
 
 
 ## <a name="faq---continuous-export"></a>Häufig gestellte Fragen – Fortlaufender Export
@@ -180,13 +205,16 @@ Weitere Informationen: [Preise für Log Analytics-Arbeitsbereiche](https://azure
 Weitere Informationen: [Azure Event Hub – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie erfahren, wie Sie fortlaufende Exporte ihrer Empfehlungen und Warnungen konfigurieren. Außerdem haben Sie gelernt, wie Sie Ihre Warnungsdaten als CSV-Datei herunterladen. 
 
 Verwandtes Material finden Sie in der folgenden Dokumentation: 
 
+- Informieren Sie sich über [Vorlagen zur Workflowautomatisierung](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 - [Dokumentation zu Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Dokumentation zu Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/)
-- [Datentypenschemas für Workflowautomatisierung und fortlaufenden Export](https://aka.ms/ASCAutomationSchemas)
+- [Exportieren von Datentypenschemas](https://aka.ms/ASCAutomationSchemas)

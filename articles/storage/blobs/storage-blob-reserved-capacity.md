@@ -1,19 +1,20 @@
 ---
-title: Optimieren der Kosten für Blobspeicher mit reservierter Kapazität – Azure Storage
+title: Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
+titleSuffix: Azure Storage
 description: Erfahren Sie, wie Sie reservierte Azure Storage-Kapazität kaufen, um Kosten für Blockblobs und Azure Data Lake Storage Gen2-Ressourcen zu sparen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874814"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -29,7 +30,7 @@ In den folgenden Abschnitten werden die Bedingungen einer Azure Storage-Reservie
 
 ### <a name="reservation-capacity"></a>Reservierungskapazität
 
-Sie können reservierte Azure Storage-Kapazität in Einheiten von 100 TB und 1 PB pro Monat für eine Laufzeit von einem Jahr oder drei Jahren erwerben.
+Sie können reservierte Azure Storage-Kapazität in Einheiten von 100 TiB und 1 PB pro Monat für eine Laufzeit von einem Jahr oder drei Jahren erwerben.
 
 ### <a name="reservation-scope"></a>Reservierungsumfang
 
@@ -62,7 +63,7 @@ So erwerben Sie reservierte Kapazität:
 
 Wenn Sie eine Azure Storage-Reservierung erwerben, müssen Sie Region, Zugriffsebene und Redundanzoption für die Reservierung auswählen. Die Reservierung gilt nur für Daten, die in der betreffenden Region, Zugriffsebene und Redundanzebene gespeichert werden. Nehmen Sie beispielsweise an, dass Sie eine Reservierung für „USA, Westen“ für die heiße Zugriffsebene mit zonenredundantem Speicher (ZRS) erwerben. Sie können diese Reservierung nicht für Daten in „USA, Osten“, Daten in der Archivzugriffsebene oder Daten in georedundantem Speicher (GRS) verwenden. Sie können jedoch eine weitere Reservierung für die zusätzlichen Anforderungen erwerben.  
 
-Reservierungen sind heute für 100 TB- oder 1 PB-Blöcke möglich (mit höheren Rabatten für 1 PB-Blöcke). Wenn Sie eine Reservierung im Azure-Portal erwerben, kann Microsoft Ihnen Empfehlungen auf der Grundlage Ihrer bisherigen Nutzung geben, damit Sie die Reservierung bestimmen können, die Sie erwerben sollten.
+Reservierungen sind heute für 100 TiB- oder 1 PB-Blöcke möglich (mit höheren Rabatten für 1 PiB-Blöcke). Wenn Sie eine Reservierung im Azure-Portal erwerben, kann Microsoft Ihnen Empfehlungen auf der Grundlage Ihrer bisherigen Nutzung geben, damit Sie die Reservierung bestimmen können, die Sie erwerben sollten.
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Erwerben reservierter Azure Storage-Kapazität
 
@@ -86,7 +87,7 @@ Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
    | **Zugriffsebene** | Die Zugriffsebene, für die die Reservierung wirksam ist. Die Optionen umfassen *Heiß*, *Kalt* und *Archiv*. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](storage-blob-storage-tiers.md). |
    | **Redundanz** | Die Redundanzoption für die Reservierung. Die Optionen umfassen *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS* und *RA-GZRS*. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md). |
    | **Fakturierungsintervall** | Gibt an, wie oft das Konto für die Reservierung belastet wird. Die Optionen umfassen *Monatlich* oder *Im Voraus*. |
-   | **Größe** | Die Region, in der die Reservierung wirksam ist. |
+   | **Größe** | Die Menge der zu reservierenden Kapazität |
    |**Begriff**  | Ein Jahr oder drei Jahre   |
 
 1. Nach Auswahl der Parameter für die Reservierung werden die Kosten im Azure-Portal angezeigt. Das Portal zeigt auch den prozentualen Rabatt im Vergleich zur nutzungsbasierten Zahlung an.

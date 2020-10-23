@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/05/2019
+ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95c553d26a3e79b53106b933c629c5884c3e004c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84466860"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116728"
 ---
 | Resource | Ziel | Harte Grenze |
 |----------|--------------|------------|
@@ -27,7 +27,7 @@ ms.locfileid: "84466860"
 | Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 5 Millionen Objekte | Ja |
 | Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 64 KiB | Ja |
 | Dateigröße | 100 GB | Nein |
-| Minimale Dateigröße für die Unterteilung einer Datei | V9: Basiert auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KB beträgt, ist die minimale Dateigröße 8 KB.<br> V8 und älter: 64 KiB  | Ja |
+| Minimale Dateigröße für die Unterteilung einer Datei | V9 und höher: Basiert auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KB beträgt, ist die minimale Dateigröße 8 KB.<br> V8 und älter: 64 KiB  | Ja |
 
 > [!Note]  
 > Ein Endpunkt für Azure-Dateisynchronisierung kann auf die Größe einer Azure-Dateifreigabe hochskaliert werden. Wenn die maximale Größe der Azure-Dateifreigabe erreicht ist, kann keine Synchronisierung durchgeführt werden.

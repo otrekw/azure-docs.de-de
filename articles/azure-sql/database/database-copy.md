@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225732"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91443794"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -26,7 +26,10 @@ Azure SQL-Datenbank bietet verschiedene Methoden, um eine Kopie einer vorhandene
 
 ## <a name="overview"></a>Übersicht
 
-Bei einer Datenbankkopie handelt es sich um eine im Hinblick auf Transaktionen konsistente Momentaufnahme der Quelldatenbank zu einem Zeitpunkt, nachdem die Kopieranforderung initiiert wurde. Sie können denselben Server oder einen anderen Server für die Kopie auswählen. Außerdem können Sie die Dienstebene und die Computegröße der Quelldatenbank beibehalten oder eine andere Computegröße innerhalb derselben oder einer anderen Dienstebene verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Die Anmeldungen, Benutzer und Berechtigungen in der kopierten Datenbank werden unabhängig von der Quelldatenbank verwaltet. Die Kopie wird mithilfe der Georeplikationstechnik erstellt. Sobald das Replikat-Seeding abgeschlossen ist, wird der Georeplikationslink automatisch beendet. Alle Anforderungen zur Nutzung der Georeplikation gelten für den Datenbank-Kopiervorgang. Weitere Informationen finden Sie unter [Aktive Georeplikation – Übersicht](active-geo-replication-overview.md).
+Bei einer Datenbankkopie handelt es sich um eine im Hinblick auf Transaktionen konsistente Momentaufnahme der Quelldatenbank zu einem Zeitpunkt, nachdem die Kopieranforderung initiiert wurde. Sie können denselben Server oder einen anderen Server für die Kopie auswählen. Außerdem können Sie die Sicherungsredundanz, die Dienstebene und die Computegröße der Quelldatenbank beibehalten oder eine andere Sicherungsspeicherredundanz und/oder Computegröße innerhalb derselben oder einer anderen Dienstebene verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Die Anmeldungen, Benutzer und Berechtigungen in der kopierten Datenbank werden unabhängig von der Quelldatenbank verwaltet. Die Kopie wird mithilfe der Georeplikationstechnik erstellt. Sobald das Replikat-Seeding abgeschlossen ist, wird der Georeplikationslink automatisch beendet. Alle Anforderungen zur Nutzung der Georeplikation gelten für den Datenbank-Kopiervorgang. Weitere Informationen finden Sie unter [Aktive Georeplikation – Übersicht](active-geo-replication-overview.md).
+
+> [!NOTE]
+> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist derzeit nur in der Azure-Region „Asien, Südosten“ in öffentlicher Vorschau verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, wird in der Vorschauversion das Kopieren einer Datenbank auf einen Server in einer anderen Azure-Region nicht unterstützt. 
 
 ## <a name="logins-in-the-database-copy"></a>Anmeldungen in der Datenbankkopie
 
@@ -84,6 +87,9 @@ Starten Sie das Kopieren der Quelldatenbank mit der Anweisung [CREATE DATABASE .
 > [!NOTE]
 > Durch das Beenden der T-SQL-Anweisung wird der Datenbankkopiervorgang nicht beendet. Um den Vorgang zu beenden, müssen Sie die Zieldatenbank löschen.
 >
+
+> [!IMPORTANT]
+> Das Auswählen einer Sicherungsspeicherredundanz bei Verwendung des Befehls „T-SQL CREATE DATABASE ... AS COPY OF“ wird noch nicht unterstützt. 
 
 ### <a name="copy-to-the-same-server"></a>Kopieren auf denselben Server
 

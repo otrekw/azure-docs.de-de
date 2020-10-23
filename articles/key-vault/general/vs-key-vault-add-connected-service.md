@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378864"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448137"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -189,6 +189,9 @@ Betrifft die Projektdatei (.NET-Verweise) und `packages.config` (NuGet-Verweise)
 | .NET; NuGet | Azure.Identity |
 | .NET; NuGet | Azure.Security.KeyVault.Keys |
 | .NET; NuGet | Azure.Security.KeyVault.Secrets |
+
+> [!IMPORTANT] 
+> Standardmäßig ist Azure.Identity 1.1.1 installiert. Diese Implementierung unterstützt keine Visual Studio-Anmeldeinformationen. Sie können den Paketverweis manuell auf Version 1.2 oder höher aktualisieren, um Visual Studio-Anmeldeinformationen zu verwenden.
 
 ### <a name="added-files-for-aspnet-framework"></a>Hinzugefügte Dateien für ASP.NET Framework
 

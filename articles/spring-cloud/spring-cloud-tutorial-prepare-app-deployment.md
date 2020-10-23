@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906837"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945446"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -210,6 +210,8 @@ Schließen Sie bei Verwendung von Spring Boot 2.1. die folgende Abhängigkeit in
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Geben Sie `server.port` nicht in Ihrer Konfiguration an. In Azure Spring Cloud wird diese Einstellung auf eine festgelegte Portnummer überschrieben. Beachten Sie auch diese Einstellung, und geben Sie im Code keinen Serverport an.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Weitere empfohlene Abhängigkeiten zum Aktivieren von Azure Spring Cloud-Funktionen
 
@@ -227,6 +229,7 @@ Schließen Sie die Abhängigkeit `spring-cloud-starter-netflix-eureka-client` in
 ```
 
 Der Endpunkt des Dienstregistrierungsservers wird automatisch in Form von Umgebungsvariablen mit Ihrer App eingefügt. Anwendungen können sich selbst beim Dienstregistrierungsserver registrieren und andere abhängige Microservices ermitteln.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient-Anmerkung
 

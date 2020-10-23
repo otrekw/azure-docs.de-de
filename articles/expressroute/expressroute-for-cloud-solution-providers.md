@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396674"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653637"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
@@ -34,7 +34,7 @@ Microsoft stellt CSPs APIs zur Verfügung, die sich programmgesteuert in Ihre ei
 Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „*Durchleitungsmodell*“ oder „*Direktverbindungsmodell*“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+![Abbildung des Durchleitungsmodells](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 Beim Durchleitungsmodell stellt der CSP eine direkte Verbindung zwischen Ihrem Datencenter und dem Azure-Abonnement Ihres Kunden her. Die direkte Verbindung wird unter Verwendung von ExpressRoute hergestellt und verbindet Ihr Netzwerk mit Azure. Anschließend stellt Ihr Kunde eine Verbindung mit Ihrem Netzwerk her. In diesem Szenario muss der Kunde durch das CSP-Netzwerk geschleust werden, um auf die Azure-Dienste zugreifen zu können. 
 
@@ -42,10 +42,10 @@ Wenn der Kunde über weitere Azure-Abonnements verfügt, die nicht von Ihnen ver
 
 Für durch den CSP verwaltete Azure-Dienste wird vorausgesetzt, dass der CSP über einen zuvor eingerichteten Kundenidentitätsspeicher verfügt. Dieser Identitätsspeicher wird dann in Azure Active Directory repliziert, um die Verwaltung des CSP-Abonnements per AOBO (Administrate-On-Behalf-Of) zu ermöglichen. Zentrale Faktoren für dieses Szenario sind etwa, dass ein bestimmter Partner oder Dienstanbieter eine Beziehung mit dem Kunden etabliert hat, der Kunde aktuell Dienste des Anbieters nutzt oder der Partner eine Kombination aus vom Anbieter gehosteten und von Azure gehosteten Lösungen anbieten möchte, um für Flexibilität zu sorgen und Kundenherausforderungen zu bewältigen, die der CSP allein nicht bewältigen kann. Dieses Modell wird in der **Abbildung** weiter unten veranschaulicht.
 
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+![Abbildung eines detaillierten Szenarios für das Durchleitungsmodell](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Direktverbindungsmodell
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+![Abbildung des Direktverbindungsmodells](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 Beim Direktverbindungsmodell stellt der Dienstanbieter mithilfe von ExpressRoute über das Kundennetzwerk eine direkte Verbindung zwischen dem Datencenter seines Kunden und dem vom CSP bereitgestellten Azure-Abonnement her.
 
@@ -56,7 +56,7 @@ Beim Direktverbindungsmodell stellt der Dienstanbieter mithilfe von ExpressRoute
 
 Für dieses Verbindungsszenario ist es erforderlich, dass der Kunde die Verbindung direkt über ein Kundennetzwerk herstellt, um auf das vom CSP verwaltete Azure-Abonnement zuzugreifen. Die hierfür verwendete direkte Netzwerkverbindung wird entweder vollständig oder teilweise vom Kunden erstellt und verwaltet oder befindet sich in dessen Besitz. Bei diesen Kunden wird angenommen, dass beim Anbieter derzeit kein Identitätsspeicher für Kunden eingerichtet wurde. Der Anbieter unterstützt den Kunden beim Replizieren des aktuellen Identitätsspeichers in Azure Active Directory für die Verwaltung des Abonnements per AOBO. Zentrale Faktoren für dieses Szenario sind etwa, dass ein bestimmter Partner oder Dienstanbieter eine Beziehung mit dem Kunden etabliert hat, der Kunde aktuell Dienste des Anbieters nutzt oder der Partner Dienste bereitstellen möchte, die ausschließlich auf von Azure gehosteten Lösungen basieren, sodass kein Anbieterdatencenter und keine Infrastruktur benötigt werden.
 
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+![Abbildung eines detaillierten Szenarios für das Direktverbindungsmodell](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 Die Entscheidung für eine dieser beiden Optionen hängt von den Anforderungen Ihres Kunden sowie davon ab, ob Sie Azure-Dienste bereitstellen müssen. Details zu diesen Modellen sowie zur dazugehörigen rollenbasierten Zugriffssteuerung, zum Netzwerk und zu Identitätsentwurfsmustern finden Sie unter folgenden Links:
 
@@ -109,7 +109,7 @@ Die Standardroutingtabelle enthält die folgenden Routen:
 * Virtuelles Netzwerk zu virtuellem Netzwerk mittels VPN-Gateway
 * Virtuelles Netzwerk zu lokalem Netzwerk mittels VPN- oder ExpressRoute-Gateway
 
-![alt text](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![Abbildung der Standardroutingoptionen](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
 Benutzerdefinierte Routen ermöglichen die Steuerung des ausgehenden Datenverkehrs aus dem zugewiesenen Subnetz an andere Subnetze im virtuellen Netzwerk oder über eines der anderen vordefinierten Gateways (ExpressRoute, Internet oder VPN). Die Standardroutingtabelle des Systems kann durch eine benutzerdefinierte Routingtabelle ersetzt werden, um die Standardrouten durch benutzerdefinierte Routen zu ersetzen. Mithilfe von benutzerdefinierten Routen können Kunden spezifische Routen zu Geräten (etwa Firewall- oder Angriffserkennungsgeräte) erstellen oder den Zugriff auf bestimmte Subnetze aus dem Subnetz blockieren, das die benutzerdefinierte Route hostet. Eine Übersicht über benutzerdefinierte Routen finden Sie [hier](../virtual-network/virtual-networks-udr-overview.md). 

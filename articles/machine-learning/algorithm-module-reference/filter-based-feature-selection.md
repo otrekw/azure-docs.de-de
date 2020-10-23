@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893799"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945701"
 ---
 # <a name="filter-based-feature-selection"></a>Filter Based Feature Selection
 
@@ -90,8 +90,14 @@ Sie wählen eine standardmäßige Statistikmetrik aus. Das Modul berechnet die K
 
     - Wenn Sie weniger Ergebnisspalten angeben, als Featurespalten vorhanden sind, werden die Features nach absteigendem Score sortiert. In diesem Fall werden nur die Features mit dem höchsten Score zurückgegeben. 
 
-7.  Übermitteln Sie die Pipeline, oder wählen Sie das Modul „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) und anschließend **Auswahl ausführen** aus.
+7.  Übermitteln Sie die Pipeline.
 
+> [!IMPORTANT]
+> Wenn Sie für den Rückschluss die **Filter Based Feature Selection** (Filterbasierte Featureauswahl) verwenden möchten, müssen Sie [Select Columns Transform](./select-columns-transform.md) (Auswählen der Spaltentransformation) verwenden, um das vom Feature ausgewählte Ergebnis zu speichern, sowie [Apply Transformation](./apply-transformation.md) (Anwenden einer Transformation), um die vom Feature ausgewählte Transformation auf das Bewertungsdataset anzuwenden.
+>
+> Auf dem folgenden Screenshot finden Sie Informationen zum Erstellen Ihrer Pipeline, um sicherzustellen, dass die Spaltenauswahl für den Bewertungsprozess identisch ist.
+> [!div class="mx-imgBorder"]
+> ![Beispiel-Pipeline](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Ergebnisse
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324146"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362128"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikation zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
 ## <a name="replication-architecture"></a>Architektur der Replikation  
 
-![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![Diagramm: Replikationsarchitektur mit Azure SQL-Datenbank und mehreren Abonnentenclustern in verschiedenen Regionen sowie mit lokalen virtuellen Azure-Computer mit einem Verleger, der Datei „Logread.exe“ und den Dateien „distributor.exe“, die mit Remoteclustern verbunden sind](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Szenarien  
 

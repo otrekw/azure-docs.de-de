@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975345"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842851"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device-Konzepte für die erneute Bereitstellung
 
@@ -32,7 +32,7 @@ Die Unterstützung für die erneute Bereitstellung im Device Provisioning Servic
 
 Die Daten zum Gerätestatus bestehen aus dem [Gerätezwilling](../iot-hub/iot-hub-devguide-device-twins.md) und den Gerätefunktionen. Diese Daten werden in der Device Provisioning Service-Instanz und dem IoT-Hub gespeichert, dem das Gerät zugewiesen ist.
 
-![Bereitstellen mit dem Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Schaubild der Bereitstellung mithilfe des Diensts für die Gerätebereitstellung](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 Wenn ein Gerät erstmals mit einer Device Provisioning Service-Instanz bereitgestellt wird, werden folgende Schritte ausgeführt:
 
@@ -52,13 +52,13 @@ Je nach Szenario sendet ein Gerät in der Regel beim Neustart eine Anforderung a
 
 * **Gerät erneut bereitstellen und Daten migrieren**: Dies ist die Standardrichtlinie für neue Registrierungseinträge. Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Anforderung senden (1). Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die aktualisierten Gerätezustandsinformationen von diesem ursprünglichen IoT-Hub werden zum neuen IoT-Hub migriert (2). Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
 
-    ![Bereitstellen mit dem Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Diese Abbildung zeigt, dass eine Richtlinie angewendet wird, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Anforderung senden.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
 * **Erneut zuweisen und auf anfängliche Konfiguration zurücksetzen**: Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden (1). Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die anfänglichen Konfigurationsdaten, die von der Provisioning Service-Instanz bei der Bereitstellung des Geräts empfangen wurden, werden an den neuen IoT-Hub gesendet (2). Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
 
     Diese Richtlinie wird häufig beim Zurücksetzen einer Factory verwendet, ohne die IoT-Hubs zu ändern.
 
-    ![Bereitstellen mit dem Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Diese Abbildung zeigt, wie eine Richtlinie angewendet wird, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **Niemals erneut bereitstellen**: Das Gerät wird niemals einem anderen Hub zugewiesen. Diese Richtlinie dient der Verwaltung der Abwärtskompatibilität.
 

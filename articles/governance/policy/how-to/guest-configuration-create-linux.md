@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Ga
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9ecf798a18f28c490d95b28c6ea8f02c6f22eee8
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076360"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893236"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -171,7 +171,7 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-Nach dem Erstellen des Konfigurationspakets – aber vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder die CI/CD-Umgebung testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
+Nach dem Erstellen des Konfigurationspakets – und vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder CI/CD-Umgebung (Continuous Integration/Continuous Deployment) testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
 
 Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten.
 
@@ -194,7 +194,7 @@ Das Cmdlet unterstützt auch Eingaben aus der PowerShell-Pipeline. Fügen Sie di
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-Im nächsten Schritt wird die Datei im Blobspeicher veröffentlicht. Das folgende Skript enthält eine Funktion, mit der Sie diese Aufgabe automatisieren können. Für die in der `publish`-Funktion verwendeten Befehle ist das `Az.Storage`-Modul erforderlich.
+Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht. Das folgende Skript enthält eine Funktion, mit der Sie diese Aufgabe automatisieren können. Für die in der `publish`-Funktion verwendeten Befehle ist das `Az.Storage`-Modul erforderlich.
 
 ```azurepowershell-interactive
 function publish {

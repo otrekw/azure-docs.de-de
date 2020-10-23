@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398748"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570330"
 ---
 # <a name="wildcard-domains"></a>Platzhalterdomänen
 
-Abgesehen von Apex-Domänen und Unterdomänen können Sie der Liste von Front-End-Hosts oder benutzerdefinierten Domänen in Ihrem Azure Front Door-Profil einen Platzhalter-Domänennamen zuordnen. Platzhalterdomänen in der Azure Front Door-Konfiguration vereinfachen das Routingverhalten von Datenverkehr für mehrere Unterdomänen für eine API, Anwendung oder Website mit derselben Routingregel. Sie müssen die Konfiguration nicht ändern, um die einzelnen Unterdomänen separat hinzuzufügen und/oder anzugeben. Beispielsweise können Sie das Routing für `customer1.contoso.com`, `customer2.contoso.com` und `customerN.contoso.com` definieren, indem Sie dieselbe Routingregel definieren und die Platzhalterdomäne `*.contoso.com` hinzufügen.
+Neben Apex-Domänen und Unterdomänen können Sie Ihren Front-End-Hosts oder benutzerdefinierten Domänen für Ihr Azure Front Door-Profil auch eine Platzhalterdomäne zuordnen. Platzhalterdomänen in der Azure Front Door-Konfiguration vereinfachen das Routingverhalten von Datenverkehr für mehrere Unterdomänen für eine API, Anwendung oder Website mit derselben Routingregel. Sie müssen die Konfiguration nicht ändern, um die einzelnen Unterdomänen separat hinzuzufügen und/oder anzugeben. Beispielsweise können Sie das Routing für `customer1.contoso.com`, `customer2.contoso.com` und `customerN.contoso.com` definieren, indem Sie dieselbe Routingregel definieren und die Platzhalterdomäne `*.contoso.com` hinzufügen.
 
 Nachfolgend sind eine Reihe wichtiger Szenarien aufgeführt, die durch die Unterstützung von Platzhalterdomänen verbessert werden:
 
@@ -47,7 +47,7 @@ Platzhalterdomänen und zugehörige Unterdomänen können mit bestimmten Einschr
 - Wenn eine Platzhalterdomäne zu einem Azure Front Door-Profil hinzugefügt wird:
   - Die Platzhalterdomäne kann zu keinem anderen Azure Front Door-Profil hinzugefügt werden.
   - Unterdomänen der ersten Ebene der Platzhalterdomäne können keinem anderen Azure Front Door-Profil oder Azure Content Delivery Network-Profil hinzugefügt werden.
-- Wenn eine Unterdomäne einer Platzhalterdomäne zu einem Azure Front Door-Profil oder zu einem Azure Content Delivery Network-Profil hinzugefügt wird, kann die Platzhalterdomäne zu keinen anderen Azure Front Door-Profilen hinzugefügt werden.
+- Wenn eine Unterdomäne einer Platzhalterdomäne bereits zu einem Azure Front Door- oder Azure Content Delivery Network-Profil hinzugefügt wurde, kann die Platzhalterdomäne für kein anderes Azure Front Door-Profil verwendet werden.
 - Wenn zwei Profile (Azure Front Door oder Azure Content Delivery Network) über verschiedene Unterdomänen einer Stammdomäne verfügen, können Platzhalterdomänen zu keinem der Profile hinzugefügt werden.
 
 ## <a name="certificate-binding"></a>Zertifikatbindung
@@ -59,7 +59,7 @@ Um HTTPS-Datenverkehr für Ihre Platzhalterdomäne zu akzeptieren, müssen Sie H
 
 Sie können das Platzhalterzertifikat aus Azure Key Vault oder aus den über Azure Front Door verwalteten Zertifikaten für Unterdomänen verwenden.
 
-Wenn eine Unterdomäne für eine Platzhalterdomäne hinzugefügt wird, der bereits ein Zertifikat zugeordnet ist, kann HTTPS nicht für die Unterdomäne deaktiviert werden. Die Unterdomäne verwendet die Zertifikatbindung für die Platzhalterdomäne, sofern sie nicht durch ein anderes Key Vault-Zertifikat oder ein über Azure Front Door verwaltetes Zertifikat außer Kraft gesetzt wird.
+Wenn eine Unterdomäne für eine Platzhalterdomäne hinzugefügt wird, der bereits ein Zertifikat zugeordnet ist, können Sie HTTPS für die Unterdomäne nicht deaktivieren. Die Unterdomäne verwendet die Zertifikatbindung für die Platzhalterdomäne, sofern sie nicht durch ein anderes Key Vault-Zertifikat oder ein über Azure Front Door verwaltetes Zertifikat außer Kraft gesetzt wird.
 
 ## <a name="waf-policies"></a>WAF-Richtlinien
 
@@ -72,7 +72,7 @@ Wenn Sie nicht möchten, dass eine WAF-Richtlinie für eine Unterdomäne ausgef�
 Beim Konfigurieren einer Routingregel können Sie eine Platzhalterdomäne als Front-End-Host auswählen. Sie können für Platzhalterdomänen auch ein anderes Routingverhalten als für Unterdomänen festlegen. Wie unter [Abgleich von Anforderungen mit Routingregeln durch Front Door](front-door-route-matching.md) beschrieben, wird der genaueste Treffer für die Domäne bei unterschiedlichen Routingregeln zur Laufzeit ausgewählt.
 
 > [!IMPORTANT]
-> Sie müssen über übereinstimmende Pfadmuster für Ihre Routingregeln verfügen. Anderenfalls treten bei Ihren Clients Fehler auf. Beispiel: Sie verfügen über die beiden Routingregeln Route 1 (`*.foo.com/*` ist Back-End-Pool A zugeordnet) und Route 2 (`bar.foo.com/somePath/*` ist Back-End-Pool B zugeordnet). Sie empfangen eine Anforderung für `bar.foo.com/anotherPath/*`. Azure Front Door wählt basierend auf einer genaueren Domänenübereinstimmung Route 2 aus, findet jedoch keine übereinstimmenden Pfadmuster für die Routen.
+> Sie müssen über übereinstimmende Pfadmuster für Ihre Routingregeln verfügen. Anderenfalls treten bei Ihren Clients Fehler auf. Beispiel: Sie verfügen über die beiden Routingregeln Route 1 (`*.foo.com/*` ist Back-End-Pool A zugeordnet) und Route 2 (`/bar.foo.com/somePath/*` ist Back-End-Pool B zugeordnet). Sie empfangen eine Anforderung für `bar.foo.com/anotherPath/*`. Azure Front Door wählt basierend auf einer genaueren Domänenübereinstimmung Route 2 aus, findet jedoch keine übereinstimmenden Pfadmuster für die Routen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337856"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356025"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Senden von Nachrichten an einen MQTT-Server
 
@@ -55,7 +55,7 @@ Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE**, wechseln Sie zu **Beis
 
 Drücken Sie `Ctrl+P` (macOS: `Cmd+P`), um `task device-upload` auszuführen. Sobald der Upload abgeschlossen ist, wird das DevKit neu gestartet und führt den Sketch aus.
 
-![device-upload](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![Screenshot: Eingabeaufforderungsfenster zum Hochladen und Ausführen der Arduino-Skizze](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
 > Möglicherweise erhalten Sie eine Fehlermeldung der Art „Fehler: AZ3166: Unbekanntes Paket“. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht richtig aktualisiert wurde. Informationen zum Beheben dieses Fehlers finden Sie im [Abschnitt „Development“ (Entwicklung) in den häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
@@ -64,15 +64,15 @@ Drücken Sie `Ctrl+P` (macOS: `Cmd+P`), um `task device-upload` auszuführen. So
 
 Führen Sie in Visual Studio-Code die folgenden Schritte aus, um den seriellen Monitor zu starten und einzurichten:
 
-1. Klicken Sie in der Statusleiste auf das `COM[X]`-Wort, um den rechten COM-Anschluss auf `STMicroelectronics` festzulegen: ![COM-Anschluss einrichten](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Klicken Sie auf der Statusleiste auf das `COM[X]`-Wort, um den rechten COM-Anschluss mit `STMicroelectronics` festzulegen: ![Screenshot: Visual Studio Code mit ausgewählter Option „COM8 STMicroelectronics“](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Klicken Sie in der Statusleiste auf das Netzsteckersymbol, um den seriellen Monitor zu öffnen: ![Serieller Monitor](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Klicken Sie in der Statusleiste auf das Symbol für den Netzstecker, um den seriellen Monitor zu öffnen: ![Screenshot: „Releasezusammenfassung“ und Netzsteckersymbol auf der Statusleiste](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Klicken Sie in der Statusleiste auf die Zahl, die die Baudrate darstellt, und legen Sie diese auf `115200` fest: ![Baudrate festlegen](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Klicken Sie auf der Statusleiste auf die Zahl, die die Baudrate darstellt, und legen Sie sie auf `115200` fest: ![Screenshot: Festlegen der Baudrate in Visual Studio Code](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 Der serielle Monitor zeigt alle Nachrichten an, die vom Beispielsketch gesendet wurden. Der Sketch verbindet das DevKit mit dem WLAN. Sobald die WLAN-Verbindung erfolgreich hergestellt wurde, sendet der Sketch eine Nachricht an den MQTT-Broker. Danach sendet das Beispiel wiederholt zwei „iot.eclipse.org“-Nachrichten über QoS 0 bzw. QoS 1.
 
-![Serielle Ausgabe](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![Screenshot: Serieller Monitor mit den von der Skizze gesendeten Meldungen](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Probleme und Feedback
 

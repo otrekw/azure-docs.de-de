@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902146"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542120"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -79,7 +79,7 @@ Wenn Sie Datenverschlüsselung durch einen vom Kunden verwalteten Schlüssel ver
 * Stellen Sie sicher, dass sich Key Vault und Azure Database for PostgreSQL-Einzelserver in derselben Region befinden, um einen schnelleren Zugriff für Wrap- und Unwrap-Vorgänge bei DEKs sicherzustellen.
 * Sperren Sie Azure Key Vault ausschließlich auf den **privaten Endpunkt und die ausgewählten Netzwerke**, und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten*, die Ressourcen zu schützen.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Vertrauenswürdiger Dienst mit AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt":::
 
 Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 
@@ -121,9 +121,9 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 
 Nachdem Azure Database for PostgreSQL mit dem vom Kunden verwalteten Schlüssel, der in Key Vault gespeichert ist, verschlüsselt wurde, wird jede neu erstellte Kopie des Servers ebenfalls verschlüsselt. Sie können diese neue Kopie durch einen lokalen oder Geowiederherstellungsvorgang oder durch Lesereplikate erstellen. Die Kopie kann jedoch so geändert werden, dass für die Verschlüsselung ein neuer kundenseitig verwalteter Schlüssel angegeben wird. Wenn der vom Kunden verwaltete Schlüssel geändert wird, beginnen alte Sicherungen des Servers damit, den neuesten Schlüssel zu verwenden.
 
-Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselung während der Wiederherstellung oder der Lesereplikaterstellung zu vermeiden, sollten Sie unbedingt die folgenden Schritte auf dem Master und den wiederhergestellten bzw. Replikatservern ausführen:
+Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselung während der Wiederherstellung oder der Lesereplikaterstellung zu vermeiden, sollten Sie unbedingt die folgenden Schritte auf dem primären Server und den wiederhergestellten Servern bzw. Replikatservern ausführen:
 
-* Initiieren Sie die Wiederherstellung oder die Erstellung eines Lesereplikats auf dem Master des Azure Database for PostgreSQL-Einzelservers.
+* Initiieren Sie die Wiederherstellung oder die Erstellung eines Lesereplikats auf dem primären Azure Database for PostgreSQL-Einzelserver.
 * Der neu erstellte Server (wiederhergestellt oder Replikat) verbleibt im Zustand „Zugriff nicht möglich“, da seiner eindeutigen Identität noch keine Berechtigungen für Azure Key Vault erteilt wurden.
 * Überprüfen Sie den vom Kunden verwalteten Schlüssel auf dem wiederhergestellten/Replikatserver in den Datenverschlüsselungseinstellungen erneut. Dadurch wird sichergestellt, dass dem neu erstellten Server die Berechtigungen „Wrap“ und „Unwrap“ für den in Key Vault gespeicherten Schlüssel erteilt werden.
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265159"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531869"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
-Das Peering virtueller Netzwerke ermöglicht es, Netzwerke nahtlos in [Azure Virtual Network](virtual-networks-overview.md) miteinander zu verbinden. Die virtuellen Netzwerke werden für Verbindungszwecke als einzelnes Element angezeigt. Der Datenverkehr zwischen virtuellen Computern erfolgt über die Microsoft-Backbone-Infrastruktur. Wie der Datenverkehr zwischen virtuellen Computern im selben Netzwerk wird auch der Datenverkehr nur über das *private* Netzwerk von Microsoft geleitet.
+Durch das Peering virtueller Netzwerke können mehrere [virtuelle Netzwerke](virtual-networks-overview.md) nahtlos mit Azure verbunden werden. Die virtuellen Netzwerke werden für Verbindungszwecke als einzelnes Element angezeigt. Der Datenverkehr zwischen virtuellen Computern in virtuellen Netzwerken mit Peering erfolgt über die Microsoft-Backboneinfrastruktur. Wie der Datenverkehr zwischen virtuellen Computern im selben Netzwerk wird auch der Datenverkehr nur über das *private* Netzwerk von Microsoft geleitet.
 
 Azure unterstützt die folgenden Arten von Peering:
 

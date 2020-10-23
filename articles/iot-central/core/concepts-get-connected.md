@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018184"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714214"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -99,13 +99,13 @@ So fügen Sie ein Stamm- oder Zwischenzertifikat Ihrer Registrierungsgruppe hinz
 
 1. Laden Sie auf der Seite **Primäres Zertifikat** Ihr primäres X.509-Zertifikat hoch. Dies ist Ihr Stamm- oder Zwischenzertifikat:
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Screenshot: Primäres Zertifikat":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
 
-1. Generieren Sie mit der Option **Überprüfungscode** einen Überprüfungscode in dem von Ihnen verwendeten Tool. Wählen Sie **Überprüfen** aus, um das Überprüfungszertifikat hochzuladen.
+1. Klicken Sie auf **Prüfcode generieren**, um einen Code für das Tool zu generieren, das Sie zum Generieren des Überprüfungszertifikats verwenden. Wählen Sie **Überprüfen** aus, um das Überprüfungszertifikat hochzuladen.
 
 1. Nach erfolgreicher Überprüfung wird die folgende Bestätigung angezeigt:
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Screenshot: Überprüftes primäres Zertifikat":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
 
 Durch das Verifizieren des Zertifikatbesitzes wird sichergestellt, dass die Person, die das Zertifikat hochgeladen hat, im Besitz des privaten Schlüssels für das Zertifikat ist.
 
@@ -147,7 +147,7 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 1. Kopieren Sie den Gruppenprimärschlüssel aus der **SAS-IoT-Devices**-Registrierungsgruppe:
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Gruppenprimärschlüssel aus der SAS-IoT-Devices-Registrierungsgruppe":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
 
 1. Verwenden Sie zum Generieren der SAS-Schlüssel für das Gerät den Befehl `az iot central device compute-device-key`. Verwenden Sie den primären Gruppenschlüssel aus dem vorherigen Schritt. Die Geräte-ID muss aus Kleinbuchstaben bestehen:
 

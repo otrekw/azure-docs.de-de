@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91641678"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92324063"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -70,31 +70,7 @@ Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, di
 
 Wenn Sie Daten an einen Arbeitsbereich mit einer Volumenrate senden, die mehr als 80 Prozent des im Arbeitsbereich konfigurierten Schwellenwerts beträgt, wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die erfasste Volumenrate höher ist als der Schwellenwert, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die Erfassungsvolumenrate weiterhin den Schwellenwert überschreitet oder Sie ihn wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung anfordern, indem Sie eine Supportanfrage öffnen. 
 
-Falls Sie eine Benachrichtigung erhalten möchten, wenn Sie sich der Volumenratenbegrenzung in Ihrem Arbeitsbereich nähern oder wenn diese Begrenzung erreicht wird, erstellen Sie eine [Protokollwarnungsregel](../articles/azure-monitor/platform/alerts-log.md). Verwenden Sie dazu die folgende Abfrage mit einer Warnungslogik basierend auf der Anzahl von Ergebnissen größer null, mit einem Evaluierungszeitraum von fünf Minuten und einer Frequenz von fünf Minuten.
-
-Die Rate für das Erfassungsvolumen hat den Schwellenwert überschritten.
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Error"
-```
-
-Die Rate für das Erfassungsvolumen hat 80 Prozent des Schwellenwerts überschritten.
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Warning"
-```
-
-Die Rate für das Erfassungsvolumen hat 70 Prozent des Schwellenwerts überschritten.
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Info"
-```
+Unter [Überwachen der Integrität von Log Analytics-Arbeitsbereichen in Azure Monitor](../articles/azure-monitor/platform/monitor-workspace.md) erfahren Sie mehr über das Erstellen von Regeln, um proaktiv benachrichtigt zu werden, wenn Sie Erfassungsgrenzwerte erreichen.
 
 >[!NOTE]
 >Abhängig von Ihrer Log Analytics-Nutzungsdauer haben Sie ggf. Zugang zu Legacytarifen. Weitere Informationen zu Legacytarifen von Log Analytics finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891327"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568351"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Problembehandlung für Zertifikate
 
@@ -30,7 +30,6 @@ In der folgenden Tabelle sind häufige Zertifikatsfehler und ausführliche Infor
 |---|---|
 | CertificateManagement_UntrustedCertificate | Beim Zertifikat mit dem Antragstellernamen {0} ist die Zertifikatkette unterbrochen. Laden Sie das Signaturkettenzertifikat hoch, bevor Sie dieses Zertifikat hochladen.|
 | CertificateManagement_DeviceNotRegistered| Das Gerät ist nicht aktiviert. Sie können erst nach der Aktivierung ein Supportzertifikat hochladen.|
-| CertificateManagement_EmptySAN | Das Zertifikat mit dem Antragstellernamen {0} weist keinen alternativen Antragstellernamen auf. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie ein neues Zertifikat bereit.|
 | CertificateManagement_ExpiredCertificate | Das Zertifikat mit dem Typ {0} ist abgelaufen oder läuft demnächst ab. Überprüfen Sie das Ablaufdatum des Zertifikats, und stellen Sie bei Bedarf ein neues Zertifikat bereit.|
 | CertificateManagement_FormatMismatch | Das Zertifikatformat wird nicht unterstützt. Überprüfen Sie das Format des Zertifikats, und stellen Sie bei Bedarf ein neues Zertifikat bereit.  {0} erwartet, {1} gefunden. |
 | CertificateManagement_GenericError | Der Zertifikatverwaltungsvorgang konnte nicht durchgeführt werden. Wiederholen Sie den Vorgang in einigen Minuten. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
@@ -42,7 +41,6 @@ In der folgenden Tabelle sind häufige Zertifikatsfehler und ausführliche Infor
 | CertificateManagement_KeySizeNotSufficient | Das Zertifikat mit dem Antragstellernamen {0} weist die unzureichende Schlüsselgröße {1} auf. Die Mindestgröße für Schlüssel beträgt 4096.|
 | CertificateManagement_MissingClientOid | Das Zertifikat mit dem Antragstellernamen {0} weist keine OID für die Clientauthentifizierung auf. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie bei Bedarf ein neues Zertifikat bereit.|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | Im Zertifikat mit dem Antragstellernamen {0} ist als Schlüsselverwendung nicht „Digitale Signatur“ angegeben. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie bei Bedarf ein neues Zertifikat bereit. |
-| CertificateManagement_MissingEntryInSAN | Das Zertifikat mit dem Antragstellernamen {0} weist im alternativen Antragstellernamen keinen Eintrag für den Antragstellernamen auf. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie ein neues Zertifikat bereit. |
 | CertificateManagement_MissingKeyCertSignKeyUsage | Im Zertifikat mit dem Antragstellernamen {0} ist als Schlüsselverwendung nicht „Zertifikatsignatur“ angegeben. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie bei Bedarf ein neues Zertifikat bereit.|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | Im Zertifikat mit dem Antragstellernamen {0} ist als Schlüsselverwendung nicht „Schlüsselchiffrierung“ angegeben. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie bei Bedarf ein neues Zertifikat bereit. |
 | CertificateManagement_MissingServerOid | Das Zertifikat mit dem Antragstellernamen {0} weist keine OID für die Serverauthentifizierung auf. Überprüfen Sie die Zertifikateigenschaften, und stellen Sie bei Bedarf ein neues Zertifikat bereit.|
@@ -55,6 +53,10 @@ In der folgenden Tabelle sind häufige Zertifikatsfehler und ausführliche Infor
 | CertificateManagement_SubjectNamesInvalid | Das Zertifikat mit dem Antragstellernamen {0} weist nicht den richtigen Antragstellernamen oder alternativen Antragstellernamen für das Zertifikat {1} auf. Überprüfen Sie das hochgeladene Zertifikat, und stellen Sie bei Bedarf ein neues Zertifikat bereit. Sie sollten überprüfen, ob der DNS-Name den SANS-Namen entspricht.|
 | CertificateManagement_UnreadableCertificate | Das Zertifikat mit dem Typ {0} konnte nicht gelesen werden. Dieser Fehler tritt auf, wenn das Zertifikat nicht lesbar oder beschädigt ist. Stellen Sie ein neues Zertifikat bereit.|
 | CertificateSubjectNotFound | Das Zertifikat mit dem Antragstellernamen {0} wurde nicht gefunden. Stellen Sie ein neues Zertifikat bereit.|
+| CertificateRotationGenericFailure | Bei der Rotation eines oder mehrerer Zertifikate kam es zu einem Fehler. Versuchen Sie es in einigen Minuten noch mal. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.|
+| CertificateImportFailure | Das Zertifikat mit dem Fingerabdruck {0} wurde nicht auf den Knoten {1} importiert. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
+| CertificateApplyFailure | Das Zertifikat mit dem Fingerabdruck {0} wurde nicht auf den Knoten {1} angewendet. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.|
+| NodeNotReachable | Das Zertifikat für {0} konnte nicht überprüft werden. Überprüfen Sie die Integrität der Systemhardware und -software.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

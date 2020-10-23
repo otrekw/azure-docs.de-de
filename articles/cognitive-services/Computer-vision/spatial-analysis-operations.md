@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5955bc35acfaf8f877e68db083871c353a3ce326
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984929"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628212"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -39,7 +39,7 @@ Alle obigen Vorgänge sind auch in der `.debug`-Version verfügbar. Sie ermögli
 | cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug | Führt eine Nachverfolgung durch, wenn eine Person im Blickfeld der Kamera eine festgelegte Linie überschreitet. <br> Gibt ein _personLineEvent_-Ereignis aus, wenn die Person die Zone durchquert, und gibt Informationen zur Richtung an. |
 | cognitiveservices.vision.spatialanalysis-persondistance.debug | Führt eine Nachverfolgung durch, wenn Personen gegen eine Abstandsregel verstoßen. <br> Gibt regelmäßig ein _personDistanceEvent_-Ereignis mit dem Ort der einzelnen Verstöße gegen die Abstandsregel aus. |
 
-Die räumliche Analyse kann auch mit [Live Video Analytics](https://azure.microsoft.com/services/media-services/live-video-analytics/) als Video-KI-Modul ausgeführt werden. 
+Die räumliche Analyse kann auch mit [Live Video Analytics](https://aka.ms/lva-spatial-analysis) als Video-KI-Modul ausgeführt werden. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
@@ -644,7 +644,7 @@ Es kann sein, dass Sie die Erkennung über die räumliche Analyse oder zugehöri
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Bereitstellung von Vorgängen zur räumlichen Analyse im großen Stil (mehrere Kameras)
 
-Um die beste Leistung und Auslastung der GPUs zu erzielen, können Sie beliebige Vorgänge zur räumlichen Analyse mit mehreren Kameras mithilfe von Graphinstanzen bereitstellen. Nachfolgend finden Sie ein Beispiel für die Ausführung des Vorgangs „cognitiveservices.vision.spatialanalysis-personcount“ für fünf Kameras.
+Um die beste Leistung und Auslastung der GPUs zu erzielen, können Sie beliebige Vorgänge zur räumlichen Analyse mit mehreren Kameras mithilfe von Graphinstanzen bereitstellen. Im Folgenden finden Sie ein Beispiel für die Ausführung des Vorgangs `cognitiveservices.vision.spatialanalysis-personcount` für fünf Kameras.
 
 ```json
  "properties.desired": {
@@ -727,7 +727,7 @@ Um die beste Leistung und Auslastung der GPUs zu erzielen, können Sie beliebige
   ```
 | Name | Typ| Beschreibung|
 |---------|---------|---------|
-| `batch_size` | INT | Gibt die Anzahl der Kameras an, die bei diesem Vorgang verwendet werden.|
+| `batch_size` | INT | Gibt die Anzahl der Kameras an, die beim Vorgang verwendet werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

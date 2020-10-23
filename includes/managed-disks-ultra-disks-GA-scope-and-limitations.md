@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/25/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225194"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441185"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
@@ -24,26 +24,30 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 > [!NOTE]
 > Wenn eine Region in der folgenden Liste keine Verfügbarkeitszonen für Ultradatenträger enthält, müssen die virtuellen Computer in dieser Region ohne Optionen für die Infrastrukturredundanz bereitgestellt werden, um einen Ultradatenträger anzufügen.
 
-|Regions  |Anzahl von Verfügbarkeitszonen mit Unterstützung von Ultradatenträgern  |
+|Regions  |Redundanzoptionen  |
 |---------|---------|
-|US Government, Virginia     |Keine         |
-|US Gov Arizona     |Keine         |
-|USA Süd Mitte     |Keine         |
-|USA (Mitte)     |Drei Zonen         |
-|USA (Westen)     |Keine         |
-|USA, Westen 2    |Drei Zonen         |
-|East US     |Drei Zonen         |
-|USA (Ost) 2     |Drei Zonen         |
-|Asien, Südosten     |Drei Zonen         |
-|Asien, Osten     |Keine         |
-|Nordeuropa     |Drei Zonen          |
-|Europa, Westen     |Drei Zonen          |
-|UK, Süden     |Drei Zonen          |
-|Japan, Osten     |Drei Zonen         |
-|Frankreich, Mitte    |Zwei Zonen        |
-|Brasilien Süd    |Keine        |
-|Australien (Osten)    |Drei Zonen        |
-|Kanada, Mitte*    |Drei Zonen        |
+|Brasilien, Süden     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|Indien, Mitte     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|Asien, Osten     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|Deutschland, Westen-Mitte     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|Korea, Mitte     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|USA Süd Mitte    |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|US Gov Arizona     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|US Government, Virginia     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|USA (Westen)     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)        |
+|Australien, Mitte    |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|Australien (Osten)     |Drei Verfügbarkeitszonen         |
+|Asien, Südosten    |Drei Verfügbarkeitszonen        |
+|Kanada, Mitte*     |Drei Verfügbarkeitszonen          |
+|USA (Mitte)     |Drei Verfügbarkeitszonen          |
+|East US     |Drei Verfügbarkeitszonen          |
+|USA (Ost) 2     |Drei Verfügbarkeitszonen         |
+|Frankreich, Mitte    |Zwei Verfügbarkeitszonen        |
+|Japan, Osten    |Drei Verfügbarkeitszonen        |
+|Nordeuropa    |Drei Verfügbarkeitszonen        |
+|UK, Süden    |Drei Verfügbarkeitszonen        |
+|Europa, Westen    | Drei Verfügbarkeitszonen|
+|USA, Westen 2    |Drei Verfügbarkeitszonen|
 
 \* Wenden Sie sich an den Azure-Support, um Zugriff auf Verfügbarkeitszonen für diese Region zu erhalten.
 
@@ -53,13 +57,17 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
     - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
     - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [Dasv4](../articles/virtual-machines/dav4-dasv4-series.md#dasv4-series)
+    - [Ddsv4](../articles/virtual-machines/ddv4-ddsv4-series.md#ddsv4-series)
+    - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Nicht jede VM-Größe ist in allen unterstützten Regionen mit Ultra-Datenträgern verfügbar.
-- Sind nur als Datenträger für Daten verfügbar und unterstützen nur für physische Sektorgröße von 4 KB. Aufgrund der nativen Sektorgröße von 4 KB von Ultra-Datenträgern gibt es einige Anwendungen die mit Ultra-Datenträgern nicht kompatibel sind. Ein Beispiel hierfür wäre Oracle Database, das Version 12.2 oder höher erfordert, um Ultra-Datenträger zu unterstützen.  
-- Können nur als leere Datenträger erstellt werden.  
+- Nur als Datenträger verfügbar. 
+- Unterstützt standardmäßig die physische Sektorgröße von 4K. Die Sektorgröße 512E ist als allgemein verfügbares Angebot verfügbar, Sie müssen sich jedoch dafür [registrieren](https://aka.ms/ultradisk512e). Die meisten Anwendungen sind mit der Sektorgröße 4K kompatibel, einige benötigen jedoch eine Sektorgröße von 512 Byte. Für Oracle Database ist beispielsweise die Version 12.2 oder höher erforderlich, um native Datenträger mit 4K zu unterstützen. Ältere Oracle DB-Versionen benötigen eine Sektorgröße von 512 Byte.
+- Können nur als leere Datenträger erstellt werden.
 - Unterstützt derzeit keine Momentaufnahmen von Datenträgern, VM-Images, Verfügbarkeitsgruppen, Azure Dedicated Hosts oder Azure Disk Encryption.
 - Unterstützt derzeit keine Integration in Azure Backup oder Azure Site Recovery.
 - Unterstützt nur Lese- und Schreibvorgänge, die nicht zwischengespeichert sind.

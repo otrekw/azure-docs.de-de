@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 10/01/2020
+ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235977"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653365"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -174,8 +174,8 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | galleries/images/versions | image | 32-bit integer | Zahlen und Punkte. |
 > | images | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | snapshots | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
-> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Verwendung nicht möglich:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
-> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Verwendung nicht möglich:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Virtuelle Windows-Computer dürfen keine Punkte enthalten oder mit Bindestrichen enden.<br><br>Linux-VMs dürfen nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
 
 > [!NOTE]
 > Virtuelle Azure-Computer weisen zwei getrennte Namen auf: einen Ressourcennamen und einen Hostnamen. Wenn Sie im Portal einen virtuellen Computer erstellen, wird für beide Namen der gleiche Wert verwendet. Die Einschränkungen in der obigen Tabelle gelten für den Hostnamen. Der eigentliche Ressourcenname kann bis zu 64 Zeichen lang sein.
@@ -392,7 +392,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/&%\?` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 > | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral

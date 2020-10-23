@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
-ms.openlocfilehash: a47a6e1860edcb9b2bf89c25e78f6a66e8a7cf4d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117711"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295616"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -27,7 +27,7 @@ Verbindungsprobleme können verschiedene Ursachen haben. Beispiele:
 * Dienstwartung
 * Failover des Koordinatorknotens auf neue Hardware
 
-Im Allgemeinen können Verbindungsprobleme mit Hyperscale wie folgt klassifiziert werden:
+Im Allgemeinen können Verbindungsprobleme mit Hyperscale (Citus) wie folgt klassifiziert werden:
 
 * Vorübergehende Fehler (kurzlebige oder zeitweilige Fehler)
 * Dauerhafte oder nicht vorübergehende Fehler (Fehler, die sich regelmäßig wiederholen)
@@ -36,7 +36,7 @@ Im Allgemeinen können Verbindungsprobleme mit Hyperscale wie folgt klassifizier
 
 Vorübergehende Fehler treten aus verschiedenen Gründen auf. Am häufigsten sind Systemwartung, Hardware- oder Softwarefehler oder Upgrades der V-Kerne des Koordinatorknotens.
 
-Durch Aktivieren der Hochverfügbarkeit für Hyperscale-Servergruppenknoten können derartige Probleme automatisch gemindert werden. Die Anwendung sollte dennoch auf kurzfristige Verbindungsunterbrechungen vorbereitet sein. Das Mindern anderer Ereignisse kann gelegentlich länger dauern, z. B. wenn eine große Transaktion eine lang andauernde Wiederherstellung auslöst.
+Durch Aktivieren der Hochverfügbarkeit für Servergruppenknoten von Hyperscale (Citus) können derartige Probleme automatisch gemindert werden. Die Anwendung sollte dennoch auf kurzfristige Verbindungsunterbrechungen vorbereitet sein. Das Mindern anderer Ereignisse kann gelegentlich länger dauern, z. B. wenn eine große Transaktion eine lang andauernde Wiederherstellung auslöst.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Schritte zum Beheben vorübergehender Verbindungsprobleme
 
@@ -49,7 +49,7 @@ Durch Aktivieren der Hochverfügbarkeit für Hyperscale-Servergruppenknoten kön
 
 Wenn die Anwendung dauerhaft keine Verbindung mit Hyperscale (Citus) herstellen kann, sind die häufigsten Ursachen eine falsche Firewallkonfiguration oder Benutzerfehler.
 
-* Firewallkonfiguration für Koordinatorknoten: Stellen Sie sicher, dass die Hyperscale-Serverfirewall so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
+* Firewallkonfiguration für Koordinatorknoten: Stellen Sie sicher, dass die Serverfirewall von Hyperscale (Citus) so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
 * Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. Für einige Firewalls müssen Anwendungen nicht allein nach Namen zugelassen werden, sondern es müssen auch die IP-Adressen und Ports des Servers zugelassen werden.
 * Benutzerfehler: Überprüfen Sie die Verbindungszeichenfolge. Möglicherweise verfügen Sie über falsch eingegebene Parameter wie den Servernamen. Sie können Verbindungszeichenfolgen für verschiedene Sprachframeworks und psql im Azure-Portal finden. Navigieren Sie zur Registerkarte **Verbindungszeichenfolgen** in Ihrer Hyperscale-Servergruppe (Citus). Beachten Sie außerdem, dass Hyperscale-Cluster (Citus) nur eine Datenbank aufweisen und der vordefinierte Name **citus** ist.
 

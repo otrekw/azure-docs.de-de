@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318044"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938830"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault-Analyse-Lösung in Azure Monitor
 
@@ -42,10 +42,10 @@ Gehen Sie folgendermaßen vor, um die Azure Key Vault-Lösung zu installieren un
 1. Wechseln Sie im Azure-Portal zu der zu überwachenden Key Vault-Ressource.
 2. Wählen Sie *Diagnoseeinstellungen*, um die folgende Seite zu öffnen.
 
-   ![Abbildung der Kachel „Azure Key Vault“](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Screenshot: Seite „Diagnoseeinstellungen“ für die Key Vault-Ressource ContosoKVSCUS mit hervorgehobener Option „Aktivieren Sie die Diagnose“](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Klicken Sie auf *Diagnose aktivieren*, um die folgende Seite zu öffnen.
 
-   ![Abbildung der Kachel „Azure Key Vault“](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![Screenshot: Seite zum Konfigurieren der Diagnoseeinstellungen. Die Optionen „An Log Analytics senden“, „AuditEvent“ und „AllMetrics“ sind ausgewählt.](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Geben Sie einen Namen für die Diagnoseeinstellung an.
 5. Klicken Sie auf das Kontrollkästchen *An Log Analytics senden*.
 6. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich, oder erstellen Sie einen Arbeitsbereich.
@@ -75,9 +75,9 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 | Azure |  |  |&#8226; |  |  | Bei der Ankunft |
 
 ## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
-Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) die Key Vault-Daten an, indem Sie in Azure Monitor auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse** klicken. Sie können diese Seite im Menü **Azure Monitor** öffnen, indem Sie im Abschnitt **Insights** auf **Mehr** klicken. 
+Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview) die Key Vault-Daten an, indem Sie in Azure Monitor auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse** klicken. Sie können diese Seite im Menü **Azure Monitor** öffnen, indem Sie im Abschnitt **Insights** auf **Mehr** klicken. 
 
-![Abbildung der Kachel „Azure Key Vault“](media/azure-key-vault/log-analytics-keyvault-tile.png)
+![Screenshot: Key Vault-Analyse-Kachel auf der Azure Monitor-Übersichtsseite mit einem Diagramm zum Key Vault-Vorgangsvolumen im Zeitverlauf](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
 Nachdem Sie auf die Kachel **Key Vault-Analyse** geklickt haben, können Sie Zusammenfassungen der Protokolle anzeigen und einen Drilldown zu Details für die folgenden Kategorien durchführen:
 
@@ -86,9 +86,9 @@ Nachdem Sie auf die Kachel **Key Vault-Analyse** geklickt haben, können Sie Zus
 * Durchschnittliche Ausführungslatenz nach Vorgang
 * Quality of Service für Vorgänge mit der Anzahl von Vorgängen, die mehr als 1.000 ms dauern, sowie eine Liste der Vorgänge, die mehr als 1.000 ms dauern
 
-![Abbildung des Azure Key Vault-Dashboards](media/azure-key-vault/log-analytics-keyvault01.png)
+![Screenshot: Azure Key Vault-Dashboard mit Kacheln mit Grafikdaten für „Alle Vorgänge“, „Failed Operations“ (Fehlerhafte Vorgänge) und „Average Operational Latency“ (Durchschnittliche Betriebslatenz)](media/azure-key-vault/log-analytics-keyvault01.png)
 
-![Abbildung des Azure Key Vault-Dashboards](media/azure-key-vault/log-analytics-keyvault02.png)
+![Screenshot: Azure Key Vault-Dashboard mit Kacheln mit Daten für „Average Operational Latency“ (Durchschnittliche Betriebslatenz), „Quality of Service“ (Servicequalität) und „Empfohlene Suchvorgänge“](media/azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>So zeigen Sie Details zu einzelnen Vorgängen an
 1. Klicken Sie auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse**.

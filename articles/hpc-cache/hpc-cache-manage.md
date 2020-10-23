@@ -4,14 +4,14 @@ description: Verwalten und Aktualisieren von Azure HPC Cache im Azure-Portal ode
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497221"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613044"
 ---
 # <a name="manage-your-cache"></a>Verwalten Ihres Caches
 
@@ -28,6 +28,7 @@ Um die Übersichtsseite zu öffnen, wählen Sie die Cacheressource im Azure-Port
 * **Starten** und [**Beenden**](#stop-the-cache): Der Cachevorgang wird begonnen oder angehalten.
 * [**Leeren:** ](#flush-cached-data) Geänderte Daten werden in Speicherziele geschrieben.
 * [**Aktualisieren:** ](#upgrade-cache-software) Die Cachesoftware wird aktualisiert.
+* [**Collect diagnostics**](#collect-diagnostics) (Sammeln von Diagnosedaten): Informationen zum Uploaddebugging
 * **Aktualisieren:** Die Übersichtsseite wird erneut geladen.
 * [**Löschen:** ](#delete-the-cache) Der Cache wird dauerhaft zerstört.
 
@@ -196,6 +197,16 @@ $
 ```
 
 ---
+
+## <a name="collect-diagnostics"></a>Sammeln von Diagnosedaten
+
+Mit der Schaltfläche **Collect diagnostics** (Diagnosedaten sammeln) wird der Prozess zum Sammeln und Übermitteln von Systeminformationen an den Microsoft-Kundendienst und -Support zur Problembehandlung manuell gestartet. Wenn ein schwerwiegendes Cacheproblem auftritt, werden die gleichen Diagnoseinformationen automatisch von Ihrem Cache erfasst und hochgeladen.
+
+Verwenden Sie dieses Steuerelement, wenn dies vom Microsoft-Kundendienst und -Support angefordert wird.
+
+Klicken Sie nach dem Klicken auf die Schaltfläche auf **Ja**, um den Upload zu bestätigen.
+
+![Screenshot: Popupbestätigungsnachricht „Start diagnostics collection“ (Diagnosesammlung starten) Die Standardschaltfläche „Ja“ wird hervorgehoben.](media/diagnostics-confirm.png)
 
 ## <a name="delete-the-cache"></a>Löschen des Caches
 

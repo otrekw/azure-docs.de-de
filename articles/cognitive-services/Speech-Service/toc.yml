@@ -144,7 +144,7 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
-    - name: Referenz
+    - name: Verweis
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -401,6 +401,8 @@
                       href: how-to-custom-commands-send-activity-to-client.md
                     - name: Einrichten von Webendpunkten
                       href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: Exportieren Ihrer App für benutzerdefinierte Befehle als Skill
+                      href: how-to-custom-commands-integrate-remote-skills.md
                 - name: Bereitstellen
                   items:
                     - name: Continuous Deployment mit Azure DevOps

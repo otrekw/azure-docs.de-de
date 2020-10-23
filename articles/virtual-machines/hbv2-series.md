@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: bf6828ff96f5bff8a65b5f62793df8bf0e65a309
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: e5d7842f465ae335630819de283881d40ce2a2cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929624"
 ---
 # <a name="hbv2-series"></a>HBv2-Serie
 
@@ -21,15 +21,16 @@ VMs der HBv2-Serie sind für Anwendungen mit hohen Anforderungen an die Speicher
 
 VMs der HBv2-Serie unterstützen Mellanox HDR InfiniBand mit 200 Gbit/s. Diese VMs sind für eine optimierte und konsistente RDMA-Leistung in einer FAT-Struktur ohne Blocks verbunden. Diese VMs unterstützen adaptives Routing und DCT (Dynamic Connected Transport, zusätzlich zum standardmäßigen RC- und UD-Transport). Diese Features verbessern die Anwendungsleistung, Skalierbarkeit und Konsistenz, und ihre Verwendung wird dringend empfohlen.
 
-Storage Premium Unterstützt
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
-Livemigration: Nicht unterstützt
-
-Updates mit Speicherbeibehaltung: Nicht unterstützt
-
-| Size | vCPU | Prozessor | Arbeitsspeicher (GB) | Speicherbandbreite GB/s | Basis-CPU-Frequenz (GHz) | Frequenz für alle Kerne (GHz, Spitze) | Frequenz für Einzelkern (GHz, Spitze) | RDMA-Leistung (Gbit/s) | MPI-Unterstützung | Temporärer Speicher (GB) | Max. Anzahl Datenträger | Max. Ethernet-Karten |
+| Size | vCPU | Prozessor | Arbeitsspeicher (GiB) | Speicherbandbreite GB/s | Basis-CPU-Frequenz (GHz) | Frequenz für alle Kerne (GHz, Spitze) | Frequenz für Einzelkern (GHz, Spitze) | RDMA-Leistung (Gbit/s) | MPI-Unterstützung | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Max. virtuelle Ethernet-Netzwerkkarten (vNICs) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs_v2 | 120 | AMD EPYC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | All | 480 + 960 | 8 | 1 |
+| Standard_HB120rs_v2 | 120 | AMD EPYC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | All | 480 + 960 | 8 | 8 |
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]

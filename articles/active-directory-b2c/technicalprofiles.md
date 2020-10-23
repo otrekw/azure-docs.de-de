@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203145"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948271"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,8 +84,8 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | Der Domänenname für das technische Profil. Wenn das technische Profil z.B. als Identitätsanbieter Facebook angibt, lautet der Domänenname „Facebook.com“. |
-| DisplayName | 1:1 | Der Name des technischen Profils, der Benutzern angezeigt werden kann. |
-| BESCHREIBUNG | 0:1 | Die Beschreibung des technischen Profils, die Benutzern angezeigt werden kann. |
+| DisplayName | 1:1 | Dies ist der Anzeigename des technischen Profils. |
+| BESCHREIBUNG | 0:1 | Dies ist die Beschreibung des technischen Profils. |
 | Protocol | 0:1 | Das Protokoll, das für die Kommunikation mit der anderen Seite verwendet wird. |
 | Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die vom Protokoll im Verlauf einer Transaktion für die Kommunikation mit dem Endpunkt verwendet werden. |
 | InputTokenFormat | 0:1 | Das Format des Eingabetokens. Mögliche Werte: `JSON`, `JWT`, `SAML11` oder `SAML2`. Der Wert `JWT` stellt ein JSON-Webtoken gemäß IETF-Spezifikation dar. Der Wert `SAML11` stellt ein SAML 1.1-Sicherheitstoken gemäß OASIS-Spezifikation dar.  Der Wert `SAML2` stellt ein SAML 2.0-Sicherheitstoken gemäß OASIS-Spezifikation dar. |

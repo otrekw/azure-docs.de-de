@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/24/2020
-ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/08/2020
+ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078634"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856669"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
 > [!IMPORTANT]
 > Der ursprüngliche AS2-Connector wird als veraltet markiert, verwenden Sie stattdessen den **AS2 (v2)** -Connector, es sei denn, Sie benötigen Nachverfolgungsfunktionen. Mit Ausnahme der Nachverfolgung bietet diese Version die gleichen Funktionen wie die ursprüngliche Version, ist in der Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Nachrichtengröße, -durchsatz und -wartezeit. Außerdem erfordert der v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
 
-Um mit AS2-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den AS2-Connector verwenden, der Auslöser und Aktionen für die Verwaltung der AS2-Kommunikation bereitstellt. Um z. B. Sicherheit und Zuverlässigkeit bei der Übertragung von Nachrichten zu gewährleisten, können Sie die folgenden Aktionen verwenden:
+Wenn Sie mit AS2-Nachrichten in Azure Logic Apps arbeiten möchten, können Sie den AS2-Connector verwenden, der Auslöser und Aktionen bereitstellt, die die AS2-Kommunikation (Version 1.2) unterstützen und verwalten. Um z. B. Sicherheit und Zuverlässigkeit bei der Übertragung von Nachrichten zu gewährleisten, können Sie die folgenden Aktionen verwenden:
 
 * [Aktion **AS2-Nachricht codieren**](#encode) zum Bereitstellen von Verschlüsselung, einer digitalen Signatur und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (Message Disposition Notifications, MDNs), die beim Unterstützen der Nichtabstreitbarkeit helfen. Diese Aktion wendet z. B. AS2/HTTP-Header an und führt die folgenden Aufgaben aus, wenn sie konfiguriert sind:
 

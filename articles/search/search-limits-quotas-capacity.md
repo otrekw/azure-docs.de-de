@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825490"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949849"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -50,7 +50,7 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 
 <sup>1</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indizes. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
 
-<sup>2</sup> Es gibt eine Obergrenze für Elemente, weil ein Vorhandensein vieler Elemente eine hohe Speichernutzung zur Folge hat. Ein Element einer komplexen Sammlung ist als Member dieser Sammlung definiert. Angenommen, es gibt ein [Hotel-Dokument mit einer komplexen Sammlung „Rooms“](search-howto-complex-data-types.md#indexing-complex-types), dann wird jedes Zimmer in der Sammlung „Rooms“ als ein Element angesehen. Bei einer Indizierung kann die Indizierungs-Engine maximal 3000 Elemente sicher im gesamten Dokument verarbeiten. [Dieser Grenzwert](search-api-migration.md#upgrade-to-2019-05-06) wurde in `api-version=2019-05-06` eingeführt und gilt nur für komplexe Sammlungen, nicht für Zeichenfolgensammlungen oder komplexe Felder.
+<sup>2</sup> Es ist eine Obergrenze für Elemente vorhanden, da eine hohe Anzahl von diesen Elementen den für Ihren Index erforderlichen Speicherplatz erheblich erhöht. Ein Element einer komplexen Sammlung ist als Member dieser Sammlung definiert. Angenommen, es gibt ein [Hotel-Dokument mit einer komplexen Sammlung „Rooms“](search-howto-complex-data-types.md#indexing-complex-types), dann wird jedes Zimmer in der Sammlung „Rooms“ als ein Element angesehen. Bei einer Indizierung kann die Indizierungs-Engine maximal 3000 Elemente sicher im gesamten Dokument verarbeiten. [Dieser Grenzwert](search-api-migration.md#upgrade-to-2019-05-06) wurde in `api-version=2019-05-06` eingeführt und gilt nur für komplexe Sammlungen, nicht für Zeichenfolgensammlungen oder komplexe Felder.
 
 <a name="document-limits"></a>
 
@@ -104,7 +104,7 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 ### <a name="shared-private-link-resource-limits"></a>Beschränkungen für freigegebene Private Link-Ressourcen
 
 > [!NOTE]
-> Indexer haben über private Endpunkte, die über die [API für freigegebene Private Link-Ressourcen](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) verwaltet werden, sicheren Zugriff auf Ressourcen. Eine Beschreibung hierzu finden Sie in [dieser Schrittanleitung](search-indexer-howto-access-private.md).
+> Indexer haben über private Endpunkte, die über die [API für freigegebene Private Link-Ressourcen](/rest/api/searchmanagement/sharedprivatelinkresources) verwaltet werden, sicheren Zugriff auf Ressourcen. Eine Beschreibung hierzu finden Sie in [dieser Schrittanleitung](search-indexer-howto-access-private.md).
 
 | Resource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

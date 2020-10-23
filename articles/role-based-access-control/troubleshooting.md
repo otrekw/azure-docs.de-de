@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382575"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91665990"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -63,7 +63,7 @@ $ras.Count
 
     Es gibt zwei Möglichkeiten, diesen Fehler möglicherweise zu beheben. Die erste Möglichkeit besteht darin, dem Dienstprinzipal die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zuzuweisen, damit er Daten in dem Verzeichnis lesen kann.
 
-    Die zweite Möglichkeit, diesen Fehler zu beheben, besteht darin, die Rollenzuweisung mithilfe des Parameters `--assignee-object-id` anstelle von `--assignee` zu erstellen. Durch die Verwendung von `--assignee-object-id` überspringt Azure CLI die Azure AD-Suche. Sie müssen die Objekt-ID des Benutzers, der Gruppe oder der Anwendung abrufen, dem bzw. der Sie die Rolle zuweisen möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](role-assignments-cli.md#new-service-principal).
+    Die zweite Möglichkeit, diesen Fehler zu beheben, besteht darin, die Rollenzuweisung mithilfe des Parameters `--assignee-object-id` anstelle von `--assignee` zu erstellen. Durch die Verwendung von `--assignee-object-id` überspringt Azure CLI die Azure AD-Suche. Sie müssen die Objekt-ID des Benutzers, der Gruppe oder der Anwendung abrufen, dem bzw. der Sie die Rolle zuweisen möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Übertragen eines Abonnements in ein anderes Verzeichnis
 
-- Schritte zum Übertragen eines Abonnements in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md).
+- Schritte zum Übertragen eines Abonnements in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](transfer-subscription.md).
 - Wenn Sie ein Abonnement in ein anderes Azure AD-Verzeichnis übertragen, werden alle Rollenzuweisungen **dauerhaft** aus dem Azure AD-Quellverzeichnis gelöscht und nicht zum Azure AD-Zielverzeichnis migriert. Sie müssen die Rollenzuweisungen im Zielverzeichnis neu erstellen. Sie müssen verwaltete Identitäten für Azure-Ressourcen außerdem manuell neu erstellen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Globale Azure AD-Administratoren ohne Zugriff auf ein Abonnement können, nachdem dieses zwischen Verzeichnissen übertragen wurde, mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um Zugriff auf das Abonnement zu erhalten.
 
@@ -99,11 +99,17 @@ $ras.Count
 - Wenn beim Erstellen einer Ressource der Berechtigungsfehler „The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)“ (Der Client mit der Objekt-ID hat keine Berechtigung zum Ausführen der Aktion über Bereich (Code: AuthorizationFailed)) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die im ausgewählten Bereich über Schreibberechtigungen für die Ressource verfügt. Zum Verwalten virtueller Computer in einer Ressourcengruppe sollte Ihnen zum Beispiel die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) für die Ressourcengruppe (oder den übergeordneten Bereich) zugewiesen sein. Eine Liste mit den Berechtigungen für die integrierten Rollen finden Sie unter [Integrierte Azure-Rollen](built-in-roles.md).
 - Wenn beim Erstellen oder Aktualisieren eines Supporttickets der Berechtigungsfehler „You don't have permission to create a support request“ (Sie sind zum Erstellen einer Supportanfrage nicht berechtigt) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die über die Berechtigung `Microsoft.Support/supportTickets/write` verfügt, wie z. B. [Mitwirkender für Supportanfragen](built-in-roles.md#support-request-contributor).
 
+## <a name="move-resources-with-role-assignments"></a>Verschieben von Ressourcen mit Rollenzuweisungen
+
+Wenn Sie eine Ressource verschieben, der (oder einer dieser untergeordneten Ressource) eine Azure-Rolle direkt zugewiesen wurde, wird die Rollenzuweisung nicht verschoben und verwaist. Nach der Verschiebung müssen Sie die Rollenzuweisung erneut erstellen. Schließlich wird die verwaiste Rollenzuweisung automatisch entfernt, doch es ist eine bewährte Methode, die Rollenzuweisung vor dem Verschieben der Ressource zu entfernen.
+
+Informationen zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+
 ## <a name="role-assignments-with-identity-not-found"></a>Rollenzuweisungen mit Identität nicht gefunden
 
 In der Liste der Rollenzuweisungen für das Azure-Portal wird Ihnen möglicherweise auffallen, dass der Sicherheitsprinzipal (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) als **Identität nicht gefunden** mit dem Typ **Unknown** (Unbekannt) aufgeführt wird.
 
-![Web-App-Ressourcengruppe](./media/troubleshooting/unknown-security-principal.png)
+![Unter „Rollenzuweisungen“ in Azure aufgeführte Meldung „Identität nicht gefunden“](./media/troubleshooting/unknown-security-principal.png)
 
 Es kann zwei Gründe haben, dass die Identität nicht gefunden wird:
 
@@ -144,7 +150,7 @@ Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` m
 }
 ```
 
-Sie können diese Rollenzuweisungen ohne Probleme beibehalten, wenn der Sicherheitsprinzipal gelöscht wurde. Sie können diese Rollenzuweisungen jedoch bei Bedarf entfernen, indem Sie die Schritte ausführen, die denen für andere Rollenzuweisungen entsprechen. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Azure-Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) oder [Azure CLI](role-assignments-cli.md#remove-a-role-assignment).
+Sie können diese Rollenzuweisungen ohne Probleme beibehalten, wenn der Sicherheitsprinzipal gelöscht wurde. Sie können diese Rollenzuweisungen jedoch bei Bedarf entfernen, indem Sie die Schritte ausführen, die denen für andere Rollenzuweisungen entsprechen. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Azure-Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) oder [Azure CLI](role-assignments-cli.md#remove-role-assignment).
 
 Wenn Sie in PowerShell versuchen, die Rollenzuweisungen unter Verwendung der Objekt-ID und des Rollendefinitionsnamens zu entfernen, und mehr als eine Rollenzuweisung Ihren Parametern entspricht, wird die folgende Fehlermeldung angezeigt: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein). Die folgende Ausgabe zeigt ein Beispiel für die Fehlermeldung:
 

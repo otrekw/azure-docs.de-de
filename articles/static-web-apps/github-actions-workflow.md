@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d4a455458812bef1d79aba583a6317c08b65863
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340934"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948373"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions-Workflows für Azure Static Web Apps (Vorschau)
 
@@ -152,7 +152,7 @@ Für die Bereitstellung wird vor einem benutzerdefinierten Befehl immer `npm ins
 
 | Get-Help            | BESCHREIBUNG |
 |---------------------|-------------|
-| `app_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Anwendung für statischen Inhalt ausgeführt werden soll.<br><br>Geben Sie beispielsweise `ng build --prod` ein, um einen Produktionsbuild für eine Angular-Anwendung zu konfigurieren. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:Azure` auszuführen.  |
+| `app_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Anwendung für statischen Inhalt ausgeführt werden soll.<br><br>Wenn Sie beispielsweise einen Produktionsbuild für eine Angular-Anwendung konfigurieren möchten, erstellen Sie ein npm-Skript mit dem Namen `build-prod`, um `ng build --prod` auszuführen, und geben Sie `npm run build-prod` als benutzerdefinierten Befehl ein. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:Azure` auszuführen.  |
 | `api_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Azure Functions-API-Anwendung ausgeführt werden soll. |
 
 ## <a name="route-file-location"></a>Speicherort der Routendatei

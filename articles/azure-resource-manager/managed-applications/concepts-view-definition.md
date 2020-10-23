@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81391695"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371608"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Ansichtsdefinitionsartefakt in Azure Managed Applications
 
@@ -131,7 +131,7 @@ Wenn Sie diese Ansicht in **viewDefinition.json** bereitstellen, überschreibt s
 |description|Nein|Die Beschreibung Ihrer verwalteten Anwendung.|
 |commands|Nein|Das Array der zusätzlichen Symbolleisten-Schaltflächen der Übersichtsseite finden Sie unter [commands](#commands).|
 
-![Übersicht](./media/view-definition/overview.png)
+![Screenshot der Seite „Übersicht“ für eine verwaltete Anwendung mit einem Steuerelement „Testaktion“, mit dem eine Demoanwendung ausgeführt werden kann](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>Metriken
 
@@ -188,7 +188,7 @@ Die Metrikenansicht ermöglicht Ihnen, Daten von Ihren verwalteten Anwendungsres
 |resourceTagFilter|Nein|Das Ressourcentagsarray (wird mit dem `or`-Wort getrennt), für das Metriken angezeigt würden. Wird zusätzlich zum Ressourcentypfilter angewandt.|
 |resourceType|Ja|Der Ressourcentyp, für den Metriken angezeigt würden.|
 
-![Metriken](./media/view-definition/metrics.png)
+![Screenshot einer Überwachungsseite namens „This is my metrics view“ (Ansicht „Meine Metriken“) für eine verwaltete Anwendung.](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>Benutzerdefinierte Ressourcen
 
@@ -234,7 +234,7 @@ In dieser Ansicht können Sie für Ihren benutzerdefinierten Ressourcentyp GET-,
 |commands|Nein|Das Array der zusätzlichen Symbolleisten-Schaltflächen der Ansicht CustomResources finden Sie unter [commands](#commands).|
 |Spalten|Nein|Das Array von Spalten der benutzerdefinierten Ressource. Wenn nicht definiert, wird standardmäßig die `name`-Spalte angezeigt. Die Spalte muss einen `"key"` und einen `"displayName"` besitzen. Geben Sie für „key“ den Schlüssel der Eigenschaft zur Anzeige in einer Ansicht ein. Wenn geschachtelt, verwenden Sie einen Punkt als Trennzeichen, z.B. `"key": "name"` oder `"key": "properties.property1"`. Geben Sie für „displayName“ den Anzeigenamen der Eigenschaft zur Anzeige in einer Ansicht ein. Sie können auch eine `"optional"`-Eigenschaft angeben. Bei Festlegung auf „True“ wird die Spalte in einer Ansicht standardmäßig ausgeblendet.|
 
-![CustomResources](./media/view-definition/customresources.png)
+![Screenshot einer Ressourcenseite namens „Test custom resource type“ (Testen eines benutzerdefinierten Ressourcentyps) und des Steuerelements „Custom Context Action“ (Benutzerdefinierte Kontextaktion)](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>Befehle
 

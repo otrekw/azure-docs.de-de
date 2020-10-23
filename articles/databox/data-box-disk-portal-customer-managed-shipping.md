@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055569"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575162"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Verwenden des selbst verwalteten Versands für Azure Data Box Disk im Azure-Portal
 
@@ -37,13 +37,13 @@ Beim Aufgeben einer Data Box Disk-Bestellung können Sie die Option für selbst 
 
 1. Wählen Sie in Ihrer Azure Data Box Disk-Bestellung unter den **Kontaktdetails**  den Eintrag **+ Lieferadresse hinzufügen** aus.
 
-   ![Selbst verwalteter Versand](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Screenshot des Auftrags-Assistenten mit dem Schritt „Kontaktdetails“ und hervorgehobener Option „Lieferadresse hinzufügen“](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Wählen Sie bei der Wahl des Versandtyps die Option **Selbst verwalteter Versand** aus. Diese Option ist nur verfügbar, wenn Sie sich in einer unterstützten Region befinden (siehe die vorstehenden „Voraussetzungen“).
 
 3. Nachdem Sie Ihre Lieferadresse angegeben haben, müssen Sie sie überprüfen und dann Ihre Bestellung abschließen.
 
-   ![Selbst verwalteter Versand](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Screenshot: Dialogfeld „Lieferadresse hinzufügen“ mit Hervorhebung der gewünschten Versandoption und der Option „Lieferadresse hinzufügen“](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Sobald das Gerät vorbereitet ist und Sie eine E-Mail-Benachrichtigung erhalten haben, können Sie eine Abholung planen. Wechseln Sie in Ihrer Azure Data Box Disk-Bestellung zu **Übersicht**, und wählen Sie **Abholung planen** aus.
 
@@ -55,7 +55,7 @@ Beim Aufgeben einer Data Box Disk-Bestellung können Sie die Option für selbst 
 
 6. Nachdem Sie die Abholung Ihres Geräts geplant haben, können Sie Ihren Autorisierungscode in **Abholung für Azure planen** anzeigen.
 
-   ![Anzeigen Ihres Autorisierungscodes](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   ![Screenshot des Dialogfelds „Abholtermin für Azure vereinbaren“ mit hervorgehobenem Textfeld „Abholautorisierungscode“.](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    Notieren Sie sich diesen **Autorisierungscode**.
 
@@ -78,7 +78,7 @@ Beim Aufgeben einer Data Box Disk-Bestellung können Sie die Option für selbst 
 
 9. Wenn Sie einen Termin für die Abgabe erhalten haben, sollte der Status der Bestellung im Azure-Portal jetzt **Bereit für den Empfang im Azure-Rechenzentrum** lauten.
 
-   ![Anzeigen Ihres Autorisierungscodes](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ![Screenshot des Dialogfelds „Lieferadresse hinzufügen“ mit Hervorhebung der gewünschten Versandoption und der Option „Lieferadresse hinzufügen“](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. Nachdem Ihre ID und Ihr Autorisierungscode überprüft wurden und Sie das Gerät im Rechenzentrum abgegeben haben, sollte der Auftragsstatus **Empfangen** lauten.
 

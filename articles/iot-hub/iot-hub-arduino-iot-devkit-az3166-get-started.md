@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319217"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839553"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -176,7 +176,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
 
 4. Suchen Sie im Erweiterungs-Marketplace nach [Azure IoT Tools](https://aka.ms/azure-iot-tools), und installieren Sie es.
 
-    ![Installieren von Azure IoT-Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+    ![Screenshot mit Azure IoT Tools im Erweiterungs-Marketplace](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
     Oder kopieren Sie diese URL, und fügen Sie sie in ein Browserfenster ein: `vscode:extension/vsciot-vscode.azure-iot-tools`.
 
@@ -362,7 +362,7 @@ Sie können [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemNam
 
 1. Im Bereich **AUSGABE** sehen Sie die eingehenden D2C-Nachrichten an IoT Hub.
 
-    ![D2C-Nachricht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+    ![Screenshot mit den eingehenden D2C-Nachrichten an IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 

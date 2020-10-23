@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
-ms.date: 09/12/2020
+ms.topic: how-to
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904659"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91712288"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Erstellen automatischer Reaktionen auf Warnungen und Empfehlungen mit der Workflowautomatisierung
 
@@ -33,7 +33,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|Rolle **Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich<br><br>Damit Sie Azure Logic Apps-Workflows verwenden können, benötigen Sie zudem die folgenden Logic Apps-Rollen/-Berechtigungen:<br> Die Berechtigungen der Rolle - [Logik-App-Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) oder der Lese-/Triggerzugriff für Logik-Apps sind erforderlich. (Diese Rolle kann keine Logik-Apps erstellen oder bearbeiten, sondern nur vorhandene *ausführen*.)<br> Die Berechtigungen der Rolle - [Logik-App-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) sind für die Erstellung und Änderung von Logik-Apps erforderlich.<br>Wenn Sie Logik-App-Connectors verwenden möchten, benötigen Sie möglicherweise zusätzliche Anmeldeinformationen für die Anmeldung bei den jeweiligen Diensten (z. B. Ihren Instanzen von Outlook, Teams oder Slack).|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China Gov/andere Gov-Clouds|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
 
@@ -53,7 +53,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
     1. Die Trigger zum Auslösen dieses automatischen Workflows. Sie könnten beispielsweise Ihre Logik-App ausführen, wenn eine Sicherheitswarnung generiert wird, die „SQL“ enthält.
     1. Die Logik-App, die ausgeführt wird, wenn die Triggerbedingungen erfüllt sind 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Bereich „Workflowautomatisierung hinzufügen“":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Liste der Workflowautomatisierungen":::
 
 1. Klicken Sie im Abschnitt „Aktionen“ auf **Erstellen Sie eine neue**, um mit der Erstellung der Logik-App zu beginnen.
 
@@ -67,14 +67,12 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
     Im Logik-App-Designer werden die folgenden Trigger der Security Center-Connectors unterstützt:
 
-    * **Beim Erstellen oder Auslösen einer Azure Security Center-Empfehlung**
-    * **Beim Erstellen oder Auslösen einer Azure Security Center-Warnung** 
-    
-    > [!TIP]
-    > Sie können den Auslöser so anpassen, dass er sich nur auf Warnungen mit den für Sie interessanten Schweregraden bezieht.
+    * **Bei Erstellen oder Auslösen einer Azure Security Center-Empfehlung**: Wenn Ihre Logik-App auf einer Empfehlung basiert, die veraltet ist oder ersetzt wird, funktioniert die Automatisierung nicht mehr, und Sie müssen den Trigger aktualisieren. Informationen zum Nachverfolgen von Änderungen an Empfehlungen finden Sie unter [Versionshinweise für Azure Security Center](release-notes.md).
+
+    * **Bei Erstellen oder Auslösen einer Azure Security Center-Warnung**: Sie können den Trigger so anpassen, dass er sich nur auf Warnungen mit den für sie interessanten Schweregraden bezieht.
     
     > [!NOTE]
-    > Wenn Sie den älteren Trigger „Beim Auslösen einer Antwort auf eine Azure Security Center-Warnung“ verwenden, wird Ihre Logik-App nicht von der Funktion Workflowautomatisierung gestartet. Verwenden Sie stattdessen einen der oben genannten Trigger. 
+    > Wenn Sie den älteren Trigger „Beim Auslösen einer Antwort auf eine Azure Security Center-Warnung“ verwenden, wird Ihre Logik-App nicht von der Funktion „Workflowautomatisierung“ gestartet. Verwenden Sie stattdessen einen der oben genannten Trigger. 
 
     [![Beispiel-Logik-App](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
@@ -82,7 +80,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
     ![Aktualisieren](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Wählen Sie Ihre Logik-App aus, und speichern Sie die Automatisierung. Beachten Sie, dass in der Logik-App-Dropdownliste nur Logik-Apps mit unterstützenden Security Center-Connectors angezeigt werden.
+1. Wählen Sie die Logik-App aus, und speichern Sie die Automatisierung. Beachten Sie, dass in der Logik-App-Dropdownliste nur Logik-Apps mit unterstützenden Security Center-Connectors angezeigt werden.
 
 
 ## <a name="manually-trigger-a-logic-app"></a>Manuelles Auslösen einer Logik-App

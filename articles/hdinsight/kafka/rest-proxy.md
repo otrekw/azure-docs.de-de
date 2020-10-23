@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 508d054bc4eed88867bb6e3282edbafaae9a5247
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 97bd71dd5a70a867f45915a5a5f95f6513f2a824
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298044"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541729"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys
 
@@ -63,11 +63,11 @@ Die folgenden Schritte verwenden das Azure-Portal. Ein Beispiel für die Verwend
 
 1. Aktivieren Sie während des Workflows zum Erstellen eines Kafka-Clusters auf der Registerkarte **Sicherheit + Netzwerkbetrieb**die Option **Kafka-REST-Proxy aktivieren**.
 
-     ![Aktivieren des Kafka-REST-Proxys und Auswählen der Sicherheitsgruppe](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     ![Screenshot der Seite „HDInsight-Cluster erstellen“ mit der ausgewählten Registerkarte „Sicherheit + Netzwerkbetrieb“](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. Klicken Sie auf **Sicherheitsgruppe auswählen**. Wählen Sie in der Liste der Sicherheitsgruppen die Sicherheitsgruppe aus, die Zugriff auf den REST-Proxy haben soll. Sie können das Suchfeld verwenden, um nach der entsprechenden Sicherheitsgruppe zu suchen. Klicken Sie unten auf die Schaltfläche **Auswählen**.
 
-     ![Aktivieren des Kafka-REST-Proxys und Auswählen der Sicherheitsgruppe](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     ![Screenshot der Seite „HDInsight-Cluster erstellen“ mit der Option zum Auswählen einer Sicherheitsgruppe](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. Führen Sie die restlichen Schritte zum Erstellen Ihres Clusters aus, wie es unter [Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started) beschrieben ist.
 

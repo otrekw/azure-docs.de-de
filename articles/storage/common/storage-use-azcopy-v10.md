@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856778"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -50,7 +50,9 @@ Um eine Liste der AzCopy-Befehle anzuzeigen, geben Sie `azcopy -h` ein, und drü
 
 Wenn Sie weitere Informationen zu einem bestimmten Befehl erhalten möchten, fügen Sie einfach den Namen des Befehls ein (etwa `azcopy list -h`).
 
-![Inlinehilfe](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+> [!div class="mx-imgBorder"]
+> ![Inlinehilfe](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
 
 Eine ausführliche Referenzdokumentation zu den einzelnen Befehlen und Befehlsparametern finden Sie unter [azcopy](storage-ref-azcopy.md).
 
@@ -94,7 +96,7 @@ Diese Rollen können Ihrem Sicherheitsprinzipal in jedem dieser Bereiche zugewie
 - Resource group
 - Subscription
 
-Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Gewähren von Zugriff auf Azure Blob- und -Warteschlangendaten mit RBAC im Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann.

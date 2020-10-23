@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420930"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708644"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -61,7 +61,8 @@ Wählen Sie die Kategorien und Unterkategorien aus, die am besten zu Ihrem Lösu
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>WICHTIG: SaaS-Angebote und Microsoft 365-Add-Ins
 
-Im [Leitfaden nach Angebotstyp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit u. U. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welchem Onlineshop Ihr Angebot veröffentlicht wird:
+Unter [Transaktionsfunktionen im kommerziellen Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit ggf. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welchem Onlineshop Ihr Angebot veröffentlicht wird:
+
 
 | SaaS-Angebot    | SaaS-Angebot   | SaaS-Angebot  | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot    | Onlineshop| Onlineshop |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|

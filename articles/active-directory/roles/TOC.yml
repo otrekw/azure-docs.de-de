@@ -1,0 +1,128 @@
+- name: "Dokumentation zu Azure\_AD-Rollen"
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Azure AD-Rollen
+      href: custom-overview.md
+- name: Schnellstarts
+  items:
+    - name: Erstellen unbegrenzter App-Registrierungen
+      href: quickstart-app-registration-limits.md
+- name: Tutorials
+  items:
+    - name: Erstellen einer dynamischen Gruppe
+      href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Konzepte
+  expanded: true
+  items:
+    - name: Delegieren von Azure AD-Administratorrollen
+      href: concept-delegation.md
+    - name: Vergleichen von Standardbenutzerberechtigungen
+      href: /azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Vergleichen von Azure- und Azure AD-Rollen
+      href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Grundlegendes zu Verwaltungseinheiten in Azure AD
+      href: administrative-units.md
+- name: Anleitungen
+  expanded: true
+  items:
+    - name: Benutzer und Rollen
+      items:
+        - name: Zuweisen von Benutzern zu Administratorrollen
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Widerrufen des Zugriffs eines Benutzers
+          href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Zuweisen einer Rolle zu einem Gastbenutzer
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/roles/context/ugr-context
+        - name: Einschränken des Zugriffs durch Gastbenutzer
+          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Dynamische Gruppen und Gäste
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/roles/context/ugr-context
+    - name: Rollen und Berechtigungen
+      expanded: true
+      items:
+        - name: Rollen und Berechtigungen
+          href: permissions-reference.md
+        - name: Anzeigen und Zuweisen von Rollen
+          href: manage-roles-portal.md
+        - name: Delegierung für „Meine Mitarbeiter“
+          href: my-staff-configure.md
+    - name: Benutzerdefinierte Rollen
+      expanded: true
+      items:
+        - name: Übersicht über benutzerdefinierte Rollen
+          href: custom-overview.md
+        - name: Erstellen einer benutzerdefinierten Rolle
+          href: custom-create.md
+        - name: Anzeigen der Zuweisungen von benutzerdefinierten Rollen
+          href: custom-view-assignments.md
+        - name: Zuweisen benutzerdefinierter Rollen im Azure-Portal
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Zuweisen von benutzerdefinierten Rollen in PowerShell
+          href: custom-assign-powershell.md
+        - name: Zuweisen benutzerdefinierter Rollen für Unternehmens-Apps
+          href: custom-enterprise-apps.md
+        - name: Benutzerdefinierte Rollenberechtigungen
+          items:
+            - name: App-Registrierungsberechtigungen
+              href: custom-available-permissions.md
+            - name: Berechtigungen für Unternehmens-Apps
+              href: custom-enterprise-app-permissions.md
+            - name: Berechtigungen zur App-Zustimmung
+              href: custom-consent-permissions.md
+        - name: Delegieren einer App-Administratorrolle
+          href: delegate-app-roles.md
+    - name: Zuweisen von Rollen zu Gruppen
+      items:
+        - name: Gruppenbasierte Rollenzuweisung (Vorschau)
+          href: groups-concept.md
+        - name: 'Erstellen einer Gruppe, der Rollen zugeordnet werden können'
+          href: groups-create-eligible.md
+        - name: Zuweisen von Rollen zu einer Gruppe
+          href: groups-assign-role.md
+        - name: Entfernen von Rollenzuweisungen für eine Gruppe
+          href: groups-remove-assignment.md
+        - name: Anzeigen der Rollenzuweisungen für eine Gruppe
+          href: groups-view-assignments.md
+        - name: Festlegen einer Gruppe als berechtigt für eine Rolle in PIM
+          href: groups-pim-eligible.md
+        - name: FAQ und Fehlerbehebung
+          href: groups-faq-troubleshooting.md
+    - name: Schützen Ihrer Rollen
+      items:
+        - name: Planen der Rollensicherheit
+          href: security-planning.md
+        - name: Erstellen von Notfallkonten
+          href: security-emergency-access.md
+    - name: Verwaltungseinheiten
+      items:
+        - name: 'Verwaltungseinheiten: Übersicht'
+          href: administrative-units.md
+        - name: Hinzufügen und Verwalten
+          href: admin-units-manage.md
+        - name: Hinzufügen und Verwalten von Benutzern
+          href: admin-units-add-manage-users.md
+        - name: Hinzufügen und Verwalten von Gruppen
+          href: admin-units-add-manage-groups.md
+        - name: Zuweisen einer Rolle mit einem Bereich
+          href: admin-units-assign-roles.md
+        - name: FAQ und Fehlerbehebung
+          href: admin-units-faq-troubleshoot.md
+    - name: Problembehandlung
+      items:
+        - name: Erhalten von Support für Azure AD
+          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Verweis
+  items:
+    - name: Rollen mit geringstmöglichen Berechtigungen nach Aufgabe
+      href: delegate-by-task.md
+    - name: "Dokumentation zu Microsoft\_365-Rollen"
+      href: m365-workload-docs.md
+    - name: Graph-API
+      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+    - name: Azure AD-Befehlszeilenschnittstelle
+      href: /cli/azure/ad
+    - name: Azure AD PowerShell für Graph
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+    - name: Azure AD-Diensteinschränkungen
+      href: /azure/active-directory/fundamentals/directory-service-limits-restrictions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context

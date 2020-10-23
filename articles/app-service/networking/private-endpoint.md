@@ -4,24 +4,22 @@ description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe ein
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/09/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 16ce03ad8d6af1908a9ea4d3b7759bb5eb3c1139
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961549"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873097"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)
+# <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
-> [!Note]
-> Mit der Vorschauaktualisierung haben wir die Funktion für den Schutz vor Datenexfiltration freigegeben.
->
-> Die Vorschauversion ist in allen öffentlichen Regionen für PremiumV2 Windows- und Linux-Web-Apps sowie elastische Premiumfunktionen verfügbar. 
+> [!IMPORTANT]
+> Private Endpoint ist für Windows- und Linux-Web-Apps ggf. in Containern verfügbar und wird unter den folgenden App Service-Plänen gehostet: **Isolated**, **PremiumV2**, **PremiumV3**, **Functions Premium** (gelegentlich als elastischer Premium-Plan bezeichnet). 
 
 Sie können private Endpunkte für Ihre Azure-Web-App verwenden, um Clients in Ihrem privaten Netzwerk den sicheren Zugriff auf die App über Private Link zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihres virtuellen Azure-Netzwerks. Der Netzwerkdatenverkehr zwischen einem Client in Ihrem privaten Netzwerk und der Web-App wird über das virtuelle Netzwerk und Private Link im Microsoft-Backbonenetzwerk geleitet, sodass keine Verfügbarmachung im öffentlichen Internet erfolgt.
 
@@ -96,10 +94,10 @@ Der Name wird beispielsweise wie folgt aufgelöst:
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
 
-Nachdem Sie diese DNS-Konfiguration vorgenommen haben, können Sie Ihre Web-App privat unter dem Standardnamen mywebappname.azurewebsites.net erreichen.
+Nachdem Sie diese DNS-Konfiguration vorgenommen haben, können Sie Ihre Web-App privat unter dem Standardnamen mywebappname.azurewebsites.net erreichen. Dieser Name muss verwendet werden, da das Standardzertifikat für „*.azurewebsites.net“ ausgestellt wird.
 
 
-Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den benutzerdefinierten Namen in Ihrer Web-App hinzufügen. Während der Vorschauphase muss der benutzerdefinierte Name wie jeder andere benutzerdefinierte Name mithilfe der öffentlichen DNS-Auflösung überprüft werden. Weitere Informationen finden Sie unter [Benutzerdefinierte DNS-Validierung][dnsvalidation].
+Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den benutzerdefinierten Namen in Ihrer Web-App hinzufügen. Der benutzerdefinierte Name muss wie jeder andere benutzerdefinierte Name mithilfe der öffentlichen DNS-Auflösung überprüft werden. Weitere Informationen finden Sie unter [Benutzerdefinierte DNS-Validierung][dnsvalidation].
 
 Für die Kudu-Konsole oder die Kudu-REST-API (z. B. zusammen mit selbstgehosteten DevOps-Agents bereitgestellt) müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
 
@@ -118,7 +116,11 @@ Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise
 
 Wenn Sie die Azure Functions in einem elastischen Premium-Plan mit einem privaten Endpunkt verwenden, um die Funktion im Azure-Webportal auszuführen, benötigen Sie direkten Netzwerkzugriff, oder Sie erhalten einen HTTP 403-Fehler. Anders ausgedrückt, muss Ihr Browser den privaten Endpunkt erreichen können, um die Funktion aus dem Azure-Webportal ausführen zu können. 
 
-Während der Vorschauphase wird nur der Produktionsslot hinter dem privaten Endpunkt verfügbar gemacht, auf andere Slots muss über einen öffentlichen Endpunkt zugegriffen werden.
+Sie können bis zu 100 Private Endpoint-Instanzen mit einer bestimmten Web-App verbinden.
+
+Für Einschubfächer kann Private Endpoint nicht verwendet werden.
+
+Die Funktion „Remotedebuggen“ ist nicht verfügbar, wenn Private Endpoint für die Web-App aktiviert wurde. Daher wird empfohlen, den Code für ein Einschubfach bereitzustellen und dort ein Remotedebugging durchzuführen.
 
 Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und privater Endpunkt. Aktuelle Informationen zu Einschränkungen finden Sie in [diesem Artikel][pllimitations].
 

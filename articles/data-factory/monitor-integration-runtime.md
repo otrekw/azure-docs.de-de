@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078202"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568889"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -258,13 +258,13 @@ Wenn Sie Ihre Azure-SSIS IR mit einem VNet verknüpfen, wird die Kachel **VNET/S
 
 Auf der Kachel **DIAGNOSE DER KONNEKTIVITÄT** der Azure-SSIS IR-Überwachungsseite können Sie den Link **Verbindung testen** auswählen, um ein Fenster aufzurufen, in dem Sie die Verbindungen zwischen der Azure-SSIS IR und entsprechenden Paket-/Konfigurations-/Datenspeichern sowie Verwaltungsdiensten anhand des vollqualifizierter Domänennamens (Fully Qualified Domain Name, FQDN) oder der IP-Adresse und dem jeweiligen Port prüfen können (Informationen hierzu finden Sie unter [Testen der Verbindungen von der Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
 
-![Überwachen Ihrer Azure-SSIS IR – Kachel „DIAGNOSE“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Screenshot der Seite, auf der Sie die Verbindungen zwischen Azure-SSIS IR und relevanten Paketen/Konfigurationen/Datenspeichern testen können](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>Kachel „STATISCHE ÖFFENTLICHE IP-ADRESSEN“
 
 Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, wird die Kachel **STATISCHE ÖFFENTLICHE IP-ADRESSEN** auf Ihrer Azure-SSIS IR-Überwachungsseite angezeigt (siehe [Nutzung der eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)). Auf dieser Kachel können Sie Links auswählen, die Ihre erste/zweite statische öffentliche IP-Adresse für Azure-SSIS IR bezeichnen, um ein Fenster zu öffnen, in dem Sie deren Ressourcen-ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) aus einem Textfeld kopieren können. Im Popupfenster können Sie auch den Link  **für Ihre erste/zweite statische öffentliche IP-Adresse anzeigen** auswählen, um Ihre erste/zweite statische öffentliche IP-Adresse im Azure-Portal zu verwalten.
 
-![Überwachen Ihrer Azure-SSIS IR – Kachel „DIAGNOSE“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![Screenshot der Seite, auf der Sie Ihre erste/zweite statische öffentliche IP-Adresse festlegen können](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>Kachel „PAKETSPEICHER“
 

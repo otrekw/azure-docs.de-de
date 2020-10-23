@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545980"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333442"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung
 
@@ -52,19 +52,19 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 2. Navigieren Sie rechts oben auf der Seite zu **Verwalten**. 
 
-    ![„Installieren“ in Zoom](media/zoom-provisioning-tutorial/zoom02.png)
+    ![Screenshot: Zoom-App-Marketplace mit hervorgehobener Option „Manage“ (Verwalten)](media/zoom-provisioning-tutorial/zoom02.png)
 
 3. Navigieren Sie zu Ihrer erstellten Azure AD-App. 
     
-    ![Zoom-App](media/zoom-provisioning-tutorial/zoom03.png)
+    ![Screenshot: Abschnitt „Created Apps“ (Erstellte Apps) mit hervorgehobener Azure AD-App](media/zoom-provisioning-tutorial/zoom03.png)
 
 4. Wählen Sie im linken Navigationsbereich **App-Anmeldeinformationen** aus.
 
-    ![Zoom-App](media/zoom-provisioning-tutorial/zoom04.png)
+    ![Screenshot: Linker Navigationsbereich mit hervorgehobener Option „App Credentials“ (Anmeldeinformationen für die App)](media/zoom-provisioning-tutorial/zoom04.png)
 
 5. Kopieren und speichern Sie das **JWT-Token**. Dieser Wert wird im Feld **Geheimes Token** auf der Registerkarte „Bereitstellung“ der Zoom-Anwendung im Azure-Portal eingegeben. Wenn Sie ein neues unbefristetes Token benötigen, müssen Sie den Ablaufzeitpunkt neu konfigurieren, wodurch automatisch ein neues Token generiert wird. 
 
-    ![„Installieren“ in Zoom](media/zoom-provisioning-tutorial/zoom05.png)
+    ![Screenshot: Seite „App Credentials“ (Anmeldeinformationen für die App)](media/zoom-provisioning-tutorial/zoom05.png)
 
 ## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Zoom aus dem Azure AD-Anwendungskatalog
 
@@ -95,11 +95,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.zoom.us/scim` ein. Geben Sie den Wert für das **JWT-Token** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Zoom herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Zoom-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

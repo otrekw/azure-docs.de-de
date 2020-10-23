@@ -1,16 +1,14 @@
 ---
 title: Erstellen einer neuen arbeitsbereichsbasierten Application Insights-Ressource in Azure Monitor | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktivieren der neuen arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894549"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945412"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen
 
@@ -206,6 +204,10 @@ Wählen Sie im Bereich der Application Insights-Ressource die Optionen **Eigensc
 ## <a name="export-telemetry"></a>Exportieren von Telemetriedaten
 
 Die Legacyfunktion für den fortlaufenden Export wird für arbeitsbereichsbasierte Ressourcen nicht unterstützt. Wählen Sie stattdessen in Ihre Application Insights-Ressource die Optionen **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen**. Sie können alle Tabellen oder eine Teilmenge der Tabellen auswählen, die Sie in einem Speicherkonto archivieren oder an Azure Event Hub streamen möchten.
+
+> [!NOTE]
+> Für den Export von Streamingdaten fallen zurzeit keine zusätzlichen Gebühren an. Die Preisinformationen für dieses Feature finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).  Zu Beginn des Abrechnungszeitraums erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, <feature name> über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt. 
+ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

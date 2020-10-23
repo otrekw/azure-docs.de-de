@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319235"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568045"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link für Azure Cosmos DB: Anwendungsfälle für Analysen in Quasi-Echtzeit
 
@@ -70,7 +70,7 @@ Im Folgenden finden Sie eine Anleitung für die Datenintegration für Batch- und
 
 Einzelhändler müssen sichere und skalierbare E-Commerce-Lösungen erstellen, die die Anforderungen von Kunden und Unternehmen erfüllen. Diese E-Commerce-Lösungen müssen eine Kundenbindung durch angepasste Produkte und Angebote herstellen, Transaktionen schnell und sicher verarbeiten und sich auf Fulfillment und Kundendienst konzentrieren. Azure Cosmos DB und Synapse Link für Azure Cosmos DB ermöglichen es Einzelhändlern, personalisierte Empfehlungen für Kunden in Echtzeit zu generieren. Sie verwenden anpassbare Konsistenzeinstellungen mit geringer Wartezeit, um unmittelbare Erkenntnisse zu erhalten, wie sie in der folgenden Architektur dargestellt sind:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse Link für Azure Cosmos DB in Echtzeitpersonalisierung" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false":::
 
 Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
@@ -82,7 +82,7 @@ Industrielle IOT-Innovationen haben die Ausfallzeiten von Geräten enorm verring
 
 Im Folgenden sehen Sie eine Architektur, die die cloudnativen HTAP-Funktionen von Azure Synapse Link für Azure Cosmos DB in IOT-Predictive Maintenance nutzt:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse Link für Azure Cosmos DB in IoT-Predictive Maintenance" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false" :::
 
 Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
@@ -92,7 +92,7 @@ Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>Beispielszenario: HTAP für Azure Cosmos DB
 
-Seit fast zehn Jahren wird Azure Cosmos DB von Tausenden von Kunden für unternehmenskritische Anwendungen genutzt, die eine elastische Skalierung, eine schlüsselfertige globale Verteilung sowie Multimasterreplikation für geringe Wartezeiten und hohe Verfügbarkeit für Lese- und Schreibvorgänge in ihren Transaktionsworkloads benötigen.
+Seit fast zehn Jahren wird Azure Cosmos DB von Tausenden von Kunden für unternehmenskritische Anwendungen genutzt, die eine elastische Skalierung, eine schlüsselfertige globale Verteilung sowie eine Replikation von Schreibvorgängen in mehreren Regionen für geringe Wartezeiten und hohe Verfügbarkeit für Lese- und Schreibvorgänge in ihren Transaktionsworkloads benötigen.
  
 In der folgenden Liste finden Sie eine Übersicht über die verschiedenen Workloadmuster, die mit Betriebsdaten mithilfe von Azure Cosmos DB unterstützt werden:
 
@@ -104,17 +104,17 @@ In der folgenden Liste finden Sie eine Übersicht über die verschiedenen Worklo
 
 Azure Synapse Link ermöglicht Azure Cosmos DB nicht nur die Unterstützung von Transaktionsworkloads, sondern auch das Durchführen von Analyseworkloads in Quasi-Echtzeit für operative Verlaufsdaten. Dies geschieht ohne ETL-Anforderungen und mit einer garantierten Leistungsisolation von den Transaktionsworkloads.
 
-Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Workloadmuster für Azure Synapse Link für Azure Cosmos DB" border="false":::
+Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false":::
 
 Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl transaktionale als auch analytische Anforderungen einer Bestandsverwaltungsplattform unterstützt, soll am Beispiel des E-Commerce-Unternehmens CompanyXYZ verdeutlicht werden, das in mehr als 20 Ländern/Regionen tätig ist.
 
 * Die Arbeit von CompanyXYZ hängt vom Bestandsverwaltungssystem ab – Verfügbarkeit und Zuverlässigkeit sind daher zentrale Anforderungen. Vorteile von Azure Cosmos DB:
 
-  * Aufgrund der engen Integration in die Azure-Infrastruktur und der transparenten globalen Multimasterreplikation bietet Azure Cosmos DB eine branchenführende [Hochverfügbarkeit von 99,999 %](high-availability.md) gegenüber regionalen Ausfällen.
+  * Aufgrund der engen Integration in die Azure-Infrastruktur und der transparenten globalen Replikation von Schreibvorgängen in mehreren Regionen bietet Azure Cosmos DB eine branchenführende [Hochverfügbarkeit von 99,999 %](high-availability.md) gegenüber regionalen Ausfällen.
 
 * Die Lieferkettenpartner von CompanyXYZ befinden sich möglicherweise an separaten geografischen Standorten, sie benötigen jedoch eine zentrale Ansicht des weltweiten Produktbestands für ihre lokalen Vorgänge. Dies umfasst auch das Lesen von Aktualisierungen, die von anderen Lieferkettenpartnern in Echtzeit durchgeführt werden. Außerdem können Aktualisierungen vorgenommen werden, ohne dass die Gefahr von Konflikten mit anderen Partnern mit hohem Durchsatz besteht. Vorteile von Azure Cosmos DB:
 
-  * Dank des eindeutigen Protokolls für die Multimasterreplikation und des schreiboptimierten Transaktionsspeichers ohne Latches garantiert Azure Cosmos DB Wartezeiten von unter 10 ms für indizierte Lese- und Schreibvorgänge auf der ganzen Welt im 99. Quantil.
+  * Dank des eindeutigen Protokolls für die Replikation von Schreibvorgängen in mehreren Regionen und des schreiboptimierten Transaktionsspeichers ohne Latches garantiert Azure Cosmos DB Wartezeiten von unter 10 ms für indizierte Lese- und Schreibvorgänge auf der ganzen Welt im 99. Quantil.
 
   * Hohe Durchsatzerfassung von Batch- und Streamingdatenfeeds mit [Echtzeitindizierung](index-policy.md) im Transaktionsspeicher.
 

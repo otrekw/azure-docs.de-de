@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 54d33b849f809dbe1ebefbbc3d2f63db6877e86e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992907"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841355"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 
@@ -24,14 +24,14 @@ In diesem Artikel erfahren Sie, wie Sie mit [Azure Machine Learning Studio](over
 
 In der folgenden Tabelle werden die Vorteile von Datenspeichern und Datasets definiert und zusammengefasst. 
 
-||BESCHREIBUNG| Vorteile|   
+|Object|BESCHREIBUNG| Vorteile|   
 |---|---|---|
-|Datenspeicher| Stellen Sie eine sichere Verbindung mit Ihrem Speicherdienst in Azure her, indem Sie Ihre Verbindungsinformationen, wie Ihre Abonnement-ID und Tokenautorisierung, in Ihrem [Schlüsseltresor](https://azure.microsoft.com/services/key-vault/) speichern, der mit dem Arbeitsbereich verknüpft ist. | Da Ihre Daten sicher gespeichert sind, <br><br> <li> setzen Sie Authentifizierungsanmeldeinformationen oder ursprüngliche Datenquellen keinem Risiko aus. <li> Sie müssen Sie nicht mehr in Ihren Skripts hartcodieren.
+|Datenspeicher| Stellen Sie eine sichere Verbindung mit Ihrem Speicherdienst in Azure her, indem Sie Ihre Verbindungsinformationen, wie Ihre Abonnement-ID und Tokenautorisierung, in Ihrem [Schlüsseltresor](https://azure.microsoft.com/services/key-vault/) speichern, der mit dem Arbeitsbereich verknüpft ist. | Da Ihre Daten sicher gespeichert sind, <br><br> <li> setzen Sie&nbsp;Authentifizierungsanmeldeinformationen&nbsp;oder&nbsp;ursprüngliche&nbsp;Datenquellen&nbsp;keinem&nbsp;Risiko aus. <li> Sie müssen Sie nicht mehr in Ihren Skripts hartcodieren.
 |Datasets| Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Datasets ermöglichen Folgendes: <br><br><li> Zugreifen auf Daten während des Modelltrainings.<li> Freigeben von Daten und Zusammenarbeiten mit anderen Benutzern<li> Nutzen von Open-Source-Bibliotheken wie Pandas zum Untersuchen von Daten. | Da Datasets nur langsam ausgewertet werden und die Daten am vorhandenen Speicherort verbleiben, profitieren Sie von folgenden Vorteilen: <br><br><li>Aufbewahren einer einzelnen Datenkopie in Ihrem Speicher.<li> Keine zusätzlichen Speicherkosten. <li> Sie laufen nicht Gefahr, unabsichtlich Ihre ursprünglichen Datenquellen zu ändern.<li>Der ML-Workflow wird verbessert und beschleunigt. 
 
 Informationen dazu, welche Rolle Datenspeicher und Datasets im Workflow für Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Sicherer Zugriff auf Daten](concept-data.md#data-workflow).
 
-Informationen zu einer Code First-Funktion finden Sie in den folgenden Artikeln, um das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) für Folgendes zu verwenden:
+Informationen zu einer Code First-Funktion finden Sie in den folgenden Artikeln, um das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) für Folgendes zu verwenden:
 * [Herstellen einer Verbindung mit Azure-Speicherdiensten mit Datenspeichern](how-to-access-data.md). 
 * [Erstellen von Azure Machine Learning-Datasets](how-to-create-register-datasets.md). 
 
@@ -87,6 +87,7 @@ So erstellen Sie ein Dataset im Studio
 1. Wählen Sie **Tabellarisch** oder **Datei** als Datasettyp aus.
 1. Wählen Sie **Weiter** aus, um das Formular **Datenspeicher- und Dateiauswahl** zu öffnen. In diesem Formular wählen Sie aus, wo das Dataset nach dem Erstellen aufbewahrt werden soll, sowie welche Datendateien für Ihr Dataset verwendet werden sollen.
     1. Aktivieren Sie das Überspringen der Überprüfung, wenn sich Ihre Daten in einem virtuellen Netzwerk befinden. Weitere Informationen finden Sie unter [Isolierung virtueller Netzwerke und Datenschutz](how-to-enable-virtual-network.md#machine-learning-studio).
+    1. Für Tabellendatasets können Sie das Merkmal „timeseries angeben, um Datums- und Uhrzeitvorgänge für Ihr Dataset zu ermöglichen. Informieren Sie sich darüber, wie Sie [Ihrem Dataset das Merkmal „timeseries“ hinzufügen](how-to-monitor-datasets.md#studio-dataset).
 1. Wählen Sie **Weiter** aus, um die Formulare **Einstellungen und Vorschau** und **Schema** auszufüllen. Sie werden basierend auf dem Dateityp auf intelligente Weise aufgefüllt, und Sie können das Dataset in diesen Formularen vor der Erstellung weiter konfigurieren. 
 1. Wählen Sie **Weiter** aus, um das Formular **Details bestätigen** zu überprüfen. Überprüfen Sie Ihre Auswahl, und erstellen Sie ein optionales Datenprofil für das Dataset. Weitere Informationen zur [Datenprofilerstellung](#profile).
 1. Wählen Sie **Erstellen** aus, um die Erstellung des Datasets abzuschließen.
@@ -112,22 +113,22 @@ Das Datenprofil des Azure Machine Learning-Datasets enthält insbesondere Folgen
 >[!NOTE]
 > Leere Einträge werden für Features mit irrelevanten Typen angezeigt.
 
-Statistik|BESCHREIBUNG
-------|------
-Funktion| Der Name der Spalte, die zusammengefasst wird.
-Profil| Eine Inlinevisualisierung basierend auf dem abgeleiteten Typ. Beispielsweise weisen Zeichenfolgen, boolesche Werte und Datumsangaben Wertanzahlen auf, während Dezimalwerte (numerische Werte) Näherungswerte für Histogramme besitzen. Dadurch können Sie einen schnellen Überblick über die Verteilung der Daten erhalten.
-Typverteilung| Eine Inlinewertanzahl von Typen in einer Spalte. NULL-Werte sind eigene Typen, sodass diese Visualisierung für die Erkennung von ungewöhnlichen oder fehlenden Werten nützlich ist.
-type|Der abgeleitete Typ der Spalte. Mögliche Werte: Zeichenfolgen, boolesche Werte, Datumsangaben und Dezimalwerte.
-Min| Der Mindestwert der Spalte. Leere Einträge werden für Features angezeigt, deren Typ keine inhärente Reihenfolge aufweist (z. B. boolesche Werte).
-Max| Der Höchstwert der Spalte. 
-Anzahl| Die Gesamtanzahl der fehlenden und nicht fehlenden Einträge in der Spalte.
-Fehlt nicht (Anzahl)| Die Anzahl der nicht fehlenden Einträge in der Spalte. Leere Zeichenfolgen und Fehler werden als Werte behandelt, damit sie nicht zur „Anzahl nicht fehlender“ beitragen.
-Quantile| Die geschätzten Werte in jedem Quantil, um einen Eindruck von der Verteilung der Daten bereitzustellen.
-Mittelwert| Das arithmetische Mittel der Spalte.
-Standardabweichung| Das Maß der Verteilung oder Abweichung der Daten dieser Spalte.
-Variance| Das Maß, wie weit die Daten dieser Spalte gegenüber dem Durchschnittswert verteilt sind. 
-Schiefe| Das Maß für die Unterschiede zwischen den Daten dieser Spalte und der normalen Verteilung.
-Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleich mit der normalen Verteilung.
+|Statistik|BESCHREIBUNG
+|------|------
+|Funktion| Der Name der Spalte, die zusammengefasst wird.
+|Profil| Eine Inlinevisualisierung basierend auf dem abgeleiteten Typ. Beispielsweise weisen Zeichenfolgen, boolesche Werte und Datumsangaben Wertanzahlen auf, während Dezimalwerte (numerische Werte) Näherungswerte für Histogramme besitzen. Dadurch können Sie einen schnellen Überblick über die Verteilung der Daten erhalten.
+|Typverteilung| Eine Inlinewertanzahl von Typen in einer Spalte. NULL-Werte sind eigene Typen, sodass diese Visualisierung für die Erkennung von ungewöhnlichen oder fehlenden Werten nützlich ist.
+|type|Der abgeleitete Typ der Spalte. Mögliche Werte: Zeichenfolgen, boolesche Werte, Datumsangaben und Dezimalwerte.
+|Min| Der Mindestwert der Spalte. Leere Einträge werden für Features angezeigt, deren Typ keine inhärente Reihenfolge aufweist (z. B. boolesche Werte).
+|Max| Der Höchstwert der Spalte. 
+|Anzahl| Die Gesamtanzahl der fehlenden und nicht fehlenden Einträge in der Spalte.
+|Fehlt nicht (Anzahl)| Die Anzahl der nicht fehlenden Einträge in der Spalte. Leere Zeichenfolgen und Fehler werden als Werte behandelt, damit sie nicht zur „Anzahl nicht fehlender“ beitragen.
+|Quantile| Die geschätzten Werte in jedem Quantil, um einen Eindruck von der Verteilung der Daten bereitzustellen.
+|Mittelwert| Das arithmetische Mittel der Spalte.
+|Standardabweichung| Das Maß der Verteilung oder Abweichung der Daten dieser Spalte.
+|Variance| Das Maß, wie weit die Daten dieser Spalte gegenüber dem Durchschnittswert verteilt sind. 
+|Schiefe| Das Maß für die Unterschiede zwischen den Daten dieser Spalte und der normalen Verteilung.
+|Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleich mit der normalen Verteilung.
 
 ## <a name="storage-access-and-permissions"></a>Speicherzugriff und Berechtigungen
 
@@ -170,6 +171,6 @@ Verwenden Sie Ihre Datasets in Ihren Machine Learning-Experimenten zum Trainiere
 
 * [Schrittweises Beispiel für das Training mit TabularDatasets und automatisiertem Machine Learning](tutorial-first-experiment-automated-ml.md).
 
-* [Trainieren eines Modells](how-to-train-ml-models.md).
+* [Trainieren eines Modells](how-to-set-up-training-targets.md).
 
 * Weitere Beispiele zum Trainieren von Datasets finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/).

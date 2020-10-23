@@ -10,22 +10,22 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: queues
-ms.openlocfilehash: 1dc8009792163730602827a995c4b6900a0ef08d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 27a742b5f683a7e542ca8d51a711d903b00bda61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108554"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715482"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten
 
 Azure Storage bietet Erweiterungen für PowerShell, mit deren Hilfe Sie sich mit Azure Active Directory-Anmeldeinformationen (Azure AD) anmelden und Skriptbefehle ausführen können. Wenn Sie sich mit Azure AD-Anmeldeinformationen bei PowerShell anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von PowerShell verwendet, um nachfolgende Datenvorgänge für Queue Storage zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
-Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) Berechtigungen für Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC](../common/storage-auth-aad-rbac.md).
+Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (Azure RBAC) Berechtigungen für Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit Azure RBAC](../common/storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Unterstützte Vorgänge
 
-Die Azure Storage-Erweiterungen werden für Vorgänge für Warteschlangendaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei PowerShell anmelden. Die Berechtigungen für Azure Storage-Warteschlangen werden über die rollenbasierte Zugriffssteuerung zugewiesen. Wenn Ihnen beispielsweise die Rolle **Storage-Warteschlangendatenleser** zugewiesen wurde, können Sie Skriptbefehle ausführen, die Daten aus einer Warteschlange lesen. Wurde Ihnen die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen, können Sie Skriptbefehle ausführen, die eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
+Die Azure Storage-Erweiterungen werden für Vorgänge für Warteschlangendaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei PowerShell anmelden. Die Berechtigungen für Azure Storage-Warteschlangen werden über die rollenbasierte Zugriffssteuerung von Azure zugewiesen. Wenn Ihnen beispielsweise die Rolle **Storage-Warteschlangendatenleser** zugewiesen wurde, können Sie Skriptbefehle ausführen, die Daten aus einer Warteschlange lesen. Wurde Ihnen die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen, können Sie Skriptbefehle ausführen, die eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
 
 Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge für Warteschlangen erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
@@ -68,7 +68,7 @@ Im folgenden Beispiel sehen Sie, wie Sie in einem neuen Speicherkonto mithilfe I
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Weisen Sie sich vor der Erstellung der Warteschlange selbst die Rolle [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](../common/storage-auth-aad-rbac.md).
+1. Weisen Sie sich vor der Erstellung der Warteschlange selbst die Rolle [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../common/storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Die Azure-Rollenzuweisungen können einige Minuten dauern.

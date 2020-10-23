@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0394a7db6776e00ea031a2f40ab4de01540982a6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080209"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856686"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight
 
@@ -21,11 +21,11 @@ Dieser Artikel enthält Empfehlungen für die Datenspeicherung in Azure HDInsigh
 
 ## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Auswählen des richtigen Speichersystems für HDInsight-Cluster
 
-Die Verzeichnisstruktur des lokalen Apache Hadoop-Dateisystems (HDFS) kann in Azure Storage oder Azure Data Lake Storage erneut erstellt werden. Sie können dann HDInsight-Cluster, die für Berechnungen verwendet werden, sicher löschen, ohne dass Benutzerdaten verloren gehen. Beide Dienste können sowohl als Standarddateisystem als auch ein zusätzliches Dateisystem für einen HDInsight-Cluster verwendet werden. Der HDInsight-Cluster und das Speicherkonto müssen sich in der gleichen Region befinden.
+Die Verzeichnisstruktur des lokalen Apache Hadoop-Dateisystems (HDFS) kann in Azure Blob Storage oder Azure Data Lake Storage neu erstellt werden. Sie können dann HDInsight-Cluster, die für Berechnungen verwendet werden, sicher löschen, ohne dass Benutzerdaten verloren gehen. Beide Dienste können sowohl als Standarddateisystem als auch ein zusätzliches Dateisystem für einen HDInsight-Cluster verwendet werden. Der HDInsight-Cluster und das Speicherkonto müssen sich in der gleichen Region befinden.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-HDInsight-Cluster können den Blobcontainer in Azure Storage entweder als Standarddateisystem oder als ein zusätzliches Dateisystem verwenden. Das Speicherkonto im Standard-Tarif wird für die Verwendung mit HDInsight-Clustern unterstützt. Der Premium-Tarif wird nicht unterstützt. Der standardmäßige Blobcontainer speichert clusterspezifische Informationen wie etwa Auftragsverlauf und Protokolle. Das Freigeben eines Blobcontainers als Standarddateisystem für mehrere Cluster wird nicht unterstützt.
+HDInsight-Cluster können den Blobcontainer in Azure Storage entweder als Standarddateisystem oder als ein zusätzliches Dateisystem verwenden.  Das Speicherkonto im Standard-Tarif wird für die Verwendung mit HDInsight-Clustern unterstützt. Der Premium-Tarif wird nicht unterstützt. Der standardmäßige Blobcontainer speichert clusterspezifische Informationen wie etwa Auftragsverlauf und Protokolle.  Das Freigeben eines Blobcontainers als Standarddateisystem für mehrere Cluster wird nicht unterstützt.
 
 Die bei der Erstellung definierten Speicherkonten und ihre jeweiligen Schlüssel werden in `%HADOOP_HOME%/conf/core-site.xml` auf den Clusterknoten gespeichert. Auf sie kann auch im Abschnitt „Custom core site“ der HDFS-Konfiguration auf der Ambari-Benutzeroberfläche zugegriffen werden. Der Speicherkontoschlüssel ist standardmäßig verschlüsselt, und ein benutzerdefiniertes Entschlüsselungsskript wird verwendet, um die Schlüssel vor der Übergabe an Hadoop-Daemons zu entschlüsseln. Die Aufträge, darunter Hive, MapReduce, Hadoop Streaming und Pig, enthalten eine Beschreibung von Speicherkonten und Metadaten.
 
@@ -37,7 +37,7 @@ Für den Zugriff auf Daten, die in Azure Storage gespeichert sind, kann eines de
 |---|---|
 |`wasb:///`|Zugriff auf Standardspeicher über unverschlüsselte Verbindungen.|
 |`wasbs:///`|Zugriff auf Standardspeicher über verschlüsselte Verbindungen.|
-|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. |
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. |
 
 Unter [Skalierbarkeitsziele für Storage Standard-Konten](../../storage/common/scalability-targets-standard-account.md) sind die aktuellen Beschränkungen für Azure Storage-Konten aufgelistet. Wenn die Anforderungen der Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, kann die Anwendung so erstellt werden, dass mehrere Speicherkonten verwendet werden, und dann können Datenobjekte basierend auf diesen Speicherkonten partitioniert werden.
 
@@ -81,20 +81,20 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage implementiert das HDFS- und POSIX-Zugriffssteuerungsmodell. Es bietet erstklassige Integration in AAD für detaillierte Zugriffssteuerung. Es gibt keine Beschränkungen hinsichtlich der Größe von Daten, die gespeichert werden können, oder der Möglichkeit zum Ausführen hochgradiger paralleler Analysen.
+Azure Data Lake Storage Gen1 implementiert das HDFS- und POSIX-Zugriffssteuerungsmodell. Es bietet erstklassige Integration mit Azure AD für detaillierte Zugriffssteuerung. Es gibt keine Beschränkungen hinsichtlich der Größe von Daten, die gespeichert werden können, oder der Möglichkeit zum Ausführen hochgradiger paralleler Analysen.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Erstellen von HDInsight-Clustern mit Data Lake Storage mithilfe des Azure-Portals](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Verwenden von Data Lake Storage mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-store.md)
+- [Erstellen von HDInsight-Clustern mit Data Lake Storage Gen1 mithilfe des Azure-Portals](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 ist das neueste Speicherangebot. Es vereint die Kernfunktionen der ersten Generation von Azure Data Lake Storage mit einem Hadoop-kompatiblen Dateisystemendpunkt, der direkt in Azure Blob Storage integriert ist. Diese Erweiterung verbindet die Vorteile eines Objektspeichers hinsichtlich Skalierbarkeit und Kosten mit der Zuverlässigkeit und Leistung, die normalerweise nur lokale Dateisysteme bieten.
+Azure Data Lake Storage Gen2 ist das neueste Speicherangebot. Es vereint die Kernfunktionen der ersten Generation von Azure Data Lake Storage Gen1 mit einem Hadoop-kompatiblen Dateisystemendpunkt, der direkt in Azure Blob Storage integriert ist. Diese Erweiterung verbindet die Vorteile eines Objektspeichers hinsichtlich Skalierbarkeit und Kosten mit der Zuverlässigkeit und Leistung, die normalerweise nur lokale Dateisysteme bieten.
 
-ADLS Gen2 basiert auf  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) und ermöglicht Ihnen das Arbeiten mit Daten über das Dateisystem und den Objektspeicher. Funktionen von  [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), wie z.B. Dateisystemsemantik, Sicherheit und Skalierbarkeit auf Dateiebene, werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen und einem umfassenden Ökosystem aus SDKs und Tools von  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) kombiniert. In Data Lake Storage Gen2 bleiben alle Vorzüge des Objektspeichers erhalten, während gleichzeitig die Vorteile einer für Analyseworkloads optimierten Dateisystemschnittstelle zum Tragen kommen.
+Azure Data Lake Storage Gen2 basiert auf  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) und ermöglicht Ihnen das Arbeiten mit Daten über das Dateisystem und den Objektspeicher. Funktionen von  [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), wie z.B. Dateisystemsemantik, Sicherheit und Skalierbarkeit auf Dateiebene, werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen und einem umfassenden Ökosystem aus SDKs und Tools von  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) kombiniert. In Data Lake Storage Gen2 bleiben alle Vorzüge des Objektspeichers erhalten, während gleichzeitig die Vorteile einer für Analyseworkloads optimierten Dateisystemschnittstelle zum Tragen kommen.
 
-Ein wesentliches Merkmal von Data Lake Storage Gen2 ist die Hinzufügung eines  [hierarchischen Namespace](../../storage/data-lake-storage/namespace.md)  zum Blob Storage-Dienst, der Objekte und Dateien für einen leistungsstarken Datenzugriff in einer Verzeichnishierarchie organisiert. Die hierarchische Struktur macht es möglich, dass Vorgänge wie das Umbenennen oder Löschen eines Verzeichnisses zu einzelnen atomaren Metadatenvorgängen im Verzeichnis werden, anstatt alle Objekte aufzuzählen und zu verarbeiten, die das Namenspräfix des Verzeichnisses gemeinsam haben.
+Ein wesentliches Merkmal von Data Lake Storage Gen2 ist die Hinzufügung eines  [hierarchischen Namespace](../../storage/data-lake-storage/namespace.md)  zum Blob Storage-Dienst, der Objekte und Dateien für einen leistungsstarken Datenzugriff in einer Verzeichnishierarchie organisiert.  Die hierarchische Struktur macht es möglich, dass Vorgänge wie das Umbenennen oder Löschen eines Verzeichnisses zu einzelnen atomaren Metadatenvorgängen im Verzeichnis werden, anstatt alle Objekte aufzuzählen und zu verarbeiten, die das Namenspräfix des Verzeichnisses gemeinsam haben.
 
 In der Vergangenheit mussten bei cloudbasierten Analysen Kompromisse in puncto Leistung, Verwaltung und Sicherheit eingegangen werden. Hier die wichtigste Features von Azure Data Lake Storage (ADLS) Gen2:
 
@@ -144,7 +144,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 > Die Anbieterpfadeigenschaft kann auch statt der Speicherung des Schlüssels auf Clusterebene in „core-site.xml“ wie folgt zur „distcp“-Befehlszeile hinzugefügt werden:
 
 ```bash
-hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
+hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
 ## <a name="restrict-azure-storage-data-access-using-sas"></a>Einschränken des Azure Storage-Datenzugriffs mithilfe von SAS
@@ -193,23 +193,23 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Storage Shared Acces
 
 ## <a name="use-data-encryption-and-replication"></a>Verwenden von Datenverschlüsselung und Replikation
 
-Alle Daten werden automatisch mit  [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) verschlüsselt, wenn sie in Azure Storage geschrieben werden. Die Daten im Azure Storage-Konto werden immer für Hochverfügbarkeit repliziert. Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikationsoptionen auswählen:
+Alle Daten werden automatisch mit  [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) verschlüsselt, wenn sie in Azure Storage geschrieben werden. Die Daten im Azure Storage-Konto werden immer für Hochverfügbarkeit repliziert.  Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikationsoptionen auswählen:
 
 - [Lokal redundanter Speicher (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zonenredundanter Speicher (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Georedundanter Speicher (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/storage-redundancy.md)
 
-Azure Data Lake Storage bietet lokal redundanten Speicher (LRS), aber Sie sollten wichtige Daten auch auf ein anderes Data Lake Storage-Konto in einer anderen Region kopieren, und zwar mit einer Häufigkeit, die den Anforderungen des Notfallwiederherstellungsplans entspricht. Es gibt verschiedene Methoden zum Kopieren von Daten, z. B.  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md) oder  [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Außerdem wird empfohlen, Zugriffsrichtlinien für das Data Lake Storage-Konto zu erzwingen, um versehentliches Löschen zu verhindern.
+Azure Storage bietet lokal redundanten Speicher (LRS), aber Sie sollten wichtige Daten auch in ein anderes Azure Storage-Konto in einer anderen Region kopieren, und zwar mit einer Häufigkeit, die den Anforderungen des Notfallwiederherstellungsplans entspricht.  Es gibt verschiedene Methoden zum Kopieren von Daten, z. B.  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md) oder  [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md).  Außerdem wird empfohlen, Zugriffsrichtlinien für das Azure Storage-Konto zu erzwingen, um versehentliches Löschen zu verhindern.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Azure Storage-Replikation](../../storage/common/storage-redundancy.md)
-- [Leitfaden zur Notfallwiederherstellung für Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+- [Leitfaden zur Notfallwiederherstellung für Azure Data Lake Storage Gen1 (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Anfügen zusätzlicher Azure Storage-Konten an den Cluster
 
-Beim HDInsight-Erstellungsprozess wird ein Azure Storage- oder Azure Data Lake Storage-Konto als Standarddateisystem ausgewählt. Zusätzlich zu diesem Standardspeicherkonto können während oder nach der Clustererstellung weitere Speicherkonten aus dem gleichen oder einem anderen Azure-Abonnement hinzugefügt werden.
+Beim HDInsight-Erstellungsprozess wird ein Azure Storage-, Azure Data Lake Storage Gen1- oder Azure Data Lake Storage Gen2-Konto als Standarddateisystem ausgewählt. Zusätzlich zu diesem Standardspeicherkonto können während oder nach der Clustererstellung weitere Speicherkonten aus dem gleichen oder einem anderen Azure-Abonnement hinzugefügt werden.
 
 Ein zusätzliches Speicherkonto kann auf eine der folgenden Arten hinzugefügt werden:
 - Hinzufügen des Speicherkontonamens im Bereich „Custom core-site“ unter den erweiterten Einstellungen für HDFS-Konfigurationen in Ambari und Neustarten der Dienste

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475735"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439254"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Connector für Azure Monitor-Protokolle für Azure Logic Apps und Power Automate
 Mit [Azure Logic Apps](../../logic-apps/index.yml) und [Power Automate](https://flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Mit dem Connector für Azure Monitor-Protokolle können Sie Workflows erstellen, die Daten aus einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung in Azure Monitor abrufen. In diesem Artikel werden die mit dem Connector möglichen Aktionen beschrieben. Außerdem wird eine Anleitung zur Erstellung eines Workflows unter Verwendung dieser Daten gegeben.
@@ -68,7 +68,7 @@ Klicken Sie auf **+ Neuer Schritt**, um eine Aktion hinzuzufügen, die nach der 
 
 Klicken Sie auf **Azure Log Analytics – Run query and visualize results** (Azure Log Analytics – Abfrage ausführen und Ergebnisse visualisieren).
 
-![Aktion „Abfrage ausführen und Ergebnisse visualisieren“](media/logicapp-flow-connector/select-query-action-visualize.png)
+![Screenshot: Neue Aktion, die einem Schritt in Logik-App-Designer hinzugefügt wurde. Azure Monitor Logs ist unter „Aktion auswählen“ hervorgehoben.](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Hinzufügen der Aktion „Azure Monitor-Protokolle“
@@ -87,7 +87,7 @@ Event
 
 Wählen Sie *In Abfrage festlegen* für **Zeitbereich** und **HTML-Tabelle** für **Diagrammtyp** aus.
    
-![Aktion „Abfrage ausführen und Ergebnisse visualisieren“](media/logicapp-flow-connector/run-query-visualize-action.png)
+![Screenshot: Einstellungen für die neue Azure Monitor Logs-Aktion mit dem Namen „Abfrage ausführen und Ergebnisse visualisieren“](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 Die E-Mail wird vom Konto gesendet, das der aktuellen Verbindung zugeordnet ist. Sie können ein anderes Konto angeben, indem Sie auf **Verbindung ändern** klicken.
 

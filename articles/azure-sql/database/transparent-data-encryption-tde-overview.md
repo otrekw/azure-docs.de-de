@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 06/15/2020
-ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 10/12/2020
+ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836682"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945990"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>TDE (Transparent Data Encryption) für SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Bei Azure SQL-Datenbank und Azure Synapse ist der TDE-Schutz auf der [Servereben
 > Alle neu erstellten Datenbanken in SQL-Datenbank werden standardmäßig mithilfe einer dienstseitig verwalteten transparenten Datenverschlüsselung verschlüsselt. Vorhandene SQL-Datenbanken, die vor Mai 2017 erstellt wurden, und SQL-Datenbanken, die durch Wiederherstellung, Georeplikation und Datenbankkopie erstellt wurden, sind standardmäßig nicht verschlüsselt. Vorhandene SQL Managed Instance-Datenbanken, die vor Februar 2019 erstellt wurden, sind standardmäßig nicht verschlüsselt. Azure SQL Managed Instance-Datenbanken, die durch Wiederherstellen erstellt wurden, erben den Verschlüsselungsstatus von der Quelle.
 
 > [!NOTE]
-> TDE kann nicht zum Verschlüsseln der **master**-Datenbank in SQL-Datenbank verwendet werden.  Die **master**-Datenbank enthält Objekte, die zum Ausführen der TDE-Vorgänge für die Benutzerdatenbanken erforderlich sind.
+> TDE kann nicht zum Verschlüsseln der **Master**datenbank in Azure SQL-Datenbank und Azure SQL Managed Instance verwendet werden. Die **master**-Datenbank enthält Objekte, die zum Ausführen der TDE-Vorgänge für die Benutzerdatenbanken erforderlich sind.
 
 ## <a name="service-managed-transparent-data-encryption"></a>Von einem Dienst verwaltete transparente Datenverschlüsselung
 

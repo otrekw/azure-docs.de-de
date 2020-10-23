@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 087c5e5716a4c8c640faebd7470905fde85d0136
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874287"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>Architektur einer Videoanalyseanwendung mit Objekt- und Bewegungserkennung
 
 Die Anwendungsvorlage **Videoanalyse: Objekt- und Bewegungserkennung** ermöglicht die Erstellung von IoT-Lösungen mit Funktionen für die Analyse von Livevideos.
 
-:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Aufbau":::
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Abbildung der Übersicht über die Objekt- und Bewegungserkennungskomponenten der Videoanalyse":::
 
 Die Videoanalyselösung umfasst folgende wichtige Komponenten:
 
@@ -41,4 +41,4 @@ Mithilfe des Mediendiagramms können Sie definieren, von wo aus die Medien erfas
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich als Nächstes über das [Erstellen einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“ in Azure IoT Central](tutorial-video-analytics-create-app.md).
+Als nächster Schritt bietet sich das [Bereitstellen einer IoT Central-Anwendung unter Verwendung der Anwendungsvorlage „Videoanalyse: Objekt- und Bewegungserkennung“](tutorial-video-analytics-deploy.md) an.

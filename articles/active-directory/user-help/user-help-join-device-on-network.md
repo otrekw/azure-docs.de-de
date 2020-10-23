@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536969"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.
@@ -48,13 +48,13 @@ Wenn Ihr Gerät ganz neu ist und noch nicht eingerichtet wurde, können Sie es m
 
 4. Genehmigen Sie Ihr Gerät auf Ihrem mobilen Gerät, sodass es Zugriff auf Ihr Konto hat. 
 
-    ![Bildschirm mit Benachrichtigung an das mobile Gerät](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Screenshot der Benachrichtigungsanzeige „Kennwort eingeben“](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Führen Sie den OOBE-Vorgang aus. Legen Sie dabei Ihre Datenschutzeinstellungen fest, und richten Sie ggf. Windows Hello ein.
 
     Ihr Gerät ist nun in das Netzwerk Ihrer Organisation eingebunden.
 
-## <a name="to-make-sure-youre-joined"></a>So stellen Sie sicher, dass Sie eingebunden sind
+## <a name="to-make-sure-youre-joined-new-device"></a>Überprüfen der Einbindung (neues Gerät)
 Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen überprüfen.
 
 1. Öffnen Sie **Einstellungen**, und klicken Sie dann auf **Konten**.
@@ -63,7 +63,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
 2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<your_organization>* Azure AD**.
 
-    ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Screenshot des Fensters „Auf Arbeits- oder Schulkonto zugreifen“ mit ausgewähltem Konto „Mit der Azure AD-Instanz von (Ihre Organisation) verbunden“](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>So binden Sie ein bereits konfiguriertes Windows 10-Gerät ein

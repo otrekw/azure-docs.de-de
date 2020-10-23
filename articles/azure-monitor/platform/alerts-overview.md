@@ -4,21 +4,20 @@ description: Übersicht über Benachrichtigungen in Azure Warnungen, klassische 
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371599"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317139"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
 In diesem Artikel wird beschrieben, was Warnungen sind, welche Vorteile sie haben und wie Sie mit der Nutzung beginnen.  
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. 
 
-In diesem Artikel wird die einheitliche Oberfläche für Warnungen in Azure Monitor behandelt, die auch Warnungen umfasst, die zuvor in Log Analytics und Application Insights verwaltet wurden. Die [früheren Erfahrungen mit Warnungen](alerts-classic.overview.md) und Warnungstypen werden als *klassische Warnungen* bezeichnet. Sie können diese ältere Oberfläche und den älteren Warnungstyp anzeigen, indem Sie oben auf der Warnungsseite die Option **Klassische Warnungen anzeigen** auswählen. 
+Warnungen benachrichtigen Sie proaktiv unter Verwendung der Überwachungsdaten in Azure Monitor, wenn Probleme mit Ihrer Infrastruktur oder Anwendung auftreten. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -30,7 +29,14 @@ Die Warnungsregeln sind von den Warnungen und Aktionen getrennt, die beim Auslö
 
 Nachfolgend sind die wichtigste Attribute einer Warnungsregel aufgeführt:
 
-**Zielressource**: Definiert den Umfang und die für Warnungen verfügbaren Signale. Ein Ziel kann eine beliebige Azure-Ressource sein. Beispiele für Ziele: Virtuelle Computer, Speicherkonten, VM-Skalierungsgruppen, Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen. Für bestimmte Ressourcen (wie virtuelle Computer) können Sie mehrere Ressourcen als Ziel der Warnungsregel angeben.
+**Zielressource**: Die Zielressource definiert den Umfang und die für Warnungen verfügbaren Signale. Ein Ziel kann eine beliebige Azure-Ressource sein. Beispielziele:
+
+- Virtuelle Computer
+- Speicherkonten
+- Log Analytics-Arbeitsbereich.
+- Application Insights. 
+
+Für bestimmte Ressourcen (wie virtuelle Computer) können Sie mehrere Ressourcen als Ziel der Warnungsregel angeben.
 
 **Signal**: Wird von der Zielressource ausgegeben. Zulässige Signaltypen sind: Metrik, Aktivitätsprotokoll, Application Insights und Protokoll.
 
@@ -40,7 +46,7 @@ Nachfolgend sind die wichtigste Attribute einer Warnungsregel aufgeführt:
 - Serverantwortzeit > 4 ms 
 - Anzahl der Ergebnisse einer Protokollabfrage > 100
 
-**Warnungsname**: Ein bestimmter Name für die Warnungsregel, der vom Benutzer konfiguriert wird.
+**Warnungsname**: Ein bestimmter Name für die Warnungsregel, der vom Benutzer konfiguriert wird
 
 **Warnungsbeschreibung**: Eine Beschreibung für die Warnungsregel, die vom Benutzer konfiguriert wird.
 
@@ -52,11 +58,11 @@ Nachfolgend sind die wichtigste Attribute einer Warnungsregel aufgeführt:
 - Schweregrad 3 = Information
 - Schweregrad 4 = Ausführlicher Modus 
 
-**Aktion:** Eine bestimmte Aktion, die ausgeführt wird, sobald die Warnung ausgelöst wird. Weitere Informationen finden Sie unter [Aktionsgruppen](./action-groups.md).
+**Aktion**: Eine bestimmte Aktion, die ausgeführt wird, sobald die Warnung ausgelöst wird. Weitere Informationen finden Sie unter [Aktionsgruppen](./action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Wofür Sie Warnungen ausgeben können
 
-Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](./data-sources.md) beschrieben ist. Dazu gehören unter anderem folgende Ansprüche:
+Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](./data-sources.md) beschrieben ist. Signale umfassen u. a. Folgendes:
 
 - Metrikwerte
 - Protokollsuchabfragen
@@ -64,35 +70,26 @@ Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Über
 - Integrität der zugrunde liegenden Azure-Plattform
 - Tests für die Verfügbarkeit von Websites
 
-Früher verfügten Azure Monitor-Metriken, Application Insights, Log Analytics und Service Health über separate Benachrichtigungsfunktionen. Im Laufe der Zeit verbesserte und kombinierte Azure sowohl die Benutzeroberfläche als auch verschiedene Benachrichtigungsmethoden. Diese Konsolidierung ist noch nicht abgeschlossen. Infolgedessen gibt es noch einige Benachrichtigungsfunktionen, die im neuen Warnungssystem noch nicht vorhanden sind.  
-
-| **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** |
-|-------------|----------------|-------------|
-| Dienstintegrität | Aktivitätsprotokoll  | Wird nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
-| Application Insights | Webverfügbarkeitstests | Wird nicht unterstützt. Siehe [Webtestwarnungen](../app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
-
 ## <a name="manage-alerts"></a>Warnungen verwalten
+
 Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt des Lösungsprozesses sie sich befindet. Wenn die in der Warnungsregel angegebenen Kriterien erfüllt sind, wird eine Warnung erstellt oder ausgelöst, die den Status *Neu* aufweist. Sie können den Status ändern, wenn Sie eine Warnung bestätigen oder schließen. Alle Statusänderungen werden im Warnungsverlauf gespeichert.
 
 Die folgenden Warnungsstatus werden unterstützt.
 
 | State | BESCHREIBUNG |
 |:---|:---|
-| Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
+| Neu | Das Problem wurde erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die Warnung überprüft und mit deren Bearbeitung begonnen. |
 | Geschlossen | Das Problem wurde gelöst. Nachdem eine Warnung geschlossen wurde, können Sie diese erneut öffnen, indem Sie den Status ändern. |
 
-*Warnungsstatus*: Der Warnungsstatus ist unabhängig von der *Überwachungsbedingung* und unterscheidet sich von dieser. Der Warnungsstatus wird vom Benutzer festgelegt. Die Überwachungsbedingung wird vom System bestimmt. Wenn eine Warnung ausgelöst wird, wird die Überwachungsbedingung der Warnung auf *Ausgelöst* festgelegt. Wenn die zugrunde liegende Bedingung gelöscht wurde, die die Warnung ausgelöst hat, wird die Überwachungsbedingung auf *Behoben* festgelegt. Der Warnungsstatus wird erst geändert, wenn der Benutzer ihn geändert hat. Erfahren Sie mehr über das [Ändern des Zustands Ihrer Warnungen und intelligenten Gruppen](https://aka.ms/managing-alert-smart-group-states).
+*Warnungsstatus*: Der Warnungsstatus ist unabhängig von der *Überwachungsbedingung* und unterscheidet sich von dieser. Der Warnungsstatus wird vom Benutzer festgelegt. Die Überwachungsbedingung wird vom System bestimmt. Wenn eine Warnung ausgelöst wird, wird die Überwachungsbedingung der Warnung auf *Ausgelöst* festgelegt, und wenn die zugrunde liegende Bedingung gelöscht wurde, die die Warnung ausgelöst hat, wird die Überwachungsbedingung auf *Behoben* festgelegt. 
 
-## <a name="smart-groups"></a>Intelligente Gruppen 
-
-Intelligente Gruppen sind Aggregationen von Warnungen basierend auf Algorithmen des maschinellen Lernens, die dabei helfen, Störungen bei Warnungen zu verringern sowie Probleme zu beheben. [Erfahren Sie mehr über intelligente Gruppen](https://aka.ms/smart-groups) und [zum Verwalten Ihrer intelligenten Gruppen](https://aka.ms/managing-smart-groups).
-
+Der Warnungsstatus wird erst geändert, wenn der Benutzer ihn geändert hat. Erfahren Sie mehr über das [Ändern des Zustands Ihrer Warnungen und intelligenten Gruppen](https://aka.ms/managing-alert-smart-group-states).
 
 ## <a name="alerts-experience"></a>Benutzeroberfläche „Warnungen“ 
 Die Standardseite „Warnungen“ enthält eine Zusammenfassung der Warnungen, die in einem bestimmten Zeitbereich erstellt werden. Sie zeigt die gesamten Warnungen für jeden Schweregrad mit Spalten an, in denen die Gesamtanzahl der Warnungen im jeweiligen Status für jeden Schweregrad angegeben ist. Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
 
-Alternativ können Sie auch [die Warnungsinstanzen, die für Ihre Abonnements mit REST-APIs generiert werden, programmgesteuert auflisten](#manage-your-alert-instances-programmatically).
+Stattdessen können Sie [die Warnungsinstanzen, die für Ihre Abonnements mit REST-APIs generiert werden, programmgesteuert auflisten](#manage-your-alert-instances-programmatically).
 
 > [!NOTE]
    >  Sie können nur auf Warnungen zugreifen, die in den letzten 30 Tagen generiert wurden.
@@ -103,7 +100,7 @@ Klassische Warnungen werden nicht angezeigt oder nachverfolgt. Sie können die A
 
 Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
-| Column | BESCHREIBUNG |
+| Column | Beschreibung |
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -134,7 +131,7 @@ Gehen Sie zum Erstellen einer neuen Warnungsregel wie folgt vor:
 1. Wählen Sie das _Ziel_ für die Warnung aus.
 1. Wählen Sie das _Signal_ aus den verfügbaren Signalen für das Ziel aus.
 1. Geben Sie die _Logik_ an, die auf Daten vom Signal angewendet werden soll.
- 
+
 Bei dieser vereinfachten Erstellung müssen Sie nicht mehr die Überwachungsquelle oder -signale kennen, die unterstützt werden, bevor eine Azure-Ressource ausgewählt wird. Die Liste verfügbarer Signale wird automatisch auf Grundlage der ausgewählten Zielressource gefiltert. Basierend auf diesem Ziel werden Sie auch automatisch durch das Festlegen der Logik der Warnungsregel geführt.  
 
 Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](./alerts-metric.md).
@@ -149,7 +146,7 @@ Klicken Sie auf **Warnungen gesamt**, um die Seite **Alle Warnungen** anzuzeigen
 
 Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am oberen Rand der Seite auswählen:
 
-| Column | BESCHREIBUNG |
+| Column | Beschreibung |
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -174,7 +171,7 @@ Die Seite „Warnungsdetails“ enthält die folgenden Abschnitte:
 |:---|:---|
 | Zusammenfassung | Zeigt die Eigenschaften und andere wichtige Informationen zur Warnung an. |
 | Verlauf | Listet die einzelnen Aktionen, die von der Warnung ausgeführt wurden, und alle an der Warnung vorgenommenen Änderungen auf. Das beschränkt sich derzeit auf Statusänderungen. |
-| Diagnose | Informationen zur intelligenten Gruppe, der die Warnung angehört. Die *Warnungsanzahl* bezieht sich auf die Anzahl der Warnungen, die in der intelligenten Gruppe enthalten sind. Die Informationen enthalten andere Warnungen in der gleichen intelligenten Gruppe, die in den letzten 30 Tagen erstellt wurden, unabhängig vom Zeitfilter auf der Seite mit der Warnungsliste. Klicken Sie auf eine Warnung, um deren Details anzuzeigen. |
+| Diagnose | Informationen zur intelligenten Gruppe, der die Warnung angehört. Die *Warnungsanzahl* bezieht sich auf die Anzahl der Warnungen, die in der intelligenten Gruppe enthalten sind. Die Informationen enthalten andere Warnungen in der gleichen intelligenten Gruppe, die in den letzten 30 Tagen erstellt wurden, unabhängig vom Zeitfilter auf der Seite mit der Warnungsliste. Klicken Sie auf eine Warnung, um deren Details anzuzeigen. |
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Warnungsinstanzen
 
@@ -182,11 +179,11 @@ Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über di
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Programmgesteuertes Verwalten Ihrer Warnungsinstanzen
 
-Möglicherweise möchten Sie Warnungen, die für Ihr Abonnement generiert wurden, programmgesteuert abfragen. Zum Beispiel kann es sein, dass Sie benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen wollen oder Ihre Warnungen analysieren möchten, um Muster und Trends zu erkennen.
+Möglicherweise möchten Sie Warnungen, die für Ihr Abonnement generiert wurden, programmgesteuert abfragen. Beispielsweise können Sie mit Abfragen benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen oder Ihre Warnungen analysieren, um Muster und Trends zu erkennen.
 
 Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) oder der [Azure Resource Graph-REST-API](../../governance/resource-graph/overview.md) und der [REST-API für Ressourcen](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) abfragen.
 
-Die Resource Graph-REST-API für Ressourcen ermöglicht Ihnen das Abfragen von Warnungsinstanzen in beliebigem Umfang. Dies wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
+Die Resource Graph-REST-API für Ressourcen ermöglicht Ihnen das Abfragen von Warnungsinstanzen in beliebigem Umfang. Resource Graph wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
 
 Die folgende Beispielanforderung an die Resource Graph-REST-API gibt die Anzahl der Warnungen in einem Abonnement zurück:
 
@@ -204,6 +201,10 @@ Das Ergebnis dieser Resource Graph-Abfrage können Sie auch im Portal mit dem Az
 Sie können die Warnungen nach den Feldern in [essentials](alerts-common-schema-definitions.md#essentials) (Zusammenfassung) abfragen.
 
 Mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) können weitere Informationen zu bestimmten Warnungen abgerufen werden, einschließlich der Felder in [alertContext](alerts-common-schema-definitions.md#alert-context) (Warnungskontext).
+
+## <a name="smart-groups"></a>Intelligente Gruppen
+
+Intelligente Gruppen sind Aggregationen von Warnungen basierend auf Algorithmen des maschinellen Lernens, die dabei helfen, Störungen bei Warnungen zu verringern sowie Probleme zu beheben. [Erfahren Sie mehr über intelligente Gruppen](https://aka.ms/smart-groups) und [zum Verwalten Ihrer intelligenten Gruppen](https://aka.ms/managing-smart-groups).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

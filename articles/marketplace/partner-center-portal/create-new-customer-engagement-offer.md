@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: c488daeafefce23d1fc65fe61e8c0f39cd1c0490
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bcb14c786ab652b1c51a3d3bf487e39fd0ebfdb6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646709"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710684"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -36,7 +36,8 @@ Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Par
 Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
 - Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
-- Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Die Angebots-ID darf zusammen mit der Herausgeber-ID nicht länger als 40 Zeichen lang sein.
+- Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen. Wenn die Herausgeber-ID z. B. „testpublisherid“ heißt und Sie **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1`.
 - Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
 Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
@@ -56,11 +57,11 @@ Wählen Sie die Option aus, die Sie für dieses Angebot verwenden möchten.
 
 #### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
 
-Listen Sie Ihr Angebot für Kunden als kostenlos, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/my-app`.
+Listen Sie Ihr Angebot für Kunden als kostenlos auf.
 
 #### <a name="free-trial-listing"></a>Kostenlose Testversion (Listing)
 
-Erstellen Sie für Ihre Kunden einen Eintrag für Ihr Angebot mit einem Link zu einer kostenlosen Testversion, indem Sie eine gültige URL (mit `http` oder `https` beginnend) angeben, unter der die Testversion erhältlich ist.  Beispiel: `https://contoso.com/trial/my-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
+Listen Sie Ihr Angebot für Kunden als kostenlos auf, und stellen Sie einen Link zu einer kostenlose Testversion bereit. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
 
 > [!NOTE]
 > Die Token, die Ihre Anwendung über den Testlink erhält, können nur verwendet werden, um zum Automatisieren der Kontoerstellung in Ihrer App Benutzerinformationen aus Azure Active Directory (Azure AD) abzurufen. Die Authentifizierung mit diesem Token wird für Microsoft-Konten nicht unterstützt.
@@ -190,7 +191,7 @@ Geben Sie mindestens ein zugehöriges Marketingdokument (und höchstens drei) im
 
 Stellen Sie Logos und Bilder für Ihr Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
@@ -199,8 +200,8 @@ Stellen Sie Logos und Bilder für Ihr Angebot bereit. Alle Bilder müssen das PN
 
 Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** Logo zu erstellen. Später können Sie dieses Logo optional durch ein anderes Bild ersetzen.
 
-- **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
-- **Klein** (48 x 48 Pixel, optional)
+- **Groß** (von 216 x 216 bis 350 x 350 px, erforderlich)
+- **Klein** (48 x 48 px, optional)
 
 Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 

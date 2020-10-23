@@ -1,27 +1,24 @@
 ---
-title: Schützen einer API über OAuth 2.0 mit AAD und API Management
+title: Schützen des API-Back-Ends in API Management mithilfe von OAuth 2.0 und Azure AD
 titleSuffix: Azure API Management
-description: Hier erfahren Sie, wie Sie ein Web-API-Back-End mit Azure Active Directory und API Management schützen.
+description: Hier erfahren Sie, wie Sie den Zugriff auf ein Web-API-Back-End in Azure API Management mit der OAuth 2.0-Benutzerautorisierung und Azure Active Directory sichern.
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: contperfq1
+ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243408"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91618776"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Schützen eines Web-API-Back-Ends in Azure API Management mithilfe der OAuth 2.0-Autorisierung mit Azure AD 
 
-In diesem Handbuch wird gezeigt, wie Sie Ihre Azure API Management-Instanz so konfigurieren, dass eine API über das OAuth 2.0-Protokoll mit Azure Active Directory (Azure AD) geschützt ist. 
+In diesem Handbuch wird gezeigt, wie Sie Ihre [Azure API Management-Instanz](api-management-key-concepts.md) so konfigurieren, dass eine API über das [OAuth 2.0-Protokoll mit Azure Active Directory (Azure AD)](../active-directory/develop/active-directory-v2-protocols.md) geschützt ist. 
 
 > [!NOTE]
 > Diese Funktion ist in den Tarifen **Developer**, **Basic** und **Standard** und **Premium** von API Management verfügbar.
@@ -46,9 +43,9 @@ Im Folgenden finden Sie eine kurze Übersicht dieser Schritte:
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Registrieren einer Anwendung in Azure AD, die die API darstellt
 
-Um eine API mit Azure AD zu schützen, registrieren Sie zuerst eine Anwendung in Azure AD, die die API darstellt. 
+Um eine API mit Azure AD zu schützen, registrieren Sie zuerst eine Anwendung in Azure AD, die die API darstellt. In den folgenden Schritten wird das Azure-Portal zum Registrieren der Anwendung verwendet. Ausführliche Informationen zur App-Registrierung finden Sie unter [Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](../active-directory/develop/quickstart-configure-app-expose-web-apis.md)
 
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendung zu registrieren. Suchen Sie nach **API-Registrierungen**, und wählen Sie sie aus.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendung zu registrieren. Suchen Sie nach **App-Registrierungen**, und klicken Sie darauf.
 
 1. Wählen Sie **Neue Registrierung** aus. 
 
@@ -79,7 +76,7 @@ So registrieren Sie eine weitere Anwendung in Azure AD, die die Entwicklerkonsol
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendung zu registrieren.
 
-1.  Suchen Sie nach **API-Registrierungen**, und wählen Sie sie aus.
+1. Suchen Sie nach **App-Registrierungen**, und klicken Sie darauf.
 
 1. Wählen Sie **Neue Registrierung** aus.
 
@@ -106,7 +103,7 @@ Nachdem Sie das Geheimnis erstellt haben, notieren Sie sich den Schlüsselwert, 
 
 Nachdem nun zwei Anwendungen registriert sind, die die API und die Entwicklerkonsole darstellen, gewähren Sie Berechtigungen, damit die Client-App die Back-End-App aufrufen kann.  
 
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihrer Clientanwendung Berechtigungen zu erteilen. Suchen Sie nach **API-Registrierungen**, und wählen Sie sie aus.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihrer Clientanwendung Berechtigungen zu erteilen. Suchen Sie nach **App-Registrierungen**, und klicken Sie darauf.
 
 1. Wählen Sie Ihre Client-App aus. Wählen Sie dann in der Liste der Seiten für die App **API-Berechtigungen** aus.
 

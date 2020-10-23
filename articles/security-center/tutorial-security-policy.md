@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894571"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945742"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -46,7 +46,7 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
 1. Wählen Sie im **Security Center**-Dashboard die Option **Sicherheitsrichtlinie**.
 
-    ![Bereich „Richtlinienverwaltung“](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Seite „Richtlinienverwaltung“":::
 
    Auf dem Bildschirm **Richtlinienverwaltung** können Sie die Anzahl von Verwaltungsgruppen, Abonnements und Arbeitsbereichen sowie Ihre Verwaltungsgruppenstruktur anzeigen.
 
@@ -68,8 +68,8 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
     1. Zum Anzeigen und Bearbeiten der Standardrichtlinie wählen Sie **Effektive Richtlinie anzeigen** aus und fahren wie unten beschrieben fort. 
 
-       ![Bildschirm mit Richtlinien](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Seite „Richtlinienverwaltung“":::
+
        Auf diesem Bildschirm **Sicherheitsrichtlinie** wird die Aktion der Richtlinien widergespiegelt, die dem von Ihnen ausgewählten Abonnement oder der Verwaltungsgruppe zugewiesen sind.
        
        * Verwenden Sie die oben angegebenen Links, um eine **Richtlinienzuweisung** zu öffnen, die für das Abonnement bzw. die Verwaltungsgruppe gilt. Mit diesen Links können Sie auf die Zuweisung zuzugreifen und die Richtlinie bearbeiten oder deaktivieren. Wenn Sie beispielsweise feststellen, dass eine bestimmte Richtlinienzuweisung den Endpunktschutz verhindert, können Sie die Richtlinie über den Link bearbeiten oder deaktivieren.
@@ -131,8 +131,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel werden die Sicherheitsrichtlinien beschrieben. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* Anweisungen dazu, wie Richtlinien über PowerShell festgelegt werden, finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure PowerShell-Moduls](../governance/policy/assign-policy-powershell.md).
-
-* Anweisungen zum Bearbeiten einer Sicherheitsrichtlinie in Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md).
-
-* Anweisungen zum Festlegen einer Richtlinie für Abonnements oder Verwaltungsgruppen mithilfe von Azure Policy finden Sie unter [Was ist Azure Policy?](../governance/policy/overview.md).
+- [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure PowerShell](../governance/policy/assign-policy-powershell.md) - 
+- [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md) - 
+- [Was ist Azure Policy?](../governance/policy/overview.md)
+- [Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe](onboard-management-group.md)

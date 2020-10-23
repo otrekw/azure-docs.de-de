@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650994"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91759082"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
@@ -181,7 +181,7 @@ Um einen beliebigen Preis vor der Veröffentlichung anzupassen, exportieren Sie 
 
 Der Preis eines Angebots wird dem Kunden immer in seiner lokalen Währung angezeigt. Der Preis, den Sie in Partner Center auswählen, wird gemäß dem Wechselkurs, der zum Zeitpunkt des Speichern des Preises in Partner Center gültig war, in die lokale Währung des Kunden umgerechnet. Der dem Kunden in den Onlineshops angezeigte Preis ändert sich erst, wenn Sie Ihr Angebot erneut veröffentlichen.
 
-Microsoft erhält Zahlungen von Kunden in deren lokaler Währung und bezahlt Sie in Ihrer lokalen Währung. Microsoft rechnet die lokale Währung des Kunden anhand des Wechselkurses, der am Tag des Kaufs gültig war, in Ihre lokale Währung um.
+Microsoft erhält Zahlungen von Kunden in deren lokaler Währung und bezahlt Sie in der in Partner Center ausgewählten Währung. Microsoft rechnet die lokale Währung des Kunden anhand des Wechselkurses um, der am Tag des Kaufs gültig war.
 
 > [!NOTE]
 > Microsoft rechnet Angebotspreise mit dem Microsoft Treasury-Wechselkurs um.

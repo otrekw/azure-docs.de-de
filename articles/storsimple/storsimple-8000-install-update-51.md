@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052170"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575961"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Installieren von Update 5.1 auf Ihrem StorSimple-Gerät
 
@@ -60,15 +60,15 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf [Update 5.1](storsimpl
 
 2. Navigieren Sie zu **Geräteeinstellungen** > **Geräteupdates**.
 
-    ![Klicken Sie auf „Geräteupdates“.](./media/storsimple-8000-install-update-51/update2.png)
+    ![Screenshot: Blatt „Einstellungen“ mit der hervorgehobenen Option „Geräteupdates“](./media/storsimple-8000-install-update-51/update2.png)
 
 3. Eine Benachrichtigung wird angezeigt, wenn neue Updates verfügbar sind. Alternativ können Sie auf dem Blatt **Geräteupdates** auf **Updates scannen** klicken. Ein Auftrag für die Suche nach verfügbaren Updates wird erstellt. Sie werden benachrichtigt, wenn der Auftrag erfolgreich abgeschlossen wurde.
 
-    ![Klicken Sie auf „Geräteupdates“.](./media/storsimple-8000-install-update-51/update3.png)
+    ![Screenshot: Blatt „Einstellungen“ mit der hervorgehobenen Option „Geräteupdates“ und Blatt „Geräteupdates“ mit der hervorgehobenen Meldung „Es sind neue reguläre Updates verfügbar.“](./media/storsimple-8000-install-update-51/update3.png)
 
 4. Es empfiehlt sich, die Versionshinweise zu lesen, bevor Sie ein Update auf Ihr Gerät anwenden. Klicken Sie zum Anwenden von Updates auf **Updates installieren**. Überprüfen Sie auf dem Blatt **Reguläre Updates bestätigen** die Voraussetzungen, bevor Sie Updates anwenden. Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie bereit sind, das Gerät zu aktualisieren, und klicken Sie dann auf **Installieren**.
 
-    ![Klicken Sie auf „Geräteupdates“.](./media/storsimple-8000-install-update-51/update4.png)
+    ![Screenshot: Blatt „Geräteupdates“, auf dem die Option „Updates installieren“ hervorgehoben ist, und Blatt „Reguläre Updates bestätigen“, auf dem die Zustimmungsoption sowie die Option „Installieren“ hervorgehoben sind](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Eine Reihe von Voraussetzungsüberprüfungen wird gestartet. Diese Prüfungen umfassen:
    
@@ -80,17 +80,17 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf [Update 5.1](storsimpl
 
 7. Wenn die Vorüberprüfungen erfolgreich abgeschlossen wurden, wird ein Updateauftrag erstellt. Sie werden benachrichtigt, wenn der Updateauftrag erfolgreich erstellt wurde.
    
-    ![Erstellen eines Updateauftrags](./media/storsimple-8000-install-update-51/update6.png)
+    ![Screenshot: Benachrichtigung „Der Auftrag für Softwareupdates wird auf dem Gerät "{0}" gestartet.“](./media/storsimple-8000-install-update-51/update6.png)
    
     Das Update wird dann auf Ihr Gerät angewendet.
 
 9. Das Update dauert einige Stunden. Durch Auswählen des Updateauftrags und Klicken auf **Details** können Sie jederzeit die Details des Auftrags anzeigen.
 
-    ![Erstellen eines Updateauftrags](./media/storsimple-8000-install-update-51/update8.png)
+    ![Screenshot: Blatt „Geräteupdates“ mit hervorgehobener Option „Die Softwareupdates werden heruntergeladen und installiert“ und Blatt „Updates installieren“](./media/storsimple-8000-install-update-51/update8.png)
 
      Sie können den Fortschritt des Updateauftrags auch über **Geräteeinstellungen > Aufträge** überwachen. Auf dem Blatt **Aufträge** sehen Sie den Updatestatus.
 
-     ![Erstellen eines Updateauftrags](./media/storsimple-8000-install-update-51/update7.png)
+     ![Screenshot: Blatt „Einstellungen“ mit hervorgehobener Option „Aufträge“ und Blatt „Aufträge“ mit dem Status des Updates](./media/storsimple-8000-install-update-51/update7.png)
 
 10. Nachdem der Auftrag abgeschlossen ist, navigieren Sie zu **Geräteeinstellungen > Geräteupdates**. Die Softwareversion sollte jetzt aktualisiert sein.
 

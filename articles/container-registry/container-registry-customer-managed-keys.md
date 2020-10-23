@@ -1,19 +1,19 @@
 ---
-title: Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel
+title: Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer Azure Container Registry und wie Sie Ihre Premium-Registrierung mit einem kundenseitig verwalteten Schlüssel verschlüsseln, der in Azure Key Vault gespeichert ist.
 ms.topic: article
-ms.date: 08/26/2020
+ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487231"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940666"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 
-Wenn Sie Images und andere Artefakte in einer Azure Container Registry speichern, verschlüsselt Azure automatisch den ruhenden Registrierungsinhalt mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-models.md). Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie einen Schlüssel verwenden, den Sie in Azure Key Vault erstellen und verwalten. Dieser Artikel führt Sie Schritt für Schritt durch die Verwendung der Azure CLI und des Azure-Portals.
+Wenn Sie Images und andere Artefakte in einer Azure Container Registry speichern, verschlüsselt Azure automatisch den ruhenden Registrierungsinhalt mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-models.md). Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie einen Schlüssel verwenden, den Sie in Azure Key Vault erstellen und verwalten (kundenseitig verwalteter Schlüssel). Dieser Artikel führt Sie Schritt für Schritt durch die Verwendung der Azure CLI und des Azure-Portals.
 
 Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird durch die Integration in [Azure Key Vault](../key-vault/general/overview.md) unterstützt. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Schlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen.
 
@@ -84,7 +84,7 @@ identityPrincipalID=$(az identity show --resource-group <resource-group-name> --
 
 Erstellen Sie einen Schlüsseltresor mit [az keyvault create][az-keyvault-create], um einen kundenseitig verwalteten Schlüssel für die Registrierungsverschlüsselung zu speichern.
 
-Um Datenverluste aufgrund versehentlich gelöschter Schlüssel oder Schlüsseltresore zu vermeiden, müssen Sie die folgenden Einstellungen aktivieren: **Vorläufiges Löschen** und **Löschschutz**. Das folgende Beispiel enthält Parameter für diese Einstellungen:
+Aktivieren Sie die folgenden Einstellungen, um Datenverluste aufgrund von versehentlich gelöschten Schlüsseln oder Schlüsseltresoren zu vermeiden: **Vorläufiges Löschen** und **Löschschutz**. Das folgende Beispiel enthält Parameter für diese Einstellungen:
 
 ```azurecli
 az keyvault create --name <key-vault-name> \
@@ -93,7 +93,16 @@ az keyvault create --name <key-vault-name> \
   --enable-purge-protection
 ```
 
-### <a name="add-key-vault-access-policy"></a>Hinzufügen einer Schlüsseltresor-Zugriffsrichtlinie
+> [!NOTE]
+> Ab Version 2.2 der Azure CLI aktiviert `az keyvault create` das vorläufige Löschen standardmäßig.
+
+Rufen Sie die Ressourcen-ID des Schlüsseltresors zur Verwendung in einem späteren Schritt ab:
+
+```azurecli
+keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key-vault-name> --query 'id' --output tsv)
+```
+
+### <a name="enable-key-vault-access"></a>Aktivieren des Zugriffs auf den Schlüsseltresor
 
 Konfigurieren Sie eine Richtlinie für den Schlüsseltresor, damit die Identität darauf zugreifen kann. In dem folgenden Befehl [az keyvault set-policy][az-keyvault-set-policy] übergeben Sie die zuvor in einer Umgebungsvariablen gespeicherte Prinzipal-ID der verwalteten Identität, die Sie zuvor erstellt hatten. Legen Sie Schlüsselberechtigungen auf **get**, **unwrapkey** und **wrapkey** fest.  
 
@@ -103,6 +112,14 @@ az keyvault set-policy \
   --name <key-vault-name> \
   --object-id $identityPrincipalID \
   --key-permissions get unwrapKey wrapKey
+```
+
+Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-guide.md) (Vorschau) verwenden, um der Identität Zugriffsberechtigungen für den Schlüsseltresor zuzuweisen. Weisen Sie der Identität über den Befehl [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) z. B.die Rolle „Key Vault Crypto Service Encryption“ (Key Vault-Kryptografiedienstverschlüsselung) zu:
+
+```azurecli 
+az role assignment create --assignee $identityPrincipalID \
+  --role "Key Vault Crypto Service Encryption (preview)" \
+  --scope $keyvaultID
 ```
 
 ### <a name="create-key-and-get-key-id"></a>Erstellen eines Schlüssels und Abrufen der Schlüssel-ID
@@ -199,7 +216,7 @@ Wenn Sie einen Schlüsseltresor für einen kundenseitig verwalteten Schlüssel e
 
 ![Erstellen eines Schlüsseltresors im Azure-Portal](./media/container-registry-customer-managed-keys/create-key-vault.png)
 
-### <a name="add-key-vault-access-policy"></a>Hinzufügen einer Schlüsseltresor-Zugriffsrichtlinie
+### <a name="enable-key-vault-access"></a>Aktivieren des Zugriffs auf den Schlüsseltresor
 
 Konfigurieren Sie eine Richtlinie für den Schlüsseltresor, damit die Identität darauf zugreifen kann.
 
@@ -210,6 +227,15 @@ Konfigurieren Sie eine Richtlinie für den Schlüsseltresor, damit die Identitä
 1. Wählen Sie **Hinzufügen** und dann **Speichern** aus.
 
 ![Erstellen einer Schlüsseltresor-Zugriffsrichtlinie](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
+
+ Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-guide.md) (Vorschau) verwenden, um der Identität Zugriffsberechtigungen für den Schlüsseltresor zuzuweisen. Weisen Sie der Identität z. B.die Rolle „Key Vault Crypto Service Encryption“ (Key Vault-Kryptografiedienstverschlüsselung) zu.
+
+1. Navigieren Sie zu Ihrem Schlüsseltresor.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**  >  **+ Hinzufügen** > **Rollenzuweisung hinzufügen**.
+1. Führen Sie im Fenster**Rollenzuweisung hinzufügen** die folgenden Aktionen aus:
+    1. Wählen Sie die Rolle **Key Vault Crypto Service Encryption (Preview)** (Key Vault-Kryptografiedienstverschlüsselung (Vorschau)) aus. 
+    1. Weisen Sie der **benutzerseitig zugewiesenen verwalteten Identität** Zugriff zu.
+    1. Wählen Sie den Ressourcennamen Ihrer benutzerseitig zugewiesenen verwalteten Identität aus, und klicken Sie auf **Speichern**.
 
 ### <a name="create-key"></a>Erstellen eines Schlüssels
 
@@ -381,7 +407,7 @@ Rotieren Sie einen kundenseitig verwalteten Schlüssel, der für die Registrieru
 Beim Rotieren eines Schlüssels geben Sie in der Regel dieselbe Identität an, die beim Erstellen der Registrierung verwendet wurde. Optional konfigurieren Sie eine neue benutzerseitig zugewiesene Identität für den Schlüsselzugriff, oder Sie aktivieren die systemseitig zugewiesene Identität der Registrierung und geben diese an.
 
 > [!NOTE]
-> Stellen Sie sicher, dass die erforderliche [Schlüsseltresorzugriffs-Richtlinie](#add-key-vault-access-policy) für die Identität festgelegt ist, die Sie für den Schlüsselzugriff konfigurieren.
+> Stellen Sie sicher, dass der erforderliche [Schlüsseltresorzugriff](#enable-key-vault-access) für die Identität festgelegt ist, die Sie für den Schlüsselzugriff konfigurieren.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -432,7 +458,7 @@ Um beispielsweise eine neue Schlüsselversion zu generieren und zu konfigurieren
 
 ## <a name="revoke-key"></a>Widerrufen eines Schlüssels
 
-Widerrufen Sie den kundenseitig verwalteten Verschlüsselungsschlüssel, indem Sie die Zugriffsrichtlinie für den Schlüsseltresor ändern oder den Schlüssel löschen. Verwenden Sie z. B. den Befehl [az keyvault delete-policy][az-keyvault-delete-policy], um die Zugriffsrichtlinie für die verwaltete Identität zu ändern, die von Ihrer Registrierung verwendet wird:
+Widerrufen Sie den kundenseitig verwalteten Verschlüsselungsschlüssel, indem Sie die Zugriffsrichtlinie oder die Berechtigungen für den Schlüsseltresor ändern oder den Schlüssel löschen. Verwenden Sie z. B. den Befehl [az keyvault delete-policy][az-keyvault-delete-policy], um die Zugriffsrichtlinie für die verwaltete Identität zu ändern, die von Ihrer Registrierung verwendet wird:
 
 ```azurecli
 az keyvault delete-policy \
@@ -478,7 +504,7 @@ So aktualisieren Sie die Verschlüsselungseinstellungen der Registrierung für d
 
 ### <a name="enable-key-vault-bypass"></a>Aktivieren der Key Vault-Umgehung
 
-Um auf einen mit einer Key Vault-Firewall konfigurierten Schlüsseltresor zuzugreifen, muss die Registrierung die Firewall umgehen. Konfigurieren Sie den Schlüsseltresor so, dass der Zugriff durch jeden [vertrauenswürdigen Dienst](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services) zugelassen wird. Azure Container Registry ist einer der vertrauenswürdigen Dienste.
+Um auf einen mit einer Key Vault-Firewall konfigurierten Schlüsseltresor zuzugreifen, muss die Registrierung die Firewall umgehen. Stellen Sie sicher, dass der Schlüsseltresor so konfiguriert ist, dass der Zugriff durch jeden [vertrauenswürdigen Dienst](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services) zugelassen wird. Azure Container Registry ist einer der vertrauenswürdigen Dienste.
 
 1. Navigieren Sie im Portal zu Ihrem Schlüsseltresor.
 1. Wählen Sie **Einstellungen** > **Netzwerk** aus.
@@ -488,6 +514,24 @@ Um auf einen mit einer Key Vault-Firewall konfigurierten Schlüsseltresor zuzugr
 ### <a name="rotate-the-customer-managed-key"></a>Rotieren des kundenseitig verwalteten Schlüssels
 
 Nachdem Sie die vorangehenden Schritte ausgeführt haben, rotieren Sie den Schlüssel in einen neuen Schlüssel im Schlüsseltresor hinter einer Firewall. Weitere Informationen finden Sie unter [Rotieren von Schlüsseln](#rotate-key) in diesem Artikel.
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+### <a name="removing-user-assigned-identity"></a>Entfernen der benutzerseitig zugewiesenen Identität
+
+Wenn Sie versuchen, eine benutzerseitig zugewiesene Identität aus einer Registrierung zu entfernen, die für die Verschlüsselung verwendet wird, wird möglicherweise eine Fehlermeldung ähnlich der folgenden angezeigt:
+ 
+```
+Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
+```
+ 
+Darüber hinaus können Sie den Verschlüsselungsschlüssel nicht ändern (rotieren). Wenn dieses Problem auftritt, weisen Sie zunächst die Identität mit der in der Fehlermeldung angegebenen GUID neu zu. Beispiel:
+
+```azurecli
+az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+```
+        
+Nach dem Ändern des Schlüssels und dem Zuweisen einer anderen Identität können Sie dann die ursprüngliche benutzerseitig zugewiesene Identität entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

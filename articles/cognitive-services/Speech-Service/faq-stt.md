@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661519"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397758"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -29,7 +29,7 @@ Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen fin
 
 **F: Wo fange ich an, wenn ich ein Basismodell verwenden möchte?**
 
-**A:** Rufen Sie zunächst einen [Abonnementschlüssel](get-started.md) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Basismodelle finden Sie in den [REST-APIs](rest-apis.md). Wenn Sie WebSockets verwenden möchten, [laden Sie das SDK herunter](speech-sdk.md).
+**A:** Rufen Sie zunächst einen [Abonnementschlüssel](overview.md#try-the-speech-service-for-free) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Basismodelle finden Sie in den [REST-APIs](rest-apis.md). Wenn Sie WebSockets verwenden möchten, [laden Sie das SDK herunter](speech-sdk.md).
 
 **F: Muss ich immer ein benutzerdefiniertes Sprachmodell erstellen?**
 
@@ -152,17 +152,17 @@ Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech S
 
 **A:** Das Hochladen einer Liste von Wörtern fügt die Wörter dem Wortschatz hinzu, trainiert das System aber nicht, wie die Wörter typischerweise verwendet werden. Durch die Bereitstellung vollständiger oder teilweiser Äußerungen (Sätze oder Ausdrücke, die von Benutzern üblicherweise verwendet werden) kann das Sprachmodell die neuen Wörter und deren Verwendung lernen. Das benutzerdefinierte Sprachmodell eignet sich nicht nur gut dazu, neue Wörter dem System hinzuzufügen, sondern auch, die Wahrscheinlichkeit bekannter Wörter für Ihre Anwendung anzupassen. Vollständige Äußerungen helfen dem System, besser zu lernen.
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>Mandantenmodell (Custom Speech mit Office 365-Daten)
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>Mandantenmodell (Custom Speech mit Microsoft 365-Daten)
 
 **F: Welche Informationen sind im Mandantenmodell enthalten, und wie wird es erstellt?**
 
-**A:** Ein Mandantenmodell wird mit E-Mails und Dokumenten der [öffentlichen Gruppe ](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können.
+**A:** Ein Mandantenmodell wird mit E-Mails und Dokumenten der [öffentlichen Gruppe ](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können.
 
 **F: Welche Sprachfunktion wird durch das Mandantenmodell verbessert?**
 
 **A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Speech-Diensts erstellt wurden. Dadurch wird auch ein Azure AD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt.
 
-Die in Office 365 integrierten Sprachfunktionen wie beispielsweise Diktat und PowerPoint-Untertitel werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Speech-Dienstanwendungen erstellen.
+Die in Microsoft 365 integrierten Sprachfunktionen wie Diktat und PowerPoint-Untertitel werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Speech-Dienstanwendungen erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

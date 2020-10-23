@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184294"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398185"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000
 
@@ -80,8 +80,8 @@ Stellen Sie Folgendes sicher, bevor Sie mit der Migration beginnen:
 
     ![Überprüfen der Softwareversion auf dem Legacygerät](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Führen Sie für Ihr System ein Upgrade auf die erforderliche Mindestversion durch, wenn Ihr aktives Gerät nicht über v2.1.1.518 oder höher verfügt. Eine ausführliche Anleitung finden Sie unter [Software Patch Upgrade Guide v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518) (Anleitung für Softwarepatchupgrade auf v2.1.1.518).
-    * Wenn Version v2.1.1.518 ausgeführt wird, können Sie auf der Webbenutzeroberfläche nachsehen, ob Benachrichtigungen zu Wiederherstellungsfehlern für die Registrierung vorhanden sind. Führen Sie die Registrierungswiederherstellung aus, falls dieser Vorgang fehlgeschlagen ist. Weitere Informationen finden Sie unter [Restoring Backup Registry](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry) (Wiederherstellen der Sicherungsregistrierung).
+    * Führen Sie für Ihr System ein Upgrade auf die erforderliche Mindestversion durch, wenn Ihr aktives Gerät nicht über v2.1.1.518 oder höher verfügt. Unter Umständen müssen Sie sich an den Microsoft-Support wenden, um das Upgrade auszuführen.
+    * Wenn Version v2.1.1.518 ausgeführt wird, können Sie auf der Webbenutzeroberfläche nachsehen, ob Benachrichtigungen zu Wiederherstellungsfehlern für die Registrierung vorhanden sind. Führen Sie die Registrierungswiederherstellung aus, falls dieser Vorgang fehlgeschlagen ist. Unter Umständen müssen Sie sich an den Microsoft-Support wenden, um die Registrierung wiederherzustellen.
     * Wenn Sie über ein ausgefallenes Gerät verfügen, auf dem nicht v2.1.1.518 ausgeführt wird, können Sie ein Failover auf ein Ersatzgerät durchführen, auf dem v2.1.1.518 ausgeführt wird. Eine ausführliche Anleitung finden Sie unter den Informationen zur Notfallwiederherstellung Ihres StorSimple-Geräts der Serie 5000/7000.
     * Sichern Sie die Daten für Ihr Gerät, indem Sie eine Cloudmomentaufnahme erstellen.
     * Suchen Sie nach anderen aktiven Sicherungsaufträgen, die auf dem Quellgerät ausgeführt werden. Dies umfasst auch die Aufträge auf dem Host mit der Konsole für den StorSimple-Datenschutz. Warten Sie, bis die aktuellen Aufträge abgeschlossen sind.

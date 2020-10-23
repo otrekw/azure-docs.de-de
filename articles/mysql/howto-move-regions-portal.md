@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c9751a303afc947fd682558236751c69f107dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567574"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542511"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Azure Database for MySQL-Servers mithilfe des Azure-Portals in eine andere Region
 
@@ -38,11 +38,11 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals einen regi
 1. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 1. Wählen Sie **Replikat hinzufügen**.
 1. Geben Sie einen Namen für den Replikatserver ein.
-1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Masterservers identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
-1. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen. Während der Replikaterstellung werden die Daten vom Quellserver in das Replikat kopiert. Die Erstellung kann mehrere Minuten oder sogar länger dauern. Dies hängt von der Größe des Quellservers ab.
+1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Quellserver identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
+1. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen. Während der Replikaterstellung werden die Daten vom Quellserver auf das Replikat kopiert. Die Erstellung kann mehrere Minuten oder sogar länger dauern, dies hängt von der Größe des Quellservers ab.
 
 >[!NOTE]
-> Wenn Sie ein Replikat erstellen, erbt es nicht die VNET-Dienstendpunkte des Masterservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
+> Wenn Sie ein Replikat erstellen, erbt es nicht die VNET-Dienstendpunkte des Quellservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
 
 ## <a name="move"></a>Move
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals einen regi
 > Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 > Stellen Sie vor dem Beenden der Replikation auf einem Lesereplikat sicher, dass das Replikat alle erforderlichen Daten enthält.
 
-Das Beenden der Replikation auf dem Replikatserver macht diesen zu einem eigenständigen Server. Führen Sie die folgenden Schritte aus, um im Azure-Portal die Replikation in das Replikat zu beenden:
+Das Beenden der Replikation auf dem Replikatserver macht diesen zu einem eigenständigen Server. Führen Sie die folgenden Schritte aus, um im Azure-Portal die Replikation auf dem Replikat zu beenden:
 
 1. Nachdem das Replikat erstellt wurde, suchen Sie den Azure Database for MySQL-Quellserver, und wählen Sie ihn aus. 
 1. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.

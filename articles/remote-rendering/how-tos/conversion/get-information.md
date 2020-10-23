@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870288"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576624"
 ---
 # <a name="get-information-about-conversions"></a>Abrufen von Informationen zu Konvertierungen
 
@@ -65,6 +65,10 @@ Dies ist ein Beispiel für eine Datei *info*, die durch das Konvertieren einer D
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -114,6 +118,13 @@ In diesem Abschnitt werden Informationen zum Quelldateiformat aufgezeichnet.
 * `sourceAssetFormat`: Eine Beschreibung des Quelldateiformats.
 * `sourceAssetFormatVersion`: Die Version des Quelldateiformats.
 * `sourceAssetGenerator`: Der Name des Tools, das die Quelldatei generiert hat (falls verfügbar).
+
+### <a name="the-materialoverrides-section"></a>Der Abschnitt *materialOverrides*
+
+In diesem Abschnitt erhalten Sie Informationen zum [Überschreiben von Materialien](override-materials.md), wenn eine Materialüberschreibungsdatei für den Konvertierungsdienst bereitgestellt wurde.
+Es enthält die folgenden Informationen:
+* `numOverrides`: Die Anzahl der Überschreibungseinträge, die aus der Materialüberschreibungsdatei gelesen wurde
+* `numOverriddenMaterials`: Die Anzahl der Materialien, die überschrieben wurden
 
 ### <a name="the-inputstatistics-section"></a>Abschnitt *inputStatistics*
 

@@ -1,14 +1,16 @@
 ---
 title: Features des maschinellen Lernens mit LUIS
 description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/22/2020
+ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075163"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372006"
 ---
 # <a name="machine-learning-features"></a>Features des maschinellen Lernens
 
@@ -20,12 +22,10 @@ Ein Feature lässt sich als Funktion beschreiben, z. B. f(x) = y. In einer Beis
 
 ## <a name="types-of-features"></a>Typen von Features
 
-LUIS unterstützt als Features sowohl Ausdruckslisten als auch Modelle:
+Features sind ein erforderlicher Teil Ihres Schemaentwurfs. LUIS unterstützt als Features sowohl Ausdruckslisten als auch Modelle:
 
-* Feature „Ausdrucksliste“ 
+* Feature „Ausdrucksliste“
 * Modell (Absicht oder Entität) als Feature
-
-Features sollten als erforderlicher Bestandteil Ihres Schemaentwurfs angesehen werden.
 
 ## <a name="find-features-in-your-example-utterances"></a>Auffinden von Features in Beispieläußerungen
 
@@ -43,32 +43,6 @@ Ermitteln Sie, ob für den Text Folgendes gelten muss, weil er ein Merkmal unter
 * Exakte Übereinstimmung mit einem Wort oder Ausdruck: Erwägen Sie das Hinzufügen einer regulären Ausdrucksentität oder einer Listenentität als Feature zu der Entität oder Absicht.
 * Übereinstimmung mit einem bekannten Konzept wie Datumsangaben, Uhrzeiten oder Namen von Personen: Verwenden Sie eine vorgefertigte Entität als Feature für die Entität oder Absicht.
 * Lernen neuer Beispiele im Lauf der Zeit: Verwenden Sie eine Ausdrucksliste mit einigen Beispielen des Konzepts als Feature für die Entität oder Absicht.
-
-## <a name="combine-features"></a>Kombinieren von Features
-
-Sie können mehrere Features verwenden, um ein Merkmal oder Konzept zu beschreiben. Ein gängige Kombination ist die Verwendung eines Ausdruckslistenfeatures und eines Entitätstyps, der häufig als Feature verwendet wird:
-
- * Vordefinierte Entität
- * Entität vom Typ „Regulärer Ausdruck“
- * Entität vom Typ „List“
-
-### <a name="ticket-booking-entity-example"></a>Beispiel: Ticketbuchungsentität
-
-Sehen Sie sich als erstes Beispiel eine App für die Buchung eines Flugs mit einer Flugreservierungsabsicht und einer Ticketbuchungsentität an.
-
-Die Ticketbuchungsentität ist eine Entität des maschinellen Lernens für das Flugziel. Um den Ort zu extrahieren, ziehen Sie zwei Features zur Hilfe heran:
-
-* Eine Ausdrucksliste relevanter Wörter wie **Flugzeug**, **Flug**, **Buchung** oder **Ticket**
-* Eine vorgefertigte Entität **geographyV2** als Feature für die Entität
-
-### <a name="pizza-entity-example"></a>Beispiel: Pizza-Entität
-
-Sehen Sie sich als weiteres Beispiel eine App für die Bestellung einer Pizza mit der Absicht „Pizzabestellung erstellen“ und einer Entität „Pizza“ an.
-
-Die Entität „Pizza“ ist eine Entität des maschinellen Lernens für die Details zur Pizza. Um die Details zu extrahieren, ziehen Sie zwei Features heran:
-
-* Eine Ausdrucksliste relevanter Wörter wie **Käse**, **Rand**, **Peperoni** oder **Ananas**
-* Eine vorgefertigte Entität **number** als Feature für die Entität
 
 ## <a name="create-a-phrase-list-for-a-concept"></a>Erstellen einer Liste von Ausdrücken für ein Konzept
 
@@ -176,12 +150,12 @@ Wir verwenden wieder das Beispiel für die Lieferadresse:
 
 Lieferadresse (durch maschinelles Lernen erworbene Entität)
 
- * Hausnummer (untergeordnete Entität) 
- * Anschrift (untergeordnete Entität) 
- * Straße (untergeordnete Entität) 
- * Ort (untergeordnete Entität) 
- * Bundesland oder Kanton (untergeordnete Entität) 
- * Länder/Regionen (untergeordnete Entität) 
+ * Hausnummer (untergeordnete Entität)
+ * Anschrift (untergeordnete Entität)
+ * Straße (untergeordnete Entität)
+ * Ort (untergeordnete Entität)
+ * Bundesland oder Kanton (untergeordnete Entität)
+ * Länder/Regionen (untergeordnete Entität)
  * Postleitzahl (untergeordnete Entität)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Erforderliches Feature mit vordefinierten Entitäten
@@ -217,6 +191,59 @@ Die häufigste Verwendung ist die Anwendung eines Features auf ein bestimmtes Mo
 Die häufigste Verwendung eines globalen Features ist das Hinzufügen von zusätzlichem Vokabular zur App. Wenn Ihre Kunden beispielsweise hauptsächlich eine bestimmte Sprache nutzen, gleichzeitig aber erwarten, dass sie innerhalb derselben Äußerung noch eine weitere Sprache verwenden können, können Sie ein Feature für Wörter der zweiten Sprache hinzufügen.
 
 Da die Benutzer erwarten, die zweite Sprache in allen Absichten oder Entitäten verwenden zu können, fügen Sie Wörter aus der zweiten Sprache zur Ausdrucksliste hinzu. Konfigurieren Sie die Ausdrucksliste als globales Feature.
+
+## <a name="combine-features-for-added-benefit"></a>Kombinieren von Features zur Erzielung weiterer Vorteile
+
+Sie können mehrere Features verwenden, um ein Merkmal oder Konzept zu beschreiben. Beispiel für eine häufige Verknüpfung:
+
+* Feature „Ausdrucksliste“: Sie können mehrere Ausdruckslisten als Features für dasselbe Modell verwenden.
+* Ein Modell als Feature: [Vordefinierte Entität](luis-reference-prebuilt-entities.md), [Entität vom Typ „Regulärer Ausdruck“](reference-entity-regular-expression.md), [Entität vom Typ „Liste“](reference-entity-list.md). 
+
+### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Beispiel: Features einer Ticketbuchungsentität für eine Reise-App  
+
+Stellen Sie sich ein einfaches Beispiel für eine App für die Flugbuchung mit einer _Absicht_ vom Typ „Flugreservierung“ und einer _Entität_ für die Ticketbuchung vor. Mit der Entität für die Ticketbuchung werden die Informationen zum Buchen eines Flugtickets in einem Reservierungssystem erfasst. 
+
+Die Machine Learning-Entität für die Ticketbuchung verfügt über zwei untergeordnete Entitäten zum Erfassen des Abflugorts und des Ankunftsorts. Die Features müssen den einzelnen untergeordneten Entitäten hinzugefügt werden, und nicht der Entität der obersten Ebene.
+
+:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Schema der Entität für die Ticketbuchung":::
+
+Bei der Entität für die Ticketbuchung handelt es sich um eine Machine Learning-Entität mit untergeordneten Entitäten, z. B. für _Abflugort_ und _Ankunftsort_. Beide untergeordneten Entitäten weisen auf einen geografischen Standort hin. Für die Extraktion der Standorte und die Unterscheidung zwischen _Abflugort_ und _Ankunftsort_ sollte jede untergeordnete Entität über entsprechende Features verfügen.
+
+|type|Untergeordnete Entität für Abflugort |Untergeordnete Entität für Ankunftsort|
+|--|--|--|
+|Modell als Feature|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3): Vordefinierte Entität|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3): Vordefinierte Entität|
+|Ausdrucksliste|**Wörter für die Angabe des Abflugorts**: `start at`, `begin from`, `leave`|**Wörter für die Angabe des Ankunftsorts**: `to`, `arrive`, `land at`, `go`, `going`, `stay`, `heading`|
+|Ausdrucksliste|Flughafencodes: Dieselbe Liste für Abflug- und Ankunftsort|Flughafencodes: Dieselbe Liste für Abflug- und Ankunftsort|
+|Ausdrucksliste|Flughafennamen: Dieselbe Liste für Abflug- und Ankunftsort|Flughafencodes: Dieselbe Liste für Abflug- und Ankunftsort|
+
+Wenn Sie damit rechnen, dass von den Benutzern Flughafencodes und -namen verwendet werden, sollte LUIS über Ausdruckslisten verfügen, in denen diese beiden Arten von Ausdrücken verwendet werden. Es kann sein, dass Flughafencodes häufiger bei der Eingabe von Text in einem Chatbot verwendet werden, während Flughafennamen häufiger bei gesprochenen Wörtern vorkommen, z. B. bei einem Chatbot mit Spracherkennung.
+
+Die übereinstimmenden Details der Features werden nur für Modelle und nicht für Ausdruckslisten zurückgegeben, da bei JSON-Vorhersagen nur die Rückgabe von Modellen erfolgt.
+
+#### <a name="ticket-booking-labeling-in-the-intent"></a>Bezeichnungen bei der Ticketbuchung in einer Absicht
+
+Nach dem Erstellen der Machine Learning-Entität müssen Sie einer Absicht Beispieläußerungen hinzufügen und die übergeordnete Entität und alle untergeordneten Entitäten mit Bezeichnungen versehen.
+
+Bezeichnen Sie beim Beispiel für die Ticketbuchung die Beispieläußerungen in der Absicht mit der Entität `TicketBooking` und allen untergeordneten Entitäten des Texts.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Schema der Entität für die Ticketbuchung":::
+
+### <a name="example-pizza-ordering-app"></a>Beispiel: App für Pizzabestellung
+
+In einem zweiten Beispiel geht es um eine App für eine Pizzeria, mit der Pizzabestellungen empfangen werden können, einschließlich der Details zur Pizza. Nach Möglichkeit sollten alle Details der Pizza extrahiert werden, um die Bestellung abarbeiten zu können.
+
+In diesem Beispiel ist die Machine Learning-Entität komplexer und umfasst geschachtelte untergeordnete Entitäten, Ausdruckslisten und vordefinierte und benutzerdefinierte Entitäten.
+
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Schema der Entität für die Ticketbuchung":::
+
+In diesem Beispiel werden Features auf der Ebene der untergeordneten Entität und noch auf einer weiteren untergeordneten Ebene verwendet. Es ist ein wichtiger Teil Ihres Entitätsentwurfs, welche Ebene welche Art von Ausdrucksliste oder Modell als Feature erhält.
+
+Untergeordnete Entitäten können zwar über viele Ausdruckslisten als Features verfügen, die zur Erkennung der Entität beitragen, aber jede untergeordnete Entität weist nur ein Modell als Feature auf. Im Falle dieser [Pizza-App](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json) handelt es sich bei diesen Modellen hauptsächlich um Listen.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Schema der Entität für die Ticketbuchung":::
+
+Die richtig bezeichneten Beispieläußerungen werden so angezeigt, dass die Schachtelung der Entitäten veranschaulicht wird. 
+
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
