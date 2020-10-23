@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314877"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996449"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -41,6 +41,7 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > | [lo](https://www.postgresql.org/docs/current/lo.html) | Large Object-Wartung. |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Stellt einen Datentyp für hierarchische baumähnliche Strukturen bereit. |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | Datentyp für die Darstellung von Liniensegmenten oder Gleitkommaintervallen. |
+> | [tdigest](https://github.com/tvondra/tdigest) | Datentyp für die Onlineakkumulation von rangbasierten Statistiken wie Quantilen und gekürzten Mittelwerten |
 > | [topn](https://github.com/citusdata/postgresql-topn/) | Typ für Erste N-JSONB. |
 
 ### <a name="full-text-search-extensions"></a>Erweiterungen für die Volltextsuche

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904501"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743589"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Verwalten von Benutzern auf Azure Stack Edge Pro-Geräten mit dem Azure-Portal
 
@@ -74,7 +74,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer zu löschen:
 
 2. Wählen Sie in der Benutzerliste einen Benutzer und anschließend **Löschen** aus. Bestätigen Sie den Löschvorgang, wenn Sie dazu aufgefordert werden.
 
-    ![Auswählen des zu löschenden Benutzers](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
+    ![Auswählen des zu löschenden Benutzers 2](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 
 Die Benutzerliste wird nach dem Löschen des Benutzers entsprechend aktualisiert.
 

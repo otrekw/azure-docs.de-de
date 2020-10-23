@@ -4,13 +4,13 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 05/23/2019
 ms.author: rgarcia
-ms.openlocfilehash: e0038fd5632d512f18d50c4d11577b7f5756baa3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 66f68e84553f064f0d2259d5ef2b3ab29d1ee064
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "67235334"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971363"
 ---
-Öffnen Sie in Unity das Projekt im Ordner `Unity`. Unity könnte melden, dass die Unity-Version des Projekts nicht mit der identisch ist, die Sie auf Ihrem Computer installiert haben. Diese Warnung ist in Ordnung, solange Ihre Unity Editor-Version neuer ist als diejenige, mit der das Projekt erstellt wurde. Klicken Sie in diesem Fall einfach auf **Weiter**. Wenn Ihre Unity-Editor-Version älter ist als die, die das Projekt benötigt, klicken Sie auf **Beenden**, und aktualisieren Sie Ihren Unity-Editor.
+Öffnen Sie in Unity das Projekt im Ordner *Unity*. Unity weist Sie unter Umständen darauf hin, dass die Version im Projekt nicht mit der Version identisch ist, die Sie auf Ihrem Computer installiert haben. Diese Warnung ist in Ordnung, solange Ihre Version des Unity-Editors neuer ist als diejenige, mit der das Projekt erstellt wurde. Wenn Ihre Version neuer ist, wählen Sie **Weiter** aus. Wenn Ihre Version älter ist als die, die das Projekt benötigt, wählen Sie **Beenden** aus, und aktualisieren Sie Ihren Unity-Editor.
 
-![Unity-Fenster](./media/spatial-anchors-unity/unity-window.png)
+![Screenshot des Unity-Bereichs](./media/spatial-anchors-unity/unity-window.png)

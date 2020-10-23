@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88586714"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841032"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Neues in Azure Load Balancer
 
@@ -29,6 +29,7 @@ Die aktuellen Updates für Azure Load Balancer finden Sie [hier](https://azure.m
 
 | type |Name |BESCHREIBUNG  |Hinzufügedatum  |
 | ------ |---------|---------|---------|
+| Funktion | Unterstützung für Verschiebungen über Ressourcengruppen hinweg | Unterstützung von Load Balancer Standard und öffentlichen IP-Standardadressen für [Verschiebungen von Ressourcengruppen](https://azure.microsoft.com/updates/standard-resource-group-move/). | Oktober 2020 |
 | Funktion | Support for IP-based backend pool management (Preview) (Unterstützung für die IP-basierte Back-End-Poolverwaltung (Vorschau)) | Azure Load Balancer unterstützt das Hinzufügen und Entfernen von Ressourcen zu bzw. aus einem Back-End-Pool über IPv4- oder IPv6-Adressen. Dies ermöglicht die einfache Verwaltung von Containern, virtuellen Computern und VM-Skalierungsgruppen, die Load Balancer zugeordnet sind. Darüber hinaus können IP-Adressen als Teil eines Back-End-Pools reserviert werden, bevor die zugehörigen Ressourcen erstellt werden. [Hier](backend-pool-management.md) erhalten Sie weitere Informationen.|Juli 2020 |
 | Funktion| Azure Load Balancer Insights using Azure Monitor (Azure Load Balancer-Erkenntnisse mithilfe von Azure Monitor) | Kunden können jetzt für alle ihre Load Balancer-Konfigurationen und Integritätsdashboards topologische Karten nutzen, die als Teil von Azure Monitor für Netzwerke erstellt wurden und sich für Load Balancer Standard-Instanzen eignen, die mit entsprechenden Metriken im Azure-Portal vorkonfiguriert wurden. [Erste Schritte und weitere Informationen](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Juni 2020 |
 | Überprüfen | Hinzufügung der Überprüfung für Hochverfügbarkeitsports | Es wurde eine Überprüfung hinzugefügt, um sicherzustellen, dass Hochverfügbarkeitsportregeln und Nicht-Hochverfügbarkeitsportregeln nur konfigurierbar sind, wenn Floating IP aktiviert ist. Bisher wurde diese Konfiguration akzeptiert, funktionierte jedoch nicht wie vorgesehen. Es wurde keine Änderung an der Funktionalität vorgenommen. Weitere Informationen finden Sie [hier](load-balancer-ha-ports-overview.md#limitations).| Juni 2020 |

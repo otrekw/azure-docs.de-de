@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570169"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038417"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Ist Azure Virtual WAN allgemein verfügbar?
+
+Ja, Azure Virtual WAN ist allgemein verfügbar. Virtual WAN besteht jedoch aus mehreren Funktionen und Szenarien. In Virtual WAN gibt es Funktionen oder Szenarien, für die Microsoft das Vorschautag anwendet. In diesen Fällen befindet sich die jeweilige Funktion oder das Szenario selbst in der Vorschauphase. Wenn Sie keine bestimmte Previewfunktion verwenden, gilt die reguläre Unterstützung für die allgemeine Verfügbarkeit. Weitere Informationen zur Unterstützung der Vorschau finden Sie unter [Zusätzliche Nutzungsbedingungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
 Virtual WAN verfügt über viele Funktionen, die in einer zentralen Benutzeroberfläche zusammengefasst sind, z. B. Site-/Site-to-Site-VPN-Konnektivität, Benutzer-/P2S-Konnektivität, ExpressRoute-Konnektivität, Virtual Network-Konnektivität, VPN/ExpressRoute-Konnektivität, transitive VNET-zu-VNET-Konnektivität, zentralisiertes Routing, Azure Firewall- und Firewall Manager-Sicherheit, Überwachung, ExpressRoute-Verschlüsselung und viele mehr. Sie müssen nicht all diese Anwendungsfälle abdecken, um mit der Nutzung von Virtual WAN beginnen zu können. Sie können mit nur einem Anwendungsfall starten. Die Virtual WAN-Architektur ist eine Hub-and-Spoke-Architektur mit integrierter Skalierung und Leistung, wobei Branches (VPN/SD-WAN-Geräte), Benutzer (Azure-VPN-, openVPN- oder IKEv2-Clients), ExpressRoute-Leitungen und virtuelle Netzwerke als „Spokes“ für virtuelle Hubs dienen. Alle Hubs sind per Standard-Virtual WAN vollständig miteinander vernetzt, damit Benutzer den Microsoft-Backbone für die Any-to-Any-Konnektivität (alle Spokes) nutzen können. Zur Nutzung einer Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten können Benutzer dies entweder manuell im Azure Virtual WAN-Portal einrichten oder CPE für Virtual WAN-Partner (SD-WAN/VPN) nutzen, um die Konnektivität mit Azure herzustellen. Virtual WAN-Partner ermöglichen die Automatisierung in Bezug auf die Konnektivität. Hierbei handelt es sich um eine Option zum Exportieren der Geräteinformationen nach Azure, Herunterladen der Azure-Konfiguration und Herstellen der Konnektivität mit dem Azure Virtual WAN-Hub. Für die Point-to-Site/Benutzer-VPN-Konnektivität unterstützen wir den [Azure-VPN-](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN- und IKEv2-Client. 
@@ -224,7 +228,7 @@ Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ �
 Wenn ein virtueller Hub von mehreren Remotehubs die gleichen Routeninformationen erhält, wird folgende Entscheidungsreihenfolge verwendet:
 
 1. Längste Präfixübereinstimmung
-2. Lokale Routen zwischen Hubs
+2. Lokale Routen zwischen Hubs (Der virtuelle Hub weist 65520 bis 65520 für AS zwischen Hubs zu.)
 3. Statische Routen über BGP Dies steht im Zusammenhang mit der Entscheidung, die der virtuelle Hubrouter trifft. Wenn der Entscheidungsträger jedoch das VPN-Gateway ist, bei dem ein Standort Routen über BGP ankündigt oder statische Adresspräfixe bereitstellt, können statische Routen gegenüber BGP-Routen bevorzugt werden.
 4. ExpressRoute (ER) über VPN: ER wird gegenüber VPN bevorzugt, wenn der Kontext ein lokaler Hub ist. Transitkonnektivität zwischen ExpressRoute-Leitungen ist nur über Global Reach verfügbar. Daher kann in Szenarien, in denen die ExpressRoute-Leitung mit einem Hub verbunden und eine weitere ExpressRoute-Leitung mit einem anderen Hub mit VPN-Verbindung verbunden ist, VPN für Szenarien mit Übertragungen zwischen Hubs bevorzugt werden.
 5. AS-Pfadlänge

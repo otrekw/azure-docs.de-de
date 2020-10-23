@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974903"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839791"
 ---
 # <a name="how-to-reprovision-devices"></a>Erneutes Bereitstellen von Geräten
 
@@ -75,7 +75,7 @@ Mit den folgenden Schritten wird die Zuordnungsrichtlinie für eine Geräteregis
 
 4. Klicken Sie auf **Speichern**, um das Gerät basierend auf Ihren Änderungen erneut bereitzustellen.
 
-    ![Registrierungszuordnungsrichtlinie auswählen](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Screenshot, der die von Ihnen vorgenommenen Änderungen und die Schaltfläche „Speichern“ hervorhebt](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 

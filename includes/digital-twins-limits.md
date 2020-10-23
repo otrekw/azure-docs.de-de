@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 60a5f62d4ea23db1052b2e40d10775dfaa33c632
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303936"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989592"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -22,6 +22,8 @@ In der folgenden Tabelle sind die funktionalen Grenzwerte von Azure Digital Twin
 | Digital Twins | Anzahl von Zwillingen in einer Azure Digital Twins-Instanz | 200.000 | Ja |
 | Digital Twins | Anzahl eingehender Beziehungen zu einem einzelnen Zwilling | 5\.000 | Nein |
 | Digital Twins | Anzahl ausgehender Beziehungen von einem einzelnen Zwilling | 5\.000 | Nein |
+| Digital Twins | Maximale Größe eines einzelnen Zwillings | 32 KB | Nein |
+| Digital Twins-API | Maximale Größe der Anforderungspayload | 32 KB | Nein | 
 | Routing | Anzahl von Endpunkten für eine einzelne Azure Digital Twins-Instanz | 6 | Nein |
 | Routing | Anzahl von Routen für eine einzelne Azure Digital Twins-Instanz | 6 | Ja |
 | Modelle | Anzahl von Modellen innerhalb einer einzelnen Azure Digital Twins-Instanz | 10.000 | Ja |

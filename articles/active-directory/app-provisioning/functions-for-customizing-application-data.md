@@ -1,23 +1,23 @@
 ---
-title: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
-description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren.
+title: Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
+description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren. Enthält eine Referenzliste mit Funktionen
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
+ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 14e3b23b4246f26e1ac59e0b12b043341546d0a0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235671"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018242"
 ---
-# <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Gewusst wie: Schreiben von Ausdrücken für Attributzuordnungen in Azure AD
+# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure AD
 
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
 
@@ -25,9 +25,8 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 
 Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von Visual Basic for Applications (VBA) ähnlich.
 
-* Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen: <br>
-  *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen:  *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
+* Sie können Funktionen ineinander verschachteln. Beispiel:  *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
   
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
@@ -43,11 +42,11 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 ---
 ### <a name="append"></a>Anfügen
 
-**Funktion:**<br> Append(Quelle, Suffix)
+**Funktion:** Append(Quelle, Suffix)
 
-**Beschreibung:**<br> Fügt das Suffix am Ende eines angegebenen Quellzeichenfolgenwerts an.
+**Beschreibung:** Fügt das Suffix am Ende eines angegebenen Quellzeichenfolgenwerts an.
 
-**Parameter:**<br> 
+**Parameter:**
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -56,49 +55,52 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 ---
 ### <a name="bitand"></a>BitAnd
-**Funktion:**<br> BitAnd(value1, value2)
+**Funktion:** BitAnd(value1, value2)
 
-**Beschreibung:**<br> Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf Folgendes fest:
+**Beschreibung:**  Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf Folgendes fest:
 
-0 – wenn mindestens eines der entsprechenden Bits in „value1“ und „value2“ den Wert „0“ aufweist                                                  
-1 – wenn beide entsprechenden Bits 1 sind.                                    
+- 0 – wenn mindestens eines der entsprechenden Bits in „value1“ und „value2“ den Wert „0“ aufweist
+- 1 – wenn beide entsprechenden Bits 1 sind.
 
 Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechenden Bits beider Parameter 1 sind.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **value1** |Erforderlich |num |Numerischer Wert, der mit „value2“ mit AND verarbeitet werden soll|
 | **value2** |Erforderlich |num |Numerischer Wert, der mit „value1“ mit AND verarbeitet werden soll|
 
-**Beispiel:**<br>
-BitAnd(&HF, &HF7)                                                                                
-11110111 AND 00000111 = 00000111, daher gibt BitAnd „7“, den binären Wert von 00000111 zurück.
+**Beispiel:** 
+`BitAnd(&HF, &HF7)`
+
+11110111 AND 00000111 = 00000111, daher gibt `BitAnd` „7“ zurück, den Binärwert von 00000111.
 
 ---
 ### <a name="cbool"></a>ZBool
-**Funktion:**<br> CBool(Expression)
+**Funktion:**  
+`CBool(Expression)`
 
-**Beschreibung:**<br> CBool gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert. Wenn die Auswertung des Ausdrucks einen Wert ungleich Null ergibt, gibt CBool „True“ zurück. Andernfalls wird „False“ zurückgegeben.
+**Beschreibung:**  
+`CBool` gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert. Wenn die Auswertung des Ausdrucks einen Wert ungleich 0 (null) ergibt, gibt `CBool` *True* zurück. Andernfalls wird *False* zurückgegeben.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **expression** |Erforderlich | expression | Ein beliebiger gültiger Ausdruck |
 
-**Beispiel:**<br>
-CBool([attribute1] = [attribute2])                                                                    
+**Beispiel:** 
+`CBool([attribute1] = [attribute2])`                                                                    
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
 ---
 ### <a name="coalesce"></a>Coalesce
-**Funktion:**<br> Coalesce(source1, source2, ..., defaultValue)
+**Funktion:** Coalesce(source1, source2, ..., defaultValue)
 
-**Beschreibung:**<br> Gibt den ersten Quellwert zurück, der nicht NULL ist. Wenn alle Argumente NULL sind und „defaultValue“ vorhanden ist, wird der Standardwert (defaultValue) zurückgegeben. Wenn alle Argumente NULL sind und „defaultValue“ nicht vorhanden ist, gibt Coalesce NULL zurück.
+**Beschreibung:** Gibt den ersten Quellwert zurück, der nicht NULL ist. Wenn alle Argumente NULL sind und „defaultValue“ vorhanden ist, wird der Standardwert (defaultValue) zurückgegeben. Wenn alle Argumente NULL sind und „defaultValue“ nicht vorhanden ist, gibt Coalesce NULL zurück.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -107,43 +109,45 @@ Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
-**Funktion:**<br> ConvertToBase64(source)
+**Funktion:** ConvertToBase64(source)
 
-**Beschreibung:**<br> Die ConvertToBase64-Funktion konvertiert eine Zeichenfolge in eine Unicode-Base64-Zeichenfolge.
+**Beschreibung:**  Die ConvertToBase64-Funktion konvertiert eine Zeichenfolge in eine Unicode-Base64-Zeichenfolge.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Eine in Base64 zu konvertierende Zeichenfolge|
 
-**Beispiel:**<br>
-ConvertToBase64("Hello World!")                                                                                                        
+**Beispiel:** 
+`ConvertToBase64("Hello world!")`
+
 Gibt „SABlAGwAbABvACAAdwBvAHIAbABkACEA“ zurück.
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**Funktion:**<br> ConvertToUTF8Hex(source)
+**Funktion:** ConvertToUTF8Hex(source)
 
-**Beschreibung:**<br> Die ConvertToUTF8Hex-Funktion konvertiert eine Zeichenfolge in einen hexadezimal-codierten UTF8-Wert.
+**Beschreibung:**  Die ConvertToUTF8Hex-Funktion konvertiert eine Zeichenfolge in einen hexadezimal-codierten UTF8-Wert.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Eine in UTF-8 (Hex) zu konvertierende Zeichenfolge|
 
-**Beispiel:**<br>
-ConvertToUTF8Hex("Hello world!")                                                                                                         
+**Beispiel:** 
+`ConvertToUTF8Hex("Hello world!")`
+
 Gibt „48656C6C6F20776F726C6421“ zurück.
 
 ---
 ### <a name="count"></a>Anzahl
-**Funktion:**<br> Count(attribute)
+**Funktion:** Count(attribute)
 
-**Beschreibung:**<br> Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
+**Beschreibung:**  Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -151,44 +155,47 @@ Gibt „48656C6C6F20776F726C6421“ zurück.
 
 ---
 ### <a name="cstr"></a>CStr
-**Funktion:**<br> CStr(value)
+**Funktion:** CStr(value)
 
-**Beschreibung:**<br> Die CStr-Funktion konvertiert einen Wert in einen Zeichenfolgendatentyp.
+**Beschreibung:** Die CStr-Funktion konvertiert einen Wert in einen Zeichenfolgendatentyp.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **value** |Erforderlich | Numerischer Wert, Verweisattribut oder boolescher Wert | Kann ein numerischer Wert, ein Verweisattribut oder ein boolescher Wert sein. |
 
-**Beispiel:**<br>
-CStr([dn])                                                            
+**Beispiel:** 
+`CStr([dn])`
+
 Gibt „cn=Joe,dc=contoso,dc=com“ zurück
 
 ---
 ### <a name="datefromnum"></a>DateFromNum
-**Funktion:**<br> DateFromNum(value)
+**Funktion:** DateFromNum(value)
 
-**Beschreibung:**<br> Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen DateTime-Typ.
+**Beschreibung:**  Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen DateTime-Typ.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **value** |Erforderlich | Date | AD-Datum, das in den DateTime-Typ konvertiert werden soll |
 
-**Beispiel:**<br>
-DateFromNum([lastLogonTimestamp])                                                                                                   
-DateFromNum(129699324000000000)                                                            
-Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
+**Beispiel:** 
+`DateFromNum([lastLogonTimestamp])`
+
+`DateFromNum(129699324000000000)`
+
+Gibt einen DateTime-Wert zurück, der für den 1. Januar 2012 um 23:00 Uhr steht.
 
 ---
 ### <a name="formatdatetime"></a>FormatDatumZeit
-**Funktion:**<br> FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
+**Funktion:** FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
 
-**Beschreibung:**<br> Konvertiert eine Datumszeichenfolge aus einem Format in ein anderes Format.
+**Beschreibung:** Konvertiert eine Datumszeichenfolge aus einem Format in ein anderes Format.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -198,17 +205,17 @@ Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
 
 ---
 ### <a name="guid"></a>Guid
-**Funktion:**<br> Guid()
+**Funktion:** Guid()
 
-**Beschreibung:**<br> Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
+**Beschreibung:** Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
 
 ---
 ### <a name="iif"></a>IIF
-**Funktion:**<br> IIF(condition,valueIfTrue,valueIfFalse)
+**Funktion:** IIF(condition,valueIfTrue,valueIfFalse)
 
-**Beschreibung:**<br> Die IIF-Funktion gibt basierend auf einer angegebenen Bedingung einen Wert aus einem Satz möglicher Werte zurück.
+**Beschreibung:**  Die IIF-Funktion gibt basierend auf einer angegebenen Bedingung einen Wert aus einem Satz möglicher Werte zurück.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -216,16 +223,16 @@ Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
 | **valueIfTrue** |Erforderlich |Variable oder Zeichenfolge | Der zurückgegebene Wert, wenn die Bedingung als „True“ ausgewertet wird. |
 | **valueIfFalse** |Erforderlich |Variable oder Zeichenfolge |Der zurückgegebene Wert, wenn die Bedingung als „False“ ausgewertet wird.|
 
-**Beispiel:**<br>
-IIF([country]="USA",[country],[department])
+**Beispiel:** 
+`IIF([country]="USA",[country],[department])`
 
 ---
 ### <a name="instr"></a>InStr
-**Funktion:**<br> InStr(value1,value2,start,compareType)
+**Funktion:** InStr(value1,value2,start,compareType)
 
-**Beschreibung:**<br> Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
+**Beschreibung:**  Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -234,68 +241,72 @@ IIF([country]="USA",[country],[department])
 | **start** |Optional |Integer |Startposition für die Suche nach der Teilzeichenfolge|
 | **compareType** |Optional |Enum |Kann „vbTextCompare“ oder „vbBinaryCompare“ sein |
 
-**Beispiel:**<br>
-InStr("The quick brown fox","quick")                                                                             
-Wird als 5 ausgewertet.
+**Beispiel:** 
+`InStr("The quick brown fox","quick")`
 
-InStr("repEated","e",3,vbBinaryCompare)                                                                                  
+Wird als 5 ausgewertet
+
+`InStr("repEated","e",3,vbBinaryCompare)`
+
 Wird als 7 ausgewertet.
 
 ---
 ### <a name="isnull"></a>IsNull
-**Funktion:**<br> IsNull(Expression)
+**Funktion:** IsNull(Expression)
 
-**Beschreibung:**<br> Die IsNull-Funktion gibt „True“ zurück, wenn die Auswertung des Ausdrucks einen Nullwert ergibt. Für ein Attribut wird ein Nullwert durch die Abwesenheit des Attributs ausgedrückt.
+**Beschreibung:**  Die IsNull-Funktion gibt „True“ zurück, wenn die Auswertung des Ausdrucks einen Nullwert ergibt. Für ein Attribut wird ein Nullwert durch die Abwesenheit des Attributs ausgedrückt.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
 
-**Beispiel:**<br>
-IsNull([displayName])                                                                                                
+**Beispiel:** 
+`IsNull([displayName])`
+
 Gibt „True“ zurück, wenn das Attribut nicht vorhanden ist
 
 ---
 ### <a name="isnullorempty"></a>IsNullorEmpty
-**Funktion:**<br> IsNullOrEmpty(Expression)
+**Funktion:** IsNullOrEmpty(Expression)
 
-**Beschreibung:**<br> Die IsNullOrEmpty-Funktion gibt „True“ zurück, wenn der Ausdruck einem Nullwert oder einer leeren Zeichenfolge entspricht. Wird für ein Attribut als „True“ ausgewertet, wenn das Attribut nicht vorhanden oder zwar vorhanden, aber eine leere Zeichenfolge ist.
+**Beschreibung:**  Die IsNullOrEmpty-Funktion gibt „True“ zurück, wenn der Ausdruck einem Nullwert oder einer leeren Zeichenfolge entspricht. Wird für ein Attribut als „True“ ausgewertet, wenn das Attribut nicht vorhanden oder zwar vorhanden, aber eine leere Zeichenfolge ist.
 Die Umkehrung dieser Funktion heißt "IsPresent".
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
 
-**Beispiel:**<br>
-IsNullOrEmpty([displayName])                                               
-Gibt „True“ zurück, wenn das Attribut nicht vorhanden oder eine leere Zeichenfolge ist
+**Beispiel:** 
+`IsNullOrEmpty([displayName])`
+
+Gibt „True“ zurück, wenn das Attribut nicht vorhanden ist oder eine leere Zeichenfolge darstellt
 
 ---
 ### <a name="ispresent"></a>IsPresent
-**Funktion:**<br> IsPresent (Ausdruck)
+**Funktion:** IsPresent (Ausdruck)
 
-**Beschreibung:**<br> Die IsPresent-Funktion gibt „True“ zurück, wenn der Ausdruck zu einer Zeichenfolge ausgewertet wird, die kein Nullwert und nicht leer ist. Die umgekehrte Funktion heißt „IsNullOrEmpty“.
+**Beschreibung:**  Die IsPresent-Funktion gibt „True“ zurück, wenn der Ausdruck zu einer Zeichenfolge ausgewertet wird, die kein Nullwert und nicht leer ist. Die umgekehrte Funktion heißt „IsNullOrEmpty“.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
 
-**Beispiel:**<br>
-Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])
+**Beispiel:** 
+`Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
 ### <a name="isstring"></a>IsString
-**Funktion:**<br> IsString(Expression)
+**Funktion:** IsString(Expression)
 
-**Beschreibung:**<br> Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zeichenfolgentyp ausgewertet werden kann.
+**Beschreibung:**  Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zeichenfolgentyp ausgewertet werden kann.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -303,29 +314,29 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 ---
 ### <a name="item"></a>Element
-**Funktion:**<br> Item(attribute, index)
+**Funktion:** Item(attribute, index)
 
-**Beschreibung:**<br> Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
+**Beschreibung:**  Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **attribute** |Erforderlich |attribute |Das zu durchsuchende mehrwertige Attribut |
 | **Index** |Erforderlich |Integer | Index für ein Element in der mehrwertigen Zeichenfolge|
 
-**Beispiel:**<br>
-Item([proxyAddresses], 1)
+**Beispiel:** 
+`Item([proxyAddresses], 1)`
 
 ---
 ### <a name="join"></a>Join
-**Funktion:**<br> Join(Trennzeichen, Quelle1, Quelle2, …)
+**Funktion:**  Join(Trennzeichen, Quelle1, Quelle2, …)
 
-**Beschreibung:**<br> „Join()“ ist vergleichbar mit „Append()“, kann jedoch mehrere **Quellzeichenfolgenwerte** in einer einzelnen Zeichenfolge kombinieren, wobei die Werte jeweils durch eine **Trennzeichenfolge** getrennt werden.
+**Beschreibung:** „Join()“ ist vergleichbar mit „Append()“, kann jedoch mehrere **Quellzeichenfolgenwerte** in einer einzelnen Zeichenfolge kombinieren, wobei die Werte jeweils durch eine **Trennzeichenfolge** getrennt werden.
 
 Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen Werte in diesem Attribut miteinander verknüpft und dabei durch den Trennzeichenwert getrennt.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -334,31 +345,32 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 ---
 ### <a name="left"></a>Left
-**Funktion:**<br> Left(String,NumChars)
+**Funktion:** Left(String,NumChars)
 
-**Beschreibung:**<br> Die Left-Funktion gibt eine angegebene Anzahl von Zeichen von der linken Seite einer Zeichenfolge zurück. Wenn "numChars" = 0, wird eine leere Zeichenfolge zurückgegeben.
+**Beschreibung:**  Die Left-Funktion gibt eine angegebene Anzahl von Zeichen von der linken Seite einer Zeichenfolge zurück. Wenn "numChars" = 0, wird eine leere Zeichenfolge zurückgegeben.
 Wenn "numChars" < 0, wird die Eingabezeichenfolge zurückgegeben.
 Wenn die Zeichenfolge einen Nullwert aufweist, wird eine leere Zeichenfolge zurückgegeben.
 Wenn die Zeichenfolge weniger Zeichen enthält als in „numChars“ angegeben, wird eine identische Zeichenfolge (also eine Zeichenfolge, die alle in Parameter 1 enthaltenen Zeichen enthält) zurückgegeben.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **String** |Erforderlich |attribute | Die Zeichenfolge, aus der Zeichen zurückgegeben werden sollen |
 | **NumChars** |Erforderlich |Integer | Eine Zahl, die die Anzahl von Zeichen angibt, die ab dem Anfang der Zeichenfolge (links) zurückgegeben werden sollen|
 
-**Beispiel:**<br>
-Left("John Doe", 3)                                                            
-Gibt „Joh“ zurück
+**Beispiel:** 
+`Left("John Doe", 3)`
+
+Gibt „Joh“ zurück.
 
 ---
 ### <a name="mid"></a>Mid
-**Funktion:**<br> Mid(Quelle, Start, Länge)
+**Funktion:**  Mid(Quelle, Start, Länge)
 
-**Beschreibung:**<br> Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
+**Beschreibung:**  Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -368,11 +380,11 @@ Gibt „Joh“ zurück
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
-**Funktion:**<br> NormalizeDiacritics(Quelle)
+**Funktion:** NormalizeDiacritics(Quelle)
 
-**Beschreibung:**<br> Erfordert ein einzelnes Zeichenfolgenargument. Gibt die Zeichenfolge zurück und ersetzt sämtliche diakritische Zeichen durch entsprechende nicht diakritische Zeichen. Dient in der Regel dazu, Vor- und Nachnamen mit diakritischen Zeichen (Akzenten) in zulässige Werte zu konvertieren, die in verschiedenen Benutzer-IDs verwendet werden können (etwa in Benutzerprinzipalnamen, SAM-Kontonamen und E-Mail-Adressen).
+**Beschreibung:** Erfordert ein einzelnes Zeichenfolgenargument. Gibt die Zeichenfolge zurück und ersetzt sämtliche diakritische Zeichen durch entsprechende nicht diakritische Zeichen. Dient in der Regel dazu, Vor- und Nachnamen mit diakritischen Zeichen (Akzenten) in zulässige Werte zu konvertieren, die in verschiedenen Benutzer-IDs verwendet werden können (etwa in Benutzerprinzipalnamen, SAM-Kontonamen und E-Mail-Adressen).
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -380,11 +392,11 @@ Gibt „Joh“ zurück
 
 ---
 ### <a name="not"></a>Not
-**Funktion:**<br> Not(Quelle)
+**Funktion:**  Not(Quelle)
 
-**Beschreibung:**<br> Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also *True*, gibt die Funktion *False* zurück. Andernfalls gibt sie "*True*" zurück.
+**Beschreibung:** Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also „True“, gibt die Funktion „False“ zurück. Andernfalls gibt sie „True“ zurück.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -392,48 +404,44 @@ Gibt „Joh“ zurück
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
-**Funktion:**<br> NumFromDate (Wert)
+**Funktion:** NumFromDate (Wert)
 
-**Beschreibung:**<br> Die NumFromDate-Funktion konvertiert einen „DateTime“-Wert in das Active Directory-Format, das zum Festlegen von Attributen wie [accountExpires](/windows/win32/adschema/a-accountexpires) erforderlich ist. Verwenden Sie diese Funktion zum Konvertieren von „DateTime“-Werten, die von HR-Cloud-Apps wie Workday und SuccessFactors empfangen werden, in die entsprechende Azure AD-Darstellung. 
+**Beschreibung:** Die NumFromDate-Funktion konvertiert einen „DateTime“-Wert in das Active Directory-Format, das zum Festlegen von Attributen wie [accountExpires](/windows/win32/adschema/a-accountexpires) erforderlich ist. Verwenden Sie diese Funktion zum Konvertieren von „DateTime“-Werten, die von HR-Cloud-Apps wie Workday und SuccessFactors empfangen werden, in die entsprechende Azure AD-Darstellung. 
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **value** |Erforderlich | String | Zeichenfolge mit Datum und Uhrzeit im unterstützten Format. Unterstützte Formate finden Sie unter https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx. |
 
-**Beispiel:**<br>
-* Workday-Beispiel <br>
-  Wenn Sie beispielsweise das Attribut *ContractEndDate* von Workday im Format *2020-12-31-08:00* dem Feld *accountExpires* in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und den Zeitzonenoffset so ändern, dass er Ihrem Gebietsschema entspricht. 
+**Beispiel:**
+* Beispiel für Workday: Wenn Sie das Attribut *ContractEndDate* von Workday im Format *2020-12-31-08:00* dem Feld *accountExpires* in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und den Zeitzonenoffset so ändern, dass er Ihrem Gebietsschema entspricht. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
-* SuccessFactors-Beispiel <br>
-  Wenn Sie beispielsweise das Attribut *endDate* von SuccessFactors im Format *M/d/yyyy hh:mm:ss tt* dem Feld *accountExpires* in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und den Zeitzonenoffset so ändern, dass er Ihrem Gebietsschema entspricht.
+* Beispiel für SuccessFactors: Wenn Sie das Attribut *endDate* von SuccessFactors im Format *M/d/yyyy hh:mm:ss tt* dem Feld *accountExpires* in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und den Zeitzonenoffset so ändern, dass er Ihrem Gebietsschema entspricht.
   `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
-**Funktion:**<br> RemoveDuplicates(attribute)
+**Funktion:** RemoveDuplicates(attribute)
 
-**Beschreibung:**<br> Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwertigen Zeichenfolge jeder Wert eindeutig ist.
+**Beschreibung:**  Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwertigen Zeichenfolge jeder Wert eindeutig ist.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **attribute** |Erforderlich |Mehrwertiges Attribut |Mehrwertiges Attribut, aus dem Duplikate entfernt werden|
 
-**Beispiel:**<br>
-RemoveDuplicates([proxyAddresses])                                                                                                       
-Gibt ein bereinigtes proxyAddress-Attribut zurück, aus dem alle doppelten Werte entfernt wurden
+**Beispiel:** 
+`RemoveDuplicates([proxyAddresses])`  Gibt ein bereinigtes proxyAddress-Attribut zurück, aus dem alle doppelten Werte entfernt wurden.
 
 ---
 ### <a name="replace"></a>Replace
-**Funktion:**<br> Replace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
+**Funktion:** Replace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
 
-**Beschreibung:**<br>
-Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachdem, welche Parameter angegeben werden:
+**Beschreibung:** Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachdem, welche Parameter angegeben werden:
 
 * Bei Angabe von **AlterWert** und **Ersatzwert**:
   
@@ -452,7 +460,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
   * Falls kein Wert für **Quelle** vorhanden ist, wird **Quelle** zurückgegeben.
   * Wenn **Quelle** einen Wert umfasst, wendet die Funktion das **RegexMuster** auf die Zeichenfolge in **Quelle** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch den Wert, der **Ersatzattributname** zugeordnet ist.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -466,9 +474,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
-**Funktion:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
+**Funktion:** SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
 
-**Beschreibung:**<br> Es sind mindestens zwei Argumente erforderlich, bei denen es sich um eindeutige Regeln für die Generierung von Werten handelt, die mit Ausdrücken definiert werden. Mit der Funktion wird jede Regel ausgewertet. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit in der Ziel-App bzw. im Zielverzeichnis sicherzustellen. Der erste eindeutige Wert, der gefunden wird, wird zurückgegeben. Wenn alle Werte am Ziel bereits vorhanden sind, wird der Eintrag hinterlegt, und die Ursache wird in den Überwachungsprotokollen protokolliert. Für die Anzahl von Argumenten, die bereitgestellt werden können, gilt keine Obergrenze.
+**Beschreibung:** Es sind mindestens zwei Argumente erforderlich, bei denen es sich um eindeutige Regeln für die Generierung von Werten handelt, die mit Ausdrücken definiert werden. Mit der Funktion wird jede Regel ausgewertet. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit in der Ziel-App bzw. im Zielverzeichnis sicherzustellen. Der erste eindeutige Wert, der gefunden wird, wird zurückgegeben. Wenn alle Werte am Ziel bereits vorhanden sind, wird der Eintrag hinterlegt, und die Ursache wird in den Überwachungsprotokollen protokolliert. Für die Anzahl von Argumenten, die bereitgestellt werden können, gilt keine Obergrenze.
 
 
  - Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
@@ -477,7 +485,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
  - Diese Funktion wird derzeit nur für die „Benutzerbereitstellung von Workday in Active Directory“ unterstützt. Sie kann nicht für andere Bereitstellungsanwendungen verwendet werden. 
 
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -486,11 +494,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**Funktion:**<br> SingleAppRoleAssignment([appRoleAssignments])
+**Funktion:** SingleAppRoleAssignment([appRoleAssignments])
 
-**Beschreibung:**<br> Gibt eine einzelne appRoleAssignment aus der Liste aller appRoleAssignments zurück, die einem Benutzer für eine bestimmte Anwendung zugewiesen sind. Diese Funktion ist erforderlich, um das appRoleAssignments-Objekt in eine einzelne Namenszeichenfolge für eine Rolle zu konvertieren. Beachten Sie, dass die bewährte Methode darin besteht, sicherzustellen, dass einem Benutzer nur jeweils eine appRoleAssignment zugewiesen ist. Wenn mehrere Rollen zugewiesen sind, ist die zurückgegebene Zeichenfolge für die Rolle möglicherweise nicht vorhersehbar. 
+**Beschreibung:** Gibt eine einzelne appRoleAssignment aus der Liste aller appRoleAssignments zurück, die einem Benutzer für eine bestimmte Anwendung zugewiesen sind. Diese Funktion ist erforderlich, um das appRoleAssignments-Objekt in eine einzelne Namenszeichenfolge für eine Rolle zu konvertieren. Beachten Sie, dass die bewährte Methode darin besteht, sicherzustellen, dass einem Benutzer nur jeweils eine appRoleAssignment zugewiesen ist. Wenn mehrere Rollen zugewiesen sind, ist die zurückgegebene Zeichenfolge für die Rolle möglicherweise nicht vorhersehbar. 
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -498,11 +506,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="split"></a>Split
-**Funktion:**<br> Split(Quelle, Trennzeichen)
+**Funktion:** Split(Quelle, Trennzeichen)
 
-**Beschreibung:**<br> Unterteilt eine Zeichenfolge mithilfe des angegebenen Trennzeichens in ein mehrwertiges Array.
+**Beschreibung:** Unterteilt eine Zeichenfolge mithilfe des angegebenen Trennzeichens in ein mehrwertiges Array.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -511,11 +519,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
-**Funktion:**<br> StripSpaces(Quelle)
+**Funktion:**  StripSpaces(Quelle)
 
-**Beschreibung:**<br> Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
+**Beschreibung:**  Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -523,11 +531,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="switch"></a>Schalter
-**Funktion:**<br> Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
+**Funktion:**  Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
 
-**Beschreibung:**<br> Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern. Die Funktion sollte nicht für referenzielle Attribute wie etwa „manager“ verwendet werden. 
+**Beschreibung:** Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern. Die Funktion sollte nicht für referenzielle Attribute wie etwa „manager“ verwendet werden. 
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -538,11 +546,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="tolower"></a>ToLower
-**Funktion:**<br> ToLower(source, culture)
+**Funktion:** ToLower(source, culture)
 
-**Beschreibung:**<br> Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Kleinbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
+**Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Kleinbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -551,11 +559,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="toupper"></a>ToUpper
-**Funktion:**<br> ToUpper(source, culture)
+**Funktion:** ToUpper(source, culture)
 
-**Beschreibung:**<br> Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Großbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
+**Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Großbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -564,15 +572,15 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 ---
 ### <a name="word"></a>Wort
-**Funktion:**<br> Word(String,WordNumber,Delimiters)
+**Funktion:** Word(String,WordNumber,Delimiters)
 
-**Beschreibung:**<br> Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben. Alle Folgen von Zeichen in einer Zeichenfolge, die durch eines der in „delimiters“ enthaltenen Zeichen getrennt werden, werden als Wörter behandelt:
+**Beschreibung:**  Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben. Alle Folgen von Zeichen in einer Zeichenfolge, die durch eines der in „delimiters“ enthaltenen Zeichen getrennt werden, werden als Wörter behandelt:
 
 Wenn "WordNumber" < 1, wird eine leere Zeichenfolge zurückgegeben
 Wenn "string" einen Nullwert hat, wird eine leere Zeichenfolge zurückgegeben
 Falls „string“ weniger Wörter enthält als für „WordNumber“ angegeben, wird eine leere Zeichenfolge zurückgegeben. Dies gilt auch, wenn „string“ keine durch Trennzeichen identifizierten Wörter enthält.
 
-**Parameter:**<br> 
+**Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
@@ -580,24 +588,25 @@ Falls „string“ weniger Wörter enthält als für „WordNumber“ angegeben,
 | **WordNumber** |Erforderlich | Integer | Eine Zahl, die angibt, welche Wortnummer zurückgegeben werden soll|
 | **delimiters** |Erforderlich |String| Eine Zeichenfolge, die das/die Trennzeichen darstellt, das/die zum Identifizieren von Wörtern verwendet werden soll(en)|
 
-**Beispiel:**<br>
-Word("The quick brown fox",3," ")                                                                                       
-Gibt „brown“ zurück.
+**Beispiel:** 
+`Word("The quick brown fox",3," ")`
 
-Word("This,string!has&many separators",3,",!&#")                                                                       
+Gibt „brown“ zurück
+
+`Word("This,string!has&many separators",3,",!&#")`
+
 Gibt „has“ zurück
 
 ---
 
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens
-Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers entfernen, um einen Benutzernamen zu erhalten. <br>
-Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
+Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers entfernen, um einen Benutzernamen zu erhalten. Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
 
-**Ausdruck:** <br>
+**Ausdruck:**  
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**Beispieleingabe/-ausgabe:** <br>
+**Beispieleingabe/-ausgabe:** 
 
 * **EINGABE** (mail): "john.doe@contoso.com"
 * **AUSGABE**: "john.doe"
@@ -605,10 +614,10 @@ Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden 
 ### <a name="append-constant-suffix-to-user-name"></a>Anfügen eines konstanten Suffixes an einen Benutzernamen
 Wenn Sie eine Salesforce Sandbox verwenden, müssen Sie möglicherweise ein weiteres Suffix an alle Benutzernamen anfügen, bevor Sie diese synchronisieren.
 
-**Ausdruck:** <br>
+**Ausdruck:**  
 `Append([userPrincipalName], ".test")`
 
-**Beispieleingabe/-ausgabe:** <br>
+**Beispieleingabe/-ausgabe:** 
 
 * **EINGABE**: (userPrincipalName): "John.Doe@contoso.com"
 * **AUSGABE**:  "John.Doe@contoso.com.test"
@@ -616,10 +625,10 @@ Wenn Sie eine Salesforce Sandbox verwenden, müssen Sie möglicherweise ein weit
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Generieren eines Benutzeralias durch Verketten von Teilen des Vor- und Nachnamens
 Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben des Vornamens und die ersten fünf Buchstaben des Nachnamens des Benutzers verwenden.
 
-**Ausdruck:** <br>
+**Ausdruck:**  
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
-**Beispieleingabe/-ausgabe:** <br>
+**Beispieleingabe/-ausgabe:** 
 
 * **EINGABE** (givenName): „John“
 * **EINGABE** (surname): „Doe“
@@ -628,10 +637,9 @@ Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben
 ### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
 Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
 
-**Ausdruck:** <br>
-NormalizeDiacritics([givenName])
+**Ausdruck:** NormalizeDiacritics([givenName])
 
-**Beispieleingabe/-ausgabe:** <br>
+**Beispieleingabe/-ausgabe:** 
 
 * **EINGABE** (givenName): „Zoë“
 * **AUSGABE**:  „Zoe“
@@ -639,19 +647,17 @@ NormalizeDiacritics([givenName])
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Unterteilen einer Zeichenfolge in ein mehrwertiges Array
 Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen in ein Array unterteilen, das in ein mehrwertiges Attribut wie das PermissionSets-Attribut von Salesforce eingegeben werden kann. In diesem Beispiel wurde eine Liste von Berechtigungssätzen in extensionAttribute5 in Azure AD eingegeben.
 
-**Ausdruck:** <br>
-Split([extensionAttribute5], ",")
+**Ausdruck:** Split([extensionAttribute5], ",")
 
-**Beispieleingabe/-ausgabe:** <br>
+**Beispieleingabe/-ausgabe:** 
 
 * **EINGABE:** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
 * **AUSGABE:** ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
-Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung senden. <br>
-Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
+Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung senden. Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 
-**Ausdruck:** <br>
+**Ausdruck:** 
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
@@ -662,10 +668,9 @@ Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
 
-Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. <br>
-Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
+Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
-**Ausdruck:** <br>
+**Ausdruck:**  
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Beispieleingabe/-ausgabe:**
@@ -676,7 +681,7 @@ Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll de
 ### <a name="replace-characters-using-a-regular-expression"></a>Ersetzen von Zeichen mit einem regulären Ausdruck
 Sie müssen Zeichen suchen, die mit einem regulären Ausdruck übereinstimmen, und diese entfernen.
 
-**Ausdruck:** <br>
+**Ausdruck:** 
 
 Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
@@ -699,7 +704,7 @@ Im folgenden Beispiel wird der UPN-Wert durch die Verkettung der Quellfelder Pre
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
 Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wert für das UPN-Attribut generieren und die Eindeutigkeit im AD-Zielverzeichnis überprüfen, bevor Sie den Wert dem UPN-Attribut zuweisen.
 
-**Ausdruck:** <br>
+**Ausdruck:** 
 
 ```ad-attr-mapping-expr
     SelectUniqueValue( 
@@ -720,10 +725,10 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>E-Mail-Wert übermitteln, wenn nicht NULL, andernfalls userPrincipalName-Wert übermitteln
 Sie möchten das E-Mail-Attribut übermitteln, wenn es vorhanden ist. Andernfalls möchten Sie stattdessen den Wert von „userPrincipalName“ übermitteln.
 
-**Ausdruck:** <br>
+**Ausdruck:**  
 `Coalesce([mail],[userPrincipalName])`
 
-**Beispieleingabe/-ausgabe:** <br>
+**Beispieleingabe/-ausgabe:** 
 
 * **EINGABE** (mail): NULL
 * **EINGABE** (userPrincipalName): "John.Doe@contoso.com"

@@ -2,17 +2,17 @@
 title: Metriken, Warnungen und Diagnoseprotokolle
 description: Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoressourcen wie Pools und Tasks auf, und analysieren Sie sie.
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145099"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848686"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
- 
+
 In diesem Artikel wird erläutert, wie Sie ein Batch-Konto mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md) überwachen. Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-platform-metrics.md) und [Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md) für Ressourcen in Ihrem Batch-Konto. Sie können mithilfe verschiedener Methoden diese Daten sammeln und nutzen, um Ihr Batch-Konto zu überwachen und Probleme zu diagnostizieren. Sie können auch [Metrikwarnungen](../azure-monitor/platform/alerts-overview.md) konfigurieren, um Benachrichtigungen zu erhalten, wenn eine Metrik einen angegebenen Wert erreicht.
 
 ## <a name="batch-metrics"></a>Batch-Metriken
@@ -57,7 +57,7 @@ Sie können *Metrikwarnungen* nahezu in Echtzeit konfigurieren, die ausgelöst 
 
 Warnungen, die bei einzelnen Datenpunkten ausgelöst werden, werden nicht empfohlen, da Metriken der außerordentlichen Bereitstellung und dem Verlust bzw. der Duplizierung von Daten unterliegen. Wenn Sie Ihre Warnungen erstellen, können Sie Schwellenwerte verwenden, um diese Inkonsistenzen zu berücksichtigen.
 
-Beispiel: Es empfiehlt sich, eine Metrikwarnung für den Fall zu konfigurieren, dass die Anzahl für Kerne mit niedriger Priorität auf einen bestimmten Wert sinkt, sodass Sie die Zusammensetzung der Pools anpassen können. Die besten Ergebnisse werden erzielt, wenn Sie einen Zeitraum von zehn oder mehr Minuten festzulegen, in dem Warnungen ausgelöst werden, wenn die durchschnittliche Anzahl von Kernen mit niedriger Priorität unter den Schwellenwert für den gesamten Zeitraum fällt. Dadurch bleibt mehr Zeit für die Aggregation von Metriken, sodass Sie genauere Ergebnisse erhalten. 
+Beispiel: Es empfiehlt sich, eine Metrikwarnung für den Fall zu konfigurieren, dass die Anzahl für Kerne mit niedriger Priorität auf einen bestimmten Wert sinkt, sodass Sie die Zusammensetzung der Pools anpassen können. Die besten Ergebnisse werden erzielt, wenn Sie einen Zeitraum von zehn oder mehr Minuten festzulegen, in dem Warnungen ausgelöst werden, wenn die durchschnittliche Anzahl von Kernen mit niedriger Priorität unter den Schwellenwert für den gesamten Zeitraum fällt. Dadurch bleibt mehr Zeit für die Aggregation von Metriken, sodass Sie genauere Ergebnisse erhalten.
 
 So konfigurieren Sie eine Metrikwarnung im Azure-Portal
 
@@ -87,11 +87,11 @@ Ein häufiges Szenario ist die Auswahl eines Azure Storage-Kontos als Protokollz
 
 Alternativ haben Sie folgende Möglichkeiten:
 
-- Streamen Sie Batch-Diagnoseprotokolle an einen [Azure Event Hub](../event-hubs/event-hubs-about.md). Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern. 
+- Streamen Sie Batch-Diagnoseprotokolle an einen [Azure Event Hub](../event-hubs/event-hubs-about.md). Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern.
 - Senden Sie Diagnoseprotokolle an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md). Hier können Sie sie analysieren oder zur Analyse in Power BI oder Excel exportieren.
 
 > [!NOTE]
-> Beim Speichern oder Verarbeiten von Diagnoseprotokolldaten mit Azure-Diensten fallen unter Umständen zusätzliche Kosten an. 
+> Beim Speichern oder Verarbeiten von Diagnoseprotokolldaten mit Azure-Diensten fallen unter Umständen zusätzliche Kosten an.
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Aktivieren der Erfassung von Batch-Diagnoseprotokollen
 
@@ -155,7 +155,7 @@ Azure Batch-Dienstprotokolle (sofern sie erfasst werden) enthalten Ereignisse, d
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,9 +170,11 @@ Die vom Batch-Dienst ausgegebenen Dienstprotokollereignisse umfassen Folgendes:
 - [Abschluss des Löschvorgangs eines Pools](batch-pool-delete-complete-event.md)
 - [Start der Größenänderung eines Pools](batch-pool-resize-start-event.md)
 - [Abschluss der Größenänderung eines Pools](batch-pool-resize-complete-event.md)
+- [Autoskalierung von Pools](batch-pool-autoscale-event.md)
 - [Taskstart](batch-task-start-event.md)
 - [Taskabschluss](batch-task-complete-event.md)
 - [Taskfehler](batch-task-fail-event.md)
+- [Taskzeitplan-Fehler](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

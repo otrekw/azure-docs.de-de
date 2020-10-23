@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905284"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042591"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Common Data Model-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,6 +51,8 @@ In der folgenden Tabelle sind die von einer CDM-Quelle unterstützten Eigenschaf
 | Korpusordner | Der Stammspeicherort des Korpus. | Ja, wenn Manifest verwendet wird | String | corpusPath |
 | Korpusentität | Der Pfad zum Entitätsverweis. | ja | String | entity |
 | Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
+
+Wenn sich die Entitätsdefinition, die Sie in Ihrer Quelltransformation verwenden möchten, im selben Verzeichnis wie Ihr Datenordner befindet, können Sie „Use entity from corpus“ (Entität aus dem Korpus verwenden) deaktivieren und einfach die Entität eingeben, die Sie als Entitätsverweis verwenden möchten.
 
 ### <a name="sink-settings"></a>Senkeneinstellungen
 
@@ -112,7 +114,7 @@ source(output(
 
 In der folgenden Tabelle sind die von einer CDM-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `cdm` sein | ja | `cdm` | format |
 | Stammspeicherort: Container | Der Containername des CDM-Ordners. | ja | String | fileSystem |
