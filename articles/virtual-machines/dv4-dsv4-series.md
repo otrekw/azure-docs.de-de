@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: df78d11ce19c1d1fbbb04d2cd1718be74401cd83
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: ca01397959aa50c77218742320f8ced128876bad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182155"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018677"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4- und Dsv4-Serie
 
-Die Dv4- und Dsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) mit einer Hyperthreading-Konfiguration ausgeführt, die für die meisten Allzweck-Workloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügt über eine dauerhafte Turbotaktrate von 3,4 GHz. 
+Die Dv4- und Dsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) mit einer Hyperthreading-Konfiguration ausgeführt, die für die meisten Allzweck-Workloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügt über eine Turbo-Taktfrequenz von 3,4 GHz. 
 
 > [!NOTE]
 > Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.md).
@@ -28,15 +28,13 @@ Die Größen der Dv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL (
 
 Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die Dsv4-Größen, um Datenträger mit Premium-Speicher zu nutzen. Für Dsv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dv4-Serie.
 
-ACU: 195-210
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195-210<br>
+[Storage Premium:](premium-storage-performance.md) Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|
@@ -52,15 +50,13 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 Die Größen der Dsv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake). Die Größen der Dv4-Serie bieten eine Kombination aus vCPU-, Arbeitsspeicher- und Remotespeicheroptionen, die für die meisten Produktionsworkloads geeignet ist. Virtuelle Computer der Dsv4-Serie verfügen über Hyperthreading-Technologie von [Intel&reg;](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechnet.
 
-ACU: 195-210
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195-210<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|

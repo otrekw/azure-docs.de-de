@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893617"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331735"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Definieren einer Regelhierarchie mithilfe einer Azure Firewall-Richtlinie
 
@@ -21,7 +21,7 @@ Sicherheitsadministratoren müssen Firewalls verwalten und Compliance über loka
 Mithilfe von Azure Firewall-Richtlinien können Sie eine Regelhierarchie definieren und Compliance erzwingen:
 
 - Stellt eine hierarchische Struktur bereit, um eine zentrale Basisrichtlinie auf einer untergeordneten Anwendungsteam-Richtlinie zu überlagern. Die Basisrichtlinie hat eine höhere Priorität und wird vor der untergeordneten Richtlinie ausgeführt.
-- Verwenden Sie eine benutzerdefinierte Definition für rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um ein unbeabsichtigtes Entfernen der Basisrichtlinie zu verhindern und selektiven Zugriff auf Regelsammlungsgruppen innerhalb eines Abonnements oder einer Ressourcengruppe bereitzustellen. 
+- Verwenden Sie eine benutzerdefinierte Rollendefinition, um ein unbeabsichtigtes Entfernen der Basisrichtlinie zu verhindern und selektiven Zugriff auf Regelsammlungsgruppen innerhalb eines Abonnements oder einer Ressourcengruppe bereitzustellen. 
 
 ## <a name="solution-overview"></a>Lösungsübersicht
 
@@ -153,7 +153,7 @@ Wiederholen Sie diesen Vorgang für die anderen Firewallrichtlinien.
 
 ### <a name="summary"></a>Zusammenfassung
 
-Die Firewallrichtlinie mit benutzerdefinierter RBAC bietet jetzt selektiven Zugriff auf Firewallrichtlinien-Regelsammlungsgruppen.
+Die Firewallrichtlinie mit benutzerdefinierten Rollen bietet jetzt selektiven Zugriff auf Firewallrichtlinien-Regelsammlungsgruppen.
 
 Benutzer haben keine Berechtigungen für Folgendes:
 - Löschen der Azure Firewall- oder Firewallrichtlinie

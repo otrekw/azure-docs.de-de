@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423795"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714347"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation (Vorschauversion)
 
@@ -128,7 +128,7 @@ Wählen Sie die Ressource aus, um alle Details anzuzeigen. Hierdurch wird ein ne
 
 Ähnlich wird ein eindeutiger vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) für die State Configuration (agentsvc) und für die Hybrid Runbook Worker-Auftragslaufzeit (jrds) erstellt. Jedem davon wird von Ihrem VNet eine gesonderte IP-Adresse zugewiesen, und der **Verbindungsstatus** lautet **Genehmigt**.
 
-Wenn der Dienstconsumer über RBAC-Berechtigungen für die Automation-Ressource verfügt, kann er die Automation-Genehmigungsmethode auswählen. In diesem Fall ist keine Aktion des Dienstanbieters erforderlich, wenn die Anforderung die Automation-Anbieterressource erreicht, und die Verbindung wird automatisch genehmigt.
+Wenn der Dienstconsumer über Azure RBAC-Berechtigungen für die Automation-Ressource verfügt, kann er die Automation-Genehmigungsmethode auswählen. In diesem Fall ist keine Aktion des Dienstanbieters erforderlich, wenn die Anforderung die Automation-Anbieterressource erreicht, und die Verbindung wird automatisch genehmigt.
 
 ## <a name="set-public-network-access-flags"></a>Einrichten von Netzwerkzugriffsflags
 

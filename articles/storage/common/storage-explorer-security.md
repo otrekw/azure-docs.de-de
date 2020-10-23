@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: d9dea7cd0cc22cc8a1e0aa5c93ece76d689de0e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714378"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Sicherheitsleitfaden für Azure Storage-Explorer
 
@@ -42,11 +42,11 @@ Es wird empfohlen, nach Möglichkeit die Azure AD-Authentifizierung zu verwende
 
 In diesem Abschnitt werden die zwei Azure AD-basierten Technologien beschrieben, die zum Schützen Ihrer Speicherressourcen verwendet werden können.
 
-#### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+#### <a name="azure-role-based-access-control-azure-rbac"></a>Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
 
-Die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) ermöglicht Ihnen eine differenzierte Zugriffssteuerung für Ihre Azure-Ressourcen. RBAC-Rollen und -Berechtigungen können im Azure-Portal verwaltet werden.
+Die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) ermöglicht Ihnen eine differenzierte Zugriffssteuerung für Ihre Azure-Ressourcen. Azure-Rollen und -Berechtigungen können im Azure-Portal verwaltet werden.
 
-Storage-Explorer unterstützt den RBAC-Zugriff auf Speicherkonten, Blobs und Warteschlangen. Wenn Sie Zugriff auf Dateifreigaben oder Tabellen benötigen, müssen Sie RBAC-Rollen zuweisen, die die Berechtigung zum Auflisten von Speicherkontoschlüsseln erteilen.
+Storage-Explorer unterstützt den Azure RBAC-Zugriff auf Speicherkonten, Blobs und Warteschlangen. Wenn Sie Zugriff auf Dateifreigaben oder Tabellen benötigen, müssen Sie Azure-Rollen zuweisen, die die Berechtigung zum Auflisten von Speicherkontoschlüsseln erteilen.
 
 #### <a name="access-control-lists-acls"></a>Zugriffssteuerungslisten (ACLs)
 
@@ -77,11 +77,11 @@ Bei Verwendung von SAS in Storage-Explorer empfehlen wir, die folgenden Richtlin
 
 ### <a name="storage-account-keys"></a>Speicherkontoschlüssel
 
-Speicherkontoschlüssel gewähren uneingeschränkten Zugriff auf die Dienste und Ressourcen innerhalb eines Speicherkontos. Aus diesem Grund empfehlen wir, die Verwendung von Schlüsseln für den Zugriff auf Ressourcen in Storage-Explorer einzuschränken. Verwenden Sie stattdessen RBAC-Features oder SAS, um Zugriff zu gewähren.
+Speicherkontoschlüssel gewähren uneingeschränkten Zugriff auf die Dienste und Ressourcen innerhalb eines Speicherkontos. Aus diesem Grund empfehlen wir, die Verwendung von Schlüsseln für den Zugriff auf Ressourcen in Storage-Explorer einzuschränken. Verwenden Sie stattdessen Azure RBAC-Features oder SAS, um Zugriff zu gewähren.
 
-Einige RBAC-Rollen erteilen die Berechtigung zum Abrufen von Speicherkontoschlüsseln. Personen mit diesen Rollen können durch RBAC erteilte oder verweigerte Berechtigungen effektiv umgehen. Wir empfehlen, diese Berechtigung nur zu erteilen, wenn dies unbedingt erforderlich ist.
+Einige Azure-Rollen erteilen die Berechtigung zum Abrufen von Speicherkontoschlüsseln. Personen mit diesen Rollen können durch Azure RBAC erteilte oder verweigerte Berechtigungen effektiv umgehen. Wir empfehlen, diese Berechtigung nur zu erteilen, wenn dies unbedingt erforderlich ist.
 
-Storage-Explorer versucht, Speicherkontoschlüssel zu verwenden (sofern verfügbar), um Anforderungen zu authentifizieren. Sie können diese Funktion in den Einstellungen deaktivieren (**Dienste > Speicherkonten > Verwendung von Schlüsseln deaktivieren**). Einige Funktionen (wie das Arbeiten mit klassischen Speicherkonten) unterstützen RBAC nicht. Diese Funktionen erfordern weiterhin Schlüssel und sind von dieser Einstellung nicht betroffen.
+Storage-Explorer versucht, Speicherkontoschlüssel zu verwenden (sofern verfügbar), um Anforderungen zu authentifizieren. Sie können diese Funktion in den Einstellungen deaktivieren (**Dienste > Speicherkonten > Verwendung von Schlüsseln deaktivieren**). Einige Funktionen (wie das Arbeiten mit klassischen Speicherkonten) unterstützen Azure RBAC nicht. Diese Funktionen erfordern weiterhin Schlüssel und sind von dieser Einstellung nicht betroffen.
 
 Wenn Sie Schlüssel für den Zugriff auf Ihre Speicherressourcen verwenden müssen, empfehlen wir, die folgenden Richtlinien zu befolgen:
 

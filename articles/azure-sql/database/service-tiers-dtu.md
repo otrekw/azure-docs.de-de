@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848856"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102998"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 |**Betriebszeit-SLA**|99,99 %|99,99 %|99,99 %|
 |**Maximale Sicherungsaufbewahrung**|7 Tage|35 Tage|35 Tage|
 |**CPU**|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
-|**IOPS (ungefähr)** \* |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
+|**IOPS (ungefähr)** \* |1–4 IOPS pro DTU| 1–4 IOPS pro DTU | 25 IOPS pro DTU|
 |**E/A-Wartezeit (ungefähr)**|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|
 |**Columnstore-Indizierung** |–|S3 und höher|Unterstützt|
 |**In-Memory-OLTP**|–|–|Unterstützt|

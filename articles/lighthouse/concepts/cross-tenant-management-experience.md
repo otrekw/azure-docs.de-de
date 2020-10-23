@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 09/10/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602386"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970638"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -35,10 +35,12 @@ Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder
 
 Das Azure PowerShell-Cmdlet [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zeigt die Attribute `HomeTenantId` und `ManagedByTenantIds` für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zu einem verwalteten Mandanten oder Ihrem verwaltenden Mandanten gehört.
 
-Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an.
+Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an. Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
 
-> [!TIP]
-> Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
+In der Azure-REST-API enthalten die Befehle [Subscriptions – Get](/rest/api/resources/subscriptions/get) und [Subscriptions – List](/rest/api/resources/subscriptions/list) das Element `ManagedByTenant`.
+
+> [!NOTE]
+> Zusätzlich zu den Mandanteninformationen im Zusammenhang mit Azure Lighthouse können Mandanten, die von diesen APIs angezeigt werden, auch Partnermandanten für Azure Databricks oder verwaltete Azure-Anwendungen darstellen.
 
 Wir bieten außerdem APIs, die speziell für Azure Lighthouse-Aufgaben ausgelegt sind. Weitere Informationen finden Sie im Abschnitt **Referenz**.
 
@@ -48,7 +50,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Arc:](../../azure-arc/index.yml)
 
-- Verwalten von Hybridservern im großen Stil: [Server mit Azure Arc-Unterstützung (Vorschauversion)](../../azure-arc/servers/overview.md):
+- Verwalten von Hybridservern im großen Stil: [Server mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md):
   - [Verwalten von verbundenen Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
   - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
   - Sicherstellen der Anwendung derselben Richtlinien für die Hybridumgebungen von Kunden
@@ -120,6 +122,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
   - Verstärkung des Schutzes der Konfiguration von Netzwerksicherheitsgruppen mit adaptiver Netzwerkhärtung
   - Sicherstellung mittels adaptiver Anwendungssteuerung, dass auf Servern nur die Anwendungen und Prozesse ausgeführt werden, die ausgeführt werden sollten
   - Überwachen von Änderungen an wichtigen Dateien und Registrierungseinträgen mittels Überwachung der Dateiintegrität (FIM)
+- Beachten Sie, dass das gesamte Abonnement an den Verwaltungsmandanten delegiert werden muss. Azure Security Center-Szenarien werden bei delegierten Ressourcengruppen nicht unterstützt.
 
 [Azure Sentinel:](../../sentinel/multiple-tenants-service-providers.md)
 

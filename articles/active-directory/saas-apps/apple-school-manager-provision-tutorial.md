@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: a6543c56f7170f674a227421575ba7f842fb29a8
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761418"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757451"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Apple School Manager für die automatische Benutzerbereitstellung
 
@@ -55,7 +55,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 1. Melden Sie sich in Apple School Manager mit einem Konto mit der Rolle „Administrator“, „Standortmanager“ oder „Personenmanager“ an.
 2. Klicken Sie unten in der Seitenleiste auf „Einstellungen“, dann unter „Einstellungen der Organisation“ auf „Datenquelle“ und schließlich auf „Mit Datenquelle verbinden“.
 3. Klicken Sie neben „SCIM“ auf „Verbinden“, lesen Sie die Warnung sorgfältig durch, klicken Sie auf „Kopieren“ und dann auf „Schließen“.
-[Das Fenster „Connect to SCIM“ (Mit SCIM verbinden) mit einem Token und der Schaltfläche „Kopieren“ darunter] Lassen Sie dieses Fenster geöffnet, um die Mandanten-URL von Apple School Manager in Azure AD zu kopieren. Dies ist: https://federation.apple.com/feeds/school/scim
+[Das Fenster „Connect to SCIM“ (Mit SCIM verbinden) mit einem Token und der Schaltfläche „Kopieren“ darunter] Lassen Sie dieses Fenster geöffnet, um die Mandanten-URL von Apple Business Manager in Azure AD zu kopieren. Diese ist: „https://federation.apple.com/feeds/school/scim“
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -152,15 +152,16 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [SCIM-Voraussetzungen für Apple School Manager überprüfen](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [Verwendung der Personen-ID in Apple School Manager](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [SCIM zum Importieren von Benutzern in Apple School Manager verwenden](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [SCIM-Benutzer-Account-Konflikte in Apple School Manager lösen](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [Azure AD-Accounts in Apple School Manager löschen](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [SCIM-Aktivität in Apple School Manager anzeigen](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [Vorhandene SCIM-Token in Apple School Manager verwalten](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [SCIM-Verbindung in Apple School Manager trennen](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)[Apple School Manager – Benutzerhandbuch](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Probleme mit der SCIM-Verbindung in Apple School Manager beheben](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [SCIM-Voraussetzungen für Apple School Manager überprüfen](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [Verwendung der Personen-ID in Apple School Manager](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [SCIM zum Importieren von Benutzern in Apple School Manager verwenden](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [SCIM-Benutzer-Account-Konflikte in Apple School Manager lösen](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [Azure AD-Accounts in Apple School Manager löschen](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [SCIM-Aktivität in Apple School Manager anzeigen](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [Vorhandene SCIM-Token in Apple School Manager verwalten](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [SCIM-Verbindung in Apple School Manager trennen](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [Vorhandene SCIM-Token in Apple School Manager verwalten](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Probleme mit der SCIM-Verbindung in Apple School Manager beheben](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

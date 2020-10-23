@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 8/11/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459996"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963515"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
@@ -28,7 +28,7 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
-* Sie müssen bereits einen Kapazitätspool eingerichtet haben.  
+* Sie müssen bereits einen Kapazitätspool erstellt haben.  
     Siehe [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
 * Ein Subnetz muss an Azure NetApp Files delegiert werden.  
     Siehe [Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
@@ -38,6 +38,19 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 * Achten Sie darauf, die [Anforderungen für Active Directory-Verbindungen](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections) zu erfüllen. 
 * Erstellen Sie eine Reverse-Lookup-Zone auf dem DNS-Server, und fügen Sie dann einen Zeigereintrag (PTR) des AD-Hostcomputers in dieser Reverse-Lookup-Zone hinzu. Andernfalls kann das Volume mit dualem Protokoll nicht erstellt werden.
 * Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
+* Stellen Sie sicher, dass der Active Directory (AD) LDAP-Server auf dem AD ausgeführt wird. Hierzu können Sie die Rolle [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) auf dem AD-Computer installieren und konfigurieren.
+* Stellen Sie sicher, dass eine Zertifizierungsstelle im AD mithilfe der Rolle [Active Directory-Zertifikatdienste](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) erstellt wird, um das selbst signierte Zertifikat der Stammzertifizierungsstelle zu generieren und zu exportieren.   
+* Doppelprotokollvolumes unterstützen zurzeit keine Azure Active Directory Domain Services (AADDS).  
+* Die von einem Doppelprotokollvolume verwendete NFS-Version ist NFSv3. Dabei gelten die folgenden Bedingungen:
+    * Das duale Protokoll unterstützt die erweiterten Attribute `set/get` von Windows-ACLs von NFS-Clients nicht.
+    * NFS-Clients können keine Berechtigungen für den NTFS-Sicherheitsstil ändern, und Windows-Clients können keine Berechtigungen für Doppelprotokollvolumes im UNIX-Format ändern.   
+
+    In der folgenden Tabelle werden die Sicherheitsstile und deren Auswirkungen beschrieben:  
+    
+    | Sicherheitsstil    | Clients, die Berechtigungen ändern können   | Berechtigungen, die von Clients verwendet werden können  | Resultierender effektiver Sicherheitsstil    | Clients, die auf Dateien zugreifen können     |
+    |-  |-  |-  |-  |-  |
+    | UNIX  | NFS   | NFSv3-Modusbits   | UNIX  | NFS und Windows   |
+    | NTFS  | Windows   | NTFS-ACLs     | NTFS  |NFS und Windows|
 
 ## <a name="create-a-dual-protocol-volume"></a>Erstellen eines Dual-Protokoll-Volumes
 
@@ -51,7 +64,7 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 
         Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Sie dürfen beliebige alphanumerische Zeichen verwenden.   
 
-        `default` kann nicht als Volumename verwendet werden.
+        Sie können `default` oder `bin` nicht als Volumename verwenden.
 
     * **Kapazitätspool**  
         Geben Sie den Kapazitätspool an, in dem das Volume erstellt werden soll.
@@ -60,6 +73,11 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
         Geben Sie die Menge an logischem Speicherplatz an, die dem Volume zugewiesen wird.  
 
         Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.  
+
+    * **Durchsatz (MiB/s)**    
+        Wenn das Volume in einem manuellen QoS-Kapazitätspool erstellt wird, geben Sie den für das Volume gewünschten Durchsatz an.   
+
+        Wenn das Volume in einem automatischen QoS-Kapazitätspool erstellt wird, lautet der in diesem Feld angezeigte Wert (Kontingent x Serviceleveldurchsatz).   
 
     * **Virtuelles Netzwerk**  
         Geben Sie das virtuelle Azure-Netzwerk (VNET) an, von dem aus Sie auf das Volume zugreifen möchten.  
@@ -76,7 +94,7 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
     
         ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmenrichtlinie aus. 
+    * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmerichtlinie aus. 
 
         Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
@@ -105,9 +123,9 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Hochladen des öffentlichen Stammzertifikats der Active Directory-Zertifizierungsstelle  
 
-1.  Führen Sie die unter [Installieren der Zertifizierungsstelle](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) angegebenen Schritte zum Installieren und Konfigurieren der AD DS-Zertifizierungsstelle aus. 
+1.  Führen Sie die unter [Installieren der Zertifizierungsstelle](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) angegebenen Schritte zum Installieren und Konfigurieren der AD DS-Zertifizierungsstelle aus. 
 
-2.  Führen Sie die unter [Anzeigen von Zertifikaten mit dem MMC-Snap-In](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) angegebenen Schritte aus, um das MMC-Snap-In und das Tool „Zertifikat-Manager“ zu verwenden.  
+2.  Führen Sie die unter [Anzeigen von Zertifikaten mit dem MMC-Snap-In](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) angegebenen Schritte aus, um das MMC-Snap-In und das Tool „Zertifikat-Manager“ zu verwenden.  
     Verwenden Sie das Snap-In „Zertifikat-Manager“, um das Stamm- oder Ausstellerzertifikat für das lokale Gerät zu suchen. Sie sollten die Befehle des Snap-Ins „Zertifikatverwaltung“ über eine der folgenden Einstellungen ausführen:  
     * Windows-basierter Client, der der Domäne hinzugefügt wurde und auf dem das Stammzertifikat installiert ist 
     * Anderer Computer in der Domäne mit dem Stammzertifikat  
@@ -131,6 +149,11 @@ Sie können POSIX-Attribute wie z. B. UID, Basisverzeichnis und andere Werte ü
 
 ![Active Directory-Attribut-Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
+Sie müssen die folgenden Attribute für LDAP-Benutzer und LDAP-Gruppen festlegen: 
+* Erforderliche Attribute für LDAP-Benutzer:   
+    `uid`: Alice, `uidNumber`: 139, `gidNumber`: 555, `objectClass`: posixAccount
+* Erforderliche Attribute für LDAP-Gruppen:   
+    `objectClass`: "posixGroup", `gidNumber`: 555
 
 ## <a name="configure-the-nfs-client"></a>Konfigurieren des NFS-Clients 
 
@@ -139,4 +162,4 @@ Befolgen Sie die Anweisungen unter [Konfigurieren eines NFS-Clients für Azure N
 ## <a name="next-steps"></a>Nächste Schritte  
 
 * [Häufig gestellte Fragen zum dualen Protokoll](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md) 
+* [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md)

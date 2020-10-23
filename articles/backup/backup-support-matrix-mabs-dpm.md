@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276970"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -60,7 +60,7 @@ DPM und MABS können wie in der folgenden Tabelle zusammengefasst bereitgestellt
 
 **Bereitstellung** | **Unterstützung** | **Details**
 --- | --- | ---
-**Lokale Bereitstellung** | Physischer Server<br/><br/>Virtueller Hyper-V-Computer<br/><br/> Virtueller VMware-Computer | Wenn DPM/MABS als virtueller VMware-Computer installiert ist, werden nur virtuelle VMware-Computer und darauf ausgeführte Workloads gesichert.
+**Lokale Bereitstellung** | Physischer Server<br/><br/>Virtueller Hyper-V-Computer<br/><br/> Virtueller VMware-Computer | Weitere Informationen finden Sie in der [Schutzmatrix](backup-mabs-protection-matrix.md). 
 **Bereitstellung als virtueller Azure Stack-Computer** | Nur MABS | DPM kann nicht zum Sichern virtueller Azure Stack-Computer verwendet werden.
 **Bereitstellung als virtueller Azure-Computer** | Schutz von virtuellen Azure-Computern und Workloads, die auf diesen VMs ausgeführt werden | Bei Ausführung von MABS/DPM in Azure können lokale Computer nicht gesichert werden.
 

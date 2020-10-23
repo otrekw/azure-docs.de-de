@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618640"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840488"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbank- und Azure SQL Managed Instance-Anwendungen mithilfe der Batchverarbeitung
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -293,7 +293,7 @@ Mithilfe der Klasse **DataAdapter** können Sie ein Objekt vom Typ **DataSet** �
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6) unterstützt jetzt die Batchverarbeitung.
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) unterstützt die Batchverarbeitung.
 
 ### <a name="xml"></a>XML
 

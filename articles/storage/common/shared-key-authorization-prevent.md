@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088798"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715113"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)
 
@@ -219,7 +219,7 @@ Einige Azure-Tools bieten die Möglichkeit, die Azure AD-Autorisierung für den
 | Azure PowerShell | Unterstützt. Informationen zum Autorisieren von PowerShell-Befehlen für Befehle für Blob- oder Warteschlangenvorgänge mit Azure AD finden Sie unter [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten](../blobs/authorize-active-directory-powershell.md) und [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten](../queues/authorize-active-directory-powershell.md). |
 | Azure CLI | Unterstützt. Informationen zum Autorisieren von Azure CLI-Befehlen mit Azure AD für den Zugriff auf Blob- und Warteschlangendaten finden Sie unter [Ausführen von Azure CLI-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Unterstützt. Weitere Informationen finden Sie unter [IoT Hub-Unterstützung für virtuelle Netzwerke](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | Azure Cloud Shell ist eine integrierte Shell im Azure-Portal. Azure Cloud Shell hostet Dateien für Persistenz in einer Azure-Dateifreigabe in einem Speicherkonto. Auf diese Dateien kann nicht mehr zugegriffen werden, wenn die Autorisierung mit gemeinsam verwendeten Schlüsseln für dieses Speicherkonto aufgehoben wird. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Zum Ausführen von Befehlen in Azure Cloud Shell zum Verwalten von Speicherkonten, für die der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist, müssen Sie zunächst sicherstellen, dass Ihnen die erforderlichen Berechtigungen für diese Konten über die rollenbasierte Zugriffssteuerung (RBAC) erteilt wurden. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | Azure Cloud Shell ist eine integrierte Shell im Azure-Portal. Azure Cloud Shell hostet Dateien für Persistenz in einer Azure-Dateifreigabe in einem Speicherkonto. Auf diese Dateien kann nicht mehr zugegriffen werden, wenn die Autorisierung mit gemeinsam verwendeten Schlüsseln für dieses Speicherkonto aufgehoben wird. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Zum Ausführen von Befehlen in Azure Cloud Shell zum Verwalten von Speicherkonten, für die der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist, müssen Sie zunächst sicherstellen, dass Ihnen die erforderlichen Berechtigungen für diese Konten über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) erteilt wurden. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095551"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850590"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-Features
 
@@ -62,7 +62,7 @@ Azure Firewall kann entsprechend Ihren Anforderungen hochskaliert werden, um ein
 
 ## <a name="application-fqdn-filtering-rules"></a>FQDN-Anwendungsfilterregeln
 
-Sie können den ausgehenden HTTP/S-Datenverkehr oder Azure SQL-Datenverkehr (Vorschau) auf eine angegebene Liste vollqualifizierter Domänennamen (FQDNs) einschließlich Platzhalter beschränken. Dieses Feature erfordert keine TLS-Terminierung.
+Sie können den ausgehenden HTTP/S-Datenverkehr oder Azure SQL-Datenverkehr auf eine angegebene Liste vollqualifizierter Domänennamen (FQDNs) einschließlich Platzhalter beschränken. Dieses Feature erfordert keine TLS-Terminierung.
 
 ## <a name="network-traffic-filtering-rules"></a>Filterregeln für den Netzwerkdatenverkehr
 
@@ -101,7 +101,11 @@ Dies ermöglicht die folgenden Szenarien:
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
-Alle Ereignisse sind in Azure Monitor integriert, sodass Sie Protokolle in einem Speicherkonto archivieren sowie Ereignisse an Ihren Event Hub streamen oder an Azure Monitor-Protokolle senden können. Weitere Informationen finden Sie im [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](tutorial-diagnostics.md).
+Alle Ereignisse sind in Azure Monitor integriert, sodass Sie Protokolle in einem Speicherkonto archivieren sowie Ereignisse an Ihren Event Hub streamen oder an Azure Monitor-Protokolle senden können. Azure Monitor-Protokollbeispiele finden Sie unter [Azure Monitor-Protokolle für Azure Firewall](log-analytics-samples.md).
+
+Weitere Informationen finden Sie im [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](tutorial-diagnostics.md). 
+
+Azure Firewall Workbook bietet einen flexiblen Bereich für die Azure Firewall-Datenanalyse. Sie können damit umfangreiche visuelle Berichte innerhalb des Azure-Portals erstellen. Weitere Informationen finden Sie unter [Überwachen von Protokollen mit Azure Firewall Workbook](firewall-workbook.md).
 
 ## <a name="forced-tunneling"></a>Tunnelerzwingung
 

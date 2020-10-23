@@ -3,12 +3,12 @@ title: Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gr
 description: Erfahren Sie, wie Sie die Gruppenrichtlinie aus der Sicherheitsbaseline von Windows Server 2019 in eine Richtliniendefinition konvertieren.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547767"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893372"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
 
@@ -87,7 +87,7 @@ Im nächsten Schritt wird die heruntergeladene Server 2019-Baseline mithilfe der
 
 ## <a name="create-azure-policy-guest-configuration"></a>Erstellen der Azure Policy-Gastkonfiguration
 
-Im nächsten Schritt wird die Datei im Blobspeicher veröffentlicht. 
+Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht. 
 
 1. Das folgende Skript enthält eine Funktion, mit der Sie diese Aufgabe automatisieren können. Dabei ist zu beachten, dass für die in der `publish`-Funktion verwendeten Befehle das `Az.Storage`-Modul erforderlich ist.
 
@@ -145,7 +145,7 @@ Im nächsten Schritt wird die Datei im Blobspeicher veröffentlicht.
     $blob = 'Server2019Baseline.zip' 
     ```
 
-1. Verwenden Sie die Funktion „Veröffentlichen“ mit den zugewiesenen Parametern, um das Gastkonfigurationspaket im öffentlichen BLOB-Speicher zu veröffentlichen.
+1. Verwenden Sie die Funktion „Veröffentlichen“ mit den zugewiesenen Parametern, um das Gastkonfigurationspaket im öffentlichen Blobspeicher zu veröffentlichen.
 
 
    ```azurepowershell-interactive

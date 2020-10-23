@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322516"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973699"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -136,7 +136,7 @@ Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen
 
 Bei Images der Generation 1 kann die GPT-Partitionierung nur auf Datenträgern und nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
 
-[Bei Images der Generation 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) kann die GPT-Partitionierung sowohl auf dem Betriebssystem-Datenträger als auch auf den Datenträgern verwendet werden.
+[Bei Images der Generation 2](./generation-2.md) kann die GPT-Partitionierung sowohl auf dem Betriebssystem-Datenträger als auch auf den Datenträgern verwendet werden.
 
 **Welche Datenträgertypen unterstützen Momentaufnahmen?**
 
@@ -241,7 +241,7 @@ Nein, Hochladen kann nur während der Erstellung eines neuen leeren Datenträger
 
 **Wie lade ich Daten auf einen verwalteten Datenträger hoch?**
 
-Erstellen Sie den verwalteten Datenträger so, dass die [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption)-Eigenschaft von [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) auf „Upload“ festgelegt ist. Danach können Sie Daten auf den Datenträger hochladen.
+Erstellen Sie den verwalteten Datenträger so, dass die [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption)-Eigenschaft von [creationData](/rest/api/compute/disks/createorupdate#creationdata) auf „Upload“ festgelegt ist. Danach können Sie Daten auf den Datenträger hochladen.
 
 **Kann ich einen Datenträger einem virtuellen Computer zuordnen, während der Datenträger einen Uploadstatus hat?**
 
@@ -396,13 +396,19 @@ Nein, sie werden nur auf verwalteten SSD Premium-Datenträgern unterstützt.
 
 Nein, verwaltete SSD Standard-Datenträger beliebiger Größe können nicht mit nicht verwalteten Datenträgern oder Seitenblobs verwendet werden.
 
-**Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
+**Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger auf Gen1-VMs unterstützt wird?**
 
-Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt, beträgt 4 TiB. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB.
+Der Partitionstyp, den Azure für einen Gen1-Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Obwohl Gen1-Betriebssystemdatenträger nur MBR unterstützen, unterstützen die Datenträger GPT. Sie können einen Betriebssystemdatenträger von bis zu 4 TiB zuordnen, mit dem MBR-Partitionstyp können jedoch nur bis zu 2 TiB dieses Speicherplatzes für das Betriebssystem verwendet werden. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB.
+
+**Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger auf Gen2-VMs unterstützt wird?**
+
+Der Partitionstyp, den Azure für einen Gen2-Betriebssystemdatenträger unterstützt, ist die GUID-Partitionstabelle (GPT). Gen2-VMs unterstützen Betriebssystemdatenträger von bis zu 4 TiB. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB.
+
 
 **Welche ist die maximale Größe nicht verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 
-Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen nicht verwalteten Betriebssystemdatenträger unterstützt, beträgt 4 TiB. Für nicht verwaltete Datenträger für Daten unterstützt Azure bis zu 4 TiB.
+Der Partitionstyp, den Azure für einen Betriebssystemdatenträger mit nicht verwalteten Datenträgern unterstützt, ist der Master Boot Record (MBR).  Sie können einen Betriebssystemdatenträger von bis zu 4 TiB zuordnen, mit dem MBR-Partitionstyp können jedoch nur bis zu 2 TiB dieses Speicherplatzes für das Betriebssystem verwendet werden. Für nicht verwaltete Datenträger unterstützt Azure bis zu 4 TiB.
+
 
 **Was ist die größte Seitenblobgröße, die unterstützt wird?**
 
@@ -421,7 +427,7 @@ Sie müssen Ihre vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, d
 
 **Werden P4- und P6-Datenträgergrößen für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 
-Die Datenträgergrößen P4 (32 GiB) und P6 (64 GiB) werden nicht als Standarddatenträgertarife für nicht verwaltete Datenträger und Seitenblobs unterstützt. Sie müssen den [Blobtarif](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) explizit auf P4 und P6 festlegen, damit Ihr Datenträger diesen Tarifen zugeordnet wird. Wenn Sie einen nicht verwalteten Datenträger oder ein Seitenblob mit einer Datenträgergröße oder Inhaltslänge von weniger als 32 GiB oder zwischen 32 GiB und 64 GiB bereitstellen, ohne den Blobtarif festzulegen, gilt für Sie weiterhin P10 mit 500 IOPS und 100 MiB/s sowie der zugehörige Tarif.
+Die Datenträgergrößen P4 (32 GiB) und P6 (64 GiB) werden nicht als Standarddatenträgertarife für nicht verwaltete Datenträger und Seitenblobs unterstützt. Sie müssen den [Blobtarif](/rest/api/storageservices/set-blob-tier) explizit auf P4 und P6 festlegen, damit Ihr Datenträger diesen Tarifen zugeordnet wird. Wenn Sie einen nicht verwalteten Datenträger oder ein Seitenblob mit einer Datenträgergröße oder Inhaltslänge von weniger als 32 GiB oder zwischen 32 GiB und 64 GiB bereitstellen, ohne den Blobtarif festzulegen, gilt für Sie weiterhin P10 mit 500 IOPS und 100 MiB/s sowie der zugehörige Tarif.
 
 **Wie wird mein vorhandener verwalteter Premium-Datenträger mit weniger als 64 GiB abgerechnet, wenn er vor der Aktivierung des kleinen Datenträgers (um den 15. Juni 2017) erstellt wurde?**
 
@@ -491,6 +497,6 @@ Nein.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 
-Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels Fragen stellen. Auf der [Microsoft-Seite mit Fragen und Antworten zu Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage) von MSDN können Sie sich mit dem Azure Storage-Team und anderen Communitymitgliedern über diesen Artikel austauschen.
+Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels Fragen stellen. Auf der [Microsoft-Seite mit Fragen und Antworten zu Azure Storage](/answers/products/azure?product=storage) können Sie sich mit dem Azure Storage-Team und anderen Communitymitgliedern über diesen Artikel austauschen.
 
 Funktionsvorschläge und -ideen können über das [Azure Storage-Feedbackforum](https://feedback.azure.com/forums/217298-storage) eingereicht werden.

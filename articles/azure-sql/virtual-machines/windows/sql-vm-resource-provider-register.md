@@ -7,24 +7,30 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396963"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761310"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Registrieren von SQL Server-VMs in Azure mit dem SQL-VM-Ressourcenanbieter (Resource Provider, RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Ihren virtuellen SQL Server-Computer (VM) in Azure beim SQL-VM-Ressourcenanbieter (RP) registrieren. Durch die Registrierung beim Ressourcenanbieter wird die _Ressource_ **Virtueller SQL-Computer** innerhalb Ihres Abonnements erstellt. Dabei handelt es sich um eine andere Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt. 
+In diesem Artikel wird beschrieben, wie Sie Ihren virtuellen SQL Server-Computer (VM) in Azure beim SQL-VM-Ressourcenanbieter (RP) registrieren. 
+
+In diesem Artikel erfahren Sie, wie Sie eine einzelne SQL Server-VM bei dem SQL-VM-Ressourcenanbieter registrieren. Alternativ können Sie alle SQL Server-VMs [automatisch](sql-vm-resource-provider-automatic-registration.md) oder [per Skript im Massenverfahren](sql-vm-resource-provider-bulk-register.md) registrieren.
+
+## <a name="overview"></a>Übersicht
+
+Durch die Registrierung beim Ressourcenanbieter wird die _Ressource_ **Virtueller SQL-Computer** innerhalb Ihres Abonnements erstellt. Dabei handelt es sich um eine andere Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
 
 Durch das Bereitstellen eines SQL Server-VM-Azure Marketplace-Images über das Azure-Portal wird die SQL Server-VM automatisch beim Ressourcenanbieter registriert. Wenn Sie SQL Server aber auf einem virtuellen Azure-Computer selbst installieren oder einen virtuellen Azure-Computer von einer benutzerdefinierten VHD bereitstellen, sollten Sie Ihre SQL Server-VM beim Ressourcenanbieter registrieren, um folgende Vorteile zu nutzen:
 
@@ -58,7 +64,7 @@ Wenn Sie den SQL-VM-Ressourcenanbieter verwenden möchten, müssen Sie zunächst
 Zum Registrieren der SQL Server-VM beim Ressourcenanbieter benötigen Sie: 
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
-- Ein in der öffentlichen Cloud oder Azure Government-Cloud bereitgestelltes Azure-Ressourcenmodell vom Typ [SQL Server-VM](create-sql-vm-portal.md). 
+- Ein in der öffentlichen Cloud oder Azure Government-Cloud bereitgestelltes Azure-Ressourcenmodell vom Typ [Windows-VM](../../../virtual-machines/windows/quick-create-portal.md) mit [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads). 
 - Die aktuelle Version von [Azure CLI](/cli/azure/install-azure-cli) oder [PowerShell](/powershell/azure/new-azureps-module-az). 
 
 ## <a name="management-modes"></a>Verwaltungsmodi
@@ -328,11 +334,11 @@ Gehen Sie wie folgt vor, um Ihre SQL Server-VM beim Ressourcenanbieter über das
 
 1. Klicken Sie auf **Löschen**. 
 
-   ![Löschen des SQL-VM-Ressourcenanbieters](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![Auswählen von „Löschen“ in der oberen Navigationsleiste](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. Geben Sie den Namen der SQL-VM ein, und **deaktivieren Sie das Kontrollkästchen neben dem virtuellen Computer**.
 
-   ![Löschen des SQL-VM-Ressourcenanbieters](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![Deaktivieren der VM, um das Löschen der eigentlichen VM zu verhindern, und anschließend Auswählen von „Löschen“, um mit dem Löschen der SQL-VM-Ressource fortzufahren](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > Wenn Sie das Kontrollkästchen neben dem Namen des virtuellen Computers nicht deaktivieren, wird der virtuelle Computer vollständig *gelöscht*. Deaktivieren Sie das Kontrollkästchen, um die Registrierung der SQL Server-VM beim Ressourcenanbieter aufzuheben, aber *den aktuellen virtuellen Computer nicht zu löschen*. 
@@ -342,7 +348,7 @@ Gehen Sie wie folgt vor, um Ihre SQL Server-VM beim Ressourcenanbieter über das
 ### <a name="command-line"></a>Befehlszeile
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure CLI aufzuheben, verwenden Sie den Befehl [az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
+Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure CLI aufzuheben, verwenden Sie den Befehl [az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
 
 
 ```azurecli-interactive
@@ -400,7 +406,7 @@ Der SQL-Standardverwaltungsmodus bei der Registrierung beim SQL-VM-Ressourcenanb
 
 Ja, bei der Registrierung beim SQL-VM-Ressourcenanbieter wird ein Agent auf der VM installiert.
 
-Die IaaS-Erweiterung von SQL Server basiert bei der Abfrage der Metadaten für SQL Server auf dem Agent. Es wird nur dann kein Agent installiert, wenn der SQL VM-Ressourcenanbieter im NoAgent-Modus registriert ist.
+Die IaaS-Erweiterung von SQL Server basiert bei der Abfrage der Metadaten für SQL Server auf dem Agent. Es wird nur dann kein Agent installiert, wenn der SQL-VM-Ressourcenanbieter im NoAgent-Modus registriert ist.
 
 **Wird SQL Server durch die Registrierung beim SQL-VM-Ressourcenanbieter auf meiner VM neu gestartet?**
 

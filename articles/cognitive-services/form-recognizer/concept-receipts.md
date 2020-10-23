@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751977"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761446"
 ---
 # <a name="receipt-concepts"></a>Konzepte zu Belegen
 
@@ -74,14 +74,11 @@ Die Beleg-API gibt außerdem die folgenden Informationen zurück:
   > Spracheingabe 
   >
   > Prebuilt Receipt v2.1-preview.1 verfügt über einen optionalen Anforderungsparameter, um ein Beleggebietsschema aus zusätzlichen englischsprachigen Märkten anzugeben. Für Verkaufsbelege in englischer Sprache aus Australien (en-AU), Kanada (en-CA), Großbritannien (en-GB) und Indien (en-IN) können Sie das Gebietsschema angeben, um verbesserte Ergebnisse zu erhalten. Wenn in v2.1-preview.1 kein Gebietsschema angegeben wird, verwendet das Modell standardmäßig das en-US-Modell.
-  
- ### <a name="input-requirements"></a>Eingabeanforderungen 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>Der Vorgang zum Analysieren von Belegen
 
-[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) nimmt ein Bild oder eine PDF-Datei als Eingabe an und extrahiert die relevanten Werte und relevanten Text. Der Aufruf gibt ein Antwortheaderfeld namens `Operation-Location` zurück. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) nimmt ein Bild oder eine PDF-Datei als Eingabe an und extrahiert die relevanten Werte und relevanten Text. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
@@ -456,7 +453,10 @@ Die Beleg-API ermöglicht außerdem die [AIBuilder-Belegverarbeitungsfunktion](h
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Befolgen Sie die Schnellstartanleitung für erste Schritte: [Python-Schnellstart für die Beleg-API](./quickstarts/python-receipts.md).
-- Erfahren Sie mehr über die [Formularerkennungs-REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api).
-- Weitere Informationen zur [Formularerkennung](overview.md).
+- Durchlaufen Sie eine [Formularerkennungs-Schnellstartanleitung für die Clientbibliothek](quickstarts/client-library.md), um damit zu beginnen, eine Belegverarbeitungs-App mit Formularerkennung in der Sprache Ihrer Wahl zu schreiben.
+- Befolgen Sie alternativ den [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der Formularerkennungs-REST-API mit Python](./quickstarts/python-receipts.md), um Belege mit der REST-API zu erkennen.
 
+## <a name="see-also"></a>Weitere Informationen
+
+* [Was ist die Formularerkennung?](./overview.md)
+* [REST-API-Referenzdokumente](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)

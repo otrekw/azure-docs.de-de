@@ -1,0 +1,176 @@
+---
+title: Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Kubernetes-Tools
+description: Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Kubernetes-Tools
+services: azure-arc
+ms.service: azure-arc
+ms.subservice: azure-arc-data
+author: twright-msft
+ms.author: twright
+ms.reviewer: mikeray
+ms.date: 09/22/2020
+ms.topic: how-to
+ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761667"
+---
+# <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Kubernetes-Tools
+
+[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Einen [Azure Arc-Datencontroller](./create-data-controller.md) sollten Sie bereits erstellt haben.
+
+Zum Erstellen einer PostgreSQL Hyperscale-Servergruppe mithilfe von Kubernetes-Tools müssen die Kubernetes-Tools installiert sein.  In den Beispielen in diesem Artikel wird `kubectl` verwendet, allerdings können auch ähnliche Ansätze mit anderen Kubernetes-Tools verfolgt werden, z. B. dem Kubernetes-Dashboard, `oc` oder `helm`, wenn Sie mit diesen Tools und Kubernetes-YAML/JSON-Dateien vertraut sind.
+
+[Installieren des kubectl-Tools](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+## <a name="overview"></a>Übersicht
+
+Zum Erstellen einer PostgreSQL Hyperscale-Servergruppe müssen Sie ein Kubernetes-Geheimnis erstellen, um Ihren Postgres-Administratoranmeldenamen und das Kennwort sicher zu speichern, sowie eine benutzerdefinierte PostgreSQL Hyperscale-Servergruppenressource, die auf der postgresql-12- oder postgresql-11-Definition für benutzerdefinierte Ressourcen basiert.
+
+## <a name="create-a-yaml-file"></a>Erstellen einer YAML-Datei
+
+Sie können die [YAML-Vorlagedatei](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) als Ausgangspunkt verwenden, um Ihre eigene benutzerdefinierte YAML-Datei für die PostgreSQL Hyperscale-Servergruppe zu erstellen.  Laden Sie diese Datei auf Ihren Computer herunter, und öffnen Sie sie in einem Text-Editor.  Es ist hilfreich, einen Text-Editor wie [VS Code](https://code.visualstudio.com/download) zu verwenden, der Syntaxhervorhebung und Linten für YAML-Dateien unterstützen.
+
+Dies ist eine YAML-Beispieldatei:
+
+```yaml
+apiVersion: v1
+data:
+  password: <your base64 encoded password>
+kind: Secret
+metadata:
+  name: example-login-secret
+type: Opaque
+---
+apiVersion: arcdata.microsoft.com/v1alpha1
+kind: postgresql-12
+metadata:
+  generation: 1
+  name: example
+spec:
+  engine:
+    extensions:
+    - name: citus
+  scale:
+    shards: 3
+  scheduling:
+    default:
+      resources:
+        limits:
+          cpu: "4"
+          memory: 4Gi
+        requests:
+          cpu: "1"
+          memory: 2Gi
+  service:
+    type: LoadBalancer
+  storage:
+    backups:
+      className: default
+      size: 5Gi
+    data:
+      className: default
+      size: 5Gi
+    logs:
+      className: default
+      size: 1Gi
+```
+
+### <a name="customizing-the-login-and-password"></a>Anpassen des Anmeldenamens und des Kennworts.
+Ein Kubernetes-Geheimnis wird als Base64-codierte Zeichenfolge gespeichert – eine für den Benutzernamen und eine für das Kennwort.  Sie müssen den Anmeldenamen und das Kennwort eines Administrators base64-codieren und sie am Platzhalterort unter `data.password` und `data.username` ablegen.  Nehmen Sie nicht die Symbole `<` und `>` mit auf, die in der Vorlage vorhanden sind.
+
+Sie können ein Onlinetool verwenden, um den gewünschten Benutzernamen und das zugehörige Kennwort mit einer Base64-Codierung zu versehen, oder Sie können abhängig von Ihrer Plattform integrierte CLI-Tools verwenden.
+
+PowerShell
+
+```console
+[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('<your string to encode here>'))
+
+#Example
+#[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('example'))
+
+```
+
+Linux/macOS
+
+```console
+echo '<your string to encode here>' | base64
+
+#Example
+# echo 'example' | base64
+```
+
+### <a name="customizing-the-name"></a>Anpassen des Namens
+
+Die Vorlage hat für das Attribut „Name“ den Wert „example“ (Beispiel).  Sie können diesen ändern, hierbei muss es sich aber um Zeichen handeln, die die DNS-Benennungsstandards einhalten.  Sie müssen außerdem den Namen des Geheimnisses entsprechend ändern.  Wenn Sie z. B. den Namen der PostgreSQL Hyperscale-Servergruppe in „postgres1“ ändern, müssen Sie den Namen des Geheimnisses von „example-login-secret“ in „postgres1-login-secret“ ändern.
+
+### <a name="customizing-the-engine-version"></a>Anpassen der Engine-Version
+
+Sie können die Engine-Version in postgresql-11 oder postgresql-12 ändern, indem Sie das `kind`-Attribut bearbeiten.
+
+### <a name="customizing-the-resource-requirements"></a>Anpassen der Ressourcenanforderungen
+
+Sie können die Ressourcenanforderungen (Limits und Anforderungen für RAM und Kerne) je nach Bedarf ändern.  
+
+> [!NOTE]
+> Weitere Informationen zur [Kubernetes-Ressourcengovernance](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+
+Anforderungen für Ressourcenlimits und -anforderungen:
+- Der Grenzwert für die Anzahl von Kernen ist aus Abrechnungsgründen **obligatorisch**.
+- Der Rest der Ressourcenanforderungen und -limits ist optional.
+- Das Limit und die Anforderung für Kerne müssen ein positiver ganzzahliger Wert sein, falls angegeben.
+- Für die Kerneanforderung ist mindestens 1 Kern erforderlich, falls angegeben.
+- Das Format des Arbeitsspeicherwerts folgt der Kubernetes-Notation.  
+
+### <a name="customizing-service-type"></a>Anpassen des Diensttyps
+
+Der Diensttyp kann bei Bedarf in „NodePort“ geändert werden.  Es wird eine zufällige Portnummer zugewiesen.
+
+### <a name="customizing-storage"></a>Anpassen von Speicher
+
+Sie können die Speicherklassen für Speicher so anpassen, dass sie Ihrer Umgebung entsprechen.  Wenn Sie nicht sicher sind, welche Speicherklassen verfügbar sind, können Sie den Befehl `kubectl get storageclass` ausführen, um sie anzuzeigen.  Die Vorlage enthält den Standardwert „default“ (Standard).  Dies bedeutet, dass es eine Speicherklasse _namens_ „default“ gibt, nicht dass es eine Speicherklasse gibt, die der Standard _ist_.  Sie können die Größe Ihres Speichers auch optional ändern.  Weitere Informationen zur [Speicherkonfiguration](./storage-configuration.md).
+
+## <a name="creating-the-postgresql-hyperscale-server-group"></a>Erstellen der PostgreSQL Hyperscale-Servergruppe
+
+Nachdem Sie die YAML-Datei für die PostgreSQL Hyperscale-Servergruppe angepasst haben, können Sie die PostgreSQL Hyperscale-Servergruppe erstellen, indem Sie den folgenden Befehl ausführen:
+
+```console
+kubectl create -n <your target namespace> -f <path to your yaml file>
+
+#Example
+#kubectl create -n arc -f C:\arc-data-services\postgres.yaml
+```
+
+
+## <a name="monitoring-the-creation-status"></a>Überwachen des Erstellungsstatus
+
+Es dauert einige Minuten, bis die PostgreSQL Hyperscale-Servergruppe erstellt ist. Mithilfe der folgenden Befehle können Sie den Status in einem anderen Terminalfenster überwachen:
+
+> [!NOTE]
+>  Bei den folgenden Beispielbefehlen wird davon ausgegangen, dass Sie eine PostgreSQL Hyperscale-Servergruppe namens „postgres1“ sowie einen Kubernetes-Namespace namens „arc“ erstellt haben.  Wenn Sie einen anderen Namespace-/PostgreSQL Hyperscale-Servergruppennamen verwendet haben, können Sie "Arc" und "postgres1" durch Ihre Namen ersetzen.
+
+```console
+kubectl get postgresql-12/postgres1 --namespace arc
+```
+
+```console
+kubectl get pods --namespace arc
+```
+
+Sie können auch den Erstellungsstatus eines bestimmten Pods überprüfen, indem Sie einen Befehl wie den folgenden ausführen.  Dies ist besonders bei der Problembehandlung hilfreich.
+
+```console
+kubectl describe po/<pod name> --namespace arc
+
+#Example:
+#kubectl describe po/postgres1-0 --namespace arc
+```
+
+## <a name="troubleshooting-creation-problems"></a>Beheben von Problemen bei der Erstellung
+
+Wenn Probleme bei der Erstellung auftreten, finden Sie weitere Informationen im [Handbuch zur Problembehandlung](troubleshoot-guide.md).

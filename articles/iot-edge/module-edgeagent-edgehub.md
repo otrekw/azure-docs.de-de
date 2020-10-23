@@ -4,16 +4,16 @@ description: Enthält die spezifischen Eigenschaften und die dazugehörigen Wert
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546187"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978695"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
 
@@ -33,7 +33,7 @@ Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert di
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
-| schemaVersion | Muss „1.0“ sein. | Ja |
+| schemaVersion | Entweder „1.0“ oder „1.1“. Version 1.1 wurde mit IoT Edge Version 1.0.10 eingeführt und wird empfohlen. | Ja |
 | runtime.type | Muss „Docker“ sein. | Ja |
 | runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | Ja |
 | runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den IoT Edge-Agent-Container. [Docker-Protokollierungsoptionen](https://docs.docker.com/engine/admin/logging/overview/) | Nein |
@@ -47,6 +47,7 @@ Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert di
 | systemModules.edgeHub.type | Muss „Docker“ sein. | Ja |
 | systemModules.edgeHub.type | Muss „running“ sein. | Ja |
 | systemModules.edgeHub.restartPolicy | Muss „always“ sein. | Ja |
+| systemModules.edgeHub.startupOrder | Ein ganzzahliger Wert für die Position eines Moduls in der Startreihenfolge. 0 ist die erste und die maximale ganze Zahl (4294967295) ist die letzte Position. Wenn kein Wert angegeben wird, ist die maximale ganze Zahl der Standardwert.  | Nein |
 | systemModules.edgeHub.settings.image | Der URI des Images des IoT Edge-Hubs. | Ja |
 | systemModules.edgeHub.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des IoT Edge-Hubcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein |
 | systemModules.edgeHub.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | IoT Hub legt diese Eigenschaft fest, wenn das Manifest mithilfe einer Bereitstellung angewandt wird. Nicht Teil eines Bereitstellungsmanifests. |
@@ -54,6 +55,7 @@ Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert di
 | modules.{moduleId}.type | Muss „Docker“ sein. | Ja |
 | modules.{moduleId}.status | {"running" \| "stopped"} | Ja |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | Ja |
+| modules.{moduleId}.startupOrder | Ein ganzzahliger Wert für die Position eines Moduls in der Startreihenfolge. 0 ist die erste und die maximale ganze Zahl (4294967295) ist die letzte Position. Wenn kein Wert angegeben wird, ist die maximale ganze Zahl der Standardwert.  | Nein |
 | modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | Nein |
 | modules.{moduleId}.env | Eine Liste von Umgebungsvariablen, die an das Modul übergeben werden. Nimmt das Format `"<name>": {"value": "<value>"}` entgegen | Nein |
 | modules.{moduleId}.settings.image | URI des Modulimage. | Ja |
@@ -107,7 +109,7 @@ Der Modulzwilling für den IoT Edge-Hub wird als `$edgeHub` bezeichnet und koord
 
 | Eigenschaft | BESCHREIBUNG | Im Bereitstellungsmanifest erforderlich |
 | -------- | ----------- | -------- |
-| schemaVersion | Muss „1.0“ sein. | Ja |
+| schemaVersion | Entweder „1.0“ oder „1.1“. Version 1.1 wurde mit IoT Edge Version 1.0.10 eingeführt und wird empfohlen. | Ja |
 | routes.{routeName} | Eine Zeichenfolge, die eine IoT Edge-Hubroute darstellt. Weitere Informationen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes). | Das `routes`-Element kann vorhanden, aber leer sein. |
 | storeAndForwardConfiguration.timeToLiveSecs | Zeit in Sekunden, für die der IoT Edge-Hub Nachrichten nach einer Trennung von Routingendpunkten aufbewahrt, beispielsweise von einem IoT Hub oder einem lokalen Modul. Der Wert kann eine beliebige positive ganze Zahl sein. | Ja |
 

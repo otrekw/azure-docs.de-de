@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: e8dcb188dc5aad59738e3eab4169bf9dbd3679ec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449350"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014024"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Standorte von Virtual WAN-Partnern und -Hubs
 
@@ -40,7 +40,7 @@ Einige Konnektivitätspartner können die Automatisierung erweitern, indem sie d
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Die folgenden Partner sind auf unsere Roadmap in naher Zukunft vorgesehen: 128 Technologies, Arista, Cisco Systems (Viptela), F5 Networks, Oracle SD-WAN und SharpLink.
+Die folgenden Partner sind gemäß einer zwischen den Firmen unterzeichneten Vereinbarung über den Auftragsumfang zum Automatisieren der IPsec-Konnektivität zwischen dem Partnergerät und Azure Virtual WAN-VPN-Gateways vorgesehen: 128 Technologies, Arista, F5 Networks, Oracle SD-WAN (Talari) und SharpLink.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Partner mit integrierten Virtual Hub-Angeboten
 Zusätzlich zur Verwendung von automatisierter IPSec-Konnektivität für Zweigstellen bieten einige Partner auch **virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs)** an, die direkt in den Azure Virtual WAN-Hub integriert werden können.  Kunden haben hierbei die Option, ihre Zweigstellenverbindungen auf einer kompatiblen Appliance eines Drittanbieters im Virtual WAN-Hub enden zu lassen.  
@@ -58,7 +58,7 @@ Diese Partner verfügen über Angebote für **verwaltete Anwendungen**, die jetz
 |Partner|Konfiguration/Anleitung/Bereitstellungsleitfaden|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Bereitstellungshandbuch für Barracuda CloudGen WAN](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco Cloud Service Router (CSR) vWAN](https://aka.ms/ciscoMarketPlaceOffer)| Senden Sie eine E-Mail an vwan_public_preview@cisco.com, wenn Sie ein Cisco Cloud Services (CSR) vWAN im Virtual Hub bereitstellen möchten. |
+|[Cisco Cloud Service Router (CSR) vWAN](https://aka.ms/ciscoMarketPlaceOffer)| Während der Public Preview von Cisco Cloud Services (CSR) WAN in VWAN-Hub verlangt Cisco, dass sich der Endkunde als Cisco EFT-Kunde (Early Field Trial) registrieren muss, indem er eine E-Mail an vwan_public_preview@external.cisco.com sendet und das Bereitstellungshandbuch für vManage anfordert. |
 
 Es ist vorgesehen, dass die folgenden Partner in naher Zukunft Angebote für NVAs im Virtual Hub bereitstellen: Citrix, Versa Networks und VeloCloud.
 

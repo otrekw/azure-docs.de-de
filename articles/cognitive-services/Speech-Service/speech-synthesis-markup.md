@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 0eacddfa56e46363c926aa1e8b35865676209577
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055548"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058487"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -196,6 +196,8 @@ Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutra
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -228,6 +230,10 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
 |                         | `style="cheerful"`        | Positiver und fröhlicher Ton                         |
 |                         | `style="empathetic"`      | Drückt ein Gefühl von Anteilnahme und Verständnis aus               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
+|                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
+|                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
+| `en-US-GuyNeural`       | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
@@ -432,7 +438,7 @@ Wenn Sie die Aussprache mehrerer Entitäten definieren möchten, können Sie ein
 
 Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alias` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie<span class="docon docon-navigate-external x-hidden-focus"></span></a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt.
 
-Wichtig: Die Aussprache eines Worts kann mit dem benutzerdefinierten Lexikon nicht direkt festgelegt werden. Wenn Sie die Aussprache für ein Akronym oder einen abgekürzten Begriff festlegen möchten, müssen Sie zuerst einen Alias (`alias`) angeben und anschließend das Phonem (`phoneme`) diesem Alias (`alias`) zuordnen. Beispiel:
+Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon nicht direkt festgelegt werden. Wenn Sie die Aussprache für ein Akronym oder einen abgekürzten Begriff festlegen möchten, müssen Sie zuerst einen Alias (`alias`) angeben und anschließend das Phonem (`phoneme`) diesem Alias (`alias`) zuordnen. Beispiel:
 
 ```xml
   <lexeme>
@@ -442,6 +448,14 @@ Wichtig: Die Aussprache eines Worts kann mit dem benutzerdefinierten Lexikon nic
   <lexeme>
     <grapheme>ScotlandMV</grapheme> 
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
+
+Sie können auch direkt ihren erwarteten `alias` für das Akronym oder einen abgekürzten Begriff angeben. Beispiel:
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>Scotland Media Wave</alias> 
   </lexeme>
 ```
 
@@ -524,7 +538,7 @@ Weil Attributwerte für den Satzrhythmus über einen breiten Bereich variieren k
 | `contour` |Die Kontur unterstützt jetzt sowohl neuronale als auch Standardstimmen. Die Kontur stellt Änderungen der Tonhöhe dar. Diese Änderungen werden als ein Array von Zielen an den angegebenen Zeitpositionen in der Sprachausgabe dargestellt. Jedes Ziel wird durch Gruppen von Parameterpaaren definiert. Beispiel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Der erste Wert in jeder Gruppe von Parametern gibt den Ort der Tonhöhenänderung als Prozentsatz der Textdauer an. Der zweite Wert gibt den Betrag an, um den die Tonhöhe erhöht oder verringert werden soll. Dazu wird ein relativer Wert oder ein Aufzählungswert für die Tonhöhe verwendet (siehe `pitch`). | Optional |
 | `range` | Ein Wert, der den Tonhöhenbereich für den Text darstellt. Sie können `range` mit denselben absoluten Werten, relativen Werten oder Aufzählungswerten ausdrücken, mit denen beschrieben `pitch` wird. | Optional |
 | `rate` | Gibt die Sprechgeschwindigkeit für den Text an. Sie können `rate` ausdrücken als:<ul><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, die als Multiplikator des Standards fungiert. So führt beispielsweise der Wert *1* zu keiner Änderung der Geschwindigkeit. Der Wert *0,5* führt zu einer Halbierung der Geschwindigkeit. Der Wert *3* führt zu einer Verdreifachung der Geschwindigkeit.</li><li>Einen konstanten Wert:<ul><li>x-slow</li><li>langsam</li><li>mittel</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | Optional |
-| `duration` | Die Zeitspanne in Sekunden oder Millisekunden, die vergehen sollte, während der Sprachsynthesedienst den Text liest. Beispiel: *2s* oder *1800ms*. | Optional |
+| `duration` | Die Zeitspanne in Sekunden oder Millisekunden, die vergehen sollte, während der Sprachsynthesedienst den Text liest. Beispiel: *2s* oder *1800ms*. Die Dauer unterstützt nur Standardstimmen.| Optional |
 | `volume` | Gibt die Lautstärke der Sprechstimme an. Sie können die Lautstärke ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl im Bereich von 0,0 bis 100,0 – von *am leisesten* bis zu *am lautesten*. Beispiel: „75“. Der Standardwert ist „100,0“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der ein „+“ oder „–“ steht und die einen Betrag zum Ändern der Lautstärke angibt. Beispiel: „+10“ oder „-5,5“.</li><li>Einen konstanten Wert:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>mittel</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | Optional |
 
 ### <a name="change-speaking-rate"></a>Ändern der Sprechgeschwindigkeit

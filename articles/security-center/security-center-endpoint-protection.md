@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 7a9541eb3b7c662b43de0d3a609ecec4fe2621ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519404"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341412"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
@@ -29,46 +29,40 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](securi
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
+* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
 
-* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und eine der folgenden Situationen eintritt:
+* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) ausgeführt wird und eine der folgenden Situationen eintritt:
 
   * Eine der folgenden Eigenschaften ist FALSE:
 
-    **AMServiceEnabled**
+    - **AMServiceEnabled**
+    - **AntispywareEnabled**
+    - **RealTimeProtectionEnabled**
+    - **BehaviorMonitorEnabled**
+    - **IoavProtectionEnabled**
+    - **OnAccessProtectionEnabled**
 
-    **AntispywareEnabled**
+  * Mindestens eine der folgenden Eigenschaften ist größer oder gleich 7:
 
-    **RealTimeProtectionEnabled**
-
-    **BehaviorMonitorEnabled**
-
-    **IoavProtectionEnabled**
-
-    **OnAccessProtectionEnabled**
-
-  * Mindestens eine der folgenden Eigenschaften ist größer oder gleich 7.
-
-    **AntispywareSignatureAge**
-
-    **AntivirusSignatureAge**
+    - **AntispywareSignatureAge**
+    - **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center empfiehlt, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn das Importieren von **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** und Ausführen von **Get-MProtComputerStatus** zum Ergebnis **AMServiceEnabled = false** führt.
+* Security Center empfiehlt, **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren**, wenn das Importieren von **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** und Ausführen von **Get-MProtComputerStatus** zum Ergebnis **AMServiceEnabled = false** führt.
 
 * Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn **Get-MprotComputerStatus** ausgeführt wird und eine der folgenden Situationen eintritt:
 
   * Mindestens eine der folgenden Eigenschaften ist „False“:
 
-    * **AMServiceEnabled**
-    * **AntispywareEnabled**
-    * **RealTimeProtectionEnabled**
-    * **BehaviorMonitorEnabled**
-    * **IoavProtectionEnabled**
-    * **OnAccessProtectionEnabled**
+    - **AMServiceEnabled**
+    - **AntispywareEnabled**
+    - **RealTimeProtectionEnabled**
+    - **BehaviorMonitorEnabled**
+    - **IoavProtectionEnabled**
+    - **OnAccessProtectionEnabled**
 
-  * Mindestens eine oder beide folgenden Signaturaktualisierungen ist größer oder gleich 7. 
+  * Mindestens eine oder beide folgenden Signaturaktualisierungen ist größer oder gleich 7:
 
     * **AntispywareSignatureAge**
     * **AntivirusSignatureAge**
@@ -76,95 +70,73 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](securi
 ## <a name="trend-micro"></a>Trend Micro
 
 * Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
-    * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** ist vorhanden
-    * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** ist vorhanden
-    * Die Datei **dsq_query.cmd** befindet sich im Installationsordner.
-    * Das Ausführen von **dsa_query.cmd** führt zum Ergebnis **Component.AM.mode: on – Trend Micro Deep Security-Agent erkannt**
+    - **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** ist vorhanden
+    - **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** ist vorhanden
+    - Die Datei **dsq_query.cmd** befindet sich im Installationsordner.
+    - Das Ausführen von **dsa_query.cmd** führt zum Ergebnis **Component.AM.mode: on – Trend Micro Deep Security-Agent erkannt**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
-
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+- **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+- **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 oder
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
-
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+- **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+- **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-* Überprüfen: Symantec-Version >= 12: Registrierungspfad: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
-
-* Echtzeitschutzstatus überprüfen: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
-
-* Status der Signaturaktualisierung überprüfen: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 Tage**
-
-* Status der vollständigen Überprüfung überprüfen: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 Tage**
-
-* Pfad der Signaturversionsnummer zu Signaturversion für Symantec 12 suchen: **Registry Paths+ "CurrentVersion\SharedDefs" -Value "SRTSP"** 
-
-* Pfad zur Signaturversion für Symantec-14: **Registry Paths+ "CurrentVersion\SharedDefs\SDSDefs" -Value "SRTSP"**
+- Überprüfen: Symantec-Version >= 12: Registrierungspfad: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
+- Echtzeitschutzstatus überprüfen: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
+- Status der Signaturaktualisierung überprüfen: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 Tage**
+- Status der vollständigen Überprüfung überprüfen: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 Tage**
+- Pfad der Signaturversionsnummer zu Signaturversion für Symantec 12 suchen: **Registry Paths+ "CurrentVersion\SharedDefs" -Value "SRTSP"** 
+- Pfad zur Signaturversion für Symantec-14: **Registry Paths+ "CurrentVersion\SharedDefs\SDSDefs" -Value "SRTSP"**
 
 Registrierungspfade:
-
-* **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
-* **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
+- **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
+- **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection für Windows
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-* **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** ist vorhanden
-
-* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+- **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** ist vorhanden
+- **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-* McAfee-Version: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
-
-* Signaturversion suchen: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
-
-* Signaturdatum suchen: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "szContentCreationDate" >= 7 Tage**
-
-* Überprüfungsdatum suchen: **HKLM:\Software\McAfee\Endpoint\AV\ODS -Value "LastFullScanOdsRunTime" >= 7 Tage**
+- McAfee-Version: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
+- Signaturversion suchen: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
+- Signaturdatum suchen: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "szContentCreationDate" >= 7 Tage**
+- Überprüfungsdatum suchen: **HKLM:\Software\McAfee\Endpoint\AV\ODS -Value "LastFullScanOdsRunTime" >= 7 Tage**
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security für Linux-Bedrohungsschutz 
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-- Datei **/opt/isec/ens/threatprevention/bin/isecav** wird beendet 
-
+- Datei **/opt/isec/ens/threatprevention/bin/isecav** ist vorhanden
 - Ausgabe von **"/opt/isec/ens/threatprevention/bin/isecav --version"** lautet: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **Quick scan, Full scan** zurück, und für beide Scans gilt „<= 7 Tage“
-
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **DAT and engine Update time** zurück, und für beide gilt „<= 7 Tage“
-
 - **"/opt/isec/ens/threatprevention/bin/isecav --getoasconfig --summary"** gibt den Status **On Access Scan** zurück
 
 ## <a name="sophos-antivirus-for-linux"></a>Sophos Antivirus für Linux 
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
-
 - Datei **/opt/sophos-av/bin/savdstatus** wird beendet, oder Suche nach benutzerdefiniertem Ort **"readlink $(which savscan)"** wird durchgeführt
-
 - **"/opt/sophos-av/bin/savdstatus --version"** gibt **Sophos name = Sophos Anti-Virus and Sophos version >= 9** zurück
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
-
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** gibt einen Wert zurück
-
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" gibt einen Wert zurück
-
 - **"/opt/sophos-av/bin/savdstatus --lastupdate"** gibt „lastUpdate“ zurück. Der Wert sollte kleiner oder gleich 7 Tage sein 
-
 - **"/opt/sophos-av/bin/savdstatus -v"** entspricht **"On-access scanning is running"** 
-
 - **"/opt/sophos-av/bin/savconfig get LiveProtection"** gibt „enabled“ zurück
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support

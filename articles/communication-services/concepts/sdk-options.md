@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d5aba3638ce19c24841fe5b49b19b1139327b790
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930457"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578086"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Clientbibliotheken und REST-APIs
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Azure Communication Services-Funktionen sind vom Prinzip her in sechs Bereiche unterteilt. Für eine Bereiche gibt es Clientbibliotheken, die vollständig Open-Source sind. Die Clientbibliothek „Calling“ verwendet proprietäre Netzwerkschnittstellen und ist derzeit Closed-Source. Die Bibliothek „Chat“ weist eine Closed-Source-Abhängigkeit auf. Links zu allen SDKs und Beispielen werden im [GitHub-Repository zu Azure Communication Services](https://github.com/Azure/communication) bereitgestellt.
+Azure Communication Services-Funktionen sind vom Prinzip her in sechs Bereiche unterteilt. Für eine Bereiche gibt es Clientbibliotheken, die vollständig Open-Source sind. Die Clientbibliothek „Calling“ verwendet proprietäre Netzwerkschnittstellen und ist derzeit Closed-Source. Die Bibliothek „Chat“ weist eine Closed-Source-Abhängigkeit auf. Beispiele und weitere technische Details für Clientbibliotheken werden im [GitHub-Repository Azure Communication Services](https://github.com/Azure/communication) veröffentlicht.
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
@@ -28,35 +28,27 @@ Azure Communication Services-Funktionen sind vom Prinzip her in sechs Bereiche u
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Öffnen            | Azure.ResourceManager.Communication | Dient zum Bereitstellen und Verwalten von Communication Services-Ressourcen             |
 | Allgemein                 | REST | Öffnen               | Azure.Communication.Common          | Stellt Basistypen für andere Clientbibliotheken bereit |
-| Verwaltung         | REST |                | Azure.Communication.Administration  | Dient zum Verwalten von Benutzern, Zugriffstoken und Telefonnummern sowie zum Zuteilen von standardkonformen STUN- und TURN-Servern |
+| Verwaltung         | REST | Öffnen               | Azure.Communication.Administration  | Dient zum Verwalten von Benutzern, Zugriffstoken und Telefonnummern sowie zum Zuteilen von standardkonformen STUN- und TURN-Servern |
 | Chat                   | REST mit proprietärer Signalisierung | Open-Source mit Closed-Source-Signalisierungspaket    | Azure.Communication.Chat            | Dient zum Hinzufügen von textbasiertem Chat in Echtzeit zu Ihren Anwendungen  |
 | SMS                    | REST | Öffnen              | Azure.Communication.SMS             | Dient zum Senden und Empfangen von SMS-Nachrichten |
 | Aufrufen                | Proprietärer Transport | Geschlossen |Azure.Communication.Calling         | Ermöglicht das Nutzen von Sprache, Video, Bildschirmübertragung und anderen Möglichkeiten der Datenkommunikationen in Echtzeit          |
 
-### <a name="client-library-language-support"></a>Sprachunterstützung für Clientbibliotheken
+Beachten Sie, dass sich die Azure Resource Manager-, Administration- und SMS-Clientbibliotheken auf die Dienstintegration konzentrieren, und in vielen Fällen treten Sicherheitsprobleme auf, wenn Sie diese Funktionen in Endbenutzeranwendungen integrieren. Die Common- und Chat-Clientbibliothek sind für Dienst- und Clientanwendungen geeignet. Die Calling-Clientbibliothek ist für Clientanwendungen konzipiert. Eine Clientbibliothek, die sich auf Dienstszenarien konzentriert, ist in der Entwicklung.
 
-Informationen zur Verfügbarkeit und Zeitpläne für einzelne Clientbibliothekspakete finden Sie nachstehend. Die [Azure-Roadmap](https://azure.microsoft.com/updates/) bietet zusätzliche Informationen zu kommenden Features.
+### <a name="languages-and-publishing-locations"></a>Sprachen und Veröffentlichungsspeicherorte
+
+Veröffentlichungsspeicherorte für einzelne Clientbibliothekspakete finden Sie nachstehend. 
+
 
 | Bereich           | JavaScript | .NET | Python | Java | Swift oder Obj-C | Java (Android) | Andere                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
-| Azure Resource Manager | ✔️         | ✔️    | ✔️      | -    | -              | *Noch nicht unterstützt*  | GO und Azure CLI *Noch nicht unterstützt* |
-| Allgemein         | ✔️         | ✔️    | -      | ✔️   | ✔️            | ✔️             | -                              |
-| Verwaltung | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | Befehlszeilenschnittstelle (CLI)                            |
-| Chat           | ✔️         | ✔️    | ✔️      | ✔️   | *Noch nicht unterstützt*  | *Noch nicht unterstützt*  | -                              |
-| SMS            | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | -                              |
-| Aufrufen        | ✔️         | -      | -      | -     | (Obj-C) ✔️     | ✔️            | -                              |
-
-### <a name="client-library-public-repository-support"></a>Unterstützung des öffentlichen Repositorys für Clientbibliotheken
-
-Communication Services veröffentlicht erstellte Bibliotheken in mehreren öffentlichen Repositorys.
-
-| Sprache       | Optimiert für...                       | Verpackung |
-| -------------- | ------------------------------------ | --------- |
-| .NET           | Plattformübergreifend                       | NuGet     |
-| Python         | Windows- und Linux-Server              | Pypi      |
-| Java (J2EE)    | JVM auf Windows- oder Linux-Servern      | Maven     |
-| Java (Android) | Android-Clientanwendungen          | Maven     |
-| JavaScript     | Browserclientanwendungen und Node | npm       |
+| Azure Resource Manager | -         | [NuGet](https://www.NuGet.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Go über GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
+| Allgemein         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Common/)    | N/V      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [Swift über GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Verwaltung | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| Chat           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -  | -  | -                              |
+| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
+| Aufrufen        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [Obj-C über GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| Referenzdokumentation     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | 
 
 ## <a name="rest-apis"></a>REST-APIs
 

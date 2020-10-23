@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/02/2020
+ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89490070"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761922"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -33,13 +33,14 @@ Wenn Daten in einer Tabelle empfangen werden und die Zieltabelle noch nicht vorh
 * Befindet sich der Azure-Quelldatenspeicher nicht in dem Azure-Abonnement, in dem Sie die Data Share-Ressource erstellen, registrieren Sie [Microsoft.DataShare resource provider](concepts-roles-permissions.md#resource-provider-registration) in dem Abonnement, in dem sich der Azure-Datenspeicher befindet. 
 
 ### <a name="prerequisites-for-sql-source"></a>Voraussetzungen für SQL-Quellen
+Im Folgenden finden Sie eine Liste der Voraussetzungen für die Freigabe von Daten aus der SQL-Quelle. Sie können auch die [Schritt-für-Schritt-Demo](https://youtu.be/hIE-TjJD8Dc) befolgen, um die Voraussetzungen zu konfigurieren.
 
 * Eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz (ehemals SQL Data Warehouse) mit Tabellen und Ansichten, die Sie freigeben möchten
 * Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden.
 * Berechtigung der Datenfreigabe für den Zugriff auf Data Warehouse. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Legen Sie sich selbst als Azure Active Directory-Administrator für den SQL-Server fest.
-    1. Stellen Sie mithilfe von Azure Active Directory eine Verbindung mit der Azure SQL-Datenbank-/Data Warehouse-Instanz her.
-    1. Führen Sie mithilfe des Abfrage-Editors (Vorschauversion) das folgende Skript aus, um die verwaltete Identität der Data Share-Ressource als „db_datareader“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
+    1. Navigieren Sie im Azure-Portal zum SQL-Server und legen Sie sich selbst als Azure Active Directory-Administrator fest.
+    1. Stellen Sie mit dem [Abfrage-Editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) oder SQL Server Management Studio mit Azure Active Directory-Authentifizierung eine Verbindung mit Azure SQL-Datenbank/Data Warehouse her. 
+    1. Führen Sie das folgende Skript aus, um die verwaltete Identität der Data Share-Ressource als „db_datareader“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
@@ -49,10 +50,11 @@ Wenn Daten in einer Tabelle empfangen werden und die Zieltabelle noch nicht vorh
 
 * Ein Azure SQL-Datenbank-Benutzer mit Zugriff vom Typ „db_datareader“ zum Navigieren durch Tabellen und/oder Ansichten sowie zum Auswählen der Tabellen und/oder Ansichten, die Sie freigeben möchten. 
 
-* Client-IP-SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+* SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
-    1. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen.
-    1. Klicken Sie auf **+ Client-IP-Adresse hinzufügen** und anschließend auf **Speichern**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen. 
+    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
+    1. Klicken Sie auf **+Client-IP hinzufügen**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
+    1. Klicken Sie auf **Speichern**. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -66,7 +68,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Suchen Sie nach *Data Share*.
 
-1. Wählen Sie Data Share und dann die Option **Erstellen** aus.
+1. Wählen Sie „Data Share“ und dann die Option **Erstellen** aus.
 
 1. Geben Sie die folgenden Informationen als grundlegende Details Ihrer Azure Data Share-Ressource ein. 
 
@@ -98,7 +100,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie **Weiter**.
 
-1. Zum Hinzufügen von Datasets zu Ihrer Freigabe wählen Sie **Datasets hinzufügen** aus. 
+1. Wählen Sie zum Hinzufügen von Datasets zu Ihrer Freigabe **Datasets hinzufügen** aus. 
 
     ![Hinzufügen von Datasets zu Ihrer Freigabe](./media/datasets.png "Datasets")
 
@@ -147,13 +149,13 @@ Wenn Sie Daten in Azure Storage empfangen möchten, finden Sie nachfolgend eine 
 * Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden.  
 
 ### <a name="prerequisites-for-sql-target"></a>Voraussetzungen für SQL-Ziele
-Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen möchten, finden Sie nachfolgend eine Liste mit Voraussetzungen, die erfüllt sein müssen.
+Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen möchten, finden Sie nachfolgend eine Liste mit Voraussetzungen, die erfüllt sein müssen. Sie können auch die [Schritt-für-Schritt-Demo](https://youtu.be/aeGISgK1xro) befolgen, um die Voraussetzungen zu konfigurieren.
 
 * Berechtigung zum Schreiben in Datenbanken auf dem SQL-Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
 * Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz für die verwaltete Identität der Datenfreigaberessource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Legen Sie sich selbst als Azure Active Directory-Administrator für den SQL-Server fest.
-    1. Stellen Sie mithilfe von Azure Active Directory eine Verbindung mit der Azure SQL-Datenbank-/Data Warehouse-Instanz her.
-    1. Führen Sie mithilfe des Abfrage-Editors (Vorschauversion) das folgende Skript aus, um die verwaltete Data Share-Identität als „db_datareader, db_datawriter, db_ddladmin“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
+    1. Navigieren Sie im Azure-Portal zum SQL-Server und legen Sie sich selbst als Azure Active Directory-Administrator fest.
+    1. Stellen Sie mit dem [Abfrage-Editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) oder SQL Server Management Studio mit Azure Active Directory-Authentifizierung eine Verbindung mit Azure SQL-Datenbank/Data Warehouse her. 
+    1. Führen Sie das folgende Skript aus, um die verwaltete Data Share-Identität als „db_datareader, db_datawriter, db_ddladmin“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -163,10 +165,11 @@ Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen mö
         ```      
         Beachten Sie, dass *<share_acc_name>* der Name Ihrer Data Share-Ressource ist. Falls Sie noch keine Data Share-Ressource erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.         
 
-* Client-IP-SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+* SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
-    1. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen.
-    1. Klicken Sie auf **+ Client-IP-Adresse hinzufügen** und anschließend auf **Speichern**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen beim nächsten Dateneingang im SQL-Ziel über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen. 
+    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
+    1. Klicken Sie auf **+Client-IP hinzufügen**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
+    1. Klicken Sie auf **Speichern**. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -232,6 +235,49 @@ Diese Schritte sind nur für die momentaufnahmebasierte Freigabe relevant.
 ### <a name="view-history"></a>Anzeigen des Verlaufs
 Dieser Schritt ist nur für die momentaufnahmebasierte Freigabe relevant. Wählen Sie zum Anzeigen des Verlaufs der Momentaufnahmen die Registerkarte **Verlauf** aus. Hier ist ein Verlauf aller Momentaufnahmen angegeben, die in den letzten 30 Tagen generiert wurden. 
 
+## <a name="supported-data-types"></a>Unterstützte Datentypen
+Wenn Sie Daten aus einer SQL-Quelle freigeben, wird während des Momentaufnahmevorgangs die folgende Zuordnung von SQL Server-Datentypen zu Azure Data Share-Zwischendatentypen durchgeführt. 
+
+| SQL Server-Datentyp | Azure Data Share-Zwischendatentyp |
+|:--- |:--- |
+| BIGINT |Int64 |
+| BINARY |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
+| INT |Int32 |
+| money |Decimal |
+| NCHAR |String, Char[] |
+| ntext |String, Char[] |
+| NUMERIC |Decimal |
+| NVARCHAR |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
+| smalldatetime |Datetime |
+| SMALLINT |Int16 |
+| SMALLMONEY |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| TINYINT |Int16 |
+| UNIQUEIDENTIFIER |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| Xml |String |
+
+>[!NOTE]
+> 1. Für Datentypen, die dem Zwischendatentyp „Decimal“ zugeordnet sind, unterstützt die Momentaufnahme derzeit eine Genauigkeit von bis zu 28. Wenn Ihre Daten eine höhere Genauigkeit als 28 erfordern, erwägen Sie, sie in eine Zeichenfolge zu konvertieren. 
+> 1.  Wenn Sie Daten aus einer Azure SQL-Datenbank-Instanz in Azure Synapse Analytics freigeben, werden nicht alle Datentypen unterstützt. Weitere Informationen finden Sie unter [Tabellendatentypen in einem Synapse SQL-Pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types). 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben erfahren, wie Sie Daten aus Speicherkonten mithilfe des Azure Data Share-Diensts freigeben und empfangen. Weitere Informationen zur Freigabe von Daten aus anderen Datenquellen finden Sie unter [Unterstützte Datenspeicher](supported-data-stores.md).
+Sie haben erfahren, wie Sie Daten aus Speicherkonten mithilfe des Azure Data Share-Diensts freigeben und empfangen. Weitere Informationen zum Freigeben von Daten aus anderen Datenquellen finden Sie unter [Unterstützte Datenspeicher](supported-data-stores.md).
 

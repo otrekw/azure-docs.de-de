@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362613"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330460"
 ---
 # <a name="elastic-database-tools-glossary"></a>Tools für elastische Datenbanken – Glossar
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Diese Begriffe werden in [Hinzufügen eines Shards mithilfe der Tools für elast
 
 **Mehrinstanzenfähig** und **Einzelmandant**: Die folgende Abbildung zeigt eine Einzelmandantendatenbank und eine mehrinstanzenfähige Datenbank:
 
-![Einzelmandanten- und mehrinstanzenfähige Datenbanken](./media/elastic-scale-glossary/multi-single-simple.png)
+![Screenshot einer Einzelmandantendatenbank und einer mehrinstanzenfähige Datenbank.](./media/elastic-scale-glossary/multi-single-simple.png)
 
 Hier ist eine Darstellung von Einzelmandanten- und mehrinstanzenfähigen **Sharddatenbanken** . 
 

@@ -1,18 +1,18 @@
 ---
 title: Untersuchen von Azure-Ressourcen
 description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ihre Ressourcen untersuchen und herausfinden, wie diese miteinander vernetzt sind.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056583"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056241"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
-Mit Azure Resource Graph können Sie Ihre Azure-Ressourcen schnell und bedarfsgerecht erkunden und ermitteln. Resource Graph wurde speziell für schnelle Reaktionen entwickelt und bietet eine gute Möglichkeit, eine Umgebung sowie die Eigenschaften kennenzulernen, die die Azure-Ressourcen definieren.
+Mit Azure Resource Graph können Sie Ihre Azure-Ressourcen schnell und bedarfsgerecht erkunden und ermitteln. Resource Graph wurde speziell für schnelle Reaktionen entwickelt und bietet eine gute Möglichkeit, eine Umgebung sowie die Eigenschaften kennenzulernen, die in Azure-Ressourcen enthalten sind.
 
 ## <a name="explore-virtual-machines"></a>Erkunden von virtuellen Computern
 
@@ -104,7 +104,7 @@ Die JSON-Ergebnisse sind etwa wie im folgenden Beispiel strukturiert:
 ]
 ```
 
-Die Eigenschaften liefern uns zusätzliche Informationen zur VM-Ressource selbst sowie zu SKU, BS, Datenträger, Tags und zur Ressourcengruppe sowie zum Abonnement, der bzw. dem die Ressource angehört.
+Die Eigenschaften vermitteln uns zusätzliche Informationen über den virtuellen Computer selbst. Die Eigenschaften umfassen: Betriebssystem, Datenträger, Tags sowie die Ressourcengruppe und das Abonnement, denen der virtuelle Computer angehört.
 
 ### <a name="virtual-machines-by-location"></a>Virtuelle Computer nach Standort
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Mit Managed Disks Premium vernetzte virtuelle Computer
 
-Wenn wir die Details von Managed Disks Premium abrufen möchten, die diesen virtuellen **Standard_B2s**-Computern zugeordnet sind, können wir die Abfrage erweitern, sodass die Ressourcen-IDs dieser verwalteten Datenträger zurückgegeben werden.
+Um die Details von Managed Disks Premium abzurufen, die diesen virtuellen **Standard_B2s**-Computern zugeordnet sind, erweitern wir die Abfrage, sodass die Ressourcen-IDs dieser verwalteten Datenträger zurückgegeben werden.
 
 ```kusto
 Resources

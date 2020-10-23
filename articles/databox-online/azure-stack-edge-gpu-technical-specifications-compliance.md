@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899031"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839944"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technische Spezifikationen und Compliance für Azure Stack Edge Pro mit GPU 
 
@@ -79,20 +79,20 @@ Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 
-Die Azure Stack Edge Pro-Geräte verfügen über fünf NVMe DC P4610-SSDs mit 2,5 Zoll und einer Kapazität von jeweils 1,6 TB. Das Startlaufwerk ist ein SATA-SSD-Datenträger mit 240 GB. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 8,28 TB. In der folgenden Tabelle ist die Speicherkapazität des Geräts aufgeführt.
+Die Azure Stack Edge Pro-Geräte verfügen über fünf NVMe DC P4610-SSDs mit 2,5 Zoll und einer Kapazität von jeweils 1,6 TB. Das Startlaufwerk ist ein SATA-SSD-Datenträger mit 240 GB. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 4,19 TB. In der folgenden Tabelle ist die Speicherkapazität des Geräts aufgeführt.
 
 |     Spezifikation                          |     Wert             |
 |--------------------------------------------|-----------------------|
-|    SATA-SSD-Startlaufwerke      |    1                  |
 |    Anzahl von NVMe-SSDs                     |    5                  |
-|    Kapazität des SSD-Startlaufwerks                       |    240 GB             |
 |    Kapazität je NVMe-SSD                |    1,6 TB             |
-|    Gesamtkapazität                          |    8,28 TB            |
-|    Insgesamt nutzbare Kapazität*                  |    ~ 7,95 TB          |
+|    SATA-SSD-Startlaufwerke      |    1                  |
+|    Kapazität des SSD-Startlaufwerks                       |    240 GB             |
+|    Gesamtkapazität                          |    8,0 TB             |
+|    Insgesamt nutzbare Kapazität*                  |    ~ 4,19 TB          |
 |    SAS-Controller                          |    HBA330 mit 12 GBit/s     |
 
 
-**Etwas Speicherplatz ist für die interne Verwendung reserviert.*
+**Nach Paritätsresilienz und Reservierung von Speicherplatz für die interne Verwendung.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

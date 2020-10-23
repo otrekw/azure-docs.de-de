@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren der verknüpften Anmeldung in Azure Active Directory
-description: Konfigurieren der verknüpften Anmeldung in Azure AD
+title: Grundlagen der verknüpften Anmeldung in Azure Active Directory
+description: Grundlagen der verknüpften Anmeldung in Azure Active Directory
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641975"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073970"
 ---
-# <a name="configure-linked-sign-on"></a>Konfigurieren der Anmeldung über Link
+# <a name="understand-linked-sign-on"></a>Grundlagen der verknüpften Anmeldung
 
-In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. Im Schnellstart richten Sie das SAML-basierte einmalige Anmelden (SSO) ein. Eine weitere Möglichkeit ist die Verwendung der **verknüpften Anmeldung**. In diesem Artikel erfahren Sie mehr über die Option der verknüpften Anmeldung.
+In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. Im Schnellstartleitfaden konfigurieren Sie SAML-basiertes oder OIDC-basiertes einmaliges Anmelden. Eine weitere Möglichkeit ist die Verwendung der **verknüpften Anmeldung**. In diesem Artikel erfahren Sie mehr über die Option der verknüpften Anmeldung.
 
 Mit der Option **Verknüpft** können Sie den Zielort konfigurieren, wenn ein Benutzer die App in [Meine Apps](https://myapps.microsoft.com/) Ihrer Organisation oder im Office 365-Portal auswählt.
 
@@ -33,12 +33,12 @@ Die Option der verknüpften Anmeldung ist unter anderem in den folgenden Szenari
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für einen schnellen Einstieg führen Sie die [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung durch. Sie finden im Schnellstart beim Konfigurieren des einmaligen Anmeldens auch die Option **Verknüpft**. 
+Führen Sie die [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung durch, um Ihre Kenntnisse in kurzer Zeit zu vertiefen. Sie finden im Schnellstart beim Konfigurieren des einmaligen Anmeldens auch die Option **Verknüpft**. 
 
-Die Option **Verknüpft** bietet keine Anmeldefunktionen über Azure AD. Die Option legt einfach den Ort fest, an den Benutzer weitergeleitet werden, wenn sie die App in [Meine Apps](https://myapps.microsoft.com/) oder über das Microsoft 365-App-Startfeld auswählen.
+Die Option **Verknüpft** bietet keine Anmeldefunktionen über Azure AD. Die Option legt einfach den Ort fest, an den Benutzer weitergeleitet werden, wenn sie die App in [Meine Apps](https://myapps.microsoft.com/) oder über das Microsoft 365-App-Startfeld auswählen.  Da bei der Anmeldung keine Anmeldefunktionen über Azure AD bereitgestellt werden, ist der bedingte Zugriff für Anwendungen nicht verfügbar, für die einmaliges Anmelden konfiguriert ist.
 
 > [!IMPORTANT] 
-> Es gibt einige Szenarien, in denen die Option **Einmaliges Anmelden** in der Navigation für eine Anwendung in **Unternehmensanwendungen** nicht vorhanden ist. 
+> Es gibt einige Szenarien, in denen in der Navigation für eine Anwendung unter **Unternehmensanwendungen** die Option **Einmaliges Anmelden** nicht vorhanden ist. 
 >
 > Wenn die Anwendung mit **App-Registrierungen** registriert wurde, wird die Funktion zum einmaligen Anmelden so eingerichtet, dass standardmäßig OIDC OAuth verwendet wird. In diesem Fall wird die Option **Einmaliges Anmelden** in der Navigation unter **Unternehmensanwendungen** nicht angezeigt. Wenn Sie **App-Registrierungen** zum Hinzufügen Ihrer benutzerdefinierten App verwenden, konfigurieren Sie die Optionen in der Manifestdatei. Weitere Informationen zur Manifestdatei finden Sie unter [Azure Active Directory-App-Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Weitere Informationen zu SSO-Standards finden Sie unter [Authentifizierung und Autorisierung mit der Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
 >
