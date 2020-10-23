@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640961"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537700"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Manuelles Ausführen einer Funktion ohne HTTP-Trigger
 
@@ -43,11 +43,11 @@ Dieser Anforderungsort wird in Postman zusammen mit dem Hauptschlüssel der Funk
 
 1. Kopieren Sie im Abschnitt **Schlüssel bearbeiten** den Schlüsselwert in die Zwischenablage, und wählen Sie dann **OK** aus.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Kopieren des Hauptschlüssels in die Zwischenablage." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 1. Klicken Sie nach dem Kopieren des *_master*-Schlüssels auf **Programmieren und testen**, und wählen Sie dann **Protokolle** aus. Hier werden Meldungen zur Funktion protokolliert, wenn Sie die Funktion manuell über Postman ausführen.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Anzeigen der Protokolle, um die Testergebnisse für den Hauptschlüssel anzuzeigen." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 > [!CAUTION]  
 > Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in einer Anwendung verteilen. Der Schlüssel darf nur an einen HTTPS-Endpunkt gesendet werden.
@@ -62,22 +62,22 @@ Dieser Anforderungsort wird in Postman zusammen mit dem Hauptschlüssel der Funk
 1. Geben Sie **x-functions-key** als ersten Schlüssel ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) dann als Wert ein.
 1. Geben Sie **Content-Type** als zweiten Schlüssel und **application/json** als Wert ein.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Header-Einstellungen in Postman." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 1. Wählen Sie die Registerkarte **Body (Hauptteil)** aus.
 1. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman-Einstellungen für den Anforderungstext." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 1. Wählen Sie **Senden** aus.
         
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Senden einer Anforderung mit Postman." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
     Postman meldet anschließend den Status **202 – Akzeptiert**.
 
 1. Kehren Sie anschließend zu Ihrer Funktion im Azure-Portal zurück. Überprüfen Sie die Protokolle. In ihnen werden Meldungen aus dem manuellen Aufruf der Funktion angezeigt.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Anzeigen der Protokolle, um die Testergebnisse für den Hauptschlüssel anzuzeigen." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

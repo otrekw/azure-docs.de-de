@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408834"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123731"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor (Vorschau)
 
@@ -143,9 +143,7 @@ Für Verbindungsmonitore gelten die folgenden Skalierungslimits:
 * Maximale Anzahl von Verbindungsmonitoren pro Abonnement und Region: 100
 * Maximale Anzahl von Testgruppen pro Verbindungsmonitor: 20
 * Maximale Anzahl von Quellen und Zielen pro Verbindungsmonitor: 100
-* Maximale Anzahl von Testkonfigurationen pro Verbindungsmonitor: 
-    * 20 über ARMClient
-    * 2 über das Azure-Portal
+* Maximale Anzahl von Testkonfigurationen pro Verbindungsmonitor:
 
 ## <a name="analyze-monitoring-data-and-set-alerts"></a>Analysieren von Überwachungsdaten und Festlegen von Warnungen
 

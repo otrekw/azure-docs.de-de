@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319524"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977013"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 
@@ -102,11 +102,11 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 
 1. Wählen Sie auf der Seite **Zuweisen****Benutzer und Gruppen**, und suchen und wählen Sie dann die Gruppe, der Sie die Lizenz zuweisen.
 
-    ![Seite „Lizenz hinzufügen“ mit den hervorgehobenen Optionen „Suchen“ und „Auswählen“](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Seite „Lizenz zuweisen“ mit den hervorgehobenen Optionen „Suchen“ und „Auswählen“ – 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. Wählen Sie **Zuordnungsoptionen**, stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK**.
 
-    ![Seite „Lizenzoptionen“ mit allen im Lizenzplan verfügbaren Optionen](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Seite „Lizenzoptionen“ mit allen im Lizenzplan verfügbaren Optionen – 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
     Die Seite **Lizenz zuweisen** wird aktualisiert, um anzuzeigen, dass ein Benutzer ausgewählt ist und dass die Zuweisungen konfiguriert sind.
 
@@ -135,7 +135,7 @@ Sie können eine Lizenz auf der Azure AD-Benutzerseite eines Benutzers und auf d
 
 1. Wählen Sie **Lizenz entfernen** aus.
 
-    ![Seite „Lizenzierte Gruppe“ mit hervorgehobener Option „Lizenz entfernen“](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![Seite „Lizenzierte Gruppen“ mit hervorgehobener Option „Lizenz entfernen“ – 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > Wenn ein lokales Benutzerkonto, das mit Azure AD synchronisiert wird, den Gültigkeitsbereich für die Synchronisierung überschreitet, oder wenn die Synchronisierung entfernt wird, wird der Benutzer in Azure AD vorläufig gelöscht. Wenn dies auftritt, werden Lizenzen, die dem Benutzer direkt oder über die gruppenbasierte Lizenzierung zugewiesen werden, als **angehalten** und nicht als **gelöscht** gekennzeichnet.

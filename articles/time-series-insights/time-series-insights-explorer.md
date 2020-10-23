@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487299"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568636"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights-Explorer (Gen1)
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel werden die Features und Optionen der [Explorer-Web-App](https://insights.timeseries.azure.com/) für Azure Time Series Insights (Gen1) beschrieben. Der Azure Time Series Insights-Explorer veranschaulicht die leistungsstarken Datenvisualisierungsfunktionen, die der Dienst bereitstellt und auf die innerhalb Ihrer eigenen Umgebung zugegriffen werden kann.
 
@@ -41,7 +44,7 @@ Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- 
 
 Vor der Verwendung des Azure Time Series Insights-Explorers müssen Sie folgende Schritte ausführen:
 
-- Erstellen Sie eine Azure Time Series Insights-Umgebung. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure Time Series Insights Gen1-Umgebung über das Azure-Portal](./time-series-insights-get-started.md).
+- Erstellen einer Azure Time Series Insights-Umgebung. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure Time Series Insights Gen1-Umgebung über das Azure-Portal](./time-series-insights-get-started.md).
 - [Erteilen Sie Zugriff](time-series-insights-data-access.md) auf Ihr Konto in der Umgebung.
 - Fügen Sie eine [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md)- oder [Event Hub](time-series-insights-how-to-add-an-event-source-eventhub.md)-Ereignisquelle hinzu.
 
@@ -73,7 +76,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Azure Time
 
          |Vorgang  |Unterstützte Typen  |Notizen  |
          |---------|---------|---------|
-         |**<** , **>** , **<=** , **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
+         |**<**, **>**, **<=**, **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
          |**=** , **!=** , **<>**     | **String**, **Bool**, **Double**, **DateTime**, **TimeSpan**, **NULL**        |         |
          |**IN**     | **String**, **Bool**, **Double**, **DateTime**, **TimeSpan**, **NULL**        |  Alle Operanden müssen denselben Typ aufweisen oder eine **NULL**-Konstante sein.        |
          |**HAS**     | **String**        |  Im rechten Bereich sind nur konstante Zeichenfolgenliterale zulässig. Leere Zeichenfolgen und **NULL** sind unzulässig.       |
@@ -108,7 +111,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Azure Time
 
 1. Mithilfe des **Wärmebilds** können Sie schnell besondere oder ungewöhnliche Datenreihen in einer bestimmten Abfrage erkennen. Nur ein Suchbegriff kann als Wärmebild visualisiert werden.
 
-    [![Time Series Insights-Explorer: Wärmebilddiagramm ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [Wärmebilddiagramm von Time Series Insights-Explorer](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Beim Untersuchen von Ereignissen durch Auswählen oder Klicken mit der rechten Maustaste wird der Bereich **EREIGNISSE** angezeigt. Hier können Sie alle Ihre Rohereignisse überprüfen und die Ereignisse als JSON- oder CSV-Dateien exportieren. In Azure Time Series Insights werden alle Rohdaten gespeichert.
 

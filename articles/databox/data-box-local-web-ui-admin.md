@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449738"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127523"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
@@ -206,7 +206,7 @@ So aktivieren Sie SMB-Signaturen auf Ihrem Azure-Gerät
 
 Die Benutzer der Webbenutzeroberfläche verfügen standardmäßig über Berechtigungen des Typs „Sicherungsoperator“ für SMB-Freigaben. Wenn Sie dies nicht möchten, aktivieren oder deaktivieren Sie die Berechtigungen unter **Enable Back Operator privileges** (Berechtigungen des Typs „Sicherungsoperator“ aktivieren).
 
-Weitere Informationen finden Sie unter „Sicherungsoperatoren“ im Artikel [Active Directory-Sicherheitsgruppen](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators).
+Weitere Informationen finden Sie unter „Sicherungsoperatoren“ im Artikel [Active Directory-Sicherheitsgruppen](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators).
 
 So aktivieren Sie die Berechtigungen des Typs „Sicherungsoperator“ auf Ihrem Azure-Gerät:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbcacd7f2094f9b0b9dcea3fea4d804fd96923e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74974937"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165314"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Verwalten von Geräteregistrierungen mit dem Azure-Portal
 
@@ -24,7 +24,7 @@ Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts ode
 
 Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu registrieren:
 
-* Eine **Registrierungsgruppe** ist ein Eintrag für eine Gruppe von Geräten, für die ein gemeinsamer Nachweismechanismus mit X.509-Zertifikaten verwendet wird, die durch dasselbe Signaturzertifikat signiert werden. Hierbei kann es sich um das [Stammzertifikat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) oder das [Zwischenzertifikat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate) handeln, das zum Erstellen des Gerätezertifikats auf einem physischen Gerät verwendet wird. Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. Beachten Sie, dass Sie nur Geräte registrieren können, die den X. 509-Nachweismechanismus als *Registrierungsgruppen* verwenden. 
+* Eine **Registrierungsgruppe** ist ein Eintrag für eine Gruppe von Geräten, für die ein gemeinsamer Nachweismechanismus mit X.509-Zertifikaten verwendet wird, die durch dasselbe Signaturzertifikat signiert werden. Hierbei kann es sich um das [Stammzertifikat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) oder das [Zwischenzertifikat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate) handeln, das zum Erstellen des Gerätezertifikats auf einem physischen Gerät verwendet wird. Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. 
 
     Sie können mit den folgenden Schritten im Portal eine Registrierungsgruppe für eine Gruppe von Geräten erstellen:
 

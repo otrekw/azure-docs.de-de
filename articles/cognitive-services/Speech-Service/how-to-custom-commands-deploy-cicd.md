@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307220"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839247"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Continuous Deployment mit Azure DevOps
 
@@ -72,7 +72,7 @@ Die Skripts werden unter [Sprachassistent für Cognitive Services – benutzerde
 1. Beachten Sie, dass diese Skripts davon ausgehen, dass Sie die Region `westus2` verwenden. Falls dies nicht der Fall ist, aktualisieren Sie die Argumente der Aufgaben entsprechend.
 
     > [!div class="mx-imgBorder"]
-    > ![Nutzlast zum Senden von Aktivitäten](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![Screenshot, der den Regionswert in den Argumenten hervorhebt](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. Öffnen Sie in der Schaltfläche „Speichern und ausführen“ die Dropdownliste, und klicken Sie auf „Speichern“.
 

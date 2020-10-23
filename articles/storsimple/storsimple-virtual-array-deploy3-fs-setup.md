@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006295"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977577"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver über das Azure-Portal
 ![Abbildung der Schritte, die zur Bereitstellung eines virtuellen Arrays erforderlich sind. Der erste Teil des dritten Schritts heißt „Einrichten als Dateiserver“ und ist hervorgehoben.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -118,7 +118,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
     ![Screenshot: Seite „Alle Ressourcen“ im Azure-Portal. Ein Geräte-Manager-Dienst ist hervorgehoben.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. Wählen Sie in der gefilterte Liste den StorSimple-Geräte-Manager-Dienst aus, und navigieren Sie anschließend zu **Management > Geräte**. Vergewissern Sie sich auf dem Blatt **Geräte**, dass das Gerät erfolgreich mit dem Dienst verbunden wurde und den Status **Zur Einrichtung bereit** aufweist.
     
-    ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![Bereitstellen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>Schritt 2: Konfigurieren des Geräts als Dateiserver
 Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) aus, um die erforderliche Geräteinstallation durchzuführen.
@@ -129,7 +129,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Klicken Sie auf das Gerät. Ein Banner zeigt, dass das Gerät für die Einrichtung bereit ist.
    
-    ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![Konfigurieren eines Dateiservers 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Klicken Sie in der Befehlsleiste auf **Konfigurieren**. Daraufhin öffnet sich das Blatt **Konfigurieren**. Gehen Sie auf dem Blatt **Konfigurieren** wie folgt vor:
    
    1. Der Dateiservername wird automatisch aufgefüllt.
@@ -140,7 +140,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
     
    4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**, um anzugeben, welche Anmeldeinformationen des Speicherkontos mit Ihrem Gerät verwendet werden sollen. Klicken Sie auf **Neue hinzufügen**, wenn noch keine Anmeldeinformationen des Speicherkontos konfiguriert wurden. **Stellen Sie sicher, dass das von Ihnen verwendete Speicherkonto Blockblobs unterstützt. Seitenblobs werden nicht unterstützt.** Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-      ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Konfigurieren eines Dateiservers 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. Gehen Sie auf dem Blatt **Anmeldeinformationen des Speicherkontos hinzufügen** wie folgt vor: 
 
     1. Wählen Sie das aktuelle Abonnement aus, wenn für das Speicherkonto das gleiche Abonnement wie für den Dienst gilt. Geben Sie „Other“ (Anderes) ein, wenn das Speicherkonto nicht zum Dienstabonnement gehört. 
@@ -153,19 +153,19 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
     
     5. Klicken Sie auf **Hinzufügen**, um diese Anmeldeinformationen des Speicherkontos hinzufügen. 
    
-        ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![Konfigurieren eines Dateiservers 4](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
 5. Nachdem die Anmeldeinformationen des Speicherkontos erfolgreich erstellt wurden, wird das Blatt **Konfigurieren** aktualisiert und zeigt die Anmeldeinformationen des angegebenen Speicherkontos an. Klicken Sie auf **Konfigurieren**.
    
-   ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![Konfigurieren eines Dateiservers 5](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    Es wird ein Dateiserver erstellt. Nachdem der Dateiserver erfolgreich erstellt wurde, werden Sie entsprechend benachrichtigt.
    
-   ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![Konfigurieren eines Dateiservers 5b](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    Der Gerätestatus ändert sich außerdem auf **Online**.
    
-   ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![Konfigurieren eines Dateiservers 5c](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    Sie können nun fortfahren, um eine Freigabe hinzufügen.
 
@@ -189,15 +189,15 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    
    5. Klicken Sie auf **Hinzufügen**, um die Freigabe zu erstellen. 
     
-       ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Hinzufügen einer Freigabe 1](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        Sie werden benachrichtigt, wenn die Freigabe erstellt wird.
    
-       ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Hinzufügen einer Freigabe 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird das Blatt **Freigaben** aktualisiert und zeigt die neue Freigabe. Standardmäßig ist die Überwachung und die Sicherung für die Freigabe aktiviert.
    
-      ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Hinzufügen einer Freigabe 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>Schritt 4: Herstellen einer Verbindung mit der Freigabe
 Als Nächstes müssen Sie eine Verbindung mit einer oder mehreren Freigaben herstellen, die Sie im vorherigen Schritt erstellt haben. Führen Sie diese Schritte auf dem Windows Server-Host aus, der mit Ihrem StorSimple Virtual Array verbunden ist.

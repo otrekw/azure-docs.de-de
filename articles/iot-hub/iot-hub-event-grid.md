@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072304"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152134"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
-Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Konfigurieren Sie Ihre Geschäftsanwendungen zum Lauschen auf IoT Hub-Ereignisse, sodass Sie zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren können. Erstellen Sie beispielsweise eine Anwendung, die bei jeder Registrierung eines neuen IoT-Geräts bei Ihrem IoT-Hub eine Datenbank aktualisiert, einen Akkordzettel erstellt und eine E-Mail-Benachrichtigung generiert.
+Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Konfigurieren Sie Ihre Geschäftsanwendungen zum Lauschen auf IoT Hub-Ereignisse, sodass Sie zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren können.  Erstellen Sie beispielsweise eine Anwendung, die bei jeder Registrierung eines neuen IoT-Geräts bei Ihrem IoT-Hub eine Datenbank aktualisiert, einen Akkordzettel erstellt und eine E-Mail-Benachrichtigung generiert.
 
-[Azure Event Grid](../event-grid/overview.md) ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) und kann mithilfe von Webhooks Ereigniswarnungen an Nicht-Azure-Dienste übermitteln. Eine vollständige Liste der Ereignishandler, die Event Grid unterstützt, finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md).
+[Azure Event Grid](../event-grid/overview.md) ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und kann mithilfe von Webhooks Ereigniswarnungen an Nicht-Azure-Dienste übermitteln. Eine vollständige Liste der Ereignishandler, die Event Grid unterstützt, finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md).
 
 ![Azure Event Grid-Architektur](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -184,13 +184,13 @@ Der Betreff von IoT-Ereignissen verwendet das Format:
 devices/{deviceId}
 ```
 
-Event Grid ermöglicht auch das Filtern nach Attributen jedes Ereignisses, einschließlich des Dateninhalts. Dadurch können Sie auswählen, welche Ereignisse auf der Grundlage von Inhalten der Telemetrienachricht übermittelt werden sollen. Beispiele hierfür finden Sie unter [erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Zum Filtern des Telemetrienachrichtentexts müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen. Bei beiden Eigenschaften wird die Groß-/Kleinschreibung nicht beachtet.
+Event Grid ermöglicht auch das Filtern nach Attributen jedes Ereignisses, einschließlich des Dateninhalts. Dadurch können Sie auswählen, welche Ereignisse auf der Grundlage von Inhalten der Telemetrienachricht übermittelt werden sollen. Beispiele hierfür finden Sie unter [erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Zum Filtern des Telemetrienachrichtentexts müssen Sie contentType in den Nachrichten-[Systemeigenschaften](./iot-hub-devguide-routing-query-syntax.md#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen. Bei beiden Eigenschaften wird die Groß-/Kleinschreibung nicht beachtet.
 
 Bei nicht telemetriebezogenen Ereignissen wie „DeviceConnected“, „DeviceDisconnected“, „DeviceCreated“ und „DeviceDeleted“ kann die Event Grid-Filterung beim Erstellen des Abonnements verwendet werden. Bei Telemetrieereignissen können Benutzer – zusätzlich zum Filtern in Event Grid – über die Abfrage des Nachrichtenroutings auch nach Gerätezwillingen, Nachrichteneigenschaften und Textkörper filtern. 
 
 Wenn Sie Telemetrieereignisse über Event Grid abonnieren, erstellt IoT Hub eine Standardnachrichtenroute für das Senden von Gerätenachrichten zum Datenquellentyp an Event Grid. Weitere Informationen zum Nachrichtenrouting finden Sie unter [IoT Hub-Nachrichtenrouting](iot-hub-devguide-messages-d2c.md). Diese Route wird im Portal unter „IOT Hub“ > „Nachrichtenrouting“ angezeigt. Unabhängig von der Anzahl der für Telemetrieereignisse erstellten Event Grid-Abonnements wird nur eine Route zu Event Grid erstellt. Wenn Sie also mehrere Abonnements mit verschiedenen Filtern benötigen, können Sie in diesen Abfragen den OR-Operator auf derselben Route verwenden. Das Erstellen und Löschen der Route wird durch das Abonnement von Telemetrieereignissen über Event Grid gesteuert. Sie können mithilfe von IoT Hub-Nachrichtenrouting keine Route zu Event Grid erstellen oder löschen.
 
-Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann. Darüber hinaus müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen.
+Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann. Darüber hinaus müssen Sie contentType in den Nachrichten-[Systemeigenschaften](./iot-hub-devguide-routing-query-syntax.md#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 

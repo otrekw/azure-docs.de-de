@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031941"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450259"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Wenn sich Ihre Anwendung auf automatische Datenbanksicherungen verlässt und die
 > [!NOTE]
 > Diese Vorbereitungsschritte wirken sich nicht auf die Produktionsumgebung aus, die im Vollzugriffsmodus funktionieren kann.
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option1-1.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung](./media/manage-application-rolling-upgrade/option1-1.png)
 
 Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Anwendung bereit für das tatsächliche Upgrade. Das folgende Diagramm veranschaulicht die Schritte, die der Upgradevorgang umfasst:
 
@@ -48,7 +48,7 @@ Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Anwendung bereit für
 2. Trennen Sie die sekundäre Datenbank mithilfe des Modus für die geplante Beendigung (4). Diese Aktion erstellt eine vollständig synchronisierte, unabhängige Kopie der primären Datenbank. Diese Datenbank wird upgegradet.
 3. Ändern Sie den Modus der sekundären Datenbank in den Lese-/Schreibmodus, und führen Sie das Upgradeskript aus (5).
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option1-2.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung, die das Upgradeskript ausführt](./media/manage-application-rolling-upgrade/option1-2.png)
 
 Wenn das Upgrade erfolgreich abgeschlossen wurde, können Sie jetzt den Wechsel der Benutzer zur aktualisierten Kopie der Anwendung durchführen, die zur Produktionsumgebung wird. Der Wechsel umfasst ein paar weitere Schritte, wie im folgenden Diagramm dargestellt:
 
@@ -67,7 +67,7 @@ An dieser Stelle ist die Anwendung voll funktionsfähig, und Sie können die Upg
 > [!NOTE]
 > Das Rollback erfordert keine DNS-Änderungen, da Sie den Swap-Vorgang noch nicht ausgeführt haben.
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option1-4.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung, wobei die Stagingumgebung außer Betrieb gesetzt wurde](./media/manage-application-rolling-upgrade/option1-4.png)
 
 Der wichtigste Vorteil dieser Option ist, dass Sie eine Anwendung in einer einzelnen Region mithilfe einer Reihe von einfachen Schritten upgraden können. Die anfallenden Kosten für das Upgrade sind relativ gering. 
 
@@ -98,7 +98,7 @@ Sie müssen eine Stagingumgebung mit einer vollständig synchronisierten Kopie d
 > [!NOTE]
 > Diese Vorbereitungsschritte wirken sich nicht auf die Anwendung in der Produktionsumgebung aus. Sie bleibt voll funktionsfähig im Lese-/Schreibmodus.
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option2-1.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung mit einer vollständig synchronisierten Kopie der Anwendung](./media/manage-application-rolling-upgrade/option2-1.png)
 
 Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Stagingumgebung bereit für das Upgrade. Das folgende Diagramm veranschaulicht diese Upgradeschritte:
 
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Trennen die sekundäre Datenbank (11), um die Georeplikation zu beenden. Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet. Im folgenden Beispiel wird Transact-SQL verwendet, [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) ist jedoch auch verfügbar. 
+2. Trennen die sekundäre Datenbank (11), um die Georeplikation zu beenden. Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet. Im folgenden Beispiel wird Transact-SQL verwendet, [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) ist jedoch auch verfügbar. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. Führen Sie das Upgradeskript für `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net` und die primäre Stagingdatenbank aus (12). Die Änderungen in der Datenbank werden automatisch in die sekundäre Stagingdatenbank repliziert.
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option2-2.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung, wobei die Datenbankänderungen im Stagingprozess repliziert werden](./media/manage-application-rolling-upgrade/option2-2.png)
 
 Wenn das Upgrade erfolgreich abgeschlossen ist, können die Benutzer jetzt zu der V2-Version der Anwendung wechseln. Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte:
 
 1. Aktivieren Sie einen Swapvorgang zwischen Produktions- und Stagingumgebung der Web-App in der primären Region (13) und in der Sicherungsregion (14). V2 der Anwendung wird jetzt eine Produktionsumgebung mit einer redundanten Kopie in der Sicherungsregion.
 2. Wenn Sie die V1-Anwendung (15 und 16) nicht mehr benötigen, können Sie die Stagingumgebung außer Betrieb setzen.
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option2-3.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung mit einer optionalen Außerbetriebsetzung der Stagingumgebung](./media/manage-application-rolling-upgrade/option2-3.png)
 
 Wenn der Upgradevorgang nicht erfolgreich ist (z.B. aufgrund eines Fehlers im Upgradeskript), sollten Sie die Stagingumgebung als inkonsistent betrachten. Um die Anwendung wieder auf den Status vor dem Upgrade zurückzusetzen, verwenden Sie wieder V1 der Anwendung in der Produktionsumgebung. Die Schritte hierzu werden im nächsten Diagramm angezeigt:
 
@@ -139,7 +139,7 @@ An dieser Stelle ist die Anwendung voll funktionsfähig, und Sie können die Upg
 > [!NOTE]
 > Das Rollback erfordert keine DNS-Änderungen, da Sie den Swapvorgang nicht ausgeführt haben.
 
-![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](./media/manage-application-rolling-upgrade/option2-4.png)
+![Darstellung der Georeplikationskonfiguration der SQL-Datenbank für die cloudbasierte Notfallwiederherstellung, wobei für den Upgradeprozess ein Rollback ausgeführt wird](./media/manage-application-rolling-upgrade/option2-4.png)
 
 Der wichtigste Vorteil dieser Option ist, dass Sie die Anwendung und ihre georedundante Kopie parallel upgraden können, ohne Ihre Geschäftskontinuität während des Upgrades zu beeinträchtigen.
 

@@ -4,17 +4,16 @@ description: Über Ihren IoT Hub im Azure-Portal können Sie – entsprechend de
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133916"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048031"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
 
@@ -25,13 +24,20 @@ In diesem Artikel wird gezeigt, wie das Azure-Portal Sie durch das Erstellen ein
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
-* Ein [IoT Edge-Gerät](how-to-register-device.md#register-in-the-azure-portal) mit installierter IoT Edge-Runtime.
+* Ein IoT Edge-Gerät
+
+  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einem der Schnellstarts zum [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
 
 Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Weitere Informationen zur Funktionsweise und Erstellung von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
 
 Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen des Bereitstellungsmanifests führt, sodass Sie das JSON-Dokument nicht manuell erstellen müssen. Der Assistent umfasst drei Schritte: **Hinzufügen von Modulen**, **Angeben von Routen** und **Überprüfen der Bereitstellung**.
+
+>[!NOTE]
+>Die Schritte in diesem Artikel entsprechen der aktuellen Schemaversion des IoT Edge-Agents und -Hubs. Die Schemaversion 1.1 wurde zusammen mit der IoT Edge-Version 1.0.10 veröffentlicht und ermöglicht die Verwendung von Startreihenfolgen für Module und Features für die Priorisierung von Routen.
+>
+>Bei einer Bereitstellung auf einem Gerät, auf dem Version 1.0.9 oder früher ausgeführt wird, bearbeiten Sie die **Runtimeeinstellungen** im Schritt **Module** des Assistenten, um Schemaversion 1.0 zu verwenden.
 
 ### <a name="select-device-and-add-modules"></a>Auswählen des Geräts und Hinzufügen von Modulen
 
@@ -41,27 +47,36 @@ Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen d
 1. Wählen Sie in der oberen Leiste **Module festlegen** aus.
 1. Geben Sie im Abschnitt **Container Registry-Einstellungen** der Seite die Anmeldeinformationen für den Zugriff auf private Containerregistrierungen mit Ihren Modulimages an.
 1. Wählen Sie im Abschnitt **IoT Edge-Module** der Seite die Option **Hinzufügen** aus.
-1. Sehen Sie sich die Modultypen im Dropdownmenü an:
+1. Wählen Sie einen der drei Modultypen aus dem Dropdownmenü aus:
 
    * **IoT Edge-Modul** – Geben Sie den Modulnamen und den URI des Containerimages an. Beispielsweise lautet der Image-URI für das Beispielmodul „SimulatedTemperatureSensor“ `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Wenn das Modulimage in einer privaten Containerregistrierung gespeichert ist, fügen Sie die Anmeldeinformationen auf dieser Seite hinzu, um auf das Image zugreifen zu können.
    * **Marketplace-Modul** – Module, die im Azure Marketplace gehostet werden. Weil einige Marketplace-Module eine zusätzliche Konfiguration erfordern, überprüfen Sie die Moduldetails in der Liste [Azure Marketplace IoT-Edge-Module](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
    * **Azure Stream Analytics-Modul** – Module, die aus einer Azure Stream Analytics-Workload generiert wurden.
 
-1. Nachdem Sie ein Modul hinzugefügt haben, wählen Sie dessen Namen aus der Liste aus, um die Moduleinstellungen zu öffnen. Füllen Sie bei Bedarf die optionalen Felder aus. Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](module-edgeagent-edgehub.md#edgeagent-desired-properties). Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
-1. Wiederholen Sie bei Bedarf die Schritte 5 bis 8, um Ihrer Bereitstellung weitere Module hinzuzufügen.
+1. Nachdem Sie ein Modul hinzugefügt haben, wählen Sie dessen Namen aus der Liste aus, um die Moduleinstellungen zu öffnen. Füllen Sie bei Bedarf die optionalen Felder aus.
+
+   Weitere Informationen zu den verfügbaren Moduleinstellungen finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](module-composition.md#module-configuration-and-management).
+
+   Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
+
+1. Wiederholen Sie die Schritte 6 bis 8, um Ihrer Bereitstellung weitere Module hinzuzufügen.
 1. Klicken Sie auf **Weiter: Routen**, um mit dem Abschnitt über Routen fortzufahren.
 
 ### <a name="specify-routes"></a>Angeben von Routen
 
-Auf der Registerkarte **Routen** definieren Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden sollen. Nachrichten werden mit Name-Wert-Paaren erstellt. Standardmäßig wird eine Route mit **route** bezeichnet und als **FROM /messages/\* INTO $upstream** definiert. Dies bedeutet, dass alle von sämtlichen Modulen ausgegebenen Nachrichten an Ihren IoT-Hub gesendet werden.  
+Auf der Registerkarte **Routen** definieren Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden. Nachrichten werden mit Name-Wert-Paaren erstellt. Standardmäßig enthält die erste Bereitstellung für ein neues Gerät eine Route mit dem Namen **route**, die als **FROM /messages/\* INTO $upstream** definiert wird. Dies bedeutet, dass alle von sämtlichen Modulen ausgegebenen Nachrichten an Ihren IoT-Hub gesendet werden.  
 
-Fügen Sie die Routen mit Informationen aus [Routen deklarieren](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie sie damit. Wählen Sie dann **Weiter: Überprüfen + erstellen** aus, um mit dem nächsten Schritt des Assistenten fortzufahren.
+Die Parameter **Priority** und **Time to live** sind optionale Parameter, die Sie in eine Routendefinition einschließen können. Mit dem Parameter „Priority“ können Sie auswählen, für welche Routen die Nachrichten zuerst bzw. zuletzt verarbeitet werden sollen. Die Priorität wird durch das Festlegen einer Zahl zwischen 0 und 9 festgelegt, wobei 0 für die höchste Priorität steht. Mit dem Parameter „Time to live“ können Sie deklarieren, wie lange Nachrichten in dieser Route aufbewahrt werden sollen, bis sie entweder verarbeitet oder aus der Warteschlange entfernt werden.
+
+Weitere Informationen zum Erstellen von Routen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes).
+
+Nachdem Sie die Routen festgelegt haben, wählen Sie **Weiter: Überprüfen + erstellen** aus, um mit dem nächsten Schritt des Assistenten fortzufahren.
 
 ### <a name="review-deployment"></a>Überprüfen der Bereitstellung
 
 Im Abschnitt zur Überprüfung wird das JSON-Bereitstellungsmanifest angezeigt, das anhand Ihrer Auswahl in den vorherigen beiden Abschnitten erstellt wurde. Beachten Sie, dass zwei Module deklariert wurden, die Sie nicht hinzugefügt haben: **$edgeAgent** und **$edgeHub**. Diese beiden Module bilden die [IoT Edge-Runtime](iot-edge-runtime.md) und sind in jeder Bereitstellung erforderliche Standardvorgaben.
 
-Überprüfen Sie Ihre Bereitstellungsinformationen, und wählen Sie **Erstellen** aus.
+Überprüfen Sie Ihre Bereitstellungsinformationen, und klicken Sie dann auf **Erstellen**.
 
 ## <a name="view-modules-on-your-device"></a>Anzeigen von Modulen auf dem Gerät
 
