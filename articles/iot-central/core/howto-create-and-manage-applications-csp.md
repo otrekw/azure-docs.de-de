@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653348"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123112"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Erstellen und Verwalten einer Azure IoT Central-Anwendung über das CSP-Portal
 
@@ -63,7 +63,7 @@ Da Azure IoT Central den Kontext kennt, dass Sie den im Microsoft-Partnerportal 
 
 Ein Azure Active Directory-Mandant enthält Benutzeridentitäten, Anmeldeinformationen und andere organisatorische Informationen. Mehrere Azure-Abonnements können einem einzelnen Azure Active Directory-Mandanten zugeordnet werden.
 
-Weitere Informationen finden Sie unter [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+Weitere Informationen finden Sie unter [Azure Active Directory](../../active-directory/index.yml).
 
 ## <a name="azure-subscription"></a>Azure-Abonnement
 
@@ -71,7 +71,7 @@ Mit einem Azure-Abonnement können Sie Instanzen von Azure-Diensten erstellen. A
 
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie im Microsoft Partner Center eines erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Anwendung erstellen**. Ihr neues Abonnement wird in der Dropdownliste **Azure-Abonnement** angezeigt.
 
-Weitere Informationen finden Sie unter [Azure-Abonnements](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+Weitere Informationen finden Sie unter [Azure-Abonnements](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing).
 
 ## <a name="location"></a>Position
 

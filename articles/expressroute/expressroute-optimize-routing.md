@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653382"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204876"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimieren von ExpressRoute-Routing
 Wenn Sie mehrere ExpressRoute-Verbindungen nutzen, verfügen Sie über mehr als einen Weg zur Herstellung einer Verbindung mit Microsoft. Dies kann ein suboptimales Routing zur Folge haben. Es kann also sein, dass Ihr Datenverkehr für den Weg zu Microsoft und von Microsoft in Ihr Netzwerk mehr Zeit benötigt. Je länger der Netzwerkpfad, desto höher die Latenz. Die Latenz wirkt sich direkt auf die Anwendungsleistung und die Benutzerfreundlichkeit aus. In diesem Artikel wird dieses Problem veranschaulicht, und es wird beschrieben, wie Sie das Routing mit den standardmäßigen Routingtechnologien optimieren.
@@ -64,7 +64,7 @@ Zum Optimieren des Routings für die Benutzer beider Niederlassungen müssen Sie
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Suboptimales Routing (Microsoft an Kunde)
-Dies ist ein weiteres Beispiel, bei dem Verbindungen von Microsoft einen längeren Weg zum Erreichen Ihres Netzwerks zurücklegen. In diesem Fall verwenden Sie lokale Exchange-Server und Exchange Online in einer [Hybridumgebung](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx). Ihre Niederlassungen sind mit einem WAN verbunden. Sie kündigen die Präfixe Ihrer lokalen Server in beiden Niederlassungen gegenüber Microsoft über die beiden ExpressRoute-Verbindungen an. Exchange Online initiiert Verbindungen mit den lokalen Servern in Fällen wie der Postfachmigration. Unglücklicherweise wird die Verbindung mit der Niederlassung in Los Angeles an die ExpressRoute-Verbindung in „USA, Osten“ geleitet, bevor der Web über den ganzen Kontinent zurück an die Westküste zurückgelegt wird. Die Ursache des Problems ist ähnlich wie im ersten Fall. Ohne entsprechenden Hinweis kann das Microsoft-Netzwerk nicht ermitteln, welches Kundenpräfix näher an „USA, Osten“ und welches näher an „USA, Westen“ liegt. So wird der falsche Weg zu Ihrer Niederlassung in Los Angeles gewählt.
+Dies ist ein weiteres Beispiel, bei dem Verbindungen von Microsoft einen längeren Weg zum Erreichen Ihres Netzwerks zurücklegen. In diesem Fall verwenden Sie lokale Exchange-Server und Exchange Online in einer [Hybridumgebung](/exchange/exchange-hybrid). Ihre Niederlassungen sind mit einem WAN verbunden. Sie kündigen die Präfixe Ihrer lokalen Server in beiden Niederlassungen gegenüber Microsoft über die beiden ExpressRoute-Verbindungen an. Exchange Online initiiert Verbindungen mit den lokalen Servern in Fällen wie der Postfachmigration. Unglücklicherweise wird die Verbindung mit der Niederlassung in Los Angeles an die ExpressRoute-Verbindung in „USA, Osten“ geleitet, bevor der Web über den ganzen Kontinent zurück an die Westküste zurückgelegt wird. Die Ursache des Problems ist ähnlich wie im ersten Fall. Ohne entsprechenden Hinweis kann das Microsoft-Netzwerk nicht ermitteln, welches Kundenpräfix näher an „USA, Osten“ und welches näher an „USA, Westen“ liegt. So wird der falsche Weg zu Ihrer Niederlassung in Los Angeles gewählt.
 
 ![ExpressRoute-Fall 2: Suboptimales Routing (Microsoft an Kunde)](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 

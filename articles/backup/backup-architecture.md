@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614001"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173271"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -45,7 +45,7 @@ Tresore bieten die folgenden Features:
 - Sie können angeben, wie die Daten im Tresor repliziert werden sollen, um für Redundanz zu sorgen:
   - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](../storage/common/storage-redundancy.md#locally-redundant-storage)
   - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](../storage/common/storage-redundancy.md#geo-redundant-storage)
-  - **Zonenredundanter Speicher (ZRS)** repliziert Ihre Daten in [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region. [Weitere Informationen](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Zonenredundanter Speicher (ZRS)** repliziert Ihre Daten in [Verfügbarkeitszonen](../availability-zones/az-overview.md#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region. [Weitere Informationen](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services-Tresore verwenden standardmäßig GRS.
 
 Recovery Services-Tresore bieten die folgenden zusätzlichen Features:

@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b500a3777ee24d6615022dae2571d021bd0d675a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976568"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201170"
 ---
 # <a name="limitations"></a>Einschränkungen
 
@@ -28,10 +28,12 @@ Eine Reihe von Features besitzen Einschränkungen hinsichtlich Größe, Anzahl o
 
 ## <a name="geometry"></a>Geometrie
 
-* Zulässige Gesamtanzahl von Materialien in einer Ressource: 65.535. Weitere Informationen finden Sie unter [Deduplizierung von Materialien](../how-tos/conversion/configure-model-conversion.md#material-de-duplication).
-* Maximale Dimension einer einzelnen Textur: 16.384 x 16.384. Größere Quelltexturen werden durch den Konvertierungsprozess herunterskaliert.
+* **Animation:** Animationen sind auf die Animation einzelner Transformationen von Spielobjekten beschränkt. Skelettanimationen („Rigging“) mit Skinning- oder Vertexanimationen werden nicht unterstützt. Animationsspuren aus der Quellmedienobjektdatei werden nicht beibehalten. Stattdessen müssen Transformationsanimationen von Objekten durch Clientcode gesteuert werden.
+* **Benutzerdefinierte Shader:** Das Erstellen benutzerdefinierter Shader wird nicht unterstützt. Es können nur [Farbmaterialien](../overview/features/color-materials.md) oder [PBR-Materialien](../overview/features/pbr-materials.md) verwendet werden.
+* **Maximale Anzahl unterschiedlicher Materialien** in einem Medienobjekt: 65.535. Weitere Informationen zur Verringerung der automatischen Materialanzahl finden Sie im Kapitel [Deduplizierung von Materialien](../how-tos/conversion/configure-model-conversion.md#material-de-duplication).
+* **Maximale Dimension einer einzelnen Textur:** 16.384 x 16.384. Größere Quelltexturen werden durch den Konvertierungsprozess verkleinert.
 
-## <a name="overall-number-of-polygons"></a>Gesamtanzahl von Polygonen
+### <a name="overall-number-of-polygons"></a>Gesamtanzahl von Polygonen
 
 Die zulässige Anzahl von Polygonen für alle geladenen Modelle ist von der Größe der VM abhängig, die an die [Sitzungsverwaltungs-REST-API](../how-tos/session-rest-api.md#create-a-session) übergeben wurde:
 
@@ -40,7 +42,7 @@ Die zulässige Anzahl von Polygonen für alle geladenen Modelle ist von der Grö
 |Standard| 20 Mio. |
 |premium| Keine Begrenzung |
 
-Ausführlichere Informationen zu dieser Einschränkung finden Sie im Kapitel [Servergröße](../reference/vm-sizes.md).
+Ausführliche Informationen zu dieser Einschränkung finden Sie im Kapitel [Servergröße](../reference/vm-sizes.md).
 
 ## <a name="platform-limitations"></a>Plattformeinschränkungen
 
@@ -48,6 +50,6 @@ Ausführlichere Informationen zu dieser Einschränkung finden Sie im Kapitel [Se
 
 * Win32/x64 ist die einzige unterstützte Win32-Plattform. Win32/x86 wird nicht unterstützt.
 
-**Hololens 2**
+**HoloLens 2**
 
-* Die Funktion [Von PV-Kamera rendern](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) wird nicht unterstützt.
+* Die Funktion [Von PV-Kamera rendern](/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) wird nicht unterstützt.

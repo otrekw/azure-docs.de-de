@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626478"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279215"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Tutorial: Schnelles Skalieren und Schützen einer Webanwendung mithilfe von Azure Front Door und Azure Web Application Firewall (WAF)
 
@@ -36,10 +36,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- In den Schritten dieses Tutorials wird die Azure-Befehlszeilenschnittstelle verwendet. Informationen zu den ersten Schritten mit der Azure-Befehlszeilenschnittstelle finden Sie in [dieser Anleitung](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true).
+- In den Schritten dieses Tutorials wird die Azure-Befehlszeilenschnittstelle verwendet. Informationen zu den ersten Schritten mit der Azure-Befehlszeilenschnittstelle finden Sie in [dieser Anleitung](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest).
 
   > [!TIP] 
-  > [Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) ermöglicht einen schnellen und einfachen Einstieg in die Verwendung der Azure-Befehlszeilenschnittstelle.
+  > [Bash in Azure Cloud Shell](../cloud-shell/quickstart.md) ermöglicht einen schnellen und einfachen Einstieg in die Verwendung der Azure-Befehlszeilenschnittstelle.
 
 - Stellen Sie sicher, dass der Azure-Befehlszeilenschnittstelle die Erweiterung `front-door` hinzugefügt wurde:
 
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
    ```
 
 > [!NOTE] 
-> Weitere Informationen zu den in diesem Tutorial verwendeten Befehlen finden Sie in der [Azure CLI-Referenz für Front Door](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true).
+> Weitere Informationen zu den in diesem Tutorial verwendeten Befehlen finden Sie in der [Azure CLI-Referenz für Front Door](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
 
 ## <a name="create-an-azure-front-door-resource"></a>Erstellen einer Azure Front Door-Ressource
 
@@ -62,7 +62,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`: Der Name Ihrer Azure Front Door-Ressource.
 
-`--resource-group`: Die Ressourcengruppe, in der die Azure Front Door-Ressource platziert werden soll. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+`--resource-group`: Die Ressourcengruppe, in der die Azure Front Door-Ressource platziert werden soll. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 Suchen Sie in der Antwort des ausgeführten Befehls nach dem Schlüssel `hostName`. Dieser Wert wird in einem späteren Schritt benötigt. Der Hostname (`hostName`) ist der DNS-Name der von Ihnen erstellten Azure Front Door-Ressource.
 
@@ -130,21 +130,21 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 Der Name der benutzerdefinierten Domäne Ihrer Webanwendung wird von Benutzern verwendet, um auf Ihre Anwendung zu verweisen. Beispielsweise www.contoso.com. Von diesem Namen der benutzerdefinierten Domäne wurde ursprünglich auf den Ausführungsort vor der Einführung von Azure Front Door verwiesen. Nachdem Sie Azure Front Door und WAF vor der Anwendung hinzugefügt haben, muss der DNS-Eintrag, der dieser benutzerdefinierten Domäne entspricht, auf die Azure Front Door-Ressource verweisen. Um diese Änderung vorzunehmen, können Sie den Eintrag in Ihrem DNS-Server dem Hostnamen (`hostName`) von Azure Front Door zuordnen, den Sie sich beim Erstellen der Azure Front Door-Ressource notiert haben.
 
-Die genauen Schritte zum Aktualisieren Ihrer DNS-Einträge hängen von Ihrem DNS-Dienstanbieter ab. Wenn Sie Azure DNS zum Hosten Ihres DNS-Namens verwenden, erfahren Sie in der zugehörigen Dokumentation, wie Sie [einen DNS-Eintrag aktualisieren](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) und auf den Hostnamen (`hostName`) von Azure Front Door verweisen. 
+Die genauen Schritte zum Aktualisieren Ihrer DNS-Einträge hängen von Ihrem DNS-Dienstanbieter ab. Wenn Sie Azure DNS zum Hosten Ihres DNS-Namens verwenden, erfahren Sie in der zugehörigen Dokumentation, wie Sie [einen DNS-Eintrag aktualisieren](../dns/dns-operations-recordsets-cli.md) und auf den Hostnamen (`hostName`) von Azure Front Door verweisen. 
 
-Es gibt einen wichtigen Punkt für den Fall zu beachten, dass Ihre Kunden den Zonen-Apex (beispielsweise „contoso.com“) verwenden müssen, um zu Ihrer Website zu gelangen. In diesem Fall müssen Sie Azure DNS und den zugehörigen [Aliaseintragstyp](https://docs.microsoft.com/azure/dns/dns-alias) verwenden, um Ihren DNS-Namen zu hosten. 
+Es gibt einen wichtigen Punkt für den Fall zu beachten, dass Ihre Kunden den Zonen-Apex (beispielsweise „contoso.com“) verwenden müssen, um zu Ihrer Website zu gelangen. In diesem Fall müssen Sie Azure DNS und den zugehörigen [Aliaseintragstyp](../dns/dns-alias.md) verwenden, um Ihren DNS-Namen zu hosten. 
 
-Außerdem müssen Sie die Azure Front Door-Konfiguration aktualisieren und ihr [die benutzerdefinierte Domäne hinzufügen](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain), damit diese Zuordnung erkannt wird.
+Außerdem müssen Sie die Azure Front Door-Konfiguration aktualisieren und ihr [die benutzerdefinierte Domäne hinzufügen](./front-door-custom-domain.md), damit diese Zuordnung erkannt wird.
 
-Wenn Sie eine benutzerdefinierte Domäne verwenden, um Ihre Webanwendung zu erreichen, und das HTTPS-Protokoll aktivieren möchten, müssen Sie die [Zertifikate für Ihre benutzerdefinierte Domäne in Azure Front Door einrichten](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+Wenn Sie eine benutzerdefinierte Domäne verwenden, um Ihre Webanwendung zu erreichen, und das HTTPS-Protokoll aktivieren möchten, müssen Sie die [Zertifikate für Ihre benutzerdefinierte Domäne in Azure Front Door einrichten](./front-door-custom-domain-https.md). 
 
 ## <a name="lock-down-your-web-application"></a>Sperren der Webanwendung
 
-Es empfiehlt sich, dafür zu sorgen, dass nur Azure Front Door-Edges mit Ihrer Webanwendung kommunizieren können. Dadurch wird sichergestellt, dass niemand den Azure Front Door-Schutz umgehen und direkt auf Ihre Anwendung zugreifen kann. Informationen zur Implementierung dieser Sperre finden Sie unter [Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
+Es empfiehlt sich, dafür zu sorgen, dass nur Azure Front Door-Edges mit Ihrer Webanwendung kommunizieren können. Dadurch wird sichergestellt, dass niemand den Azure Front Door-Schutz umgehen und direkt auf Ihre Anwendung zugreifen kann. Informationen zur Implementierung dieser Sperre finden Sie unter [Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die in diesem Tutorial verwendeten Ressourcen nicht mehr benötigen, entfernen Sie die Ressourcengruppe, Front Door und die WAF-Richtlinie mithilfe des Befehls [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true):
+Wenn Sie die in diesem Tutorial verwendeten Ressourcen nicht mehr benötigen, entfernen Sie die Ressourcengruppe, Front Door und die WAF-Richtlinie mithilfe des Befehls [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true):
 
 ```azurecli-interactive
   az group delete \
