@@ -2,26 +2,28 @@
 title: Containerworkloads
 description: Erfahren Sie, wie Sie Apps aus Containerimages in Azure Batch ausführen und skalieren. Erstellen Sie einen Pool mit Serverknoten, der das Ausführen von Containeraufgaben unterstützt.
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018508"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843446"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
 Mit Azure Batch können Sie eine große Anzahl von Batchcomputingaufträgen in Azure ausführen und skalieren. Stapelverarbeitungsaufgaben lassen sich direkt auf virtuellen Computern (Knoten) in einem Batch-Pool ausführen, doch Sie können auch einen Batch-Pool zum Ausführen von Aufgaben in Docker-kompatiblen Containern auf den Knoten einrichten. In diesem Artikel wird erläutert, wie Sie einen Pool von Computeknoten erstellen, die das Ausführen von Containeraufgaben unterstützen. Außerdem erfahren Sie, wie Sie anschließend Containeraufgaben im Pool ausführen.
 
-Sie sollten mit Containerkonzepten sowie dem Erstellen von Batch-Pools und -aufträgen vertraut sein. In den Codebeispielen werden der .NET-Batch und Python-SDKs verwendet. Sie können auch andere Batch-SDKs und -Tools, einschließlich des Azure-Portals, verwenden, um containerfähige Batch-Pools zu erstellen und Containeraufgaben auszuführen.
+In den Codebeispielen werden der .NET-Batch und Python-SDKs verwendet. Sie können auch andere Batch-SDKs und -Tools, einschließlich des Azure-Portals, verwenden, um containerfähige Batch-Pools zu erstellen und Containeraufgaben auszuführen.
 
 ## <a name="why-use-containers"></a>Gründe für die Verwendung von Containern
 
 Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in vielen verschiedenen Umgebungen ausgeführt werden können. Sie können beispielsweise einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar ganz unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Sie sollten mit Containerkonzepten sowie dem Erstellen von Batch-Pools und -aufträgen vertraut sein.
 
 - **SDK-Versionen**: Die Batch SDKs unterstützen Containerimages ab den folgenden Versionen:
   - Batch REST API, Version 2017-09-01.6.0
@@ -282,6 +284,12 @@ Geben Sie containerspezifische Einstellungen an, wenn Sie eine Containeraufgabe 
 - Verwenden Sie die `ContainerSettings`-Eigenschaft der Aufgabenklassen zum Konfigurieren containerspezifischer Einstellungen. Diese Einstellungen werden durch die [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings)-Klasse definiert. Beachten Sie, dass die Containeroption `--rm` keine zusätzliche Option `--runtime` erfordert, da dies von Batch übernommen wird.
 
 - Wenn Sie Aufgaben in Containerimages ausführen, sind für die [Cloudaufgabe](/dotnet/api/microsoft.azure.batch.cloudtask) und die [Auftrags-Manager-Aufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) Containereinstellungen erforderlich. Die [Startaufgabe](/dotnet/api/microsoft.azure.batch.starttask), die [Auftragsvorbereitungsaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask) und die [Auftragsfreigabeaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) benötigen jedoch keine Containereinstellungen (diese können in einem Containerkontext oder direkt auf dem Knoten ausgeführt werden).
+
+- Bei Windows müssen Aufgaben mit [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) als `admin` ausgeführt werden. 
+
+- Bei Linux ordnet Batch die Benutzer-/Gruppenberechtigung dem Container zu. Wenn für den Zugriff auf einen Ordner innerhalb des Containers Administratorberechtigungen erforderlich sind, müssen Sie die Aufgabe möglicherweise als Poolbereich mit Administratorrechten ausführen. Dadurch wird sichergestellt, dass Batch den Task als Stamm im Containerkontext ausführt. Andernfalls hat ein Benutzer, der kein Administrator ist, möglicherweise keinen Zugriff auf diese Ordner.
+
+- Bei Containerpools mit GPU-aktivierter Hardware aktiviert Batch automatisch die GPU für Containertasks, sodass Sie das `–gpus`-Argument nicht einbeziehen sollten.
 
 ### <a name="container-task-command-line"></a>Befehlszeile für Containeraufgaben
 

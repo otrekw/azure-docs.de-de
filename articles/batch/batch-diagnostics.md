@@ -4,12 +4,12 @@ description: Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoress
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848686"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108098"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -105,7 +105,7 @@ Führen Sie zum Erstellen einer neuen Diagnoseeinstellung mit dem Azure-Portal d
 6. Wählen Sie **ServiceLog**, **AllMetrics** oder beides aus.
 7. Wählen Sie **Speichern** aus, um die Diagnoseeinstellungen zu erstellen.
 
-Sie können auch [die Sammlung über Azure Monitor im Azure-Portal aktivieren](../azure-monitor/platform/diagnostic-settings.md), um Diagnoseeinstellungen zu konfigurieren, indem Sie eine [Ressourcen-Manager-Vorlage](../azure-monitor/platform/diagnostic-settings-template.md) oder Azure PowerShell bzw. die Azure CLI verwenden. Weitere Informationen finden Sie in der [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
+Sie können auch [die Sammlung über Azure Monitor im Azure-Portal aktivieren](../azure-monitor/platform/diagnostic-settings.md), um Diagnoseeinstellungen zu konfigurieren, indem Sie eine [Ressourcen-Manager-Vorlage](../azure-monitor/samples/resource-manager-diagnostic-settings.md) oder Azure PowerShell bzw. die Azure CLI verwenden. Weitere Informationen finden Sie in der [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Zugreifen auf Diagnoseprotokolle im Speicher
 

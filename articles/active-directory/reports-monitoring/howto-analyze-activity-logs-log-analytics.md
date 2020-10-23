@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231230"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056139"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analysieren von Azure AD-Aktivitätsprotokollen mithilfe von Azure Monitor-Protokollen
 
@@ -100,16 +100,13 @@ Sie können auch Benachrichtigungen für Ihre Abfrage einrichten. So konfigurier
 
 5. Nachdem Sie die Benachrichtigung konfiguriert haben, wählen Sie **Benachrichtigung erstellen**aus, um sie zu aktivieren. 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Installieren und Verwenden von vorgefertigten Ansichten für Azure AD-Aktivitätsprotokolle
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Verwenden von vorgefertigten Arbeitsmappen für Azure AD-Aktivitätsprotokolle
 
-Sie können auch die vorgefertigten Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle herunterladen. Die Ansichten bieten mehrere Berichte, die im Zusammenhang mit allgemeinen Szenarien mit Überwachungs- und Anmeldeereignissen stehen. Sie können auch aufgrund jeglicher Daten benachrichtigen, die in den Berichten bereitgestellt werden, indem Sie die im vorherigen Abschnitt beschriebenen Schritte verwenden.
+Die Arbeitsmappen bieten mehrere Berichte, die im Zusammenhang mit allgemeinen Szenarien mit Überwachungs-, Anmelde- und Bereitstellungsereignissen stehen. Sie können auch aufgrund jeglicher Daten benachrichtigen, die in den Berichten bereitgestellt werden, indem Sie die im vorherigen Abschnitt beschriebenen Schritte verwenden.
 
-* **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z.B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
-* **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z.B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
-* **Ihre Einwilligung gebende Benutzer**: In dieser Ansicht werden Berichte im Zusammenhang mit der Benutzereinwilligung angezeigt, z.B. die Einwilligungen nach Benutzern, die Anmeldungen nach Benutzern, die ihre Einwilligung erteilt haben, sowie die Anmeldungen nach Anwendungen für alle einwilligungsabhängigen Anwendungen. 
-
-Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle finden Sie [hier](howto-install-use-log-analytics-views.md). 
-
+* **Bereitstellungsanalyse:** In dieser [Arbeitsmappe](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z. B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
+* **Anmeldeereignisse**: In dieser Arbeitsmappe werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z. B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Lauf der Zeit nachverfolgt wird.
+* **Erkenntnisse zum bedingten Zugriff:** Mithilfe der [Arbeitsmappe](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) für Erkenntnisse und Berichterstellung für den bedingten Zugriff können Sie die Auswirkungen von Richtlinien für den bedingten Zugriff in Ihrer Organisation im zeitlichen Verlauf nachvollziehen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

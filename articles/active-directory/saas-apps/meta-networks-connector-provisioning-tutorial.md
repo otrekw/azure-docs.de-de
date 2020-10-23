@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273516"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849247"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Meta Networks Connector für die automatische Benutzerbereitstellung
 
@@ -60,7 +60,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 3.  Legen Sie unter **API Key Name** und **API Key Description** den Namen und die Beschreibung des API-Schlüssels fest.
 
-    ![Meta Networks Connector, Token erstellen](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Screenshot der Verwaltungskonsole von Meta Networks Connector mit hervorgehobenen Werten für API-Schlüsselname und API-Schlüsselbeschreibung für den Azure AD- und API-Schlüssel" border="false":::
 
 4.  Aktivieren Sie die Schreibberechtigungen (Option **Write**) für **Gruppen** und **Benutzer**.
 
@@ -68,7 +68,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 5.  Klicken Sie auf **Hinzufügen**. Kopieren Sie den Wert von **SECRET** (Geheimnis), und speichern Sie ihn, weil er nur zu diesem Zeitpunkt angezeigt wird. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Meta Networks Connector-Anwendung in das Feld „Geheimes Token“ eingegeben.
 
-    ![Meta Networks Connector, Token erstellen](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Screenshot der Verwaltungskonsole von Meta Networks Connector mit hervorgehobenen Werten für API-Schlüsselname und API-Schlüsselbeschreibung für den Azure AD- und API-Schlüssel" border="false":::
 
 6.  Fügen Sie einen IdP hinzu, indem Sie zu **Administration > Settings > IdP > Create New** (Verwaltung > Einstellungen > IdP > Neu erstellen) navigieren.
 

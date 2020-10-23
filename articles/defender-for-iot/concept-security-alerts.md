@@ -4,21 +4,21 @@ description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohl
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 09ee0f9d5bd6e789d8acd4c70db866983beb1119
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: c4c92bfa25d9c43d3c654fbd1f23e242effc7577
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931830"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851202"
 ---
 # <a name="defender-for-iot-security-alerts"></a>Defender für IoT-Sicherheitswarnungen
 
@@ -26,9 +26,9 @@ Defender für IoT analysiert Ihre IoT-Lösung ständig mithilfe von Advanced Ana
 Darüber hinaus können Sie – basierend auf Ihrer Kenntnis des erwarteten Geräteverhaltens – benutzerdefinierte Warnungen erstellen.
 Eine Warnung fungiert als Indikator für eine potenzielle Kompromittierung, die untersucht und behoben werden sollte.
 
-In diesem Artikel finden Sie eine Liste von integrierten Warnungen, die auf Ihrem IoT Hub und/oder IoT-Geräten ausgelöst werden können.
+In diesem Artikel finden Sie eine Liste von integrierten Warnungen, die in Ihrem IoT-Hub und/oder auf Ihren IoT-Geräten ausgelöst werden können.
 Neben integrierten Warnungen ermöglicht Ihnen Defender für IoT, benutzerdefinierte Warnungen zu erstellen, die auf dem erwarteten IoT Hub- und/oder Geräteverhalten basieren.
-Weitere Informationen finden Sie unter [anpassbare Warnungen](concept-customizable-security-alerts.md).
+Weitere Informationen finden Sie unter [Konfigurierbare Warnungen](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrierte Warnungen für IoT-Geräte
 

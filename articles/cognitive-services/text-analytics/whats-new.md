@@ -8,18 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930909"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015923"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
+
+## <a name="october-2020"></a>Oktober 2020
+
+* Hindi-Unterstützung für Version 3.x der Standpunktanalyse ab Modellversion `2020-04-01`. 
+* Modellversion `2020-09-01` für den Sprachenendpunkt von Version 3 mit Verbesserungen bei der Spracherkennung und Genauigkeit.
+
+## <a name="september-2020"></a>September 2020
+
+### <a name="general-api-updates"></a>Allgemeine API-Updates
+
+* Veröffentlichung einer neuen URL für die öffentliche Vorschauversion (3.1) der Textanalyse, um Updates für die folgenden V3-Endpunkte der Erkennung benannter Entitäten zu unterstützen: 
+    * Der Endpunkt `/pii` enthält jetzt die neue `redactedText`-Eigenschaft in der JSON-Antwort, in der in Entitäten, in denen personenbezogene Informationen im Eingabetext erkannt wurden, sämtliche Zeichen durch ein `*` ersetzt werden.
+    * Der Endpunkt `/linking` enthält jetzt die `bingID`-Eigenschaft in der JSON-Antwort für verknüpfte Entitäten.
+* Die folgenden API-Endpunkte der Vorschauversion der Textanalyse wurden am 4. September 2020 eingestellt:
+    * v2.1-preview
+    * v3.0-preview
+    * v3.0-preview.1
+    
+> [!div class="nextstepaction"]
+> [Weitere Informationen zur Textanalyse-API-Version 3.1-preview.2](quickstarts/text-analytics-sdk.md)
+
+### <a name="text-analytics-for-health-container-updates"></a>Updates beim Container für die Textanalyse im Gesundheitsbereich
+
+Die folgenden Updates gelten speziell nur für das September-Release des Containers für die Textanalyse im Gesundheitsbereich.
+* Ein neues Containerimage mit dem Tag `1.1.013530001-amd64-preview` und der neuen Modellversion `2020-09-03` wurde im Repository „containerpreview“ veröffentlicht. 
+* Diese Modellversion bietet Verbesserungen bei der Erkennung von Entitäten und Abkürzungen und bei der Latenz.
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zur Textanalyse im Gesundheitsbereich](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>August 2020
 
@@ -31,7 +60,7 @@ Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktu
 * Ein HTTP 400-Fehler wird jetzt für v3-API-Anforderungen zurückgegeben, die die veröffentlichten [Datenlimits](concepts/data-limits.md) überschreiten. 
 * Endpunkte, die einen Offset zurückgeben, unterstützen jetzt den optionalen Parameter `stringIndexType`, der die zurückgegebenen Werte `offset` und `length` so anpasst, dass sie einem unterstützten [Zeichenfolgenindexschema](concepts/text-offsets.md) entsprechen.
 
-### <a name="text-analytics-for-health-container-august-updates"></a>August-Updates für den Container „Text Analytics for Health“
+### <a name="text-analytics-for-health-container-updates"></a>Updates beim Container für die Textanalyse im Gesundheitsbereich
 
 Die folgenden Updates gelten spezifisch nur für das August-Release des Containers „Text Analytics for Health“.
 
@@ -163,9 +192,9 @@ Weitere Entitätstypen stehen jetzt in der öffentlichen Vorschauversion des Die
 
 #### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
-* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) für das Erkennen von Entitätstypen für personenbezogene Informationen (nur für die englische Sprache)
+* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) für das Erkennen von Entitätstypen für personenbezogene Informationen (nur für die englische Sprache)
 
-* Separate Endpunkte für die [Entitätserkennung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) und [Entitätsverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Separate Endpunkte für die [Entitätserkennung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) und [Entitätsverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking).
 
 * [Modellversion](concepts/model-versioning.md) `2019-10-01`, die Folgendes beinhaltet:
     * Erweiterte Erkennung und Kategorisierung von Entitäten, die im Text erkannt wurden. 
@@ -177,7 +206,7 @@ Die Entitätsverknüpfung unterstützt Englisch und Spanisch. Die NER-Sprachunte
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>Öffentliche Vorschau der Standpunktanalyse v3
 
-* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) für die Stimmungsanalyse.
+* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) für die Stimmungsanalyse.
 * [Modellversion](concepts/model-versioning.md) `2019-10-01`, die Folgendes beinhaltet:
 
     * Deutliche Verbesserungen bei Genauigkeit und Details der Textkategorisierung und -bewertung der API.

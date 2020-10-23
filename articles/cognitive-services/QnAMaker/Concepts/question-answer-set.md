@@ -1,14 +1,16 @@
 ---
 title: 'Entwerfen einer Wissensdatenbank: QnA Maker'
-description: Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Paaren (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
+description: Erfahren Sie, wie Sie eine Wissensdatenbank für QnA Maker entwerfen.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b2661b61e0422f796813be0908d866028ee128a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992996"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776900"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Konzepte von Frage-Antwort-Paaren
 

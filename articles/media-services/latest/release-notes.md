@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425635"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015701"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -34,17 +34,16 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 ## <a name="known-issues"></a>Bekannte Probleme
 
 > [!NOTE]
-> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und -Aufträgen sowie Abrufen von Informationen über das Zugreifen auf APIs und Verschlüsseln von Inhalten. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für die Verwaltung von Transformationen und Aufträgen) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und -Aufträgen sowie Abrufen von Informationen über das Zugreifen auf APIs und Verschlüsseln von Inhalten. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für die Verwaltung von Transformationen und Aufträgen) die [REST-API](/rest/api/media/accountfilters), die [CLI](/cli/azure/ams) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 >
 > Weitere Informationen finden Sie in den häufig gestellten Fragen im Abschnitt über [Einschränkungen im Azure-Portal im Zusammenhang mit Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="august-2020"></a>August 2020
 
 ### <a name="dynamic-encryption"></a>Dynamische Verschlüsselung
-Unterstützung für die ältere PlayReady Protected Interoperable File Format-Verschlüsselung (PIFF 1.1) ist jetzt in Dynamic Packager verfügbar. Dies bietet Unterstützung für ältere Smart TV-Geräte von Samsung und LG, die die frühen Entwürfe der von Microsoft veröffentlichten Common Encryption-Standards (CENC) implementiert haben.  Das PIFF 1.1-Format ist auch als das Verschlüsselungsformat bekannt, das zuvor von der Silverlight-Clientbibliothek unterstützt wurde. Heutzutage besteht das einzige Anwendungsszenario für dieses Verschlüsselungsformat in älteren Smart TV-Geräten, da es in einigen Regionen eine nicht unerheblich Anzahl von Smart TVs gibt, die nur Smooth Streaming mit PIFF 1.1-Verschlüsselung unterstützen. 
+Unterstützung für die ältere PlayReady Protected Interoperable File Format-Verschlüsselung (PIFF 1.1) ist jetzt in Dynamic Packager verfügbar. Dies bietet Unterstützung für ältere Smart TV-Geräte von Samsung und LG, die die frühen Entwürfe der von Microsoft veröffentlichten Common Encryption-Standards (CENC) implementiert haben.  Das PIFF 1.1-Format ist auch als das Verschlüsselungsformat bekannt, das zuvor von der Silverlight-Clientbibliothek unterstützt wurde. Heutzutage besteht das einzige Anwendungsszenario für dieses Verschlüsselungsformat in älteren Smart TV-Geräten, da es in einigen Regionen eine nicht unerheblich Anzahl von Smart TVs gibt, die nur Smooth Streaming mit PIFF 1.1-Verschlüsselung unterstützen. 
 
-Wenn Sie die neue PIFF 1.1-Verschlüsselungsunterstützung verwenden möchten, ändern Sie den Verschlüsselungswert im URL-Pfad des Streaminglocators in „piff“. Weitere Informationen finden Sie unter [Übersicht über den Inhaltsschutz](content-protection-overview.md).
+Wenn Sie die neue PIFF 1.1-Verschlüsselungsunterstützung verwenden möchten, ändern Sie den Verschlüsselungswert im URL-Pfad des Streaminglocators in „piff“. Weitere Informationen finden Sie in der [Übersicht über Content Protection](content-protection-overview.md).
 Beispiel: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -60,7 +59,7 @@ Livetranskriptionen unterstützen jetzt 19 Sprachen und 8 Regionen.
 
 Wir haben das Tutorial [End-to-End-Inhaltsschutz mithilfe von Azure AD](./azure-ad-content-protection.md) veröffentlicht.
 
-### <a name="high-availablity"></a>Hochverfügbarkeit
+### <a name="high-availability"></a>Hohe Verfügbarkeit
 
 Wir haben eine [Übersicht](./media-services-high-availability-encoding.md) und ein [Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming) für Hochverfügbarkeit bei Media Services und Video on Demand (VoD) veröffentlicht.
 
@@ -136,12 +135,12 @@ Unterstützung für die folgenden neuen, empfohlenen Partner-Encoder für RTMP-L
 
 - Eine neue Voreinstellung für Content Aware Encoding ist jetzt verfügbar. Sie erzeugt mithilfe der inhaltsbezogenen Codierung einen Satz von GOP-orientierten MP4s. Bei jeglichen eingegebenen Inhalten führt der Dienst eine erste einfache Analyse des eingegebenen Inhalts durch. Er verwendet diese Ergebnisse, um die optimale Anzahl der Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming zu bestimmen. Diese Voreinstellung ist besonders effektiv für Videos mit geringer und mittlerer Komplexität, bei denen die Ausgabedateien mit niedrigeren Bitraten, aber in einer Qualität vorliegen, die dem Betrachter dennoch ein gutes Erlebnis bietet. Die Ausgabe enthält MP4-Dateien mit überlappendem Video und Audio. Weitere Informationen finden Sie unter [Öffnen der API-Spezifikationen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
 - Verbesserte Leistung und Multithreading für das Größenänderungsmodul in Media Encoder Standard. Unter bestimmten Bedingungen sollte der Kunde eine Leistungssteigerung zwischen 5 und 40 % VOD-Codierung sehen. Inhalte von geringer Komplexität, die in mehrere Bitraten codiert werden, erfahren die höchsten Leistungssteigerungen. 
-- Die Standardcodierung behält nun bei Verwendung der zeitbasierten GOP-Einstellung einen regelmäßigen GOP-Rhythmus für Inhalte mit variablen Frameraten (VFR) bei der VOD-Codierung bei.  Dies bedeutet, dass Kunden, die Inhalte mit gemischten Frameraten übermitteln, die beispielsweise zwischen 15 und 30 fps variieren, nun feststellen sollten, dass bei der Ausgabe in MP4-Dateien mit Adaptive Bitrate Streaming regelmäßige GOP-Abstände berechnet werden. Hierdurch wird die Möglichkeit verbessert, nahtlos zwischen den Spuren zu wechseln, wenn über HLS oder DASH geliefert wird. 
+- Die Standardcodierung behält nun bei Verwendung der zeitbasierten GOP-Einstellung einen regelmäßigen GOP-Rhythmus für Inhalte mit variablen Frameraten (VFR) bei der VOD-Codierung bei.  Dies bedeutet, dass Kunden, die Inhalte mit gemischten Bildfrequenzen übermitteln, die beispielsweise zwischen 15 und 30 fps variieren, nun feststellen sollten, dass bei der Ausgabe in MP4-Dateien mit Adaptive Bitrate Streaming regelmäßige GOP-Abstände berechnet werden. Hierdurch wird die Möglichkeit verbessert, nahtlos zwischen den Spuren zu wechseln, wenn über HLS oder DASH geliefert wird. 
 -  Verbesserte AV-Synchronisierung für Quellinhalte mit variabler Framerate (VFR)
 
 ### <a name="video-indexer-video-analytics"></a>Video Indexer, Videoanalyse
 
-- Keyframes, die mithilfe der VideoAnalyzer-Voreinstellung extrahiert wurden, sind jetzt in der ursprünglichen Auflösung des Videos, anstatt dass ihre Größe angepasst wird. Die hochauflösende Keyframe-Extraktion bietet Ihnen Bilder in Originalqualität und ermöglicht Ihnen die Verwendung bildbasierter Künstlicher Intelligenz-Modelle, die von den Microsoft-Diensten Maschinelles Sehen und Custom Vision bereitgestellt werden, um noch mehr Erkenntnisse zu Ihrem Video zu erhalten.
+- Keyframes, die mithilfe der VideoAnalyzer-Voreinstellung extrahiert wurden, sind jetzt in der ursprünglichen Auflösung des Videos, anstatt dass ihre Größe angepasst wird. Die hochauflösende Keyframe-Extraktion bietet Ihnen Bilder in Originalqualität und ermöglicht Ihnen die Verwendung bildbasierter KI-Modelle (künstliche Intelligenz), die von den Microsoft-Diensten Maschinelles Sehen und Custom Vision bereitgestellt werden, um noch mehr Erkenntnisse zu Ihrem Video zu erhalten.
 
 ## <a name="september-2019"></a>September 2019
 
@@ -155,7 +154,7 @@ Media Services v3 gibt die Vorschauversion von 24 Stunden x 365 Tagen linearer L
 
 #### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](../previous/legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
+Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Die Daten zur Einstellung finden Sie im Artikel [Legacykomponenten](../previous/legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
 
 Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -173,9 +172,9 @@ Weiter Informationen finden Sie unter [Clouds und Regionen, in denen Media Servi
 
 #### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an, die eingestellt werden. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](../previous/legacy-components.md).
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an, die eingestellt werden. Die Daten zur Einstellung finden Sie im Artikel [Legacykomponenten](../previous/legacy-components.md).
 
-Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](../previous/migrate-windows-azure-media-encoder.md) und [Migrieren von AME zu Media Encoder Standard](../previous/migrate-azure-media-encoder.md).
  
 ## <a name="july-2019"></a>Juli 2019
 
@@ -223,8 +222,8 @@ Weiter Informationen finden Sie unter [Clouds und Regionen, in denen Media Servi
 
 Updates wurden hinzugefügt, die Verbesserungen an der Media Services-Leistung umfassen.
 
-* Die maximal unterstützte Dateigröße für die Verarbeitung wurde aktualisiert. Mehr dazu finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
-* [Verbesserungen der Codierungsgeschwindigkeit](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* Die maximal unterstützte Dateigröße für die Verarbeitung wurde aktualisiert. Weitere Informationen finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
+* [Verbesserungen der Codierungsgeschwindigkeit](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>April 2019
 
@@ -264,21 +263,21 @@ Zu den Updates in der GA-Version der V3-API gehören:
 
 ## <a name="november-2018"></a>November 2018
 
-Das CLI 2.0-Modul ist ab sofort für [Azure Media Services v3 (allgemein verfügbar)](/cli/azure/ams?view=azure-cli-latest) v2.0.50 verfügbar.
+Das CLI 2.0-Modul ist ab sofort für [Azure Media Services v3 (allgemein verfügbar)](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) v2.0.50 verfügbar.
 
 ### <a name="new-commands"></a>Neue Befehle
 
-- [az ams account](/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru:](/cli/azure/ams/account/mru?view=azure-cli-latest) Hiermit können Sie reservierte Einheiten für Medien verwalten. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für Medien](media-reserved-units-cli-how-to.md).
+- [az ams account](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
+- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
+- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
+- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
+- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
+- [az ams job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
+- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
+- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
+- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
+- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
+- [az ams account mru:](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) Hiermit können Sie reservierte Einheiten für Medien verwalten. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für Medien](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Neue Features und Breaking Changes
 

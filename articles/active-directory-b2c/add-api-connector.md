@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854357"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-Nur Benutzereigenschaften und benutzerdefinierte Attribute, die unter **Azure Active Directory** > **Externe Identitäten** > **Benutzerdefinierte Benutzerattribute** aufgeführt sind, können in der Anforderung gesendet werden.
+Nur Benutzereigenschaften und benutzerdefinierte Attribute, die unter**Azure AD B2C** > **Benutzerattribute** aufgeführt sind, können in der Anforderung gesendet werden.
 
 Benutzerdefinierte Attribute sind im Verzeichnis im Format **extension_\<extensions-app-id>_CustomAttribute** vorhanden. Die API sollte den Empfang von Ansprüchen in diesem serialisierten Format erwarten. Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>Bewährte Methoden und Problembehandlungen
 
 ### <a name="using-serverless-cloud-functions"></a>Verwenden von serverlosen Cloudfunktionen
-Serverlose Funktionen, z. B. HTTP-Trigger in Azure Functions, bieten eine einfache Möglichkeit zum Erstellen von API-Endpunkten, die mit dem API-Connector verwendet werden. Sie können die serverlosen Cloudfunktionen beispielsweise verwenden, um Validierungslogik auszuführen und Registrierungen auf bestimmte Domänen zu beschränken. Mit den serverlosen Cloudfunktionen können auch andere Web-APIs, Benutzerspeicher und weitere Clouddienste für komplexere Szenarien aufgerufen werden.
+Serverlose Funktionen, z. B. HTTP-Trigger in Azure Functions, bieten eine einfache Möglichkeit zum Erstellen von API-Endpunkten, die mit dem API-Connector verwendet werden. Sie können die serverlosen Cloudfunktionen [beispielsweise](code-samples.md#api-connectors) verwenden, um Validierungslogik auszuführen und Registrierungen auf bestimmte E-Mail-Domänen zu beschränken. Mit den serverlosen Cloudfunktionen können auch andere Web-APIs, Benutzerspeicher und weitere Clouddienste für komplexere Szenarien aufgerufen werden.
 
 ### <a name="best-practices"></a>Bewährte Methoden
 Stellen Sie Folgendes sicher:
@@ -314,4 +314,4 @@ Stellen Sie Folgendes sicher:
 
 ## <a name="next-steps"></a>Nächste Schritte
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- Erste Schritte mit den [Azure Functions-Schnellstartbeispielen](code-samples.md#api-connectors).

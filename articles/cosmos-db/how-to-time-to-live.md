@@ -4,15 +4,15 @@ description: Informationen zum Konfigurieren und Verwalten der Gültigkeitsdauer
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/27/2020
+ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 5a310dca40b8f5fea074c0cd3c75751d62ccb8f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297894"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951926"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
@@ -116,7 +116,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Festlegen der Gültigkeitsdauer für einen Container per SDK
 
-Wenn Sie die Gültigkeitsdauer für einen Container festlegen möchten, müssen Sie eine positive Zahl ungleich Null angeben, die den Zeitraum in Sekunden angibt. Auf der Grundlage des konfigurierten Werts für die Gültigkeitsdauer werden alle Elemente im Container nach dem Zeitstempel (`_ts`) der letzten Änderung des Elements gelöscht.
+Wenn Sie die Gültigkeitsdauer für einen Container festlegen möchten, müssen Sie eine positive Zahl ungleich Null angeben, die den Zeitraum in Sekunden angibt. Auf der Grundlage des konfigurierten Werts für die Gültigkeitsdauer werden alle Elemente im Container nach dem Zeitstempel (`_ts`) der letzten Änderung des Elements gelöscht. Sie können optional `TimeToLivePropertyPath` festlegen. Damit wird eine andere Eigenschaft anstelle der vom System generierten `_ts`-Eigenschaft verwendet, um die zu löschenden Elemente basierend auf der TTL zu bestimmen.
 
 ### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a> .NET SDK
 

@@ -1,19 +1,19 @@
 ---
-title: Herstellen einer Verbindung mit und Verwalten von Microsoft Azure Stack Edge Pro-Geräten über die Windows PowerShell-Schnittstelle | Microsoft-Dokumentation
-description: Beschrieben wird, wie Sie ein Azure Stack Edge Pro-Gerät über die Windows PowerShell-Schnittstelle verbinden und dann verwalten.
+title: Herstellen einer Verbindung mit und Verwalten von Microsoft Azure Stack Edge Pro-GPU-Geräten über die Windows PowerShell-Schnittstelle | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie über die Windows PowerShell-Schnittstelle eine Verbindung mit einem Azure Stack Edge Pro-GPU-Gerät herstellen und dieses anschließend verwalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777764"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-GPU-Geräts mithilfe von Windows PowerShell
 
@@ -127,7 +127,7 @@ Standardmäßig verwendet Kubernetes auf Ihrem Azure Stack Edge-Gerät das Subne
 
 Sie sollten diese Konfiguration vor dem Konfigurieren von Compute im Azure-Portal ausführen, da in diesem Schritt der Kubernetes-Cluster erstellt wird.
 
-1. Stellen Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts her.
+1. [Stellen Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts her.](#connect-to-the-powershell-interface)
 1. Führen Sie an der PowerShell-Schnittstelle des Geräts folgenden Befehl aus:
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
@@ -425,7 +425,65 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+## <a name="connect-to-bmc"></a>Verbinden mit dem BMC
 
+Der Baseboard-Verwaltungscontroller (Baseboard Management Controller, BMC) wird verwendet, um Ihr Gerät remote zu überwachen und zu verwalten. In diesem Abschnitt werden die Cmdlets beschrieben, die zum Verwalten der BMC-Konfiguration verwendet werden können. Stellen Sie vor dem Ausführen eines dieser Cmdlets [eine Verbindung mit der PowerShell-Schnittstelle des Geräts her](#connect-to-the-powershell-interface).
+
+- `Get-HcsNetBmcInterface`: Verwenden Sie dieses Cmdlet, um die Netzwerk-Konfigurationseigenschaften des BMC abzurufen, z. B. `IPv4Address`, `IPv4Gateway`, `IPv4SubnetMask` und `DhcpEnabled`. 
+    
+    Hier ist eine Beispielausgabe:
+    
+    ```powershell
+    [10.100.10.10]: PS>Get-HcsNetBmcInterface
+    IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+    -----------   ----------- -------------- -----------
+    10.128.53.186 10.128.52.1 255.255.252.0        False
+    [10.100.10.10]: PS>
+    ```
+- `Set-HcsNetBmcInterface`: Sie können dieses Cmdlet auf die folgenden zwei Arten verwenden.
+
+    - Verwenden Sie das Cmdlet, um die DHCP-Konfiguration für den BMC über den entsprechenden Wert für den Parameter `UseDhcp` zu aktivieren oder zu deaktivieren. 
+
+        ```powershell
+        Set-HcsNetBmcInterface -UseDhcp $true
+        ```
+
+        Hier ist eine Beispielausgabe: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -UseDhcp $true
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address IPv4Gateway IPv4SubnetMask DhcpEnabled
+        ----------- ----------- -------------- -----------
+        10.128.54.8 10.128.52.1 255.255.252.0         True
+        [10.100.10.10]: PS>
+        ```
+
+    - Verwenden Sie dieses Cmdlet, um die statische Konfiguration für den BMC zu konfigurieren. Sie können Werte für `IPv4Address`, `IPv4Gateway` und `IPv4SubnetMask` angeben. 
+    
+        ```powershell
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        ```        
+        
+        Hier ist eine Beispielausgabe: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -IPv4Address 10.128.53.186 -IPv4Gateway 10.128.52.1 -IPv4SubnetMask 255.255.252.0
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+        -----------   ----------- -------------- -----------
+        10.128.53.186 10.128.52.1 255.255.252.0        False
+        [10.100.10.10]: PS>
+        ```    
+
+- `Set-HcsBmcPassword`: Verwenden Sie dieses Cmdlet, um das BMC-Kennwort für `EdgeUser` zu ändern. Beim Benutzernamen (`EdgeUser`) wird die Groß-/Kleinschreibung beachtet.
+
+    Hier ist eine Beispielausgabe: 
+
+    ```powershell
+    [10.100.10.10]: PS> Set-HcsBmcPassword -NewPassword "Password1"
+    [10.100.10.10]: PS>
+    ```
 
 ## <a name="exit-the-remote-session"></a>Beenden der Remotesitzung
 
@@ -433,4 +491,4 @@ Schließen Sie das PowerShell-Fenster, um die PowerShell-Remotesitzung zu beende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Bereitstellen von [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) im Azure-Portal
+- Stellen Sie [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) im Azure-Portal bereit.

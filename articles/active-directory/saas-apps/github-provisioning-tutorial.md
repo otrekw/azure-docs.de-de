@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857534"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
@@ -28,6 +28,7 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 * Einen Azure Active Directory-Mandanten
 * Eine in [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) erstellte GitHub-Organisation (erfordert den [Abrechnungsplan für GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)).
 * Ein Benutzerkonto in GitHub mit Administratorberechtigungen für die Organisation
+* [Für die GitHub Enterprise Cloud-Organisation konfigurierte SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * Stellen Sie sicher, dass der OAuth-Zugriff für Ihre Organisation wie [hier](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) beschrieben bereitgestellt wurde.
 * Die SCIM-Bereitstellung in einer einzelnen Organisation wird nur unterstützt, wenn SSO auf Organisationsebene aktiviert ist.
 
@@ -51,9 +52,6 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 ## <a name="configuring-user-provisioning-to-github"></a>Konfigurieren der Benutzerbereitstellung in GitHub
 
 In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der GitHub-API zur Bereitstellung von Benutzerkonten sowie das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in GitHub basierend auf der Benutzer- und Gruppenzuweisung in Azure AD beschrieben.
-
-> [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für GitHub aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurieren der automatischen Bereitstellung von Benutzerkonten für GitHub in Azure AD
 

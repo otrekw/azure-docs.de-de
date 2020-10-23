@@ -3,16 +3,16 @@ title: Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwend
 description: Im Rahmen von Azure IoT Central-Aufträgen können Funktionen zur Verwaltung von mehreren Geräten gleichzeitig ausgeführt werden, z. B. das Aktualisieren von Eigenschaften oder das Ausführen eines Befehls.
 ms.service: iot-central
 services: iot-central
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 09/10/2020
+author: philmea
+ms.author: philmea
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 2b5fc349ae7d92bf36cfe9b1f3272cc1f4f7446b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060814"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017946"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
@@ -32,11 +32,19 @@ Im folgenden Beispiel wird gezeigt, wie Sie einen Auftrag erstellen und ausführ
 
 1. Wählen Sie **Cloud-Eigenschaft**, **Eigenschaft** oder **Befehl** als **Auftragstyp** aus:
 
-    Zum Einrichten einer Auftragskonfiguration des Typs **Eigenschaft** wählen Sie die gewünschte Eigenschaft aus, und legen Sie deren neuen Wert fest. Wählen Sie den auszuführenden Befehl aus, um eine **Befehl**-Auftragskonfiguration einzurichten. Mit einem Eigenschaftenauftrag können mehrere Eigenschaften festgelegt werden.
+    Wählen Sie zum Konfigurieren eines Auftrags vom Typ **Eigenschaft** die gewünschte Eigenschaft aus, und legen Sie deren neuen Wert fest. Wählen Sie zum Konfigurieren eines Auftrags vom Typ **Befehl** den auszuführenden Befehl aus. Mit einem Eigenschaftenauftrag können mehrere Eigenschaften festgelegt werden.
 
     :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="Screenshot, der die Auswahl zum Erstellen des Eigenschaftenauftrags „Leichten Schwellenwert festlegen“ zeigt":::
 
     Wählen Sie **Speichern und beenden** aus, um den Auftrag zur Liste von gespeicherten Aufträgen auf der Seite **Aufträge** hinzuzufügen. Sie können später zu einem Auftrag aus der Liste von gespeicherten Aufträgen zurückkehren.
+
+    Klicken Sie auf **Weiter**, um zur Seite **Delivery options** (Übermittlungsoptionen) zu gelangen. Auf der Seite **Delivery options**(Übermittlungsoptionen) können Sie die Übermittlungsoptionen für den Auftrag festlegen: **Batches** und **Cancellation threshold** (Abbruchschwellenwert).
+
+    Mit Batches können Aufträge für eine große Anzahl von Geräten gestaffelt werden. Der Auftrag wird in mehrere Batches unterteilt, von denen jeder eine Teilmenge der Geräte enthält. Die Batches werden in eine Warteschlange eingereiht und nacheinander ausgeführt.
+
+    Mit dem Abbruchschwellenwert können Sie einen Auftrag automatisch abbrechen, wenn die Anzahl von Fehlern den festgelegten Grenzwert überschreitet. Der Schwellenwert kann auf alle Geräte im Auftrag oder auf einzelne Batches angewendet werden.
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="Screenshot, der die Auswahl zum Erstellen des Eigenschaftenauftrags „Leichten Schwellenwert festlegen“ zeigt":::
 
     Wählen Sie **Weiter** aus, um zur Registerkarte **Überprüfen** zu wechseln. Auf der Seite **Überprüfung** werden die Details der Auftragskonfiguration angezeigt. Wählen Sie **Ausführen** aus, um den Auftrag zu übermitteln.
 
@@ -51,7 +59,7 @@ Im folgenden Beispiel wird gezeigt, wie Sie einen Auftrag erstellen und ausführ
 1. Der Auftrag wird jetzt auf der Seite **Aufträge** in der Liste **Letzte 30 Tage** angezeigt. Auf dieser Seite werden Ihre zurzeit ausgeführten Aufträge sowie der Verlauf aller zuvor ausgeführten oder gespeicherten Aufträge gezeigt.
 
     > [!NOTE]
-    > Sie können den Verlauf von bis zu 30 Tagen für Ihre zuvor ausgeführten Aufträge anzeigen.
+    > Sie können einen Verlauf für 30 Tage für Ihre zuvor ausgeführten Aufträge anzeigen.
 
 ## <a name="manage-jobs"></a>Aufträge verwalten
 
@@ -82,6 +90,7 @@ Nachdem ein Auftrag erstellt wurde, wird die Spalte **Status** mit der neuesten 
 | Ausstehend              | Mit der Ausführung dieses Auftrags wurde auf den Geräten noch nicht begonnen.         |
 | Wird ausgeführt              | Dieser Auftrag wird derzeit auf Geräten ausgeführt.             |
 | Beendet              | Ein Benutzer hat diesen Auftrag manuell angehalten.           |
+| Canceled             | Dieser Auftrag wurde abgebrochen, da der auf der Seite **Delivery options**(Übermittlungsoptionen) festgelegte Schwellenwert überschritten wurde. |
 
 Der Statusmeldung folgt eine Übersicht über die Geräte im Auftrag. In der folgenden Tabelle werden die möglichen Werte für den *Gerätestatus* aufgeführt:
 

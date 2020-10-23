@@ -139,7 +139,7 @@
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Authentifizieren und Autorisieren mit Azure AD
               items:
@@ -267,7 +267,7 @@
         - name: Barrierefreiheit des Speicher-Explorers
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Queue Storage bei Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
+      href: /answers/topics/azure-queue-storage.html
     - name: Queue Storage bei Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-queues'
     - name: Preise für Queue Storage
@@ -309,7 +309,7 @@
             - name: "Azure Storage-Clientbibliothek, Version\_12.x"
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Blobs, Warteschlangen und Dateien (Version 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: "Azure Storage-Clientbibliothek, Version\_8.x und früher"
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

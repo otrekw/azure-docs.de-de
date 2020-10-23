@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845936"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839910"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Konfigurieren von Azure RBAC für FHIR 
 
@@ -31,11 +31,11 @@ Die **Autoritative Stelle** muss auf den Azure Active Directory-Mandanten festge
 
 Wenn Sie Benutzern, Dienstprinzipalen oder Gruppen Zugriff auf die FHIR-Datenebene gewähren möchten, klicken Sie auf **Zugriffssteuerung (IAM)** , dann auf **Rollenzuweisungen** und anschließend auf **+ Hinzufügen**:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Hinzufügen einer Azure-Rollenzuweisung":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Überprüfen des Azure RBAC-Modus":::
 
 Suchen Sie im Auswahlfeld **Rollen** nach einer der integrierten Rollen für die FHIR-Datenebene:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Integrierte FHIR-Datenrollen":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Überprüfen des Azure RBAC-Modus":::
 
 Sie können zwischen folgenden Rollen auswählen:
 
@@ -54,7 +54,7 @@ Azure API for FHIR nimmt eine Zwischenspeicherung von Entscheidungen für bis zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Azure-Rollen für die FHIR-Datenebene zuweisen. Im nächsten Artikel erfahren Sie mehr über zusätzliche Einstellungen für Azure API for FHIR:
+In diesem Artikel haben Sie erfahren, wie Sie Azure-Rollen für die FHIR-Datenebene zuweisen. Weitere Informationen zu den zusätzlichen Einstellungen für Azure API for FHIR finden Sie unter:
  
 >[!div class="nextstepaction"]
 >[Zusätzliche Einstellungen für Azure API for FHIR](azure-api-for-fhir-additional-settings.md)
