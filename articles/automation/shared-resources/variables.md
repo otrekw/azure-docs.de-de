@@ -3,14 +3,14 @@ title: Verwalten von Variablen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Variablen in Runbooks und DSC-Konfigurationen verwenden.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004561"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766194"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Verwalten von Variablen in Azure Automation
 
@@ -43,7 +43,7 @@ Beim Erstellen einer Variable über das Azure-Portal müssen Sie einen Datentyp 
 
 Die Variable ist nicht auf den festgelegten Datentyp beschränkt. Sie müssen die Variable in Windows PowerShell festlegen, wenn Sie einen anderen Wertetyp angeben möchten. Wenn Sie `Not defined` angeben, wird der Wert der Variable auf NULL festgelegt. Sie müssen den Wert mit dem Cmdlet [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) oder dem internen Cmdlet `Set-AutomationVariable` festlegen.
 
-Sie können den Wert für einen komplexen Variablentyp nicht im Azure-Portal erstellen oder ändern. Sie können jedoch einen Wert eines beliebigen Typs mithilfe von Windows PowerShell bereitstellen. Komplexe Typen werden als [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) abgerufen.
+Sie können den Wert für einen komplexen Variablentyp nicht im Azure-Portal erstellen oder ändern. Sie können jedoch einen Wert eines beliebigen Typs mithilfe von Windows PowerShell bereitstellen. Komplexe Typen werden als [Newtonsoft.Json.Linq.JProperty](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm) für einen komplexen Objekttyp anstelle eines [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) vom Typ „PSObject“ abgerufen.
 
 Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Array oder eine Hashtabelle erstellen und in der Variable speichern.
 
@@ -56,7 +56,7 @@ Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Ar
 
 | Cmdlet | BESCHREIBUNG |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Ruft den Wert einer vorhandenen Variable ab. Wenn es sich um einen einfachen Werttyp handelt, wird der gleiche Typ abgerufen. Bei einem komplexen Typ wird der Typ `PSCustomObject` abgerufen. <br>**Hinweis:**  Sie können dieses Cmdlet nicht verwenden, um den Wert einer verschlüsselten Variable abzurufen. Dies ist nur mit dem internen Cmdlet `Get-AutomationVariable` in einem Runbook oder einer DSC-Konfiguration möglich. Weitere Informationen finden Sie unter [Interne Cmdlets für den Zugriff auf Variablen](#internal-cmdlets-to-access-variables). |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Ruft den Wert einer vorhandenen Variable ab. Wenn es sich um einen einfachen Werttyp handelt, wird der gleiche Typ abgerufen. Bei einem komplexen Typ wird der Typ `PSCustomObject` abgerufen. <br>**Hinweis:** Sie können dieses Cmdlet nicht verwenden, um den Wert einer verschlüsselten Variable abzurufen. Dies ist nur mit dem internen Cmdlet `Get-AutomationVariable` in einem Runbook oder einer DSC-Konfiguration möglich. Weitere Informationen finden Sie unter [Interne Cmdlets für den Zugriff auf Variablen](#internal-cmdlets-to-access-variables). |
 |[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | Erstellt eine neue Variable und legt ihren Wert fest.|
 |[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| Entfernt eine vorhandene Variable.|
 |[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| Legt den Wert für eine vorhandene Variable fest. |
@@ -74,7 +74,7 @@ Die internen Cmdlets in der folgenden Tabelle werden für den Zugriff auf Variab
 > Vermeiden Sie die Verwendung von Variablen im Parameter `Name` von `Get-AutomationVariable` in einem Runbook oder einer DSC-Konfiguration. Durch die Verwendung dieser Variablen kann die Ermittlung von Abhängigkeiten zwischen Runbooks und Automation-Variablen zur Entwurfszeit erschwert werden.
 
 `Get-AutomationVariable` funktioniert nicht in PowerShell, sondern nur in einem Runbook oder einer DSC-Konfiguration. Wenn Sie z. B. den Wert einer verschlüsselten Variable anzeigen möchten, können Sie ein Runbook erstellen, um die Variable abzurufen und dann in den Ausgabestream zu schreiben:
- 
+
 ```powershell
 $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
@@ -123,18 +123,18 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Das folgende Beispiel zeigt, wie eine Variable mit einem komplexen Typ erstellt wird und dann ihre Eigenschaften abgerufen werden. In diesem Fall wird ein Objekt für einen virtuellen Computer von [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) verwendet.
+Das folgende Beispiel zeigt, wie eine Variable mit einem komplexen Typ erstellt wird und dann ihre Eigenschaften abgerufen werden. In diesem Fall wird ein Objekt für einen virtuellen Computer von [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) verwendet, wobei eine Teilmenge der Eigenschaften angegeben wird.
 
 ```powershell
-$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
-New-AzAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01" | Select Name, Location, Extensions
+New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
 
-$vmValue = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable").Value
+$vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
+–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable"
+
 $vmName = $vmValue.Name
-$vmIpAddress = $vmValue.IpAddress
+$vmExtensions = $vmValue.Extensions
 ```
-
 ## <a name="textual-runbook-examples"></a>Beispiele für Textrunbooks
 
 ### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Abrufen und Festlegen eines einfachen Werts einer Variable

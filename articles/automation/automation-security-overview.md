@@ -4,18 +4,18 @@ description: Dieser Artikel enthält eine Übersicht über die Azure Automation
 keywords: Automation-Sicherheit, sicher Automation; Automation-Authentifizierung
 services: automation
 ms.subservice: process-automation
-ms.date: 04/23/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8068d6ebe67dee1408420441aacd83726a1986df
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bcb5f61c93bd4c3ff7c0f81ae808807f7deb71df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434264"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766089"
 ---
 # <a name="automation-account-authentication-overview"></a>Übersicht über die Automation-Kontoauthentifizierung
 
-Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren. Sie können Runbooks verwenden, um Ihre Aufgaben zu automatisieren, oder einen Hybrid Runbook Worker, wenn Sie Azure-fremde Aufgaben verwalten müssen. In beiden Umgebungen werden Berechtigungen für einen sicheren Ressourcenzugriff mit den minimalen Rechten benötigt, die innerhalb des Azure-Abonnements erforderlich sind.
+Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren. Mit Runbooks können Sie Ihre Aufgaben automatisieren. Wenn Sie Geschäfts- oder Betriebsprozesse außerhalb von Azure verwalten müssen, verwenden Sie einen Hybrid Runbook Worker. In beiden Umgebungen werden Berechtigungen benötigt, um mit minimalen Rechten sicher auf die Ressourcen zugreifen zu können.
 
 In diesem Artikel werden von Azure Automation unterstützte Authentifizierungsszenarien beschrieben. Außerdem werden die ersten Schritte für die Umgebungen erläutert, die Sie verwalten müssen.
 
@@ -29,9 +29,44 @@ Die Automation-Ressourcen für jedes Automation-Konto sind zwar mit einer einzel
 
 Alle Aufgaben, die Sie für Ressourcen mit Azure Resource Manager und den PowerShell-Cmdlets in Azure Automation erstellen, müssen gegenüber Azure mit Azure Active Directory (Azure AD) basierend auf den Anmeldeinformationen für die Organisationsidentität authentifiziert werden.
 
-## <a name="run-as-account"></a>Ausführendes Konto
+## <a name="run-as-accounts"></a>Ausführende Konten
 
-Ausführende Konten in Azure Automation sorgen für Authentifizierung, um Ressourcen in Azure mit PowerShell-Cmdlets verwalten zu können. Wenn Sie ein ausführendes Konto erstellen, wird in Azure AD ein neuer Dienstprinzipalbenutzer erstellt, und diesem Benutzer wird auf der Abonnementebene die Rolle „Mitwirkender“ zugewiesen. Für Runbooks, die Hybrid Runbook Worker auf virtuellen Azure-Computern nutzen, können Sie anstelle von ausführenden Konten die [Authentifizierung von Runbooks mit verwalteten Identitäten](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) für die Authentifizierung bei Ihren Azure-Ressourcen verwenden.
+Ausführende Konten in Azure Automation bieten Authentifizierung für die Verwaltung von Azure Resource Manager-Ressourcen oder von Ressourcen, die im klassischen Bereitstellungsmodell bereitgestellt wurden. In Azure Automation gibt es zwei Arten von ausführenden Konten:
+
+* Ausführendes Azure-Konto
+* Klassisches ausführendes Azure-Konto
+
+Weitere Informationen zu diesen beiden Bereitstellungsmodellen finden Sie unter [Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/management/deployment-models.md).
+
+>[!NOTE]
+>Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn Sie ein CSP-Abonnement verwenden, wird kein klassisches ausführendes Azure-Konto erstellt, sondern das ausführende Azure-Konto. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](/azure/cloud-solution-provider/overview/azure-csp-available-services).
+
+### <a name="run-as-account"></a>Ausführendes Konto
+
+Das ausführende Azure-Konto verwaltet Azure-Ressourcen basierend auf dem Azure Resource Manager-Bereitstellungs- und -Verwaltungsdienst für Azure.
+
+Ein ausführendes Azure-Konto wird für die folgenden Aufgaben verwendet:
+
+* Erstellung einer Azure AD-Anwendung mit einem selbstsignierten Zertifikat, Erstellung eines Dienstprinzipalkonto für die Anwendung in Azure AD und Zuweisung der Rolle [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) für das Konto in Ihrem aktuellen Abonnement. Sie können die Zertifikateinstellung in „Besitzer“ oder eine beliebige andere Rolle ändern. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
+
+* Erstellt ein Automation-Zertifikatasset mit dem Namen `AzureRunAsCertificate` im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Schlüssel des Zertifikats, der von der Azure AD-Anwendung verwendet wird.
+
+* Erstellt ein Automation-Verbindungsasset mit dem Namen `AzureRunAsConnection` im angegebenen Automation-Konto. Die Verbindungsressource enthält die Anwendungs-ID, die Mandanten-ID, die Abonnement-ID und den Zertifikatfingerabdruck.
+
+### <a name="azure-classic-run-as-account"></a>Klassisches ausführendes Azure-Konto
+
+Das klassische ausführende Azure-Konto verwaltet klassische Azure-Ressourcen basierend auf dem klassischen Bereitstellungsmodell. Sie müssen Co-Administrator für das Abonnement sein, um diese Art Konto zu erstellen oder zu erneuern.
+
+Ein klassisches ausführendes Azure-Konto wird für die folgenden Aufgaben verwendet:
+
+* Erstellen eines Verwaltungszertifikats im Abonnement.
+
+* Erstellen eines Automation-Zertifikatassets mit dem Namen `AzureClassicRunAsCertificate` im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Zertifikatschlüssel, der vom Verwaltungszertifikat verwendet wird.
+
+* Erstellen ein Automation-Verbindungsassets mit dem Namen `AzureClassicRunAsConnection` im angegebenen Automation-Konto. Das Verbindungsasset enthält den Abonnementnamen, die Abonnement-ID und den Namen des Zertifikatassets.
+
+>[!NOTE]
+>Ein klassisches ausführendes Azure-Konto wird nicht mehr standardmäßig erstellt, wenn Sie ein Automation-Konto erstellen. Dieses Konto wird einzeln anhand der im Artikel [Verwalten eines ausführenden Azure Automation-Kontos](manage-runas-account.md#create-a-run-as-account-in-azure-portal) beschriebenen Schritte erstellt.
 
 ## <a name="service-principal-for-run-as-account"></a>Dienstprinzipal für ausführendes Konto
 
@@ -44,6 +79,8 @@ Die rollenbasierte Zugriffssteuerung ist für Azure Resource Manager verfügbar,
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbookauthentifizierung mit Hybrid Runbook Worker
 
 Für Runbooks, die in Ihrem Rechenzentrum über einen Hybrid Runbook Worker oder für Computingdienste in anderen Cloudumgebungen wie AWS ausgeführt werden, kann nicht das gleiche Verfahren verwendet werden, das normalerweise für die Authentifizierung von Runbooks bei Azure-Ressourcen genutzt wird. Der Grund: Diese Ressourcen werden außerhalb von Azure ausgeführt, weshalb für die Authentifizierung bei Ressourcen, auf die lokal zugegriffen wird, ihre in Automation definierten Sicherheitsanmeldeinformationen verwendet werden müssen. Weitere Informationen zur Runbookauthentifizierung mit Runbook Workern finden Sie unter [Ausführen von Runbooks auf einem Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
+
+Für Runbooks, die Hybrid Runbook Worker auf virtuellen Azure-Computern nutzen, können Sie anstelle von ausführenden Konten die [Authentifizierung von Runbooks mit verwalteten Identitäten](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) für die Authentifizierung bei Ihren Azure-Ressourcen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

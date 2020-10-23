@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759457"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875604"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -75,7 +75,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Unterstützte .NET Core-Versionen: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2, ASP.NET Core 3.0
+Unterstützte .NET Core-Versionen: ASP.NET Core 2.1, ASP.NET Core 2.2, ASP.NET Core 3.0, ASP.NET Core 3.1
 
 Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework aus .NET Core, eigenständiger Bereitstellung und Linux-basierten Anwendungen wird derzeit **nicht unterstützt**. (Die [manuelle Instrumentierung](./asp-net-core.md) über Code kann in allen zuvor genannten Szenarien verwendet werden.)
 
@@ -90,7 +90,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
      ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
 
-2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. .NET Core bietet die Optionen **Empfohlene Sammlung** oder **Deaktiviert** für .NET Core 2.0, 2.1, 2.2 und 3.0.
+2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. .NET Core bietet die Optionen **Empfohlene Sammlung**  oder **Deaktiviert** für ASP.NET Core 2.1, 2.2, 3.0 und 3.1.
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -359,8 +359,8 @@ Nachfolgend finden Sie schrittweise Anleitungen zur Problembehandlung für die E
 
     ![Screenshot der Ergebnisseite unter https://yoursitename.scm.azurewebsites/applicationinsights](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Stellen Sie sicher, dass für `Application Insights Extension Status``Pre-Installed Site Extension, version 2.8.12.1527, is running.`angegeben ist.
-        * Wird diese nicht ausgeführt, folgen Sie den [Anweisungen zum Aktivieren der Application Insights-Überwachung](#enable-application-insights).
+    * Stellen Sie sicher, dass für `Application Insights Extension Status``Pre-Installed Site Extension, version 2.8.12.1527, is running.`angegeben ist. 
+    * Wird diese nicht ausgeführt, folgen Sie den [Anweisungen zum Aktivieren der Application Insights-Überwachung](#enable-application-insights).
 
     * Stellen Sie sicher, dass die Statusquelle vorhanden ist und folgendermaßen aussieht: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Wenn kein ähnlicher Wert vorhanden ist, bedeutet dies, dass die Anwendung derzeit nicht ausgeführt oder nicht unterstützt wird. Um sicherzustellen, dass die Anwendung ausgeführt wird, rufen Sie die Anwendungs-URL/Anwendungsendpunkte manuell auf, wodurch die Laufzeitinformationen verfügbar werden.
@@ -406,6 +406,10 @@ PHP- und WordPress-Sites werden nicht unterstützt. Zurzeit ist kein offiziell u
 ### <a name="connection-string-and-instrumentation-key"></a>Verbindungszeichenfolge und Instrumentierungsschlüssel
 
 Bei Verwendung von Überwachung ohne Code ist nur die Verbindungszeichenfolge erforderlich. Es wird jedoch weiterhin empfohlen, den Instrumentierungsschlüssel festzulegen, um die Abwärtskompatibilität mit älteren Versionen des SDKs aufrechtzuerhalten, wenn eine manuelle Instrumentierung ausgeführt wird.
+
+## <a name="release-notes"></a>Versionshinweise
+
+Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./web-app-extension-release-notes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Profilers in Ihrer Live-App](./profiler.md)

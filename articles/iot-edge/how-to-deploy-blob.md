@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b5b7b45cc52d900e5ecde59e6a5ae203533286b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804621"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978865"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -21,7 +21,10 @@ Es gibt mehrere Möglichkeiten, wie Sie Module auf einem IoT Edge-Gerät bereits
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
-- Ein [IoT Edge-Gerät](how-to-register-device.md) mit installierter IoT Edge-Runtime.
+- Ein IoT Edge-Gerät.
+
+  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines auf einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einer der Schnellstartanleitungen zum [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
+
 - [Visual Studio Code](https://code.visualstudio.com/) und die [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools), wenn Sie die Bereitstellung über Visual Studio Code durchführen.
 
 ## <a name="deploy-from-the-azure-portal"></a>Bereitstellen über das Azure-Portal
@@ -206,7 +209,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
      - Für Windows-Container lautet das Format „ **\<your storage path or volume>:C:/BlobRoot**“. Beispiel:
          - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot`
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot`
-         - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
+         - Anstelle des lokalen Laufwerks können Sie Ihre SMB-Netzwerkadresse zuordnen. Weitere Informationen finden Sie unter [Verwenden von SMB-Freigaben als lokalen Speicher](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul „Blob Storage in IoT Edge“ und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
@@ -271,7 +274,7 @@ Dieser Prozess wird in [Konfigurieren eines IoT Edge-Geräts für die Kommunikat
 
 Außerdem erfordert ein Blob Storage-Modul die Einstellung „HTTPS_PROXY“ in der Bereitstellungsdatei für das Manifest. Sie können diese Datei direkt bearbeiten oder dazu das Azure-Portal verwenden.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub, und wählen Sie im Menü auf der linken Seite **Iot Edge** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem IoT -Hub, und wählen Sie im Menü auf der linken Seite **IoT Edge** aus.
 
 1. Wählen Sie das Gerät mit dem Modul aus, das Sie konfigurieren möchten.
 

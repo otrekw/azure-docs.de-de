@@ -14,6 +14,8 @@
   items:
     - name: 'Schützen Ihres virtuellen Hubs: Portal'
       href: secure-cloud-network.md
+    - name: 'Schützen Ihres virtuellen Hubs: PowerShell'
+      href: secure-cloud-network-powershell.md
     - name: 'Schützen Ihres virtuellen Hubnetzwerks: Portal'
       href: secure-hybrid-network.md
 - name: Konzepte

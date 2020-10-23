@@ -1,22 +1,22 @@
 ---
 title: Grundlegendes zu Azure IoT Hub-Gerätezwillingen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden Sie Gerätezwillinge zum Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten.'
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327768"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996128"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -250,7 +250,7 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
 
 * **Schlüssel**: Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
 
-* **Werte**: Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig.
+* **Werte**: Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays werden ebenfalls unterstützt.
 
     * Ganze Zahlen können den Minimalwert „-4503599627370496“ und den Maximalwert „4503599627370495“ haben.
 

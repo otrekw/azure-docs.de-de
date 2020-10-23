@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527376"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631340"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -46,7 +46,7 @@ Normalerweise werden Netzwerke durch Firewalls und Netzwerksicherheitsgruppen (N
 Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
 
 >[!NOTE]
-> Auf IP-Adressen basierendes Whitelisting sollte nicht durchgeführt werden, um die ausgehende Konnektivität zu steuern.
+> Zum Steuern der ausgehenden Konnektivität sollte keine IP-Adressen basierende Filterung durchgeführt werden.
 
 **URL** | **Details**
 --- | ---
@@ -82,11 +82,11 @@ Dieses Beispiel zeigt, wie NSG-Regeln für eine zu replizierende VM konfiguriert
 
 1. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „Storage.EastUS“, wie im Screenshot unten gezeigt.
 
-      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Screenshot: Hinzufügen einer ausgehenden Sicherheitsregel für eine Netzwerksicherheitsgruppe für „Storage Punkt East U S“.](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureActiveDirectory“, wie im Screenshot unten gezeigt.
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![Screenshot: Hinzufügen einer ausgehenden Sicherheitsregel für eine Netzwerksicherheitsgruppe für „Azure AD“.](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Erstellen Sie (ähnlich zu den oben erstellten Sicherheitsregeln) eine Sicherheitsregel für ausgehenden HTTPS-Datenverkehr (443) für „EventHub.CentralUS“ für die NSG, die dem Zielstandort entspricht. Dies ermöglicht den Zugriff auf Site Recovery-Überwachung.
 

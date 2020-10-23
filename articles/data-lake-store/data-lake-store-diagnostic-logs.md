@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985063"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575536"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Storage Gen1
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Azure Data Lake Storage Gen1-Konto aktivieren und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -33,11 +33,11 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
 2. Öffnen Sie Ihr Data Lake Storage Gen1-Konto, und klicken Sie auf Ihrem Data Lake Storage Gen1-Kontoblatt auf **Diagnoseeinstellungen**.
 3. Klicken Sie auf dem Blatt **Diagnoseeinstellungen** auf **Diagnose aktivieren**.
 
-    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Aktivieren von Diagnoseprotokollen")
+    ![Screenshot des Data Lake Storage Gen1-Kontos mit hervorgehobenen Optionen „Diagnoseeinstellung“ und „Diagnose aktivieren“.](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Aktivieren von Diagnoseprotokollen")
 
 3. Nehmen Sie auf dem Blatt **Diagnoseeinstellungen** die folgenden Änderungen vor, um die Diagnoseprotokollierung zu konfigurieren.
    
-    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
+    ![Screenshot des Abschnitts mit Diagnoseeinstellungen mit hervorgehobenem Textfeld „Name“ und hervorgehobener Option „Speichern“.](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
    
    * Geben Sie unter **Name** einen Wert für die Konfiguration des Diagnoseprotokolls ein.
    * Sie können die Daten auf verschiedene Arten speichern/verarbeiten.
@@ -73,13 +73,13 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Storage Gen1-Kon
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
 1. Öffnen Sie das Azure Storage-Kontoblatt, das Data Lake Storage Gen1 zur Protokollierung zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
+    ![Screenshot des Blatts „Data Lake Storage Gen1“ mit ausgewählter Option „Blobs“ und des Blatts „Blobdienst“ mit den hervorgehobenen Namen der beiden Blobdienste.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
    
    * Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
    * Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
 2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen von Diagnoseprotokollen")
+    ![Screenshot der im Container gespeicherten Protokollstruktur.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen von Diagnoseprotokollen")
    
     Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    

@@ -248,13 +248,13 @@
           href: move-partner-namespaces-across-regions.md
     - name: Sicher
       items:
-        - name: Konfigurieren privater Endpunkte
+        - name: Sicheres Veröffentlichen von Ereignissen über eine private Verbindung
           href: configure-private-endpoints.md
         - name: Konfigurieren der IP-Firewall
           href: configure-firewall.md
         - name: Sicherer Webhook mit Azure Active Directory
           href: secure-webhook-delivery.md
-        - name: Ereignisbereitstellung mit verwalteter Identität
+        - name: 'Ereignisbereitstellung, verwaltete Identität und private Verbindung'
           href: managed-service-identity.md
     - name: Problembehandlung
       items:

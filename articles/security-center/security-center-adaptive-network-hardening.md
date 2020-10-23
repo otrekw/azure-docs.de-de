@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439023"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851052"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
-Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Azure Security Center konfigurieren.
+Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Security Center konfigurieren.
 
 ## <a name="availability"></a>Verfügbarkeit
 |Aspekt|Details|
@@ -37,20 +37,22 @@ Der Einsatz von [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/a
 
 Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen.
 
-Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.20.30.10/24 an Port 22 zu. Die analysebasierte Empfehlung der adaptiven Netzwerkhärtung lautet, den Bereich einzugrenzen und Datenverkehr von 140.23.30.10/29 (enger gefasster IP-Adressbereich) zuzulassen sowie jeglichen anderen Datenverkehr an diesem Port zu verweigern.
+Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.20.30.10/24 an Port 22 zu. Basierend auf der Analyse des Datenverkehrs empfiehlt die Netzwerkhärtung möglicherweise eine Einschränkung des Bereichs, um den Datenverkehr von 140.23.30.10/29 zuzulassen und sämtlichen weiteren Datenverkehr an diesem Port zu verweigern.
 
->[!TIP]
-> Empfehlungen der adaptiven Netzwerkhärtung werden nur für folgende Ports unterstützt (für UDP und DCP): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301, 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379, 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
-
-
-![Ansicht der Netzwerkhärtung](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+>[!Note]
+> Empfehlungen der adaptiven Netzwerkhärtung werden nur an den folgenden Ports unterstützt (sowohl für UDP als auch für TCP): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301, 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379, 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
 
 
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>Anzeigen und Verwalten von Härtungswarnungen und -regeln
 
+1. Öffnen Sie im Menü von Security Center das Dashboard **Azure Defender**, und wählen Sie die Kachel für die adaptive Netzwerkhärtung (1) oder das Insights-Panelelement für die adaptive Netzwerkhärtung (2) aus. 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Anzeigen von Warnungen und Regeln der adaptiven Netzwerkhärtung
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="Zugriff auf die Tools für die adaptive Netzwerkhärtung" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
-1. Wählen Sie in Security Center **Netzwerk** -> **Adaptive Netzwerkhärtung** aus. Die virtuellen Netzwerkcomputer werden auf drei separaten Registerkarten aufgeführt:
+    > [!TIP]
+    > Das Insights-Panel zeigt den Prozentsatz Ihrer VMs, die derzeit mit adaptiver Netzwerkhärtung geschützt sind. 
+
+1. Die Detailseite für die Empfehlung **Auf VMs mit Internetausrichtung müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden** wird geöffnet. Ihre Netzwerk-VMs sind auf drei Registerkarten gruppiert:
    * **Fehlerhafte Ressourcen:** Virtuelle Computer, für die Empfehlungen und Warnungen vorliegen, die durch Ausführen des Algorithmus der adaptiven Netzwerkhärtung ausgelöst wurden. 
    * **Fehlerfreie Ressourcen:** Virtuelle Computer ohne Warnungen oder Empfehlungen.
    * **Nicht überprüfte Ressourcen:** Virtuelle Computer, auf denen der Algorithmus der adaptiven Netzwerkhärtung aus einem der folgenden Gründe nicht ausgeführt werden kann:
@@ -58,39 +60,34 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
       * **Nicht genügend Daten verfügbar:** Security Center benötigt mindestens Datenverkehrsdaten eines Zeitraums von 30 Tagen, um fundierte Härtungsempfehlungen abgeben zu können.
       * **Virtueller Computer nicht durch Azure Defender geschützt:** Nur virtuelle Computer, die mit [Azure Defender für Server](defender-for-servers-introduction.md) geschützt sind, können dieses Feature nutzen.
 
-     ![Fehlerhafte Ressourcen](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Zugriff auf die Tools für die adaptive Netzwerkhärtung":::
 
-2. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** einen virtuellen Computer aus, um dessen Warnungen und die empfohlenen Härtungsregeln anzuzeigen.
+1. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** einen virtuellen Computer aus, um dessen Warnungen und die empfohlenen Härtungsregeln anzuzeigen.
 
-    ![Härtungswarnungen](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    - Auf der Registerkarte **Regeln** werden die Regeln aufgeführt, die laut adaptiver Netzwerkhärtung hinzugefügt werden sollten.
+    - Auf der Registerkarte **Warnungen** werden die Warnungen aufgeführt, die aufgrund von eingehendem Datenverkehr für die Ressource generiert wurden, der nicht innerhalb des durch die empfohlenen Regeln zugelassenen IP-Adressbereichs liegt.
 
+1. Optional können Sie die Regeln bearbeiten:
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Überprüfen und Anwenden der empfohlenen Regeln der adaptiven Netzwerkhärtung
-
-1. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** einen virtuellen Computer aus. Die Warnungen und empfohlenen Härtungsregeln werden aufgeführt.
-
-     ![Härtungsregeln](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > Auf der Registerkarte **Regeln** werden die Regeln aufgeführt, die laut adaptiver Netzwerkhärtung hinzugefügt werden sollten. Auf der Registerkarte **Warnungen** werden die Warnungen aufgeführt, die aufgrund von eingehendem Datenverkehr für die Ressource generiert wurden, der nicht innerhalb des durch die empfohlenen Regeln zugelassenen IP-Adressbereichs liegt.
-
-2. Wenn Sie einige der Parameter für eine Regel ändern möchten, gehen Sie wie unter [Ändern einer Regel](#modify-rule) beschrieben vor.
-   > [!NOTE]
-   > Sie können auch eine Regel [löschen](#delete-rule) oder [hinzufügen](#add-rule).
+    - [Ändern einer Regel](#modify-rule)
+    - [Löschen einer Regel](#delete-rule) 
+    - [Regel hinzufügen](#add-rule)
 
 3. Wählen Sie die Regeln aus, die Sie auf die NSG anwenden möchten, und klicken Sie auf **Erzwingen**.
 
+    > [!TIP]
+    > Wenn die zulässigen Quell-IP-Adressbereiche als „Keine“ angezeigt werden, bedeutet dies, dass die empfohlene Regel eine *Ablehnungsregel* ist. Andernfalls handelt es sich um eine *Zulassungsregel*.
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Zugriff auf die Tools für die adaptive Netzwerkhärtung":::
+
       > [!NOTE]
       > Die erzwungenen Regeln werden den Netzwerksicherheitsgruppen hinzugefügt, die den virtuellen Computer schützen. (Ein virtueller Computer kann durch eine Netzwerksicherheitsgruppe geschützt werden, die der Schnittstellenkarte zugeordnet ist, oder das Subnetz, in dem der virtuelle Computer befindet, oder beides.)
-
-    ![Erzwingen von Regeln](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>Ändern einer Regel <a name ="modify-rule"> </a>
 
 Die Parameter einer empfohlenen Regel können bei Bedarf geändert werden. So können Sie beispielsweise die empfohlenen IP-Adressbereiche ändern.
 
-Im Anschluss finden Sie einige wichtige Richtlinien, die beim Ändern einer Regel der adaptiven Netzwerkhärtung berücksichtigt werden müssen:
+Im Folgenden finden Sie einige wichtige Richtlinien, die Sie beim Ändern einer Regel der adaptiven Netzwerkhärtung berücksichtigen sollten:
 
 * Es können nur die Parameter von Regeln des Typs „Zulassen“ geändert werden. 
 * Regeln können nicht von „Zulassen“ in „Verweigern“ geändert werden. 

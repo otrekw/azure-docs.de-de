@@ -1,17 +1,17 @@
 ---
 title: 'SSL/TLS: Azure Database for PostgreSQL (Einzelserver)'
 description: Hier finden Sie Anweisungen und Informationen zum Konfigurieren der TLS-Konnektivität für Azure Database for PostgreSQL (Einzelserver).
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902038"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710446"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurieren der TLS-Konnektivität in Azure Database for PostgreSQL (Einzelserver)
 
@@ -92,6 +92,17 @@ Wenn Sie diese Mindesteinstellung für die TLS-Version beispielsweise auf TLS 1
 > Wenn Sie eine TLS-Mindestversion erzwingen, kann diese Erzwingung später nicht mehr deaktiviert werden.
 
 Informationen zum Festlegen der TLS-Einstellung für Ihren Azure Database for PostgreSQL (Einzelserver) finden Sie unter [Konfigurieren der TLS-Einstellung](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>Unterstützung für Verschlüsselungsverfahren durch Azure Database for PostgreSQL – Einzelserver
+
+Im Rahmen der SSL/TLS-Kommunikation werden die Verschlüsselungssammlungen überprüft. Nur Sammlungen, die mit dem Datenbankserver kommunizieren dürfen, werden zugelassen. Die Überprüfung der Verschlüsselungssammlungen wird in der [Gatewayschicht](concepts-connectivity-architecture.md#connectivity-architecture) gesteuert, nicht explizit auf dem Knoten selbst. Wenn die Sammlungen keiner der unten aufgeführten Sammlungen entsprechen, werden eingehende Clientverbindungen abgelehnt.
+
+### <a name="cipher-suite-supported"></a>Unterstützte Verschlüsselungssammlung
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Nächste Schritte
 

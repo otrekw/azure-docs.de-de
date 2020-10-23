@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875732"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -161,7 +161,7 @@ Damit eine ASE funktioniert, müssen die erforderlichen Einträge in einer Netzw
 * UDP an alle IPs über Port 53
 * UDP an alle IPs an Port 123
 * TCP an alle IPs an den Ports 80 und 443
-* TCP an das IP-Diensttag „AzureSQL“ an Port 1433
+* TCP an das IP-Diensttag `Sql` an Port 1433
 * TCP an alle IPs an Port 12000
 * an das ASE-Subnetz an allen Ports
 

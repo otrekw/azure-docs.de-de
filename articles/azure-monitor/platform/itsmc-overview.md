@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613763"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -112,6 +112,10 @@ Nach dem Einrichten der ITSM-Verbindung können Sie in Ihrem ITSM-Tool Arbeitsel
 
 Die wiederverwendbaren Aktionsgruppen bieten Ihnen die Möglichkeit, modular Aktionen für Ihre Azure-Warnungen auszulösen. Sie können Aktionsgruppen mit metrischen Warnungen, Aktivitätsprotokollwarnungen und Azure Log Analytics-Warnungen im Azure-Portal verwenden.
 
+> [!NOTE]
+> Nachdem die ITSM-Verbindung erstellt wurde, müssen Sie 30 Minuten warten, bis der Connector, der für den Synchronisierungsprozess erstellt wurde, abgeschlossen ist.
+> 
+
 Gehen Sie dazu wie folgt vor:
 
 1. Klicken Sie im Azure-Portal auf **Überwachen**.
@@ -137,6 +141,10 @@ Verwenden Sie beim Erstellen/Bearbeiten einer Azure-Warnungsregel eine Aktionsgr
 > [!NOTE]
 >
 > Informationen zu den Preisen für ITSM-Aktionen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/) für Aktionsgruppen.
+
+> [!NOTE]
+>
+> Das Feld für Kurzbeschreibungen in der Warnungsregeldefinition ist auf 40 Zeichen begrenzt, wenn es über ein ITSM-Aktion gesendet wird.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisieren und Analysieren der Incident- und Änderungsanforderungsdaten

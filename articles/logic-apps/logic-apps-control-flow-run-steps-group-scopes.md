@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520900"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575009"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus unter Verwendung von Bereichen in Azure Logic Apps
 
 Wenn Aktionen nur ausgeführt werden sollen, nachdem eine andere Gruppe von Aktionen erfolgreich oder nicht erfolgreich war, gruppieren Sie diese Aktionen in einem *Bereich*. Diese Struktur ist hilfreich, wenn Sie Aktionen als logische Gruppe organisieren, den Status dieser Gruppe auswerten und Aktionen durchführen möchten, die auf dem Status des Bereichs basieren. Nachdem die Ausführung aller Aktionen in einem Bereich beendet ist, erhält der Bereich auch einen eigenen Status. Beispielsweise können Sie Bereiche verwenden, wenn Sie die [Ausnahme- und Fehlerbehandlung](../logic-apps/logic-apps-exception-handling.md#scopes) implementieren möchten. 
 
-Zum Überprüfen des Status eines Bereichs können Sie die gleichen Kriterien wie zum Bestimmen des Ausführungsstatus einer Logik-App verwenden, z.B. „Erfolgreich“, „Fehlerhaft“, „Abgebrochen“ usw. Bei erfolgreicher Ausführung aller Aktionen des Bereichs wird der Status des Bereichs als „Erfolgreich“ festgelegt. Wenn jedoch eine Aktion im Bereich fehlschlägt oder abgebrochen wird, erhält der Bereich den Status „Fehlerhaft“. Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
+Zum Überprüfen des Status eines Bereichs können Sie die gleichen Kriterien wie zum Bestimmen des Ausführungsstatus einer Logik-App verwenden, z.B. **Erfolgreich**, **Fehlerhaft**, **Abgebrochen** usw. Bei erfolgreicher Ausführung aller Aktionen des Bereichs wird der Status des Bereichs standardmäßig als **Erfolgreich** gekennzeichnet. Wenn jedoch eine Aktion im Bereich nicht ausgeführt werden kann oder abgebrochen wird, erhält der Bereich den Status **Fehlerhaft**. Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 
-Hier sehen Sie beispielsweise eine allgemeine Logik-App, die einen Bereich zum Ausführen bestimmter Aktionen und eine Bedingung zum Überprüfen des Bereichsstatus verwendet. Wenn Aktionen im Bereich fehlschlagen oder unerwartet beendet werden, wird der Bereich mit „Fehlerhaft“ bzw. „Abgebrochen“ gekennzeichnet, und die Logik-App sendet eine Nachricht, dass der Bereich fehlerhaft ist. Wenn alle Aktionen im Bereich erfolgreich sind, sendet die Logik-App ebenfalls eine entsprechende Nachricht.
+Hier sehen Sie beispielsweise eine allgemeine Logik-App, die einen Bereich zum Ausführen bestimmter Aktionen und eine Bedingung zum Überprüfen des Bereichsstatus verwendet. Wenn Aktionen im Bereich nicht ausgeführt werden können oder unerwartet beendet werden, wird der Bereich als **Fehlerhaft** bzw. **Abgebrochen** gekennzeichnet, und die Logik-App sendet eine Nachricht, dass der Bereich fehlerhaft ist. Wenn alle Aktionen im Bereich erfolgreich sind, sendet die Logik-App ebenfalls eine entsprechende Nachricht.
 
-![Einrichten des Auslösers „Zeitplan: Wiederholung“](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Das Diagramm zeigt den Bereichsflow der Logik-App mit Beispielen für erfolgreiche und fehlerhafte Bereiche.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -192,7 +192,7 @@ Fügen Sie als nächstes einen Bereich hinzu, damit Sie bestimmte Aktionen grupp
    
       `result('Scope')[0]['status']`
 
-      ![Hinzufügen eines Ausdrucks, der den Bereichsstatus prüft](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Screenshot des Felds „Ausdruck“ mit hervorgehobenem Ergebnisausdruck.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Wählen Sie für beide Zeilen **ist gleich** als Operator aus. 
    

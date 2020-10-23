@@ -2,13 +2,13 @@
 title: 'Azure Batch: Taskfehlerereignis'
 description: Referenz zum Batch-Taskfehlerereignis. Dieses Ereignis wird zusätzlich zum Ereignis zum Abschluss eines Tasks ausgegeben und dient zum Ermitteln, wann ein Task fehlgeschlagen ist.
 ms.topic: reference
-ms.date: 08/15/2019
-ms.openlocfilehash: fbd0e5f2397fffce654d64a0e95a115b861db680
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/08/2020
+ms.openlocfilehash: e13692b45ff5a049d0b724525ad6565d2b894a3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850811"
 ---
 # <a name="task-fail-event"></a>Taskfehlerereignis
 
@@ -23,6 +23,7 @@ ms.locfileid: "85965160"
     "id": "myTask",
     "taskType": "User",
     "systemTaskVersion": 0,
+    "requiredSlots": 1,
     "nodeInfo": {
         "poolId": "pool-001",
         "nodeId": "tvm-257509324_1-20160908t162728z"
@@ -49,6 +50,7 @@ ms.locfileid: "85965160"
 |`id`|String|Die ID des Tasks.|
 |`taskType`|String|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist. Dieses Ereignis wird nicht für Auftragsvorbereitungstasks, Auftragsfreigabetasks oder Starttasks ausgegeben.|
 |`systemTaskVersion`|Int32|Dies ist der interne Wiederholungszähler für einen Task. Der Batch-Dienst kann intern einen Task wiederholen, um vorübergehende Probleme zu berücksichtigen. Bei diesen Problemen kann es sich um interne Planungsfehler oder Versuche handeln, Computeknoten mit einem fehlerhaften Status wiederherzustellen.|
+|`requiredSlots`|Int32|Die erforderlichen Slots zum Ausführen des Tasks.|
 |[`nodeInfo`](#nodeInfo)|Komplexer Typ|Enthält Informationen zu den Computeknoten, auf dem der Task ausgeführt wurde.|
 |[`multiInstanceSettings`](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Ausführliche Informationen finden Sie unter [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task).|
 |[`constraints`](#constraints)|Komplexer Typ|Die Ausführungseinschränkungen, die für diesen Task gelten.|
@@ -59,7 +61,7 @@ ms.locfileid: "85965160"
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
 |`poolId`|String|Die ID des Pools, auf den der Task angewendet wurde.|
-|`nodeId`|String|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
+|`nodeId`|Zeichenfolge|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
@@ -79,7 +81,7 @@ ms.locfileid: "85965160"
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
 |`startTime`|Datetime|Der Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde. „Running“ entspricht dem Status **Wird ausgeführt**. Wenn also der Task Ressourcendateien oder Anwendungspakete angibt, reflektiert die Startzeit den Zeitpunkt, an dem der Task mit dem Herunterladen oder Bereitstellen dieser Elemente begonnen hat.  Wenn der Task neu gestartet oder wiederholt wurde, ist dies der letzte Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde.|
-|`endTime`|Datetime|Der Zeitpunkt, an dem die Ausführung des Tasks beendet wurde.|
+|`endTime`|Datetime|Die Uhrzeit, zu der die Aufgabe abgeschlossen wurde.|
 |`exitCode`|Int32|Der Exitcode des Tasks.|
 |`retryCount`|Int32|Die Häufigkeit, mit der der Task vom Batch-Dienst wiederholt wurde. Der Vorgang wird wiederholt, wenn der Exitcode ungleich null ist, und zwar bis zum angegebenen Wert von „MaxTaskRetryCount“.|
 |`requeueCount`|Int32|Die Häufigkeit, mit der der Tasks vom Batch-Dienst als Ergebnis einer Benutzeranforderung erneut in die Warteschlange gestellt wurde.<br /><br /> Wenn der Benutzer Knoten aus einem Pool entfernt (durch Vergrößern oder Verkleinern des Pools) oder der Auftrag deaktiviert wird, kann der Benutzer angeben, dass auf den Knoten ausgeführte Tasks zur Ausführung erneut in die Warteschlange gestellt werden. Dieser Zähler überwacht, wie oft der Task aus diesen Gründen in die Warteschlange gestellt wurde.|

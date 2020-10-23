@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515040"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978712"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Verwalten von Anmeldeinformationen für Speicherkonten mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -33,7 +33,7 @@ Der Abschnitt **Konfiguration** des Blatts „StorSimple-Geräte-Manager-Dienst�
 
 In diesem Tutorial wird erläutert, wie Sie Anmeldeinformationen für ein Speicherkonto hinzufügen, bearbeiten oder löschen und die Sicherheitsschlüssel für ein Speicherkonto rotieren.
 
- ![Liste der Anmeldeinformationen für Speicherkonten](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![Liste der Anmeldeinformationen für Speicherkonten (1)](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 Speicherkonten enthalten die Anmeldeinformationen, die das StorSimple-Gerät für den Zugriff auf das Speicherkonto bei Ihrem Clouddienstanbieter nutzt. Für Microsoft Azure-Speicherkonten sind dies die Anmeldeinformationen, wie z. B. Kontoname und primärer Zugriffsschlüssel. 
 
@@ -102,7 +102,7 @@ Sie können ein Speicherkonto, das von einem Volumecontainer verwendet wird, bea
 
 1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Klicken Sie im Abschnitt **Konfiguration** auf **Anmeldeinformationen des Speicherkontos**.
 
-    ![Anmeldeinformationen des Speicherkontos](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Anmeldeinformationen des Speicherkontos (2)](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. Klicken Sie auf dem Blatt **Anmeldeinformationen für Speicherkonten** in der Liste auf das Speicherkonto, das Sie bearbeiten möchten. 
 
@@ -159,11 +159,11 @@ Um den StorSimple-Geräte-Manager-Dienst über die Änderung zu informieren, mü
 
 3. Klicken Sie auf **Mehr...** , und wählen Sie dann **Zugriffsschlüssel synchronisieren** aus.   
 
-    ![Synchronisieren von Schlüsseln](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![Synchronisieren von Schlüsseln (2)](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. Sie müssen den im Microsoft Azure Storage-Dienst zuvor geänderten Schlüssel im StorSimple-Geräte-Manager-Dienst aktualisieren. Wenn der primäre Zugriffsschlüssel geändert (erneut generiert) wurde, wählen Sie den **primären** Schlüssel aus. Wenn der sekundäre Schlüssel geändert wurde, wählen Sie den **sekundären** Schlüssel aus. Klicken Sie auf **Schlüssel synchronisieren**.
       
-      ![Synchronisieren von Schlüsseln](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![Synchronisieren von Schlüsseln (3)](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 Sie werden benachrichtigt, sobald der Schlüssel erfolgreich synchronisiert wurde.
 

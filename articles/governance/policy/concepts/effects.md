@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 09/15/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252003"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873947"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -98,7 +98,7 @@ Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivität
 
 ### <a name="audit-evaluation"></a>Auswertung von „audit“
 
-„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Bei einem Resource Manager-Modus wird die Ressource von Azure Policy an den Ressourcenanbieter gesendet. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Azure Policy fügt dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
+„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Bei einem Resource Manager-Modus wird die Ressource von Azure Policy an den Ressourcenanbieter gesendet. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Bei neuen und aktualisierten Ressourcen fügt Azure Policy dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
 
 ### <a name="audit-properties"></a>Eigenschaften von „audit“
 
@@ -145,7 +145,7 @@ Die Auswirkung „AuditIfNotExists“ ermöglicht die Überwachung von Ressource
 
 ### <a name="auditifnotexists-evaluation"></a>Auswertung von „AuditIfNotExists“
 
-„AuditIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Überprüfung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Azure Policy fügt dem Aktivitätsprotokoll auf gleiche Weise wie bei der Auswirkung „audit“ einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu. Bei Auslösung ist die Ressource, die die **if**-Bedingung erfüllt hat, die Ressource, die als nicht konform markiert wird.
+„AuditIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Überprüfung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Bei neuen und aktualisierten Ressourcen fügt Azure Policy dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform. Bei Auslösung ist die Ressource, die die **if**-Bedingung erfüllt hat, die Ressource, die als nicht konform markiert wird.
 
 ### <a name="auditifnotexists-properties"></a>Eigenschaften von „AuditIfNotExists“
 

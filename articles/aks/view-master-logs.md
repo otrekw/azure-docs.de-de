@@ -3,13 +3,13 @@ title: Anzeigen von Azure Kubernetes Service-Controllerprotokollen (AKS)
 description: Erfahren Sie, wie die Protokolle für den Kubernetes-Masterknoten in Azure Kubernetes Service (AKS) aktiviert und angezeigt werden.
 services: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.openlocfilehash: 4d4485848bb81f9b745081bd999b3cd3e8101b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/14/2020
+ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299070"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076384"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
@@ -30,8 +30,16 @@ Azure Monitor-Protokolle werden im Azure-Portal aktiviert und verwaltet. Öffnen
 1. Wählen Sie Ihren AKS-Cluster aus, z.B. *myAKSCluster*, wählen Sie dann **Diagnoseeinstellungen hinzufügen** aus.
 1. Geben Sie einen Namen (etwa *myAKSClusterLogs*) ein, und wählen Sie dann die Option **An Log Analytics senden** aus.
 1. Wählen Sie einen vorhandenen Arbeitsbereich aus, oder erstellen Sie einen neuen. Wenn Sie einen Arbeitsbereich erstellen, geben Sie einen Arbeitsbereichsnamen, eine Ressourcengruppe und einen Speicherort an.
-1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Aktivieren Sie für dieses Beispiel die *kube-audit*-Protokolle. Zu den üblichen Protokollen gehören *kube-apiserver*, *kube-controller-manager* und *kube-scheduler*. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics-Arbeitsbereiche aktiviert wurden.
+1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Aktivieren Sie für dieses Beispiel die *kube-audit*- und *kube-autid-admin*-Protokolle. Zu den üblichen Protokollen gehören *kube-apiserver*, *kube-controller-manager* und *kube-scheduler*. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics-Arbeitsbereiche aktiviert wurden.
 1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um die Sammlung der ausgewählten Protokolle zu aktivieren.
+
+## <a name="log-categories"></a>Protokollkategorien
+
+Zusätzlich zu den von Kubernetes geschriebenen Einträgen enthalten die Überwachungsprotokolle Ihres Projekts auch Einträge aus AKS.
+
+Überwachungsprotokolle werden in zwei Kategorien aufgezeichnet, *kube-audit-admin* und *kube-audit*. Die Kategorie *kube-audit* enthält alle Überwachungsprotokolldaten für jedes Überwachungsereignis, einschließlich *get*, *list*, *create*, *update*, *delete*, *patch* und *post*.
+
+Die Kategorie *kube-audit-admin* ist eine Teilmenge der Protokollkategorie *kube-audit*. *kube-audit-admin* verringert die Anzahl der Protokolle erheblich, indem die *get*- und *list*-Überwachungsereignisse aus dem Protokoll ausgeschlossen werden.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Planen eines Testpods im AKS-Cluster
 
@@ -67,7 +75,12 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Anzeigen der gesammelten Protokolle
 
-Es kann einige Minuten dauern, bis die Diagnoseprotokolle aktiviert und angezeigt werden. Navigieren Sie im Azure-Portal zu Ihrem AKS-Cluster, und wählen Sie **Protokolle** auf der linken Seite aus. Schließen Sie das Fenster *Beispielabfragen*, wenn es angezeigt wird.
+Es kann einige Minuten dauern, bis die Diagnoseprotokolle aktiviert und angezeigt werden.
+
+> [!NOTE]
+> Wenn Sie aus Compliance- oder anderen Gründen alle Überwachungsprotokolldaten benötigen, erfassen und speichern Sie sie in einem kostengünstigen Speicher wie Blobspeicher. Verwenden Sie die Protokollkategorie *kube-audit-admin*, um einen aussagekräftigen Satz von Überwachungsprotokolldaten für Überwachungs- und Warnungszwecke zu erfassen und zu speichern.
+
+Navigieren Sie im Azure-Portal zu Ihrem AKS-Cluster, und wählen Sie **Protokolle** auf der linken Seite aus. Schließen Sie das Fenster *Beispielabfragen*, wenn es angezeigt wird.
 
 Wählen Sie auf der linken Seite **Protokolle** aus. Geben Sie zum Anzeigen der *cube-audit*-Protokolle die folgende Abfrage in das Textfeld ein:
 
@@ -85,6 +98,24 @@ AzureDiagnostics
 | where log_s contains "nginx"
 | project log_s
 ```
+
+Geben Sie zum Anzeigen der *kube-audit-admin*-Protokolle die folgende Abfrage in das Textfeld ein:
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| project log_s
+```
+
+In diesem Beispiel zeigt die Abfrage alle create-Aufträge in *kube-audit-admin*. Es werden wahrscheinlich viele Ergebnisse zurückgegeben. Um die Abfrage so einzuschränken, dass die Protokolle zu dem im vorherigen Schritt erstellten NGINX-Pod angezeigt werden, fügen Sie eine zusätzliche *where*-Anweisung hinzu, um nach *nginx* zu suchen, wie in der folgenden Beispielabfrage dargestellt.
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| where log_s contains "nginx"
+| project log_s
+```
+
 
 Weitere Informationen zum Abfragen und Filtern Ihrer Protokolldaten finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten][analyze-log-analytics].
 

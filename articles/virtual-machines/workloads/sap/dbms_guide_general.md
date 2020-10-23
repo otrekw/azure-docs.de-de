@@ -1,26 +1,18 @@
 ---
 title: Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload| Microsoft-Dokumentation
 description: Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 09/20/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650614"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993286"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -46,9 +38,8 @@ ms.locfileid: "88650614"
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Dieses Handbuch ist Teil der Dokumentation zur Implementierung und Bereitstellung von SAP-Software in Microsoft Azure. Lesen Sie vor diesem Handbuch das [Planungs- und Implementierungshandbuch][planning-guide]. Dieses Dokument behandelt die allgemeinen Aspekte der Bereitstellung von DBMS-Systemen für SAP auf Microsoft Azure Virtual Machines (VMs) mit der IaaS-Funktion (Infrastructure-as-a-Service) von Azure.
+Dieses Handbuch ist Teil der Dokumentation zur Implementierung und Bereitstellung von SAP-Software in Microsoft Azure. Lesen Sie vor diesem Handbuch das [Planungs- und Implementierungshandbuch][planning-guide] sowie die dort erwähnten Artikel. Dieses Dokument behandelt die allgemeinen Aspekte der Bereitstellung von DBMS-Systemen für SAP auf Microsoft Azure Virtual Machines (VMs) mit der IaaS-Funktion (Infrastructure-as-a-Service) von Azure.
 
 Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
 
@@ -109,49 +100,62 @@ Installation und Konfiguration von Windows, Linux und DBMS sind generell weitgeh
 
 
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Speicherstruktur einer VM für RDBMS-Bereitstellungen
-Damit Sie diesem Kapitel folgen können, sollten Sie die Informationen [diesem Kapitel][deployment-guide-3] des [Bereitstellungshandbuchs][deployment-guide] gelesen und verstanden haben. Sie müssen die verschiedenen VM-Serien und die Unterschiede zwischen Standard- und Premium-Speicher verstehen und kennen, bevor Sie dieses Kapitel lesen. 
+Damit Sie diesem Kapitel folgen können, sollten Sie diese Informationen gelesen und verstanden haben:
 
-Weitere Informationen zu Azure Storage für Azure-VMs finden Sie unter [Einführung in verwaltete Datenträger für Azure-VMs](../../managed-disks-overview.md).
+- [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver](./planning-guide.md)
+- [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md)
+- [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](./sap-supported-product-on-azure.md)
+- [SAP-Workload in Szenarien mit Unterstützung von virtuellen Azure-Computern](./sap-planning-supported-configurations.md) 
 
-In einer Basiskonfiguration eignet sich eine Bereitstellungsstruktur, bei der das Betriebssystem, das DBMS und eventuelle SAP-Binärdateien von den Datenbankdateien getrennt sind. Wird empfehlen, dass bei SAP-Systemen, die auf Azure-VMs ausgeführt werden, das Basis-VHD – oder der Datenträger – mit dem Betriebssystem, den ausführbaren Dateien für das Datenbankverwaltungssystem und den ausführbaren SAP-Dateien installiert wird. 
+Sie müssen die verschiedenen VM-Serien und die Unterschiede zwischen Standard- und Premium-Speicher verstehen und kennen, bevor Sie dieses Kapitel lesen. 
 
-Die DBMS-Daten und -Protokolldateien werden in Storage Standard oder Storage Premium gespeichert. Sie werden auf separaten Datenträgern gespeichert und als logische Datenträger an die ursprüngliche Azure-VM mit dem Betriebssystemimage angefügt. Für Linux-Bereitstellungen sind speziell für SAP HANA verschiedene Empfehlungen dokumentiert.
+Für Azure-Blockspeicher wird die Verwendung von verwalteten Azure-Datenträgern dringend empfohlen. Ausführliche Informationen zu verwalteten Azure-Datenträgern finden Sie im Artikel [Einführung in verwaltete Azure-Datenträger](../../managed-disks-overview.md).
+
+In einer Basiskonfiguration eignet sich eine Bereitstellungsstruktur, bei der das Betriebssystem, das DBMS und eventuelle SAP-Binärdateien von den Datenbankdateien getrennt sind. Abweichend von früheren Empfehlungen werden jetzt separate Azure-Datenträger für Folgendes empfohlen:
+
+- Betriebssystem (Basis-VHD oder Betriebssystem-VHD)
+- Ausführbare Dateien für das Datenbank-Managementsystem
+- Ausführbare SAP-Dateien wie „/usr/sap“
+
+Eine Konfiguration, in der diese Komponenten auf drei verschiedenen Azure-Datenträgern gespeichert sind, kann zu höherer Resilienz führen, da umfangreiche Protokoll- oder Speicherabbild-Schreibvorgänge durch das DBMS oder ausführbare SAP-Dateien nicht mit den Datenträgerkontingenten des Betriebssystemdatenträgers in Konflikt kommen. 
+
+Die DBMS-Daten- und Transaktions-/Wiederholungsprotokolldateien werden in von Azure unterstützten Blockspeichern oder in Azure NetApp Files gespeichert. Sie werden auf separaten Datenträgern gespeichert und als logische Datenträger an die ursprüngliche Azure-VM mit dem Betriebssystemimage angefügt. Für Linux-Bereitstellungen sind speziell für SAP HANA verschiedene Empfehlungen dokumentiert. Im Artikel [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) finden Sie Informationen zu den Funktionen und zur Unterstützung der verschiedenen Speichertypen für Ihr Szenario. 
 
 Ermitteln Sie beim Planen Ihres Festplattenlayouts die beste Balance zwischen diesen Elementen:
 
 * Die Anzahl der Datendateien.
 * Die Anzahl von Datenträgern, die die Dateien enthalten
-* Die IOPS-Kontingente eines einzelnen Datenträgers
-* Den Datendurchsatz pro Datenträger
+* IOPS-Kontingente eines einzelnen Datenträgers oder einer NFS-Freigabe
+* Datendurchsatz pro Datenträger oder NFS-Freigabe
 * Die Anzahl der für die jeweilige VM-Größe möglichen zusätzlichen Datenträger
-* Der Gesamtspeicherdurchsatz, den ein virtueller Computer bereitstellen kann.
+* Gesamtdurchsatz für Speicher oder Netzwerk, den eine VM bereitstellen kann
 * Die Latenz verschiedener Azure Storage-Typen.
 * SLAs für VMs.
 
-Azure erzwingt ein IOPS-Kontingent pro Datenträger. Diese Kontingente sind für Datenträger, die in Storage Standard und Storage Premium gehostet werden, unterschiedlich. Auch die E/A-Latenz unterscheidet sich zwischen den beiden Speichertypen. Storage Premium bietet eine bessere E/A-Latenz. 
+Azure erzwingt ein IOPS-Kontingent pro Datenträger oder NFS-Freigabe. Diese Kontingente unterscheiden sich je nach den Datenträgern, die in den verschiedenen Azure-Blockspeicherlösungen oder -Freigaben gehostet werden. Auch die E/A-Latenz unterscheidet sich zwischen den beiden Speichertypen. 
 
-Für jeden der verschiedenen VM-Typen können Sie eine begrenzte Anzahl von Datenträgern anfügen. Eine weitere Einschränkung besteht darin, dass nur bestimmte VM-Typen Storage Premium nutzen können. In der Regel entscheiden Sie sich basierend auf CPU- und Arbeitsspeicheranforderungen für einen bestimmten VM-Typ. Sie können auch die Anforderungen an IOPS, Latenz und Festplattendurchsatz berücksichtigen, die normalerweise mit der Anzahl der Festplatten oder dem Typ der Storage Premium-Datenträger skaliert werden. Die Festplattengröße kann insbesondere bei Storage Premium durch die Anzahl der IOPS und den Durchsatz, den jeder Datenträger erreichen muss, bestimmt werden.
-
-> [!NOTE]
-> Für DBMS-Bereitstellungen empfehlen wir die Verwendung von Storage Premium für alle Daten, Transaktionsprotokolle und Wiederholungsdateien. Dabei spielt es keine Rolle, ob Sie Produktionssysteme bereitstellen möchten oder nicht.
+Für jeden der verschiedenen VM-Typen können Sie eine begrenzte Anzahl von Datenträgern anfügen. Eine weitere Einschränkung besteht darin, dass nur bestimmte VM-Typen beispielsweise Storage Premium nutzen können. In der Regel entscheiden Sie sich basierend auf CPU- und Arbeitsspeicheranforderungen für einen bestimmten VM-Typ. Sie können auch die Anforderungen an IOPS, Latenz und Festplattendurchsatz berücksichtigen, die normalerweise mit der Anzahl der Festplatten oder dem Typ der Storage Premium-Datenträger skaliert werden. Die Festplattengröße kann insbesondere bei Storage Premium durch die Anzahl der IOPS und den Durchsatz, den jeder Datenträger erreichen muss, bestimmt werden.
 
 > [!NOTE]
-> Um die einzigartigen Azure-Vorteile der [SLA für einzelne VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) zu nutzen, müssen alle angefügten Datenträger vom Typ Storage Premium sein, einschließlich der Basis-VHD.
+> Für DBMS-Bereitstellungen empfehlen wir Azure Storage Premium, Disk Ultra oder auf Azure NetApp Files basierende NFS-Freigaben (exklusiv für SAP HANA) für alle Daten-, Transaktionsprotokoll- oder Wiederholungsdateien. Dabei spielt es keine Rolle, ob Sie Produktionssysteme bereitstellen möchten oder nicht.
 
 > [!NOTE]
-> Das Hosten von Hauptdatenbankdateien wie Daten- und Protokolldateien von SAP-Datenbanken auf Speicherhardware, die sich in gemeinsam untergebrachten Drittanbieter-Datencentern neben Azure-Datencentern befindet, wird nicht unterstützt. Für SAP-Workloads wird für Daten- und Transaktionsprotokolldateien von SAP-Datenbanken nur Speicher unterstützt, der als nativer Azure-Dienst umgesetzt ist.
+> Damit Sie von der [SLA für einzelne VM-Instanzen](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) von Azure profitieren, müssen alle angefügten Datenträger vom Typ Azure Storage Premium oder Azure Disk Ultra sein. Dies gilt auch für die Basis-VHD (Azure Storage Premium).
 
-Die Platzierung der Datenbank-, der Protokoll- und der Wiederholungsdateien sowie der verwendete Azure Storage-Typ müssen durch die Anforderungen an IOPS, Latenz und Durchsatz bestimmt werden. Damit ausreichend IOPS verfügbar ist, müssen Sie möglicherweise mehrere Datenträger oder einen größeren Storage Premium-Datenträger verwenden. Falls Sie mehrere Datenträger verwenden, erstellen Sie einen Softwarestripe über die Datenträger hinweg, die die Datendateien oder die Protokoll- und Wiederholungsdateien enthalten. In solchen Fällen sind die IOPS- und die Datenträgerdurchsatz-SLAs der zugrunde liegenden Storage Premium-Datenträger oder der maximal erzielbare IOPS der Storage Standard-Datenträger kumulativ für das resultierende Stripeset.
+> [!NOTE]
+> Das Hosten von Hauptdatenbankdateien wie Daten- und Protokolldateien von SAP-Datenbanken auf Speicherhardware, die sich in gemeinsam untergebrachten Drittanbieter-Datencentern neben Azure-Datencentern befindet, wird nicht unterstützt. Speicher, der über auf Azure-VMs gehostete Softwareappliances bereitgestellt wird, wird für diesen Anwendungsfall ebenfalls nicht unterstützt. Bei SAP-DBMS-Workloads wird für die Daten- und Transaktionsprotokolldateien von SAP-Datenbanken allgemein nur Speicher unterstützt, der als nativer Azure-Dienst umgesetzt ist. Unterschiedliche Datenbank-Managementsysteme unterstützen möglicherweise unterschiedliche Azure-Speichertypen. Weitere Informationen finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md).
 
-Wenn Ihre IOPS-Anforderungen das übersteigen, was eine einzelne VHD bereitstellen kann, müssen Sie den für die Datenbankdateien benötigten IOPS über die Anzahl von VHDs ausgleichen. Die einfachste Möglichkeit, die IOPS-Last auf verschiedene Datenträger zu verteilen, ist das Erstellen eines Softwarestripes über die verschiedenen Datenträger hinweg. Fügen Sie dann den LUNs im Softwarestripe eine Anzahl von Datendateien des SAP-DBMS hinzu. Die Anzahl von Datenträgern im Stripe wird von den Anforderungen an IOPS, Datenträgerdurchsatz und Volumes bestimmt.
+Die Platzierung der Datenbank-, Transaktions- oder Wiederholungsdateien sowie der verwendete Azure Storage-Typ werden durch die Anforderungen an IOPS, Latenz und Durchsatz definiert. Damit speziell für Azure Storage Premium ausreichend IOPS verfügbar ist, müssen Sie möglicherweise mehrere Datenträger oder einen größeren Storage Premium-Datenträger verwenden. Falls Sie mehrere Datenträger verwenden, erstellen Sie einen Softwarestripe über die Datenträger hinweg, die die Datendateien oder die Protokoll- und Wiederholungsdateien enthalten. In solchen Fällen sind die IOPS- und die Datenträgerdurchsatz-SLAs der zugrunde liegenden Storage Premium-Datenträger oder der maximal erzielbare IOPS der Storage Standard-Datenträger kumulativ für das resultierende Stripeset.
+
+Wenn Ihre IOPS-Anforderungen die Leistung übersteigen, die eine einzelne VHD bereitstellen kann, müssen Sie die für die Datenbankdateien benötigten IOPS-Vorgänge auf mehrere VHDs verteilen. Die einfachste Möglichkeit, die IOPS-Last auf verschiedene Datenträger zu verteilen, ist das Erstellen eines Softwarestripes über die verschiedenen Datenträger hinweg. Fügen Sie dann den LUNs im Softwarestripe eine Anzahl von Datendateien des SAP-DBMS hinzu. Die Anzahl von Datenträgern im Stripe wird von den Anforderungen an IOPS, Datenträgerdurchsatz und Volumes bestimmt.
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Speicherstriping unter Windows][Logo_Windows] Windows
 >
 > Es wird empfohlen, Windows-Speicherplätze zum Erstellen von Stripesets über mehrere Azure-VHDs hinweg zu verwenden. Verwenden Sie mindestens Windows Server 2012 R2 oder Windows Server 2016.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Speicherstriping unter Linux][Logo_Linux] Linux
 >
 > Nur MDADM und Logical Volume Manager (LVM) werden unterstützt, um ein Software-RAID unter Linux zu erstellen. Weitere Informationen finden Sie unter
 >
@@ -162,6 +166,9 @@ Wenn Ihre IOPS-Anforderungen das übersteigen, was eine einzelne VHD bereitstell
 
 ---
 
+Bei Azure Disk Ultra ist ein Striping nicht erforderlich, weil Sie IOPS- und Datenträgerdurchsatz unabhängig von der Größe des Datenträgers definieren können.
+
+
 > [!NOTE]
 > Da Azure Storage drei Images der VHDs speichert, ist es nicht ratsam, beim Striping eine Redundanz zu konfigurieren. Sie müssen nur das Striping so konfigurieren, dass die E/A-Vorgänge auf die verschiedenen VHDs verteilt werden.
 >
@@ -171,7 +178,7 @@ Ein Azure-Speicherkonto ist nicht nur ein Konzept für Verwaltungsaufgaben, sond
 
 Denken Sie daran, dass bei Storage Standard eine Begrenzung der IOPS pro Speicherkonto gilt. Finden Sie die Zeile mit der **Gesamtanforderungsrate** im Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](../../../storage/common/scalability-targets-standard-account.md). Für Speicherkonten gilt pro Azure-Abonnement außerdem eine anfängliche Einschränkung. Verteilen Sie daher VHDs für die größeren SAP-Landschaften auf verschiedene Speicherkonten, um die Grenzen dieser Speicherkonten nicht zu überschreiten. Dies ist sehr aufwändig, wenn Sie einige hundert VMs mit über tausend VHDs haben.
 
-Da die Verwendung von Standard-Speicher für DBMS-Bereitstellungen in Verbindung mit SAP-Workload nicht empfohlen wird, sind die entsprechenden Verweise und Empfehlungen auf diesen kurzen [Artikel](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance) beschränkt.
+Die Verwendung von Storage Standard für DBMS-Bereitstellungen in Zusammenhang mit einer SAP-Workload wird nicht empfohlen. Daher sind Referenzen und Empfehlungen für Storage Standard auf diesen kurzen [Artikel](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance) beschränkt.
 
 Damit keine Verwaltung der Planung und Bereitstellung von VHDs über verschiedene Azure-Speicherkonten hinweg erforderlich ist, führte Microsoft 2017 den Dienst [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) ein. Verwaltete Datenträger sind für Storage Standard und Storage Premium verfügbar. Hauptvorteile von verwalteten Datenträgern im Vergleich zu nicht verwalteten Datenträgern:
 
@@ -180,7 +187,7 @@ Damit keine Verwaltung der Planung und Bereitstellung von VHDs über verschieden
 
 
 > [!IMPORTANT]
-> Angesichts der Vorteile wird empfohlen, Azure Managed Disks für Ihre DBMS-Bereitstellungen und SAP-Bereitstellungen im Allgemeinen zu verwenden.
+> Aufgrund der Vorteile von Azure Managed Disks wird allgemein dringend empfohlen, dieses Feature für Ihre DBMS- und SAP-Bereitstellungen zu verwenden.
 >
 
 Informationen zum Konvertieren nicht verwalteter Datenträger in verwaltete Datenträger finden Sie unter:
@@ -190,7 +197,7 @@ Informationen zum Konvertieren nicht verwalteter Datenträger in verwaltete Date
 
 
 ### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Zwischenspeichern für VMs und Datenträger
-Wenn Sie Datenträger auf VMs bereitstellen, können Sie auswählen, ob der E/A-Datenverkehr zwischen der VM und diesen Datenträgern in Azure Storage zwischengespeichert wird. Storage Standard und Premium verwenden zwei unterschiedliche Technologien für diese Art von Cache.
+Wenn Sie Datenträger auf VMs bereitstellen, können Sie auswählen, ob der E/A-Datenverkehr zwischen der VM und diesen Datenträgern in Azure Storage zwischengespeichert wird.
 
 Bei den folgenden Empfehlungen werden die E/A-Merkmale für Standard-DBMS zugrunde gelegt:
 
@@ -208,7 +215,7 @@ Für Storage Standard sind folgende Cachetypen möglich:
 
 Um eine konsistente und deterministische Leistung zu erzielen, legen Sie die Zwischenspeicherung in Storage Standard für alle Datenträger mit DBMS-bezogenen Datendateien, Protokoll- und Wiederholungsdateien und Tabellenspeicherplatz auf **KEINE** fest. Für das Zwischenspeichern der Basis-VHD kann die Standardeinstellung übernommen werden.
 
-Storage Premium hat die folgenden Optionen zum Zwischenspeichern:
+Azure Storage Premium bietet die folgenden Optionen für die Zwischenspeicherung:
 
 * Keine
 * Lesen
@@ -220,6 +227,8 @@ Für Storage Premium wird empfohlen, das **Zwischenspeichern von Lesevorgängen 
 
 Für Bereitstellungen der M-Serie empfehlen wir, die Azure-Schreibbeschleunigung für die DBMS-Bereitstellung zu verwenden. Weitere Informationen, Einschränkungen und Bereitstellungsdetails für die Azure-Schreibbeschleunigung finden Sie im Dokument [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
 
+Für Disk Ultra und Azure NetApp Files werden keine Optionen für die Zwischenspeicherung angeboten.
+
 
 ### <a name="azure-nonpersistent-disks"></a>Nicht beständige Azure-Datenträger
 Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitgestellt wurde. Bei einem Neustart der VM werden alle Inhalte auf diesen Laufwerken gelöscht. Daher sollten Datendateien und Protokoll- bzw. Wiederholungsdateien von Datenbanken unter keinen Umständen auf diesen nicht permanenten Laufwerken gespeichert werden. Möglicherweise gibt es Ausnahmen für einige Datenbanken, in denen diese nicht permanenten Laufwerke für die Tabellenbereiche „tempdb“ und „temp“ geeignet sind. Verwenden Sie diese Laufwerke nicht für VMs der A-Serie, da diese nicht permanenten Laufwerke mit diesen VMs nur einen begrenzten Durchsatz ermöglichen. 
@@ -227,11 +236,11 @@ Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitge
 Weitere Informationen finden Sie unter [Understand the temporary drive on Windows VMs in Azure](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) (Grundlegendes zum temporären Laufwerk auf Windows-VMs in Azure).
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Nicht persistente Windows-Datenträger][Logo_Windows] Windows
 >
 > Laufwerk D auf einer Azure-VM ist ein nicht permanentes Laufwerk, das durch einige lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, gehen alle auf Laufwerk D vorgenommenen Änderungen am Inhalt verloren, wenn die VM neu gestartet wird. Änderungen umfassen gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Nicht persistente Linux-Datenträger][Logo_Linux] Linux
 >
 > Azure-VMs unter Linux stellen ein Laufwerk automatisch unter „/mnt/resource“ bereit. Dies ist ein nicht permanentes Laufwerk, das durch lokale Datenträger auf dem Azure-Serverknoten gesichert wird. Da es nicht permanent ist, gehen alle Änderungen am Inhalt unter „/mnt/resource“ verloren, wenn die VM neu gestartet wird. Änderungen umfassen gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
 >
@@ -247,7 +256,7 @@ Microsoft Azure Storage speichert die Basis-VM (mit Betriebssystem) und angefüg
 Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
 
 > [!NOTE]
->Storage Premium ist der empfohlene Speichertyp für DBMS-VMs und Datenträger, die Datenbank- sowie Protokoll- und Wiederholungsdateien speichern. Die einzige verfügbare Redundanzmethode für Storage Premium ist LRS. Daher müssen Sie Datenbankmethoden konfigurieren, um die Replikation von Datenbankdaten in eine andere Azure-Region oder Verfügbarkeitszone zu ermöglichen. Datenbankmethoden sind beispielsweise SQL Server Always On, Oracle Data Guard und HANA-Systemreplikation.
+> Azure Storage Premium, Disk Ultra und Azure NetApp Files (exklusiv für SAP HANA) sind die empfohlenen Speichertypen für DBMS-VMs und Datenträger, auf denen Datenbank-, Protokoll- und Wiederholungsdateien gespeichert werden. Die einzige verfügbare Redundanzmethode für diese Speichertypen ist LRS. Daher müssen Sie Datenbankmethoden konfigurieren, um die Replikation von Datenbankdaten in eine andere Azure-Region oder Verfügbarkeitszone zu ermöglichen. Datenbankmethoden sind beispielsweise SQL Server Always On, Oracle Data Guard und HANA-Systemreplikation.
 
 
 > [!NOTE]
@@ -256,7 +265,7 @@ Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure 
 
 
 ## <a name="vm-node-resiliency"></a>VM-Knoten – Resilienz
-Azure bietet verschiedene SLAs für VMs. Weitere Informationen finden Sie im letzten Release der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Da die DBMS-Schicht in der Regel kritisch für die Verfügbarkeit in einem SAP-System ist, müssen Sie mit Verfügbarkeitsgruppen, Verfügbarkeitszonen und Wartungsereignissen vertraut sein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../windows/manage-availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../linux/manage-availability.md).
+Azure bietet verschiedene SLAs für VMs. Weitere Informationen finden Sie im letzten Release der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Da die DBMS-Schicht von entscheidender Bedeutung für die Verfügbarkeit in einem SAP-System ist, müssen Sie mit Verfügbarkeitsgruppen, Verfügbarkeitszonen und Wartungsereignissen vertraut sein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../manage-availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../manage-availability.md).
 
 Mindestempfehlung für DBMS-Produktionsszenarien mit einer SAP-Workload:
 
@@ -276,9 +285,9 @@ Verwenden Sie in großen SAP-Bereitstellungen die Blaupause des [virtuellen Azur
 Diese bewährten Methoden sind das Ergebnis von Hunderten von Kundenbereitstellungen:
 
 - Die virtuellen Netzwerke, in denen die SAP-Anwendung bereitgestellt wird, haben keinen Zugriff auf das Internet.
-- Die Datenbank-VMs werden im selben virtuellen Netzwerk ausgeführt wie die Anwendungsschicht.
+- Die Datenbank-VMs werden im selben Netzwerk ausgeführt wie die Anwendungsschicht, befinden sich aber in einem anderen Subnetz als die SAP-Anwendungsschicht.
 - Die VMs im virtuellen Netzwerk haben eine statische Zuteilung der privaten IP-Adresse. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../../../virtual-network/public-ip-addresses.md).
-- Routingeinschränkungen in und aus DBMS-VMs werden *nicht* mit Firewalls festgelegt, die auf den lokalen DBMS-VMs installiert sind. Stattdessen wird Routing mit [Netzwerksicherheitsgruppen (NSGs)](../../../virtual-network/security-overview.md) definiert.
+- Routingeinschränkungen in und aus DBMS-VMs werden *nicht* mit Firewalls festgelegt, die auf den lokalen DBMS-VMs installiert sind. Stattdessen wird Routing mit [Netzwerksicherheitsgruppen (NSGs)](../../../virtual-network/network-security-groups-overview.md) definiert.
 - Weisen Sie der VM verschiedene NICs zu, um den Datenverkehr zu den DBMS-VMs zu trennen und zu isolieren. Jede NIC erhält eine andere IP-Adresse und ist einem anderen Subnetz des virtuellen Netzwerks zugeordnet. Für jedes Subnetz gelten verschiedene NSG-Regeln. Die Isolation oder die Trennung des Netzwerkverkehrs ist eine Routingmaßnahme. Sie wird nicht zum Festlegen von Kontingenten zur Steigerung des Netzwerkdurchsatzes verwendet.
 
 > [!NOTE]
@@ -286,8 +295,8 @@ Diese bewährten Methoden sind das Ergebnis von Hunderten von Kundenbereitstellu
 >
 
 
-> [!IMPORTANT]
-> Das Konfigurieren [virtueller Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/) im Kommunikationspfad zwischen der SAP-Anwendung und der DBMS-Schicht eines SAP NetWeaver-, Hybris- oder S/4HANA-basierten SAP-Systems wird nicht unterstützt. Diese Einschränkung gilt aus Funktions- und Leistungsgründen. Der Kommunikationspfad zwischen der SAP-Anwendungsschicht und der DBMS-Schicht muss ein direkter Pfad sein. Die Einschränkung gilt nicht für [Regeln für Anwendungssicherheitsgruppen (ASGs) und NSGs](../../../virtual-network/security-overview.md), wenn diese ASG- und NSG-Regeln einen direkten Kommunikationspfad zulassen. 
+> [!WARNING]
+> Das Konfigurieren [virtueller Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/) im Kommunikationspfad zwischen der SAP-Anwendung und der DBMS-Schicht eines SAP NetWeaver-, Hybris- oder S/4HANA-basierten SAP-Systems wird nicht unterstützt. Diese Einschränkung gilt aus Funktions- und Leistungsgründen. Der Kommunikationspfad zwischen der SAP-Anwendungsschicht und der DBMS-Schicht muss ein direkter Pfad sein. Die Einschränkung gilt nicht für [Regeln für Anwendungssicherheitsgruppen (ASGs) und NSGs](../../../virtual-network/network-security-groups-overview.md), wenn diese ASG- und NSG-Regeln einen direkten Kommunikationspfad zulassen. 
 >
 > Weitere Szenarien, in denen virtuelle Netzwerkgeräte nicht unterstützt werden:
 >
@@ -304,7 +313,7 @@ Diese bewährten Methoden sind das Ergebnis von Hunderten von Kundenbereitstellu
 >
 > Beachten Sie, dass für den Netzwerkdatenverkehr zwischen zwei virtuellen Azure-Netzwerken mit [Peering](../../../virtual-network/virtual-network-peering-overview.md) Übertragungskosten anfallen. Zwischen der SAP-Anwendungsschicht und der DBMS-Schicht werden riesige Datenmengen im Terabytebereich ausgetauscht. Somit können erhebliche Kosten entstehen, wenn die SAP-Anwendungsschicht und die DBMS-Schicht auf zwei mittels Peering verknüpfte virtuelle Azure-Netzwerke aufgeteilt sind.
 
-Verwenden Sie zwei VMs für Ihre DBMS-Produktionsbereitstellung innerhalb einer Azure-Verfügbarkeitsgruppe. Verwenden Sie auch separates Routing für die SAP-Anwendungsschicht sowie den Datenverkehr für die Verwaltung und Vorgänge zu den beiden DBMS-VMs. Sehen Sie sich die folgende Abbildung an:
+Verwenden Sie zwei VMs für Ihre DBMS-Produktionsbereitstellung innerhalb einer Azure-Verfügbarkeitsgruppe oder zwischen zwei Azure-Verfügbarkeitszonen. Verwenden Sie auch separates Routing für die SAP-Anwendungsschicht sowie den Datenverkehr für die Verwaltung und Vorgänge zu den beiden DBMS-VMs. Sehen Sie sich die folgende Abbildung an:
 
 ![Diagramm: zwei VMs in zwei Subnetzen](./media/virtual-machines-shared-sap-deployment-guide/general_two_dbms_two_subnets.PNG)
 
@@ -314,19 +323,13 @@ Die Verwendung von privaten virtuellen IP-Adressen, die in Funktionen wie SQL Se
 
 Bei einem Failover des Datenbankknotens muss die SAP-Anwendung nicht erneut konfiguriert werden. Stattdessen werden die gängigsten SAP-Anwendungsarchitekturen wieder mit der privaten virtuellen IP-Adresse verbunden. Inzwischen reagiert der Lastenausgleich auf das Failover des Knotens, indem er den Datenverkehr an die private virtuelle IP-Adresse auf dem zweiten Knoten umleitet.
 
-Azure bietet zwei verschiedene [Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md): Basic und Standard. Wenn Sie nicht über Azure-Verfügbarkeitszonen hinweg bereitstellen möchten, ist die Load-Balancer-SKU „Basic“ vollkommen ausreichend.
+Azure bietet zwei verschiedene [Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md): Basic und Standard. Angesichts der Vorteile in Bezug auf Setup und Funktionalität empfiehlt sich die Verwendung der Standard-SKU von Azure Load Balancer. Einer der großen Vorteile der Load Balancer-Standardversion besteht darin, dass der Datenverkehr nicht durch die Load Balancer-Instanz selbst geleitet wird.
 
-Wird der Datenverkehr zwischen den DBMS-VMs und der SAP-Anwendungsschicht immer über den Lastenausgleich weitergeleitet? Die Antwort hängt von der Load Balancer-Konfiguration ab. 
+Ein Beispiel für die Konfiguration einer internen Load Balancer-Instanz finden Sie im [Tutorial: Manuelles Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer).
 
-Zu diesem Zeitpunkt wird der eingehende Datenverkehr an die DBMS-VM immer über den Lastenausgleich geleitet. Der ausgehende Datenverkehr von der DBMS-VM zur Anwendungsschicht-VM hängt von der Konfiguration des Lastenausgleichs ab. 
+> [!NOTE]
+> Die SKUs „Basic“ und „Standard“ verhalten sich in Bezug auf den Zugriff auf öffentliche IP-Adressen unterschiedlich. Im Dokument [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](./high-availability-guide-standard-load-balancer-outbound-connections.md) wird beschrieben, wie die Einschränkungen der Standard-SKU beim Zugriff auf öffentliche IP-Adressen umgangen werden können.
 
-Die Load Balancer-Instanz bietet eine Möglichkeit, DirectServerReturn. Wenn diese Option konfiguriert ist, wird der Datenverkehr von der DBMS-VM zur SAP-Anwendungsschicht *nicht* über den Lastenausgleich weitergeleitet. Stattdessen geht er direkt zur Anwendungsschicht. Wenn „DirectServerReturn“ nicht konfiguriert ist, wird der zur SAP-Anwendungsschicht zurückkommende Datenverkehr über den Lastenausgleich weitergeleitet.
-
-Wir empfehlen, „DirectServerReturn“ in Kombination mit Lastenausgleichen zu konfigurieren, die zwischen der SAP-Anwendungsschicht und der DBMS-Schicht positioniert sind. Diese Konfiguration verringert die Netzwerklatenz zwischen den zwei Schichten.
-
-Ein Beispiel für die Einrichtung dieser Konfiguration mit SQL Server Always On finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
-
-Wenn Sie veröffentlichte GitHub-JSON-Vorlagen als Referenz für Ihre SAP-Infrastrukturbereitstellungen in Azure verwenden, sehen Sie sich diese [Vorlage für ein dreischichtiges SAP-System](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md) an. In dieser Vorlage finden Sie auch die korrekten Einstellungen für den Lastenausgleich.
 
 ### <a name="azure-accelerated-networking"></a>Beschleunigter Netzwerkbetrieb in Azure
 Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, empfehlen wir Ihnen, [Beschleunigter Netzwerkbetrieb in Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) zu wählen. Verwenden Sie diese Option, wenn Sie Azure-VMs für eine SAP-Workload bereitstellen, insbesondere für die SAP-Anwendungsschicht und die SAP DBMS-Schicht.
@@ -336,11 +339,11 @@ Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, empfehlen wir Ihn
 >
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Beschleunigter Netzwerkbetrieb unter Windows][Logo_Windows] Windows
 >
 > Unter [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-powershell.md) erfahren Sie, wie VMs mit beschleunigtem Netzwerkbetrieb für Windows bereitgestellt werden.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Beschleunigter Netzwerkbetrieb unter Linux][Logo_Linux] Linux
 >
 > Weitere Informationen zur Linux-Distribution finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-cli.md).
 >

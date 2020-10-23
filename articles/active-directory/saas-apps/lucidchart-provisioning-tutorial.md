@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850658"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Lucidchart für die automatische Benutzerbereitstellung
 
@@ -49,11 +49,11 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 1. Melden Sie sich bei der [Lucidchart-Verwaltungskonsole](https://www.lucidchart.com) an. Navigieren Sie zu **Team > App-Integration**.
 
-      ![Lucidchart-SCIM](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Screenshot der Lucidchart-Verwaltungskonsole. Das Menü „Team“ ist hervorgehoben und geöffnet. Unter „Administrator“ ist „App-Integration“ markiert." border="false":::
 
 2. Navigieren Sie zu **SCIM**.
 
-      ![Lucidchart-SCIM](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Screenshot der Lucidchart-Verwaltungskonsole. Das Menü „Team“ ist hervorgehoben und geöffnet. Unter „Administrator“ ist „App-Integration“ markiert." border="false":::
 
 3. Scrollen Sie nach unten, um das **Bearertoken** und die **Basisadresse für Lucidchart** anzuzeigen. Kopieren und speichern Sie das **Bearertoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ für Ihre Lucidchart-Anwendung in das Feld **Geheimes Token*** eingegeben. 
 

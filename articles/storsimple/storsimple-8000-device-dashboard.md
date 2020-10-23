@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512035"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766237"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Verwenden der Übersicht über Geräte im StorSimple-Geräte-Manager-Dienst
 
@@ -86,7 +86,7 @@ Der Bereich „Zusammenfassung“ erfasst einige der wichtigen Eigenschaften wie
 
 * Die Kachel **Kapazität** zeigt den primären Speicher, der bereitgestellt wurde und auf dem Gerät verbleibt, im Verhältnis zum verfügbaren Gesamtspeicher des Geräts. **Bereitgestellt** bezieht sich auf die Menge an Speicherplatz, die vorbereitet wird und für die Nutzung reserviert ist. **Verbleibend** bezieht sich auf die verbleibenden Kapazität, die über dieses Gerät bereitgestellt werden kann. 
 
-    ![Kachel „Nutzung“](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Kachel für Nutzung (2)](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     Klicken Sie auf diese Kachel, um anzuzeigen, wie die Kapazität für mehrstufige und lokale Volumes bereitgestellt wird. **Verbleibende mehrstufige Kapazität** bezeichnet die verfügbare Kapazität, einschließlich Cloud, die bereitgestellt werden kann. **Verbleibende lokale Kapazität** ist die verbleibende Kapazität auf den Datenträgern, die an dieses Gerät angeschlossen sind.
 

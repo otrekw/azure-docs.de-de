@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050332"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542273"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -53,7 +53,7 @@ Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gate
 
 * Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
 * Verwenden Sie die gegenseitige TLS-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
-* Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. In allen Tarifen von API Management mit Ausnahme von „Verbrauch“ bleibt die IP-Adresse des Gateways konstant, aber es gelten einige Einschränkungen, die in dem [IP-Dokumentationsartikel](api-management-howto-ip-addresses.md) beschrieben sind.
+* Verwenden Sie die IP-Filterung in Ihrem Back-End-Dienst. In allen Tarifen von API Management mit Ausnahme von „Verbrauch“ bleibt die IP-Adresse des Gateways konstant, aber es gelten einige Einschränkungen, die in dem [IP-Dokumentationsartikel](api-management-howto-ip-addresses.md) beschrieben sind.
 * Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Wie kopiere ich meine API Management-Dienstinstanz in eine neue Instanz?

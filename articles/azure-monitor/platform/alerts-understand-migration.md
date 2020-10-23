@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852394"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875919"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Grundlegendes zu den Optionen zur Migration zu neueren Warnungen
 
@@ -254,10 +254,12 @@ Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erst
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Richtlinie mit Auswirkung „deny“ verhindert die Migration Ihrer Regeln
 
-Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Richtlinie kann jedoch das Erstellen von Ressourcen verhindern. Je nach Richtlinie können einige oder alle Regeln nicht migriert werden. Die Richtlinien, die den Prozess blockieren, werden im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt. Dieses Problem lässt sich auf eine der folgenden Arten beheben:
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine [Azure Policy](../../governance/policy/index.yml)-Zuweisung kann jedoch das Erstellen von Ressourcen verhindern. Je nach Richtlinienzuweisung können einige oder alle Regeln nicht migriert werden. Die Richtlinienzuweisungen, die den Prozess blockieren, werden im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt. Dieses Problem lässt sich auf eine der folgenden Arten beheben:
 
-- Ausschließen der Abonnements oder Ressourcengruppen von der Richtlinienzuweisung für die Dauer des Migrationsprozesses. [Erfahren Sie mehr über das Verwalten eines Ausschlussbereichs für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
-- Entfernen oder Ändern des Effekts in „audit“ oder „append“ (wodurch beispielsweise Probleme im Zusammenhang mit fehlenden Tags gelöst werden können). [Erfahren Sie mehr über das Verwalten eines Effekts für Richtlinien](../../governance/policy/concepts/definition-structure.md#policy-rule).
+- Schließen Sie Abonnements, Ressourcengruppen oder einzelnen Ressourcen für die Dauer des Migrationsprozesses aus der Richtlinienzuweisung aus. [Erfahren Sie mehr über das Verwalten von Ausschlussbereichen für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Legen Sie den Erzwingungsmodus in der Richtlinienzuweisung auf **Deaktiviert** fest. [Erfahren Sie mehr über die enforcementMode-Eigenschaft einer Richtlinienzuweisung.](../../governance/policy/concepts/assignment-structure.md#enforcement-mode)
+- Legen Sie eine Azure Policy-Ausnahme (Vorschau) für die Abonnements, Ressourcengruppen oder einzelnen Ressource in der Richtlinienzuweisung fest. [Erfahren Sie mehr über die Ausnahmestruktur von Azure Policy.](../../governance/policy/concepts/exemption-structure.md)
+- Entfernen Sie die Auswirkung einer Richtlinie, oder ändern Sie die Auswirkung in „disabled“, „audit“, „append“ oder „modify“ (wodurch beispielsweise Probleme im Zusammenhang mit fehlenden Tags gelöst werden können). [Erfahren Sie mehr über das Verwalten von Richtlinienauswirkungen](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460168"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000175"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -169,11 +169,11 @@ Weitere Informationen finden Sie unter [Redis-Keyspacebenachrichtigungen](https:
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Cache for Redis-Ratgeber
 Das Blatt **Azure Cache for Redis-Ratgeber** zeigt Empfehlungen für Ihren Cache an. Während des normalen Betriebs werden keine Empfehlungen angezeigt.
 
-![Empfehlungen](./media/cache-configure/redis-cache-no-recommendations.png)
+![Screenshot: Anzeige der Empfehlungen.](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Wenn es während des Betriebs Ihres Caches zu Zuständen kommt wie hohe Speicherauslastung, Netzwerkbandbreite oder Serverauslastung, wird auf dem Blatt **Azure Cache for Redis** eine Warnung angezeigt.
 
-![Empfehlungen](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Screenshot: Anzeige der Warnungen im Abschnitt „Azure Cache for Redis“.](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Weitere Informationen finden Sie auf dem Blatt **Empfehlungen** .
 
@@ -214,7 +214,7 @@ Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Si
 
 
 ### <a name="redis-data-persistence"></a>Redis-Datenpersistenz
-Klicken Sie auf **Datenpersistenz**, um die Datenpersistenz für Ihren Premium-Cache zu aktivieren, zu deaktivieren oder zu konfigurieren. Azure Cache for Redis bietet Redis-Persistenz entweder per [RDB-Persistenz](cache-how-to-premium-persistence.md#configure-rdb-persistence) oder per [AOF-Persistenz](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klicken Sie auf **Datenpersistenz**, um die Datenpersistenz für Ihren Premium-Cache zu aktivieren, zu deaktivieren oder zu konfigurieren. Azure Cache for Redis bietet Redis-Persistenz entweder per RDB-Persistenz oder per AOF-Persistenz.
 
 Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).
 
@@ -314,7 +314,7 @@ Auf dem Blatt **Neustart** können Sie die Knoten Ihres Caches neu starten. Mit 
 
 Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können Sie die Shards des Caches auswählen, die neu gestartet werden sollen.
 
-![Reboot](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Screenshot: Auswählen der Shards des Caches, die neu gestartet werden sollen.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neustart**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die paar Minuten später wieder online sind.
 
@@ -474,11 +474,11 @@ Weitere Informationen zu Redis-Befehlen finden Sie unter [https://redis.io/comma
 
 Um auf die Redis-Konsole zuzugreifen, klicken Sie auf dem Blatt **Azure Cache for Redis** auf **Konsole**.
 
-![Redis-Konsole](./media/cache-configure/redis-console-menu.png)
+![Screenshot mit hervorgehobener Schaltfläche „Konsole“.](./media/cache-configure/redis-console-menu.png)
 
 Zum Anwenden von Befehlen auf Ihre Cache-Instanz geben Sie den gewünschten Befehl in der Konsole ein.
 
-![Redis-Konsole](./media/cache-configure/redis-console.png)
+![Screenshot: Redis-Konsole mit Eingabebefehl und Ergebnissen.](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>Verwenden der Redis-Konsole mit einem gruppierten Premium-Cache

@@ -1,17 +1,17 @@
 ---
 title: Abfragespeicher – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird das Abfragespeicherfeature in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830280"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710531"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -250,7 +250,7 @@ In den folgenden Tabellen werden die Felder für die beiden Protokolltypen besch
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 - Wenn ein PostgreSQL-Server über den Parameter „default_transaction_read_only“ verfügt, kann der Abfragespeicher keine Daten erfassen.
 - Die Abfragespeicherfunktionalität kann unterbrochen werden, wenn lange Unicodeabfragen (mindestens 6000 Bytes) festgestellt werden.
-- [Lesereplikate](concepts-read-replicas.md) replizieren Abfragespeicherdaten des Masterservers. Das bedeutet, dass der Abfragespeicher eines Lesereplikats keine Statistikdaten zu Abfragen bereitstellt, die für das Lesereplikat ausgeführt werden.
+- [Lesereplikate](concepts-read-replicas.md) replizieren Abfragespeicherdaten des primären Servers. Das bedeutet, dass der Abfragespeicher eines Lesereplikats keine Statistikdaten zu Abfragen bereitstellt, die für das Lesereplikat ausgeführt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

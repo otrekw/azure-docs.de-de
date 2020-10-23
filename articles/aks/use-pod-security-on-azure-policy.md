@@ -3,20 +3,18 @@ title: Sichern von Pods mit Azure Policy in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie Pods mit Azure Policy in Azure Kubernetes Service (AKS) sichern.
 services: container-service
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a1fafdf1db29917982bbf136de45237459712bcd
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440875"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073460"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>Sichern von Pods mit Azure Policy (Vorschau)
+# <a name="secure-pods-with-azure-policy"></a>Schützen von Pods mit Azure Policy
 
 Zum Erhöhen der Sicherheit Ihres AKS-Clusters können Sie steuern, welche Funktionen den Pods gewährt werden und ob etwas nicht der Unternehmensrichtlinie entspricht. Dieser Zugriff wird durch integrierte Richtlinien definiert, die durch das [Azure Policy-Add-On für AKS][kubernetes-policy-reference] bereitgestellt werden. Durch die Bereitstellung einer zusätzlichen Kontrolle über die Sicherheitsaspekte der Spezifikation Ihres Pods, z. B. Stammberechtigungen, wird eine strengere Einhaltung der Sicherheitsvorschriften und ein besserer Einblick in die in Ihrem Cluster bereitgestellten Systeme ermöglicht. Wenn ein Pod die in der Richtlinie festgelegten Bedingungen nicht erfüllt, kann Azure Policy dem Pod das Starten untersagen oder einen Verstoß kennzeichnen. In diesem Artikel erfahren Sie, wie Sie Azure Policy verwenden können, um die Bereitstellung von Pods in AKS einzuschränken.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -29,11 +27,10 @@ Um AKS-Pods durch Azure Policy zu schützen, müssen Sie das Azure Policy-Add-On
 In diesem Dokument wird davon ausgegangen, dass Sie über Folgendes verfügen, das in der oben verknüpften exemplarischen Vorgehensweise bereitgestellt wird.
 
 * Die Ressourcenanbieter `Microsoft.ContainerService` und `Microsoft.PolicyInsights` müssen mit `az provider register` registriert sein.
-* Das Featureflag `AKS-AzurePolicyAutoApprove` (Vorschau) muss mit `az feature register` registriert sein.
-* Die Azure-Befehlszeilenschnittstelle muss mit der `aks-preview`-Erweiterung, Version 0.4.53 oder höher, installiert sein.
-* Ein AKS-Cluster unter der unterstützten Version 1.15 oder höher, der mit dem Azure Policy-Add-On installiert ist.
+* Azure CLI 2.12 oder höher
+* Ein AKS-Cluster unter der Version 1.15 oder höher, der mit dem Azure Policy-Add-On installiert ist.
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>Übersicht über das Sichern von Pods mit Azure Policy für AKS (Vorschau)
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks"></a>Übersicht über das Sichern von Pods mit Azure Policy für AKS
 
 >[!NOTE]
 > In diesem Dokument wird ausführlich beschrieben, wie Azure Policy zum Sichern von Pods verwendet werden kann. Hierbei handelt es sich um den Nachfolger des [Features für Kubernetes-Podsicherheitsrichtlinien in der Vorschauversion](use-pod-security-policies.md).
@@ -51,16 +48,44 @@ In diesem Dokument wird ausführlich beschrieben, wie Sie mit Azure Policy die P
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Während der Vorschau können maximal 200 Pods mit 20 Azure Policy für Kubernetes-Richtlinien in einem einzelnen Cluster ausgeführt werden.
-* [Einige Systemnamespaces](#namespace-exclusion), die mit AKS verwaltete Pods enthalten, werden aus der Richtlinienauswertung ausgeschlossen.
-* Windows-Pods [bieten keine Unterstützung für Sicherheitskontexte](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods), daher gelten viele Azure-Richtlinien nur für Linux-Pods, z. B. das Unterbinden von Stammberechtigungen, die in Windows-Pods nicht eskaliert werden können.
-* Die Podsicherheitsrichtlinie und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. Wenn Sie das Azure Policy-Add-On in einem Cluster mit aktivierter Podsicherheitsrichtlinie installieren, deaktivieren Sie die Podsicherheitsrichtlinie mit den [folgenden Anweisungen](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster).
+Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On für Kubernetes-Cluster:
+
+- Das Azure Policy-Add-On für Kubernetes wird unter der Kubernetes-Version **1.14** oder höher unterstützt.
+- Das Azure Policy-Add-On für Kubernetes kann nur für Linux-Knotenpools bereitgestellt werden.
+- Es werden nur integrierte Richtliniendefinitionen unterstützt.
+- Maximale Anzahl nicht konformer Datensätze pro Richtlinie pro Cluster: **500**
+- Maximale Anzahl nicht konformer Datensätze pro Abonnement: **1 Mio.**
+- Installationen von Gatekeeper außerhalb des Azure Policy-Add-Ons werden nicht unterstützt. Deinstallieren Sie alle Komponenten, die durch eine frühere Installation von Gatekeeper installiert wurden, bevor Sie das Azure Policy-Add-On aktivieren.
+- [Ursachen für Nichtkonformität](../governance/policy/how-to/determine-non-compliance.md#compliance-reasons) sind für diesen [Ressourcenanbietermodus](../governance/policy/concepts/definition-structure.md#resource-provider-modes) nicht verfügbar.
+
+Die folgenden Einschränkungen gelten nur für das Azure Policy-Add-On für AKS:
+
+- Die [AKS-Podsicherheitsrichtlinie (Vorschau)](use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. 
+- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_, _gatekeeper-system_ und _aks-periscope_.
+
+### <a name="recommendations"></a>Empfehlungen
+
+Im Folgenden finden Sie allgemeine Empfehlungen für die Verwendung des Azure Policy-Add-Ons:
+
+- Zur Verwendung des Azure Policy-Add-Ons müssen drei Gatekeeper-Komponenten ausgeführt werden: ein Überwachungspod und zwei Webhook-Podreplikate. Diese Komponenten nutzen umso mehr Ressourcen, je stärker die Anzahl der Kubernetes-Ressourcen und Richtlinienzuweisungen im Cluster zunimmt. Dadurch werden entsprechende Überwachungs- und Erzwingungsvorgänge erforderlich.
+
+  - Bei weniger als 500 Pods in einem Cluster mit maximal 20 Einschränkungen gilt Folgendes: 2 vCPUs und 350 MB Arbeitsspeicher pro Komponente.
+  - Bei mehr als 500 Pods in einem Cluster mit maximal 40 Einschränkungen gilt Folgendes: 3 vCPUs und 600 MB Arbeitsspeicher pro Komponente.
+
+Die folgende Empfehlung gilt nur für AKS und das Azure Policy-Add-On:
+
+- Verwenden Sie zum Planen von Gatekeeper-Pods den Systemknotenpool mit einem `CriticalAddonsOnly`-Taint. Weitere Informationen finden Sie unter [Verwenden von Systemknotenpools](use-system-pools.md#system-and-user-node-pools).
+- Schützen Sie von Ihren AKS-Clustern ausgehenden Datenverkehr. Weitere Informationen finden Sie unter [Kontrollieren des ausgehenden Datenverkehrs für Clusterknoten](limit-egress-traffic.md).
+- Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+  Installieren zur Konfiguration einer Ausnahme die [YAML-Datei „mic-exception“](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
+
+Das Azure Policy-Add-On erfordert den Betrieb von CPU- und Arbeitsspeicherressourcen. Diese Anforderungen erhöhen sich, wenn ein Cluster größer wird. Eine allgemeine Anleitung zur Verwendung des Azure Policy-Add-Ons finden Sie in den [Azure Policy-Empfehlungen][policy-recommendations].
 
 ## <a name="azure-policies-to-secure-kubernetes-pods"></a>Azure-Richtlinien zum Sichern von Kubernetes-Pods
 
 Nach der Installation des Azure Policy-Add-Ons werden standardmäßig keine Richtlinien angewendet.
 
-Es gibt elf (11) integrierte individuelle Azure-Richtlinien und zwei (2) integrierte Initiativen, die speziell Pods in einem AKS-Cluster sichern.
+Es gibt 11 integrierte individuelle Azure-Richtlinien und 2 integrierte Initiativen, die speziell Pods in einem AKS-Cluster sichern.
 Jede Richtlinie kann mit einer Auswirkung angepasst werden. Eine vollständige Liste der [AKS-Richtlinien und ihrer unterstützten Auswirkungen ist hier aufgeführt][policy-samples]. Erfahren Sie mehr über die [Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md).
 
 Azure-Richtlinien können auf Verwaltungsgruppenebene, Abonnement- oder Ressourcengruppenebene angewendet werden. Stellen Sie bei der Zuweisung einer Richtlinie auf Ressourcengruppenebene sicher, dass die Ressourcengruppe des AKS-Zielclusters innerhalb des Gültigkeitsbereichs der Richtlinie ausgewählt wird. Jeder Cluster im zugewiesenen Bereich mit installiertem Azure Policy-Add-On befindet sich im Gültigkeitsbereich der Richtlinie.
@@ -132,7 +157,7 @@ AKS erfordert die Ausführung von Systempods auf einem Cluster, um entscheidende
 1. azure-arc
 1. aks-periscope
 
-Zusätzliche benutzerdefinierte Namespaces können während der Erstellung, Aktualisierung und Überwachung von der Auswertung ausgeschlossen werden. Dies sollte verwendet werden, wenn Sie bestimmte Pods verwenden, die in einem sanktionierten Namespace ausgeführt werden und keine Überwachungsverstöße auslösen möchten.
+Zusätzliche benutzerdefinierte Namespaces können während der Erstellung, Aktualisierung und Überwachung von der Auswertung ausgeschlossen werden. Diese Ausschlüsse sollten verwendet werden, wenn Sie bestimmte Pods verwenden, die in einem sanktionierten Namespace ausgeführt werden und keine Überwachungsverstöße auslösen möchten.
 
 ## <a name="apply-the-baseline-initiative"></a>Anwenden der Baseline-Initiative
 
@@ -292,7 +317,7 @@ Nachfolgend finden Sie eine Zusammenfassung der Verhaltensänderungen zwischen d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde Ihnen gezeigt, wie Sie eine Azure-Richtlinie anwenden können, die die Bereitstellung von privilegierten Pods einschränkt, um die Nutzung des privilegierten Zugriffs zu verhindern. Es gibt viele anwendbare Richtlinien, z. B. Richtlinien zum Einschränken der Verwendung von Volumes. Weitere Informationen zu den verfügbaren Optionen finden Sie in den [Referenzdokumentationen zu Azure Policy für Kubernetes][kubernetes-policy-reference].
+In diesem Artikel wurde Ihnen gezeigt, wie Sie eine Azure-Richtlinie anwenden können, die die Bereitstellung von privilegierten Pods einschränkt, um die Nutzung des privilegierten Zugriffs zu verhindern. Es gibt viele anwendbare Richtlinien, z. B. Richtlinien, die die Verwendung von Volumes einschränken. Weitere Informationen zu den verfügbaren Optionen finden Sie in den [Referenzdokumentationen zu Azure Policy für Kubernetes][kubernetes-policy-reference].
 
 Weitere Informationen zum Einschränken des Netzwerkdatenverkehrs von Pods finden Sie unter [Vorschauversion: Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)][network-policies].
 
@@ -304,10 +329,14 @@ Weitere Informationen zum Einschränken des Netzwerkdatenverkehrs von Pods finde
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity
+[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
 
 <!-- LINKS - internal -->
+[policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
+[policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
-[policy-samples]: policy-samples.md#microsoftcontainerservice
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

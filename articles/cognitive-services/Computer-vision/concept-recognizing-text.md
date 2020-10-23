@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526407"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973273"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
@@ -24,7 +24,7 @@ Die API für maschinelles Sehen von Azure umfasst Funktionen zur optischen Zeich
 
 ## <a name="read-api"></a>Lese-API 
 
-Die [Read-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) für maschinelles Sehen ist die neueste OCR-Technologie von Azure ([Neuerungen kennenlernen](./whats-new.md)), mit der sich gedruckter Text in mehreren Sprachen, handschriftlicher Text (nur Englisch), Ziffern und Währungssymbole aus Bildern und mehrseitigen PDF-Dokumenten extrahieren lassen. Die API ist für das Extrahieren von Text aus textlastigen Bildern und mehrseitigen PDF-Dokumenten mit gemischten Sprachen optimiert. Sie unterstützt sowohl die Erkennung von gedrucktem als auch von handschriftlichem Text im selben Bild oder Dokument.
+Die [Read-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) für maschinelles Sehen ist die neueste OCR-Technologie von Azure ([Neuerungen kennenlernen](./whats-new.md)), mit der sich gedruckter Text in mehreren Sprachen, handschriftlicher Text (nur Englisch), Ziffern und Währungssymbole aus Bildern und mehrseitigen PDF-Dokumenten extrahieren lassen. Die API ist für das Extrahieren von Text aus textlastigen Bildern und mehrseitigen PDF-Dokumenten mit gemischten Sprachen optimiert. Sie unterstützt sowohl die Erkennung von gedrucktem als auch von handschriftlichem Text im selben Bild oder Dokument.
 
 ![So konvertiert die optische Zeichenerkennung Bilder und Dokumente in eine strukturierte Ausgabe mit extrahiertem Text](./Images/how-ocr-works.svg)
 
@@ -36,21 +36,21 @@ Der Aufruf **Read** nimmt Bilder und Dokumente als Eingabe entgegen. Es bestehen
 * Die Dateigröße muss weniger als 50 MB (4 MB für den Free-Tarif) betragen und eine Größe von mindestens 50 x 50 Pixel und höchstens 10000 × 10000 Pixel aufweisen. 
 * Die Abmessungen bei PDF-Dateien dürfen maximal 17 × 17 Zoll betragen. Dies entspricht den Papierformaten Legal oder DIN A3 und kleineren Formaten.
 
-### <a name="read-31-preview-allows-selecting-pages"></a>Die Vorschauversion von Read 3.1 ermöglicht die Auswahl von Seiten.
-Mit der [Read 3.1-API (Vorschauversion)](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) können Sie für große mehrseitige Dokumente bestimmte Seitenzahlen oder Seitenbereiche als Eingabeparameter angeben, um Text nur von diesen Seiten zu extrahieren. Dies ist ein neuer Eingabeparameter zusätzlich zu dem optionalen Sprachparameter.
+### <a name="read-32-preview-allows-selecting-pages"></a>Die Vorschauversion von Read 3.2 ermöglicht die Auswahl von Seiten
+Mit der [Read 3.2-API (Vorschauversion)](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) können Sie bei großen, mehrseitigen Dokumenten bestimmte Seitenzahlen oder Seitenbereiche als Eingabeparameter angeben, um Text nur von diesen Seiten zu extrahieren. Dies ist ein neuer Eingabeparameter zusätzlich zu dem optionalen Sprachparameter.
 
 > [!NOTE]
 > **Spracheneingabe** 
 >
-> Der [Read-Aufruf](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) weist einen optionalen Anforderungsparameter für die Sprache auf. Dies ist der BCP-47-Sprachcode des Texts im Dokument. Read unterstützt die automatische Sprachidentifikation und mehrsprachige Dokumente. Geben Sie also nur einen Sprachcode an, wenn Sie erzwingen möchten, dass das Dokument in dieser spezifischen Sprache verarbeitet wird.
+> Der [Read-Aufruf](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) weist einen optionalen Anforderungsparameter für die Sprache auf. Dies ist der BCP-47-Sprachcode des Texts im Dokument. Read unterstützt die automatische Sprachidentifikation und mehrsprachige Dokumente. Geben Sie also nur einen Sprachcode an, wenn Sie erzwingen möchten, dass das Dokument in dieser spezifischen Sprache verarbeitet wird.
 
 ## <a name="the-read-call"></a>Read-Aufruf
 
-Beim [Read-Aufruf](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) der Read-API wird ein Bild oder PDF-Dokument als Eingabe erfasst und asynchron Text extrahiert. Der Aufruf wird mit einem Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Vorgangs-ID enthält, die im nächsten Schritt verwendet werden soll.
+Beim [Read-Aufruf](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) der Read-API wird ein Bild oder PDF-Dokument als Eingabe erfasst und asynchron Text extrahiert. Der Aufruf wird mit einem Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Vorgangs-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Abrechnung** 
@@ -59,7 +59,7 @@ Beim [Read-Aufruf](https://westcentralus.dev.cognitive.microsoft.com/docs/servic
 
 ## <a name="the-get-read-results-call"></a>„Get Read Results“-Aufruf
 
-Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750). Dieser Vorgang erfasst die Vorgangs-ID, die beim Read-Vorgang erstellt wurde, als Eingabe. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 1 bis 2 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750). Dieser Vorgang erfasst die Vorgangs-ID, die beim Read-Vorgang erstellt wurde, als Eingabe. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 1 bis 2 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -83,7 +83,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,
@@ -128,8 +128,8 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
   }
 }
 ```
-### <a name="read-31-preview-adds-text-line-style-latin-languages-only"></a>Die Vorschauversion von Read 3.1 fügt Textzeilenstil hinzu (nur lateinische Sprachen).
-Die [Read 3.1-API (Vorschauversion)](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) gibt ein **appearance**-Objekt, das klassifiziert, ob es sich bei den einzelnen Textzeilen um einen Druck- oder Handschriftstil handelt, zusammen mit einer Zuverlässigkeitsbewertung aus. Dieses Feature wird nur für lateinische Sprachen unterstützt.
+### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Die Vorschauversion von Read 3.2 fügt Textzeilenstil hinzu (nur Sprachen mit lateinischem Alphabet)
+Die [Read 3.2-API (Vorschauversion)](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) gibt ein **appearance**-Objekt aus, das klassifiziert, ob es sich bei den einzelnen Textzeilen um Drucktext oder eine Handschrift handelt. Außerdem wird eine Zuverlässigkeitsbewertung ausgegeben. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 
 ```json
   "appearance": {
@@ -140,12 +140,12 @@ Die [Read 3.1-API (Vorschauversion)](https://westus2.dev.cognitive.microsoft.co
 Beginnen Sie mit den [OCR-SDK-Schnellstartanleitungen für maschinelles Sehen](./quickstarts-sdk/client-library.md) und den [Schnellstartanleitungen für die Read REST-API](./QuickStarts/CSharp-hand-text.md), um OCR-Funktionen in Ihre Anwendungen zu integrieren.
 
 ## <a name="supported-languages-for-print-text"></a>Unterstützte Sprachen für Drucktext
-Mit der [Read 3.0-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) kann gedruckter Text in englischer, spanischer, deutscher, französischer, italienischer, portugiesischer und niederländischer Sprache extrahiert werden.
+Mit der [Read 3.2-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) kann gedruckter Text in englischer, spanischer, deutscher, französischer, italienischer, portugiesischer und niederländischer Sprache extrahiert werden.
 
 Eine vollständige Liste der für OCR unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr).
 
-### <a name="read-31-preview-adds-simplified-chinese-and-japanese"></a>Die Vorschauversion von Read 3.1 fügt Chinesisch (vereinfacht) und Japanisch hinzu.
-Die [Öffentliche Vorschau der Read 3.1-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) unterstützt ab sofort Chinesisch (vereinfacht) und Japanisch. Wenn Sie für Ihr Szenario Unterstützung für weitere Sprachen benötigen, finden Sie entsprechende Informationen im Abschnitt [OCR-API](#ocr-api). 
+### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Chinesisch (vereinfacht) und Japanisch in der Vorschauversion von Read 3.2
+Die [öffentliche Vorschau der Read 3.2-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) unterstützt jetzt Chinesisch (vereinfacht) und Japanisch. Wenn Sie für Ihr Szenario Unterstützung für weitere Sprachen benötigen, finden Sie entsprechende Informationen im Abschnitt [OCR-API](#ocr-api). 
 
 ## <a name="supported-languages-for-handwritten-text"></a>Unterstützte Sprachen für handschriftlichen Text
 Der Read-Vorgang unterstützt zurzeit das Extrahieren von handschriftlichem Text ausschließlich in englischer Sprache.
@@ -202,6 +202,6 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die Read/OCR-Diens
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Beginnen Sie mit den [Schnellstartanleitungen zum Read 3.0-SDK für maschinelles Sehen](./quickstarts-sdk/client-library.md) in C#, Java, JavaScript oder Python.
-- Verwenden Sie die [Schnellstartanleitungen für die Read 3.0-REST-API](./QuickStarts/CSharp-hand-text.md) in C#, Java, JavaScript oder Python, um zu erfahren, wie Sie die REST-APIs verwenden.
-- Erfahren Sie mehr über die [Lese-REST-API 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
-- Erfahren Sie mehr über die [Public Preview der Read 3.1-REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) und die Unterstützung von Chinesisch (vereinfacht) und Japanisch.
+- In den [Schnellstartanleitungen für die Read 3.1-REST-API](./QuickStarts/CSharp-hand-text.md) in C#, Java, JavaScript oder Python erfahren Sie, wie Sie die REST-APIs verwenden.
+- Erfahren Sie mehr über die [Read 3.1-REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
+- Erfahren Sie mehr über die [öffentliche Vorschau der Read 3.2-REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) mit Unterstützung für Chinesisch (vereinfacht) und Japanisch.

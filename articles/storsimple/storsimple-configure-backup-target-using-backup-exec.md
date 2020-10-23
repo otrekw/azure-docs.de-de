@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036929"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710378"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
@@ -409,15 +409,15 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 
 4.  Wählen Sie in der Dropdownliste **Storage** (Speicher) das StorSimple-Volume, in dem der Archivierungsauftrag die Daten speichern soll.
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![Screenshot: Liste, aus der Sie den Speicher auswählen müssen.](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  Wählen Sie **Verify** (Überprüfen) aus, und aktivieren Sie das Kontrollkästchen **Do not verify data for this job** (Daten für diesen Auftrag nicht überprüfen).
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![Screenshot: Auswählen der Option „Daten für diesen Auftrag nicht überprüfen“.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
 6.  Klicken Sie auf **OK**.
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![Screenshot: Eigenschaften der Sicherungsdefinition.](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  Fügen Sie in der Spalte **Backup** (Sicherung) einen neuen Sicherungsauftrag hinzu. Verwenden Sie für „Source“ (Quelle) **incremental** (inkrementell). Wählen Sie als Ziel das StorSimple-Volume aus, auf dem der inkrementelle Sicherungsauftrag archiviert ist. Wiederholen Sie die Schritte 1-6.
 

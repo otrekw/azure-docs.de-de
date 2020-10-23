@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 231f30f5532d0934ba41e591aa821d56b11d5856
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928002"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856364"
 ---
 # <a name="get-face-detection-data"></a>Abrufen von Gesichtserkennungsdaten
 
@@ -36,71 +36,29 @@ Das Hauptaugenmerk dieses Leitfadens liegt auf dem Detect-Aufruf, z. B. welche 
 
 ## <a name="get-basic-face-data"></a>Abrufen von einfachen Gesichtsdaten
 
-Rufen Sie die Methode auf, wenn Sie auf einem Bild Gesichter erkennen und deren Position auf einem Bild bestimmen möchten. Hierbei muss der Parameter _returnFaceId_ auf **true** festgelegt sein. Dies ist die Standardeinstellung.
+Um Gesichter zu suchen und ihre Positionen auf einem Bild abzurufen, rufen Sie die Methoden [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) oder [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) mit auf **true** festgelegtem _returnFaceId_-Parameter auf. Dies ist die Standardeinstellung.
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
 Sie können die zurückgegebenen [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)-Objekte mit der zugehörigen eindeutigen ID sowie ein Rechteck (Gesichtsrahmen) abfragen, mit dem die Pixelkoordinaten des Gesichts angegeben werden.
 
-```csharp
-foreach (var face in faces)
-{
-    string id = face.FaceId.ToString();
-    FaceRectangle rect = face.FaceRectangle;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
 Weitere Informationen dazu, wie Sie die Position und die Dimensionen des Gesichts analysieren, finden Sie unter [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Normalerweise enthält dieses Rechteck Augen, Augenbrauen, Nase und Mund. Die Oberseite des Kopfs, die Ohren und das Kinn sind meist nicht enthalten. Um das Gesichtsrechteck zum Ausschneiden eines vollständigen Kopfs oder zum Produzieren eines Porträts in der Halbtotalen zu verwenden, z. B. als Ausweisfoto, können Sie das Rechteck in alle Richtungen erweitern.
 
 ## <a name="get-face-landmarks"></a>Abrufen von Gesichtsmerkmalpunkten
 
-[Gesichtsmerkmale](../concepts/face-detection.md#face-landmarks) bestehen aus mehreren einfach zu findenden Punkten im Gesicht. Beispiele hierfür sind die Pupillen oder die Nasenspitze. Legen Sie den Parameter _returnFaceLandmarks_ auf **true** fest, um die Punktdaten für Gesichtsmerkmale zu erhalten.
+[Gesichtsmerkmale](../concepts/face-detection.md#face-landmarks) bestehen aus mehreren einfach zu findenden Punkten im Gesicht. Beispiele hierfür sind die Pupillen oder die Nasenspitze. Um Daten zu Gesichtsmerkmalen abzurufen, legen Sie den Parameter _detectionModel_ auf **DetectionModel.Detection01** und den Parameter _returnFaceLandmarks_ auf **true** fest.
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
 Der folgende Code zeigt, wie Sie die Position von Nase und Pupillen abrufen können:
 
-```csharp
-foreach (var face in faces)
-{
-    var landmarks = face.FaceLandmarks;
-
-    double noseX = landmarks.NoseTip.X;
-    double noseY = landmarks.NoseTip.Y;
-
-    double leftPupilX = landmarks.PupilLeft.X;
-    double leftPupilY = landmarks.PupilLeft.Y;
-
-    double rightPupilX = landmarks.PupilRight.X;
-    double rightPupilY = landmarks.PupilRight.Y;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks2":::
 
 Sie können die Punktdaten für Gesichtsmerkmale auch verwenden, um die Ausrichtung eines Gesichts exakt zu bestimmen. Beispielsweise können Sie die Ausrichtung des Gesichts als Vektor vom Mittelpunkt des Munds zum Mittelpunkt der Augen definieren. Dieser Vektor wird mit dem folgenden Code berechnet:
 
-```csharp
-var upperLipBottom = landmarks.UpperLipBottom;
-var underLipTop = landmarks.UnderLipTop;
-
-var centerOfMouth = new Point(
-    (upperLipBottom.X + underLipTop.X) / 2,
-    (upperLipBottom.Y + underLipTop.Y) / 2);
-
-var eyeLeftInner = landmarks.EyeLeftInner;
-var eyeRightInner = landmarks.EyeRightInner;
-
-var centerOfTwoEyes = new Point(
-    (eyeLeftInner.X + eyeRightInner.X) / 2,
-    (eyeLeftInner.Y + eyeRightInner.Y) / 2);
-
-Vector faceDirection = new Vector(
-    centerOfTwoEyes.X - centerOfMouth.X,
-    centerOfTwoEyes.Y - centerOfMouth.Y);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="direction":::
 
 Wenn Ihnen die Ausrichtung des Gesichts bekannt ist, können Sie den rechteckigen Gesichtsrahmen drehen, um ihn noch besser am Gesicht auszurichten. Zum Ausschneiden von Gesichtern aus einem Bild können Sie Bilder programmgesteuert drehen, damit Gesichter immer senkrecht dargestellt werden.
 
@@ -108,36 +66,13 @@ Wenn Ihnen die Ausrichtung des Gesichts bekannt ist, können Sie den rechteckige
 
 Zusätzlich zu Gesichtsrahmen und Gesichtsmerkmalpunkten kann die Gesichtserkennungs-API mehrere konzeptuelle Gesichtsattribute analysieren. Eine vollständige Liste finden Sie im Abschnitt [Attribute](../concepts/face-detection.md#attributes), in dem die Konzepte beschrieben sind.
 
-Legen Sie den Parameter _returnFaceAttributes_ auf eine Liste mit [FaceAttributeType-Enumerationswerten](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) fest, wenn Sie Gesichtsattribute analysieren möchten.
+Um Gesichtsattribute zu analysieren, legen Sie den Parameter _detectionModel_ auf **DetectionModel.Detection01** und den Parameter _returnFaceAttributes_ auf eine Liste von [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)-Werten fest.
 
-```csharp
-var requiredFaceAttributes = new FaceAttributeType[] {
-    FaceAttributeType.Age,
-    FaceAttributeType.Gender,
-    FaceAttributeType.Smile,
-    FaceAttributeType.FacialHair,
-    FaceAttributeType.HeadPose,
-    FaceAttributeType.Glasses,
-    FaceAttributeType.Emotion
-};
-var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
 Rufen Sie dann Verweise für die zurückgegebenen Daten ab, und führen Sie je nach Bedarf weitere Vorgänge durch.
 
-```csharp
-foreach (var face in faces)
-{
-    var attributes = face.FaceAttributes;
-    var age = attributes.Age;
-    var gender = attributes.Gender;
-    var smile = attributes.Smile;
-    var facialHair = attributes.FacialHair;
-    var headPose = attributes.HeadPose;
-    var glasses = attributes.Glasses;
-    var emotion = attributes.Emotion;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes2":::
 
 Weitere Informationen zu den einzelnen Attributen finden Sie im Leitfaden [Face detection and attributes](../concepts/face-detection.md) (Gesichtserkennung und -attribute) zu den Konzepten.
 
