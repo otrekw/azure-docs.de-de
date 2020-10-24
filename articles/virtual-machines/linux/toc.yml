@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: Optimieren der Leistung
               href: optimization.md
-            - name: Konfigurieren von Software-RAID
-              href: configure-raid.md
             - name: Konfigurieren von LVM
               href: configure-lvm.md
         - name: 'Ermitteln nicht angefügter Datenträger: CLI'
