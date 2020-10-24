@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c4a32a5c929e74332e85ceb6f4cff787e237e385
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069644"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91574278"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>IoT Plug & Play-Komponenten in Modellen
 
@@ -56,7 +56,7 @@ Das folgende Beispiel zeigt einen Teil eines einfachen Modells, das keine Kompon
 ...
 ```
 
-Obwohl das Modell nicht explizit eine Komponente definiert, verhält es sich so, als gäbe es eine einzelne Komponente mit allen Telemetrie-, Eigenschafts- und Befehlsdefinitionen.
+Obwohl das Modell nicht explizit eine Komponente definiert, verhält es sich so, als gäbe es eine einzelne _Standardkomponente_ mit allen Telemetrie-, Eigenschafts- und Befehlsdefinitionen.
 
 Der folgende Screenshot zeigt, wie das Modell im Azure IoT-Explorertool angezeigt wird:
 
@@ -64,9 +64,12 @@ Der folgende Screenshot zeigt, wie das Modell im Azure IoT-Explorertool angezeig
 
 Die Modell-ID wird in einer Eigenschaft für Gerätezwillinge gespeichert, wie der folgenden Screenshot zeigt:
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Modell-ID in Eigenschaft für digitalen Zwilling":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Standardkomponente im Azure IoT-Explorer":::
 
-Ein DTDL-Modell ohne Komponenten ist eine nützliche Vereinfachung für Geräte mit nur einer Gruppe von Telemetriedaten, Eigenschaften und Befehlen. Mit einem Modell, das keine Komponenten verwendet, können Sie aus einem vorhandenen Gerät ganz einfach ein IoT Plug & Play-Gerät machen. Sie erstellen ein DTDL-Modell, das Ihr tatsächliches Gerät beschreibt, ohne dass dabei Komponenten definiert werden müssen.
+Ein DTDL-Modell ohne Komponenten ist eine nützliche Vereinfachung für Geräte oder IoT Edge-Module mit nur einer Gruppe von Telemetriedaten, Eigenschaften und Befehlen. Mit einem Modell, das keine Komponenten verwendet, können Sie aus einem vorhandenen Gerät oder Modul ganz einfach ein IoT Plug & Play-Gerät oder -Modul machen. Sie erstellen ein DTDL-Modell, das Ihr tatsächliches Gerät oder Modul beschreibt, ohne dass dabei Komponenten definiert werden müssen.
+
+> [!TIP]
+> Bei einem Modul kann es sich um ein Gerät [module](../iot-hub/iot-hub-devguide-module-twins.md) oder ein [IoT Edge-Modul](../iot-edge/about-iot-edge.md) handeln.
 
 ## <a name="multiple-components"></a>Mehrere Komponenten
 
@@ -109,11 +112,12 @@ Ein DTDL-Modell mit mehreren Komponenten verfügt über mindestens zwei Komponen
 ...
 ```
 
-Für dieses Modell sind im Inhaltsabschnitt drei Komponenten definiert: zwei `Thermostat`-Komponenten und eine `DeviceInformation`-Komponente. Darüber hinaus enthält es eine Standardstammkomponente.
+Für dieses Modell sind im Inhaltsabschnitt drei Komponenten definiert: zwei `Thermostat`-Komponenten und eine `DeviceInformation`-Komponente. Darüber hinaus enthält es eine Standardkomponente.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich nun mit Modellkomponenten vertraut gemacht haben, finden Sie weitere Informationen in den folgenden Artikeln:
 
+- [Installieren und Verwenden der DTDL-Erstellungstools](howto-use-dtdl-authoring-tools.md)
 - [Digital Twins Definition Language](https://github.com/Azure/opendigitaltwins-dtdl)
 - [Azure IoT-Modellrepository](./concepts-model-repository.md)
