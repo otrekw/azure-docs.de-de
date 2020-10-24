@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: Behandeln von Zugriffsproblemen
           href: troubleshooting-access-issues.md
+    - name: Vorläufiges Löschen und Löschschutz aktivieren
+      href: key-vault-recovery.md
     - name: Aktivieren der Protokollierung
       href: howto-logging.md
     - name: Entwickeln
@@ -109,7 +111,7 @@
         - name: Verwenden von Azure Resource Manager zum Bereitstellen von Key Vault
           href: vault-create-template.md
         - name: Speichern von Web-App-Geheimnissen
-          href: vs-secure-secret-appsettings.md
+          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
         - name: Dienst-zu-Dienst-Authentifizierung per .NET
           href: service-to-service-authentication.md
         - name: Verwenden des mit Key Vault verbundenen Diensts
@@ -134,14 +136,6 @@
           href: private-link-service.md
         - name: 'Zugreifen auf Key Vault hinter einer Firewall: Azure Key Vault'
           href: access-behind-firewall.md
-    - name: Vorläufiges Löschen
-      items:
-        - name: Key Vault-Wiederherstellung (Vorläufiges Löschen und Löschschutz)
-          href: key-vault-recovery.md
-        - name: Verwenden des vorläufigen Löschens per CLI
-          href: soft-delete-cli.md
-        - name: Verwenden des vorläufigen Löschens per PowerShell
-          href: soft-delete-powershell.md
     - name: Verschieben von Key Vault
       items:
         - name: Verschieben von Key Vault in eine andere Ressourcengruppe
