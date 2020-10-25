@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611247"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096248"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)
 
@@ -194,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Geben Sie als Nächstes eine Zuordnung mit den geschützten Ressourcen für `MsalModule.forRoot()` als `protectedResourceMap` an, und binden Sie diese Bereiche in `consentScopes` ein:
+Geben Sie als Nächstes eine Zuordnung der geschützten Ressourcen für `MsalModule.forRoot()` als `protectedResourceMap` an, und binden Sie diese Bereiche in `consentScopes` ein. Bei den URLs, die Sie in der `protectedResourceMap`-Sammlung angeben, muss die Groß-/Kleinschreibung beachtet werden.
 
 ```javascript
 @NgModule({

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ae70314a5f9bf691e935f1f171cd66c938b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528012"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122380"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SKYSITE
 
@@ -88,15 +88,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die SKYSITE-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Benutzerattribute mit ausgewähltem Bearbeitungssymbol](common/edit-attribute.png)
 
 1. Darüber hinaus wird von der SKYSITE-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
     a. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen**.
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![Screenshot: Benutzeransprüche mit Option zum Hinzufügen eines neuen Anspruchs](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![Screenshot: Dialogfeld „Benutzeransprüche verwalten“ zum Eingeben der hier beschriebenen Werte](./media/skysite-tutorial/config02.png)
 
     b. Wählen Sie **Alle Gruppen** aus der Optionsfeldliste aus.
 
@@ -148,11 +148,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Klicken Sie oben rechts auf der Seite auf **Settings** (Einstellungen), und navigieren Sie anschließend zu **Account setting** (Kontoeinstellung).
 
-    ![Konfiguration](./media/skysite-tutorial/config03.png)
+    ![Screenshot, in dem in den Einstellungen die Option „Kontoeinstellung“ ausgewählt ist.](./media/skysite-tutorial/config03.png)
 
 5. Führen Sie auf der Registerkarte **Single sign on (SSO)** (Einmaliges Anmelden) die folgenden Schritte aus:
 
-    ![Konfiguration](./media/skysite-tutorial/config04.png)
+    ![Screenshot der Registerkarte „Einmaliges Anmelden“, auf der Sie die beschriebenen Werte eingeben können.](./media/skysite-tutorial/config04.png)
 
     a. Fügen Sie in das Textfeld **Identity Provider sign in URL** (Anmelde-URL des Identitätsanbieters) den Wert der **URL für den Benutzerzugriff** ein, den Sie im Azure-Portal auf der Registerkarte **Eigenschaften** kopiert haben.
 

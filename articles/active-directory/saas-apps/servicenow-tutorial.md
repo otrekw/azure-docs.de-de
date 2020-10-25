@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3c5fc8e7ac4e61d44bb6cd54e1690d7c053526
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540214"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127164"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -290,11 +290,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
              > [!NOTE]
              > Wenn bei der Testverbindung ein Fehler auftritt und Sie diese Verbindung nicht aktivieren können, können Sie den Außerkraftsetzungsschalter von ServiceNow nutzen. Geben Sie **Sys_properties.LIST** in der **Suchnavigation** ein. Daraufhin wird die neue Seite der Systemeigenschaften geöffnet. Hier müssen Sie eine neue Eigenschaft mit dem Namen **glide.authenticate.multisso.test.connection.mandatory** und dem Wert **True/False** für **datatype** erstellen. Legen Sie dann für **Wert** die Option **False** fest.
 
-             > ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/testconnection-fail.png "Einmaliges Anmelden konfigurieren")
+             > ![Screenshot der Registerkarte „Systemeigenschaften“ mit einer hervorgehobenen Testverbindung.](./media/servicenow-tutorial/testconnection-fail.png "Einmaliges Anmelden konfigurieren")
         
           1. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Daraufhin wird die folgende Seite angezeigt. Der Fehler unter **SSO Logout Test Results** (Testergebnisse der SSO-Abmeldung) wird erwartet. Ignorieren Sie den Fehler, und wählen Sie **Activate** (Aktivieren) aus.
 
-             ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
+             ![Screenshot der Testergebnisse der SSO-Anmeldung und der Testergebnisse der SSO-Abmeldung mit der Schaltfläche „Aktivieren“.](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
   
 1. Führen Sie für die manuelle Konfiguration von **ServiceNow** die folgenden Schritte aus:
 
@@ -347,11 +347,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
           > [!NOTE]
           > Wenn bei der Testverbindung ein Fehler auftritt und Sie diese Verbindung nicht aktivieren können, können Sie den Außerkraftsetzungsschalter von ServiceNow nutzen. Geben Sie **Sys_properties.LIST** in der **Suchnavigation** ein. Daraufhin wird die neue Seite der Systemeigenschaften geöffnet. Hier müssen Sie eine neue Eigenschaft mit dem Namen **glide.authenticate.multisso.test.connection.mandatory** und dem Wert **True/False** für **datatype** erstellen. Legen Sie dann für **Wert** die Option **False** fest.
 
-          > ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/testconnection-fail.png "Einmaliges Anmelden konfigurieren")
+          > ![Screenshot der Registerkarte „Systemeigenschaften“ mit einer hervorgehobenen Testverbindung.](./media/servicenow-tutorial/testconnection-fail.png "Einmaliges Anmelden konfigurieren")
 
         * Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Daraufhin wird die folgende Seite angezeigt. Der Fehler unter **SSO Logout Test Results** (Testergebnisse der SSO-Abmeldung) wird erwartet. Ignorieren Sie den Fehler, und wählen Sie **Activate** (Aktivieren) aus.
 
-          ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
+          ![Screenshot der Testergebnisse der SSO-Anmeldung und der Testergebnisse der SSO-Abmeldung mit der Schaltfläche „Aktivieren“.](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
 
 ### <a name="create-servicenow-test-user"></a>Erstellen eines ServiceNow-Testbenutzers
 

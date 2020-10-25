@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55ab6b339d6cb71bf46340e458bcc93cd73e2ba9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548926"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Lernprogramm: Azure Active Directory-Integration mit QuickHelp
 
@@ -130,17 +130,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit QuickHe
 
 2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Einmaliges Anmelden konfigurieren][21]
+    ![Screenshot des Menüelements „Administrator“ für Brainstorm.][21]
 
 3. Klicken Sie im Menü **QuickHelp Admin** auf **Einstellungen**.
    
-    ![Einmaliges Anmelden konfigurieren][22]
+    ![Screenshot, in dem im Menü „QuickHelp Admin“ die Option „Einstellungen“ ausgewählt ist.][22]
 
 4. Klicken Sie auf **Authentifizierungseinstellungen**.
 
 5. Führen Sie auf der Seite **Authentifizierungseinstellungen** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren][23]
+    ![Screenshot der Seite „Authentifizierungseinstellungen“, auf der Sie die beschriebenen Werte eingeben können.][23]
    
     a. Wählen Sie für **SSO-Typ** die Option **WSFederation** aus.
    

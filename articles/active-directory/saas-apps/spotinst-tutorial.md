@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4028cb8d4f206a0e62dda1cb130cc55e71831c78
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587955"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123129"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Spotinst
 
@@ -139,7 +139,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie auf das **Benutzersymbol** in der oberen rechten Ecke und dann auf **Einstellungen**.
 
-    ![Spotinst-Einstellungen](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Screenshot, in dem die Option „Einstellungen“ über das Benutzersymbol ausgewählt ist.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
 3. Klicken Sie auf die Registerkarte **SICHERHEIT** am oberen Rand, wählen Sie **Identitätsanbieter**, und führen Sie die folgenden Schritte aus:
 
@@ -161,15 +161,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
    b. Klicken Sie auf das **Benutzersymbol** in der oberen rechten Ecke und dann auf **Einstellungen**.
 
-    ![Spotinst-Einstellungen](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Screenshot, in dem über das Benutzersymbol die Option „Einstellungen“ ausgewählt ist.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
     c. Klicken Sie auf **Benutzer**, und wählen Sie **BENUTZER HINZUFÜGEN**.
 
-    ![Spotinst-Einstellungen](./media/spotinst-tutorial/adduser1.png)
+    ![Screenshot, in dem über „Benutzer“ die Option „BENUTZER HINZUFÜGEN“ ausgewählt ist.](./media/spotinst-tutorial/adduser1.png)
 
     d. Führen Sie im Abschnitt „Benutzer hinzufügen“ die folgenden Schritte aus:
 
-    ![Spotinst-Einstellungen](./media/spotinst-tutorial/adduser2.png)
+    ![Screenshot des Abschnitts „Benutzer hinzufügen“, in dem Sie die beschriebenen Werte eingeben können.](./media/spotinst-tutorial/adduser2.png)
 
     * Geben Sie im Textfeld **Vollständiger Name** den vollständigen Namen des Benutzers ein, z.B. **BrittaSimon**.
 

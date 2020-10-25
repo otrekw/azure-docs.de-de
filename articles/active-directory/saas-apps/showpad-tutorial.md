@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 613f42905c88da7669881dfcae7ae038341b2434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeeb421104a09fe164c8bc93e47d7cf254a802e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548642"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Tutorial: Azure Active Directory-Integration mit Showpad
 
@@ -129,15 +129,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Showpad 
 
 1. Klicken Sie im oberen Menü auf **Settings**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/showpad-tutorial/tutorial_showpad_001.png)
+    ![Screenshot, in dem im Menü „Einstellungen“ die Option „Einstellungen“ ausgewählt ist.](./media/showpad-tutorial/tutorial_showpad_001.png)
 
 1. Navigieren Sie zu **Single Sign-On** (Einmaliges Anmelden), und klicken Sie auf **Enable** (Aktivieren).
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/showpad-tutorial/tutorial_showpad_002.png)
+    ![Screenshot, in dem „Einmaliges Anmelden“ ausgewählt und eine Option „Aktivieren“ hervorgehoben ist.](./media/showpad-tutorial/tutorial_showpad_002.png)
 
 1. Führen Sie im Dialogfeld **Add a SAML 2.0 Service** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/showpad-tutorial/tutorial_showpad_003.png) 
+    ![Screenshot des Dialogfelds „SAML 2.0-Dienst hinzufügen“, in dem Sie die beschriebenen Werte eingeben können.](./media/showpad-tutorial/tutorial_showpad_003.png) 
 
     a. Geben Sie im Textfeld **Name** den Namen des Identitätsanbieters (beispielsweise den Namen Ihres Unternehmens) ein.
 

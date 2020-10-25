@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270711"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309785"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Einrichten von Identity Protection und bedingtem Zugriff in Azure AD B2C
 
@@ -42,8 +42,10 @@ Für Azure AD B2C werden derzeit folgende Risikoerkennungen unterstützt:
 |---------|---------|
 | Ungewöhnlicher Ortswechsel     | Anmeldung von einem ungewöhnlichen Standort, basierend auf den letzten Anmeldevorgängen des Benutzers        |
 |Anonyme IP-Adresse     | Anmeldung von einer anonymen IP-Adresse (z.B. Tor-Browser, anonymisierte VPNs)        |
-|Ungewöhnliche Anmeldeeigenschaften     | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden        |
 |Mit Schadsoftware verknüpfte IP-Adresse     | Anmeldung von einer mit Schadsoftware verknüpften IP-Adresse         |
+|Ungewöhnliche Anmeldeeigenschaften     | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden        |
+|Benutzergefährdung durch Administrator bestätigt    | Ein Administrator hat angegeben, dass ein Benutzer kompromittiert wurde.             |
+|Kennwortspray     | Anmeldung über einen Kennwortspray-Angriff      |
 |Azure AD Threat Intelligence     | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Anzeigen von Risikoereignissen für Ihren Azure AD B2C-Mandanten

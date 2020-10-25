@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99355a88a52e318b231d9032ede770ee0ba5208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3520597ef8c02bc225e6f8a7625e6a961a7e37
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548683"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory-Integration mit Humanity
 
@@ -131,11 +131,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Humanity
     ![Administrator](./media/shiftplanning-tutorial/iC786619.png "Admin")
 3. Klicken Sie unter **Integration** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
+    ![Screenshot, in dem im Menü „Integration“ die Option „Einmaliges Anmelden“ ausgewählt ist.](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
 
 4. Führen Sie im Abschnitt **Einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
+    ![Screenshot des Abschnitts „Einmaliges Anmelden“, in dem Sie die beschriebenen Werte eingeben können.](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
 
     a. Wählen Sie **SAML aktiviert**aus.
 

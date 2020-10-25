@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6a7784d052a03971fad84c90cdd70cd16b4a872
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534182"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Tutorial: Azure Active Directory-Integration mit Sprinklr
 
@@ -136,11 +136,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 1. Klicken Sie auf **+Einmalige Anmeldungen hinzufügen**.
 
-    ![Einmalige Anmeldungen](./media/sprinklr-tutorial/ic782909.png "Einmaliges Anmelden")
+    ![Screenshot der Schaltfläche „Einmalige Anmeldungen hinzufügen“.](./media/sprinklr-tutorial/ic782909.png "Einmaliges Anmelden")
 
 1. Führen Sie im Dialogfeld **Einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![Einmalige Anmeldungen](./media/sprinklr-tutorial/ic782910.png "Einmaliges Anmelden")
+    ![Screenshot der Seite „Einmaliges Anmelden“, auf der Sie die beschriebenen Werte eingeben können.](./media/sprinklr-tutorial/ic782910.png "Einmaliges Anmelden")
 
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z.B.: *WAADSSOTest*).
 
@@ -225,11 +225,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Wechseln Sie im linken Fensterbereich zu **Client verwalten \> Benutzer**.
 
-    ![Einstellungen](./media/sprinklr-tutorial/ic782914.png "Einstellungen")
+    ![Screenshot der Schaltfläche „Benutzer hinzufügen“ unter „Einstellungen“/„Benutzer“.](./media/sprinklr-tutorial/ic782914.png "Einstellungen")
 
 1. Klicken Sie auf **Benutzer hinzufügen**.
 
-    ![Einstellungen](./media/sprinklr-tutorial/ic782915.png "Einstellungen")
+    ![Screenshot des Dialogfelds „Benutzer bearbeiten“, in dem Sie die beschriebenen Werte eingeben können.](./media/sprinklr-tutorial/ic782915.png "Einstellungen")
 
 1. Führen Sie im Dialogfeld **Benutzer bearbeiten** die folgenden Schritte aus:
 

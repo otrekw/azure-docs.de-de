@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543107"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Tutorial: Azure Active Directory-Integration mit Sequr
 
@@ -131,15 +131,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Sequr d
 
 1. Klicken Sie im linken Navigationsbereich auf die **Integrationen**.
 
-    ![Sequr-Konfiguration](./media/sequr-tutorial/configure1.png)
+    ![Screenshot, in dem im Navigationsbereich die Option „Integrationen“ ausgewählt ist.](./media/sequr-tutorial/configure1.png)
 
 1. Scrollen Sie nach unten bis zum Abschnitt **Einmaliges Anmelden**, und klicken Sie auf **Verwalten**.
 
-    ![Sequr-Konfiguration](./media/sequr-tutorial/configure2.png)
+    ![Screenshot des Abschnitts „Einmaliges Anmelden“, in dem die Schaltfläche „Verwalten“ ausgewählt ist.](./media/sequr-tutorial/configure2.png)
 
 1. Führen Sie im Abschnitt **Manage Single Sign-On** (Einmaliges Anmelden verwalten) die folgenden Schritte aus:
 
-    ![Sequr-Konfiguration](./media/sequr-tutorial/configure3.png)
+    ![Screenshot des Abschnitts „Einmaliges Anmelden verwalten“, in dem Sie die beschriebenen Werte eingeben können.](./media/sequr-tutorial/configure3.png)
 
     a. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **URL für einmaliges Anmelden des Identitätsanbieters** ein.
 

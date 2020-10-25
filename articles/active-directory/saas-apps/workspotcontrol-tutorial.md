@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "88526525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Tutorial: Azure Active Directory-Integration mit Workspot Control
@@ -103,20 +103,20 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
     ![SSO-Informationen zur Domäne und zu den URLs für Workspot Control](common/idp-intiated.png)
 
     1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:<br/>
-    ***https://<<i></i>INSTANZNAME>-saml.workspot.com/saml/metadata***.
+    **_https://<<i></i>INSTANZNAME>-saml.workspot.com/saml/metadata_*_
 
-    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein:<br/>
-    ***https://<<i></i>INSTANZNAME>-saml.workspot.com/saml/assertion***.
+    1. Geben Sie im Textfeld _*Antwort-URL** eine URL im folgenden Format ein:<br/>
+    **_https://<<i></i>INSTANZNAME>-saml.workspot.com/saml/assertion_*_
 
-5. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus.
+5. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie „Zusätzliche URLs festlegen“ aus.
 
     ![SSO-Informationen zur Domäne und zu den URLs für Workspot Control](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein:<br/>
-    ***https://<<i></i>INSTANZNAME>-saml.workspot.com/***.
+    **_https://<<i></i>INSTANZNAME>-saml.workspot.com/_*_
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Workspot Control-Client](mailto:support@workspot.com). Sie können sich die Muster auch im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Workspot Control-Client](mailto:support@workspot.com). Sie können sich auch im Azure-Portal die Muster im Abschnitt *Grundlegende SAML-Konfiguration* ansehen.
 
 6. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** aus, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den verfügbaren Optionen herunterzuladen. Speichern Sie das Zertifikat auf Ihrem Computer.
 
@@ -172,7 +172,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer.
 
     1. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon@* yourcompanydomain.extension** ein*. Geben Sie beispielsweise **BrittaSimon@contoso.<i></i>com** ein.
+    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon@* yourcompanydomain.extension*** ein. Geben Sie beispielsweise **BrittaSimon@contoso.<i></i>com** ein.
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 

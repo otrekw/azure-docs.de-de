@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5c641ce9b224aecc3d199427bf27b804f7dd2dd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543604"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102084"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Tutorial: Integrieren von RunMyProcess in Azure Active Directory
 
@@ -96,11 +96,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie links im Navigationsbereich auf **Konto**, und wählen Sie **Konfiguration**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![Screenshot, in dem unter „Konto“ die Option „Konfiguration“ ausgewählt ist.](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. Navigieren Sie zum Abschnitt **Authentifizierungsmethode**, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![Screenshot der Registerkarte „Authentifizierungsmethode“, auf der Sie die beschriebenen Werte eingeben können.](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. Wählen unter **Methode** die Option **SSO mit Samlv2** aus.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f99993792c2d5f4300025f26d8409207382553d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b4387252be7e0b76f6e0733d6fd4f95d39e2f0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527617"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SmartDraw
 
@@ -152,11 +152,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie unter „Manage your SmartDraw License“ (SmartDraw-Lizenz verwalten) auf **Single Sign-On** (Einmaliges Anmelden).
 
-    ![SmartDraw-Konfiguration](./media/smartdraw-tutorial/configure01.png)
+    ![Screenshot des Dialogfelds „Manage your SmartDraw License“ (SmartDraw-Lizenz verwalten), in dem Sie die Option für einmaliges Anmelden auswählen können.](./media/smartdraw-tutorial/configure01.png)
 
 1. Führen Sie auf der Seite „Configuration“ (Konfiguration) die folgenden Schritte aus:
 
-    ![SmartDraw-Konfiguration](./media/smartdraw-tutorial/configure02.png)
+    ![Screenshot der Seite „Configuration“ (Konfiguration), auf der Sie die beschriebenen Werte eingeben können.](./media/smartdraw-tutorial/configure02.png)
 
     a. Geben Sie im Textfeld **Your Domain (like acme.com)** (Ihre Domäne (etwa acme.com)) Ihre Domäne ein.
 

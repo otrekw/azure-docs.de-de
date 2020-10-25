@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542563"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Tutorial: Azure Active Directory-Integration mit SmartRecruiters
 
@@ -99,7 +99,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SmartRe
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für SmartRecruiters](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
@@ -107,7 +107,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SmartRe
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für SmartRecruiters](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
@@ -134,19 +134,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SmartRe
 
 1. Navigieren Sie zu **Settings / Admin** (Einstellungen/Administrator).
 
-    ![SmartRecruiters-Konfiguration](./media/smartrecruiters-tutorial/configure.png)
+    ![Screenshot, in dem in einem Menü die Option „Einstellungen/Administrator“ ausgewählt ist.](./media/smartrecruiters-tutorial/configure.png)
 
 1. Klicken Sie im Abschnitt **Konfiguration** auf **Web SSO** (Web-SSO).
 
-    ![SmartRecruiters-Konfiguration](./media/smartrecruiters-tutorial/configure1.png)
+    ![Screenshot, in dem unter „Konfiguration“ die Option „Web-SSO“ ausgewählt ist.](./media/smartrecruiters-tutorial/configure1.png)
 
 1. Schalten Sie **Enable Web SSO** (Web-SSO aktivieren) ein oder aus.
 
-    ![SmartRecruiters-Konfiguration](./media/smartrecruiters-tutorial/configure2.png)
+    ![Screenshot, in dem die Option zum Aktivieren von Web-SSO hervorgehoben ist.](./media/smartrecruiters-tutorial/configure2.png)
 
 1. Führen Sie unter **Identitätsanbieterkonfiguration** die folgenden Schritte aus:
 
-    ![SmartRecruiters-Konfiguration](./media/smartrecruiters-tutorial/configure4.png)
+    ![Screenshot des Abschnitts „Identitätsanbieterkonfiguration“, in dem Sie die beschriebenen Werte eingeben können.](./media/smartrecruiters-tutorial/configure4.png)
 
     a. Fügen Sie in das Textfeld **Identity Provider URL** (Identitätsanbieter-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

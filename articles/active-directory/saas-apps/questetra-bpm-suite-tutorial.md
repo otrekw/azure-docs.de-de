@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 943aba9c25df6cd279dc651cfad343a6509c069b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548958"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Lernprogramm: Azure Active Directory-Integration in Questetra BPM Suite
 
@@ -128,11 +128,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Questetr
 
 2. Klicken Sie im oberen Menü auf **Systemeinstellungen**. 
    
-    ![Azure AD – einmaliges Anmelden][10]
+    ![Screenshot, in dem auf Ihrer Questetra BPM Suite-Unternehmenswebsite die Option „Systemeinstellungen“ ausgewählt ist.][10]
 
 3. Klicken Sie zum Öffnen der Seite **SingleSignOnSAML** auf **SSO (SAML)** . 
    
-    ![Azure AD – einmaliges Anmelden][11]
+    ![Screenshot, in dem die Option „SSO (SAML)“ ausgewählt ist.][11]
 
 4. Führen Sie auf der **Questetra BPM-Suite**-Unternehmenswebsite im Abschnitt **SP Information** (SP-Informationen) die folgenden Schritte aus:
 

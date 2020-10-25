@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e93827278fb501bc6d857d3cb39f9e0ba24d5d0a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552236"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Tutorial: Azure Active Directory-Integration mit Skills Base
 
@@ -134,11 +134,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Skills Ba
 
 3. Legen Sie „Single Sign-On“ (Einmaliges Anmelden) auf der Seite **Authentication** (Authentifizierung) auf **SAML 2** fest.
 
-    ![Einmaliges Anmelden](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Screenshot der Seite „Authentication“ (Authentifizierung), auf der für das einmalige Anmelden die Option „SAML 2“ ausgewählt ist.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. Führen Sie auf der Seite **Authentication** (Authentifizierung) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Screenshot der Seite „Authentication“ (Authentifizierung), auf der Sie die beschriebenen Werte eingeben können.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. Klicken Sie auf die Schaltfläche **Update IdP metadata** (IdP-Metadaten aktualisieren) neben der Option **Satus**, und fügen Sie den Inhalt der Metadaten-XML, die sie aus dem Azure-Portal heruntergeladen haben, in das entsprechende Textfeld ein.
 
