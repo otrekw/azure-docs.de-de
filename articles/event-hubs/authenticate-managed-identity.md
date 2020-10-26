@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zur Authentifizierung einer v
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23fc0a59f9accc70c69c1096c1a15f1313ee2e0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010017"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332449"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
 Azure Event Hubs unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Event Hubs-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
@@ -26,7 +26,7 @@ Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zug
 - [Azure Resource Manager-Clientbibliotheken](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Erteilen von Berechtigungen für eine verwaltete Identität in Azure AD
-Damit Sie eine Anforderung an den Event Hubs-Dienst über eine verwaltete Identität in Ihrer Anwendung autorisieren können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für diese verwaltete Identität konfigurieren. Für Azure Event Hubs werden Azure-Rollen definiert, die Berechtigungen zum Senden an und Lesen aus Event Hubs umfassen. Wenn die Azure-Rolle einer verwalteten Identität zugewiesen wird, wird der verwalteten Identität der Zugriff auf Event Hubs-Daten im entsprechenden Bereich erteilt.
+Damit Sie eine Anforderung an den Event Hubs-Dienst über eine verwaltete Identität in Ihrer Anwendung autorisieren können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) für diese verwaltete Identität konfigurieren. Für Azure Event Hubs werden Azure-Rollen definiert, die Berechtigungen zum Senden an und Lesen aus Event Hubs umfassen. Wenn die Azure-Rolle einer verwalteten Identität zugewiesen wird, wird der verwalteten Identität der Zugriff auf Event Hubs-Daten im entsprechenden Bereich erteilt.
 
 Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory](authorize-access-azure-active-directory.md).
 

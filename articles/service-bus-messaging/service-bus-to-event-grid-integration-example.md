@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7f177b8738fdaf8d0975877d9af094b6f0a49a9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000344"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328146"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Tutorial: Reagieren auf Azure Service Bus-Ereignisse, die über Azure Event Grid empfangen wurden, mithilfe von Azure Functions und Azure Logic Apps
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions und Azure Logic Apps auf Azure Service Bus-Ereignisse reagieren, die über Azure Event Grid empfangen wurden. 
@@ -96,7 +96,7 @@ Gehen Sie wie folgt vor, um für eine Logik-App eine Verbindung mit Azure Servic
         ![Designer für Logik-Apps: Freigegebenen Zugriffsschlüssel auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     8. Wählen Sie Ihr **Thema** und **Abonnement** aus. 
     
-        ![Designer für Logik-Apps: Service Bus-Thema und -Abonnement auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+        ![Screenshot, der zeigt, wo Sie Ihr Thema und Ihr Abonnement auswählen.](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
 7. Wählen Sie **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus: 
     1. Wählen Sie **Service Bus** aus.
     2. Wählen Sie in der Liste der Aktionen **Nachricht in einem Themenabonnement abschließen** aus. 

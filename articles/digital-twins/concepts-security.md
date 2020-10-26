@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015003"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331752"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
-Zur Gewährleistung der Sicherheit ermöglicht Azure Digital Twins eine exakte Zugriffssteuerung für bestimmte Daten, Ressourcen und Aktionen in Ihrer Bereitstellung. Hierzu wird eine präzise Rollen- und Rechteverwaltungsstrategie namens **rollenbasierte Zugriffssteuerung** (Role-Based Access Control, RBAC) verwendet. Informationen zu den allgemeinen RBAC-Prinzipien für Azure finden Sie [hier](../role-based-access-control/overview.md).
+Zur Gewährleistung der Sicherheit ermöglicht Azure Digital Twins eine exakte Zugriffssteuerung für bestimmte Daten, Ressourcen und Aktionen in Ihrer Bereitstellung. Hierzu wird eine präzise Rollen- und Rechteverwaltungsstrategie namens **rollenbasierte Zugriffssteuerung in Azure** (Role-Based Access Control, Azure RBAC) verwendet. Informationen zu den allgemeinen Prinzipien von Azure RBAC finden Sie [hier](../role-based-access-control/overview.md).
 
 Azure Digital Twins unterstützt auch die Verschlüsselung ruhender Daten.
 
-## <a name="granting-permissions-with-rbac"></a>Gewähren von Berechtigungen mit RBAC
+## <a name="granting-permissions-with-azure-rbac"></a>Gewähren von Berechtigungen mit Azure RBAC
 
-Die RBAC wird in Azure Digital Twins über die Integration mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) bereitgestellt.
+Azure RBAC wird in Azure Digital Twins über die Integration mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) bereitgestellt.
 
-Mit der RBAC können einem *Sicherheitsprinzipal* Berechtigungen erteilt werden. Bei einem Sicherheitsprinzipal kann es sich um einen Benutzer, um eine Gruppe oder um einen Anwendungsdienstprinzipal handeln. Der Sicherheitsprinzipal wird durch Azure AD authentifiziert und erhält im Gegenzug ein OAuth 2.0-Token. Dieses Token kann verwendet werden, um eine an eine Azure Digital Twins-Instanz gerichtete Zugriffsanforderung zu autorisieren.
+Mit Azure RBAC können einem *Sicherheitsprinzipal* Berechtigungen erteilt werden. Bei einem Sicherheitsprinzipal kann es sich um einen Benutzer, um eine Gruppe oder um einen Anwendungsdienstprinzipal handeln. Der Sicherheitsprinzipal wird durch Azure AD authentifiziert und erhält im Gegenzug ein OAuth 2.0-Token. Dieses Token kann verwendet werden, um eine an eine Azure Digital Twins-Instanz gerichtete Zugriffsanforderung zu autorisieren.
 
 ### <a name="authentication-and-authorization"></a>Authentifizierung und Autorisierung
 
@@ -95,4 +95,4 @@ Zum Beheben dieses Fehlers können Sie eine der folgenden Maßnahmen ergreifen:
 
 * Weitere Informationen zur Interaktion mit diesen Konzepten über den Clientanwendungscode finden Sie unter [*Vorgehensweise: Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md).
 
-* Erfahren Sie mehr über [RBAC für Azure](../role-based-access-control/overview.md).
+* Weitere Informationen zu [Azure RBAC](../role-based-access-control/overview.md).

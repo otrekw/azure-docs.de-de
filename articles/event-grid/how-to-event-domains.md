@@ -4,12 +4,12 @@ description: Es wird veranschaulicht, wie Sie große Themenmengen in Azure Event
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502034"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330076"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
 
@@ -79,7 +79,7 @@ Beachten Sie die Objekte `endpoint` und `id`, da diese zum Verwalten der Domäne
 
 ## <a name="manage-access-to-topics"></a>Verwalten des Zugriffs auf Themen
 
-Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](../role-based-access-control/role-assignments-cli.md). Die Rollenzuweisung verwendet die rollenbasierte Zugriffssteuerung (RBAC), um die Vorgänge mit Azure-Ressourcen auf autorisierte Benutzer in einem bestimmten Bereich zu beschränken.
+Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](../role-based-access-control/role-assignments-cli.md). Die Rollenzuweisung verwendet die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), um die Vorgänge mit Azure-Ressourcen auf autorisierte Benutzer in einem bestimmten Bereich zu beschränken.
 
 Event Grid verfügt über zwei integrierte Rollen, mit denen Sie bestimmten Benutzern Zugriff auf verschiedene Themen innerhalb einer Domäne zuweisen können. Diese Rollen sind `EventGrid EventSubscription Contributor (Preview)` (ermöglicht das Erstellen und Löschen von Abonnements) und `EventGrid EventSubscription Reader (Preview)` (ermöglicht nur das Auflisten von Ereignisabonnements).
 

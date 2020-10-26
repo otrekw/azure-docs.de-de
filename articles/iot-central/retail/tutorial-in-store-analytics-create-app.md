@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80999780"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165671"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central
 
@@ -148,7 +148,7 @@ So fügen Sie eine RuuviTag-Gerätevorlage zu Ihrer Anwendung hinzu:
 
 1. Klicken Sie auf **Weiter: Anpassen**.
 
-    ![Azure IoT Central-Gerätevorlage für den RuuviTag-Sensor](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![Der Screenshot hebt die Schaltfläche „Weiter: Anpassen“ hervor.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
 1. Klicken Sie auf **Erstellen**. Die Anwendung fügt die RuuviTag-Gerätevorlage hinzu.
 
@@ -191,7 +191,7 @@ Nehmen Sie für den Telemetrietyp `humidity` die folgenden Änderungen vor:
 
 1. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
 
-    ![Anpassung der Azure IoT Central-Gerätevorlage für den RuuviTag-Sensor](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![Der Screenshot zeigt den Bildschirm „Anpassen“ und hebt die Schaltfläche „Speichern“ hervor.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
 So fügen Sie eine Cloudeigenschaft zu einer Gerätevorlage in der Anwendung hinzu:
 

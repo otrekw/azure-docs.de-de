@@ -1,16 +1,16 @@
 ---
 author: baanders
-description: Includedatei zum Bereinigen einer grundlegenden Azure Digital Twins-Instanz und einer App-Registrierung
+description: Includedatei zum Bereinigen einer grundlegenden Azure Digital Twins-Instanz
 ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: e8f167555434338416381aaf8978a3d551686fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e095a7b286a8860535d6b58fa93098735b30c87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606220"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372315"
 ---
 Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, führen Sie die folgenden Schritte zum Löschen aus.
 
@@ -23,10 +23,4 @@ Bei Verwendung von [Azure Cloud Shell](https://shell.azure.com) können Sie alle
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Löschen Sie als Nächstes mit dem folgenden Befehl die Azure Active Directory-App-Registrierung, die Sie für Ihre Client-App erstellt haben:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```

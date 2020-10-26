@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541882"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018031"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Speicherung und Entfernung von Daten in Language Understanding (LUIS) Cognitive Services
 LUIS speichert Daten verschlüsselt in einem Azure-Datenspeicher für die im Schlüssel angegebene Region. Diese Daten werden für 30 Tage gespeichert. 
@@ -50,9 +50,14 @@ Wenn Sie keine Äußerungen zum aktiven Lernen wünschen, können Sie das [aktiv
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
-Wenn Sie ein Konto löschen, werden alle Apps zusammen mit ihren Beispieläußerungen und Protokollen gelöscht. Die Daten werden für 60 Tage beibehalten, bevor das Konto und die Daten dauerhaft gelöscht werden.
+Wenn Sie nicht migriert werden, können Sie Ihr Konto löschen und alle Ihre Apps werden zusammen mit ihren Beispieläußerungen und Protokollen gelöscht. Die Daten werden für 90 Tage beibehalten, bevor das Konto und die Daten dauerhaft gelöscht werden.
 
 Das Löschen von Konten erfolgt über die Seite **Einstellungen**. Wählen Sie Ihren Kontonamen rechts oben auf der Navigationsleiste aus, um die Seite **Einstellungen** anzuzeigen.
+
+## <a name="delete-an-authoring-resource"></a>Löschen einer Erstellungsressource
+Wenn Sie die [Migration zu einer Erstellungsressource](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring) durchgeführt haben, löscht das Löschen der Ressource selbst aus dem Azure-Portal alle Ihre Anwendungen, die mit dieser Ressource verbunden sind, zusammen mit ihren Beispieläußerungen und Protokollen. Die Daten werden 90 Tage lang gespeichert und erst danach dauerhaft gelöscht.    
+
+Wechseln Sie zum Löschen Ihrer Ressource zum [Azure-Portal](https://ms.portal.azure.com/#home), und wählen Sie Ihre LUIS-Erstellungsressource aus. Wechseln Sie zur Registerkarte **Übersicht**, und klicken Sie oben auf der Seite auf die Schaltfläche **Löschen**. Bestätigen Sie dann, dass die Ressource gelöscht wurde. 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>Dateninaktivität als Zeichen für ein abgelaufenes Abonnement
 Im Zusammenhang mit der Beibehaltung und Löschung von Daten kann eine inaktive LUIS-App nach dem _Ermessen von Microsoft_ als abgelaufenes Abonnement behandelt werden. Eine App gilt als inaktiv, wenn sie für die letzten 90 Tage die folgenden Kriterien erfüllt: 
@@ -65,4 +70,4 @@ Im Zusammenhang mit der Beibehaltung und Löschung von Daten kann eine inaktive 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr zum Exportieren und Löschen von Apps.](luis-how-to-start-new-app.md)
+> [Informationen zum Exportieren und Löschen von Apps](luis-how-to-start-new-app.md)

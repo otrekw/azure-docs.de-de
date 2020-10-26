@@ -4,15 +4,15 @@ description: Hier finden Sie sämtliche Schritte zum Bereitstellen der Azure-Dat
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/19/2018
+ms.date: 10/14/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 012b5c76a025e6dc6ae1fbd5aedddf9ea3d2a4f0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069627"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057823"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -509,28 +509,27 @@ Wenn Sie Ihre Azure-Dateisynchronisierung mit Firewall- und VNET-Einstellungen k
 Die empfohlenen Schritte zum erstmaligen Onboarding bei der Azure-Dateisynchronisierung ohne Ausfallzeiten unter Beibehaltung der vollen Dateitreue und Zugriffssteuerungsliste (ACL) sind wie folgt:
  
 1. Stellen Sie einen Speichersynchronisierungsdienst bereit.
-2. Erstellen Sie eine Synchronisierungsgruppe.
-3. Installieren Sie den Azure-Dateisynchronisierungs-Agent auf dem Server mit dem vollständigen Dataset.
-4. Registrieren Sie diesen Server, und erstellen Sie einen Serverendpunkt in der Freigabe. 
-5. Lassen Sie die Synchronisierung den vollständigen Upload in die Azure-Dateifreigabe (den Cloudendpunkt) durchführen.  
-6. Installieren Sie nach Abschluss des anfänglichen Uploads den Azure-Dateisynchronisierungs-Agent auf allen verbleibenden Servern.
-7. Erstellen Sie auf den verbleibenden Servern neue Dateifreigaben.
-8. Erstellen Sie nach Wunsch Serverendpunkte in neuen Dateifreigaben mit der Cloudtieringrichtlinie. (Für diesen Schritt muss zusätzlicher Speicherplatz für das anfängliche Setup zur Verfügung stehen.)
-9. Lassen Sie den Azure-Dateisynchronisierungs-Agent eine schnelle Wiederherstellung des gesamten Namespace ohne die eigentliche Datenübertragung durchführen. Nach der vollständigen Synchronisierung des Namespace füllt das Synchronisierungsmodul den lokalen Speicherplatz basierend auf der Cloudtieringrichtlinie für den Serverendpunkt auf. 
-10. Vergewissern Sie sich, dass die Synchronisierung abgeschlossen wird, und testen Sie Ihre Topologie bei Bedarf. 
-11. Leiten Sie Benutzer und Anwendungen zu dieser neuen Freigabe um.
-12. Optional können Sie duplizierte Freigaben auf den Servern löschen.
+1. Erstellen Sie eine Synchronisierungsgruppe.
+1. Installieren Sie den Azure-Dateisynchronisierungs-Agent auf dem Server mit dem vollständigen Dataset.
+1. Registrieren Sie diesen Server, und erstellen Sie einen Serverendpunkt in der Freigabe. 
+1. Lassen Sie die Synchronisierung den vollständigen Upload in die Azure-Dateifreigabe (den Cloudendpunkt) durchführen.  
+1. Installieren Sie nach Abschluss des anfänglichen Uploads den Azure-Dateisynchronisierungs-Agent auf allen verbleibenden Servern.
+1. Erstellen Sie auf den verbleibenden Servern neue Dateifreigaben.
+1. Erstellen Sie nach Wunsch Serverendpunkte in neuen Dateifreigaben mit der Cloudtieringrichtlinie. (Für diesen Schritt muss zusätzlicher Speicherplatz für das anfängliche Setup zur Verfügung stehen.)
+1. Lassen Sie den Azure-Dateisynchronisierungs-Agent eine schnelle Wiederherstellung des gesamten Namespace ohne die eigentliche Datenübertragung durchführen. Nach der vollständigen Synchronisierung des Namespace füllt das Synchronisierungsmodul den lokalen Speicherplatz basierend auf der Cloudtieringrichtlinie für den Serverendpunkt auf. 
+1. Vergewissern Sie sich, dass die Synchronisierung abgeschlossen wird, und testen Sie Ihre Topologie bei Bedarf. 
+1. Leiten Sie Benutzer und Anwendungen zu dieser neuen Freigabe um.
+1. Optional können Sie duplizierte Freigaben auf den Servern löschen.
  
 Wenn Sie nicht über zusätzlichen Speicherplatz für das erste Onboarding verfügen und an die vorhandenen Freigaben anhängen möchten, können Sie für die Daten in den Azure-Dateifreigaben vorab ein Seeding ausführen. Dieser Ansatz wird ausdrücklich nur dann empfohlen, wenn Sie Ausfallzeiten akzeptieren und absolut keine Datenveränderungen auf den Serverfreigaben während des ersten Onboardingprozesses garantieren können. 
  
 1. Stellen Sie sicher, dass sich die Daten auf den Servern während des Onboardingprozesses nicht ändern können.
-2. Führen Sie auf den Azure-Dateifreigaben vorab ein Seeding mit den Serverdaten mithilfe eines Datenübertragungstools über den SBM durch (etwa per Robocopy oder mittels direkter SMB-Kopie). Da AzCopy keine Daten über den SMB hochlädt, kann dieses Tool nicht für das Vorabseeding verwendet werden.
-3. Erstellen Sie eine Azure-Dateisynchronisierungstopologie mit den gewünschten Serverendpunkten, die auf die vorhandenen Freigaben zeigen.
-4. Lassen Sie die Synchronisierung den Abstimmungsprozess auf allen Endpunkten abschließen. 
-5. Sobald die Abstimmung abgeschlossen ist, können Sie Freigaben für Änderungen öffnen.
+1. Führen Sie auf den Azure-Dateifreigaben vorab ein Seeding mit den Serverdaten mithilfe eines Datenübertragungstools über den SBM durch. Beispiel: Robocopy. Sie können auch AzCopy über REST verwenden. Achten Sie darauf, AzCopy mit den entsprechenden Schaltern zu verwenden, um die Zeitstempel und Attribute der ACLs zu erhalten.
+1. Erstellen Sie eine Azure-Dateisynchronisierungstopologie mit den gewünschten Serverendpunkten, die auf die vorhandenen Freigaben zeigen.
+1. Lassen Sie die Synchronisierung den Abstimmungsprozess auf allen Endpunkten abschließen. 
+1. Sobald die Abstimmung abgeschlossen ist, können Sie Freigaben für Änderungen öffnen.
  
 Für das Vorabseeding gelten aktuell einige Einschränkungen: 
-- Vollständige Originaltreue für Dateien wird nicht beibehalten. Dateien verlieren beispielsweise Zugriffssteuerungslisten und Zeitstempel.
 - Datenänderungen auf dem Server, bevor die Synchronisierungstopologie vollständig in Betrieb ist, können zu Konflikten auf den Serverendpunkten führen.  
 - Nachdem der Cloudendpunkt erstellt wurde, führt die Azure-Dateisynchronisierung einen Prozess aus, um die Dateien in der Cloud zu erkennen, bevor die anfängliche Synchronisierung gestartet wird. Die zum Abschluss dieses Prozesses benötigte Zeit variiert je nach den verschiedenen Faktoren wie Netzwerkgeschwindigkeit, verfügbare Bandbreite und Anzahl der Dateien und Ordner. Grob geschätzt schafft der Erkennungsprozess in der Vorschauversion ca. 10 Dateien pro Sekunde. Selbst wenn das Vorabseeding schnell erfolgt, kann die Gesamtzeit bis zur Inbetriebnahme eines voll funktionsfähigen Systems erheblich länger sein, wenn für die Daten in der Cloud vorab ein Seeding durchgeführt wird.
 
@@ -551,7 +550,7 @@ Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]]
 
 VSS-Momentaufnahmen werden für ein gesamtes Volume erstellt. Standardmäßig können für ein bestimmtes Volume bis zu 64 Momentaufnahmen vorhanden sein, sofern genügend Platz für die Speicherung verfügbar ist. Dies wird von VSS automatisch durchgeführt. Beim Standardzeitplan für Momentaufnahmen werden zwei Momentaufnahmen pro Tag erstellt (am Montag und Freitag). Dieser Zeitplan kann über einen geplanten Windows-Task konfiguriert werden. Mit dem obigen PowerShell-Cmdlet werden zwei Schritte ausgeführt:
 1. Das Cloudtiering der Azure-Dateisynchronisierung auf dem angegebenen Volume wird so konfiguriert, dass es mit vorherigen Versionen kompatibel ist. Hierbei wird sichergestellt, dass eine Datei auch dann aus einer vorherigen Version wiederhergestellt werden kann, wenn sie per Tiering auf dem Server in der Cloud ausgelagert wurde. 
-2. Der Standardzeitplan für VSS wird aktiviert. Sie können dies später noch ändern. 
+1. Der Standardzeitplan für VSS wird aktiviert. Sie können dies später noch ändern. 
 
 > [!Note]  
 > Hierbei sind zwei wichtige Punkte zu beachten:

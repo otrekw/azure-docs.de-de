@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die in der Planungsphase gesammelten Informat
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776424"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152033"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -82,7 +82,7 @@ Führen Sie die Schritte im Tutorial [Erstellen eines NSX-T-Netzwerksegments in 
 
 Wechseln Sie zurück zum Schritt [Überprüfen der aufgeführten Netzwerkrouten](#verify-network-routes-advertised). Es werden weitere Routen in der Liste angezeigt, die den Netzwerksegmenten entsprechen, die Sie im vorherigen Schritt erstellt haben.  
 
-Für virtuelle Computer weisen Sie die Segmente zu, die Sie im Schritt [Überprüfen des aufgeführten NSX-T-Segments](#verify-advertised-nsx-t-segment) erstellt haben.  
+Bei virtuellen Computern weisen Sie die Segmente zu, die Sie im Schritt [Erstellen eines Netzwerksegments in Azure VMware Solution](#create-a-network-segment-on-azure-vmware-solution) erstellt haben.  
 
 Da DNS erforderlich ist, müssen Sie den DNS-Server bestimmen, den Sie verwenden möchten.  
 

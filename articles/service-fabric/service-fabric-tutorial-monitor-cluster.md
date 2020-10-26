@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020098"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331990"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Tutorial: Überwachen eines Service Fabric-Clusters in Azure
 
@@ -57,7 +57,7 @@ Wählen Sie die Ressource **ServiceFabric(mysfomsworkspace)** aus.
 
 In der **Übersicht** werden Kacheln in Form eines Diagramms (Graphs) für jede der aktivierten Lösungen angezeigt, auch für Service Fabric. Klicken Sie auf den Graph **Service Fabric**, um mit der Service Fabric-Analyse-Lösung fortzufahren.
 
-![Service Fabric-Lösung](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Screenshot: Service Fabric-Graph.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 In der folgenden Abbildung ist die Startseite der Service Fabric-Analyse-Lösung dargestellt. Diese Startseite bietet eine Momentaufnahmeansicht der Vorgänge im Cluster.
 

@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Unterstützung der 
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938796"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330494"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure-Schemaregistrierung in Event Hubs (Vorschau)
 In vielen Ereignisstreaming- und Messagingszenarien enthält die Ereignis- oder Nachrichtennutzlast strukturierte Daten, die entweder serialisiert oder mithilfe eines schemagesteuerten Formats wie Apache Avro deserialisiert werden. Absender und Empfänger können die Integrität der Daten mit einem Schemadokument wie bei einem JSON-Schema überprüfen. Bei schemagesteuerten Formaten ist die Bereitstellung des Schemas für den Nachrichtenconsumer eine Voraussetzung für den Consumer, und die Daten deserialisieren zu können. 
@@ -50,8 +50,8 @@ Die folgende Abbildung zeigt den Informationsfluss der Schemaregistrierung mit E
 ## <a name="standard-vs-dedicated-limits"></a>Standard- und dedizierte Grenzwerte im Vergleich
 Informationen zu Grenzwerten (z. B. zur Anzahl von Schemagruppen in einem Namespace), die identisch sind und für Standard- und dedizierte Tarife von Event Hubs unterschiedlich sind, finden Sie unter [Schemaregistrierungsgrenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations).
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
-Wenn Sie programmgesteuert auf die Schemaregistrierung zugreifen, müssen Sie eine Anwendung in Azure Active Directory (Azure AD) registrieren und den Sicherheitsprinzipal der Anwendung einer der Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) hinzufügen:
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
+Wenn Sie programmgesteuert auf die Schemaregistrierung zugreifen, müssen Sie eine Anwendung in Azure Active Directory (Azure AD) registrieren und den Sicherheitsprinzipal der Anwendung einer der Rollen der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) hinzufügen:
 
 | Role | BESCHREIBUNG | 
 | ---- | ----------- | 

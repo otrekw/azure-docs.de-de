@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461271"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329524"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps
 
@@ -243,7 +243,7 @@ Herzlichen Glückwunsch! Sie haben eine Logik-App erstellt und ausgeführt, die 
 
 Sie können andere Konfigurationsänderungen mit Ereignisrastern und Logik-Apps überwachen wie etwas Folgende:
 
-* Ein virtueller Computer erhält rollenbasierte Zugriffssteuerungsrechte (Role-Based Access Control, RBAC).
+* Ein virtueller Computer erhält rollenbasierte Zugriffssteuerungsrechte in Azure (Role-Based Access Control, Azure RBAC).
 * Es werden Änderungen an einer Netzwerksicherheitsgruppe (Network Security Group, NSG) in einer Netzwerkschnittstelle (Network Interface, NIC) vorgenommen.
 * Datenträger für einen virtuellen Computer werden hinzugefügt oder entfernt.
 * Der NIC eines virtuellen Computers wird eine öffentliche IP-Adresse zugewiesen.

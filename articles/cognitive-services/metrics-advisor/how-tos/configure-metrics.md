@@ -3,19 +3,19 @@ title: Konfigurieren Ihrer Metrics Advisor-Instanz mithilfe des Webportals
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Ihre Metrics Advisor-Instanz konfigurieren und die Ergebnisse der Anomalieerkennung optimieren.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 80e6ffb79aae5ffc0fe1fd8c9d73d97cc3bdde1e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930507"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048252"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Gewusst wie: Konfigurieren von Metriken und Optimieren der Konfigurationserkennung
 
@@ -45,7 +45,7 @@ Diese Konfiguration wird auf alle Reihen in dieser Metrik angewendet, mit Ausnah
 
 Es gibt zusätzliche Parameter wie **Richtung** und **Valid anomaly** (Gültige Anomalie), die zur weiteren Optimierung der Konfiguration verwendet werden können. Sie können auch verschiedene Erkennungsmethoden kombinieren. 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="Kombination von Konfigurationen" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="Metrik auswählen" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>Optimieren der Konfiguration für eine bestimmte Reihe oder Gruppe
 
@@ -53,7 +53,7 @@ Klicken Sie unter den Konfigurationsoptionen für die Metrikebene auf **Erweiter
 
 Diese Konfiguration wird anstelle der Konfiguration auf Metrikebene auf die Gruppe von Reihen oder bestimmte Reihen angewendet. Wenn Sie die Bedingungen für diese Gruppe festgelegt haben, speichern Sie sie.
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="Erweiterte Konfiguration" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="Metrik auswählen" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>Anomalieerkennungsmethoden
 
@@ -68,11 +68,11 @@ Im intelligenten Erkennungsmodus werden die Parameter für die Empfindlichkeit u
 
 Die Empfindlichkeit kann sich auf die Breite des erwarteten Wertebereichs der einzelnen Punkte auswirken. Wenn Sie den Wert erhöhen, wird der erwartete Wertebereich enger, und es werden mehr Anomalien gemeldet:
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Intelligente Erkennung mit hoher Empfindlichkeit":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Metrik auswählen":::
 
 Wenn Sie die Empfindlichkeit verringern, wird der erwartete Wertebereich breiter, und es werden weniger Anomalien gemeldet:
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Intelligente Erkennung mit niedriger Empfindlichkeit":::
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Metrik auswählen":::
 
 **Change threshold** (Änderungsschwellenwert) 
 
@@ -85,23 +85,23 @@ Führen Sie die folgenden Schritte aus, um diesen Modus zu verwenden:
 
 1. Wählen Sie **Change threshold** (Änderungsschwellenwert) als Anomalieerkennungsmethode aus, wenn Sie die Konfigurationen der Anomalieerkennung für Ihre Metriken oder Zeitreihen festlegen.
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="Change Threshold (Änderungsschwellenwert)":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="Metrik auswählen":::
 
 2. Wählen Sie die Parameter **out of the range** (Außerhalb des Bereichs) oder **in the range** (Innerhalb des Bereichs) ausgehend von Ihrem Szenario aus.
 
     Wenn Sie Schwankungen erkennen möchten, wählen Sie **out of the range** (Außerhalb des Bereichs) aus. Mit den unten angegebenen Einstellungen werden beispielsweise alle Datenpunkte, die sich im Vergleich zur vorherigen Einstellung um mehr als 10 % ändern, als Ausreißer erkannt.
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Parameter „out of range“ (Außerhalb des Bereichs)":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Metrik auswählen":::
 
     Wenn Sie Daten erkennen möchten, bei denen keine Schwankungen auftreten, wählen Sie **in the range** (Innerhalb des Bereichs) aus. Mit den unten angegebenen Einstellungen werden beispielsweise alle Datenpunkte, die sich im Vergleich zur vorherigen Einstellung um bis zu 0,01 % ändern, als Ausreißer erkannt. Da der Schwellenwert so klein ist (0,01 %), erkennt er fehlende Schwankungen bei den Daten als Ausreißer.
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Parameter „In range“ (Innerhalb des Bereichs)":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Metrik auswählen":::
 
 3. Legen Sie den Prozentsatz der Änderung fest, der als Anomalie gilt, und welche zuvor erfassten Datenpunkte für den Vergleich verwendet werden. Dieser Vergleich erfolgt immer zwischen dem aktuellen Datenpunkt und einem einzelnen Datenpunkt N Punkte davor.
     
     **Richtung** ist nur gültig, wenn Sie den Modus **out of the range** (Außerhalb des Bereichs) verwenden:
     
     * Mit **Nach oben** wird die Erkennung so konfiguriert, dass Anomalien nur dann erkannt werden, wenn (aktueller Datenpunkt) - (Vergleichsdatenpunkt) > **+** Prozentsatz des Schwellenwerts.
-    * Mit **Nach unten** wird die Erkennung so konfiguriert, dass Anomalien nur dann erkannt werden, wenn (aktueller Datenpunkt) - (Vergleichsdatenpunkt) > **-** Prozentsatz des Schwellenwerts.
+    * Mit **Nach unten** wird die Erkennung so konfiguriert, dass Anomalien nur dann erkannt werden, wenn (aktueller Datenpunkt) - (Vergleichsdatenpunkt) < **-** Prozentsatz des Schwellenwerts.
  
 **Hard threshold** (Harter Schwellenwert)
 
@@ -117,7 +117,7 @@ Manchmal werden durch erwartete oder regelmäßig auftretende Ereignisse (z. B.
 
 Klicken Sie auf die Schaltfläche **Configure Preset Event** (Vordefiniertes Ereignis konfigurieren) neben der Dropdownliste für Metriken auf der Metrikdetailseite.
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="Schaltfläche „Preset event“ (Vordefiniertes Ereignis)":::
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="Metrik auswählen":::
 
 Konfigurieren Sie die Optionen im angezeigten Fenster Ihrer Nutzung entsprechend. Stellen Sie sicher, dass **Enable holiday event** (Feiertagsereignis aktivieren) ausgewählt ist, um die Konfiguration zu verwenden. 
 
@@ -161,7 +161,7 @@ X – nicht verfügbar
 
 Das zyklische Ereignis wird verwendet, um Anomalien zu reduzieren, wenn diese einem zyklischen Muster folgen. Es wird jedoch eine Anomalie gemeldet, wenn mehrere Datenpunkte dem Muster nicht folgen. Der **Strict-Modus** wird zum Aktivieren der Anomalieberichterstattung verwendet, wenn ein Datenpunkt dem Muster nicht folgt. 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="Konfiguration für vordefinierte Ereignisse":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="Metrik auswählen":::
 
 ## <a name="view-recent-incidents"></a>Anzeigen der letzten Incidents
 

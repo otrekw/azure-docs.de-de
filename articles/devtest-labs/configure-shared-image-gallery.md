@@ -3,12 +3,12 @@ title: Konfigurieren eines Katalogs mit freigegebenen Images in Azure DevTest L
 description: Hier erfahren Sie, wie Sie einen freigegebenen Imagekatalog in Azure DevTest Labs konfigurieren, mit dem Benutzer beim Erstellen von Labressourcen von einem freigegebenen Speicherort aus auf Images zugreifen können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271038"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327976"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurieren eines gemeinsamen Image-Katalogs in Azure DevTest Labs
 DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:
@@ -16,7 +16,7 @@ DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images]
 - Verwaltete globale Replikation von Images.
 - Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung.
 - Hochverfügbarkeit für Images mithilfe von ZRS-Konten (Zone Redundant Storage, zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
-- Abonnement- und sogar mandantenübergreifende Freigabe von Images mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC).
+- Abonnement- und sogar mandantenübergreifende Freigabe von Images mithilfe der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC).
 
 Weitere Informationen finden Sie in der [Dokumentation zum Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). 
  

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 10/07/2020
+ms.openlocfilehash: 616e3e6c37faa3c085b8531173b557973e09fbf8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319796"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974565"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -23,56 +23,32 @@ Dieser Artikel enthält Informationen zu den **neuesten** Versionsupdates für A
 
 Azure HDInsight ist unter Enterprisekunden einer der beliebtesten Dienste für Open-Source-Analysen in Azure.
 
-## <a name="release-date-08092020"></a>Veröffentlichungsdatum: 09.08.2020
+## <a name="release-date-10082020"></a>Veröffentlichungsdatum: 08.10.2020
 
-Diese Version gilt nur für HDInsight 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
+Diese Version gilt sowohl für HDInsight 3.6 als auch für HDInsight 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
 
 ## <a name="new-features"></a>Neue Funktionen
-### <a name="support-for-sparkcruise"></a>Unterstützung für SparkCruise
-SparkCruise ist ein System für die automatische Wiederverwendung von Berechnungsergebnissen für Spark. Es wählt gängige zu materialisierende Teilausdrücke anhand der vergangenen Abfrageworkload aus. SparkCruise materialisiert diese Teilausdrücke im Rahmen der Abfrageverarbeitung, und die Wiederverwendung von Berechnungsergebnissen wird automatisch im Hintergrund angewendet. Sie können von SparkCruise profitieren, ohne Änderungen am Spark-Code vornehmen zu müssen.
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>Unterstützung der Hive-Ansicht für HDInsight 4.0
-Die Apache Ambari-Hive-Ansicht ist dazu konzipiert, Sie beim Erstellen, Optimieren und Ausführen von Hive-Abfragen über Ihren Webbrowser zu unterstützen. Die Hive-Ansicht wird ab diesem Release nativ für HDInsight 4.0-Cluster unterstützt. Dies gilt nicht für vorhandene Cluster. Sie müssen den Cluster löschen und neu erstellen, um die integrierte Hive-Ansicht zu nutzen.
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>Unterstützung der Tez-Ansicht für HDInsight 4.0
-Die Apache Tez-Ansicht wird zum Nachverfolgen und Debuggen der Ausführung von Hive Tez-Aufträgen verwendet. Die Tez-Ansicht wird ab diesem Release nativ für HDInsight 4.0 unterstützt. Dies gilt nicht für vorhandene Cluster. Sie müssen den Cluster löschen und neu erstellen, um die integrierte Tez-Ansicht zu nutzen.
+### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Private HDInsight-Cluster ohne öffentliche IP-Adresse und private Verbindung (Vorschau)
+HDInsight unterstützt jetzt die Erstellung von Clustern ohne öffentliche IP-Adresse und den Zugriff auf Cluster über private Verbindungen in der Vorschau. Kunden können die neuen erweiterten Netzwerkeinstellungen verwenden, um einen vollständig isolierten Cluster ohne öffentliche IP-Adresse zu erstellen und ihre eigenen privaten Endpunkte für den Zugriff auf den Cluster verwenden. 
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
+HDInsight verwendet jetzt virtuelle Azure-Computer für die Bereitstellung des Clusters. Ab dieser Version wird der Dienst schrittweise zu [Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) migriert. Der gesamte Prozess kann Monate dauern. Nachdem Ihre Regionen und Abonnements migriert wurden, werden neu erstellte HDInsight-Cluster ohne Kundenaktionen in VM-Skalierungsgruppen ausgeführt. Es wird kein Breaking Change erwartet.
 
 ## <a name="deprecation"></a>Eingestellte Unterstützung
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.1 und 2.2 für Spark-Cluster in HDInsight 3.6
-Ab dem 1. Juli 2020 können Kunden in HDInsight 3.6 keine neuen Spark-Cluster mit Spark 2.1 und 2.2 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 3.6 zu Spark 2.3 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden.
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.3 für Spark-Cluster in HDInsight 4.0
-Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Spark-Cluster mit Spark 2.3 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 4.0 zu Spark 2.4 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden.
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Einstellung von Kafka 1.1 für Kafka-Cluster in HDInsight 4.0
-Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Kafka-Cluster mit Kafka 1.1 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Es empfiehlt sich, in HDInsight 4.0 bis zum 30. Juni 2020 auf Kafka 2.1 umzustellen, um potenzielle System-/Supportunterbrechungen zu vermeiden.
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Eingestellte Unterstützung des HDInsight 3.6 ML Services-Clusters
+Der Support für den Clustertyp „HDInsight 3.6 ML Services“ wird am 31. Dezember 2020 auslaufen. Kunden werden danach keine neuen 3.6 ML Services-Cluster mehr erstellen können. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Prüfen Sie [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions) das Auslaufen des Supports für HDInsight-Versionen und Clustertypen.
 
 ## <a name="behavior-changes"></a>Verhaltensänderungen
-### <a name="ambari-stack-version-change"></a>Änderung der Ambari-Stapelversion
-In diesem Release ändert sich die Ambari-Version von 2.x.x.x in 4.1. Sie können die Stapelversion (HDInsight 4.1) in Ambari überprüfen: Ambari > User > Versions.
+Keine Verhaltensänderung für diese Version.
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
-Es stehen keine Breaking Changes an, um die Sie sich kümmern müssen.
+Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
+
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Möglichkeit zum Auswählen anderer Größen virtueller Zookeeper-Computer für Spark, Hadoop und ML Services
+HDInsight unterstützt derzeit keine Anpassung der Zookeeper-Knotengröße für die Clustertypen „Spark“, „Hadoop“ und „ML Services“. Standardmäßig wird A2_v2/A2 für die Größen virtueller Computer verwendet, die kostenlos zur Verfügung gestellt werden. In der kommenden Version können Sie die Größe der virtuellen Zookeeper-Computer auswählen, die für Ihr Szenario am besten geeignet ist. Für Zookeeper-Knoten mit einer anderen Größe der virtuellen Computer als A2_v2/A2 fallen Gebühren an. Die virtuellen Computer vom Typ A2_v2 und A2 werden weiterhin kostenlos angeboten.
 
 ## <a name="bug-fixes"></a>Behebung von Programmfehlern
 HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit und -leistung. 
 
-Für die folgenden JIRA-Tickets wurden Backports für Hive durchgeführt:
-* [HIVE-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [HIVE-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [HIVE-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [HIVE-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-Für die folgenden JIRA-Tickets wurden Backports für HBase durchgeführt:
-* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>Änderung der Komponentenversion
 Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
-
-## <a name="known-issues"></a>Bekannte Probleme
-
-Es wurde ein Problem im Azure-Portal behoben, bei dem ein Fehler auftrat, wenn Benutzer einen Azure HDInsight-Cluster mit einem öffentlichen Schlüssel als SSH-Authentifizierungstyp erstellten. Wenn Benutzer auf **Überprüfen + erstellen** klickten, erhielten sie die Fehlermeldung „Es dürfen keine drei aufeinanderfolgenden Zeichen aus dem SSH-Benutzernamen enthalten sein“. Dieses Problem wurde behoben, aber es kann erforderlich sein, den Browsercache zu aktualisieren, indem Sie STRG+F5 drücken, um die korrigierte Ansicht zu laden. Dieses Problem konnten Sie umgehen, indem Sie einen Cluster mit einer ARM-Vorlage erstellten. 

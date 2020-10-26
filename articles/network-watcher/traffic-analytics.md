@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967494"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951569"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -58,62 +59,106 @@ Bei der Datenverkehrsanalyse werden die unformatierten NSG-Flussprotokolle unter
 ## <a name="supported-regions-nsg"></a>Unterstützte Regionen: NSG 
 
 Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
-
-* Kanada, Mitte
-* USA, Westen-Mitte
-* East US
-* USA (Ost) 2
-* USA Nord Mitte
-* USA Süd Mitte
-* USA (Mitte)
-* USA (Westen)
-* USA, Westen 2
-* Frankreich, Mitte
-* Europa, Westen
-* Nordeuropa
-* Brasilien Süd
-* UK, Westen
-* UK, Süden
-* Australien (Osten)
-* Australien, Südosten
-* Asien, Osten
-* Asien, Südosten
-* Korea, Mitte
-* Indien, Mitte
-* Indien (Süden)
-* Japan, Osten 
-* Japan, Westen
-* US Government, Virginia
-* China, Osten 2
+:::row:::
+   :::column span="":::
+      Australien, Mitte  
+      Australien (Osten)  
+      Australien, Südosten  
+      Brasilien Süd  
+      Kanada, Mitte  
+      Kanada, Osten  
+      Indien, Mitte  
+      USA (Mitte)  
+      China, Osten 2  
+      China, Norden 2  
+   :::column-end:::
+   :::column span="":::
+      Asien, Osten  
+      East US  
+      USA (Ost) 2  
+      USA, Osten 2 (EUAP)  
+      Frankreich, Mitte  
+      Japan, Osten  
+      Japan, Westen  
+      Korea, Mitte  
+      Korea, Süden  
+      USA Nord Mitte  
+   :::column-end:::
+   :::column span="":::
+      Nordeuropa  
+      Südafrika, Norden  
+      USA Süd Mitte  
+      Indien (Süden)  
+      Asien, Südosten  
+      Schweiz, Norden  
+      Schweiz, Westen  
+      UK, Süden  
+      UK, Westen  
+      US Gov Arizona  
+   :::column-end:::
+   :::column span="":::
+      USGov Texas  
+      US Government, Virginia  
+      US Nat East  
+      US Nat West  
+      US Sec East  
+      US Sec West  
+      USA, Westen-Mitte  
+      Europa, Westen  
+      USA (Westen)  
+      USA, Westen 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Unterstützte Regionen: Log Analytics-Arbeitsbereiche
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
-* Kanada, Mitte
-* USA, Westen-Mitte
-* East US
-* USA (Ost) 2
-* USA Nord Mitte
-* USA Süd Mitte
-* USA (Mitte)
-* USA (Westen)
-* USA, Westen 2
-* USA (Mitte)
-* Frankreich, Mitte
-* Europa, Westen
-* Nordeuropa
-* Brasilien Süd
-* UK, Westen
-* UK, Süden
-* Australien (Osten)
-* Australien, Südosten
-* Asien, Osten
-* Asien, Südosten
-* Korea, Mitte
-* Indien, Mitte
-* Japan, Osten
-* US Government, Virginia
-* China, Osten 2
+:::row:::
+   :::column span="":::
+      Australien, Mitte  
+      Australien (Osten)  
+      Australien, Südosten  
+      Brasilien Süd  
+      Kanada, Mitte  
+      Indien, Mitte  
+      USA (Mitte)  
+      China, Osten 2  
+      Asien, Osten  
+      East US  
+   :::column-end:::
+   :::column span="":::
+      USA (Ost) 2  
+      USA, Osten 2 (EUAP)  
+      Frankreich, Mitte  
+      Deutschland, Westen-Mitte  
+      Japan, Osten  
+      Korea, Mitte  
+      USA Nord Mitte  
+      Nordeuropa  
+      Südafrika, Norden  
+      USA Süd Mitte  
+   :::column-end:::
+   :::column span="":::
+      Asien, Südosten  
+      Schweiz, Norden  
+      Schweiz, Westen  
+      VAE, Mitte  
+      UK, Süden  
+      UK, Westen  
+      US Gov Arizona  
+      US Government, Virginia  
+      US Nat East  
+      US Nat West  
+   :::column-end:::
+   :::column span="":::
+      US Sec East  
+      US Sec West  
+      USA, Westen-Mitte  
+      Europa, Westen  
+      USA (Westen)  
+      USA, Westen 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

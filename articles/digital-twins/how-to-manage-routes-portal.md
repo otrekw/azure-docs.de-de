@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec23252883f928cfa6c1651afbfe88e413d55571
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252832"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339593"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (Portal)
 
@@ -72,7 +72,7 @@ Sie können auch den Endpunkt anzeigen, der erstellt wurde, indem Sie auf der Se
 
 Falls bei der Erstellung des Endpunkts ein Fehler auftritt, sollten Sie die Fehlermeldung beachten und den Vorgang nach einigen Minuten wiederholen.
 
-Nun ist das Event Grid-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#event-routes) erstellen.
+Nun ist das Event Grid-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
 
 ### <a name="create-an-event-hubs-endpoint"></a>Erstellen eines Event Hubs-Endpunkts
 
@@ -94,7 +94,7 @@ Sie können überprüfen, ob die Erstellung des Endpunkts erfolgreich war, indem
 
 Falls bei der Erstellung des Endpunkts ein Fehler auftritt, sollten Sie die Fehlermeldung beachten und den Vorgang nach einigen Minuten wiederholen.
 
-Nun ist das Event Hub-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#event-routes) erstellen.
+Nun ist das Event Hub-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
 
 ### <a name="create-a-service-bus-endpoint"></a>Erstellen eines Service Bus-Endpunkts
 
@@ -116,9 +116,17 @@ Sie können überprüfen, ob die Erstellung des Endpunkts erfolgreich war, indem
 
 Falls bei der Erstellung des Endpunkts ein Fehler auftritt, sollten Sie die Fehlermeldung beachten und den Vorgang nach einigen Minuten wiederholen.
 
-Nun ist das Service Bus-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#event-routes) erstellen.
+Nun ist das Service Bus-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
 
-## <a name="event-routes"></a>Ereignisrouten
+### <a name="create-an-endpoint-with-dead-lettering"></a>Erstellen eines Endpunkts mit unzustellbaren Nachrichten
+
+Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmten Anzahl von Übermittlungsversuchen nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung **unzustellbarer Nachrichten** bezeichnet.
+
+Zum Erstellen eines Endpunkts mit aktivierten unzustellbaren Nachrichten müssen Sie die [ARM-APIs](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) anstelle des Azure-Portals verwenden, um den Endpunkt zu erstellen.
+
+Anweisungen dazu, wie dies mit den APIs funktioniert, finden Sie in der Version [*APIs und CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) dieses Artikels.
+
+## <a name="create-an-event-route"></a>Erstellen einer Ereignisroute
 
 Wenn Sie tatsächlich Daten von Azure Digital Twins an einen Endpunkt senden möchten, müssen Sie eine **Ereignisroute** definieren. Diese Routen ermöglichen es Entwicklern, den Ereignisdatenfluss im gesamten System und zu Downstreamdiensten einzurichten. Weitere Informationen zu Ereignisrouten finden Sie unter [*Konzepte: Weiterleiten von Azure Digital Twins-Ereignissen*](concepts-route-events.md).
 
@@ -127,7 +135,7 @@ Wenn Sie tatsächlich Daten von Azure Digital Twins an einen Endpunkt senden mö
 >[!NOTE]
 >Wenn Sie Ihre Endpunkte gerade erst bereitgestellt haben, vergewissern Sie sich, dass die Bereitstellung abgeschlossen ist, **bevor** Sie versuchen, die Endpunkte für eine neue Ereignisroute zu verwenden. Falls Sie die Route nicht einrichten können, weil die Endpunkte nicht betriebsbereit sind, sollten Sie einige Minuten warten und den Vorgang dann wiederholen.
 
-### <a name="create-an-event-route"></a>Erstellen einer Ereignisroute 
+### <a name="creation-steps-with-the-azure-portal"></a>Erstellungsschritte mit dem Azure-Portal
 
 Eine Ereignisroutendefinition enthält die folgenden Elemente:
 * Den Routennamen, den Sie verwenden möchten.
@@ -153,7 +161,7 @@ Zum Aktivieren der Route müssen Sie auch einen **Ereignisroutenfilter hinzufüg
 
 Klicken Sie nach Abschluss des Vorgangs auf die Schaltfläche _Speichern_, um Ihre Ereignisroute zu erstellen.
 
-### <a name="filter-events"></a>Filtern von Ereignissen
+## <a name="filter-events"></a>Filtern von Ereignissen
 
 Wie oben beschrieben, verfügen Routen über das Feld **Filter**. Wenn der Filterwert für Ihre Route `false` lautet, werden keine Ereignisse an Ihren Endpunkt gesendet. 
 
@@ -161,7 +169,6 @@ Nachdem mindestens `true` als Filterwert ausgewählt wurde, erhalten Endpunkte v
 * Telemetrie, die von [digitalen Zwillingen](concepts-twins-graph.md) unter Verwendung der Azure Digital Twins-Dienst-API ausgelöst wird.
 * Änderungsbenachrichtigungen für Zwillingseigenschaften, ausgelöst bei Eigenschaftsänderungen für einen Zwilling in der Azure Digital Twins-Instanz.
 * Lebenszyklusereignisse, die ausgelöst werden, wenn Zwillinge oder Beziehungen erstellt oder gelöscht werden.
-* Modelländerungsereignisse, die ausgelöst werden, wenn [Modelle](concepts-models.md), die in einer Instanz von Azure Digital Twins konfiguriert sind, hinzugefügt oder gelöscht werden.
 
 Sie können die Ereignistypen beschränken, die gesendet werden, indem Sie einen spezifischeren Filter definieren.
 

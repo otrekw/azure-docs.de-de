@@ -3,12 +3,12 @@ title: Unterstützte Clusterversionen in Azure Service Fabric
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: e3194a59607563656f6624dabf51e9369e9258ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d53c704645fdeb1e68898c4cadf8429bcb5645
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843242"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122431"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
@@ -39,11 +39,11 @@ Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige
 | 6.3.* | 6.1.480.* |Alle Versionen bis einschließlich Version 3.2 |31. März 2019  |
 | 6.4.* | 6.2.301.* |Alle Versionen bis einschließlich Version 3.3 |15. September 2019 |
 | 6.5.* | 6.4.617.* |Alle Versionen bis einschließlich Version 3.4 |1\. August 2020 |
-| 7.0.466.* | 6.4.664.* |Alle Versionen bis einschließlich Version 4.0|1\. November 2020  |
-| 7.0.466.* | 6.5.* |Alle Versionen bis einschließlich Version 4.0|1\. November 2020 |
-| 7.0.470.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |1\. November 2020  |
-| 7.0.472.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |1\. November 2020  |
-| 7.0.478.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |1\. November 2020  |
+| 7.0.466.* | 6.4.664.* |Alle Versionen bis einschließlich Version 4.0|31. Januar 2021  |
+| 7.0.466.* | 6.5.* |Alle Versionen bis einschließlich Version 4.0|31. Januar 2021 |
+| 7.0.470.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |31. Januar 2021  |
+| 7.0.472.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |31. Januar 2021  |
+| 7.0.478.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |31. Januar 2021  |
 | 7.1.409.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |Aktuelle Version, daher kein Enddatum |
 | 7.1.417.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |Aktuelle Version, daher kein Enddatum |
 | 7.1.428.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.1 |Aktuelle Version, daher kein Enddatum |
@@ -93,7 +93,7 @@ In der folgende Tabelle werden die Versionsnamen von Service Fabric und die zuge
 | 6.1 CU2 | 6.1.467.9494 | 6.1.185.1 |
 | 6.1 CU3 | 6.1.472.9494 | Nicht verfügbar |
 | 6.1 CU4 | 6.1.480.9494 | 6.1.187.1 |
-| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 | 
+| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6.2 CU1 | 6.2.274.9494 | 6.2.191.1 |
 | 6.2 CU2 | 6.2.283.9494 | 6.2.194.1 |
 | 6.2 CU3 | 6.2.301.9494 | 6.2.199.1 |

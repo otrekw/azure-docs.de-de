@@ -4,12 +4,12 @@ description: Die Informationen in diesem Artikel helfen Ihnen beim Optimieren de
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476256"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328265"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Governance der Azure DevTest Labs-Infrastruktur – Verwalten der Kosten und des Besitzes
 Kosten und Besitz sind zentrale Überlegungen beim Aufbau Ihrer Entwicklungs- und Testumgebungen. In diesem Abschnitt finden Sie Informationen, die Ihnen beim Optimieren der Kosten und beim Festlegen des Besitzes in Ihrer gesamten Umgebung helfen.
@@ -34,9 +34,9 @@ Nur aktive Visual Studio-Abonnenten (Standardabonnements oder Jahres- und Monats
 
 Wenn Sie das DevTest-Angebot nutzen möchten, beachten Sie, dass dieser Vorteil ausschließlich für das Entwickeln und Testen Ihrer Anwendungen gilt. Die Nutzung im Rahmen des Abonnements unterliegt keiner Vereinbarung zum Servicelevel (SLA) mit finanzieller Absicherung, mit Ausnahme der Nutzung von Azure DevOps und HockeyApp.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Definieren eines rollenbasierten Zugriffs in Ihrer gesamten Organisation
+## <a name="define-role-based-access-across-your-organization"></a>Definieren von rollenbasiertem Zugriff in Ihrer gesamten Organisation
 ### <a name="question"></a>Frage
-Wie definiere ich die rollenbasierte Zugriffssteuerung für meine DevTest Labs-Umgebungen, um sicherzustellen, dass die IT-Abteilung die Steuerung übernimmt, während Entwickler und Tester ihre Arbeit erledigen können? 
+Wie definiere ich die rollenbasierte Zugriffssteuerung in Azure für meine DevTest Labs-Umgebungen, um sicherzustellen, dass die IT-Abteilung die Steuerung übernimmt, während Entwickler und Tester ihre Arbeit erledigen können? 
 
 ### <a name="answer"></a>Antwort
 Es gibt ein allgemeines Muster, aber die Details sind von Ihrer Organisation abhängig.

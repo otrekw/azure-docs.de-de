@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Event Hubs
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270099"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332432"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 
@@ -222,7 +222,7 @@ Zum Authentifizieren von Back-End-Anwendungen, die von Event Hubs-Producern gen
 Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Authorize using SAS](authenticate-shared-access-signature.md) (Autorisieren mit SAS)
-- [Authorize using Role-base access control (RBAC)](authenticate-shared-access-signature.md) (Autorisieren mit der rollenbasierten Zugriffssteuerung (RBAC))
+- [Autorisieren mit rollenbasierter Zugriffssteuerung in Azure (Azure RBAC)](authenticate-shared-access-signature.md)
 - [Weitere Informationen zu Event Hubs](event-hubs-about.md)
 
 Weitere Informationen finden Sie in den folgenden verwandten Artikeln:
