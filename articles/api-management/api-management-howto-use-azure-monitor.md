@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243238"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093581"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -55,13 +55,13 @@ Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Übe
 
 So greifen Sie auf Metriken zu:
 
-1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken**.
+1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken** .
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Anforderungen**. 
+2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Anforderungen** . 
 3. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt.
-4. Das Diagramm kann anhand der Dimensionen der Metrik **Anforderungen** gefiltert werden. Klicken Sie beispielsweise auf **Filter hinzufügen**, wählen Sie **Backend Response Code** (Antwortcode des Back-Ends) aus, und geben Sie als Wert 500 ein. Das Diagramm zeigt nun die Anzahl von Anforderungen an, für die im API-Back-End ein Fehler auftrat.   
+4. Das Diagramm kann anhand der Dimensionen der Metrik **Anforderungen** gefiltert werden. Klicken Sie beispielsweise auf **Filter hinzufügen** , wählen Sie **Backend Response Code** (Antwortcode des Back-Ends) aus, und geben Sie als Wert 500 ein. Das Diagramm zeigt nun die Anzahl von Anforderungen an, für die im API-Back-End ein Fehler auftrat.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Einrichten einer Warnungsregel für nicht autorisierte Anforderungen
 
@@ -73,27 +73,27 @@ Sie können die Konfiguration so durchführen, dass Warnungen basierend auf Metr
 
 So konfigurieren Sie Warnungen:
 
-1. Klicken Sie im unteren Seitenbereich auf der Menüleiste auf **Warnungen**.
+1. Klicken Sie im unteren Seitenbereich auf der Menüleiste auf **Warnungen** .
 
-    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![Screenshot, der „Warnungen“ im Menü am unteren Seitenrand zeigt.](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Klicken Sie für diese Warnung auf **Neue Warnungsregel**.
-3. Klicken Sie auf **Bedingung hinzufügen**.
+2. Klicken Sie für diese Warnung auf **Neue Warnungsregel** .
+3. Klicken Sie auf **Bedingung hinzufügen** .
 4. Wählen Sie in der Dropdownliste für den Signaltyp die Option **Metriken** aus.
 5. Wählen Sie **Unauthorized Gateway Request** (Nicht autorisierte Gatewayanforderung) als zu überwachendes Signal aus.
 
-    ![alerts](./media/api-management-azure-monitor/signal-type.png)
+    ![Screenshot, der das Feld „Signaltyp“ und den Signalnamen „Unauthorized Gateway Requests“ (Nicht autorisierte Gatewayanforderungen) hervorhebt.](./media/api-management-azure-monitor/signal-type.png)
 
-6. Geben Sie in der Ansicht **Signallogik konfigurieren** einen Schwellenwert an, nach dem die Warnung ausgelöst werden soll, und klicken Sie anschließend auf **Fertig**.
+6. Geben Sie in der Ansicht **Signallogik konfigurieren** einen Schwellenwert an, nach dem die Warnung ausgelöst werden soll, und klicken Sie anschließend auf **Fertig** .
 
-    ![alerts](./media/api-management-azure-monitor/threshold.png)
+    ![Screenshot, der die Ansicht „Signallogik konfigurieren“ zeigt.](./media/api-management-azure-monitor/threshold.png)
 
 7. Wählen Sie eine vorhandene Aktionsgruppe aus, oder erstellen Sie eine neue Aktionsgruppe. Im folgenden Beispiel wird eine E-Mail an die Administratoren gesendet. 
 
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
 8. Geben Sie einen Namen und eine Beschreibung für die Warnungsregel an, und wählen Sie den Schweregrad aus. 
-9. Klicken Sie auf **Warnungsregel erstellen**.
+9. Klicken Sie auf **Warnungsregel erstellen** .
 10. Versuchen Sie nun, die Konferenz-API ohne API-Schlüssel aufzurufen. Die Warnung wird ausgelöst, und eine E-Mail wird an die Administratoren gesendet. 
 
 ## <a name="activity-logs"></a>Aktivitätsprotokolle
@@ -110,11 +110,11 @@ Sie können in Ihrem API Management-Dienst auf Aktivitätsprotokolle oder in Azu
 So zeigen Sie Aktivitätsprotokolle an:
 
 1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Aktivitätsprotokoll**.
+2. Klicken Sie auf **Aktivitätsprotokoll** .
 
     ![Aktivitätsprotokoll](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. Wählen Sie den gewünschten Filterungsbereich, und klicken Sie auf **Anwenden**.
+3. Wählen Sie den gewünschten Filterungsbereich, und klicken Sie auf **Anwenden** .
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
 
@@ -123,11 +123,11 @@ Ressourcenprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, 
 So konfigurieren Sie Ressourcenprotokolle:
 
 1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Diagnoseeinstellungen**.
+2. Klicken Sie auf **Diagnoseeinstellungen** .
 
     ![Ressourcenprotokolle](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. Klicken Sie auf **Diagnose aktivieren**. Sie können Ressourcenprotokolle zusammen mit Metriken in einem Speicherkonto archivieren, an Event Hub streamen oder an Azure Monitor-Protokolle senden. 
+3. Klicken Sie auf **Diagnose aktivieren** . Sie können Ressourcenprotokolle zusammen mit Metriken in einem Speicherkonto archivieren, an Event Hub streamen oder an Azure Monitor-Protokolle senden. 
 
 API Management bietet derzeit Ressourcenprotokolle (stündlich erfasst) zu einzelnen API-Anforderungen, bei denen jeder Eintrag das folgende Schema aufweist:
 

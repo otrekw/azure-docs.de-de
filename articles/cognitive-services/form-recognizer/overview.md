@@ -12,10 +12,10 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisierte Datenverarbeitung, Dokumentverarbeitung, automatisierte Dateneingabe, Formularverarbeitung
 ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318958"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
@@ -55,7 +55,7 @@ Die Formularerkennung enthält außerdem vordefinierte Modelle zur automatisiert
 
 ### <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
 
-Das vordefinierte Belegmodell wird zum Lesen englischsprachiger Verkaufsbelege aus Australien, Kanada, Großbritannien, Indien und den USA verwendet – des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge, Einzelposten und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben. Weitere Informationen finden Sie im Leitfaden [Konzepte zu Belegen](./concept-receipts.md).
+Das vordefinierte Belegmodell wird zum Lesen englischsprachiger Verkaufsbelege aus Australien, Kanada, dem Vereinigten Königreich, Indien und den USA verwendet – des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge, Einzelposten und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben. Weitere Informationen finden Sie im Leitfaden [Konzepte zu Belegen](./concept-receipts.md).
 
 ![Beispielbeleg](./media/contoso-receipt-small.png)
 

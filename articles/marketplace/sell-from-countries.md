@@ -1,6 +1,6 @@
 ---
 title: Unterstützte Länder und Regionen für Herausgeber
-description: Liste der Länder, in denen Sie ein Angebot im kommerziellen Microsoft-Marketplace veröffentlichen können.
+description: Liste der Länder/Regionen, in denen Sie ein Angebot im kommerziellen Microsoft-Marketplace veröffentlichen können.
 ms.reviewer: nanef
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher

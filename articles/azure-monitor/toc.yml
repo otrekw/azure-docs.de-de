@@ -139,7 +139,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -1026,6 +1026,8 @@
           href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
         - name: Überwachen von Bereitstellungen und HPAs
           href: insights/container-insights-deployment-hpa-metrics.md
+        - name: Überwachen persistenter Volumes (PVs)
+          href: insights/container-insights-persistent-volumes.md
         - name: Anzeigen von Livedaten
           items:
             - name: Übersicht über Livedaten (Vorschau)

@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375878"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976446"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
@@ -38,9 +38,9 @@ Sie können den Status Ihres Angebots im [Partner Center](https://partner.micros
 
 Wenn Sie bereit sind, ein Angebot für die Veröffentlichung zu übermitteln, wählen Sie oben rechts im Portal **Überprüfen und veröffentlichen** aus. Auf der Seite **Überprüfen und veröffentlichen** wird der Status jeder Seite für Ihr Angebot angezeigt. Folgende Werte sind möglich:
 
-   - **Nicht gestartet**: Die Seite ist unvollständig.
-   - **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
-   - **Abgeschlossen**: Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
+   - **Nicht gestartet** : Die Seite ist unvollständig.
+   - **Unvollständig** : Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
+   - **Abgeschlossen** : Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
 
 Wenn eine der Seiten einen anderen Status als **Abgeschlossen** aufweist, müssen Sie das Problem auf dieser Seite beheben und dann zur Seite **Überprüfen und veröffentlichen** zurückkehren, um sich zu vergewissern, dass der Status nun **Abgeschlossen** lautet. Einige Angebotstypen müssen getestet werden. In diesem Fall wird ein Feld **Hinweise zur Zertifizierung** angezeigt, in dem Sie Testanweisungen für das Zertifizierungsteam und ergänzende Hinweise angeben müssen, die das Verständnis Ihrer App erleichtern.
 
@@ -170,6 +170,84 @@ Nachdem Sie sich entschieden haben, Ihr Angebot live zu schalten und im kommerzi
     Wir sorgen dafür, dass Ihr Angebot im Marketplace öffentlich verfügbar ist.
 
 Nachdem die Validierungsprüfungen abgeschlossen wurden, wird Ihr Angebot im Marketplace live geschaltet.
+
+## <a name="publishing-history"></a>Veröffentlichungsverlauf
+
+Auf der Seite **Verlauf** im Partner Center werden die Veröffentlichungsereignisse für Ihre Angebote im kommerziellen Marketplace angezeigt. Die Seite zeigt für jedes Ereignis den Benutzer, der die Aktion initiiert hat, den Ereignistyp sowie das Datum und die Uhrzeit des Ereignisses an. Die [Schritte für die Validierung und Veröffentlichung](#validation-and-publishing-steps) werden mit dem Datum und der Uhrzeit des Abschlusses aufgelistet.
+
+Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
+
+1.    Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+2.    Wählen Sie im Navigationsmenü auf der linken Seite **Kommerzieller Marketplace** > **Übersicht** aus.
+3.    Wählen Sie Ihr Angebot aus.
+4.    Wählen Sie im Navigationsmenü auf der linken Seite die Registerkarte **Verlauf** aus. Die Seite enthält Details zu den folgenden Ereignissen, die für Ihr Angebot zutreffen:
+
+|Ereignis    |Beschreibung    |
+|---------|---------------|
+|Angebot erstellt    |Das Angebot wurde im Partner Center erstellt. Ein Benutzer hat den Angebotstyp, die Angebots-ID und den Angebotsalias in **Kommerzieller Marketplace** > **Übersicht** ausgewählt.    |
+|Plan erstellt: *Planname*    |Ein Benutzer hat einen neuen Plan erstellt, indem er die Plan-ID und den Plannamen auf der Registerkarte **Planübersicht** eingegeben hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen* .    |
+|Plan gelöscht    |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen* .    |
+|Einstellung des Verkaufs für den Plan initiiert: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan initiiert, indem er auf der Seite **Planübersicht** die Option **Verkauf beenden** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen* .    |
+|Einstellung des Verkaufs für den Plan rückgängig gemacht: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan abgebrochen, indem er auf der Seite **Planübersicht** die Option **Verkaufsstopp rückgängig machen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen* .    |
+|Angebot für die Vorschau übermittelt    |Ein Benutzer hat das Angebot für die Vorschau übermittelt, indem er auf der Seite **Überprüfen und veröffentlichen** die Option **Veröffentlichen** ausgewählt hat.    |
+|Abbruch der Übermittlung für die Vorschau initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung für die Vorschau angefordert, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird* .    |
+|Übermittlung für die Vorschau abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung für die Vorschau abgebrochen, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde* .    |
+|Liveschaltung freigegeben    |Ein Benutzer hat das Angebot im kommerziellen Marketplace veröffentlicht, indem er auf der Seite **Angebotsübersicht** die Option **Live schalten** ausgewählt hat.    |
+|Abbruch der Veröffentlichung im Marketplace initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung angefordert, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird* .    |
+|Veröffentlichung im kommerziellen Marketplace abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung abgebrochen, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde* .    |
+|Private Zielgruppe synchronisiert    |Ein Benutzer hat die private Zielgruppe aktualisiert und synchronisiert, indem er auf der Seite **Planübersicht** oder der Seite **Preise und Verfügbarkeit des Plans** die Option **Private Zielgruppe synchronisieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die private Pläne unterstützen* .    |
+|Verkauf des Angebots eingestellt    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Verkauf beenden** ausgewählt hat.    |
+
+> [!NOTE]
+> Die Seite „Verlauf“ gibt nicht an, wann ein Angebotsentwurf gespeichert wurde.
+
+### <a name="filter-options"></a>Filteroptionen
+
+Mithilfe von Filtern können Sie den vollständigen Verlauf Ihres Angebots auf bestimmte Veröffentlichungsereignisse eingrenzen:
+
+1.    Wählen Sie die Filterschaltfläche oben rechts auf der Seite aus.
+2.    Wählen Sie einen Filter und dann **Anwenden** aus, um zu sehen, welche Verlaufsereignisse den von Ihnen ausgewählten Kriterien entsprechen.
+3.    Wählen Sie **Filter löschen** aus, um zum vollständigen Verlauf Ihres Angebots zurückzukehren.
+
+Es gibt vier Filter:
+* Ereignisse
+* Benutzer
+* Date
+* Seiten
+
+Wenn Sie den Filter **Seiten** auswählen, können Sie beliebige Partner Center-Seiten auswählen, die für Ihren Angebotstyp zutreffen. Bei Verwendung des Filters **Seiten** werden alle Ereignisse vom Typ **Angebot für die Vorschau übermittelt** mit Änderungen an der von Ihnen ausgewählten Seite angezeigt.
+
+* Bei allen Angeboten wird die Seite **Angebotseinrichtung** standardmäßig für jedes Übermittlungsereignis eingeschlossen.
+* Bei Angeboten, die Pläne unterstützen, wird die Seite **Planübersicht** für jedes Übermittlungsereignis eingeschlossen.
+* Bei Angeboten, die Testversionen unterstützen, wird die Seite **Testversion** für jedes Übermittlungsereignis eingeschlossen.
+
+### <a name="users"></a>Benutzer
+
+Wenn ein Ereignis von einem Benutzer initiiert wurde, wird der Benutzer auf der Seite „Verlauf“ entsprechend den folgenden Szenarien angezeigt:
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>Ereignis wurde vom Herausgeber initiiert
+
+Der Name von Benutzern mit Veröffentlichungsberechtigungen für ein Angebot wird für die von ihnen initiierten Veröffentlichungsereignisse angezeigt.
+
+[![Anzeige des Namens von Benutzern mit Veröffentlichungsberechtigungen auf der Seite „Verlauf“](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>Ereignis wurde von Microsoft initiiert
+
+Sie können Microsoft-Administratoren Berechtigungen erteilen, um Aktionen für Sie zu initiieren oder nach einem unerwarteten Systemfehler Korrekturmaßnahmen zu ergreifen. Der Name und das Logo von Microsoft werden für Veröffentlichungsereignisse angezeigt, die von Microsoft für Ihr Konto initiiert wurden.
+
+[![Beispiel für die Anzeige von Ereignissen, die von Microsoft initiiert wurden, auf der Seite „Verlauf“](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>Ereignis wurde von einem nicht identifizierten Benutzer initiiert
+
+Bei Benutzern, die keinem Konto mehr zugeordnet sind, wird der Name aus der Spalte **Initiiert von** entfernt, nachdem die Veröffentlichungsberechtigungen aufgehoben wurden.
+
+[![Beispiel für die Anzeige von Ereignissen, die von nicht identifizierten Benutzern initiiert wurden, auf der Seite „Verlauf“](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>Schritte für die Validierung und Veröffentlichung
+
+Für Systemprozesse, die den [Schritten für die Validierung und Veröffentlichung](#validation-and-publishing-steps) entsprechen, wird kein Benutzer angezeigt. Diese Ereignisse sind entsprechend ihrem Abschlussstatus farbcodiert.
+
+[![Beispiel für die Anzeige von Schritten für die Validierung und Veröffentlichung auf der Seite „Verlauf“](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

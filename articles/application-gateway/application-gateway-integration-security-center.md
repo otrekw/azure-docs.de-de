@@ -9,12 +9,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277189"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131206"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Übersicht über die Integration von Application Gateway in Azure Security Center
 
@@ -30,7 +30,7 @@ Wenn Sie auf eine der Empfehlungen für Web Application Firewall klicken, öffne
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Hinzufügen einer Firewall für eine Webanwendung zu einer vorhandenen Ressource
 
-Navigieren Sie zu **Alle Dienste** > **Sicherheit + Identität** > **Security Center**, und klicken Sie unter **Security Center – Übersicht** auf **Anwendungen**. Die Tabelle in **Security Center – Anwendungen** enthält eine Liste der Anwendungen, die Security Center in Ihrem Abonnement erkannt hat.
+Navigieren Sie zu **Alle Dienste** > **Sicherheit + Identität** > **Security Center** , und klicken Sie unter **Security Center – Übersicht** auf **Anwendungen** . Die Tabelle in **Security Center – Anwendungen** enthält eine Liste der Anwendungen, die Security Center in Ihrem Abonnement erkannt hat.
 
 ![Webanwendungen][3]
 
@@ -38,23 +38,23 @@ Wenn Sie auf eine Webanwendung mit einem kritische Problem klicken, wird die Sei
 
 ![Ungeschützte Webressourcen][2]
 
-Klicken Sie unter **Empfehlungen** auf **Web Application Firewall hinzufügen**, um die Seite **Web Application Firewall hinzufügen** zu öffnen.
+Klicken Sie unter **Empfehlungen** auf **Web Application Firewall hinzufügen** , um die Seite **Web Application Firewall hinzufügen** zu öffnen.
 
-Wenn Sie nicht über ein vorhandenes Anwendungsgateway verfügen oder ein neues erstellen möchten, klicken Sie auf **Neu erstellen**, und klicken Sie dann unter **Web Application Firewall erstellen** auf **Microsoft – Application Gateway**. Sie werden dann durch die Schritte für das Erstellen eines Anwendungsgateways geführt. An dieser Stelle wird Ihre Webanwendung als geschützte Ressource hinzugefügt. Security Center verfolgt nun, dass diese Ressource durch eine WAF geschützt ist. Die Webanwendung wird dadurch nicht als Back-End-Poolmitglied hinzugefügt.
+Wenn Sie nicht über ein vorhandenes Anwendungsgateway verfügen oder ein neues erstellen möchten, klicken Sie auf **Neu erstellen** , und klicken Sie dann unter **Web Application Firewall erstellen** auf **Microsoft – Application Gateway** . Sie werden dann durch die Schritte für das Erstellen eines Anwendungsgateways geführt. An dieser Stelle wird Ihre Webanwendung als geschützte Ressource hinzugefügt. Security Center verfolgt nun, dass diese Ressource durch eine WAF geschützt ist. Die Webanwendung wird dadurch nicht als Back-End-Poolmitglied hinzugefügt.
 
 Wenn Sie über ein vorhandenes Gateway verfügen, können Sie dieses unter **Vorhandene Lösung verwenden** auswählen.
 
-![Seite für das Hinzufügen einer Web Application Firewall][4]
+![Screenshot der Seite „Web Application Firewall hinzufügen“. Unter „Vorhandene Lösung verwenden“ ist ein Anwendungsgateway sichtbar.][4]
 
 Beim Hinzufügen einer Webanwendung zu einem Anwendungsgateway über Security Center wird diese Ressource nicht als Mitglied des Back-End-Pools hinzugefügt. Dies muss direkt in der Anwendungsgatewayressource erfolgen.
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Hinzufügen einer Ressource zu einer vorhandenen Firewall für Webanwendungen
 
-Navigieren Sie zu **Alle Dienste** > **Sicherheit + Identität** > **Security Center**, und klicken Sie unter **Security Center – Übersicht** auf **Partnerlösungen**. Vorhandene Anwendungsgateways, die Security Center unterstützen, werden auf der Seite **Partnerlösungen** angezeigt.
+Navigieren Sie zu **Alle Dienste** > **Sicherheit + Identität** > **Security Center** , und klicken Sie unter **Security Center – Übersicht** auf **Partnerlösungen** . Vorhandene Anwendungsgateways, die Security Center unterstützen, werden auf der Seite **Partnerlösungen** angezeigt.
 
 ![Partnerlösungen][7]
 
-Klicken Sie auf **App verknüpfen**, um die Seite **Anwendungen verknüpfen** zu öffnen. Hier erhalten Sie die Optionen für die Auswahl vorhandener Anwendungen. Wählen Sie die zu schützenden Anwendungen, und klicken Sie auf **OK**. Dadurch wird die Webanwendung nicht zum Back-End-Pool des Anwendungsgateways hinzugefügt. Dies legt die Ressourcen als geschützte Ressourcen fest, die von Security Center verfolgt werden können. Um die Ressource als Back-End-Poolmitglied hinzuzufügen, muss das Anwendungsgateway verwendet werden. Sie können hierfür auf der aktuellen Seite auf **Lösungskonsole** klicken, um zu der Anwendungsgateway-Ressource zu wechseln, in der Sie die Webanwendung zum Back-End-Pool hinzufügen können.
+Klicken Sie auf **App verknüpfen** , um die Seite **Anwendungen verknüpfen** zu öffnen. Hier erhalten Sie die Optionen für die Auswahl vorhandener Anwendungen. Wählen Sie die zu schützenden Anwendungen, und klicken Sie auf **OK** . Dadurch wird die Webanwendung nicht zum Back-End-Pool des Anwendungsgateways hinzugefügt. Dies legt die Ressourcen als geschützte Ressourcen fest, die von Security Center verfolgt werden können. Um die Ressource als Back-End-Poolmitglied hinzuzufügen, muss das Anwendungsgateway verwendet werden. Sie können hierfür auf der aktuellen Seite auf **Lösungskonsole** klicken, um zu der Anwendungsgateway-Ressource zu wechseln, in der Sie die Webanwendung zum Back-End-Pool hinzufügen können.
 
 ![Anwendungen für Partnerlösungen][6]
 
@@ -62,11 +62,11 @@ Klicken Sie auf **App verknüpfen**, um die Seite **Anwendungen verknüpfen** zu
 
 Sicherheitscenter verfolgt die Anwendungen, die zu einem Anwendungsgateway hinzugefügt werden, als geschützte Ressourcen.  Es überwacht die Integrität dieser Ressource und stellt sicher, dass sie durch ein Anwendungsgateway geschützt ist. Der nächste Schritt besteht darin, die private IP-Adresse, öffentliche IP-Adresse oder NIC Ihres virtuellen Computers zum Back-End-Pool des Anwendungsgateways hinzuzufügen. Solange dies nicht erledigt ist, wird die zusätzliche Empfehlung **Anwendungsschutz abschließen** angezeigt.
 
-![Seite für das Hinzufügen einer Web Application Firewall][5]
+![Screenshot der Seite „Anwendungsschutz abschließen“ mit einer sichtbaren Anwendung. Text erläutert, welche Schritte ausgeführt werden müssen, um die Anwendung zu schützen.][5]
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 
-Navigieren Sie in Security Center zu **ERKENNUNG** > **Sicherheitswarnungen**.  Hier finden Sie die WAF-Warnungen für Ihre Anwendungsgateways. Die Warnungen sind nach der WAF-Regel aufgeschlüsselt.
+Navigieren Sie in Security Center zu **ERKENNUNG** > **Sicherheitswarnungen** .  Hier finden Sie die WAF-Warnungen für Ihre Anwendungsgateways. Die Warnungen sind nach der WAF-Regel aufgeschlüsselt.
 
 ![Sicherheitswarnungen][8]
 

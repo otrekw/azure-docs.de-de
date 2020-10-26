@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923686"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126772"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informationen zu Azure Key Vault-Zertifikaten
 
@@ -57,14 +57,14 @@ Die Zertifikatattribute werden in Attributen des adressierbaren Schlüssels und 
 
 Ein Key Vault-Zertifikat weist folgende Attribute auf:  
 
--   *enabled*: Boolesch, optional, Standardwert ist **true**. Mit diesem Attribut kann angegeben werden, ob die Zertifikatdaten als Geheimnis oder als funktionsfähiger Schlüssel abgerufen werden können. Das Attribut wird auch in Verbindung mit *nbf* und *exp* verwendet, wenn ein Vorgang zwischen *nbf* und *exp* stattfindet. Der Vorgang wird nur zugelassen, wenn „enabled“ auf „true“ festgelegt ist. Vorgänge außerhalb des Fensters zwischen *nbf* und *exp* werden automatisch nicht zugelassen.  
+-   *enabled* : Boolesch, optional, Standardwert ist **true** . Mit diesem Attribut kann angegeben werden, ob die Zertifikatdaten als Geheimnis oder als funktionsfähiger Schlüssel abgerufen werden können. Das Attribut wird auch in Verbindung mit *nbf* und *exp* verwendet, wenn ein Vorgang zwischen *nbf* und *exp* stattfindet. Der Vorgang wird nur zugelassen, wenn „enabled“ auf „true“ festgelegt ist. Vorgänge außerhalb des Fensters zwischen *nbf* und *exp* werden automatisch nicht zugelassen.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen werden:
 
--   *created*: IntDate: gibt an, wann diese Version des Zertifikats erstellt wurde  
--   *updated*: IntDate: gibt an, wann diese Version des Zertifikats aktualisiert wurde  
--   *exp*: IntDate: enthält den Wert des Ablaufdatums des X.509-Zertifikats  
--   *nbf*: IntDate: enthält den Wert des Datums des X.509-Zertifikats  
+-   *created* : IntDate: gibt an, wann diese Version des Zertifikats erstellt wurde  
+-   *updated* : IntDate: gibt an, wann diese Version des Zertifikats aktualisiert wurde  
+-   *exp* : IntDate: enthält den Wert des Ablaufdatums des X.509-Zertifikats  
+-   *nbf* : IntDate: enthält den Wert des Datums des X.509-Zertifikats  
 
 > [!Note] 
 > Wenn ein Key Vault-Zertifikat abläuft, sind sein adressierbarer Schlüssel und sein Geheimnis nicht mehr funktionsfähig.  
@@ -74,7 +74,7 @@ Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen
  Vom Client angegebenes Wörterbuch von Schlüssel-Wert-Paaren, die Tags in Schlüsseln und Geheimnissen ähneln.  
 
  > [!Note]
-> Tags sind für Aufrufer lesbar, die über die *list*- oder *get*-Berechtigung für diesen Objekttyp (Schlüssel, Geheimnisse oder Zertifikate) verfügen.
+> Tags sind für Aufrufer lesbar, die über die *list* - oder *get* -Berechtigung für diesen Objekttyp (Schlüssel, Geheimnisse oder Zertifikate) verfügen.
 
 ## <a name="certificate-policy"></a>Zertifikatrichtlinie
 
@@ -141,42 +141,11 @@ Ausstellerobjekte werden im Tresor erstellt und können nur in demselben Tresor 
 
 ## <a name="certificate-contacts"></a>Zertifikatkontakte
 
-Zertifikatkontakte enthalten Kontaktinformationen zum Senden von Benachrichtigungen, die durch Zertifikatlebensdauer-Ereignisse ausgelöst werden. Die Kontaktinformationen werden von allen Zertifikaten im Schlüsseltresor gemeinsam genutzt. Eine Benachrichtigung zu einem Ereignis eines beliebigen Zertifikats im Schlüsseltresor wird an alle angegebenen Kontakte gesendet.  
-
-Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festgelegt ist, wird bei den folgenden Ereignissen eine Benachrichtigung gesendet.  
-
-- Vor der Zertifikatverlängerung
-- Nach der Zertifikatverlängerung, um mitzuteilen, ob das Zertifikat erfolgreich verlängert wurde, oder ob ein Fehler aufgetreten ist, sodass die manuelle Zertifikatverlängerung erforderlich ist.  
-
-  Wenn in der Richtlinie für ein Zertifikat die manuelle Verlängerung festgelegt ist (nur E-Mail), wird eine Benachrichtigung gesendet, sobald das Zertifikat verlängert werden muss.  
+Zertifikatkontakte enthalten Kontaktinformationen zum Senden von Benachrichtigungen, die durch Zertifikatlebensdauer-Ereignisse ausgelöst werden. Die Kontaktinformationen werden von allen Zertifikaten im Schlüsseltresor gemeinsam genutzt. Eine Benachrichtigung zu einem Ereignis eines beliebigen Zertifikats im Schlüsseltresor wird an alle angegebenen Kontakte gesendet. Informationen zum Festlegen des Zertifikatkontatks finden Sie [hier](overview-renew-certificate.md#steps-to-set-certificate-notifications).  
 
 ## <a name="certificate-access-control"></a>Zertifikatzugriffssteuerung
 
- Die Zugriffssteuerung für Zertifikate wird von Key Vault verwaltet und wird von der Key Vault-Instanz bereitgestellt, die diese Zertifikate enthält. Die Zugriffssteuerungsrichtlinie für Zertifikate unterscheidet sich von der Zugriffssteuerungsrichtlinie für Schlüssel und Geheimnisse im selben Key Vault. Benutzer können einen oder mehrere Tresore zum Speichern von Zertifikaten erstellen und müssen für eine dem Szenario entsprechende Segmentierung und Verwaltung von Zertifikaten sorgen.  
-
- Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag für Geheimnisse in einem Schlüsseltresor verwendet werden und spiegeln die für ein Geheimnisobjekt zulässigen Vorgänge präzise wider:  
-
-- Berechtigungen für Zertifikatverwaltungsvorgänge
-  - *get*: Abrufen der aktuellen oder einer beliebigen anderen Version eines Zertifikats 
-  - *list*: Auflisten der aktuellen Zertifikate oder von Versionen eines Zertifikats  
-  - *update*: Aktualisieren eines Zertifikats
-  - *create*: Erstellen eines Key Vault-Zertifikats
-  - *import*: Importieren von Zertifikatmaterial in ein Key Vault-Zertifikat
-  - *delete*: Löschen eines Zertifikats, seiner Richtlinie und aller seiner Versionen  
-  - *recover*: Wiederherstellen eines gelöschten Zertifikats
-  - *backup*: Sichern eines Zertifikats in einem Schlüsseltresor
-  - *restore*: Wiederherstellen eines gesicherten Zertifikats in einem Schlüsseltresor
-  - *managecontacts*: Verwalten von Key Vault-Zertifikatkontakten  
-  - *manageissuers*: Verwalten von Key Vault-Zertifikatautoritäten/-Zertifikatausstellern
-  - *getissuers*: Abrufen der Autoritäten/Aussteller eines Zertifikats
-  - *listissuers*: Auflisten der Autoritäten/Aussteller eines Zertifikats  
-  - *setissuers*: Erstellen oder Aktualisieren der Autoritäten/Aussteller eines Key Vault-Zertifikats  
-  - *deleteissuers*: Löschen der Autoritäten/Aussteller eines Key Vault-Zertifikats  
- 
-- Berechtigungen für privilegierte Vorgänge
-  - *purge*: Bereinigen (dauerhaftes Löschen) eines gelöschten Zertifikats
-
-Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
+ Die Zugriffssteuerung für Zertifikate wird von Key Vault verwaltet und wird von der Key Vault-Instanz bereitgestellt, die diese Zertifikate enthält. Die Zugriffssteuerungsrichtlinie für Zertifikate unterscheidet sich von der Zugriffssteuerungsrichtlinie für Schlüssel und Geheimnisse im selben Key Vault. Benutzer können einen oder mehrere Tresore zum Speichern von Zertifikaten erstellen und müssen für eine dem Szenario entsprechende Segmentierung und Verwaltung von Zertifikaten sorgen.  Weitere Informationen zur Zertifikatzugriffssteuerung finden Sie [hier](certificate-access-control.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,17 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972267"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015154"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)
 
 > [!NOTE]
-> Der Key Vault-Ressourcenanbieter unterstützt zwei Ressourcentypen: **Tresore** und **verwaltete HSMs**. Die in diesem Artikel beschriebene Zugriffssteuerung gilt nur für **Tresore**. Weitere Informationen zur Zugriffssteuerung für verwaltetes HSM finden Sie unter [Zugriffssteuerung für verwaltetes HSM](../managed-hsm/access-control.md).
+> Der Key Vault-Ressourcenanbieter unterstützt zwei Ressourcentypen: **Tresore** und **verwaltete HSMs** . Die in diesem Artikel beschriebene Zugriffssteuerung gilt nur für **Tresore** . Weitere Informationen zur Zugriffssteuerung für verwaltetes HSM finden Sie unter [Zugriffssteuerung für verwaltetes HSM](../managed-hsm/access-control.md).
 
 Die rollenbasierte Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC) ist ein Autorisierungssystem, das auf [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
 
@@ -37,7 +37,7 @@ Die Berechtigungen für einzelne Schlüssel, Geheimnisse und Zertifikate sollten
 
 -   Anwendungen mit mehreren Ebenen, die die Zugriffssteuerung zwischen den Ebenen trennen müssen
 
--   Freigegebener Schlüsseltresor mit gemeinsamen geheimen Schlüsseln, wenn Anwendungen Zugriff auf Teilmengen der Geheimnisse in diesem Schlüsseltresor benötigen
+-   Freigeben einzelner Geheimnisse zwischen mehreren Anwendungen
 
 Weitere Informationen zu Azure Key Vault-Verwaltungsrichtlinien finden Sie unter:
 
@@ -45,6 +45,8 @@ Weitere Informationen zu Azure Key Vault-Verwaltungsrichtlinien finden Sie unter
 - [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>In Azure integrierte Rollen für Key Vault-Vorgänge auf Datenebene (Vorschau)
+> [!NOTE]
+> Die Rolle `Key Vault Contributor` ist für Vorgänge auf Verwaltungsebene zur Verwaltung von Schlüsseltresoren gedacht. Sie lässt nicht den Zugriff auf Schlüssel, Geheimnisse und Zertifikate zu.
 
 | Integrierte Rolle | BESCHREIBUNG | id |
 | --- | --- | --- |
@@ -62,6 +64,13 @@ Weitere Informationen zu den Definitionen von in Azure integrierten Rollen finde
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>Verwenden von Geheimnis-, Schlüssel- und Zertifikatberechtigungen von Azure RBAC mit Key Vault
 
 Das neue Azure RBAC-Berechtigungsmodell für Key Vault bietet eine Alternative zum Berechtigungsmodell für den Tresor mit Zugriffsrichtlinien. 
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
+
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Aktivieren von Azure RBAC-Berechtigungen für einen Schlüsseltresor
 

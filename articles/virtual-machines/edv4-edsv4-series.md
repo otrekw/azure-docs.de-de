@@ -9,30 +9,28 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 15a53ddaa669f0720632901edfd58eb273518867
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e8ecb0dde2208b367362f26f654ec8eb83c7a777
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049620"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016194"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
-Die Edv4- und Edsv4-Serie läuft auf Intel-Prozessoren des Typs &reg; Xeon&reg; Platinum 8272CL (Cascade Lake) in einer Hyperthreadkonfiguration. Sie eignet sich ideal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und bietet bis zu 504 GiB RAM, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) and [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Außerdem unterstützen Sie [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese neuen VM-Größen bieten 50 Prozent mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Ev3/Esv3](./ev3-esv3-series.md) mit [Gen2-VMs](./linux/generation-2.md). Sie verfügt über eine dauerhafte Turbotaktrate von 3,4 GHz. 
+Die Edv4- und Edsv4-Serie läuft auf Intel-Prozessoren des Typs &reg; Xeon&reg; Platinum 8272CL (Cascade Lake) in einer Hyperthreadkonfiguration. Sie eignet sich ideal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und bietet bis zu 504 GiB RAM, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) and [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Außerdem unterstützen Sie [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese neuen VM-Größen bieten 50 Prozent mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Ev3/Esv3](./ev3-esv3-series.md) mit [Gen2-VMs](./generation-2.md). Sie verfügen über eine Turbo-Taktfrequenz von 3,4 GHz für alle Kerne. 
 
 ## <a name="edv4-series"></a>Edv4-Serie
 
 Die Edv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake). Edv4-VMs bieten bis zu 504 GiB RAM sowie schnellen und großen lokalen SSD-Speicher (bis zu 2.400 GiB). Diese VMs eignen sich ideal für arbeitsspeicherintensive Unternehmensanwendungen und Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren. An Edv4-VMs können Sie SSD Standard- und HDD Standard-Datenträger anfügen. 
 
-ACU: 195–210
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195–210<br>
+[Storage Premium](premium-storage-performance.md): Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
@@ -50,15 +48,13 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake). Edsv4-VMs bieten bis zu 504 GiB RAM sowie schnellen und großen lokalen SSD-Speicher (bis zu 2.400 GiB). Diese VMs eignen sich ideal für arbeitsspeicherintensive Unternehmensanwendungen und Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren.
 
-ACU: 195-210
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195-210<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|

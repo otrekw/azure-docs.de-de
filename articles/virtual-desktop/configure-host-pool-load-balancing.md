@@ -3,15 +3,15 @@ title: Konfigurieren des Lastenausgleichs für Windows Virtual Desktop – Azure
 description: Es wird beschrieben, wie Sie die Lastenausgleichsmethode für eine Windows Virtual Desktop-Umgebung konfigurieren.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010105"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951654"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
 
@@ -51,13 +51,19 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>Konfigurieren der Lastenausgleichsmethode „Tiefer Ansatz“
 
-Bei der Lastenausgleichsmethode „Tiefer Ansatz“ werden neue Benutzersitzungen auf einen verfügbaren Sitzungshost mit der höchsten Anzahl von Verbindungen verteilt, für den der Schwellenwert des maximalen Sitzungslimits aber noch nicht erreicht wurde. Wenn Sie die tiefenorientierte Lastenausgleichsmethode konfigurieren, müssen Sie ein maximales Sitzungslimit pro Sitzungshost im Hostpool festlegen.
+Bei der Lastenausgleichsmethode „Tiefer Ansatz“ werden neue Benutzersitzungen auf einen verfügbaren Sitzungshost mit der höchsten Anzahl von Verbindungen verteilt, für den der Schwellenwert des maximalen Sitzungslimits aber noch nicht erreicht wurde.
+
+>[!IMPORTANT]
+>Wenn Sie die tiefenorientierte Lastenausgleichsmethode konfigurieren, müssen Sie ein maximales Sitzungslimit pro Sitzungshost im Hostpool festlegen.
 
 Führen Sie das folgende PowerShell-Cmdlet aus, um einen Hostpool für die Durchführung der Lastenausgleichsmethode „Tiefer Ansatz“ zu konfigurieren:
 
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> Der Algorithmus für den tiefenorientierten Lastenausgleich verteilt Sitzungen auf der Grundlage des maximalen Grenzwerts für Hostsitzungen (`-MaxSessionLimit`). Der Standardwert dieses Parameters ist `999999`, was zugleich der höchste Wert ist, auf den diese Variable festgelegt werden kann. Dieser Parameter ist erforderlich, wenn der tiefenorientierte Lastenausgleich verwendet wird. Zum Erzielen einer optimalen Benutzererfahrung sollten Sie darauf achten, den Parameter für den maximalen Grenzwert der Hostsitzungen auf eine Zahl festzulegen, die möglichst gut zu Ihrer Umgebung passt.
 
 Um sicherzustellen, dass die Einstellung aktualisiert wurde, führen Sie dieses Cmdlet aus:
 
@@ -76,7 +82,7 @@ Sie können Lastenausgleich auch mit dem Azure-Portal konfigurieren.
 So konfigurieren Sie Lastenausgleich:
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option unter „Dienste“ aus.
+2. Suchen Sie nach **Windows Virtual Desktop** , und wählen Sie diese Option unter „Dienste“ aus.
 3. Wählen Sie auf der Seite „Windows Virtual Desktop“ die Option **Hostpools** aus.
 4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
 5. Wählen Sie **Eigenschaften** aus.

@@ -1,27 +1,30 @@
 ---
 title: 'Azure Virtual WAN: Erstellen eines virtuellen Netzwerkgeräts (NVA) im Hub'
-description: In diesem Tutorial erfahren Sie, wie Sie ein virtuelles Netzwerkgerät Im Virtual WAN-Hub bereitstellen.
+description: Erfahren Sie, wie Sie ein virtuelles Netzwerkgerät im Virtual WAN-Hub bereitstellen.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: c5f120d6d9d80db4eaa9cf6f68e8dd27d45c8aea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094820"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077302"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Erstellen eines virtuellen Netzwerkgeräts in einem Azure Virtual WAN-Hub (Vorschau)
 
-In diesem Tutorial wird veranschaulicht, wie Sie mit Virtual WAN über ein **virtuelles Netzwerkgerät** in Azure eine Verbindung mit Ihren Ressourcen in Azure herstellen. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+In diesem Artikel wird veranschaulicht, wie Sie mit Virtual WAN über ein **virtuelles Netzwerkgerät** in Azure eine Verbindung mit Ihren Ressourcen in Azure herstellen. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu Virtual WAN finden Sie unter [Was ist Virtual WAN?](virtual-wan-about.md).
 
-Die Schritte in diesem Artikel unterstützen Sie bei der Erstellung eines virtuellen **Barracuda CloudGen-WAN**-Netzwerkgeräts im Virtual WAN-Hub. Um diese Übung abzuschließen, benötigen Sie ein lokales Barracuda-Gerät (Barracuda Cloud Premise Device, CPE) und eine Lizenz für das Barracuda CloudGen-WAN-Gerät, das Sie im Hub bereitstellen, bevor Sie beginnen.
+Die Schritte in diesem Artikel unterstützen Sie bei der Erstellung eines virtuellen **Barracuda CloudGen-WAN** -Netzwerkgeräts im Virtual WAN-Hub. Um diese Übung abzuschließen, benötigen Sie ein lokales Barracuda-Gerät (Barracuda Cloud Premise Device, CPE) und eine Lizenz für das Barracuda CloudGen-WAN-Gerät, das Sie im Hub bereitstellen, bevor Sie beginnen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+Wenn Sie Dokumentation zur Bereitstellung von **Cisco SD-WAN** innerhalb von Azure Virtual WAN erhalten möchten, senden Sie eine E-Mail an Cisco unter der folgenden E-Mail-Adresse: vwan_public_preview@external.cisco.com
+
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
@@ -63,31 +66,31 @@ In diesem Schritt erstellen Sie ein virtuelles Netzwerkgerät im Hub. Die Prozed
 
 1. Suchen Sie den im vorherigen Schritt erstellten Virtual WAN-Hub, und öffnen Sie ihn.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Virtueller Hub":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Grundlagen":::
 1. Suchen Sie die Kachel „Virtuelle Netzwerkgeräte“, und wählen Sie den Link **Erstellen** aus.
 1. Wählen Sie auf dem Blatt **Virtuelles Netzwerkgerät** die Option **Barracuda CloudGen WAN** aus, und wählen Sie dann die Schaltfläche **Erstellen** aus.
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="NVA auswählen":::
-1. Dadurch gelangen Sie zum Azure Marketplace-Angebot für das Barracuda CloudGen-WAN-Gateway. Lesen Sie die Bedingungen, und wählen Sie dann die Schaltfläche **Erstellen**, wenn Sie bereit sind.
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Grundlagen":::
+1. Dadurch gelangen Sie zum Azure Marketplace-Angebot für das Barracuda CloudGen-WAN-Gateway. Lesen Sie die Bedingungen, und wählen Sie dann die Schaltfläche **Erstellen** , wenn Sie bereit sind.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Grundlagen zum virtuellen Barracuda-Netzwerkgerät":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Grundlagen":::
 1. Auf der Seite **Grundlagen** müssen Sie die folgenden Informationen angeben:
 
-   * **Abonnement**: Wählen Sie das Abonnement aus, mit dem Sie Virtual WAN und den Hub bereitgestellt haben.
-   * **Ressourcengruppe**: Wählen Sie dieselbe Ressourcengruppe aus, die Sie zum Bereitstellen des Virtual WAN und Hubs verwendet haben.
-   * **Region**: Wählen Sie dieselbe Region aus, in der sich Ihre virtuelle Hubressource befindet.
-   * **Anwendungsname**: Das Barracuda NextGen-WAN ist eine verwaltete Anwendung. Wählen Sie einen Namen aus, mit dem sich diese Ressource leicht identifizieren lässt, da dies der Name ist, mit dem sie in Ihrem Abonnement angezeigt wird.
-   * **Verwaltete Ressourcengruppe**: Dies ist der Name der verwalteten Ressourcengruppe, in der Barracuda Ressourcen bereitstellt, die von ihm verwaltet werden. Der Name sollte hierfür vorab aufgefüllt sein.
+   * **Abonnement** : Wählen Sie das Abonnement aus, mit dem Sie Virtual WAN und den Hub bereitgestellt haben.
+   * **Ressourcengruppe** : Wählen Sie dieselbe Ressourcengruppe aus, die Sie zum Bereitstellen des Virtual WAN und Hubs verwendet haben.
+   * **Region** : Wählen Sie dieselbe Region aus, in der sich Ihre virtuelle Hubressource befindet.
+   * **Anwendungsname** : Das Barracuda NextGen-WAN ist eine verwaltete Anwendung. Wählen Sie einen Namen aus, mit dem sich diese Ressource leicht identifizieren lässt, da dies der Name ist, mit dem sie in Ihrem Abonnement angezeigt wird.
+   * **Verwaltete Ressourcengruppe** : Dies ist der Name der verwalteten Ressourcengruppe, in der Barracuda Ressourcen bereitstellt, die von ihm verwaltet werden. Der Name sollte hierfür vorab aufgefüllt sein.
 1. Wählen Sie unten auf der Seite die Schaltfläche **Next: CloudGen-WAN-Gateway** aus.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen-WAN-Gateway":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Grundlagen":::
 1. Geben Sie hier die folgenden Informationen an:
 
-   * **Virtual WAN Hub**: Der Virtual WAN-Hub, in dem dieses virtuelle Netzwerkgerät bereitgestellt werden soll.
-   * **NVA-Infrastruktureinheiten**: Geben Sie die Anzahl der NVA-Infrastruktureinheiten an, mit denen Sie dieses virtuelle Netzwerkgerät bereitstellen möchten. Wählen Sie die Menge der aggregierten Bandbreitenkapazität aus, die Sie über alle Zweigstellen hinweg bereitstellen möchten, die über dieses virtuelle Netzwerkgerät eine Verbindung mit diesem Hub herstellen werden.
-   * **Token**: Barracuda erfordert, dass Sie hier ein Authentifizierungstoken angeben, um sich selbst als registrierter Benutzer dieses Produkts zu identifizieren. Dieses müssen Sie von Barracuda abrufen.
+   * **Virtual WAN Hub** : Der Virtual WAN-Hub, in dem dieses virtuelle Netzwerkgerät bereitgestellt werden soll.
+   * **NVA-Infrastruktureinheiten** : Geben Sie die Anzahl der NVA-Infrastruktureinheiten an, mit denen Sie dieses virtuelle Netzwerkgerät bereitstellen möchten. Wählen Sie die Menge der aggregierten Bandbreitenkapazität aus, die Sie über alle Zweigstellen hinweg bereitstellen möchten, die über dieses virtuelle Netzwerkgerät eine Verbindung mit diesem Hub herstellen werden.
+   * **Token** : Barracuda erfordert, dass Sie hier ein Authentifizierungstoken angeben, um sich selbst als registrierter Benutzer dieses Produkts zu identifizieren. Dieses müssen Sie von Barracuda abrufen.
 1. Wählen Sie die Schaltfläche **Überprüfen und erstellen** aus, um fortzufahren.
-1. Auf dieser Seite werden Sie aufgefordert, die Bedingungen der Vereinbarung für den Co-Admin-Zugriff zu akzeptieren. Dies ist Standard bei verwalteten Anwendungen, in denen der Herausgeber Zugriff auf Ressourcen in dieser Bereitstellung hat. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Erstellen** aus.
+1. Auf dieser Seite werden Sie aufgefordert, die Bedingungen der Vereinbarung für den Co-Admin-Zugriff zu akzeptieren. Dies ist Standard bei verwalteten Anwendungen, in denen der Herausgeber Zugriff auf Ressourcen in dieser Bereitstellung hat. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** , und wählen Sie anschließend **Erstellen** aus.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>Herstellen einer Verbindung zwischen VNET und Hub
 
@@ -95,5 +98,5 @@ In diesem Schritt erstellen Sie ein virtuelles Netzwerkgerät im Hub. Die Prozed
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+* Weitere Informationen zu Virtual WAN finden Sie auf der Seite [Was ist Virtual WAN?](virtual-wan-about.md).
 * Weitere Informationen zu virtuellen Netzwerkgeräten (NVAs) in einem Virtual WAN-Hub finden Sie unter [Informationen zum virtuellen Netzwerkgerät im Virtual WAN-Hub (Vorschau)](about-nva-hub.md).

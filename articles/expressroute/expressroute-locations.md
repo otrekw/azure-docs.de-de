@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/26/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 0cf44407ce3087a79a3f54caea1b33c52709d816
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 0611297164f3fe0afb1e18afe3abbbac00fd9c9a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031990"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016364"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -86,11 +86,11 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Unterstützt | Unterstützt | Tokio |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Unterstützt |Unterstützt |Montreal, Toronto, Quebec City |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Hongkong SAR, Johannesburg, London, Newport (Wales), Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Hongkong SAR, Johannesburg, London, Newport (Wales), Paris, Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Unterstützt |Unterstützt |Miami |
 | **CDC** | Unterstützt | Unterstützt | Canberra, Canberra2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Unterstützt |Unterstützt |Amsterdam2, Chicago, Frankfurt, Hongkong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokio, Toronto, Washington DC, Washington DC2 |
-| **[Chief Telecom](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Unterstützt |Unterstützt |Hongkong, Taipei |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Unterstützt |Unterstützt |Amsterdam2, Chicago, Dublin, Frankfurt, Hongkong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokio, Toronto, Washington DC, Washington DC2 |
+| **[Chief Telecom](https://www.chief.com.tw/)** |Unterstützt |Unterstützt |Hongkong, Taipei |
 | **China Mobile International** |Unterstützt |Unterstützt | Hongkong, Hongkong2, Singapur |
 | **China Telecom Global** |Unterstützt |Unterstützt |Hongkong, Hongkong2 |
 | **China Unicom Global** |Unterstützt |Unterstützt | Singapur2 |
@@ -121,7 +121,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Kopenhagen, Dublin, Frankfurt, London, Marseille, Paris, Zürich |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Unterstützt |Unterstützt | Amsterdam, London2, Silicon Valley, Toronto, Washington DC |
 | **Jaguar Network** |Unterstützt |Unterstützt |Marseille|
-| **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |London |
+| **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |London, Newport (Wales) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Unterstützt |Unterstützt |Seoul |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Unterstützt |Unterstützt |Auckland, Sydney |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Unterstützt | Unterstützt | Amsterdam |
@@ -147,7 +147,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Unterstützt |Unterstützt |Chicago, Hongkong, Hongkong2, London, Singapur2 |
 | **[Retelit](https://www.retelit.it/en/services/enterprises-and-public-sector/data-center-e-cloud/cloud-services/direct-cloud-4-azure-expressroute.aspx)** | Unterstützt | Unterstützt | Mailand | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Unterstützt |Unterstützt |Seoul |
-| **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Unterstützt |Unterstützt | Washington DC |
+| **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Unterstützt |Unterstützt | London2, Washington DC |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Unterstützt |Unterstützt |Chennai, Mumbai2 |
 | **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Unterstützt |Unterstützt |Hongkong2, Singapur, Singapur2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Unterstützt |Unterstützt |Osaka, Tokio |
@@ -161,7 +161,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Telia Carrier](https://www.teliacarrier.com/)** | Unterstützt | Unterstützt |Amsterdam, Chicago, Dallas, Frankfurt, Hongkong, London, Oslo, Paris, Silicon Valley, Stockholm, Washington DC |
 | **Telmex Uninet**| Unterstützt | Unterstützt | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Unterstützt |Unterstützt |Melbourne, Singapur, Sydney |
-| **[Telus](https://www.telus.com)** |Unterstützt |Unterstützt |Montreal, Seattle, Toronto |
+| **[Telus](https://www.telus.com)** |Unterstützt |Unterstützt |Montreal, Seattle, Toronto, Vancouver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Unterstützt | Unterstützt | Kuala Lumpur |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Unterstützt |Unterstützt |Dallas, Queretaro (Mexiko)|
@@ -253,10 +253,10 @@ Wenn Sie an einem Remotestandort nicht über Glasfaserkonnektivität verfügen o
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |Dallas|
 | **[Beanfield Metroconnect](https://www.beanfield.com/business/cloud-exchange)** |Megaport |Toronto|
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | London |
-| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, London, Singapur, Washington DC |
+| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, London, Singapur, Washington DC |https://www.chief.com.tw/
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokio |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix, Megaport | Dallas |
-| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong (SAR) |
+| **[Chief]()** | Equinix | Hongkong (SAR) |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburg |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
@@ -351,7 +351,7 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 | **[FlexManage](https://www.flexmanage.com/cloud)** | Nordamerika |
 | **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | Nordamerika |
 | **[The IT Consultancy Group](https://itconsult.com.au/)** | Australien |
-| **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Australien |
+| **[MOQdigital](https://www.moqdigital.com/insights)** | Australien |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Europa (Deutschland) |
 | **[Nelite](https://www.exakis-nelite.com/offres/)** | Europa |
 | **[Neue Signatur](https://newsignature.com/technologies/express-route/)** | Europa |

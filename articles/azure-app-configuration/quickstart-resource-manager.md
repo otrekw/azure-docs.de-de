@@ -4,28 +4,28 @@ titleSuffix: Azure App Configuration
 description: Es wird beschrieben, wie Sie einen Azure App Configuration-Speicher per ARM-Vorlage (Azure Resource Manager) erstellen.
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824179"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148998"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure App Configuration-Speichers per ARM-Vorlage
 
 In dieser Schnellstartanleitung wird Folgendes beschrieben:
 
-- Bereitstellen eines App Configuration-Speichers per ARM-Vorlage
-- Erstellen von Schlüsselwerten in einem App Configuration-Speicher per ARM-Vorlage
-- Lesen von Schlüsselwerten in einem App Configuration-Speicher per ARM-Vorlage
+- Bereitstellen eines App Configuration-Speichers mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage).
+- Erstellen von Schlüsselwerten in einem App Configuration-Speicher per ARM-Vorlage.
+- Lesen von Schlüsselwerten in einem App Configuration-Speicher per ARM-Vorlage.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
@@ -35,14 +35,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/). Hiermit wird ein neuer App Configuration-Speicher erstellt, der zwei Schlüsselwerte enthält. Anschließend wird die Funktion `reference` verwendet, um die Werte der beiden Schlüsselwertressourcen auszugeben. Wenn der Wert des Schlüssels auf diese Weise gelesen wird, kann er auch an anderen Stellen der Vorlage verwendet werden.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/). Hiermit wird ein neuer App Configuration-Speicher erstellt, der zwei Schlüsselwerte enthält. Anschließend wird die Funktion `reference` verwendet, um die Werte der beiden Schlüsselwertressourcen auszugeben. Wenn der Wert des Schlüssels auf diese Weise gelesen wird, kann er auch an anderen Stellen der Vorlage verwendet werden.
 
 In der Schnellstartanleitung wird das Element `copy` verwendet, um mehrere Instanzen der Schlüsselwertressource zu erstellen. Weitere Informationen zum Element `copy` finden Sie unter [Ressourceniteration in ARM-Vorlagen](../azure-resource-manager/templates/copy-resources.md).
 
 > [!IMPORTANT]
 > Für diese Vorlage ist ein App Configuration-Ressourcenanbieter mit Version `2020-07-01-preview` oder höher erforderlich. In dieser Version wird die Funktion `reference` zum Lesen von Schlüsselwerten verwendet. Die Funktion `listKeyValue`, die in der vorherigen Version zum Lesen von Schlüsselwerten verwendet wurde, ist ab Version `2020-07-01-preview` nicht mehr verfügbar.
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
@@ -83,10 +83,10 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Geben Sie im Azure-Portal im Suchfeld den Suchbegriff **App Configuration** ein. Wählen Sie in der Liste den Eintrag **App Configuration** aus.
 1. Wählen Sie die neu erstellte App Configuration-Ressource aus.
-1. Klicken Sie unter **Vorgänge** auf **Konfigurations-Explorer**.
+1. Klicken Sie unter **Vorgänge** auf **Konfigurations-Explorer** .
 1. Vergewissern Sie sich, dass zwei Schlüsselwerte vorhanden sind.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

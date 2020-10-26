@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470067"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078577"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Erstellen einer Sicherung einer Azure Red Hat OpenShift 4-Clusteranwendung
 
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 Bei einer erfolgreichen Sicherung wird `phase:Completed` ausgegeben, und die Objekte werden im Container im Speicherkonto gespeichert.
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Erstellen einer Sicherung mit Velero zum Einschließen von Momentaufnahmen
+
+Wenn Sie eine Anwendungssicherung mit Velero erstellen möchten, in der die persistenten Volumes Ihrer Anwendung enthalten sein sollen, müssen Sie den Namespace, in dem sich die Anwendung befindet, und das Flag `snapshot-volumes=true` beim Erstellen der Sicherung einschließen.
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+Sie können den Status der Sicherung überprüfen, indem Sie Folgendes ausführen:
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+Bei einer erfolgreichen Sicherung wird `phase:Completed` ausgegeben, und die Objekte werden im Container im Speicherkonto gespeichert.
+
+Weitere Informationen zum Erstellen von Sicherungen und Wiederherstellungen mithilfe von Velero finden Sie in dem Artikel zum [Sichern von OpenShift-Ressourcen auf native Weise](https://www.openshift.com/blog/backup-openshift-resources-the-native-way).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel wurde eine Azure Red Hat OpenShift 4-Clusteranwendung gesichert. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Sicherung einer OpenShift v4-Clusteranwendung mithilfe von Velero
+> * Erstellen einer Wiederherstellung einer OpenShift v4-Clusteranwendung mit Momentaufnahmen mithilfe von Velero
 
 
 Im nächsten Artikel erfahren Sie, wie Sie eine Wiederherstellung einer Azure Red Hat OpenShift 4-Clusteranwendung erstellen.
 
 * [Erstellen einer Wiederherstellung einer Azure Red Hat OpenShift 4-Clusteranwendung](howto-create-a-restore.md)
+* [Erstellen einer Wiederherstellung einer Azure Red Hat OpenShift 4-Clusteranwendung einschließlich Momentaufnahmen](howto-create-a-restore.md)

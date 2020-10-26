@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260154"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341548"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau)
+# <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau) 
 
 In diesem Artikel erfahren Sie, wie Sie Rollen und Zugriffssteuerung verwenden, um Aktivitäten und den Zugriff auf Daten zu kontrollieren. Wenn Sie diese Anweisungen befolgen, vereinfacht dies die Zugriffssteuerung in Azure Synapse Analytics. Sie müssen Benutzer nur einer von drei Sicherheitsgruppen hinzufügen bzw. daraus entfernen.
 
@@ -31,7 +31,7 @@ Um einen Synapse-Arbeitsbereich (Vorschau) zu sichern, befolgen Sie ein Muster z
   - Apache Spark für Azure Synapse Analytics-Administrator
 - Zugriffssteuerung für Daten in Azure Data Lake Storage Gen 2 (ADLSGEN2).
 - Zugriffssteuerung für Synapse-SQL- und Spark-Datenbanken
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Schritte zur Sicherung eines Synapse-Arbeitsbereichs
 
 In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinfachen. Ersetzen Sie sie durch Namen Ihrer Wahl.
@@ -48,9 +48,9 @@ In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinf
 
 Erstellen Sie drei Sicherheitsgruppen für Ihren Arbeitsbereich, und füllen Sie sie auf:
 
-- **WS1\_WSAdmins**: für Benutzer, die vollständige Kontrolle über den Arbeitsbereich benötigen.
-- **WS1\_SparkAdmins**: für Benutzer, die vollständige Kontrolle über die Spark-Aspekte des Arbeitsbereichs benötigen.
-- **WS1\_SQLAdmins**: für Benutzer, die vollständige Kontrolle über die SQL-Aspekte des Arbeitsbereichs benötigen.
+- **WS1\_WSAdmins** : für Benutzer, die vollständige Kontrolle über den Arbeitsbereich benötigen.
+- **WS1\_SparkAdmins** : für Benutzer, die vollständige Kontrolle über die Spark-Aspekte des Arbeitsbereichs benötigen.
+- **WS1\_SQLAdmins** : für Benutzer, die vollständige Kontrolle über die SQL-Aspekte des Arbeitsbereichs benötigen.
 - Hinzufügen von **WS1\_WSAdmins** zu **WS1\_SQLAdmins**
 - Hinzufügen von **WS1\_WSAdmins** zu **WS1\_SparkAdmins**
 
@@ -71,11 +71,12 @@ Ermitteln Sie diese Informationen über Ihren Speicher:
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>SCHRITT 3: Erstellen und Konfigurieren Ihres Synapse-Arbeitsbereichs
 
-Erstellen Sie im Azure-Portal einen Synapse-Arbeitsbereich:
+ Erstellen Sie im Azure-Portal einen Synapse-Arbeitsbereich:
 
+- Wählen Sie Ihr Abonnement aus.
+- Auswählen Ihrer Ressourcengruppe: Sie benötigen Zugriff auf eine Ressourcengruppe, für die Ihnen die Rolle **Besitzer** zugewiesen wurde.
 - Nennen Sie den Arbeitsbereich WS1.
-- Wählen Sie STG1 als Speicherkonto aus.
-- Wählen Sie CNT1 als den Container aus, der als „Dateisystem“ verwendet wird.
+- Wählen Sie STG1 als Speicherkonto aus. Wählen Sie CNT1 als den Container aus, der als „Dateisystem“ verwendet wird.
 - Öffnen Sie WS1 in Synapse Studio.
 - Wählen Sie **Verwalten** > **Zugriffssteuerung** aus, und weisen Sie die Sicherheitsgruppen den folgenden Synapse-Rollen zu.
   - Weisen Sie **WS1\_WSAdmins** zu „Synapse-Arbeitsbereichsadministratoren“ zu.

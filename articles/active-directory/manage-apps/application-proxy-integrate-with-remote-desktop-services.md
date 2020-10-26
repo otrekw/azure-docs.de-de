@@ -74,19 +74,19 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
 
 4. Wählen Sie **Azure Active Directory** und dann **App-Registrierungen** aus. Wählen Sie Ihre App in der Liste aus.
 5. Wählen Sie unter **Verwalten** die Option **Branding** aus.
-6. Aktualisieren Sie das Feld **URL der Startseite**, um auf Ihren RD-Web-Endpunkt zu verweisen (z.B. `https://\<rdhost\>.com/RDWeb`).
+6. Aktualisieren Sie das Feld **URL der Startseite** , um auf Ihren RD-Web-Endpunkt zu verweisen (z.B. `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Weiterleiten des RDS-Datenverkehrs an den Anwendungsproxy
 
 Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und ändern Sie den Remotedesktop-Gatewayservernamen für die Bereitstellung. Durch diese Konfiguration wird sichergestellt, dass Verbindungen über den Azure AD-Anwendungsproxydienst hergestellt werden.
 
 1. Stellen Sie eine Verbindung zum RDS-Server her, auf dem die Rolle „Remotedesktop-Verbindungsbroker“ ausgeführt wird.
-2. Starten Sie den **Server-Manager**.
-3. Wählen Sie im Bereich auf der linken Seite **Remotedesktopdienste**.
-4. Wählen Sie **Übersicht**.
-5. Klicken Sie im Abschnitt „Bereitstellungsübersicht“ auf das Dropdownmenü und wählen Sie **Bereitstellungseigenschaften bearbeiten**.
+2. Starten Sie den **Server-Manager** .
+3. Wählen Sie im Bereich auf der linken Seite **Remotedesktopdienste** .
+4. Wählen Sie **Übersicht** .
+5. Klicken Sie im Abschnitt „Bereitstellungsübersicht“ auf das Dropdownmenü und wählen Sie **Bereitstellungseigenschaften bearbeiten** .
 6. Ändern Sie auf der Registerkarte „RD-Gateway“ das Feld **Servername** in die externe URL, die Sie für den RD-Hostendpunkt im Anwendungsproxy festgelegt haben.
-7. Ändern Sie das Feld **Anmeldemethode** in **Kennwortauthentifizierung**.
+7. Ändern Sie das Feld **Anmeldemethode** in **Kennwortauthentifizierung** .
 
    ![Bildschirm „Bereitstellungseigenschaften“ in RDS](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
@@ -130,7 +130,7 @@ Die in diesem Artikel erläuterte Konfiguration dient dem Zugriff auf RDS über 
 
 | Authentifizierungsmethode | Unterstützte Clientkonfiguration |
 | --------------------- | ------------------------------ |
-| Vorauthentifizierung    | Web Access für Remotedesktop: Windows 7/10 mit Internet Explorer oder [Edge Chromium IE-Modus](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS-ActiveX-Add-On |
+| Vorauthentifizierung    | Web Access für Remotedesktop: Windows 7/10 mit Internet Explorer oder [Microsoft Edge Chromium IE-Modus](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS-ActiveX-Add-On |
 | Vorauthentifizierung    | Remotedesktop-Webclient: HTML5-kompatibler Webbrowser, z. B. Microsoft Edge, Internet Explorer 11, Google Chrome, Safari oder Mozilla Firefox (mindestens Version 55.0) |
 | Passthrough | Alle anderen Betriebssysteme, die die Microsoft-Remotedesktopanwendung unterstützen |
 

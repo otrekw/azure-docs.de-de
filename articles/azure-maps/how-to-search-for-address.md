@@ -42,7 +42,7 @@ In diesem Beispiel wird die Azure Maps-[API zum Abrufen der Suchadresse](https:/
 
 1. Öffnen Sie die Postman-App. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). Sie verwenden diese Sammlung für alle weiteren Beispiele in diesem Dokument.
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
 3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. In dieser Anforderung suchen wir nach einer bestimmten Adresse: `400 Braod St, Seattle, WA 98109`.
 
@@ -60,7 +60,7 @@ In diesem Beispiel wird die Azure Maps-[API zum Abrufen der Suchadresse](https:/
 
 6. Legen Sie als Nächstes den Schlüssel `query`auf `400 Broa` fest.
 
-7. Klicken Sie auf die Schaltfläche **Senden**.  Sie sehen, dass die Antwort Daten aus mehreren Ländern umfasst. Fügen Sie der Anforderung immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen.
+7. Klicken Sie auf die Schaltfläche **Senden** .  Sie sehen, dass die Antwort Daten aus mehreren Ländern umfasst. Fügen Sie der Anforderung immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen.
 
 ## <a name="using-fuzzy-search-api"></a>Verwenden der API für die Fuzzysuche
 
@@ -71,12 +71,12 @@ Die Azure Maps-[API für die Fuzzysuche](https://docs.microsoft.com/rest/api/map
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Suchen nach einer Adresse mithilfe der Fuzzysuche
 
-In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `pizza` durchzuführen.  Anschließend wird gezeigt, wie die Suche nur für ein bestimmtes Land durchgeführt wird. Abschließend wird beschrieben, wie Sie eine Koordinatenposition und einen Radius verwenden, um eine Suche auf einen bestimmten Bereich einzuschränken und die Anzahl der zurückgegebenen Ergebnisse zu begrenzen.
+In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `pizza` durchzuführen.  Anschließend wird gezeigt, wie die Suche nur für ein bestimmtes Land/eine bestimmte Region durchgeführt wird. Abschließend wird beschrieben, wie Sie eine Koordinatenposition und einen Radius verwenden, um eine Suche auf einen bestimmten Bereich einzuschränken und die Anzahl der zurückgegebenen Ergebnisse zu begrenzen.
 
 >[!IMPORTANT]
 >Fügen Sie immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen. Weitere Informationen finden Sie unter [Bewährte Methoden für den Suchdienst](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
 
@@ -93,7 +93,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
   
     Im nächsten Schritt verwenden wir den Parameter `countrySet`, um nur die Länder/Regionen anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Eine vollständige Liste der unterstützten Länder/Regionen finden Sie im Artikel zur [Suchabdeckung](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 
-4. Das Standardverhalten besteht darin, die ganze Welt zu durchsuchen, wodurch unnötige Ergebnisse zurückgegeben werden können. Als Nächstes führen wir eine Suche nach „pizza“ nur in den USA durch. Fügen Sie dem Abschnitt `countrySet`Params**den Schlüssel** hinzu, und legen Sie seinen Wert auf `US` fest. Durch das Festlegen des Schlüssels `countrySet` auf `US` werden die Ergebnisse auf die USA beschränkt.
+4. Das Standardverhalten besteht darin, die ganze Welt zu durchsuchen, wodurch unnötige Ergebnisse zurückgegeben werden können. Als Nächstes führen wir eine Suche nach „pizza“ nur in den USA durch. Fügen Sie dem Abschnitt `countrySet`Params **den Schlüssel** hinzu, und legen Sie seinen Wert auf `US` fest. Durch das Festlegen des Schlüssels `countrySet` auf `US` werden die Ergebnisse auf die USA beschränkt.
 
     :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Suchen nach einer Adresse":::
 
@@ -110,7 +110,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
     | Radius | 400 |
     | limit | 5|
 
-6. Klicken Sie auf **Send**. Die Antwort enthält die Ergebnisse für Pizzerien in der Nähe der Space Needle in Seattle.
+6. Klicken Sie auf **Send** . Die Antwort enthält die Ergebnisse für Pizzerien in der Nähe der Space Needle in Seattle.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Suchen nach einer Adresse mithilfe der inversen Adresssuche
 
@@ -124,7 +124,7 @@ Die Azure Maps-[API für die inverse Adresssuche]( https://docs.microsoft.com/re
 
 In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Parameter eine umgekehrte Suche durch. Eine vollständige Liste der optionalen Parameter finden Sie im Abschnitt zu den [Parametern für die umgekehrte Suche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
 
-1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
 
@@ -151,7 +151,7 @@ In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Para
 
     :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Suchen nach einer Adresse":::
 
-7. Klicken Sie auf **Send**. Vergleichen Sie die Ergebnisse mit denen in Schritt 5.  Der angeforderte Entitätstyp lautet jetzt `municipality`, deshalb enthält die Antwort keine Informationen zur Anschrift. Der zurückgegebene `geometryId`-Wert kann darüber hinaus zum Anfordern eines Begrenzungspolygons über die Azure Maps-[API zum Abrufen von Suchpolygonen](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) verwendet werden.
+7. Klicken Sie auf **Send** . Vergleichen Sie die Ergebnisse mit denen in Schritt 5.  Der angeforderte Entitätstyp lautet jetzt `municipality`, deshalb enthält die Antwort keine Informationen zur Anschrift. Der zurückgegebene `geometryId`-Wert kann darüber hinaus zum Anfordern eines Begrenzungspolygons über die Azure Maps-[API zum Abrufen von Suchpolygonen](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) verwendet werden.
 
 >[!TIP]
 >Weitere Informationen zu diesen und weiteren Parametern finden Sie im Abschnitt zu den [Parametern für die umgekehrte Suche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
@@ -160,7 +160,7 @@ In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Para
 
 In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach einer Querstraße.
 
-1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
   

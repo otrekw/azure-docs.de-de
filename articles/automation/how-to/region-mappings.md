@@ -1,16 +1,16 @@
 ---
 title: Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 description: In diesem Artikel werden die unterstützten Regionszuordnungen zwischen einem Automation-Konto und einem Log Analytics-Arbeitsbereich im Zusammenhang mit bestimmten Features von Azure Automation beschrieben.
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440659"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207324"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 
@@ -32,6 +32,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |**USA**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
+|USA, Süden-Mitte|USA, Süden-Mitte|
 |WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
@@ -44,6 +45,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |**Europa**||
 |UKSouth|UKSouth|
 |Europa, Westen|Europa, Westen|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>2</sup>|USGovArizona|
@@ -80,11 +82,11 @@ Nachdem Sie die Features entfernt haben, können Sie die folgenden Schritte ausf
 
 Alternativ können Sie Ihren Arbeitsbereich von Ihrem Automation-Konto im Arbeitsbereich trennen.
 
-1. Wählen Sie im Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**.
-2. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
+1. Wählen Sie im Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto** .
+2. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu „Updateverwaltung“ finden Sie in der [Übersicht über die Updateverwaltung](../update-management/update-mgmt-overview.md).
-* Informationen zu „Änderungsnachverfolgung und Bestand“ finden Sie in der [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking.md).
+* Informationen zu „Änderungsnachverfolgung und Bestand“ finden Sie in der [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking/overview.md).
 * Informationen zu „VMs außerhalb der Geschäftszeiten starten/beenden“ finden Sie unter [VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht](../automation-solution-vm-management.md).

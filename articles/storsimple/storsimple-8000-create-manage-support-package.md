@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182014"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973868"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 
@@ -40,10 +40,10 @@ Sie können das manuell generierte Unterstützungspaket per E-Mail für den Micr
    1. Geben Sie an der Eingabeaufforderung Folgendes ein:
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. Geben Sie im angezeigten Dialogfeld Ihr Geräteadministratorkennwort ein. Das Standardkennwort lautet _Password1_.
+   2. Geben Sie im angezeigten Dialogfeld Ihr Geräteadministratorkennwort ein. Das Standardkennwort lautet _Password1_ .
      
       ![PowerShell-Anmeldeinformationen-Dialogfeld](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. Klicken Sie auf **OK**.
+   3. Klicken Sie auf **OK** .
    4. Geben Sie an der Eingabeaufforderung Folgendes ein:
      
       `Enter-PSSession $MS`
@@ -71,7 +71,7 @@ Sie können die folgenden Parameter mit dem Export-HcsSupportPackage-Cmdlet verw
 | `-Credential` |Optional |Dient zum Angeben von Anmeldeinformationen für den Zugriff auf den freigegebenen Netzwerkordner. |
 | `-Force` |Optional |Dient zum Überspringen des Bestätigungsschritts für die Verschlüsselungspassphrase. |
 | `-PackageTag` |Optional |Dient zum Angeben eines Verzeichnisses unter *Path* , in dem das Unterstützungspaket platziert werden soll. Standardmäßig wird Folgendes verwendet: [Gerätename]-[aktuelles Datum und aktuelle Uhrzeit:JJJJ-MM-TT-HH-mm-ss]. |
-| `-Scope` |Optional |Geben Sie **Cluster** (Standardeinstellung) an, um ein Unterstützungspaket für beide Controller zu erstellen. Wenn Sie nur ein Paket für den aktuellen Controller erstellen möchten, geben Sie **Controller**an. |
+| `-Scope` |Optional |Geben Sie **Cluster** (Standardeinstellung) an, um ein Unterstützungspaket für beide Controller zu erstellen. Wenn Sie nur ein Paket für den aktuellen Controller erstellen möchten, geben Sie **Controller** an. |
 
 ## <a name="edit-a-support-package"></a>Bearbeiten eines Unterstützungspakets
 
@@ -108,7 +108,7 @@ Wenn Sie ein Unterstützungspaket vor dem Hochladen an die Microsoft Support-We
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![Bearbeiten des Unterstützungspakets](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![Bearbeiten des Unterstützungspakets 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Geben Sie eine Verschlüsselungspassphrase für das geänderte Unterstützungspaket ein, wenn Sie dazu aufgefordert werden.
    
     ```powershell

@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619616"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331939"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank-Instanz mit Sharding
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Dieser Artikel behandelt die Bereitstellung und Katalogisierung neuer Mandanten in einem Modell oder Muster für *mehrinstanzenfähige Datenbanken mit Sharding*.
+Dieser Artikel behandelt die Bereitstellung und Katalogisierung neuer Mandanten in einem Modell oder Muster für *mehrinstanzenfähige Datenbanken mit Sharding* .
 
 Dieser Artikel setzt sich aus zwei Hauptteilen zusammen:
 
@@ -70,7 +70,7 @@ Der Katalog kann auch verwendet werden, um eine mandantenübergreifende Berichte
 
 ### <a name="elastic-database-client-library"></a>Clientbibliothek für elastische Datenbanken
 
-In Wingtip wird der Katalog in der *tenantcatalog*-Datenbank implementiert. Die *tenantcatalog*-Datenbank wird mithilfe der Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](elastic-database-client-library.md) erstellt. Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer *Shardzuordnung*, die in einer Datenbank gespeichert wird. Eine Shardzuordnung stellt mithilfe von Querverweisen eine Verknüpfung zwischen dem Mandantenschlüssel und dem Shard her, d.h. der Datenbank mit Sharding.
+In Wingtip wird der Katalog in der *tenantcatalog* -Datenbank implementiert. Die *tenantcatalog* -Datenbank wird mithilfe der Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](elastic-database-client-library.md) erstellt. Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer *Shardzuordnung* , die in einer Datenbank gespeichert wird. Eine Shardzuordnung stellt mithilfe von Querverweisen eine Verknüpfung zwischen dem Mandantenschlüssel und dem Shard her, d.h. der Datenbank mit Sharding.
 
 Bei der Mandantenbereitstellung können EDCL-Funktionen in Anwendungen oder PowerShell-Skripts verwendet werden, um Einträge in der Shardzuordnung zu erstellen. Später kann mithilfe der EDCL-Funktionen eine Verbindung mit der richtigen Datenbank hergestellt werden. Die EDCL speichert Verbindungsinformationen zwischen, um den Datenverkehr für die Katalogdatenbank zu minimieren und den Vorgang zum Herstellen einer Verbindung zu beschleunigen.
 
@@ -143,35 +143,35 @@ In diesem Abschnitt wird eine Liste wichtiger Aktionen für die Bereitstellung a
 
 Im Folgenden finden Sie die wichtigsten Elemente des Bereitstellungsworkflows, den Sie durchlaufen:
 
-- **Berechnen Sie den neuen Mandantenschlüssel**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
-- **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
-- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.
-- **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank „tenants1“ wird dem Katalog hinzugefügt.
-- **Fügen Sie den Namen des Mandanten einer Erweiterungstabelle des Katalogs hinzu**: Der Name des Veranstaltungsorts wird der Tabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.  Dieser Zusatz veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
-- **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**: Die zu *Bushwillow Blues* gehörige Veranstaltungsseite wird im Browser geöffnet.
+- **Berechnen Sie den neuen Mandantenschlüssel** : Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
+- **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist** : Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
+- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten** : Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.
+- **Registrieren Sie den Mandanten im Katalog** : Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank „tenants1“ wird dem Katalog hinzugefügt.
+- **Fügen Sie den Namen des Mandanten einer Erweiterungstabelle des Katalogs hinzu** : Der Name des Veranstaltungsorts wird der Tabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.  Dieser Zusatz veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
+- **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten** : Die zu *Bushwillow Blues* gehörige Veranstaltungsseite wird im Browser geöffnet.
 
-   ![events](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![Screenshot, der die Seite „Ereignisse“ für einen neuen Mandanten zeigt.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>Schritte des Debuggers
 
 Um nachzuvollziehen, wie die Wingtip-App die Bereitstellung neuer Mandanten in einer gemeinsam genutzten Datenbank implementiert, fügen Sie einen Haltepunkt hinzu und durchlaufen den Workflow:
 
-1. Öffnen Sie in *PowerShell ISE* „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“, und legen Sie die folgenden Parameter fest:
-   - **$TenantName** = **Bushwillow Blues**, der Name eines neuen Veranstaltungsorts
-   - **$VenueType** = **blues**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (in Kleinbuchstaben ohne Leerzeichen)
-   - **$DemoScenario** = **1**, Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank
+1. Öffnen Sie in *PowerShell ISE* „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* “, und legen Sie die folgenden Parameter fest:
+   - **$TenantName** = **Bushwillow Blues** , der Name eines neuen Veranstaltungsorts
+   - **$VenueType** = **blues** , einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (in Kleinbuchstaben ohne Leerzeichen)
+   - **$DemoScenario** = **1** , Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank
 
-2. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 bewegen. Es handelt sich um die Zeile, die folgendermaßen lautet: *New-Tenant `* . Drücken Sie dann **F9**.
+2. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 bewegen. Es handelt sich um die Zeile, die folgendermaßen lautet: *New-Tenant `* . Drücken Sie dann **F9** .
 
-   ![Haltepunkt](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
+   ![Screenshot, der die Zeile hervorhebt, die „Neuer Mandant“ enthält.](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
 3. Führen Sie das Skript durch Drücken von **F5** aus.
 
-4. Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11**, um den Code schrittweise auszuführen.
+4. Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11** , um den Code schrittweise auszuführen.
 
    ![Screenshot: Windows PowerShell-ISE mit geöffnetem Menü „Debuggen“ und ausgewählter Option „Schrittweise ausführen“.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
-5. Verfolgen Sie die Ausführung des Skripts mit den Optionen (**F10** und **F11**) im Menü **Debug** nach, um aufgerufene Funktionen zu überspringen oder einzeln auszuführen.
+5. Verfolgen Sie die Ausführung des Skripts mit den Optionen ( **F10** und **F11** ) im Menü **Debug** nach, um aufgerufene Funktionen zu überspringen oder einzeln auszuführen.
 
 Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
@@ -181,14 +181,14 @@ Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipp
 
 Im Folgenden finden Sie die wichtigsten Elemente des Workflows, den Sie beim Nachverfolgen des Skripts durchlaufen:
 
-- **Berechnen Sie den neuen Mandantenschlüssel**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
-- **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
-- **Erstellen Sie eine neue Mandantendatenbank**: Die Datenbank wird durch Kopieren der Datenbank *basetenantdb* unter Verwendung einer Ressourcen-Manager-Vorlage erstellt.  Der Name der neuen Datenbank basiert auf dem Mandantennamen.
-- **Fügen Sie die Datenbank dem Katalog hinzu**: Die neue Mandantendatenbank wird als Shard im Katalog registriert.
-- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.
-- **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der *sequoiasoccer*-Datenbank wird dem Katalog hinzugefügt.
-- **Der Mandantenname wird dem Katalog hinzugefügt**: Der Name des Veranstaltungsorts wird der Erweiterungstabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.
-- **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**: Die zu *Sequoia Soccer* gehörige Veranstaltungsseite wird im Browser geöffnet.
+- **Berechnen Sie den neuen Mandantenschlüssel** : Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
+- **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist** : Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
+- **Erstellen Sie eine neue Mandantendatenbank** : Die Datenbank wird durch Kopieren der Datenbank *basetenantdb* unter Verwendung einer Ressourcen-Manager-Vorlage erstellt.  Der Name der neuen Datenbank basiert auf dem Mandantennamen.
+- **Fügen Sie die Datenbank dem Katalog hinzu** : Die neue Mandantendatenbank wird als Shard im Katalog registriert.
+- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten** : Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.
+- **Registrieren Sie den Mandanten im Katalog** : Die Zuordnung zwischen dem neuen Mandantenschlüssel und der *sequoiasoccer* -Datenbank wird dem Katalog hinzugefügt.
+- **Der Mandantenname wird dem Katalog hinzugefügt** : Der Name des Veranstaltungsorts wird der Erweiterungstabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.
+- **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten** : Die zu *Sequoia Soccer* gehörige Veranstaltungsseite wird im Browser geöffnet.
 
    ![events](./media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
@@ -196,10 +196,10 @@ Im Folgenden finden Sie die wichtigsten Elemente des Workflows, den Sie beim Nac
 
 Durchlaufen Sie nun den Skriptprozess zum Erstellen eines Mandanten in seiner eigenen Datenbank:
 
-1. Legen Sie noch in „\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“ die folgenden Parameter fest:
-   - **$TenantName** = **Sequoia Soccer**, der Name eines neuen Veranstaltungsorts
-   - **$VenueType** = **soccer**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen)
-   - **$DemoScenario** = **2**, Bereitstellen eines Mandanten in seiner eigenen Datenbank
+1. Legen Sie noch in „\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* “ die folgenden Parameter fest:
+   - **$TenantName** = **Sequoia Soccer** , der Name eines neuen Veranstaltungsorts
+   - **$VenueType** = **soccer** , einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen)
+   - **$DemoScenario** = **2** , Bereitstellen eines Mandanten in seiner eigenen Datenbank
 
 2. Fügen Sie einen neuen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 57 bewegen (der Zeile mit *&&nbsp;$PSScriptRoot\New-TenantAndDatabase `* ) und **F9** drücken.
 
@@ -207,16 +207,16 @@ Durchlaufen Sie nun den Skriptprozess zum Erstellen eines Mandanten in seiner ei
 
 3. Führen Sie das Skript durch Drücken von **F5** aus.
 
-4. Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11**, um den Code schrittweise auszuführen.  Drücken Sie **F10** und **F11**, um zum Verfolgen der Ausführung Prozedurschritte zu durchlaufen und Funktionen schrittweise aufzurufen.
+4. Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11** , um den Code schrittweise auszuführen.  Drücken Sie **F10** und **F11** , um zum Verfolgen der Ausführung Prozedurschritte zu durchlaufen und Funktionen schrittweise aufzurufen.
 
 ## <a name="provision-a-batch-of-tenants"></a>Bereitstellen eines Batches von Mandanten
 
 In dieser Übung wird ein Batch mit 17 Mandanten bereitgestellt. Es empfiehlt sich, diese Mandantengruppe bereitzustellen, bevor Sie mit anderen Wingtip-SaaS-Tutorials beginnen, damit Sie mit mehreren Datenbanken arbeiten können.
 
-1. Öffnen Sie in *PowerShell ISE* „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“, und ändern Sie den *$DemoScenario*-Parameter in „4“:
-   - **$DemoScenario** = **4**, Bereitstellen einer Gruppe von Mandanten in einer gemeinsam genutzten Datenbank
+1. Öffnen Sie in *PowerShell ISE* „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* “, und ändern Sie den *$DemoScenario* -Parameter in „4“:
+   - **$DemoScenario** = **4** , Bereitstellen einer Gruppe von Mandanten in einer gemeinsam genutzten Datenbank
 
-2. Drücken Sie **F5**, um das Skript auszuführen.
+2. Drücken Sie **F5** , um das Skript auszuführen.
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Überprüfen der bereitgestellten Gruppe von Mandanten
 
@@ -241,9 +241,9 @@ Die vollständige Liste der Mandanten und ihre entsprechende Datenbank sind im K
 
     ![SSMS-Verbindungsdialogfeld](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
-2. Navigieren Sie im SSMS-Objekt-Explorer zu den Ansichten in der Datenbank *tenantcatalog*.
+2. Navigieren Sie im SSMS-Objekt-Explorer zu den Ansichten in der Datenbank *tenantcatalog* .
 
-3. Klicken Sie mit der rechten Maustaste auf die Sicht *TenantsExtended*, und wählen Sie **Select Top 1000 Rows** aus. Beachten Sie die Zuordnung zwischen dem Namen des Mandanten und der Datenbank für die verschiedenen Mandanten.
+3. Klicken Sie mit der rechten Maustaste auf die Sicht *TenantsExtended* , und wählen Sie **Select Top 1000 Rows** aus. Beachten Sie die Zuordnung zwischen dem Namen des Mandanten und der Datenbank für die verschiedenen Mandanten.
 
     ![Sicht „ExtendedTenants“ in SSMS](./media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
 

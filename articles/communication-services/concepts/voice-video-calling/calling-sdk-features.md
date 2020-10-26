@@ -20,7 +20,7 @@ ms.locfileid: "91977866"
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Es gibt zwei separate Familien von Clientbibliotheken für Telefonie: eine für *Clients* und eine für *Dienste*. Die aktuell verfügbaren Clientbibliotheken sind für Endbenutzerumgebungen (Websites und native Apps) vorgesehen.
+Es gibt zwei separate Familien von Clientbibliotheken für Telefonie: eine für *Clients* und eine für *Dienste* . Die aktuell verfügbaren Clientbibliotheken sind für Endbenutzerumgebungen (Websites und native Apps) vorgesehen.
 
 Die Clientbibliotheken für Dienste sind noch nicht verfügbar und ermöglichen den Zugriff auf unformatierte Sprach- und Videodaten für die Integration in Bots und andere Diensten.
 
@@ -64,7 +64,7 @@ Die folgende Tabelle enthält die unterstützten Browser und Versionen, die derz
 
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
 | -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **Clientbibliothek für Telefonie** | Chrome*, Edge (neu) | Chrome *, Safari** | Chrome*  | Chrome* | Chrome* | Safari** |
+| **Clientbibliothek für Telefonie** | Chrome*, Microsoft Edge (neu) | Chrome *, Safari** | Chrome*  | Chrome* | Chrome* | Safari** |
 
 
 \* Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version von Chrome unterstützt.<br/>

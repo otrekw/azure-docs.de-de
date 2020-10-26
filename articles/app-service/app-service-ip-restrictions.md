@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962960"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168221"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service-Zugriffseinschränkungen
 
@@ -30,19 +30,19 @@ Die Möglichkeit, den Zugriff auf Ihre Web-App auf ein Azure Virtual Network (VN
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Hinzufügen und Bearbeiten von Regeln für Zugriffseinschränkungen im Portal ##
 
-Um Ihrer App eine Zugriffseinschränkungsregel hinzuzufügen, wählen Sie im Menü **Netzwerk**>**Zugriffseinschränkungen** aus und klicken auf **Zugriffseinschränkungen konfigurieren**.
+Um Ihrer App eine Zugriffseinschränkungsregel hinzuzufügen, wählen Sie im Menü **Netzwerk**>**Zugriffseinschränkungen** aus und klicken auf **Zugriffseinschränkungen konfigurieren** .
 
 ![App Service-Netzwerkoptionen](media/app-service-ip-restrictions/access-restrictions.png)  
 
 Auf der Benutzeroberfläche für Zugriffseinschränkungen können Sie die Liste mit den Regeln für die Zugriffseinschränkungen überprüfen, die für Ihre App definiert sind.
 
-![Liste mit Zugriffseinschränkungen](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Screenshot des Bildschirms „Zugriffseinschränkungen“ im Azure-Portal mit der Liste der Regeln für Zugriffseinschränkungen, die für die ausgewählte App definiert sind.](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 In der Liste werden alle aktuellen Einschränkungen für Ihre App angezeigt. Wenn eine VNET-Einschränkung für die App festgelegt ist, wird in der Tabelle angezeigt, ob Dienstendpunkte für Microsoft.Web aktiviert sind. Wenn keine definierten Einschränkungen für die App vorhanden sind, kann von überall aus auf die App zugegriffen werden.  
 
 ## <a name="adding-ip-address-rules"></a>Hinzufügen von Regeln für IP-Adressen
 
-Klicken Sie auf **[+] Regel hinzufügen**, um eine neue Zugriffseinschränkungsregel hinzuzufügen. Wenn Sie eine Regel hinzufügen, wird sie sofort wirksam. Regeln werden in der Reihenfolge ihrer Priorität erzwungen, wobei mit der niedrigsten Zahl begonnen wird. Implizit gilt die Regel „Alle ablehnen“, die wirksam ist, sobald Sie die erste Regel hinzugefügt haben.
+Klicken Sie auf **[+] Regel hinzufügen** , um eine neue Zugriffseinschränkungsregel hinzuzufügen. Wenn Sie eine Regel hinzufügen, wird sie sofort wirksam. Regeln werden in der Reihenfolge ihrer Priorität erzwungen, wobei mit der niedrigsten Zahl begonnen wird. Implizit gilt die Regel „Alle ablehnen“, die wirksam ist, sobald Sie die erste Regel hinzugefügt haben.
 
 Beim Erstellen einer Regel müssen Sie „Zulassen/Ablehnen“ und außerdem den Typ der Regel auswählen. Sie müssen auch den Prioritätswert festlegen und angeben, worauf der Zugriff beschränkt wird.  Optional können Sie einen Namen und eine Beschreibung für die Regel hinzufügen.  
 
@@ -68,13 +68,13 @@ Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WA
 
 Sie können auf eine beliebige Zeile klicken, um eine vorhandene Zugriffseinschränkungsregel zu bearbeiten. Änderungen sind sofort wirksam. Dies gilt auch für Änderungen der Prioritätsreihenfolge.
 
-![Bearbeiten einer Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![Screenshot des Dialogfelds „IP-Einschränkung bearbeiten“ im Azure-Portal mit den Feldern für eine vorhandene Regel für Zugriffseinschränkungen.](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 Wenn Sie eine Regel bearbeiten, können Sie den Typ nicht zwischen einer IP-Adressregel und einer Regel für virtuelle Netzwerke ändern. 
 
-![Bearbeiten einer Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![Screenshot des Dialogfelds „IP-Einschränkung bearbeiten“ im Azure-Portal mit den Einstellungen für eine Regel für virtuelle Netzwerke.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Klicken Sie zum Löschen einer Regel für die entsprechende Regel auf **...** und dann auf **Entfernen**.
+Klicken Sie zum Löschen einer Regel für die entsprechende Regel auf **...** und dann auf **Entfernen** .
 
 ![Löschen einer Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -90,7 +90,7 @@ In einem Szenario, in dem Benutzer eine einzelne IP-Adresse oder einen IP-Adress
 
 Neben der Möglichkeit, den Zugriff auf Ihre App zu steuern, können Sie auch den Zugriff auf die von der App verwendete SCM-Website einschränken. Die SCM-Website ist der Web Deploy-Endpunkt und zudem die Kudu-Konsole. Sie können die Zugriffseinschränkungen für die SCM-Website getrennt von der App zuweisen oder die gleichen Einschränkungen für die App und die SCM-Website verwenden. Wenn Sie das Kontrollkästchen aktivieren, damit die gleichen Einschränkungen wie für die App gelten, wird alles ausgeblendet. Wenn Sie das Kontrollkästchen deaktivieren, werden alle vorherigen Einstellungen für die SCM-Website angewandt. 
 
-![Liste mit Zugriffseinschränkungen](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![Screenshot des Bildschirms „Zugriffseinschränkungen“ im Azure-Portal, der zeigt, dass für die SCM-Website oder die App keine Zugriffseinschränkungen festgelegt sind.](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programmgesteuerte Bearbeitung von Zugriffseinschränkungsregeln ##
 
@@ -111,7 +111,7 @@ Sie können die Werte auch manuell per PUT-Vorgang der [Azure-REST-API](/rest/ap
 
 Der Speicherort dieser Informationen im Resource Manager ist:
 
-management.azure.com/subscriptions/**Abonnement-ID**/resourceGroups/**Ressourcengruppen**/providers/Microsoft.Web/sites/**Web-App-Name**/config/web?api-version=2018-02-01
+management.azure.com/subscriptions/ **Abonnement-ID** /resourceGroups/ **Ressourcengruppen** /providers/Microsoft.Web/sites/ **Web-App-Name** /config/web?api-version=2018-02-01
 
 Die JSON-Syntax für das obige Beispiel lautet:
 ```json

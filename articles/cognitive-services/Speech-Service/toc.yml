@@ -144,7 +144,7 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
-    - name: Verweis
+    - name: Referenz
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: Unterhaltungstranskription
           items:
-            - name: Übersicht
-              items:
-                - name: Was ist Unterhaltungstranskription?
-                  href: conversation-transcription.md
+            - name: Übersicht über die Unterhaltungstranskription
+              href: conversation-transcription.md
+            - name: 'Schnellstart: Unterhaltungstranskription in Echtzeit'
+              href: how-to-use-conversation-transcription.md
             - name: Anleitungen
               items:
                 - name: Behandeln von Callcenterszenarien
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: Unterhaltungstranskription in Echtzeit
-                  href: how-to-use-conversation-transcription.md
                 - name: Asynchrone Unterhaltungstranskription
                   href: how-to-async-conversation-transcription.md
             - name: Verweis
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: Konversation mit mehreren Geräten
           items:
-            - name: Übersicht
-              items:
-                - name: Worum handelt es sich bei der Konversation mit mehreren Geräten?
-                  href: multi-device-conversation.md
-            - name: Schnellstart
-              items:
-                - name: Starten einer Konversation und Beitreten zu einer Konversation
-                  href: quickstarts/multi-device-conversation.md
+            - name: Übersicht über Mehrgerätekonversation
+              href: multi-device-conversation.md
+            - name: Schnellstartanleitung für Mehrgerätekonversation
+              href: quickstarts/multi-device-conversation.md
             - name: Verweis
               items:
                 - name: Sprach-SDK
@@ -363,12 +357,8 @@
       items:
         - name: Dokumentation zu Sprachassistenten
           href: index-voice-assistants.yml
-        - name: Übersicht
-          items:
-            - name: Was ist ein Sprachassistent?
-              href: voice-assistants.md
-            - name: Beispiele für Sprachassistenten (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Übersicht über Sprach-Assistenten
+          href: voice-assistants.md
         - name: Benutzerdefinierte Befehle
           items:
             - name: Was sind benutzerdefinierte Befehle?

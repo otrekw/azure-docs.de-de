@@ -68,7 +68,7 @@ Ein Beispiel für die Verwendung von Verhaltensanalysen und deren Funktionsweise
 
 ## <a name="entity-pages"></a>Entitätsseiten
 
-Wenn Sie bei einer Suche, in einer Warnung oder bei einer Untersuchung auf eine Entität (derzeit nur Benutzer und Hosts) stoßen, können Sie die Entität auswählen und gelangen dadurch auf eine **Entitätsseite**. Hierbei handelt es sich um ein Datenblatt mit nützlichen Informationen zu dieser Entität. Zu den Informationen auf dieser Seite gehören grundlegende Fakten über die Entität, eine Zeitachse mit für diese Entität wichtigen Ereignissen sowie Erkenntnisse über das Verhalten der Entität.
+Wenn Sie bei einer Suche, in einer Warnung oder bei einer Untersuchung auf eine Entität (derzeit nur Benutzer und Hosts) stoßen, können Sie die Entität auswählen und gelangen dadurch auf eine **Entitätsseite** . Hierbei handelt es sich um ein Datenblatt mit nützlichen Informationen zu dieser Entität. Zu den Informationen auf dieser Seite gehören grundlegende Fakten über die Entität, eine Zeitachse mit für diese Entität wichtigen Ereignissen sowie Erkenntnisse über das Verhalten der Entität.
  
 Entitätsseiten bestehen aus drei Teilen:
 - Der linke Bereich enthält Informationen zur Identifizierung der Entität, die über Datenquellen wie Azure Active Directory, Azure Monitor, Azure Security Center und Microsoft Defender erfasst werden.
@@ -83,7 +83,7 @@ Entitätsseiten bestehen aus drei Teilen:
 
 Die Zeitachse ist ein wesentlicher Bestandteil des Beitrags der Entität zur Verhaltensanalyse in Azure Sentinel. Sie stellt den Verlauf von für eine Entität wichtigen Ereignissen dar, sodass Sie sich einen Überblick über die Aktivitäten der Entität innerhalb eines bestimmten Zeitraums verschaffen können.
 
-Sie können den **Zeitbereich** aus verschiedenen vordefinierten Optionen (z. B. *letzte 24 Stunden*) auswählen oder einen benutzerdefinierten Zeitrahmen festlegen. Zudem können Sie Filter festlegen, mit denen die Informationen auf der Zeitachse auf bestimmte Ereignis- oder Warnungsarten beschränkt wird.
+Sie können den **Zeitbereich** aus verschiedenen vordefinierten Optionen (z. B. *letzte 24 Stunden* ) auswählen oder einen benutzerdefinierten Zeitrahmen festlegen. Zudem können Sie Filter festlegen, mit denen die Informationen auf der Zeitachse auf bestimmte Ereignis- oder Warnungsarten beschränkt wird.
 
 Die folgenden Elemente sind auf der Zeitachse enthalten:
 
@@ -126,10 +126,10 @@ Entitätsseiten sind Teil von verschiedenen Verwendungsszenarios und können üb
 | UserPrincipalName         | Vollständiger Benutzername des Benutzers, der die Aktivität initiiert hat               |
 | EventSource               | Datenquelle, die das ursprüngliche Ereignis bereitgestellt hat                        |
 | SourceIPAddress           | IP-Adresse, über die die Aktivität initiiert wurde                        |
-| SourceIPLocation          | Land, von dem aus die Aktivität initiiert wurde, ergänzt durch die IP-Adresse |
+| SourceIPLocation          | Land/Region, von dem bzw. der aus die Aktivität initiiert wurde, ergänzt durch die IP-Adresse |
 | SourceDevice              | Hostname des Geräts, das die Aktivität initiiert hat                  |
 | DestinationIPAddress      | IP-Adresse des Ziels der Aktivität                            |
-| DestinationIPLocation     | Land des Ziels der Aktivität, ergänzt durch die IP-Adresse     |
+| DestinationIPLocation     | Land/Region des Ziels der Aktivität, ergänzt durch die IP-Adresse     |
 | DestinationDevice         | Name des Zielgeräts                                           |
 | **UsersInsights**         | Kontextabhängige Anreicherungen der beteiligten Benutzer                            |
 | **DevicesInsights**       | Kontextabhängige Anreicherungen der beteiligten Geräte                          |
@@ -154,7 +154,7 @@ BehaviorAnalytics
 
 Die Metadaten der Benutzerpeers liefern wichtigen Kontext bei der Erkennung von Bedrohungen, bei der Untersuchung von Vorfällen sowie bei der Suche nach einer potenziellen Bedrohung. Sicherheitsanalysten können die normalen Aktivitäten der Peers eines Benutzers beobachten, um festzustellen, ob die Aktivitäten des Benutzers im Vergleich zu denen seiner Peers ungewöhnlich sind.
 
-Azure Sentinel berechnet und bewertet die Peers eines Benutzers basierend auf der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers, anhand von Mailinglisten usw. und speichert die Peers mit einer Bewertung zwischen 1 und 20 in der Tabelle **UserPeerAnalytics**. Im folgenden Screenshot ist das Schema der Tabelle „UserPeerAnalytics“ mit den acht ersten Peers des Benutzers Kendall Collins dargestellt. Azure Sentinel verwendet den TF-IDF-Algorithmus (*Term Frequency-Inverse Document Frequency*) zur Normalisierung der Gewichtung bei der Berechnung der Bewertung: je kleiner die Gruppe, umso höher die Gewichtung. 
+Azure Sentinel berechnet und bewertet die Peers eines Benutzers basierend auf der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers, anhand von Mailinglisten usw. und speichert die Peers mit einer Bewertung zwischen 1 und 20 in der Tabelle **UserPeerAnalytics** . Im folgenden Screenshot ist das Schema der Tabelle „UserPeerAnalytics“ mit den acht ersten Peers des Benutzers Kendall Collins dargestellt. Azure Sentinel verwendet den TF-IDF-Algorithmus ( *Term Frequency-Inverse Document Frequency* ) zur Normalisierung der Gewichtung bei der Berechnung der Bewertung: je kleiner die Gruppe, umso höher die Gewichtung. 
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Architektur von User and Entity Behavior Analytics":::
 
@@ -164,7 +164,7 @@ Zur Visualisierung der Metadaten der Peers des Benutzers können Sie [Jupyter No
 
 Mit der Berechtigungsanalyse können Sie die potenziellen Auswirkungen der Kompromittierung einer Ressource in einer Organisation durch einen Angreifer ermitteln. Diese Auswirkung wird auch als „Auswirkungsgrad“ der Ressource bezeichnet. Sicherheitsanalysten können mit diesen Informationen die Untersuchung und Behandlung von Vorfällen priorisieren.
 
-Azure Sentinel bestimmt die direkten und transitiven Zugriffsrechte eines bestimmten Benutzers für Azure-Ressourcen durch die Auswertung der Azure-Abonnements, auf die der Benutzer direkt ober über Gruppen oder Dienstprinzipale zugreifen kann. Diese Informationen sowie eine umfassende Liste mit der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers werden in der Tabelle **UserAccessAnalytics** gespeichert. Im folgenden Screenshot ist ein Beispiel für eine Zeile in der Tabelle „UserAccessAnalytics“ für den Benutzer Alex Johnson dargestellt. Die **Quellentität** ist das Benutzer- oder Dienstprinzipalkonto, während die **Zielentität** die Ressource ist, auf die die Quellentität Zugriff hat. Die Werte von **Zugriffsebene** und **Zugriffstyp** hängen vom Zugriffssteuerungsmodell der Zielentität ab. Wie Sie sehen, hat Alex die Zugriffsberechtigung „Mitwirkender“ für das Azure-Abonnement *Contoso Hotels Tenant*. Für das Abonnement wird das Zugriffssteuerungsmodell RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) verwendet.   
+Azure Sentinel bestimmt die direkten und transitiven Zugriffsrechte eines bestimmten Benutzers für Azure-Ressourcen durch die Auswertung der Azure-Abonnements, auf die der Benutzer direkt ober über Gruppen oder Dienstprinzipale zugreifen kann. Diese Informationen sowie eine umfassende Liste mit der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers werden in der Tabelle **UserAccessAnalytics** gespeichert. Im folgenden Screenshot ist ein Beispiel für eine Zeile in der Tabelle „UserAccessAnalytics“ für den Benutzer Alex Johnson dargestellt. Die **Quellentität** ist das Benutzer- oder Dienstprinzipalkonto, während die **Zielentität** die Ressource ist, auf die die Quellentität Zugriff hat. Die Werte von **Zugriffsebene** und **Zugriffstyp** hängen vom Zugriffssteuerungsmodell der Zielentität ab. Wie Sie sehen, hat Alex die Zugriffsberechtigung „Mitwirkender“ für das Azure-Abonnement *Contoso Hotels Tenant* . Für das Abonnement wird das Zugriffssteuerungsmodell RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) verwendet.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Architektur von User and Entity Behavior Analytics":::
 

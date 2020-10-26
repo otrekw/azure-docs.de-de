@@ -95,6 +95,8 @@
   items:
     - name: Verwalten von Azure Maps-Konten
       items:
+        - name: Erstellen eines Kontos mit einer ARM-Vorlage
+          href: how-to-create-template.md
         - name: Konten verwalten
           href: how-to-manage-account-keys.md
         - name: Verwalten der Authentifizierung
