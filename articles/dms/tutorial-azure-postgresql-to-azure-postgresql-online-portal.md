@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938422"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313147"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Tutorial: Onlinemigration von einer Azure DB for PostgreSQL – Einzelserver-Instanz zu einer anderen Azure DD for PostgreSQL – Einzelserver-Instanz mithilfe von DMS über das Azure-Portal
 
@@ -47,7 +47,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Informationen zu unterstützten Migrations- und Versionskombinationen finden Sie unter [Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden](https://docs.microsoft.com/azure/dms/resource-scenario-status). 
-* Eine vorhandene [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)-Instanz der Version 10 und höher mit der **DVD Rental**-Datenbank. Der Azure Database Migration Service unterstützt nicht die Migration von Azure DB for PostgreSQL 9.5 oder 9.6.
+* Eine vorhandene [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)-Instanz der Version 10 und höher mit der **DVD Rental** -Datenbank. Der Azure Database Migration Service unterstützt nicht die Migration von Azure DB for PostgreSQL 9.5 oder 9.6.
 
     Beachten Sie auch, dass die Azure Database for PostgreSQL-Zielversion höher als die lokale PostgreSQL-Version sein oder dieser entsprechen muss. Beispiel: PostgreSQL 10 kann zu Azure Database for PostgreSQL 10 oder 11 migriert werden, nicht aber zu Azure Database for PostgreSQL 9.6.
 
@@ -92,7 +92,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
     Ausführliche Anleitungen zum Erstellen und Verbinden einer Datenbank finden Sie unter [Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) und unter [Erstellen eines Azure Database for PostgreSQL-Servers – Hyperscale (Citus) über das Azure-Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 
     > [!NOTE]
-    > Eine Instanz von Azure Database for PostgreSQL – Hyperscale (Citus) besitzt nur eine einzige Datenbank: **citus**.
+    > Eine Instanz von Azure Database for PostgreSQL – Hyperscale (Citus) besitzt nur eine einzige Datenbank: **citus** .
 
 3. Importieren Sie das Schema in die Zieldatenbank, die Sie erstellt haben, indem Sie die Schemasicherungsdatei wiederherstellen.
 
@@ -157,11 +157,11 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
 
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
+1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements** .
 
    ![Abonnements im Portal anzeigen](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
 
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
+2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter** .
 
     ![Ressourcenanbieter anzeigen](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
 
@@ -171,7 +171,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 ## <a name="create-a-dms-instance"></a>Erstellen einer DMS-Instanz
 
-1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**, suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus der Dropdownliste aus.
+1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen** , suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus der Dropdownliste aus.
 
     ![Azure Marketplace](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-marketplace.png)
 
@@ -193,7 +193,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-settings4.png)
 
-6. Klicken Sie zum Erstellen des Diensts auf **Überprüfen + erstellen**.
+6. Klicken Sie zum Erstellen des Diensts auf **Überprüfen + erstellen** .
 
    Die Diensterstellung dauert etwa 10 bis 15 Minuten.
 
@@ -201,15 +201,15 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Sie ihn, und erstellen Sie anschließend ein neues Migrationsprojekt.
 
-1. Wählen Sie im Azure-Portal **Alle Dienste**, suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus.
+1. Wählen Sie im Azure-Portal **Alle Dienste** , suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus.
 
       ![Suchen aller Instanzen von Azure Database Migration Service](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-search.png)
 
-2. Suchen Sie auf dem Bildschirm **Azure Database Migration Services** nach dem Namen der von Ihnen erstellten Azure Database Migration Service-Instanz, wählen Sie die Instanz aus, und klicken Sie dann auf **Neues Migrationsprojekt**.
+2. Suchen Sie auf dem Bildschirm **Azure Database Migration Services** nach dem Namen der von Ihnen erstellten Azure Database Migration Service-Instanz, wählen Sie die Instanz aus, und klicken Sie dann auf **Neues Migrationsprojekt** .
 
 3. Geben Sie im Bereich **Neues Migrationsprojekt** einen Namen für das Projekt an, wählen Sie im Textfeld **Typ des Quellservers** den Eintrag **PostgreSQL** aus, und wählen Sie im Textfeld **Typ des Zielservers** den Eintrag **Azure Database for PostgreSQL** aus.
     > [!NOTE]
-    > Wählen Sie **PostgreSQL** in **Typ des Quellservers** aus, obwohl der Quellserver eine **Azure Database for PostgreSQL**-Instanz ist.  
+    > Wählen Sie **PostgreSQL** in **Typ des Quellservers** aus, obwohl der Quellserver eine **Azure Database for PostgreSQL** -Instanz ist.  
 
 4. Wählen Sie im Abschnitt **Aktivitätstyp auswählen** die Option **Onlinedatenmigration** aus.
 
@@ -227,7 +227,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     ![Bildschirm „Quelldetails hinzufügen“](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
     > [!NOTE]
-    > Details wie „Servername“, „ServerPort“, „Datenbankname“ usw. finden Sie im **Azure Database for PostgreSQL**-Portal.
+    > Details wie „Servername“, „ServerPort“, „Datenbankname“ usw. finden Sie im **Azure Database for PostgreSQL** -Portal.
 
 2. Wählen Sie **Speichern** aus.
 
@@ -240,17 +240,17 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     > [!NOTE]
     > Sie können von einer Azure Database for PostgreSQL-Instanz zu einer anderen Azure Database for PostgreSQL-Einzelserverinstanz oder einem Hyperscale-Server (Citus) migrieren.
 
-2. Klicken Sie auf **Speichern**, und ordnen Sie dann auf dem Bildschirm **Den Zieldatenbanken zuordnen** die Quell- und die Zieldatenbank für die Migration zu.
+2. Klicken Sie auf **Speichern** , und ordnen Sie dann auf dem Bildschirm **Den Zieldatenbanken zuordnen** die Quell- und die Zieldatenbank für die Migration zu.
 
     Wenn die Zieldatenbank denselben Datenbanknamen wie die Quelldatenbank enthält, wählt Azure Database Migration Service die Zieldatenbank standardmäßig aus.
 
     ![Bildschirm „Den Zieldatenbanken zuordnen“](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-map-target-databases.png)
 
-3. Klicken Sie auf **Speichern**, und übernehmen Sie auf dem Bildschirm **Migrationseinstellungen** die Standardwerte.
+3. Klicken Sie auf **Speichern** , und übernehmen Sie auf dem Bildschirm **Migrationseinstellungen** die Standardwerte.
 
     ![Bildschirm „Migrationseinstellungen“](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-migration-settings.png)
 
-4. Klicken Sie auf **Speichern**. Geben Sie auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität ein, und überprüfen Sie anschließend die Zusammenfassung, um sicherzustellen, dass die Ziel- und Quelldetails Ihren vorherigen Angaben entsprechen.
+4. Klicken Sie auf **Speichern** . Geben Sie auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität ein, und überprüfen Sie anschließend die Zusammenfassung, um sicherzustellen, dass die Ziel- und Quelldetails Ihren vorherigen Angaben entsprechen.
 
     ![Bildschirm „Migrationszusammenfassung“](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-migration-summary.png)
 
@@ -258,11 +258,22 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 * Wählen Sie **Migration ausführen** aus.
 
-    Das Fenster „Migrationsaktivität“ wird angezeigt, und der **Status** der Aktivität sollte zu **Sicherung wird durchgeführt** aktualisiert werden.
+Das Fenster „Migrationsaktivität“ wird angezeigt, und der **Status** der Aktivität sollte zu **Sicherung wird durchgeführt** aktualisiert werden. Beim Durchführen eines Upgrades von Azure DB for PostgreSQL 9.5 oder 9.6 tritt ggf. ein Fehler der folgenden Art auf:
+
+**Für ein Szenario wurde ein unbekannter Fehler gemeldet. 28000: Kein „pg_hba.conf“-Eintrag für Replikationsverbindung vom Host „40.121.141.121“, Benutzer „sr“**
+
+Der Grund hierfür ist, dass PostgreSQL nicht über die benötigten Berechtigungen für die Erstellung der erforderlichen Artefakte für die logische Replikation verfügt. Zum Aktivieren der erforderlichen Berechtigungen können Sie wie folgt vorgehen:
+
+1. Öffnen Sie die Einstellungen unter „Verbindungssicherheit“ für den Azure DB for PostgreSQL-Quellserver, von dem aus Sie die Migration bzw. das Upgrade durchführen möchten.
+2. Fügen Sie eine neue Firewallregel mit einem Namen hinzu, der auf „_replrule“ endet, und fügen Sie die IP-Adresse aus der Fehlermeldung in die Felder für die Start- und End-IP-Adresse ein. Für das obige Fehlerbeispiel:
+> Name der Firewallregel = sr_replrule, Start-IP-Adresse = 40.121.141.121, End-IP-Adresse = 40.121.141.121
+
+3. Klicken Sie auf „Speichern“, und warten Sie ab, bis der Änderungsvorgang abgeschlossen ist. 
+4. Versuchen Sie erneut, die DMS-Aktivität durchzuführen. 
 
 ## <a name="monitor-the-migration"></a>Überwachen der Migration
 
-1. Klicken Sie auf dem Bildschirm „Migrationsaktivität“ auf **Aktualisieren**, um die Anzeige zu aktualisieren, bis der **Status** der Migration **Abgeschlossen** lautet.
+1. Klicken Sie auf dem Bildschirm „Migrationsaktivität“ auf **Aktualisieren** , um die Anzeige zu aktualisieren, bis der **Status** der Migration **Abgeschlossen** lautet.
 
      ![Überwachen des Migrationsprozesses](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-monitor-migration.png)
 
@@ -279,9 +290,9 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbanken als **Zur Übernahme bereit** markiert.
 
-1. Wenn Sie die Datenmigration abschließen möchten, klicken Sie auf **Übernahme starten**.
+1. Wenn Sie die Datenmigration abschließen möchten, klicken Sie auf **Übernahme starten** .
 
-2. Warten Sie, bis der Zähler **Ausstehende Änderungen** den Wert **0** anzeigt, um sicherzustellen, dass alle eingehenden Transaktionen für die Datenbank angehalten werden, aktivieren Sie das Kontrollkästchen **Bestätigen**, und klicken Sie auf **Anwenden**.
+2. Warten Sie, bis der Zähler **Ausstehende Änderungen** den Wert **0** anzeigt, um sicherzustellen, dass alle eingehenden Transaktionen für die Datenbank angehalten werden, aktivieren Sie das Kontrollkästchen **Bestätigen** , und klicken Sie auf **Anwenden** .
 
     ![Bildschirm „Umstellung abschließen“](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 

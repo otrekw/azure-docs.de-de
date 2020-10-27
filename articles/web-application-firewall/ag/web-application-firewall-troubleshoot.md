@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82983073"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131835"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Problembehandlung für die Web Application Firewall (WAF) für Azure Application Gateway
 
@@ -150,11 +150,11 @@ Um eine fundierte Entscheidung zum Umgang mit einem falsch positiven Ergebnis zu
 
 Ein Vorteil der Verwendung einer Ausschlussliste ist, dass nur ein bestimmter Teil einer Anforderung deaktiviert wird. Das bedeutet jedoch, dass ein bestimmter Ausschluss für den gesamten Datenverkehr gilt, der die WAF durchläuft, da es sich um eine globale Einstellung handelt. Dies könnte beispielsweise zu einem Problem führen, wenn *1=1* eine gültige Anforderung im Text für eine bestimmte App ist, dies aber bei anderen Apps nicht der Fall ist. Ein weiterer Vorteil ist, dass Sie zwischen dem Ausschluss von Text, Headern und Cookies wählen können, wenn eine bestimmte Bedingung erfüllt ist, statt die gesamte Anforderung auszuschließen.
 
-Gelegentlich gibt es Fälle, in denen bestimmte Parameter auf eine möglicherweise nicht intuitive Weise an die WAF übergeben werden. Es gibt beispielsweise ein Token, das übergeben wird, wenn die Authentifizierung mithilfe von Azure Active Directory erfolgt. Dieses Token, *__RequestVerificationToken*, wird normalerweise als ein Anforderungscookie übergeben. In einigen Fällen jedoch, in denen Cookies deaktiviert sind, wird dieses Token auch als ein Anforderungsattribut oder Argument übergeben. In diesem Fall müssen Sie sicherstellen, dass *__RequestVerificationToken* auch als ein **Anforderungsattributname** zur Ausschlussliste hinzugefügt wird.
+Gelegentlich gibt es Fälle, in denen bestimmte Parameter auf eine möglicherweise nicht intuitive Weise an die WAF übergeben werden. Es gibt beispielsweise ein Token, das übergeben wird, wenn die Authentifizierung mithilfe von Azure Active Directory erfolgt. Dieses Token, *__RequestVerificationToken* , wird normalerweise als ein Anforderungscookie übergeben. In einigen Fällen jedoch, in denen Cookies deaktiviert sind, wird dieses Token auch als ein Anforderungsattribut oder Argument übergeben. In diesem Fall müssen Sie sicherstellen, dass *__RequestVerificationToken* auch als ein **Anforderungsattributname** zur Ausschlussliste hinzugefügt wird.
 
 ![Ausschlüsse](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-In diesem Beispiel möchten Sie den **Anforderungsattributnamen** ausschließen, der *text1* entspricht. Dies ist offensichtlich, da Sie den Attributnamen in den Firewallprotokollen sehen können: **data: Matched Data: 1=1 found within ARGS:text1: 1=1**. Das Attribut ist **text1**. Einige andere Möglichkeiten zum Auffinden dieses Attributnamens finden Sie unter [Suchen von Anforderungsattributnamen](#finding-request-attribute-names).
+In diesem Beispiel möchten Sie den **Anforderungsattributnamen** ausschließen, der *text1* entspricht. Dies ist offensichtlich, da Sie den Attributnamen in den Firewallprotokollen sehen können: **data: Matched Data: 1=1 found within ARGS:text1: 1=1** . Das Attribut ist **text1** . Einige andere Möglichkeiten zum Auffinden dieses Attributnamens finden Sie unter [Suchen von Anforderungsattributnamen](#finding-request-attribute-names).
 
 ![WAF-Ausschlusslisten](../media/web-application-firewall-troubleshoot/waf-config.png)
 
@@ -174,7 +174,7 @@ Mithilfe von [Fiddler](https://www.telerik.com/fiddler) überprüfen Sie einzeln
 
 In diesem Beispiel können Sie sehen, dass das Feld, in dem die Zeichenfolge *1=1* eingegeben wurde, den Namen **text1** hat.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="Screenshot des Progress Telerik Fiddler-Webdebuggers. Auf der Registerkarte „Raw“ wird „1 = 1“ hinter dem Namen „text1“ angezeigt." border="false":::
 
 Dies ist ein Feld, das Sie ausschließen können. Weitere Informationen zu Ausschlusslisten finden Sie unter [WAF-Anforderungsgrößenlimits und Ausschlusslisten](application-gateway-waf-configuration.md#waf-exclusion-lists). Sie können die Auswertung in diesem Fall ausschließen, indem Sie den folgenden Ausschluss konfigurieren:
 
@@ -293,13 +293,13 @@ Aufgrund Ihrer Kenntnisse über die Funktionsweise der CRS-Regelsätze und da Ih
 
 Der erste Eintrag wird protokolliert, da der Benutzer eine numerische IP-Adresse für das Navigieren zu Application Gateway verwendet hat, was in diesem Fall ignoriert werden kann.
 
-Der zweite Eintrag (Regel 942130) ist der interessante. Wie Sie in den Details sehen können, stimmt er mit einem Muster (1=1) überein, und das Feld hat den Namen **text1**. Führen Sie dieselben Schritte wie zuvor aus, um den **Anforderungsattributnamen** **gleich** **1=1** auszuschließen.
+Der zweite Eintrag (Regel 942130) ist der interessante. Wie Sie in den Details sehen können, stimmt er mit einem Muster (1=1) überein, und das Feld hat den Namen **text1** . Führen Sie dieselben Schritte wie zuvor aus, um den **Anforderungsattributnamen** **gleich** **1=1** auszuschließen.
 
 ## <a name="finding-request-header-names"></a>Suchen von Anforderungsheadernamen
 
-Fiddler erweist sich auch beim Suchen nach Anforderungsheadernamen als ein nützliches Tool. Im folgenden Screenshot sehen Sie die Header für diese GET-Anforderung, darunter *Content-Type*, *User-Agent* usw.
+Fiddler erweist sich auch beim Suchen nach Anforderungsheadernamen als ein nützliches Tool. Im folgenden Screenshot sehen Sie die Header für diese GET-Anforderung, darunter *Content-Type* , *User-Agent* usw.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Screenshot des Progress Telerik Fiddler-Webdebuggers. Auf der Registerkarte „Raw“ werden Details zum Anforderungsheader wie „Connection“, „Content-Type“ und „User-Agent“ angezeigt." border="false":::
 
 Eine weitere Möglichkeit zum Anzeigen von Anforderungs- und Antwortheadern sind in den Entwicklertools von Chrome enthalten. Drücken Sie F12, oder klicken Sie mit der rechten Maustaste, und wählen Sie **Überprüfen** -> **Entwicklertools** und anschließend die Registerkarte **Netzwerk** aus. Laden Sie eine Webseite, und klicken Sie auf die Anforderung, die Sie untersuchen möchten.
 

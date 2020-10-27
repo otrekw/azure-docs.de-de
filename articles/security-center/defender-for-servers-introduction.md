@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448291"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275247"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Einführung in Azure Defender für Server
 
@@ -20,18 +20,25 @@ Azure Defender für Server stattet Ihre Windows- und Linux-Computer mit Bedrohun
 
 Unter Windows wird Azure Defender zur Überwachung und zum Schutz Ihrer Windows-basierten Computer in Azure-Dienste integriert. In Security Center werden die Warnungen und Behandlungsvorschläge aus allen diesen Diensten in einem benutzerfreundlichen Format präsentiert.
 
-Unter Linux sammelt Azure Defender Überwachungsdatensätze von Linux-Computern mithilfe von **auditd**, einem der am häufigsten verwendeten Linux-Überwachungsframeworks. auditd befindet sich im Mainline-Kernel. 
+Unter Linux sammelt Azure Defender Überwachungsdatensätze von Linux-Computern mithilfe von **auditd** , einem der am häufigsten verwendeten Linux-Überwachungsframeworks. auditd befindet sich im Mainline-Kernel. 
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-servers"></a>Welche Vorteile bietet die Nutzung von Azure Defender für Server?
 
 Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Server gehören:
 
+- **Integrierte Lizenz für Microsoft Defender für Endpunkt (nur Windows)** : Azure Defender für Server enthält [Microsoft Defender für Endpunkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung. [Weitere Informationen](security-center-wdatp.md)
+
+    Wenn Defender für Endpunkt eine Bedrohung erkennt, wird eine Warnung ausgelöst. Die Warnung wird in Security Center angezeigt. Über Security Center können Sie auch zur Defender für Endpunkt-Konsole wechseln und eine ausführliche Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Erfahren Sie mehr zu Microsoft Defender für Endpunkt.
+
+    > [!IMPORTANT]
+    > Der **Microsoft Defender für Endpunkt** -Sensor wird automatisch auf Windows-Servern aktiviert, für die Security Center verwendet wird.
+
 - **Überprüfung auf Sicherheitsrisiken für VMs:** Die in Azure Security Center enthaltene Überprüfung auf Sicherheitsrisiken basiert auf Qualys. 
 
     Der Scanner von Qualys ist eines der führenden Tools für die Echtzeiterkennung von Sicherheitsrisiken auf Ihren virtuellen Azure-Computern. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. [Weitere Informationen](deploy-vulnerability-assessment-vm.md)
 
-- **Just-In-Time-Zugriff (JIT) auf VMs:** Bedrohungsakteure suchen aktiv nach zugänglichen Computern mit offenen Verwaltungsports wie RDP oder SSH. Alle Ihre virtuellen Computer sind potenzielle Ziele für Angriffe. Wenn eine VM erfolgreich kompromittiert wurde, wird sie als Einstiegspunkt verwendet, um weitere Ressourcen in Ihrer Umgebung anzugreifen.
+- **Just-In-Time-Zugriff (JIT) auf virtuellen Computer (VM):** Bedrohungsakteure suchen aktiv nach zugänglichen Computern mit offenen Verwaltungsports, z. B. für RDP oder SSH. Alle Ihre virtuellen Computer sind potenzielle Ziele für Angriffe. Wenn eine VM erfolgreich kompromittiert wurde, wird sie als Einstiegspunkt verwendet, um weitere Ressourcen in Ihrer Umgebung anzugreifen.
 
     Wenn Sie Azure Defender für Server aktivieren, können Sie Just-In-Time-VM-Zugriff verwenden, um eingehenden Datenverkehr auf Ihren VMs zu blockieren und dadurch die Gefährdung durch Angriffe zu verringern und bei Bedarf einen einfachen Zugriff für das Verbinden mit VMs bereitzustellen. [Weitere Informationen](just-in-time-explained.md)
 
@@ -46,13 +53,6 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
 - **Adaptive Netzwerkhärtung (ANH):** Der Einsatz von Netzwerksicherheitsgruppen (NSGs) zum Filtern von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
 
     Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen. [Weitere Informationen](security-center-adaptive-network-hardening.md)
-
-- **Integration in Microsoft Defender Advanced Threat Protection (ATP) (nur Windows):** Azure Defender ist in Microsoft Defender Advanced Threat Protection (ATP) integriert. Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung. [Weitere Informationen](security-center-wdatp.md)
-
-    > [!IMPORTANT]
-    > Der Microsoft Defender ATP-Sensor wird automatisch auf Windows-Servern aktiviert, die Security Center verwenden.
-
-    Wenn von Microsoft Defender ATP eine Bedrohung erkannt wird, wird eine Warnung ausgelöst. Die Warnung wird in Security Center angezeigt. Über Security Center können Sie zur Microsoft Defender ATP-Konsole wechseln und eine ausführliche Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Weitere Informationen zu Microsoft Defender ATP finden Sie unter [Integrieren von Servern in den Microsoft Defender ATP-Dienst](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 - **Docker-Hosthärtung:** Azure Security Center identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern gehostet werden, auf denen Docker-Container ausgeführt werden. Security Center bewertet kontinuierlich die Konfigurationen dieser Container. Anschließend werden sie mit dem Docker-Benchmark von Center for Internet Security (CIS) verglichen. Security Center umfasst den gesamten Regelsatz des CIS-Docker-Benchmark und benachrichtigt Sie, sobald Ihre Container eine der Steuerungen nicht erfüllen. [Weitere Informationen](harden-docker-hosts.md)
 

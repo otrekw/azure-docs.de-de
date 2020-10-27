@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von API-Connectors zu Benutzerflows
+title: Hinzufügen von API-Connectors zu Benutzerflows (Vorschauversion)
 description: Konfigurieren Sie einen API-Connector, der in einem Benutzerflow verwendet werden soll.
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854357"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102271"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung (Vorschauversion)
 
 Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie zunächst den API-Connector und aktivieren ihn anschließend in einem Benutzerflow.
 
@@ -29,17 +29,17 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 
    ![Hinzufügen eines neuen API-Connectors](./media/add-api-connector/api-connector-new.png)
 
-5. Geben Sie einen Anzeigenamen für den Aufruf an, beispielsweise **Benutzerinformationen überprüfen**.
+5. Geben Sie einen Anzeigenamen für den Aufruf an, beispielsweise **Benutzerinformationen überprüfen** .
 6. Geben Sie die **Endpunkt-URL** für den API-Aufruf an.
 7. Geben Sie die Authentifizierungsinformationen für die API an.
 
-   - Derzeit wird nur die Standardauthentifizierung unterstützt. Wenn Sie eine API ohne Standardauthentifizierung für Entwicklungszwecke verwenden möchten, geben Sie einfach Dummywerte für **Benutzername** und **Kennwort** ein, die in der API ignoriert werden können. Zur Verwendung mit einer Azure-Funktion mit einem API-Schlüssel können Sie den Code als Abfrageparameter in der **Endpunkt-URL** einfügen (z. B. https[]()://contoso.azurewebsites.net/api/endpoint<b>?code=0123456789</b>).
+   - Derzeit wird nur die Standardauthentifizierung unterstützt. Wenn Sie eine API ohne Standardauthentifizierung für Entwicklungszwecke verwenden möchten, geben Sie einfach Dummywerte für **Benutzername** und **Kennwort** ein, die in der API ignoriert werden können. Zur Verwendung mit einer Azure-Funktion mit einem API-Schlüssel können Sie den Code als Abfrageparameter in der **Endpunkt-URL** einfügen (z. B. https []()://contoso.azurewebsites.net/api/endpoint <b>?code=0123456789</b>).
 
    ![Konfigurieren eines neuen API-Connectors](./media/add-api-connector/api-connector-config.png)
 8. Wählen Sie **Speichern** aus.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
-Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
+Ein API-Connector wird als **HTTP POST** -Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
 
 **Beispielanforderung**
 ```http
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-Nur Benutzereigenschaften und benutzerdefinierte Attribute, die unter**Azure AD B2C** > **Benutzerattribute** aufgeführt sind, können in der Anforderung gesendet werden.
+Nur Benutzereigenschaften und benutzerdefinierte Attribute, die unter **Azure AD B2C** > **Benutzerattribute** aufgeführt sind, können in der Anforderung gesendet werden.
 
 Benutzerdefinierte Attribute sind im Verzeichnis im Format **extension_\<extensions-app-id>_CustomAttribute** vorhanden. Die API sollte den Empfang von Ansprüchen in diesem serialisierten Format erwarten. Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
 
@@ -80,7 +80,7 @@ Außerdem wird der Anspruch **Gebietsschema der Benutzeroberfläche („ui_local
 > Wenn ein Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keinen Wert enthält, wird der Anspruch nicht an die API gesendet. Ihre API sollte so entworfen sein, dass explizit geprüft wird, ob ein Anspruch in der Anforderung enthalten ist. Fehlt der Anspruch, sollte eine entsprechende Verarbeitung erfolgen.
 
 > [!TIP] 
-> Mit den Ansprüchen [**Identitäten („identities“)** ](https://docs.microsoft.com/graph/api/resources/objectidentity) und **E-Mail-Adresse („email“)** kann Ihre API einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. Der Anspruch „identities“ wird gesendet, wenn sich ein Benutzer mit einem Identitätsanbieter (z. B. Google oder Facebook) authentifiziert. Der Anspruch „email“ wird immer gesendet.
+> Mit den Ansprüchen [**Identitäten („identities“)**](https://docs.microsoft.com/graph/api/resources/objectidentity) und **E-Mail-Adresse („email“)** kann Ihre API einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. Der Anspruch „identities“ wird gesendet, wenn sich ein Benutzer mit einem Identitätsanbieter (z. B. Google oder Facebook) authentifiziert. Der Anspruch „email“ wird immer gesendet.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Aktivieren des API-Connectors in einem Benutzerflow
 
@@ -238,8 +238,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | Ja      | Die Version der API.                                                                                                                                                                                                                                                                |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Werte können im Verzeichnis gespeichert werden, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Werte können im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der zurückgegebene Anspruch muss `_<extensions-app-id>_` nicht enthalten. Werte werden im Verzeichnis gespeichert, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Benutzerdefinierte Attribute können im Token nicht zurückgesendet werden. |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Diese können auch im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der Anspruch muss `_<extensions-app-id>_` nicht enthalten. Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Diese können auch im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.  |
 
 ### <a name="example-of-a-blocking-response"></a>Beispiel für eine Blockierungsantwort
 
@@ -267,6 +267,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Beispiel für eine Validierungsfehlerantwort
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -285,6 +287,8 @@ Content-type: application/json
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |
 | status      | Integer | Ja      | Für eine Validierungsfehlerantwort muss der Wert `400` sein.                        |
 | userMessage | String  | Ja      | Meldung, die für den Benutzer angezeigt wird.                                            |
+
+*Hinweis:* Der HTTP-Statuscode muss „400“ lauten, und der Antworttext muss den Wert „status“ enthalten.
 
 **Anzeige einer Validierungsfehlerantwort für den Endbenutzer**
 

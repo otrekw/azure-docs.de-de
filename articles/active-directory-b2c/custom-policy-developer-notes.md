@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852033"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214905"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -66,7 +66,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | Funktion | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-Autorisierungscode](authorization-code-flow.md) |  |  | X |  |
-| OAuth2-Autorisierungscode mit PKCE |  |  | X | Nur mobile Anwendungen  |
+| OAuth2-Autorisierungscode mit PKCE |  |  | X | [Öffentliche Clients und Single-Page-Webanwendungen](authorization-code-flow.md)  |
 | [Impliziter OAuth2-Fluss](implicit-flow-single-page-application.md) |  |  | X |  |
 | [Kennwortanmeldeinformationen von Ressourcenbesitzern mittels OAuth2](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |

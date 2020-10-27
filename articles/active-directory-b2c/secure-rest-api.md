@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385330"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089535"
 ---
 # <a name="secure-your-restful-services"></a>Schützen Ihrer RESTful-Dienste 
 
@@ -45,7 +45,7 @@ Um ein technisches REST-API-Profil mit HTTP-Standardauthentifizierung zu konfigu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C** , und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
 1. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus.
@@ -53,15 +53,15 @@ Um ein technisches REST-API-Profil mit HTTP-Standardauthentifizierung zu konfigu
     Das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt.
 1. Geben Sie im Feld **Geheimnis** den REST-API-Benutzernamen ein.
 1. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 1. Wählen Sie erneut **Richtlinienschlüssel** aus.
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Hinzufügen** .
 1. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus.
 1. Geben Sie im Feld **Name** die Zeichenfolge **RestApiPassword** ein.
     Das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt.
 1. Geben Sie im Feld **Geheimnis** das REST-API-Kennwort ein.
 1. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>Konfigurieren Ihres technischen REST-API-Profils für die Verwendung der HTTP-Standardauthentifizierung
 
@@ -70,7 +70,7 @@ Konfigurieren Sie nach dem Erstellen der erforderlichen Schlüssel die Metadaten
 1. Öffnen Sie in Ihrem Arbeitsverzeichnis die Erweiterungsrichtliniendatei („TrustFrameworkExtensions.xml“).
 1. Suchen Sie das technische REST-API-Profil. Beispiel: `REST-ValidateProfile` oder `REST-GetProfile`.
 1. Suchen Sie das `<Metadata>`-Element.
-1. Ändern Sie den Authentifizierungstyp (*AuthenticationType*) in `Basic`.
+1. Ändern Sie den Authentifizierungstyp ( *AuthenticationType* ) in `Basic`.
 1. Ändern Sie den Wert von *AllowInsecureAuthInProduction* in `false`.
 1. Fügen Sie den folgenden XML-Codeausschnitt unmittelbar hinter dem schließenden `</Metadata>`-Element hinzu:
     ```xml
@@ -124,17 +124,17 @@ Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie in Nicht-Produkt
         -NotAfter (Get-Date).AddMonths(12) `
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```    
-1. Öffnen Sie **Benutzerzertifikate verwalten** > **Aktueller Benutzer** > **Persönlich** > **Zertifikate** > *NameIhrerApp.IhrMandant.onmicrosoft.com*.
+1. Öffnen Sie **Benutzerzertifikate verwalten** > **Aktueller Benutzer** > **Persönlich** > **Zertifikate** > *NameIhrerApp.IhrMandant.onmicrosoft.com* .
 1. Wählen Sie das Zertifikat und dann **Aktion** > **Alle Aufgaben** > **Exportieren** aus.
 1. Wählen Sie **Ja** > **Weiter** > **Ja, privaten Schlüssel exportieren** > **Weiter** aus.
-1. Übernehmen Sie die Standardeinstellungen für **Format der zu exportierenden Datei**.
+1. Übernehmen Sie die Standardeinstellungen für **Format der zu exportierenden Datei** .
 1. Geben Sie ein Kennwort für das Zertifikat an.
 
 ### <a name="add-a-client-certificate-policy-key"></a>Hinzufügen eines Richtlinienschlüssels für das Clientzertifikat
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C** , und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
 1. Wählen Sie im Feld **Optionen** die Option **Upload** aus.
@@ -142,7 +142,7 @@ Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie in Nicht-Produkt
     Das Präfix *B2C_1A_* wird automatisch hinzugefügt.
 1. Wählen Sie im Feld **Dateiupload** die PFX-Datei Ihres Zertifikats mit dem privaten Schlüssel aus.
 1. Geben Sie im Feld **Kennwort** das Kennwort des Zertifikats ein.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>Konfigurieren Ihres technischen REST-API-Profils für die Verwendung der Clientzertifikatauthentifizierung
 
@@ -151,7 +151,7 @@ Konfigurieren Sie nach dem Erstellen des erforderlichen Schlüssels die Metadate
 1. Öffnen Sie in Ihrem Arbeitsverzeichnis die Erweiterungsrichtliniendatei („TrustFrameworkExtensions.xml“).
 1. Suchen Sie das technische REST-API-Profil. Beispiel: `REST-ValidateProfile` oder `REST-GetProfile`.
 1. Suchen Sie das `<Metadata>`-Element.
-1. Ändern Sie den Authentifizierungstyp (*AuthenticationType*) in `ClientCertificate`.
+1. Ändern Sie den Authentifizierungstyp ( *AuthenticationType* ) in `ClientCertificate`.
 1. Ändern Sie den Wert von *AllowInsecureAuthInProduction* in `false`.
 1. Fügen Sie den folgenden XML-Codeausschnitt unmittelbar hinter dem schließenden `</Metadata>`-Element hinzu:
     ```xml
@@ -196,8 +196,8 @@ Authorization: Bearer <token>
 
 Ein Bearertoken ist eine nicht transparente Zeichenfolge. Dabei kann es sich um ein JWT-Zugriffstoken oder eine beliebige Zeichenfolge handeln, von dem/der die REST-API erwartet, dass es/sie von Azure AD B2C im Autorisierungsheader gesendet wird. Azure AD B2C unterstützt die folgenden Typen:
 
-- **Bearertoken**. Damit das Bearertoken im technischen RESTful-Profil gesendet werden kann, muss Ihre Richtlinie das Bearertoken zuerst abrufen und dann im technischen RESTful-Profil verwenden.  
-- **Statisches Bearertoken**. Verwenden Sie diesen Ansatz, wenn Ihre REST-API ein langfristiges Zugriffstoken ausgibt. Wenn Sie ein statisches Bearertoken verwenden möchten, müssen Sie einen Richtlinienschlüssel und dann einen Verweis vom technischen RESTful-Profil auf Ihren Richtlinienschlüssel erstellen. 
+- **Bearertoken** . Damit das Bearertoken im technischen RESTful-Profil gesendet werden kann, muss Ihre Richtlinie das Bearertoken zuerst abrufen und dann im technischen RESTful-Profil verwenden.  
+- **Statisches Bearertoken** . Verwenden Sie diesen Ansatz, wenn Ihre REST-API ein langfristiges Zugriffstoken ausgibt. Wenn Sie ein statisches Bearertoken verwenden möchten, müssen Sie einen Richtlinienschlüssel und dann einen Verweis vom technischen RESTful-Profil auf Ihren Richtlinienschlüssel erstellen. 
 
 
 ## <a name="using-oauth2-bearer"></a>Verwenden eines OAuth2-Bearertokens  
@@ -267,11 +267,11 @@ Um die Bearertokenauthentifizierung in Ihrer benutzerdefinierten Richtlinie zu u
 1. Öffnen Sie die Erweiterungsrichtliniendatei *TrustFrameworkExtensions.xml* in Ihrem Arbeitsverzeichnis.
 1. Suchen Sie den `<TechnicalProfile>`-Knoten, der `Id="REST-API-SignUp"` enthält.
 1. Suchen Sie das `<Metadata>`-Element.
-1. Ändern Sie den Authentifizierungstyp (*AuthenticationType*) wie folgt in *Bearer*:
+1. Ändern Sie den Authentifizierungstyp ( *AuthenticationType* ) wie folgt in *Bearer* :
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. Ändern Sie das Element *UseClaimAsBearerToken* in *bearerToken*, oder fügen Sie es wie folgt hinzu. *bearerToken* ist der Name des Anspruchs, von dem das Bearertoken abgerufen wird (der Ausgabeanspruch von `SecureREST-AccessToken`).
+1. Ändern Sie das Element *UseClaimAsBearerToken* in *bearerToken* , oder fügen Sie es wie folgt hinzu. *bearerToken* ist der Name des Anspruchs, von dem das Bearertoken abgerufen wird (der Ausgabeanspruch von `SecureREST-AccessToken`).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
@@ -312,18 +312,18 @@ Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte Ihr technisches
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>Hinzufügen des Richtlinienschlüssels für das OAuth2-Bearertoken
 
-Erstellen Sie einen Richtlinienschlüssel zum Speichern des Bearertokenwerts.
+Rufen Sie zum Konfigurieren eines technischen REST-API-Profils mit einem OAuth2-Bearertoken ein Zugriffstoken vom REST-API-Besitzer ab. Erstellen Sie dann den folgenden kryptografischen Schlüssel zum Speichern des Bearertokens.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C** , und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
 1. Klicken Sie unter **Optionen** auf `Manual`.
 1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `RestApiBearerToken`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
 1. Geben Sie im Feld **Geheimnis** den geheimen Clientschlüssel ein, den Sie zuvor notiert haben.
 1. Wählen Sie für **Schlüsselverwendung** die Option `Encryption` aus.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Konfigurieren Ihres technischen REST-API-Profils für die Verwendung des Bearertoken-Richtlinienschlüssels
 
@@ -332,7 +332,7 @@ Konfigurieren Sie nach dem Erstellen des erforderlichen Schlüssels die Metadate
 1. Öffnen Sie in Ihrem Arbeitsverzeichnis die Erweiterungsrichtliniendatei („TrustFrameworkExtensions.xml“).
 1. Suchen Sie das technische REST-API-Profil. Beispiel: `REST-ValidateProfile` oder `REST-GetProfile`.
 1. Suchen Sie das `<Metadata>`-Element.
-1. Ändern Sie den Authentifizierungstyp (*AuthenticationType*) in `Bearer`.
+1. Ändern Sie den Authentifizierungstyp ( *AuthenticationType* ) in `Bearer`.
 1. Ändern Sie den Wert von *AllowInsecureAuthInProduction* in `false`.
 1. Fügen Sie den folgenden XML-Codeausschnitt unmittelbar hinter dem schließenden `</Metadata>`-Element hinzu:
     ```xml

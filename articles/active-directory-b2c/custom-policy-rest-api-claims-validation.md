@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/26/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388917"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089518"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey zum Überprüfen der Benutzereingabe
 
@@ -93,9 +93,9 @@ Ein Anspruch bietet eine temporäre Speicherung von Daten während der Ausführu
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Konfigurieren des technischen Profils für die RESTful-API 
+## <a name="add-the-restful-api-technical-profile"></a>Hinzufügen des technischen Profils für die RESTful-API 
 
-Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstützung bei der Anbindung an Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer `InputClaims`-Sammlung und erhält Daten in einer `OutputClaims`-Sammlung zurück. Suchen Sie das Element **ClaimsProviders**, und fügen Sie wie folgt einen neuen Anspruchsanbieter hinzu:
+Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstützung bei der Anbindung an Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer `InputClaims`-Sammlung und erhält Daten in einer `OutputClaims`-Sammlung zurück. Suchen Sie das Element **ClaimsProviders** , und fügen Sie wie folgt einen neuen Anspruchsanbieter hinzu:
 
 ```xml
 <ClaimsProvider>
@@ -105,6 +105,7 @@ Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstüt
       <DisplayName>Check loyaltyId Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/ValidateProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -130,6 +131,17 @@ Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstüt
 
 In diesem Beispiel wird `userLanguage` als `lang` innerhalb der JSON-Nutzlast an den REST-Dienst gesendet. Der Wert des Anspruchs `userLanguage` enthält die ID der aktuellen Benutzersprache. Weitere Informationen finden Sie unter [Anspruchskonfliktlöser](claim-resolver-overview.md).
 
+### <a name="configure-the-restful-api-technical-profile"></a>Konfigurieren des technischen Profils für die RESTful-API 
+
+Nachdem Sie Ihre REST-API bereitgestellt haben, legen Sie die Metadaten des technischen Profils `REST-ValidateProfile` so fest, dass sie Ihre eigene REST-API wiedergeben, darunter:
+
+- **ServiceUrl** . Legt die URL des REST-API-Endpunkts fest.
+- **SendClaimsIn** . Gibt an, wie die Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden.
+- **AuthenticationType** . Legt den Typ der Authentifizierung fest, die vom RESTful-Anspruchsanbieter ausgeführt wird. 
+- **AllowInsecureAuthInProduction** . Sorgen Sie in einer Produktionsumgebung dafür, dass diese Metadaten auf `true` festgelegt werden.
+    
+Weitere Konfigurationen finden Sie in den [Metadaten für das technische RESTful-Profil](restful-technical-profile.md#metadata).
+
 Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Informationen zum Schützen Ihrer RESTful-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs](secure-rest-api.md).
 
 ## <a name="validate-the-user-input"></a>Überprüfen der Benutzereingaben
@@ -138,7 +150,7 @@ Um die Treuebonusnummer des Benutzers bei der Registrierung abzurufen, müssen S
 
 Fügen Sie den Verweis auf das technische Überprüfungsprofil dem technischen Profil für die Registrierung hinzu, das `REST-ValidateProfile` aufruft. Das neue technische Überprüfungsprofil wird der in der Basisrichtlinie definierten Sammlung `<ValidationTechnicalProfiles>` oben hinzugefügt. Dieses Verhalten bedeutet, dass Azure AD B2C erst nach erfolgreicher Überprüfung mit der Erstellung des Kontos im Verzeichnis fortfahren kann.   
 
-1. Suchen Sie nach dem Element **ClaimsProviders**. Fügen Sie einen neuen Anspruchsanbieter wie folgt hinzu:
+1. Suchen Sie nach dem Element **ClaimsProviders** . Fügen Sie einen neuen Anspruchsanbieter wie folgt hinzu:
 
     ```xml
     <ClaimsProvider>
@@ -219,14 +231,14 @@ Um den Anspruch „Aktionscode“ an die Anwendung der vertrauenden Seite zurüc
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
-1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste** , suchen Sie nach **App-Registrierungen** , und wählen Sie dann diese Option aus.
 1. Wählen Sie **Framework für die Identitätsfunktion** aus.
-1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die geänderten Richtliniendateien hoch: *TrustFrameworkExtensions.xml*, und *SignUpOrSignin.xml*. 
-1. Wählen Sie die hochgeladene Registrierungs- oder Anmelderichtlinie aus, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
+1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die geänderten Richtliniendateien hoch: *TrustFrameworkExtensions.xml* , und *SignUpOrSignin.xml* . 
+1. Wählen Sie die hochgeladene Registrierungs- oder Anmelderichtlinie aus, und klicken Sie auf die Schaltfläche **Jetzt ausführen** .
 1. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
-1. Klicken Sie auf den Link **Jetzt registrieren**.
-1. Geben Sie 1234 in **Ihre Treuebonus-ID** ein, und klicken Sie auf **Weiter**. An dieser Stelle sollten Sie eine Prüfungsfehlermeldung erhalten.
-1. Ändern Sie den Wert, und klicken Sie auf **Weiter**.
+1. Klicken Sie auf den Link **Jetzt registrieren** .
+1. Geben Sie 1234 in **Ihre Treuebonus-ID** ein, und klicken Sie auf **Weiter** . An dieser Stelle sollten Sie eine Prüfungsfehlermeldung erhalten.
+1. Ändern Sie den Wert, und klicken Sie auf **Weiter** .
 1. Das Token, das an die Anwendung zurückgesendet wird, enthält den Anspruch `promoCode`.
 
 ```json

@@ -1,41 +1,29 @@
 ---
 title: Azure Deutschland im Überblick | Microsoft-Dokumentation
 description: Dieser Artikel enthält einen Überblick über Azure Deutschland-Cloudfunktionen, den vertrauenswürdigen Aufbau und die Sicherheitsmerkmale, die die Complianceanforderungen deutscher Datenschutzrichtlinien unterstützen.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/12/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 62e4e12097bbf705bb83ea90cc728105503e6188
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 39f41fe4b5d44c7e21a9d1a0fcd5fe265dee990d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675309"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127055"
 ---
 # <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="overview"></a>Übersicht
 Microsoft Azure Deutschland bietet eine Cloudplattform, die auf den [grundlegenden Prinzipien von Sicherheit, Datenschutz, Compliance und Transparenz](https://azure.microsoft.com/overview/clouds/germany/) beruht. Azure Deutschland ist eine physisch isolierte Instanz von Microsoft Azure. Es basiert auf Sicherheits- und [Compliancediensten](https://azure.microsoft.com/support/trust-center/compliance/), die für alle auf dieser Architektur beruhenden Systeme und Anwendungen hinsichtlich deutscher Datenschutzbestimmungen von entscheidender Bedeutung sind. Azure Deutschland wird von einem Datentreuhänder überwacht und unterstützt verschiedene Hybridszenarien für die Erstellung und Bereitstellung von Lösungen lokal oder in der Cloud. Sie können auch die sofortige Skalierbarkeit und garantierte Verfügbarkeit eines überaus skalierbaren Clouddiensts nutzen.
 
 Es bietet Datenhoheit bei der Übertragung und Speicherung in Deutschland und gewährleistet die Geschäftskontinuität per Datenreplikation zwischen deutschen Rechenzentren. Kundendaten in beiden Rechenzentren werden unter der Kontrolle eines Datentreuhänders, T-Systems International, verwaltet. Bei diesem Treuhänder handelt es sich um ein unabhängiges deutsches Unternehmen, eine Tochtergesellschaft der Deutschen Telekom. Dieser sorgt für eine umfassendere Kontrolle über Kundendaten, da der Zugriff nur mit der Zustimmung des Kunden oder des Datentreuhänders gewährt wird.
 
-Die kommerziellen Clouddienste von Microsoft in diesen neuen Rechenzentren erfüllen die deutschen Gesetze zur Datenverarbeitung und bieten Kunden eine größere Auswahl an Möglichkeiten, wie und wo die Daten verarbeitet werden.
+Die kommerziellen Clouddienste von Microsoft in diesen Rechenzentren erfüllen die deutschen Gesetze zur Datenverarbeitung und bieten Kunden eine größere Auswahl an Möglichkeiten, wie und wo die Daten verarbeitet werden.
 
 Azure Deutschland umfasst die Hauptkomponenten von Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS) und Software-as-a-Service (SaaS). Zu diesen Komponenten gehören Infrastruktur, Netzwerk, Speicher, Datenverwaltung, Identitätsverwaltung und viele andere Dienste.
 
@@ -60,7 +48,7 @@ Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azu
 
 Wenn Sie mehr über Azure Deutschland erfahren möchten, verwenden Sie die folgenden Links:
 
-* [Registrieren für eine Testversion](https://azure.microsoft.com/free/germany/)
+* [Registrieren Sie sich für eine Testversion](https://azure.microsoft.com/free/germany/)
 * [Anmelden](https://portal.microsoftazure.de/) (wenn Sie bereits ein Azure Deutschland-Konto besitzen)
 * [Erwerben von und Zugreifen auf Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/) 
 

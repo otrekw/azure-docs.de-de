@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89084f0631b52631708db68a11595cb24d1b9fee
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690118"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131444"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
@@ -38,7 +38,7 @@ Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastu
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Bestimmen, ob erweiterte Metriken aktiviert sind
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Wählen Sie unter **Virtuelle Computer** eine VM aus, und klicken Sie unter **Überwachung** auf **Metriken**. Eine Liste der verfügbaren Metriken wird angezeigt.
+2. Wählen Sie unter **Virtuelle Computer** eine VM aus, und klicken Sie unter **Überwachung** auf **Metriken** . Eine Liste der verfügbaren Metriken wird angezeigt.
 3. Wählen Sie einige Metriken aus, und die Daten für diese Metriken werden in einem Diagramm angezeigt.  
     ![Beispielmetrik: CPU-Auslastung in Prozent für den Host](./media/azure-vm-extended-metrics/metric01.png)
 
@@ -46,17 +46,17 @@ Im vorangehenden Beispiel steht ein eingeschränkter Satz mit Standardmetriken f
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Aktivieren erweiterter Metriken im Azure-Portal
 
-Die Standardmetriken sind Metriken zum Hostcomputer. Ein Beispiel ist die Metrik _CPU in Prozent_. Darüber hinaus stehen grundlegende Metriken für Gast-VMs zur Verfügung, diese werden auch als erweiterte Metriken bezeichnet. Beispiele für erweiterte Metriken: _\Memory\Zugesicherte verwendete Bytes (\%)_ und _\Memory\Verfügbare Bytes_.
+Die Standardmetriken sind Metriken zum Hostcomputer. Ein Beispiel ist die Metrik _CPU in Prozent_ . Darüber hinaus stehen grundlegende Metriken für Gast-VMs zur Verfügung, diese werden auch als erweiterte Metriken bezeichnet. Beispiele für erweiterte Metriken: _\Memory\Zugesicherte verwendete Bytes (\%)_ und _\Memory\Verfügbare Bytes_ .
 
 Das Aktivieren der erweiterten Metriken ist einfach. Aktivieren Sie für jede VM die Überwachung auf Gastebene. Wenn Sie die Überwachung auf Gastebene aktivieren, wird der Azure-Diagnose-Agent auf der VM installiert. Standardmäßig wird ein grundlegender Satz von erweiterten Metriken hinzugefügt. Das folgende Verfahren ist für klassische und reguläre VMs sowie für Windows- und Linux-VMs identisch.
 
-Denken Sie daran, dass Überwachung auf Gastebene sowohl bei Azure als auch bei Linux ein Speicherkonto erfordert. Wenn Sie Überwachung auf Gastebene aktivieren und kein vorhandenes Speicherkonto auswählen, wird eins für Sie erstellt.
+Beachten Sie, dass die Überwachung auf Gastebene sowohl bei Windows als auch bei Linux ein Speicherkonto erfordert. Wenn Sie Überwachung auf Gastebene aktivieren und kein vorhandenes Speicherkonto auswählen, wird eins für Sie erstellt.
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Aktivieren der Überwachung auf Gastebene für vorhandene VMs
 
 1. Zeigen Sie in **Virtuelle Computer** die Liste Ihrer VMs an, und wählen Sie eine VM aus.
 2. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
-3. Klicken Sie auf der Seite „Diagnoseeinstellungen“ auf **Überwachung auf Gastebene aktivieren**.  
+3. Klicken Sie auf der Seite „Diagnoseeinstellungen“ auf **Überwachung auf Gastebene aktivieren** .  
     ![Aktivieren der Überwachung auf Gastebene auf der Seite „Übersicht“](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Nach einigen Minuten wird der Azure-Diagnose-Agent auf der VM installiert. Ein grundlegender Satz von Metriken wird hinzugefügt. Aktualisieren Sie die Seite. Die hinzugefügten Leistungsindikatoren werden auf der Registerkarte „Übersicht“ angezeigt.
 5. Wählen Sie unter „Überwachung“ **Metriken** aus.
@@ -74,7 +74,7 @@ Weitere Informationen zum Aktivieren erweiterter Metriken für virtuelle Azure-C
 
 ## <a name="resource-manager-credentials"></a>Resource Manager-Anmeldeinformationen
 
-Nach dem Aktivieren der erweiterten Metriken müssen Sie sicherstellen, dass Cloudyn Zugriff auf Ihre [Resource Manager-Anmeldeinformationen](../../cost-management/activate-subs-accounts.md) hat. Ihre Anmeldeinformationen werden für Cloudyn benötigt, um Leistungsdaten für Ihre VMs zu erfassen und anzuzeigen. Außerdem werden die Daten verwendet, um Empfehlungen zur Kostenoptimierung zu erstellen. Cloudyn muss mindestens drei Tage lang Leistungsdaten von einer Instanz erhalten, um entscheiden zu können, ob es sich um einen Kandidaten für eine Verkleinerungsempfehlung handelt.
+Nach dem Aktivieren der erweiterten Metriken müssen Sie sicherstellen, dass Cloudyn Zugriff auf Ihre [Resource Manager-Anmeldeinformationen](./activate-subs-accounts.md) hat. Ihre Anmeldeinformationen werden für Cloudyn benötigt, um Leistungsdaten für Ihre VMs zu erfassen und anzuzeigen. Außerdem werden die Daten verwendet, um Empfehlungen zur Kostenoptimierung zu erstellen. Cloudyn muss mindestens drei Tage lang Leistungsdaten von einer Instanz erhalten, um entscheiden zu können, ob es sich um einen Kandidaten für eine Verkleinerungsempfehlung handelt.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>Aktivieren von VM-Metriken mit einem Skript
 
@@ -82,10 +82,10 @@ Sie können VM-Metriken mit Azure PowerShell-Skripts aktivieren. Wenn Sie viele 
 
 ## <a name="view-azure-performance-metrics"></a>Anzeigen von Azure-Leistungsmetriken
 
-Um Leistungsmetriken für Ihre Azure-Instanzen im Cloudyn-Portal anzuzeigen, navigieren Sie zu **Assets** > **Compute** > **Instanz-Explorer**. Erweitern Sie in der Liste der VM-Instanzen eine Instanz, und erweiterten Sie dann eine Ressource, um Details anzuzeigen.
+Um Leistungsmetriken für Ihre Azure-Instanzen im Cloudyn-Portal anzuzeigen, navigieren Sie zu **Assets** > **Compute** > **Instanz-Explorer** . Erweitern Sie in der Liste der VM-Instanzen eine Instanz, und erweiterten Sie dann eine Ressource, um Details anzuzeigen.
 
 ![Im Instanz-Explorer gezeigte Beispielinformationen](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie den Azure Resource Manager-API-Zugriff für Ihre Konten noch nicht aktiviert haben, fahren Sie mit [Aktivieren von Azure-Abonnements und -Konten](../../cost-management/activate-subs-accounts.md) fort.
+- Wenn Sie den Azure Resource Manager-API-Zugriff für Ihre Konten noch nicht aktiviert haben, fahren Sie mit [Aktivieren von Azure-Abonnements und -Konten](./activate-subs-accounts.md) fort.

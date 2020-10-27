@@ -1,36 +1,24 @@
 ---
 title: Azure Deutschland – Verfügbare Dienste | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Übersicht über die verfügbaren Dienste in Azure Deutschland.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: chsieg
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/12/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: d0c8295f0755b174251dfd2686a24cbdaf9d500f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: ed2d61ab66a872f17e2f95fd81d3a32dcbd8c707
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442812"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124196"
 ---
 # <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
-Azure Deutschland aktualisiert und erweitert seine Dienste fortlaufend nach dem Evergreeningkonzept. Die Dienste werden mit demselben Code bereitgestellt, der in der globalen Azure-Umgebung verwendet wird, und nach Prüfung auf lokale Implementierbarkeit in Azure Deutschland eingepflegt. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
+Azure Deutschland baut seine Dienste nicht weiter aus. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
 
 >[!NOTE]
 > Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://azure.microsoft.com/regions/services/). 
@@ -72,7 +60,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="web-and-mobile"></a>[Web und Mobil](./germany-services-webandmobile.md)
+## <a name="web-and-mobile"></a>[Web und mobil](./germany-services-webandmobile.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |

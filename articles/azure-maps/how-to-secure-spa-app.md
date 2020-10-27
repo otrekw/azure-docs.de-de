@@ -1,7 +1,7 @@
 ---
 title: Schützen einer Single-Page-Webanwendung mit nicht interaktiver Anmeldung
 titleSuffix: Azure Maps
-description: Konfigurieren einer Single-Page-Webanwendung mit nicht interaktiver rollenbasierter Zugriffssteuerung von Azure AD und Azure Maps Web SDK.
+description: Konfigurieren einer Single-Page-Webanwendung mit nicht interaktiver rollenbasierter Zugriffssteuerung von Azure (Azure RBAC) und Azure Maps Web SDK.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: e49954065f8a4ec03eb54d7333a3fff34bafb143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319655"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090249"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Schützen einer Single-Page-Webanwendung mit nicht interaktiver Anmeldung
 
@@ -104,12 +104,12 @@ Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung
 
 Sie gewähren die *rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)* , indem Sie die systemseitig zugewiesene Identität einer oder mehreren Azure-Rollendefinitionen zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen.
 
-1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
+1. Navigieren Sie zu Ihrem **Azure Maps-Konto** . Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** die Option **Funktions-App** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern**.
+2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender** . Wählen Sie unter **Zugriff zuweisen zu** die Option **Funktions-App** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern** .
 
    * Lesen Sie die Details zum [Hinzufügen oder Entfernen von Rollenzuweisungen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 

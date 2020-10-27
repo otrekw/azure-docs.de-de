@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896638"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311513"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -61,9 +61,9 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
 
 1. Wählen Sie **Übermitteln** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
 
-    Handelt es sich um die erste Ausführung, kann die vollständige Ausführung der Pipeline bis zu 20 Minuten dauern. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jedes Modul zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
+    Falls dies die erstmalige Ausführung ist, kann es bis zu 20 Minuten dauern, bis der Ausführungsvorgang für die Pipeline vollständig abgeschlossen ist. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jedes Modul zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
 
-1. Klicken Sie auf **Bereitstellen**.
+1. Klicken Sie auf **Bereitstellen** .
 
 ## <a name="create-an-inferencing-cluster"></a>Erstellen eines Rückschlussclusters
 
@@ -81,7 +81,7 @@ Im angezeigten Dialogfeld können Sie auswählen, in welchen vorhandenen AKS-Clu
     
 1. Wählen Sie unter **Region** eine verfügbare Region in der Nähe aus.
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
     > [!NOTE]
     > Die Erstellung eines neuen AKS-Diensts dauert etwa 15 Minuten. Der Bereitstellungsstatus kann auf der Seite **Rückschlusscluster** überprüft werden.
@@ -97,27 +97,23 @@ Kehren Sie nach Abschluss der Bereitstellung des AKS-Diensts zur Echtzeit-Rücks
 
 1. Wählen Sie den erstellten AKS-Cluster aus.
 
-1. Klicken Sie auf **Bereitstellen**.
+1. Klicken Sie auf **Bereitstellen** .
     
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Screenshot: Position der Schaltfläche „Pipeline erstellen“":::
 
     Nach Abschluss der Bereitstellung wird über der Canvas eine Erfolgsbenachrichtigung angezeigt. Dies kann einige Minuten dauern.
 
-## <a name="test-the-real-time-endpoint"></a>Testen des Echtzeitendpunkts
+## <a name="view-the-real-time-endpoint"></a>Anzeigen des Echtzeitendpunkts
 
-Nach Abschluss der Bereitstellung können Sie Ihren Echtzeitendpunkt testen, indem Sie zur Seite **Endpunkte** navigieren.
+Nach Abschluss der Bereitstellung können Sie Ihren Echtzeitendpunkt anzeigen, indem Sie zur Seite **Endpunkte** navigieren.
 
 1. Wählen Sie auf der Seite **Endpunkte** den bereitgestellten Endpunkt aus.
 
-    ![Screenshot: Registerkarte „Echtzeitendpunkte“ mit Hervorhebung des kürzlich erstellten Endpunkts](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
+1. Auf der Registerkarte **Details** werden weitere Informationen angezeigt, z. B. REST-URI, Status und Tags.
 
-1. Klicken Sie auf **Test**.
+1. Auf der Registerkarte **Consume** (Nutzen) finden Sie Sicherheitsschlüssel und Optionen zum Festlegen der Authentifizierungsmethoden.
 
-1. Sie können Testdaten manuell eingeben oder die automatisch ausgefüllten Beispieldaten verwenden und anschließend **Test** auswählen.
-
-    Das Portal übermittelt eine Testanforderung an den Endpunkt und zeigt die Ergebnisse an. Für die Eingabedaten wird zwar ein Preiswert generiert, dieser wird jedoch nicht zum Generieren des Vorhersagewerts verwendet.
-
-    ![Screenshot: Test des Echtzeitendpunkts mit Hervorhebung des ausgewerteten Bezeichners für den Preis](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
+Weitere Informationen zur Nutzung Ihres Webdiensts finden Sie unter [Nutzen eines als Webdienst bereitgestellten Modells](how-to-consume-web-service.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

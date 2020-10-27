@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664850"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215432"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Fehlercodes: Azure Active Directory B2C
 
@@ -61,6 +61,7 @@ Die folgenden Fehler können vom Azure Active Directory B2C-Dienst zurückgegebe
 | `AADB2C90055` | Der in der Anforderung angegebene Bereich „{0}“ muss eine Ressource wie „https://example.com/calendar.read“ angeben. |
 | `AADB2C90057` | Die angegebene Anwendung ist nicht zum Zulassen des impliziten OAuth-Flows konfiguriert. |
 | `AADB2C90058` | Die angegebene Anwendung ist nicht zum Zulassen öffentlicher Clients konfiguriert. |
+| `AADB2C99059` | Die angegebene Anforderung muss eine „code_challenge“ darstellen. Erforderlich für Single-Page-Webanwendungen, die den Autorisierungscodeflow verwenden.| 
 | `AADB2C90067` | Der URI „{0}“ zur Umleitung nach der Abmeldung weist ein ungültiges Format auf. Geben Sie einen HTTPS-basierten URL wie beispielsweise „https://example.com/return“ an, oder verwenden Sie für native Clients den IETF-URI „urn:ietf:wg:oauth:2.0:oob“ für native Clients. |
 | `AADB2C90068` | Die angegebene Anwendung mit der ID „{0}“ ist für diesen Dienst ungültig. Verwenden Sie eine Anwendung, die über das B2C-Portal erstellt wurde, und versuchen Sie es noch mal. |
 | `AADB2C90075` | Der in Schritt „{1}“ angegebene Anspruchsaustausch „{0}“ führte zu einer HTTP-Fehlerantwort mit Code „{2}“ und Ursache „{3}“. |

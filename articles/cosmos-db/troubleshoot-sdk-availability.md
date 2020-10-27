@@ -3,17 +3,17 @@ title: Diagnostizieren und Beheben von Problemen bei der Verfügbarkeit von Azur
 description: Informationen über das Verfügbarkeitsverhalten von Azure Cosmos DB-SDKs in Umgebungen mit mehreren Regionen
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743963"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319364"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostizieren und Beheben von Problemen bei der Verfügbarkeit von Azure Cosmos DB-SDKs in Umgebungen mit mehreren Regionen
 
@@ -34,7 +34,7 @@ Wenn Sie eine bevorzugte Region festlegen, stellt der Client Verbindungen mit Re
 | Eine Schreibregion | Bevorzugte Region | Primäre Region  |
 | Mehrere Schreibregionen | Bevorzugte Region | Bevorzugte Region  |
 
-Wenn Sie keine bevorzugte Region festlegen:
+Wenn Sie **keine bevorzugte Region festlegen** , wird der SDK-Client standardmäßig auf die primäre Region festgelegt:
 
 |Kontotyp |Lesevorgänge |Schreibvorgänge |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ Wenn Sie keine bevorzugte Region festlegen:
 > [!NOTE]
 > „Primäre Region“ bezeichnet die erste Region in der [Regionenliste für Azure Cosmos-Konten](distribute-data-globally.md).
 
-Im Falle eines der folgenden Szenarios macht der Client, der das Azure Cosmos-SDK verwendet, Protokolle verfügbar und schließt die Wiederholungsinformationen in die **Vorgangsdiagnoseinformationen** ein:
+Unter normalen Umständen stellt der SDK-Client eine Verbindung mit der bevorzugten Region (sofern eine diese festgelegt ist) oder der primären Region (wenn keine bevorzugte Region festgelegt ist) her, und die Vorgänge werden außer in den folgenden Szenarien auf diese Region beschränkt.
+
+In diesen Fällen macht der Client, der das Azure Cosmos-SDK verwendet, Protokolle verfügbar und schließt die Wiederholungsinformationen in die **Vorgangsdiagnoseinformationen** ein:
 
 * Die Eigenschaft *RequestDiagnosticsString* für Antworten im .NET-V2-SDK
 * Die Eigenschaft *Diagnose* für Antworten und Ausnahmen im .NET-V3-SDK
@@ -66,7 +68,7 @@ Wenn Sie eine Region entfernen und sie später wieder dem Konto hinzufügen, ver
 
 Wenn Sie den Client so konfigurieren, dass er vorzugsweise eine Verbindung mit einer Region herstellt, die im Azure Cosmos DB-Konto nicht enthalten ist, wird die bevorzugte Region ignoriert. Wenn Sie diese Region zu einem späteren Zeitpunkt hinzufügen, wird sie vom Client erkannt und stets für Verbindungen bevorzugt.
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Durchführen eines Failovers der Schreibregion in einem Konto mit nur einer Schreibregion
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Durchführen eines Failovers der Schreibregion in einem Konto mit nur einer Schreibregion
 
 Wenn Sie ein Failover der aktuellen Schreibregion initiieren, schlägt die nächste Schreibanforderung mit einer bekannten Back-End-Antwort fehl. Wenn diese Antwort erkannt wird, fragt der Client das Konto ab, um die neue Schreibregion zu ermitteln. Er setzt dann den aktuellen Vorgang fort und leitet alle zukünftigen Schreibvorgänge stets an die neue Region weiter.
 
@@ -76,7 +78,7 @@ Wenn es sich bei dem Konto um eine einzelne Schreibregion handelt und der region
 
 ## <a name="session-consistency-guarantees"></a>Garantien für die Sitzungskonsistenz
 
-Wenn Sie [Sitzungskonsistenz](consistency-levels.md#guarantees-associated-with-consistency-levels) verwenden, muss der Client sicherstellen, dass er die eigenen Schreibvorgänge lesen kann. In Konten mit nur einer Schreibregion, bei denen sich die bevorzugte Leseregion von der Schreibregion unterscheidet, kann es vorkommen, dass der Benutzer einen Schreibvorgang auslöst und bei einem Lesevorgang aus einer lokalen Region die lokale Region die Datenreplikation noch nicht erhalten hat (physikalische Beschränkung der maximalen Übertragungsgeschwindigkeit). In solchen Fällen erkennt das SDK diesen Fehler beim Lesevorgang und wiederholt den Lesevorgang für die Hubregion, um Sitzungskonsistenz sicherzustellen.
+Wenn Sie [Sitzungskonsistenz](consistency-levels.md#guarantees-associated-with-consistency-levels) verwenden, muss der Client sicherstellen, dass er die eigenen Schreibvorgänge lesen kann. In Konten mit nur einer Schreibregion, bei denen sich die bevorzugte Leseregion von der Schreibregion unterscheidet, kann es vorkommen, dass der Benutzer einen Schreibvorgang auslöst und bei einem Lesevorgang aus einer lokalen Region die lokale Region die Datenreplikation noch nicht erhalten hat (physikalische Beschränkung der maximalen Übertragungsgeschwindigkeit). In solchen Fällen erkennt das SDK diesen Fehler beim Lesevorgang und wiederholt den Lesevorgang für die primäre Region, um Sitzungskonsistenz sicherzustellen.
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Vorübergehende Konnektivitätsprobleme beim TCP-Protokoll
 

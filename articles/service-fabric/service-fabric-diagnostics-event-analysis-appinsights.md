@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932446"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329575"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -32,7 +32,7 @@ Application Insights bietet bereits standardmäßig umfassende Service Fabric-Fu
 
 Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../azure-monitor/app/api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden wie in der folgenden Abbildung dargestellt weitere Details angezeigt. Sie umfassen unter anderem für Service Fabric spezifische Daten, die im Application Insights Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
 
-![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Screenshot, der weitere Details zeigt, einschließlich der für Service Fabric spezifischen Daten, die im NuGet-Paket „Application Insights“ von Service Fabric erfasst werden.](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights bietet eine eigene Ansicht zum Abfragen sämtlicher eingehender Daten. Klicken Sie am oberen Rand der Übersichtsseite auf „Metrik-Explorer“, um zum Application Insights-Portal zu gelangen. Hier können Sie unter Verwendung der Kusto-Abfragesprache Abfragen für die zuvor erwähnten benutzerdefinierten Ereignisse sowie für Anforderungen, Ausnahmen, Leistungsindikatoren und weitere Metriken ausführen. Das folgende Beispiel zeigt alle Anforderungen der letzten Stunde:
 
@@ -48,7 +48,7 @@ Wenn Sie EventFlow zum Aggregieren von Ereignissen verwenden, müssen Sie das Nu
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,7 +65,7 @@ Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Progr
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigieren zur Application Insights-Ressource im Azure-Portal
 
-Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf **Suchen**, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
+Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf _ *Suchen* *, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
 
 *Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../azure-monitor/platform/metrics-charts.md).
 

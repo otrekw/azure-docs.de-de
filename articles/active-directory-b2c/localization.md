@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005377"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095898"
 ---
 # <a name="localization-element"></a>Localization-Element
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für die User Journeys unterstützen. Die Unterstützung der Lokalisierung in den Richtlinien ermöglicht Folgendes:
+Mithilfe des **Localization** -Elements können Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für die User Journeys unterstützen. Die Unterstützung der Lokalisierung in den Richtlinien ermöglicht Folgendes:
 
 - Einrichten einer expliziten Liste der unterstützten Sprachen in einer Richtlinie und Auswählen einer Standardsprache
 - Angeben von sprachspezifischen Zeichenfolgen und Sammlungen
@@ -37,13 +37,13 @@ Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder S
   ...
 ```
 
-Das **Localization**-Element enthält die folgenden Attribute:
+Das **Localization** -Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Aktiviert | Nein | Mögliche Werte: `true` oder `false`. |
 
-Das **Localization**-Element enthält die folgenden XML-Elemente:
+Das **Localization** -Element enthält die folgenden XML-Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -52,7 +52,7 @@ Das **Localization**-Element enthält die folgenden XML-Elemente:
 
 ## <a name="supportedlanguages"></a>SupportedLanguages
 
-Das **SupportedLanguages**-Element enthält die folgenden Attribute:
+Das **SupportedLanguages** -Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -61,7 +61,7 @@ Das **SupportedLanguages**-Element enthält die folgenden Attribute:
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
-Das **SupportedLanguages**-Element enthält die folgenden Elemente:
+Das **SupportedLanguages** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -69,13 +69,13 @@ Das **SupportedLanguages**-Element enthält die folgenden Elemente:
 
 ## <a name="localizedresources"></a>LocalizedResources
 
-Das **LocalizedResources**-Element enthält die folgenden Attribute:
+Das **LocalizedResources** -Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der zur eindeutigen Identifizierung von lokalisierten Ressourcen verwendet wird. |
 
-Das **LocalizedResources**-Element enthält die folgenden Elemente:
+Das **LocalizedResources** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -84,7 +84,7 @@ Das **LocalizedResources**-Element enthält die folgenden Elemente:
 
 ### <a name="localizedcollections"></a>LocalizedCollections
 
-Das **LocalizedCollections**-Element enthält die folgenden Elemente:
+Das **LocalizedCollections** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -92,7 +92,7 @@ Das **LocalizedCollections**-Element enthält die folgenden Elemente:
 
 #### <a name="localizedcollection"></a>LocalizedCollection
 
-Das **LocalizedCollection**-Element enthält die folgenden Attribute:
+Das **LocalizedCollection** -Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -100,13 +100,13 @@ Das **LocalizedCollection**-Element enthält die folgenden Attribute:
 | ElementId | Ja | Eine Zeichenfolge mit einem Verweis auf einen Anspruchstyp, der bereits in dem ClaimsSchema-Abschnitt, der bei Festlegung von **ElementType** auf einen Anspruchstyp verwendet wird, definiert wurde. |
 | TargetCollection | Ja | Die Zielsammlung. |
 
-Das **LocalizedCollection**-Element enthält die folgenden Elemente:
+Das **LocalizedCollection** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Element | 0:n | Definiert eine verfügbare Option für den Benutzer, über die dieser einen Anspruch in der Benutzeroberfläche auswählen kann, z.B. einen Wert in einer Dropdownliste. |
 
-Das **Item**-Element enthält die folgenden Attribute:
+Das **Item** -Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -114,7 +114,7 @@ Das **Item**-Element enthält die folgenden Attribute:
 | Wert | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
 | SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
-Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements. Es enthält zwei **LocalizedCollection**-Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction**-Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
+Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections** -Elements. Es enthält zwei **LocalizedCollection** -Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction** -Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
 
 ```xml
 <LocalizedResources Id="api.selfasserted.en">
@@ -136,13 +136,13 @@ Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements
 
 ### <a name="localizedstrings"></a>LocalizedStrings
 
-Das **LocalizedStrings**-Element enthält die folgenden Elemente:
+Das **LocalizedStrings** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1:n | Eine lokalisierte Zeichenfolge. |
 
-Das **LocalizedString**-Element enthält die folgenden Attribute:
+Das **LocalizedString** -Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -163,6 +163,7 @@ Der „ElementType“-Verweis auf einen Anspruchstyp, eine Anspruchstransformati
 |Prädikat, Benutzermeldung|`Predicate`|Der Name des Prädikats| Das Attribut des zu lokalisierenden Prädikats. Mögliche Werte: `HelpText`.|
 |Prädikatgruppe, Benutzermeldung|`InputValidation`|Die ID des „PredicateValidation“-Elements.|Die ID des „PredicateGroup“-Elements. Die Prädikatgruppe muss ein untergeordnetes Element des Prädikatüberprüfungselements gemäß der ElementId sein.|
 |Benutzeroberflächenelemente |`UxElement` | | Die ID des zu lokalisierenden Benutzeroberflächenelements.|
+|[Anzeigesteuerelement](display-controls.md) |`DisplayControl` |Die ID des Anzeigesteuerelements. | Die ID des zu lokalisierenden Benutzeroberflächenelements.|
 
 ## <a name="examples"></a>Beispiele
 
@@ -330,6 +331,23 @@ Der Wert „UxElement“ wird verwendet, um eines der Benutzeroberflächenelemen
 ```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+```
+
+### <a name="displaycontrol"></a>DisplayControl
+
+Der Wert „DisplayControl“ wird zum Lokalisieren eines der Benutzeroberflächenelemente des Typs [Anzeigesteuerelement](display-controls.md) verwendet. Im folgenden Beispiel wird gezeigt, wie die Schaltflächen „send“ (Senden) und „verify“ (Überprüfen) lokalisiert werden. 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+Im Abschnitt „Metadaten“ eines selbstbestätigten technischen Profils muss für das „ContentDefinition“-Element, auf das verwiesen wird, der Wert „DataUri“ auf [Seitenlayoutversion](page-layout.md) 2.1.0 oder höher festgelegt sein. Beispiel:
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

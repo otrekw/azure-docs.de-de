@@ -3,18 +3,18 @@ title: Häufig gestellte Fragen zu Azure DevTest Labs | Microsoft Docs
 description: Dieser Artikel enthält Antworten auf einige häufig gestellte Fragen zu Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289376"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328384"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
 
 ## <a name="blog-post"></a>Blogbeitrag
-Unser DevTest Labs-Teamblog wurde am 20. März 2019 eingestellt. 
+Unser DevTest Labs-Teamblog wurde am 20. März 2019 eingestellt. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Wo kann ich zukünftige Funktionsupdates nachverfolgen?
 In Zukunft werden wir Funktionsupdates und informative Blogbeiträge im Azure-Blog und auf Azure-Updates bereitstellen. Diese Blogbeiträge werden auch, wo immer erforderlich, mit unserer Dokumentation verknüpft.
@@ -22,7 +22,7 @@ In Zukunft werden wir Funktionsupdates und informative Blogbeiträge im Azure-Bl
 Abonnieren Sie [DevTest Labs-Azure-Blog](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) und [DevTest Labs-Azure-Updates](https://azure.microsoft.com/updates/?product=devtest-lab), um über neue Funktionen in DevTest Labs informiert zu bleiben.
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>Was geschieht mit den vorhandenen Blogbeiträgen?
-Wir arbeiten momentan daran, vorhandene Blogbeiträge (mit Ausnahme von Updates zu Ausfällen) zu unserer [DevTest Labs-Dokumentation](devtest-lab-overview.md) zu migrieren. Wenn der MSDN-Blog eingestellt wird, wird er auf die Dokumentationsübersicht für DevTest Labs umgeleitet. Sobald die Umleitung eingerichtet ist, können Sie unter „Filtern nach“ nach dem gewünschten Artikel suchen. Wir haben noch nicht alle Beiträge migriert, bis zum Ende dieses Monats sollte dies jedoch abgeschlossen sein. 
+Wir arbeiten momentan daran, vorhandene Blogbeiträge (mit Ausnahme von Updates zu Ausfällen) zu unserer [DevTest Labs-Dokumentation](devtest-lab-overview.md) zu migrieren. Wenn der MSDN-Blog eingestellt wird, wird er auf die Dokumentationsübersicht für DevTest Labs umgeleitet. Sobald die Umleitung eingerichtet ist, können Sie unter „Filtern nach“ nach dem gewünschten Artikel suchen. Wir haben noch nicht alle Beiträge migriert, bis zum Ende dieses Monats sollte dies jedoch abgeschlossen sein. 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>Wo finde ich Updates zu Ausfällen?
@@ -68,22 +68,22 @@ DevTest Labs ist ein kostenloser Dienst. Für das Erstellen von Labs sowie das K
 ## <a name="security"></a>Sicherheit
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Wie lauten die verschiedenen Sicherheitsstufen in DevTest Labs?
-Der Sicherheitszugriff wird durch die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bestimmt. Die Funktionsweise des Zugriffs ist leichter zu verstehen, wenn Sie die Unterschiede zwischen Berechtigungen, Rollen und Bereichen in der RBAC kennen.
+Der Sicherheitszugriff wird durch die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) bestimmt. Die Funktionsweise des Zugriffs ist leichter zu verstehen, wenn Sie die Unterschiede zwischen Berechtigungen, Rollen und Bereichen in der Azure RBAC kennen.
 
-- **Berechtigung**: Eine Berechtigung ermöglicht einen definierten Zugriff auf eine bestimmte Aktion. Zum Beispiel kann eine Berechtigung den Lesezugriff auf alle VMs ermöglichen.
-- **Rolle**: Eine Rolle ist ein Satz von Berechtigungen, die gruppiert und einem Benutzer zugewiesen werden können. Zum Beispiel verfügt die Rolle „Abonnementbesitzer“ über Zugriff auf alle Ressourcen in einem Abonnement.
+- **Berechtigung** : Eine Berechtigung ermöglicht einen definierten Zugriff auf eine bestimmte Aktion. Zum Beispiel kann eine Berechtigung den Lesezugriff auf alle VMs ermöglichen.
+- **Rolle** : Eine Rolle ist ein Satz von Berechtigungen, die gruppiert und einem Benutzer zugewiesen werden können. Zum Beispiel verfügt die Rolle „Abonnementbesitzer“ über Zugriff auf alle Ressourcen in einem Abonnement.
 - **Bereich:** Ein Bereich ist eine Stufe innerhalb der Hierarchie einer Azure-Ressource. Zum Beispiel kann eine Ressourcengruppe, ein einzelnes Lab oder das gesamte Abonnement ein Bereich sein.
 
 Innerhalb des Bereichs von DevTest Labs gibt es zwei Arten von Rollen zum Definieren von Benutzerberechtigungen:
 
-- **Labbesitzer**: Ein Labbesitzer verfügt über Zugriff auf alle Ressourcen im Lab. Ein Labbesitzer kann u.a. Richtlinien sowie das virtuelle Netzwerk ändern und verfügt über Lese- und Schreibberechtigungen für alle VMs.
-- **Labbenutzer**: Ein Labbenutzer kann alle Labressourcen wie VMs, Richtlinien und virtuelle Netzwerke einsehen. Allerdings kann ein Labbenutzer keine Richtlinien oder VMs ändern, die von anderen Benutzern erstellt wurden.
+- **Labbesitzer** : Ein Labbesitzer verfügt über Zugriff auf alle Ressourcen im Lab. Ein Labbesitzer kann u.a. Richtlinien sowie das virtuelle Netzwerk ändern und verfügt über Lese- und Schreibberechtigungen für alle VMs.
+- **Labbenutzer** : Ein Labbenutzer kann alle Labressourcen wie VMs, Richtlinien und virtuelle Netzwerke einsehen. Allerdings kann ein Labbenutzer keine Richtlinien oder VMs ändern, die von anderen Benutzern erstellt wurden.
 
 Sie können auch benutzerdefinierte Rollen in DevTest Labs erstellen. Informationen zum Erstellen benutzerdefinierter Rollen in DevTest Labs finden Sie im Artikel [Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
 Da Bereiche hierarchisch sind, gelten die Berechtigungen, die einem Benutzer für einen bestimmten Bereich gewährt werden, automatisch für alle darin enthaltenen Bereiche auf niedrigerer Ebene. Ist einem Benutzer beispielsweise die Rolle „Abonnementbesitzer“ zugewiesen, hat der Benutzer Zugriff auf alle Ressourcen in einem Abonnement. Zu diesen Ressourcen zählen VMs, virtuelle Netzwerke und Labs. Ein Abonnementbesitzer erbt automatisch die Rolle des Labbesitzers. Umgekehrt ist dies jedoch nicht der Fall. Ein Labbesitzer hat Zugriff auf ein Lab, d.h. auf einen Bereich, der sich innerhalb der Hierarchie auf einer niedrigeren Ebene befindet als das Abonnement. Daher kann ein Labbesitzer keine VMs, virtuellen Netzwerke oder anderen Ressourcen außerhalb des Labs sehen.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Wie definiere ich die rollenbasierte Zugriffssteuerung für meine DevTest Labs-Umgebungen, um sicherzustellen, dass die IT-Abteilung die Steuerung übernimmt, während Entwickler und Tester ihre Arbeit erledigen können?
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Wie definiere ich die rollenbasierte Zugriffssteuerung in Azure für meine DevTest Labs-Umgebungen, um sicherzustellen, dass die IT-Abteilung die Steuerung übernimmt, während Entwickler und Tester ihre Arbeit erledigen können?
 Es gibt ein allgemeines Muster, aber die Details sind von Ihrer Organisation abhängig.
 
 Die IT-Zentrale sollte nur die benötigten Informationen kennen und den Projekt- und Anwendungsteams den erforderlichen Grad an Kontrolle ermöglichen. In der Regel bedeutet dies, dass die IT-Zentrale der Besitzer des Abonnements ist und die wichtigsten IT-Funktionen übernimmt, z.B. Netzwerkkonfigurationen. Die Gruppe von **Besitzern** eines Abonnement sollte klein sein. Diese Besitzer können weitere Besitzer vorschlagen, wenn dies erforderlich ist, oder Richtlinien auf Abonnementebene anwenden, z.B. „keine öffentliche IP-Adresse“.
@@ -98,7 +98,7 @@ Weitere Informationen finden Sie in der Dokumentation [Azure-Unternehmensgerüst
 
 
 ### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Wie erstelle ich eine bestimmte Rolle, um Benutzern das Ausführen einer bestimmten Aufgabe zu ermöglichen?
-Einen umfassenden Artikel zum Erstellen von benutzerdefinierten Rollen und Zuweisen von Berechtigungen zu einer Rolle finden Sie unter [Erteilen von Benutzerberechtigungen zu bestimmten Labrichtlinien](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Das folgende Beispielskript erstellt die Rolle **DevTest Labs Advanced User**, die über die Berechtigung zum Starten und Beenden alle VMs im Lab verfügt:
+Einen umfassenden Artikel zum Erstellen von benutzerdefinierten Rollen und Zuweisen von Berechtigungen zu einer Rolle finden Sie unter [Erteilen von Benutzerberechtigungen zu bestimmten Labrichtlinien](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Das folgende Beispielskript erstellt die Rolle **DevTest Labs Advanced User** , die über die Berechtigung zum Starten und Beenden alle VMs im Lab verfügt:
 
 
 ```powershell
@@ -145,7 +145,7 @@ Szenario mit separaten Ressourcengruppen:
 -   DevTest Labs erstellt eine Ressourcengruppe für Computer mit freigegebenen IP-Adressen, die die gleiche Größe aufweisen.
 
 Szenario mit gemeinsamer Ressourcengruppe:
--   Alle virtuellen Computer werden in der angegebenen gemeinsamen Ressourcengruppe erstellt und bereitgestellt. Erfahren Sie mehr über die [Ressourcengruppenzuordnung für das Lab](https://aka.ms/RGControl).
+-   Alle virtuellen Computer werden in der angegebenen gemeinsamen Ressourcengruppe erstellt und bereitgestellt. Erfahren Sie mehr über die [Ressourcengruppenzuordnung für das Lab](./resource-group-control.md).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Wie halte ich eine übergreifende Benennungskonvention in meiner DevTest Labs-Umgebung aufrecht?
 Es kann sinnvoll sein, aktuelle Benennungskonventionen im Unternehmen auf den Azure-Betrieb auszudehnen und sie über die gesamte DevTest Labs-Umgebung konsistent zu machen. Wir empfehlen, bei der Bereitstellung von DevTest Labs bestimmte Ausgangsrichtlinien zu implementieren. Sie stellen diese Richtlinien mit einem zentralen Skript und JSON-Vorlagen bereit, um Konsistenz durchzusetzen. Benennungsrichtlinien können mithilfe von Azure-Richtlinien implementiert werden, die auf Abonnementebene angewendet werden. JSON-Beispiele für Azure Policy finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).
@@ -200,7 +200,7 @@ So kopieren Sie Ihre vorhandenen VMs in DevTest Labs
 Ja, Sie können mehrere Datenträger an Ihre VMs anfügen.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Werden Gen2-Images von DevTest Labs unterstützt?
-Ja. Der DevTest Labs-Dienst unterstützt [Gen2-Images](../virtual-machines/windows/generation-2.md). Wenn jedoch Gen1- und Gen2-Images verfügbar sind, wird in DevTest Labs nur das Gen1-Image angezeigt, wenn Sie eine VM erstellen. Wenn nur die Gen2-Version verfügbar ist, wird das Image angezeigt. 
+Ja. Der DevTest Labs-Dienst unterstützt [Gen2-Images](../virtual-machines/generation-2.md). Wenn jedoch Gen1- und Gen2-Images verfügbar sind, wird in DevTest Labs nur das Gen1-Image angezeigt, wenn Sie eine VM erstellen. Wenn nur die Gen2-Version verfügbar ist, wird das Image angezeigt. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Wenn ich ein Windows-Betriebssystemimage für meine Tests verwenden möchte, muss ich dann ein MSDN-Abonnement erwerben?
 Um Windows-Clientbetriebssystem-Images (Windows 7 oder höher) für Ihre Entwicklung oder Ihre Tests in Azure zu verwenden, müssen Sie einen der folgenden Schritte durchführen:
@@ -281,7 +281,7 @@ So suchen Sie nach dem Zielspeicherkonto, das Ihrem Lab zugeordnet ist:
 2.  Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen** aus.
 3.  Suchen Sie nach der Ressourcengruppe, die Ihrem Lab zugeordnet ist, und wählen Sie sie aus.
 4.  Wählen Sie unter **Übersicht** eines der Speicherkonten aus.
-5.  Wählen Sie **Blobs**aus.
+5.  Wählen Sie **Blobs** aus.
 6.  Suchen Sie in der Liste nach Uploads. Falls kein Upload vorhanden ist, kehren Sie zu Schritt 4 zurück, und versuchen Sie es mit einem anderen Speicherkonto.
 7.  Verwenden Sie die **URL** im AzCopy-Befehl als Ziel.
 
@@ -359,8 +359,8 @@ Bei der Verwendung gemeinsamer öffentlicher IPs teilen die virtuellen Computer 
 
 Ja. Zwei Aspekte müssen berücksichtigt werden: eingehender und ausgehender Datenverkehr.
 
-- **Eingehender Datenverkehr**: Wenn der virtuelle Computer über keine öffentliche IP-Adresse verfügt, kann er vom Internet aus nicht erreicht werden. Ein gängiger Ansatz besteht darin, eine Richtlinie auf Abonnementebene festzulegen, die sicherstellt, dass kein Benutzer eine öffentliche IP-Adresse erstellen kann.
-- **Ausgehender Datenverkehr**: Wenn Sie verhindern möchten, dass virtuelle Computer direkt auf das öffentliche Internet zugreifen und Datenverkehr durch eine Unternehmensfirewall senden können, können Sie den Datenverkehr lokal mithilfe von ExpressRoute oder VPN routen, indem Sie erzwungenes Routing einsetzen.
+- **Eingehender Datenverkehr** : Wenn der virtuelle Computer über keine öffentliche IP-Adresse verfügt, kann er vom Internet aus nicht erreicht werden. Ein gängiger Ansatz besteht darin, eine Richtlinie auf Abonnementebene festzulegen, die sicherstellt, dass kein Benutzer eine öffentliche IP-Adresse erstellen kann.
+- **Ausgehender Datenverkehr** : Wenn Sie verhindern möchten, dass virtuelle Computer direkt auf das öffentliche Internet zugreifen und Datenverkehr durch eine Unternehmensfirewall senden können, können Sie den Datenverkehr lokal mithilfe von ExpressRoute oder VPN routen, indem Sie erzwungenes Routing einsetzen.
 
 > [!NOTE]
 > Wenn Sie über einen Proxyserver verfügen, der ohne Proxyeinstellungen Datenverkehr blockiert, vergessen Sie nicht, Ausnahmen für das Speicherkonto des Labs für Artefakte hinzuzufügen.
@@ -373,14 +373,14 @@ Sie können außerdem Netzwerksicherheitsgruppen für virtuelle Computer oder Su
 Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der Fall ist, entfernen Sie die Punkte, oder ersetzen Sie sie durch Trennstriche. Versuchen Sie dann erneut, das virtuelle Netzwerk zu speichern.
 
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Warum erhalte ich bei der Bereitstellung einer VM von PowerShell den Fehler „Übergeordnete Ressource wurde nicht gefunden“?
-Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Ressource vor dem Erstellen der untergeordneten Ressource bereits vorhanden sein. Wenn die übergeordnete Ressource nicht vorhanden ist, wird eine **ParentResourceNotFound**-Meldung angezeigt. Wenn Sie keine Abhängigkeit von der übergeordneten Ressource angeben, wird die untergeordnete Ressource möglicherweise vor der übergeordneten bereitgestellt.
+Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Ressource vor dem Erstellen der untergeordneten Ressource bereits vorhanden sein. Wenn die übergeordnete Ressource nicht vorhanden ist, wird eine **ParentResourceNotFound** -Meldung angezeigt. Wenn Sie keine Abhängigkeit von der übergeordneten Ressource angeben, wird die untergeordnete Ressource möglicherweise vor der übergeordneten bereitgestellt.
 
 VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Resource Manager-Vorlagen zur Bereitstellung von VMs über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung?
 VM-Bereitstellungsfehler werden in Aktivitätsprotokollen erfasst. Sie finden die Aktivitätsprotokolle von virtuellen Labcomputern unter **Überwachungsprotokolle** oder **Diagnose des virtuellen Computers** auf der VM-Seite des Labs im Ressourcenmenü (die Seite wird angezeigt, nachdem Sie die VM in der Liste „Meine virtuellen Computer“ ausgewählt haben).
 
-Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien**. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md).
+Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien** . Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Warum erhalte ich die Fehlermeldung, dass der Speicherort für den Ressourcentyp nicht verfügbar sei, wenn ich versuche, ein Lab zu erstellen?
 Möglicherweise wird eine Fehlermeldung ähnlich der folgenden angezeigt, wenn Sie versuchen, ein Lab zu erstellen:

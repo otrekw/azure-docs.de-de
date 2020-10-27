@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005376"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093326"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten
 In Service Fabric wird ein Dienst an irgendeinem Ort in einem Service Fabric-Cluster ausgeführt, der sich in der Regel auf mehreren virtuellen Computern befindet. Er kann entweder vom Dienstbesitzer oder automatisch von Service Fabric von einem Standort an einen anderen verschoben werden. Dienste sind nicht statisch an einen bestimmten Computer oder eine bestimmte Adresse gefunden.
@@ -19,7 +19,7 @@ In Service Fabric wird ein Dienst an irgendeinem Ort in einem Service Fabric-Clu
 Eine Service Fabric-Anwendung besteht in der Regel aus vielen verschiedenen Diensten, die jeweils eine bestimmte Aufgabe ausführen. Diese Dienste können miteinander kommunizieren und so eine umfassende Funktion bilden, wie etwa das Rendern verschiedener Teile einer Webanwendung. Darüber hinaus verbinden sich Clientanwendungen zur Kommunikation mit den Diensten. Dieses Dokument erklärt, wie die Kommunikation mit und zwischen Ihren Diensten in Service Fabric eingerichtet wird.
 
 ## <a name="bring-your-own-protocol"></a>Nutzen Sie Ihr eigenes Protokoll
-Service Fabric ist beim Verwalten des Lebenszyklus Ihrer Dienste behilflich, trifft aber keine Entscheidung in Bezug darauf, was Ihre Dienste tun. Dies umfasst auch die Kommunikation. Wenn Ihr Dienst von Service Fabric geöffnet wird, kann der Dienst einen Endpunkt für eingehende Anforderungen einrichten und dabei das von Ihnen bevorzugte Protokoll bzw. den gewünschten Kommunikationsstapel verwenden. Ihr Dienst lauscht an einer normalen **IP:port**-Adresse mithilfe eines beliebigen Adressierungsschemas wie etwa eines URIs. Mehrere Dienstinstanzen oder Replikate nutzen unter Umständen einen gemeinsamen Hostprozess. Dabei müssen entweder verschiedene Ports oder eine Portfreigabemethode wie etwa der http.sys-Kerneltreiber in Windows verwendet werden. In beiden Fällen muss jede Dienstinstanz bzw. jedes Replikat in einem Hostprozess eindeutig aufrufbar sein.
+Service Fabric ist beim Verwalten des Lebenszyklus Ihrer Dienste behilflich, trifft aber keine Entscheidung in Bezug darauf, was Ihre Dienste tun. Dies umfasst auch die Kommunikation. Wenn Ihr Dienst von Service Fabric geöffnet wird, kann der Dienst einen Endpunkt für eingehende Anforderungen einrichten und dabei das von Ihnen bevorzugte Protokoll bzw. den gewünschten Kommunikationsstapel verwenden. Ihr Dienst lauscht an einer normalen **IP:port** -Adresse mithilfe eines beliebigen Adressierungsschemas wie etwa eines URIs. Mehrere Dienstinstanzen oder Replikate nutzen unter Umständen einen gemeinsamen Hostprozess. Dabei müssen entweder verschiedene Ports oder eine Portfreigabemethode wie etwa der http.sys-Kerneltreiber in Windows verwendet werden. In beiden Fällen muss jede Dienstinstanz bzw. jedes Replikat in einem Hostprozess eindeutig aufrufbar sein.
 
 ![Dienstendpunkte][1]
 
@@ -30,7 +30,7 @@ In einem verteilten System können Dienste im Laufe der Zeit auf einen anderen C
 
 Service Fabric stellt einen Ermittlungs- und Auflösungsdienst namens „Naming Service“ bereit. Naming Service verwaltet eine Tabelle, die benannte Dienstinstanzen den Endpunktadressen zuordnet, an denen diese lauschen. Alle benannten Dienstinstanzen in Service Fabric verfügen über eindeutige Namen als URIs, wie z.B. `"fabric:/MyApplication/MyService"`. Der Dienstname ändert sich während der Lebensdauer des Diensts nicht, lediglich die Endpunktadressen ändern sich, wenn ein Dienst verschoben wird. Dies ist mit Websites vergleichbar, die zwar konstante URLs verwenden, deren IP-Adresse sich jedoch ändern kann. Ähnlich wie das DNS (Domain Name System) im Web, das Website-URLs zu IP-Adressen auflöst, verfügt auch Service Fabric über eine Registrierungsstelle, die Servicenamen den entsprechenden Endpunktadressen zuordnet.
 
-![Dienstendpunkte][2]
+![Abbildung, die zeigt, dass Service Fabric über einen Registrar verfügt, der Dienstnamen ihrer Endpunktadresse zuordnet.][2]
 
 Beim Auflösen und Verbinden mit Diensten werden die folgenden Schritte in einer Schleife ausgeführt:
 
@@ -47,14 +47,14 @@ Da viele Dienste, insbesondere in Containern gepackte Dienste, über einen vorha
 
 Wie im folgenden Diagramm dargestellt, ordnet der im Service Fabric-Cluster ausgeführte DNS-Dienst den Dienstnamen DNS-Namen zu, die dann durch den Naming Service aufgelöst werden und die Endpunktadressen zurückgeben, mit denen die Verbindung hergestellt werden soll. Der DNS-Name für den Dienst wird zum Zeitpunkt der Erstellung bereitgestellt. 
 
-![Dienstendpunkte][9]
+![Abbildung: Der im Service Fabric-Cluster ausgeführte DNS-Dienst ordnet den Dienstnamen DNS-Namen zu, die dann durch den Naming Service aufgelöst werden und die Endpunktadressen zurückgeben, mit denen die Verbindung hergestellt werden soll.][9]
 
 Weitere Informationen zur Verwendung des DNS-Diensts finden Sie im Artikel [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).
 
 ### <a name="reverse-proxy-service"></a>Reverseproxydienst
 Der Reverseproxy adressiert Dienste im Cluster, die HTTP-Endpunkte (einschließlich HTTPS) verfügbar machen. Der Reverseproxy vereinfacht das Aufrufen anderer Dienste und deren Methoden durch Verwendung eines bestimmten URI-Formats erheblich und verarbeitet die Schritte Auflösen, Verbinden und Wiederholen, die erforderlich sind, damit ein Dienst mit einem anderen unter Verwendung des Naming Service kommunizieren kann. Mit anderen Worten: Der Naming Service wird beim Aufrufen anderer Dienste vor Ihnen verborgen, indem der Vorgang auf das Aufrufen einer URL vereinfacht wird.
 
-![Dienstendpunkte][10]
+![Abbildung: Der Reverseproxy adressiert Dienste im Cluster, die HTTP-Endpunkte (einschließlich HTTPS) verfügbar machen.][10]
 
 Weitere Informationen zur Verwendung des Reverseproxydiensts finden Sie im Artikel [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md).
 
@@ -66,7 +66,7 @@ Ein Service Fabric-Cluster in Azure befindet sich hinter einem Azure Load Balanc
 
 ![Azure Load Balancer und Service Fabric-Topologie][3]
 
-Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden Punkte konfiguriert werden:
+Damit externer Datenverkehr auf Port **80** zulässig ist, müssen die folgenden Punkte konfiguriert werden:
 
 1. Schreiben Sie einen Dienst, der an Port 80 lauscht. Konfigurieren Sie Port 80 in „ServiceManifest.xml“ für den Dienst, und öffnen Sie einen Listener im Dienst, z.B. einem selbst gehosteten Webserver.
 
@@ -153,18 +153,18 @@ Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden 
     ![Öffnen Sie einen Port auf einem Knotentyp][4]
 3. Wenn der Cluster erstellt wurde, konfigurieren Sie den Azure Load Balancer in der Ressourcengruppe des Cluster, um Datenverkehr an Port 80 weiterzuleiten. Wenn Sie einen Cluster über das Azure-Portal erstellen, wird dieser automatisch für jeden benutzerdefinierten Endpunktport eingerichtet, der konfiguriert wurde.
 
-    ![Weiterleitung von Datenverkehr im Azure Load Balancer][5]
+    ![Screenshot, in dem das Feld „Backendport“ unter „Lastenausgleichsregeln“ hervorgehoben ist.][5]
 4. Der Azure Load Balancer stellt mithilfe eines Tests fest, ob Datenverkehr an einen bestimmten Knoten gesendet wird. Dieser Test überprüft in regelmäßigen Abständen einen Endpunkt auf jedem Knoten, um festzustellen, ob der Knoten reagiert. Wenn nach einer bestimmten Anzahl von Versuchen keine Antwort eingeht, sendet der Load Balancer keinen Datenverkehr mehr an diesen Knoten. Wenn Sie einen Cluster über das Azure-Portal erstellen, wird automatisch ein Test für jeden konfigurierten benutzerdefinierten Endpunktport eingerichtet.
 
     ![Weiterleitung von Datenverkehr im Azure Load Balancer][8]
 
-Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kennen, nicht aber die *Dienste*, die auf den Knoten ausgeführt werden. Der Azure Load Balancer sendet Datenverkehr an die Knoten, die auf den Test reagieren. Stellen Sie daher sicher, dass die Dienste auf den Knoten verfügbar sind, die auf den Test reagieren können.
+Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kennen, nicht aber die *Dienste* , die auf den Knoten ausgeführt werden. Der Azure Load Balancer sendet Datenverkehr an die Knoten, die auf den Test reagieren. Stellen Sie daher sicher, dass die Dienste auf den Knoten verfügbar sind, die auf den Test reagieren können.
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: Integrierte Optionen für Kommunikations-APIs
 Das Reliable Services-Framework wird mit mehreren vorab erstellten Kommunikationsoptionen ausgeliefert. Welche Option in Ihrem Fall am besten geeignet ist, hängt vom Programmiermodell, dem Kommunikationsframework und der Programmiersprache Ihrer Dienste ab.
 
 * **Kein bestimmtes Protokoll:**  Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
-* **HTTP**: Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md) für C#-Anwendungen. In C# geschriebene Clients können `ICommunicationClient`die Klassen `ServicePartitionClient` verwenden, wobei für Java die `CommunicationClient`- und `FabricServicePartitionClient`-Klassen [für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen](service-fabric-reliable-services-communication.md) verwendet werden sollten.
+* **HTTP** : Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md) für C#-Anwendungen. In C# geschriebene Clients können `ICommunicationClient`die Klassen `ServicePartitionClient` verwenden, wobei für Java die `CommunicationClient`- und `FabricServicePartitionClient`-Klassen [für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen](service-fabric-reliable-services-communication.md) verwendet werden sollten.
 * **WCF:** Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Dies ist jedoch nur für C#-Anwendungen für Windows-basierte Cluster verfügbar. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Verwenden benutzerdefinierter Protokolle und anderer Kommunikationsframeworks

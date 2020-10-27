@@ -11,71 +11,95 @@ ms.service: virtual-machines-sql
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/13/2017
+ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293661"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166538"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf Azure Virtual Machines
-
+# <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Dieser Artikel enthält eine Einführung in SQL Server-Verfügbarkeitsgruppen in Azure Virtual Machines. 
+Dieser Artikel bietet eine Einführung in Always On-Verfügbarkeitsgruppen für SQL Server auf Azure Virtual Machines (VMs). 
 
-Always On-Verfügbarkeitsgruppen in Azure Virtual Machines sind vergleichbar mit lokalen Always On-Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
+## <a name="overview"></a>Übersicht
 
-Das folgende Diagramm veranschaulicht die Komponenten einer vollständigen SQL Server-Verfügbarkeitsgruppe auf Azure Virtual Machines.
+Always On-Verfügbarkeitsgruppen auf Azure Virtual Machines sind vergleichbar mit [lokalen Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Da die virtuellen Computer jedoch in Azure gehostet werden, gibt es auch einige zusätzliche Überlegungen, wie z. B. VM-Redundanz und das Routing von Datenverkehr im Azure-Netzwerk. 
+
+Das folgende Diagramm veranschaulicht eine Verfügbarkeitsgruppe für SQL Server auf Azure-VMs:
 
 ![Verfügbarkeitsgruppe](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Der wesentliche Unterschied bei einer Verfügbarkeitsgruppe auf Azure Virtual Machines ist, dass diese virtuellen Computer (VMs) einen [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erfordern. Der Lastenausgleich speichert die IP-Adressen für den Verfügbarkeitsgruppenlistener. Falls Sie über mehrere Verfügbarkeitsgruppen verfügen, benötigt jede Gruppe einen Listener. Ein einzelner Lastenausgleich kann mehrere Listener unterstützen.
 
-Außerdem werden in einem Azure IaaS-VM-Gast-Failovercluster eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden. 
+## <a name="vm-redundancy"></a>VM-Redundanz 
 
-Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL Server-VMS entweder in derselben [Verfügbarkeitsgruppe](availability-group-manually-configure-prerequisites-tutorial.md#create-availability-sets) oder in verschiedenen [Verfügbarkeitszonen](/azure/availability-zones/az-overview) befinden. 
+Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL Server-VMS entweder in derselben [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) oder in verschiedenen [Verfügbarkeitszonen](/azure/availability-zones/az-overview) befinden.
 
-|  | Windows Server-Version | SQL Server-Version | SQL Server-Edition | WSFC-Quorumkonfiguration | Notfallwiederherstellung mit mehreren Regionen | Unterstützung mehrerer Subnetze | Unterstützung für ein vorhandenes AD | Notfallwiederherstellung mit mehreren Zonen in derselben Region | Dist-AG-Unterstützung ohne AD-Domäne | Dist-AG-Unterstützung ohne Cluster |  
-| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[Azure-Portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
-| **[Azure CLI/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
-| **[Schnellstartvorlagen](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
-| **[Manuell](availability-group-manually-configure-prerequisites-tutorial.md)** | All | All | All | All | Ja | Ja | Ja | Ja | Ja | Ja |
-
-Die Vorlage **SQL Server Always On Cluster (Vorschau)** wurde aus Azure Marketplace entfernt und ist nicht mehr verfügbar. 
-
-Wenn Sie zur Erstellung einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines bereit sind, sehen Sie sich die folgenden Tutorials an:
-
-## <a name="manually-with-azure-cli"></a>Manuell über die Azure-Befehlszeilenschnittstelle
-
-Es wird empfohlen, die Azure CLI zum Konfigurieren und Bereitstellen einer Verfügbarkeitsgruppe zu verwenden, da sie dadurch am einfachsten und schnellsten bereitzustellen ist. Mit der Azure-Befehlszeilenschnittstelle können das Erstellen des Windows-Failoverclusters, das Einbinden der SQL Server-VMs in den Cluster und das Erstellen des Listeners und des internen Lastenausgleichs in weniger als insgesamt 30 Minuten erreicht werden. Diese Option erfordert immer noch eine manuelle Erstellung der Verfügbarkeitsgruppe, alle anderen erforderlichen Schritte für die Konfiguration sind jedoch automatisiert. 
-
-Weitere Informationen finden Sie unter [Verwenden der Azure SQL-VM-Befehlszeilenschnittstelle zum Konfigurieren von Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer](availability-group-az-cli-configure.md). 
-
-## <a name="automatically-with-azure-quickstart-templates"></a>Automatisch mit Azure-Schnellstartvorlagen
-
-In Azure-Schnellstartvorlagen wird der SQL-VM-Ressourcenanbieter genutzt, um den Windows-Failovercluster zu erstellen, SQL Server-VMs in diesen einzubinden, den Listener zu erstellen und den internen Lastenausgleich zu konfigurieren. Diese Option erfordert nach wie vor eine manuelle Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs. Alle anderen erforderlichen Konfigurationsschritte (einschließlich Konfiguration des internen Lastenausgleichs) sind jedoch automatisiert und vereinfacht. 
-
-Weitere Informationen finden Sie unter [Verwenden einer Azure-Schnellstartvorlage zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einem virtuellen Azure-Computer](availability-group-quickstart-template-configure.md).
+Bei einer Verfügbarkeitsgruppe handelt es sich um eine Gruppe von Ressourcen, die so konfiguriert sind, dass sich keine zwei Ressourcen in derselben Verfügbarkeitszone befinden. Dadurch wird verhindert, dass bei Bereitstellungsrollouts mehrere Ressourcen in der Gruppe betroffen sind. 
 
 
-## <a name="automatically-with-an-azure-portal-template"></a>Automatisch mit einer Azure-Portal-Vorlage
+## <a name="connectivity"></a>Konnektivität 
 
-[Automatisches Konfigurieren der AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern – Resource Manager](availability-group-azure-marketplace-template-configure.md)
+Bei einer herkömmlichen lokalen Bereitstellung stellen Clients über den Namen des virtuellen Netzwerks (VNN) eine Verbindung mit dem Verfügbarkeitsgruppenlistener her, und der Listener leitet den Datenverkehr an das geeignete SQL Server-Replikat in der Verfügbarkeitsgruppe weiter. Beim Routing des Datenverkehrs im Azure-Netzwerk muss eine zusätzliche Voraussetzung erfüllt werden. 
+
+Konfigurieren Sie bei SQL Server auf Azure-VMs einen [Lastenausgleich](availability-group-vnn-azure-load-balancer-configure.md) zum Weiterleiten von Datenverkehr an den Verfügbarkeitsgruppenlistener. Unter SQL Server 2019 CU8 und höher können Sie alternativ einen [DNN-Listener](availability-group-distributed-network-name-dnn-listener-configure.md) (Distributed Network Name, Name des verteilten Netzwerks) konfigurieren, um den herkömmlichen VNN-Verfügbarkeitsgruppenlistener zu ersetzen. 
 
 
-## <a name="manually-in-the-azure-portal"></a>Manuell im Azure-Portal
+### <a name="vnn-listener"></a>VNN-Listener 
 
-Sie können die virtuellen Computer auch manuell ohne Vorlage erstellen. Schließen Sie zunächst die erforderlichen Vorbereitungen ab, und erstellen Sie anschließend die Verfügbarkeitsgruppe. Weitere Informationen finden Sie in den folgenden Artikeln: 
+Verwenden Sie einen [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md), um Datenverkehr vom Client an den herkömmlichen VNN-Listener (Virtual Network Name, Name des virtuellen Netzwerks) der Verfügbarkeitsgruppe im Azure-Netzwerk weiterzuleiten. 
 
-- [Voraussetzungen für die Erstellung von Always On-Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md)
+Der Lastenausgleich enthält die IP-Adressen für den VNN-Listener. Falls Sie über mehrere Verfügbarkeitsgruppen verfügen, benötigt jede Gruppe einen VNN-Listener. Ein einzelner Lastenausgleich kann mehrere Listener unterstützen.
 
-- [Erstellen einer AlwaysOn-Verfügbarkeitsgruppe zur Verbesserung der Verfügbarkeit und Notfallwiederherstellung](availability-group-manually-configure-tutorial.md)
+Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Lastenausgleichs](availability-group-vnn-azure-load-balancer-configure.md). 
+
+### <a name="dnn-listener"></a>DNN-Listener
+
+Ab SQL Server 2019 CU8 wird der DNN-Listener unterstützt. Der DNN-Listener ersetzt den herkömmlichen Verfügbarkeitsgruppenlistener. So ist es nicht mehr erforderlich, dass der Datenverkehr im Azure-Netzwerk durch einen Azure Load Balancer weitergeleitet wird. 
+
+Der DNN-Listener ist die empfohlene HADR-Konnektivitätslösung in Azure, da sie die Bereitstellung vereinfacht, den Wartungs- und Kostenaufwand reduziert und die Failoverzeit bei einem Ausfall reduziert. 
+
+Verwenden Sie den DNN-Listener, um einen vorhandenen VNN-Listener zu ersetzen, oder verwenden Sie ihn alternativ in Verbindung mit einem vorhandenen VNN-Listener, um Ihre Verfügbarkeitsgruppe mit zwei unterschiedlichen Verbindungspunkten auszustatten: einen, der den VNN-Listenernamen (und Port, falls nicht der Standardport) nutzt, und einen, der den DNN-Listenernamen und entsprechenden Port nutzt. Dies kann für Kunden hilfreich sein, die Latenzzeiten durch Lastenausgleichsfailover vermeiden möchten, aber trotzdem die Vorteile von SQL Server-Funktionen nutzen möchten, die vom VNN-Listener abhängig sind, beispielsweise verteilte Verfügbarkeitsgruppen, Service Broker oder Filestream. Weitere Informationen finden Sie im Thema zur [Interoperabilität zwischen DNN-Listener- und SQL Server-Funktionen](availability-group-dnn-interoperability.md).
+
+Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines DNN-Listeners](availability-group-distributed-network-name-dnn-listener-configure.md).
+
+
+## <a name="deployment"></a>Bereitstellung 
+
+Es gibt mehrere Optionen für die Bereitstellung einer Verfügbarkeitsgruppe für SQL Server auf Azure-VMS. Dabei verfügen einige über einen höheren Automatisierungsgrad als andere. 
+
+Die folgende Tabelle bietet einen Vergleich der verfügbaren Optionen: 
+
+| |**[Azure-Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[Schnellstartvorlagen](availability-group-quickstart-template-configure.md)**|**[Manuell](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+|---------|---------|---------|--------- |---------|
+|**SQL Server-Version** |2016 + |2016 +|2016 +|2012 +|
+|**SQL Server-Edition** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
+|**Windows Server-Version**| 2016 + | 2016 + | 2016 + | All| 
+|**Der Cluster wird für Sie erstellt.**|Ja|Ja | Ja |Nein|
+|**Die Verfügbarkeitsgruppe wird für Sie erstellt.** |Ja |Nein|Nein|Nein|
+|**Der Listener und Lastenausgleich werden unabhängig voneinander erstellt.** |Nein|Nein|Nein|Ja|
+|**Kann mit dieser Methode ein DNN-Listener erstellt werden?**|Nein|Nein|Nein|Ja|
+|**WSFC-Quorumkonfiguration**|Cloudzeuge|Cloudzeuge|Cloudzeuge|All|
+|**DR mit mehreren Regionen** |Nein|Nein|Nein|Ja|
+|**Unterstützung mehrerer Subnetze** |Ja|Ja|Ja|Ja|
+|**Unterstützung für ein vorhandenes AD**|Ja|Ja|Ja|Ja|
+|**DR mit mehreren Zonen in derselben Region**|Ja|Ja|Ja|Ja|
+|**Verteilte AG ohne AD**|Nein|Nein|Nein|Ja|
+|**Verteilte AG ohne Cluster** |Nein|Nein|Nein|Ja|
+||||||
+
+
+
+## <a name="considerations"></a>Überlegungen 
+
+In einem Azure IaaS-VM-Gast-Failovercluster werden eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen](availability-group-manually-configure-multiple-regions.md)
+Informieren Sie sich über die [Best Practices für HADR](hadr-cluster-best-practices.md), und beginnen Sie dann mit der Bereitstellung Ihrer Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), die [Azure CLI oder PowerShell](availability-group-az-cli-configure.md), [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder die [manuelle](availability-group-manually-configure-prerequisites-tutorial.md) Bereitstellung.
+
+Alternativ können Sie eine [Verfügbarkeitsgruppe ohne Cluster](availability-group-clusterless-workgroup-configure.md) oder eine Verfügbarkeitsgruppe [in mehreren Regionen](availability-group-manually-configure-multiple-regions.md) bereitstellen. 

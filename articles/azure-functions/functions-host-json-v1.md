@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 1.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v1 Runtime.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757516"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167718"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-Referenz für Azure Functions 1.x
 
@@ -27,7 +27,7 @@ Einige Einstellungen in host.json werden nur bei lokaler Ausführung in der [loc
 
 ## <a name="sample-hostjson-file"></a>host.json-Beispieldatei
 
-Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen angegeben.
+Für die folgenden *host.json* -Beispieldateien sind alle möglichen Optionen angegeben.
 
 
 ```json
@@ -230,7 +230,7 @@ Wenn Sie ein Speicherkonto für mehrere Funktions-Apps verwenden, stellen Sie si
 
 ## <a name="logger"></a>Protokollierungstool
 
-Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](functions-monitoring.md#write-logs-in-c-functions) oder von [context.log](functions-monitoring.md#write-logs-in-javascript-functions) geschrieben werden.
+Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](functions-dotnet-class-library.md#ilogger) oder von [context.log](functions-reference-node.md#contextlog-method) geschrieben werden.
 
 ```json
 {
@@ -251,7 +251,7 @@ Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](fun
 |---------|---------|---------| 
 |categoryFilter|–|Gibt die Filterung nach Kategorie an.| 
 |defaultLevel|Information|Für alle nicht im `categoryLevels`-Array angegebenen Kategorien, werden Protokolle auf dieser und darüber liegenden Ebenen an Application Insights gesendet.| 
-|categoryLevels|–|Ein Array von Kategorien, das den minimalen Protokolliergrad angibt, der für die einzelnen Kategorien an Application Insights gesendet wird. Die hier angegebene Kategorie steuert alle Kategorien, die mit demselben Wert beginnen und längere Werte haben Vorrang. In der vorhergehenden *host.json*-Beispieldatei werden alle Kategorien, die mit „Host.Aggregator“ beginnen, auf der `Information`-Ebene protokolliert. Alle anderen Kategorien, die mit „Host“ beginnen, z. B. „Host.Executor“, werden auf der `Error`-Ebene protokolliert.| 
+|categoryLevels|–|Ein Array von Kategorien, das den minimalen Protokolliergrad angibt, der für die einzelnen Kategorien an Application Insights gesendet wird. Die hier angegebene Kategorie steuert alle Kategorien, die mit demselben Wert beginnen und längere Werte haben Vorrang. In der vorhergehenden *host.json* -Beispieldatei werden alle Kategorien, die mit „Host.Aggregator“ beginnen, auf der `Information`-Ebene protokolliert. Alle anderen Kategorien, die mit „Host“ beginnen, z. B. „Host.Executor“, werden auf der `Error`-Ebene protokolliert.| 
 
 ## <a name="queues"></a>queues
 
@@ -340,7 +340,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 
 *Version 1.x*
 
-Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter`-Objekts erstellen. Weitere Informationen finden Sie unter [C#-Protokollierung](functions-reference-csharp.md#logging) und [Node.js-Protokollierung](functions-reference-node.md#writing-trace-output-to-the-console).
+Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter`-Objekts erstellen. Weitere Informationen finden Sie unter [C#-Protokollierung].
 
 ```json
 {

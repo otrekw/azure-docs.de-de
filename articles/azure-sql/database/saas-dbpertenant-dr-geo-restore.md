@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619004"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330103"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ Stellen Sie sich vor, dass es in der Region, in der die Anwendung bereitgestellt
 
 3. Überwachen Sie den Status des Wiederherstellungsprozesses im PowerShell-Fenster.
 
-    ![Wiederherstellungsprozess](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Screenshot mit dem PowerShell-Fenster, in dem Sie den Status des Wiederherstellungsvorgangs überwachen können](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > Um den Code für die Wiederherstellungsaufträge zu untersuchen, sehen Sie sich die PowerShell-Skripts an, die im Ordner „...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs“ enthalten sind.
@@ -202,7 +202,7 @@ Solange der Anwendungsendpunkt in Traffic Manager deaktiviert ist, ist die Anwen
 
   * Wenn Sie die Veranstaltungsseite eines Mandanten direkt öffnen, während der Mandant offline ist, wird auf der Seite eine Benachrichtigung angezeigt, dass der Mandant offline ist. Versuchen Sie beispielsweise, wenn Contoso Concert Hall offline ist, „http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall“ zu öffnen.
 
-    ![Wiederherstellungsprozess](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Screenshot einer Seite mit Offlineereignissen](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Bereitstellen eines neuen Mandanten in der Wiederherstellungsregion
 Schon bevor Mandantendatenbanken wiederhergestellt sind, können Sie neue Mandanten in der Wiederherstellungsregion bereitstellen. In der Wiederherstellungsregion bereitgestellte neue Mandantendatenbanken werden später mit den wiederhergestellten Datenbanken zurückgeführt.   

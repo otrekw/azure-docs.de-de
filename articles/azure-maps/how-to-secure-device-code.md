@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319757"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090436"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Sichern eines eingabebeschränkten Geräts mit Azure AD und Azure Maps-REST-APIs
 
@@ -40,22 +40,22 @@ Erstellen Sie die gerätebasierte Anwendung in Azure AD, um die Azure AD-Anmel
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-Registrierungsdetails für Namen und Umleitungs-URI](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Navigieren Sie zu **Authentifizierung**, und aktivieren Sie **Anwendung als öffentlichen Client behandeln**. Hierdurch wird die Gerätecodeauthentifizierung mit Azure AD aktiviert.
+3. Navigieren Sie zu **Authentifizierung** , und aktivieren Sie **Anwendung als öffentlichen Client behandeln** . Hierdurch wird die Gerätecodeauthentifizierung mit Azure AD aktiviert.
     
     > [!div class="mx-imgBorder"]
     > ![Aktivieren der App-Registrierung als öffentlicher Client](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps**, und wählen Sie sie aus.
+4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps** , und wählen Sie sie aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen**, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen** , und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. Konfigurieren Sie die rollenbasierte Azure-Zugriffssteuerung für Benutzer oder Gruppen. Siehe [Gewähren der rollenbasierten Zugriffssteuerung für Benutzer in Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
+6. Konfigurieren Sie die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) für Benutzer oder Gruppen. Siehe [Gewähren des rollenbasierten Zugriffs für Benutzer in Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
 
 7. Fügen Sie Code zum Abrufen des Tokenflows in die Anwendung hinzu. Informationen zur Implementierung finden Sie unter [Gerätecodeflow](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). Verweisen Sie beim Abrufen von Token auf den Bereich `user_impersonation`, der in den vorherigen Schritten ausgewählt wurde.
 
@@ -110,7 +110,7 @@ Hauptteil:
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

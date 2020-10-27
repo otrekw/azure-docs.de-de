@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: pipeline
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 72eea7c46dd005cd16ae5b8f0022c1174dd28f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 42d2ac6cf6592f8e22b0a66aee84c3436d466572
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89667488"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329882"
 ---
 # <a name="orchestrate-with-pipelines"></a>Orchestrieren mit Pipelines
 
@@ -24,15 +25,15 @@ In diesem Tutorial erfahren Sie, wie Pipelines und Aktivitäten mithilfe von Syn
 
 Sie können eine Vielzahl verschiedener Aufgaben in Azure Synapse orchestrieren.
 
-1. Navigieren Sie in Synapse Studio zum Hub **Orchestrieren**.
+1. Navigieren Sie in Synapse Studio zum Hub **Integrieren** .
 1. Wählen Sie **+**  > **Pipeline** aus, um eine neue Pipeline zu erstellen.
-1. Navigieren Sie zum Hub **Entwickeln**, und wählen Sie eins der zuvor erstellten Notebooks aus.
-1. Ziehen Sie dieses Notebook in die Pipeline.
+1. Navigieren Sie zum Hub **Entwickeln** , und wählen Sie eins der zuvor erstellten Notebooks aus.
+1. Ziehen Sie dieses Notebook in die Pipeline. ( **Hinweis** : Schritt zum Importieren von Modulen im Notebook, wie in [diesem Dokument](https://docs.microsoft.com/azure/synapse-analytics/spark/synapse-spark-sql-pool-import-export#transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace) angegeben. Erforderlich bei der Ausführung über die Pipeline.)
 1. Wählen Sie in der Pipeline **Trigger hinzufügen** > **Neu/Bearbeiten** aus.
-1. Wählen Sie unter **Trigger auswählen** den Befehl **Neu** aus, und legen Sie dann unter **Serie** fest, dass der Trigger jede Stunde ausgeführt werden soll.
-1. Klicken Sie auf **OK**.
-1. Wählen Sie **Alle veröffentlichen**. Die Pipeline wird stündlich ausgeführt.
-1. Wählen Sie zum sofortigen Ausführen der Pipeline (ohne bis zur nächsten Ausführung nach einer Stunde zu warten) **Trigger hinzufügen** > **Neu/Bearbeiten** aus.
+1. Wählen Sie unter **Choose trigger** (Trigger auswählen) die Option **Neu** aus, und legen Sie **Wiederholung** auf „1 Stunde“ fest.
+1. Klicken Sie auf **OK** . 
+1. Wählen Sie **Alle veröffentlichen** .
+1. Wählen Sie zum sofortigen Ausführen der Pipeline, ohne den Ablauf der Stunde abzuwarten, die Option **Trigger hinzufügen** > **Jetzt auslösen** aus.
 
 
 

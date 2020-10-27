@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387727"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102050"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -34,11 +34,11 @@ Für Anwendungen und Organisationen kann die Entscheidung getroffen werden, für
 
 Wenn ein Benutzer als minderjährig identifiziert wird, können Sie für den Benutzerflow in Azure AD B2C eine von drei Optionen auswählen:
 
-- **Signiertes JWT-ID-Token an die Anwendung zurücksenden**: Der Benutzer wird im Verzeichnis registriert, und ein Token wird an die Anwendung zurückgegeben. Die Anwendung wird dann durch Anwenden von Geschäftsregeln fortgesetzt. Beispielsweise kann die Anwendung mit einem Prozess fortfahren, bei dem die Zustimmung der Eltern eingeholt wird. Zur Verwendung dieser Methode geben Sie an, dass Sie die Ansprüche **ageGroup** und **consentProvidedForMinor** von der Anwendung erhalten möchten.
+- **Signiertes JWT-ID-Token an die Anwendung zurücksenden** : Der Benutzer wird im Verzeichnis registriert, und ein Token wird an die Anwendung zurückgegeben. Die Anwendung wird dann durch Anwenden von Geschäftsregeln fortgesetzt. Beispielsweise kann die Anwendung mit einem Prozess fortfahren, bei dem die Zustimmung der Eltern eingeholt wird. Zur Verwendung dieser Methode geben Sie an, dass Sie die Ansprüche **ageGroup** und **consentProvidedForMinor** von der Anwendung erhalten möchten.
 
-- **Nicht signiertes JSON-Token an die Anwendung senden**: Azure AD B2C benachrichtigt die Anwendung darüber, dass der Benutzer minderjährig ist, und stellt den Zustimmungsstatus der Eltern für den Benutzer bereit. Die Anwendung wird dann durch Anwenden von Geschäftsregeln fortgesetzt. Ein JSON-Token führt keine erfolgreiche Authentifizierung bei der Anwendung durch. Die Anwendung muss den nicht authentifizierten Benutzer gemäß den Ansprüchen verarbeiten, die im JSON-Token enthalten sind, z.B. **name**, **email**, **ageGroup** und **consentProvidedForMinor**.
+- **Nicht signiertes JSON-Token an die Anwendung senden** : Azure AD B2C benachrichtigt die Anwendung darüber, dass der Benutzer minderjährig ist, und stellt den Zustimmungsstatus der Eltern für den Benutzer bereit. Die Anwendung wird dann durch Anwenden von Geschäftsregeln fortgesetzt. Ein JSON-Token führt keine erfolgreiche Authentifizierung bei der Anwendung durch. Die Anwendung muss den nicht authentifizierten Benutzer gemäß den Ansprüchen verarbeiten, die im JSON-Token enthalten sind, z.B. **name** , **email** , **ageGroup** und **consentProvidedForMinor** .
 
-- **Benutzer blockieren**: Wenn ein Benutzer minderjährig ist und die Zustimmung der Eltern nicht erteilt wurde, kann Azure AD B2C den Benutzer benachrichtigen, dass er blockiert ist. Es wird kein Token ausgestellt, der Zugriff wird blockiert, und das Benutzerkonto wird während des Registrierungsvorgangs nicht erstellt. Zur Implementierung dieser Benachrichtigung stellen Sie eine geeignete HTML/CSS-Inhaltsseite bereit, um den Benutzer zu informieren und die entsprechenden Optionen anzuzeigen. Für die Anwendung sind bei neuen Registrierungen keine weiteren Aktionen erforderlich.
+- **Benutzer blockieren** : Wenn ein Benutzer minderjährig ist und die Zustimmung der Eltern nicht erteilt wurde, kann Azure AD B2C den Benutzer benachrichtigen, dass er blockiert ist. Es wird kein Token ausgestellt, der Zugriff wird blockiert, und das Benutzerkonto wird während des Registrierungsvorgangs nicht erstellt. Zur Implementierung dieser Benachrichtigung stellen Sie eine geeignete HTML/CSS-Inhaltsseite bereit, um den Benutzer zu informieren und die entsprechenden Optionen anzuzeigen. Für die Anwendung sind bei neuen Registrierungen keine weiteren Aktionen erforderlich.
 
 ## <a name="get-parental-consent"></a>Einholen der Zustimmung der Eltern
 
@@ -56,7 +56,7 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 5. Wenn entweder die minderjährige oder die erwachsene Person die Zustimmung widerruft, kann die Microsoft Graph-API verwendet werden, um **consentProvidedForMinor** in **denied** zu ändern. Alternativ hierzu kann für die Anwendung auch die Entscheidung getroffen werden, eine minderjährige Person zu löschen, für die die Zustimmung widerrufen wurde. Optional ist es möglich, den Benutzerflow so anzupassen, dass die authentifizierte minderjährige Person (oder ein Elternteil, der das Konto der minderjährigen Person verwendet) die Zustimmung widerrufen kann. Azure AD B2C zeichnet **consentProvidedForMinor** als **denied** auf.
 
-Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](user-flow-custom-attributes.md). Bei der Adressierung von erweiterten Attributen mit der Microsoft Graph-API müssen Sie die lange Version des Attributs verwenden, z. B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Weitere Informationen zu **legalAgeGroupClassification** , **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](user-flow-custom-attributes.md). Bei der Adressierung von erweiterten Attributen mit der Microsoft Graph-API müssen Sie die lange Version des Attributs verwenden, z. B. *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth* : *2011-01-01T00:00:00Z* .
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Erfassen des Geburtsdatums und von Daten zu Land/Region von Benutzern
 
@@ -64,7 +64,7 @@ Anwendungen können sich beim Erfassen des Geburtsdatums und von Land/Region-Inf
 
 Ein benutzerdefinierter Benutzerflow ermöglicht das Erfassen von Geburtsdatum und Land/Region-Informationen und kann mit der Azure AD B2C-Anforderungstransformation die **ageGroup** bestimmen und das Ergebnis im Verzeichnis speichern (oder Geburtsdatum und Land/Region-Informationen direkt speichern).
 
-In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Geburtsdatum des Benutzers die Altersgruppe (**ageGroup**) berechnet wird:
+In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Geburtsdatum des Benutzers die Altersgruppe ( **ageGroup** ) berechnet wird:
 
 1. Es wird versucht, das Land bzw. die Region anhand des Landes-/Regionscodes in der Liste zu ermitteln. Wenn das Land bzw. die Region nicht gefunden wird, wird auf **Default** (Standard) zurückgegriffen.
 
@@ -97,11 +97,11 @@ In den folgenden Schritten wird beschrieben, wie Sie die Nutzungsbedingungen ver
 
 2. Erstellen Sie ein erforderliches Kontrollkästchen mit der Bezeichnung „Nutzungsbedingungen akzeptieren“, und zeichnen Sie das Ergebnis während der Registrierung auf. Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen.
 
-3. In Azure AD B2C werden die Nutzungsbedingungen und die Zustimmung des Benutzers gespeichert. Sie können die Graph-API verwenden, um den Status eines Benutzers abzufragen, indem das Erweiterungsattribut gelesen wird, das zum Aufzeichnen der Antwort verwendet wurde, z.B. **termsOfUseTestUpdateDateTime**. Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen.
+3. In Azure AD B2C werden die Nutzungsbedingungen und die Zustimmung des Benutzers gespeichert. Sie können die Graph-API verwenden, um den Status eines Benutzers abzufragen, indem das Erweiterungsattribut gelesen wird, das zum Aufzeichnen der Antwort verwendet wurde, z.B. **termsOfUseTestUpdateDateTime** . Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen.
 
-4. Anfordern der Zustimmung zu aktualisierten Nutzungsbedingungen, indem das Datum der Zustimmung mit dem Datum der letzten Version der Nutzungsbedingungen verglichen wird. Sie können die Daten nur über einen benutzerdefinierten Benutzerflow vergleichen. Verwenden Sie das erweiterte Attribut **extension_termsOfUseConsentDateTime**, und vergleichen Sie den Wert mit dem Anspruch von **termsOfUseTextUpdateDateTime**. Erzwingen Sie eine neue Zustimmung durch Anzeigen eines Bildschirms zur Identitätsbestätigung, wenn die Zustimmung veraltet ist. Blockieren Sie den Zugriff andernfalls per Richtlinienlogik.
+4. Anfordern der Zustimmung zu aktualisierten Nutzungsbedingungen, indem das Datum der Zustimmung mit dem Datum der letzten Version der Nutzungsbedingungen verglichen wird. Sie können die Daten nur über einen benutzerdefinierten Benutzerflow vergleichen. Verwenden Sie das erweiterte Attribut **extension_termsOfUseConsentDateTime** , und vergleichen Sie den Wert mit dem Anspruch von **termsOfUseTextUpdateDateTime** . Erzwingen Sie eine neue Zustimmung durch Anzeigen eines Bildschirms zur Identitätsbestätigung, wenn die Zustimmung veraltet ist. Blockieren Sie den Zugriff andernfalls per Richtlinienlogik.
 
-5. Anfordern der Zustimmung zu aktualisierten Nutzungsbedingungen, indem die Versionsnummer der Zustimmung mit der zuletzt akzeptierten Versionsnummer verglichen wird. Sie können Versionsnummern nur über einen benutzerdefinierten Benutzerflow vergleichen. Verwenden Sie das erweiterte Attribut **extension_termsOfUseConsentDateTime**, und vergleichen Sie den Wert mit dem Anspruch von **extension_termsOfUseConsentVersion**. Erzwingen Sie eine neue Zustimmung durch Anzeigen eines Bildschirms zur Identitätsbestätigung, wenn die Zustimmung veraltet ist. Blockieren Sie den Zugriff andernfalls per Richtlinienlogik.
+5. Anfordern der Zustimmung zu aktualisierten Nutzungsbedingungen, indem die Versionsnummer der Zustimmung mit der zuletzt akzeptierten Versionsnummer verglichen wird. Sie können Versionsnummern nur über einen benutzerdefinierten Benutzerflow vergleichen. Verwenden Sie das erweiterte Attribut **extension_termsOfUseConsentDateTime** , und vergleichen Sie den Wert mit dem Anspruch von **extension_termsOfUseConsentVersion** . Erzwingen Sie eine neue Zustimmung durch Anzeigen eines Bildschirms zur Identitätsbestätigung, wenn die Zustimmung veraltet ist. Blockieren Sie den Zugriff andernfalls per Richtlinienlogik.
 
 Sie können die Zustimmung zu den Nutzungsbedingungen in den folgenden Szenarien erfassen:
 
@@ -114,7 +114,7 @@ In der folgenden Abbildung ist der empfohlene Benutzerflow dargestellt:
 
 ![Flussdiagramm des empfohlenen Benutzerflows für Zustimmungen](./media/manage-user-access/user-flow.png)
 
-Hier ist ein Beispiel für die Zustimmung zu DateTime-basierten Nutzungsbedingungen in einem Anspruch angegeben:
+Hier ist ein Beispiel für die Zustimmung zu datumsbasierten Nutzungsbedingungen in einem Anspruch. Wenn der Anspruch `extension_termsOfUseConsentDateTime` älter als `2025-01-15T00:00:00` ist, erzwingen Sie eine neue Zustimmung, indem Sie den booleschen Anspruch `termsOfUseConsentRequired` aktivieren und einen selbstbestätigten Bildschirm anzeigen. 
 
 ```xml
 <ClaimsTransformations>
@@ -128,7 +128,7 @@ Hier ist ein Beispiel für die Zustimmung zu DateTime-basierten Nutzungsbedingun
       <InputClaim ClaimTypeReferenceId="extension_termsOfUseConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
     </InputClaims>
     <InputParameters>
-      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2098-01-30T23:03:45" />
+      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2025-01-15T00:00:00" />
     </InputParameters>
     <OutputClaims>
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="result" />
@@ -137,7 +137,7 @@ Hier ist ein Beispiel für die Zustimmung zu DateTime-basierten Nutzungsbedingun
 </ClaimsTransformations>
 ```
 
-Hier ist ein Beispiel für die Zustimmung zu versionsbasierten Nutzungsbedingungen in einem Anspruch angegeben:
+Hier ist ein Beispiel für die Zustimmung zu versionsbasierten Nutzungsbedingungen in einem Anspruch. Wenn der Anspruch `extension_termsOfUseConsentVersion` älter als `V1` ist, erzwingen Sie eine neue Zustimmung, indem Sie den booleschen Anspruch `termsOfUseConsentRequired` aktivieren und einen selbstbestätigten Bildschirm anzeigen.
 
 ```xml
 <ClaimsTransformations>
