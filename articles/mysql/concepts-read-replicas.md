@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876548"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151184"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -50,7 +50,7 @@ Sie können einen Quellserver in jeder [Azure Database for MySQL-Region](https:/
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Quellserver befindet. Folgende universelle Replikatregionen werden unterstützt:
 
-„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“
+Australien, Osten; Australien, Südosten; Brasilien, Süden; Kanada, Mitte; Kanada, Osten; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2; USA, Westen-Mitte.
 
 ### <a name="paired-regions"></a>Regionspaare
 Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Quellservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
@@ -128,6 +128,26 @@ Gehen Sie folgendermaßen vor, nachdem Sie entschieden haben, ein Failover auf e
     
 Wenn die Anwendung erfolgreich Lese- und Schreibvorgänge verarbeitet, haben Sie das Failover abgeschlossen. Die Ausfallzeit Ihrer Anwendung hängt davon ab, ob Sie ein Problem erkennen und die oben beschriebenen Schritte 1 und 2 ausführen.
 
+## <a name="global-transaction-identifier-gtid"></a>Globaler Transaktionsbezeichner (GTID)
+
+Der globale Transaktionsbezeichner (GTID) ist ein eindeutiger Bezeichner, der mit jeder Transaktion auf einem Quellserver, für die ein Commit ausgeführt wird, erstellt wird. Er ist in Azure Database for MySQL standardmäßig deaktiviert. GTID wird in den Versionen 5.7 und 8.0 unterstützt, und zwar nur auf Servern mit Speichergrößen bis zu 16 TB. Weitere Informationen zum GTID und seiner Verwendung in der Replikation finden Sie unter [Replikation mit GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) in der MySQL-Dokumentation.
+
+MySQL unterstützt zwei Arten von Transaktionen: GTID-Transaktionen (identifiziert mit GTID) und anonyme Transaktionen (ohne zugeordneten GTID)
+
+Die folgenden Serverparameter sind für die Konfiguration des globalen Transaktionsbezeichners (GTID) verfügbar: 
+
+|**Serverparameter**|**Beschreibung**|**Standardwert**|**Werte**|
+|--|--|--|--|
+|`gtid_mode`|Gibt an, ob GTIDs zur Identifizierung von Transaktionen verwendet werden. Änderungen zwischen Modi können nur nacheinander in aufsteigender Reihenfolge durchgeführt werden (z. B. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Sowohl neue als auch replizierte Transaktionen müssen anonym sein <br> `OFF_PERMISSIVE`: Neue Transaktionen sind anonym. Replizierte Transaktionen können entweder anonyme Transaktionen oder GTID-Transaktionen sein. <br> `ON_PERMISSIVE`: Neue Transaktionen sind GTID-Transaktionen. Replizierte Transaktionen können entweder anonyme Transaktionen oder GTID-Transaktionen sein. <br> `ON`: Sowohl neue als auch replizierte Transaktionen müssen GTID-Transaktionen sein.|
+|`enforce_gtid_consistency`|Erzwingt die GTID-Konsistenz, indem die Ausführung nur der Anweisungen zugelassen wird, die auf transaktionssichere Weise protokolliert werden können. Dieser Wert muss vor dem Aktivieren der GTID-Replikation auf `ON` festgelegt werden. |`OFF`|`OFF`: Alle Transaktionen können die GTID-Konsistenz verletzen.  <br> `ON`: Keine Transaktion darf die GTID-Konsistenz verletzen. <br> `WARN`: Alle Transaktionen können gegen GTID-Konsistenz verstoßen, aber es wird eine Warnung generiert. | 
+
+> [!NOTE]
+> Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
+
+Um GTID zu aktivieren und das Konsistenzverhalten zu konfigurieren, aktualisieren Sie die Serverparameter `gtid_mode` und `enforce_gtid_consistency` über das [Azure-Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)oder [PowerShell](howto-configure-server-parameters-using-powershell.md).
+
+Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Um die Replikation konsistent zu halten, können Sie `gtid_mode` auf den Quell- oder Replikatservern nicht aktualisieren.
+
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 
 ### <a name="pricing-tiers"></a>Tarife
@@ -178,9 +198,18 @@ Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server
 
 Löschen Sie Replikatserver, aktualisieren Sie den Parameterwert auf dem Master, und erstellen Sie Replikate neu, um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren.
 
+### <a name="gtid"></a>GTID
+
+GTID wird unterstützt:
+- In den MySQL-Versionen 5.7 und 8.0 
+- Auf Servern, die eine Speicherkapazität von bis zu 16 TB unterstützen. Im Artikel über die [Tarife](concepts-pricing-tiers.md#storage) finden Sie eine vollständige Liste der Regionen, die 16 TB-Speicher unterstützen. 
+
+Standardmäßig ist GTID deaktiviert. Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
+
+Wenn GTID auf einem Quellserver aktiviert ist, wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Um die Replikation konsistent zu halten, können Sie `gtid_mode` auf den Quell- oder Replikatservern nicht aktualisieren.
+
 ### <a name="other"></a>Andere
 
-- IDs globaler Transaktionen (GTIDs) werden nicht unterstützt.
 - Die Erstellung des Replikats eines Replikats wird nicht unterstützt.
 - In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MySQL-Replikationstechnologie. Weitere Informationen finden Sie in der [MySQL-Referenzdokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html).
 - Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.
