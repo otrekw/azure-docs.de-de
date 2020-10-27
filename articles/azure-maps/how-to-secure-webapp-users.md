@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319621"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090215"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Schützen einer Webanwendung mit Benutzeranmeldung
 
@@ -36,12 +36,12 @@ Sie müssen die Webanwendung in Azure AD erstellen, damit Benutzer sich anmelde
 
 3. Sobald die Registrierung der Anwendung abgeschlossen ist, bestätigen Sie, dass Benutzer sich bei der Anwendung anmelden können. Wenn die Anmeldung funktioniert, kann der Anwendung ein delegierter Zugriff auf die REST-APIs von Azure Maps gewährt werden.
     
-4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps**, und wählen Sie sie aus.
+4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps** , und wählen Sie sie aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen**, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen** , und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)
@@ -59,7 +59,7 @@ Sie müssen die Webanwendung in Azure AD erstellen, damit Benutzer sich anmelde
    * Informationen zu einer Nicht-AspNetCore- oder anderen Implementierung finden Sie unter [Beziehen des Tokens für die App](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) in der Azure AD-Dokumentation.
    * Der geschützte Token-Endpunkt ist dafür zuständig, dem authentifizierten und autorisierten Benutzer ein Zugriffstoken für den Aufruf der REST-APIs von Azure Maps zurückzugeben.
 
-8. Konfigurieren Sie die rollenbasierte Azure-Zugriffssteuerung für Benutzer oder Gruppen. Details hierzu finden Sie unter [Gewähren des rollenbasierten Zugriffs](#grant-role-based-access-for-users-to-azure-maps).
+8. Konfigurieren Sie die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) für Benutzer oder Gruppen. Details hierzu finden Sie unter [Erteilen des rollenbasierten Zugriffs für Benutzer](#grant-role-based-access-for-users-to-azure-maps).
 
 9. Konfigurieren Sie die Webanwendungsseite mit dem Azure Maps Web SDK für den Zugriff auf den sicheren Token-Endpunkt. 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

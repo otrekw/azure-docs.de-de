@@ -2,22 +2,23 @@
 title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/16/2020
+ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055085"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147982"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
-In diesem Artikel wird der Planungsprozess zum Identifizieren und Sammeln von Daten beschrieben, die während der Bereitstellung verwendet werden. Verwenden Sie die [Checkliste für die Vorbereitung der Bereitstellung](pre-deployment-checklist.md), um die Informationen zu dokumentieren und diese während der Bereitstellung dann leicht nachsehen zu können.  
+In diesem Artikel wird der Planungsprozess zum Identifizieren und Sammeln von Daten beschrieben, die während der Bereitstellung verwendet werden. Stellen Sie beim Planen Ihrer Bereitstellung sicher, dass Sie die gesammelten Informationen dokumentieren, damit Sie während des Bereitstellungsvorgangs leicht darauf zugreifen können.
 
 Die Prozesse dieser Schnellstartanleitung führen zu einer für die Produktion vorbereiteten Umgebung zum Erstellen von virtuellen Computern (VMs) und Durchführen der Migration. 
 
 >[!IMPORTANT]
->Bevor Sie Ihre Azure VMware Solution-Ressource erstellen, müssen Sie ein Supportticket einreichen, damit ihre Knoten zugewiesen werden. Sobald das Supportteam Ihre Anforderung erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wird und ihre Knoten zugewiesen werden. Wenn Sie eine vorhandene private Azure VMware Solution-Cloud haben und möchten, dass weitere Knoten zugeordnet werden, durchlaufen Sie denselben Prozess. Weitere Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md). 
+>Halten Sie sich vor dem Erstellen Ihrer Azure VMware Solution-Ressource an die Informationen im Artikel [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md), um ein Supportticket für die Zuordnung Ihrer Knoten zu übermitteln. Sobald das Supportteam Ihre Anforderung erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wird und ihre Knoten zugewiesen werden. Wenn Sie eine vorhandene private Azure VMware Solution-Cloud haben und möchten, dass weitere Knoten zugeordnet werden, durchlaufen Sie denselben Prozess. 
+
 
 ## <a name="subscription"></a>Subscription
 
@@ -110,8 +111,8 @@ Falls Sie für die ExpressRoute-Leitung eine Verbindung von Azure VMware Solutio
 
 Die Frage lautet also: Möchten Sie für Azure VMware Solution eine Verbindung mit einem vorhandenen ExpressRoute-Gateway herstellen?  
 
-* **Ja**: Identifizieren Sie das virtuelle Netzwerk, das während der Bereitstellung nicht verwendet wird.
-* **Nein**: Identifizieren Sie ein vorhandenes virtuelles Netzwerk, oder erstellen Sie während der Bereitstellung ein neues.
+* **Ja** : Identifizieren Sie das virtuelle Netzwerk, das während der Bereitstellung nicht verwendet wird.
+* **Nein** : Identifizieren Sie ein vorhandenes virtuelles Netzwerk, oder erstellen Sie während der Bereitstellung ein neues.
 
 Dokumentieren Sie in beiden Fällen, was Sie in diesem Schritt tun möchten.
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311102"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089450"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
@@ -41,7 +41,7 @@ Abhängig von den Anwendungsanforderungen gibt es bestimmte Wege, um die Anwendu
 In der folgenden Tabelle werden gängige Authentifizierungs- und Autorisierungsszenarien in Azure Maps umrissen. Die Tabelle enthält einen Vergleich der Arten von Schutz, die das jeweilige Szenario bietet.
 
 > [!IMPORTANT]
-> Microsoft empfiehlt die Implementierung von Azure Active Directory (Azure AD) mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) für Produktionsanwendungen.
+> Microsoft empfiehlt die Implementierung von Azure Active Directory (Azure AD) mit der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC) für Produktionsanwendungen.
 
 | Szenario                                                                                    | Authentifizierung | Authorization | Entwicklungsaufwand | Betriebsaufwand |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
@@ -63,10 +63,10 @@ Navigieren Sie zum Anzeigen der für Azure Maps verfügbaren Azure-Rollen zu **Z
 
 ## <a name="view-role-assignments"></a>Anzeigen von Rollenzuweisungen
 
-Um Benutzer und Apps anzuzeigen, denen die rollenbasierte Zugriffssteuerung für Azure Maps gewährt wurde, navigieren Sie zu **Zugriffssteuerung (IAM)** . Wählen Sie dort die Option **Rollenzuweisungen** aus, und filtern Sie dann nach **Azure Maps**.
+Um Benutzer und Apps anzuzeigen, denen Zugriff für Azure Maps gewährt wurde, navigieren Sie zu **Zugriffssteuerung (IAM)** . Wählen Sie dort die Option **Rollenzuweisungen** aus, und filtern Sie dann nach **Azure Maps** .
 
 > [!div class="mx-imgBorder"]
-> ![Anzeigen von Benutzern und Apps, denen die rollenbasierte Zugriffssteuerung gewährt wurde](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![Anzeigen von Benutzern und Apps, denen Zugriff gewährt wurde](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Anfordern von Token für Azure Maps
 

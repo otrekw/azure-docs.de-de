@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erste Schritte mit Azure Sentinel'
-description: Verwenden Sie diese Schnellstartanleitung, um zu erfahren, wie Sie die Vorgänge in Ihrer Umgebung mit Azure Sentinel schnell anzeigen und überwachen können. 
+description: Verwenden Sie diese Schnellstartanleitung, um zu erfahren, wie Sie die Vorgänge in Ihrer Umgebung mit Azure Sentinel schnell anzeigen und überwachen können.
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889143"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208225"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -57,7 +57,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
 1. Wählen Sie unter **Einstellungen** die Option **Arbeitsmappen** aus. Unter **Installiert** werden alle installierten Arbeitsmappen angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Arbeitsmappen angezeigt, die zur Installation verfügbar sind. 
 2. Suchen Sie nach einer bestimmten Arbeitsmappe, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Arbeitsmappen anzuzeigen. 
 3. Sofern Sie Azure AD verwenden, empfehlen wir, zur Verwendung von Azure Sentinel mindestens die folgenden Arbeitsmappen zu installieren:
-   - **Azure AD**: Verwenden Sie eines oder beide der folgenden Dashboards:
+   - **Azure AD** : Verwenden Sie eines oder beide der folgenden Dashboards:
        - Das Dashboard **Azure AD sign-ins** (Azure AD-Anmeldungen) analysiert Anmeldungen im Zeitverlauf, um Anomalien zu ermitteln. In dieser Arbeitsmappe werden fehlgeschlagene Anmeldungen nach Anwendungen, Geräten und Orten sortiert angezeigt, sodass Sie auf einen Blick sehen können, ob etwas Ungewöhnliches geschieht. Achten Sie besonders auf mehrmals fehlgeschlagene Anmeldungen. 
        - Das Dashboard **Azure AD audit logs** (Azure AD-Überwachungsprotokolle) analysiert Administratoraktivitäten, z. B. Änderungen der Benutzer (Hinzufügen, Entfernen usw.), die Erstellung von Gruppen und andere Änderungen.  
 
@@ -66,7 +66,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
       ![Palo Alto-Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sie können die Arbeitsmappen jeweils anpassen, indem Sie die Hauptabfrage über die ![Schaltfläche „Abfrage bearbeiten“](./media/qs-get-visibility/edit-query-button.png) bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche „Log Analytics“](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (…) klicken und dann auf **Kacheldaten anpassen**, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus der Arbeitsmappe zu entfernen.
+Sie können die Arbeitsmappen jeweils anpassen, indem Sie die Hauptabfrage über die ![Schaltfläche „Abfrage bearbeiten“](./media/qs-get-visibility/edit-query-button.png) bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche „Log Analytics“](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (…) klicken und dann auf **Kacheldaten anpassen** , um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus der Arbeitsmappe zu entfernen.
 
 Weitere Informationen zum Verwenden von Abfragen finden Sie unter [Tutorial: Visualisieren von Daten in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md).
 
@@ -79,9 +79,9 @@ Wenn Sie eine neue Kachel hinzufügen möchten, können Sie sie einer vorhandene
 ## <a name="create-new-workbooks"></a>Erstellen neuer Arbeitsmappen
 Sie können eine komplett neue Arbeitsmappe erstellen oder eine integrierte Arbeitsmappe als Grundlage für die neue Arbeitsmappe verwenden.
 
-1. Zum Erstellen einer komplett neuen Arbeitsmappe wählen Sie **Arbeitsmappen** aus, und klicken Sie dann auf **+Neue Arbeitsmappe**.
+1. Zum Erstellen einer komplett neuen Arbeitsmappe wählen Sie **Arbeitsmappen** aus, und klicken Sie dann auf **+Neue Arbeitsmappe** .
 2. Wählen Sie das Abonnement aus, in dem Sie die Arbeitsmappe erstellen, und geben Sie einen beschreibenden Namen ein. Jede Arbeitsmappe ist eine normale Azure-Ressource. Sie können ihr Rollen zuweisen (rollenbasierte Zugriffssteuerung; Role-Based Access Control, RBAC), um die zugriffsberechtigten Benutzer festzulegen und einzuschränken. 
-3. Damit die Arbeitsmappe in Ihren Arbeitsmappen angezeigt wird und Visualisierungen angeheftet werden können, müssen Sie sie freigeben. Klicken Sie auf **Freigeben** und dann auf **Benutzer verwalten**. 
+3. Damit die Arbeitsmappe in Ihren Arbeitsmappen angezeigt wird und Visualisierungen angeheftet werden können, müssen Sie sie freigeben. Klicken Sie auf **Freigeben** und dann auf **Benutzer verwalten** . 
  
 1. Verwenden Sie die Optionen **Zugriff überprüfen** und **Rollenzuweisungen** wie bei jeder anderen Azure-Ressource. Weitere Informationen finden Sie unter [Freigeben von Azure-Arbeitsmappe mithilfe der rollenbasierten Zugriffssteuerung](../azure-portal/azure-portal-dashboard-share-access.md).
 
@@ -119,7 +119,7 @@ Erstellen Sie Erkennungen für die [Datenquellen, die Sie mit Azure Sentinel ver
 
 Nutzen Sie beim Erstellen einer neuen Erkennung die von Microsoft-Sicherheitsexperten entwickelten integrierten Erkennungen, die auf die verbundenen Datenquellen zugeschnitten sind.
 
-Navigieren Sie zum Anzeigen aller standardmäßig verfügbaren Erkennungen zu **Analytics** und dann zu **Regelvorlagen**. Diese Registerkarte enthält alle integrierten Azure Sentinel-Regeln.
+Navigieren Sie zum Anzeigen aller standardmäßig verfügbaren Erkennungen zu **Analytics** und dann zu **Regelvorlagen** . Diese Registerkarte enthält alle integrierten Azure Sentinel-Regeln.
 
    ![Verwenden integrierter Erkennungen für die Suche nach Bedrohungen mit Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 

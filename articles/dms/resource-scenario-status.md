@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 77c54d6ea463b5a8a4952d243886b80f38312d27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291485"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319909"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -29,7 +29,7 @@ Mit Azure Database Migration Service können Sie eine Offline- oder eine Onlinem
 
 ## <a name="migration-scenario-status"></a>Status von Migrationsszenarios
 
-Der Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden, kann sich im Lauf der Zeit ändern. Szenarien werden im Allgemeinen zuerst als **private Vorschau** veröffentlicht. Für die Teilnahme an der privaten Vorschau müssen Kunden über die [DMS Preview-Website](https://aka.ms/dms-preview) eine Nominierung einreichen. Nach der privaten Vorschau ändert sich der Szenariostatus in **Öffentliche Vorschau**. Benutzer von Azure Database Migration Service können die in der öffentlichen Vorschau verfügbaren Migrationsszenarien direkt über die Benutzeroberfläche testen. Eine Registrierung ist nicht erforderlich.  Allerdings sind Migrationsszenarien in der öffentlichen Vorschau möglicherweise nicht in allen Regionen verfügbar, und vor der endgültigen Veröffentlichung werden gegebenenfalls weitere Änderungen vorgenommen. Nach der öffentlichen Vorschau ändert sich der Szenariostatus in **Allgemeine Verfügbarkeit**. Die allgemeine Verfügbarkeit (General Availability, GA) ist der endgültige Veröffentlichungsstatus. Der Funktionsumfang ist vollständig und für alle Benutzer zugänglich.
+Der Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden, kann sich im Lauf der Zeit ändern. Szenarien werden im Allgemeinen zuerst als **private Vorschau** veröffentlicht. Für die Teilnahme an der privaten Vorschau müssen Kunden über die [DMS Preview-Website](https://aka.ms/dms-preview) eine Nominierung einreichen. Nach der privaten Vorschau ändert sich der Szenariostatus in **Öffentliche Vorschau** . Benutzer von Azure Database Migration Service können die in der öffentlichen Vorschau verfügbaren Migrationsszenarien direkt über die Benutzeroberfläche testen. Eine Registrierung ist nicht erforderlich.  Allerdings sind Migrationsszenarien in der öffentlichen Vorschau möglicherweise nicht in allen Regionen verfügbar, und vor der endgültigen Veröffentlichung werden gegebenenfalls weitere Änderungen vorgenommen. Nach der öffentlichen Vorschau ändert sich der Szenariostatus in **Allgemeine Verfügbarkeit** . Die allgemeine Verfügbarkeit (General Availability, GA) ist der endgültige Veröffentlichungsstatus. Der Funktionsumfang ist vollständig und für alle Benutzer zugänglich.
 
 ## <a name="migration-scenario-support"></a>Unterstützung von Migrationsszenarios
 
@@ -81,13 +81,12 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Azure-Datenbank für MySQL** | MySQL | ✔ | Allgemein verfügbar |
 |   | RDS MySQL | ✔ | Allgemein verfügbar |
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | ✔ | Allgemein verfügbar |
-|   | Azure DB for PostgreSQL – Einzelserver* | ✔ | Allgemein verfügbar |
+|   | Azure DB for PostgreSQL – Einzelserver | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
 |   | Oracle | ✔ | Public Preview |
 | **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
 
-\* Für PostgreSQL ab Version 10 unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

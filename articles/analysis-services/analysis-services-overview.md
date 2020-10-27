@@ -4,16 +4,16 @@ description: Lernen Sie Azure Analysis Services kennen, eine vollständig verwal
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018796"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201510"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -35,11 +35,11 @@ Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermögli
 
 ## <a name="the-right-tier-when-you-need-it"></a>Immer der richtige Tarif
 
-Azure Analysis Services ist in den Tarifen **Developer**, **Basic** und **Standard** erhältlich. Die Plankosten in den einzelnen Tarifen sind jeweils abhängig von Verarbeitungsleistung, Abfrageverarbeitungseinheiten (Query Processing Units, QPUs) und Arbeitsspeichergröße. Bei der Servererstellung wählen Sie einen Plan innerhalb eines Tarifs aus. Sie können Pläne innerhalb eines Tarifs nach oben oder unten anpassen oder in einen höheren Tarif wechseln. Nur ein Wechsel in einen niedrigeren Tarif ist nicht möglich.
+Azure Analysis Services ist in den Tarifen **Developer** , **Basic** und **Standard** erhältlich. Die Plankosten in den einzelnen Tarifen sind jeweils abhängig von Verarbeitungsleistung, Abfrageverarbeitungseinheiten (Query Processing Units, QPUs) und Arbeitsspeichergröße. Bei der Servererstellung wählen Sie einen Plan innerhalb eines Tarifs aus. Sie können Pläne innerhalb eines Tarifs nach oben oder unten anpassen oder in einen höheren Tarif wechseln. Nur ein Wechsel in einen niedrigeren Tarif ist nicht möglich.
 
 ### <a name="developer-tier"></a>Developer-Tarif
 
-Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
+Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar* . Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
 
 |Planen  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -48,7 +48,7 @@ Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. 
 
 ### <a name="basic-tier"></a>Basic-Tarif
 
-Dieser Tarif wird für Produktionslösungen mit kleineren Tabellenmodellen, einer begrenzten Anzahl von gleichzeitig aktiven Benutzern und einfachen Anforderungen an die Datenaktualisierung empfohlen. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Features wie Perspektiven, mehrere Partitionen und das DirectQuery-Tabellenmodell werden für diesen Tarif *nicht unterstützt*.  
+Dieser Tarif wird für Produktionslösungen mit kleineren Tabellenmodellen, einer begrenzten Anzahl von gleichzeitig aktiven Benutzern und einfachen Anforderungen an die Datenaktualisierung empfohlen. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar* . Features wie Perspektiven, mehrere Partitionen und das DirectQuery-Tabellenmodell werden für diesen Tarif *nicht unterstützt* .  
 
 |Planen  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -71,7 +71,7 @@ Dieser Tarif ist am besten für unternehmenskritische Produktionsanwendungen gee
 |S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
 <a name="naar">1</a> – nicht in allen Regionen verfügbar.   
-<a name="rec">2</a>: Die Verwendung von v2 wird empfohlen.
+<a name="rec">2</a> – S8 und S9 sind [veraltet](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/). v2 wird empfohlen. 
 
 ## <a name="availability-by-region"></a>Verfügbarkeit nach Region
 
@@ -85,7 +85,7 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Kanada, Mitte    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA (Ost) 2     |     S8, S9, S8v2, S9v2   |    1    |
+|USA (Ost) 2     |     S8v2, S9v2   |    1    |
 |USA Nord Mitte     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA Nord Mitte     |     S8v2, S9v2    |    1     |
 |USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -93,9 +93,9 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |USA Süd Mitte     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA (Westen)     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA (Westen)     |    S8, S9, S8v2, S9v2   |    2  |
+|USA (Westen)     |    S8v2, S9v2   |    2  |
 |USA, Westen 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA, Westen 2    |    S8, S9, S8v2, S9v2  |    1     |
+|USA, Westen 2    |    S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -105,17 +105,18 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Nordeuropa     |    S8v2, S9v2      |    3     |
 |UK, Süden     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa, Westen     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa, Westen    |   S8, S9, S8v2, S9v2  |  1  |
+|Europa, Westen    |   S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asien-Pazifik 
 
 |Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Australien (Osten)     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australien (Osten)     |    S8, S9, S8v2, S9v2    |    1     |
+|Australien (Osten)     |    S8v2, S9v2    |    1     |
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan, Osten     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
+|Asien, Südosten     |     S8v2, S9v2     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Bedarfsgerechte Skalierung

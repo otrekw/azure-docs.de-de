@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057483"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201346"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
@@ -39,7 +39,7 @@ Zum Einstieg benötigen Sie Folgendes:
 
 Sobald Ihre Azure Digital Twins-Instanz bereit ist, können Sie mit der Einrichtung des Client-App-Projekts beginnen. 
 
-Öffnen Sie eine Eingabeaufforderung oder ein anderes Konsolenfenster auf Ihrem Rechner, und erstellen Sie ein leeres Projektverzeichnis, in dem Sie Ihre Arbeit während dieses Tutorials speichern möchten. Geben Sie dem Verzeichnis einen beliebigen Namen (z. B. *DigitalTwinsCodeTutorial*).
+Öffnen Sie eine Eingabeaufforderung oder ein anderes Konsolenfenster auf Ihrem Rechner, und erstellen Sie ein leeres Projektverzeichnis, in dem Sie Ihre Arbeit während dieses Tutorials speichern möchten. Geben Sie dem Verzeichnis einen beliebigen Namen (z. B. *DigitalTwinsCodeTutorial* ).
 
 Navigieren Sie zum neuen Verzeichnis.
 
@@ -49,7 +49,7 @@ Navigieren Sie zum neuen Verzeichnis.
 dotnet new console
 ```
 
-Auf diese Weise werden verschiedene Dateien in Ihrem Verzeichnis erstellt, darunter eine Datei mit dem Namen *Program.cs*, in der Sie den Großteil Ihres Codes schreiben werden.
+Auf diese Weise werden verschiedene Dateien in Ihrem Verzeichnis erstellt, darunter eine Datei mit dem Namen *Program.cs* , in der Sie den Großteil Ihres Codes schreiben werden.
 
 Als Nächstes fügen Sie zwei erforderliche Abhängigkeiten für die Arbeit mit Azure Digital Twins hinzu:
 
@@ -104,40 +104,21 @@ Anschließend fügen Sie Code in diese Datei ein, um etwas Funktionalität hinzu
 
 Als Erstes muss sich Ihre App beim Azure Digital Twins-Dienst authentifizieren. Anschließend können Sie eine Dienstclientklasse für den Zugriff auf die SDK-Funktionen erstellen.
 
-Für die Authentifizierung benötigen Sie die folgenden Informationen:
-* Die *Verzeichnis-ID (Mandanten-ID)* für Ihr Abonnement
-* Die *Anwendungs-ID (Client-ID)* , die beim Einrichten der Azure Digital Twins-Instanz erstellt wurde
-* Den *Hostnamen* Ihrer Azure Digital Twins-Instanz
+Für die Authentifizierung benötigen Sie den *hostName* Ihrer Azure Digital Twins-Instanz.
 
->[!TIP]
-> Wenn Sie die *Verzeichnis-ID (Mandanten-ID)* nicht kennen, können Sie sie über diesen Befehl in [Azure Cloud Shell](https://shell.azure.com) abrufen:
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-Fügen Sie in *Program.cs* den folgenden Code unterhalb der Ausgabezeile „Hello, World!“ in der `Main`-Methode ein. Legen Sie den Wert von `adtInstanceUrl` auf den *hostName*-Wert Ihrer Azure Digital Twins-Instanz, `clientId` auf Ihre *Anwendungs-ID* und `tenantId` auf Ihre *Verzeichnis-ID* fest.
+Fügen Sie in *Program.cs* den folgenden Code unterhalb der Ausgabezeile „Hello, World!“ in der `Main`-Methode ein. Legen Sie den Wert von `adtInstanceUrl` auf den *hostName* Ihrer Azure Digital Twins-Instanz fest.
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
-Speichern Sie die Datei . 
-
-Beachten Sie, dass in diesem Beispiel interaktive Browseranmeldeinformationen verwendet werden:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Diese Art von Anmeldeinformationen führen dazu, dass ein Browserfenster geöffnet wird, in dem Sie zur Eingabe Ihrer Azure-Anmeldeinformationen aufgefordert werden. 
+Speichern Sie die Datei. 
 
 >[!NOTE]
-> Informationen zu weiteren Arten von Anmeldeinformationen finden Sie in der Dokumentation [Microsoft Identity Plattform: Authentifizierungsbibliotheken](../active-directory/develop/reference-v2-libraries.md).
+> In diesem Beispiel werden Anmeldeinformationen vom Typ `DefaultAzureCredential` für die Authentifizierung verwendet. Informationen zu anderen Arten von Anmeldeinformationen finden Sie in der Dokumentation zum Thema [Microsoft Identity Plattform: Authentifizierungsbibliotheken](../active-directory/develop/reference-v2-libraries.md) oder im Azure Digital Twins-Artikel zur [Authentifizierung von Clientanwendungen](how-to-authenticate-client.md).
 
 Führen Sie in Ihrem Befehlsfenster den Code mit diesem Befehl aus: 
 
@@ -146,7 +127,7 @@ dotnet run
 ```
 
 Auf diese Weise werden die Abhängigkeiten bei der ersten Ausführung wiederhergestellt, und anschließend wird das Programm ausgeführt. 
-* Falls keine Fehler auftreten, gibt das Programm die folgende Meldung aus: *Service client created - ready to go*.
+* Falls keine Fehler auftreten, gibt das Programm die folgende Meldung aus: *Service client created - ready to go* .
 * Weil in diesem Projekt noch keine Fehlerbehandlung stattfindet, löst der Code bei Problemen eine Ausnahme aus.
 
 ### <a name="upload-a-model"></a>Hochladen eines Modells
@@ -155,7 +136,7 @@ Azure Digital Twins umfasst kein intrinsisches Domänenvokabular. Die Elementtyp
 
 Beim Erstellen einer Azure Digital Twins-Lösung wird im ersten Schritt mindestens ein Modell in einer DTDL-Datei definiert.
 
-Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine neue *JSON*-Datei mit dem Namen *SampleModel.json*. Fügen Sie den folgenden Dateitext ein: 
+Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine neue *JSON* -Datei mit dem Namen *SampleModel.json* . Fügen Sie den folgenden Dateitext ein: 
 
 ```json
 {
@@ -314,19 +295,26 @@ for(int i=0; i<3; i++) {
 
 Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. Wiederholen Sie anschließend diesen Vorgang, um das Programm erneut auszuführen. 
 
-Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler ausgegeben wird, obwohl die Zwillinge bereits nach der ersten Ausführung vorhanden sind. Im Gegensatz zur Modellerstellung erfolgt die Erstellung der Zwillinge auf REST-Ebene über einen *PUT*-Aufruf mit *upsert*-Semantik. Wenn also ein Zwilling bereits vorhanden ist, wird bei einem erneuten Erstellungsversuch der vorhandene Zwilling einfach ersetzt. Kein Fehler erforderlich.
+Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler ausgegeben wird, obwohl die Zwillinge bereits nach der ersten Ausführung vorhanden sind. Im Gegensatz zur Modellerstellung erfolgt die Erstellung der Zwillinge auf REST-Ebene über einen *PUT* -Aufruf mit *upsert* -Semantik. Wenn also ein Zwilling bereits vorhanden ist, wird bei einem erneuten Erstellungsversuch der vorhandene Zwilling einfach ersetzt. Kein Fehler erforderlich.
 
 ### <a name="create-relationships"></a>Erstellen von Beziehungen
 
 Im nächsten Schritt können Sie **Beziehungen** zwischen den erstellten Zwillingen erstellen, um sie in einem **Zwillingsgraphen** zu verbinden. [Zwillingsgraphen](concepts-twins-graph.md) werden verwendet, um Ihre gesamte Umgebung darzustellen.
 
-Zum Erstellen von Beziehungen benötigen Sie den `Azure.DigitalTwins.Core.Serialization`-Namespace. Sie haben ihn dem Projekt zuvor mit der folgenden `using`-Anweisung hinzugefügt:
+Zur Unterstützung beim Erstellen von Beziehungen wird in diesem Codebeispiel der Namespace `Azure.DigitalTwins.Core.Serialization` verwendet. Sie haben ihn dem Projekt zuvor mit der folgenden `using`-Anweisung hinzugefügt:
 
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` ist für die Verwendung von digitalen Zwillingen und Beziehungen nicht zwingend erforderlich. Es handelt sich um einen optionalen Namespace, mit dem Daten in das richtige Format gebracht werden können. Beispiele für Alternativen:
+>* Verketten von Zeichenfolgen zum Bilden eines JSON-Objekts
+>* Verwenden eines JSON-Parsers wie `System.Text.Json` zum dynamischen Erstellen eines JSON-Objekts
+>* Modellieren Ihrer benutzerdefinierten Typen in C# und Durchführen der Instanziierung und Serialisierung in Zeichenfolgen
+
 Fügen Sie unterhalb der `Main`-Methode eine neue statische Methode zur `Program`-Klasse hinzu:
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +336,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Anschließend fügen Sie den folgenden Code am Ende der `Main`-Methode zum Aufrufen des `CreateRelationship`-Codes hinzu:
+Fügen Sie als Nächstes den folgenden Code am Ende der Methode `Main` hinzu, um die Methode `CreateRelationship` aufzurufen und den soeben geschriebenen Code zu verwenden:
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
@@ -455,11 +444,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

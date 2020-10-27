@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 602babb3544093b7cd7c5b30ce4f4612148591cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315574"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216911"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Debugging und Problembehandlung von ParallelRunStep
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie Debugging und Problembehandlung für die
 
 ## <a name="testing-scripts-locally"></a>Lokales Testen von Skripts
 
-Weitere Informationen finden Sie im Abschnitt [Lokales Testen von Skripts](how-to-debug-pipelines.md#debug-scripts-locally) für Pipelines des maschinellen Lernens. Ihre ParallelRunStep-Instanz wird als Schritt in ML-Pipelines ausgeführt, sodass die gleiche Antwort für beide gilt.
+Weitere Informationen finden Sie im Abschnitt [Lokales Testen von Skripts](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines) für Pipelines des maschinellen Lernens. Ihre ParallelRunStep-Instanz wird als Schritt in ML-Pipelines ausgeführt, sodass die gleiche Antwort für beide gilt.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Debuggen von Skripts aus Remotekontext
 
@@ -124,23 +124,25 @@ Der Benutzer kann Eingabedatasets mit Dienstprinzipalauthentifizierung übergebe
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="***",
-    service_principal_id="***",
-    service_principal_password="***")
+    tenant_id="**_",
+    service_principal_id="_*_",
+    service_principal_password="_*_")
  
 ws = Workspace(
-    subscription_id="***",
-    resource_group="***",
-    workspace_name="***",
+    subscription_id="_*_",
+    resource_group="_*_",
+    workspace_name="_*_",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
-ds = Dataset.File.from_files(default_blob_store, '**path***')
-registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
+ds = Dataset.File.from_files(default_blob_store, '_*path**_')
+registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Sehen Sie sich diese [Jupyter-Notebooks zur Veranschaulichung von Azure Machine Learning-Pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) an.
 
 * Hilfe zum Paket [azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) finden Sie in der SDK-Referenz. Zeigen Sie die [Referenzdokumentation](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true) für die ParallelRunStep-Klasse an.
 

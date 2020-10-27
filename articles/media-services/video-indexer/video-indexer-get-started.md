@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130754"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219789"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Schnellstart: Registrieren und Hochladen Ihres ersten Videos
 
@@ -39,24 +39,28 @@ Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-form
 ### <a name="upload-a-video"></a>Hochladen eines Videos
 
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
-2. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen**, um ein Video hochzuladen.
+1. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen** , um ein Video hochzuladen.
 
     > [!NOTE]
     > Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
 
-    ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Upload":::
+1. Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos. Der Status wird angezeigt. 
 
-    Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Upload":::
+1. Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine E-Mail mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, gesprochene und geschriebene Wörter, Themen und benannte Entitäten.
+1. Ihr Video ist später dann in der Bibliotheksliste aufgeführt, und Sie können unterschiedliche Vorgänge durchführen. Beispiel: Suchen, Erneutes Indizieren, Bearbeiten.
 
-    ![Hochgeladen](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Upload":::
+ 
 ## <a name="see-also"></a>Weitere Informationen
 
 Weitere Informationen finden Sie unter [Hochladen und Indizieren Ihrer Videos](upload-index-videos.md).
 
-Nach dem Hochladen und Indizieren eines Videos können Sie die [Video Indexer-Website](video-indexer-view-edit.md) oder das [Video Indexer-Entwicklerportal](video-indexer-use-apis.md) verwenden, um die aus dem Video gewonnenen Erkenntnisse anzuzeigen. 
+Nach dem Hochladen und Indizieren eines Videos können Sie die [Video Indexer-Website](video-indexer-view-edit.md) oder das [Video Indexer-Entwicklerportal](video-indexer-use-apis.md) verwenden, um die für das Video gewonnenen Erkenntnisse anzuzeigen. 
 
 [Einstieg in APIs](video-indexer-use-apis.md)
 

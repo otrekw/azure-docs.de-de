@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01f10d3ba83d23478a7113cf4935181ee34959e3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998447"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125285"
 ---
 # <a name="enclave-aware-containers"></a>Enklavefähige Container
 
@@ -51,14 +51,19 @@ Mit dieser Lösung können Sie ein bereits vorhandenes, per Machine Learning tra
 
 Informationen zu den ersten Schritten für eine Lift & Shift-Migration eines ML-Modells zur ONNX-Runtime finden Sie [hier](https://aka.ms/confidentialinference).
 
-## <a name="container-samples-implementations"></a>Containerbeispielimplementierungen
+### <a name="edgeless-rt"></a>Edgeless RT
 
-[Azure-Beispiele für enklavefähige Container in AKS](https://github.com/Azure-Samples/enclave-aware-container-samples)
+Edgeless RT ist ein Open-Source-Projekt, das auf dem Open Enclave SDK aufbaut. Es ist Unterstützung für Go und zusätzliche C++-Features vorhanden. Steigen Sie [hier](https://github.com/edgelesssys/edgelessrt) in die Nutzung einer einfachen vertraulichen Go-Anwendung in Ihrer vertrauten VS Code-Umgebung ein. Befolgen Sie [diese Anleitung](https://github.com/edgelesssys/edgelessrt/blob/master/docs/ERTAzureAKSDeployment.md) für Edgeless-Anwendungen in AKS.
+
+
+## <a name="container-based-sample-implementations"></a>Containerbasierte Beispielimplementierungen
+
+[Azure-Beispiele für enklavefähige Container in AKS](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
-[Confidential Containers]: /confidential-computing/containercompute/confidential-containers
+[Virtuelle DC-Computer](/confidential-computing/virtual-machine-solutions)
+[Vertrauliche Container](/confidential-computing/containercompute/confidential-containers)

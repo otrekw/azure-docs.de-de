@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319689"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090283"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Schützen einer Single-Page-Webanwendung mit Benutzeranmeldung
 
@@ -32,14 +32,14 @@ Erstellen Sie die Webanwendung in Azure AD, damit Benutzer sich anmelden könne
     > [!div class="mx-imgBorder"]
     > ![App-Registrierung](./media/how-to-manage-authentication/app-registration.png)
 
-2. Geben Sie einen **Namen** ein, wählen Sie einen **Supportkontotyp** aus, geben Sie einen Umleitungs-URI an, der die URL darstellt, für die Azure AD das Token ausstellt, und die URL ist, unter der das Kartensteuerelement gehostet wird. Ein ausführliches Beispiel finden Sie unter [Azure Maps Azure AD: Beispiele](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Klicken Sie anschließend auf **Registrieren**.  
+2. Geben Sie einen **Namen** ein, wählen Sie einen **Supportkontotyp** aus, geben Sie einen Umleitungs-URI an, der die URL darstellt, für die Azure AD das Token ausstellt, und die URL ist, unter der das Kartensteuerelement gehostet wird. Ein ausführliches Beispiel finden Sie unter [Azure Maps Azure AD: Beispiele](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Klicken Sie anschließend auf **Registrieren** .  
 
-3. Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann unter **App-Registrierungen** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps**, und wählen Sie sie aus.
+3. Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann unter **App-Registrierungen** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps** , und wählen Sie sie aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen**, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+4. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen** , und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)
@@ -67,7 +67,7 @@ Erstellen Sie die Webanwendung in Azure AD, damit Benutzer sich anmelden könne
         </script>   
     ```
 
-7. Konfigurieren Sie die rollenbasierte Azure-Zugriffssteuerung für Benutzer oder Gruppen. Informationen zum [Aktivieren von RBAC finden Sie in den folgenden Abschnitten](#grant-role-based-access-for-users-to-azure-maps).
+7. Konfigurieren Sie die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) für Benutzer oder Gruppen. Informationen zum [Aktivieren von Azure RBAC finden Sie in den folgenden Abschnitten](#grant-role-based-access-for-users-to-azure-maps).
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

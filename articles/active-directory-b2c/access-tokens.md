@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 10/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6adb06f22013e68987f3315d52e3594fba63907
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87115533"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309008"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwend
 
 ## <a name="scopes"></a>Bereiche
 
-Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope**-Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z. B. den **Bereichswert**`read` für die API mit dem **App-ID-URI**`https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
+Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope** -Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z. B. den **Bereichswert**`read` für die API mit dem **App-ID-URI**`https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
 
-Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter der Anforderung hinzufügen.
+Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope** -Parameter der Anforderung hinzufügen.
 
 Im folgenden Beispiel sind decodierte Bereiche in einer URL dargestellt:
 
@@ -50,10 +50,15 @@ Im folgenden Beispiel sind codierte Bereiche in einer URL dargestellt:
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Wenn Sie mehr Bereiche als die für die Clientanwendung erteilten Berechtigungen anfordern, wird der Aufruf erfolgreich ausgeführt, wenn mindestens eine Berechtigung erteilt wird. Der **scp**-Anspruch im resultierenden Zugriffstoken wird nur mit den Berechtigungen gefüllt, die erfolgreich erteilt wurden. Mit dem OpenID Connect-Standard werden mehrere spezielle Bereichswerte angegeben. Die folgenden Bereiche stellen die Berechtigung für den Zugriff auf das Profil des Benutzers dar:
+Wenn Sie mehr Bereiche als die für die Clientanwendung erteilten Berechtigungen anfordern, wird der Aufruf erfolgreich ausgeführt, wenn mindestens eine Berechtigung erteilt wird. Der **scp** -Anspruch im resultierenden Zugriffstoken wird nur mit den Berechtigungen gefüllt, die erfolgreich erteilt wurden. 
+
+### <a name="openid-connect-scopes"></a>OpenID Connect-Bereiche
+
+Mit dem OpenID Connect-Standard werden mehrere spezielle Bereichswerte angegeben. Die folgenden Bereiche stellen die Berechtigung für den Zugriff auf das Profil des Benutzers dar:
 
 - **openid:** Hierdurch wird ein ID-Token angefordert.
 - **offline_access:** Hierdurch wird ein Aktualisierungstoken (mithilfe von [Autorisierungscodeabläufen](authorization-code-flow.md)) angefordert.
+- **00000000-0000-0000-0000-000000000000** – Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für Ihre App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.
 
 Wenn der Parameter **response_type** in einer `/authorize`-Anforderung `token` enthält, muss der Parameter **scope** mindestens einen Ressourcenbereich (außer `openid` und `offline_access`) enthalten, für den Berechtigungen erteilt werden. Andernfalls wird die `/authorize`-Anforderung abgelehnt.
 
@@ -66,7 +71,7 @@ Ersetzen Sie im folgenden Beispiel diese Werte:
 - `<tenant-name>`: Name des Azure AD B2C-Mandanten.
 - `<policy-name>`: Name der benutzerdefinierten Richtlinie oder des Benutzerflows.
 - `<application-ID>`: Anwendungs-ID der Webanwendung, die Sie zur Unterstützung des Benutzerflows registriert haben.
-- `<redirect-uri>`: Der **Umleitungs-URI**, den Sie bei der Registrierung der Clientanwendung eingegeben haben.
+- `<redirect-uri>`: Der **Umleitungs-URI** , den Sie bei der Registrierung der Clientanwendung eingegeben haben.
 
 ```http
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?

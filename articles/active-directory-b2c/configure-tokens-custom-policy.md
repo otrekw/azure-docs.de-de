@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505460"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340290"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Informationen zum Verwalten der Token-, Sitzungs- und SS
 
 ## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT-Tokengültigkeitsdauern und Anspruchskonfiguration
 
-Zum Ändern der Einstellungen für Ihre Tokengültigkeitsdauern fügen Sie in der Datei der vertrauenden Seite für die gewünschte Richtlinie ein [ClaimsProviders](claimsproviders.md)-Element hinzu.  Das **ClaimsProviders**-Element ist dem [TrustFrameworkPolicy](trustframeworkpolicy.md)-Element untergeordnet.
+Zum Ändern der Einstellungen für Ihre Tokengültigkeitsdauern fügen Sie in der Datei der vertrauenden Seite für die gewünschte Richtlinie ein [ClaimsProviders](claimsproviders.md)-Element hinzu.  Das **ClaimsProviders** -Element ist dem [TrustFrameworkPolicy](trustframeworkpolicy.md)-Element untergeordnet.
 
 Fügen Sie das ClaimsProviders-Element zwischen dem BasePolicy-Element und dem RelyingParty-Element der Datei der vertrauenden Seite ein.
 
@@ -59,7 +59,7 @@ Im vorstehenden Beispiel werden die folgenden Werte festgelegt:
 - **Ausstelleranspruch (iss):** Der Ausstelleranspruch (iss) wird mit dem Metadatenelement **IssuanceClaimPattern** festgelegt. Die gültigen Werte sind `AuthorityAndTenantGuid` und `AuthorityWithTfp`.
 - **Festlegen des Anspruchs zur Darstellung der Richtlinien-ID:** Die Optionen zum Festlegen dieses Werts sind `TFP` (Vertrauensframework-Richtlinie) und `ACR` (Authentifizierungskontext-Referenz). Der empfohlene Wert ist `TFP`. Legen Sie für **AuthenticationContextReferenceClaimPattern** den Wert `None` fest.
 
-    Fügen Sie im **ClaimsSchema**-Element dieses Element hinzu:
+    Fügen Sie im **ClaimsSchema** -Element dieses Element hinzu:
 
     ```xml
     <ClaimType Id="trustFrameworkPolicy">
@@ -68,13 +68,13 @@ Im vorstehenden Beispiel werden die folgenden Werte festgelegt:
     </ClaimType>
     ```
 
-    Fügen Sie im **OutputClaims**-Element dieses Element hinzu:
+    Fügen Sie im **OutputClaims** -Element dieses Element hinzu:
 
     ```xml
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
     ```
 
-    Entfernen Sie für ACR das Element **AuthenticationContextReferenceClaimPattern**.
+    Entfernen Sie für ACR das Element **AuthenticationContextReferenceClaimPattern** .
 
 - **Anspruch „Antragsteller“:** Diese Option hat standardmäßig den Wert „ObjectID“. Ersetzen Sie die folgende Zeile, um diese Einstellung in `Not Supported` zu ändern:
 
@@ -87,6 +87,48 @@ Im vorstehenden Beispiel werden die folgenden Werte festgelegt:
     ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
+
+> [!NOTE]
+> Bei Single-Page-Anwendungen, die den Autorisierungscodeflow mit PKCE verwenden, hat das Aktualisierungstoken immer eine Lebensdauer von 24 Stunden. [Weitere Informationen zu Sicherheitsaspekten von Aktualisierungstoken im Browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)
+
+## <a name="provide-optional-claims-to-your-app"></a>Bereitstellen optionaler Ansprüche für Ihre App
+
+Ausgabeansprüche des [technischen Profils der Richtlinie für die vertrauende Seite](relyingparty.md#technicalprofile) sind Werte, die an eine Anwendung zurückgegeben werden. Durch Hinzufügen von Ausgabeansprüchen werden die Ansprüche nach einer erfolgreichen User Journey in das Token ausgegeben und an die Anwendung gesendet. Ändern Sie im Abschnitt für die vertrauende Seite das Element des technischen Profils, um die gewünschten Ansprüche als Ausgabeanspruch hinzuzufügen.
+
+1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: SignUpOrSignin.xml.
+1. Suchen Sie nach dem OutputClaims-Element. Fügen Sie den OutputClaim hinzu, den Sie in das Token einschließen möchten. 
+1. Legen Sie die Attribute des Ausgabeanspruchs fest. 
+
+Im folgenden Beispiel wird der Anspruch `accountBalance` hinzugefügt. Der Anspruch „accountBalance“ wird als Kontostand an die Anwendung gesendet. 
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <!--Add the optional claims here-->
+      <OutputClaim ClaimTypeReferenceId="accountBalance" DefaultValue="" PartnerClaimType="balance" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+Das OutputClaim-Element enthält die folgenden Attribute:
+
+  - **ClaimTypeReferenceId** : Der Bezeichner eines Anspruchstyps, der bereits im [ClaimsSchema](claimsschema.md)-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist.
+  - **PartnerClaimType** : Ermöglicht Ihnen das Ändern des Namens des Anspruchs im Token. 
+  - **DefaultValue** : Ein Standardwert. Sie können den Standardwert auch auf einen [Anspruchskonfliktlöser](claim-resolver-overview.md) wie die Mandanten-ID festlegen.
+  - **AlwaysUseDefaultValue** : Erzwingt die Verwendung des Standardwerts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131664"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167813"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Problembehandlung: Fehler beim Löschen eines virtuellen Netzwerks in Azure.
 
@@ -48,7 +48,7 @@ Für klassische virtuelle Netzwerke wechseln Sie im Azure-Portal auf die **Über
 
 Für virtuelle Netzwerke wechseln Sie zur **Übersichtsseite** des virtuellen Netzwerks. Überprüfen Sie **Verbundene Geräte** für das Gateway des virtuellen Netzwerks.
 
-![Überprüfen des verbundenen Geräts](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Screenshot der Liste der verbundenen Geräte für ein virtuelles Netzwerk im Azure-Portal. Das Gateway des virtuellen Netzwerks in der Liste ist hervorgehoben.](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 Bevor Sie das Gateway entfernen können, müssen Sie zunächst alle im Gateway vorhandenen **Verbindungsobjekte** entfernen. 
 
@@ -56,7 +56,7 @@ Bevor Sie das Gateway entfernen können, müssen Sie zunächst alle im Gateway v
 
 Wechseln Sie zur **Übersichtsseite** des virtuellen Netzwerks. Überprüfen Sie **Verbundene Geräte** für das Anwendungsgateway.
 
-![Überprüfen des verbundenen Geräts](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Screenshot der Liste der verbundenen Geräte für ein virtuelles Netzwerk im Azure-Portal. Das Anwendungsgateway in der Liste ist hervorgehoben.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Wenn ein Anwendungsgateway vorhanden ist, müssen Sie dieses entfernen, bevor Sie das virtuelle Netzwerk löschen können.
 
@@ -64,7 +64,7 @@ Wenn ein Anwendungsgateway vorhanden ist, müssen Sie dieses entfernen, bevor Si
 
 Wenn Active Directory Domain Services aktiviert und mit dem virtuellen Netzwerk verbunden ist, können sie dieses virtuelle Netzwerk nicht löschen. 
 
-![Überprüfen des verbundenen Geräts](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Screenshot des Bildschirms „Azure Active Directory Domain Services“ im Azure-Portal. Das Feld „Verfügbar in virtuellem Netzwerk/Subnetz“ ist hervorgehoben.](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 Informationen zum Deaktivieren des Service finden Sie unter [Deaktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../active-directory-domain-services/delete-aadds.md).
 

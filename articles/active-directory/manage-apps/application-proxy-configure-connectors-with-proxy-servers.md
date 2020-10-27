@@ -1,6 +1,6 @@
 ---
-title: Verwenden von vorhandenen lokalen Proxyservern und Azure AD | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie vorhandene lokale Proxyserver verwenden.
+title: Verwenden von vorhandenen lokalen Proxyservern und Azure Active Directory
+description: Hier wird erläutert, wie vorhandene lokale Proxyserver bei Azure Active Directory verwendet werden können.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077508"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208004"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -114,15 +113,15 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | URL | Wie diese verwendet wird |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen. |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Der Connector verwendet diese URLs während der Registrierung. |
 
-Wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen. Andernfalls müssen Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+Wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen.
 
 Wenn Sie die Konnektivität nicht über den FQDN zulassen können und stattdessen IP-Adressbereiche angeben müssen, verwenden Sie diese Optionen:
 
 * Lassen Sie für den Connector den ausgehenden Zugriff für alle Ziele zu.
-* Lassen Sie für den Connector den ausgehenden Zugriff auf alle [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com//download/details.aspx?id=41653) zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden. Wenn nur ein Teil der IP-Adressen verfügbar sind, funktioniert Ihre Konfiguration möglicherweise nicht.
+* Lassen Sie für den Connector den ausgehenden Zugriff auf alle IP-Bereiche des Azure-Rechenzentrums zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden. Wenn nur ein Teil der IP-Adressen verfügbar sind, funktioniert Ihre Konfiguration möglicherweise nicht. Zum Herunterladen der neuesten IP-Adressbereiche des Azure-Rechenzentrums navigieren Sie zu [https://download.microsoft.com](https://download.microsoft.com), und suchen Sie nach „Azure-IP-Adressbereiche und Diensttags“. Wählen Sie dann die relevante Cloud aus. So finden Sie beispielsweise die IP-Adressbereiche für die öffentliche Cloud mit „Azure IP-Adressbereiche und -Diensttags – Öffentliche Cloud“. Die US Government-Cloud finden Sie durch Suchen nach „Azure IP-Adressbereichen und Diensttags – US Goverment Cloud“.
 
 #### <a name="proxy-authentication"></a>Proxyauthentifizierung
 

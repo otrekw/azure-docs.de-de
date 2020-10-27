@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715942"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167694"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -68,7 +68,7 @@ Eine Reihe von Registrierungsschritten wird vor und nach dem Verarbeiten der Sta
 
 - *Die Startup-Klasse ist nur für Setup und Registrierung vorgesehen.* Vermeiden Sie die Verwendung von Diensten, die beim Start während des Startvorgangs registriert werden. Versuchen Sie beispielsweise nicht, eine Nachricht in einer Protokollierung zu protokollieren, die während des Starts registriert wird. Dieser Zeitpunkt des Registrierungsprozesses ist zu früh, damit ihre Dienste zur Verwendung verfügbar sind. Nachdem die `Configure`-Methode ausgeführt wurde, registriert die Azure Functions-Laufzeit weiterhin zusätzliche Abhängigkeiten, die sich den Betrieb ihrer Dienste auswirken können.
 
-- *Der Container für die Abhängigkeitsinjektion enthält nur explizit registrierte Typen*. Die einzigen Dienste, die als injizierbare Typen verfügbar sind, sind diejenigen, die in der `Configure`-Methode eingerichtet werden. Folglich sind Azure Functions-spezifische Typen wie `BindingContext` und `ExecutionContext` während des Setups oder als injizierbare Typen nicht verfügbar.
+- *Der Container für die Abhängigkeitsinjektion enthält nur explizit registrierte Typen* . Die einzigen Dienste, die als injizierbare Typen verfügbar sind, sind diejenigen, die in der `Configure`-Methode eingerichtet werden. Folglich sind Azure Functions-spezifische Typen wie `BindingContext` und `ExecutionContext` während des Setups oder als injizierbare Typen nicht verfügbar.
 
 ## <a name="use-injected-dependencies"></a>Verwenden von eingefügten Abhängigkeiten
 
@@ -118,9 +118,9 @@ In diesem Beispiel wird das Paket [Microsoft.Extensions.Http](https://www.nuget.
 
 Azure Functions-Apps bieten dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängigkeitsinjektion](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Bei einer Funktions-App weisen die verschiedenen Dienstlebensdauern die folgenden Verhalten auf:
 
-- **Vorübergehend**: Bei jeder Anforderung des Diensts werden vorübergehende Dienste erstellt.
-- **Bereichsbezogen**: Die bereichsbezogene Lebensdauer eines Diensts entspricht der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet.
-- **Singleton**: Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `DocumentClient` oder `HttpClient`.
+- **Vorübergehend** : Bei jeder Anforderung des Diensts werden vorübergehende Dienste erstellt.
+- **Bereichsbezogen** : Die bereichsbezogene Lebensdauer eines Diensts entspricht der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet.
+- **Singleton** : Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `DocumentClient` oder `HttpClient`.
 
 Sie können auf GitHub ein [Beispiel für verschiedene Dienstlebensdauern](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) anzeigen bzw. herunterladen.
 
@@ -131,8 +131,8 @@ Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie ein
 Application Insights wird von Azure Functions automatisch hinzugefügt.
 
 > [!WARNING]
-> - Fügen Sie `AddApplicationInsightsTelemetry()` nicht der Dienstsammlung hinzu, da sonst Dienste registriert werden, für die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können.
-> - Registrieren Sie keine eigene Instanz von `TelemetryConfiguration` oder `TelemetryClient`, wenn Sie die integrierten Application Insights-Funktionen verwenden. Wenn Sie Ihre eigene `TelemetryClient`-Instanz konfigurieren müssen, erstellen Sie eine über die eingefügte `TelemetryConfiguration`, wie in [Überwachen von Azure Functions](./functions-monitoring.md#version-2x-and-later-2) gezeigt.
+> - Fügen Sie `AddApplicationInsightsTelemetry()`, wodurch Dienste registriert werden, die zu Konflikten mit den von der Umgebung bereitgestellten Diensten führen können, nicht der Dienstsammlung hinzu.
+> - Registrieren Sie keine eigene Instanz von `TelemetryConfiguration` oder `TelemetryClient`, wenn Sie die integrierten Application Insights-Funktionen verwenden. Wenn Sie Ihre eigene `TelemetryClient`-Instanz konfigurieren müssen, erstellen Sie diese über die eingefügte `TelemetryConfiguration`, wie in [Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions) gezeigt.
 
 ### <a name="iloggert-and-iloggerfactory"></a>„ILogger<T>“ und „ILoggerFactory“
 
@@ -287,7 +287,7 @@ namespace MyNamespace
 }
 ```
 
-Fügen Sie der Eigenschaft `ConfigurationBuilder` von `IFunctionsConfigurationBuilder` Konfigurationsanbieter hinzu. Weitere Informationen zur Verwendung von Konfigurationsanbietern finden Sie unter [Konfiguration in ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers).
+Fügen Sie der Eigenschaft `ConfigurationBuilder` von `IFunctionsConfigurationBuilder` Konfigurationsanbieter hinzu. Weitere Informationen zur Verwendung von Konfigurationsanbietern finden Sie unter [Konfiguration in ASP.NET Core](/aspnet/core/fundamentals/configuration/#configuration-providers).
 
 `FunctionsHostBuilderContext` wird aus `IFunctionsConfigurationBuilder.GetContext()` abgerufen. Verwenden Sie diesen Kontext, um den aktuellen Umgebungsnamen abzurufen und den Speicherort der Konfigurationsdateien in Ihrem Funktions-App-Ordner aufzulösen.
 

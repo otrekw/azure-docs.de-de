@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292978"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150811"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -82,14 +82,16 @@ Die folgende Tabelle enthält Links zu Ressourcen für jede Art von Sicherheitsl
 |  | Stellen Sie sicher, dass das Feature [Verschlüsselung während der Übertragung](./encryption-in-transit.md) für die Verwendung von TLS und IPSec für die clusterinterne Kommunikation aktiviert ist. | Kunde |
 |  | Konfigurieren von [Kunden verwalteter Schlüssel](../../storage/common/storage-encryption-keys-portal.md) für die Azure Storage-Verschlüsselung | Kunde |
 |  | Steuern des Zugriffs auf Ihre Daten durch Azure-Support mit [Kunden-Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Kunde |
-| Anwendungs- und Middleware-Sicherheit | Integrieren mit AAD-DS und [Konfigurieren der Authentifizierung](apache-domain-joined-configure-using-azure-adds.md) | Kunde |
+| Anwendungs- und Middleware-Sicherheit | Integration mit AAD-DS und [ESP konfigurieren](apache-domain-joined-configure-using-azure-adds.md), oder verwenden Sie [HIB für die OAuth-Authentifizierung](identity-broker.md)| Kunde |
 |  | Konfigurieren der Richtlinien für die [Apache Ranger-Autorisierung](apache-domain-joined-run-hive.md) | Kunde |
 |  | Verwenden von [Azure Monitor-Protokollen](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Kunde |
 | Betriebssystemsicherheit | Erstellen von Clustern mit dem aktuellsten sicheren Basisimage | Kunde |
 |  | Sicherstellen, dass das [Betriebssystempatching](../hdinsight-os-patching.md) in regelmäßigen Abständen durchgeführt wird | Kunde |
+|  | Sicherstellen der [CMK-Datenträgerverschlüsselung für VMs](../disk-encryption.md) | Kunde |
 | Netzwerksicherheit | Konfigurieren eines [virtuellen Netzwerks](../hdinsight-plan-virtual-network-deployment.md) |
-|  | Konfigurieren [eingehender NSG-Regeln (Netzwerksicherheitsgruppe)](../control-network-traffic.md) | Kunde |
+|  | Konfigurieren [eingehender NSG-Regeln (Netzwerksicherheitsgruppe)](../control-network-traffic.md) oder [Private Link](../hdinsight-private-link.md) | Kunde |
 |  | Konfigurieren einer [ausgehenden Datenverkehrseinschränkung](../hdinsight-restrict-outbound-traffic.md) mit Firewall | Kunde |
+|  | Konfigurieren der [IPSec-Verschlüsselung während der Übertragung](encryption-in-transit.md) zwischen Clusterknoten | Kunde |
 | Virtualisierte Infrastruktur | – | HDInsight (Cloudanbieter) |
 | Sicherheit der physischen Infrastruktur | – | HDInsight (Cloudanbieter) |
 

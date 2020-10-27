@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259593"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089569"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -75,7 +75,7 @@ Ein Anspruch bietet eine temporäre Speicherung von Daten während der Ausführu
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Konfigurieren des technischen Profils für die RESTful-API 
+## <a name="add-the-restful-api-technical-profile"></a>Hinzufügen des technischen Profils für die RESTful-API 
 
 Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstützung bei der Anbindung an Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer `InputClaims`-Sammlung und erhält Daten in einer `OutputClaims`-Sammlung zurück. Suchen Sie das Element **ClaimsProviders** in Ihrer Datei <em> **`TrustFrameworkExtensions.xml`**</em>, und fügen Sie wie folgt einen neuen Anspruchsanbieter hinzu:
 
@@ -87,6 +87,7 @@ Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstüt
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstüt
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 In diesem Beispiel wird `userLanguage` als `lang` innerhalb der JSON-Nutzlast an den REST-Dienst gesendet. Der Wert des Anspruchs `userLanguage` enthält die ID der aktuellen Benutzersprache. Weitere Informationen finden Sie unter [Anspruchskonfliktlöser](claim-resolver-overview.md).
+
+### <a name="configure-the-restful-api-technical-profile"></a>Konfigurieren des technischen Profils für die RESTful-API 
+
+Nachdem Sie Ihre REST-API bereitgestellt haben, legen Sie die Metadaten des technischen Profils `REST-ValidateProfile` so fest, dass sie Ihre eigene REST-API wiedergeben, darunter:
+
+- **ServiceUrl** . Legt die URL des REST-API-Endpunkts fest.
+- **SendClaimsIn** . Gibt an, wie die Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden.
+- **AuthenticationType** . Legt den Typ der Authentifizierung fest, die vom RESTful-Anspruchsanbieter ausgeführt wird. 
+- **AllowInsecureAuthInProduction** . Sorgen Sie in einer Produktionsumgebung dafür, dass diese Metadaten auf `true` festgelegt werden.
+    
+Weitere Konfigurationen finden Sie in den [Metadaten für das technische RESTful-Profil](restful-technical-profile.md#metadata).
 
 Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Informationen zum Schützen Ihrer RESTful-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs](secure-rest-api.md).
 
@@ -143,7 +155,7 @@ Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geb
     <OrchestrationStep Order="8" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
     ```
 
-1. Wiederholen Sie die letzten beiden Schritte für die User Journeys **ProfileEdit** und **PasswordReset**.
+1. Wiederholen Sie die letzten beiden Schritte für die User Journeys **ProfileEdit** und **PasswordReset** .
 
 
 ## <a name="include-a-claim-in-the-token"></a>Einschließen eines Anspruchs in das Token 
@@ -171,18 +183,18 @@ Um den Anspruch `balance` an die Anwendung der vertrauenden Seite zurückzugeben
 </RelyingParty>
 ```
 
-Wiederholen Sie diesen Schritt für die User Journeys **ProfileEdit.xml** und **PasswordReset.xml**.
+Wiederholen Sie diesen Schritt für die User Journeys **ProfileEdit.xml** und **PasswordReset.xml** .
 
-Speichern Sie die Dateien, die Sie geändert haben: *TrustFrameworkBase.xml*, *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* und *PasswordReset.xml*. 
+Speichern Sie die Dateien, die Sie geändert haben: *TrustFrameworkBase.xml* , *TrustFrameworkExtensions.xml* , *SignUpOrSignin.xml* , *ProfileEdit.xml* und *PasswordReset.xml* . 
 
 ## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
-1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste** , suchen Sie nach **App-Registrierungen** , und wählen Sie dann diese Option aus.
 1. Wählen Sie **Framework für die Identitätsfunktion** aus.
-1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die geänderten Richtliniendateien hoch: *TrustFrameworkBase.xml*, *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* und *PasswordReset.xml*. 
-1. Wählen Sie die hochgeladene Registrierungs- oder Anmelderichtlinie aus, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
+1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die geänderten Richtliniendateien hoch: *TrustFrameworkBase.xml* , *TrustFrameworkExtensions.xml* , *SignUpOrSignin.xml* , *ProfileEdit.xml* und *PasswordReset.xml* . 
+1. Wählen Sie die hochgeladene Registrierungs- oder Anmelderichtlinie aus, und klicken Sie auf die Schaltfläche **Jetzt ausführen** .
 1. Sie sollten sich mit einer E-Mail-Adresse oder einem Facebook-Konto anmelden können.
 1. Das Token, das an die Anwendung zurückgesendet wird, enthält den Anspruch `balance`.
 

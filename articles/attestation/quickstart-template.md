@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mbaldwin
-ms.date: 08/31/2020
-ms.openlocfilehash: a73294e41f27a15d70ab95b3aa7b100cab5320b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89236975"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144983"
 ---
 # <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Schnellstart: Erstellen eines Azure Attestation-Anbieters mit einer ARM-Vorlage
 
@@ -21,60 +21,22 @@ ms.locfileid: "89236975"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-attestation-provider-create%2Fazuredeploy.json)
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-attestation-provider-create).
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "name": {
-      "type": "string"
-    },
-    "location": {
-      "type": "string"
-    },
-    "tags": {
-      "type": "Object"
-    },
-    "policySigningCertificates": {
-      "type": "string"
-    }
-  },
-  "variables": {
-    "PolicySigningCertificates": {
-      "PolicySigningCertificates": {
-        "keys": [
-          {
-            "kty": "RSA",
-            "use": "sig",
-            "x5c": [ "[parameters('policySigningCertificates')]" ]
-          }
-        ]
-      }
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-09-01-preview",
-      "name": "[parameters('name')]",
-      "location": "[parameters('location')]",
-      "type": "Microsoft.Attestation/attestationProviders",
-      "tags": "[parameters('tags')]",
-      "Properties": "[if(empty(parameters('policySigningCertificates')), json('{}'), variables('PolicySigningCertificates'))]"
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/101-attestation-provider-create/azuredeploy.json":::
 
 In der Vorlage sind die folgenden Azure-Ressourcen definiert:
+
 - Microsoft.Attestation/attestationProviders
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
@@ -83,15 +45,15 @@ In der Vorlage sind die folgenden Azure-Ressourcen definiert:
 
     [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-attestation-provider-create%2Fazuredeploy.json)
 
-2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
+1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
     Verwenden Sie den Standardwert, um den Nachweisanbieter zu erstellen, sofern kein anderer Wert angegeben ist.
 
-    * **name:** Wählen Sie einen Namen für den Azure Attestation-Anbieter aus.
-    * **location**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
-    * **tags**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
+    - **Name des Nachweisanbieters** : Wählen Sie einen Namen für den Azure Attestation-Anbieter aus.
+    - **Standort** : Wählen Sie einen Standort aus. Beispiel: **USA, Mitte** .
+    - **Tags** : Wählen Sie einen Standort aus. Beispiel: **USA, Mitte** .
 
-3. Wählen Sie die Option **Kaufen**. Nach erfolgreicher Bereitstellung der Nachweisressource erhalten Sie eine Benachrichtigung:
+1. Wählen Sie die Option **Kaufen** . Nach erfolgreicher Bereitstellung der Nachweisressource erhalten Sie eine Benachrichtigung.
 
 Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -126,4 +88,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage eine Nachweisressource erstellt und die Bereitstellung überprüft. Weitere Informationen zu Azure Attestation finden Sie unter [Microsoft Azure Attestation (Vorschau)](overview.md).
+In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage eine Nachweisressource erstellt und die Bereitstellung überprüft. Weitere Informationen zu Azure Attestation finden Sie unter [Übersicht über Azure Attestation](overview.md).

@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Hyper-V-Bewertung mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318176"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331973"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -63,7 +63,7 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 **Device** | **Connection**
 --- | ---
 **Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/><br/> Ausgehende Verbindungen an Port 443 (HTTPS), um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
-**Hyper-V-Host/-Cluster** | Eingehende Verbindung an WinRM-Port 5985 (HTTP) zum Abrufen von Metadaten und Leistungsmetadaten der Hyper-V-VMs mithilfe einer CIM-Sitzung (Common Information Model).
+**Hyper-V-Host/-Cluster** | Eingehende Verbindung an WinRM-Port 5985 (HTTP) oder 5986 (HTTPS) zum Abrufen von Metadaten und Leistungsmetadaten der Hyper-V-VMs mithilfe einer CIM-Sitzung (Common Information Model).
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Anforderungen der Agent-basierten Abhängigkeitsanalyse
 
@@ -83,4 +83,4 @@ Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Vorbereiten der Bewertung von virtuellen Hyper-V-Computern](tutorial-prepare-hyper-v.md)
+[Vorbereiten der Bewertung von virtuellen Hyper-V-Computern](./tutorial-discover-hyper-v.md)

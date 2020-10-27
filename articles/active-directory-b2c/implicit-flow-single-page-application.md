@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44300771ce6471c97dcd582884995395daae4995
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201853"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215483"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flusses in Azure Active Directory B2C
 
@@ -26,7 +26,9 @@ Viele moderne Anwendungen verfügen über ein Single-Page-App-Front-End, das hau
 - Zahlreiche Autorisierungsserver und Identitätsanbieter unterstützen keine CORS-Anforderungen (CORS = Cross-Origin Resource Sharing).
 - Umleitungen auf ganzseitige Browserseiten können die Benutzererfahrung stören.
 
-Zum Unterstützen dieser Anwendungen verwendet Azure Active Directory B2C (Azure AD B2C) den impliziten OAuth 2.0-Fluss. Der implizite OAuth 2.0-Fluss zum Gewähren einer Autorisierung wird in [Abschnitt 4.2 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Beim impliziten Ablauf empfängt die App Token direkt vom Azure AD-Autorisierungsendpunkt (Azure Active Directory), ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung wird vollständig im JavaScript-Client abgewickelt – entweder mit einer Seitenumleitung oder mit einem Popupfeld.
+Die empfohlene Methode zur Unterstützung von Single-Page-Webanwendungen ist [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./authorization-code-flow.md).
+
+Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), unterstützen nur den Fluss für implizite Genehmigung. In diesen Fällen unterstützt Azure Active Directory B2C (Azure AD B2C) den Fluss für implizite Genehmigung für OAuth 2.0-Autorisierung. Dieser Fluss wird in [Abschnitt 4.2 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Beim impliziten Ablauf empfängt die App Token direkt vom Azure AD-Autorisierungsendpunkt (Azure Active Directory), ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung wird vollständig im JavaScript-Client abgewickelt – entweder mit einer Seitenumleitung oder mit einem Popupfeld.
 
 Azure AD B2C erweitert den impliziten OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Azure AD B2C führt den [Richtlinienparameter](user-flow-overview.md) ein. Mit dem Richtlinienparameter können Sie OAuth 2.0 zum Hinzufügen von Richtlinien zu Ihrer App verwenden, z. B. für Benutzerflows für die Registrierung, Anmeldung und Profilverwaltung. In den HTTP-Beispielanforderungen in diesem Artikel wird **{tenant}.onmicrosoft.com** als Beispiel verwendet. Ersetzen Sie `{tenant}` durch den Namen Ihres Mandanten, wenn ein solcher vorhanden ist und Sie einen Benutzerflow erstellt haben.
 
@@ -57,12 +59,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 |{policy}| Ja| Der auszuführende Benutzerflow. Geben Sie den Namen eines Benutzerflows an, den Sie in Ihrem Azure AD B2C-Mandanten erstellt haben. Beispiel: `b2c_1_sign_in`, `b2c_1_sign_up` oder `b2c_1_edit_profile`. |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
 | response_type | Ja | Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Kann auch den Antworttyp `token` enthalten. Mithilfe von `token` kann Ihre App ein Zugriffstoken direkt vom Autorisierungsendpunkt abrufen, ohne dass eine zweite Anforderung an den Autorisierungsendpunkt erforderlich ist.  Wenn Sie den Antworttyp `token` verwenden, muss der Parameter `scope` einen Bereich enthalten, in dem angegeben wird, für welche Ressource das Token ausgegeben wird. |
-| redirect_uri | Nein | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
+| redirect_uri | Nein  | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
 | response_mode | Nein | Gibt die Methode an, die zum Zurücksenden des resultierenden Tokens an Ihre App verwendet wird.  Verwenden Sie `fragment` für implizite Flüsse. |
 | scope | Ja | Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure AD an, dass beide Berechtigungen angefordert werden. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Der `offline_access` -Bereich ist für Web-Apps optional. Er gibt an, dass Ihre App ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
-| state | Nein | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen zu verwendenden Inhalt handeln. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um eine websiteübergreifende Anforderungsfälschung zu verhindern. Der Status wird auch zum Codieren von Informationen über den Status des Benutzers in der App vor der Authentifizierungsanforderung verwendet, z.B. für Informationen zu der Seite, die der Benutzer besucht hat. |
-| nonce | Ja | Ein (von der App generierter) Wert in der Anforderung, der im resultierenden ID-Token als Anspruch enthalten ist. Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern. Der Wert ist eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
-| prompt | Nein | Der Typ der erforderlichen Benutzerinteraktion. Derzeit ist `login` der einzige gültige Wert. Durch diesen Parameter wird der Benutzer dazu gezwungen, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden wird nicht berücksichtigt. |
+| state | Nein  | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen zu verwendenden Inhalt handeln. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um eine websiteübergreifende Anforderungsfälschung zu verhindern. Der Status wird auch zum Codieren von Informationen über den Status des Benutzers in der App vor der Authentifizierungsanforderung verwendet, z.B. für Informationen zu der Seite, die der Benutzer besucht hat. |
+| nonce | Ja | Ein (von der App generierter) Wert in der Anforderung, der im resultierenden ID-Token als Anspruch enthalten ist. Die App kann diesen Wert dann verifizieren, um Tokenwiederholungsangriffe abzuwehren. Der Wert ist eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
+| prompt | Nein  | Der Typ der erforderlichen Benutzerinteraktion. Derzeit ist `login` der einzige gültige Wert. Durch diesen Parameter wird der Benutzer dazu gezwungen, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden wird nicht berücksichtigt. |
 
 An diesem Punkt wird der Benutzer aufgefordert, den Workflow der Richtlinie abzuschließen. Der Benutzer muss möglicherweise seinen Benutzernamen und sein Kennwort eingeben, sich mit einer Social-Media-Identität anmelden, sich für das Verzeichnis registrieren oder andere Schritte ausführen. Die Benutzeraktionen hängen davon ab, wie der Benutzerflow definiert ist.
 
@@ -129,7 +131,7 @@ Es gibt zwei Möglichkeiten zum Ermitteln, welcher Benutzerflow zum Signieren ei
 Nachdem Sie das Metadatendokument aus dem OpenID Connect-Metadatenendpunkt erhalten haben, können Sie die öffentlichen RSA-256-Schlüssel (die sich an diesem Endpunkt befinden) zum Überprüfen der Signatur des ID-Tokens verwenden. Es gibt möglicherweise zu einem bestimmten Zeitpunkt mehrere Schlüssel an diesem Endpunkt. Sie werden jeweils durch eine `kid` identifiziert. Der Header der `id_token` enthält auch einen `kid`-Anspruch. Er gibt an, mit welchem dieser Schlüssel das ID-Token signiert wurde. Weitere Informationen finden Sie im [Azure AD B2C-Tokenverweis](tokens-overview.md). Dort finden Sie auch Einzelheiten zum [Überprüfen von Token](tokens-overview.md).
 <!--TODO: Improve the information on this-->
 
-Nach der Überprüfung der Signatur des ID-Tokens müssen auch einige Ansprüche überprüft werden. Beispiel:
+Nach der Überprüfung der Signatur des ID-Tokens müssen auch einige Ansprüche überprüft werden. Zum Beispiel:
 
 * Überprüfen Sie den `nonce`-Anspruch, um Tokenwiederholungsangriffe zu verhindern. Dessen Wert sollte dem in der Anmeldeanforderung angegebenen Wert entsprechen.
 * Überprüfen Sie den `aud`-Anspruch, um sicherzustellen, dass das ID-Token für Ihre App ausgegeben wurde. Der Wert sollte der Anwendungs-ID der App entsprechen.
@@ -174,7 +176,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | scope |Erforderlich |Eine durch Leerzeichen getrennte Liste von Bereichen.  Beziehen Sie zum Abrufen von Token alle Bereiche ein, die für die gewünschte Ressource erforderlich sind. |
 | response_mode |Empfohlen |Gibt die Methode an, die zum Zurücksenden des resultierenden Tokens an Ihre App verwendet wird. Verwenden Sie `fragment` für den impliziten Flow. Es können zwei weitere Modi (`query` und `form_post`) angegeben werden, diese funktionieren aber nicht im impliziten Flow. |
 | state |Empfohlen |Ein in der Anforderung enthaltener Wert, der in der Tokenantwort zurückgegeben wird.  Es kann sich um eine Zeichenfolge mit jedem beliebigen zu verwendenden Inhalt handeln.  Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um eine websiteübergreifende Anforderungsfälschung zu verhindern.  Der Status wird außerdem verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist. Beispiel: Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-| nonce |Erforderlich |Ein Wert in der Anforderung, der von der App generiert wird und im resultierenden ID-Token als Anspruch enthalten ist.  Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die den Ursprung der Anforderung identifiziert. |
+| nonce |Erforderlich |Ein Wert in der Anforderung, der von der App generiert wird und im resultierenden ID-Token als Anspruch enthalten ist.  Die App kann diesen Wert dann verifizieren, um Tokenwiederholungsangriffe abzuwehren. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die den Ursprung der Anforderung identifiziert. |
 | prompt |Erforderlich |Verwenden Sie `prompt=none` zum Aktualisieren und Abrufen von Token in einem ausgeblendeten IFrame, um sicherzustellen, dass das IFrame auf der Anmeldeseite nicht hängenbleibt, sondern direkt zurückgegeben wird. |
 | login_hint |Erforderlich |Beziehen Sie zum Aktualisieren und Abrufen von Token in einem ausgeblendete IFrame den Benutzernamen des Benutzers in diesem Hinweis mit ein, damit zwischen verschiedenen Sitzungen unterschieden werden kann, die der Benutzer möglicherweise ausführt. Sie können den Benutzernamen mithilfe des Anspruchs `preferred_username` aus einer früheren Anmeldung extrahieren. (Der Bereich `profile` ist erforderlich, um den Anspruch `preferred_username` zu erhalten.) |
 | domain_hint |Erforderlich |Kann `consumers` oder `organizations` sein.  Fügen Sie zum Aktualisieren und Abrufen von Token in einem ausgeblendeten IFrame den Wert `domain_hint` in die Anforderung ein.  Extrahieren Sie den Anspruch `tid` aus dem ID-Token einer früheren Anmeldung, um zu bestimmen, welcher Wert verwendet werden soll. (Der Bereich `profile` ist erforderlich, um den Anspruch `tid` zu erhalten.) Verwenden Sie `domain_hint=consumers`, wenn der Anspruch `tid` den Wert `9188040d-6c67-4c5b-b112-36a304b66dad` hat.  Verwenden Sie andernfalls `domain_hint=organizations`. |
@@ -198,7 +200,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | access_token |Das von der App angeforderte Token |
 | token_type |Der Tokentyp wird immer Träger sein. |
 | state |Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die App sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
-| expires_in |Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
+| expires_in |Die Gültigkeitsdauer des Zugriffstokens (in Sekunden). |
 | scope |Die Bereiche, für die das Zugriffstoken gültig ist. |
 
 ### <a name="error-response"></a>Fehlerantwort
@@ -233,8 +235,8 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |
-| post_logout_redirect_uri | Nein | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. |
-| state | Nein | Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
+| post_logout_redirect_uri | Nein  | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. |
+| state | Nein  | Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
 
 
 > [!NOTE]

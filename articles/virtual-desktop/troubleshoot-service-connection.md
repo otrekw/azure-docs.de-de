@@ -3,15 +3,15 @@ title: Problembehandlung bei Windows Virtual Desktop-Dienstverbindungen – Azur
 description: Informationen zum Beheben von Problemen beim Einrichten von Dienstverbindungen in einer Windows Virtual Desktop-Mandantenumgebung
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089903"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108948"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop-Dienstverbindungen
 
@@ -45,6 +45,13 @@ Ein Benutzer kann Remotedesktopclients starten und sich authentifizieren, ihm we
 Dieser Fehler tritt normalerweise auf, nachdem ein Benutzer sein Abonnement von einem Azure AD-Mandanten zu einem anderen verschoben hat. Aufgrund dieses Fehlers kann der Dienst die Benutzerzuweisungen nicht mehr verfolgen, da diese weiterhin an den alten Azure AD-Mandanten gebunden sind.
 
 Um dieses Problem zu beheben, müssen Sie lediglich die Benutzer ihren jeweiligen Anwendungsgruppen erneut zuweisen.
+
+Dies kann auch der Fall sein, wenn ein CSP-Anbieter das Abonnement erstellt und dann an den Kunden übertragen hat. Um dieses Problem zu beheben, registrieren Sie den Ressourcenanbieter erneut.
+
+1. Melden Sie sich beim Azure-Portal an.
+2. Wechseln Sie zu **Abonnements** , und wählen Sie Ihr Abonnement aus.
+3. Wählen Sie im Menü links auf der Seite die Option **Ressourcenanbieter** aus.
+4. Suchen Sie nach **Microsoft.DesktopVirtualization** , wählen Sie die Option aus, und wählen Sie dann **Erneut registrieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
