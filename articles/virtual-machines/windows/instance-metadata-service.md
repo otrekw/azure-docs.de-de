@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 51310b1569982e0b71f39dede0d4d7dbefd1a3c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086707"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975534"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -47,13 +47,15 @@ Unten finden Sie den Beispielcode zum Abrufen aller Metadaten für eine Instanz;
 **Anforderung**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01 | ConvertTo-Json
 ```
+> [!NOTE]
+> Das `-NoProxy`-Flag ist nur in PowerShell 6 oder höher verfügbar. Wenn Sie keinen Proxy eingerichtet haben, können Sie das Flag weglassen.
 
 **Antwort**
 
 > [!NOTE]
-> Die Antwort stellt eine JSON-Zeichenfolge dar. Die folgende Beispielantwort wird zur besseren Lesbarkeit im Schöndruck gedruckt.
+> Die Antwort stellt eine JSON-Zeichenfolge dar. Wir übergeben unsere REST-Abfrage über das `ConvertTo-Json`-Cmdlet, um eine ansehnliche Ausgabe zu erhalten.
 
 ```json
 {
@@ -250,8 +252,8 @@ offer | Angebotsinformationen für das VM-Image, diese sind nur für Images vorh
 osType | Linux oder Windows | 2017-04-02
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
 Tarif | Der [Plan](/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
-platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+platformUpdateDomain |  [Updatedomäne](../manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+platformFaultDomain | [Fehlerdomäne](../manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 Provider | Anbieter des virtuellen Computers | 2018-10-01
 publicKeys | [Sammlung von öffentlichen Schlüsseln](/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 publisher | Herausgeber des VM-Images | 2017-04-02
@@ -815,7 +817,7 @@ Sie können den Status der geplanten Ereignisse über den Metadata Service abruf
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Der Dienst ist in allen Azure-Clouds **allgemein verfügbar**.
+Der Dienst ist in allen Azure-Clouds **allgemein verfügbar** .
 
 ## <a name="sample-code-in-different-languages"></a>Beispielcode in verschiedenen Sprachen
 

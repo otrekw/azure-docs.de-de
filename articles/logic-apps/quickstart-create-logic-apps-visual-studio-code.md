@@ -82,7 +82,7 @@ Stellen Sie zunächst sicher, dass Sie über die folgenden Elemente verfügen:
 
    Im Azure-Bereich werden in den Abschnitten **Logik-Apps** und **Integrationskonten** nun die mit Ihrem Konto verknüpften Azure-Abonnements angezeigt. Wenn die erwarteten Abonnements jedoch nicht angezeigt werden, oder wenn in den Abschnitten zu viele Abonnements angezeigt werden, führen Sie die folgenden Schritte aus:
 
-   1. Bewegen Sie den Mauszeiger über die Bezeichnung **Logik-Apps**. Wenn die Symbolleiste angezeigt wird, wählen Sie **Abonnements auswählen** (Filtersymbol) aus.
+   1. Bewegen Sie den Mauszeiger über die Bezeichnung **Logik-Apps** . Wenn die Symbolleiste angezeigt wird, wählen Sie **Abonnements auswählen** (Filtersymbol) aus.
 
       ![Suchen oder Filtern von Azure-Abonnements](./media/quickstart-create-logic-apps-visual-studio-code/find-or-filter-subscriptions.png)
 
@@ -263,7 +263,7 @@ In Visual Studio Code können Sie die Workflowdefinition für eine bereits in Az
 
 1. Speichern Sie Ihre Änderungen, wenn Sie fertig sind. (Menü „Datei“ > „Speichern“, oder drücken Sie STRG+S)
 
-1. Wenn Sie aufgefordert werden, die Änderungen hochzuladen und Ihre vorhandene Logik-App im Azure-Portal zu *überschreiben*, wählen Sie **Hochladen** aus.
+1. Wenn Sie aufgefordert werden, die Änderungen hochzuladen und Ihre vorhandene Logik-App im Azure-Portal zu *überschreiben* , wählen Sie **Hochladen** aus.
 
    In diesem Schritt werden Ihre Updates der Logik-App im [Azure-Portal](https://portal.azure.com) veröffentlicht.
 
@@ -278,7 +278,7 @@ In Visual Studio Code können Sie die früheren Versionen der Logik-App öffnen 
 
 1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
 
-1. Erweitern Sie Ihre Logik-App in Ihrem Abonnement, und erweitern Sie **Versionen**.
+1. Erweitern Sie Ihre Logik-App in Ihrem Abonnement, und erweitern Sie **Versionen** .
 
    In der Liste **Versionen** werden – sofern vorhanden – die früheren Versionen ihrer Logik-App angezeigt.
 

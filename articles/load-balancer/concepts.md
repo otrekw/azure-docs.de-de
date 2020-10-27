@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 28c3e4ade2c78a1a77ef7263463803e40727ba8f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930916"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315306"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer-Algorithmus
 
@@ -57,6 +57,7 @@ Load Balancer interagiert nicht direkt mit TCP oder UDP oder der Anwendungsschic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Erfahren Sie mehr über die [Komponenten](components.md), aus denen Azure Load Balancer besteht.
 - Informationen zu den ersten Schritten mit einer Load Balancer-Instanz finden Sie unter [Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal](quickstart-load-balancer-standard-public-portal.md). Dort erfahren Sie, wie Sie eine Load Balancer-Instanz und virtuelle Computer mit einer installierten benutzerdefinierten IIS-Erweiterung erstellen und den Lastenausgleich für die Web-App zwischen den virtuellen Computern vornehmen.
 - Informieren Sie sich über [Azure Load Balancer – Ausgehende Verbindungen](load-balancer-outbound-connections.md).
 - Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).

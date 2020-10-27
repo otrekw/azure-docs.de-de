@@ -506,7 +506,7 @@ map.layers.insert(layer);
 Zum Anpassen eines HTML-Markers kann in Azure Maps der `htmlContent`-Option des Markers ein HTML-`string` oder -`HTMLElement` übergeben werden. In Azure Maps wird eine `anchor`-Option verwendet, um die relative Position des Markers bezogen auf die Positionskoordinate mithilfe eines von neun definierten Referenzpunkten anzugeben: „center“, „top“, „bottom“, „left“, „right“, „top-left“, „top-right“, „bottom-left“, „bottom-right“. Die Inhalte sind verankert und standardmäßig auf „bottom“ festgelegt, das ist die Mitte der Unterkante des HTML-Inhalts. Um die Migration von Code aus Bing Karten zu vereinfachen, legen Sie den Anker auf „top-left“ fest, und verwenden Sie dann die Option `offset` mit dem gleichen Offset, der in Bing Karten verwendet wird. Die Offsets in Azure Maps bewegen sich in der zu Bing Karten entgegengesetzten Richtung, Sie müssen sie daher mit minus Eins multiplizieren.
 
 > [!TIP]
-> Fügen Sie im HTML-Inhalt `pointer-events:none` als Stil hinzu, um das Standardverhalten beim Ziehen in MS Edge zu deaktivieren, durch das ein unerwünschtes Symbol angezeigt wird.
+> Fügen Sie im HTML-Inhalt `pointer-events:none`als Stil hinzu, um das Standardverhalten beim Ziehen in Microsoft Edge zu deaktivieren, durch das ein unerwünschtes Symbol angezeigt wird.
 
 ```html
 map.markers.add(new atlas.HtmlMarker({

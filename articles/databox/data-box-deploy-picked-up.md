@@ -63,7 +63,7 @@ Nach dem Datenkopiervorgang bereiten Sie das Gerät vor und versenden es. Wenn d
 
 Vergewissern Sie sich vor der Vorbereitung für den Versand, dass Kopieraufträge abgeschlossen sind.
 
-1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten**, und beginnen Sie mit der Versandvorbereitung. 
+1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten** , und beginnen Sie mit der Versandvorbereitung. 
 2. Schalten Sie das Gerät auf der lokalen Webbenutzeroberfläche aus. Ziehen Sie die Kabel vom Gerät ab. 
 
 Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.

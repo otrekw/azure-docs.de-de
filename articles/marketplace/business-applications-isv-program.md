@@ -55,10 +55,10 @@ Richten Sie die Abrechnungsinformationen für das Business Applications ISV Conn
 1. Wählen Sie unter **Konto** die Option **Abrechnungsprofil** aus.
 1. Überprüfen Sie die primären Kontakt- und Abrechnungsinformationen, die auf der Grundlage Ihrer juristischen Person aufgefüllt wurden, und nehmen Sie ggf. erforderliche Aktualisierungen vor.
 1. Nehmen Sie ggf. Eingaben für die Steuernummer/USt-IdNr. vor.
-1. Klicken Sie auf **Speichern**, um Ihre Änderungen zu speichern.
+1. Klicken Sie auf **Speichern** , um Ihre Änderungen zu speichern.
 
 > [!NOTE]
-> Sie können Ihr Abrechnungsprofil jederzeit aktualisieren. Die Optionen *Unternehmensname* und das *Land* der Abrechnungsadresse können später aber nicht mehr geändert werden.
+> Sie können Ihr Abrechnungsprofil jederzeit aktualisieren. Die Optionen *Unternehmensname* und *Land/Region* der Abrechnungsadresse können später aber nicht mehr geändert werden.
 
 ## <a name="publish-and-certify-your-application"></a>Veröffentlichen und Zertifizieren Ihrer Anwendung
 

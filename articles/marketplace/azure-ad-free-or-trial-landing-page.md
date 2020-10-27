@@ -82,7 +82,7 @@ Im Rahmen des [OpenID Connect](https://docs.microsoft.com/azure/active-directory
 
 ## <a name="use-the-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
 
-Das ID-Token enthält grundlegende Informationen zur Identifizierung des Benutzers. Für Ihren Aktivierungsprozess können jedoch weitere Details erforderlich sein (z. B. das Unternehmen des Benutzers), um das Onboarding abzuschließen. Fordern Sie diese Informationen mithilfe der [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) an. Dadurch verhindern Sie, dass der Benutzer diese Angaben erneut machen muss. Die standardmäßigen **User.Read**-Berechtigungen umfassen folgende Informationen:
+Das ID-Token enthält grundlegende Informationen zur Identifizierung des Benutzers. Für Ihren Aktivierungsprozess können jedoch weitere Details erforderlich sein (z. B. das Unternehmen des Benutzers), um das Onboarding abzuschließen. Fordern Sie diese Informationen mithilfe der [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) an. Dadurch verhindern Sie, dass der Benutzer diese Angaben erneut machen muss. Die standardmäßigen **User.Read** -Berechtigungen umfassen folgende Informationen:
 
 | Wert | BESCHREIBUNG |
 | ------------ | ------------- |
@@ -95,7 +95,7 @@ Das ID-Token enthält grundlegende Informationen zur Identifizierung des Benutze
 | surname | Der Nachname des Benutzers. |
 |||
 
-Es können weitere Eigenschaften wie der Name des Unternehmens oder der Standort des Benutzers (Land) ausgewählt werden, die in der Anforderung enthalten sein sollen. Weitere Informationen finden Sie unter [Eigenschaften für den Benutzerressourcentyp](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties).
+Es können weitere Eigenschaften wie der Name des Unternehmens oder der Standort des Benutzers (Land/Region) ausgewählt werden, die in der Anforderung enthalten sein sollen. Weitere Informationen finden Sie unter [Eigenschaften für den Benutzerressourcentyp](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties).
 
 Die meisten Apps, die in Azure AD registriert sind, erteilen delegierte Berechtigungen zum Lesen der Benutzerinformationen aus dem Azure AD-Mandanten seines Unternehmens. Microsoft Graph-Anforderungen zum Abrufen dieser Informationen müssen ein Zugriffstoken zur Authentifizierung enthalten. Die jeweils erforderlichen Schritte zum Erzeugen des Zugriffstokens hängen vom verwendeten Technologiestapel ab. Ein Beispiel finden Sie im Beispielcode. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](https://docs.microsoft.com/graph/auth-v2-user).
 

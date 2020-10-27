@@ -3,12 +3,12 @@ title: Beschränken des Zugriffs mithilfe eines Dienstendpunkts
 description: Hier erfahren Sie, wie Sie den Zugriff auf eine Azure-Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk beschränken. Der Zugriff auf Dienstendpunkte ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488665"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215500"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk
 
@@ -49,13 +49,11 @@ Ein Endpunkt für den Registrierungsdienst kann im Tarif **Premium** des Contain
 
 ## <a name="configure-network-access-for-registry"></a>Konfigurieren des Netzwerkzugriffs für die Registrierung
 
-In diesem Abschnitt konfigurieren Sie Ihre Containerregistrierung für den Zugriff aus einem Subnetz in einem virtuellen Azure-Netzwerk. Die Schritte werden jeweils bei Verwendung der Azure-Befehlszeilenschnittstelle (CLI) bzw. des Azure-Portals erläutert.
+In diesem Abschnitt konfigurieren Sie Ihre Containerregistrierung für den Zugriff aus einem Subnetz in einem virtuellen Azure-Netzwerk. Es werden Schritte für die Verwendung der Azure CLI bereitgestellt.
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>Zulassen des Zugriffs von einem virtuellen Netzwerk – Befehlszeilenschnittstelle (CLI)
+### <a name="add-a-service-endpoint-to-a-subnet"></a>Hinzufügen eines Dienstendpunkts zu einem Subnetz
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>Hinzufügen eines Dienstendpunkts zu einem Subnetz
-
-Wenn Sie einen virtuellen Computer erstellen, erstellt Azure standardmäßig in der gleichen Ressourcengruppe ein virtuelles Netzwerk. Der Name des virtuellen Netzwerks hängt von dem Namen des virtuellen Computers ab. Wenn Sie Ihren virtuellen Computer beispielsweise *MyDockerVM* nennen, lautet der Standardname des virtuellen Netzwerks *MyDockerVMVNET* mit einem Subnetz namens *MyDockerVMSubnet*. Dies können Sie im Azure-Portal oder mithilfe des Befehls [az network vnet list][az-network-vnet-list] überprüfen:
+Wenn Sie einen virtuellen Computer erstellen, erstellt Azure standardmäßig in der gleichen Ressourcengruppe ein virtuelles Netzwerk. Der Name des virtuellen Netzwerks hängt von dem Namen des virtuellen Computers ab. Wenn Sie Ihren virtuellen Computer beispielsweise *MyDockerVM* nennen, lautet der Standardname des virtuellen Netzwerks *MyDockerVMVNET* mit einem Subnetz namens *MyDockerVMSubnet* . Dies können Sie mithilfe des Befehls [az network vnet list][az-network-vnet-list] überprüfen:
 
 ```azurecli
 az network vnet list \
@@ -74,7 +72,7 @@ Ausgabe:
 ]
 ```
 
-Verwenden Sie den Befehl [az network vnet subnet update][az-network-vnet-subnet-update], um Ihrem Subnetz einen **Microsoft.ContainerRegistry**-Dienstendpunkt hinzuzufügen. Ersetzen Sie im folgenden Befehl die Werte durch die Namen Ihres virtuellen Netzwerks und Ihres Subnetzes:
+Verwenden Sie den Befehl [az network vnet subnet update][az-network-vnet-subnet-update], um Ihrem Subnetz einen **Microsoft.ContainerRegistry** -Dienstendpunkt hinzuzufügen. Ersetzen Sie im folgenden Befehl die Werte durch die Namen Ihres virtuellen Netzwerks und Ihres Subnetzes:
 
 ```azurecli
 az network vnet subnet update \
@@ -101,7 +99,7 @@ Ausgabe:
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>Ändern des Standardnetzwerkzugriffs auf die Registrierung
+### <a name="change-default-network-access-to-registry"></a>Ändern des Standardnetzwerkzugriffs auf die Registrierung
 
 Eine Azure-Containerregistrierung lässt standardmäßig Verbindungen von Hosts in beliebigen Netzwerken zu. Um den Zugriff auf ein ausgewähltes Netzwerk zu beschränken, ändern Sie die Standardaktion so, dass der Zugriff verweigert wird. Ersetzen Sie im folgenden Befehl [az acr update][az-acr-update] den Wert durch den Namen Ihrer Registrierung:
 
@@ -109,7 +107,7 @@ Eine Azure-Containerregistrierung lässt standardmäßig Verbindungen von Hosts 
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>Hinzufügen einer Netzwerkregel zur Registrierung
+### <a name="add-network-rule-to-registry"></a>Hinzufügen einer Netzwerkregel zur Registrierung
 
 Fügen Sie mit dem Befehl [az acr network-rule add][az-acr-network-rule-add] Ihrer Registrierung eine Netzwerkregel hinzu, die den Zugriff vom Subnetz des virtuellen Computers erlaubt. Ersetzen Sie im folgenden Befehl die Werte durch den Namen der Containerregistrierung und die Ressourcen-ID des Subnetzes: 
 
@@ -143,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>Wiederherstellen des Standardzugriffs auf die Registrierung
 
-Zum Wiederherstellen des standardmäßigen Zugriffs auf die Registrierung müssen Sie alle konfigurierten Netzwerkregeln entfernen. Stellen Sie dann „Zugriff zulassen“ wieder als Standardaktion ein. Die Schritte werden jeweils bei Verwendung der Azure-Befehlszeilenschnittstelle (CLI) bzw. des Azure-Portals erläutert.
+Zum Wiederherstellen des standardmäßigen Zugriffs auf die Registrierung müssen Sie alle konfigurierten Netzwerkregeln entfernen. Stellen Sie dann „Zugriff zulassen“ wieder als Standardaktion ein. 
 
-### <a name="restore-default-registry-access---cli"></a>Wiederherstellen des Standardzugriffs auf die Registrierung – Befehlszeilenschnittstelle (CLI)
-
-#### <a name="remove-network-rules"></a>Entfernen von Netzwerkregeln
+### <a name="remove-network-rules"></a>Entfernen von Netzwerkregeln
 
 Um eine Liste der Netzwerkregeln anzuzeigen, die für Ihre Registrierung konfiguriert wurden, führen Sie den folgenden Befehl [az acr network-rule list][az-acr-network-rule-list] aus:
 
@@ -166,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>Zugriff zulassen
+### <a name="allow-access"></a>Zugriff zulassen
 
 Ersetzen Sie im folgenden Befehl [az acr update][az-acr-update] den Wert durch den Namen Ihrer Registrierung:
 ```azurecli
@@ -180,8 +176,6 @@ Wenn Sie alle Azure-Ressourcen in der gleichen Ressourcengruppe erstellt haben u
 ```azurecli
 az group delete --name myResourceGroup
 ```
-
-Navigieren Sie zum Bereinigen von Ressourcen im Azure-Portal zu Ihrer Ressourcengruppe (z.B.„myResourceGroup“). Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe und die dort gespeicherten Ressourcen zu entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

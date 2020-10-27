@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930950"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317449"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
 Azure Load Balancer umfasst ein paar Hauptkomponenten. Diese Komponenten können in Ihrem Abonnement auf folgende Weise konfiguriert werden:
 
 * Azure-Portal
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 * Azure PowerShell
 * Resource Manager-Vorlagen
 
@@ -128,6 +128,7 @@ Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstütz
 
 ## <a name="limitations"></a>Einschränkungen
 
+- Informationen zu Load Balancer-[Grenzwerten](https://aka.ms/lblimits) 
 - Load Balancer ermöglicht den Lastenausgleich und die Portweiterleitung für bestimmte TCP- oder UDP-Protokolle. Für Lastenausgleichsregeln und NAT-Regeln für eingehenden Datenverkehr werden TCP und UDP unterstützt, aber keine anderen IP-Protokolle, z. B. ICMP.
 - Für den ausgehenden Datenfluss von einer Back-End-VM zum Front-End einer internen Load Balancer-Instanz tritt ein Fehler auf.
 - Eine Lastenausgleichsregel kann sich nicht über zwei virtuelle Netzwerke erstrecken.  Front-Ends und ihre Back-End-Instanzen müssen sich im gleichen virtuellen Netzwerk befinden.  

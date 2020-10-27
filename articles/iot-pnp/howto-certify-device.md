@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949897"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042965"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Zertifizieren von IoT Plug & Play-Geräten
 
@@ -42,18 +42,18 @@ Ihr Gerät muss Folgendes durchführen, um die Anforderungen an die Zertifizieru
 - Telemetrie, Eigenschaften oder Befehle implementieren, die der IoT Plug & Play-Konvention folgen.
 - Die Geräteinteraktionen mit einem [DTDL v2](https://aka.ms/dtdl)-Modell beschreiben.
 - Das Modell und alle erforderlichen Schnittstellen im [öffentlichen Azure IoT-Modellrepository](https://devicemodels.azureiotsolutions.com/) veröffentlichen.
-- Die Modell-ID während der [DPS-Registrierung](concepts-developer-guide.md#dps-payload) in den DPS-Bereitstellungsnutzdaten senden.
-- Die Modell-ID während der [MQTT-Verbindung](concepts-developer-guide.md#model-id-announcement) ankündigen.
+- Die Modell-ID während der [DPS-Registrierung](concepts-developer-guide-device-csharp.md#dps-payload) in den DPS-Bereitstellungsnutzdaten senden.
+- Die Modell-ID während der [MQTT-Verbindung](concepts-developer-guide-device-csharp.md#model-id-announcement) ankündigen.
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Testen mit der Befehlszeilenschnittstelle der Azure IoT-Erweiterung
 
-Mit der [Azure IoT CLI-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest) können Sie überprüfen, ob die Geräteimplementierung mit dem Modell übereinstimmt, bevor Sie das Gerät zur Zertifizierung über das Azure Certified Device-Portal übermitteln.
+Mit der [Azure IoT CLI-Erweiterung](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) können Sie überprüfen, ob die Geräteimplementierung mit dem Modell übereinstimmt, bevor Sie das Gerät zur Zertifizierung über das Azure Certified Device-Portal übermitteln.
 
 In den folgenden Schritten wird gezeigt, wie Sie die Zertifizierungstests mithilfe der CLI vorbereiten und ausführen:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Installieren der Azure IoT-Erweiterung für die Azure CLI
 
-Folgen Sie den [Installationsanleitungen](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) zum Einrichten der Azure CLI in Ihrer Umgebung.
+Folgen Sie den [Installationsanleitungen](/cli/azure/?preserve-view=true&view=azure-cli-latest) zum Einrichten der Azure CLI in Ihrer Umgebung.
 
 Führen Sie zum Installieren der Azure IoT-Erweiterung den folgenden Befehl aus:
 
@@ -61,7 +61,7 @@ Führen Sie zum Installieren der Azure IoT-Erweiterung den folgenden Befehl aus:
 az extension add --name azure-iot
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI für Azure IoT](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest).
+Weitere Informationen finden Sie unter [Azure CLI für Azure IoT](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="create-a-new-product-test"></a>Erstellen eines neuen Produkttests
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> Sie müssen sich bei Ihrem Abonnement [anmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), wenn Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+> Sie müssen sich bei Ihrem Abonnement [anmelden](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest), wenn Sie die Befehlszeilenschnittstelle (CLI) verwenden.
 
 Die JSON-Ausgabe des Befehls enthält `primaryKey`, `registrationId` und `scopeID`, die beim Herstellen einer Verbindung für Ihr Gerät zu verwenden sind.
 
@@ -166,9 +166,6 @@ Beispiel für die Ausgabe eines Testlaufs
 
 Die folgenden Schritte zeigen Ihnen, wie Sie das [Azure Certified Device-Portal](https://aka.ms/acdp) verwenden, um Produktdetails zu registrieren, einen Leitfaden für die ersten Schritte zu übermitteln und die Zertifizierungstests durchzuführen.
 
-> [!NOTE]
-> Zum Zeitpunkt der Erstellung dieses Artikels unterstützt das Portal nicht die Veröffentlichung im [Katalog mit Certified for Azure IoT-Geräten](https://aka.ms/devicecatalog).
-
 ### <a name="onboarding"></a>Onboarding
 
 Um das [Zertifizierungsportal](https://aka.ms/acdp) zu nutzen, müssen Sie ein Azure Active Directory von Ihrem Geschäfts-, Schul- oder Unimandanten verwenden.
@@ -203,6 +200,14 @@ Es müssen drei Schritte ausgeführt werden:
 1. Schnittstellen verbinden und ermitteln Das Gerät muss über DPS mit dem Azure IoT-Zertifizierungsdienst verbunden werden. Wählen Sie die Authentifizierungsmethode (X.509-Zertifikat, symmetrische Schlüssel oder Trusted Platform Module) aus, um die Geräteanwendung mit den DPS-Informationen zu verwenden und zu aktualisieren.
 1. Schnittstellen überprüfen Überprüfen Sie die Schnittstelle und vergewissern Sie sich, dass jede Schnittstelle Nutzdateneingaben aufweist, die für Tests sinnvoll sind.
 1. Tests durchführen Das System testet jedes Gerätemodell, um zu überprüfen, ob die Telemetrie, Eigenschaften und Befehle, die im Modell beschrieben sind, den IoT Plug & Play-Konventionen entsprechen. Wenn der Test abgeschlossen ist, wählen Sie den Link **Protokolle anzeigen** aus, um die Telemetrie vom Gerät und die an die IoT Hub-Gerätezwillingseigenschaften gesendeten Rohdaten anzuzeigen.
+
+### <a name="submit-and-publish"></a>Übermitteln und Veröffentlichen
+
+Die letzte erforderliche Phase besteht darin, das Projekt zur Überprüfung zu übermitteln. Bei diesem Schritt wird ein Mitglied des Azure Certified Device-Teams benachrichtigt, damit es Ihr Projekt auf Vollständigkeit überprüft, einschließlich der Geräte- und Marketingdetails sowie des Leitfadens „Erste Schritte“. Vor dem Erteilen der Genehmigung kontaktiert Sie möglicherweise ein Teammitglied unter der zuvor angegebenen E-Mail-Adresse des Unternehmens mit Fragen oder Änderungsanforderungen.
+
+Wenn Ihr Gerät im Rahmen der Zertifizierung eine weitere manuelle Überprüfung erfordert, werden Sie zu diesem Zeitpunkt hierüber benachrichtigt.
+
+Nachdem ein Gerät zertifiziert wurde, können Sie auf Wunsch Ihre Produktdetails im Azure Certified Device-Katalog veröffentlichen, indem Sie die Funktion **In Katalog veröffentlichen** auf der Produktübersichtsseite verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

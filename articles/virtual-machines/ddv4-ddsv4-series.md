@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 370e9e0df2a4fc2ee4aca43c01bfe0a98077d189
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649906"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018847"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- und Ddsv4-Serie
 
-Die Ddv4- und Ddsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) mit einer Hyperthreading-Konfiguration ausgeführt, die für die meisten Allzweck-Workloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology und ](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)Intel[ Advanced Vector Extensions 512 (&reg;Intel&reg; AVX-512).](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) Außerdem unterstützen sie [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese neuen VM-Größen bieten 50  % mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Dv3/Dsv3](./dv3-dsv3-series.md) mit [Gen2-VMs](./linux/generation-2.md).
+Die Ddv4- und Ddsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) mit einer Hyperthreading-Konfiguration ausgeführt, die für die meisten Allzweck-Workloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügen über eine Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Außerdem unterstützen sie [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese neuen VM-Größen bieten 50  % mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Dv3/Dsv3](./dv3-dsv3-series.md) mit [Gen2-VMs](./generation-2.md).
 
 Zu den Anwendungsfällen der D-Serie zählen Unternehmensanwendungen, relationale Datenbanken, In-Memory-Caching und Analysen.
 
@@ -28,15 +28,13 @@ Die Größen der Ddv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL 
 
 Die neuen Ddv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher (bis zu 2.400 GiB) und sind für Anwendungen konzipiert, die von einer niedrigen Latenz und einem schnellen lokalen Speicher profitieren, wie z. B. Anwendungen, die schnelle Lese-/Schreibvorgänge im temporären Speicher oder temporären Speicher für Caches oder temporäre Dateien benötigen. An Ddv4-VMs können Sie SSD Standard- und HDD Standard-Speicher anfügen. Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechnet.
 
-ACU: 195-210
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195-210<br>
+[Storage Premium:](premium-storage-performance.md) Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br> 
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
@@ -57,15 +55,13 @@ Die neuen Ddsv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher 
  > [!NOTE]
  >Für Ddsv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Ddsv4-Serie.
 
-ACU: 195-210
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195-210<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+<br> 
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|

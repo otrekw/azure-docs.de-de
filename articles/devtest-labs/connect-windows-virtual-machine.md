@@ -15,7 +15,7 @@ In diesem Artikel erfahren Sie, wie Sie in Ihrem Lab eine Verbindung mit einer W
 
 ## <a name="connect-to-a-windows-vm"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie in der Suchleiste nach **DevTest Labs**, und wählen Sie die Option aus. 
+1. Suchen Sie in der Suchleiste nach **DevTest Labs** , und wählen Sie die Option aus. 
 
     :::image type="content" source="./media/connect-windows-virtual-machine/search-select.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::    
 1. Wählen Sie in der Liste mit den Labs Ihr **Lab** aus.
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie in Ihrem Lab eine Verbindung mit einer W
 1. Wählen Sie auf der Seite **Virtueller Computer** für Ihre VM in der Symbolleiste die Option **Verbinden** aus. Wenn die VM angehalten wurde, wählen Sie zuerst **Starten** aus, um die VM zu starten.
 
     :::image type="content" source="./media/connect-windows-virtual-machine/select-connect.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::                    
-1. Wenn Sie den Edge-Browser verwenden, sehen Sie am unteren Rand des Browsers den Link zur **heruntergeladenen RDP-Datei**. 
+1. Wenn Sie den Microsoft Edge-Browser verwenden, sehen Sie am unteren Rand des Browsers den Link zur **heruntergeladenen RDP-Datei** . 
 
     :::image type="content" source="./media/connect-windows-virtual-machine/rdp-download.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::                        
 1. Öffnen Sie die RDP-Datei, und geben Sie die VM-Anmeldeinformationen ein, die Sie beim Erstellen der VM verwendet haben. Die Verbindung mit der Windows-VM sollte jetzt hergestellt sein. 

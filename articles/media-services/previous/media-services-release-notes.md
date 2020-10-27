@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268654"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014102"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -49,6 +49,18 @@ Wir wünschen uns Feedback von unseren Kunden, damit wir Probleme beheben könne
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
 
+## <a name="september-2020"></a>September 2020
+
+Die folgenden v2-Eigenschaften werden nicht mehr mit Verlaufsdaten der Auftragsverarbeitung aufgefüllt:
+
+* [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+
+Um den Aufgabenverlauf abzurufen, können Sie die v2-Auftragsbenachrichtigungen über Webhooks oder Warteschlangennachrichten über Benachrichtigungsendpunkte verwenden. Weitere Informationen finden Sie unter
+
+* [Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-queues.md)
+* [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-webhooks.md)
+
 ## <a name="february-2020"></a>Februar 2020
 
 Einige Analytics-Medienprozessoren werden außer Betrieb genommen. Die entsprechenden Termine finden Sie im Thema [Legacykomponenten](legacy-components.md).
@@ -69,7 +81,7 @@ Weitere Informationen finden Sie auch unter [Migration von Azure Media Indexer v
 
 Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).
 
-Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](./migrate-windows-azure-media-encoder.md) und [Migrieren von AME zu Media Encoder Standard](./migrate-azure-media-encoder.md).
 
 ## <a name="march-2019"></a>März 2019
 
@@ -186,7 +198,7 @@ Bei einigen Clients kann im Smooth Streaming-Manifest ein Problem mit einem Wied
 
 ## <a name="april-2016-release"></a><a id="apr_changes16"></a>Release von April 2016
 ### <a name="media-analytics"></a>Media Analytics
- Media Services bietet Media Analytics für leistungsstarke Funktionen zur Gewinnung von Erkenntnissen aus Videos. Weitere Informationen finden Sie unter [Media Analytics auf der Media Services-Plattform](media-services-analytics-overview.md).
+ Media Services bietet Media Analytics für leistungsstarke Funktionen zur Gewinnung von Erkenntnissen aus Videos. Weitere Informationen finden Sie unter [Media Analytics auf der Media Services-Plattform](./legacy-components.md).
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (Vorschau)
 Mit Media Services können Sie jetzt Ihre HLS-Inhalte (HTTP Live Streaming) mit Apple FairPlay dynamisch verschlüsseln. Sie können auch den Lizenzbereitstellungsdienst von Media Services verwenden, um FairPlay-Lizenzen an Clients zu übermitteln. Weitere Informationen finden Sie unter „Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten“.
@@ -220,9 +232,9 @@ Das Azure SDK-Team hat eine neue Version des [Azure SDK für PHP](https://github
 Weitere Informationen finden Sie unter
 
 * Die folgenden [Codebeispiele](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) erleichtern Ihnen den schnellen Einstieg:
-  * **vodworkflow_aes.php**: Diese PHP-Datei veranschaulicht die Verwendung der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts. Sie basiert auf dem .NET-Beispiel, das unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](media-services-protect-with-aes128.md) erläutert wird.
-  * **vodworkflow_aes.php**: Diese PHP-Datei veranschaulicht die Verwendung der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts. Sie basiert auf dem .NET-Beispiel, das unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md) erläutert wird.
-  * **scale_encoding_units.php**: Diese PHP-Datei veranschaulicht das Skalieren von reservierten Einheiten für die Codierung.
+  * **vodworkflow_aes.php** : Diese PHP-Datei veranschaulicht die Verwendung der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts. Sie basiert auf dem .NET-Beispiel, das unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](media-services-protect-with-aes128.md) erläutert wird.
+  * **vodworkflow_aes.php** : Diese PHP-Datei veranschaulicht die Verwendung der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts. Sie basiert auf dem .NET-Beispiel, das unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md) erläutert wird.
+  * **scale_encoding_units.php** : Diese PHP-Datei veranschaulicht das Skalieren von reservierten Einheiten für die Codierung.
 
 ## <a name="november-2015-release"></a><a id="nov_changes_15"></a>Release von November 2015
  Media Services bietet jetzt den Widevine-Dienst zur Lizenzübermittlung in der Cloud an. Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Weitere Informationen finden Sie auch in [diesem Tutorial](media-services-protect-with-playready-widevine.md) und im [GitHub-Repository](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
@@ -263,7 +275,7 @@ Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/bl
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>Release von Juli 2015
 * Die allgemeine Verfügbarkeit von Media Encoder Standard wurde angekündigt. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
   
-    Media Encoder Standard verwendet die in [diesem Abschnitt](https://go.microsoft.com/fwlink/?LinkId=618336) beschriebenen Voreinstellungen. Beim Verwenden einer Voreinstellung für 4K-Codierungen erhalten Sie reservierte Einheiten vom Typ „Premium“. Weitere Informationen finden Sie unter [Skalieren der Codierung](media-services-scale-media-processing-overview.md).
+    Media Encoder Standard verwendet die in [diesem Abschnitt](./media-services-mes-presets-overview.md) beschriebenen Voreinstellungen. Beim Verwenden einer Voreinstellung für 4K-Codierungen erhalten Sie reservierte Einheiten vom Typ „Premium“. Weitere Informationen finden Sie unter [Skalieren der Codierung](media-services-scale-media-processing-overview.md).
 * Mit Media Services und dem Media Player wurden Liveuntertitel in Echtzeit verwendet. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
 
 ### <a name="media-services-net-sdk-updates"></a>Updates für das Media Services .NET SDK

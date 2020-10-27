@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a654454c1ef3d5ea1ff7e6eb525bb153f7875c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430736"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168204"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassen des Stils der Seiten im Entwicklerportal
 
@@ -29,9 +29,9 @@ Es gibt drei sehr häufig verwendete Möglichkeiten, das Entwicklerportal in Azu
 * Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden (in diesem Leitfaden beschrieben)
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden](api-management-developer-portal-templates.md) (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung)
 
-In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des Legacy-**Entwicklerportals** anpassen und Ihre Änderungen anzeigen.
+In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des Legacy- **Entwicklerportals** anpassen und Ihre Änderungen anzeigen.
 
-![Anpassen des Stils](./media/modify-developer-portal-style/developer_portal.png)
+![Screenshot, der zeigt, wo Sie Ihre Einstellungen im Legacy-Entwicklerportal ändern.](./media/modify-developer-portal-style/developer_portal.png)
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -45,12 +45,12 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
 
 ## <a name="customize-the-developer-portal"></a>Anpassen des Entwicklerportals
 
-1. Wählen Sie **Übersicht**.
+1. Wählen Sie **Übersicht** .
 2. Klicken Sie oben im Fenster **Übersicht** auf die Schaltfläche **Developer portal (legacy)** (Entwicklerportal (Legacy-Version)).
 3. Oben links auf dem Bildschirm wird ein aus zwei Pinseln bestehendes Symbol angezeigt. Zeigen Sie auf dieses Symbol, um das Menü für die Portalanpassung zu öffnen.
 
-    ![Anpassen des Stils](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
-4. Klicken Sie im Menü auf **Stile**, um den Bereich für die Anpassung des Stils zu öffnen.
+    ![Screenshot, der das Symbol mit zwei Pinseln hervorhebt.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+4. Klicken Sie im Menü auf **Stile** , um den Bereich für die Anpassung des Stils zu öffnen.
 
     Alle Elemente, die über **Stile** angepasst werden können, werden auf der Seite angezeigt.
 5. Geben Sie im Feld **Change variable values to customize developer portal appearance:** (Variablenwerte ändern, um die Darstellung des Entwicklerportals anzupassen) die Variable „headings-color“ ein.
@@ -59,7 +59,7 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
 
     ![Anpassen des Stils](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klicken Sie auf das Feld für die Variable **\@headings-color**. 
+6. Klicken Sie auf das Feld für die Variable **\@headings-color** . 
     
     Die Dropdownliste für die Farbauswahl wird geöffnet.
 7. Wählen Sie in der Dropdownliste für die Farbauswahl eine neue Farbe aus.
@@ -67,8 +67,8 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
     > [!TIP]
     > Für alle Änderungen ist eine Echtzeitvorschau verfügbar. Oben im Anpassungsbereich wird eine Statusanzeige angezeigt. Nach einigen Sekunden wird die Farbe des Überschriftentexts in die neu ausgewählte Farbe geändert.
 
-8. Klicken Sie unten links im Menü des Anpassungsbereich auf **Veröffentlichen**.
-9. Klicken Sie auf **Anpassungen veröffentlichen**, um die Änderungen öffentlich verfügbar zu machen.
+8. Klicken Sie unten links im Menü des Anpassungsbereich auf **Veröffentlichen** .
+9. Klicken Sie auf **Anpassungen veröffentlichen** , um die Änderungen öffentlich verfügbar zu machen.
 
 ## <a name="view-your-change"></a>Anzeigen der Änderungen
 

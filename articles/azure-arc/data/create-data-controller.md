@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273040"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310915"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Erstellen des Azure Arc-Datencontrollers
 
@@ -45,7 +45,7 @@ Derzeit werden die folgenden Kubernetes-Dienste und -Distributionen unterstützt
 > [!NOTE]
 > Bei Verwendung von Red Hat OpenShift Container Platform in Azure empfiehlt es sich, die neueste verfügbare Version zu verwenden.
 
-Abhängig von der gewählten Option sind bestimmte Tools _erforderlich_. Es wird jedoch empfohlen, [alle Clienttools zu installieren](./install-client-tools.md), bevor Sie mit der Erstellung des Azure Arc-Datencontrollers beginnen.
+Abhängig von der gewählten Option sind bestimmte Tools _erforderlich_ . Es wird jedoch empfohlen, [alle Clienttools zu installieren](./install-client-tools.md), bevor Sie mit der Erstellung des Azure Arc-Datencontrollers beginnen.
 
 Unabhängig von der gewählten Option müssen Sie während der Erstellung die folgenden Informationen angeben:
 
@@ -65,7 +65,7 @@ Es gibt mehrere Optionen zum Erstellen des Azure Arc-Datencontrollers:
 > **Möchten Sie es selbst ausprobieren?**  
 > Mit dem [Azure Arc-Schnelleinstieg](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
 > 
-- [Erstellen eines Datencontrollers mit der Azure Data CLI (azdata)](create-data-controller-using-azdata.md)
+- [Erstellen eines Datencontrollers mit [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Erstellen eines Datencontrollers mit Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Erstellen eines Datencontrollers über das Azure-Portal mithilfe eines Jupyter Notebooks in Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
 - [Erstellen eines Datencontrollers mit Kubernetes-Tools wie kubectl oder oc](create-data-controller-using-kubernetes-native-tools.md)

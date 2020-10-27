@@ -12,27 +12,39 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/17/2020
+ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079790"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977237"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen
 SAP-Anwendungen, die auf der SAP NetWeaver- oder SAP S/4HANA-Architektur basieren, sind von der Netzwerklatenz zwischen der SAP-Anwendungsschicht und der SAP-Datenbankschicht abhängig. Diese Abhängigkeit ist das Ergebnis davon, dass der größte Teil der Geschäftslogik in der Anwendungsschicht ausgeführt wird. Da die SAP-Anwendungsschicht die Geschäftslogik ausführt, gibt sie mit einer hohen Frequenz Abfragen an die Datenbankschicht aus (tausende oder zehntausende von Abfragen pro Sekunde). In den meisten Fällen handelt es sich um einfache Abfragen. Sie können oft in 500 Mikrosekunden oder noch kürzerer Zeit in der Datenbankschicht ausgeführt werden.
 
-Die Zeit, die im Netzwerk verbracht wird, um eine solche Abfrage von der Anwendungsschicht an die Datenbankschicht zu senden, und das zurückgegebene Ergebnis beeinflussen maßgeblich die Zeit, die zur Ausführung von Geschäftsprozessen benötigt wird. Diese Empfindlichkeit gegenüber Netzwerklatenzen ist der Grund, warum Sie eine optimale Netzwerklatenz in SAP-Bereitstellungsprojekten erreichen müssen. Weitere Informationen finden Sie im [SAP-Hinweis 1100926 – Häufig gestellte Fragen: Netzwerkleistung](https://launchpad.support.sap.com/#/notes/1100926/E). Dort finden Sie einige Richtlinien zum Klassifizieren der Netzwerklatenz.
+Die Zeit, die im Netzwerk verbracht wird, um eine solche Abfrage von der Anwendungsschicht an die Datenbankschicht zu senden, und das zurückgegebene Ergebnis beeinflussen maßgeblich die Zeit, die zur Ausführung von Geschäftsprozessen benötigt wird. Diese Empfindlichkeit gegenüber Netzwerklatenzen ist der Grund, warum es sinnvoll ist, in SAP-Bereitstellungsprojekten eine bestimmte maximale Netzwerklatenz zu erreichen. Weitere Informationen finden Sie im [SAP-Hinweis 1100926 – Häufig gestellte Fragen: Netzwerkleistung](https://launchpad.support.sap.com/#/notes/1100926/E). Dort finden Sie einige Richtlinien zum Klassifizieren der Netzwerklatenz.
 
-In vielen Azure-Regionen ist die Zahl der Rechenzentren gestiegen. Diese Zunahme wurde auch durch die Einführung von Verfügbarkeitszonen ausgelöst. Gleichzeitig nutzen Kunden (insbesondere für High-End-SAP-Systeme) speziellere VM-SKUs aus der M-Serie oder HANA Large Instances. Diese Typen virtueller Azure-Computer sind in bestimmten Azure-Regionen nicht in allen Rechenzentren verfügbar. Aufgrund dieser beiden Tendenzen haben Kunden Netzwerklatenz bemerkt, die sich nicht im optimalen Bereich befindet. In einigen Fällen führt diese Latenz zu einer suboptimalen Leistung ihrer SAP-Systeme.
+In vielen Azure-Regionen ist die Zahl der Rechenzentren gestiegen. Gleichzeitig nutzen Kunden (insbesondere für High-End-SAP-Systeme) speziellere VM-SKUs der M- oder Mv2-Serie oder HANA Large Instances. Diese Typen virtueller Azure-Computer sind nicht immer in allen Rechenzentren verfügbar, die eine Azure-Region ergänzen. Diese Tatsachen können die Chance eröffnen, die Netzwerklatenz zwischen der SAP-Anwendungsschicht und der SAP DBMS-Schicht zu optimieren.
 
-Um diese Probleme zu vermeiden, bietet Azure [Näherungsplatzierungsgruppen](../../linux/co-location.md). Diese neue Funktionalität wurde bereits zur Bereitstellung verschiedener SAP-Systeme verwendet. Einschränkungen für Näherungsplatzierungsgruppen finden Sie im Artikel, der zu Beginn dieses Absatzes erwähnt wurde. In diesem Artikel werden die SAP-Szenarien erläutert, in denen Azure-Näherungsplatzierungsgruppen verwendet werden können.
+Damit Sie die Möglichkeit zum Optimieren der Netzwerklatenz erhalten, bietet Azure [Näherungsplatzierungsgruppen](../../linux/co-location.md). Näherungsplatzierungsgruppen können verwendet werden, um die Gruppierung verschiedener VM-Typen in einem einzelnen Azure-Rechenzentrum zu erzwingen, um die Netzwerklatenz zwischen diesen verschiedenen VM-Typen so gut wie möglich zu optimieren. Im Prozess der Bereitstellung der ersten VM in einer solchen Näherungsplatzierungsgruppe wird die VM an ein bestimmtes Rechenzentrum gebunden. So reizvoll diese Aussicht klingt, die Nutzung dieses Konstrukts bringt auch einige Einschränkungen mit sich:
+
+- Sie können nicht davon ausgehen, dass alle Azure VM-Typen in jedem und allen Azure-Rechenzentren verfügbar sind. Das hat zur Folge, dass die Kombination verschiedener VM-Typen innerhalb einer Näherungsplatzierungsgruppe eingeschränkt sein kann. Diese Einschränkungen treten auf, weil die Hosthardware, die zum Ausführen eines bestimmten VM-Typs erforderlich ist, möglicherweise nicht in dem Rechenzentrum vorhanden ist, in dem Näherungsplatzierungsgruppe bereitgestellt wurde.
+- Wenn Sie die Größe der virtuellen Computer innerhalb einer Näherungsplatzierungsgruppe ändern, können Sie nicht automatisch davon ausgehen, dass der neue VM-Typ unter allen Umständen in demselben Rechenzentrum wie die anderen VMs verfügbar ist, die Teil der Näherungsplatzierungsgruppe sind.
+- Wenn Azure Hardware außer Betrieb nimmt, werden bestimmte VMs einer Näherungsplatzierungsgruppe möglicherweise in andere Azure-Rechenzentren gezwungen. Ausführliche Informationen zu diesem Fall finden Sie im Dokument [Zusammenstellen von Ressourcen für geringe Latenz](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
+
+> [!IMPORTANT]
+> Als Ergebnis der potenziellen Einschränkungen sollten diese Regeln für die Verwendung von Näherungsplatzierungsgruppen beachtet werden:
+>
+> - Nur bei Bedarf einsetzen
+> - Nur im Detailgrad eines einzelnen SAP-Systems einsetzen, nicht für eine gesamte Systemlandschaft oder eine gesamte SAP-Landschaft
+> - So einsetzen, dass die verschiedenen VM-Typen und die Anzahl der VMs innerhalb einer Näherungsplatzierungsgruppe so gering wie möglich gehalten wird
+
 
 ## <a name="what-are-proximity-placement-groups"></a>Was sind Näherungsplatzierungsgruppen? 
-Eine Azure-Näherungsplatzierungsgruppe ist ein logisches Konstrukt. Wenn eine solche Gruppe definiert ist, ist sie an eine Azure-Region und eine Azure-Ressourcengruppe gebunden. Wenn VMs bereitgestellt werden, wird wie folgt auf eine Azure-Näherungsplatzierungsgruppe verwiesen:
+Eine Azure-Näherungsplatzierungsgruppe ist ein logisches Konstrukt. Wenn eine Näherungsplatzierungsgruppe definiert wird, wird sie an eine Azure-Region und eine Azure-Ressourcengruppe gebunden. Wenn VMs bereitgestellt werden, wird wie folgt auf eine Azure-Näherungsplatzierungsgruppe verwiesen:
 
 - Von der ersten Azure-VM, die im Rechenzentrum bereitgestellt wird. Der erste virtuelle Computer kann als „Bereichs-VM“ betrachtet werden, die basierend auf Azure-Zuordnungsalgorithmen in einem Rechenzentrum bereitgestellt und schließlich mit Benutzerdefinitionen für eine bestimmte Azure-Verfügbarkeitszone kombiniert wird.
 - Von allen nachfolgenden VMs, die auf die Näherungsplatzierungsgruppe verweisen, um alle nachfolgenden Azure-VMs im selben Rechenzentrum wie den ersten virtuellen Computer zu platzieren.
@@ -42,18 +54,13 @@ Eine Azure-Näherungsplatzierungsgruppe ist ein logisches Konstrukt. Wenn eine s
 
 Einer einzelnen [Azure-Ressourcengruppe](../../../azure-resource-manager/management/manage-resources-portal.md) können mehrere Näherungsplatzierungsgruppen zugewiesen werden. Eine Näherungsplatzierungsgruppe kann jedoch nur einer Azure-Ressourcengruppe zugeordnet werden.
 
-Beachten Sie bei der Verwendung von Näherungsplatzierungsgruppen die folgenden Überlegungen:
-
-- Wenn Sie optimale Leistung für das SAP-System anstreben und sich durch die Verwendung von Näherungsplatzierungsgruppen auf ein einziges Azure-Rechenzentrum für dieses System beschränken, können Sie möglicherweise nicht alle Arten von VM-Produktfamilien innerhalb der Näherungsplatzierungsgruppe kombinieren. Diese Einschränkungen treten auf, weil die Hosthardware, die zum Ausführen eines bestimmten VM-Typs erforderlich ist, möglicherweise nicht im Rechenzentrum vorhanden ist, in dem die „Bereichs-VM“ der Näherungsplatzierungsgruppe bereitgestellt wurde.
-- Während des Lebenszyklus eines solchen SAP-Systems könnten Sie gezwungen sein, das System in ein anderes Rechenzentrum zu verlagern. Diese Verlagerung kann erforderlich sein, wenn Sie entscheiden, dass Ihre horizontal skalierbare HANA-DBMS-Schicht z.B. von vier Knoten auf 16 Knoten erweitert werden soll, und nicht genügend Kapazität verfügbar ist, um zusätzliche 12 VMs des Typs zu erhalten, den Sie im Rechenzentrum verwendet haben.
-- Aufgrund der Außerbetriebnahme von Hardware kann Microsoft Kapazitäten für einen VM-Typ bereitstellen, den Sie in einem anderen Rechenzentrum verwendet haben, anstatt für den Typ, den Sie ursprünglich verwendet haben. In diesem Szenario müssen Sie möglicherweise alle VMs der Näherungsplatzierungsgruppe in ein anderes Rechenzentrum verschieben.
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Näherungsplatzierungsgruppen mit SAP-Systemen, die ausschließlich Azure-VMs verwenden
 Die meisten SAP NetWeaver- und S/4HANA-Systembereitstellungen unter Azure verwenden keine [HANA Large Instances](./hana-overview-architecture.md). Für Bereitstellungen, die keine HANA Large Instances verwenden, ist es wichtig, eine optimale Leistung zwischen der SAP-Anwendungsschicht und der DBMS-Schicht zu gewährleisten. Zu diesem Zweck definieren Sie eine Azure-Näherungsplatzierungsgruppe exklusiv für dieses System.
 
 In den meisten Kundenbereitstellungen erstellen Kunden eine einzige [Azure-Ressourcengruppe](../../../azure-resource-manager/management/manage-resources-portal.md) für SAP-Systeme. In diesem Fall besteht eine 1:1-Beziehung beispielsweise zwischen den Ressourcengruppen des ERP-Produktionssystems und seiner Näherungsplatzierungsgruppe. In anderen Fällen haben Kunden ihre Ressourcengruppen horizontal organisiert und alle Produktionssysteme in einer einzigen Ressourcengruppe zusammengefasst. In diesem Fall besteht eine 1:n-Beziehung zwischen der Ressourcengruppe mit SAP-Produktionssystemen und mehreren Näherungsplatzierungsgruppen beispielsweise für SAP ERP- und SAP BW-Produktionssysteme.
 
-Eine Bündelung mehrerer SAP-Produktions- oder -Nicht-Produktionssysteme in einer einzigen Näherungsplatzierungsgruppe sollte vermieden werden. Wenn einige wenige SAP-Systeme oder ein SAP-System und einige zugehörige Anwendungen Netzwerkkommunikation mit niedriger Latenz erfordern, können Sie diese Systeme ggf. in eine einzelne Näherungsplatzierungsgruppe verschieben. Sie sollten Systembündelungen vermeiden: Je mehr Systeme Sie in einer Näherungsplatzierungsgruppe gruppieren, desto höher ist die Wahrscheinlichkeit für Folgendes:
+Eine Bündelung mehrerer SAP-Produktions- oder -Nicht-Produktionssysteme in einer einzigen Näherungsplatzierungsgruppe sollte vermieden werden. Wenn einige wenige SAP-Systeme oder ein SAP-System und einige zugehörige Anwendungen Netzwerkkommunikation mit niedriger Latenz erfordern, können Sie diese Systeme ggf. in eine einzelne Näherungsplatzierungsgruppe verschieben. Vermeiden Sie Systembündelungen: Je mehr Systeme Sie in einer Näherungsplatzierungsgruppe gruppieren, desto höher ist die Wahrscheinlichkeit für Folgendes:
 
 - Sie benötigen einen VM-Typ, der nicht in dem spezifischen Rechenzentrum ausgeführt werden kann, für das die Näherungsplatzierungsgruppe ausgelegt wurde.
 - Ressourcen für Nicht-Mainstream-VMs (z.B. VMs der M-Serie) können ggf. nicht bereitgestellt werden, wenn Sie sie benötigen, weil Sie im Lauf der Zeit einer Näherungsplatzierungsgruppe Software hinzufügen.
@@ -130,7 +137,7 @@ Eine erfolgreiche Bereitstellung dieses virtuellen Computers würde die Datenban
 
 Angenommen, Sie stellen die VMs für die zentralen Dienste auf die gleiche Weise wie die DBMS VMs bereit und verweisen auf die gleichen Zonen und die gleichen Näherungsplatzierungsgruppen. Im nächsten Schritt müssen Sie die Verfügbarkeitsgruppen erstellen, die Sie für die Anwendungsschicht des SAP-Systems verwenden möchten.
 
-Sie müssen die Näherungsplatzierungsgruppe definieren und erstellen. Der Befehl zum Erstellen der Verfügbarkeitsgruppe erfordert einen zusätzlichen Verweis auf die ID der Näherungsplatzierungsgruppe (nicht den Namen). Sie können die ID der Näherungsplatzierungsgruppe abrufen, indem Sie den folgenden Befehl verwenden:
+Definieren und erstellen Sie die Näherungsplatzierungsgruppe. Der Befehl zum Erstellen der Verfügbarkeitsgruppe erfordert einen zusätzlichen Verweis auf die ID der Näherungsplatzierungsgruppe (nicht den Namen). Sie können die ID der Näherungsplatzierungsgruppe abrufen, indem Sie den folgenden Befehl verwenden:
 
 <pre><code>
 Get-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose"

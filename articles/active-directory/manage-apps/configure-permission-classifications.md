@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0add5001e2e62e26d448b06927210c14f17729f1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: d5016dbff30eb054e413acc66b1b2dfee62a5873
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804247"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070672"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
 
@@ -33,7 +33,7 @@ Derzeit wird nur die Berechtigungsklassifizierung „Geringe Auswirkung“ unter
 
 Führen Sie die folgenden Schritte zum Klassifizieren von Berechtigungen über das Azure-Portal aus:
 
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Einwilligung und Berechtigungen** > **Berechtigungsklassifizierungen** aus.
 1. Wählen Sie **Berechtigungen hinzufügen** aus, um eine weitere Berechtigung als „Geringe Auswirkung“ zu klassifizieren.
 1. Wählen Sie die API und dann die delegierten Berechtigungen aus.
@@ -44,11 +44,11 @@ In diesem Beispiel haben wir den minimalen Berechtigungssatz klassifiziert, der 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) verwenden, um Berechtigungen zu klassifizieren. Berechtigungsklassifizierungen werden für das **ServicePrincipal**-Objekt der API konfiguriert, die die Berechtigungen veröffentlicht.
+Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) verwenden, um Berechtigungen zu klassifizieren. Berechtigungsklassifizierungen werden für das **ServicePrincipal** -Objekt der API konfiguriert, die die Berechtigungen veröffentlicht.
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>Auflisten der aktuellen Berechtigungsklassifizierungen für eine API
 
-1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+1. Rufen Sie das **ServicePrincipal** -Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
 
    ```powershell
    $api = Get-AzureADServicePrincipal `
@@ -64,7 +64,7 @@ Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https
 
 #### <a name="classify-a-permission-as-low-impact"></a>Klassifizieren einer Berechtigung als „Geringe Auswirkung“
 
-1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+1. Rufen Sie das **ServicePrincipal** -Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
 
    ```powershell
    $api = Get-AzureADServicePrincipal `
@@ -89,7 +89,7 @@ Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https
 
 #### <a name="remove-a-delegated-permission-classification"></a>Entfernen einer delegierten Berechtigungsklassifizierung
 
-1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+1. Rufen Sie das **ServicePrincipal** -Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
 
    ```powershell
    $api = Get-AzureADServicePrincipal `

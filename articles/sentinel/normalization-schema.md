@@ -89,7 +89,7 @@ Unten finden Sie das Schema der Netzwerksitzungstabelle in Version 1.0.0
 | NetworkBytes | INT | 78991 | Die Anzahl Bytes, die in beide Richtungen gesendet werden. Wenn sowohl BytesReceived als auch BytesSent vorhanden sind, sollte BytesTotal ihrer Summe entsprechen. | Netzwerk |
 | NetworkDirection | Mehrwertig: Inbound, Outbound (Zeichenfolge) | Eingehende Verbindungen | Die Richtung der Verbindung oder Sitzung, in die bzw. aus der Organisation. | Netzwerk |
 | DstGeoCity | String | Burlington | Die Stadt, die der IP-Zieladresse zugeordnet ist. | Ziel,<br>geografischer Raum |
-| DstGeoCountry | Land (Zeichenfolge) | USA | Das Land, das der IP-Quelladresse zugeordnet ist. | Ziel,<br>geografischer Raum |
+| DstGeoCountry | Land/Region (Zeichenfolge) | USA | Das Land/die Region, das bzw. die der IP-Quelladresse zugeordnet ist. | Ziel,<br>geografischer Raum |
 | DstDvcHostname | Gerätename (Zeichenfolge) |  victim_pc | Der Gerätename des Zielgeräts | Destination<br>Sicherungsmedium |
 | DstDvcFqdn | String | victim_pc.contoso.local | Der vollqualifizierte Domänenname des Hosts, auf dem das Protokoll erstellt wurde | Ziel,<br>Sicherungsmedium |
 | DstDomainHostname | Zeichenfolge | CONTOSO | Die Domäne des Ziels, die Domäne des Zielhosts (Website, Domänenname usw.), beispielsweise für DNS-Suchen oder NS-Suchen | Destination |
@@ -128,7 +128,7 @@ Unten finden Sie das Schema der Netzwerksitzungstabelle in Version 1.0.0
 | NetworkRuleNumber | INT |  23 | Zugeordnete Regelnummer  | Netzwerk |
 | NetworkSessionId | Zeichenfolge | 172_12_53_32_4322__123_64_207_1_80 | Der Sitzungsbezeichner, der vom meldenden Gerät gemeldet wird. Beispiel: Sitzungsbezeichner L7 für bestimmte Anwendungen im Anschluss an die Authentifizierung | Netzwerk |
 | SrcGeoCity | String | Burlington | Die Stadt, die der IP-Quelladresse zugeordnet ist. | Quelle,<br>geografischer Raum |
-| SrcGeoCountry | Land (Zeichenfolge) | USA | Das Land, das der IP-Quelladresse zugeordnet ist. | Quelle,<br>geografischer Raum |
+| SrcGeoCountry | Land/Region (Zeichenfolge) | USA | Das Land/die Region, das bzw. die der IP-Quelladresse zugeordnet ist. | Quelle,<br>geografischer Raum |
 | SrcDvcHostname | Gerätename (Zeichenfolge) |  Bösewicht | Der Gerätename des Quellgeräts | Quelle,<br>Sicherungsmedium |
 | SrcDvcFqdn | Zeichenfolge | Villain.malicious.com | Der vollqualifizierte Domänenname des Hosts, auf dem das Protokoll erstellt wurde | Quelle,<br>Sicherungsmedium |
 | SrcDvcDomain | Zeichenfolge | EVILORG | Die Domäne des Geräts, von dem aus die Sitzung initiiert wurde. | Quelle,<br>Sicherungsmedium |

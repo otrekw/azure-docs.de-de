@@ -32,13 +32,13 @@ Wenn Ihr Internetbrowser hängt, können Sie nacheinander die folgenden Schritte
 - Verwenden Sie einen anderen Internetbrowser.
 - Verwenden Sie den privaten Modus in Ihrem Browser:
 
-   - **Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions), und melden Sie sich an. 
+   - **Microsoft Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions), und melden Sie sich an. 
    - **Chrome:** Wählen Sie den Modus **Inkognito** aus.
    - **Safari:** Wählen Sie **Datei** und dann **Neues privates Fenster** aus.
 
 - Löschen Sie den Cache und die Internetcookies:
 
-   - **Edge:** Öffnen Sie **Einstellungen**, und wählen Sie **Datenschutz und Dienste** aus. Führen Sie die Schritte unter **Browserdaten löschen** aus. Vergewissern Sie sich, dass die Kontrollkästchen für **Browserverlauf**, **Downloadverlauf** und **Zwischengespeicherte Bilder und Dateien** aktiviert sind, und wählen Sie dann die Option **Löschen** aus.
+   - **Microsoft Edge:** Öffnen Sie **Einstellungen** , und wählen Sie **Datenschutz und Dienste** aus. Führen Sie die Schritte unter **Browserdaten löschen** aus. Vergewissern Sie sich, dass die Kontrollkästchen für **Browserverlauf** , **Downloadverlauf** und **Zwischengespeicherte Bilder und Dateien** aktiviert sind, und wählen Sie dann die Option **Löschen** aus.
    - **Chrome:** Wählen Sie **Einstellungen** und unter **Datenschutz und Sicherheit** dann **Browserdaten löschen** aus.
 
 ## <a name="you-are-automatically-signed-in-as-a-different-user"></a>Sie werden automatisch als ein anderer Benutzer angemeldet
@@ -49,11 +49,11 @@ Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 
 - Löschen Sie Cache und Internetcookies.
 
-   - **Edge:** Öffnen Sie **Einstellungen**, und wählen Sie **Datenschutz und Dienste** aus. Führen Sie die Schritte unter **Browserdaten löschen** aus. Vergewissern Sie sich, dass die Kontrollkästchen für **Browserverlauf**, **Downloadverlauf**, **Cookies** und **Zwischengespeicherte Bilder und Dateien** aktiviert sind, und wählen Sie dann die Option **Löschen** aus.
+   - **Microsoft Edge:** Öffnen Sie **Einstellungen** , und wählen Sie **Datenschutz und Dienste** aus. Führen Sie die Schritte unter **Browserdaten löschen** aus. Vergewissern Sie sich, dass die Kontrollkästchen für **Browserverlauf** , **Downloadverlauf** , **Cookies** und **Zwischengespeicherte Bilder und Dateien** aktiviert sind, und wählen Sie dann die Option **Löschen** aus.
    - **Chrome:** Wählen Sie **Einstellungen** und unter **Datenschutz und Sicherheit** dann **Browserdaten löschen** aus.
 - Setzen Sie Ihre Browsereinstellungen auf die Standardwerte zurück.
 - Verwenden Sie den privaten Modus in Ihrem Browser. 
-   - **Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions), und melden Sie sich an. 
+   - **Microsoft Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions), und melden Sie sich an. 
    - **Chrome:** Wählen Sie den Modus **Inkognito** aus.
    - **Safari:** Wählen Sie **Datei** und dann **Neues privates Fenster** aus.
 
@@ -73,7 +73,7 @@ So beheben Sie dieses Problem:
 Überprüfen Sie, ob das Konto, das Sie verwendet haben, das des Kontoadministrators ist. Gehen Sie folgendermaßen vor, um zu überprüfen, wer der Kontoadministrator ist:
 
 1.  Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
-1.  Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen**aus.
+1.  Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen** aus.
 1.  Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 
 ## <a name="additional-help-resources"></a>Zusätzliche Hilferessourcen

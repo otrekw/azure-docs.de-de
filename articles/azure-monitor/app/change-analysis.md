@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540161"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992879"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -101,25 +101,47 @@ Bei der Anwendungsänderungsanalyse handelt es sich um ein eigenständiges Erken
 
    ![Screenshot der Schaltfläche „Anwendungsabstürze“](./media/change-analysis/application-changes.png)
 
-3. Wählen Sie zum Aktivieren der Änderungsanalyse die Option **Jetzt aktivieren** aus.
+3. Der Link führt zur Benutzeroberfläche der Anwendungsänderungsanalyse bezogen auf die Web-App. Wenn die Nachverfolgung von Web-App-Änderungen des Gastsystems nicht aktiviert ist, befolgen Sie die Anweisung im Banner, um Änderungen an Datei- und App-Einstellungen abzurufen.
 
    ![Screenshot der Optionen von „Anwendungsabstürze“](./media/change-analysis/enable-changeanalysis.png)
 
-4. Aktivieren Sie **Änderungsanalyse**, und wählen Sie **Speichern** aus. Das Tool zeigt alle Web-Apps unter einem App Service-Plan an. Sie können den Schalter auf Planebene verwenden, um die Änderungsanalyse für alle Web-Apps in einem Plan zu aktivieren.
+4. Aktivieren Sie **Änderungsanalyse** , und wählen Sie **Speichern** aus. Das Tool zeigt alle Web-Apps unter einem App Service-Plan an. Sie können den Schalter auf Planebene verwenden, um die Änderungsanalyse für alle Web-Apps in einem Plan zu aktivieren.
 
     ![Screenshot der Benutzeroberfläche zum Aktivieren der Änderungsanalyse](./media/change-analysis/change-analysis-on.png)
 
-5. Wählen Sie **Diagnose und Problembehandlung** > **Verfügbarkeit und Leistung** > **Anwendungsabstürze** aus, um auf die Änderungsanalyse zuzugreifen. Im angezeigten Diagramm sind die Arten der Änderungen im Laufe der Zeit und Details zu diesen Änderungen zusammengefasst. Standardmäßig werden Änderungen der letzten 24 Stunden angezeigt, um bei unmittelbaren Problemen sofort reagieren zu können.
+5. Änderungsdaten sind auch in ausgewählten Erkennungsmodulen für **Web-App-Ausfälle** und **Anwendungsabstürze** verfügbar. Im angezeigten Diagramm sind die Arten der Änderungen im Laufe der Zeit und Details zu diesen Änderungen zusammengefasst. Standardmäßig werden Änderungen der letzten 24 Stunden angezeigt, um bei unmittelbaren Problemen sofort reagieren zu können.
 
      ![Screenshot der Gegenüberstellung der Änderungen](./media/change-analysis/change-view.png)
 
-### <a name="enable-change-analysis-at-scale"></a>Aktivieren der Änderungsanalyse in größerem Umfang
+
+
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnose und Problembehandlung bei virtuellen Computern
+
+Wechseln Sie zum Diagnose- und Problembehandlungstool für einen virtuellen Computer.  Wechseln Sie zu **Problembehandlungstools** , scrollen Sie auf der Seite nach unten, und wählen Sie **Aktuelle Änderungen analysieren** aus, um Änderungen an dem virtuellen Computer anzuzeigen.
+
+![Screenshot von „Diagnose und Problembehandlung bei virtuellen Computern“](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![Änderungsanalyse in Problembehandlungstools](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="activity-log-change-history"></a>Änderungsverlauf im Aktivitätsprotokoll
+Die Funktion zum [Anzeigen des Änderungsverlaufs](../platform/activity-log.md#view-change-history) im Aktivitätsprotokoll ruft das Back-End des Anwendungsänderungsanalyse-Diensts auf, um Änderungen im Zusammenhang mit einem Vorgang abzurufen. Mit dem **Änderungsverlauf** wurde sonst [Azure Resource Graph](../../governance/resource-graph/overview.md) direkt aufgerufen, doch wurde das Back-End gegen einen Aufruf der Anwendungsänderungsanalyse getauscht, sodass in den zurückgegebenen Änderungen auch Änderungen auf Ressourcenebene aus [Azure Resource Graph](../../governance/resource-graph/overview.md), Ressourceneigenschaften aus [Azure Resource Manager](../../azure-resource-manager/management/overview.md) und Änderungen auf Gastsystemen aus PaaS-Diensten wie der App Services-Web-App enthalten sind. Damit der Anwendungsänderungsanalyse-Dienst nach Änderungen in den Abonnements der Benutzer suchen kann, muss ein Ressourcenanbieter registriert sein. Wenn Sie die Registerkarte **Änderungsverlauf** zum ersten Mal öffnen, beginnt das Tool automatisch mit der Registrierung des **Microsoft.ChangeAnalysis** -Ressourcenanbieters. Nach der Registrierung sind Änderungen aus **Azure Resource Graph** sofort verfügbar und decken die letzten 14 Tage ab. Änderungen aus anderen Quellen stehen ca. vier Stunden nach dem Onboarding des Abonnements zur Verfügung.
+
+![Integration des Änderungsverlaufs im Aktivitätsprotokoll](./media/change-analysis/activity-log-change-history.png)
+
+### <a name="vm-insights-integration"></a>VM Insights-Integration
+Benutzer, die [VM Insights](../insights/vminsights-overview.md) aktiviert haben, können Änderungen bei ihren virtuellen Computern anzeigen, die möglicherweise zu Spitzen in einem Metrikdiagramm, z. B. CPU oder Arbeitsspeicher, geführt haben. Änderungsdaten werden in die Seitennavigationsleiste von VM Insights eingefügt. Der Benutzer kann sehen, ob Änderungen bei der VM aufgetreten sind, und auf **Änderungen untersuchen** klicken, um Änderungsdetails auf der eigenständigen Benutzeroberfläche der Anwendungsänderungsanalyse anzuzeigen.
+
+[![VM Insights-Integration](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
+
+
+
+## <a name="enable-change-analysis-at-scale"></a>Aktivieren der Änderungsanalyse in größerem Umfang
 
 Wenn Ihr Abonnement zahlreiche Web-Apps enthält, wäre das Aktivieren des Diensts auf Web-App-Ebene nicht sehr effizient. Führen Sie das folgende Skript aus, um alle Web-Apps in Ihrem Abonnement zu aktivieren.
 
 Voraussetzungen:
 
-- PowerShell Az-Modul. Folgen Sie den Anweisungen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps?view=azps-2.6.0).
+- PowerShell Az-Modul. Folgen Sie den Anweisungen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 Führen Sie folgendes Skript aus:
 
@@ -147,13 +169,25 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnose und Problembehandlung bei virtuellen Computern
+## <a name="troubleshoot"></a>Problembehandlung
 
-Wechseln Sie zum Diagnose- und Problembehandlungstool für einen virtuellen Computer.  Wechseln Sie zu **Problembehandlungstools**, scrollen Sie auf der Seite nach unten, und wählen Sie **Aktuelle Änderungen analysieren** aus, um Änderungen an dem virtuellen Computer anzuzeigen.
+### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Probleme beim Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters auf der Registerkarte „Änderungsverlauf“
+Wenn Sie den Änderungsverlauf nach der Integration in die Anwendungsänderungsanalyse zum ersten Mal anzeigen, werden Sie feststellen, dass automatisch ein **Microsoft.ChangeAnalysis** -Ressourcenanbieter registriert wird. In seltenen Fällen kann dabei aus folgenden Gründen ein Fehler auftreten:
 
-![Screenshot von „Diagnose und Problembehandlung bei virtuellen Computern“](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+- **Sie verfügen nicht über ausreichende Berechtigungen zum Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters** . Diese Fehlermeldung bedeutet, dass Ihrer Rolle im aktuellen Abonnement der Bereich **Microsoft.Support/register/action** nicht zugeordnet ist. Dies kann vorkommen, wenn Sie nicht der Besitzer eines Abonnements sind und über einen Kollegen Berechtigungen für den gemeinsamen Zugriff erhalten haben, d. h. Anzeigezugriff für eine Ressourcengruppe. Um dieses Problem zu beheben, können Sie sich an den Besitzer Ihres Abonnements wenden, um den **Microsoft.ChangeAnalysis** -Ressourcenanbieter registrieren zu lassen. Dies kann im Azure-Portal erfolgen, indem **Abonnements | Ressourcenanbieter** aufgerufen, nach ```Microsoft.ChangeAnalysis``` gesucht und der Ressourcenanbieter auf der Benutzeroberfläche registriert wird. Dies ist auch über Azure PowerShell oder die Azure CLI möglich.
 
-![Screenshot von „Diagnose und Problembehandlung bei virtuellen Computern“](./media/change-analysis/analyze-recent-changes.png)
+    Registrieren des Ressourcenanbieters über PowerShell: 
+    ```PowerShell
+    # Register resource provider
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+    ```
+
+- **Fehler beim Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters** . Diese Meldung bedeutet, dass beim Senden der Registrierungsanforderung durch die Benutzeroberfläche sofort ein Fehler aufgetreten ist und dieser nicht mit einem Berechtigungsproblem im Zusammenhang steht. Wahrscheinlich handelt es sich um ein vorübergehendes Problem mit der Internetverbindung. Aktualisieren Sie die Seite, und überprüfen Sie Ihre Internetverbindung. Wenn der Fehler weiterhin auftritt, wenden Sie sich an changeanalysishelp@microsoft.com.
+
+- **Der Vorgang dauert länger als erwartet** . Diese Meldung bedeutet, dass die Registrierung länger als zwei Minuten dauert. Dies ist ungewöhnlich, bedeutet aber nicht unbedingt, dass ein Fehler aufgetreten ist. Sie können zu **Abonnements | Ressourcenanbieter** navigieren, um den Registrierungsstatus für den **Microsoft.ChangeAnalysis** -Ressourcenanbieter zu prüfen. Sie können über die Benutzeroberfläche eine Aufhebung der Registrierung, Neuregistrierung oder Aktualisierung durchführen, um zu sehen, ob dadurch Abhilfe geschaffen wird. Wenn das Problem weiterhin besteht, wenden Sie sich an changeanalysishelp@microsoft.com, um Unterstützung zu erhalten.
+    ![Problembehandlung bei zu lange dauernder Registrierung des Ressourcenanbieters](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

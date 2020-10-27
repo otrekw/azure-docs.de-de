@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566419"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077353"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -242,6 +242,9 @@ Ja. Wenn Sie über die BGP-Sitzung keine Standardrouten (0.0.0.0/0) oder Interne
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>Kann ich die Internetkonnektivität für virtuelle Netzwerke blockieren, die mit ExpressRoute-Verbindungen verbunden sind?
 
 Ja. Sie können Standardrouten (0.0.0.0/0) ankündigen, um die Internetkonnektivität von virtuellen Computern in einem virtuellen Netzwerk zu blockieren und den gesamten Datenverkehr über die ExpressRoute-Verbindung zu leiten.
+
+> [!NOTE]
+> Wenn die angekündigte Route 0.0.0.0/0 aus den angekündigten Routen entfernt wird (beispielsweise aufgrund eines Ausfalls oder einer Fehlkonfiguration), stellt Azure eine [Systemroute](../virtual-network/virtual-networks-udr-overview.md#system-routes) zu den Ressourcen im verbundenen virtuellen Netzwerk bereit, um Konnektivität mit dem Internet zu bieten.  Damit sichergestellt ist, dass ausgehender Datenverkehr in das Internet blockiert ist, empfiehlt es sich, in allen Subnetzen eine Netzwerksicherheitsgruppe mit einer Verweigerungsregel für ausgehenden Internet-Datenverkehr zu platzieren.
 
 Wenn Sie Standardrouten ankündigen, wird der Datenverkehr an Dienste, die über Microsoft-Peering (z. B. Azure Storage und SQL-Datenbank) angeboten werden, wieder an Ihren lokalen Standort zurückgeleitet. Sie müssen Ihre Router so konfigurieren, dass der Datenverkehr über den Microsoft-Peeringpfad oder über das Internet an Azure zurückgegeben wird. Wenn Sie einen Dienstendpunkt für den Dienst aktiviert haben, wird keine Weiterleitung des für den Dienst bestimmten Datenverkehrs an Ihren lokalen Standort erzwungen. Der Datenverkehr bleibt innerhalb des Azure-Backbonenetzwerks. Weitere Informationen zu Dienstendpunkten finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json).
 

@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620034"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147562"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
@@ -22,7 +23,8 @@ Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizier
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Laden der NYC Taxi-Daten in SQLDB1
 
-1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**, und erstellen Sie ein neues SQL-Skript.
+1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln** , und erstellen Sie ein neues SQL-Skript.
+1. Wählen Sie den Pool „SQLDB1“ (der Pool wurde in [SCHRITT 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) dieses Tutorials erstellt) im Abschnitt „Verbinden mit“ des Skripts aus.
 1. Geben Sie den folgenden Code ein:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -69,13 +71,13 @@ Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizier
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. Die Ausführung dieses Skripts dauert ungefähr eine Minute. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen **dbo.Trip**.
+1. Die Ausführung dieses Skripts dauert ungefähr eine Minute. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen **dbo.Trip** .
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Untersuchen der NYC Taxi-Daten im dedizierten SQL-Pool
 
-1. Navigieren Sie in Synapse Studio zum Hub **Daten**.
-1. Navigieren Sie zu **SQLDB1** > **Tabellen**. Es werden mehrere geladene Tabellen angezeigt.
-1. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip**, und wählen Sie **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus.
+1. Navigieren Sie in Synapse Studio zum Hub **Daten** .
+1. Navigieren Sie zu **SQLDB1** > **Tabellen** . Es werden mehrere geladene Tabellen angezeigt.
+1. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip** , und wählen Sie **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus.
 1. Warten Sie, während ein neues SQL-Skript erstellt und ausgeführt wird.
 1. Beachten Sie, dass am oberen Rand des SQL-Skripts **Verbinden mit** automatisch auf den SQL-Pool mit dem Namen **SQLDB1** festgelegt ist.
 1. Ersetzen Sie den Text des SQL-Skripts durch diesen Code, und führen Sie ihn aus.
@@ -91,7 +93,7 @@ Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizier
     ```
 
     Diese Abfrage zeigt, wie die Gesamtzahl der Fahrtstrecken und die durchschnittliche Fahrtstrecke mit der Anzahl der Fahrgäste in Beziehung stehen.
-1. Ändern Sie im Ergebnisfenster des SQL-Skripts die **Ansicht** in **Diagramm**, um eine Visualisierung der Ergebnisse als Liniendiagramm anzuzeigen.
+1. Ändern Sie im Ergebnisfenster des SQL-Skripts die **Ansicht** in **Diagramm** , um eine Visualisierung der Ergebnisse als Liniendiagramm anzuzeigen.
 
 
 

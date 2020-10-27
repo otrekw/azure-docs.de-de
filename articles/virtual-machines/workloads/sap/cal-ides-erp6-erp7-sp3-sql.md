@@ -1,26 +1,18 @@
 ---
 title: Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure | Microsoft-Dokumentation
 description: Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
-services: virtual-machines-windows
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616702"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993441"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server und einem Windows-Betriebssystem über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Führen Sie die gleichen Schritte aus, um eine andere Lösung bereitzustellen.
@@ -30,7 +22,7 @@ Informationen zu Ihren ersten Schritten mit der SAP Cloud Appliance Library find
 > [!NOTE]
 > Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell für die Bereitstellung der SAP CAL nutzen. Wir empfehlen allerdings, das neue Resource Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
 
-Wenn Sie bereits ein SAP CAL-Konto erstellt haben, das das klassische Modell verwendet, *müssen Sie ein anderes SAP CAL-Konto verwenden*. Bei diesem Konto muss die Bereitstellung ausschließlich in Azure mithilfe des Resource Manager-Modells erfolgen.
+Wenn Sie bereits ein SAP CAL-Konto erstellt haben, das das klassische Modell verwendet, *müssen Sie ein anderes SAP CAL-Konto verwenden* . Bei diesem Konto muss die Bereitstellung ausschließlich in Azure mithilfe des Resource Manager-Modells erfolgen.
 
 Nach der Anmeldung bei der SAP CAL gelangen Sie in der Regel über die erste Seite zur Seite **Solutions** (Lösungen). Die in der SAP CAL angebotenen Lösungen werden immer mehr, daher müssen Sie möglicherweise ein wenig scrollen, bis Sie die gewünschte Lösung gefunden haben. Die hervorgehobene Windows-basierte SAP IDES-Lösung, die ausschließlich in Azure verfügbar ist, zeigt den Bereitstellungsprozess:
 
@@ -54,13 +46,13 @@ Nach der Anmeldung bei der SAP CAL gelangen Sie in der Regel über die erste Sei
 
     b. **Microsoft Azure** ist das neue Bereitstellungsmodell mit dem Ressourcen-Manager.
 
-    ![SAP CAL-Konten](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
+    ![Der Screenshot zeigt SAP CAL-Konten mit hervorgehobenem Microsoft Azure.](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
     Wählen Sie zum Bereitstellen im Resource Manager-Modell **Microsoft Azure** aus.
 
-    ![SAP CAL-Konten](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
+    ![Der Screenshot zeigt SAP CAL--Konten.](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. Geben Sie die Azure-**Abonnement-ID** ein, die Sie im Azure-Portal finden. 
+1. Geben Sie die Azure- **Abonnement-ID** ein, die Sie im Azure-Portal finden. 
 
     ![SAP CAL-Abonnement-ID](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
@@ -72,7 +64,7 @@ Nach der Anmeldung bei der SAP CAL gelangen Sie in der Regel über die erste Sei
 
     ![Bestätigung für Clouddienste in Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. Klicken Sie auf **Annehmen**. Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
+1. Klicken Sie auf **Annehmen** . Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
 
 1. Um Ihrem Benutzer das neu erstellte SAP CAL-Konto zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein, und klicken dann auf **Add** (Hinzufügen). 
 
@@ -99,13 +91,13 @@ Sie haben erfolgreich ein SAP CAL-Konto mit den folgenden Möglichkeiten erstell
 
     a. Geben Sie einen **Namen** für die Instanz ein.
 
-    b. Wählen Sie eine Azure-**Region** aus. Unter Umständen benötigen Sie ein SAP CAL-Abonnement, damit Ihnen mehrere Azure-Regionen vorgeschlagen werden.
+    b. Wählen Sie eine Azure- **Region** aus. Unter Umständen benötigen Sie ein SAP CAL-Abonnement, damit Ihnen mehrere Azure-Regionen vorgeschlagen werden.
 
     c.  Geben Sie das **Masterkennwort** für die Lösung ein:
 
     ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Klicken Sie auf **Erstellen**. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
+1. Klicken Sie auf **Erstellen** . Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
 
     ![SAP CAL-Instanzen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

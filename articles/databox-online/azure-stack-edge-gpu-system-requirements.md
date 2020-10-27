@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320726"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996419"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systemanforderungen für Azure Stack Edge Pro mit GPU 
 
@@ -32,21 +32,29 @@ Die Systemanforderungen für Azure Stack Edge Pro umfassen Folgendes:
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
+## <a name="supported-azure-storage-accounts"></a>Unterstützte Azure Storage-Konten
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>Unterstützte mehrstufige Speicherkonten
+## <a name="supported-edge-storage-accounts"></a>Unterstützte Edge-Speicherkonten
 
-Falls von Azure Stack verwaltet, werden die folgenden mehrstufigen Speicherkonten mit SMB-/NFS-/REST-Schnittstellen unterstützt.
+Die folgenden Edge-Speicherkonten werden für die REST-Schnittstelle des Geräts unterstützt. Die Edge-Speicherkonten werden auf dem Gerät erstellt. Weitere Informationen finden Sie unter [Informationen zu Edge-Speicherkonten](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |type  |Speicherkonto  |Kommentare  |
 |---------|---------|---------|
 |Standard     |GPv1: Blockblob         |         |
-|    |  Blob Storage: Blockblob       | Nur für NAS unterstützt     |
 
-*Seitenblobs und Azure Files werden in Azure Stack derzeit nicht unterstützt.
-** Die Speicherebenen „Heiß“ und „Kalt“ gibt es in Azure Stack nicht. Verschieben Sie die Daten mit Azure PowerShell auf die Archivebene, nachdem die Daten hochgeladen wurden. Schritt-für-Schritt-Anweisungen finden Sie unter [Festlegen der Blobebene mithilfe von Azure PowerShell]().
+*Seitenblobs und Azure Files werden derzeit nicht unterstützt.
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>Unterstützte lokale Azure Resource Manager-Speicherkonten
+
+Diese Speicherkonten werden über die lokalen Geräte-APIs erstellt, wenn Sie eine Verbindung mit der lokalen Azure Resource Manager-Instanz herstellen. Die folgenden Speicherkonten werden unterstützt:
+
+|type  |Speicherkonto  |Kommentare  |
+|---------|---------|---------|
+|Standard     |GPv1: Blockblob, Seitenblob        | Der SKU-Typ ist Standard_LRS.       |
+|Premium     |GPv1: Blockblob, Seitenblob        | Der SKU-Typ ist Premium_LRS.        |
+
 
 ## <a name="supported-storage-types"></a>Unterstützte Speichertypen
 
@@ -121,7 +129,7 @@ Nutzen Sie Ihre Erfahrung beim Entwickeln und Testen Ihrer Lösung, um sicherzus
 
 Zu den zu berücksichtigenden Faktoren gehören:
 
-- **Containerdetails**: Bedenken Sie Folgendes.
+- **Containerdetails** : Bedenken Sie Folgendes.
 
     - Wie hoch ist Ihr Containerspeicherbedarf? Wie viel Arbeitsspeicher, Speicherplatz und CPU belegt Ihr Container?
     - Wie viele Container umfasst Ihre Workload? Sie könnten eine Vielzahl von leichten Containern anstelle von einigen ressourcenintensiven Containern verwenden.
@@ -129,12 +137,12 @@ Zu den zu berücksichtigenden Faktoren gehören:
     - Wie viele Ebenen werden von den Containern gemeinsam genutzt? Containerimages sind ein Bündel von Dateien, die in einem Stapel von Ebenen angeordnet sind. Bestimmen Sie für Ihr Containerimage die Anzahl der Ebenen und deren jeweilige Größe, um den Ressourcenbedarf zu berechnen.
     - Gibt es nicht verwendete Container? Ein angehaltener Container belegt weiterhin Speicherplatz.
     - In welcher Sprache sind Ihre Container geschrieben?
-- **Umfang der verarbeiteten Daten**: Wie viele Daten werden Ihre Container verarbeiten? Werden diese Daten Speicherplatz verbrauchen oder werden die Daten im Arbeitsspeicher verarbeitet?
-- **Erwartete Leistung**: Was sind die gewünschten Leistungsmerkmale Ihrer Lösung? 
+- **Umfang der verarbeiteten Daten** : Wie viele Daten werden Ihre Container verarbeiten? Werden diese Daten Speicherplatz verbrauchen oder werden die Daten im Arbeitsspeicher verarbeitet?
+- **Erwartete Leistung** : Was sind die gewünschten Leistungsmerkmale Ihrer Lösung? 
 
 Um die Leistung Ihrer Lösung zu verstehen und zu optimieren, können Sie Folgendes verwenden:
 
-- Die im Azure-Portal verfügbaren Computemetriken. Wechseln Sie zu Ihrer Azure Stack Edge-Ressource und dann zu **Überwachung > Metriken**. Betrachten Sie **Edgecomputing – Arbeitsspeichernutzung** und **Edgecomputing – CPU in Prozent**, um die verfügbaren Ressourcen zu verstehen und wie die Ressourcen verbraucht werden.
+- Die im Azure-Portal verfügbaren Computemetriken. Wechseln Sie zu Ihrer Azure Stack Edge-Ressource und dann zu **Überwachung > Metriken** . Betrachten Sie **Edgecomputing – Arbeitsspeichernutzung** und **Edgecomputing – CPU in Prozent** , um die verfügbaren Ressourcen zu verstehen und wie die Ressourcen verbraucht werden.
 - Informationen zur Überwachung und Problembehandlung von Computemodulen finden Sie unter [Debuggen von Kubernetes-Problemen](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge).
 
 Stellen Sie abschließend sicher, dass Sie Ihre Lösung vor der Bereitstellung in der Produktionsumgebung für Ihr Dataset überprüfen und die Leistung der Azure Stack Edge Pro-Instanz quantifizieren.

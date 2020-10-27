@@ -21,7 +21,7 @@ ms.locfileid: "89565106"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Speicherung von Kundendaten für Kunden in Australien und Neuseeland in Azure Active Directory
 
-In Azure Active Directory (Azure AD) werden Kundendaten je nach Land, das Sie bei der Registrierung für einen Onlinedienst von Microsoft angegeben haben, an einem bestimmten geografischen Standort gespeichert. Zu den Onlinediensten von Microsoft zählen Microsoft 365 und Azure. 
+In Azure Active Directory (Azure AD) werden Kundendaten je nach Land/Region, das bzw. die Sie bei der Registrierung für einen Onlinedienst von Microsoft angegeben haben, an einem bestimmten geografischen Standort gespeichert. Zu den Onlinediensten von Microsoft zählen Microsoft 365 und Azure. 
 
 Weitere Informationen zur Datenaufbewahrung bei Microsoft-Diensten in Azure AD finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
 

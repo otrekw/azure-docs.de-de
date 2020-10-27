@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: d3ce7318266f3fbaf818e5bcfa245ce5f64d74ba
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4241ba55c464169257ec0a4b2d20eaa5e76534d5
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076928"
+ms.locfileid: "92092697"
 ---
 # <a name="edit-an-api"></a>Bearbeiten von APIs
 
@@ -35,11 +35,11 @@ Die Schritte in diesem Tutorial veranschaulichen, wie Sie API Management (APIM) 
 
 ## <a name="edit-an-api-in-apim"></a>Bearbeiten von APIs in APIM
 
-![Bearbeiten von APIs](./media/edit-api/edit-api001.png)
+![Screenshot, der den Vorgang des Bearbeitens einer API in APIM veranschaulicht.](./media/edit-api/edit-api001.png)
 
-1. Klicken Sie auf die Registerkarte **APIs**.
+1. Klicken Sie auf die Registerkarte **APIs** .
 2. Wählen Sie eine der APIs aus, die Sie zuvor importiert haben.
-3. Klicken Sie auf die Registerkarte **Entwurf**.
+3. Klicken Sie auf die Registerkarte **Entwurf** .
 4. Wählen Sie einen Vorgang aus, den Sie bearbeiten möchten.
 5. Wählen Sie zum Umbenennen des Vorgangs einen **Stift** im Fenster **Front-End** aus.
 
@@ -48,16 +48,16 @@ Die Schritte in diesem Tutorial veranschaulichen, wie Sie API Management (APIM) 
 Sie können Ihre Back-End-API im Azure-Portal aktualisieren, indem Sie folgende Schritte ausführen:
 
 1. Auswählen von **Alle Vorgänge**
-2. Klicken Sie auf den Stift im Fenster **Front-End**.
+2. Klicken Sie auf den Stift im Fenster **Front-End** .
 
-    ![Bearbeiten von APIs](./media/edit-api/edit-api002.png)
+    ![Screenshot, der das Stiftsymbol im Bildschirm „Front-End“ hervorhebt.](./media/edit-api/edit-api002.png)
 
     Ihr API-Swagger wird angezeigt.
 
     ![Bearbeiten von APIs](./media/edit-api/edit-api003.png)
 
 3. Aktualisieren Sie den Swagger.
-4. Klicken Sie auf **Speichern**.
+4. Klicken Sie auf **Speichern** .
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
