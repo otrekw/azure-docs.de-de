@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055850"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279009"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-Beispielskripts
 
@@ -22,18 +22,21 @@ Azure Remote Rendering verfügt über die beiden folgenden REST-APIs:
 
 Das [Repository mit den ARR-Beispielen](https://github.com/Azure/azure-remote-rendering) enthält im Ordner *Scripts* Beispielskripts für die Interaktion mit den REST-APIs des Diensts. In diesem Artikel wird die Nutzung beschrieben.
 
+> [!TIP]
+> Ferner ist ein [Tool mit grafischer Benutzeroberfläche unter dem Namen ARRT](azure-remote-rendering-asset-tool.md) für die Interaktion mit dem Dienst verfügbar, das eine komfortable Alternative zum Verwenden von Skripts darstellt. ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT-Screenshot")
+
 > [!CAUTION]
 > Zu häufiges Aufrufen von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Die HTTP-Fehlercode-ID ist in diesem Fall 429 („zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen der Beispielskripts benötigen Sie eine funktionsfähige [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)-Instanz.
+Zum Ausführen der Beispielskripts benötigen Sie eine funktionsfähige [Azure PowerShell](/powershell/azure/)-Instanz.
 
 1. Installieren Sie Azure PowerShell:
     1. Öffnen Sie ein PowerShell-Fenster mit Administratorrechten.
     1. Führen Sie `Install-Module -Name Az -AllowClobber` aus.
 
-1. Vergewissern Sie sich, dass Ihre [Ausführungsrichtlinie](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) richtig festgelegt wurde, falls Sie beim Ausführen von Skripts Fehler erhalten:
+1. Vergewissern Sie sich, dass Ihre [Ausführungsrichtlinie](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) richtig festgelegt wurde, falls Sie beim Ausführen von Skripts Fehler erhalten:
     1. Öffnen Sie ein PowerShell-Fenster mit Administratorrechten.
     1. Führen Sie `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` aus.
 
@@ -44,9 +47,9 @@ Zum Ausführen der Beispielskripts benötigen Sie eine funktionsfähige [Azure P
     1. Führen Sie `Connect-AzAccount` aus, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
     > [!NOTE]
-    > Falls Ihre Organisation über mehrere Abonnements verfügt, müssen Sie ggf. die Argumente für die Abonnement-ID und den Mandanten angeben. Weitere Informationen finden Sie in der [Dokumentation zu „Connect-AzAccount“](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > Falls Ihre Organisation über mehrere Abonnements verfügt, müssen Sie ggf. die Argumente für die Abonnement-ID und den Mandanten angeben. Weitere Informationen finden Sie in der [Dokumentation zu „Connect-AzAccount“](/powershell/module/az.accounts/connect-azaccount).
 
-1. Laden Sie den Ordner *Scripts* aus dem [GitHub-Repository für Azure Remote Rendering](https://github.com/Azure/azure-remote-rendering) herunter.
+1. Laden Sie den Ordner *Scripts* aus dem [Azure Remote Rendering GitHub-Repository](https://github.com/Azure/azure-remote-rendering) herunter.
 
 ## <a name="configuration-file"></a>Konfigurationsdatei
 
@@ -124,19 +127,19 @@ Gehen Sie wie folgt vor, um eine **andere Konfigurationsdatei** zu verwenden:
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Sie können **einzelne Einstellungen der Konfigurationsdatei außer Kraft setzen**:
+Sie können **einzelne Einstellungen der Konfigurationsdatei außer Kraft setzen** :
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Sie können Folgendes verwenden, um eine **Sitzung ohne Abruf zu starten**:
+Sie können Folgendes verwenden, um eine **Sitzung ohne Abruf zu starten** :
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
 ```
 
-Die *sessionId*, die mit dem Skript abgerufen wird, muss an die meisten anderen Sitzungsbefehle übergeben werden.
+Die *sessionId* , die mit dem Skript abgerufen wird, muss an die meisten anderen Sitzungsbefehle übergeben werden.
 
 ### <a name="retrieve-session-properties"></a>Abrufen von Sitzungseigenschaften
 
@@ -222,13 +225,13 @@ Gehen Sie wie folgt vor, um eine **andere Konfigurationsdatei** zu verwenden:
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Sie können Folgendes verwenden, um nur die **Modellkonvertierung ohne Abruf zu starten**:
+Sie können Folgendes verwenden, um nur die **Modellkonvertierung ohne Abruf zu starten** :
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-Sie können in der Konfigurationsdatei **einzelne Einstellungen außer Kraft setzen**, indem Sie die folgenden Befehlszeilenschalter verwenden:
+Sie können in der Konfigurationsdatei **einzelne Einstellungen außer Kraft setzen** , indem Sie die folgenden Befehlszeilenschalter verwenden:
 
 * **Id:** Für „GetConversionStatus“ verwendete „ConversionId“
 * **ArrAccountId:** „arrAccountId“ von „accountSettings“
