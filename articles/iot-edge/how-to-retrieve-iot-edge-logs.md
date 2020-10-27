@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044197"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171919"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Abrufen von Protokollen aus IoT Edge-Bereitstellungen
 
@@ -63,9 +63,9 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 |-|-|-|
-| schemaVersion | string | Legen Sie den Wert `1.0` |
+| schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | items | JSON-Array | Ein Array mit den Tupeln `id` und `filter` |
 | id | Zeichenfolge | Ein regulärer Ausdruck, der den Modulnamen bereitstellt. Er kann mehreren Modulen auf einem Edgegerät entsprechen. Das Format [Reguläre Ausdrücke von .NET](/dotnet/standard/base-types/regular-expressions) wird erwartet. |
 | filter | JSON-Abschnitt | Protokollfilter, die auf die Module angewendet werden, die mit dem regulären Ausdruck `id` im Tupel übereinstimmen |
@@ -73,16 +73,16 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
 | since | integer | Nur Protokolle seit diesem Zeitpunkt werden zurückgegeben, als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten), als rfc3339-Zeitstempel oder als UNIX-Zeitstempel.  Wenn sowohl `tail` als auch `since` angegeben werden, werden die Protokolle zuerst mit dem Wert `since` abgerufen. Anschließend wird der Wert `tail` auf das Ergebnis angewendet, und das Endergebnis wird zurückgegeben. OPTIONAL. |
 | until | integer | Nur Protokolle vor dem angegebenen Zeitpunkt werden zurückgegeben, als rfc3339-Zeitstempel, als UNIX-Zeitstempel oder als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten). OPTIONAL. |
 | log level | integer | Filtert Protokollzeilen, die kleiner oder gleich der angegebenen Protokollebene sind. Protokollzeilen sollten dem empfohlenen Protokollierungsformat entsprechen und den [Syslog-Schweregradstandard](https://en.wikipedia.org/wiki/Syslog#Severity_level) verwenden. OPTIONAL. |
-| regex | string | Filtert Protokollzeilen mithilfe des Formats [Reguläre Ausdrücke von .NET](/dotnet/standard/base-types/regular-expressions) mit Inhalten, die dem angegebenen regulären Ausdruck entsprechen. OPTIONAL. |
-| encoding | string | Entweder `gzip` oder `none` Der Standardwert ist `none`. |
-| contentType | string | Entweder `json` oder `text` Der Standardwert ist `text`. |
+| regex | Zeichenfolge | Filtert Protokollzeilen mithilfe des Formats [Reguläre Ausdrücke von .NET](/dotnet/standard/base-types/regular-expressions) mit Inhalten, die dem angegebenen regulären Ausdruck entsprechen. OPTIONAL. |
+| encoding | Zeichenfolge | Entweder `gzip` oder `none` Der Standardwert ist `none`. |
+| contentType | Zeichenfolge | Entweder `json` oder `text` Der Standardwert ist `text`. |
 
 > [!NOTE]
 > Wenn der Inhalt der Protokolle die Antwortgrößenbeschränkung direkter Methoden überschreitet, die derzeit 128 KB beträgt, gibt die Antwort einen Fehler zurück.
 
 Bei einem erfolgreichen Abruf von Protokollen wird der **Status 200** zurückgegeben, gefolgt von einer Nutzlast, die die vom Modul abgerufenen Protokolle enthält, gefiltert nach den Einstellungen, die Sie in Ihrer Anforderung angeben.
 
-Beispiel:
+Zum Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ Rufen Sie im Azure-Portal die Methode mit dem Namen `GetModuleLogs` und der folg
 
 ![Aufrufen der direkten Methode „GetModuleLogs“ im Azure-Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Sie können die CLI-Ausgabe auch an Linux-Hilfsprogramme wie [gzip](https://en.wikipedia.org/wiki/Gzip) umleiten, um eine komprimierte Antwort zu verarbeiten. Beispiel:
+Sie können die CLI-Ausgabe auch an Linux-Hilfsprogramme wie [gzip](https://en.wikipedia.org/wiki/Gzip) umleiten, um eine komprimierte Antwort zu verarbeiten. Zum Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -164,7 +164,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast, die **GetModuleLogs** ähnelt, wobe
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 |-|-|-|
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 
@@ -184,7 +184,7 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Beispiel:
+Zum Beispiel:
 
 Der folgende Aufruf lädt die letzten 100 Protokollzeilen aus allen Modulen im komprimierten JSON-Format hoch:
 
@@ -273,9 +273,9 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 |-|-|-|
-| schemaVersion | string | Legen Sie den Wert `1.0` |
+| schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | since | integer | Nur Protokolle seit diesem Zeitpunkt werden zurückgegeben, als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten), als rfc3339-Zeitstempel oder als UNIX-Zeitstempel. OPTIONAL. |
 | until | integer | Nur Protokolle vor dem angegebenen Zeitpunkt werden zurückgegeben, als rfc3339-Zeitstempel, als UNIX-Zeitstempel oder als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten). OPTIONAL. |
@@ -300,7 +300,7 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Beispiel:
+Zum Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -358,7 +358,7 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Beispiel:
+Zum Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -370,7 +370,7 @@ az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <
 '
 ```
 
-Rufen Sie im Azure-Portal die Methode mit dem Namen `UploadModuleLogs` und der folgenden JSON-Nutzlast auf, nachdem Sie die GUID mit Ihren Informationen aufgefüllt haben:
+Rufen Sie im Azure-Portal die Methode mit dem Namen `GetTaskStatus` und der folgenden JSON-Nutzlast auf, nachdem Sie die GUID mit Ihren Informationen aufgefüllt haben:
 
 ```json
     {
