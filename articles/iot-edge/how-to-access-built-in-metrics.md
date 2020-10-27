@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979288"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341565"
 ---
 # <a name="access-built-in-metrics"></a>Zugreifen auf integrierte Metriken
 
 Die IoT Edge Runtimekomponenten, IoT Edge Hub und IoT Edge Agent erzeugen integrierte Metriken im [Prometheus-Offenlegungsformat](https://prometheus.io/docs/instrumenting/exposition_formats/). Fügen Sie diese Metriken remote hinzu, um die Integrität eines IoT Edge-Geräts zu überwachen und zu verstehen.
 
-Ab Version 1.0.10 werden Metriken automatisch standardmäßig an **Port 9600** des **edgeHub** - und des **edgeAgent** -Moduls verfügbar gemacht (`http://edgeHub:9600/metrics` und `http://edgeAgent:9600/metics`). Standardmäßig sind die Ports auf dem Host nicht zugeordnet.
+Ab Version 1.0.10 werden Metriken automatisch standardmäßig an **Port 9600** des **edgeHub** - und des **edgeAgent** -Moduls verfügbar gemacht (`http://edgeHub:9600/metrics` und `http://edgeAgent:9600/metrics`). Standardmäßig sind die Ports auf dem Host nicht zugeordnet.
 
 Sie können vom Host aus auf die Metriken zugreifen, indem Sie den Metrikport in den `createOptions` des Moduls verfügbar machen und zuordnen. Im Beispiel unten wird der Standardmetrikport dem Port 9601 auf dem Host zugeordnet:
 
 ```
 {
   "ExposedPorts": {
-    "9600/tcp": {},
+    "9600/tcp": {}
   },
   "HostConfig": {
     "PortBindings": {
@@ -50,7 +50,7 @@ Wählen Sie verschiedene und eindeutige Hostportnummern, wenn Sie die Metrikendp
 
 Metriken enthalten Tags, um die Art der erfassten Metrik besser erkennbar zu machen. Alle Metriken enthalten die folgenden Tags:
 
-| Tag | Beschreibung |
+| Tag | BESCHREIBUNG |
 |-|-|
 | iothub | Der Hub, mit dem das Gerät kommuniziert |
 | edge_device | Die ID des aktuellen Geräts |
@@ -62,7 +62,7 @@ Die für die integrierten Histogramm- und Zusammenfassungsmetriken bereitgestell
 
 Das **edgeHub** -Modul erzeugt die folgenden Metriken:
 
-| name | Dimensionen | Beschreibung |
+| Name | Dimensionen | BESCHREIBUNG |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (Vorgangsquelle)<br> `id` (Modul-ID) | Typ: Zähler<br> Gesamtzahl von GetTwin-Aufrufen |
 | `edgehub_messages_received_total` | `route_output` (Ausgabe, von der die Nachricht gesendet wurde)<br> `id` | Typ: Zähler<br> Gesamtzahl der von Clients empfangenen Nachrichten |
@@ -85,7 +85,7 @@ Das **edgeHub** -Modul erzeugt die folgenden Metriken:
 
 Das **edgeAgent** -Modul erzeugt die folgenden Metriken:
 
-| name | Dimensionen | Beschreibung |
+| Name | Dimensionen | BESCHREIBUNG |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Typ: Messgerät<br> Die Menge der Zeit, für die das Modul in der Bereitstellung angegeben wurde und sich im Ausführungszustand befand |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Typ: Messgerät<br> Der Zeitraum, für den das Modul in der Bereitstellung angegeben wurde |
