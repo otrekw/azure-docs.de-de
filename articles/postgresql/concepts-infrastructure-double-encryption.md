@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3a3582891ab3d3e4bfb53cbba0c0b2826cba56b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537904"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123353"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL: doppelte Infrastrukturverschlüsselung
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL arbeitet mit der [Verschlüsselung gespeicherter r
 Die doppelte Infrastrukturverschlüsselung fügt eine zweite Verschlüsselungsebene mit dienstseitig verwalteten Schlüsseln hinzu. Sie bedient sich eines gemäß FIPS 140-2 validierten kryptografischen Moduls, jedoch mit einem anderen Verschlüsselungsalgorithmus. Dies bietet eine zusätzliche Schutzebene für Ihre ruhenden Daten. Der bei der doppelten Infrastrukturverschlüsselung verwendete Schlüssel wird ebenfalls vom Azure Database for PostgreSQL-Dienst verwaltet. Die doppelte Infrastrukturverschlüsselung ist nicht standardmäßig aktiviert, da die zusätzliche Verschlüsselungsebene die Leistung beeinträchtigen kann.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+> Dieses Feature wird nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ in Azure Database for PostgreSQL unterstützt.
 
 Die Verschlüsselung auf Infrastrukturebene hat den Vorteil, dass sie auf der Ebene implementiert wird, die dem Speichergerät oder den Netzwerkleitungen am nächsten ist. Azure Database for PostgreSQL implementiert die beiden Verschlüsselungsebenen mithilfe dienstseitig verwalteter Schlüssel. Obwohl technisch gesehen immer noch auf Dienstebene, ist sie sehr nahe an der Hardware, die die ruhenden Daten speichert. Optional können Sie weiterhin die Verschlüsselung ruhender Daten aktivieren, indem Sie einen [kundenseitig verwalteten Schlüssel](concepts-data-encryption-postgresql.md) für den bereitgestellten PostgreSQL-Server verwenden.  
 
@@ -33,8 +33,8 @@ Die Implementierung auf Infrastrukturebene unterstützt zudem eine Vielfalt von 
 
 Die doppelte Infrastrukturverschlüsselung für Azure Database for PostgreSQL bietet die folgenden Vorteile:
 
-1. **Mehr Vielfalt bei der Implementierung von Kryptografie**: Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
-2. **Implementierungsfehler**: Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
+1. **Mehr Vielfalt bei der Implementierung von Kryptografie** : Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
+2. **Implementierungsfehler** : Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
 
 Diese Kombination bietet einen wirksamen Schutz gegen häufige Bedrohungen und Schwachstellen, die für Angriffe auf die Kryptographie ausgenutzt werden.
 

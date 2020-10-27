@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601468"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275787"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -38,7 +38,7 @@ Diese Funktion wird von Mandantenadministratoren verwendet, um die in Token ausg
 
 Ein **Richtlinienobjekt** stellt in Azure AD eine Reihe von Regeln dar, die für einzelne Anwendungen oder alle Anwendungen in einer Organisation erzwungen werden. Jede Art von Richtlinie verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
 
-Eine Anspruchszuordnungsrichtlinie ist eine Art von **Richtlinienobjekt**, das die in Token ausgestellten Ansprüche ändert, die für bestimmte Anwendungen ausgegeben wurden.
+Eine Anspruchszuordnungsrichtlinie ist eine Art von **Richtlinienobjekt** , das die in Token ausgestellten Ansprüche ändert, die für bestimmte Anwendungen ausgegeben wurden.
 
 ## <a name="claim-sets"></a>Anspruchsätze
 
@@ -260,7 +260,7 @@ Um zu steuern, welche Ansprüche ausgegeben werden und woher die Daten stammen, 
 **Datentyp:** JSON-Blob mit mindestens einem Anspruchsschemaeintrag
 
 **Zusammenfassung:** Diese Eigenschaft definiert, welche Ansprüche zusätzlich zum grundlegenden und zum Hauptanspruchssatz in den von der Richtlinie betroffenen Token vorhanden sind.
-Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte Informationen erforderlich. Geben Sie an, woher die Daten stammen (**Wert** oder **Quelle-ID-Paar** oder **Quelle-Erweiterungs-ID-Paar**) und als welcher Anspruch die Daten ausgegeben werden (**Anspruchstyp**).
+Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte Informationen erforderlich. Geben Sie an, woher die Daten stammen ( **Wert** oder **Quelle-ID-Paar** oder **Quelle-Erweiterungs-ID-Paar** ) und als welcher Anspruch die Daten ausgegeben werden ( **Anspruchstyp** ).
 
 ### <a name="claim-schema-entry-elements"></a>Elemente eines Anspruchsschemaeintrags
 
@@ -279,7 +279,7 @@ Legen Sie das Quellelement auf einen der folgenden Werte fest:
 - „company“: Die Daten im Anspruch sind eine Eigenschaft des „Company“-Objekts des Ressourcenmandanten.
 - „transformation“: Die Daten im Anspruch stammen aus Anspruchtransformationen (siehe Abschnitt „Transformation von Ansprüchen“ weiter unten in diesem Artikel).
 
-Wenn die Quelle „transformation“ ist, muss das **TransformationID**-Element in dieser Anspruchsdefinition auch enthalten sein.
+Wenn die Quelle „transformation“ ist, muss das **TransformationID** -Element in dieser Anspruchsdefinition auch enthalten sein.
 
 Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den Anspruch bereitstellt. Die folgende Tabelle listet die ID-Werte auf, die für jeden Wert der Quelle gültig sind.
 
@@ -358,7 +358,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 **TransformationMethod:** Das TransformationMethod-Element identifiziert, welcher Vorgang ausgeführt wird, um die Daten für den Anspruch zu generieren.
 
-Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Ausgaben erwartet. Definieren Sie die Eingaben und Ausgaben mithilfe von **InputClaims**, **InputParameters** und **OutputClaims**.
+Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Ausgaben erwartet. Definieren Sie die Eingaben und Ausgaben mithilfe von **InputClaims** , **InputParameters** und **OutputClaims** .
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabelle 4: Transformationsmethoden und erwartete Ein- und Ausgaben
 
@@ -367,17 +367,17 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 |Join|string1, string2, separator|outputClaim|Verknüpft Eingabezeichenfolgen mit einer eingefügten Trennzeichen. Zum Beispiel: Zeichenfolge1:"foo@bar.com" , Zeichenfolge2:"sandbox" , Trennzeichen:"." ergibt outputClaim:"foo@bar.com.sandbox"|
 |ExtractMailPrefix|E-Mail oder Benutzerprinzipalname (UPN)|Extrahierte Zeichenfolge|Erweiterungsattribute 1-15 oder sonstige Schemaerweiterungen, die einen UPN- oder E-Mail-Adress-Wert für den Benutzer speichern, z. B. johndoe@contoso.com. Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
 
-**InputClaims:** Verwenden Sie ein InputClaims-Element, um die Daten aus einem Anspruchsschemaeintrag an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType**.
+**InputClaims:** Verwenden Sie ein InputClaims-Element, um die Daten aus einem Anspruchsschemaeintrag an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType** .
 
 - **ClaimTypeReferenceId** ist mit dem ID-Element des Anspruchsschemaeintrags verknüpft, um den entsprechenden Eingabeanspruch zu suchen.
 - **TransformationClaimType** wird verwendet, um dieser Eingabe einen eindeutigen Namen zu geben. Dieser Name muss einem der erwarteten Eingaben für die Transformationsmethode entsprechen.
 
-**InputParameters:** Verwenden Sie ein InputParameters-Element, um einen konstanten Wert an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **Value** und **ID**.
+**InputParameters:** Verwenden Sie ein InputParameters-Element, um einen konstanten Wert an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **Value** und **ID** .
 
 - **Value** ist der tatsächliche, konstante Wert, der übergeben werden soll.
 - **ID** wird verwendet, um der Eingabe einen eindeutigen Namen zu geben. Der Name muss einem der erwarteten Eingaben für die Transformationsmethode entsprechen.
 
-**OutputClaims:** Verwenden Sie ein OutputClaims-Element, um die von einer Transformation generierten Daten zu verwenden und es an einen Anspruchsschemaeintrag zu binden. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType**.
+**OutputClaims:** Verwenden Sie ein OutputClaims-Element, um die von einer Transformation generierten Daten zu verwenden und es an einen Anspruchsschemaeintrag zu binden. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType** .
 
 - **ClaimTypeReferenceId** ist mit der ID des Anspruchsschemaeintrags verknüpft, um die entsprechende Ausgabenspalte zu suchen.
 - **TransformationClaimType** wird verwendet, um der Ausgabe einen eindeutigen Namen zu geben. Der Name muss einer der erwarteten Ausgaben für die Transformationsmethode entsprechen.
@@ -419,7 +419,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 ### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
 
-Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie unter [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) Anmeldeinformationen für einen Zertifikatschlüssel für Ihr Anwendungsobjekt erstellen.
 
 Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten:
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665394"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320713"
 ---
 # <a name="communication-services-notifications"></a>Communication Services-Benachrichtigungen
 
@@ -40,13 +40,20 @@ Sie können einen Azure Notification Hub mit Ihrer Communication Services-Ressou
 
 Communication Services verwendet Azure Notification Hub als Passthroughdienst, um mit den verschiedenen plattformspezifischen Pushbenachrichtigungsdiensten über die [Direct Send](https://docs.microsoft.com/rest/api/notificationhubs/direct-send)-API zu kommunizieren. Auf diese Weise können Sie Ihre vorhandenen Azure Notification Hub-Ressourcen und -Konfigurationen wiederverwenden, um geringe Latenzzeiten und zuverlässige Anrufbenachrichtigungen für Ihre Anwendungen bereitzustellen.
 
+> [!NOTE]
+> Derzeit wird nur das Aufrufen von Pushbenachrichtigungen unterstützt.
+
 ### <a name="notification-hub-provisioning"></a>Bereitstellen von Notification Hub 
 
-Zum Übermitteln von Pushbenachrichtigungen an Clientgeräte mithilfe von Notification Hubs [erstellen Sie einen Notification Hub](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) innerhalb desselben Abonnements wie Ihre Communication Services-Ressource. Azure Notification Hubs müssen für den Plattformbenachrichtigungsdienst konfiguriert sein, den Sie verwenden möchten. Informationen zum Empfang von Pushbenachrichtigungen von Notification Hubs in Ihrer Client-App finden Sie unter [Erste Schritte mit Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/ios-sdk-get-started). Wählen Sie dort in der Dropdownliste oben auf der Seite die Zielplattform für den Client aus.
+Zum Übermitteln von Pushbenachrichtigungen an Clientgeräte mithilfe von Notification Hubs [erstellen Sie einen Notification Hub](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) innerhalb desselben Abonnements wie Ihre Communication Services-Ressource. Azure Notification Hubs müssen für den Plattformbenachrichtigungsdienst konfiguriert sein, den Sie verwenden möchten. Informationen zum Empfang von Pushbenachrichtigungen von Notification Hubs in Ihrer Client-App finden Sie unter [Erste Schritte mit Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started). Wählen Sie dort in der Dropdownliste oben auf der Seite die Zielplattform für den Client aus.
+
+> [!NOTE]
+> Derzeit werden die APNs- und FCM-Plattformen unterstützt.
 
 Nachdem Ihr Notification Hub konfiguriert wurde, können Sie ihn Ihrer Communication Services-Ressource zuweisen, indem Sie für den Hub mithilfe des Azure Resource Manager-Clients oder des Azure-Portals eine Verbindungszeichenfolge bereitstellen. Die Verbindungszeichenfolge muss Sendeberechtigungen enthalten. Es wird empfohlen, eine andere Zugriffsrichtlinie nur mit Sendeberechtigungen zu erstellen, die speziell für Ihren Hub gilt. Erfahren Sie mehr über die [Sicherheit von Notification Hubs und Zugriffsrichtlinien](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security).
 
-> HINWEIS:  Damit Sie Apple Push Notification Service-VoIP-Benachrichtigungen aktivieren können, müssen Sie den Namen Ihres Notification Hubs als Anwendungsbündel-ID mit dem Suffix „`.voip`“ festlegen. Weitere Informationen finden Sie unter [Verwenden von APNS-VoIP über Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+> [!IMPORTANT]
+> Damit Sie Apple Push Notification Service-VoIP-Benachrichtigungen aktivieren können, müssen Sie den Namen Ihres Notification Hubs als Anwendungsbündel-ID mit dem Suffix „`.voip`“ festlegen. Weitere Informationen finden Sie unter [Verwenden von APNS-VoIP über Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurieren des Notification Hubs mithilfe des Azure Resource Manager-Clients
 
@@ -67,6 +74,9 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 Navigieren Sie im Azure-Portal zu Ihrer Azure Communication Services-Ressource. Wählen Sie in der Communication Services-Ressource im linken Menü der Seite „Communication Services“ die Option „Pushbenachrichtigungen“ aus, und stellen Sie eine Verbindung mit dem zuvor bereitgestellten Benachrichtigungshub her. Sie müssen die Verbindungszeichenfolge und die Ressourcen-ID hier angeben:
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Diagramm, das die Integration von Communication Services in Event Grid zeigt":::
+
+> [!NOTE]
+> Wenn die Azure Notification Hub-Verbindungszeichenfolge aktualisiert wird, muss auch die Communication Services-Ressource aktualisiert werden.
 
 #### <a name="device-registration"></a>Geräteregistrierung 
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256755"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103151"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Anwendungstypen für Microsoft Identity Platform
 
@@ -27,8 +27,8 @@ Der Microsoft Identity Platform (v2.0)-Endpunkt unterstützt die Authentifizieru
 
 Sie müssen jede App, die den Microsoft Identity Platform-Endpunkt verwendet, im Azure-Portal in [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
 
-* Eine **Anwendungs- (bzw. Client-) ID**, die Ihre App eindeutig identifiziert
-* Ein **Umleitungs-URI**, der zum Umleiten von Antworten zurück an die App verwendet werden kann
+* Eine **Anwendungs- (bzw. Client-) ID** , die Ihre App eindeutig identifiziert
+* Ein **Umleitungs-URI** , der zum Umleiten von Antworten zurück an die App verwendet werden kann
 * Einige andere szenariospezifische Werte, wie z.B. unterstützte Kontotypen
 
 Nähere Informationen finden Sie im Artikel zum [Registrieren einer App](quickstart-register-app.md).
@@ -46,7 +46,7 @@ Viele moderne Apps verfügen über ein Single-Page-Webanwendungs-Front-End, das 
 
 Das folgende Flussdiagramm veranschaulicht die OAuth 2.0-Autorisierungscodegenehmigung (ohne Details zu PKCE), bei der die App einen Code vom Endpunkt `authorize` der Microsoft Identity Platform erhält und diesen gegen Token und Aktualisierungstoken unter Verwendung von standortübergreifenden Webanforderungen einlöst. Das Aktualisierungstoken läuft nach jeweils 24 Stunden ab, und die App muss einen weiteren Code anfordern. Zusätzlich zum Zugriffstoken wird normalerweise über denselben Flow und/oder eine separate OpenID Connect-Anforderung (hier nicht dargestellt) auch ein `id_token` angefordert, das den bei der Clientanwendung angemeldeten Benutzer repräsentiert.
 
-![Codeflow für SPA-Apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Diagramm des OAuth 2.0-Autorisierungscodeflows zwischen einer Single-Page-Webanwendung und dem Endpunkt des Sicherheitstokendiensts." border="false":::
 
 Ein Beispiel für dieses Szenario finden Sie unter [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses](tutorial-v2-javascript-auth-code.md).
 
@@ -108,7 +108,7 @@ Eine Web-API kann Zugriffstoken von allen App-Typen empfangen, z. B. von Webserv
 
 Informationen zum Schützen einer Web-API mithilfe von OAuth2-Zugriffstoken finden Sie in den Web-API-Codebeispielen im Abschnitt [Erste Schritte mit Microsoft Identity Plattform](v2-overview.md#getting-started).
 
-Oftmals müssen Web-APIs auch ausgehende Anforderungen an nachgelagerte Web-APIs stellen, die von Microsoft Identity Plattform geschützt werden. Zu diesem Zweck können Web-APIs den **On-Behalf-Of**-Fluss nutzen, der der Web-API ermöglicht, ein eingehendes Zugriffstoken gegen ein anderes Zugriffstoken zu tauschen, das in ausgehenden Anforderungen verwendet werden soll. Weitere Informationen finden Sie unter [Microsoft Identity Plattform und On-Behalf-Of-Fluss in OAuth 2.0](v2-oauth2-on-behalf-of-flow.md).
+Oftmals müssen Web-APIs auch ausgehende Anforderungen an nachgelagerte Web-APIs stellen, die von Microsoft Identity Plattform geschützt werden. Zu diesem Zweck können Web-APIs den **On-Behalf-Of** -Fluss nutzen, der der Web-API ermöglicht, ein eingehendes Zugriffstoken gegen ein anderes Zugriffstoken zu tauschen, das in ausgehenden Anforderungen verwendet werden soll. Weitere Informationen finden Sie unter [Microsoft Identity Plattform und On-Behalf-Of-Fluss in OAuth 2.0](v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobile und native Apps
 

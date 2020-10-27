@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662167"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276948"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -43,9 +43,17 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 ### <a name="on-premises-active-directory"></a>Lokales Active Directory
 * Die Active Directory-Schemaversion und die Funktionsebene der Gesamtstruktur müssen Windows Server 2003 oder höher entsprechen. Die Domänencontroller können unter einer beliebigen Version ausgeführt werden, sofern die Anforderungen an die Schemaversion und an die Gesamtstrukturebene erfüllt sind.
 * Wenn Sie das Feature *Kennwortrückschreiben* verwenden möchten, müssen die Domänencontroller unter Windows Server 2008 R2 oder höher ausgeführt werden.
-* Der von Azure AD verwendete Domänencontroller darf nicht schreibgeschützt sein. Die Verwendung eines schreibgeschützten Domänencontrollers (Read-Only Domain Controller, RODC) wird *nicht unterstützt*, und Azure AD Connect folgt keinen Umleitungen für Schreibvorgänge.
-* Die Verwendung von lokalen Gesamtstrukturen oder Domänen mit NetBIOS-Namen, die einen Punkt (.) enthalten, wird *nicht unterstützt*.
+* Der von Azure AD verwendete Domänencontroller darf nicht schreibgeschützt sein. Die Verwendung eines schreibgeschützten Domänencontrollers (Read-Only Domain Controller, RODC) wird *nicht unterstützt* , und Azure AD Connect folgt keinen Umleitungen für Schreibvorgänge.
+* Die Verwendung von lokalen Gesamtstrukturen oder Domänen mit NetBIOS-Namen, die einen Punkt (.) enthalten, wird *nicht unterstützt* .
 * Wir empfehlen das [Aktivieren des Active Directory-Papierkorbs](how-to-connect-sync-recycle-bin.md).
+
+### <a name="powershell-execution-policy"></a>PowerShell-Ausführungsrichtlinie
+Azure Active Directory Connect führt signierte PowerShell-Skripts im Rahmen der Installation aus. Stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie das Ausführen von Skripts zulässt.
+
+Die empfohlene Ausführungsrichtlinie während der Installation ist „RemoteSigned“.
+
+Weitere Informationen zum Festlegen der PowerShell-Ausführungsrichtlinie finden Sie unter [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect-Server
 Der Azure AD Connect-Server enthält kritische Identitätsdaten. Es ist wichtig, den administrativen Zugriff auf diesen Server ordnungsgemäß zu schützen. Berücksichtigen Sie die Richtlinien unter [Schützen des privilegierten Zugriffs](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
@@ -82,9 +90,9 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Von Azure AD Connect verwendete SQL Server-Datenbank
 * Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2012 Express LocalDB (eine einfache Version von SQL Server Express) installiert. Für SQL Server Express gilt eine Größenbeschränkung von 10 GB. Dies ermöglicht Ihnen das Verwalten von ca. 100.000 Objekten. Wenn Sie eine größere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Installation von SQL Server verweisen. Der SQL Server-Installationstyp kann sich auf die [Leistung von Azure AD Connect](./plan-connect-performance-factors.md#sql-database-factors) auswirken.
 * Wenn Sie eine andere Installation von SQL Server verwenden, gelten die folgenden Anforderungen:
-  * Azure AD Connect unterstützt alle SQL Server-Versionen von 2012 (mit dem neuesten Service Pack) bis SQL Server 2019. Azure SQL-Datenbank wird als Datenbank *nicht unterstützt*.
-  * Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese Sortierungen werden durch „\_CI_“ in ihrem Namen bestimmt. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung und „\_CS_“ im Namen wird *nicht unterstützt*.
-  * Sie können jeweils nur ein Synchronisierungsmodul pro SQL-Instanz verwenden. Das Freigeben einer SQL-Instanz mit FIM/MIM Sync, DirSync oder Azure AD Sync wird *nicht unterstützt*.
+  * Azure AD Connect unterstützt alle SQL Server-Versionen von 2012 (mit dem neuesten Service Pack) bis SQL Server 2019. Azure SQL-Datenbank wird als Datenbank *nicht unterstützt* .
+  * Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese Sortierungen werden durch „\_CI_“ in ihrem Namen bestimmt. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung und „\_CS_“ im Namen wird *nicht unterstützt* .
+  * Sie können jeweils nur ein Synchronisierungsmodul pro SQL-Instanz verwenden. Das Freigeben einer SQL-Instanz mit FIM/MIM Sync, DirSync oder Azure AD Sync wird *nicht unterstützt* .
 
 ### <a name="accounts"></a>Konten
 * Sie müssen über ein globales Azure AD-Administratorkonto für den Azure AD-Mandanten verfügen, den Sie integrieren möchten. Bei diesem Konto muss es sich um ein *Geschäfts-, Schul- oder Unikonto* handeln, und es darf kein *Microsoft-Konto* sein.
@@ -172,7 +180,7 @@ Wenn Sie Azure AD Connect zum Bereitstellen von AD FS oder des Webanwendungspr
   * Auf dem Computer, auf dem der Assistent ausgeführt wird (wenn der Zielcomputer nicht in die Domäne eingebunden ist oder sich in einer nicht vertrauenswürdigen Domäne befindet):
     * Verwenden Sie in einem PowerShell-Befehlsfenster mit erhöhten Rechten den Befehl `Set-Item.WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`.
     * Im Server-Manager:
-      * Fügen Sie einem Computerpool einen DMZ-WAP-Host hinzu. Wählen Sie im Server-Manager die Optionen **Verwalten** > **Server hinzufügen** aus, und verwenden Sie dann die Registerkarte **DNS**.
+      * Fügen Sie einem Computerpool einen DMZ-WAP-Host hinzu. Wählen Sie im Server-Manager die Optionen **Verwalten** > **Server hinzufügen** aus, und verwenden Sie dann die Registerkarte **DNS** .
       * Klicken Sie auf der Registerkarte **Server-Manager – Alle Server** mit der rechten Maustaste auf den WAP-Server, und wählen Sie **Verwalten als** aus. Geben Sie die lokalen (keine domänenspezifischen) Anmeldeinformationen für den WAP-Computer ein.
       * Um die PowerShell-Remotekonnektivität zu überprüfen, klicken Sie auf der Registerkarte **Server-Manager – Alle Server** mit der rechten Maustaste auf den WAP-Server, und wählen Sie **Windows PowerShell** aus. Daraufhin sollte eine PowerShell-Remotesitzung geöffnet werden, um sicherzustellen, dass PowerShell-Remotesitzungen hergestellt werden können.
 

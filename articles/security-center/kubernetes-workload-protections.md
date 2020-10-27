@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999314"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091150"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -67,21 +67,21 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
     > 
     > Wenn Sie die erforderlichen Parameter für die Empfehlungen, die konfiguriert werden müssen, nicht eingeben, werden Ihre Workloads als fehlerhaft angezeigt.
 
-    | Name der Empfehlung                                                                   | Sicherheitskontrolle                         | Konfiguration erforderlich |
-    |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Containerlimits für CPU und Arbeitsspeicher sollten erzwungen werden. (Vorschau)                          | Anwendungen vor DDoS-Angriffen schützen | Nein                     |
-    | Privilegierte Container sollten vermieden werden. (Vorschau)                                     | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen (Vorschau)     | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Container mit Rechteausweitung sollten vermieden werden. (Vorschau)                       | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Das Ausführen von Containern als Root-Benutzer muss vermieden werden. (Vorschau)                           | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Container mit Freigabe sensibler Hostnamespaces vermeiden (Vorschau)              | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Linux-Funktionen mit den niedrigsten Berechtigungen für Container erzwingen (Vorschau)       | Zugriff und Berechtigungen verwalten            | **Ja**                |
-    | Verwendung von HostPath-Volumeeinbindungen von Pods auf eine bekannte Liste beschränken (Vorschau)    | Zugriff und Berechtigungen verwalten            | **Ja**                |
-    | Container dürfen nur an zulässigen Ports lauschen. (Vorschau)                              | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
-    | Dienste dürfen nur an zulässigen Ports lauschen. (Vorschau)                                | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
-    | Verwendung von Hostnetzwerken und -ports einschränken (Vorschau)                     | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
-    | Überschreiben oder Deaktivieren des AppArmor-Profils für Container einschränken (Vorschau) | Optimieren von Sicherheitskonfigurationen        | **Ja**                |
-    | Containerimages sollten nur von vertrauenswürdigen Registrierungen bereitgestellt werden. (Vorschau)            | Sicherheitsrisiken beheben                | **Ja**                |
+    | Name der Empfehlung                                                         | Sicherheitskontrolle                         | Konfiguration erforderlich |
+    |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
+    | Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden                          | Anwendungen vor DDoS-Angriffen schützen | Nein                     |
+    | Privilegierte Container müssen vermieden werden                                     | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen     | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Das Ausführen von Containern als Root-Benutzer muss vermieden werden                           | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Container mit Freigabe sensibler Hostnamespaces vermeiden              | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Linux-Funktionen mit den niedrigsten Berechtigungen für Container erzwingen       | Zugriff und Berechtigungen verwalten            | **Ja**                |
+    | Verwendung von HostPath-Volumeeinbindungen von Pods auf eine bekannte Liste beschränken    | Zugriff und Berechtigungen verwalten            | **Ja**                |
+    | Container dürfen nur an zulässigen Ports lauschen                              | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
+    | Dienste dürfen nur an zulässigen Ports lauschen                                | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
+    | Verwendung von Hostnetzwerken und -ports einschränken                     | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
+    | Überschreiben oder Deaktivieren des AppArmor-Profils für Container einschränken | Optimieren von Sicherheitskonfigurationen        | **Ja**                |
+    | Containerimages sollten nur von vertrauenswürdigen Registrierungen bereitgestellt werden            | Sicherheitsrisiken beheben                | **Ja**                |
 
 
 1. Passen Sie bei Empfehlungen, die dies erfordern, die Parameter an:

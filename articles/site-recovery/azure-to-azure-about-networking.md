@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631340"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332041"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -29,7 +29,7 @@ Erfahren Sie, wie Site Recovery die Notfallwiederherstellung für [dieses Szenar
 
 Das folgende Diagramm zeigt eine typische Azure-Umgebung für Anwendungen, die auf Azure-VMs ausgeführt werden:
 
-![Kundenumgebung](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Diagramm einer typischen Azure-Umgebung für Anwendungen, die auf Azure-VMs ausgeführt werden.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Wenn Ihr lokales Netzwerk über Azure ExpressRoute oder VPN mit Azure verbunden ist, sieht die Umgebung wie folgt aus:
 
@@ -40,13 +40,13 @@ Normalerweise werden Netzwerke durch Firewalls und Netzwerksicherheitsgruppen (N
 >[!IMPORTANT]
 > Die Verwendung eines authentifizierten Proxys zum Steuern der Netzwerkkonnektivität wird von Site Recovery nicht unterstützt. In diesem Fall kann die Replikation nicht aktiviert werden.
 
+>[!NOTE]
+>- Zum Steuern der ausgehenden Konnektivität sollte keine IP-Adressen basierende Filterung durchgeführt werden.
+>- IP-Adressen von Azure Site Recovery sollten nicht zur Azure-Routingtabelle hinzugefügt werden, um die ausgehende Konnektivität zu kontrollieren.
 
 ## <a name="outbound-connectivity-for-urls"></a>Ausgehende Konnektivität für URLs
 
 Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
-
->[!NOTE]
-> Zum Steuern der ausgehenden Konnektivität sollte keine IP-Adressen basierende Filterung durchgeführt werden.
 
 **URL** | **Details**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizi
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Ausgehende Konnektivität mithilfe von Diensttags
 
-Wenn Sie eine NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen diese Diensttags zugelassen werden.
+Wenn Sie NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen diese Diensttags zugelassen werden.
 
 - Für die Speicherkonten in der Quellregion:
     - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.

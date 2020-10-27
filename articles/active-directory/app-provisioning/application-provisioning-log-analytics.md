@@ -11,22 +11,22 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 4e14bd6365ce53d98d6e0b0d1f2601ff3b3e59b4
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997117"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145589"
 ---
-# <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Grundlegendes zur Integration der Bereitstellung mit Azure Monitor-Protokollen
+# <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Grundlegendes zur Integration der Bereitstellung in Azure Monitor-Protokolle
 
-Die Bereitstellung ist mit Azure Monitor-Protokollen und Log Analytics integriert. Mit der Azure-Überwachung können Sie beispielsweise Arbeitsmappen erstellen, die auch als Dashboards bezeichnet werden, Bereitstellungsprotokolle länger als 30 Tage speichern und benutzerdefinierte Abfragen und Warnungen erstellen. In diesem Artikel wird erläutert, wie Bereitstellungsprotokolle in Azure Monitor-Protokolle integriert werden. Weitere Informationen zur allgemeinen Funktionsweise von Bereitstellungsprotokollen finden Sie unter [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md).
+Die Bereitstellung ist mit Azure Monitor-Protokollen und Log Analytics integriert. Mit der Azure-Überwachung (Azure Monitor) können Sie beispielsweise Arbeitsmappen erstellen, die auch als Dashboards bezeichnet werden, Bereitstellungsprotokolle länger als 30 Tage speichern und benutzerdefinierte Abfragen und Warnungen erstellen. In diesem Artikel wird erläutert, wie Bereitstellungsprotokolle in Azure Monitor-Protokolle integriert werden. Weitere Informationen zur allgemeinen Funktionsweise von Bereitstellungsprotokollen finden Sie unter [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md).
 
 ## <a name="enabling-provisioning-logs"></a>Aktivieren von Bereitstellungsprotokollen
 
-Sie sollten bereits mit der Azure-Überwachung und Log Analytics vertraut sein. Wenn dies nicht der Fall ist, machen Sie sich zunächst mit diesen Features vertraut, bevor Sie mit den Protokollen zur Anwendungsbereitstellung fortfahren. Weitere Informationen zur Azure-Überwachung finden Sie unter [Azure Monitor – Übersicht](../../azure-monitor/overview.md). Weitere Informationen zu Azure Monitor-Protokollen und Log Analytics finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Sie sollten bereits mit Azure Monitor und Log Analytics vertraut sein. Wenn dies nicht der Fall ist, machen Sie sich zunächst mit diesen Features vertraut, bevor Sie sich über die Protokolle für die Anwendungsbereitstellung informieren. Weitere Informationen zur Azure-Überwachung finden Sie unter [Azure Monitor – Übersicht](../../azure-monitor/overview.md). Weitere Informationen zu Azure Monitor-Protokollen und Log Analytics finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
 
-Nachdem Sie die Azure-Überwachung konfiguriert haben, können Sie Protokolle für die Anwendungsbereitstellung aktivieren. Die Option befindet sich auf der Seite **Diagnoseeinstellungen**.
+Nachdem Sie die Azure-Überwachung (Azure Monitor) konfiguriert haben, können Sie Protokolle für die Anwendungsbereitstellung aktivieren. Die Option befindet sich auf der Seite **Diagnoseeinstellungen** .
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Zugreifen auf Diagnoseeinstellungen" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
@@ -59,7 +59,7 @@ Die Anwendungsbereitstellung umfasst eine Reihe vorkonfigurierter Arbeitsmappen.
 
 Sie können benutzerdefinierte Abfragen erstellen und die Daten in Azure-Dashboards anzeigen. Informationen dazu finden Sie unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../../azure-monitor/log-query/get-started-queries.md). Sehen Sie sich auch die [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) an.
 
-Es folgen einige Beispiele für den Einstieg in die Anwendungsbereitstellung.
+Nachfolgend finden Sie einige Beispiele für den Einstieg in die Anwendungsbereitstellung.
 
 Abfragen der Protokolle für einen Benutzer basierend auf der jeweiligen ID im Quellsystem:
 ```kusto
@@ -113,7 +113,7 @@ Warnung über eine Spitze bei Deaktivierungen oder Löschvorgängen
 
 ## <a name="community-contributions"></a>Beiträge aus der Community
 
-Wir verfolgen bei Abfragen und Dashboards zur Anwendungsbereitstellung einen Open-Source- und communitybasierten Ansatz. Wenn Sie eine Abfrage, Warnung oder Arbeitsmappe erstellt haben, die Ihnen nützlich für andere Benutzer zu sein scheint, veröffentlichen Sie sie unbedingt im [GitHub-Repository AzureMonitorCommunity](https://github.com/microsoft/AzureMonitorCommunity). Senden Sie uns dann eine E-Mail mit dem entsprechenden Link. Wir überprüfen und veröffentlichen sie für den Dienst, damit auch andere Benutzer davon profitieren können. Sie können sich unter provisioningfeedback@microsoft.com an uns wenden.
+Wir verfolgen bei Abfragen und Dashboards für die Anwendungsbereitstellung einen Open-Source- und communitybasierten Ansatz. Wenn Sie eine Abfrage, Warnung oder Arbeitsmappe erstellt haben, die Ihnen nützlich für andere Benutzer zu sein scheint, veröffentlichen Sie sie unbedingt im [GitHub-Repository AzureMonitorCommunity](https://github.com/microsoft/AzureMonitorCommunity). Senden Sie uns dann eine E-Mail mit dem entsprechenden Link. Wir überprüfen und veröffentlichen sie für den Dienst, damit auch andere Benutzer davon profitieren können. Sie können sich unter provisioningfeedback@microsoft.com an uns wenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

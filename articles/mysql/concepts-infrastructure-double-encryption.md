@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ec674c35a4e218c105febf6471ae8427f3c1c3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531024"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125729"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL: doppelte Infrastrukturverschlüsselung
 
@@ -20,7 +20,7 @@ Azure Database for MySQL arbeitet mit der [Verschlüsselung gespeicherter ruhend
 Die doppelte Infrastrukturverschlüsselung fügt eine zweite Verschlüsselungsebene mit dienstseitig verwalteten Schlüsseln hinzu. Sie bedient sich eines gemäß FIPS 140-2 validierten kryptografischen Moduls, jedoch mit einem anderen Verschlüsselungsalgorithmus. Dies bietet eine zusätzliche Schutzebene für Ihre ruhenden Daten. Der bei der doppelten Infrastrukturverschlüsselung verwendete Schlüssel wird auch vom Dienst Azure Database for MySQL verwaltet. Die doppelte Infrastrukturverschlüsselung ist nicht standardmäßig aktiviert, da die zusätzliche Verschlüsselungsebene die Leistung beeinträchtigen kann.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for MySQL die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+> Dieses Feature wird nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ in Azure Database for PostgreSQL unterstützt.
 
 Die Verschlüsselung auf Infrastrukturebene hat den Vorteil, dass sie auf der Ebene implementiert wird, die dem Speichergerät oder den Netzwerkleitungen am nächsten ist. Azure Database for MySQL implementiert die beiden Verschlüsselungsebenen mithilfe dienstseitig verwalteter Schlüssel. Obwohl technisch gesehen immer noch auf Dienstebene, ist sie sehr nahe an der Hardware, die die ruhenden Daten speichert. Optional können Sie weiterhin die Verschlüsselung ruhender Daten aktivieren, indem Sie einen [kundenseitig verwalteten Schlüssel](concepts-data-encryption-mysql.md) für den bereitgestellten MySQL-Server verwenden. 
 
@@ -33,8 +33,8 @@ Die Implementierung auf Infrastrukturebene unterstützt zudem eine Vielfalt von 
 
 Die doppelte Infrastrukturverschlüsselung für Azure Database for MySQL bietet die folgenden Vorteile:
 
-1. **Mehr Vielfalt bei der Implementierung von Kryptografie**: Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
-2. **Implementierungsfehler**: Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
+1. **Mehr Vielfalt bei der Implementierung von Kryptografie** : Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
+2. **Implementierungsfehler** : Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
 
 Diese Kombination bietet einen wirksamen Schutz gegen häufige Bedrohungen und Schwachstellen, die für Angriffe auf die Kryptographie ausgenutzt werden.
 

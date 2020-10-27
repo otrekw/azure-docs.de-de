@@ -9,18 +9,18 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 928737608ae3e3e44b352724713a284ff9a45da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931489"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202955"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Authentifizieren bei Azure Communication Services
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Dieser Artikel bietet Informationen zur Authentifizierung von Clients bei Azure Communication Services unter Verwendung von *Zugriffsschlüsseln* und *Benutzerzugriffstoken*. Jede Clientinteraktion mit Azure Communication Services muss authentifiziert werden.
+Dieser Artikel bietet Informationen zur Authentifizierung von Clients bei Azure Communication Services unter Verwendung von *Zugriffsschlüsseln* und *Benutzerzugriffstoken* . Jede Clientinteraktion mit Azure Communication Services muss authentifiziert werden.
 
 In der folgenden Tabelle werden die Authentifizierungsoptionen beschrieben, die von den Azure Communication Services-Clientbibliotheken unterstützt werden:
 
@@ -33,7 +33,7 @@ In der folgenden Tabelle werden die Authentifizierungsoptionen beschrieben, die 
 
 Im Anschluss werden die einzelnen Autorisierungsoptionen kurz erläutert:
 
-- Die Authentifizierung per **Zugriffsschlüssel** für Vorgänge in „SMS“ oder „Administration“. Die Authentifizierung per Zugriffsschlüssel eignet sich für Anwendungen, die in einer vertrauenswürdigen Dienstumgebung ausgeführt werden. Zum Authentifizieren mit einem Zugriffsschlüssel generiert ein Client einen [HMAC (Hash-based Message Authentication Code)](https://en.wikipedia.org/wiki/HMAC), der in den`Authorization`-Header jeder HTTP-Anforderung eingeschlossen wird. Weitere Informationen finden Sie unter [Authentifizieren mit einem Zugriffsschlüssel](#authenticate-with-an-access-key).
+- Die Authentifizierung per **Zugriffsschlüssel** für Vorgänge in „SMS“ oder „Administration“. Die Authentifizierung per Zugriffsschlüssel eignet sich für Anwendungen, die in einer vertrauenswürdigen Dienstumgebung ausgeführt werden. Zum Authentifizieren mit einem Zugriffsschlüssel generiert ein Client einen [HMAC (Hash-based Message Authentication Code)](https://en.wikipedia.org/wiki/HMAC) und schließt diesen in den `Authorization`-Header jeder HTTP-Anforderung ein. Weitere Informationen finden Sie unter [Authentifizieren mit einem Zugriffsschlüssel](#authenticate-with-an-access-key).
 - Die Authentifizierung per **Benutzerzugriffstoken** ist für „Chat“ und „Calling“ vorgesehen. Benutzerzugriffstoken ermöglichen die direkte Authentifizierung Ihrer Clientanwendungen bei Azure Communication Services. Diese Token werden über einen von Ihnen erstellten serverseitigen Tokenbereitstellungsdienst generiert. Anschließend werden sie Clientgeräten zur Verfügung gestellt, die das Token zur Initialisierung der Clientbibliotheken „Chat“ und „Calling“ verwenden. Weitere Informationen finden Sie unter [Authentifizieren mit einem Benutzerzugriffstoken](#authenticate-with-a-user-access-token).
 
 ## <a name="authenticate-with-an-access-key"></a>Authentifizieren mit einem Zugriffsschlüssel

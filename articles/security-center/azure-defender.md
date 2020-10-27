@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576852"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331684"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
@@ -20,7 +20,7 @@ Die Features von Azure Security Center decken die zwei Säulen der Cloudsicherhe
 
 - **Verwaltung des Cloudsicherheitsstatus (Cloud Security Posture Management, CSPM)** : Security Center ist für alle Azure-Benutzer **kostenlos** verfügbar. Die kostenlose Benutzeroberfläche umfasst CSPM-Features, wie z. B. Sicherheitsbewertung, Erkennung von Sicherheitsfehlkonfigurationen auf Ihren Azure-Computern, Ressourcenbestand und mehr. Verwenden Sie diese CSPM-Features, um den Hybridcloudstatus zu stärken und die Konformität mit den integrierten Richtlinien nachzuverfolgen.
 
-- **Cloudworkloadschutz (Cloud Workload Protection, CWP)** : Die in Security Center integrierte Cloudworkloadschutz-Plattform (CWPP), **Azure Defender**, bietet erweiterten, intelligenten Schutz für Ihre Azure- und Hybridressourcen und -workloads. Durch die Aktivierung von Azure Defender wird eine Reihe zusätzlicher Sicherheitsfeatures bereitgestellt, die auf dieser Seite beschrieben werden. Zusätzlich zu den integrierten Richtlinien können Sie bei aktiviertem Azure Defender-Plan auch benutzerdefinierte Richtlinien und Initiativen hinzufügen. Sie können gesetzliche Standards (z. B. NIST und Azure CIS) sowie den Azure-Sicherheitsvergleichstest für eine echte angepasste Sicht auf Ihre Konformität hinzufügen.
+- **Cloudworkloadschutz (Cloud Workload Protection, CWP)** : Die in Security Center integrierte Cloudworkloadschutz-Plattform (CWPP), **Azure Defender** , bietet erweiterten, intelligenten Schutz für Ihre Azure- und Hybridressourcen und -workloads. Durch die Aktivierung von Azure Defender wird eine Reihe zusätzlicher Sicherheitsfeatures bereitgestellt, die auf dieser Seite beschrieben werden. Zusätzlich zu den integrierten Richtlinien können Sie bei aktiviertem Azure Defender-Plan auch benutzerdefinierte Richtlinien und Initiativen hinzufügen. Sie können gesetzliche Standards (z. B. NIST und Azure CIS) sowie den Azure-Sicherheitsvergleichstest für eine echte angepasste Sicht auf Ihre Konformität hinzufügen.
 
 Das Azure Defender-Dashboard in Security Center bietet Transparenz und Kontrolle der CWP-Features für Ihre Umgebung:
 
@@ -36,13 +36,14 @@ Wenn Sie Azure Defender über den Bereich **Preise und Einstellungen** von Azure
 - [Azure Defender für App Service](defender-for-app-service-introduction.md)
 - [Azure Defender für Storage](defender-for-storage-introduction.md)
 - [Azure Defender für SQL](defender-for-sql-introduction.md)
-- [Azure Defender für IoT](defender-for-iot-introduction.md)
 - [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender für Containerregistrierungen](defender-for-container-registries-introduction.md)
 - [Azure Defender für Key Vault](defender-for-key-vault-introduction.md)
 
 Jeder dieser Pläne wird in der Security Center-Dokumentation einzeln erläutert.
 
+> [!TIP]
+> Azure Defender für IoT (Vorschau) ist ein separates Produkt. Alle Details dazu finden Sie unter [Einführung in Azure Defender für IoT (Vorschau)](../defender-for-iot/overview.md). 
 
 ## <a name="hybrid-cloud-protection"></a>Schutz für Hybrid Clouds
 
@@ -50,7 +51,6 @@ Außerdem können Sie Ihrer Hybrid Cloud-Umgebung Azure Defender-Funktionen hinz
 
 - Schützen von Nicht-Azure-Servern
 - Schützen virtueller Computer in anderen Clouds (z. B. AWS und GCP)
-- Schützen von IoT-Geräten
 
 Sie erhalten eine angepasste Threat Intelligence und priorisierte Warnungen Ihrer spezifischen Umgebung entsprechend, damit Sie sich auf das konzentrieren können, was für Sie am wichtigsten ist.
 

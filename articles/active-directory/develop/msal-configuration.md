@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854918"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275612"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android-Konfigurationsdatei für die Microsoft-Authentifizierungsbibliothek
 
@@ -34,6 +34,7 @@ Dieser Artikel soll Ihnen helfen, die verschiedenen Einstellungen in der Konfigu
 |-----------|------------|-------------|-------|
 | `client_id` | String | Ja | Die Client-ID Ihrer App von der [Seite für die Anwendungsregistrierung](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | String | Ja | Der Umleitungs-URI Ihrer App von der [Seite für die Anwendungsregistrierung](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `broker_redirect_uri_registered` | Boolesch | Nein | Mögliche Werte: `true`, `false` |
 | `authorities` | List\<Authority> | Nein | Die Liste der von Ihrer App benötigten Autoritäten |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Nein | Mögliche Werte: `DEFAULT`, `BROWSER`, `WEBVIEW` |
 | `http` | HttpConfiguration | Nein | Konfigurieren Sie `HttpUrlConnection` `connect_timeout` und `read_timeout`. |
@@ -46,6 +47,10 @@ Die Client-ID oder App-ID, die beim Registrieren Ihrer Anwendung erstellt wurde.
 ### <a name="redirect_uri"></a>redirect_uri
 
 Der Umleitungs-URI, den Sie beim Registrieren Ihrer Anwendung registriert haben. Wenn der Umleitungs-URI zu einer Broker-App gehört, lesen Sie [Umleitungs-URI für öffentliche Client-Apps](msal-client-application-configuration.md#redirect-uri-for-public-client-apps), um sicherzustellen, dass Sie das richtige Umleitungs-URI-Format für Ihre Broker-App verwenden.
+
+### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
+
+Wenn Sie die Brokerauthentifizierung verwenden möchten, muss die Eigenschaft `broker_redirect_uri_registered` auf `true` festgelegt werden. Wenn die Anwendung in einem Szenario mit Brokerauthentifizierung nicht das richtige Format für die Kommunikation mit dem Broker (wie unter [Umleitungs-URI für öffentliche Client-Apps](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) beschrieben) aufweist, überprüft die Anwendung Ihren Umleitungs-URI und löst eine Ausnahme aus, wenn sie gestartet wird.
 
 ### <a name="authorities"></a>authorities
 
@@ -98,6 +103,7 @@ Die Liste von Autoritäten, die Ihnen bekannt sind und von Ihnen als vertrauensw
 > Die Autoritätsüberprüfung kann in der MSAL nicht aktiviert und deaktiviert werden.
 > Autoritäten sind Ihnen entweder als Entwickler bekannt, wie über die Konfiguration festgelegt wurde, oder sie sind Microsoft über Metadaten bekannt.
 > Wenn die MSAL eine Anforderung für ein Token an eine unbekannte Autorität erhält, wird eine `MsalClientException` vom Typ `UnknownAuthority` ausgegeben.
+> Die Brokerauthentifizierung funktioniert nicht für Azure AD B2C.
 
 #### <a name="authority-properties"></a>Eigenschaften von Autoritäten
 

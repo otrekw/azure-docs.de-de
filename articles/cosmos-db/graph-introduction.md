@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409611"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279831"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Einführung in die Gremlin-API von Azure Cosmos DB
 
@@ -92,13 +92,13 @@ Der Ansatz einer Graphdatenbank basiert dagegen auf persistenten Beziehungen in 
 
 Ein [Eigenschaftsgraph](http://mathworld.wolfram.com/Graph.html) ist eine Struktur aus [Vertices](http://mathworld.wolfram.com/GraphVertex.html) und [Edges](http://mathworld.wolfram.com/GraphEdge.html). Beide Objekte können eine beliebige Anzahl von Schlüssel-Wert-Paaren als Eigenschaften aufweisen. 
 
-* **Vertices/Knoten**: Vertices bezeichnen diskrete Entitäten, etwa eine Person, einen Ort oder ein Ereignis.
+* **Vertices/Knoten** : Vertices bezeichnen diskrete Entitäten, etwa eine Person, einen Ort oder ein Ereignis.
 
-* **Edges/Beziehungen**: Edges bezeichnen Beziehungen zwischen Vertices. Beispielsweise könnte eine Person eine andere Person kennen, an einem Ereignis beteiligt sein und sich vor Kurzem an einem Ort befunden haben.
+* **Edges/Beziehungen** : Edges bezeichnen Beziehungen zwischen Vertices. Beispielsweise könnte eine Person eine andere Person kennen, an einem Ereignis beteiligt sein und sich vor Kurzem an einem Ort befunden haben.
 
 * **Eigenschaften** – Eigenschaften geben Informationen zu den Vertices und Edges an. Vertices und Edges können eine beliebige Anzahl an Eigenschaften umfassen. Mithilfe der Eigenschaften können die Objekte in einer Abfrage beschrieben und gefiltert werden. Zu Eigenschaften zählen beispielsweise Name und Alter eines Vertex sowie ein Edge, der einen Zeitstempel und/oder eine Gewichtung aufweisen kann.
 
-* **Bezeichnung**: Eine Bezeichnung ist ein Name oder der Bezeichner eines Vertex oder eines Edge. Bezeichnungen können mehrere Vertices oder Edges gruppieren, sodass alle Vertices/Edges in einer Gruppe über eine bestimmte Bezeichnung verfügen. Ein Graph kann beispielsweise mehrere Vertices mit dem Bezeichnungstyp „Person“ aufweisen.
+* **Bezeichnung** : Eine Bezeichnung ist ein Name oder der Bezeichner eines Vertex oder eines Edge. Bezeichnungen können mehrere Vertices oder Edges gruppieren, sodass alle Vertices/Edges in einer Gruppe über eine bestimmte Bezeichnung verfügen. Ein Graph kann beispielsweise mehrere Vertices mit dem Bezeichnungstyp „Person“ aufweisen.
 
 Graphdatenbanken werden oft NoSQL- oder nicht relationalen Datenbanken zugeordnet, da es keine Abhängigkeit von einem Schema oder einem eingeschränkten Datenmodell gibt. Aufgrund der fehlenden Schemas können vernetzte Strukturen natürlich und effizient modelliert und gespeichert werden.
 
@@ -108,21 +108,21 @@ Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedr�
 
 :::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Architektur von Azure Cosmos DB-Diagrammen" border="false"::: 
 
-Dieser Graph weist folgende *Vertex*-Typen (in Gremlin auch „Bezeichnung“ genannt) auf:
+Dieser Graph weist folgende *Vertex* -Typen (in Gremlin auch „Bezeichnung“ genannt) auf:
 
-* **Personen**: Das Diagramm enthält drei Personen: Robin, Thomas und Ben.
-* **Interessen**: In diesem Beispiel interessieren sie sich für Football.
-* **Geräte**: Die von den Personen verwendeten Geräte.
-* **Betriebssysteme**: Die Betriebssysteme auf den Geräten.
-* **Ort**: Die Orte, von denen aus auf die Geräte zugegriffen wird.
+* **Personen** : Das Diagramm enthält drei Personen: Robin, Thomas und Ben.
+* **Interessen** : In diesem Beispiel interessieren sie sich für Football.
+* **Geräte** : Die von den Personen verwendeten Geräte.
+* **Betriebssysteme** : Die Betriebssysteme auf den Geräten.
+* **Ort** : Die Orte, von denen aus auf die Geräte zugegriffen wird.
 
-Die Beziehungen zwischen diesen Entitäten werden anhand von folgenden *Edge*typen dargestellt:
+Die Beziehungen zwischen diesen Entitäten werden anhand von folgenden *Edge* typen dargestellt:
 
-* **Kennt**: Beispiel: „Thomas kennt Robin.“
-* **Interessiert an**: Um die Interessen der Personen in unserem Diagramm darzustellen, verwenden wir beispielsweise „Ben ist an Football interessiert.“.
-* **Betriebssystem ausgeführt**: Auf dem Laptop wird das Windows-Betriebssystem ausgeführt.
-* **Verwendet**: Dies gibt an, welches Gerät eine Person verwendet. Beispiel: „Robin verwendet ein Motorola-Telefon mit der Seriennummer 77.“
-* **Standort**: Stellt den Standort dar, von dem aus auf die Geräte zugegriffen wird.
+* **Kennt** : Beispiel: „Thomas kennt Robin.“
+* **Interessiert an** : Um die Interessen der Personen in unserem Diagramm darzustellen, verwenden wir beispielsweise „Ben ist an Football interessiert.“.
+* **Betriebssystem ausgeführt** : Auf dem Laptop wird das Windows-Betriebssystem ausgeführt.
+* **Verwendet** : Dies gibt an, welches Gerät eine Person verwendet. Beispiel: „Robin verwendet ein Motorola-Telefon mit der Seriennummer 77.“
+* **Standort** : Stellt den Standort dar, von dem aus auf die Geräte zugegriffen wird.
 
 Die Gremlin-Konsole ist ein interaktives Terminal, das von Apache TinkerPop angeboten wird, und dieses Terminal wird verwendet, um mit den Graphdaten zu interagieren. Weitere Informationen finden Sie in der Schnellstartdokumentation unter [How to use the Gremlin Console](create-graph-gremlin-console.md) (Verwenden der Gremlin-Konsole). Sie können diese Vorgänge auch mithilfe von Gremlin-Treibern auf der Plattform Ihrer Wahl (Java, Node.js, Python oder .NET) ausführen. In den folgenden Beispielen wird gezeigt, wie Abfragen für diese Graphdaten mithilfe der Gremlin-Konsole ausgeführt werden.
 

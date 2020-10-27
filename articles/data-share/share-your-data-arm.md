@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654105"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146142"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Schnellstart: Freigeben von Daten mithilfe von Azure Data Share und Resource Manager-Vorlagen
 
@@ -20,7 +20,7 @@ Hier erfahren Sie, wie Sie mithilfe einer Resource Manager-Vorlage eine neue Azu
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
 
@@ -60,7 +60,7 @@ Diese Vorlage wurde zu Lernzwecken erstellt. In der Praxis verfügen Sie in der 
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Der Grund hierfür ist, dass die Bereitstellung versucht, das Dataset zu erstellen, bevor die RBAC-Zuweisung (rollenbasierte Zugriffssteuerung) abgeschlossen ist. Die Bereitstellung kann trotz dieser Fehlermeldung erfolgreich sein.  Sie können die Schritte im Abschnitt [Überprüfen der bereitgestellten Ressourcen](#review-deployed-resources) trotzdem durchführen.
+Der Grund hierfür ist, dass die Bereitstellung versucht, das Dataset zu erstellen, bevor die Azure-Rollenzuweisung abgeschlossen ist. Die Bereitstellung kann trotz dieser Fehlermeldung erfolgreich sein.  Sie können die Schritte im Abschnitt [Überprüfen der bereitgestellten Ressourcen](#review-deployed-resources) trotzdem durchführen.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -69,12 +69,12 @@ Der Grund hierfür ist, dass die Bereitstellung versucht, das Dataset zu erstell
     [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
-    * **Abonnement**: Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
-    * **Ressourcengruppe**: Klicken Sie auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-    * **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus.
-    * **Projektname**: Geben Sie einen Projektnamen ein.  Der Projektname wird verwendet, um Ressourcennamen zu generieren.  Weitere Informationen finden Sie in den Variablendefinitionen in der vorherigen Vorlage.
-    * **Standort**: Wählen Sie einen Standort für die Ressourcen aus.  Sie können den gleichen Standort verwenden wie für die Ressourcengruppe.
-    * **Einladungs-E-Mail**: Geben Sie die E-Mail-Adresse für die Anmeldung bei Azure des Empfängers der Datenfreigabe ein.  Ein E-Mail-Alias funktioniert nicht.
+    * **Abonnement** : Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
+    * **Ressourcengruppe** : Klicken Sie auf **Neu erstellen** , um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+    * **Standort** : Wählen Sie einen Standort für die Ressourcengruppe aus.
+    * **Projektname** : Geben Sie einen Projektnamen ein.  Der Projektname wird verwendet, um Ressourcennamen zu generieren.  Weitere Informationen finden Sie in den Variablendefinitionen in der vorherigen Vorlage.
+    * **Standort** : Wählen Sie einen Standort für die Ressourcen aus.  Sie können den gleichen Standort verwenden wie für die Ressourcengruppe.
+    * **Einladungs-E-Mail** : Geben Sie die E-Mail-Adresse für die Anmeldung bei Azure des Empfängers der Datenfreigabe ein.  Ein E-Mail-Alias funktioniert nicht.
 
     Übernehmen Sie für den Rest der Einstellungen die Standardwerte.
 1. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus.

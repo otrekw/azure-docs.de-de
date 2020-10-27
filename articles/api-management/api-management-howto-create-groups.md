@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851221"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092782"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management
 
@@ -48,30 +48,30 @@ Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Ma
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihrem API Management-Konto eine neue Gruppe hinzufügen.
 
-1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen**.
-2. Klicken Sie auf **+Hinzufügen**.
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** .
+2. Klicken Sie auf **+Hinzufügen** .
 3. Geben Sie einen eindeutigen Namen und eine optionale Beschreibung für die Gruppe ein.
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Erstellen** .
 
     ![Hinzufügen einer neuen Gruppe](./media/api-management-howto-create-groups/groups001.png)
 
-Nachdem die Gruppe erstellt wurde, wird sie der Liste **Gruppen** hinzugefügt. <br/>Klicken Sie auf den Namen der Gruppe und auf **Einstellungen**, um den **Namen** oder die **Beschreibung** zu bearbeiten.<br/>Zum Löschen der Gruppe klicken Sie auf den Namen der Gruppe, und drücken Sie **Löschen**.
+Nachdem die Gruppe erstellt wurde, wird sie der Liste **Gruppen** hinzugefügt. <br/>Klicken Sie auf den Namen der Gruppe und auf **Einstellungen** , um den **Namen** oder die **Beschreibung** zu bearbeiten.<br/>Zum Löschen der Gruppe klicken Sie auf den Namen der Gruppe, und drücken Sie **Löschen** .
 
 Nachdem Sie die Gruppe erstellt haben, können Sie sie zu Produkten und Entwicklern zuordnen.
 
 ## <a name="associate-a-group-with-a-product"></a><a name="associate-group-product"> </a>Zuordnen einer Gruppe zu einem Produkt
 
-1. Wählen Sie auf der linken Seite die Registerkarte **Produkte**.
+1. Wählen Sie auf der linken Seite die Registerkarte **Produkte** .
 2. Klicken Sie auf den Namen des gewünschten Produkts.
-3. Drücken Sie **Zugriffssteuerung**.
-4. Klicken Sie auf **+ Gruppe hinzufügen**.
+3. Drücken Sie **Zugriffssteuerung** .
+4. Klicken Sie auf **+ Gruppe hinzufügen** .
 
-    ![Zuordnen einer Gruppe zu einem Produkt](./media/api-management-howto-create-groups/groups002.png)
+    ![Screenshot, auf dem die Schaltfläche „Gruppe hinzufügen“ hervorgehoben ist.](./media/api-management-howto-create-groups/groups002.png)
 5. Wählen Sie die Gruppe aus, die Sie hinzufügen möchten.
 
-    ![Zuordnen einer Gruppe zu einem Produkt](./media/api-management-howto-create-groups/groups003.png)
+    ![Screenshot mit der ausgewählten Gruppe und der hervorgehobenen Schaltfläche „Auswählen“.](./media/api-management-howto-create-groups/groups003.png)
 
-    Um eine Gruppe aus dem Produkt zu entfernen, klicken Sie auf **Löschen**.
+    Um eine Gruppe aus dem Produkt zu entfernen, klicken Sie auf **Löschen** .
 
     ![Löschen einer Gruppe](./media/api-management-howto-create-groups/groups004.png)
 
@@ -84,14 +84,14 @@ Sobald ein Produkt zu einer Gruppe zugeordnet ist, können Entwickler in dieser 
 
 In diesem Abschnitt wird gezeigt, wie Gruppen Elemente zugeordnet werden.
 
-1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen**.
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** .
 2. Wählen Sie **Mitglieder** aus.
 
     ![Hinzufügen eines Mitglieds](./media/api-management-howto-create-groups/groups005.png)
-3. Drücken Sie **+ Hinzufügen**, und wählen Sie ein Element aus.
+3. Drücken Sie **+ Hinzufügen** , und wählen Sie ein Element aus.
 
-    ![Hinzufügen eines Mitglieds](./media/api-management-howto-create-groups/groups006.png)
-4. Drücken Sie **Auswählen**.
+    ![Screenshot, auf dem die Schaltfläche „Hinzufügen“, der ausgewählte Benutzer und die Schaltfläche „Auswählen“ hervorgehoben sind.](./media/api-management-howto-create-groups/groups006.png)
+4. Drücken Sie **Auswählen** .
 
 Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können Sie diese auf der Registerkarte **Benutzer** anzeigen.
 

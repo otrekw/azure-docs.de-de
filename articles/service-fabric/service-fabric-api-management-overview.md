@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259303"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091133"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric mit Azure API Management-Übersicht
 
@@ -29,13 +29,13 @@ Für eine allgemeine Service Fabric-Architektur wird eine einseitige Webanwendun
 
 In diesem Szenario dient ein zustandsloser Webdienst als Gateway für die Service Fabric-Anwendung. Bei diesem Ansatz ist es erforderlich, einen Webdienst zu schreiben, mit dem HTTP-Anforderungen über einen Proxy an Back-End-Dienste gesendet werden können. Dies ist im folgenden Diagramm dargestellt:
 
-![Service Fabric mit Azure API Management-Topologie – Übersicht][sf-web-app-stateless-gateway]
+![Diagramm, das zeigt, wie ein zustandsloser Webdienst als Gateway für die Service Fabric-Anwendung dient.][sf-web-app-stateless-gateway]
 
 Wenn die Komplexität von Anwendungen zunimmt, gilt dies auch für die Gateways, die eine API im Vordergrund einer Vielzahl von Back-End-Diensten darstellen müssen. Azure API Management ist so konzipiert, dass komplexe APIs mit Routingregeln, Zugriffssteuerung, Ratenbegrenzung, Überwachung, Ereignisprotokollierung und Zwischenspeicherung von Antworten mit minimalem Aufwand für Sie verarbeitet werden können. Azure API Management unterstützt Service Fabric-Dienstermittlung, -Partitionsauflösung und -Replikatauswahl, um Anforderungen auf intelligente Weise direkt an Back-End-Dienste in Service Fabric leiten zu können, damit Sie kein eigenes zustandsloses API-Gateway schreiben müssen. 
 
 In diesem Szenario wird die Webbenutzeroberfläche über einen Webdienst bereitgestellt, während HTTP-API-Aufrufe per Azure API Management verwaltet und weitergeleitet werden. Dies ist im folgenden Diagramm dargestellt:
 
-![Service Fabric mit Azure API Management-Topologie – Übersicht][sf-apim-web-app]
+![Diagramm, das zeigt, wie die Webbenutzeroberfläche über einen Webdienst bereitgestellt wird, während HTTP-API-Aufrufe per Azure API Management verwaltet und weitergeleitet werden.][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>Anwendungsszenarien
 
@@ -51,7 +51,7 @@ Im einfachsten Fall wird Datenverkehr an die Instanz eines zustandslosen Diensts
 
 Im folgenden Szenario enthält eine Service Fabric-Anwendung einen zustandslosen Dienst mit dem Namen `fabric:/app/fooservice`, der eine interne HTTP-API verfügbar macht. Der Dienstinstanzname ist bekannt und kann direkt in der API Management-Richtlinie für die Verarbeitung von eingehendem Datenverkehr hartcodiert werden. 
 
-![Service Fabric mit Azure API Management-Topologie – Übersicht][sf-apim-static-stateless]
+![Diagramm: Eine Service Fabric-Anwendung enthält einen zustandslosen Dienst, der eine interne HTTP-API verfügbar macht.][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>Senden von Datenverkehr an einen zustandsbehafteten Dienst
 
@@ -82,7 +82,7 @@ In diesem Beispiel wird für jeden Benutzer einer Anwendung eine neue Instanz ei
   - Eine Anforderung an `/api/users/foo` wird an die Dienstinstanz `fabric:/app/users/foo` weitergeleitet.
   - Eine Anforderung an `/api/users/bar` wird an die Dienstinstanz `fabric:/app/users/bar` weitergeleitet.
 
-![Service Fabric mit Azure API Management-Topologie – Übersicht][sf-apim-dynamic-stateless]
+![Diagramm eines Beispiels, das für jeden Benutzer einer Anwendung eine neue Instanz eines zustandslosen Diensts mit einem dynamisch generierten Namen erstellt.][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>Senden von Datenverkehr an mehrere zustandsbehaftete Dienste
 
@@ -103,7 +103,7 @@ In diesem Beispiel wird für jeden Benutzer der Anwendung eine neue Instanz eine
 
 Jede Dienstinstanz wird außerdem mit dem Int64-Partitionsschema partitioniert, das über zwei Partitionen und einen Schlüsselbereich von `Int64.MinValue` bis `Int64.MaxValue` verfügt. Mit der Back-End-Richtlinie wird ein Partitionsschlüssel innerhalb dieses Bereichs berechnet, indem der `id`-Wert, der im URL-Anforderungspfad angegeben ist, in eine 64-Bit-Ganzzahl konvertiert wird. Es kann hier aber ein beliebiger Algorithmus verwendet werden, um den Partitionsschlüssel zu berechnen. 
 
-![Service Fabric mit Azure API Management-Topologie – Übersicht][sf-apim-dynamic-stateful]
+![Diagramm, das zeigt, dass jede Dienstinstanz mit dem Int64-Partitionsschema partitioniert wird, das über zwei Partitionen und einen Schlüsselbereich von Int64.MinValue bis Int64.MaxValue verfügt.][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

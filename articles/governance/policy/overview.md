@@ -3,18 +3,20 @@ title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873913"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097387"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
 Azure Policy hilft bei der Durchsetzung von Organisationsstandards und bei der Bewertung der Compliance nach Bedarf. Über sein Compliance-Dashboard bietet der Dienst eine aggregierte Ansicht zur Bewertung des Gesamtzustands der Umgebung mit der Möglichkeit, einen Drilldown zur Granularität pro Ressource und Richtlinie durchzuführen. Außerdem trägt er durch Massenwartung für vorhandene Ressourcen und automatische Wartung dazu bei, dass Ihre Ressourcen Compliance-Anforderungen erfüllen.
 
 Häufige Anwendungsfälle für Azure Policy sind die Implementierung von Governance für Ressourcenkonsistenz, Einhaltung gesetzlicher Bestimmungen, Sicherheit, Kosten und Verwaltung. Richtliniendefinitionen für diese häufigen Anwendungsfälle sind in ihrer Azure-Umgebung bereits integriert bereitgestellt, um Ihnen den Einstieg zu erleichtern.
+
+Alle Azure Policy-Daten und -Objekte werden im Ruhezustand verschlüsselt. Weitere Informationen finden Sie unter [Datenverschlüsselung ruhender Azure-Daten](../../security/fundamentals/encryption-atrest.md).
 
 ## <a name="overview"></a>Übersicht
 
@@ -72,7 +74,7 @@ Azure Policy verfügt über verschiedene Berechtigungen (als Vorgänge bezeichne
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl **Mitwirkender** als auch **Leser** haben Zugriff auf alle Azure Policy-_Lesevorgänge_. **Mitwirkende** können eine Ressourcenwartung auslösen, aber keine Definitionen oder Zuweisungen _erstellen_. Die Berechtigung **Benutzerzugriffsadministrator** ist erforderlich, um der verwalteten Identität unter den Zuweisungen **deployIfNotExists** oder **modify** die benötigten Berechtigungen zu gewähren.
+Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl **Mitwirkender** als auch **Leser** haben Zugriff auf alle Azure Policy- _Lesevorgänge_ . **Mitwirkende** können eine Ressourcenwartung auslösen, aber keine Definitionen oder Zuweisungen _erstellen_ . Die Berechtigung **Benutzerzugriffsadministrator** ist erforderlich, um der verwalteten Identität unter den Zuweisungen **deployIfNotExists** oder **modify** die benötigten Berechtigungen zu gewähren.
 
 Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verfügt, erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md).
 
@@ -131,7 +133,7 @@ Weitere Informationen zu Richtlinienparametern finden Sie unter [Struktur von Az
 Eine Initiativdefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.
 
 > [!NOTE]
-> Das SDK, etwa Azure CLI und Azure PowerShell, verwendet zum Verweisen auf Initiativen Eigenschaften und Parameter mit dem Namen **PolicySet**.
+> Das SDK, etwa Azure CLI und Azure PowerShell, verwendet zum Verweisen auf Initiativen Eigenschaften und Parameter mit dem Namen **PolicySet** .
 
 Im Rahmen dieser Initiative würden Sie Richtliniendefinitionen wie etwa Folgende haben:
 
@@ -150,7 +152,7 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie die Initiativdefini
 
 In diesem Szenario haben Sie bei der Definition der Initiativparameter für **initiativeC** drei Optionen:
 
-- Verwenden Sie die Parameter der Richtliniendefinitionen innerhalb dieser Initiative: In diesem Beispiel werden _allowedLocations_ und _allowedSingleLocation_ zu Initiativparametern für **initiativeC**.
+- Verwenden Sie die Parameter der Richtliniendefinitionen innerhalb dieser Initiative: In diesem Beispiel werden _allowedLocations_ und _allowedSingleLocation_ zu Initiativparametern für **initiativeC** .
 - Geben Sie Werte für die Parameter der Richtliniendefinitionen innerhalb dieser Initiativdefinition ein. In diesem Beispiel können Sie eine Liste von Standorten für den Parameter von **policyA** – **allowedLocations** und den Parameter von **policyB** – **allowedSingleLocation** zur Verfügung stellen. Bei der Zuweisung dieser Initiative können Sie auch Werte bereitstellen.
 - Geben Sie eine Liste von _Wertoptionen_ an, die bei der Zuweisung dieser Initiative verwendet werden können. Damit dürfen die von den Richtliniendefinitionen geerbten Parameter innerhalb der Initiative bei der Zuweisung dieser Initiative nur Werte aus der angegebenen Liste enthalten.
 

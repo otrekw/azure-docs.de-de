@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858012"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342296"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
@@ -28,7 +28,7 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 
 ### <a name="windows-machines"></a>[**Windows-Computer**](#tab/features-windows)
 
-|**Feature**|**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Azure-fremde Computer**|**Azure Defender erforderlich**
+|**Feature**|**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Computer mit Azure Arc-Unterstützung**|**Azure Defender erforderlich**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP-Integration](security-center-wdatp.md)|✔</br>(für unterstützte Versionen)|✔</br>(für unterstützte Versionen)|✔|Ja|
 |[Virtual Machine-Verhaltensanalysen (und Sicherheitswarnungen)](alerts-reference.md)|✔|✔|✔|Ja|
@@ -42,9 +42,9 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 |[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
 |Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|-|-|-|Ja|
-|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
-|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
-|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
+|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
+|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
 |Bewertung der Datenträgerverschlüsselung|✔</br>(für [unterstützte Szenarien](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nein|
 |Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Nein|
 |[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Nein|
@@ -52,10 +52,10 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 
 ### <a name="linux-machines"></a>[**Linux-Computer**](#tab/features-linux)
 
-|**Feature**|**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Azure-fremde Computer**|**Azure Defender erforderlich**
+|**Feature**|**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Computer mit Azure Arc-Unterstützung**|**Azure Defender erforderlich**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP-Integration](security-center-wdatp.md)|-|-|-|Ja|
-|[Virtual Machine-Verhaltensanalysen (und Sicherheitswarnungen)](security-center-alerts-iaas.md)|✔</br>(für unterstützte Versionen)|✔</br>(für unterstützte Versionen)|✔|Ja|
+|[Virtual Machine-Verhaltensanalysen (und Sicherheitswarnungen)](./azure-defender.md)|✔</br>(für unterstützte Versionen)|✔</br>(für unterstützte Versionen)|✔|Ja|
 |[Dateilose Sicherheitswarnungen](alerts-reference.md#alerts-windows)|-|-|-|Ja|
 |[Netzwerkbasierte Sicherheitswarnungen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
 |[Just-in-Time-VM-Zugriff](security-center-just-in-time.md)|✔|-|-|Ja|
@@ -66,8 +66,8 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 |[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
 |Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|✔|✔|✔|Ja|
-|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
-|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
+|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
 |[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nein|
 |Bewertung der Datenträgerverschlüsselung|✔</br>(für [unterstützte Szenarien](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nein|
 |Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Nein|
@@ -96,10 +96,10 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 | Trend Micro – Deep Security | Windows Server-Familie  | Nein | Ja |
 | Symantec v12.1.1100+| Windows Server-Familie  | Nein | Ja |
 | McAfee v10+ | Windows Server-Familie  | Nein | Ja |
-| McAfee v10+ | Linux-Serverfamilie  | Nein | Ja **\*** |
-| Sophos V9+| Linux-Serverfamilie  | Nein | Ja **\***  |
+| McAfee v10+ | Linux-Serverfamilie  | Nein | Ja * *\** _ |
+| Sophos V9+| Linux-Serverfamilie  | Nein | Ja _*\**_  |
 
- **\*** Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
+ _ *\** * Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
 
 > [!NOTE]
 > Für die Erkennung von System Center Endpoint Protection (SCEP) auf einem virtuellen Computer mit Windows Server 2008 R2 muss SCEP nach PowerShell (ab Version 3.0) installiert werden.

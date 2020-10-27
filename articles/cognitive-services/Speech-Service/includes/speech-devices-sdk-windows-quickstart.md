@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226079"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169097"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Windows verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription-service.md) zu verwenden. Für die Unterhaltungstranskription wird nur [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) unterstützt. Für andere Speech-Funktionen werden lineare Mikrofonarrays unterstützt, die eine Mikrofonarray-Geometrie bereitstellen.
 
@@ -44,15 +44,15 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
 1. Geben Sie im **Startprogramm für die Eclipse-IDE** im Feld **Arbeitsbereich** den Namen eines neuen Arbeitsbereichsverzeichnisses ein. Wählen Sie dann **Starten** aus.
 
-   ![Screenshot des Eclipse-Startprogramms](../media/speech-devices-sdk/eclipse-launcher.png)
+   ![Screenshot: Startprogramm für Eclipse, in dem Sie den Namen Ihres Arbeitsbereichsverzeichnisses eingeben](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. Nach kurzer Zeit wird das Hauptfenster der Eclipse-IDE angezeigt. Schließen Sie den Begrüßungsbildschirm, wenn ein solcher vorhanden ist.
 
 1. Erstellen Sie über die Eclipse-Menüleiste ein neues Projekt, indem Sie **Datei** > **Neu** > **Java-Projekt** wählen. Falls dies nicht möglich ist, können Sie **Projekt** und dann **Java-Projekt** wählen.
 
-1. Der **Assistent für ein neues Java-Projekt** wird gestartet. Verwenden Sie **Durchsuchen**, um nach dem Speicherort des Beispielprojekts zu suchen. Wählen Sie **Fertig stellen** aus.
+1. Der **Assistent für ein neues Java-Projekt** wird gestartet. Verwenden Sie **Durchsuchen** , um nach dem Speicherort des Beispielprojekts zu suchen. Wählen Sie **Fertig stellen** aus.
 
-   ![Screenshot des Assistenten für ein neues Java-Projekt](../media/speech-devices-sdk/eclipse-new-java-project.png)
+   ![Screenshot: Assistent für ein neues Java-Projekt](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
 1. Klicken Sie im **Paket-Explorer** mit der rechten Maustaste auf Ihr Projekt. Wählen Sie **Konfigurieren** > **In Maven-Projekt konvertieren** aus dem Kontextmenü aus. Wählen Sie **Fertig stellen** aus.
 
@@ -79,9 +79,9 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
     </dependencies>
    ```
 
-1. Kopieren Sie den Inhalt von **Windows-x64** an den Speicherort des Java-Projekts (beispielsweise **C:\SDSDK\JRE-Sample-Release**).
+1. Kopieren Sie den Inhalt von **Windows-x64** an den Speicherort des Java-Projekts (beispielsweise **C:\SDSDK\JRE-Sample-Release** ).
 
-1. Kopieren Sie `kws.table`, `participants.properties` und `Microsoft.CognitiveServices.Speech.extension.pma.dll` in den Projektordner **target\classes**.
+1. Kopieren Sie `kws.table`, `participants.properties` und `Microsoft.CognitiveServices.Speech.extension.pma.dll` in den Projektordner **target\classes** .
 
 ## <a name="configure-the-sample-application"></a>Konfigurieren der Beispielanwendung
 
@@ -112,7 +112,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
     Wenn Sie ein neues Schlüsselwort verwenden möchten, aktualisieren Sie die folgende Zeile in `FunctionsList.java`, und kopieren Sie das Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `machine.zip` verwenden möchten:
 
-   * Kopieren Sie die Datei `kws.table` aus dem ZIP-Paket in den Projektordner **target/classes**.
+   * Kopieren Sie die Datei `kws.table` aus dem ZIP-Paket in den Projektordner **target/classes** .
    * Aktualisieren Sie `FunctionsList.java` mit dem Schlüsselwortnamen:
 
      ```java
@@ -121,29 +121,29 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Ausführen der Beispielanwendung aus Eclipse
 
-1. Wählen Sie in der Eclipse-Menüleiste **Run** > **Run As** > **Java Application** (Ausführen > Ausführen als > Java-Anwendung). Wählen Sie anschließend **FunctionsList** und **OK**.
+1. Wählen Sie in der Eclipse-Menüleiste **Run** > **Run As** > **Java Application** (Ausführen > Ausführen als > Java-Anwendung). Wählen Sie anschließend **FunctionsList** und **OK** .
 
    ![Screenshot: Auswählen von „Java-Anwendung“](../media/speech-devices-sdk/eclipse-run-sample.png)
 
 1. Die Beispielanwendung des Speech-Geräte-SDK wird gestartet und zeigt die folgenden Optionen an:
 
-   ![Speech-Geräte-SDK-Beispielanwendung und Optionen](../media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Screenshot: Beispielanwendung des Speech-Geräte-SDK und Optionen](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Testen Sie die neue Demoversion der **Unterhaltungstranskription**. Beginnen Sie mit der Transkription, indem Sie **Session** > **Start** (Sitzung > Starten) verwenden. Standardmäßig ist jeder Gast. Wenn Sie aber über Stimmsignaturen der Teilnehmer verfügen, können diese im Projektordner **target/classes** in die Datei `participants.properties` eingefügt werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Testen Sie die neue Demoversion der **Unterhaltungstranskription** . Beginnen Sie mit der Transkription, indem Sie **Session** > **Start** (Sitzung > Starten) verwenden. Standardmäßig ist jeder Gast. Wenn Sie aber über Stimmsignaturen der Teilnehmer verfügen, können diese im Projektordner **target/classes** in die Datei `participants.properties` eingefügt werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](../how-to-use-conversation-transcription-service.md).
 
-   ![Demoanwendung für die Unterhaltungstranskription](../media/speech-devices-sdk/cts-sample-app-windows.png)
+   ![Screenshot: Demo für Unterhaltungstranskription-Anwendung](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>Erstellen und Ausführen einer eigenständigen Anwendung
 
-1. Klicken Sie im **Paket-Explorer** mit der rechten Maustaste auf Ihr Projekt. Wählen Sie **Exportieren**.
+1. Klicken Sie im **Paket-Explorer** mit der rechten Maustaste auf Ihr Projekt. Wählen Sie **Exportieren** .
 
-1. Das Fenster **Exportieren** wird angezeigt. Erweitern Sie die Option **Java**, und wählen Sie **Runnable JAR file** (Ausführbare JAR-Datei) und dann **Weiter**.
+1. Das Fenster **Exportieren** wird angezeigt. Erweitern Sie die Option **Java** , und wählen Sie **Runnable JAR file** (Ausführbare JAR-Datei) und dann **Weiter** .
 
-   ![Screenshot: Fenster „Exportieren“](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![Screenshot: Exportfenster für die Auswahl der ausführbaren JAR-Datei](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. Das Fenster **Runnable JAR File Export** (Ausführbare JAR-Datei: Export) wird angezeigt. Wählen Sie ein **Exportziel** für die Anwendung aus, und wählen Sie anschließend **Fertig stellen**.
+1. Das Fenster **Runnable JAR File Export** (Ausführbare JAR-Datei: Export) wird angezeigt. Wählen Sie ein **Exportziel** für die Anwendung aus, und wählen Sie anschließend **Fertig stellen** .
 
-   ![Screenshot: Ausführbare JAR-Datei: Export](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
+   ![Screenshot: Exportfenster für ausführbare JAR-Datei, in dem Sie das Exportziel auswählen](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. Fügen Sie `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` und `Microsoft.CognitiveServices.Speech.extension.pma.dll` in den oben gewählten Zielordner ein, da diese Dateien von der Anwendung benötigt werden.
 
