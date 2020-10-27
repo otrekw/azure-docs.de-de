@@ -34,7 +34,7 @@ Erstellen Sie mithilfe von C# einen in Language Understanding (LUIS) integrierte
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Neue Ressource erstellen** aus.
 
-1. Suchen Sie im Suchfeld nach **Web-App-Bot**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**.
+1. Suchen Sie im Suchfeld nach **Web-App-Bot** , und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen** .
 
 1. Geben Sie in **Botdienst** die erforderlichen Informationen ein:
 
@@ -59,7 +59,7 @@ Erstellen Sie mithilfe von C# einen in Language Understanding (LUIS) integrierte
     |SDK-Sprache|Programmiersprache des Bots|**C#**|
     |Bot|Bottyp|**Basisbot**|
 
-1. Klicken Sie auf **Erstellen**. Dadurch wird der Botdienst erstellt und in Azure bereitgestellt. Im Rahmen dieses Vorgangs wird eine LUIS-App mit dem Namen `luis-csharp-bot-XXXX` erstellt. Dieser Name basiert auf dem Namen der Azure Bot Service-App.
+1. Klicken Sie auf **Erstellen** . Dadurch wird der Botdienst erstellt und in Azure bereitgestellt. Im Rahmen dieses Vorgangs wird eine LUIS-App mit dem Namen `luis-csharp-bot-XXXX` erstellt. Dieser Name basiert auf dem Namen der Azure Bot Service-App.
 
     > [!div class="mx-imgBorder"]
     > [![Erstellen des Web-App-Bots](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
@@ -106,7 +106,7 @@ Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und ver
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Überprüfen des Codes zum Senden einer Äußerung an LUIS und Erhalten einer Antwort
 
-1. Öffnen Sie zum Senden der Benutzeräußerung an den LUIS-Vorhersageendpunkt die Datei **FlightBookingRecognizer.cs**. Das ist die Stelle, an der in den Bot eingegebene Benutzeräußerungen an LUIS gesendet werden. Die Antwort von LUIS wird über die Methode **RecognizeAsync** zurückgegeben.
+1. Öffnen Sie zum Senden der Benutzeräußerung an den LUIS-Vorhersageendpunkt die Datei **FlightBookingRecognizer.cs** . Das ist die Stelle, an der in den Bot eingegebene Benutzeräußerungen an LUIS gesendet werden. Die Antwort von LUIS wird über die Methode **RecognizeAsync** zurückgegeben.
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.

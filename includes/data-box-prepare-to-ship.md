@@ -16,7 +16,7 @@ Der letzte Schritt ist die Vorbereitung des Geräts für den Versands. In diesem
 > [!IMPORTANT]
 > Im Rahmen der erforderlichen Versandvorbereitung werden Daten markiert, die nicht den Namenskonventionen von Azure entsprechen. Durch diesen Schritt wird verhindert, dass aufgrund von nicht konformen Daten potenzielle Fehler beim Hochladen von Daten auftreten.
 
-1. Wechseln Sie zu **Versandvorbereitung**, und klicken Sie auf **Vorbereitung starten**. Prüfsummen werden standardmäßig beim Kopieren von Daten berechnet. Bei der Versandvorbereitung wird die Prüfsummenberechnung abgeschlossen und die Liste der Dateien ( *-BOM-Dateien*) erstellt. Die Berechnung der Prüfsumme kann je nach Größe Ihrer Daten mehrere Stunden oder Tage dauern. 
+1. Wechseln Sie zu **Versandvorbereitung** , und klicken Sie auf **Vorbereitung starten** . Prüfsummen werden standardmäßig beim Kopieren von Daten berechnet. Bei der Versandvorbereitung wird die Prüfsummenberechnung abgeschlossen und die Liste der Dateien ( *-BOM-Dateien* ) erstellt. Die Berechnung der Prüfsumme kann je nach Größe Ihrer Daten mehrere Stunden oder Tage dauern. 
    
     ![Versandvorbereitung 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -24,13 +24,13 @@ Der letzte Schritt ist die Vorbereitung des Geräts für den Versands. In diesem
         
     ![Versandvorbereitung 2](media/data-box-prepare-to-ship/prepare-to-ship2.png)
     
-2. Die Versandvorbereitung beginnt, und die Gerätefreigaben werden offline geschaltet. <!--You see a reminder to download the shipping label once the device is ready.--> Nach Abschluss der Gerätevorbereitung ändert sich der Gerätestatus in *Bereit für den Versand*, und das Gerät wird gesperrt.
+2. Die Versandvorbereitung beginnt, und die Gerätefreigaben werden offline geschaltet. <!--You see a reminder to download the shipping label once the device is ready.--> Nach Abschluss der Gerätevorbereitung ändert sich der Gerätestatus in *Bereit für den Versand* , und das Gerät wird gesperrt.
         
     ![Versandvorbereitung 3](media/data-box-prepare-to-ship/prepare-to-ship3.png)
 
     Falls Sie weitere Daten auf das Gerät kopieren möchten, können Sie das Gerät entsperren, weitere Daten kopieren und die Versandvorbereitung erneut ausführen.
 
-    Falls bei diesem Schritt Fehler auftreten, wird der Status auf *Überprüfung wurde mit Fehlern abgeschlossen* aktualisiert. Entsperren Sie das Gerät, und navigieren Sie zur Seite **Verbindung herstellen und Daten kopieren**. Laden Sie anschließend die Liste mit den Problemen herunter, und beheben Sie die Fehler.
+    Falls bei diesem Schritt Fehler auftreten, wird der Status auf *Überprüfung wurde mit Fehlern abgeschlossen* aktualisiert. Entsperren Sie das Gerät, und navigieren Sie zur Seite **Verbindung herstellen und Daten kopieren** . Laden Sie anschließend die Liste mit den Problemen herunter, und beheben Sie die Fehler.
 
     ![Versandvorbereitung 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
@@ -45,6 +45,6 @@ Der letzte Schritt ist die Vorbereitung des Geräts für den Versands. In diesem
     3. Wählen Sie die Versandanweisungen für das Gerät aus, und laden Sie sie herunter. Die Versandanweisungen unterscheiden sich je nach dem Land, in dem Sie sich befinden.
     4. Falls in der E-Ink-Anzeige das Adressetikett nicht angezeigt wird, können Sie das Etikett für die Rücksendung hier herunterladen. 
 
-5. Fahren Sie das Gerät herunter. Wechseln Sie zur Seite **Herunterfahren oder neu starten**, und klicken Sie auf **Herunterfahren**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **OK**, um fortzufahren.
+5. Fahren Sie das Gerät herunter. Wechseln Sie zur Seite **Herunterfahren oder neu starten** , und klicken Sie auf **Herunterfahren** . Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **OK** , um fortzufahren.
 
 6. Entfernen Sie die Kabel. Im nächsten Schritt versenden Sie das Gerät an Microsoft.

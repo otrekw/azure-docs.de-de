@@ -2,21 +2,21 @@
 title: Abfrageanforderungen
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 68b5946cb21bef1c8979a94c8780682cfe9defa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: mbullwin
+ms.openlocfilehash: 777e3261bd6f842861ed6622b78589eedaaf65d7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377448"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043198"
 ---
-Verwenden Sie in der Abfrage den Parameter `@StartTime`, um Metrikdaten für einen bestimmten Zeitstempel zu erhalten. Er wird durch eine Zeichenfolge im Format `yyyy-MM-ddTHH:mm:ss` ersetzt. 
+Verwenden Sie in der Abfrage den Parameter `@StartTime`, um Metrikdaten für einen einzelnen Zeitstempel zu erhalten. Metrics Advisor ersetzt den Parameter durch eine Formatzeichenfolge vom Typ `yyyy-MM-ddTHH:mm:ss`, wenn die Abfrage ausgeführt wird.
 
 > [!IMPORTANT]
-> Achten Sie darauf, dass von der Abfrage nur Metrikdaten **eines einzelnen Zeitstempels** zurückgegeben werden. Metrics Advisor führt die Abfrage für jeden Zeitstempel aus, um die entsprechenden Metrikdaten zu erhalten. So sollte beispielsweise eine Abfrage für eine Metrik mit *tagesbezogener* Granularität nur einen einzelnen Zeitstempel (etwa `2020-06-21T00:00:00Z`) enthalten, wenn die Abfrage einmal ausgeführt wird. 
+> Die Abfrage sollte zu jedem Zeitstempel höchstens einen Datensatz für jede Dimensionskombination zurückgeben. Alle von der Abfrage zurückgegebenen Datensätze müssen dieselben Zeitstempel aufweisen. Metrics Advisor führt diese Abfrage für jeden Zeitstempel aus, um die Daten zu erfassen. Weitere Informationen und Beispiele finden Sie im Abschnitt mit [häufig gestellten Fragen zu Abfragen](../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data). 

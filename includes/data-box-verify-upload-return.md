@@ -37,7 +37,7 @@ Stellen Sie sicher, dass Ihre Daten in Azure hochgeladen wurden, bevor Sie sie a
 
         ![An Ressourcengruppen angefügter verwalteter Datenträger](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - Wenn Sie eine VHDX oder eine dynamische bzw. differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Seitenblob in das Stagingspeicherkonto hochgeladen, die VHD kann jedoch nicht in einen verwalteten Datenträger konvertiert werden. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: SSD Standard, HDD Standard oder SSD Premium. Die VHDs werden als Seitenblobs in Ihr Stagingspeicherkonto hochgeladen, wobei Gebühren anfallen.
+    - Wenn Sie eine VHDX oder eine dynamische bzw. differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Seitenblob in das Stagingspeicherkonto hochgeladen, die VHD kann jedoch nicht in einen verwalteten Datenträger konvertiert werden. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs** , und wählen Sie den geeigneten Container aus: SSD Standard, HDD Standard oder SSD Premium. Die VHDs werden als Seitenblobs in Ihr Stagingspeicherkonto hochgeladen, wobei Gebühren anfallen.
 
 
 ## <a name="erasure-of-data-from-data-box"></a>Löschen von Daten von der Data Box
