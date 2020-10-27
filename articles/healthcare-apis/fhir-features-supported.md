@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cavoeg
+ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007569"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339507"
 ---
 # <a name="features"></a>Features
 
@@ -37,15 +37,15 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
 | patch                          | Nein        | Nein        | Nein        |                                                     |
 | delete                         | Ja       | Ja       | Ja       |                                                     |
 | delete (bedingt)           | Nein        | Nein        | Nein        |                                                     |
+| history                        | Ja       | Ja       | Ja       |                                                     |
 | create                         | Ja       | Ja       | Ja       | Unterstützung für POST/PUT                               |
 | create (bedingt)           | Ja       | Ja       | Ja       |                                                     |
-| search                         | Teilweise   | Teilweise   | Teilweise   | Siehe unten                                           |
+| search                         | Teilweise   | Partial   | Teilweise   | Siehe unten                                           |
 | Verkettete Suche                 | Nein        | Ja       | Nein        |                                           |
 | Umgekehrte verkettete Suche         | Nein        | Nein        | Nein        |                                            |
 | capabilities                   | Ja       | Ja       | Ja       |                                                     |
 | Batch                          | Ja       | Ja       | Ja       |                                                     |
 | transaction                    | Nein        | Ja       | Nein        |                                                     |
-| history                        | Ja       | Ja       | Ja       |                                                     |
 | paging                         | Teilweise   | Teilweise   | Teilweise   | `self` und `next` werden unterstützt                     |
 | intermediaries                 | Nein        | Nein        | Nein        |                                                     |
 
@@ -94,28 +94,30 @@ Es werden alle Suchparametertypen unterstützt.
 | `_has`                  | Nein        | Nein        | Nein        |         |
 | `_type`                 | Ja       | Ja       | Ja       |         |
 | `_query`                | Nein        | Nein        | Nein        |         |
-
-| Suchvorgänge       | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
-|-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Nein        | Nein        | Nein        |         |
+
+| Suchergebnisparameter | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
+|-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Partial        | Partial   | Teilweise        |   `_sort=_lastUpdated` wird unterstützt       |
-| `_score`                | Nein        | Nein        | Nein        |         |
-| `_count`                | Ja       | Ja       | Ja       |         |
-| `_summary`              | Teilweise   | Teilweise   | Teilweise   | `_summary=count` wird unterstützt |
+| `_count`                | Ja       | Ja       | Ja       | `_count` ist auf 100 Zeichen beschränkt. Wenn er auf einen höheren Wert als 100 festgelegt ist, werden nur 100 zurückgegeben, und im Paket wird eine Warnung zurückgegeben. |
 | `_include`              | Nein        | Ja       | Nein        |         |
 | `_revinclude`           | Nein        | Ja       | Nein        | Enthaltene Elemente sind auf 100 beschränkt. |
+| `_summary`              | Partial   | Partial   | Teilweise   | `_summary=count` wird unterstützt |
+| `_total`                | Partial   | Partial   | Partial   | _total=non und _total=accurate      |
+| `_elements`             | Ja       | Ja       | Ja       |         |
 | `_contained`            | Nein        | Nein        | Nein        |         |
-| `_elements`             | Ja        | Ja        | Ja        |         |
+| `containedType`         | Nein        | Nein        | Nein        |         |
+| `_score`                | Nein        | Nein        | Nein        |         |
 
 ## <a name="extended-operations"></a>Erweiterte Vorgänge
 
 Alle unterstützten Vorgänge zur Erweiterung der RESTful-API.
 
 | Suchparametertyp | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
-|-----------------------|-----------|-----------|-----------|---------|
-| $export (gesamtes System)                | Ja       | Ja       | Ja       |         |
-| Patient/$export         | Ja       | Ja       | Ja       |         |
-| Gruppe/$export               | Ja       | Ja       | Ja       |         |
+|------------------------|-----------|-----------|-----------|---------|
+| $export (gesamtes System) | Ja       | Ja       | Ja       |         |
+| Patient/$export        | Ja       | Ja       | Ja       |         |
+| Gruppe/$export          | Ja       | Ja       | Ja       |         |
 
 ## <a name="persistence"></a>Persistenz
 
