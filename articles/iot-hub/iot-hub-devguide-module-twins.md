@@ -1,21 +1,21 @@
 ---
 title: Grundlegendes zu Azure IoT Hub-Modulzwillingen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten mithilfe von Modulzwillingen'
-author: ash2017
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.author: asrastog
+ms.date: 09/29/2020
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323008"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996466"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -29,7 +29,7 @@ Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs Module erstel
 
 Dieser Artikel beschreibt Folgendes:
 
-* Die Struktur des Modulzwillings: *Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*.
+* Die Struktur des Modulzwillings: *Tags* , *gewünschte Eigenschaften* und *gemeldete Eigenschaften* .
 * Die Vorgänge, die Module und Back-Ends für Modulzwillinge ausführen können.
 
 Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachrichten und Dateiuploads finden Sie bei Bedarf im [Leitfaden zur D2C-Kommunikation](iot-hub-devguide-d2c-guidance.md).
@@ -48,7 +48,7 @@ Der Lebenszyklus eines Modulzwillings ist mit der entsprechenden [Modulidentitä
 
 Ein Modulzwilling ist ein JSON-Dokument, das Folgendes enthält:
 
-* **Tags**. Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Module auf dem Gerät nicht sichtbar. Tags werden zu Abfragezwecken festgelegt.
+* **Tags** . Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Module auf dem Gerät nicht sichtbar. Tags werden zu Abfragezwecken festgelegt.
 
 * **Gewünschte Eigenschaften** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Modul-App gelesen werden können. Die Modul-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
 
@@ -171,11 +171,11 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     }
     ```
 
-* **Ersetzen gewünschter Eigenschaften**. Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
+* **Ersetzen gewünschter Eigenschaften** . Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
 
-* **Ersetzen von Tags**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
+* **Ersetzen von Tags** . Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
 
-* **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, sollten Sie D2C-Nachrichten verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
+* **Zwillingsbenachrichtigungen empfangen** . Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, sollten Sie D2C-Nachrichten verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
 
   - Eigenschaften
 
@@ -217,7 +217,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     }
     ```
 
-Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect** , wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
 
 Zusätzlich zu diesen Vorgängen kann das Lösungs-Back-End die Modulzwillinge über eine SQL-ähnliche [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) abfragen.
 
@@ -227,11 +227,11 @@ Die Modul-App führt mithilfe folgender atomarer Vorgänge Aktionen für den Mod
 
 * **Abrufen des Modulzwillings:** Dieser Vorgang gibt das Dokument für den Modulzwilling für das derzeit verbundene Modul zurück (einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften).
 
-* **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
+* **Teilweises Aktualisieren gemeldeter Eigenschaften** . Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
 
-* **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
+* **Beobachten gewünschter Eigenschaften** . Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
 
-Alle oben genannten Vorgänge erfordern die Berechtigung **ModuleConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben genannten Vorgänge erfordern die Berechtigung **ModuleConnect** , wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
 
 Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendung der oben beschriebenen Vorgänge, die mit vielen Sprachen und Plattformen erstellt wurden.
 
@@ -239,15 +239,15 @@ Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendu
 
 Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
 
-* **Schlüssel**: Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
+* **Schlüssel** : Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
 
-* **Werte**: Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig.
+* **Werte** : Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays werden ebenfalls unterstützt.
 
     * Ganze Zahlen können den Minimalwert „-4503599627370496“ und den Maximalwert „4503599627370495“ haben.
 
     * Zeichenfolgenwerte sind UTF-8-codiert und können eine maximale Länge von 4 Bytes haben.
 
-* **Tiefe**: Die maximale Tiefe von JSON-Objekten in Tags, gewünschten Eigenschaften und gemeldeten Eigenschaften ist „10“. Das folgende Objekt beispielsweise ist gültig:
+* **Tiefe** : Die maximale Tiefe von JSON-Objekten in Tags, gewünschten Eigenschaften und gemeldeten Eigenschaften ist „10“. Das folgende Objekt beispielsweise ist gültig:
 
    ```json
    {

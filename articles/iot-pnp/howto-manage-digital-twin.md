@@ -1,24 +1,24 @@
 ---
 title: Verwalten von digitalen IoT Plug & Play-Zwillingen
-description: Verwalten eines IoT Plug & Play-Geräts (Vorschauversion) mithilfe von APIs für digitale Zwillinge
+description: Verwalten eines IoT Plug & Play-Geräts mithilfe von APIs für digitale Zwillinge
 author: prashmo
 ms.author: prashmo
 ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351989"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042846"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Verwalten von digitalen IoT Plug & Play-Zwillingen
 
-IoT Plug & Play unterstützt die Vorgänge **Get digital twin** (Abrufen des digitalen Zwillings) und **Update digital twin** (Aktualisieren des digitalen Zwillings) zum Verwalten von digitalen Zwillingen. Sie können dafür entweder die [REST-APIs](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) oder eines der [Dienst-SDKs](libraries-sdks.md) verwenden.
+IoT Plug & Play unterstützt die Vorgänge **Get digital twin** (Abrufen des digitalen Zwillings) und **Update digital twin** (Aktualisieren des digitalen Zwillings) zum Verwalten von digitalen Zwillingen. Sie können dafür entweder die [REST-APIs](/rest/api/iothub/service/digitaltwin) oder eines der [Dienst-SDKs](libraries-sdks.md) verwenden.
 
-Zum Zeitpunkt der Artikelerstellung ist die API-Version des digitalen Zwillings für die öffentliche Vorschau `2020-05-31-preview`.
+Zum Zeitpunkt der Artikelerstellung ist die API-Version des digitalen Zwillings `2020-09-30`.
 
 ## <a name="update-a-digital-twin"></a>Aktualisieren eines digitalen Zwillings
 
@@ -72,7 +72,7 @@ Beispielsweise können Sie die Eigenschaft `targetTemperature`so aktualisieren:
 ]
 ```
 
-Mit dem vorherigen Update wird der gewünschte Wert einer Eigenschaft in den entsprechenden `$metadata` auf Stammebene oder Komponentenebene festgelegt, wie im folgenden Codeausschnitt gezeigt wird. IoT Hub aktualisiert die gewünschte Version der Eigenschaft:
+Mit dem vorherigen Update wird der gewünschte Wert einer Eigenschaft in den entsprechenden `$metadata` auf Komponentenebene festgelegt, wie im folgenden Codeausschnitt gezeigt wird. IoT Hub aktualisiert die gewünschte Version der Eigenschaft:
 
 ```json
 "thermostat1": {
@@ -130,7 +130,7 @@ Das folgende JSON-Patchbeispiel zeigt, wie eine Komponente hinzugefügt, ersetzt
 
 Durch einen Vorgang zum Hinzufügen oder Ersetzen wird der gewünschte Wert einer Eigenschaft festgelegt. Das Gerät kann den Status synchronisieren und eine Aktualisierung des Werts zusammen mit einem `ack`-Code, einer Version und einer Beschreibung melden.
 
-Beim Entfernen einer Eigenschaft wird deren gewünschter Wert gelöscht, falls er festgelegt wurde. Das Gerät kann dann die Berichterstellung für diese Eigenschaft beenden, und sie wird aus der Stammebene oder der Komponente entfernt. Wenn diese Eigenschaft die letzte in der Komponente ist, wird die Komponente ebenfalls entfernt.
+Beim Entfernen einer Eigenschaft wird deren gewünschter Wert gelöscht, falls er festgelegt wurde. Das Gerät kann dann die Berichterstellung für diese Eigenschaft beenden, und sie wird aus der Komponente entfernt. Wenn diese Eigenschaft die letzte in der Komponente ist, wird die Komponente ebenfalls entfernt.
 
 Das folgende JSON-Patchbeispiel zeigt, wie eine Eigenschaft in einer Komponente hinzugefügt, ersetzt oder entfernt wird:
 
@@ -179,11 +179,11 @@ Alle Zuordnungsschlüssel sollten gültige DTDL v2-Namen sein.
 
 ## <a name="troubleshoot-update-digital-twin-api-errors"></a>Beheben von API-Fehlern beim Aktualisieren von digitalen Zwillingen
 
-Während der öffentlichen Vorschau löst die Update Digital Twin API (API zum Aktualisieren des digitalen Zwillings) die folgende generische Fehlermeldung aus:
+Die Digital Twin-API löst die folgende generische Fehlermeldung aus:
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-Stellen Sie sicher, dass der Updatepatch die [Regeln zum Festlegen des gewünschten Werts für eine Eigenschaft des digitalen Zwillings](#rules-for-setting-the-desired-value-of-a-digital-twin-property) einhält.
+Wenn Sie diesen Fehler sehen, vergewissern Sie sich, dass der Updatepatch die [Regeln zum Festlegen des gewünschten Werts für eine Eigenschaft des digitalen Zwillings](#rules-for-setting-the-desired-value-of-a-digital-twin-property) einhält.
 
 Stellen Sie beim Aktualisieren einer Komponente sicher, dass der [leere Objektmarker „$metadata“](#add-replace-or-remove-a-component) festgelegt wird.
 
@@ -194,5 +194,5 @@ Updates können fehlschlagen, wenn die gemeldeten Werte eines Geräts den [IoT P
 Nachdem Sie sich mit digitalen Zwillingen vertraut gemacht haben, finden Sie weitere Informationen in folgenden Artikeln:
 
 - [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service-node.md)
-- [IoT-REST-API für digitale Zwillinge](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT-REST-API für digitale Zwillinge](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT-Explorer](howto-use-iot-explorer.md)

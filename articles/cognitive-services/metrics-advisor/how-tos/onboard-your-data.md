@@ -45,14 +45,14 @@ Wir empfehlen Ihnen zwei Ansätze, um das Laden von partiellen Daten zu vermeide
 
 ## <a name="add-a-data-feed-using-the-web-based-workspace"></a>Hinzufügen eines Datenfeeds mit dem webbasierten Arbeitsbereich
 
-Klicken Sie auf **Erste Schritte**, nachdem Sie sich an Ihrem Metrics Advisor-Portal angemeldet und Ihren Arbeitsbereich ausgewählt haben. Klicken Sie anschließend auf der Hauptseite des Arbeitsbereichs im linken Menü auf **Add data feed** (Datenfeed hinzufügen).
+Klicken Sie auf **Erste Schritte** , nachdem Sie sich an Ihrem Metrics Advisor-Portal angemeldet und Ihren Arbeitsbereich ausgewählt haben. Klicken Sie anschließend auf der Hauptseite des Arbeitsbereichs im linken Menü auf **Add data feed** (Datenfeed hinzufügen).
 
 ### <a name="add-connection-settings"></a>Hinzufügen von Verbindungseinstellungen
 
 Als Nächstes geben Sie die Parameter für die Verbindungsherstellung mit Ihrer Zeitreihen-Datenquelle ein. 
-* **Quelltyp**: Der Typ der Datenquelle, auf der Ihre Zeitreihendaten gespeichert werden.
-* **Granularität**: Das Intervall zwischen aufeinanderfolgenden Datenpunkten in Ihren Zeitreihendaten. Derzeit wird von Metrics Advisor Folgendes unterstützt: „Jährlich“, „Monatlich“, „Wöchentlich“, „Täglich“, „Stündlich“ und „Benutzerdefiniert“. Das kürzeste Intervall, das von der Anpassungsoption unterstützt wird, beträgt 60 Sekunden.
-  * **Sekunden**: Gibt die Anzahl von Sekunden an, wenn *granularityName* auf *Customize* (Anpassen) festgelegt ist.
+* **Quelltyp** : Der Typ der Datenquelle, auf der Ihre Zeitreihendaten gespeichert werden.
+* **Granularität** : Das Intervall zwischen aufeinanderfolgenden Datenpunkten in Ihren Zeitreihendaten. Derzeit wird von Metrics Advisor Folgendes unterstützt: „Jährlich“, „Monatlich“, „Wöchentlich“, „Täglich“, „Stündlich“ und „Benutzerdefiniert“. Das kürzeste Intervall, das von der Anpassungsoption unterstützt wird, beträgt 60 Sekunden.
+  * **Sekunden** : Gibt die Anzahl von Sekunden an, wenn *granularityName* auf *Customize* (Anpassen) festgelegt ist.
 * **Ingest data since (UTC)** (Daten erfassen seit (UTC)): Die Baselinestartzeit für die Datenerfassung. *startOffsetInSeconds* wird häufig zum Hinzufügen eines Versatzwerts verwendet, um die Datenkonsistenz zu fördern.
 
 Als Nächstes müssen Sie die Verbindungsinformationen für die Datenquelle und die benutzerdefinierten Abfragen angeben, mit denen die Daten in das erforderliche Schema konvertiert werden. Ausführliche Informationen zu den anderen Feldern und zum Verbinden unterschiedlicher Arten von Datenquellen finden Sie unter [Hinzufügen von Datenfeeds aus verschiedenen Datenquellen](../data-feeds-from-different-sources.md).
@@ -90,7 +90,7 @@ Falls Sie Spalten ignorieren möchten, empfehlen wir Ihnen, Ihre Abfrage oder Da
 | 4 | 11.11.2019 | US | EN-US | 23000 |
 | ... | ...| ... | ... | ... |
 
-Wenn *Land* eine Dimension ist und *Sprache* auf *Ignoriert* festgelegt ist, verfügen die erste und die zweite Spalte über die gleichen Dimensionen. Metrics Advisor wählt willkürlich einen Wert aus diesen beiden Zeilen aus. In diesem Fall werden die Zeilen von Metrics Advisor nicht aggregiert.
+Wenn *Land/Region* eine Dimension ist und *Sprache* auf *Ignoriert* festgelegt ist, verfügen die erste und die zweite Spalte über die gleichen Dimensionen. Metrics Advisor wählt willkürlich einen Wert aus diesen beiden Zeilen aus. In diesem Fall werden die Zeilen von Metrics Advisor nicht aggregiert.
 
 ### <a name="automatic-roll-up-settings"></a>Einstellungen für automatisches Rollup
 
@@ -107,7 +107,7 @@ Stellen Sie sich die folgenden Szenarien vor:
 
 * *Für meine Daten wurde das Rollup bereits ausgeführt, und der Dimensionswert wird wie folgt dargestellt: NULL oder leer (Standardeinstellung), Nur NULL, Sonstiges.*
 
-    Diese Option bedeutet, dass von Metrics Advisor kein Rollup für die Daten ausgeführt werden muss, weil die Zeilen bereits summiert wurden. Wenn Sie beispielsweise *Nur NULL* auswählen, wird die zweite Datenzeile im Beispiel unten als Aggregation aller Länder und der Sprache *EN-US* angesehen. Die vierte Datenzeile, die für *Land* leer ist, wird dagegen als reguläre Zeile angesehen, und dies kann ein Hinweis auf unvollständige Daten sein.
+    Diese Option bedeutet, dass von Metrics Advisor kein Rollup für die Daten ausgeführt werden muss, weil die Zeilen bereits summiert wurden. Wenn Sie beispielsweise *Nur NULL* auswählen, wird die zweite Datenzeile im Beispiel unten als Aggregation aller Länder und der Sprache *EN-US* angesehen. Die vierte Datenzeile, die für *Land/Region* leer ist, wird dagegen als reguläre Zeile angesehen, und dies kann ein Hinweis auf unvollständige Daten sein.
     
     | Country | Sprache | Income |
     |---------|----------|--------|
@@ -177,15 +177,15 @@ Es gibt mehrere erweiterte Einstellungen, um die Erfassung von Daten auf angepas
 
 ## <a name="specify-a-name-for-the-data-feed-and-check-the-ingestion-progress"></a>Angeben eines Namens für den Datenfeed und Überprüfen des Erfassungsstatus
  
-Geben Sie einen benutzerdefinierten Namen für den Datenfeed an, der in Ihrem Arbeitsbereich angezeigt werden soll. Klicken Sie anschließend auf **Absenden**. Auf der Seite mit den Datenfeeddetails können Sie die Statusanzeige für die Erfassung verwenden, um die Statusinformationen anzuzeigen.
+Geben Sie einen benutzerdefinierten Namen für den Datenfeed an, der in Ihrem Arbeitsbereich angezeigt werden soll. Klicken Sie anschließend auf **Absenden** . Auf der Seite mit den Datenfeeddetails können Sie die Statusanzeige für die Erfassung verwenden, um die Statusinformationen anzuzeigen.
 
 :::image type="content" source="../media/datafeeds/ingestion-progress.png" alt-text="Statusanzeige für die Erfassung" lightbox="../media/datafeeds/ingestion-progress.png":::
 
 
 Überprüfen Sie die Erfassungsfehlerdetails wie folgt: 
 
-1. Klicken Sie auf **Details anzeigen**.
-2. Klicken Sie auf **Status**, und wählen Sie anschließend **Fehlgeschlagen** oder **Fehler** aus.
+1. Klicken Sie auf **Details anzeigen** .
+2. Klicken Sie auf **Status** , und wählen Sie anschließend **Fehlgeschlagen** oder **Fehler** aus.
 3. Zeigen Sie auf eine fehlgeschlagene Erfassung, und sehen Sie sich die angezeigte Meldung mit den Details an.
 
 :::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Statusanzeige für die Erfassung":::

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779373"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082145"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -156,7 +156,7 @@ Für die Android-Anwendung sind eine Reihe von Berechtigungen erforderlich, um B
 
 ### <a name="register-for-push-notifications"></a>Registrieren für Pushbenachrichtigungen
 
-Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung `registerPushNotification()` für eine *CallAgent*-Instanz mit einem Geräteregistrierungstoken aufrufen.
+Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung `registerPushNotification()` für eine *CallAgent* -Instanz mit einem Geräteregistrierungstoken aufrufen.
 
 Um das Geräteregistrierungstoken zu erhalten, fügen Sie die Firebase-Clientbibliothek zur Datei *build.gradle* Ihres Anwendungsmoduls hinzu, indem Sie die folgenden Zeilen im Abschnitt `dependencies` hinzufügen, sofern noch nicht vorhanden:
 
@@ -220,7 +220,7 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>Behandlung von Pushbenachrichtigungen
 
-Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent*-Instanz mit Nutzdaten auf.
+Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent* -Instanz mit Nutzdaten auf.
 
 Um die Nutzlast von Firebase Cloud Messaging abzurufen, beginnen Sie mit der Erstellung eines neuen Diensts (Datei > Neu > Dienst > Dienst), der die Firebase-Clientbibliotheksklasse *FirebaseMessagingService* erweitert, und setzen Sie dann die `onMessageReceived`-Methode außer Kraft. Diese Methode ist der Ereignishandler, der aufgerufen wird, wenn Firebase Cloud Messaging die Pushbenachrichtigung an die Anwendung übermittelt.
 
@@ -517,7 +517,7 @@ Rendererobjekt nach APIs
 // Create a view for a video stream
 renderer.createView()
 ```
-* Löscht den Renderer und alle mit ihm verknüpften `RendererView`-Instanzen
+* Löscht den Renderer und alle mit ihm verknüpften `RendererView`-Instanzen. Wird aufgerufen, wenn Sie alle zugehörigen Ansichten aus der Benutzeroberfläche entfernt haben.
 ```java
 renderer.dispose()
 ```

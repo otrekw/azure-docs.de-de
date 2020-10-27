@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927526"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013966"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -28,7 +28,7 @@ Die Unterstützung für Windows Server-Knotenpools umfasst einige Einschränkung
 
 Kubernetes ist von jeher auf Linux ausgerichtet. Viele auf der Upstreamwebsite [Kubernetes.io][kubernetes] verwendete Beispiele sind zur Verwendung auf Linux-Knoten vorgesehen. Wenn Sie Bereitstellungen erstellen, bei denen Windows Server-Container verwendet werden, müssen Sie folgende Punkte auf Betriebssystemebene beachten:
 
-- **Identität**: Linux erkennt einen Benutzer anhand einer ganzzahligen Benutzer-ID (UID). Ein Benutzer hat auch einen alphanumerischen Benutzernamen für die Anmeldung, der von Linux in die UID des Benutzers übersetzt wird. Auf ähnliche Weise erkennt Linux eine Benutzergruppe anhand einer ganzzahligen Gruppen-ID (GID) und übersetzt einen Gruppennamen in die entsprechende GID.
+- **Identität** : Linux erkennt einen Benutzer anhand einer ganzzahligen Benutzer-ID (UID). Ein Benutzer hat auch einen alphanumerischen Benutzernamen für die Anmeldung, der von Linux in die UID des Benutzers übersetzt wird. Auf ähnliche Weise erkennt Linux eine Benutzergruppe anhand einer ganzzahligen Gruppen-ID (GID) und übersetzt einen Gruppennamen in die entsprechende GID.
     - Unter Windows Server wird eine umfangreichere binäre Sicherheits-ID (SID) verwendet, die in der Windows Security Access Manager-Datenbank (SAM) gespeichert wird. Diese Datenbank wird weder zwischen dem Host und den Containern noch zwischen den einzelnen Containern freigegeben.
 - **Dateiberechtigungen:** Unter Windows-Server wird eine Zugriffssteuerungsliste basierend auf SIDs anstelle einer Bitmaske von Berechtigungen sowie UID und GID verwendet.
 - **Dateipfade:** Als Konvention wird unter Windows Server „\“ anstelle von „/“ verwendet.
@@ -113,6 +113,49 @@ Ja, das ist möglich. Allerdings befindet sich die Azure Monitor-Funktion zum Er
 
 Ein Cluster mit Windows-Knoten kann ungefähr 500 Dienste enthalten, bevor es zu einer Portauslastung kommt.
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Kann ich den Azure-Hybridvorteil mit Windows-Knoten verwenden?
+
+Ja. Der Azure-Hybridvorteil für Windows Server senkt die Betriebskosten, da Sie Ihre lokale Windows Server-Lizenz in AKS-Windows-Knoten nutzen können.
+
+Der Azure-Hybridvorteil kann für Ihren gesamten AKS-Cluster oder für einzelne Knoten verwendet werden. Für einzelne Knoten müssen Sie zur [Knotenressourcengruppe][resource-groups] navigieren und den Azure-Hybridvorteil direkt auf die Knoten anwenden. Weitere Informationen zum Anwenden des Azure-Hybridvorteils auf einzelne Knoten finden Sie unter [Azure-Hybridvorteil für Windows Server][hybrid-vms]. 
+
+Verwenden Sie das Argument `--enable-ahub`, um den Azure-Hybridvorteil für einen neuen AKS-Cluster zu verwenden.
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+Aktualisieren Sie den Cluster mithilfe des Arguments `--enable-ahub`, um den Azure-Hybridvorteil für einen vorhandenen AKS-Cluster zu verwenden.
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+Verwenden Sie den folgenden Befehl, um zu überprüfen, ob der Azure-Hybridvorteil für den Cluster festgelegt ist:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+Ist der Azure-Hybridvorteil für den Cluster aktiviert, sieht die Ausgabe von `az vmss show` in etwa wie folgt aus:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kann ich das Kubernetes-Webdashboard für Windows-Container verwenden?
 
 Ja, Sie können das [Kubernetes-Webdashboard][kubernetes-dashboard] verwenden, um auf Informationen zu Windows-Containern zuzugreifen. Derzeit ist es jedoch nicht möglich, direkt über das Kubernetes-Webdashboard den Befehl *kubectl exec* für einen ausgeführten Windows-Container auszuführen. Weitere Informationen zum Herstellen einer Verbindung mit Ihrem ausgeführten Windows-Container finden Sie unter [Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung][windows-rdp].
@@ -152,3 +195,5 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

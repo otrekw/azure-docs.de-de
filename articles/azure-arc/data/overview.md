@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944564"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316973"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Was sind Azure Arc-fähige Datendienste (Vorschauversion)?
 
@@ -41,7 +41,7 @@ Azure Arc bietet weitere Cloudvorteile, wie z. B. schnelle Bereitstellung und 
 
 ## <a name="unified-management"></a>Einheitliche Verwaltung
 
-Mit vertrauten Tools wie dem Azure-Portal, Azure Data Studio und der Azure Data CLI erhalten Sie nun eine einheitliche Übersicht über alle Datenressourcen, die mit Azure Arc bereitgestellt werden. Neben der Möglichkeit, eine Vielzahl relationaler Datenbanken in Ihrer Umgebung und Azure anzuzeigen und zu verwalten, können Sie auch Protokolle und Telemetriedaten von Kubernetes-APIs abrufen, um die Kapazität und Integrität der zugrunde liegende Infrastruktur zu analysieren. Zusätzlich zur lokalisierten Protokollanalyse und Leistungsüberwachung können Sie nun Azure Monitor nutzen, um einen umfassenden Überblick über sämtliche IT-Ressourcen zu erhalten.
+Mit vertrauten Tools wie dem Azure-Portal, Azure Data Studio und der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] erhalten Sie nun eine einheitliche Übersicht über alle Datenressourcen, die mit Azure Arc bereitgestellt werden. Neben der Möglichkeit, eine Vielzahl relationaler Datenbanken in Ihrer Umgebung und Azure anzuzeigen und zu verwalten, können Sie auch Protokolle und Telemetriedaten von Kubernetes-APIs abrufen, um die Kapazität und Integrität der zugrunde liegende Infrastruktur zu analysieren. Zusätzlich zur lokalisierten Protokollanalyse und Leistungsüberwachung können Sie nun Azure Monitor nutzen, um einen umfassenden Überblick über sämtliche IT-Ressourcen zu erhalten.
 
 ## <a name="disconnected-scenario-support"></a>Unterstützung für nicht verbundenes Szenario
 

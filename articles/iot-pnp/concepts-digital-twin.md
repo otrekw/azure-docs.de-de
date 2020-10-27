@@ -1,18 +1,18 @@
 ---
 title: Grundlegendes zu digitalen IoT Plug & Play-Zwillingen
-description: Hier erfahren Sie, wie IoT Plug & Play (Vorschau) digitale Zwillinge verwendet.
+description: Hier erfahren Sie, wie IoT Plug & Play digitale Zwillinge verwendet.
 author: prashmo
 ms.author: prashmo
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1908abfb3d0ea20c69a68344d54076c6760e9e63
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351998"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046467"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Grundlegendes zu digitalen IoT Plug & Play-Zwillingen
 
@@ -34,7 +34,7 @@ APIs für digitale Zwillinge arbeiten mit Konstrukten auf hoher Ebene in der DTD
 
 Bei einem Gerätezwilling wird der Zustand einer schreibbaren Eigenschaft auf die Abschnitte für gewünschte und gemeldete Eigenschaften aufgeteilt. Alle schreibgeschützten Eigenschaften sind im Abschnitt für gemeldete Eigenschaften verfügbar.
 
-Bei einem digitalen Zwilling gibt es eine einheitliche Ansicht des aktuellen und des gewünschten Zustands der Eigenschaft. Der Synchronisierungsstatus für eine bestimmte Eigenschaft wird im entsprechenden Abschnitt `$metadata` auf Stamm- oder Komponentenebene gespeichert.
+Bei einem digitalen Zwilling gibt es eine einheitliche Ansicht des aktuellen und des gewünschten Zustands der Eigenschaft. Der Synchronisierungsstatus für eine bestimmte Eigenschaft wird im entsprechenden Abschnitt `$metadata` der Standardkomponentenebene gespeichert.
 
 ### <a name="digital-twin-json-format"></a>JSON-Format von digitalen Zwillingen
 
@@ -51,9 +51,9 @@ Bei der Darstellung als JSON-Objekt umfasst ein digitaler Zwilling die folgenden
 | `$metadata.{propertyName}.ackCode` | [Erforderlich, nur für schreibbare Eigenschaften] Der von der Geräte-App, die den digitalen Zwilling implementiert, zurückgegebene `ack`-Code |
 | `$metadata.{propertyName}.ackDescription` | [Optional, nur für schreibbare Eigenschaften] Die von der Geräte-App, die den digitalen Zwilling implementiert, zurückgegebene `ack`-Beschreibung |
 | `$metadata.{propertyName}.lastUpdateTime` | IoT Hub verwaltet den Zeitstempel der letzten Aktualisierung der Eigenschaft durch das Gerät. Zeitstempel verwenden UTC und sind im ISO8601-Format (YYYY-MM-DDTHH:MM:SS.mmmZ) codiert |
-| `{componentName}` | Ein JSON-Objekt mit den Eigenschaftswerten und Metadaten der Komponente, ähnlich wie ein Stammobjekt |
+| `{componentName}` | Ein JSON-Objekt mit den Eigenschaftswerten und Metadaten der Komponente. |
 | `{componentName}.{propertyName}` | Der Wert der Komponenteneigenschaft im JSON-Format |
-| `{componentName}.$metadata` | Die Metadateninformationen für die Komponente, die dem Objekt `$metadata` auf der Stammebene ähneln |
+| `{componentName}.$metadata` | Die Metadateninformationen für die Komponente. |
 
 #### <a name="device-twin-sample"></a>Beispiel für Gerätezwilling
 
@@ -171,7 +171,7 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Eigenschaft `seria
 
 #### <a name="writable-property"></a>Schreibbare Eigenschaft
 
-Angenommen, das Gerät wies auch die folgende schreibbare Eigenschaft auf der Stammebene auf:
+Angenommen, das Gerät wies auch die folgende schreibbare Eigenschaft in der Standardkomponente auf:
 
 ```json
 {
@@ -307,7 +307,7 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Komponente `thermo
 
 ## <a name="digital-twin-apis"></a>APIs für digitale Zwillinge
 
-Azure Digital Twins umfasst **Get Digital Twin** (Abrufen des digitalen Zwillings), **Update Digital Twin** (Aktualisieren des digitalen Zwillings), **Invoke Component Command** (Aufrufen des Komponentenbefehls) und **Invoke Command** (Aufrufen des Befehls) zum Verwalten des digitalen Zwillings eines Geräts. Sie können entweder die [REST-APIs](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) direkt oder über ein [Dienst-SDK](../iot-pnp/libraries-sdks.md) verwenden.
+Azure Digital Twins umfasst **Get Digital Twin** (Abrufen des digitalen Zwillings), **Update Digital Twin** (Aktualisieren des digitalen Zwillings), **Invoke Component Command** (Aufrufen des Komponentenbefehls) und **Invoke Command** (Aufrufen des Befehls) zum Verwalten des digitalen Zwillings eines Geräts. Sie können entweder die [REST-APIs](/rest/api/iothub/service/digitaltwin) direkt oder über ein [Dienst-SDK](../iot-pnp/libraries-sdks.md) verwenden.
 
 ## <a name="digital-twin-change-events"></a>Änderungsereignisse bei digitalen Zwillingen
 
@@ -374,11 +374,14 @@ content-encoding:utf-8
 ]
 ```
 
+> [!NOTE]
+> Änderungsbenachrichtigungen für Zwillinge werden doppelt ausgegeben, wenn sie sowohl in der Gerätekonfiguration als auch in der Änderungsbenachrichtigung für digitale Zwillinge aktiviert sind.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit digitalen Zwillingen vertraut gemacht haben, finden Sie weitere Informationen in folgenden Artikeln:
 
 - [Verwenden von APIs für digitale IoT Plug & Play-Zwillinge](howto-manage-digital-twin.md)
 - [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service-node.md)
-- [IoT-REST-API für digitale Zwillinge](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT-REST-API für digitale Zwillinge](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT-Explorer](howto-use-iot-explorer.md)

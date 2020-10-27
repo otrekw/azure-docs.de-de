@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256890"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073732"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problembehandlung bei der Herausgeberüberprüfung
 Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
@@ -33,7 +33,7 @@ Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprü
 ## <a name="common-issues"></a>Häufige Probleme
 Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auftreten können. 
 
-- **Ich kenne meine Microsoft Partner Network-ID (MPN-ID) nicht, oder ich weiß nicht, wer der Hauptkontakt für das Konto ist** 
+- **Ich kenne meine Microsoft Partner Network-ID (MPN-ID) nicht oder weiß nicht, wer der Hauptkontakt für das Konto ist.** 
     1. Navigieren Sie zur [Seite für die MPN-Registrierung](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new).
     1. Melden Sie sich mit einem Benutzerkonto im primären Azure AD-Mandanten der Organisation an. 
     1. Wenn bereits ein MPN-Konto vorhanden ist, wird dies erkannt, und Sie werden dem Konto hinzugefügt. 
@@ -58,7 +58,7 @@ Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auft
     Möglicherweise wurden Ihre App-Registrierungen mit einem anderen Benutzerkonto in diesem Mandanten, oder in einem anderen Mandanten oder mit einem persönlichen/Endbenutzerkonto erstellt. Stellen Sie sicher, dass Sie mit dem richtigen Konto in dem Mandanten angemeldet sind, in dem Ihre App-Registrierungen erstellt wurden.
 
 - **Ich erhalte einen Fehler im Zusammenhang mit Multi-Factor Authentication. Wie soll ich vorgehen?** 
-    Stellen Sie sicher, dass [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) aktiviert und sowohl für den Benutzer, mit dem Sie sich anmelden, als auch für dieses Szenario erforderlich ist. Für MFA könnte es z. B. folgende Anforderungen geben:
+    Stellen Sie sicher, dass [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) aktiviert und sowohl für den Benutzer, mit dem Sie sich anmelden, als auch für dieses Szenario **erforderlich** ist. Für MFA könnte es z. B. folgende Anforderungen geben:
     - Immer erforderlich für den Benutzer, mit dem Sie sich anmelden
     - [Erforderlich für die Azure-Verwaltung](../conditional-access/howto-conditional-access-policy-azure-management.md)
     - [Erforderlich für den Administratortyp](../conditional-access/howto-conditional-access-policy-admin-mfa.md), mit dem Sie sich anmelden
@@ -226,7 +226,9 @@ Diese Funktion wird für Microsoft-Kundenkonten nicht unterstützt. Es werden nu
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Tritt auf, wenn die mehrstufige Authentifizierung nicht durchgeführt wurde, bevor versucht wird, der App einen überprüften Herausgeber hinzuzufügen. Weitere Informationen finden Sie unter [Häufige Probleme](#common-issues).
+Tritt auf, wenn die mehrstufige Authentifizierung nicht durchgeführt wurde, bevor versucht wird, der App einen überprüften Herausgeber hinzuzufügen. Weitere Informationen finden Sie unter [Häufige Probleme](#common-issues). Hinweis: MFA muss in der gleichen Sitzung ausgeführt werden, wenn Sie versuchen, einen verifizierten Herausgeber hinzuzufügen. Wenn MFA aktiviert ist, aber nicht in der Sitzung ausgeführt werden muss, schlägt die Anforderung fehl.   
+
+Die angezeigte Fehlermeldung lautet wie folgt: „Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to proceed.“ (Aufgrund einer Konfigurationsänderung Ihres Administrators oder aufgrund Ihres Wechsels an einen anderen Standort müssen Sie zum Fortsetzen des Vorgangs die mehrstufige Authentifizierung verwenden.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

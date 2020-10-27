@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4c1d4d83ad3c39bab8058ad29662891fe3678a1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311528"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320298"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Erstellen einer verwalteten SQL-Instanz in Azure Arc mithilfe von Azure Data Studio
 
@@ -49,8 +49,8 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - Klicken Sie auf der Registerkarte „Verbindungen“ auf die drei Punkte oben links, und klicken Sie auf „Neue Bereitstellung“.
 - Klicken Sie bei den Bereitstellungsoptionen auf **Azure SQL managed instance – Azure Arc** (verwaltete Azure SQL-Instanz – Azure Arc). 
   > [!NOTE]
-  > Möglicherweise werden Sie hier dazu aufgefordert, die azdata-CLI zu installieren, wenn dies noch nicht getan wurde.
-- Akzeptieren Sie die Datenschutz- und Lizenzbedingungen, und klicken Sie unten auf **Auswählen**.
+  > Möglicherweise werden Sie hier dazu aufgefordert, die [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] zu installieren, wenn dies noch nicht geschehen ist.
+- Akzeptieren Sie die Datenschutz- und Lizenzbedingungen, und klicken Sie unten auf **Auswählen** .
 
 
 
@@ -60,7 +60,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
   - Wählen Sie die Speicherklasse aus, die sich für Daten eignet.
   - Wählen Sie die Speicherklasse aus, die sich für Protokolle eignet.
 
-- Klicken Sie auf die Schaltfläche **Bereitstellen**.
+- Klicken Sie auf die Schaltfläche **Bereitstellen** .
 
 - Dadurch sollte die Erstellung der verwalteten Azure SQL-Instanz in Azure Arc auf dem Datencontroller gestartet werden.
 
@@ -88,14 +88,14 @@ Name          Replicas    ServerEndpoint     State
 sqlinstance1  1/1         25.51.65.109:1433  Ready
 ```
 
-- Klicken Sie in Azure Data Studio unter der Registerkarte **Verbindungen** in der Ansicht **Server** auf **Neue Verbindung**.
+- Klicken Sie in Azure Data Studio unter der Registerkarte **Verbindungen** in der Ansicht **Server** auf **Neue Verbindung** .
 - Fügen Sie auf dem Blatt **Verbindung** den ServerEndpoint-Wert in das Textfeld „Server“ ein.
 - Wählen Sie **SQL-Anmeldung** als Authentifizierungstyp aus.
 - Geben Sie als Benutzernamen *sa* ein.
 - Geben Sie das Kennwort für das Konto `sa` ein.
 - Geben Sie optional den genauen Datenbanknamen ein, um eine Verbindung dazu herzustellen.
 - Klicken Sie außerdem optional bei Bedarf auf die Option „Add new server group“ (Neue Servergruppe hinzufügen).
-- Klicken Sie auf **Verbinden**, um eine Verbindung zur verwalteten Azure SQL-Instanz in Azure Arc herzustellen.
+- Klicken Sie auf **Verbinden** , um eine Verbindung zur verwalteten Azure SQL-Instanz in Azure Arc herzustellen.
 
 
 

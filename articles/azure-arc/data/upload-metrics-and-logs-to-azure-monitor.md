@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952249"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320161"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure Monitor
 
@@ -25,7 +25,7 @@ Sie können in regelmäßigen Abständen Nutzungsinformationen zu Abrechnungszwe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Azure-Befehlszeilenschnittstelle (az) und Azure Data CLI (azdata) müssen installiert sein.  [Installieren Sie die Tools.](./install-client-tools.md)
+Die Azure CLI (az) und [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] müssen installiert sein.  [Installieren Sie die Tools.](./install-client-tools.md)
 
 Vor dem Hochladen von Daten in Azure müssen Sie sicherstellen, dass der Microsoft.AzureData-Ressourcenanbieter für Ihr Azure-Abonnement registriert wurde.
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 Nutzungsdaten wie Bestand und Ressourcenverbrauch können wie folgt in zwei Schritten in Azure hochgeladen werden:
 
-1. Exportieren Sie die Nutzungsdaten wie folgt mit dem Befehl ```azdata export```:
+1. Exportieren Sie die Nutzungsdaten wie folgt mit dem Befehl `azdata export`:
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ Nutzungsdaten wie Bestand und Ressourcenverbrauch können wie folgt in zwei Schr
    ```
    Mit diesem Befehl wird die Datei `usage.json` mit allen Azure Arc-fähigen Datenressourcen erstellt, dies sind z. B. verwaltete SQL-Instanzen und PostgreSQL Hyperscale-Instanzen, die auf dem Datencontroller erstellt werden.
 
-2. Hochladen der Nutzungsdaten mit dem Befehl ```azdata upload```
+2. Hochladen der Nutzungsdaten mit dem Befehl `azdata upload`
 
    > [!NOTE]
    > Warten Sie nach dem Erstellen des Azure Arc-Datencontrollers mindestens 24 Stunden, bevor Sie Daten hochladen.
@@ -95,7 +95,7 @@ Führen Sie diese Befehle aus, um den Dienstprinzipal für den Metrikupload zu e
 Führen Sie diesen Befehl aus, um einen Dienstprinzipal zu erstellen:
 
 > [!NOTE]
-> Zum Erstellen eines Dienstprinzipals sind [bestimmte Berechtigungen in Azure](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) erforderlich.
+> Zum Erstellen eines Dienstprinzipals sind [bestimmte Berechtigungen in Azure](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) erforderlich.
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

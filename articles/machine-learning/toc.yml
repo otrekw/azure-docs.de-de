@@ -235,7 +235,7 @@
           displayName: policy
     - name: Erstellen und Verwalten von Arbeitsbereichen
       items:
-        - name: Verwenden des Azure-Portals
+        - name: Verwenden des Azure-Portals oder des Python SDK
           href: how-to-manage-workspace.md
         - name: Mithilfe der Azure-Befehlszeilenschnittstelle
           href: how-to-manage-workspace-cli.md

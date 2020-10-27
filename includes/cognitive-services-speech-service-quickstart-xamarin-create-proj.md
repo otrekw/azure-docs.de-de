@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654404"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097234"
 ---
 Wenn Sie ein Visual Studio-Projekt für die plattformübergreifende .NET-Entwicklung mobiler Apps mit Xamarin erstellen möchten, sind folgende Schritte erforderlich:
 - Einrichten von Visual Studio-Entwicklungsoptionen
@@ -26,9 +26,9 @@ Vergewissern Sie sich zunächst, dass Visual Studio ordnungsgemäß für die pla
 
    ![Screenshot: Registerkarte „Workloads“, Dialogfeld „Änderung“ und Visual Studio-Installer.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
 
-1. Suchen Sie auf der Registerkarte **Workloads** unter **Windows** nach der Workload **Mobile-Entwicklung mit .NET**. Wenn das Kontrollkästchen neben dieser Workload bereits aktiviert ist, schließen Sie das Dialogfeld **Ändern**, und fahren Sie mit Schritt 5 fort.
+1. Suchen Sie auf der Registerkarte **Workloads** unter **Windows** nach der Workload **Mobile-Entwicklung mit .NET** . Wenn das Kontrollkästchen neben dieser Workload bereits aktiviert ist, schließen Sie das Dialogfeld **Ändern** , und fahren Sie mit Schritt 5 fort.
 
-1. Aktivieren Sie das Kontrollkästchen **Mobile-Entwicklung mit .NET**, und wählen Sie **Ändern** aus. Wählen Sie im Dialogfeld **Bevor wir loslegen** die Option **Weiter** aus, um die Workload „Mobile-Entwicklung mit .NET“ zu installieren. Die Installation des neuen Features kann etwas dauern.
+1. Aktivieren Sie das Kontrollkästchen **Mobile-Entwicklung mit .NET** , und wählen Sie **Ändern** aus. Wählen Sie im Dialogfeld **Bevor wir loslegen** die Option **Weiter** aus, um die Workload „Mobile-Entwicklung mit .NET“ zu installieren. Die Installation des neuen Features kann etwas dauern.
 
 1. Schließen Sie den Visual Studio-Installer.
 
@@ -50,17 +50,17 @@ Vergewissern Sie sich zunächst, dass Visual Studio ordnungsgemäß für die pla
 
 1. Wählen Sie **Erstellen** aus, um zum Fenster **New Mobile App Xamarin Forms Project** (Neues Mobile App-Xamarin Forms-Projekt) zu navigieren.
 
-   ![Screenshot: Dialogfeld „Neues UWP-Projekt (Universelle Windows-Plattform)“ in Visual Studio.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![Screenshot des Dialogfelds „New Mobile App Xamarin Forms Project“ (Neues Mobile App-Xamarin Forms-Projekt) in Visual Studio.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
 1. Wählen Sie die Vorlage **Leer** aus.
 
-1. Aktivieren Sie unter **Plattform** die Kontrollkästchen für **Android**, **iOS** und **Windows (UWP)** .
+1. Aktivieren Sie unter **Plattform** die Kontrollkästchen für **Android** , **iOS** und **Windows (UWP)** .
 
-1. Klicken Sie auf **OK**. Sie werden in die Visual Studio-IDE zurückgeleitet. Das neue Projekt ist erstellt und wird im Bereich **Projektmappen-Explorer** angezeigt.
+1. Klicken Sie auf **OK** . Sie werden in die Visual Studio-IDE zurückgeleitet. Das neue Projekt ist erstellt und wird im Bereich **Projektmappen-Explorer** angezeigt.
 
    ![Projekt „helloworld“ – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-helloworld.png)
 
-Wählen Sie nun die Architektur Ihrer Zielplattform und das Startprojekt aus. Suchen Sie auf der Visual Studio-Symbolleiste das Dropdownfeld **Projektmappenplattformen**. (Sollte es nicht angezeigt werden, wählen Sie **Ansicht** > **Symbolleisten** > **Standard** aus, um die Symbolleiste mit **Projektmappenplattformen** anzuzeigen.) Wählen Sie bei Verwendung der 64-Bit-Version von Windows **x64** im Dropdownfeld aus. Falls gewünscht, können Sie auch **x86** auswählen, da die 64-Bit-Version von Windows auch für 32-Bit-Anwendungen geeignet ist. Legen Sie im Dropdownfeld **Startprojekte** die Option **helloworld.UWP (Universal Windows)** fest.
+Wählen Sie nun die Architektur Ihrer Zielplattform und das Startprojekt aus. Suchen Sie auf der Visual Studio-Symbolleiste das Dropdownfeld **Projektmappenplattformen** . (Sollte es nicht angezeigt werden, wählen Sie **Ansicht** > **Symbolleisten** > **Standard** aus, um die Symbolleiste mit **Projektmappenplattformen** anzuzeigen.) Wählen Sie bei Verwendung der 64-Bit-Version von Windows **x64** im Dropdownfeld aus. Falls gewünscht, können Sie auch **x86** auswählen, da die 64-Bit-Version von Windows auch für 32-Bit-Anwendungen geeignet ist. Legen Sie im Dropdownfeld **Startprojekte** die Option **helloworld.UWP (Universal Windows)** fest.
 
 ### <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
@@ -81,12 +81,12 @@ Installieren Sie das [Speech SDK-NuGet-Paket](https://aka.ms/csspeech/nuget), un
    > [!NOTE] 
    > Für die iOS-Bibliothek in `Microsoft.CognitiveServices.Speech` (NuGet) ist Bitcode nicht aktiviert. Falls Sie die Bitcodebibliothek für Ihre Anwendung benötigen, verwenden Sie `Microsoft.CognitiveServices.Speech.Xamarin.iOS` (NuGet) für das spezifische iOS-Projekt.
 
-1. Wählen Sie im Paketstatusbereich neben den Suchergebnissen alle Projekte aus: **helloworld**, **helloworld.Android**, **helloworld.iOS** und **helloworld.UWP**.
+1. Wählen Sie im Paketstatusbereich neben den Suchergebnissen alle Projekte aus: **helloworld** , **helloworld.Android** , **helloworld.iOS** und **helloworld.UWP** .
 
 1. Wählen Sie **Installieren** aus.
 
-1. Wählen Sie im Dialogfeld **Vorschau der Änderungen anzeigen** die Option **OK**.
+1. Wählen Sie im Dialogfeld **Vorschau der Änderungen anzeigen** die Option **OK** .
 
-1. Zeigen Sie im Dialogfeld **Zustimmung zur Lizenz** die Lizenz an, und wählen Sie dann **Ich stimme zu**. Installieren Sie die Speech SDK-Paketreferenz für alle Projekte. Nach erfolgreichem Abschluss der Installation wird für „helloworld.iOS“ unter Umständen die folgende Warnung angezeigt. Dies ist ein bekanntes Problem, das sich nicht auf die App-Funktionalität auswirken sollte.
+1. Zeigen Sie im Dialogfeld **Zustimmung zur Lizenz** die Lizenz an, und wählen Sie dann **Ich stimme zu** . Installieren Sie die Speech SDK-Paketreferenz für alle Projekte. Nach erfolgreichem Abschluss der Installation wird für „helloworld.iOS“ unter Umständen die folgende Warnung angezeigt. Dies ist ein bekanntes Problem, das sich nicht auf die App-Funktionalität auswirken sollte.
 
    > Der Verweis „C:\Users\Default\.nuget\packages\microsoft.cognitiveservices.speech\1.7.0\build\Xamarin.iOS\libMicrosoft.CognitiveServices.Speech.core.a“ konnte nicht aufgelöst werden. Ist dieser Verweis für Ihren Code erforderlich, treten unter Umständen Kompilierungsfehler auf.

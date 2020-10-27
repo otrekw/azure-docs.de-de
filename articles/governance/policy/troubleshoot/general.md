@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545538"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999895"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -52,11 +52,11 @@ Das Zuweisen einer neuen Richtlinie oder Initiative dauert etwa 30 Minuten. Neu
 
 Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen. Informationen zum Starten einer neuen Konformitätsprüfung mit Azure PowerShell oder der REST-API finden Sie unter [Bedarfsgesteuerter Auswertungsscan](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 
-### <a name="scenario-evaluation-not-as-expected"></a>Szenario: Auswertung nicht wie erwartet
+### <a name="scenario-compliance-not-as-expected"></a>Szenario: Compliance nicht wie erwartet
 
 #### <a name="issue"></a>Problem
 
-Eine Ressource weist nicht den Auswertungszustand (_Konform_ oder _Nicht konform_) auf, der für diese Ressource erwartet wird.
+Eine Ressource weist nicht den Auswertungszustand ( _Konform_ oder _Nicht konform_ ) auf, der für diese Ressource erwartet wird.
 
 #### <a name="cause"></a>Ursache
 
@@ -64,10 +64,21 @@ Die Ressource befindet sich nicht im richtigen Bereich für die Richtlinienzuwei
 
 #### <a name="resolution"></a>Lösung
 
-- Bei einer nicht konformen Ressource, bei der Konformität erwartet wurde, [ermitteln Sie zunächst die Ursachen für Nichtkonformität](../how-to/determine-non-compliance.md). Der Vergleich der Definition mit dem ausgewerteten Eigenschaftswert gibt an, warum eine Ressource nicht konform war.
-- Bei einer konformen Ressource, bei der Nichtkonformität erwartet wurde, lesen Sie die einzelnen Bedingungen der Richtliniendefinition, und werten Sie diese für die Ressourceneigenschaften aus. Überprüfen Sie, ob logische Operatoren die richtigen Bedingungen gruppieren und die Bedingungen nicht umgekehrt werden.
+Befolgen Sie diese Schritte zur Problembehandlung bei der Definition Ihrer Richtlinie:
 
-Wenn die Konformität für eine Richtlinienzuweisung mit `0/0` Ressourcen angezeigt wird, wurden keine Ressourcen für die Anwendung innerhalb des Zuweisungsbereichs ermittelt. Überprüfen Sie die Richtliniendefinition und den Zuweisungsbereich.
+1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen. Informationen zum Starten einer neuen Konformitätsprüfung mit Azure PowerShell oder der REST-API finden Sie unter [Bedarfsgesteuerter Auswertungsscan](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Überprüfen Sie, ob die Zuordnungsparameter und der Zuordnungsbereich ordnungsgemäß festgelegt sind.
+1. Überprüfen Sie den [Modus der Richtliniendefinition](../concepts/definition-structure.md#mode):
+   - Modus „all“ für alle Ressourcentypen
+   - Modus „indexed“, wenn bei der Richtliniendefinition eine Überprüfung auf Tags oder den Ort durchgeführt wird
+1. Überprüfen Sie, dass der Bereich der Ressource nicht [ausgeschlossen](../concepts/assignment-structure.md#excluded-scopes) oder [ausgenommen](../concepts/exemption-structure.md) ist.
+1. Wenn die Konformität für eine Richtlinienzuweisung mit `0/0` Ressourcen angezeigt wird, wurden keine Ressourcen für die Anwendung innerhalb des Zuweisungsbereichs ermittelt. Überprüfen Sie die Richtliniendefinition und den Zuweisungsbereich.
+1. Bei einer nicht konformen Ressource, bei der Konformität erwartet wurde, [überprüfen Sie die Ermittlung der Ursachen für Nichtkonformität](../how-to/determine-non-compliance.md). Der Vergleich der Definition mit dem ausgewerteten Eigenschaftswert gibt an, warum eine Ressource nicht konform war.
+   - Wenn der **Zielwert** falsch ist, überarbeiten Sie die Richtliniendefinition.
+   - Wenn der **aktuelle Wert** falsch ist, überprüfen Sie die Ressourcennutzlast mit `resources.azure.com`.
+1. Überprüfen Sie [Problembehandlung: Erzwingung nicht wie erwartet](#scenario-enforcement-not-as-expected) auf andere häufige Probleme und Lösungen.
+
+Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie** , um das Problem ordnungsgemäß weiterzuleiten.
 
 ### <a name="scenario-enforcement-not-as-expected"></a>Szenario: Erzwingung nicht wie erwartet
 
@@ -81,7 +92,18 @@ Für die Richtlinienzuweisung ist [enforcementMode](../concepts/assignment-struc
 
 #### <a name="resolution"></a>Lösung
 
-Setzen Sie **enforcementMode** auf _Enabled_. Durch diese Änderung kann Azure Policy eine Aktion für die Ressourcen in dieser Richtlinienzuweisung ausführen und Einträge an das Aktivitätsprotokoll senden. Wenn **enforcementMode** bereits aktiviert ist, finden Sie Informationen zu entsprechenden Maßnahmen unter [Auswertung nicht wie erwartet](#scenario-evaluation-not-as-expected).
+Befolgen Sie diese Schritte zur Problembehandlung bei der Erzwingung Ihrer Richtlinienzuweisung:
+
+1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen. Informationen zum Starten einer neuen Konformitätsprüfung mit Azure PowerShell oder der REST-API finden Sie unter [Bedarfsgesteuerter Auswertungsscan](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Prüfen Sie, ob die Zuweisungsparameter und der Zuweisungsbereich ordnungsgemäß festgelegt und **enforcementMode** auf _Enabled_ eingestellt ist. 
+1. Überprüfen Sie den [Modus der Richtliniendefinition](../concepts/definition-structure.md#mode):
+   - Modus „all“ für alle Ressourcentypen
+   - Modus „indexed“, wenn bei der Richtliniendefinition eine Überprüfung auf Tags oder den Ort durchgeführt wird
+1. Überprüfen Sie, dass der Bereich der Ressource nicht [ausgeschlossen](../concepts/assignment-structure.md#excluded-scopes) oder [ausgenommen](../concepts/exemption-structure.md) ist.
+1. Stellen Sie sicher, dass die Ressourcennutzlast mit der Richtlinienlogik übereinstimmt. Dies ist möglich, indem Sie eine [HAR-Ablaufverfolgung](../../../azure-portal/capture-browser-trace.md) erfassen oder die Eigenschaften der ARM-Vorlage überprüfen.
+1. Überprüfen Sie [Problembehandlung: Compliance nicht wie erwartet](#scenario-compliance-not-as-expected) auf andere häufige Probleme und Lösungen.
+
+Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie** , um das Problem ordnungsgemäß weiterzuleiten.
 
 ### <a name="scenario-denied-by-azure-policy"></a>Szenario: Von Azure Policy abgelehnt
 
@@ -148,10 +170,28 @@ Das Helm-Chart mit dem Namen `azure-policy-addon` wurde bereits installiert oder
 
 Befolgen Sie die Anweisungen zum [Entfernen des Azure Policy für Kubernetes-Add-Ons](../concepts/policy-for-kubernetes.md#remove-the-add-on), und führen Sie dann den Befehl `helm install azure-policy-addon` erneut aus.
 
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Szenario: Die vom Benutzer zugewiesenen Identitäten auf dem virtuellen Azure-Computer werden durch vom System zugewiesene, verwaltete Identitäten ersetzt.
+
+#### <a name="issue"></a>Problem
+
+Nach der Zuweisung von Richtlinieninitiativen für die Gastkonfiguration zu Überwachungseinstellungen innerhalb von Computern werden dem Computer zugewiesene verwaltete Identitäten, die dem Benutzer zugewiesen wurden, nicht mehr zugewiesen. Es wird nur eine vom System zugewiesene verwaltete Identität zugewiesen.
+
+#### <a name="cause"></a>Ursache
+
+Die Richtliniendefinitionen, die zuvor in den Definitionen von DeployIfNotExists für die Gastkonfiguration verwendet wurden, stellten sicher, dass dem Computer eine vom System zugewiesene Identität zugewiesen wird, entfernten aber auch vom Benutzer zugewiesene Identitätszuweisungen.
+
+#### <a name="resolution"></a>Lösung
+
+Die Definitionen, die zuvor dieses Problem verursacht haben, werden als \[Veraltet\] angezeigt und durch Richtliniendefinitionen ersetzt, die die Voraussetzungen verwalten, ohne die vom Benutzer zugewiesene verwaltete Identität zu entfernen. Ein manueller Schritt ist erforderlich. Löschen Sie alle vorhandenen Richtlinienzuweisungen, die mit \[Veraltet\] gekennzeichnet sind, und ersetzen Sie sie durch die aktualisierte erforderliche Richtlinieninitiative und Richtliniendefinitionen, die denselben Namen wie das Original aufweisen.
+
+Eine ausführliche Beschreibung finden Sie im folgenden Blogbeitrag:
+
+[Wichtige Änderung für Überwachungsrichtlinien für Gastkonfigurationen](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 - Erhalten Sie Antworten von Experten über [Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-policy.html).
 - Mit [@AzureSupport](https://twitter.com/azuresupport) verbinden – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit durch Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-- Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+- Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

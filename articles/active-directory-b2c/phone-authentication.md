@@ -56,7 +56,7 @@ Wenn Sie Ihre eigenen Zustimmungsinformationen hinzufügen möchten, passen Sie 
 
 ### <a name="phone-sign-up-experience"></a>Oberfläche für die Telefonregistrierung
 
-Wenn der Benutzer noch nicht über ein Konto für Ihre Anwendung verfügt, kann er durch Auswählen des Links **Jetzt registrieren** ein Konto erstellen. Daraufhin wird eine Registrierungsseite angezeigt. Auf dieser Seite muss der Benutzer sein **Land** auswählen, seine Telefonnummer eingeben und **Code senden** auswählen.
+Wenn der Benutzer noch nicht über ein Konto für Ihre Anwendung verfügt, kann er durch Auswählen des Links **Jetzt registrieren** ein Konto erstellen. Daraufhin wird eine Registrierungsseite angezeigt. Auf dieser Seite muss der Benutzer **Land/Region** auswählen, seine Telefonnummer eingeben und **Code senden** auswählen.
 
 ![Der Benutzer startet die Telefonregistrierung.](media/phone-authentication/phone-signup-start.png)
 
@@ -64,7 +64,7 @@ Ein Einmalprüfcode wird an die Telefonnummer des Benutzers gesendet. Der Benutz
 
 ![Überprüfung des Codes während der Telefonregistrierung durch den Benutzer](media/phone-authentication/phone-signup-verify-code.png)
 
- Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. den **Anzeigenamen**, den **Vornamen** und den **Nachnamen** (das Land und die Telefonnummer sind bereits eingefügt). Wenn der Benutzer eine andere Telefonnummer verwenden möchte, kann er **Nummer ändern** auswählen, um die Registrierung neu zu starten. Wenn der Benutzer fertig ist, wählt er **Weiter** aus.
+ Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. den **Anzeigenamen** , den **Vornamen** und den **Nachnamen** (das Land/die Region und die Telefonnummer sind bereits eingefügt). Wenn der Benutzer eine andere Telefonnummer verwenden möchte, kann er **Nummer ändern** auswählen, um die Registrierung neu zu starten. Wenn der Benutzer fertig ist, wählt er **Weiter** aus.
 
 ![Der Benutzer gibt zusätzliche Informationen an.](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -76,7 +76,7 @@ Nachdem der Code überprüft wurde, wählt der Benutzer die Option **Erstellen**
 
 ### <a name="phone-sign-in-experience"></a>Oberfläche für die Telefonanmeldung
 
-Wenn der Benutzer über ein bestehendes Konto mit der Telefonnummer als Bezeichner verfügt, gibt der Benutzer seine Telefonnummer ein und wählt **Weiter** aus. Der Benutzer bestätigt das Land und die Telefonnummer, indem er **Weiter** auswählt. Daraufhin wird ein Einmalprüfcode an die Telefonnummer des Benutzers gesendet. Der Benutzer gibt den Prüfcode ein und wählt **Weiter** aus, um sich anzumelden.
+Wenn der Benutzer über ein bestehendes Konto mit der Telefonnummer als Bezeichner verfügt, gibt der Benutzer seine Telefonnummer ein und wählt **Weiter** aus. Der Benutzer bestätigt das Land/die Region und die Telefonnummer, indem er **Weiter** auswählt. Daraufhin wird ein Einmalprüfcode an die Telefonnummer des Benutzers gesendet. Der Benutzer gibt den Prüfcode ein und wählt **Weiter** aus, um sich anzumelden.
 
 ![Benutzeroberfläche für die Telefonanmeldung](media/phone-authentication/phone-signin-screens.png)
 
@@ -108,7 +108,7 @@ In den folgenden Schritten wird davon ausgegangen, dass Sie die [Voraussetzungen
 
 1. Ersetzen Sie in jeder Datei die Zeichenfolge `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten. Wenn der Name des B2C-Mandanten z.B. *contosob2c* lautet, werden alle Instanzen von `yourtenant.onmicrosoft.com` zu `contosob2c.onmicrosoft.com`.
 
-1. Führen Sie die Schritte im Abschnitt [Hinzufügen von Anwendungs-IDs zur benutzerdefinierten Richtlinie](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) von [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Aktualisieren Sie in diesem Fall `/phone-number-passwordless/`**`Phone_Email_Base.xml`** mit den **Anwendungs-IDs (Client-IDs)** der beiden Anwendungen, die Sie beim Abschließen der Voraussetzungen registriert haben: *IdentityExperienceFramework* und *ProxyIdentityExperienceFramework*.
+1. Führen Sie die Schritte im Abschnitt [Hinzufügen von Anwendungs-IDs zur benutzerdefinierten Richtlinie](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) von [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Aktualisieren Sie in diesem Fall `/phone-number-passwordless/`**`Phone_Email_Base.xml`** mit den **Anwendungs-IDs (Client-IDs)** der beiden Anwendungen, die Sie beim Abschließen der Voraussetzungen registriert haben: *IdentityExperienceFramework* und *ProxyIdentityExperienceFramework* .
 
 ## <a name="upload-the-policy-files"></a>Hochladen der Richtliniendateien
 

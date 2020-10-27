@@ -1,23 +1,23 @@
 ---
 title: Details der Einhaltung gesetzlicher Bestimmungen für Azure-Sicherheitsvergleichstest
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest. Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ac37714aa18806d3eddbb5cf03c922754483f85
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932174"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311460"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest.
 
 Der folgende Artikel enthält Details dazu, wie die integrierte Azure Policy-Initiative zur Einhaltung gesetzlicher Bestimmungen den **Compliancebereichen** und **Steuerungen** im Azure-Sicherheitsvergleichstest entspricht.
 Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [Azure-Sicherheitsvergleichstest](../../../security/benchmarks/overview.md). Grundlegendes zum _Besitzer_ finden Sie unter [Azure Policy-Richtliniendefinition](../concepts/definition-structure.md#type) und [Gemeinsame Verantwortung in der Cloud](../../../security/fundamentals/shared-responsibility.md).
 
-Es gibt die folgenden Zuordnungen zu den Steuerungen im **Vergleichstest für die Azure-Sicherheit**. Über den rechten Navigationsbereich können Sie direkt zu einem bestimmten **Steuerungsbereich** springen. Viele der Steuerungen werden über die Definition einer [Azure Policy](../overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiativendefinition öffnen Sie **Policy** im Azure-Portal und wählen dann die Seite **Definitionen** aus.
-Suchen Sie anschließend die integrierte Initiativendefinition zur Einhaltung der gesetzlichen Bestimmungen gemäß **Azure-Sicherheitsvergleichstest**.
+Es gibt die folgenden Zuordnungen zu den Steuerungen im **Vergleichstest für die Azure-Sicherheit** . Über den rechten Navigationsbereich können Sie direkt zu einem bestimmten **Steuerungsbereich** springen. Viele der Steuerungen werden über die Definition einer [Azure Policy](../overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiativendefinition öffnen Sie **Policy** im Azure-Portal und wählen dann die Seite **Definitionen** aus.
+Suchen Sie anschließend die integrierte Initiativendefinition zur Einhaltung der gesetzlichen Bestimmungen gemäß **Azure-Sicherheitsvergleichstest** .
 
 Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen Azure-Sicherheitsvergleichstest](../../blueprints/samples/azure-security-benchmark.md) bereitgestellt.
 
@@ -29,7 +29,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network
 
-**ID:** Azure-Sicherheitsvergleichstest 1.1 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 1.1 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -58,7 +58,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von VNETs, Subnetzen und Netzwerkkarten (NICs)
 
-**ID:** Azure-Sicherheitsvergleichstest 1.2 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 1.2 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="protect-critical-web-applications"></a>Schützen kritischer Webanwendungen
 
-**ID:** Azure-Sicherheitsvergleichstest 1.3 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 1.3 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>Ablehnen der Kommunikation mit bekannten bösartigen IP-Adressen
 
-**ID:** Azure-Sicherheitsvergleichstest 1.4 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 1.4 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="record-network-packets-and-flow-logs"></a>Aufzeichnen von Netzwerkpaketen und Flussprotokollen
 
-**ID:** Azure-Sicherheitsvergleichstest 1.5 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 1.5 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>Verwenden automatisierter Tools zum Überwachen von Netzwerkressourcenkonfigurationen und Erkennen von Änderungen
 
-**ID:** Azure-Sicherheitsvergleichstest 1.11 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 1.11 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,7 +115,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="configure-central-security-log-management"></a>Konfigurieren der zentralen Sicherheitsprotokollverwaltung
 
-**ID:** Azure-Sicherheitsvergleichstest 2.2 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 2.2 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -128,7 +128,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
 
-**ID:** Azure-Sicherheitsvergleichstest 2.3 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 2.3 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,7 +150,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="collect-security-logs-from-operating-systems"></a>Erfassen von Sicherheitsprotokollen von Betriebssystemen
 
-**ID:** Azure-Sicherheitsvergleichstest 2.4 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 2.4 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -161,7 +161,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="configure-security-log-storage-retention"></a>Konfigurieren der Sicherheitsprotokoll-Aufbewahrungsdauer im Speicher
 
-**ID:** Azure-Sicherheitsvergleichstest 2.5 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 2.5 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>Aktivieren von Warnungen für anormale Aktivitäten
 
-**ID:** Azure-Sicherheitsvergleichstest 2.7 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 2.7 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="centralize-anti-malware-logging"></a>Zentralisieren der Antischadsoftwareprotokollierung
 
-**ID:** Azure-Sicherheitsvergleichstest 2.8 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 2.8 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>Verwalten eines Bestands von Administratorkonten
 
-**ID:** Azure-Sicherheitsvergleichstest 3.1 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 3.1 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,7 +201,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-dedicated-administrative-accounts"></a>Verwenden dedizierter Administratorkonten
 
-**ID:** Azure-Sicherheitsvergleichstest 3.3 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 3.3 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>Verwenden der mehrstufigen Authentifizierung für den gesamten Azure Active Directory-basierten Zugriff
 
-**ID:** Azure-Sicherheitsvergleichstest 3.5 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 3.5 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-azure-active-directory"></a>Verwenden von Azure Active Directory
 
-**ID:** Azure-Sicherheitsvergleichstest 3.9 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 3.9 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
-**ID:** Azure-Sicherheitsvergleichstest 3.10 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 3.10 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>Verwalten eines Bestands an vertraulichen Informationen
 
-**ID:** Azure-Sicherheitsvergleichstest 4.1 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 4.1 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**ID:** Azure-Sicherheitsvergleichstest 4.4 **Besitz**: Shared
+**ID:** Azure-Sicherheitsvergleichstest 4.4 **Besitz** : Shared
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>Verwenden eines aktiven Ermittlungstools zur Bestimmung vertraulicher Daten
 
-**ID:** Azure-Sicherheitsvergleichstest 4.5 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 4.5 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**ID:** Azure-Sicherheitsvergleichstest 4.6 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 4.6 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>Verschlüsseln vertraulicher, ruhender Informationen
 
-**ID:** Azure-Sicherheitsvergleichstest 4.8 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 4.8 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 
-**ID:** Azure-Sicherheitsvergleichstest 4.9 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 4.9 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
-**ID:** Azure-Sicherheitsvergleichstest 5.1 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 5.1 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 
-**ID:** Azure-Sicherheitsvergleichstest 5.2 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 5.2 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,23 +336,23 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**ID:** Azure-Sicherheitsvergleichstest 5.3 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 5.3 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Java-Version für Funktions-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Java-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
-|[Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Für die PHP-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle PHP-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Für die PHP-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle PHP-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
-|[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für Funktions-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Java-Version für Funktions-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Java-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Für die PHP-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle PHP-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Für die PHP-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle PHP-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für Funktions-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt zurzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 |[Für Kubernetes Service muss ein Upgrade auf eine Kubernetes-Version ohne Sicherheitsrisiko durchgeführt werden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |Führen Sie ein Upgrade Ihres Kubernetes Service-Clusters auf eine höhere Kubernetes-Version durch, um es vor bekannten Sicherheitsrisiken in Ihrer aktuellen Kubernetes-Version zu schützen. Das Sicherheitsrisiko „CVE-2019-9946“ wurde in den Kubernetes-Versionen 1.11.9+, 1.12.7+, 1.13.5+ und 1.14.0+ gepatcht. |Audit, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json) |
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>Verwenden eines Risikobewertungsprozesses, um die Behebung von erkannten Sicherheitsrisiken zu priorisieren
 
-**ID:** Azure-Sicherheitsvergleichstest 5.5 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 5.5 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -366,7 +366,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-only-approved-applications"></a>Ausschließliche Verwendung genehmigter Anwendungen
 
-**ID:** Azure-Sicherheitsvergleichstest 6.8 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 6.8 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-only-approved-azure-services"></a>Ausschließliche Verwendung genehmigter Azure-Dienste
 
-**ID:** Azure-Sicherheitsvergleichstest 6.9 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 6.9 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="implement-approved-application-list"></a>Implementieren einer Liste genehmigter Anwendungen
 
-**ID:** Azure-Sicherheitsvergleichstest 6.10 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 6.10 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="maintain-secure-operating-system-configurations"></a>Verwalten sicherer Betriebssystemkonfigurationen
 
-**ID:** Azure-Sicherheitsvergleichstest 7.4 **Besitz**: Shared
+**ID:** Azure-Sicherheitsvergleichstest 7.4 **Besitz** : Shared
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**ID:** Azure-Sicherheitsvergleichstest 7.10 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 7.10 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,7 +413,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="manage-azure-secrets-securely"></a>Sicheres Verwalten von Azure-Geheimnissen
 
-**ID:** Azure-Sicherheitsvergleichstest 7.11 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 7.11 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -421,7 +421,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="manage-identities-securely-and-automatically"></a>Sicheres und automatisches Verwalten von Identitäten 
 
-**ID:** Azure-Sicherheitsvergleichstest 7.12 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 7.12 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>Verwenden einer zentral verwalteten Antischadsoftware
 
-**ID:** Azure-Sicherheitsvergleichstest 8.1 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 8.1 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>Sicherstellen der Aktualisierung von Antischadsoftware und Signaturen
 
-**ID:** Azure-Sicherheitsvergleichstest 8.3 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 8.3 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="ensure-regular-automated-back-ups"></a>Sicherstellen regelmäßiger automatisierter Sicherungen
 
-**ID:** Azure-Sicherheitsvergleichstest 9.1 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 9.1 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>Durchführen vollständiger Systemsicherungen und Sichern aller von Kunden verwalteten Schlüssel
 
-**ID:** Azure-Sicherheitsvergleichstest 9.2**Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 9.2 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,7 +476,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>Sicherstellen des Schutzes von Sicherungen und von kundenseitig verwalteten Schlüsseln
 
-**ID:** Azure-Sicherheitsvergleichstest 9.4 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 9.4 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -486,7 +486,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für einen A
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>Angeben von Kontaktdaten für Sicherheitsvorfälle und Konfigurieren von Warnungsbenachrichtigungen für Sicherheitsvorfälle
 
-**ID:** Azure-Sicherheitsvergleichstest 10.4 **Besitz**: Kunde
+**ID:** Azure-Sicherheitsvergleichstest 10.4 **Besitz** : Kunde
 
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

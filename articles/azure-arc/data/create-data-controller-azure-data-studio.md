@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273142"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310946"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Erstellen eines Datencontrollers in Azure Data Studio
 
@@ -25,7 +25,7 @@ Sie können einen Datencontroller mit Azure Data Studio erstellen, indem Sie den
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie benötigen Zugriff auf einen Kubernetes-Cluster und müssen die kubeconfig-Datei so konfigurieren, dass sie auf den Kubernetes-Cluster verweist, in dem Sie die Bereitstellung vornehmen möchten.
-- Sie müssen die [Clienttools installieren](install-client-tools.md), einschließlich **Azure Data Studio** und der Azure Data Studio-Erweiterungen namens **Azure Arc** und **Azure Data CLI**.
+- Sie müssen die [Clienttools installieren](install-client-tools.md), einschließlich **Azure Data Studio** und der Azure Data Studio-Erweiterungen namens **Azure Arc** und **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
 - Sie müssen sich in Azure Data Studio bei Azure anmelden.  Drücken Sie dazu STRG/BEFEHL+UMSCHALT+P, um das Fenster für den Befehlstext zu öffnen, und geben Sie **Azure** ein.  Wählen Sie **Azure: Sign in** (Azure: Anmelden) aus.   Klicken Sie im eingeblendeten Bereich auf das Plussymbol (+) oben rechts, um ein Azure-Konto hinzuzufügen.
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>Erstellen eines Azure Arc-Datencontrollers mit dem Bereitstellungs-Assistenten
@@ -34,10 +34,10 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Bereitstellungs-Assisten
 
 1. Klicken Sie in Azure Data Studio im linken Navigationsbereich auf die Registerkarte „Verbindungen“.
 2. Klicken Sie oben im Bereich „Verbindungen“ auf die Schaltfläche mit den drei Auslassungspunkten **...** , und wählen Sie **Neue Bereitstellung** aus.
-3. Wählen Sie im Assistenten für neue Bereitstellungen **Azure Arc Data Controller** (Azure Arc-Datencontroller) aus, aktivieren Sie das Kontrollkästchen für die Zustimmung zur Lizenz, und klicken Sie dann unten auf die Schaltfläche **Auswählen**.
-4. Verwenden Sie die standardmäßige kubeconfig-Datei, oder wählen Sie eine andere aus.  Klicken Sie auf **Weiter**.
-5. Wählen Sie einen Kubernetes-Clusterkontext aus. Klicken Sie auf **Weiter**.
-6. Wählen Sie abhängig von Ihrem Kubernetes-Zielcluster eine Datei für das Bereitstellungskonfigurationsprofil aus. **Klicken Sie auf „Weiter“**.
+3. Wählen Sie im Assistenten für neue Bereitstellungen **Azure Arc Data Controller** (Azure Arc-Datencontroller) aus, aktivieren Sie das Kontrollkästchen für die Zustimmung zur Lizenz, und klicken Sie dann unten auf die Schaltfläche **Auswählen** .
+4. Verwenden Sie die standardmäßige kubeconfig-Datei, oder wählen Sie eine andere aus.  Klicken Sie auf **Weiter** .
+5. Wählen Sie einen Kubernetes-Clusterkontext aus. Klicken Sie auf **Weiter** .
+6. Wählen Sie abhängig von Ihrem Kubernetes-Zielcluster eine Datei für das Bereitstellungskonfigurationsprofil aus. **Klicken Sie auf „Weiter“** .
 8. Wählen Sie das gewünschte Abonnement und die gewünschte Ressourcengruppe aus.
 9. Geben Sie einen Namen für den Datencontroller und für den Namespace ein, in dem der Datencontroller erstellt wird.  
 
@@ -57,10 +57,10 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Bereitstellungs-Assisten
 > [!NOTE]
 > Das Kennwort muss mindestens 8 Zeichen umfassen.
 
-1.  Klicken Sie auf **Weiter**.
-2.  Überprüfen Sie dieses, und klicken Sie auf **Skript in Notebook schreiben**.
-3.  **Überprüfen Sie das generierte Notebook**.  Nehmen Sie alle erforderlichen Änderungen vor, z. B. an Namen von Speicherklassen oder Diensttypen.
-4.  Klicken Sie oben im Notebook auf **Alle ausführen**.
+1.  Klicken Sie auf **Weiter** .
+2.  Überprüfen Sie dieses, und klicken Sie auf **Skript in Notebook schreiben** .
+3.  **Überprüfen Sie das generierte Notebook** .  Nehmen Sie alle erforderlichen Änderungen vor, z. B. an Namen von Speicherklassen oder Diensttypen.
+4.  Klicken Sie oben im Notebook auf **Alle ausführen** .
 
 ## <a name="monitoring-the-creation-status"></a>Überwachen des Erstellungsstatus
 

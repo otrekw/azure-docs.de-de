@@ -1,23 +1,23 @@
 ---
 title: Installieren und Verwenden des Azure-IoT-Explorers | Microsoft-Dokumentation
-description: Installieren Sie das Tool Azure IoT-Explorer zum Interagieren mit den IoT Plug & Play-Geräten (Vorschau), die mit IoT Hub verbunden sind.
+description: Installieren Sie das Azure IoT-Explorer-Tool, und verwenden Sie es, um mit den mit dem IoT-Hub verbundenen IoT Plug & Play-Geräten zu interagieren.
 author: rido-min
 ms.author: rmpablos
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351988"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019153"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Installieren und Verwenden des Azure-IoT-Explorers
 
-Der Azure-IoT-Explorer ist ein grafisches Tool, über das Sie mit Ihren Geräten in IoT Plug & Play (Vorschau) interagieren und diese Geräte testen können. Nach der Installation des Tools auf Ihrem lokalen Computer können Sie es zum Herstellen einer Verbindung mit einem Hub verwenden. Sie können mit diesem Tool die vom Gerät gesendeten Telemetriedaten anzeigen, mit Geräteeigenschaften arbeiten und Befehle aufrufen.
+Der Azure-IoT-Explorer ist ein grafisches Tool, über das Sie mit Ihren Geräten in IoT Plug & Play interagieren und diese Geräte testen können. Nach der Installation des Tools auf Ihrem lokalen Computer können Sie es zum Herstellen einer Verbindung mit einem Hub verwenden. Sie können mit diesem Tool die vom Gerät gesendeten Telemetriedaten anzeigen, mit Geräteeigenschaften arbeiten und Befehle aufrufen.
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -29,43 +29,39 @@ In diesem Artikel lernen Sie Folgendes:
 Um den Azure-IoT-Explorer zu verwenden, benötigen Sie Folgendes:
 
 - Einen Azure IoT Hub. Es gibt viele Möglichkeiten, um einen IoT-Hub zu Ihrem Azure-Abonnement hinzuzufügen, z. B. das [Erstellen eines IoT-Hubs mit der Azure-Befehlszeilenschnittstelle](../iot-hub/iot-hub-create-using-cli.md). Sie benötigen die Verbindungszeichenfolge für den IoT-Hub, um den Azure-IoT-Explorer auszuführen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-- Ein in Ihrem IoT-Hub registriertes Gerät. Sie können den folgenden Azure CLI-Befehl verwenden, um ein Gerät zu registrieren. Ersetzen Sie die Platzhalter `{YourIoTHubName}` und `{YourDeviceID}` durch Ihre Werte:
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- Ein in Ihrem IoT-Hub registriertes Gerät. Sie können IoT-Explorer verwenden, um Geräteregistrierungen in Ihrem IoT-Hub zu erstellen und zu verwalten.
 
 ## <a name="install-azure-iot-explorer"></a>Installieren des Azure-IoT-Explorers
 
 Navigieren Sie auf GitHub zu den [Releases von Azure-IoT-Explorer](https://github.com/Azure/azure-iot-explorer/releases), und erweitern Sie die Liste der Assets, um die neueste Version anzuzeigen. Laden Sie die neueste Version der Anwendung herunter, und installieren Sie sie.
 
 >[!Important]
->Ab Version 0.11.0 unterstützt IoT-Explorer nur das Vorschaurelease von IoT Plug & Play (Mai 2020). Wenn Sie die Features nutzen möchten, die im vorherigen Vorschaurelease von August 2019 zur Verfügung stehen, müssen Sie eine 0.10.x-Version installieren.
+> Führen Sie ein Update auf Version 0.13.x aus, um Modelle aus Repositorys aufzulösen, die auf [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) basieren.
 
 ## <a name="use-azure-iot-explorer"></a>Verwenden des Azure-IoT-Explorers
 
-Sie können entweder ein eigenes Gerät verbinden oder eins unserer simulierten Beispielgeräte verwenden. Befolgen Sie [diese Anweisungen](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples), um das Beispiel für ein simuliertes Gerät auszuführen.
+Sie können als Gerät entweder Ihr eigenes Gerät anschließen oder eins der simulierten Beispielgeräte verwenden. Befolgen Sie [diese Anweisungen](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples), um das Beispiel für ein simuliertes Gerät auszuführen.
 
 ### <a name="connect-to-your-hub"></a>Herstellen einer Verbindung mit Ihrem Hub
 
-Wenn Sie den Azure-IoT-Explorer zum ersten Mal ausführen, werden Sie aufgefordert, die Verbindungszeichenfolge für den IoT-Hub einzugeben. Nachdem Sie die Verbindungszeichenfolge eingegeben haben, klicken Sie auf **Verbinden**. Sie können die Einstellungen des Tools verwenden, um durch Aktualisieren der Verbindungszeichenfolge zu einem anderen IoT-Hub zu wechseln.
+Wenn Sie den Azure-IoT-Explorer zum ersten Mal ausführen, werden Sie aufgefordert, die Verbindungszeichenfolge für den IoT-Hub einzugeben. Nachdem Sie die Verbindungszeichenfolge eingegeben haben, klicken Sie auf **Verbinden** . Sie können die Einstellungen des Tools verwenden, um durch Aktualisieren der Verbindungszeichenfolge zu einem anderen IoT-Hub zu wechseln.
 
 Die Modelldefinition für ein IoT Plug & Play-Gerät wird im öffentlichen Repository, auf dem verbundenen Gerät oder in einem lokalen Ordner gespeichert. Standardmäßig sucht das Tool im öffentlichen Repository und auf Ihrem verbundenen Gerät nach Ihrer Modelldefinition. In den **Einstellungen** können Sie Quellen hinzufügen oder entfernen oder die Priorität der Quellen konfigurieren:
 
 So fügen Sie eine Quelle hinzu:
 
-1. Wechseln Sie zu **Start/IoT Plug & Play-Einstellungen**.
+1. Wechseln Sie zu **Start/IoT Plug & Play-Einstellungen** .
 2. Wählen Sie **Hinzufügen** und dann Ihre Quelle aus einem Repository oder lokalen Ordner aus.
 
 So entfernen Sie eine Quelle:
 
-1. Wechseln Sie zu **Start/IoT Plug & Play-Einstellungen**.
+1. Wechseln Sie zu **Start/IoT Plug & Play-Einstellungen** .
 2. Suchen Sie die Quelle, die Sie entfernen möchten.
-3. Klicken Sie auf **X**, um sie zu entfernen.
+3. Klicken Sie auf **X** , um sie zu entfernen.
 
 Ändern der Prioritäten der Quellen:
 
-Sie können eine Modelldefinitionsquelle per Drag & Drop an eine andere Position in der Rangliste ziehen. 
+Sie können eine Modelldefinitionsquelle per Drag & Drop an eine andere Position in der Rangliste ziehen.
 
 ### <a name="view-devices"></a>Anzeigen von Geräten
 
@@ -78,11 +74,11 @@ Auf der Listenseite **Geräte** können Sie folgende Aktionen ausführen:
 
 ## <a name="interact-with-a-device"></a>Interagieren mit einem Gerät
 
-Wählen Sie auf der Seite **Geräte** einen Wert in der Spalte **Geräte-ID** aus, um die Detailseite für das registrierte Gerät anzuzeigen. Für jedes Gerät gibt es zwei Abschnitte: **Gerät** und **Digitaler Zwilling**.
+Wählen Sie auf der Seite **Geräte** einen Wert in der Spalte **Geräte-ID** aus, um die Detailseite für das registrierte Gerät anzuzeigen. Für jedes Gerät gibt es zwei Abschnitte: **Gerät** und **Digitaler Zwilling** .
 
 ### <a name="device"></a>Sicherungsmedium
 
-Dieser Abschnitt enthält die Registerkarten **Geräteidentität**, **Gerätezwilling**, **Telemetrie**, **Direkte Methode**, **Cloud-zu-Gerät-Nachricht** und **Modulkennung**.
+Dieser Abschnitt enthält die Registerkarten **Geräteidentität** , **Gerätezwilling** , **Telemetrie** , **Direkte Methode** , **Cloud-zu-Gerät-Nachricht** und **Modulkennung** .
 
 - Sie können die Informationen zur [Geräteidentität](../iot-hub/iot-hub-devguide-identity-registry.md) auf der Registerkarte **Geräteidentität** anzeigen und aktualisieren.
 - Über die Registerkarte **Gerätezwilling** können Sie auf Informationen zum [Gerätezwilling](../iot-hub/iot-hub-devguide-device-twins.md) zugreifen.
@@ -103,7 +99,7 @@ Auf der Seite **Komponente** können Sie die schreibgeschützten Eigenschaften a
 
 #### <a name="properties"></a>Eigenschaften
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Anzeigen von Eigenschaften in Azure IoT-Explorer":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Anzeigen von Komponenten im Azure IoT-Explorer":::
 
 Auf der Registerkarte **Eigenschaften (schreibgeschützt)** können Sie die in einer Schnittstelle definierten schreibgeschützten Eigenschaften anzeigen. Auf der Registerkarte **Eigenschaften (schreibbar)** können Sie die in einer Schnittstelle definierten schreibbaren Eigenschaften mit den folgenden Schritten aktualisieren:
 
@@ -113,11 +109,11 @@ Auf der Registerkarte **Eigenschaften (schreibgeschützt)** können Sie die in e
 1. Sehen Sie sich eine Vorschau der Nutzlast an, die an das Gerät gesendet wird.
 1. Übermitteln Sie die Änderung.
 
-Nachdem Sie eine Änderung übermittelt haben, können Sie den Aktualisierungsstatus nachverfolgen: **Wird synchronisiert**, **Erfolg** oder **Fehler**. Wenn die Synchronisierung abgeschlossen ist, wird der neue Wert der Eigenschaft in der Spalte **Gemeldete Eigenschaft** angezeigt. Falls Sie vor Beendigung der Synchronisierung zu anderen Seiten navigieren, werden Sie vom Tool benachrichtigt, wenn die Aktualisierung abgeschlossen ist. Sie können sich den Benachrichtigungsverlauf auch in der Mitteilungszentrale des Tools ansehen.
+Nachdem Sie eine Änderung übermittelt haben, können Sie den Aktualisierungsstatus nachverfolgen: **Wird synchronisiert** , **Erfolg** oder **Fehler** . Wenn die Synchronisierung abgeschlossen ist, wird der neue Wert der Eigenschaft in der Spalte **Gemeldete Eigenschaft** angezeigt. Falls Sie vor Beendigung der Synchronisierung zu anderen Seiten navigieren, werden Sie vom Tool benachrichtigt, wenn die Aktualisierung abgeschlossen ist. Sie können sich den Benachrichtigungsverlauf auch in der Mitteilungszentrale des Tools ansehen.
 
 #### <a name="commands"></a>Befehle
 
-Zum Senden eines Befehls an ein Gerät wechseln Sie zur Registerkarte **Befehle**:
+Zum Senden eines Befehls an ein Gerät wechseln Sie zur Registerkarte **Befehle** :
 
 1. Erweitern Sie in der Befehlsliste den Befehl, den Sie auslösen möchten.
 1. Geben Sie alle erforderlichen Werte für den Befehl ein.
@@ -126,8 +122,18 @@ Zum Senden eines Befehls an ein Gerät wechseln Sie zur Registerkarte **Befehle*
 
 #### <a name="telemetry"></a>Telemetrie
 
-Zum Anzeigen der Telemetrie für die ausgewählte Schnittstelle wechseln Sie zu deren Registerkarte **Telemetrie**.
+Zum Anzeigen der Telemetrie für die ausgewählte Schnittstelle wechseln Sie zu deren Registerkarte **Telemetrie** .
+
+#### <a name="known-issues"></a>Bekannte Probleme
+
+- IoT Edge-Unterstützung: Die aktuelle Version zeigt IoT Edge-Geräte nicht in der Geräteliste an.
+- Funktionen der DTDL-Sprache: IoT Explorer 0.12.x ist nicht vollständig DTDL v2-kompatibel, unter anderem werden die folgenden Funktionen nicht unterstützt:
+  - Vererbung von Schnittstellen mit `extends`
+  - Zuordnung in Zuordnung (verschachtelte Zuordnung)
+  - Arraytyp
+  - Benutzerdefinierte Schemas
+  - Benutzerdefinierte semantische Typen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie den Azure-IoT-Explorer installieren und verwenden, um mit Ihren IoT Plug & Play-Geräten zu interagieren. Im nächsten Schritt sollten Sie sich darüber informieren, wie die [Azure CLI IoT Plug & Play-Befehle](./howto-use-iot-pnp-cli.md) verwendet werden.
+In diesem Artikel haben Sie erfahren, wie Sie den Azure-IoT-Explorer installieren und verwenden, um mit Ihren IoT Plug & Play-Geräten zu interagieren. Ein Vorschlag für den nächsten Schritt ist, das [Installieren und Verwenden des DTDL-Erstellungstools](howto-use-dtdl-authoring-tools.md) zu lernen.

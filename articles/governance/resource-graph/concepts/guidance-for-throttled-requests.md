@@ -1,15 +1,15 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
 description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006005"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056173"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -132,7 +132,7 @@ Aufgrund der Art und Weise, wie die Drosselung erzwungen wird, werden gestaffelt
   |---------------------|-----|------|-------|-------|
   | Zeitintervall (in Sekunden) | 0-5 | 5-10 | 10-15 | 15 – 20 |
 
-Im Folgenden finden Sie ein Beispiel für die Verwendung von Drosselungsheadern beim Abfragen von Azure Resource Graph:
+Hier sehen Sie ein Beispiel für die Verwendung von Drosselungsheadern beim Abfragen von Azure Resource Graph:
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Gleichzeitige Abfrage
 
-Auch wenn die Gruppierung gegenüber der Parallelisierung empfohlen wird, gibt es Situationen, in denen Abfragen nicht einfach gruppiert werden können. In diesen Fällen sollten Sie Azure Resource Graph abfragen, indem Sie mehrere Abfragen parallel senden. Nachfolgend sehen Sie ein auf den Drosselungsheadern in solchen Szenarios basierendes Beispiel für das _Backoff_:
+Auch wenn die Gruppierung gegenüber der Parallelisierung empfohlen wird, gibt es Situationen, in denen Abfragen nicht einfach gruppiert werden können. In diesen Fällen sollten Sie Azure Resource Graph abfragen, indem Sie mehrere Abfragen parallel senden. Nachfolgend sehen Sie ein auf den Drosselungsheadern in solchen Szenarios basierendes Beispiel für das _Backoff_ :
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1000 Eintr
 
 - Azure CLI/Azure PowerShell
 
-  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage bis zu fünf Abfragekontingente verwendet:
+  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage etwa bis zu fünf Abfragekontingente verwendet:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

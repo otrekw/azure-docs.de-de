@@ -1,35 +1,37 @@
 ---
 title: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
-description: Erfahren Sie, wie Sie mit Custom Vision ein Containermodell erstellen können, mit dem ein Spielzeug-LKW erkannt wird. Stellen Sie mithilfe der KI-Erweiterbarkeitsfunktion von Live Video Analytics in IoT Edge (LVA) das Modell auf Edge-Ebene bereit, um in einem Livevideostream Spielzeug-LKW zu erkennen.
+description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell erstellen können, mit dem ein Spielzeug-LKW erkannt wird. Stellen Sie mithilfe der KI-Erweiterbarkeitsfunktion von Azure Live Video Analytics in Azure IoT Edge das Modell auf Edge-Ebene bereit, um in einem Livevideostream Spielzeug-LKW zu erkennen.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016789"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171501"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
 
-In diesem Tutorial erfahren Sie, wie Sie mit [Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) ein Containermodell erstellen, mit dem ein Spielzeug-LKW erkannt wird, und mithilfe der [KI-Erweiterbarkeitsfunktion](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model) von Live Video Analytics in IoT Edge das Modell auf Edge-Ebene bereitstellen, um in einem Livevideostream Spielzeug-LKW zu erkennen.
+In diesem Tutorial erfahren Sie, wie Sie mit [Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) ein Containermodell erstellen, mit dem ein Spielzeug-LKW erkannt wird, und mithilfe der [KI-Erweiterbarkeitsfunktion](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model) von Azure Live Video Analytics in Azure IoT Edge das Modell auf Edge-Ebene bereitstellen, um in einem Livevideostream Spielzeug-LKW zu erkennen.
 
-Wir zeigen Ihnen, wie Sie Custom Vision – womit sich ohne Kenntnisse zu Data Science, ML oder KI Modelle für maschinelles Sehen erstellen und trainieren lassen – in Kombination mit den Funktionen von Live Video Analytics verwenden können, um ganz einfach ein benutzerdefiniertes Modell als Container auf Edge-Ebene bereitzustellen und einen simulierten Livevideofeed zu analysieren. In diesem Tutorial wird eine Azure-VM als IoT Edge-Gerät verwendet. Es basiert auf Beispielcode, der in C# geschrieben ist, und baut auf der Schnellstartanleitung [Erkennen von Bewegung und Ausgeben von Ereignissen](detect-motion-emit-events-quickstart.md) auf.
+Wir zeigen Ihnen, wie Sie die Leistungsfähigkeit von Custom Vision nutzen, um ein Modell für maschinelles Sehen zu erstellen und zu trainieren, indem Sie einige Bilder heraufladen und mit Bezeichnungen versehen. Sie benötigen keinerlei Wissen über Data Science, maschinelles Lernen oder KI. Außerdem lernen Sie die Funktionen von Live Video Analytics kennen, mit denen Sie auf einfache Weise ein benutzerdefiniertes Modell als Container auf dem Edgecomputer bereitstellen und einen simulierten Livevideofeed analysieren können.
+
+In diesem Tutorial wird ein virtueller Azure-Computer (VM) als IoT Edge-Gerät verwendet, mit in C# geschriebenem Beispielcode. Die Informationen in diesem Tutorial bauen auf der Schnellstartanleitung [Erkennen von Bewegung und Ausgeben von Ereignissen](detect-motion-emit-events-quickstart.md) auf.
 
 Das Tutorial veranschaulicht folgende Vorgehensweisen:
 
 > [!div class="checklist"]
 > * Einrichten der relevanten Ressourcen
-> * Erstellen eines Custom Vision-Modells in der Cloud, um Spielzeug-LKW zu erkennen und auf Edge-Ebene bereitzustellen
-> * Erstellen und Bereitstellen eines Mediengraphen mit HTTP-Erweiterung für das Custom Vision-Modell
+> * Erstellen eines Custom Vision-Modells in der Cloud, um Spielzeug-LKW zu erkennen und auf Edge-Ebene bereitzustellen.
+> * Erstellen und Bereitstellen eines Mediengraphen mit einer HTTP-Erweiterung für das Custom Vision-Modell
 > * Ausführen des Beispielcodes
 > * Überprüfen und Interpretieren der Ergebnisse
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung  
+## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung
 
-Es empfiehlt sich, die folgenden Artikel zu lesen, bevor Sie beginnen: 
+Lesen Sie die folgenden Artikel, bevor Sie beginnen:
 
 * [Übersicht zu Live Video Analytics in IoT Edge](overview.md)
 * [Übersicht über Azure Custom Vision](../../cognitive-services/custom-vision-service/overview.md) (in englischer Sprache)
@@ -56,35 +58,36 @@ Dies sind die Voraussetzungen für dieses Tutorial:
 
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
-In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert. In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-LKW zu erkennen und entsprechende Rückschlussereignisse in IoT Edge Hub zu veröffentlichen.
+In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Wählen Sie **STRG+N** aus, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert. In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-LKW zu erkennen und entsprechende Rückschlussereignisse auf dem IoT Edge Hub zu veröffentlichen.
 
 ## <a name="overview"></a>Übersicht
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Übersicht über Custom Vision":::
+> :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
 
 In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor) erreicht.
-Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Knoten des HTTP-Erweiterungsprozessors erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Erstellen und Bereitstellen eines Custom Vision-Spielzeugerkennungsmodells 
+Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Prozessorknoten der HTTP-Erweiterung erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse auf dem Knoten der [Azure IoT-Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Anschließend sendet der Knoten diese Ereignisse an den [IoT Edge-Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
-Wie der Name besagt, können Sie mit Custom Vision eine eigene benutzerdefinierte Objekterkennung oder -klassifizierung in der Cloud erstellen. Es bietet eine einfache, benutzerfreundliche und intuitive Oberfläche zum Erstellen von Custom Vision-Modellen, die über Container in der Cloud oder auf Edge-Ebene bereitgestellt werden können. 
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Erstellen und Bereitstellen eines Custom Vision-Spielzeugerkennungsmodells
 
-Um eine Spielzeug-LKW-Erkennung zu erstellen, empfiehlt es sich, gemäß der Anleitung in diesem [Schnellstartartikel](../../cognitive-services/custom-vision-service/get-started-build-detector.md) zum Erstellen einer Objekterkennung mit Custom Vision über ein Webportal vorzugehen.
+Wie der Name besagt, können Sie mit Custom Vision eine eigene benutzerdefinierte Objekterkennung oder -klassifizierung in der Cloud erstellen. Es bietet eine einfache, benutzerfreundliche und intuitive Oberfläche zum Erstellen von Custom Vision-Modellen, die über Container in der Cloud oder auf Edge-Ebene bereitgestellt werden können.
+
+Zum Erstellen einer Erkennung für Spielzeug-LKW befolgen Sie die Schritte in [Schnellstart: Erstellen einer Objekterkennung mit der Custom Vision-Website](../../cognitive-services/custom-vision-service/get-started-build-detector.md).
 
 Weitere Hinweise:
  
-* Verwenden Sie für dieses Tutorial nicht die Beispielbilder, die im [Abschnitt „Voraussetzungen“](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) des Schnellstartartikels angegeben werden. Wir haben stattdessen zum Erstellen eines Custom Vision-Spielzeugerkennungsmodells eine spezielle Gruppe von Bildern genutzt. Es empfiehlt sich, [diese Bilder](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) zu verwenden, wenn Sie im Schnellstartartikel zum [Auswählen der Trainingsbilder](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) aufgefordert werden.
+* Verwenden Sie für dieses Tutorial nicht die Beispielbilder, die im [Abschnitt „Voraussetzungen“](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) des Schnellstartartikels angegeben werden. Stattdessen haben wir einen bestimmten Satz Bilder verwendet, um ein Custom Vision Modell für die Spielzeugerkennung zu erstellen. Verwenden Sie [diese Bilder](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip), wenn Sie aufgefordert werden, [Ihre Trainingsbilder](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) in der Schnellstartanleitung auszuwählen.
 * Stellen Sie im Schnellstartartikel im Abschnitt zum Kennzeichnen von Bildern sicher, dass Sie den Spielzeug-LKW im Bild mit dem Tag „delivery truck“ versehen.
 
-Wenn Sie mit dem erstellten Modell zufrieden sind, können Sie es mit der Schaltfläche „Exportieren“ auf der Registerkarte „Leistung“ in einen Docker-Container exportieren. Wählen Sie als Typ der Containerplattform Linux aus. Auf dieser Plattform wird der Container ausgeführt. Der Computer, auf dem Sie den Container herunterladen, kann ein Computer mit Windows oder Linux sein. Die folgenden Anweisungen basieren auf der Containerdatei, die auf einen Windows-Computer heruntergeladen wurde.
+Nachdem Sie den Vorgang abgeschlossen haben, können Sie das Modell in einen Docker-Container exportieren, indem Sie die Schaltfläche **Exportieren** auf der Registerkarte **Performance** (Leistung) verwenden. Achten Sie darauf, Linux als Typ der Containerplattform auszuwählen. Auf dieser Plattform wird der Container ausgeführt. Der Computer, auf dem Sie den Container herunterladen, kann ein Computer mit Windows oder Linux sein. Die folgenden Anweisungen basieren auf der Containerdatei, die auf einen Windows-Computer heruntergeladen wurde.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Übersicht über Custom Vision"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt."   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
-            Mit diesem Befehl wird der Container auf dem lokalen Computer getestet. Wenn das Bild denselben Lieferwagen enthält, für den wir das Modell trainiert haben, sollte die Ausgabe in etwa wie folgt lauten. Dies bedeutet, dass der Lieferwagen mit einer Wahrscheinlichkeit von 90,12 % erkannt wurde.
+            Dieser Befehl testet den Container auf dem lokalen Computer. Wenn das Bild den gleichen Lieferwagen zeigt, mit dem wir das Modell trainiert haben, sollte die Ausgabe etwas wie im folgenden Beispiel sein. Es deutet darauf hin, dass der Lieferwagen mit einer Wahrscheinlichkeit von 90,12 % erkannt wurde.
     
             ```
             {"created":"2020-03-20T07:10:47.827673","id":"","iteration":"","predictions":[{"boundingBox":{"height":0.66167289,"left":-0.03923762,"top":0.12781593,"width":0.70003178},"probability":0.90128148,"tagId":0,"tagName":"delivery truck"},{"boundingBox":{"height":0.63733053,"left":0.25220079,"top":0.0876643,"width":0.53331227},"probability":0.59745145,"tagId":0,"tagName":"delivery truck"}],"project":""}
@@ -97,112 +100,112 @@ Wenn Sie mit dem erstellten Modell zufrieden sind, können Sie es mit der Schalt
 1. Navigieren Sie in Visual Studio Code zu „src/edge“. Hier befinden sich die erstellte ENV-Datei sowie einige Bereitstellungsvorlagendateien.
 
     Die Bereitstellungsvorlage verweist mit einigen Platzhalterwerten auf das Bereitstellungsmanifest für das Edgegerät. Die ENV-Datei enthält die Werte für diese Variablen.
-1. Navigieren Sie dann zum Ordner „src/cloud-to-device-console-app“. Hier befindet sich die Datei „appsettings.json“, die Sie zusammen mit folgenden anderen Dateien erstellt haben:
+1. Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. Hier befindet sich die Datei „appsettings.json“, die Sie zusammen mit folgenden anderen Dateien erstellt haben:
 
-    * „c2d-console-app.csproj“: Dies ist die Projektdatei für Visual Studio Code.
-    * „operations.json“: In dieser Datei sind die verschiedenen Vorgänge aufgelistet, die im Programm ausgeführt werden sollen.
-    * „Program.cs“: Dies ist der Beispielprogrammcode, über den folgende Vorgänge durchgeführt werden:
+    * c2d-console-app.csproj: Dies ist die Projektdatei für Visual Studio Code.
+    * operations.json: In dieser Datei sind die verschiedenen Vorgänge aufgelistet, die vom Programm ausgeführt werden sollen.
+    * Program.cs: Dieses Beispiel für den Programmcode führt Folgendes aus:
 
         * Laden der App-Einstellungen
         * Aufruf der direkten Methoden des Moduls Live Video Analytics in IoT Edge, um eine Topologie zu erstellen, den Graphen zu instanziieren und den Graphen zu aktivieren
-        * Anhalten der Ausführung, damit Sie die Ausgabe des Graphen im Terminalfenster und die an IoT Hub gesendeten Ereignisse im Ausgabefenster untersuchen können
+        * Anhalten der Ausführung, damit Sie die Ausgabe des Graphen im **Terminalfenster** und die an IoT Hub gesendeten Ereignisse im **Ausgabefenster** untersuchen können
         * Deaktivieren der Graphinstanz, Löschen der Graphinstanz und Löschen der Graphtopologie
         
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Generieren und Bereitstellen des Bereitstellungsmanifests
 
 1. Navigieren Sie in Visual Studio Code zu „src/cloud-to-device-console-app/operations.json“.
 
-1. Stellen Sie sicher, dass unter „GraphTopologySet“ Folgendes zutrifft:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
-1. Stellen Sie unter „GraphInstanceSet“ Folgendes sicher: 
-    1. „topologyName“: „InferencingWithHttpExtension“
-    1. Fügen Sie am Anfang des Parameterarrays Folgendes hinzu: `{"name": "inferencingUrl","value": "http://cv:80/image"},`.
-    1. Ändern Sie den Wert des rtspUrl-Parameters in „rtsp://rtspsim:554/media/t2.mkv“.    
-1. Stellen Sie „unter GraphTopologyDelete“ sicher, dass „name“: „InferencingWithHttpExtension“
-1. Klicken Sie mit der rechten Maustaste auf die Datei „src/edge/deployment.customvision.template.json“, und klicken Sie dann auf **IoT Edge-Bereitstellungsmanifest generieren**.
+1. Vergewissern Sie sich, dass unter `GraphTopologySet` Folgendes zutrifft:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. Stellen Sie unter `GraphInstanceSet` Folgendes sicher:
+    1. `"topologyName" : "InferencingWithHttpExtension"`
+    1. Fügen Sie Folgendes oben zum Parameterarray hinzu: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
+    1. Ändern Sie den Wert von Parameter `rtspUrl` in `"rtsp://rtspsim:554/media/t2.mkv"`.
+1. Stellen Sie unter `GraphTopologyDelete` sicher, dass `"name": "InferencingWithHttpExtension"` ist.
+1. Klicken Sie mit der rechten Maustaste auf die Datei „src/edge/deployment.customvision.template.json“, und wählen Sie dann **IoT Edge-Bereitstellungsmanifest generieren** aus.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Übersicht über Custom Vision":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
   
-    Dadurch sollte im Ordner „src/edge/config“ die Manifestdatei „deployment.customvision.amd64.json“ erstellt werden.
-1. Öffnen Sie die Datei „src/edge/ deployment.customvision.template.json“, und suchen Sie den JSON-Block „registryCredentials“. Dieser Block enthält die Adresse Ihrer Azure-Containerregistrierung sowie Ihren Benutzernamen und Ihr Kennwort.
-1. Pushen Sie mit dem folgenden Befehl in der Befehlszeile den lokalen Custom Vision-Container in die Azure-Containerregistrierung.
+    Durch diese Aktion sollte im Ordner „src/edge/config“ die Manifestdatei „deployment.customvision.amd64.json“ erstellt werden.
+1. Öffnen Sie die Datei „src/edge/ deployment.customvision.template.json“, und suchen Sie den JSON-Block `registryCredentials`. Dieser Block enthält die Adresse Ihrer Azure-Containerregistrierung sowie Ihren Benutzernamen und Ihr Kennwort.
+1. Pushen Sie mit den folgenden Schritten an der Befehlszeile den lokalen Custom Vision-Container in Ihre Azure Container Registry-Instanz:
 
     1. Melden Sie sich mit dem folgenden Befehl bei der Registrierung an:
     
         `docker login <address>`
     
-        Geben Sie den Benutzernamen und das Kennwort ein, wenn Sie zur Authentifizierung aufgefordert werden. 
+        Geben Sie den Benutzernamen und das Kennwort ein, wenn Sie zur Authentifizierung aufgefordert werden.
         
         > [!NOTE]
         > Das Kennwort ist in der Befehlszeile nicht sichtbar.
-    1. Markieren Sie das Bild mit dem folgenden Befehl:<br/>`docker tag cvtruck   <address>/cvtruck`
-    1. Pushen Sie das Bild mit dem folgenden Befehl:<br/>`docker push <address>/cvtruck`
+    1. Kennzeichnen Sie Ihr Image mithilfe des folgenden Befehls: <br/>`docker tag cvtruck   <address>/cvtruck`.
+    1. Pushen Sie Ihr Image, indem Sie diesen Befehl ausführen: <br/>`docker push <address>/cvtruck`.
 
-        Bei erfolgreicher Ausführung werden in der Befehlszeile „Pushed“ und der SHA für das Bild angezeigt. 
-    1. Sie können stattdessen auch die Azure-Containerregistrierung im Azure-Portal überprüfen. Dort werden der Name des Repository und das Tag angezeigt. 
-1. Legen Sie die IoTHub-Verbindungszeichenfolge fest, indem Sie unten links neben dem Bereich „AZURE IOT HUB“ auf das Symbol „Weitere Aktionen“ klicken. Sie können die Zeichenfolge aus der Datei „appsettings.json“ kopieren. (Hier finden Sie eine weitere empfohlene Vorgehensweise, um unter Verwendung des [Befehls zum Auswählen von IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub) sicherzustellen, dass in Visual Studio Code der richtige IoT-Hub konfiguriert ist.)
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Übersicht über Custom Vision":::
-1. Klicken Sie mit der rechten Maustaste auf „src/edge/config/deployment.customvision.amd64.json“ und dann auf **Bereitstellung für einzelnes Gerät erstellen**. 
+        Bei Erfolg sollte `Pushed` in der Befehlszeile zusammen mit der SHA für das Image angezeigt werden.
+    1. Sie können stattdessen auch die Azure Container Registry-Instanz im Azure-Portal überprüfen. Hier sehen Sie den Namen des Repositorys zusammen mit dem Tag.
+1. Legen Sie die IoT Hub-Verbindungszeichenfolge fest, indem Sie im Bereich **AZURE IOT HUB** in der unteren linken Ecke das Symbol **Weitere Aktionen** auswählen. Sie können die Zeichenfolge aus der Datei „appsettings.json“ kopieren. (Hier finden Sie eine weitere empfohlene Vorgehensweise, um unter Verwendung des [Befehls zum Auswählen von IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub) sicherzustellen, dass in Visual Studio Code der richtige IoT-Hub konfiguriert ist.)
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Übersicht über Custom Vision":::
-1. Anschließend werden Sie aufgefordert, ein IoT Hub-Gerät auszuwählen. Wählen Sie in der Dropdownliste das Gerät „lva-sample-device“ aus.
-1. Aktualisieren Sie nach ungefähr 30 Sekunden unten links Azure IoT Hub. Das Edgegerät sollte dann mit den folgenden Modulen bereitgestellt sein:
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
+1. Klicken Sie dann mit der rechten Maustaste auf „src/edge/config/deployment.customvision.amd64.json“, und wählen Sie **Bereitstellung für einzelnes Gerät erstellen** aus.
 
-    * Das Live Video Analytics in IoT Edge-Modul mit dem Namen „lvaEdge“
-    * Ein Modul mit dem Namen `rtspsim`, das einen RTSP-Server als Quelle eines Livevideofeeds simuliert
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
+1. Sie werden anschließend aufgefordert, ein IoT-Hub-Gerät auszuwählen. Wählen Sie in der Dropdownliste **lva-sample-device** aus.
+1. Aktualisieren Sie nach ungefähr 30 Sekunden den Azure IoT-Hub im unteren linken Bereich. Die folgenden Module sollten im Edge-Gerät als bereitgestellt angezeigt werden:
+
+    * Das Live Video Analytics in IoT Edge-Modul mit dem Namen `lvaEdge`.
+    * Ein Modul mit dem Namen `rtspsim`, das einen RTSP-Server simuliert, der als Quelle eines Livevideofeeds fungiert.
     * Ein Modul mit dem Namen `cv`. Dies ist das Custom Vision-Erkennungsmodell für Spielzeug-LKW, das Custom Vision auf die Bilder anwendet und mehrere Tagtypen zurückgibt. (Unser Modell wurde nur mit einem Tag trainiert – „delivery truck“).
 
 ## <a name="prepare-for-monitoring-events"></a>Vorbereiten der Überwachung von Ereignissen
 
-Klicken Sie mit der rechten Maustaste auf das Live Video Analytics-Gerät, und wählen Sie **Überwachung des integrierten Ereignisendpunkts starten** aus. Sie müssen diesen Schritt ausführen, um die IoT Hub-Ereignisse im Ausgabefenster von Visual Studio Code zu überwachen.
+Klicken Sie mit der rechten Maustaste auf das Live Video Analytics-Gerät, und wählen Sie **Überwachung des integrierten Ereignisendpunkts starten** aus. Sie müssen diesen Schritt ausführen, um die IoT Hub-Ereignisse im **Ausgabefenster** von Visual Studio Code zu überwachen.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Übersicht über Custom Vision":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
 
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 
-Wenn Sie die Graphtopologie für dieses Tutorial in einem Browser öffnen, sehen Sie, dass der Wert von „inferencingUrl“ auf http://cv:80/image festgelegt wurde. Das bedeutet, dass der Rückschlussserver nach der Erkennung von Spielzeug-LKW im Livevideo Ergebnisse zurückgibt (sofern Spielzeug-LKW erkannt werden).
+Wenn Sie die Graphtopologie für dieses Tutorial in einem Browser öffnen, sehen Sie, dass der Wert von `inferencingUrl` auf `http://cv:80/image` festgelegt wurde. Diese Einstellung bedeutet, dass der Rückschlussserver nach dem Erkennen von Spielzeug-LKW im Livevideo Ergebnisse zurückgibt, falls welche vorhanden sind.
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
-1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Übersicht über Custom Vision":::
-1. Suchen Sie nach dem Kontrollkästchen „Show Verbose Message“ (Ausführliche Meldung anzeigen), und aktivieren Sie es.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder wählen Sie **STRG+UMSCHALT+X** aus), und suchen Sie nach „Azure IoT-Hub“.
+1. Klicken Sie mit der rechten Maustaste, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Übersicht über Custom Vision"
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
+1. Suchen Sie **Show Verbose Message** (Ausführliche Meldung anzeigen), und aktivieren Sie es.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt."
               }
             ]
           }
         }
    ```
     
-   * Ein Aufruf von „GraphInstanceActivate“ zum Starten der Graphinstanz und des Videoflows
-   * Ein zweiter Aufruf von „GraphInstanceList“, durch den gezeigt wird, dass sich die Graphinstanz im Zustand „Wird ausgeführt“ befindet
+   * Ein Aufruf von `GraphInstanceActivate`, der die Graphinstanz und den Videodatenfluss startet
+   * Zweiter Aufruf von `GraphInstanceList` mit der Anzeige, dass sich die Graphinstanz im ausgeführten Zustand befindet
     
-1. Die Ausgabe im Terminalfenster wird angehalten, und Sie werden zum Drücken der EINGABETASTE aufgefordert, um den Vorgang fortzusetzen. Warten Sie noch mit dem Drücken der EINGABETASTE. Scrollen Sie nach oben, um die JSON-Antwortnutzlasten für die aufgerufenen direkten Methoden anzuzeigen.
-1. Wechseln Sie in Visual Studio Code zum Ausgabefenster. Es werden Meldungen angezeigt, die vom Modul „Live Video Analytics in IoT Edge“ an den IoT-Hub gesendet werden. Im folgenden Abschnitt dieses Tutorials sind diese Meldungen beschrieben.
-1. Der Mediengraph wird weiter ausgeführt, und es werden Ergebnisse ausgegeben. Der RTSP-Simulator führt das Quellvideo als Schleife aus. Wechseln Sie zum Beenden des Mediengraphs zurück zum Terminalfenster, und drücken Sie die EINGABETASTE.
+1. Die Ausgabe im **Terminalfenster** wird an einer Aufforderung **Drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen** angehalten. Warten Sie noch mit dem Drücken der **EINGABETASTE** . Scrollen Sie nach oben, um die JSON-Antwortnutzlasten für die aufgerufenen direkten Methoden anzuzeigen.
+1. Wechseln Sie in Visual Studio Code zum **Ausgabefenster** . Es werden Meldungen angezeigt, die vom Modul „Live Video Analytics in IoT Edge“ an den IoT-Hub gesendet werden. Im folgenden Abschnitt dieses Tutorials sind diese Meldungen beschrieben.
+1. Der Mediengraph wird weiter ausgeführt, und es werden Ergebnisse ausgegeben. Der RTSP-Simulator führt das Quellvideo als Schleife aus. Wechseln Sie zum Beenden des Mediengraphs zurück zum **Terminalfenster** , und drücken Sie die **EINGABETASTE** .
 Mit den nächsten Aufrufen wird die Ressourcenbereinigung durchgeführt:
     
-   * Ein Aufruf von „GraphInstanceDeactivate“ zum Deaktivieren der Graphinstanz
-   * Ein Aufruf von „GraphInstanceDelete“ zum Löschen der Instanz
-   * Ein Aufruf von „GraphTopologyDelete“ zum Löschen der Topologie
-   * Durch einen abschließenden Aufruf von „GraphTopologyList“ wird gezeigt, dass die Liste leer ist.
+   * Mit dem Aufruf von `GraphInstanceDeactivate` wird die Graphinstanz deaktiviert.
+   * Mit dem Aufruf von `GraphInstanceDelete` wird die Instanz gelöscht.
+   * Mit dem Aufruf von `GraphTopologyDelete` wird die Topologie gelöscht.
+   * Ein abschließender Aufruf von `GraphTopologyList` zeigt, dass die Liste leer ist.
     
 ## <a name="interpret-the-results"></a>Interpretieren der Ergebnisse
 
-Wenn Sie den Mediengraph ausführen, werden die Ergebnisse aus dem Knoten des HTTP-Erweiterungsprozessors über den Knoten der IoT Hub-Senke an den IoT-Hub übergeben. Die im Ausgabefenster angezeigten Nachrichten enthalten jeweils den Abschnitt „body“ und den Abschnitt „applicationProperties“. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md).
+Wenn Sie den Mediengraph ausführen, werden die Ergebnisse aus dem Knoten des HTTP-Erweiterungsprozessors über den Knoten der IoT Hub-Senke an den IoT-Hub übergeben. Die Meldungen, die im **Ausgabefenster** angezeigt werden, enthalten einen Hauptteil und einen Abschnitt `applicationProperties`. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 In den folgenden Meldungen werden vom Live Video Analytics-Modul die Anwendungseigenschaften und der Inhalt des Texts definiert.
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-Ereignis
 
-Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp lautet „Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished“.
+Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp ist `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`.
 
 ```
 {
@@ -220,10 +223,10 @@ Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine
 
 Beachten Sie in dieser Meldung diese Details:
 
-* Bei der Meldung handelt es sich um ein Diagnoseereignis. „MediaSessionEstablished“ gibt an, dass vom RTSP-Quellknoten („subject“) eine Verbindung mit dem RTSP-Simulator hergestellt wurde und der Empfang eines (simulierten) Livefeeds begonnen hat.
-* „subject“ in „applicationProperties“ gibt an, dass die Nachricht über den Knoten der RTSP-Quelle im Mediengraphen generiert wurde.
-* „eventType“ in „applicationProperties“ gibt an, dass es sich um ein Diagnoseereignis handelt.
-* „eventTime“ gibt den Zeitpunkt des Ereignisses an.
+* Bei der Meldung handelt es sich um ein Diagnoseereignis. `MediaSessionEstablished` zeigt an, dass der RTSP-Quellknoten (das Subjekt), mit dem RTSP-Simulator verbunden wurde und begonnen hat, einen simulierten Livefeed zu empfangen.
+* In `applicationProperties` wird mit `subject` angegeben, dass die Meldung über den Knoten der RTSP-Quelle im Mediengraphen generiert wurde.
+* In `applicationProperties` gibt der Ereignistyp an, dass es sich bei diesem Ereignis um ein Diagnoseereignis handelt.
+* Der Ereigniszeitpunkt gibt die Uhrzeit an, zu der das Ereignis aufgetreten ist.
 * Der Abschnitt „body“ enthält Daten zum Diagnoseereignis. In diesem Fall umfassen die Daten die Details zum [Session Description Protocol (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol).
 
 ### <a name="inference-event"></a>Ereignis „Inference“
@@ -315,23 +318,23 @@ Der Knoten des HTTP-Erweiterungsprozessors empfängt Rückschlussergebnisse vom 
 }
 ```
 
-Beachten Sie in den Nachrichten oben Folgendes:
+Beachten Sie die folgenden Informationen in den vorangehenden Meldungen:
 
-* „subject“ in „applicationProperties“ verweist auf den Knoten im Mediengraphen, über den die Nachricht generiert wurde. In diesem Fall stammt die Nachricht aus dem HTTP-Erweiterungsprozessor.
-* „eventType“ in „applicationProperties“ gibt an, dass es sich um ein Analyserückschlussereignis handelt.
-* „eventTime“ gibt den Zeitpunkt des Ereignisses an.
-* „body“ enthält Daten zu dem Analyseereignis. In diesem Fall ist das Ereignis ein Rückschlussereignis. Daher enthält „body“ ein Array von Rückschlüssen, die als „predictions“ bezeichnet werden.
-* Der Abschnitt „predictions“ enthält eine Liste der Vorhersagen, wo sich ein Lieferwagen (Tag = „delivery truck“) im Frame befindet. „delivery truck“ ist das benutzerdefinierte Tag, das Sie im benutzerdefinierten trainierten Modell für den Spielzeug-LKW bereitgestellt haben. Im Modell werden unterschiedliche Konfidenzwerte für Rückschlüsse und Identifizierung des Spielzeug-LKW im Eingabevideo verwendet.
+* Das Subjekt in `applicationProperties` verweist auf den Knoten im MediaGraph, von dem die Meldung generiert wurde. In diesem Fall stammt die Meldung vom Prozessor der HTTP-Erweiterung.
+* Der „eventType“ in `applicationProperties` gibt an, dass es sich um ein Analyserückschlussereignis handelt.
+* Der Ereigniszeitpunkt gibt die Uhrzeit an, zu der das Ereignis aufgetreten ist.
+* Der Textkörper enthält Daten zu dem Analyseereignis. In diesem Fall ist das Ereignis ein Rückschlussereignis. Daher enthält der Textkörper ein Array von Rückschlüssen, die als „predictions“ (Vorhersagen) bezeichnet werden.
+* Der Abschnitt „predictions“ enthält eine Liste der Vorhersagen, wo sich ein Lieferwagen (Tag = „delivery truck“) im Frame befindet. Sie werden sich erinnern – „delivery truck“ ist der benutzerdefinierte Tag, den Sie Ihrem benutzerdefinierten trainierten Modell für den Spielzeug-LKW zur Verfügung gestellt haben. Das Modell führt Rückschlüsse auf den Spielzeug-LKW im Eingabevideo durch und identifiziert ihn mit verschiedenen Konfidenzwerten für die Wahrscheinlichkeit.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die anderen Tutorials und Schnellstartanleitungen durcharbeiten möchten, sollten Sie die erstellten Ressourcen behalten. Wechseln Sie andernfalls zum Azure-Portal, navigieren Sie zu Ihren Ressourcengruppen, wählen Sie die Ressourcengruppe aus, unter der Sie dieses Tutorial durchgeführt haben, und löschen Sie alle Ressourcen.
+Wenn Sie die anderen Tutorials und Schnellstartanleitungen durcharbeiten möchten, behalten Sie die von Ihnen erstellten Ressourcen. Wechseln Sie andernfalls zum Azure-Portal, navigieren Sie zu Ihren Ressourcengruppen, wählen Sie die Ressourcengruppe aus, unter der Sie dieses Tutorial durchgeführt haben, und löschen Sie alle Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Zusätzliches für fortgeschrittene Benutzer:
 
 * Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-* Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge-linux.md) befolgen. 
+* Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge-linux.md) befolgen.
 
 Registrieren Sie das Gerät anschließend beim Azure IoT Hub, indem Sie die Anweisungen in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md) ausführen.
