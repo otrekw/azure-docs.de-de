@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996378"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
 
-Arbeitsmappen kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), Metriken und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
+Arbeitsmappen kombinieren Text,  [Protokollabfragen](/azure/data-explorer/kusto/query/), Metriken und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
 
 Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 
@@ -46,7 +46,7 @@ Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinan
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie **Virtuelle Computer**.
+2. Wählen Sie **Virtuelle Computer** .
 
 3. Wählen Sie einen virtuellen Computer in der Liste aus.
 
@@ -64,17 +64,17 @@ Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinan
 
 ## <a name="editing-workbook-sections"></a>Bearbeiten von Arbeitsmappenabschnitten
 
-Arbeitsmappen verfügen über zwei Modi: **Bearbeitungsmodus** und **Lesemodus**. Wenn eine neue Arbeitsmappe zum ersten Mal gestartet wird, wird sie im **Bearbeitungsmodus** geöffnet. In diesem Modus wird der gesamte Inhalt der Arbeitsmappe angezeigt, einschließlich aller Schritte und Parameter, die andernfalls ausgeblendet sind. Im **Lesemodus** wird eine vereinfachte, berichtartige Ansicht präsentiert. Der Lesemodus abstrahiert zwar die Komplexität der Berichterstellung, bei Bedarf können Sie jedoch jederzeit mit wenigen Klicks auf die zugrunde liegenden Mechanismen zugreifen, um Änderungen vorzunehmen.
+Arbeitsmappen verfügen über zwei Modi: **Bearbeitungsmodus** und **Lesemodus** . Wenn eine neue Arbeitsmappe zum ersten Mal gestartet wird, wird sie im **Bearbeitungsmodus** geöffnet. In diesem Modus wird der gesamte Inhalt der Arbeitsmappe angezeigt, einschließlich aller Schritte und Parameter, die andernfalls ausgeblendet sind. Im **Lesemodus** wird eine vereinfachte, berichtartige Ansicht präsentiert. Der Lesemodus abstrahiert zwar die Komplexität der Berichterstellung, bei Bedarf können Sie jedoch jederzeit mit wenigen Klicks auf die zugrunde liegenden Mechanismen zugreifen, um Änderungen vorzunehmen.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Screenshot: Abschnitt für Virtual Machines-Arbeitsmappe in Azure Monitor mit einer neuen Arbeitsmappe im Bearbeitungsmodus und hervorgehobenen Bearbeitungssteuerelementen](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
-1. Klicken Sie in der linken unteren Ecke des Abschnitts auf **Bearbeitung abgeschlossen**, wenn Sie mit der Bearbeitung fertig sind.
+1. Klicken Sie in der linken unteren Ecke des Abschnitts auf **Bearbeitung abgeschlossen** , wenn Sie mit der Bearbeitung fertig sind.
 
-2. Klicken Sie zum Erstellen eines Duplikats eines Abschnitts auf das Symbol **Abschnitt klonen**. Die Erstellung von doppelten Abschnitten ist eine hervorragende Möglichkeit, eine Abfrage zu durchlaufen, ohne vorherige Iterationen zu verlieren.
+2. Klicken Sie zum Erstellen eines Duplikats eines Abschnitts auf das Symbol **Abschnitt klonen** . Die Erstellung von doppelten Abschnitten ist eine hervorragende Möglichkeit, eine Abfrage zu durchlaufen, ohne vorherige Iterationen zu verlieren.
 
-3. Klicken Sie auf das Symbol für **Nach oben** bzw. **Nach unten**, um in einer Arbeitsmappe zum nächsten Abschnitt zu springen.
+3. Klicken Sie auf das Symbol für **Nach oben** bzw. **Nach unten** , um in einer Arbeitsmappe zum nächsten Abschnitt zu springen.
 
-4. Klicken Sie zum dauerhaften Entfernen eines Abschnitts auf das Symbol **Entfernen**.
+4. Klicken Sie zum dauerhaften Entfernen eines Abschnitts auf das Symbol **Entfernen** .
 
 ## <a name="adding-text-and-markdown-sections"></a>Hinzufügen von Text und Markdown-Abschnitten
 
@@ -102,7 +102,7 @@ Mithilfe des Bezeichners **workspace** können Sie Daten aus anderen Log Analyt
 
 Jeder Abschnitt verfügt über eigene erweiterte Einstellungen, auf die über das Symbol „Einstellungen“ ![Bearbeitungssteuerelemente Arbeitsmappenabschnitte](media/vminsights-workbooks/006-settings.png) rechts neben der Schaltfläche **Parameter hinzufügen** zugegriffen werden kann.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/007-settings-expanded.png)
+![Screenshot: Dialogfeld „Erweiterte Einstellungen“ im Abschnitt für die Virtual Machines-Arbeitsmappe von Azure Monitor. Das Symbol, mit dem das Dialogfeld geöffnet wird, ist hervorgehoben.](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ Die vordefinierte Arbeitsmappe **TCP-Datenverkehr** enthält Informationen zu Ve
 
 Der erste Abschnitt der Arbeitsmappe basiert auf Protokollabfragedaten. Der zweite Abschnitt basiert ebenfalls auf Protokollabfragedaten, durch Auswählen einer Zeile in der ersten Tabelle wird jedoch der Inhalt der Diagramme interaktiv aktualisiert:
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Screenshot: Abschnitt „Virtual Machines“ in Azure Monitor mit Anzeige des TCP-Datenverkehrs für die vordefinierte Arbeitsmappe](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 Dieses Verhalten wird durch die erweiterte Einstellung **Bei Auswahl eines Elements Parameter exportieren** möglich, die in der Protokollabfrage der Tabelle aktiviert wird.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/009-settings-export.png)
+![Screenshot: Dialogfeld „Erweiterte Einstellungen“ für eine Virtual Machines-Arbeitsmappe mit Aktivierung der Option „Bei Auswahl eines Elements Parameter exportieren“](media/vminsights-workbooks/009-settings-export.png)
 
 Wenn eine Zeile ausgewählt wird, werden die exportierten Werte von der zweiten Protokollabfrage genutzt, um eine Gruppe von Werten zu erstellen, die dann von der Abschnittsüberschrift und den Diagrammen verwendet werden. Wird keine Zeile ausgewählt, werden Abschnittsüberschrift und Diagramme ausgeblendet. 
 
@@ -141,7 +141,7 @@ Metrikabschnitte bieten Ihnen vollständigen Zugriff, um Metrikdaten von Azure M
 
 Hier sehen Sie ein Beispiel für Daten eines virtuellen Computers, die in eine Arbeitsmappe gepullt werden, um eine Rastervisualisierung der CPU-Leistung bereitzustellen:
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/010-metrics-grid.png)
+![Screenshot: Abschnitt mit Metriken einer VM-Arbeitsmappe in Azure Monitor. Die CPU-Leistung aller virtuellen Computer ist grafisch dargestellt.](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Hinzufügen von Parameterabschnitten
 
@@ -164,7 +164,7 @@ Aktuell werden vier verschiedene Arten von Parametern unterstützt:
 
 Der Wert, den ein Benutzer in das Textfeld eingibt, wird direkt in der Abfrage ersetzt (ohne Escape- oder Anführungszeichen). Wenn der benötigte Wert eine Zeichenfolge ist, sollte die Abfrage den Parameter in Anführungszeichen setzen (z. B. **'{parameter}'** ).
 
-Mit dem Textparameter kann der Wert eines Textfelds überall verwendet werden. Er kann ein Tabellenname, Spaltenname, Funktionsname, Operator usw. sein.  Der Parametertyp „Text“ verfügt über die Einstellung **Standardwert aus Analyseabfrage abrufen**, die es dem Ersteller der Arbeitsmappe ermöglicht, eine Abfrage zu verwenden, um den Standardwert für das Textfeld aufzufüllen.
+Mit dem Textparameter kann der Wert eines Textfelds überall verwendet werden. Er kann ein Tabellenname, Spaltenname, Funktionsname, Operator usw. sein.  Der Parametertyp „Text“ verfügt über die Einstellung **Standardwert aus Analyseabfrage abrufen** , die es dem Ersteller der Arbeitsmappe ermöglicht, eine Abfrage zu verwenden, um den Standardwert für das Textfeld aufzufüllen.
 
 Wenn Sie den Standardwert aus einer Protokollabfrage verwenden, wird nur der erste Wert der ersten Zeile (Zeile 0, Spalte 0) als Standardwert verwendet. Aus diesem Grund empfiehlt es sich, um Ihre Abfrage einzuschränken, nur eine Zeile und eine Spalte zurückzugeben. Alle anderen von der Abfrage zurückgegebenen Daten werden ignoriert. 
 
@@ -180,11 +180,11 @@ Wenn die Spalte vom Typ „Zeichenfolge“ ist, wird eine Null-/leere Zeichenfol
 
 Sehen wir uns die Parameter im Verbindungsübersichtsbericht an. Klicken Sie neben **Richtung** auf das Bearbeitungssymbol.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Screenshot: Abschnitt zum Hinzufügen und Bearbeiten von Berichtsparametern in Azure Monitor. Das Symbol „Bearbeiten“ für den Parameter „Direction“ ist ausgewählt.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 Daraufhin wird das Menüelement **Parameter bearbeiten** gestartet.
 
-![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Screenshot: Dialogfeld „Parameter bearbeiten“. Der Name des Parameters lautet „Direction“, der Parametertyp ist „Dropdown“, und für „Daten abrufen aus“ ist „JSON“ ausgewählt.](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 Mithilfe des JSON-Codes können Sie eine beliebige Tabelle mit Inhalt generieren. Der folgende JSON-Code generiert beispielsweise zwei Werte im Dropdown-Steuerelement:
 
@@ -218,27 +218,27 @@ Parametertypen „Zeitbereich“ besitzen 15 Standardbereiche, die zwischen fün
 
 ### <a name="resource-picker"></a>Ressourcenauswahl
 
-Der Parametertyp „Ressourcenauswahl“ bietet Ihnen die Möglichkeit, den Gültigkeitsbereich Ihres Bericht auf bestimmte Arten von Ressourcen zu beschränken. Ein Beispiel für eine vorgefertigte Arbeitsmappe mit Ressourcenauswahl ist die Arbeitsmappe **Leistung**.
+Der Parametertyp „Ressourcenauswahl“ bietet Ihnen die Möglichkeit, den Gültigkeitsbereich Ihres Bericht auf bestimmte Arten von Ressourcen zu beschränken. Ein Beispiel für eine vorgefertigte Arbeitsmappe mit Ressourcenauswahl ist die Arbeitsmappe **Leistung** .
 
 ![Dropdown-Steuerelement für Arbeitsbereiche](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
 
 ## <a name="saving-and-sharing-workbooks-with-your-team"></a>Speichern und Freigeben von Arbeitsmappen für Ihr Team
 
-Arbeitsmappen werden in einem Log Analytics-Arbeitsbereich oder in einer VM-Ressource gespeichert (je nachdem, wie Sie auf den Arbeitsmappenkatalog zugreifen). Die Arbeitsmappe kann im für Sie privaten Abschnitt **Meine Berichte** oder im Abschnitt **Freigegebene Berichte** gespeichert werden. Letzterer ist für alle Benutzer mit Zugriff auf die Ressource zugänglich. Klicken Sie zum Anzeigen aller Arbeitsmappen in der Ressource in der Aktionsleiste auf die Schaltfläche **Öffnen**.
+Arbeitsmappen werden in einem Log Analytics-Arbeitsbereich oder in einer VM-Ressource gespeichert (je nachdem, wie Sie auf den Arbeitsmappenkatalog zugreifen). Die Arbeitsmappe kann im für Sie privaten Abschnitt **Meine Berichte** oder im Abschnitt **Freigegebene Berichte** gespeichert werden. Letzterer ist für alle Benutzer mit Zugriff auf die Ressource zugänglich. Klicken Sie zum Anzeigen aller Arbeitsmappen in der Ressource in der Aktionsleiste auf die Schaltfläche **Öffnen** .
 
 Gehen Sie wie folgt vor, um eine Arbeitsmappe freizugeben, die derzeit unter **Meine Berichte** vorhanden ist:
 
-1. Klicken Sie in der Aktionsleiste auf **Öffnen**.
+1. Klicken Sie in der Aktionsleiste auf **Öffnen** .
 2. Klicken Sie neben der Arbeitsmappe, die Sie freigeben möchten, auf die Schaltfläche „...“.
 3. Klicken Sie auf **Move to Shared Reports** (In „Freigegebene Berichte“ verschieben).
 
-Klicken Sie in der Aktionsleiste auf **Freigeben**, um eine Arbeitsmappe per Link bzw. E-Mail freizugeben. Beachten Sie, dass Empfänger des Links im Azure-Portal Zugriff auf diese Ressource benötigen, um die Arbeitsmappe anzuzeigen. Zum Durchführen von Bearbeitungen benötigen Empfänger mindestens Berechtigungen vom Typ „Mitwirkender“ für die Ressource.
+Klicken Sie in der Aktionsleiste auf **Freigeben** , um eine Arbeitsmappe per Link bzw. E-Mail freizugeben. Beachten Sie, dass Empfänger des Links im Azure-Portal Zugriff auf diese Ressource benötigen, um die Arbeitsmappe anzuzeigen. Zum Durchführen von Bearbeitungen benötigen Empfänger mindestens Berechtigungen vom Typ „Mitwirkender“ für die Ressource.
 
 Gehen Sie wie folgt vor, um in einem Azure-Dashboard einen Link zu einer Arbeitsmappe anzuheften:
 
-1. Klicken Sie in der Aktionsleiste auf **Öffnen**.
+1. Klicken Sie in der Aktionsleiste auf **Öffnen** .
 2. Klicken Sie neben der Arbeitsmappe, die Sie anheften möchten, auf die Schaltfläche „...“.
-3. Klicken Sie auf **An Dashboard anheften**.
+3. Klicken Sie auf **An Dashboard anheften** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

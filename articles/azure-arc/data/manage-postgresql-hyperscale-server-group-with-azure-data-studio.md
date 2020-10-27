@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931798"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320232"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwalten einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe mithilfe von Azure Data Studio
 
@@ -28,13 +28,13 @@ Dieser Artikel beschreibt, wie Sie:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Installieren von azdata, Azure Data Studio und Azure CLI](install-client-tools.md)
-- Installieren der Erweiterungen für **Azure Data CLI**, **Azure Arc** und **PostgreSQL** in Azure Data Studio
+- Installieren der Erweiterungen für **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** und **Azure Arc** und **PostgreSQL** in Azure Data Studio
 - Erstellen des [Azure Arc-Datencontrollers](create-data-controller-using-azdata.md)
 - Starten von Azure Data Studio
 
 ## <a name="connect-to-the-azure-arc-data-controller"></a>Herstellen einer Verbindung mit dem Azure Arc-Datencontroller
 
-Erweitern Sie in Azure Data Studio den Knoten **Azure Arc-Controller**, und klicken Sie dann auf die Schaltfläche **Controller verbinden**:
+Erweitern Sie in Azure Data Studio den Knoten **Azure Arc-Controller** , und klicken Sie dann auf die Schaltfläche **Controller verbinden** :
 
 Geben Sie die Verbindungsinformationen Ihres Azure-Datencontrollers ein:
 
@@ -61,18 +61,17 @@ Die PostgreSQL Dashboard-Ansicht:
 
 Die Ansicht umfasst mehrere Dashboards, die auf der linken Seite des Bereichs aufgeführt sind:
 
-- **Übersicht:** Zeigt Übersichtsinformationen zu Ihrer Instanz an wie z. B. den Namen, die Azure-Abonnement-ID, die Konfiguration, die Version des Datenbankmoduls, die Endpunkte für grafana und kibana...
+- **Übersicht:** Zeigt Übersichtsinformationen zu Ihrer Instanz an wie z. B. den Namen, den Namen des PostgreSQL-Administratorbenutzers, die Azure-Abonnement-ID, die Konfiguration, die Version des Datenbankmoduls, die Endpunkte für Grafana und Kibana...
 - **Verbindungszeichenfolgen:** Zeigt verschiedene Verbindungszeichenfolgen an, die Sie möglicherweise benötigen, um eine Verbindung mit Ihrer PostgreSQL-Instanz wie psql, Node.js, PHP oder Ruby herzustellen...
-- **Eigenschaften:** Zeigt verschiedene Eigenschaften an, wie z. B. den PostgreSQL-Administratorbenutzernamen, die mit der Schattenressource verknüpfte Ressourcengruppe...
 - **Diagnose und Problembehandlung:** Auf dieser Landing Page finden Sie verschiedene Ressourcen, über die Sie die Problembehandlung für Ihre Instanz durchführen, während wir die Notebooks zur Problembehandlung erweitern.
 - **Neue Supportanfrage:** Über diese Landing Page können Sie ab der Ankündigung der Public Preview Unterstützung von unseren Supportdiensten anfordern.
 
 ## <a name="work-with-your-data-and-schema"></a>Arbeiten mit Daten und Schemas
 
-Erweitern Sie auf der linken Seite des Azure Data Studio Fensters den Knoten **Server**:
+Erweitern Sie auf der linken Seite des Azure Data Studio Fensters den Knoten **Server** :
 
 Wählen Sie [Verbindung hinzufügen] aus, und geben Sie die Verbindungsdetails für Ihre PostgreSQL-Instanz ein:
-- **Verbindungstyp**: PostgreSQL
+- **Verbindungstyp** : PostgreSQL
 - **Servername:** Geben Sie den Namen der PostgreSQL-Instanz ein. Beispiel: postgres01
 - **Authentifizierungstyp:** Kennwort
 - **Benutzername:** Hier können Sie den Standardnamen des PostgreSQL-Administratorbenutzers eingeben. Für dieses Feld wird zwischen Groß- und Kleinschreibung unterschieden.

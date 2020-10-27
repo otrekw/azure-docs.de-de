@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376753"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116736"
 ---
 [Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 
@@ -53,11 +53,11 @@ Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projek
 }
 ```
 
-### <a name="install-active-directory"></a>Installieren von Active Directory
+### <a name="install-active-directory-nuget-package"></a>Installieren des Active Directory-NuGet-Pakets
 
-Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, sodass Sie einen Verweis auf dieses Paket in Ihrem Projekt hinzufügen müssen.
+Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory** , sodass Sie einen Verweis auf dieses Paket in Ihrem Projekt hinzufügen müssen.
 
-Öffnen Sie die NuGet-Paket-Manager-Konsole über **Tools > NuGet-Paket-Manager > Paket-Manager-Konsole**, und führen Sie den folgenden Befehl aus:
+Öffnen Sie die NuGet-Paket-Manager-Konsole über **Tools > NuGet-Paket-Manager > Paket-Manager-Konsole** , und führen Sie den folgenden Befehl aus:
 
 ```powershell
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.2.0
@@ -65,13 +65,13 @@ Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityMode
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>Aktualisieren des Controllers zum Abrufen des Tokens 
 
-Öffnen Sie _Controllers\HomeController.cs_, und fügen Sie nach den _using_-Anweisungen am Anfang der Datei den folgenden Code ein:
+Öffnen Sie _Controllers\HomeController.cs_ , und fügen Sie nach den _using_ -Anweisungen am Anfang der Datei den folgenden Code ein:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Anschließend konfigurieren Sie den Controller zum Abrufen der Azure AD-Werte aus _secrets.json_. Fügen Sie am Anfang der Klasse _HomeController_ nach ```public class HomeController : Controller {``` den folgenden Code ein:
+Anschließend konfigurieren Sie den Controller zum Abrufen der Azure AD-Werte aus _secrets.json_ . Fügen Sie am Anfang der Klasse _HomeController_ nach ```public class HomeController : Controller {``` den folgenden Code ein:
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -142,13 +142,13 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>Hinzufügen von Beispielinhalten
-Öffnen Sie zunächst _Views\Shared\Layout.cshtml_. Fügen Sie vor der Zeile ```</head>``` den folgenden Code hinzu:
+Öffnen Sie zunächst _Views\Shared\Layout.cshtml_ . Fügen Sie vor der Zeile ```</head>``` den folgenden Code hinzu:
 
 ```html
 @RenderSection("Styles", required: false)
 ```
 
-Nun fügen Sie dieser Web-App Beispielinhalte hinzu. Öffnen Sie _Views\Home\Index.cshtml_, und ersetzen Sie den gesamten automatisch generierten Code durch dieses Beispiel:
+Nun fügen Sie dieser Web-App Beispielinhalte hinzu. Öffnen Sie _Views\Home\Index.cshtml_ , und ersetzen Sie den gesamten automatisch generierten Code durch dieses Beispiel:
 
 ```html
 @{
@@ -292,7 +292,7 @@ Fügen Sie am Ende von _Views\Home\Index.cshtml_ den folgenden Code hinzu:
 
 ## <a name="build-and-run-the-app"></a>Erstellen und Ausführen der App
 
-Wählen Sie auf der Menüleiste **Debuggen > Debuggen starten** aus, oder drücken Sie **F5**, um die Anwendung zu starten.
+Wählen Sie auf der Menüleiste **Debuggen > Debuggen starten** aus, oder drücken Sie **F5** , um die Anwendung zu starten.
 
 In Ihrem Browser sollte Folgendes angezeigt werden:
 

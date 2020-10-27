@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968938"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331837"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Upgraden von Read 2.x auf Read 3.x
 
@@ -27,11 +27,12 @@ Verwenden Sie die folgende Tabelle, um die **Versionszeichenfolge** im API-Pfad 
 
 |Produkttyp| Version | Versionszeichenfolge im API-Pfad der Version 3.x |
 |:-----|:----|:----|
-|Dienst | Read 3.0 | **v3.0** |
-|Container | Read 3.0 (Vorschauversion) | **v3.0** |
-|Dienst/Container | Read 3.1 (Vorschauversion) | **v3.1-preview.2** |
+|Dienst | Read 3.0 oder 3.1 | **v3.0** bzw. **v3.1** |
+|Dienst | Read 3.2 (Vorschau) | **v3.2-preview.1** |
+|Container | Read 3.0 (Vorschau) oder Read 3.1 (Vorschau) | **v3.0** bzw. **v3.1-preview.2** |
 
-Verwenden Sie als Nächstes die folgenden Abschnitte, um Ihre Vorgänge einzugrenzen, und ersetzen Sie die **Versionszeichenfolge** in Ihrem API-Pfad durch den Wert aus der Tabelle. Aktualisieren Sie also beispielsweise den API-Pfad für Cloud- und Containerversionen vom Typ **Read 3.1 (Vorschauversion)** wie folgt: **https://{endpoint}/vision/v3.1-preview.2/read/analyze[?language]** .
+
+Verwenden Sie als Nächstes die folgenden Abschnitte, um Ihre Vorgänge einzugrenzen, und ersetzen Sie die **Versionszeichenfolge** in Ihrem API-Pfad durch den Wert aus der Tabelle. Aktualisieren Sie also beispielsweise den API-Pfad für Cloud- und Containerversionen vom Typ **Read v3.2 (Vorschau)** wie folgt: **https://{endpoint}/vision/v3.2-preview.1/read/analyze[?language]** .
 
 ## <a name="servicecontainer"></a>Dienst/Container
 
@@ -39,7 +40,7 @@ Verwenden Sie als Nächstes die folgenden Abschnitte, um Ihre Vorgänge einzugre
 
 |Read 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyze[?language]|
+|https://{endpoint}/vision/ **v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/< **Versionszeichenfolge** >/read/analyze[?language]|
     
 Ein neuer optionaler _Sprachparameter_ ist verfügbar. Wenn Sie die Sprache Ihres Dokuments nicht kennen oder es möglicherweise mehrsprachig ist, schließen Sie diesen Parameter nicht ein. 
 
@@ -47,7 +48,7 @@ Ein neuer optionaler _Sprachparameter_ ist verfügbar. Wenn Sie die Sprache Ihre
 
 |Read 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/operations**/{operationId}     |https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/ **v2.0/read/operations** /{operationId}     |https://{endpoint}/vision/< **Versionszeichenfolge** >/read/analyzeResults/{operationId}|
 
 ### <a name="get-read-operation-result-status-flag"></a>Statusflag `Get Read Operation Result`
 
@@ -173,13 +174,13 @@ In v3.0 wurde es angepasst:
 ## <a name="service-only"></a>Nur Dienst
 
 ### `Recognize Text`
-`Recognize Text` ist ein *Vorschauvorgang*, der in allen Versionen der *Maschinelles Sehen-API* als veraltet markiert wird. Sie müssen von `Recognize Text` zu `Read` (v3.0) oder `Batch Read File` (v2.0, v2.1) migrieren. v3.0 von `Read` enthält neuere, bessere Modelle für die Texterkennung und zusätzliche Features, daher wird empfohlen. Durchführen des Upgrades von `Recognize Text` auf `Read`:
+`Recognize Text` ist ein *Vorschauvorgang* , der in allen Versionen der *Maschinelles Sehen-API* als veraltet markiert wird. Sie müssen von `Recognize Text` zu `Read` (v3.0) oder `Batch Read File` (v2.0, v2.1) migrieren. v3.0 von `Read` enthält neuere, bessere Modelle für die Texterkennung und zusätzliche Features, daher wird empfohlen. Durchführen des Upgrades von `Recognize Text` auf `Read`:
 
 |Texterkennung 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/recognizeText[?mode]**|https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyze[?language]|
+|https://{endpoint}/vision/ **v2.0/recognizeText[?mode]**|https://{endpoint}/vision/< **Versionszeichenfolge** >/read/analyze[?language]|
     
-Der _mode_-Parameter wird in `Read` nicht unterstützt. Sowohl handgeschriebener als auch gedruckter Text werden automatisch unterstützt.
+Der _mode_ -Parameter wird in `Read` nicht unterstützt. Sowohl handgeschriebener als auch gedruckter Text werden automatisch unterstützt.
     
 In v3.0 ist neuer optionaler _Sprachparameter_ verfügbar. Wenn Sie die Sprache Ihres Dokuments nicht kennen oder es möglicherweise mehrsprachig ist, schließen Sie diesen Parameter nicht ein. 
 
@@ -187,7 +188,7 @@ In v3.0 ist neuer optionaler _Sprachparameter_ verfügbar. Wenn Sie die Sprache 
 
 |Texterkennung 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/textOperations/** {operationId}|https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/ **v2.0/textOperations/** {operationId}|https://{endpoint}/vision/< **Versionszeichenfolge** >/read/analyzeResults/{operationId}|
 
 ### <a name="get-recognize-text-operation-result-status-flags"></a>Statusflags vom Typ `Get Recognize Text Operation Result`
 Wenn der Aufruf von `Get Recognize Text Operation Result` erfolgreich ist, wird im JSON-Text ein Feld für die Statuszeichenfolge zurückgegeben. 
@@ -212,7 +213,7 @@ Mit der v3.0-API werden außerdem die folgenden Verbesserungen eingeführt, die 
 * `angle`: Die allgemeine Ausrichtung des Texts im Uhrzeigersinn, gemessen in Grad zwischen (-180, 180).
 * `width` und `"height"` geben Ihnen die Dimensionen Ihres Dokuments, und `"unit"` stellt die Einheit dieser Dimensionen (Pixel oder Zoll, je nach Dokumenttyp) bereit.
 * `page`: Mehrseitige Dokumente werden unterstützt.
-* `language`: Die Eingabesprache des Dokuments (aus dem optionalen _Sprachparameter_).
+* `language`: Die Eingabesprache des Dokuments (aus dem optionalen _Sprachparameter_ ).
 
 
 In 2.X lautet das Ausgabeformat wie folgt: 
@@ -311,4 +312,4 @@ In v3.x wurde es angepasst:
 
 |Read 2.0 |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/core/Analyze**     |https://{endpoint}/vision/<**Versionszeichenfolge**>/read/syncAnalyze[?language]|
+|https://{endpoint}/vision/ **v2.0/read/core/Analyze**     |https://{endpoint}/vision/< **Versionszeichenfolge** >/read/syncAnalyze[?language]|

@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Herstellen einer Verbindung mit einem Azure Cosmos-Konto mithilfe eines privaten Endpunkts in Azure'
+title: 'Tutorial: Herstellen einer Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts'
 titleSuffix: Azure Private Link
-description: Beginnen Sie mit diesem Tutorial mit der Verwendung eines privaten Endpunkts in Azure, um sich privat mit einem Azure Cosmos-Konto zu verbinden.
+description: Beginnen Sie mit diesem Tutorial mit der Verwendung eines privaten Endpunkts in Azure, um sich privat mit einer Web-App zu verbinden.
 author: asudbring
 ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
-ms.date: 9/25/2020
-ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/19/2020
+ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145696"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170073"
 ---
-# <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einem Azure Cosmos-Konto mithilfe eines privaten Endpunkts in Azure
+# <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts
 
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
 
@@ -23,10 +23,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks und eines Bastion-Hosts.
 > * Erstellen Sie eine VM.
-> * Erstellen eines Cosmos DB-Kontos mit einem privaten Endpunkt
-> * Testen der Verbindung mit dem privaten Endpunkt des Cosmos DB-Kontos
+> * Erstellen einer Web-App.
+> * Erstellen eines privaten Endpunkts.
+> * Testen der Verbindung mit dem privaten Endpunkt der Web-App.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement haben, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+
+> [!Note]
+> Der private Endpunkt ist in öffentlichen Regionen für Windows- und Linux-Web-Apps mit den Tarifen PremiumV2 und PremiumV3 sowie dem Premium-Tarif für Azure Functions (auch als Elastic Premium-Tarif bezeichnet) verfügbar. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -93,6 +97,7 @@ Der Bastion-Host wird verwendet, um eine sichere Verbindung mit dem virtuellen C
 
 In diesem Abschnitt erstellen Sie einen virtuellen Computer zum Testen des privaten Endpunkts.
 
+
 1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Virtueller Computer** aus, oder suchen Sie über das Suchfeld nach **Virtueller Computer** .
    
 2. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein, oder wählen Sie sie aus:
@@ -131,94 +136,61 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer zum Testen des priva
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen** .
 
-## <a name="create-a-cosmos-db-account-with-a-private-endpoint"></a>Erstellen eines Cosmos DB-Kontos mit einem privaten Endpunkt
+## <a name="create-web-app"></a>Erstellen einer Web-App
 
-In diesem Abschnitt erstellen Sie ein Cosmos DB-Konto und konfigurieren den privaten Endpunkt.
+In diesem Abschnitt erstellen Sie eine Web-App.
 
-1. Wählen Sie im linken Menü **Ressource erstellen** > **Datenbanken** > **Cosmos DB-Konto** aus, oder suchen Sie über das Suchfeld nach **Cosmos DB-Konto** .
+1. Wählen Sie im linken Menü **Ressource erstellen** > **Speicher** > **Web-App** aus, oder suchen Sie über das Suchfeld nach **Web-App** .
 
-2. Geben Sie auf der Registerkarte **Grundlagen** der Seite **Cosmos DB-Konto erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
+2. Geben Sie auf der Registerkarte **Grundlagen** von **Web-App erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
 
     | Einstellung | Wert                                          |
     |-----------------------|----------------------------------|
     | **Projektdetails** |  |
-    | Subscription | Wählen Sie Ihr Azure-Abonnement. |
+    | Subscription | Auswählen des Azure-Abonnements |
     | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
     | **Instanzendetails** |  |
-    | Kontoname | Geben Sie **mycosmosdb** ein. Wenn der Name nicht verfügbar ist, geben Sie einen eindeutigen Namen ein. |
-    | API | Wählen Sie **Core (SQL)** aus. |
-    | Standort | Wählen Sie **USA, Osten** aus. |
-    | Kapazitätsmodus | Übernehmen Sie den Standardwert für **Bereitgestellter Durchsatz** . |
-    | Tarifspezifischen Rabatt für den Free-Tarif anwenden | Übernehmen Sie die Standardeinstellung **Nicht anwenden** . |
-    | Georedundanz | Übernehmen Sie die Standardeinstellung **Deaktivieren** . |
-    | Schreibvorgänge in mehreren Regionen | Übernehmen Sie die Standardeinstellung **Deaktivieren** . |
+    | Name | Geben Sie **mywebapp** ein. Wenn der Name nicht verfügbar ist, geben Sie einen eindeutigen Namen ein. |
+    | Veröffentlichen | Wählen Sie **Code** aus. |
+    | Laufzeitstapel | Wählen Sie **.NET Core 3.1 (LTS)** aus. |
+    | Betriebssystem | Wählen Sie **Windows** aus. |
+    | Region | Wählen Sie **USA, Osten** aus. |
+    | **App Service-Plan** |  |
+    | Windows-Plan (USA, Osten) | Wählen Sie **Neu erstellen** . </br> Geben Sie **myServicePlan** in **Name** ein. |
+    | SKU und Größe | Wählen Sie **Größe ändern** aus. </br> Wählen Sie **P2V2** im Bildschirm **Spezifikationsauswahl** aus. </br> Wählen Sie **Übernehmen** . |
    
-3. Wählen Sie die Registerkarte **Netzwerk** oder die Schaltfläche **Weiter: Netzwerk** .
+3. Klicken Sie auf **Überprüfen + erstellen** .
 
-4. Geben Sie auf der Registerkarte **Netzwerk** die folgenden Informationen ein, bzw. wählen Sie sie aus:
+4. Klicken Sie auf **Erstellen** .
+
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/create-web-app.png" alt-text="Registerkarte „Grundlagen“ von „Web-App erstellen“ im Azure-Portal." border="true":::
+
+## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
+
+1. Wählen Sie im linken Menü **Alle Ressourcen** > **mywebapp** oder den Namen aus, den Sie bei der Erstellung ausgewählt haben.
+
+2. Wählen Sie in der Web-App-Übersicht **Einstellungen** > **Netzwerk** aus.
+
+3. Wählen Sie in **Netzwerk** die Option **Verbindungen mit privaten Endpunkten konfigurieren** aus.
+
+4. Wählen Sie im Bildschirm **Verbindungen mit privaten Endpunkten** die Option **+ Hinzufügen** aus.
+
+5. Geben Sie im Bildschirm **Privaten Endpunkt hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | **Netzwerkverbindungen** | |
-    | Konnektivitätsmethode | Wählen Sie **Privater Endpunkt** aus. |
-    | **Firewall konfigurieren** | |
-    | Zugriff über das Azure-Portal zulassen | Übernehmen Sie den Standardwert **Zulassen** . |
-    | Zugriff über meine IP-Adresse zulassen | Übernehmen Sie den Standardwert **Verweigern** . |
-
-5. Wählen Sie unter **Privater Endpunkt** die Option **+ Hinzufügen** aus.
-
-6. Geben Sie unter **Privaten Endpunkt erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
-
-    | Einstellung | Wert                                          |
-    |-----------------------|----------------------------------|
-    | Abonnement | Auswählen des Azure-Abonnements |
-    | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
-    | Standort | Wählen Sie **USA, Osten** aus. |
-    | Name | Geben Sie **myPrivateEndpoint** ein. |
-    | Unterressource des Ziels | Übernehmen Sie den Standardwert **Core (SQL)** |
-    | **Netzwerk** |  |
+    | Name | Geben Sie **mywebappendpoint** ein. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Virtuelles Netzwerk | Wählen Sie **myVNet** aus. |
     | Subnet | Wählen Sie **mySubnet** aus. |
-    | **Private DNS-Integration** |
-    | Integration in eine private DNS-Zone | Übernehmen Sie den Standardwert **Ja** . |
-    | Private DNS-Zone | Übernehmen Sie den Standardwert „(Neu) privatelink.documents.azure.com“. |
+    | Integration in eine private DNS-Zone | Wählen Sie **Ja** aus. |
 
-7. Klicken Sie auf **OK** .
-
-8. Klicken Sie auf **Überprüfen + erstellen** .
-
-9. Klicken Sie auf **Erstellen** .
-
-### <a name="add-a-database-and-a-container"></a>Hinzufügen einer Datenbank und eines Containers
-
-1. Wählen Sie **Zu Ressource wechseln** bzw. im linken Menü des Azure-Portals **Alle Ressourcen** > **mycosmosdb** aus.
-
-2. Wählen Sie im Menü auf der linken Seite **Daten-Explorer** aus.
-
-3. Wählen Sie im Fenster **Daten-Explorer** die Option **Neuer Container** aus.
-
-4. Geben Sie unter **Container hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | Datenbank-ID | Übernehmen Sie die Standardeinstellung **Neu erstellen** . </br> Geben Sie in das Textfeld **mydatabaseid** ein. |
-    | Durchsatz (400 bis 100.000 RU/s) | Übernehmen Sie den Standardwert **Manuell** . </br> Geben Sie in das Textfeld **400** ein. |
-    | Container-ID | Geben Sie **mycontainerid** ein. |
-    | Partitionsschlüssel | Geben Sie **/mykey** ein. |
-
-5. Klicken Sie auf **OK** .
-
-10. Wählen Sie im Abschnitt **Einstellungen** des CosmosDB-Kontos die Option **Schlüssel** aus.
-
-11. Wählen Sie **myResourceGroup** aus.
-
-12. Wählen Sie das Speicherkonto aus, das Sie im vorherigen Schritt erstellt haben.
-
-14. Wählen Sie „Kopieren“ für **PRIMÄRE VERBINDUNGSZEICHENFOLGE** aus.
+6. Klicken Sie auf **OK** .
+    
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Testen der Verbindung mit dem privaten Endpunkt
 
-In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen Schritt erstellt haben, um über den privaten Endpunkt eine Verbindung mit dem Cosmos DB-Konto herzustellen.
+In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen Schritt erstellt haben, um über den privaten Endpunkt eine Verbindung mit der Web-App herzustellen.
 
 1. Wählen Sie **Ressourcengruppen** im linken Navigationsbereich aus.
 
@@ -234,44 +206,39 @@ In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen
 
 7. Öffnen Sie Windows PowerShell auf dem Server, nachdem Sie eine Verbindung hergestellt haben.
 
-8. Geben Sie `nslookup <storage-account-name>.documents.azure.com` ein. Ersetzen Sie **\<storage-account-name>** durch den Namen des Speicherkontos, das Sie in den vorherigen Schritten erstellt haben. 
+8. Geben Sie `nslookup <webapp-name>.azurewebsites.net` ein. Ersetzen Sie **\<webapp-name>** durch den Namen der Web-App, die Sie in den vorherigen Schritten erstellt haben.  Sie erhalten eine Meldung ähnlich der folgenden:
 
     ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
 
     Non-authoritative answer:
-    Name:    mycosmosdb8675.privatelink.documents.azure.com
+    Name:    mywebapp8675.privatelink.azurewebsites.net
     Address:  10.1.0.5
-    Aliases:  mycosmosdb8675.documents.azure.com
+    Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-    Als Name des Cosmos DB-Kontos wird die private IP-Adresse **10.1.0.5** zurückgegeben.  Diese Adresse befindet sich in dem Subnetz des virtuellen Netzwerks, das Sie zuvor erstellt haben.
+    Als Name der Web-App wird die private IP-Adresse **10.1.0.5** zurückgegeben.  Diese Adresse befindet sich in dem Subnetz des virtuellen Netzwerks, das Sie zuvor erstellt haben.
 
-9. Installieren Sie die [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) auf dem virtuellen Computer.
+9. Öffnen Sie einen Webbrowser auf Ihrem lokalen Computer, und geben Sie die externe URL Ihrer Web-App ein: **https://\<webapp-name>.azurewebsites.net** .
 
-10. Nachdem **Microsoft Azure Storage-Explorer** installiert wurde, wählen Sie **Fertigstellen** aus.  Lassen Sie das Kontrollkästchen aktiviert, um die Anwendung zu öffnen.
+10. Vergewissern Sie sich, dass eine Seite **403** angezeigt wird. Diese Seite zeigt an, dass nicht von extern auf die Web-App zugegriffen werden kann.
 
-11. Wählen Sie auf dem Bildschirm **Verbindung mit Azure Storage herstellen** die Option **Abbrechen** aus.
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="Registerkarte „Grundlagen“ von „Web-App erstellen“ im Azure-Portal." border="true":::
 
-12. Klicken Sie im Storage-Explorer mit der rechten Maustaste auf **Cosmos DB-Konten** , und wählen Sie **Mit Cosmos DB verbinden** aus.
+11. Öffnen Sie in der Bastionhostverbindung mit **myVM** den Internet Explorer.
 
-13. Übernehmen Sie unter **API auswählen** die Standardeinstellung **SQL** .
+12. Geben Sie die URL Ihrer Web-App ein: **https://\<webapp-name>.azurewebsites.net** .
 
-14. Fügen Sie im Feld unter **Verbindungszeichenfolge** die in den vorherigen Schritten kopierte Verbindungszeichenfolge aus dem Cosmos DB-Konto ein.
+13. Vergewissern Sie sich, dass die Standardseite der Web-App angezeigt wird.
 
-15. Klicken Sie auf **Weiter** .
-
-16. Überprüfen Sie, ob die Einstellungen in **Verbindungszusammenfassung** korrekt sind.  
-
-17. Wählen Sie **Verbinden** aus.
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="Registerkarte „Grundlagen“ von „Web-App erstellen“ im Azure-Portal." border="true":::
 
 18. Trennen Sie die Verbindung zu **myVM** .
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie das virtuelle Netzwerk, den virtuellen Computer und das Cosmos DB-Konto wie folgt:
+Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie die das virtuelle Netzwerk, den virtuellen Computer und die Web-App wie folgt:
 
 1. Wählen Sie im linken Menü die Option **Ressourcengruppen** aus.
 
@@ -284,12 +251,6 @@ Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie das virtuelle Netz
 5. Klicken Sie auf **Löschen** .
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes erstellt:
-
-* virtuelles Netzwerk und Bastionhost
-* virtueller Computer
-* Cosmos DB-Konto
 
 Erfahren Sie mehr über den Private Link-Dienst:
 > [!div class="nextstepaction"]

@@ -9,18 +9,61 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631833"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996746"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2020-10-12"></a>2020-10-12
+
+### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK für Python v1.16.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azure-cli-ml**
+    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Diese optionalen Grenzwerte können über 1 definiert werden. Festlegen von `cpu_cores_limit`- und `memory_gb_limit`-Parametern in der `AKSEndpoint.deploy_configuration()`- und `AKSWebservice.deploy_configuration()`-Methode 2. Festlegen von `--cpu-cores-limit`- und `--memory-gb-limit`-Flags in anwendbaren CLI-Aufrufen 3. Das Festlegen von `cpuLimit` und `memoryInGBLimit` in den `containerResourceRequirements` der JSON/YML-Dateien der Bereitstellungskonfiguration. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzen finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
+  + **azureml-contrib-interpret**
+    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
+  + **azureml-contrib-k8s**
+    + Unterstützung für das Anfügen von ArcKubernetes-Compute wurde hinzugefügt.
+  + **azureml-contrib-mir**
+    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Diese optionalen Grenzwerte können über 1 definiert werden. Festlegen von `cpu_cores_limit`- und `memory_gb_limit`-Parametern in der `AKSEndpoint.deploy_configuration()`- und `AKSWebservice.deploy_configuration()`-Methode 2. Festlegen von `--cpu-cores-limit`- und `--memory-gb-limit`-Flags in anwendbaren CLI-Aufrufen 3. Das Festlegen von `cpuLimit` und `memoryInGBLimit` in den `containerResourceRequirements` der JSON/YML-Dateien der Bereitstellungskonfiguration. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzen finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
+  + **azureml-contrib-server**
+    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Diese optionalen Grenzwerte können über 1 definiert werden. Festlegen von `cpu_cores_limit`- und `memory_gb_limit`-Parametern in der `AKSEndpoint.deploy_configuration()`- und `AKSWebservice.deploy_configuration()`-Methode 2. Festlegen von `--cpu-cores-limit`- und `--memory-gb-limit`-Flags in anwendbaren CLI-Aufrufen 3. Das Festlegen von `cpuLimit` und `memoryInGBLimit` in den `containerResourceRequirements` der JSON/YML-Dateien der Bereitstellungskonfiguration. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzen finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
+  + **azureml-core**
+    + Hauptversionen von direkten Abhängigkeiten von azureml-core wurden angeheftet.
+    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzwerten finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
+    + Run.log_table wurde aktualisiert, um die Protokollierung einzelner Zeilen zu gestatten.
+    + Die statische Methode `Run.get(workspace, run_id)` wurde hinzugefügt, um eine Ausführung nur mithilfe eines Arbeitsbereichs abzurufen. Die Instanzmethode `Workspace.get_run(run_id)` wurde hinzugefügt, um eine Ausführung innerhalb des Arbeitsbereichs abzurufen.
+    + Die Befehlseigenschaft wurde in der Ausführungskonfiguration eingeführt, die es Benutzern ermöglicht, Befehle anstelle von Skripts und Argumenten zu übermitteln.
+  + **azureml-dataprep-native**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
+  + **azureml-explain-model**
+    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
+  + **azureml-interpret**
+    + Verhalten von Erklärungsclient is_raw flag wurde in azureml-interpret behoben.
+    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
+  + **azureml-pipeline-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
+  + **azureml-sdk**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
+  + **azureml-tensorboard**
+    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
+  + **azureml-train**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
+  + **azureml-train-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
+    + Kuratierte TensorFlow 2.3-Umgebung wurde hinzugefügt.
+    + Die Befehlseigenschaft wurde in der Ausführungskonfiguration eingeführt, die es Benutzern ermöglicht, Befehle anstelle von Skripts und Argumenten zu übermitteln.
+  + **azureml-widgets**
+    + Neu gestaltete Schnittstelle für das Widget zur Skriptausführung.
+
 
 ## <a name="2020-09-28"></a>2020-09-28
 
@@ -323,7 +366,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + **azureml-pipeline-steps**
     + Die Dokumentation zu „azureml-pipeline-steps“ wurde aktualisiert.
     +  Die Unterstützung wurde in `load_yaml()` (ParallelRunConfig) für Benutzer hinzugefügt, um Umgebungen inline mit dem Rest der Konfiguration oder in einer separaten Datei zu definieren.
-  + **azureml-train-automl-client**.
+  + **azureml-train-automl-client** .
     + Die Möglichkeit zur Angabe von `enable_cache` als Teil von AutoMLConfig wurde entfernt.
   + **azureml-train-automl-runtime**
     + Die eingeschränkte Verfügbarkeit der verteilten Featurisierung mit BERT über mehrere Knoten und mehrere GPUs wurde hinzugefügt.
@@ -473,7 +516,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + AutoML unterstützt Kundenprognosen jetzt über den vorgegebenen maximalen Horizont hinaus, ohne dass das Modell neu trainiert werden muss. Wenn das Prognoseziel ferner in der Zukunft liegt als der angegebene maximale Horizont, erstellt die forecast()-Funktion mit einem rekursiven Betriebsmodus dennoch gezielte Vorhersagen für den späteren Zeitpunkt. Die Abbildung der neuen Funktion finden Sie im Abschnitt „Forecasting farther than the maximum horizon“ (Vorhersagen über den maximalen Horizont hinaus) des Notebooks „forecasting-forecast-function“ in diesem [Ordner](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning).
   
   + **azureml-pipeline-steps**
-    + ParallelRunStep ist nun herausgegeben worden und Teil des **azureml-pipeline-steps**-Pakets. Vorhandenes ParallelRunStep im **azureml-contrib-pipeline-steps**-Paket ist veraltet. Änderungen gegenüber der öffentlichen Vorschauversion:
+    + ParallelRunStep ist nun herausgegeben worden und Teil des **azureml-pipeline-steps** -Pakets. Vorhandenes ParallelRunStep im **azureml-contrib-pipeline-steps** -Paket ist veraltet. Änderungen gegenüber der öffentlichen Vorschauversion:
       + Der optional konfigurierbare Parameter `run_max_try` zum Steuern der maximalen Anzahl von Aufrufen der Run-Methode für einen beliebigen Batch wurde hinzugefügt. Der Standardwert ist 3.
       + Es werden keine PipelineParameters mehr automatisch generiert. Die folgenden konfigurierbaren Werte können explizit als PipelineParameter festgelegt werden.
         + mini_batch_size
@@ -1719,7 +1762,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 ### <a name="azure-portal"></a>Azure-Portal
 + **Previewfunktion**
   + Das Streaming von Protokoll- und Ausgabedateien ist nun für Seiten mit Ausführungsdetails verfügbar. Die Dateien streamen Updates in Echtzeit, wenn die Umschaltfläche für die Vorschau aktiviert ist.
-  + Die Möglichkeit, ein Kontingent auf Arbeitsbereichsebene festzulegen, wurde als Vorschauversion veröffentlicht. AmlCompute-Kontingente werden auf Abonnementebene zugeordnet, aber wir ermöglichen Ihnen nun, dieses Kontingent für eine gerechte Freigabe und Governance zwischen Arbeitsbereichen zu verteilen und zuzuordnen. Klicken Sie in der linken Navigationsleiste Ihres Arbeitsbereichs auf das Blatt **Nutzung + Kontingente**, und wählen Sie die Registerkarte **Configure Quotas** (Kontingente konfigurieren) aus. Sie müssen Abonnementadministrator sein, um auf Arbeitsbereichsebene Kontingente festlegen zu können, da dies ein arbeitsbereichsübergreifender Vorgang ist.
+  + Die Möglichkeit, ein Kontingent auf Arbeitsbereichsebene festzulegen, wurde als Vorschauversion veröffentlicht. AmlCompute-Kontingente werden auf Abonnementebene zugeordnet, aber wir ermöglichen Ihnen nun, dieses Kontingent für eine gerechte Freigabe und Governance zwischen Arbeitsbereichen zu verteilen und zuzuordnen. Klicken Sie in der linken Navigationsleiste Ihres Arbeitsbereichs auf das Blatt **Nutzung + Kontingente** , und wählen Sie die Registerkarte **Configure Quotas** (Kontingente konfigurieren) aus. Sie müssen Abonnementadministrator sein, um auf Arbeitsbereichsebene Kontingente festlegen zu können, da dies ein arbeitsbereichsübergreifender Vorgang ist.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -1785,7 +1828,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 + **Neue Features**
   + Für das automatisierte maschinelle Lernen wird jetzt das Trainieren von ONNX-Modellen auf dem Remotecomputeziel unterstützt.
   + In Azure Machine Learning ist es jetzt möglich, das Training von einer vorherigen Ausführung, einem Prüfpunkt oder für bestimmte Modelldateien fortzusetzen.
-    + Informieren Sie sich, wie Sie [Estimators verwenden, um das Training für eine vorherige Ausführung fortzusetzen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/training/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb).
+    + Informieren Sie sich, wie Sie [Estimators verwenden, um das Training für eine vorherige Ausführung fortzusetzen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb).
 
 + **Fehlerbehebungen und Verbesserungen**
   + **azure-cli-ml**
@@ -1888,7 +1931,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 
 + **Neue Features**
   + **azureml-opendatasets**
-    + **azureml-contrib-opendatasets** ist jetzt verfügbar als **azureml-opendatasets**. Das alte Paket kann weiterhin funktionieren, aber wir empfehlen Ihnen die Verwendung von **azureml-opendatasets**, um in den Genuss umfangreicherer Funktionen und Verbesserungen zu kommen.
+    + **azureml-contrib-opendatasets** ist jetzt verfügbar als **azureml-opendatasets** . Das alte Paket kann weiterhin funktionieren, aber wir empfehlen Ihnen die Verwendung von **azureml-opendatasets** , um in den Genuss umfangreicherer Funktionen und Verbesserungen zu kommen.
     + Mit diesem neuen Paket können Sie geöffnete Datasets als Dataset im Azure Machine Learning-Arbeitsbereich registrieren und jegliche Funktionen nutzen, die dieses Dataset bietet.
     + Es umfasst außerdem vorhandene Funktionen, wie das Nutzen geöffneter Datasets als Pandas/SPARK-Dataframes sowie Standortverknüpfungen für einige Datasets wie Wetter.
 
@@ -2046,7 +2089,7 @@ Das [`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-
 
 + **Neue Features**
   + Azure Machine Learning bietet jetzt erstklassige Unterstützung für das beliebte DNN-Framework Chainer. Mithilfe von [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true) können Klassenbenutzer Chainer-Modelle auf einfache Weise trainieren und bereitstellen.
-    + Erfahren Sie mehr über das [Ausführen von verteiltem Training mit ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/training/distributed-chainer/distributed-chainer.ipynb)
+    + Erfahren Sie mehr über das [Ausführen von verteiltem Training mit ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/distributed-chainer/distributed-chainer.ipynb)
     + Erfahren Sie mehr über die [Hyperparameteroptimierung mit Chainer mithilfe von HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/b881f78e4658b4e102a72b78dbd2129c24506980/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure Machine Learning-Pipelines haben neu die Funktionalität zum Auslösen einer Pipelineausführung auf der Grundlage von Änderungen im Datenspeicher erhalten. Die Pipeline [Notizbuch planen](https://aka.ms/pl-schedule) wurde aktualisiert, um diese Funktion ins rechte Licht zu rücken.
 

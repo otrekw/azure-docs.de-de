@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057721"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102811"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -102,9 +102,9 @@ Azure Cognitive Search ist in den meisten Region verfügbar. Sie finden die List
 
 Wenn Sie mehrere Azure-Dienste verwenden, wählen Sie eine Region aus, in der auch Ihr Daten- oder Anwendungsdienst gehostet wird. So werden Bandbreitengebühren für ausgehende Daten minimiert oder fallen weg (es fallen keine Gebühren für ausgehende Daten an, wenn sich die Dienste in derselben Region befinden).
 
-## <a name="choose-a-pricing-tier-sku"></a>Auswählen eines Tarifs (SKU)
+## <a name="choose-a-pricing-tier"></a>Auswählen eines Tarifs
 
-[Die kognitive Azure-Suche wird derzeit in mehreren Tarifen angeboten:](https://azure.microsoft.com/pricing/details/search/) Free, Basic oder Standard. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Anleitungen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](search-sku-tier.md) .
+Azure Cognitive Search wird derzeit in [mehreren Tarifen](https://azure.microsoft.com/pricing/details/search/) angeboten: „Free“, „Basic“, „Standard“ oder „Datenspeicheroptimiert“. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Anleitungen finden Sie unter [Auswählen eines Tarifs](search-sku-tier.md).
 
 Für Produktionsworkloads werden in der Regel die Tarife „Basic“ und „Standard“ ausgewählt. Die meisten Kunden beginnen jedoch mit einem kostenlosen Dienst. Die wichtigsten Unterschiede zwischen den Tarifen sind Partitionsgröße und Geschwindigkeit sowie Grenzwerte bei der Anzahl von Objekten, die Sie erstellen können.
 

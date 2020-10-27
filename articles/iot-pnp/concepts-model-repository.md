@@ -1,235 +1,131 @@
 ---
-title: Konzepte des Azure IoT-Modellrepositorys | Microsoft-Dokumentation
-description: In diesem Artikel lernen Lösungsentwickler und IT-Experten die grundlegenden Konzepte des Azure IoT-Modellrepositorys.
-author: prashmo
-ms.author: prashmo
-ms.date: 07/24/2020
+title: Konzepte des Gerätemodellrepositorys | Microsoft-Dokumentation
+description: Lernen Sie als Lösungsentwickler oder IT-Experte die grundlegenden Konzepte des Gerätemodellrepositorys kennen.
+author: rido-min
+ms.author: rmpablos
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042880"
 ---
-# <a name="azure-iot-model-repository"></a>Azure IoT-Modellrepository
+# <a name="device-model-repository"></a>Gerätemodellrepository
 
-Das Azure IoT-Modellrepository ermöglicht Geräteentwicklern das Verwalten und Freigeben von IoT Plug & Play-Gerätemodellen. Bei den Gerätemodellen handelt es sich um JSON LD-Dokumente, die mit der [Digital Twins-Modellierungssprache (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert werden. Die im Modellrepositorydienst gespeicherten Modelle können entweder privat über die Zugriffssteuerung oder öffentlich ohne jegliche Authentifizierung mit Lösungsentwicklern geteilt werden, um die IoT Plug & Play-Cloudlösung zu integrieren und zu entwickeln.
+Das Gerätemodellrepository (Device Model Repository, DMR) ermöglicht Geräteentwicklern das Verwalten und Freigeben von IoT Plug & Play-Gerätemodellen. Bei den Gerätemodellen handelt es sich um JSON LD-Dokumente, die mit der [Digital Twins-Modellierungssprache (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert werden.
+
+Das DMR definiert ein Muster zum Speichern von DTDL-Schnittstellen in einer Ordnerstruktur auf der Grundlage des Gerätezwilling-Modellbezeichners (Device Twin Model Identifier, DTMI). Sie können eine Schnittstelle im DMR auffinden, indem Sie den DTMI in einen relativen Pfad konvertieren. Beispielsweise übersetzt sich der DTMI `dtmi:com:example:Thermostat;1` in `/dtmi/com/example/thermostat-1.json`.
+
+## <a name="public-device-model-repository"></a>Öffentliches Gerätemodellrepository
+
+Microsoft hostet einen öffentlichen DMR mit folgenden Merkmalen:
+
+- Kuratierte Modelle. Microsoft überprüft und genehmigt alle verfügbaren Schnittstellen mithilfe eines offenen GitHub-PR-Validierungsworkflows.
+- Unveränderlichkeit.  Schnittstellen können nach der Veröffentlichung nicht aktualisiert werden.
+- Hyperskalierung. Microsoft stellt die gesamte erforderliche Infrastruktur zum Erstellen eines sicheren und hochgradig skalierbaren Endpunkts zur Verfügung.
+
+## <a name="custom-device-model-repository"></a>Benutzerdefiniertes Gerätemodellrepository
+
+Sie können in jedem Speichermedium das gleiche DMR-Muster verwenden, z. B. ein lokales Dateisystem oder benutzerdefinierte HTTP-Webserver, um ein benutzerdefiniertes DMR zu erstellen. Sie können Modelle aus dem benutzerdefinierten DMR in der gleichen Weise wie aus dem öffentlichen DRM abrufen, indem Sie einfach die für den Zugriff auf das DMR verwendete Basis-URL ändern.
 
 > [!NOTE]
-> Geräteentwickler können IoT Plug & Play-Gerätemodelle direkt auf einem Gerät implementieren, Module verwenden oder die Implementierung in einem IoT Edge-Modul durchführen.
-
-Für den Zugriff auf das Modellrepository stehen Ihnen folgende Optionen zur Verfügung:
-
-- [Das Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo)
-- [Die REST-API für das Azure IoT-Modellrepository](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Die Azure CLI-Befehle für das Azure IoT-Modellrepository](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
+> Die zum Validieren der Modelle im öffentlichen DMR verwendeten Tools können in benutzerdefinierten Repositorys wiederverwendet werden.
 
 ## <a name="public-models"></a>Öffentliche Modelle
 
-Die im Modellrepository gespeicherten öffentlichen Digital Twins-Modelle sind für alle Benutzer verfügbar und können ohne Authentifizierung in Anwendungen integriert werden. Darüber hinaus ermöglichen die öffentlichen Modelle ein offenes Ökosystem für Gerätehersteller und Lösungsentwickler, über das sie ihre IoT Plug & Play-Gerätemodelle teilen und wiederverwenden können.
+Die im Modellrepository gespeicherten öffentlichen Digital Twins-Modelle sind für alle Benutzer verfügbar und können in Anwendungen integriert werden. Öffentliche Modelle ermöglichen ein offenes Ökosystem für Gerätehersteller und Lösungsentwickler, über das sie ihre IoT Plug & Play-Gerätemodelle teilen und wiederverwenden können.
 
-Anweisungen zum Veröffentlichen eines Modells im Modellrepository finden Sie im Abschnitt [Veröffentlichen eines Modells](#publish-a-model) unter **Unternehmensmodelle**.
+Anweisungen zum Veröffentlichen eines Modells im Modellrepository finden Sie im Abschnitt [Veröffentlichen eines Modells](#publish-a-model).
 
-So zeigen Sie ein öffentliches Modell mithilfe des Modellrepositoryportals an:
+Benutzer können nach öffentlichen Schnittstellen im öffentlichen [GitHub-Repository](https://github.com/Azure/iot-plugandplay-models) suchen, diese durchsuchen und sie anzeigen.
 
-1. Rufen Sie das [Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo) auf.
+Alle Schnittstellen in den `dtmi`-Ordnern stehen auch über den öffentlichen Endpunkt [https://devicemodels.azure.com](https://devicemodels.azure.com) zur Verfügung.
 
-1. Klicken Sie auf **Öffentliche Modelle anzeigen**.
+### <a name="resolve-models"></a>Auflösen von Modellen
 
-    ![Öffentliche Modelle anzeigen](./media/concepts-model-repository/public-models.png)
+Für den programmgesteuerten Zugriff auf diese Schnittstellen müssen Sie einen DTMI in einen relativen Pfad konvertieren, den Sie zum Abfragen des öffentlichen Endpunkts verwenden können. Im folgenden Codebeispiel wird dies veranschaulicht:
 
-Informationen zum programmgesteuerten Anzeigen eines öffentlichen Modells mithilfe der REST-API finden Sie in der REST-API-Dokumentation unter [Abrufen von Modellen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+Zum Konvertieren eines DTMI in einen absoluten Pfad verwenden wir die Funktion `DtmiToPath` mit `IsValidDtmi`:
 
-```csharp
-var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
+```cs
+static string DtmiToPath(string dtmi)
+{
+    if (!IsValidDtmi(dtmi))
+    {
+        return null;
+    }
+    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
+    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
+}
 
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+static bool IsValidDtmi(string dtmi)
+{
+    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
+    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
+    return rx.IsMatch(dtmi);
+}
 ```
 
-Informationen zum Anzeigen eines öffentlichen Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true).
+Mit dem resultierenden Pfad und der Basis-URL für das Repository können wir die Schnittstelle abrufen:
 
-## <a name="company-models"></a>Unternehmensmodelle
+```cs
+const string _repositoryEndpoint = "https://devicemodels.azure.com";
 
-Das Unternehmensmodellrepository ist ein Mandant im Azure IoT-Modellrepository, mit dem Ihre Organisation Digital Twins-Modelle erstellen und verwalten kann, die von Benutzern in Ihrem Unternehmen bzw. Ihrer Organisation erstellt wurden. Unternehmensmodelle stehen nur authentifizierten Benutzern Ihres Unternehmens bzw. Ihrer Organisation zur Verfügung. Ein Mandantenadministrator des Modellrepositorys kann Berechtigungen zuweisen und den Zugriff auf die Modelle im Unternehmensmodellrepository anderer Benutzer im Unternehmen oder der Organisation steuern.
-
-### <a name="set-up-your-company-model-repository"></a>Einrichten Ihres Unternehmensmodellrepositorys
-
-Verwenden Sie Ihr *Geschäfts-, Uni- oder Schulkonto für Azure Active Directory (Azure AD)* , um auf das Modellrepository zuzugreifen. Wenn Ihre Organisation bereits über einen Azure AD-Mandanten verfügt, können Sie Benutzerkonten und Dienstprinzipale dieses Azure AD-Mandanten verwenden.
-
-Informationen zum Einrichten eines Azure AD-Mandanten und zum Erstellen eines Benutzers oder Dienstprinzipals in einem Azure AD-Mandanten finden Sie im Abschnitt [Weitere Informationen](#additional-information).
-
-- Wenn Sie der erste Benutzer Ihrer Organisation sind, der auf das Modellrepository zugreift oder sich beim Portal anmeldet, wird Ihnen die Rolle **Mandantenadministrator** zugewiesen. Mit dieser Rolle können Sie anderen Benutzern im Repositorymandanten Ihrer Organisation Rollen zuweisen.
-
-- Ihren können von einem **Mandantenadministrator** andere Rollen zugewiesen werden, z. B. zum **Lesen von Modellen** oder **Erstellen von Modellen**.
-
-### <a name="understand-access-management"></a>Informationen zur Zugriffsverwaltung
-
-In der folgenden Tabelle werden die unterstützten Funktionen im Unternehmensmodellrepository und ihre zugehörigen Berechtigungen aufgeführt:
-
-| Funktion  | Berechtigung| BESCHREIBUNG|
-|-------------|-----------|------------|
-|Modelle lesen|Modelle lesen|Standardmäßig können alle Benutzer im Unternehmensmandanten ihre Unternehmensmodelle anzeigen. Darüber hinaus kann der Benutzer ebenfalls die privaten Modelle anzeigen, die von anderen Unternehmen für ihn freigegeben wurden.|
-|Verwalten des Zugriffs|Verwalten des Zugriffs|Mit dieser Berechtigung können Sie die Benutzerrollenzuweisung für andere Benutzer in der Organisation verwalten (hinzufügen oder entfernen).|
-|Erstellen von Modellen|Erstellen von Modellen|Mit dieser Berechtigung können Sie Modelle im Modellrepository des Unternehmens erstellen.|
-|Modelle veröffentlichen|Modelle veröffentlichen|Mit dieser Berechtigung können Sie Modelle veröffentlichen, damit sie öffentlich von allen Benutzern angezeigt werden können.|
-
-In der folgenden Tabelle werden die unterstützten Rollen und ihre Funktionen im Modellrepository zusammengefasst, die für die Zugriffsverwaltung verwendet werden können.
-
-|Role|Funktion|
-|----|----------|
-|TenantAdministrator|Zugriff verwalten, Modelle lesen|
-|Creator|Modelle erstellen, Modelle lesen|
-|Herausgeber|Modelle veröffentlichen, Modelle lesen|
-
-#### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>Übergeben eines Sicherheitstokens beim Zugreifen auf Unternehmensmodelle mit einer REST-API
-
-Wenn Sie die REST-APIs aufrufen, um Unternehmensmodelle zu verwalten, die privat oder freigegeben sind, müssen Sie ein Autorisierungstoken für den Benutzer oder Dienstprinzipal im JWT-Format bereitstellen. Im Abschnitt [Weitere Informationen](#additional-information) erfahren Sie, wie Sie ein JWT-Token für einen Benutzer oder ein Dienstprinzipal abrufen.
-
-Das JWT-Token muss an den HTTP-Autorisierungsheader in der API übergeben werden, wenn Unternehmensmodelle oder freigegebene Modelle verwendet werden. Das JWT-Token ist für öffentliche Modelle nicht erforderlich.
-
-```csharp
-// sample token
-var authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCTI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
+string dtmiPath = DtmiToPath(dtmi.ToString());
+string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
+string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 ```
 
-### <a name="view-company-or-shared-models"></a>Anzeigen von Unternehmensmodellen oder freigegebenen Modellen
+## <a name="publish-a-model"></a>Veröffentlichen eines Modells
 
-Sie müssen Mitglied der Rolle *Leser* des Repositorymandanten sein, oder das Modell muss für Sie freigegeben sein, damit Sie dieses lesen können. Sie können eine Liste nicht veröffentlichter Modelle und eine Liste veröffentlichter Modelle anzeigen, die für Sie freigegeben wurden. Benutzer können standardmäßig die Modelle ihres Unternehmens, von anderen Unternehmen für den Benutzer freigegebene Modelle und alle öffentlichen Modelle lesen.
+> [!Important]
+> Sie müssen über ein GitHub-Konto verfügen, um Modelle an den öffentlichen DMR übermitteln zu können.
 
-So zeigen Sie ein Unternehmensmodell oder ein freigegebenes Modell über das Portal an:
+1. Forken Sie das öffentliche GitHub-Repository: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models).
+1. Klonen Sie das geforkte Repository. Erstellen Sie optional einen neuen Branch, um Ihre Änderungen vom `main`-Branch isoliert zu halten.
+1. Fügen Sie die neuen Schnittstellen dem Ordner `dtmi` hinzu, und befolgen Sie dabei die Ordner/Dateiname-Konvention. Mehr dazu finden Sie im [add-model](#add-model)-Tool.
+1. Überprüfen Sie die Modelle lokal mithilfe der Informationen im Abschnitt [Skripts zum Überprüfen von Änderungen](#validate-files).
+1. Committen Sie die Änderungen lokal, und pushen Sie sie auf Ihren Fork.
+1. Erstellen Sie aus Ihrem Fork einen PR mit dem `main`-Branch als Ziel. Weitere Informationen finden Sie in der Dokumentation zum [Erstellen eines Issues oder Pull Requests](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request).
+1. Überprüfen Sie die [PR-Anforderungen](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md).
 
-1. Melden Sie sich beim [Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo) an.
+Der PR löst eine Reihe von GitHub-Aktionen aus, mit deren Hilfe die neu gesendeten Schnittstellen validiert werden und sichergestellt wird, dass Ihr PR alle Prüfungen besteht.
 
-1. Erweitern Sie im linken Bereich **Unternehmensmodelle** – **Nicht veröffentlicht**.
+Microsoft reagiert auf einen PR mit allen Prüfungen innerhalb von drei Geschäftstagen.
 
-    ![Anzeigen von Unternehmensmodellen](./media/concepts-model-repository/view-company-models.png)
+### <a name="add-model"></a>add-model
 
-1. Erweitern Sie im linken Bereich **Freigegebene Modelle – Nicht veröffentlicht**.
+In den folgenden Schritten sehen Sie, wie das add-model.js-Skript Sie beim Hinzufügen einer neuen Schnittstelle unterstützt. Für die Ausführung dieses Skripts ist Node.js erforderlich:
 
-    ![Freigegebene Modelle anzeigen](./media/concepts-model-repository/view-shared-models.png)
+1. Navigieren Sie an einer Eingabeaufforderung zum lokalen Git-Repository.
+1. Ausführen von `npm install`
+1. Ausführen von `npm run add-model <path-to-file-to-add>`
 
-Informationen zum Anzeigen eines Unternehmensmodells oder eines freigegebenen Modells mithilfe der REST-API finden Sie in der REST-API-Dokumentation unter [Abrufen von Modellen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync). Informationen zum Übergeben eines JWT-Autorisierungsheaders in der HTTP-Anforderung finden Sie unter [Übergeben eines Sicherheitstokens beim Zugriff auf Unternehmensmodelle mit einer REST-API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api).
+Achten Sie auf eventuelle Fehlermeldungen in der Konsolenausgabe.
 
-```csharp
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
-```
+### <a name="local-validation"></a>Lokale Überprüfung
 
-Informationen zum Anzeigen eines Unternehmensmodells oder eines freigegebenen Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true).
+Sie können die gleichen Validierungsprüfungen lokal ausführen, bevor Sie den PR absenden, um die Diagnose von Problemen vorab zu unterstützen.
 
-### <a name="manage-roles"></a>Verwalten von Rollen
+#### <a name="validate-files"></a>validate-files
 
-Der Mandantenadministrator kann Benutzern im Repositorymandanten Rollen zuweisen, damit diese private Modelle für die Organisation erstellen, Modelle veröffentlichen oder Modelle für andere Benutzer verwalten können.
+`npm run validate-files <file1.json> <file2.json>` überprüft, ob der Dateipfad mit den erwarteten Ordern- und Dateinamen übereinstimmt.
 
-So fügen Sie einen Benutzer mithilfe des Portals zu einer Rolle des Modellrepositorymandanten hinzu:
+#### <a name="validate-ids"></a>validate-ids
 
-1. Melden Sie sich beim [Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo) an.
+`npm run validate-ids <file1.json> <file2.json>` überprüft, ob alle im Dokument definierten IDs den gleichen Stamm wie die Haupt-ID verwenden.
 
-1. Klicken Sie im linken Bereich auf **Zugriffsverwaltung**, und klicken Sie dann auf **+ Hinzufügen**. Geben Sie im Bereich **Berechtigung hinzufügen** die geschäftliche E-Mail-Adresse des Benutzers ein, den Sie zur Rolle hinzufügen möchten:
+#### <a name="validate-deps"></a>validate-deps
 
-    ![Hinzufügen der geschäftlichen E-Mail-Adresse](./media/concepts-model-repository/add-user.png)
+`npm run validate-deps <file1.json> <file2.json>` prüft, ob alle Abhängigkeiten im Ordner `dtmi` verfügbar sind.
 
-1. Wählen Sie die Rolle aus der Dropdownliste **Rolle** aus, die Sie dem Benutzer zuweisen möchten. Wählen Sie dann **Speichern** aus:
+#### <a name="validate-models"></a>validate-models
 
-    ![Rolle auswählen](./media/concepts-model-repository/choose-role.png)
-
-### <a name="upload-a-model"></a>Hochladen eines Modells
-
-Sie müssen ein Mitglied der Rolle **Ersteller** des Repositorymandanten sein, um ein Modell in das Unternehmensmodellrepository hochladen zu können.
-
-Diese Modelle werden nicht veröffentlicht und sind standardmäßig nur für Benutzer innerhalb Ihrer Organisation zugänglich. Sie können auch nicht veröffentlichte Modelle für externe Benutzer freigeben.
-
-Hochgeladene Modelle sind unveränderlich.
-
-Die Modell-IDs für diese Modelle müssen über alle Repositorymandanten hinweg für alle hochgeladenen Modelle global eindeutig sein.
-
-So laden Sie ein Modell mithilfe des Portal hoch:
-
-1. Melden Sie sich beim [Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo) an.
-
-1. Erweitern Sie **Unternehmensmodelle** im linken Bereich, und wählen Sie dann **Modell erstellen** aus. Klicken Sie dann auf **JSON importieren**.
-
-    ![Erstellen eines Modells](./media/concepts-model-repository/create-model.png)
-
-1. Wählen Sie die Datei, die Sie hochladen möchten. Wenn das Portal Ihr Modell erfolgreich validiert, klicken Sie auf **Speichern**.
-
-Informationen zum Hochladen eines Modells mithilfe der REST-API finden Sie im API-Artikel [Erstellen eines Modells](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync). Informationen zum Übergeben eines JWT-Autorisierungsheaders in der HTTP-Anforderung finden Sie unter [Übergeben eines Sicherheitstokens beim Zugriff auf Unternehmensmodelle mit einer REST-API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api).
-
-```csharp
-var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
-```
-
-Informationen zum Hochladen eines Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl zum [Erstellen eines Modells](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true).
-
-### <a name="publish-a-model"></a>Veröffentlichen eines Modells
-
-Zum Veröffentlichen eines Modells müssen die folgenden Anforderungen erfüllt sein:
-
-1. Ihre Organisation muss Mitglied des [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) sein, um ein Modell zu veröffentlichen. Informationen zum Erstellen eines Partner Center-Kontos finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Sobald Ihr Konto genehmigt wurde, können Sie Ihre Modelle veröffentlichen. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Partner Center](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
-
-2. Der Benutzer muss Mitglied der Rolle *Herausgeber* des Repositorymandanten sein.
-
-Modelle, die von Benutzern in Ihrer Organisation erstellt und veröffentlicht werden, werden als *veröffentlichte Modelle* angezeigt. Diese Modelle sind öffentlich und können unter **Öffentliche Modelle** von beliebigen Personen gefunden werden.
-
-So veröffentlichen Sie ein Modell mithilfe des Portals:
-
-1. Melden Sie sich beim [Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo) an.
-
-2. Erweitern Sie im linken Bereich **Unternehmensmodelle**, und wählen Sie das Modell aus, das Sie veröffentlichen möchten. Wählen Sie anschließend **Veröffentlichen** aus.
-
-    ![Veröffentlichen des Modells](./media/concepts-model-repository/publish-model.png)
-
-> [!NOTE]
-> Wenn Ihnen eine Benachrichtigung angezeigt wird, die angibt, dass Sie über keine Microsoft Partner Network-ID verfügen, befolgen Sie die Registrierungsschritte in der Benachrichtigung. Weitere Informationen finden Sie in den Anforderungen am Anfang dieses Abschnitts.
-
-Informationen zum Veröffentlichen eines Modells mithilfe der REST-API finden Sie in der REST-API-Dokumentation unter [Veröffentlichen von Modellen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync). Geben Sie den Abfragezeichenfolgenparameter `update-metadata=true` an, um ein Modell mithilfe der REST-API zu veröffentlichen. Informationen zum Übergeben eines JWT-Autorisierungsheaders in der HTTP-Anforderung finden Sie unter [Übergeben eines Sicherheitstokens beim Zugriff auf Unternehmensmodelle mit einer REST-API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api).
-
-Informationen zum Veröffentlichen eines Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl zum [Veröffentlichen eines Modells](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true).
-
-> [!NOTE]
-> Modelle müssen im Modellrepository veröffentlicht werden, bevor Sie die Zertifizierungstests ausführen. Weitere Informationen finden Sie unter [Zertifizieren von IoT Plug & Play-Geräten](howto-certify-device.md).
-
-### <a name="share-a-model"></a>Freigeben eines Modells
-
-Sie können Unternehmensmodelle freigeben, die Sie mit Benutzern externer Organisationen erstellt haben. Auf diese Weise können Sie Projektmitarbeitern ermöglichen, Lösungen mit Ihren privaten Unternehmensmodellen anzuzeigen und zu entwickeln.
-
-Angenommen, ein Gerätehersteller möchte Modelle privat für das Unternehmen verwalten. Für seine Kunden ist erforderlich, dass die Gerätefunktionen vertraulich bleiben.
-
-Durch die Freigabe von Modellen zwischen Unternehmen oder Organisationen wird der sichere Zugriff auf Modelle ermöglicht, die nicht öffentlich sind.
-
-So geben Sie ein Unternehmensmodell mithilfe des Portals frei:
-
-- Wenn Sie der Ersteller eines Modells sind, sind die Schaltflächen **Freigeben** und **Freigeben für** verfügbar, wenn Sie das Modell im Abschnitt **Unternehmensmodelle** anzeigen.
-
-    ![Modell freigeben](./media/concepts-model-repository/share-model.png)
-
-- Klicken Sie auf **Freigeben**, um das Modell für einen externen Benutzer freizugeben. Geben Sie im Bereich **Modell freigeben** die E-Mail-Adresse des externen Benutzers ein, und klicken Sie dann auf **Speichern**.
-
-- Klicken Sie auf **Freigegeben für**, um die Benutzer anzuzeigen, für die Sie das Modell freigegeben haben.
-
-- Sie können die Freigabe des Modells für einen spezifischen Benutzer aufheben, indem Sie den Benutzer aus der Benutzerliste im Bereich **Freigegeben für** auswählen. Klicken Sie dann auf **Entfernen**, und bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
-
-    ![Beenden der Freigabe](./media/concepts-model-repository/stop-sharing.png)
-
-## <a name="additional-information"></a>Zusätzliche Informationen
-
-Die folgenden Artikel können sich für die Arbeit mit Azure AD als nützlich erweisen:
-
-- Informationen zum Erstellen eines neuen Azure AD-Mandanten finden Sie unter [Erstellen eines neuen Mandanten in Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant). Die meisten Organisationen verfügen bereits über Azure AD-Mandanten.
-
-- Informationen zum Hinzufügen von Benutzern oder Gastbenutzern zu einem Azure AD-Mandanten finden Sie unter [Hinzufügen oder Löschen von Benutzern mit Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory).
-
-- Informationen zum Hinzufügen eines Dienstprinzipals zu einem Azure AD-Mandanten finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-- Informationen zum Abrufen eines JWT-Tokens von Azure AD zum Aufrufen von REST-APIs finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen einer Clientanwendung](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app).
+Sie können das [DTDL-Validierungsbeispiel](https://github.com/Azure-Samples/DTDL-Validator) ausführen, um Ihre Modelle lokal zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

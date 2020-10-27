@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294528"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013745"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -115,7 +115,7 @@ docker-cimprov | 1.0.0 | Docker-Anbieter für OMI. Nur installiert, wenn Docker 
 Nach der Installation der Pakete für den Log Analytics-Agent für Linux werden die folgenden zusätzlichen systemweiten Konfigurationsänderungen angewendet. Diese Artefakte werden entfernt, wenn das „omsagent“-Paket deinstalliert wird.
 
 * Ein Benutzer ohne Berechtigungen mit dem Namen `omsagent` wird erstellt. Der Daemon wird unter diesen Anmeldeinformationen ausgeführt. 
-* Eine sudoers-*include*-Datei wird in `/etc/sudoers.d/omsagent` erstellt. Diese autorisiert `omsagent` dazu, die syslog- und omsagent-Daemons neu zu starten. Falls sudo-*include*-Direktiven in der installierten sudo-Version nicht unterstützt werden, werden diese Einträge in `/etc/sudoers` geschrieben.
+* Eine sudoers- *include* -Datei wird in `/etc/sudoers.d/omsagent` erstellt. Diese autorisiert `omsagent` dazu, die syslog- und omsagent-Daemons neu zu starten. Falls sudo- *include* -Direktiven in der installierten sudo-Version nicht unterstützt werden, werden diese Einträge in `/etc/sudoers` geschrieben.
 * Die syslog-Konfiguration wird geändert, um eine Teilmenge von Ereignissen an den Agent weiterzuleiten. Weitere Informationen finden Sie unter [Konfigurieren der Syslog-Datensammlung](data-sources-syslog.md).
 
 Auf einem überwachten Linux-Computer wird der Agent als `omsagent` aufgeführt. `omsconfig` ist der Konfigurations-Agent für den Log Analytics-Agent für Linux, der alle fünf Minuten nach einer neuen im Portal erstellten Konfiguration sucht. Die neue und aktualisierte Konfiguration wird auf die Agent-Konfigurationsdateien unter `/etc/opt/microsoft/omsagent/conf/omsagent.conf` angewendet.
@@ -124,7 +124,7 @@ Auf einem überwachten Linux-Computer wird der Agent als `omsagent` aufgeführt.
 
 Mit den folgenden Schritten konfigurieren Sie die Einrichtung des Agents für Log Analytics in Azure und Azure Government Cloud mithilfe des Wrapperskripts für Linux-Computer, die direkt oder über einen Proxyserver kommunizieren können, um den auf GitHub gehosteten Agent herunterzuladen und zu installieren.  
 
-Wenn Ihr Linux-Computer über einen Proxyserver mit Log Analytics kommunizieren muss, kann diese Konfiguration in der Befehlszeile durch den Zusatz `-p [protocol://][user:password@]proxyhost[:port]` angegeben werden. Für die *protocol*-Eigenschaft kann `http` oder `https` und für die *proxyhost*-Eigenschaft kann ein vollqualifizierter Domänenname oder eine IP-Adresse des Proxyservers verwendet werden. 
+Wenn Ihr Linux-Computer über einen Proxyserver mit Log Analytics kommunizieren muss, kann diese Konfiguration in der Befehlszeile durch den Zusatz `-p [protocol://][user:password@]proxyhost[:port]` angegeben werden. Für die *protocol* -Eigenschaft kann `http` oder `https` und für die *proxyhost* -Eigenschaft kann ein vollqualifizierter Domänenname oder eine IP-Adresse des Proxyservers verwendet werden. 
 
 Beispiel: `https://proxy01.contoso.com:30443`
 
@@ -178,7 +178,7 @@ Der Log Analytics-Agent für Linux wird in einem selbstextrahierenden und instal
     sudo sh ./omsagent-*.universal.x64.sh --install -w <workspace id> -s <shared key>
     ```
 
-3. Wenn Sie den Linux-Agent so konfigurieren möchten, dass er über ein Log Analytics-Gateway installiert wird und eine Verbindung mit einem Log Analytics-Arbeitsbereich herstellt, führen Sie den folgenden Befehl unter Angabe der Parameter für Proxy, Arbeitsbereichs-ID und Arbeitsbereichsschlüssel aus. Diese Konfiguration kann in der Befehlszeile durch den Zusatz `-p [protocol://][user:password@]proxyhost[:port]` angegeben werden. Für die *proxyhost*-Eigenschaft kann ein vollqualifizierter Domänenname oder eine IP-Adresse des Log Analytics-Gatewayservers verwendet werden.  
+3. Wenn Sie den Linux-Agent so konfigurieren möchten, dass er über ein Log Analytics-Gateway installiert wird und eine Verbindung mit einem Log Analytics-Arbeitsbereich herstellt, führen Sie den folgenden Befehl unter Angabe der Parameter für Proxy, Arbeitsbereichs-ID und Arbeitsbereichsschlüssel aus. Diese Konfiguration kann in der Befehlszeile durch den Zusatz `-p [protocol://][user:password@]proxyhost[:port]` angegeben werden. Für die *proxyhost* -Eigenschaft kann ein vollqualifizierter Domänenname oder eine IP-Adresse des Log Analytics-Gatewayservers verwendet werden.  
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -213,9 +213,9 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 Das Upgrade von einer früheren Version wird ab Version 1.0.0-47 bei jedem Release unterstützt. Führen Sie die Installation mit dem Parameter `--upgrade` aus, um ein Upgrade aller Komponenten des Agents auf die neueste Version vorzunehmen.
 
 ## <a name="cache-information"></a>Informationen zum Cache
-Daten vom Log Analytics-Agent für Linux werden auf dem lokalen Computer unter „ *%STATE_DIR_WS%/out_oms_common*.buffer*“ zwischengespeichert, bevor sie an Azure Monitor gesendet werden. Benutzerdefinierte Protokolldaten werden unter „ *%STATE_DIR_WS%/out_oms_blob*.buffer*“ gepuffert. Der Pfad unterscheidet sich möglicherweise für einige [Lösungen und Datentypen](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=).
+Daten vom Log Analytics-Agent für Linux werden auf dem lokalen Computer unter „ *%STATE_DIR_WS%/out_oms_common* .buffer*“ zwischengespeichert, bevor sie an Azure Monitor gesendet werden. Benutzerdefinierte Protokolldaten werden unter „ *%STATE_DIR_WS%/out_oms_blob* .buffer*“ gepuffert. Der Pfad unterscheidet sich möglicherweise für einige [Lösungen und Datentypen](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=).
 
-Der Agent versucht den Upload alle 20 Sekunden. Wenn ein Fehler auftritt, wird bis zum erfolgreichen Abschluss jeweils eine exponentiell steigende Zeitspanne gewartet. Vor dem zweiten Versuch wird 30 Sekunden gewartet, vor dem nächsten 60 Sekunden, dann 120 Sekunden usw. bis maximal 9 Minuten zwischen Wiederholungen, bis wieder eine Verbindung hergestellt wurde. Der Agent führt für einen bestimmten Datenblock nur zehn Wiederholungsversuche aus, bevor er ihn verwirft und zum nächsten wechselt. Dies wird fortgesetzt, bis der Agent wieder erfolgreich einen Upload ausführen kann. Das bedeutet, dass Daten bis zu 8,5 Stunden gepuffert werden können, bevor sie verworfen werden.
+Der Agent versucht den Upload alle 20 Sekunden. Wenn ein Fehler auftritt, wird bis zum erfolgreichen Abschluss jeweils eine exponentiell zunehmende Zeitspanne gewartet: 30 Sekunden vor dem zweiten Versuch, 60 Sekunden vor dem dritten Versuch, 120 Sekunden ... usw. bis maximal 16 Minuten zwischen Wiederholungen, bis wieder eine Verbindung hergestellt wurde. Der Agent führt für einen bestimmten Datenblock bis zu sechs Wiederholungsversuche aus, bevor er ihn verwirft und zum nächsten wechselt. Dies wird fortgesetzt, bis der Agent wieder erfolgreich einen Upload ausführen kann. Das bedeutet, dass Daten bis zu etwa 30 Minuten gepuffert werden können, bevor sie verworfen werden.
 
 Die Standardcachegröße beträgt 10 MB, dies kann aber in der Datei [omsagent.conf](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf) geändert werden.
 

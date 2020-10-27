@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893407"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966405"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning-Vorgänge
 
 Integrierte Azure Machine Learning-Aktionen für viele Vorgänge und Aufgaben. Eine umfassende Liste finden Sie unter [Vorgänge für Azure-Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>MLflow-Vorgänge in Azure Machine Learning
+
+In dieser Tabelle ist der Berechtigungsumfang beschrieben, der für Aktionen in der benutzerdefinierten Rolle hinzugefügt werden sollte, die für die Durchführung von MLflow-Vorgängen erstellt wird.
+
+| MLflow-Vorgang | `Scope` |
+| --- | --- |
+| Auflisten aller Experimente im Überwachungsspeicher eines Arbeitsbereichs, Abrufen eines Experiments nach ID, Abrufen eines Experiments nach Name | Microsoft.MachineLearningServices/workspaces/experiments/read |
+| Erstellen eines Experiments mit einem Namen, Festlegen eines Tags für ein Experiment, Wiederherstellen eines zum Löschen markierten Experiments| Microsoft.MachineLearningServices/workspaces/experiments/write | 
+| Löschen eines Experiments | Microsoft.MachineLearningServices/workspaces/experiments/delete |
+| Abrufen einer Ausführung und der zugehörigen Daten und Metadaten, Abrufen einer Liste mit allen Werten für die angegebene Metrik für eine bestimmte Ausführung, Auflisten von Artefakten für eine Ausführung | Microsoft.MachineLearningServices/workspaces/experiments/runs/read |
+| Erstellen einer neuen Ausführung in einem Experiment, Löschen von Ausführungen, Wiederherstellen von gelöschten Ausführungen, Protokollieren von Metriken unter der aktuellen Ausführung, Festlegen von Tags für eine Ausführung, Löschen von Tags für eine Ausführung, Protokollieren von Parametern (Schlüssel-Wert-Paar) einer Ausführung, Protokollieren eines Batchs mit Metriken, Parametern und Tags für eine Ausführung, Aktualisieren des Ausführungsstatus | Microsoft.MachineLearningServices/workspaces/experiments/runs/write |
+| Abrufen eines registrierten Modells nach Name, Abrufen einer Liste mit allen registrierten Modellen in der Registrierung, Suchen nach registrierten Modellen, Modelle der aktuellen Version für jede Anforderungsphase, Abrufen einer Version des registrierten Modells, Suchen nach Modellversionen, Abrufen des URI, unter dem die Artefakte einer Modellversion gespeichert sind, Suchen nach Ausführungen anhand von Experiment-IDs | Microsoft.MachineLearningServices/workspaces/models/read |
+| Erstellen eines neuen registrierten Modells, Aktualisieren von Name/Beschreibung eines registrierten Modells, Umbenennen eines vorhandenen registrierten Modells, Erstellen einer neuen Version des Modells, Aktualisieren der Beschreibung einer Modellversion, Durchführen des Übergangs in eine der Phasen für ein registriertes Modell | Microsoft.MachineLearningServices/workspaces/models/write |
+| Löschen eines registrierten Modells einschließlich aller Versionen, Löschen von bestimmten Versionen eines registrierten Modells | Microsoft.MachineLearningServices/workspaces/models/delete |
+
 
 ## <a name="create-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
@@ -141,7 +157,7 @@ Die folgende Tabelle ist eine Zusammenfassung der Azure Machine Learning-Aktivit
 | Veröffentlichen eines Pipelineendpunkts | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Bereitstellen eines registrierten Modells in einer AKS/ACI-Ressource | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Bewertung anhand eines bereitgestellten AKS-Endpunkts | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit der Berechtigung `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (ohne Verwendung der Authentifizierung über Azure Active Directory) ODER `"/workspaces/read"` (bei Verwendung der Tokenauthentifizierung) |
-| Zugreifen auf Speicher mithilfe interaktiver Notebooks | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Zugreifen auf Speicher mithilfe interaktiver Notebooks | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
 | Erstellen einer neuen benutzerdefinierten Rolle | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit der Berechtigung `Microsoft.Authorization/roleDefinitions/write` | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/computes/write` |
 
 > [!TIP]
@@ -157,7 +173,7 @@ Derzeit veröffentlichen wir keine [integrierten Azure-Rollen](/azure/role-based
 
 Ja, es gibt einige gängige Szenarien mit vorgeschlagenen benutzerdefinierten Rollendefinitionen, die Sie als Basis für die Definitionen Ihrer eigenen benutzerdefinierten Rollen verwenden können:
 
-* __Wissenschaftliche Fachkraft für Daten (benutzerdefiniert)__ : Ermöglicht einer wissenschaftlichen Fachkraft für Daten die Ausführung aller Vorgänge in einem Arbeitsbereich, mit folgenden **Ausnahmen**:
+* __Wissenschaftliche Fachkraft für Daten (benutzerdefiniert)__ : Ermöglicht einer wissenschaftlichen Fachkraft für Daten die Ausführung aller Vorgänge in einem Arbeitsbereich, mit folgenden **Ausnahmen** :
 
     * Erstellen von Berechnungen
     * Bereitstellen von Modellen in einem AKS-Produktionscluster
@@ -193,7 +209,7 @@ Ja, es gibt einige gängige Szenarien mit vorgeschlagenen benutzerdefinierten Ro
     }
     ```
 
-* __Wissenschaftliche Fachkraft für Daten (eingeschränkt, benutzerdefiniert)__ : Eine restriktivere Rollendefinition ohne Platzhalterzeichen in den zulässigen Aktionen. Diese Rolle kann alle Vorgänge in einem Arbeitsbereich ausführen, mit folgenden **Ausnahmen**:
+* __Wissenschaftliche Fachkraft für Daten (eingeschränkt, benutzerdefiniert)__ : Eine restriktivere Rollendefinition ohne Platzhalterzeichen in den zulässigen Aktionen. Diese Rolle kann alle Vorgänge in einem Arbeitsbereich ausführen, mit folgenden **Ausnahmen** :
 
     * Erstellen von Berechnungen
     * Bereitstellen von Modellen in einem AKS-Produktionscluster
@@ -253,6 +269,46 @@ Ja, es gibt einige gängige Szenarien mit vorgeschlagenen benutzerdefinierten Ro
         ]
     }
     ```
+     
+* __MLflow: Wissenschaftliche Fachkraft für Daten (benutzerdefiniert)__ : Ermöglicht einer wissenschaftlichen Fachkraft für Daten (Data Scientist) die Durchführung aller für MLflow AzureML unterstützten Vorgänge, **mit Ausnahme von** :
+
+   * Erstellen von Berechnungen
+   * Bereitstellen von Modellen in einem AKS-Produktionscluster
+   * Bereitstellen eines Pipelineendpunkts in der Produktion
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __MLOps (benutzerdefiniert)__ : Ermöglicht Ihnen das Zuweisen einer Rolle zu einem Dienstprinzipal und Verwenden dieser Rolle zum Automatisieren Ihrer MLOps-Pipelines. Verwenden Sie beispielsweise folgenden Code, um Ausführungen an eine bereits veröffentlichte Pipeline zu übermitteln:
 
@@ -295,7 +351,7 @@ Ja, es gibt einige gängige Szenarien mit vorgeschlagenen benutzerdefinierten Ro
     }
     ```
 
-* __Arbeitsbereichsadministrator__: Ermöglicht das Ausführen aller Vorgänge im Geltungsbereich eines Arbeitsbereichs, mit folgenden **Ausnahmen**:
+* __Arbeitsbereichsadministrator__ : Ermöglicht das Ausführen aller Vorgänge im Geltungsbereich eines Arbeitsbereichs, mit folgenden **Ausnahmen** :
 
     * Erstellen eines neuen Arbeitsbereichs
     * Zuweisen von Kontingenten auf Abonnement- oder Arbeitsbereichsebene

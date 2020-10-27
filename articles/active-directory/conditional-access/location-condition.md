@@ -61,7 +61,7 @@ Diese Option kann in Richtlinien für bedingten Zugriff einfließen, wenn Sie z.
 
 ### <a name="countries-and-regions"></a>Länder und Regionen
 
-Einige Organisationen können sich dafür entscheiden, IP-Grenzen für ganze Länder oder Regionen als benannte Standorte für Richtlinien für bedingten Zugriff zu definieren. Sie können mithilfe dieser Standorte unnötigen Datenverkehr blockieren, wenn sie wissen, dass gültige Benutzer niemals aus einem Standort wie etwa Nordkorea stammen. Diese Zuordnungen von IP-Adressen zu einem Land werden in regelmäßigen Abständen aktualisiert. 
+Einige Organisationen können sich dafür entscheiden, IP-Grenzen für ganze Länder oder Regionen als benannte Standorte für Richtlinien für bedingten Zugriff zu definieren. Sie können mithilfe dieser Standorte unnötigen Datenverkehr blockieren, wenn sie wissen, dass gültige Benutzer niemals aus einem Standort wie etwa Nordkorea stammen. Diese Zuordnungen von IP-Adressen zu einem Land/einer Region werden in regelmäßigen Abständen aktualisiert. 
 
 > [!NOTE]
 > Länder enthalten keine IPv6-Adressbereiche, sondern nur bekannte IPv4-Adressbereiche, und können nicht als vertrauenswürdig markiert werden.
@@ -70,7 +70,7 @@ Einige Organisationen können sich dafür entscheiden, IP-Grenzen für ganze Lä
 
 #### <a name="include-unknown-areas"></a>Einschließen unbekannter Bereiche
 
-Einige IP-Adressen sind weder einem bestimmten Land noch einer bestimmten Region zugeordnet. Um diese IP-Standorte zu erfassen, aktivieren Sie beim Definieren eines Standorts die Option **Unbekannte Bereiche einschließen**. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
+Einige IP-Adressen sind weder einem bestimmten Land noch einer bestimmten Region zugeordnet. Um diese IP-Standorte zu erfassen, aktivieren Sie beim Definieren eines Standorts die Option **Unbekannte Bereiche einschließen** . Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
 
 ### <a name="configure-mfa-trusted-ips"></a>Konfigurieren durch MFA bestätigter IP-Adressen
 
@@ -82,7 +82,7 @@ Wenn Sie vertrauenswürdige IP-Adressen konfiguriert haben, werden Sie als **Fü
 
 Auf der Einstellungsseite für den mehrstufigen Authentifizierungsdienst können Sie Benutzer aus dem Unternehmensintranet identifizieren, indem Sie **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen** aktivieren. Diese Einstellung gibt an, dass der Anspruch innerhalb des Unternehmensnetzwerks, der von AD FS ausgestellt wird, als vertrauenswürdig angesehen und dazu verwendet wird, den Benutzer als innerhalb des Unternehmensnetzwerks ansässig zu erkennen. Weitere Informationen finden Sie unter [Aktivieren des Features vertrauenswürdige IPs beim bedingten Zugriff](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-Nach dem Aktivieren wird diese Option, einschließlich des benannten Standorts **Für MFA vertrauenswürdige IPs**, auf alle Richtlinien angewendet, für die diese Option ausgewählt ist.
+Nach dem Aktivieren wird diese Option, einschließlich des benannten Standorts **Für MFA vertrauenswürdige IPs** , auf alle Richtlinien angewendet, für die diese Option ausgewählt ist.
 
 Für mobile und Desktopanwendungen mit langer Sitzungslebensdauer wird der bedingte Zugriff in regelmäßigen Abständen neu ausgewertet. Die Standardeinstellung ist einmal pro Stunde. Wenn der Anspruch innerhalb des Unternehmensnetzwerks nur zum Zeitpunkt der erstmaligen Authentifizierung ausgegeben wird, verfügt Azure AD möglicherweise nicht über eine Liste der vertrauenswürdigen IP-Bereiche. In diesem Fall ist die Bestimmung, ob sich der Benutzer noch im Unternehmensnetzwerk befindet, schwieriger:
 
@@ -128,7 +128,7 @@ Beim Konfigurieren der Standortbedingung können Sie zwischen diesen Optionen w�
 
 ### <a name="any-location"></a>Jeden beliebigen Speicherort
 
-Standardmäßig bewirkt das Aktivieren von **Alle Standorte**, dass eine Richtlinie auf alle IP-Adressen angewendet wird, was jede beliebige Adresse im Internet bedeutet. Diese Einstellung ist nicht auf IP-Adressen beschränkt, die von Ihnen als benannter Standort konfiguriert wurden. Wenn Sie **Alle Standorte** aktivieren, können Sie bestimmte Standorte trotzdem noch von einer Richtlinie ausschließen. Beispielsweise können Sie eine Richtlinie auf alle Standorte mit Ausnahme vertrauenswürdiger Standorte anwenden, um den Geltungsbereich auf alle Standorte mit Ausnahme des Unternehmensnetzwerks festzulegen.
+Standardmäßig bewirkt das Aktivieren von **Alle Standorte** , dass eine Richtlinie auf alle IP-Adressen angewendet wird, was jede beliebige Adresse im Internet bedeutet. Diese Einstellung ist nicht auf IP-Adressen beschränkt, die von Ihnen als benannter Standort konfiguriert wurden. Wenn Sie **Alle Standorte** aktivieren, können Sie bestimmte Standorte trotzdem noch von einer Richtlinie ausschließen. Beispielsweise können Sie eine Richtlinie auf alle Standorte mit Ausnahme vertrauenswürdiger Standorte anwenden, um den Geltungsbereich auf alle Standorte mit Ausnahme des Unternehmensnetzwerks festzulegen.
 
 ### <a name="all-trusted-locations"></a>Alle vertrauenswürdigen Speicherorte
 

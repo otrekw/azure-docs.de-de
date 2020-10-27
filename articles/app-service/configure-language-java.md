@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976010"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171573"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -90,7 +90,7 @@ Alle Java-Laufzeiten in App Service, die Azul-JVMs verwenden, enthalten Zulu Fli
 
 Um eine zeitgesteuerte Aufzeichnung zu erstellen, benötigen Sie die PID (Prozess-ID) der Java-Anwendung. Öffnen Sie zum Suchen der PID in einem Browser die SCM-Website Ihrer Web-App unter https://<Name Ihrer Website>.scm.azurewebsites.net/ProcessExplorer/. Auf dieser Seite werden die in Ihrer Web-App ausgeführten Prozesse angezeigt. Suchen Sie in der Tabelle den Prozess mit dem Namen „Java“, und kopieren Sie die entsprechende PID (Prozess-ID).
 
-Öffnen Sie dann auf der oberen Symbolleiste der SCM-Website die **Debugging-Konsole**, und führen Sie den folgenden Befehl aus. Ersetzen Sie `<pid>` durch die Prozess-ID, die Sie zuvor kopiert haben. Dieser Befehl startet eine 30-Sekunden-Profileraufzeichnung der Java-Anwendung und generiert eine Datei mit dem Namen `timed_recording_example.jfr` im Verzeichnis `D:\home`.
+Öffnen Sie dann auf der oberen Symbolleiste der SCM-Website die **Debugging-Konsole** , und führen Sie den folgenden Befehl aus. Ersetzen Sie `<pid>` durch die Prozess-ID, die Sie zuvor kopiert haben. Dieser Befehl startet eine 30-Sekunden-Profileraufzeichnung der Java-Anwendung und generiert eine Datei mit dem Namen `timed_recording_example.jfr` im Verzeichnis `D:\home`.
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -235,7 +235,7 @@ Richten Sie die App-Authentifizierung im Azure-Portal über die Option **Authent
 
 #### <a name="java-se"></a>Java SE
 
-Spring Boot-Entwickler können die [Azure Active Directory-Startoption für Spring Boot](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory) verwenden, um Anwendungen mithilfe von vertrauten Spring Security-Anmerkungen und -APIs absichern. Achten Sie darauf, dass Sie die maximale Headergröße in Ihrer *application.properties*-Datei erhöhen. Wir empfehlen den Wert `16384`.
+Spring Boot-Entwickler können die [Azure Active Directory-Startoption für Spring Boot](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory) verwenden, um Anwendungen mithilfe von vertrauten Spring Security-Anmerkungen und -APIs absichern. Achten Sie darauf, dass Sie die maximale Headergröße in Ihrer *application.properties* -Datei erhöhen. Wir empfehlen den Wert `16384`.
 
 #### <a name="tomcat"></a>Tomcat
 
@@ -330,29 +330,29 @@ In diesem Abschnitt wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure
 ::: zone pivot="platform-windows"
 
 1. Erstellen Sie ein NewRelic-Konto unter [NewRelic.com](https://newrelic.com/signup).
-2. Laden Sie den Java-Agent von NewRelic herunter. Der Dateiname hat etwa das Format *newrelic-java-x.x.x.zip*.
+2. Laden Sie den Java-Agent von NewRelic herunter. Der Dateiname hat etwa das Format *newrelic-java-x.x.x.zip* .
 3. Kopieren Sie Ihren Lizenzschlüssel. Sie benötigen ihn später zum Konfigurieren des Agents.
-4. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](configure-linux-open-ssh-session.md), und erstellen Sie das neue Verzeichnis */home/site/wwwroot/apm*.
+4. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](configure-linux-open-ssh-session.md), und erstellen Sie das neue Verzeichnis */home/site/wwwroot/apm* .
 5. Laden Sie die entpackten Dateien für den NewRelic-Java-Agent in ein Verzeichnis unter */home/site/wwwroot/apm* herunter. Die Dateien für Ihren Agenten sollten Sie unter */home/site/wwwroot/apm/newrelic* finden.
-6. Ändern Sie die YAML-Datei unter */home/site/wwwroot/apm/newrelic/newrelic.yml*, und ersetzen Sie den Platzhalter-Lizenzwert durch Ihren eigenen Lizenzschlüssel.
+6. Ändern Sie die YAML-Datei unter */home/site/wwwroot/apm/newrelic/newrelic.yml* , und ersetzen Sie den Platzhalter-Lizenzwert durch Ihren eigenen Lizenzschlüssel.
 7. Navigieren Sie im Azure-Portal zu Ihrer Anwendung in App Service, und erstellen Sie eine neue Anwendungseinstellung.
 
-    - Erstellen Sie für **Java SE**-Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Erstellen Sie für **Tomcat**-Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
+    - Erstellen Sie für **Java SE** -Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
+    - Erstellen Sie für **Tomcat** -Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
 1. Erstellen Sie ein NewRelic-Konto unter [NewRelic.com](https://newrelic.com/signup).
-2. Laden Sie den Java-Agent von NewRelic herunter. Der Dateiname hat etwa das Format *newrelic-java-x.x.x.zip*.
+2. Laden Sie den Java-Agent von NewRelic herunter. Der Dateiname hat etwa das Format *newrelic-java-x.x.x.zip* .
 3. Kopieren Sie Ihren Lizenzschlüssel. Sie benötigen ihn später zum Konfigurieren des Agents.
-4. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](configure-linux-open-ssh-session.md), und erstellen Sie das neue Verzeichnis */home/site/wwwroot/apm*.
+4. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](configure-linux-open-ssh-session.md), und erstellen Sie das neue Verzeichnis */home/site/wwwroot/apm* .
 5. Laden Sie die entpackten Dateien für den NewRelic-Java-Agent in ein Verzeichnis unter */home/site/wwwroot/apm* herunter. Die Dateien für Ihren Agenten sollten Sie unter */home/site/wwwroot/apm/newrelic* finden.
-6. Ändern Sie die YAML-Datei unter */home/site/wwwroot/apm/newrelic/newrelic.yml*, und ersetzen Sie den Platzhalter-Lizenzwert durch Ihren eigenen Lizenzschlüssel.
+6. Ändern Sie die YAML-Datei unter */home/site/wwwroot/apm/newrelic/newrelic.yml* , und ersetzen Sie den Platzhalter-Lizenzwert durch Ihren eigenen Lizenzschlüssel.
 7. Navigieren Sie im Azure-Portal zu Ihrer Anwendung in App Service, und erstellen Sie eine neue Anwendungseinstellung.
    
-    - Erstellen Sie für **Java SE**-Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Erstellen Sie für **Tomcat**-Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
+    - Erstellen Sie für **Java SE** -Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
+    - Erstellen Sie für **Tomcat** -Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
 
 ::: zone-end
 
@@ -363,25 +363,25 @@ In diesem Abschnitt wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure
 ::: zone pivot="platform-windows"
 
 1. Erstellen Sie unter [AppDynamics.com](https://www.appdynamics.com/community/register/) ein AppDynamics-Konto.
-2. Laden Sie den Java-Agent von der AppDynamics-Website herunter. Der Dateiname hat etwa das Format *AppServerAgent-x.x.x.xxxxx.zip*.
+2. Laden Sie den Java-Agent von der AppDynamics-Website herunter. Der Dateiname hat etwa das Format *AppServerAgent-x.x.x.xxxxx.zip* .
 3. Verwenden Sie die [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console), um ein neues Verzeichnis namens */home/site/wwwroot/apm* zu erstellen.
 4. Laden Sie die Dateien für den Java-Agent in ein Verzeichnis unter */home/site/wwwroot/apm* herunter. Die Dateien für Ihren Agenten sollten Sie unter */home/site/wwwroot/apm/appdynamics* finden.
 5. Navigieren Sie im Azure-Portal zu Ihrer Anwendung in App Service, und erstellen Sie eine neue Anwendungseinstellung.
 
-   - Erstellen Sie für **Java SE**-Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
-   - Erstellen Sie für **Tomcat**-Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
+   - Erstellen Sie für **Java SE** -Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
+   - Erstellen Sie für **Tomcat** -Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
 1. Erstellen Sie unter [AppDynamics.com](https://www.appdynamics.com/community/register/) ein AppDynamics-Konto.
-2. Laden Sie den Java-Agent von der AppDynamics-Website herunter. Der Dateiname hat etwa das Format *AppServerAgent-x.x.x.xxxxx.zip*.
-3. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](configure-linux-open-ssh-session.md), und erstellen Sie das neue Verzeichnis */home/site/wwwroot/apm*.
+2. Laden Sie den Java-Agent von der AppDynamics-Website herunter. Der Dateiname hat etwa das Format *AppServerAgent-x.x.x.xxxxx.zip* .
+3. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](configure-linux-open-ssh-session.md), und erstellen Sie das neue Verzeichnis */home/site/wwwroot/apm* .
 4. Laden Sie die Dateien für den Java-Agent in ein Verzeichnis unter */home/site/wwwroot/apm* herunter. Die Dateien für Ihren Agenten sollten Sie unter */home/site/wwwroot/apm/appdynamics* finden.
 5. Navigieren Sie im Azure-Portal zu Ihrer Anwendung in App Service, und erstellen Sie eine neue Anwendungseinstellung.
 
-   - Erstellen Sie für **Java SE**-Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
-   - Erstellen Sie für **Tomcat**-Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
+   - Erstellen Sie für **Java SE** -Apps eine Umgebungsvariable namens `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
+   - Erstellen Sie für **Tomcat** -Apps eine Umgebungsvariable namens `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`, wobei `<app-name>` für Ihren App Service-Namen steht.
 
 ::: zone-end
 
@@ -435,7 +435,7 @@ Legen Sie als Nächstes fest, ob die Datenquelle nur für eine einzelne Anwendun
 
 #### <a name="application-level-data-sources"></a>Datenquellen auf Anwendungsebene
 
-1. Erstellen Sie eine *context.xml*-Datei im Verzeichnis *META-INF/* Ihres Projekts. Erstellen Sie das Verzeichnis *META-INF/* , falls es noch nicht vorhanden ist.
+1. Erstellen Sie eine *context.xml* -Datei im Verzeichnis *META-INF/* Ihres Projekts. Erstellen Sie das Verzeichnis *META-INF/* , falls es noch nicht vorhanden ist.
 
 2. Fügen Sie in *context.xml* ein Element vom Typ `Context` hinzu, um die Datenquelle mit einer JNDI-Adresse zu verknüpfen. Ersetzen Sie den Platzhalter `driverClassName` durch den Klassennamen Ihres Treibers aus der obigen Tabelle.
 
@@ -513,7 +513,7 @@ Legen Sie als Nächstes fest, ob die Datenquelle nur für eine einzelne Anwendun
 
 #### <a name="application-level-data-sources"></a>Datenquellen auf Anwendungsebene
 
-1. Erstellen Sie eine *context.xml*-Datei im Verzeichnis *META-INF/* Ihres Projekts. Erstellen Sie das Verzeichnis *META-INF/* , falls es noch nicht vorhanden ist.
+1. Erstellen Sie eine *context.xml* -Datei im Verzeichnis *META-INF/* Ihres Projekts. Erstellen Sie das Verzeichnis *META-INF/* , falls es noch nicht vorhanden ist.
 
 2. Fügen Sie in *context.xml* ein Element vom Typ `Context` hinzu, um die Datenquelle mit einer JNDI-Adresse zu verknüpfen. Ersetzen Sie den Platzhalter `driverClassName` durch den Klassennamen Ihres Treibers aus der obigen Tabelle.
 
@@ -546,11 +546,11 @@ Wenn Sie eine gemeinsam genutzte Datenquelle auf Serverebene hinzufügen, müsse
 Ihr Startskript führt eine [XSL-Transformation](https://www.w3schools.com/xml/xsl_intro.asp) für die Datei „server.xml“ durch und gibt die resultierende XML-Datei unter `/usr/local/tomcat/conf/server.xml` aus. Das Startskript muss „libxslt“ per APK installieren. Die XSL-Datei und das Startskript können per FTP hochgeladen werden. Im Anschluss finden Sie ein Beispiel für ein Startskript:
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Im Anschluss folgt ein Beispiel für eine XSL-Datei. Die XSL-Beispieldatei fügt der Datei „server.xml“ von Tomcat einen neuen Connectorknoten hinzu.
@@ -678,7 +678,7 @@ Das [Registrieren einer Datenquelle in JBoss EAP](https://access.redhat.com/doc
     ```
 
 1. Wenn Sie einen FTP-Client Ihrer Wahl verwenden, laden Sie Ihren JDBC-Treiber, `jboss-cli-commands.cli`, `startup_script.sh` und die Moduldefinition in `/site/deployments/tools/` hoch.
-2. Konfigurieren Sie Ihre Website so, dass sie `startup_script.sh` beim Start des Containers ausführt. Navigieren Sie im Azure-Portal zu **Konfiguration** > **Allgemeine Einstellungen** > **Startbefehl**. Legen Sie das Feld „Startbefehl“ auf `/home/site/deployments/tools/startup_script.sh` fest. **Speichern** Sie die Änderungen.
+2. Konfigurieren Sie Ihre Website so, dass sie `startup_script.sh` beim Start des Containers ausführt. Navigieren Sie im Azure-Portal zu **Konfiguration** > **Allgemeine Einstellungen** > **Startbefehl** . Legen Sie das Feld „Startbefehl“ auf `/home/site/deployments/tools/startup_script.sh` fest. **Speichern** Sie die Änderungen.
 
 Um sich zu vergewissern, dass die Datenquelle dem JBoss-Server hinzugefügt wurde, stellen Sie eine SSH-Verbindung mit Ihrer Web-App her, und führen Sie `$JBOSS_HOME/bin/jboss-cli.sh --connect` aus. Sobald Sie mit JBoss verbunden sind, führen Sie `/subsystem=datasources:read-resource` aus, um eine Liste der Datenquellen auszugeben.
 
@@ -691,6 +691,10 @@ Um sich zu vergewissern, dass die Datenquelle dem JBoss-Server hinzugefügt wurd
 App Service ermöglicht es Benutzern, die Hauptversion der JVM (z. B. Java 8 oder Java 11) sowie die Nebenversion (z. B. 1.8.0 _232 oder 11.0.5) auszuwählen. Sie können auch auswählen, dass die Nebenversion automatisch aktualisiert wird, sobald neue Nebenversionen verfügbar werden. In den meisten Fällen sollten Produktionsstandorte angeheftete JVM-Nebenversionen verwenden. Dadurch werden unerwartete Ausfälle während einer automatischen Aktualisierung einer Nebenversion verhindert.
 
 Wenn Sie sich für das Anheften der Nebenversion entscheiden, müssen Sie die JVM-Nebenversion in regelmäßigen Abständen am Standort aktualisieren. Um sicherzustellen, dass Ihre Anwendung mit der neueren Nebenversion funktioniert, erstellen Sie einen Stagingslot, und erhöhen Sie die Nebenversion am Stagingstandort. Nachdem Sie bestätigt haben, dass die Anwendung in der neuen Nebenversion ordnungsgemäß ausgeführt wird, können Sie den Stagingbereich gegen den Produktionsslot austauschen.
+
+## <a name="jboss-eap-hardware-options"></a>JBoss EAP-Hardwareoptionen
+
+JBoss EAP ist nur bei den Hardwareoptionen „Premium“ und „Isoliert“ (Isolated) verfügbar. Kunden, die während der öffentlichen Vorschauphase eine JBoss-EAP-Website im Tarif „Free“, „Shared“, „Basic“ oder „Standard“ erstellt haben, sollten auf die Hardwareebene „Premium“ oder „Isoliert“ hochskalieren, um unerwartetes Verhalten zu vermeiden.
 
 ## <a name="java-runtime-statement-of-support"></a>Unterstützungserklärung für die Java-Runtime
 

@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: ef907aea940a4f01475cebf72528b9bcdde50f4d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180234"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971556"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 
@@ -52,7 +52,7 @@ Stellen Sie auf der Registerkarte **Verwaltung** im Bereich **Überwachung** sic
 ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
+> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten oder zonenredundanten Speicherkontotypen. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Bereitstellen aus einer Azure Resource Manager-Vorlage
@@ -87,7 +87,7 @@ Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Compute
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann den virtuellen Computer aus.
 2. Wählen Sie im Abschnitt **Support + Problembehandlung** die Option **Startdiagnose** und dann die Registerkarte **Einstellungen** aus.
-3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein**, und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
+3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein** , und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
 4. Speichern Sie die Änderungen.
 
     ![Aktualisieren eines vorhandenen virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

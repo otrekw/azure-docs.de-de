@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Dieser Artikel enthält eine Übersicht über Kubernetes mit Azure Arc-Unterstützung.
 keywords: Kubernetes, Arc, Azure, Container
 ms.custom: references_regions
-ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601fcb096bf2bfeb1a6120015690c9aff4b6177b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858420"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216078"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?
 
@@ -72,7 +72,7 @@ Kubernetes mit Azure Arc-Unterstützung wird derzeit in diesen Regionen unterst�
 
     Nein. Alle Funktionen von Azure Arc-fähigem Kubernetes wie Azure Monitor, Azure Policy (Gatekeeper) sind nativ mit AKS verfügbar, das bereits über eine Ressourcendarstellung in Azure verfügt.
     
-* Sollte ich meinen AKS-Cluster auf Azure Stack HCI mit Azure Arc verbinden? Was ist mit Kubernetes-Clustern, die auf Azure Stack Hub oder Azure Stack Engine ausgeführt werden?
+* Sollte ich meinen AKS-Cluster auf Azure Stack HCI mit Azure Arc verbinden? Was ist mit Kubernetes-Clustern, die auf Azure Stack Hub oder Azure Stack Edge ausgeführt werden?
 
     Ja, das Verbinden dieser Cluster mit Azure Arc hat Vorteile. Es stellt eine Ressourcendarstellung für diese Kubernetes-Cluster in Azure Resource Manager bereit. Mithilfe dieser Ressourcendarstellung können Funktionen wie Clusterkonfiguration, Azure Monitor, Azure Policy (Gatekeeper) auf diese Kubernetes-Cluster erweitert werden.
 

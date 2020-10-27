@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059559"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132464"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio (Vorschau)
 
@@ -50,7 +50,7 @@ Die Verbindung erfordert die folgenden Parameter:
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
-Wählen Sie **Windows-Authentifizierung**, **Azure Active Directory** oder **SQL-Anmeldung** als **Authentifizierungstyp** aus.
+Wählen Sie **Windows-Authentifizierung** , **Azure Active Directory** oder **SQL-Anmeldung** als **Authentifizierungstyp** aus.
 
 Um **SQL-Anmeldung** als Authentifizierungstyp zu verwenden, müssen Sie die Parameter für Benutzername und Kennwort hinzufügen:
 
@@ -61,11 +61,11 @@ Für die Verwendung von Azure Active Directory müssen Sie den erforderlichen Au
 
 ![AAD-Authentifizierung](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Der folgende Screenshot zeigt die **Verbindungsdetails** für die **Windows-Authentifizierung**:
+Der folgende Screenshot zeigt die **Verbindungsdetails** für die **Windows-Authentifizierung** :
 
 ![Windows-Authentifizierung](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Der folgende Screenshot zeigt die **Verbindungsdetails** für die **SQL-Anmeldung**:
+Der folgende Screenshot zeigt die **Verbindungsdetails** für die **SQL-Anmeldung** :
 
 ![SQL-Anmeldung](./media/get-started-azure-data-studio/2-database-details.png)
 
@@ -73,7 +73,7 @@ Nach der erfolgreicher Anmeldung sollte ein Dashboard wie das folgende angezeigt
 
 ## <a name="query"></a>Abfrage
 
-Nach dem Herstellen der Verbindung können Sie Synapse SQL mithilfe von unterstützten [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisungen (T-SQL) für die Instanz abfragen. Klicken Sie auf dem Dashboard auf **Neue Abfrage**, um zu beginnen.
+Nach dem Herstellen der Verbindung können Sie Synapse SQL mithilfe von unterstützten [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisungen (T-SQL) für die Instanz abfragen. Klicken Sie auf dem Dashboard auf **Neue Abfrage** , um zu beginnen.
 
 ![Neue Abfrage](./media/get-started-azure-data-studio/5-new-query.png)
 
@@ -94,4 +94,5 @@ Erkunden Sie weitere Möglichkeiten zum Herstellen einer Verbindung mit Synapse�
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [sqlcmd](get-started-connect-sqlcmd.md)
- 
+
+Besuchen Sie [Verwenden von Azure Data Studio zum Verbinden mit und Abfragen von Daten mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw), um weitere Informationen zu erhalten. 

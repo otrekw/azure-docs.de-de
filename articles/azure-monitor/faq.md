@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.date: 10/08/2020
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760252"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014238"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
-Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](https://docs.microsoft.com/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 
 ## <a name="general"></a>Allgemein
@@ -72,7 +72,7 @@ Zum Anzeigen von Erkenntnissen im Azure-Portal verwenden Sie den Abschnitt **Erk
 ### <a name="what-is-a-solution-in-azure-monitor"></a>Was ist eine Lösung in Azure Monitor?
 Überwachungslösungen sind Programmpakete zum Überwachen einer bestimmten Anwendung oder eines bestimmten Diensts basierend auf Azure Monitor-Funktionen. Sie sammeln Protokolldaten in Azure Monitor und stellen Protokollabfragen und Ansichten für das Analysieren der Daten auf einer gemeinsamen Benutzeroberfläche im Azure-Portal bereit. Weitere Informationen finden Sie unter [Überwachungslösungen in Azure Monitor](insights/solutions.md).
 
-Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im Abschnitt **Erkenntnisse** auf **Mehr**. Klicken Sie auf **Hinzufügen**, um dem Arbeitsbereich weitere Lösungen hinzuzufügen.
+Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im Abschnitt **Erkenntnisse** auf **Mehr** . Klicken Sie auf **Hinzufügen** , um dem Arbeitsbereich weitere Lösungen hinzuzufügen.
 
 ## <a name="logs"></a>Protokolle
 
@@ -94,7 +94,7 @@ Sie können einen Arbeitsbereich zwischen Ressourcengruppen oder Abonnements ver
 
 ### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Warum werden die Schaltflächen „Abfrage-Explorer“ und „Speichern“ in Log Analytics nicht angezeigt?
 
-Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](log-query/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](log-query/scope.md).
+Die Schaltflächen **Abfrage-Explorer** , **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](log-query/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](log-query/scope.md).
 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
 Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbieter müssen jedoch unter Umständen manuell registriert werden. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
@@ -142,7 +142,7 @@ Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und s
 Für den Datenverkehr an Azure Monitor wird die ExpressRoute-Verbindung für Microsoft-Peering verwendet. Eine Beschreibung der verschiedenen Typen von ExpressRoute-Datenverkehr finden Sie in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services). 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Wie überprüfe ich, ob der Log Analytics-Agent mit Azure Monitor kommunizieren kann?
-Wählen Sie auf dem Agent-Computer in der Systemsteuerung die Option **Sicherheit und Einstellungen** und dann „Microsoft Monitoring Agent“ aus. Auf der Registerkarte **Azure Log Analytics (OMS)** wird durch ein grünes Häkchen bestätigt, dass der Agent mit Azure Monitor kommunizieren kann. Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme hat. Ein häufiger Grund ist, dass der **Microsoft Monitoring Agent**-Dienst beendet wurde. Starten Sie den Dienst mit dem Dienststeuerungs-Manager neu.
+Wählen Sie auf dem Agent-Computer in der Systemsteuerung die Option **Sicherheit und Einstellungen** und dann „Microsoft Monitoring Agent“ aus. Auf der Registerkarte **Azure Log Analytics (OMS)** wird durch ein grünes Häkchen bestätigt, dass der Agent mit Azure Monitor kommunizieren kann. Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme hat. Ein häufiger Grund ist, dass der **Microsoft Monitoring Agent** -Dienst beendet wurde. Starten Sie den Dienst mit dem Dienststeuerungs-Manager neu.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Wie beende ich die Kommunikation des Log Analytics-Agents mit Azure Monitor?
 Bei Agents, die direkt mit Log Analytics verbunden sind, öffnen Sie die Systemsteuerung, und wählen Sie **Sicherheit und Einstellungen** und dann **Microsoft Monitoring Agent** aus. Entfernen Sie auf der Registerkarte **Azure Log Analytics (OMS)** alle aufgelisteten Arbeitsbereiche. Entfernen Sie in System Center Operations Manager den Computer aus der Liste der Log Analytics-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet. 
@@ -173,15 +173,15 @@ Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert
 
 Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](platform/alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird. Verwenden Sie die folgenden Einstellungen für die Warnungsregel:
 
-- **Warnungsbedingung definieren**: Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
+- **Warnungsbedingung definieren** : Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
 - **Benachrichtigungskriterien** 
-   - **Signalname**: *Benutzerdefinierte Protokollsuche*
-   - **Suchabfrage**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Warnungslogik**: **Basierend auf** *Anzahl von Ergebnissen*, **Bedingung** *Größer als*, **Schwellenwert** *0*
-   - **Auswertung basierend auf**: **Zeitraum (in Minuten)** *30*, **Häufigkeit (in Minuten)** *10*
+   - **Signalname** : *Benutzerdefinierte Protokollsuche*
+   - **Suchabfrage** : `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Warnungslogik** : **Basierend auf** *Anzahl von Ergebnissen* , **Bedingung** *Größer als* , **Schwellenwert** *0*
+   - **Auswertung basierend auf** : **Zeitraum (in Minuten)** *30* , **Häufigkeit (in Minuten)** *10*
 - **Warnungsdetails definieren** 
-   - **Name**: *Datensammlung beendet*
-   - **Schweregrad**: *Warning*
+   - **Name** : *Datensammlung beendet*
+   - **Schweregrad** : *Warning*
 
 Geben Sie eine vorhandene oder neue [Aktionsgruppe](platform/action-groups.md) an, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
@@ -322,7 +322,6 @@ Mit [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) wird die IP-Adres
 * Servertelemetrie: Das Application Insights-Modul erfasst die Client-IP-Adresse. Sie wird nicht gesammelt, wenn `X-Forwarded-For` festgelegt ist.
 * Weitere Informationen zur Erfassung von IP-Adressen und Geolocation-Daten in Application Insights finden Sie in diesem [Artikel](./app/ip-collection.md).
 
-
 Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](https://apmtips.com/posts/2016-07-05-client-ip-address/)
 
 Sie können [mit Power BI](app/export-power-bi.md ) die Anforderungstelemetriedaten auf einer Karte anzeigen.
@@ -398,6 +397,29 @@ Jedes übertragene Element verfügt über eine `itemCount`-Eigenschaft, die angi
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Wie kann ich eine Application Insights-Ressource in eine neue Region verschieben?
+
+Das Verschieben vorhandener Application Insights-Ressourcen aus einer Region in eine andere wird **derzeit nicht unterstützt** . Verlaufsdaten, die Sie gesammelt haben, **können nicht zu einer neuen Region migriert werden** . Die einzige Problemumgehung zur Erzielung einer Teillösung ist:
+
+1. Erstellen Sie in der neuen Region eine ganz neue Application Insights-Ressource ([klassisch](app/create-new-resource.md) oder [arbeitsbereichsbasiert](/azure/azure-monitor/app/create-workspace-resource)).
+2. Erstellen Sie alle eindeutigen Anpassungen, die speziell für die ursprüngliche Ressource gelten, auf der neuen Ressource neu.
+3. Ändern Sie Ihre Anwendung so, dass der [Instrumentierungsschlüssel](app/create-new-resource.md#copy-the-instrumentation-key) oder die [Verbindungszeichenfolge](app/sdk-connection-string.md) der Ressource in der neuen Region verwendet werden.  
+4. Vergewissern Sie sich anhand eines Tests, dass mit Ihrer neuen Application Insights-Ressource alles wie erwartet funktioniert. 
+5. An diesem Punkt können Sie entweder die ursprüngliche Ressource löschen, was dazu führt, dass **alle Verlaufsdaten verloren gehen** . Oder Sie behalten die ursprüngliche Ressource für die Dauer bei, die in den Einstellungen zur Datenaufbewahrung angegeben ist, um Verlaufsberichte erstellen zu können.
+
+Eindeutige Anpassungen, die für die Ressource in der neuen Region normalerweise manuell neu erstellt oder aktualisiert werden müssen, umfassen beispielsweise Folgendes:
+
+- Neuerstellen von benutzerdefinierten Dashboards und Arbeitsmappen 
+- Neuerstellen oder Aktualisieren des Umfangs von benutzerdefinierten Protokoll-/Metrikwarnungen 
+- Neuerstellen von Verfügbarkeitswarnungen
+- Neuerstellen aller benutzerdefinierten Einstellungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), die Ihre Benutzer für den Zugriff auf die neue Ressource benötigen 
+- Replizieren der Einstellungen, bei denen es um die Aktivierung für die Erfassungs-Stichprobenerstellung, Datenaufbewahrung, tägliche Obergrenze und benutzerdefinierten Metriken geht Diese Einstellungen werden über den Bereich **Nutzungs- und geschätzte Kosten** gesteuert.
+- Alle Integrationen mit API-Schlüsseln, z. B. [Versionsanmerkungen](/azure/azure-monitor/app/annotations), [Livemetriken und sicherer Steuerkanal](app/live-stream.md#secure-the-control-channel) usw. Sie müssen neue API-Schlüssel generieren und die zugeordnete Integration aktualisieren. 
+- Der fortlaufende Export auf klassischen Ressourcen muss neu konfiguriert werden.
+- Diagnoseeinstellungen auf arbeitsbereichsbasierten Ressourcen müssen neu konfiguriert werden.
+
+> [!NOTE]
+> Falls durch die Ressource, die Sie in einer neuen Region erstellen, eine klassische Ressource ersetzt wird, empfehlen wir Ihnen, sich über die Vorteile der [Erstellung einer neuen arbeitsbereichsbasierten Ressource](app/create-workspace-resource.md) oder alternativ der [Migration Ihrer vorhandenen Ressource zu einer arbeitsbereichsbasierten Ressource](app/convert-classic-resource.md) zu informieren. 
 
 ### <a name="automation"></a>Automation
 
@@ -581,7 +603,7 @@ Wir planen eine Reihe von Änderungen, um den Funktionsumfang zu erweitern und I
 
 **Andere Prozesse** soll Ihnen dabei helfen, die zugrunde liegende Ursache für die hohe Ressourcennutzung auf dem Knoten zu verstehen. Dadurch können Sie zwischen der Nutzung durch Containerprozesse und Nicht-Containerprozesse unterscheiden.
 
-Was sind **Andere Prozesse**? 
+Was sind **Andere Prozesse** ? 
 
 Hierbei handelt es sich um Nicht-Containerprozesse, die auf dem Knoten ausgeführt werden.  
 
@@ -658,7 +680,7 @@ Wenn in Ihrem Log Analytics-Arbeitsbereich nicht täglich zu einer bestimmten Ze
 
 Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und ausgeführten Containern. Die Tabelle wird von einem Workflow innerhalb des Agent ausgefüllt, der den Docker nach allen Containern abfragt (ausgeführte und beendete) und diese Daten an den Log Analytics-Arbeitsbereich weiterleitet.
  
-### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Wie behebe ich den Fehler *Abonnementregistrierung fehlt*?
+### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Wie behebe ich den Fehler *Abonnementregistrierung fehlt* ?
 
 Wenn Sie die Fehlermeldung **Abonnementregistrierung für Microsoft.OperationsManagement fehlt** erhalten, können Sie den Fehler beheben, indem Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement registrieren, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../azure-resource-manager/templates/error-register-resource-provider.md).
 
@@ -786,7 +808,7 @@ Die Antwortzeit ist eine Schätzung. Da wir den Code der Anwendung nicht instrum
 Diese Schätzung funktioniert gut für Protokolle, die auf Anforderung/Antwort basieren: Eine einzelne Anforderung wird über die Verbindung gesendet, und eine einzelne Antwort wird empfangen. Dies ist der Fall bei HTTP(S) (ohne Pipelining), wird aber bei anderen Protokollen nicht erfüllt.
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
-Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das Azure Monitor for VMs-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  
+Wenn Sie Azure Monitor über den *Free* -Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das Azure Monitor for VMs-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  
 
 Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Sie werden jedoch nicht zu Optionen aufgefordert, die normalerweise angezeigt werden würden, wenn diese VM nicht in Azure Monitor für VMs integriert wurde. 
 

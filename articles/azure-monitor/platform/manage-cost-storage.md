@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595650"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044104"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -38,7 +38,7 @@ Die Standardpreise für Log Analytics werden gemäß der **nutzungsbasierten Zah
   - Anzahl der überwachten VMs
   - Typ der Daten, die von jeder überwachten VM gesammelt werden 
   
-Zusätzlich zum Modell der nutzungsbasierten Bezahlung bietet Log Analytics Tarife für die **Kapazitätsreservierung**. Mit diesen Tarifen können Sie Einsparungen von 25 % gegenüber der nutzungsbasierten Zahlung erzielen. Die Preise der Kapazitätsreservierung ermöglichen Ihnen den Kauf einer Reservierung ab 100 GB/Tag. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. Die Tarife für die Kapazitätsreservierung umfassen einen Verpflichtungszeitraum von 31 Tagen. Während dieses Verpflichtungszeitraums können Sie in einen höheren Tarif für die Kapazitätsreservierung wechseln (hierbei wird der 31-tägige Verpflichtungszeitraum neu gestartet), aber es ist erst nach Ablauf des Verpflichtungszeitraums möglich, zum nutzungsbasierten Modell oder zu einem niedrigeren Tarif für die Kapazitätsreservierung zurückzukehren. Bei den Tarifen für die Kapazitätsreservierung erfolgt die Abrechnung täglich. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/monitor/) über Preise der nutzungsbasierten Bezahlung und Kapazitätsreservierung für Log Analytics. 
+Zusätzlich zum Modell der nutzungsbasierten Bezahlung bietet Log Analytics Tarife für die **Kapazitätsreservierung** . Mit diesen Tarifen können Sie Einsparungen von 25 % gegenüber der nutzungsbasierten Zahlung erzielen. Die Preise der Kapazitätsreservierung ermöglichen Ihnen den Kauf einer Reservierung ab 100 GB/Tag. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. Die Tarife für die Kapazitätsreservierung umfassen einen Verpflichtungszeitraum von 31 Tagen. Während dieses Verpflichtungszeitraums können Sie in einen höheren Tarif für die Kapazitätsreservierung wechseln (hierbei wird der 31-tägige Verpflichtungszeitraum neu gestartet), aber es ist erst nach Ablauf des Verpflichtungszeitraums möglich, zum nutzungsbasierten Modell oder zu einem niedrigeren Tarif für die Kapazitätsreservierung zurückzukehren. Bei den Tarifen für die Kapazitätsreservierung erfolgt die Abrechnung täglich. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/monitor/) über Preise der nutzungsbasierten Bezahlung und Kapazitätsreservierung für Log Analytics. 
 
 In allen Tarifen wird die Datengröße eines Ereignisses anhand einer Zeichenfolgendarstellung der Eigenschaften berechnet, die in Log Analytics für dieses Ereignis gespeichert werden, unabhängig davon, ob die Daten von einem Agent gesendet oder während des Erfassungsvorgangs hinzugefügt werden. Dies schließt alle [benutzerdefinierten Felder](custom-fields.md) ein, die beim Sammeln von Daten hinzugefügt und anschließend in Log Analytics gespeichert werden. Mehrere Eigenschaften, die alle Datentypen gemein haben, einschließlich einiger [Log Analytics-Standardeigenschaften](log-standard-properties.md), werden bei der Berechnung der Ereignisgröße nicht berücksichtigt. Dazu gehören `_ResourceId`, `_ItemId`, `_IsBillable`, `_BilledSize` und `Type`. Alle anderen Eigenschaften, die in Log Analytics gespeichert werden, sind in der Berechnung der Ereignisgröße enthalten. Für einige Datentypen fallen keinerlei Gebühren für die Datenerfassung an, wie z. B. AzureActivity, Heartbeat and Usage. Um zu ermitteln, ob ein Ereignis von der Abrechnung für die Datenerfassung ausgeschlossen wurde, können Sie die `_IsBillable`-Eigenschaft verwenden, wie es [unten](#data-volume-for-specific-events) gezeigt ist. Die Nutzung wird in GB (1.0E9 Bytes) angegeben. 
 
@@ -46,7 +46,7 @@ Beachten Sie außerdem, dass für einige Lösungen, z. B. [Azure Security Cente
 
 ### <a name="log-analytics-dedicated-clusters"></a>Dedizierte Log Analytics-Cluster
 
-Dedizierte Log Analytics-Cluster sind Sammlungen von Arbeitsbereichen in einem einzelnen verwalteten Azure Data Explorer-Cluster, die erweiterte Szenarien unterstützen, beispielsweise [vom Kunden verwaltete Schlüssel](customer-managed-keys.md).  Dedizierte Log Analytics-Cluster unterstützen nur ein Preismodell für die Kapazitätsreservierung ab 1000 GB/Tag mit einem Rabatt von 25 % im Vergleich zu nutzungsbasierten Preisen. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. Die Clusterkapazitätsreservierung hat einen Verpflichtungszeitraum von 31 Tagen, nachdem die Reservierungsebene erhöht wurde. Während des Verpflichtungszeitraums kann die Kapazitätsreservierungsebene nicht herabgesetzt, aber jederzeit erhöht werden. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Clusters](customer-managed-keys.md#create-cluster-resource) und das [Zuordnen von Arbeitsbereichen zu diesem Cluster](customer-managed-keys.md#workspace-association-to-cluster-resource).  
+Dedizierte Log Analytics-Cluster sind Sammlungen von Arbeitsbereichen in einem einzelnen verwalteten Azure Data Explorer-Cluster, die erweiterte Szenarien unterstützen, beispielsweise [vom Kunden verwaltete Schlüssel](customer-managed-keys.md).  Dedizierte Log Analytics-Cluster verwenden ein Preismodell für die Kapazitätsreservierung, das für mindestens 1000 GB/Tag konfiguriert sein muss. Diese Kapazitätsebene weist im Vergleich zu nutzungsbasierten Preisen einen Rabatt von 25 % auf. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. Die Clusterkapazitätsreservierung hat einen Verpflichtungszeitraum von 31 Tagen, nachdem die Reservierungsebene erhöht wurde. Während des Verpflichtungszeitraums kann die Kapazitätsreservierungsebene nicht herabgesetzt, aber jederzeit erhöht werden. Wenn Arbeitsbereiche einem Cluster zugeordnet sind, erfolgt die Abrechnung der Datenerfassung für diese Arbeitsbereiche auf Clusterebene anhand der konfigurierten Kapazitätsreservierungsebene. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Clusters](customer-managed-keys.md#create-cluster-resource) und das [Zuordnen von Arbeitsbereichen zu diesem Cluster](customer-managed-keys.md#workspace-association-to-cluster-resource). Preisinformationen zur Kapazitätsreservierung finden Sie auf der Seite [Azure Monitor – Preise]( https://azure.microsoft.com/pricing/details/monitor/).  
 
 Die Reservierungsebene für die Clusterkapazität wird programmgesteuert mit Azure Resource Manager mithilfe des `Capacity`-Parameters unter `Sku` konfiguriert. `Capacity` wird in Einheiten von GB und in Schritten von 100 GB pro Tag in Werten von 1000 GB/Tag oder mehr angegeben. Dies wird ausführlich unter [Kundenseitig verwaltete Schlüssel in Azure Monitor](customer-managed-keys.md#create-cluster-resource) behandelt. Wenn Ihr Cluster eine Reservierung über 2000 GB/Tag erfordert, kontaktieren Sie uns unter [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com).
 
@@ -54,9 +54,9 @@ Für die Abrechnung des Verbrauchs in einem Cluster stehen zwei Modi zur Verfüg
 
 1. **Cluster** (Standardeinstellung): In diesem Fall werden erfasste Daten auf der Clusterebene abgerechnet. Die erfassten Datenmengen aus den einzelnen Arbeitsbereichen, die einem Cluster zugeordnet sind, werden aggregiert, um die tägliche Abrechnung für den Cluster zu berechnen. Beachten Sie, dass die Zuordnungen pro Knoten von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) vor dieser Aggregation von Daten in allen Arbeitsbereichen im Cluster auf Arbeitsbereichsebene angewendet werden. 
 
-2. **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet (nach Berücksichtigung der knotenspezifischen Zuordnungen von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) für den jeweiligen Arbeitsbereich). Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, unter der Kapazitätsreservierung liegt, werden für die einzelnen Arbeitsbereiche jeweils die erfassten Daten mit dem effektiven GB-basierten Kapazitätsreservierungssatz abgerechnet. Hierzu wird ein Teil der Kapazitätsreservierung abgerechnet, und der ungenutzte Teil der Kapazitätsreservierung wird für die Clusterressource in Rechnung gestellt. Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, über der Kapazitätsreservierung liegt, wird für die einzelnen Arbeitsbereiche jeweils ein Teil der Kapazitätsreservierung (basierend auf dem Anteil der an diesem Tag erfassten Daten) abgerechnet, und für jeden Arbeitsbereich wird jeweils ein Teil der erfassten Daten in Rechnung gestellt, die über die Kapazitätsreservierung hinausgehen. Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, über der Kapazitätsreservierung liegt, wird nichts für die Clusterressource abgerechnet.
+2. **Arbeitsbereiche** : Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet (nach Berücksichtigung der knotenspezifischen Zuordnungen von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) für den jeweiligen Arbeitsbereich). Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, unter der Kapazitätsreservierung liegt, werden für die einzelnen Arbeitsbereiche jeweils die erfassten Daten mit dem effektiven GB-basierten Kapazitätsreservierungssatz abgerechnet. Hierzu wird ein Teil der Kapazitätsreservierung abgerechnet, und der ungenutzte Teil der Kapazitätsreservierung wird für die Clusterressource in Rechnung gestellt. Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, über der Kapazitätsreservierung liegt, wird für die einzelnen Arbeitsbereiche jeweils ein Teil der Kapazitätsreservierung (basierend auf dem Anteil der an diesem Tag erfassten Daten) abgerechnet, und für jeden Arbeitsbereich wird jeweils ein Teil der erfassten Daten in Rechnung gestellt, die über die Kapazitätsreservierung hinausgehen. Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, über der Kapazitätsreservierung liegt, wird nichts für die Clusterressource abgerechnet.
 
-In Clusterabrechnungsoptionen wird die Datenaufbewahrung auf der Arbeitsbereichsebene abgerechnet. Beachten Sie, dass die Clusterabrechnung mit der Clustererstellung beginnt, unabhängig davon, ob dem Cluster Arbeitsbereiche zugeordnet wurden. Beachten Sie außerdem, dass Arbeitsbereiche, die einem Cluster zugeordnet sind, nicht mehr über einen Tarif verfügen.
+In Clusterabrechnungsoptionen wird die Datenaufbewahrung pro Arbeitsbereich abgerechnet. Beachten Sie, dass die Clusterabrechnung mit der Clustererstellung beginnt, unabhängig davon, ob dem Cluster Arbeitsbereiche zugeordnet wurden. Beachten Sie außerdem, dass Arbeitsbereiche, die einem Cluster zugeordnet sind, nicht mehr über einen Tarif verfügen.
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schätzen der Kosten für die Verwaltung Ihrer Umgebung 
 
@@ -64,7 +64,7 @@ Wenn Sie noch keine Azure Monitor-Protokolle verwenden, können Sie mit dem [Azu
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Verstehen Ihrer Nutzung und Schätzen von Kosten
 
-Wenn Sie jetzt Azure Monitor-Protokolle verwenden, können Sie auf der Grundlage aktueller Nutzungsmuster problemlos die zu erwartenden Kosten ermitteln. Verwenden Sie **Analysieren der Datennutzung in Log Analytics**, um die Datennutzung zu überprüfen und zu analysieren. Hier wird angezeigt, wie viele Daten von jeder Lösung gesammelt werden, wie viele Daten aufbewahrt werden, und es wird eine Kostenschätzung angezeigt. Diese basiert auf der Menge an erfassten Daten und berücksichtigt eine eventuelle zusätzliche Aufbewahrung über die enthaltenen Menge hinaus.
+Wenn Sie jetzt Azure Monitor-Protokolle verwenden, können Sie auf der Grundlage aktueller Nutzungsmuster problemlos die zu erwartenden Kosten ermitteln. Verwenden Sie **Analysieren der Datennutzung in Log Analytics** , um die Datennutzung zu überprüfen und zu analysieren. Hier wird angezeigt, wie viele Daten von jeder Lösung gesammelt werden, wie viele Daten aufbewahrt werden, und es wird eine Kostenschätzung angezeigt. Diese basiert auf der Menge an erfassten Daten und berücksichtigt eine eventuelle zusätzliche Aufbewahrung über die enthaltenen Menge hinaus.
 
 ![Nutzung und geschätzte Kosten](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -86,23 +86,23 @@ Ein umfassenderes Verständnis Ihres Verbrauchs erlangen Sie, indem Sie [Ihre Ve
 
 Gehen Sie folgendermaßen vor, um den Log Analytics-Tarif Ihres Arbeitsbereichs zu ändern: 
 
-1. Öffnen Sie im Azure-Portal aus Ihrem Arbeitsbereich **Nutzung und geschätzte Kosten**. Hier wird eine Liste aller Tarife angezeigt, die für diesen Arbeitsbereich verfügbar sind.
+1. Öffnen Sie im Azure-Portal aus Ihrem Arbeitsbereich **Nutzung und geschätzte Kosten** . Hier wird eine Liste aller Tarife angezeigt, die für diesen Arbeitsbereich verfügbar sind.
 
 2. Überprüfen Sie die geschätzten Kosten für die einzelnen Tarife. Diese Schätzungen basierend auf der Nutzung der letzten 31 Tage, d. h. bei dieser Kostenschätzung wird davon ausgegangen, dass die letzten 31 Tage repräsentativ für Ihre typische Nutzung sind. Im Beispiel unten können Sie sehen, dass die Kosten für diesen Arbeitsbereich basierend auf den Datenmustern der letzten 31 Tage im Modell der nutzungsbasierten Zahlung (Nr. 1) geringer wären als im Tarif mit einer Kapazitätsreservierung von 100 GB/Tag (Nr. 2).  
 
     ![Tarife](media/manage-cost-storage/pricing-tier-estimated-costs.png)
 
-3. Klicken Sie nach Überprüfung der geschätzten Kosten basierend auf der Nutzung der letzten 31 Tage auf **Auswählen**, wenn Sie sich für einen Wechsel des Tarifs entscheiden.  
+3. Klicken Sie nach Überprüfung der geschätzten Kosten basierend auf der Nutzung der letzten 31 Tage auf **Auswählen** , wenn Sie sich für einen Wechsel des Tarifs entscheiden.  
 
 Es ist auch möglich, den [Tarif über Azure Resource Manager festzulegen](template-workspace-configuration.md#configure-a-log-analytics-workspace). Verwenden Sie hierzu den Parameter `sku` (`pricingTier` in der Azure Resource Manager-Vorlage). 
 
 ## <a name="legacy-pricing-tiers"></a>Legacytarife
 
-Abonnements, die vor dem 2. April 2018 einen Log Analytics-Arbeitsbereich oder eine Application Insights-Ressource enthielten oder mit einem Enterprise Agreement verknüpft sind, das vor dem 1. Februar 2019 abgeschlossen wurde, haben weiterhin Zugriff auf die Legacytarife: **Free**, **Eigenständig (Pro GB)** und **Pro Knoten (OMS)** .  Für Arbeitsbereiche im Tarif „Free“ ist die tägliche Datenerfassung auf 500 MB beschränkt (mit Ausnahme von Sicherheitsdaten, die von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) gesammelt werden). Darüber hinaus ist die Datenaufbewahrung auf sieben Tage beschränkt. Der Tarif „Free“ dient nur zu Evaluierungszwecken. Für Arbeitsbereiche im Tarif „Eigenständig“ oder „Pro Knoten“ gilt eine vom Benutzer festlegbare Datenaufbewahrungsfrist von 30 bis 730 Tagen.
+Abonnements, die vor dem 2. April 2018 einen Log Analytics-Arbeitsbereich oder eine Application Insights-Ressource enthielten oder mit einem Enterprise Agreement verknüpft sind, das vor dem 1. Februar 2019 abgeschlossen wurde, haben weiterhin Zugriff auf die Legacytarife: **Free** , **Eigenständig (Pro GB)** und **Pro Knoten (OMS)** .  Für Arbeitsbereiche im Tarif „Free“ ist die tägliche Datenerfassung auf 500 MB beschränkt (mit Ausnahme von Sicherheitsdaten, die von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) gesammelt werden). Darüber hinaus ist die Datenaufbewahrung auf sieben Tage beschränkt. Der Tarif „Free“ dient nur zu Evaluierungszwecken. Für Arbeitsbereiche im Tarif „Eigenständig“ oder „Pro Knoten“ gilt eine vom Benutzer festlegbare Datenaufbewahrungsfrist von 30 bis 730 Tagen.
 
-Die Nutzung des Tarifs „Eigenständig“ wird anhand des erfassten Datenvolumens abgerechnet. Dieses wird im **Log Analytics**-Dienst gemeldet, und die Verbrauchseinheit heißt „Analysierte Daten“. 
+Die Nutzung des Tarifs „Eigenständig“ wird anhand des erfassten Datenvolumens abgerechnet. Dieses wird im **Log Analytics** -Dienst gemeldet, und die Verbrauchseinheit heißt „Analysierte Daten“. 
 
-Der Tarif „Pro Knoten“ wird pro überwachter VM (Knoten) mit einer Granularität von einer Stunde berechnet. Für jeden überwachten Knoten werden dem Arbeitsbereich 500 MB Daten pro Tag zugeteilt, die nicht berechnet werden. Diese Zuteilung wird auf Arbeitsbereichsebene aggregiert. Daten, die über die aggregierte tägliche Datenzuteilung hinaus erfasst werden, werden pro GB als Datenüberschreitung berechnet. Beachten Sie, dass der Dienst auf Ihrer Rechnung als **Insight und Analytics** für die Log Analytics-Nutzung aufgeführt ist, wenn für den Arbeitsbereich der Tarif „Pro Knoten“ festgelegt ist. Die Nutzung wird mit drei Verbrauchseinheiten gemeldet:
+Der Tarif „Pro Knoten“ wird pro überwachter VM (Knoten) mit einer Granularität von einer Stunde berechnet. Für jeden überwachten Knoten werden dem Arbeitsbereich 500 MB Daten pro Tag zugeteilt, die nicht berechnet werden. Diese Zuteilung wird auf Stundenbasis berechnet und täglich auf Arbeitsbereichsebene aggregiert. Daten, die über die aggregierte tägliche Datenzuteilung hinaus erfasst werden, werden pro GB als Datenüberschreitung berechnet. Beachten Sie, dass der Dienst auf Ihrer Rechnung als **Insight und Analytics** für die Log Analytics-Nutzung aufgeführt ist, wenn für den Arbeitsbereich der Tarif „Pro Knoten“ festgelegt ist. Die Nutzung wird mit drei Verbrauchseinheiten gemeldet:
 
 1. Knoten: der Verbrauch für die Anzahl der überwachten Knoten (VMs) in Einheiten von Knoten × Monate.
 2. Datenüberschreitung pro Knoten: Anzahl von GB an Daten, die über die aggregierte Datenzuordnung hinaus erfasst wurden.
@@ -111,7 +111,7 @@ Der Tarif „Pro Knoten“ wird pro überwachter VM (Knoten) mit einer Granulari
 > [!TIP]
 > Falls für Ihren Arbeitsbereich Zugriff auf den Tarif **Pro Knoten** besteht und Sie sich die Frage stellen, ob die Kosten beim Tarif mit nutzungsbasierter Zahlung niedriger wären, können Sie mit der [unten angegebenen Abfrage](#evaluating-the-legacy-per-node-pricing-tier) leicht eine Empfehlung abrufen. 
 
-Vor April 2016 erstellte Arbeitsbereiche haben ebenfalls Zugriff auf die ursprünglichen Tarife **Standard** und **Premium**, für die eine feste Datenaufbewahrung von 30 bzw. 365 Tagen gilt. Neue Arbeitsbereiche können nicht im Tarif **Standard** oder **Premium** erstellt werden, und wenn ein Arbeitsbereich aus diesen Tarifen verschoben wird, kann er nicht zurück verschoben werden. Die Verbrauchseinheiten für die Datenerfassung für diese veralteten Tarife werden mit „Analysierte Daten“ bezeichnet.
+Vor April 2016 erstellte Arbeitsbereiche haben ebenfalls Zugriff auf die ursprünglichen Tarife **Standard** und **Premium** , für die eine feste Datenaufbewahrung von 30 bzw. 365 Tagen gilt. Neue Arbeitsbereiche können nicht im Tarif **Standard** oder **Premium** erstellt werden, und wenn ein Arbeitsbereich aus diesen Tarifen verschoben wird, kann er nicht zurück verschoben werden. Die Verbrauchseinheiten für die Datenerfassung für diese veralteten Tarife werden mit „Analysierte Daten“ bezeichnet.
 
 Es gibt auch einige Besonderheiten bei der Verwendung von Log Analytics-Legacytarifen und der Berechnung der Nutzung für [Azure Security Center](https://docs.microsoft.com/azure/security-center/). 
 
@@ -126,6 +126,10 @@ Keiner der Legacytarife bietet regionsbezogene Preise.
 > [!NOTE]
 > Wenn Sie die Berechtigungen nutzen möchten, die Sie durch den Kauf der OMS E1-Suite, OMS E2-Suite oder des OMS-Add-Ons für System Center erwerben, wählen Sie den Tarif *Pro Knoten* für Log Analytics aus.
 
+## <a name="log-analytics-and-security-center"></a>Log Analytics und Security Center
+
+Die [Azure Security Center](https://docs.microsoft.com/azure/security-center/)-Abrechnung ist eng mit der Log Analytics-Abrechnung verbunden. Security Center bietet eine Zuordnung von 500 MB/Knoten/Tag für eine Reihe von [Sicherheitsdatentypen](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen Update und UpdateSummary, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Wenn der Arbeitsbereich den Legacytarif „Pro Knoten“ aufweist, werden die Security Center- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
+
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
 Die folgenden Schritte zeigen, wie Sie die Aufbewahrungsdauer von Protokolldaten in Ihrem Arbeitsbereich konfigurieren. Die Datenaufbewahrung kann für alle Arbeitsbereiche zwischen 30 und 730 Tagen (2 Jahre) konfiguriert werden, es sei denn, sie verwenden den Legacytarif „Free“. Informieren Sie sich über die [Preise](https://azure.microsoft.com/pricing/details/monitor/) für eine längere Datenaufbewahrung. 
@@ -135,8 +139,8 @@ Die folgenden Schritte zeigen, wie Sie die Aufbewahrungsdauer von Protokolldaten
 So legen Sie die Standardaufbewahrungsdauer für Ihren Arbeitsbereich fest: 
  
 1. Wählen Sie im linken Bereich des Azure-Portals über Ihren Arbeitsbereich **Nutzung und geschätzte Kosten** aus.
-2. Klicken Sie im oberen Bereich der Seite **Nutzungs- und geschätzte Kosten** auf **Datenaufbewahrung**.
-3. Passen Sie mithilfe des Schiebereglers die Anzahl von Tagen an, und klicken Sie anschließend auf **OK**.  Wenn Sie sich im Tarif *Free* befinden, können Sie den Datenaufbewahrungszeitraum nicht ändern. Sie müssen in einen kostenpflichtigen Tarif wechseln, um diese Einstellung zu steuern.
+2. Klicken Sie im oberen Bereich der Seite **Nutzungs- und geschätzte Kosten** auf **Datenaufbewahrung** .
+3. Passen Sie mithilfe des Schiebereglers die Anzahl von Tagen an, und klicken Sie anschließend auf **OK** .  Wenn Sie sich im Tarif *Free* befinden, können Sie den Datenaufbewahrungszeitraum nicht ändern. Sie müssen in einen kostenpflichtigen Tarif wechseln, um diese Einstellung zu steuern.
 
     ![Ändern des Datenaufbewahrungszeitraums für den Arbeitsbereich](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
@@ -222,9 +226,9 @@ Informieren Sie sich unter [Analysieren der Datennutzung in Log Analytics](usage
 
 In den folgenden Schritten erfahren Sie, wie Sie ein Tageslimit für die vom Log Analytics-Arbeitsbereich erfasste Datenmenge konfigurieren.  
 
-1. Klicken Sie links in Ihrem Arbeitsbereich auf **Nutzung und geschätzte Kosten**.
-2. Klicken Sie im oberen Bereich der Seite **Nutzung und geschätzte Kosten** für den ausgewählten Arbeitsbereich auf **Datenobergrenze**. 
-3. Die tägliche Obergrenze ist standardmäßig **AUS**. Klicken Sie auf **EIN**, um sie zu aktivieren, und legen Sie das Limit für das Datenvolumen in GB/Tag fest.
+1. Klicken Sie links in Ihrem Arbeitsbereich auf **Nutzung und geschätzte Kosten** .
+2. Klicken Sie im oberen Bereich der Seite **Nutzung und geschätzte Kosten** für den ausgewählten Arbeitsbereich auf **Datenobergrenze** . 
+3. Die tägliche Obergrenze ist standardmäßig **AUS** . Klicken Sie auf **EIN** , um sie zu aktivieren, und legen Sie das Limit für das Datenvolumen in GB/Tag fest.
 
     ![Konfigurieren des Log Analytics-Datenlimits](media/manage-cost-storage/set-daily-volume-cap-01.png)
     
@@ -234,12 +238,12 @@ Die tägliche Obergrenze kann über ARM konfiguriert werden, indem Sie den Param
 
 Im Azure-Portal wird bei Erreichen des Schwellenwerts für das Datenlimit zwar ein visueller Hinweis angezeigt, dieses Verhalten steht jedoch möglicherweise nicht im Einklang mit der gewünschten Behandlung von Betriebsproblemen, die eine umgehende Reaktion erfordern.  Wenn Sie eine Warnbenachrichtigung erhalten möchten, können Sie in Azure Monitor eine neue Warnregel erstellen.  Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen](alerts-metric.md).
 
-Im Anschluss finden Sie die empfohlenen Einstellungen für die Warnung:
+Im Anschluss finden Sie die empfohlenen Einstellungen für die Warnung zur Abfrage der Tabelle `Operation` mithilfe der Funktion `_LogOperation`. 
 
 - Ziel: Wählen Sie Ihre Log Analytics-Ressource aus.
 - Kriterien: 
    - Signalname: Benutzerdefinierte Protokollsuche
-   - Suchabfrage: Operation | where Detail has 'OverQuota'
+   - Suchabfrage: `_LogOperation | where Detail has 'OverQuota'`
    - Basierend auf: Anzahl der Ergebnisse
    - Bedingung: Größer als
    - Schwellenwert: 0
@@ -283,6 +287,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
+
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>Nach Legacytarif „Pro Knoten“ abgerechnete Knoten
+
+Beim [Legacytarif „Pro Knoten“](#legacy-pricing-tiers) werden Knoten auf Stundenbasis abgerechnet, und es werden zudem Knoten nicht gezählt, die nur eine Reihe von Sicherheitsdatentypen senden. Die tägliche Anzahl von Knoten würde der folgenden Abfrage ähneln:
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+Die Anzahl der Einheiten auf der Rechnung ist in Einheiten von Knoten × Monate angegeben, die durch `billableNodeMonthsPerDay` in der Abfrage dargestellt ist. Wenn im Arbeitsbereich die Lösung für die Updateverwaltung installiert ist, fügen Sie die Datentypen Update und UpdateSummary der Liste in der WHERE-Klausel in der obigen Abfrage hinzu. Der tatsächliche Abrechnungsalgorithmus weist zusätzliche Komplexität auf, wenn eine Zielgruppenadressierung verwendet wird, die in der obigen Abfrage nicht dargestellt ist. 
+
 
 > [!TIP]
 > Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) sind. Wenn Sie keine Ergebnisse **pro Computer** benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus (siehe unten).
@@ -344,7 +366,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Datenmenge nach Computer
 
-Der Datentyp `Usage` enthält keine Informationen auf Computerebene. Um die **Größe** der pro Computer erfassten Daten anzuzeigen, verwenden Sie die `_BilledSize`-[Eigenschaft](log-standard-properties.md#_billedsize), die die Größe in Bytes bereitstellt:
+Der Datentyp `Usage` enthält keine Informationen auf Computerebene. Um die **Größe** der pro Computer erfassten Daten anzuzeigen, verwenden Sie die `_BilledSize`- [Eigenschaft](log-standard-properties.md#_billedsize), die die Größe in Bytes bereitstellt:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
@@ -410,14 +432,14 @@ Bei Bedarf können Sie auch `_ResourceId` auf folgende Weise noch vollständiger
 > Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) sind. Wenn Sie keine Ergebnisse pro Abonnement, Ressourcengruppe oder Ressourcenname benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus.
 
 > [!WARNING]
-> Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.
+> Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches** , **BatchesWithinSla** , **BatchesOutsideSla** , **BatchesCapped** und **AverageProcessingTimeMs** .
 
 
 ### <a name="querying-for-common-data-types"></a>Abfragen von häufig verwendeten Datentypen
 
 Wenn Sie die Datenquelle für einen bestimmten Datentyp näher untersuchen möchten, finden Sie hier einige nützliche Beispielabfragen:
 
-+ **Arbeitsbereichsbasierte Application Insights**-Ressourcen
++ **Arbeitsbereichsbasierte Application Insights** -Ressourcen
   - Weitere Informationen finden Sie unter [Verwalten der Nutzung und der Kosten für Application Insights](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources).
 + **Sicherheitslösung**
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
@@ -444,8 +466,8 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 | Container Insights         | [Konfigurieren Sie Container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost), um nur die Daten zu erfassen, die Sie benötigen. |
 | Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
-| Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
-| syslog                     | Ändern Sie die [syslog-Konfiguration](data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
+| Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen* . |
+| syslog                     | Ändern Sie die [syslog-Konfiguration](data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen* . |
 | AzureDiagnostics           | Ändern Sie die Ressourcenprotokollsammlung, um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 
@@ -575,15 +597,15 @@ In diesem Abschnitt wird beschrieben, wie Sie über Azure Monitor-[Protokollwarn
 
 Führen Sie die folgenden Schritte aus, um eine Warnung auszugeben, wenn das in den letzten 24 Stunden erfasste abrechenbare Datenvolumen größer als 50 GB ist: 
 
-- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
-- **Warnungskriterien**:
-   - **Signalname**: **Benutzerdefinierte Protokollsuche**
-   - **Suchabfrage**: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`. Wenn Sie eine andere 
-   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
-   - **Zeitraum**: *1440* Minuten; **Warnungshäufigkeit**: alle *1440* Minuten zur Ausführung einmal am Tag.
-- **Definieren der Warnungsdetails**:
-   - **Name**: *Abrechenbares Datenvolumen größer als 50 GB in 24 Stunden*
-   - **Schweregrad**: *Warnung*
+- **Definieren der Warnungsbedingung** : Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
+- **Warnungskriterien** :
+   - **Signalname** : **Benutzerdefinierte Protokollsuche**
+   - **Suchabfrage** : `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`. Wenn Sie eine andere 
+   - **Warnungslogik** : **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
+   - **Zeitraum** : *1440*  Minuten; **Warnungshäufigkeit** : alle *1440*  Minuten zur Ausführung einmal am Tag.
+- **Definieren der Warnungsdetails** :
+   - **Name** : *Abrechenbares Datenvolumen größer als 50 GB in 24 Stunden*
+   - **Schweregrad** : *Warnung*
 
 Geben Sie eine vorhandene [Aktionsgruppe](action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt.
 
