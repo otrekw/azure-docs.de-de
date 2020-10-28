@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88922564"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131767"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
@@ -42,7 +42,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Teams-Desktop-App auf Ihrem Window
 
 Um die Medienoptimierung für Teams zu aktivieren, legen Sie den folgenden Registrierungsschlüssel auf dem Host fest:
 
-1. Führen Sie im Startmenü **RegEdit** als Administrator aus. Navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**.
+1. Führen Sie im Startmenü **RegEdit** als Administrator aus. Navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** .
 2. Erstellen Sie den folgenden Wert für den Teams-Schlüssel:
 
 | Name             | type   | Daten/Wert  |
@@ -92,9 +92,9 @@ Sie können die Teams-Desktop-App mit einer Pro-Computer- oder Pro-Benutzer-Inst
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
-        Dadurch wird Teams auf einem 64-Bit-Betriebssystem im Ordner „Programme (x86)“ und auf einem 32-Bit-Betriebssystem im Ordner „Programme“ installiert. An diesem Punkt ist das Golden Image-Setup fertiggestellt. Die Installation von Teams pro Computer ist für nicht beständige Setups erforderlich.
+        Dadurch wird Teams auf einem 32-Bit-Betriebssystem im Ordner „Programme (x86)“ und auf einem 64-Bit-Betriebssystem im Ordner „Programme“ installiert. An diesem Punkt ist das Golden Image-Setup fertiggestellt. Die Installation von Teams pro Computer ist für nicht beständige Setups erforderlich.
 
-        Bei der Installation von Teams können zwei Flags festgelegt werden, **ALLUSER=1** und **ALLUSERS=1**. Es ist wichtig, den Unterschied zwischen diesen Parametern zu verstehen. Der Parameter **ALLUSER=1** wird nur in VDI-Umgebungen verwendet, um eine Pro-Computer-Installation anzugeben. Der Parameter **ALLUSERS=1** kann in Nicht-VDI- und in VDI-Umgebungen verwendet werden. Wenn Sie diesen Parameter festlegen, wird das computerweite Installationsprogramm von Teams in der Systemsteuerung unter „Programme und Features“ sowie in den Windows-Einstellungen unter „Apps & Features“ angezeigt. Alle Benutzer mit Administratoranmeldeinformationen auf dem Computer können Teams deinstallieren.
+        Bei der Installation von Teams können zwei Flags festgelegt werden, **ALLUSER=1** und **ALLUSERS=1** . Es ist wichtig, den Unterschied zwischen diesen Parametern zu verstehen. Der Parameter **ALLUSER=1** wird nur in VDI-Umgebungen verwendet, um eine Pro-Computer-Installation anzugeben. Der Parameter **ALLUSERS=1** kann in Nicht-VDI- und in VDI-Umgebungen verwendet werden. Wenn Sie diesen Parameter festlegen, wird das computerweite Installationsprogramm von Teams in der Systemsteuerung unter „Programme und Features“ sowie in den Windows-Einstellungen unter „Apps & Features“ angezeigt. Alle Benutzer mit Administratoranmeldeinformationen auf dem Computer können Teams deinstallieren.
 
         > [!NOTE]
         > Benutzer und Administratoren können den automatischen Start für Teams während der Anmeldung zu diesem Zeitpunkt nicht deaktivieren.
@@ -150,9 +150,9 @@ Geben Sie auf der [UserVoice-Website](https://microsoftteams.uservoice.com/) von
 
 ## <a name="collect-teams-logs"></a>Sammeln von Teams-Protokollen
 
-Wenn bei der Teams-Desktop-App in Ihrer Windows Virtual Desktop-Umgebung Probleme auftreten, sammeln Sie Clientprotokolle auf der Host-VM unter **%appdata%\Microsoft\Teams\logs.txt**.
+Wenn bei der Teams-Desktop-App in Ihrer Windows Virtual Desktop-Umgebung Probleme auftreten, sammeln Sie Clientprotokolle auf der Host-VM unter **%appdata%\Microsoft\Teams\logs.txt** .
 
-Wenn Probleme bei Anrufen und Besprechungen auftreten, sammeln Sie Teams-Webclientprotokolle mit der Tastenkombination **STRG** + **ALT** + **UMSCHALT** + **1**. Die Protokolle werden auf der Host-VM in **%userprofile%\Downloads\MSTeams Diagnostics Log DATE_TIME.txt** geschrieben.
+Wenn Probleme bei Anrufen und Besprechungen auftreten, sammeln Sie Teams-Webclientprotokolle mit der Tastenkombination **STRG** + **ALT** + **UMSCHALT** + **1** . Die Protokolle werden auf der Host-VM in **%userprofile%\Downloads\MSTeams Diagnostics Log DATE_TIME.txt** geschrieben.
 
 ## <a name="contact-microsoft-teams-support"></a>Kontaktieren des Microsoft Teams-Supports
 

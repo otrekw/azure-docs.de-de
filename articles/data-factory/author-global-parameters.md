@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567535"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328179"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale Parameter in Azure Data Factory
 
@@ -23,7 +23,7 @@ Globale Parameter sind Konstanten in einer Data Factory, die von einer Pipeline 
 
 ## <a name="creating-global-parameters"></a>Erstellen globaler Parameter
 
-Navigieren Sie zum Erstellen eines globalen Parameters im Abschnitt *Verwalten* zur Registerkarte *Globale Parameter*. Wählen Sie **Neu** aus, um den Seitennavigationsbereich für die Erstellung zu öffnen.
+Navigieren Sie zum Erstellen eines globalen Parameters im Abschnitt *Verwalten* zur Registerkarte *Globale Parameter* . Wählen Sie **Neu** aus, um den Seitennavigationsbereich für die Erstellung zu öffnen.
 
 ![Der Screenshot, auf dem die Schaltfläche „Neu“ hervorgehoben ist, die Sie zum Erstellen globaler Parameter auswählen.](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -52,7 +52,7 @@ Für die meisten Anwendungsfälle empfiehlt es sich, globale Parameter in die AR
 
 ![Einschließen in eine ARM-Vorlage](media/author-global-parameters/include-arm-template.png)
 
-Durch das Hinzufügen globaler Parameter zur ARM-Vorlage wird eine Einstellung auf Factoryebene hinzugefügt, die andere Einstellungen auf Factoryebene in anderen Umgebungen außer Kraft setzen kann, z. B. einen kundenseitig verwalteten Schlüssel oder eine Git-Konfiguration. Wenn Sie diese Einstellungen in einer erweiterten Umgebung aktiviert haben, z. B. vom Typ UAT (Benutzerakzeptanztests) oder PRODUKTION, ist es besser, globale Parameter über ein PowerShell-Skript anhand der unten hervorgehobenen Schritte bereitzustellen.
+Durch das Hinzufügen globaler Parameter zur ARM-Vorlage wird eine Einstellung auf Factoryebene hinzugefügt, die andere Einstellungen auf Factoryebene in anderen Umgebungen außer Kraft setzt, z. B. einen kundenseitig verwalteten Schlüssel oder eine Git-Konfiguration. Wenn Sie diese Einstellungen in einer erweiterten Umgebung aktiviert haben, z. B. vom Typ UAT (Benutzerakzeptanztests) oder PRODUKTION, ist es besser, globale Parameter über ein PowerShell-Skript anhand der unten hervorgehobenen Schritte bereitzustellen.
 
 ### <a name="deploying-using-powershell"></a>Bereitstellen mithilfe von PowerShell
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b525f3299420f81670c0aea9872ac5fdef00be97
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089512"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277799"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -271,7 +271,7 @@ Es gibt keine Auswirkung auf die Schreibverfügbarkeit während der Indextransfo
 
 Das Hinzufügen eines neuen Indexes hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue Indizes erst dann, wenn die Indextransformation abgeschlossen ist. Während der Indextransformation werden von der Abfrage-Engine weiterhin vorhandene Indizes verwendet, sodass Sie während der Indextransformation eine ähnliche Leseleistung beobachten werden wie vor dem Einleiten der Indexänderung. Beim Hinzufügen neuer Indizes besteht auch kein Risiko, unvollständige oder inkonsistente Abfrageergebnisse zu erhalten.
 
-Beim Entfernen von Indizes und beim sofortigen Ausführen von Abfragen, die nach den gelöschten Indizes filtern, gibt es keine Garantie für konsistente oder komplette Abfrageergebnisse. Wenn Sie im Zuge einer einzigen Indizierungsrichtlinienänderung mehrere Indizes entfernen, garantiert die Abfrage-Engine konsistente und vollständige Ergebnisse im Rahmen der Indextransformation. Wenn Sie Indizes jedoch über mehrere Indizierungsrichtlinienänderungen entfernen, garantiert die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse, bis alle Indextransformationen abgeschlossen sind. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen auszuführen, die diese Indizes verwenden, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
+Beim Entfernen von Indizes und beim sofortigen Ausführen von Abfragen, die nach den gelöschten Indizes filtern, gibt es keine Garantie für konsistente oder komplette Abfrageergebnisse. Wenn Sie im Zuge einer einzigen Indizierungsrichtlinienänderung mehrere Indizes entfernen, stellt die Abfrage-Engine konsistente und vollständige Ergebnisse im Rahmen der Indextransformation bereit. Wenn Sie Indizes jedoch über mehrere Indizierungsrichtlinienänderungen entfernen, stellt die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse bereit, bis alle Indextransformationen abgeschlossen sind. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen auszuführen, die diese Indizes verwenden, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
 
 > [!NOTE]
 > Sie sollten immer versuchen, mehrere Indizierungsänderungen zu einer einzelnen Indizierungsrichtlinienänderung zu gruppieren.

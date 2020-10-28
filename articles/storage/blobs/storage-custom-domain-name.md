@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053625"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314653"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
@@ -62,7 +62,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 3. Kopieren Sie den Wert von **Primärer Blob-Dienstendpunkt** oder **Primärer statischer Websiteendpunkt** in eine Textdatei. 
 
-4. Entfernen Sie die Protokoll-ID (*z. B.* HTTPS) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
+4. Entfernen Sie die Protokoll-ID ( *z. B.* HTTPS) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
 
    | Endpunkttyp |  endpoint | Hostname |
    |------------|-----------------|-------------------|
@@ -79,11 +79,11 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
 
 1. Melden Sie sich bei der Website Ihrer Domänenregistrierungsstelle an, und navigieren Sie dann zur Seite zum Verwalten von DNS-Einstellungen.
 
-   Diese Seite finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname**, **DNS** oder **Namenserververwaltung**.
+   Diese Seite finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname** , **DNS** oder **Namenserververwaltung** .
 
 2. Suchen Sie den Abschnitt zum Verwalten von CNAME-Einträgen. 
 
-   Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach **CNAME**, **Alias** oder **Unterdomänen** suchen.
+   Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach **CNAME** , **Alias** oder **Unterdomänen** suchen.
 
 3. Erstellen Sie einen CNAME-Eintrag. Geben Sie als Teil dieses Eintrags die folgenden Elemente an: 
 
@@ -105,7 +105,7 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
 
 3. Geben Sie im Textfeld **Domänenname** den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne ein.  
    
-   Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos*, geben Sie `photos.contoso.com` ein.
+   Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos* , geben Sie `photos.contoso.com` ein.
 
 4. Wählen Sie zum Registrieren der benutzerdefinierten Domäne die Schaltfläche **Speichern** aus.
 
@@ -148,7 +148,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 3. Kopieren Sie den Wert von **Primärer Blob-Dienstendpunkt** oder **Primärer statischer Websiteendpunkt** in eine Textdatei. 
 
-4. Entfernen Sie die Protokoll-ID (*z. B.* HTTPS) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
+4. Entfernen Sie die Protokoll-ID ( *z. B.* HTTPS) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
 
    | Endpunkttyp |  endpoint | Hostname |
    |------------|-----------------|-------------------|
@@ -163,11 +163,11 @@ Erstellen Sie einen temporären CNAME-Eintrag, der auf Ihren Hostnamen verweist.
 
 1. Melden Sie sich bei der Website Ihrer Domänenregistrierungsstelle an, und navigieren Sie dann zur Seite zum Verwalten von DNS-Einstellungen.
 
-   Diese Seite finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname**, **DNS** oder **Namenserververwaltung**.
+   Diese Seite finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname** , **DNS** oder **Namenserververwaltung** .
 
 2. Suchen Sie den Abschnitt zum Verwalten von CNAME-Einträgen. 
 
-   Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach **CNAME**, **Alias** oder **Unterdomänen** suchen.
+   Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach **CNAME** , **Alias** oder **Unterdomänen** suchen.
 
 3. Erstellen Sie einen CNAME-Eintrag. Geben Sie als Teil dieses Eintrags die folgenden Elemente an: 
 
@@ -197,9 +197,9 @@ Wenn Sie Ihre benutzerdefinierte Domäne vorab bei Azure registrieren, kann Azur
 
 3. Geben Sie im Textfeld **Domänenname** den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne ein.  
    
-   Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos*, geben Sie `photos.contoso.com` ein.
+   Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos* , geben Sie `photos.contoso.com` ein.
 
-4. Aktivieren Sie das Kontrollkästchen **Indirekte CNAME-Überprüfung verwenden**.
+4. Aktivieren Sie das Kontrollkästchen **Indirekte CNAME-Überprüfung verwenden** .
 
 5. Wählen Sie zum Registrieren der benutzerdefinierten Domäne die Schaltfläche **Speichern** aus.
   
@@ -211,11 +211,11 @@ Erstellen Sie einen temporären CNAME-Eintrag, der auf Ihren Hostnamen verweist.
 
 1. Melden Sie sich bei der Website Ihrer Domänenregistrierungsstelle an, und navigieren Sie dann zur Seite zum Verwalten von DNS-Einstellungen.
 
-   Diese Seite finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname**, **DNS** oder **Namenserververwaltung**.
+   Diese Seite finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname** , **DNS** oder **Namenserververwaltung** .
 
 2. Suchen Sie den Abschnitt zum Verwalten von CNAME-Einträgen. 
 
-   Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach **CNAME**, **Alias** oder **Unterdomänen** suchen.
+   Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach **CNAME** , **Alias** oder **Unterdomänen** suchen.
 
 3. Erstellen Sie einen CNAME-Eintrag. Geben Sie als Teil dieses Eintrags die folgenden Elemente an: 
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66314155a8de5036009b8e42bf84a8ae8860d0ea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260626"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278963"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrieren von Daten aus Cassandra zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Blitzz
 
@@ -34,7 +34,7 @@ Die Migrationslösung von Blitzz befolgt einen schrittweisen Ansatz zum Migriere
 
 * Blitzz bietet eine parallele Datenbankreplikation für hohe Volumen. Es ermöglicht sowohl den Quell- als auch den Zielplattformen, während der Migration synchron zu bleiben, durch Einsatz eines Verfahrens namens Change-Data-Capture (CDC). Mithilfe von CDC ruft Blitzz kontinuierlich einen Datenstrom mit Änderungen aus der Quelldatenbank (Apache Cassandra) ab und wendet ihn auf die Zieldatenbank (Azure Cosmos DB) an.
 
-* Dies ist fehlertolerant und garantiert eine genau einmalige Übermittlung von Daten, selbst während eines Hardware- oder Softwarefehlers im System.
+* Dies ist fehlertolerant und bietet eine genau einmalige Übermittlung von Daten, selbst während eines Hardware- oder Softwarefehlers im System.
 
 * Die Sicherung der Daten während der Übertragung erfolgt mithilfe verschiedener Sicherheitsmethoden wie TLS oder Verschlüsselung.
 
@@ -96,7 +96,7 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
 
    Verringern Sie nach Abschluss der Migration den Durchsatz wieder. Basierend auf der Menge der gespeicherten Daten und der erforderlichen RUs für jeden Vorgang können Sie den nach der Datenmigration erforderlichen Durchsatz abschätzen. Weitere Informationen zum Abschätzen der erforderlichen RUs finden Sie in den Artikeln [Bereitstellen von Durchsatz für Container und Datenbanken](set-throughput.md) und [Schätzen des Durchsatzes (RU/s) mit dem Azure Cosmos DB Capacity Planner](estimate-ru-with-capacity-planner.md).
 
-1. Besorgen Sie sich den **Kontaktpunkt, Port, Benutzernamen** und das **primäre Kennwort** Ihres Azure Cosmos-Kontos aus dem Bereich **Verbindungszeichenfolge**. Diese Werte werden in der Konfigurationsdatei verwendet.
+1. Besorgen Sie sich den **Kontaktpunkt, Port, Benutzernamen** und das **primäre Kennwort** Ihres Azure Cosmos-Kontos aus dem Bereich **Verbindungszeichenfolge** . Diese Werte werden in der Konfigurationsdatei verwendet.
 
 1. Richten Sie im CLI-Terminal die Konfiguration der Zieldatenbank ein. Öffnen Sie die Konfigurationsdatei mit dem Befehl **`vi conf/conn/cosmosdb.yml`** , und fügen Sie eine durch Trennzeichen getrennte Liste von Host-URI, Portnummer, Benutzername, Kennwort und anderen erforderlichen Parametern hinzu. Im folgenden Beispiel sehen Sie den Inhalt der Konfigurationsdatei:
 
@@ -112,11 +112,11 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
    max-connections: 30
    ```
 
-1. Als Nächstes migrieren Sie die Daten mithilfe von Blitzz. Sie können den Blitzz-Replikanten im **vollständigen**oder **Momentaufnahme**modus ausführen:
+1. Als Nächstes migrieren Sie die Daten mithilfe von Blitzz. Sie können den Blitzz-Replikanten im **vollständigen** oder **Momentaufnahme** modus ausführen:
 
-   * **Vollständiger Modus**: In diesem Modus wird der Replikant nach der Migration weiter ausgeführt und lauscht auf Änderungen am Apache Cassandra-Quellsystem. Wenn es Änderungen erkennt, werden Sie in Echtzeit in das Azure Cosmos-Zielkonto repliziert.
+   * **Vollständiger Modus** : In diesem Modus wird der Replikant nach der Migration weiter ausgeführt und lauscht auf Änderungen am Apache Cassandra-Quellsystem. Wenn es Änderungen erkennt, werden Sie in Echtzeit in das Azure Cosmos-Zielkonto repliziert.
 
-   * **Momentaufnahmemodus**: In diesem Modus können Sie eine Schemamigration sowie eine einmalige Datenreplikation durchführen. Echtzeitreplikation wird mit dieser Option nicht unterstützt.
+   * **Momentaufnahmemodus** : In diesem Modus können Sie eine Schemamigration sowie eine einmalige Datenreplikation durchführen. Echtzeitreplikation wird mit dieser Option nicht unterstützt.
 
    Durch Verwendung der beiden oben genannten Modi kann die Migration ohne jegliche Ausfallzeiten durchgeführt werden. 
 

@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978627"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096656"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren von virtuellen Computern (VMs) oder VM-Skalierungsgruppen während der Bereitstellung in Azure erläutert. Diese cloud-init-Konfigurationen werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  
@@ -25,7 +25,7 @@ Azure unterstützt zwei Bereitstellungs-Agents [cloud-init](https://cloudinit.re
 ## <a name="cloud-init-overview"></a>Übersicht zu cloud-init
 [cloud-init](https://cloudinit.readthedocs.io) ist eine gängige Methode für die Anpassung eines virtuellen Linux-Computers beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien oder anderer Eingaben finden Sie auf der [cloud-init-Dokumentationswebsite](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`-Dateien sind Base64-codierte Textdateien.
 
-„cloud-init“ funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
+„cloud-init“ funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install** , um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
 Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos mit VMs und VM-Skalierungsgruppen. Zunächst arbeiten wir mit den empfohlenen Linux-Distributionspartnern und dem Upstream zusammen, um cloud-init-Funktionen mit dem Betriebssystem in Azure sicherzustellen, dann werden die Pakete aktualisiert und in den Distributionspaketrepositorys öffentlich zugänglich gemacht. 
 
@@ -97,10 +97,10 @@ Diese SLES-Images wurden aktualisiert und unterstützen die Bereitstellung über
 ### <a name="debian"></a>Debian
 | Herausgeber/Version | Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| debian (Gen1) |debian-10 | 10-cloudinit |cloud-init-preview| Ja (nur Vorschau) | Nein, als Vorschauversion. |
-| debian (Gen2) |debian-10 | 10-cloudinit-gen2 |cloud-init-preview| Ja (nur Vorschau) | Nein, als Vorschauversion. |
-
-
+| debian (Gen1) |debian-10 | 10-cloudinit |cloud-init-preview| Ja (Beachten Sie: Dies ist ein Vorschauimage und **darf nicht** mehr verwendet werden. Es wird am 1. Januar 2021 entfernt.) | Nein, als Vorschauversion. |
+| debian (Gen2) |debian-10 | 10-cloudinit-gen2 |cloud-init-preview| Ja (Beachten Sie: Dies ist ein Vorschauimage und **darf nicht** mehr verwendet werden. Es wird am 1. Januar 2021 entfernt.) | Nein, als Vorschauversion. |
+| debian (Gen1) |debian-10 | 10-cloudinit |10:0.20201013.422| ja | Ja – Unterstützung ab Paketversion: `20.2-2~deb10u1` |
+| debian (Gen2) |debian-10 | 10-cloudinit-gen2 |0.20201013.422| ja | Ja – Unterstützung ab Paketversion: `20.2-2~deb10u1` |
 
 
 Derzeit unterstützt Azure Stack die Bereitstellung von cloud-init-fähigen Images.
@@ -108,7 +108,7 @@ Derzeit unterstützt Azure Stack die Bereitstellung von cloud-init-fähigen Imag
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Was ist der Unterschied zwischen cloud-init und Linux-Agent (WALA)?
 WALA ist ein für die Azure-Plattform spezifischer Agent zum Bereitstellen und Konfigurieren von virtuellen Computern und zum Behandeln von [Azure-Erweiterungen](../extensions/features-linux.md). 
 
-Wir ergänzen das Konfigurieren von virtuellen Computern um cloud-init anstelle des Linux-Agents, damit cloud-init-Kunden ihre vorhandenen cloud-init-Skripts und neue Kunden die umfangreichen cloud-init-Konfigurationsfunktionen nutzen können. Wenn Sie in cloud-init-Skripts zum Konfigurieren von Linux-Systemen investiert haben, sind für die Aktivierung **keine zusätzlichen Einstellungen erforderlich**, um die Verarbeitung mit cloud-init zu ermöglichen. 
+Wir ergänzen das Konfigurieren von virtuellen Computern um cloud-init anstelle des Linux-Agents, damit cloud-init-Kunden ihre vorhandenen cloud-init-Skripts und neue Kunden die umfangreichen cloud-init-Konfigurationsfunktionen nutzen können. Wenn Sie in cloud-init-Skripts zum Konfigurieren von Linux-Systemen investiert haben, sind für die Aktivierung **keine zusätzlichen Einstellungen erforderlich** , um die Verarbeitung mit cloud-init zu ermöglichen. 
 
 „cloud-init“ kann keine Azure-Erweiterungen verarbeiten, sodass WALA weiterhin im Image erforderlich ist, um Erweiterungen zu verarbeiten, aber der Bereitstellungscode muss deaktiviert werden. Für unterstützte Linux-Distributionsimages, die für die Bereitstellung durch cloud-init konvertiert werden, muss WALA installiert und ordnungsgemäß eingerichtet sein.
 
@@ -121,7 +121,7 @@ Das Bereitstellen eines clout-init-fähigen virtuellen Computers besteht einfach
 
 Der erste Schritt der Bereitstellung dieses Images ist die Erstellung einer Ressourcengruppe mit dem Befehl [az group create](/cli/azure/group). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
-Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* .
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

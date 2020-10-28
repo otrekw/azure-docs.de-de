@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer FCI mit freigegebenen Azure-Datenträgern (Vorschau)
+title: Erstellen einer FCI mit freigegebenen Azure-Datenträgern
 description: Verwenden Sie freigegebene Azure-Datenträger, um eine Failoverclusterinstanz (FCI) mit SQL Server in Azure Virtual Machines zu erstellen.
 services: virtual-machines
 documentationCenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6e32f183709aca8a78f8448f2d6e6b63a77f2133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272649"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168238"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,16 +35,16 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 - Ein Azure-Abonnement. [Kostenlos](https://azure.microsoft.com/free/) einsteigen. 
 - [Zwei oder mehr virtuelle Windows Azure-Computer](failover-cluster-instance-prepare-vm.md). Es werden sowohl [Verfügbarkeitsgruppen](../../../virtual-machines/windows/tutorial-availability-sets.md) als auch [Näherungsplatzierungsgruppen](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (proximity placement groups, PPGs) unterstützt. Wenn Sie eine PPG verwenden, müssen alle Knoten in derselben Gruppe vorhanden sein.
 - Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
-- Die neueste Version von [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- Die neueste Version von [PowerShell](/powershell/azure/install-az-ps). 
 
 
 ## <a name="add-azure-shared-disk"></a>Hinzufügen eines freigegebenen Azure-Datenträgers
-Stellen Sie einen verwalteten SSD Premium-Datenträger mit aktivierter Funktion für freigegebene Datenträger bereit. Legen Sie `maxShares` auf den Wert fest, der **mit der Anzahl der Clusterknoten übereinstimmt**, damit der Datenträger für alle FCI-Knoten freigegeben werden kann. 
+Stellen Sie einen verwalteten SSD Premium-Datenträger mit aktivierter Funktion für freigegebene Datenträger bereit. Legen Sie `maxShares` auf den Wert fest, der **mit der Anzahl der Clusterknoten übereinstimmt** , damit der Datenträger für alle FCI-Knoten freigegeben werden kann. 
 
 Fügen Sie einen freigegebenen Azure-Datenträger hinzu, indem Sie folgendermaßen vorgehen: 
 
 
-1. Speichern Sie das folgende Skript als *SharedDiskConfig.json*: 
+1. Speichern Sie das folgende Skript als *SharedDiskConfig.json* : 
 
    ```JSON
    { 
@@ -157,7 +157,7 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
 1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** alle Tests aus, *ausgenommen* den Test **Speicher**.
+1. Wählen Sie unter **Testauswahl** alle Tests aus, *ausgenommen* den Test **Speicher** .
 
 ## <a name="test-cluster-failover"></a>Testen des Failovers des Clusters
 
@@ -187,7 +187,7 @@ Die FCI-Datenverzeichnisse müssen sich auf freigegebenen Azure-Datenträgern be
 
 1. Nachdem das Setup die FCI auf dem ersten Knoten installiert hat, können Sie per RDP eine Verbindung mit dem zweiten Knoten herstellen.
 
-1. Öffnen Sie das **SQL Server-Installationscenter**, und wählen Sie **Installation** aus.
+1. Öffnen Sie das **SQL Server-Installationscenter** , und wählen Sie **Installation** aus.
 
 1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2+ und Windows Server 2016 (oder höher) stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
+Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden. 
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -221,12 +221,13 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
+
 
 Wenn freigegebene Azure-Datenträger nicht die richtige FCI-Speicherlösung für Sie sind, können Sie Ihre FCI stattdessen mithilfe von [Premium-Dateifreigaben](failover-cluster-instance-premium-file-share-manually-configure.md) oder [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) erstellen. 
 
 Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und unter [Bewährte Methoden für die Clusterkonfiguration](hadr-cluster-best-practices.md).
 
-Weitere Informationen finden Sie unter: 
+Weitere Informationen finden Sie unter 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

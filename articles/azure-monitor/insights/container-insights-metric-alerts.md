@@ -2,13 +2,13 @@
 title: Metrikwarnungen von Azure Monitor für Container
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen erläutert, die in Azure Monitor für Container in der öffentlichen Vorschauversion verfügbar sind.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619949"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308641"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Empfohlene Metrikwarnungen (Vorschau) aus Azure Monitor für Container
 
@@ -39,12 +39,13 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie be
 
 Damit wichtige Warnungen gesendet werden können, enthält Azure Monitor für Container die folgenden Metrikwarnungen für Ihre Kubernetes-Cluster, die AKS und Azure Arc unterstützen:
 
-|name| BESCHREIBUNG |Standardschwellenwert |
+|Name| BESCHREIBUNG |Standardschwellenwert |
 |----|-------------|------------------|
 |Durchschnittliche CPU-Nutzung für Container in % |Berechnet die durchschnittliche CPU-Nutzung pro Container.|Wenn die durchschnittliche CPU-Nutzung pro Container größer als 95 % ist.| 
 |Durchschnittliche Speichernutzung für Arbeitssatz für Container in % |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz pro Container.|Wenn die durchschnittliche Speichernutzung für den Arbeitssatz pro Container größer als 95 % ist. |
 |Durchschnittliche CPU-Nutzung in % |Berechnet die durchschnittliche CPU-Nutzung pro Knoten. |Wenn die durchschnittliche CPU-Nutzung durch den Knoten größer als 80 % ist. |
 |Durchschnittliche Datenträgernutzung in % |Berechnet die durchschnittliche Datenträgernutzung für einen Knoten.|Wenn die Datenträgernutzung für einen Knoten größer als 80 % ist. |
+|Durchschnittliche Nutzung des persistenten Volumes in % |Berechnet die durchschnittliche PV-Nutzung pro Pod. |Wenn die durchschnittliche PV-Nutzung pro Pod größer als 80 % ist.|
 |Durchschnittliche Speichernutzung für Arbeitssatz in % |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz für einen Knoten. |Wenn die durchschnittliche Speichernutzung für den Arbeitssatz für einen Knoten größer als 80 % ist. |
 |Anzahl der neu gestarteten Container |Berechnet die Anzahl der neu gestarteten Container. | Wenn die Anzahl der Containerneustarts größer als 0 (null) ist. |
 |Anzahl fehlerhafter Pods |Berechnet, ob ein Pod einen fehlerhaften Zustand aufweist.|Wenn die Anzahl von Pods in fehlerhaftem Zustand größer als 0 (null) ist. |
@@ -67,13 +68,15 @@ Es gibt allgemeine Eigenschaften für alle diese Warnungsregeln:
 
 Die folgenden warnungsbasierten Metriken weisen im Vergleich zu den anderen Metriken besondere Verhaltensmerkmale auf:
 
-* Die *completedJobsCount*-Metrik wird nur gesendet, wenn Aufträge vorhanden sind, die vor mehr als sechs Stunden abgeschlossen wurden.
+* Die *completedJobsCount* -Metrik wird nur gesendet, wenn Aufträge vorhanden sind, die vor mehr als sechs Stunden abgeschlossen wurden.
 
-* Die *containerRestartCount*-Metrik wird nur gesendet, wenn Container neu gestartet werden.
+* Die *containerRestartCount* -Metrik wird nur gesendet, wenn Container neu gestartet werden.
 
-* Die *oomKilledContainerCount*-Metrik wird nur gesendet, wenn Container aufgrund von Arbeitsspeichermangel beendet wurden.
+* Die *oomKilledContainerCount* -Metrik wird nur gesendet, wenn Container aufgrund von Arbeitsspeichermangel beendet wurden.
 
-* Die Metriken *cpuExceededPercentage*, *memoryRssExceededPercentage* und *memoryWorkingSetExceededPercentage* werden gesendet, wenn die Werte für die CPU-Nutzung, den Arbeitsspeicher-RSS und den Arbeitssatz für Arbeitsspeicher den konfigurierten Schwellenwert (Standardschwellenwert: 95 %) überschreiten. Bei diesen Schwellenwerten ist der für die entsprechende Warnungsregel angegebene Schwellenwert für die Warnungsbedingung nicht enthalten. Das heißt, wenn Sie diese Metriken sammeln und aus dem [Metrik-Explorer](../platform/metrics-getting-started.md) heraus analysieren möchten, empfiehlt es sich, den Schwellenwert in der Konfiguration auf einen niedrigeren Wert als den Schwellenwert für Warnungen festzulegen. Die Konfiguration in Bezug auf die Sammlungseinstellungen für die Schwellenwerte der Containerressourcenauslastung kann in der Datei „ConfigMaps“ im Abschnitt `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` überschrieben werden. Weitere Informationen zum Konfigurieren der Konfigurationsdatei „ConfigMap“ finden Sie im Abschnitt [Konfigurieren von Warnungsmetriken in „ConfigMaps“](#configure-alertable-metrics-in-configmaps).
+* Die Metriken *cpuExceededPercentage* , *memoryRssExceededPercentage* und *memoryWorkingSetExceededPercentage* werden gesendet, wenn die Werte für die CPU-Nutzung, den Arbeitsspeicher-RSS und den Arbeitssatz für Arbeitsspeicher den konfigurierten Schwellenwert (Standardschwellenwert: 95 %) überschreiten. Bei diesen Schwellenwerten ist der für die entsprechende Warnungsregel angegebene Schwellenwert für die Warnungsbedingung nicht enthalten. Das heißt, wenn Sie diese Metriken sammeln und aus dem [Metrik-Explorer](../platform/metrics-getting-started.md) heraus analysieren möchten, empfiehlt es sich, den Schwellenwert in der Konfiguration auf einen niedrigeren Wert als den Schwellenwert für Warnungen festzulegen. Die Konfiguration in Bezug auf die Sammlungseinstellungen für die Schwellenwerte der Containerressourcenauslastung kann in der Datei „ConfigMaps“ im Abschnitt `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` überschrieben werden. Weitere Informationen zum Konfigurieren der Konfigurationsdatei „ConfigMap“ finden Sie im Abschnitt [Konfigurieren von Warnungsmetriken in „ConfigMaps“](#configure-alertable-metrics-in-configmaps).
+
+* Die *pvUsageExceededPercentage* -Metrik wird gesendet, wenn der Nutzungsprozentsatz des persistenten Volumes den konfigurierten Schwellenwert (Standardschwellenwert: 60 %) überschreitet. Bei diesem Schwellenwert ist der für die entsprechende Warnungsregel angegebene Schwellenwert für die Warnungsbedingung nicht enthalten. Das heißt, wenn Sie diese Metriken sammeln und aus dem [Metrik-Explorer](../platform/metrics-getting-started.md) heraus analysieren möchten, empfiehlt es sich, den Schwellenwert in der Konfiguration auf einen niedrigeren Wert als den Schwellenwert für Warnungen festzulegen. Die Konfiguration in Bezug auf die Sammlungseinstellungen für die Schwellenwerte der Nutzung des persistenten Volumes kann in der Datei „ConfigMaps“ im Abschnitt `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` überschrieben werden. Weitere Informationen zum Konfigurieren der Konfigurationsdatei „ConfigMap“ finden Sie im Abschnitt [Konfigurieren von Warnungsmetriken in „ConfigMaps“](#configure-alertable-metrics-in-configmaps). Die Sammlung von Metriken zum persistenten Volume mit Ansprüchen im Namespace *kube-system* ist standardmäßig ausgeschlossen. Um die Sammlung in diesem Namespace zu aktivieren, verwenden Sie den Abschnitt `[metric_collection_settings.collect_kube_system_pv_metrics]` in der Datei „ConfigMap“. Weitere Informationen finden Sie unter [Einstellungen für Metriksammlung](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings).
 
 ## <a name="metrics-collected"></a>Gesammelte Metriken
 
@@ -97,6 +100,7 @@ Die folgenden Metriken werden, sofern nicht anders angegeben, als Teil dieser Fu
 |Insights.container/containers |cpuExceededPercentage |Prozentuale CPU-Auslastung für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.<br> Gesammelt  |
 |Insights.container/containers |memoryRssExceededPercentage |Prozentualer Arbeitsspeicher-RSS für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
 |Insights.container/containers |memoryWorkingSetExceededPercentage |Prozentualer Arbeitssatz für Arbeitsspeicher für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
+|Insights.container/persistentvolumes |pvUsageExceededPercentage |Prozentuale PV-Nutzung für persistente Volumes, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 60,0), nach Anspruchsname, Kubernetes-Namespace, Volumename, Podname und Knotenname.
 
 ## <a name="enable-alert-rules"></a>Aktivieren von Warnungsregeln
 
@@ -144,9 +148,9 @@ Die grundlegenden Schritte lauten wie folgt:
 
 2. Wählen Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal die Option **Ressource erstellen** im [Azure-Portal](https://portal.azure.com) aus.
 
-3. Suchen Sie nach **Vorlage**, und wählen Sie dann **Vorlagenbereitstellung** aus.
+3. Suchen Sie nach **Vorlage** , und wählen Sie dann **Vorlagenbereitstellung** aus.
 
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Erstellen** .
 
 5. Es werden mehrere Optionen zum Erstellen einer Vorlage angezeigt. Wählen Sie **Eigene Vorlage im Editor erstellen** aus.
 
@@ -207,29 +211,40 @@ Zum Anzeigen von Warnungen, die für die aktivierten Regeln erstellt wurden, wä
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>Konfigurieren von Warnungsmetriken in „ConfigMaps“
 
-Führen Sie die folgenden Schritte aus, um die Konfigurationsdatei „ConfigMap“ so zu konfigurieren, dass die Standardschwellenwerte für die Containerressourcennutzung überschrieben werden. Diese Schritte gelten nur für die folgenden Warnungsmetriken.
+Führen Sie die folgenden Schritte aus, um die Konfigurationsdatei „ConfigMap“ so zu konfigurieren, dass die Standardschwellenwerte für die Nutzung überschrieben werden. Diese Schritte gelten nur für die folgenden Warnungsmetriken:
 
 * *cpuExceededPercentage*
 * *memoryRssExceededPercentage*
 * *memoryWorkingSetExceededPercentage*
+* *pvUsageExceededPercentage*
 
-1. Bearbeiten Sie in der YAML-Datei „ConfigMap“ den Abschnitt `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]`.
+1. Bearbeiten Sie in der YAML-Datei „ConfigMap“ den Abschnitt `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` oder `[alertable_metrics_configuration_settings.pv_utilization_thresholds]`.
 
-2. Um den Schwellenwert für *cpuExceededPercentage* in 90 % zu ändern und mit dem Sammeln dieser Metrik zu beginnen, wenn dieser Schwellenwert erreicht und überschritten wird, konfigurieren Sie die Datei „ConfigMap“ anhand des folgenden Beispiels.
+   - Um den Schwellenwert für *cpuExceededPercentage* in 90 % zu ändern und mit dem Sammeln dieser Metrik zu beginnen, wenn dieser Schwellenwert erreicht und überschritten wird, konfigurieren Sie die Datei „ConfigMap“ anhand des folgenden Beispiels:
 
-    ```
-    container_cpu_threshold_percentage = 90.0
-    # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
-    container_memory_rss_threshold_percentage = 95.0
-    # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
-    container_memory_working_set_threshold_percentage = 95.0
-    ```
+     ```
+     [alertable_metrics_configuration_settings.container_resource_utilization_thresholds]
+         # Threshold for container cpu, metric will be sent only when cpu utilization exceeds or becomes equal to the following percentage
+         container_cpu_threshold_percentage = 90.0
+         # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
+         container_memory_rss_threshold_percentage = 95.0
+         # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
+         container_memory_working_set_threshold_percentage = 95.0
+     ```
 
-3. Führen Sie den folgenden kubectl-Befehl aus: `kubectl apply -f <configmap_yaml_file.yaml>`.
+   - Um den Schwellenwert für *pvUsageExceededPercentage* in 80 % zu ändern und mit dem Sammeln dieser Metrik zu beginnen, wenn dieser Schwellenwert erreicht und überschritten wird, konfigurieren Sie die Datei „ConfigMap“ anhand des folgenden Beispiels:
+
+     ```
+     [alertable_metrics_configuration_settings.pv_utilization_thresholds]
+         # Threshold for persistent volume usage bytes, metric will be sent only when persistent volume utilization exceeds or becomes equal to the following percentage
+         pv_usage_threshold_percentage = 80.0
+     ```
+
+2. Führen Sie den folgenden kubectl-Befehl aus: `kubectl apply -f <configmap_yaml_file.yaml>`.
 
     Beispiel: `kubectl apply -f container-azm-ms-agentconfig.yaml`.
 
-Es kann einige Minuten dauern, bis die Konfigurationsänderungen übernommen werden, und alle omsagent-Pods im Cluster werden neu gestartet. Der Neustart aller omsagent-Pods erfolgt gleitend, nicht alle werden gleichzeitig neu gestartet. Wenn die Neustarts abgeschlossen sind, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt: `configmap "container-azm-ms-agentconfig" created`.
+Es kann einige Minuten dauern, bis die Konfigurationsänderungen übernommen werden, und alle omsagent-Pods im Cluster werden neu gestartet. Der Neustart aller omsagent-Pods erfolgt gleitend, nicht alle werden gleichzeitig neu gestartet. Wenn die Neustarts abgeschlossen sind, wird eine Meldung angezeigt, die dem folgenden Beispiel ähnelt und das Ergebnis anzeigt: `configmap "container-azm-ms-agentconfig" created`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

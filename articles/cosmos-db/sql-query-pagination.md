@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804196"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276097"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Paginierung in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ In Azure Cosmos DB können Abfragen mehrere Ergebnisseiten enthalten. In diesem
 
 Manchmal werden Abfrageergebnisse auf mehrere Seiten aufgeteilt. Die Ergebnisse der einzelnen Seiten werden durch eine separate Abfrageausführung generiert. Wenn Abfrageergebnisse nicht in einer einzelnen Ausführung zurückgegeben werden können, teilt Azure Cosmos DB die Ergebnisse automatisch auf mehrere Seiten auf.
 
-Sie können die maximale Anzahl von Elementen angeben, die von einer Abfrage zurückgegeben werden, indem Sie den `MaxItemCount`festlegen. Der `MaxItemCount` wird pro Anforderung angegeben und garantiert, dass die Abfrage-Engine maximal diese Anzahl von Elementen zurückgibt. Sie können `MaxItemCount` auf `-1` festlegen, wenn Sie keine Beschränkung für die Anzahl der Ergebnisse pro Abfrageausführung festlegen möchten.
+Sie können die maximale Anzahl von Elementen angeben, die von einer Abfrage zurückgegeben werden, indem Sie den `MaxItemCount`festlegen. Der `MaxItemCount` wird pro Anforderung angegeben und besagt, dass die Abfrage-Engine maximal diese Anzahl von Elementen zurückgibt. Sie können `MaxItemCount` auf `-1` festlegen, wenn Sie keine Beschränkung für die Anzahl der Ergebnisse pro Abfrageausführung festlegen möchten.
 
 Darüber hinaus gibt es weitere Gründe dafür, dass die Abfrage-Engine Abfrageergebnisse möglicherweise auf mehrere Seiten aufteilen muss. Dazu gehören:
 

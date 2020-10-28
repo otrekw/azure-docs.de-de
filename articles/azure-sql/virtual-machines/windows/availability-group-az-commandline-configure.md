@@ -13,19 +13,21 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c591bfa911663503b3e8a9101910034c91a8251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298778"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168255"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Konfigurieren einer Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer (PowerShell und Azure CLI)
+# <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von PowerShell oder Azure CLI, um eine Verfügbarkeitsgruppe für SQL Server auf Azure-VMs zu konfigurieren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel wird die Verwendung von [PowerShell](/powershell/scripting/install/installing-powershell) oder der [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure/sql/vm?view=azure-cli-latest/) zum Bereitstellen eines Windows-Failoverclusters, zum Hinzufügen von virtuellen SQL Server-Computern zum Cluster sowie zum Erstellen des internen Lastenausgleichs und Listeners für eine Always On-Verfügbarkeitsgruppe beschrieben. 
+In diesem Artikel wird die Verwendung von [PowerShell](/powershell/scripting/install/installing-powershell) oder der [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure/sql/vm) zum Bereitstellen eines Windows-Failoverclusters, zum Hinzufügen von virtuellen SQL Server-Computern zum Cluster sowie zum Erstellen des internen Lastenausgleichs und Listeners für eine Always On-Verfügbarkeitsgruppe beschrieben. 
 
 Die Bereitstellung der Verfügbarkeitsgruppe erfolgt weiterhin manuell über SQL Server Management Studio (SSMS) oder Transact-SQL (T-SQL). 
+
+In diesem Artikel werden PowerShell und die Azure CLI verwendet, um die Umgebung der Verfügbarkeitsgruppe zu konfigurieren. Diese Konfiguration kann aber auch über das [Azure-Portal](availability-group-azure-portal-configure.md) mit [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder [manuell](availability-group-manually-configure-tutorial.md) erfolgen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> Möglicherweise wird der Fehler `az sql: 'vm' is not in the 'az sql' command group` angezeigt, wenn Sie eine veraltete Version der Azure CLI verwenden. Laden Sie die [neueste Version von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) herunter, um diesen Fehler zu überwinden.
+> Möglicherweise wird der Fehler `az sql: 'vm' is not in the 'az sql' command group` angezeigt, wenn Sie eine veraltete Version der Azure CLI verwenden. Laden Sie die [neueste Version von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) herunter, um diesen Fehler zu überwinden.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -82,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>Definieren von Clustermetadaten
 
-Die Azure CLI-Befehlsgruppe [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) verwaltet die Metadaten des Windows Server-Failoverclusterdiensts (WSFC), der die Verfügbarkeitsgruppe hostet. Zu den Clustermetadaten gehören die Active Directory-Domäne, Clusterkonten, als Cloudzeugen zu verwendende Speicherkonten und die SQL Server-Version. Verwenden Sie [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create), um die Metadaten für den WSFC zu definieren, sodass der Cluster beim Hinzufügen der ersten SQL Server-VM wie definiert erstellt wird. 
+Die Azure CLI-Befehlsgruppe [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group) verwaltet die Metadaten des Windows Server-Failoverclusterdiensts (WSFC), der die Verfügbarkeitsgruppe hostet. Zu den Clustermetadaten gehören die Active Directory-Domäne, Clusterkonten, als Cloudzeugen zu verwendende Speicherkonten und die SQL Server-Version. Verwenden Sie [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create), um die Metadaten für den WSFC zu definieren, sodass der Cluster beim Hinzufügen der ersten SQL Server-VM wie definiert erstellt wird. 
 
 Im folgenden Codeausschnitt werden die Metadaten für den Cluster definiert:
 
@@ -127,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>Hinzufügen von VMs zum Cluster
 
-Beim Hinzufügen der ersten SQL Server-VM zum Cluster wird der Cluster erstellt. Der Befehl [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) erstellt den Cluster mit dem zuvor gegebenen Namen, installiert die Clusterrolle in den SQL Server-VMs und fügt sie dem Cluster hinzu. Nachfolgende Verwendungen des Befehls `az sql vm add-to-group` fügen dem neu erstellten Cluster weitere SQL Server-VMs hinzu. 
+Beim Hinzufügen der ersten SQL Server-VM zum Cluster wird der Cluster erstellt. Der Befehl [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) erstellt den Cluster mit dem zuvor gegebenen Namen, installiert die Clusterrolle in den SQL Server-VMs und fügt sie dem Cluster hinzu. Nachfolgende Verwendungen des Befehls `az sql vm add-to-group` fügen dem neu erstellten Cluster weitere SQL Server-VMs hinzu. 
 
 Der folgende Codeausschnitt erstellt den Cluster und fügt ihm die erste SQL Server-VM hinzu: 
 
@@ -204,6 +206,8 @@ Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [SQL Se
 
 ## <a name="create-internal-load-balancer"></a>Erstellen eines internen Lastenausgleichs
 
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Balancer-Instanz erforderlich. Der interne Lastenausgleich stellt eine Floating IP-Adresse für den Verfügbarkeitsgruppenlistener bereit, um Failovervorgänge und Verbindungswiederherstellungen zu beschleunigen. Wenn die SQL Server-VMs in einer Verfügbarkeitsgruppe Teil des gleichen Verfügbarkeitssatzes sind, können Sie einen Lastenausgleich im Tarif „Basic“ verwenden. Andernfalls benötigen einen Lastenausgleich im Tarif „Standard“.  
 
 > [!NOTE]
@@ -236,11 +240,11 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 ---
 
 >[!IMPORTANT]
-> Die öffentliche IP-Adressressource für die einzelnen SQL Server-VMs muss über eine Standard-SKU verfügen, um mit dem Load Balancer „Standard“ kompatibel zu sein. Um die SKU der öffentlichen IP-Ressource Ihrer VM zu ermitteln, navigieren Sie zu **Ressourcengruppe**, und wählen Sie die Ressource **Öffentliche IP-Adresse** für die gewünschte SQL Server-VM aus. Der Wert befindet sich im Bereich **Übersicht** unter **SKU**.  
+> Die öffentliche IP-Adressressource für die einzelnen SQL Server-VMs muss über eine Standard-SKU verfügen, um mit dem Load Balancer „Standard“ kompatibel zu sein. Um die SKU der öffentlichen IP-Ressource Ihrer VM zu ermitteln, navigieren Sie zu **Ressourcengruppe** , und wählen Sie die Ressource **Öffentliche IP-Adresse** für die gewünschte SQL Server-VM aus. Der Wert befindet sich im Bereich **Übersicht** unter **SKU** .  
 
 ## <a name="create-listener"></a>Erstellen des Listeners
 
-Nachdem die Verfügbarkeitsgruppe manuell erstellt wurde, können Sie den Listener mithilfe von [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) erstellen. 
+Nachdem die Verfügbarkeitsgruppe manuell erstellt wurde, können Sie den Listener mithilfe von [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) erstellen. 
 
 Die *Subnetzressourcen-ID* ist der Wert von `/subnets/<subnetname>`, der an die Ressourcen-ID der VNET-Ressource angehängt wurde. So bestimmen Sie die Subnetzressourcen-ID:
    1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe. 
@@ -294,7 +298,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="modify-number-of-replicas"></a>Ändern der Anzahl von Replikaten 
-Beim Bereitstellen einer Verfügbarkeitsgruppe auf SQL Server-VMs, die in Azure gehostet sind, muss zusätzliche Komplexität berücksichtigt werden. Der Ressourcenanbieter und die Gruppe der virtuellen Computer verwalten nun die Ressourcen. Beim Hinzufügen oder Entfernen von Replikaten zur bzw. aus der Verfügbarkeitsgruppe ist daher das Aktualisieren der Metadaten des Listeners mit Informationen zu den SQL Server-VMs als zusätzlicher Schritt auszuführen. Beim Ändern der Anzahl von Replikaten in der Verfügbarkeitsgruppe muss außerdem der Befehl [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) verwendet werden, um den Listener mit den Metadaten der SQL Server-VMs zu aktualisieren. 
+Beim Bereitstellen einer Verfügbarkeitsgruppe auf SQL Server-VMs, die in Azure gehostet sind, muss zusätzliche Komplexität berücksichtigt werden. Der Ressourcenanbieter und die Gruppe der virtuellen Computer verwalten nun die Ressourcen. Beim Hinzufügen oder Entfernen von Replikaten zur bzw. aus der Verfügbarkeitsgruppe ist daher das Aktualisieren der Metadaten des Listeners mit Informationen zu den SQL Server-VMs als zusätzlicher Schritt auszuführen. Beim Ändern der Anzahl von Replikaten in der Verfügbarkeitsgruppe muss außerdem der Befehl [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-update) verwendet werden, um den Listener mit den Metadaten der SQL Server-VMs zu aktualisieren. 
 
 
 ### <a name="add-a-replica"></a>Hinzufügen eines Replikats

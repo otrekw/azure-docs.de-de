@@ -4,17 +4,27 @@ description: Hier erfahren Sie, wie IP-Zugriffssteuerungsrichtlinien für die Fi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ad53a90586ccf88c5c74326103997ca0a53cdf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814177"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279749"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
+
+Zum Sichern der in Ihrem Konto gespeicherten Daten unterstützt Azure Cosmos DB ein auf Geheimnissen basierendes Autorisierungsmodell, das einen starken hashbasierten Nachrichtenauthentifizierungscode (HMAC) nutzt. Darüber hinaus unterstützt Azure Cosmos DB die IP-basierte Zugriffssteuerung zur Unterstützung der Firewall für eingehende Verbindungen. Dieses Modell ähnelt den Firewallregeln eines herkömmlichen Datenbanksystems und bietet zusätzliche Sicherheit für Ihr Konto. Mit Firewalls können Sie nun Ihr Azure Cosmos-Konto so konfigurieren, dass es nur über eine genehmigte Gruppe von Computern und/oder Clouddiensten zugänglich ist. Für den Zugriff auf Daten, die in Ihrer Azure Cosmos-Datenbank gespeichert sind, über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
+
+## <a name="ip-access-control"></a><a id="ip-access-control-overview"></a>IP-Zugriffssteuerung
+
+Standardmäßig ist ein Azure Cosmos-Konto über das Internet zugänglich, solange die Anforderung zusammen mit einem gültigen Autorisierungstoken erfolgt. Zum Konfigurieren der auf IP-Richtlinien basierenden Zugriffssteuerung muss der Benutzer die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angeben, die als Liste der zulässigen Client-IPs für den Zugriff auf ein bestimmtes Azure Cosmos-Konto aufgenommen wird. Nachdem diese Konfiguration angewendet wurde, erhalten alle Anforderungen von Computern, die nicht in dieser Zulassungsliste enthalten sind, die Antwort „403 (Nicht zulässig)“. Wenn Sie eine IP-Firewall verwenden, empfiehlt es sich, dem Azure-Portal Zugriff auf Ihr Konto zu gewähren. Zugriff ist erforderlich, um den Daten-Explorer verwenden zu können und um Metriken für Ihr Konto, die im Azure-Portal angezeigt werden, abzurufen. Bei Verwendung des Daten-Explorers müssen Sie nicht nur dem Azure-Portal den Zugriff auf Ihr Konto gestatten, sondern auch Ihre Firewalleinstellungen aktualisieren, um den Firewallregeln Ihre aktuelle IP-Adresse hinzuzufügen. Beachten Sie, dass die Verteilung von Änderungen an der Firewall bis zu 15 Minuten dauern kann.
+
+Sie können die IP-basierte Firewall mit Subnetz- und VNET-Zugriffssteuerung kombinieren. Durch diese Kombination können Sie den Zugriff auf eine beliebigen Quelle beschränken, die eine öffentliche IP-Adresse aufweist bzw. zu einem bestimmten Subnetz im VNET gehört. Weitere Informationen zur Verwendung von Subnetz- und VNET-basierter Zugriffssteuerung finden Sie unter [Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke](vnet-service-endpoint.md).
+
+Zusammenfassend lässt sich sagen, dass für den Zugriff auf ein Azure Cosmos-Konto immer ein Autorisierungstoken erforderlich ist. Wenn IP-Firewall- und VNET-Zugriffssteuerungslisten (ACLs) nicht eingerichtet sind, kann mit dem Authentifizierungstoken auf das Azure Cosmos-Konto zugegriffen werden. Nachdem IP-Firewall- oder VNET-ACLs oder beides für das Azure Cosmos-Konto eingerichtet wurden, erhalten nur Anforderungen, die aus den von Ihnen angegebenen Quellen stammen (und das Autorisierungstoken aufweisen), gültige Antworten. 
 
 Sie können die in Ihrem Azure Cosmos DB-Konto gespeicherten Daten mithilfe von IP-Firewalls sichern. Azure Cosmos DB unterstützt die IP-basierte Zugriffssteuerung zur Unterstützung der Firewall für eingehende Verbindungen. Sie können über eine der folgenden Methoden eine IP-Firewall für das Azure Cosmos DB-Konto festlegen:
 
@@ -24,7 +34,7 @@ Sie können die in Ihrem Azure Cosmos DB-Konto gespeicherten Daten mithilfe von 
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurieren einer IP-Firewall über das Azure-Portal
 
-Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite für das Azure Cosmos DB-Konto, und wählen Sie im Navigationsmenü **Firewall und virtuelle Netzwerke** aus. Ändern Sie den Wert **Zugriff zulassen über** in **Ausgewählte Netzwerke**, und klicken Sie dann auf **Speichern**.
+Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite für das Azure Cosmos DB-Konto, und wählen Sie im Navigationsmenü **Firewall und virtuelle Netzwerke** aus. Ändern Sie den Wert **Zugriff zulassen über** in **Ausgewählte Netzwerke** , und klicken Sie dann auf **Speichern** .
 
 :::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal":::
 
@@ -65,7 +75,7 @@ Um die Entwicklung zu vereinfachen, unterstützt das Azure-Portal Sie dabei, die
 
 Das Portal erkennt die Client-IP-Adresse automatisch. Es kann sich um die Client-IP-Adresse Ihres Computers oder um die IP-Adresse Ihres Netzwerkgateways handeln. Sie müssen diese IP-Adresse entfernen, bevor Sie Ihre Workloads in die Produktion überführen.
 
-Um Ihre aktuelle IP-Adresse zur IP-Liste hinzuzufügen, aktivieren Sie die Option **Meine aktuelle IP-Adresse hinzufügen**. Klicken Sie dann auf **Speichern**.
+Um Ihre aktuelle IP-Adresse zur IP-Liste hinzuzufügen, aktivieren Sie die Option **Meine aktuelle IP-Adresse hinzufügen** . Klicken Sie dann auf **Speichern** .
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal":::
 
@@ -225,5 +235,5 @@ Wenn die Liste zulässiger Adressen private IP-Adressen enthält, kann ein Azure
 
 Informationen zum Konfigurieren eines VNET-Dienstendpunkts für Ihr Azure Cosmos DB-Konto finden Sie in den folgenden Artikeln:
 
-* [Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke und Subnetze](vnet-service-endpoint.md)
+* [Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke und Subnetze](how-to-configure-vnet-service-endpoint.md)
 * [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md)

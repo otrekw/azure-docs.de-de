@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 7274627ccf0aaab29f3ca569568e0085d53f1dea
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818094"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277994"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 
@@ -419,7 +419,7 @@ Die Lösung für dieses Problem ist im Grunde einfach:
 
 1. Die Anforderung *muss* nach der `userId` filtern, da wir alle Beiträge für einen bestimmten Benutzer abrufen wollen.
 1. Die Leistung dieser Anforderung ist nicht gut, da sie für den Container `posts` ausgeführt wird, der nicht nach `userId` partitioniert ist.
-1. Wir könnten das Leistungsproblem natürlich beheben, indem wir die Anforderung für einen Container ausführen, der nach `userId` partitioniert *ist*.
+1. Wir könnten das Leistungsproblem natürlich beheben, indem wir die Anforderung für einen Container ausführen, der nach `userId` partitioniert *ist* .
 1. Tatsächlich haben wir bereits einen solchen Container: den Container `users`.
 
 Wir fügen daher eine zweite Denormalisierungsebene hinzu, indem wir alle Posts im Container `users` duplizieren. Auf diese Weise erhalten wir eine Kopie unserer Beiträge, die lediglich nach anderen Dimensionen partitioniert ist. Die Beiträge können dadurch deutlich effizienter anhand der `userId` abgerufen werden.
@@ -586,6 +586,6 @@ Im Änderungsfeed, den wir zum Verteilen der Aktualisierungen an andere Containe
 
 Nach dieser Einführung in die praktische Datenmodellierung und -partitionierung können Sie die hier vorgestellten Konzepte in den folgenden Artikeln nachlesen:
 
-- [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md)
+- [Arbeiten mit Datenbanken, Containern und Elementen](account-databases-containers-items.md)
 - [Partitioning in Azure Cosmos DB](partitioning-overview.md) (Partitionierung in Azure Cosmos DB)
 - [Änderungsfeed in Azure Cosmos DB](change-feed.md)

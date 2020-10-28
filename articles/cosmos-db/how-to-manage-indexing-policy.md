@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: f915f86fff340ba3c8c192809ef68997ea3c3fc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f006f249fce56171f8bbf471de013e015b5c4f92
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330484"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207774"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -357,13 +357,13 @@ Azure Cosmos-Container speichern ihre Indizierungsrichtlinie als ein JSON-Dokume
 
 1. Erstellen Sie ein neues Azure Cosmos-Konto, oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie den gewünschten Container aus.
+1. Öffnen Sie den Bereich **Daten-Explorer** , und wählen Sie den gewünschten Container aus.
 
-1. Klicken Sie auf **Skalierung und Einstellungen**.
+1. Klicken Sie auf **Skalierung und Einstellungen** .
 
 1. Ändern Sie das JSON-Dokument der Indizierungsrichtlinie (siehe [folgende](#indexing-policy-examples) Beispiele).
 
-1. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+1. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
 
 :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Verwalten der Indizierung über das Azure-Portal":::
 
@@ -748,6 +748,13 @@ Aktualisieren des Containers mit Änderungen
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+
+Abrufen des Fortschritts der Indextransformation aus den Antwortheadern
+```python
+container_client.read(populate_quota_info = True,
+                      response_hook = lambda h,p: print(h['x-ms-documentdb-collection-index-transformation-progress']))
+```
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte

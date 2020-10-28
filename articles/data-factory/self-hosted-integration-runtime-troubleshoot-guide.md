@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069474"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131305"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -24,13 +24,13 @@ In diesem Artikel werden allgemeine Methoden zur Problembehandlung bei selbstgeh
 
 Bei fehlgeschlagenen Aktivitäten in selbstgehosteter IR/freigegebener IR unterstützt Azure Data Factory das Anzeigen und Hochladen von Fehlerprotokollen. Sie können die folgenden Schritte zum Abrufen der Fehlerberichts-ID ausführen und dann diese ID eingeben, um verwandte bekannte Probleme zu finden.
 
-1. Wechseln Sie zur Seite **Aktivitätsausführungen**.
+1. Wechseln Sie zur Seite **Aktivitätsausführungen** .
 
 1. Klicken Sie unter der Spalte **FEHLER** auf die unten gezeigte Schaltfläche.
 
     ![Seite „Aktivitätsausführungen“](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
 
-1. Verwandte Protokolle für die fehlgeschlagene Aktivitätsausführung werden angezeigt. Klicken Sie auf die Schaltfläche **Protokolle senden**, um weitere Hilfe zu erhalten.
+1. Verwandte Protokolle für die fehlgeschlagene Aktivitätsausführung werden angezeigt. Klicken Sie auf die Schaltfläche **Protokolle senden** , um weitere Hilfe zu erhalten.
 
     ![Protokolle senden](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
@@ -65,7 +65,7 @@ Dies ist ein bekanntes Problem in WCF: Die WCF-TLS/SSL-Überprüfung überprüft
 #### <a name="resolution"></a>Lösung
 
 In der selbstgehosteten IR von Azure Data Factory v2 wird ein Platzhalterzertifikat unterstützt. Dieses Problem tritt normalerweise auf, weil das SSL-Zertifikat falsch ist. Das letzte „DNSName“ im SAN muss gültig sein. Führen Sie die folgenden Schritte aus, um dies zu überprüfen. 
-1.  Öffnen Sie die Verwaltungskonsole, und überprüfen Sie in den „Zertifikatdetails“ sowohl *Betreff* als auch *Alternativer Antragstellername*. In diesem Fall ist beispielsweise das letzte Element in *Alternativer Antragstellername*, „DNS Name = microsoft.com.com“, nicht legitim.
+1.  Öffnen Sie die Verwaltungskonsole, und überprüfen Sie in den „Zertifikatdetails“ sowohl *Betreff* als auch *Alternativer Antragstellername* . In diesem Fall ist beispielsweise das letzte Element in *Alternativer Antragstellername* , „DNS Name = microsoft.com.com“, nicht legitim.
 2.  Bitten Sie das Unternehmen, von dem das Zertifikat ausgestellt wurde, den falschen DNS-Namen zu entfernen.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problem beim Limit für gleichzeitige Aufträge
@@ -102,7 +102,7 @@ Bei der Behandlung von Fällen im Zusammenhang mit dem SSL/TLS-Handshake könnte
 
 - Hier ist eine schnelle und intuitive Möglichkeit zum Beheben von Fehlern beim Erstellen der X.509-Zertifikatkette.
  
-    1. Exportieren Sie das Zertifikat, das überprüft werden muss. Wechseln Sie zu „Computerzertifikat verwalten“, suchen Sie das Zertifikat, das Sie überprüfen möchten, und klicken Sie mit der rechten Maustaste auf **Alle Tasks** -> **Exportieren**.
+    1. Exportieren Sie das Zertifikat, das überprüft werden muss. Wechseln Sie zu „Computerzertifikat verwalten“, suchen Sie das Zertifikat, das Sie überprüfen möchten, und klicken Sie mit der rechten Maustaste auf **Alle Tasks** -> **Exportieren** .
     
         ![Aufgaben exportieren](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -165,13 +165,13 @@ Wenn Sie den Prozessmonitor verwenden, wird folgendes Ergebnis angezeigt:
 > [!TIP] 
 > Sie können den Filter so wie im folgenden Screenshot festlegen.
 > Sie werden dadurch informiert, dass sich die DLL-Datei **System.ValueTuple** nicht im GAC-bezogenen Ordner, im Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway* oder im Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Shared* befindet.
-> Im Grunde genommen wird die DLL zuerst aus dem Ordner *GAC*, dann aus *Freigegeben* und schließlich aus dem Ordner *Gateway* geladen. Deshalb können Sie die DLL in jeden beliebigen Pfad einfügen, was hilfreich sein kann.
+> Im Grunde genommen wird die DLL zuerst aus dem Ordner *GAC* , dann aus *Freigegeben* und schließlich aus dem Ordner *Gateway* geladen. Deshalb können Sie die DLL in jeden beliebigen Pfad einfügen, was hilfreich sein kann.
 
 ![Filter einrichten](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
 #### <a name="resolution"></a>Lösung
 
-Sie können feststellen, dass sich die Datei **System.ValueTuple.dll** unter dem Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway\DataScan* befindet. Kopieren Sie die Datei **System.ValueTuple.dll** in den Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway*, um das Problem zu lösen.
+Sie können feststellen, dass sich die Datei **System.ValueTuple.dll** unter dem Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway\DataScan* befindet. Kopieren Sie die Datei **System.ValueTuple.dll** in den Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway* , um das Problem zu lösen.
 
 Mit derselben Methode können Sie andere Probleme des Typs „Datei oder Assembly fehlt“ lösen.
 
@@ -210,7 +210,7 @@ Wenn keiner der vorstehenden Gründe zutrifft, können Sie zum Ordner *%ProgramD
 
 #### <a name="symptoms"></a>Symptome
 
-Nachdem Sie selbstgehostete IRs für Quell- und Zieldatenspeicher erstellt haben, möchten Sie die beiden IRs miteinander verbinden, um einen Kopiervorgang abzuschließen. Wenn die Datenspeicher in unterschiedlichen VNETs konfiguriert wurden oder den Gatewaymechanismus nicht verstehen können, treten Fehler auf wie: *der Treiber für die Quelle wird in der Ziel-IR nicht gefunden*; *die Ziel-IR kann auf die Quelle nicht zugreifen*.
+Nachdem Sie selbstgehostete IRs für Quell- und Zieldatenspeicher erstellt haben, möchten Sie die beiden IRs miteinander verbinden, um einen Kopiervorgang abzuschließen. Wenn die Datenspeicher in unterschiedlichen VNETs konfiguriert wurden oder den Gatewaymechanismus nicht verstehen können, treten Fehler auf wie: *der Treiber für die Quelle wird in der Ziel-IR nicht gefunden* ; *die Ziel-IR kann auf die Quelle nicht zugreifen* .
  
 #### <a name="cause"></a>Ursache
 
@@ -291,7 +291,7 @@ Wechseln Sie zum Integration Runtime-Ereignisprotokoll, um den Fehler zu überpr
 Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führen Sie die folgenden Anweisungen aus:
 
 
-1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService*.
+1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService* .
 
     ![Dienstanmeldekonto](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
@@ -305,7 +305,7 @@ Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führ
         1. Führen Sie eine saubere Deinstallation der aktuellen selbstgehosteten IR durch.
         1. Installieren Sie die selbstgehosteten IR-Bits.
         1. Führen Sie die Anweisungen unten zum Ändern des Dienstkontos aus: 
-            1. Wechseln Sie zum Installationsordner für die selbstgehostete IR und darin zum Ordner: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Wechseln Sie zum Installationsordner für die selbstgehostete IR und darin zum Ordner: *Microsoft Integration Runtime\4.0\Shared* .
             1. Starten Sie eine Befehlszeile mit erhöhten Rechten. Ersetzen Sie *\<user>* und *\<password>* durch Ihren eigenen Benutzernamen und Ihr Kennwort, und führen Sie dann den folgenden Befehl aus:
                        
                 ```
@@ -325,9 +325,9 @@ Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führ
             1. Sie können den lokalen Benutzer/Domänenbenutzer für das Anmeldekonto des IR-Diensts verwenden.            
         1. Registrieren Sie die Integration Runtime.
 
-Wenn der Fehler so angezeigt wird: *Der Dienst „Integration Runtime Service“ (DIAHostService) konnte nicht gestartet werden. Überprüfen Sie, ob Sie ausreichende Berechtigungen zum Starten von Systemdiensten besitzen*. Führen Sie dazu die folgenden Anweisungen aus:
+Wenn der Fehler so angezeigt wird: *Der Dienst „Integration Runtime Service“ (DIAHostService) konnte nicht gestartet werden. Überprüfen Sie, ob Sie ausreichende Berechtigungen zum Starten von Systemdiensten besitzen* . Führen Sie dazu die folgenden Anweisungen aus:
 
-1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService*.
+1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService* .
    
     ![Dienstanmeldekonto](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
@@ -431,7 +431,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Fac
     ```
         
    > [!NOTE]     
-   > Die Dienst-URL kann abhängig vom jeweiligen Data Factory-Speicherort abweichen. Sie finden die Dienst-URL unter **ADF-Benutzeroberfläche** > **Verbindungen** > **Integration Runtimes** > **Selfgehostete IR bearbeiten** > **Knoten** > **Dienst-URLs anzeigen**.
+   > Die Dienst-URL kann abhängig vom jeweiligen Data Factory-Speicherort abweichen. Sie finden die Dienst-URL unter **ADF-Benutzeroberfläche** > **Verbindungen** > **Integration Runtimes** > **Selfgehostete IR bearbeiten** > **Knoten** > **Dienst-URLs anzeigen** .
             
     Die folgende Antwort wird erwartet:
             
@@ -441,7 +441,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Fac
             
     * Wenn Sie die Meldung erhalten, dass der Remotename nicht aufgelöst werden konnte, gibt es ein Problem mit dem Domain Name System (DNS). Wenden Sie sich an das Netzwerkteam, um dieses Problem zu beheben.
     * Wenn Sie die Meldung erhalten, dass das SSL/TLS-Zertifikat ist nicht vertrauenswürdig ist, überprüfen Sie, ob das Zertifikat für https://wu2.frontend.clouddatahub.net/ auf dem Computer vertrauenswürdig ist, und installieren Sie dann das öffentliche Zertifikat mit dem Zertifikat-Manager. Durch diese Aktion sollte das Problem behoben werden.
-    * Wechseln Sie zu **Windows** > **Ereignisanzeige (Protokolle)**  > **Anwendungs- und Dienstprotokolle** > **Integration Runtime**, und prüfen Sie, ob Fehler auftreten, die durch DNS, eine Firewallregel oder Unternehmensnetzwerkeinstellungen verursacht werden. (Wenn Sie einen solchen Fehler feststellen, müssen Sie die Verbindung zwangsbeenden.) Da jedes Unternehmen über angepasste Netzwerkeinstellungen verfügt, wenden Sie sich an das Netzwerkteam, um diese Probleme zu beheben.
+    * Wechseln Sie zu **Windows** > **Ereignisanzeige (Protokolle)**  > **Anwendungs- und Dienstprotokolle** > **Integration Runtime** , und prüfen Sie, ob Fehler auftreten, die durch DNS, eine Firewallregel oder Unternehmensnetzwerkeinstellungen verursacht werden. (Wenn Sie einen solchen Fehler feststellen, müssen Sie die Verbindung zwangsbeenden.) Da jedes Unternehmen über angepasste Netzwerkeinstellungen verfügt, wenden Sie sich an das Netzwerkteam, um diese Probleme zu beheben.
 
 1. Wenn „Proxy“ in der selbstgehosteten Integration Runtime konfiguriert wurde, überprüfen Sie, ob Ihr Proxyserver auf den Dienstendpunkt zugreifen kann. Ein Beispiel für einen Befehl finden Sie unter [PowerShell, Webanforderungen und Proxys](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
@@ -549,7 +549,7 @@ Führen Sie eine weitere Analyse der Netmon-Ablaufverfolgung durch.
 - Anschließend können Sie die Konvertierung zwischen Client und Data Factory-Server abrufen, indem Sie den Filter entfernen.
 
     ![Abrufen der Konversation](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
-- Basierend auf der erfassten Netmon-Ablaufverfolgung ist zu erkennen, dass die Gültigkeitsdauer (TimeToLive, TTL) 64 beträgt. Gemäß den **Standardwerten für die Gültigkeitsdauer und maximale Anzahl an Weiterleitungen**, die in [diesem Artikel](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) erwähnt werden (siehe unten), sehen wir, dass das Linux-System dafür verantwortlich ist, dass das Paket zurückgesetzt und die Verbindung getrennt wird.
+- Basierend auf der erfassten Netmon-Ablaufverfolgung ist zu erkennen, dass die Gültigkeitsdauer (TimeToLive, TTL) 64 beträgt. Gemäß den **Standardwerten für die Gültigkeitsdauer und maximale Anzahl an Weiterleitungen** , die in [diesem Artikel](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) erwähnt werden (siehe unten), sehen wir, dass das Linux-System dafür verantwortlich ist, dass das Paket zurückgesetzt und die Verbindung getrennt wird.
 
     Die Standardwerte für die Gültigkeitsdauer und maximale Anzahl an Weiterleitungen variieren je nach Betriebssystem. Im Folgenden finden Sie einige Standardwerte:
     - Linux-Kernel 2.4 (etwa 2001): 255 für TCP, UDP und ICMP
@@ -569,7 +569,7 @@ Führen Sie eine weitere Analyse der Netmon-Ablaufverfolgung durch.
  
     *Netzwerkpaket von Linux-System A mit TTL 64-> B TTL 64 minus 1 = 63-> C TTL 63 minus 1 = 62-> TTL 62 minus 1 = 61 selbstgehostete IR*
 
-- Idealerweise ist die Gültigkeitsdauer 128, was bedeutet, dass die Data Factory vom Windows-System ausgeführt wird. *128 - 107 = 21 Hops*, wie im obigen Beispiel gezeigt, bedeutet, dass 21 Hops für das Paket während des TCP 3-Handshakes von Data Factory an die selbstgehostete IR gesendet wurden.
+- Idealerweise ist die Gültigkeitsdauer 128, was bedeutet, dass die Data Factory vom Windows-System ausgeführt wird. *128 - 107 = 21 Hops* , wie im obigen Beispiel gezeigt, bedeutet, dass 21 Hops für das Paket während des TCP 3-Handshakes von Data Factory an die selbstgehostete IR gesendet wurden.
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +587,11 @@ Wenn Sie versuchen, Telnet **8.8.8.8 888** mit der erfassten Netmon-Ablaufverfol
 ![Netmon-Ablaufverfolgung 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-Dies bedeutet, dass Sie keine TCP-Verbindung mit der Serverseite **8.8.8.8** basierend auf Port **888** herstellen können. Daher sehen Sie zwei zusätzliche **SynReTransmit**-Pakete. Da die Quelle **SELF-HOST2** keine Verbindung mit **8.8.8.8** beim ersten Paket herstellen konnte, wird die Verbindung weiterhin hergestellt.
+Dies bedeutet, dass Sie keine TCP-Verbindung mit der Serverseite **8.8.8.8** basierend auf Port **888** herstellen können. Daher sehen Sie zwei zusätzliche **SynReTransmit** -Pakete. Da die Quelle **SELF-HOST2** keine Verbindung mit **8.8.8.8** beim ersten Paket herstellen konnte, wird die Verbindung weiterhin hergestellt.
 
 > [!TIP]
-> - Klicken Sie auf **Filter laden** -> **Standard Filter (Standardfilter)**  -> **Adressen** -> **IPv4-Adressen**.
-> - Geben Sie **IPv4.Address == 8.8.8.8** als Filter ein, und klicken Sie auf **Anwenden**. Anschließend wird Ihnen nur die Kommunikation vom lokalen Computer zum Ziel **8.8.8.8** angezeigt.
+> - Klicken Sie auf **Filter laden** -> **Standard Filter (Standardfilter)**  -> **Adressen** -> **IPv4-Adressen** .
+> - Geben Sie **IPv4.Address == 8.8.8.8** als Filter ein, und klicken Sie auf **Anwenden** . Anschließend wird Ihnen nur die Kommunikation vom lokalen Computer zum Ziel **8.8.8.8** angezeigt.
 
 ![Filteradressen 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -615,6 +615,37 @@ Das folgende Beispiel zeigt, wie ein gutes Szenario aussehen würde.
 
     ![TCP 4-Handshake-Workflow](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
+
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Empfang einer E-Mail zum Aktualisieren der Netzwerkkonfiguration, um die Kommunikation mit neuen IP-Adressen zuzulassen
+
+#### <a name="symptoms"></a>Symptome
+
+Möglicherweise erhalten Sie die folgende E-Mail-Benachrichtigung, in der eine Aktualisierung der Netzwerkkonfiguration empfohlen wird, um die Kommunikation mit neuen IP-Adressen für Azure Data Factory zum 8. November 2020 zuzulassen:
+
+   ![E-Mail-Benachrichtigung](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="resolution"></a>Lösung
+
+Diese Benachrichtigung betrifft die **ausgehende Kommunikation** von Ihrer **lokal** oder innerhalb eines **Azure-VPN** ausgeführten **Integration Runtime** zum ADF-Dienst. Wenn Sie z. B. über eine selbstgehostete IR oder Azure-SSIS IR (SQL Server Integration Services) in Azure VNET verfügen, die auf den ADF-Dienst zugreifen muss, müssen Sie überprüfen, ob Sie diesen neuen IP-Adressbereich in Ihren Regeln für **Netzwerksicherheitsgruppen (NSG)** hinzufügen müssen. Wenn Ihre NSG-Ausgangsregel das Diensttag verwendet, hat dies keine Auswirkungen.
+
+#### <a name="more-details"></a>Weitere Informationen
+
+Diese neuen IP-Adressbereiche **haben nur Auswirkungen auf Regeln für die ausgehende Kommunikation** von Ihrer **lokalen Firewall** oder Ihrem **Azure-VPN** zum ADF-Dienst (siehe [ Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)) für Szenarien, in denen Sie über eine selbstgehostete IR oder SSIS IR im lokalen Netzwerk oder virtuellen Azure-Netzwerk verfügen, das mit dem ADF-Dienst kommunizieren muss.
+
+Für vorhandene Benutzer, die **Azure-VPN** verwenden:
+
+1. Überprüfen Sie alle NSG-Ausgangsregeln in Ihrem privaten Netzwerk, in dem SSIS oder Azure SSIS konfiguriert ist. Wenn keine Ausgangseinschränkungen vorliegen, gibt es keine Auswirkung darauf.
+1. Wenn Einschränkungen für Ausgangsregeln bestehen, prüfen Sie, ob Sie das Diensttag verwenden. Wenn Sie das Diensttag verwenden, muss nichts geändert oder hinzugefügt werden, da die neuen IP-Adressbereiche dem vorhandenen Diensttag unterliegen. 
+  
+    ![Zielüberprüfung](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+1. Wenn Sie IP-Adressen direkt in der Regeleinstellung verwenden, überprüfen Sie über den [Downloadlink für den IP-Adressbereich der Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files), ob alle IP-Adressbereiche hinzugefügt wurden. Die neuen IP-Adressbereiche sind bereits in dieser Datei enthalten. Für neue Benutzer: Sie müssen lediglich die zutreffende Konfiguration der selbstgehosteten IR oder SSIS IR im Dokument zum Konfigurieren von NSG-Regeln durchführen.
+
+Für vorhandene Benutzer mit **lokaler** SSIS IR oder selbstgehosteter IR:
+
+- Führen Sie eine Überprüfung gemeinsam mit Ihrem Netzwerkinfrastrukturteam durch, und stellen Sie fest, ob die neuen IP-Adressbereiche für die Kommunikation für Ausgangsregeln eingebunden werden müssen.
+- Bei Firewallregeln, die auf vollqualifizierten Domänennamen basieren, sind keine Aktualisierungen erforderlich, wenn Sie die Einstellungen verwenden, die unter [Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) dokumentiert sind. 
+- Einige lokale Firewalls unterstützen Diensttags. Wenn Sie die aktualisierte Konfigurationsdatei für Azure-Diensttags verwenden, sind keine weiteren Änderungen erforderlich.
 
 ## <a name="self-hosted-ir-sharing"></a>Freigabe der selbstgehosteten Integration Runtime
 

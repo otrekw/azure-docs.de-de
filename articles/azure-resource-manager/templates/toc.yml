@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: SQL-Pool in Synapse Analytics
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blockchain
           items:
@@ -158,6 +158,10 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Content Delivery Network
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 'Firewall: Verfügbarkeitszonen'
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 'Firewall: IP-Adressgruppen'
@@ -166,20 +170,26 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall Manager
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: 'Load Balancer: öffentlich'
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: NAT Gateway
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Privater Endpunkt
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: "Private\_Link-Dienst"
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web Application Firewall
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Sicherheit
           items:
             - name: Nachweis
               href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Key Vault
+            - name: 'Key Vault: Geheimnis'
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Security Center
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Storage
           items:
             - name: Data Share
@@ -188,6 +198,8 @@
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: App Service
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
@@ -343,36 +355,42 @@
             - name: Ausgaben
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Entdecken von Vorlageneigenschaften
-      items:
-        - name: Exportieren der Vorlage
-          href: export-template-portal.md
-        - name: Ermitteln von Ressourcen
-          href: view-resources.md
-    - name: Überprüfen von Vorlagen
-      items:
-        - name: Was-wäre-wenn-Bereitstellung
-          href: template-deploy-what-if.md
-        - name: Testtoolkit
-          href: test-toolkit.md
-        - name: Testfälle
-          href: test-cases.md
     - name: Bereitstellen von Vorlagen
       items:
-        - name: 'Bereitstellen: Portal'
-          displayName: deployment
-          href: deploy-portal.md
-        - name: 'Bereitstellen: CLI'
-          displayName: deployment
-          href: deploy-cli.md
-        - name: 'Bereitstellen: PowerShell'
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: 'Bereitstellen: REST-API'
-          displayName: deployment
-          href: deploy-rest.md
-        - name: Bereitstellen über GitHub
-          href: deploy-to-azure-button.md
+        - name: Bereitstellungsvorgänge
+          items:
+            - name: 'Bereitstellen: Portal'
+              displayName: deployment
+              href: deploy-portal.md
+            - name: 'Bereitstellen: CLI'
+              displayName: deployment
+              href: deploy-cli.md
+            - name: 'Bereitstellen: PowerShell'
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: 'Bereitstellen: REST-API'
+              displayName: deployment
+              href: deploy-rest.md
+            - name: 'Bereitstellen: GitHub'
+              href: deploy-to-azure-button.md
+            - name: 'Bereitstellen: Cloud Shell'
+              href: deploy-cloud-shell.md
+        - name: Bereiche
+          items:
+            - name: Resource group
+              href: deploy-to-resource-group.md
+            - name: Subscription
+              href: deploy-to-subscription.md
+            - name: Verwaltungsgruppe
+              href: deploy-to-management-group.md
+            - name: Tenant
+              href: deploy-to-tenant.md
+            - name: Erweiterungsressourcen
+              href: scope-extension-resources.md
+            - name: Bereichsübergreifende Funktionen
+              href: scope-functions.md
+        - name: Was-wäre-wenn-Bereitstellung
+          href: template-deploy-what-if.md
         - name: Erneute Bereitstellung bei einem Fehler
           displayName: rollback
           href: rollback-on-error.md
@@ -380,16 +398,6 @@
           href: secure-template-with-sas-token.md
         - name: Anzeigen des Bereitstellungsverlaufs
           href: deployment-history.md
-    - name: Bereichsbezogene Bereitstellungen
-      items:
-        - name: Subscription
-          href: deploy-to-subscription.md
-        - name: Verwaltungsgruppe
-          href: deploy-to-management-group.md
-        - name: Tenant
-          href: deploy-to-tenant.md
-        - name: Bereichsübergreifende Bereitstellungen
-          href: cross-scope-deployment.md
     - name: Angeben von Parametern
       items:
         - name: Erstellen einer Parameterdatei
@@ -397,12 +405,24 @@
         - name: Übergeben vertraulicher Werte
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Testvorlagen
+      items:
+        - name: Testtoolkit
+          href: test-toolkit.md
+        - name: Testfälle
+          href: test-cases.md
     - name: CI/CD
       items:
         - name: ARM-Vorlagen mit Pipelines
           href: add-template-to-azure-pipelines.md
         - name: 'Bereitstellen: GitHub Actions'
           href: deploy-github-actions.md
+    - name: Entdecken von Vorlageneigenschaften
+      items:
+        - name: Exportieren der Vorlage
+          href: export-template-portal.md
+        - name: Ermitteln von Ressourcen
+          href: view-resources.md
     - name: Verwenden von Erstellungstools
       items:
         - name: Visual Studio

@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell-Skript: Akzeptieren einer Einladung für Azure Data Share | Microsoft-Dokumentation'
+title: 'PowerShell-Skript: Akzeptieren einer Einladung für Azure Data Share'
 description: Dieses PowerShell-Skript akzeptiert Einladungen von einer vorhandenen Datenfreigabe.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 246e3550650dfd458b4aeecda3b5b7733e49f017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24091bafac7ad5c558b975d52064f12715b3d622
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307334"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221399"
 ---
 # <a name="use-powershell-to-accept-a-data-share-invitation"></a>Verwenden von PowerShell zum Akzeptieren einer Einladung von einer Datenfreigabe
 
@@ -42,13 +40,12 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Abrufen und Auflisten gesendeter Einladungen zu Datenfreigaben |
-| [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription?view=azps-2.6.0) | Erstellen eines Abonnements für eine Datenfreigabe |
+| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | Abrufen und Auflisten gesendeter Einladungen zu Datenfreigaben |
+| [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription) | Erstellen eines Abonnements für eine Datenfreigabe |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Weitere PowerShell-Skriptbeispiele für Azure Data Share finden Sie unter [Azure PowerShell-Beispiele für Azure Data Share](../../samples-powershell.md).
-

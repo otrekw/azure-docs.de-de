@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie eine StorSimple 8100- oder 8600-Appliance zu
 author: fauhse
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcb690829aaed1d5a256f53766f05c922f8b2a9a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653246"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331093"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -20,335 +20,402 @@ Die StorSimple 8000-Serie wird durch physische, lokale Appliances der Typen 810
 
 Die StorSimple 8000-Serie erreicht im Dezember 2022 das [Ende des Lebenszyklus](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series). Es ist wichtig, möglichst bald mit der Planung der Migration zu beginnen. Dieser Artikel enthält die erforderlichen Hintergrundinformationen und Migrationsschritte für eine erfolgreiche Migration zur Azure-Dateisynchronisierung. 
 
-## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+## <a name="phase-1-prepare-for-migration"></a>Phase 1: Vorbereiten der Migration
 
-> [!IMPORTANT]
-> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung bei der Migration zu erhalten.
+Dieser Abschnitt enthält die Schritte, die Sie zu Beginn der Migration von StorSimple-Volumes zu Azure-Dateifreigaben ausführen sollten.
+
+### <a name="inventory"></a>Inventarisierung
+Wenn Sie mit der Planung Ihrer Migration beginnen, ermitteln Sie zunächst alle StorSimple-Appliances und -Volumes, die Sie migrieren müssen. Danach können Sie sich für den Migrationspfad entscheiden, der für Sie am besten geeignet ist.
+
+* Für physische StorSimple-Appliances (Serie 8000) verwenden Sie dieses Migrationshandbuch. 
+* Für virtuelle Appliances, [StorSimple 1200-Serie, verwenden Sie eine anderes Migrationsanleitung](storage-files-migration-storsimple-1200.md).
+
+### <a name="migration-cost-summary"></a>Zusammenfassung der Migrationskosten
+Migrationen zu Azure-Dateifreigaben von StorSimple-Volumes über Datentransformationsaufträge in einer StorSimple Data Manager-Ressource sind kostenlos. Während und nach einer Migration können jedoch andere Kosten anfallen:
+
+* **Netzwerkausgang:** Ihre StorSimple-Dateien befinden sich in einem Speicherkonto in einer bestimmten Azure-Region. Wenn Sie die Azure-Dateifreigaben, zu denen Sie migrieren, in einem Speicherkonto bereitstellen, das sich in derselben Azure-Region befindet, entstehen keine Ausgangskosten. Sie können Ihre Dateien im Rahmen dieser Migration in ein Speicherkonto in einer anderen Region verschieben. In diesem Fall werden Ihnen Ausgangskosten in Rechnung gestellt.
+* **Azure-Dateifreigabetransaktionen:** Werden Dateien in eine Azure-Dateifreigabe kopiert (im Rahmen einer Migration oder außerhalb einer solchen), fallen Transaktionskosten an, wenn Dateien und Metadaten geschrieben werden. Es empfiehlt sich, dass Sie Ihre Azure-Dateifreigabe während der Migration auf der für Transaktionen optimierten Ebene starten. Wechseln Sie nach Abschluss der Migration zu der von Ihnen gewünschten Ebene. In den folgenden Phasen wird dies an der entsprechenden Stelle herausgestellt.
+* **Wechseln der Ebene einer Azure-Dateifreigabe:** Ein Wechseln der Ebene einer Azure-Dateifreigabe führt zu Kosten für Transaktionen. In den meisten Fällen ist es kostengünstiger, die Ratschläge aus dem vorherigen Punkt zu befolgen.
+* **Speicherkosten:** Wenn in dieser Migration damit begonnen wird, Dateien in eine Azure-Dateifreigabe zu kopieren, wird Azure Files-Speicher genutzt und in Rechnung gestellt. 
+* **StorSimple:** Solange Sie keine Möglichkeit haben, die Bereitstellung der StorSimple-Geräte und -Speicherkonten aufzuheben, fallen weiter StorSimple-Kosten für Speicher, Sicherungen und Geräte an.
+
+### <a name="direct-share-access-vs-azure-file-sync"></a>Direkter Zugriff auf Dateifreigaben im Vergleich zu Azure-Dateisynchronisierung
+Azure-Dateifreigaben eröffnen eine ganz neue Welt der Möglichkeiten zum Strukturieren der Bereitstellung Ihrer Dateidienste. Eine Azure-Dateifreigabe ist schlicht eine SMB-Freigabe in der Cloud, die Sie so einrichten können, dass Benutzer direkt über das SMB-Protokoll mit der vertrauten Kerberos-Authentifizierung und vorhandenen NTFS-Berechtigungen (Datei- und Ordnerzugriffssteuerungslisten) darauf zugreifen können. [Erfahren Sie mehr über identitätsbasierten Zugriff auf Azure-Dateifreigaben](storage-files-active-directory-overview.md).
+
+Eine Alternative zu direktem Zugriff ist eine [Azure-Dateisynchronisierung](https://aka.ms/AFS). Azure-Dateisynchronisierung ist das direkte Gegenstück zur StorSimple-Funktionalität, häufig verwendete Dateien lokal zwischenzuspeichern. 
 
 Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Hauptkomponenten basiert:
 
 * Dateisynchronisierung und Cloudtiering.
-* Dateifreigaben als nativer Speicher in Azure, auf den über verschiedene Protokolle wie SMB und Datei-REST zugegriffen werden kann. Eine Azure-Dateifreigabe ist vergleichbar mit einer Dateifreigabe auf einem Windows-Server, die Sie nativ als Netzwerklaufwerk einbinden können. Sie unterstützt wichtige Genauigkeitsaspekte der Dateiverwaltung wie Attribute, Berechtigungen und Zeitstempel. Mit Azure-Dateifreigaben ist es nicht mehr erforderlich, dass eine Anwendung oder ein Dienst die in der Cloud gespeicherten Dateien und Ordner interpretiert. Sie können darauf nativ über vertraute Protokolle und Clients wie den Windows-Datei-Explorer zugreifen. Dadurch sind Azure-Dateifreigaben die ideale und flexibelste Methode, um allgemeine Dateiserverdaten und einige Anwendungsdaten in der Cloud zu speichern.
+* Dateifreigaben als nativer Speicher in Azure, auf den über verschiedene Protokolle wie SMB und Datei-REST zugegriffen werden kann. 
+
+In Azure-Dateifreigaben werden wichtige Dateigenauigkeitsaspekte, etwa Attribute, Berechtigungen und Zeitstempel, beibehalten. Mit Azure-Dateifreigaben ist es nicht mehr erforderlich, dass eine Anwendung oder ein Dienst die in der Cloud gespeicherten Dateien und Ordner interpretiert. Sie können darauf nativ über vertraute Protokolle und Clients wie den Windows-Datei-Explorer zugreifen. Azure-Dateifreigaben ermöglichen es Ihnen, allgemeine Dateiserverdaten und Anwendungsdaten in der Cloud speichern. Das Sichern einer Azure-Dateifreigabe ist eine integrierte Funktion und kann mit Azure Backup weiter verbessert werden.
 
 In diesem Artikel werden hauptsächlich die Migrationsschritte behandelt. Wenn Sie vor der Migration mehr über die Azure-Dateisynchronisierung erfahren möchten, empfehlen wir die folgenden Artikel:
 
 * [Azure-Dateisynchronisierung – Übersicht](https://aka.ms/AFS "Übersicht")
 * [Azure-Dateisynchronisierung – Bereitstellungsleitfaden](storage-sync-files-deployment-guide.md)
 
-## <a name="migration-goals"></a>Migrationsziele
+### <a name="storsimple-service-data-encryption-key"></a>StorSimple-Dienstdatenverschlüsselungs-Schlüssel
+Als Sie Ihr StorSimple-Gerät erstmals eingerichtet haben, wurde ein *Dienstdatenverschlüsselungs-Schlüssel* generiert, und Sie wurden gebeten, den Schlüssel sicher zu speichern.
+Dieser Schlüssel wird dazu verwendet, alle Daten im zugeordneten Azure-Speicherkonto zu verschlüsseln, in dem Ihre Dateien vom StorSimple-Gerät gespeichert werden.
 
-Das Ziel ist, die Integrität der Produktionsdaten sowie deren Verfügbarkeit zu gewährleisten. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
+Der „Dienstdatenverschlüsselungs-Schlüssel“ ist für eine erfolgreiche Migration erforderlich. Daher ist es nun erforderlich, dass Sie diesen Schlüssel für jedes der Geräte in Ihrem Bestand aus Ihren Aufzeichnungen abrufen.
 
-## <a name="storsimple-8000-series-migration-path-to-azure-file-sync"></a>Migrationspfad der StorSimple 8000-Serie zur Azure-Dateisynchronisierung
+Sollten Sie den jeweiligen Schlüssel nicht in Ihren Aufzeichnungen finden, können Sie den Schlüssel vom Gerät abrufen. Jedes Gerät hat einen eindeutigen Verschlüsselungsschlüssel.
 
-Zum Ausführen eines Azure-Dateisynchronisierungs-Agents ist ein lokaler Windows-Server erforderlich. Auf dem Windows-Server muss mindestens Windows Server 2012 R2 ausgeführt werden, idealerweise jedoch Windows Server 2019.
+* Senden Sie eine Supportanfrage mit Microsoft Azure über die Azure-Portal. Die Anfrage sollte die Seriennummer des StorSimple-Geräts mit dem Hinweis enthalten, dass der „Dienstdatenverschlüsselungs-Schlüssel“ (Service Data Encryption Key) abgerufen werden soll. 
+* Ein StorSimple-Supporttechniker wird Kontakt mit Ihnen aufnehmen und Sie bitten, eine Bildschirmübertragungssitzung (Screen-Sharing) einzurichten.
+* Stellen Sie vor Beginn der Sitzung [über eine serielle Konsole](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) oder über eine [Remote-PowerShell-Sitzung](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple) eine Verbindung mit Ihrer StorSimple-Appliance her. 
 
-Es gibt zahlreiche alternative Migrationspfade, und der Artikel würde zu lang werden, wenn wir alle dokumentieren und veranschaulichen würden, warum sie Risiken oder Nachteile gegenüber dem von uns in diesem Artikel als bewährte Methode empfohlenen Pfad aufweisen.
+> [!CAUTION]
+> Für die Entscheidung, wie Sie die Verbindung mit Ihrer StorSimple-Appliance herstellen, sollten Sie Folgendes beachten:
+> * Eine Verbindung über eine HTTPS-Sitzung ist die sicherste und empfohlene Option.
+> * Das direkte Verbinden mit der seriellen Konsole des Geräts ist sicher, was für das Verbinden mit der seriellen Konsole über Netzwerkswitches nicht gilt. 
+> * HTTP-Sitzungsverbindungen sind eine Option, werden jedoch **nicht verschlüsselt** und daher auch nicht empfohlen, es sei denn, sie werden in einem geschlossenen vertrauenswürdigen Netzwerk verwendet.
 
-![Übersicht über die Migrationsphasen der StorSimple 8000-Serie](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-overview.png "Migrationspfad für die StorSimple 8000-Serie: Übersicht über die Phasen weiter unten in diesem Artikel")
+### <a name="storsimple-volume-backups"></a>StorSimple-Volumesicherungen
+StorSimple bietet differenzielle Sicherungen auf Volumeebene. Azure-Dateifreigaben bieten diese Funktionalität ebenfalls in Form der sogenannten Freigabemomentaufnahmen.
 
-Die Abbildung oben zeigt Phasen, die Abschnitten in diesem Artikel entsprechen.
-Wir verwenden eine cloudseitige Migration, um den unnötigen Rückruf von Dateien auf die lokale StorSimple-Appliance zu vermeiden. Mit dieser Methode werden Auswirkungen auf das lokale Zwischenspeicherverhalten oder die Nutzung der Netzwerkbandbreite vermieden, die Ihre Produktionsworkloads beeinflussen können.
-Eine cloudseitige Migration erfolgt anhand einer Momentaufnahme (eines Volumeklons) Ihrer Daten. Somit sind Ihre Produktionsdaten bis zur Übernahme am Ende der Migration von diesem Prozess isoliert. Da im Wesentlichen mit einer Sicherung gearbeitet wird, ist die Migration sicher und leicht wiederholbar, falls Schwierigkeiten auftreten sollten.
+Entscheiden Sie, ob Sie als Bestandteil der Migration auch alle Sicherungen verschieben möchten.
 
-## <a name="considerations-around-existing-storsimple-backups"></a>Überlegungen zu vorhandenen StorSimple-Sicherungen
+> [!CAUTION]
+> Hören Sie hier auf, wenn Sie Sicherungen von StorSimple-Volumes migrieren müssen.
+>
+> Sie können derzeit nur die neueste Volumesicherung migrieren. Unterstützung für die Migration von Sicherungen wird ab Ende 2020 verfügbar sein.
+> Wenn Sie jetzt starten, können Sie Ihre Sicherungen später nicht mehr „anschließen“.
+> In der nächsten Version müssen Sicherungen von der ältesten bis zur neuesten in die Azure-Dateifreigaben „zurückgespielt“ werden, wobei dazwischen Azure-Dateifreigabemomentaufnahmen erstellt werden.
 
-StorSimple ermöglicht das Erstellen von Sicherungen in Form von Volumeklonen. In diesem Artikel wird ein neuer Volumeklon zum Migrieren Ihrer Livedateien verwendet.
-Alle Anweisungen in diesem Artikel gelten auch dann, wenn Sie zusätzlich zu Ihren Livedaten auch Sicherungen migrieren müssen. Der einzige Unterschied besteht darin, dass Sie nicht mit einem neuen Volumeklon, sondern mit dem ältesten Sicherungsvolumeklon beginnen, den Sie migrieren müssen.
+Wenn Sie nur die Livedaten migrieren möchten und keine Sicherungen benötigen, können Sie weiter dieser Anleitung folgen.
+Wenn Sie Sicherungen nur für eine sehr kurze Zeit, z. B. ein oder zwei Monate, benötigen, können Sie so vorgehen, dass Sie die Migration jetzt fortsetzen und die Bereitstellung Ihre StorSimple-Ressourcen erst nach diesem Zeitraum aufheben. Dieser Ansatz ermöglicht es Ihnen, auf der Azure-Dateifreigabeseite so viele Sicherungsverläufe zu erstellen, wie Sie benötigen. Während der Zeit, in der Sie beide Systeme betreiben, fallen zusätzliche Kosten an, weshalb Sie diesen Ansatz nicht in Betracht ziehen sollten, wenn Sie Sicherungsaufbewahrung für einen längeren Zeitraum benötigen.
 
-Der Ablauf ist wie folgt:
-
-* Legen Sie den Mindestsatz an Volumenklonen fest, den Sie migrieren müssen. Es wird empfohlen, diese Liste möglichst kurz zu halten, da der gesamte Migrationsprozess umso länger dauert, je mehr Sicherungen migriert werden.
-* Beim Durchlaufen des Migrationsprozesses beginnen Sie mit dem ältesten zu migrierenden Volumeklon und verwenden dann bei jeder nachfolgenden Migration den jeweils nächstältesten.
-* Nach Abschluss jeder Migration eines Volumeklons müssen Sie eine Azure-Dateifreigabemomentaufnahme erstellen. [Azure-Dateifreigabemomentaufnahmen](storage-snapshots-files.md) dienen zur Aufbewahrung von Zeitpunktsicherungen der Dateien und der Ordnerstruktur für Ihre Azure-Dateifreigaben. Sie benötigen diese Momentaufnahmen nach Abschluss der Migration, um sicherzustellen, dass Sie während der Migration Versionen aller Ihrer Volumeklone beibehalten haben.
-* Stellen Sie sicher, dass Sie Azure-Dateifreigabemomentaufnahmen für alle Azure-Dateifreigaben erstellen, die vom gleichen StorSimple-Volume bedient werden. Volumeklone befinden sich auf der Volumeebene. Azure-Dateifreigabemomentaufnahmen befinden sich auf der Freigabeebene. Nachdem die Migration eines Volumeklons abgeschlossen ist, müssen Sie eine Freigabemomentaufnahme (auf jeder Azure-Dateifreigabe) erstellen.
-* Wiederholen Sie den Migrationsprozess für einen Volumeklon, und erstellen Sie Freigabemomentaufnahmen nach jedem Volumeklon, bis Sie zu einer Momentaufnahme der Livedaten gelangt sind. Der Migrationsprozess für einen Volumeklon wird in den folgenden Phasen beschrieben. 
-
-Wenn Sie keine Sicherungen verschieben müssen und eine neue Sicherungskette auf der Azure-Dateifreigabe beginnen können, nachdem nur die Livedaten migriert wurden, kann dadurch die Komplexität der Migration und deren Zeitdauer verringert werden. Sie können entscheiden, ob und wie viele Sicherungen für jedes Volume (nicht für jede Freigabe) in StorSimple verschoben werden.
-
-## <a name="phase-1-get-ready"></a>Phase 1: Vorbereiten
-
-:::row:::
-    :::column:::
-        ![Abbildung eines Teils des vorherigen Übersichtsbilds, der den Schwerpunkt dieses Unterabschnitts des Artikels darstellt.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-1.png)
-    :::column-end:::
-    :::column:::
-        Die Basis für die Migration ist ein Volumeklon und eine virtuelle Cloudappliance, die als StorSimple 8020 bezeichnet wird.
-Diese Phase konzentriert sich auf die Bereitstellung dieser Ressourcen in Azure.
-    :::column-end:::
-:::row-end:::
-
-### <a name="deploy-a-storsimple-8020-virtual-appliance"></a>Bereitstellen einer virtuellen StorSimple 8020-Appliance
-
-Das Bereitstellen einer Cloudappliance ist ein Prozess, der Sicherheit, Netzwerkbetrieb und einige andere Aspekte erfordert.
-
-> [!IMPORTANT]
-> Der folgende Leitfaden enthält einige nicht benötige Abschnitte. Lesen und befolgen Sie den Artikel vom Anfang bis zu Schritt 3. Dann kehren Sie zu diesem Artikel zurück. Zu diesem Zeitpunkt ist es nicht erforderlich, Schritt 3 oder darüber hinausgehende Anweisungen in diesem Leitfaden auszuführen.
-
-[Bereitstellung einer virtuellen StorSimple 8020-Appliance](../../storsimple/storsimple-8000-cloud-appliance-u2.md)
-
-### <a name="determine-a-volume-clone-to-use"></a>Festlegen eines zu verwendenden Volumeklons
-
-Wenn Sie mit der Migration beginnen möchten, erstellen Sie im ersten Schritt einen neuen Volumeklon (wie es auch bei einer Sicherung der Fall wäre), mit dem der aktuelle Zustand des StorSimple-Cloudspeichers erfasst wird. Erstellen Sie für jedes vorhandene StorSimple-Volume einen Klon.
-Wenn Sie Sicherungen verschieben müssen, handelt es sich beim ersten verwendeten Volumeklon nicht um einen neu erstellten Klon, sondern um den ältesten Volumeklon (älteste Sicherung), den Sie migrieren müssen.
-Ausführliche Anleitungen finden Sie im Abschnitt [Überlegungen zu vorhandenen StorSimple-Sicherungen](#considerations-around-existing-storsimple-backups).
-
-> [!IMPORTANT]
-> Der folgende Leitfaden enthält einige nicht benötige Abschnitte. Lesen und befolgen Sie nur die Schritte, die in dem über den Link verknüpften Abschnitt beschrieben sind. Dann kehren Sie zu diesem Artikel zurück. Dem Abschnitt „Nächste Schritte“ müssen Sie nicht folgen.
-
-[Erstellen von Klonen von einem Volume](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
-
-### <a name="use-the-volume-clone"></a>Verwenden des Volumeklons
-
-Im letzten Schritt von Phase 1 machen Sie den ausgewählten Volumeklon auf der virtuellen 8020-Appliance in Azure verfügbar.
-
-> [!IMPORTANT]
-> Im folgenden Leitfaden sind die erforderlichen Schritte angegeben, doch er enthält am Ende auch eine Anweisung zum Formatieren des Volumes. **FORMATIEREN SIE DAS VOLUME NICHT.** Lesen und befolgen Sie den über den Link verknüpften Abschnitt 7 vom Anfang bis zur Anweisung „10. Führen Sie die folgenden Schritte aus, um ein einfaches Volume zu formatieren“.  Führen Sie diesen Schritt nicht aus, und kehren Sie zu diesem Artikel zurück.
-
-[Bereitstellen eines Volumeklons auf der virtuellen 8020-Appliance in Azure](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
-
-### <a name="phase-1-summary"></a>Zusammenfassung von Phase 1
-
-Sie haben Phase 1 abgeschlossen und dabei die folgenden Schritte ausgeführt:
-
-* Sie haben eine virtuelle StorSimple 8020-Appliance in Azure bereitgestellt.
-* Sie haben festgelegt, mit welchem Volumeklon die Migration beginnen soll.
-* Sie haben Ihre Volumeklone (einen für jedes Livevolume) für die virtuelle StorSimple-Appliance in Azure bereitgestellt, wodurch die Daten zur weiteren Verwendung verfügbar sind.
-
-## <a name="phase-2-cloud-vm"></a>Phase 2: Cloud-VM
-
-:::row:::
-    :::column:::
-        ![Die Abbildung zeigt, dass es jetzt an der Zeit ist, eine VM bereitzustellen und den (oder mehrere) Volumeklon dieser VM über iSCSI verfügbar zu machen.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
-    :::column-end:::
-    :::column:::
-        Da nun der anfängliche Klon auf der virtuellen StorSimple 8020-Appliance in Azure zur Verfügung steht, stellen Sie jetzt eine VM bereit und machen den Volumeklon (oder mehrere Volumenklone) für diese VM über iSCSI verfügbar.
-    :::column-end:::
-:::row-end:::
-
-### <a name="deploy-an-azure-vm"></a>Bereitstellen einer Azure-VM
-
-Bei der Windows Server-VM in Azure handelt es sich wie bei StorSimple 8020 um ein temporäres Teil der Infrastruktur, das nur während der Migration benötigt wird.
-Die Konfiguration der von Ihnen bereitgestellten VM hängt größtenteils von der Anzahl der Elemente (Dateien und Ordner) ab, die synchronisiert werden sollen. Wenn Sie Bedenken haben, empfiehlt es sich, eine leistungsstärkere Konfiguration zu verwenden.
-
-Mit einem einzelnen Windows-Server können bis zu 30 Azure-Dateifreigaben synchronisiert werden.
-Die Spezifikationen, für die Sie sich entscheiden, müssen jede Freigabe/jeden Pfad oder den Stamm des StorSimple-Volumes sowie die Anzahl der Elemente (Dateien und Ordner) umfassen.
-
-Die Gesamtgröße der Daten stellt weniger einen Engpass dar, sondern die Anzahl der Elemente, an die Sie die Computerspezifikationen anpassen müssen.
-
-* [Hier erfahren Sie, wie Sie die Größe eines Windows-Servers basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](storage-sync-files-planning.md#recommended-system-resources)
-
-    **Hinweis:** Der zuvor verknüpfte Artikel enthält eine Tabelle mit einem Bereich für den Serverarbeitsspeicher (RAM). Orientieren Sie sich am hohen Wert für die Azure-VM. Für Ihren lokalen Computer können Sie sich am niedrigeren Wert orientieren.
-
-* [Hier erfahren Sie, wie Sie eine Windows Server-VM bereitstellen.](../../virtual-machines/windows/quick-create-portal.md)
-
-> [!IMPORTANT]
-> Stellen Sie sicher, dass die VM in derselben Azure-Region wie die virtuelle StorSimple 8020-Appliance bereitgestellt wird. Wenn Sie im Rahmen dieser Migration auch die Region Ihrer Clouddaten in eine andere Region als die ändern müssen, in der sie derzeit gespeichert werden, können Sie dies in einem späteren Schritt beim Bereitstellen von Azure-Dateifreigaben vornehmen.
-
-> [!IMPORTANT]
-> Häufig wird eine lokale Windows Server-Instanz für Ihre lokale StorSimple-Appliance verwendet. Bei einer solchen Konfiguration ist es möglich, die Funktion [Datendeduplizierung](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable) auf dieser Windows Server-Instanz zu aktivieren. **Wenn Sie die Datendeduplizierung für Ihre StorSimple-Daten verwendet haben, stellen Sie sicher, dass Sie die Datendeduplizierung auch auf dieser Azure-VM aktivieren.** Verwechseln Sie diese Deduplizierung auf Dateiebene nicht mit der in StorSimple integrierten Deduplizierung auf Blockebene, für die keine Aktion erforderlich ist.
-
-> [!IMPORTANT]
-> Um die Leistung zu optimieren, stellen Sie für Ihre Cloud-VM einen **schnellen Betriebssystemdatenträger** bereit. Sie speichern die Synchronisierungsdatenbank für alle Ihre Datenvolumes auf dem Betriebssystem-Datenträger. Stellen Sie außerdem sicher, dass Sie einen **großen Betriebssystem-Datenträger** erstellen. Je nach Anzahl der Elemente (Dateien und Ordner) auf Ihren StorSimple-Volumes benötigt der Betriebssystem-Datenträger möglicherweise **mehrere hundert GiB** Speicherplatz, um die Synchronisierungsdatenbank aufnehmen zu können.
-
-### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>Verfügbarmachen der StorSimple 8020-Volumes für die Azure-VM
-
-In dieser Phase verbinden Sie ein oder mehrere StorSimple-Volumes von der virtuellen 8020-Appliance über iSCSI mit der bereitgestellten Windows Server-VM.
-
-> [!IMPORTANT]
-> Führen Sie nur die Anweisungen in den Abschnitten **Abrufen der privaten IP für das Cloudgerät** und **Herstellen einer Verbindung über iSCSI** in den folgenden Artikeln aus, und kehren Sie dann zu diesem Artikel zurück.
-
-1. [Abrufen der privaten IP für das Cloudgerät](../../storsimple/storsimple-8000-cloud-appliance-u2.md#get-private-ip-for-the-cloud-appliance)
-2. [Herstellen einer Verbindung über iSCSI](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
-
-### <a name="phase-2-summary"></a>Zusammenfassung von Phase 2
-
-Sie haben Phase 2 abgeschlossen und dabei die folgenden Schritte ausgeführt: 
-
-* Sie haben eine Windows Server-VM in derselben Region wie die virtuelle StorSimple 8020-Appliance bereitgestellt.
-* Sie haben alle anwendbaren Volumes von der 8020-Appliance über iSCSI für die Windows Server-VM verfügbar gemacht.
-* Wenn Sie den Datei-Explorer auf der Server-VM für die bereitgestellten Volumes verwenden, sollten Ihnen nun Datei- und Ordnerinhalte angezeigt werden.
-
-Fahren Sie erst dann mit Phase 3 fort, wenn Sie diese Schritte für alle Volumes ausgeführt haben, die eine Migration erfordern.
-
-## <a name="phase-3-set-up-azure-file-shares-and-get-ready-for-azure-file-sync"></a>Phase 3: Einrichten von Azure-Dateifreigaben und Vorbereiten auf die Azure-Dateisynchronisierung
-
-:::row:::
-    :::column:::
-        ![Die Abbildung zeigt die Notwendigkeit, eine Reihe von Azure-Dateifreigaben zu bestimmen und bereitzustellen und einen Windows-Server lokal als Ersatz für eine StorSimple-Appliance zu erstellen.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
-    :::column-end:::
-    :::column:::
-        In dieser Phase bestimmen Sie eine Reihe von Azure-Dateifreigaben und stellen diese bereit, erstellen einen lokalen Windows-Server als Ersatz für die StorSimple-Appliance und konfigurieren diesen Server für die Azure-Dateisynchronisierung. 
-    :::column-end:::
-:::row-end:::
-
-### <a name="map-your-existing-namespaces-to-azure-file-shares"></a>Zuordnen vorhandener Namespaces zu Azure-Dateifreigaben
-
+### <a name="map-your-existing-storsimple-volumes-to-azure-file-shares"></a>Zuordnen Ihrer vorhandenen StorSimple-Volumes zu Azure-Dateifreigaben
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
-### <a name="deploy-azure-file-shares"></a>Bereitstellen von Azure-Dateifreigaben
+### <a name="number-of-storage-accounts"></a>Anzahl von Speicherkonten
+Ihre Migration profitiert wahrscheinlich von einer Bereitstellung mehrerer Speicherkonten, von denen jedes eine kleinere Anzahl von Azure-Dateifreigaben enthält.
 
-[!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
+Wenn Ihre Dateifreigaben intensiv genutzt werden (Nutzung durch viele Benutzer und/oder Anwendungen), kann es sein, dass bei lediglich zwei Azure-Dateifreigaben die Leistungsgrenze Ihres Speicherkontos erreicht wird. Aus diesem Grund empfiehlt es sich, zu mehreren Speicherkonten zu migrieren, wobei jedes seine eigenen individuellen Dateifreigaben hat, und normalerweise nicht mehr als zwei oder drei Freigaben pro Speicherkonto zu nutzen.
 
-> [!TIP]
-> Wenn Sie die Azure-Region von der aktuellen Region, in der sich Ihre StorSimple-Daten befinden, in eine andere Region ändern müssen, stellen Sie die Azure-Dateifreigaben in der neuen Region bereit, die Sie verwenden möchten. Sie legen die Region fest, indem Sie sie beim Bereitstellen der Speicherkonten auswählen, die Ihre Azure-Dateifreigaben enthalten. Stellen Sie sicher, dass sich auch die Ressource für die Azure-Dateisynchronisierung, die Sie nachfolgend bereitstellen, in derselben neuen Region befindet.
+Als bewährte Methode empfiehlt es sich, Speicherkonten mit je einer Dateifreigabe bereitzustellen. Sie können mehrere Azure-Dateifreigaben in einem Speicherkonto zusammenfassen, falls Sie Archivierungsfreigaben in diesen haben.
 
-### <a name="deploy-the-azure-file-sync-cloud-resource"></a>Bereitstellen der Cloudressource für die Azure-Dateisynchronisierung
+Diese Überlegungen gelten eher für [direkten Cloudzugriff](#direct-share-access-vs-azure-file-sync) (über eine Azure-VM oder einen Azure-Dienst) als für die Azure-Dateisynchronisierung. Wenn Sie Freigaben lediglich für die Azure-Dateisynchronisierung verwenden möchten, können Sie mehrere Freigaben in einem einzelnen Azure-Speicherkonto gruppieren. Sie sollten auch berücksichtigen, dass Sie möglicherweise eine App per Lift und Shift in die Cloud verschieben möchten, und dass diese App dann direkt auf eine Dateifreigabe zugreifen würde. Oder Sie könnten mit der Nutzung eines Diensts in Azure beginnen, der ebenfalls von höheren IOPS- und Durchsatzzahlen profitieren würde. 
+
+Wenn Sie eine Liste Ihrer Freigaben erstellt haben, sollten Sie jede Freigabe dem Speicherkonto zuordnen, in dem sie sich befindet.
+
+> [!IMPORTANT]
+> Legen Sie sich auf eine Azure-Region fest, und achten Sie dann darauf, dass sich jedes Speicherkonto und jede Azure-Dateisynchronisierung-Ressource in der Region befindet, die Sie ausgewählt haben.
+
+### <a name="phase-1-summary"></a>Zusammenfassung von Phase 1
+Am Ende der Phase 1:
+* Sie haben einen guten Überblick über Ihre StorSimple-Geräte und -Volumes.
+* Der Datentransformationsdienst hat Zugriff auf Ihre StorSimple-Volumes in der Cloud, weil Sie Ihren Dienstdatenverschlüsselungs-Schlüssel für jedes StorSimple-Gerät abgerufen haben.
+* Sie haben einen Plan, in dem nicht nur festgelegt ist, welche Volumes migriert werden müssen, sondern auch, wie Ihre Volumes der entsprechenden Anzahl von Azure-Dateifreigaben und Speicherkonten zugeordnet werden sollen.
+
+> [!CAUTION]
+> Wenn Sie Sicherungen von StorSimple-Volumes migrieren müssen, **HÖREN SIE HIER AUF** .
+>
+> Dieser Migrationsansatz basiert auf neuen Funktionen des Datentransformationsdiensts, mit denen derzeit keine Sicherungen migriert werden können. Unterstützung für die Migration von Sicherungen wird ab Ende 2020 verfügbar sein.
+> Sie können derzeit nur Ihre Livedaten migrieren. Wenn Sie jetzt starten, können Sie Ihre Sicherungen später nicht mehr „anschließen“.
+> Sicherungen müssen von der ältesten bis zur neuesten bis hin zu den Livedaten in die Azure-Dateifreigaben „zurückgespielt“ werden, wobei dazwischen Azure-Dateifreigabemomentaufnahmen erstellt werden.
+
+Wenn Sie nur die Livedaten migrieren möchten und keine Sicherungen benötigen, können Sie weiter dieser Anleitung folgen.
+
+## <a name="phase-2-deploying-azure-storage-and-migration-resources"></a>Phase 2: Bereitstellen von Azure-Speicher und -Migrationsressourcen
+
+In diesem Abschnitt werden Aspekte zum Bereitstellen der verschiedenen Ressourcentypen erläutert, die in Azure benötigt werden. In einigen befinden sich Ihre Daten nach der Migration, und einige werden ausschließlich für die Migration benötigt. Starten Sie die Bereitstellung von Ressourcen erst, wenn Sie Ihren Bereitstellungsplan fertiggestellt haben. Es ist schwierig, manchmal unmöglich, bestimmte Aspekte ihrer Azure-Ressourcen zu ändern, nachdem sie bereitgestellt wurden.
+
+### <a name="deploy-storage-accounts"></a>Bereitstellen von Speicherkonten
+Sie müssen wahrscheinlich mehrere Azure-Speicherkonten bereitstellen. Jedes dieser Konten enthält eine kleinere Anzahl von Azure-Dateifreigaben, wie dies in Ihrem Bereitstellungsplan vorgesehen ist, den Sie im vorherigen Abschnitt dieses Artikels fertiggestellt haben. Wechseln Sie zum Azure-Portal, um [Ihre geplanten Speicherkonten bereitzustellen](../common/storage-account-create.md#create-a-storage-account). Es bietet sich an, die folgenden grundlegenden Einstellungen für jedes neue Speicherkonto zu berücksichtigen:
+
+##### <a name="subscription"></a>Abonnement
+Sie können das Abonnement verwenden, das Sie für Ihre StorSimple-Bereitstellung verwendet haben. Sie können aber auch ein anderes Abonnement verwenden. Die einzige Einschränkung besteht darin, dass sich Ihr Abonnement im selben Azure AD-Mandanten befinden muss wie das StorSimple-Abonnement. Verschieben Sie das StorSimple-Abonnement ggf. in den richtigen Mandanten, bevor Sie eine Migration starten. Sie können nur das gesamte Abonnement verschieben. Einzelne StorSimple-Ressourcen können nicht in einen anderen Mandanten oder ein anderes Abonnement verschoben werden.
+
+##### <a name="resource-group"></a>Ressourcengruppe
+Ressourcengruppen unterstützen beim Strukturieren von Ressourcen und administrativen Verwaltungsberechtigungen. Erfahren Sie mehr über [Ressourcengruppen in Azure](../../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group).
+
+##### <a name="storage-account-name"></a>Speicherkontoname
+Der Name Ihres Speicherkontos wird Bestandteil einer URL, und für ihn gelten bestimmte Zeichenbeschränkungen. In Ihrer Namenskonvention sollten Sie berücksichtigen, dass Speicherkontonamen weltweit eindeutig sein müssen, nur Kleinbuchstaben und Ziffern enthalten dürfen, zwischen 3 und 24 Zeichen erfordern und keine Sonderzeichen wie Bindestriche oder Unterstriche enthalten dürfen. Weitere Informationen: [Benennungsregeln für Azure-Speicherressourcen](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage).
+
+##### <a name="location"></a>Standort
+Der „Standort“ oder die Azure-Region eines Speicherkontos ist äußerst wichtig. Wenn Sie Azure-Dateisynchronisierung verwenden, müssen sich Ihre Speicherkonten in derselben Region befinden wie die Speichersynchronisierungsdienst-Ressource. Die Azure-Region, die Sie auswählen, sollte sich in der Nähe oder in der Mitte Ihrer lokalen Server/Benutzer befinden. Nachdem Ihre Ressource bereitgestellt wurde, können Sie deren Region nicht mehr ändern.
+
+Sie können eine Region auswählen, die nicht mit der identisch ist, in der sich Ihre StorSimple-Daten (Speicherkonto) aktuell befinden.
+
+> [!IMPORTANT]
+> Wenn Sie eine andere Region als diejenige des aktuellen Speicherorts Ihres StorSimple-Speicherkontos auswählen, werden [Gebühren für ausgehenden Datenverkehr](https://azure.microsoft.com/pricing/details/bandwidth) fällig. Die Daten werden aus der StorSimple-Region in die Region Ihres neuen Speicherkontos gesendet. Wenn Sie innerhalb derselben Azure-Region bleiben, fallen keine Bandbreitengebühren an.
+
+##### <a name="performance"></a>Leistung
+Sie haben die Möglichkeit, Storage Premium (SSD) für Azure-Dateifreigaben oder Standardspeicher auszuwählen. Standardspeicher umfasst [verschiedenen Ebenen für eine Dateifreigabe](storage-how-to-create-file-share.md#changing-the-tier-of-an-azure-file-share). Standardspeicher ist die richtige Option für die meisten Kunden, die von StorSimple migrieren.
+
+Sie sind immer noch nicht sicher?
+* Wählen Sie Storage Premium aus, wenn Sie die [Leistung einer Premium-Azure-Dateifreigabe](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) benötigen.
+* Wählen Sie Standardspeicher für allgemeine Dateiserverworkloads aus, einschließlich heißer Daten und Archivierungsdaten. Wählen Sie Standardspeicher auch aus, wenn Azure-Dateisynchronisierung die einzige Workload auf der Freigabe in der Cloud ist.
+
+##### <a name="account-kind"></a>Kontoart
+* Wählen Sie für Standardspeicher Folgendes aus: *StorageV2 (universell v2)*
+* Wählen Sie für Premium-Dateifreigaben Folgendes aus: *FileStorage*
+
+##### <a name="replication"></a>Replikation
+Es sind mehrere Replikationseinstellungen verfügbar. Erfahren Sie mehr über die verschiedenen Replikationstypen.
+
+Wählen Sie eine dieser beiden Optionen aus:
+* *Lokal redundanter Speicher (LRS)*
+* *Zonenredundanter Speicher (ZRS)* : Dieser ist nicht in allen Azure-Regionen verfügbar.
+
+> [!NOTE]
+> Nur die Redundanztypen LRS und ZRS sind mit den großen Azure-Dateifreigaben mit 100 TiB Kapazität kompatibel.
+
+Global redundanter Speicher (alle Variationen) wird derzeit nicht unterstützt. Sie können den Redundanztyp zu einem späteren Zeitpunkt ändern und zu GRS wechseln, sobald dieser Typ in Azure unterstützt wird.
+
+##### <a name="enable-100tib-capacity-file-shares"></a>Aktivieren von Dateifreigaben mit 100 TiB Kapazität
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png" alt-text="Registerkarte „Erweitert“ im Azure-Portal, auf der ein Speicherkonto erstellt werden kann":::
+    :::column-end:::
+    :::column:::
+        Im Abschnitt *Erweitert* des Assistenten für neue Speicherkonten im Azure-Portal können Sie Unterstützung für *Große Dateifreigaben* in diesem Speicherkonto aktivieren. Steht Ihnen diese Option nicht zur Verfügung, haben Sie wahrscheinlich den falschen Redundanztyp ausgewählt. Sie dürfen nur LRS oder ZRS auswählen, damit diese Option verfügbar wird.
+    :::column-end:::
+:::row-end:::
+
+Die Entscheidung für die großen Dateifreigaben mit 100 TiB Kapazität bietet mehrere Vorteile:
+* Die Leistung wird im Vergleich zu den kleineren Dateifreigaben mit einer Kapazität von 5 TiB erheblich verbessert. (Beispiel: das 10-fache der IOPS)
+* Ihre Migration wird erheblich schneller abgeschlossen.
+* Sie stellen sicher, dass eine Dateifreigabe genügend Kapazität für alle Daten hat, die Sie in die Freigabe migrieren.
+* Zukünftige Vergrößerungen sind abgedeckt.
+
+### <a name="azure-file-shares"></a>Azure-Dateifreigaben
+Sobald Sie Ihre Speicherkonten erstellt haben, können Sie zum Abschnitt „ *Dateifreigabe* “ des Speicherkontos navigieren und die entsprechende Anzahl von Azure-Dateifreigaben gemäß Ihrem Migrationsplan aus Phase 1 bereitstellen. Es bietet sich an, die folgenden grundlegenden Einstellungen für Ihre neuen Dateifreigaben in Azure zu berücksichtigen:
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Registerkarte „Erweitert“ im Azure-Portal, auf der ein Speicherkonto erstellt werden kann":::
+    :::column-end:::
+    :::column:::
+        </br>**Name**</br>Es werden Kleinbuchstaben, Zahlen und Bindestriche unterstützt.</br></br>**Kontingent**</br>Kontingent ist hier vergleichbar mit einer harten SMB-Kontingentgrenze auf einem Windows-Server. Sie sollten hier nach Möglichkeit kein Kontingent festlegen, da die Migration und andere Dienste fehlschlagen, wenn das Kontingent erreicht wird.</br></br>**Tier**</br>Wählen Sie *Transaktionsoptimiert* für Ihre neue Dateifreigabe aus. Während der Migration werden viele Transaktionen ausgeführt, und es ist kostengünstiger, ihre Ebene später in die Ebene zu ändern, die für ihre Workload am besten geeignet ist.
+    :::column-end:::
+:::row-end:::
+
+### <a name="storsimple-data-manager"></a>StorSimple Data Manager
+Die Azure-Ressource, die der sich Ihre Migrationsaufträge befinden werden, wird als *StorSimple Data Manager* bezeichnet. Klicken Sie auf „Neue Ressource“, suchen Sie nach dieser, und klicken Sie dann auf *Erstellen* .
+
+Dies ist eine temporäre Ressource, die für die Orchestrierung verwendet wird. Sie heben die Bereitstellung der Ressource nach Abschluss der Migration auf. Sie sollte in derselben Umgebung (Abonnement, Ressourcengruppe und Region) wie Ihr StorSimple-Speicherkonto bereitgestellt werden.
+
+### <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+Azure-Dateisynchronisierung (ADS) ermöglicht es Ihnen, lokales Zwischenspeichern für die Dateien hinzuzufügen, auf die am häufigsten zugegriffen wird. Ähnlich wie die Zwischenspeicherungsfunktionen von StorSimple bietet die Cloudtieringfunktionalität von ADS lokale Zugriffslatenz in Kombination mit verbesserter Kontrolle der verfügbaren Cachekapazität bei der Synchronisierung von Windows Server und mehreren Standorten. Wenn Sie einen lokalen Cache benötigen, bereiten Sie in Ihrem lokalen Netzwerk eine Windows Server-VM (physische Server und Failovercluster werden ebenfalls unterstützt) mit genügend DZS-Kapazität (Direkt zugeordneter Speicher) vor. 
+
+> [!IMPORTANT]
+> Richten Sie „Azure-Dateisynchronisierung“ noch nicht ein. Es empfiehlt sich, „Azure-Dateisynchronisierung“ einzurichten, nachdem die Migration Ihrer Freigabe abgeschlossen ist. Das Bereitstellen von ADS sollte nicht vor Phase 4 einer Migration beginnen.
+
+### <a name="phase-2-summary"></a>Zusammenfassung von Phase 2
+Am Ende der Phase 2 haben Sie Ihre Speicherkonten sowie sämtliche Ihrer Azure-Dateifreigaben in diesen bereitgestellt, und Sie haben eine StorSimple Data Manager-Ressource. Diese Ressource verwenden Sie in Phase 3, wenn Sie Ihre Migrationsaufträge tatsächlich konfigurieren.
+
+## <a name="phase-3-create-and-run-a-migration-job"></a>Phase 3: Erstellen und Ausführen eines Migrationsauftrags
+In diesem Abschnitt ist beschrieben, wie Sie einen Migrationsauftrag einrichten und sorgfältig die Verzeichnisse auf einem StorSimple-Volume zuordnen, die in die von Ihnen ausgewählte Azure-Zieldateifreigabe kopiert werden sollen. Navigieren Sie zunächst zu Ihrem StorSimple Data Manager, suchen Sie nach **Auftragsdefinitionen** im Menü, und wählen Sie **+ Auftragsdefinitionen** aus. Der Zielspeichertyp ist die Standardeinstellung: *Azure-Dateifreigabe* .
+
+![Migrationsauftragstypen für die StorSimple 8000-Serie](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "Screenshot des Azure-Portal-Abschnitts „Auftragsdefinitionen“ mit einer neuen Auftragsdefinition, für die nach dem der Typ des Auftrags gefragt wird: Kopieren in eine Dateifreigabe oder einen Blobcontainer.")
+
+> [!IMPORTANT]
+> Bevor Sie irgendeinen Migrationsauftrag ausführen, sollten Sie alle automatisch geplanten Sicherungen Ihrer StorSimple-Volumes beenden.
+
+:::row:::
+    :::column:::
+        ![Migrationsauftrag für die StorSimple 8000-Serie](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Screenshot des Formulars für Erstellen eines neuen Auftrags für einen Datentransformationsauftrag")
+    :::column-end:::
+    :::column:::
+        **Auftragsdefinitionsname**</br>Dieser Name sollte bezeichnend für die Dateien sein, die Sie verschieben. Es hat sich bewährt, einen Namen zu vergeben, der dem Ihrer Azure-Dateifreigabe ähnelt. </br></br>**Speicherort, in dem der Auftrag ausgeführt wird**</br>Wenn Sie eine Region auswählen, müssen Sie die Region auswählen, in der sich Ihr StorSimple-Speicherkonto befindet. Ist diese Region nicht verfügbar, wählen Sie eine Region in deren Nähe aus. </br></br><h3>`Source`</h3>**Quellabonnement**</br>Wählen Sie das Abonnement aus, in dem Sie Ihre StorSimple-Geräte-Manager-Ressource speichern. </br></br>**StorSimple-Ressource**</br>Wählen Sie Ihren StorSimple-Geräte-Manager aus, bei dem Ihre Appliance registriert ist. </br></br>**Verschlüsselungsschlüssel für Dienstdaten**</br>Lesen Sie diesen [vorherigen Abschnitt dieses Artikels](#storsimple-service-data-encryption-key), falls Sie den Schlüssel nicht in Ihren Aufzeichnungen finden können. </br></br>**Device**</br>Wählen Sie das StorSimple-Gerät aus, auf dem sich das Volume befindet, das Sie migrieren möchten. </br></br>**Umfang**</br>Wählen Sie das Quellvolume aus. Später können Sie entscheiden, ob das gesamte Volume oder Unterverzeichnisse in die Azure-Zieldateifreigabe migriert werden sollen. </br></br><h3>Ziel</h3>Wählen Sie das Abonnement, das Speicherkonto und die Azure-Dateifreigabe als Ziel dieses Migrationsauftrags aus.
+    :::column-end:::
+:::row-end:::
+
+> [!IMPORTANT]
+> Die letzte Volumesicherung wird dazu verwendet, die Migration auszuführen. Es muss mindestens eine Volumesicherung vorhanden sein, denn andernfalls schlägt der Auftrag fehl. Stellen Sie außerdem sicher, dass die neueste Sicherung ziemlich aktuell ist, um die Zeitspanne zur aktiven Freigabe so klein wie möglich zu halten. Es kann sinnvoll sein, eine weitere Volumesicherung manuell auszulösen und abzuschließen, **bevor** der soeben erstellte Auftrag ausgeführt wird.
+
+### <a name="directory-mapping"></a>Verzeichniszuordnung
+Dies ist optional für Ihren Migrationsauftrag. Bleibt diese List leer, werden **alle** Dateien und Ordner im Stammverzeichnis Ihres StorSimple-Volumes in das Stammverzeichnis Ihrer Azure-Zieldateifreigabe verschoben. In den meisten Fällen ist das Speichern der Inhalte eines gesamten Volumes in einer Azure-Dateifreigabe nicht der beste Ansatz. Häufig ist es besser, den Inhalt eines Volumes auf mehrere Dateifreigaben in Azure aufzuteilen. Wenn Sie noch keinen Plan erstellt haben, lesen Sie zuerst diesen Abschnitt: [Zuordnen Ihrer vorhandenen StorSimple-Volumes zu Azure-Dateifreigaben](#map-your-existing-storsimple-volumes-to-azure-file-shares).
+
+Als Teil Ihres Migrationsplans haben Sie vielleicht bestimmt, dass die Ordner auf einem StorSimple-Volume auf mehrere Azure-Dateifreigaben aufgeteilt werden müssen. Ist dies der Fall, können Sie die Aufteilung wie folgt vornehmen:
+1. Definieren Sie mehrere Aufträge, um die Ordner auf einem Volume zu migrieren, wobei jeder Auftrag dasselbe StorSimple-Volume als Quelle, aber eine andere Azure-Dateifreigabe als Ziel hat.
+1. Geben Sie genau an, welche Ordner aus dem StorSimple-Volume in die angegebene Dateifreigabe migriert werden müssen. Verwenden Sie dazu den *Verzeichniszuordnung* -Abschnitt des Auftragserstellungsformulars, und befolgen Sie die spezielle [Zuordnungssemantik](#semantic-elements).
+
+> [!IMPORTANT]
+> Die Pfade und Zuordnungsausdrücke in diesem Formular können nicht überprüft werden, wenn das Formular übermittelt wird. Sind Zuordnungen falsch angegeben, kann ein Auftrag entweder vollständig fehlschlagen oder ein unerwünschtes Ergebnis bringen. In diesem Fall empfiehlt es sich in der Regel, die Azure-Dateifreigabe zu löschen, sie erneut zu erstellen und dann die Zuordnungsanweisungen in einem neuen Migrationsauftrag für die Freigabe zu korrigieren. Durch Ausführen eines neuen Auftrags mit korrigierten Zuordnungsanweisungen können nicht berücksichtigte Ordner bestimmt und in die vorhandene Freigabe gebracht werden. Allerdings können so nur Ordner erfasst werden, die aufgrund von falsch geschriebenen Pfaden nicht berücksichtigt wurden.
+
+#### <a name="semantic-elements"></a>Semantikelemente
+Eine Zuordnung wird von links nach rechts formuliert: [\Quellpfad] \> [\Zielpfad].
+
+|Semantisches Zeichen          | Bedeutung  |
+|:---------------------------|:---------|
+| **\\**                     | Kennzeichen für Stammebene        |
+| **\>**                     | Zuordnungsoperator für [Quelle] und [Ziel]        |
+|**\|** oder EINGABETASTE (neue Zeile) | Trennzeichen von zwei Ordnerzuordnungsanweisungen. </br>Alternativ können Sie auf dieses Zeichen verzichten und die EINGABETASTE drücken, um den nächsten Zuordnungsausdruck in seiner eigenen Zeile zu erhalten.        |
+
+### <a name="examples"></a>Beispiele
+Verschiebt den Inhalt des Ordners „User Data“ in das Stammverzeichnis der Zieldateifreigabe:
+``` console
+\User data > \\
+```
+Verschiebt den gesamten Volumeinhalt in einen neuen Pfad in der Zieldateifreigabe:
+``` console
+\ \> \Apps\HR tracker
+```
+Verschiebt den Inhalt des Quellordners in einen neuen Pfad in der Zieldateifreigabe:
+``` console
+\HR resumes-Backup \> \Backups\HR\resumes
+```
+Sortiert mehrere Quellspeicherorte in einer neuen Verzeichnisstruktur:
+``` console
+\HR\Candidate Tracker\v1.0 > \Apps\Candidate tracker
+\HR\Candidates\Resumes > \HR\Candidates\New
+\Archive\HR\Old Resumes > \HR\Candidates\Archived
+```
+
+### <a name="semantic-rules"></a>Semantikregeln
+* Geben Sie Ordnerpfade immer relativ zur Stammebene an. 
+* Beginnen Sie jeden Ordnerpfad mit dem Kennzeichen für Stammebene "\". 
+* Fügen Sie keine Laufwerkbuchstaben ein. 
+* Wenn Sie mehrere Pfade angeben, dürfen sich die Quell- oder Zielpfade nicht überlappen:</br>
+   Beispiel für eine ungültige Quellpfadüberlappung:</br>
+    *\\Ordner\1 > \\Ordner*</br>
+    *\\Ordner\\1\\2 > \\Ordner2*</br>
+   Beispiel für eine ungültige Zielpfadüberlappung:</br>
+   *\\Ordner > \\*</br>
+   *\\2 > \\*</br>
+* Nicht vorhandene Quellordner werden ignoriert. 
+* Ordnerstrukturen, die auf dem Ziel nicht vorhanden sind, werden erstellt. 
+* Wie bei Windows: Für Ordnernamen wird die Groß-/Kleinschreibung nicht beachtet, aber sie wird beibehalten.
+
+> [!NOTE]
+> Der Inhalt des Ordners „ *\System Volume Information* “ und der Inhalt von „ *$Recycle.Bin* “ auf Ihrem StorSimple-Volume werden vom Transformationsauftrag nicht kopiert.
+
+### <a name="phase-3-summary"></a>Zusammenfassung von Phase 3
+Am Ende der Phase 3 haben Sie Ihre Datentransformationsaufträge von StorSimple-Volumes in Azure-Dateifreigaben ausgeführt. Sie können nun entweder die Azure-Dateisynchronisierung für die Freigabe (nachdem die Migrationsaufträge für eine Freigabe abgeschlossen wurden) oder für Ihre Information-Worker und Apps direkten Zugriff auf die Azure-Dateifreigabe einrichten.
+
+## <a name="phase-4-accessing-your-azure-file-shares"></a>Phase 4: Zugreifen auf Ihre Azure-Dateifreigaben
+
+Es gibt zwei Hauptstrategien für das Zugreifen auf Ihre Azure-Dateifreigaben:
+
+* **Azure-Dateisynchronisierung:** [Bereitstellen von Azure-Dateisynchronisierung](#deploy-azure-file-sync) auf einem lokalen Windows-Server. Azure-Dateisynchronisierung bietet alle Vorteile eines lokalen Caches, genau so wie StorSimple.
+* **Direkter Zugriff auf Dateifreigaben:** [Bereitstellen von direktem Zugriff auf Dateifreigaben](#deploy-direct-share-access). Verwenden Sie diese Strategie, wenn Ihr Zugriffsszenario für eine bestimmte Azure-Dateifreigabe nicht vom lokalen Zwischenspeichern profitiert oder Sie keine Möglichkeit mehr haben, einen lokalen Windows-Server zu hosten. Hierbei greifen die Benutzer und Apps weiterhin über das SMB-Protokoll auf SMB-Freigaben zu, aber diese Freigaben befinden sich nicht mehr auf einem lokalen Server, sondern direkt in der Cloud.
+
+Sie sollten bereits in [Phase 1](#phase-1-prepare-for-migration) dieser Anleitung entschieden haben, welche Option für Sie am besten geeignet ist.
+
+Im Rest dieses Abschnitts liegt der Schwerpunkt auf Bereitstellungsanweisungen.
+
+### <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
+
+Es ist an der Zeit, einen Teil der Azure-Dateisynchronisierung bereitzustellen:
+1. Erstellen Sie die Cloudressource für die Azure-Dateisynchronisierung.
+1. Stellen Sie den Azure-Dateisynchronisierungs-Agent auf Ihrem lokalen Server bereit.
+1. Registrieren Sie den Server bei der Cloudressource.
+
+Erstellen Sie noch keine Synchronisierungsgruppen. Das Einrichten der Synchronisierung mit einer Azure-Dateifreigabe sollte erst erfolgen, wenn Ihre Migrationsaufträge zu einer Azure-Dateifreigabe abgeschlossen sind. Würden Sie mit der Nutzung der Dateisynchronisierung beginnen, bevor Sie die Migration abgeschlossen haben, würde die Migration dadurch unnötig erschwert, da Sie nicht einfach erkennen können, wann es an der Zeit ist, eine Übernahme einzuleiten.
+
+#### <a name="deploy-the-azure-file-sync-cloud-resource"></a>Bereitstellen der Cloudressource für die Azure-Dateisynchronisierung
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
 > [!TIP]
-> Wenn Sie die Azure-Region von der aktuellen Region, in der sich Ihre StorSimple-Daten befinden, in eine andere Region ändern müssen, dann haben Sie die Speicherkonten für Ihre Azure-Dateifreigaben in der neuen Region bereitgestellt. Stellen Sie sicher, dass Sie bei der Bereitstellung dieses Speichersynchronisierungsdiensts dieselbe Region ausgewählt haben.
+> Möchten Sie, dass sich Ihre Daten nach erfolgter Migration in einer anderen Azure-Region als bisher befinden, stellen Sie den Speichersynchronisierungsdienst in der Region bereit, in der sich die Zielspeicherkonten für diese Migration befinden.
 
-### <a name="deploy-an-on-premises-windows-server"></a>Bereitstellen eines lokalen Windows-Servers
+#### <a name="deploy-an-on-premises-windows-server"></a>Bereitstellen eines lokalen Windows-Servers
 
-* Erstellen Sie einen Server mit Windows Server 2019 (oder mindestens 2012 R2) als virtuellen Computer oder physischen Server. Ein Windows Server-Failovercluster wird ebenfalls unterstützt. Verwenden Sie nicht wieder den Server, den Sie möglicherweise StorSimple 8100 oder 8600 vorgeschaltet haben.
+* Erstellen Sie einen Server mit Windows Server 2019 (oder mindestens 2012 R2) als virtuellen Computer oder physischen Server. Ein Windows Server-Failovercluster wird ebenfalls unterstützt. Verwenden Sie nicht wieder den Server, den Sie StorSimple 8100 oder 8600 vorgeschaltet haben.
 * Stellen Sie direkt angeschlossenen Speicher (DAS, im Gegensatz zum nicht unterstützten NAS) bereit, oder fügen Sie ihn hinzu.
 
 Es wird empfohlen, dem neuen Windows-Server eine gleich große oder größere Menge an Speicher bereitzustellen als die, die Ihrer StorSimple 8100- oder 8600-Appliance lokal zum Zwischenspeichern zur Verfügung steht. Sie verwenden den Windows-Server auf die gleiche Weise wie die StorSimple-Appliance, und wenn er über die gleiche Menge an Speicher wie die Appliance verfügt, sollte die Zwischenspeicherung ähnlich sein, wenn nicht sogar identisch.
 Sie können nach Wunsch Speicher zu Ihrem Windows-Server hinzufügen oder daraus entfernen. Dadurch können Sie die Größe des lokalen Volumes und die Menge des für die Zwischenspeicherung verfügbaren lokalen Speichers anpassen.
 
-### <a name="prepare-the-windows-server-for-file-sync"></a>Vorbereiten des Windows-Servers für die Dateisynchronisierung
+#### <a name="prepare-the-windows-server-for-file-sync"></a>Vorbereiten des Windows-Servers für die Dateisynchronisierung
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-### <a name="configure-azure-file-sync-on-the-windows-server"></a>Konfigurieren der Azure-Dateisynchronisierung auf dem Windows-Server
+#### <a name="configure-azure-file-sync-on-the-windows-server"></a>Konfigurieren der Azure-Dateisynchronisierung auf dem Windows-Server
 
 Der registrierte lokale Windows-Server muss für diesen Prozess bereit und mit dem Internet verbunden sein.
 
+> [!IMPORTANT]
+> Bevor Sie die weiteren Schritte ausführen, muss Ihre StorSimple-Migration von Dateien und Ordnern in die Azure-Dateifreigabe abgeschlossen sein. Stellen Sie sicher, dass keine weiteren Änderungen an der Dateifreigabe vorgenommen werden.
+
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
+> [!IMPORTANT]
+> Aktivieren Sie unbedingt das Cloudtiering! Cloudtiering ist ein Feature der Azure-Dateisynchronisierung, das es dem lokalen Server ermöglicht, weniger Speicherkapazität als in der Cloud zu haben, aber trotzdem über den vollständigen Namespace zu verfügen. Lokal interessante Daten werden zudem für eine schnelle, lokale Zugriffsleistung lokal zwischengespeichert. Ein weiterer Grund für das Aktivieren von Cloudtiering in diesem Schritt ist, dass der Dateiinhalt in dieser Phase nicht synchronisiert werden soll, sondern nur der Namespace verschoben werden sollte.
+
+### <a name="deploy-direct-share-access"></a>Bereitstellen von direktem Zugriff auf Dateifreigaben
+
+:::row:::
+    :::column:::
+        [![Ausführliche Anleitung und Demo dazu, wie Azure-Dateifreigaben sicher direkt für Information-Worker und Apps verfügbar gemacht werden können: Klicken Sie, um das Video wiederzugeben!](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/KG0OX0RgytI)
+    :::column-end:::
+    :::column:::
+        Dieses Video ist eine Anleitung und Demo dazu, wie Azure-Dateifreigaben in fünf einfachen Schritte sicher direkt für Information-Worker und Apps verfügbar gemacht werden können.</br>
+        In diesem Video wird auf dedizierte Dokumentation für einige Themen verwiesen:
+* [Übersicht über Identitäten](storage-files-active-directory-overview.md)
+* [Übersicht – lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md)
+* [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md)
+* [Konfigurieren von Azure Files-Netzwerkendpunkten](storage-files-networking-endpoints.md)
+* [Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md)
+* [Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-windows.md)
+* [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
+* [Konfigurieren der DNS-Weiterleitung für Azure Files](storage-files-networking-dns.md)
+* [Übersicht über DFS-Namespaces](https://aka.ms/AzureFiles/Namespaces)
+   :::column-end:::
+:::row-end:::
+
+### <a name="phase-4-summary"></a>Zusammenfassung von Phase 4
+In dieser Phase haben Sie mehrere *Datentransformationsdienst* -Aufträge in Ihrem *StorSimple Data Manager* erstellt und ausgeführt. Mit diesen Aufträgen wurden Ihre Dateien und Ordner in Azure-Dateifreigaben migriert. Außerdem haben Sie entweder Azure-Dateisynchronisierung bereitgestellt oder Ihr Netzwerk und Ihre Speicherkonten für direkten Zugriff auf Dateifreigaben vorbereitet.
+
+## <a name="phase-5-user-cut-over"></a>Phase 5: Benutzerübernahme
+In dieser Phase geht es darum, Ihre Migration abzuschließen:
+* Planen Sie Ihre Downtime.
+* Informieren Sie sich über alle Änderungen, die Ihre Benutzer und Apps auf der StorSimple-Seite vorgenommen haben, während die Datentransformationsaufträge in Phase 3 ausgeführt wurden. 
+* Führen Sie für die Benutzer einen Failover zu dem neuen Windows-Server aus, wozu Sie Azure-Dateisynchronisierung oder die Azure-Dateifreigaben über direkten Zugriff auf Dateifreigaben verwenden.
+
+### <a name="plan-your-downtime"></a>Planen der Downtime
+Dieser Migrationsansatz erfordert etwas Downtime für Ihre Benutzer und Apps. Ziel ist es, die Downtime auf ein Mindestmaß zu beschränken. Die folgenden Aspekte können dazu hilfreich sein:
+
+* Halten Sie Ihre StorSimple-Volumes verfügbar, während Ihre Datentransformationsaufträge ausgeführt werden.
+* Sobald die von Ihnen ausgeführten Datenmigrationsaufträge für eine Freigabe abgeschlossen sind, sollten Sie Benutzerzugriff (zumindest Schreibzugriff) aus den StorSimple-Volumes/Freigaben entfernen. Bei einer abschließenden RoboCopy-Ausführung wird Ihre Azure-Dateifreigabe auf den aktuellen Stand gebracht, und danach können Sie Ihre Benutzer übernehmen. Wo Sie RoboCopy ausführen, hängt davon ab, ob Sie sich für die Verwendung von Azure-Dateisynchronisierung oder direkten Zugriff auf Dateifreigaben entschieden haben. Informationen hierzu finden Sie weiter unten im Abschnitt zu RoboCopy.
+* Nachdem Sie den RoboCopy-Aktualisierungsvorgang abgeschlossen haben, können Sie den neuen Speicherort für Ihre Benutzer verfügbar machen. Dies ist entweder direkt die Azure-Dateifreigabe oder eine SMB-Freigabe auf einem Windows-Server mit Azure-Dateifreigabe. Häufig ermöglicht eine DFS-Namespace-Bereitstellung eine schnelle und effiziente Übernahme. Sie bewirkt, dass Ihre vorhandenen Freigabeadressen konsistent bleiben, und verweist auf einen neuen Speicherort, der Ihre migrierten Dateien und Ordner enthält.
+
+### <a name="determine-when-your-namespace-has-fully-synced-to-your-server"></a>Feststellen, wann Ihr Namespace vollständig mit dem Server synchronisiert ist
+
+Wenn Sie Azure-Dateisynchronisierung für eine Azure-Dateifreigabe verwenden, müssen Sie, BEVOR Sie einen lokalen RoboCopy-Befehl starten, feststellen, ob Ihr gesamter Namespace vollständig auf den Server heruntergeladen ist. Wie viel Zeit für das Herunterladen Ihres Namespace erforderlich ist, hängt von der Anzahl der Elemente in ihrer Azure-Dateifreigabe ab. Es gibt zwei Methoden, um festzustellen, ob Ihr Namespace vollständig auf den Server heruntergeladen ist:
+
+#### <a name="azure-portal"></a>Azure-Portal
+Sie können das Azure-Portal verwenden, um zu prüfen, ob Ihr Namespace vollständig heruntergeladen ist.
+* Melden Sie sich beim Azure-Portal an, navigieren Sie zu ihrer Synchronisierungsgruppe, und überprüfen Sie den Synchronisierungsstatus Ihrer Synchronisierungsgruppe und Ihres Serverendpunkts. 
+* Die interessierende Richtung ist die für Herunterladen: Wird der Serverendpunkt neu bereitgestellt, wird für ihn **Erste Synchronisierung** angezeigt, wodurch gekennzeichnet ist, dass der Namespace weiterhin heruntergeladen wird.
+Sobald hierfür nicht mehr *Erste Synchronisierung* angezeigt wird, ist Ihr Namespace auf dem Server vollständig aufgefüllt, und Sie können einen lokalen RoboCopy-Befehl ausführen.
+
+#### <a name="windows-server-event-viewer"></a>Windows Server-Ereignisanzeige
+Sie können auch die Ereignisanzeige auf Ihrem Windows-Server verwenden, um zu ermitteln, wann der Namespace vollständig heruntergeladen ist.
+
+1. Öffnen Sie die **Ereignisanzeige** , und navigieren Sie zu **Anwendungen und Dienste** .
+1. Navigieren Sie zu **Microsoft\FileSync\Agent\Telemetry** , und öffnen Sie es.
+1. Suchen Sie nach dem neuesten **Ereignis 9102** , das einer abgeschlossenen Synchronisierungssitzung entspricht.
+1. Wählen Sie **Details** aus, und vergewissern Sie sich, dass Sie ein Ereignis sehen, für das **SyncDirection** den Wert **Download** hat.
+1. Für den Zeitpunkt, zu dem Ihr Namespace vollständig auf den Server heruntergeladen ist, gibt es ein einzelnes Ereignis mit **Scenario** -Wert **FullGhostedSync** und **HResult** = **0** .
+1. Sollte dieses Ereignis nicht vorhanden sein, können Sie nach anderen **9102-Ereignissen** mit **SyncDirection** = **Download** und **Scenario** = **RegularSync** suchen. Wenn Sie eines dieser Ereignisse finden, ist klar, dass das Herunterladen des Namespace abgeschlossen und die Synchronisierung zu regelmäßigen Synchronisierungssitzungen übergegangen ist, unabhängig davon, ob derzeit eine Synchronisierung erforderlich ist oder nicht.
+
+### <a name="a-final-robocopy"></a>Abschließende RoboCopy
+An diesem Punkt gibt es Unterschiede zwischen Ihrem lokalen Windows-Server und der StorSimple 8100- oder 8600-Appliance:
+
+1. Sie müssen die Änderungen erfassen, die Benutzer/Apps auf der StorSimple-Seite vorgenommen haben, während die Migration ausgeführt wurde.
+1. In den Fällen, in denen Sie Azure-Dateisynchronisierung verwenden: Die StorSimple-Appliance weist einen gefüllten Cache auf, wohingegen der Windows-Server zu diesem Zeitpunkt nur über einen Namespace ohne lokal gespeicherten Dateiinhalt verfügt. Daher kann der abschließende RoboCopy-Befehl Starthilfe für Ihren ADS-Cache (Azure-Dateisynchronisierung) bieten, indem so viele lokal zwischengespeicherte Dateiinhalte abgerufen werden, wie verfügbar sind und auf den ADS-Server passen.
+1. Einige Dateien wurden vom Datentransformationsauftrag wegen ungültiger Zeichen möglicherweise nicht übertragen. Ist dies der Fall, kopieren Sie diese Dateien auf den Windows-Server mit aktivierter Azure-Dateisynchronisierung. Später können Sie die Dateien so anpassen, dass sie synchronisiert werden. Wenn Sie Azure-Dateisynchronisierung nicht für eine bestimmte Freigabe verwenden, sollten Sie die Dateien mit ungültigen Zeichen auf dem StorSimple-Volume umbenennen und dann den RoboCopy-Befehl direkt für die Azure-Dateifreigabe ausführen. 
+
 > [!WARNING]
-> **Aktivieren Sie unbedingt das Cloudtiering!** Cloudtiering ist das AFS-Feature, das es dem lokalen Server ermöglicht, weniger Speicherkapazität als in der Cloud zu haben, aber trotzdem über den vollständigen Namespace zu verfügen. Lokal interessante Daten werden zudem für eine schnelle, lokale Zugriffsleistung lokal zwischengespeichert. Ein weiterer Grund für das Aktivieren von Cloudtiering in diesem Schritt ist, dass der Dateiinhalt in dieser Phase nicht synchronisiert werden soll, sondern nur der Namespace verschoben werden sollte.
+> Sie dürfen RoboCopy erst starten, nachdem der Server den Namespace für eine Azure-Dateifreigabe vollständig heruntergeladen hat!
+> Lesen Sie: [Feststellen, wann Ihr Namespace vollständig mit dem Server synchronisiert ist](#determine-when-your-namespace-has-fully-synced-to-your-server).
 
-## <a name="phase-4-configure-the-azure-vm-for-sync"></a>Phase 4: Konfigurieren der Azure-VM für die Synchronisierung
+ Sie möchten nur Dateien kopieren, die nach dem letzten Ausführen des Migrationsauftrags geändert wurden, und Dateien, die noch nicht durch diese Aufträge verschoben wurden. Die Probleme, die dazu geführt haben, dass diese Dateien nicht verschoben wurden, können Sie später auf dem Server lösen, nachdem die Migration abgeschlossen ist. Informationen finden Sie unter [Problembehandlung für die Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
-:::row:::
-    :::column:::
-        ![Die Abbildung zeigt, wie Sie die VM über die Azure-Dateisynchronisierung verbinden und die ersten Dateien aus Ihren StorSimple-Volumeklonen verschieben.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
-    :::column-end:::
-    :::column:::
-        Diese Phase bezieht sich auf Ihre Azure-VM mit den über iSCSI bereitgestellten ersten Volumeklonen. In dieser Phase wird die VM über die Azure-Dateisynchronisierung verbunden, und es wird eine erste Runde zum Verschieben von Dateien aus Ihren StorSimple-Volumeklonen gestartet.
-        
-    :::column-end:::
-:::row-end:::
-
-Sie haben bereits den lokalen Server, der die StorSimple 8100- oder 8600-Appliance ersetzt, für die Azure-Dateisynchronisierung konfiguriert. 
-
-Die Vorgehensweise zum Konfigurieren der Azure-VM ist fast identisch, umfasst jedoch einen zusätzlichen Schritt. Mit den folgenden Schritten werden Sie durch den Prozess geführt.
-
-> [!IMPORTANT]
-> Es ist wichtig, dass die Azure-VM **nicht mit aktiviertem Cloudtiering konfiguriert ist!** Sie tauschen das Volume dieses Servers während der Migration durch neuere Volumeklone aus. Das Cloudtiering bietet keinen Vorteil und bedeutet eine höhere CPU-Auslastung, die Sie vermeiden sollten.
-
-1. [Bereitstellen des AFS-Agents (siehe vorheriger Abschnitt)](#prepare-the-windows-server-for-file-sync)
-2. [Vorbereiten der VM für die Azure-Dateisynchronisierung](#get-the-vm-ready-for-azure-file-sync)
-3. [Konfigurieren der Synchronisierung](#configure-azure-file-sync-on-the-azure-vm)
-
-### <a name="get-the-vm-ready-for-azure-file-sync"></a>Vorbereiten der VM für die Azure-Dateisynchronisierung
-
-Mit der Azure-Dateisynchronisierung werden die Dateien von den über iSCSI bereitgestellten StorSimple-Volumes in die Azure-Zieldateifreigaben verschoben.
-Während dieses Migrationsprozesses stellen Sie mehrere Volumeklone auf der VM unter dem gleichen Laufwerkbuchstaben bereit. Die Azure-Dateisynchronisierung muss so konfiguriert werden, dass der nächste bereitgestellte Volumeklon als eine neuere Version der Dateien und Ordner gesehen wird und die über die Azure-Dateisynchronisierung verbundenen Azure-Dateifreigaben aktualisiert werden. 
-
-> [!IMPORTANT]
-> Damit dies funktioniert, muss vor dem Konfigurieren der Azure-Dateisynchronisierung ein Registrierungsschlüssel auf dem Server festgelegt werden.
-
-1. Erstellen Sie ein neues Verzeichnis auf dem Systemlaufwerk der VM. Azure-Dateisynchronisierungsinformationen müssen dort statt auf den bereitgestellten Volumeklonen dauerhaft gespeichert werden. Beispiel: `"C:\syncmetadata"`
-2. Öffnen Sie den Registrierungs-Editor, und suchen Sie nach der folgenden Registrierungsstruktur: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
-3. Erstellen Sie einen neuen Schlüssel vom Zeichenfolgentyp mit folgendem Namen: ***MetadataRootPath***
-4. Legen Sie den vollständigen Pfad zu dem Verzeichnis fest, das Sie auf dem Systemvolume erstellt haben, z. B.: `C:\syncmetadata"`
-
-### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Konfigurieren der Azure-Dateisynchronisierung auf der Azure-VM
-
-Dieser Schritt ähnelt dem vorherigen Abschnitt, in dem das Konfigurieren von AFS auf dem lokalen Server erläutert wird.
-
-Der Unterschied besteht darin, dass Sie Cloudtiering auf diesem Server nicht aktivieren dürfen und sicherstellen müssen, dass die richtigen Ordner mit den richtigen Azure-Dateifreigaben verbunden sind. Andernfalls stimmt die Benennung von Azure-Dateifreigaben und Dateninhalten nicht überein, und es gibt keine Möglichkeit, die Cloudressourcen oder lokalen Ordner umzubenennen, ohne die Synchronisierung neu zu konfigurieren.
-
-Informationen finden Sie im [vorherigen Abschnitt zum Konfigurieren der Azure-Dateisynchronisierung auf einem Windows-Server](#configure-azure-file-sync-on-the-windows-server).
-
-### <a name="step-4-summary"></a>Zusammenfassung von Schritt 4
-
-An diesem Punkt haben Sie die Azure-Dateisynchronisierung auf der Azure-VM, auf der Sie die StorSimple-Volumeklone über iSCSI bereitgestellt haben, erfolgreich konfiguriert.
-Die Daten werden jetzt von der Azure-VM an die verschiedenen Azure-Dateifreigaben übertragen, und von dort wird ein mehrstufiger Namespace auf Ihrem lokalen Windows-Server angezeigt.
-
-> [!IMPORTANT]
-> Stellen Sie sicher, dass zu diesem Zeitpunkt weder Änderungen vorgenommen werden noch Benutzerzugriff auf den Windows-Server erteilt wird.
-
-Das anfängliche Verschieben von Volumeklondaten über die Azure-VM in die Azure-Dateifreigaben kann einige Zeit in Anspruch nehmen, möglicherweise sogar Wochen. Das Schätzen der benötigten Zeit ist schwierig und hängt von vielen Faktoren ab. Insbesondere von der Geschwindigkeit, mit der die Azure-VM auf Dateien auf den StorSimple-Volumes zugreifen kann, und wie schnell die Azure-Dateisynchronisierung die zu synchronisierenden Dateien und Ordner verarbeiten kann. 
-
-Die Erfahrung hat gezeigt, dass die Bandbreite – und somit die tatsächliche Datengröße – nur eine untergeordnete Rolle spielt. Die Zeit, die diese oder eine nachfolgende Migrationsrunde in Anspruch nimmt, hängt größtenteils von der Anzahl der Elemente ab, die pro Sekunde verarbeitet werden können. So wird beispielsweise 1 TiB mit 100.000 Dateien und Ordnern höchstwahrscheinlich langsamer ausgeführt als 1 TiB mit nur 50.000 Dateien und Ordnern.
-
-## <a name="phase-5-iterate-through-multiple-volume-clones"></a>Phase 5: Durchlaufen mehrerer Volumeklone
-
-:::row:::
-    :::column:::
-        ![Die Abbildung zeigt, wie Sie Ausfallzeiten minimieren können, indem Sie mehrerer Volumeklone verwenden und angeben, wann die Synchronisierung abgeschlossen ist.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
-    :::column-end:::
-    :::column:::
-        Wie bereits in der vorherigen Phase erläutert, kann die anfängliche Synchronisierung einige Zeit in Anspruch nehmen. Die Benutzer und Anwendungen greifen weiterhin auf die lokale StorSimple 8100- oder 8600-Appliance zu. Das bedeutet, dass sich Änderungen anhäufen und mit jedem Tag größere Abweichungen zwischen den Livedaten und dem anfänglichen Volumenklon, den Sie gerade migrieren, entstehen. In diesem Abschnitt erfahren Sie, wie Sie Ausfallzeiten minimieren können, indem Sie mehrerer Volumeklone verwenden und angeben, wann die Synchronisierung abgeschlossen ist.
-    :::column-end:::
-:::row-end:::
-
-Leider erfolgt der Migrationsprozess nicht sofort. Das bedeutet, dass die zuvor erwähnten Abweichungen gegenüber den Livedaten eine unvermeidliche Folge sind. Die gute Nachricht ist, dass Sie den Prozess der Bereitstellung neuer Volumeklone wiederholen können. Die jeweiligen Abweichungen bei den einzelnen Volumeklonen werden zunehmend geringer. So kann letztendlich eine Synchronisierung in einem Zeitraum durchgeführt werden, der für Sie akzeptabel ist, um Benutzer und Apps für die Übernahme auf den lokalen Windows-Server offline zu schalten.
-
-Wiederholen Sie die folgenden Schritte, bis die Synchronisierung innerhalb einer Zeitspanne abgeschlossen wird, über die das Offlineschalten von Benutzern und Apps für Sie akzeptabel ist:
-
-1. [Ermitteln, ob die Synchronisierung für einen bestimmten Volumeklon abgeschlossen ist](#determine-when-sync-is-done)
-2. [Erstellen eines neuen Volumeklons und Bereitstellen auf der virtuellen 8020-Appliance](#the-next-volume-clones)
-3. [Bestimmen, wann die Synchronisierung abgeschlossen ist](#determine-when-sync-is-done)
-4. [Übernahmestrategie](#cut-over-strategy)
-
-### <a name="the-next-volume-clones"></a>Nächster Volumeklon
-
-Das Erstellen eines Volumenklons wurde bereits zuvor in diesem Artikel erläutert.
-Diese Phase umfasst zwei Aktionen:
-
-1. [Erstellen eines Volumeklons](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
-2. [Bereitstellen dieses Volumeklons (siehe oben)](#use-the-volume-clone)
-
-### <a name="determine-when-sync-is-done"></a>Bestimmen, wann die Synchronisierung abgeschlossen ist
-
-Wenn die Synchronisierung abgeschlossen ist, können Sie die Zeitmessung beenden und ermitteln, ob Sie das Erstellen und Bereitstellen eines Volumeklons wiederholen müssen oder ob die Zeit, die für die Synchronisierung mit dem letzten Volumeklon benötigt wurde, kurz genug war.
-
-Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Synchronisierung abgeschlossen ist:
-
-1. Öffnen Sie die Ereignisanzeige, und navigieren Sie zu **Anwendungen und Dienste**.
-2. Navigieren Sie zu **Microsoft\FileSync\Agent\Telemetry**, und öffnen Sie es.
-3. Suchen Sie nach dem neuesten **Ereignis 9102**, das einer abgeschlossenen Synchronisierungssitzung entspricht.
-4. Wählen Sie **Details** aus, und vergewissern Sie sich, dass für **SyncDirection** der Wert **Upload** angegeben ist.
-5. Überprüfen Sie **HResult**, und vergewissern Sie sich, dass **0** angezeigt wird. Das bedeutet, dass die Synchronisierungssitzung erfolgreich war. Wenn HResult einen Wert ungleich 0 (null) aufweist, ist während der Synchronisierung ein Fehler aufgetreten. Wenn **PerItemErrorCount** größer als 0 ist, wurden einige Dateien oder Ordner nicht ordnungsgemäß synchronisiert. Es kann vorkommen, dass ein HResult von „0“ angibt, aber eine PerItemErrorCount angegeben wird, die größer als 0 ist. An diesem Punkt müssen Sie sich keine Gedanken über den PerItemErrorCount-Wert machen. Um diese Dateien kümmern wir uns später. Falls diese Fehleranzahl sehr hoch ist (Tausende von Elementen), wenden Sie sich an den Kundensupport, und bitten Sie um eine Verbindung mit der Produktgruppe für die Azure-Dateisynchronisierung, um direkte Anleitungen zur besten Vorgehensweise in den nächsten Phasen zu erhalten.
-6. Prüfen Sie, ob mehrere 9102-Ereignisse mit dem HResult-Wert „0“ in einer Zeile angezeigt werden. Dies weist darauf hin, dass die Synchronisierung für diesen Volumeklon abgeschlossen ist.
-
-### <a name="cut-over-strategy"></a>Übernahmestrategie
-
-1. Feststellen, ob die Synchronisierung von einem Volumeklon jetzt schnell genug ausgeführt wird (Abweichungen sind gering genug)
-2. Offlineschalten der StorSimple-Appliance
-3. Abschließende RoboCopy
-
-Messen Sie die Zeit, und stellen Sie fest, ob die Synchronisierung von einem aktuellen Volumeklon innerhalb eines Zeitfensters abgeschlossen werden kann, das klein genug ist und das Sie als Ausfallzeit in Ihrem System akzeptieren können.
-
-Jetzt ist es Zeit, den Benutzerzugriff auf die StorSimple-Appliance zu deaktivieren. Keine weiteren Änderungen. Die Ausfallzeit hat begonnen.
-Die Appliance muss online und verbunden bleiben, doch müssen jetzt Änderungen verhindert werden.
-
-In Phase 6 werden jegliche Abweichungen zwischen den Livedaten und dem letzten Volumeklon aufgehoben.
-
-## <a name="phase-6-a-final-robocopy"></a>Phase 6: Abschließende RoboCopy
-
-An diesem Punkt gibt es zwei Unterschiede zwischen Ihrem lokalen Windows-Server und der StorSimple 8100- oder 8600-Appliance:
-
-1. Es können Dateien vorhanden sein, die nicht synchronisiert wurden (siehe **PerItemErrors** im oben genannten Ereignisprotokoll).
-2. Die StorSimple-Appliance weist einen gefüllten Cache auf, wohingegen der Windows-Server zu diesem Zeitpunkt nur über einen Namespace ohne lokal gespeicherten Dateiinhalt verfügt.
-
-![Die Abbildung zeigt, wie der Cache des Windows-Servers auf den Stand der Appliance gebracht und mit einer abschließenden RoboCopy sichergestellt wird, dass keine Datei ausgelassen wird.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
-
-Mit einer abschließenden RoboCopy können Sie den Cache des Windows-Servers auf den Stand der Appliance bringen und sicherstellen, dass keine Datei ausgelassen wird.
-
-> [!CAUTION]
-> Es ist unbedingt erforderlich, dass der von Ihnen verwendete RoboCopy-Befehl genau wie unten beschrieben ist. Es sollen nur lokale Dateien und Dateien, die mit der Volumeklon- und Synchronisierungsmethode nicht verschoben wurden, kopiert werden. Das Problem, warum diese nicht synchronisiert wurden, kann zu einem späteren Zeitpunkt nach Abschluss der Migration gelöst werden. (Informationen finden Sie unter der [Problembehandlung für die Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing). Höchstwahrscheinlich sind nicht druckbare Zeichen in Dateinamen enthalten, die genauso gut gelöscht werden können.)
-
-RoboCopy-Befehl:
+RoboCopy hat mehrere Parameter. Nachstehend sind ein fertiger Befehl und eine Liste der Gründe für die Auswahl dieser Parameter aufgeführt:
 
 ```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Hintergrund:
@@ -418,45 +485,48 @@ Hintergrund:
    :::column-end:::
 :::row-end:::
 
-Sie sollten diesen RoboCopy-Befehl für jedes Verzeichnis auf dem Windows-Server als Ziel ausführen, das Sie mit Dateisynchronisierung in eine Azure-Datei konfiguriert haben.
+Wenn Sie den Quell- und Zielspeicherorte des RoboCopy-Befehls konfigurieren, sollten Sie die Struktur von Quelle und Ziel überprüfen, um sicherzustellen, dass sie übereinstimmen. Wenn Sie die Verzeichniszuordnungsfunktion des Migrationsauftrags verwendet haben, kann es sein, dass sich die Struktur Ihres Stammverzeichnisses von der Struktur Ihres StorSimple-Volumes unterscheidet. Ist dies der Fall, benötigen Sie möglicherweise mehrere RoboCopy-Aufträge, also einen für jedes Unterverzeichnis. Da in diesem RoboCopy-Befehl der Parameter /MIR verwendet, verschiebt er keine Dateien, die identisch sind (z. B. mehrstufige Dateien), aber wenn Sie Quell- und Zielpfad falsch erhalten, bereinigt /MIR auch Verzeichnisstrukturen auf Ihrer Windows Server/Azure-Dateifreigabe, die im StorSimple-Quellpfad nicht vorhanden sind. Daher müssen die Verzeichnisstrukturen identisch sein, damit der RoboCopy-Auftrag das beabsichtigte Ziel erreicht, also lediglich Ihre migrierten Inhalte mit den neuesten Änderungen aktualisiert, die vorgenommen wurden, während die Migration ausgeführt wurde. 
 
-Sie können mehrere dieser Befehle parallel ausführen.
-Nachdem dieser RoboCopy-Schritt abgeschlossen ist, können Sie den Benutzern und Apps den Zugriff auf den Windows-Server gestatten, wie es zuvor bei der StorSimple-Appliance der Fall war.
+Überprüfen Sie die RoboCopy-Protokolldatei, um festzustellen, ob Dateien ausgelassen wurden. Wenn Probleme vorliegen, beheben Sie diese, und führen Sie den RoboCopy-Befehl erneut aus. Heben Sie keine Bereitstellung einer StorSimple-Ressource auf, bevor Sie nicht alle Probleme für Dateien oder Ordner behoben haben, die Sie verarbeiten möchten.
 
-Überprüfen Sie die RoboCopy-Protokolldateien, um festzustellen, ob Dateien ausgelassen wurden. Falls Probleme vorliegen, können Sie diese in den meisten Fällen lösen, nachdem die Migration abgeschlossen ist und die Benutzer und Apps wieder zum Windows-Server zurückgekehrt sind. Wenn Sie Probleme beheben müssen, tun Sie dies vor Phase 7.
+Wenn Sie nicht Azure-Dateisynchronisierung dazu verwenden, die bestimmte Azure-Dateifreigabe zwischenzuspeichern, sondern sich für direkten Zugriff auf Dateifreigaben entschieden haben:
+1. [Binden Sie Ihre Azure-Dateifreigabe](storage-how-to-use-files-windows.md#mount-the-azure-file-share) als Netzwerklaufwerk auf einem lokalen Windows-Computer ein.
+1. Führen Sie den RoboCopy-Befehl zwischen Ihrer StorSimple- und der eingebundenen Azure-Dateifreigabe aus. Gibt es Dateien, die nicht kopiert werden, korrigieren Sie deren Namen auf der StorSimple-Seite, um ungültige Zeichen zu entfernen, und führen Sie RoboCopy erneut aus. Der weiter oben aufgeführte RoboCopy-Befehl kann mehrmals ausgeführt werden, ohne dass unnötige Aufrufe für StorSimple verursacht werden.
 
-Wahrscheinlich ist es erforderlich, die SMB-Freigaben auf dem Windows-Server zu erstellen, die zuvor für die StorSimple-Daten vorhanden waren. Sie können diesen Schritt vorverlegen und zu einem früheren Zeitpunkt ausführen, um hier keine Zeit zu verlieren, doch müssen Sie sicherstellen, dass vor dem jetzigen Zeitpunkt keine Änderungen an Dateien auf dem Windows-Server erfolgen.
+### <a name="user-cut-over"></a>Benutzerübernahme
 
-Wenn Sie über eine DFS-N-Bereitstellung verfügen, können Sie die DFN-Namespaces auf die neuen Speicherorte für Serverordner verweisen. Wenn keine DFS-N-Bereitstellung vorliegt und Sie der 8100/8600-Appliance lokal einen Windows-Server vorangestellt hatten, können Sie diesen Server aus der Domäne entfernen und den neuen Windows-Server mit AFS in die Domäne einbinden. Dabei geben Sie dem Server denselben Namen wie dem alten Server und dieselben Freigabenamen, damit der Übergang zum neuen Server für Benutzer, Gruppenrichtlinien oder Skripts transparent bleibt.
+Wenn Sie Azure-Dateisynchronisierung verwenden, müssen Sie wahrscheinlich die SMB-Freigaben auf dem Windows-Server mit aktivierter Azure-Dateisynchronisierung erstellen, die den Freigaben auf den StorSimple-Volumes entsprechen. Sie können diesen Schritt vorziehen und zu einem früheren Zeitpunkt ausführen, um hier keine Zeit zu verlieren, Sie müssen jedoch sicherstellen, dass vor dem jetzigen Zeitpunkt niemand Zugriff hat, um Änderungen am Windows-Server zu verursachen.
 
-## <a name="phase-7-deprovision"></a>Phase 7: Aufheben der Bereitstellung
+Wenn Sie über eine DFS-N-Bereitstellung verfügen, können Sie die DFN-Namespaces auf die neuen Speicherorte für Serverordner verweisen. Wenn Sie keine DFS-N-Bereitstellung haben und ihrer 8100/8600-Appliance lokal einen Windows-Server vorgeschaltet haben, können Sie diesen Server aus der Domäne entfernen. Binden Sie dann Ihren neuen Windows-Server mit aktivierter Azure-Dateisynchronisierung in die Domäne ein. Geben Sie im Rahmen dieses Vorgangs dem Server denselben Servernamen und dieselben Freigabenamen wie beim alten Server, sodass die Übernahme für Ihre Benutzer, Gruppenrichtlinien und Skripts transparent bleibt.
 
-In der letzten Phase haben Sie mehrere Volumeklone durchlaufen und konnten schließlich den Benutzerzugriff auf den neuen Windows-Server übertragen, nachdem Sie die StorSimple-Appliance offline geschaltet haben.
+[Übersicht über DFS-Namespaces](https://aka.ms/AzureFiles/Namespaces)
 
-Jetzt können Sie damit beginnen, die Bereitstellung nicht benötigter Ressourcen aufzuheben.
+## <a name="deprovision"></a>Aufheben der Bereitstellung
+Wenn Sie die Bereitstellung einer Ressource aufheben, haben Sie keinen Zugriff mehr auf die Konfiguration dieser Ressource und auf deren Daten. Die Aufhebung einer Bereitstellung kann nicht rückgängig gemacht werden. Führen Sie weitere Schritte also erst aus, wenn Sie sich vergewissert haben, dass die Migration abgeschlossen ist und dass keinerlei Abhängigkeiten hinsichtlich der StorSimple-Dateien, -Ordner oder -Volumesicherungen bestehen, deren Bereitstellung Sie aufheben möchten.
+
 Bevor Sie damit beginnen, wird empfohlen, die neue Bereitstellung der Azure-Dateisynchronisierung in der Produktionsumgebung eine Weile zu beobachten. Dadurch haben Sie die Möglichkeit, eventuelle Probleme beheben.
+Nachdem Sie Ihre Azure-Dateisynchronisierung-Bereitstellung einige Tage beobachtet haben, können Sie damit beginnen, die Bereitstellung von Ressourcen in folgender Reihenfolge aufzuheben:
 
-Wenn Sie zufrieden sind und die AFS-Bereitstellung mindestens einige Tage lang beobachtet haben, können Sie damit beginnen, die Bereitstellung von Ressourcen in folgender Reihenfolge aufzuheben:
-
-1. Deaktivieren Sie die Azure-VM, die verwendet wurde, um Daten mithilfe der Dateisynchronisierung von den Volumenklonen in die Azure-Dateifreigaben zu verschieben.
-2. Wechseln Sie zur Ressource für den Speichersynchronisierungsdienst in Azure, und heben Sie die Registrierung der Azure-VM auf. Dadurch wird sie aus allen Synchronisierungsgruppen entfernt.
-
-    > [!WARNING]
-    > **Vergewissern Sie sich, dass Sie den richtigen Computer auswählen.** Da Sie die Cloud-VM deaktiviert haben, sollte sie in der Liste der registrierten Server als einziger Offlineserver angezeigt werden. Sie dürfen in diesem Schritt nicht den lokalen Windows-Server auswählen, da sonst dessen Registrierung aufgehoben wird.
-
-3. Löschen Sie die Azure-VM und deren Ressourcen.
-4. Deaktivieren Sie die virtuelle StorSimple 8020-Appliance.
-5. Heben Sie die Bereitstellung aller StorSimple-Ressourcen in Azure auf.
-6. Trennen Sie die physische StorSimple-Appliance von Ihrem Rechenzentrum.
+1. Heben Sie die Bereitstellung Ihrer StorSimple Data Manager-Ressource über das Azure-Portal auf.
+   Dabei werden alle Datentransformationsdienst-Aufträge gelöscht, die Sie erstellt haben. Sie können die Kopierprotokolle nicht auf einfache Weise abrufen. Sind diese für Ihre Aufzeichnungen wichtig, müssen Sie sie abrufen, bevor Sie die Bereitstellung aufheben.
+1. Vergewissern Sie sich, dass Ihre physischen StorSimple-Appliances migriert wurden, und heben Sie dann deren Registrierungen auf.
+   Sollten Sie nicht vollständig sicher sein, dass sie migriert wurden, führen Sie keine weiteren Schritte aus. Wenn Sie die Bereitstellungen dieser Ressourcen aufheben, während sie noch erforderlich sind, können Sie weder die Daten oder deren Konfiguration wiederherstellen.
+1. Sind in einem StorSimple-Geräte-Manager keine Geräte mehr registriert, können Sie diese Geräte-Manager-Ressource entfernen.
+1. An diesem Punkt kann das StorSimple-Speicherkonto in Azure gelöscht werden. Gehen Sie erneut so vor, dass Sie die nächsten Schritte erst ausführen, nachdem Sie sich vergewissert haben, dass die Migration abgeschlossen ist und keine Abhängigkeiten von diesen Daten vorliegen.
+1. Trennen Sie die physische StorSimple-Appliance von Ihrem Rechenzentrum.
+1. Wenn die StorSimple-Appliance Ihnen gehört, können Sie sie in die Wiederverwertung geben. 
+   Ist Ihr Gerät geleast, informieren Sie den Leasinggeber, und geben Sie das Gerät entsprechend zurück.
 
 Die Migration ist abgeschlossen.
 
+> [!NOTE]
+> Haben Sie noch Fragen, oder sind Probleme aufgetreten?</br>
+> Wir helfen Ihnen weiter: AzureFilesMigration@microsoft.com
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich mit der Azure-Dateisynchronisierung vertraut. Dies gilt insbesondere für die Flexibilität von Richtlinien für das Cloudtiering.
-
-Wenn Sie im Azure-Portal oder durch frühere Ereignisse feststellen, dass einige Dateien dauerhaft nicht synchronisiert werden, lesen Sie den Leitfaden zur Problembehandlung, um diese Probleme zu beheben.
-
-* [Azure-Dateisynchronisierung – Übersicht: aka.ms/AFS](https://aka.ms/AFS)
-* [Cloudtiering](storage-sync-cloud-tiering.md) 
-* [Leitfaden zur Problembehandlung bei der Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md)
+* Machen Sie sich mit der [Azure-Dateisynchronisierung](https://aka.ms/AFS) vertraut.
+* Informationen über die Flexibilität von [Cloudtiering](storage-sync-cloud-tiering.md)-Richtlinien.
+* [Aktivieren Sie Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) in ihren Azure-Dateifreigaben, um Momentaufnahmen zu planen und Aufbewahrungszeitpläne für Sicherungen zu definieren.
+* Wenn Sie im Azure-Portal feststellen, dass einige Dateien dauerhaft nicht synchronisiert werden, lesen Sie den [Leitfaden zur Problembehandlung](storage-sync-files-troubleshoot.md), um diese Probleme zu beheben.

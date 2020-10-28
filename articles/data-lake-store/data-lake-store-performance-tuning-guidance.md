@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190249"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332517"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen1
 
@@ -25,7 +25,7 @@ Data Lake Storage Gen1 kann skaliert werden, um den erforderlichen Durchsatz fü
 
 Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen1 muss berücksichtigt werden, dass bei der Quellhardware, der Quellnetzwerkhardware und der Netzwerkkonnektivität mit Data Lake Storage Gen1 Engpässe auftreten können.
 
-![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Diagramm zu möglichen Engpässen bei Quellhardware, Quellnetzwerkhardware und Netzwerkkonnektivität mit Data Lake Storage Gen1](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Es muss sichergestellt werden, dass die Datenverschiebung durch diese Faktoren nicht beeinträchtigt wird.
 
@@ -39,15 +39,15 @@ Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Data Lake Storage G
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurieren von Datenerfassungstools für maximale Parallelisierung
 
-Nachdem Sie die Engpässe bei der Quellhardware und der Netzwerkkonnektivität behoben haben, können Sie jetzt Ihre Erfassungstools konfigurieren. In der folgenden Tabelle werden wichtige Einstellungen für verschiedene gängige Erfassungstools zusammengefasst und ausführliche Artikel zu ihrer Leistungsoptimierung angegeben. Weitere Informationen darüber, welches Tool für Ihr Szenario geeignet ist, finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
+Nachdem Sie die Engpässe bei der Quellhardware und der Netzwerkkonnektivität behoben haben, können Sie jetzt Ihre Erfassungstools konfigurieren. In der folgenden Tabelle werden wichtige Einstellungen für verschiedene gängige Erfassungstools zusammengefasst und ausführliche Artikel zu ihrer Leistungsoptimierung angegeben. Weitere Informationen darüber, welches Tool für Ihr Szenario geeignet ist, finden Sie in diesem [Artikel](./data-lake-store-data-scenarios.md).
 
 | Tool          | Einstellungen | Weitere Informationen                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics-Einheiten | [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (Mapper) | [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Link](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics-Einheiten | [Link](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (Mapper) | [Link](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [Link](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (Mapper) | [Link](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size, -m (Mapper) | [Link](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Strukturieren Ihres Datasets
 
@@ -65,11 +65,11 @@ Manchmal können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt
 
 Bei Hive- und ADLA-Workloads kann durch Partitionsbereinigung von Zeitreihendaten bewirkt werden, dass einige Abfragen nur eine Teilmenge der Daten lesen. Dies führt zu einer Leistungsverbesserung.
 
-Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer strukturierten Benennung für Dateien und Ordner. Dieses gängige Beispiel zeigt Daten, die nach Datum strukturiert sind: *\DataSet\JJJJ\MM\TT\datafile_JJJJ_MM_TT.tsv*.
+Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer strukturierten Benennung für Dateien und Ordner. Dieses gängige Beispiel zeigt Daten, die nach Datum strukturiert sind: *\DataSet\JJJJ\MM\TT\datafile_JJJJ_MM_TT.tsv* .
 
 Beachten Sie, dass Informationen zu Datum/Uhrzeit sowohl im Ordnernamen als auch im Dateinamen angegeben werden.
 
-Für Datums- und Zeitangaben ist folgendes Muster üblich: *\DataSet\JJJJ\MM\TT\HH\mm\datafile_JJJJ_MM_TT_HH_mm.tsv*.
+Für Datums- und Zeitangaben ist folgendes Muster üblich: *\DataSet\JJJJ\MM\TT\HH\mm\datafile_JJJJ_MM_TT_HH_mm.tsv* .
 
 Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen, für größere Dateien und eine angemessene Anzahl von Dateien in den einzelnen Ordnern optimiert sein.
 
@@ -77,16 +77,16 @@ Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen
 
 Aufträge lassen sich in einer der folgenden drei Kategorien unterteilen:
 
-* **CPU-intensive Aufträge**: Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf. Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.
-* **Speicherintensive Aufträge**: Solche Aufträge belegen viel Speicher, z.B. PageRank- und Echtzeitanalyseaufträge.
-* **E/A-intensive Aufträge**: Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht. Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nur Lese- und Schreibvorgänge durchgeführt werden. Ein weiteres Beispiel ist ein Datenvorbereitungsauftrag, der viele Daten liest, einige Datentransformationen durchführt und die Daten dann wieder in den Speicher schreibt.
+* **CPU-intensive Aufträge** : Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf. Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.
+* **Speicherintensive Aufträge** : Solche Aufträge belegen viel Speicher, z.B. PageRank- und Echtzeitanalyseaufträge.
+* **E/A-intensive Aufträge** : Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht. Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nur Lese- und Schreibvorgänge durchgeführt werden. Ein weiteres Beispiel ist ein Datenvorbereitungsauftrag, der viele Daten liest, einige Datentransformationen durchführt und die Daten dann wieder in den Speicher schreibt.
 
 Die folgende Anleitung gilt nur für E/A-intensive Aufträge.
 
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>Allgemeine Überlegungen zu HDInsight-Clustern
 
-* **HDInsight-Versionen**: Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
-* **Regionen**: Platzieren Sie das Data Lake Storage Gen1-Konto in der gleichen Region wie den HDInsight-Cluster.
+* **HDInsight-Versionen** : Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
+* **Regionen** : Platzieren Sie das Data Lake Storage Gen1-Konto in der gleichen Region wie den HDInsight-Cluster.
 
 Ein HDInsight-Cluster besteht aus zwei Hauptknoten und einigen Workerknoten. Jeder Workerknoten stellt eine bestimmte Anzahl von Kernen und eine bestimmte Menge an Speicher bereit, die durch den VM-Typ festgelegt wird. Bei der Ausführung eines Auftrags ist YARN der Verhandlungspartner für Ressourcen, der den verfügbaren Speicher und die Kerne zur Erstellung von Containern zuordnet. Jeder Container führt die für den Auftrag erforderlichen Aufgaben durch. Zur schnellen Verarbeitung von Aufgaben werden Container parallel ausgeführt. Aus diesem Grund wird eine bessere Leistung erzielt, indem Sie so viele Container wie möglich parallel ausführen.
 
@@ -100,7 +100,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Führen Sie Cluster mit einer größeren Anzahl von Knoten und/oder größeren VMs aus.** Bei einem größeren Cluster können Sie mehr YARN-Container ausführen, wie in der folgenden Abbildung gezeigt wird.
 
-![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![Diagramm zur Verwendung von mehr YARN-Containern](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **Verwenden Sie VMs mit mehr Netzwerkbandbreite.** Die Menge der Netzwerkbandbreite kann zu einem Engpass führen, wenn die Netzwerkbandbreite geringer ist als der Data Lake Storage Gen1-Durchsatz. Die Menge der Netzwerkbandbreite variiert je nach VM. Wählen Sie einen VM-Typ, der die größtmögliche Netzwerkbandbreite aufweist.
 
@@ -108,7 +108,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Verwenden Sie kleinere YARN-Container.** Reduzieren Sie die Größe der einzelnen YARN-Container, um mit derselben Menge an Ressourcen mehr Container zu erstellen.
 
-![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![Diagramm zur Verwendung kleinerer YARN-Container](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container erforderlich. Wenn Sie einen zu kleinen Container auswählen, treten bei Ihren Aufträgen Probleme aufgrund von unzureichendem Speicherplatz auf. Normalerweise dürfen YARN-Container nicht kleiner als 1 GB sein. Üblich sind YARN-Container mit 3 GB. Für einige Workloads benötigen Sie möglicherweise größere YARN-Container.
 
@@ -118,7 +118,7 @@ Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container e
 
 **Verwenden Sie alle verfügbaren Container.** Legen Sie die Anzahl von Aufgaben auf dieselbe oder eine höhere Anzahl der verfügbaren Container fest, damit alle Ressourcen verwendet werden.
 
-![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Diagramm zur Verwendung aller verfügbaren Container](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **Aufgaben, die mit Fehlern beendet werden, sind kostspielig.** Sind bei jeder Aufgabe große Mengen an Daten zu verarbeiten, führen fehlerhafte Aufgaben zu einer kostenintensiven Wiederholung. Aus diesem Grund empfiehlt es sich, mehr Aufgaben zu erstellen, bei denen jeweils eine kleine Datenmenge verarbeitet wird.
 
