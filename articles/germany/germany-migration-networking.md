@@ -6,13 +6,13 @@ ms.date: 10/16/2020
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
-ms.custom: bfmigrate
-ms.openlocfilehash: 7e728b238a26ddd0575e41bf2d0b10a48a14b340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.custom: bfmigrate, devx-track-azurecli
+ms.openlocfilehash: fdf32c5d43a54288bc47b55d40c0e37c8eefd1e7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126472"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735209"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 

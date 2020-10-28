@@ -6,13 +6,13 @@ ms.date: 10/16/2020
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
-ms.custom: bfmigrate
-ms.openlocfilehash: cb504500578a014b69d87e3c91bcc45b0182f688
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.custom: bfmigrate, devx-track-azurecli
+ms.openlocfilehash: c70bb5d94ca54ee50b737447863256cf7b98f31e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741603"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
