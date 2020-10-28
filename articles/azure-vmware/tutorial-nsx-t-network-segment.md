@@ -3,16 +3,16 @@ title: 'Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solutio
 description: Hier erfahren Sie, wie Sie die NSX-T-Netzwerksegmente erstellen, die für virtuelle Computer in vCenter verwendet werden.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 780cac15efc043b9ae44b77af1234adca3fec5a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254532"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367668"
 ---
 # <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution
 
-In NSX-T Manager erstellte Netzwerksegmente werden als Netzwerke für virtuelle Computer (VMs) in vCenter verwendet. Die in vCenter erstellten virtuellen Computer werden in den in NSX-T erstellten Netzwerksegmenten platziert und sind in vCenter sichtbar.
+Die in vCenter erstellten virtuellen Computer (VMs) werden in den unter NSX-T erstellten Netzwerksegmenten platziert und sind in vCenter sichtbar.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -23,7 +23,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial sind eine private Azure VMware Solution-Cloud mit Zugriff auf die vCenter- und NSX-T Manager-Verwaltungsschnittstellen erforderlich. Weitere Informationen finden Sie unter [Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure](tutorial-configure-networking.md).
+Sie müssen über eine private Azure VMware Solution-Cloud mit Zugriff auf die vCenter- und NSX-T Manager-Verwaltungsschnittstellen verfügen. Weitere Informationen finden Sie im Tutorial zum [Konfigurieren des Netzwerks](tutorial-configure-networking.md).
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>Bereitstellen eines Netzwerksegments in NSX-T
 
@@ -71,7 +71,7 @@ Für dieses Tutorial sind eine private Azure VMware Solution-Cloud mit Zugriff a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die NSX-T-Netzwerksegmente erstellt, die für virtuelle Computer in vCenter verwendet werden. Sie können nun eine [Inhaltsbibliothek zum Bereitstellen von virtuellen Computern in Azure VMware Solution erstellen](deploy-vm-content-library.md) und anschließend einen virtuellen Computer in dem Netzwerk bereitstellen, das Sie in diesem Tutorial erstellt haben.
+In diesem Tutorial haben Sie die NSX-T-Netzwerksegmente erstellt, die für virtuelle Computer in vCenter verwendet werden. Sie können jetzt eine [Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution erstellen](deploy-vm-content-library.md). Sie können auch einen virtuellen Computer in dem Netzwerk bereitstellen, das Sie in diesem Tutorial erstellt haben.
 
 Fahren Sie andernfalls mit dem nächsten Tutorial fort, um zu erfahren, wie Sie ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellen.
 

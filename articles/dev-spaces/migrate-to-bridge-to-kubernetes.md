@@ -1,16 +1,16 @@
 ---
 title: Migrieren zu Bridge to Kubernetes
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: Beschreibt den Migrationsprozess von Azure Dev Spaces zu Kubernetes
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Bridge to Kubernetes
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044699"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329797"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrieren zu Bridge to Kubernetes
 
@@ -50,10 +50,10 @@ Azure Dev Spaces und Bridge to Kubernetes haben ähnliche Features, aber untersc
 | **Benutzerfreundlichkeit** |
 | Unabhängig von Kubernetes- und Docker-Artefakten  | Nein  | Ja   |
 | Automatisches Rollback von Änderungen nach dem Debuggen  | Nein  | Ja   |
-| **Umgebungen** |
+| **Unterstützte Clienttools** |
 | Funktioniert mit Visual Studio 2019  | Ja  | Ja   |
 | Funktioniert mit Visual Studio Code  | Ja  | Ja   |
-| Funktioniert mit der CLI  | Ja  | Nein   |
+| Funktioniert mit einer CLI  | Ja  | Nein   |
 | **Betriebssystemkompatibilität** |
 | Funktioniert unter Windows 10  | Ja  | Ja  |
 | Funktioniert unter Linux  | Ja  | Ja  |
@@ -116,7 +116,7 @@ Bridge to Kubernetes bietet die Flexibilität, unabhängig von der Bereitstellun
 
 Sie können auch entwicklerspezifisches Routing mit Bridge to Kubernetes verwenden. Im Teamentwicklungsszenario von Azure Dev Spaces werden mehrere Kubernetes-Namespaces verwendet, um einen Dienst vom Rest der Anwendung zu isolieren, indem das Konzept von übergeordneten und untergeordneten Namespaces verwendet wird. Bridge to Kubernetes bietet die gleiche Funktion, aber mit verbesserten Leistungsmerkmalen und innerhalb desselben Anwendungsnamespace.
 
-Sowohl Bridge to Kubernetes als auch Azure Dev Spaces erfordert, dass HTTP-Header vorhanden sind und in der gesamten Anwendung verteilt werden. Wenn Sie die Anwendung bereits so konfiguriert haben, dass die Headerverteilung für Azure Dev Spaces behandelt wird, muss der Header aktualisiert werden. Aktualisieren Sie für den Übergang von Azure Dev Spaces zu Bridge to Kubernetes den konfigurierten Header von *azds-route-as* auf *kubernetes-route-as*.
+Sowohl Bridge to Kubernetes als auch Azure Dev Spaces erfordert, dass HTTP-Header vorhanden sind und in der gesamten Anwendung verteilt werden. Wenn Sie die Anwendung bereits so konfiguriert haben, dass die Headerverteilung für Azure Dev Spaces behandelt wird, muss der Header aktualisiert werden. Aktualisieren Sie für den Übergang von Azure Dev Spaces zu Bridge to Kubernetes den konfigurierten Header von *azds-route-as* auf *kubernetes-route-as* .
 
 ## <a name="evaluate-bridge-to-kubernetes"></a>Auswerten von Bridge to Kubernetes
 

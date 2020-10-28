@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617688"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331905"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer zu einer verwalteten Azure SQL-Instanz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,32 +67,32 @@ In dieser Schnellstartanleitung gilt Folgendes:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Öffnen Sie die Ressourcengruppe, in der Sie den Gateway für das virtuelle Netzwerk erstellt haben, und öffnen Sie die Gatewayressource für das virtuelle Netzwerk.
-3. Klicken Sie auf **Punkt-zu-Standort-Konfiguration** und dann auf **VPN-Client herunterladen**.
+3. Klicken Sie auf **Punkt-zu-Standort-Konfiguration** und dann auf **VPN-Client herunterladen** .
 
     ![VPN-Client herunterladen](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. Extrahieren Sie auf Ihrem lokalen Clientcomputer die Dateien aus der ZIP-Datei, und öffnen Sie dann den Ordner mit den extrahierten Dateien.
-5. Öffnen Sie den Ordner **WindowsAmd64** und dann die Datei **VpnClientSetupAmd64.exe**.
-6. Wenn Sie die Nachricht **Windows hat Ihren PC geschützt** erhalten, klicken Sie auf **Weitere Informationen** und dann auf **Trotzdem ausführen**.
+5. Öffnen Sie den Ordner **WindowsAmd64** und dann die Datei **VpnClientSetupAmd64.exe** .
+6. Wenn Sie die Nachricht **Windows hat Ihren PC geschützt** erhalten, klicken Sie auf **Weitere Informationen** und dann auf **Trotzdem ausführen** .
 
     ![Installieren des VPN-Clients](./media/point-to-site-p2s-configure/vpn-client-defender.png)
-7. Klicken Sie im Dialogfeld für die Benutzerkontensteuerung auf **Ja**, um den Vorgang fortzusetzen.
+7. Klicken Sie im Dialogfeld für die Benutzerkontensteuerung auf **Ja** , um den Vorgang fortzusetzen.
 8. Wählen Sie in dem Dialogfeld, das auf Ihr virtuelles Netzwerk verweist, **Ja** aus, um den VPN-Client für Ihr virtuelles Netzwerk zu installieren.
 
 ## <a name="connect-to-the-vpn-connection"></a>Verbinden mit der VPN-Verbindung
 
-1. Wechseln Sie auf Ihrem lokalen Clientcomputer unter **Netzwerk und Internet** zu **VPN**, und wählen Sie das virtuelle Netzwerk Ihrer verwalteten SQL-Instanz aus, um eine Verbindung zu diesem virtuellen Netzwerk herzustellen. In der folgenden Abbildung heißt das virtuelle Netzwerk**MyNewVNet**.
+1. Wechseln Sie auf Ihrem lokalen Clientcomputer unter **Netzwerk und Internet** zu **VPN** , und wählen Sie das virtuelle Netzwerk Ihrer verwalteten SQL-Instanz aus, um eine Verbindung zu diesem virtuellen Netzwerk herzustellen. In der folgenden Abbildung heißt das virtuelle Netzwerk **MyNewVNet** .
 
     ![VPN-Verbindung](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Wählen Sie **Verbinden**.
-3. Klicken Sie im Dialogfeld auf **Verbinden**.
+2. Wählen Sie **Verbinden** .
+3. Klicken Sie im Dialogfeld auf **Verbinden** .
 
-    ![VPN-Verbindung](./media/point-to-site-p2s-configure/vpn-connection2.png)  
-4. Klicken Sie in der Eingabeaufforderung, die besagt, dass der Verbindungs-Manager zum Aktualisieren Ihrer Routingtabelle erhöhte Rechte benötigt, auf **Weiter**.
-5. Klicken Sie im Dialogfeld für die Benutzerkontensteuerung auf **Ja**, um den Vorgang fortzusetzen.
+    ![Screenshot mit hervorgehobener Schaltfläche „Verbinden“](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+4. Klicken Sie in der Eingabeaufforderung, die besagt, dass der Verbindungs-Manager zum Aktualisieren Ihrer Routingtabelle erhöhte Rechte benötigt, auf **Weiter** .
+5. Klicken Sie im Dialogfeld für die Benutzerkontensteuerung auf **Ja** , um den Vorgang fortzusetzen.
 
    Sie haben eine VPN-Verbindung zum virtuellen Netzwerk Ihrer verwalteten SQL-Instanz hergestellt.
 
-    ![VPN-Verbindung](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![Screenshot mit hervorgehobener Meldung „Verbunden“, nachdem Sie die Verbindung hergestellt haben](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>Herstellen einer Verbindung mit SSMS
 

@@ -3,12 +3,12 @@ title: Verwenden eines Event Hubs aus der Apache Kafka-App – Azure Event Hubs 
 description: Dieser Artikel enthält Informationen zur Azure Event Hubs-Unterstützung für Apache Kafka.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 5c49f8f87d8d399cda33a332f7464ed340ae3a0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761497"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327296"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen
 Event Hubs bietet einen mit den Apache Kafka®-Producer- und -Consumer-APIs kompatiblen Endpunkt, der von den meisten vorhandenen Apache Kafka-Clientanwendungen als Alternative zum Ausführen Ihres eigenen Apache Kafka-Clusters verwendet werden kann. Event Hubs unterstützt Apache Kafka-Producer- und -Consumer-API-Clients mit Version 1.0 oder höher.
@@ -60,7 +60,7 @@ Azure Event Hubs bietet mehrere Optionen, um den Zugriff auf Ihre sicheren Resso
 - Shared Access Signature (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-Event Hubs ist in Azure Active Directory (Azure AD) integriert, das einen mit **OAuth 2.0** kompatiblen zentralisierten Autorisierungsserver bereitstellt. Mit Azure AD können Sie rollenbasierte Zugriffssteuerung (RBAC) verwenden, um Ihren Clientidentitäten fein differenzierte Berechtigungen zu erteilen. Sie können dieses Feature in Kombination mit Ihren Kafka-Clients verwenden, indem Sie **SASL_SSL** als Protokoll und **OAUTHBEARER** als Mechanismus angeben. Details zu den Azure-Rollen und -Ebenen, die den Umfang des Zugriffs definieren, finden Sie unter [Autorisieren des Zugriffs mit Azure AD](authorize-access-azure-active-directory.md).
+Event Hubs ist in Azure Active Directory (Azure AD) integriert, das einen mit **OAuth 2.0** kompatiblen zentralisierten Autorisierungsserver bereitstellt. Mit Azure AD können Sie rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) verwenden, um Ihren Clientidentitäten fein differenzierte Berechtigungen zu erteilen. Sie können dieses Feature in Kombination mit Ihren Kafka-Clients verwenden, indem Sie **SASL_SSL** als Protokoll und **OAUTHBEARER** als Mechanismus angeben. Details zu den Azure-Rollen und -Ebenen, die den Umfang des Zugriffs definieren, finden Sie unter [Autorisieren des Zugriffs mit Azure AD](authorize-access-azure-active-directory.md).
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -86,7 +86,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 #### <a name="samples"></a>Beispiele 
 Ein **Tutorial** mit schrittweisen Anleitungen zum Erstellen eines Event Hubs und den Zugriff darauf mithilfe von SAS oder OAuth finden Sie unter [Schnellstart: Datenstreaming mit Event Hubs mithilfe des Kafka-Protokolls](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
-Weitere **Beispiele**, die die Verwendung von OAuth mit Event Hubs für Kafka veranschaulichen, finden Sie unter [Beispiele auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
+Weitere **Beispiele** , die die Verwendung von OAuth mit Event Hubs für Kafka veranschaulichen, finden Sie unter [Beispiele auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
 
 ## <a name="other-event-hubs-features"></a>Weitere Event Hubs-Funktionen 
 
@@ -128,7 +128,7 @@ Als eigenständige Lösung und ohne ksqlDB verfügt Kafka Streams über weniger 
 
 - [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md)
 - [Azure Synapse Analytics (über Event Hubs Capture)](../event-grid/event-grid-event-hubs-integration.md)
-- [Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/databricks-stream-from-eventhubs)
+- [Azure Databricks](/azure/databricks/scenarios/databricks-stream-from-eventhubs)
 - [Apache Samza](https://samza.apache.org/learn/documentation/latest/connectors/eventhubs)
 - [Apache Storm](event-hubs-storm-getstarted-receive.md)
 - [Apache Spark](event-hubs-kafka-spark-tutorial.md)

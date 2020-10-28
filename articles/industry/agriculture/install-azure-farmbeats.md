@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479558"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330477"
 ---
 # <a name="install-azure-farmbeats"></a>Installieren von Azure FarmBeats
 
@@ -87,13 +87,13 @@ Die ersten beiden Berechtigungen sind zum [Erstellen der AAD-Anwendung](#create-
 
 Die Person, die die FarmBeats-Installation vom Marketplace aus ausführt, muss ein Besitzer der Ressourcengruppe sein, in der FarmBeats installiert wird. Bei Abonnementbesitzern erfolgt dies automatisch, wenn die Ressourcengruppe erstellt wird. Erstellen Sie die Ressourcengruppe vorab für andere, und bitten Sie den Besitzer des Abonnements, Sie zu einem Besitzer der Ressourcengruppe zu machen.
 
-Sie können Ihre Zugriffsberechtigungen im Azure-Portal überprüfen, indem Sie die Anweisungen zur [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/check-access) befolgen.
+Sie können Ihre Zugriffsberechtigungen im Azure-Portal überprüfen, indem Sie die Anweisungen zur [rollenbasierten Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/role-based-access-control/check-access) befolgen.
 
 ### <a name="decide-subscription-and-region"></a>Auswählen des Abonnements und der Region
 
 Sie benötigen die Azure-Abonnement-ID und die Region, in der Sie Azure FarmBeats installieren möchten. Wählen Sie eine der Regionen aus, die im Abschnitt [Unterstützte Regionen](#regions-supported) aufgelistet sind.
 
-Notieren Sie sich die **Azure-Abonnement-ID** und die **Azure-Region**.
+Notieren Sie sich die **Azure-Abonnement-ID** und die **Azure-Region** .
 
 ### <a name="create-an-aad-application"></a>Erstellen einer AAD-Anwendung
 
@@ -124,11 +124,11 @@ Führen Sie die folgenden Schritte in einer Cloud Shell-Instanz unter Verwendung
 
 4. Das Skript fragt nach den folgenden drei Eingaben:
 
-    - **Name der FarmBeats-Website**: Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-website-name>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden. Die Swagger-APIs befinden sich unter „https://\<FarmBeats-website-name>-api.azurewebsites.net“.
+    - **Name der FarmBeats-Website** : Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-website-name>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden. Die Swagger-APIs befinden sich unter „https://\<FarmBeats-website-name>-api.azurewebsites.net“.
 
-    - **Azure-Anmelde-ID**: Geben Sie die Azure-Anmelde-ID für den Benutzer an, den Sie als Administrator von FarmBeats hinzufügen möchten. Dieser Benutzer kann dann anderen Benutzern Zugriff auf FarmBeats-Webanwendungen gewähren. Die Anmelde-ID hat im Allgemeinen die Form john.doe@domain.com. Der Azure-UPN wird ebenfalls unterstützt.
+    - **Azure-Anmelde-ID** : Geben Sie die Azure-Anmelde-ID für den Benutzer an, den Sie als Administrator von FarmBeats hinzufügen möchten. Dieser Benutzer kann dann anderen Benutzern Zugriff auf FarmBeats-Webanwendungen gewähren. Die Anmelde-ID hat im Allgemeinen die Form john.doe@domain.com. Der Azure-UPN wird ebenfalls unterstützt.
 
-    - **Abonnement-ID**: Dies ist die ID des Abonnements, in dem Sie Azure-FarmBeats installieren möchten.
+    - **Abonnement-ID** : Dies ist die ID des Abonnements, in dem Sie Azure-FarmBeats installieren möchten.
 
 5. Die Ausführung des AAD-Skripts dauert etwa 2 Minuten und gibt die Werte sowohl auf dem Bildschirm als auch in eine JSON-Datei im gleichen Verzeichnis aus. Wenn Sie das Skript von jemand anderem haben ausführen lassen, bitten Sie diese Person, die Ausgabe mit Ihnen zu teilen.
 
@@ -142,7 +142,7 @@ Führen Sie folgende Schritte durch, um ein kostenloses Sentinel-Konto zu erstel
 2. Stellen Sie die erforderlichen Angaben (Vorname, Nachname, Benutzername, Kennwort und E-Mail-ID) bereit und füllen Sie das Formular aus.
 3. Ein Link für die Überprüfung wird an die registrierte E-Mail-ID gesendet. Wählen Sie den in der E-Mail angegebenen Link und schließen Sie die Überprüfung ab.
 
-Der Registrierungsvorgang ist abgeschlossen. Notieren Sie sich Ihren **Sentinel-Benutzernamen** und Ihr **Sentinel-Kennwort**, sobald die Überprüfung ebenfalls abgeschlossen ist.
+Der Registrierungsvorgang ist abgeschlossen. Notieren Sie sich Ihren **Sentinel-Benutzernamen** und Ihr **Sentinel-Kennwort** , sobald die Überprüfung ebenfalls abgeschlossen ist.
 
 ## <a name="install"></a>Installieren
 
@@ -150,9 +150,9 @@ Sie können nun FarmBeats installieren. Folgen Sie den Schritten unten, um die I
 
 1. Melden Sie sich beim Azure-Portal an. Wählen Sie oben rechts Ihr Konto aus, und wechseln Sie zum Azure AD-Mandanten, in dem Sie Azure FarmBeats installieren möchten.
 
-2. Wechseln Sie innerhalb des Portals zum Azure Marketplace und suchen Sie dort nach **Azure FarmBeats**.
+2. Wechseln Sie innerhalb des Portals zum Azure Marketplace und suchen Sie dort nach **Azure FarmBeats** .
 
-3. Es wird ein neues Fenster mit einer Übersicht über Azure FarmBeats angezeigt. Klicken Sie auf **Erstellen**.
+3. Es wird ein neues Fenster mit einer Übersicht über Azure FarmBeats angezeigt. Klicken Sie auf **Erstellen** .
 
 4. Es wird ein neues Fenster angezeigt. Schließen Sie den Registrierungsvorgang ab, indem Sie das richtige Abonnement, die richtige Ressourcengruppe und den richtigen Speicherort auswählen, an dem Sie Azure FarmBeats installieren möchten.
 
@@ -162,7 +162,7 @@ Sie können nun FarmBeats installieren. Folgen Sie den Schritten unten, um die I
 
 6. Kopieren Sie die einzelnen Einträge aus der Ausgabe des [AAD-Skripts](#create-an-aad-application) in die Eingaben im AAD-Anwendungsabschnitt.
 
-7. Geben Sie den Benutzernamen und das Kennwort für das [Sentinel-Konto](#create-sentinel-account) im Abschnitt für das Sentinel-Konto ein. Klicken Sie auf **Weiter**, um zur Registerkarte **Überprüfen + erstellen** zu gelangen.
+7. Geben Sie den Benutzernamen und das Kennwort für das [Sentinel-Konto](#create-sentinel-account) im Abschnitt für das Sentinel-Konto ein. Klicken Sie auf **Weiter** , um zur Registerkarte **Überprüfen + erstellen** zu gelangen.
 
     ![Registerkarte „Abhängigkeiten“](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
@@ -202,9 +202,9 @@ Der Pfad zur Datei „input.json“ ist optional. Wenn keine Angabe erfolgt, fra
 
 Führen Sie die folgenden Schritte aus, um den Azure FarmBeats-Datenhub oder -Accelerator zu deinstallieren:
 
-1. Melden Sie sich beim Azure-Portal an und **löschen Sie die Ressourcengruppen**, in denen diese Komponenten installiert sind.
+1. Melden Sie sich beim Azure-Portal an und **löschen Sie die Ressourcengruppen** , in denen diese Komponenten installiert sind.
 
-2. Wechseln Sie zu Azure Active Directory und löschen Sie die mit der Azure FarmBeats-Installation verknüpfte **Azure AD-Anwendung**.
+2. Wechseln Sie zu Azure Active Directory und löschen Sie die mit der Azure FarmBeats-Installation verknüpfte **Azure AD-Anwendung** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

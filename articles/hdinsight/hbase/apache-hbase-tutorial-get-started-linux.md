@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958360"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370320"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
 
@@ -50,14 +50,14 @@ Im folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um ei
     |Resource group|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
     |Position|Geben Sie den Standort der Ressourcengruppe an. |
     |ClusterName|Geben Sie einen Namen für den HBase-Cluster ein.|
-    |Clusteranmeldename und Kennwort|Der Standardanmeldename lautet **admin**.|
-    |SSH-Benutzername und Kennwort|Der Standardbenutzername lautet **sshuser**.|
+    |Clusteranmeldename und Kennwort|Der Standardanmeldename lautet **admin** .|
+    |SSH-Benutzername und Kennwort|Der Standardbenutzername lautet **sshuser** .|
 
     Andere Parameter sind optional.  
 
     Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Storage-Konto. Nach dem Löschen eines Clusters verbleiben die Daten im Speicherkonto. Zur Bildung des Standardnamens für das Speicherkonto des Clusters wird „store“ an den Clusternamen angehängt. Er ist im Variablenabschnitt der Vorlage hartcodiert.
 
-3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus. Das Erstellen eines Clusters dauert ca. 20 Minuten.
+3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** , und wählen Sie anschließend **Kaufen** aus. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
 Nachdem Sie den HBase-Cluster gelöscht haben, können Sie im gleichen Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen. Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
 
@@ -207,9 +207,51 @@ Sie können Daten in HBase-Tabellen mithilfe von [Apache Hive](https://hive.apac
 
 1. Verwenden Sie zum Beenden Ihrer SSH-Verbindung den Befehl `exit`.
 
+### <a name="separate-hive-and-hbase-clusters"></a>Separate Hive- und HBase-Cluster
+
+Die Hive-Abfrage für den Zugriff auf HBase-Daten muss nicht aus dem HBase-Cluster ausgeführt werden. Alle Cluster, die über Hive verfügen (einschließlich Spark, Hadoop, HBase oder Interactive Query), können zum Abfragen von HBase-Daten verwendet werden, sofern die folgenden Schritte ausgeführt wurden:
+
+1. Beide Cluster müssen an dasselbe virtuelle Netzwerk und Subnetz angefügt werden.
+2. Kopieren Sie `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` von den Hauptknoten des HBase-Clusters auf die Hauptknoten des Hive-Clusters.
+
+### <a name="secure-clusters"></a>Sichere Cluster
+
+HBase-Daten können auch über Hive abgefragt werden, indem HBase mit aktiviertem Enterprise-Sicherheitspaket (ESP) verwendet wird: 
+
+1. Bei Verwendung eines Musters mit mehreren Clustern muss für beide Cluster ESP aktiviert sein. 
+2. Stellen Sie sicher, dass dem Benutzer `hive` Berechtigungen zum Zugreifen auf die HBase-Daten über das Apache Ranger-Plug-In von HBase gewährt werden, um für Hive das Abfragen der HBase-Daten zu ermöglichen.
+3. Bei Verwendung von separaten ESP-fähigen Clustern muss der Inhalt von `/etc/hosts` von den Hauptknoten des HBase-Clusters an den Ordner `/etc/hosts` der Hauptknoten des Hive-Clusters angefügt werden. 
+> [!NOTE]
+> Nachdem beide Cluster skaliert wurden, muss `/etc/hosts` erneut angefügt werden.
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>Verwenden der HBase-REST-APIs mit Curl
 
 Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
+
+1. Fügen Sie das folgende benutzerdefinierte Startskript im Abschnitt **Skriptaktion** hinzu, um HBase-REST-APIs im HDInsight-Cluster zu aktivieren. Sie können das Startskript beim Erstellen des Clusters oder nach Abschluss des Vorgangs hinzufügen. Wählen Sie unter **Knotentyp** die Option **Regionsserver** aus, um sicherzustellen, dass das Skript nur auf HBase-Regionsservern ausgeführt wird.
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. Legen Sie die Umgebungsvariable fest, um für Benutzerfreundlichkeit zu sorgen. Bearbeiten Sie die unten angegebenen Befehle, indem Sie `MYPASSWORD` durch das Kennwort für die Anmeldung am Cluster ersetzen. Ersetzen Sie `MYCLUSTERNAME` durch den Namen Ihres HBase-Clusters. Geben Sie anschließend die Befehle ein.
 
@@ -290,7 +332,7 @@ HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über di
 
 1. Wählen Sie im linken Menü **HBase** aus.
 
-1. Klicken Sie am oberen Rand der Seite auf **Quicklinks**, zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche**.  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
+1. Klicken Sie am oberen Rand der Seite auf **Quicklinks** , zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche** .  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
 
    ![Benutzeroberfläche von HDInsight Apache HBase HMaster](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -310,7 +352,7 @@ Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivie
 1. Geben Sie oben im **Suchfeld** den Suchbegriff **HDInsight** ein.
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ).
-1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
+1. Klicken Sie auf **Löschen** . Klicken Sie auf **Ja** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

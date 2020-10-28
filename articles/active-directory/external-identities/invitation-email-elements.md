@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439847"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340604"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
 Einladungs-E-Mails sind eine wichtige Komponente zum Onboarding von Partnern als Benutzer von B2B-Zusammenarbeit in Azure AD. Auch wenn es [nicht erforderlich ist, eine E-Mail zu senden, um eine Person mit B2B Collaboration einzuladen](add-user-without-invite.md), erhalten die Benutzer auf diese Weise alle benötigten Informationen, um entscheiden zu können, ob sie Ihre Einladung akzeptieren. Außerdem erhalten sie einen Link, auf den sie in Zukunft zurückgreifen können, wenn sie zu Ihren Ressourcen zurückkehren möchten.
 
 ![Screenshot, der die B2B-Einladungs-E-Mail zeigt](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> Diese neue E-Mail-Vorlage wird derzeit noch für alle Mandanten eingeführt, sodass einige Mandanten immer noch ein älteres Design verwenden. Ab Ende Mai 2020 wird diese Vorlage in Einladungen aller Mandanten verwendet.
 
 ## <a name="explaining-the-email"></a>Erläuterungen zur E-Mail
 
@@ -52,17 +49,11 @@ Die E-Mail beginnt mit einer kurzen Warnung für den Benutzer über Phishing und
 
 ![Abbildung der Phishingwarnung in der E-Mail](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Informationen zum einladenden Benutzer
+### <a name="inviters-information-and-invitation-message"></a>Informationen und Einladungsnachricht des einladenden Benutzers
 
-Die E-Mail enthält Informationen zu der einladenden Person und der Organisation, von der die Einladung gesendet wird. Dies umfasst den Namen und die E-Mail-Adresse des Absenders sowie den Namen und die primäre Domäne, die der Organisation zugeordnet sind. Alle diese Informationen sollen der eingeladenen Person dabei helfen, eine fundierte Entscheidung zum Akzeptieren der Einladung zu treffen.
+Die E-Mail enthält den Namen und die primäre Domäne, die der Organisation zugeordnet sind, die Absender der Einladung ist. Diese Informationen sollen der eingeladenen Person eine fundierte Entscheidung ermöglichen, ob sie die Einladung akzeptieren soll. Wenn die einladende Person beim [Einladen eines Gastbenutzers in das Verzeichnis, die Gruppe oder die App](add-users-administrator.md) oder bei [Verwendung der Einladungs-API](customize-invitation-api.md) eine Nachricht einschließt, wird diese im Hauptabschnitt der E-Mail hervorgehoben. Außerdem sind der Name der einladenden Person und ihr Profilbild enthalten, sofern sie eines festgelegt hat. Die Meldung selbst ist ein Textbereich, daher werden aus Sicherheitsgründen keine HTML-Tags verarbeitet.
 
-![Abbildung der Informationen der einladenden Person in der E-Mail](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>Einladungsnachricht
-
-Wenn die einladende Person beim [Einladen eines Gastbenutzers in das Verzeichnis, die Gruppe oder die App](add-users-administrator.md) oder bei [Verwendung der Einladungs-API](customize-invitation-api.md) eine Nachricht einschließt, wird diese im Hauptabschnitt der E-Mail hervorgehoben. Außerdem sind der Name der einladenden Person und ihr Profilbild enthalten, sofern sie eines festgelegt hat. Die Meldung selbst ist ein Textbereich, daher werden aus Sicherheitsgründen keine HTML-Tags verarbeitet.
-
-![Abbildung der Einladungsnachricht in der E-Mail](media/invitation-email-elements/invitation-message.png)
+![Abbildung der Einladungsnachricht in der E-Mail](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>Schaltfläche „Akzeptieren“ und Umleitungs-URL
 
@@ -94,10 +85,10 @@ Sie können als Gastbenutzer die folgenden Schritte ausführen, um die von Ihnen
 
 Die den Gastbenutzern in der Einladungs-E-Mail angezeigte Sprache richtet sich nach den folgenden Einstellungen. Diese Einstellungen sind in der Reihenfolge ihres Auftretens aufgeführt. Wenn eine Einstellung nicht konfiguriert ist, bestimmt die nächste Einstellung in der Liste die Sprache.
 
-- Die **messageLanguage**-Eigenschaft des [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0)-Objekts, wenn die API zum Erstellen von Einladungen verwendet wird
--   Die **preferredLanguage**-Eigenschaft, die im [user-Objekt](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) des Gasts angegeben ist
--   Die **Benachrichtigungssprache**, die in den Eigenschaften des Stammmandanten des Gastbenutzers (nur bei Azure AD-Mandanten) festgelegt wurde
--   Die **Benachrichtigungssprache**, die in den Eigenschaften des Ressourcenmandanten festgelegt ist
+- Die **messageLanguage** -Eigenschaft des [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0)-Objekts, wenn die API zum Erstellen von Einladungen verwendet wird
+-   Die **preferredLanguage** -Eigenschaft, die im [user-Objekt](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) des Gasts angegeben ist
+-   Die **Benachrichtigungssprache** , die in den Eigenschaften des Stammmandanten des Gastbenutzers (nur bei Azure AD-Mandanten) festgelegt wurde
+-   Die **Benachrichtigungssprache** , die in den Eigenschaften des Ressourcenmandanten festgelegt ist
 
 Wenn keine dieser Einstellungen konfiguriert wurde, wird als Standardsprache „Englisch (USA)“ verwendet.
 

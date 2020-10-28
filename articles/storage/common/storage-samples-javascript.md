@@ -3,17 +3,17 @@ title: Azure Storage-Beispiele mit JavaScript | Microsoft-Dokumentation
 description: Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Beispiele für erste Schritte mit Blobs, Warteschlangen, Tabellen und Dateien unter Verwendung der Speicherclientbibliotheken für JavaScript/Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/19/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: 208e06e9bd8fcf26674a11f79d2bd6878ca4f633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c92d6595d2db3f9fb01ee5ddc3669a0564bab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331555"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359746"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage-Beispiele mit JavaScript-Clientbibliotheken (v12)
 
@@ -428,4 +428,5 @@ Weitere Informationen zu Beispielen für andere Sprachen:
 * .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
 * Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
 * Python: [Azure Storage-Beispiele mit Python](storage-samples-python.md)
+* C++: [Azure Storage-Beispiele mit C++](storage-samples-c-plus-plus.md)
 * Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)
