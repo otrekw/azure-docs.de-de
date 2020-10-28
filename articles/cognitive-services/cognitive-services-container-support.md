@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e6a01192068617dcdb52e6160ffcf633d099bdf1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999683"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677436"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -45,7 +45,7 @@ Cognitive Services-Ressourcen sind in [Microsoft Azure](https://azure.microsoft.
 
 ## <a name="features-and-benefits"></a>Features und Vorteile
 
-- **Unveränderliche Infrastruktur**: Ermöglichen Sie es den DevOps-Teams, einen konsistenten und zuverlässigen Satz bekannter Systemparameter zu nutzen und sich gleichzeitig an Änderungen anzupassen. Container bieten die Flexibilität, sich innerhalb eines vorhersehbaren Ökosystems zu bewegen und Konfigurationsabweichungen zu vermeiden.
+- **Unveränderliche Infrastruktur** : Ermöglichen Sie es den DevOps-Teams, einen konsistenten und zuverlässigen Satz bekannter Systemparameter zu nutzen und sich gleichzeitig an Änderungen anzupassen. Container bieten die Flexibilität, sich innerhalb eines vorhersehbaren Ökosystems zu bewegen und Konfigurationsabweichungen zu vermeiden.
 - **Kontrolle über Daten:** Wählen Sie aus, wo Ihre Daten von Cognitive Services verarbeitet werden. Dies kann wichtig sein, wenn Sie keine Daten an die Cloud senden können, aber Zugriff auf Cognitive Services-APIs benötigen. Einheitliche Unterstützung in Hybridumgebungen – für Daten, Verwaltung, Identität und Sicherheit.
 - **Kontrolle über Modellaktualisierungen:** Flexibilität bei der Versionsverwaltung und Aktualisierung der in den Lösungen eingesetzten Modelle.
 - **Portable Architektur:** Ermöglicht die Erstellung einer portablen Anwendungsarchitektur, die in Azure, lokal und am Edge eingesetzt werden kann. Container können direkt für [Azure Kubernetes Service](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml) oder einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](/azure-stack/operator) bereitgestellt werden. Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
@@ -58,19 +58,19 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 
 | Dienst | Unterstützter Tarif | Container | BESCHREIBUNG |
 |--|--|--|--|
-| [Anomalieerkennung][ad-containers] | F0, S0 | **Anomalieerkennung** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen.<br>[Zugriff anfordern][request-access] |
-| [Maschinelles Sehen][cv-containers] | F0, S1 | **Read** OCR ([Bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Mit dem Read OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](./computer-vision/concept-recognizing-text.md).<br>[Zugriff anfordern][request-access] |
+| [Anomalieerkennung][ad-containers] | F0, S0 | **Anomalieerkennung** ( [Abbildung](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen.<br>[Zugriff anfordern][request-access] |
+| [Maschinelles Sehen][cv-containers] | F0, S1 | **Read** OCR ( [Bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Mit dem Read OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](./computer-vision/concept-recognizing-text.md).<br>[Zugriff anfordern][request-access] |
 | [Gesichtserkennung][fa-containers] | F0, S0 | **Gesichtserkennung** | Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren. |
 | [Formularerkennung][fr-containers] | F0, S0 | **Formularerkennung** | Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren. |
-| [LUIS][lu-containers] | F0, S0 | **LUIS** ([Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern. |
-| [Spracherkennungsdienst-API][sp-containers-stt] | F0, S0 | **Spracherkennung** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Wandelt fortlaufende Sprache in Echtzeit in Text um. |
-| [Spracherkennungsdienst-API][sp-containers-cstt] | F0, S0 | **Benutzerdefinierte Spracherkennung** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Wandelt fortlaufende Sprache in Echtzeit in Text um und verwendet dazu ein benutzerdefiniertes Modell. |
-| [Spracherkennungsdienst-API][sp-containers-tts] | F0, S0 | **Sprachsynthese** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Konvertiert Text in natürlich klingende Sprache. |
-| [Spracherkennungsdienst-API][sp-containers-ctts] | F0, S0 | **Benutzerdefinierte Sprachsynthese** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Konvertiert Text in natürlich klingende Sprache und verwendet dazu ein benutzerdefiniertes Modell. |
-| [Spracherkennungsdienst-API][sp-containers-ntts] | F0, S0 | **Neuronale Sprachsynthese** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. |
-| [Textanalyse][ta-containers-keyphrase] | F0, S | **Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
-| [Textanalyse][ta-containers-language] | F0, S | **Sprachenerkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. |
-| [Textanalyse][ta-containers-sentiment] | F0, S | **Standpunktanalyse v3** ([Image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ*) zurückgegeben. |
+| [LUIS][lu-containers] | F0, S0 | **LUIS** ( [Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern. |
+| [Spracherkennungsdienst-API][sp-containers-stt] | F0, S0 | **Spracherkennung** ( [Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Wandelt fortlaufende Sprache in Echtzeit in Text um. |
+| [Spracherkennungsdienst-API][sp-containers-cstt] | F0, S0 | **Benutzerdefinierte Spracherkennung** ( [Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Wandelt fortlaufende Sprache in Echtzeit in Text um und verwendet dazu ein benutzerdefiniertes Modell. |
+| [Spracherkennungsdienst-API][sp-containers-tts] | F0, S0 | **Sprachsynthese** ( [Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Konvertiert Text in natürlich klingende Sprache. |
+| [Spracherkennungsdienst-API][sp-containers-ctts] | F0, S0 | **Benutzerdefinierte Sprachsynthese** ( [Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Konvertiert Text in natürlich klingende Sprache und verwendet dazu ein benutzerdefiniertes Modell. |
+| [Spracherkennungsdienst-API][sp-containers-ntts] | F0, S0 | **Neuronale Sprachsynthese** ( [Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. |
+| [Textanalyse][ta-containers-keyphrase] | F0, S | **Schlüsselbegriffserkennung** ( [Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
+| [Textanalyse][ta-containers-language] | F0, S | **Sprachenerkennung** ( [Bild](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. |
+| [Textanalyse][ta-containers-sentiment] | F0, S | **Standpunktanalyse v3** ( [Image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ* ) zurückgegeben. |
 | [Textanalyse][ta-containers-health] | F0, S | **Text Analytics for Health** | Extraktion und Bezeichnung medizinischer Informationen aus unstrukturiertem klinischem Text. |
 | [Räumliche Analyse][spa-containers] | S0 | **Räumliche Analyse** | Analysiert in Echtzeit gestreamte Videodaten, um räumliche Bezüge zwischen Personen, ihre Bewegungen und ihre Interaktionen mit Objekten in der physischen Umgebung zu verstehen. |
 

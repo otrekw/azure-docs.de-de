@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776492"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678361"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akzeptieren von Fragevorschlägen des aktiven Lernens in der Wissensdatenbank
 
@@ -22,7 +22,7 @@ Aktives Lernen ändert die Wissensdatenbank oder den Suchdienst, nachdem Sie den
 
 ## <a name="turn-on-active-learning"></a>Aktivieren des Features für aktives Lernen
 
-Damit vorgeschlagene Fragen angezeigt werden, müssen Sie für Ihre QnA Maker-Ressource [aktives Lernen aktivieren](use-active-learning.md).
+Damit vorgeschlagene Fragen angezeigt werden, müssen Sie für Ihre QnA Maker-Ressource [aktives Lernen aktivieren](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions).
 
 ## <a name="view-suggested-questions"></a>Anzeigen vorgeschlagener Fragen
 

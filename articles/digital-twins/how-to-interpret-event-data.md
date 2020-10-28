@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587632"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461021"
 ---
 # <a name="understand-event-data"></a>Grundlegendes zu Ereignisdaten
 
-Unterschiedliche Ereignisse in Azure Digital Twins erzeugen **Benachrichtigungen**, die es dem Lösungs-Back-End ermöglichen, zu erkennen, wenn verschiedene Aktionen stattfinden. Diese werden dann zu verschiedenen Orten innerhalb und außerhalb von Azure Digital Twins [geleitet](concepts-route-events.md), die diese Informationen zur Ergreifung von Maßnahmen nutzen können.
+Unterschiedliche Ereignisse in Azure Digital Twins erzeugen **Benachrichtigungen** , die es dem Lösungs-Back-End ermöglichen, zu erkennen, wenn verschiedene Aktionen stattfinden. Diese werden dann zu verschiedenen Orten innerhalb und außerhalb von Azure Digital Twins [geleitet](concepts-route-events.md), die diese Informationen zur Ergreifung von Maßnahmen nutzen können.
 
 Es gibt verschiedene Arten von Benachrichtigungen, die generiert werden können, und Benachrichtigungsmeldungen können unterschiedlich aussehen, je nachdem, mit welcher Art von Ereignis sie erzeugt wurden. Dieser Artikel enthält Einzelheiten zu den verschiedenen Arten von Meldungen und wie sie aussehen könnten.
 
@@ -93,7 +93,7 @@ In diesem Abschnitt wird näher auf die verschiedenen Arten von Benachrichtigung
 
 ### <a name="digital-twin-life-cycle-notifications"></a>Lebenszyklusbenachrichtigungen für digitale Zwillinge
 
-Alle [digitalen Zwillinge](concepts-twins-graph.md) senden Benachrichtigungen, unabhängig davon, ob sie [IoT Hub-Geräte in Azure Digital Twins](how-to-ingest-iot-hub-data.md) darstellen oder nicht. Das liegt an den **Lebenszyklusbenachrichtigungen**, die sich um den digitalen Zwilling selbst drehen.
+Alle [digitalen Zwillinge](concepts-twins-graph.md) senden Benachrichtigungen, unabhängig davon, ob sie [IoT Hub-Geräte in Azure Digital Twins](how-to-ingest-iot-hub-data.md) darstellen oder nicht. Das liegt an den **Lebenszyklusbenachrichtigungen** , die sich um den digitalen Zwilling selbst drehen.
 
 Lebenszyklusbenachrichtigungen werden in folgenden Situationen ausgelöst:
 * Ein digitaler Zwilling wird erstellt.
@@ -106,7 +106,7 @@ Hier folgen die Felder des Hauptteils einer Lebenszyklusbenachrichtigung.
 | Name | Wert |
 | --- | --- |
 | `id` | Bezeichner der Benachrichtigung, z. B. eine UUID oder ein vom Dienst verwalteter Zähler. `source` + `id` ist für jedes einzelne Ereignis eindeutig. |
-| `source` | Name der IoT Hub- oder Azure Digital Twins-Instanz, z. B. *myhub.azure-devices.net* oder *mydigitaltwins.westus2.azuredigitaltwins.net*. |
+| `source` | Name der IoT Hub- oder Azure Digital Twins-Instanz, z. B. *myhub.azure-devices.net* oder *mydigitaltwins.westus2.azuredigitaltwins.net* . |
 | `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
@@ -116,7 +116,7 @@ Hier folgen die Felder des Hauptteils einer Lebenszyklusbenachrichtigung.
 
 #### <a name="body-details"></a>Details zum Hauptteil
 
-Der Hauptteil ist der betroffene digitale Zwilling, dargestellt im JSON-Format. Das Schema hierfür ist *Digital Twins Resource 7.1*.
+Der Hauptteil ist der betroffene digitale Zwilling, dargestellt im JSON-Format. Das Schema hierfür ist *Digital Twins Resource 7.1* .
 
 Bei Erstellungsereignissen spiegelt die Nutzlast den Zustand des Zwillings nach der Erstellung der Ressource wider, sodass sie wie ein `GET`-Aufruf alle vom System generierten Elemente enthalten sollte.
 
@@ -202,7 +202,7 @@ Hier folgen die Felder des Hauptteils einer Edge-Änderungsbenachrichtigung.
 
 #### <a name="body-details"></a>Details zum Hauptteil
 
-Der Hauptteil ist die Nutzlast einer Beziehung, auch im JSON-Format. Es verwendet dasselbe Format wie eine `GET`-Anforderung für eine Beziehung über die [DigitalTwins-API](how-to-use-apis-sdks.md). 
+Der Hauptteil ist die Nutzlast einer Beziehung, auch im JSON-Format. Es verwendet dasselbe Format wie eine `GET`-Anforderung für eine Beziehung über die [DigitalTwins-API](/rest/api/digital-twins/dataplane/twins). 
 
 „Aktualisieren einer Beziehung“ bedeutet, dass sich die Eigenschaften der Beziehung geändert haben. 
 
@@ -248,7 +248,7 @@ Hier folgen die Felder des Hauptteils einer Änderungsbenachrichtigung für digi
 | Name    | Wert |
 | --- | --- |
 | `id` | Bezeichner der Benachrichtigung, z. B. eine UUID oder ein vom Dienst verwalteter Zähler. `source` + `id` ist für jedes einzelne Ereignis eindeutig. |
-| `source` | Name der IoT Hub- oder Azure Digital Twins-Instanz, z. B. *myhub.azure-devices.net* oder *mydigitaltwins.westus2.azuredigitaltwins.net*.
+| `source` | Name der IoT Hub- oder Azure Digital Twins-Instanz, z. B. *myhub.azure-devices.net* oder *mydigitaltwins.westus2.azuredigitaltwins.net* .
 | `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cc60af26754eddbe8699019ae8d906a4c1e9e62
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f560f16c6437b219dd1e7017d70976ff4650c2c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057687"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544357"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analysieren und Validieren von Modellen mit der DTDL-Parserbibliothek
 
@@ -20,7 +20,7 @@ ms.locfileid: "92057687"
 
 Um dies zu unterstützen, wird eine clientseitige .NET DTDL-Bibliothek auf NuGet bereitgestellt: [**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [**DTDL-Validierungssteuerelement (Beispiel)** ](/samples/azure-samples/dtdl-validator/dtdl-validator).
+Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [**DTDL-Validierungssteuerelement (Beispiel)**](/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>Verwenden des Beispiels des DTDL-Validierungssteuerelements
 
@@ -77,32 +77,50 @@ Sie können die Parserbibliothek direkt verwenden, z. B. für die Überprüfung
 
 Zur Unterstützung des nachstehenden Parsercodebeispiels betrachten Sie mehrere Modelle, die in einer Azure Digital Twins-Instanz definiert sind:
 
-> [!TIP] 
-> Das Modell `dtmi:com:contoso:coffeeMaker` verwendet die Syntax des *Funktionsmodells*, was impliziert, dass es im Dienst installiert wurde, indem ein PnP-Gerät angeschlossen wurde, das dieses Modell verfügbar macht.
-
 ```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMaker;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "coffeeMaker",
+        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "waterTemp",
+        "schema": "double"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeBar;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Relationship",
+        "name": "foo",
+        "target": "dtmi:com:contoso:coffeeMaker;1"
+      },
+      {
+        "@type": "Property",
+        "name": "capacity",
+        "schema": "integer"
+      }
+    ]
+  }
+]
 ```
 
 Der folgende Code zeigt ein Beispiel für die Verwendung der Parserbibliothek, um diese Definitionen in C# wiederzugeben:

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761548"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636526"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenz zum JavaScript-SDK für den Plastischen Reader (v1.1)
 
@@ -314,7 +314,7 @@ Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers k
 | onExit | Funktion | Wird ausgeführt, wenn der plastische Reader beendet wird. |
 | allowFullscreen | Boolean | Die Möglichkeit zum Vollbildschirm zu wechseln (der Standardwert ist „true“). |
 | hideExitButton | Boolean | Ob der Pfeil der Schaltfläche „Beenden“ des plastischen Readers ausgeblendet werden soll (der Standardwert ist „false“). Dies sollte nur dann „true“ ergeben, wenn es einen alternativen Mechanismus zum Beenden des plastischen Readers gibt (z. B. den Pfeil „Zurück“ einer mobilen Symbolleiste). |
-| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Einstellung für die Verwendung von Cookies für den plastischen Reader (der Standardwert ist *CookiePolicy.Disable*). Es liegt in der Verantwortung der Hostanwendung, die erforderliche Zustimmung des Benutzers in Übereinstimmung mit der Cookiekonformitätsrichtlinie der EU einzuholen. Weitere Informationen finden Sie unter den [Optionen für Cookierichtlinien](#cookiepolicy-options). |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Einstellung für die Verwendung von Cookies für den plastischen Reader (der Standardwert ist *CookiePolicy.Disable* ). Es liegt in der Verantwortung der Hostanwendung, die erforderliche Zustimmung des Benutzers in Übereinstimmung mit der Cookiekonformitätsrichtlinie der EU einzuholen. Weitere Informationen finden Sie unter den [Optionen für Cookierichtlinien](#cookiepolicy-options). |
 | disableFirstRun | Boolean | Deaktiviert die zuerst ausgeführte Umgebung. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Optionen zum Konfigurieren des lauten Vorlesens. |
 | translationOptions | [TranslationOptions](#translationoptions) | Optionen zum Konfigurieren der Übersetzung. |
@@ -487,7 +487,7 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**Die unten aufgeführten Einstellungen dienen nur zu Informationszwecken**. Der plastische Reader speichert seine Einstellungen bzw. Benutzervoreinstellungen in Cookies. Diese *cookiePolicy*-Option **deaktiviert** standardmäßig die Verwendung von Cookies, um den Gesetzen der Cookiekonformitätsrichtlinie der EU zu entsprechen. Wenn Sie Cookies wieder aktivieren und die Standardfunktionalität für die Benutzervoreinstellungen des plastischen Reader wiederherstellen möchten, müssen Sie sicherstellen, dass Ihre Website oder Anwendung die ordnungsgemäße Zustimmung des Benutzers zur Aktivierung von Cookies einholt. Um Cookies im plastischen Reader wieder zu aktivieren, müssen Sie dann beim Start des plastischen Readers die Option *cookiePolicy* explizit auf *CookiePolicy.Enable* festlegen. Die folgende Tabelle beschreibt, welche Einstellungen der plastische Reader in seinem Cookie speichert, wenn die Option *cookiePolicy* aktiviert ist.
+**Die unten aufgeführten Einstellungen dienen nur zu Informationszwecken** . Der plastische Reader speichert seine Einstellungen bzw. Benutzervoreinstellungen in Cookies. Diese *cookiePolicy* -Option **deaktiviert** standardmäßig die Verwendung von Cookies, um den Gesetzen der Cookiekonformitätsrichtlinie der EU zu entsprechen. Wenn Sie Cookies wieder aktivieren und die Standardfunktionalität für die Benutzervoreinstellungen des plastischen Reader wiederherstellen möchten, müssen Sie sicherstellen, dass Ihre Website oder Anwendung die ordnungsgemäße Zustimmung des Benutzers zur Aktivierung von Cookies einholt. Um Cookies im plastischen Reader wieder zu aktivieren, müssen Sie dann beim Start des plastischen Readers die Option *cookiePolicy* explizit auf *CookiePolicy.Enable* festlegen. Die folgende Tabelle beschreibt, welche Einstellungen der plastische Reader in seinem Cookie speichert, wenn die Option *cookiePolicy* aktiviert ist.
 
 #### <a name="settings-parameters"></a>Parameter für Einstellungen
 

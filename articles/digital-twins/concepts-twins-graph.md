@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440830"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -39,11 +39,11 @@ Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwilling
 
 ## <a name="create-with-the-apis"></a>Erstellen mit den APIs
 
-In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Beziehungen über eine Clientanwendung aussieht. Es sind .NET-Codebeispiele enthalten, die die [DigitalTwins-APIs](how-to-use-apis-sdks.md) nutzen, um zusätzlichen Kontext darüber bereitzustellen, was innerhalb der verschiedenen Konzepte passiert.
+In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Beziehungen über eine Clientanwendung aussieht. Es sind .NET-Codebeispiele enthalten, die die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) nutzen, um zusätzlichen Kontext darüber bereitzustellen, was innerhalb der verschiedenen Konzepte passiert.
 
 ### <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
-Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-APIs](how-to-use-apis-sdks.md) zum Instanziieren eines Zwillings vom Typ *Room* (Zimmer) verwendet wird.
+Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) zum Instanziieren eines Zwillings vom Typ *Room* (Zimmer) verwendet wird.
 
 In der aktuellen Vorschauversion von Azure Digital Twins müssen alle Eigenschaften eines Zwillings initialisiert werden, bevor der Zwilling erstellt werden kann. Hierfür wird ein JSON-Dokument erstellt, das die benötigten Initialisierungswerte enthält.
 
@@ -53,7 +53,7 @@ Sie können auch eine Hilfsklasse namens `BasicDigitalTwin` verwenden, um Eigens
 
 ### <a name="create-relationships"></a>Erstellen von Beziehungen
 
-Hier ist ein Beispiel für Clientcode angegeben, in dem die [DigitalTwins-APIs](how-to-use-apis-sdks.md) verwendet werden, um eine Beziehung zwischen einem digitalen Zwilling vom Typ *Floor* (Etage) mit dem Namen *GroundFloor* und einem digitalen Zwilling vom Typ *Room* (Zimmer) mit dem Namen *Cafe* zu erstellen.
+Hier ist ein Beispiel für Clientcode angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) verwendet werden, um eine Beziehung zwischen einem digitalen Zwilling vom Typ *Floor* (Etage) mit dem Namen *GroundFloor* und einem digitalen Zwilling vom Typ *Room* (Zimmer) mit dem Namen *Cafe* zu erstellen.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample

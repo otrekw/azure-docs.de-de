@@ -1,14 +1,14 @@
 ---
 title: 'Blaupausenbeispiel „DoD-Auswirkungsstufe 4“: Übersicht'
 description: Hier finden Sie eine Übersicht über das Beispiel „DoD-Auswirkungsstufe 4“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Steuerungen für „DoD-Auswirkungsstufe 4“.
-ms.date: 09/17/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 1fbcbbf1ca12e9cb235a79ace0e7de82c3c8cbcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faea02bc63b1c05526652b7a27b2339f00106ad7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978387"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669411"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „DoD-Auswirkungsstufe 4“
 

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: metan
+ms.author: metang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 250fe6279288002fad1b6c12b158ffae3d83c264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd92de3bc5f306cd5ebbcd80b9f1d92af3a9e45d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318856"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633314"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Vorgehensweise: Zwischenspeichern des Authentifizierungstokens
 
@@ -23,7 +23,7 @@ In diesem Artikel wird veranschaulicht, wie das Authentifizierungstoken zwischen
 
 ## <a name="using-aspnet"></a>Verwenden von ASP.NET
 
-Importieren Sie das NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, das zum Abrufen eines Tokens verwendet wird. Verwenden Sie als nächstes den folgenden Code, um mithilfe der Authentifizierungswerte, die Sie beim [Erstellen der Plastischer Reader-Ressource](./how-to-create-immersive-reader.md) erhalten haben, ein `AuthenticationResult` abzurufen.
+Importieren Sie das NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory** , das zum Abrufen eines Tokens verwendet wird. Verwenden Sie als nächstes den folgenden Code, um mithilfe der Authentifizierungswerte, die Sie beim [Erstellen der Plastischer Reader-Ressource](./how-to-create-immersive-reader.md) erhalten haben, ein `AuthenticationResult` abzurufen.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()

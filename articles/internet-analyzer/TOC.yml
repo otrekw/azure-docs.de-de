@@ -25,13 +25,13 @@
     - name: Problembehandlung für Internet Analyzer
       href: troubleshoot.md
     - name: Referenz zur Internet Analyzer-Befehlszeilenschnittstelle
-      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Vorschau-SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

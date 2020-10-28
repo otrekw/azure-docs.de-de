@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282254"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440806"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -73,7 +73,7 @@ In der Steuerungsebene sind Endpunkt-APIs für Folgendes verfügbar:
  
 Um eine Ereignisroute zu erstellen, können Sie die [**Datenebenen-APIs**](how-to-manage-routes-apis-cli.md#create-an-event-route) von Azure Digital Twins, [**CLI-Befehle**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli) oder das [**Azure-Portal**](how-to-manage-routes-portal.md#create-an-event-route) verwenden. 
 
-Im Folgenden finden Sie ein Beispiel für das Erstellen einer Ereignisroute in einer Clientanwendung mithilfe des [.NET (C#) SDK](how-to-use-apis-sdks.md)-Aufrufs `CreateEventRoute`: 
+Im Folgenden finden Sie ein Beispiel für das Erstellen einer Ereignisroute in einer Clientanwendung mithilfe des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview)-Aufrufs `CreateEventRoute`: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -99,13 +99,13 @@ Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmte
 * Das Ereignis wird nicht innerhalb der Gültigkeitsdauer übermittelt.
 * Die Anzahl der Übermittlungsversuche hat den Grenzwert überschritten.
 
-Wenn eine der Bedingungen erfüllt ist, wird das Ereignis gelöscht oder als unzustellbare Nachricht gespeichert. Endpunkte aktivieren unzustellbare Nachrichten standardmäßig **nicht**. Wenn Sie das Feature aktivieren möchten, müssen Sie bei der Erstellung des Endpunkts ein Speicherkonto zum Speichern nicht übermittelter Ereignisse angeben. Ereignisse werden dann aus diesem Speicherkonto gepullt, um Übermittlungsprobleme zu beheben.
+Wenn eine der Bedingungen erfüllt ist, wird das Ereignis gelöscht oder als unzustellbare Nachricht gespeichert. Endpunkte aktivieren unzustellbare Nachrichten standardmäßig **nicht** . Wenn Sie das Feature aktivieren möchten, müssen Sie bei der Erstellung des Endpunkts ein Speicherkonto zum Speichern nicht übermittelter Ereignisse angeben. Ereignisse werden dann aus diesem Speicherkonto gepullt, um Übermittlungsprobleme zu beheben.
 
 Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein Speicherkonto mit einem Container. Sie geben die URL für diesen Container an, wenn Sie den Endpunkt erstellen. Die unzustellbaren Nachrichten werden als Container-URL mit einem SAS-Token bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-Weitere Informationen zu SAS-Token finden Sie hier: [*Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)* ](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+Weitere Informationen zu SAS-Token finden Sie hier: [*Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-Informationen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)* ](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
+Informationen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Arten von Ereignisnachrichten
 

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045124"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496046"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans
 
@@ -27,11 +27,11 @@ Diese Anleitung umfasst Folgendes:
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* Befolgen Sie das Azure Digital Twins-[*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md).
+* Befolgen Sie das Azure Digital Twins- [*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md).
     * Sie werden diesen Zwilling um einen zusätzlichen Endpunkt und eine zusätzliche Route erweitern. Sie werden auch eine weitere Funktion aus diesem Tutorial zu Ihrer Funktions-App hinzufügen. 
-* Befolgen Sie das Azure Maps-[*Tutorial: Erstellen von Gebäudeplänen mit Azure Maps Creator*](../azure-maps/tutorial-creator-indoor-maps.md), um einen Azure Maps-Gebäudeplan mit einem *Featurezustandsset* zu erstellen.
+* Befolgen Sie das Azure Maps- [*Tutorial: Erstellen von Gebäudeplänen mit Azure Maps Creator*](../azure-maps/tutorial-creator-indoor-maps.md), um einen Azure Maps-Gebäudeplan mit einem *Featurezustandsset* zu erstellen.
     * [Featurezustandssets](../azure-maps/creator-indoor-maps.md#feature-statesets) sind Sammlungen dynamischer Eigenschaften (Zustände), die Datasetfeatures wie z. B. Räumen oder Ausstattung zugewiesen sind. Im obigen Azure Maps-Tutorial speichert das Featurezustandsset den Raumstatus, den Sie auf einer Karte anzeigen werden.
-    * Sie benötigen Ihre *Featurezustandsset-ID* und die Azure Maps-*Abonnement-ID*.
+    * Sie benötigen Ihre *Featurezustandsset-ID* und die Azure Maps- *Abonnement-ID* .
 
 ### <a name="topology"></a>Topologie
 
@@ -45,17 +45,17 @@ Zunächst erstellen Sie eine Route in Azure Digital Twins, um alle Ereignisse zu
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Erstellen einer Route und eines Filters für Benachrichtigungen beim Aktualisieren von Zwillingen
 
-Azure Digital Twins-Instanzen können Ereignisse zur Aktualisierung von Zwillingen ausgeben, wenn der Zustand eines Zwillings aktualisiert wird. Das Azure Digital Twins-[*Tutorial: Verbinden einer End-to-End-Lösung*](./tutorial-end-to-end.md), zu dem Sie oben einen Link finden, führt Sie durch ein Szenario, in dem ein Temperaturattribut, das an den Zwilling eines Raums angefügt ist, mit einem Thermometer aktualisiert wird. Sie werden diese Lösung erweitern, indem Sie Aktualisierungsbenachrichtigungen für Zwillinge abonnieren und diese Informationen zum Aktualisieren Ihrer Karten verwenden.
+Azure Digital Twins-Instanzen können Ereignisse zur Aktualisierung von Zwillingen ausgeben, wenn der Zustand eines Zwillings aktualisiert wird. Das Azure Digital Twins- [*Tutorial: Verbinden einer End-to-End-Lösung*](./tutorial-end-to-end.md), zu dem Sie oben einen Link finden, führt Sie durch ein Szenario, in dem ein Temperaturattribut, das an den Zwilling eines Raums angefügt ist, mit einem Thermometer aktualisiert wird. Sie werden diese Lösung erweitern, indem Sie Aktualisierungsbenachrichtigungen für Zwillinge abonnieren und diese Informationen zum Aktualisieren Ihrer Karten verwenden.
 
 Dieses Muster liest direkt aus dem Raumzwilling und nicht vom IoT-Gerät, was Ihnen die Flexibilität bietet, die zugrunde liegende Datenquelle für die Temperatur zu ändern, ohne dass Sie Ihre Zuordnungslogik aktualisieren müssen. Sie können z. B. mehrere Thermometer hinzufügen oder diesen Raum so einrichten, dass ein Thermometer mit einem anderen Raum gemeinsam genutzt wird, ohne dass Sie Ihre Kartenlogik aktualisieren müssen.
 
 1. Erstellen Sie ein Event Grid-Thema, das Ereignisse von Ihrer Azure Digital Twins-Instanz empfängt.
-    ```azurecli
+    ```azurecli-interactive
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
 
 2. Erstellen Sie einen Endpunkt, um Ihr Event Grid-Thema mit Azure Digital Twins zu verknüpfen.
-    ```azurecli
+    ```azurecli-interactive
     az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
     ```
 
@@ -64,15 +64,15 @@ Dieses Muster liest direkt aus dem Raumzwilling und nicht vom IoT-Gerät, was Ih
     >[!NOTE]
     >Zurzeit besteht ein **bekanntes Problem** in Cloud Shell, das sich auf diese Befehlsgruppen auswirkt: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Um dieses Problem zu beheben, führen Sie vor der Ausführung des Befehls `az login` in Cloud Shell aus, oder verwenden Sie die [lokale Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) anstelle von Cloud Shell. Weitere Informationen hierzu finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Um dieses Problem zu beheben, führen Sie vor der Ausführung des Befehls `az login` in Cloud Shell aus, oder verwenden Sie die [lokale Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) anstelle von Cloud Shell. Weitere Informationen hierzu finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
-    ```azurecli
+    ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-an-azure-function-to-update-maps"></a>Erstellen einer Azure-Funktion zum Aktualisieren von Karten
 
-Sie erstellen eine durch Event Grid ausgelöste Funktion innerhalb Ihrer Funktions-App aus dem End-to-End-Tutorial ([*Tutorial: Verbinden einer End-to-End-Lösung*](./tutorial-end-to-end.md)). Diese Funktion entpackt diese Benachrichtigungen und sendet Aktualisierungen an ein Azure Maps-Featurezustandsset, um die Temperatur in einem Raum zu aktualisieren. 
+Sie erstellen eine durch Event Grid ausgelöste Funktion innerhalb Ihrer Funktions-App aus dem End-to-End-Tutorial ( [*Tutorial: Verbinden einer End-to-End-Lösung*](./tutorial-end-to-end.md)). Diese Funktion entpackt diese Benachrichtigungen und sendet Aktualisierungen an ein Azure Maps-Featurezustandsset, um die Temperatur in einem Raum zu aktualisieren. 
 
 Referenzinformationen finden Sie im folgenden Dokument: [*Azure Event Grid-Trigger für Azure Functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
@@ -135,7 +135,7 @@ namespace SampleFunctionsApp
 
 Sie müssen zwei Umgebungsvariablen in Ihrer Funktions-App festlegen. Eine Variable ist Ihr [primärer Azure Maps-Abonnementschlüssel](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account) und die andere ist Ihre [Azure Maps-Zustandsset-ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset).
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
 az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
@@ -144,9 +144,9 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 Führen Sie die folgenden Schritte aus, um die Liveupdate-Temperatur anzuzeigen:
 
-1. Beginnen Sie mit dem Senden simulierter IoT-Daten, indem Sie das **DeviceSimulator**-Projekt aus folgendem Azure Digital Twins-Tutorial ausführen: [*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md). Die Anweisungen hierzu finden Sie im Abschnitt [*Konfigurieren und Ausführen der Simulation*](././tutorial-end-to-end.md#configure-and-run-the-simulation).
+1. Beginnen Sie mit dem Senden simulierter IoT-Daten, indem Sie das **DeviceSimulator** -Projekt aus folgendem Azure Digital Twins-Tutorial ausführen: [*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md). Die Anweisungen hierzu finden Sie im Abschnitt [*Konfigurieren und Ausführen der Simulation*](././tutorial-end-to-end.md#configure-and-run-the-simulation).
 2. Verwenden Sie [das Modul **Azure Maps Indoor**](../azure-maps/how-to-use-indoor-module.md), um Ihre mit Azure Maps Creator erstellten Karten für Gebäudepläne zu rendern.
-    1. Kopieren Sie den HTML-Code aus dem Abschnitt [*Beispiel: Verwenden des Moduls „Gebäudepläne“* ](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) des Gebäudeplan-[*Tutorials: Verwenden des Moduls „Gebäudepläne“ von Azure Maps*](../azure-maps/how-to-use-indoor-module.md) in eine lokale Datei.
+    1. Kopieren Sie den HTML-Code aus dem Abschnitt [*Beispiel: Verwenden des Moduls „Gebäudepläne“*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) des Gebäudeplan- [*Tutorials: Verwenden des Moduls „Gebäudepläne“ von Azure Maps*](../azure-maps/how-to-use-indoor-module.md) in eine lokale Datei.
     1. Ersetzen Sie die *tilesetId* und *statesetID* in der lokalen HTML-Datei durch Ihre Werte.
     1. Öffnen Sie diese Datei in Ihrem Browser.
 

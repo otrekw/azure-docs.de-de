@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46b764c9fcdb771f0a82fa47c0b1aa9112bb9e94
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150515"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494752"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatisches Verwalten von Geräten in Azure Digital Twins mithilfe des Device Provisioning Service (DPS)
 
@@ -71,7 +71,7 @@ Erstellen Sie eine Instanz des Device Provisioning Service, die zum Bereitstelle
 
 Mit dem folgenden Azure CLI Befehl wird ein Device Provisioning Service erstellt. Sie müssen einen Namen, eine Ressourcengruppe und eine Region angeben. Der Befehl kann in [Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ist.
 
-```azurecli
+```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ Als Nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 
 Fügen Sie die Einstellung mit folgendem Azure CLI-Befehl hinzu:
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ Stellen Sie sicher, dass die Berechtigungen und die Rollenzuweisung für verwalt
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ Sie sollten sehen, dass das Gerät registriert und mit IoT Hub verbunden ist und
 
 Durch den in diesem Artikel eingerichteten Ablauf wird das Gerät automatisch in Azure Digital Twins registriert. Mit dem folgenden [Azure Digital Twins-CLI-Befehl](how-to-use-cli.md) können Sie den Zwilling des Geräts in der von Ihnen erstellten Azure Digital Twins-Instanz suchen.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -449,13 +449,13 @@ Als Nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 
 Fügen Sie die Einstellung mit folgendem Azure CLI-Befehl hinzu. Der Befehl kann in [Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ist.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 Als Nächstes müssen Sie die Umgebungsvariable für die Funktion für die Verbindung mit dem neu erstellten Event Hub konfigurieren.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ Das Gerät wird automatisch aus Azure Digital Twins entfernt.
 
 Mit dem folgenden [Azure Digital Twins CLI-Befehl](how-to-use-cli.md) können Sie überprüfen, ob der Zwilling des Geräts in der Azure Digital Twins-Instanz gelöscht wurde.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,15 +502,9 @@ Bei Verwendung von Azure Cloud Shell oder der lokalen Azure CLI können Sie alle
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
-<!-- 
-Next, delete the Azure AD app registration you created for your client app with this command:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-``` -->
 
 Löschen Sie dann den Beispielordner des Projekts, den Sie heruntergeladen haben, von Ihrem lokalen Computer.
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078475"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461276"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
-Dieser Artikel bietet Beispiele und ausführliche Informationen dazu, wie Sie die [Azure Digital Twins-Abfragesprache](concepts-query-language.md) verwenden, um Informationen im [Zwillingsgraphen](concepts-twins-graph.md) abzufragen. Sie führen Abfragen im Diagramm mithilfe der [**Abfrage-APIs**](how-to-use-apis-sdks.md) von Azure Digital Twins aus.
+Dieser Artikel bietet Beispiele und ausführliche Informationen dazu, wie Sie die [Azure Digital Twins-Abfragesprache](concepts-query-language.md) verwenden, um Informationen im [Zwillingsgraphen](concepts-twins-graph.md) abzufragen. Sie führen Abfragen im Diagramm mithilfe der [**Abfrage-APIs**](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins aus.
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -84,7 +84,7 @@ Mithilfe von Projektionen können Sie auswählen, welche Spalten von einer Abfra
 >[!NOTE]
 >Zurzeit werden komplexe Eigenschaften nicht unterstützt. Um sicherzustellen, dass die Projektionseigenschaften gültig sind, kombinieren Sie die Projektionen mit einer `IS_PRIMITIVE`-Überprüfung. 
 
-Im Folgenden finden Sie ein Beispiel für eine Abfrage, die eine Projektion verwendet, um Zwillinge und Beziehungen zurückzugeben. Die folgende Abfrage projiziert die Angaben *Consumer*, *Factory* und *Edge* aus einem Szenario, in dem eine *Factory* mit einer ID von *ABC* mit dem *Consumer* durch eine Beziehung von *Factory.customer* verbunden ist und diese Beziehung als *Edge* dargestellt wird.
+Im Folgenden finden Sie ein Beispiel für eine Abfrage, die eine Projektion verwendet, um Zwillinge und Beziehungen zurückzugeben. Die folgende Abfrage projiziert die Angaben *Consumer* , *Factory* und *Edge* aus einem Szenario, in dem eine *Factory* mit einer ID von *ABC* mit dem *Consumer* durch eine Beziehung von *Factory.customer* verbunden ist und diese Beziehung als *Edge* dargestellt wird.
 
 ```sql
 SELECT Consumer, Factory, Edge 
@@ -93,7 +93,7 @@ JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC' 
 ```
 
-Sie können Projektion auch verwenden, um eine Eigenschaft eines Zwillings zurückzugeben. Die folgende Abfrage projiziert die Eigenschaft *Name* der *Consumers*, die mit der *Factory* mit einer ID von *ABC* durch eine Beziehung von *Factory.customer* verbunden sind. 
+Sie können Projektion auch verwenden, um eine Eigenschaft eines Zwillings zurückzugeben. Die folgende Abfrage projiziert die Eigenschaft *Name* der *Consumers* , die mit der *Factory* mit einer ID von *ABC* durch eine Beziehung von *Factory.customer* verbunden sind. 
 
 ```sql
 SELECT Consumer.name 
@@ -103,7 +103,7 @@ WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Consumer.name)
 ```
 
-Sie können Projektion auch verwenden, um eine Eigenschaft einer Beziehung zurückzugeben. Wie im vorhergehenden Beispiel projiziert die folgende Abfrage die Eigenschaft *Name* der *Consumers*, die mit der *Factory* mit einer ID von *ABC* über eine Beziehung von *Factory.customer* verbunden sind. Jetzt gibt sie aber auch zwei Eigenschaften dieser Beziehung zurück: *prop1* und *prop2*. Dies geschieht durch Benennen der Beziehung *Edge* und Erfassen der zugehörigen Eigenschaften.  
+Sie können Projektion auch verwenden, um eine Eigenschaft einer Beziehung zurückzugeben. Wie im vorhergehenden Beispiel projiziert die folgende Abfrage die Eigenschaft *Name* der *Consumers* , die mit der *Factory* mit einer ID von *ABC* über eine Beziehung von *Factory.customer* verbunden sind. Jetzt gibt sie aber auch zwei Eigenschaften dieser Beziehung zurück: *prop1* und *prop2* . Dies geschieht durch Benennen der Beziehung *Edge* und Erfassen der zugehörigen Eigenschaften.  
 
 ```sql
 SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
@@ -149,7 +149,7 @@ AND T.Temperature = 70
 > [!TIP]
 > Die ID eines digitalen Zwillings wird mithilfe des Metadatenfelds `$dtId` abgefragt.
 
-Sie können Zwillinge auch auf der Grundlage abrufen, **ob eine bestimmte Eigenschaft definiert ist**. Hier folgt eine Abfrage, die Zwillinge abruft, die eine definierte *Location*-Eigenschaft aufweisen:
+Sie können Zwillinge auch auf der Grundlage abrufen, **ob eine bestimmte Eigenschaft definiert ist** . Hier folgt eine Abfrage, die Zwillinge abruft, die eine definierte *Location* -Eigenschaft aufweisen:
 
 ```sql
 SELECT *
@@ -162,7 +162,7 @@ Dies kann Ihnen helfen, Zwillinge anhand ihrer *Tageigenschaften* abzurufen, wie
 select * from digitaltwins where is_defined(tags.red) 
 ```
 
-Sie können Zwillinge auch auf der Grundlage des **Typs einer Eigenschaft** abrufen. Hier folgt eine Abfrage, die Zwillinge abruft, deren *Temperature*-Eigenschaft eine Zahl ist:
+Sie können Zwillinge auch auf der Grundlage des **Typs einer Eigenschaft** abrufen. Hier folgt eine Abfrage, die Zwillinge abruft, deren *Temperature* -Eigenschaft eine Zahl ist:
 
 ```sql
 SELECT * FROM DIGITALTWINS T
@@ -219,7 +219,7 @@ Der folgende Abschnitt enthält einige Beispiele dafür.
 
 Um ein Dataset mit Beziehungen zu erhalten, verwenden Sie eine einzelne `FROM`-Anweisung gefolgt von N `JOIN`-Anweisungen, wobei die `JOIN`-Anweisungen Beziehungen zum Ergebnis einer vorherigen `FROM`- oder `JOIN`-Anweisung ausdrücken.
 
-Hier ist ein Beispiel für eine beziehungsbasierte Abfrage. Mit diesem Codeausschnitt werden alle digitalen Zwillinge mit der *ID*-Eigenschaft „ABC“ und alle digitalen Zwillinge, die zu diesen digitalen Zwillingen eine *contains*-Beziehung haben, ausgewählt. 
+Hier ist ein Beispiel für eine beziehungsbasierte Abfrage. Mit diesem Codeausschnitt werden alle digitalen Zwillinge mit der *ID* -Eigenschaft „ABC“ und alle digitalen Zwillinge, die zu diesen digitalen Zwillingen eine *contains* -Beziehung haben, ausgewählt. 
 
 ```sql
 SELECT T, CT
@@ -236,7 +236,7 @@ WHERE T.$dtId = 'ABC'
 Ähnlich wie die Eigenschaften digitaler Zwillinge über DTDL beschrieben werden, können Beziehungen ebenfalls über Eigenschaften verfügen. Sie können Zwillinge **auf der Grundlage der Eigenschaften ihrer Beziehungen** abfragen.
 Die Azure Digital Twins-Abfragesprache ermöglicht das Filtern und Projizieren von Beziehungen, indem der Beziehung innerhalb der `JOIN`-Klausel ein Alias zugewiesen wird. 
 
-Als Beispiel sei eine *servicedBy*-Beziehung angenommen, die über die *reportedCondition*-Eigenschaft verfügt. In der nachstehenden Abfrage erhält diese Beziehung den Alias „R“, um auf die zugehörige-Eigenschaft zu verweisen.
+Als Beispiel sei eine *servicedBy* -Beziehung angenommen, die über die *reportedCondition* -Eigenschaft verfügt. In der nachstehenden Abfrage erhält diese Beziehung den Alias „R“, um auf die zugehörige-Eigenschaft zu verweisen.
 
 ```sql
 SELECT T, SBT, R
@@ -246,7 +246,7 @@ WHERE T.$dtId = 'ABC'
 AND R.reportedCondition = 'clean'
 ```
 
-Beachten Sie im obigen Beispiel, dass *reportedCondition* eine Eigenschaft der *servicedBy*-Beziehung selbst ist, NICHT eines digitalen Zwillings, der über eine *servicedBy*-Beziehung verfügt.
+Beachten Sie im obigen Beispiel, dass *reportedCondition* eine Eigenschaft der *servicedBy* -Beziehung selbst ist, NICHT eines digitalen Zwillings, der über eine *servicedBy* -Beziehung verfügt.
 
 ### <a name="query-with-multiple-joins"></a>Abfragen mit mehreren JOINs
 
@@ -266,7 +266,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 ### <a name="other-compound-query-examples"></a>Weitere zusammengesetzte Abfragebeispiele
 
-Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfragetypen **kombinieren**, um mehr Details in eine einzelne Abfrage einzubeziehen. Hier folgen einige zusätzliche Beispiele für zusammengesetzte Abfragen, die mehr als einen Typ von Zwillingsdeskriptor gleichzeitig abfragen.
+Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfragetypen **kombinieren** , um mehr Details in eine einzelne Abfrage einzubeziehen. Hier folgen einige zusätzliche Beispiele für zusammengesetzte Abfragen, die mehr als einen Typ von Zwillingsdeskriptor gleichzeitig abfragen.
 
 | Beschreibung | Abfrage |
 | --- | --- |

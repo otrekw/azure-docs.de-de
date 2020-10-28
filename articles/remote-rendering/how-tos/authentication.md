@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: e61767b9b8d904eae9a247f48d2d781fd0c95192
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202717"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427457"
 ---
 # <a name="configure-authentication"></a>Konfigurieren der Authentifizierung
 
@@ -48,12 +48,12 @@ Kontoschlüssel werden nur während der Entwicklung für die schnelle Prototyper
 
  Weitere Informationen finden Sie im [Tutorial: Schützen von Azure-Remote Rendering und Modellspeicher: Azure Active Directory-Authentifizierung](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
 Zum Steuern der Zugriffsebene, die Ihrem Dienst erteilt wird, verwenden Sie beim Erteilen von rollenbasiertem Zugriff die folgenden Rollen:
 
-* **Remote Rendering-Administrator**: Bietet dem Benutzer Konvertierungs-, Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
-* **Remote Rendering-Client**: Bietet dem Benutzer Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
+* **Remote Rendering-Administrator** : Bietet dem Benutzer Konvertierungs-, Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
+* **Remote Rendering-Client** : Bietet dem Benutzer Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
