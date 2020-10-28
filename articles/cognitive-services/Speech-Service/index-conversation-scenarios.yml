@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/16/2020
   ms.author: trbye
-  ms.openlocfilehash: 1766174d053b480674da26ef3e915bcf3fdf280a
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 9cb8c769074dea9ed75a9282c41c24437d17d5ab
+  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401481"
+  ms.lasthandoff: 10/23/2020
+  ms.locfileid: "92756910"
 landingContent:
 - title: Informationen zur Unterhaltungstranskription (Besprechungsszenario)
   linkLists:
@@ -24,10 +24,12 @@ landingContent:
     links:
     - text: Worum handelt es sich bei der Unterhaltungstranskription in Besprechungen?
       url: conversation-transcription.md
+  - linkListType: quickstart
+    links:
+    - text: 'Schnellstart: Unterhaltungstranskription in Echtzeit'
+      url: how-to-use-conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Unterhaltungstranskription in Echtzeit
-      url: how-to-use-conversation-transcription.md
     - text: Asynchrone Unterhaltungstranskription
       url: how-to-async-conversation-transcription.md
 - title: Informationen zu Konversationen mit mehreren Geräten (Besprechungsszenario)
@@ -56,3 +58,9 @@ landingContent:
       url: multi-device-conversation.md#language-support
     - text: Preise für die Sprachtranskription
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

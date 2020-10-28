@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 99f29466c5f81eabbf0b603a89674fa2c70da9d8
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800857"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92756899"
 landingContent:
 - title: Informationen zur Spracherkennung
   linkLists:
@@ -26,20 +26,12 @@ landingContent:
       url: speech-to-text.md
     - text: Was ist die Batch-Spracherkennung?
       url: batch-transcription.md
-    - text: Grundlegendes zur Spracherkennung
-      url: speech-to-text-basics.md
     - text: Verwenden der Speech-Befehlszeilenschnittstelle für Spracherkennung ohne Code
       url: spx-overview.md
   - linkListType: quickstart
     links:
-    - text: Erkennen von Sprache mit Mikrofoneingabe
-      url: quickstarts/speech-to-text-from-microphone.md
-    - text: Erkennen von Sprache aus einer Audiodatei
-      url: quickstarts/speech-to-text-from-file.md
-    - text: Erkennen von Sprache aus einem Blobspeicher
-      url: quickstarts/from-blob.md
-    - text: Aussprachebewertung mit Referenzeingabe
-      url: rest-speech-to-text.md#pronunciation-assessment-parameters
+    - text: Erste Schritte mit der Spracherkennung
+      url: get-started-speech-to-text.md
 - title: Entwickeln mit Spracherkennung
   linkLists:
   - linkListType: how-to-guide
@@ -64,7 +56,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: Erstellen von menschenmarkierten Transkriptionen
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: References
+- title: Verweis
   linkLists:
   - linkListType: reference
     links:
@@ -74,3 +66,9 @@ landingContent:
       url: faq-stt.md
     - text: Preise für die Spracherkennung
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
