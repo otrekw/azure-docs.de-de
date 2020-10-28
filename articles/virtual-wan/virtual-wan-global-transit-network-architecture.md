@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212711"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102322"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 
@@ -43,7 +43,7 @@ Durch Azure Virtual WAN wird eine Architektur mit einem globalen Transitnetzwerk
 
 **Abbildung 2: Globales Transitnetzwerk und Virtual WAN**
 
-In der Azure Virtual WAN-Architektur werden virtuelle WAN-Hubs in Azure-Regionen bereitgestellt, an die Sie Zweigstellen, VNets und Remotebenutzer anbinden können. Die physischen Zweigstellen werden über Premium ExpressRoute oder Site-to-Site-VPNs mit dem Hub verbunden, VNets werden über VNet-Verbindungen mit dem Hub verbunden und Remotebenutzer können über ein Benutzer-VPN (Point-to-Site-VPN) direkt eine Verbindung mit dem Hub herstellen. Virtual WAN unterstützt auch regionsübergreifende VNet-Verbindungen, wobei ein VNet in einer Region mit einem Virtual WAN-Hub in einer anderen Region verbunden werden kann.
+In der Azure Virtual WAN-Architektur werden virtuelle WAN-Hubs in Azure-Regionen bereitgestellt, an die Sie Zweigstellen, VNets und Remotebenutzer anbinden können. Die physischen Zweigstellen werden über Premium oder Standard ExpressRoute oder Site-to-Site-VPNs mit dem Hub verbunden, VNets werden über VNet-Verbindungen mit dem Hub verbunden und Remotebenutzer können über ein Benutzer-VPN (Point-to-Site-VPN) direkt eine Verbindung mit dem Hub herstellen. Virtual WAN unterstützt auch regionsübergreifende VNet-Verbindungen, wobei ein VNet in einer Region mit einem Virtual WAN-Hub in einer anderen Region verbunden werden kann.
 
 Sie können ein virtuelles WAN erstellen, indem Sie einen einzelnen Virtual WAN-Hub in der Region erstellen, in der sich die meisten Spokes (Zweigstellen, VNets, Benutzer) befinden. Stellen Sie anschließend eine Verbindung der Spokes, die sich in einer anderen Region befinden, zum Hub her. Dies ist eine gute Möglichkeit, wenn der Fußabdruck eines Unternehmens größtenteils in einer Region mit wenigen Remote-Spokes liegt.  
   
@@ -87,7 +87,7 @@ Pfade zwischen Zweigstellen und VNETs werden primär von Azure Virtual WAN unter
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach und Virtual WAN
 
-ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Virtual WAN unterstützt ExpressRoute-Leitungsverbindungen. Zum Herstellen einer Verbindung zwischen einer Zweigstelle und Virtual WAN mit ExpressRoute ist 1. eine Premium-Leitung erforderlich und 2. muss sich die Leitung in einem Global Reach-fähigen Standort befinden.
+ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Virtual WAN unterstützt ExpressRoute-Leitungsverbindungen. Zum Herstellen einer Verbindung zwischen einer Zweigstelle und Virtual WAN mit ExpressRoute ist 1. eine Premium- oder Standard-Leitung erforderlich und 2. muss sich die Leitung in einem Global Reach-fähigen Standort befinden.
 
 ExpressRoute Global Reach ist ein Add-On-Feature für ExpressRoute. Mithilfe von Global Reach können Sie ExpressRoute-Verbindungen miteinander verbinden, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen. Zweigstellen, die mit Azure Virtual WAN über ExpressRoute verbunden sind, erfordern ExpressRoute Global Reach, um miteinander kommunizieren zu können.
 

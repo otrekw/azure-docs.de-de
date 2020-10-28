@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: 361ed04a6448bec18fac94ad90a33fe01a49e595
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974157"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201306"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Windows-Computer
 
@@ -53,8 +53,7 @@ Sie können einen Datenträger für Daten *im laufenden Betrieb* entfernen. Stel
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 1. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus.
 1. Wählen Sie unter **Einstellungen** die Option **Datenträger** aus.
-1. Wählen Sie oben im Bereich **Datenträger** die Option **Bearbeiten** aus.
-1. Wählen Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, die Option **Trennen** aus.
+1. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, zum Löschen auf die Schaltfläche **X** .
 1. Wählen Sie oben auf der Seite **Speichern** aus, um Ihre Änderungen zu speichern.
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
