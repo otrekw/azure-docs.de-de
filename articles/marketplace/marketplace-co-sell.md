@@ -1,33 +1,33 @@
 ---
 title: Partner-Engagement für Co-Selling – kommerzieller Microsoft Marketplace
-description: Das Co-Selling-Programm von Microsoft Partner Center kann Ihnen helfen, einen sehr großen Kundenstamm zu erreichen und neue Verkäufe zu generieren.
+description: Das Co-Selling-Programm von Microsoft Partner Center für Partner kann Ihnen helfen, einen sehr großen Kundenstamm zu erreichen und neue Verkäufe zu generieren.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/23/2020
-ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/19/2020
+ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268722"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207705"
 ---
 # <a name="co-sell-partner-engagement"></a>Partner-Engagement für Co-Selling
 
 Sie können das Co-Selling-Programm verwenden, um direkt mit Microsoft-Verkäufern an gemeinsamen Verkaufschancen zu arbeiten und von wichtigen zusätzlichen kommerziellen und verkaufsfördernden Vorteilen zu profitieren, die der Verkauf im kommerziellen Marketplace bietet.
 
-Das Co-Selling-Programm ist für **Software, die mit Ihrem geistigen Eigentum (Intellectual Property, IP) als wiederholbare Paketangebote erstellt wurden**, und für **Dienste mit eingebetteter Microsoft-Technologie** verfügbar. Die meisten Angebotstypen im Co-Selling-Programm sind auch im kommerziellen Marketplace verfügbar. Angebote, die zusätzliche Anforderungen erfüllen, werden zu **Co-Sell Ready**- oder **Co-Sell Incentivized**-Angeboten.
+Das Co-Selling-Programm ist für **Software, die mit Ihrem geistigen Eigentum (Intellectual Property, IP) als wiederholbare Paketangebote erstellt wurden** , und für **Dienste mit eingebetteter Microsoft-Technologie** verfügbar. Die meisten Angebotstypen im Co-Selling-Programm sind auch im kommerziellen Marketplace verfügbar. Angebote, die zusätzliche Anforderungen erfüllen, werden zu **Co-Sell Ready** - oder **Co-Sell Incentivized** -Angeboten.
 
-- **Co-Sell Ready**-Angebote werden für Microsoft-Verkäufer im Außendienst bereitgestellt. Bei der Arbeit mit Microsoft-Verkäufern hilft Ihnen das Co-Selling-Programm, eine umfangreiche Gemeinschaft von Kunden zu erreichen, die von Microsoft verwaltet werden. So können Sie an Verkaufschancen zusammenarbeiten, die Ihr Geschäftswachstum beschleunigen.
+- **Co-Sell Ready** -Angebote werden für Microsoft-Verkäufer im Außendienst bereitgestellt. Bei der Arbeit mit Microsoft-Verkäufern hilft Ihnen das Co-Selling-Programm, eine umfangreiche Gemeinschaft von Kunden zu erreichen, die von Microsoft verwaltet werden. So können Sie an Verkaufschancen zusammenarbeiten, die Ihr Geschäftswachstum beschleunigen.
 
 <ul>
 
 ![Diagramm mit dem Ablauf des Co-Sellings, wenn Vertriebsleads für von Microsoft verwaltete Kunden freigegeben, akzeptiert und gewonnen werden.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
 </ul>
 
-- Wenn **Co-Sell Incentivized**-IP-Lösungen (Intellectual Property, geistiges Eigentum) in Zusammenarbeit mit Microsoft-Vertriebsteams verkauft werden, können neben den unten aufgeführten Marketplace-Vorteilen Incentives für Microsoft-Verkäufer im Außendienst gesammelt werden.</li></ul>
+- Wenn **Co-Sell Incentivized** -IP-Lösungen (Intellectual Property, geistiges Eigentum) in Zusammenarbeit mit Microsoft-Vertriebsteams verkauft werden, können neben den unten aufgeführten Marketplace-Vorteilen Incentives für Microsoft-Verkäufer im Außendienst gesammelt werden.</li></ul>
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>Marketplace-Vorteile für Incentive-Angebote
 
@@ -40,12 +40,12 @@ Angebote, die den Status **Azure IP Co-Sell Incentivized** erhalten, profitieren
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Veröffentlichungsschritte und -anforderungen für das Co-Selling
 
-In der folgenden Tabelle sind die Schritte und Anforderungen zur Qualifizierung Ihres Marketplace-Angebot für den Status „Co-Sell Ready“ oder „Co-Sell Incentivized“ aufgeführt. Es können noch nicht alle Angebotstypen im kommerziellen Marketplace für das Co-Selling im Partner Center konfiguriert werden. Die neuesten Informationen finden Sie unter [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell). 
+In der folgenden Tabelle sind die Schritte und Anforderungen zur Qualifizierung Ihres Marketplace-Angebots für den Status „Co-Sell Ready“ oder „Co-Sell Incentivized“ aufgeführt. Es können noch nicht alle Angebotstypen im kommerziellen Marketplace für das Co-Selling im Partner Center konfiguriert werden. Die neuesten Informationen finden Sie unter [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell). 
 
 |Schritt    |Angebotstyp    |Requirements (Anforderungen)    |Co-Selling-Status    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> Erstellen Sie ein Konto im Partner Center, und veröffentlichen Sie Ihr Angebot im kommerziellen Marketplace.</li>|All|<li>Das Angebot erfüllt die Veröffentlichungsanforderungen des kommerziellen Marketplace.</li><li>Sie verfügen über ein vollständiges Geschäftsprofil im Partner Center.</li>|Nicht bereit.|
-|<ol start=2><li>Übermitteln Sie die erforderlichen Co-Selling-Materialien.</li>|IP-Angebote *mit* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Laden Sie erforderliche Materialien in das Partner Center hoch](#how-to-submit-co-sell-materials-in-partner-center): <ul><li>Vertriebskontakt für jedes berechtigte Land</li><li>Stückliste: einseitiges Dokument des Kunden, Kundenpräsentation (optional), URL für die Angebotsseite der Lösung, URL für den Kanal in den sozialen Medien und andere (z. B. eine Fallstudie).|Co-Sell Ready|
+|<ol start=2><li>Übermitteln Sie die erforderlichen Co-Selling-Materialien.</li>|IP-Angebote *mit* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Laden Sie erforderliche Materialien in das Partner Center hoch](#how-to-submit-co-sell-materials-in-partner-center).|Co-Sell Ready|
 ||IP-Angebote *ohne* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>Anforderung zur [Zusammenarbeit mit einem Cloudspezialisten](https://partner.microsoft.com/campaigns/ced-nomination-form/), um die erforderliche Co-Selling-Dokumentation bereitzustellen.|Co-Sell Ready|
 ||Beratungsdienste|<li>Anforderung zur [Zusammenarbeit mit einem Cloudspezialisten](https://partner.microsoft.com/campaigns/ced-nomination-form/), um die erforderliche Co-Selling-Dokumentation bereitzustellen.</li><li>Aktive Gold-Kompetenz</li>|Co-Sell Ready|
 |<ol start=3><li>Qualifizieren für IP-Co-Selling-Incentives</li>|Azure-Anwendungen, Azure-Container, IoT Edge-Module, SaaS, VMS|Nachdem Sie den Status „Co-Sell Ready“ erreicht haben, gibt es zwei zusätzliche Anforderungen: <ul> Anforderung 1: Eines der folgenden beiden Ergebnisse:<ul><li>*Auf Unternehmensebene:* Mindestens 100.000 USD Azure-Umsatzverbrauch über die letzten 12 Monate</li><li>*Auf Angebotsebene:* 100.000 USD kumulativer abgerechneter Marketplace-Umsatz</li></ul><br>Anforderung 2: Über 50 % der Infrastruktur Ihres Angebots müssen in Azure ausgeführt werden:<ul><li>IP-Angebote *mit* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): Hochladen eines Architekturdiagramms mit Ihren Co-Selling-Dokumenten im Partner Center zur Überprüfung</li><li>IP-Angebote *ohne* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): Hochladen eines Architekturdiagramms in OCP GTM|Azure IP Co-Sell Incentivized|
@@ -63,15 +63,19 @@ Starten Sie Ihre Co-Selling-Aktivitäten direkt im Partner Center, indem Sie die
 
 1. Wählen Sie im Menü auf der linken Seite **Co-Selling mit Microsoft** aus.
 
-    [![Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::
 
-1. Geben Sie Details zu Ihrem Angebot an, und laden Sie im Abschnitt **Dokumente** Begleitmaterialien hoch. Diese Informationen werden von Microsoft-Verkäufern verwendet, um Ihr Angebot zu empfehlen und zu verkaufen.
+1. Stellen Sie grundlegende Auflistungsdetails bereit, um Microsoft-Verkäufern zu helfen, Ihr Angebot im **Auflistungsabschnitt** schnell zu sortieren und zu ermitteln. ( *Erforderlich: alle Felder* )
+
+    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::  
+
+1. Geben Sie Details zu Ihrem Angebot an, und laden Sie im Abschnitt **Dokumente** Begleitmaterialien hoch. Diese Informationen werden von Microsoft-Verkäufern verwendet, um Ihr Angebot zu empfehlen und zu verkaufen. ( *Erforderlich: Kundeninformationsblatt und Kundenpräsentation* )
+
+    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::
  
-   [![In dieser Abbildung ist der Abschnitt „Dokumente“ auf der Registerkarte „Co-Selling“ dargestellt.](./media/co-sell/co-sell-documents-section.png)](./media/co-sell/co-sell-documents-section.png#lightbox)
+1. Laden Sie im Abschnitt **Kontakte** Informationen zum Verkaufskontakt hoch. Microsoft-Verkäufer können sich an diese Kontakte wenden, um zusätzliche Informationen zu Ihrem Angebot anzufordern. ( *Erforderlich: ein Kontakt für jede Geografie, in der Ihr Angebot verfügbar ist* )
 
-1. Laden Sie im Abschnitt **Kontakte** Informationen zum Verkaufskontakt hoch. Microsoft-Verkäufer können sich an diese Kontakte wenden, um zusätzliche Informationen zu Ihrem Angebot anzufordern.
-
-     [![In dieser Abbildung ist der Abschnitt „Kontakte“ auf der Registerkarte „Co-Selling“ dargestellt.](./media/co-sell/co-sell-contacts-section.png)](./media/co-sell/co-sell-contacts-section.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::
 
 1. Speichern Sie den Entwurf, bevor Sie fortfahren.
 1. Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, können Sie es zum Überprüfen und Veröffentlichen übermitteln. Wählen Sie in der rechten oberen Ecke **Überprüfen und veröffentlichen** aus. Überprüfen Sie die Angebotsdetails, und wählen Sie dann **Veröffentlichen** aus.

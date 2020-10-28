@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810c38397981a100c2d5a68492f8a15b75cd79bd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650093"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276040"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace
 
@@ -20,17 +20,17 @@ Sie können Ihre vorhandenen Angebote in Partner Center im [Portal des kommerzie
 
 So aktualisieren Sie ein bestehendes Angebot, das derzeit im kommerziellen Marketplace live geschaltet ist:
 
-1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau**, **Live**, **Veröffentlichung in Bearbeitung**, **Entwurf**, **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, den Verkauf des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
-2. Klicken Sie auf der Karte auf der Übersichtsseite des Angebots oder im Menü im linken Navigationsbereich für den Bereich, den Sie aktualisieren möchten, auf **Aktualisieren**. Sie können die folgenden Bereiche aktualisieren: **Offer setup** (Einrichtung des Angebots), **Properties** (Eigenschaften), **Offer listing** (Listung des Angebots), **Preview** (Vorschau), **Technical configuration** (Technische Konfiguration), **Plan overview** (Planübersicht) oder **Test drive** (Testversion).
-3. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Entwurf speichern**. Wiederholen Sie diesen Vorgang, bis alle gewünschten Änderungen erfolgt sind.
+1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau** , **Live** , **Veröffentlichung in Bearbeitung** , **Entwurf** , **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, den Verkauf des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
+2. Klicken Sie auf der Karte auf der Übersichtsseite des Angebots oder im Menü im linken Navigationsbereich für den Bereich, den Sie aktualisieren möchten, auf **Aktualisieren** . Sie können die folgenden Bereiche aktualisieren: **Offer setup** (Einrichtung des Angebots), **Properties** (Eigenschaften), **Offer listing** (Listung des Angebots), **Preview** (Vorschau), **Technical configuration** (Technische Konfiguration), **Plan overview** (Planübersicht) oder **Test drive** (Testversion).
+3. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Entwurf speichern** . Wiederholen Sie diesen Vorgang, bis alle gewünschten Änderungen erfolgt sind.
 
 ## <a name="review-and-publish-an-updated-offer"></a>Überprüfen und Veröffentlichen eines aktualisierten Angebots
 
-Wenn Sie Ihr aktualisiertes Angebot veröffentlichen möchten, klicken Sie auf einer beliebigen Seite auf **Überprüfen und veröffentlichen**. Die Seite **Review and publish** (Überprüfen und veröffentlichen) wird geöffnet. Auf der Seite haben Sie folgende Möglichkeiten:
+Wenn Sie Ihr aktualisiertes Angebot veröffentlichen möchten, klicken Sie auf einer beliebigen Seite auf **Überprüfen und veröffentlichen** . Die Seite **Review and publish** (Überprüfen und veröffentlichen) wird geöffnet. Auf der Seite haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Fertigstellungsstatus für die Abschnitte des Angebots, die Sie aktualisiert haben: 
-    - **Nicht veröffentlichte Änderungen**: Der Abschnitt wurde aktualisiert und ist fertig. Alle erforderlichen Daten wurden bereitgestellt, und es sind keine Fehler in den Aktualisierungen zu verzeichnen.
-    - **Unvollständige Informationen**: Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
+    - **Nicht veröffentlichte Änderungen** : Der Abschnitt wurde aktualisiert und ist fertig. Alle erforderlichen Daten wurden bereitgestellt, und es sind keine Fehler in den Aktualisierungen zu verzeichnen.
+    - **Unvollständige Informationen** : Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
 - Stellen Sie dem Zertifizierungsprüfungsteam zusätzliche Informationen zur Verfügung, um sicherzustellen, dass die Prüfung reibungslos verläuft.
 - Senden Sie das aktualisierte Angebot zur Veröffentlichung, indem Sie auf **Veröffentlichen** klicken.  Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots verfügbar ist, die Sie überprüfen und freigeben können.
 
@@ -41,18 +41,18 @@ Wenn Sie Ihr aktualisiertes Angebot veröffentlichen möchten, klicken Sie auf e
 
 So fügen Sie einen neuen Plan zu einem bestehenden Angebot hinzu, das Sie bereits veröffentlicht haben:
 
-1. Öffnen Sie die Seite **Angebotsübersicht** für Ihr bestehendes Angebot, navigieren Sie zur Seite **Planübersicht**, und klicken Sie dann auf **Neuen Plan erstellen**.
+1. Öffnen Sie die Seite **Angebotsübersicht** für Ihr bestehendes Angebot, navigieren Sie zur Seite **Planübersicht** , und klicken Sie dann auf **Neuen Plan erstellen** .
 1. Erstellen Sie mithilfe des **Preismodells für bestehende Pläne** einen neuen Plan, der den [Richtlinien](./create-new-saas-offer.md#plan-overview) entspricht.
-1. Nachdem Sie den Plannamen geändert haben, klicken Sie auf **Entwurf speichern**.
-1. Klicken Sie auf **Veröffentlichen**, sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Dann wird die Seite **[Überprüfen und veröffentlichen](#review-and-publish-an-updated-offer)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
+1. Nachdem Sie den Plannamen geändert haben, klicken Sie auf **Entwurf speichern** .
+1. Klicken Sie auf **Veröffentlichen** , sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Dann wird die Seite **[Überprüfen und veröffentlichen](#review-and-publish-an-updated-offer)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualisieren eines Plans in einem bestehenden Angebot
 
 So ändern Sie einen Plan innerhalb eines bestehenden Angebots, das Sie bereits veröffentlicht haben
 
-1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen**.
-1. Wählen Sie den **Namen**, das **Preismodell** oder die **Verfügbarkeit** des Plans aus. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung.*
-1. Klicken Sie auf **Entwurf speichern**, nachdem Sie alle gewünschten Änderungen am Namen, an der Beschreibung oder der Zielgruppenverfügbarkeit des Plans vorgenommen haben.
+1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen** .
+1. Wählen Sie den **Namen** , das **Preismodell** oder die **Verfügbarkeit** des Plans aus. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung.*
+1. Klicken Sie auf **Entwurf speichern** , nachdem Sie alle gewünschten Änderungen am Namen, an der Beschreibung oder der Zielgruppenverfügbarkeit des Plans vorgenommen haben.
 1. Wenn Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen, wählen Sie **Überprüfen und veröffentlichen** aus. Dann wird die Seite **[Überprüfen und veröffentlichen](#review-and-publish-an-updated-offer)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 1. Senden Sie den aktualisierten Plan zur Veröffentlichung, indem Sie auf **Veröffentlichen** klicken. Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots verfügbar ist, die Sie überprüfen und freigeben können.
 
@@ -60,14 +60,14 @@ So ändern Sie einen Plan innerhalb eines bestehenden Angebots, das Sie bereits 
 
 Nachdem ein VM-Plan veröffentlicht wurde, kann dessen Preis nicht mehr geändert werden. Wenn Sie denselben Plan zu einem anderen Preis anbieten möchten, müssen Sie den Plan ausblenden und einen neuen Plan mit dem aktualisierten Preis erstellen. Blenden Sie zunächst den Plan mit dem Preis aus, den Sie ändern möchten:
 
-1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen**.
-1. Aktivieren Sie das Kontrollkästchen **Plan ausblenden**. Speichern Sie den Entwurf, bevor Sie fortfahren.
+1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen** .
+1. Aktivieren Sie das Kontrollkästchen **Plan ausblenden** . Speichern Sie den Entwurf, bevor Sie fortfahren.
 
 Nachdem Sie den Plan mit dem alten Preis ausgeblendet haben, erstellen Sie eine Kopie dieses Plans mit dem aktualisierten Preis:
 
-1. Wechseln Sie im Partner Center zurück zur **Planübersicht**.
+1. Wechseln Sie im Partner Center zurück zur **Planübersicht** .
 2. Wählen Sie **Neuen Plan erstellen** aus. Geben Sie eine **Plan-ID** und einen **Plannamen** ein, und wählen Sie dann **Erstellen** aus.
-1. Wenn Sie die technische Konfiguration des ausgeblendeten Plans wiederverwenden möchten, aktivieren Sie das Kontrollkästchen **Technische Konfiguration erneut verwenden**. In der [Planübersicht](azure-vm-create-offer.md#plan-overview) erhalten Sie weitere Informationen.
+1. Wenn Sie die technische Konfiguration des ausgeblendeten Plans wiederverwenden möchten, aktivieren Sie das Kontrollkästchen **Technische Konfiguration erneut verwenden** . Weitere Informationen finden Sie unter [Erstellen von Plänen für ein VM-Angebot](../azure-vm-create-plans.md).
     > [!IMPORTANT]
     > Wenn Sie **In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet** auswählen, können Sie den Verkauf des übergeordneten Plans später nicht einstellen. Verwenden Sie diese Option nicht, wenn Sie den Verkauf des übergeordneten Plans einstellen möchten.
 3. Füllen Sie alle erforderlichen Abschnitte für den neuen Plan aus, einschließlich des neuen Preises.
@@ -112,7 +112,7 @@ Befolgen Sie die nachstehenden Anweisungen, um Ihre Änderungen am veröffentlic
 
 1. Wählen Sie in der Befehlsleiste auf der Seite **Vergleichen** aus. Auf der Seite **Vergleichen** werden die Version dieses Angebots mit den gespeicherten Änderungen und die Version des veröffentlichten Marketplace-Angebots nebeneinander dargestellt.
 2. Wenn Sie von einer bestimmten Seite des Angebots auf **Vergleichen** zugreifen, werden in der Standardeinstellung nur die auf dieser Seite vorgenommenen Änderungen angezeigt.
-    - Wenn Sie Änderungen auf allen Seiten vergleichen möchten, ändern Sie die Seite über **Zu vergleichende Seite auswählen**.  
+    - Wenn Sie Änderungen auf allen Seiten vergleichen möchten, ändern Sie die Seite über **Zu vergleichende Seite auswählen** .  
     - Wenn Sie Änderungen am Angebot über alle Seiten hinweg vergleichen möchten, wählen Sie **Alle Seiten** aus.
 
 Mit **Vergleichen** werden Ihre neuen Änderungen standardmäßig dem Marketplace-Liveangebot gegenübergestellt.
