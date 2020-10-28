@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: Verwalten des Präfixes für öffentliche IP-Adressen
               href: manage-public-ip-address-prefix.md
+            - name: Ausführen eines Upgrades für öffentliche IP-Adressen
+              href: virtual-network-public-ip-address-upgrade.md
             - name: Hinzufügen oder Entfernen einer IP-Adresse zu bzw. von NICs
               href: virtual-network-network-interface-addresses.md
             - name: Routingpräferenz
