@@ -79,6 +79,8 @@
               href: sync-ldap.md
             - name: SCIM-Synchronisierung
               href: sync-scim.md
+        - name: In Azure verwendete Zertifizierungsstellen
+          href: certificate-authorities.md
     - name: Bereitstellungshandbuch
       items:
         - name: 'Bereitstellung 30, 90 und höher'

@@ -13,6 +13,7 @@
     - name: 'Erstellen einer ExpressRoute-Verbindung: CLI'
       href: howto-circuit-cli.md
     - name: 'Erstellen einer ExpressRoute-Verbindung: ARM-Vorlage'
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Tutorials

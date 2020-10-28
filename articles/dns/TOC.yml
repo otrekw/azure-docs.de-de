@@ -18,6 +18,7 @@
         - name: 'Erstellen einer öffentlichen Zone: CLI'
           href: dns-getstarted-cli.md
         - name: 'Erstellen einer öffentlichen Zone: ARM-Vorlage'
+          displayName: Resource Manager
           href: dns-get-started-template.md
     - name: Privates DNS
       items:
@@ -129,7 +130,7 @@
       items:
         - name: Handbuch zur Problembehandlung
           href: dns-troubleshoot.md
-- name: Verweis
+- name: Referenz
   items:
     - name: Öffentliche DNS
       items:
