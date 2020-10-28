@@ -556,8 +556,6 @@
               href: platform/alerts-managing-smart-groups.md
             - name: Verwalten von Warnungen und Status intelligenter Gruppen
               href: platform/alerts-managing-alert-states.md
-            - name: Verwalten von Warnungen aus anderen Überwachungsdiensten
-              href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Warnungs-API
           href: platform/api-alerts.md
         - name: Problembehandlung für Warnungen
@@ -576,8 +574,6 @@
               href: platform/itsmc-service-manager-script.md
             - name: Beheben von ServiceNow-ITSM-Synchronisierungsproblemen
               href: platform/itsmc-resync-servicenow.md
-        - name: Lösung Warnungsverwaltung
-          href: platform/alert-management-solution.md
         - name: Migrieren klassischer Warnungsregeln
           items:
             - name: Informationen zu klassischen Warnungen
@@ -1138,6 +1134,8 @@
               href: insights/vmware.md
             - name: Wire Data-Lösung
               href: insights/wire-data.md
+            - name: Lösung Warnungsverwaltung
+              href: platform/alert-management-solution.md
     - name: Arbeitsmappen
       items:
         - name: Übersicht
