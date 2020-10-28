@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7727dd2ae69fab75219c5d6d733db3f150061df3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318720"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477231"
 ---
 # <a name="azure-table-storage-overview"></a>Übersicht über Azure Table Storage
 
@@ -30,10 +30,10 @@ Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwend
 
 * Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 
-* [Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK](table-storage-how-to-use-dotnet.md)
+* [Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK](./tutorial-develop-table-dotnet.md)
 
 * In der Referenzdokumentation für den Tabellenspeicherdienst finden Sie alle Details zu verfügbaren APIs:
 
-    * [Referenz zur Storage-Clientbibliothek für .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Referenz zur Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage)
 
-    * [REST-API-Referenz](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST-API-Referenz](/rest/api/storageservices/)

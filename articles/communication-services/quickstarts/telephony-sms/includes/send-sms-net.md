@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: c8bce6afd914a22be80a57ae234e39161d182b7f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779126"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499079"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie die C#-Clientbibliothek für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -35,13 +35,13 @@ Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringf�
 ### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 
 - Führen Sie in einem Terminal- oder Befehlsfenster den Befehl `dotnet` aus, um sich zu vergewissern, dass die .NET-Clientbibliothek installiert ist.
-- Melden Sie sich zum Anzeigen der Telefonnummern für Ihre Communication Services-Ressource beim [Azure-Portal](https://portal.azure.com/) an, suchen Sie nach Ihrer Communication Services-Ressource, und öffnen Sie im linken Navigationsbereich die Registerkarte **Telefonnummern**.
+- Melden Sie sich zum Anzeigen der Telefonnummern für Ihre Communication Services-Ressource beim [Azure-Portal](https://portal.azure.com/) an, suchen Sie nach Ihrer Communication Services-Ressource, und öffnen Sie im linken Navigationsbereich die Registerkarte **Telefonnummern** .
 
 ## <a name="setting-up"></a>Einrichten
 
 ### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 
-Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen `SmsQuickstart`. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: **Program.cs**.
+Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen `SmsQuickstart`. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: **Program.cs** .
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -117,3 +117,7 @@ Führen Sie die Anwendung mit dem Befehl `dotnet run` aus dem Anwendungsverzeich
 ```console
 dotnet run
 ```
+
+## <a name="sample-code"></a>Beispielcode
+
+Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/SendSMS) herunterladen.

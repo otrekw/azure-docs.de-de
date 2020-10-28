@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108761"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487635"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer To-Do-App mit Xamarin mithilfe eines Azure Cosmos DB-SQL-API-Kontos
 
@@ -32,7 +32,7 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 > [!NOTE]
 > Beispielcode für eine vollständige kanonische Xamarin-Beispiel-App, die mehrere Azure-Angebote (einschließlich CosmosDB) veranschaulicht, finden Sie auf [GitHub](https://github.com/xamarinhq/app-geocontacts). Diese App veranschaulicht das Anzeigen geografisch verteilter Kontakte und zeigt, wie diesen Kontakten das Aktualisieren ihres Standorts ermöglicht werden kann.
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe über das Azure-Portal ein SQL-API-Konto, eine Dokumentdatenbank und einen Container für Azure Cosmos DB erstellen. Anschließend führen Sie die Erstellung und Bereitstellung einer mobilen Aufgabenlisten-App durch, die auf der [SQL-.NET-API](sql-api-sdk-dotnet.md) und [Xamarin](https://docs.microsoft.com/xamarin/) basiert, indem Sie [Xamarin.Forms](https://docs.microsoft.com/xamarin/) und das [Architekturmuster MVVM](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) verwenden.
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe über das Azure-Portal ein SQL-API-Konto, eine Dokumentdatenbank und einen Container für Azure Cosmos DB erstellen. Anschließend führen Sie die Erstellung und Bereitstellung einer mobilen Aufgabenlisten-App durch, die auf der [SQL-.NET-API](sql-api-sdk-dotnet.md) und [Xamarin](/xamarin/) basiert, indem Sie [Xamarin.Forms](/xamarin/) und das [Architekturmuster MVVM](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) verwenden.
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="Xamarin-Todo-App unter iOS":::
 
@@ -177,7 +177,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 Die folgenden Schritte veranschaulichen, wie Sie die App mit dem Debugger von Visual Studio für Mac ausführen.
 
 > [!NOTE]
-> Die Nutzung der Android-Version der App ist nahezu identisch, und alle Unterschiede sind in den Schritten unten angegeben. Wenn Sie das Debuggen mit Visual Studio unter Windows durchführen möchten, finden Sie die Dokumentation für [iOS hier](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) und für [Android hier](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/).
+> Die Nutzung der Android-Version der App ist nahezu identisch, und alle Unterschiede sind in den Schritten unten angegeben. Wenn Sie das Debuggen mit Visual Studio unter Windows durchführen möchten, finden Sie die Dokumentation für [iOS hier](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) und für [Android hier](/xamarin/android/deploy-test/debugging/).
 
 1. Wählen Sie zuerst die gewünschte Zielplattform aus, indem Sie auf die hervorgehobene Dropdownliste klicken und dann entweder „ToDoItems.iOS“ für iOS oder „ToDoItems.Android“ für Android wählen.
 

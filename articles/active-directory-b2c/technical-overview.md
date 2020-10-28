@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921672"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364081"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -27,16 +27,16 @@ Ein *Mandant* in Azure Active Directory B2C (Azure AD B2C) stellt Ihre Organisat
 
 Die wichtigsten Ressourcen, mit denen Sie in einem Azure AD B2C Mandanten arbeiten, sind die folgenden:
 
-* **Verzeichnis**: Im *Verzeichnis* werden die Anmeldeinformationen und Profildaten Ihrer Benutzer sowie die Anwendungsregistrierungen von Azure AD B2C gespeichert.
-* **Anwendungsregistrierungen**: Sie registrieren Ihre Web-, Mobil- und nativen Anwendungen bei Azure AD B2C, um die Identitätsverwaltung zu ermöglichen. Außerdem registrieren Sie alle APIs, die Sie mit Azure AD B2C schützen möchten.
-* **Benutzerflows** und **benutzerdefinierte Richtlinien**: Die integrierten (Benutzerflows) und vollständig anpassbaren (benutzerdefinierte Richtlinien) Identitätsfunktionen für Ihre Anwendungen.
+* **Verzeichnis** : Im *Verzeichnis* werden die Anmeldeinformationen und Profildaten Ihrer Benutzer sowie die Anwendungsregistrierungen von Azure AD B2C gespeichert.
+* **Anwendungsregistrierungen** : Sie registrieren Ihre Web-, Mobil- und nativen Anwendungen bei Azure AD B2C, um die Identitätsverwaltung zu ermöglichen. Außerdem registrieren Sie alle APIs, die Sie mit Azure AD B2C schützen möchten.
+* **Benutzerflows** und **benutzerdefinierte Richtlinien** : Die integrierten (Benutzerflows) und vollständig anpassbaren (benutzerdefinierte Richtlinien) Identitätsfunktionen für Ihre Anwendungen.
   * Mit *Benutzerflows* konfigurieren und aktivieren Sie schnell häufige Identitätsaufgaben wie Registrierung, Anmeldung und Bearbeitung des Profils.
-  * Verwenden Sie *benutzerdefinierte Richtlinien*, um die Benutzerfunktionen für häufige Identitätsaufgaben und darüber hinaus die Unterstützung für komplexe Identitätsworkflows zu ermöglichen, die individuell auf Ihre Organisation, Kunden, Mitarbeiter, Partner und Bürger zugeschnitten sind.
-* **Identitätsanbieter**: Verbundeinstellungen für:
+  * Verwenden Sie *benutzerdefinierte Richtlinien* , um die Benutzerfunktionen für häufige Identitätsaufgaben und darüber hinaus die Unterstützung für komplexe Identitätsworkflows zu ermöglichen, die individuell auf Ihre Organisation, Kunden, Mitarbeiter, Partner und Bürger zugeschnitten sind.
+* **Identitätsanbieter** : Verbundeinstellungen für:
   * Identitätsanbieter für *soziale Netzwerke* wie Facebook, LinkedIn oder Twitter, die in Ihren Anwendungen unterstützt werden sollen.
   * *Externe* Identitätsanbieter, die Standardidentitätsprotokolle wie OAuth 2.0, OpenID Connect und viele mehr unterstützen.
   * *Lokale* Konten, die es Benutzern ermöglichen, sich mit einem Benutzernamen (oder einer E-Mail-Adresse oder sonstigen ID) und einem Kennwort zu registrieren und anzumelden.
-* **Schlüssel**: Hinzufügen und Verwalten von Verschlüsselungsschlüsseln zum Signieren und Überprüfen von Token, geheimen Clientschlüsseln, Zertifikaten und Kennwörtern.
+* **Schlüssel** : Hinzufügen und Verwalten von Verschlüsselungsschlüsseln zum Signieren und Überprüfen von Token, geheimen Clientschlüsseln, Zertifikaten und Kennwörtern.
 
 Ein Azure AD B2C-Mandant ist die erste Ressource, die Sie erstellen müssen, um Azure AD B2C zu verwenden. Weitere Informationen finden Sie im [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) ausführen.
 
@@ -44,9 +44,9 @@ Ein Azure AD B2C-Mandant ist die erste Ressource, die Sie erstellen müssen, um 
 
 Azure AD B2C definiert mehrere Typen von Benutzerkonten. In Azure Active Directory, Azure Active Directory B2B und Azure Active Directory B2C können dieselben Arten von Benutzerkonten verwendet werden.
 
-* **Geschäftskonto**: Benutzer mit Geschäftskonten können Ressourcen in einem Mandanten verwalten und zudem Mandanten verwalten, wenn sie über eine Administratorrolle verfügen. Benutzer mit Geschäftskonten können neue Consumerkonten erstellen, Kennwörter zurücksetzen, Konten sperren/entsperren und Berechtigungen festlegen oder ein Konto einer Sicherheitsgruppe zuweisen.
-* **Gastkonto**: Externe Benutzer, die Sie als Gäste zu Ihrem Mandanten einladen. Ein typisches Szenario für das Einladen von Gastbenutzern in Ihren Azure AD B2C-Mandanten ist das Teilen von Systemadministratoraufgaben.
-* **Consumerkonto**: Consumerkonten sind die Konten, die in Ihrem Azure AD B2C-Verzeichnis erstellt werden, wenn Benutzer die Registrierungs-User Journey in einer Anwendung ausführen, die Sie in Ihrem Mandanten registriert haben.
+* **Geschäftskonto** : Benutzer mit Geschäftskonten können Ressourcen in einem Mandanten verwalten und zudem Mandanten verwalten, wenn sie über eine Administratorrolle verfügen. Benutzer mit Geschäftskonten können neue Consumerkonten erstellen, Kennwörter zurücksetzen, Konten sperren/entsperren und Berechtigungen festlegen oder ein Konto einer Sicherheitsgruppe zuweisen.
+* **Gastkonto** : Externe Benutzer, die Sie als Gäste zu Ihrem Mandanten einladen. Ein typisches Szenario für das Einladen von Gastbenutzern in Ihren Azure AD B2C-Mandanten ist das Teilen von Systemadministratoraufgaben.
+* **Consumerkonto** : Consumerkonten sind die Konten, die in Ihrem Azure AD B2C-Verzeichnis erstellt werden, wenn Benutzer die Registrierungs-User Journey in einer Anwendung ausführen, die Sie in Ihrem Mandanten registriert haben.
 
 ![Azure AD B2C-Seite „Benutzerverwaltung“ im Azure-Portal](media/technical-overview/portal-01-users.png)<br/>*Abbildung: Benutzerverzeichnis in einem Azure AD B2C-Mandanten im Azure-Portal*
 
@@ -57,7 +57,7 @@ Mit einem *Consumerkonto* können sich Benutzer bei den mit Azure AD B2C gesiche
 Einem Consumerkonto kann den folgenden Identitätstypen zugeordnet werden:
 
 * **Lokale** Identität, wobei der Benutzername und das Kennwort lokal im Azure AD B2C-Verzeichnis gespeichert werden. Diese Identitäten werden häufig als „lokale Konten“ bezeichnet.
-* Identitäten für **soziale Netzwerke** oder **Unternehmen**, bei denen die Identität des Benutzers von einem Verbundidentitätsanbieter wie Facebook, Microsoft, ADFS oder Salesforce verwaltet wird.
+* Identitäten für **soziale Netzwerke** oder **Unternehmen** , bei denen die Identität des Benutzers von einem Verbundidentitätsanbieter wie Facebook, Microsoft, ADFS oder Salesforce verwaltet wird.
 
 Ein Benutzer mit einem Consumerkonto kann sich mit mehreren Identitäten anmelden, z. B. Benutzername, E-Mail-Adresse, Mitarbeiter-ID oder Ausweis. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln.
 
@@ -91,7 +91,7 @@ In Azure AD B2C gibt es zwei primäre Pfade, mit denen Sie diese Identitätsfunk
 
 * **Benutzerdefinierte Richtlinien** ermöglichen es Ihnen, eigene User Journeys für komplexe Identitätsszenarios zu erstellen.
 
-Sowohl Benutzerflows als auch benutzerdefinierte Richtlinien basieren auf dem *Identity Experience Framework*, der Orchestrierungs-Engine für Richtlinien in Azure AD B2C.
+Sowohl Benutzerflows als auch benutzerdefinierte Richtlinien basieren auf dem *Identity Experience Framework* , der Orchestrierungs-Engine für Richtlinien in Azure AD B2C.
 
 ### <a name="user-flow"></a>Benutzerflow
 
@@ -148,13 +148,13 @@ Das folgende Diagramm zeigt, wie Azure AD B2C mithilfe verschiedener Protokolle 
 
 ## <a name="application-integration"></a>Anwendungsintegration
 
-Wenn sich ein Benutzer bei Ihrer Anwendung anmelden möchte, bei der es sich gleichermaßen um eine Web-, Mobil-, Desktop- oder Single-Page-Anwendung (SPA) handeln kann, initiiert die Anwendung eine Autorisierungsanforderung an einen Benutzerflow-Endpunkt oder einen von der benutzerdefinierten Richtlinie bereitgestellten Endpunkt. Der Benutzerflow oder die benutzerdefinierte Richtlinie definiert und steuert die Funktionalität für die Benutzer. Wenn Sie einen Benutzerflow ausführen, z. B. den Flow für *Registrierung oder Anmeldung*, generiert Azure AD B2C ein Token und leitet den Benutzer dann wieder zurück zur Anwendung um.
+Wenn sich ein Benutzer bei Ihrer Anwendung anmelden möchte, bei der es sich gleichermaßen um eine Web-, Mobil-, Desktop- oder Single-Page-Anwendung (SPA) handeln kann, initiiert die Anwendung eine Autorisierungsanforderung an einen Benutzerflow-Endpunkt oder einen von der benutzerdefinierten Richtlinie bereitgestellten Endpunkt. Der Benutzerflow oder die benutzerdefinierte Richtlinie definiert und steuert die Funktionalität für die Benutzer. Wenn Sie einen Benutzerflow ausführen, z. B. den Flow für *Registrierung oder Anmeldung* , generiert Azure AD B2C ein Token und leitet den Benutzer dann wieder zurück zur Anwendung um.
 
 ![Mobile App mit Pfeilen, die den Flow zur Azure AD B2C-Anmeldeseite darstellen](media/technical-overview/app-integration.png)
 
 Mehrere Anwendungen können den gleichen Benutzerflow oder die gleiche benutzerdefinierte Richtlinie verwenden. Jede Anwendung kann mehrere Benutzerflows oder benutzerdefinierte Richtlinien verwenden.
 
-Beispielsweise kann die Anwendung den Benutzerflow *Registrieren oder anmelden* für die Anmeldung bei einer Anwendung verwenden. Wenn sich der Benutzer angemeldet hat und nun sein Profil bearbeiten möchte, initiiert die Anwendung eine weitere Autorisierungsanforderung, dieses Mal unter Verwendung des Benutzerflows *Profilbearbeitung*.
+Beispielsweise kann die Anwendung den Benutzerflow *Registrieren oder anmelden* für die Anmeldung bei einer Anwendung verwenden. Wenn sich der Benutzer angemeldet hat und nun sein Profil bearbeiten möchte, initiiert die Anwendung eine weitere Autorisierungsanforderung, dieses Mal unter Verwendung des Benutzerflows *Profilbearbeitung* .
 
 ## <a name="seamless-user-experiences"></a>Nahtlose Benutzererfahrung
 
@@ -215,7 +215,7 @@ Sie können Rollen zuweisen, um zu steuern, wer bestimmte administrative Aktione
 * Erstellen und Verwalten von Vertrauensframework-Richtlinien im Identity Experience Framework (benutzerdefinierte Richtlinien)
 * Verwalten von Geheimnissen für Verbund und Verschlüsselung im Identity Experience Framework (benutzerdefinierte Richtlinien)
 
-Weitere Informationen zu Azure AD-Rollen, einschließlich Unterstützung für Azure AD B2C-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Weitere Informationen zu Azure AD-Rollen, einschließlich Unterstützung für Azure AD B2C-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
 

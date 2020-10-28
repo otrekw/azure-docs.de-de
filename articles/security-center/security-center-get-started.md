@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946014"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341328"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Schnellstart: Einrichten von Azure Security Center
 
@@ -82,7 +82,7 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
 1. Wählen Sie das relevante Abonnement aus.
 1. Legen Sie auf der Seite **Datensammlung** die Option **Automatische Bereitstellung** auf **Ein** fest.
-1. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern** .
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Übersichtsdashboard von Security Center":::
 
@@ -105,7 +105,7 @@ In dieser Schnellstartanleitung haben Sie Azure Defender aktiviert und den Log 
 Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
 
 > [!div class="nextstepaction"]
-> [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

@@ -14,12 +14,12 @@ ms.date: 09/29/2020
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b7bcfa6569edd93373f493cfaa7deff2976d35
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540828"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370184"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -36,18 +36,18 @@ Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informat
 
 Privileged Identity Management bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, um die Risiken durch übermäßige, unnötige oder missbrauchte Zugriffsberechtigungen für wichtige Ressourcen zu verringern. Im Anschluss folgen einige der wichtigsten Features von Privileged Identity Management:
 
-- Gewähren von privilegiertem **Just-In-Time**-Zugriff auf Azure AD- und Azure-Ressourcen
+- Gewähren von privilegiertem **Just-In-Time** -Zugriff auf Azure AD- und Azure-Ressourcen
 - Zuweisen von **zeitgebundenem** Zugriff auf Ressourcen (mit Start- und Enddatum)
 - Anfordern einer **Genehmigung** bei der Aktivierung privilegierter Rollen
 - Erzwingen der **mehrstufigen Authentifizierung** für alle Rollenaktivierungen
-- Anfordern einer **Begründung**, um nachvollziehen zu können, warum Benutzer eine Aktivierung vornehmen
-- Erhalten von **Benachrichtigungen**, wenn privilegierte Rollen aktiviert werden
-- Durchführen von **Zugriffsüberprüfungen**, um zu prüfen, ob Benutzer die Rollen weiterhin benötigen
+- Anfordern einer **Begründung** , um nachvollziehen zu können, warum Benutzer eine Aktivierung vornehmen
+- Erhalten von **Benachrichtigungen** , wenn privilegierte Rollen aktiviert werden
+- Durchführen von **Zugriffsüberprüfungen** , um zu prüfen, ob Benutzer die Rollen weiterhin benötigen
 - Herunterladen eines **Überwachungsverlaufs** zur internen oder externen Überwachung
 
 ## <a name="what-can-i-do-with-it"></a>Verwendungsmöglichkeiten
 
-Nachdem Sie Privileged Identity Management eingerichtet haben, werden im linken Navigationsmenü die Optionen **Aufgaben**, **Verwalten** und **Aktivität** angezeigt. Als Administrator wählen Sie zwischen verschiedenen Optionen, etwa zum Verwalten von **Azure AD-Rollen**, Verwalten von Rollen für **Azure-Ressourcen** oder Gruppen mit privilegiertem Zugriff. Bei Auswahl der zu verwaltenden Elementen werden die entsprechenden Optionen angezeigt.
+Nachdem Sie Privileged Identity Management eingerichtet haben, werden im linken Navigationsmenü die Optionen **Aufgaben** , **Verwalten** und **Aktivität** angezeigt. Als Administrator wählen Sie zwischen verschiedenen Optionen, etwa zum Verwalten von **Azure AD-Rollen** , Verwalten von Rollen für **Azure-Ressourcen** oder Gruppen mit privilegiertem Zugriff. Bei Auswahl der zu verwaltenden Elementen werden die entsprechenden Optionen angezeigt.
 
 ![Screenshot: Privileged Identity Management im Azure-Portal](./media/pim-configure/pim-quickstart.png)
 
@@ -106,5 +106,5 @@ Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforder
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Lizenzanforderungen für die Verwendung von PIM](subscription-requirements.md)
-- [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Bereitstellen von Azure AD Privileged Identity Management (PIM)](pim-deployment-plan.md)

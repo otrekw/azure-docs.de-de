@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b0939191a8029ef30f17500bbaaa7eb32b5a6d7e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278371"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486547"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Spring Data Azure Cosmos DB v3-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -36,9 +36,9 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB
 > Spring Data Azure Cosmos DB unterstützt nur die SQL-API.
 >
 > In diesen Artikeln finden Sie Informationen zu Spring Data für andere Azure Cosmos DB-APIs:
-> * [Spring Data für Apache Cassandra mit Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Spring Data MongoDB mit Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Spring Data Gremlin Starter mit Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Spring Data für Apache Cassandra mit Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB mit Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin Starter mit Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,15 +50,15 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB
 
 ## <a name="introductory-notes"></a>Einführende Hinweise
 
-*Die Struktur eines Cosmos DB-Kontos.* Ein Cosmos DB-*Konto* enthält unabhängig von der API oder der Programmiersprache null oder mehr *Datenbanken*, eine *Datenbank* (DB) enthält null oder mehr *Container*, und ein *Container* enthält null oder mehr Elemente, wie im folgenden Diagramm zu sehen:
+*Die Struktur eines Cosmos DB-Kontos.* Ein Cosmos DB- *Konto* enthält unabhängig von der API oder der Programmiersprache null oder mehr *Datenbanken* , eine *Datenbank* (DB) enthält null oder mehr *Container* , und ein *Container* enthält null oder mehr Elemente, wie im folgenden Diagramm zu sehen:
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entitäten in einem Azure Cosmos-Konto" border="false":::
 
-Weitere Informationen zu Datenbanken, Containern und Elementen finden Sie [hier](account-databases-containers-items.md). Einige wichtige Eigenschaften werden auf der Containerebene definiert. Hierzu zählen unter anderem der *bereitgestellte Durchsatz* und der *Partitionsschlüssel*. 
+Weitere Informationen zu Datenbanken, Containern und Elementen finden Sie [hier](account-databases-containers-items.md). Einige wichtige Eigenschaften werden auf der Containerebene definiert. Hierzu zählen unter anderem der *bereitgestellte Durchsatz* und der *Partitionsschlüssel* . 
 
-Der bereitgestellte Durchsatz wird in Anforderungseinheiten (Request Units, *RUs*) gemessen. Diese haben einen Preis und wirken sich erheblich auf die Betriebskosten des Kontos aus. Der bereitgestellte Durchsatz kann container- oder datenbankspezifisch ausgewählt werden. In der Regel wird jedoch die containerspezifische Durchsatzangabe bevorzugt. Weitere Informationen zur Durchsatzbereitstellung finden Sie [hier](set-throughput.md).
+Der bereitgestellte Durchsatz wird in Anforderungseinheiten (Request Units, *RUs* ) gemessen. Diese haben einen Preis und wirken sich erheblich auf die Betriebskosten des Kontos aus. Der bereitgestellte Durchsatz kann container- oder datenbankspezifisch ausgewählt werden. In der Regel wird jedoch die containerspezifische Durchsatzangabe bevorzugt. Weitere Informationen zur Durchsatzbereitstellung finden Sie [hier](set-throughput.md).
 
-Wenn Elemente in einen Cosmos DB-Container eingefügt werden, wird die Datenbank horizontal skaliert, indem weitere Speicher- und Computeressourcen zur Bewältigung der Anforderungen hinzugefügt werden. Speicher- und Computekapazität werden in diskreten Einheiten (*Partitionen*) hinzugefügt. In Ihren Dokumenten muss ein Feld als Partitionsschlüssel ausgewählt werden, durch den jedes Dokument einer Partition zugeordnet wird. Zur Verwaltung von Partitionen wird jeder Partition ein ungefähr gleicher Slice aus dem Bereich der Partitionsschlüsselwerte zugewiesen. Es empfiehlt sich daher, einen relativ zufälligen oder gleichmäßig verteilten Partitionsschlüssel zu wählen. Andernfalls fallen für einige Partitionen deutlich mehr Anforderungen an als für andere. Diese werden als *heiße Partitionen* bzw. *kalte Partitionen* bezeichnet und sollten vermieden werden. Weitere Informationen zur Partitionierung finden Sie [hier](partitioning-overview.md).
+Wenn Elemente in einen Cosmos DB-Container eingefügt werden, wird die Datenbank horizontal skaliert, indem weitere Speicher- und Computeressourcen zur Bewältigung der Anforderungen hinzugefügt werden. Speicher- und Computekapazität werden in diskreten Einheiten ( *Partitionen* ) hinzugefügt. In Ihren Dokumenten muss ein Feld als Partitionsschlüssel ausgewählt werden, durch den jedes Dokument einer Partition zugeordnet wird. Zur Verwaltung von Partitionen wird jeder Partition ein ungefähr gleicher Slice aus dem Bereich der Partitionsschlüsselwerte zugewiesen. Es empfiehlt sich daher, einen relativ zufälligen oder gleichmäßig verteilten Partitionsschlüssel zu wählen. Andernfalls fallen für einige Partitionen deutlich mehr Anforderungen an als für andere. Diese werden als *heiße Partitionen* bzw. *kalte Partitionen* bezeichnet und sollten vermieden werden. Weitere Informationen zur Partitionierung finden Sie [hier](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 

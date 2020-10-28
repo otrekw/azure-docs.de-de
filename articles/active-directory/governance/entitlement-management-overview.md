@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597384"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362466"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -77,15 +77,15 @@ Die Berechtigungsverwaltung führt in Azure AD das Konzept von *Zugriffspaketen*
 
 Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Microsoft 365-Gruppen basieren.  Beispiel:
 
-- Sie können Benutzerlizenzen für Microsoft 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket vergeben und die [gruppenbasierte Lizenzierung](../users-groups-roles/licensing-groups-assign.md) für diese Gruppe konfigurieren.
+- Sie können Benutzerlizenzen für Microsoft 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket vergeben und die [gruppenbasierte Lizenzierung](../enterprise-users/licensing-groups-assign.md) für diese Gruppe konfigurieren.
 - Sie können Benutzern mithilfe einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und durch Erstellen einer [Azure-Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md) für diese Gruppe Zugriff zum Verwalten von Azure-Ressourcen erteilen.
-- Sie können mithilfe von Gruppen, die Azure AD-Rollen in einem Zugriffspaket zugewiesen werden können, und durch das [Zuweisen einer Azure AD-Rolle zu dieser Gruppe](../users-groups-roles/roles-groups-assign-role.md) Benutzern Zugriff zum Verwalten von Azure AD-Rollen gewähren.
+- Sie können mithilfe von Gruppen, die Azure AD-Rollen in einem Zugriffspaket zugewiesen werden können, und durch das [Zuweisen einer Azure AD-Rolle zu dieser Gruppe](../roles/groups-assign-role.md) Benutzern Zugriff zum Verwalten von Azure AD-Rollen gewähren.
 
 ## <a name="how-do-i-control-who-gets-access"></a>Wie kann gesteuert werden, wer Zugriff erhält?
 
 Bei einem Zugriffspaket listet ein Administrator oder delegierter Zugriffspaket-Manager die Ressourcen (Gruppen, Apps und Websites) sowie die Rollen auf, die die Benutzer für diese Ressourcen benötigen.
 
-Zugriffspakete enthalten außerdem eine oder mehrere *Richtlinien*. Eine Richtlinie definiert die Regeln oder Leitlinien für die Zuweisung zu einem Zugriffspaket. Die einzelnen Richtlinien können verwendet werden, um sicherzustellen, dass nur die entsprechenden Benutzer Zugriff anfordern können, dass es genehmigende Personen für die Anforderung gibt und dass der Zugriff auf die betreffenden Ressourcen zeitlich begrenzt ist und abläuft, sofern er nicht erneuert wird.
+Zugriffspakete enthalten außerdem eine oder mehrere *Richtlinien* . Eine Richtlinie definiert die Regeln oder Leitlinien für die Zuweisung zu einem Zugriffspaket. Die einzelnen Richtlinien können verwendet werden, um sicherzustellen, dass nur die entsprechenden Benutzer Zugriff anfordern können, dass es genehmigende Personen für die Anforderung gibt und dass der Zugriff auf die betreffenden Ressourcen zeitlich begrenzt ist und abläuft, sofern er nicht erneuert wird.
 
 ![Zugriffspakete und Zugriffspaketrichtlinien](./media/entitlement-management-overview/elm-overview-access-package.png)
 
@@ -152,7 +152,7 @@ Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforde
 
 - Für Benutzer mit der Rolle „globaler Administrator“, die Anfangskataloge einrichten, auf Pakete und Richtlinien zugreifen und administrative Aufgaben an andere Benutzer delegieren, sind keine Lizenzen erforderlich.
 - Für Benutzer, an die administrative Aufgaben (z. B. Katalogersteller, Katalogbesitzer und Zugriffspaketmanager) delegiert wurden, sind keine Lizenzen erforderlich.
-- Für Gäste, die Zugriffspakete anfordern **können**, aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
+- Für Gäste, die Zugriffspakete anfordern **können** , aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
 
 Die Preise für Azure AD External Identities (Gastbenutzer) basieren auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Modell ersetzt das Abrechnungsmodell im Verhältnis 1:5, das bis zu fünf Gastbenutzer pro Azure AD Premium-Lizenz in Ihrem Mandanten zuließ. Wenn Ihr Mandant mit einem Abonnement verknüpft ist und Sie External Identities-Features für die Zusammenarbeit mit Gastbenutzern verwenden, erfolgt Ihre Abrechnung automatisch nach dem MAU-basierten Abrechnungsmodell. Weitere Informationen finden Sie unter [Abrechnungsmodell für Azure AD External Identities](../external-identities/external-identities-pricing.md).
 

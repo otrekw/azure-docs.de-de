@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 29fb509d72514a18a6554a381737bf9530b1dfc4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cf432910c42716de151aa2e0d36c21bff18d3ed9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276284"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482893"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Schnellstart: Erstellen einer .NET-Konsolen-App zum Verwalten von Ressourcen der Azure Cosmos DB-SQL-API
 
@@ -167,7 +167,7 @@ Bevor Sie mit dem Erstellen der Anwendung beginnen, befassen wir uns noch mit de
 
 Weitere Informationen zur Hierarchie der verschiedenen Entitäten finden Sie im Artikel [Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB](account-databases-containers-items.md). Für die Interaktion mit diesen Ressourcen verwenden Sie die folgenden .NET-Klassen:
 
-* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet&preserve-view=true): Diese Klasse bietet eine clientseitige logische Darstellung für den Azure Cosmos DB-Dienst. Das Clientobjekt wird zum Konfigurieren und Ausführen von Anforderungen für den Dienst verwendet.
+* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient?preserve-view=true&view=azure-dotnet): Diese Klasse bietet eine clientseitige logische Darstellung für den Azure Cosmos DB-Dienst. Das Clientobjekt wird zum Konfigurieren und Ausführen von Anforderungen für den Dienst verwendet.
 
 * [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet&preserve-view=true): Mit dieser Methode wird eine Datenbankressource als asynchroner Vorgang erstellt (falls nicht vorhanden) oder abgerufen (wenn bereits vorhanden). 
 

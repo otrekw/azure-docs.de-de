@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319009"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487584"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer Python-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
 
@@ -39,7 +39,7 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-
     * Mit einem aktiven Azure-Abonnement:
         * [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free), oder verwenden Sie ein vorhandenes Abonnement. 
         * [Monatliches Guthaben für Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Free-Tarif von Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Free-Tarif von Azure Cosmos DB](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * Ohne aktives Azure-Abonnement:
         * [Testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) mit einer Testumgebung, die 30 Tage lang verfügbar ist.
         * [Azure Cosmos DB-Emulator](https://aka.ms/cosmosdb-emulator) 
@@ -74,7 +74,7 @@ Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Datenbank
     
     Zusätzlich zu den zuvor beschriebenen Einstellungen können Sie optional auch **eindeutige Schlüssel** für den Container hinzufügen. In diesem Beispiel lassen wir das Feld leer. Eindeutige Schlüssel bieten Entwicklern die Möglichkeit, ihrer Datenbank eine zusätzliche Datenintegritätsebene hinzuzufügen. Durch das Erstellen einer Richtlinie für eindeutige Schlüssel beim Erstellen eines Containers wird die Eindeutigkeit von einem oder mehreren Werten pro Partitionsschlüssel gewährleistet. Weitere Informationen finden Sie im Artikel [Eindeutige Schlüssel in Azure Cosmos DB](unique-keys.md).
     
-    Klicken Sie auf **OK**. Im Daten-Explorer werden die neue Datenbank und der neue Container angezeigt.
+    Klicken Sie auf **OK** . Im Daten-Explorer werden die neue Datenbank und der neue Container angezeigt.
 
 ## <a name="add-sample-data"></a>Hinzufügen von Beispieldaten
 
@@ -115,13 +115,13 @@ Klonen Sie zunächst eine SQL-API-App aus GitHub, legen Sie die Verbindungszeich
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) unter Ihrem Azure Cosmos DB-Konto im Navigationsbereich auf der linken Seite **Schlüssel** aus. Im nächsten Schritt kopieren Sie den **URI** und den **Primärschlüssel** mithilfe der Kopierschaltflächen auf der rechten Bildschirmseite in die Datei *cosmos_get_started.py*.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) unter Ihrem Azure Cosmos DB-Konto im Navigationsbereich auf der linken Seite **Schlüssel** aus. Im nächsten Schritt kopieren Sie den **URI** und den **Primärschlüssel** mithilfe der Kopierschaltflächen auf der rechten Bildschirmseite in die Datei *cosmos_get_started.py* .
 
     :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Daten-Explorer im Azure-Portal, Bereich „Container hinzufügen“":::
 
-2. Öffnen Sie in Visual Studio Code die Datei *cosmos_get_started.py* in *\git-samples\azure-cosmos-db-python-getting-started*.
+2. Öffnen Sie in Visual Studio Code die Datei *cosmos_get_started.py* in *\git-samples\azure-cosmos-db-python-getting-started* .
 
-3. Kopieren Sie den **URI**-Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in *cosmos_get_started.py* als Wert der Variablen **endpoint** fest. 
+3. Kopieren Sie den **URI** -Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in *cosmos_get_started.py* als Wert der Variablen **endpoint** fest. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
@@ -129,13 +129,13 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     `key = 'FILLME'`
 
-5. Speichern Sie die Datei *cosmos_get_started.py*.
+5. Speichern Sie die Datei *cosmos_get_started.py* .
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
 Dieser Schritt ist optional. Informieren Sie sich über die im Code erstellten Datenbankressourcen, oder springen Sie weiter zu [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string).
 
-Die folgenden Codeausschnitte stammen alle aus der Datei *cosmos_get_started.py*.
+Die folgenden Codeausschnitte stammen alle aus der Datei *cosmos_get_started.py* .
 
 * Der CosmosClient wird initialisiert. Achten Sie darauf, die Werte für „endpoint“ und „key“ zu aktualisieren, wie im Abschnitt [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) beschrieben. 
 
@@ -163,13 +163,13 @@ Die folgenden Codeausschnitte stammen alle aus der Datei *cosmos_get_started.py*
    
 ## <a name="run-the-app"></a>Ausführen der App
 
-1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Befehlspalette**. 
+1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Befehlspalette** . 
 
 2. Geben Sie an der Eingabeaufforderung **Python: Select Interpreter** ein, und wählen Sie die gewünschte Python-Version aus.
 
     Die Fußzeile in Visual Studio Code wird mit dem ausgewählten Interpreter aktualisiert. 
 
-3. Klicken Sie auf **Ansicht** > **Integriertes Terminal**, um das in Visual Studio Code integrierte Terminal zu öffnen.
+3. Klicken Sie auf **Ansicht** > **Integriertes Terminal** , um das in Visual Studio Code integrierte Terminal zu öffnen.
 
 4. Vergewissern Sie sich im Fenster des integrierten Terminals, dass Sie sich im Ordner *azure-cosmos-db-python-getting-started* befinden. Wechseln Sie andernfalls mithilfe des folgenden Befehls zum Beispielordner: 
 
@@ -237,5 +237,3 @@ In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Azure Cosmos DB-K
 
 > [!div class="nextstepaction"]
 > [Importieren von Daten in Azure Cosmos DB für die SQL-API](import-data.md)
-
-

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 42871d4219424e3e46d6b2dccc5899b02dccc57e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0f53958f8d7b0c5c12d78940b30f88b49d667c1e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318992"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487533"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App mit Node.js und Azure Cosmos DB
 
@@ -22,7 +22,7 @@ ms.locfileid: "91318992"
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 > 
 
 In dieser Schnellstartanleitung erstellen Sie ein Azure Cosmos DB-Tabellen-API-Konto und verwenden den Daten-Explorer und eine über GitHub geklonte Node.js-App, um Tabellen und Entitäten zu erstellen. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
@@ -143,13 +143,13 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 2. Kopieren Sie den Wert für „PRIMÄRE VERBINDUNGSZEICHENFOLGE“ mithilfe der Kopierschaltfläche auf der rechten Seite.
 
-3. Öffnen Sie die Datei *app.config*, und fügen Sie den Wert in „connectionString“ in Zeile 3 ein. 
+3. Öffnen Sie die Datei *app.config* , und fügen Sie den Wert in „connectionString“ in Zeile 3 ein. 
 
     > [!IMPORTANT]
     > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten.
     >
 
-3. Speichern Sie die Datei *app.config*.
+3. Speichern Sie die Datei *app.config* .
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 

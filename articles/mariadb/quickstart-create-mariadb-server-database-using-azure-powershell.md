@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7db89d315e0df51aad7f4660ec5da64425eae2aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502255"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424441"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Schnellstart: Erstellen eines Servers für Azure Database for MariaDB mithilfe von PowerShell
 
@@ -23,7 +23,7 @@ In diesem Schnellstart wird die Verwendung von PowerShell zum Erstellen eines Az
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das Az PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das Az PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Solange nur eine Vorschauversion des PowerShell-Moduls Az.MariaDb verfügbar ist, müssen Sie es separat über das Az-PowerShell-Modul installieren. Verwenden Sie dazu den folgenden Befehl: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
@@ -37,7 +37,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMariaDB
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie das entsprechende Abonnement auswählen, in dem die Ressourcen fakturiert werden sollen. Wählen Sie mit dem Cmdlet [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) eine bestimmte Abonnement-ID aus.
+Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie das entsprechende Abonnement auswählen, in dem die Ressourcen fakturiert werden sollen. Wählen Sie mit dem Cmdlet [Set-AzContext](/powershell/module/az.accounts/set-azcontext) eine bestimmte Abonnement-ID aus.
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -45,7 +45,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Cmdlet [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen als Gruppe bereitgestellt und verwaltet werden.
+Erstellen Sie mit dem Cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen als Gruppe bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen **myresourcegroup** in der Region **USA, Westen** erstellt.
 
@@ -70,7 +70,7 @@ Die folgende Tabelle enthält eine Liste mit den häufig verwendeten Parametern 
 | SslEnforcement             | Aktiviert          | Gibt an, ob SSL für diesen Server aktiviert werden soll. Zulässige Werte: „Aktiviert“, „Deaktiviert“                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51.200            | Die Speicherkapazität des Servers (Einheit: MB). Für „Valid StorageInMb“ gilt ein Mindestwert von 5.120 MB, der in Schritten von jeweils 1.024 MB erhöht werden kann. Weitere Informationen zu Grenzwerten für die Speichergröße finden Sie unter [Azure Database for MariaDB – Tarife](./concepts-pricing-tiers.md).                                                                               |
 | Version                    | 5.7              | Die Hauptversion von MariaDB.                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | Der Benutzername für die Administratoranmeldung. Dieser darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | Der Benutzername für die Administratoranmeldung. Dieser darf nicht **azure_superuser** , **admin** , **administrator** , **root** , **guest** oder **public** lauten.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Das Kennwort des Administratorbenutzers in Form einer sicheren Zeichenfolge. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen.                                       |
 
 Für den Parameterwert **Sku** wird das Format **Tarif\_Computegeneration\_V-Kerne** verwendet. Dies ist in den folgenden Beispielen dargestellt.
@@ -124,7 +124,7 @@ Update-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup -Ss
 
 ## <a name="get-the-connection-information"></a>Abrufen der Verbindungsinformationen
 
-Zum Herstellen einer Verbindung zum Server müssen Sie Hostinformationen und Anmeldeinformationen für den Zugriff angeben. Verwenden Sie das folgende Beispiel, um die Verbindungsinformationen zu ermitteln. Notieren Sie sich die Werte für **FullyQualifiedDomainName** und **AdministratorLogin**.
+Zum Herstellen einer Verbindung zum Server müssen Sie Hostinformationen und Anmeldeinformationen für den Zugriff angeben. Verwenden Sie das folgende Beispiel, um die Verbindungsinformationen zu ermitteln. Notieren Sie sich die Werte für **FullyQualifiedDomainName** und **AdministratorLogin** .
 
 ```azurepowershell-interactive
 Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -214,7 +214,7 @@ Zusätzliche Befehle finden Sie unter [MySQL 5.7-Referenzhandbuch – Kapitel 4.
     | Username          | myadmin@mydemoserver                      | Der zuvor notierte Benutzername für den Serveradministrator.                |
     | Kennwort          | *************                             | Verwenden Sie das Kennwort des Administratorkontos, das Sie zuvor konfiguriert haben.      |
 
-1. Klicken Sie auf die Schaltfläche **Verbindung testen**, um zu testen, ob die Parameter richtig konfiguriert sind.
+1. Klicken Sie auf die Schaltfläche **Verbindung testen** , um zu testen, ob die Parameter richtig konfiguriert sind.
 
 1. Wählen Sie die Verbindung aus, die für die Verbindungsherstellung mit dem Server verwendet werden soll.
 

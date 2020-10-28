@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944649"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476143"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL Single Server
 
@@ -81,8 +81,8 @@ Der Single Server-Dienst verfügt über integrierte Features zur Leistungsüberw
 
 Der Dienst führt die Communityversion von PostgreSQL aus. Dies ermöglicht vollständige Anwendungskompatibilität und erfordert minimale Refactoringkosten für die Migration vorhandener Anwendungen, die in der PostgreSQL-Engine entwickelt wurden, zum Single Server-Dienst. Die Migration zum Single Server-Dienst kann mithilfe einer der folgenden Optionen durchgeführt werden:
 
-- **Sichern und Wiederherstellen:** Für Offlinemigrationen, bei denen sich Benutzer einige Downtimes leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie pg_dump und pg_restore die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore).
-- **Azure Database Migration Service:** Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Downtimes können Sie Azure Database Migration Service verwenden. Weitere Informationen finden Sie unter [DMS über Portal](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) und [DMS über CLI](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online).
+- **Sichern und Wiederherstellen:** Für Offlinemigrationen, bei denen sich Benutzer einige Downtimes leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie pg_dump und pg_restore die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](./howto-migrate-using-dump-and-restore.md).
+- **Azure Database Migration Service:** Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Downtimes können Sie Azure Database Migration Service verwenden. Weitere Informationen finden Sie unter [DMS über Portal](../dms/tutorial-postgresql-azure-postgresql-online-portal.md) und [DMS über CLI](../dms/tutorial-postgresql-azure-postgresql-online.md).
 
 ## <a name="contacts"></a>Kontakte
 
@@ -98,4 +98,3 @@ Weitere Kontaktmöglichkeiten:
 
 Nachdem Sie nun die Grundlagen zum Bereitstellungsmodus Azure Database for PostgreSQL Single Server kennen, können Sie mit den folgenden Themen fortfahren:
 - Erstellen Sie Ihren ersten Server.
-  

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279831"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490610"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Einführung in die Gremlin-API von Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Die Azure Cosmos DB Gremlin-API bietet die folgenden differenzierten Funktionen
 
 * **Flexibel skalierbarer Durchsatz und Speicher**
 
-  Diagramme müssen in der Praxis über die Kapazität eines einzelnen Servers hinweg skaliert werden. Azure Cosmos DB unterstützt horizontal skalierbare Graphdatenbanken, die eine praktisch unbegrenzte Größe in Bezug auf den Speicher und bereitgestellten Durchsatz haben können. Bei zunehmender Skalierung der Graphdatenbank werden die Daten automatisch mithilfe der [Graphpartitionierung](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning) verteilt.
+  Diagramme müssen in der Praxis über die Kapazität eines einzelnen Servers hinweg skaliert werden. Azure Cosmos DB unterstützt horizontal skalierbare Graphdatenbanken, die eine praktisch unbegrenzte Größe in Bezug auf den Speicher und bereitgestellten Durchsatz haben können. Bei zunehmender Skalierung der Graphdatenbank werden die Daten automatisch mithilfe der [Graphpartitionierung](./graph-partitioning.md) verteilt.
 
 * **Replikation in mehreren Regionen**
 
@@ -52,7 +52,7 @@ Die Azure Cosmos DB Gremlin-API bietet die folgenden differenzierten Funktionen
 
 * **Automatische Indizierung**
 
-  Alle Eigenschaften in Knoten (auch als Vertices bezeichnet) und Edges im Graphen werden von Azure Cosmos DB automatisch indiziert, ohne dass ein Schema oder die Erstellung sekundärer Indizes erwartet oder gefordert wird. Weitere Informationen zur Indizierung in Azure Cosmos DB finden Sie [hier](https://docs.microsoft.com/azure/cosmos-db/index-overview).
+  Alle Eigenschaften in Knoten (auch als Vertices bezeichnet) und Edges im Graphen werden von Azure Cosmos DB automatisch indiziert, ohne dass ein Schema oder die Erstellung sekundärer Indizes erwartet oder gefordert wird. Weitere Informationen zur Indizierung in Azure Cosmos DB finden Sie [hier](/azure/cosmos-db/index-overview).
 
 * **Kompatibilität mit Apache TinkerPop**
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651368"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533001"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe von PowerShell
 
@@ -31,7 +31,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Das PowerShell-[Az-Modul](https://docs.microsoft.com/powershell/azure/) ist installiert.
+* Das PowerShell-[Az-Modul](/powershell/azure/) ist installiert.
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -147,7 +147,7 @@ Wenn Sie die Verwendung von mehr als 32 Workerknoten planen (entweder bei Erstel
     ssh sshuser@mykafka-ssh.azurehdinsight.net
     ```
 
-2. Wenn Sie zum ersten Mal eine Verbindung mit dem Cluster herstellen, zeigt der SSH-Client unter Umständen eine Warnung mit dem Hinweis an, dass die Echtheit des Hosts nicht bestätigt werden kann. Geben Sie in diesem Fall __Ja__ ein, und drücken Sie dann die __EINGABETASTE__, um den Host der Liste mit den vertrauenswürdigen Servern des SSH-Clients hinzuzufügen.
+2. Wenn Sie zum ersten Mal eine Verbindung mit dem Cluster herstellen, zeigt der SSH-Client unter Umständen eine Warnung mit dem Hinweis an, dass die Echtheit des Hosts nicht bestätigt werden kann. Geben Sie in diesem Fall __Ja__ ein, und drücken Sie dann die __EINGABETASTE__ , um den Host der Liste mit den vertrauenswürdigen Servern des SSH-Clients hinzuzufügen.
 
 3. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein.
 
@@ -176,7 +176,7 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Beschaffen der Apache Zookeeper- und Broker-Hostinformationen
 
-Bei der Verwendung von Kafka müssen Ihnen die *Apache Zookeeper*- und die *Broker*-Hosts bekannt sein. Diese Hosts werden zusammen mit der Kafka-API und vielen Hilfsprogrammen verwendet, die in Kafka enthalten sind.
+Bei der Verwendung von Kafka müssen Ihnen die *Apache Zookeeper* - und die *Broker* -Hosts bekannt sein. Diese Hosts werden zusammen mit der Kafka-API und vielen Hilfsprogrammen verwendet, die in Kafka enthalten sind.
 
 In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-API im Cluster ab.
 
@@ -232,9 +232,9 @@ In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-A
 
 ## <a name="manage-apache-kafka-topics"></a>Verwalten von Apache Kafka-Themen
 
-Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh` können Sie Themen verwalten.
+Kafka speichert Datenströme in *Themen* . Mit dem Hilfsprogramm `kafka-topics.sh` können Sie Themen verwalten.
 
-* Führen Sie folgenden Befehl in der SSH-Verbindung aus, **um ein Thema zu erstellen**:
+* Führen Sie folgenden Befehl in der SSH-Verbindung aus, **um ein Thema zu erstellen** :
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -250,7 +250,7 @@ Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh
         
         In Regionen mit drei Fehlerdomänen ermöglicht der Replikationsfaktor 3 die Verteilung von Replikaten auf die Fehlerdomänen. In Regionen mit zwei Fehlerdomänen ermöglicht der Replikationsfaktor 4 die gleichmäßige Verteilung von Replikaten auf die Domänen.
         
-        Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+        Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
         Azure-Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für Hochverfügbarkeit verteilt werden.
 
@@ -262,7 +262,7 @@ Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh
 
         * Wenn Sie einen Cluster hochskalieren
 
-* Verwenden Sie den folgenden Befehl, **um Themen aufzulisten**:
+* Verwenden Sie den folgenden Befehl, **um Themen aufzulisten** :
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -289,7 +289,7 @@ Wenn Sie weitere Informationen zu den mit dem Hilfsprogramm `kafka-topics.sh` ve
 
 ## <a name="produce-and-consume-records"></a>Erstellen und Nutzen von Datensätzen
 
-Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer und Consumer kommunizieren mit dem *Kafka-Brokerdienst*. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Brokerhost.
+Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer und Consumer kommunizieren mit dem *Kafka-Brokerdienst* . Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Brokerhost.
 
 Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speichern und sie anschließend mithilfe eines Consumers zu lesen:
 
@@ -301,7 +301,7 @@ Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speiche
    
     Nach diesem Befehl erreichen Sie eine leere Zeile.
 
-2. Geben Sie eine Textnachricht in die leere Zeile ein, und drücken Sie die EINGABETASTE. Geben Sie auf diese Weise mehrere Nachrichten ein, und drücken Sie anschließend **STRG+C**, um zur normalen Eingabeaufforderung zurückzukehren. Die einzelnen Zeilen werden jeweils als separater Datensatz an das Kafka-Thema gesendet.
+2. Geben Sie eine Textnachricht in die leere Zeile ein, und drücken Sie die EINGABETASTE. Geben Sie auf diese Weise mehrere Nachrichten ein, und drücken Sie anschließend **STRG+C** , um zur normalen Eingabeaufforderung zurückzukehren. Die einzelnen Zeilen werden jeweils als separater Datensatz an das Kafka-Thema gesendet.
 
 3. Verwenden Sie zum Lesen von Datensätzen aus dem Thema das Hilfsprogramm `kafka-console-consumer.sh` über die SSH-Verbindung:
    
@@ -313,7 +313,7 @@ Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speiche
 
     Falls Sie eine ältere Version von Kafka verwenden, ersetzen Sie `--bootstrap-server $KAFKABROKERS` durch `--zookeeper $KAFKAZKHOSTS`.
 
-4. Drücken Sie __STRG+C__, um den Consumer zu beenden.
+4. Drücken Sie __STRG+C__ , um den Consumer zu beenden.
 
 Sie können Producer und Consumer auch programmgesteuert erstellen. Ein Beispiel für die Verwendung dieser API finden Sie im Dokument [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](apache-kafka-producer-consumer-api.md).
 

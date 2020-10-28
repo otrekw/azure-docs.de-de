@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011462"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425873"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Schnellstart: Verwenden des Azure Storage SDK v11 für .NET zum Verwalten einer Warteschlange
 
@@ -34,7 +34,7 @@ Laden Sie als Nächstes .NET Core 2.0 für Ihr Betriebssystem herunter, und füh
 - Installieren Sie [.NET Core für Windows](https://www.microsoft.com/net/download/windows) oder das [.NET Framework](https://www.microsoft.com/net/download/windows) (in Visual Studio für Windows enthalten).
 - Installieren Sie [Visual Studio für Windows](https://www.visualstudio.com/). Bei Verwendung von .NET Core ist die Installation von Visual Studio optional.  
 
-Informationen zur Wahl zwischen .NET Core und .NET Framework finden Sie unter [Wahl zwischen .NET Core und .NET Framework für Server-Apps](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+Informationen zur Wahl zwischen .NET Core und .NET Framework finden Sie unter [Wahl zwischen .NET Core und .NET Framework für Server-Apps](/dotnet/standard/choosing-core-framework-server).
 
 ### <a name="linux"></a>Linux
 
@@ -56,7 +56,7 @@ Verwenden Sie [Git](https://git-scm.com/), um eine Kopie der Anwendung in Ihre E
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner *storage-queues-dotnet-quickstart*, öffnen Sie ihn, und doppelklicken Sie auf *storage-queues-dotnet-quickstart.sln*. 
+Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner *storage-queues-dotnet-quickstart* , öffnen Sie ihn, und doppelklicken Sie auf *storage-queues-dotnet-quickstart.sln* . 
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -266,14 +266,14 @@ Für die .NET-Entwicklung mit Azure-Warteschlangen stehen folgende zusätzliche 
 
 ### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
 
-- Laden Sie die NuGet-Pakete für die aktuelle Version der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet) herunter.
+- Laden Sie die NuGet-Pakete für die aktuelle Version der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage) herunter.
     - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Warteschlangen](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Zeigen Sie den [Quellcode der .NET-Clientbibliothek](https://github.com/Azure/azure-storage-net) auf GitHub an.
 
 ### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
 
-- Weitere Informationen zur .NET-Clientbibliothek finden Sie in der [Referenz zur .NET-API](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- Weitere Informationen zur .NET-Clientbibliothek finden Sie in der [Referenz zur .NET-API](/dotnet/api/overview/azure/storage).
 - Erkunden Sie [Queue Storage-Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues), die unter Verwendung der .NET-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -281,6 +281,6 @@ Für die .NET-Entwicklung mit Azure-Warteschlangen stehen folgende zusätzliche 
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe von .NET einer Warteschlange Nachrichten hinzufügen, Nachrichten aus einer Warteschlange einsehen und Nachrichten aus der Warteschlange entfernen und verarbeiten. 
 
 > [!div class="nextstepaction"]
-> [Kommunikation zwischen Anwendungen mit Azure Queue Storage](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Kommunikation zwischen Anwendungen mit Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/) (Einstieg in .NET in 10 Minuten).

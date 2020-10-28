@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873040"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486496"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Schnellstart: Erstellen einer Python-App mit der API für MongoDB von Azure Cosmos DB
 
@@ -119,7 +119,7 @@ Wenn Sie den Code mit einem aktiven Azure Cosmos DB-Konto testen möchten, rufen
 
 3. Kopieren Sie den Wert für **Benutzername** aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in der Datei *app.py* als Wert für **Name** fest.
 
-4. Kopieren Sie dann den Wert Ihrer **Verbindungszeichenfolge** aus dem Portal, und legen Sie ihn in der Datei *app.py* als **MongoClient**-Wert fest.
+4. Kopieren Sie dann den Wert Ihrer **Verbindungszeichenfolge** aus dem Portal, und legen Sie ihn in der Datei *app.py* als **MongoClient** -Wert fest.
 
 5. Kopieren Sie schließlich das **Kennwort** aus dem Portal, und legen Sie es in der Datei *app.py* als **Kennwort** fest.
 
@@ -127,7 +127,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 ## <a name="deploy-to-azure"></a>Bereitstellen in Azure
 
-Zum Bereitstellen dieser App können Sie in Azure eine neue Web-App erstellen und Continuous Deployment mit einer Verzweigung dieses GitHub-Repositorys aktivieren. Eine Anleitung zum Einrichten von Continuous Deployment mit GitHub in Azure finden Sie in [diesem Tutorial](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment).
+Zum Bereitstellen dieser App können Sie in Azure eine neue Web-App erstellen und Continuous Deployment mit einer Verzweigung dieses GitHub-Repositorys aktivieren. Eine Anleitung zum Einrichten von Continuous Deployment mit GitHub in Azure finden Sie in [diesem Tutorial](../app-service/deploy-continuous-deployment.md).
 
 Entfernen Sie beim Bereitstellen in Azure Ihre Anwendungsschlüssel, und stellen Sie sicher, dass der folgende Abschnitt auskommentiert ist:
 
@@ -137,7 +137,7 @@ Entfernen Sie beim Bereitstellen in Azure Ihre Anwendungsschlüssel, und stellen
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Fügen Sie anschließend „MONGOURL“, „MONGO_PASSWORD“ und „MONGO_USERNAME“ den Anwendungseinstellungen hinzu. Weitere Informationen zu Anwendungseinstellungen in Azure-Web-Apps finden Sie in [diesem Tutorial](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings).
+Fügen Sie anschließend „MONGOURL“, „MONGO_PASSWORD“ und „MONGO_USERNAME“ den Anwendungseinstellungen hinzu. Weitere Informationen zu Anwendungseinstellungen in Azure-Web-Apps finden Sie in [diesem Tutorial](../app-service/configure-common.md#configure-app-settings).
 
 Wenn Sie keinen Fork dieses Repositorys erstellen möchten, können Sie weiter unten auch die Schaltfläche **Bereitstellung in Azure** auswählen. Richten Sie anschließend in Azure die Anwendungseinstellungen mit Ihren Azure Cosmos DB-Kontoinformationen ein.
 
@@ -161,4 +161,4 @@ Wenn Sie keinen Fork dieses Repositorys erstellen möchten, können Sie weiter u
 In dieser Schnellstartanleitung haben Sie erfahren, wie Sie ein Azure Cosmos DB-Konto für die Mongo DB-API erstellen und den Azure Cosmos DB-Emulator zum Ausführen einer über GitHub geklonten Python Flask-To-Do-Web-App verwenden. Jetzt können Sie zusätzliche Daten in Ihr Azure Cosmos DB-Konto importieren. 
 
 > [!div class="nextstepaction"]
-> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
+> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

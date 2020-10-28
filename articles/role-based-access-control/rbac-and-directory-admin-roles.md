@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91397724"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370643"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
 
@@ -99,11 +99,11 @@ Azure AD-Rollen werden verwendet, um Azure AD-Ressourcen in einem Verzeichnis 
 
 | Azure AD-Rolle | Berechtigungen | Notizen |
 | --- | --- | --- |
-| [Globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Verwalten des Zugriffs auf alle administrativen Features in Azure Active Directory und auf Dienste, die im Verbund mit Azure Active Directory genutzt werden</li><li>Zuweisen von Administratorrollen für andere Personen</li><li>Zurücksetzen des Kennworts für alle Benutzer und alle anderen Administratoren</li></ul> | Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird zu einem globalen Administrator. |
-| [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
-| [Rechnungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
+| [Globaler Administrator](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>Verwalten des Zugriffs auf alle administrativen Features in Azure Active Directory und auf Dienste, die im Verbund mit Azure Active Directory genutzt werden</li><li>Zuweisen von Administratorrollen für andere Personen</li><li>Zurücksetzen des Kennworts für alle Benutzer und alle anderen Administratoren</li></ul> | Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird zu einem globalen Administrator. |
+| [Benutzeradministrator](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
+| [Rechnungsadministrator](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
 
-Im Azure-Portal können Sie die Liste mit den Azure AD-Rollen auf dem Blatt **Rollen und Administratoren** anzeigen. Eine Liste mit allen Azure AD-Rollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Im Azure-Portal können Sie die Liste mit den Azure AD-Rollen auf dem Blatt **Rollen und Administratoren** anzeigen. Eine Liste mit allen Azure AD-Rollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ![Azure AD-Rollen im Azure-Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -129,5 +129,5 @@ Mit mehreren Azure AD-Rollen sind Azure AD und Microsoft 365 abgedeckt, z. B
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](overview.md)
-- [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md)
 - [Verwaltung von Azure-Abonnements im klassischen Bereitstellungsmodell](classic-administrators.md)

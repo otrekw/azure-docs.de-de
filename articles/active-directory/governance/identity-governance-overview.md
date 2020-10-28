@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306462"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362449"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -58,7 +58,7 @@ Organisationen benötigen einen Prozess, um den Zugriff über die anfänglich be
 
 In der Regel delegiert die IT-Abteilung Entscheidungen bezüglich der Zugriffsgenehmigung an Entscheidungsträger im Unternehmen.  Darüber hinaus kann die IT die Benutzer selbst in den Prozess einbeziehen.  Beispielsweise müssen Benutzer, die in Europa auf vertrauliche Kundendaten in der Marketinganwendung eines Unternehmens zugreifen, die Richtlinien des Unternehmens kennen. Gastbenutzer kennen die Anforderungen für die Behandlung von Daten in einer Organisation, zu der sie eingeladen wurden, möglicherweise nicht.
 
-Organisationen können den Zugriffslebenszyklus mit Technologien wie [dynamischen Gruppen](../users-groups-roles/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Apps](../saas-apps/tutorial-list.md) oder [in SCIM integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren.  Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md).  Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](access-reviews-overview.md) überprüft werden.   Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie außerdem definieren, wie Benutzer übergreifend über Pakete von Gruppen- und Teammitgliedschaften, Anwendungsrollen und SharePoint Online-Rollen Zugriff anfordern.
+Organisationen können den Zugriffslebenszyklus mit Technologien wie [dynamischen Gruppen](../enterprise-users/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Apps](../saas-apps/tutorial-list.md) oder [in SCIM integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren.  Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md).  Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](access-reviews-overview.md) überprüft werden.   Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie außerdem definieren, wie Benutzer übergreifend über Pakete von Gruppen- und Teammitgliedschaften, Anwendungsrollen und SharePoint Online-Rollen Zugriff anfordern.
 
 Wenn ein Benutzer auf Anwendungen zuzugreifen versucht, erzwingt Azure AD Richtlinien für [bedingten Zugriff](../conditional-access/index.yml). Richtlinien für bedingten Zugriff können beispielsweise beinhalten, dass [Nutzungsbedingungen](../conditional-access/terms-of-use.md) angezeigt werden und [der Benutzer diesen Bedingungen zustimmen muss](../conditional-access/require-tou.md), bevor er auf eine Anwendung zugreifen kann.
 
@@ -90,7 +90,7 @@ Zusätzlich zu den obigen Features werden die folgenden weiteren Azure AD-Featur
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Öffnen Sie im Azure-Portal die Registerkarte „Erste Schritte“ von **Identity Governance**, um mit der Verwendung der Berechtigungsverwaltung, von Zugriffsüberprüfungen, Privileged Identity Management und Nutzungsbedingungen zu beginnen.
+Öffnen Sie im Azure-Portal die Registerkarte „Erste Schritte“ von **Identity Governance** , um mit der Verwendung der Berechtigungsverwaltung, von Zugriffsüberprüfungen, Privileged Identity Management und Nutzungsbedingungen zu beginnen.
 
 ![Identity Governance, Registerkarte „Erste Schritte“](./media/identity-governance-overview/getting-started.png)
 
@@ -100,7 +100,7 @@ Wenn Sie uns Feedback zu Identity Governance-Features geben möchten, klicken Si
 Es gibt keine perfekte Lösung oder Empfehlung, die für alle Kunden geeignet ist. Die folgenden Konfigurationsleitfäden können jedoch als Anhaltspunkt für die Basisrichtlinien dienen, die Microsoft zum Verbessern der Sicherheit und Produktivität von Mitarbeitern empfiehlt.
 
 - [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Sichern des privilegierten Zugriffs](../users-groups-roles/directory-admin-roles-secure.md)
+- [Sichern des privilegierten Zugriffs](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Anhang: Die am wenigsten privilegierten Rollen für die Verwaltung von Identity Governance-Funktionen
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e49ecf0f8e88e0de22117a5ed85b8352e73a2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020234"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487601"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App per .NET SDK und Azure Cosmos DB 
 
@@ -22,14 +22,14 @@ ms.locfileid: "89020234"
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 >  
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von .NET und der [Tabellen-API](table-introduction.md) von Azure Cosmos DB eine App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung gezeigt, wie Sie ein Azure Cosmos DB-Konto erstellen und mithilfe des Daten-Explorers Tabellen und Entitäten im webbasierten Azure-Portal erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung** .
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,11 +68,11 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
    ```
 
 > [!TIP]
-> Eine ausführlichere exemplarische Vorgehensweise mit einem ähnlichen Code finden Sie im Artikel mit dem [Beispiel für die Cosmos DB-Tabellen-API](table-storage-how-to-use-dotnet.md).
+> Eine ausführlichere exemplarische Vorgehensweise mit einem ähnlichen Code finden Sie im Artikel mit dem [Beispiel für die Cosmos DB-Tabellen-API](./tutorial-develop-table-dotnet.md).
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Öffnen der Beispielanwendung in Visual Studio
 
-1. Klicken Sie in Visual Studio im Menü **Datei** auf **Öffnen** > **Projekt/Projektmappe**. 
+1. Klicken Sie in Visual Studio im Menü **Datei** auf **Öffnen** > **Projekt/Projektmappe** . 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="Öffnen der Projektmappe"::: 
 
@@ -102,7 +102,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren. 
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Verbindungszeichenfolge**. Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Verbindungszeichenfolge** . Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE** .
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Öffnen der Projektmappe"
    }
@@ -114,7 +114,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 ## <a name="build-and-deploy-the-app"></a>Erstellen und Bereitstellen der App
 
-1. Klicken Sie in Visual Studio im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CosmosTableSamples**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. 
+1. Klicken Sie in Visual Studio im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CosmosTableSamples** , und klicken Sie anschließend auf **NuGet-Pakete verwalten** . 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="Öffnen der Projektmappe":::
 
@@ -122,9 +122,9 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
    
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="Öffnen der Projektmappe":::
 
-3. Klicken Sie auf **Installieren**, um die Bibliothek **Microsoft.Azure.Cosmos.Table** zu installieren. Dadurch werden das Paket der Azure Cosmos DB-Tabellen-API sowie sämtliche Abhängigkeiten installiert.
+3. Klicken Sie auf **Installieren** , um die Bibliothek **Microsoft.Azure.Cosmos.Table** zu installieren. Dadurch werden das Paket der Azure Cosmos DB-Tabellen-API sowie sämtliche Abhängigkeiten installiert.
 
-4. Wenn Sie die gesamte App ausführen, werden Beispieldaten in die Tabellenentität eingefügt und am Ende gelöscht. Sie sehen also nicht, dass Daten eingefügt werden, wenn Sie das gesamte Beispiel ausführen. Sie können aber Haltepunkte einfügen, um die Daten anzuzeigen. Öffnen Sie die Datei „BasicSamples.cs“, und klicken Sie mit der rechten Maustaste in Zeile 52. Wählen Sie **Haltepunkt** und dann **Haltepunkt einfügen**. Fügen Sie in Zeile 55 einen weiteren Haltepunkt ein.
+4. Wenn Sie die gesamte App ausführen, werden Beispieldaten in die Tabellenentität eingefügt und am Ende gelöscht. Sie sehen also nicht, dass Daten eingefügt werden, wenn Sie das gesamte Beispiel ausführen. Sie können aber Haltepunkte einfügen, um die Daten anzuzeigen. Öffnen Sie die Datei „BasicSamples.cs“, und klicken Sie mit der rechten Maustaste in Zeile 52. Wählen Sie **Haltepunkt** und dann **Haltepunkt einfügen** . Fügen Sie in Zeile 55 einen weiteren Haltepunkt ein.
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Öffnen der Projektmappe"::: 
 
@@ -132,7 +132,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
     
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Öffnen der Projektmappe":::
 
-   Kehren Sie bei Erreichen des ersten Haltepunkts wieder zum Daten-Explorer im Azure-Portal zurück. Klicken Sie auf die Schaltfläche **Aktualisieren**, erweitern Sie die Demo-Tabelle, und klicken Sie auf **Entitäten**. Die Registerkarte **Entitäten** auf der rechten Seite zeigt die neue Entität, die für Walter Harp hinzugefügt wurde. Die Telefonnummer für die neue Entität lautet 425-555-0101.
+   Kehren Sie bei Erreichen des ersten Haltepunkts wieder zum Daten-Explorer im Azure-Portal zurück. Klicken Sie auf die Schaltfläche **Aktualisieren** , erweitern Sie die Demo-Tabelle, und klicken Sie auf **Entitäten** . Die Registerkarte **Entitäten** auf der rechten Seite zeigt die neue Entität, die für Walter Harp hinzugefügt wurde. Die Telefonnummer für die neue Entität lautet 425-555-0101.
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Öffnen der Projektmappe":::
     
@@ -146,11 +146,11 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
      </ItemGroup>
    ```
 
-6. Schließen Sie im Daten-Explorer die Registerkarte **Entitäten**.
+6. Schließen Sie im Daten-Explorer die Registerkarte **Entitäten** .
     
 7. Drücken Sie F5, um die App bis zum nächsten Haltepunkt auszuführen. 
 
-    Kehren Sie bei Erreichen des Haltepunkts wieder zum Azure-Portal zurück, und klicken Sie erneut auf **Entitäten**, um die Registerkarte **Entitäten** zu öffnen. Beachten Sie, dass die Telefonnummer aktualisiert wurde und nun 425-555-0105 lautet.
+    Kehren Sie bei Erreichen des Haltepunkts wieder zum Azure-Portal zurück, und klicken Sie erneut auf **Entitäten** , um die Registerkarte **Entitäten** zu öffnen. Beachten Sie, dass die Telefonnummer aktualisiert wurde und nun 425-555-0105 lautet.
 
 8. Drücken Sie F5, um die App auszuführen. 
  
@@ -173,4 +173,3 @@ In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erst
 
 > [!div class="nextstepaction"]
 > [Importieren von Daten in die Table-API](table-import.md)
-

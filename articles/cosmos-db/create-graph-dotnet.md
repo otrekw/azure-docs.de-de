@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 72b3f8a4e4a6da434ef20c8e505718ccd3e2deff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0b81bf951df6db0da7ed049c435a319f6ee33b8a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91578382"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479050"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Schnellstart: Erstellen einer .NET Framework- oder Core-Anwendung mithilfe des Gremlin-API-Kontos für Azure Cosmos DB
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe des Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung** .
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -72,7 +72,7 @@ Klonen Sie eine Gremlin-API-App aus GitHub, legen Sie die Verbindungszeichenfolg
 5. Stellen Sie die NuGet-Pakete im Projekt wieder her. Diese sollten den Treiber „Gremlin.Net“ und das Paket „Newtonsoft.Json“ umfassen.
 
 
-6. Sie können den Treiber „Gremlin.Net“ aber auch manuell mithilfe des NuGet-Paket-Managers oder des [NuGet-Befehlszeilentools](https://docs.microsoft.com/nuget/install-nuget-client-tools) installieren: 
+6. Sie können den Treiber „Gremlin.Net“ aber auch manuell mithilfe des NuGet-Paket-Managers oder des [NuGet-Befehlszeilentools](/nuget/install-nuget-client-tools) installieren: 
 
     ```bash
     nuget install Gremlin.Net
@@ -106,15 +106,15 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Graphdatenbankkonto. Auf der Registerkarte **Übersicht** werden zwei Endpunkte angezeigt: 
  
-   **.NET SDK-URI**: Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Microsoft.Azure.Graphs“ eine Verbindung mit dem Graphkonto herstellen. 
+   **.NET SDK-URI** : Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Microsoft.Azure.Graphs“ eine Verbindung mit dem Graphkonto herstellen. 
 
-   **Gremlin-Endpunkt**: Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Gremlin.Net“ eine Verbindung mit dem Graphkonto herstellen.
+   **Gremlin-Endpunkt** : Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Gremlin.Net“ eine Verbindung mit dem Graphkonto herstellen.
 
     :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Kopieren des Endpunkts&quot;:::
 
-   Kopieren Sie für dieses Beispiel den Wert für **Gremlin-Endpunkt**, und löschen Sie die Portnummer am Ende. Der URI sieht dann wie folgt aus: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Der Endpunktwert sollte wie folgt aussehen: `testgraphacct.gremlin.cosmosdb.azure.com`
+   Kopieren Sie für dieses Beispiel den Wert für **Gremlin-Endpunkt** , und löschen Sie die Portnummer am Ende. Der URI sieht dann wie folgt aus: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Der Endpunktwert sollte wie folgt aussehen: `testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Navigieren Sie als Nächstes zur Registerkarte **Schlüssel**, und kopieren Sie den Wert für **Primärschlüssel** aus dem Azure-Portal. 
+1. Navigieren Sie als Nächstes zur Registerkarte **Schlüssel** , und kopieren Sie den Wert für **Primärschlüssel** aus dem Azure-Portal. 
 
 1. Nachdem Sie den URI und den Primärschlüssel Ihres Kontos kopiert haben, können Sie diese Werte in einer neuen Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Eingabeaufforderungsfenster, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei <Your_Azure_Cosmos_account_URI> und <Your_Azure_Cosmos_account_PRIMARY_KEY> durch den URI bzw. durch den Primärschlüssel Ihres Azure Cosmos-Kontos.
 
@@ -123,7 +123,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
    setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die Variablen „database“ und „container“ mit den weiter oben erstellten Namen für die Datenbank und den Container. (Der Containername ist zugleich auch der Diagrammname.)
+1. Öffnen Sie die Datei *Program.cs* , und aktualisieren Sie die Variablen „database“ und „container“ mit den weiter oben erstellten Namen für die Datenbank und den Container. (Der Containername ist zugleich auch der Diagrammname.)
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -141,17 +141,17 @@ Drücken Sie STRG+F5, um die Anwendung auszuführen. Die Anwendung gibt sowohl d
 
 Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen Graph-Daten durchsuchen und abfragen.
 
-1. Im Daten-Explorer wird die neue Datenbank im Diagrammbereich angezeigt. Erweitern Sie den Datenbank- und den Containerknoten, und klicken Sie anschließend auf **Graph**.
+1. Im Daten-Explorer wird die neue Datenbank im Diagrammbereich angezeigt. Erweitern Sie den Datenbank- und den Containerknoten, und klicken Sie anschließend auf **Graph** .
 
-2. Klicken Sie auf die Schaltfläche **Filter anwenden**, um die Standardabfrage zum Anzeigen aller Scheitelpunkte im Diagramm zu verwenden. Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
+2. Klicken Sie auf die Schaltfläche **Filter anwenden** , um die Standardabfrage zum Anzeigen aller Scheitelpunkte im Diagramm zu verwenden. Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
 
     Sie können die Diagrammansicht vergrößern und verkleinern, den Anzeigebereich des Diagramms erweitern, zusätzliche Scheitelpunkte hinzufügen und Scheitelpunkte auf der Anzeigeoberfläche verschieben.
 
     :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Kopieren des Endpunkts&quot;:::
 
-   Kopieren Sie für dieses Beispiel den Wert für **Gremlin-Endpunkt**, und löschen Sie die Portnummer am Ende. Der URI sieht dann wie folgt aus: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Der Endpunktwert sollte wie folgt aussehen: `testgraphacct.gremlin.cosmosdb.azure.com`
+   Kopieren Sie für dieses Beispiel den Wert für **Gremlin-Endpunkt** , und löschen Sie die Portnummer am Ende. Der URI sieht dann wie folgt aus: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Der Endpunktwert sollte wie folgt aussehen: `testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Navigieren Sie als Nächstes zur Registerkarte **Schlüssel**, und kopieren Sie den Wert für **Primärschlüssel** aus dem Azure-Portal. 
+1. Navigieren Sie als Nächstes zur Registerkarte **Schlüssel** , und kopieren Sie den Wert für **Primärschlüssel** aus dem Azure-Portal. 
 
 1. Nachdem Sie den URI und den Primärschlüssel Ihres Kontos kopiert haben, können Sie diese Werte in einer neuen Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Eingabeaufforderungsfenster, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei <Your_Azure_Cosmos_account_URI> und <Your_Azure_Cosmos_account_PRIMARY_KEY> durch den URI bzw. durch den Primärschlüssel Ihres Azure Cosmos-Kontos.
 
@@ -173,4 +173,3 @@ In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erst
 
 > [!div class="nextstepaction"]
 > [Query using Gremlin (Abfragen mithilfe von Gremlin)](tutorial-query-graph.md)
-

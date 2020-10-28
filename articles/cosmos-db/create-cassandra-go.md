@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f3ea2d1ce8d3d9f2f584db379618fc6c4a4a67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86535558"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491239"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Schnellstart: Erstellen einer Go-App mit dem `gocql`-Client zum Verwalten von Azure Cosmos DB-Cassandra-API-Daten
 
@@ -85,7 +85,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-Der Azure Cosmos DB-Cassandra-Host wird an die Funktion [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) übergeben, um eine Struktur vom Typ [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) abzurufen, die dann zur Verwendung des Benutzernamens, des Kennworts, des Ports und der entsprechenden TLS-Version ([Sicherheitsanforderung in Bezug auf HTTPS-/SSL-/TLS-Verschlüsselung](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) konfiguriert wird.
+Der Azure Cosmos DB-Cassandra-Host wird an die Funktion [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) übergeben, um eine Struktur vom Typ [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) abzurufen, die dann zur Verwendung des Benutzernamens, des Kennworts, des Ports und der entsprechenden TLS-Version ([Sicherheitsanforderung in Bezug auf HTTPS-/SSL-/TLS-Verschlüsselung](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) konfiguriert wird.
 
 Die Funktion `GetSession` wird dann über die `main`-Funktion (`main.go`) abgerufen.
 
@@ -252,7 +252,7 @@ go run main.go
 
 3. Im Terminalfenster werden Benachrichtigungen für die verschiedenen Vorgänge angezeigt, einschließlich Keyspace- und Tabelleneinrichtung, Benutzererstellung usw.
 
-4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden. 
+4. Öffnen Sie im Azure-Portal den **Daten-Explorer** , um diese neuen Daten abzufragen, zu ändern und zu verwenden. 
 
     :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Anzeigen und Kopieren von Details im Azure-Portal auf der Seite „Verbindungszeichenfolge“":::
 

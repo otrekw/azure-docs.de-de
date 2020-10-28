@@ -8,19 +8,19 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91707896"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481192"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von Python zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
 
 In dieser Schnellstartanleitung verwenden Sie eine Azure Database for PostgreSQL-Instanz und nutzen dabei Python unter macOS, Ubuntu Linux oder Windows. Die Schnellstartanleitung zeigt, wie Sie eine Verbindung mit der Datenbank herstellen und SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit Python vertraut sind, aber noch keine Erfahrung mit Azure Database for PostgreSQL haben.
 
 > [!TIP]
-> Wenn Sie eine Django-Anwendung mit PostgreSQL erstellen möchten, schauen Sie sich das Tutorial [Bereitstellen einer Django-Web-App mit PostgreSQL](../app-service/containers/tutorial-python-postgresql-app.md) an.
+> Wenn Sie eine Django-Anwendung mit PostgreSQL erstellen möchten, schauen Sie sich das Tutorial [Bereitstellen einer Django-Web-App mit PostgreSQL](../app-service/tutorial-python-postgresql-app.md) an.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -42,7 +42,7 @@ Das Modul [psycopg2](https://pypi.python.org/pypi/psycopg2/) ermöglicht das Her
 Für die Verbindungsherstellung mit einer Azure Database for PostgreSQL-Datenbank sind der vollqualifizierte Servername und Anmeldeinformationen erforderlich. Diese Informationen finden Sie im Azure-Portal.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach dem Namen Ihres Azure Database for PostgreSQL-Servers, und wählen Sie ihn aus. 
-1. Kopieren Sie auf der **Übersichtsseite** des Servers unter **Servername** den vollqualifizierten Servernamen und unter **Administratorbenutzername** den Administratorbenutzernamen. Der vollqualifizierte **Servername** hat immer das Format *\<my-server-name>.postgres.database.azure.com*. Der **Administratorbenutzername** hat immer das Format *\<my-admin-username>@\<my-server-name>* . 
+1. Kopieren Sie auf der **Übersichtsseite** des Servers unter **Servername** den vollqualifizierten Servernamen und unter **Administratorbenutzername** den Administratorbenutzernamen. Der vollqualifizierte **Servername** hat immer das Format *\<my-server-name>.postgres.database.azure.com* . Der **Administratorbenutzername** hat immer das Format *\<my-admin-username>@\<my-server-name>* . 
    
    Darüber hinaus benötigen Sie Ihr Administratorkennwort. Sollten Sie es vergessen, können Sie es auf dieser Seite zurücksetzen. 
    
@@ -59,7 +59,7 @@ Führen Sie für jedes Codebeispiel in diesem Artikel die folgenden Schritte aus
    - `<admin-password>` durch Ihr Serverkennwort.
    - `<database-name>` durch den Namen Ihrer Azure Database for PostgreSQL-Datenbank. Bei der Servererstellung wurde automatisch eine Standarddatenbank namens *postgres* erstellt. Sie können diese Datenbank umbenennen oder mithilfe von SQL-Befehlen eine neue Datenbank erstellen. 
    
-1. Speichern Sie die Datei mit der Erweiterung *.py* in Ihrem Projektordner (Beispiel: *postgres-insert.py*). Achten Sie unter Windows darauf, dass beim Speichern die UTF-8-Codierung ausgewählt ist. 
+1. Speichern Sie die Datei mit der Erweiterung *.py* in Ihrem Projektordner (Beispiel: *postgres-insert.py* ). Achten Sie unter Windows darauf, dass beim Speichern die UTF-8-Codierung ausgewählt ist. 
    
 1. Wechseln Sie zum Ausführen der Datei mithilfe einer Befehlszeilenschnittstelle zu Ihrem Projektordner, und geben Sie `python` sowie den Dateinamen ein (Beispiel: `python postgres-insert.py`).
 

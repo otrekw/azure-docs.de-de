@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3c269f07c177d99e46dcc343b80979835b429b68
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87498921"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369351"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark in Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ Spark-Pools in Azure Synapse bieten einen vollständig verwalteten Spark-Dienst.
 
 Spark-Pools in Azure Synapse enthalten die folgenden Komponenten, die standardmäßig in den Pools verfügbar sind:
 
-- [Spark Core](https://spark.apache.org/docs/latest/). Umfasst Spark Core, Spark SQL, GraphX und MLlib.
+- [Spark Core](https://spark.apache.org/docs/2.4.5/). Umfasst Spark Core, Spark SQL, GraphX und MLlib.
 - [Anaconda](https://docs.continuum.io/anaconda/)
 - [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 - [Nteract-Notebook](https://nteract.io/)
@@ -81,7 +81,7 @@ Die folgenden Artikel enthalten weitere Informationen zu Apache Spark in Synapse
 - [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](../quickstart-create-apache-spark-pool-portal.md)
 - [Schnellstart: Erstellen eines Apache Spark-Notebooks](../quickstart-apache-spark-notebook.md)
 - [Tutorial: Machine Learning mit Apache Spark](./apache-spark-machine-learning-mllib-notebook.md)
-- [Offizielle Apache Spark-Dokumentation](https://spark.apache.org/docs/latest/)
+- [Offizielle Apache Spark-Dokumentation](https://spark.apache.org/docs/2.4.5/)
 
 > [!NOTE]
 > In der offiziellen Apache Spark-Dokumentation wird teilweise die Spark-Konsole verwendet, diese ist in Azure Synapse Spark jedoch nicht verfügbar. Verwenden Sie stattdessen das Notebook oder IntelliJ.

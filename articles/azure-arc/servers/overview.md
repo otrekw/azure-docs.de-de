@@ -2,14 +2,14 @@
 title: 'Azure Arc-fähige Server: Übersicht'
 description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung wie eine Azure-Ressource verwalten.
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.topic: overview
-ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200966"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460851"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
 
@@ -29,7 +29,7 @@ Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, kö
 
 - Vereinfachen der Bereitstellung mit anderen Azure-Diensten wie Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) und Azure Monitor Log Analytics-Arbeitsbereich unter Verwendung der unterstützten [Azure-VM-Erweiterungen](manage-vm-extensions.md) für Ihren Azure-fremden Windows- oder Linux-Computer. Dies schließt die Konfiguration nach der Bereitstellung oder die Softwareinstallation unter Verwendung der benutzerdefinierten Skripterweiterung mit ein.
 
-- Verwalten Sie Betriebssystemupdates für Ihre Windows- und Linux-Server mithilfe der [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) in Azure Automation. Stellen Sie zunächst die [Hybrid Runbook-Workerrolle](../../automation/automation-hybrid-runbook-worker.md) bereit, und befolgen Sie dann die Schritte zum [Aktivieren der Updateverwaltung](../../automation/update-management/update-mgmt-enable-portal.md) auf Ihrem Azure-fremden Windows- oder Linux-Computer.
+- Verwalten Sie Betriebssystemupdates für Ihre Windows- und Linux-Server mithilfe der [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) in Azure Automation.
 
 - Schließen Sie Ihren Azure-fremden Server für die Bedrohungserkennung ein, und überwachen Sie proaktiv potenzielle Sicherheitsbedrohungen mit dem [Azure Security Center](../../security-center/security-center-introduction.md).
 
@@ -45,7 +45,7 @@ In den meisten Fällen sollte der Standort, den Sie beim Erstellen des Installat
 
 ### <a name="agent-status"></a>Agent-Status
 
-Der Connected Machine-Agent sendet alle fünf Minuten eine reguläre Heartbeatnachricht an den Dienst. Wenn der Dienst keine solchen Heartbeatnachrichten mehr von einem Computer empfängt, wird dieser Computer als offline betrachtet, und der Status wird im Portal innerhalb von 15 bis 30 Minuten automatisch in **Getrennt** geändert. Wenn wieder eine Heartbeatnachricht des Connected Machine-Agents empfangen wird, ändert sich der Status automatisch in **Verbunden**.
+Der Connected Machine-Agent sendet alle fünf Minuten eine reguläre Heartbeatnachricht an den Dienst. Wenn der Dienst keine solchen Heartbeatnachrichten mehr von einem Computer empfängt, wird dieser Computer als offline betrachtet, und der Status wird im Portal innerhalb von 15 bis 30 Minuten automatisch in **Getrennt** geändert. Wenn wieder eine Heartbeatnachricht des Connected Machine-Agents empfangen wird, ändert sich der Status automatisch in **Verbunden** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

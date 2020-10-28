@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107486"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489318"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -208,7 +208,7 @@ Sie können auch in Azure Cosmos DB eine Verbindung mit der Cassandra-API herst
 
 **Windows:**
 
-Wenn Sie Windows verwenden, empfiehlt es sich, das [Windows-Dateisystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux) zu aktivieren. Anschließend können Sie die folgenden Linux-Befehle verwenden.
+Wenn Sie Windows verwenden, empfiehlt es sich, das [Windows-Dateisystem für Linux](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux) zu aktivieren. Anschließend können Sie die folgenden Linux-Befehle verwenden.
 
 **Unix/Linux/Mac:**
 
@@ -255,7 +255,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konsistenzzuordnung 
 
-Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei Lesevorgängen.  Ausführliche Informationen zur Konsistenzzuordnung finden Sie [hier](consistency-levels-across-apis.md#cassandra-mapping).
+Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei Lesevorgängen.  Ausführliche Informationen zur Konsistenzzuordnung finden Sie [hier](./cassandra-consistency.md#mapping-consistency-levels).
 
 ## <a name="permission-and-role-management"></a>Berechtigungs- und Rollenverwaltung
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2c340f9e7d2c44082adc67eeb816276449602035
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705159"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484490"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Database for PostgreSQL-Servers mithilfe des Azure-Portals
 
@@ -52,11 +52,11 @@ So erstellen Sie einen Azure Database for PostgreSQL-Server:
    Resource group|*myresourcegroup*| Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
    Servername |*mydemoserver*|Ein eindeutiger Name, der Ihren Azure-Datenbank für PostgreSQL-Server identifiziert. Der Domänenname *postgres.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss zwischen 3 und 63 Zeichen enthalten.
    Datenquelle | **None** | Wählen Sie **Keine** aus, um einen neuen Server ohne Vorlage zu erstellen. (Die Option **Sicherung** können Sie auswählen, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for PostgreSQL-Servers erstellen.)
-   Administratorbenutzername |*myadmin*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest**, oder **public** lauten. Er kann nicht mit **pg_** beginnen.
+   Administratorbenutzername |*myadmin*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser** , **azure_pg_admin** , **admin** , **administrator** , **root** , **guest** , oder **public** lauten. Er kann nicht mit **pg_** beginnen.
    Kennwort |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss 8 bis 128 Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0 bis 9) und nicht alphanumerische Zeichen (z. B. !, $, #, %).
    Standort|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist
    Version|Die aktuelle Hauptversion| Die aktuelle PostgreSQL-Hauptversion (es sei denn, Sie haben besondere Anforderungen).
-   Compute und Speicher | **Universell**, **Gen 5**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. Wählen Sie als Nächstes einen geeigneten Tarif aus. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/postgresql/server/). Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**.
+   Compute und Speicher | **Universell** , **Gen 5** , **2 virtuelle Kerne** , **5 GB** , **7 Tage** , **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. Wählen Sie als Nächstes einen geeigneten Tarif aus. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/postgresql/server/). Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK** .
 
    > [!NOTE]
    > Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. 
@@ -65,10 +65,10 @@ So erstellen Sie einen Azure Database for PostgreSQL-Server:
 
 6. Klicken Sie auf der Symbolleiste auf das Symbol **Benachrichtigungen** (eine Glocke), um den Bereitstellungsprozess zu überwachen. Wählen Sie nach Abschluss der Bereitstellung **Zu Ressource wechseln** aus, um die Seite **Übersicht** des Servers zu öffnen.
 
-Eine leere Datenbank (**postgres**) wird erstellt. Darüber hinaus wird die Datenbank **azure_maintenance** angezeigt. Mit dieser Datenbank werden die Prozesse des verwalteten Diensts von den Benutzeraktionen getrennt. Auf die Datenbank **azure_maintenance** kann nicht zugegriffen werden.
+Eine leere Datenbank ( **postgres** ) wird erstellt. Darüber hinaus wird die Datenbank **azure_maintenance** angezeigt. Mit dieser Datenbank werden die Prozesse des verwalteten Diensts von den Benutzeraktionen getrennt. Auf die Datenbank **azure_maintenance** kann nicht zugegriffen werden.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
-Der von Ihnen erstellte Server ist standardmäßig nicht öffentlich zugänglich. Sie müssen Ihrer IP-Adresse Berechtigungen erteilen. Navigieren Sie im Azure-Portal zu Ihrer Serverressource, und wählen Sie im Menü auf der linken Seite die Option **Verbindungssicherheit** für Ihre Serverressource aus. Wenn Sie nicht sicher sind, wie Sie Ihre Ressource finden, lesen Sie die Informationen unter [Öffnen von Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
+Der von Ihnen erstellte Server ist standardmäßig nicht öffentlich zugänglich. Sie müssen Ihrer IP-Adresse Berechtigungen erteilen. Navigieren Sie im Azure-Portal zu Ihrer Serverressource, und wählen Sie im Menü auf der linken Seite die Option **Verbindungssicherheit** für Ihre Serverressource aus. Wenn Sie nicht sicher sind, wie Sie Ihre Ressource finden, lesen Sie die Informationen unter [Öffnen von Ressourcen](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Screenshot: Azure Database for PostgreSQL im Menü.":::
@@ -80,7 +80,7 @@ Wählen Sie **Aktuelle Client-IP-Adresse hinzufügen** und dann **Speichern** au
 
 ## <a name="connect-to-azure-database-for-postgresql-server-by-using-psql"></a>Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Server mithilfe von psql
 
-Sie können die beliebten PostgreSQL-Clients [psql](http://postgresguide.com/utilities/psql.html) oder [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html) verwenden. In dieser Schnellstartanleitung wird die Verbindung mithilfe von psql in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) über das Azure-Portal hergestellt.
+Sie können die beliebten PostgreSQL-Clients [psql](http://postgresguide.com/utilities/psql.html) oder [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html) verwenden. In dieser Schnellstartanleitung wird die Verbindung mithilfe von psql in [Azure Cloud Shell](../cloud-shell/overview.md) über das Azure-Portal hergestellt.
 
 1. Notieren Sie sich den Servernamen, den Anmeldenamen des Serveradministrators, das Kennwort und die Abonnement-ID für den neu erstellten Server im Abschnitt **Übersicht** Ihres Servers.
 
@@ -117,7 +117,7 @@ Sie können die beliebten PostgreSQL-Clients [psql](http://postgresguide.com/uti
 
     postgres=>
     ```
-4. Erstellen Sie im gleichen Azure Cloud Shell-Terminal eine Datenbank namens **guest**.
+4. Erstellen Sie im gleichen Azure Cloud Shell-Terminal eine Datenbank namens **guest** .
 
    ```bash
    postgres=> CREATE DATABASE guest;
@@ -135,7 +135,7 @@ Sie haben erfolgreich einen Azure Database for PostgreSQL-Server in einer Ressou
 
 So löschen Sie die Ressourcengruppe:
 
-1. Suchen Sie im Azure-Portal nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus. 
+1. Suchen Sie im Azure-Portal nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus. 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 3. Wählen Sie auf der Seite **Übersicht** der Ressourcengruppe die Option **Ressourcengruppe löschen** aus.
 4. Geben Sie im Bestätigungsdialogfeld den Namen Ihrer Ressourcengruppe ein, und wählen Sie **Löschen** aus.

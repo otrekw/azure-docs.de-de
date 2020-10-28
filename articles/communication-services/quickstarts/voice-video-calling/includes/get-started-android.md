@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779327"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92438451"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für Android beginnen.
 
@@ -165,7 +165,7 @@ Zwei Eingaben sind erforderlich: eine Texteingabe für die Angerufenen-ID und ei
 
 Nachdem das Layout erstellt wurde, können die Bindungen und das Grundgerüst der Aktivität hinzugefügt werden. Die Aktivität verarbeitet das Anfordern von Runtimeberechtigungen, erstellt den Anruf-Agent und platziert den Anruf, wenn die Schaltfläche gedrückt wird. Jede dieser Optionen wird in einem eigenen Abschnitt behandelt. Die Methode `onCreate` wird überschrieben, um `getAllPermissions` und `createAgent` aufzurufen und die Bindungen für die Anrufschaltfläche hinzuzufügen. Dies ist nur einmal der Fall, wenn die Aktivität erstellt wird. Weitere Informationen zu `onCreate` finden Sie im Handbuch mit [grundlegenden Informationen zum Aktivitätslebenszyklus](https://developer.android.com/guide/components/activities/activity-lifecycle).
 
-Navigieren Sie zu **MainActivity.java**, und ersetzen Sie den Inhalt durch den folgenden Code:
+Navigieren Sie zu **MainActivity.java** , und ersetzen Sie den Inhalt durch den folgenden Code:
 
 ```java
 package com.contoso.acsquickstart;
@@ -317,4 +317,4 @@ Die App kann jetzt mithilfe der Schaltfläche „Run app“ (App ausführen) auf
 
 ## <a name="sample-code"></a>Beispielcode
 
-Sie können die Beispiel-App von [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) herunterladen.
+Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) herunterladen.
