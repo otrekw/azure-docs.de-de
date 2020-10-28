@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bb35b81a287179900485c7190a57c492cfc39203
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d71a7535c40d240b6c9bf53cff906f12b4b8b5df
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043033"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204298"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
-Nachdem Sie eine [Azure Digital Twins-Instanz und -Authentifizierung eingerichtet](how-to-set-up-instance-portal.md) haben, können Sie eine Clientanwendung erstellen, die Ihnen die Interaktion mit der Instanz ermöglicht. Nachdem Sie ein Clientstartprojekt eingerichtet haben, müssen Sie **Code in dieser Client-App schreiben, um die App für die Azure Digital Twins-Instanz zu authentifizieren**.
+Nachdem Sie eine [Azure Digital Twins-Instanz und -Authentifizierung eingerichtet](how-to-set-up-instance-portal.md) haben, können Sie eine Clientanwendung erstellen, die Ihnen die Interaktion mit der Instanz ermöglicht. Nachdem Sie ein Clientstartprojekt eingerichtet haben, müssen Sie **Code in dieser Client-App schreiben, um die App für die Azure Digital Twins-Instanz zu authentifizieren** .
 
 Azure Digital Twins führt die Authentifizierung mithilfe von [Azure AD-Sicherheitstoken basierend auf OAuth 2.0](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims) aus. Zum Authentifizieren Ihres SDK müssen Sie ein Bearertoken mit den richtigen Berechtigungen für Azure Digital Twins abrufen und es zusammen mit ihren API-Aufrufen übergeben. 
 
@@ -37,7 +37,7 @@ Als Nächstes benötigen Sie ein Client-App-Projekt, in dem Sie den Code schreib
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 In `Azure.Identity` gibt es drei gängige Methoden zum Abrufen von Anmeldeinformationen:
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) stellt einen `TokenCredential`-Standardauthentifizierungsfluss für Anwendungen bereit, die in Azure bereitgestellt werden, und ist **die empfohlene Wahl für lokale Entwicklung**. Außerdem kann DefaultAzureCredential aktiviert werden, um die beiden anderen Methoden zu testen, die in diesem Artikel empfohlen werden. DefaultAzureCredential dient als Wrapper für `ManagedIdentityCredential` und kann mit einer Konfigurationsvariablen auf `InteractiveBrowserCredential` zugreifen.
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) stellt einen `TokenCredential`-Standardauthentifizierungsfluss für Anwendungen bereit, die in Azure bereitgestellt werden, und ist **die empfohlene Wahl für lokale Entwicklung** . Außerdem kann DefaultAzureCredential aktiviert werden, um die beiden anderen Methoden zu testen, die in diesem Artikel empfohlen werden. DefaultAzureCredential dient als Wrapper für `ManagedIdentityCredential` und kann mit einer Konfigurationsvariablen auf `InteractiveBrowserCredential` zugreifen.
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) funktioniert hervorragend in Fällen, in denen Sie [verwaltete Identitäten (MSI)](../active-directory/managed-identities-azure-resources/overview.md) benötigen, und eignet sich gut für das Arbeiten mit Azure Functions und Bereitstellungen in Azure-Diensten.
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) ist für interaktive Anwendungen vorgesehen und kann zum Erstellen eines authentifizierten SDK-Clients verwendet werden.
 
@@ -60,7 +60,7 @@ Fügen Sie dann Code zum Abrufen von Anmeldeinformationen mithilfe einer der Met
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential-Methode
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) stellt einen `TokenCredential`-Standardauthentifizierungsfluss für Anwendungen bereit, die in Azure bereitgestellt werden, und ist **die empfohlene Wahl für lokale Entwicklung**.
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) stellt einen `TokenCredential`-Standardauthentifizierungsfluss für Anwendungen bereit, die in Azure bereitgestellt werden, und ist **die empfohlene Wahl für lokale Entwicklung** .
 
 Wenn Sie die standardmäßigen Azure-Anmeldeinformationen verwenden möchten, benötigen Sie die URL der Azure Digital Twins-Instanz ([Anweisungen für die Ermittlung](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
@@ -105,9 +105,9 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 Die [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)-Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung. Sie können dies anstelle von `DefaultAzureCredential` in Fällen verwenden, in denen Sie interaktive Authentifizierung benötigen.
 
-Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung**, die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie im Abschnitt [*Einrichten von Zugriffsberechtigungen für Clientanwendungen*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) unter *Vorgehensweise: Einrichten einer Instanz und von Authentifizierung*. Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
-* Die *Anwendungs-ID (Client-ID)* der App-Registrierung
-* Die *Verzeichnis-ID (Mandanten-ID)* der App-Registrierung
+Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung** , die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie unter [*Vorgehensweise: Erstellen einer App-Registrierung*](how-to-create-app-registration.md). Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
+* Die *Anwendungs-ID (Client-ID)* der App-Registrierung ([Anleitungen zur Ermittlung](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* Die *Verzeichnis-ID (Mandanten-ID)* der App-Registrierung ([Anleitungen zur Ermittlung](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Die URL der Azure Digital Twins-Instanz ([Anweisungen für die Ermittlung](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Im Folgenden finden Sie ein Beispiel für den Code zum Erstellen eines authentifizierten SDK-Clients mit `InteractiveBrowserCredential`.

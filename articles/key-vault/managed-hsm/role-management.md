@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818035"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149106"
 ---
 # <a name="managed-hsm-role-management"></a>Rollenverwaltung für verwaltetes HSM
 
@@ -82,13 +82,13 @@ Alle Rollenzuweisungen auf der HSM-Ebene für einen bestimmten Benutzer ( **user
 az keyvault role assignment list --hsm-name ContosoMHSM --assignee user@contoso.com
 ```
 
-Alle Rollenzuweisungen für einen bestimmten Benutzer ( **user2@contoso.com** ) und einen bestimmten Schlüssel (**myrsakey**).
+Alle Rollenzuweisungen für einen bestimmten Benutzer ( **user2@contoso.com** ) und einen bestimmten Schlüssel ( **myrsakey** ).
 
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso.com --scope /keys/myrsakey
 ```
 
-Eine bestimmte Rollenzuweisung für die Rolle **Managed HSM Crypto Officer** (Kryptoverantwortlicher für verwaltete HSMs), einen bestimmten Benutzer ( **user2@contoso.com** ) und einen bestimmten Schlüssel (**myrsakey**):
+Eine bestimmte Rollenzuweisung für die Rolle **Managed HSM Crypto Officer** (Kryptoverantwortlicher für verwaltete HSMs), einen bestimmten Benutzer ( **user2@contoso.com** ) und einen bestimmten Schlüssel ( **myrsakey** ):
 
 
 ```azurecli-interactive

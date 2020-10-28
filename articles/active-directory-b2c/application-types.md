@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84295421"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215403"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>In Active Directory B2C verwendbare Anwendungstypen
-
+ 
 Azure Active Directory B2C (Azure AD B2C) unterstützt die Authentifizierung für eine Vielzahl moderner Anwendungsarchitekturen. Diese basieren alle auf den branchenüblichen Protokollen [OAuth 2.0](protocols-overview.md) oder [OpenID Connect](protocols-overview.md). In diesem Artikel werden die Anwendungstypen beschrieben, die Sie unabhängig von der bevorzugten Sprache oder Plattform erstellen können. Außerdem verdeutlicht es die allgemeinen Szenarios, bevor Sie mit dem Erstellen von Anwendungen beginnen.
 
 Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](https://portal.azure.com/) in Ihrem [Azure AD B2C-Mandanten](tutorial-create-tenant.md) registriert werden. Während des Anwendungsregistrierungsprozesses werden Werte erfasst und zugewiesen, wie z.B.:
 
-* Eine **Anwendungs-ID**, die Ihre Anwendung eindeutig ausweist.
-* Ein **Antwort-URI**, der zum Umleiten von Antworten zurück an die Anwendung verwendet werden kann.
+* Eine **Anwendungs-ID** , die Ihre Anwendung eindeutig ausweist.
+* Ein **Antwort-URI** , der zum Umleiten von Antworten zurück an die Anwendung verwendet werden kann.
 
 Jede an Azure AD B2C gesendete Anforderung gibt einen **Benutzerflow** (eine integrierte Richtlinie) oder eine **benutzerdefinierte Richtlinie** an, die das Verhalten von Azure AD B2C steuert. Beide Richtlinientypen ermöglichen die Erstellung hochgradig anpassbarer Benutzerumgebungen.
 
@@ -75,6 +75,26 @@ Um dieses Szenario in Aktion zu sehen, können Sie eines der Webanwendungs-Codeb
 
 Neben der Bereitstellung der einfachen Anmeldung benötigt eine Webserveranwendung unter Umständen auch Zugriff auf einen Back-End-Webdienst. In diesem Fall kann die Webanwendung einen etwas anderen [OpenID Connect-Ablauf](openid-connect.md) durchführen und Token anhand von Autorisierungscodes und Aktualisierungstoken beschaffen. Dieses Szenario ist im folgenden [Abschnitt zu Web-APIs](#web-apis)dargestellt.
 
+## <a name="single-page-applications"></a>Single-Page-Webanwendungen
+Viele moderne Webanwendungen werden als clientseitige Single-Page-Webanwendungen („SPAs“) erstellt. Entwickler schreiben diese mithilfe von JavaScript oder eines SPA-Frameworks wie Angular, Vue oder React. Diese Anwendungen werden in einem Webbrowser ausgeführt und weisen andere Authentifizierungsmerkmale als herkömmliche serverseitige Webanwendungen auf.
+
+Azure AD B2C bietet **zwei** Optionen, um Single-Page-Webanwendungen das Anmelden von Benutzern und Abrufen von Token für den Zugriff auf Back-End-Dienste oder -Web-APIs zu ermöglichen:
+
+### <a name="authorization-code-flow-with-pkce"></a>Autorisierungscodefluss (mit PKCE)
+- [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./authorization-code-flow.md). Der Autorisierungscodefluss ermöglicht es der Anwendung, einen Autorisierungscode für **ID-Token** auszutauschen, um den authentifizierten Benutzer darzustellen, sowie **Zugriffstoken** auszutauschen, die zum Aufrufen geschützter APIs erforderlich sind. Darüber hinaus werden **Aktualisierungstoken** zurückgegeben, die langfristigen Zugriff auf Ressourcen im Auftrag von Benutzern bereitstellen, ohne dass eine Interaktion mit diesen Benutzern erforderlich ist. 
+
+Dies ist die **empfohlene** Vorgehensweise. Aktualisierungstoken mit begrenzter Lebensdauer tragen zur Anpassung Ihrer Anwendung an die [in Bezug auf die Einschränkungen von Cookies geltenden Datenschutzbestimmungen moderner Browser](../active-directory/develop/reference-third-party-cookies-spas.md) (z. B. an Safari ITP) bei.
+
+Um diesen Fluss nutzen zu können, kann Ihre Anwendung eine Authentifizierungsbibliothek verwenden, von der sie unterstützt wird, z. B. [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser).
+
+<!-- ![Single-page applications-auth](./media/tutorial-single-page-app/spa-app-auth.svg) -->
+![Autorisierungsfluss für Single-Page-Webanwendungen](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
+
+### <a name="implicit-grant-flow"></a>Impliziter Gewährungsflow
+- [Impliziter OAuth 2.0-Fluss](implicit-flow-single-page-application.md). Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), unterstützen nur den Fluss für die implizite Genehmigung. Der Fluss für die implizite Genehmigung ermöglicht der Anwendung das Abrufen von **ID-** und **Zugriffstoken** . Im Gegensatz zum Autorisierungscodefluss gibt der Fluss für die implizite Genehmigung kein **Aktualisierungstoken** zurück. 
+
+Dieser Authentifizierungsfluss umfasst keine Anwendungsszenarios, die plattformübergreifende JavaScript-Frameworks verwenden, z. B. Electron und React-Native. Diese Szenarien erfordern weitere Funktionen für die Interaktion mit den nativen Plattformen.
+
 ## <a name="web-apis"></a>Web-APIs
 
 Sie können Azure AD B2C zum Schützen von Webdiensten, wie z.B. der RESTful-Web-API Ihrer Anwendung, verwenden. Web-APIs können OAuth 2.0 verwenden, um ihre Daten zu schützen, indem eingehende HTTP-Anforderungen per Token authentifiziert werden. Der Aufrufer einer Web-API fügt ein Token im Autorisierungsheader einer HTTP-Anforderung an:
@@ -85,7 +105,7 @@ Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
 Accept: application/json
 ...
-```
+``` 
 
 Die Web-API kann dann mit dem Token die Identität des API-Aufrufers überprüfen und Informationen über den Aufrufer aus Ansprüchen extrahieren, die im Token codiert sind. Informationen zu allen Arten von Token und zu den für eine App verfügbaren Ansprüchen finden Sie in der [Azure AD B2C-Tokenreferenz](tokens-overview.md).
 

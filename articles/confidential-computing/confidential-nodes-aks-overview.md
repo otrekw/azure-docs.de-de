@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940768"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125440"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Confidential Computing-Knoten in Azure Kubernetes Service (Public Preview)
 
-Mit [Azure Confidential Computing](overview.md) können Sie Ihre vertraulichen Daten während der Nutzung schützen. Mit den zugrunde liegenden Infrastrukturen werden diese Daten vor anderen Anwendungen, Administratoren und Cloudanbietern geschützt. 
+Mit [Azure Confidential Computing](overview.md) können Sie Ihre vertraulichen Daten während der Nutzung schützen. Die zugrunde liegenden Infrastrukturen schützen diese Daten mit einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung für Container vor anderen Anwendungen, Administratoren und Cloudanbietern.
 
 ## <a name="overview"></a>Übersicht
 
-Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confidential Computing-Knoten](confidential-computing-enclaves.md) für Intel SGX. Auf diesen Knoten werden vertrauliche Workloads in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) ausgeführt, indem für Code auf Benutzerebene das Zuordnen von privaten Arbeitsspeicherregionen zugelassen wird. Diese Regionen des privaten Arbeitsspeichers werden als Enklaven bezeichnet. Enklaven sind dafür ausgelegt, Code und Daten vor Prozessen zu schützen, die mit einer höheren Berechtigungsstufe ausgeführt werden. Mit dem SGX-Ausführungsmodell werden die Zwischenschichten des Gastbetriebssystems und von Hypervisor entfernt. Dies ermöglicht Ihnen die Ausführung von Containeranwendungen direkt über die CPU, während der spezielle Arbeitsspeicherblock verschlüsselt bleibt. 
-
+Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confidential Computing-Knoten](confidential-computing-enclaves.md) auf der Grundlage von Intel SGX. Auf diesen Knoten können vertrauliche Workloads in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) ausgeführt werden, indem für Code auf Benutzerebene das Zuordnen von privaten Arbeitsspeicherregionen zugelassen wird. Diese Regionen des privaten Arbeitsspeichers werden als Enklaven bezeichnet. Enklaven sind dafür ausgelegt, Code und Daten vor Prozessen zu schützen, die mit einer höheren Berechtigungsstufe ausgeführt werden. Mit dem SGX-Ausführungsmodell werden die Zwischenschichten des Gast- und Hostbetriebssystems und von Hypervisor entfernt. Das Modell für die *hardwarebasierte Ausführung mit containerspezifischer Isolierung* ermöglicht Anwendungen die direkte Ausführung mit der CPU, während der spezielle Arbeitsspeicherblock verschlüsselt bleibt. Confidential Computing-Knoten tragen zum allgemeinen Sicherheitsstatus von Containeranwendungen in AKS bei und stellen eine hervorragende Ergänzung der Defense-in-Depth-Strategie für Container dar. 
 
 ![Übersicht über SGX-Knoten](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confident
 - Hilfsprogramm für Out-of-Proc-Nachweis über AKS-DaemonSet
 - Unterstützung für Linux-Container über Ubuntu 18.04 Gen2-VM-Workerknoten
 
-## <a name="aks-provided-daemon-sets"></a>Von AKS bereitgestellte DaemonSets
+## <a name="aks-provided-daemon-sets-addon"></a>Von AKS bereitgestellte Daemonsets (Add-On)
 
 #### <a name="sgx-device-plugin"></a>SGX-Geräte-Plug-In <a id="sgx-plugin"></a>
 

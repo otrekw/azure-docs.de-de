@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 9506b3430775f137c09fe3d155b203cdcbd14783
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d46b3ba9e3df5e2b3600db2be2a41789fed5242f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070553"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207970"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -58,13 +58,13 @@ AKS baut auf einer Reihe von Azure-Infrastrukturressourcen auf, einschließlich 
 Um diese Architektur zu ermöglichen, umfass jede AKS-Bereitstellung zwei Ressourcengruppen:
 
 1. Die erste Ressourcengruppe wird von Ihnen erstellt. Diese Gruppe enthält nur die Kubernetes-Dienstressource. Der AKS-Ressourcenanbieter erstellt während der Bereitstellung automatisch die zweite Ressourcengruppe. *MC_myResourceGroup_myAKSCluster_eastus* ist ein Beispiel für die zweite Ressourcengruppe. Informationen dazu, wie Sie den Namen dieser zweiten Ressourcengruppe angeben, finden Sie im nächsten Abschnitt.
-1. Die zweite Ressourcengruppe, als *Knotenressourcengruppe* bezeichnet, enthält alle Infrastrukturressourcen für den Cluster. Diese Ressourcen umfassen die virtuellen Computer des Kubernetes-Knotens, virtuelle Netzwerke und Speicher. Standardmäßig lautet der Name der Knotenressourcengruppe z. B. *MC_myResourceGroup_myAKSCluster_eastus*. AKS löscht automatisch die Knotenressource, wenn der Cluster gelöscht wird. Sie sollte daher nur für Ressourcen verwendet werden, die den gleichen Lebenszyklus wie der Cluster haben.
+1. Die zweite Ressourcengruppe, als *Knotenressourcengruppe* bezeichnet, enthält alle Infrastrukturressourcen für den Cluster. Diese Ressourcen umfassen die virtuellen Computer des Kubernetes-Knotens, virtuelle Netzwerke und Speicher. Standardmäßig lautet der Name der Knotenressourcengruppe z. B. *MC_myResourceGroup_myAKSCluster_eastus* . AKS löscht automatisch die Knotenressource, wenn der Cluster gelöscht wird. Sie sollte daher nur für Ressourcen verwendet werden, die den gleichen Lebenszyklus wie der Cluster haben.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kann ich einen eigenen Namen für die AKS-Knotenressourcengruppe angeben?
 
 Ja. In AKS wird der Knotenressourcengruppe standardmäßig der Name *MC_resourcegroupname_clustername_location* zugewiesen, Sie können jedoch auch einen eigenen Namen angeben.
 
-Installieren Sie die [aks-preview][aks-preview-cli]-Erweiterungsversion *0.3.2* oder höher der Azure CLI, wenn Sie einen eigenen Ressourcengruppennamen angeben möchten. Verwenden Sie bei der Erstellung eines AKS-Clusters mit dem Befehl [az aks create][az-aks-create] den Parameter *--node-resource-group*, und geben Sie einen Namen für die Ressourcengruppe an. Wenn Sie [eine Azure Resource Manager-Vorlage verwenden][aks-rm-template], um einen AKS-Cluster bereitzustellen, können Sie die *nodeResourceGroup*-Eigenschaft verwenden, um den Namen der Ressourcengruppe zu definieren.
+Installieren Sie die [aks-preview][aks-preview-cli]-Erweiterungsversion *0.3.2* oder höher der Azure CLI, wenn Sie einen eigenen Ressourcengruppennamen angeben möchten. Verwenden Sie bei der Erstellung eines AKS-Clusters mit dem Befehl [az aks create][az-aks-create] den Parameter *--node-resource-group* , und geben Sie einen Namen für die Ressourcengruppe an. Wenn Sie [eine Azure Resource Manager-Vorlage verwenden][aks-rm-template], um einen AKS-Cluster bereitzustellen, können Sie die *nodeResourceGroup* -Eigenschaft verwenden, um den Namen der Ressourcengruppe zu definieren.
 
 * Die sekundäre Ressourcengruppe wird automatisch vom Azure-Ressourcenanbieter in Ihrem eigenen Abonnement erstellt.
 * Sie können nur einen benutzerdefinierten Namen für die Ressourcengruppe angeben, wenn Sie den Cluster erstellen.
@@ -111,7 +111,7 @@ namespaceSelector:
 
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>Können Zugangscontrollerwebhooks Auswirkungen auf „kube-system“ und interne AKS-Namespaces haben?
 
-Der AKS-Namespace verfügt über einen **Admissions Enforcer**, der die internen „kube-system“- und AKS-Namespaces automatisch ausschließt, um die Stabilität des Systems zu schützen und zu verhindern, dass benutzerdefinierte Zugangscontroller „kube-system“ und interne AKS-Namespaces beeinträchtigen. Dieser Dienst stellt sicher, dass die benutzerdefinierten Zugangscontroller keine Auswirkungen auf die in „kube-system“ ausgeführten Dienste haben.
+Der AKS-Namespace verfügt über einen **Admissions Enforcer** , der die internen „kube-system“- und AKS-Namespaces automatisch ausschließt, um die Stabilität des Systems zu schützen und zu verhindern, dass benutzerdefinierte Zugangscontroller „kube-system“ und interne AKS-Namespaces beeinträchtigen. Dieser Dienst stellt sicher, dass die benutzerdefinierten Zugangscontroller keine Auswirkungen auf die in „kube-system“ ausgeführten Dienste haben.
 
 Bei einem kritischen Anwendungsfall hinsichtlich der Bereitstellung in „kube-system“ (nicht empfohlen), die vom benutzerdefinierten Zugangscontrollerwebhook abgedeckt sein muss, müssen Sie ggf. die folgende Bezeichnung oder Anmerkung hinzufügen, sodass der Admissions Enforcer diese ignoriert.
 

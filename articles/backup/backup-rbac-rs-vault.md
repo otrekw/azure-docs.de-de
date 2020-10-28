@@ -1,19 +1,19 @@
 ---
-title: Verwalten von Sicherungen mit der rollenbasierten Zugriffssteuerung
-description: Verwenden Sie die rollenbasierte Zugriffssteuerung zum Verwalten des Zugriffs auf Vorgänge der Sicherungsverwaltung im Recovery Services-Tresor.
+title: Verwalten von Sicherungen mit der rollenbasierten Zugriffssteuerung in Azure
+description: Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure zum Verwalten des Zugriffs auf Vorgänge der Sicherungsverwaltung im Recovery Services-Tresor.
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376127"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090878"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
+# <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung in Azure zum Verwalten von Azure Backup-Wiederherstellungspunkten
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von Azure RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
 > [!IMPORTANT]
 > Rollen, die von Azure Backup bereitgestellt werden, sind auf Aktionen beschränkt, die im Azure-Portal, über die REST-API oder mit PowerShell- oder CLI-Cmdlets für Recovery Services-Tresore ausgeführt werden können. Aktionen, die auf der Benutzeroberfläche des Azure Backup-Agent-Clients oder der Benutzeroberfläche von System Center Data Protection Manager oder der Benutzeroberfläche von Azure Backup Server ausgeführt werden, werden von diesen Rollen nicht gesteuert.
@@ -56,7 +56,7 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Recovery Services-Tresor |
 
 > [!IMPORTANT]
-> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und **Sicherung** auswählen, öffnet sich der Bildschirm **Sicherung aktivieren**, obwohl die VM bereits gesichert ist. Dies liegt daran, dass der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
+> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und **Sicherung** auswählen, öffnet sich der Bildschirm **Sicherung aktivieren** , obwohl die VM bereits gesichert ist. Dies liegt daran, dass der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Mindestanforderungen an Rollen für die Sicherung von Azure-Dateifreigaben
 
@@ -77,9 +77,9 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal
+* [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit Azure RBAC im Azure-Portal
 * Informationen zur Zugriffsverwaltung mit:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md)
   * [REST-API](../role-based-access-control/role-assignments-rest.md)
-* [Beheben von Problemen bei der rollenbasierten Zugriffssteuerung](../role-based-access-control/troubleshooting.md): Empfehlungen zur Behebung häufig auftretender Probleme
+* [Behandeln von Problemen bei Azure RBAC](../role-based-access-control/troubleshooting.md): Empfehlungen zur Behebung häufig auftretender Probleme

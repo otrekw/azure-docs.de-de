@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro, openshift, aquasec, twistlock, red hat
-ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78271376"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218866"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Ausführen von privilegierten Containern in einem Azure Red Hat OpenShift-Cluster
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 wird zum 30. Juni 2022 eingestellt. Unterstützung für die Erstellung neuer Azure Red Hat OpenShift 3.11-Cluster wird bis zum 30. November 2020 bereitgestellt. Nach der Einstellung werden die verbleibenden Azure Red Hat OpenShift 3.11-Cluster abgeschaltet, um Sicherheitsrisiken zu vermeiden.
+> 
+> Führen Sie die Schritte in diesem Leitfaden aus, um [einen Azure Red Hat OpenShift 4-Cluster zu erstellen](tutorial-create-cluster.md).
+> Wenn Sie spezielle Fragen haben, [kontaktieren Sie uns](mailto:arofeedback@microsoft.com).
 
 Sie können in Azure Red Hat OpenShift-Clustern keine beliebigen privilegierten Container ausführen.
 Zwei Lösungen für die Sicherheitsüberwachung und Konformität können in ARO-Clustern ausgeführt werden.
@@ -24,7 +30,7 @@ In diesem Dokument werden die Unterschiede in der Dokumentation von Sicherheitsp
 Lesen Sie diese Anweisungen, bevor Sie die Anweisungen des Anbieters befolgen.
 Die Abschnittstitel in den unten angegebenen produktspezifischen Schritten beziehen sich direkt auf die Abschnittstitel in der Anbieterdokumentation.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Bevor Sie beginnen
 
 In der Dokumentation der meisten Sicherheitsprodukte wird vorausgesetzt, dass Sie über Clusteradministratorrechte verfügen.
 Kundenadministratoren verfügen in Azure Red Hat OpenShift nicht über alle Berechtigungen. Die erforderlichen Berechtigungen zum Ändern der clusterweiten Ressourcen sind beschränkt.
@@ -53,7 +59,7 @@ oc annotate scc hostaccess openshift.io/reconcile-protect=true
 oc annotate scc privileged openshift.io/reconcile-protect=true
 ```
 
-### <a name="step-1-prepare-prerequisites"></a>Schritt 1: Vorbereiten der erforderlichen Komponenten
+### <a name="step-1-prepare-prerequisites"></a>Schritt 1: Vorbereiten der erforderlichen Komponenten
 Beachten Sie, dass Sie sich als ARO-Kundenadministrator beim Cluster anmelden müssen (nicht mit der Rolle „Clusteradministrator“).
 
 Erstellen Sie das Projekt und das Dienstkonto.
@@ -115,7 +121,7 @@ Legen Sie beim Bereitstellen von Enforcern die folgenden Felder fest:
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
 | ServiceAccount | aqua-account  |
-| Project        | aqua-security |
+| Projekt        | aqua-security |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Produktspezifische Schritte für Prisma Cloud/Twistlock
 
@@ -128,7 +134,7 @@ Erstellen eines neuen OpenShift-Projekts
 oc new-project twistlock
 ```
 
-Überspringen Sie den optionalen Abschnitt „Pushen der Prisma Cloud-Images in eine private Registrierung“. Bei Azure Red Hat Openshift wird es nicht funktionieren. Verwenden Sie stattdessen die Onlineregistrierung.
+Überspringen Sie den optionalen Abschnitt „Pushen der Prisma Cloud-Images in eine private Registrierung“. Die Vorgänge funktioniert in Azure Red Hat OpenShift nicht. Verwenden Sie stattdessen die Onlineregistrierung.
 
 Sie können der offiziellen Dokumentation folgen und dabei die unten beschriebenen Korrekturen vornehmen.
 Beginnen Sie mit dem Abschnitt „Installieren der Konsole“.

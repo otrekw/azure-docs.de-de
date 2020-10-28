@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371013"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203261"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
@@ -21,20 +21,20 @@ Ein Cloudlösungsanbieter (Cloud Solution Provider, CSP) kann den Abrechnungsbes
 
 Dieses Feature steht nur für CSP-Partner mit direkter Abrechnung zur Verfügung, die als [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind. Es unterliegt der Governance und den Richtlinien von Microsoft und erfordert ggf. eine Überprüfung und Genehmigung für bestimmte Kunden.
 
-Um den Abrechnungsbesitz anfordern zu können, müssen Sie über die Rolle **Globaler Administrator** oder **Administrator-Agent** verfügen. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](https://docs.microsoft.com/partner-center/permissions-overview).
+Um den Abrechnungsbesitz anfordern zu können, müssen Sie über die Rolle **Globaler Administrator** oder **Administrator-Agent** verfügen. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
 Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen. Diese Konten werden für Cloudlösungsanbieter (Cloud Solution Providers, CSPs) erstellt, um die Abrechnung für ihre Kunden in der neuen Handelsumgebung zu verwalten. Die neue Umgebung ist nur für Partner verfügbar, die über mindestens einen Kunden verfügen, der eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert hat und einen Azure-Plan besitzt. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Partnervereinbarung haben.](#check-access-to-a-microsoft-partner-agreement)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Etablieren Sie eine [Handelspartnerbeziehung](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) mit dem Kunden. Vergewissern Sie sich anhand der [regionalen CSP-Autorisierungsübersicht](https://docs.microsoft.com/partner-center/regional-authorization-overview), dass sich Kunden- und Partnermandant in den gleichen autorisierten Regionen befinden.
-1. [Vergewissern Sie sich, dass der Kunde die Microsoft-Kundenvereinbarung akzeptiert hat.](https://docs.microsoft.com/partner-center/confirm-customer-agreement)
-1. Richten Sie einen [Azure-Plan](https://docs.microsoft.com/partner-center/purchase-azure-plan) für den Kunden ein. Falls der Kunde bei mehreren Handelspartnern einkauft, muss für jede Kombination aus Kunde und Handelspartner ein Azure-Plan eingerichtet werden.
+1. Etablieren Sie eine [Handelspartnerbeziehung](/partner-center/request-a-relationship-with-a-customer) mit dem Kunden. Vergewissern Sie sich anhand der [regionalen CSP-Autorisierungsübersicht](/partner-center/regional-authorization-overview), dass sich Kunden- und Partnermandant in den gleichen autorisierten Regionen befinden.
+1. [Vergewissern Sie sich, dass der Kunde die Microsoft-Kundenvereinbarung akzeptiert hat.](/partner-center/confirm-customer-agreement)
+1. Richten Sie einen [Azure-Plan](/partner-center/purchase-azure-plan) für den Kunden ein. Falls der Kunde bei mehreren Handelspartnern einkauft, muss für jede Kombination aus Kunde und Handelspartner ein Azure-Plan eingerichtet werden.
 
 ## <a name="request-billing-ownership"></a>Anfordern des Abrechnungsbesitzes
 
 1. Melden Sie sich mit CSP-Administrator-Agent-Anmeldeinformationen im CSP-Mandanten beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung** .  
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal zum Anfordern des Abrechnungsbesitzes](./media/mpa-request-ownership/search-cmb.png)
 1. Wählen Sie auf der linken Seite **Kunden** und anschließend einen Kunden aus der Liste aus.  
     [![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
@@ -45,17 +45,17 @@ Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen.
 1. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.  
     ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
 1. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.  
-    [![Screenshot: Überprüfen der Übertragungsanforderung](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Der Benutzer kann das Abrechnungskonto auswählen, von dem er Azure-Produkte übertragen möchte. Nach der Auswahl werden zur Übertragung berechtigte Produkte angezeigt. **Hinweis:** Deaktivierte Abonnements können nicht übertragen werden und werden ggf. in der Liste „Nicht übertragbare Azure-Produkte“ angezeigt. Nachdem Sie die zu übertragenden Azure-Produkte ausgewählt haben, klicken Sie auf **Überprüfen**.
+    [![Screenshot: Überprüfen der Übertragungsanforderung](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Der Benutzer kann das Abrechnungskonto auswählen, von dem er Azure-Produkte übertragen möchte. Nach der Auswahl werden zur Übertragung berechtigte Produkte angezeigt. **Hinweis:** Deaktivierte Abonnements können nicht übertragen werden und werden ggf. in der Liste „Nicht übertragbare Azure-Produkte“ angezeigt. Nachdem Sie die zu übertragenden Azure-Produkte ausgewählt haben, klicken Sie auf **Überprüfen** .
 1. Im Bereich **Ergebnis der Übertragungsprüfung** werden die Auswirkungen der zu übertragenden Azure-Produkte angezeigt. Die folgenden Status sind möglich:
-    * **Erfolgreich**: Die Überprüfung für dieses Azure-Produkt war erfolgreich, und das Produkt kann übertragen werden.
-    * **Warnung**: Es besteht eine Warnung für das ausgewählte Azure-Produkt. Zwar kann das Produkt übertragen werden, doch hat dies Auswirkungen, die dem Benutzer bekannt sein sollten, falls er Maßnahmen zur Minderung ergreifen möchte. Beispielsweise nutzt das zu übertragende Azure-Abonnement die Vorteile einer RI. Nach der Übertragung sind diese Vorteile für das Abonnement nicht mehr vorhanden. Um die Einsparungen zu erhöhen, stellen Sie sicher, dass die RI einem anderen Abonnement zugeordnet wird, das diese Vorteile nutzen kann. Der Benutzer kann stattdessen auch zur Auswahlseite zurückkehren und die Auswahl dieses Azure-Abonnements aufheben.
-    * **Fehler**: Das ausgewählte Azure-Produkt kann aufgrund eines Fehlers nicht übertragen werden. Der Benutzer muss zur Auswahlseite zurückkehren und die Auswahl dieses Produkts aufheben, um die anderen ausgewählten Azure-Produkte zu übertragen.  
+    * **Erfolgreich** : Die Überprüfung für dieses Azure-Produkt war erfolgreich, und das Produkt kann übertragen werden.
+    * **Warnung** : Es besteht eine Warnung für das ausgewählte Azure-Produkt. Zwar kann das Produkt übertragen werden, doch hat dies Auswirkungen, die dem Benutzer bekannt sein sollten, falls er Maßnahmen zur Minderung ergreifen möchte. Beispielsweise nutzt das zu übertragende Azure-Abonnement die Vorteile einer RI. Nach der Übertragung sind diese Vorteile für das Abonnement nicht mehr vorhanden. Um die Einsparungen zu erhöhen, stellen Sie sicher, dass die RI einem anderen Abonnement zugeordnet wird, das diese Vorteile nutzen kann. Der Benutzer kann stattdessen auch zur Auswahlseite zurückkehren und die Auswahl dieses Azure-Abonnements aufheben.
+    * **Fehler** : Das ausgewählte Azure-Produkt kann aufgrund eines Fehlers nicht übertragen werden. Der Benutzer muss zur Auswahlseite zurückkehren und die Auswahl dieses Produkts aufheben, um die anderen ausgewählten Azure-Produkte zu übertragen.  
     ![Screenshot: Überprüfungsoberfläche](./media/mpa-request-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>Überprüfen des Status der Übertragungsanforderung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung** .  
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal zum Überprüfen des Status der Übertragungsanforderung](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Wählen Sie auf der linken Seite **Kunden** aus.  
     [![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
@@ -115,7 +115,7 @@ Deaktivierte Abonnements können nicht übertragen werden. Abonnements müssen s
 
 ### <a name="azure-resources-transfer"></a>Übertragung von Azure-Ressourcen
 
-Alle Ressourcen aus den Abonnements (wie etwa virtuelle Computer, Datenträger und Websites) werden übertragen.
+Alle Ressourcen aus den Abonnements (wie etwa virtuelle Computer, Datenträger und Websites) werden übertragen. Bei der Übertragung werden Abonnement-IDs und Ressourcen-IDs beibehalten. 
 
 ### <a name="azure-marketplace-products-transfer"></a>Übertragung von Azure Marketplace-Produkten
 
@@ -123,13 +123,13 @@ Azure Marketplace-Produkte, die für von Cloudlösungsanbietern (Cloud Solution
 
 ### <a name="azure-reservations-transfer"></a>Übertragung von Azure-Reservierungen
 
-Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschoben. Sie können die Reservierung in EA für andere Abonnements behalten oder [die Reservierung stornieren](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), und Partner können sie in CSP erneut erwerben.
+Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschoben. Sie können die Reservierung in EA für andere Abonnements behalten oder [die Reservierung stornieren](../reservations/exchange-and-refund-azure-reservations.md), und Partner können sie in CSP erneut erwerben.
 
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 
 Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen. Der Partner erhält keinen neuen Azure RBAC-Zugriff auf die Abonnements.
 
-Die Partner müssen mit dem Kunden zusammenarbeiten, um Zugriff auf Abonnements zu erhalten. Die Partner benötigen Zugriff vom Typ [Administrator im Auftrag von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf of, AOBO) oder [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) auf offene Supporttickets.
+Die Partner müssen mit dem Kunden zusammenarbeiten, um Zugriff auf Abonnements zu erhalten. Die Partner benötigen Zugriff vom Typ [Administrator im Auftrag von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf of, AOBO) oder [Azure Lighthouse](../../lighthouse/concepts/cloud-solution-provider.md) auf offene Supporttickets.
 
 ### <a name="azure-support-plan"></a>Azure-Supportplan
 
@@ -145,7 +145,7 @@ Eine Übertragungsanforderung kann abgebrochen werden, bis sie entweder genehmig
 
 ### <a name="software-as-a-service-saas-transfer"></a>SaaS-Übertragung (Software-as-a-Service)
 
-SaaS-Produkte werden nicht zusammen mit den Abonnements übertragen. Bitten Sie den Benutzer, sich zwecks Übertragung des Abrechnungsbesitzes von SaaS-Produkten [an den Azure-Support zu wenden](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Zusammen mit dem Abrechnungsbesitz kann der Benutzer auch den Ressourcenbesitz übertragen. Der Ressourcenbesitz ermöglicht das Ausführen von Verwaltungsvorgängen (etwa das Löschen und Anzeigen der Produktdetails). Bei dem Benutzer muss es sich um einen Ressourcenbesitzer für das SaaS-Produkt handeln, um den Ressourcenbesitz übertragen zu können.
+SaaS-Produkte werden nicht zusammen mit den Abonnements übertragen. Bitten Sie den Benutzer, sich zwecks Übertragung des Abrechnungsbesitzes von SaaS-Produkten [an den Azure-Support zu wenden](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Zusammen mit dem Abrechnungsbesitz kann der Benutzer auch den Ressourcenbesitz übertragen. Der Ressourcenbesitz ermöglicht das Ausführen von Verwaltungsvorgängen wie dem Löschen und Anzeigen von Produktdetails. Bei dem Benutzer muss es sich um einen Ressourcenbesitzer für das SaaS-Produkt handeln, um den Ressourcenbesitz übertragen zu können.
 
 ### <a name="additional-approval-for-certain-customers"></a>Zusätzliche Genehmigung für bestimmte Kunden
 
@@ -155,13 +155,13 @@ Bei bestimmten Kundenumstellungsanforderungen ist aufgrund der Art der aktuellen
 
 Das Verzeichnis der übertragenen Azure-Abonnements muss dem Verzeichnis des Kunden entsprechen, das beim Etablieren der CSP-Beziehung ausgewählt wurde.
 
-Stimmen diese beiden Verzeichnisse nicht überein, konnten die Abonnements nicht übertragen werden. Sie müssen entweder eine neue CSP-Handelspartnerbeziehung mit dem Kunden etablieren, indem Sie das Verzeichnis der Azure-Abonnements auswählen, oder das Verzeichnis der Azure-Abonnements ändern, sodass es dem CSP-Beziehungsverzeichnis des Kunden entspricht. Weitere Informationen finden Sie unter [So weisen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zu](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+Stimmen diese beiden Verzeichnisse nicht überein, konnten die Abonnements nicht übertragen werden. Sie müssen entweder eine neue CSP-Handelspartnerbeziehung mit dem Kunden etablieren, indem Sie das Verzeichnis der Azure-Abonnements auswählen, oder das Verzeichnis der Azure-Abonnements ändern, sodass es dem CSP-Beziehungsverzeichnis des Kunden entspricht. Weitere Informationen finden Sie unter [So weisen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zu](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-### <a name="ea-subscription-in-the-non-orgnization-directory"></a>EA-Abonnement in einem Verzeichnis außerhalb der Organisation
+### <a name="ea-subscription-in-the-non-organization-directory"></a>EA-Abonnement in einem Verzeichnis außerhalb der Organisation
 
 Die EA-Abonnements aus Verzeichnissen außerhalb der Organisation können übertragen werden, sofern das Verzeichnis über eine Handelspartnerbeziehung mit dem CSP verfügt. Hat das Verzeichnis keine Handelspartnerbeziehung, müssen Sie sicherstellen, dass der Organisationsbenutzer im Verzeichnis Berechtigungen vom Typ *Globaler Administrator* besitzt, damit er die Partnerbeziehung akzeptieren kann. Der Domänenteil des Benutzernamens muss entweder der Name der anfängliche Standarddomänenname „[domain name]. onmicrosoft.com" oder eine überprüfte, nicht im Verbund konfigurierte benutzerdefinierte Domäne wie „contoso.com“ sein.  
 
-Informationen zum Hinzufügen eines Benutzers zum Verzeichnis finden Sie unter [ Hinzufügen oder Löschen von Benutzern in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Informationen zum Hinzufügen eines Benutzers zum Verzeichnis finden Sie unter [ Hinzufügen oder Löschen von Benutzern in Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Partnervereinbarung
 
@@ -174,4 +174,4 @@ Informationen zum Hinzufügen eines Benutzers zum Verzeichnis finden Sie unter [
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Der Abrechnungsbesitz für die Azure-Abonnements wird auf Sie übertragen. Überwachen Sie die Gebühren für die entsprechenden Abonnements über das [Azure-Portal](https://portal.azure.com).
-* Arbeiten Sie mit dem Kunden zusammen, um Zugriff auf die übertragenen Azure-Abonnements zu erhalten. [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* Arbeiten Sie mit dem Kunden zusammen, um Zugriff auf die übertragenen Azure-Abonnements zu erhalten. [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](../../role-based-access-control/role-assignments-portal.md)

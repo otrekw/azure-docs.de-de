@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258624"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145237"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Häufig gestellte Fragen zum bedingten Zugriff mit Azure Active Directory
 
@@ -59,8 +59,8 @@ Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedi
 
 Nachdem einige Richtlinien für bedingten Zugriff für den Mandanten in Microsoft Teams aktiviert wurden, funktionieren möglicherweise im Desktopclient bestimmte Registerkarten nicht mehr wie erwartet. Die betreffenden Registerkarten funktionieren jedoch bei der Verwendung des Microsoft Teams-Webclients. Die betreffenden Registerkarten können Power BI, Forms, VSTS, PowerApps und SharePoint-Liste enthalten.
 
-Um die betreffenden Registerkarten anzuzeigen, müssen Sie den Teams-Webclient in Edge, Internet Explorer oder Chrome mit installierter Windows 10-Kontoerweiterung verwenden. Einige Registerkarten sind von der Webauthentifizierung abhängig, die im Microsoft Teams-Desktopclient nicht funktioniert, wenn der bedingte Zugriff aktiviert ist. Microsoft arbeitet zusammen mit den Partnern daran, diese Szenarios zu ermöglichen. Bisher konnten wir Szenarien mit Planner, OneNote und Stream realisieren.
+Um die betreffenden Registerkarten anzuzeigen, müssen Sie den Teams-Webclient in Microsoft Edge, Internet Explorer oder Chrome mit installierter Windows 10-Kontoerweiterung verwenden. Einige Registerkarten sind von der Webauthentifizierung abhängig, die im Microsoft Teams-Desktopclient nicht funktioniert, wenn der bedingte Zugriff aktiviert ist. Microsoft arbeitet zusammen mit den Partnern daran, diese Szenarios zu ermöglichen. Bisher konnten wir Szenarien mit Planner, OneNote und Stream realisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wie Sie Richtlinien für bedingten Zugriff für Ihre Umgebung konfigurieren, erfahren Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md). 
+- Zum Konfigurieren von Richtlinien für bedingten Zugriff für Ihre Umgebung lesen Sie den Artikel [Planen einer Bereitstellung für bedingten Zugriff](plan-conditional-access.md). 

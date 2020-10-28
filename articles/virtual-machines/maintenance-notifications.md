@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460576"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151553"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen
 
@@ -25,9 +25,9 @@ Azure führt regelmäßig Updates durch, um die Zuverlässigkeit, Leistung und S
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle hat einen anderen Umfang (Regionen).
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Standardmäßig wird die Benachrichtigung an den Dienstadministrator und an Co-Administratoren gesendet. Sie können weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks mithilfe von [Aktivitätsprotokollwarnungen](../service-health/alerts-activity-log-service-notifications-portal.md) hinzufügen.  
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Administrator und Co-Admin des Abonnements gesendet. Sie können weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks mithilfe von [Aktivitätsprotokollwarnungen](../service-health/alerts-activity-log-service-notifications-portal.md) hinzufügen.  
 - Sobald eine Benachrichtigung erfolgt, wird ein *Self-Service-Zeitfenster* bereitgestellt. In diesem Fenster können Sie abfragen, welche Ihrer virtuellen Computer betroffen sind, und die Wartung basierend auf Ihren eigenen Planungsanforderungen starten. Das Self-Service-Zeitfenster umfasst in der Regel ca. 35 Tage.
-- Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
+- Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung* . Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
 Mit den beiden Zeitfenstern möchten wir Ihnen einerseits genügend Zeit geben, um die Wartung zu initiieren und Ihren virtuellen Computer neu zu starten, und Sie andererseits darüber informieren, wann Azure die Wartung automatisch startet.
 
@@ -80,7 +80,7 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit fü
 
 **F: Wie werde ich über eine geplante Wartung benachrichtigt?**
 
-**A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an die Dienstadministratoren gesendet (pro Abonnement eine E-Mail). Zusätzliche Kanäle und Empfänger für diese Benachrichtigung können mit Aktivitätsprotokollwarnungen konfiguriert werden. Falls Sie einen virtuellen Computer in einer Region bereitstellen, wo bereits Wartung geplant ist, erhalten Sie die Benachrichtigung nicht, sondern müssen vielmehr den Wartungsstatus des virtuellen Computers überprüfen.
+**A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an den Administrator und Co-Admin des Abonnements gesendet (eine E-Mail pro Abonnement). Zusätzliche Kanäle und Empfänger für diese Benachrichtigung können mit Aktivitätsprotokollwarnungen konfiguriert werden. Falls Sie einen virtuellen Computer in einer Region bereitstellen, wo bereits Wartung geplant ist, erhalten Sie die Benachrichtigung nicht, sondern müssen vielmehr den Wartungsstatus des virtuellen Computers überprüfen.
 
 **F: Mir wird weder im Portal noch über PowerShell oder die Befehlszeilenschnittstelle ein Hinweis auf eine geplante Wartung angezeigt. Was ist schiefgelaufen?**
 

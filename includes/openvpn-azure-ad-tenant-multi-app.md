@@ -1,19 +1,19 @@
 ---
-title: Includedatei
+title: include file
 description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/21/2020
+ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3d1c34fe0fc045e829c2ea9166664f06fd3127
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606261"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116716"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Erstellen des Azure AD-Mandanten
 
@@ -71,6 +71,10 @@ Registrieren des VPN-Client im Azure AD-Mandanten.
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
+> [!NOTE]
+> Wenn Sie zur Bereitstellung der Einwilligung ein globales Administratorkonto verwenden, das nicht nativ zum Azure AD-Mandanten gehört, ersetzen Sie „common“ durch die Azure AD-Verzeichnis-ID in der URL. Möglicherweise müssen Sie „common“ auch in bestimmten anderen Fällen durch Ihre Verzeichnis-ID ersetzen.
+>
+
 5. Wählen Sie das Konto **Globaler Administrator** aus, wenn Sie dazu aufgefordert werden.
 
     ![Verzeichnis-ID](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
@@ -87,34 +91,34 @@ Registrieren des VPN-Client im Azure AD-Mandanten.
 
 In diesem Schritt registrieren Sie zusätzliche Anwendungen für verschiedene Benutzer und Gruppen.
 
-1. Klicken Sie unter Ihrem Azure Active Directory auf die Option **App-Registrierungen** und dann auf **+ Neue Registrierung**.
+1. Klicken Sie unter Ihrem Azure Active Directory auf die Option **App-Registrierungen** und dann auf **+ Neue Registrierung** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/app1.png)
 
-2. Geben Sie auf der Seite **Registrieren einer Anwendung** den **Namen** ein. Wählen Sie unter **Unterstützte Kontotypen** den gewünschten aus, und klicken Sie dann auf **Registrieren**.
+2. Geben Sie auf der Seite **Registrieren einer Anwendung** den **Namen** ein. Wählen Sie unter **Unterstützte Kontotypen** den gewünschten aus, und klicken Sie dann auf **Registrieren** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/app2.png)
 
-3. Nachdem die neue Anwendung registriert wurde, klicken Sie unter dem Blatt „Anwendung“ auf **Eine API verfügbar machen**.
+3. Nachdem die neue Anwendung registriert wurde, klicken Sie unter dem Blatt „Anwendung“ auf **Eine API verfügbar machen** .
 
-4. Klicken Sie auf **+ Bereich hinzufügen**.
+4. Klicken Sie auf **+ Bereich hinzufügen** .
 
-5. Belassen Sie den Standardwert für **Anwendungs-ID-URI**. Klicken Sie auf **Speichern und fortfahren**.
+5. Belassen Sie den Standardwert für **Anwendungs-ID-URI** . Klicken Sie auf **Speichern und fortfahren** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
-6. Füllen Sie die Pflichtfelder aus, und stellen Sie sicher, dass **Zustand** auf **Aktiviert** gesetzt ist. Klicken Sie auf **Bereich hinzufügen**.
+6. Füllen Sie die Pflichtfelder aus, und stellen Sie sicher, dass **Zustand** auf **Aktiviert** gesetzt ist. Klicken Sie auf **Bereich hinzufügen** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 
-7. Klicken Sie auf **Eine API verfügbar machen** und dann auf **+ Eine Clientanwendung hinzufügen**.  Geben Sie für **Client-ID** abhängig von der Cloud die folgenden Werte ein:
+7. Klicken Sie auf **Eine API verfügbar machen** und dann auf **+ Eine Clientanwendung hinzufügen** .  Geben Sie für **Client-ID** abhängig von der Cloud die folgenden Werte ein:
 
     - Geben Sie **41b23e61-6c1e-4545-b367-cd054e0ed4b4** für Azure **Public** ein.
     - Geben Sie **51bb15d4-3a4f-4ebf-9dca-40096fe32426** für Azure **Government** ein.
     - Geben Sie **538ee9e6-310a-468d-afef-ea97365856a9** für Azure **Germany** ein.
     - Geben Sie **49f817b6-84ae-4cc0-928c-73f27289b3aa** für Azure **China 21Vianet** ein.
 
-8. Klicken Sie auf **Anwendung hinzufügen**.
+8. Klicken Sie auf **Anwendung hinzufügen** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/app5.png)
 
@@ -128,14 +132,14 @@ In diesem Schritt registrieren Sie zusätzliche Anwendungen für verschiedene Be
 
 Zuweisen der Benutzer zu Ihren Anwendungen.
 
-1. Wählen Sie unter **Azure AD > Unternehmensanwendungen** die neu registrierte Anwendung aus, und klicken Sie auf **Eigenschaften**. Stellen Sie sicher, dass **Benutzerzuweisung erforderlich?** auf **Ja** festgelegt ist. Klicken Sie auf **Speichern**.
+1. Wählen Sie unter **Azure AD > Unternehmensanwendungen** die neu registrierte Anwendung aus, und klicken Sie auf **Eigenschaften** . Stellen Sie sicher, dass **Benutzerzuweisung erforderlich?** auf **Ja** festgelegt ist. Klicken Sie auf **Speichern** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 
-2. Klicken Sie auf der Anwendungsseite auf **Benutzer und Gruppen** und dann auf **Benutzer hinzufügen**.
+2. Klicken Sie auf der Anwendungsseite auf **Benutzer und Gruppen** und dann auf **Benutzer hinzufügen** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. Klicken Sie unter **Zuweisung hinzufügen** auf die Option **Benutzer und Gruppen**. Wählen Sie die Benutzer aus, die auf diese VPN-Anwendung zugreifen können sollen. Klicken Sie auf **Auswählen**.
+3. Klicken Sie unter **Zuweisung hinzufügen** auf die Option **Benutzer und Gruppen** . Wählen Sie die Benutzer aus, die auf diese VPN-Anwendung zugreifen können sollen. Klicken Sie auf **Auswählen** .
 
     ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

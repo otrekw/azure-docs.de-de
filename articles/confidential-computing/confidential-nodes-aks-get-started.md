@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: c8c64dadebb092d7f376fd2b6590b26f4dde0ee0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998477"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122174"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) mit Confidential Computing-Knoten über die Azure-Befehlszeilenschnittstelle (Vorschauversion)
 
@@ -119,6 +119,8 @@ Navigieren Sie zum Bereitstellungsabschnitt [Hello World aus isolierter Enklaven
 az aks update --enable-addons confcom --resource-group myResourceGroup --name myAKSCluster
 ```
 
+![DCSv2 AKS-Clustererstellung](./media/confidential-nodes-aks-overview/CLIAKSProvisioning.gif)
+
 ## <a name="adding-confidential-computing-node-to-existing-aks-cluster"></a>Hinzufügen eines Confidential Computing-Knotens zu einem vorhandenen AKS-Cluster<a id="existing-cluster"></a>
 
 In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über einen aktiven AKS-Cluster verfügen, der die im Abschnitt „Voraussetzungen“ aufgeführten Kriterien erfüllt.
@@ -155,7 +157,7 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 Wenn die Ausgabe wie oben aussieht, ist Ihr AKS-Cluster bereit für die Ausführung vertraulicher Anwendungen.
 
 ## <a name="hello-world-from-isolated-enclave-application"></a>Hello World aus isolierter Enklavenanwendung <a id="hello-world"></a>
-Erstellen Sie eine Datei mit dem Namen *hello-world-enclave.yaml*, und fügen Sie das folgende YAML-Manifest ein. Diesen Open Enclave-basierten Beispielanwendungscode finden Sie im [Open Enclave-Projekt](https://github.com/openenclave/openenclave/tree/master/samples/helloworld).
+Erstellen Sie eine Datei mit dem Namen *hello-world-enclave.yaml* , und fügen Sie das folgende YAML-Manifest ein. Diesen Open Enclave-basierten Beispielanwendungscode finden Sie im [Open Enclave-Projekt](https://github.com/openenclave/openenclave/tree/master/samples/helloworld).
 
 ```yaml
 apiVersion: batch/v1

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210359"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093275"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.
@@ -178,7 +178,7 @@ Der erste Schritt beim Erstellen der Dashboardressource ist die Konfiguration ei
 ### <a name="making-the-requests"></a>Durchführen der Anforderungen
 Sobald der Vorgang erstellt wurde, können Sie eine Richtlinie speziell für diesen Vorgang konfigurieren. 
 
-![Dashboardvorgang](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Screenshot des Bildschirms „Richtlinienbereich“.](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 Der erste Schritt besteht im Extrahieren von Abfrageparametern aus der eingehenden Anforderung, damit sie an das Back-End weitergeleitet werden kann. In diesem Beispiel zeigt das Dashboard Informationen basierend auf einem Zeitraum und umfasst daher einen `fromDate`- und einen `toDate`-Parameter. Sie können die `set-variable`-Richtlinie verwenden, um die Informationen aus der Anforderungs-URL zu extrahieren.
 

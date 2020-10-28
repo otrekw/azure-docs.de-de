@@ -5,20 +5,20 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977cd79de629670cef526f072340f8897fa6446e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256967"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316494"
 ---
 # <a name="azure-service-fabric-support-options"></a>Supportoptionen für Azure Service Fabric
 
-Um die entsprechende Unterstützung für die Service Fabric-Cluster bereitzustellen, in denen Sie Ihre Anwendungsworkloads ausführen, haben wir verschiedene Optionen für Sie eingerichtet. Sie können je nach benötigter Supportstufe und Schweregrad des Problems die passenden Optionen auswählen. 
+Wir haben eine Reihe von Supportanfrageoptionen erstellt, um die Anforderungen für die Verwaltung Ihrer Service Fabric-Cluster und Anwendungsworkloads zu erfüllen. Abhängig von der Dringlichkeit der erforderlichen Unterstützung und dem Schweregrad des Problems können Sie die für Sie geeignete Option auswählen.
 
 ## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Melden von Produktionsproblemen oder Anfordern von kostenpflichtigem Support für Azure
 
-Um Probleme mit Ihrem in Azure bereitgestellten Service Fabric-Cluster zu melden, öffnen Sie [im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) oder [Microsoft-Support-Portal](https://support.microsoft.com/oas/default.aspx?prid=16146) ein Supportticket.
+Um Probleme mit Ihrem in Azure ausgeführten Service Fabric-Clusters zu melden, öffnen Sie [im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) oder [Microsoft-Supportportal](https://support.microsoft.com/oas/default.aspx?prid=16146) ein Supportticket.
 
 Weitere Informationen:
  
@@ -26,7 +26,7 @@ Weitere Informationen:
 - [Microsoft Premier Support](https://support.microsoft.com/en-us/premier)
 
 > [!Note]
-> Auf Clustern, die auf einer Bronze-Zuverlässigkeitsebene oder in einem Cluster mit nur einem Knoten ausgeführt werden, können Sie nur Testworkloads ausführen. Wenn Sie Probleme mit einem Cluster mit Bronze-Zuverlässigkeit oder einem Cluster mit nur einem Knoten haben, wird Ihnen das Microsoft-Supportteam bei der Behebung des Problems helfen, aber keine Analyse der Grundursache durchführen. Weitere Informationen finden Sie unter [Die Zuverlässigkeitsmerkmale des Clusters](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster).
+> Auf Clustern, die auf einer Bronze-Zuverlässigkeitsebene oder in einem Cluster mit nur einem Knoten ausgeführt werden, können Sie nur Testworkloads ausführen. Wenn Sie Probleme mit einem Cluster mit Bronze-Zuverlässigkeit oder einem Cluster mit nur einem Knoten haben, wird Ihnen das Microsoft-Supportteam bei der Behebung des Problems helfen, aber keine Analyse der Grundursache durchführen. Weitere Informationen finden Sie unter [Zuverlässigkeitsmerkmale des Clusters](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster).
 >
 > Weitere Informationen darüber, was für einen produktionsbereiten Cluster erforderlich ist, finden Sie in der Checkliste [Produktionsbereitschaft](./service-fabric-production-readiness-checklist.md).
 
@@ -34,7 +34,7 @@ Weitere Informationen:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Melden von Produktionsproblemen oder Anfordern von kostenpflichtigem Support für eigenständige Service Fabric-Cluster
 
-Um Probleme mit Ihrem in lokalen oder anderen Clouds bereitgestellten Service Fabric-Cluster zu melden, erstellen Sie im [Microsoft-Support-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ein Ticket für Professional Support.
+Um Probleme mit Ihrem in lokalen oder anderen Clouds bereitgestellten Service Fabric-Cluster zu melden, erstellen Sie im [Microsoft-Supportportal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ein Ticket für Professional Support.
 
 Weitere Informationen:
 
@@ -47,20 +47,21 @@ Wir haben ein GitHub-Repository zum Melden von Service Fabric-Problemen eingeric
 
 ### <a name="github-repo"></a>GitHub-Repository 
 
-Melden Sie Azure Service Fabric-Probleme im [Git-Repository für Service Fabric-Probleme](https://github.com/Azure/service-fabric-issues). Dieses Repository dient zur Meldung und Nachverfolgung von Problemen mit Azure Service Fabric sowie zum Senden kleiner Funktionsanforderungen. **Verwenden Sie das Repository nicht zum Melden von Problemen mit der Livewebsite**.
+Melden Sie Azure Service Fabric-Probleme in [Service Fabric GitHub](https://github.com/microsoft/service-fabric/issues). Dieses Repository dient zur Meldung und Nachverfolgung von Problemen sowie zum Senden kleiner Funktionsanforderungen, die sich auf Azure Service Fabric beziehen. **Verwenden Sie dieses Medium nicht zum Melden von Problemen mit der Livewebsite** .
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow und MSDN-Foren
 
-Das [Service Fabric-Tag auf StackOverflow][stackoverflow] und das [Service Fabric-Forum auf MSDN][msdn-forum] eignen sich für Fragen zur Funktionsweise der Plattform und zur Durchführung bestimmter Aufgaben.
+Das [Service Fabric-Tag auf Stack Overflow][stackoverflow] und das [Service Fabric-Forum auf MSDN][msdn-forum] eignen sich für allgemeine Fragen zur Funktionsweise der Plattform und zur Durchführung bestimmter Aufgaben.
 
 ### <a name="azure-feedback-forum"></a>Azure-Feedbackforum
 
-Das [Azure-Feedbackforum für Service Fabric][uservoice-forum] ist die beste Anlaufstelle, wenn Sie umfangreiche Funktionsvorschläge für das Produkt einreichen möchten, da die häufigsten Anforderungen im Rahmen unserer mittel- und langfristigen Planung geprüft werden. Wir empfehlen Ihnen, in der Community Unterstützung für Ihre Vorschläge zu gewinnen.
+Das [Azure-Feedbackforum für Service Fabric][uservoice-forum] ist der beste Ort für die Übermittlung wichtiger Ideen für Produktfunktionen. Wir überprüfen die beliebtesten Anforderungen und berücksichtigen diese für unsere mittel- bis langfristige Planung. Wir empfehlen Ihnen, in der Community Unterstützung für Ihre Vorschläge zu gewinnen.
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric-Vorschauversionen – nicht für den Einsatz in Produktionsumgebungen unterstützt
 
-Von Zeit zu Zeit veröffentlichen wir Versionen, die wichtige Features besitzen, die als Vorschauversionen veröffentlicht werden und für die wir gerne Feedback möchten. Diese Vorschauversionen sollten nur zu Testzwecken verwendet werden. Ihr Produktionscluster muss immer als unterstütze stabile Service Fabric-Version ausgeführt werden. Eine Vorschauversion beginnt immer mit einer großen und kleinen Versionsnummer von 255. Wenn Sie z.B. eine Service Fabric-Version 255.255.5703.949 vor sich haben, befindet sich diese Produktversion in er Vorschau und darf nur in Testclustern verwendet werden. Diese Produktversionen werden auch im [Service Fabric-Teamblog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) bekannt gegeben und besitzen Details zu den enthaltenen Features.
-Es existiert keine kostenpflichtige Supportoption für diese Vorschauversionen. Verwenden Sie eine der unter [Melden von Azure Service Fabric-Problemen](#report-azure-service-fabric-issues) aufgeführten Optionen, um Fragen zu stellen oder Feedback zu geben.
+Gelegentlich werden spezielle Vorschauversionen mit erheblichen Funktionsänderungen bereitgestellt, für die wir frühes Feedback untersuchen möchten. Sie sollten Vorschauversionen nur in isolierten Testumgebungen verwenden, die keine Produktionsworkloads bereitstellen. Ihr Produktionscluster muss immer als unterstütze stabile Service Fabric-Version ausgeführt werden. Wir bieten keine kostenpflichtige Supportoption für diese Vorschauversionen.
+
+Eine Vorschauversion beginnt immer mit einer großen und kleinen Versionsnummer von 255. Wenn Sie z. B. eine Service Fabric-Version 255.255.5703.949 vor sich haben, befindet sich diese Version in der Vorschau und darf nur in Testclustern verwendet werden. Diese Produktversionen werden auch im [Service Fabric-Teamblog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) bekannt gegeben und besitzen Details zu den enthaltenen Features. Verwenden Sie eine der unter [Melden von Azure Service Fabric-Problemen](#report-azure-service-fabric-issues) aufgeführten Optionen, um Fragen zu stellen oder Feedback zu geben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -70,6 +71,6 @@ Es existiert keine kostenpflichtige Supportoption für diese Vorschauversionen. 
 [Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
-[acom-docs]: https://aka.ms/servicefabricdocs
-[sample-repos]: https://aka.ms/servicefabricsamples
+[acom-docs]: ./index.yml
+[sample-repos]: /samples/browse/?products=azure
 [msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

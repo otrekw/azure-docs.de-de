@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4ebc5e44f491b5ff5950a13771fe3d7179b6fc9f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078152"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143080"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -21,7 +21,8 @@ Die Steuerungsebene oder der API-Server befindet sich in einem von Azure Kuberne
 
 Der private Cluster ist in öffentlichen Regionen mit [AKS-Unterstützung](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service) verfügbar.
 
-US Gov Texas wird derzeit aufgrund von fehlender Unterstützung von Private Link nicht unterstützt.
+> [!NOTE]
+> Azure Government-Standorte werden unterstützt, allerdings wird US Gov Texas derzeit aufgrund von fehlender Unterstützung von Private Link nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

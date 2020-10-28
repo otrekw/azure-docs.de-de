@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Leitfaden: Erstellen eines Azure-Schlüsseltresors und einer Tresorzugriffsrichtlinie mit einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation'
-description: Veranschaulicht, wie Sie Azure-Schlüsseltresore und Tresorzugriffsrichtlinien erstellen, indem Sie die Azure Resource Manager-Vorlage verwenden.
+title: Erstellen eines Azure-Schlüsseltresors und einer Tresorzugriffsrichtlinie mithilfe einer ARM-Vorlage (Vorschau)
+description: Dieser Artikel veranschaulicht, wie Sie Azure-Schlüsseltresore und Tresorzugriffsrichtlinien erstellen, indem Sie eine Azure Resource Manager-Vorlage verwenden.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,29 +10,29 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cf19561005fe2e98b7b5cf6812ff9224fd9474dc
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804268"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282313"
 ---
-# <a name="how-to-create-azure-key-vault-and-vault-access-policy-using-a-resource-manager-template"></a>Erstellen von Azure Key Vault-und Tresorzugriffsrichtlinien mithilfe einer Resource Manager-Vorlage
+# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Erstellen eines Azure-Schlüsseltresors und von Tresorzugriffsrichtlinien mithilfe einer Resource Manager-Vorlage
 
-[Azure Key Vault](../general/overview.md) ist ein Clouddienst, der einen sicheren Speicher für Geheimnisse bereitstellt, z. B. für Schlüssel, Kennwörter, Zertifikate usw. In diesem Leitfaden geht es um die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen eines Schlüsseltresors.
+[Azure Key Vault](../general/overview.md) ist ein Clouddienst, der einen sicheren Speicher für Geheimnisse wie Schlüssel, Kennwörter und Zertifikate bereitstellt. In diesem Artikel wird die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen eines Schlüsseltresors beschrieben.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie für diesen Artikel die folgenden Schritte aus:
+Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
-* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 
-## <a name="create-key-vault-resource-manager-template"></a>Erstellen einer Key Vault Resource Manager-Vorlage
+## <a name="create-a-key-vault-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für einen Schlüsseltresor
 
-Die folgende Vorlage zeigt eine einfache Möglichkeit zum Erstellen eines Schlüsseltresors. Einige Werte werden in der Vorlage angegeben.
+Mit der folgenden einfachen Vorlage wird ein Schlüsseltresor erstellt. Einige Werte werden in der Vorlage angegeben.
 
 ```json
 {
@@ -87,11 +87,11 @@ Die folgende Vorlage zeigt eine einfache Möglichkeit zum Erstellen eines Schlü
 Weitere Informationen zu Key Vault-Vorlageneinstellungen finden Sie unter [Key Vault ARM-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
-> Wenn eine Vorlage erneut bereitgestellt wird, setzt sie alle vorhandenen Zugriffsrichtlinien im Schlüsseltresor außer Kraft. Es wird empfohlen, die `accessPolicies`-Eigenschaft mit vorhandenen Zugriffsrichtlinien aufzufüllen, um zu vermeiden, dass Sie den Zugriff auf den Schlüsseltresor verlieren. 
+> Wenn eine Vorlage erneut bereitgestellt wird, werden alle vorhandenen Zugriffsrichtlinien im Schlüsseltresor überschrieben. Es wird empfohlen, die `accessPolicies`-Eigenschaft mit vorhandenen Zugriffsrichtlinien aufzufüllen, um zu verhindern, dass Sie den Zugriff auf den Schlüsseltresor verlieren. 
 
-## <a name="add-access-policy-to-key-vault-resource-manager-template"></a>Hinzufügen einer Zugriffsrichtlinie zu einer Key Vault Resource Manager-Vorlage
+## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Hinzufügen einer Zugriffsrichtlinie zu einer Key Vault Resource Manager-Vorlage
 
-Sie können Zugriffsrichtlinien für einen vorhandenen Schlüsseltresor ohne erneute Bereitstellung der gesamten Schlüsseltresorvorlage bereitstellen. Die folgende Vorlage zeigt eine einfache Möglichkeit zum Erstellen von Zugriffsrichtlinien.
+Sie können Zugriffsrichtlinien für einen vorhandenen Schlüsseltresor ohne erneute Bereitstellung der gesamten Schlüsseltresorvorlage bereitstellen. Die folgende Vorlage stellt eine einfache Möglichkeit zum Erstellen von Zugriffsrichtlinien dar:
 
 ```json
 {
@@ -162,19 +162,19 @@ Sie können Zugriffsrichtlinien für einen vorhandenen Schlüsseltresor ohne ern
 ```
 Weitere Informationen zu Key Vault-Vorlageneinstellungen finden Sie unter [Key Vault ARM-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
-## <a name="other-available-key-vault-resource-manager-templates"></a>Weitere verfügbare Key Vault Resource Manager-Vorlagen
+## <a name="more-key-vault-resource-manager-templates"></a>Weitere Key Vault Resource Manager-Vorlagen
 
 Für Key Vault-Objekte stehen weitere Resource Manager-Vorlagen zur Verfügung:
 
 | Geheimnisse | Schlüssel | Zertifikate |
 |--|--|--|
-|[Schnellstart](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<br>[Verweis](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|–|–|
+|<ul><li>[Schnellstart](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Verweis](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|–|–|
 
 Weitere Key Vault-Vorlagen finden Sie hier: [Key Vault Resource Manager-Referenz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)
 
 ## <a name="deploy-the-templates"></a>Bereitstellen der Vorlagen
 
-Sie können das Azure-Portal verwenden, um die oben genannten Vorlagen mithilfe der Option „Eigene Vorlage im Editor erstellen“ im folgenden Leitfaden bereitzustellen: [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)
+Sie können das Azure-Portal verwenden, um die oben genannten Vorlagen mithilfe der Option **Eigene Vorlage im Editor erstellen** bereitzustellen, die hier beschrieben ist: [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)
 
 Sie können die oben aufgeführten Vorlagen auch in Dateien speichern und die folgenden Befehle verwenden:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create):
 
@@ -188,7 +188,7 @@ az group deployment create --resource-group ExampleGroup --template-file key-vau
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie mit weiteren Schnellstarts und Tutorials fortfahren möchten, müssen Sie diese Ressourcen nicht bereinigen. Wenn die Ressourcen nicht mehr benötigt werden, löschen Sie die Ressourcengruppe. Dadurch werden der Schlüsseltresor und die zugehörigen Ressourcen gelöscht. Wenn Sie die Ressourcengruppe mit der Azure CLI oder Azure PowerShell löschen möchten, verwenden Sie die folgenden Schritte.
+Falls Sie mit weiteren Schnellstarts und Tutorials fortfahren möchten, müssen Sie diese Ressourcen nicht bereinigen. Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Wenn Sie die Gruppe löschen, werden auch der Schlüsseltresor und zugehörige Ressourcen gelöscht. Wenn Sie die Ressourcengruppe mit der Azure CLI oder Azure PowerShell löschen möchten, führen Sie die folgenden Schritte aus:
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -211,12 +211,12 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="resources"></a>Ressourcen
 
-- [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
-- Lesen Sie weitere Informationen zu [Azure Resource Manager](../../azure-resource-manager/management/overview.md).
-- [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)
+- Lesen Sie die [Übersicht über den Azure-Schlüsseltresor](../general/overview.md).
+- Hier finden Sie weitere Informationen zum [Azure-Ressourcen-Manager](../../azure-resource-manager/management/overview.md).
+- Machen Sie sich mit den [bewährten Methoden zum Verwenden von Azure Key Vault](../general/best-practices.md) vertraut.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Sicherer Zugriff auf einen Schlüsseltresor](secure-your-key-vault.md)
 - [Authentifizieren bei einem Schlüsseltresor](authentication.md)
-- [Entwicklerleitfaden zu Azure Key Vault](developers-guide.md)
+- [Entwicklerhandbuch zu Azure-Schlüsseltresor](developers-guide.md)

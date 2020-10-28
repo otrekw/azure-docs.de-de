@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855352"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107282"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Tutorial: Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 
@@ -63,11 +63,19 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/express-route-circuit.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
-2. Jetzt können Sie damit beginnen, eine Verbindung zum Verknüpfen des virtuellen Netzwerkgateways mit Ihrer ExpressRoute-Verbindung bereitzustellen. Klicken Sie auf **Verbindung** > **Hinzufügen**, um die Seite **Verbindung hinzufügen** zu öffnen. Konfigurieren Sie dann die Werte.
+1. Jetzt können Sie damit beginnen, eine Verbindung zum Verknüpfen des virtuellen Netzwerkgateways mit Ihrer ExpressRoute-Verbindung bereitzustellen. Wählen Sie **Verbindung** > **Hinzufügen** aus, um die Seite **Verbindung hinzufügen** zu öffnen.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
-3. Nachdem die Verbindung erfolgreich konfiguriert wurde, zeigt das Verbindungsobjekt die Daten für die Verbindung an.
+1. Geben Sie einen Namen für die Verbindung ein, und wählen Sie dann **Weiter: Einstellungen >** aus.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
+
+1. Wählen Sie das Gateway aus, das zu dem virtuellen Netzwerk gehört, für das Sie eine Verknüpfung mit der Leitung herstellen möchten. Wählen Sie anschließend **Überprüfen + erstellen** aus. Wählen Sie nach Abschluss der Überprüfung die Option **Erstellen** aus.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
+
+1. Nachdem die Verbindung erfolgreich konfiguriert wurde, zeigt das Verbindungsobjekt die Daten für die Verbindung an.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
@@ -99,17 +107,23 @@ Der Leitungsbesitzer erstellt eine Autorisierung, die wiederum einen Autorisieru
 > Jede Verbindung erfordert eine separate Autorisierung.
 >
 
-1. Klicken Sie auf der Seite „ExpressRoute“ auf **Autorisierungen**, geben Sie einen **Namen** für die Autorisierung ein, und klicken Sie auf **Speichern**.
+1. Klicken Sie auf der Seite „ExpressRoute“ auf **Autorisierungen** , geben Sie einen **Namen** für die Autorisierung ein, und klicken Sie auf **Speichern** .
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
-2. Sobald die Konfiguration gespeichert ist, kopieren Sie die **Ressourcen-ID** und den **Autorisierungsschlüssel**.
+2. Sobald die Konfiguration gespeichert ist, kopieren Sie die **Ressourcen-ID** und den **Autorisierungsschlüssel** .
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization-key.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
 **So löschen Sie eine Verbindungsautorisierung**
 
-Sie können eine Verbindung löschen, indem Sie das Symbol **Löschen** auf der Seite für Ihre Verbindung auswählen.
+Sie können eine Verbindung löschen, indem Sie das Symbol **Löschen** für den Autorisierungsschlüssel Ihrer Verbindung auswählen.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
+
+Wenn Sie die Verbindung löschen, den Autorisierungsschlüssel aber beibehalten möchten, können Sie die Verbindung auf der entsprechenden Verbindungsseite der Leitung löschen.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
 ### <a name="circuit-user-operations"></a>Aktionen als Verbindungsbenutzer
 
@@ -117,33 +131,33 @@ Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschl
 
 **So lösen Sie eine Verbindungsautorisierung ein**
 
-1. Klicken Sie auf die Schaltfläche **+ Neu**.
+1. Wählen Sie die Schaltfläche **+ Ressource erstellen** aus. Suchen Sie nach **Verbindung** , und wählen Sie **Erstellen** aus.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
-2. Suchen Sie im Marketplace nach **Verbindung**, wählen Sie die Verbindung aus, und klicken Sie auf **Erstellen**.
+1. Stellen Sie sicher, dass die Option *Verbindungstyp* auf **ExpressRoute** festgelegt ist. Wählen Sie auf der Seite mit den Grundlagen die *Ressourcengruppe* und den *Standort* und dann **OK** aus.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/search-connection.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
-
-3. Stellen Sie sicher, dass für den **Verbindungstyp** „ExpressRoute“ festgelegt ist.
-4. Geben Sie die Details ein, und klicken Sie dann auf der Seite „Grundlagen“ auf **OK**.
+    > [!NOTE]
+    > Der Standort *muss* mit dem Ort des Gateways für virtuelle Netzwerke übereinstimmen, für das Sie die Verbindung erstellen.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
-5. Wählen Sie auf der Seite **Einstellungen** die Option **Gateway für virtuelle Netzwerke** aus, und aktivieren Sie das Kontrollkästchen **Autorisierung einlösen**.
-6. Geben Sie den **Autorisierungsschlüssel** und **Peerleitungs-URI** ein, und benennen Sie die Verbindung. Klicken Sie auf **OK**. Der **Peerleitungs-URI** ist die Ressourcen-ID der ExpressRoute-Leitung (die Sie im Einstellungsbereich „Eigenschaften“ der ExpressRoute-Leitung finden).
+1. Wählen Sie auf der Seite **Einstellungen** die Option *Gateway für virtuelle Netzwerke* aus, und aktivieren Sie das Kontrollkästchen **Autorisierung einlösen** . Geben Sie den *Autorisierungsschlüssel* und *Peerleitungs-URI* ein, und benennen Sie die Verbindung. Klicken Sie auf **OK** . 
+ 
+    > [!NOTE]
+    > Der *Peerleitungs-URI* ist die Ressourcen-ID der ExpressRoute-Leitung (die Sie im Einstellungsbereich „Eigenschaften“ der ExpressRoute-Leitung finden).
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
-7. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **OK**.
+1. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung** , und klicken Sie auf **OK** .
 
-**So geben Sie eine Verbindungsautorisierung frei**
-
-Sie können eine Autorisierung durch das Löschen der Verbindung freigeben, die die ExpressRoute-Verbindung mit dem virtuellen Netzwerk verknüpft.
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können eine Verbindung löschen und die Verknüpfung Ihres VNET mit einer ExpressRoute-Verbindung aufheben, indem Sie das Symbol **Löschen** auf der Seite für die Verbindung auswählen.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="Screenshot einer ExpressRoute-Verbindung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

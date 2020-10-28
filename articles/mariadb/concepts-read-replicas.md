@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: ec06fff73b1a4209546af5ca845e28aaa9dfb0b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: fcf368c9fbbb185ac3f47faa5705e1933d085c81
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532345"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126450"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -38,7 +38,7 @@ Da Replikate schreibgeschützt sind, führen sie nicht direkt zu einer verringer
 Das Lesereplikatfeature verwendet die asynchrone Replikation. Das Feature ist nicht für synchrone Replikationsszenarien vorgesehen. Zwischen der Quelle und dem Replikat entsteht eine messbare Verzögerung. Letztendlich sind die Daten auf dem Replikat mit den Daten auf dem Masterserver konsistent. Verwenden Sie das Feature für Workloads, für die diese Verzögerung akzeptabel ist.
 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
-Sie können über Ihren Quellserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
+Sie können ein Lesereplikat erstellen, das sich in einer anderen Region als Ihr Quellserver befindet. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
 
 Sie können einen Quellserver in jeder [Azure Database for MariaDB-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb) haben.  Ein Quellserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen. Die folgende Abbildung zeigt, welche Replikatregionen entsprechend Ihrer Quellregion verfügbar sind.
 
@@ -47,7 +47,7 @@ Sie können einen Quellserver in jeder [Azure Database for MariaDB-Region](https
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Quellserver befindet. Folgende universelle Replikatregionen werden unterstützt:
 
-„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“
+Australien, Osten; Australien, Südosten; Brasilien, Süden; Kanada, Mitte; Kanada, Osten; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2; USA, Westen-Mitte.
 
 ### <a name="paired-regions"></a>Regionspaare
 Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Quellservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
@@ -59,7 +59,7 @@ Es gibt jedoch einige Einschränkungen:
 * Regionale Verfügbarkeit: Azure Database for MariaDB ist in den Regionen „Frankreich, Mitte“ und „VAE, Norden“ und „Deutschland, Mitte“ verfügbar. Die entsprechenden gekoppelten Regionen sind allerdings nicht verfügbar.
     
 * Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Zu diesen Regionen zählen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
-   Das bedeutet, dass ein Quellserver in der Region „Indien, Westen“ ein Replikat in der Region „Indien, Süden“ erstellen kann. Ein Quellserver in der Region „Indien, Süden“ kann jedoch kein Replikat in der Region „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
+   Das bedeutet, dass ein Quellserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Quellserver in der Region „Indien, Süden“ kann jedoch kein Replikat in der Region „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
 
 ## <a name="create-a-replica"></a>Erstellen eines Replikats
 
@@ -182,7 +182,7 @@ Löschen Sie Replikatserver, aktualisieren Sie den Parameterwert auf dem Master,
 
 - Die Erstellung des Replikats eines Replikats wird nicht unterstützt.
 - In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MariaDB-Replikationstechnologie.
-- Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationswartezeit zwischen der Quelle und den Replikaten führen.
+- Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

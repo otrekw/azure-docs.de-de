@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 0fda407a916ca43ed36fa567374752bbb7a49a80
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998958"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314801"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 
@@ -26,7 +26,7 @@ Dieser Artikel zeigt Ihnen, wie Sie Azure Machine Learning verwenden können, um
 Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das bereitgestellte Modell verwendet wird, um Vorhersagen zu treffen. Die Verwendung von GPUs anstelle von CPUs bietet Leistungsvorteile bei hochparallelisierbaren Berechnungen.
 
 > [!IMPORTANT]
-> Für Webdienstbereitstellungen wird GPU-Rückschluss nur in Azure Kubernetes Service unterstützt. Für den Rückschluss mithilfe einer __Machine Learning-Pipeline__ werden GPUs nur in Azure Machine Learning Compute unterstützt. Weitere Informationen zur Verwendung von ML-Pipelines finden Sie unter [Ausführen von Batchvorhersagen](how-to-use-parallel-run-step.md). 
+> Für Webdienstbereitstellungen wird GPU-Rückschluss nur in Azure Kubernetes Service unterstützt. Für den Rückschluss mithilfe einer __Machine Learning-Pipeline__ werden GPUs nur in Azure Machine Learning Compute unterstützt. Weitere Informationen zur Verwendung von ML-Pipelines finden Sie im [Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung](tutorial-pipeline-batch-scoring-classification.md). 
 
 > [!TIP]
 > Obwohl bei den Codeausschnitten in diesem Artikel ein TensorFlow-Modell verwendet wird, können Sie die Informationen auf jedes Machine Learning-Framework anwenden, das GPUs unterstützt.

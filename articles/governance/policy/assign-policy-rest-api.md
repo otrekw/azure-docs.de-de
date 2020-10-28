@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit der REST-API'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe der REST-API eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88137087"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074004"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit der REST-API
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln.
 Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden.
 
-Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung _nicht konform_.
+Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung _nicht konform_ .
 
 Die REST-API wird zum Erstellen und Verwalten von Azure-Ressourcen verwendet. In dieser Anleitung wird die REST-API verwendet, um eine Richtlinienzuweisung zu erstellen und nicht konforme Ressourcen in Ihrer Azure-Umgebung zu identifizieren.
 
@@ -23,7 +23,7 @@ Die REST-API wird zum Erstellen und Verwalten von Azure-Ressourcen verwendet. In
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-- Installieren Sie [ARMClient](https://github.com/projectkudu/ARMClient), falls Sie dies noch nicht getan haben. Mit diesem Tool werden HTTP-Anforderungen an Azure Resource Manager-basierte REST-APIs gesendet. Alternativ können Sie die Funktion „Jetzt ausprobieren“ in der REST-Dokumentation oder Tools wie [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) von PowerShell oder [Postman](https://www.postman.com) verwenden.
+- Installieren Sie [ARMClient](https://github.com/projectkudu/ARMClient), falls Sie dies noch nicht getan haben. Mit diesem Tool werden HTTP-Anforderungen an Azure Resource Manager-basierte REST-APIs gesendet. Sie können auch die Funktion „Jetzt ausprobieren“ in der REST-Dokumentation oder Tools wie [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) von PowerShell oder [Postman](https://www.postman.com) verwenden.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -62,9 +62,9 @@ REST-API-URI:
 - **Name:** Der tatsächliche Name der Zuweisung. In diesem Beispiel wurde _audit-vm-manageddisks_ verwendet.
 
 Anforderungstext:
-- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall _Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger_.
-- **Description**: Eine ausführlichere Erläuterung des Richtlinienzwecks oder des Grunds, warum sie diesem Bereich zugewiesen ist
-- **policyDefinitionId**: Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_.
+- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall _Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger_ .
+- **Description** : Eine ausführlichere Erläuterung des Richtlinienzwecks oder des Grunds, warum sie diesem Bereich zugewiesen ist
+- **policyDefinitionId** : Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_ .
 
 ## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen
 

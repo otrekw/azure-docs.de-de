@@ -10,18 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a51e9a628f67269357d42bd1d3af10c1d86f301a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739781"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131172"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Hierfür können Sie die Protokollierung für Azure Key Vault aktivieren, bei der Informationen im von Ihnen bereitgestellten Azure-Speicherkonto gespeichert werden. Für Ihr angegebenes Speicherkonto wird automatisch ein neuer Container namens **insights-logs-logs-auditevent** erstellt. Sie können dasselbe Speicherkonto verwenden, um Protokolle für mehrere Schlüsseltresore zu sammeln.
+Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Hierfür können Sie die Protokollierung für Azure Key Vault aktivieren, bei der Informationen im von Ihnen bereitgestellten Azure-Speicherkonto gespeichert werden. Eine detaillierte Anleitung zu dieser Einrichtung finden Sie unter [Aktivieren der Protokollierung in Key Vault](howto-logging.md).
 
 Sie können auf Ihre Protokollinformationen (spätestens) zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. In den meisten Fällen geht es aber schneller.  Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
 
@@ -31,6 +29,8 @@ Sie können auf Ihre Protokollinformationen (spätestens) zehn Minuten nach dem 
 Eine Übersicht über Key Vault finden Sie unter [Was ist Azure Key Vault?](overview.md). Informationen dazu, wo Key Vault verfügbar ist, finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/key-vault/). Informationen zur Verwendung von Azure Monitor für Key Vault finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview).
 
 ## <a name="interpret-your-key-vault-logs"></a>Interpretieren der Key Vault-Protokolle
+
+Wenn Sie die Protokollierung aktivieren, wird automatisch ein neuer Container namens **insights-logs-auditevent** für Ihr angegebenes Speicherkonto erstellt. Sie können dasselbe Speicherkonto verwenden, um Protokolle für mehrere Schlüsseltresore zu sammeln.
 
 Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Schauen wir uns einen Beispielprotokolleintrag an. 
 
@@ -73,15 +73,15 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 | **callerIpAddress** |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
 | **correlationId** |Optionale GUID, die vom Client zum Korrelieren von clientseitigen Protokollen mit dienstseitigen Protokollen (Schlüsseltresor) übergeben werden kann |
 | **Identität** |Identität des Tokens, das in der REST-API-Anforderung angegeben wurde. Dies ist normalerweise ein „Benutzer“, ein „Dienstprinzipal“ oder die Kombination „Benutzer + App-ID“, wie bei einer Anforderung, die auf einem Azure PowerShell-Cmdlet basiert. |
-| **properties** |Informationen, die je nach Vorgang (**operationName**) variieren. In den meisten Fällen enthält dieses Feld Clientinformationen (vom Client übergebene Zeichenfolge „useragent“), den genauen REST-API-Anforderungs-URI und den HTTP-Statuscode. Wenn ein Objekt als Ergebnis einer Anforderung (z. B. **KeyCreate** oder **VaultGet**) zurückgegeben wird, enthält es außerdem den Schlüssel-URI (als `id`), den Tresor-URI oder den URI des Geheimnisses. |
+| **properties** |Informationen, die je nach Vorgang ( **operationName** ) variieren. In den meisten Fällen enthält dieses Feld Clientinformationen (vom Client übergebene Zeichenfolge „useragent“), den genauen REST-API-Anforderungs-URI und den HTTP-Statuscode. Wenn ein Objekt als Ergebnis einer Anforderung (z. B. **KeyCreate** oder **VaultGet** ) zurückgegeben wird, enthält es außerdem den Schlüssel-URI (als `id`), den Tresor-URI oder den URI des Geheimnisses. |
 
-Die Feldwerte unter **operationName** liegen im *ObjectVerb*-Format vor. Beispiel:
+Die Feldwerte unter **operationName** liegen im *ObjectVerb* -Format vor. Beispiel:
 
 * Alle Schlüsseltresorvorgänge verfügen über das Format `Vault<action>`, z. B. `VaultGet` und `VaultCreate`.
 * Alle Schlüsselvorgänge verfügen über das Format `Key<action>`, z. B. `KeySign` und `KeyList`.
 * Alle Geheimnisvorgänge verfügen über das Format `Secret<action>`, z. B. `SecretGet` und `SecretListVersions`.
 
-Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden REST-API-Befehle:
+Die folgende Tabelle enthält die **operationName** -Werte und die entsprechenden REST-API-Befehle:
 
 ### <a name="operation-names-table"></a>Tabelle mit Vorgangsnamen
 
@@ -122,16 +122,15 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **CertificateNearExpiryEventGridNotification** |Ereignis „Zertifikat läuft demnächst ab“ veröffentlicht |
 | **CertificateExpiredEventGridNotification** |Ereignis „Zertifikat abgelaufen“ veröffentlicht |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Verwenden von Azure Monitor-Protokollen
+## <a name="use-azure-monitor-logs"></a>Verwenden von Azure Monitor-Protokollen
 
 Sie können die Key Vault-Lösung in Azure Monitor verwenden, um `AuditEvent`-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten. 
 
 Weitere Informationen, z. B. zur Einrichtung, finden Sie im Artikel zu [Azure Key Vault in Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a><a id="next"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-Ein Tutorial zur Verwendung von Azure Key Vault in einer .NET-Webanwendung finden Sie unter [Verwenden von Azure Key Vault aus einer Webanwendung](tutorial-net-create-vault-azure-web-app.md).
-
-Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](developers-guide.md).
-
-Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault-Cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
+- [Aktivieren der Protokollierung in Key Vault](howto-logging.md)
+- Ein Tutorial zur Verwendung von Azure Key Vault in einer .NET-Webanwendung finden Sie unter [Verwenden von Azure Key Vault aus einer Webanwendung](tutorial-net-create-vault-azure-web-app.md).
+- Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](developers-guide.md).
+- Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault-Cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).

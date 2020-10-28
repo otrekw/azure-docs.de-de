@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371812"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166215"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -51,15 +51,15 @@ Nachdem ein Kontoadministrator anderen Benutzern die entsprechenden Rollen zugew
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
 
-    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![Screenshot mit hervorgehobener „Kostenverwaltung + Abrechnung“ im Abschnitt „Dienste“](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
+1. Wählen Sie links die Option **Abonnements** . Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
 
     ![Screenshot: Auswahl von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Wählen Sie **Rechnungen** und dann **Zugriff auf Rechnung**.
+1. Wählen Sie **Rechnungen** und dann **Zugriff auf Rechnung** .
 
     ![Der Screenshot zeigt das Delegieren des Zugriffs auf Rechnungen](./media/manage-billing-access/aa-optin01.png)
 
@@ -77,16 +77,16 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
+1. Wählen Sie links die Option **Abonnements** . Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
 
     ![Screenshot: Auswahl von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie oben auf der Seite die Option **Hinzufügen**.
+1. Wählen Sie oben auf der Seite die Option **Hinzufügen** .
 
     ![Screenshot: Klicken auf „Rollenzuweisung hinzufügen“](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
@@ -94,7 +94,7 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
 1. Geben Sie im Textfeld **Auswählen** den Namen oder die E-Mail-Adresse des Benutzers ein, den Sie hinzufügen möchten.
 1. Wählen Sie den Benutzer aus.
 1. Wählen Sie **Speichern** aus.
-    ![Screenshot: Klicken auf „Rollenzuweisung hinzufügen“](./media/manage-billing-access/billing-save-role-assignment.png)
+    ![Screenshot mit hervorgehobener Schaltfläche „Speichern“](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Nach einigen Augenblicken wird dem Benutzer die Rolle „Abrechnungsleser“ für das Abonnement zugewiesen.
 

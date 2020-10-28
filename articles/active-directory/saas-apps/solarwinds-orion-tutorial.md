@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f93457edc4276422eb97b56c90b83ad6a19a65
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545094"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126891"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SolarWinds Orion
 
@@ -48,7 +48,7 @@ Zum Konfigurieren der Integration von SolarWinds Orion in Azure AD müssen Sie
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **SolarWinds Orion** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **SolarWinds Orion** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
@@ -56,7 +56,7 @@ Zum Konfigurieren der Integration von SolarWinds Orion in Azure AD müssen Sie
 
 ## <a name="configure-and-test-azure-ad-sso-for-solarwinds-orion"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für SolarWinds Orion
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit SolarWinds Orion mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SolarWinds Orion eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit SolarWinds Orion mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SolarWinds Orion eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit SolarWinds Orion die folgenden Schritte aus:
 
@@ -71,19 +71,19 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **SolarWinds Orion** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **SolarWinds Orion** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP** -initiierten Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<ORION-HOSTNAME-OR-EXTERNAL-URL>`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<ORION-HOSTNAME-OR-EXTERNAL-URL>/Orion/SAMLLogin.aspx`
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Klicken Sie auf **Zusätzliche URLs festlegen** , und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<ORION-HOSTNAME-OR-EXTERNAL-URL>/Orion/Login.aspx`
 
@@ -119,16 +119,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Erstellen**.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
+   1. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf SolarWinds Orion gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **SolarWinds Orion** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -136,27 +136,27 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ## <a name="configure-solarwinds-orion-sso"></a>Konfigurieren des einmaligen Anmeldens für SolarWinds Orion
 
 1. Melden Sie sich bei SolarWinds Orion an, und navigieren Sie zu **Settings** -> **All Settings** (Einstellungen > Alle Einstellungen).
 
-    ![ Konfiguration von SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Screenshot: Auswahl von „Settings“ > „All Settings“ (Einstellungen > Alle Einstellungen)](./media/solarwinds-orion-tutorial/settings.png)
 
 1. Wählen Sie im Abschnitt **USER ACCOUNTS** (BENUTZERKONTEN) die Option **SAML Configuration** (SAML-Konfiguration) aus.
 
-    ![ Konfiguration von SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![Screenshot: Auswahl von „SAML Configuration“ (SAML-Konfiguration) unter „User Accounts“ (Benutzerkonten)](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. Klicken Sie auf **ADD IDENTITY PROVIDER** (IDENTITÄTSANBIETER HINZUFÜGEN).
 
-    ![ Konfiguration von SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![Screenshot: Option „SAML Configuration“ (SAML-Konfiguration) mit Auswahl von „ADD IDENTITY PROVIDER“ (IDENTITÄTSANBIETER HINZUFÜGEN)](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. Gehen Sie auf der Seite **Add Identity Provider** (Identitätsanbieter hinzufügen) wie folgt vor:
 
-    ![ Konfiguration von SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![Screenshot: Abschnitt „Add Identity Provider“ (Identitätsanbieter hinzufügen), in dem Sie die beschriebenen Werte eingeben können](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. Wechseln Sie zur Registerkarte **Configure** (Konfigurieren):
 
@@ -168,31 +168,31 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     e. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** im Editor, und fügen Sie den Inhalt in das Textfeld **X.509 Signing Certificate** (X.509-Signaturzertifikat) ein.
 
-    f. Klicken Sie auf **Speichern**.
+    f. Klicken Sie auf **Speichern** .
 
 ### <a name="create-solarwinds-orion-test-user"></a>Erstellen eines SolarWinds Orion-Testbenutzers
 
 1. Melden Sie sich bei der SolarWinds Orion-Website an, und navigieren Sie zu **Settings** -> **All Settings** (Einstellungen > Alle Einstellungen).
 
-    ![ Erstellen eines SolarWinds Orion-Testbenutzers ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Screenshot: Auswahl von „Settings“ > „All Settings“ (Einstellungen > Alle Einstellungen)](./media/solarwinds-orion-tutorial/settings.png)
 
 1. Wählen Sie im Abschnitt **USER ACCOUNTS** (BENUTZERKONTEN) die Option **Manage Accounts** (Konten verwalten) aus.
 
-    ![ Erstellen eines SolarWinds Orion-Testbenutzers ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![Screenshot: Auswahl von „Manage Accounts“ (Konten verwalten)](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. Klicken Sie auf der Registerkarte **INDIVIDUAL ACCOUNTS** (EINZELNE KONTEN) auf **ADD NEW ACCOUNT** (NEUES KONTO HINZUFÜGEN).
 
-    ![ Erstellen eines SolarWinds Orion-Testbenutzers ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![Screenshot: Auswahl von „ADD NEW ACCOUNT“ (NEUES KONTO HINZUFÜGEN) unter „Manage Accounts“ (Konten verwalten)](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. Wählen Sie den Kontotyp aus, den Sie benötigen, um entweder einzelne SAML-Benutzer oder SAML-Gruppen zu erstellen.
 
-    ![ Erstellen eines SolarWinds Orion-Testbenutzers ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![Screenshot: Abschnitt „Add New Account“ (Neues Konto hinzufügen), in dem Sie den Kontotyp auswählen können](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  Geben Sie im Textfeld **Name ID** (Namens-ID) den Namen ein, der genau mit dem Benutzernamen oder dem Gruppennamen in Azure AD übereinstimmen muss.
 
 1.  Klicken Sie auf **Next** (Weiter), und übermitteln Sie die Seite.
 
-    ![ Erstellen eines SolarWinds Orion-Testbenutzers ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![Screenshot: Abschnitt „Add New Account“ (Neues Konto hinzufügen), in dem Sie die Namens-ID aus Azure AD eingeben können](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

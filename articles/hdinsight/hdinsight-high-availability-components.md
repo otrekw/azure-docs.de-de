@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842579"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102930"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Von Azure HDInsight unterstützte Hochverfügbarkeitsdienste
 
@@ -62,13 +62,13 @@ Microsoft bietet Unterstützung für die vier Apache-Dienste in der folgenden Ta
 | Apache Livy | Aktiver Hauptknoten | Spark | Ermöglicht die einfache Interaktion mit einem Spark-Cluster über eine REST-Schnittstelle. |
 
 >[!Note]
-> HDInsight-ESP-Cluster (Enterprise-Sicherheitspaket, Enterprise Security Package) bieten zurzeit nur Hochverfügbarkeit für den Ambari-Server.
+> HDInsight-ESP-Cluster (Enterprise-Sicherheitspaket, Enterprise Security Package) bieten zurzeit nur Hochverfügbarkeit für den Ambari-Server. Anwendungszeitachsenserver, Auftragsverlaufsserver und Livy werden alle nur auf Headnode0 ausgeführt, und bei einem Failover von Ambari erfolgt kein Failover auf Headnode1. Die Anwendungszeitachsen-Datenbank befindet sich ebenfalls auf Headnode0, nicht auf dem Ambari SQL-Server.
 
 ### <a name="architecture"></a>Aufbau
 
 Jeder HDInsight-Cluster verfügt über zwei Hauptknoten im aktiven bzw. Standbymodus. Die HDInsight-Hochverfügbarkeitsdienste werden nur auf Hauptknoten ausgeführt. Diese Dienste sollten immer auf dem aktiven Hauptknoten ausgeführt werden und auf dem Standbyhauptknoten angehalten und in den Wartungsmodus versetzt werden.
 
-Um die korrekten Zustände der Hochverfügbarkeitsdienste aufrechtzuerhalten und ein schnelles Failover bereitzustellen, nutzt HDInsight Apache ZooKeeper, einen Koordinationsdienst für verteilte Anwendungen, zur Auswahl des aktiven Hauptknotens. HDInsight stellt außerdem einige Java-Hintergrundprozesse bereit, die das Failover für HDInsight-Hochverfügbarkeitsdienste koordinieren. Dabei handelt es sich um die folgenden Dienste: den übergeordneten (primären) Failovercontroller, den untergeordneten (sekundären) Failovercontroller, den *master-ha-service* und den *slave-ha-service*.
+Um die korrekten Zustände der Hochverfügbarkeitsdienste aufrechtzuerhalten und ein schnelles Failover bereitzustellen, nutzt HDInsight Apache ZooKeeper, einen Koordinationsdienst für verteilte Anwendungen, zur Auswahl des aktiven Hauptknotens. HDInsight stellt außerdem einige Java-Hintergrundprozesse bereit, die das Failover für HDInsight-Hochverfügbarkeitsdienste koordinieren. Dabei handelt es sich um die folgenden Dienste: den übergeordneten (primären) Failovercontroller, den untergeordneten (sekundären) Failovercontroller, den *master-ha-service* und den *slave-ha-service* .
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005927"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164799"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -35,7 +35,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 
     Wenn Sie nicht über eine Azure AD-Domäne verfügen, können Sie diese mit Ihrem Azure-Abonnement erstellen. Weitere Informationen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen in Ihrem Azure AD](../../active-directory/users-groups-roles/domains-manage.md).
 
-* Ein Benutzer in Ihrer Azure AD-Domäne mit der Rolle **Anwendungsadministrator**. Sie verwenden dieses Mitglied beim Herstellen der Verbindung für Ihr Video Indexer-Konto mit Azure.
+* Ein Benutzer in Ihrer Azure AD-Domäne mit der Rolle **Anwendungsadministrator** . Sie verwenden dieses Mitglied beim Herstellen der Verbindung für Ihr Video Indexer-Konto mit Azure.
 
     Bei diesem Benutzer sollte es sich um einen Azure AD Benutzer mit einem Geschäfts-, Schul-oder Unikonto handeln. Verwenden Sie kein persönliches Konto, wie outlook.com, live.com oder hotmail.com.
 
@@ -47,7 +47,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 
     Sie verwenden dieses Mitglied beim Herstellen der Verbindung für Ihr Video Indexer-Konto mit Azure.
 
-    Dieser Benutzer muss ein Mitglied Ihres Azure-Abonnements sein, der entweder der Rolle **Besitzer** oder den beiden Rollen **Mitwirkender** und **Benutzerzugriffsadministrator** zugewiesen sein muss. Ein Benutzer kann zweimal mit zwei Rollen hinzugefügt werden. Einmal mit „Mitwirkender“ und einmal mit „Benutzerzugriffsadministrator“.
+    Dieser Benutzer muss ein Mitglied Ihres Azure-Abonnements sein, der entweder der Rolle **Besitzer** oder den beiden Rollen **Mitwirkender** und **Benutzerzugriffsadministrator** zugewiesen sein muss. Ein Benutzer kann zweimal mit zwei Rollen hinzugefügt werden. Einmal mit „Mitwirkender“ und einmal mit „Benutzerzugriffsadministrator“. Weitere Informationen finden Sie unter [Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
     ![Zugriffssteuerung](./media/create-account/access-control-iam.png)
 
@@ -55,9 +55,9 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 
 * Registrieren Sie den EventGrid-Ressourcenanbieter mit dem Azure-Portal.
 
-    Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu **Abonnements** > [Abonnement] > **ResourceProviders**.
+    Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu **Abonnements** > [Abonnement] > **ResourceProviders** .
 
-    Suchen Sie nach **Microsoft.Media** und **Microsoft.EventGrid**. Klicken Sie auf **Registrieren**, falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch.
+    Suchen Sie nach **Microsoft.Media** und **Microsoft.EventGrid** . Klicken Sie auf **Registrieren** , falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch.
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -79,10 +79,10 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 4. Wählen Sie aus den unterstützten Standorten eine Azure-Region aus: „USA, Westen 2“, „Europa, Norden“ oder „Asien, Osten“.
 5. Wählen Sie unter **Azure Media Services-Konto** eine dieser Optionen:
 
-    * Wählen Sie **Neue Ressourcengruppe erstellen**, um ein neues Media Services-Konto zu erstellen. Geben Sie einen Namen für Ihre Ressourcengruppe an.
+    * Wählen Sie **Neue Ressourcengruppe erstellen** , um ein neues Media Services-Konto zu erstellen. Geben Sie einen Namen für Ihre Ressourcengruppe an.
 
         Azure erstellt Ihr neues Konto unter Ihrem Abonnement, einschließlich eines neuen Azure Storage-Kontos. Ihr neues Media Services-Konto verfügt über eine Standard-Anfangskonfiguration mit einem Streamingendpunkt und zehn reservierten Einheiten vom Typ „S3“.
-    * Wählen Sie **Vorhandene Ressource verwenden**, um ein vorhandenes Media Services-Konto zu verwenden. Wählen Sie Ihr Konto in der Liste mit den Konten aus.
+    * Wählen Sie **Vorhandene Ressource verwenden** , um ein vorhandenes Media Services-Konto zu verwenden. Wählen Sie Ihr Konto in der Liste mit den Konten aus.
 
         Ihr Media Services-Konto muss über dieselbe Region wie Ihr Video Indexer-Konto verfügen.
 
@@ -92,7 +92,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
     * Um Ihre Verbindung manuell zu konfigurieren, wählen Sie den Link **Zur manuellen Konfiguration wechseln** aus.
 
         Ausführliche Informationen finden Sie im nachstehenden Abschnitt [Manuelle Verbindungsherstellung mit Azure (erweiterte Option)](#connect-to-azure-manually-advanced-option).
-6. Wählen Sie **Verbinden**, wenn Sie fertig sind. Dieser Vorgang kann einige Minuten dauern.
+6. Wählen Sie **Verbinden** , wenn Sie fertig sind. Dieser Vorgang kann einige Minuten dauern.
 
     Nachdem Sie die Verbindung mit Azure hergestellt haben, wird Ihr neues Video Indexer-Konto in der Kontoliste angezeigt:
 
@@ -118,7 +118,7 @@ Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie ver
     > [!NOTE]
     > Notieren Sie sich die Media Services-Ressource und die Kontonamen. Sie benötigen diese Informationen für die Schritte im nächsten Abschnitt.
 
-2. Ändern Sie den Typ und die Anzahl von [reservierten Einheiten](../previous/media-services-scale-media-processing-overview.md ) im erstellten Media Services-Konto in **10 reservierte S3-Einheiten**. Siehe [Verwenden des Portals zum Ändern der reservierten Einheiten](../previous/media-services-portal-scale-media-processing.md).
+2. Ändern Sie den Typ und die Anzahl von [reservierten Einheiten](../previous/media-services-scale-media-processing-overview.md ) im erstellten Media Services-Konto in **10 reservierte S3-Einheiten** . Siehe [Verwenden des Portals zum Ändern der reservierten Einheiten](../previous/media-services-portal-scale-media-processing.md).
 3. Bevor Sie Ihre Videos in der Video Indexer-Web-App abspielen können, müssen Sie den standardmäßigen **Streamingendpunkt** des neuen Media Services-Kontos starten.
 
     Wählen Sie im neuen Media Services-Konto **Streamingendpunkte** aus. Wählen Sie dann den Streamingendpunkt aus, und klicken Sie auf „Starten“.
@@ -140,14 +140,14 @@ Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie ver
 
 ### <a name="connect-manually"></a>Manuelle Verbindungsherstellung
 
-Klicken Sie auf der Seite **Video Indexer** im Dialogfeld [Video Indexer mit einem Azure-Abonnement verknüpfen](https://www.videoindexer.ai/) auf den Link **Zur manuellen Konfiguration wechseln**.
+Klicken Sie auf der Seite **Video Indexer** im Dialogfeld [Video Indexer mit einem Azure-Abonnement verknüpfen](https://www.videoindexer.ai/) auf den Link **Zur manuellen Konfiguration wechseln** .
 
 Geben Sie im Dialogfeld die folgenden Informationen ein:
 
 |Einstellung|BESCHREIBUNG|
 |---|---|
 |Region für Video Indexer-Konto|Der Name der Region für das Video Indexer-Konto. Zur Verbesserung der Leistung und Senkung der Kosten wird dringend empfohlen, den Namen der Region anzugeben, in der sich die Azure Media Services-Ressourcen und das Azure Storage-Konto befinden. |
-|Azure AD-Mandant|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers. Der Name befindet sich rechts neben **Domäne**.|
+|Azure AD-Mandant|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers. Der Name befindet sich rechts neben **Domäne** .|
 |Abonnement-ID|Wählen Sie das Azure-Abonnement aus, unter dem die Verbindung erstellt werden soll. Die Abonnement-ID kann über das Azure-Portal abgerufen werden. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und suchen Sie nach „Abonnements“. Wählen Sie **Abonnements** und dann in der Liste Ihrer Abonnements die gewünschte ID aus.|
 |Name der Azure Media Services-Ressourcengruppen|Der Name der Ressourcengruppe, in der Sie das Media Services-Konto erstellt haben.|
 |Name der Media Services-Ressource|Der Name des Azure Media Services-Kontos, das Sie im vorherigen Abschnitt erstellt haben.|
@@ -176,7 +176,7 @@ Für Azure Media Services gilt Folgendes:
 
    Unter Umständen müssen Sie den Typ und die Anzahl von reservierten Einheiten für Medien gemäß Ihrer geplanten Last anpassen. Beachten Sie hierbei Folgendes: Wenn die Last hoch ist und Sie nicht über genügend Einheiten oder eine ausreichend hohe Geschwindigkeit verfügen, kann es bei der Videoverarbeitung zu Timeoutfehlern kommen.
 
-* Bei der Verbindungsherstellung mit einem neuen Media Services-Konto startet Video Indexer dafür automatisch den standardmäßigen **Streamingendpunkt**:
+* Bei der Verbindungsherstellung mit einem neuen Media Services-Konto startet Video Indexer dafür automatisch den standardmäßigen **Streamingendpunkt** :
 
     ![Media Services-Streamingendpunkt](./media/create-account/ams-streaming-endpoint.png)
 

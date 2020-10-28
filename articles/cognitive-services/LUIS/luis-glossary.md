@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309488"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151971"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -96,7 +96,7 @@ Eine [Absicht](#intent) ist ein Beispiel für eine Klassifizierung.
 
 ## <a name="collaborator"></a>Projektmitarbeiter
 
-Ein Projektmitarbeiter ist konzeptionell dasselbe wie ein [Mitwirkender](#contributor). Einem Projektmitarbeiter wird Zugriff gewährt, wenn ein Besitzer die E-Mail-Adresse des Mitarbeiters zu einer App hinzufügt, die nicht über die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) gesteuert wird. Wenn Sie immer noch Projektmitarbeiter verwenden, sollten Sie Ihr LUIS-Konto migrieren und LUIS-Erstellungsressourcen verwenden, um Mitarbeiter mithilfe der rollenbasierten Zugriffssteuerung (RBAC) zu verwalten.
+Ein Projektmitarbeiter ist konzeptionell dasselbe wie ein [Mitwirkender](#contributor). Einem Projektmitarbeiter wird Zugriff gewährt, wenn ein Besitzer die E-Mail-Adresse des Mitarbeiters zu einer App hinzufügt, die nicht über die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) gesteuert wird. Wenn Sie immer noch Projektmitarbeiter verwenden, sollten Sie Ihr LUIS-Konto migrieren und LUIS-Erstellungsressourcen verwenden, um Mitarbeiter mithilfe der rollenbasierten Zugriffssteuerung (Azure RBAC) zu verwalten.
 
 ## <a name="contributor"></a>Mitwirkender
 

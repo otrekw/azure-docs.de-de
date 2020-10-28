@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie nachgeschaltete Geräten oder Blattgeräte be
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046722"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151378"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -21,13 +21,13 @@ In einem Szenario mit transparenten Gateways benötigen nachgeschaltete Geräte 
 
 Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung mit einem transparenten Gateway. In diesem Artikel wird der zweite Schritt behandelt:
 
-1. Konfigurieren Sie das Gatewaygerät als Server, sodass sich nachgeschaltete Geräte mit ihm sicher verbinden können. Richten Sie das Gateway so ein, dass es Nachrichten von nachgeschalteten Geräten empfängt und an das richtige Ziel weiterleitet. Weitere Informationen finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
+1. Konfigurieren Sie das Gatewaygerät als Server, sodass sich nachgeschaltete Geräte mit ihm sicher verbinden können. Richten Sie das Gateway so ein, dass es Nachrichten von nachgeschalteten Geräten empfängt und an das richtige Ziel weiterleitet. Die dazu erforderlichen Schritte finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
 2. **Erstellen Sie eine Geräteidentität für das nachgeschaltete Gerät, damit es sich bei IoT Hub authentifizieren kann. Konfigurieren Sie das nachgeschaltete Gerät zum Senden von Nachrichten über das Gatewaygerät.**
-3. Verbinden Sie das nachgeschaltete Gerät mit dem Gatewaygerät, und beginnen Sie mit dem Senden von Nachrichten. Weitere Informationen finden Sie unter [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
+3. Verbinden Sie das nachgeschaltete Gerät mit dem Gatewaygerät, und beginnen Sie mit dem Senden von Nachrichten. Die dazu erforderlichen Schritte finden Sie unter [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
 
 Nachgeschaltete Geräte können sich bei IoT Hub mithilfe einer von drei Methoden authentifizieren: symmetrische Schlüssel (auch als SAS-Schlüssel bezeichnet), selbst signierte X.509-Zertifikate oder von einer Zertifizierungsstelle signierte X.509-Zertifikate. Die Authentifizierungsschritte ähneln den Schritten zum Einrichten anderer IoT Edge-Geräte mit IoT Hub. Kleinere Unterschiede bestehen bei der Deklaration der Gatewaybeziehung.
 
-Die Schritte in diesem Artikel zeigen die manuelle Gerätebereitstellung. Die automatische Bereitstellung von nachgeschalteten Geräten mit dem Azure IoT Hub-Gerätebereitstellungsdienst (Device Provisioning Service, DPS) wird nicht unterstützt.
+Die automatische Bereitstellung von nachgeschalteten Geräten mit dem Azure IoT Hub-Gerätebereitstellungsdienst (Device Provisioning Service, DPS) wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,17 +35,23 @@ Führen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts als transparen
 
 Wenn Sie die X.509-Authentifizierung verwenden, generieren Sie Zertifikate für Ihr nachgeschaltetes Gerät. Halten Sie dasselbe Zertifikat der Stammzertifizierungsstelle und das Zertifikat zum Generieren des Skripts, das Sie für den Artikel zum transparenten Gateway verwendet haben, für erneute Verwendung zur Verfügung.
 
-Im Artikel wird an mehreren Stellen auf den *Gatewayhostnamen* verwiesen. Der Gatewayhostname wird im **hostname**-Parameter der Datei „config.yaml“ auf dem IoT Edge-Gatewaygerät deklariert. In der Verbindungszeichenfolge des nachgeschalteten Geräts wird darauf verwiesen. Der Gatewayhostname muss in eine IP-Adresse aufgelöst werden können – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei auf dem nachgeschalteten Gerät.
+Im Artikel wird an mehreren Stellen auf den *Gatewayhostnamen* verwiesen. Der Gatewayhostname wird im **hostname** -Parameter der Datei „config.yaml“ auf dem IoT Edge-Gatewaygerät deklariert. In der Verbindungszeichenfolge des nachgeschalteten Geräts wird darauf verwiesen. Der Gatewayhostname muss in eine IP-Adresse aufgelöst werden können – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei auf dem nachgeschalteten Gerät.
 
 ## <a name="register-device-with-iot-hub"></a>Registrieren des Geräts bei IoT Hub
 
 Wählen Sie aus, wie sich Ihr nachgeschaltetes Gerät bei IoT Hub authentifizieren soll:
 
 * [Authentifizierung mit symmetrischem Schlüssel](#symmetric-key-authentication): IoT Hub erstellt einen Schlüssel, den Sie auf dem nachgeschalteten Gerät speichern. Bei der Authentifizierung des Geräts überprüft IoT Hub, ob die beiden Schlüssel übereinstimmen. Sie müssen keine zusätzlichen Zertifikate erstellen, wenn Sie die Authentifizierung mit symmetrischem Schlüssel verwenden möchten.
+
+  Mit dieser Methode können Sie schneller starten, wenn Sie Gateways in einem Entwicklungs- oder Testszenario testen.
+
 * [Selbstsignierte X.509-Zertifizierung](#x509-self-signed-authentication): Wird manchmal als „Authentifizierung per Fingerabdruck“ bezeichnet, weil Sie den Fingerabdruck aus dem X.509-Zertifikat des Geräts bei IoT Hub freigeben.
+
+  Zertifikatauthentifizierung wird für Geräte in Produktionsszenarien empfohlen.
+
 * [Authentifizierung mit einem X.509-Zertifikat, das von einer Zertifizierungsstelle signiert wurde](#x509-ca-signed-authentication): Laden Sie das Zertifikat der Stammzertifizierungsstelle zu IoT Hub hoch. Wenn das X.509-Zertifikat für die Authentifizierung von einem Gerät angezeigt wird, überprüft IoT Hub, ob es zu einer Vertrauenskette gehört, die von demselben Zertifikat der Stammzertifizierungsstelle signiert wurde.
 
-Nachdem Sie Ihr Gerät mit einer dieser drei Methoden registriert haben, fahren Sie mit dem nächsten Abschnitt zum [Abrufen und Ändern der Verbindungszeichenfolge](#retrieve-and-modify-connection-string) für Ihr nachgeschaltetes Gerät fort.
+  Zertifikatauthentifizierung wird für Geräte in Produktionsszenarien empfohlen.
 
 ### <a name="symmetric-key-authentication"></a>Authentifizierung mit symmetrischen Schlüsseln
 
@@ -59,17 +65,15 @@ Geben Sie beim Erstellen der neuen Geräteidentität die folgenden Informationen
 
 * Wählen Sie als Authentifizierungstyp **Symmetrischer Schlüssel** aus.
 
-* Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden werden soll. Durch diesen Schritt werden [Offlinefunktionen](offline-capabilities.md) für Ihr nachgeschaltetes Gerät aktiviert. Sie können das übergeordnete Gerät später jederzeit ändern.
+* Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden werden soll. Sie können das übergeordnete Gerät später jederzeit ändern.
 
    ![Erstellen der Geräte-ID bei der Authentifizierung mit symmetrischem Schlüssel im Portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um diesen Vorgang abzuschließen. Das folgende Beispiel erstellt ein neues IoT-Gerät mit Authentifizierung mit symmetrischen Schlüsseln und weist ein übergeordnetes Gerät zu:
+Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um diesen Vorgang abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit Authentifizierung mit symmetrischem Schlüssel erstellt und ein übergeordnetes Gerät zugewiesen:
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
-
-Weitere Informationen zu Befehlen für die Azure-Befehlszeilenschnittstelle für die Geräteerstellung und die Verwaltung von über-und untergeordneten Geräten finden Sie in der Referenz zu den [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity)-Befehlen.
 
 Als Nächstes müssen Sie [die Verbindungszeichenfolge abrufen und ändern](#retrieve-and-modify-connection-string), damit Ihr Gerät weiß, dass es eine Verbindung über sein Gateway herstellen soll.
 
@@ -104,7 +108,7 @@ Für die selbstsignierte X.509-Authentifizierung (manchmal auch als „Authentif
    * Geben Sie die **Geräte-ID** an, die mit dem Antragstellernamen Ihrer Gerätezertifikate übereinstimmt.
    * Wählen Sie als Authentifizierungstyp **X.509, selbstsigniert** aus.
    * Fügen Sie die hexadezimalen Zeichenfolgen ein, die Sie aus den primären und sekundären Zertifikaten Ihres Geräts kopiert haben.
-   * Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden wird. Für die X.509-Authentifizierung ist für ein nachgeschaltetes Gerät ein übergeordnetes Gerät erforderlich.
+   * Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden wird. Sie können das übergeordnete Gerät später jederzeit ändern.
 
    ![Erstellen der Geräte-ID bei der Authentifizierung mit selbstsignierten X.509-Zertifikaten im Portal](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
@@ -120,13 +124,11 @@ Für die selbstsignierte X.509-Authentifizierung (manchmal auch als „Authentif
    * Java: [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um den Vorgang zur Geräteerstellung abzuschließen. Das folgende Beispiel erstellt ein neues IoT-Gerät mit Authentifizierung mit selbstsignierten X.509-Zertifikaten und weist ein übergeordnetes Gerät zu:
+Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um den Vorgang zur Geräteerstellung abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit selbstsignierter X.509-Zertifizierung erstellt und ein übergeordnetes Gerät zugewiesen:
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
-
-Weitere Informationen zu den Befehlen für die Azure-Befehlszeilenschnittstelle für die Geräte- und Zertifikaterstellung sowie die Verwaltung von über-und untergeordneten Geräten finden Sie in der Referenz zu den [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity)-Befehlen.
 
 Als Nächstes müssen Sie [die Verbindungszeichenfolge abrufen und ändern](#retrieve-and-modify-connection-string), damit Ihr Gerät weiß, dass es eine Verbindung über sein Gateway herstellen soll.
 
@@ -140,17 +142,17 @@ Dieser Abschnitt baut auf den Anweisungen im IoT Hub-Artikel [Einrichten der X.5
 
    Wenn Sie über keine Zertifizierungsstelle zum Erstellen von X.509-Zertifikaten verfügen, können Sie die IoT Edge-Demozertifikatskripts zum [Erstellen von Zertifikaten für nachgeschaltete Geräte](how-to-create-test-certificates.md#create-downstream-device-certificates) verwenden. Führen Sie die Schritte zum Erstellen von Zertifikaten aus, die von einer Zertifizierungsstelle signiert wurden. Verwenden Sie dasselbe Zertifikat der Stammzertifizierungsstelle, das die Zertifikate für Ihr Gatewaygerät generiert hat.
 
-2. Befolgen Sie die Anweisungen im Abschnitt [Registrieren der X.509-Zertifizierungsstellenzertifikate bei IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) unter *Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub*. In diesem Abschnitt führen Sie die folgenden Schritte aus:
+2. Befolgen Sie die Anweisungen im Abschnitt [Registrieren der X.509-Zertifizierungsstellenzertifikate bei IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) unter *Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub* . In diesem Abschnitt führen Sie die folgenden Schritte aus:
 
-   1. Laden Sie ein Zertifikat der Stammzertifizierungsstelle hoch. Wenn Sie die Demozertifikate verwenden, lautet die Stammzertifizierungsstelle **\<path>/certs/azure-iot-test-only.root.ca.cert.pem**.
+   1. Laden Sie ein Zertifikat der Stammzertifizierungsstelle hoch. Wenn Sie die Demozertifikate verwenden, lautet die Stammzertifizierungsstelle **\<path>/certs/azure-iot-test-only.root.ca.cert.pem** .
 
    2. Stellen Sie sicher, dass Sie Besitzer des Zertifikats der Stammzertifizierungsstelle sind.
 
-3. Befolgen Sie die Anweisungen im Abschnitt [Erstellen eines X.509-Geräts für Ihren IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) unter *Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub*. In diesem Abschnitt führen Sie die folgenden Schritte aus:
+3. Befolgen Sie die Anweisungen im Abschnitt [Erstellen eines X.509-Geräts für Ihren IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) unter *Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub* . In diesem Abschnitt führen Sie die folgenden Schritte aus:
 
    1. Fügen Sie ein neues Gerät hinzu. Geben Sie in **Geräte-ID** einen Namen in Kleinbuchstaben an, und wählen Sie als Authentifizierungstyp **X.509, durch Zertifizierungsstelle signiert** aus.
 
-   2. Legen Sie ein übergeordnetes Gerät fest. Wählen Sie für nachgeschaltete Geräte **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, das die Verbindung mit IoT Hub bereitstellt.
+   2. Legen Sie ein übergeordnetes Gerät fest. Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, das die Verbindung mit IoT Hub bereitstellt.
 
 4. Erstellen Sie eine Vertrauenskette für das nachgeschaltete Gerät. Verwenden Sie dasselbe Zertifikat der Stammzertifizierungsstelle, das Sie zum Erstellen dieser Kette in IoT Hub hochgeladen haben. Verwenden Sie dieselbe Geräte-ID in Kleinbuchstaben, die Sie der Geräteidentität im Portal zugewiesen haben.
 
@@ -166,13 +168,11 @@ Dieser Abschnitt baut auf den Anweisungen im IoT Hub-Artikel [Einrichten der X.5
    * Java: [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um den Vorgang zur Geräteerstellung abzuschließen. Das folgende Beispiel erstellt ein neues IoT-Gerät mit Authentifizierung mit X.509-Zertifikaten, die durch eine Zertifizierungsstelle signiert wurden, und weist ein übergeordnetes Gerät zu:
+Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um den Vorgang zur Geräteerstellung abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit Authentifizierung mit einem X.509-Zertifikat, das von einer Zertifizierungsstelle signiert wurde, erstellt und ein übergeordnetes Gerät zugewiesen:
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
-
-Weitere Informationen finden Sie in der Azure-Befehlszeilenschnittstellen-Referenz zu [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity)-Befehlen.
 
 Als Nächstes müssen Sie [die Verbindungszeichenfolge abrufen und ändern](#retrieve-and-modify-connection-string), damit Ihr Gerät weiß, dass es eine Verbindung über sein Gateway herstellen soll.
 
@@ -213,4 +213,4 @@ Sie werden diese geänderte Verbindungszeichenfolge im nächsten Artikel der Ser
 
 Sie verfügen jetzt über ein IoT Edge-Gerät, das bei Ihrem IoT Hub registriert und als transparentes Gateway konfiguriert wurde. Außerdem haben Sie ein nachgeschaltetes Gerät bei Ihrem IoT Hub registriert, das auf sein Gatewaygerät verweist.
 
-Mit den Schritten in diesem Artikel haben Sie Ihr nachgeschaltetes Gerät für die Authentifizierung bei IoT Hub eingerichtet. Als Nächstes müssen Sie Ihre nachgeschalteten Geräte so konfigurieren, dass sie dem Gatewaygerät vertrauen und eine sichere Verbindung damit herstellen. Lesen Sie dann den nächsten Artikel in der Serie zum transparenten Gateway, [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
+Als Nächstes müssen Sie Ihre nachgeschalteten Geräte so konfigurieren, dass sie dem Gatewaygerät vertrauen und eine sichere Verbindung damit herstellen. Lesen Sie dann den nächsten Artikel in der Serie zum transparenten Gateway, [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).

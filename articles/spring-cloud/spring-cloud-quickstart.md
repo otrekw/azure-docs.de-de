@@ -4,16 +4,16 @@ description: In dieser Schnellstartanleitung stellen Sie eine Spring Cloud-Anwe
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 09/18/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336257"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170365"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung
 
@@ -21,7 +21,7 @@ ms.locfileid: "91336257"
 In dieser Schnellstartanleitung erfahren Sie, wie Sie eine einfache Azure Spring Cloud-Microserviceanwendung für die Ausführung in Azure bereitstellen.
 
 >[!NOTE]
-> Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) einreichen.
+> Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md) einreichen.
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
@@ -37,7 +37,7 @@ Der in diesem Schnellstart verwendete Anwendungscode ist eine einfache App, die 
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Der Azure Spring Cloud-Dienst unterstützt .NET Core 3.1 und höhere Versionen.
-* [Azure CLI-Version 2.0.67 oder höher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+* [Azure CLI-Version 2.0.67 oder höher](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Installieren der Azure CLI-Erweiterung
@@ -96,7 +96,7 @@ Erstellen Sie in Visual Studio mit der API-Projektvorlage eine ASP.NET Core-Web
    cd hello-world
    ```
 
-1. Bearbeiten Sie die Datei *appSettings.json*, um die folgenden Einstellungen hinzuzufügen:
+1. Bearbeiten Sie die Datei *appSettings.json* , um die folgenden Einstellungen hinzuzufügen:
 
    ```json
    "spring": {
@@ -152,7 +152,7 @@ Erstellen Sie in Visual Studio mit der API-Projektvorlage eine ASP.NET Core-Web
    </Target>
    ```
 
-   Die Pakete sind für die Steeltoe-Dienstermittlung und die Azure Spring Cloud-Clientbibliothek bestimmt. Die Aufgabe `Zip` ist für die Bereitstellung in Azure vorgesehen. Wenn Sie den Befehl `dotnet publish` ausführen, werden die Binärdateien im Ordner *publish* generiert, und mit dieser Aufgabe wird der Ordner *publish* in einer *ZIP*-Datei komprimiert, die Sie in Azure hochladen.
+   Die Pakete sind für die Steeltoe-Dienstermittlung und die Azure Spring Cloud-Clientbibliothek bestimmt. Die Aufgabe `Zip` ist für die Bereitstellung in Azure vorgesehen. Wenn Sie den Befehl `dotnet publish` ausführen, werden die Binärdateien im Ordner *publish* generiert, und mit dieser Aufgabe wird der Ordner *publish* in einer *ZIP* -Datei komprimiert, die Sie in Azure hochladen.
 
 3. Fügen Sie in der Datei *Program.cs* eine Anweisung vom Typ `using` sowie Code hinzu, der die Azure Spring Cloud-Clientbibliothek verwendet:
 
@@ -206,7 +206,7 @@ Mit dem folgenden Verfahren wird eine Azure Spring Cloud-Instanz über das Azure
 
 1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/). 
 
-1. Suchen Sie im oberen Suchfeld nach *Azure Spring Cloud*.
+1. Suchen Sie im oberen Suchfeld nach *Azure Spring Cloud* .
 
 1. Wählen Sie in den Ergebnissen *Azure Spring Cloud* aus.
 
@@ -218,14 +218,14 @@ Mit dem folgenden Verfahren wird eine Azure Spring Cloud-Instanz über das Azure
 
 1. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.  Berücksichtigen Sie die folgenden Richtlinien:
 
-   * **Abonnement**: Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
-   * **Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe. Der hier eingegebene Name wird später als **\<resource group name\>** verwendet.
-   * **Dienstdetails/Name**: Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
-   * **Region**: Wählen Sie die Region für Ihre Dienstinstanz aus.
+   * **Abonnement** : Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
+   * **Ressourcengruppe** : Erstellen Sie eine neue Ressourcengruppe. Der hier eingegebene Name wird später als **\<resource group name\>** verwendet.
+   * **Dienstdetails/Name** : Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
+   * **Region** : Wählen Sie die Region für Ihre Dienstinstanz aus.
 
    ![Startseite des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klicken Sie auf **Überprüfen und erstellen**.
+6. Klicken Sie auf **Überprüfen und erstellen** .
 
 ## <a name="build-and-deploy-the-app"></a>Erstellen und Bereitstellen der App
 
@@ -233,7 +233,7 @@ Im folgenden Verfahren wird das zuvor von Ihnen generierte Projekt erstellt und 
 
 1. Stellen Sie sicher, dass sich die Eingabeaufforderung noch im Projektordner befindet.
 
-1. Führen Sie den folgenden Befehl aus, um das Projekt zu erstellen, die Binärdateien zu veröffentlichen und die Binärdateien in einer *ZIP*-Datei im Projektordner zu speichern.
+1. Führen Sie den folgenden Befehl aus, um das Projekt zu erstellen, die Binärdateien zu veröffentlichen und die Binärdateien in einer *ZIP* -Datei im Projektordner zu speichern.
 
    ```dotnetcorecli
    dotnet publish -c release -o ./publish
@@ -245,15 +245,15 @@ Im folgenden Verfahren wird das zuvor von Ihnen generierte Projekt erstellt und 
    az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public
    ```
 
-1. Stellen Sie die *ZIP*-Datei in der App bereit.
+1. Stellen Sie die *ZIP* -Datei in der App bereit.
 
    ```azurecli
    az spring-cloud app deploy -n hello-world -s <service instance name> -g <resource group name> --runtime-version NetCore_31 --main-entry hello-world.dll --artifact-path ./deploy.zip
    ```
 
-   Die Option `--main-entry` identifiziert die *DLL*-Datei, die den Einstiegspunkt der Anwendung enthält. Nachdem der Dienst die *ZIP*-Datei hochgeladen hat, werden alle Dateien und Ordner extrahiert, und es wird versucht, den Einstiegspunkt in der von `--main-entry`angegebenen *DLL*-Datei auszuführen.
+   Die Option `--main-entry` identifiziert die *DLL* -Datei, die den Einstiegspunkt der Anwendung enthält. Nachdem der Dienst die *ZIP* -Datei hochgeladen hat, werden alle Dateien und Ordner extrahiert, und es wird versucht, den Einstiegspunkt in der von `--main-entry`angegebenen *DLL* -Datei auszuführen.
 
-   Es dauert einige Minuten, bis die Bereitstellung der Anwendung abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps**, um zu überprüfen, ob die Anwendung bereitgestellt wurde.
+   Es dauert einige Minuten, bis die Bereitstellung der Anwendung abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps** , um zu überprüfen, ob die Anwendung bereitgestellt wurde.
 
 ## <a name="test-the-app"></a>Testen der App
 
@@ -317,7 +317,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 > [!TIP]
 > Verwenden Sie `az spring-cloud app logs -h`, um weitere Parameter und Funktionen für Protokolldatenströme zu untersuchen.
 
-Informationen zu erweiterten Protokollanalysefeatures finden Sie im Menü im [Azure-Portal](https://portal.azure.com/) auf der Registerkarte **Protokolle**. Bei den hier aufgeführten Protokollen kommt es zu einer Wartezeit von einigen Minuten.
+Informationen zu erweiterten Protokollanalysefeatures finden Sie im Menü im [Azure-Portal](https://portal.azure.com/) auf der Registerkarte **Protokolle** . Bei den hier aufgeführten Protokollen kommt es zu einer Wartezeit von einigen Minuten.
 [ ![Protokollanalyse](media/spring-cloud-quickstart-java/logs-analytics.png) ](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
 ::: zone-end
 
@@ -338,10 +338,10 @@ In dieser Schnellstartanleitung wird Folgendes erläutert:
 
 So führen Sie diesen Schnellstart durch:
 
-* [Installation von JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [Installation von JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Registrierung für ein Azure-Abonnement](https://azure.microsoft.com/free/)
-* (Optional) [Installation der Azure CLI, Version 2.0.67 oder höher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) und der Azure Spring Cloud-Erweiterung mit dem Befehl `az extension add --name spring-cloud`
-* (Optional) [Installation des Azure-Toolkits für IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) und [Anmeldung](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* (Optional) [Installation der Azure CLI, Version 2.0.67 oder höher](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) und der Azure Spring Cloud-Erweiterung mit dem Befehl `az extension add --name spring-cloud`
+* (Optional) [Installation des Azure-Toolkits für IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) und [Anmeldung](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="generate-a-spring-cloud-project"></a>Generieren eines Spring Cloud-Projekts
 
@@ -352,7 +352,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
   ![Initializr-Seite](media/spring-cloud-quickstart-java/initializr-page.png)
 
-1. Klicken Sie auf **Generieren**, wenn alle Abhängigkeiten festgelegt sind. Laden Sie das Paket herunter, entpacken Sie es, und erstellen Sie dann einen Webcontroller für eine einfache Webanwendung, indem Sie `src/main/java/com/example/hellospring/HelloController.java` wie folgt hinzufügen:
+1. Klicken Sie auf **Generieren** , wenn alle Abhängigkeiten festgelegt sind. Laden Sie das Paket herunter, entpacken Sie es, und erstellen Sie dann einen Webcontroller für eine einfache Webanwendung, indem Sie `src/main/java/com/example/hellospring/HelloController.java` wie folgt hinzufügen:
 
     ```java
     package com.example.hellospring;
@@ -376,25 +376,25 @@ Mit dem folgenden Verfahren wird eine Azure Spring Cloud-Instanz über das Azure
 
 1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/) in einem neuen Tab. 
 
-2. Suchen Sie im oberen Suchfeld nach *Azure Spring Cloud*.
+2. Suchen Sie im oberen Suchfeld nach *Azure Spring Cloud* .
 
 3. Wählen Sie in den Ergebnissen *Azure Spring Cloud* aus.
 
     ![ASC-Symbol: Starten](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Klicken Sie auf der Azure Spring Cloud-Seite auf **+ Hinzufügen**.
+4. Klicken Sie auf der Azure Spring Cloud-Seite auf **+ Hinzufügen** .
 
     ![ASC-Symbol: Hinzufügen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.  Berücksichtigen Sie die folgenden Richtlinien:
-    - **Abonnement**: Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
-    - **Ressourcengruppe**: Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode. Sie wird später als **\<resource group name\>** verwendet.
-    - **Dienstdetails/Name**: Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
-    - **Standort**: Wählen Sie die Region für Ihre Dienstinstanz aus.
+    - **Abonnement** : Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
+    - **Ressourcengruppe** : Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode. Sie wird später als **\<resource group name\>** verwendet.
+    - **Dienstdetails/Name** : Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
+    - **Standort** : Wählen Sie die Region für Ihre Dienstinstanz aus.
 
     ![Startseite des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klicken Sie auf **Überprüfen und erstellen**.
+6. Klicken Sie auf **Überprüfen und erstellen** .
 
 ## <a name="build-and-deploy-the-app"></a>Erstellen und Bereitstellen der App
     
@@ -419,13 +419,13 @@ Im folgenden Verfahren wird die Anwendung mithilfe der Azure CLI erstellt und be
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public
     ```
 
-1. Stellen Sie die JAR-Datei für die App bereit:
+1. Stellen Sie die JAR-Datei für die App bereit (`target\hellospring-0.0.1-SNAPSHOT.jar` unter Windows):
 
     ```azurecli
-    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path <jar file path>
     ```
     
-1. Es dauert einige Minuten, bis die Bereitstellung der Anwendung abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps**, um zu überprüfen, ob die Anwendung bereitgestellt wurde. Der Status der Anwendung sollte angezeigt werden.
+1. Es dauert einige Minuten, bis die Bereitstellung der Anwendung abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps** , um zu überprüfen, ob die Anwendung bereitgestellt wurde. Der Status der Anwendung sollte angezeigt werden.
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
@@ -433,25 +433,25 @@ Im folgenden Verfahren wird das IntelliJ-Plug-In für Azure Spring Cloud verwend
 
 ### <a name="import-project"></a>Importieren des Projekts
 
-1. Öffnen Sie das IntelliJ-Dialogfeld **Willkommen**, und wählen Sie **Projekt importieren** aus, um den Import-Assistenten zu öffnen.
+1. Öffnen Sie das IntelliJ-Dialogfeld **Willkommen** , und wählen Sie **Projekt importieren** aus, um den Import-Assistenten zu öffnen.
 1. Wählen Sie den Ordner `hellospring` aus.
 
     ![Importieren des Projekts](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>Bereitstellen der App
-Für die Bereitstellung in Azure müssen Sie sich bei Ihrem Azure-Konto anmelden und Ihr Abonnement auswählen.  Anmeldeinformationen finden Sie unter [Installation und Anmeldung](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Für die Bereitstellung in Azure müssen Sie sich bei Ihrem Azure-Konto anmelden und Ihr Abonnement auswählen.  Anmeldeinformationen finden Sie unter [Installation und Anmeldung](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. Klicken Sie im Projektexplorer von IntelliJ mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Azure** -> **In Azure Spring Cloud bereitstellen** aus.
 
     [ ![Bereitstellen in Azure 1](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png) ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
-1. Übernehmen Sie den Namen für die App im Feld **Name**. **Name** bezieht sich auf die Konfiguration, nicht auf den App-Namen. Benutzer müssen ihn in der Regel nicht ändern.
+1. Übernehmen Sie den Namen für die App im Feld **Name** . **Name** bezieht sich auf die Konfiguration, nicht auf den App-Namen. Benutzer müssen ihn in der Regel nicht ändern.
 1. Wählen Sie im Textfeld **Artefakt** die Datei *hellospring-0.0.1-SNAPSHOT.jar* aus.
 1. Überprüfen Sie im Textfeld **Abonnement** Ihr Abonnement.
-1. Wählen Sie im Textfeld **Spring Cloud** die Instanz von Azure Spring Cloud aus, die Sie unter [Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance) erstellt haben.
+1. Wählen Sie im Textfeld **Spring Cloud** die Instanz von Azure Spring Cloud aus, die Sie unter [Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts](./spring-cloud-quickstart-provision-service-instance.md) erstellt haben.
 1. Legen Sie **Öffentlicher Endpunkt** auf *Aktivieren* fest.
 1. Wählen Sie im Textfeld **App:** die Option **App erstellen...** aus.
-1. Geben Sie *hellospring* ein, und klicken Sie dann auf **OK**.
+1. Geben Sie *hellospring* ein, und klicken Sie dann auf **OK** .
 
     [ ![Bereitstellung in Azure: OK](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png) ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
@@ -493,7 +493,7 @@ Protokolle werden in den Ergebnissen angezeigt:
     [ ![Ausgabe des Streamingprotokolls](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png) ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
 ---
 
-Informationen zu erweiterten Protokollanalysefeatures finden Sie im Menü im [Azure-Portal](https://portal.azure.com/) auf der Registerkarte **Protokolle**. Bei den hier aufgeführten Protokollen kommt es zu einer Wartezeit von einigen Minuten.
+Informationen zu erweiterten Protokollanalysefeatures finden Sie im Menü im [Azure-Portal](https://portal.azure.com/) auf der Registerkarte **Protokolle** . Bei den hier aufgeführten Protokollen kommt es zu einer Wartezeit von einigen Minuten.
 
 [ ![Protokollanalyse](media/spring-cloud-quickstart-java/logs-analytics.png) ](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
 ::: zone-end

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91333272"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173891"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Schnellstart: Starten der Überwachung Ihrer Node.js-Webanwendung mit Azure Application Insights
 
@@ -31,7 +31,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**.
+2. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights** .
 
    ![Hinzufügen einer Azure Application Insights-Ressource](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
@@ -46,7 +46,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe verwenden. |
    | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Erstellen** .
 
 ## <a name="configure-appinsights-sdk"></a>Konfigurieren des AppInsights SDK
 
@@ -60,7 +60,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
    npm install applicationinsights --save
    ```
 
-3. Bearbeiten Sie die erste *JS*-Datei Ihrer App, und fügen Sie dem obersten Teil Ihres Skripts die beiden unten stehenden Zeilen hinzu. Wenn Sie die [Node.js-Schnellstart-App](../../app-service/quickstart-nodejs.md) verwenden, bearbeiten Sie die Datei *index.js*. Ersetzen Sie `<instrumentation_key>` durch den Instrumentierungsschlüssel Ihrer Anwendung. 
+3. Bearbeiten Sie die erste *JS* -Datei Ihrer App, und fügen Sie dem obersten Teil Ihres Skripts die beiden unten stehenden Zeilen hinzu. Wenn Sie die [Node.js-Schnellstart-App](../../app-service/quickstart-nodejs.md) verwenden, bearbeiten Sie die Datei *index.js* . Ersetzen Sie `<instrumentation_key>` durch den Instrumentierungsschlüssel von Application Insights. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -82,7 +82,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Application Insights-Anwendungsübersicht](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Wählen Sie das **App-Analyse**-Symbol ![Symbol „Anwendungsübersicht“](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **In Analytics anzeigen** aus.  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Wählen Sie das **App-Analyse** -Symbol ![Symbol „Anwendungsübersicht“](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **In Analytics anzeigen** aus.  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
    ![Application Insights-Analysediagramme](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -125,7 +125,7 @@ Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und all
 > [!NOTE]
 > Wenn Sie eine vorhandene Ressourcengruppe verwendet haben, funktionieren die unten aufgeführten Anweisungen nicht, und Sie müssen einfach die einzelne Application Insights-Ressource löschen. Denken Sie daran: Wenn Sie eine Ressourcengruppe löschen, werden alle zugrunde liegenden Ressourcen, die Mitglieder dieser Gruppe sind, gelöscht.
 
-1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Ressourcengruppen** und dann **myResourceGroup**.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Ressourcengruppen** und dann **myResourceGroup** .
 2. Wählen Sie auf der Seite mit Ihrer Ressourcengruppe die Option **Löschen** aus, geben Sie in das Textfeld **myResourceGroup** ein, und wählen Sie anschließend **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

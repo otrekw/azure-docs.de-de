@@ -1,25 +1,25 @@
 ---
 title: Gewähren von Zugriff auf die Indexer-IP-Adressbereiche
 titleSuffix: Azure Cognitive Search
-description: In dieser Anleitung wird das Einrichten von IP-Firewallregeln beschrieben, damit Indexer Zugriff erhalten.
+description: Konfigurieren Sie IP-Firewallregeln, um den Datenzugriff durch einen Azure Cognitive Search-Indexer zuzulassen.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950192"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101391"
 ---
-# <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>Einrichten von IP-Firewallregeln zum Aktivieren des Indexerzugriffs
+# <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>Konfigurieren von IP-Firewallregeln zum Zulassen von Indexerverbindungen (Azure Cognitive Search)
 
-IP-Firewallregeln für Azure-Ressourcen wie Speicherkonten, Cosmos-DB-Konten und Azure SQL-Server gestatten nur Datenverkehr, der aus bestimmten IP-Bereichen stammt, auf Daten zuzugreifen.
+IP-Firewallregeln für Azure-Ressourcen wie Speicherkonten, Cosmos DB-Konten und Azure SQL-Server erlauben für den Datenzugriff nur Datenverkehr, der aus bestimmten IP-Adressbereichen stammt.
 
-In diesem Artikel wird beschrieben, wie die IP-Regeln über das Azure-Portal für ein Speicherkonto konfiguriert werden können, sodass Indexer von Azure Cognitive Search sicher auf die Daten zugreifen können. Dieser Leitfaden ist zwar speziell auf die Speicherung ausgerichtet, kann aber auch direkt in andere Azure-Ressourcen übersetzt werden, die ebenfalls IP-Firewallregeln zur Sicherung des Datenzugriffs bieten.
+In diesem Artikel wird beschrieben, wie die IP-Regeln über das Azure-Portal für ein Speicherkonto so konfiguriert werden, dass Indexer von Azure Cognitive Search auf die Daten sicher zugreifen können. Obwohl spezifisch für Azure Storage, funktioniert dieser Ansatz auch bei anderen Azure-Ressourcen, die IP-Firewallregeln zum Sichern des Zugriffs auf Daten verwenden.
 
 > [!NOTE]
 > IP-Firewallregeln für Speicherkonten sind nur wirksam, wenn sich das Speicherkonto und der Suchdienst in verschiedenen Regionen befinden. Wenn Ihr Setup dies nicht zulässt, empfehlen wir die Verwendung der [Option „Ausnahme für vertrauenswürdige Dienste“](search-indexer-howto-access-trusted-service-exception.md).
@@ -30,7 +30,7 @@ Rufen Sie den vollqualifizierten Domänennamen (FQDN) Ihres Suchdiensts ab. Dies
 
    ![Abrufen des Dienst-FQDN](media\search-indexer-howto-secure-access\search-service-portal.png "Abrufen des Dienst-FQDN")
 
-Die IP-Adresse des Suchdiensts kann durch Ausführen von `nslookup` (oder von `ping`) des FQDN abgerufen werden. Dies wird eine der IP-Adressen sein, die zu den Firewallregeln hinzugefügt werden müssen.
+Die IP-Adresse des Suchdiensts kann durch Ausführen von `nslookup` (oder von `ping`) des FQDN abgerufen werden. Im folgenden Beispiel würden Sie einer eingehenden Regel in der Azure Storage-Firewall „10.50.10.50“ hinzufügen.
 
 ```azurepowershell
 
@@ -45,6 +45,8 @@ Aliases:  contoso.search.windows.net
 ```
 
 ## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>Abrufen der IP-Adressbereiche für das Diensttag „AzureCognitiveSearch“
+
+Zusätzliche IP-Adressen werden für Anforderungen verwendet, die aus der [mehrinstanzenfähigen Ausführungsumgebung](search-indexer-securing-resources.md#indexer-execution-environment) des Indexers stammen. Sie können diesen IP-Adressbereich aus dem Diensttag abrufen.
 
 Die IP-Adressbereiche für das Diensttag `AzureCognitiveSearch` können entweder über die [Ermittlungs-API (Vorschau)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) oder die [herunterladbare JSON-Datei](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) abgerufen werden.
 
@@ -75,20 +77,18 @@ Für /32-IP-Adressen lassen Sie das „/32“ weg (52.253.133.74/32 -> 52.253.13
 
 ## <a name="add-the-ip-address-ranges-to-ip-firewall-rules"></a>Hinzufügen von IP-Adressbereichen zu IP-Firewallregeln
 
-Der einfachste Weg, IP-Adressbereiche zur Firewallregel eines Speicherkontos hinzuzufügen, ist über das Azure-Portal. Suchen Sie das Speicherkonto auf dem Portal, und navigieren Sie zur Registerkarte „**Firewalls und virtuelle Netzwerke**“.
+Der einfachste Weg, IP-Adressbereiche zur Firewallregel eines Speicherkontos hinzuzufügen, ist über das Azure-Portal. Suchen Sie das Speicherkonto auf dem Portal, und navigieren Sie zur Registerkarte **Firewalls und virtuelle Netzwerke** .
 
    ![Firewall und virtuelle Netzwerke](media\search-indexer-howto-secure-access\storage-firewall.png "Firewall und virtuelle Netzwerke")
 
-Fügen Sie die drei zuvor erhaltenen IP-Adressen (1 für die IP-Adresse des Suchdiensts, 2 für das `AzureCognitiveSearch`-Diensttag) in den Adressbereich ein, und klicken Sie auf „**Speichern**“.
+Fügen Sie die drei zuvor abgerufenen IP-Adressen („1“ für die IP-Adresse des Suchdiensts, „2“ für das Diensttag `AzureCognitiveSearch`) in den Adressbereich ein, und wählen Sie **Speichern** aus.
 
    ![IP-Regeln der Firewall](media\search-indexer-howto-secure-access\storage-firewall-ip.png "IP-Regeln der Firewall")
 
-Die Firewallregeln benötigen 5-10 Minuten für die Aktualisierung, danach können Indexer auf die Daten im Speicherkonto zugreifen.
+Die Firewallregeln benötigen 5–10 Minuten für die Aktualisierung. Danach sollten Indexer auf die Daten im Speicherkonto zugreifen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da Sie jetzt wissen, wie Sie die beiden Sätze von IP-Adressen dazu bringen können, den Zugriff für Indexer zu ermöglichen, verwenden Sie die folgenden Links, um die IP-Firewallregeln für einige gemeinsame Datenquellen zu aktualisieren.
-
 - [Konfigurieren von Azure Storage-Firewalls](../storage/common/storage-network-security.md)
-- [Konfigurieren der IP-Firewall für CosmosDB](../cosmos-db/firewall-support.md)
-- [Konfigurieren der IP-Firewall für Azure SQL-Server](../azure-sql/database/firewall-configure.md)
+- [Konfigurieren der IP-Firewall für Cosmos DB](../cosmos-db/firewall-support.md)
+- [Konfigurieren der IP-Firewall für Azure SQL Server](../azure-sql/database/firewall-configure.md)

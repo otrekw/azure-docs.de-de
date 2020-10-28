@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134478"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108965"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Troubleshooting für den Remotedesktopclient
 
@@ -33,7 +33,7 @@ Wenn Sie eine frühere Version des Remotedesktopclients verwenden, empfehlen wir
 
 Testen Sie zunächst Ihre Internetverbindung, indem Sie eine andere Website in Ihrem Browser öffnen, z. B. [www.bing.com](https://www.bing.com).
 
-Bestätigen Sie mit **nslookup**, dass das DNS den FQDN auflösen kann:
+Bestätigen Sie mit **nslookup** , dass das DNS den FQDN auflösen kann:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
@@ -83,6 +83,20 @@ Wenn der Webclient immer wieder zur Eingabe von Anmeldeinformationen auffordert,
 3. Löschen Sie die Browsercookies. Weitere Informationen finden Sie unter [Löschen von Cookiedateien in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 4. Löschen Sie den Browsercache. Weitere Informationen finden Sie unter [Leeren des Browsercaches für Ihren Browser](https://binged.it/2RKyfdU).
 5. Öffnen Sie den Browser im privaten Modus.
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows-Client blockiert Feed für Windows Virtual Desktop (klassisch)
+
+Wenn der Windows-Clientfeed keine Apps für Windows Virtual Desktop (klassisch) anzeigt, befolgen Sie die folgenden Anweisungen:
+
+1. Überprüfen Sie, ob die Richtlinie für bedingten Zugriff die App-IDs umfasst, die mit Windows Virtual Desktop (klassisch) verknüpft sind.
+2. Überprüfen Sie, ob die Richtlinie für bedingten Zugriff den gesamten Zugriff außer von App-IDs von Windows Virtual Desktop (klassisch) blockiert. In diesem Fall müssen Sie der Richtlinie die App-ID **9cdead84-a844-4324-93f2-b2e6bb768d07** hinzufügen, damit der Client die Feeds ermitteln kann.
+
+Wenn Sie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ nicht in der Liste finden, müssen Sie den Windows Virtual Desktop-Ressourcenanbieter registrieren. So registrieren Sie den Ressourcenanbieter:
+
+1. Melden Sie sich beim Azure-Portal an.
+2. Wechseln Sie zu **Abonnements** , und wählen Sie Ihr Abonnement aus.
+3. Wählen Sie im Menü links auf der Seite die Option **Ressourcenanbieter** aus.
+4. Suchen Sie nach **Microsoft.DesktopVirtualization** , wählen Sie die Option aus, und wählen Sie dann **Erneut registrieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

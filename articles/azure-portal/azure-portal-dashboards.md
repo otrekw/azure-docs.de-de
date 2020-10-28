@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764008"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089484"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Erstellen und Freigeben von Dashboards im Azure-Portal
 
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um einem Dashboard Kacheln hinzuzufügen
 
     ![Screenshot des Dashboards der hervorgehobenen Bearbeitungsoption](./media/azure-portal-dashboards/dashboard-edit.png)
 
-1. Durchsuchen Sie den **Kachelkatalog**, oder verwenden Sie das Suchfeld, um nach der gewünschten Kachel zu suchen.
+1. Durchsuchen Sie den **Kachelkatalog** , oder verwenden Sie das Suchfeld, um nach der gewünschten Kachel zu suchen.
 
 1. Wählen Sie **Hinzufügen** aus, um die Kachel dem Dashboard mit einer Standardgröße und einer Standardposition hinzuzufügen. Sie können die Kachel auf das Raster ziehen und dann an der gewünschten Position platzieren.
 
@@ -110,7 +110,7 @@ Die Daten im Dashboard zeigen automatisch Aktivitäten der letzten 24 Stunden an
 
     ![Screenshot des Kachelkontextmenüs](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-1. Aktivieren Sie das Kontrollkästchen zum **Außerkraftsetzen der Zeiteinstellungen für das Dashboard auf Kachelebene**.
+1. Aktivieren Sie das Kontrollkästchen zum **Außerkraftsetzen der Zeiteinstellungen für das Dashboard auf Kachelebene** .
 
     ![Screenshot des Dialogfelds zum Konfigurieren der Zeiteinstellungen der Kachel](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
@@ -118,7 +118,7 @@ Die Daten im Dashboard zeigen automatisch Aktivitäten der letzten 24 Stunden an
 
 1. Wählen Sie die anzuzeigende Zeitgranularität aus. Sie können ein beliebiges Inkrement zwischen einer Minute und einem Monat anzeigen.
 
-1. Wählen Sie **Übernehmen**.
+1. Wählen Sie **Übernehmen** .
 
 ## <a name="delete-a-tile"></a>Löschen einer Kachel
 
@@ -178,5 +178,5 @@ Führen Sie die folgenden Schritte aus, um ein privates oder freigegebenes Dashb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Freigeben von Azure-Dashboards mithilfe rollenbasierter Zugriffssteuerung](azure-portal-dashboard-share-access.md)
+* [Freigeben von Azure-Dashboards mithilfe der rollenbasierten Zugriffssteuerung](azure-portal-dashboard-share-access.md)
 * [Programmgesteuertes Erstellen von Azure-Dashboards](azure-portal-dashboards-create-programmatically.md)

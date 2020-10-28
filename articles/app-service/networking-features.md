@@ -4,21 +4,21 @@ description: Erfahren Sie mehr über die Netzwerkfeatures in Azure App Service u
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743045"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207047"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
 Anwendungen in Azure App Service können auf verschiedene Arten bereitgestellt werden. Für Apps, die von App Service gehostet werden, gilt standardmäßig, dass sie direkt über das Internet zugänglich sind und dass sie nur Endpunkte erreichen können, die im Internet gehostet werden. Viele Kundenanwendungen müssen jedoch den ein- und den ausgehenden Netzwerkdatenverkehr steuern. Es gibt mehrere Funktionen in App Service, mit denen diese Anforderungen erfüllt werden können. Die Herausforderung besteht darin, zu wissen, welche Funktion zur Lösung eines bestimmten Problems verwendet werden sollte. Dieses Dokument soll Kunden ermöglichen, anhand einiger exemplarischer Anwendungsfälle zu bestimmen, welche Funktion jeweils verwendet werden soll.
 
-Es gibt zwei primäre Bereitstellungsarten für Azure App Service. Es gibt den mehrinstanzenfähigen öffentlichen Dienst, der App Service-Pläne in den Preis-SKUs (Tarife) „Free“, „Shared“, „Basic“, „Standard“, „Premium“, „PremiumV2“ und „PremiumV3“ hostet. Außerdem gibt es die App Service-Umgebung (App Service Environment, ASE) für einzelne Mandanten, in der App Service Pläne für isolierte SKUs direkt in Ihrem Azure Virtual Network (VNet) gehostet werden. Sie verwenden unterschiedliche Funktionen abhängig davon, ob Sie mit dem mehrinstanzenfähigen Dienst oder in einer ASE arbeiten. 
+Es gibt zwei primäre Bereitstellungsarten für Azure App Service. Es gibt den mehrinstanzenfähigen öffentlichen Dienst, der App Service-Pläne in den Preis-SKUs (Tarife) „Free“, „Shared“, „Basic“, „Standard“, „Premium“, „Premiumv2“ und „Premiumv3“ hostet. Außerdem gibt es die App Service-Umgebung (App Service Environment, ASE) für einzelne Mandanten, in der App Service Pläne für isolierte SKUs direkt in Ihrem Azure Virtual Network (VNet) gehostet werden. Sie verwenden unterschiedliche Funktionen abhängig davon, ob Sie mit dem mehrinstanzenfähigen Dienst oder in einer ASE arbeiten. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Netzwerkfunktionen für mehrinstanzenfähigen App Service 
 
@@ -41,9 +41,9 @@ Für jeden vorliegenden Anwendungsfall kann es einige Möglichkeiten geben, das 
 | Unterstützung für IP-basiertes SSL für Ihre App benötigt | Von der App zugewiesene Adresse |
 | Nicht freigegeben, dedizierte eingehende Adresse für Ihre App | Von der App zugewiesene Adresse |
 | Beschränken des Zugriffs auf Ihre App aus einem Satz klar definierter Adressen | Zugriffseinschränkungen |
-| Beschränken des Zugriffs auf meine App von Ressourcen in einem VNet | Dienstendpunkte </br> ILB ASE </br> Privater Endpunkt (Vorschau) |
-| Verfügbarmachen meiner App über eine private IP-Adresse in meinem VNet | ILB ASE </br> Private IP-Adresse für eingehenden Datenverkehr in Application Gateway mit Dienstendpunkten </br> Dienstendpunkt (Vorschau) |
-| Schützen meiner App mit einer Web Application Firewall (WAF) | Application Gateway + ILB ASE </br> Application Gateway mit Dienstendpunkten </br> Azure Front Door mit Zugriffsbeschränkungen |
+| Beschränken des Zugriffs auf meine App von Ressourcen in einem VNet | Dienstendpunkte </br> ILB ASE </br> Private Endpunkte |
+| Verfügbarmachen meiner App über eine private IP-Adresse in meinem VNet | ILB ASE </br> Private Endpunkte </br> Private IP-Adresse für eingehenden Datenverkehr in Application Gateway mit Dienstendpunkten |
+| Schützen meiner App mit einer Web Application Firewall (WAF) | Application Gateway + ILB ASE </br> Application Gateway mit privaten Endpunkten </br> Application Gateway mit Dienstendpunkten </br> Azure Front Door mit Zugriffsbeschränkungen |
 | Lastenausgleich für Datenverkehr zu meinen Apps in verschiedenen Regionen | Azure Front Door mit Zugriffsbeschränkungen | 
 | Lastenausgleich für Datenverkehr in derselben Region | [Application Gateway mit Dienstendpunkten][appgwserviceendpoints] | 
 
@@ -62,11 +62,15 @@ Anhand der folgenden Anwendungsfälle für ausgehenden Datenverkehr wird vorgesc
 
 ### <a name="default-networking-behavior"></a>Standardmäßiges Netzwerkverhalten
 
-Die Azure App Service-Skalierungseinheiten unterstützen viele Kunden in jeder Bereitstellung. Für die SKU-Pläne „Free“ und „Shared“ werden Kundenworkloads in mehrinstanzenfähigen Workern gehostet. Für den Plan „Basic“ und höhere Pläne werden Kundenworkloads gehostet, die nur einem App Service-Plan (ASP) zugeordnet sind. Wenn Sie den App Service-Plan „Standard“ hatten, werden alle Apps in diesem Plan im selben Worker ausgeführt. Wenn Sie den Worker aufskalieren, werden alle Apps in diesem Plan in einem neuen Worker für jede Instanz in Ihrem ASP repliziert. Die Worker, die für „PremiumV2“ und „PremiumV3“ verwendet werden, unterscheiden sich von den Workern, die für die anderen Pläne verwendet werden. Jede App Service-Bereitstellung hat eine IP-Adresse, die für den gesamten eingehenden Datenverkehr zu Apps in dieser App Service-Bereitstellung verwendet wird. Es gibt jedoch an jeder Stelle 4 bis 11 Adressen, die für ausgehende Aufrufe verwendet werden. Diese Adressen werden von allen Apps in dieser App Service-Bereitstellung gemeinsam genutzt. Die ausgehenden Adressen sind entsprechend den verschiedenen Workertypen unterschiedlich. Das heißt, dass sich die Adressen, die für die ASPs „Free“, „Shared“, „Basic“, „Standard“ und „Premium“ verwendet werden, von den Adressen unterscheiden, die für ausgehende Aufrufe aus den ASPs „PremiumV2“ und „PremiumV3“ verwendet werden. Wenn Sie sich die Eigenschaften Ihrer App ansehen, sehen Sie die Eingangs- und die Ausgangsadressen, die von Ihrer App verwendet werden. Wenn Sie eine Abhängigkeit mit einer IP-Zugriffssteuerungsliste sperren müssen, verwenden Sie die ausgehenden IP-Adressen (possibleOutboundAddresses). 
+Die Azure App Service-Skalierungseinheiten unterstützen viele Kunden in jeder Bereitstellung. Für die SKU-Pläne „Free“ und „Shared“ werden Kundenworkloads in mehrinstanzenfähigen Workern gehostet. Für den Plan „Basic“ und höhere Pläne werden Kundenworkloads gehostet, die nur einem App Service-Plan (ASP) zugeordnet sind. Wenn Sie den App Service-Plan „Standard“ hatten, werden alle Apps in diesem Plan im selben Worker ausgeführt. Wenn Sie den Worker aufskalieren, werden alle Apps in diesem Plan in einem neuen Worker für jede Instanz in Ihrem ASP repliziert. 
+
+#### <a name="outbound-addresses"></a>Ausgehende Adressen
+
+Die Worker-VMs werden größtenteils durch die App Service-Tarife aufgeschlüsselt. Die Tarife „Free“, „Shared“, „Basic“, „Standard“ und „Premium“ verwenden alle denselben Worker-VM-Typ. Premiumv2 verwendet einen anderen VM-Typ. Premiumv3 verwendet noch einen anderen VM-Typ. Bei jeder Änderung der VM-Familie gibt es einen anderen Satz an ausgehenden Adressen. Wenn Sie von „Standard“ auf „Premiumv2“ skalieren, ändern sich Ihre ausgehenden Adressen. Wenn Sie von „Premiumv2“ auf „Premiumv3“ skalieren, ändern sich Ihre ausgehenden Adressen. Es gibt einige ältere Skalierungseinheiten, die sowohl die eingehenden als auch die ausgehenden Adressen ändern, wenn Sie von „Standard“ auf „Premiumv2“ skalieren. Es gibt eine Reihe von Adressen, die für ausgehende Aufrufe verwendet werden. Die von Ihrer App für ausgehende Aufrufe verwendeten ausgehenden Adressen werden in den Eigenschaften für Ihre App aufgeführt. Diese Adressen werden von allen Apps, die auf derselben Familie von Worker-VM ausgeführt werden, in dieser App Service-Bereitstellung gemeinsam genutzt. Wenn Sie alle möglichen Adressen anzeigen möchten, die Ihre App in dieser Skalierungseinheit möglicherweise verwenden könnte, gibt es eine andere Eigenschaft namens „possibleOutboundAddresses“, über die sie aufgelistet werden. 
 
 ![App-Eigenschaften](media/networking-features/app-properties.png)
 
-App Service hat einige Endpunkte, die zur Verwaltung des Diensts verwendet werden.  Diese Adressen werden in einem gesonderten Dokument veröffentlicht und sind auch im IP-Diensttag „AppServiceManagement“ enthalten. Das Tag „AppServiceManagement“ wird nur mit einer App Service-Umgebung (App Service Environment, ASE) verwendet, in der Sie solchen Datenverkehr zuzulassen müssen. Der eingehenden Adressen für App Service werden im IP-Diensttag „AppService“ nachverfolgt. Es gibt kein IP-Diensttag, das die ausgehenden Adressen enthält, die von App Service verwendet werden. 
+App Service hat einige Endpunkte, die zur Verwaltung des Diensts verwendet werden.  Diese Adressen werden in einem gesonderten Dokument veröffentlicht und sind auch im IP-Diensttag „AppServiceManagement“ enthalten. Das Tag „AppServiceManagement“ wird nur mit einer App Service-Umgebung verwendet, in der Sie solchen Datenverkehr zuzulassen müssen. Der eingehenden Adressen für App Service werden im IP-Diensttag „AppService“ nachverfolgt. Es gibt kein IP-Diensttag, das die ausgehenden Adressen enthält, die von App Service verwendet werden. 
 
 ![Diagramm für eingehenden und ausgehenden Datenverkehr für App Service](media/networking-features/default-behavior.png)
 
@@ -100,7 +104,7 @@ Wenn Sie den Zugriff auf Ihre App sperren möchten, sodass sie nur von Ressource
 
 ### <a name="service-endpoints"></a>Dienstendpunkte
 
-Mit Dienstendpunkten können Sie **eingehenden** Zugriff auf Ihre App so sperren, dass die Quelladresse aus einem Satz von Subnetzen stammen muss, die Sie auswählen. Diese Funktion funktioniert zusammen mit den IP-Zugriffseinschränkungen. Dienstendpunkte werden in derselben Benutzeroberfläche wie die IP-Zugriffseinschränkungen festgelegt. Sie können eine Zulassungs-/Verweigerungsliste mit Zugriffsregeln erstellen, die sowohl öffentliche Adressen als auch Subnetze in Ihren VNets umfassen. Diese Funktion unterstützt Szenarien wie die folgenden:
+Mit Dienstendpunkten können Sie **eingehenden** Zugriff auf Ihre App so sperren, dass die Quelladresse aus einem Satz von Subnetzen stammen muss, die Sie auswählen. Diese Funktion funktioniert zusammen mit den IP-Zugriffseinschränkungen. Dienstendpunkte sind mit Remotedebugging nicht kompatibel. Wenn Sie Remotedebuggen mit Ihrer App verwenden möchten, darf sich Ihr Client nicht in einem Subnetz mit aktivierten Dienstendpunkten befinden. Dienstendpunkte werden in derselben Benutzeroberfläche wie die IP-Zugriffseinschränkungen festgelegt. Sie können eine Zulassungs-/Verweigerungsliste mit Zugriffsregeln erstellen, die sowohl öffentliche Adressen als auch Subnetze in Ihren VNets umfassen. Diese Funktion unterstützt Szenarien wie die folgenden:
 
 ![Dienstendpunkte](media/networking-features/service-endpoints.png)
 
@@ -111,10 +115,18 @@ Mit Dienstendpunkten können Sie **eingehenden** Zugriff auf Ihre App so sperren
 
 Weitere Informationen zum Konfigurieren von Dienstendpunkten mit Ihrer App finden Sie im Tutorial zu [Azure App Service – Statische Zugriffseinschränkungen][serviceendpoints].
 
-### <a name="private-endpoint-preview"></a>Privater Endpunkt (Vorschau)
+### <a name="private-endpoints"></a>Private Endpunkte
 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie über eine private und sichere Verbindung mit Azure Private Link mit Ihrer Web-App verbindet. Der private Endpunkt verwendet eine private IP-Adresse in Ihrem VNET und bindet die Web-App effektiv in Ihr VNET ein. Diese Funktion gilt nur für bei Ihrer Web-App **eingehenden** Flows.
-[Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)][privateendpoints]
+[Verwenden von privaten Endpunkten für eine Azure-Web-App][privateendpoints]
+
+Private Endpunkte ermöglichen beispielsweise folgende Szenarien:
+
+* Beschränken des Zugriffs auf meine App von Ressourcen in einem VNet 
+* Verfügbarmachen meiner App über eine private IP-Adresse in meinem VNet 
+* Schützen meiner App mit einer Web Application Firewall (WAF) 
+
+Private Endpunkte verhindern Datenexfiltration, weil Sie über den privaten Endpunkt ausschließlich Zugriff auf die App erhalten, die damit konfiguriert ist. 
  
 ### <a name="hybrid-connections"></a>Hybridverbindungen
 
@@ -152,7 +164,7 @@ Wenn diese Funktion aktiviert ist, wird in Ihrer App der DNS-Server verwenden, m
 
 ### <a name="vnet-integration"></a>VNET-Integration
 
-Die Funktion „Gatewaygeforderte VNet-Integration“ ist sehr nützlich, löst aber nicht das Problem des Zugreifens auf Ressourcen über ExpressRoute. Zusätzlich zur Notwendigkeit der Erreichbarkeit über ExpressRoute-Verbindungen ist es für Apps erforderlich, dass sie Aufrufe an Dienste senden können, die über Dienstendpunkte geschützt sind. Um diese beiden zusätzlichen Anforderungen erfüllen zu können, wurde eine weitere VNet-Integrationsfunktion hinzugefügt. Die neue VNet-Integrationsfunktion ermöglicht es Ihnen, das Back-End Ihrer App in einem Subnetz in einem Resource Manager-VNet in derselben Region zu platzieren. Diese Funktion ist nicht aus einer App Service-Umgebung verfügbar, die sich bereits in einem VNet befindet. Diese Funktion ermöglicht Folgendes:
+Die Funktion „Gatewaygeforderte VNet-Integration“ ist nützlich, löst aber nicht das Problem des Zugreifens auf Ressourcen über ExpressRoute. Zusätzlich zur Notwendigkeit der Erreichbarkeit über ExpressRoute-Verbindungen ist es für Apps erforderlich, dass sie Aufrufe an Dienste senden können, die über Dienstendpunkte geschützt sind. Um diese beiden zusätzlichen Anforderungen erfüllen zu können, wurde eine weitere VNet-Integrationsfunktion hinzugefügt. Die neue VNet-Integrationsfunktion ermöglicht es Ihnen, das Back-End Ihrer App in einem Subnetz in einem Resource Manager-VNet in derselben Region zu platzieren. Diese Funktion ist nicht aus einer App Service-Umgebung verfügbar, die sich bereits in einem VNet befindet. Diese Funktion ermöglicht Folgendes:
 
 * Zugreifen auf Ressourcen in Resource Manager-VNets in derselben Region
 * Zugreifen auf Ressourcen, die mit Dienstendpunkten geschützt sind 
@@ -213,22 +225,58 @@ Diese Art der Bereitstellung bringt Ihnen weder eine dedizierte Adresse für aus
 
 ### <a name="create-multi-tier-applications"></a>Erstellen von Anwendungen mit mehreren Ebenen
 
-Eine Anwendung mit mehreren Ebene ist eine Anwendung, in der nur über die Front-End-Ebene auf die API-Back-End-Apps zugegriffen werden kann. Um eine Anwendung mit mehreren Ebenen zu erstellen, können Sie wie folgt vorgehen:
+Eine Anwendung mit mehreren Ebene ist eine Anwendung, in der nur über die Front-End-Ebene auf die API-Back-End-Apps zugegriffen werden kann. Eine App mit mehreren Ebenen kann auf zwei Arten erstellt werden. Beide beginnen mit der Verwendung von VNet-Integration, um Ihre Front-End-Web-App mit einem Subnetz in einem VNet zu verbinden. Dies ermöglicht Ihrer Web-App das Ausführen von Aufrufen in Ihrem VNet. Nachdem Ihre Front-End-App mit dem VNet verbunden ist, müssen Sie auswählen, wie Sie den Zugriff auf Ihre API-Anwendung sperren möchten.  Ihre Möglichkeiten:
 
-* Verwenden von VNet-Integration, um das Back-End Ihrer Front-End-Web-App mit einem Subnetz in einem VNet zu verbinden
-* Verwenden von Dienstendpunkten, um eingehenden Datenverkehr an Ihre API-App dadurch zu schützen, dass er nur aus dem Subnetz stammt, das für Ihre Front-End-Web-App verwendet wird
+* Hosten von sowohl Front-End- als auch API-App in derselben ILB-ASE und Verfügbarmachen der Front-End-App im Internet mit einem Anwendungsgateway
+* Hosten des Front-Ends im mehrinstanzenfähigen Dienst und des Back-Ends in einer ILB-ASE
+* Hosten von sowohl Front-End- als auch API-App im mehrinstanzenfähigen Dienst
 
-![App mit mehreren Ebenen](media/networking-features/multi-tier-app.png)
+Wenn Sie sowohl die Front-End- als auch die API-App für eine Anwendung mit mehreren Ebenen hosten, haben Sie folgende Möglichkeiten:
 
-Sie können erzwingen, dass mehrere Front-End-Apps dieselbe API-App verwenden, indem Sie VNet-Integration von den anderen Front-End-Apps und Dienstendpunkten über die API-App mit ihren Subnetzen verwenden.  
+Verfügbarmachen Ihrer API-Anwendung mit privaten Endpunkten in Ihrem VNet
+
+![App mit zwei Ebenen und privaten Endpunkten](media/networking-features/multi-tier-app-private-endpoint.png)
+
+Verwenden von Dienstendpunkten, um eingehenden Datenverkehr an Ihre API-App dadurch zu schützen, dass er nur aus dem Subnetz stammt, das für Ihre Front-End-Web-App verwendet wird
+
+![Mit Dienstendpunkten geschützte App](media/networking-features/multi-tier-app.png)
+
+Die Vor- und Nachteile beider Methoden sind:
+
+* Mit Dienstendpunkten müssen Sie nur den Datenverkehr zu Ihrer API-App in das Integrationssubnetz sichern. Hierdurch wird die API-App gesichert, aber es bestünde immer noch die Möglichkeit zur Datenexfiltration aus Ihrer Front-End-App in andere Apps im App Service.
+* Mit privaten Endpunkten verfügen Sie über zwei aktive Subnetze. Dies erhöht die Komplexität. Außerdem ist der private Endpunkt eine Ressource der obersten Ebene, die den Verwaltungsaufwand erhöht. Der Vorteil bei der Verwendung privater Endpunkte besteht darin, dass eine Datenexfiltration ausgeschlossen ist. 
+
+Beide Methoden funktionieren mit mehreren Front-Ends. In kleineren Szenarien lassen sich Dienstendpunkte wesentlich einfacher verwenden, weil Sie Dienstendpunkte einfach für die API-App im Front-End-Integrationssubnetz aktivieren. Wenn Sie weitere Front-End-Apps hinzufügen, müssen Sie jede API-App so anpassen, dass sie über Dienstendpunkte in dem Integrationssubnetz verfügt. Mit privaten Endpunkten haben Sie eine höhere Komplexität, müssen aber nichts bei Ihren API-Apps ändern, nachdem Sie einen privaten Endpunkt festgelegt haben. 
+
+### <a name="line-of-business-applications"></a>Branchenanwendungen
+
+Branchenanwendungen (Line-of-Business, LOB) sind interne Anwendungen, die in der Regel nicht für den Zugriff über das Internet verfügbar gemacht werden. Diese Anwendungen werden aus Unternehmensnetzwerken heraus aufgerufen, in denen sich der Zugriff streng kontrollieren lässt. Wenn Sie eine ILB-ASE verwenden, lassen sich Ihre Branchenanwendungen einfach hosten. Wenn Sie den mehrinstanzenfähigen Dienst verwenden, können Sie entweder private Endpunkte oder Dienstendpunkte in Kombination mit einem Application Gateway verwenden. Es gibt zwei Gründe, um ein Application Gateway mit Dienstendpunkten anstelle privater Endpunkte zu verwenden:
+
+* Sie benötigen WAF-Schutz für Ihre Branchenanwendungen.
+* Sie möchten einen Lastenausgleich für mehrere Instanzen Ihrer Branchenanwendungen ausführen.
+
+Wenn nichts davon der Fall ist, ist es besser, private Endpunkte zu verwenden. Wenn private Endpunkte in App Service verfügbar sind, können Sie Ihre Apps über private Adressen in Ihrem VNet verfügbar machen. Der private Endpunkt, den Sie in Ihrem VNet platzieren, kann über ExpressRoute- und VPN-Verbindungen erreicht werden. Das Konfigurieren privater Endpunkte macht Ihre Apps über eine private Adresse verfügbar, aber Sie müssen das DNS so konfigurieren, dass diese Adresse von lokalen Standorten aus erreichbar ist. Damit dies funktioniert, müssen Sie die private Azure DNS-Zone, die Ihre privaten Endpunkten enthält, an Ihre lokalen DNS-Server weiterleiten. Private Azure DNS-Zonen unterstützen keine Zonenweiterleitung, aber Sie können dies unterstützen, indem Sie einen DNS-Server zu diesem Zweck verwenden. Diese Vorlage, [DNS-Weiterleitung](https://azure.microsoft.com/resources/templates/301-dns-forwarder/), vereinfacht das Weiterleiten Ihrer privaten Azure DNS-Zone an Ihre lokalen DNS-Server.
+
+## <a name="app-service-ports"></a>App Service-Ports
+
+Wenn Sie den App Service überprüfen, finden Sie mehrere Ports, die für eingehende Verbindungen verfügbar gemacht sind. Es gibt keine Möglichkeit, den Zugriff auf diese Ports im mehrinstanzenfähigen Dienst zu blockieren oder zu kontrollieren. Folgende Ports sind verfügbar gemacht:
+
+| Zweck | Ports |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  Verwaltung | 454, 455 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Remotedebuggen in Visual Studio  |  4020, 4022, 4024 |
+|  Web Deploy-Dienst | 8172 |
+|  Infrastrukturverwendung | 7654, 1221 |
 
 <!--Links-->
-[appassignedaddress]: ./configure-ssl-certificate.md
-[iprestrictions]: ./app-service-ip-restrictions.md
-[serviceendpoints]: ./app-service-ip-restrictions.md
-[hybridconn]: ./app-service-hybrid-connections.md
-[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
-[vnetintegration]: ./web-sites-integrate-with-vnet.md
-[networkinfo]: ./environment/network-info.md
-[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
-[privateendpoints]: ./networking/private-endpoint.md
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
+[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
+[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192639"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148718"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimierung großer Dateidownloads mit Azure CDN
 
@@ -44,10 +44,10 @@ Nachdem der Block im CDN-Edgebereich angekommen ist, wird er zwischengespeichert
 
 Weitere Informationen zur Bytebereichsanforderung finden Sie unter [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist nicht erforderlich, die gesamte Datei im CDN-Cache zwischenzuspeichern. Nachfolgende Anforderungen für die Datei- oder Bytebereiche werden aus dem CDN-Cache bereitgestellt. Wenn nicht alle Blöcke im CDN zwischengespeichert werden, wird das Vorab-Abrufen verwendet, um Blöcke vom Ursprung anzufordern. Diese Optimierung setzt voraus, dass der Ursprungsserver Bytebereichsanforderungen unterstützt. Andernfalls ist diese Optimierung nicht effektiv. 
+Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist nicht erforderlich, die gesamte Datei im CDN-Cache zwischenzuspeichern. Nachfolgende Anforderungen für die Datei- oder Bytebereiche werden aus dem CDN-Cache bereitgestellt. Wenn nicht alle Blöcke im CDN zwischengespeichert werden, wird das Vorab-Abrufen verwendet, um Blöcke vom Ursprung anzufordern. Diese Optimierung setzt voraus, dass der Ursprungsserver Bytebereichsanforderungen unterstützt. Wenn der Ursprungsserver keine Bytebereichsanforderungen unterstützt, tritt bei Anforderungen von mehr als 8 MB Daten ein Fehler auf. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Bedingungen für die Optimierung großer Dateien
-Die Features zur Optimierung großer Dateien für **Azure CDN Standard von Microsoft** werden standardmäßig aktiviert, wenn Sie den Optimierungstyp „Allgemeine Webbereitstellung“ verwenden. Es gilt keine Beschränkung in Bezug auf die maximale Dateigröße.
+Es gilt keine Beschränkung in Bezug auf die maximale Dateigröße.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimieren der Übermittlung großer Dateien mit Azure CDN von Verizon
@@ -81,7 +81,7 @@ Die Optimierung großer Dateien ist effektiv, wenn bestimmte Bedingungen erfüll
 
 ### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurieren eines Akamai-CDN-Endpunkts zur Optimierung der Übermittlung großer Dateien
 
-Sie können Ihren Endpunkt vom Typ **Azure CDN Standard von Akamai** über das Azure-Portal für die Übertragung großer Dateien optimieren. Sie können dafür auch die REST-APIs oder eines der Client-SDKs verwenden. Die folgenden Schritte veranschaulichen die Vorgehensweise im Azure-Portal für ein Profil vom Typ **Azure CDN Standard von Akamai**:
+Sie können Ihren Endpunkt vom Typ **Azure CDN Standard von Akamai** über das Azure-Portal für die Übertragung großer Dateien optimieren. Sie können dafür auch die REST-APIs oder eines der Client-SDKs verwenden. Die folgenden Schritte veranschaulichen die Vorgehensweise im Azure-Portal für ein Profil vom Typ **Azure CDN Standard von Akamai** :
 
 1. Wählen Sie zum Hinzufügen eines neuen Endpunkts auf der Akamai-Seite **CDN-Profil** die Option **Endpunkt** aus.
 

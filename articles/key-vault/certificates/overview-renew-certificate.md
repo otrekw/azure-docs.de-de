@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2477bab244b8864fa9c82b52d5577d42fa47a7e0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588802"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124150"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Verlängern Ihrer Azure Key Vault-Zertifikate
 
@@ -25,12 +25,20 @@ Indem Sie Zertifikate mit kurzer Lebensdauer verwenden oder die Häufigkeit der 
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Azure Key Vault-Zertifikate verlängern.
 
-## <a name="get-notified-about-certificate-expirations"></a>Erhalten von Benachrichtigungen zum Zertifikatablauf
-Gehen Sie wie folgt vor, um benachrichtigt zu werden, wenn Ihre Zertifikate in Kürze ablaufen:
+## <a name="get-notified-about-certificate-expiration"></a>Erhalten von Benachrichtigungen zum Zertifikatablauf
+Sie müssten einen Zertifikatkontakt hinzufügen, um über Ereignisse zur Zertifikatlebensdauer benachrichtigt zu werden. Zertifikatkontakte enthalten Kontaktinformationen zum Senden von Benachrichtigungen, die durch Zertifikatlebensdauer-Ereignisse ausgelöst werden. Die Kontaktinformationen werden von allen Zertifikaten im Schlüsseltresor gemeinsam genutzt. Eine Benachrichtigung zu einem Ereignis eines beliebigen Zertifikats im Schlüsseltresor wird an alle angegebenen Kontakte gesendet.
 
-Fügen Sie Ihrem Schlüsseltresor zunächst eine Kontaktperson für Zertifikate hinzu, indem Sie das PowerShell-Cmdlet [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) verwenden.
+### <a name="steps-to-set-certificate-notifications"></a>Schritte zum Festlegen von Zertifikatbenachrichtigungen:
+Fügen Sie zunächst einen Zertifikatkontakt zu Ihrem Schlüsseltresor hinzu. Das Hinzufügen kann über das Azure-Portal oder das PowerShell-Cmdlet [`Add-AzureKeyVaultCertificateContact`](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) erfolgen.
 
 Konfigurieren Sie als Nächstes, wann Sie über den Ablauf des Zertifikats benachrichtigt werden möchten. Informationen zum Konfigurieren der Lebenszyklusattribute des Zertifikats finden Sie unter [Konfigurieren der automatischen Zertifikatrotation in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+
+Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festgelegt ist, wird bei den folgenden Ereignissen eine Benachrichtigung gesendet.
+
+- Vor der Zertifikatverlängerung
+- Nach der Zertifikatverlängerung, um mitzuteilen, ob das Zertifikat erfolgreich verlängert wurde, oder ob ein Fehler aufgetreten ist, sodass die manuelle Zertifikatverlängerung erforderlich ist.  
+
+  Wenn in der Richtlinie für ein Zertifikat die manuelle Verlängerung festgelegt ist (nur E-Mail), wird eine Benachrichtigung gesendet, sobald das Zertifikat verlängert werden muss.  
 
 In Key Vault gibt es drei Kategorien von Zertifikaten:
 -   Zertifikate, die mit einer integrierten Zertifizierungsstelle (ZS) erstellt werden, z. B. DigiCert oder GlobalSign
@@ -71,7 +79,7 @@ Falls sich das ausgestellte Zertifikat im Azure-Portal im Status *Deaktiviert* b
 
 **Wie kann ich das Feature für die automatische Rotation des Zertifikats testen?**
 
-Erstellen Sie ein Zertifikat mit einer Gültigkeitsdauer von **1 Monat**, und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Bei dieser Einstellung wird das Zertifikat alle 7,2 Stunden rotiert.
+Erstellen Sie ein Zertifikat mit einer Gültigkeitsdauer von **1 Monat** , und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Bei dieser Einstellung wird das Zertifikat alle 7,2 Stunden rotiert.
   
 **Werden die Tags nach der automatischen Verlängerung des Zertifikats repliziert?**
 

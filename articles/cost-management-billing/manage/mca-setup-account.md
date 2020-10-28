@@ -5,19 +5,21 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/20/2020
 ms.author: banders
-ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371795"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316408"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
-Wenn Ihre Enterprise Agreement-Registrierung abgelaufen ist oder bald ablaufen wird, können Sie eine Microsoft-Kundenvereinbarung zum Erneuern Ihrer Registrierung unterzeichnen. Dieser Artikel beschreibt die Änderungen an der vorhandenen Abrechnung nach der Einrichtung und führt Sie durch die Einrichtung Ihres neuen Abrechnungskontos. Die Erneuerung umfasst die folgenden Schritte:
+Wenn Ihre Registrierung für ein direktes Enterprise Agreement abgelaufen ist oder bald ablaufen wird, können Sie eine Microsoft-Kundenvereinbarung zum Erneuern Ihrer Registrierung unterzeichnen. Dieser Artikel beschreibt die Änderungen an der vorhandenen Abrechnung nach der Einrichtung und führt Sie durch die Einrichtung Ihres neuen Abrechnungskontos. Derzeit können ablaufende indirekte Enterprise Agreements nicht mit einer Microsoft-Kundenvereinbarung erneuert werden.
+
+Die Erneuerung umfasst die folgenden Schritte:
 
 1. Akzeptieren Sie die neue Microsoft-Kundenvereinbarung. Lassen Sie sich von Ihrem lokalen Microsoft-Kundenbetreuer die Details erläutern, und akzeptieren Sie die neue Vereinbarung.
 2. Richten Sie das neue Abrechnungskonto ein, das für die neue Microsoft-Kundenvereinbarung erstellt wird.
@@ -28,7 +30,7 @@ Zum Einrichten des Abrechnungskontos müssen Sie die Abrechnung von Azure-Abonne
 - Sie erhalten monatlich eine digitale Rechnung über Ihre Gebühren. Sie können die Rechnung auf der Azure-Seite „Kostenverwaltung + Abrechnung“ anzeigen und analysieren.
 - Anstelle von Abteilungen und Konto in Ihrer Enterprise Agreement-Registrierung verwenden Sie die Abrechnungsstruktur und Bereiche des neuen Kontos zum Verwalten und Organisieren Ihrer Abrechnung.
 
-Bevor Sie mit dem Einrichten beginnen, sollten Sie sich mit folgenden Themen befassen:
+Bevor Sie mit dem Einrichten beginnen, sollten Sie die folgenden Aktionen ausführen:
 
 - **Erläuterungen zum neuen Abrechnungskonto**
   - Das neue Konto vereinfacht die Abrechnung für Ihre Organisation. [Kurze Übersicht über Ihr neues Abrechnungskonto](../understand/mca-overview.md).
@@ -65,7 +67,7 @@ Sie können die Unternehmensadministratoren für die Registrierung bitten, die E
 
    ![Screenshot der Einladung von Unternehmensadministratoren](./media/mca-setup-account/ea-mca-invite-admins.png)
 
-4. Klicken Sie auf **Anforderung senden**.
+4. Klicken Sie auf **Anforderung senden** .
 
    Die Administratoren erhalten eine E-Mail mit Anweisungen zum Abschließen der Einrichtung.
 
@@ -100,7 +102,7 @@ Bei Unterzeichnung der Microsoft-Kundenvereinbarung wird ein Azure AD-Mandant (
 
 Ihr neues Konto unterstützt nur Benutzer des Mandanten, der beim Unterzeichnen der Microsoft-Kundenvereinbarung ausgewählt wurde. Wenn Benutzer mit Administratorberechtigungen für Ihr Enterprise Agreement Teil des Mandanten sind, erhalten sie während der Einrichtung Zugriff auf das neue Abrechnungskonto. Wenn sie nicht Teil des Mandanten sind, können sie nur auf das neue Abrechnungskonto zugreifen, wenn sie von Ihnen eingeladen werden.
 
-Beim Einladen von Benutzern werden diese dem Mandanten als Gastbenutzer hinzugefügt und erhalten Zugriff auf das Abrechnungskonto. Zum Einladen der Benutzer muss der Gastzugriff für den Mandanten aktiviert sein. Weitere Informationen finden Sie unter [Steuern des Gastzugriffs in Azure Active Directory](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Wenn der Gastzugriff deaktiviert ist, wenden Sie sich an die globalen Administratoren Ihres Mandanten, um ihn aktivieren zu lassen. <!-- Todo - How can they find their global administrator -->
+Beim Einladen von Benutzern werden diese dem Mandanten als Gastbenutzer hinzugefügt und erhalten Zugriff auf das Abrechnungskonto. Zum Einladen der Benutzer muss der Gastzugriff für den Mandanten aktiviert sein. Weitere Informationen finden Sie unter [Steuern des Gastzugriffs in Azure Active Directory](/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Wenn der Gastzugriff deaktiviert ist, wenden Sie sich an die globalen Administratoren Ihres Mandanten, um ihn aktivieren zu lassen. <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-replaced-features"></a>Ersetzte Features anzeigen
 
@@ -112,7 +114,7 @@ Die bei Ihrer Enterprise Agreement-Registrierung erstellten Konten werden beim n
 
 ### <a name="notification-contacts"></a>Benachrichtigungskontakte
 
-Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen über das Azure Enterprise Agreement. Beim neuen Abrechnungskonto werden sie nicht unterstützt. E-Mail-Nachrichten zu Azure-Gutschriften und Rechnungen werden an Benutzer gesendet, die Zugriff auf Abrechnungsprofile in Ihrem Abrechnungskonto haben.
+Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen über das Azure Enterprise Agreement. Im neuen Abrechnungskonto werden sie nicht unterstützt. E-Mail-Nachrichten zu Azure-Gutschriften und Rechnungen werden an Benutzer gesendet, die Zugriff auf Abrechnungsprofile in Ihrem Abrechnungskonto haben.
 
 ### <a name="spending-quotas"></a>Ausgabenkontingente
 
@@ -164,7 +166,7 @@ Die Umstellung kann nicht rückgängig gemacht werden. Sobald die Abrechnung Ihr
 
 ### <a name="closing-your-browser-during-setup"></a>Schließen des Browsers während der Einrichtung
 
-Bevor Sie auf **Umstellung starten** klicken, können Sie den Browser schließen. Sie können über den Link, den Sie in der E-Mail erhalten haben, zur Einrichtung zurückkehren und die Umstellung starten. Wenn Sie den Browser nach dem Starten der Umstellung schließen, wird die Umstellung weiter ausgeführt. Kehren Sie zur Seite mit dem Umstellungsstatus zurück, um den aktuellen Status der Umstellung zu überwachen. Sie erhalten eine E-Mail, wenn die Umstellung abgeschlossen ist.
+Bevor Sie **Umstellung starten** auswählen, können Sie den Browser schließen. Sie können über den Link, den Sie in der E-Mail erhalten haben, zur Einrichtung zurückkehren und die Umstellung starten. Wenn Sie den Browser nach dem Starten der Umstellung schließen, wird die Umstellung weiter ausgeführt. Kehren Sie zur Seite mit dem Umstellungsstatus zurück, um den aktuellen Status der Umstellung zu überwachen. Sie erhalten eine E-Mail, wenn die Umstellung abgeschlossen ist.
 
 ## <a name="complete-the-setup-in-the-azure-portal"></a>Abschließen der Einrichtung im Azure-Portal
 
@@ -197,11 +199,11 @@ Zum Abschließen der Einrichtung benötigen Sie Zugriff sowohl auf das neue Abre
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)
 
-3. Wählen sie das Abrechnungskonto aus. Das Abrechnungskonto ist vom Typ **Microsoft-Kundenvereinbarung**.
+3. Wählen sie das Abrechnungskonto aus. Das Abrechnungskonto ist vom Typ **Microsoft-Kundenvereinbarung** .
 
 4. Wählen Sie auf der linken Seite **Azure-Abonnements** aus.
 
@@ -217,7 +219,7 @@ Azure-Reservierungen in Ihrer Enterprise Agreement-Registrierung werden zum neue
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)
 
@@ -233,7 +235,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungskontos aufgeführt,
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)
 
@@ -249,7 +251,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png).
 
@@ -261,7 +263,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt
 
     ![Screenshot mit dem Zugriff von Abteilungs- und Kontoadministratoren nach der Umstellung](./media/mca-setup-account/mca-department-account-admins-access-post-transition.png)
 
-Unternehmensadministratoren und Abteilungsadministratoren sind als Besitzer des Rechnungsabschnitts oder Benutzer mit Leseberechtigung für den Rechnungsabschnitt aufgeführt, während Kontobesitzer in der Abteilung als Azure-Abonnementersteller aufgeführt sind. Wiederholen Sie den Schritt für alle Rechnungsabschnitte, um den Zugriff für alle Abteilungen in Ihrer Enterprise Agreement-Registrierung zu überprüfen. Kontobesitzer, die nicht Teil einer Abteilung waren, erhalten die Berechtigungen für einen Rechnungsabschnitt mit dem Namen **Standardrechnungsabschnitt**. Wenn Sie der Meinung sind, dass der Zugriff für einen Administrator fehlt, können Sie diesem im Azure-Portal die Zugriffsberechtigung erteilen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Unternehmensadministratoren und Abteilungsadministratoren sind als Besitzer des Rechnungsabschnitts oder Benutzer mit Leseberechtigung für den Rechnungsabschnitt aufgeführt, während Kontobesitzer in der Abteilung als Azure-Abonnementersteller aufgeführt sind. Wiederholen Sie den Schritt für alle Rechnungsabschnitte, um den Zugriff für alle Abteilungen in Ihrer Enterprise Agreement-Registrierung zu überprüfen. Kontobesitzer, die nicht Teil einer Abteilung waren, erhalten die Berechtigungen für einen Rechnungsabschnitt mit dem Namen **Standardrechnungsabschnitt** . Wenn Sie der Meinung sind, dass der Zugriff für einen Administrator fehlt, können Sie diesem im Azure-Portal die Zugriffsberechtigung erteilen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

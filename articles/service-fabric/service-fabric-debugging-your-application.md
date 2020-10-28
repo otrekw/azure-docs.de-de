@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000106"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093394"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -24,9 +24,9 @@ ms.locfileid: "89000106"
 Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung in einem Cluster für die Entwicklung auf einem lokalen Computer bereitstellen und debuggen. Visual Studio 2019 oder 2015 kann die Anwendung im lokalen Cluster bereitstellen und den Debugger automatisch mit allen Instanzen der Anwendung verbinden. Visual Studio muss als Administrator ausgeführt werden, um eine Verbindung mit dem Debugger herstellen zu können.
 
 1. Um einen lokalen Cluster für die Entwicklung zu erstellen, folgen Sie den Schritten unter [Einrichten der Service Fabric-Entwicklungsumgebung](service-fabric-get-started.md).
-2. Drücken Sie **F5** oder klicken Sie auf **Debuggen** > **Debugging starten**.
+2. Drücken Sie **F5** oder klicken Sie auf **Debuggen** > **Debugging starten** .
    
-    ![Anwendung debuggen][startdebugging]
+    ![Screenshot, der das Menü „Debuggen“ zeigt.][startdebugging]
 3. Legen Sie Haltepunkte im Code fest und durchlaufen Sie die Anwendung mit den Befehlen im Menü **Debuggen** .
    
    > [!NOTE]
@@ -57,7 +57,7 @@ Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung 
 ### <a name="running-a-script-as-part-of-debugging"></a>Ausführen eines Skripts beim Debuggen
 In bestimmten Szenarien müssen Sie möglicherweise beim Start einer Debugsitzung ein Skript ausführen (wenn Sie z. B. keine Standarddienste verwenden).
 
-In Visual Studio können Sie die Datei **Start-Service.ps1** im Ordner**Scripts** des Service Fabric-Anwendungsprojekts (.sfproj) hinzufügen. Dieses Skript wird aufgerufen, nachdem die Anwendung im lokalen Cluster erstellt wurde.
+In Visual Studio können Sie die Datei **Start-Service.ps1** im Ordner **Scripts** des Service Fabric-Anwendungsprojekts (.sfproj) hinzufügen. Dieses Skript wird aufgerufen, nachdem die Anwendung im lokalen Cluster erstellt wurde.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -72,7 +72,7 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 > [!WARNING]
 > Das Remotedebuggen ist für Entwicklungs-/Testszenarios vorgesehen und sollte aufgrund der Auswirkung auf ausgeführte Anwendungen nicht in Produktionsumgebungen verwendet werden.
 
-1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren**.
+1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren** .
    
     ![Aktivieren des Remotedebuggens][enableremotedebugging]
    
@@ -80,7 +80,7 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 2. Klicken Sie im **Cloud-Explorer** mit der rechten Maustaste auf den Clusterknoten, und wählen Sie **Debugger anfügen** aus.
    
     ![Debugger anfügen][attachdebugger]
-3. Wählen Sie im Dialogfeld **An den Prozess anfügen** den Prozess, den Sie debuggen möchten, und klicken Sie auf **Anfügen**.
+3. Wählen Sie im Dialogfeld **An den Prozess anfügen** den Prozess, den Sie debuggen möchten, und klicken Sie auf **Anfügen** .
    
     ![Prozess wählen][chooseprocess]
    
@@ -116,12 +116,12 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 > Das Streaming von Ablaufverfolgungen ist für Entwicklungs-/Testszenarios vorgesehen und sollte aufgrund der Auswirkung auf ausgeführte Anwendungen nicht in Produktionsumgebungen verwendet werden.
 > In einem Produktionsszenario sollten Sie sich auf das Weiterleiten von Ereignissen mithilfe von Azure-Diagnose verlassen.
 
-1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Streamingablaufverfolgungen aktivieren**.
+1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Streamingablaufverfolgungen aktivieren** .
    
     ![Aktivieren des Remotestreaming von Ablaufverfolgungen][enablestreamingtraces]
    
     Mit dieser Aktion wird der Vorgang zum Aktivieren der Erweiterung zum Streamen von Ablaufverfolgungen auf Ihren Clusterknoten sowie der benötigten Netzwerkkonfigurationen gestartet.
-2. Erweitern Sie im **Cloud-Explorer** das **Knoten**-Element, klicken Sie mit der rechten Maustaste auf den Knoten, von dem aus Sie Ablaufverfolgungen streamen möchten, und wählen Sie **Streamingablaufverfolgungen anzeigen** aus.
+2. Erweitern Sie im **Cloud-Explorer** das **Knoten** -Element, klicken Sie mit der rechten Maustaste auf den Knoten, von dem aus Sie Ablaufverfolgungen streamen möchten, und wählen Sie **Streamingablaufverfolgungen anzeigen** aus.
    
     ![Remotestreaming von Ablaufverfolgungen anzeigen][viewremotestreamingtraces]
    

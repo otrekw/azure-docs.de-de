@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48a3972d7b7db3f0c68866f23d6deca0bbce2e35
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376803"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92157962"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für iOS beginnen.
 
@@ -43,7 +43,7 @@ Fügen Sie Ihrem Projekt die Clientbibliothek für Telefonie von Azure Communica
 2. Klicken Sie in Xcode auf Ihre Projektdatei, und wählen Sie das Buildziel aus, um den Editor für Projekteinstellungen zu öffnen.
 3. Scrollen Sie unter der Registerkarte **General** (Allgemein) zum Abschnitt **Frameworks, Libraries, and Embedded Content** (Frameworks, Bibliotheken und eingebetteten Inhalte), und klicken Sie auf das Symbol **+** .
 4. Verwenden Sie links unten im Dialogfeld die Dropdownliste, wählen Sie **Add Files** aus, und navigieren Sie zum Verzeichnis **AzureCommunicationCalling.framework** des dekomprimierten Clientbibliothekspakets.
-    1. Wiederholen Sie den letzten Schritt zum Hinzufügen von **AzureCore.framework** und **AzureCommunication.framework**.
+    1. Wiederholen Sie den letzten Schritt zum Hinzufügen von **AzureCore.framework** und **AzureCommunication.framework** .
 5. Öffnen Sie im Editor für Projekteinstellungen die Registerkarte **Build Settings** (Buildeinstellungen), und scrollen Sie zum Abschnitt **Search Paths** (Suchpfade). Fügen Sie dem Verzeichnis mit **AzureCommunicationCalling.framework** den neuen Eintrag **Framework Search Paths** (Frameworksuchpfade) hinzu.
     1. Fügen Sie einen weiteren Frameworksuchpfade-Eintrag hinzu, der auf den Ordner mit den Abhängigkeiten zeigt.
 

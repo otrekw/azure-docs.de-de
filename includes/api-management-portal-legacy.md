@@ -2,17 +2,18 @@
 author: mikebudzynski
 ms.service: api-management
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: b4c8e9b07905e954879e5b65adbaae765fc41c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44de30438d59252a431bf37ac6919a9bc186c8ed
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73176497"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315740"
 ---
 > [!NOTE]
-> Diese Dokumentation hat das Legacy-Entwicklerportal zum Inhalt. In den folgenden Artikeln finden Sie Informationen zum neuen Entwicklerportal:
+> In dieser Dokumentation geht es um das veraltete Entwicklerportal. Sie können das Portal bis zu seiner Einstellung im Oktober 2023 wie gewohnt weiter nutzen. In dem Monat wird es dann aus allen API Management-Diensten entfernt. Für das veraltete Portal werden nur kritische Sicherheitsupdates bereitgestellt. Weitere Informationen finden Sie in den folgenden Artikeln:
 > 
-> - [Übersicht über das Azure API Management-Entwicklerportal](..\articles\api-management\api-management-howto-developer-portal.md)
-> - [Zugreifen auf das Entwicklerportal und Anpassen dieses Portals](..\articles\api-management\api-management-howto-developer-portal-customize.md)
+> - [Migrieren zum neuen Entwicklerportal](../articles/api-management/developer-portal-deprecated-migration.md)
+> - [Übersicht über das neue Azure API Management-Entwicklerportal](../articles/api-management/api-management-howto-developer-portal.md)
+> - [Zugreifen auf das neue Entwicklerportal und Anpassen dieses Portals](../articles/api-management/api-management-howto-developer-portal-customize.md)

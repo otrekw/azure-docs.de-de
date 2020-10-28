@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071777"
+ms.locfileid: "92116814"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -46,7 +46,7 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 Eine Imagedefinition ist eine logische Gruppierung für Versionen eines Images. Die Imagedefinition enthält Informationen dazu, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Eine Imagedefinition ist wie ein Plan für alle Details rund um das Erstellen eines bestimmten Image. Sie stellen eine VM nicht aus einer Imagedefinition, sondern aus den Imageversionen bereit, die aus der Definition erstellt wurden.
 
-Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet werden **Herausgeber**, **Angebot** und **SKU**. Diese Parameter werden verwendet, um eine spezielle Imagedefinition zu finden. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei.  Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
+Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet werden **Herausgeber** , **Angebot** und **SKU** . Diese Parameter werden verwendet, um eine spezielle Imagedefinition zu finden. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei.  Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
 
 |Imagedefinition|Herausgeber|Angebot|Sku|
 |---|---|---|---|
@@ -56,10 +56,11 @@ Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet w
 
 Alle drei verfügen über eindeutige Sätze von Werten. Das Format ist ähnlich der Weise, in der Sie aktuell Herausgeber, Angebot und SKU für [Azure Marketplace-Images](../articles/virtual-machines/windows/cli-ps-findimage.md) in Azure PowerShell angeben können, um die neueste Version eines Marketplace-Images abzurufen. Für jede Imagedefinition ist ein eindeutiger Satz dieser Werte erforderlich.
 
-Imagedefinitionen müssen die folgenden Parameter definieren, die bestimmen, welche Typen von Imageversionen sie enthalten können:
--   Betriebssystemstatus: Sie können den Betriebssystemstatus auf [„Generalisiert“ oder „Spezialisiert“](#generalized-and-specialized-images) festlegen.
-- Betriebssystem: Kann entweder Windows oder Linux sein.
+Die folgenden Parameter bestimmen, welche Arten von Imageversionen sie enthalten können:
 
+- Betriebssystemstatus: Sie können den Betriebssystemstatus auf [„Generalisiert“ oder „Spezialisiert“](#generalized-and-specialized-images) festlegen. Dieses Feld ist erforderlich.
+- Betriebssystem: Kann entweder Windows oder Linux sein. Dieses Feld ist erforderlich.
+-   Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der [Generation 2](../articles/virtual-machines/generation-2.md) erstellt wurde. Der Standardwert ist Generation 1.
 
 
 Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition festgelegt werden können, damit Sie Ihre Ressourcen einfacher verfolgen können:
@@ -71,7 +72,6 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 - Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
 - Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 - Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
--   Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der [Generation 2](../articles/virtual-machines/generation-2.md) erstellt wurde. Der Standardwert ist Generation 1.
 - Erwerbsplaninformationen für Marketplace-Images: `-PurchasePlanPublisher`, `-PurchasePlanName` und `-PurchasePlanProduct`. Weitere Informationen zu den Erwerbsplaninformationen finden Sie unter [Suchen nach Images in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) und [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../articles/virtual-machines/marketplace-images.md).
 
 
@@ -116,7 +116,7 @@ Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Gr
 ## <a name="scaling"></a>Skalierung
 Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
 
-Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.  Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Natürlich sind wir uns bewusst, dass keine zwei Images oder Regionen identisch sind, doch dies ist unsere allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
+Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.   Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Natürlich sind wir uns bewusst, dass keine zwei Images oder Regionen identisch sind, doch dies ist unsere allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
 
 - Bei Bereitstellungen ohne VM-Skalierungsgruppen (VMSS): Es empfiehlt sich, für je 20 VMs, die Sie gleichzeitig erstellen, ein Replikat beizubehalten. Wenn Sie beispielsweise 120 VMs gleichzeitig mit demselben Image in einer Region erstellen, empfehlen wir, dass Sie mindestens 6 Replikate Ihres Images behalten. 
 - Bei Bereitstellungen mit Skalierungsgruppen (VMSS): Für jede Skalierungsgruppenbereitstellung mit bis zu 600 Instanzen empfiehlt es sich, mindestens ein Replikat beizubehalten. Wenn Sie beispielsweise 5 Skalierungsgruppen gleichzeitig erstellen, wobei jede davon 600 VM-Instanzen in einer Region enthält, die dasselbe Image verwenden, empfehlen wir, dass Sie mindestens 5 Replikate Ihres Images behalten. 
@@ -222,7 +222,7 @@ Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Scrollen Sie auf der Seite nach unten, und wählen Sie **Alle Ressourcen** aus.
 1. Wählen Sie alle Abonnements aus, von denen Sie alle Ressourcen auflisten möchten.
-1. Suchen Sie nach Ressourcen vom Typ **Shared Image Gallery**.
+1. Suchen Sie nach Ressourcen vom Typ **Shared Image Gallery** .
   
 Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
 
