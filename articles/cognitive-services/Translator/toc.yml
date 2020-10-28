@@ -7,7 +7,7 @@
     - name: Schnellstart
       href: quickstart-translator.md
     - name: Sprachunterstützung
-      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+      href: language-support.md
     - name: Tutorials
       items:
         - name: Erstellen einer WPF-App für Translator (C#)
