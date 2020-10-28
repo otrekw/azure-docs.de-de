@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: Metriken
       href: concepts/metrics.md
+    - name: Problembehandlung
+      href: concepts/troubleshooting-info.md
 - name: Proben
   items:
     - name: Hero-Beispiel für Gruppenanrufe
@@ -105,4 +107,4 @@
 - name: Ressourcen
   items:
     - name: Versionshinweise
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'
