@@ -7,13 +7,13 @@ ms.date: 7/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574020"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737304"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Schnellstart: Verbinden einer IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (Python)
 
@@ -57,13 +57,13 @@ Der Ordner *azure-iot-sdk-python\azure-iot-device\samples\pnp* enthält den Beis
 
 1. Definiert eine Listenerfunktion für die Eingabetastatur, mit der Sie die Anwendung beenden können.
 
-1. Verfügt über eine **main**-Funktion. Die **main**-Funktion erfüllt folgende Aufgaben:
+1. Verfügt über eine **main** -Funktion. Die **main** -Funktion erfüllt folgende Aufgaben:
 
     1. Verwendet das Geräte-SDK zum Erstellen eines Geräteclients und zum Herstellen einer Verbindung mit Ihrem IoT-Hub.
 
-    1. Aktualisiert Eigenschaften. Das verwendete Modell (**Thermostat**) definiert `targetTemperature` und `maxTempSinceLastReboot` als die beiden Eigenschaften für den Thermostat, sodass diese verwendet werden. Eigenschaften werden mit der `patch_twin_reported_properties`-Methode aktualisiert, die auf dem `device_client` definiert ist.
+    1. Aktualisiert Eigenschaften. Das verwendete Modell ( **Thermostat** ) definiert `targetTemperature` und `maxTempSinceLastReboot` als die beiden Eigenschaften für den Thermostat, sodass diese verwendet werden. Eigenschaften werden mit der `patch_twin_reported_properties`-Methode aktualisiert, die auf dem `device_client` definiert ist.
 
-    1. Beginnt mit dem Lauschen auf Befehlsanforderungen mithilfe der **execute_command_listener**-Funktion. Die Funktion richtet einen „Listener“ ein, um auf Befehle vom Dienst zu lauschen. Beim Einrichten des Listeners stellen Sie `method_name`, `user_command_handler` und `create_user_response_handler`bereit.
+    1. Beginnt mit dem Lauschen auf Befehlsanforderungen mithilfe der **execute_command_listener** -Funktion. Die Funktion richtet einen „Listener“ ein, um auf Befehle vom Dienst zu lauschen. Beim Einrichten des Listeners stellen Sie `method_name`, `user_command_handler` und `create_user_response_handler`bereit.
         - Die Funktion `user_command_handler` definiert, was das Gerät tun soll, wenn es einen Befehl empfängt. Wenn z. B. Ihr Wecker klingelt, bewirkt das Empfangen dieses Befehls, dass Sie aufwachen. Stellen Sie sich dies als „Auswirkung“ des aufgerufenen Befehls vor.
         - Die Funktion `create_user_response_handler` erstellt eine Antwort, die an Ihren IoT-Hub gesendet wird, wenn ein Befehl erfolgreich ausgeführt wird. Wenn z. B. Ihr Wecker klingelt, reagieren Sie mit einem Drücken der Schlummertaste, was eine Rückmeldung an den Dienst darstellt. Stellen Sie sich dies als die Antwort vor, die Sie an den Dienst übergeben. Sie können diese Antwort im Portal anzeigen.
 

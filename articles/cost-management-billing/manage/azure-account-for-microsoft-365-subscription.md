@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e2561b6cfce0da2ede9cda567091f9a7e23610de
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: db9c8d18d975661edf4a120a2e82b073c884d2a9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682993"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369674"
 ---
 # <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Registrieren für ein Microsoft 365-Abonnement mit Ihrem Azure-Konto
 
-Wenn Sie Azure-Abonnent sind, können Sie zum Registrieren für ein Microsoft 365-Abonnement Ihr Azure-Konto verwenden. Wenn Sie Mitglied einer Organisation sind, die über ein Azure-Abonnement verfügt, können Sie Microsoft 365-Abonnements für Benutzer in der vorhandenen Azure Active Directory-Instanz (Azure AD) erstellen. Registrieren Sie sich für Microsoft 365 mit einem Konto mit der Berechtigung „Globaler Administrator“ oder „Abrechnungsadministrator“ in Ihrem Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Überprüfen meiner Kontoberechtigungen in Azure AD](#RoleInAzureAD) und [Zuweisen von Administratorrollen in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Wenn Sie Azure-Abonnent sind, können Sie zum Registrieren für ein Microsoft 365-Abonnement Ihr Azure-Konto verwenden. Wenn Sie Mitglied einer Organisation sind, die über ein Azure-Abonnement verfügt, können Sie Microsoft 365-Abonnements für Benutzer in der vorhandenen Azure Active Directory-Instanz (Azure AD) erstellen. Registrieren Sie sich für Microsoft 365 mit einem Konto mit der Berechtigung „Globaler Administrator“ oder „Abrechnungsadministrator“ in Ihrem Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Überprüfen meiner Kontoberechtigungen in Azure AD](#RoleInAzureAD) und [Zuweisen von Administratorrollen in Azure Active Directory](../../active-directory/roles/permissions-reference.md).
 
 Wenn Sie bereits über ein Microsoft 365-Konto und ein Azure-Abonnement verfügen, können Sie [einem Azure-Abonnement einen Microsoft 365-Mandanten zuordnen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -31,17 +31,17 @@ Wenn Sie bereits über ein Microsoft 365-Konto und ein Azure-Abonnement verfüg
 3. Melden Sie sich mit Ihren Azure-Kontoanmeldeinformationen an. Wenn Sie ein Abonnement für Ihre Organisation erstellen, verwenden Sie ein Azure-Konto, das Mitglied der Rolle „Globaler Administrator“ oder „Abrechnungsadministrator“ auf Ihrem Azure Active Directory-Mandanten ist.
 
     ![Screenshot: Microsoft-Anmeldung](./media/azure-account-for-microsoft-365-subscription/13-office-365-sign-in.png)
-4. Klicken auf **Jetzt ausprobieren**.
+4. Klicken auf **Jetzt ausprobieren** .
 
     ![Screenshot: Bestätigung Ihrer Bestellung von Microsoft 365](./media/azure-account-for-microsoft-365-subscription/14-office-365-confirm-your-order.png)
-5. Klicken Sie auf der Bestellbestätigungsseite auf **Weiter**.
+5. Klicken Sie auf der Bestellbestätigungsseite auf **Weiter** .
 
     ![Screenshot: Microsoft 365-Bestellbestätigung](./media/azure-account-for-microsoft-365-subscription/15-office-365-order-receipt.png)
 
 Der Vorgang ist nun abgeschlossen. Wenn Sie das Microsoft 365-Abonnement für Ihre Organisation erstellt haben, führen Sie die folgenden Schritte aus, um zu überprüfen, ob die Azure AD-Benutzer jetzt Microsoft 365-Benutzer sind.
 
 1. Öffnen Sie das Microsoft 365 Admin Center.
-2. Erweitern Sie **BENUTZER**, und klicken Sie dann auf **Aktive Benutzer**.
+2. Erweitern Sie **BENUTZER** , und klicken Sie dann auf **Aktive Benutzer** .
 
     ![Screenshot der Benutzer im Microsoft 365 Admin Center](./media/azure-account-for-microsoft-365-subscription/16-microsoft-365-admin-center-users.png)
 
@@ -49,15 +49,15 @@ Nach der Registrierung wird das Microsoft 365-Abonnement der gleichen Azure Act
 
 ## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Überprüfen meiner Kontoberechtigungen in Azure AD
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **Alle Dienste**, und suchen Sie nach **Active Directory**.
+2. Klicken Sie auf **Alle Dienste** , und suchen Sie nach **Active Directory** .
 
     ![Screenshot von Active Directory im Azure-Portal](./media/azure-account-for-microsoft-365-subscription/billing-more-services-active-directory.png)
-3. Klicken Sie auf **Benutzer und Gruppen** > **Alle Benutzer**.
+3. Klicken Sie auf **Benutzer und Gruppen** > **Alle Benutzer** .
 4. Wählen Sie den Benutzernamen aus.
 
     ![Screenshot der Azure Active Directory-Benutzer](./media/azure-account-for-microsoft-365-subscription/billing-users-groups.png)
 
-5. Klicken Sie auf **Verzeichnisrolle**.
+5. Klicken Sie auf **Verzeichnisrolle** .
 
     ![Screenshot der Verzeichnisrolle im Azure-Portal](./media/azure-account-for-microsoft-365-subscription/billing-user-directory-role.png)
 6.  Um ein Microsoft 365-Abonnement für Benutzer in der vorhandenen Azure Active Directory-Instanz zu erstellen, ist die Rolle **Globaler Administrator** oder **Eingeschränkter Administrator** > **Rechnungsadministrator** erforderlich.

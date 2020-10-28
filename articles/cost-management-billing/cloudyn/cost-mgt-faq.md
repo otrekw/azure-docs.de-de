@@ -3,19 +3,19 @@ title: Häufig gestellte Fragen zu Cloudyn in Azure
 description: Hier erfahren Sie, wie Sie über das Cloudyn-Portal Fehler beheben, die bei der indirekten Enterprise-Einrichtung häufig auftreten, und finden Sie Antworten auf andere häufig gestellte Fragen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b78d9d7bf725e3d82c88360c822455de1301ef6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92a62de4223d2ec6d0441840b90fdce20c656d02
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688027"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546227"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 
@@ -27,7 +27,7 @@ In diesem Artikel werden einige häufige Fragen zu Cloudyn beantwortet. Wenn Sie
 
 Wenn Sie das Cloudyn-Portal zum ersten Mal verwenden, werden möglicherweise die folgenden Meldungen angezeigt, wenn Sie ein Benutzer von Enterprise Agreement oder Cloud Solution Provider (CSP) sind:
 
-- Im **Assistenten für die Einrichtung von Cloudyn**: „Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene.“
+- Im **Assistenten für die Einrichtung von Cloudyn** : „Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene.“
 - Im Enterprise Agreement-Portal: „Direct Enrollment – No“ (Direkte Registrierung – Nein)
 - Im Cloudyn-Portal: „No usage data was found for the last 30 days.“ Please contact your distributor to make sure markup was enabled for your Azure account“ (Für die letzten 30 Tage wurden keine Nutzungsdaten gefunden. Wenden Sie sich an Ihren Distributor, um sicherzustellen, dass für Ihr Azure-Konto Markup aktiviert wurde.)
 
@@ -37,7 +37,7 @@ Sie können die Probleme wie folgt beheben:
 
 1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Eine Anleitung hierzu finden Sie unter [Adding Your Azure EA (Hinzufügen Ihres Azure EA)](quick-register-ea.md#register-with-cloudyn) oder [How to Find Your EA Enrollment ID and API Key (Ermitteln Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels)](https://youtu.be/u_phLs_udig).
+2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn.
 
 Cloudyn kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend.
 
@@ -63,8 +63,8 @@ So aktivieren Sie ein Konto:
 
 1.    Klicken Sie im Cloudyn-Portal in der rechten oberen Ecke auf **Settings** (Einstellungen), und wählen Sie **Cloud Accounts** (Cloudkonten) aus.
 2.    Suchen Sie auf der Registerkarte „Microsoft Azure-Konten“ nach Konten, für die **deaktivierte** Abonnements vorliegen.
-3.    Klicken Sie rechts neben einem deaktivierten Konto auf das Symbol **Bearbeiten**, das wie ein Bleistift aussieht.
-4.    Die Mandanten-ID und die Kosten-ID werden automatisch ermittelt. Klicken Sie auf **Weiter**.
+3.    Klicken Sie rechts neben einem deaktivierten Konto auf das Symbol **Bearbeiten** , das wie ein Bleistift aussieht.
+4.    Die Mandanten-ID und die Kosten-ID werden automatisch ermittelt. Klicken Sie auf **Weiter** .
 5.    Sie werden zum Azure-Portal umgeleitet. Melden Sie sich beim Portal an, und autorisieren Sie für Cloudyn-Collector den Zugriff auf Ihre Azure-Daten.
 6.    Sie werden als Nächstes auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Es wird ein grünes Häkchen angezeigt.
 7.    Sollte für manche Abonnements kein grünes Häkchen angezeigt werden, bedeutet das, dass Sie nicht zum Erstellen einer Lese-App (Cloudyn-Collector) für das Abonnement berechtigt sind. Ein Benutzer mit höheren Berechtigungen für das Abonnement muss die Schritte 3 und 4 wiederholen.  
@@ -76,7 +76,7 @@ Nachdem Sie die vorherigen Schritte ausgeführt haben, können Sie innerhalb von
 
 Dies ist das häufigste Szenario, wie Benutzerkonten den Status *InitiallySuspended* erhalten.
 
-> Admin1 kann ein Microsoft Cloud Solution Provider oder Enterprise Agreement-Benutzer sein. Seine Organisation ist bereit, Cloudyn einzuführen.  Er registriert sich über das Azure-Portal und meldet sich im Cloudyn-Portal an. Da er den Cloudyn-Dienst registriert und sich im Cloudyn-Portal anmeldet, wird Admin1 zum *primären Administrator*. Admin1 erstellt keine Benutzerkonten. Mithilfe des Cloudyn-Portals erstellt er jedoch Azure-Konten und eine Entitätshierarchie. Admin1 informiert Admin2, einen Mandantenadministrator, dass er sich für Cloudyn registrieren und sich beim Cloudyn-Portal anmelden muss.
+> Admin1 kann ein Microsoft Cloud Solution Provider oder Enterprise Agreement-Benutzer sein. Seine Organisation ist bereit, Cloudyn einzuführen.  Er registriert sich über das Azure-Portal und meldet sich im Cloudyn-Portal an. Da er den Cloudyn-Dienst registriert und sich im Cloudyn-Portal anmeldet, wird Admin1 zum *primären Administrator* . Admin1 erstellt keine Benutzerkonten. Mithilfe des Cloudyn-Portals erstellt er jedoch Azure-Konten und eine Entitätshierarchie. Admin1 informiert Admin2, einen Mandantenadministrator, dass er sich für Cloudyn registrieren und sich beim Cloudyn-Portal anmelden muss.
 >
 > Admin2 registriert sich über das Azure-Portal. Wenn er jedoch versucht, sich beim Cloudyn-Portal anzumelden, wird eine Fehlermeldung zurückgegeben, die besagt, dass sein Konto **gesperrt** ist. Der primäre Administrator, Admin1, wird über die Kontosperrung benachrichtigt. Admin1 muss das Konto von Admin2 aktivieren und *Administratorzugriff auf die richtigen Entitäten* gewähren. Darüber hinaus ermöglicht er den Benutzerverwaltungszugriff und aktiviert das Benutzerkonto.
 
@@ -114,7 +114,7 @@ Zusätzliche Entitäten werden verwendet, um einem Cloudyn-Abonnement weitere En
 
 Für CSPs:
 
-Wählen Sie zum Hinzufügen von zusätzlichen CSP-Konten zu einer Entität beim Erstellen der neuen Entität anstelle von **Enterprise** die Option **MSP Access** (MSP-Zugriff). Wenn Ihr Konto als Enterprise Agreement registriert ist und Sie CSP-Anmeldeinformationen hinzufügen möchten, müssen Ihre Kontoeinstellungen ggf. vom Cloudyn-Support geändert werden. Wenn Sie über ein kostenpflichtiges Azure-Abonnement verfügen, können Sie im Azure-Portal eine neue Supportanforderung erstellen. Klicken Sie auf **Hilfe + Support** und dann auf **Neue Supportanforderung**.
+Wählen Sie zum Hinzufügen von zusätzlichen CSP-Konten zu einer Entität beim Erstellen der neuen Entität anstelle von **Enterprise** die Option **MSP Access** (MSP-Zugriff). Wenn Ihr Konto als Enterprise Agreement registriert ist und Sie CSP-Anmeldeinformationen hinzufügen möchten, müssen Ihre Kontoeinstellungen ggf. vom Cloudyn-Support geändert werden. Wenn Sie über ein kostenpflichtiges Azure-Abonnement verfügen, können Sie im Azure-Portal eine neue Supportanforderung erstellen. Klicken Sie auf **Hilfe + Support** und dann auf **Neue Supportanforderung** .
 
 ## <a name="currency-symbols-in-cloudyn-reports"></a>Währungssymbole in Cloudyn-Berichten
 
@@ -152,7 +152,7 @@ Eine Anleitung hierzu finden Sie unter [Configure indirect CSP access in Cloudyn
 
 ## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Was bewirkt, dass das Menüelement „Optimierer“ angezeigt wird?
 
-Nachdem Sie den Azure Resource Manager-Zugriff hinzugefügt haben und die Daten gesammelt werden, sehen Sie die Option **Optimierer**. Wie Sie Azure Resource Manager-Zugriff aktivieren, erfahren Sie unter [Wie aktiviere ich deaktivierte Konten mit Azure-Anmeldeinformationen?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+Nachdem Sie den Azure Resource Manager-Zugriff hinzugefügt haben und die Daten gesammelt werden, sehen Sie die Option **Optimierer** . Wie Sie Azure Resource Manager-Zugriff aktivieren, erfahren Sie unter [Wie aktiviere ich deaktivierte Konten mit Azure-Anmeldeinformationen?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
 ## <a name="is-cloudyn-agent-based"></a>Basiert Cloudyn auf Agents?
 

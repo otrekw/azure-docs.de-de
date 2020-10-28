@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944155"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545105"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verwenden von PHP zum Herstellen einer Verbindung mit und zum Abfragen von Daten in einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -34,7 +34,7 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 
 ### <a name="install-php"></a>Installieren von PHP
 
-Installieren Sie PHP auf Ihrem eigenen Server, oder erstellen Sie eine Azure-[Web-App](https://docs.microsoft.com/azure/app-service/overview), die PHP enthält.  Unter [Erstellen und Verwalten von Firewallregeln](./how-to-manage-firewall-portal.md) erfahren Sie, wie Sie Firewallregeln erstellen.
+Installieren Sie PHP auf Ihrem eigenen Server, oder erstellen Sie eine Azure-[Web-App](../../app-service/overview.md), die PHP enthält.  Unter [Erstellen und Verwalten von Firewallregeln](./how-to-manage-firewall-portal.md) erfahren Sie, wie Sie Firewallregeln erstellen.
 
 #### <a name="macos"></a>macOS
 
@@ -56,9 +56,9 @@ Installieren Sie PHP auf Ihrem eigenen Server, oder erstellen Sie eine Azure-[We
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure Database for MySQL Flexible Server-Instanz erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie im Azure-Portal im linken Menü **Alle Ressourcen** aus, und suchen Sie dann nach dem Server, den Sie erstellt haben (z.B. **mydemoserver**).
+2. Wählen Sie im Azure-Portal im linken Menü **Alle Ressourcen** aus, und suchen Sie dann nach dem Server, den Sie erstellt haben (z.B. **mydemoserver** ).
 3. Wählen Sie den Servernamen aus.
-4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
+4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators** . Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
  <!---:::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::--->
 
 ## <a name="connecting-to-flexible-server-using-tlsssl-in-php"></a>Herstellen einer Verbindung mit einer Flexible Server-Instanz mithilfe von TLS/SSL in PHP

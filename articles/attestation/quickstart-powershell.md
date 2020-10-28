@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6050dd43b91299cd776d1121d7398f46e95bc096
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316000"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678203"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Schnellstart: Einrichten von Azure Attestation mithilfe von Azure PowerShell
 
@@ -231,4 +231,4 @@ Weitere Informationen zu den Cmdlets und den zugehörigen Parametern finden Sie 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen und Signieren einer Nachweisrichtlinie](author-sign-policy.md)
-- [Erbringen eines Nachweises für eine SGX-Enclave mithilfe von Codebeispielen](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [Erbringen eines Nachweises für eine SGX-Enclave mithilfe von Codebeispielen](/samples/browse/?expanded=azure&terms=attestation)

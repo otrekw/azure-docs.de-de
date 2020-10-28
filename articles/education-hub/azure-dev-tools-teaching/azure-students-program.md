@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 7a3da6b31f17a8be41ed435ecaa200e1d4fe3c0a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9719aea3a16a07f8c4ccbd21ea53c8b8982aefd5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100926"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674978"
 ---
 # <a name="azure-for-students"></a>Azure for Students
 
@@ -29,4 +29,4 @@ Ausführliche Nutzungsbedingungen für Azure for Students finden Sie in den [Ang
 - [Hilfe bei Anmeldefehlern](troubleshoot-login.md)
 - [Software herunterladen (Azure for Students)](download-software.md)
 - [Azure for Students Starter: Übersicht](azure-students-starter-program.md)
-- [Microsoft Learn: eine kostenlose Onlinelernplattform](https://docs.microsoft.com/learn/)
+- [Microsoft Learn: eine kostenlose Onlinelernplattform](/learn/)

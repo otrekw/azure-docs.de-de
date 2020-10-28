@@ -5,7 +5,7 @@ description: In diesem Artikel erfahren Sie, wie Sie ein R-Skript mit Machine Le
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: python
 ms.topic: quickstart
 author: garyericson
@@ -14,12 +14,12 @@ ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a939c816cac44ed85802ecfa591564effc1ee73
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 62f1015bc945b5c01f719d7e96e6446c49ac8b8a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675156"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Schnellstart: Verwenden von R mit Machine Learning Services (Vorschauversion) in Azure SQL-Datenbank zum Abfragen einer Datenbank 
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung verwenden Sie R mit Machine Learning Services in
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Eine [Azure SQL-Datenbank](single-database-create-quickstart.md)
-- [Machine Learning Services](machine-learning-services-overview.md) mit aktiviertem R.
+- [Machine Learning Services](../managed-instance/machine-learning-services-overview.md) mit aktiviertem R.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
@@ -47,17 +47,17 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen** .
 
-3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für eine Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen für eine verwaltete Instanz in Azure SQL Managed Instance neben **Host**. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für eine Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen für eine verwaltete Instanz in Azure SQL Managed Instance neben **Host** . Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 ## <a name="create-code-to-query-your-database"></a>Erstellen von Code zum Abfragen der Datenbank
 
-1. Öffnen Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrer Datenbank her.
+1. Öffnen Sie **SQL Server Management Studio** , und stellen Sie eine Verbindung mit Ihrer Datenbank her.
 
    Wenn Sie Unterstützung beim Herstellen der Verbindung benötigen, nutzen Sie die Informationen in [Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen einer Verbindung mit einer Datenbank in Azure SQL-Datenbank und zum Abfragen der Datenbank](connect-query-ssms.md).
 
-1. Übergeben Sie das vollständige R-Skript an die gespeicherte Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+1. Übergeben Sie das vollständige R-Skript an die gespeicherte Prozedur [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
    Das Skript wird durch das `@script`-Argument übergeben. Das `@script`-Argument darf nur aus zulässigem R-Code bestehen.
    
@@ -76,12 +76,12 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-1. Führen Sie die gespeicherte Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) aus.
+1. Führen Sie die gespeicherte Prozedur [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) aus.
 
 1. Stellen Sie sicher, dass die obersten 20 Kategorie-/Produktzeilen im Fenster **Meldungen** zurückgegeben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Entwerfen Ihrer ersten Datenbank in Azure SQL-Datenbank](design-first-database-tutorial.md)
-- [Machine Learning Services (mit R) in Azure SQL-Datenbank](machine-learning-services-overview.md)
-- [Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)](r-script-create-quickstart.md)
+- [Machine Learning Services (mit R) in Azure SQL-Datenbank](../managed-instance/machine-learning-services-overview.md)
+- [Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context)

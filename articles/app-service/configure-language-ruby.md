@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie einen vordefinierten Ruby-Container für
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: c822dbdf9940db7b38d354fa32906c16977df0c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88083766"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743678"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurieren einer Linux-Ruby-App für Azure App Service
 
@@ -51,7 +51,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> Dies bedeutet, dass sich die in Ihrem Projekt konfigurierte Ruby-Version von der Version unterscheidet, die im ausgeführten Container installiert ist (im obigen Beispiel: `2.3.3`). Überprüfen Sie im obigen Beispiel sowohl *Gemfile* als auch *.ruby-version*. Vergewissern Sie sich, dass die Ruby-Version nicht festgelegt bzw. auf die Version festgelegt ist, die im ausgeführten Container installiert ist (im obigen Beispiel: `2.3.3`).
+> Dies bedeutet, dass sich die in Ihrem Projekt konfigurierte Ruby-Version von der Version unterscheidet, die im ausgeführten Container installiert ist (im obigen Beispiel: `2.3.3`). Überprüfen Sie im obigen Beispiel sowohl *Gemfile* als auch *.ruby-version* . Vergewissern Sie sich, dass die Ruby-Version nicht festgelegt bzw. auf die Version festgelegt ist, die im ausgeführten Container installiert ist (im obigen Beispiel: `2.3.3`).
 
 ## <a name="access-environment-variables"></a>Zugreifen auf Umgebungsvariablen
 
@@ -96,7 +96,7 @@ Standardmäßig wird der Rails-Server vom Ruby-Container in der folgenden Reihen
 
 1. Generieren Sie einen [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security)-Wert, falls er noch nicht vorhanden ist. Dieser Wert ist erforderlich, damit die App im Produktionsmodus ausgeführt werden kann.
 1. Legen Sie die Umgebungsvariable `RAILS_ENV` auf `production` fest.
-1. Löschen Sie alle *PID*-Dateien im Verzeichnis *tmp/pids*, die bei der vorherigen Ausführung eines Rails-Servers erstellt wurden.
+1. Löschen Sie alle *PID* -Dateien im Verzeichnis *tmp/pids* , die bei der vorherigen Ausführung eines Rails-Servers erstellt wurden.
 1. Überprüfen Sie, ob alle Abhängigkeiten installiert sind. Falls nicht, sollten Sie versuchen, Gems über das lokale Verzeichnis *vendor/cache* zu installieren.
 1. Führen Sie `rails server -e $RAILS_ENV` aus.
 
@@ -111,7 +111,7 @@ Sie können den Startvorgang auf folgende Weise anpassen:
 Der Rails-Server im Ruby-Container wird standardmäßig im Produktionsmodus ausgeführt, und [es wird vorausgesetzt, dass die Ressourcen vorkompiliert und von ihrem Webserver bereitgestellt werden](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Sie müssen zwei Schritte ausführen, um statische Ressourcen über den Rails-Server bereitzustellen:
 
 - **Vorkompilieren der Ressourcen** - [Führen Sie das Vorkompilieren der Ressourcen lokal durch](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation), und stellen Sie sie manuell bereit. Sie können die Verarbeitung aber auch der Bereitstellungs-Engine überlassen (siehe [Vorkompilieren von Ressourcen](#precompile-assets)).
-- **Aktivieren der Bereitstellung von statischen Dateien**: Legen Sie zum Bereitstellen von statischen Ressourcen aus dem Ruby-Container die [App-Einstellung `RAILS_SERVE_STATIC_FILES`](configure-common.md#configure-app-settings) auf `true` fest. Beispiel:
+- **Aktivieren der Bereitstellung von statischen Dateien** : Legen Sie zum Bereitstellen von statischen Ressourcen aus dem Ruby-Container die [App-Einstellung `RAILS_SERVE_STATIC_FILES`](configure-common.md#configure-app-settings) auf `true` fest. Beispiel:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true

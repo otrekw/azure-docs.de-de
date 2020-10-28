@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 30cf90f6020ecd4eb560ac0fe2886ff03c552d13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825574"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669722"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden Sie .NET und C# in Visual Studio, um eine Verbindung mit einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance herzustellen und die Datenbank abzufragen.
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,9 +53,9 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen** .
 
-3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für eine Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen (oder die IP-Adresse) für Azure SQL Managed Instance bzw. für SQL Server auf einem virtuellen Azure-Computer neben **Host**. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für eine Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen (oder die IP-Adresse) für Azure SQL Managed Instance bzw. für SQL Server auf einem virtuellen Azure-Computer neben **Host** . Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 > [!NOTE]
 > Verbindungsinformationen für SQL Server auf einem virtuellen Azure-Computer finden Sie unter [Herstellen einer Verbindung mit einer SQL Server-Instanz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
@@ -70,7 +70,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
    
 1. Wählen Sie **Projekt** >  **NuGet-Pakete verwalten** aus. 
    
-1. Wählen Sie in **NuGet-Paket-Manager** die Registerkarte **Durchsuchen** aus, suchen Sie nach **Microsoft.Data.SqlClient**, und wählen Sie die Option aus.
+1. Wählen Sie in **NuGet-Paket-Manager** die Registerkarte **Durchsuchen** aus, suchen Sie nach **Microsoft.Data.SqlClient** , und wählen Sie die Option aus.
    
 1. Wählen Sie auf der Seite **Microsoft.Data.SqlClient** die Option **Installieren** aus. 
    - Wählen Sie bei Aufforderung **OK** aus, um die Installation fortzusetzen. 
@@ -139,7 +139,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-1. Um die App auszuführen, wählen Sie **Debuggen** > **Debuggen starten**, oder wählen Sie **Start** in der Symbolleiste, oder drücken Sie **F5**.
+1. Um die App auszuführen, wählen Sie **Debuggen** > **Debuggen starten** , oder wählen Sie **Start** in der Symbolleiste, oder drücken Sie **F5** .
 1. Stellen Sie sicher, dass die obersten 20 Kategorie-/Produktzeilen aus Ihrer Datenbank zurückgegeben werden, und schließen Sie dann das Anwendungsfenster.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -147,11 +147,10 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 - Erfahren Sie, wie Sie unter Windows/Linux/macOS [unter Verwendung von .NET Core eine Verbindung mit einer Datenbank in Azure SQL-Datenbank herstellen und die Datenbank abfragen](connect-query-dotnet-core.md).  
 - Informieren Sie sich über [die ersten Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile](/dotnet/core/tutorials/using-with-xplat-cli).
 - Erfahren Sie, wie Sie [Ihre erste Datenbank in Azure SQL-Datenbank mithilfe von SSMS entwerfen](design-first-database-tutorial.md) oder wie Sie [Ihre erste Datenbank in Azure SQL-Datenbank mithilfe von .NET entwerfen](design-first-database-csharp-tutorial.md).
-- Weitere Informationen zu .NET finden Sie in der [.NET-Dokumentation](https://docs.microsoft.com/dotnet/).
+- Weitere Informationen zu .NET finden Sie in der [.NET-Dokumentation](/dotnet/).
 - Beispiel für eine Wiederholungslogik: [Herstellen resilienter Azure SQL-Verbindungen mit ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
-
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net

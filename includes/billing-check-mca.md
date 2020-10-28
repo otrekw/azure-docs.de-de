@@ -4,16 +4,16 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 70139f6dc051cc0aa6b6a65ab76f0f2db3b94a13
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4917bcd1ef0e20d4c8f00d4cedb4697fbccb09c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362768"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670445"
 ---
 Überprüfen Sie den Vertragstyp, um zu bestimmen, ob Sie Zugriff auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung haben.
  
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um zu überprüfen, ob Sie Zugriff auf ein Abrechnungskonto haben. Suchen Sie nach **Kostenverwaltung und Abrechnung**, und wählen Sie diese Option aus.
+1. Wechseln Sie zum Azure-Portal, um zu überprüfen, ob Sie Zugriff auf ein Abrechnungskonto haben. Suchen Sie nach **Kostenverwaltung und Abrechnung** , und wählen Sie diese Option aus.
 
    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-check-mca/billing-search-cost-management-billing.png)
  

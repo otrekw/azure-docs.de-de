@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1377743fbaefdb812f18768307421fdae637ed54
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292386"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637580"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Schnellstart: Erstellen einer Azure Data Factory mithilfe von PowerShell
 
@@ -115,8 +115,8 @@ Beachten Sie folgende Punkte:
 Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher und Computedienste mit der Data Factory zu verknüpfen. In dieser Schnellstartanleitung erstellen Sie einen mit Azure Storage verknüpften Dienst, der sowohl als Quellspeicher als auch als Senkenspeicher verwendet wird. Der verknüpfte Dienste enthält die Verbindungsinformationen, die der Data Factory-Dienst zur Laufzeit zur Verbindungsherstellung verwendet.
 
 >[!TIP]
->In dieser Schnellstartanleitung verwenden Sie *Kontoschlüssel* als Authentifizierungstyp für Ihren Datenspeicher, können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden (*SAS-URI*, *Dienstprinzipal* und *Verwaltete Identität*) auswählen. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties).
->Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault).
+>In dieser Schnellstartanleitung verwenden Sie *Kontoschlüssel* als Authentifizierungstyp für Ihren Datenspeicher, können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden ( *SAS-URI* , *Dienstprinzipal* und *Verwaltete Identität* ) auswählen. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](./connector-azure-blob-storage.md#linked-service-properties).
+>Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](./store-credentials-in-key-vault.md).
 
 1. Erstellen Sie im Ordner **C:\ADFv2QuickStartPSH** eine JSON-Datei mit dem Namen **AzureStorageLinkedService.jso** und dem unten angegebenen Inhalt: (Erstellen Sie den Ordner „ADFv2QuickStartPSH“, falls er nicht bereits vorhanden ist.)
 
@@ -136,15 +136,15 @@ Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher u
     }
     ```
 
-    Wählen Sie bei Verwendung des Editors im Dialogfeld **Speichern unter** für **Dateityp** die Option **Alle Dateien**. Andernfalls wird der Datei ggf. die Erweiterung `.txt` hinzugefügt. Beispiel: `AzureStorageLinkedService.json.txt`. Wenn Sie die Datei vor dem Öffnen im Editor im Datei-Explorer erstellen, wird die Erweiterung `.txt` ggf. nicht angezeigt, da die Option **Erweiterungen bei bekannten Dateitypen ausblenden** standardmäßig aktiviert ist. Entfernen Sie die Erweiterung `.txt`, bevor Sie mit dem nächsten Schritt fortfahren.
+    Wählen Sie bei Verwendung des Editors im Dialogfeld **Speichern unter** für **Dateityp** die Option **Alle Dateien** . Andernfalls wird der Datei ggf. die Erweiterung `.txt` hinzugefügt. Beispiel: `AzureStorageLinkedService.json.txt`. Wenn Sie die Datei vor dem Öffnen im Editor im Datei-Explorer erstellen, wird die Erweiterung `.txt` ggf. nicht angezeigt, da die Option **Erweiterungen bei bekannten Dateitypen ausblenden** standardmäßig aktiviert ist. Entfernen Sie die Erweiterung `.txt`, bevor Sie mit dem nächsten Schritt fortfahren.
 
-2. Wechseln Sie in **PowerShell** zum Ordner **ADFv2QuickStartPSH**.
+2. Wechseln Sie in **PowerShell** zum Ordner **ADFv2QuickStartPSH** .
 
     ```powershell
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Führen Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** aus, um den verknüpften Dienst zu erstellen: **AzureStorageLinkedService**.
+3. Führen Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** aus, um den verknüpften Dienst zu erstellen: **AzureStorageLinkedService** .
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -163,9 +163,9 @@ Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher u
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 
-In diesem Verfahren erstellen Sie zwei Datasets: **InputDataset** und **OutputDataset**. Diese Datasets sind vom Typ **Binär**. Sie verweisen auf den mit Azure Storage verknüpften Dienst, den Sie im vorherigen Abschnitt erstellt haben.
-Das Eingabedataset stellt die Quelldaten im Eingabeordner dar. In der Definition des Eingabedatasets geben Sie den Blobcontainer (**adftutorial**), den Ordner (**input**) und die Datei (**emp.txt**) mit den Quelldaten an.
-Das Ausgabedataset stellt die Daten dar, die zum Ziel kopiert werden. In der Definition des Ausgabedatasets geben Sie den Blobcontainer (**adftutorial**), den Ordner (**output**) und die Datei an, in die die Daten kopiert werden. 
+In diesem Verfahren erstellen Sie zwei Datasets: **InputDataset** und **OutputDataset** . Diese Datasets sind vom Typ **Binär** . Sie verweisen auf den mit Azure Storage verknüpften Dienst, den Sie im vorherigen Abschnitt erstellt haben.
+Das Eingabedataset stellt die Quelldaten im Eingabeordner dar. In der Definition des Eingabedatasets geben Sie den Blobcontainer ( **adftutorial** ), den Ordner ( **input** ) und die Datei ( **emp.txt** ) mit den Quelldaten an.
+Das Ausgabedataset stellt die Daten dar, die zum Ziel kopiert werden. In der Definition des Ausgabedatasets geben Sie den Blobcontainer ( **adftutorial** ), den Ordner ( **output** ) und die Datei an, in die die Daten kopiert werden. 
 1. Erstellen Sie im Ordner **C:\ADFv2QuickStartPSH** eine JSON-Datei mit dem Namen **InputDataset.json** und dem folgenden Inhalt:
 
     ```json

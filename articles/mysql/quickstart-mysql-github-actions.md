@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7b4620c739b2f94cb6b96743280cd1decbbb746e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326118"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541263"
 ---
 # <a name="use-github-actions-to-connect-to-azure-mysql"></a>Verwenden von GitHub Actions zum Herstellen einer Verbindung mit Azure MySQL
 
@@ -39,7 +39,7 @@ Die Datei besteht aus zwei Abschnitten:
 
 ## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
 
-Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) erstellen. Führen Sie diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** aus.
+Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) erstellen. Führen Sie diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** aus.
 
 Ersetzen Sie die Platzhalter `server-name` durch den Namen Ihres in Azure gehosteten MySQL-Servers. Ersetzen Sie `subscription-id` und `resource-group` durch die Abonnement-ID und die Ressourcengruppe, die mit Ihrem MySQL-Server verbunden sind.  
 
@@ -191,4 +191,4 @@ Wenn Ihre Azure MySQL-Datenbank und das Repository nicht mehr benötigt werden,
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zu Azure und zur GitHub-Integration](https://docs.microsoft.com/azure/developer/github/)
+> [Weitere Informationen zu Azure und zur GitHub-Integration](/azure/developer/github/)

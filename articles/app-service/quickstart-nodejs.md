@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985240"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633721"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Erstellen einer Node.js-Web-App in Azure
 
@@ -22,6 +22,7 @@ Beginnen Sie mit der Verwendung von Azure App Service, indem Sie lokal eine Node
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
 - [Node.js und npm](https://nodejs.org). Führen Sie den Befehl `node --version` aus, um sich zu vergewissern, dass Node.js installiert ist.
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Die [Azure App Service-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) für Visual Studio Code.
@@ -48,7 +49,7 @@ Beginnen Sie mit der Verwendung von Azure App Service, indem Sie lokal eine Node
     
 1. Navigieren Sie in Ihrem Browser zu `http://localhost:1337`. Im Browser sollte „Hello World!“ angezeigt werden.
 
-1. Drücken Sie im Terminal **STRG**+**C**, um den Server zu beenden.
+1. Drücken Sie im Terminal **STRG**+**C** , um den Server zu beenden.
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
@@ -67,7 +68,7 @@ In diesem Abschnitt wird Ihre Node.js-App mithilfe von VS Code und der Azure A
 
     ![Anmelden bei Azure](media/quickstart-nodejs/sign-in.png)
 
-1. Wählen Sie im **AZURE APP SERVICE-Explorer** von VS Code den blauen Aufwärtspfeil aus, um Ihre App in Azure bereitzustellen. (Der gleiche Befehl kann auch über die **Befehlspalette** (**STRG**+**UMSCHALT**+**P**) aufgerufen werden. Geben Sie hierzu „In Web-App bereitstellen“ ein, und wählen Sie den Befehl **Azure App Service: In Web-App bereitstellen** aus.)
+1. Wählen Sie im **AZURE APP SERVICE-Explorer** von VS Code den blauen Aufwärtspfeil aus, um Ihre App in Azure bereitzustellen. (Der gleiche Befehl kann auch über die **Befehlspalette** ( **STRG**+**UMSCHALT**+**P** ) aufgerufen werden. Geben Sie hierzu „In Web-App bereitstellen“ ein, und wählen Sie den Befehl **Azure App Service: In Web-App bereitstellen** aus.)
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Screenshot: Azure-App-Dienst in VS Code mit ausgewähltem blauem Pfeil":::
         
@@ -78,9 +79,9 @@ In diesem Abschnitt wird Ihre Node.js-App mithilfe von VS Code und der Azure A
     - Linux: Wählen Sie **Neue Web-App erstellen** aus.
     - Windows: Wählen Sie **Neue Web-App erstellen... Erweitert** aus.
 
-1. Geben Sie einen global eindeutigen Namen für Ihre Web-App ein, und drücken Sie die **EINGABETASTE**. Der Name muss innerhalb von Azure eindeutig sein und darf nur alphanumerische Zeichen („A–Z“, „a–z“ und „0–9“) und Bindestriche („-“) enthalten.
+1. Geben Sie einen global eindeutigen Namen für Ihre Web-App ein, und drücken Sie die **EINGABETASTE** . Der Name muss innerhalb von Azure eindeutig sein und darf nur alphanumerische Zeichen („A–Z“, „a–z“ und „0–9“) und Bindestriche („-“) enthalten.
 
-1. Wenn Linux Ihre Zielplattform ist, wählen Sie eine Node.js-Version aus, wenn Sie dazu aufgefordert werden. Eine **LTS**-Version wird empfohlen.
+1. Wenn Linux Ihre Zielplattform ist, wählen Sie eine Node.js-Version aus, wenn Sie dazu aufgefordert werden. Eine **LTS** -Version wird empfohlen.
 
 1. Wenn Sie Windows als Zielplattform verwenden, führen Sie die folgenden Zusatzschritte aus:
     1. Wählen Sie **Neue Ressourcengruppe erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein (beispielsweise `AppServiceQS-rg`).
@@ -101,7 +102,7 @@ In diesem Abschnitt wird Ihre Node.js-App mithilfe von VS Code und der Azure A
 
 1. Legen Sie bei einer Bereitstellung für Windows zunächst die Node.js-Versionsnummer für die Web-App fest:
 
-    1. Erweitern Sie in VS Code den Knoten für den neuen App-Dienst, klicken Sie mit der rechten Maustaste auf **Anwendungseinstellungen**, und wählen Sie anschließend **Neue Einstellung hinzufügen...** aus:
+    1. Erweitern Sie in VS Code den Knoten für den neuen App-Dienst, klicken Sie mit der rechten Maustaste auf **Anwendungseinstellungen** , und wählen Sie anschließend **Neue Einstellung hinzufügen...** aus:
 
         ![Hinzufügen eines Befehls für eine App-Einstellung](media/quickstart-nodejs/add-setting.png)
 
@@ -186,7 +187,7 @@ Sie müssen auch die [Azure App Service-Erweiterung](https://marketplace.visuals
 
 ### <a name="sign-in"></a>Anmelden
 
-Melden Sie sich bei Ihrem Azure-Konto an, sobald die Erweiterung installiert ist. Wählen Sie in der Aktivitätsleiste das Azure-Logo aus, um den **AZURE APP SERVICE**-Explorer anzuzeigen. Wählen Sie **Bei Azure anmelden...** aus, und befolgen Sie die Anweisungen.
+Melden Sie sich bei Ihrem Azure-Konto an, sobald die Erweiterung installiert ist. Wählen Sie in der Aktivitätsleiste das Azure-Logo aus, um den **AZURE APP SERVICE** -Explorer anzuzeigen. Wählen Sie **Bei Azure anmelden...** aus, und befolgen Sie die Anweisungen.
 
 ![Anmelden bei Azure](./media/quickstart-nodejs/sign-in.png)
 
@@ -205,7 +206,7 @@ Wenn sich das Problem durch Festlegen der Umgebungsvariable nicht beheben lässt
 
 Bevor Sie fortfahren, stellen Sie sicher, dass alle erforderlichen Komponenten installiert und konfiguriert sind.
 
-In VS Code sehen Sie Ihre Azure-E-Mail-Adresse in der Statusleiste und Ihr Abonnement im **AZURE APP SERVICE-Explorer**.
+In VS Code sehen Sie Ihre Azure-E-Mail-Adresse in der Statusleiste und Ihr Abonnement im **AZURE APP SERVICE-Explorer** .
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
@@ -282,7 +283,7 @@ Wählen Sie im **AZURE APP SERVICE-Explorer** den blauen, nach oben weisenden Pf
 
     :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Screenshot: Azure-App-Dienst in VS Code mit ausgewähltem blauem Pfeil":::
 
-1. Wenn die Bereitstellung startet, werden Sie aufgefordert, Ihren Arbeitsbereich zu aktualisieren, sodass spätere Bereitstellungen automatisch die gleiche App Service-Web-App als Ziel verwenden. Klicken Sie auf **Ja**, um sicherzustellen, dass Ihre Änderungen für die richtige App bereitgestellt werden.
+1. Wenn die Bereitstellung startet, werden Sie aufgefordert, Ihren Arbeitsbereich zu aktualisieren, sodass spätere Bereitstellungen automatisch die gleiche App Service-Web-App als Ziel verwenden. Klicken Sie auf **Ja** , um sicherzustellen, dass Ihre Änderungen für die richtige App bereitgestellt werden.
 
     :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Screenshot: Azure-App-Dienst in VS Code mit ausgewähltem blauem Pfeil":::
 
@@ -308,7 +309,7 @@ Sie können Änderungen an dieser App bereitstellen, indem Sie den gleichen Proz
 
 In diesem Abschnitt erfahren Sie, wie Sie die Protokolle der ausgeführten App Service-App anzeigen (bzw. verfolgen). Alle Aufrufe von `console.log` in der App werden in Visual Studio Code im Ausgabefenster angezeigt.
 
-Suchen Sie die App im **AZURE APP SERVICE-Explorer**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Streamingprotokolle anzeigen** aus.
+Suchen Sie die App im **AZURE APP SERVICE-Explorer** , klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Streamingprotokolle anzeigen** aus.
 
 Das VS Code-Ausgabefenster wird mit einer Verbindung mit dem Protokollstream geöffnet.
 

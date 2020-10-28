@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231232"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638243"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Vergleichen von Azure Data Factory mit Data Factory Version 1
 
@@ -28,8 +28,8 @@ In der folgenden Tabelle werden die Features von Data Factory mit den Features v
 
 | Funktion | Version 1 | Aktuelle Version | 
 | ------- | --------- | --------- | 
-| Datasets | Eine benannte Ansicht mit Daten, in der auf die Daten verwiesen wird, die Sie in Ihren Aktivitäten als Ein- und Ausgabe verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure Blob-Dataset gibt beispielsweise den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Aktivität die Daten lesen soll.<br/><br/>Mit **Verfügbarkeit** wird das Modell für die Aufteilung in Verarbeitungsfenster für das Dataset (beispielsweise stündlich, täglich usw.) definiert. | Die Datasets sind in der aktuellen Version identisch. Sie müssen aber keine **Verfügbarkeits**zeitpläne für die Datasets definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md#trigger-execution) und [Datasets](concepts-datasets-linked-services.md). | 
-| Verknüpfte Dienste | Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. | Verknüpfte Dienste haben sich im Vergleich zu Data Factory V1 nicht verändert, verfügen aber über eine neue **connectVia**-Eigenschaft für die Nutzung der Integration Runtime-Computeumgebung der aktuellen Version von Data Factory. Weitere Informationen finden Sie unter [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md) sowie unter [Eigenschaften des verknüpften Diensts für Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). |
+| Datasets | Eine benannte Ansicht mit Daten, in der auf die Daten verwiesen wird, die Sie in Ihren Aktivitäten als Ein- und Ausgabe verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure Blob-Dataset gibt beispielsweise den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Aktivität die Daten lesen soll.<br/><br/>Mit **Verfügbarkeit** wird das Modell für die Aufteilung in Verarbeitungsfenster für das Dataset (beispielsweise stündlich, täglich usw.) definiert. | Die Datasets sind in der aktuellen Version identisch. Sie müssen aber keine **Verfügbarkeits** zeitpläne für die Datasets definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md#trigger-execution) und [Datasets](concepts-datasets-linked-services.md). | 
+| Verknüpfte Dienste | Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. | Verknüpfte Dienste haben sich im Vergleich zu Data Factory V1 nicht verändert, verfügen aber über eine neue **connectVia** -Eigenschaft für die Nutzung der Integration Runtime-Computeumgebung der aktuellen Version von Data Factory. Weitere Informationen finden Sie unter [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md) sowie unter [Eigenschaften des verknüpften Diensts für Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). |
 | Pipelines | Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Zur Planung und Ausführung von Pipelines werden „startTime“, „endTime“ und „isPaused“ verwendet. | Bei Pipelines handelt es sich um Gruppen von Aktivitäten, die für Daten durchgeführt werden. Die Zeitplanung von Aktivitäten in der Pipeline wurde aber in neue Triggerressourcen unterteilt. Sie können sich Pipelines in der aktuellen Version von Data Factory eher als „Workfloweinheiten“ vorstellen, die Sie separat über Trigger planen. <br/><br/>Pipelines weisen in der aktuellen Version von Data Factory keine „Zeitfenster“ für die Ausführung auf. Die Konzepte startTime, endTime und isPaused aus Data Factory V1 sind in der aktuellen Version von Data Factory nicht mehr vorhanden. Weitere Informationen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md) und [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md). |
 | activities | Mit Aktivitäten werden Aktionen definiert, die Sie auf Ihre Daten in einer Pipeline anwenden. Aktivitäten für die Datenverschiebung (Kopieraktivität) und Datentransformation (z.B. Hive, Pig und MapReduce) werden unterstützt. | In der aktuellen Version von Data Factory sind Aktivitäten weiterhin definierte Aktionen in einer Pipeline. Die aktuelle Version von Data Factory führt neue [Ablaufsteuerungsaktivitäten](concepts-pipelines-activities.md#control-flow-activities) ein. Sie verwenden diese Aktivitäten in einer Ablaufsteuerung (für Schleifen und Verzweigungen). Aktivitäten für die Datenverschiebung und Datentransformation, die in V1 unterstützt wurden, werden auch in der aktuellen Version unterstützt. Sie können Transformationsaktivitäten definieren, ohne Datasets in der aktuellen Version zu verwenden. |
 | Hybriddatenverschiebung und Aktivitätsverteilung | Das [Datenverwaltungsgateway](v1/data-factory-data-management-gateway.md) wird nun als Integration Runtime bezeichnet und hat das Verschieben von Daten zwischen dem lokalen Standort und der Cloud unterstützt.| Das Datenverwaltungsgateway wird jetzt als selbstgehostete Integrationslaufzeit bezeichnet. Die Funktionen sind die gleichen wie in V1. <br/><br/> Die Azure-SSIS-Integration Runtime in der aktuellen Version unterstützt auch das Bereitstellen und Ausführen von SSIS-Paketen (SQL Server Integration Services) in der Cloud. Weitere Informationen finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).|
@@ -46,7 +46,7 @@ Die folgenden Abschnitte enthalten weitere Informationen zu den Funktionen der a
 Zur Unterstützung der Integration von vielfältigen Integrationsabläufen und -mustern eines modernen Data Warehouse ermöglicht die aktuelle Version von Data Factory ein neues flexibles Datenpipelinemodell, das nicht mehr an Zeitreihendaten gebunden ist. Einige allgemeine Abläufe, die bislang nicht möglich waren, sind nun möglich. Sie werden in den folgenden Abschnitten beschrieben.   
 
 ### <a name="chaining-activities"></a>Verketten von Aktivitäten
-In V1 mussten Sie die Ausgabe einer Aktivität als Eingabe einer anderen Aktivität konfigurieren, um sie zu verketten. In der aktuellen Version können Sie Aktivitäten in einer Sequenz innerhalb einer Pipeline verketten. Sie können die **dependsOn**-Eigenschaft in einer Aktivitätsdefinition verwenden, um eine Verkettung mit einer Upstream-Aktivität herzustellen. Weitere Informationen und ein Beispiel finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md#multiple-activities-in-a-pipeline) sowie unter [Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline](tutorial-control-flow.md). 
+In V1 mussten Sie die Ausgabe einer Aktivität als Eingabe einer anderen Aktivität konfigurieren, um sie zu verketten. In der aktuellen Version können Sie Aktivitäten in einer Sequenz innerhalb einer Pipeline verketten. Sie können die **dependsOn** -Eigenschaft in einer Aktivitätsdefinition verwenden, um eine Verkettung mit einer Upstream-Aktivität herzustellen. Weitere Informationen und ein Beispiel finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md#multiple-activities-in-a-pipeline) sowie unter [Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline](tutorial-control-flow.md). 
 
 ### <a name="branching-activities"></a>Verzweigen von Aktivitäten
 In der aktuellen Version können Sie Aktivitäten in einer Pipeline verzweigen. Die [Aktivität „If Condition“](control-flow-if-condition-activity.md) bietet die gleiche Funktionalität wie eine `if`-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. Beispiele für das Verzweigen von Aktivitäten finden Sie im Tutorial [Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline](tutorial-control-flow.md).
@@ -87,7 +87,7 @@ Verwenden Sie Azure-SSIS, wenn Sie Ihre SSIS-Workloads in die Cloud verschieben,
 
 Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (Knoten), die speziell für die Ausführung von SSIS-Paketen in der Cloud bestimmt sind. Nach dem Bereitstellen einer Azure-SSIS-Integrationslaufzeit können Sie die gleichen Tools verwenden, die Sie auch zum Bereitstellen von SSIS-Paketen in einer lokalen SSIS-Umgebung verwenden. 
 
-So können Sie beispielsweise SQL Server Data Tools oder SQL Server Management Studio verwenden, um SSIS-Pakete für diese Runtime in Azure bereitzustellen. Eine Schritt-für-Schritt-Anleitung finden Sie im Tutorial [Bereitstellen von SQL Server Integration Services-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md). 
+So können Sie beispielsweise SQL Server Data Tools oder SQL Server Management Studio verwenden, um SSIS-Pakete für diese Runtime in Azure bereitzustellen. Eine Schritt-für-Schritt-Anleitung finden Sie im Tutorial [Bereitstellen von SQL Server Integration Services-Paketen in Azure](./tutorial-deploy-ssis-packages-azure.md). 
 
 ## <a name="flexible-scheduling"></a>Flexible Zeitplanung
 In der aktuellen Version der Data Factory müssen Sie keine Zeitpläne für die Datasetverfügbarkeit definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Sie können auch Parameter über einen Trigger an Pipelines übergeben, um ein flexibles Modell für die Zeitplanung und Ausführung zu erhalten. 
@@ -118,13 +118,13 @@ Weitere Informationen finden Sie unter [Vergleich: Benutzerdefinierte V2-Aktivit
 ## <a name="sdks"></a>SDKs
  Die aktuelle Version von Data Factory verfügt über einen umfassenderen SDK-Satz, der zum Erstellen, Verwalten und Überwachen von Pipelines verwendet werden kann.
 
-- **.NET-SDK**: Das .NET SDK wurde in der aktuellen Version aktualisiert.
+- **.NET-SDK** : Das .NET SDK wurde in der aktuellen Version aktualisiert.
 
-- **PowerShell**: Die PowerShell-Cmdlets wurden in der aktuellen Version aktualisiert. Die Cmdlets für die aktuelle Version enthalten **DataFactoryV2** im Namen, z.B. Get-AzDataFactoryV2. 
+- **PowerShell** : Die PowerShell-Cmdlets wurden in der aktuellen Version aktualisiert. Die Cmdlets für die aktuelle Version enthalten **DataFactoryV2** im Namen, z.B. Get-AzDataFactoryV2. 
 
-- **Python SDK**: Dieses SDK ist in der aktuellen Version neu.
+- **Python SDK** : Dieses SDK ist in der aktuellen Version neu.
 
-- **REST-API**: Die REST-API wurde in der aktuellen Version aktualisiert. 
+- **REST-API** : Die REST-API wurde in der aktuellen Version aktualisiert. 
 
 Die für die aktuelle Version aktualisierten SDKs sind nicht mit V1-Clients abwärtskompatibel. 
 
@@ -133,11 +133,11 @@ Die für die aktuelle Version aktualisierten SDKs sind nicht mit V1-Clients abw�
 | | Version 2 | Version 1 |
 | ------ | -- | -- | 
 | **Azure portal** | [Ja](quickstart-create-data-factory-portal.md) | Nein |
-| **Azure PowerShell** | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
-| **.NET SDK** | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
-| **REST-API** | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Azure PowerShell** | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST-API** | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
 | **Python SDK** | [Ja](quickstart-create-data-factory-python.md) | Nein |
-| **Resource Manager: Vorlage** | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Resource Manager: Vorlage** | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
 
@@ -148,4 +148,4 @@ In der aktuellen Version können Sie Data Factorys auch unterstützen, indem Sie
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ausführliche Informationen zum Erstellen einer Data Factory finden Sie in den folgenden Schnellstartanleitungen: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST-API](quickstart-create-data-factory-rest-api.md). 
+Ausführliche Informationen zum Erstellen einer Data Factory finden Sie in den folgenden Schnellstartanleitungen: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST-API](quickstart-create-data-factory-rest-api.md).

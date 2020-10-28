@@ -3,19 +3,19 @@ title: Aktivieren von Azure-Abonnements und -Konten
 description: Erfahren Sie, wie Sie den Zugriff mithilfe von Azure Resource Manager-APIs für neue und vorhandene Konten aktivieren und häufige Probleme im Zusammenhang mit Konten beheben.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b1b7ea7467be107bd1af9daf0869c77ff0b94c70
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131427"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537343"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivieren von Azure-Abonnements und -Konten mit Cloudyn
 
@@ -41,7 +41,7 @@ Wenn Ihr Konto der Rolle **Mitwirkender** zugewiesen ist, verfügen Sie nicht ü
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
 3. Wählen Sie in Azure Active Directory die Option **Benutzereinstellungen** aus.
-4. Überprüfen Sie die Option **App-Registrierungen**.
+4. Überprüfen Sie die Option **App-Registrierungen** .
     - Wenn die Option auf **Ja** festgelegt ist, können Nicht-Administratoren AD-Apps registrieren. Diese Einstellung bedeutet, dass jeder Benutzer im Azure AD-Mandanten Apps registrieren kann.  
     ![Auswählen von App-Registrierungen in den Benutzereinstellungen](./media/activate-subs-accounts/app-register.png)
     - Wenn die Option **App-Registrierungen** auf **Nein** festgelegt ist, können nur Mandantenadministratoren Azure Active Directory-Apps registrieren. Ihr Mandantenadministrator muss die CloudynCollector-Anwendung registrieren.
@@ -54,12 +54,12 @@ Wenn Sie ein Konto hinzufügen oder ein Abonnement aktualisieren, gewähren Sie 
 ### <a name="add-a-new-account-subscription"></a>Hinzufügen eines neuen Kontos (Abonnements)
 
 1. Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Cloud Accounts** (Cloudkonten) aus.
-2. Klicken Sie auf **Neues Konto hinzufügen**. Das Feld **Neues Konto hinzufügen** wird angezeigt. Geben Sie die erforderlichen Informationen ein.  
+2. Klicken Sie auf **Neues Konto hinzufügen** . Das Feld **Neues Konto hinzufügen** wird angezeigt. Geben Sie die erforderlichen Informationen ein.  
     ![Eingeben der erforderlichen Informationen in das Feld „Neues Konto hinzufügen“](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualisieren eines Abonnements
 
-1. Wenn Sie ein _nicht aktiviertes_ Abonnement aktualisieren möchten, das bereits in der Kontoverwaltung von Cloudyn vorhanden ist, klicken Sie zum Bearbeiten auf das Stiftsymbol rechts neben der übergeordneten _Mandanten-GUID_. Abonnements werden unter einem übergeordneten Mandanten zusammengefasst, aktivieren Sie Abonnements daher nicht einzeln.
+1. Wenn Sie ein _nicht aktiviertes_ Abonnement aktualisieren möchten, das bereits in der Kontoverwaltung von Cloudyn vorhanden ist, klicken Sie zum Bearbeiten auf das Stiftsymbol rechts neben der übergeordneten _Mandanten-GUID_ . Abonnements werden unter einem übergeordneten Mandanten zusammengefasst, aktivieren Sie Abonnements daher nicht einzeln.
     ![Auswählen Ihrer Mandanten-ID im Feld für die erneute Abonnementermittlung](./media/activate-subs-accounts/existing-sub.png)
 2. Geben Sie, falls erforderlich, die Mandanten-ID ein. Wenn Sie Ihre Mandanten-ID nicht kennen, führen Sie die folgenden Schritte aus, um sie nachzusehen:
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -68,12 +68,12 @@ Wenn Sie ein Konto hinzufügen oder ein Abonnement aktualisieren, gewähren Sie 
     4. Kopieren Sie die „Verzeichnis-ID“. Dieser Wert ist Ihre Mandanten-ID.
     Weitere Informationen finden Sie unter [Abrufen der Mandanten-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 3. Wählen Sie ggf. Ihre Abrechnungs-ID aus. Wenn Sie Ihre Abrechnungs-ID nicht kennen, führen Sie die folgenden Schritte aus, um sie nachzusehen.
-    1. Klicken Sie oben rechts im Azure-Portal auf Ihre Benutzerinformationen und anschließend auf **Meine Rechnung anzeigen**.
-    2. Klicken Sie unter **Abrechnungskonto** auf **Abonnements**.
+    1. Klicken Sie oben rechts im Azure-Portal auf Ihre Benutzerinformationen und anschließend auf **Meine Rechnung anzeigen** .
+    2. Klicken Sie unter **Abrechnungskonto** auf **Abonnements** .
     3. Wählen Sie unter **Meine Abonnements** das gewünschte Abonnement aus.
     4. Ihre Abrechnungs-ID wird unter **Angebots-ID** angezeigt. Kopieren Sie die Angebots-ID für das Abonnement.
-4. Klicken Sie in „Neues Konto hinzufügen“ (oder „Abonnement bearbeiten“) auf **Speichern** (oder **Weiter**). Sie werden zum Azure-Portal umgeleitet.
-5. Melden Sie sich beim Portal an. Klicken Sie auf **Akzeptieren**, um Cloudyn Collector Zugriff auf Ihr Azure-Konto zu gewähren.
+4. Klicken Sie in „Neues Konto hinzufügen“ (oder „Abonnement bearbeiten“) auf **Speichern** (oder **Weiter** ). Sie werden zum Azure-Portal umgeleitet.
+5. Melden Sie sich beim Portal an. Klicken Sie auf **Akzeptieren** , um Cloudyn Collector Zugriff auf Ihr Azure-Konto zu gewähren.
 
     Sie werden auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Unter der Resource Manager-Spalte sollte ein grünes Häkchen angezeigt werden.
 
@@ -87,8 +87,8 @@ Sehen Sie sich das Video [Connecting to Azure Resource Manager with Cloudyn](htt
 
 Wenn Sie das Cloudyn-Portal zum ersten Mal verwenden, werden möglicherweise die folgenden Meldungen angezeigt, wenn Sie ein Benutzer von Enterprise Agreement oder Cloud Solution Provider (CSP) sind:
 
-- Im *Assistenten für die Einrichtung von Cloudyn*: **Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene**.
-- Im Enterprise Agreement-Portal: *Direkte Registrierung – Nein*.
+- Im *Assistenten für die Einrichtung von Cloudyn* : **Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene** .
+- Im Enterprise Agreement-Portal: *Direkte Registrierung – Nein* .
 - Im Cloudyn-Portal: *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* (Für die letzten 30 Tage wurden keine Nutzungsdaten gefunden. Wenden Sie sich an Ihren Distributor, um sicherzustellen, dass für Ihr Azure-Konto Markup aktiviert wurde.).
 
 Mit den obigen Fehlermeldungen wird angegeben, dass Sie über einen Handelspartner oder CSP ein Azure Enterprise Agreement (EA) erworben haben. Ihr Handelspartner oder CSP muss _Markup_ für Ihr Azure-Konto aktivieren, damit Sie Ihre Daten in Cloudyn anzeigen können.
@@ -96,7 +96,7 @@ Mit den obigen Fehlermeldungen wird angegeben, dass Sie über einen Handelspartn
 Sie können die Probleme wie folgt beheben:
 
 1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](./quick-register-ea.md).
+2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn.
 
 Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure EA-API-Schlüssel für die Einrichtung von Cloudyn generieren können. Befolgen Sie hierfür diese Anleitungen:
 
@@ -105,7 +105,7 @@ Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure EA-API-Sch
 
 Unter Umständen müssen Sie auch Abteilungsadministratoren, Kontobesitzern und Unternehmensadministratoren Berechtigungen zum _Anzeigen von Gebühren_ per Abrechnungs-API gewähren.
 
-Cloudyn kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend. Sie können die Administratoranforderung jedoch umgehen. Sie können anfordern, dass der Azure Active Directory-Administrator die Berechtigung zum Autorisieren von **CloudynAzureCollector** mit einem PowerShell-Skript gewährt. Das folgende Skript gewährt die Berechtigung zum Registrieren des Azure Active Directory-Dienstprinzipals **CloudynAzureCollector**.
+Cloudyn kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend. Sie können die Administratoranforderung jedoch umgehen. Sie können anfordern, dass der Azure Active Directory-Administrator die Berechtigung zum Autorisieren von **CloudynAzureCollector** mit einem PowerShell-Skript gewährt. Das folgende Skript gewährt die Berechtigung zum Registrieren des Azure Active Directory-Dienstprinzipals **CloudynAzureCollector** .
 
 
 ```powershell

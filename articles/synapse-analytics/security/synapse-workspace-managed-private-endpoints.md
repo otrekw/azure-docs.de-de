@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249501"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738090"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Verwaltete private Endpunkte in Synapse (Vorschau)
 
@@ -52,6 +52,7 @@ Bei der Erstellung eines Arbeitsbereichs erstellt Azure Synapse zwei verwaltete
 Diese beiden verwalteten privaten Endpunkte werden in Azure Synapse Studio aufgeführt. Wählen Sie für die Anzeige in Studio im linken Navigationsbereich **Verwalten** und anschließend **Verwaltete virtuelle Netzwerke** aus.
 
 Der verwaltete private Endpunkt für den SQL-Pool heißt *synapse-ws-sql--\<workspacename\>* und der für SQL On-Demand *synapse-ws-sqlOnDemand--\<workspacename\>* .
+
 ![Verwaltete private Endpunkte für einen SQL-Pool und SQL On-Demand](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Diese beiden verwalteten privaten Endpunkte werden automatisch für Sie erstellt, wenn Sie Ihren Azure Synapse-Arbeitsbereich erstellen. Diese Endpunkte werden Ihnen nicht in Rechnung gestellt.

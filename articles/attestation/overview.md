@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90032995"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670528"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Vorschau)
 
@@ -73,7 +73,7 @@ Azure Attestation ist die bevorzugte Wahl für den Nachweis von TEEs, da es die 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Unterstützung für Business Continuity & Disaster Recovery (BCDR)
 
-[Business Continuity & Disaster Recovery](/azure/best-practices-availability-paired-regions) (BCDR) für Azure Attestation ermöglicht das Verringern von Dienstunterbrechungen, die durch erhebliche Verfügbarkeitsproblemen oder Notfallereignisse in einer Region entstehen.
+[Business Continuity & Disaster Recovery](../best-practices-availability-paired-regions.md) (BCDR) für Azure Attestation ermöglicht das Verringern von Dienstunterbrechungen, die durch erhebliche Verfügbarkeitsproblemen oder Notfallereignisse in einer Region entstehen.
 
 Im Folgenden sind die Regionen aufgeführt, die von BCDR unterstützt werden:
 - USA, Osten 2 = > in Kombination mit USA, Mitte
@@ -91,4 +91,3 @@ Cluster, die in zwei Regionen bereitgestellt werden, werden unter normalen Umst�
 - Erfahren Sie mehr über [grundlegende Konzepte von Azure Attestation](basic-concepts.md).
 - [Erstellen und Signieren einer Nachweisrichtlinie](author-sign-policy.md)
 - [Einrichten von Azure Attestation mithilfe von PowerShell](quickstart-powershell.md)
-

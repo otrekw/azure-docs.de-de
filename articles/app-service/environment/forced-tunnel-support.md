@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830858"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540974"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, um das Routing für den gesamten ausgehe
 
 2. Aktivieren Sie Dienstendpunkte mit Azure SQL und Azure Storage mit Ihrem ASE-Subnetz.  Nach diesem Schritt können Sie Ihr VNet mit erzwungenem Tunneling konfigurieren.
 
-Wenn Sie Ihre ASE in einem virtuellen Netzwerk erstellen möchten, das bereits für die lokale Weiterleitung sämtlichen Datenverkehrs konfiguriert ist, müssen Sie Ihre ASE unter Verwendung einer Resource Manager-Vorlage erstellen.  Über das Portal kann keine ASE in einem vorhandenen Subnetz erstellt werden.  Wenn Sie Ihre ASE in einem VNet bereitstellen, das bereits für die lokale Weiterleitung ausgehenden Datenverkehrs konfiguriert ist, müssen Sie Ihre ASE unter Verwendung einer Resource Manager-Vorlage erstellen. Hierbei können Sie dann ein bereits vorhandenes Subnetz angeben. Ausführliche Informationen zum Bereitstellen einer ASE mit einer Vorlage finden Sie unter [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage][template].
+Ausführliche Informationen zum Bereitstellen einer ASE mit einer Vorlage finden Sie unter [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage][template].
 
 Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation zu [VNET-Dienstendpunkten][serviceendpoints]. 
 
@@ -101,9 +101,9 @@ Führen Sie die folgenden Schritte aus, um das Tunneling für den gesamten ausge
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
     ```
 
-   Klicken Sie oben auf **PUT**. Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
+   Klicken Sie oben auf **PUT** . Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
 
-_So erstellen Sie Ihre ASE mit den Ausgangsadressen_: Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
+_So erstellen Sie Ihre ASE mit den Ausgangsadressen_ : Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
 
 ```json
 "resources": [

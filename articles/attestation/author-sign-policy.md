@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006818"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675981"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>Erstellen und Signieren einer Nachweisrichtlinie
 
@@ -36,7 +36,7 @@ issuancerules
  
 Eine Richtliniendatei enthält drei Segmente, wie oben gezeigt:
 
-- **version**:  Die Version ist die Versionsnummer der befolgten Grammatik. 
+- **version** :  Die Version ist die Versionsnummer der befolgten Grammatik. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ Eine Richtliniendatei enthält drei Segmente, wie oben gezeigt:
 
     Die einzige derzeit unterstützte Version lautet „1.0“.
 
-- **authorizationrules**: Eine Sammlung von Anspruchsregeln, die zuerst geprüft werden, um zu bestimmen, ob Azure Attestation mit **issuancerules** fortfahren soll. Die Anspruchsregeln werden in der Reihenfolge angewendet, in der sie definiert wurden.
+- **authorizationrules** : Eine Sammlung von Anspruchsregeln, die zuerst geprüft werden, um zu bestimmen, ob Azure Attestation mit **issuancerules** fortfahren soll. Die Anspruchsregeln werden in der Reihenfolge angewendet, in der sie definiert wurden.
 
-- **issuancerules**: Eine Sammlung von Anspruchsregeln, die ausgewertet werden, um dem Nachweisergebnis gemäß der Definition in der Richtlinie weitere Informationen hinzuzufügen. Die Anspruchsregeln werden in der Reihenfolge angewendet, in der sie definiert wurden, und sind ebenfalls optional.
+- **issuancerules** : Eine Sammlung von Anspruchsregeln, die ausgewertet werden, um dem Nachweisergebnis gemäß der Definition in der Richtlinie weitere Informationen hinzuzufügen. Die Anspruchsregeln werden in der Reihenfolge angewendet, in der sie definiert wurden, und sind ebenfalls optional.
 
 Weitere Informationen finden Sie unter [Anspruch und Anspruchsregeln](claim-rule-grammar.md).
    
@@ -129,7 +129,7 @@ Führen Sie nach der Erstellung einer Richtliniendatei die folgenden Schritte au
 
 2. (Optional) Signieren Sie die Richtlinie. Azure Attestation unterstützt die folgenden Algorithmen:
      - **Keine:** Signieren Sie die Richtliniennutzlast nicht.
-     - **RS256**: Unterstützter Algorithmus zum Signieren der Richtliniennutzlast
+     - **RS256** : Unterstützter Algorithmus zum Signieren der Richtliniennutzlast
 
 3. Laden Sie die JWS-Datei hoch, und überprüfen Sie die Richtlinie.
      - Enthält die Richtliniendatei keine Syntaxfehler, wird sie vom Dienst akzeptiert.
@@ -172,4 +172,4 @@ print(encoded.decode('utf-8'))
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten von Azure Attestation mithilfe von PowerShell](quickstart-powershell.md)
-- [Erbringen eines Nachweises für eine SGX-Enclave mithilfe von Codebeispielen](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [Erbringen eines Nachweises für eine SGX-Enclave mithilfe von Codebeispielen](/samples/browse/?expanded=azure&terms=attestation)

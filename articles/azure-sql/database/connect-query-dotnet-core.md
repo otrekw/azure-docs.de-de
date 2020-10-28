@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936400"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669731"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Abfragen einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance mithilfe von .NET Core (C#)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88936400"
 In dieser Schnellstartanleitung verwenden Sie [.NET Core](https://www.microsoft.com/net/) und C#-Code, um eine Verbindung mit einer Datenbank herzustellen. Anschließend führen Sie eine Transact-SQL-Anweisung zum Abfragen von Daten aus.
 
 > [!TIP]
-> Im folgenden kostenlosen Microsoft Learn-Modul lernen Sie, wie Sie eine [ASP.NET-Anwendung entwickeln und konfigurieren, die eine Datenbank in Azure SQL-Datenbank abfragt](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/).
+> Im folgenden kostenlosen Microsoft Learn-Modul lernen Sie, wie Sie eine [ASP.NET-Anwendung entwickeln und konfigurieren, die eine Datenbank in Azure SQL-Datenbank abfragt](/learn/modules/develop-app-that-queries-azure-sql/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 - [.NET Core für Ihr Betriebssystem](https://www.microsoft.com/net/core) ist installiert.
 
 > [!NOTE]
-> Dieser Schnellstart verwendet die *mySampleDatabase*-Datenbank. Wenn Sie eine andere Datenbank verwenden möchten, müssen Sie die Datenbankverweise ändern und die `SELECT`-Abfrage im C# Code ändern.
+> Dieser Schnellstart verwendet die *mySampleDatabase* -Datenbank. Wenn Sie eine andere Datenbank verwenden möchten, müssen Sie die Datenbankverweise ändern und die `SELECT`-Abfrage im C# Code ändern.
 
 ## <a name="get-server-connection-information"></a>Ermitteln von Serververbindungsinformationen
 
@@ -59,34 +59,34 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen** .
 
-3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für die Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen (oder die IP-Adresse) für Azure SQL Managed Instance bzw. für SQL Server auf einem virtuellen Azure-Computer neben **Host**. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für die Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen (oder die IP-Adresse) für Azure SQL Managed Instance bzw. für SQL Server auf einem virtuellen Azure-Computer neben **Host** . Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 > [!NOTE]
 > Verbindungsinformationen für SQL Server auf einem virtuellen Azure-Computer finden Sie unter [Herstellen einer Verbindung mit einer SQL Server-Instanz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
 
 ## <a name="get-adonet-connection-information-optional---sql-database-only"></a>Ermitteln von ADO.NET-Verbindungsinformationen (optional – nur SQL-Datenbank)
 
-1. Navigieren Sie zur Seite **mySampleDatabase**, und wählen Sie unter **Einstellungen** die Option **Verbindungszeichenfolgen**.
+1. Navigieren Sie zur Seite **mySampleDatabase** , und wählen Sie unter **Einstellungen** die Option **Verbindungszeichenfolgen** .
 
-2. Überprüfen Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+2. Überprüfen Sie die vollständige **ADO.NET** -Verbindungszeichenfolge.
 
     ![ADO.NET-Verbindungszeichenfolge](./media/connect-query-dotnet-core/adonet-connection-string2.png)
 
-3. Kopieren Sie die **ADO.NET**-Verbindungszeichenfolge, wenn Sie sie verwenden möchten.
+3. Kopieren Sie die **ADO.NET** -Verbindungszeichenfolge, wenn Sie sie verwenden möchten.
   
 ## <a name="create-a-new-net-core-project"></a>Erstellen eines neuen .NET Core-Projekts
 
-1. Öffnen Sie eine Eingabeaufforderung, und erstellen Sie einen Ordner namens **sqltest**. Navigieren Sie zu diesem Ordner, und führen Sie den folgenden Befehl aus:
+1. Öffnen Sie eine Eingabeaufforderung, und erstellen Sie einen Ordner namens **sqltest** . Navigieren Sie zu diesem Ordner, und führen Sie den folgenden Befehl aus:
 
     ```cmd
     dotnet new console
     ```
 
-    Mit diesem Befehl werden neue App-Projektdateien erstellt, darunter eine erste C#-Codedatei (**Program.cs**), eine XML-Konfigurationsdatei (**sqltest.csproj**) und erforderliche Binärdateien.
+    Mit diesem Befehl werden neue App-Projektdateien erstellt, darunter eine erste C#-Codedatei ( **Program.cs** ), eine XML-Konfigurationsdatei ( **sqltest.csproj** ) und erforderliche Binärdateien.
 
-2. Öffnen Sie in einem Editor **sqltest.csproj**, und fügen Sie den nachstehenden XML-Code zwischen den `<Project>`-Tags ein. Mit diesem XML wird `System.Data.SqlClient` als Abhängigkeit hinzugefügt.
+2. Öffnen Sie in einem Editor **sqltest.csproj** , und fügen Sie den nachstehenden XML-Code zwischen den `<Project>`-Tags ein. Mit diesem XML wird `System.Data.SqlClient` als Abhängigkeit hinzugefügt.
 
     ```xml
     <ItemGroup>
@@ -96,7 +96,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 ## <a name="insert-code-to-query-the-database-in-azure-sql-database"></a>Einfügen von Code zum Abfragen der Datenbank in Azure SQL-Datenbank
 
-1. Öffnen Sie in einem Editor die Datei **Program.cs**.
+1. Öffnen Sie in einem Editor die Datei **Program.cs** .
 
 2. Ersetzen Sie den Inhalt durch den folgenden Code, und fügen Sie die entsprechenden Werte für Server, Datenbank, Benutzername und Kennwort hinzu.
 
@@ -200,11 +200,11 @@ namespace sqltest
    Done. Press enter.
    ```
 
-3. Drücken Sie die **EINGABETASTE**, um das Anwendungsfenster zu schließen.
+3. Drücken Sie die **EINGABETASTE** , um das Anwendungsfenster zu schließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Getting started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli) (Erste Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile)
 - Erfahren Sie, wie Sie [unter Verwendung von .NET Framework und Visual Studio eine Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance herstellen und diese abfragen](connect-query-dotnet-visual-studio.md).  
 - Erfahren Sie, wie Sie [Ihre erste Datenbank mithilfe von SSMS entwerfen](design-first-database-tutorial.md) oder wie Sie [eine Datenbank entwerfen und mit C# und ADO.NET verbinden](design-first-database-csharp-tutorial.md).
-- Weitere Informationen zu .NET finden Sie in der [.NET-Dokumentation](https://docs.microsoft.com/dotnet/).
+- Weitere Informationen zu .NET finden Sie in der [.NET-Dokumentation](/dotnet/).

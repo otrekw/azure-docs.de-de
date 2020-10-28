@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100869"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676529"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Einrichten des Zugriffs für Azure Dev Tools
 
@@ -30,7 +30,7 @@ Um Zugriff auf Visual Studio Subscription anzufordern, können Sie das [Verwaltu
 ## <a name="for-students-faculty-and-administrators"></a>Für Kursteilnehmer, Lehrkräfte und Administratoren
 Kursteilnehmen greifen über den [Education Hub](https://aka.ms/devtoolsforteaching) auf Azure Dev Tools zu.
 
-Kursteilnehmer und Lehrkräfte können über den Education Hub gleichermaßen auf alle Softwaredownloadvorteile zugreifen. Der Education Hub ist in das Azure-Portal integriert und ermöglicht Ihren Kursteilnehmern einfachen Zugriff auf den gesamten Softwarekatalog sowie Zugriff auf den gesamten [Microsoft Learn](https://docs.microsoft.com/learn/)-Katalog.
+Kursteilnehmer und Lehrkräfte können über den Education Hub gleichermaßen auf alle Softwaredownloadvorteile zugreifen. Der Education Hub ist in das Azure-Portal integriert und ermöglicht Ihren Kursteilnehmern einfachen Zugriff auf den gesamten Softwarekatalog sowie Zugriff auf den gesamten [Microsoft Learn](/learn/)-Katalog.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Verwalten von Kursteilnehmerkonten](manage-students.md)

@@ -4,28 +4,28 @@ description: Hier erfahren Sie, wie Sie Java und JDBC mit Azure Database for Pos
 author: jdubois
 ms.author: judubois
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 402e69606196ecb1030023c49fa5afefd31b9e94
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88545436"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92734981"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>Verwenden von Java und JDBC mit Azure Database for PostgreSQL
 
-In diesem Thema wird die Erstellung einer Beispielanwendung veranschaulicht, die Java und [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) verwendet, um Informationen in [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) zu speichern bzw. daraus abzurufen.
+In diesem Thema wird die Erstellung einer Beispielanwendung veranschaulicht, die Java und [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) verwendet, um Informationen in [Azure Database for PostgreSQL](./index.yml) zu speichern bzw. daraus abzurufen.
 
 JDBC ist die Standard-Java-API, um eine Verbindung mit herkömmlichen relationalen Datenbanken herzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) oder [Azure CLI](/cli/azure/install-azure-cli). Wir empfehlen Azure Cloud Shell, damit Sie automatisch angemeldet werden und Zugriff auf alle erforderlichen Tools erhalten.
-- Ein unterstütztes [Java Development Kit](https://aka.ms/azure-jdks), Version 8 (in Azure Cloud Shell enthalten).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) oder [Azure CLI](/cli/azure/install-azure-cli). Wir empfehlen Azure Cloud Shell, damit Sie automatisch angemeldet werden und Zugriff auf alle erforderlichen Tools erhalten.
+- Ein unterstütztes [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 (in Azure Cloud Shell enthalten).
 - Das [Apache Maven](https://maven.apache.org/)-Buildtool
 
 ## <a name="prepare-the-working-environment"></a>Vorbereiten der Arbeitsumgebung
@@ -67,7 +67,7 @@ az group create \
 Sie erstellen zuerst einen verwalteten PostgreSQL-Server.
 
 > [!NOTE]
-> Ausführlichere Informationen zum Erstellen von PostgreSQL-Servern finden Sie unter [Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](/azure/postgresql/quickstart-create-server-database-portal).
+> Ausführlichere Informationen zum Erstellen von PostgreSQL-Servern finden Sie unter [Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](./quickstart-create-server-database-portal.md).
 
 Führen Sie in [Azure Cloud Shell](https://shell.azure.com/) den folgenden Befehl aus:
 
@@ -150,7 +150,7 @@ Dabei handelt es sich um eine [Apache Maven](https://maven.apache.org/)-Datei, d
 
 ### <a name="prepare-a-configuration-file-to-connect-to-azure-database-for-postgresql"></a>Vorbereiten einer Konfigurationsdatei für das Herstellen einer Verbindung mit Azure Database for PostgreSQL
 
-Erstellen Sie eine Datei vom Typ *src/main/resources/application.properties*, und fügen Sie Folgendes hinzu:
+Erstellen Sie eine Datei vom Typ *src/main/resources/application.properties* , und fügen Sie Folgendes hinzu:
 
 ```properties
 url=jdbc:postgresql://$AZ_DATABASE_NAME.postgres.database.azure.com:5432/demo?ssl=true&sslmode=require
@@ -179,7 +179,7 @@ CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARC
 
 Fügen Sie als Nächstes den Java-Code hinzu, der JDBC zum Speichern und Abrufen von Daten auf bzw. aus Ihrem PostgreSQL-Server verwendet.
 
-Erstellen Sie eine Datei vom Typ *src/main/java/DemoApplication.java*, die Folgendes enthält:
+Erstellen Sie eine Datei vom Typ *src/main/java/DemoApplication.java* , die Folgendes enthält:
 
 ```java
 package com.example.demo;
@@ -228,7 +228,7 @@ public class DemoApplication {
 }
 ```
 
-Dieser Java-Code verwendet die weiter oben erstellten Dateien *application.properties* und *schema.sql*, um eine Verbindung mit dem PostgreSQL-Server herzustellen und ein Schema zu erstellen, in dem Ihre Daten gespeichert werden.
+Dieser Java-Code verwendet die weiter oben erstellten Dateien *application.properties* und *schema.sql* , um eine Verbindung mit dem PostgreSQL-Server herzustellen und ein Schema zu erstellen, in dem Ihre Daten gespeichert werden.
 
 Sie sehen, dass in dieser Datei Methoden zum Einfügen, Lesen, Aktualisieren und Löschen von Daten kommentiert wurden: Diese Methoden werden im verbleibenden Artikel codiert, und Sie können nacheinander die Auskommentierung aufheben.
 

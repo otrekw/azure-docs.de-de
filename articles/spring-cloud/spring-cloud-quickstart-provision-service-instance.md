@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a248699b47cf99980c9490bf16c10e7196ee6ecf
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091082"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742706"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts
 
@@ -103,25 +103,25 @@ Mit dem folgenden Verfahren wird eine Azure Spring Cloud-Instanz über das Azure
 
 1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/) in einem neuen Tab. 
 
-2. Suchen Sie im oberen Suchfeld nach **Azure Spring Cloud**.
+2. Suchen Sie im oberen Suchfeld nach **Azure Spring Cloud** .
 
 3. Wählen Sie in den Ergebnissen **Azure Spring Cloud** aus.
 
     ![ASC-Symbol: Starten](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Klicken Sie auf der Azure Spring Cloud-Seite auf **+ Hinzufügen**.
+4. Klicken Sie auf der Azure Spring Cloud-Seite auf **+ Hinzufügen** .
 
     ![ASC-Symbol: Hinzufügen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.  Berücksichtigen Sie die folgenden Richtlinien:
-    - **Abonnement**: Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
-    - **Ressourcengruppe**: Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode. Beachten Sie, dass diese später als **\<resource group name\>** verwendet wird.
-    - **Dienstdetails/Name**: Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
-    - **Standort**: Wählen Sie den Speicherort für Ihre Dienstinstanz aus.
+    - **Abonnement** : Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
+    - **Ressourcengruppe** : Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode. Beachten Sie, dass diese später als **\<resource group name\>** verwendet wird.
+    - **Dienstdetails/Name** : Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
+    - **Standort** : Wählen Sie den Speicherort für Ihre Dienstinstanz aus.
 
     ![Startseite des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klicken Sie auf **Überprüfen und erstellen**.
+6. Klicken Sie auf **Überprüfen und erstellen** .
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

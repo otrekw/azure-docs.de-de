@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231266"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742726"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mit der Azure CLI
 
@@ -59,7 +59,7 @@ In dieser Schnellstartanleitung verwenden Sie die Azure CLI zum Definieren eines
 
    Alle Azure-Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.
 
-   Erstellen Sie für diese Schnellstartanleitung mit dem folgenden [az group create](/cli/azure/group#az-group-create)-Befehl eine Ressourcengruppe mit dem Namen *streamanalyticsrg* am Standort *eastus*:
+   Erstellen Sie für diese Schnellstartanleitung mit dem folgenden [az group create](/cli/azure/group#az-group-create)-Befehl eine Ressourcengruppe mit dem Namen *streamanalyticsrg* am Standort *eastus* :
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus
@@ -249,7 +249,7 @@ az stream-analytics transformation create
 
 2. Ersetzen Sie den Platzhalter in Zeile 15 durch die gesamte zuvor gespeicherte Verbindungszeichenfolge für das Azure IoT Hub-Gerät.
 
-3. Klicken Sie auf **Ausführen**. In der Ausgabe sollten nun die Sensordaten und -nachrichten angezeigt werden, die an Ihre IoT Hub-Instanz gesendet werden.
+3. Klicken Sie auf **Ausführen** . In der Ausgabe sollten nun die Sensordaten und -nachrichten angezeigt werden, die an Ihre IoT Hub-Instanz gesendet werden.
 
     ![Raspberry Pi-Azure IoT-Onlinesimulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

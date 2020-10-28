@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86515052"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672492"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Schnellstart: Verbinden und Abfragen mit Visual Studio Code 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "86515052"
 
 ## <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
 
-Stellen Sie sicher, dass Sie die neueste Version von [Visual Studio Code](https://code.visualstudio.com/Download) installiert und die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) geladen haben. Eine Installationsanleitung für die MSSQL-Erweiterung finden Sie unter [Installieren von Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) und [MSSQL für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
+Stellen Sie sicher, dass Sie die neueste Version von [Visual Studio Code](https://code.visualstudio.com/Download) installiert und die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) geladen haben. Eine Installationsanleitung für die MSSQL-Erweiterung finden Sie unter [Installieren von Visual Studio Code](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) und [MSSQL für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
 ## <a name="configure-visual-studio-code"></a>Konfigurieren von Visual Studio Code
 
@@ -76,9 +76,9 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen** .
 
-3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen für SQL Managed Instance neben **Host**. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen für SQL Managed Instance neben **Host** . Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 ## <a name="set-language-mode-to-sql"></a>Festlegen des Sprachmodus auf SQL
 
@@ -86,7 +86,7 @@ Legen Sie den Sprachmodus in Visual Studio Code auf **SQL** fest, um die Verwend
 
 1. Öffnen Sie ein neues Visual Studio Code-Fenster.
 
-2. Drücken Sie **STRG**+**N**. Eine neue Nur-Text-Datei wird geöffnet.
+2. Drücken Sie **STRG**+**N** . Eine neue Nur-Text-Datei wird geöffnet.
 
 3. Wählen Sie in der unteren rechten Ecke der Statusleiste **Nur Text** aus.
 
@@ -99,17 +99,17 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit dem Server herzustellen
 > [!IMPORTANT]
 > Stellen Sie vor dem Fortfahren sicher, dass Sie über alle Informationen zu Server und Anmeldung verfügen. Wenn Sie mit dem Eingeben der Informationen für das Verbindungsprofil begonnen haben und zu Visual Studio Code wechseln, müssen Sie mit dem Erstellen des Profils neu beginnen.
 
-1. Drücken Sie in Visual Studio Code die Tastenkombination **STRG+UMSCHALT+P** (oder **F1**), um die Befehlspalette zu öffnen.
+1. Drücken Sie in Visual Studio Code die Tastenkombination **STRG+UMSCHALT+P** (oder **F1** ), um die Befehlspalette zu öffnen.
 
-2. Wählen Sie **MS SQL:Connect** aus, und drücken Sie die **EINGABETASTE**.
+2. Wählen Sie **MS SQL:Connect** aus, und drücken Sie die **EINGABETASTE** .
 
 3. Wählen Sie **Verbindungsprofil erstellen** aus.
 
-4. Befolgen Sie die Eingabeaufforderungen, um die Verbindungseigenschaften für das neue Verbindungsprofil anzugeben. Drücken Sie nach dem Angeben der einzelnen Werte die **EINGABETASTE**, um fortzufahren.
+4. Befolgen Sie die Eingabeaufforderungen, um die Verbindungseigenschaften für das neue Verbindungsprofil anzugeben. Drücken Sie nach dem Angeben der einzelnen Werte die **EINGABETASTE** , um fortzufahren.
 
    | Eigenschaft       | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
+   | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net** . |
    | **Datenbankname** | mySampleDatabase | Die Datenbank für die Verbindung. |
    | **Authentifizierung** | SQL-Anmeldung| In diesem Tutorial wird die SQL-Authentifizierung verwendet. |
    | **Benutzername** | Benutzername | Der Benutzername des Serveradministratorkontos, das zum Erstellen des Servers verwendet wird. |
@@ -121,7 +121,7 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit dem Server herzustellen
 
 ## <a name="query-data"></a>Daten abfragen
 
-Führen Sie die folgende [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung aus, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
+Führen Sie die folgende [SELECT](/sql/t-sql/queries/select-transact-sql)-Transact-SQL-Anweisung aus, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
 
 1. Fügen Sie im Editor-Fenster die folgende SQL-Abfrage ein.
 
@@ -132,13 +132,13 @@ Führen Sie die folgende [SELECT](https://msdn.microsoft.com/library/ms189499.as
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die Abfrage auszuführen und Ergebnisse aus den Tabellen `Product` und `ProductCategory` anzuzeigen.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E** , um die Abfrage auszuführen und Ergebnisse aus den Tabellen `Product` und `ProductCategory` anzuzeigen.
 
     ![Abfrage zum Abrufen von Daten aus 2 Tabellen](./media/connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Führen Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung aus, um ein neues Produkt in der Tabelle `SalesLT.Product` hinzuzufügen.
+Führen Sie die folgende [INSERT](/sql/t-sql/statements/insert-transact-sql)-Transact-SQL-Anweisung aus, um ein neues Produkt in der Tabelle `SalesLT.Product` hinzuzufügen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
@@ -166,7 +166,7 @@ Führen Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.as
 
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Führen Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung aus, um das hinzugefügte Produkt zu aktualisieren.
+Führen Sie die folgende [UPDATE](/sql/t-sql/queries/update-transact-sql)-Transact-SQL-Anweisung aus, um das hinzugefügte Produkt zu aktualisieren.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese:
 
@@ -176,11 +176,11 @@ Führen Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.as
    WHERE Name = 'myNewProduct';
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die angegebene Zeile in der Tabelle `Product` zu aktualisieren.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E** , um die angegebene Zeile in der Tabelle `Product` zu aktualisieren.
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Führen Sie die folgende [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql)-Transact-SQL-Anweisung aus, um das neue Produkt zu entfernen.
+Führen Sie die folgende [DELETE](/sql/t-sql/statements/delete-transact-sql)-Transact-SQL-Anweisung aus, um das neue Produkt zu entfernen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese:
 
@@ -189,10 +189,10 @@ Führen Sie die folgende [DELETE](https://docs.microsoft.com/sql/t-sql/statement
    WHERE Name = 'myNewProduct';
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die angegebene Zeile in der Tabelle `Product` zu löschen.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E** , um die angegebene Zeile in der Tabelle `Product` zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Verbinden und Abfragen mit SQL Server Management Studio (SSMS) finden Sie unter [Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen einer Verbindung mit einer Datenbank in Azure SQL-Datenbank und zum Abfragen von Daten](connect-query-ssms.md).
 - Informationen zum Verbinden und Abfragen mit dem Azure-Portal finden Sie unter [Schnellstart: Azure-Portal: Verwenden des SQL-Abfrage-Editors zum Verbinden und Abfragen von Daten](connect-query-portal.md).
-- Im [Blogpost zum Erstellen einer Datenbank-IDE mit der MSSQL-Erweiterung](https://msdn.microsoft.com/magazine/mt809115) finden Sie einen MSDN Magazine-Artikel zum Verwenden von Visual Studio Code.
+- Im [Blogpost zum Erstellen einer Datenbank-IDE mit der MSSQL-Erweiterung](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension) finden Sie einen MSDN Magazine-Artikel zum Verwenden von Visual Studio Code.

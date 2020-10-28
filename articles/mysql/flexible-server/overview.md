@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167048"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537948"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
 
@@ -75,7 +75,7 @@ Um eine Verbindung mit Ihrer Azure Database for MySQL Flexible Server-Bereitstel
    * Herstellen einer Verbindung von Azure-externen Ressourcen mit Ihrem flexiblen Server über ein VPN oder eine ExpressRoute-Verbindung
    * Kein öffentlicher Endpunkt
 
-* **Öffentlicher Zugriff (zugelassene IP-Adressen)** : Sie können Ihren flexiblen Server mit einem öffentlichen Endpunkt bereitstellen. Der öffentliche Endpunkt ist eine öffentlich auflösbare DNS-Adresse. Der Ausdruck „zugelassene IP-Adressen“ bezieht sich auf einen Bereich von IP-Adressen, denen Sie die Berechtigung erteilen, auf den Server zuzugreifen. Diese Berechtigungen heißen **Firewallregeln**.
+* **Öffentlicher Zugriff (zugelassene IP-Adressen)** : Sie können Ihren flexiblen Server mit einem öffentlichen Endpunkt bereitstellen. Der öffentliche Endpunkt ist eine öffentlich auflösbare DNS-Adresse. Der Ausdruck „zugelassene IP-Adressen“ bezieht sich auf einen Bereich von IP-Adressen, denen Sie die Berechtigung erteilen, auf den Server zuzugreifen. Diese Berechtigungen heißen **Firewallregeln** .
 
 Weitere Informationen finden Sie unter [Netzwerkkonzepte](concepts-networking.md).
 
@@ -99,7 +99,7 @@ Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Laye
 
 Weitere Informationen finden Sie unter [Verwenden verschlüsselter Verbindungen mit flexiblen Servern](https://docs.mongodb.com/manual/tutorial/configure-ssl).
 
-Flexible Server ermöglichen den vollständigen privaten Zugriff auf die Server eines [virtuellen Azure-Netzwerks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNET-Integration). Server im virtuellen Azure-Netzwerk können nur über private IP-Adressen erreicht und verbunden werden. Bei der VNET-Integration wird der öffentliche Zugriff verweigert, und Server können nicht über öffentliche Endpunkte erreicht werden. 
+Flexible Server ermöglichen den vollständigen privaten Zugriff auf die Server eines [virtuellen Azure-Netzwerks](../../virtual-network/virtual-networks-overview.md) (VNET-Integration). Server im virtuellen Azure-Netzwerk können nur über private IP-Adressen erreicht und verbunden werden. Bei der VNET-Integration wird der öffentliche Zugriff verweigert, und Server können nicht über öffentliche Endpunkte erreicht werden. 
 
 Weitere Informationen finden Sie unter [Netzwerkkonzepte](concepts-networking.md).
 
@@ -114,8 +114,8 @@ Weitere Informationen finden Sie unter [Überwachungskonzepte](concepts-monitori
 
 Der Dienst führt die MySQL-Community-Version aus. Dies ermöglicht vollständige Anwendungskompatibilität und erfordert minimale Refactoringkosten für die Migration vorhandener Anwendungen, die in der MySQL-Engine entwickelt wurden, zum Single Server-Dienst. Die Migration zum Single Server-Dienst kann mithilfe einer der folgenden Optionen durchgeführt werden:
 
-- **Sichern und Wiederherstellen**: Für Offlinemigrationen, bei denen sich Benutzer einige Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie mysqldump/mydumper die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter „Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen“. 
-- **Azure Database Migration Service**: Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Ausfallzeiten können Sie [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) verwenden. 
+- **Sichern und Wiederherstellen** : Für Offlinemigrationen, bei denen sich Benutzer einige Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie mysqldump/mydumper die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter „Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen“. 
+- **Azure Database Migration Service** : Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Ausfallzeiten können Sie [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) verwenden. 
 
 ## <a name="azure-regions"></a>Azure-Regionen
 

@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567808"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675692"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Häufig gestellte Fragen zu Education Hub
 
@@ -46,7 +46,7 @@ Ihr Azure for Students-Abonnement bietet Ihnen Zugriff auf bestimmte Tools für 
 
 ### <a name="what-is-microsoft-learn"></a>Was ist Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) ist eine kostenlose Onlinelernplattform, die Ihnen das Erlernen von Azure-Technologien in Ihrem eigenen Tempo ermöglicht. Lernpfade kombinieren Module, die es Ihnen ermöglichen, mit den Grundlagen zu beginnen und dann zu fortgeschrittenen Methoden überzugehen, die auf Herausforderungen der realen Welt eingehen.
+[Microsoft Learn](/learn/) ist eine kostenlose Onlinelernplattform, die Ihnen das Erlernen von Azure-Technologien in Ihrem eigenen Tempo ermöglicht. Lernpfade kombinieren Module, die es Ihnen ermöglichen, mit den Grundlagen zu beginnen und dann zu fortgeschrittenen Methoden überzugehen, die auf Herausforderungen der realen Welt eingehen.
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Kann Azure for Students auch für die Produktion oder nur für die Entwicklung verwendet werden?
 
@@ -97,7 +97,7 @@ Sie können diese Software im [Education Hub](https://ms.portal.azure.com/#blade
 
 ### <a name="what-is-microsoft-learn"></a>Was ist Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) ist eine kostenlose Onlinelernplattform, die Ihnen das Erlernen von Azure-Technologien in Ihrem eigenen Tempo ermöglicht. Lernpfade kombinieren Module, die es Ihnen ermöglichen, mit den Grundlagen zu beginnen und dann zu fortgeschrittenen Methoden überzugehen, die auf Herausforderungen der realen Welt eingehen.
+[Microsoft Learn](/learn/) ist eine kostenlose Onlinelernplattform, die Ihnen das Erlernen von Azure-Technologien in Ihrem eigenen Tempo ermöglicht. Lernpfade kombinieren Module, die es Ihnen ermöglichen, mit den Grundlagen zu beginnen und dann zu fortgeschrittenen Methoden überzugehen, die auf Herausforderungen der realen Welt eingehen.
 
 ## <a name="azure-academic-grant"></a>Azure Academic Grant
 
@@ -149,7 +149,7 @@ Azure-Kursguthaben decken nur die Nutzung ab dem Zeitpunkt ab, zu dem Sie das Az
 
 ### <a name="how-do-i-know-if-my-subscription-is-on-the-azure-course-credit-offer"></a>Woran erkenne ich, ob das Azure-Kursguthabenangebot für mein Abonnement gilt?
 
-Wenn Sie ein bestimmtes Abonnement auf dem Blatt „Abonnements“ im Azure-Portal anzeigen, erkennen Sie **Angebotsname** als eine der Eigenschaften. Der Angebotsname lautet **Azure Sponsorship**, wenn er mit Ihrem Kursguthaben verbunden ist. Wenn **Azure Sponsorship** nicht angezeigt wird, wenden Sie sich an den Support, um das Abonnement umzuwandeln.
+Wenn Sie ein bestimmtes Abonnement auf dem Blatt „Abonnements“ im Azure-Portal anzeigen, erkennen Sie **Angebotsname** als eine der Eigenschaften. Der Angebotsname lautet **Azure Sponsorship** , wenn er mit Ihrem Kursguthaben verbunden ist. Wenn **Azure Sponsorship** nicht angezeigt wird, wenden Sie sich an den Support, um das Abonnement umzuwandeln.
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools für den Unterricht
 
@@ -253,7 +253,7 @@ Wenn Sie sich noch immer nicht anmelden können, wenden Sie sich an Ihren Abonne
 ### <a name="how-do-i-find-my-subscriber-id"></a>Wie finde ich meine Abonnenten-ID?
 
 - **Wenn Sie sich zum ersten Mal im Programm** registrieren: Ihre Abonnenten-ID wird in der Begrüßungs-E-Mail des Abonnements angezeigt, die Sie erhalten.
-- **Wenn Sie Ihr Abonnement erneuert haben**: Ihre Abonnenten-ID befindet sich in der Erneuerungs-E-Mail, die der Abonnementadministrator erhalten hat.
+- **Wenn Sie Ihr Abonnement erneuert haben** : Ihre Abonnenten-ID befindet sich in der Erneuerungs-E-Mail, die der Abonnementadministrator erhalten hat.
 
 Ihre Abonnenten-ID finden Sie auch im Visual Studio Subscription-Portal. Nachdem Sie sich angemeldet haben, suchen Sie unter **Mein Abonnement** auf der Seite **Mein Konto** nach ihr.
 

@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946075"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741487"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (Python)
 
@@ -31,7 +31,7 @@ Um diese Schnellstartanleitung abzuschließen, benötigen Sie Python 3.7 auf Ih
 python --version
 ```
 
-Das **azure-iot-device**-Paket wird als PIP veröffentlicht.
+Das **azure-iot-device** -Paket wird als PIP veröffentlicht.
 
 Installieren Sie das Paket wie folgt in Ihrer lokalen Python-Umgebung:
 
@@ -39,7 +39,7 @@ Installieren Sie das Paket wie folgt in Ihrer lokalen Python-Umgebung:
 pip install azure-iot-device
 ```
 
-Installieren Sie das **azure-iot-hub**-Paket durch Ausführen des folgenden Befehls:
+Installieren Sie das **azure-iot-hub** -Paket durch Ausführen des folgenden Befehls:
 
 ```cmd/sh
 pip install azure-iot-hub
@@ -59,7 +59,7 @@ In dieser Schnellstartanleitung verwenden Sie einen in Python geschriebenen Beis
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
 
-1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-python/azure-iot-device/samples/pnp*.
+1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-python/azure-iot-device/samples/pnp* .
 
 1. Führen Sie den Beispielthermostat mit dem folgenden Befehl aus:
 
@@ -73,23 +73,23 @@ In dieser Schnellstartanleitung verwenden Sie einen in Python geschriebenen Beis
 
 In dieser Schnellstartanleitung verwenden Sie eine IoT-Beispiellösung in Python, um mit dem gerade eingerichteten Beispielgerät zu interagieren.
 
-1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal**.
+1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal** .
 
 1. Navigieren Sie zum Ordner */azure-iot-sdk-python/azure-iot-hub/samples* des geklonten Python SDK-Repositorys.
 
-1. Öffnen Sie die Datei *registry_manager_pnp_sample.py*, und sehen Sie sich den Code an. In diesem Beispiel wird veranschaulicht, wie Sie die **IoTHubRegistryManager**-Klasse zum Interagieren mit Ihrem IoT Plug & Play-Gerät verwenden.
+1. Öffnen Sie die Datei *registry_manager_pnp_sample.py* , und sehen Sie sich den Code an. In diesem Beispiel wird veranschaulicht, wie Sie die **IoTHubRegistryManager** -Klasse zum Interagieren mit Ihrem IoT Plug & Play-Gerät verwenden.
 
 > [!NOTE]
-> In diesen Dienstbeispielen wird die **IoTHubRegistryManager**-Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](concepts-developer-guide-service.md).
+> In diesen Dienstbeispielen wird die **IoTHubRegistryManager** -Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](concepts-developer-guide-service.md).
 
 ### <a name="get-the-device-twin"></a>Abrufen des Gerätezwillings
 
 In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
 
-* **IOTHUB_CONNECTION_STRING**: die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
+* **IOTHUB_CONNECTION_STRING** : die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"`.
 
-Verwenden Sie den folgenden Befehl im **Dienstterminal**, um dieses Beispiel auszuführen:
+Verwenden Sie den folgenden Befehl im **Dienstterminal** , um dieses Beispiel auszuführen:
 
 ```cmd/sh
 set IOTHUB_METHOD_NAME="getMaxMinReport"

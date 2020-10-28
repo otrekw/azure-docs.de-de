@@ -4,13 +4,13 @@ description: Es wird beschrieben, wie Sie den Python-Container konfigurieren, in
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018745"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743790"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -22,9 +22,9 @@ Dieser Leitfaden enthält wichtige Konzepte und Anleitungen für Python-Entwickl
 
 Sie können für die Konfiguration entweder das [Azure-Portal](https://portal.azure.com) oder die Azure CLI verwenden:
 
-- **Azure-Portal**: Verwenden Sie die Seite **Einstellungen** > **Konfiguration** der App wie unter [Konfigurieren einer App Service-App im Azure-Portal](configure-common.md) beschrieben.
+- **Azure-Portal** : Verwenden Sie die Seite **Einstellungen** > **Konfiguration** der App wie unter [Konfigurieren einer App Service-App im Azure-Portal](configure-common.md) beschrieben.
 
-- **Azure CLI**: Sie haben zwei Möglichkeiten.
+- **Azure CLI** : Sie haben zwei Möglichkeiten.
 
     - Führen Sie Befehle im Dienst [Azure Cloud Shell](../cloud-shell/overview.md) aus, den Sie jeweils mit der Schaltfläche **Jetzt testen** in der rechten oberen Ecke der Codeblöcke öffnen können.
     - Führen Sie Befehle lokal aus, indem Sie die aktuelle Version der [Azure CLI](/cli/azure/install-azure-cli) installieren und sich dann mit dem Befehl [az login](/cli/azure/reference-index#az-login) bei Azure anmelden.
@@ -34,9 +34,9 @@ Sie können für die Konfiguration entweder das [Azure-Portal](https://portal.az
 
 ## <a name="configure-python-version"></a>Konfigurieren der Python-Version
 
-- **Azure-Portal**: Verwenden Sie die Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration**. Dies ist unter [Konfigurieren allgemeiner Einstellungen](configure-common.md#configure-general-settings) für Linux-Container beschrieben.
+- **Azure-Portal** : Verwenden Sie die Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration** . Dies ist unter [Konfigurieren allgemeiner Einstellungen](configure-common.md#configure-general-settings) für Linux-Container beschrieben.
 
-- **Azure CLI**:
+- **Azure CLI** :
 
     -  Zeigen Sie die aktuelle Python-Version mit [az webapp config show](/cli/azure/webapp/config#az_webapp_config_show) an:
     
@@ -90,7 +90,7 @@ Weitere Informationen zur Ausführung und Erstellung von Python-Apps unter Linux
 > Eine Einstellung mit dem Namen `SCM_DO_BUILD_DURING_DEPLOYMENT` löst (sofern sie `true` oder 1 enthält) einen Oryx-Buildvorgang während der Bereitstellung aus. Die Einstellung ist auf „true“ festgelegt, wenn die Bereitstellung mit git, dem Azure CLI-Befehl `az webapp up` und Visual Studio Code durchgeführt wird.
 
 > [!NOTE]
-> Verwenden Sie in allen Prä- und Postbuildskripts immer relative Pfade, da sich der Buildcontainer, in dem Oryx ausgeführt wird, von dem Runtimecontainer unterscheidet, in dem die App ausgeführt wird. Verlassen Sie sich niemals auf die genaue Platzierung Ihres App-Projektordners im Container (z. B. die Platzierung unter *site/wwwroot*).
+> Verwenden Sie in allen Prä- und Postbuildskripts immer relative Pfade, da sich der Buildcontainer, in dem Oryx ausgeführt wird, von dem Runtimecontainer unterscheidet, in dem die App ausgeführt wird. Verlassen Sie sich niemals auf die genaue Platzierung Ihres App-Projektordners im Container (z. B. die Platzierung unter *site/wwwroot* ).
 
 ## <a name="production-settings-for-django-apps"></a>Produktionseinstellungen für Django-Apps
 
@@ -172,15 +172,15 @@ Wenn App Service keinen benutzerdefinierten Befehl und keine Django-App oder Fla
 
 Wie in diesem Artikel bereits erwähnt, können Sie Konfigurationseinstellungen für Gunicorn über die Datei *gunicorn.conf.py* im Projektstamm angeben. Dies ist in der [Übersicht zur Gunicorn-Konfiguration](https://docs.gunicorn.org/en/stable/configure.html#configuration-file) beschrieben.
 
-Wenn diese Konfiguration nicht ausreicht, können Sie das Startverhalten des Containers steuern, indem Sie entweder einen benutzerdefinierten Startbefehl oder mehrere Befehle in einer Datei mit Startbefehlen angeben. Für eine Datei mit Startbefehlen können Sie einen beliebigen Namen wählen, z. B. *startup.sh*, *startup.cmd*, *startup.txt* usw.
+Wenn diese Konfiguration nicht ausreicht, können Sie das Startverhalten des Containers steuern, indem Sie entweder einen benutzerdefinierten Startbefehl oder mehrere Befehle in einer Datei mit Startbefehlen angeben. Für eine Datei mit Startbefehlen können Sie einen beliebigen Namen wählen, z. B. *startup.sh* , *startup.cmd* , *startup.txt* usw.
 
 Für alle Befehle müssen relative Pfade zum Stammordner des Projekts verwendet werden.
 
 Geben Sie einen Startbefehl oder eine Befehlsdatei wie folgt an:
 
-- **Azure-Portal**: Wählen Sie die Seite **Konfiguration** der App und dann die Option **Allgemeine Einstellungen** aus. Geben Sie im Feld **Startbefehl** entweder den vollständigen Text Ihres Startbefehls oder den Namen Ihrer Startbefehlsdatei an. Klicken Sie anschließend auf **Speichern**, um die Änderungen zu übernehmen. Weitere Informationen finden Sie unter [Konfigurieren von allgemeinen Einstellungen](configure-common.md#configure-general-settings) für Linux-Container.
+- **Azure-Portal** : Wählen Sie die Seite **Konfiguration** der App und dann die Option **Allgemeine Einstellungen** aus. Geben Sie im Feld **Startbefehl** entweder den vollständigen Text Ihres Startbefehls oder den Namen Ihrer Startbefehlsdatei an. Klicken Sie anschließend auf **Speichern** , um die Änderungen zu übernehmen. Weitere Informationen finden Sie unter [Konfigurieren von allgemeinen Einstellungen](configure-common.md#configure-general-settings) für Linux-Container.
 
-- **Azure CLI**: Verwenden Sie den Befehl [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) mit dem Parameter `--startup-file`, um den Startbefehl bzw. die Datei festzulegen:
+- **Azure CLI** : Verwenden Sie den Befehl [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) mit dem Parameter `--startup-file`, um den Startbefehl bzw. die Datei festzulegen:
 
     ```azurecli-interactive
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -192,7 +192,7 @@ App Service ignoriert alle Fehler, die beim Verarbeiten eines benutzerdefinierte
 
 ### <a name="example-startup-commands"></a>Beispiele für Startbefehle
 
-- **Hinzugefügte Gunicorn-Argumente**: Im folgenden Beispiel wird `--workers=4` einer Gunicorn-Befehlszeile hinzugefügt, um eine Django-App zu starten: 
+- **Hinzugefügte Gunicorn-Argumente** : Im folgenden Beispiel wird `--workers=4` einer Gunicorn-Befehlszeile hinzugefügt, um eine Django-App zu starten: 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -202,7 +202,7 @@ App Service ignoriert alle Fehler, die beim Verarbeiten eines benutzerdefinierte
 
     Weitere Informationen finden Sie unter [Ausführen von Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-- **Aktivieren der Produktionsprotokollierung für Django**: Fügen Sie der Befehlszeile die Argumente `--access-logfile '-'` und `--error-logfile '-'` hinzu:
+- **Aktivieren der Produktionsprotokollierung für Django** : Fügen Sie der Befehlszeile die Argumente `--access-logfile '-'` und `--error-logfile '-'` hinzu:
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -213,7 +213,7 @@ App Service ignoriert alle Fehler, die beim Verarbeiten eines benutzerdefinierte
 
     Weitere Informationen finden Sie unter [Gunicorn-Protokollierung](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Benutzerdefiniertes Flask-Hauptmodul**: Standardmäßig wird von App Service angenommen, dass das Hauptmodul einer Flask-App *application.py* oder *app.py* lautet. Falls für Ihr Hauptmodul ein anderer Name verwendet wird, müssen Sie den Startbefehl anpassen. Wenn Sie beispielsweise über eine Flask-App verfügen, deren Hauptmodul *hello.py* lautet, und das Flask-App-Objekt in dieser Datei den Namen `myapp` hat, lautet der Befehl wie folgt:
+- **Benutzerdefiniertes Flask-Hauptmodul** : Standardmäßig wird von App Service angenommen, dass das Hauptmodul einer Flask-App *application.py* oder *app.py* lautet. Falls für Ihr Hauptmodul ein anderer Name verwendet wird, müssen Sie den Startbefehl anpassen. Wenn Sie beispielsweise über eine Flask-App verfügen, deren Hauptmodul *hello.py* lautet, und das Flask-App-Objekt in dieser Datei den Namen `myapp` hat, lautet der Befehl wie folgt:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -225,7 +225,7 @@ App Service ignoriert alle Fehler, die beim Verarbeiten eines benutzerdefinierte
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **Verwenden eines anderen Servers als eines Gunicorn-Servers**: Verwenden Sie für die Nutzung eines anderen Webservers, z. B. [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), den entsprechenden Befehl als Startbefehl oder in der Startbefehlsdatei:
+- **Verwenden eines anderen Servers als eines Gunicorn-Servers** : Verwenden Sie für die Nutzung eines anderen Webservers, z. B. [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), den entsprechenden Befehl als Startbefehl oder in der Startbefehlsdatei:
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -282,7 +282,7 @@ Wählen Sie im Menü auf der linken Seite für Ihre App die Option **Überwachun
 
     - Untersuchen Sie den [Protokolldatenstrom](#access-diagnostic-logs) auf Fehlermeldungen.
 
-- **Für den Protokolldatenstrom wird eine Fehlermeldung der Art „setup.py oder requirements.txt nicht gefunden. pip-Installation wird nicht ausgeführt.“ angezeigt**: Ihre Datei *requirements.txt* konnte während des Oryx-Buildprozesses nicht gefunden werden.
+- **Für den Protokolldatenstrom wird eine Fehlermeldung der Art „setup.py oder requirements.txt nicht gefunden. pip-Installation wird nicht ausgeführt.“ angezeigt** : Ihre Datei *requirements.txt* konnte während des Oryx-Buildprozesses nicht gefunden werden.
 
     - Verwenden Sie SSH oder die Kudu-Konsole, um eine direkte Verbindung mit App Service herzustellen, und stellen Sie sicher, dass *requirements.txt* direkt unter *site/wwwroot* vorhanden ist. Falls nicht, sollen Sie sicherstellen, dass sich die Datei in Ihrem Repository befindet und Teil Ihrer Bereitstellung ist. Verschieben Sie sie in den Stamm, wenn sie in einem separaten Ordner enthalten ist.
 
