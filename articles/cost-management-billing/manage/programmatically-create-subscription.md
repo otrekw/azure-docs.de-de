@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28397d36a611f26544fefb9f4fa7593a0fdf3f73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014527"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748178"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements mit den neuesten APIs
 
@@ -183,7 +183,7 @@ Der Status „In Bearbeitung“ wird unter `provisioningState` als Status `Accep
 
 Führen Sie `Install-Module Az.Subscription` aus, um die neueste Version des Moduls zu installieren, das das Cmdlet `New-AzSubscriptionAlias` enthält. Eine aktuelle Version von PowerShellGet finden Sie unter [Abrufen des PowerShellGet-Moduls](/powershell/scripting/gallery/installing-psget).
 
-Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) aus, und verwenden Sie dabei den Abrechnungsbereich `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
+Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) aus, und verwenden Sie dabei den Abrechnungsbereich `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
@@ -463,7 +463,7 @@ Der Status „In Bearbeitung“ wird unter `provisioningState` als Status `Accep
 
 Führen Sie `Install-Module Az.Subscription` aus, um die neueste Version des Moduls zu installieren, das das Cmdlet `New-AzSubscriptionAlias` enthält. Eine aktuelle Version von PowerShellGet finden Sie unter [Abrufen des PowerShellGet-Moduls](/powershell/scripting/gallery/installing-psget).
 
-Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) aus, und verwenden Sie den Abrechnungsbereich `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
+Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) aus, und verwenden Sie den Abrechnungsbereich `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
@@ -736,13 +736,13 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Der Status „In Bearbeitung“ wird unter `provisioningState` als Status `Accepted` zurückgegeben. 
 
-Übergeben Sie das optionale Element *resellerId*, das Sie im zweiten Schritt in den Anforderungstext der API kopiert haben.
+Übergeben Sie das optionale Element *resellerId* , das Sie im zweiten Schritt in den Anforderungstext der API kopiert haben.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
 
 Führen Sie `Install-Module Az.Subscription` aus, um die neueste Version des Moduls zu installieren, das das Cmdlet `New-AzSubscriptionAlias` enthält. Eine aktuelle Version von PowerShellGet finden Sie unter [Abrufen des PowerShellGet-Moduls](/powershell/scripting/gallery/installing-psget).
 
-Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) aus, und verwenden Sie dabei den Abrechnungsbereich `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
+Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) aus, und verwenden Sie dabei den Abrechnungsbereich `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
@@ -762,7 +762,7 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 }
 ```
 
-Übergeben Sie das optionale Element *resellerId*, das Sie im zweiten Schritt in den Aufruf von `New-AzSubscriptionAlias` kopiert haben.
+Übergeben Sie das optionale Element *resellerId* , das Sie im zweiten Schritt in den Aufruf von `New-AzSubscriptionAlias` kopiert haben.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-MPA)
 
@@ -788,7 +788,7 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 }
 ```
 
-Übergeben Sie das optionale Element *resellerId*, das Sie im zweiten Schritt in den Aufruf von `az account alias create` kopiert haben.
+Übergeben Sie das optionale Element *resellerId* , das Sie im zweiten Schritt in den Aufruf von `az account alias create` kopiert haben.
 
 ---
 
@@ -958,7 +958,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-and-resource-group-with-a-template"></a>Erstellen eines Abonnements und einer Ressourcengruppe mit einer Vorlage
 
-Die folgende ARM-Vorlage erstellt ein Abonnement mit dem Namen *Dev Team subscription* für den Rechnungsabschnitt *Development*. Die Kosten für das Abonnement werden dem Abrechnungsprofil *Contoso Billing Profile* berechnet und im Abschnitt *Development* der Rechnung aufgeführt. Sie verwenden den kopierten Abrechnungsbereich aus dem vorherigen Schritt: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+Die folgende ARM-Vorlage erstellt ein Abonnement mit dem Namen *Dev Team subscription* für den Rechnungsabschnitt *Development* . Die Kosten für das Abonnement werden dem Abrechnungsprofil *Contoso Billing Profile* berechnet und im Abschnitt *Development* der Rechnung aufgeführt. Sie verwenden den kopierten Abrechnungsbereich aus dem vorherigen Schritt: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
 #### <a name="request"></a>Anforderung
 

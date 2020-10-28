@@ -6,15 +6,15 @@ author: jocaplan
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: business-intelligence
-ms.date: 04/29/2020
+ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52b6524bf9f21b7d61ac3907030ff08c7ac15256
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 36334142595d4a6bd4865a690f154279967a70d5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171830"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746309"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Schnellstart: Verknüpfen eines Power BI-Arbeitsbereichs mit einem Synapse-Arbeitsbereich
 
@@ -29,19 +29,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Verknüpfen eines Power BI-Arbeitsbereichs mit Ihrem Synapse-Arbeitsbereich
 
-1. Klicken Sie, beginnend in Synapse Studio, auf **Verwalten**.
+1. Klicken Sie, beginnend in Synapse Studio, auf **Verwalten** .
 
     ![Auf „Verwalten“ klicken in Synapse Studio.](media/quickstart-link-powerbi/synapse-studio-click-manage.png)
 
-2. Klicken Sie unter **Externe Verbindungen** auf **Verknüpfte Dienste**.
+2. Klicken Sie unter **Externe Verbindungen** auf **Verknüpfte Dienste** .
 
     ![Hervorgehobene verknüpfte Dienste.](media/quickstart-link-powerbi/manage-click-linked-services.png)
 
-3. Klicken Sie auf **+ NEU**.
+3. Klicken Sie auf **+ NEU** .
 
     ![„+ Neue verknüpfte Dienste“ ist hervorgehoben.](media/quickstart-link-powerbi/new-highlighted.png)
 
-4. Klicken Sie auf **Power BI** und dann auf **Weiter**.
+4. Klicken Sie auf **Power BI** und dann auf **Weiter** .
 
     ![Verknüpfter Power BI-Dienst wird angezeigt.](media/quickstart-link-powerbi/powerbi-linked-service.png)
 
@@ -49,13 +49,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ![Setup für verknüpfte Power BI-Dienste wird angezeigt.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Klicken Sie auf **Erstellen**.
+6. Klicken Sie auf **Erstellen** .
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Anzeigen des Power BI-Arbeitsbereichs in Synapse Studio
 
 Nachdem Ihre Arbeitsbereiche verknüpft sind, können Sie Ihre Power BI-Datasets durchsuchen und neue Power BI-Berichte in Synapse Studio bearbeiten/erstellen.
 
-1. Klicken Sie auf **Entwickeln**.
+1. Klicken Sie auf **Entwickeln** .
 
     ![Auf „Entwickeln“ klicken in Synapse Studio.](media/quickstart-link-powerbi/synapse-studio-click-develop.png)
 

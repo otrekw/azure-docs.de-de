@@ -3,13 +3,13 @@ title: 'Schnellstart: Erstellen einer Registrierung im Portal'
 description: Hier lernen Sie, wie Sie schnell eine private Azure-Containerregistrierung über das Azure-Portal erstellen.
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031792"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746685"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure-Containerregistrierung über das Azure-Portal
 
@@ -25,7 +25,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-Klicken Sie auf **Ressource erstellen** > **Container** > **Container Registry**.
+Klicken Sie auf **Ressource erstellen** > **Container** > **Container Registry** .
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 
@@ -35,13 +35,13 @@ Geben Sie auf der Registerkarte **Grundlagen** Werte für **Ressourcengruppe** u
 
 Übernehmen Sie für die übrigen Einstellungen die Standardwerte. Wählen Sie dann **Überprüfen + erstellen** aus. Überprüfen Sie die Einstellungen, und wählen Sie anschließend **Erstellen** aus.
 
-In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen (SKUs) finden Sie unter [Azure Container Registry-Tarife][container-registry-skus].
+In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic* . Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen (SKUs) finden Sie unter [Azure Container Registry-Tarife][container-registry-skus].
 
 Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Containerregistrierung im Portal aus. 
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 
-Notieren Sie sich den Registrierungsnamen und den Wert unter **Anmeldeserver**. Sie verwenden diese Werte in den folgenden Schritten bei den Push- und Pullvorgängen für Images mit Docker.
+Notieren Sie sich den Registrierungsnamen und den Wert unter **Anmeldeserver** . Sie verwenden diese Werte in den folgenden Schritten bei den Push- und Pullvorgängen für Images mit Docker.
 
 ## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
@@ -73,7 +73,7 @@ Wenn Sie das Repository **hello-world** auswählen, wird unter **Tags** das mit 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Navigieren Sie zum Bereinigen von Ressourcen im Portal zur Ressourcengruppe **myResourceGroup**. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe, die Containerregistrierung und die dort gespeicherten Containerimages zu entfernen.
+Navigieren Sie zum Bereinigen von Ressourcen im Portal zur Ressourcengruppe **myResourceGroup** . Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen** , um die Ressourcengruppe, die Containerregistrierung und die dort gespeicherten Containerimages zu entfernen.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 

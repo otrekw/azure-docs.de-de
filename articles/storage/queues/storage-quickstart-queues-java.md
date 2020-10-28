@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90015023"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783435"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Java
 
@@ -33,14 +33,14 @@ Zusätzliche Ressourcen:
 * [API-Referenzdokumentation](/java/api/overview/azure/storage-queue-readme)
 * [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Beispiele](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Beispiele](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Java Development Kit (JDK)](/java/azure/jdk/), Version 8 oder höher
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-Konto – [Erstellen eines Speicherkontos](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -48,9 +48,9 @@ In diesem Abschnitt wird beschrieben, wie Sie ein Projekt zur Verwendung mit der
 
 ### <a name="create-the-project"></a>Erstellen des Projekts
 
-Erstellen Sie eine Java-Anwendung mit dem Namen *queues-quickstart-v12*.
+Erstellen Sie eine Java-Anwendung mit dem Namen *queues-quickstart-v12* .
 
-1. Verwenden Sie Maven in einem Konsolenfenster (z. B. der Befehlszeile, PowerShell oder Bash), um eine neue Konsolen-App mit dem Namen *queues-quickstart-v12* zu erstellen. Geben Sie den folgenden **mvn**-Befehl ein, um ein „Hallo Welt!“ -Java-Projekt zu erstellen.
+1. Verwenden Sie Maven in einem Konsolenfenster (z. B. der Befehlszeile, PowerShell oder Bash), um eine neue Konsolen-App mit dem Namen *queues-quickstart-v12* zu erstellen. Geben Sie den folgenden **mvn** -Befehl ein, um ein „Hallo Welt!“ -Java-Projekt zu erstellen.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \
@@ -97,7 +97,7 @@ Erstellen Sie eine Java-Anwendung mit dem Namen *queues-quickstart-v12*.
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. Wechseln Sie zum neu erstellten Verzeichnis *queues-quickstart-v12*.
+1. Wechseln Sie zum neu erstellten Verzeichnis *queues-quickstart-v12* .
 
    ```console
    cd queues-quickstart-v12
@@ -119,7 +119,7 @@ Erstellen Sie eine Java-Anwendung mit dem Namen *queues-quickstart-v12*.
 
 Über das Projektverzeichnis:
 
-1. Navigieren Sie zum Verzeichnis */src/main/java/com/queues/quickstart*.
+1. Navigieren Sie zum Verzeichnis */src/main/java/com/queues/quickstart* .
 1. Öffnen Sie die Datei *App.java* im Editor.
 1. Löschen Sie die Anweisung `System.out.println("Hello world!");`.
 1. Fügen Sie Anweisungen vom Typ `import` hinzu.
@@ -363,7 +363,7 @@ Done
 
 Wenn die App vor dem Empfangen von Nachrichten angehalten wird, überprüfen Sie Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com). Überprüfen Sie, ob sich in der Warteschlange Nachrichten befinden.
 
-Drücken Sie die **EINGABETASTE**, um Nachrichten zu empfangen und zu löschen. Wenn Sie dazu aufgefordert werden, drücken Sie erneut die **EINGABETASTE**, um die Warteschlange zu löschen und die Demo zu beenden.
+Drücken Sie die **EINGABETASTE** , um Nachrichten zu empfangen und zu löschen. Wenn Sie dazu aufgefordert werden, drücken Sie erneut die **EINGABETASTE** , um die Warteschlange zu löschen und die Demo zu beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939201"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783469"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET
 
@@ -34,12 +34,12 @@ Zusätzliche Ressourcen:
 * [API-Referenzdokumentation](/dotnet/api/azure.storage.queues)
 * [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Beispiele](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-Konto – [Erstellen eines Speicherkontos](../common/storage-account-create.md)
 * Aktuelles [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) für Ihr Betriebssystem. Laden Sie unbedingt das SDK und nicht die Runtime herunter.
 
 ## <a name="setting-up"></a>Einrichten
@@ -48,15 +48,15 @@ In diesem Abschnitt wird beschrieben, wie Sie ein Projekt zur Verwendung mit der
 
 ### <a name="create-the-project"></a>Erstellen des Projekts
 
-Erstellen Sie eine .NET Core-Anwendung mit dem Namen *QueuesQuickstartV12*.
+Erstellen Sie eine .NET Core-Anwendung mit dem Namen *QueuesQuickstartV12* .
 
-1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen *QueuesQuickstartV12*. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: *Program.cs*.
+1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen *QueuesQuickstartV12* . Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: *Program.cs* .
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. Wechseln Sie zum neu erstellten Verzeichnis *QueuesQuickstartV12*.
+1. Wechseln Sie zum neu erstellten Verzeichnis *QueuesQuickstartV12* .
 
    ```console
    cd QueuesQuickstartV12
@@ -77,7 +77,7 @@ dotnet add package Azure.Storage.Queues
 1. Öffnen Sie die Datei *Program.cs* im Editor.
 1. Entfernen Sie die Anweisung `Console.WriteLine("Hello World!");`.
 1. Fügen Sie Anweisungen vom Typ `using` hinzu.
-1. Aktualisieren der `Main`-Methodendeklaration zur [Unterstützung von asynchronem Code](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)
+1. Aktualisieren der `Main`-Methodendeklaration zur [Unterstützung von asynchronem Code](/dotnet/csharp/whats-new/csharp-7#async-main)
 
 
 
@@ -325,7 +325,7 @@ Done
 
 Wenn die App vor dem Empfangen von Nachrichten angehalten wird, überprüfen Sie Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com). Überprüfen Sie, ob sich in der Warteschlange Nachrichten befinden.
 
-Drücken Sie die **EINGABETASTE**, um Nachrichten zu empfangen und zu löschen. Wenn Sie dazu aufgefordert werden, drücken Sie erneut die **EINGABETASTE**, um die Warteschlange zu löschen und die Demo zu beenden.
+Drücken Sie die **EINGABETASTE** , um Nachrichten zu empfangen und zu löschen. Wenn Sie dazu aufgefordert werden, drücken Sie erneut die **EINGABETASTE** , um die Warteschlange zu löschen und die Demo zu beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -334,7 +334,7 @@ In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe von asynchro
 Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Azure für .NET- und .NET Core-Entwickler](https://docs.microsoft.com/dotnet/azure/)
+> [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/)
 
 * Weitere Informationen finden Sie unter [Azure Storage libraries for .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage) (Azure Storage-Bibliotheken für .NET).
 * Weitere Beispiel-Apps für Azure Queue Storage finden Sie bei den [Azure.Storage.Queues Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) (Azure.Storage.Queues-Beispielen).

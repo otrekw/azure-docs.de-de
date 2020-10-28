@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84667640"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791068"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen von SQL Server 2017 auf einem virtuellen Windows-Computer im Azure-Portal
 
@@ -49,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
    ![Fenster „Neue Suche“](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
    ![Fenster „Neue Suche“](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 
@@ -64,7 +64,7 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
 1. Gehen Sie unter **Instanzendetails** wie folgt vor:
     1. Geben Sie unter **Name des virtuellen Computers** den Namen _SQLVM_ ein. 
     1. Wählen Sie unter **Region** einen Standort aus. 
-    1. Übernehmen Sie für diese Schnellstartanleitung für **Verfügbarkeitsoptionen** die Einstellung _Keine Infrastrukturredundanz erforderlich_. Weitere Informationen zu Verfügbarkeitsoptionen finden Sie unter [Verfügbarkeit](../../../virtual-machines/windows/availability.md). 
+    1. Übernehmen Sie für diese Schnellstartanleitung für **Verfügbarkeitsoptionen** die Einstellung _Keine Infrastrukturredundanz erforderlich_ . Weitere Informationen zu Verfügbarkeitsoptionen finden Sie unter [Verfügbarkeit](../../../virtual-machines/availability.md). 
     1. Wählen Sie in der Liste unter **Image** die Option _Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016_ aus. 
     1. Wählen Sie unter **Größe** die Option **Größe ändern** aus, um die Größe des virtuellen Computers anzupassen, und wählen Sie das Angebot **Basic A2** aus. Bereinigen Sie unbedingt die Ressourcen, wenn Sie fertig sind, um unerwartete Gebühren zu vermeiden. 
 
@@ -106,15 +106,15 @@ Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schal
 1. Öffnen Sie [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) auf einem anderen Computer mit Internetverbindung.
 
 
-1. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbank-Engine herstellen** den Wert **Servername**. Geben Sie die öffentliche IP-Adresse des virtuellen Computers ein. Fügen Sie dann ein Komma und den benutzerdefinierten Port (**1401**) hinzu, den Sie beim Konfigurieren des neuen virtuellen Computers angegeben haben. Beispiel: `11.22.33.444,1401`.
+1. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbank-Engine herstellen** den Wert **Servername** . Geben Sie die öffentliche IP-Adresse des virtuellen Computers ein. Fügen Sie dann ein Komma und den benutzerdefinierten Port ( **1401** ) hinzu, den Sie beim Konfigurieren des neuen virtuellen Computers angegeben haben. Beispiel: `11.22.33.444,1401`.
 
-1. Wählen Sie im Feld **Authentifizierung** den Eintrag **SQL Server-Authentifizierung**.
+1. Wählen Sie im Feld **Authentifizierung** den Eintrag **SQL Server-Authentifizierung** .
 
 1. Geben Sie im Feld **Anmelden** einen gültigen SQL-Anmeldenamen ein.
 
 1. Geben Sie im Feld **Kennwort** das Kennwort für die Anmeldung ein.
 
-1. Wählen Sie **Verbinden**.
+1. Wählen Sie **Verbinden** .
 
     ![SSMS-Verbindung](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 

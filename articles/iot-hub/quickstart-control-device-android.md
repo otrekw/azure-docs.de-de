@@ -11,14 +11,15 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: bd23483997b94f16e926c2849e0879b41316fba3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a1166874ed743efa599743fa6db8341e94c0fe1f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148898"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747669"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
 
@@ -66,9 +67,9 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 1. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen.
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
+   **YourIoTHubName** : Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
-   **MyAndroidDevice**: Der Name des Geräts, das Sie registrieren. Es empfiehlt sich, **MyAndroidDevice** wie gezeigt zu verwenden. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
+   **MyAndroidDevice** : Der Name des Geräts, das Sie registrieren. Es empfiehlt sich, **MyAndroidDevice** wie gezeigt zu verwenden. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -77,7 +78,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 2. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
+   **YourIoTHubName** : Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -94,9 +95,9 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 ## <a name="retrieve-the-service-connection-string"></a>Abrufen der Verbindungszeichenfolge für den Dienst
 
-Darüber hinaus benötigen Sie eine _Dienstverbindungszeichenfolge_, damit die Back-End-Dienstanwendung eine Verbindung mit Ihrem IoT-Hub herstellen und dann Methoden ausführen und Nachrichten abrufen kann. Der folgende Befehl ruft die Dienstverbindungszeichenfolge für Ihre IoT Hub-Instanz ab:
+Darüber hinaus benötigen Sie eine _Dienstverbindungszeichenfolge_ , damit die Back-End-Dienstanwendung eine Verbindung mit Ihrem IoT-Hub herstellen und dann Methoden ausführen und Nachrichten abrufen kann. Der folgende Befehl ruft die Dienstverbindungszeichenfolge für Ihre IoT Hub-Instanz ab:
 
-**YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
+**YourIoTHubName** : Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -114,7 +115,7 @@ Beide Beispiele für diese Schnellstartanleitung finden Sie im Repository „azu
 
 Die Geräte-SDK-Beispielanwendung kann auf einem physischen Android-Gerät oder in einem Android-Emulator ausgeführt werden. Die Beispielanwendung stellt eine Verbindung mit einem gerätespezifischen Endpunkt auf Ihrem IoT-Hub her, sendet simulierte Telemetriedaten und lauscht auf Aufrufe direkter Methoden aus Ihrem Hub. In dieser Schnellstartanleitung weist der Aufruf einer direkten Methode aus dem Hub das Gerät an, das Intervall zu ändern, in dem es Telemetriedaten sendet. Das simulierte Gerät sendet eine Bestätigung an Ihren Hub, nachdem es die direkte Methode ausgeführt hat.
 
-1. Öffnen Sie das Android-Beispielprojekt von GitHub in Android Studio. Das Projekt befindet sich im folgenden Verzeichnis Ihrer geklonten oder heruntergeladenen Kopie des Repositorys [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java): *\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample*.
+1. Öffnen Sie das Android-Beispielprojekt von GitHub in Android Studio. Das Projekt befindet sich im folgenden Verzeichnis Ihrer geklonten oder heruntergeladenen Kopie des Repositorys [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java): *\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample* .
 
 2. Öffnen Sie in Android Studio die Datei *gradle.properties* für das Beispielprojekt, und ersetzen Sie den Platzhalter **Device_Connection_String** durch die zuvor notierte Geräteverbindungszeichenfolge.
 
@@ -144,7 +145,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](/c
 
 1. Führen Sie über Azure Cloud Shell den folgenden Befehl aus, um eine Verbindung mit Ihrem IoT-Hub herzustellen und Nachrichten zu lesen:
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
+   **YourIoTHubName** : Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name {YourIoTHubName} --output table
@@ -164,7 +165,7 @@ Führen Sie diese App auf einem separaten physischen Android-Gerät oder in eine
 
 Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt, um die Risiken im Zusammenhang mit der vertraulichen Verbindungszeichenfolge, die alle Geräte in einer IoT Hub-Instanz steuert, zu verringern. In diesem Beispiel wird sie nur zu Demonstrationszwecken als Android-App ausgeführt. Die anderen Sprachversionen in dieser Schnellstartanleitung enthalten Beispiele, die stärker auf eine typische Back-End-Dienstanwendung ausgerichtet sind.
 
-1. Öffnen Sie das Android-Dienstbeispielprojekt von GitHub in Android Studio. Das Projekt befindet sich im folgenden Verzeichnis Ihrer geklonten oder heruntergeladenen Kopie des Repositorys [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java): *\azure-iot-samples-java\iot-hub\Samples\service\AndroidSample*.
+1. Öffnen Sie das Android-Dienstbeispielprojekt von GitHub in Android Studio. Das Projekt befindet sich im folgenden Verzeichnis Ihrer geklonten oder heruntergeladenen Kopie des Repositorys [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java): *\azure-iot-samples-java\iot-hub\Samples\service\AndroidSample* .
 
 2. Öffnen Sie in Android Studio *gradle.properties* für das Beispielprojekt. Aktualisieren Sie den Wert der Eigenschaften **ConnectionString** und **DeviceId** mit der zuvor notierten Dienstverbindungszeichenfolge und der registrierten Android-Geräte-ID.
 
@@ -183,7 +184,7 @@ Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt
 
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem separaten physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).
 
-5. Aktualisieren Sie nach dem Laden der App den Wert **Set Messaging Interval** (Nachrichtenintervall festlegen) auf **1000**, und klicken Sie auf **Invoke** (Aufrufen).
+5. Aktualisieren Sie nach dem Laden der App den Wert **Set Messaging Interval** (Nachrichtenintervall festlegen) auf **1000** , und klicken Sie auf **Invoke** (Aufrufen).
 
     Das Intervall für Telemetrienachrichten wird in Millisekunden angegeben. Das Telemetriestandardintervall des Gerätebeispiels wird auf fünf Sekunden festgelegt. Mit dieser Änderung wird das Android-IoT-Gerät aktualisiert, sodass Telemetriedaten jede Sekunde gesendet werden.
 

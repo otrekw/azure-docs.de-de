@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: a4a666423c6f5a76d69f572f6d8b86a022bf3e30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443136"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781055"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Elastische Abfragen können nun SQL-Parameter zur Ausführung an die Remotedaten
 
 ### <a name="stored-procedure-execution"></a>Ausführen gespeicherter Prozeduren
 
-Führen Sie remote gespeicherte Prozeduraufrufe oder Remotefunktionen mithilfe von [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) durch.
+Führen Sie remote gespeicherte Prozeduraufrufe oder Remotefunktionen mithilfe von [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) durch.
 
 ### <a name="flexibility"></a>Flexibilität
 
@@ -87,10 +87,10 @@ Eine elastische Abfrage kann verwendet werden, um Daten in einer Datenbank in Az
 
 Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für Szenarien mit vertikaler Partitionierung, die Zugriff auf eine Tabelle in Remotedatenbanken in Azure SQL-Datenbank mit demselben Schema erfordern:
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource of type **RDBMS**
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource of type **RDBMS**
+* [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 Nach Ausführen der DDL-Anweisungen können Sie auf die Remotetabelle „mytable“ wie auf eine lokale Tabelle zugreifen. Azure SQL-Datenbank öffnet automatisch eine Verbindung mit der Remotedatenbank, verarbeitet Ihre Anforderung an die Remotedatenbank und gibt die Ergebnisse zurück.
 
@@ -108,11 +108,11 @@ Das Verwenden einer elastischen Abfrage für Berichtsaufgaben auf einer Datenebe
 
 Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für Szenarios mit horizontaler Partitionierung, die Zugriff auf eine Gruppe von Tabellen in (üblicherweise) mehreren Remotedatenbanken in Azure SQL-Datenbank erfordern:
 
-* [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * Erstellen Sie eine [Shardzuordnung](elastic-scale-shard-map-management.md) , die Ihre Datenebene darstellt, mithilfe der Clientbibliothek für elastische Datenbanken.
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource of type **SHARD_MAP_MANAGER**
-* [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
+* [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource of type **SHARD_MAP_MANAGER**
+* [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 Nachdem Sie diese Schritte ausgeführt haben können Sie auf die horizontal partitionierte Tabelle „mytable“ wie auf eine lokale Tabelle zugreifen. Azure SQL-Datenbank öffnet automatisch mehrere parallele Verbindungen mit den Remotedatenbanken, in denen die Tabellen physisch gespeichert sind, verarbeitet die Anforderungen an die Remotedatenbanken und gibt die Ergebnisse zurück.
 Weitere Informationen zu den Schritten, die für das Szenario der horizontalen Partitionierung erforderlich sind, finden Sie unter [Elastische Abfrage für die horizontale Partitionierung](elastic-query-horizontal-partitioning.md).
@@ -120,7 +120,7 @@ Weitere Informationen zu den Schritten, die für das Szenario der horizontalen P
 Lesen Sie zum Einstieg in die Programmierung [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](elastic-query-getting-started.md).
 
 > [!IMPORTANT]
-> Die erfolgreiche Ausführung elastischer Abfragen für eine große Anzahl von Datenbanken hängt stark von der Verfügbarkeit der einzelnen Datenbanken während der Abfrageausführung ab. Wenn eine der Datenbanken nicht verfügbar ist, kann die gesamte Abfrage nicht ausgeführt werden. Wenn Sie mehrere Hundert oder Tausend Datenbanken gleichzeitig abfragen möchten, stellen Sie sicher, dass in die Clientanwendung Wiederholungslogik eingebettet ist, oder nutzen Sie [Aufträge für die elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (Vorschauversion), um kleinere Teilmengen der Datenbanken abzufragen, und führen Sie die Ergebnisse der einzelnen Abfragen in einem einzigen Ziel zusammen.
+> Die erfolgreiche Ausführung elastischer Abfragen für eine große Anzahl von Datenbanken hängt stark von der Verfügbarkeit der einzelnen Datenbanken während der Abfrageausführung ab. Wenn eine der Datenbanken nicht verfügbar ist, kann die gesamte Abfrage nicht ausgeführt werden. Wenn Sie mehrere Hundert oder Tausend Datenbanken gleichzeitig abfragen möchten, stellen Sie sicher, dass in die Clientanwendung Wiederholungslogik eingebettet ist, oder nutzen Sie [Aufträge für die elastische Datenbanken](./job-automation-overview.md#elastic-database-jobs-preview) (Vorschauversion), um kleinere Teilmengen der Datenbanken abzufragen, und führen Sie die Ergebnisse der einzelnen Abfragen in einem einzigen Ziel zusammen.
 
 ## <a name="t-sql-querying"></a>T-SQL-Abfragen
 
@@ -158,7 +158,7 @@ Geben Sie uns unten, in den MSDN-Foren oder auf Stack Overflow Feedback zu Ihrer
 * Die Syntax und Beispiele für Abfragen von vertikal partitionierten Daten finden Sie unter [Abfragen von vertikal partitionierten Daten](elastic-query-vertical-partitioning.md).
 * Ein Tutorial zur horizontalen Partitionierung (Sharding) finden Sie unter [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](elastic-query-getting-started.md).
 * Die Syntax und Beispiele für Abfragen von horizontal partitionierten Daten finden Sie unter [Abfragen von horizontal partitionierten Daten](elastic-query-horizontal-partitioning.md).
-* Unter [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) finden Sie eine gespeicherte Prozedur, mit der eine Transact-SQL-Anweisung für eine einzelne Remoteinstanz von Azure SQL-Datenbank oder für eine Gruppe von Datenbanken ausgeführt wird, die als Shards in einem Schema mit horizontaler Partitionierung dienen.
+* Unter [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) finden Sie eine gespeicherte Prozedur, mit der eine Transact-SQL-Anweisung für eine einzelne Remoteinstanz von Azure SQL-Datenbank oder für eine Gruppe von Datenbanken ausgeführt wird, die als Shards in einem Schema mit horizontaler Partitionierung dienen.
 
 <!--Image references-->
 [1]: ./media/elastic-query-overview/overview.png

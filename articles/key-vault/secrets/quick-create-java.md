@@ -2,18 +2,18 @@
 title: 'Schnellstart: Azure Key Vault-Clientbibliothek für Java'
 description: Hier finden Sie Format- und Inhaltskriterien für das Schreiben von Schnellstartanleitungen für Azure SDK-Clientbibliotheken.
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019629"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786206"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Java
 
@@ -37,7 +37,7 @@ In diesem Schnellstart wird davon ausgegangen, dass Sie die [Azure CLI](/cli/azu
 
 ## <a name="setting-up"></a>Einrichten
 
-In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/java/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

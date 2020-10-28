@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082695069a66efb3919be0667407ba73d963c572
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91285331"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889951"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -60,29 +60,29 @@ Azure Maps besteht aus den folgenden Diensten, die für Ihre Azure-Anwendungen g
 
 ### <a name="data-service"></a>Datendienst
 
-Daten sind für Karten unverzichtbar. Mit dem Datendienst können Sie räumliche Daten zur Verwendung mit räumlichen Vorgängen oder mit der Bildkomposition hochladen und speichern.  Durch die Einbindung von Kundendaten in den Azure Maps-Dienst verringern Sie die Wartezeit und steigern die Produktivität und können neue Szenarien in Ihren Anwendungen erstellen. Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Datendienst](https://docs.microsoft.com/rest/api/maps/data).
+Daten sind für Karten unverzichtbar. Mit dem Datendienst können Sie räumliche Daten zur Verwendung mit räumlichen Vorgängen oder mit der Bildkomposition hochladen und speichern.  Durch die Einbindung von Kundendaten in den Azure Maps-Dienst verringern Sie die Wartezeit und steigern die Produktivität und können neue Szenarien in Ihren Anwendungen erstellen. Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Datendienst](/rest/api/maps/data).
 
 ### <a name="geolocation-service"></a>Geolocation-Dienst
 
 Mit dem Geolocationdienst können Sie eine Vorschau für den abgerufenen zweistelligen Länder-/Regionscode für eine IP-Adresse erstellen. Mithilfe dieses Diensts können Sie die Benutzeroberfläche verbessern, indem Sie angepasste Anwendungsinhalte auf der Grundlage des geografischen Standorts bereitstellen.
 
-Weitere Informationen finden Sie in der [Dokumentation zum Geolocationdienst](https://docs.microsoft.com/rest/api/maps/geolocation).
+Weitere Informationen finden Sie in der [Dokumentation zum Geolocationdienst](/rest/api/maps/geolocation).
 
 ### <a name="mobility-service"></a>Mobilitätsdienst
 
 Der Mobilitätsdienst für Azure Maps verbessert die Entwicklungszeit für Anwendungen mit Features für den öffentlichen Nahverkehr, z. B. Verkehrsroutenplanung und Suche nach nahe gelegenen Haltestellen des öffentlichen Nahverkehrs. Benutzer können ausführliche Informationen zu Haltestellen, Linien und Fahrplänen abrufen. Der Mobilitätsdienst ermöglicht Benutzern außerdem das Abrufen von Geometrien für Haltestellen und Fahrpläne, Warnungen für Haltestellen, Linien und Betriebsbereiche sowie Ankunfts- und Betriebsbenachrichtigungen in Echtzeit für den öffentlichen Nahverkehr. Darüber hinaus bietet der Mobilitätsdienst Routenplanungsfunktionen mit Optionen für eine multimodale Routenplanung. Bei der multimodalen Routenplanung werden Optionen für Fußgänger und Fahrradfahrer sowie öffentliche Verkehrsmittel für eine Strecke berücksichtigt. Benutzer können auf detaillierte und multimodale ausführliche Routen zugreifen.
 
-Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Mobilitätsdienst](https://docs.microsoft.com/rest/api/maps/mobility).
+Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Mobilitätsdienst](/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Renderingdienst
 
-Mit dem [Renderingdienst V2](https://docs.microsoft.com/rest/api/maps/renderv2), der sich jetzt in der Vorschauphase befindet, wird eine neue Version der [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
+Mit dem [Renderingdienst V2](/rest/api/maps/renderv2), der sich jetzt in der Vorschauphase befindet, wird eine neue Version der [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Beispielkarte zur Bevölkerungsentwicklung, erstellt mit dem Azure Maps Web SDK":::
 
-Weitere Informationen finden Sie in der [Dokumentation zum Renderingdienst V2](https://docs.microsoft.com/rest/api/maps/renderv2).
+Weitere Informationen finden Sie in der [Dokumentation zum Renderingdienst V2](/rest/api/maps/renderv2).
 
-Weitere Informationen zum Renderingdienst V1, der allgemein verfügbar ist (GA), finden Sie in der [Dokumentation zum Renderingdienst V1](https://docs.microsoft.com/rest/api/maps/render).  
+Weitere Informationen zum Renderingdienst V1, der allgemein verfügbar ist (GA), finden Sie in der [Dokumentation zum Renderingdienst V1](/rest/api/maps/render).  
 
 ### <a name="route-service"></a>Routendienst
 
@@ -96,7 +96,7 @@ Der Routendienst bietet erweiterte Gruppenfunktionen, beispielsweise:
 * Matrizen für Fahrzeit und Entfernung zwischen verschiedenen Ausgangsorten und Zielen
 * Ermittlung von Routen oder Entfernungen, die Benutzer basierend auf Zeit- oder Kraftstoffanforderungen zurücklegen können
 
-Ausführliche Informationen zu den Routingfunktionen finden Sie in der [Dokumentation zum Routendienst](https://docs.microsoft.com/rest/api/maps/route).
+Ausführliche Informationen zu den Routingfunktionen finden Sie in der [Dokumentation zum Routendienst](/rest/api/maps/route).
 
 ### <a name="search-service"></a>Suchdienst
 
@@ -111,13 +111,13 @@ Der Suchdienst umfasst außerdem erweiterte Funktionen, beispielsweise:
 * Zusammenfassen einer Gruppe von Suchanfragen zu einem Batch
 * Suchen von Ladestationen für Elektrofahrzeuge und Point of Interest-Daten (POI) nach Markennamen.
 
-Weitere Informationen zu den Suchfunktionen finden Sie in der [Dokumentation zum Suchdienst](https://docs.microsoft.com/rest/api/maps/search).
+Weitere Informationen zu den Suchfunktionen finden Sie in der [Dokumentation zum Suchdienst](/rest/api/maps/search).
 
 ### <a name="spatial-service"></a>Räumlicher Dienst
 
 Der räumliche Dienst analysiert schnell Standortinformationen, um Kunden über aktuelle Ereignisse zu informieren. Er ermöglicht die Analyse- und Vorhersagemodellierung von Ereignissen nahezu in Echtzeit.
 
-Mithilfe des Diensts können Kunden ihre Location Intelligence mit einer Bibliothek aus gängigen räumlichen Berechnungen optimieren. Zu diesen gängigen Berechnungen zählen beispielsweise nächstgelegener Punkt, Großkreisabstand und Puffer. Weitere Informationen zum Dienst und zu den verschiedenen Funktionen finden Sie in der [Dokumentation zum räumlichen Dienst](https://docs.microsoft.com/rest/api/maps/spatial).
+Mithilfe des Diensts können Kunden ihre Location Intelligence mit einer Bibliothek aus gängigen räumlichen Berechnungen optimieren. Zu diesen gängigen Berechnungen zählen beispielsweise nächstgelegener Punkt, Großkreisabstand und Puffer. Weitere Informationen zum Dienst und zu den verschiedenen Funktionen finden Sie in der [Dokumentation zum räumlichen Dienst](/rest/api/maps/spatial).
 
 ### <a name="timezone-service"></a>Zeitzonendienst
 
@@ -155,7 +155,7 @@ Eine typische JSON-Antwort für eine Abfrage mit dem Zeitzonendienst sieht wie f
 }
 ```
 
-Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Zeitzonendienst](https://docs.microsoft.com/rest/api/maps/timezone).
+Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Zeitzonendienst](/rest/api/maps/timezone).
 
 ### <a name="traffic-service"></a>Verkehrsinfodienst
 
@@ -166,15 +166,15 @@ Der Verkehrsinfodienst ist eine Suite von Webdiensten, mit denen Entwickler webb
 
 ![Beispiel für eine Karte mit Verkehrsinformationen](media/about-azure-maps/intro_traffic.png)
 
-Weitere Informationen finden Sie in der [Dokumentation zum Verkehrsinfodienst](https://docs.microsoft.com/rest/api/maps/traffic).
+Weitere Informationen finden Sie in der [Dokumentation zum Verkehrsinfodienst](/rest/api/maps/traffic).
 
 ### <a name="weather-service"></a>Wetterdienst
 
 Der Wetterinfodienst bietet APIs, mit denen Entwickler Wetterinformationen für einen bestimmten Standort abrufen können. Die Informationen enthalten Details wie z. B das Datum und die Uhrzeit der Beobachtung, eine kurze Beschreibung der Wetterbedingungen, das Wettersymbol, Niederschlagsanzeigen, Temperatur und Windgeschwindigkeit. Weitere Details, wie z. B. RealFeel™-Temperatur und UV-Index, werden ebenfalls zurückgegeben.
 
-Entwickler können die [Get Weather along Route-API](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) verwenden, um Wetterinformationen auf einer bestimmten Route abzurufen. Außerdem unterstützt der Dienst die Generierung von Wetterbenachrichtigungen für Wegpunkte, die von Wetterrisiken betroffenen sind, z. B. Überflutung oder starker Regen.
+Entwickler können die [Get Weather along Route-API](/rest/api/maps/weather/getweatheralongroutepreview) verwenden, um Wetterinformationen auf einer bestimmten Route abzurufen. Außerdem unterstützt der Dienst die Generierung von Wetterbenachrichtigungen für Wegpunkte, die von Wetterrisiken betroffenen sind, z. B. Überflutung oder starker Regen.
 
-Mit der [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) können Sie frühere, aktuelle und zukünftige Radar- und Satellitenkacheln anfordern.
+Mit der [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) können Sie frühere, aktuelle und zukünftige Radar- und Satellitenkacheln anfordern.
 
 ![Beispiel für Karte Echtzeit-Wetterradarkacheln](media/about-azure-maps/intro_weather.png)
 
@@ -184,21 +184,21 @@ Der Kartenerstellungsdienst ist eine Suite von Webdiensten, mit denen Entwickler
 
 Die Kartenerstellung stellt drei Kerndienste bereit:
 
-* [Datasetdienst](https://docs.microsoft.com/rest/api/maps/dataset). Verwenden Sie den Datasetdienst, um aus einem konvertierten Zeichnungspaket ein Dataset zu erstellen. Informationen zum den Anforderungen für Zeichnungspakete finden Sie unter Anforderungen für Zeichnungspakete.
+* [Datasetdienst](/rest/api/maps/dataset). Verwenden Sie den Datasetdienst, um aus einem konvertierten Zeichnungspaket ein Dataset zu erstellen. Informationen zum den Anforderungen für Zeichnungspakete finden Sie unter Anforderungen für Zeichnungspakete.
 
-* [Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/dataset). Verwenden Sie den Konvertierungsdienst, um eine DWG-Designdatei in Zeichnungspaketdaten für die Karten zu konvertieren.
+* [Konvertierungsdienst](/rest/api/maps/dataset). Verwenden Sie den Konvertierungsdienst, um eine DWG-Designdatei in Zeichnungspaketdaten für die Karten zu konvertieren.
 
-* [Kachelsetdienst](https://docs.microsoft.com/rest/api/maps/tileset). Verwenden Sie den Kachelsetdienst, um eine vektorbasierte Darstellung eines Datasets zu erstellen. Anwendungen können ein Kachelset verwenden, um eine auf visuellen Kacheln basierende Ansicht des Datasets darzustellen.
+* [Kachelsetdienst](/rest/api/maps/tileset). Verwenden Sie den Kachelsetdienst, um eine vektorbasierte Darstellung eines Datasets zu erstellen. Anwendungen können ein Kachelset verwenden, um eine auf visuellen Kacheln basierende Ansicht des Datasets darzustellen.
 
-* [Featurezustandsdienst](https://docs.microsoft.com/rest/api/maps/featurestate). Verwenden Sie den Featurezustandsdienst, um dynamische Kartenstile zu unterstützen. Dynamische Kartenstile ermöglichen es, dass Anwendungen Echtzeitereignisse in von IoT-Systemen bereitgestellten Bereichen darstellen.
+* [Featurezustandsdienst](/rest/api/maps/featurestate). Verwenden Sie den Featurezustandsdienst, um dynamische Kartenstile zu unterstützen. Dynamische Kartenstile ermöglichen es, dass Anwendungen Echtzeitereignisse in von IoT-Systemen bereitgestellten Bereichen darstellen.
 
-* [WFS-Dienst](https://docs.microsoft.com/rest/api/maps/featurestate). Verwenden Sie den WFS-Dienst, um Ihre Gebäudeplandaten abzufragen. Der WFS-Dienst folgt den Standards der [Open Geospatial Consortium-API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) zum Abfragen eines einzelnen Datasets.
+* [WFS-Dienst](/rest/api/maps/featurestate). Verwenden Sie den WFS-Dienst, um Ihre Gebäudeplandaten abzufragen. Der WFS-Dienst folgt den Standards der [Open Geospatial Consortium-API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) zum Abfragen eines einzelnen Datasets.
 
 ## <a name="programming-model"></a>Programmiermodell
 
-Azure Maps ist auf Mobilität ausgelegt und kann zum Entwickeln plattformübergreifender Anwendungen eingesetzt werden. Es wird ein Programmiermodell genutzt, das sprachunabhängig ist und die JSON-Ausgabe über [REST-APIs](https://docs.microsoft.com/rest/api/maps/) unterstützt.
+Azure Maps ist auf Mobilität ausgelegt und kann zum Entwickeln plattformübergreifender Anwendungen eingesetzt werden. Es wird ein Programmiermodell genutzt, das sprachunabhängig ist und die JSON-Ausgabe über [REST-APIs](/rest/api/maps/) unterstützt.
 
-Darüber hinaus bietet Azure Maps ein praktisches [JavaScript-Kartensteuerelement](https://docs.microsoft.com/javascript/api/azure-maps-control) mit einem einfachen Programmiermodell. Dies ermöglicht eine schnelle und einfache Entwicklung für webbasierte und mobile Anwendungen.
+Darüber hinaus bietet Azure Maps ein praktisches [JavaScript-Kartensteuerelement](/javascript/api/azure-maps-control) mit einem einfachen Programmiermodell. Dies ermöglicht eine schnelle und einfache Entwicklung für webbasierte und mobile Anwendungen.
 
 ## <a name="power-bi-visual"></a>Power BI-Visualisierung
 

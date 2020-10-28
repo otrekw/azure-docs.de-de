@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
+ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e1df230a49ca5483d0ab091da11530786c829ca8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b6b02348f9d77348976f6b814c982c5250dab7aa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042642"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896513"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App
 
@@ -51,12 +52,12 @@ Für diese Schnellstartanleitung ist [.NET Core 3.1](https://www.microsoft.com/
 > 1. Navigieren Sie in Microsoft Identity Platform für Entwickler zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908), indem Sie in der Suchleiste des Azure-Portals nach **App-Registrierungen** suchen.
 > 1. Wählen Sie **Neue Registrierung** aus.
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein.
-> 1. Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird, z.B. `Daemon-console`. Wählen Sie anschließend **Registrieren**, um die Anwendung zu erstellen.
-> 1. Wählen Sie nach Abschluss der Registrierung das Menü **Zertifikate & Geheimnisse**.
-> 1. Wählen Sie unter **Geheime Clientschlüssel** die Option **+ Neuer geheimer Clientschlüssel**. Geben Sie ihm einen Namen, und wählen Sie **Hinzufügen**. Kopieren Sie das Geheimnis an einen sicheren Speicherort. Sie benötigen das Geheimnis zur Verwendung in Ihrem Code, und es wird nicht erneut im Portal angezeigt.
-> 1. Wählen Sie nun das Menü **API-Berechtigungen**, die Schaltfläche **+ Berechtigung hinzufügen** und dann die Option **Microsoft Graph**.
-> 1. Wählen Sie **Anwendungsberechtigungen**.
-> 1. Wählen Sie unter dem Knoten **Benutzer** die Option **User.Read.All** und dann **Berechtigungen hinzufügen**.
+> 1. Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird, z.B. `Daemon-console`. Wählen Sie anschließend **Registrieren** , um die Anwendung zu erstellen.
+> 1. Wählen Sie nach Abschluss der Registrierung das Menü **Zertifikate & Geheimnisse** .
+> 1. Wählen Sie unter **Geheime Clientschlüssel** die Option **+ Neuer geheimer Clientschlüssel** . Geben Sie ihm einen Namen, und wählen Sie **Hinzufügen** . Kopieren Sie das Geheimnis an einen sicheren Speicherort. Sie benötigen das Geheimnis zur Verwendung in Ihrem Code, und es wird nicht erneut im Portal angezeigt.
+> 1. Wählen Sie nun das Menü **API-Berechtigungen** , die Schaltfläche **+ Berechtigung hinzufügen** und dann die Option **Microsoft Graph** .
+> 1. Wählen Sie **Anwendungsberechtigungen** .
+> 1. Wählen Sie unter dem Knoten **Benutzer** die Option **User.Read.All** und dann **Berechtigungen hinzufügen** .
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Herunterladen und Konfigurieren Ihrer Schnellstart-App
@@ -89,9 +90,9 @@ Für diese Schnellstartanleitung ist [.NET Core 3.1](https://www.microsoft.com/
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 >
-> 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples**).
+> 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples** ).
 > 1. Öffnen Sie die Projektmappe in Visual Studio: **1-Call-MSGraph\daemon-console.sln** (optional).
-> 1. Bearbeiten Sie **appsettings.json**, und ersetzen Sie die Felder `ClientId`, `Tenant` und `ClientSecret` durch Folgendes:
+> 1. Bearbeiten Sie **appsettings.json** , und ersetzen Sie die Felder `ClientId`, `Tenant` und `ClientSecret` durch Folgendes:
 >
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
@@ -105,7 +106,7 @@ Für diese Schnellstartanleitung ist [.NET Core 3.1](https://www.microsoft.com/
 
 > [!div renderon="docs"]
 > > [!TIP]
-> > Die Werte für **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App. Navigieren Sie zum Generieren eines neuen Schlüssels zur Seite **Zertifikate & Geheimnisse**.
+> > Die Werte für **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App. Navigieren Sie zum Generieren eines neuen Schlüssels zur Seite **Zertifikate & Geheimnisse** .
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>Schritt 3: Administratorzustimmung
@@ -121,7 +122,7 @@ Wenn Sie zu diesem Zeitpunkt versuchen, die Anwendung auszuführen, wird der Feh
 > Wenn Sie globaler Mandantenadministrator sind, navigieren Sie im Azure-Portal zu **Unternehmensanwendungen** > klicken Sie auf Ihre App-Registrierung > wählen Sie im linken Navigationsbereich im Abschnitt „Sicherheit“ die Option **Berechtigungen** aus. Klicken Sie auf die große Schaltfläche mit der Bezeichnung **Administratorzustimmung für "{Mandantenname}" erteilen** (wobei {Mandantenname} der Name Ihres Verzeichnisses ist).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Gehen Sie als globaler Administrator wie folgt vor: Navigieren Sie zur Seite **API-Berechtigungen**, und wählen Sie **Administratorzustimmung für <Mandantennamen_hier_eingeben> erteilen**.
+> Gehen Sie als globaler Administrator wie folgt vor: Navigieren Sie zur Seite **API-Berechtigungen** , und wählen Sie **Administratorzustimmung für <Mandantennamen_hier_eingeben> erteilen** .
 > > [!div id="apipermissionspage"]
 > > [Navigieren Sie zur Seite „API-Berechtigungen“]().
 
@@ -147,9 +148,9 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>Schritt 5: Ausführen der Anwendung
 
-Wenn Sie Visual Studio oder Visual Studio für Mac verwenden, drücken Sie **F5**, um die Anwendung auszuführen. Führen Sie die Anwendung andernfalls über eine Eingabeaufforderung oder die Konsole oder ein Terminal aus:
+Wenn Sie Visual Studio oder Visual Studio für Mac verwenden, drücken Sie **F5** , um die Anwendung auszuführen. Führen Sie die Anwendung andernfalls über eine Eingabeaufforderung oder die Konsole oder ein Terminal aus:
 
-```console
+```dotnetcli
 cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
@@ -173,8 +174,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
 
  Sie können MSAL.NET installieren, indem Sie den folgenden Befehl in der **Paket-Manager-Konsole** von Visual Studio ausführen:
 
-```powershell twhitney
-```console
+```dotnetcli
 dotnet add package Microsoft.Identity.Client
 ```
 

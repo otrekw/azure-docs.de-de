@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87926721"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897261"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Was ist der Gastzugriff in Azure Active Directory-B2B?
 
@@ -74,8 +74,8 @@ Sie können die Gastbenutzerverwaltung an Anwendungsbesitzer delegieren, sodass 
 
 Integrieren Sie Ihre externen Partner entsprechend den Anforderungen Ihrer Organisation.
 
-- Konfigurieren Sie mit der [Azure AD-Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) Richtlinien, mit denen der [Zugriff für externer Benutzer verwaltet wird](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
-- Verwenden Sie die [Einladungs-API für die B2B-Zusammenarbeit](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation), um das Onboarding anzupassen.
+- Konfigurieren Sie mit der [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md) Richtlinien, mit denen der [Zugriff für externer Benutzer verwaltet wird](../governance/entitlement-management-external-users.md#how-access-works-for-external-users).
+- Verwenden Sie die [Einladungs-API für die B2B-Zusammenarbeit](/graph/api/resources/invitation), um das Onboarding anzupassen.
 
 ## <a name="integrate-with-identity-providers"></a>Integrieren mit Identitätsanbietern
 
@@ -95,6 +95,6 @@ Sie können auch [API-Connectors](api-connectors-overview.md) verwenden, um Ihre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Lizenzierungsanleitung für Azure AD-B2B-Zusammenarbeit](licensing-guidance.md)
+- [Preise für externe Identitäten](external-identities-pricing.md)
 - [Hinzufügen von Gastbenutzern für B2B-Zusammenarbeit im Portal](add-users-administrator.md)
 - [Verstehen, wie Einladungen eingelöst werden](redemption-experience.md)

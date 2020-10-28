@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ecd7e847a91847db8f57c640a374dc329fce7ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450351"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782942"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -173,7 +173,7 @@ Einige der in SQL Server verfügbaren SQL-Agent-Features werden in verwalteten I
 - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
 
-Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](/sql/ssms/agent/sql-server-agent).
 
 ## <a name="elastic-database-jobs-preview"></a>Aufträge für die elastische Datenbank (Vorschau)
 
@@ -210,7 +210,7 @@ Für die aktuelle Vorschauversion muss eine Datenbank in Azure SQL-Datenbank (S0
 
 Die *Auftragsdatenbank* muss nicht unbedingt neu, aber eine bereinigte, leere Datenbank mit dem Dienstziel S0 oder höher sein. Für die *Auftragsdatenbank* wird das Dienstziel S1 oder höher empfohlen, die optimale Wahl hängt jedoch von den Leistungsanforderungen Ihrer Aufträge ab (also von der Anzahl von Auftragsschritten, der Anzahl von Auftragszielen und der Ausführungshäufigkeit der Aufträge). Ein Beispiel: Für einen Auftrags-Agent, der nur wenige Aufträge pro Stunde für weniger als zehn Datenbanken ausführt, ist eine S0-Datenbank ggf. ausreichend. Wenn Sie jedoch Aufträge im Minutentakt ausführen möchten, ist eine S0-Datenbank möglicherweise nicht schnell genug, und es empfiehlt sich ggf. die Verwendung einer höheren Dienstebene.
 
-Sollten Vorgänge für die Auftragsdatenbank unerwartet langsam sein, [überwachen](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) Sie die Datenbankleistung und die Ressourcenverwendung der Auftragsdatenbank in langsamen Phasen über das Azure-Portal oder mithilfe der dynamische Verwaltungssicht [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Wenn eine Ressource (etwa CPU, Daten-E/A oder Protokollschreibvorgänge) in langsamen Phasen nahezu vollständig ausgelastet ist, empfiehlt es sich gegebenenfalls, die Datenbank schrittweise auf höhere Dienstziele zu skalieren (entweder im [DTU-Modell](service-tiers-dtu.md) oder im [V-Kern-Modell](service-tiers-vcore.md)), bis sich die Leistung der Auftragsdatenbank ausreichend verbessert hat.
+Sollten Vorgänge für die Auftragsdatenbank unerwartet langsam sein, [überwachen](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) Sie die Datenbankleistung und die Ressourcenverwendung der Auftragsdatenbank in langsamen Phasen über das Azure-Portal oder mithilfe der dynamische Verwaltungssicht [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Wenn eine Ressource (etwa CPU, Daten-E/A oder Protokollschreibvorgänge) in langsamen Phasen nahezu vollständig ausgelastet ist, empfiehlt es sich gegebenenfalls, die Datenbank schrittweise auf höhere Dienstziele zu skalieren (entweder im [DTU-Modell](service-tiers-dtu.md) oder im [V-Kern-Modell](service-tiers-vcore.md)), bis sich die Leistung der Auftragsdatenbank ausreichend verbessert hat.
 
 ##### <a name="job-database-permissions"></a>Berechtigungen für die Auftragsdatenbank
 
@@ -233,7 +233,7 @@ Eine *Zielgruppe* definiert die Gruppe von Datenbanken, für die ein Auftragssch
 - **Shardzuordnung:** Datenbanken einer Shardzuordnung.
 
 > [!TIP]
-> Die Gruppe von Datenbanken in Zielgruppen mit Servern oder Pools wird dank *dynamischer Enumeration* zum Zeitpunkt der Auftragsausführung neu ausgewertet. Die dynamische Enumeration stellt sicher, dass **Aufträge für alle Datenbanken ausgeführt werden, die zum Zeitpunkt der Auftragsausführung auf dem Server oder im Pool vorhanden sind**. Das erneute Auswerten der Datenbankliste zur Laufzeit ist besonders hilfreich in Szenarios mit häufig wechselnder Pool- oder Servermitgliedschaft.
+> Die Gruppe von Datenbanken in Zielgruppen mit Servern oder Pools wird dank *dynamischer Enumeration* zum Zeitpunkt der Auftragsausführung neu ausgewertet. Die dynamische Enumeration stellt sicher, dass **Aufträge für alle Datenbanken ausgeführt werden, die zum Zeitpunkt der Auftragsausführung auf dem Server oder im Pool vorhanden sind** . Das erneute Auswerten der Datenbankliste zur Laufzeit ist besonders hilfreich in Szenarios mit häufig wechselnder Pool- oder Servermitgliedschaft.
 
 Pools und einzelne Datenbanken können in die Gruppe eingeschlossen oder aus der Gruppe ausgeschlossen werden. Dadurch können Sie eine Zielgruppe mit einer beliebigen Kombination von Datenbanken erstellen. So können Sie beispielsweise einer Zielgruppe einen Server hinzufügen, aber bestimmte Datenbanken aus einem Pool für elastische Datenbanken (oder den gesamten Pool) ausschließen.
 
@@ -245,7 +245,7 @@ Die folgenden Beispiele zeigen, wie verschiedene Zielgruppendefinitionen zum Zei
 
 **Beispiel 1** zeigt eine Zielgruppe, die aus einer Liste einzelner Datenbanken besteht. Wenn ein Auftragsschritt mithilfe dieser Zielgruppe ausgeführt wird, wird die Aktion des Auftragsschritts in jeder dieser Datenbanken ausgeführt.<br>
 **Beispiel 2** zeigt eine Zielgruppe, die einen Server als Ziel enthält. Wenn ein Auftragsschritt mit dieser Zielgruppe ausgeführt wird, wird der Server dynamisch aufgezählt, um die Liste der Datenbanken zu bestimmen, die sich aktuell auf dem Server befinden. Die Aktion des Auftragsschritts wird in jeder dieser Datenbanken ausgeführt.<br>
-**Beispiel 3** zeigt eine ähnliche Zielgruppe wie *Beispiel 2*, eine einzelne Datenbank wird jedoch ausdrücklich ausgeschlossen. Die Aktion des Auftragsschritts wird in der ausgeschlossenen Datenbank *nicht* ausgeführt.<br>
+**Beispiel 3** zeigt eine ähnliche Zielgruppe wie *Beispiel 2* , eine einzelne Datenbank wird jedoch ausdrücklich ausgeschlossen. Die Aktion des Auftragsschritts wird in der ausgeschlossenen Datenbank *nicht* ausgeführt.<br>
 **Beispiel 4** zeigt eine Zielgruppe, die einen Pool für elastische Datenbanken als Ziel enthält. So ähnlich wie in *Beispiel 2* wird der Pool zum Zeitpunkt der Auftragsausführung dynamisch aufgezählt, um die Liste der Datenbanken im Pool zu bestimmen.
 <br><br>
 
@@ -260,7 +260,7 @@ Die folgenden Beispiele zeigen, wie verschiedene Zielgruppendefinitionen zum Zei
 
 #### <a name="job"></a>Auftrag
 
-Ein *Auftrag* ist eine Arbeitseinheit, die gemäß einem Zeitplan oder als einmaliger Auftrag ausgeführt wird. Ein Auftrag enthält mindestens einen *Auftragsschritt*.
+Ein *Auftrag* ist eine Arbeitseinheit, die gemäß einem Zeitplan oder als einmaliger Auftrag ausgeführt wird. Ein Auftrag enthält mindestens einen *Auftragsschritt* .
 
 ##### <a name="job-step"></a>Auftragsschritt
 
@@ -288,7 +288,7 @@ Die Anzahl von Datenbanken, für die ein Auftrag gleichzeitig ausgeführt werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [SQL Server-Agent](/sql/ssms/agent/sql-server-agent)
 - [Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md)
 - [Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell](elastic-jobs-powershell-create.md)
 - [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von Transact-SQL (T-SQL)](elastic-jobs-tsql-create-manage.md)

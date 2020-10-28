@@ -7,13 +7,13 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 91e4e7de73d820c345b2973896d07d3479e49f9e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297146"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748095"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts mit einer Azure Resource Manager-Vorlage
 
@@ -135,7 +135,7 @@ Verwenden Sie eine JSON-Vorlage, um in Ihrer Ressourcengruppe einen Bereitstellu
 
 5. Fügen Sie nach der IoT Hub-Angabe in der Sammlung **resources** die folgenden Zeilen hinzu, um den Bereitstellungsdienst zu erstellen. **Name** und **Standort** des Bereitstellungsdiensts werden als Parameter übergeben. In der Sammlung **iotHubs** sind die IoT-Hubs angegeben, die mit dem Bereitstellungsdienst verknüpft werden sollen. Sie müssen für jeden verknüpften IoT Hub mindestens die Eigenschaften **connectionString** und **location** angeben. Sie können für jeden IoT Hub auch Eigenschaften wie **allocationWeight** und **applyAllocationPolicy** sowie Eigenschaften wie **allocationPolicy** und **authorizationPolicies** für den Bereitstellungsdienst selbst festlegen. Weitere Informationen finden Sie unter [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices) (Microsoft.Devices/provisioningServices-Vorlagenreferenz).
 
-   Mit der **dependsOn**-Eigenschaft wird sichergestellt, dass mit Resource Manager der IoT Hub vor dem Bereitstellungsdienst erstellt wird. Für die Vorlage ist es erforderlich, dass die Verbindungszeichenfolge des IoT Hub die Verknüpfung mit dem Bereitstellungsdienst angibt. Der Hub und die dazugehörigen Schlüssel müssen also zuerst erstellt werden. Für die Vorlage werden Funktionen wie **concat** und **listKeys** zum Erstellen der Verbindungszeichenfolge aus parametrisierten Variablen verwendet. Weitere Informationen finden Sie unter [Vorlagenfunktionen im Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions).
+   Mit der **dependsOn** -Eigenschaft wird sichergestellt, dass mit Resource Manager der IoT Hub vor dem Bereitstellungsdienst erstellt wird. Für die Vorlage ist es erforderlich, dass die Verbindungszeichenfolge des IoT Hub die Verknüpfung mit dem Bereitstellungsdienst angibt. Der Hub und die dazugehörigen Schlüssel müssen also zuerst erstellt werden. Für die Vorlage werden Funktionen wie **concat** und **listKeys** zum Erstellen der Verbindungszeichenfolge aus parametrisierten Variablen verwendet. Weitere Informationen finden Sie unter [Vorlagenfunktionen im Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions).
 
    ```json
         {
@@ -306,7 +306,7 @@ Verwenden Sie die folgenden Azure CLI-Befehle, um Ihre Vorlagen bereitzustellen 
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
     ```
 
-   Dieser Vorgang kann einige Minuten in Anspruch nehmen. Suchen Sie anschließend in der Ausgabe nach dem Wert „Succeeded“ (Erfolgreich) für die **provisioningState**-Eigenschaft. 
+   Dieser Vorgang kann einige Minuten in Anspruch nehmen. Suchen Sie anschließend in der Ausgabe nach dem Wert „Succeeded“ (Erfolgreich) für die **provisioningState** -Eigenschaft. 
 
    ![Bereitstellen der Ausgabe](./media/quick-setup-auto-provision-rm/output.png) 
 

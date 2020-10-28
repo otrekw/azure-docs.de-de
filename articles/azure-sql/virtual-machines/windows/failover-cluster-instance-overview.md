@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165234"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792479"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,8 @@ SQL Server in Azure Virtual Machines nutzt die Funktion Windows Server-Failover
 
 Der restliche Artikel konzentriert sich auf die Unterschiede bei Failoverclusterinstanzen, wenn diese mit SQL Server auf Azure-VMs verwendet werden. Weitere Informationen zur Failoverclusteringtechnologie finden Sie unter: 
 
-- [Windows-Clustertechnologie](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server-Failoverclusterinstanzen](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Quorum
 
@@ -60,8 +60,8 @@ Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen de
 
 [Freigegebene Azure-Datenträger](../../../virtual-machines/windows/disks-shared.md) sind eine Funktion von [verwalteten Azure-Datenträgern](../../../virtual-machines/managed-disks-overview.md). Windows Server-Failoverclustering unterstützt die Verwendung von freigegebenen Azure-Datenträgern mit einer Failoverclusterinstanz. 
 
-**Unterstütztes Betriebssystem**: All   
-**Unterstützte SQL-Version**: All     
+**Unterstütztes Betriebssystem** : All   
+**Unterstützte SQL-Version** : All     
 
 **Vorteile:** 
 - Nützlich für Anwendungen, die zu Azure unter Beibehaltung der HADR-Architektur (High-Availability and Disaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) migriert werden sollen. 
@@ -82,8 +82,8 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 
 [Direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) ist eine Windows Server-Funktion, die mit Failoverclustering in Azure Virtual Machines unterstützt wird. Sie bietet ein softwarebasiertes virtuelles SAN.
 
-**Unterstütztes Betriebssystem**: Windows Server 2016 oder höher   
-**Unterstützte SQL-Version**: SQL Server 2016 und höher   
+**Unterstütztes Betriebssystem** : Windows Server 2016 oder höher   
+**Unterstützte SQL-Version** : SQL Server 2016 und höher   
 
 
 **Vorteile:** 
@@ -104,8 +104,8 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 
 [Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-premium-fileshare.md) sind eine Funktion von [Azure Files](../../../storage/files/index.yml). Premium-Dateifreigaben sind SSD-gestützt und weisen konsistent niedrige Latenz auf. Sie werden für die Verwendung mit Failoverclusterinstanzen für SQL Server 2012 oder höher unter Windows Server 2012 oder höher vollständig unterstützt. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, weil Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
 
-**Unterstütztes Betriebssystem**: Windows Server 2012 und höher   
-**Unterstützte SQL-Version**: SQL Server 2012 und höher   
+**Unterstütztes Betriebssystem** : Windows Server 2012 und höher   
+**Unterstützte SQL-Version** : SQL Server 2012 und höher   
 
 **Vorteile:** 
 - Einzige freigegebene Speicherlösung für virtuelle Computer, die auf mehrere Verfügbarkeitszonen verteilt sind. 
@@ -122,8 +122,8 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 
 Es gibt Partnerclusteringlösungen mit unterstütztem Speicher. 
 
-**Unterstütztes Betriebssystem**: All   
-**Unterstützte SQL-Version**: All   
+**Unterstütztes Betriebssystem** : All   
+**Unterstützte SQL-Version** : All   
 
 In einem Beispiel wird SIOS DataKeeper als Speicher verwendet. Weitere Informationen finden Sie im Blogbeitrag [Failoverclustering and SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
 
@@ -131,8 +131,8 @@ In einem Beispiel wird SIOS DataKeeper als Speicher verwendet. Weitere Informati
 
 Sie können auch einen freigegebenen iSCSI-Zielblockspeicher über Azure ExpressRoute bereitstellen. 
 
-**Unterstütztes Betriebssystem**: All   
-**Unterstützte SQL-Version**: All   
+**Unterstütztes Betriebssystem** : All   
+**Unterstützte SQL-Version** : All   
 
 Beispielsweise macht NetApp Private Storage (NPS) ein iSCSI-Ziel über ExpressRoute mit Equinix für virtuelle Azure-Computer verfügbar.
 
@@ -155,7 +155,7 @@ Die vollständige Erweiterung unterstützt Funktionen wie die automatische Siche
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und mit [Azure Load Balancer Standard](../../../load-balancer/load-balancer-standard-overview.md) oder auf SQL Server-VMs, die freigegebene Azure-Datenträger verwenden. 
+Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und mit [Azure Load Balancer Standard](../../../load-balancer/load-balancer-overview.md) oder auf SQL Server-VMs, die freigegebene Azure-Datenträger verwenden. 
 
 In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Versionen mit freigegebenen Clustervolumes aus den folgenden Gründen nicht unterstützt:
 
@@ -171,4 +171,3 @@ Weitere Informationen finden Sie unter
 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166538"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789912"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Das folgende Diagramm veranschaulicht eine Verfügbarkeitsgruppe für SQL Server
 
 ## <a name="vm-redundancy"></a>VM-Redundanz 
 
-Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL Server-VMS entweder in derselben [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) oder in verschiedenen [Verfügbarkeitszonen](/azure/availability-zones/az-overview) befinden.
+Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL Server-VMS entweder in derselben [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) oder in verschiedenen [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) befinden.
 
 Bei einer Verfügbarkeitsgruppe handelt es sich um eine Gruppe von Ressourcen, die so konfiguriert sind, dass sich keine zwei Ressourcen in derselben Verfügbarkeitszone befinden. Dadurch wird verhindert, dass bei Bereitstellungsrollouts mehrere Ressourcen in der Gruppe betroffen sind. 
 
@@ -74,7 +74,7 @@ Es gibt mehrere Optionen für die Bereitstellung einer Verfügbarkeitsgruppe fü
 
 Die folgende Tabelle bietet einen Vergleich der verfügbaren Optionen: 
 
-| |**[Azure-Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[Schnellstartvorlagen](availability-group-quickstart-template-configure.md)**|**[Manuell](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure-Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Schnellstartvorlagen](availability-group-quickstart-template-configure.md)**|**[Manuell](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**SQL Server-Version** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-Edition** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
@@ -100,6 +100,6 @@ In einem Azure IaaS-VM-Gast-Failovercluster werden eine einzelne Netzwerkkarte p
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über die [Best Practices für HADR](hadr-cluster-best-practices.md), und beginnen Sie dann mit der Bereitstellung Ihrer Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), die [Azure CLI oder PowerShell](availability-group-az-cli-configure.md), [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder die [manuelle](availability-group-manually-configure-prerequisites-tutorial.md) Bereitstellung.
+Informieren Sie sich über die [Best Practices für HADR](hadr-cluster-best-practices.md), und beginnen Sie dann mit der Bereitstellung Ihrer Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), die [Azure CLI oder PowerShell](./availability-group-az-commandline-configure.md), [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder die [manuelle](availability-group-manually-configure-prerequisites-tutorial.md) Bereitstellung.
 
-Alternativ können Sie eine [Verfügbarkeitsgruppe ohne Cluster](availability-group-clusterless-workgroup-configure.md) oder eine Verfügbarkeitsgruppe [in mehreren Regionen](availability-group-manually-configure-multiple-regions.md) bereitstellen. 
+Alternativ können Sie eine [Verfügbarkeitsgruppe ohne Cluster](availability-group-clusterless-workgroup-configure.md) oder eine Verfügbarkeitsgruppe [in mehreren Regionen](availability-group-manually-configure-multiple-regions.md) bereitstellen.

@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: e9ab4f2639569537b7c5967235a926c567aca0d5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2342577fdd7e42f4b21d1f47348c39e3ed4a46e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576131"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747240"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-nodejs"></a>Schnellstart: Verbinden einer IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen. Die von Ihnen erstellte Anwendung simuliert ein Gerät, mit dem eine Verbindung mit einem IoT-Hub hergestellt wird. Die Anwendung sendet Telemetriedaten und Eigenschaften und empfängt Befehle.
 
-1. Wechseln Sie in einem lokalen Terminalfenster zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp*. Führen Sie dann den folgenden Befehl aus, um die erforderlichen Bibliotheken zu installieren:
+1. Wechseln Sie in einem lokalen Terminalfenster zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp* . Führen Sie dann den folgenden Befehl aus, um die erforderlichen Bibliotheken zu installieren:
 
     ```cmd/sh
     npm install
@@ -63,7 +63,7 @@ Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen. Die
 
 In diesem Beispiel wird ein einfacher IoT Plug & Play-Thermostat implementiert. Das in diesem Beispiel implementierte Modell verwendet keine IoT Plug & Play-[Komponenten](concepts-components.md). Die [DTDL-Modelldatei für den Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definiert die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle.
 
-Öffnen Sie die Datei _simple_thermostat.js_. In dieser Datei können Sie folgende Aktionen sehen:
+Öffnen Sie die Datei _simple_thermostat.js_ . In dieser Datei können Sie folgende Aktionen sehen:
 
 1. Importieren der erforderlichen Schnittstellen
 1. Schreiben eines Updatehandlers für Eigenschaften und eines Befehlshandlers
@@ -73,7 +73,7 @@ In diesem Beispiel wird ein einfacher IoT Plug & Play-Thermostat implementiert
 In der Hauptfunktion können Sie sehen, wie alles zusammengestellt wird:
 
 1. Erstellen Sie das Gerät aus Ihrer Verbindungszeichenfolge, oder stellen Sie es mithilfe von DPS bereit.)
-1. Verwenden Sie die Option **modelID**, um das IoT Plug & Play-Gerätemodell anzugeben.
+1. Verwenden Sie die Option **modelID** , um das IoT Plug & Play-Gerätemodell anzugeben.
 1. Aktivieren Sie den Befehlshandler.
 1. Senden Sie Telemetriedaten vom Gerät an Ihren Hub.
 1. Rufen Sie den Gerätezwilling ab, und aktualisieren Sie die gemeldeten Eigenschaften.

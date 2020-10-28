@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355532"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790745"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,14 +35,14 @@ In dieser Schnellstartanleitung verwenden Sie SQL Server Management Studio (SSMS
 In dieser Schnellstartanleitung gilt Folgendes:
 
 - Es werden Ressourcen aus der Schnellstartanleitung [Erstellen einer verwalteten Azure SQL-Instanz](instance-create-quickstart.md) verwendet.
-- Die aktuelle Version von [SSMS](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) muss installiert sein.
+- Die aktuelle Version von [SSMS](/sql/ssms/sql-server-management-studio-ssms) muss installiert sein.
 - Die Verbindungsherstellung mit SQL Managed Instance muss über SSMS erfolgen. Informationen zum Herstellen einer Verbindung finden Sie in den folgenden Schnellstartanleitungen:
   - [Aktivieren eines öffentlichen Endpunkts](public-endpoint-configure.md) für SQL Managed Instance (wird für dieses Tutorial empfohlen)
   - [Verbinden mit SQL Managed Instance über einen virtuellen Azure-Computer](connect-vm-instance-configure.md)
   - [Konfigurieren einer Point-to-Site-Verbindung mit SQL Managed Instance über einen lokalen Computer](point-to-site-p2s-configure.md)
 
 > [!NOTE]
-> Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und einem [SAS-Schlüssel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) finden Sie unter [SQL Server-Sicherung über URLs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
+> Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und einem [SAS-Schlüssel (Shared Access Signature)](../../storage/common/storage-sas-overview.md) finden Sie unter [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
 
 ## <a name="restore-from-a-backup-file"></a>Wiederherstellen aus einer Sicherungsdatei
 
@@ -50,7 +50,7 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
 
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
 2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf Ihre verwaltete Instanz, und wählen Sie **Neue Abfrage** aus, um ein neues Abfragefenster zu öffnen.
-3. Führen Sie das folgende SQL-Skript aus. Dieses Skript verwendet ein vorkonfiguriertes Speicherkonto und einen SAS-Schlüssel zum [Erstellen von Anmeldeinformationen](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) in Ihrer verwalteten Instanz.
+3. Führen Sie das folgende SQL-Skript aus. Dieses Skript verwendet ein vorkonfiguriertes Speicherkonto und einen SAS-Schlüssel zum [Erstellen von Anmeldeinformationen](/sql/t-sql/statements/create-credential-transact-sql) in Ihrer verwalteten Instanz.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -88,15 +88,15 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Nachdem die Wiederherstellung abgeschlossen wurde, zeigen Sie die Datenbank im Objekt-Explorer an. Mithilfe der Ansicht [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) können Sie überprüfen, ob die Datenbankwiederherstellung abgeschlossen wurde.
+7. Nachdem die Wiederherstellung abgeschlossen wurde, zeigen Sie die Datenbank im Objekt-Explorer an. Mithilfe der Ansicht [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) können Sie überprüfen, ob die Datenbankwiederherstellung abgeschlossen wurde.
 
 > [!NOTE]
-> Der Vorgang der Datenbankwiederherstellung ist asynchron und wiederholbar. Möglicherweise erhalten Sie eine Fehlermeldung in SQL Server Management Studio, falls die Verbindung unterbrochen oder ein Timeout überschritten wird. Azure SQL-Datenbank versucht weiterhin, die Datenbank im Hintergrund wiederherzustellen, und Sie können den Wiederherstellungsfortschritt mithilfe der Ansichten [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) verfolgen.
-> In einigen Phasen des Wiederherstellungsprozesses wird ein eindeutiger Bezeichner anstelle des tatsächlichen Datenbanknamens in den Systemansichten angezeigt. Informationen zum unterschiedlichen Verhalten bei der `RESTORE`-Anweisung finden Sie [hier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement).
+> Der Vorgang der Datenbankwiederherstellung ist asynchron und wiederholbar. Möglicherweise erhalten Sie eine Fehlermeldung in SQL Server Management Studio, falls die Verbindung unterbrochen oder ein Timeout überschritten wird. Azure SQL-Datenbank versucht weiterhin, die Datenbank im Hintergrund wiederherzustellen, und Sie können den Wiederherstellungsfortschritt mithilfe der Ansichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) verfolgen.
+> In einigen Phasen des Wiederherstellungsprozesses wird ein eindeutiger Bezeichner anstelle des tatsächlichen Datenbanknamens in den Systemansichten angezeigt. Informationen zum unterschiedlichen Verhalten bei der `RESTORE`-Anweisung finden Sie [hier](./transact-sql-tsql-differences-sql-server.md#restore-statement).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn in Schritt 5 eine Datenbankwiederherstellung mit der Nachrichten-ID 22003 beendet wird, erstellen Sie eine neue Sicherungsdatei mit Sicherungsprüfsummen, und führen Sie die Wiederherstellung erneut durch. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren von Sicherungsprüfsummen während der Sicherung oder Wiederherstellung](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
-- Informationen zum Beheben von Problemen bei URL-basierten Sicherungen finden Sie unter [SQL Server-Sicherung über URLs – bewährte Methoden und Problembehandlung](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
+- Wenn in Schritt 5 eine Datenbankwiederherstellung mit der Nachrichten-ID 22003 beendet wird, erstellen Sie eine neue Sicherungsdatei mit Sicherungsprüfsummen, und führen Sie die Wiederherstellung erneut durch. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren von Sicherungsprüfsummen während der Sicherung oder Wiederherstellung](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
+- Informationen zum Beheben von Problemen bei URL-basierten Sicherungen finden Sie unter [SQL Server-Sicherung über URLs – bewährte Methoden und Problembehandlung](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Eine Übersicht über App-Verbindungsoptionen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten SQL-Instanz](connect-application-instance.md).
 - Informationen zu Abfragen mit Ihren bevorzugten Tools oder Sprachen finden Sie unter [Schnellstarts: Artikel zum Verbinden mit und Abfragen von Azure SQL-Datenbank und Azure SQL Managed Instance](../database/connect-query-content-reference-guide.md).

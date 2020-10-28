@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327503"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895200"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
@@ -50,7 +50,7 @@ Der Bastion-Host wird verwendet, um eine sichere Verbindung mit dem virtuellen C
     | Ressourcengruppe   | Wählen Sie **CreatePrivateEndpointQS-rg** aus. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **myVNet** ein.                                    |
-    | Region           | Klicken Sie auf **\<your-web-app-region>** (Zur Kasse). </br> Wählen Sie die Region aus, in der Ihre Web App bereitgestellt wird.|
+    | Region           | Wählen Sie **Europa, Westen** aus.|
 
 3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
@@ -101,7 +101,7 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer zum Testen des priva
     | Ressourcengruppe | Wählen Sie **CreatePrivateEndpointQS-rg** aus. |
     | **Instanzendetails** |  |
     | Name des virtuellen Computers | Geben Sie **myVM** ein. |
-    | Region | Klicken Sie auf **\<your-web-app-region>** (Zur Kasse). </br> Wählen Sie die Region aus, in der Ihre Web App bereitgestellt wird. |
+    | Region | Wählen Sie **Europa, Westen** aus. |
     | Verfügbarkeitsoptionen | Wählen Sie **Keine Infrastrukturredundanz erforderlich** aus. |
     | Image | Wählen Sie **Windows Server 2019 Datacenter – Gen1** aus. |
     | Azure Spot-Instanz | Wählen Sie **Nein** aus. |
@@ -149,7 +149,7 @@ In diesem Abschnitt erstellen Sie einen privaten Endpunkt für die Web-App, die 
     | Resource group | Wählen Sie **CreatePrivateEndpointQS-rg** aus. Diese Ressourcengruppe wurde im vorherigen Abschnitt erstellt.|
     | **Instanzendetails** |  |
     | Name  | Geben Sie **myPrivateEndpoint** ein. |
-    | Region | Klicken Sie auf **\<your-web-app-region>** (Zur Kasse). </br> Wählen Sie die Region aus, in der Ihre Web App bereitgestellt wird. |
+    | Region | Wählen Sie **Europa, Westen** aus. |
 
 6. Wählen Sie die Registerkarte **Ressource** oder unten auf der Seite **Weiter: Ressource** aus.
     

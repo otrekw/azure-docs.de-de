@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008402"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787379"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Queue Storage
 
@@ -52,7 +52,7 @@ In diesem Artikel werden bewährte Methoden für die Leistung in einer Checklist
 
 Wenn Ihre Anwendung eines der Skalierbarkeitsziele erreicht oder überschreitet, kann es zu erhöhter Transaktionslatenz oder Drosselung kommen. Wenn Azure Storage Ihre Anwendung drosselt, beginnt der Dienst, die Fehlercodes 503 (Server ausgelastet) oder 500 (Timeout bei Vorgang) zurückzugeben. Diese Fehler zu vermeiden, indem Sie innerhalb der Grenzwerte der Skalierbarkeitsziele bleiben, trägt maßgeblich dazu bei, die Leistung Ihrer Anwendung zu verbessern.
 
-Weitere Informationen zu den Skalierbarkeitszielen für den Warteschlangendienst finden Sie unter [Skalierbarkeits- und Leistungsziele in Azure Storage](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+Weitere Informationen zu den Skalierbarkeitszielen für den Warteschlangendienst finden Sie unter [Skalierbarkeits- und Leistungsziele in Azure Storage](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximale Anzahl von Speicherkonten
 
@@ -128,7 +128,7 @@ Legen Sie das Verbindungslimit fest, bevor Sie Verbindungen öffnen.
 
 Für andere Programmiersprachen erfahren Sie das Verbindungslimit aus der zugehörigen Dokumentation.  
 
-Weitere Informationen finden Sie im Blogbeitrag [Webdienste: Gleichzeitige Verbindungen](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Weitere Informationen finden Sie im Blogbeitrag [Webdienste: Gleichzeitige Verbindungen](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Erhöhen der Mindestanzahl von Threads
 
@@ -146,7 +146,7 @@ Parallelität kann großartig für die Leistung sein. Bei der Verwendung von une
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken und -tools
 
-Verwenden Sie für optimale Leistung immer die aktuellen Clientbibliotheken und -tools von Microsoft. Azure Storage-Clientbibliotheken sind für viele Programmiersprachen verfügbar. Azure Storage unterstützt auch PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI). Microsoft entwickelt diese Clientbibliotheken und -tools aktiv im Hinblick auf die Leistung, hält sie auf dem aktuellen Stand der Dienstversionen und stellt sicher, dass sie viele der bewährten Methoden für die Leistung intern umsetzen. Weitere Informationen finden Sie in der [Azure Storage-Referenzdokumentation](/azure/storage/#reference).
+Verwenden Sie für optimale Leistung immer die aktuellen Clientbibliotheken und -tools von Microsoft. Azure Storage-Clientbibliotheken sind für viele Programmiersprachen verfügbar. Azure Storage unterstützt auch PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI). Microsoft entwickelt diese Clientbibliotheken und -tools aktiv im Hinblick auf die Leistung, hält sie auf dem aktuellen Stand der Dienstversionen und stellt sicher, dass sie viele der bewährten Methoden für die Leistung intern umsetzen. Weitere Informationen finden Sie in der [Azure Storage-Referenzdokumentation](./reference.md).
 
 ## <a name="handle-service-errors"></a>Behandeln von Dienstfehlern
 
@@ -184,7 +184,7 @@ Aktuelle Datenkosteninformationen finden Sie unter [Preise für Azure Storage](h
 
 ## <a name="use-update-message"></a>Verwenden von „UpdateMessage“
 
-Sie können den **UpdateMessage**-Vorgang verwenden, um das Unsichtbarkeitszeitlimit zu erhöhen oder die Statusinformationen einer Nachricht zu aktualisieren. Die Verwendung von **UpdateMessage** kann effizienter sein als ein Workflow, bei dem ein Auftrag nach Abschluss jedes Auftragsschritts von einer Warteschlange in die nächste verschoben wird. Ihre Anwendung kann den Auftragsstatus in der Nachricht speichern und dann weiterarbeiten, anstatt die Nachricht jedes Mal für den nächsten Schritt erneut in die Warteschlange zu stellen. Beachten Sie, dass jeder **UpdateMessage**-Vorgang auf das Skalierbarkeitsziel angerechnet wird.
+Sie können den **UpdateMessage** -Vorgang verwenden, um das Unsichtbarkeitszeitlimit zu erhöhen oder die Statusinformationen einer Nachricht zu aktualisieren. Die Verwendung von **UpdateMessage** kann effizienter sein als ein Workflow, bei dem ein Auftrag nach Abschluss jedes Auftragsschritts von einer Warteschlange in die nächste verschoben wird. Ihre Anwendung kann den Auftragsstatus in der Nachricht speichern und dann weiterarbeiten, anstatt die Nachricht jedes Mal für den nächsten Schritt erneut in die Warteschlange zu stellen. Beachten Sie, dass jeder **UpdateMessage** -Vorgang auf das Skalierbarkeitsziel angerechnet wird.
 
 ## <a name="application-architecture"></a>Anwendungsarchitektur
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272156"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793091"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf Azure Virtual Machines (Windows)?
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91272156"
 
 Mit [SQL Server auf Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) können Sie Vollversionen von SQL Server in der Cloud nutzen, ohne lokale Hardware verwalten zu müssen. Virtuelle SQL Server-Computer (VMs) vereinfachen außerdem die Lizenzierungskosten, wenn Sie nutzungsbasierte Bezahlung verwenden.
 
-Virtuelle Azure-Computer werden in verschiedensten [geografischen Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt ausgeführt. Sie bieten auch eine Vielzahl von [Computergrößen](../../../virtual-machines/windows/sizes.md). Über den Katalog mit VM-Images können Sie virtuelle SQL Server-Computer mit passender Version, passender Edition und passendem Betriebssystem erstellen. Dadurch stellen virtuelle Computer eine gute Wahl für viele verschiedene SQL Server-Workloads dar.
+Virtuelle Azure-Computer werden in verschiedensten [geografischen Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt ausgeführt. Sie bieten auch eine Vielzahl von [Computergrößen](../../../virtual-machines/sizes.md). Über den Katalog mit VM-Images können Sie virtuelle SQL Server-Computer mit passender Version, passender Edition und passendem Betriebssystem erstellen. Dadurch stellen virtuelle Computer eine gute Wahl für viele verschiedene SQL Server-Workloads dar.
 
 Wenn Sie noch nicht mit SQL Server auf Azure-VMs vertraut sind, sehen Sie sich das Video *SQL Server on Azure VM Overview* aus der detaillierten [Azure SQL-Videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) an:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -42,7 +42,7 @@ Für SQL Server auf Azure Virtual Machines kann [automatisiertes Patchen](automa
 
 Für SQL Server auf Azure Virtual Machines kann die [automatisierte Sicherung](automated-backup.md) verwendet werden, bei der regelmäßig Sicherungen Ihrer Datenbank in Blobspeicher erstellt werden. Sie können dieses Verfahren auch manuell verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung](azure-storage-sql-server-backup-restore-use.md).
 
-Azure bietet auch eine Sicherungslösung der Unternehmensklasse für SQL Server-Instanzen auf Azure-VMs. Es handelt sich um eine vollständig verwaltete Sicherungslösung, die Always On-Verfügbarkeitsgruppen, Langzeitaufbewahrung Zeitpunktwiederherstellung sowie zentrale Verwaltung und Überwachung unterstützt. Weitere Informationen finden Sie unter [Azure Backup für SQL Server in Azure-VMs](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+Azure bietet auch eine Sicherungslösung der Unternehmensklasse für SQL Server-Instanzen auf Azure-VMs. Es handelt sich um eine vollständig verwaltete Sicherungslösung, die Always On-Verfügbarkeitsgruppen, Langzeitaufbewahrung Zeitpunktwiederherstellung sowie zentrale Verwaltung und Überwachung unterstützt. Weitere Informationen finden Sie unter [Azure Backup für SQL Server in Azure-VMs](../../../backup/backup-azure-sql-database.md).
   
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
@@ -116,7 +116,7 @@ Wählen Sie zum Zugreifen auf die Seite **Azure SQL-Ressourcen** im Menü des Az
 > [!NOTE]
 > Azure SQL bietet eine einfache und schnelle Möglichkeit, auf all Ihre Azure SQL-Datenbank-Instanzen, Pools für elastische Datenbanken, logische Server, verwaltete Instanzen und VMs zuzugreifen. Azure SQL ist weder ein Dienst noch eine Ressource. 
 
-Um vorhandene Ressourcen zu verwalten, wählen Sie das gewünschte Element aus der Liste aus. Um neue Azure SQL-Ressourcen zu erstellen, klicken Sie auf **+ Hinzufügen**. 
+Um vorhandene Ressourcen zu verwalten, wählen Sie das gewünschte Element aus der Liste aus. Um neue Azure SQL-Ressourcen zu erstellen, klicken Sie auf **+ Hinzufügen** . 
 
 ![Erstellen einer Azure SQL-Ressource](./media/sql-server-on-azure-vm-iaas-what-is-overview/create-azure-sql-resource.png)
 
@@ -135,7 +135,7 @@ Einzelheiten dazu finden Sie unter:
 Azure verwaltet für jedes unterstützte Betriebssystem, jede Version und jede Kombination von Editionen nur ein VM-Image. Dies bedeutet, dass Images im Laufe der Zeit aktualisiert und ältere Images entfernt werden. Weitere Informationen finden Sie im Abschnitt **Images** der [häufig gestellten Fragen zu SQL Server-VMs](frequently-asked-questions-faq.md#images).
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP)
-Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP) ist standardmäßig aktiviert. Es sendet in regelmäßigen Abständen Berichte an Microsoft, damit die Nutzung von SQL Server verbessert werden kann. Für CEIP ist nur dann eine Verwaltungsaufgabe erforderlich, wenn Sie das Programm nach der Bereitstellung deaktivieren möchten. Sie können CEIP anpassen oder deaktivieren, indem Sie eine Verbindung mit der VM per Remotedesktop herstellen. Führen Sie anschließend das SQL Server-Hilfsprogramm **Fehler- und Verwendungsberichterstellung** aus. Befolgen Sie die Anleitung, um die Berichterstellung zu deaktivieren. Weitere Informationen zur Datensammlung finden Sie unter [Datenschutzbestimmungen für SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-privacy).
+Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP) ist standardmäßig aktiviert. Es sendet in regelmäßigen Abständen Berichte an Microsoft, damit die Nutzung von SQL Server verbessert werden kann. Für CEIP ist nur dann eine Verwaltungsaufgabe erforderlich, wenn Sie das Programm nach der Bereitstellung deaktivieren möchten. Sie können CEIP anpassen oder deaktivieren, indem Sie eine Verbindung mit der VM per Remotedesktop herstellen. Führen Sie anschließend das SQL Server-Hilfsprogramm **Fehler- und Verwendungsberichterstellung** aus. Befolgen Sie die Anleitung, um die Berichterstellung zu deaktivieren. Weitere Informationen zur Datensammlung finden Sie unter [Datenschutzbestimmungen für SQL Server](/sql/sql-server/sql-server-privacy).
 
 ## <a name="related-products-and-services"></a>Verwandte Produkte und Dienste
 ### <a name="windows-virtual-machines"></a>Virtuelle Windows-Computer
@@ -150,7 +150,7 @@ Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Im
 * [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [SQL Server-Dokumentation](https://docs.microsoft.com/sql/index)
+* [SQL Server-Dokumentation](/sql/index)
 * [Vergleich mit Azure SQL-Datenbank](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -165,5 +165,5 @@ Antworten auf häufig gestellte Fragen zu virtuellen SQL Server-Computern:
 
 Anzeigen von Referenzarchitekturen zum Ausführen von n-schichtigen Anwendungen auf SQL Server in IaaS
 
-* [n-schichtige Windows-Anwendung in Azure mit SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Ausführen einer n-schichtigen Anwendung in mehreren Azure-Regionen für Hochverfügbarkeit](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [n-schichtige Windows-Anwendung in Azure mit SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Ausführen einer n-schichtigen Anwendung in mehreren Azure-Regionen für Hochverfügbarkeit](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 37f0b890cd4942e5dcb47b496d661eb7c54db94d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093513"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789725"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Schnellstart: Erstellen einer ExpressRoute-Leitung mit privatem Peering mithilfe einer ARM-Vorlage
 
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure R
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-expressroute-private-peering-vnet%2Fazuredeploy.json)
 
@@ -34,16 +34,16 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet).
 
-In dieser Schnellstartanleitung erstellen Sie mit *Equinix* als Dienstanbieter eine ExpressRoute-Leitung. Die Leitung nutzt eine *Premium-SKU* mit einer Bandbreite von *50 MBit/s* und dem Peeringstandort *Washington DC*. Privates Peering wird mit dem primären Subnetz *192.168.10.16/30* und dem sekundären Subnetz *192.168.10.20/30* aktiviert. Außerdem wird ein virtuelles Netzwerk zusammen mit einem *HighPerformance-ExpressRoute-Gateway* erstellt.
+In dieser Schnellstartanleitung erstellen Sie mit *Equinix* als Dienstanbieter eine ExpressRoute-Leitung. Die Leitung nutzt eine *Premium-SKU* mit einer Bandbreite von *50 MBit/s* und dem Peeringstandort *Washington DC* . Privates Peering wird mit dem primären Subnetz *192.168.10.16/30* und dem sekundären Subnetz *192.168.10.20/30* aktiviert. Außerdem wird ein virtuelles Netzwerk zusammen mit einem *HighPerformance-ExpressRoute-Gateway* erstellt.
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json" range="001-351" highlight="183-219":::
+:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 In der Vorlage wurden mehrere Azure-Ressourcen definiert:
 
 * [**Microsoft.Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
 * [**Microsoft.Network/expressRouteCircuits/peerings**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (zum Aktivieren des privaten Peerings für die Leitung)
 * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (Die Netzwerksicherheitsgruppe wird auf die Subnetze im virtuellen Netzwerk angewendet.)
-* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks) 
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (Die öffentliche IP-Adresse wird vom ExpressRoute-Gateway verwendet.)
 * [**Microsoft.Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (Das ExpressRoute-Gateway wird zum Verknüpfen des VNET mit der Leitung verwendet.)
 
@@ -51,7 +51,7 @@ Weitere Vorlagen zu ExpressRoute finden Sie unter [Azure-Schnellstartvorlagen](h
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-1. Wählen Sie **Try it** (Ausprobieren) im folgenden Codeblock aus, um Azure Cloud Shell zu öffnen. Folgen Sie dann den Anweisungen, um sich bei Azure anzumelden. 
+1. Wählen Sie **Try it** (Ausprobieren) im folgenden Codeblock aus, um Azure Cloud Shell zu öffnen. Folgen Sie dann den Anweisungen, um sich bei Azure anzumelden.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -74,7 +74,7 @@ Weitere Vorlagen zu ExpressRoute finden Sie unter [Azure-Schnellstartvorlagen](h
 
 1. Gehen Sie die Werte ein.
 
-    Der Ressourcengruppenname ist der Projektname mit dem Zusatz **rg**.
+    Der Ressourcengruppenname ist der Projektname mit dem Zusatz **rg** .
 
     Das Bereitstellen der Vorlage dauert ungefähr 20 Minuten. Nach Abschluss des Vorgangs sieht die Ausgabe in etwa wie folgt aus:
 
@@ -88,13 +88,13 @@ Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Neben Azure Pow
 
 1. Wählen Sie im linken Bereich **Ressourcengruppen** aus.
 
-1. Wählen Sie die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben. Der Ressourcengruppenname entspricht standardmäßig dem Projektnamen mit dem Zusatz **rg**.
+1. Wählen Sie die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben. Der Ressourcengruppenname entspricht standardmäßig dem Projektnamen mit dem Zusatz **rg** .
 
 1. Die Ressourcengruppe sollte die folgenden Ressourcen enthalten:
 
      :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute-Resource Manager-Vorlage: PowerShell-Bereitstellungsausgabe":::
 
-1. Wählen Sie die ExpressRoute-Leitung **er-ck01** aus, um zu überprüfen, ob der Leitungsstatus **Aktiviert**, der Anbieterstatus **Nicht bereitgestellt** und der Status für privates Peering **Bereitgestellt** lautet.
+1. Wählen Sie die ExpressRoute-Leitung **er-ck01** aus, um zu überprüfen, ob der Leitungsstatus **Aktiviert** , der Anbieterstatus **Nicht bereitgestellt** und der Status für privates Peering **Bereitgestellt** lautet.
 
     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute-Resource Manager-Vorlage: PowerShell-Bereitstellungsausgabe":::
 
@@ -114,6 +114,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung haben Sie Folgendes erstellt:
+
 * ExpressRoute-Verbindung
 * Virtual Network
 * VPN Gateway

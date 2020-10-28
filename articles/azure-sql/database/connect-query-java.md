@@ -9,25 +9,25 @@ ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 06/26/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833588"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746722"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Verwenden von Java und JDBC mit Azure SQL-Datenbank
 
-In diesem Thema wird die Erstellung einer Beispielanwendung veranschaulicht, die Java und [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) verwendet, um Informationen in [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) zu speichern bzw. daraus abzurufen.
+In diesem Thema wird die Erstellung einer Beispielanwendung veranschaulicht, die Java und [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) verwendet, um Informationen in [Azure SQL-Datenbank](/azure/sql-database/) zu speichern bzw. daraus abzurufen.
 
 JDBC ist die Standard-Java-API, um eine Verbindung mit herkömmlichen relationalen Datenbanken herzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) oder [Azure CLI](/cli/azure/install-azure-cli). Wir empfehlen Azure Cloud Shell, damit Sie automatisch angemeldet werden und Zugriff auf alle erforderlichen Tools erhalten.
-- Ein unterstütztes [Java Development Kit](https://aka.ms/azure-jdks), Version 8 (in Azure Cloud Shell enthalten).
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) oder [Azure CLI](/cli/azure/install-azure-cli). Wir empfehlen Azure Cloud Shell, damit Sie automatisch angemeldet werden und Zugriff auf alle erforderlichen Tools erhalten.
+- Ein unterstütztes [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 (in Azure Cloud Shell enthalten).
 - Das [Apache Maven](https://maven.apache.org/)-Buildtool
 
 ## <a name="prepare-the-working-environment"></a>Vorbereiten der Arbeitsumgebung
@@ -69,7 +69,7 @@ az group create \
 Sie erstellen zuerst einen verwalteten Azure SQL-Datenbank-Server.
 
 > [!NOTE]
-> Ausführlichere Informationen zum Erstellen von Azure SQL-Datenbank-Servern finden Sie unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](/azure/sql-database/sql-database-single-database-get-started).
+> Ausführlichere Informationen zum Erstellen von Azure SQL-Datenbank-Servern finden Sie unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](./single-database-create-quickstart.md).
 
 Führen Sie in [Azure Cloud Shell](https://shell.azure.com/) den folgenden Befehl aus:
 
@@ -150,7 +150,7 @@ Dabei handelt es sich um eine [Apache Maven](https://maven.apache.org/)-Datei, d
 
 ### <a name="prepare-a-configuration-file-to-connect-to-azure-sql-database"></a>Vorbereiten einer Konfigurationsdatei für das Herstellen einer Verbindung mit Azure SQL-Datenbank
 
-Erstellen Sie eine Datei vom Typ *src/main/resources/application.properties*, und fügen Sie Folgendes hinzu:
+Erstellen Sie eine Datei vom Typ *src/main/resources/application.properties* , und fügen Sie Folgendes hinzu:
 
 ```properties
 url=jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:1433;database=demo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
@@ -176,7 +176,7 @@ CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR
 
 Fügen Sie als Nächstes den Java-Code hinzu, der JDBC zum Speichern und Abrufen von Daten in bzw. aus Ihrer Azure SQL-Datenbank nutzt.
 
-Erstellen Sie eine Datei vom Typ *src/main/java/DemoApplication.java*, die Folgendes enthält:
+Erstellen Sie eine Datei vom Typ *src/main/java/DemoApplication.java* , die Folgendes enthält:
 
 ```java
 package com.example.demo;
@@ -225,7 +225,7 @@ public class DemoApplication {
 }
 ```
 
-Dieser Java-Code verwendet die weiter oben erstellten Dateien *application.properties* und *schema.sql*, um eine Verbindung mit der SQL Server-Datenbank herzustellen und ein Schema zu erstellen, in dem Ihre Daten gespeichert werden.
+Dieser Java-Code verwendet die weiter oben erstellten Dateien *application.properties* und *schema.sql* , um eine Verbindung mit der SQL Server-Datenbank herzustellen und ein Schema zu erstellen, in dem Ihre Daten gespeichert werden.
 
 Sie sehen, dass in dieser Datei Methoden zum Einfügen, Lesen, Aktualisieren und Löschen von Daten kommentiert wurden: Diese Methoden werden im verbleibenden Artikel codiert, und Sie können nacheinander die Auskommentierung aufheben.
 
@@ -498,4 +498,4 @@ az group delete \
 
 - [Entwerfen Ihrer ersten Datenbank in Azure SQL-Datenbank](design-first-database-tutorial.md)  
 - [Microsoft JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc)  
-- [Melden von Problemen/Stellen von Fragen](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Melden von Problemen/Stellen von Fragen](https://github.com/microsoft/mssql-jdbc/issues)

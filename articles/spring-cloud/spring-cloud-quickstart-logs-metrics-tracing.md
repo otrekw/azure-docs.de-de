@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093054"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746646"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung
 
@@ -63,7 +63,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Navigieren Sie im Azure-Portal zur Seite **Dienst | Übersicht**, und wählen Sie im Abschnitt **Überwachung** die Option **Protokolle** aus. Wählen Sie in einer der Beispielabfragen für Azure Spring Cloud **Ausführen** aus.
+1. Navigieren Sie im Azure-Portal zur Seite **Dienst | Übersicht** , und wählen Sie im Abschnitt **Überwachung** die Option **Protokolle** aus. Wählen Sie in einer der Beispielabfragen für Azure Spring Cloud **Ausführen** aus.
 
    [ ![Protokollanalyseeintrag](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -75,11 +75,11 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="metrics"></a>Metriken
 
-1. Navigieren Sie im Azure-Portal zur Seite **Dienst | Übersicht**, und wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus. Fügen Sie Ihre erste Metrik hinzu, indem Sie eine der .NET-Metriken unter **Leistung (.NET)** oder **Anforderung (.NET)** im Dropdown **Metrik** und `Avg` für **Aggregation** auswählen, um die Zeitachse für diese Metrik anzuzeigen.
+1. Navigieren Sie im Azure-Portal zur Seite **Dienst | Übersicht** , und wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus. Fügen Sie Ihre erste Metrik hinzu, indem Sie eine der .NET-Metriken unter **Leistung (.NET)** oder **Anforderung (.NET)** im Dropdown **Metrik** und `Avg` für **Aggregation** auswählen, um die Zeitachse für diese Metrik anzuzeigen.
 
    [ ![Eintrag „Metriken“: Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     
-1. Klicken Sie auf der Symbolleiste auf **Filter hinzufügen**, und wählen Sie `App=solar-system-weather` aus, um die CPU-Auslastung nur für die App **solar-system-weather** anzuzeigen.
+1. Klicken Sie auf der Symbolleiste auf **Filter hinzufügen** , und wählen Sie `App=solar-system-weather` aus, um die CPU-Auslastung nur für die App **solar-system-weather** anzuzeigen.
 
    [ ![Verwenden eines Filters in Metriken: Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
@@ -89,7 +89,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="distributed-tracing"></a>Verteilte Ablaufverfolgung
 
-1. Navigieren Sie im Azure-Portal zur Seite **Dienst | Übersicht**, und wählen Sie im Abschnitt **Überwachung** die Option **Verteilte Ablaufverfolgung** aus. Wählen Sie dann auf der rechten Seite die Registerkarte **Anwendungsübersicht anzeigen** aus.
+1. Navigieren Sie im Azure-Portal zur Seite **Dienst | Übersicht** , und wählen Sie im Abschnitt **Überwachung** die Option **Verteilte Ablaufverfolgung** aus. Wählen Sie dann auf der rechten Seite die Registerkarte **Anwendungsübersicht anzeigen** aus.
 
    [ ![Eintrag der verteilten Ablaufverfolgung: Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
@@ -161,7 +161,7 @@ So rufen Sie die Protokolle mit dem Azure-Toolkit für IntelliJ ab:
 ---
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Navigieren Sie zur Seite **Dienst | Übersicht**, und wählen Sie im Abschnitt **Überwachung** die Option **Protokolle** aus. Klicken Sie in einer der Beispielabfragen für Azure Spring Cloud auf **Ausführen**. 
+1. Navigieren Sie zur Seite **Dienst | Übersicht** , und wählen Sie im Abschnitt **Überwachung** die Option **Protokolle** aus. Klicken Sie in einer der Beispielabfragen für Azure Spring Cloud auf **Ausführen** . 
 
    [ ![Protokollanalyseeintrag](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -171,11 +171,11 @@ So rufen Sie die Protokolle mit dem Azure-Toolkit für IntelliJ ab:
 
 ## <a name="metrics"></a>Metriken
 
-1. Navigieren Sie zur Seite **Dienst | Übersicht**, und wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus. Fügen Sie Ihre erste Metrik hinzu, indem Sie `system.cpu.usage` für **Metrik** und `Avg` für **Aggregation** auswählen, um die Zeitachse für die gesamte CPU-Auslastung anzuzeigen.
+1. Navigieren Sie zur Seite **Dienst | Übersicht** , und wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus. Fügen Sie Ihre erste Metrik hinzu, indem Sie `system.cpu.usage` für **Metrik** und `Avg` für **Aggregation** auswählen, um die Zeitachse für die gesamte CPU-Auslastung anzuzeigen.
 
    [ ![Metrikeintrag](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
     
-1. Klicken Sie auf der Symbolleiste oben auf **Filter hinzufügen**, und wählen Sie `App=Gateway` aus, um die CPU-Auslastung nur für die App **gateway** anzuzeigen.
+1. Klicken Sie auf der Symbolleiste oben auf **Filter hinzufügen** , und wählen Sie `App=Gateway` aus, um die CPU-Auslastung nur für die App **gateway** anzuzeigen.
 
    [ ![Verwenden eines Filters in Metriken](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png#lightbox)
 
@@ -185,7 +185,7 @@ So rufen Sie die Protokolle mit dem Azure-Toolkit für IntelliJ ab:
 
 ## <a name="distributed-tracing"></a>Verteilte Ablaufverfolgung
 
-1. Navigieren Sie zur Seite **Dienst | Übersicht**, und wählen Sie im Abschnitt **Überwachung** die Option **Verteilte Ablaufverfolgung** aus. Klicken Sie dann auf der rechten Seite auf die Registerkarte **Anwendungsübersicht anzeigen**.
+1. Navigieren Sie zur Seite **Dienst | Übersicht** , und wählen Sie im Abschnitt **Überwachung** die Option **Verteilte Ablaufverfolgung** aus. Klicken Sie dann auf der rechten Seite auf die Registerkarte **Anwendungsübersicht anzeigen** .
 
    [ ![Eintrag der verteilten Ablaufverfolgung](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
@@ -193,11 +193,11 @@ So rufen Sie die Protokolle mit dem Azure-Toolkit für IntelliJ ab:
 
    [ ![Übersicht über verteilte Ablaufverfolgung](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png#lightbox)
     
-1. Klicken Sie auf den Link zwischen **gateway** und **account-service**, um weitere Details (etwa langsamste Aufrufe nach HTTP-Methoden) anzuzeigen.
+1. Klicken Sie auf den Link zwischen **gateway** und **account-service** , um weitere Details (etwa langsamste Aufrufe nach HTTP-Methoden) anzuzeigen.
 
    [ ![Verteilte Ablaufverfolgung](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call.png#lightbox)
     
-1. Klicken Sie abschließend auf **Leistung untersuchen**, um leistungsfähigere integrierte Leistungsanalysen zu untersuchen.
+1. Klicken Sie abschließend auf **Leistung untersuchen** , um leistungsfähigere integrierte Leistungsanalysen zu untersuchen.
 
    [ ![Leistung der verteilten Ablaufverfolgung](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
 

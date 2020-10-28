@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: cd1880f58d4ef457cdc411e065588204a5ad6672
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 727792b110c3bc486d31214096be1934539f6d11
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448772"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790303"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Erste Schritte mit Einzeldatenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,15 +41,15 @@ Sie können PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um I
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrieren zu einer Einzeldatenbank mit minimaler Downtime
 
-In diesen Schnellstartanleitungen erfahren Sie, wie Sie Ihre Datenbank schnell erstellen oder unter Verwendung einer Datei vom Typ `.bacpac` in Azure importieren. Dateien vom Typ `.bacpac` und `.dacpac` dienen jedoch dazu, Datenbanken schnell zwischen verschiedenen Versionen von SQL Server und innerhalb von Azure SQL zu migrieren oder Continuous Integration in Ihrer DevOps-Pipeline zu implementieren. Diese Methode ist jedoch nicht für die Migration Ihrer Produktionsdatenbanken mit minimaler Downtime geeignet, da Sie vorerst keine neuen Daten hinzufügen dürfen und warten müssen, bis der Export der Quelldatenbank in eine Datei vom Typ `.bacpac` und der anschließende Import in Azure SQL-Datenbank abgeschlossen ist. Diese Wartezeit führt zu Ausfallzeiten für Ihre Anwendung, insbesondere bei großen Datenbanken. Für die Verschiebung Ihrer Produktionsdatenbank benötigen Sie eine bessere Migrationsmethode mit möglichst geringer Downtime bei der Migration. Verwenden Sie dafür [Data Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json), um Ihre Datenbank mit minimaler Downtime zu migrieren. DMS pusht die in Ihrer Quelldatenbank vorgenommenen Änderungen inkrementell in die Einzeldatenbank, die wiederhergestellt wird. Dadurch können Sie Ihre Anwendung schnell und mit minimaler Downtime von der Quell- auf die Zieldatenbank umstellen.
+In diesen Schnellstartanleitungen erfahren Sie, wie Sie Ihre Datenbank schnell erstellen oder unter Verwendung einer Datei vom Typ `.bacpac` in Azure importieren. Dateien vom Typ `.bacpac` und `.dacpac` dienen jedoch dazu, Datenbanken schnell zwischen verschiedenen Versionen von SQL Server und innerhalb von Azure SQL zu migrieren oder Continuous Integration in Ihrer DevOps-Pipeline zu implementieren. Diese Methode ist jedoch nicht für die Migration Ihrer Produktionsdatenbanken mit minimaler Downtime geeignet, da Sie vorerst keine neuen Daten hinzufügen dürfen und warten müssen, bis der Export der Quelldatenbank in eine Datei vom Typ `.bacpac` und der anschließende Import in Azure SQL-Datenbank abgeschlossen ist. Diese Wartezeit führt zu Ausfallzeiten für Ihre Anwendung, insbesondere bei großen Datenbanken. Für die Verschiebung Ihrer Produktionsdatenbank benötigen Sie eine bessere Migrationsmethode mit möglichst geringer Downtime bei der Migration. Verwenden Sie dafür [Data Migration Service (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%252fazure%252fsql-database%252ftoc.json), um Ihre Datenbank mit minimaler Downtime zu migrieren. DMS pusht die in Ihrer Quelldatenbank vorgenommenen Änderungen inkrementell in die Einzeldatenbank, die wiederhergestellt wird. Dadurch können Sie Ihre Anwendung schnell und mit minimaler Downtime von der Quell- auf die Zieldatenbank umstellen.
 
 ## <a name="hands-on-learning-modules"></a>Praxisorientierte Lernmodule
 
 In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über Azure SQL-Datenbank informieren.
 
-- [Bereitstellen einer Datenbank in SQL-Datenbank zum Speichern von Anwendungsdaten](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Entwickeln und Konfigurieren einer ASP.NET-Anwendung zum Abfragen einer Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Schützen Ihrer Datenbank in Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Bereitstellen einer Datenbank in SQL-Datenbank zum Speichern von Anwendungsdaten](/learn/modules/provision-azure-sql-db/)
+- [Entwickeln und Konfigurieren einer ASP.NET-Anwendung zum Abfragen einer Azure SQL-Datenbank](/learn/modules/develop-app-that-queries-azure-sql/)
+- [Schützen Ihrer Datenbank in Azure SQL-Datenbank](/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

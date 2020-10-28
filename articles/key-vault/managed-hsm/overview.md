@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d2d5d6ad23f5e6a2cac2dc97904154d5912573b0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320556"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787923"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Was ist verwaltetes HSM von Azure Key Vault (Vorschauversion)?
 
@@ -38,7 +38,7 @@ Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfü
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Integration in Azure- und Microsoft-Dienste (PaaS/SaaS) 
 
-- Generieren Sie Schlüssel (oder importieren Sie sie unter Verwendung von [BYOK](hsm-protected-keys-byok.md)), und verwenden Sie sie zum Verschlüsseln ruhender Daten in Azure-Diensten wie [Azure Storage](../../storage/common/encryption-customer-managed-keys.md), [Azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md) und [Azure Information Protection](/azure/information-protection/byok-price-restrictions).
+- Generieren Sie Schlüssel (oder importieren Sie sie unter Verwendung von [BYOK](hsm-protected-keys-byok.md)), und verwenden Sie sie zum Verschlüsseln ruhender Daten in Azure-Diensten wie [Azure Storage](../../storage/common/customer-managed-keys-overview.md), [Azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md) und [Azure Information Protection](/azure/information-protection/byok-price-restrictions).
 
 ### <a name="uses-same-api-and-management-interfaces-as-key-vault"></a>Verwendung der gleichen API und Verwaltungsschnittstellen wie Key Vault
 

@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 997d74b1afc59e72b2c3fe7a7d47166d5efb8715
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89072977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746874"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Azure PowerShell
 
@@ -304,7 +304,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. Ersetzen Sie den Platzhalter in Zeile 15 durch die gesamte zuvor gespeicherte Verbindungszeichenfolge für das Azure IoT Hub-Gerät.
 
-3. Klicken Sie auf **Ausführen**. In der Ausgabe sollten nun die Sensordaten und -nachrichten angezeigt werden, die an Ihre IoT Hub-Instanz gesendet werden.
+3. Klicken Sie auf **Ausführen** . In der Ausgabe sollten nun die Sensordaten und -nachrichten angezeigt werden, die an Ihre IoT Hub-Instanz gesendet werden.
 
     ![Raspberry Pi-Azure IoT-Onlinesimulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4086a8f354e5e906325d9c324410f3546a32f658
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996153"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778896"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Schnellstart: Integrieren eines Azure Storage-Kontos in Azure CDN
 
@@ -42,7 +42,7 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
 
 1. Wählen Sie links oben im Azure-Portal **Ressource erstellen** aus. Der Bereich **Neu** wird angezeigt.
 
-1. Suchen Sie nach **Speicherkonto**, und wählen Sie in der Dropdownliste **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus. Wählen Sie anschließend **Erstellen** aus:
+1. Suchen Sie nach **Speicherkonto** , und wählen Sie in der Dropdownliste **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus. Wählen Sie anschließend **Erstellen** aus:
     
     ![Auswählen der Speicherressource](./media/cdn-create-a-storage-account-with-cdn/cdn-select-new-storage-account.png)
 
@@ -50,7 +50,7 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
 
     | Einstellung | Wert | 
     | --- | --- |
-    | Projektdetails > Ressourcengruppe | Wählen Sie **Neu erstellen** aus, und verwenden Sie den Namen *CDNQuickstart-rg*. Sie können auch eine vorhandene Ressourcengruppe verwenden, wenn Sie dies bevorzugen. |
+    | Projektdetails > Ressourcengruppe | Wählen Sie **Neu erstellen** aus, und verwenden Sie den Namen *CDNQuickstart-rg* . Sie können auch eine vorhandene Ressourcengruppe verwenden, wenn Sie dies bevorzugen. |
     | Instanzdetails > Speicherkontoname | Geben Sie einen Namen mit 3 bis 24 Zeichen für das Konto ein. Es dürfen nur Kleinbuchstaben und Zahlen verwendet werden. Der Name muss in Azure eindeutig sein. Er wird der Hostname in der URL, die zum Adressieren von Blob-, Warteschlangen- oder Tabellenspeicherressourcen für das Abonnement verwendet wird. Verwenden Sie zum Adressieren einer Containerressource in Blobspeicher einen URI im folgenden Format: http:// *&lt;Speicherkontoname&gt;* .blob.core.windows.net/ *&lt;Containername&gt;* .
     | Instanzdetails > Standort | Wählen Sie in der Dropdownliste eine Azure-Region in Ihrer Nähe aus. |
     
@@ -68,12 +68,12 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
 
     | Einstellung  | Wert |
     | -------- | ----- |
-    | **CDN-Profil** | Wählen Sie **Neu erstellen** aus, und geben Sie Ihren Profilnamen ein (beispielsweise *cdn-profile-123*). Ein Profil ist eine Sammlung von Endpunkten. |
-    | **Preisstufe** | Wählen Sie eine der **Standard**-Optionen aus, etwa **Microsoft Standard**. |
-    | **CDN-Endpunktname** | Geben Sie den Hostnamen Ihres Endpunkts (etwa *cdn-endpoint-123*) ein. Dieser Name muss in Azure global eindeutig sein, da er für den Zugriff auf Ihre zwischengespeicherten Ressourcen unter der URL „ _&lt;Endpunktname&gt;_ .azureedge.net“ verwendet wird. |
+    | **CDN-Profil** | Wählen Sie **Neu erstellen** aus, und geben Sie Ihren Profilnamen ein (beispielsweise *cdn-profile-123* ). Ein Profil ist eine Sammlung von Endpunkten. |
+    | **Preisstufe** | Wählen Sie eine der **Standard** -Optionen aus, etwa **Microsoft Standard** . |
+    | **CDN-Endpunktname** | Geben Sie den Hostnamen Ihres Endpunkts (etwa *cdn-endpoint-123* ) ein. Dieser Name muss in Azure global eindeutig sein, da er für den Zugriff auf Ihre zwischengespeicherten Ressourcen unter der URL „ _&lt;Endpunktname&gt;_ .azureedge.net“ verwendet wird. |
     | **Hostname des Ursprungs** | Für einen neuen CDN-Endpunkt wird standardmäßig der Hostname Ihres Speicherkontos als Ursprungsserver verwendet. |
 
-1. Klicken Sie auf **Erstellen**. Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt.
+1. Klicken Sie auf **Erstellen** . Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt.
 
     ![Storage – neuer CDN-Endpunkt](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
@@ -95,7 +95,7 @@ Wenn Sie eingeschränkten Zugriff auf private Speichercontainer gewähren möcht
 
 Verwenden Sie für den Zugriff auf die im CDN zwischengespeicherten Inhalte den im Portal bereitgestellten CDN-URL. Die Adresse eines zwischengespeicherten Blobs hat das folgende Format:
 
-http://<*Endpunktname*\>.azureedge.net/<*meinÖffentlicherContainer*\>/<*Blobname*\>
+http://< *Endpunktname*\>.azureedge.net/< *meinÖffentlicherContainer*\>/<*Blobname*\>
 
 > [!NOTE]
 > Nachdem Sie den Azure CDN-Zugriff auf ein Speicherkonto aktiviert haben, kann die CDN-POP-Zwischenspeicherung für alle öffentlich verfügbaren Objekte verwendet werden. Wenn Sie ein Objekt ändern, das gerade im CDN zwischengespeichert ist, stehen die neuen Inhalte erst dann über Azure CDN zur Verfügung, wenn Azure CDN die Inhalte aktualisiert. Dies erfolgt nach Ablauf der Lebensdauer der zwischengespeicherten Inhalte.
@@ -104,7 +104,7 @@ http://<*Endpunktname*\>.azureedge.net/<*meinÖffentlicherContainer*\>/<*Blobnam
 
 Wenn ein Objekt nicht mehr in Azure CDN zwischengespeichert werden soll, können Sie einen der folgenden Schritte ausführen:
 
-- Legen Sie den öffentlichen Container als privat fest. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/storage-manage-access-to-resources.md).
+- Legen Sie den öffentlichen Container als privat fest. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/anonymous-read-access-configure.md).
 - Deaktivieren oder löschen Sie den CDN-Endpunkt mit dem Azure-Portal.
 - Ändern Sie den gehosteten Dienst so, dass er nicht mehr auf Anforderungen für das Objekt antwortet.
 
@@ -120,7 +120,7 @@ In den vorherigen Schritten haben Sie ein CDN-Profil und einen Endpunkt in einer
 
     Dadurch werden die Ressourcengruppe, das Profil und der Endpunkt gelöscht, die Sie im Rahmen dieser Schnellstartanleitung erstellt haben.
 
-3. Wenn Sie Ihr Speicherkonto löschen möchten, wählen Sie es über das Dashboard aus, und klicken Sie anschließend im oberen Menü auf **Löschen**.
+3. Wenn Sie Ihr Speicherkonto löschen möchten, wählen Sie es über das Dashboard aus, und klicken Sie anschließend im oberen Menü auf **Löschen** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

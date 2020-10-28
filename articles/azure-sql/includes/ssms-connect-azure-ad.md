@@ -5,14 +5,14 @@ ms.topic: include
 author: markingmyname
 ms.author: maghan
 ms.reviewer: drskwier
-ms.openlocfilehash: e22049ef2acfd952689e386ff75b9a8a73658365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d1a58fa7d5a54386baed71356ea1b2bc79b494
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596128"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886585"
 ---
 > [!NOTE]
 > Im Dezember 2021 werden Releases von SSMS vor Version 18.6 nicht länger über Azure Active Directory mit MFA authentifiziert.
 >
-> Wenn Sie die Azure Active Directory-Authentifizierung mit MFA weiterhin nutzen möchten, benötigen Sie [SSMS 18.6 oder höher](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+> Wenn Sie die Azure Active Directory-Authentifizierung mit MFA weiterhin nutzen möchten, benötigen Sie [SSMS 18.6 oder höher](/sql/ssms/download-sql-server-management-studio-ssms).

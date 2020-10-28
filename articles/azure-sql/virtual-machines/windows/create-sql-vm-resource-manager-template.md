@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88660206"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789776"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Schnellstart: Erstellen einer SQL Server-VM mithilfe einer ARM-Vorlage
 
@@ -20,7 +20,7 @@ Verwenden Sie diese Azure Resource Manager-Vorlage (ARM-Vorlage), um auf einem v
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -58,26 +58,26 @@ Weitere Vorlagen für SQL Server-Instanzen auf virtuellen Azure-Computern finden
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
-    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe**: Die vorbereitete Ressourcengruppe für Ihre SQL Server-VM. 
-    * **Region**: Wählen Sie eine Region aus.  Beispiel: **USA, Mitte**.
-    * **Name des virtuellen Computers**: Geben Sie einen Namen für die SQL Server-VM ein. 
-    * **Größe des virtuellen Computers**: Wählen Sie in der Dropdownliste die passende Größe für Ihren virtuellen Computer aus.
-    * **Name des vorhandenen virtuellen Netzwerks**: Geben Sie den Namen des vorbereiteten virtuellen Netzwerks für Ihre SQL Server-VM ein. 
-    * **Vorhandene VNET-Ressourcengruppe**: Geben Sie die Ressourcengruppe ein, in der Ihr virtuelles Netzwerk vorbereitet wurde. 
-    * **Name des vorhandenen Subnetzes**: Der Name Ihres vorbereiteten Subnetzes. 
-    * **Imageangebot**: Wählen Sie das SQL Server- und Windows Server-Image aus, das Ihre geschäftlichen Anforderungen am besten erfüllt. 
-    * **SQL-SKU**: Wählen Sie die Edition der SQL Server-SKU aus, die Ihre geschäftlichen Anforderungen am besten erfüllt. 
-    * **Administratorbenutzername**: Der Benutzername für den Administrator des virtuellen Computers. 
-    * **Administratorkennwort**: Das Kennwort, das vom VM-Administratorkonto verwendet wird. 
-    * **Workload-Speichertyp**:  Der Typ von Speicher für die Workload, der Ihre geschäftlichen Anforderungen am besten erfüllt. 
-    * **Anzahl von SQL-Datenträgern**:  Die Anzahl von Datenträgern, die von SQL Server für Datendateien verwendet werden.  
-    * **Datenpfad**:  Der Pfad für die SQL Server-Datendateien. 
-    * **Anzahl von SQL-Protokolldatenträgern**:  Die Anzahl von Datenträgern, die von SQL Server für Protokolldateien verwendet werden. 
-    * **Protokollpfad**:  Der Pfad für die SQL Server-Protokolldateien. 
-    * **Standort**:  Der Speicherort der gesamten Ressourcen. Für diesen Wert sollte die Standardeinstellung `[resourceGroup().location]` beibehalten werden. 
+    * **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
+    * **Ressourcengruppe** : Die vorbereitete Ressourcengruppe für Ihre SQL Server-VM. 
+    * **Region** : Wählen Sie eine Region aus.  Beispiel: **USA, Mitte** .
+    * **Name des virtuellen Computers** : Geben Sie einen Namen für die SQL Server-VM ein. 
+    * **Größe des virtuellen Computers** : Wählen Sie in der Dropdownliste die passende Größe für Ihren virtuellen Computer aus.
+    * **Name des vorhandenen virtuellen Netzwerks** : Geben Sie den Namen des vorbereiteten virtuellen Netzwerks für Ihre SQL Server-VM ein. 
+    * **Vorhandene VNET-Ressourcengruppe** : Geben Sie die Ressourcengruppe ein, in der Ihr virtuelles Netzwerk vorbereitet wurde. 
+    * **Name des vorhandenen Subnetzes** : Der Name Ihres vorbereiteten Subnetzes. 
+    * **Imageangebot** : Wählen Sie das SQL Server- und Windows Server-Image aus, das Ihre geschäftlichen Anforderungen am besten erfüllt. 
+    * **SQL-SKU** : Wählen Sie die Edition der SQL Server-SKU aus, die Ihre geschäftlichen Anforderungen am besten erfüllt. 
+    * **Administratorbenutzername** : Der Benutzername für den Administrator des virtuellen Computers. 
+    * **Administratorkennwort** : Das Kennwort, das vom VM-Administratorkonto verwendet wird. 
+    * **Workload-Speichertyp** :  Der Typ von Speicher für die Workload, der Ihre geschäftlichen Anforderungen am besten erfüllt. 
+    * **Anzahl von SQL-Datenträgern** :  Die Anzahl von Datenträgern, die von SQL Server für Datendateien verwendet werden.  
+    * **Datenpfad** :  Der Pfad für die SQL Server-Datendateien. 
+    * **Anzahl von SQL-Protokolldatenträgern** :  Die Anzahl von Datenträgern, die von SQL Server für Protokolldateien verwendet werden. 
+    * **Protokollpfad** :  Der Pfad für die SQL Server-Protokolldateien. 
+    * **Standort** :  Der Speicherort der gesamten Ressourcen. Für diesen Wert sollte die Standardeinstellung `[resourceGroup().location]` beibehalten werden. 
 
-3. Klicken Sie auf **Überprüfen + erstellen**. Nach der erfolgreichen Bereitstellung der SQL Server-VM erhalten Sie eine Benachrichtigung.
+3. Klicken Sie auf **Überprüfen + erstellen** . Nach der erfolgreichen Bereitstellung der SQL Server-VM erhalten Sie eine Benachrichtigung.
 
 Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -120,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter folgendem Link:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Weitere Möglichkeiten zum Bereitstellen einer SQL Server-VM finden Sie unter: 
 - [Azure portal](create-sql-vm-portal.md)

@@ -3,16 +3,16 @@ title: Senden eines Azure-Aktivitätsprotokolls an den Log Analytics-Arbeitsbere
 description: Verwenden Sie ARM-Vorlagen, um einen Log Analytics-Arbeitsbereich zu erstellen, und eine Diagnoseeinstellung, um das Aktivitätsprotokoll an Azure Monitor-Protokolle zu senden.
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747027"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Schnellstart: Senden eines Azure-Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich per ARM-Vorlage
 
@@ -29,7 +29,7 @@ Das Aktivitätsprotokoll ist ein Plattformprotokoll in Azure, das einen Einblick
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Mit der folgenden Vorlage wird ein leerer Log Analytics-Arbeitsbereich erstellt. Speichern Sie diese Vorlage als *CreateWorkspace.json*.
+Mit der folgenden Vorlage wird ein leerer Log Analytics-Arbeitsbereich erstellt. Speichern Sie diese Vorlage als *CreateWorkspace.json* .
 
 ```json
 {
@@ -134,7 +134,7 @@ Mit dieser Vorlage wird eine Ressource definiert:
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Stellen Sie die Vorlage mit einer Standardmethode zur [Bereitstellung einer ARM-Vorlage](../../azure-resource-manager/templates/deploy-portal.md) bereit, z. B. wie in den folgenden Beispielen per CLI und PowerShell. Ersetzen Sie die Beispielwerte für **Resource Group**, **workspaceName** und **location** durch die entsprechenden Werte für Ihre Umgebung. Der Name des Arbeitsbereichs muss für alle Azure-Abonnements eindeutig sein.
+Stellen Sie die Vorlage mit einer Standardmethode zur [Bereitstellung einer ARM-Vorlage](../../azure-resource-manager/templates/deploy-portal.md) bereit, z. B. wie in den folgenden Beispielen per CLI und PowerShell. Ersetzen Sie die Beispielwerte für **Resource Group** , **workspaceName** und **location** durch die entsprechenden Werte für Ihre Umgebung. Der Name des Arbeitsbereichs muss für alle Azure-Abonnements eindeutig sein.
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -180,7 +180,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Mit der folgenden Vorlage wird eine Diagnoseeinstellung erstellt, mit der das Aktivitätsprotokoll an einen Log Analytics-Arbeitsbereich gesendet wird. Speichern Sie diese Vorlage als *CreateDiagnosticSetting.json*.
+Mit der folgenden Vorlage wird eine Diagnoseeinstellung erstellt, mit der das Aktivitätsprotokoll an einen Log Analytics-Arbeitsbereich gesendet wird. Speichern Sie diese Vorlage als *CreateDiagnosticSetting.json* .
 
 ```json
 {
@@ -248,7 +248,7 @@ Mit dieser Vorlage wird eine Ressource definiert:
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Stellen Sie die Vorlage mit einer Standardmethode zur [Bereitstellung einer ARM-Vorlage](../../azure-resource-manager/templates/deploy-portal.md) bereit, z. B. wie in den folgenden Beispielen per CLI und PowerShell. Ersetzen Sie die Beispielwerte für **Resource Group**, **workspaceName** und **location** durch die entsprechenden Werte für Ihre Umgebung. Der Name des Arbeitsbereichs muss für alle Azure-Abonnements eindeutig sein.
+Stellen Sie die Vorlage mit einer Standardmethode zur [Bereitstellung einer ARM-Vorlage](../../azure-resource-manager/templates/deploy-portal.md) bereit, z. B. wie in den folgenden Beispielen per CLI und PowerShell. Ersetzen Sie die Beispielwerte für **Resource Group** , **workspaceName** und **location** durch die entsprechenden Werte für Ihre Umgebung. Der Name des Arbeitsbereichs muss für alle Azure-Abonnements eindeutig sein.
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -281,15 +281,15 @@ Es werden nur neue Aktivitätsprotokolleinträge an den Log Analytics-Arbeitsber
 
 ## <a name="retrieve-data-with-a-log-query"></a>Abrufen von Daten mit einer Protokollabfrage
 
-Verwenden Sie das Azure-Portal, um Log Analytics zum Abrufen von Daten aus dem Arbeitsbereich zu verwenden. Suchen Sie im Azure-Portal nach dem Eintrag **Überwachen**, und wählen Sie ihn anschließend aus.
+Verwenden Sie das Azure-Portal, um Log Analytics zum Abrufen von Daten aus dem Arbeitsbereich zu verwenden. Suchen Sie im Azure-Portal nach dem Eintrag **Überwachen** , und wählen Sie ihn anschließend aus.
 
 ![Azure-Portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
-Wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Schließen Sie die Seite **Beispielabfragen**. Falls der Bereich nicht auf den von Ihnen erstellten Arbeitsbereich festgelegt ist, müssen Sie auf **Bereich auswählen** klicken und danach suchen.
+Wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Schließen Sie die Seite **Beispielabfragen** . Falls der Bereich nicht auf den von Ihnen erstellten Arbeitsbereich festgelegt ist, müssen Sie auf **Bereich auswählen** klicken und danach suchen.
 
 ![Log Analytics-Bereich](media/quick-collect-activity-log/log-analytics-scope.png)
 
-Geben Sie im Abfragefenster `AzureActivity` ein, und klicken Sie auf **Ausführen**. Dies ist eine einfache Abfrage, bei der alle Datensätze der Tabelle *AzureActivity* zurückgegeben werden. Hierin sind alle Datensätze enthalten, die vom Aktivitätsprotokoll gesendet wurden.
+Geben Sie im Abfragefenster `AzureActivity` ein, und klicken Sie auf **Ausführen** . Dies ist eine einfache Abfrage, bei der alle Datensätze der Tabelle *AzureActivity* zurückgegeben werden. Hierin sind alle Datensätze enthalten, die vom Aktivitätsprotokoll gesendet wurden.
 
 ![Einfache Abfrage](media/quick-collect-activity-log/query-01.png)
 

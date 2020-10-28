@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 3b21353c7e5338c78b9d56e79ac5da3fa7e9af84
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687585"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745361"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Schnellstart: Erstellen eines Budgets mit einer ARM-Vorlage
 
@@ -22,7 +22,7 @@ Budgets in Cost Management helfen Ihnen, die organisatorische Verantwortlichkeit
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
@@ -84,27 +84,27 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
    :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager-Vorlage, Budgeterstellung, Bereitstellung (Portal)" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
    
-    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe**: Wenn erforderlich, wählen Sie eine vorhandene Ressourcengruppe oder **Neu erstellen** aus.
-    * **Region**: Wählen Sie eine Azure-Region aus. Beispiel: **USA, Mitte**.
-    * **Budgetname**: Geben Sie einen Namen für das Budget ein. Dieser muss innerhalb einer Ressourcengruppe eindeutig sein. Es sind nur alphanumerische Zeichen sowie Unter- und Bindestriche zulässig.
-    * **Betrag**: Geben Sie den Gesamtbetrag der Kosten ein, der mit dem Budget nachverfolgt werden soll.
-    * **Aggregationsintervall**: Geben Sie den von einem Budget abgedeckten Zeitraum ein. Zulässige Werte sind „Monatlich“, „Vierteljährlich“ und „Jährlich“. Das Budget wird am Ende des Aggregationsintervalls zurückgesetzt.
-    * **Startdatum**: Geben Sie das Startdatum mit dem ersten Tag des Monats im Format „JJJJ-MM-TT“ ein. Das Startdatum darf nicht mehr als drei Monate in der Zukunft liegen. Sie können ein in der Vergangenheit liegendes Startdatum mit dem Aggregationsintervall angeben.
-    * **Enddatum**: Geben Sie das Enddatum für das Budget im Format „JJJJ-MM-TT“ ein. 
-    * **Erster Schwellenwert**: Geben Sie einen Schwellenwert für die erste Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
-    * **Zweiter Schwellenwert**: Geben Sie einen Schwellenwert für die zweite Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
+    * **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
+    * **Ressourcengruppe** : Wenn erforderlich, wählen Sie eine vorhandene Ressourcengruppe oder **Neu erstellen** aus.
+    * **Region** : Wählen Sie eine Azure-Region aus. Beispiel: **USA, Mitte** .
+    * **Budgetname** : Geben Sie einen Namen für das Budget ein. Dieser muss innerhalb einer Ressourcengruppe eindeutig sein. Es sind nur alphanumerische Zeichen sowie Unter- und Bindestriche zulässig.
+    * **Betrag** : Geben Sie den Gesamtbetrag der Kosten ein, der mit dem Budget nachverfolgt werden soll.
+    * **Aggregationsintervall** : Geben Sie den von einem Budget abgedeckten Zeitraum ein. Zulässige Werte sind „Monatlich“, „Vierteljährlich“ und „Jährlich“. Das Budget wird am Ende des Aggregationsintervalls zurückgesetzt.
+    * **Startdatum** : Geben Sie das Startdatum mit dem ersten Tag des Monats im Format „JJJJ-MM-TT“ ein. Das Startdatum darf nicht mehr als drei Monate in der Zukunft liegen. Sie können ein in der Vergangenheit liegendes Startdatum mit dem Aggregationsintervall angeben.
+    * **Enddatum** : Geben Sie das Enddatum für das Budget im Format „JJJJ-MM-TT“ ein. 
+    * **Erster Schwellenwert** : Geben Sie einen Schwellenwert für die erste Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
+    * **Zweiter Schwellenwert** : Geben Sie einen Schwellenwert für die zweite Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
     * **Contact Roles** (Kontaktrollen): Geben Sie die Liste der Kontaktrollen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Standardwerte sind „Besitzer“, „Mitwirkender“ und „Leser“. Erwartetes Format: `["Owner","Contributor","Reader"]`.
-    * **Kontakt-E-Mail-Adressen**: Geben Sie eine Liste von E-Mail-Adressen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn ein Schwellenwert überschritten wird. Erwartetes Format: `["user1@domain.com","user2@domain.com"]`.
+    * **Kontakt-E-Mail-Adressen** : Geben Sie eine Liste von E-Mail-Adressen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn ein Schwellenwert überschritten wird. Erwartetes Format: `["user1@domain.com","user2@domain.com"]`.
     * **Contact Groups** (Kontaktgruppen): Geben Sie eine Liste von Aktionsgruppenressourcen-IDs ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Für diese Angabe wird ein Zeichenfolgenarray akzeptiert. Erwartetes Format: `["action group resource ID1","action group resource ID2"]`. Falls Sie keine Aktionsgruppen verwenden möchten, geben Sie `[]` ein.
-    * **Filterwerte für Ressourcengruppe**: Geben Sie eine Liste von Ressourcengruppennamen ein, um danach zu filtern. Erwartetes Format: `["Resource Group Name1","Resource Group Name2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein. 
-    * **Filterwerte für Kategorie der Abrechnungseinheit**: Geben Sie eine Liste von Kategorien für die Abrechnungseinheit des Azure-Diensts ein. Erwartetes Format: `["Meter Category1","Meter Category2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein.
+    * **Filterwerte für Ressourcengruppe** : Geben Sie eine Liste von Ressourcengruppennamen ein, um danach zu filtern. Erwartetes Format: `["Resource Group Name1","Resource Group Name2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein. 
+    * **Filterwerte für Kategorie der Abrechnungseinheit** : Geben Sie eine Liste von Kategorien für die Abrechnungseinheit des Azure-Diensts ein. Erwartetes Format: `["Meter Category1","Meter Category2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein.
    
 3. Führen Sie abhängig vom Azure-Abonnementtyp eine der folgenden Aktionen aus:
-   - Klicken Sie auf **Überprüfen + erstellen**.
+   - Klicken Sie auf **Überprüfen + erstellen** .
    - Lesen Sie die Geschäftsbedingungen, und wählen Sie die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann **Kaufen** aus.
 
-4. Wenn Sie **Überprüfen + erstellen** ausgewählt haben, wird die Vorlage überprüft. Klicken Sie auf **Erstellen**.  
+4. Wenn Sie **Überprüfen + erstellen** ausgewählt haben, wird die Vorlage überprüft. Klicken Sie auf **Erstellen** .  
 
    ![Resource Manager-Vorlage, Budget, Bereitstellungsbenachrichtigung (Portal)](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -112,7 +112,7 @@ Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-P
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
-Sie können im Azure-Portal überprüfen, ob das Budget erstellt wurde. Navigieren Sie hierzu zu **Kostenverwaltung + Abrechnung**, wählen Sie einen Bereich aus, und wählen Sie anschließend **Budgets** aus. Alternativ können Sie die folgenden Azure CLI- oder Azure PowerShell-Skripts verwenden, um das Budget anzuzeigen:
+Sie können im Azure-Portal überprüfen, ob das Budget erstellt wurde. Navigieren Sie hierzu zu **Kostenverwaltung + Abrechnung** , wählen Sie einen Bereich aus, und wählen Sie anschließend **Budgets** aus. Alternativ können Sie die folgenden Azure CLI- oder Azure PowerShell-Skripts verwenden, um das Budget anzuzeigen:
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -134,7 +134,7 @@ Wenn Sie ein Budget nicht mehr benötigen, löschen Sie es mithilfe einer der fo
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie zu **Kostenverwaltung + Abrechnung**, und wählen Sie einen Abrechnungsbereich aus. Dann klicken Sie auf **Budgets**, und wählen Sie ein Budget aus. Anschließend wählen Sie **Budget löschen** aus.
+Navigieren Sie zu **Kostenverwaltung + Abrechnung** , und wählen Sie einen Abrechnungsbereich aus. Dann klicken Sie auf **Budgets** , und wählen Sie ein Budget aus. Anschließend wählen Sie **Budget löschen** aus.
 
 ### <a name="command-line"></a>Befehlszeile
 

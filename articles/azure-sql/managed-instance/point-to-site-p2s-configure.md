@@ -12,25 +12,25 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331905"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788365"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer zu einer verwalteten Azure SQL-Instanz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie von einem lokalen Clientcomputer eine Verbindung zu einer verwalteten Azure SQL-Instanz herstellen und dazu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) und eine Point-to-Site-Verbindung verwenden. Weitere Informationen zu Point-to-Site-Verbindungen finden Sie unter [Informationen zu Point-to-Site-VPN](../../vpn-gateway/point-to-site-about.md).
+In dieser Schnellstartanleitung wird gezeigt, wie Sie von einem lokalen Clientcomputer eine Verbindung zu einer verwalteten Azure SQL-Instanz herstellen und dazu [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) und eine Point-to-Site-Verbindung verwenden. Weitere Informationen zu Point-to-Site-Verbindungen finden Sie unter [Informationen zu Point-to-Site-VPN](../../vpn-gateway/point-to-site-about.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In dieser Schnellstartanleitung gilt Folgendes:
 
 - Als Ausgangspunkt werden die in [Erstellen einer verwalteten Instanz](instance-create-quickstart.md) erstellten Ressourcen verwendet.
-- Erforderlich sind PowerShell 5.1 und Azure PowerShell 1.4.0 oder höher auf Ihrem lokalen Clientcomputer. Sehen Sie sich ggf. die Anweisungen zum [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module) an.
-- Erforderlich ist die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) auf Ihrem lokalen Clientcomputer.
+- Erforderlich sind PowerShell 5.1 und Azure PowerShell 1.4.0 oder höher auf Ihrem lokalen Clientcomputer. Sehen Sie sich ggf. die Anweisungen zum [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps#install-the-azure-powershell-module) an.
+- Erforderlich ist die neueste Version von [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) auf Ihrem lokalen Clientcomputer.
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>Anfügen eines VPN-Gateways an ein virtuelles Netzwerk
 

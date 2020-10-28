@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617221"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789504"
 ---
 # <a name="what-is-azure-sql-database"></a>Was ist Azure SQL-Datenbank?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Azure SQL-Datenbank ist eine vollständig verwaltete PaaS-Datenbank-Engine (Plat
 
 Mithilfe von Azure SQL-Datenbank können Sie eine hochverfügbare und hochleistungsfähige Datenspeicherebene für Anwendungen und Lösungen in Azure erstellen. Azure SQL-Datenbank kann die richtige Wahl für eine Vielzahl moderner Cloudanwendungen sein, da die Lösung Ihnen ermöglicht, sowohl relationale Daten als auch [nicht relationale Strukturen](../multi-model-features.md) zu verarbeiten, wie z. B. Graph-, JSON-, räumliche und XML-Daten.
 
-Azure SQL-Datenbank basiert auf der neuesten stabilen Version der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Sie können erweiterte Funktionen zur Abfrageverarbeitung verwenden, wie z. B. [hochleistungsfähige In-Memory-Technologien](../in-memory-oltp-overview.md) und [intelligente Abfrageverarbeitung](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Tatsächlich werden die neuesten SQL Server-Funktionen zunächst in Azure SQL-Datenbank und erst dann für SQL Server selbst veröffentlicht. Sie verfügen stets über die neuesten Features von SQL Server, die in Millionen Datenbanken getestet wurden, ohne den Mehraufwand für Patches oder Updates. 
+Azure SQL-Datenbank basiert auf der neuesten stabilen Version der [Microsoft SQL Server-Datenbank-Engine](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json). Sie können erweiterte Funktionen zur Abfrageverarbeitung verwenden, wie z. B. [hochleistungsfähige In-Memory-Technologien](../in-memory-oltp-overview.md) und [intelligente Abfrageverarbeitung](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json). Tatsächlich werden die neuesten SQL Server-Funktionen zunächst in Azure SQL-Datenbank und erst dann für SQL Server selbst veröffentlicht. Sie verfügen stets über die neuesten Features von SQL Server, die in Millionen Datenbanken getestet wurden, ohne den Mehraufwand für Patches oder Updates. 
 
 SQL-Datenbank bietet zwei Kaufmodelle, mit denen sich die Leistung komfortabel definieren und skalieren lässt: ein [V-Kern-basiertes Kaufmodell](service-tiers-vcore.md) und ein [DTU-basiertes Kaufmodell](service-tiers-dtu.md). Bei Azure SQL-Datenbank handelt es sich um einen vollständig verwalteten Dienst mit eingebauter Hochverfügbarkeit, Sicherungs- und anderen gängigen Wartungsvorgängen. Microsoft kümmert sich um das Patchen und Aktualisieren des SQL- und Betriebssystemcodes. Sie müssen sich nicht um die zugrunde liegende Infrastruktur kümmern.
 
@@ -37,7 +37,7 @@ Wenn Sie noch nicht mit Azure SQL-Datenbank vertraut sind, sehen Sie sich die da
 
 Azure SQL-Datenbank bietet die folgenden Optionen für die Bereitstellung von Datenbanken:
 
-- [Einzeldatenbank](single-database-overview.md) (auch Singleton genannt) stellt eine vollständig verwaltete, isolierte Datenbank dar. Sie können diese Option wählen, wenn Sie moderne Cloudanwendungen und Microservices einsetzen, die eine zentrale zuverlässige Datenquelle benötigen. Ein Singleton ähnelt einer [eigenständigen Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) in der [SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json).
+- [Einzeldatenbank](single-database-overview.md) (auch Singleton genannt) stellt eine vollständig verwaltete, isolierte Datenbank dar. Sie können diese Option wählen, wenn Sie moderne Cloudanwendungen und Microservices einsetzen, die eine zentrale zuverlässige Datenquelle benötigen. Ein Singleton ähnelt einer [eigenständigen Datenbank](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json) in der [SQL Server-Datenbank-Engine](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json).
 - Ein [Pool für elastische Datenbanken](elastic-pool-overview.md) ist eine Sammlung von [Einzeldatenbanken](single-database-overview.md) mit gemeinsam genutzten Ressourcen wie CPU oder Arbeitsspeicher. Singletons können in und aus Pools für elastische Datenbanken verschoben werden.
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ Sie können die Menge der zugewiesenen Ressourcen festlegen.
 
 Sie können Ihre erste App für eine kleine Einzeldatenbank im Diensttarif „Universell“ zu niedrigen monatlichen Kosten erstellen. Sie können dann den Diensttarif jederzeit manuell oder programmgesteuert in „Unternehmenskritisch“ ändern, um den Anforderungen Ihrer Lösung gerecht zu werden. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie zahlen nur für die Ressourcen, die Sie im jeweiligen Augenblick benötigen.
 
-*Dynamische Skalierbarkeit* ist nicht dasselbe wie *automatische Skalierung*. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Die Option „Einzeldatenbank“ unterstützt manuelle dynamische Skalierbarkeit, aber keine automatische Skalierung. Ein höheres Maß an Automatisierung lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf Grundlage individueller Datenbankanforderungen ermöglichen. Eine weitere Option sind Skripts, die Sie bei der Automatisierung der Skalierbarkeit einer Einzeldatenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer Einzeldatenbank mit PowerShell](scripts/monitor-and-scale-database-powershell.md).
+*Dynamische Skalierbarkeit* ist nicht dasselbe wie *automatische Skalierung* . Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Die Option „Einzeldatenbank“ unterstützt manuelle dynamische Skalierbarkeit, aber keine automatische Skalierung. Ein höheres Maß an Automatisierung lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf Grundlage individueller Datenbankanforderungen ermöglichen. Eine weitere Option sind Skripts, die Sie bei der Automatisierung der Skalierbarkeit einer Einzeldatenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer Einzeldatenbank mit PowerShell](scripts/monitor-and-scale-database-powershell.md).
 
 ### <a name="purchasing-models"></a>Kaufmodelle
 
@@ -92,12 +92,12 @@ Azure SQL-Datenbank bietet erweiterte Funktionen und Tools für die Überwachung
  - Die integrierten Überwachungsfunktionen, die von der neuesten Version der SQL Server-Datenbank-Engine bereitgestellt werden. Sie ermöglichen Ihnen Einblicke in die Leistung in Echtzeit. 
  - PaaS-Überwachungsfunktionen von Azure, mit denen Sie eine große Anzahl von Datenbankinstanzen überwachen und Probleme behandeln können.
 
-[Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store), eine integrierte SQL Server-Überwachungsfunktion, zeichnet die Leistung Ihrer Abfragen in Echtzeit auf und ermöglicht Ihnen, die potenziellen Leistungsprobleme und die wichtigsten Ressourcenverbraucher zu identifizieren. Über die automatische Optimierung und Empfehlungen werden Tipps für Abfragen mit Leistungsproblemen sowie für fehlende oder duplizierte Indizes bereitgestellt. Die automatische Optimierung in Azure SQL-Datenbank ermöglicht Ihnen, entweder manuell die Skripts auszuführen, die die Probleme beheben können, oder die Behebung von Azure SQL-Datenbank durchführen zu lassen. Azure SQL-Datenbank kann auch testen und bestätigen, dass die Korrektur einen gewissen Nutzen bietet, und die Änderung je nach Ergebnis beibehalten oder rückgängig machen. Neben dem Abfragespeicher und den automatischen Optimierungsfunktionen können Sie standardmäßige [DMVs und XEvent](monitoring-with-dmvs.md) verwenden, um die Workloadleistung zu überwachen.
+[Abfragespeicher](/sql/relational-databases/performance/best-practice-with-the-query-store), eine integrierte SQL Server-Überwachungsfunktion, zeichnet die Leistung Ihrer Abfragen in Echtzeit auf und ermöglicht Ihnen, die potenziellen Leistungsprobleme und die wichtigsten Ressourcenverbraucher zu identifizieren. Über die automatische Optimierung und Empfehlungen werden Tipps für Abfragen mit Leistungsproblemen sowie für fehlende oder duplizierte Indizes bereitgestellt. Die automatische Optimierung in Azure SQL-Datenbank ermöglicht Ihnen, entweder manuell die Skripts auszuführen, die die Probleme beheben können, oder die Behebung von Azure SQL-Datenbank durchführen zu lassen. Azure SQL-Datenbank kann auch testen und bestätigen, dass die Korrektur einen gewissen Nutzen bietet, und die Änderung je nach Ergebnis beibehalten oder rückgängig machen. Neben dem Abfragespeicher und den automatischen Optimierungsfunktionen können Sie standardmäßige [DMVs und XEvent](monitoring-with-dmvs.md) verwenden, um die Workloadleistung zu überwachen.
 
 Mithilfe der integrierten Tools für [Leistungsüberwachung](performance-guidance.md) und [Warnungen](alerts-insights-configure-portal.md) von Azure können Sie in Kombination mit den Leistungsbewertungen den Status mehrerer tausend Datenbanken überwachen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren aktuellen oder projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Ressourcenprotokolle ausgeben](metrics-diagnostic-telemetry-logging-streaming-export-configure.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
-- **Azure Storage**: Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten
-- **Azure Event Hubs**: Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines
+- **Azure Storage** : Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten
+- **Azure Event Hubs** : Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines
 - **Azure Monitor-Protokolle:** Ermöglicht die Verwendung einer integrierten Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung.
 
 ![Diagramm der Azure-Überwachungsarchitektur](./media/sql-database-paas-overview/architecture.png)
@@ -108,7 +108,7 @@ Mit Azure SQL-Datenbank kann Ihr Unternehmen bei Unterbrechungen weiterarbeiten.
 
 Die Notfallwiederherstellung geht davon aus, dass ein katastrophales Ereignis geografisch lokal so begrenzt ist, dass es an entfernter Stelle einen anderen Computer bzw. eine andere Gruppe von Computern mit einer Kopie Ihrer Daten gibt. In SQL Server können Sie AlwaysOn-Verfügbarkeitsgruppen im asynchronen Modus verwenden, um diese Vorgabe zu erfüllen. Benutzer möchten oft nicht warten, bis die Replikation so weit entfernt erfolgt ist, bevor sie eine Transaktion committen, sodass ein Potenzial für Datenverluste besteht, wenn Sie ungeplante Failover durchführen.
 
-Datenbanken auf den Dienstebenen Premium und Unternehmenskritisch [leisten bereits etwas Ähnliches](high-availability-sla.md#premium-and-business-critical-service-tier-availability) bei der Synchronisierung von Verfügbarkeitsgruppen. Datenbanken auf niedrigeren Dienstebenen bieten Redundanz mithilfe von Speicher, der einen [anderen, aber vergleichbaren Mechanismus](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) verwendet. Es gibt integrierte Logik, die Schutz vor dem Ausfall eines einzelnen Computers bietet. Das Feature „Aktive Georeplikation“ bietet Ihnen die Möglichkeit, sich vor Katastrophen zu schützen, bei denen eine ganze Region zerstört wird.
+Datenbanken auf den Dienstebenen Premium und Unternehmenskritisch [leisten bereits etwas Ähnliches](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) bei der Synchronisierung von Verfügbarkeitsgruppen. Datenbanken auf niedrigeren Dienstebenen bieten Redundanz mithilfe von Speicher, der einen [anderen, aber vergleichbaren Mechanismus](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) verwendet. Es gibt integrierte Logik, die Schutz vor dem Ausfall eines einzelnen Computers bietet. Das Feature „Aktive Georeplikation“ bietet Ihnen die Möglichkeit, sich vor Katastrophen zu schützen, bei denen eine ganze Region zerstört wird.
 
 Der Dienst Azure-Verfügbarkeitszonen versucht, innerhalb einer Region Schutz vor Ausfall eines einzelnen Rechenzentrumsgebäudes zu bieten. Dies bedeutet für ein Gebäude Schutz vor dem Verlust der Stromversorgung oder des Netzwerks. In Azure SQL-Datenbank platzieren Sie die verschiedenen Replikate in verschiedenen Verfügbarkeitszonen (praktisch in verschiedenen Gebäuden).
 
@@ -149,8 +149,8 @@ Viele unserer Partner, die [mehrinstanzenfähige SaaS-Apps](saas-tenancy-app-des
 
 Zwei Aspekte der automatischen Optimierung sind [in Azure SQL-Datenbank verfügbar](automatic-tuning-overview.md):
 
-- **Automatische Indexverwaltung**: Diese Funktion identifiziert Indizes, die der Datenbank hinzugefügt, und solche, die entfernt werden sollten.
-- **Automatische Plankorrektur**: Diese Funktion erkennt problematische Pläne und korrigiert Leistungsprobleme mit SQL-Plänen.
+- **Automatische Indexverwaltung** : Diese Funktion identifiziert Indizes, die der Datenbank hinzugefügt, und solche, die entfernt werden sollten.
+- **Automatische Plankorrektur** : Diese Funktion erkennt problematische Pläne und korrigiert Leistungsprobleme mit SQL-Plänen.
 
 ### <a name="adaptive-query-processing"></a>Adaptive Abfrageverarbeitung
 
@@ -158,7 +158,7 @@ Sie können die [adaptive Abfrageverarbeitung](/sql/relational-databases/perform
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität
 
-SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitätsfeatures](../../active-directory/identity-protection/security-overview.md), mit der Sie Ihre Anwendung an verschiedene Sicherheits- und Konformitätsanforderungen anpassen können.
+SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitätsfeatures](../../active-directory/identity-protection/concept-identity-protection-security-overview.md), mit der Sie Ihre Anwendung an verschiedene Sicherheits- und Konformitätsanforderungen anpassen können.
 
 > [!IMPORTANT]
 > Microsoft hat Azure SQL-Datenbank (alle Bereitstellungsoptionen) für eine Reihe von Konformitätsstandards zertifizieren lassen. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuelle Liste von Konformitätszertifizierungen für Azure SQL-Datenbank angezeigt wird.
@@ -180,7 +180,7 @@ Die [Überwachung](../../azure-sql/database/auditing-overview.md) verfolgt Daten
 
 ### <a name="data-encryption"></a>Datenverschlüsselung
 
-Azure SQL-Datenbank ermöglicht den Schutz Ihrer Daten mithilfe der folgenden Verschlüsselungsmöglichkeiten. Verschlüsseln von Daten während der Übertragung durch [Transport Layer Security (TLS)](https://support.microsoft.com/kb/3135244). Verschlüsseln von ruhenden Daten mittels [transparenter Datenverschlüsselung](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Verschlüsseln von Daten bei der Nutzung durch [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
+Azure SQL-Datenbank ermöglicht den Schutz Ihrer Daten mithilfe der folgenden Verschlüsselungsmöglichkeiten. Verschlüsseln von Daten während der Übertragung durch [Transport Layer Security (TLS)](https://support.microsoft.com/kb/3135244). Verschlüsseln von ruhenden Daten mittels [transparenter Datenverschlüsselung](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Verschlüsseln von Daten bei der Nutzung durch [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 ### <a name="data-discovery-and-classification"></a>Datenermittlung und -klassifizierung
 
@@ -198,8 +198,8 @@ SQL-Datenbank sorgt für einfachere und produktivere Abläufe beim Erstellen und
 |:---|:---|
 |[Azure-Portal](https://portal.azure.com/)|Eine webbasierte Anwendung für die Verwaltung aller Azure-Dienste.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Dies ist ein plattformübergreifendes Datenbanktool, das unter Windows, macOS und Linux ausgeführt werden kann.|
-|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Eine kostenlose, herunterladbare Clientanwendung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis Azure SQL-Datenbank.|
-|[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Dies ist eine kostenlos herunterladbare Clientanwendung, mit der Sie relationale SQL Server-Datenbanken, Datenbanken in Azure SQL-Datenbank, Integration Services-Pakete, Analysis Services-Datenmodelle und Reporting Services-Berichte erstellen können.|
+|[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)|Eine kostenlose, herunterladbare Clientanwendung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis Azure SQL-Datenbank.|
+|[SQL Server Data Tools in Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)|Dies ist eine kostenlos herunterladbare Clientanwendung, mit der Sie relationale SQL Server-Datenbanken, Datenbanken in Azure SQL-Datenbank, Integration Services-Pakete, Analysis Services-Datenmodelle und Reporting Services-Berichte erstellen können.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux. Dieser Editor unterstützt Erweiterungen, etwa die [Erweiterung mssql](https://aka.ms/mssql-marketplace), zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse).|
 
 Azure SQL-Datenbank unterstützt unter macOS, Linux und Windows das Erstellen von Anwendungen mit Python, Java, Node.js, PHP, Ruby und .NET. SQL-Datenbank unterstützt dieselben [Verbindungsbibliotheken](connect-query-content-reference-guide.md#libraries) wie SQL Server.
@@ -218,7 +218,7 @@ Nein. Die Auswirkungen vom Patchen sind im Allgemeinen nicht merklich, wenn Sie 
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Stellen Sie Fragen zur Datenbankverwaltung.
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Stellen Sie Fragen zur Entwicklung.
-- [Microsoft F&A-Seite](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): Stellen Sie technische Fragen.
+- [Microsoft F&A-Seite](/answers/topics/azure-synapse-analytics.html): Stellen Sie technische Fragen.
 - [Feedback](https://aka.ms/sqlfeedback): Hier können Sie Fehler melden und Features anfordern.
 - [Reddit](https://www.reddit.com/r/SQLServer/): Tauschen Sie sich über SQL Server aus.
 
@@ -237,4 +237,3 @@ Nein. Die Auswirkungen vom Patchen sind im Allgemeinen nicht merklich, wenn Sie 
 
 - Informationen zu angekündigten neuen Funktionen finden Sie unter [Azure-Updates](https://azure.microsoft.com/roadmap/?category=databases).
 - Siehe den [Blog zu Azure SQL-Datenbank](https://azure.microsoft.com/blog/topics/database), in dem Sie Beiträge von Mitgliedern des SQL Server-Produktteams zu Neuerungen und Features von Azure SQL-Datenbank finden.
-

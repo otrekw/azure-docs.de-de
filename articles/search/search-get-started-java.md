@@ -10,16 +10,16 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540352"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791221"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Java mit REST-APIs
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
+> * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Portal](search-get-started-portal.md)
@@ -53,7 +53,7 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
    Erstellen Sie auch einen Abfrageschlüssel. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
 
-:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
+:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
 Für jede Anforderung, die an Ihren Dienst gesendet wird, ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -76,7 +76,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
 1. Wählen Sie **File** > **Settings** (Datei > Einstellungen) aus.
 1. Wählen Sie im Fenster **Settings** (Einstellungen) **Build, Execution, Deployment** > **Build Tools** > **Maven** > **Importing** („Erstellung, Ausführung, Bereitstellung“ > „Buildtools“ > „Maven“ > „Importieren“) aus.
-1. Aktivieren Sie das Kontrollkästchen **Import Maven projects automatically** (Maven-Projekte automatisch importieren), und klicken Sie auf **OK**, um das Fenster zu schließen. Maven-Plug-Ins und andere Abhängigkeiten werden jetzt automatisch synchronisiert, wenn Sie die Datei „pom.xml“ im nächsten Schritt aktualisieren.
+1. Aktivieren Sie das Kontrollkästchen **Import Maven projects automatically** (Maven-Projekte automatisch importieren), und klicken Sie auf **OK** , um das Fenster zu schließen. Maven-Plug-Ins und andere Abhängigkeiten werden jetzt automatisch synchronisiert, wenn Sie die Datei „pom.xml“ im nächsten Schritt aktualisieren.
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
@@ -375,7 +375,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
-1. Öffnen Sie das Fenster mit dem Tool **Maven**, und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
+1. Öffnen Sie das Fenster mit dem Tool **Maven** , und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
 :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
 Suchen Sie nach Abschluss der Verarbeitung nach der Meldung „BUILD SUCCESS“ (BUILD ERFOLGREICH), gefolgt vom Exitcode „0“.
@@ -565,7 +565,7 @@ Die Indexdefinition „hotels“ enthält einfache Felder und ein komplexes Feld
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. Öffnen Sie das Fenster mit dem Tool **Maven**, und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
+1. Öffnen Sie das Fenster mit dem Tool **Maven** , und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
 
     Achten Sie während der Ausführung des Codes auf die Meldung „Creating index“ (Index wird erstellt), gefolgt vom Antwortcode 201. Mit diesem Antwortcode wird bestätigt, dass der Index erstellt wurde. Die Ausführung sollte mit der Meldung BUILD SUCCESS (BUILD ERFOLGREICH) und dem Exitcode „0“ enden.
     
@@ -685,7 +685,7 @@ Die Indexdefinition „hotels“ enthält einfache Felder und ein komplexes Feld
 
     Nach der Uploadanforderung wird eine Pause von zwei Sekunden eingefügt, um sicherzustellen, dass der Prozess zum Laden der Dokumente abgeschlossen ist, bevor Sie den Index abfragen.
 
-1. Öffnen Sie das Fenster mit dem Tool **Maven**, und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
+1. Öffnen Sie das Fenster mit dem Tool **Maven** , und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
 
     Da Sie im vorherigen Schritt den Index „hotels-quickstart“ erstellt haben, wird er vom Code jetzt gelöscht und neu erstellt, bevor die Hoteldokumente geladen werden.
 
@@ -814,7 +814,7 @@ Nachdem Sie die Hoteldokumente geladen haben, können Sie Suchabfragen erstellen
 
     Es gibt zwei [Abgleichsmethoden für Begriffe in einer Abfrage](search-query-overview.md#types-of-queries): Volltextsuche und Filter. Bei der Volltextsuche werden Felder vom Typ `IsSearchable` in Ihrem Index nach einem oder mehreren Begriffen durchsucht. Ein Filter ist ein boolescher Ausdruck, der für Felder vom Typ `IsFilterable` in einem Index ausgewertet wird. Volltextsuche und Filter können separat oder zusammen verwendet werden.
 
-1. Öffnen Sie das Fenster mit dem Tool **Maven**, und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
+1. Öffnen Sie das Fenster mit dem Tool **Maven** , und führen Sie das folgende Maven-Ziel aus: `verify exec:java`
 
     Suchen Sie nach einer Zusammenfassung der einzelnen Abfragen und der zugehörigen Ergebnisse. Die Ausführung sollte mit der Meldung BUILD SUCCESS (BUILD ERFOLGREICH) und dem Exitcode „0“ abgeschlossen werden.
 

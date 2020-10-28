@@ -2,14 +2,14 @@
 title: Schnellstartanleitung zum Erstellen eines Azure Recovery Services-Tresors mithilfe einer Azure Resource Manager-Vorlage
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Azure Recovery Services-Tresor erstellen.
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684115"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745877"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Schnellstart: Erstellen eines Recovery Services-Tresors mithilfe einer ARM-Vorlage
 
@@ -17,7 +17,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure R
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
@@ -42,7 +42,7 @@ Weitere Azure Recovery Services-Vorlagen finden Sie unter [Azure-Schnellstartvor
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Zum Bereitstellen der Vorlage sind das **Abonnement**, die **Ressourcengruppe** und der **Tresorname** erforderlich.
+Zum Bereitstellen der Vorlage sind das **Abonnement** , die **Ressourcengruppe** und der **Tresorname** erforderlich.
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen.
 
@@ -52,14 +52,14 @@ Zum Bereitstellen der Vorlage sind das **Abonnement**, die **Ressourcengruppe** 
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Vorlage zum Erstellen eines Recovery Services-Tresors":::
 
-   - **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
-   - **Ressourcengruppe**: Wählen Sie eine vorhandene Gruppe aus, oder wählen Sie die Option **Neu erstellen** aus, um eine Gruppe hinzuzufügen.
-   - **Standort**: Für diese Option wird standardmäßig der Standort der Ressourcengruppe festgelegt, und die Option ist nach der Auswahl einer Ressourcengruppe nicht mehr verfügbar.
-   - **Tresorname**: Geben Sie einen Namen für den Tresor an.
-   - **Change Storage Type** (Speichertyp ändern): Die Standardeinstellung lautet **false**. Wählen Sie **true** nur aus, wenn Sie den Speichertyp des Tresors ändern müssen.
-   - **Vault Storage Type** (Speichertyp des Tresors): Die Standardeinstellung lautet **GloballyRedundant**. Wurde der Speichertyp auf **true** festgelegt, wählen Sie **LocallyRedundant** aus.
-   - **Standort**: Für die Funktion `[resourceGroup().location]` wird standardmäßig der Standort der Ressourcengruppe festgelegt. Wenn Sie den Standort ändern möchten, geben Sie einen Wert ein, etwa **westus**.
-   - Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**.
+   - **Abonnement** : Wählen Sie Ihr Azure-Abonnement aus.
+   - **Ressourcengruppe** : Wählen Sie eine vorhandene Gruppe aus, oder wählen Sie die Option **Neu erstellen** aus, um eine Gruppe hinzuzufügen.
+   - **Standort** : Für diese Option wird standardmäßig der Standort der Ressourcengruppe festgelegt, und die Option ist nach der Auswahl einer Ressourcengruppe nicht mehr verfügbar.
+   - **Tresorname** : Geben Sie einen Namen für den Tresor an.
+   - **Change Storage Type** (Speichertyp ändern): Die Standardeinstellung lautet **false** . Wählen Sie **true** nur aus, wenn Sie den Speichertyp des Tresors ändern müssen.
+   - **Vault Storage Type** (Speichertyp des Tresors): Die Standardeinstellung lautet **GloballyRedundant** . Wurde der Speichertyp auf **true** festgelegt, wählen Sie **LocallyRedundant** aus.
+   - **Standort** : Für die Funktion `[resourceGroup().location]` wird standardmäßig der Standort der Ressourcengruppe festgelegt. Wenn Sie den Standort ändern möchten, geben Sie einen Wert ein, etwa **westus** .
+   - Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** .
 
 1. Wählen Sie die Schaltfläche **Kaufen** aus, um mit der Bereitstellung des Tresors zu beginnen. Nach einer erfolgreichen Bereitstellung wird eine Benachrichtigung angezeigt.
 
