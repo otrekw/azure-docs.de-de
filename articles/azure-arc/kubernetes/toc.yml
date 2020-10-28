@@ -33,3 +33,7 @@
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: Ressourcen
+  items:
+    - name: Einstieg in Azure Arc
+      href: 'https://github.com/microsoft/azure_arc'
