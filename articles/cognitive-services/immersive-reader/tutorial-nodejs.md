@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
+ms.author: metang
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ac23ad66cadc553095ff869b665a6bba2fba6f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac7bca305b0c23cceb00f97f426b3f68fbea91b3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262279"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636441"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Tutorial: Starten von Plastischer Reader (Node.js)
 
@@ -69,7 +69,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Erstellen Sie mit diesen Werten eine neue Datei namens _.env_, und fügen Sie den folgenden Code ein. Geben Sie dabei Ihre benutzerdefinierten Eigenschaftswerte von oben an. Verwenden Sie weder Anführungszeichen noch die Zeichen „{“ und „}“.
+Erstellen Sie mit diesen Werten eine neue Datei namens _.env_ , und fügen Sie den folgenden Code ein. Geben Sie dabei Ihre benutzerdefinierten Eigenschaftswerte von oben an. Verwenden Sie weder Anführungszeichen noch die Zeichen „{“ und „}“.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -80,13 +80,13 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Committen Sie diese Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
 
-Öffnen Sie als Nächstes die Datei _app.js_, und fügen Sie am Anfang der Datei Folgendes hinzu. Dadurch werden die in der ENV-Datei definierten Eigenschaften als Umgebungsvariablen in den Knoten geladen.
+Öffnen Sie als Nächstes die Datei _app.js_ , und fügen Sie am Anfang der Datei Folgendes hinzu. Dadurch werden die in der ENV-Datei definierten Eigenschaften als Umgebungsvariablen in den Knoten geladen.
 
 ```javascript
 require('dotenv').config();
 ```
 
-Öffnen Sie die Datei _routes\index.js_, und ersetzen Sie ihren Inhalt durch den folgenden Code.
+Öffnen Sie die Datei _routes\index.js_ , und ersetzen Sie ihren Inhalt durch den folgenden Code.
 
 Dieser Code erstellt einen API-Endpunkt, der unter Verwendung Ihres Dienstprinzipalkennworts ein Azure AD-Authentifizierungstoken bezieht. Darüber hinaus wird die Unterdomäne abgerufen. Anschließend wird ein Objekt zurückgegeben, das das Token und die Unterdomäne enthält.
 
@@ -133,14 +133,14 @@ Der API-Endpunkt **getimmersivereaderlaunchparams** muss durch eine Authentifizi
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
 
-1. Öffnen Sie _views\layout.pug_, und fügen Sie unter dem Tag `head` den folgenden Code vor dem Tag `body` hinzu. Diese Tags vom Typ `script` laden das [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) sowie JQuery.
+1. Öffnen Sie _views\layout.pug_ , und fügen Sie unter dem Tag `head` den folgenden Code vor dem Tag `body` hinzu. Diese Tags vom Typ `script` laden das [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) sowie JQuery.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. Öffnen Sie die Datei _views\index.pug_, und ersetzen Sie ihren Inhalt durch den folgenden Code. Dieser Code füllt die Seite mit Beispielinhalten und fügt eine Schaltfläche zum Starten von Plastischer Reader hinzu.
+2. Öffnen Sie die Datei _views\index.pug_ , und ersetzen Sie ihren Inhalt durch den folgenden Code. Dieser Code füllt die Seite mit Beispielinhalten und fügt eine Schaltfläche zum Starten von Plastischer Reader hinzu.
 
     ```pug
     extends layout
@@ -196,7 +196,7 @@ Der API-Endpunkt **getimmersivereaderlaunchparams** muss durch eine Authentifizi
 
 Plastischer Reader unterstützt zahlreiche Sprachen. Gehen Sie wie folgt vor, um die Sprache Ihres Inhalts anzugeben:
 
-1. Öffnen Sie _views\index.pug_, und fügen Sie unter dem Tag `p(id=content)`, das Sie im vorherigen Schritt hinzugefügt haben, den folgenden Code hinzu. Dieser Code fügt Ihrer Seite spanischen Inhalt hinzu.
+1. Öffnen Sie _views\index.pug_ , und fügen Sie unter dem Tag `p(id=content)`, das Sie im vorherigen Schritt hinzugefügt haben, den folgenden Code hinzu. Dieser Code fügt Ihrer Seite spanischen Inhalt hinzu.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.

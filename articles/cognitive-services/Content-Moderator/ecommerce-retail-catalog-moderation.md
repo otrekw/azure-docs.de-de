@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 10/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 017dabf16384e53d924ed69f36b64050fcacb5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aae410d320713650704e175006a6593b30f52a7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934785"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504155"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
 
@@ -44,21 +44,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-review-team"></a>Erstellen eines Prüfungsteams
 
-Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) sowie zum Erstellen eines Prüfungsteams finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Notieren Sie sich auf der Seite **Anmeldeinformationen** die **Team-ID**.
+Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) sowie zum Erstellen eines Prüfungsteams finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Notieren Sie sich auf der Seite **Anmeldeinformationen** die **Team-ID** .
 
 ## <a name="create-custom-moderation-tags"></a>Erstellen benutzerdefinierter Moderationstags
 
-Erstellen Sie als Nächstes im Prüfungstool benutzerdefinierte Tags. (Informationen hierzu finden Sie bei Bedarf im Artikel [Infos zu Tags](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags).) Wir fügen hier folgende Tags hinzu: **celebrity** (prominente Person), **USA**, **flag** (Flagge), **toy** (Spielzeug) und **pen** (Stift). Es muss sich nicht bei allen Tags um Kategorien handeln, die durch maschinelles Sehen erkannt werden können (beispielsweise **celebrity**). Sie können gerne eigene benutzerdefinierte Tags hinzufügen, solange Sie die Custom Vision-Klassifizierung später für deren Erkennung trainieren.
+Erstellen Sie als Nächstes im Prüfungstool benutzerdefinierte Tags. (Informationen hierzu finden Sie bei Bedarf im Artikel [Infos zu Tags](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags).) Wir fügen hier folgende Tags hinzu: **celebrity** (prominente Person), **USA** , **flag** (Flagge), **toy** (Spielzeug) und **pen** (Stift). Es muss sich nicht bei allen Tags um Kategorien handeln, die durch maschinelles Sehen erkannt werden können (beispielsweise **celebrity** ). Sie können gerne eigene benutzerdefinierte Tags hinzufügen, solange Sie die Custom Vision-Klassifizierung später für deren Erkennung trainieren.
 
 ![Konfigurieren von benutzerdefinierten Tags](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
 1. Öffnen Sie in Visual Studio das Dialogfeld „Neues Projekt“. Erweitern Sie **Installiert** und dann **Visual C#** , und wählen Sie **Konsolen-App (.NET Framework)** aus.
-1. Nennen Sie die Anwendung **EcommerceModeration**, und klicken Sie anschließend auf **OK**.
+1. Nennen Sie die Anwendung **EcommerceModeration** , und klicken Sie anschließend auf **OK** .
 1. Falls Sie dieses Projekt einer vorhandenen Projektmappe hinzufügen, sollten Sie es als einzelnes Startprojekt auswählen.
 
-In diesem Tutorial wird der für das Projekt wichtige Code erläutert. Hierbei wird aber nicht auf jede einzelne Codezeile eingegangen. Kopieren Sie den gesamten Inhalt der Datei _Program.cs_ aus dem Beispielprojekt ([Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) in die Datei _Program.cs_ Ihres neuen Projekts. Gehen Sie dann Schritt für Schritt die folgenden Abschnitte durch, um sich mit der Funktionsweise und der praktischen Verwendung des Projekts vertraut zu machen.
+In diesem Tutorial wird der für das Projekt wichtige Code erläutert. Hierbei wird aber nicht auf jede einzelne Codezeile eingegangen. Kopieren Sie den gesamten Inhalt der Datei _Program.cs_ aus dem Beispielprojekt ( [Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) in die Datei _Program.cs_ Ihres neuen Projekts. Gehen Sie dann Schritt für Schritt die folgenden Abschnitte durch, um sich mit der Funktionsweise und der praktischen Verwendung des Projekts vertraut zu machen.
 
 ## <a name="define-api-keys-and-endpoints"></a>Definieren von API-Schlüsseln und -Endpunkten
 
@@ -100,7 +100,7 @@ Rufen Sie nach dem Trainieren Ihrer Klassifizierung den Vorhersageschlüssel und
 
 ## <a name="create-reviews-for-review-tool"></a>Erstellen von Prüfungen für das Prüfungstool
 
-In den vorherigen Abschnitten haben Sie sich damit vertraut gemacht, wie die App eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (maschinelles Sehen) und verschiedene Objekte (Custom Vision) überprüft. Sehen Sie sich als Nächstes die **CreateReview**-Methode an. Diese Methode lädt die Bilder mit allen angewendeten Tags (als _Metadata_ übergeben) in das Content Moderator-Prüfungstool hoch.
+In den vorherigen Abschnitten haben Sie sich damit vertraut gemacht, wie die App eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (maschinelles Sehen) und verschiedene Objekte (Custom Vision) überprüft. Sehen Sie sich als Nächstes die **CreateReview** -Methode an. Diese Methode lädt die Bilder mit allen angewendeten Tags (als _Metadata_ übergeben) in das Content Moderator-Prüfungstool hoch.
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

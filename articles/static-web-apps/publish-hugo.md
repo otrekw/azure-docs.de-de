@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797716"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171497"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -77,7 +77,7 @@ Erstellen Sie mithilfe der Hugo-Befehlszeilenschnittstelle (Command Line Interfa
 
 Sie benötigen ein Repository auf GitHub, um eine Verbindung mit Azure Static Web Apps herzustellen. In den folgenden Schritten wird veranschaulicht, wie Sie ein Repository für Ihre Website erstellen.
 
-1. Erstellen Sie über [https://github.com/new](https://github.com/new) ein leeres GitHub-Repository mit dem Namen **hugo-static-app**. (Erstellen Sie keine README-Datei.)
+1. Erstellen Sie über [https://github.com/new](https://github.com/new) ein leeres GitHub-Repository mit dem Namen **hugo-static-app** . (Erstellen Sie keine README-Datei.)
 
 1. Fügen Sie das GitHub-Repository als Remoteressource zu Ihrem lokalen Repository hinzu. Fügen Sie unbedingt den GitHub-Benutzernamen anstelle des Platzhalters `<YOUR_USER_NAME>` im folgenden Befehl hinzu:
 
@@ -98,8 +98,8 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 ### <a name="create-the-application"></a>Erstellen der Anwendung
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Klicken Sie auf **Ressource erstellen**.
-1. Suchen Sie nach **Static Web Apps**.
+1. Klicken Sie auf **Ressource erstellen** .
+1. Suchen Sie nach **Static Web Apps** .
 1. Klicken Sie auf **Static Web Apps (Vorschau)** .
 1. Klicken Sie auf **Erstellen**
 
@@ -117,7 +117,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
    :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
 
-1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**.
+1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden** .
 
 1. Wählen Sie die **Organisation** aus, unter der Sie das Repository erstellt haben.
 
@@ -141,15 +141,46 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen**, um sicherzustellen, dass alle Details stimmen.
+1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen** , um sicherzustellen, dass alle Details stimmen.
 
-1. Klicken Sie auf **Erstellen**, um mit der Erstellung der Azure Static Web Apps-Instanz zu beginnen und einen GitHub Actions-Vorgang für die Bereitstellung anzugeben.
+1. Klicken Sie auf **Erstellen** , um mit der Erstellung der Azure Static Web Apps-Instanz zu beginnen und einen GitHub Actions-Vorgang für die Bereitstellung anzugeben.
 
 1. Warten Sie, bis der GitHub Actions-Vorgang abgeschlossen wurde.
 
-1. Klicken Sie im Azure-Portal im Fenster _Übersicht_ der neu erstellten Azure Static Web Apps-Ressource auf den Link _URL_, um Ihre bereitgestellte Anwendung zu öffnen.
+1. Klicken Sie im Azure-Portal im Fenster _Übersicht_ der neu erstellten Azure Static Web Apps-Ressource auf den Link _URL_ , um Ihre bereitgestellte Anwendung zu öffnen.
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
+
+#### <a name="custom-hugo-version"></a>Benutzerdefinierte Hugo-Version
+
+Beim Generieren einer statischen Web-App wird eine [Workflowdatei](./github-actions-workflow.md) generiert, die die Konfigurationseinstellungen der Anwendung für die Veröffentlichung enthält. Sie können eine bestimmte Hugo-Version in der Workflowdatei festlegen, indem Sie im Abschnitt `env` einen Wert für `HUGO_VERSION` angeben. In der folgenden Beispielkonfiguration wird veranschaulicht, wie Sie Hugo auf eine bestimmte Version festlegen.
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "api" # Api source code path - optional
+          app_artifact_location: "public" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+        env:
+          HUGO_VERSION: 0.58.0
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

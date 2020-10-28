@@ -1,28 +1,30 @@
 ---
 title: Was ist Azure Lighthouse?
 description: Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste für Ihre Kunden bereitstellen, bei denen bedarfsorientiert eine höhere Automatisierung und Effizienz erzielt werden können.
-ms.date: 08/19/2020
+ms.date: 10/19/2020
 ms.topic: overview
-ms.openlocfilehash: 41fa836321da7cdb42b9a3419bc0bb32963a5849
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a76606ff48a09c0c31584882e3d2aa164ec97325
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017862"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203788"
 ---
 # <a name="what-is-azure-lighthouse"></a>Was ist Azure Lighthouse?
 
-Azure Lighthouse ermöglicht die mandantenübergreifende Verwaltung sowie die Verwaltung mehrerer Mandanten mit stärkerer Automatisierung, besserer Skalierbarkeit und verbesserter Governance für alle Ressourcen und Mandanten. Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste mithilfe umfassender und stabiler Verwaltungstools bereitstellen, die in die Azure-Plattform integriert sind. Dieses Angebot kann auch IT-Abteilungen von Unternehmen zugutekommen, die Ressourcen in mehreren Mandanten verwalten.
+Azure Lighthouse ermöglicht die mandantenübergreifende Verwaltung sowie die Verwaltung mehrerer Mandanten mit stärkerer Automatisierung, besserer Skalierbarkeit und verbesserter Governance für alle Ressourcen und Mandanten.
+
+Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste mithilfe umfassender und stabiler Verwaltungstools bereitstellen, die in die Azure-Plattform integriert sind. Kunden behalten die Kontrolle darüber, wer auf ihren Mandanten zugreifen kann, auf welche Ressourcen sie Zugriff haben und welche Aktionen durchgeführt werden können. Von diesem Angebot können auch [IT-Abteilungen von Unternehmen](concepts/enterprise.md) profitieren, die Ressourcen auf mehreren Mandanten verwalten.
 
 ![Übersichtsdiagramm von Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
 ## <a name="benefits"></a>Vorteile
 
-Azure Lighthouse hilft Ihnen bei der profitablen und effizienten Erstellung und Bereitstellung verwalteter Dienste. Es ergeben sich folgende Vorteile:
+Azure Lighthouse dient Dienstanbietern beim effizienten Erstellen und Bereitstellen verwalteter Dienste als Hilfe. Dies hat unter anderem folgende Vorteile:
 
-- **Bedarfsorientierte Verwaltung**: Kundenbindungs- und Lebenszyklusvorgänge zur Verwaltung von Kundenressourcen sind einfacher und besser skalierbar. Vorhandene APIs, Verwaltungstools und Workflows können mit delegierten Ressourcen verwendet werden, unabhängig von den Regionen, in denen sie sich befinden.
-- **Besserer Einblick und höhere Genauigkeit für Kunden**: Kunden haben einen besseren Einblick in Ihre Aktionen und eine genauere Kontrolle über den Bereich, den sie zur Verwaltung delegieren, und können beispielsweise den Zugriff vollständig entfernen. Ihre IP-Adresse bleibt dabei erhalten.
-- **Umfassende und einheitliche Plattformtools**: Unsere Toolerfahrung ist auf wichtige Dienstanbieterszenarien ausgelegt, einschließlich mehrerer Lizenzierungsmodelle wie EA (Enterprise Agreement), CSP (Cloud-Lösungsanbieter) und nutzungsbasierte Bezahlung. Die neuen Funktionen arbeiten mit vorhandenen Tools und APIs, Lizenzierungsmodellen und Partnerprogrammen wie dem [Programm für Cloud-Lösungsanbieter](/partner-center/csp-overview). Azure Lighthouse lässt sich in Ihre vorhandenen Workflows und Anwendungen integrieren, und Sie können Ihre Wirksamkeit auf die Kundenbindung nachverfolgen, indem Sie [Ihre Partner-ID verknüpfen](./how-to/partner-earned-credit.md).
+- **Bedarfsorientierte Verwaltung** : Kundenbindungs- und Lebenszyklusvorgänge zur Verwaltung von Kundenressourcen sind einfacher und besser skalierbar. Vorhandene APIs, Verwaltungstools und Workflows können mit delegierten Ressourcen, z. B. auch außerhalb von Azure gehosteten Computern, verwendet werden. Dies gilt unabhängig von den Regionen, in denen sie sich befinden.
+- **Bessere Transparenz und Kontrolle für Kunden** : Kunden können präzise steuern, welche Bereiche sie für die Verwaltung delegieren und welche Berechtigungen zulässig sind. Sie können Aktionen von Dienstanbietern überwachen und die Zugriffsmöglichkeit bei Bedarf vollständig entfernen.
+- **Umfassende und einheitliche Plattformtools** : Unsere Toolerfahrung ist auf wichtige Dienstanbieterszenarien ausgelegt, einschließlich mehrerer Lizenzierungsmodelle wie EA (Enterprise Agreement), CSP (Cloud-Lösungsanbieter) und nutzungsbasierte Bezahlung. Für Azure Lighthouse können vorhandene Tools und APIs, Lizenzierungsmodelle, [von Azure verwaltete Anwendungen](concepts/managed-applications.md) und Partnerprogramme, z. B. das [Cloud Solution Provider-Programm (CSP)](/partner-center/csp-overview), genutzt werden. Sie können Azure Lighthouse in Ihre vorhandenen Workflows und Anwendungen integrieren und nachverfolgen, welchen Einfluss Sie auf die Kundenbindung haben, indem Sie [Ihre Partner-ID verknüpfen](./how-to/partner-earned-credit.md).
 
 Es fallen keine zusätzlichen Kosten für die Verwendung von Azure Lighthouse zur Verwaltung von Azure-Ressourcen an. Jeder Azure-Kunde oder -Partner kann Azure Lighthouse verwenden.
 
@@ -30,10 +32,10 @@ Es fallen keine zusätzlichen Kosten für die Verwendung von Azure Lighthouse zu
 
 Azure Lighthouse umfasst mehrere Möglichkeiten zur Optimierung von Kundenbindung und Verwaltung:
 
-- **Delegierte Azure-Ressourcenverwaltung**: Verwalten Sie die Azure-Ressourcen Ihrer Kunden sicher aus Ihrem eigenen Mandanten heraus, ohne den Kontext oder Steuerungsebenen wechseln zu müssen. Abonnements und Ressourcengruppen können an bestimmte Benutzer und Rollen im Verwaltungsmandanten delegiert werden, und es besteht die Möglichkeit, den Zugriff bei Bedarf zu entfernen. Weitere Informationen finden Sie unter [Delegierte Azure-Ressourcenverwaltung](concepts/azure-delegated-resource-management.md).
-- **Neue Azure-Portalerfahrung**: Zeigen Sie mandantenübergreifende Informationen auf der [Seite **Meine Kunden** ](./how-to/view-manage-customers.md) im Azure-Portal an. Auf einer entsprechenden [Seite **Dienstanbieter**](how-to/view-manage-service-providers.md) können Kunden den Dienstanbieterzugriff anzeigen und verwalten.
-- **Azure Resource Manager-Vorlagen**: Unsere Vorlagen helfen Ihnen, mandantenübergreifende Verwaltungsaufgaben auszuführen und delegierte Kundenressourcen zu integrieren. Weitere Informationen finden Sie in unserem [Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) und unter [Onboarding eines Kunden in Azure Lighthouse durchführen](how-to/onboard-customer.md).
-- **Angebote für verwaltete Dienste im Azure Marketplace:** Bieten Sie Ihre Dienste Kunden durch private oder öffentliche Angebote an, und lassen Sie sie automatisch in Azure Lighthouse integrieren. Weitere Informationen finden Sie unter [Angebote für verwaltete Dienste in Azure Marketplace](concepts/managed-services-offers.md).
+- **Delegierte Azure-Ressourcenverwaltung** : [Verwalten Sie die Azure-Ressourcen Ihrer Kunden sicher von Ihrem eigenen Mandanten aus](concepts/azure-delegated-resource-management.md), ohne den Kontext oder Steuerungsebenen wechseln zu müssen. Kundenabonnements und Ressourcengruppen können an bestimmte Benutzer und Rollen im Verwaltungsmandanten delegiert werden, und es besteht die Möglichkeit, den Zugriff bei Bedarf zu entfernen.
+- **Neue Azure-Portalerfahrung** : Zeigen Sie mandantenübergreifende Informationen auf der [Seite **Meine Kunden**](how-to/view-manage-customers.md) im Azure-Portal an. Auf einer entsprechenden [Seite **Dienstanbieter**](how-to/view-manage-service-providers.md) können Kunden den Dienstanbieterzugriff anzeigen und verwalten.
+- **Azure Resource Manager-Vorlagen** : Verwenden Sie ARM-Vorlagen zum [Durchführen des Onboardings für delegierte Kundenressourcen](how-to/onboard-customer.md) und [Durchführen von mandantenübergreifenden Verwaltungsaufgaben](samples/index.md).
+- **Angebote für verwaltete Dienste im Azure Marketplace:** [Bieten Sie Ihre Dienste Kunden als private oder öffentliche Angebote an](concepts/managed-services-offers.md), und nutzen Sie das automatische Onboarding für Azure Lighthouse.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

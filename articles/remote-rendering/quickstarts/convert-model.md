@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91652447"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281355"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Schnellstart: Konvertieren eines Modells für das Rendering
 
@@ -27,7 +27,7 @@ Sie lernen Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Quickstart: Rendern eines Modells mit Unity](render-model.md) durch.
-* Installieren Sie Azure PowerShell ([Dokumentation](https://docs.microsoft.com/powershell/azure/)).
+* Für die Konvertierung mithilfe des PowerShell-Skripts: Installieren Sie Azure PowerShell ([Dokumentation](/powershell/azure/)).
   * Öffnen Sie eine PowerShell-Instanz mit Administratorrechten.
   * Führen Sie `Install-Module -Name Az -AllowClobber` aus.
 
@@ -69,8 +69,8 @@ Wenn Sie auf diese Schaltfläche klicken, wird der folgende Bildschirm angezeigt
 
 Füllen Sie das Formular wie folgt aus:
 
-* Erstellen Sie über den Link unter dem Dropdownfeld eine neue Ressourcengruppe, und geben Sie ihr den Namen **ARR_Tutorial**.
-* Geben Sie unter **Speicherkontoname** einen eindeutigen Namen ein. Dieser **Name muss global eindeutig sein**. Andernfalls wird eine Meldung mit dem Hinweis angezeigt, dass der Name bereits verwendet wird. In dieser Schnellstartanleitung nutzen wir den Namen **arrtutorialstorage**. Sie müssen den Namen für diese Schnellstartanleitung also jeweils durch Ihren eigenen Speicherkontonamen ersetzen.
+* Erstellen Sie über den Link unter dem Dropdownfeld eine neue Ressourcengruppe, und geben Sie ihr den Namen **ARR_Tutorial** .
+* Geben Sie unter **Speicherkontoname** einen eindeutigen Namen ein. Dieser **Name muss global eindeutig sein** . Andernfalls wird eine Meldung mit dem Hinweis angezeigt, dass der Name bereits verwendet wird. In dieser Schnellstartanleitung nutzen wir den Namen **arrtutorialstorage** . Sie müssen den Namen für diese Schnellstartanleitung also jeweils durch Ihren eigenen Speicherkontonamen ersetzen.
 * Wählen Sie einen **Standort** in Ihrer Nähe aus. Verwenden Sie idealerweise denselben Standort wie beim Einrichten des Renderings in der anderen Schnellstartanleitung.
 * **Leistung** ist auf „Standard“ festgelegt.
 * **Kontoart** ist auf „StorageV2 (universell v2)“ festgelegt.
@@ -79,7 +79,7 @@ Füllen Sie das Formular wie folgt aus:
 
 Die Eigenschaften auf den anderen Registerkarten müssen nicht geändert werden. Sie können fortfahren, indem Sie die Option **Bewerten + erstellen** auswählen und dann die Schritte zum Abschließen der Einrichtung ausführen.
 
-Auf der Website wird der Status Ihrer Bereitstellung angezeigt, und zuletzt erfolgt die Meldung „Ihre Bereitstellung wurde abgeschlossen“. Klicken Sie auf die Schaltfläche **Zu Ressource wechseln**, um die nächsten Schritte auszuführen:
+Auf der Website wird der Status Ihrer Bereitstellung angezeigt, und zuletzt erfolgt die Meldung „Ihre Bereitstellung wurde abgeschlossen“. Klicken Sie auf die Schaltfläche **Zu Ressource wechseln** , um die nächsten Schritte auszuführen:
 
 ![Azure Storage-Erstellung abgeschlossen](./media/storage-creation-complete.png)
 
@@ -87,7 +87,7 @@ Auf der Website wird der Status Ihrer Bereitstellung angezeigt, und zuletzt erfo
 
 Als Nächstes benötigen wir zwei Blobcontainer: einen für die Eingabe und einen für die Ausgabe.
 
-Über die obige Schaltfläche **Zu Ressource wechseln** gelangen Sie auf eine Seite, die links einen Bereich mit einem Listenmenü enthält. Klicken Sie in dieser Liste unter der Kategorie **Blob-Dienst** auf die Schaltfläche **Container**:
+Über die obige Schaltfläche **Zu Ressource wechseln** gelangen Sie auf eine Seite, die links einen Bereich mit einem Listenmenü enthält. Klicken Sie in dieser Liste unter der Kategorie **Blob-Dienst** auf die Schaltfläche **Container** :
 
 ![Azure: Container hinzufügen](./media/azure-add-containers.png)
 
@@ -97,7 +97,7 @@ Verwenden Sie beim Erstellen die folgenden Einstellungen:
 * Name: arrinput
 * Öffentliche Zugriffsebene: Privat
 
-Klicken Sie nach der Erstellung des Containers erneut auf **+ Container**, und geben Sie die Einstellungen entsprechend für den Container **output** ein:
+Klicken Sie nach der Erstellung des Containers erneut auf **+ Container** , und geben Sie die Einstellungen entsprechend für den Container **output** ein:
 
 * Name: arroutput
 * Öffentliche Zugriffsebene: Privat
@@ -108,7 +108,16 @@ Sie verfügen nun über zwei Blobspeichercontainer:
 
 ## <a name="run-the-conversion"></a>Durchführen der Konvertierung
 
-Wir haben für Sie ein Hilfsprogrammskript bereitgestellt, um Ihnen das Aufrufen des Diensts für die Ressourcenkonvertierung zu erleichtern. Es befindet sich im Ordner *Scripts* und hat den Namen **Conversion.ps1**.
+Es gibt drei verschiedene Möglichkeiten, eine Modellkonvertierung auszulösen:
+
+### <a name="1-conversion-via-the-arrt-tool"></a>1. Konvertierung über das ARRT-Tool
+
+Es gibt ein [UI-basiertes Tool namens ARRT](./../samples/azure-remote-rendering-asset-tool.md), um Konvertierungen zu starten und mit dem gerenderten Ergebnis zu interagieren.
+![ARRT](./../samples/media/azure-remote-rendering-asset-tool.png "ARRT-Screenshot")
+
+### <a name="2-conversion-via-a-powershell-script"></a>2. Konvertierung über ein PowerShell-Skript
+
+Wir haben für Sie ein Hilfsprogrammskript bereitgestellt, um Ihnen das Aufrufen des Diensts für die Ressourcenkonvertierung zu erleichtern. Es befindet sich im Ordner *Scripts* und hat den Namen **Conversion.ps1** .
 
 Dieses Skript bewirkt Folgendes:
 
@@ -146,7 +155,7 @@ Für dieses Skript wird die Konfiguration aus der Datei *Scripts\arrconfig.json*
 
 Die Konfigurationsangaben in der Gruppe **accountSettings** (Konto-ID und -schlüssel) sollten analog zu den Anmeldeinformationen eingegeben werden, die unter [Schnellstart: Rendern eines Modells mit Unity](render-model.md) verwendet wurden.
 
-Ändern Sie in der Gruppe **assetConversionSettings** die Einstellungen für **resourceGroup**, **blobInputContainerName** und **blobOutputContainerName** wie oben angegeben.
+Ändern Sie in der Gruppe **assetConversionSettings** die Einstellungen für **resourceGroup** , **blobInputContainerName** und **blobOutputContainerName** wie oben angegeben.
 Beachten Sie, dass der Wert **arrtutorialstorage** durch den eindeutigen Namen ersetzt werden muss, den Sie beim Erstellen des Speicherkontos gewählt haben.
 
 Ändern Sie **localAssetDirectoryPath** so, dass auf das Verzeichnis auf Ihrem Datenträger verwiesen wird, in dem das zu konvertierende Modell enthalten ist. Achten Sie darauf, dass Sie für im Pfad enthaltene umgekehrte Schrägstriche („\\“) doppelte umgekehrte Schrägstriche („\\\\“) als Escapezeichen verwenden.
@@ -166,7 +175,7 @@ Connect-AzAccount
 ```
 
 > [!NOTE]
-> Falls Ihre Organisation über mehrere Abonnements verfügt, müssen Sie ggf. die Argumente für die Abonnement-ID und den Mandanten angeben. Weitere Informationen finden Sie in der [Dokumentation zu „Connect-AzAccount“](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+> Falls Ihre Organisation über mehrere Abonnements verfügt, müssen Sie ggf. die Argumente für die Abonnement-ID und den Mandanten angeben. Weitere Informationen finden Sie in der [Dokumentation zu „Connect-AzAccount“](/powershell/module/az.accounts/connect-azaccount).
 
 Wechseln Sie zum Verzeichnis `azure-remote-rendering\Scripts`, und führen Sie das Konvertierungsskript aus:
 
@@ -176,9 +185,16 @@ Wechseln Sie zum Verzeichnis `azure-remote-rendering\Scripts`, und führen Sie d
 
 Die Ausgabe sollte folgendermaßen aussehen: ![Conversion.ps1](./media/successful-conversion.png)
 
+### <a name="3-conversion-via-api-calls"></a>3. Konvertierung über API-Aufrufe
+
+Die C#- und die C++-API stellen beide einen Einstiegspunkt für die Interaktion mit dem Dienst bereit:
+* [C# AzureFrontend.StartAssetConversionAsync()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
+* [C++ AzureFrontend::StartAssetConversionAsync()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+
+
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>Einfügen eines neuen Modells in die Schnellstart-Beispiel-App
 
-Das Konvertierungsskript generiert einen *SAS*-URI (Shared Access Signature) für das konvertierte Modell. Sie können diesen URI jetzt als **Modellnamen** in die Beispiel-App der Schnellstartanleitung kopieren (siehe [Schnellstart: Rendern eines Modells mit Unity](render-model.md)).
+Das Konvertierungsskript generiert einen *SAS* -URI (Shared Access Signature) für das konvertierte Modell. Sie können diesen URI jetzt als **Modellnamen** in die Beispiel-App der Schnellstartanleitung kopieren (siehe [Schnellstart: Rendern eines Modells mit Unity](render-model.md)).
 
 ![Ersetzen des Modells in Unity](./media/replace-model-in-unity.png)
 
@@ -189,8 +205,8 @@ Das Konvertierungsskript generiert einen *SAS*-URI (Shared Access Signature) fü
 Der vom Konvertierungsskript erstellte SAS-URI ist nur 24 Stunden lang gültig. Nach Ablauf des Gültigkeitszeitraums müssen Sie Ihr Modell aber nicht noch einmal konvertieren. Stattdessen können Sie im Portal eine neue SAS erstellen, indem Sie wie hier beschrieben vorgehen:
 
 1. [Navigieren Sie zum Azure-Portal](https://www.portal.azure.com).
-1. Klicken Sie auf Ihr **Speicherkonto**: ![Auf dem Screenshot ist die ausgewählte Speicherkontoressource hervorgehoben.](./media/portal-storage-accounts.png)
-1. Klicken Sie auf dem folgenden Bildschirm links auf **Storage-Explorer**, und greifen Sie im Blobspeichercontainer *arroutput* auf Ihr Ausgabemodell ( *.arrAsset*-Datei) zu. Klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie im Kontextmenü die Option **Shared Access Signature abrufen** aus: ![Zugriff auf Signatur](./media/portal-storage-explorer.png)
+1. Klicken Sie auf Ihr **Speicherkonto** : ![Auf dem Screenshot ist die ausgewählte Speicherkontoressource hervorgehoben.](./media/portal-storage-accounts.png)
+1. Klicken Sie auf dem folgenden Bildschirm links auf **Storage-Explorer** , und greifen Sie im Blobspeichercontainer *arroutput* auf Ihr Ausgabemodell ( *.arrAsset* -Datei) zu. Klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie im Kontextmenü die Option **Shared Access Signature abrufen** aus: ![Zugriff auf Signatur](./media/portal-storage-explorer.png)
 1. Ein neuer Bildschirm wird geöffnet, in dem Sie ein Ablaufdatum auswählen können. Wählen Sie **Erstellen** aus, und kopieren Sie den URI, der im nächsten Dialogfeld angezeigt wird. Dieser neue URI ersetzt den temporären URI, der vom Skript erstellt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte

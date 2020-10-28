@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761225"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126189"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Die Preise für Azure Communication Services basieren auf einem Modell mit nutzungsbasierter Bezahlung ohne Vorabgebühren. Ihnen wird nur der tatsächliche Verbrauch und die Nutzung der Dienste in Rechnung gestellt.
+Die Preise für Azure Communication Services basieren im Allgemeinen auf einem Modell mit nutzungsbasierter Bezahlung.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Sprach-/Videoanrufe und Bildschirmfreigabe
 
@@ -51,7 +46,7 @@ Alice hat einen Gruppenanruf mit ihren Kollegen Bob und Charlie durchgeführt. A
 - 2 Teilnehmer · 60 Minuten · 0,004 USD pro Teilnehmer pro Minute = 0,48 USD [gleicher Preis für Video und Audio]
 - 1 Teilnehmer · 43 Minuten · 0,004 USD pro Teilnehmer pro Minute = 0,172 USD [gleicher Preis für Video und Audio]
 
-**Gesamtkosten für den Gruppenanruf**: 0,48 USD + 0,172 USD = 0,652 USD
+**Gesamtkosten für den Gruppenanruf** : 0,48 USD + 0,172 USD = 0,652 USD
 
 ## <a name="chat"></a>Chat
 
@@ -84,6 +79,16 @@ Rose sieht die Nachrichten und beteiligt sich am Chat. In der Zwischenzeit erhä
 ## <a name="price"></a>Preis 
 
 Telefoniedienste werden auf Minutenbasis abgerechnet, während SMS auf Nachrichtenbasis abgerechnet werden. Die Preise richten sich nach der Art und dem Standort der von Ihnen verwendeten Nummer sowie nach dem Ziel Ihrer Anrufe und SMS-Nachrichten.
+
+### <a name="telephone-number-leasing"></a>Leasing von Telefonnummern
+
+Gebühren für das Leasing von Telefonnummern werden im Voraus erhoben und fallen dann monatlich wiederkehrend an:
+
+|Zahlentyp   |Monatliche Gebühr   |
+|--------------|-----------|
+|Lokal (Nordamerika)     |1 USD/Monat        |
+|Gebührenfrei (Nordamerika) |2 USD/Monat |
+
 
 ### <a name="telephone-calling"></a>Telefonanruf
 

@@ -3,17 +3,17 @@ title: Azure Storage-Beispiele mit Python | Microsoft-Dokumentation
 description: Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Beispiele für erste Schritte mit Blobs, Warteschlangen, Tabellen und Dateien unter Verwendung der Speicherclientbibliotheken für Python.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f57fa1b668cacdaaceb2026f9e5d7fff0cc56d7f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848184"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371357"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Azure Storage-Beispiele mit Python-Clientbibliotheken (v12)
 
@@ -594,4 +594,5 @@ Weitere Informationen zu Beispielen für andere Sprachen:
 * .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
 * Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
 * JavaScript/Node.js: [Azure Storage-Beispiele mit JavaScript](storage-samples-javascript.md)
+* C++: [Azure Storage-Beispiele mit C++](storage-samples-c-plus-plus.md)
 * Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)

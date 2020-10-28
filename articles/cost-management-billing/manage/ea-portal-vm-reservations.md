@@ -3,17 +3,17 @@ title: Reservierte Azure EA-VM-Instanzen
 description: In diesem Artikel erfahren Sie, wie Azure-Reservierungen für reservierte VM-Instanzen zur Senkung der Kosten für Ihre Unternehmensregistrierung beitragen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442444"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132532"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reservierte Azure EA-VM-Instanzen
 
@@ -22,6 +22,12 @@ In diesem Artikel erfahren Sie, wie Azure-Reservierungen für reservierte VM-Ins
 ## <a name="reservation-exchanges-and-refunds"></a>Reservierungen: Umtausch und Rückerstattungen
 
 Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs umtauschen. Es ist auch möglich, eine Rückerstattung für eine Reservierung zu erhalten, wenn Sie sie nicht mehr benötigen (bis zu 50.000 US-Dollar pro Jahr). Umtausch und Rückerstattung für eine Reservierung können über das Azure-Portal abgewickelt werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../reservations/exchange-and-refund-azure-reservations.md).
+
+### <a name="partial-refunds"></a>Teilrückerstattungen
+
+Wir führen eine Teilrückerstattung durch, wenn von EA-Kunden Reservierungen zurückgegeben werden, die aufgrund einer Überschreitung erworben wurden, und nicht basierend auf dem Mindestverbrauch.
+
+Die Rückerstattung wird im EA Portal als negative Anpassung im vorherigen Monat und positive Anpassung im aktuellen Monat angezeigt. Diese Anzeige ähnelt einem Austausch von Reservierungen. In der Gutschrift ist die Nummer der ursprünglichen Rechnung angegeben. Verwenden Sie beim Abstimmen des ursprünglichen Kaufs mit der Gutschrift daher diese ursprüngliche Rechnungsnummer.
 
 ## <a name="reservation-costs-and-usage"></a>Reservierungskosten und Nutzung
 
@@ -57,9 +63,9 @@ Verglichen mit der nutzungsbasierten Bezahlung lassen sich die Kosten für Ihre 
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>So erwerben Sie reservierte VM-Instanzen
 
-Um eine reservierte Azure-VM-Instanz erwerben zu können, muss ein Enterprise Azure-Registrierungsadministrator die Kaufoption _Reserve Instance_ (Instanz reservieren) aktivieren. Die Option befindet sich im [Azure EA-Portal](https://ea.azure.com/) auf der Registerkarte _Registrierung_ im Abschnitt _Registrierungsdetails_.
+Um eine reservierte Azure-VM-Instanz erwerben zu können, muss ein Enterprise Azure-Registrierungsadministrator die Kaufoption _Reserve Instance_ (Instanz reservieren) aktivieren. Die Option befindet sich im [Azure EA-Portal](https://ea.azure.com/) auf der Registerkarte _Registrierung_ im Abschnitt _Registrierungsdetails_ .
 
-Nachdem die EA-Registrierung für das Hinzufügen reservierter Instanzen konfiguriert wurde, kann jeder Kontobesitzer mit einem aktiven, der EA-Registrierung zugeordneten Abonnement eine reservierte VM-Instanz über das [Azure-Portal](https://aka.ms/reservations) erwerben. Weitere Informationen finden Sie unter [Vorauszahlen für virtuelle Computer und Sparen von Kosten mit reservierten VM-Instanzen](https://go.microsoft.com/fwlink/?linkid=861721).
+Nachdem die EA-Registrierung für das Hinzufügen reservierter Instanzen konfiguriert wurde, kann jeder Kontobesitzer mit einem aktiven, der EA-Registrierung zugeordneten Abonnement eine reservierte VM-Instanz über das [Azure-Portal](https://aka.ms/reservations) erwerben. Weitere Informationen finden Sie unter [Vorauszahlen für virtuelle Computer und Sparen von Kosten mit reservierten VM-Instanzen](../../virtual-machines/windows/prepay-reserved-vm-instances.md).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Anzeigen von Details zum Kauf reservierter Instanzen
 
