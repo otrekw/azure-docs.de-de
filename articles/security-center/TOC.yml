@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: Funktionsabdeckung für Azure PaaS-Ressourcen
           href: features-paas.md
-    - name: Neuigkeiten in Security Center
-      displayName: release notes
-      href: release-notes.md
+    - name: Neuigkeiten
+      items:
+        - name: Anmerkungen zu diesem Release
+          displayName: changelog
+          href: release-notes.md
+        - name: Wichtige bevorstehende Änderungen
+          displayName: 'release notes, changelog'
+          href: upcoming-changes.md
+        - name: "Archivierte Versionshinweise (älter als sechs\_Monate)"
+          displayName: changelog
+          href: release-notes-archive.md
     - name: Security Center-Grundlagen
       items:
         - name: Security Center-Übersichtsseite
@@ -217,8 +225,13 @@
         - name: Anpassen der Information Protection-Richtlinie
           href: security-center-info-protection-policy.md
     - name: Verwenden von Azure Defender für Containerregistrierungen
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
+      items:
+        - name: Überprüfen Ihrer Registrierungsimages auf Sicherheitsrisiken
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: Deaktivieren bestimmter ermittelter Sicherheitsrisiken bei Images
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
     - name: Exportieren von Warnungen und Empfehlungen
       items:
         - name: 'Exportieren in eine SIEM-, SOAR- oder ITSM-Lösung'
@@ -272,8 +285,6 @@
           href: faq-vms.md
         - name: Vorhandene Benutzer von Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: Archiv der Neuerungen in Security Center
-      href: release-notes-archive.md
     - name: 'Azure-Roadmap: Blog'
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 'Endpoint Protection: Bewertung und Empfehlungen'

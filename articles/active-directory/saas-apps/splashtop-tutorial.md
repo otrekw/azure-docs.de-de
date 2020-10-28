@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 934953437c2d156f220d5b0a1847e16358e3bfb8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524565"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126874"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Splashtop
 
@@ -49,7 +49,7 @@ Um die Integration von Splashtop in Azure AD zu konfigurieren, müssen Sie Spla
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Splashtop** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Splashtop** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
@@ -57,7 +57,7 @@ Um die Integration von Splashtop in Azure AD zu konfigurieren, müssen Sie Spla
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-splashtop"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Splashtop
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Splashtop mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Splashtop eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Splashtop mithilfe eines Testbenutzers namens **B.Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Splashtop eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Splashtop zu konfigurieren und zu testen:
 
@@ -72,9 +72,9 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Splashtop** den Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Splashtop** den Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -84,7 +84,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die Splashtop-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute, wobei **nameidentifier** hier **user.userprincipalname** zugeordnet wird. Die TicketManager-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher bearbeiten, indem Sie auf das Symbol **Bearbeiten** klicken und die Zuordnung entsprechend ändern.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Benutzerattribute mit ausgewähltem Bearbeitungssymbol](common/edit-attribute.png)
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -103,16 +103,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Erstellen**.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
+   1. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Splashtop gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Splashtop** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -120,24 +120,26 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ## <a name="configure-splashtop-sso"></a>Konfigurieren des einmaligen Anmeldens für Splashtop
 
 In diesem Abschnitt müssen Sie über das [Splashtop-Webportal](https://my.splashtop.com/login) eine neue SSO-Methode beantragen.
 1. Navigieren Sie im Splashtop-Webportal zu **Account info** / **Team** (Kontoinformationen > Team), und scrollen Sie nach unten zum Abschnitt **Single Sign On** (Einmaliges Anmelden). Klicken Sie anschließend auf **Apply for new SSO method** (Neue SSO-Methode beantragen).
 
-    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![Screenshot: Seite „Single Sign-On“ (Einmaliges Anmelden) mit der Option „Apply for new SSO method“ (Neue SSO-Methode beantragen)](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
 1. Geben Sie im Antragsfenster unter **SSO name** (SSO-Name) einen SSO-Namen an (beispielsweise „New Azure“). Wählen Sie **Azure** als IDP-Typ aus, und geben unter **Login URL** (Anmelde-URL) und **Azure AD Identifier** (Azure AD-Bezeichner) die Werte ein, die Sie im Azure-Portal aus der Splashtop-Anwendung kopiert haben.
 
-    ![image](media/splashtop-tutorial/azure-sso-1.png)
+    ![Screenshot: Seite „Apply for new SSO method“ (Neue SSO-Methode beantragen) mit Eingabe eines Namens und anderer Informationen](media/splashtop-tutorial/azure-sso-1.png)
 
 1. Klicken Sie zum Angeben der Zertifikatinformationen mit der rechten Maustaste auf die Zertifikatdatei, die Sie im Portal aus der Splashtop-Anwendung heruntergeladen haben, bearbeiten Sie sie mit Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Feld **Download Certificate (Base64)** (Downloadzertifikat (Base64)) ein.
 
-    ![Abbildung](media/splashtop-tutorial/cert-1.png) ![Abbildung](media/splashtop-tutorial/cert-2.png) ![Abbildung](media/splashtop-tutorial/azure-sso-2.png)
+    ![Screenshot: Auswahl einer Zertifikatsdatei und Öffnen im Editor](media/splashtop-tutorial/cert-1.png)
+    ![Screenshot: Inhalt der Zertifikatsdatei](media/splashtop-tutorial/cert-2.png)
+    ![Screenshot: Textfeld für „Zertifikat herunterladen“](media/splashtop-tutorial/azure-sso-2.png)
 
 1. Das ist alles! Klicken Sie auf **Save** (Speichern). Das SSO-Überprüfungsteam von Splashtop setzt sich mit Ihnen hinsichtlich der Überprüfungsinformationen in Verbindung und aktiviert dann die SSO-Methode.
 
@@ -145,11 +147,11 @@ In diesem Abschnitt müssen Sie über das [Splashtop-Webportal](https://my.splas
 
 1. Aktivieren Sie nach der Aktivierung der neu erstellten SSO-Methode im Abschnitt **Einmaliges Anmelden** das entsprechende Kontrollkästchen, um die Methode zu aktivieren.
 
-    ![image](media/splashtop-tutorial/enable.png)
+    ![Screenshot: Seite „Einmaliges Anmelden“, auf der Sie die neue Methode aktivieren können](media/splashtop-tutorial/enable.png)
 
 1. Laden Sie den Testbenutzer (beispielsweise `B.Simon@contoso.com`) mit der neu erstellten SSO-Methode zu Ihrem Splashtop-Team ein.
 
-    ![image](media/splashtop-tutorial/invite.png)
+    ![Screenshot: Seite „Benutzer einladen“, auf der Sie Ihre neue Methode auswählen können](media/splashtop-tutorial/invite.png)
 
 1. Sie können auch ein vorhandenes Splashtop-Konto in ein SSO-Konto ändern. Eine entsprechende Anleitung finden Sie [hier](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 

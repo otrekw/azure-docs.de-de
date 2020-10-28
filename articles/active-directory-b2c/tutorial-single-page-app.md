@@ -11,16 +11,16 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258897"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216525"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure AD B2C
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory B2C (Azure AD B2C) für die Registrierung und Anmeldung von Benutzern in einer Single-Page-Webanwendung (Single-Page Application, SPA) verwenden.
+In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory B2C (Azure AD B2C) für die Registrierung und Anmeldung von Benutzern in einer Single-Page-Webanwendung (Single-Page Application, SPA) verwenden, indem Sie den impliziten OAuth 2.0-Gewährungsablauf nutzen.
 
 Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe und beinhaltet Folgendes:
 
@@ -39,7 +39,7 @@ Im [nächsten Tutorial](tutorial-single-page-app-webapi.md) dieser Reihe wird de
 Sie benötigen die folgenden Azure AD B2C-Ressourcen, bevor Sie mit den Schritten dieses Tutorials fortfahren können:
 
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md)
-* In Ihrem Mandanten [registrierte Anwendung](tutorial-register-applications.md)
+* Unter Ihrem Mandanten [registrierte Anwendung](tutorial-register-spa.md) (Verwendung der Optionen für impliziten Ablauf)
 * Im Mandanten [erstellte Benutzerabläufe](tutorial-create-user-flows.md)
 
 Darüber hinaus benötigen Sie in Ihrer lokalen Entwicklungsumgebung Folgendes:
@@ -57,22 +57,22 @@ Zum Aktualisieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie u
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen**, die Registerkarte **Anwendungen mit Besitzer** und dann die Anwendung *webapp1* aus.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C** , und wählen Sie ihn aus.
+1. Wählen Sie **App-Registrierungen** , die Registerkarte **Anwendungen mit Besitzer** und dann die Anwendung *webapp1* aus.
 1. Wählen Sie unter **Web** den Link **URI hinzufügen** aus, und geben Sie `http://localhost:6420` ein.
-1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**, und wählen Sie **Speichern** aus.
-1. Wählen Sie **Übersicht**.
+1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token** (falls erforderlich), und wählen Sie **Speichern** aus.
+1. Wählen Sie **Übersicht** .
 1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt, wenn Sie den Code in der Single-Page-Webanwendung aktualisieren.
 
 #### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C** , und wählen Sie dann diese Option aus.
 1. Wählen Sie **Anwendungen (Legacy)** und anschließend die Anwendung *webapp1* aus.
 1. Fügen Sie unter **Antwort-URL** Folgendes hinzu: `http://localhost:6420`.
 1. Wählen Sie **Speichern** aus.
-1. Notieren Sie sich auf der Eigenschaftenseite die **Anwendungs-ID**. Sie verwenden die App-ID in einem späteren Schritt, wenn Sie den Code in der Single-Page-Webanwendung aktualisieren.
+1. Notieren Sie sich auf der Eigenschaftenseite die **Anwendungs-ID** . Sie verwenden die App-ID in einem späteren Schritt, wenn Sie den Code in der Single-Page-Webanwendung aktualisieren.
 
 * * *
 
@@ -90,10 +90,10 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 Nachdem Sie nun das Beispiel vorliegen haben, können Sie den Code mit dem Namen Ihres Azure AD B2C-Mandanten und der Anwendungs-ID aus dem vorherigen Schritt aktualisieren.
 
-1. Öffnen Sie die Datei *authConfig.js* im Ordner *JavaScriptSPA*.
+1. Öffnen Sie die Datei *authConfig.js* im Ordner *JavaScriptSPA* .
 1. Aktualisieren Sie im Objekt `msalConfig` Folgendes:
     * `clientId` mit der **Anwendungs-ID (Client)** , die Sie sich in einem früheren Schritt notiert haben
-    * Den URI `authority` mit dem Namen Ihres Azure AD B2C-Mandanten und dem Namen des Benutzerablaufs für die Registrierung/Anmeldung, den Sie im Rahmen der Voraussetzungen erstellt haben (z. B. *B2C_1_signupsignin1*)
+    * Den URI `authority` mit dem Namen Ihres Azure AD B2C-Mandanten und dem Namen des Benutzerablaufs für die Registrierung/Anmeldung, den Sie im Rahmen der Voraussetzungen erstellt haben (z. B. *B2C_1_signupsignin1* )
 
     ```javascript
     const msalConfig = {
@@ -145,7 +145,7 @@ Nachdem Sie nun das Beispiel vorliegen haben, können Sie den Code mit dem Namen
 Diese Beispielanwendung unterstützt Registrierung, Anmeldung und Kennwortzurücksetzung. In diesem Tutorial registrieren Sie sich mit einer E-Mail-Adresse.
 
 1. Wählen Sie **Anmelden** aus, um den in einem vorherigen Schritt angegebenen Benutzerablauf *B2C_1_signupsignin1* zu initiieren.
-1. Von Azure AD B2C wird eine Anmeldeseite mit einem Registrierungslink angezeigt. Da Sie noch nicht über ein Konto verfügen, klicken Sie auf den Link **Jetzt registrieren**.
+1. Von Azure AD B2C wird eine Anmeldeseite mit einem Registrierungslink angezeigt. Da Sie noch nicht über ein Konto verfügen, klicken Sie auf den Link **Jetzt registrieren** .
 1. Der Registrierungsworkflow zeigt eine Seite an, über die die Identität des Benutzers anhand einer E-Mail-Adresse erfasst und überprüft wird. Darüber hinaus werden im Rahmen des Registrierungsworkflows auch das Kennwort des Benutzers sowie die angeforderten Attribute erfasst, die im Benutzerablauf definiert wurden.
 
     Verwenden Sie eine gültige E-Mail-Adresse, und bestätigen Sie sie mithilfe des Prüfcodes. Legen Sie ein Kennwort fest. Geben Sie Werte für die angeforderten Attribute ein.
@@ -158,7 +158,7 @@ Wenn Sie **Erstellen** auswählen, wird von der Anwendung der Name des angemelde
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Webbrowser mit lokal ausgeführter Single-Page-Webanwendung":::
 
-Wenn Sie die Anmeldung testen möchten, klicken Sie auf die Schaltfläche **Abmelden**, wählen Sie **Anmelden** aus, und melden Sie sich mit der bei der Registrierung eingegebenen E-Mail-Adresse und dem entsprechenden Kennwort an.
+Wenn Sie die Anmeldung testen möchten, klicken Sie auf die Schaltfläche **Abmelden** , wählen Sie **Anmelden** aus, und melden Sie sich mit der bei der Registrierung eingegebenen E-Mail-Adresse und dem entsprechenden Kennwort an.
 
 ### <a name="what-about-calling-the-api"></a>Was ist mit dem Aufrufen der API?
 
