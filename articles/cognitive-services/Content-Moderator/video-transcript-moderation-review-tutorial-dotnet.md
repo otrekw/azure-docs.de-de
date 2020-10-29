@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919287"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912836"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
 
@@ -35,7 +35,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und erstellen Sie benutzerdefinierte Tags. Weitere Informationen zu diesem Schritt finden Sie bei Bedarf unter [Erstellen und Verwenden von Moderationstags](Review-Tool-User-Guide/tags.md).
+- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und erstellen Sie benutzerdefinierte Tags. Weitere Informationen zu diesem Schritt finden Sie bei Bedarf unter [Erstellen und Verwenden von Moderationstags](./review-tool-user-guide/configure.md#tags).
 
     ![Screenshot: Benutzerdefinierte Tags für die Videomoderation](images/video-tutorial-custom-tags.png)
 - Um die Beispielanwendung ausführen zu können, benötigen Sie ein Azure-Konto, eine Azure Media Services-Ressource, eine Azure Content Moderator-Ressource sowie Azure Active Directory-Anmeldeinformationen. Wie Sie diese Ressourcen erhalten, erfahren Sie im [Leitfaden für die Videomoderations-API](video-moderation-api.md).
@@ -83,7 +83,7 @@ Mit `Main()` beginnt die Ausführung. Dies ist also der Ausgangspunkt für das V
 Wenn keine Befehlszeilenargumente vorhanden sind, ruft `Main()` die `GetUserInputs()`-Methode auf. Mit dieser Methode wird der Benutzer aufgefordert, den Pfad zu einer einzelnen Videodatei einzugeben und anzugeben, ob ein Texttranskript generiert werden soll.
 
 > [!NOTE]
-> Die Konsolenanwendung nutzt die [Azure Media Indexer-API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2), um aus dem Audiotitel des hochgeladenen Videos Transkripts zu generieren. Die Ergebnisse werden im WebVTT-Format bereitgestellt. Weitere Informationen zu diesem Format finden Sie unter [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API) (Webvideo-Texttitelformat).
+> Die Konsolenanwendung nutzt die [Azure Media Indexer-API](../../media-services/previous/legacy-components.md), um aus dem Audiotitel des hochgeladenen Videos Transkripts zu generieren. Die Ergebnisse werden im WebVTT-Format bereitgestellt. Weitere Informationen zu diesem Format finden Sie unter [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API) (Webvideo-Texttitelformat).
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize- und ProcessVideo-Methode
 
@@ -224,7 +224,7 @@ Das Ergebnis des Auftrags für die Videomoderation (siehe [Schnellstart zur Vide
 Eine Transkription der Audiodaten aus dem Video wird auch produziert, wenn das `GenerateVTT`-Flag festgelegt wird.
 
 > [!NOTE]
-> Die Konsolenanwendung nutzt die [Azure Media Indexer-API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2), um aus dem Audiotitel des hochgeladenen Videos Transkripts zu generieren. Die Ergebnisse werden im WebVTT-Format bereitgestellt. Weitere Informationen zu diesem Format finden Sie unter [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API) (Webvideo-Texttitelformat).
+> Die Konsolenanwendung nutzt die [Azure Media Indexer-API](../../media-services/previous/legacy-components.md), um aus dem Audiotitel des hochgeladenen Videos Transkripts zu generieren. Die Ergebnisse werden im WebVTT-Format bereitgestellt. Weitere Informationen zu diesem Format finden Sie unter [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API) (Webvideo-Texttitelformat).
 
 ## <a name="create-a-human-review"></a>Erstellen einer Überprüfung durch Personen
 
@@ -249,7 +249,7 @@ Im folgenden Screenshot sind die Ergebnisse der obigen Schritte dargestellt.
 
 ## <a name="process-the-transcript"></a>Verarbeiten des Transkripts
 
-Bisher ging es im Code dieses Tutorials vor allem um den visuellen Inhalt. Die Überprüfung des Sprachinhalts ist ein separater und optionaler Prozess, für den wie erwähnt ein aus den Audiodaten generiertes Transkript verwendet wird. Jetzt ist der Zeitpunkt gekommen, einen Blick darauf zu werfen, wie Texttranskripte erstellt und im Überprüfungsprozess verwendet werden. Die Aufgabe zur Generierung des Transkripts obliegt dem [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content)-Dienst.
+Bisher ging es im Code dieses Tutorials vor allem um den visuellen Inhalt. Die Überprüfung des Sprachinhalts ist ein separater und optionaler Prozess, für den wie erwähnt ein aus den Audiodaten generiertes Transkript verwendet wird. Jetzt ist der Zeitpunkt gekommen, einen Blick darauf zu werfen, wie Texttranskripte erstellt und im Überprüfungsprozess verwendet werden. Die Aufgabe zur Generierung des Transkripts obliegt dem [Azure Media Indexer](../../media-services/previous/media-services-index-content.md)-Dienst.
 
 Die Anwendung führt die folgenden Aufgaben durch:
 
@@ -319,7 +319,7 @@ Als Nächstes untersuchen wir die analysierten Textuntertitel mit der Text-API v
 
 Da `TextScreen()` eine etwas umfangreichere Methode ist, schlüsseln wir sie hier auf.
 
-1. Zuerst liest die Methode die Transkriptdatei Zeile für Zeile. Leere Zeilen und Zeilen mit einer Anmerkung (`NOTE`) und zugehöriger Zuverlässigkeitsbewertung werden ignoriert. Die Zeitstempel und Textelemente werden aus den Hinweisen (*Cues*) in der Datei extrahiert. Ein „Cue“ steht für Text aus dem Audiotitel und enthält die Start- und Endzeit. Der „Cue“ beginnt mit der Zeitstempelzeile mit der Zeichenfolge `-->`. Es folgen eine oder mehrere Textzeilen.
+1. Zuerst liest die Methode die Transkriptdatei Zeile für Zeile. Leere Zeilen und Zeilen mit einer Anmerkung (`NOTE`) und zugehöriger Zuverlässigkeitsbewertung werden ignoriert. Die Zeitstempel und Textelemente werden aus den Hinweisen ( *Cues* ) in der Datei extrahiert. Ein „Cue“ steht für Text aus dem Audiotitel und enthält die Start- und Endzeit. Der „Cue“ beginnt mit der Zeitstempelzeile mit der Zeichenfolge `-->`. Es folgen eine oder mehrere Textzeilen.
 
 1. Instanzen von `CaptionScreentextResult` (in `TranscriptProfanity.cs` definiert) enthalten die Informationen, die für die einzelnen „Cues“ analysiert werden.  Wenn eine neue Zeitstempelzeile erkannt oder eine maximale Textlänge von 1.024 Zeichen erreicht wird, wird der `csrList` ein neues `CaptionScreentextResult`-Element hinzugefügt. 
 
