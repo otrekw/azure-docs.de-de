@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines privaten Endpunkts für sichere Verbindungen
 titleSuffix: Azure Cognitive Search
-description: Einrichten eines privaten Endpunkts in einem virtuellen Netzwerk für sichere Verbindungen mit einem Azure Cognitive Search-Dienst
+description: Einrichten eines privaten Endpunkts in einem virtuellen Netzwerk für sichere Verbindungen mit einem Azure Cognitive Search-Dienst.
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935754"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280403"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
@@ -50,7 +50,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
     | Region | Wählen Sie Ihre bevorzugte Region aus. |
     |||
 
-1. Übernehmen Sie für den Rest der Einstellungen die Standardwerte. Klicken Sie auf **Überprüfen + erstellen** und danach auf **Erstellen**.
+1. Übernehmen Sie für den Rest der Einstellungen die Standardwerte. Klicken Sie auf **Überprüfen + erstellen** und danach auf **Erstellen** .
 
 ## <a name="create-a-search-service-with-a-private-endpoint"></a>Erstellen eines Suchdiensts mit einem privaten Endpunkt
 
@@ -68,10 +68,10 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | **INSTANZDETAILS** |  |
     | URL | Geben Sie einen eindeutigen Namen ein. |
     | Standort | Wählen Sie Ihre bevorzugte Region aus. |
-    | Tarif | Wählen Sie **Tarif ändern** und dann den gewünschten Tarif aus. (Keine Unterstützung im **Free**-Tarif. Muss **Basic**-Tarif oder höher sein.) |
+    | Tarif | Wählen Sie **Tarif ändern** und dann den gewünschten Tarif aus. (Keine Unterstützung im **Free** -Tarif. Muss **Basic** -Tarif oder höher sein.) |
     |||
   
-1. Klicken Sie auf **Weiter: Skalieren**.
+1. Klicken Sie auf **Weiter: Skalieren** .
 
 1. Übernehmen Sie die Standardwerte, und wählen Sie **Weiter: Netzwerk** aus.
 
@@ -87,18 +87,18 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     | Standort | Wählen Sie **USA, Westen** aus.|
     | Name | Geben Sie *myPrivateEndpoint* ein.  |
-    | Zielunterressource | Übernehmen Sie den Standardwert **searchService**. |
+    | Zielunterressource | Übernehmen Sie den Standardwert **searchService** . |
     | **NETZWERK** |  |
     | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
     | Subnet | Wählen Sie *mySubnet* aus. |
     | **PRIVATE DNS-INTEGRATION** |  |
-    | Integration in eine private DNS-Zone  | Übernehmen Sie den Standardwert **Ja**. |
+    | Integration in eine private DNS-Zone  | Übernehmen Sie den Standardwert **Ja** . |
     | Private DNS-Zone  | Übernehmen Sie den Standardwert **(Neu) privatelink.search.windows.net**. |
     |||
 
-1. Klicken Sie auf **OK**. 
+1. Klicken Sie auf **OK** . 
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
+1. Klicken Sie auf **Überprüfen + erstellen** . Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
 
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
 
@@ -122,40 +122,46 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | **INSTANZDETAILS** |  |
     | Name des virtuellen Computers | Geben Sie *myVm* ein. |
     | Region | Wählen Sie **USA, Westen** oder die verwendete Region aus. |
-    | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich**. |
+    | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich** . |
     | Image | Wählen Sie **Windows Server 2019 Datacenter** aus. |
-    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
+    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2** . |
     | **ADMINISTRATORKONTO** |  |
     | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **REGELN FÜR EINGEHENDE PORTS** |  |
-    | Öffentliche Eingangsports | Übernehmen Sie die Standardeinstellung **Ausgewählte Ports zulassen**. |
+    | Öffentliche Eingangsports | Übernehmen Sie die Standardeinstellung **Ausgewählte Ports zulassen** . |
     | Eingangsports auswählen | Übernehmen Sie den Standardwert **RDP (3389)** . |
     | **SPAREN SIE GELD** |  |
-    | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein**. |
+    | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein** . |
     |||
 
-1. Klicken Sie auf **Weiter: Datenträger**.
+1. Klicken Sie auf **Weiter: Datenträger** .
 
-1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk**.
+1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk** .
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
-    | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
+    | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork** .  |
+    | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24** .|
     | Subnet | Übernehmen Sie den Standardwert **mySubnet (10.1.0.0/24)** .|
-    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **(neu) myVm-ip**. |
+    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **(neu) myVm-ip** . |
     | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
     | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus.|
     ||
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+   > [!NOTE]
+   > IPv4-Adressen können im [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-Format ausgedrückt werden. Denken Sie daran, den für private Netzwerke reservierten IP-Adressbereich zu vermeiden, wie in [RFC 1918](https://tools.ietf.org/html/rfc1918) beschrieben:
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
+1. Klicken Sie auf **Überprüfen + erstellen** . Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
-
 
 ## <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
 
@@ -165,7 +171,7 @@ Laden Sie den virtuellen Computer *myVm* herunter, und stellen Sie dann wie folg
 
 1. Wählen Sie die Schaltfläche **Verbinden** aus. Nach dem Auswählen der Schaltfläche **Verbinden** wird **Verbindung mit virtuellem Computer herstellen** geöffnet.
 
-1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
+1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei ( *RDP* ) und lädt sie auf Ihren Computer herunter.
 
 1. Öffnen Sie die heruntergeladene RDP*-Datei.
 
@@ -176,12 +182,11 @@ Laden Sie den virtuellen Computer *myVm* herunter, und stellen Sie dann wie folg
         > [!NOTE]
         > Unter Umständen müssen Sie **Weitere Optionen** > **Anderes Konto verwenden** auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 
-1. Klicken Sie auf **OK**.
+1. Klicken Sie auf **OK** .
 
 1. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn Sie eine Zertifikatwarnung erhalten, wählen Sie **Ja** oder **Weiter** aus.
 
 1. Sobald der VM-Desktop angezeigt wird, minimieren Sie ihn, um zu Ihrem lokalen Desktop zurückzukehren.  
-
 
 ## <a name="test-connections"></a>Testen von Verbindungen
 
@@ -207,15 +212,15 @@ Wenn der Suchdienst-Endpunkt privat ist, sind einige Portalfunktionen deaktivier
 
 1. Das Ausführen der Schritte des Schnellstarts über den virtuellen Computer dient zur Überprüfung, ob der Dienst voll funktionsfähig ist.
 
-1. Schließen Sie die Remotedesktopverbindung mit *myVM*. 
+1. Schließen Sie die Remotedesktopverbindung mit *myVM* . 
 
 1. Um sicherzustellen, dass der Dienst nicht über einen öffentlichen Endpunkt zugänglich ist, öffnen Sie Postman in Ihrer lokalen Arbeitsstation, und führen Sie die ersten Schritte im Schnellstart aus. Wenn eine Fehlermeldung darüber angezeigt wird, dass der Remoteserver nicht vorhanden ist, haben Sie erfolgreich einen privaten Endpunkt für den Suchdienst konfiguriert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 Wenn Sie den privaten Endpunkt, den Suchdienst und den virtuellen Computer nicht mehr benötigen, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
-1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus. 
-1. Wählen Sie die Option **Ressourcengruppe löschen**. 
-1. Geben Sie *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
+1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen  *myResourceGroup* aus. 
+1. Wählen Sie die Option **Ressourcengruppe löschen** . 
+1. Geben Sie  *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie einen virtuellen Computer in einem virtuellen Netzwerk und einen Suchdienst mit einem privaten Endpunkt erstellt. Sie haben über das Internet eine Verbindung mit dem virtuellen Computer hergestellt und über Private Link sicher mit dem Suchdienst kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter  [Was ist privater Endpunkt in Azure?](../private-link/private-endpoint-overview.md).

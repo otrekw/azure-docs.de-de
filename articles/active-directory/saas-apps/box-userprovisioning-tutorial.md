@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dde22fe9997e41d6d17fba94e6b9523d82c7b910
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312905"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456822"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Box für die automatische Benutzerbereitstellung
 
@@ -48,7 +48,7 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Ihre Box-App benötigen. Anschließend können Sie diese Benutzer Ihrer Box-App zuweisen, indem Sie diese Anweisungen befolgen:
 
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="assign-users-and-groups"></a>Zuweisen von Benutzern und Gruppen
 Auf der Registerkarte **Box > Benutzer und Gruppen** im Azure-Portal können Sie angeben, welchen Benutzern und Gruppen Zugriff auf Box gewährt werden soll. Durch die Zuweisung eines Benutzers oder einer Gruppe geschieht Folgendes:
@@ -85,9 +85,9 @@ Wenn die automatische Bereitstellung aktiviert ist, werden die zugewiesenen Benu
 
 In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für Box aktivieren.
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen** .
 
-2. Wenn Sie Box bereits für das einmalige Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Box-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Box**. Wählen Sie „Box“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+2. Wenn Sie Box bereits für das einmalige Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Box-Instanz. Wählen Sie andernfalls **Hinzufügen** , und suchen Sie im Anwendungskatalog nach **Box** . Wählen Sie „Box“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
 3. Wählen Sie Ihre Box-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
 
@@ -95,29 +95,29 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
     ![Screenshot der Registerkarte „Bereitstellung“ für Box im Azure-Portal. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und unter „Administratoranmeldeinformationen“ ist „Autorisieren“ hervorgehoben.](./media/box-userprovisioning-tutorial/provisioning.png)
 
-5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**, um ein Dialogfeld für die Anmeldung bei Box in einem neuen Browserfenster zu öffnen.
+5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren** , um ein Dialogfeld für die Anmeldung bei Box in einem neuen Browserfenster zu öffnen.
 
-6. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren**. 
+6. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren** . 
    
     ![Screenshot der Anmeldung zum Gewähren des Zugriffs auf den Box-Bildschirm, der einen Eintrag für E-Mail und Kennwort sowie die Schaltfläche „Autorisieren“ zeigt](./media/box-userprovisioning-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
 
-7. Klicken Sie auf **Zugriff gewähren auf Box**, um diesen Vorgang zu autorisieren und zum Azure-Portal zurückzukehren. 
+7. Klicken Sie auf **Zugriff gewähren auf Box** , um diesen Vorgang zu autorisieren und zum Azure-Portal zurückzukehren. 
    
     ![Screenshot des Bildschirms „Zugriff gewähren“ in Box mit einer erklärenden Meldung und die Schaltfläche „Zugriff gewähren auf Box“](./media/box-userprovisioning-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
 
-8. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Box-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Box-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt **Autorisieren**.
+8. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Box-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Box-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt **Autorisieren** .
 
 9. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
-10. Klicken Sie auf **Speichern**.
+10. Klicken Sie auf **Speichern** .
 
 11. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Box synchronisieren** aus.
 
 12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Box synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Box für Updatevorgänge verwendet. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-13. Um den Azure AD-Bereitstellungsdienst für Box zu aktivieren, ändern Sie im Abschnitt „Einstellungen“ den **Bereitstellungsstatus** in **Ein**.
+13. Um den Azure AD-Bereitstellungsdienst für Box zu aktivieren, ändern Sie im Abschnitt „Einstellungen“ den **Bereitstellungsstatus** in **Ein** .
 
-14. Klicken Sie auf **Speichern**.
+14. Klicken Sie auf **Speichern** .
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Box im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Box-App ausgeführt werden.
 

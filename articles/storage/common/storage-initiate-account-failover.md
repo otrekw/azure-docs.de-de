@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610057"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095890"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Initiieren eines Speicherkontofailovers
 
@@ -62,8 +62,8 @@ Das Feature „Kontofailover“ ist allgemein verfügbar, erfordert aber trotzde
 
 1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
 
-    - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
-    - Entfernen Sie alle **Azure**-Module aus `%Program Files%\WindowsPowerShell\Modules`.
+    - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen** ) aus Windows.
+    - Entfernen Sie alle **Azure** -Module aus `%Program Files%\WindowsPowerShell\Modules`.
 
 1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
 
@@ -106,7 +106,9 @@ az storage account failover \ --name accountName
 
 Wenn Sie ein Kontofailover für Ihr Speicherkonto initiieren, werden die DNS-Einträge für den sekundären Endpunkt so aktualisiert, dass der sekundäre Endpunkt zum primären Endpunkt wird. Vor dem Initiieren eines Failovers sollten Sie daher die möglichen Auswirkungen auf Ihr Speicherkonto verstehen.
 
-Wenn Sie den Umfang eines wahrscheinlichen Datenverlustes schätzen möchten, bevor Sie ein Failover initiieren, aktivieren Sie die Eigenschaft **Letzte Synchronisierungszeit**. Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierungszeit** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
+Wenn Sie den Umfang eines wahrscheinlichen Datenverlustes schätzen möchten, bevor Sie ein Failover initiieren, aktivieren Sie die Eigenschaft **Letzte Synchronisierungszeit** . Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierungszeit** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
+
+Die Zeit bis zum Failover nach der Initiierung kann variieren, beträgt aber in der Regel weniger als eine Stunde.
 
 Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundanten Speicher (LRS) in der neuen primären Region konvertiert. Sie können den georedundanten Speicher (GRS) oder den georedundanten Speicher mit Lesezugriff (RA-GRS) wieder aktivieren. Beachten Sie, dass für die Konvertierung von LRS in GRS oder RA-GRS zusätzliche Kosten anfallen. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
 

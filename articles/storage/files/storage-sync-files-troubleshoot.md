@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41fb34055b9992b83a11bc3e4d47e3a389147860
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018593"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164226"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zur Behebung von Fehlern und Lösung von P
 
 1. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage)
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)
-3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
+3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage** .
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Es besteht ein Problem mit der Azure-Dateisynchronisierung auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -108,11 +108,11 @@ Dieser Fehler tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen 
 Wenn diese Nachricht erscheint und die Azure-Dateifreigabe derzeit von keinem Cloudendpunkt verwendet wird, sollten Sie die folgenden Schritte ausführen, um die Metadaten der Azure-Dateisynchronisierung auf der Azure-Dateifreigabe zu löschen:
 
 > [!Warning]  
-> Wenn die Metadaten auf einer Azure-Dateifreigabe gelöscht werden, die derzeit von einem Cloudendpunkt verwendet wird, treten bei Vorgängen der Azure-Dateisynchronisierung Fehler auf. 
+> Wenn die Metadaten auf einer Azure-Dateifreigabe gelöscht werden, die derzeit von einem Cloudendpunkt verwendet wird, treten bei Vorgängen der Azure-Dateisynchronisierung Fehler auf. 
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure-Dateifreigabe.  
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure-Dateifreigabe.  
 2. Klicken Sie mit der rechten Maustaste auf die Azure-Dateifreigabe, und wählen Sie dann **Metadaten bearbeiten** aus.
-3. Klicken Sie mit der rechten Maustaste auf **SyncService**, und wählen Sie dann **Löschen** aus.
+3. Klicken Sie mit der rechten Maustaste auf **SyncService** , und wählen Sie dann **Löschen** aus.
 
 <a id="cloud-endpoint-authfailed"></a>**Fehler beim Erstellen des Cloudendpunkts: „AuthorizationFailed“**  
 Dieser Fehler tritt auf, wenn Ihr Benutzerkonto nicht über die erforderlichen Rechte verfügt, um einen Cloudendpunkt zu erstellen. 
@@ -130,7 +130,7 @@ Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-A
 So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt:  
 1. Wählen Sie im Azure-Portal **Ressourcengruppen** aus.
 2. Wählen Sie die Ressourcengruppe aus, in der sich das Speicherkonto befindet, und wählen Sie dann **Zugriffssteuerung (IAM)** aus.
-3. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
+3. Klicken Sie auf die Registerkarte **Rollenzuweisungen** .
 4. Wählen Sie die **Rolle** (z.B. Besitzer oder Mitwirkender) für Ihr Benutzerkonto aus.
 5. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Microsoft-Autorisierung** aus. 
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
@@ -734,7 +734,7 @@ Dieser Fehler tritt auf, weil der Cloudendpunkt mit Inhalten erstellt wurde, die
 | **Fehlerzeichenfolge** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Korrektur erforderlich** | Ja |
 
-In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten bei den Synchronisierungssitzungen Fehler auf. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
+Synchronisierungssitzungen scheitern mit einem dieser Fehler, wenn es viele Dateien gibt, die aufgrund von Fehlern auf Elementebene nicht synchronisiert werden können. Führen Sie die im Abschnitt [Woran erkenne ich, dass bestimmte Dateien oder Ordner nicht synchronisiert wurden?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentierten Schritte aus, um Fehler auf Elementebene aufzulösen. Für den Synchronisierungsfehler ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED öffnen Sie bitte einen Supportfall.
 
 > [!NOTE]
 > Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren.
@@ -844,7 +844,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Laden Sie das [Psexec](https://docs.microsoft.com/sysinternals/downloads/psexec)-Tool herunter.
 2. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus, um eine Eingabeaufforderung unter Verwendung des Systemkontos zu starten: **PsExec.exe -i -s -d cmd** 
-3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C**.
+3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C** .
 4. Wenn das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat, führen Sie den folgenden Befehl aus: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /E /G „NT AUTHORITY\SYSTEM:F“** .
     - Wenn Schritt 4 aufgrund von verweigertem Zugriff fehlschlägt, führen Sie den folgenden Befehl aus, um den Besitz des Ordners „Systemvolumeinformationen“ zu übernehmen: **takeown /A /R /F „Laufwerkbuchstabe:\Systemvolumeinformationen“** . Wiederholen Sie dann Schritt 4.
 
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 
 <a id="troubleshoot-azure-file-share"></a>**Stellen Sie sicher, dass die Azure-Dateifreigabe vorhanden ist.**  
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Klicken Sie auf der linken Seite im Inhaltsverzeichnis auf **Übersicht**, um zur Hauptseite des Speicherkontos zurückzukehren.
+1. Klicken Sie auf der linken Seite im Inhaltsverzeichnis auf **Übersicht** , um zur Hauptseite des Speicherkontos zurückzukehren.
 2. Wählen Sie **Dateien** zum Anzeigen der Liste von Dateifreigaben aus.
 3. Vergewissern Sie sich, dass die Dateifreigabe, auf die durch den Cloudendpunkt verwiesen wird, in der Liste der Dateifreigaben angezeigt wird (Sie sollten diese bei Schritt 1 notiert haben).
 
@@ -995,16 +995,16 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.**  
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)** .
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Liste der Benutzer und Anwendungen (*Dienstprinzipale*) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um die Liste der Benutzer und Anwendungen ( *Dienstprinzipale* ) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
 1. Vergewissern Sie sich, dass in der Liste **Microsoft.StorageSync** oder der alte Anwendungsname **Hybrid File Sync Service** (Hybrid-Dateisynchronisierungsdienst) mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
 
     ![Ein Screenshot des Dienstprinzipals des hybriden Dateisynchronisierungsdiensts auf der Registerkarte zur Zugriffssteuerung des Speicherkontos](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     Wird **Microsoft.StorageSync** oder **Hybrid File Sync Service** (Hybrid-Dateisynchronisierungsdienst) nicht in der Liste angezeigt, führen Sie die folgenden Schritte aus:
 
-    - Klicken Sie auf **Hinzufügen**.
+    - Klicken Sie auf **Hinzufügen** .
     - Wählen Sie im Feld **Rolle** die Option **Lese- und Datenzugriff** aus.
-    - Geben Sie im Feld **Auswählen** die Zeichenfolge **Microsoft.StorageSync** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern**.
+    - Geben Sie im Feld **Auswählen** die Zeichenfolge **Microsoft.StorageSync** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1045,17 +1045,17 @@ Es gibt beim Cloudtiering zwei Fehlerpfade:
 Es gibt zwei Hauptklassen von Fehlern, die für jeden Fehlerpfad auftreten können:
 
 - Cloudspeicherfehler
-    - *Vorübergehende Probleme mit der Speicherdienstverfügbarkeit*: Weitere Informationen finden Sie unter [SLA für Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
-    - *Nicht zugängliche Azure-Dateifreigabe*: Dieser Fehler tritt normalerweise auf, wenn Sie die Azure-Dateifreigabe löschen und es sich dabei noch um einen Cloudendpunkt in einer Synchronisierungsgruppe handelt.
-    - *Nicht zugängliches Speicherkonto*: Dieser Fehler tritt normalerweise auf, wenn Sie das Speicherkonto löschen, während es noch über eine Azure-Dateifreigabe verfügt, bei der es sich um einen Cloudendpunkt in einer Synchronisierungsgruppe handelt. 
+    - *Vorübergehende Probleme mit der Speicherdienstverfügbarkeit* : Weitere Informationen finden Sie unter [SLA für Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+    - *Nicht zugängliche Azure-Dateifreigabe* : Dieser Fehler tritt normalerweise auf, wenn Sie die Azure-Dateifreigabe löschen und es sich dabei noch um einen Cloudendpunkt in einer Synchronisierungsgruppe handelt.
+    - *Nicht zugängliches Speicherkonto* : Dieser Fehler tritt normalerweise auf, wenn Sie das Speicherkonto löschen, während es noch über eine Azure-Dateifreigabe verfügt, bei der es sich um einen Cloudendpunkt in einer Synchronisierungsgruppe handelt. 
 - Serverfehler 
   - *Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) wird nicht geladen.* Der Azure-Dateisynchronisierungs-Dateisystemfilter muss geladen werden, um auf das Tiering bzw. Rückrufanforderungen reagieren zu können. Es kann mehrere Gründe haben, warum der Filter nicht geladen wird. Der häufigste Grund ist, dass das Laden von einem Administrator manuell rückgängig gemacht wurde. Der Azure-Dateisynchronisierungs-Dateisystemfilter muss immer geladen sein, damit die Azure-Dateisynchronisierung richtig funktioniert.
-  - *Fehlender, beschädigter oder anderweitig fehlerhafter Analysepunkt*: Ein Analysepunkt ist eine spezielle Datenstruktur in einer Datei, die aus zwei Teilen besteht:
+  - *Fehlender, beschädigter oder anderweitig fehlerhafter Analysepunkt* : Ein Analysepunkt ist eine spezielle Datenstruktur in einer Datei, die aus zwei Teilen besteht:
     1. Einer Analysenkennung, die für das Betriebssystem angibt, dass der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) für die Datei unter Umständen Aktionen in Bezug auf E/A-Abläufe durchführen muss. 
     2. Analysedaten, mit denen für den Dateisystemfilter der URI der Datei auf dem zugeordneten Cloudendpunkt (Azure-Dateifreigabe) angegeben wird. 
         
        Am häufigsten kommt es zu einer Beschädigung eines Analysepunkts, wenn ein Administrator versucht, entweder die Kennung oder die dazugehörigen Daten zu ändern. 
-  - *Probleme mit der Netzwerkverbindung*: Der Server muss über eine Internetverbindung verfügen, damit für eine Datei das Tiering oder der Rückruf durchgeführt werden kann.
+  - *Probleme mit der Netzwerkverbindung* : Der Server muss über eine Internetverbindung verfügen, damit für eine Datei das Tiering oder der Rückruf durchgeführt werden kann.
 
 In den folgenden Abschnitten wird beschrieben, wie Sie Probleme mit dem Cloudtiering behandeln und ermitteln, ob ein Problem ein Cloudspeicherproblem oder ein Serverproblem ist.
 
@@ -1271,7 +1271,7 @@ Um AFSDiag auszuführen, befolgen Sie die nachstehenden Schritte:
 
 3. Geben Sie für die Kernelmodus-Ablaufverfolgungsebene der Azure-Dateisynchronisierung **1** ein (sofern nicht anders angegeben, um ausführlichere Ablaufverfolgungen zu erstellen), und drücken Sie die EINGABETASTE.
 4. Geben Sie für die Benutzermodus-Ablaufverfolgungsebene der Azure-Dateisynchronisierung **1** ein (sofern nicht anders angegeben, um ausführlichere Ablaufverfolgungen zu erstellen), und drücken Sie die EINGABETASTE.
-5. Reproduzieren Sie das Problem. Klicken Sie abschließend auf **D**.
+5. Reproduzieren Sie das Problem. Klicken Sie abschließend auf **D** .
 6. Eine ZIP-Datei, die Protokolle und Ablaufverfolgungsdateien enthält, wird im angegebenen Ausgabeverzeichnis gespeichert.
 
 ## <a name="see-also"></a>Weitere Informationen

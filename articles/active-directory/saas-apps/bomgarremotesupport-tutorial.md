@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: f5839b5df4cdaf4abf863587b5f84f87aa63b5a0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743079"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BeyondTrust Remote Support
 
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie BeyondTrust Remote Support in Azure Act
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei BeyondTrust Remote Support anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,8 +39,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* BeyondTrust Remote Support unterstützt **SP**-initiiertes einmaliges Anmelden.
-* BeyondTrust Remote Support unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* BeyondTrust Remote Support unterstützt **SP** -initiiertes einmaliges Anmelden.
+* BeyondTrust Remote Support unterstützt die **Just-in-Time** -Benutzerbereitstellung.
 
 ## <a name="adding-beyondtrust-remote-support-from-the-gallery"></a>Hinzufügen von BeyondTrust Remote Support aus dem Katalog
 
@@ -48,14 +48,14 @@ Zum Konfigurieren der Integration von BeyondTrust Remote Support in Azure AD mü
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **BeyondTrust Remote Support** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **BeyondTrust Remote Support** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für BeyondTrust Remote Support
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BeyondTrust Remote Support mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BeyondTrust Remote Support eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BeyondTrust Remote Support mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BeyondTrust Remote Support eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit BeyondTrust Remote Support die folgenden Schritte aus:
 
@@ -70,9 +70,9 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD m
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BeyondTrust Remote Support** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BeyondTrust Remote Support** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -105,13 +105,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Wenn Sie Azure AD-Gruppen für die BeyondTrust Remote Support-Anwendung zuweisen, müssen Sie die Option „Im Anspruch zurückgegebene Gruppen“ von „None“ in „SecurityGroup“ ändern. Die Gruppen werden als Objekt-IDs in die Anwendung importiert. Die Objekt-ID der Azure AD-Gruppe finden Sie, indem Sie die Eigenschaften in der Azure Active Directory-Schnittstelle überprüfen. Dies ist erforderlich, um auf Azure AD-Gruppen zu verweisen und sie den richtigen Gruppenrichtlinien zuzuweisen.
 
-1. Beim Festlegen der eindeutigen Benutzer-ID muss dieser Wert auf das folgende NameID-Format festgelegt werden: **Beständig**. Eine beständige ID ist erforderlich, damit der Benutzer richtig identifiziert und den richtigen Gruppenrichtlinien für die Berechtigungen zugeordnet werden kann. Klicken Sie auf das Bearbeitungssymbol, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen und den Wert der eindeutigen Benutzer-ID zu bearbeiten.
+1. Beim Festlegen der eindeutigen Benutzer-ID muss dieser Wert auf das folgende NameID-Format festgelegt werden: **Beständig** . Eine beständige ID ist erforderlich, damit der Benutzer richtig identifiziert und den richtigen Gruppenrichtlinien für die Berechtigungen zugeordnet werden kann. Klicken Sie auf das Bearbeitungssymbol, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen und den Wert der eindeutigen Benutzer-ID zu bearbeiten.
 
-1. Klicken Sie im Bereich **Anspruch verwalten** auf **Namensbezeichnerformat auswählen**, legen Sie den Wert auf **Beständig** fest, und klicken Sie auf **Speichern**.
+1. Klicken Sie im Bereich **Anspruch verwalten** auf **Namensbezeichnerformat auswählen** , legen Sie den Wert auf **Beständig** fest, und klicken Sie auf **Speichern** .
 
     ![Benutzerattribute und Ansprüche](./media/bomgarremotesupport-tutorial/attribute-unique-user-identifier.png)
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML** , und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -128,16 +128,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Erstellen**.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
+   1. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf BeyondTrust Remote Support gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste die Option **BeyondTrust Remote Support** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -145,15 +145,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ## <a name="configure-beyondtrust-remote-support-sso"></a>Konfigurieren von SSO für BeyondTrust Remote Support
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei BeyondTrust Remote Support als Administrator an.
 
-1. Klicken Sie auf das Menü **STATUS**, kopieren Sie **Bezeichner**, **Antwort-URL** und **Anmelde-URL**, und verwenden Sie diese Werte im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal.
+1. Klicken Sie auf das Menü **STATUS** , kopieren Sie **Bezeichner** , **Antwort-URL** und **Anmelde-URL** , und verwenden Sie diese Werte im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal.
 
     ![Screenshot: Menü „Status“ in BeyondTrust Remote Support mit den erforderlichen Informationen](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
@@ -187,14 +187,14 @@ Hier werden die Einstellungen für die Benutzerbereitstellung konfiguriert. Auf 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „BeyondTrust Remote Support“ klicken, werden Sie automatisch bei der Instanz von BeyondTrust Remote Support angemeldet, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „BeyondTrust Remote Support“ klicken, werden Sie automatisch bei der Instanz von BeyondTrust Remote Support angemeldet, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Testen von BeyondTrust Remote Support mit Azure AD](https://aad.portal.azure.com/)

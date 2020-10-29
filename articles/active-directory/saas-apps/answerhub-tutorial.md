@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713587"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Lernprogramm: Azure Active Directory-Integration mit AnswerHub
 
@@ -27,7 +27,7 @@ Die Integration von AnswerHub in Azure AD hat die folgenden Vorteile:
 * Sie können für Ihre Benutzer die automatische Anmeldung an AnswerHub mit ihren Azure AD-Konten ermöglichen (einmaliges Anmelden, Single Sign-On, SSO).
 * Sie haben die Möglichkeit, Ihre Konten an einem zentralen Ort zu verwalten: über das Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -53,15 +53,15 @@ Zum Einrichten der Integration von AnswerHub in Azure AD müssen Sie AnswerHub a
 
     ![Azure Active Directory-Schaltfläche](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster **Neue Anwendung**.
+3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster **Neue Anwendung** .
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **AnswerHub** ein. Wählen Sie in der Ergebnisliste den Eintrag **AnswerHub** und dann **Hinzufügen**.
+4. Geben Sie im Suchfeld **AnswerHub** ein. Wählen Sie in der Ergebnisliste den Eintrag **AnswerHub** und dann **Hinzufügen** .
 
      ![AnswerHub in der Ergebnisliste](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ In diesem Abschnitt richten Sie einmaliges Anmelden in Azure AD im Azure-Portal 
 
 **Konfigurieren Sie einmaliges Anmelden von Azure AD mit AnswerHub wie folgt:**
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **AnswerHub** auf **Einmaliges Anmelden**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **AnswerHub** auf **Einmaliges Anmelden** .
 
     ![Schaltfläche für einmaliges Anmelden](common/select-sso.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt richten Sie einmaliges Anmelden für AnswerHub ein.
     > [!NOTE]
     > Wenden Sie sich an das [Supportteam von AnswerHub](mailto:success@answerhub.com.), falls Sie Hilfe beim Konfigurieren von AnswerHub benötigen.
 
-2. Wechseln Sie zu **Administration**.
+2. Wechseln Sie zu **Administration** .
 
 3. Wählen Sie auf der Registerkarte **Benutzer und Gruppen** im linken Bereich im Abschnitt **Social Settings** (Einstellungen für soziale Netzwerke) die Option **SAML Setup** (SAML-Setup).
 
@@ -158,7 +158,7 @@ In diesem Abschnitt richten Sie einmaliges Anmelden für AnswerHub ein.
   
     b. Wählen Sie **Speichern** aus.
 
-6. Wählen Sie auf der Registerkarte **IDP Config** (IDP-Konfiguration) die Option **Speichern**.
+6. Wählen Sie auf der Registerkarte **IDP Config** (IDP-Konfiguration) die Option **Speichern** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -166,7 +166,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
 **Erstellen Sie wie folgt einen Azure AD-Testbenutzer:**
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Auswahl von „Azure Active Directory“ > „Benutzer“ > „Alle Benutzer“](common/users.png)
 
@@ -183,9 +183,9 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
     b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon\@<Ihreunternehmensdomäne.erweiterung>** ein.  
     Beispiel: BrittaSimon@contoso.com.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -193,7 +193,7 @@ In diesem Abschnitt richten Sie die Benutzerin Britta Simon für die Verwendung 
 
 **Weisen Sie den Azure AD-Testbenutzer wie folgt zu:**
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **AnswerHub**.
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen** , **Alle Anwendungen** und **AnswerHub** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -209,11 +209,11 @@ In diesem Abschnitt richten Sie die Benutzerin Britta Simon für die Verwendung 
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und anschließend am unteren Bildschirmrand die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und anschließend am unteren Bildschirmrand die Schaltfläche **Auswählen** .
 
 6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. 
 
-7. Wählen Sie unten auf der Seite die Schaltfläche **Auswählen**.
+7. Wählen Sie unten auf der Seite die Schaltfläche **Auswählen** .
 
 8. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
@@ -225,15 +225,15 @@ Damit sich Azure AD-Benutzer an AnswerHub anmelden können, müssen Sie diese in
 
 1. Melden Sie sich bei Ihrer **AnswerHub** -Unternehmenswebsite als Administrator an.
 
-2. Wechseln Sie zu **Administration**.
+2. Wechseln Sie zu **Administration** .
 
-3. Wählen Sie die Registerkarte **Benutzer und Gruppen**.
+3. Wählen Sie die Registerkarte **Benutzer und Gruppen** .
 
-4. Wählen Sie im linken Bereich im Abschnitt **Benutzer verwalten** die Option **Create or import users** (Benutzer erstellen oder importieren) und dann **Benutzer und Gruppen**.
+4. Wählen Sie im linken Bereich im Abschnitt **Benutzer verwalten** die Option **Create or import users** (Benutzer erstellen oder importieren) und dann **Benutzer und Gruppen** .
 
    ![Screenshot der AnswerHub-Seite, auf der die Registerkarte „Benutzer und Gruppen“ ausgewählt und der Link „Create or import users“ (Benutzer erstellen oder importieren) hervorgehoben ist](./media/answerhub-tutorial/ic785175.png "Benutzer und Gruppen")
 
-5. Geben Sie in den entsprechenden Feldern die **E-Mail-Adresse**, den **Benutzernamen** und das **Kennwort** eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten, und wählen Sie anschließend **Speichern**.
+5. Geben Sie in den entsprechenden Feldern die **E-Mail-Adresse** , den **Benutzernamen** und das **Kennwort** eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten, und wählen Sie anschließend **Speichern** .
 
 > [!NOTE]
 > Sie können beliebige andere Tools für die Erstellung von Benutzerkonten oder die von AnswerHub bereitgestellte API verwenden, um Azure AD-Benutzerkonten einzurichten.
@@ -242,13 +242,12 @@ Damit sich Azure AD-Benutzer an AnswerHub anmelden können, müssen Sie diese in
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich die Kachel „AnswerHub“ wählen, sollten Sie automatisch bei der AnswerHub-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „AnswerHub“ wählen, sollten Sie automatisch bei der AnswerHub-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

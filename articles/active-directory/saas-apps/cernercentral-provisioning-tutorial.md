@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88529864"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456335"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 
@@ -82,9 +82,9 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
 4. Schließlich müssen Sie sowohl für die Sandkasten- als auch die Produktionsumgebung in Cerner User Roster Realm-IDs abrufen, um die Konfiguration abzuschließen. Informationen zum Abrufvorgang finden Sie unter https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
-5. Jetzt können Sie Azure AD für die Bereitstellung von Benutzerkonten in Cerner konfigurieren. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und browsen Sie zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+5. Jetzt können Sie Azure AD für die Bereitstellung von Benutzerkonten in Cerner konfigurieren. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und browsen Sie zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen** .
 
-6. Wenn Sie Cerner Central bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Cerner Central-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Cerner Central**. Wählen Sie „Cerner Central“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+6. Wenn Sie Cerner Central bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Cerner Central-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Cerner Central** . Wählen Sie „Cerner Central“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
 7. Wählen Sie Ihre Cerner Central-Instanz und dann die Registerkarte **Bereitstellung** aus.
 
@@ -100,19 +100,19 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
     > 
     > Produktion: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * Geben Sie im Feld **Geheimes Token** das in Schritt 3 generierte OAuth-Bearertoken ein, und klicken Sie auf **Verbindung testen**.
+   * Geben Sie im Feld **Geheimes Token** das in Schritt 3 generierte OAuth-Bearertoken ein, und klicken Sie auf **Verbindung testen** .
 
    * Nun sollten Sie oben rechts im Portal eine Benachrichtigung über die erfolgreiche Ausführung sehen.
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
-1. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern** .
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit Cerner Central synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in Cerner Central werden für Updatevorgänge verwendet. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-1. Um den Azure AD-Bereitstellungsdienst für Cerner Central zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+1. Um den Azure AD-Bereitstellungsdienst für Cerner Central zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
 
-1. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern** .
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Cerner Central im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Cerner Central-App ausgeführt werden.
 
@@ -127,4 +127,4 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](../app-provisioning/check-status-user-account-provisioning.md).

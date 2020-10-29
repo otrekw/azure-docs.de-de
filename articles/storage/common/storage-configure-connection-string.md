@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087253"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091609"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
@@ -57,10 +57,10 @@ Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge unterstützt, wird die *Verwendung von HTTPS ausdrücklich empfohlen*.
+Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge unterstützt, wird die *Verwendung von HTTPS ausdrücklich empfohlen* .
 
 > [!TIP]
-> Sie finden die Verbindungszeichenfolgen Ihres Speicherkontos im [Azure-Portal](https://portal.azure.com). Navigieren Sie auf dem Menüblatt Ihres Speicherkontos zu **EINSTELLUNGEN** > **Zugriffsschlüssel**, um sowohl für den primären als auch sekundären Zugriffsschlüssel Verbindungszeichenfolgen anzuzeigen.
+> Sie finden die Verbindungszeichenfolgen Ihres Speicherkontos im [Azure-Portal](https://portal.azure.com). Navigieren Sie auf dem Menüblatt Ihres Speicherkontos zu **EINSTELLUNGEN** > **Zugriffsschlüssel** , um sowohl für den primären als auch sekundären Zugriffsschlüssel Verbindungszeichenfolgen anzuzeigen.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Erstellen einer Verbindungszeichenfolge mit einer Shared Access Signature
@@ -110,9 +110,10 @@ Die Endpunktwerte in einer Verbindungszeichenfolge werden verwendet, um die Anfo
 
 Wenn Sie einen Speicherendpunkt einer benutzerdefinierten Domäne zugeordnet haben, und diesen Endpunkt in einer Verbindungszeichenfolge auslassen, können Sie nicht anhand dieser Verbindungszeichenfolge von Ihrem Code aus auf die Daten in diesem Dienst zugreifen.
 
+Weitere Informationen zum Konfigurieren einer benutzerdefinierten Domäne für Azure Storage finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](../blobs/storage-custom-domain-name.md).
+
 > [!IMPORTANT]
-> Dienstendpunktwerte in den Verbindungszeichenfolgen müssen wohlgeformte URIs einschließlich `https://` (empfohlen) oder `http://` sein. Da Azure Storage noch nicht HTTPS für benutzerdefinierte Domänen unterstützt, *müssen* Sie `http://` für jeden Endpunkt-URI angeben, der auf eine benutzerdefinierte Domäne verweist.
->
+> Dienstendpunktwerte in den Verbindungszeichenfolgen müssen wohlgeformte URIs einschließlich `https://` (empfohlen) oder `http://` sein.
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Erstellen einer Verbindungszeichenfolge mit einem Endpunktsuffix
 

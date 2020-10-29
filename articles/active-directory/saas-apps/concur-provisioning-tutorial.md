@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317445"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455419"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Concur für die automatische Benutzerbereitstellung
 
@@ -35,7 +35,7 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Ihre Concur-App benötigen. Anschließend können Sie diese Benutzer Ihrer Concur-App zuweisen, indem Sie diese Anweisungen befolgen:
 
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Concur
 
@@ -70,9 +70,9 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
 
 **Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
 
-1. Melden Sie sich bei Ihrem **Concur**-Mandanten an.
+1. Melden Sie sich bei Ihrem **Concur** -Mandanten an.
 
-2. Klicken Sie im Menü **Verwaltung** auf **Webdienste**.
+2. Klicken Sie im Menü **Verwaltung** auf **Webdienste** .
    
     ![Concur-Mandant](./media/concur-provisioning-tutorial/IC721729.png "Concur-Mandant")
 
@@ -80,19 +80,19 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
    
     ![Partneranwendung aktivieren](./media/concur-provisioning-tutorial/ic721730.png "Partneranwendung aktivieren")
 
-4. Wählen Sie in der Liste **Anwendung aktivieren** die Option **Azure Active Directory** aus, und klicken Sie dann auf **Aktivieren**.
+4. Wählen Sie in der Liste **Anwendung aktivieren** die Option **Azure Active Directory** aus, und klicken Sie dann auf **Aktivieren** .
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. Klicken Sie auf **Ja**, um das Dialogfeld **Aktion bestätigen** zu schließen.
+5. Klicken Sie auf **Ja** , um das Dialogfeld **Aktion bestätigen** zu schließen.
    
     ![Aktion bestätigen](./media/concur-provisioning-tutorial/ic721732.png "Aktion bestätigen")
 
-6. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+6. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen** .
 
-7. Suchen Sie über das Suchfeld nach Ihrer Concur-Instanz, wenn Sie Concur bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Concur**. Wählen Sie „Concur“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+7. Suchen Sie über das Suchfeld nach Ihrer Concur-Instanz, wenn Sie Concur bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** , und suchen Sie im Anwendungskatalog nach **Concur** . Wählen Sie „Concur“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-8. Wählen Sie Ihre Concur-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
+8. Wählen Sie Ihre Concur-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** .
 
 9. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
  
@@ -100,19 +100,19 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
 
 10. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den **Benutzernamen** und das **Kennwort** Ihres Concur-Administrators ein.
 
-11. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Concur-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Concur-Konto über Teamadministratorberechtigungen verfügt.
+11. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Concur-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Concur-Konto über Teamadministratorberechtigungen verfügt.
 
 12. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
-13. Klicken Sie auf **Speichern**.
+13. Klicken Sie auf **Speichern** .
 
-14. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Concur synchronisieren**.
+14. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Concur synchronisieren** .
 
 15. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Concur synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Concur für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-16. Um den Azure AD-Bereitstellungsdienst für Concur zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+16. Um den Azure AD-Bereitstellungsdienst für Concur zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
 
-17. Klicken Sie auf **Speichern**.
+17. Klicken Sie auf **Speichern** .
 
 Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, bevor Sie überprüfen, ob das Konto mit Concur synchronisiert wurde.
 
@@ -121,4 +121,3 @@ Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, bevor Sie
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurieren des einmaligen Anmeldens](concur-tutorial.md)
-
