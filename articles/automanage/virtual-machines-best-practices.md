@@ -8,17 +8,17 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206406"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521083"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Bewährte Methoden für die automatische Azure-Verwaltung von virtuellen Computern
 
 
-Für diese Azure-Dienste wird automatisch für Sie das Onboarding durchgeführt, wenn Sie die automatische Verwaltung für virtuelle Computer verwenden. Sie sind für unser Whitepaper über bewährte Methoden unerlässlich, das Sie in unserem [Cloud Adoption Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management) finden.
+Für diese Azure-Dienste wird automatisch für Sie das Onboarding durchgeführt, wenn Sie die automatische Verwaltung für virtuelle Computer verwenden. Sie sind für unser Whitepaper über bewährte Methoden unerlässlich, das Sie in unserem [Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/azure-server-management) finden.
 
 Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie automatisch konfigurieren, auf Datendrift überwachen und schlichten, wenn ein Datendrift festgestellt wird. Weitere Informationen zu diesem Prozess finden Sie unter [Automatische Azure-Verwaltung für virtuelle Computer](automanage-virtual-machines.md).
 
@@ -29,7 +29,7 @@ Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie 
 |-----------|---------------|----------------------|-------------------------|
 |VM Insights-Überwachung    |Azure Monitor für VMs überwacht die Leistung und Integrität Ihrer virtuellen Computer, einschließlich ihrer ausgeführten Prozesse und Abhängigkeiten von anderen Ressourcen. [Weitere Informationen](../azure-monitor/insights/vminsights-overview.md).    |Bewährte Methoden für Azure-VMs – Produktion    |Nein    |
 |Backup    |Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen der Daten auf Ihren VMs. [Weitere Informationen](../backup/backup-azure-vms-introduction.md). Die Gebühren basieren auf der Anzahl und Größe der VMs, die geschützt werden. [Weitere Informationen](https://azure.microsoft.com/pricing/details/backup/).    |Bewährte Methoden für Azure-VMs – Produktion    |Ja    |
-|Azure Security Center    |Azure Security Center ist ein vereinheitlichtes Sicherheitsverwaltungssystem für Infrastrukturen, mit dem der Sicherheitsstatus Ihrer Rechenzentren gestärkt wird und ein erweiterter Schutz vor Bedrohungen für Ihre Hybridworkloads in der Cloud bereitgestellt wird. [Weitere Informationen](../security-center/security-center-intro.md).  Die automatische Verwaltung konfiguriert das Abonnement, in dem sich Ihre VM befindet, für das Free-Tarifangebot von Azure Security Center. Wenn Ihr Abonnement bereits mit Azure Security Center verbunden ist, wird es von der automatischen Verwaltung nicht neu konfiguriert.    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
+|Azure Security Center    |Azure Security Center ist ein vereinheitlichtes Sicherheitsverwaltungssystem für Infrastrukturen, mit dem der Sicherheitsstatus Ihrer Rechenzentren gestärkt wird und ein erweiterter Schutz vor Bedrohungen für Ihre Hybridworkloads in der Cloud bereitgestellt wird. [Weitere Informationen](../security-center/security-center-introduction.md).  Die automatische Verwaltung konfiguriert das Abonnement, in dem sich Ihre VM befindet, für das Free-Tarifangebot von Azure Security Center. Wenn Ihr Abonnement bereits mit Azure Security Center verbunden ist, wird es von der automatischen Verwaltung nicht neu konfiguriert.    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 |Microsoft Antimalware    |Microsoft Antimalware für Azure ist eine kostenlose Echtzeit-Schutzfunktion zum Erkennen und Entfernen von Viren, Spyware und anderer Schadsoftware. Das Tool generiert Warnungen, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. [Weitere Informationen](../security/fundamentals/antimalware.md). |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Ja    |
 |Updateverwaltung    |Sie können die Updateverwaltung in Azure Automation verwenden, um Betriebssystemupdates für Ihre virtuellen Computer zu verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren. [Weitere Informationen](../automation/update-management/update-mgmt-overview.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 |Änderungsnachverfolgung und Bestand    |„Änderungsnachverfolgung und Bestand“ kombiniert Änderungsnachverfolgungs- und Bestandsfunktionen, mit denen Sie Änderungen an virtuellen Computern und Serverinfrastrukturen nachverfolgen können. Da der Dienst auch eine Änderungsnachverfolgung für Dienste, Daemons, Software, Registrierung und Dateien in Ihrer Umgebung unterstützt, können Sie unerwünschte Änderungen ermitteln und entsprechende Warnungen auslösen. Durch die Unterstützung einer Bestandserfassung ist es zudem möglich, Ressourcen auf Gastsystemen abzurufen, um sich über die installierten Anwendungen und andere Konfigurationselemente zu informieren.  [Weitere Informationen](../automation/change-tracking/overview.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
