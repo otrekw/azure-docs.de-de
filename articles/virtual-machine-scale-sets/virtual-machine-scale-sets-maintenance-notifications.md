@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 767b5a6be9c9aaff1bfe82ebc46b3b9179e271e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837175"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736987"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -30,7 +30,7 @@ Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede
 
 - Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../azure-monitor/platform/platform-logs-overview.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
 - Mit der Benachrichtigung wird ein *Self-Service-Zeitfenster* bereitgestellt. Während dieses Zeitfensters (normalerweise 35 Tage) können Sie ermitteln, welche Ihrer virtuellen Computer in der Welle enthalten sind. Sie können die Wartung proaktiv gemäß ihren eigenen Zeitplanungsanforderurngen starten.
-- Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
+- Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung* . Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
 Mit den beiden Zeitfenstern möchten wir Ihnen einerseits genügend Zeit geben, um die Wartung zu initiieren und Ihren virtuellen Computer neu zu starten, und Sie andererseits darüber informieren, wann Azure die Wartung automatisch startet.
 
@@ -75,7 +75,7 @@ Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im linken Menü **Alle Dienste** aus, und wählen Sie dann **VM-Skalierungsgruppen** aus.
 3. Wählen Sie unter **VM-Skalierungsgruppen** die Option **Spalten bearbeiten** aus, um die Liste der verfügbaren Spalten zu öffnen.
-4. Wählen Sie im Abschnitt **Verfügbare Spalten** die Option **Self-Service-Wartung** aus, und verschieben Sie diese in die Liste **Ausgewählte Spalten**. Wählen Sie **Übernehmen**.  
+4. Wählen Sie im Abschnitt **Verfügbare Spalten** die Option **Self-Service-Wartung** aus, und verschieben Sie diese in die Liste **Ausgewählte Spalten** . Wählen Sie **Übernehmen** .  
 
     Um das Element **Self-Service-Wartung** leichter zu finden, können Sie die Dropdownoption im Abschnitt **Verfügbare Spalten** von **Alle** in **Eigenschaften** ändern.
 
@@ -95,8 +95,8 @@ Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, 
 2. Wählen Sie die Option **Überwachen** im Menü auf der linken Seite aus. 
 3. Wählen Sie im Bereich **Überwachen – Warnungen (klassisch)** die Option **+ Aktivitätsprotokollwarnung hinzufügen** aus.
 4. Wählen Sie auf der Seite **Aktivitätsprotokollwarnung hinzufügen** die angeforderten Informationen aus, oder geben Sie sie ein. Stellen Sie unter **Kriterien** sicher, dass Sie die folgenden Werte festgelegt haben:
-   - **Ereigniskategorie**: Wählen Sie **Service Health**.
-   - **Dienste**: Wählen Sie **Virtual Machine Scale Sets und Virtual Machines** aus.
+   - **Ereigniskategorie** : Wählen Sie **Service Health** .
+   - **Dienste** : Wählen Sie **Virtual Machine Scale Sets und Virtual Machines** aus.
    - **Typ:** Wählen Sie **Geplante Wartung** aus. 
     
 Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md).

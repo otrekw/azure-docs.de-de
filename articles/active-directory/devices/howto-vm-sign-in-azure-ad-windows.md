@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826656"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740188"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -83,9 +83,9 @@ So erstellen Sie einen virtuellen Windows Server 2019 Datacenter-Computer in Az
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das Zugriff zum Erstellen von virtuellen Computern hat, und wählen Sie **+ Ressource erstellen** aus.
 1. Geben Sie **Windows Server** auf der Suchleiste „Marketplace durchsuchen“ ein.
-   1. Klicken Sie auf **Windows Server**, und wählen Sie in der Dropdownliste „Softwareplan auswählen“ den Eintrag **Windows Server 2019 Datacenter** aus.
-   1. Klicken Sie auf **Erstellen**.
-1. Ändern Sie auf der Registerkarte „Verwaltung“ im Bereich „Azure Active Directory“ die Option für **Mit AAD-Anmeldeinformationen anmelden (Vorschau)** von „Aus“ in **Ein**.
+   1. Klicken Sie auf **Windows Server** , und wählen Sie in der Dropdownliste „Softwareplan auswählen“ den Eintrag **Windows Server 2019 Datacenter** aus.
+   1. Klicken Sie auf **Erstellen** .
+1. Ändern Sie auf der Registerkarte „Verwaltung“ im Bereich „Azure Active Directory“ die Option für **Mit AAD-Anmeldeinformationen anmelden (Vorschau)** von „Aus“ in **Ein** .
 1. Stellen Sie sicher, dass **Systemseitig zugewiesene verwaltete Identität** im Bereich „Identität“ auf **Ein** festgelegt ist. Dies sollte automatisch erfolgen, nachdem Sie „Mit AAD-Anmeldeinformationen anmelden“ aktiviert haben.
 1. Führen Sie die weiteren Schritte zum Erstellen eines virtuellen Computers aus. Während dieser Vorschauphase müssen Sie einen Administratorbenutzernamen und ein Administratorkennwort für den virtuellen Computer erstellen.
 
@@ -164,7 +164,7 @@ So konfigurieren Sie Rollenzuweisungen für Azure AD-fähige virtuelle Computer
 1. Navigieren Sie zur Übersichtsseite des jeweiligen virtuellen Computers.
 1. Wählen Sie **Zugriffssteuerung (IAM)** in den Menüoptionen aus.
 1. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, z. B. **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung**.
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, z. B. **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung** .
 1. Wählen Sie im Feld **Auswählen** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
 1. Wählen Sie **Speichern** aus, um die Rolle zuzuweisen.
 

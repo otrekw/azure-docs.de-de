@@ -5,17 +5,17 @@ keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, App Services-Pl
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
-ms.custom: seodec18
-ms.openlocfilehash: 0030a9340d874d94b9876e23f372e97655c145da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e6b8c7d54cf24d810a1f32082d816c908966f63c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742664"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739685"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Konfigurieren des PremiumV3-Tarifs für Azure App Service
 
-Der neue Tarif **PremiumV3** bietet Ihnen schnellere Prozessoren, SSD-Speicher und ein viermal so hohes Verhältnis zwischen Arbeitsspeicher und Kern im Vergleich zu vorhandenen Tarifen (doppelt soviel Leistung wie im **PremiumV2**-Tarif). Mit diesem Leistungsvorteil können Sie Geld sparen, da Apps in weniger Instanzen ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie eine App im **PremiumV3**-Tarif erstellen oder eine App auf den **PremiumV3**-Tarif hochskalieren.
+Der neue Tarif **PremiumV3** bietet Ihnen schnellere Prozessoren, SSD-Speicher und ein viermal so hohes Verhältnis zwischen Arbeitsspeicher und Kern im Vergleich zu vorhandenen Tarifen (doppelt soviel Leistung wie im **PremiumV2** -Tarif). Mit diesem Leistungsvorteil können Sie Geld sparen, da Apps in weniger Instanzen ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie eine App im **PremiumV3** -Tarif erstellen oder eine App auf den **PremiumV3** -Tarif hochskalieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ Zum zentralen Hochskalieren einer App auf **PremiumV3** benötigen Sie eine Azur
 Der Tarif **PremiumV3** ist für native und Container-Apps verfügbar, einschließlich Windows- und Linux-Containern.
 
 > [!NOTE]
-> Alle Windows-Container, die während des Vorschauzeitraums im Tarif **Container Premium** ausgeführt wurden, funktionieren weiter unverändert. Der Tarif **Container Premium** verbleibt jedoch in der Vorschau. Der Tarif **PremiumV3** ist der offizielle Ersatz für den Tarif **Container Premium**. 
+> Alle Windows-Container, die während des Vorschauzeitraums im Tarif **Container Premium** ausgeführt wurden, funktionieren weiter unverändert. Der Tarif **Container Premium** verbleibt jedoch in der Vorschau. Der Tarif **PremiumV3** ist der offizielle Ersatz für den Tarif **Container Premium** . 
 
 **PremiumV3** ist in einigen Azure-Regionen verfügbar. Weitere Regionen werden nach und nach hinzugefügt. Um festzustellen, ob der Tarif in Ihrer Region verfügbar ist, führen Sie den folgenden Azure CLI-Befehl in [Azure Cloud Shell](../cloud-shell/overview.md) aus:
 
@@ -44,16 +44,16 @@ Der Tarif einer App Service-App wird im [App Service-Plan](overview-hosting-plan
 
 Wählen Sie beim Konfigurieren des App Service-Plans im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> die Option **Tarif** aus. 
 
-Wählen Sie **Produktion** und dann **P1V3**, **P2V3** oder **P3V3** aus, und klicken Sie dann auf **Anwenden**.
+Wählen Sie **Produktion** und dann **P1V3** , **P2V3** oder **P3V3** aus, und klicken Sie dann auf **Anwenden** .
 
 ![Screenshot: Empfohlene Tarife für Ihre App](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Wenn die Optionen **P1V3**, **P2V3** und **P3V3** nicht angezeigt werden oder abgeblendet sind, ist **PremiumV3** wahrscheinlich in der zugrunde liegenden App Service-Bereitstellung, die den App Service-Plan enthält, nicht verfügbar. Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
+> Wenn die Optionen **P1V3** , **P2V3** und **P3V3** nicht angezeigt werden oder abgeblendet sind, ist **PremiumV3** wahrscheinlich in der zugrunde liegenden App Service-Bereitstellung, die den App Service-Plan enthält, nicht verfügbar. Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
 
 ## <a name="scale-up-an-existing-app-to-premiumv3-tier"></a>Hochskalieren einer vorhandenen App auf den PremiumV3-Tarif
 
-Stellen Sie vor dem Hochskalieren einer vorhandenen App auf den **PremiumV3**-Tarif sicher, dass **PremiumV3** verfügbar ist. Informationen hierzu finden Sie unter [Verfügbarkeit von PremiumV3](#availability). Wenn der Tarif nicht verfügbar ist, finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported) weitere Informationen.
+Stellen Sie vor dem Hochskalieren einer vorhandenen App auf den **PremiumV3** -Tarif sicher, dass **PremiumV3** verfügbar ist. Informationen hierzu finden Sie unter [Verfügbarkeit von PremiumV3](#availability). Wenn der Tarif nicht verfügbar ist, finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported) weitere Informationen.
 
 Je nach Hostingumgebung können für das zentrale Hochskalieren zusätzliche Schritte erforderlich sein. 
 
@@ -63,7 +63,7 @@ Wählen Sie im linken Navigationsbereich **Hochskalieren (App Service-Plan)** au
 
 ![Screenshot: Hochskalieren Ihres App Service-Plans](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Wählen Sie **Produktion** und dann **P1V3**, **P2V3** oder **P3V3** aus, und klicken Sie dann auf **Anwenden**.
+Wählen Sie **Produktion** und dann **P1V3** , **P2V3** oder **P3V3** aus, und klicken Sie dann auf **Anwenden** .
 
 ![Screenshot: Empfohlene Tarife für Ihre App](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -82,7 +82,7 @@ Einige App Service-Pläne können nicht auf den PremiumV3-Tarif hochskaliert wer
 Wenn Ihre App in einer App Service-Bereitstellung ausgeführt wird, in der **PremiumV3** nicht verfügbar ist, oder Ihre App in einer Region ausgeführt wird, die **PremiumV3** derzeit nicht unterstützt, müssen Sie Ihre App erneut bereitstellen, um von **PremiumV3** profitieren zu können.  Sie haben zwei Möglichkeiten:
 
 - Erstellen Sie eine App in einer neuen Ressourcengruppe und mit einem neuen App Service-Plan. Wählen Sie beim Erstellen des App Service-Plans den Tarif **PremiumV3** aus. Mit diesem Schritt ist gewährleistet, dass der App Service-Plan in einer Bereitstellungseinheit bereitgestellt wird, die **PremiumV3** unterstützt. Stellen Sie Ihren Anwendungscode dann in der neu erstellten App erneut bereit. Wenn Sie den App Service-Plan aus Kostengründen auf einen niedrigeren Tarif herunterskalieren, können Sie jederzeit wieder auf **PremiumV3** hochskalieren, weil die Bereitstellungseinheit diesen Tarif unterstützt.
-- Wenn Ihre App bereits in einem vorhandenen **Premium**-Tarif ausgeführt wird, können Sie Ihre App mit allen App-Einstellungen, Verbindungszeichenfolgen und der Bereitstellungskonfiguration in einen neuen App Service-Plan klonen, der **PremiumV3** verwendet.
+- Wenn Ihre App bereits in einem vorhandenen **Premium** -Tarif ausgeführt wird, können Sie Ihre App mit allen App-Einstellungen, Verbindungszeichenfolgen und der Bereitstellungskonfiguration in einen neuen App Service-Plan klonen, der **PremiumV3** verwendet.
 
     ![Screenshot: Klonen Ihrer App](media/app-service-configure-premium-tier/clone-app.png)
 
@@ -111,7 +111,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Der folgende Befehl erstellt einen App Service-Plan in _P1V3_. Für `-WorkerSize` sind die Optionen _Small_, _Medium_ und _Large_ verfügbar.
+Der folgende Befehl erstellt einen App Service-Plan in _P1V3_ . Für `-WorkerSize` sind die Optionen _Small_ , _Medium_ und _Large_ verfügbar.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

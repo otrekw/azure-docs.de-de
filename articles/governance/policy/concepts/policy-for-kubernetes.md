@@ -3,12 +3,12 @@ title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951535"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676706"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -25,7 +25,7 @@ Von Azure Policy für Kubernetes werden folgende Clusterumgebungen unterstützt:
 - [AKS-Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Die Add-Ons für AKS-Engine und Kubernetes mit Arc-Aktivierung sind in der **Vorschauversion** verfügbar. Azure Policy für Kubernetes unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes**. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
+> Die Add-Ons für AKS-Engine und Kubernetes mit Arc-Aktivierung sind in der **Vorschauversion** verfügbar. Azure Policy für Kubernetes unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes** . Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_ . Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ## <a name="overview"></a>Übersicht
 
@@ -62,7 +62,7 @@ Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On f
 Die folgenden Einschränkungen gelten nur für das Azure Policy-Add-On für AKS:
 
 - Die [AKS-Podsicherheitsrichtlinie](../../../aks/use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. Weitere Informationen hierzu finden Sie unter [Einschränkungen im Hinblick auf die AKS-Podsicherheit](../../../aks/use-pod-security-on-azure-policy.md#limitations).
-- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_, _gatekeeper-system_ und _aks-periscope_.
+- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_ , _gatekeeper-system_ und _aks-periscope_ .
 
 ## <a name="recommendations"></a>Empfehlungen
 
@@ -80,7 +80,7 @@ Die folgende Empfehlung gilt nur für AKS und das Azure Policy-Add-On:
 
 - Verwenden Sie zum Planen von Gatekeeper-Pods den Systemknotenpool mit einem `CriticalAddonsOnly`-Taint. Weitere Informationen finden Sie unter [Verwenden von Systemknotenpools](../../../aks/use-system-pools.md#system-and-user-node-pools).
 - Schützen Sie von Ihren AKS-Clustern ausgehenden Datenverkehr. Weitere Informationen finden Sie unter [Steuern des ausgehenden Datenverkehrs für Clusterknoten](../../../aks/limit-egress-traffic.md).
-- Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+- Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Installieren zur Konfiguration einer Ausnahme die [YAML-Datei „mic-exception“](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Installieren des Azure Policy-Add-Ons für AKS
@@ -93,7 +93,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
 
    - Azure-Portal:
 
-     Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights** . Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLI:
 
@@ -107,9 +107,9 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
      az provider register --namespace Microsoft.PolicyInsights
      ```
 
-1. Wenn Richtliniendefinitionen der eingeschränkten Vorschauversion installiert wurden, entfernen Sie das Add-On in Ihrem AKS-Cluster auf der Seite **Richtlinien** mithilfe der Schaltfläche **Deaktivieren**.
+1. Wenn Richtliniendefinitionen der eingeschränkten Vorschauversion installiert wurden, entfernen Sie das Add-On in Ihrem AKS-Cluster auf der Seite **Richtlinien** mithilfe der Schaltfläche **Deaktivieren** .
 
-1. Der AKS-Cluster muss die Version _1.14_ oder höher aufweisen. Verwenden Sie das folgende Skript, um Ihre AKS-Clusterversion zu überprüfen:
+1. Der AKS-Cluster muss die Version  _1.14_ oder höher aufweisen. Verwenden Sie das folgende Skript, um Ihre AKS-Clusterversion zu überprüfen:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -139,7 +139,7 @@ Sind die obigen Voraussetzungen erfüllt, installieren Sie das Azure Policy-Add
      >
      > 1. Überprüfen Sie, ob Version 1 des Add-Ons in Ihrem AKS-Cluster installiert ist, indem Sie nachsehen, ob auf der Seite **Richtlinien** für Ihren AKS-Cluster die Meldung „Der aktuelle Cluster verwendet das Azure Policy-Add-On v1...“ angezeigt wird.
      > 1. [Entfernen Sie das Add-On](#remove-the-add-on-from-aks).
-     > 1. Klicken Sie auf die Schaltfläche **Add-On aktivieren**, um Version 2 des Add-Ons zu installieren.
+     > 1. Klicken Sie auf die Schaltfläche **Add-On aktivieren** , um Version 2 des Add-Ons zu installieren.
      > 1. [Weisen Sie v2-Versionen Ihrer integrierten v1-Richtliniendefinitionen zu](#assign-a-built-in-policy-definition).
 
 - Azure CLI
@@ -160,7 +160,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. Führen Sie hierzu den folgenden Azure CLI-Befehl aus, und ersetzen Sie dabei `<rg>` durch den Namen Ihrer Ressourcengruppe und `<cluster-name>` durch den Namen Ihres AKS-Clusters: `az aks show -g <rg> -n <cluster-name>`. Das Ergebnis sollte in etwa wie die folgende Ausgabe aussehen, und **config.version** sollte `v2` lauten:
+Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. Führen Sie hierzu den folgenden Azure CLI-Befehl aus, und ersetzen Sie dabei `<rg>` durch den Namen Ihrer Ressourcengruppe und `<cluster-name>` durch den Namen Ihres AKS-Clusters: `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`. Das Ergebnis sollte in etwa wie die folgende Ausgabe aussehen, und **config.version** sollte `v2` lauten:
 
 ```output
 "addonProfiles": {
@@ -176,7 +176,7 @@ Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. F�
 
 ## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Installieren des Azure Policy-Add-Ons für Kubernetes mit Azure Arc-Aktivierung (Vorschau)
 
-Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, muss in Ihrem Abonnement der **Microsoft.PolicyInsights**-Ressourcenanbieter aktiviert und eine Rollenzuweisung für den Clusterdienstprinzipal erstellt werden.
+Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, muss in Ihrem Abonnement der **Microsoft.PolicyInsights** -Ressourcenanbieter aktiviert und eine Rollenzuweisung für den Clusterdienstprinzipal erstellt werden.
 
 1. Azure CLI-Version 2.12.0 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -217,7 +217,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 
-1. Weisen Sie dem Kubernetes-Cluster mit Azure Arc-Aktivierung die Rolle „Policy Insights Data Writer (Preview)“ (Policy Insights-Datenschreiber (Vorschau)) zu. Ersetzen Sie `<subscriptionId>` durch Ihre Abonnement-ID, `<rg>` durch die Ressourcengruppe des Kubernetes-Clusters mit Azure Arc-Aktivierung und `<clusterName>` durch den Namen des Kubernetes-Clusters mit Azure Arc-Aktivierung. Erfassen Sie die zurückgegebenen Werte für _appId_, _password_ und _tenant_. Sie werden für die Installationsschritte benötigt.
+1. Weisen Sie dem Kubernetes-Cluster mit Azure Arc-Aktivierung die Rolle „Policy Insights Data Writer (Preview)“ (Policy Insights-Datenschreiber (Vorschau)) zu. Ersetzen Sie `<subscriptionId>` durch Ihre Abonnement-ID, `<rg>` durch die Ressourcengruppe des Kubernetes-Clusters mit Azure Arc-Aktivierung und `<clusterName>` durch den Namen des Kubernetes-Clusters mit Azure Arc-Aktivierung. Erfassen Sie die zurückgegebenen Werte für _appId_ , _password_ und _tenant_ . Sie werden für die Installationsschritte benötigt.
 
    - Azure CLI
 
@@ -280,7 +280,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="install-azure-policy-add-on-for-aks-engine-preview"></a><a name="install-azure-policy-add-on-for-aks-engine"></a>Installieren des Azure Policy-Add-Ons für die AKS-Engine (Vorschau)
 
-Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, muss in Ihrem Abonnement der **Microsoft.PolicyInsights**-Ressourcenanbieter aktiviert und eine Rollenzuweisung für den Clusterdienstprinzipal erstellt werden.
+Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, muss in Ihrem Abonnement der **Microsoft.PolicyInsights** -Ressourcenanbieter aktiviert und eine Rollenzuweisung für den Clusterdienstprinzipal erstellt werden.
 
 1. Azure CLI-Version 2.0.62 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -374,7 +374,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>Richtliniensprache
 
-Die Struktur der Azure Policy-Sprache für die Verwaltung von Kubernetes orientiert sich an der Struktur bereits vorhandener Richtliniendefinitionen. Mit einem [Ressourcenanbietermodus](./definition-structure.md#resource-provider-modes) von `Microsoft.Kubernetes.Data` werden die Auswirkungen von [audit](./effects.md#audit) und [deny](./effects.md#deny) zum Verwalten Ihrer Kubernetes-Cluster verwendet. _Audit_ und _deny_ müssen **details**-Eigenschaften bereitstellen, die für das Arbeiten mit dem [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) und Gatekeeper v3 spezifisch sind.
+Die Struktur der Azure Policy-Sprache für die Verwaltung von Kubernetes orientiert sich an der Struktur bereits vorhandener Richtliniendefinitionen. Mit einem [Ressourcenanbietermodus](./definition-structure.md#resource-provider-modes) von `Microsoft.Kubernetes.Data` werden die Auswirkungen von [audit](./effects.md#audit) und [deny](./effects.md#deny) zum Verwalten Ihrer Kubernetes-Cluster verwendet. _Audit_ und _deny_ müssen **details** -Eigenschaften bereitstellen, die für das Arbeiten mit dem [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) und Gatekeeper v3 spezifisch sind.
 
 Als Teil der Eigenschaften _details.constraintTemplate_ und _details.constraint_ in der Richtliniendefinition übergibt Azure Policy die URIs dieser [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) an das Add-On. Rego ist die Sprache, die von OPA und Gatekeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
 
@@ -388,7 +388,7 @@ Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitio
 
 1. Wählen Sie im linken Bereich der Seite „Azure Policy“ die Option **Definitionen** aus.
 
-1. Verwenden Sie im Dropdown-Listenfeld „Kategorie“ die Option **Alle auswählen**, um den Filter zu löschen, und wählen Sie dann **Kubernetes** aus.
+1. Verwenden Sie im Dropdown-Listenfeld „Kategorie“ die Option **Alle auswählen** , um den Filter zu löschen, und wählen Sie dann **Kubernetes** aus.
 
 1. Wählen Sie die Richtliniendefinition und dann die Schaltfläche **Zuweisen** aus.
 
@@ -401,17 +401,17 @@ Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitio
 
 1. Legen Sie die [Policy enforcement](./assignment-structure.md#enforcement-mode) (Richtlinienerzwingung) auf einen der unten aufgeführten Werte fest.
 
-   - **Aktiviert**: Erzwingen Sie die Richtlinie auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden verweigert.
+   - **Aktiviert** : Erzwingen Sie die Richtlinie auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden verweigert.
 
-   - **Deaktiviert**: Erzwingen Sie die Richtlinie nicht auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden nicht verweigert. Die Ergebnisse der Konformitätsbewertung sind weiterhin verfügbar. Beim Rollout neuer Richtliniendefinitionen für aktive Cluster ist die Option _Deaktiviert_ hilfreich, um die Richtliniendefinition zu testen, da Zulassungsanforderungen mit Verstößen nicht verweigert werden.
+   - **Deaktiviert** : Erzwingen Sie die Richtlinie nicht auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden nicht verweigert. Die Ergebnisse der Konformitätsbewertung sind weiterhin verfügbar. Beim Rollout neuer Richtliniendefinitionen für aktive Cluster ist die Option _Deaktiviert_ hilfreich, um die Richtliniendefinition zu testen, da Zulassungsanforderungen mit Verstößen nicht verweigert werden.
 
 1. Wählen Sie **Weiter** aus.
 
 1. Festlegen von **Parameterwerten**
 
-   - Geben Sie die Liste der Namespaces im Parameter **Namespaceausschlüsse** an, um Kubernetes-Namespaces aus der Richtlinienauswertung auszuschließen. Es wird empfohlen, Folgendes auszuschließen: _kube-system_, _gatekeeper-system_ und _azure-arc_.
+   - Geben Sie die Liste der Namespaces im Parameter **Namespaceausschlüsse** an, um Kubernetes-Namespaces aus der Richtlinienauswertung auszuschließen. Es wird empfohlen, Folgendes auszuschließen: _kube-system_ , _gatekeeper-system_ und _azure-arc_ .
 
-1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Klicken Sie auf **Überprüfen + erstellen** .
 
 Verwenden Sie alternativ [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](../assign-policy-portal.md), um eine Kubernetes-Richtlinie zu finden und zuzuweisen. Suchen Sie nach einer Kubernetes-Richtliniendefinition anstelle des Musters „audit vms“.
 
@@ -489,9 +489,9 @@ helm uninstall azure-policy-addon
 
 Wenn Sie das Azure Policy Add-On und Gatekeeper aus dem AKS-Engine-Cluster entfernen möchten, verwenden Sie die Methode, die der Installationsweise des Add-Ons entspricht:
 
-- Bei Installation durch Festlegen der **addons**-Eigenschaft in der Clusterdefinition für die AKS-Engine:
+- Bei Installation durch Festlegen der **addons** -Eigenschaft in der Clusterdefinition für die AKS-Engine:
 
-  Stellen Sie die Clusterdefinition erneut für die AKS-Engine bereit, nachdem Sie die **addons**-Eigenschaft für _azure-policy_ in „false“ geändert haben:
+  Stellen Sie die Clusterdefinition erneut für die AKS-Engine bereit, nachdem Sie die **addons** -Eigenschaft für _azure-policy_ in „false“ geändert haben:
 
 
   ```json

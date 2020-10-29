@@ -3,13 +3,13 @@ title: 'Tutorial: Erstellen einer Registrierung mit Georeplikation'
 description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erstellen, die Georeplikation konfigurieren, ein Docker-Image vorbereiten und es für die Registrierung bereitstellen. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.
 ms.topic: tutorial
 ms.date: 06/30/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148394"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739487"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -44,16 +44,16 @@ Für dieses Tutorial benötigen Sie eine Azure-Containerregistrierung auf der Di
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry**.
+Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry** .
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 
-Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen. Auf der Registerkarte **Grundlagen**:
+Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen. Auf der Registerkarte **Grundlagen** :
 
 * **Registrierungsname:** Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
-* **Ressourcengruppe**: **Neu erstellen** > `myResourceGroup`
-* **Standort**: `West US`
-* **SKU**: `Premium` (für die Georeplikation erforderlich)
+* **Ressourcengruppe** : **Neu erstellen** > `myResourceGroup`
+* **Standort** : `West US`
+* **SKU** : `Premium` (für die Georeplikation erforderlich)
 
 Wählen Sie **Bewerten + erstellen** und dann **Erstellen** aus, um die Registrierungsinstanz zu erstellen.
 
@@ -76,11 +76,11 @@ Es wird eine Karte mit grünen Sechsecken angezeigt, die für die Azure-Regionen
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 
-Replizieren Sie Ihre Registrierung in der Region „USA, Osten“, indem Sie das grüne Sechseck auswählen, und wählen Sie dann unter **Replikation erstellen** die Option **Erstellen**:
+Replizieren Sie Ihre Registrierung in der Region „USA, Osten“, indem Sie das grüne Sechseck auswählen, und wählen Sie dann unter **Replikation erstellen** die Option **Erstellen** :
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 
-Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bereit* angezeigt. Verwenden Sie die Schaltfläche **Aktualisieren**, um den Status der Replikation zu aktualisieren. Es kann ca. eine Minute dauern, bis die Replikate erstellt und synchronisiert wurden.
+Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bereit* angezeigt. Verwenden Sie die Schaltfläche **Aktualisieren** , um den Status der Replikation zu aktualisieren. Es kann ca. eine Minute dauern, bis die Replikate erstellt und synchronisiert wurden.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 
@@ -89,7 +89,7 @@ Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bere
 
 In den nachfolgenden Tutorials stellen Sie ein Containerimage aus der Registrierung direkt für Web-App für Container bereit. Zum Aktivieren dieser Funktion müssen Sie auch das [Administratorkonto](container-registry-authentication.md#admin-account) der Registrierung aktivieren.
 
-Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Klicken Sie unter **Administratorbenutzer** auf **Aktivieren**.
+Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Klicken Sie unter **Administratorbenutzer** auf **Aktivieren** .
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 

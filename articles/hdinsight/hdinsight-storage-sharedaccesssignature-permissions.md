@@ -6,21 +6,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856563"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742060"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Shared Access Signatures von Azure-Blobspeicher zum Einschränken des Zugriffs auf Daten in HDInsight
 
 HDInsight hat vollen Zugriff auf Daten in Azure-Blobspeicherkonten, die mit dem Cluster verbunden sind. Sie können Shared Access Signatures für den Blobcontainer verwenden, um den Zugriff auf die Daten einzuschränken. Shared Access Signatures (SAS) sind ein Feature von Azure-Blobspeicherkonten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten.
 
 > [!IMPORTANT]  
-> Erwägen Sie für eine Lösung mit Apache Ranger die Verwendung von in die Domäne eingebundenem HDInsight. Weitere Informationen finden Sie im Dokument [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](./domain-joined/apache-domain-joined-configure.md).
+> Erwägen Sie für eine Lösung mit Apache Ranger die Verwendung von in die Domäne eingebundenem HDInsight. Weitere Informationen finden Sie im Dokument [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 
 > [!WARNING]  
 > HDInsight benötigt vollen Zugriff auf den Standardspeicher für den Cluster.
@@ -31,9 +31,9 @@ HDInsight hat vollen Zugriff auf Daten in Azure-Blobspeicherkonten, die mit dem 
 
 * Ein vorhandener [Speichercontainer](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/).
+* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](/powershell/azure/).
 
-* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 * Bei Verwendung von [Python](https://www.python.org/downloads/), Version 2.7 oder höher.
 
@@ -76,7 +76,7 @@ Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselsze
 
 Es wird empfohlen, stets gespeicherte Zugriffsrichtlinien zu verwenden. Bei Verwendung gespeicherter Richtlinien können Sie Signaturen aufheben oder bei Bedarf das Ablaufdatum verlängern. In den Schritten in diesem Dokument werden gespeicherte Zugriffsrichtlinien zum Generieren von SAS verwendet.
 
-Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen zum SAS-Modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen zum SAS-Modell](../storage/common/storage-sas-overview.md).
 
 ## <a name="create-a-stored-policy-and-sas"></a>Erstellen einer gespeicherte Richtlinie und einer SAS
 
@@ -207,7 +207,7 @@ Möglicherweise müssen Sie `pip install --upgrade azure-storage` ausführen, we
 
 1. Öffnen Sie die Projektmappe in Visual Studio.
 
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SASExample**, und wählen Sie **Eigenschaften** aus.
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SASExample** , und wählen Sie **Eigenschaften** aus.
 
 3. Wählen Sie **Einstellungen** aus, und fügen Sie Werte für die folgenden Einträge hinzu:
 
@@ -349,7 +349,7 @@ Die Ausführung dieses Skripts dauert eine Weile, meist etwa 15 Minuten. Wenn da
 
 ### <a name="use-the-sas-with-an-existing-cluster"></a>Verwenden des SAS mit einem bestehenden Cluster
 
-Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site**-Konfiguration mithilfe der folgenden Schritte hinzufügen:
+Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site** -Konfiguration mithilfe der folgenden Schritte hinzufügen:
 
 1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die Adresse für diese Seite lautet `https://YOURCLUSTERNAME.azurehdinsight.net`. Authentifizieren Sie sich bei Aufforderung am Cluster mithilfe des Administratornamens (admin) und des Kennworts, das Sie beim Erstellen des Clusters verwendet haben.
 
@@ -357,14 +357,14 @@ Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site**-Konf
 
 1. Erweitern Sie den Abschnitt **Custom core-site** (Benutzerdefinierte core-site), scrollen Sie zum Seitenende, und wählen Sie **Add property...** (Eigenschaft hinzufügen) aus. Verwenden Sie für **Key** (Schlüssel) und **Value** (Wert) die folgenden Werte:
 
-    * **Schlüssel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Value**: Die von einer der zuvor ausgeführten Methoden zurückgegebene SAS.
+    * **Schlüssel** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Value** : Die von einer der zuvor ausgeführten Methoden zurückgegebene SAS.
 
     Ersetzen Sie `CONTAINERNAME` durch den Containernamen, den Sie mit der C#- oder SAS-Anwendung verwendet haben. Ersetzen Sie `STORAGEACCOUNTNAME` durch den Namen des von Ihnen verwendeten Speicherkontos.
 
     Wählen Sie **Hinzufügen** aus, um diesen Schlüssel und diesen Wert zu speichern.
 
-1. Klicken Sie auf die Schaltfläche **Speichern**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und wählen Sie anschließend **Speichern** aus.
+1. Klicken Sie auf die Schaltfläche **Speichern** , um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und wählen Sie anschließend **Speichern** aus.
 
     Wählen Sie **OK** aus, wenn die Änderungen abgeschlossen sind.
 
@@ -373,7 +373,7 @@ Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site**-Konf
 
 1. Die Dropdownliste **Neu starten** wird angezeigt. Wählen Sie in der Dropdownliste **Restart All Affected** (Alle betroffenen neu starten) und anschließend die Option __Confirm Restart All__ (Alle neu starten bestätigen) aus.
 
-    Wiederholen Sie diesen Vorgang für **MapReduce2** und **YARN**.
+    Wiederholen Sie diesen Vorgang für **MapReduce2** und **YARN** .
 
 1. Sobald diese Dienste neu gestartet wurden, wählen Sie sie nacheinander aus und deaktivieren den Wartungsmodus in der Dropdownliste **Service Actions** (Dienstaktionen).
 

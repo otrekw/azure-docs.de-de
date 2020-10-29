@@ -6,21 +6,21 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738520"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
 Dieser Artikel enthält Anleitungen zur Verwendung des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren abgeschlossener und aktiver Spark-Anwendungen.
 
-Die Erweiterung umfasst die Registerkarten „Daten“, „Graph“ und „Diagnose“. Auf der Registerkarte **Daten** können Sie die Eingabe- und Ausgabedaten des Spark-Auftrags überprüfen. Auf der Registerkarte **Graph** können Sie den Datenfluss anzeigen und den Auftragsgraphen wiedergeben. Auf der Registerkarte **Diagnose** werden die Registerkarten **Datenschiefe**, **Zeitabweichung** und **Executor Usage Analysis** (Analyse zur Executorauslastung) angezeigt.
+Die Erweiterung umfasst die Registerkarten „Daten“, „Graph“ und „Diagnose“. Auf der Registerkarte **Daten** können Sie die Eingabe- und Ausgabedaten des Spark-Auftrags überprüfen. Auf der Registerkarte **Graph** können Sie den Datenfluss anzeigen und den Auftragsgraphen wiedergeben. Auf der Registerkarte **Diagnose** werden die Registerkarten **Datenschiefe** , **Zeitabweichung** und **Executor Usage Analysis** (Analyse zur Executorauslastung) angezeigt.
 
 ## <a name="access-the-apache-spark-history-server"></a>Zugreifen auf den Apache Spark-Verlaufsserver
 
@@ -34,7 +34,7 @@ Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlosse
 
     ![Wählen Sie „Überwachen“ aus, und wählen Sie dann „Spark-Anwendung“ aus.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Wählen Sie eine Anwendung aus, und öffnen Sie dann **Protokollabfrage**, indem Sie dies auswählen.
+3. Wählen Sie eine Anwendung aus, und öffnen Sie dann **Protokollabfrage** , indem Sie dies auswählen.
 
     ![Öffnen Sie das Protokollabfragefenster.](./media/apache-spark-history-server/open-application-window.png)
 
@@ -88,7 +88,7 @@ Wählen Sie die Auftrags-ID für den Auftrag aus, den Sie anzeigen möchten. Wä
 
     ![Daten für Spark-Anwendung – Seite](./media/apache-spark-history-server/apache-spark-data-page.png)
 
-* Zeigen Sie auf das Fragezeichen neben **Daten**, um die QuickInfo anzuzeigen, oder wählen Sie das Fragezeichen aus, um weitere Informationen zu erhalten.
+* Zeigen Sie auf das Fragezeichen neben **Daten** , um die QuickInfo anzuzeigen, oder wählen Sie das Fragezeichen aus, um weitere Informationen zu erhalten.
 
     ![Daten für Spark-Anwendung – Weitere Informationen](./media/apache-spark-history-server/sparkui-data-more-info.png)
 
@@ -192,7 +192,7 @@ Senden Sie Feedback mit Problemen, indem Sie **Provide us feedback** (Feedback a
 
 Um auf die Registerkarte Diagnose zuzugreifen, wählen Sie eine Auftrags-ID aus. Wählen Sie dann im Menü „Extras“ **Diagnose** aus, um die Auftragsdiagnoseansicht aufzurufen. Die Registerkarte „Diagnosis“ (Diagnose) umfasst die folgenden weiteren Registerkarten: **Data Skew** (Datenschiefe), **Time Skew** (Zeitabweichung) und **Executor Usage Analysis** (Analyse zur Executorauslastung).
 
-Überprüfen Sie die **Datenschiefe**, **Zeitabweichung** und **Executor-Nutzungsanalyse**, indem Sie die entsprechenden Registerkarten auswählen.
+Überprüfen Sie die **Datenschiefe** , **Zeitabweichung** und **Executor-Nutzungsanalyse** , indem Sie die entsprechenden Registerkarten auswählen.
 
 ![SparkUI-Diagnoseregisterkarte „Datenschiefe“, Forts.](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -224,7 +224,7 @@ Auf der Registerkarte **Time Skew** (Zeitabweichung) werden schiefe Aufträge ba
 
 Im Diagramm zur Executorauslastung werden die Executorzuordnung und der Ausführungsstatus des Spark-Auftrags angezeigt.  
 
-1. Wenn Sie **Executor Usage Analysis** (Executor-Nutzungsanalyse) auswählen, werden vier Kurventypen zur Executor-Nutzung entworfen: die **zugewiesenen Executors**, die **ausgeführten Executors**, die **Executors im Leerlauf** und die **Max. Executor-Instanzen**. Durch jedes Ereignis, bei dem Executors hinzugefügt oder entfernt werden, wird die Anzahl der zugewiesenen Executors erhöht bzw. verringert. Sie können sich auf der Registerkarte „Jobs“ (Aufträge) den Ereignisverlauf ansehen, falls Sie sich für weitere Vergleiche interessieren.
+1. Wenn Sie **Executor Usage Analysis** (Executor-Nutzungsanalyse) auswählen, werden vier Kurventypen zur Executor-Nutzung entworfen: die **zugewiesenen Executors** , die **ausgeführten Executors** , die **Executors im Leerlauf** und die **Max. Executor-Instanzen** . Durch jedes Ereignis, bei dem Executors hinzugefügt oder entfernt werden, wird die Anzahl der zugewiesenen Executors erhöht bzw. verringert. Sie können sich auf der Registerkarte „Jobs“ (Aufträge) den Ereignisverlauf ansehen, falls Sie sich für weitere Vergleiche interessieren.
 
    ![SparkUI-Diagnose – Registerkarte „Executors“](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 

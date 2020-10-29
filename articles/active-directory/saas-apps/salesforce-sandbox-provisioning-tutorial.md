@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: cc094376ed6d5a183b65a598ca9d0a55670be70e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101782"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676722"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce Sandbox für die automatische Benutzerbereitstellung
 
@@ -33,7 +33,7 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 
 Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
-Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer oder Gruppen in Azure AD Zugriff auf Ihre Salesforce Sandbox-App benötigen. Nach dieser Entscheidung können Sie die entsprechenden Benutzer und Gruppen gemäß der Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) Ihrer Salesforce Sandbox-App zuweisen.
+Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer oder Gruppen in Azure AD Zugriff auf Ihre Salesforce Sandbox-App benötigen. Nach dieser Entscheidung können Sie die entsprechenden Benutzer und Gruppen gemäß der Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) Ihrer Salesforce Sandbox-App zuweisen.
 
 ### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Salesforce Sandbox
 
@@ -109,4 +109,4 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren des einmaligen Anmeldens](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)
+* [Konfigurieren des einmaligen Anmeldens](./salesforce-sandbox-tutorial.md)

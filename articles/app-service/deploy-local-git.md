@@ -5,13 +5,13 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77152991"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741310"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -100,7 +100,7 @@ Wenn Ihr Konto über die erforderlichen Berechtigungen verfügt, können Sie Azu
 
 So aktivieren Sie die lokale Git-Bereitstellung für Ihre App mit Azure Pipelines (Vorschau):
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services** , und wählen Sie den Eintrag aus. 
 
 1. Wählen Sie Ihre Azure App Service-App und dann im linken Menü **Bereitstellungscenter** aus.
    
@@ -121,7 +121,7 @@ So aktivieren Sie die lokale Git-Bereitstellung für Ihre App mit Azure Pipeline
    
 1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und wählen Sie **Weiter** aus.
    
-1. Wenn die Azure-Pipeline bereit ist, kopieren Sie die Git-Repository-URL von der Seite **Bereitstellungscenter**, um sie im nächsten Schritt zu verwenden. 
+1. Wenn die Azure-Pipeline bereit ist, kopieren Sie die Git-Repository-URL von der Seite **Bereitstellungscenter** , um sie im nächsten Schritt zu verwenden. 
    
    ![Die Git-Repository-URL kopieren](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -152,7 +152,7 @@ Möglicherweise werden die folgenden häufigen Fehlermeldungen angezeigt, wenn S
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Sie haben während `git push` keinen Branch angegeben, oder Sie haben den Wert `push.default` in `.gitconfig` nicht festgelegt.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
 |`src refspec [branchname] does not match any.`|Sie haben versucht, einen anderen Branch als „master“ mithilfe von Push in das ‚azure‘-Remoterepository zu übertragen.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|Dieser Fehler kann auftreten, wenn Sie versuchen, ein großes Git-Repository über HTTPS mithilfe von Push zu übertragen.|Ändern Sie die Git-Konfiguration auf dem lokalen Computer, um den `postBuffer` zu vergrößern. Beispiel: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei** : `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

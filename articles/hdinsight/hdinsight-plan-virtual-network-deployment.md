@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60bb16b0a4fd2e710d0d5fddc6cf82916f2f66af
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82786613"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741429"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planen eines virtuellen Netzwerks für Azure HDInsight
 
@@ -26,7 +26,7 @@ Die Nutzung eines Azure Virtual Network ermöglicht die folgenden Szenarien:
 * Direktes Zuweisen von Apache Hadoop-Diensten, die nicht öffentlich über das Internet verfügbar sind. Zum Beispiel Apache Kafka-APIs oder die Apache HBase-Java-API.
 
 > [!IMPORTANT]
-> Wenn Sie einen HDInsight-Cluster in einem VNET erstellen, werden mehrere Netzwerkressourcen erstellt, z. B. NICs und Lastenausgleichsmodule. Löschen Sie diese Netzwerkressourcen **nicht**, da sie benötigt werden, damit Ihr Cluster mit dem VNET ordnungsgemäß funktioniert.
+> Wenn Sie einen HDInsight-Cluster in einem VNET erstellen, werden mehrere Netzwerkressourcen erstellt, z. B. NICs und Lastenausgleichsmodule. Löschen Sie diese Netzwerkressourcen **nicht** , da sie benötigt werden, damit Ihr Cluster mit dem VNET ordnungsgemäß funktioniert.
 >
 > Ab dem 28. Februar 2019 werden die Netzwerkressourcen (wie Netzwerkschnittstellenkarten, Lastenausgleichsmodule usw.) für in einem virtuellen Netzwerk NEU erstellte HDInsight-Cluster in der gleichen HDInsight-Clusterressourcengruppe bereitgestellt. Zuvor wurden diese Ressourcen in der Ressourcengruppe des virtuellen Netzwerks bereitgestellt. Für derzeit ausgeführte Cluster und Cluster, die ohne virtuelles Netzwerk erstellt wurden, ändert sich nichts.
 
@@ -84,7 +84,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
         Weitere Informationen finden Sie im Dokument zur [Problembehandlung bei Netzwerksicherheitsgruppen](../virtual-network/diagnose-network-traffic-filter-problem.md).
 
         > [!IMPORTANT]  
-        > Netzwerksicherheitsgruppen-Regeln werden der Reihenfolge nach basierend auf der Regelpriorität angewendet. Die erste Regel, die mit dem Datenverkehrsmuster übereinstimmt, wird angewendet, und auf diesen Datenverkehr werden dann keine anderen Regeln angewendet. Sortieren Sie die Regeln von „weniger strikt“ bis „strikt“. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
+        > Netzwerksicherheitsgruppen-Regeln werden der Reihenfolge nach basierend auf der Regelpriorität angewendet. Die erste Regel, die mit dem Datenverkehrsmuster übereinstimmt, wird angewendet, und auf diesen Datenverkehr werden dann keine anderen Regeln angewendet. Sortieren Sie die Regeln von „weniger strikt“ bis „strikt“. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
 
     * Benutzerdefinierte Routen
 
@@ -210,6 +210,6 @@ Wenn Sie einen HDInsight-Cluster erstellen, wird auch ein Lastenausgleich erstel
 * Codebeispiele und Beispiele für das Erstellen von virtuellen Azure-Netzwerken finden Sie unter [Create virtual networks for Azure HDInsight clusters (Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster)](hdinsight-create-virtual-network.md).
 * Ein umfassendes Beispiel für die Konfiguration von HDInsight zum Herstellen einer Verbindung mit einem lokalen Netzwerk finden Sie unter [Connect HDInsight to an on-premises network](./connect-on-premises-network.md) (Verbinden von HDInsight mit einem lokalen Netzwerk).
 * Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie in der [Übersicht zu virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md).
-* Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht zu Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
+* Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht zu Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
 * Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
 * Weitere Informationen zum Steuern des Datenverkehrs finden Sie unter [Steuern des Netzwerkdatenverkehrs](./control-network-traffic.md).

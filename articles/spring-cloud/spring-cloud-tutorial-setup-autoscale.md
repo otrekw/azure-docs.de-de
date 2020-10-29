@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091065"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742666"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Tutorial: Einrichten der Autoskalierung für Microserviceanwendungen
 
@@ -35,7 +35,7 @@ Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
 3. Wählen Sie die Ressourcengruppe aus, die Ihren Dienst enthält.
 4. Wählen Sie im Menü im linken Navigationsbereich unter **Einstellungen** die Registerkarte **Apps** aus.
 5. Wählen Sie die Anwendung aus, für die Sie die Autoskalierung einrichten möchten. In diesem Beispiel wird die Anwendung mit dem Namen **demo** ausgewählt. Dann sollte die Seite **Übersicht** der Anwendung angezeigt werden.
-6. Navigieren Sie im Menü im linken Navigationsbereich unter **Einstellungen** zur Registerkarte **Aufskalieren**.
+6. Navigieren Sie im Menü im linken Navigationsbereich unter **Einstellungen** zur Registerkarte **Aufskalieren** .
 7. Wählen Sie die Bereitstellung aus, für die Sie die Autoskalierung einrichten möchten. Es sollten Optionen für die Autoskalierung angezeigt werden. Diese werden im folgenden Abschnitt veranschaulicht.
 
 
@@ -66,7 +66,7 @@ Sie können Autoskalierungsmodi auch mithilfe der Azure CLI festlegen.  Die folg
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
 
-Wenn Sie sich im Tarif „Basic“ befinden und durch diese Grenzwerte eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü **Preise**, indem Sie zuerst die Tarifspalte *Standard* auswählen und dann auf die Schaltfläche **Upgrade** klicken.
+Wenn Sie sich im Tarif „Basic“ befinden und durch diese Grenzwerte eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü **Preise** , indem Sie zuerst die Tarifspalte *Standard* auswählen und dann auf die Schaltfläche **Upgrade** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

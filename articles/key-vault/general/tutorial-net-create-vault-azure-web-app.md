@@ -9,13 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336682"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741383"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure-Web-App mit .NET herzustellen
 
@@ -85,7 +85,7 @@ Auf der Seite wird die Nachricht **Hello World** aus der Beispiel-App angezeigt.
 
 ### <a name="initialize-the-git-repository"></a>Initialisieren des Git-Repositorys
 
-Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.  Initialisieren Sie ein Git-Repository für das .NET Core-Projekt.
+Drücken Sie in Ihrem Terminalfenster **STRG+C** , um den Webserver zu beenden.  Initialisieren Sie ein Git-Repository für das .NET Core-Projekt.
 
 ```bash
 git init
@@ -249,7 +249,7 @@ Daraufhin wird der folgende JSON-Codeausschnitt zurückgegeben:
 }
 ```
 
-Übergeben Sie die Prinzipal-ID (principalID) an den Azure CLI-Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy), um Ihrer Web-App das Ausführen von Abruf- und Auflistungsvorgängen (**get** und **list**) für Ihren Schlüsseltresor zu ermöglichen:
+Übergeben Sie die Prinzipal-ID (principalID) an den Azure CLI-Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy), um Ihrer Web-App das Ausführen von Abruf- und Auflistungsvorgängen ( **get** und **list** ) für Ihren Schlüsseltresor zu ermöglichen:
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list

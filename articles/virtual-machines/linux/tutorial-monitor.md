@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: c8d7b13f9e35a41a414a44c908997cfcc550af41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2bc1878739c9ce23cb1448eee87d71575823a2f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89011734"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740308"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Linux-Computers in Azure
 
@@ -40,13 +40,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. 
 
-Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren** . Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren** , um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-vm"></a>Erstellen eines virtuellen Computers
 
-Um die Diagnose und die Metriken in Aktion anzuzeigen, benötigen Sie einen virtuellen Computer. Erstellen Sie zunächst mit [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Das folgende Beispiel erstellt die Ressourcengruppe *myResourceGroupMonitor* am Standort *eastus*.
+Um die Diagnose und die Metriken in Aktion anzuzeigen, benötigen Sie einen virtuellen Computer. Erstellen Sie zunächst mit [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Das folgende Beispiel erstellt die Ressourcengruppe *myResourceGroupMonitor* am Standort *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
@@ -118,8 +118,8 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 Eine Linux-VM verfügt über einen dedizierten Host in Azure, mit dem sie interagiert. Es werden automatisch Metriken für den Host gesammelt, die folgendermaßen im Azure-Portal angezeigt werden können:
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
-1. Um die Leistung des virtuellen Hostcomputers anzuzeigen, klicken Sie im Fenster des virtuellen Computers auf **Metriken**, und wählen Sie dann eine der *[Host]* -Metriken unter **Verfügbare Metriken** aus.
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen** , und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+1. Um die Leistung des virtuellen Hostcomputers anzuzeigen, klicken Sie im Fenster des virtuellen Computers auf **Metriken** , und wählen Sie dann eine der *[Host]* -Metriken unter **Verfügbare Metriken** aus.
 
     ![Anzeigen von Hostmetriken](./media/tutorial-monitoring/monitor-host-metrics.png)
 
@@ -127,7 +127,7 @@ Eine Linux-VM verfügt über einen dedizierten Host in Azure, mit dem sie intera
 
 So aktivieren Sie die Überwachung Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs:
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen** , und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
 
 2. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights (Vorschau)** aus.
 
@@ -150,7 +150,7 @@ Nachdem Sie die Überwachung aktiviert haben, müssen Sie möglicherweise etwa e
 
 Azure Monitor for VMs beinhaltet einen Satz Leistungsdiagramme, die auf verschiedene Key Performance Indicators (KPIs) abzielen, um Sie beim Bestimmen der Leistung eines virtuellen Computers zu unterstützen. Führen Sie für den Zugriff über die VM die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen** , und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
 
 2. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights (Vorschau)** aus.
 
@@ -164,15 +164,15 @@ Sie können Warnungen auf Grundlage von bestimmten Leistungsmetriken erstellen. 
 
 Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Auslastung.
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen** , und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
 
-2. Klicken Sie auf dem Blatt des virtuellen Computers auf **Warnungsregeln** und dann am oberen Rand des Warnungsblatts auf **Metrikwarnung hinzufügen**.
+2. Klicken Sie auf dem Blatt des virtuellen Computers auf **Warnungsregeln** und dann am oberen Rand des Warnungsblatts auf **Metrikwarnung hinzufügen** .
 
-3. Geben Sie einen **Namen** für die Warnung ein, z.B. *myAlertRule*.
+3. Geben Sie einen **Namen** für die Warnung ein, z.B. *myAlertRule* .
 
 4. Um eine Warnung auszulösen, wenn der CPU-Prozentsatz 1.0 für fünf Minuten überschreitet, belassen Sie alle anderen Standardeinstellungen ausgewählt.
 
-5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
+5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser* , um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
 
 6. Klicken Sie auf die Schaltfläche **OK** .
 

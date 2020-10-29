@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6629f02178b7c00ccc849e2ccfc3f0a48f419a7f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315289"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735563"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Erstellen eines Migrationsplans mit Azure Migrate
 
@@ -20,7 +20,7 @@ Dieser Artikel bietet eine kurze Anleitung zum Erstellen Ihres Migrationsplans i
 - [Allgemeine Fragen](resources-faq.md) zu Azure Migrate
 - Fragen zur [Azure Migrate-Appliance](common-questions-appliance.md)
 - Fragen zur [Servermigration](common-questions-server-migration.md)
-- Antworten auf Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum)
+- Antworten auf Fragen im [Azure Migrate-Forum](https://docs.microsoft.com/answers/topics/azure-migrate.html)
 
 ## <a name="define-the-goals-of-cloud-migration"></a>Definieren der Ziele der Cloudmigration
 
@@ -75,13 +75,13 @@ Da Azure die Flexibilität bietet, die Größe Ihrer Cloudkapazität im Laufe de
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Bereitschafts- und Eignungsanalyse für Azure
 Exportieren Sie den Azure VM-Bewertungsbericht, und filtern Sie ihn nach den folgenden Bereitschaftskategorien, um die VM-Bereitschaft für Azure zu verstehen:
 
-- **Bereit für Azure**: Sie können diese Computer ohne Änderungen zu Azure migrieren.  
+- **Bereit für Azure** : Sie können diese Computer ohne Änderungen zu Azure migrieren.  
 
 - **Bedingt bereit für Azure:** Sie können diese Computer zu Azure migrieren, müssen jedoch geringfügige Änderungen auf diesen Servern gemäß den in der Bewertung bereitgestellten Anleitungen zur Problembehebung vornehmen.
 
-- **Nicht bereit für Azure**: Sie können diese Computer nicht in der vorliegenden Form zu Azure migrieren und müssen die Probleme vor der Migration gemäß der Anleitung zur Problembehebung beseitigen.
+- **Nicht bereit für Azure** : Sie können diese Computer nicht in der vorliegenden Form zu Azure migrieren und müssen die Probleme vor der Migration gemäß der Anleitung zur Problembehebung beseitigen.
 
-- **Bereitschaft unbekannt**: Azure Migrate kann die Bereitschaft des Computers aufgrund unzureichender Metadaten nicht ermitteln.
+- **Bereitschaft unbekannt** : Azure Migrate kann die Bereitschaft des Computers aufgrund unzureichender Metadaten nicht ermitteln.
 
 Mithilfe der Datenbankbewertungen können Sie die Bereitschaft für die Migration Ihrer SQL Server-Datenbestände zu Azure SQL-Datenbank oder Azure SQL Managed Instances beurteilen. Für jede Ihrer SQL Server-Instanzen wird der prozentuale Status der Bereitschaft für die Migration angezeigt. Außerdem werden für jede dieser Instanzen das empfohlene Ziel in Azure, potenzielle Migrationsblocker, die Anzahl von wichtigen Änderungen, die Bereitschaft für Azure SQL-Datenbank/Azure SQL-VM und der Kompatibilitätsgrad angezeigt. Sie können sich eingehender mit den Auswirkungen der Migrationsblocker und Empfehlungen zu deren Behebung vertraut machen.
 
@@ -95,19 +95,19 @@ Nachdem ein Computer als bereit für Azure markiert wurde, werden bei der Server
 
 Mit der *leistungsbasierten* Größenanpassungsoption in Bewertungen können Sie Workloads für Azure optimieren. Zusätzlich zur Größenanpassung gibt es nur wenige andere Möglichkeiten, Kosten zu sparen:
 
-- **Reservierte Instanzen**: Mit reservierten Instanzen können Sie die Kosten im Vergleich zu nutzungsbasierten Tarifen mit Laufzeiten von einem oder drei Jahren unter Windows und Linux (VMs) erheblich verringern.
+- **Reservierte Instanzen** : Mit reservierten Instanzen können Sie die Kosten im Vergleich zu nutzungsbasierten Tarifen mit Laufzeiten von einem oder drei Jahren unter Windows und Linux (VMs) erheblich verringern.
 
-- **Azure-Hybridvorteile**: Sie können lokale Windows Server-Lizenzen mit Software Assurance in Azure portieren und mit den Optionen für reservierte Instanzen kombinieren.
+- **Azure-Hybridvorteile** : Sie können lokale Windows Server-Lizenzen mit Software Assurance in Azure portieren und mit den Optionen für reservierte Instanzen kombinieren.
 
 - **Enterprise Agreement-Angebote (EA)** : Enterprise Agreement bietet integrierte Einsparungen, die für Ihr Abonnement gelten.
 
-- **Angebote**: Es gibt mehrere Azure-Angebote, z. B. Dev/Test Pay-As-You-Go und Enterprise Dev/Test mit niedrigeren Tarifen für Entwicklungs- oder Test-VMs.
+- **Angebote** : Es gibt mehrere Azure-Angebote, z. B. Dev/Test Pay-As-You-Go und Enterprise Dev/Test mit niedrigeren Tarifen für Entwicklungs- oder Test-VMs.
 
-- **VM-Betriebszeit**: Sie können die Zeiten, an denen die Azure-VMs ausgeführt werden, in Tagen pro Monat und Stunden pro Tag angeben, um Kosten zu senken (gilt nicht für RI).
+- **VM-Betriebszeit** : Sie können die Zeiten, an denen die Azure-VMs ausgeführt werden, in Tagen pro Monat und Stunden pro Tag angeben, um Kosten zu senken (gilt nicht für RI).
 
 - **Target Region** (Zielregion): Sie können mehrere Bewertungen in verschiedenen Regionen erstellen, um zu vergleichen, ob die Migration in eine bestimmte Region in einer Geografie kostengünstiger sein könnte.
 
-- **Leistungsbasierte Empfehlungen**: Als bewährte Methode sollten Sie die Empfehlungen für größenangepasste Azure-VMs verwenden, um Cloudkosten zu sparen.
+- **Leistungsbasierte Empfehlungen** : Als bewährte Methode sollten Sie die Empfehlungen für größenangepasste Azure-VMs verwenden, um Cloudkosten zu sparen.
 
 ### <a name="visualize-data"></a>Visualisieren von Daten
 
@@ -125,7 +125,7 @@ Da Sie nun über alle wichtigen Informationen verfügen, um Ihre Migrationsentsc
 
 Einige empfohlene Migrationsstrategien sind:
 
-- **Priorisieren schneller Erfolge**: Sie können die Bewertungsberichte verwenden, um „niedrig hängende Früchte“ zu ermitteln, beispielsweise die Server und Datenbanken, die vollständig bereit sind und nur minimalen Aufwand für die Migration zu Azure erfordern:
+- **Priorisieren schneller Erfolge** : Sie können die Bewertungsberichte verwenden, um „niedrig hängende Früchte“ zu ermitteln, beispielsweise die Server und Datenbanken, die vollständig bereit sind und nur minimalen Aufwand für die Migration zu Azure erfordern:
     - Bereit für Azure: Exportieren Sie Ihren Bewertungsbericht, und filtern Sie alle Computer heraus, die für Azure bereit sind. Dabei kann es sich um die erste Gruppe von Computern handeln, für die Sie das Lift & Shift mit dem Tool „Azure Migrate: Servermigration“ ausführen.
     - Ende des Betriebssystemsupports: Exportieren Sie den Bewertungsbericht, und filtern Sie alle Computer heraus, auf denen die Betriebssysteme Windows Server 2008 und Windows Server 2008 R2 ausgeführt werden. Für diese SKUs endet der Support, und nur Azure bietet Ihnen 3 Jahre lang kostenlose Sicherheitsupdates, wenn Sie zu Azure migrieren. Wenn Sie Azure-Hybridvorteile kombinieren und reservierte Instanzen verwenden, könnte die Einsparung viel höher sein.
     - SQL Server-Migration: Verwenden Sie die Datenbankbewertungsempfehlungen, um die Datenbanken, die für Azure SQL-Datenbanken bereit sind, mithilfe von „Azure Migrate: Datenbankmigration“ zu migrieren, und Datenbanken, die für Azure SQL-VM bereit sind, mithilfe von Azure Migrate: Servermigration“ zu migrieren.
@@ -133,9 +133,9 @@ Einige empfohlene Migrationsstrategien sind:
     - Überdimensionierte VMs: Exportieren Sie Ihren Bewertungsbericht, und filtern Sie Computer mit geringer CPU-Auslastung (%) und Arbeitsspeicherauslastung (%) heraus.  Sie können diese Gelegenheit nutzen, um zu einer größenangepassten VM in Azure zu migrieren und das zu sparen, was Sie für nicht ausgelastete Ressourcen bezahlt haben.
     - Kapazitätseinschränkungen: Exportieren Sie Ihren Bewertungsbericht, und filtern Sie Computer mit hoher CPU-Auslastung (%) und Arbeitsspeicherauslastung (%) heraus.  Indem Sie überlastete VMs zu Azure migrieren und die automatische Skalierungsfunktion nutzen, um größenangepasst den Bedarf zu decken, können Sie verhindern, dass diese VMs zusammenbrechen und gleichzeitig die Leistung steigern. Sie können sich auch den Bewertungsbericht ansehen, um Ihre Speichereinschränkungen zu verstehen, indem Sie die Datenträger-IOPS und den Durchsatz analysieren und den empfohlenen Datenträgertyp ermitteln, der Ihren Anforderungen am besten entspricht.
 
-- **Fangen Sie klein an, und kommen Sie dann groß raus**: Beginnen Sie mit der Verlagerung von Anwendungen und Workloads, die ein minimales Risiko darstellen und weniger komplex sind, um Vertrauen in Ihre Migrationsstrategie zu schaffen. Sie könnten auch Ihre Azure Migrate-Bewertungsempfehlungen mit dem CMDB-Repository Ihres Unternehmens verknüpfen, um Dev/Test-Umgebungsworkloads in Ihren Pilotmigrationen zu finden und zu migrieren. Die Erkenntnisse dieser Pilotprojekte können bei der Migration von Produktionsworkloads genutzt werden.  
+- **Fangen Sie klein an, und kommen Sie dann groß raus** : Beginnen Sie mit der Verlagerung von Anwendungen und Workloads, die ein minimales Risiko darstellen und weniger komplex sind, um Vertrauen in Ihre Migrationsstrategie zu schaffen. Sie könnten auch Ihre Azure Migrate-Bewertungsempfehlungen mit dem CMDB-Repository Ihres Unternehmens verknüpfen, um Dev/Test-Umgebungsworkloads in Ihren Pilotmigrationen zu finden und zu migrieren. Die Erkenntnisse dieser Pilotprojekte können bei der Migration von Produktionsworkloads genutzt werden.  
 
-- **Erfüllen rechtlicher und branchenspezifischer Anforderungen**: Azure verwaltet das größte Kompatibilitätsportfolio der gesamten Branche, was die Breite und Tiefe des Angebots betrifft. Nutzen Sie dies als eine Gelegenheit, Ihre Migrationen zu Azure zu priorisieren und Ihre nationalen, regionalen und branchenspezifischen Normen und Gesetze einzuhalten. Dies gilt insbesondere für Organisationen, die mit geschäftskritischen oder sensiblen Informationen umgehen oder in stark regulierten Branchen tätig sind, in denen eine große Menge von Normen und Vorschriften gelten, die sich in bestimmten Fällen häufig ändern können, sodass es schwierig ist, mit ihnen Schritt zu halten.  
+- **Erfüllen rechtlicher und branchenspezifischer Anforderungen** : Azure verwaltet das größte Kompatibilitätsportfolio der gesamten Branche, was die Breite und Tiefe des Angebots betrifft. Nutzen Sie dies als eine Gelegenheit, Ihre Migrationen zu Azure zu priorisieren und Ihre nationalen, regionalen und branchenspezifischen Normen und Gesetze einzuhalten. Dies gilt insbesondere für Organisationen, die mit geschäftskritischen oder sensiblen Informationen umgehen oder in stark regulierten Branchen tätig sind, in denen eine große Menge von Normen und Vorschriften gelten, die sich in bestimmten Fällen häufig ändern können, sodass es schwierig ist, mit ihnen Schritt zu halten.  
 
 ## <a name="finalize-the-migration-planandprepare-formigration"></a>Abschließen des Migrationsplans und Vorbereiten der Migration
 

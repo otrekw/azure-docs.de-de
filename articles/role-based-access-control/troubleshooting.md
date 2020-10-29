@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741062"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -61,7 +61,7 @@ $ras.Count
 
     Wenn Sie die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“ erhalten, liegt dies wahrscheinlich daran, dass Azure CLI versucht, die Identität der zugewiesenen Person in Azure AD nachzuschlagen, und der Dienstprinzipal kann Azure AD standardmäßig nicht lesen.
 
-    Es gibt zwei Möglichkeiten, diesen Fehler möglicherweise zu beheben. Die erste Möglichkeit besteht darin, dem Dienstprinzipal die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zuzuweisen, damit er Daten in dem Verzeichnis lesen kann.
+    Es gibt zwei Möglichkeiten, diesen Fehler möglicherweise zu beheben. Die erste Möglichkeit besteht darin, dem Dienstprinzipal die Rolle [Verzeichnis lesen](../active-directory/roles/permissions-reference.md#directory-readers) zuzuweisen, damit er Daten in dem Verzeichnis lesen kann.
 
     Die zweite Möglichkeit, diesen Fehler zu beheben, besteht darin, die Rollenzuweisung mithilfe des Parameters `--assignee-object-id` anstelle von `--assignee` zu erstellen. Durch die Verwendung von `--assignee-object-id` überspringt Azure CLI die Azure AD-Suche. Sie müssen die Objekt-ID des Benutzers, der Gruppe oder der Anwendung abrufen, dem bzw. der Sie die Rolle zuweisen möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
 
@@ -208,7 +208,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan**
 * Skalierungskonfiguration (Anzahl der Instanzen, Größe des virtuellen Computers, Einstellungen für automatische Skalierung)  
 * Kontingente (Speicher, Bandbreite, CPU)  
 
-Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst:  
+Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe** , die Ihre Website umfasst:  
 
 * TLS/SSL-Zertifikate und -Bindungen (TLS/SSL-Zertifikate können von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden)  
 * Warnregeln  
@@ -222,7 +222,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcen
 
 Virtuelle Computer stehen in Verbindung mit Domänennamen, virtuellen Netzwerken, Speicherkonten und Warnungsregeln.
 
-Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer**:
+Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer** :
 
 * Endpunkte  
 * IP-Adressen  

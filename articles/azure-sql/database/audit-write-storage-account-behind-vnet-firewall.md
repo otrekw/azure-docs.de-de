@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444538"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677244"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -48,11 +48,11 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Überwachungsprotokol
 
 Stellen Sie mit Ihrem Abonnement eine Verbindung mit dem [Azure-Portal](https://portal.azure.com) her. Navigieren Sie zu der Ressourcengruppe und dem Server.
 
-1. Klicken Sie unter der Überschrift „Sicherheit“ auf **Überwachung**. Wählen Sie **Ein** aus.
+1. Klicken Sie unter der Überschrift „Sicherheit“ auf **Überwachung** . Wählen Sie **Ein** aus.
 
-2. Wählen Sie **Speicher**. Wählen Sie das Speicherkonto aus, in dem die Protokolle gespeichert werden sollen. Das Speicherkonto muss den unter [Voraussetzungen](#prerequisites) aufgeführten Anforderungen entsprechen.
+2. Wählen Sie **Speicher** . Wählen Sie das Speicherkonto aus, in dem die Protokolle gespeichert werden sollen. Das Speicherkonto muss den unter [Voraussetzungen](#prerequisites) aufgeführten Anforderungen entsprechen.
 
-3. Öffnen Sie **Speicherdetails**.
+3. Öffnen Sie **Speicherdetails** .
 
   > [!NOTE]
   > Wenn sich das ausgewählte Speicherkonto hinter einem VNET befindet, wird die folgende Meldung angezeigt:
@@ -61,7 +61,7 @@ Stellen Sie mit Ihrem Abonnement eine Verbindung mit dem [Azure-Portal](https://
   >
   >Wenn diese Meldung nicht angezeigt wird, befindet sich das Speicherkonto nicht hinter einem VNET.
 
-4. Wählen Sie die Anzahl von Tagen für die Beibehaltungsdauer aus. Klicken Sie dann auf **OK**. Protokolle, die älter als die Aufbewahrungsdauer sind, werden gelöscht.
+4. Wählen Sie die Anzahl von Tagen für die Beibehaltungsdauer aus. Klicken Sie dann auf **OK** . Protokolle, die älter als die Aufbewahrungsdauer sind, werden gelöscht.
 
 5. Wählen Sie in den Überwachungseinstellungen **Speichern** aus.
 
@@ -93,7 +93,7 @@ So konfigurieren Sie die SQL-Überwachung für das Schreiben von Ereignissen in 
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST-API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**REST-API**](/rest/api/sql/servers/createorupdate):
 
    Beispiel für eine Anforderung
 
@@ -117,7 +117,7 @@ So konfigurieren Sie die SQL-Überwachung für das Schreiben von Ereignissen in 
    }
    ```
 
-2. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zum Speicherkonto. Suchen Sie **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie dem Server, der die im vorherigen Schritt bei Azure Active Directory (Azure AD) registrierte Datenbank hostet, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
+2. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zum Speicherkonto. Suchen Sie **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen** . Weisen Sie dem Server, der die im vorherigen Schritt bei Azure Active Directory (Azure AD) registrierte Datenbank hostet, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
    > [!NOTE]
    > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Informationen zu verschiedenen integrierten Azure-Rollen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).

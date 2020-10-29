@@ -3,13 +3,13 @@ title: 'Tutorial: ACR-Aufgabe mit mehreren Schritten'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task so konfigurieren, dass automatisch ein mehrstufiger Workflow ausgelöst wird, um Containerimages in der Cloud zu erstellen, auszuführen und zu pushen, wenn Sie Quellcode in einem Git-Repository committen.
 ms.topic: tutorial
 ms.date: 05/09/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 6ba3b276c68885a0811ee445d965c486f158d193
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402303"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739604"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Ausführen eines mehrstufigen Containerworkflows in der Cloud, wenn Sie Quellcode committen
 
@@ -316,7 +316,7 @@ Diese mehrstufige Aufgabe führt Folgendes aus:
 
 ### <a name="task-command"></a>Aufgabenbefehl
 
-Erstellen Sie die Aufgabe unter Verwendung der zuvor definierten Shellumgebungsvariablen, indem Sie den folgenden Befehl [az acr task create][az-acr-task-create] ausführen. Ersetzen Sie den Namen Ihrer Registrierung durch *mycontainerregistrydate*.
+Erstellen Sie die Aufgabe unter Verwendung der zuvor definierten Shellumgebungsvariablen, indem Sie den folgenden Befehl [az acr task create][az-acr-task-create] ausführen. Ersetzen Sie den Namen Ihrer Registrierung durch *mycontainerregistrydate* .
 
 ```azurecli-interactive
 az acr task create \

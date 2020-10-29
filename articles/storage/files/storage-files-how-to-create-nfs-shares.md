@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: references_regions
-ms.openlocfilehash: d5b394833dbc920612f521b01f4da88af6c3e015
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: bf75537c0baf029bc3fc63e320f6290a1f41a524
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220746"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738847"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
 
@@ -96,7 +96,7 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
     - Kein Root-Squash: Remotesuperuser (Stamm) erhält Zugriff als Stamm.
     - All Squash: Der gesamte Benutzerzugriff wird UID (65534) und GID (65534) zugeordnet.
     
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Screenshots des Blatts für die Erstellung einer Dateifreigabe":::
 
@@ -120,7 +120,7 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
 
 1. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
 
-1. Installieren Sie die Version **2.5.2-preview** des **Az.Storage**-Vorschaumoduls:
+1. Installieren Sie die Version **2.5.2-preview** des **Az.Storage** -Vorschaumoduls:
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
@@ -152,10 +152,9 @@ In der Azure CLI verwenden Sie den Befehl [az storage share create](/cli/azure/s
 
 ```azurecli-interactive
 az storage share-rm create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --storage-account $STORAGEACCT \
     --enabled-protocol NFS \
-    --root-access RootSquash \
+    --root-squash RootSquash \
     --name "myshare" 
 ```
 ---

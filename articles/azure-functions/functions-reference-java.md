@@ -3,13 +3,13 @@ title: Java-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln können.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996499"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736695"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -45,7 +45,7 @@ Die voranstehenden Links zu Artikeln zeigen Ihnen, wie Sie Ihre ersten Funktione
 
 ### <a name="project-scaffolding"></a>Projektgerüst
 
-Wenn Sie die Entwicklung mit der Befehlszeile über das Terminal bevorzugen, besteht die einfachste Möglichkeit für den Gerüstbau von Java-basierten Funktionsprojekten darin, `Apache Maven`-Archetypes zu verwenden. Der Java Maven-Archetyp wird unter der folgenden _groupId_:_artifactId_ veröffentlicht: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Wenn Sie die Entwicklung mit der Befehlszeile über das Terminal bevorzugen, besteht die einfachste Möglichkeit für den Gerüstbau von Java-basierten Funktionsprojekten darin, `Apache Maven`-Archetypes zu verwenden. Der Java Maven-Archetyp wird unter der folgenden _groupId_ : _artifactId_ veröffentlicht: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Mit dem folgenden Befehl wird ein neues Java-Funktionsprojekt mit diesem Archetyp generiert:
 
@@ -134,8 +134,6 @@ Hier wird die entsprechende `function.json` gezeigt, die durch [azure-functions-
 
 ## <a name="java-versions"></a>Java-Versionen
 
-_Unterstützung für Java 11 befindet sich derzeit in der Vorschauphase._
-
 Die Version von Java, die bei der Erstellung der Funktions-App verwendet wird, für die Funktionen in Azure ausgeführt werden, wird in der Datei „pom.xml“ angegeben. Der Maven-Archetyp generiert aktuell eine Datei „pom.xml“ für Java 8, die Sie vor dem Veröffentlichen ändern können. Die Java-Version in „pom.xml“ sollte der Version entsprechen, mit der Sie Ihre App lokal entwickelt und getestet haben. 
 
 ### <a name="supported-versions"></a>Unterstützte Versionen
@@ -144,14 +142,14 @@ Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Fun
 
 | Functions-Version | Java-Versionen (Windows) | Java-Versionen (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (Vorschau)<br/>8 | 11 (Vorschau)<br/>8 |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | – |
 
 Wenn Sie keine Java-Version für die Bereitstellung angeben, wird der Maven-Archetyp bei der Bereitstellung in Azure standardmäßig auf Java 8 festgelegt.
 
 ### <a name="specify-the-deployment-version"></a>Angeben des Bereitstellungsversion
 
-Mithilfe des Parameters `-DjavaVersion` können Sie die Java-Version steuern, auf die der Maven-Archetyp ausgerichtet ist. Der Wert dieses Parameters kann `8` oder `11` sein. Die Unterstützung für Java 11 befindet sich derzeit in der Vorschauphase. 
+Mithilfe des Parameters `-DjavaVersion` können Sie die Java-Version steuern, auf die der Maven-Archetyp ausgerichtet ist. Der Wert dieses Parameters kann `8` oder `11` sein. 
 
 Der Maven-Archetyp generiert eine Datei vom Typ „pom.xml“ für die angegebene Java-Version. Die folgenden Elemente in „pom.xml“ geben die zu verwendende Java-Version an:
 

@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 53e759b973a5d912474dd754876c5279cfb7bdab
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.custom: how-to, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: bce02917acb05c06b8f506871c1f3b8500622d61
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596468"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735519"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -181,7 +181,7 @@ Sie benötige folgende Elemente:
     
     So zeigen Sie die Anzahl aktiver Ausführungen für Ihr Experiment in Studio an
     
-    1. Navigieren Sie zum Abschnitt **Experimente**.
+    1. Navigieren Sie zum Abschnitt **Experimente** .
     
     1. Wählen Sie ein Experiment aus.
     
@@ -412,7 +412,7 @@ In Azure Machine Learning können Sie Eigenschaften und Tags zum Organisieren un
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    1. Navigieren Sie zum Abschnitt **Pipelines**.
+    1. Navigieren Sie zum Abschnitt **Pipelines** .
     
     1. Verwenden Sie die Suchleiste, um Pipelines anhand von Tags, Beschreibungen, Experimentnamen und Absendernamen zu filtern.
     

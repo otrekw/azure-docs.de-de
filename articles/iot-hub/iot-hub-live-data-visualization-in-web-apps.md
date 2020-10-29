@@ -11,12 +11,13 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 35df99d0a30b0952521281fa0d6bb95ce0509695
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146667"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741007"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -72,7 +73,7 @@ Notieren Sie sich den verwendeten Namen, da Sie ihn später in diesem Tutorial b
 
 ## <a name="get-a-service-connection-string-for-your-iot-hub"></a>Abrufen einer Dienst-Verbindungszeichenfolge für den IoT-Hub
 
-IoT-Hubs werden mit verschiedenen Standardzugriffsrichtlinien erstellt. Eine dieser Richtlinien ist die **Dienstrichtlinie**. Sie gewährt Diensten ausreichende Berechtigungen, um Lese- und Schreibvorgänge in den Endpunkten des IoT-Hubs auszuführen. Führen Sie den folgenden Befehl aus, um eine Verbindungszeichenfolge für den IoT-Hub abzurufen, die die Bedingungen der Dienstrichtlinie erfüllt:
+IoT-Hubs werden mit verschiedenen Standardzugriffsrichtlinien erstellt. Eine dieser Richtlinien ist die **Dienstrichtlinie** . Sie gewährt Diensten ausreichende Berechtigungen, um Lese- und Schreibvorgänge in den Endpunkten des IoT-Hubs auszuführen. Führen Sie den folgenden Befehl aus, um eine Verbindungszeichenfolge für den IoT-Hub abzurufen, die die Bedingungen der Dienstrichtlinie erfüllt:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service
@@ -252,7 +253,7 @@ Falls bei der Ausführung dieses Beispiels Probleme auftreten, versuchen Sie, di
 
 ### <a name="azure-app-service-issues"></a>Probleme mit Azure App Service
 
-* Navigieren Sie im Azure-Portal zu Ihrer Web-App. Wählen Sie unter **Überwachung** im linken Bereich **App Service-Protokolle** aus. Aktivieren Sie **Anwendungsprotokollierung (Dateisystem)** , legen Sie **Ebene** auf „Fehler“ fest, und wählen Sie dann **Speichern** aus. Öffnen Sie dann (unter **Überwachung**) **Protokollstream**.
+* Navigieren Sie im Azure-Portal zu Ihrer Web-App. Wählen Sie unter **Überwachung** im linken Bereich **App Service-Protokolle** aus. Aktivieren Sie **Anwendungsprotokollierung (Dateisystem)** , legen Sie **Ebene** auf „Fehler“ fest, und wählen Sie dann **Speichern** aus. Öffnen Sie dann (unter **Überwachung** ) **Protokollstream** .
 
 * Wählen Sie im Azure-Portal für Ihre Web-App unter **Entwicklungstools** die Option **Konsole** aus, und validieren Sie die node-Version und npm-Version mit `node -v` bzw. `npm -v`.
 

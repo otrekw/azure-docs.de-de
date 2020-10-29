@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 02ea65748928fda7142ce17532999e1a069f6eb0
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 5c87344c4cd179beae6502901a23b2dace6591a7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677232"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ Die Überwachung von Azure SQL-Datenbank und Azure Synapse speichert 4.000 Date
 Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das Azure-Portal.
 
   > [!NOTE]
-  > Das Aktivieren der Überwachung in einem angehaltenen Synapse SQL-Pool ist nicht möglich. Um die Überwachung zu aktivieren, setzen Sie den Synapse SQL-Pool fort. Erfahren Sie mehr über [Synapse SQL-Pools](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool).
+  > Das Aktivieren der Überwachung in einem angehaltenen Synapse SQL-Pool ist nicht möglich. Um die Überwachung zu aktivieren, setzen Sie den Synapse SQL-Pool fort. Erfahren Sie mehr über [Synapse SQL-Pools](../../synapse-analytics/sql/best-practices-sql-pool.md).
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie im Bereich für die **SQL-Datenbank** oder den **SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung** .
@@ -117,11 +117,11 @@ Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurie
 #### <a name="remarks"></a>Bemerkungen
 
 - Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
-- Überwachungsprotokolle liegen im XEL-Format vor und können mithilfe von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) geöffnet werden.
-- Wenn Sie eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten Sie der [von Azure Storage bereitgestellten Anleitung](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes) folgen. Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.
+- Überwachungsprotokolle liegen im XEL-Format vor und können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) geöffnet werden.
+- Wenn Sie eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten Sie der [von Azure Storage bereitgestellten Anleitung](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes) folgen. Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.
 - Sie können Überwachungsprotokolle in ein Azure Storage-Konto hinter einem VNET oder einer Firewall schreiben. Spezielle Anweisungen finden Sie unter [Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](threat-detection-overview.md).
-- Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
+- Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](./audit-log-format.md).
 - Wenn Sie die Azure AD-Authentifizierung verwenden, werden Datensätze zu Anmeldungsfehlern im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
 - Die Überwachung von [schreibgeschützten Replikaten](read-scale-out.md) wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](audit-log-format.md).
 
@@ -131,7 +131,7 @@ Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbere
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment).
+Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../../azure-monitor/platform/design-logs-deployment.md).
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
@@ -171,7 +171,7 @@ Wenn Sie Überwachungsprotokolle in Event Hub schreiben möchten:
 
 Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möchten, gibt es mehrere Methoden zum Anzeigen der Protokolle:
 
-- Überwachungsprotokolle werden in dem Konto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](https://storageexplorer.com/) untersuchen. In Azure Storage werden Überwachungsprotokolle als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
+- Überwachungsprotokolle werden in dem Konto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](https://storageexplorer.com/) untersuchen. In Azure Storage werden Überwachungsprotokolle als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](./audit-log-format.md).
 
 - Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie in der Datenbank oben auf der Seite **Überwachung** auf **Überwachungsprotokolle anzeigen** .
 

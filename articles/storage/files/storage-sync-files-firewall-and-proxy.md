@@ -4,15 +4,15 @@ description: Hier finden Sie grundlegende Informationen zu lokalen Proxy- und Fi
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903713"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675783"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -121,6 +121,8 @@ Für Business Continuity und Disaster Recovery (BCDR) haben Sie Ihre Azure-Datei
 | Öffentlich | Asien, Osten | https:\//eastasia01.afs.azure.net<br>https:\//kailani11.one.microsoft.com | Asien, Südosten | https:\//tm-eastasia01.afs.azure.net<br>https:\//tm-kailani11.one.microsoft.com |
 | Öffentlich | East US | https:\//eastus01.afs.azure.net<br>https:\//kailani1.one.microsoft.com | USA (Westen) | https:\//tm-eastus01.afs.azure.net<br>https:\//tm-kailani1.one.microsoft.com |
 | Öffentlich | USA (Ost) 2 | https:\//eastus201.afs.azure.net<br>https:\//kailani-ess.one.microsoft.com | USA (Mitte) | https:\//tm-eastus201.afs.azure.net<br>https:\//tm-kailani-ess.one.microsoft.com |
+| Öffentlich | Deutschland, Norden | https:\//germanynorth01.afs.azure.net | Deutschland, Westen-Mitte | https:\//tm-germanywestcentral01.afs.azure.net |
+| Öffentlich | Deutschland, Westen-Mitte | https:\//germanywestcentral01.afs.azure.net | Deutschland, Norden | https:\//tm-germanynorth01.afs.azure.net |
 | Öffentlich | Japan, Osten | https:\//japaneast01.afs.azure.net | Japan, Westen | https:\//tm-japaneast01.afs.azure.net |
 | Öffentlich | Japan, Westen | https:\//japanwest01.afs.azure.net | Japan, Osten | https:\//tm-japanwest01.afs.azure.net |
 | Öffentlich | Korea, Mitte | https:\//koreacentral01.afs.azure.net/ | Korea, Süden | https:\//tm-koreacentral01.afs.azure.net/ |

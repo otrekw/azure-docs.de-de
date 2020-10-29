@@ -3,13 +3,13 @@ title: 'Tutorial: Schnelle Containerimageerstellung'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Container Registry Tasks (ACR Tasks) ein Docker-Containerimage in Azure erstellen und anschließend in Azure Container Instances bereitstellen.
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259486"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739529"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -188,7 +188,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Sie müssen nun einen Dienstprinzipal erstellen und seine Anmeldeinformationen in Ihrem Schlüsselspeicher speichern.
 
-Erstellen Sie mithilfe des Befehls [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] den Dienstprinzipal, und speichern Sie das Kennwort (**password**) des Dienstprinzipals mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] im Tresor:
+Erstellen Sie mithilfe des Befehls [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] den Dienstprinzipal, und speichern Sie das Kennwort ( **password** ) des Dienstprinzipals mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] im Tresor:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -203,9 +203,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Das Argument `--role` im vorhergehenden Befehl konfiguriert den Dienstprinzipal mit der Rolle *acrpull*, die ihm ausschließlich Pullzugriff auf die Registrierung gewährt. Um sowohl Push- als auch Pullzugriff zu gewähren, ändern Sie das Argument `--role` in *acrpush*.
+Das Argument `--role` im vorhergehenden Befehl konfiguriert den Dienstprinzipal mit der Rolle *acrpull* , die ihm ausschließlich Pullzugriff auf die Registrierung gewährt. Um sowohl Push- als auch Pullzugriff zu gewähren, ändern Sie das Argument `--role` in *acrpush* .
 
-Speichern Sie als Nächstes die App-ID (*appId*) des Dienstprinzipals im Tresor. Dies ist der Benutzername (**username**), den Sie zur Authentifizierung an Azure Container Registry übergeben:
+Speichern Sie als Nächstes die App-ID ( *appId* ) des Dienstprinzipals im Tresor. Dies ist der Benutzername ( **username** ), den Sie zur Authentifizierung an Azure Container Registry übergeben:
 
 ```azurecli-interactive
 # Store service principal ID in AKV (the registry *username*)
