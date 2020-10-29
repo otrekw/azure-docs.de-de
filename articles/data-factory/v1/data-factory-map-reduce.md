@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74703151"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636849"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Aufrufen von MapReduce-Programmen über Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -26,8 +26,8 @@ ms.locfileid: "74703151"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -52,7 +52,7 @@ Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor:
 1. Legen Sie den **Typ** der **Aktivität** auf **HDInsight** fest.
 2. Geben Sie für die Eigenschaft **className** den Namen der Klasse an.
 3. Geben Sie den Pfad zur JAR-Datei an, einschließlich des Dateinamens für die Eigenschaft **jarFilePath** .
-4. Geben Sie den verknüpften Dienst an, der auf die Azure Blob Storage-Instanz verweist, die die JAR-Datei für die **jarLinkedService**-Eigenschaft enthält.   
+4. Geben Sie den verknüpften Dienst an, der auf die Azure Blob Storage-Instanz verweist, die die JAR-Datei für die **jarLinkedService** -Eigenschaft enthält.   
 5. Geben Sie im Abschnitt **arguments** Argumente für das MapReduce-Programm an. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Um Ihre Argumente mit den MapReduce-Argumenten zu unterscheiden, sollten Sie erwägen, sowohl Option als auch Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt („-s“, „--input“, „--output“ usw. sind Optionen, denen ihre Werte unmittelbar folgen).
 
     ```JSON   
@@ -183,7 +183,7 @@ Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „
 
 | Eigenschaft | Notizen |
 |:--- |:--- |
-| type |Der Typ muss auf **HDInsightMapReduce**festgelegt werden. |
+| type |Der Typ muss auf **HDInsightMapReduce** festgelegt werden. |
 | className |Der Name der Klasse lautet **wordcount** |
 | jarFilePath |Der Pfad zu der JAR-Datei mit der angegebenen Klasse. Denken Sie beim Kopieren und Einfügen des folgenden Codes daran, den Namen des Clusters zu ändern. |
 | jarLinkedService |Der mit Azure Storage verknüpfte Dienst mit der JAR-Datei. Dieser verknüpfte Dienst verweist auf den Speicher, der dem HDInsight-Cluster zugeordnet ist. |
@@ -235,14 +235,14 @@ Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „
 ## <a name="run-spark-programs"></a>Aufrufen von Spark-Programmen
 Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Weitere Informationen finden Sie unter [Invoke Spark programs from Azure Data Factory](data-factory-spark.md) (Aufrufen von Spark-Programmen aus Azure Data Factory).  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Weitere Informationen
@@ -251,4 +251,3 @@ Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDIn
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 * [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
 * [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

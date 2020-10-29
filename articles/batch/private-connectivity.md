@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine private Verbindung mit einem Azure Batch
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542137"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669016"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Verwenden privater Endpunkte mit Azure Batch-Konten
 
@@ -38,15 +38,15 @@ Gehen Sie wie folgt vor, um ein privates Batch-Konto über das Azure-Portal zu e
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Private Endpunktverbindungen":::
 7. Geben Sie diese Informationen im Bereich **Konfiguration** ein, oder wählen Sie sie aus:
    - **Virtuelles Netzwerk:** Wählen Sie Ihr virtuelles Netzwerk aus.
-   - **Subnetz**: Wählen Sie das Subnetz aus.
-   - **Integration in eine private DNS-Zone**:   Wählen Sie **Ja** aus. Für die Herstellung einer privaten Verbindung mit Ihrem privaten Endpunkt benötigen Sie einen DNS-Eintrag. Es wird empfohlen, den privaten Endpunkt in eine private DNS-Zone zu integrieren. Sie können auch Ihre eigenen DNS-Server verwenden oder DNS-Einträge mithilfe der Hostdateien auf Ihren virtuellen Computern erstellen.
-   - **Private DNS-Zone**:  Wählen Sie „privatelink.<region>.batch.azure.com“ aus. Die private DNS-Zone wird automatisch bestimmt. Sie können sie nicht über das Azure-Portal ändern.
+   - **Subnetz** : Wählen Sie das Subnetz aus.
+   - **Integration in eine private DNS-Zone** :   Wählen Sie **Ja** aus. Für die Herstellung einer privaten Verbindung mit Ihrem privaten Endpunkt benötigen Sie einen DNS-Eintrag. Es wird empfohlen, den privaten Endpunkt in eine private DNS-Zone zu integrieren. Sie können auch Ihre eigenen DNS-Server verwenden oder DNS-Einträge mithilfe der Hostdateien auf Ihren virtuellen Computern erstellen.
+   - **Private DNS-Zone** :  Wählen Sie „privatelink.\<region\>.batch.azure.com“ aus. Die private DNS-Zone wird automatisch bestimmt. Sie können sie nicht über das Azure-Portal ändern.
 8. Wählen Sie **Überprüfen + erstellen** aus, und warten Sie, bis Azure Ihre Konfiguration überprüft hat.
 9. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 Nachdem der private Endpunkt bereitgestellt wurde, können Sie über den privaten Endpunkt von VMs im selben virtuellen Netzwerk auf das Batch-Konto zugreifen. Zum Anzeigen der IP-Adresse im Azure-Portal führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie **Alle Ressourcen**.
+1. Wählen Sie **Alle Ressourcen** .
 2. Suchen Sie nach dem privaten Endpunkt, den Sie zuvor erstellt haben.
 3. Wählen Sie die Registerkarte **Übersicht** aus, um die DNS-Einstellungen und IP-Adressen anzuzeigen.
 

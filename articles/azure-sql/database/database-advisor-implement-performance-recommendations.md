@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284362"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672108"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor: Empfehlungen zur Leistung für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,8 +40,8 @@ Folgende Optionen für Leistungsempfehlungen sind in Azure SQL-Datenbank verfüg
 
 | Leistungsempfehlung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :----------------------------- | ----- | ----- |
-| **Empfehlungen zum Erstellen eines Index**: Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein |
-| **Empfehlungen zum Löschen eines Index**: Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
+| **Empfehlungen zum Erstellen eines Index** : Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein |
+| **Empfehlungen zum Löschen eines Index** : Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
 | **Empfehlungen zum Parametrisieren von Abfragen (Vorschau)** : Empfiehlt die erzwungene Parametrisierung in Fällen, in denen eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer der gleiche Abfrageausführungsplan daraus hervorgeht. | Ja | Nein |
 | **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn Azure SQL-Datenbank eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein |
 
@@ -57,7 +57,7 @@ Azure SQL-Datenbank überwacht kontinuierlich die ausgeführten Abfragen und erk
 
 Azure SQL-Datenbank baut Vertrauen auf, indem berechnet wird, zu welchem Leistungsgewinn der Index mit der Zeit führen würde. Je nach geschätztem Leistungsgewinn werden Empfehlungen als „Hoch“, „Mittel“ oder „Niedrig“ eingestuft.
 
-Indizes, die mit Empfehlungen erstellt wurden, sind immer als automatisch erstellte Indizes gekennzeichnet. Sie können in der [Ansicht „sys.indexes“](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) anzeigen, welche Indizes automatisch erstellt wurden. Automatisch erstellte Indizes blockieren keine ALTER/RENAME-Befehle.
+Indizes, die mit Empfehlungen erstellt wurden, sind immer als automatisch erstellte Indizes gekennzeichnet. Sie können in der [Ansicht „sys.indexes“](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) anzeigen, welche Indizes automatisch erstellt wurden. Automatisch erstellte Indizes blockieren keine ALTER/RENAME-Befehle.
 
 Wenn Sie versuchen, die Spalte mit einem automatisch erstellten Index zu löschen, wird der Befehl übergeben. Der automatisch erstellte Index wird ebenfalls mit dem Befehl gelöscht. Reguläre Indizes blockieren den Befehl ALTER/RENAME für Spalten, die indiziert sind.
 
@@ -114,7 +114,7 @@ Die Empfehlung zum „Beheben von Schemaproblemen“ wird angezeigt, wenn Azure 
 
 ## <a name="custom-applications"></a>Benutzerdefinierte Anwendungen
 
-Entwickler sollten in Betracht ziehen, benutzerdefinierte Anwendungen unter Verwendung von Leistungsempfehlungen für Azure SQL-Datenbank zu entwickeln. Auf alle im Portal aufgeführten Empfehlungen für eine Datenbank kann über die [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)-API zugegriffen werden.
+Entwickler sollten in Betracht ziehen, benutzerdefinierte Anwendungen unter Verwendung von Leistungsempfehlungen für Azure SQL-Datenbank zu entwickeln. Auf alle im Portal aufgeführten Empfehlungen für eine Datenbank kann über die [Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)-API zugegriffen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

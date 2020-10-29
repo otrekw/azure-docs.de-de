@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874831"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637869"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -155,7 +155,7 @@ Azure SQL-Datenbank verfügt über eine eindeutige Partitionierungsoption, die d
 
 #### <a name="isolation-level"></a>Isolationsstufe
 
-Die Isolationsstufe des Lesevorgangs auf einem Azure SQL-Quellsystem hat eine Auswirkung auf die Leistung. Wenn Sie die Option „Lesen ohne Commit“ auswählen, ergibt sich die schnellste Leistung, und Datenbanksperren werden verhindert. Weitere Informationen zu SQL-Isolationsstufen finden Sie unter [Grundlegendes zu Isolationsstufen](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
+Die Isolationsstufe des Lesevorgangs auf einem Azure SQL-Quellsystem hat eine Auswirkung auf die Leistung. Wenn Sie die Option „Lesen ohne Commit“ auswählen, ergibt sich die schnellste Leistung, und Datenbanksperren werden verhindert. Weitere Informationen zu SQL-Isolationsstufen finden Sie unter [Grundlegendes zu Isolationsstufen](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
 
 #### <a name="read-using-query"></a>Lesen per Abfrage
 
@@ -163,7 +163,7 @@ Sie können Lesevorgänge aus Azure SQL-Datenbank durchführen, indem Sie eine T
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics-Quellen
 
-Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dies ermöglicht ADF das Lesen aus Synapse über [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15). Bei dieser Vorgehensweise ergibt sich eine starke Verbesserung der Leseleistung. Beim Aktivieren von PolyBase müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
+Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dies ermöglicht ADF das Lesen aus Synapse über [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15). Bei dieser Vorgehensweise ergibt sich eine starke Verbesserung der Leseleistung. Beim Aktivieren von PolyBase müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
 
 ![Staging aktivieren](media/data-flow/enable-staging.png "Staging aktivieren")
 
@@ -198,7 +198,7 @@ Dies kann sowohl nativ mit Pre- und Post-SQL-Skripts auf einer Azure SQL-Datenba
 ![Indizes deaktivieren](media/data-flow/disable-indexes-sql.png "Indizes deaktivieren")
 
 > [!WARNING]
-> Beim Deaktivieren von Indizes übernimmt der Datenfluss quasi die Kontrolle über eine Datenbank, und die Durchführung von Abfragen ist dann wahrscheinlich nicht erfolgreich. Aus diesem Grund werden viele ETL-Aufträge nachts ausgelöst, um Konflikte dieser Art zu vermeiden. Weitere Informationen finden Sie im Artikel [Deaktivieren von Indizes und Einschränkungen](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15).
+> Beim Deaktivieren von Indizes übernimmt der Datenfluss quasi die Kontrolle über eine Datenbank, und die Durchführung von Abfragen ist dann wahrscheinlich nicht erfolgreich. Aus diesem Grund werden viele ETL-Aufträge nachts ausgelöst, um Konflikte dieser Art zu vermeiden. Weitere Informationen finden Sie im Artikel [Deaktivieren von Indizes und Einschränkungen](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15).
 
 #### <a name="scaling-up-your-database"></a>Hochskalieren Ihrer Datenbank
 
@@ -206,7 +206,7 @@ Planen Sie die Anpassung der Größe Ihrer Quelle und Senke in Azure SQL-Datenba
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics-Senken
 
-Stellen Sie beim Schreiben in Azure Synapse Analytics sicher, dass die Option **Staging aktivieren** aktiviert ist. Hierdurch wird für ADF das Schreiben mit [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) ermöglicht, sodass für die Daten quasi ein Massenladevorgang erfolgt. Bei Verwendung von PolyBase müssen Sie auf ein Azure Data Lake Storage Gen2- oder Azure Blob Storage-Konto für das Staging der Daten verweisen.
+Stellen Sie beim Schreiben in Azure Synapse Analytics sicher, dass die Option **Staging aktivieren** aktiviert ist. Hierdurch wird für ADF das Schreiben mit [PolyBase](/sql/relational-databases/polybase/polybase-guide) ermöglicht, sodass für die Daten quasi ein Massenladevorgang erfolgt. Bei Verwendung von PolyBase müssen Sie auf ein Azure Data Lake Storage Gen2- oder Azure Blob Storage-Konto für das Staging der Daten verweisen.
 
 Mit Ausnahme von PolyBase gelten für Azure Synapse Analytics die gleichen bewährten Methoden wie für Azure SQL-Datenbank.
 
@@ -249,7 +249,7 @@ Beim Schreiben in Cosmos DB kann die Leistung verbessert werden, indem der Durc
 
 Wenn bei Joins, Suchvorgängen und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Bei einer Übertragung senden Sie kleine Datenrahmen an alle Knoten im Cluster. Dies ermöglicht für die Spark-Engine die Durchführung eines Joinvorgangs, ohne dass die Daten im großen Datenstrom neu angeordnet werden. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite eines Joins übertragen werden soll. Wenn Sie mit Ihren eingehenden Daten vertraut sind und wissen, dass ein Datenstrom erheblich kleiner als der andere ist, können Sie für die Übertragung die Option **Feststehend** auswählen. Bei der feststehenden Übertragung wird Spark gezwungen, den ausgewählten Datenstrom zu übertragen. 
 
-Wenn die Größe der übertragenen Daten für den Spark-Knoten zu hoch ist, tritt ggf. ein Fehler vom Typ „Nicht genügend Arbeitsspeicher“ auf. Verwenden Sie Cluster vom Typ **Arbeitsspeicheroptimiert**, um Fehler vom Typ „Nicht genügend Arbeitsspeicher“ zu vermeiden. Wenn bei den Datenflussausführungen Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung.
+Wenn die Größe der übertragenen Daten für den Spark-Knoten zu hoch ist, tritt ggf. ein Fehler vom Typ „Nicht genügend Arbeitsspeicher“ auf. Verwenden Sie Cluster vom Typ **Arbeitsspeicheroptimiert** , um Fehler vom Typ „Nicht genügend Arbeitsspeicher“ zu vermeiden. Wenn bei den Datenflussausführungen Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung.
 
 ![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
 

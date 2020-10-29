@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: bbd274f6b039ef4492068d939c755ab279c2830a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 52c71e06b33ef29c2ef0628d651c7f72e41b87ff
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069982"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671887"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen aus Azure AD in SAP SuccessFactors
 In diesem Tutorial werden die Schritte zum Rückschreiben von Attributen aus Azure AD in SuccessFactors Employee Central beschrieben. 
@@ -253,7 +253,7 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
    * **Benachrichtigungs-E-Mail** : Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
     > [!NOTE]
-    > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) wechselt.
+    > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
 
    * Klicken Sie auf die Schaltfläche **Verbindung testen** . Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern** . Falls nicht, sollten Sie überprüfen, ob die SuccessFactors-Anmeldeinformationen und die URL gültig sind.
     >[!div class="mx-imgBorder"]
@@ -356,4 +356,3 @@ Lesen Sie hierzu den Abschnitt [Writeback-Szenarien](../app-provisioning/sap-suc
 * [Weitere Informationen zum Konfigurieren des einmaligen Anmeldens zwischen SuccessFactors und Azure Active Directory](successfactors-tutorial.md)
 * [Erfahren Sie, wie Sie andere SaaS-Anwendungen in Azure Active Directory integrieren.](tutorial-list.md)
 * [Weitere Informationen zum Exportieren und Importieren von Bereitstellungskonfigurationen](../app-provisioning/export-import-provisioning-configuration.md)
-

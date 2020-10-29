@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 79cc17ba4f845e2263d1a09af4a3f9ae4150f362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24347d86a99251d0bf02d5ea5cb6985df5814b29
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292199"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635183"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 
@@ -68,10 +68,10 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 ### <a name="complex-expression-example"></a>Beispiel für komplexen Ausdruck
 Das folgende Beispiel zeigt einen komplexen Ausdruck, der auf ein tiefes Unterfeld der Aktivitätsausgabe verweist. Wenn Sie auf einen Pipelineparameter verweisen möchten, der als ein Unterfeld ausgewertet wird, verwenden Sie die Syntax „[]“ statt des Punktoperators „(.)“ (wie bei „subfield1“ und „subfield2“).
 
-@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*
+@activity(' *activityName* ').output. *subfield1* . *subfield2* [pipeline().parameters. *subfield3* ]. *subfield4*
 
 ### <a name="a-dataset-with-a-parameter"></a>Ein Dataset mit einem Parameter
-Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path**. Der Wert wird unter Verwendung des folgenden Ausdrucks zum Festlegen eines Werts für die Eigenschaft **folderPath** verwendet: `dataset().path`. 
+Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path** . Der Wert wird unter Verwendung des folgenden Ausdrucks zum Festlegen eines Werts für die Eigenschaft **folderPath** verwendet: `dataset().path`. 
 
 ```json
 {
@@ -95,7 +95,7 @@ Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path**. D
 ```
 
 ### <a name="a-pipeline-with-a-parameter"></a>Eine Pipeline mit einem Parameter
-Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outputPath**. Der Parameter **path** für das parametrisierte Blobdataset wird mithilfe der Werte dieser Parameter festgelegt. Die hier verwendete Syntax lautet `pipeline().parameters.parametername`. 
+Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outputPath** . Der Parameter **path** für das parametrisierte Blobdataset wird mithilfe der Werte dieser Parameter festgelegt. Die hier verwendete Syntax lautet `pipeline().parameters.parametername`. 
 
 ```json
 {
@@ -243,7 +243,7 @@ Diese Funktionen können innerhalb von Bedingungen zur Auswertung einer beliebig
 | [xpath](control-flow-expression-language-functions.md#xpath) | Überprüft die XML auf Knoten oder Werte, die mit einem XPath-Ausdruck (XML Path Language) übereinstimmen, und gibt die übereinstimmenden Knoten oder Werte zurück. |
 
 ## <a name="math-functions"></a>Mathematische Funktionen  
- Diese Funktionen können für folgende Arten von Zahlen verwendet werden: **ganze Zahlen** und **Gleitkommazahlen**.  
+ Diese Funktionen können für folgende Arten von Zahlen verwendet werden: **ganze Zahlen** und **Gleitkommazahlen** .  
 
 | Mathematische Funktion | Aufgabe |
 | ------------- | ---- |
@@ -298,7 +298,7 @@ add(<summand_1>, <summand_2>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2*> | Ja | Integer, Float oder kombiniert | Die zu addierenden Zahlen |
+| <*summand_1* >, < *summand_2*> | Ja | Integer, Float oder kombiniert | Die zu addierenden Zahlen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -330,7 +330,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*days*> | Ja | Integer | Die positive oder negative Anzahl von Tagen, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -372,7 +372,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*hours*> | Ja | Integer | Die positive oder negative Anzahl von Stunden, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -414,7 +414,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*minutes*> | Ja | Integer | Die positive oder negative Anzahl von Minuten, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -456,7 +456,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*seconds*> | Ja | Integer | Die positive oder negative Anzahl von Sekunden, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -500,7 +500,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -541,7 +541,7 @@ and(<expression1>, <expression2>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1* >, < *expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -599,7 +599,7 @@ array('<value>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [<*value*>] | Array | Ein Array, das die einzelne angegebene Eingabe enthält |
+| [< *value* >] | Array | Ein Array, das die einzelne angegebene Eingabe enthält |
 ||||
 
 *Beispiel*
@@ -785,7 +785,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>, ... | Ja | Beliebig, Typen können kombiniert sein | Ein oder mehrere Elemente, die auf NULL geprüft werden sollen |
+| <*object_1* >, < *object_2* >, ... | Ja | Beliebig, Typen können kombiniert sein | Ein oder mehrere Elemente, die auf NULL geprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -821,7 +821,7 @@ concat('<text1>', '<text2>', ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text1*>, <*text2*>, ... | Ja | String | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
+| <*text1* >, < *text2* >, ... | Ja | String | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -854,9 +854,9 @@ contains([<collection>], '<value>')
 
 Diese Funktion ist insbesondere für diese Sammlungstypen vorgesehen:
 
-* Eine *Zeichenfolge*, in der nach einer *Teilzeichenfolge* gesucht werden soll
-* Ein *Array*, in dem nach einem *Wert* gesucht werden soll
-* Ein *Wörterbuch*, in dem nach einem *Schlüssel* gesucht werden soll
+* Eine *Zeichenfolge* , in der nach einer *Teilzeichenfolge* gesucht werden soll
+* Ein *Array* , in dem nach einem *Wert* gesucht werden soll
+* Ein *Wörterbuch* , in dem nach einem *Schlüssel* gesucht werden soll
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
@@ -899,7 +899,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -942,7 +942,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
 | <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -984,7 +984,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1025,12 +1025,12 @@ createArray('<object1>', '<object2>', ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*>, ... | Ja | Beliebig, aber nicht kombiniert | Mindestens zwei Elemente, mit denen das Array erstellt wird |
+| <*object1* >, < *object2* >, ... | Ja | Beliebig, aber nicht kombiniert | Mindestens zwei Elemente, mit denen das Array erstellt wird |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [<*object1*>, <*object2*>, ...] | Array | Das Array, das aus allen Eingabeelemente erstellt wurde |
+| [< *object1* >, < *object2* >, ...] | Array | Das Array, das aus allen Eingabeelemente erstellt wurde |
 ||||
 
 *Beispiel*
@@ -1486,7 +1486,7 @@ equals('<object1>', '<object2>')
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*> | Ja | Verschiedene | Die Werte, Ausdrücke oder Objekte, die verglichen werden sollen |
+| <*object1* >, < *object2*> | Ja | Verschiedene | Die Werte, Ausdrücke oder Objekte, die verglichen werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1586,7 +1586,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1618,7 +1618,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1662,7 +1662,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1784,7 +1784,7 @@ guid('<format>')
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nein | String | Ein einzelner [Formatbezeichner](https://msdn.microsoft.com/library/97af8hh4) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
+| <*format*> | Nein | String | Ein einzelner [Formatbezeichner](/dotnet/api/system.guid.tostring) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1980,7 +1980,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
+| <*collection1* >, < *collection2* >, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2016,7 +2016,7 @@ join([<collection>], '<delimiter>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
+| <*char1*><*delimiter*><*char2*><*delimiter* >... | String | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
 ||||
 
 *Beispiel*
@@ -2215,8 +2215,8 @@ max([<number1>, <number2>, ...])
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
-| [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
+| <*number1* >, < *number2* >, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
+| [< *number1* >, < *number2* >, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2248,8 +2248,8 @@ min([<number1>, <number2>, ...])
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
-| [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
+| <*number1* >, < *number2* >, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
+| [< *number1* >, < *number2* >, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2397,7 +2397,7 @@ or(<expression1>, <expression2>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1* >, < *expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2482,7 +2482,7 @@ range(<startIndex>, <count>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [<*range-result*>] | Array | Das Array mit ganzen Zahlen ab dem angegebenen Index |
+| [< *range-result* >] | Array | Das Array mit ganzen Zahlen ab dem angegebenen Index |
 ||||
 
 *Beispiel*
@@ -2545,7 +2545,7 @@ skip([<collection>], <count>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [<*updated-collection*>] | Array | Die aktualisierte Auflistung, nachdem die angegebenen Elemente entfernt wurden |
+| [< *updated-collection* >] | Array | Die aktualisierte Auflistung, nachdem die angegebenen Elemente entfernt wurden |
 ||||
 
 *Beispiel*
@@ -2576,7 +2576,7 @@ split('<text>', '<delimiter>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [<*substring1*>,<*substring2*>,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
+| [< *substring1* >,< *substring2* >,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
 ||||
 
 *Beispiel*
@@ -2602,7 +2602,7 @@ startOfDay('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2633,7 +2633,7 @@ startOfHour('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2664,7 +2664,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2845,7 +2845,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2892,7 +2892,7 @@ take([<collection>], <count>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*subset*> oder [<*subset*>] | Zeichenfolge bzw. Array | Eine Zeichenfolge oder ein Array, die oder das die angegebene Anzahl von Elementen ab dem Anfang der ursprünglichen Sammlung enthält |
+| <*subset* > oder [< *subset* >] | Zeichenfolge bzw. Array | Eine Zeichenfolge oder ein Array, die oder das die angegebene Anzahl von Elementen ab dem Anfang der ursprünglichen Sammlung enthält |
 ||||
 
 *Beispiel*
@@ -3034,7 +3034,7 @@ union([<collection1>], [<collection2>], ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
+| <*collection1* >, < *collection2* >, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3159,11 +3159,11 @@ Gibt den aktuellen Zeitstempel zurück.
 utcNow('<format>')
 ```
 
-Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
+Optional können Sie mit dem < *format* >-Parameter ein anderes Format angeben.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3271,7 +3271,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | Ein XML-Knoten, wenn nur ein einziger Knoten mit dem angegebenen XPath-Ausdruck übereinstimmt |
 | <*value*> | Any | Der Wert aus einem XML-Knoten, wenn nur ein einziger Wert mit dem angegebenen XPath-Ausdruck übereinstimmt |
-| [<*xml-node1*>, <*xml-node2*>, ...] </br>Oder </br>[<*value1*>, <*value2*>, ...] | Array | Ein Array mit XML-Knoten oder -Werten, die mit den angegebenen XPath-Ausdruck übereinstimmen |
+| [< *xml-node1* >, < *xml-node2* >, ...] </br>Oder </br>[< *value1* >, < *value2* >, ...] | Array | Ein Array mit XML-Knoten oder -Werten, die mit den angegebenen XPath-Ausdruck übereinstimmen |
 ||||
 
 *Beispiel 1*

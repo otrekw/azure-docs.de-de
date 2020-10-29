@@ -7,17 +7,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042591"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636407"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Common Data Model-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Das Common Data Model-Metadatensystem ermöglicht es, dass Daten und deren Bedeutung problemlos von allen Anwendungen und Geschäftsprozessen gemeinsam genutzt werden können. Weitere Informationen finden Sie in der Übersicht zum [Common Data Model](https://docs.microsoft.com/common-data-model/).
+Das Common Data Model-Metadatensystem ermöglicht es, dass Daten und deren Bedeutung problemlos von allen Anwendungen und Geschäftsprozessen gemeinsam genutzt werden können. Weitere Informationen finden Sie in der Übersicht zum [Common Data Model](/common-data-model/).
 
 In Azure Data Factory können Benutzer Daten aus CDM-Entitäten sowohl in MODEL.JSON-Dateien als auch in Manifestdateien transformieren, die in [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) mithilfe von Zuordnungsdatenflüssen gespeichert werden. Sie können Daten mithilfe von Verweisen auf CDM-Entitäten auch als Senken in das CDM-Format transformieren. Dann werden diese im CSV- oder PARQUET-Format in partitionierten Ordnern gespeichert. 
 
@@ -71,7 +71,7 @@ Wenn sich die Entitätsdefinition, die Sie in Ihrer Quelltransformation verwende
 
 #### <a name="import-schema"></a>Importieren des Schemas
 
-CDM ist nur als Inlinedataset verfügbar und weist standardmäßig kein zugeordnetes Schema auf. Zum Abrufen von Spaltenmetadaten klicken Sie auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren**. Auf diese Weise können Sie auf die Spaltennamen und Datentypen verweisen, die durch den Korpus angegeben sind. Zum Importieren des Schemas muss eine [Datenfluss-Debugsitzung](concepts-data-flow-debug-mode.md) aktiv sein, und es muss eine CDM-Entitätsdefinitionsdatei vorhanden sein, auf die verwiesen werden kann.
+CDM ist nur als Inlinedataset verfügbar und weist standardmäßig kein zugeordnetes Schema auf. Zum Abrufen von Spaltenmetadaten klicken Sie auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren** . Auf diese Weise können Sie auf die Spaltennamen und Datentypen verweisen, die durch den Korpus angegeben sind. Zum Importieren des Schemas muss eine [Datenfluss-Debugsitzung](concepts-data-flow-debug-mode.md) aktiv sein, und es muss eine CDM-Entitätsdefinitionsdatei vorhanden sein, auf die verwiesen werden kann.
 
 Wenn Sie Entitätseigenschaften in der Senkentransformation Spalten für Zuordnungsdatenflüsse zuordnen möchten, klicken Sie erst auf die Registerkarte „Zuordnen“ und dann auf „Schema importieren“. ADF liest den Entitätsverweis, auf den Sie in den Senkenoptionen verwiesen haben, und ermöglicht es Ihnen, das CDM-Zielschema zuzuordnen.
 

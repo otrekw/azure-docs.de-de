@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570141"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638107"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Nachdem Sie eine Pipeline in Azure Data Factory erstellt und veröffentlicht haben, können Sie ihr einen Trigger zuordnen oder manuell eine Ad-hoc-Ausführung starten. Sie können Ihre gesamten Pipelineausführungen nativ über die Azure Data Factory-Benutzeroberfläche überwachen. Um die Benutzeroberfläche für die Überwachung zu öffnen, wählen Sie die Kachel **Überwachen und verwalten** im Blatt „Data Factory“ des [Azure-Portals](https://portal.azure.com/) aus. Wenn Sie sich bereits auf der Benutzeroberfläche von ADF befinden, klicken Sie auf der linken Seitenleiste auf das Symbol **Überwachen**.
+Nachdem Sie eine Pipeline in Azure Data Factory erstellt und veröffentlicht haben, können Sie ihr einen Trigger zuordnen oder manuell eine Ad-hoc-Ausführung starten. Sie können Ihre gesamten Pipelineausführungen nativ über die Azure Data Factory-Benutzeroberfläche überwachen. Um die Benutzeroberfläche für die Überwachung zu öffnen, wählen Sie die Kachel **Überwachen und verwalten** im Blatt „Data Factory“ des [Azure-Portals](https://portal.azure.com/) aus. Wenn Sie sich bereits auf der Benutzeroberfläche von ADF befinden, klicken Sie auf der linken Seitenleiste auf das Symbol **Überwachen** .
 
 Alle Data Factory-Ausführungen werden in der lokalen Zeitzone des Browsers angezeigt. Wenn Sie die Zeitzone ändern, werden alle Datums- und Zeitfelder auf die ausgewählte Zeitzone ausgerichtet.
 
@@ -36,7 +36,7 @@ Die standardmäßige Überwachungsansicht ist eine Liste der Pipelineausführung
 | Run Start | Startdatum und -uhrzeit der Pipelineausführung (MM/TT/JJJJ, HH:MM:SS AM/PM) |
 | Duration | Dauer der Ausführung (hh:mm:ss) |
 | Triggered By | Name des Triggers, der die Pipeline gestartet hat |
-| Status | **Fehlerhaft**, **Erfolgreich**, **In Bearbeitung**, **Abgebrochen** oder **In Warteschlange** |
+| Status | **Fehlerhaft** , **Erfolgreich** , **In Bearbeitung** , **Abgebrochen** oder **In Warteschlange** |
 | Anmerkungen | Einer Pipeline zugeordnete filterbare Tags  |
 | Parameter | Parameter für die Pipelineausführung (Name-Wert-Paare) |
 | Fehler | Bei einem Fehler der Pipeline ist dies der Ausführungsfehler |
@@ -55,11 +55,11 @@ Wählen Sie das Symbol **Aktivitätsausführungen anzeigen** unter der Spalte **
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
 | Activity Name | Name der Aktivität innerhalb der Pipeline |
-| Activity Type | Der Typ der Aktivität, z. B. **Copy**, **ExecuteDataFlow** oder **AzureMLExecutePipeline** |
+| Activity Type | Der Typ der Aktivität, z. B. **Copy** , **ExecuteDataFlow** oder **AzureMLExecutePipeline** |
 | Aktionen | Symbole, die es Ihnen ermöglichen, JSON-Eingabeinformationen, JSON-Ausgabeinformationen oder detaillierte aktivitätsspezifische Benutzeroberflächen für die Überwachung anzuzeigen. | 
 | Run Start | Startdatum und -uhrzeit der Aktivitätsausführung (MM/TT/JJJJ, HH:MM:SS AM/PM) |
 | Duration | Dauer der Ausführung (hh:mm:ss) |
-| Status | **Fehlerhaft**, **Erfolgreich**, **In Bearbeitung** oder **Abgebrochen** |
+| Status | **Fehlerhaft** , **Erfolgreich** , **In Bearbeitung** oder **Abgebrochen** |
 | Integration Runtime | Für welche Integration Runtime die Aktivität ausgeführt wurde |
 | Benutzereigenschaften | Benutzerdefinierte Eigenschaften der Aktivität |
 | Fehler | Bei einer fehlerhaften Aktivität ist dies der Ausführungsfehler |
@@ -93,8 +93,8 @@ Legen Sie fest, ob Pipelineausführungen entsprechend der Startzeit der Ausführ
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
 | Pipeline Name | Nach dem Namen der Pipeline filtern. |
-| Run Start |  Bestimmt den Zeitbereich der angezeigten Pipelineausführungen. Die Optionen enthalten Schnellfilter für **Letzte 24 Stunden**, **Letzte Woche** und **Letzte 30 Tage** oder zum Auswählen eines benutzerdefinierten Zeitraums. |
-| Run Status | Filtern der Ausführungen nach Status: **Erfolgreich**, **Fehlerhaft** **In Warteschlange**, **Abgebrochen** oder **In Bearbeitung**. |
+| Run Start |  Bestimmt den Zeitbereich der angezeigten Pipelineausführungen. Die Optionen enthalten Schnellfilter für **Letzte 24 Stunden** , **Letzte Woche** und **Letzte 30 Tage** oder zum Auswählen eines benutzerdefinierten Zeitraums. |
+| Run Status | Filtern der Ausführungen nach Status: **Erfolgreich** , **Fehlerhaft** **In Warteschlange** , **Abgebrochen** oder **In Bearbeitung** . |
 | Anmerkungen | Nach Tags filtern, die auf die einzelnen Pipelines angewendet werden |
 | Ausführungen | Filtern, ob erneut ausgeführte Pipelines angezeigt werden sollen |
 
@@ -212,4 +212,4 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) erfahren Sie mehr über das Überwachen und Verwalten von Pipelines.
+Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](./monitor-programmatically.md) erfahren Sie mehr über das Überwachen und Verwalten von Pipelines.

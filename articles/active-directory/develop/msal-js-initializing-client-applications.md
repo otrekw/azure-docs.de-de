@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87027035"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674085"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.js
 
@@ -37,7 +37,7 @@ Nachdem Sie Ihre App registriert haben, benötigen Sie mindestens einige der fol
 | Wert | Erforderlich | BESCHREIBUNG |
 |:----- | :------: | :---------- |
 | Anwendungs-ID (Client) | Erforderlich | Eine GUID, die Ihre Anwendung in Microsoft Identity Platform eindeutig identifiziert. |
-| Authority | Optional | Die URL des Identitätsanbieters (die *Instanz*) und die *Zielgruppe für die Anmeldung* für Ihre Anwendung. Wenn Instanz und Zielgruppe für die Anmeldung verkettet werden, bilden sie die *Autorität*. |
+| Authority | Optional | Die URL des Identitätsanbieters (die *Instanz* ) und die *Zielgruppe für die Anmeldung* für Ihre Anwendung. Wenn Instanz und Zielgruppe für die Anmeldung verkettet werden, bilden sie die *Autorität* . |
 | Verzeichnis-ID (Mandant) | Optional | Geben Sie diese ID an, wenn Sie eine Geschäftsanwendung nur für Ihre Organisation entwickeln (auch als *Einzelmandantenanwendung* bezeichnet). |
 | Umleitungs-URI | Optional | Wenn Sie eine Web-App entwickeln, gibt der `redirectUri` an, wohin der Identitätsanbieter (Microsoft Identity Platform) die ausgestellten Sicherheitstoken zurückgeben soll. |
 
@@ -115,7 +115,7 @@ Die Zusage (Promise) kann drei mögliche Ergebnisse beinhalten:
 
 Initialisieren Sie den MSAL 1.x-Authentifizierungskontext, indem Sie [UserAgentApplication][msal-js-useragentapplication] mit einem Konfigurationsobjekt instanziieren. Für die Konfiguration ist mindestens eine Eigenschaft, die `clientID` Ihrer Anwendung, erforderlich. Diese wird im Azure-Portal auf der **Übersichtsseite** für die App-Registrierung als **Anwendungs-ID (Client)** angezeigt.
 
-Bei Authentifizierungsmethoden mit Umleitungsflows ([loginRedirect][msal-js-loginredirect] und [acquireTokenRedirect][msal-js-acquiretokenredirect]) in MSAL.js 1.2.x oder früheren Versionen müssen Sie mit der Methode `handleRedirectCallback()` explizit einen Rückruf bei Erfolg oder Fehler registrieren. Die explizite Registrierung des Rückrufs ist in MSAL.js 1.2.x und früheren Versionen erforderlich, da Umleitungsflows keine Zusagen zurückgeben, wie das bei Methoden mit einer Popup-Darstellung der Fall ist. Die Registrierung des Rückrufs ist in MSAL.js 1.3.x und höher *optional*.
+Bei Authentifizierungsmethoden mit Umleitungsflows ([loginRedirect][msal-js-loginredirect] und [acquireTokenRedirect][msal-js-acquiretokenredirect]) in MSAL.js 1.2.x oder früheren Versionen müssen Sie mit der Methode `handleRedirectCallback()` explizit einen Rückruf bei Erfolg oder Fehler registrieren. Die explizite Registrierung des Rückrufs ist in MSAL.js 1.2.x und früheren Versionen erforderlich, da Umleitungsflows keine Zusagen zurückgeben, wie das bei Methoden mit einer Popup-Darstellung der Fall ist. Die Registrierung des Rückrufs ist in MSAL.js 1.3.x und höher *optional* .
 
 ```javascript
 // Configuration object constructed

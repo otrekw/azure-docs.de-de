@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63c31312070fbac99959d833344ccf04760bb8e4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021890"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637886"
 ---
 # <a name="use-case---customer-profiling"></a>Anwendungsfall – Erstellen von Kundenprofilen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Weitere Informationen zu Cortana Intelligence finden Sie unter [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In diesem Dokument wird ein einfacher Anwendungsfall beschrieben, der Ihnen dabei helfen soll zu verstehen, wie Sie mit Azure Data Factory verbreitete Analyseprobleme lösen können.
@@ -29,23 +29,23 @@ Das Ziel von Contoso ist das Identifizieren von Up-Selling- bzw. Cross-Selling-C
 In dieser Lösung möchte Contoso die Wirksamkeit einer kürzlich gestarteten Marketingkampagne untersuchen. Wir beginnen mit den rohen Spielprotokollen, verarbeiten sie, reichern sie mit Geolocation-Daten an, führen sie mit Werbereferenzdaten zusammen und kopieren sie schließlich in eine Azure SQL-Datenbank-Instanz, um die Wirkung der Kampagne zu analysieren.
 
 ## <a name="deploy-solution"></a>Bereitstellen der Lösung
-Für diesen einfachen Anwendungsfall benötigen Sie lediglich ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/), ein [Azure Blob Storage-Konto](../../storage/common/storage-account-create.md) und eine [Azure SQL-Datenbank](../../sql-database/sql-database-get-started.md). Die Pipeline zum Erstellen von Kundenprofilen wird über die Kachel **Beispiel-Pipelines** auf der Startseite Ihrer Data Factory bereitgestellt.
+Für diesen einfachen Anwendungsfall benötigen Sie lediglich ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/), ein [Azure Blob Storage-Konto](../../storage/common/storage-account-create.md) und eine [Azure SQL-Datenbank](../../azure-sql/database/single-database-create-quickstart.md). Die Pipeline zum Erstellen von Kundenprofilen wird über die Kachel **Beispiel-Pipelines** auf der Startseite Ihrer Data Factory bereitgestellt.
 
 1. Erstellen Sie eine Data Factory, oder öffnen Sie eine vorhandene Data Factory. Schritte zum Erstellen einer Data Factory werden unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) beschrieben.
-2. Klicken Sie auf dem Blatt **DATA FACTORY** für die Data Factory auf die Kachel **Beispielpipelines**.
+2. Klicken Sie auf dem Blatt **DATA FACTORY** für die Data Factory auf die Kachel **Beispielpipelines** .
 
     ![Kachel "Beispielpipelines"](./media/data-factory-samples/SamplePipelinesTile.png)
-3. Klicken Sie auf dem Blatt **Beispiel-Pipelines** auf die Option vom Typ **Kundenprofile**, die Sie bereitstellen möchten.
+3. Klicken Sie auf dem Blatt **Beispiel-Pipelines** auf die Option vom Typ **Kundenprofile** , die Sie bereitstellen möchten.
 
     ![Blatt "Beispielpipelines"](./media/data-factory-samples/SampleTile.png)
 4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise der Name und der Schlüssel Ihres Azure Storage-Kontos, der Name des logischen SQL-Servers, die Datenbank, die Benutzer-ID und das Kennwort.
 
     ![Blatt "Beispiel"](./media/data-factory-samples/SampleBlade.png)
-5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen**, um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
+5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen** , um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
 6. Auf dem Blatt **Beispielpipelines** wird auf der Kachel für das Beispiel, auf die Sie zuvor geklickt haben, der Status der Bereitstellung angezeigt.
 
     ![Bereitstellungsstatus](./media/data-factory-samples/DeploymentStatus.png)
-7. Wenn die Meldung **Bereitstellung erfolgreich** auf der Kachel für das Beispiel angezeigt wird, schließen Sie das Blatt **Beispielpipelines**.  
+7. Wenn die Meldung **Bereitstellung erfolgreich** auf der Kachel für das Beispiel angezeigt wird, schließen Sie das Blatt **Beispielpipelines** .  
 8. Auf dem Blatt **DATA FACTORY** können Sie sehen, dass Ihrer Data Factory verknüpfte Dienste, Datasets und Pipelines hinzugefügt wurden.  
 
     ![Blatt "Data Factory"](./media/data-factory-samples/DataFactoryBladeAfter.png)
@@ -65,4 +65,3 @@ In diesem Beispiel wird Azure Data Factory verwendet, um die Aktivitäten zu koo
 
 ## <a name="benefits"></a>Vorteile
 Durch Optimieren der Benutzerprofilanalysen und deren Ausrichtung auf die Unternehmensziele kann das Spieleunternehmen schnell Verwendungsmuster sammeln und die Effektivität der Marketingkampagnen analysieren.
-

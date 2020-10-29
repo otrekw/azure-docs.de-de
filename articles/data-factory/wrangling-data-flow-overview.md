@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636067"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Was sind Wranglingdatenflüsse?
 
@@ -21,7 +21,7 @@ ms.locfileid: "87082850"
 
 Organisationen müssen Datenaufbereitung und Data Wrangling durchführen, um komplexe Daten, deren Menge täglich wächst, exakt analysieren zu können. Die Datenaufbereitung ist erforderlich, damit Organisationen die Daten in verschiedenen Geschäftsprozessen verwenden und die Amortisationszeit verkürzen können.
 
-Wranglingdatenflüsse in Azure Data Factory ermöglicht Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud. Wranglingdatenflüsse können in [Power Query Online](https://docs.microsoft.com/power-query/) integriert werden und stellen Power Query M-Funktionen für Data Factory-Benutzer bereit.
+Wranglingdatenflüsse in Azure Data Factory ermöglicht Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud. Wranglingdatenflüsse können in [Power Query Online](/power-query/) integriert werden und stellen Power Query M-Funktionen für Data Factory-Benutzer bereit.
 
 Wranglingdatenflüsse übersetzen M-Code, der vom Power Query Online Mashup Editor generiert wird, in Spark-Code für die Cloudskalierungsausführung.
 

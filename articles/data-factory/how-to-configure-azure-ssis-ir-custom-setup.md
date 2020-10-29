@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 10/13/2020
-ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019853"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636322"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
@@ -25,7 +25,7 @@ ms.locfileid: "92019853"
 
 Sie können Ihre Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) in Azure Data Factory (ADF) über benutzerdefinierte Setups anpassen. Diese bieten Ihnen die Möglichkeit, während der Bereitstellung oder Neukonfiguration Ihrer Azure-SSIS IR eigene Schritte hinzufügen. 
 
-Mithilfe benutzerdefinierter Setups können Sie die Standardkonfiguration des Betriebssystems oder der Umgebung Ihrer Azure-SSIS IR ändern. Auf diese Weise können Sie beispielsweise zusätzliche Windows-Dienste starten, Zugriffsanmeldeinformationen für Dateifreigaben beibehalten oder eine starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) verwenden. Oder Sie können zusätzliche Komponenten, z. B. Assemblys, Treiber oder Erweiterungen, auf jedem Knoten ihrer Azure-SSIS IR installieren. Dies können benutzerdefinierte, Open Source- oder Drittanbieterkomponenten sein. Weitere Informationen zu integrierten/vorinstallierten Komponenten finden Sie unter [Integrierte/vorinstallierte Komponenten für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+Mithilfe benutzerdefinierter Setups können Sie die Standardkonfiguration des Betriebssystems oder der Umgebung Ihrer Azure-SSIS IR ändern. Auf diese Weise können Sie beispielsweise zusätzliche Windows-Dienste starten, Zugriffsanmeldeinformationen für Dateifreigaben beibehalten oder eine starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) verwenden. Oder Sie können zusätzliche Komponenten, z. B. Assemblys, Treiber oder Erweiterungen, auf jedem Knoten ihrer Azure-SSIS IR installieren. Dies können benutzerdefinierte, Open Source- oder Drittanbieterkomponenten sein. Weitere Informationen zu integrierten/vorinstallierten Komponenten finden Sie unter [Integrierte/vorinstallierte Komponenten für Azure-SSIS IR](./built-in-preinstalled-components-ssis-integration-runtime.md).
 
 Es gibt zwei Möglichkeiten zur Durchführung benutzerdefinierter Setups auf Ihrer Azure-SSIS IR: 
 * **Benutzerdefiniertes Standard-Setup mit einem Skript** : Bereiten Sie ein Skript und die zugehörigen Dateien vor, und laden Sie alle zusammen in einen Blobcontainer in Ihrem Azure Storage-Konto hoch. Sie müssen dann einen SAS-URI (Shared Access Signature-Uniform Resource Identifier) für Ihren Container bereitstellen, wenn Sie Azure-SSIS IR einrichten oder neu konfigurieren. Anschließend lädt jeder Knoten Ihrer Azure-SSIS IR das Skript und die zugehörigen Dateien aus Ihrem Container herunter und führt Ihr benutzerdefiniertes Setup mit erhöhten Berechtigungen aus. Wenn Ihr benutzerdefiniertes Setup abgeschlossen ist, lädt jeder Knoten die standardmäßige Ausgabe der Ausführung und andere Protokolle in den Container hoch.
@@ -56,7 +56,7 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
 - [Ein Azure-Abonnement](https://azure.microsoft.com/)
 
-- [Bereitstellung von Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)
+- [Bereitstellung von Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md)
 
 - [Ein Azure-Speicherkonto](https://azure.microsoft.com/services/storage/). Nicht erforderlich für benutzerdefinierte Express-Setups. Für benutzerdefinierte Standard-Setups müssen Sie das benutzerdefinierte Setupskript und die zugehörigen Dateien in einen Blobcontainer hochladen und dort speichern. Auch die Ausführungsprotokolle werden vom benutzerdefinierten Setupvorgang in diesen Blobcontainer hochgeladen.
 
@@ -127,15 +127,15 @@ Um Ihre Azure-SSIS IR mit benutzerdefinierten Express-Setups auf der ADF-Benutz
 
 #### <a name="running-cmdkey-command"></a>Ausführen des Befehls „cmdkey“
 
-Wenn Sie den Typ **Befehl „cmdkey“ ausführen** für Ihr benutzerdefiniertes Express-Setup auswählen, können Sie den Windows-Befehl „cmdkey“ in Ihrer Azure-SSIS IR ausführen. Geben Sie hierzu in den Textfeldern **/Add** , **/User** und **/Pass** die Namen Ihres Zielcomputers oder Ihrer Domäne, des Benutzers oder Kontos sowie das Kennwort oder den Kontoschlüssel ein. Auf diese Weise können Sie Zugriffsanmeldeinformationen für SQL Server-Instanzen, Dateifreigaben oder Azure Files in Ihrer Azure-SSIS IR beibehalten. Für den Zugriff auf Azure Files können Sie beispielsweise `YourAzureStorageAccountName.file.core.windows.net`, `azure\YourAzureStorageAccountName` und `YourAzureStorageAccountKey` für **/Add** , **/User** und **/Pass** eingeben. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) auf Ihrem lokalen Computer. Derzeit wird nur ein benutzerdefiniertes Express-Setup für die Ausführung des Befehls „cmdkey“ unterstützt. Verwenden Sie zum Ausführen mehrerer Befehle vom Typ „cmdkey“ stattdessen ein benutzerdefiniertes Standardsetup.
+Wenn Sie den Typ **Befehl „cmdkey“ ausführen** für Ihr benutzerdefiniertes Express-Setup auswählen, können Sie den Windows-Befehl „cmdkey“ in Ihrer Azure-SSIS IR ausführen. Geben Sie hierzu in den Textfeldern **/Add** , **/User** und **/Pass** die Namen Ihres Zielcomputers oder Ihrer Domäne, des Benutzers oder Kontos sowie das Kennwort oder den Kontoschlüssel ein. Auf diese Weise können Sie Zugriffsanmeldeinformationen für SQL Server-Instanzen, Dateifreigaben oder Azure Files in Ihrer Azure-SSIS IR beibehalten. Für den Zugriff auf Azure Files können Sie beispielsweise `YourAzureStorageAccountName.file.core.windows.net`, `azure\YourAzureStorageAccountName` und `YourAzureStorageAccountKey` für **/Add** , **/User** und **/Pass** eingeben. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [cmdkey](/windows-server/administration/windows-commands/cmdkey) auf Ihrem lokalen Computer. Derzeit wird nur ein benutzerdefiniertes Express-Setup für die Ausführung des Befehls „cmdkey“ unterstützt. Verwenden Sie zum Ausführen mehrerer Befehle vom Typ „cmdkey“ stattdessen ein benutzerdefiniertes Standardsetup.
 
 #### <a name="adding-environment-variables"></a>Hinzufügen von Umgebungsvariablen
 
-Wenn Sie den Typ **Umgebungsvariable hinzufügen** für Ihr benutzerdefiniertes Express-Setup auswählen, können Sie eine Windows-Umgebungsvariable in Ihrer Azure-SSIS IR hinzufügen. Geben Sie hierzu den Namen und den Wert der Umgebungsvariablen in die Textfelder **Variablenname** und **Variablenwert** ein. Auf diese Weise können Sie die Umgebungsvariable in den Paketen verwenden, die in der Azure-SSIS IR ausgeführt werden, z. B. in Skriptkomponenten/-tasks. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [set](https://docs.microsoft.com/windows-server/administration/windows-commands/set_1) auf Ihrem lokalen Computer.
+Wenn Sie den Typ **Umgebungsvariable hinzufügen** für Ihr benutzerdefiniertes Express-Setup auswählen, können Sie eine Windows-Umgebungsvariable in Ihrer Azure-SSIS IR hinzufügen. Geben Sie hierzu den Namen und den Wert der Umgebungsvariablen in die Textfelder **Variablenname** und **Variablenwert** ein. Auf diese Weise können Sie die Umgebungsvariable in den Paketen verwenden, die in der Azure-SSIS IR ausgeführt werden, z. B. in Skriptkomponenten/-tasks. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [set](/windows-server/administration/windows-commands/set_1) auf Ihrem lokalen Computer.
 
 #### <a name="installing-azure-powershell"></a>Installieren von Azure PowerShell
 
-Wenn Sie den Typ **Azure PowerShell installieren** für das benutzerdefinierte Express-Setup auswählen, können Sie das Az-Modul von PowerShell in Ihrer Azure-SSIS IR installieren. Geben Sie dazu die gewünschte Versionsnummer des Az-Moduls (x.y.z) aus der [Liste unterstützter Versionen](https://www.powershellgallery.com/stats/packages/Az?groupby=Version) ein. Auf diese Weise können Sie Azure PowerShell-Cmdlets/Skripts in Ihren Paketen zum Verwalten von Azure-Ressourcen ausführen, z. B. [Azure Analysis Services (AAS)](https://docs.microsoft.com/azure/analysis-services/analysis-services-powershell).
+Wenn Sie den Typ **Azure PowerShell installieren** für das benutzerdefinierte Express-Setup auswählen, können Sie das Az-Modul von PowerShell in Ihrer Azure-SSIS IR installieren. Geben Sie dazu die gewünschte Versionsnummer des Az-Moduls (x.y.z) aus der [Liste unterstützter Versionen](https://www.powershellgallery.com/stats/packages/Az?groupby=Version) ein. Auf diese Weise können Sie Azure PowerShell-Cmdlets/Skripts in Ihren Paketen zum Verwalten von Azure-Ressourcen ausführen, z. B. [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md).
 
 #### <a name="installing-licensed-components"></a>Installieren lizenzierter Komponenten
 
@@ -335,9 +335,9 @@ Um Beispiele für benutzerdefinierte Standardsetups anzuzeigen und wiederzuverwe
       
         Laden Sie zuerst die 64-Bit- oder 32-Bit-Version von *librfc32.dll* aus dem SAP-Installationsordner zusammen mit *main.cmd* in Ihren Container hoch. Das Skript kopiert dann die SAP-Assembly während des Setups in den Ordner *%windir%\SysWow64* oder *%windir%\System32* .
 
-      * Den Ordner *STORAGE* mit einem benutzerdefinierten Setupskript ( *main.cmd* ) zum Installieren von Azure PowerShell auf jedem Knoten Ihrer Azure-SSIS IR. Bei diesem Setup können Sie SSIS-Pakete bereitstellen und ausführen, die [Azure PowerShell-Cmdlets/Skripts zum Verwalten von Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell) ausführen. 
+      * Den Ordner *STORAGE* mit einem benutzerdefinierten Setupskript ( *main.cmd* ) zum Installieren von Azure PowerShell auf jedem Knoten Ihrer Azure-SSIS IR. Bei diesem Setup können Sie SSIS-Pakete bereitstellen und ausführen, die [Azure PowerShell-Cmdlets/Skripts zum Verwalten von Azure Storage](../storage/blobs/storage-quickstart-blobs-powershell.md) ausführen. 
       
-        Kopieren Sie *main.cmd* , ein Beispiel für *AzurePowerShell.msi* (oder verwenden Sie die neueste Version) und *storage.ps1* in Ihren Container. Verwenden Sie *PowerShell.dtsx* als Vorlage für Ihre Pakete. In der Paketvorlage sind der [Azure Blob-Download-Task](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), der ein modifizierbares PowerShell-Skript ( *storage.ps1* ) herunterlädt, und der [Task „Prozess ausführen“](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) zusammengefasst, der das Skript auf jedem Knoten ausführt.
+        Kopieren Sie *main.cmd* , ein Beispiel für *AzurePowerShell.msi* (oder verwenden Sie die neueste Version) und *storage.ps1* in Ihren Container. Verwenden Sie *PowerShell.dtsx* als Vorlage für Ihre Pakete. In der Paketvorlage sind der [Azure Blob-Download-Task](/sql/integration-services/control-flow/azure-blob-download-task), der ein modifizierbares PowerShell-Skript ( *storage.ps1* ) herunterlädt, und der [Task „Prozess ausführen“](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) zusammengefasst, der das Skript auf jedem Knoten ausführt.
 
       * Der Ordner *TERADATA* , der ein benutzerdefiniertes Setupskript ( *main.cmd* ), die zugehörige Datei ( *install.cmd* ) und die Installer-Pakete ( *.msi* ) enthält. Diese Dateien installieren die Teradata-Connectors, die Teradata Parallel Transporter (TPT)-API und den ODBC-Treiber auf jedem Knoten Ihrer Azure-SSIS IR Enterprise Edition. Bei diesem Setup können Sie den Teradata-Verbindungs-Manager, die Quelle und das Ziel für die Verbindung mit dem Teradata-Server verwenden. 
       
@@ -345,7 +345,7 @@ Um Beispiele für benutzerdefinierte Standardsetups anzuzeigen und wiederzuverwe
 
       * Den Ordner *TLS 1.2* mit einem benutzerdefinierten Setupskript ( *main.cmd* ) zur Verwendung einer starken Kryptografie und eines sichereren Netzwerkprotokolls (TLS 1.2) auf jedem Knoten Ihrer Azure-SSIS IR. Das Skript deaktiviert auch ältere SSL/TLS-Versionen.
 
-      * Den Ordner *ZULU OPENJDK* Ordner mit einem benutzerdefinierten Setupskript ( *main.cmd* ) und einer PowerShell-Datei ( *install_openjdk.ps1* ) zum Installieren des Zulu OpenJDK auf jedem Knoten Ihrer Azure-SSIS IR. Dieses Setup ermöglicht Ihnen die Verwendung von Azure Data Lake Store- und Flexible File-Connectors zur Verarbeitung von ORC- und Parquet-Dateien. Weitere Informationen finden Sie unter [Azure Feature Pack für Integration Services](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
+      * Den Ordner *ZULU OPENJDK* Ordner mit einem benutzerdefinierten Setupskript ( *main.cmd* ) und einer PowerShell-Datei ( *install_openjdk.ps1* ) zum Installieren des Zulu OpenJDK auf jedem Knoten Ihrer Azure-SSIS IR. Dieses Setup ermöglicht Ihnen die Verwendung von Azure Data Lake Store- und Flexible File-Connectors zur Verarbeitung von ORC- und Parquet-Dateien. Weitere Informationen finden Sie unter [Azure Feature Pack für Integration Services](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
       
         [Laden Sie zuerst das neueste Zulu OpenJDK herunter](https://www.azul.com/downloads/zulu/zulu-windows/) (z. B. *zulu8.33.0.1-jdk8.0.192-win_x64.zip* ), und laden Sie es dann zusammen mit *main.cmd* und *install_openjdk.ps1* in Ihren Container hoch.
 

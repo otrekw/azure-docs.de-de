@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444907"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675139"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics über das Azure-Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 * [Azure-Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Befehlszeilenschnittstelle (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Monitor-REST-API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
 
@@ -57,17 +57,17 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 3. Wählen Sie die Schaltfläche **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen.
   ![Regel erstellen](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. Klicken Sie im Abschnitt **Bedingung** auf **Hinzufügen**.
+4. Klicken Sie im Abschnitt **Bedingung** auf **Hinzufügen** .
   ![Bedingung definieren](./media/alerts-insights-configure-portal/create-rule.png)
 5. Wählen Sie auf der Seite **Signallogik konfigurieren** ein Signal aus.
   ![Signal auswählen](./media/alerts-insights-configure-portal/select-signal.png)
-6. Nach Auswahl eines Signals, z. B. **CPU-Prozentsatz**, wird die Seite **Signallogik konfigurieren** angezeigt.
+6. Nach Auswahl eines Signals, z. B. **CPU-Prozentsatz** , wird die Seite **Signallogik konfigurieren** angezeigt.
   ![Signallogik konfigurieren](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. Konfigurieren Sie auf dieser Seite den Schwellentyp, Operator, Aggregationstyp, Schwellenwert, die Aggregationsgranularität und die Häufigkeit der Auswertung. Klicken Sie anschließend auf **Fertig**.
+7. Konfigurieren Sie auf dieser Seite den Schwellentyp, Operator, Aggregationstyp, Schwellenwert, die Aggregationsgranularität und die Häufigkeit der Auswertung. Klicken Sie anschließend auf **Fertig** .
 8. Wählen Sie unter **Regel erstellen** eine vorhandene **Aktionsgruppe** aus, oder erstellen Sie eine neue Gruppe. Mithilfe einer Aktionsgruppe können Sie die Aktion definieren, die erfolgen soll, wenn eine Warnungsbedingung eintritt.
   ![Aktionsgruppe definieren](./media/alerts-insights-configure-portal/action-group.png)
 
-9. Legen Sie einen Namen für die Regel fest, geben Sie eine optionale Beschreibung an, und wählen Sie einen Schweregrad für die Regel. Wählen Sie, ob die Regel bei ihrer Erstellung aktiviert werden soll, und klicken Sie dann auf **Regelwarnung erstellen**, um die Metrikregelwarnung zu erstellen.
+9. Legen Sie einen Namen für die Regel fest, geben Sie eine optionale Beschreibung an, und wählen Sie einen Schweregrad für die Regel. Wählen Sie, ob die Regel bei ihrer Erstellung aktiviert werden soll, und klicken Sie dann auf **Regelwarnung erstellen** , um die Metrikregelwarnung zu erstellen.
 
 Innerhalb von 10 Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440506"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635761"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -70,7 +70,7 @@ Die visuellen Tools von Azure Data Factory ermöglichen iteratives Entwickeln un
 Sie müssen Ihre Änderungen nicht für den Data Factory-Dienst veröffentlichen, bevor Sie **Debuggen** auswählen. Dies ist hilfreich, wenn Sie sich vergewissern möchten, dass die neuen Elemente oder Änderungen wie erwartet funktionieren, bevor Sie Ihre Data Factory-Workflows in Entwicklungs-, Test- oder Produktionsumgebungen aktualisieren. 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>Möglichkeit zum Bereitstellen von SSIS-Paketen in Azure 
-Wenn Sie Ihre SSIS-Workloads verschieben möchten, können Sie eine Data Factory-Instanz erstellen und eine Azure-SSIS-Integration Runtime bereitstellen. Eine Azure-SSIS Integration Runtime ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (Knoten), die speziell für die Ausführung von SSIS-Paketen in der Cloud bestimmt sind. Eine ausführliche Anleitung finden Sie im Tutorial [Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md). 
+Wenn Sie Ihre SSIS-Workloads verschieben möchten, können Sie eine Data Factory-Instanz erstellen und eine Azure-SSIS-Integration Runtime bereitstellen. Eine Azure-SSIS Integration Runtime ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (Knoten), die speziell für die Ausführung von SSIS-Paketen in der Cloud bestimmt sind. Eine ausführliche Anleitung finden Sie im Tutorial [Bereitstellen von SSIS-Paketen in Azure](./tutorial-deploy-ssis-packages-azure.md). 
  
 ### <a name="sdks"></a>SDKs
 Für erfahrene Benutzer, die auf der Suche nach einer befehlsorientierten Benutzerschnittstelle sind, bietet Data Factory ein breites Spektrum an SDKs zum Erstellen, Verwalten und Überwachen von Pipelines mit Ihrer bevorzugten IDE. Die Sprachunterstützung umfasst .NET, PowerShell, Python und REST.
@@ -159,7 +159,7 @@ Preisinformationen zu Azure Data Factory finden Sie unter [Data Factory – Prei
 Aktuelle Informationen zu Azure Data Factory finden Sie auf den folgenden Websites:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Startseite der Dokumentation](/azure/data-factory)
+- [Startseite der Dokumentation](./index.yml)
 - [Produktstartseite](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>Technischer Einblick 

@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531060"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635370"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Erstellen von Ausdrücken im Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Im Zuordnungsdatenfluss werden viele Transformationseigenschaften als Ausdrücke eingegeben. Diese Ausdrücke bestehen aus Spaltenwerten, Parametern, Funktionen, Operatoren und Literalen, die zur Laufzeit zu einem Spark-Datentyp ausgewertet werden. Die Zuordnung von Datenflüssen verfügt über eine dedizierte Funktion, die Sie bei der Erstellung dieser Ausdrücke unterstützen soll, den so genannten **Ausdrucks-Generator**. Der Ausdrucks-Generator nutzt die [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense)-Codevervollständigung für Hervorhebung, Syntaxüberprüfung und automatische Vervollständigung und soll Ihnen das Erstellen von Datenflüssen erleichtern. In diesem Artikel wird erläutert, wie Sie den Ausdrucks-Generator verwenden, um Ihre Geschäftslogik effektiv zu erstellen.
+Im Zuordnungsdatenfluss werden viele Transformationseigenschaften als Ausdrücke eingegeben. Diese Ausdrücke bestehen aus Spaltenwerten, Parametern, Funktionen, Operatoren und Literalen, die zur Laufzeit zu einem Spark-Datentyp ausgewertet werden. Die Zuordnung von Datenflüssen verfügt über eine dedizierte Funktion, die Sie bei der Erstellung dieser Ausdrücke unterstützen soll, den so genannten **Ausdrucks-Generator** . Der Ausdrucks-Generator nutzt die [IntelliSense](/visualstudio/ide/using-intellisense)-Codevervollständigung für Hervorhebung, Syntaxüberprüfung und automatische Vervollständigung und soll Ihnen das Erstellen von Datenflüssen erleichtern. In diesem Artikel wird erläutert, wie Sie den Ausdrucks-Generator verwenden, um Ihre Geschäftslogik effektiv zu erstellen.
 
 ![Ausdrucks-Generator](media/data-flow/expresion-builder.png "Ausdrucks-Generator")
 

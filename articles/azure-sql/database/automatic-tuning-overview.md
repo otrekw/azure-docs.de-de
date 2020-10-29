@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: 4c2faa6f015a8c1ce8f360155abdc14367d3057b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 180f6e8902dc881c99a74a6491eeb3012bc03d0f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330739"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675221"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatische Optimierung bei Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,7 +46,7 @@ Die Mechanismen für die automatische Optimierung sind ausgereift und wurden auf
 
 ![Wie funktioniert die automatische Optimierung?](./media/automatic-tuning-overview/how-does-automatic-tuning-work.png)
 
-Die automatische Optimierung von Azure SQL-Datenbank teilt sich die Kernlogik mit SQL Server für das Feature zur automatischen Optimierung in der Datenbank-Engine. Weitere technische Informationen zum integrierten Intelligenzmechanismus finden Sie unter [Automatic tuning](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) (Automatische Optimierung).
+Die automatische Optimierung von Azure SQL-Datenbank teilt sich die Kernlogik mit SQL Server für das Feature zur automatischen Optimierung in der Datenbank-Engine. Weitere technische Informationen zum integrierten Intelligenzmechanismus finden Sie unter [Automatic tuning](/sql/relational-databases/automatic-tuning/automatic-tuning) (Automatische Optimierung).
 
 Im folgenden Video können Sie sich einen Überblick über die Funktionsweise der automatischen Optimierung in typischen Verwendungsszenarien verschaffen:
 
@@ -54,8 +54,8 @@ Im folgenden Video können Sie sich einen Überblick über die Funktionsweise de
 
 ## <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 
-- Sie können die [Aktivierung der automatischen Optimierung für Azure SQL-Datenbank im Azure-Portal](automatic-tuning-enable.md) oder mit der T-SQL-Anweisung [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) durchführen.
-- Sie aktivieren die automatische Optimierung für Azure SQL Managed Instance mit der T-SQL-Anweisung [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current).
+- Sie können die [Aktivierung der automatischen Optimierung für Azure SQL-Datenbank im Azure-Portal](automatic-tuning-enable.md) oder mit der T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) durchführen.
+- Sie aktivieren die automatische Optimierung für Azure SQL Managed Instance mit der T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current).
 
 ## <a name="automatic-tuning-options"></a>Optionen für die automatische Optimierung
 
@@ -64,12 +64,12 @@ Die Optionen zur automatischen Optimierung in Azure SQL-Datenbank und Azure SQL 
 | Option für die automatische Optimierung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :----------------------------- | ----- | ----- |
 | **CREATE INDEX:** Identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde. | Ja | Nein |
-| **DROP INDEX**: Identifiziert täglich redundante und doppelte Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
+| **DROP INDEX** : Identifiziert täglich redundante und doppelte Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
 | **FORCE LAST GOOD PLAN** (automatische Plankorrektur): Identifiziert Azure SQL-Abfragen mit einem Ausführungsplan, der langsamer als der vorherige gute Plan ist, und Abfragen, die den letzten bekannten guten Plan anstelle des zurückgestellten Plans verwenden. | Ja | Ja |
 
 ### <a name="automatic-tuning-for-sql-database"></a>Automatische Optimierung für SQL-Datenbank
 
-Bei der automatischen Optimierung für Azure SQL-Datenbank werden die Empfehlungen **CREATE INDEX**, **DROP INDEX** und **FORCE LAST GOOD PLAN** des Datenbank-Advisors verwendet, um Ihre Datenbankleistung zu optimieren. Weitere Informationen finden Sie unter [Empfehlungen des Datenbankratgebers im Azure-Portal](database-advisor-find-recommendations-portal.md), in [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) und in der [REST-API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+Bei der automatischen Optimierung für Azure SQL-Datenbank werden die Empfehlungen **CREATE INDEX** , **DROP INDEX** und **FORCE LAST GOOD PLAN** des Datenbank-Advisors verwendet, um Ihre Datenbankleistung zu optimieren. Weitere Informationen finden Sie unter [Empfehlungen des Datenbankratgebers im Azure-Portal](database-advisor-find-recommendations-portal.md), in [PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) und in der [REST-API](/rest/api/sql/serverautomatictuning).
 
 Sie können die Optimierungsempfehlungen entweder manuell über das Azure-Portal anwenden, oder es der automatischen Optimierung überlassen, diese Empfehlungen autonom für Sie anzuwenden. Wenn Sie es dem System überlassen, Optimierungsempfehlungen autonom anzuwenden, profitieren Sie davon, dass das System automatisch überprüft, ob eine Empfehlung die Workloadleistung tatsächlich positiv beeinflusst. Sollte keine erhebliche Leistungsverbesserung erkannt werden, macht das System die Optimierungsempfehlung automatisch rückgängig. Beachten Sie, dass bei Abfragen, auf die sich Optimierungsempfehlungen auswirken und die nicht häufig ausgeführt werden, die Überprüfungsphase bis zu 72 Stunden dauern kann.
 
@@ -90,7 +90,7 @@ Informationen zum Erstellen von E-Mail-Benachrichtigungen für automatische Opti
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Automatische Optimierung für Azure SQL Managed Instance
 
-Die automatische Optimierung für SQL Managed Instance unterstützt nur **FORCE LAST GOOD PLAN**. Weitere Informationen zur Konfiguration von automatischen Optimierungsoptionen per T-SQL finden Sie unter [Automatisches Optimieren führt zu einer automatischen Plankorrektur](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) und [Automatische Plankorrektur](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
+Die automatische Optimierung für SQL Managed Instance unterstützt nur **FORCE LAST GOOD PLAN** . Weitere Informationen zur Konfiguration von automatischen Optimierungsoptionen per T-SQL finden Sie unter [Automatisches Optimieren führt zu einer automatischen Plankorrektur](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) und [Automatische Plankorrektur](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

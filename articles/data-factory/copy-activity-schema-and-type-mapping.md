@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85249651"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637257"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ Sie können die Zuordnung über die Data Factory-Benutzeroberfläche für die Er
 | path     | Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert oder zugeordnet werden soll. Für hierarchische Quelle und Senke anwenden, z. B. für Cosmos DB-, MongoDB- oder REST-Connectors.<br>Der JSON-Pfad für Felder unter dem Stammobjekt beginnt mit dem Stamm „`$`“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Arrayelement ohne `$`. | Nein       |
 | type     | Data Factory-Zwischendatentyp der Quell- oder Senkenspalte. Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
 | culture  | Kultur der Quell- oder Senkenspalte. Anwenden, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Der Standardwert lautet `en-us`.<br>Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
-| format   | Zu verwendende Formatzeichenfolge, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
+| format   | Zu verwendende Formatzeichenfolge, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
 
 Die folgenden Eigenschaften werden unter `translator` und unter `mappings` unterstützt:
 
@@ -66,7 +66,7 @@ Die folgenden Eigenschaften werden unter `translator` und unter `mappings` unter
 
 Beispielsweise zum Kopieren von Daten aus Salesforce in Azure SQL-Datenbank und zum expliziten Zuordnen von drei Spalten:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren**, um das Quell- und das Senkenschema zu importieren.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren** , um das Quell- und das Senkenschema zu importieren.
 
 2. Ordnen Sie die erforderlichen Felder zu, und schließen Sie die restlichen Felder aus bzw. löschen Sie sie.
 
@@ -180,7 +180,7 @@ Wenn Sie es in eine Textdatei im folgenden Format mit Kopfzeile kopieren möchte
 
 Sie können eine Zuordnung dieser Art über die Data Factory-Benutzeroberfläche für die Erstellung definieren:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren**, um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren** , um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
 
 2. Wählen Sie das Array aus, in dem Sie Daten durchlaufen und aus dem Sie Daten extrahieren möchten. Das Feld wird automatisch als **Auflistungsverweis** ausgefüllt. Bei diesem Vorgang wird nur ein einzelnes Array unterstützt.
 
@@ -314,9 +314,9 @@ Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonv
 | *Unter `typeConversionSettings`* |                                                              |          |
 | allowDataTruncation              | Ermöglicht das Abschneiden von Daten, wenn beim Kopieren Quelldaten in Senkendaten mit unterschiedlichem Datentyp konvertiert werden, beispielsweise von „Decimal“ zu „Integer“ bzw. von „DatetimeOffset“ zu „Datetime“. <br>Der Standardwert ist true. | Nein       |
 | treatBooleanAsNumber             | Behandelt boolesche Werte wie Zahlen, z. B. TRUE wie 1.<br>Der Standardwert ist „false“. | Nein       |
-| dateTimeFormat                   | Formatzeichenfolge beim Konvertieren von Datumsangaben ohne Zeitzonenoffset und Zeichenfolgen, z. B. `yyyy-MM-dd HH:mm:ss.fff`.  Ausführliche Informationen hierzu finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein       |
-| dateTimeOffsetFormat             | Formatzeichenfolge beim Konvertieren von Datumsangaben mit Zeitzonenoffset und Zeichenfolgen, z. B. `yyyy-MM-dd HH:mm:ss.fff zzz`.  Ausführliche Informationen hierzu finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein       |
-| timeSpanFormat                   | Formatzeichenfolge beim Konvertieren von Zeiträumen und Zeichenfolgen, z. B. `dd\.hh\:mm`. Ausführliche Informationen hierzu finden Sie unter [Benutzerdefinierte TimeSpan-Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings). | Nein       |
+| dateTimeFormat                   | Formatzeichenfolge beim Konvertieren von Datumsangaben ohne Zeitzonenoffset und Zeichenfolgen, z. B. `yyyy-MM-dd HH:mm:ss.fff`.  Ausführliche Informationen hierzu finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein       |
+| dateTimeOffsetFormat             | Formatzeichenfolge beim Konvertieren von Datumsangaben mit Zeitzonenoffset und Zeichenfolgen, z. B. `yyyy-MM-dd HH:mm:ss.fff zzz`.  Ausführliche Informationen hierzu finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein       |
+| timeSpanFormat                   | Formatzeichenfolge beim Konvertieren von Zeiträumen und Zeichenfolgen, z. B. `dd\.hh\:mm`. Ausführliche Informationen hierzu finden Sie unter [Benutzerdefinierte TimeSpan-Formatzeichenfolgen](/dotnet/standard/base-types/custom-timespan-format-strings). | Nein       |
 | culture                          | Kulturinformationen, die beim Konvertieren von Datentypen verwendet werden sollen, z. B. `en-us` oder `fr-fr`. | Nein       |
 
 **Beispiel:**
@@ -356,7 +356,7 @@ Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonv
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternative Spaltenzuordnung (Legacy-Modell)
 
-Sie können die Kopieraktivität > `translator` -> `columnMappings` angeben, um tabellarische Daten zuzuordnen. In diesem Fall ist der Abschnitt „structure“ für Eingabe- und Ausgabedatasets erforderlich. Die Spaltenzuordnung unterstützt die **Zuordnung aller oder einer Teilmenge der Spalten in „structure“ des Quelldatasets zu allen Spalten in „structure“ des Senkendatasets**. Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
+Sie können die Kopieraktivität > `translator` -> `columnMappings` angeben, um tabellarische Daten zuzuordnen. In diesem Fall ist der Abschnitt „structure“ für Eingabe- und Ausgabedatasets erforderlich. Die Spaltenzuordnung unterstützt die **Zuordnung aller oder einer Teilmenge der Spalten in „structure“ des Quelldatasets zu allen Spalten in „structure“ des Senkendatasets** . Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
 
 - Das Ergebnis der Abfrage des Quelldatenspeichers enthält keinen Spaltennamen, der im Abschnitt „structure“ des Eingabedatasets angegeben wird.
 - Der Senkendatenspeicher (sofern mit vordefiniertem Schema) enthält keinen Spaltennamen, der im Abschnitt „structure“ des Ausgabedatasets angegeben wird.
@@ -411,7 +411,7 @@ In diesem Beispiel verfügt das Ausgabedataset über eine Struktur, und diese ve
 }
 ```
 
-Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Spalten der Quelle werden mithilfe der **translator** -> **columnMappings**-Eigenschaft den Spalten der Senke zugeordnet.
+Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Spalten der Quelle werden mithilfe der **translator** -> **columnMappings** -Eigenschaft den Spalten der Senke zugeordnet.
 
 ```json
 {

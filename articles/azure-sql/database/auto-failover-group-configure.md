@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577508"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675108"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,13 +46,13 @@ Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des A
 
    ![Öffnen des Servers für einen Singleton](./media/auto-failover-group-configure/open-sql-db-server.png)
 
-1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und klicken Sie dann auf **Gruppe hinzufügen**, um eine neue Failovergruppe zu erstellen.
+1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und klicken Sie dann auf **Gruppe hinzufügen** , um eine neue Failovergruppe zu erstellen.
 
    ![Hinzufügen einer neuen Failovergruppe](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
 1. Wählen Sie auf der Seite **Failovergruppe** die erforderlichen Werte aus bzw. geben Sie sie ein, und wählen Sie dann **Erstellen** aus.
 
-   - **Datenbank innerhalb der Gruppe**: Wählen Sie die Datenbank aus, die Sie Ihrer Failovergruppe hinzufügen möchten. Durch das Hinzufügen der Datenbank zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
+   - **Datenbank innerhalb der Gruppe** : Wählen Sie die Datenbank aus, die Sie Ihrer Failovergruppe hinzufügen möchten. Durch das Hinzufügen der Datenbank zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
 
    ![Hinzufügen von Azure SQL-Datenbank zu einer Failovergruppe](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -216,17 +216,17 @@ Erstellen Sie Ihre Failovergruppe, und fügen Sie ihr Ihren Pool für elastische
   
    ![Öffnen des Servers für den Pool für elastische Datenbanken](./media/auto-failover-group-configure/server-for-elastic-pool.png)
 
-1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und klicken Sie dann auf **Gruppe hinzufügen**, um eine neue Failovergruppe zu erstellen.
+1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und klicken Sie dann auf **Gruppe hinzufügen** , um eine neue Failovergruppe zu erstellen.
 
    ![Hinzufügen einer neuen Failovergruppe](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
 1. Wählen Sie auf der Seite **Failovergruppe** die erforderlichen Werte aus bzw. geben Sie sie ein, und wählen Sie dann **Erstellen** aus. Erstellen Sie entweder einen neuen sekundären Server, oder wählen Sie einen vorhandenen sekundären Server aus.
 
-1. Wählen Sie **Datenbanken in der Gruppe** und dann den Pool für elastische Datenbanken aus, den Sie der Failovergruppe hinzufügen möchten. Wenn auf dem sekundären Server noch kein Pool für elastische Datenbanken vorhanden ist, wird eine Warnung angezeigt, die Sie auffordert, einen Pool für elastische Datenbanken auf dem sekundären Server zu erstellen. Wählen Sie die Warnung aus, und klicken Sie dann auf **OK**, um den Pool für elastische Datenbanken auf dem sekundären Server zu erstellen.
+1. Wählen Sie **Datenbanken in der Gruppe** und dann den Pool für elastische Datenbanken aus, den Sie der Failovergruppe hinzufügen möchten. Wenn auf dem sekundären Server noch kein Pool für elastische Datenbanken vorhanden ist, wird eine Warnung angezeigt, die Sie auffordert, einen Pool für elastische Datenbanken auf dem sekundären Server zu erstellen. Wählen Sie die Warnung aus, und klicken Sie dann auf **OK** , um den Pool für elastische Datenbanken auf dem sekundären Server zu erstellen.
 
    ![Hinzufügen eines Pools für elastische Datenbanken zu einer Failovergruppe](./media/auto-failover-group-configure/add-elastic-pool-to-failover-group.png)
 
-1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen**, um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
+1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen** , um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -371,7 +371,7 @@ Wenn Sie [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-res
 Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azure-Portals.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe, und wählen Sie die Ressource **Virtuelles Netzwerk** für Ihre primäre verwaltete Instanz aus.
-1. Wählen Sie unter **Einstellungen**die Option **Subnetze** aus, und wählen Sie dann ein neues**Gatewaysubnetz** aus. Lassen Sie die Standardwerte unverändert.
+1. Wählen Sie unter **Einstellungen **die Option **Subnetze** aus, und wählen Sie dann ein neues** Gatewaysubnetz** aus. Lassen Sie die Standardwerte unverändert.
 
    ![Hinzufügen eines Gateways für die primäre verwaltete Instanz](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
@@ -393,7 +393,7 @@ Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azur
     | **SKU**| Lassen Sie den Standardwert `VpnGw1` unverändert. |
     | **Location**| Der Standort, an dem sich Ihre sekundäre verwaltete Instanz und das sekundäre virtuelle Netzwerk befinden.   |
     | **Virtuelles Netzwerk**| Wählen Sie das virtuelle Netzwerk für Ihre sekundäre verwaltete Instanz aus. |
-    | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen**. |
+    | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen** . |
     | **Name der öffentlichen IP-Adresse**| Geben Sie einen Namen für die IP-Adresse ein. |
     | &nbsp; | &nbsp; |
 
@@ -455,7 +455,7 @@ Die folgende Tabelle enthält die erforderlichen Werte für das Gateway für die
    | **SKU**| Lassen Sie den Standardwert `VpnGw1` unverändert. |
    | **Location**| Der Standort, an dem sich Ihre sekundäre verwaltete Instanz und das sekundäre virtuelle Netzwerk befinden.   |
    | **Virtuelles Netzwerk**| Wählen Sie das virtuelle Netzwerk aus, das in Abschnitt 2 erstellt wurde, z.B. `vnet-sql-mi-secondary`. |
-   | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen**. |
+   | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen** . |
    | **Name der öffentlichen IP-Adresse**| Geben Sie einen Namen für die IP-Adresse ein, z.B. `secondary-gateway-IP`. |
    | &nbsp; | &nbsp; |
 
@@ -507,17 +507,17 @@ Der gemeinsam verwendete Schlüssel für beide Verbindungen sollte übereinstimm
 Erstellen Sie Verbindungen zwischen den beiden Gateways mithilfe des Azure-Portals.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
-1. Geben Sie `connection` in das Suchfeld ein, und drücken Sie die EINGABETASTE, um die Suche zu starten. Sie gelangen zur Ressource **Verbindung**, die von Microsoft veröffentlicht wurde.
+1. Geben Sie `connection` in das Suchfeld ein, und drücken Sie die EINGABETASTE, um die Suche zu starten. Sie gelangen zur Ressource **Verbindung** , die von Microsoft veröffentlicht wurde.
 1. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen.
 1. Wählen Sie auf der Registerkarte **Grundlagen** die folgenden Werte und dann **OK** aus.
     1. Wählen Sie für **Verbindungstyp** den Eintrag `VNet-to-VNet` aus.
     1. Wählen Sie in der Dropdownliste Ihr Abonnement aus.
     1. Wählen Sie die Ressourcengruppe für Ihre verwaltete Instanz aus der Dropdownliste aus.
     1. Wählen Sie den Speicherort der primären verwalteten Instanz aus der Dropdownliste aus.
-1. Wählen Sie auf der Seite **Einstellungen** die folgenden Werte aus, oder geben Sie die Werte ein, und klicken Sie dann auf **OK**:
+1. Wählen Sie auf der Seite **Einstellungen** die folgenden Werte aus, oder geben Sie die Werte ein, und klicken Sie dann auf **OK** :
     1. Wählen Sie das primäre Netzwerkgateway für **Erstes Gateway für virtuelle Netzwerke** aus, z.B. `Primary-Gateway`.  
     1. Wählen Sie das sekundäre Netzwerkgateway für **Zweites Gateway für virtuelle Netzwerke** aus, z.B. `Secondary-Gateway`.
-    1. Aktivieren Sie das Kontrollkästchen neben **Bidirektionale Konnektivität einrichten**.
+    1. Aktivieren Sie das Kontrollkästchen neben **Bidirektionale Konnektivität einrichten** .
     1. Übernehmen Sie entweder den Standardnamen für die primäre Verbindung, oder ändern Sie ihn in einen Namen Ihrer Wahl.
     1. Geben Sie einen **Gemeinsam verwendeter Schlüssel (PSK)** für die Verbindung an, z.B. `mi1m2psk`.
 
@@ -566,7 +566,7 @@ Erstellen Sie die Failovergruppe für Ihre verwalteten Azure SQL-Instanzen mithi
 
 1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen.
 1. Wählen Sie die primäre verwaltete Instanz aus, die Sie der Failovergruppe hinzufügen möchten.  
-1. Navigieren Sie unter **Einstellungen** zu **Instanzfailovergruppen**, und wählen Sie dann **Gruppe hinzufügen** aus, um die Seite **Instanzfailovergruppe** zu öffnen.
+1. Navigieren Sie unter **Einstellungen** zu **Instanzfailovergruppen** , und wählen Sie dann **Gruppe hinzufügen** aus, um die Seite **Instanzfailovergruppe** zu öffnen.
 
    ![Hinzufügen einer Failovergruppe](./media/auto-failover-group-configure/add-failover-group.png)
 
@@ -574,7 +574,7 @@ Erstellen Sie die Failovergruppe für Ihre verwalteten Azure SQL-Instanzen mithi
 
    ![Erstellen einer Failovergruppe](./media/auto-failover-group-configure/create-failover-group.png)
 
-1. Nachdem die Bereitstellung der Failovergruppe abgeschlossen wurde, gelangen Sie erneut auf die Seite **Failovergruppe**.
+1. Nachdem die Bereitstellung der Failovergruppe abgeschlossen wurde, gelangen Sie erneut auf die Seite **Failovergruppe** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -609,7 +609,7 @@ Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer _sekundären_ verwalteten Instanz, und wählen Sie unter „Einstellungen“ die Option **Instanzfailovergruppen** aus.
 1. Überprüfen Sie, welche verwaltete Instanz die primäre Instanz ist und welche verwaltete Instanz die sekundäre Instanz ist.
-1. Wählen Sie **Failover** aus, und klicken Sie dann in der Warnung zu TDS-Sitzungen, die getrennt werden, auf **Ja**.
+1. Wählen Sie **Failover** aus, und klicken Sie dann in der Warnung zu TDS-Sitzungen, die getrennt werden, auf **Ja** .
 
    ![Ausführen des Failovers der Failovergruppe](./media/auto-failover-group-configure/failover-mi-failover-group.png)
 
@@ -665,7 +665,7 @@ Mithilfe einer privaten Verbindung können Sie einen logischen Server einer best
 
 Gehen Sie folgendermaßen vor, um eine private Verbindung mit Ihrer Failovergruppe zu verwenden:
 
-1. Stellen Sie sicher, dass sich der primäre und der sekundäre Server in einem [Regionspaar](/azure/best-practices-availability-paired-regions) befinden. 
+1. Stellen Sie sicher, dass sich der primäre und der sekundäre Server in einem [Regionspaar](../../best-practices-availability-paired-regions.md) befinden. 
 1. Erstellen Sie das virtuelle Netzwerk und das Subnetz in beiden Regionen, um private Endpunkte für den primären und den sekundären Server zu hosten, sodass sich die IP-Adressräume nicht überlappen. Der Adressbereich des primären virtuellen Netzwerks (10.0.0.0/16) und der des sekundären virtuellen Netzwerks (10.0.0.1/16) überschneiden sich beispielsweise. Weitere Informationen zu den Adressbereichen von virtuellen Netzwerken finden Sie im Blogartikel zum [Entwerfen von virtuellen Azure-Netzwerken](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/).
 1. Erstellen Sie einen [privaten Endpunkt und eine private Azure-DNS-Zone für den primären Server](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
 1. Erstellen Sie auch einen privaten Endpunkt für den sekundären Server. Verwenden Sie dafür jedoch die gleiche private DNS-Zone, die für den primären Server erstellt wurde. 

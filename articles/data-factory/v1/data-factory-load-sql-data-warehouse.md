@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442478"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636900"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Laden von 1 TB Daten in Azure Synapse Analytics in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -28,10 +28,10 @@ ms.locfileid: "89442478"
 
 Die ersten Schritte mit Azure Synapse Analytics sind jetzt mithilfe von **Azure Data Factory** einfacher als je zuvor.  Azure Data Factory ist ein vollständig verwalteter cloudbasierter Datenintegrationsdienst, der verwendet werden kann, um Azure Synapse Analytics mit den Daten Ihres bestehenden Systems aufzufüllen. Der Dienst spart Ihnen wertvolle Zeit beim Bewerten von Azure Synapse Analytics und Erstellen von Analyselösungen. Die wichtigsten Vorteile beim Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory sind wie folgt:
 
-* **Mühelose Einrichtung**: Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
-* **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher.
-* **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen, und globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
-* **Beispiellose Leistung mithilfe von PolyBase**: Die Verwendung von PolyBase ist die effizienteste Methode zum Verschieben von Daten in Azure Synapse Analytics. Mit der Funktion „Stagingblob“ sinkt die Ladezeit für alle Arten von Datenspeicher drastisch. Dies gilt nicht für Azure Blob Storage, da dies von Polybase standardmäßig unterstützt wird.
+* **Mühelose Einrichtung** : Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
+* **Unterstützung für umfangreiche Datenspeicher** : Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher.
+* **Sicher und kompatibel** : Daten werden über HTTPS oder ExpressRoute übertragen, und globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
+* **Beispiellose Leistung mithilfe von PolyBase** : Die Verwendung von PolyBase ist die effizienteste Methode zum Verschieben von Daten in Azure Synapse Analytics. Mit der Funktion „Stagingblob“ sinkt die Ladezeit für alle Arten von Datenspeicher drastisch. Dies gilt nicht für Azure Blob Storage, da dies von Polybase standardmäßig unterstützt wird.
 
 In diesem Artikel wird gezeigt, wie der Assistenten zum Kopieren in Data Factory verwendet wird, um 1 TB Daten aus Azure Blob Storage in Azure Synapse Analytics in unter 15 Minuten mit über 1,2 GBit/s Durchsatz zu laden.
 
@@ -56,7 +56,7 @@ Dieser Artikel enthält detaillierte Anleitungen zum Verschieben von Daten in Az
     Kopieren Sie jetzt die generierten Dateien in Azure Blob.  Unter [Verschieben von Daten in das lokale und aus dem lokalen Dateisystem mithilfe von Azure Data Factory](data-factory-onprem-file-system-connector.md) erhalten Sie weitere Informationen, wie Sie dies mithilfe von ADF Copy durchführen.    
 * Azure Synapse Analytics: Bei diesem Experiment werden mit 6.000 DWUs erstellte Daten in Azure Synapse Analytics geladen.
 
-    Ausführliche Anweisungen zum Erstellen einer Azure Synapse Analytics-Datenbank finden Sie unter [Erstellen einer Azure Synapse Analytics-Datenbank](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md).  Um die bestmögliche Leistung des Ladevorgangs in Azure Synapse Analytics mithilfe von Polybase zu erreichen, wählen wir die maximale Anzahl von Data Warehouse-Einheiten (DWUs) aus, die in der Leistungseinstellung zulässig ist (6.000).
+    Ausführliche Anweisungen zum Erstellen einer Azure Synapse Analytics-Datenbank finden Sie unter [Erstellen einer Azure Synapse Analytics-Datenbank](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).  Um die bestmögliche Leistung des Ladevorgangs in Azure Synapse Analytics mithilfe von Polybase zu erreichen, wählen wir die maximale Anzahl von Data Warehouse-Einheiten (DWUs) aus, die in der Leistungseinstellung zulässig ist (6.000).
 
   > [!NOTE]
   > Wenn Sie aus Azure Blob Storage laden, ist die Leistung beim Laden von Daten direkt proportional zur Anzahl der DWUs, die Sie für Azure Synapse Analytics konfigurieren:
@@ -79,7 +79,7 @@ Dieser Artikel enthält detaillierte Anleitungen zum Verschieben von Daten in Az
 
     In diesem Experiment werden Daten mithilfe der Ressourcenklasse `xlargerc` in Azure Synapse Analytics geladen.
 
-    Um den bestmögliche Durchsatz zu erreichen, muss mithilfe eines Azure Synapse Analytics-Benutzers, der zur Ressourcenklasse `xlargerc` gehört, ein Kopiervorgang ausgeführt werden.  Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md) ausführen.  
+    Um den bestmögliche Durchsatz zu erreichen, muss mithilfe eines Azure Synapse Analytics-Benutzers, der zur Ressourcenklasse `xlargerc` gehört, ein Kopiervorgang ausgeführt werden.  Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md) ausführen.  
 * Erstellen Sie eine Zieltabellenschema in der Datenbank von Azure Synapse Analytics, indem Sie die folgende DDL-Anweisung ausführen:
 
     ```SQL  
@@ -112,51 +112,51 @@ Dieser Artikel enthält detaillierte Anleitungen zum Verschieben von Daten in Az
 
 ## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory**.
+2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory** .
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
-       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z. B. in „IhrnameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
-   2. Wählen Sie Ihr Azure- **Abonnement**aus.
+       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar** . Ändern Sie den Namen der Data Factory (z. B. in „IhrnameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
+   2. Wählen Sie Ihr Azure- **Abonnement** aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
-      2. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
+      2. Wählen Sie **Neu erstellen** , um einen Namen für eine Ressourcengruppe einzugeben.
    4. Wählen Sie einen **Standort** für die Data Factory aus.
-   5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
-   6. Klicken Sie auf **Erstellen**.
+   5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften** .  
+   6. Klicken Sie auf **Erstellen** .
 4. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
    ![Data Factory-Startseite](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren**, um den **Kopier-Assistenten** zu starten.
+5. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren** , um den **Kopier-Assistenten** zu starten.
 
    > [!NOTE]
-   > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren**, oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.
+   > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren** , oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com** . Versuchen Sie anschließend erneut, den Assistenten zu starten.
    >
    >
 
 ## <a name="step-1-configure-data-loading-schedule"></a>Schritt 1: Konfigurieren des Zeitplans für das Laden von Daten
 Der erste Schritt ist das Konfigurieren des Zeitplans für das Laden von Daten.  
 
-Auf der Seite **Eigenschaften**:
+Auf der Seite **Eigenschaften** :
 
 1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSqlDataWarehouse** ein.
 2. Wählen Sie die Option **Run once now (Einmalig ausführen)** aus.   
-3. Klicken Sie auf **Weiter**.  
+3. Klicken Sie auf **Weiter** .  
 
     ![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Schritt 2: Konfigurieren der Quelle
 In diesem Abschnitt werden die Schritte zum Konfigurieren der Quelle angezeigt: Azure Blob mit den TPC-H-Elementdateien mit 1 TB.
 
-1. Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter** .
 
     ![Kopier-Assistent – Seite Quelle auswählen](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Geben Sie die Verbindungsinformationen für das Azure Blob Storage-Konto ein, und klicken Sie auf **Weiter**.
+2. Geben Sie die Verbindungsinformationen für das Azure Blob Storage-Konto ein, und klicken Sie auf **Weiter** .
 
     ![Kopier-Assistent – Quellenverbindungsinformation](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. Wählen Sie den **Ordner** mit den TPC-H-Elementdateien und klicken Sie auf **Weiter**.
+3. Wählen Sie den **Ordner** mit den TPC-H-Elementdateien und klicken Sie auf **Weiter** .
 
     ![Kopier-Assistent – Seite Eingabeordner auswählen](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
@@ -167,32 +167,32 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren der Quelle angezeigt: 
 ## <a name="step-3-configure-destination"></a>Schritt 3: Konfigurieren des Ziels
 Dieser Abschnitt beschreibt das Konfigurieren des Ziels (Tabelle `lineitem`) in der Azure Synapse Analytics-Datenbank.
 
-1. Wählen Sie **Azure Synapse Analytics-** als Zielspeicher aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie **Azure Synapse Analytics-** als Zielspeicher aus, und klicken Sie auf **Weiter** .
 
     ![Kopier-Assistent – Ziel-Datenspeicher auswählen](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Geben Sie die Verbindungsinformationen für Azure Synapse Analytics ein.  Stellen Sie sicher, dass Sie den Benutzer angeben, der Mitglied der Rolle `xlargerc` ist (siehe Abschnitt **Voraussetzungen** für detaillierte Anweisungen), und klicken Sie auf **Weiter**.
+2. Geben Sie die Verbindungsinformationen für Azure Synapse Analytics ein.  Stellen Sie sicher, dass Sie den Benutzer angeben, der Mitglied der Rolle `xlargerc` ist (siehe Abschnitt **Voraussetzungen** für detaillierte Anweisungen), und klicken Sie auf **Weiter** .
 
     ![Kopier-Assistent: Zielverbindungsinformation](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Wählen Sie die Zieltabelle aus, und klicken Sie auf **Weiter**.
+3. Wählen Sie die Zieltabelle aus, und klicken Sie auf **Weiter** .
 
     ![Kopier-Assistent – Seite Zuordnung der Tabelle](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. Lassen Sie auf der Seite „Schemazuordnung“ die Option „Spaltenzuordnung anwenden“ deaktiviert, und klicken Sie auf **Weiter**.
+4. Lassen Sie auf der Seite „Schemazuordnung“ die Option „Spaltenzuordnung anwenden“ deaktiviert, und klicken Sie auf **Weiter** .
 
 ## <a name="step-4-performance-settings"></a>Schritt 4: Leistungseinstellungen
 
-**Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter**.
+**Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter** .
 
 ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>Schritt 5: Bereitstellen und Überwachen der Auslastungsergebnisse
-1. Klicken Sie für die Bereitstellung auf **Fertig stellen**.
+1. Klicken Sie für die Bereitstellung auf **Fertig stellen** .
 
     ![Kopier-Assistent: Seite 1 der Zusammenfassung](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-2. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie auf `Click here to monitor copy pipeline` um Ausführung und Fortschritt des Kopiervorgangs zu überwachen. Wählen Sie die Kopierpipeline aus, die Sie in der **Activity Windows**-Liste erstellt haben.
+2. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie auf `Click here to monitor copy pipeline` um Ausführung und Fortschritt des Kopiervorgangs zu überwachen. Wählen Sie die Kopierpipeline aus, die Sie in der **Activity Windows** -Liste erstellt haben.
 
     ![Kopier-Assistent: Seite 2 der Zusammenfassung](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 

@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: be5cb1c1e6ff428b3c4d4305c915e07d3880839c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c29e1e3fd42702e0eb02531f995c550738839a9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258386"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673719"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -37,7 +37,7 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie auf der Symbolleiste im Portal das Symbol **Verzeichnis + Abonnement** aus.
 1. Wählen Sie in der Liste **Favoriten** oder **Alle Verzeichnisse** den Azure Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
+1. Suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie es aus.
 1. Wählen Sie im Bereich **Azure Active Directory** die Option **App-Registrierungen** aus, um eine Liste aller Anwendungen anzuzeigen.
 1. Wählen Sie die Anwendung aus, in der Sie App-Rollen definieren möchten. Wählen Sie anschließend **Manifest** aus.
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.
@@ -101,8 +101,8 @@ Die Anzahl der definierten Rollen wirkt sich auf die Grenzwerte des Anwendungsma
 
 Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie diesen Rollen Benutzer und Gruppen zuweisen.
 
-1. Wählen Sie im Bereich **Azure Active Directory** im Navigationsmenü **Azure Active Directory** auf der linken Seite die Option **Unternehmensanwendungen**.
-1. Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
+1. Wählen Sie im Bereich **Azure Active Directory** im Navigationsmenü **Azure Active Directory** auf der linken Seite die Option **Unternehmensanwendungen** .
+1. Wählen Sie **Alle Anwendungen** , um eine Liste mit Ihren Anwendungen anzuzeigen.
 
      Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **Alle Anwendungen** die verschiedenen Filter verwenden, um den Inhalt der Liste einzugrenzen. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
 
@@ -126,7 +126,7 @@ Wenn sich Benutzer, denen verschiedene App-Rollen zugewiesen sind, bei der Anwen
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Hinzufügen von Autorisierung zu einer ASP.NET Core-Web-App mit App-Rollen und Rollenansprüchen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Implementieren der Autorisierung in Ihren Anwendungen mit Microsoft Identity Platform (Video)](https://www.youtube.com/watch?v=LRoc-na27l0)
+- [Implementieren der Autorisierung in Ihren Anwendungen mit Microsoft Identity Platform (Video)](https://www.youtube.com/watch?v=HdBSBSbgYQQ)
 - [Azure Active Directory, now with Group Claims and Application Roles](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862) (Azure Active Directory jetzt mit Gruppenansprüchen und Anwendungsrollen)
 - [Azure Active Directory-App-Manifest](./reference-app-manifest.md)
 - [ Azure AD-AD-Zugriffstoken](access-tokens.md)

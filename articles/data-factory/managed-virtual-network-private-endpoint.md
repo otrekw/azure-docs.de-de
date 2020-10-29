@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563997"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635778"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -55,7 +55,7 @@ Azure Data Factory unterstützt private Links. Der private Link ermöglicht Ihne
 
 Bei der Verwendung eines privaten Links wird der Datenverkehr zwischen Ihrem Datenspeicher und dem verwalteten virtuellen Netzwerk vollständig über das Microsoft-Backbone-Netzwerk übertragen. Private Link schützt vor einer möglichen Datenexfiltration. Ein privater Link zu einer Ressource wird durch die Erstellung eines privaten Endpunkts eingerichtet.
 
-Der private Endpunkt nutzt eine private IP-Adresse im verwalteten virtuellen Netzwerk, um den Dienst effektiv darin einzubinden. Private Endpunkte werden einer bestimmten Ressource in Azure und nicht dem gesamten Dienst zugeordnet. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link/).
+Der private Endpunkt nutzt eine private IP-Adresse im verwalteten virtuellen Netzwerk, um den Dienst effektiv darin einzubinden. Private Endpunkte werden einer bestimmten Ressource in Azure und nicht dem gesamten Dienst zugeordnet. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../private-link/index.yml).
 
 > [!NOTE]
 > Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen. 
@@ -94,6 +94,7 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - East US
 - USA (Ost) 2
 - USA, Westen-Mitte
+- USA (Westen)
 - USA, Westen 2
 - USA Süd Mitte
 - USA (Mitte)
@@ -102,6 +103,7 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - UK, Süden
 - Asien, Südosten
 - Australien (Osten)
+- Australien, Südosten
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Ausgehende Kommunikation über einen öffentlichen Endpunkt von einem verwaltetem virtuellen ADF-Netzwerk
 - Nur Port 443 wird für die ausgehende Kommunikation geöffnet.
