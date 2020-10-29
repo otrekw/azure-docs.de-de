@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: f29a34fd8916110355c0122fee9db29599a01231
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11cefb1a29f7139f137221ab6fb924cc656da15d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930332"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547196"
 ---
 # <a name="supported-versions-for-azure-database-for-mysql---flexible-server"></a>Unterstützte Versionen für Azure Database for MySQL – Flexible Server
 
@@ -43,6 +43,6 @@ Das Patchen von Versionsupdates zur Fehlerbehebung wird vom Dienst automatisch v
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
->[Erstellen einer PHP-App unter Windows mit MySQL](../../app-service/app-service-web-tutorial-php-mysql.md)<br/>
->[Erstellen einer PHP-App unter Linux mit MySQL](../../app-service/containers/tutorial-php-mysql-app.md)<br/>
->[Erstellen einer Java-basierten Spring-App mit MySQL](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)<br/>
+>[Erstellen einer PHP-App unter Windows mit MySQL](../../app-service/tutorial-php-mysql-app.md)<br/>
+>[Erstellen einer PHP-App unter Linux mit MySQL](../../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux)<br/>
+>[Erstellen einer Java-basierten Spring-App mit MySQL](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)<br/>

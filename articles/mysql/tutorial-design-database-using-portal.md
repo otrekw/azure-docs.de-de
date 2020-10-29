@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d0c4167192c42939e16dfd36bdc3eeef4b54b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906536"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543711"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for MySQL-Datenbank mithilfe des Azure-Portals
 
@@ -37,7 +37,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
 
-Ein Azure-Datenbank für MySQL-Server wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) erstellt.
+Ein Azure-Datenbank für MySQL-Server wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-pricing-tiers.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt.
 
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
 
@@ -45,7 +45,7 @@ Ein Azure-Datenbank für MySQL-Server wird mit einer definierten Gruppe von [Com
    
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png" alt-text="Navigieren zu MySQL":::
 
-3. Klicken Sie auf die Kachel **Azure Database for MySQL**. Füllen Sie das Azure Database for MySQL-Formular aus.
+3. Klicken Sie auf die Kachel **Azure Database for MySQL** . Füllen Sie das Azure Database for MySQL-Formular aus.
    
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="Navigieren zu MySQL":::
 
@@ -55,28 +55,28 @@ Ein Azure-Datenbank für MySQL-Server wird mit einer definierten Gruppe von [Com
     Subscription | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
     Resource group | *myresourcegroup* | Geben Sie einen neuen oder vorhandenen Ressourcengruppennamen an.
     Quelle auswählen | *Leer* | Wählen Sie *Leer* aus, um einen neuen Server ohne Vorlage zu erstellen. (Wählen Sie *Sicherung* aus, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for MySQL-Servers erstellen.)
-    Serveradministratoranmeldung | myadmin | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
+    Serveradministratoranmeldung | myadmin | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser** , **admin** , **administrator** , **root** , **guest** oder **public** lauten.
     Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto an. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
     Position | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
     Version | *Die neueste Version*| Die neueste Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
-    Tarif | **Universell**, **Gen 5**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 5*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtuelle Kerne**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
+    Tarif | **Universell** , **Gen 5** , **2 virtuelle Kerne** , **5 GB** , **7 Tage** , **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif** aus. Klicken Sie als Nächstes auf die Registerkarte **Universell** . *Gen 5* , *2 virtuelle Kerne* , *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration** , **Virtuelle Kerne** , **Speicher** und **Aufbewahrungszeit für Sicherung** . Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK** , um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="Navigieren zu MySQL":::
 
    > [!TIP]
    > Ist **Automatische Vergrößerung** aktiviert, erhöht Ihr Server den Speicher, wenn Sie sich dem zugeordneten Grenzwert nähern. Ihre Workload wird dadurch nicht beeinträchtigt.
 
-4. Klicken Sie auf **Überprüfen + erstellen**. Sie können in der Symbolleiste auf die Schaltfläche **Benachrichtigungen** klicken, um den Bereitstellungsprozess zu überwachen. Die Bereitstellung kann bis zu 20 Minuten dauern.
+4. Klicken Sie auf **Überprüfen + erstellen** . Sie können in der Symbolleiste auf die Schaltfläche **Benachrichtigungen** klicken, um den Bereitstellungsprozess zu überwachen. Die Bereitstellung kann bis zu 20 Minuten dauern.
 
 ## <a name="configure-firewall"></a>Konfigurieren der Firewall
 
 Azure SQL-Datenbanken für MySQL werden durch eine Firewall geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken im Server abgelehnt. Vor dem erstmaligen Herstellen einer Verbindung mit Azure-Datenbank für MySQL müssen Sie die Firewall konfigurieren, um die öffentliche Netzwerk-IP-Adresse (oder den IP-Adressbereich) des Clientcomputers hinzuzufügen.
 
-1. Klicken Sie auf den neu erstellten Server und dann auf **Verbindungssicherheit**.
+1. Klicken Sie auf den neu erstellten Server und dann auf **Verbindungssicherheit** .
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="Navigieren zu MySQL":::
-2. Wählen Sie **Meine IP-Adresse hinzufügen**, oder konfigurieren Sie hier Firewallregeln. Denken Sie nach dem Erstellen der Regeln daran, auf **Speichern** zu klicken.
+2. Wählen Sie **Meine IP-Adresse hinzufügen** , oder konfigurieren Sie hier Firewallregeln. Denken Sie nach dem Erstellen der Regeln daran, auf **Speichern** zu klicken.
 Sie können jetzt mit dem mysql-Befehlszeilentool oder dem Benutzeroberflächentool MySQL Workbench eine Verbindung mit dem Server herstellen.
 
 > [!TIP]
@@ -86,12 +86,12 @@ Sie können jetzt mit dem mysql-Befehlszeilentool oder dem Benutzeroberflächent
 
 Rufen Sie den vollqualifizierten **Servernamen** und **Anmeldenamen des Serveradministrators** für Ihre Azure-Datenbank für MySQL-Server aus dem Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit dem mysql-Befehlszeilentool eine Verbindung mit Ihrem Server herzustellen.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im linken Menü auf **Alle Ressourcen**, geben Sie den Namen ein, und suchen Sie nach Ihrer Azure-Datenbank für MySQL-Server. Wählen Sie den Servernamen aus, um die Details anzuzeigen.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im linken Menü auf **Alle Ressourcen** , geben Sie den Namen ein, und suchen Sie nach Ihrer Azure-Datenbank für MySQL-Server. Wählen Sie den Servernamen aus, um die Details anzuzeigen.
 
-2. Notieren Sie sich die Werte für **Servername** und **Anmeldename des Serveradministrators** auf der Seite **Übersicht**. Sie können neben jedem Feld auf die Schaltfläche „Kopieren“ klicken, um die Informationen in die Zwischenablage zu kopieren.
+2. Notieren Sie sich die Werte für **Servername** und **Anmeldename des Serveradministrators** auf der Seite **Übersicht** . Sie können neben jedem Feld auf die Schaltfläche „Kopieren“ klicken, um die Informationen in die Zwischenablage zu kopieren.
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="Navigieren zu MySQL":::
 
-In diesem Beispiel lautet der Servername *mydemoserver.mysql.database.azure.com* und die Serveradministratoranmeldung *myadmin\@mydemoserver*.
+In diesem Beispiel lautet der Servername *mydemoserver.mysql.database.azure.com* und die Serveradministratoranmeldung *myadmin\@mydemoserver* .
 
 ## <a name="connect-to-the-server-using-mysql"></a>Herstellen einer Verbindung mit dem Server unter Verwendung von mysql
 
@@ -166,7 +166,7 @@ SELECT * FROM inventory;
 
 Angenommen, Sie haben versehentlich eine wichtige Datenbanktabelle gelöscht und können diese Daten nicht einfach wiederherstellen. Mit Azure-Datenbank für MySQL können Sie den Zustand des Servers zu einem bestimmten Zeitpunkt wiederherstellen. Dadurch wird eine Kopie der Datenbanken auf einem neuen Server erstellt. Sie können diesen neuen Server zur Wiederherstellung gelöschter Daten verwenden. Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem Zeitpunkt wiederhergestellt, der vor dem Hinzufügen der Tabelle liegt.
 
-1. Suchen Sie im Azure-Portal Ihre Azure-Datenbank für MySQL. Klicken Sie auf der Seite **Übersicht** auf der Symbolleiste auf **Wiederherstellen**. Die Seite „Wiederherstellen“ wird geöffnet.
+1. Suchen Sie im Azure-Portal Ihre Azure-Datenbank für MySQL. Klicken Sie auf der Seite **Übersicht** auf der Symbolleiste auf **Wiederherstellen** . Die Seite „Wiederherstellen“ wird geöffnet.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="Navigieren zu MySQL":::
 
@@ -174,12 +174,12 @@ Angenommen, Sie haben versehentlich eine wichtige Datenbanktabelle gelöscht und
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="Navigieren zu MySQL":::
 
-   - **Wiederherstellungspunkt**: Wählen Sie im angezeigten Zeitraum einen Zeitpunkt aus, den Sie wiederherstellen möchten. Stellen Sie sicher, dass Sie die lokale Zeitzone in UTC konvertieren.
-   - **Auf neuem Server wiederherstellen**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
-   - **Standort**: Die Region ist identisch mit dem Quellserver und kann nicht geändert werden.
+   - **Wiederherstellungspunkt** : Wählen Sie im angezeigten Zeitraum einen Zeitpunkt aus, den Sie wiederherstellen möchten. Stellen Sie sicher, dass Sie die lokale Zeitzone in UTC konvertieren.
+   - **Auf neuem Server wiederherstellen** : Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
+   - **Standort** : Die Region ist identisch mit dem Quellserver und kann nicht geändert werden.
    - **Tarif:** Der Tarif ist identisch mit dem Quellserver und kann nicht geändert werden.
    
-3. Klicken Sie auf **OK**, um den Status des Servers [auf einen Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Das Wiederherstellen des Zustands eines Servers erstellt eine neue Kopie des Servers zum angegebenen Zeitpunkt.
+3. Klicken Sie auf **OK** , um den Status des Servers [auf einen Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Das Wiederherstellen des Zustands eines Servers erstellt eine neue Kopie des Servers zum angegebenen Zeitpunkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da49a6f5299ef4e53b06acd5ce3fb838915a661
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619915"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633925"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -28,7 +28,7 @@ In diesem Artikel ist die grundlegenden Sicherheitsinfrastruktur beschrieben, di
 
 In einer Data Factory-Lösung erstellen Sie mindestens eine [Pipeline](data-factory-create-pipelines.md). Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Diese Pipelines befinden sich in der Region, in der die Data Factory erstellt wurde. 
 
-Obwohl Data Factory nur in den Regionen **USA, Westen**, **USA, Osten** und **Europa, Norden** verfügbar ist, ist der Datenverschiebungsdienst [global in verschiedenen Regionen](data-factory-data-movement-activities.md#global) verfügbar. Der Data Factory-Dienst stellt sicher, dass Daten einen geografischen Bereich/eine geografische Region nicht verlassen, es sei denn, Sie weisen den Dienst ausdrücklich an, eine alternative Region zu verwenden, wenn der Datenverschiebungsdienst noch nicht in dieser Region bereitgestellt wurde. 
+Obwohl Data Factory nur in den Regionen **USA, Westen** , **USA, Osten** und **Europa, Norden** verfügbar ist, ist der Datenverschiebungsdienst [global in verschiedenen Regionen](data-factory-data-movement-activities.md#global) verfügbar. Der Data Factory-Dienst stellt sicher, dass Daten einen geografischen Bereich/eine geografische Region nicht verlassen, es sei denn, Sie weisen den Dienst ausdrücklich an, eine alternative Region zu verwenden, wenn der Datenverschiebungsdienst noch nicht in dieser Region bereitgestellt wurde. 
 
 Azure Data Factory selbst speichert keine Daten mit Ausnahme für verknüpfte Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Der Dienst ermöglicht das Erstellen von datengesteuerten Workflows, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](data-factory-data-movement-activities.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Compute Services](data-factory-compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem können Sie mit programmgesteuerten und UI-basierten Mechanismen [Workflows überwachen und verwalten](data-factory-monitor-manage-pipelines.md) .
 
@@ -49,13 +49,13 @@ In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenv
 
 ## <a name="cloud-scenarios"></a>Cloudszenarien
 ### <a name="securing-data-store-credentials"></a>Schützen von Datenspeicher-Anmeldeinformationen
-Azure Data Factory schützt Ihre Datenspeicher-Anmeldeinformationen dadurch, dass sie **verschlüsselt** werden, wozu **von Microsoft verwaltete Zertifikate** verwendet werden. Diese Zertifikate werden alle **zwei Jahre** ausgetauscht (wozu Erneuerung des Zertifikats und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem **von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage** gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../../security/fundamentals/storage-overview.md).
+Azure Data Factory schützt Ihre Datenspeicher-Anmeldeinformationen dadurch, dass sie **verschlüsselt** werden, wozu **von Microsoft verwaltete Zertifikate** verwendet werden. Diese Zertifikate werden alle **zwei Jahre** ausgetauscht (wozu Erneuerung des Zertifikats und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem **von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage** gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../../storage/blobs/security-recommendations.md).
 
 ### <a name="data-encryption-in-transit"></a>Datenverschlüsselung während der Übertragung
 Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübertragungen zwischen Datenverschiebungsdiensten in Data Factory und einem Clouddatenspeicher über einen sicheren Kanal (HTTPS oder TLS).
 
 > [!NOTE]
-> Für alle Verbindungen mit **Azure SQL-Datenbank** und **Azure Synapse Analytics** ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit einem JSON-Editor erstellen, fügen Sie die **encryption**-Eigenschaft zur Verbindungszeichenfolge (**connection string**) hinzu, und legen Sie die Eigenschaft auf **true** fest. Wenn Sie den [Kopier-Assistenten](data-factory-azure-copy-wizard.md) verwenden, wird diese Eigenschaft von dem Assistenten standardmäßig festgelegt. Für **Azure Storage** können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
+> Für alle Verbindungen mit **Azure SQL-Datenbank** und **Azure Synapse Analytics** ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit einem JSON-Editor erstellen, fügen Sie die **encryption** -Eigenschaft zur Verbindungszeichenfolge ( **connection string** ) hinzu, und legen Sie die Eigenschaft auf **true** fest. Wenn Sie den [Kopier-Assistenten](data-factory-azure-copy-wizard.md) verwenden, wird diese Eigenschaft von dem Assistenten standardmäßig festgelegt. Für **Azure Storage** können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
 
 ### <a name="data-encryption-at-rest"></a>Datenverschlüsselung ruhender Daten
 Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es empfiehlt sich, dass Sie einen Datenverschlüsselungsmechanismus für solche Datenspeicher aktivieren. 
@@ -64,7 +64,7 @@ Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es e
 Transparent Data Encryption (TDE) in Azure Synapse Analytics bietet Schutz vor der Bedrohung durch schädliche Aktivitäten, indem die ruhenden Daten in Echtzeit ver- und entschlüsselt werden. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
-Azure SQL-Datenbank unterstützt auch Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparent Data Encryption mit Azure SQL-Datenbank](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
+Azure SQL-Datenbank unterstützt auch Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparent Data Encryption mit Azure SQL-Datenbank](/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store bietet auch eine Verschlüsselung für Daten, die im Konto gespeichert sind. Wenn diese Option aktiviert ist, verschlüsselt Data Lake Store Daten automatisch vor der dauerhaften Speicherung und entschlüsselt Daten vor dem Abrufen, sodass der Vorgang für den Client, der auf die Daten zugreift, transparent ist. Weitere Informationen finden Sie unter [Sicherheit in Azure Data Lake Store](../../data-lake-store/data-lake-store-security-overview.md). 
@@ -92,12 +92,12 @@ Der **Befehlskanal** ermöglicht Kommunikation zwischen Datenverschiebungsdienst
 Die Anmeldeinformationen für Ihre lokalen Datenspeicher sind lokal gespeichert (nicht in der Cloud). Sie können auf drei verschiedene Arten festgelegt werden. 
 
 - Verwenden von **Nur-Text** (weniger sicher) über HTTPS aus dem Azure-Portal/Kopier-Assistenten. Die Anmeldeinformationen werden im Nur-Text-Format an das lokale Gateway übergeben.
-- Verwenden der **JavaScript-Kryptografiebibliothek aus dem Kopier-Assistenten**.
+- Verwenden der **JavaScript-Kryptografiebibliothek aus dem Kopier-Assistenten** .
 - Verwenden der **ClickOnce-basierten Anwendung „Anmeldeinformationsverwaltung“** . Die ClickOnce-Anwendung wird auf dem lokalen Computer ausgeführt, der Zugriff auf das Gateway hat, und legt die Anmeldeinformationen für den Datenspeicher fest. Diese Option und die nächste sind die sichersten Optionen. Die Anwendung „Anmeldeinformationsverwaltung“ verwendet standardmäßig den Port 8050 auf dem Computer mit dem Gateway für sichere Kommunikation.  
-- Verwenden Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue), um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen, die von diesem Cmdlet zurückgegeben wurden, dem **EncryptedCredential**-Element des **connectionString**-Werts in der JSON-Datei, die Sie mit dem [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice)-Cmdlet verwenden, oder im JSON-Codeausschnitt im Data Factory-Editor im Portal hinzufügen. Diese Option und die ClickOnce-Anwendung sind die sichersten Optionen. 
+- Verwenden Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue), um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen, die von diesem Cmdlet zurückgegeben wurden, dem **EncryptedCredential** -Element des **connectionString** -Werts in der JSON-Datei, die Sie mit dem [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice)-Cmdlet verwenden, oder im JSON-Codeausschnitt im Data Factory-Editor im Portal hinzufügen. Diese Option und die ClickOnce-Anwendung sind die sichersten Optionen. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Verschlüsselung über die JavaScript-Kryptografiebibliothek
-Sie können Datenspeicher-Anmeldeinformationen über die [JavaScript-Kryptografiebibliothek](https://www.microsoft.com/download/details.aspx?id=52439) aus dem [Kopier-Assistenten](data-factory-copy-wizard.md) verschlüsseln. Wenn Sie diese Option auswählen, ruft der Kopier-Assistent den öffentlichen Schlüssel des Gateways ab und verwendet diesen Schlüssel, um die Datenspeicher-Anmeldeinformationen zu verschlüsseln. Die Anmeldeinformationen werden vom Gatewaycomputer entschlüsselt und durch Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) geschützt.
+Sie können Datenspeicher-Anmeldeinformationen über die [JavaScript-Kryptografiebibliothek](https://www.microsoft.com/download/details.aspx?id=52439) aus dem [Kopier-Assistenten](data-factory-copy-wizard.md) verschlüsseln. Wenn Sie diese Option auswählen, ruft der Kopier-Assistent den öffentlichen Schlüssel des Gateways ab und verwendet diesen Schlüssel, um die Datenspeicher-Anmeldeinformationen zu verschlüsseln. Die Anmeldeinformationen werden vom Gatewaycomputer entschlüsselt und durch Windows-[DPAPI](/previous-versions/ms995355(v=msdn.10)) geschützt.
 
 **Unterstützte Browser:** IE8, IE9, IE10, IE11, Microsoft Edge und der aktuelle Firefox-, Chrome-, Opera- und Safari-Browser. 
 
@@ -106,7 +106,7 @@ Sie können die ClickOnce-basierte Anwendung „Anmeldeinformationsverwaltung“
   
 ![HTTPS-Port für das Gateway](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
 
-Derzeit verwendet das Datenverwaltungsgateway ein einzelnes **Zertifikat**. Dieses Zertifikat wird während der Gatewayinstallation erstellt (gilt für Datenverwaltungsgateway, das nach November 2016 erstellt wurde, und Version 2.4.xxxx.x oder höher). Sie können dieses Zertifikat durch Ihr eigenes SSL/TLS-Zertifikat ersetzen. Dieses Zertifikat wird von der Anwendung „Anmeldeinformationsverwaltung“ verwendet, um sicher eine Verbindung mit dem Gatewaycomputer zum Festlegen von Datenspeicher-Anmeldeinformationen herzustellen. Die Anwendung speichert die Datenspeicher-Anmeldeinformationen sicher lokal, indem sie die Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) auf dem Computer mit dem Gateway verwendet. 
+Derzeit verwendet das Datenverwaltungsgateway ein einzelnes **Zertifikat** . Dieses Zertifikat wird während der Gatewayinstallation erstellt (gilt für Datenverwaltungsgateway, das nach November 2016 erstellt wurde, und Version 2.4.xxxx.x oder höher). Sie können dieses Zertifikat durch Ihr eigenes SSL/TLS-Zertifikat ersetzen. Dieses Zertifikat wird von der Anwendung „Anmeldeinformationsverwaltung“ verwendet, um sicher eine Verbindung mit dem Gatewaycomputer zum Festlegen von Datenspeicher-Anmeldeinformationen herzustellen. Die Anwendung speichert die Datenspeicher-Anmeldeinformationen sicher lokal, indem sie die Windows-[DPAPI](/previous-versions/ms995355(v=msdn.10)) auf dem Computer mit dem Gateway verwendet. 
 
 > [!NOTE]
 > Ältere Gateways, die vor November 2016 installiert wurden oder die Version 2.3.xxxx.x haben, verwenden weiterhin Anmeldeinformationen, die in der Cloud verschlüsselt und gespeichert sind. Selbst wenn Sie das Gateway auf die neueste Version aktualisieren, werden die Anmeldeinformationen nicht auf einen lokalen Computer migriert.    
@@ -118,7 +118,7 @@ Derzeit verwendet das Datenverwaltungsgateway ein einzelnes **Zertifikat**. Dies
   
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
-Alle Datenübertragungen erfolgen über den sicheren Kanal **HTTPS** und **TLS über TCP**, um Man-in-the-Middle-Angriffe während der Kommunikation mit Azure-Diensten zu verhindern.
+Alle Datenübertragungen erfolgen über den sicheren Kanal **HTTPS** und **TLS über TCP** , um Man-in-the-Middle-Angriffe während der Kommunikation mit Azure-Diensten zu verhindern.
  
 Sie können auch [IPSec-VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) oder [ExpressRoute](../../expressroute/expressroute-introduction.md) verwenden, um den Kommunikationskanal zwischen Ihrem lokalen Netzwerk und Azure zusätzlich zu schützen.
 
@@ -147,7 +147,7 @@ Die folgenden Abbildungen veranschaulichen die Verwendung von Datenverwaltungsga
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk  
 In einem Unternehmen wird eine **Unternehmensfirewall** auf dem zentralen Router der Organisation ausgeführt. Außerdem wird die **Windows-Firewall** als Daemon auf dem lokalen Computer ausgeführt, auf dem das Gateway installiert ist. 
 
-Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und die Domänenanforderungen für die **Unternehmensfirewall**.
+Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und die Domänenanforderungen für die **Unternehmensfirewall** .
 
 | Domänennamen | Ausgehende Ports | BESCHREIBUNG |
 | ------------ | -------------- | ----------- | 
@@ -160,7 +160,7 @@ Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und di
 > [!NOTE] 
 > Sie müssen Ports bzw. Filterdomänen je nach Vorgabe der jeweiligen Datenquelle möglicherweise auf Ebene der Unternehmensfirewall verwalten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.   
 
-Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für die **Windows-Firewall**.
+Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für die **Windows-Firewall** .
 
 | Eingehende Ports | BESCHREIBUNG | 
 | ------------- | ----------- | 
@@ -174,9 +174,9 @@ Einige Datenspeicher in der Cloud erfordern auch die Genehmigung der IP-Adresse 
 Die folgenden Clouddatenspeicher erfordern die Genehmigung der IP-Adresse des Gatewaycomputers. Einige dieser Datenspeicher erfordern möglicherweise standardmäßig keine Genehmigung der IP-Adresse. 
 
 - [Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md) 
-- [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
+- [Azure Cosmos DB](../../cosmos-db/how-to-configure-firewall.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen

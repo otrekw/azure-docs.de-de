@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0709152631037e7561094082c8ce02b860fd4edc
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f4782b923222208bbf759ba8415162621a55e0e1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951558"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631154"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure-Sicherheitsbaseline für Azure Cognitive Search
 
@@ -283,8 +283,8 @@ Cognitive Search-Rollen sind Berechtigungen zugeordnet, die Verwaltungsaufgaben 
 
 - [Erstellen und Verwalten von API-Schlüsseln für einen Dienst für die kognitive Azure-Suche](./search-security-api-keys.md)
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center-Überwachung** : Zurzeit nicht verfügbar
 
@@ -596,7 +596,7 @@ Sorgen Sie für entsprechende (Lese-) Berechtigungen auf Ihrem Mandanten, und z�
 
 - [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](../governance/resource-graph/first-query-portal.md) 
 
-- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription) 
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -740,7 +740,7 @@ Sie können auch die Empfehlungen von Azure Security Center als sichere Konfigur
 
 - [Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Cognitive Search](./security-controls-policy.md)
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias)
 
 **Azure Security Center-Überwachung** : Zurzeit nicht verfügbar
 
@@ -862,7 +862,7 @@ Zusätzlich können Sie Azure Automation verwenden, um Konfigurationsänderungen
 
 - [Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität](./search-howto-managed-identities-data-sources.md)
 
-- [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung mithilfe einer verwalteten Identität](./search-security-manage-encryption-keys.md#3---create-a-service-identity)
+- [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung mithilfe einer verwalteten Identität](./search-security-manage-encryption-keys.md)
 
 **Azure Security Center-Überwachung** : Zurzeit nicht verfügbar
 
@@ -930,7 +930,7 @@ Befolgen Sie für alle Computeressourcen, die sich im Besitz Ihrer Organisation 
 
 - [Sichern und Wiederherstellen eines Azure Cognitive Search-Index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center-Überwachung** : Nicht verfügbar
 
@@ -942,7 +942,7 @@ Befolgen Sie für alle Computeressourcen, die sich im Besitz Ihrer Organisation 
 
 - [Sichern und Wiederherstellen eines Azure Cognitive Search-Index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center-Überwachung** : Nicht verfügbar
 

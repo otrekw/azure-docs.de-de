@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522906"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634911"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Datenkonsistenzprüfung in der Kopieraktivität (Vorschau)
 
@@ -79,7 +79,7 @@ linkedServiceName | Der verknüpfte Dienst von [Azure Blob Storage](connector-az
 path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein
 
 >[!NOTE]
->- Beim Kopieren von Binärdateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft ADF unter Verwendung der [Azure-Blob-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) und der [Azure Data Lake Storage Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt ADF nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt ADF ContentMD5 in das Ziel. Dies kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
+>- Beim Kopieren von Binärdateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft ADF unter Verwendung der [Azure-Blob-API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) und der [Azure Data Lake Storage Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt ADF nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt ADF ContentMD5 in das Ziel. Dies kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
 >- Beim Kopieren von Binärdateien zwischen Speichern führt ADF eine Überprüfung der Dateigröße durch.
 
 ## <a name="monitoring"></a>Überwachung
@@ -106,14 +106,14 @@ Nach Abschluss aller Kopieraktivitätsausführungen wird das Ergebnis der Datenk
 ```
 Hier können Sie die Details der Datenkonsistenzprüfung aus der Eigenschaft „dataConsistencyVerification“ sehen.
 
-Wert von **VerificationResult**: 
--   **Überprüft**:  Ihre kopierten Daten wurden auf Konsistenz zwischen Quell- und Zielspeicher überprüft. 
+Wert von **VerificationResult** : 
+-   **Überprüft** :  Ihre kopierten Daten wurden auf Konsistenz zwischen Quell- und Zielspeicher überprüft. 
 -   **NotVerified** (NichtÜberprüft): Ihre kopierten Daten wurden nicht auf Konsistenz überprüft, weil Sie „validateDataConsistency“ in der Kopieraktivität nicht aktiviert haben. 
--   **Nicht unterstützt**: Ihre kopierten Daten wurden nicht auf Konsistenz überprüft, weil die Datenkonsistenzprüfung bei diesem bestimmten Kopierpaar nicht unterstützt wird. 
+-   **Nicht unterstützt** : Ihre kopierten Daten wurden nicht auf Konsistenz überprüft, weil die Datenkonsistenzprüfung bei diesem bestimmten Kopierpaar nicht unterstützt wird. 
 
-Wert von **InconsistentData**: 
--   **Gefunden**: Die ADF-Kopieraktivität hat inkonsistente Daten gefunden. 
--   **Übersprungen**: Die ADF-Kopieraktivität hat inkonsistente Daten gefunden und übersprungen. 
+Wert von **InconsistentData** : 
+-   **Gefunden** : Die ADF-Kopieraktivität hat inkonsistente Daten gefunden. 
+-   **Übersprungen** : Die ADF-Kopieraktivität hat inkonsistente Daten gefunden und übersprungen. 
 -   **Keine:** Die ADF-Kopieraktivität hat keine inkonsistenten Daten gefunden. Der Grund: Bei der Überprüfung wurde festgestellt, dass Ihre Daten zwischen Quell- und Zielspeicher konsistent sind, oder Sie haben „validateDataConsistency“ in der Kopieraktivität deaktiviert. 
 
 ### <a name="session-log-from-copy-activity"></a>Sitzungsprotokoll aus der Kopieraktivität
@@ -144,5 +144,3 @@ Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
 - [Copy activity fault tolerance (Fehlertoleranz der Kopieraktivität)](copy-activity-fault-tolerance.md)
-
-

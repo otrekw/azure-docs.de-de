@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 0d886fc6797011ff3a0adeb69f50358ece9c5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252169"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547502"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutorial: Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub
 
@@ -72,21 +72,21 @@ Wenn Sie in einer vorherigen Schnellstartanleitung oder einem Tutorial einen IoT
 
 Ein Gerät muss für Ihren Hub authentifiziert werden, bevor es Daten mit dem Hub austauschen kann. Sie können das Tool **IoT-Geräte** im Abschnitt **Geräteverwaltung** des Portals verwenden, um Ihre Geräte zu verwalten und die genutzten Authentifizierungsschlüssel zu überprüfen. In diesem Abschnitt des Tutorials fügen Sie ein neues Testgerät hinzu, rufen den dazugehörigen Schlüssel ab und stellen sicher, dass das Testgerät eine Verbindung mit dem Hub herstellen kann. Später setzen Sie den Authentifizierungsschlüssel zurück, um zu verfolgen, was passiert, wenn für ein Gerät ein veralteter Schlüssel verwendet wird. In diesem Abschnitt des Tutorials wird das Azure-Portal verwendet, um ein Gerät zu erstellen, zu verwalten und zu überwachen, und außerdem wird das Beispiel für einen Node.js-Gerätesimulator genutzt.
 
-Melden Sie sich am Portal an, und navigieren Sie zu Ihrem IoT Hub. Navigieren Sie anschließend zum Tool **IoT-Geräte**:
+Melden Sie sich am Portal an, und navigieren Sie zu Ihrem IoT Hub. Navigieren Sie anschließend zum Tool **IoT-Geräte** :
 
 ![Tool „IoT-Geräte“](media/tutorial-connectivity/iot-devices-tool.png)
 
-Klicken Sie zum Registrieren eines neuen Geräts auf **+ Hinzufügen**, legen Sie die **Geräte-ID** auf **MyTestDevice** fest, und klicken Sie auf **Speichern**:
+Klicken Sie zum Registrieren eines neuen Geräts auf **+ Hinzufügen** , legen Sie die **Geräte-ID** auf **MyTestDevice** fest, und klicken Sie auf **Speichern** :
 
 ![Hinzufügen eines neuen Geräts](media/tutorial-connectivity/add-device.png)
 
-Klicken Sie zum Abrufen der Verbindungszeichenfolge für **MyTestDevice** in der Liste mit den Geräten darauf, und kopieren Sie anschließend den Wert von **Verbindungszeichenfolge – Primärschlüssel**. Die Verbindungszeichenfolge enthält den *Freigegebenen Zugriffsschlüssel* für das Gerät.
+Klicken Sie zum Abrufen der Verbindungszeichenfolge für **MyTestDevice** in der Liste mit den Geräten darauf, und kopieren Sie anschließend den Wert von **Verbindungszeichenfolge – Primärschlüssel** . Die Verbindungszeichenfolge enthält den *Freigegebenen Zugriffsschlüssel* für das Gerät.
 
 ![Abrufen der Geräte-Verbindungszeichenfolge](media/tutorial-connectivity/copy-connection-string.png)
 
 Führen Sie zum Simulieren des Sendens von Telemetriedaten an Ihren IoT Hub per **MyTestDevice** die Node.js-Anwendung für die Gerätesimulation aus, die Sie zuvor heruntergeladen haben.
 
-Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests**.
+Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests** .
 
 Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die Anwendung zur Simulation eines Geräts auszuführen. Verwenden Sie die Verbindungszeichenfolge des Geräts, die Sie beim Hinzufügen des Geräts im Portal notiert haben.
 
@@ -146,7 +146,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 Notieren Sie sich den gesamten Text des generierten SAS-Tokens. Ein SAS-Token sieht wie folgt aus: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests**.
+Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests** .
 
 Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die Anwendung zur Simulation eines Geräts auszuführen:
 
@@ -187,7 +187,7 @@ Rufen Sie zunächst mit dem folgenden Befehl die aktuelle Verbindungszeichenfolg
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Navigieren Sie zum Ausführen eines simulierten Geräts, mit dem Nachrichten gesendet werden, im heruntergeladenen Code zum Ordner **iot-hub\Tutorials\ConnectivityTests**.
+Navigieren Sie zum Ausführen eines simulierten Geräts, mit dem Nachrichten gesendet werden, im heruntergeladenen Code zum Ordner **iot-hub\Tutorials\ConnectivityTests** .
 
 Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die Anwendung zur Simulation eines Geräts auszuführen:
 
@@ -232,7 +232,7 @@ Wenn das simulierte Gerät den direkten Methodenaufruf ohne Fehler empfangen hat
 
 ## <a name="check-twin-synchronization"></a>Überprüfen der Zwillingssynchronisierung
 
-Für Geräte werden Zwillinge verwendet, um den Zustand zwischen dem Gerät und dem Hub zu synchronisieren. In diesem Abschnitt verwenden Sie CLI-Befehle zum Senden von _gewünschten Eigenschaften_ an ein Gerät und zum Lesen der vom Gerät gesendeten _gemeldeten Eigenschaften_.
+Für Geräte werden Zwillinge verwendet, um den Zustand zwischen dem Gerät und dem Hub zu synchronisieren. In diesem Abschnitt verwenden Sie CLI-Befehle zum Senden von _gewünschten Eigenschaften_ an ein Gerät und zum Lesen der vom Gerät gesendeten _gemeldeten Eigenschaften_ .
 
 Das in diesem Abschnitt verwendete simulierte Gerät sendet bei jedem Start gemeldete Eigenschaften an den Hub und gibt die gewünschten Eigenschaften jeweils in der Konsole aus, wenn diese empfangen werden.
 
@@ -248,7 +248,7 @@ Verwenden Sie den folgenden CLI-Befehl, um sicherzustellen, dass der Hub die gem
 az iot hub device-twin show --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-In der Ausgabe des Befehls wird die **devicelaststarted**-Eigenschaft im Abschnitt mit den gemeldeten Eigenschaften angezeigt. Mit dieser Eigenschaft werden das Datum und die Uhrzeit des Zeitpunkts angezeigt, zu dem Sie das simulierte Gerät zum letzten Mal gestartet haben.
+In der Ausgabe des Befehls wird die **devicelaststarted** -Eigenschaft im Abschnitt mit den gemeldeten Eigenschaften angezeigt. Mit dieser Eigenschaft werden das Datum und die Uhrzeit des Zeitpunkts angezeigt, zu dem Sie das simulierte Gerät zum letzten Mal gestartet haben.
 
 ![Anzeigen von gemeldeten Eigenschaften](media/tutorial-connectivity/reported-properties.png)
 
@@ -266,11 +266,11 @@ Zusätzlich zum Empfangen der vorgenommenen Änderungen von gewünschten Eigensc
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorials-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen**.
+Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorials-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial wurde beschrieben, wie Sie Folgendes überprüfen: Ihre Geräteschlüssel, die Gerät-zu-Cloud-Konnektivität, die Cloud-zu-Gerät-Konnektivität und die Synchronisierung der Gerätezwillinge. Weitere Informationen zur Überwachung Ihres IoT Hub finden Sie im Artikel mit der Anleitung für die IoT Hub-Überwachung.
 
 > [!div class="nextstepaction"]
-> [Überwachen per Diagnose](iot-hub-monitor-resource-health.md)
+> [Überwachen von IoT Hub](monitor-iot-hub.md)

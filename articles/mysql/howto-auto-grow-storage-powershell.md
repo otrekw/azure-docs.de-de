@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa9f9b07eb20c995bc0cf47dd3bf72f236c3112
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503309"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546822"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>Automatische Speichervergrößerung für einen Azure Database for MySQL-Server mithilfe von PowerShell
 
 In diesem Artikel ist beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for MySQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.
 
-Die automatische Speichervergrößerung verhindert, dass Ihr Server [das Speicherlimit erreicht](/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit) und dann schreibgeschützt wird. Bei Servern mit maximal 100 GB bereitgestelltem Speicher wird die Größe um 5 GB erhöht, wenn der freie Speicherplatz unter 10 % liegt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die Größe um 5 % erhöht, wenn der freie Speicherplatz unter 10 GB liegt. Die maximalen Speicherlimits gelten so, wie im Abschnitt „Speicher“ des Artikels [Azure Database for MySQL – Tarife](/azure/mysql/concepts-pricing-tiers#storage) angegeben.
+Die automatische Speichervergrößerung verhindert, dass Ihr Server [das Speicherlimit erreicht](./concepts-pricing-tiers.md#reaching-the-storage-limit) und dann schreibgeschützt wird. Bei Servern mit maximal 100 GB bereitgestelltem Speicher wird die Größe um 5 GB erhöht, wenn der freie Speicherplatz unter 10 % liegt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die Größe um 5 % erhöht, wenn der freie Speicherplatz unter 10 GB liegt. Die maximalen Speicherlimits gelten so, wie im Abschnitt „Speicher“ des Artikels [Azure Database for MySQL – Tarife](./concepts-pricing-tiers.md#storage) angegeben.
 
 > [!IMPORTANT]
 > Beachten Sie, dass der Speicher nur zentral hochskaliert und nicht herunterskaliert werden kann.

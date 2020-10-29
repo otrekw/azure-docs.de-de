@@ -1,17 +1,15 @@
 ---
 title: Durchführen von Upgrades für AKS-Knotenimages (Azure Kubernetes Service)
 description: Erfahren Sie, wie Sie für die Images auf AKS-Clusterknoten und Knotenpools ein Upgrade durchführen.
-author: laurenhughes
-ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6abb0eb98e2548e53ff67a943970613e6981c2b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055684"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631120"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade für AKS-Knotenimages (Azure Kubernetes Service)
 
@@ -27,7 +25,7 @@ Informationen zum Upgrade der Kubernetes-Version für Ihren Cluster finden Sie u
 
 ## <a name="install-the-aks-cli-extension"></a>Installieren der CLI-Erweiterung für AKS
 
-Vor Veröffentlichung der nächsten CLI-Hauptversion benötigen Sie die CLI-Erweiterung *aks-preview*, um Upgrades für Knotenimages durchführen zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+Vor Veröffentlichung der nächsten CLI-Hauptversion benötigen Sie die CLI-Erweiterung *aks-preview* , um Upgrades für Knotenimages durchführen zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli
 # Install the aks-preview extension

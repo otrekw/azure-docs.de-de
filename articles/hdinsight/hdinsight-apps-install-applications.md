@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34c6fe58873a614ee8502e052c2af5aaed898cd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016035"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547944"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -52,12 +52,12 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
 **Installieren einer HDInsight-Anwendung**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**.
+2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster** .
 3. Wählen Sie dann einen HDInsight-Cluster aus der Liste aus.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen**. Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
+4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen** . Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
    
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. Klicken Sie im Menü auf **+ Hinzufügen**. Ihnen wird eine Liste der verfügbaren Anwendungen angezeigt.  Wenn **+ Hinzufügen** ausgegraut ist, sind keine Anwendungen für diese Version des HDInsight-Clusters verfügbar.
+5. Klicken Sie im Menü auf **+ Hinzufügen** . Ihnen wird eine Liste der verfügbaren Anwendungen angezeigt.  Wenn **+ Hinzufügen** ausgegraut ist, sind keine Anwendungen für diese Version des HDInsight-Clusters verfügbar.
    
     ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
 6. Klicken Sie auf eine der verfügbaren Anwendungen, und folgen Sie dann den Anweisungen zum Akzeptieren der rechtlichen Bedingungen.
@@ -76,9 +76,9 @@ Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen
 **Auflisten von HDInsight-Anwendungen und Eigenschaften**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**.
+2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster** .
 3. Wählen Sie dann einen HDInsight-Cluster aus der Liste aus.
-4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen**. Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
+4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen** . Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
    
     ![HDInsight-Anwendungen – Installierte Apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Wählen Sie eine der installierten Anwendungen aus, um die Eigenschaften anzuzeigen. Die Eigenschaft zeigt Folgendes:
@@ -91,7 +91,7 @@ Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen
     |SSH-Endpunkt |Sie können über SSH eine Verbindung mit dem Edgeknoten herstellen. Die SSH-Anmeldeinformationen sind mit den SSH-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
     |BESCHREIBUNG | Anwendungsbeschreibung |
 
-6. Klicken Sie zum Löschen einer Anwendung mit der rechten Maustaste darauf, und klicken Sie dann im Kontextmenü auf **Löschen**.
+6. Klicken Sie zum Löschen einer Anwendung mit der rechten Maustaste darauf, und klicken Sie dann im Kontextmenü auf **Löschen** .
 
 ## <a name="connect-to-the-edge-node"></a>Herstellen einer Verbindung mit dem Edgeknoten
 Sie können per HTTP und SSH eine Verbindung mit dem Edgeknoten herstellen. Sie finden die Endpunktinformationen im [Portal](#list-installed-hdinsight-apps-and-properties). Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -104,8 +104,7 @@ Weitere Informationen finden Sie unter [Behandeln von Installationsproblemen](hd
 ## <a name="next-steps"></a>Nächste Schritte
 * [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 * [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
-* [MSDN: Installieren einer HDInsight-Anwendung](https://msdn.microsoft.com/library/mt706515.aspx): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
+* [MSDN: Installieren einer HDInsight-Anwendung](/rest/api/hdinsight/hdinsight-application): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
 * [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 * [Erstellen von Linux-basierten Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie Resource Manager-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 * [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md): Erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster, Testen von HDInsight-Anwendungen und Hosten von HDInsight-Anwendungen verwenden.
-

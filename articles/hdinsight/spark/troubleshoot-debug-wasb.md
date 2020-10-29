@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85e974d51f49bbb6742683ed253c077bb3ff69de
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77470716"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545547"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Debuggen von WASB-Dateivorgängen in Azure HDInsight
 
-In manchen Situationen müssen Sie genau wissen, welche Vorgänge vom WASB-Treiber in Azure Storage gestartet wurden. Für die Clientseite generiert der WASB-Treiber Protokolle für jeden Dateisystemvorgang auf **DEBUGGING**-Ebene. Der WASB-Treiber verwendet log4j zum Steuern des Protokolliergrads, die Standardeinstellung ist die Ebene **INFO**. Informationen zu Analyseprotokollen für Azure Storage-Server finden Sie unter [Azure Storage Analytics-Protokollierung](../../storage/common/storage-analytics-logging.md).
+In manchen Situationen müssen Sie genau wissen, welche Vorgänge vom WASB-Treiber in Azure Storage gestartet wurden. Für die Clientseite generiert der WASB-Treiber Protokolle für jeden Dateisystemvorgang auf **DEBUGGING** -Ebene. Der WASB-Treiber verwendet log4j zum Steuern des Protokolliergrads, die Standardeinstellung ist die Ebene **INFO** . Informationen zu Analyseprotokollen für Azure Storage-Server finden Sie unter [Azure Storage Analytics-Protokollierung](../../storage/common/storage-analytics-logging.md).
 
 Ein generiertes Protokoll sieht in etwa wie folgt aus:
 
@@ -28,13 +28,13 @@ Ein generiertes Protokoll sieht in etwa wie folgt aus:
 
 1. Navigieren Sie in einem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`, wobei `CLUSTERNAME` der Name Ihres Spark-Clusters ist.
 
-1. Navigieren Sie zu **advanced spark2-log4j-properties**.
+1. Navigieren Sie zu **advanced spark2-log4j-properties** .
 
     1. Ändern Sie `log4j.appender.console.Threshold=INFO` zu `log4j.appender.console.Threshold=DEBUG`.
 
     1. Fügen Sie `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`hinzu.
 
-1. Navigieren Sie zu **Advanced livy2-log4j-properties**.
+1. Navigieren Sie zu **Advanced livy2-log4j-properties** .
 
     Fügen Sie `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`hinzu.
 
@@ -65,4 +65,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support** . Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

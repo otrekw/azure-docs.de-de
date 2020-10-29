@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84118093"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632208"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die häufigsten Fehler behandelt, die beim Ausführen v
 
 Verwenden Sie das Azure Data Factory-Portal, um die Ausgabe der SSIS-Paketausführungsaktivität zu überprüfen. Die Ausgabe enthält das Ausführungsergebnis, Fehlermeldungen und die Vorgangs-ID. Weitere Informationen finden Sie unter [Überwachen der Pipeline](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-Verwenden Sie den SSIS-Katalog (SSISDB), um die Detailprotokolle zur Ausführung zu überprüfen. Weitere Informationen finden Sie unter [Überwachen von ausgeführten Paketen und anderen Vorgängen](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+Verwenden Sie den SSIS-Katalog (SSISDB), um die Detailprotokolle zur Ausführung zu überprüfen. Weitere Informationen finden Sie unter [Überwachen von ausgeführten Paketen und anderen Vorgängen](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
 
 ## <a name="common-errors-causes-and-solutions"></a>Häufige Fehler, Ursachen und Lösungen
 
@@ -38,7 +38,7 @@ Hier sind mögliche Ursachen und empfohlenen Maßnahmen:
 * Die Datenquelle oder das Ziel ist überlastet. Überprüfen Sie die Auslastung Ihrer Datenquelle oder Ihres Ziels, und prüfen Sie, ob diese über genügend Kapazität verfügen. Wenn Sie beispielsweise Azure SQL-Datenbank verwendet haben, erwägen Sie eine zentrale Hochskalierung, wenn bei der Datenbank wahrscheinlich ein Timeout auftreten wird.
 * Das Netzwerk zwischen der SSIS Integration Runtime und der Datenquelle oder dem Ziel ist instabil, insbesondere wenn die Verbindung regionsübergreifend oder zwischen lokalen Standorten und Azure besteht. Wenden Sie das Wiederholungsmuster im SSIS-Paket an, indem Sie diese Schritte ausführen:
   * Stellen Sie sicher, dass Ihre SSIS-Pakete bei einem Ausfall ohne Nebenwirkungen (z. B. Datenverlust oder -duplizierung) erneut ausgeführt werden können.
-  * Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen**. ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen** . ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * Legen Sie im Verbindungs-Manager im SSIS-Paket oder in der SSIS-Aktivität für eine ADO.NET- und OLE DB-Quell- oder Zielkomponente **ConnectRetryCount** und **ConnectRetryInterval** fest.
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Fehlermeldung: „Fehler beim Abrufen der ‚...‘-Verbindung durch die ADO .NET-Quelle.“ mit „Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit der SQL Server-Instanz. Der Server wurde nicht gefunden oder ist nicht zugänglich.“
@@ -56,7 +56,7 @@ Die mögliche Ursache ist, dass der im Paket verwendete ADO.NET-Anbieter nicht i
 
 ### <a name="error-message-the-connection--is-not-found"></a>Fehlermeldung: „Die Verbindung ‚...‘ wurde nicht gefunden“
 
-Ein bekanntes Problem in älteren Versionen von SQL Server Management Studio (SSMS) kann diesen Fehler verursachen. Wenn das Paket eine benutzerdefinierte Komponente enthält (z. B. SSIS Azure Feature Pack oder Partnerkomponenten), die nicht auf dem Computer installiert ist, auf dem SSMS zur Durchführung der Bereitstellung verwendet wird, entfernt SSMS die Komponente und verursacht den Fehler. Aktualisieren Sie [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) auf die neueste Version, für die das Problem behoben wurde.
+Ein bekanntes Problem in älteren Versionen von SQL Server Management Studio (SSMS) kann diesen Fehler verursachen. Wenn das Paket eine benutzerdefinierte Komponente enthält (z. B. SSIS Azure Feature Pack oder Partnerkomponenten), die nicht auf dem Computer installiert ist, auf dem SSMS zur Durchführung der Bereitstellung verwendet wird, entfernt SSMS die Komponente und verursacht den Fehler. Aktualisieren Sie [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) auf die neueste Version, für die das Problem behoben wurde.
 
 ### <a name="error-messagessis-executor-exit-code--1073741819"></a>Fehlermeldung: „SSIS Executor exit code: -1073741819.“ (SSIS-Executor-Exitcode: -1073741819.)
 
@@ -91,29 +91,29 @@ Dieser Fehler bedeutet, dass der lokale Datenträger auf dem Knoten mit SSIS Int
 Dieser Fehler tritt auf, wenn die Paketausführung in der SSIS Integration Runtime keine Datei auf dem lokalen Datenträger finden kann. Probieren Sie diese Maßnahmen:
 * Verwenden Sie nicht den absoluten Pfad im Paket, das in der SSIS Integration Runtime ausgeführt wird. Verwenden Sie stattdessen das aktuelle Arbeitsverzeichnis (.) oder den temporären Ordner (%TEMP%).
 * Wenn Sie einige Dateien auf Knoten mit der SSIS Integration Runtime dauerhaft speichern müssen, bereiten Sie die Dateien wie unter [Anpassen des Setups](how-to-configure-azure-ssis-ir-custom-setup.md) beschrieben vor. Alle Dateien im Arbeitsverzeichnis werden nach Abschluss der Ausführung bereinigt.
-* Verwenden Sie Azure Files, anstatt die Datei auf dem Knoten mit SSIS Integration Runtime zu speichern. Weitere Informationen finden Sie unter [Verwenden von Azure-Dateifreigaben](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+* Verwenden Sie Azure Files, anstatt die Datei auf dem Knoten mit SSIS Integration Runtime zu speichern. Weitere Informationen finden Sie unter [Verwenden von Azure-Dateifreigaben](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Fehlermeldung: „Das Kontingent der SSISDB-Datenbank wurde erreicht“
 
 Eine mögliche Ursache ist, dass die in Azure SQL-Datenbank oder in der verwalteten SQL-Instanz erstellte SSISDB-Datenbank ihr Kontingent erreicht hat. Probieren Sie diese Maßnahmen:
-* Erwägen Sie das Vergrößern der DTU Ihrer Datenbank. Ausführliche Informationen finden Sie unter [SQL Database limits for an logical server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server) (SQL-Datenbanklimits für einen logischen Server).
+* Erwägen Sie das Vergrößern der DTU Ihrer Datenbank. Ausführliche Informationen finden Sie unter [SQL Database limits for an logical server](../azure-sql/database/resource-limits-logical-server.md) (SQL-Datenbanklimits für einen logischen Server).
 * Überprüfen Sie, ob Ihre Paket ggf. zu viele Protokolle generiert. Falls ja, können Sie zum Bereinigen dieser Protokolle einen elastischen Auftrag konfigurieren. Weitere Informationen finden Sie unter [Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Fehlermeldung: „Die Anforderungsgrenze für die Datenbank beträgt … und wurde erreicht.“
 
-Wenn in der SSIS Integration Runtime viele Pakete parallel ausgeführt werden, kann dieser Fehler auftreten, weil SSISDB die Anforderungsgrenze erreicht hat. Erwägen Sie, den DTC-Wert der SSISDB zu erhöhen, um dieses Problem zu beheben. Ausführliche Informationen finden Sie unter [SQL Database limits for an logical server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server) (SQL-Datenbanklimits für einen logischen Server).
+Wenn in der SSIS Integration Runtime viele Pakete parallel ausgeführt werden, kann dieser Fehler auftreten, weil SSISDB die Anforderungsgrenze erreicht hat. Erwägen Sie, den DTC-Wert der SSISDB zu erhöhen, um dieses Problem zu beheben. Ausführliche Informationen finden Sie unter [SQL Database limits for an logical server](../azure-sql/database/resource-limits-logical-server.md) (SQL-Datenbanklimits für einen logischen Server).
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Fehlermeldung: „SSIS-Vorgang mit unerwartetem Vorgangsstatus fehlgeschlagen: ...“
 
 Der Fehler wird hauptsächlich durch ein vorübergehendes Problem verursacht. Wiederholen Sie die Paketausführung. Wenden Sie das Wiederholungsmuster im SSIS-Paket an, indem Sie diese Schritte ausführen:
 
 * Stellen Sie sicher, dass Ihre SSIS-Pakete bei einem Ausfall ohne Nebenwirkungen (z. B. Datenverlust oder -duplizierung) erneut ausgeführt werden können.
-* Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen**. ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen** . ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * Legen Sie im Verbindungs-Manager im SSIS-Paket oder in der SSIS-Aktivität für eine ADO.NET- und OLE DB-Quell- oder Zielkomponente **ConnectRetryCount** und **ConnectRetryInterval** fest.
 
 ### <a name="error-message-there-is-no-active-worker"></a>Fehlermeldung: „Es ist kein aktiver Worker vorhanden.“
 
-Dieser Fehler bedeutet in der Regel, dass die SSIS Integration Runtime einen fehlerhaften Status hat. Überprüfen Sie das Azure-Portal auf den Status und detaillierte Fehler. Weitere Informationen finden Sie unter [Azure-SSIS Integration Runtime ](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
+Dieser Fehler bedeutet in der Regel, dass die SSIS Integration Runtime einen fehlerhaften Status hat. Überprüfen Sie das Azure-Portal auf den Status und detaillierte Fehler. Weitere Informationen finden Sie unter [Azure-SSIS Integration Runtime ](./monitor-integration-runtime.md#azure-ssis-integration-runtime).
 
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Fehlermeldung: „Ihre Integration Runtime kann nicht aktualisiert werden und wird irgendwann nicht mehr funktionieren, da wir nicht auf den Azure Blobcontainer zugreifen können, den Sie für das benutzerdefinierte Setup bereitgestellt haben.“
 
@@ -123,8 +123,8 @@ Dieser Fehler tritt auf, wenn die SSIS Integration Runtime nicht auf den für da
 
 Eine mögliche Ursache ist, dass der Benutzername oder das Kennwort mit aktivierter Azure Multi-Factor-Authentifizierung für die Authentifizierung bei Azure Analysis Services konfiguriert ist. Diese Authentifizierung wird in der SSIS Integration Runtime nicht unterstützt. Versuchen Sie, ein Dienstprinzipal für die Authentifizierung bei Azure Analysis Services zu verwenden:
 
-1. Bereiten Sie ein Dienstprinzipal vor, wie in [Automatisierung mit Dienstprinzipalen](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal) beschrieben.
-2. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden**. Legen Sie **AppID**als Benutzernamen und **clientSecret** als Kennwort fest.
+1. Bereiten Sie ein Dienstprinzipal vor, wie in [Automatisierung mit Dienstprinzipalen](../analysis-services/analysis-services-service-principal.md) beschrieben.
+2. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden** . Legen Sie **AppID** als Benutzernamen und **clientSecret** als Kennwort fest.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Fehlermeldung: „Fehler beim Abrufen der {GUID}-Verbindung durch die ADO .NET-Quelle. Fehlermeldung: Die Anmeldung für den Benutzer 'NT AUTHORITY\ANONYMOUS LOGON'“ ist fehlgeschlagen, wenn eine verwaltete Identität verwendet wird
 
@@ -132,7 +132,7 @@ Stellen Sie sicher, dass Sie die Authentifizierungsmethode von Connection Manage
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Fehlermeldung: "0xC020801F an ..., OData-Quelle [...]: Eine verwaltete Verbindung kann aus dem Laufzeitverbindungs-Manager nicht abgerufen werden“
 
-Eine mögliche Ursache ist, dass TLS (Transport Layer Security) in SSIS Integration Runtime nicht aktiviert und für Ihre OData-Quelle erforderlich ist. Sie können TLS in SSIS Integration Runtime durch Anpassen des Setups aktivieren. Weitere Informationen finden Sie unter [Sie können keine Verbindung mit Project Online OData von SSIS herstellen](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) und [Anpassen des Setups für Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+Eine mögliche Ursache ist, dass TLS (Transport Layer Security) in SSIS Integration Runtime nicht aktiviert und für Ihre OData-Quelle erforderlich ist. Sie können TLS in SSIS Integration Runtime durch Anpassen des Setups aktivieren. Weitere Informationen finden Sie unter [Sie können keine Verbindung mit Project Online OData von SSIS herstellen](/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) und [Anpassen des Setups für Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Fehlermeldung: „Fehler beim Anfordern der Stagingaufgabe mit Vorgangs-GUID ... aufgrund des Fehlers: Fehler beim Verteilen des Stagingvorgangs mit der folgenden Fehlermeldung: Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException: Fehler beim Laden des Datenproxys.“
 
@@ -154,7 +154,7 @@ Eine mögliche Ursache ist, dass Ihre selbstgehosteter Integration Runtime nicht
 
 * Mögliche Ursache und empfohlene Maßnahme:
   * Wenn im Ausführungsprotokoll auch die Warnmeldung „Die Komponente unterstützt die Verwendung des Verbindungs-Managers nicht, wenn ConnectByProxy auf TRUE festgelegt ist“ enthalten ist, bedeutet dies, dass ein Verbindungs-Manager für eine Komponente verwendet wird, die „ConnectByProxy“ noch nicht unterstützt. Die unterstützten Komponenten finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy).
-  * Das Ausführungsprotokoll befindet sich im [SSMS-Bericht](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) oder in dem Protokollordner, den Sie in der SSIS-Paketausführungsaktivität angegeben haben.
+  * Das Ausführungsprotokoll befindet sich im [SSMS-Bericht](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) oder in dem Protokollordner, den Sie in der SSIS-Paketausführungsaktivität angegeben haben.
   * Alternativ kann ein VNet für den Zugriff auf lokale Daten verwendet werden. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fehlermeldung: „Status der Stagingaufgabe: Fehler. Fehler bei Stagingaufgabe: Fehlercode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": "SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
@@ -165,7 +165,7 @@ Stellen Sie sicher, dass die Visual C++-Runtime auf dem selbstgehosteten Integra
 
 * Mögliche Ursache und empfohlene Maßnahme:
   * Eine Aktivität in einer gespeicherten ADF-Prozedur oder eine Nachschlageaktivität wird verwendet, um die Ausführung von SSIS-Paketen auszulösen. Der t-sql-Befehl kann auf ein vorübergehendes Problem stoßen und die Wiederholung auslösen, was zu einer Ausführung mehrerer Pakete führen kann.
-  * Verwenden Sie stattdessen die Aktivität ExecuteSSISPackage, mit der sichergestellt wird, dass die Paketausführung nicht erneut erfolgt, es sei denn, der Benutzer hat in der Aktivität die Anzahl der Wiederholungen festgelegt. Details finden Sie unter [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Verwenden Sie stattdessen die Aktivität ExecuteSSISPackage, mit der sichergestellt wird, dass die Paketausführung nicht erneut erfolgt, es sei denn, der Benutzer hat in der Aktivität die Anzahl der Wiederholungen festgelegt. Details finden Sie unter [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](./how-to-invoke-ssis-package-ssis-activity.md)
   * Optimieren Sie Ihren t-sql-Befehl, um ihn erneut ausführen zu können, indem Sie prüfen, ob eine Ausführung bereits ausgelöst wurde.
 
 ### <a name="package-execution-takes-too-long"></a>Paketausführung dauert zu lange
@@ -187,7 +187,7 @@ Probieren Sie diese Maßnahmen:
 
 * Stellen Sie sicher, dass sich die SSIS Integration Runtime in der gleichen Region wie Datenquelle und -ziel befindet.
 
-* Legen Sie den Protokolliergrad der Paketausführung auf **Leistung** fest, um Informationen zur Dauer der Ausführung jeder Komponente zu sammeln. Weitere Informationen finden Sie unter [Integration Services-Protokollierung (SSIS)](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
+* Legen Sie den Protokolliergrad der Paketausführung auf **Leistung** fest, um Informationen zur Dauer der Ausführung jeder Komponente zu sammeln. Weitere Informationen finden Sie unter [Integration Services-Protokollierung (SSIS)](/sql/integration-services/performance/integration-services-ssis-logging).
 
 * Überprüfen Sie die Leistung des IR-Knotens im Azure-Portal:
   * Informationen zur Überwachung der SSIS Integration Runtime finden Sie unter [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440642"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634776"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -93,7 +93,7 @@ path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem Sie die Pr
 > - Nur bei der Angabe mehrerer Dateien im Quelldataset, bei dem es sich um einen Ordner, einen Platzhalter oder eine Liste von Dateien handeln kann, kann die Kopieraktivität die jeweiligen fehlerhaften Dateien überspringen. Wenn im Quelldataset eine einzelne Datei angegeben ist, die an das Ziel kopiert werden soll, schlägt die Kopieraktivität fehl, wenn ein Fehler aufgetreten ist.
 >
 > Zum Überspringen bestimmter Dateien, wenn überprüft wird, dass sie zwischen Quell- und Zielspeicher inkonsistent sind:
-> - Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency) im Dokument zur Datenkonsistenz.
+> - Weitere Informationen finden Sie [hier](./copy-activity-data-consistency.md) im Dokument zur Datenkonsistenz.
 
 ### <a name="monitoring"></a>Überwachung 
 
@@ -146,11 +146,11 @@ Im vorstehenden Protokoll können Sie sehen, dass „bigfile.csv“ übersprunge
 ### <a name="supported-scenarios"></a>Unterstützte Szenarios
 Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und Protokollieren von Tabellendaten:
 
-- **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp**. 
+- **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp** . 
 
     Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ „INT“ enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. 123,456,789 enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. 123,456, abc, werden dagegen als nicht kompatibel erkannt und übersprungen.
 
-- **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke**.
+- **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke** .
 
     Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
 
@@ -161,7 +161,7 @@ Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und
 >[!NOTE]
 >- Wenn Sie Daten mit PolyBase in Azure Synapse Analytics (ehemals SQL Data Warehouse) laden möchten, konfigurieren Sie die nativen Fehlertoleranzeinstellungen von PolyBase, indem Sie in der Kopieraktivität über „[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)“ Ablehnungsrichtlinien angeben. Sie können für nicht mit PolyBase kompatible Zeilen weiterhin die Umleitung an ein Blob oder ADLS aktivieren, wie unten gezeigt.
 >- Dieses Feature ist nicht anwendbar, wenn die Kopieraktivität zum Aufruf von [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift) konfiguriert ist.
->- Dieses Feature ist nicht anwendbar, wenn die Kopieraktivität dafür konfiguriert ist, eine [gespeicherte Prozedur aus einer SQL-Senke](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink) aufzurufen.
+>- Dieses Feature ist nicht anwendbar, wenn die Kopieraktivität dafür konfiguriert ist, eine [gespeicherte Prozedur aus einer SQL-Senke](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink) aufzurufen.
 
 ### <a name="configuration"></a>Konfiguration
 Das folgende Beispiel zeigt eine JSON-Definition, mit der das Überspringen der inkompatiblen Zeilen in der Kopieraktivität konfiguriert wird:
@@ -298,5 +298,3 @@ Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
 - [Leistung der Kopieraktivität](copy-activity-performance.md)
-
-

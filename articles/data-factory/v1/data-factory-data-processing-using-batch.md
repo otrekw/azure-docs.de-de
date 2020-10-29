@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2abc04a6a4ad6ee1c3e910db0a6be11b8150d52e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998075"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631919"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -42,7 +42,7 @@ Mit dem Batch-Dienst definieren Sie Azure-Computeressourcen, um Ihre Anwendungen
 * [Grundlegendes zu Azure Batch](../../azure-sql/database/sql-database-paas-overview.md)
 * [Übersicht über Azure Batch-Features](../../batch/batch-service-workflow-features.md)
 
-Weitere Informationen zu Batch finden Sie auch in der [Batch-Dokumentation](https://docs.microsoft.com/azure/batch/).
+Weitere Informationen zu Batch finden Sie auch in der [Batch-Dokumentation](../../batch/index.yml).
 
 ## <a name="why-azure-data-factory"></a>Gründe für die Verwendung von Azure Data Factory
 Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschieben und Transformieren von Daten organisiert und automatisiert. Mit Data Factory können Sie verwaltete Datenpipelines erstellen, die Daten aus lokalen und Clouddatenspeichern in einen zentralen Datenspeicher verschieben. Ein Beispiel ist Azure Blob Storage. Mit Data Factory können Sie Daten verarbeiten bzw. transformieren, indem Sie Dienste wie Azure HDInsight und Azure Machine Learning nutzen. Sie können Datenpipelines auch so planen, dass sie gemäß einem Zeitplan ausgeführt werden (z.B. stündlich, täglich und wöchentlich). Sie können die Pipelines auf einen Blick überwachen und verwalten, um Probleme zu erkennen und Maßnahmen zu ergreifen.
@@ -52,7 +52,7 @@ Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschiebe
 * [Einführung in Data Factory](data-factory-introduction.md)
 * [Erstellen der ersten Datenpipeline](data-factory-build-your-first-pipeline.md)   
 
-Weitere Informationen zu Data Factory finden Sie auch in der [Data Factory-Dokumentation](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
+Weitere Informationen zu Data Factory finden Sie auch in der [Data Factory-Dokumentation](/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>Gemeinsame Verwendung von Data Factory und Batch
 Data Factory umfasst integrierte Aktivitäten. Beispiel: Die Kopieraktivität dient beispielsweise zum Kopieren bzw. Verschieben von Daten aus einem Quell- in einen Zieldatenspeicher. Die Hive-Aktivität wird zum Verarbeiten von Daten mithilfe von Hadoop-Clustern (HDInsight) in Azure verwendet. Eine Liste mit unterstützten Transformationsaktivitäten finden Sie unter [Transformieren von Data in Azure Data Factory](data-factory-data-transformation-activities.md).
@@ -70,17 +70,17 @@ Die folgende Liste enthält die grundlegenden Schritte des Prozesses. Die Lösun
 
 * **Konfigurieren von Azure Batch mit einem Pool von Computeknoten (VMs).** Sie können die Anzahl der Knoten und deren Größe angeben.
 
-* **Erstellen einer Data Factory-Instanz**, die mit Entitäten konfiguriert wird, die Blob Storage, den Azure Batch-Computedienst, Ein-/Ausgabedaten und einen Workflow bzw. eine Pipeline mit Aktivitäten zum Verschieben und Transformieren von Daten darstellen.
+* **Erstellen einer Data Factory-Instanz** , die mit Entitäten konfiguriert wird, die Blob Storage, den Azure Batch-Computedienst, Ein-/Ausgabedaten und einen Workflow bzw. eine Pipeline mit Aktivitäten zum Verschieben und Transformieren von Daten darstellen.
 
 * **Erstellen einer benutzerdefinierten .NET-Aktivität in der Data Factory-Pipeline.** Die Aktivität ist Ihr Benutzercode, der im Azure Batch-Pool ausgeführt wird.
 
 * **Speichern großer Mengen von Eingabedaten als Blobs in Azure Storage.** Daten werden in logische Einheiten (in der Regel nach Zeit) aufgeteilt.
 
-* **Data Factory kopiert Daten, die parallel zum sekundären Speicherort verarbeitet werden**.
+* **Data Factory kopiert Daten, die parallel zum sekundären Speicherort verarbeitet werden** .
 
 * **Data Factory führt die benutzerdefinierte Aktivität mit dem von Batch zugeordneten Pool aus.** Data Factory kann Aktivitäten gleichzeitig ausführen. Jede Aktivität verarbeitet einen Slice von Daten. Die Ergebnisse werden im Speicher gespeichert.
 
-* Nachdem alle Ergebnisse abgerufen werden, **verschiebt Data Factory die Ergebnisse für die Verteilung über eine App oder zur weiteren Verarbeitung durch andere Tools an einen dritten Speicherort**.
+* Nachdem alle Ergebnisse abgerufen werden, **verschiebt Data Factory die Ergebnisse für die Verteilung über eine App oder zur weiteren Verarbeitung durch andere Tools an einen dritten Speicherort** .
 
 ## <a name="implementation-of-the-sample-solution"></a>Implementierung der Beispiellösung
 Die Beispiellösung ist absichtlich einfach gehalten. Sie soll veranschaulichen, wie Sie Data Factory und Batch zusammen zum Verarbeiten von Datasets verwenden. Die Lösung zählt, wie häufig der Suchbegriff „Microsoft“ in Eingabedateien vorkommt, die in einer Zeitreihe organisiert sind. Sie gibt anschließend die Anzahl der Ausgabedateien aus.
@@ -95,32 +95,32 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie schnell ein kostenlo
 Sie nutzen ein Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md). Die Beispiellösung verwendet Blob-Speicher.
 
 #### <a name="azure-batch-account"></a>Azure Batch-Konto
-Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Namen und Kontoschlüssel des Batch-Kontos. Sie können auch das Cmdlet [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) verwenden, um ein Batch-Konto zu erstellen. Unter [Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erfahren Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
+Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Namen und Kontoschlüssel des Batch-Kontos. Sie können auch das Cmdlet [New-AzBatchAccount](/powershell/module/az.batch/new-azbatchaccount) verwenden, um ein Batch-Konto zu erstellen. Unter [Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erfahren Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
 
 Die Beispiellösung verwendet Batch (indirekt über eine Data Factory-Pipeline) zum parallelen Verarbeiten von Daten in einem Computeknotenpool (einer verwalteten Sammlung von VMs).
 
 #### <a name="azure-batch-pool-of-virtual-machines"></a>Azure Batch-Pool mit virtuellen Computern
 Erstellen Sie einen Batch-Pool mit mindestens zwei Computeknoten.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Menü auf **Durchsuchen** und dann auf **Batch-Konten**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Menü auf **Durchsuchen** und dann auf **Batch-Konten** .
 
 1. Wählen Sie Ihr Batch-Konto aus, um das Blatt **Batch-Konto** zu öffnen.
 
 1. Wählen Sie die Kachel **Pools** aus.
 
-1. Klicken Sie auf dem Blatt **Pools** auf der Symbolleiste auf die Schaltfläche **Hinzufügen**, um einen Pool hinzuzufügen.
+1. Klicken Sie auf dem Blatt **Pools** auf der Symbolleiste auf die Schaltfläche **Hinzufügen** , um einen Pool hinzuzufügen.
 
-   a. Geben Sie eine ID für den Pool ein (**Pool-ID**). Notieren Sie die ID des Pools. Sie benötigen sie, wenn Sie die Data Factory-Lösung erstellen.
+   a. Geben Sie eine ID für den Pool ein ( **Pool-ID** ). Notieren Sie die ID des Pools. Sie benötigen sie, wenn Sie die Data Factory-Lösung erstellen.
 
    b. Geben Sie **Windows Server 2012 R2** für die Einstellung **Betriebssystemfamilie** ein.
 
-   c. Wählen Sie einen **Knotentarif**aus.
+   c. Wählen Sie einen **Knotentarif** aus.
 
    d. Geben Sie **2** als Wert für die Einstellung **Zuordnung für Ziel** ein.
 
    e. Geben Sie **2** als Wert für die Einstellung **Max. Tasks pro Knoten** ein.
 
-   f. Klicken Sie auf **OK**, um den Pool zu erstellen.
+   f. Klicken Sie auf **OK** , um den Pool zu erstellen.
 
 #### <a name="azure-storage-explorer"></a>Azure Storage-Explorer
 Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.com/) oder [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (von ClumsyLeaf Software), um die Daten in Ihren Storage-Projekten zu überprüfen und zu ändern. Sie können auch die Daten in den Protokollen Ihrer in der Cloud gehosteten Anwendungen einsehen und ändern.
@@ -141,7 +141,7 @@ Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.c
 
    ![Eingabeordner](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Wenn Sie Storage-Explorer verwenden, laden Sie die Datei **file.txt** in **mycontainer** hoch. Klicken Sie auf der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren** den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
+   Wenn Sie Storage-Explorer verwenden, laden Sie die Datei **file.txt** in **mycontainer** hoch. Klicken Sie auf der Symbolleiste auf **Kopieren** , um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren** den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
 
 1. Erstellen Sie einen weiteren Container mit dem Namen `customactivitycontainer`. Laden Sie die benutzerdefinierte Aktivität als ZIP-Datei in diesen Container hoch.
 
@@ -170,10 +170,10 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 
 * Die Methode akzeptiert vier Parameter:
 
-  * **LinkedServices**. Dieser Parameter ist eine aufzählbare Liste verknüpfter Dienste, die Ein- und Ausgabedatenquellen (z.B. Blob Storage) mit der Data Factory verknüpfen. In diesem Beispiel gibt es nur einen verknüpften Dienst des Typs „Azure Storage“, der sowohl für die Eingabe als auch die Ausgabe verwendet wird.
-  * **Datasets**. Dieser Parameter ist eine aufzählbare Liste von Datasets. Sie können diesen Parameter zum Abrufen der Speicherorte und Schemas verwenden, die von den Eingabe- und Ausgabedatasets definiert werden.
-  * **Aktivität**. Dieser Parameter stellt die aktuelle Compute-Entität dar. In diesem Fall ist dies ein Batch-Dienst.
-  * **Protokollierungstool**. Mit dem Protokollierungstool können Sie Debugkommentare schreiben, die dann als das Protokoll „User“ für die Pipeline angezeigt werden.
+  * **LinkedServices** . Dieser Parameter ist eine aufzählbare Liste verknüpfter Dienste, die Ein- und Ausgabedatenquellen (z.B. Blob Storage) mit der Data Factory verknüpfen. In diesem Beispiel gibt es nur einen verknüpften Dienst des Typs „Azure Storage“, der sowohl für die Eingabe als auch die Ausgabe verwendet wird.
+  * **Datasets** . Dieser Parameter ist eine aufzählbare Liste von Datasets. Sie können diesen Parameter zum Abrufen der Speicherorte und Schemas verwenden, die von den Eingabe- und Ausgabedatasets definiert werden.
+  * **Aktivität** . Dieser Parameter stellt die aktuelle Compute-Entität dar. In diesem Fall ist dies ein Batch-Dienst.
+  * **Protokollierungstool** . Mit dem Protokollierungstool können Sie Debugkommentare schreiben, die dann als das Protokoll „User“ für die Pipeline angezeigt werden.
 * Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdefinierter Aktivitäten verwendet werden kann. Diese Funktion ist noch nicht implementiert, sodass von der Methode nur ein leeres Wörterbuch zurückgegeben wird.
 
 #### <a name="procedure-create-the-custom-activity"></a>Prozedur: Erstellen der benutzerdefinierten Aktivität
@@ -181,19 +181,19 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 
    a. Starten Sie Visual Studio 2012/2013/2015.
 
-   b. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+   b. Klicken Sie auf **Datei** > **Neu** > **Projekt** .
 
-   c. Erweitern Sie **Vorlagen**, und wählen Sie **Visual C#\#** aus. In dieser exemplarischen Vorgehensweise verwenden Sie C\#, Sie können jedoch jede .NET-Sprache verwenden, um benutzerdefinierte Aktivität zu entwickeln.
+   c. Erweitern Sie **Vorlagen** , und wählen Sie **Visual C#\#** aus. In dieser exemplarischen Vorgehensweise verwenden Sie C\#, Sie können jedoch jede .NET-Sprache verwenden, um benutzerdefinierte Aktivität zu entwickeln.
 
    d. Wählen Sie in der Liste mit den Projekttypen auf der rechten Seite den Eintrag **Klassenbibliothek** aus.
 
    e. Geben Sie **MyDotNetActivity** als **Namen** ein.
 
-   f. Wählen Sie **C:\\ADF** als **Speicherort**. Erstellen Sie den Ordner **ADF**, sofern noch nicht vorhanden.
+   f. Wählen Sie **C:\\ADF** als **Speicherort** . Erstellen Sie den Ordner **ADF** , sofern noch nicht vorhanden.
 
-   g. Klicken Sie auf **OK**, um das Projekt zu erstellen.
+   g. Klicken Sie auf **OK** , um das Projekt zu erstellen.
 
-1. Klicken Sie auf **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+1. Klicken Sie auf **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** .
 
 1. Führen Sie in der Paket-Manager-Konsole den folgenden Befehl zum Importieren von „Microsoft.Azure.Management.DataFactories“ aus:
 
@@ -219,17 +219,17 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-1. Ändern Sie den Namen des Namespace in **MyDotNetActivityNS**.
+1. Ändern Sie den Namen des Namespace in **MyDotNetActivityNS** .
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-1. Ändern Sie den Namen der Klasse in **MyDotNetActivity**, und leiten Sie ihn, wie unten dargestellt, von der **IDotNetActivity**-Schnittstelle ab:
+1. Ändern Sie den Namen der Klasse in **MyDotNetActivity** , und leiten Sie ihn, wie unten dargestellt, von der **IDotNetActivity** -Schnittstelle ab:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-1. Implementieren die **Execute**-Methode der **IDotNetActivity**-Schnittstelle der **MyDotNetActivity**-Klasse, bzw. fügen Sie sie hinzu. Kopieren Sie den folgenden Beispielcode in die Methode an. Im Abschnitt [Execute-Methode](#execute-method) erfahren Sie mehr über die in dieser Methode verwendete Logik.
+1. Implementieren die **Execute** -Methode der **IDotNetActivity** -Schnittstelle der **MyDotNetActivity** -Klasse, bzw. fügen Sie sie hinzu. Kopieren Sie den folgenden Beispielcode in die Methode an. Im Abschnitt [Execute-Methode](#execute-method) erfahren Sie mehr über die in dieser Methode verwendete Logik.
 
     ```csharp
     /// <summary>
@@ -311,7 +311,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
        return new Dictionary<string, string>();
     }
     ```
-1. Fügen Sie die folgenden Helfermethoden zur Klasse hinzu. Diese Methoden werden von der **Execute** -Methode aufgerufen. Vor allem isoliert die **Calculate**-Methode den Code, der jeden Blob durchläuft.
+1. Fügen Sie die folgenden Helfermethoden zur Klasse hinzu. Diese Methoden werden von der **Execute** -Methode aufgerufen. Vor allem isoliert die **Calculate** -Methode den Code, der jeden Blob durchläuft.
 
     ```csharp
     /// <summary>
@@ -395,11 +395,11 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 
     Die „Calculate“-Methode berechnet die Anzahl der Vorkommen des Stichworts „Microsoft“ in den Eingabedateien (Blobs im Ordner). Der Suchbegriff („Microsoft“) ist im Code hartcodiert.
 
-1. Kompilieren Sie das Projekt. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
+1. Kompilieren Sie das Projekt. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen** .
 
-1. Starten Sie Windows-Explorer, und wechseln Sie zum Ordner **bin\\debug** oder **bin\\release**. Die Ordnerwahl hängt vom Typ des Builds ab.
+1. Starten Sie Windows-Explorer, und wechseln Sie zum Ordner **bin\\debug** oder **bin\\release** . Die Ordnerwahl hängt vom Typ des Builds ab.
 
-1. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip**, die alle Binärdateien im Ordner **\\bin\\Debug** enthält. Sie möchten ggf. die Datei „MyDotNetActivity.**pdb**“ einbeziehen, damit Sie zusätzliche Details wie z.B. die Zeilennummer im Quellcode erhalten, der das Problem bei einem Fehler verursacht hat.
+1. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip** , die alle Binärdateien im Ordner **\\bin\\Debug** enthält. Sie möchten ggf. die Datei „MyDotNetActivity. **pdb** “ einbeziehen, damit Sie zusätzliche Details wie z.B. die Zeilennummer im Quellcode erhalten, der das Problem bei einem Fehler verursacht hat.
 
    ![Die Ordnerliste „bin\Debug“](./media/data-factory-data-processing-using-batch/image5.png)
 
@@ -408,7 +408,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 #### <a name="execute-method"></a>Execute-Methode
 Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execute“-Methode.
 
-1. Die Elemente zum Durchlaufen der Eingabesammlung finden Sie unter dem Namespace [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) . Zum Durchlaufen der Blobsammlung müssen Sie die **BlobContinuationToken**-Klasse verwenden. Im Wesentlichen müssen Sie eine do-while-Schleife mit dem Token als Mechanismus zum Beenden der Schleife verwenden. Weitere Informationen finden Sie unter [Verwenden von Blob Storage in .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Eine einfache Schleife ist hier dargestellt:
+1. Die Elemente zum Durchlaufen der Eingabesammlung finden Sie unter dem Namespace [Microsoft.WindowsAzure.Storage.Blob](/java/api/com.microsoft.azure.storage.blob) . Zum Durchlaufen der Blobsammlung müssen Sie die **BlobContinuationToken** -Klasse verwenden. Im Wesentlichen müssen Sie eine do-while-Schleife mit dem Token als Mechanismus zum Beenden der Schleife verwenden. Weitere Informationen finden Sie unter [Verwenden von Blob Storage in .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md). Eine einfache Schleife ist hier dargestellt:
 
     ```csharp
     // Initialize the continuation token.
@@ -431,16 +431,16 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execut
     } while (continuationToken != null);
 
     ```
-   Weitere Informationen finden Sie in der Dokumentation für die [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)-Methode.
+   Weitere Informationen finden Sie in der Dokumentation für die [ListBlobsSegmented](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)-Methode.
 
-1. Der Code für die Verwendung durch den Satz von Blobs geht logischerweise in die do-while-Schleife ein. In der **Execute**-Methode übergibt die do-while-Schleife die Liste der Blobs an eine Methode namens **Calculate**. Die Methode gibt eine Zeichenfolgenvariable mit dem Namen **output** zurück, die das Ergebnis des Durchlaufens aller Blobs im Segment ist.
+1. Der Code für die Verwendung durch den Satz von Blobs geht logischerweise in die do-while-Schleife ein. In der **Execute** -Methode übergibt die do-while-Schleife die Liste der Blobs an eine Methode namens **Calculate** . Die Methode gibt eine Zeichenfolgenvariable mit dem Namen **output** zurück, die das Ergebnis des Durchlaufens aller Blobs im Segment ist.
 
-   Sie gibt die Anzahl der Vorkommen des Suchbegriffs (Microsoft) im Blob zurück, das an die **Calculate**-Methode übergeben wurde.
+   Sie gibt die Anzahl der Vorkommen des Suchbegriffs (Microsoft) im Blob zurück, das an die **Calculate** -Methode übergeben wurde.
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
     ```
-1. Sobald die **Calculate**-Methode abgeschlossen ist, muss sie in ein neues Blob geschrieben werden. Für jede Gruppe von Blobs, die verarbeitet wurde, kann ein neues Blob mit den Ergebnissen geschrieben werden. Um ein neues Blob zu schreiben, müssen Sie zunächst das Ausgabedataset suchen.
+1. Sobald die **Calculate** -Methode abgeschlossen ist, muss sie in ein neues Blob geschrieben werden. Für jede Gruppe von Blobs, die verarbeitet wurde, kann ein neues Blob mit den Ergebnissen geschrieben werden. Um ein neues Blob zu schreiben, müssen Sie zunächst das Ausgabedataset suchen.
 
     ```csharp
     // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
@@ -471,7 +471,7 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execut
     // Write the name of the file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-1. Nachdem der Name der Datei geschrieben wurde, können Sie die Ausgabezeichenfolge aus der **Calculate**-Methode in ein neues Blob schreiben:
+1. Nachdem der Name der Datei geschrieben wurde, können Sie die Ausgabezeichenfolge aus der **Calculate** -Methode in ein neues Blob schreiben:
 
     ```csharp
     // Create a blob and upload the output text.
@@ -527,19 +527,19 @@ Die folgende exemplarische Vorgehensweise enthält weitere Details.
 #### <a name="step-1-create-the-data-factory"></a>Schritt 1: Erstellen der Data Factory
 1. Gehen Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) wie folgt vor:
 
-   a. Klicken Sie im linken Menü auf **NEU**.
+   a. Klicken Sie im linken Menü auf **NEU** .
 
-   b. Klicken Sie auf dem Blatt **Neu** auf **Daten + Analysen**.
+   b. Klicken Sie auf dem Blatt **Neu** auf **Daten + Analysen** .
 
-   c. Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
+   c. Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory** .
 
 1. Geben Sie auf dem Blatt **Neue Data Factory** die Zeichenfolge **CustomActivityFactory** als Namen ein. Der Name der Data Factory muss global eindeutig sein. Wenn die Fehlermeldung „Data Factory-Name CustomActivityFactory nicht verfügbar“ angezeigt wird, ändern Sie den Namen der Data Factory. Verwenden Sie z.B. „IhrNameCustomActivityFactory“, und erstellen Sie die Data Factory erneut.
 
-1. Klicken Sie auf **RESSOURCENGRUPPENNAME**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine Ressourcengruppe.
+1. Klicken Sie auf **RESSOURCENGRUPPENNAME** . Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine Ressourcengruppe.
 
 1. Stellen Sie sicher, dass Sie zum Erstellen der Data Factory das richtige Abonnement und die richtige Region verwenden.
 
-1. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
+1. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen** .
 
 1. Im Dashboard des Portals sehen Sie, dass die Data Factory erstellt wird.
 
@@ -551,22 +551,22 @@ Die folgende exemplarische Vorgehensweise enthält weitere Details.
 Verknüpfte Dienste verknüpfen Datenspeicher oder Computedienste mit einer Data Factory. In diesem Schritt verknüpfen Sie Ihr Speicherkonto und Batch-Konto mit Ihrer Data Factory.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Erstellen eines verknüpften Azure Storage-Diensts
-1. Klicken Sie auf dem Blatt **Data Factory** für **CustomActivityFactory** auf die Kachel **Verfassen und bereitstellen**. Der Data Factory-Editor wird eingeblendet.
+1. Klicken Sie auf dem Blatt **Data Factory** für **CustomActivityFactory** auf die Kachel **Verfassen und bereitstellen** . Der Data Factory-Editor wird eingeblendet.
 
-1. Klicken Sie auf der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure Storage**. Das JSON-Skript, mit dem Sie einen mit Azure Storage verknüpften Dienst im Editor erstellen, wird angezeigt.
+1. Klicken Sie auf der Befehlsleiste auf **Neuer Datenspeicher** , und wählen Sie **Azure Storage** . Das JSON-Skript, mit dem Sie einen mit Azure Storage verknüpften Dienst im Editor erstellen, wird angezeigt.
 
    ![Neuer Datenspeicher](./media/data-factory-data-processing-using-batch/image7.png)
 
 1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
-1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
+1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.
 
    ![Bereitstellen](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Verwenden eines mit Azure Batch verknüpften Diensts
 In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, der zum Ausführen der benutzerdefinierten Data Factory-Aktivität verwendet wird.
 
-1. Klicken Sie auf der Befehlsleiste auf **Neue Computeressource**, und wählen Sie **Azure Batch**. Das JSON-Skript, mit dem Sie einen mit Azure Batch verknüpften Dienst im Editor erstellen, wird angezeigt.
+1. Klicken Sie auf der Befehlsleiste auf **Neue Computeressource** , und wählen Sie **Azure Batch** . Das JSON-Skript, mit dem Sie einen mit Azure Batch verknüpften Dienst im Editor erstellen, wird angezeigt.
 
 1. In der JSON-Datei:
 
@@ -574,18 +574,18 @@ In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, 
 
    b. Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Batch-Kontos.
 
-   c. Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein. Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+   c. Geben Sie die ID des Pools für die **poolName** -Eigenschaft ein. Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
    d. Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
 
       > [!IMPORTANT]
-      > Die URL auf dem Blatt **Batch-Konto** hat folgendes Format: \<accountname\>.\<region\>.batch.azure.com. Für die **batchUri**-Eigenschaft im JSON-Skript müssen Sie a88"accountname** aus der URL entfernen. z. B. `"batchUri": "https://eastus.batch.azure.com"`.
+      > Die URL auf dem Blatt **Batch-Konto** hat folgendes Format: \<accountname\>.\<region\>.batch.azure.com. Für die **batchUri** -Eigenschaft im JSON-Skript müssen Sie a88"accountname** aus der URL entfernen. z. B. `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
       ![Blatt „Batch-Konto“](./media/data-factory-data-processing-using-batch/image9.png)
 
-      Für die **poolName**-Eigenschaft können Sie auch die ID des Pools anstelle des Namens des Pools angeben.
+      Für die **poolName** -Eigenschaft können Sie auch die ID des Pools anstelle des Namens des Pools angeben.
 
       > [!NOTE]
       > Der Data Factory-Dienst unterstützt im Gegensatz zu HDInsight für Azure Batch keine bedarfsgesteuerte Option. In einer Data Factory können Sie nur Ihren eigenen Batch-Pool verwenden.
@@ -594,13 +594,13 @@ In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, 
 
    e. Geben Sie **StorageLinkedService** for the **StorageLinkedService** -Element ein. Sie haben diesen verknüpften Dienst im vorherigen Schritt erstellt. Dieser Speicher wird als Stagingbereich für Dateien und Protokolle verwendet.
 
-1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
+1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.
 
 #### <a name="step-3-create-datasets"></a>Schritt 3: Erstellen von Datasets
 In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgabedaten.
 
 #### <a name="create-the-input-dataset"></a>Erstellen des Eingabedatasets
-1. Klicken Sie im Data Factory-Editor auf der Symbolleiste auf die Schaltfläche **Neues Dataset**. Wählen Sie in der Dropdownliste **Azure Blob Storage** aus.
+1. Klicken Sie im Data Factory-Editor auf der Symbolleiste auf die Schaltfläche **Neues Dataset** . Wählen Sie in der Dropdownliste **Azure Blob Storage** aus.
 
 1. Ersetzen Sie das JSON-Skript im rechten Bereich durch den folgenden JSON-Ausschnitt:
 
@@ -660,7 +660,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
     }
     ```
 
-    Im weiteren Verlauf dieser exemplarischen Vorgehensweise wird eine Pipeline mit der Startzeit „2015-11-16T00:00:00Z“ und der Endzeit „2015-11-16T05:00:00Z“ erstellt. Sie ist so eingerichtet, dass Daten stündlich erstellt werden, sodass sich fünf Eingabe-/Ausgabeslices (von **00**:00:00 -\> **05**:00:00) ergeben.
+    Im weiteren Verlauf dieser exemplarischen Vorgehensweise wird eine Pipeline mit der Startzeit „2015-11-16T00:00:00Z“ und der Endzeit „2015-11-16T05:00:00Z“ erstellt. Sie ist so eingerichtet, dass Daten stündlich erstellt werden, sodass sich fünf Eingabe-/Ausgabeslices (von **00** :00:00 -\> **05** :00:00) ergeben.
 
     **frequency** und **interval** für das Eingabedataset sind auf **Hour** und **1** festgelegt, was bedeutet, dass der Eingabeslice stündlich verfügbar ist.
 
@@ -668,28 +668,28 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
 
     | **Slice** | **Startzeit**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**:00:00 |
-    | 2         | 2015-11-16T**01**:00:00 |
-    | 3         | 2015-11-16T**02**:00:00 |
-    | 4         | 2015-11-16T**03**:00:00 |
-    | 5         | 2015-11-16T**04**:00:00 |
+    | 1         | 2015-11-16T **00** :00:00 |
+    | 2         | 2015-11-16T **01** :00:00 |
+    | 3         | 2015-11-16T **02** :00:00 |
+    | 4         | 2015-11-16T **03** :00:00 |
+    | 5         | 2015-11-16T **04** :00:00 |
 
-    Der **folderPath** wird mit dem Jahr, Monat, Tag und der Uhrzeit der Slice-Startzeit berechnet (**SliceStart**). Hier erfahren Sie, wie ein Eingabeordner einem Slice zugeordnet wird.
+    Der **folderPath** wird mit dem Jahr, Monat, Tag und der Uhrzeit der Slice-Startzeit berechnet ( **SliceStart** ). Hier erfahren Sie, wie ein Eingabeordner einem Slice zugeordnet wird.
 
     | **Slice** | **Startzeit**          | **Eingabeordner**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
-    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
-    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
-    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
-    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
+    | 1         | 2015-11-16T **00** :00:00 | 2015-11-16- **00** |
+    | 2         | 2015-11-16T **01** :00:00 | 2015-11-16- **01** |
+    | 3         | 2015-11-16T **02** :00:00 | 2015-11-16- **02** |
+    | 4         | 2015-11-16T **03** :00:00 | 2015-11-16- **03** |
+    | 5         | 2015-11-16T **04** :00:00 | 2015-11-16- **04** |
 
-1. Klicken Sie auf der Symbolleiste auf **Bereitstellen**, um die Tabelle **InputDataset** zu erstellen und bereitzustellen.
+1. Klicken Sie auf der Symbolleiste auf **Bereitstellen** , um die Tabelle **InputDataset** zu erstellen und bereitzustellen.
 
 #### <a name="create-the-output-dataset"></a>Erstellen des Ausgabedatasets
 In diesem Schritt erstellen Sie ein weiteres Dataset des Typs „AzureBlob“, um die Ausgabedaten darzustellen.
 
-1. Klicken Sie im Data Factory-Editor auf der Symbolleiste auf die Schaltfläche **Neues Dataset**. Wählen Sie in der Dropdownliste **Azure Blob Storage** aus.
+1. Klicken Sie im Data Factory-Editor auf der Symbolleiste auf die Schaltfläche **Neues Dataset** . Wählen Sie in der Dropdownliste **Azure Blob Storage** aus.
 
 1. Ersetzen Sie das JSON-Skript im rechten Bereich durch den folgenden JSON-Ausschnitt:
 
@@ -725,25 +725,25 @@ In diesem Schritt erstellen Sie ein weiteres Dataset des Typs „AzureBlob“, u
 
     | **Slice** | **Startzeit**          | **Ausgabedatei**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
-    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
-    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
-    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
-    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
+    | 1         | 2015-11-16T **00** :00:00 | 2015-11-16- **00.txt** |
+    | 2         | 2015-11-16T **01** :00:00 | 2015-11-16- **01.txt** |
+    | 3         | 2015-11-16T **02** :00:00 | 2015-11-16- **02.txt** |
+    | 4         | 2015-11-16T **03** :00:00 | 2015-11-16- **03.txt** |
+    | 5         | 2015-11-16T **04** :00:00 | 2015-11-16- **04.txt** |
 
     Denken Sie daran, dass alle Dateien in einem Eingabeordner (z. B.: 2015-11-16-00) zu einem Slice mit der Startzeit 2015-11-16-00 gehören. Wenn dieser Slice verarbeitet wird, durchsucht die benutzerdefinierte Aktivität jede Datei und erzeugt eine Zeile in der Ausgabedatei mit der Anzahl der Vorkommen des Suchbegriffs „Microsoft“. Wenn drei Dateien im Ordner „2015-11-16-00“ vorhanden sind, werden in der Ausgabedatei „2015-11-16-00.txt“ drei Zeilen erstellt.
 
-1. Klicken Sie auf der Symbolleiste auf **Bereitstellen**, um das **Ausgabedataset** zu erstellen und bereitzustellen.
+1. Klicken Sie auf der Symbolleiste auf **Bereitstellen** , um das **Ausgabedataset** zu erstellen und bereitzustellen.
 
 #### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>Schritt 4: Erstellen und Ausführen der Pipeline mit einer benutzerdefinierten Aktivität
 In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nämlich der von Ihnen zuvor erstellten benutzerdefinierten Aktivität.
 
 > [!IMPORTANT]
-> Wenn Sie **file.txt** noch nicht in die Eingabeordner im Blobcontainer hochgeladen haben, erledigen Sie dies vor Erstellen der Pipeline. Die **IsPaused**-Eigenschaft ist im JSON-Code der Pipeline auf „False“ festgelegt, sodass die Pipeline sofort ausgeführt wird, da das **Startdatum** in der Vergangenheit liegt.
+> Wenn Sie **file.txt** noch nicht in die Eingabeordner im Blobcontainer hochgeladen haben, erledigen Sie dies vor Erstellen der Pipeline. Die **IsPaused** -Eigenschaft ist im JSON-Code der Pipeline auf „False“ festgelegt, sodass die Pipeline sofort ausgeführt wird, da das **Startdatum** in der Vergangenheit liegt.
 >
 >
 
-1. Klicken Sie im Data Factory-Editor auf der Befehlsleiste auf die Schaltfläche **Neue Pipeline**. Wenn Sie den Befehl nicht sehen, klicken Sie auf das Symbol mit den Auslassungszeichen, um ihn anzuzeigen.
+1. Klicken Sie im Data Factory-Editor auf der Befehlsleiste auf die Schaltfläche **Neue Pipeline** . Wenn Sie den Befehl nicht sehen, klicken Sie auf das Symbol mit den Auslassungszeichen, um ihn anzuzeigen.
 
 1. Ersetzen Sie das JSON-Skript im rechten Bereich durch den folgenden JSON-Ausschnitt:
 
@@ -793,27 +793,27 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nä
    Beachten Sie folgende Punkte:
 
    * Die Pipeline enthält nur eine Aktivität, die den Typ **DotNetActivity** hat.
-   * **AssemblyName** wird auf den Namen der DLL festgelegt: **MyDotnetActivity.dll**.
+   * **AssemblyName** wird auf den Namen der DLL festgelegt: **MyDotnetActivity.dll** .
    * **EntryPoint** wird auf **MyDotNetActivityNS.MyDotNetActivity** festgelegt. Es ist im Grunde \<namespace\>.\<classname\> in Ihrem Code.
    * **PackageLinkedService** ist auf **StorageLinkedService** festgelegt, was auf den Blob Storage verweist, der die ZIP-Datei mit der benutzerdefinierten Aktivität enthält. Wenn Sie andere Speicherkonten für die Ein- und Ausgabedateien und die ZIP-Datei mit der benutzerdefinierten Aktivität verwenden, müssen Sie einen weiteren mit Azure Storage verknüpften Dienst erstellen. Dieser Artikel setzt voraus, dass Sie das gleiche Speicherkonto verwenden.
    * **PackageFile** wird auf **customactivitycontainer/MyCustomActivity.zip** festgelegt. Das entspricht dem Format \<containerforthezip\>/\<nameofthezip.zip\>.
    * Die benutzerdefinierte Aktivität verwendet **InputDataset** als Eingabe und **OutputDataset** als Ausgabe.
-   * Die Eigenschaft **linkedServiceName** der benutzerdefinierten Aktivität zeigt auf **AzureBatchLinkedService**, was Data Factory mitteilt, dass die benutzerdefinierte Aktivität in Azure Batch ausgeführt werden muss.
+   * Die Eigenschaft **linkedServiceName** der benutzerdefinierten Aktivität zeigt auf **AzureBatchLinkedService** , was Data Factory mitteilt, dass die benutzerdefinierte Aktivität in Azure Batch ausgeführt werden muss.
    * Die Einstellung **Parallelität** ist wichtig. Wenn Sie den Standardwert 1 verwenden, auch wenn Sie über zwei oder mehr Computeknoten im Batch-Pool verfügen, werden die Slices nacheinander verarbeitet. Daher nutzen Sie nicht die Parallelverarbeitungsfunktion von Azure Batch. Wenn Sie **concurrency** (Parallelität) auf einen höheren Wert wie z. B. 2 festlegen, können zwei Slices (was zwei Aufgaben in Azure Batch entspricht) gleichzeitig verarbeitet werden. In diesem Fall werden die virtuellen Computer im Batch-Pool verwendet. Legen Sie daher Sie die „concurrency“-Eigenschaft entsprechend fest.
    * Nur eine Aufgabe (Slice) wird standardmäßig auf einer virtuellen Maschine zu einem beliebigen Zeitpunkt ausgeführt. Standardmäßig ist **Max. Tasks pro VM** für einen Batch-Pool auf 1 festgelegt ist. Als Teil der Voraussetzungen haben Sie einen Pool erstellt, bei dem diese Eigenschaft auf 2 festgelegt ist. Aus diesem Grund können zwei Data Factory-Slices auf einem virtuellen Computer gleichzeitig ausgeführt werden.
-     - Die **isPaused**-Eigenschaft ist standardmäßig auf „false“ festgelegt. Die Pipeline wird in diesem Beispiel sofort ausgeführt, da die Slices in der Vergangenheit starten. Legen Sie diese Eigenschaft auf **true** fest, um die Pipeline anzuhalten, und legen Sie sie zum Neustart wieder auf **false** fest.
+     - Die **isPaused** -Eigenschaft ist standardmäßig auf „false“ festgelegt. Die Pipeline wird in diesem Beispiel sofort ausgeführt, da die Slices in der Vergangenheit starten. Legen Sie diese Eigenschaft auf **true** fest, um die Pipeline anzuhalten, und legen Sie sie zum Neustart wieder auf **false** fest.
      -   Die Zeiten für **start** und **end** liegen fünf Stunden auseinander. Slices werden stündlich erstellt, sodass insgesamt fünf Slices von der Pipeline erstellt werden.
 
-1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.
+1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um die Pipeline bereitzustellen.
 
 #### <a name="step-5-test-the-pipeline"></a>Schritt 5: Testen der Pipeline
 In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Eingangsordner. Beginnen Sie mit dem Testen der Pipeline mit einer Datei pro Eingabeordner.
 
-1. Klicken Sie im Azure-Portal auf dem Blatt **Data Factory** auf **Diagramm**.
+1. Klicken Sie im Azure-Portal auf dem Blatt **Data Factory** auf **Diagramm** .
 
    ![Diagramm](./media/data-factory-data-processing-using-batch/image10.png)
 
-1. Doppelklicken Sie in der Ansicht **Diagramm** auf das Eingabedataset **inputDataset**.
+1. Doppelklicken Sie in der Ansicht **Diagramm** auf das Eingabedataset **inputDataset** .
 
    ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
 
@@ -821,7 +821,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
    ![Start- und Endzeiten für Eingabeslices](./media/data-factory-data-processing-using-batch/image12.png)
 
-1. Klicken Sie in der Ansicht **Diagramm** auf **OutputDataset**.
+1. Klicken Sie in der Ansicht **Diagramm** auf **OutputDataset** .
 
 1. Die fünf Ausgabeslices werden mit dem Status **Bereit** angezeigt, wenn sie erstellt wurden.
 
@@ -842,15 +842,15 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
    ![Diagramm der Slicezuordnung](./media/data-factory-data-processing-using-batch/image16.png)
 
-1. Testen Sie nun mehrere Dateien in einem Ordner. Erstellen Sie die Dateien **file2.txt**, **file3.txt**, **file4.txt** und **file5.txt** mit dem gleichen Inhalt wie „file.txt“ im Ordner **2015-11-06-01**.
+1. Testen Sie nun mehrere Dateien in einem Ordner. Erstellen Sie die Dateien **file2.txt** , **file3.txt** , **file4.txt** und **file5.txt** mit dem gleichen Inhalt wie „file.txt“ im Ordner **2015-11-06-01** .
 
-1. Löschen Sie im Ausgabeordner die Ausgabedatei **2015-11-16-01.txt**.
+1. Löschen Sie im Ausgabeordner die Ausgabedatei **2015-11-16-01.txt** .
 
-1. Klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, für den die **SLICE-STARTZEIT** auf **11/16/2015 01:00:00 Uhr** festgelegt ist. Klicken Sie auf **Ausführen**, um den Slice erneut auszuführen/zu verarbeiten. Der Slice verfügt jetzt über fünf Dateien statt einer.
+1. Klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, für den die **SLICE-STARTZEIT** auf **11/16/2015 01:00:00 Uhr** festgelegt ist. Klicken Sie auf **Ausführen** , um den Slice erneut auszuführen/zu verarbeiten. Der Slice verfügt jetzt über fünf Dateien statt einer.
 
     ![Ausführen](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. Wenn der Slice ausgeführt wird und der Status **Bereit** lautet, überprüfen Sie den Inhalt der Ausgabedatei für diesen Slice (**2015-11-16-01.txt**). Die Ausgabedatei wird unter `mycontainer` in `outputfolder` in Ihrem Blob Storage angezeigt. Für jede Datei des Slice sollte eine Zeile vorhanden sein.
+1. Wenn der Slice ausgeführt wird und der Status **Bereit** lautet, überprüfen Sie den Inhalt der Ausgabedatei für diesen Slice ( **2015-11-16-01.txt** ). Die Ausgabedatei wird unter `mycontainer` in `outputfolder` in Ihrem Blob Storage angezeigt. Für jede Datei des Slice sollte eine Zeile vorhanden sein.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -872,7 +872,7 @@ Der Data Factory-Dienst erstellt in Batch einen Auftrag mit dem Namen `adf-pooln
 
 Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Tasks im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Compute-Knoten im Pool verfügen. Wenn die maximale Anzahl der Tasks pro Computeknoten auf mehr als 1 festgelegt ist, können mehrere Slices auf dem gleichen Computeknoten ausgeführt werden.
 
-Dieses Beispiel umfasst fünf Slices, also fünf Tasks in Batch. Wenn die **concurrency**-Eigenschaft im JSON-Code der Pipeline in der Data Factory auf **5** und **Max. Tasks pro VM** im Batch-Pool mit **zwei** VMs auf **2** festgelegt ist, werden die Tasks schnell ausgeführt. (Prüfen Sie die Start- und Endzeit von Tasks.)
+Dieses Beispiel umfasst fünf Slices, also fünf Tasks in Batch. Wenn die **concurrency** -Eigenschaft im JSON-Code der Pipeline in der Data Factory auf **5** und **Max. Tasks pro VM** im Batch-Pool mit **zwei** VMs auf **2** festgelegt ist, werden die Tasks schnell ausgeführt. (Prüfen Sie die Start- und Endzeit von Tasks.)
 
 Verwenden Sie das Portal, um den Batch-Auftrag und die den Slices zugeordneten Tasks anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die Slices jeweils ausgeführt wurden.
 
@@ -885,7 +885,7 @@ Das Debuggen umfasst einige grundlegende Verfahren.
 
    ![Eingabeordnerstruktur](./media/data-factory-data-processing-using-batch/image3.png)
 
-1. Verwenden Sie in der **Execute-Method**e der benutzerdefinierten Aktivität das **IActivityLogger-Objekt**, um Informationen zu protokollieren, die beim Behandeln von Problemen hilfreich sind. Die protokollierten Nachrichten werden in der Datei \_user_0.log angezeigt.
+1. Verwenden Sie in der **Execute-Method** e der benutzerdefinierten Aktivität das **IActivityLogger-Objekt** , um Informationen zu protokollieren, die beim Behandeln von Problemen hilfreich sind. Die protokollierten Nachrichten werden in der Datei \_user_0.log angezeigt.
 
    Klicken Sie auf dem Blatt **OutputDataset** auf den Slice, um das Blatt **Datenslice** für diesen Slice anzuzeigen. Unter **Aktivitätsausführungen** sollte genau eine Aktivitätsausführung für den Slice angezeigt werden. Wenn Sie auf der Befehlsleiste auf **Ausführen** klicken, können Sie für den gleichen Slice eine weitere Aktivität ausführen.
 
@@ -914,9 +914,9 @@ Das Debuggen umfasst einige grundlegende Verfahren.
 
    ![Liste der ZIP-Dateien der benutzerdefinierten Aktivität](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Stellen Sie sicher, dass **assemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) und **packageLinkedService** (muss auf den Blob Storage verweisen, der die ZIP-Datei enthält) auf die richtigen Werte festgelegt sind.
+1. Stellen Sie sicher, dass **assemblyName** (MyDotNetActivity.dll), **entryPoint** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) und **packageLinkedService** (muss auf den Blob Storage verweisen, der die ZIP-Datei enthält) auf die richtigen Werte festgelegt sind.
 
-1. Wenn Sie einen Fehler behoben haben und den Slice erneut verarbeiten möchten, klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, und klicken Sie anschließend auf **Ausführen**.
+1. Wenn Sie einen Fehler behoben haben und den Slice erneut verarbeiten möchten, klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, und klicken Sie anschließend auf **Ausführen** .
 
    ![Blatt „OutputDataset“, Option „Ausführen“](./media/data-factory-data-processing-using-batch/image21.png)
 
@@ -931,13 +931,13 @@ Das Debuggen umfasst einige grundlegende Verfahren.
 #### <a name="extend-the-sample"></a>Erweitern des Beispiels
 Sie können dieses Beispiel erweitern, um mehr über Data Factory- und Batch-Funktionen zu erfahren. Gehen Sie zum Verarbeiten von Slices in einem anderen Zeitbereich wie folgt vor:
 
-1. Fügen Sie die folgenden Unterordner in `inputfolder` hinzu: 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08 und 2015-11-16-09. Platzieren Sie in diesen Ordnern Eingabedateien. Ändern Sie die Endzeit für die Pipeline von `2015-11-16T05:00:00Z` zu `2015-11-16T10:00:00Z`. Doppelklicken Sie in der **Diagrammansicht** auf **InputDataset**, und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset**, um den Status der Ausgabeslices anzeigen. Wenn der Status **Bereit** lautet, überprüfen Sie den Ausgabeordner für die Ausgabedateien.
+1. Fügen Sie die folgenden Unterordner in `inputfolder` hinzu: 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08 und 2015-11-16-09. Platzieren Sie in diesen Ordnern Eingabedateien. Ändern Sie die Endzeit für die Pipeline von `2015-11-16T05:00:00Z` zu `2015-11-16T10:00:00Z`. Doppelklicken Sie in der **Diagrammansicht** auf **InputDataset** , und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset** , um den Status der Ausgabeslices anzeigen. Wenn der Status **Bereit** lautet, überprüfen Sie den Ausgabeordner für die Ausgabedateien.
 
-1. Erhöhen oder verringern Sie die **concurrency**-Einstellung, um zu verstehen, wie sie sich auf die Leistung Ihrer Lösung, insbesondere auf die in Azure Batch erfolgte Verarbeitung, auswirkt. Weitere Informationen zur Einstellung **Parallelität** finden Sie unter „Schritt 4: Erstellen und Ausführen der Pipeline mit einer benutzerdefinierten Aktivität“.
+1. Erhöhen oder verringern Sie die **concurrency** -Einstellung, um zu verstehen, wie sie sich auf die Leistung Ihrer Lösung, insbesondere auf die in Azure Batch erfolgte Verarbeitung, auswirkt. Weitere Informationen zur Einstellung **Parallelität** finden Sie unter „Schritt 4: Erstellen und Ausführen der Pipeline mit einer benutzerdefinierten Aktivität“.
 
-1. Erstellen Sie einen Pool mit einer höheren/niedrigeren **maximalen Anzahl an Aufgaben pro virtueller Maschine**. Aktualisieren Sie den mit Azure Batch verknüpften Dienst in der Data Factory-Lösung, um den neu erstellten Anwendungspool zu verwenden. Weitere Informationen zur Einstellung für die **maximalen Tasks pro virtuellem Computer** finden Sie unter „Schritt 4: Erstellen und Ausführen der Pipeline mit einer benutzerdefinierten Aktivität“.
+1. Erstellen Sie einen Pool mit einer höheren/niedrigeren **maximalen Anzahl an Aufgaben pro virtueller Maschine** . Aktualisieren Sie den mit Azure Batch verknüpften Dienst in der Data Factory-Lösung, um den neu erstellten Anwendungspool zu verwenden. Weitere Informationen zur Einstellung für die **maximalen Tasks pro virtuellem Computer** finden Sie unter „Schritt 4: Erstellen und Ausführen der Pipeline mit einer benutzerdefinierten Aktivität“.
 
-1. Erstellen Sie einen Batch-Pool mit **automatischer Skalierung**. Das automatische Skalieren von Computeknoten in einem Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird.
+1. Erstellen Sie einen Batch-Pool mit **automatischer Skalierung** . Das automatische Skalieren von Computeknoten in einem Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird.
 
     Mit dieser Beispielformel wird folgendes Verhalten erreicht. Nachdem der Pool erstellt wurde, wird er mit einer VM gestartet. Die Metrik „$PendingTasks“ legt die Anzahl der Tasks im ausgeführten und im aktiven (in der Warteschlange) Zustand fest. Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt TargetDedicated auf den entsprechenden Wert fest. Dadurch wird sichergestellt, dass TargetDedicated nie die Anzahl von 25 virtuellen Computern überschreitet. Wenn neue Aufgaben gesendet werden, wächst der Pool automatisch an. Sobald Aufgaben abgeschlossen sind, werden VMs nacheinander freigegeben, und ihre Anzahl wird durch die automatische Skalierung verringert. Werte für „startingNumberOfVMs“ und „maxNumberofVMs“ können entsprechend den jeweiligen Anforderungen angepasst werden.
 
@@ -953,15 +953,15 @@ Sie können dieses Beispiel erweitern, um mehr über Data Factory- und Batch-Fun
 
    Weitere Informationen finden Sie unter [Automatisches Skalieren von Computeknoten in einem Batch-Pool](../../batch/batch-automatic-scaling.md).
 
-   Wenn der Pool die Standardeinstellung für [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) verwendet, kann es 15 bis 30 Minuten dauern, bis der Batch-Dienst den virtuellen Computer vorbereitet hat und die benutzerdefinierte Aktivität ausgeführt wird. Wenn der Pool eine andere Einstellung für „autoScaleEvaluationInterval“ nutzt, kann der Batch-Dienst „autoScaleEvaluationInterval“ plus 10 Minuten verwenden.
+   Wenn der Pool die Standardeinstellung für [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale) verwendet, kann es 15 bis 30 Minuten dauern, bis der Batch-Dienst den virtuellen Computer vorbereitet hat und die benutzerdefinierte Aktivität ausgeführt wird. Wenn der Pool eine andere Einstellung für „autoScaleEvaluationInterval“ nutzt, kann der Batch-Dienst „autoScaleEvaluationInterval“ plus 10 Minuten verwenden.
 
-1. In der Beispiellösung der **Execute**-Methode ruft die **Calculate** -Methode auf, die einen Eingabedatenslice verarbeiten, um einen Ausgabedatenslice zu erzeugen. Sie können eine eigene Methode erstellen, um Eingabedaten zu verarbeiten und den Aufruf der **Calculate**-Methode in der **Execute**-Methode durch einen Aufruf Ihrer Methode zu ersetzen.
+1. In der Beispiellösung der **Execute** -Methode ruft die **Calculate** -Methode auf, die einen Eingabedatenslice verarbeiten, um einen Ausgabedatenslice zu erzeugen. Sie können eine eigene Methode erstellen, um Eingabedaten zu verarbeiten und den Aufruf der **Calculate** -Methode in der **Execute** -Methode durch einen Aufruf Ihrer Methode zu ersetzen.
 
 ### <a name="next-steps-consume-the-data"></a>Nächste Schritte: Nutzung der Daten
 Nachdem Sie Daten verarbeitet haben, können Sie sie mit Onlinetools wie Power BI nutzen. Hier erfahren Sie mehr über Power BI und die Verwendung in Azure:
 
 * [Untersuchen eines Datasets in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Erste Schritte mit Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)
+* [Erste Schritte mit Power BI Desktop](/power-bi/fundamentals/desktop-getting-started)
 * [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure und Power BI: Grundlegende Übersicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
@@ -979,4 +979,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Onlinetools wie Power B
   * [Erste Schritte mit der Batch-Clientbibliothek für .NET](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: /archive/blogs/windowshpc/azure-batch-explorer-sample-walkthrough

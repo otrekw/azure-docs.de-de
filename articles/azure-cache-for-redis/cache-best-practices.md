@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47c8096893742a25904f0f7e688af2fc641166d1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007912"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544493"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer Azure Cache for Redis-Instanz.
@@ -25,26 +25,26 @@ Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung
 
  * **Konfigurieren Sie Ihre [maxmemory-reserved-Einstellung](cache-configure.md#maxmemory-policy-and-maxmemory-reserved), um die Reaktionsfähigkeit des Systems** unter extremer Speicherauslastung zu verbessern.  Eine ausreichende Reservierungseinstellung ist besonders wichtig für schreibintensive Workloads oder wenn Sie größere Werte (100 KB oder mehr) in Redis speichern. Sie sollten mit 10 % der Größe Ihres Caches beginnen und den Prozentsatz bei schreibintensiven Lasten erhöhen.
 
- * **Redis funktioniert am besten mit kleineren Werten**, deshalb sollten Sie die Aufteilung großer Daten in mehrere Schlüssel erwägen.  In [dieser Diskussion zu Redis](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/) sind einige Überlegungen aufgelistet, die Sie unbedingt berücksichtigen sollten.  Lesen Sie [diesen Artikel](cache-troubleshoot-client.md#large-request-or-response-size) über ein beispielhaftes Problem, das durch große Werte verursacht werden kann.
+ * **Redis funktioniert am besten mit kleineren Werten** , deshalb sollten Sie die Aufteilung großer Daten in mehrere Schlüssel erwägen.  In [dieser Diskussion zu Redis](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/) sind einige Überlegungen aufgelistet, die Sie unbedingt berücksichtigen sollten.  Lesen Sie [diesen Artikel](cache-troubleshoot-client.md#large-request-or-response-size) über ein beispielhaftes Problem, das durch große Werte verursacht werden kann.
 
- * **Platzieren Sie Ihre Cache-Instanz und Ihre Anwendung in der gleichen Region.**  Eine Verbindung mit einem Cache in einer anderen Region herzustellen, kann zu einer beträchtlichen Latenz führen und die Zuverlässigkeit reduzieren.  Sie können zwar von außerhalb von Azure aus eine Verbindung herstellen, dies ist jedoch nicht empfehlenswert, *vor allem bei Verwendung von Redis als Cache*.  Wenn Sie Redis als nur Schlüssel/Wert-Speicher verwenden, ist Latenz möglicherweise kein Hauptaspekt. 
+ * **Platzieren Sie Ihre Cache-Instanz und Ihre Anwendung in der gleichen Region.**  Eine Verbindung mit einem Cache in einer anderen Region herzustellen, kann zu einer beträchtlichen Latenz führen und die Zuverlässigkeit reduzieren.  Sie können zwar von außerhalb von Azure aus eine Verbindung herstellen, dies ist jedoch nicht empfehlenswert, *vor allem bei Verwendung von Redis als Cache* .  Wenn Sie Redis als nur Schlüssel/Wert-Speicher verwenden, ist Latenz möglicherweise kein Hauptaspekt. 
 
- * **Wiederverwenden von Verbindungen**.  Das Erstellen neuer Verbindungen ist teuer und erhöht die Latenz, also verwenden Verbindungen weitestgehend wieder. Wenn Sie sich dazu entscheiden, neue Verbindungen zu erstellen, vergewissern Sie sich, dass alte Verbindungen geschlossen sind, bevor Sie sie freigeben (selbst in Sprachen mit verwaltetem Arbeitsspeicher wie .NET oder Java).
+ * **Wiederverwenden von Verbindungen** .  Das Erstellen neuer Verbindungen ist teuer und erhöht die Latenz, also verwenden Verbindungen weitestgehend wieder. Wenn Sie sich dazu entscheiden, neue Verbindungen zu erstellen, vergewissern Sie sich, dass alte Verbindungen geschlossen sind, bevor Sie sie freigeben (selbst in Sprachen mit verwaltetem Arbeitsspeicher wie .NET oder Java).
 
- * **Konfigurieren Sie Ihre Clientbibliothek für die Verwendung eines *Verbindungstimeouts* von mindestens 15 Sekunden**, wodurch das System Zeit erhält, die Verbindung auch unter höherer CPU-Auslastung herzustellen.  Bei einem niedrigeren Verbindungstimeoutwert ist nicht sichergestellt, dass die Verbindung in diesem Zeitraum hergestellt werden kann.  Bei Beeinträchtigungen (hohe Client- oder Server-CPU-Auslastung usw.) hat ein niedriger Verbindungstimeoutwert zur Folge, dass der Verbindungsversuch fehlschlägt. Dieses Verhalten macht eine schlechte Situation häufig noch schlimmer.  Statt zu helfen, verschlimmern kürzere Timeouts das Problem, weil sie ein Neustarten des Prozesses der Verbindungsherstellung erzwingen und damit zu einer *Verbinden -> Fehler -> Wiederholen*-Schleife führen können. Im Allgemeinen wird empfohlen, das Verbindungstimeout bei 15 Sekunden oder höher zu lassen. Es ist besser, dass der Verbindungsversuch nach 15 oder 20 Sekunden erfolgreich ist, als dass er schnell fehlschlägt und zu häufigen Wiederholungen führt. Solch eine Wiederholungsschleife kann längere Ausfallzeiten zur Folge haben, als wenn Sie dem System gleich zu Anfang mehr Zeit für die Herstellung der Verbindung einräumen.  
+ * **Konfigurieren Sie Ihre Clientbibliothek für die Verwendung eines *Verbindungstimeouts* von mindestens 15 Sekunden** , wodurch das System Zeit erhält, die Verbindung auch unter höherer CPU-Auslastung herzustellen.  Bei einem niedrigeren Verbindungstimeoutwert ist nicht sichergestellt, dass die Verbindung in diesem Zeitraum hergestellt werden kann.  Bei Beeinträchtigungen (hohe Client- oder Server-CPU-Auslastung usw.) hat ein niedriger Verbindungstimeoutwert zur Folge, dass der Verbindungsversuch fehlschlägt. Dieses Verhalten macht eine schlechte Situation häufig noch schlimmer.  Statt zu helfen, verschlimmern kürzere Timeouts das Problem, weil sie ein Neustarten des Prozesses der Verbindungsherstellung erzwingen und damit zu einer *Verbinden -> Fehler -> Wiederholen* -Schleife führen können. Im Allgemeinen wird empfohlen, das Verbindungstimeout bei 15 Sekunden oder höher zu lassen. Es ist besser, dass der Verbindungsversuch nach 15 oder 20 Sekunden erfolgreich ist, als dass er schnell fehlschlägt und zu häufigen Wiederholungen führt. Solch eine Wiederholungsschleife kann längere Ausfallzeiten zur Folge haben, als wenn Sie dem System gleich zu Anfang mehr Zeit für die Herstellung der Verbindung einräumen.  
      > [!NOTE]
      > Diese Anleitung bezieht sich speziell auf den *Verbindungsversuch* und nicht auf die Zeit, die Sie auf das Abschließen eines *Vorgangs* wie GET oder SET zu warten bereit sind.
  
- * **Vermeiden Sie speicherintensive Vorgänge**: Einige Redis-Vorgänge (z.B. der [KEYS-Befehl](https://redis.io/commands/keys)) sind *sehr* speicherintensiv und sollten vermieden werden.  Weitere Informationen finden Sie unter [Einige Überlegungen zu Befehlen mit langer Ausführungsdauer](cache-troubleshoot-server.md#long-running-commands).
+ * **Vermeiden Sie speicherintensive Vorgänge** : Einige Redis-Vorgänge (z.B. der [KEYS-Befehl](https://redis.io/commands/keys)) sind *sehr* speicherintensiv und sollten vermieden werden.  Weitere Informationen finden Sie unter [Einige Überlegungen zu Befehlen mit langer Ausführungsdauer](cache-troubleshoot-server.md#long-running-commands).
 
- * **Verwenden Sie die TLS-Verschlüsselung**: Azure Cache for Redis setzt standardmäßig eine von TLS verschlüsselte Kommunikation voraus.  Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt.  Die Unterstützung von TLS 1.0 und 1.1 wird jedoch branchenweit eingestellt werden. Verwenden Sie daher nach Möglichkeit TLS 1.2.  Wenn die Clientbibliothek oder das Tool TLS nicht unterstützt, kann die Aktivierung unverschlüsselter Verbindungen [über das Azure-Portal](cache-configure.md#access-ports) oder über [Verwaltungs-APIs](https://docs.microsoft.com/rest/api/redis/redis/update) vorgenommen werden.  Wenn verschlüsselte Verbindungen nicht möglich sind, empfiehlt es sich, den Cache und die Clientanwendung in ein virtuelles Netzwerk einzubinden.  Weitere Informationen zu den im virtuellen Netzwerkcache-Szenario verwendeten Ports finden Sie in dieser [Tabelle](cache-how-to-premium-vnet.md#outbound-port-requirements).
+ * **Verwenden Sie die TLS-Verschlüsselung** : Azure Cache for Redis setzt standardmäßig eine von TLS verschlüsselte Kommunikation voraus.  Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt.  Die Unterstützung von TLS 1.0 und 1.1 wird jedoch branchenweit eingestellt werden. Verwenden Sie daher nach Möglichkeit TLS 1.2.  Wenn die Clientbibliothek oder das Tool TLS nicht unterstützt, kann die Aktivierung unverschlüsselter Verbindungen [über das Azure-Portal](cache-configure.md#access-ports) oder über [Verwaltungs-APIs](/rest/api/redis/redis/update) vorgenommen werden.  Wenn verschlüsselte Verbindungen nicht möglich sind, empfiehlt es sich, den Cache und die Clientanwendung in ein virtuelles Netzwerk einzubinden.  Weitere Informationen zu den im virtuellen Netzwerkcache-Szenario verwendeten Ports finden Sie in dieser [Tabelle](cache-how-to-premium-vnet.md#outbound-port-requirements).
  
  * **Leerlaufzeitüberschreitung:** Azure Redis weist derzeit ein Leerlauftimeout von 10 Minuten auf. Daher sollte dieser Wert auf weniger als 10 Minuten festgelegt werden.
  
 ## <a name="memory-management"></a>Speicherverwaltung
 Es gibt mehrere Dinge im Zusammenhang mit der Speicherauslastung in Ihrer Redis-Serverinstanz, die Sie ggf. berücksichtigen sollten.  Hier sind einige Beispiele:
 
- * **Wählen Sie eine [Entfernungsrichtlinie](https://redis.io/topics/lru-cache), die für Ihre Anwendung geeignet ist.**  Die Standardrichtlinie für Azure Redis ist *volatile-lru*. Das bedeutet, dass nur Schlüssel, für die eine Gültigkeitsdauer (TTL) festgelegt ist, entfernt werden können.  Wenn keine Schlüssel über einen TTL-Wert verfügen, werden im System keine Schlüssel entfernt.  Wenn das System bei hoher Speicherauslastung das Entfernen beliebiger Schlüssel erlauben soll, sollten Sie die *allkeys-lru*-Richtlinie in Betracht ziehen.
+ * **Wählen Sie eine [Entfernungsrichtlinie](https://redis.io/topics/lru-cache), die für Ihre Anwendung geeignet ist.**  Die Standardrichtlinie für Azure Redis ist *volatile-lru* . Das bedeutet, dass nur Schlüssel, für die eine Gültigkeitsdauer (TTL) festgelegt ist, entfernt werden können.  Wenn keine Schlüssel über einen TTL-Wert verfügen, werden im System keine Schlüssel entfernt.  Wenn das System bei hoher Speicherauslastung das Entfernen beliebiger Schlüssel erlauben soll, sollten Sie die *allkeys-lru* -Richtlinie in Betracht ziehen.
 
  * **Legen Sie einen Ablaufwert für Ihre Schlüssel fest.**  Bei einem Ablauf werden Schlüssel proaktiv entfernt, anstatt zu warten, bis die Speicherauslastung hoch ist.  Wird das Entfernung aufgrund hoher Speicherauslastung ausgelöst, kann dies zusätzliche Last auf dem Server verursachen.  Weitere Informationen finden Sie in der Dokumentation für die Befehle [EXPIRE](https://redis.io/commands/expire) und [EXPIREAT](https://redis.io/commands/expireat).
  
@@ -71,22 +71,22 @@ Wenn Sie die Funktionsweise Ihres Codes unter Fehlerbedingungen testen möchten,
 ## <a name="performance-testing"></a>Leistungstests
  * **Starten Sie mit der Verwendung von `redis-benchmark.exe`** , um ein Gefühl für den zu erzielenden Durchsatz und die mögliche Latenz zu bekommen, bevor Sie eigene Leistungstests schreiben.  Dokumentation zu „redis-benchmark“ [finden Sie hier](https://redis.io/topics/benchmarks).  Beachten Sie, dass „redis-benchmark“ keine Unterstützung für TLS bietet, Sie müssen deshalb [den Nicht-TLS-Port über das Portal aktivieren](cache-configure.md#access-ports), bevor Sie den Test ausführen.  [Eine mit Windows kompatible Version von „redis-benchmark.exe“ finden Sie hier](https://github.com/MSOpenTech/redis/releases)
  * Die für den Test verwendete Client-VM sollte sich **in derselben Region** befinden wie Ihre Redis Cache-Instanz.
- * **Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden**, da sie über bessere Hardware verfügt und die besten Ergebnisse liefert.
- * Stellen Sie sicher, dass die verwendete Client-VM über **mindestens so viel Computeleistung und Bandbreite* wie der getestete Cache verfügt. 
- * **Aktivieren Sie VRSS** auf dem Clientcomputer, wenn Sie unter Windows arbeiten.  [Ausführliche Informationen finden Sie hier](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  PowerShell-Beispielskript:
+ * **Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden** , da sie über bessere Hardware verfügt und die besten Ergebnisse liefert.
+ * Stellen Sie sicher, dass die verwendete Client-VM über * *mindestens so viel Computeleistung und Bandbreite* wie der getestete Cache verfügt. 
+ * **Aktivieren Sie VRSS** auf dem Clientcomputer, wenn Sie unter Windows arbeiten.  [Ausführliche Informationen finden Sie hier](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  PowerShell-Beispielskript:
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
      
- * **Erwägen Sie die Verwendung von Redis-Instanzen im Premium-Tarif**.  Diese Cachegrößen verfügen über eine bessere Netzwerklatenz und einen höheren Durchsatz, weil sowohl die CPU als auch das Netzwerk auf besserer Hardware ausgeführt werden.
+ * **Erwägen Sie die Verwendung von Redis-Instanzen im Premium-Tarif** .  Diese Cachegrößen verfügen über eine bessere Netzwerklatenz und einen höheren Durchsatz, weil sowohl die CPU als auch das Netzwerk auf besserer Hardware ausgeführt werden.
  
      > [!NOTE]
      > Als Referenz haben wir unsere beobachteten Leistungsergebnisse [hier veröffentlicht](cache-planning-faq.md#azure-cache-for-redis-performance).   Bedenken Sie außerdem, dass SSL/TLS einen gewissen Overhead hinzufügt, wodurch Sie bei Verwendung von Transportverschlüsselung abweichende Latenzen und/oder einen anderen Durchsatz erhalten.
  
 ### <a name="redis-benchmark-examples"></a>Redis-Benchmark-Beispiele
-**Vortestsetup**: Bereiten Sie die Cache-Instanz mit Daten vor, die für die unten aufgeführten Befehle zum Testen von Latenz und Durchsatz erforderlich sind.
+**Vortestsetup** : Bereiten Sie die Cache-Instanz mit Daten vor, die für die unten aufgeführten Befehle zum Testen von Latenz und Durchsatz erforderlich sind.
 > redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
 
-**So testen Sie die Latenz**: Testen von GET-Anforderungen mithilfe einer 1-K-Nutzlast.
+**So testen Sie die Latenz** : Testen von GET-Anforderungen mithilfe einer 1-K-Nutzlast.
 > redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
 
-**So testen Sie den Durchsatz**: GET-Anforderungen in Pipeline mit einer 1-K-Nutzlast.
+**So testen Sie den Durchsatz** : GET-Anforderungen in Pipeline mit einer 1-K-Nutzlast.
 > redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50

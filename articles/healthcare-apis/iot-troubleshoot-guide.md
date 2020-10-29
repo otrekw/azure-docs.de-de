@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982992"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558515"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT-Konnektor für FHIR (Vorschauversion): Leitfaden zur Problembehandlung
 
@@ -122,7 +122,7 @@ Die Kopien der Zuordnungsdatei sollten beim Öffnen eines Supporttickets für de
 Lesen Sie häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md)
 
 *Im Azure-Portal wird Azure IoT-Konnektor für FHIR als IoT-Konnektor (Vorschauversion) bezeichnet.
 

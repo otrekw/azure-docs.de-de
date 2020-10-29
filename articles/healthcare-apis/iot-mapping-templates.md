@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553646"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558532"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie Azure IoT-Konnektor für FHIR* mithilfe von Zuordnungsvorlagen konfigurieren können.
@@ -71,8 +71,8 @@ Mit JsonPathContentTemplate können Werte mithilfe des JSON-Pfads abgeglichen un
 |**TypeMatchExpression**|Der JSON-Pfadausdruck, der gegen die Event Hubs-Nutzlast ausgewertet wird. Wird ein entsprechendes JToken gefunden, gilt die Vorlage als Übereinstimmung. Alle nachfolgenden Ausdrücke werden für das extrahierte JToken ausgewertet, das hier abgeglichen wurde.|`$..[?(@heartRate)]`
 |**TimestampExpression**|Der JSON-Pfadausdruck, mit dem der Zeitstempelwert für die Eigenschaft „OccurenceTimeUtc“ der Messung extrahiert wird|`$.endDate`
 |**DeviceIdExpression**|Der JSON-Pfadausdruck zum Extrahieren des Gerätebezeichners|`$.deviceId`
-|**PatientIdExpression**|*Optional*: Der JSON-Pfadausdruck zum Extrahieren des Patientenbezeichners|`$.patientId`
-|**EncounterIdExpression**|*Optional*: Der JSON-Pfadausdruck zum Extrahieren des Untersuchungsbezeichners|`$.encounterId`
+|**PatientIdExpression**|*Optional* : Der JSON-Pfadausdruck zum Extrahieren des Patientenbezeichners|`$.patientId`
+|**EncounterIdExpression**|*Optional* : Der JSON-Pfadausdruck zum Extrahieren des Untersuchungsbezeichners|`$.encounterId`
 |**Values[].ValueName**|Der Name, der dem vom nachfolgenden Ausdruck extrahierten Wert zugeordnet werden soll. Hiermit wird der erforderliche Wert oder die erforderliche Komponente in der FHIR-Zuordnungsvorlage gebunden. |`hr`
 |**Values[].ValueExpression**|Der JSON-Pfadausdruck zum Extrahieren des erforderlichen Werts|`$.heartRate`
 |**Values[].Required**|Mit dieser Eigenschaft wird festgelegt, ob der Wert in der Nutzlast vorhanden sein muss.  Wird er nicht gefunden, wird keine Messung generiert, und InvalidOperationException wird ausgelöst.|`true`
@@ -565,7 +565,7 @@ Stellt den FHIR-Datentyp [CodeableConcept](http://hl7.org/fhir/datatypes.html#Co
 Lesen Sie häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR (Vorschauversion).
 
 >[!div class="nextstepaction"]
->[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md)
 
 *Im Azure-Portal wird Azure IoT-Konnektor für FHIR als IoT-Konnektor (Vorschauversion) bezeichnet.
 

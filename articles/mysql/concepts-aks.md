@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519863"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546907"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Verbinden von Azure Kubernetes Service und Azure Database for MySQL
 
@@ -26,7 +26,7 @@ Ab November 2018 unterstützt AKS den beschleunigten Netzwerkbetrieb auf diesen 
 Sie können überprüfen, ob Ihr AKS-Cluster über den beschleunigten Netzwerkbetrieb verfügt:
 1. Navigieren Sie zum Azure-Portal, und wählen Sie Ihren AKS-Cluster aus.
 2. Wählen Sie die Registerkarte „Eigenschaften“.
-3. Kopieren Sie den Namen der **Infrastrukturressourcengruppe**.
+3. Kopieren Sie den Namen der **Infrastrukturressourcengruppe** .
 4. Suchen Sie über die Suchleiste des Portals nach der Infrastrukturressourcengruppe, und öffnen Sie sie.
 5. Wählen Sie in dieser Ressourcengruppe einen virtuellen Computer aus.
 6. Navigieren Sie zur Registerkarte **Netzwerk** des virtuellen Computers.
@@ -44,4 +44,4 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen eines Azure Kubernetes Service-Clusters](../aks/kubernetes-walkthrough.md)
-- Informieren Sie sich, wie Sie [WordPress mit OSBA und Azure Database for MySQL über ein Helm-Diagramm installieren](../aks/integrate-azure.md).
+- Informieren Sie sich, wie Sie [WordPress mit OSBA und Azure Database for MySQL über ein Helm-Diagramm installieren](../aks/index.yml).

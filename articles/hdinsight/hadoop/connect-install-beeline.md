@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754955"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547587"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Herstellen einer Verbindung mit Apache Beeline in HDInsight oder lokales Installieren
 
@@ -104,7 +104,7 @@ Wenn Sie direkt vom Clusterhauptknoten oder von einer Ressource, die sich in der
 
 ## <a name="install-beeline-client"></a>Installieren des Beeline-Clients
 
-Obwohl Beeline auf den Hauptknoten enthalten ist, können Sie es lokal installieren.  Die Schritte zum Installieren von Beeline auf einem lokalen Computer basieren auf einem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+Obwohl Beeline auf den Hauptknoten enthalten ist, können Sie es lokal installieren.  Die Schritte zum Installieren von Beeline auf einem lokalen Computer basieren auf einem [Windows-Subsystem für Linux](/windows/wsl/install-win10).
 
 1. Aktualisieren Sie die Paketlisten. Geben Sie in der Bash-Shell den folgenden Befehl ein:
 
@@ -128,7 +128,7 @@ Obwohl Beeline auf den Hauptknoten enthalten ist, können Sie es lokal installie
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        Drücken Sie **STRG+X**, dann **Y** und schließlich die EINGABETASTE.
+        Drücken Sie **STRG+X** , dann **Y** und schließlich die EINGABETASTE.
 
 1. Geben Sie zum Herunterladen der Hadoop- und Beeline-Archive die folgenden Befehle ein:
 
@@ -144,7 +144,7 @@ Obwohl Beeline auf den Hauptknoten enthalten ist, können Sie es lokal installie
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. Nehmen Sie weitere Änderungen an der BASHRC-Datei vor. Sie müssen den Pfad angeben, in den die Archive entpackt wurden. Wenn Sie das [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10) verwenden und die Schritte genau befolgt haben, lautet der Pfad `/mnt/c/Users/user/`, wobei `user` für Ihren Benutzernamen steht.
+1. Nehmen Sie weitere Änderungen an der BASHRC-Datei vor. Sie müssen den Pfad angeben, in den die Archive entpackt wurden. Wenn Sie das [Windows-Subsystem für Linux](/windows/wsl/install-win10) verwenden und die Schritte genau befolgt haben, lautet der Pfad `/mnt/c/Users/user/`, wobei `user` für Ihren Benutzernamen steht.
 
     1. Öffnen Sie die Datei mit `nano ~/.bashrc`.
 
@@ -156,7 +156,7 @@ Obwohl Beeline auf den Hauptknoten enthalten ist, können Sie es lokal installie
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. Drücken Sie **STRG+X**, dann **Y** und schließlich die EINGABETASTE.
+    1. Drücken Sie **STRG+X** , dann **Y** und schließlich die EINGABETASTE.
 
 1. Schließen Sie die Bash-Sitzung, und öffnen Sie sie erneut.
 
