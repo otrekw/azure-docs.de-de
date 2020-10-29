@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842528"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745976"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -196,7 +196,7 @@ Eine Service Fabric Mesh-Anwendung ist eine Azure-Ressource, die Sie mithilfe vo
 In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Laden Sie die Dateien [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) (Bereitstellungsvorlage) und [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) (Parameterdatei) herunter, statt eine neue Vorlage und neue Parameterdateien zu erstellen.
 
 ### <a name="parameters"></a>Parameter
-Wenn Ihre Vorlage Werte enthält, die Sie nach Bereitstellen der Anwendung wahrscheinlich ändern werden, oder wenn Sie gerne die Möglichkeit hätten, die Werte pro Bereitstellung zu ändern (falls diese Vorlage für andere Bereitstellungen wiederverwendet werden soll), ist es empfehlenswert, die Werte zu parametrisieren. Zu diesem Zweck muss am Anfang der Bereitstellungsvorlage ein Abschnitt namens „parameters“ erstellt werden. Dieser Abschnitt dient zum Angeben von Parameternamen und Eigenschaften, auf die später in der Bereitstellungsvorlage verwiesen wird. Jede Parameterdefinition enthält die Einträge *type*, *defaultValue* und einen optionalen *metadata*-Abschnitt mit einer Beschreibung (*description*).
+Wenn Ihre Vorlage Werte enthält, die Sie nach Bereitstellen der Anwendung wahrscheinlich ändern werden, oder wenn Sie gerne die Möglichkeit hätten, die Werte pro Bereitstellung zu ändern (falls diese Vorlage für andere Bereitstellungen wiederverwendet werden soll), ist es empfehlenswert, die Werte zu parametrisieren. Zu diesem Zweck muss am Anfang der Bereitstellungsvorlage ein Abschnitt namens „parameters“ erstellt werden. Dieser Abschnitt dient zum Angeben von Parameternamen und Eigenschaften, auf die später in der Bereitstellungsvorlage verwiesen wird. Jede Parameterdefinition enthält die Einträge *type* , *defaultValue* und einen optionalen *metadata* -Abschnitt mit einer Beschreibung ( *description* ).
 
 Der Abschnitt „parameters“ wird am Anfang Ihrer Bereitstellungsvorlage direkt vor dem Abschnitt *resources* definiert:
 

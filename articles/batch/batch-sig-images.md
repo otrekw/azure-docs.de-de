@@ -3,13 +3,13 @@ title: Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierte
 description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605191"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745520"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
@@ -25,13 +25,13 @@ Durch die Verwendung eines freigegebenen Image sparen Sie Zeit beim Vorbereiten 
 
 Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann mehrere Vorteile bieten:
 
-- **Dieselben Images in den Regionen verwenden**: Sie können freigegebene Imagereplikate in verschiedenen Regionen erstellen, sodass alle Pools dasselbe Image verwenden.
-- **Das Betriebssystem (Operating System, OS) konfigurieren**: Sie können die Konfiguration des Betriebssystemdatenträgers des Images anpassen.
-- **Anwendungen vorab installieren**: Das Vorinstallieren von Anwendungen auf dem Betriebssystemdatenträger ist effizienter und weniger fehleranfällig als die Installation von Anwendungen nach der Bereitstellung der Computeknoten mit einem Starttask.
-- **Große Datenmengen einmalig kopieren**: Sie können statische Daten zu einem Teil des verwalteten freigegebenen Image machen, indem Sie die Daten auf die Datenträger eines verwalteten Image kopieren. Dieser Vorgang muss nur einmal ausgeführt werden und stellt Daten für jeden Knoten des Pools zur Verfügung.
-- **Pools auf größere Größen skalieren**: Mit Shared Image Gallery können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen.
+- **Dieselben Images in den Regionen verwenden** : Sie können freigegebene Imagereplikate in verschiedenen Regionen erstellen, sodass alle Pools dasselbe Image verwenden.
+- **Das Betriebssystem (Operating System, OS) konfigurieren** : Sie können die Konfiguration des Betriebssystemdatenträgers des Images anpassen.
+- **Anwendungen vorab installieren** : Das Vorinstallieren von Anwendungen auf dem Betriebssystemdatenträger ist effizienter und weniger fehleranfällig als die Installation von Anwendungen nach der Bereitstellung der Computeknoten mit einem Starttask.
+- **Große Datenmengen einmalig kopieren** : Sie können statische Daten zu einem Teil des verwalteten freigegebenen Image machen, indem Sie die Daten auf die Datenträger eines verwalteten Image kopieren. Dieser Vorgang muss nur einmal ausgeführt werden und stellt Daten für jeden Knoten des Pools zur Verfügung.
+- **Pools auf größere Größen skalieren** : Mit Shared Image Gallery können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen.
 - **Bessere Leistung als bei einfacher Verwendung eines verwalteten Images als benutzerdefiniertes Image.** Bei Verwendung eines Shared Image-Pools benutzerdefinierter Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 Prozent, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 Prozent.
-- **Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung**: Die Imagegruppierungsdefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Das Gruppieren von Images ermöglicht eine einfachere Imageverwaltung. Weitere Informationen finden Sie unter [Imagedefinitionen](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
+- **Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung** : Die Imagegruppierungsdefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Das Gruppieren von Images ermöglicht eine einfachere Imageverwaltung. Weitere Informationen finden Sie unter [Imagedefinitionen](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 
 - Ein **Azure Batch-Konto.** Informationen zum Erstellen eines Batch-Kontos im Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle finden Sie in den entsprechenden Batch-Schnellstartanleitungen unter [Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal](quick-create-portal.md) und [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](quick-create-cli.md).
 
-- **Ein Shared Image Gallery-Image**. Zum Erstellen eines freigegebenen Images müssen Sie über eine verwaltete Imageressource verfügen oder eine verwaltete Imageressource erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
+- **Ein Shared Image Gallery-Image** . Zum Erstellen eines freigegebenen Images müssen Sie über eine verwaltete Imageressource verfügen oder eine verwaltete Imageressource erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
 
 > [!NOTE]
 > Wenn das freigegebene Image sich nicht im gleichen Abonnement wie das Batch-Konto befindet, müssen Sie für das Abonnement [den Ressourcenanbieter „Microsoft.Batch“ registrieren](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider). Beide Abonnements müssen demselben Azure AD-Mandanten zugeordnet sein.
@@ -206,11 +206,11 @@ client.pool.add(new_pool)
 Gehen Sie wie folgt vor, um über das Azure-Portal einen Pool auf der Grundlage eines freigegebenen Images zu erstellen:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu **Batch-Konten**, und wählen Sie Ihr Konto aus.
+1. Navigieren Sie zu **Batch-Konten** , und wählen Sie Ihr Konto aus.
 1. Wählen Sie **Pools** und anschließend **Hinzufügen** aus, um einen neuen Pool zu erstellen.
 1. Wählen Sie im Abschnitt **Imagetyp** die Option **Shared Image Gallery** aus.
 1. Geben Sie in den restlichen Abschnitten Informationen zu Ihrem verwalteten Image an.
-1. Klicken Sie auf **OK**.
+1. Klicken Sie auf **OK** .
 
 ![Erstellen Sie einen Pool auf der Grundlage eines freigegebenen Images mithilfe des Portals.](media/batch-sig-images/create-custom-pool.png)
 
@@ -218,7 +218,7 @@ Gehen Sie wie folgt vor, um über das Azure-Portal einen Pool auf der Grundlage 
 
 Wenn Sie beabsichtigen, einen Pool mit Hunderten oder Tausenden von VMs oder mehr mit einem freigegebenen Image zu erstellen, beachten Sie die folgenden Hinweise.
 
-- **Anzahl von Shared Image Gallery-Replikaten**:  Es wird empfohlen, für jeden Pool mit bis zu 600 Instanzen mindestens ein Replikat beizubehalten. Wenn Sie z. B. einen Pool mit 3000 VMs erstellen, sollten Sie mindestens 5 Replikate Ihres Image beibehalten. Sie sollten immer mehr Replikate beibehalten als in den Mindestanforderungen vorgesehen sind, um eine bessere Leistung zu erzielen.
+- **Anzahl von Shared Image Gallery-Replikaten** :  Es wird empfohlen, für jeden Pool mit bis zu 600 Instanzen mindestens ein Replikat beizubehalten. Wenn Sie z. B. einen Pool mit 3000 VMs erstellen, sollten Sie mindestens 5 Replikate Ihres Image beibehalten. Sie sollten immer mehr Replikate beibehalten als in den Mindestanforderungen vorgesehen sind, um eine bessere Leistung zu erzielen.
 
 - **Timeout bei Größenänderung.** Wenn Ihr Pool eine feste Anzahl von Knoten enthält (also nicht automatisch skaliert wird), erhöhen Sie die Eigenschaft `resizeTimeout` des Pools abhängig von der Größe des Pools. Bei jeweils 1000 VMs beträgt das empfohlene Timeout bei Größenänderung mindestens 15 Minuten. Beispielsweise beträgt das empfohlene Timeout bei Größenänderung für einen Pool mit 2000 VMs mindestens 30 Minuten.
 

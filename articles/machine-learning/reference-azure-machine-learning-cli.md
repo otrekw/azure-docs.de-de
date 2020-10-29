@@ -9,13 +9,13 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
-ms.custom: seodec18
-ms.openlocfilehash: 50ac8ede9f8272d6956d1ac29e57a9c26d2c0bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 8ce32ab1e7dac6fd1a154fc6e730113428a8291b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708270"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744485"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installieren und Verwenden der CLI-Erweiterung für Azure Machine Learning
 
@@ -189,7 +189,7 @@ Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](h
 <a id="computeinstance"></a>
 
 ### <a name="compute-instance"></a>Compute-Instanz
-Verwalten von Computeinstanzen.  In allen untenstehenden Beispielen lautet der Name der Computeinstanz **cpu**.
+Verwalten von Computeinstanzen.  In allen untenstehenden Beispielen lautet der Name der Computeinstanz **cpu** .
 
 + Erstellen Sie eine neue computeinstance-Klasse.
 
@@ -411,7 +411,7 @@ In der folgenden Tabelle ist jedes Feld der obersten Ebene in der JSON-Datei, se
 
 | JSON-Feld | type | BESCHREIBUNG |
 |---|---|---|
-| `name` | `string` | Der Name der Umgebung. Beginnen Sie den Namen nicht mit **Microsoft** oder **AzureML**. |
+| `name` | `string` | Der Name der Umgebung. Beginnen Sie den Namen nicht mit **Microsoft** oder **AzureML** . |
 | `version` | `string` | Die Version der Umgebung. |
 | `environmentVariables` | `{string: string}` | Eine Hashzuordnung mit Namen und Werten von Umgebungsvariablen. |
 | `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true), das die Python-Umgebung und den Interpreter definiert, die auf der Zielcomputeressource verwendet werden sollen. |

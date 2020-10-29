@@ -5,13 +5,13 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.custom: devx-track-java
-ms.openlocfilehash: 8ba15047d04d3af25518e8c55a50c55bcacf9037
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d0c4a6fcdddddc77d4072c2d0d11fe78837d84bc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103933"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743382"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Tutorial: Erstellen einer Funktion in Java mit einem Event Hub-Trigger und einer Azure Cosmos DB-Ausgabebindung
 
@@ -412,7 +412,7 @@ Nach einigen Build- und Startnachrichten wird eine Ausgabe wie im folgenden Beis
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-Sie können dann zum [Azure-Portal](https://portal.azure.com) wechseln und zu Ihrem Azure Cosmos DB-Konto navigieren. Wählen Sie **Daten-Explorer**, erweitern Sie **TelemetryInfo**, und wählen Sie dann **Elemente** aus, um Ihre Daten beim Eintreffen anzuzeigen.
+Sie können dann zum [Azure-Portal](https://portal.azure.com) wechseln und zu Ihrem Azure Cosmos DB-Konto navigieren. Wählen Sie **Daten-Explorer** , erweitern Sie **TelemetryInfo** , und wählen Sie dann **Elemente** aus, um Ihre Daten beim Eintreffen anzuzeigen.
 
 ![Cosmos DB-Daten-Explorer](media/functions-event-hub-cosmos-db/data-explorer.png)
 

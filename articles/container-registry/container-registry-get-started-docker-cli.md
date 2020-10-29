@@ -3,13 +3,13 @@ title: Pushen und Pullen von Docker-Images
 description: Push- und Pullübertragung von Docker-Images an eine private Containerregistrierung in Azure mit der Docker CLI
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74456359"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746635"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
 
@@ -19,12 +19,12 @@ In den folgenden Schritten laden Sie ein offizielles [Nginx-Image](https://store
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
+* **Azure-Containerregistrierung** : Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
 * **Docker CLI** – Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [macOS][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System problemlos konfiguriert werden kann.
 
 ## <a name="log-in-to-a-registry"></a>Anmelden an einer Registrierung
 
-Es gibt [verschiedene Möglichkeiten für die Authentifizierung](container-registry-authentication.md) bei Ihrer privaten Containerregistrierung. Die empfohlene Methode bei Verwendung einer Befehlszeile ist der Azure CLI-Befehl [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Beispiel für die Anmeldung bei einer Registrierung mit dem Namen *myregistry*:
+Es gibt [verschiedene Möglichkeiten für die Authentifizierung](container-registry-authentication.md) bei Ihrer privaten Containerregistrierung. Die empfohlene Methode bei Verwendung einer Befehlszeile ist der Azure CLI-Befehl [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Beispiel für die Anmeldung bei einer Registrierung mit dem Namen *myregistry* :
 
 ```azurecli
 az acr login --name myregistry

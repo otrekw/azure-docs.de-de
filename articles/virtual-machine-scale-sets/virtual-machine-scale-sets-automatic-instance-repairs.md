@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527420"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744841"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische Instanzreparaturen für Azure-VM-Skalierungsgruppen
 
@@ -54,7 +54,7 @@ Dieses Feature wird für Service Fabric-Skalierungsgruppen zurzeit nicht unterst
 
 ## <a name="how-do-automatic-instance-repairs-work"></a>Wie funktionieren automatische Instanzreparaturen?
 
-Das Feature für automatische Instannreparatur basiert auf der Integritätsüberwachung einzelner Instanzen in einer Skalierungsgruppe. VM-Instanzen in einer Skalierungsgruppe können so konfiguriert werden, dass der Integritätsstatus der Anwendung entweder mit der [Erweiterung für die Anwendungsintegrität](./virtual-machine-scale-sets-health-extension.md) oder mit [Lastenausgleichs-Integritätstests](../load-balancer/load-balancer-custom-probe-overview.md) ausgegeben wird. Wenn eine Instanz als fehlerhaft eingestuft wird, führt die Skalierungsgruppe eine Reparaturaktion aus, indem sie die fehlerhafte Instanz löscht und eine neue Instanz erstellt, um sie zu ersetzen. Das neueste VM-Skalierungsgruppenmodell wird verwendet, um die neue Instanz zu erstellen. Diese Funktion kann im VM-Skalierungsgruppenmodell mithilfe des *automaticRepairsPolicy*-Objekts aktiviert werden.
+Das Feature für automatische Instannreparatur basiert auf der Integritätsüberwachung einzelner Instanzen in einer Skalierungsgruppe. VM-Instanzen in einer Skalierungsgruppe können so konfiguriert werden, dass der Integritätsstatus der Anwendung entweder mit der [Erweiterung für die Anwendungsintegrität](./virtual-machine-scale-sets-health-extension.md) oder mit [Lastenausgleichs-Integritätstests](../load-balancer/load-balancer-custom-probe-overview.md) ausgegeben wird. Wenn eine Instanz als fehlerhaft eingestuft wird, führt die Skalierungsgruppe eine Reparaturaktion aus, indem sie die fehlerhafte Instanz löscht und eine neue Instanz erstellt, um sie zu ersetzen. Das neueste VM-Skalierungsgruppenmodell wird verwendet, um die neue Instanz zu erstellen. Diese Funktion kann im VM-Skalierungsgruppenmodell mithilfe des *automaticRepairsPolicy* -Objekts aktiviert werden.
 
 ### <a name="batching"></a>Batching
 
@@ -68,7 +68,7 @@ Wenn eine Instanz aufgrund einer PUT-, PATCH- oder POST-Aktion, die für die Ska
 
 VM-Skalierungsgruppen bieten die Möglichkeit, automatische Instanzreparaturen bei Bedarf vorübergehend aufzuschieben. *serviceState* für automatische Reparaturen unter der Eigenschaft *orchestrationServices* in der Instanzansicht der VM-Skalierungsgruppe zeigt den aktuellen Status automatischer Reparaturen an. Wenn für eine Skalierungsgruppe automatische Reparaturen konfiguriert werden, wird *serviceState* auf *Running* (Wird ausgeführt) festgelegt. Wenn die automatischen Reparaturen für eine Skalierungsgruppe aufgeschoben werden, wird der Parameter *serviceState* auf *Suspended* (Angehalten) festgelegt. Wenn *automaticRepairsPolicy* für eine Skalierungsgruppe definiert ist, die Funktion für automatische Reparaturen jedoch nicht aktiviert ist, hat der Parameter *serviceState* den Wert *Not Running* (Wird nicht ausgeführt).
 
-Wenn neu erstellte Instanzen zur Ersetzung der fehlerhaften Instanzen in einer Skalierungsgruppe auch nach wiederholt durchgeführten Reparaturvorgängen fehlerhaft bleiben, aktualisiert die Plattform als Sicherheitsmaßnahme den *serviceState* für automatische Reparaturen auf *Suspended*. Sie können die automatischen Reparaturen fortsetzen, indem Sie den Wert von *serviceState* für automatische Reparaturen auf *Running* festlegen. Ausführliche Anweisungen finden Sie im Abschnitt zum [Anzeigen und Aktualisieren des Dienststatus der Richtlinie für automatische Reparaturen](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) für Ihre Skalierungsgruppe. 
+Wenn neu erstellte Instanzen zur Ersetzung der fehlerhaften Instanzen in einer Skalierungsgruppe auch nach wiederholt durchgeführten Reparaturvorgängen fehlerhaft bleiben, aktualisiert die Plattform als Sicherheitsmaßnahme den *serviceState* für automatische Reparaturen auf *Suspended* . Sie können die automatischen Reparaturen fortsetzen, indem Sie den Wert von *serviceState* für automatische Reparaturen auf *Running* festlegen. Ausführliche Anweisungen finden Sie im Abschnitt zum [Anzeigen und Aktualisieren des Dienststatus der Richtlinie für automatische Reparaturen](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) für Ihre Skalierungsgruppe. 
 
 Der automatische Instannreparaturvorgang funktioniert wie folgt:
 
@@ -80,7 +80,7 @@ Der automatische Instannreparaturvorgang funktioniert wie folgt:
 
 ## <a name="instance-protection-and-automatic-repairs"></a>Instanzschutz und automatische Reparaturen
 
-Wenn eine Instanz in einer Skalierungsgruppe durch Anwenden einer der [Schutzrichtlinien](./virtual-machine-scale-sets-instance-protection.md) geschützt ist, werden automatische Reparaturen für diese Instanz nicht ausgeführt. Dies gilt für beide Schutzrichtlinien: *Schutz vor dem horizontalen Herunterskalieren* und *Schutz vor Skalierungsgruppenaktionen*. 
+Wenn eine Instanz in einer Skalierungsgruppe durch Anwenden einer der [Schutzrichtlinien](./virtual-machine-scale-sets-instance-protection.md) geschützt ist, werden automatische Reparaturen für diese Instanz nicht ausgeführt. Dies gilt für beide Schutzrichtlinien: *Schutz vor dem horizontalen Herunterskalieren* und *Schutz vor Skalierungsgruppenaktionen* . 
 
 ## <a name="terminatenotificationandautomaticrepairs"></a>Beendigungsbenachrichtigung und automatische Reparaturen
 
@@ -88,7 +88,7 @@ Wenn für eine Skalierungsgruppe das Feature [Beendigungsbenachrichtigung](./vir
 
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Aktivieren der Richtlinie für automatische Reparaturen beim Erstellen einer neuen Skalierungsgruppe
 
-Um die Richtlinie für automatische Reparaturen beim Erstellen einer neuen Skalierungsgruppe zu aktivieren, stellen Sie sicher, dass alle [Anforderungen](#requirements-for-using-automatic-instance-repairs) erfüllt sind, die für das Abonnieren dieses Features erforderlich sind. Der Anwendungsendpunkt sollte für Skalierungsgruppeninstanzen ordnungsgemäß konfiguriert werden, um zu vermeiden, dass unbeabsichtigte Reparaturen ausgelöst werden, während der Endpunkt konfiguriert wird. Bei neu erstellten Skalierungsgruppen werden alle Instanzreparaturen ausgeführt, nachdem für die Dauer der Toleranzperiode gewartet wurde. Um die automatische Instanzreparatur in einer Skalierungsgruppe zu aktivieren, verwenden Sie das *automaticRepairsPolicy*-Objekt im VM-Skalierungsgruppenmodell.
+Um die Richtlinie für automatische Reparaturen beim Erstellen einer neuen Skalierungsgruppe zu aktivieren, stellen Sie sicher, dass alle [Anforderungen](#requirements-for-using-automatic-instance-repairs) erfüllt sind, die für das Abonnieren dieses Features erforderlich sind. Der Anwendungsendpunkt sollte für Skalierungsgruppeninstanzen ordnungsgemäß konfiguriert werden, um zu vermeiden, dass unbeabsichtigte Reparaturen ausgelöst werden, während der Endpunkt konfiguriert wird. Bei neu erstellten Skalierungsgruppen werden alle Instanzreparaturen ausgeführt, nachdem für die Dauer der Toleranzperiode gewartet wurde. Um die automatische Instanzreparatur in einer Skalierungsgruppe zu aktivieren, verwenden Sie das *automaticRepairsPolicy* -Objekt im VM-Skalierungsgruppenmodell.
 
 Sie können diese [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) auch verwenden, um eine VM-Skalierungsgruppe mit dem Integritätstest für den Lastenausgleich und aktivierten automatischen Instanzreparaturen mit einer Karenzzeit von 30 Minuten bereitzustellen.
 
@@ -96,13 +96,13 @@ Sie können diese [Schnellstartvorlage](https://github.com/Azure/azure-quickstar
  
 Mit den folgenden Schritten wird die Richtlinie für automatische Reparaturen beim Erstellen einer neuen Skalierungsgruppe aktiviert.
  
-1. Navigieren Sie zu **VM-Skalierungsgruppen**.
+1. Navigieren Sie zu **VM-Skalierungsgruppen** .
 1. Wählen Sie **+ Hinzufügen** aus, um eine neue Skalierungsgruppe zu erstellen.
-1. Wechseln Sie zur Registerkarte **Integrität**. 
-1. Suchen Sie den Abschnitt **Integrität**.
-1. Aktivieren Sie die Option **Anwendungsintegrität überwachen**.
-1. Suchen Sie den Abschnitt **Automatische Reparaturrichtlinie**.
-1. **Aktivieren** Sie die Option **automatische Reparaturen**.
+1. Wechseln Sie zur Registerkarte **Integrität** . 
+1. Suchen Sie den Abschnitt **Integrität** .
+1. Aktivieren Sie die Option **Anwendungsintegrität überwachen** .
+1. Suchen Sie den Abschnitt **Automatische Reparaturrichtlinie** .
+1. **Aktivieren** Sie die Option **automatische Reparaturen** .
 1. Geben Sie in **Grace period (min)** (Karenzzeit (Min.)) die Karenzzeit in Minuten ein, die zulässigen Werte liegen zwischen 30 und 90 Minuten. 
 1. Wenn Sie die Erstellung der neuen Skalierungsgruppe abgeschlossen haben, wählen Sie die Schaltfläche **Überprüfen und erstellen** aus.
 
@@ -160,7 +160,7 @@ Im Beispiel oben werden ein vorhandener Load Balancer und ein vorhandener Integr
 
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Aktivieren der Richtlinie für automatische Reparaturen beim Aktualisieren einer vorhandenen Skalierungsgruppe
 
-Bevor Sie die Richtlinie für automatische Reparaturen in einer vorhandenen Skalierungsgruppe aktivieren, stellen Sie sicher, dass alle [Anforderungen](#requirements-for-using-automatic-instance-repairs) erfüllt sind, die für das Abonnieren dieses Features erforderlich sind. Der Anwendungsendpunkt sollte für Skalierungsgruppeninstanzen ordnungsgemäß konfiguriert werden, um zu vermeiden, dass unbeabsichtigte Reparaturen ausgelöst werden, während der Endpunkt konfiguriert wird. Um die automatische Instanzreparatur in einer Skalierungsgruppe zu aktivieren, verwenden Sie das *automaticRepairsPolicy*-Objekt im VM-Skalierungsgruppenmodell.
+Bevor Sie die Richtlinie für automatische Reparaturen in einer vorhandenen Skalierungsgruppe aktivieren, stellen Sie sicher, dass alle [Anforderungen](#requirements-for-using-automatic-instance-repairs) erfüllt sind, die für das Abonnieren dieses Features erforderlich sind. Der Anwendungsendpunkt sollte für Skalierungsgruppeninstanzen ordnungsgemäß konfiguriert werden, um zu vermeiden, dass unbeabsichtigte Reparaturen ausgelöst werden, während der Endpunkt konfiguriert wird. Um die automatische Instanzreparatur in einer Skalierungsgruppe zu aktivieren, verwenden Sie das *automaticRepairsPolicy* -Objekt im VM-Skalierungsgruppenmodell.
 
 Vergewissern Sie sich nach dem Aktualisieren des Modells einer vorhandenen Skalierungsgruppe, dass auf alle Instanzen der Skalierung das neueste Modell angewendet wird. Sie können sich dabei auf die Anweisung zum [Aktualisieren von VMs auf das neueste Skalierungsgruppenmodell](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) beziehen.
 
@@ -170,9 +170,9 @@ Sie können die Richtlinie für automatische Reparaturen einer vorhandenen Skali
  
 1. Navigieren Sie zu einer vorhandenen VM-Skalierungsgruppe.
 1. Wählen Sie unter **Einstellungen** im Menü auf der linken Seite **Integrität und Reparatur** aus.
-1. Aktivieren Sie die Option **Anwendungsintegrität überwachen**.
-1. Suchen Sie den Abschnitt **Automatische Reparaturrichtlinie**.
-1. **Aktivieren** Sie die Option **automatische Reparaturen**.
+1. Aktivieren Sie die Option **Anwendungsintegrität überwachen** .
+1. Suchen Sie den Abschnitt **Automatische Reparaturrichtlinie** .
+1. **Aktivieren** Sie die Option **automatische Reparaturen** .
 1. Geben Sie in **Grace period (min)** (Karenzzeit (Min.)) die Karenzzeit in Minuten ein, die zulässigen Werte liegen zwischen 30 und 90 Minuten. 
 1. Wählen Sie **Speichern** aus, wenn der Vorgang abgeschlossen ist. 
 
@@ -240,7 +240,7 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 }
 ```
 
-Verwenden Sie die *setOrchestrationServiceState*-API mit API-Version 2019-12-01 oder höher für eine VM-Skalierungsgruppe, um den Status automatischer Reparaturen festzulegen. Nachdem die Funktion für automatische Reparaturen für die Skalierungsgruppe festgelegt wurde, können Sie diese API verwenden, um automatische Reparaturen für Ihre Skalierungsgruppe aufzuschieben oder fortzusetzen. 
+Verwenden Sie die *setOrchestrationServiceState* -API mit API-Version 2019-12-01 oder höher für eine VM-Skalierungsgruppe, um den Status automatischer Reparaturen festzulegen. Nachdem die Funktion für automatische Reparaturen für die Skalierungsgruppe festgelegt wurde, können Sie diese API verwenden, um automatische Reparaturen für Ihre Skalierungsgruppe aufzuschieben oder fortzusetzen. 
 
  ```http
  POST '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState?api-version=2019-12-01'
@@ -278,7 +278,7 @@ az vmss set-orchestration-service-state \
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Verwenden Sie das Cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) mit dem Parameter *InstanceView*, um den *ServiceState* für automatische Instanzreparaturen anzuzeigen.
+Verwenden Sie das Cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) mit dem Parameter *InstanceView* , um den *ServiceState* für automatische Instanzreparaturen anzuzeigen.
 
 ```azurepowershell-interactive
 Get-AzVmss `

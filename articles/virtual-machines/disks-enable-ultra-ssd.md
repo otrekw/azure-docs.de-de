@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: d7718ebbbf4f9dec3519ce46e5d0d1cdbb5a7460
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441178"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745969"
 ---
 # <a name="using-azure-ultra-disks"></a>Verwenden von Azure Ultra-Datenträgern
 
@@ -29,7 +29,7 @@ Azure Ultra-Datenträger bieten hohen Durchsatz, einen hohen IOPS-Wert und einen
 
 ### <a name="vms-using-availability-zones"></a>Virtuelle Computer mit Verfügbarkeitszonen
 
-Sie müssen ermitteln, in welcher Verfügbarkeitszone Sie sich befinden, um Ultra-Datenträger verwenden zu können. Nicht jede Region unterstützt jede VM-Größe bei Ultra-Datenträgern. Führen Sie einen der folgenden Befehle aus, um zu ermitteln, ob Ihre Region, Zone und VM-Größe Ultra-Datenträger unterstützt. Ersetzen Sie dazu die Werte für **region**, **vmSize** und **subscription** entsprechend:
+Sie müssen ermitteln, in welcher Verfügbarkeitszone Sie sich befinden, um Ultra-Datenträger verwenden zu können. Nicht jede Region unterstützt jede VM-Größe bei Ultra-Datenträgern. Führen Sie einen der folgenden Befehle aus, um zu ermitteln, ob Ihre Region, Zone und VM-Größe Ultra-Datenträger unterstützt. Ersetzen Sie dazu die Werte für **region** , **vmSize** und **subscription** entsprechend:
 
 #### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
@@ -151,7 +151,7 @@ In diesem Abschnitt wird die Bereitstellung eines virtuellen Computers mit einem
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="Screenshot des Blatts „Neuen Datenträger erstellen“ mit hervorgehobener Option zum Ändern der Größe.":::
 
 
-- Ändern Sie den **Speichertyp** in **Disk Ultra**.
+- Ändern Sie den **Speichertyp** in **Disk Ultra** .
 - Ändern Sie die Werte für **Benutzerdefinierte Datenträgergröße (GiB)** , **Datenträger-IOPS** und **Datenträgerdurchsatz** in die gewünschten Werte.
 - Wählen Sie in beiden Blättern **OK** aus.
 
@@ -165,7 +165,7 @@ Bestimmen Sie zuerst die Größe des bereitzustellenden virtuellen Computers. Ei
 
 Sie müssen einen virtuellen Computer erstellen, der Ultra-Datenträger verwenden kann. Nur dann können Sie einen Ultra-Datenträger zuordnen.
 
-Ersetzen Sie die Variablen **$vmname**, **$rgname**, **$diskname**, **$location**, **$password** und **$user** durch Ihre eigenen Werte, bzw. legen Sie sie fest. Legen Sie **$zone** auf den Wert Ihrer Verfügbarkeitszone fest, den Sie am [Anfang dieses Artikels](#determine-vm-size-and-region-availability) ermittelt haben. Führen Sie anschließend den folgenden CLI-Befehl aus, um eine Ultra-fähige VM zu erstellen:
+Ersetzen Sie die Variablen **$vmname** , **$rgname** , **$diskname** , **$location** , **$password** und **$user** durch Ihre eigenen Werte, bzw. legen Sie sie fest. Legen Sie **$zone** auf den Wert Ihrer Verfügbarkeitszone fest, den Sie am [Anfang dieses Artikels](#determine-vm-size-and-region-availability) ermittelt haben. Führen Sie anschließend den folgenden CLI-Befehl aus, um eine Ultra-fähige VM zu erstellen:
 
 ```azurecli-interactive
 az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400
@@ -247,7 +247,7 @@ Alternativ können Sie, wenn sich Ihre vorhandene VM in einer Region/Verfügbark
 ![Screenshot eines Datenträgerblatts, Hinzufügen eines neuen Datenträgers.](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
 - Geben Sie einen Namen für den neuen Datenträger ein und wählen Sie dann **Größe ändern** aus.
-- Ändern Sie den **Kontotyp** in **Ultra-Datenträger**.
+- Ändern Sie den **Kontotyp** in **Ultra-Datenträger** .
 - Ändern Sie die Werte für **Benutzerdefinierte Datenträgergröße (GiB)** , **Datenträger-IOPS** und **Datenträgerdurchsatz** in die gewünschten Werte.
 
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Screenshot des Blatts „Neuen Datenträger erstellen“ mit hervorgehobener Option zum Ändern der Größe.":::

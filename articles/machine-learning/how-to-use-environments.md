@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4db53b806adc2e29ae9c9a950faf8fc822c9d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 5a7d33e163c10a6d56416ea474d7e3a9e8624219
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743980"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744409"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -56,9 +56,9 @@ Environment(name="myenv")
 
 Zusammengestellte Umgebungen enthalten Sammlungen mit Python-Paketen und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch die Kosten für die Vorbereitung der Ausführung reduziert werden. Sie können für den Einstieg eine dieser beliebten zusammengestellten Umgebungen auswählen: 
 
-* Die _AzureML-Minimal_-Umgebung enthält einen minimalen Satz von Paketen, um die Nachverfolgung von Durchläufen und das Hochladen von Ressourcen zu ermöglichen. Sie können sie als Ausgangspunkt für Ihre eigene Umgebung verwenden.
+* Die _AzureML-Minimal_ -Umgebung enthält einen minimalen Satz von Paketen, um die Nachverfolgung von Durchläufen und das Hochladen von Ressourcen zu ermöglichen. Sie können sie als Ausgangspunkt für Ihre eigene Umgebung verwenden.
 
-* Die _AzureML-Tutorial_-Umgebung enthält allgemeine Data Science-Pakete. Zu diesen Paketen gehören Scikit-Learn, Pandas, Matplotlib und eine größere Menge an azureml-sdk-Paketen.
+* Die _AzureML-Tutorial_ -Umgebung enthält allgemeine Data Science-Pakete. Zu diesen Paketen gehören Scikit-Learn, Pandas, Matplotlib und eine größere Menge an azureml-sdk-Paketen.
 
 Eine Liste der zusammengestellten Umgebungen finden Sie im [Artikel zu zusammengestellten Umgebungen](resource-curated-environments.md).
 
@@ -83,7 +83,7 @@ for env in envs:
 ```
 
 > [!WARNING]
->  Beginnen Sie den Namen Ihrer eigenen Umgebung nicht mit dem Präfix _AzureML_. Dieses Präfix ist für zusammengestellte Umgebungen reserviert.
+>  Beginnen Sie den Namen Ihrer eigenen Umgebung nicht mit dem Präfix _AzureML_ . Dieses Präfix ist für zusammengestellte Umgebungen reserviert.
 
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Verwenden von Conda-Abhängigkeiten oder pip-Anforderungsdateien
 
@@ -110,7 +110,7 @@ Die [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml
 myenv.docker.enabled = True
 ```
 
-Standardmäßig wird das neu erstellte Docker-Image in der Containerregistrierung angezeigt, die dem Arbeitsbereich zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der *UUID*-Anteil (universally unique identifier, global eindeutiger Bezeichner) des Namens entspricht einem Hash, der aus der Umgebungskonfiguration errechnet wird. Diese Entsprechung ermöglicht es dem Dienst, zu ermitteln, ob bereits ein Image der betreffenden Umgebung zur Wiederverwendung vorhanden ist.
+Standardmäßig wird das neu erstellte Docker-Image in der Containerregistrierung angezeigt, die dem Arbeitsbereich zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der *UUID* -Anteil (universally unique identifier, global eindeutiger Bezeichner) des Namens entspricht einem Hash, der aus der Umgebungskonfiguration errechnet wird. Diese Entsprechung ermöglicht es dem Dienst, zu ermitteln, ob bereits ein Image der betreffenden Umgebung zur Wiederverwendung vorhanden ist.
 
 #### <a name="use-a-prebuilt-docker-image"></a>Verwenden eines vorgefertigten Docker-Images
 
@@ -259,7 +259,7 @@ myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 ```
 
 >[!IMPORTANT]
-> Wenn Sie dieselbe Umgebungsdefinition für eine weitere Ausführung verwenden, verwendet der Azure Machine Learning Service das zwischengespeicherte Image aus Ihrer Umgebung wieder. Wenn Sie eine Umgebung mit losgelöster Paketabhängigkeit erstellen, z. B. ```numpy```, wird diese Umgebung weiterhin die Paketversion verwenden, _die zum Zeitpunkt der Erstellung der Umgebung installiert war_. Außerdem wird jede zukünftige Umgebung mit passender Definition weiterhin die alte Version verwenden. Weitere Informationen finden Sie unter [Erstellen, Zwischenspeichern und Wiederverwenden von Umgebungen](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse).
+> Wenn Sie dieselbe Umgebungsdefinition für eine weitere Ausführung verwenden, verwendet der Azure Machine Learning Service das zwischengespeicherte Image aus Ihrer Umgebung wieder. Wenn Sie eine Umgebung mit losgelöster Paketabhängigkeit erstellen, z. B. ```numpy```, wird diese Umgebung weiterhin die Paketversion verwenden, _die zum Zeitpunkt der Erstellung der Umgebung installiert war_ . Außerdem wird jede zukünftige Umgebung mit passender Definition weiterhin die alte Version verwenden. Weitere Informationen finden Sie unter [Erstellen, Zwischenspeichern und Wiederverwenden von Umgebungen](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse).
 
 ### <a name="private-python-packages"></a>Private Python-Pakete
 

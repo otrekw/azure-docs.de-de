@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Informationen zum Konfigurieren von Azure Dev Spaces für die Verwendung eines benutzerdefinierten Traefik-Eingangscontrollers und zum Konfigurieren von HTTPS mithilfe dieses Eingangscontrollers
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973052"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746109"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten Traefik-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -53,7 +53,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 Erstellen Sie einen Kubernetes-Namespace für den Traefik-Eingangscontroller, und installieren Sie ihn mithilfe von `helm`.
 
 > [!NOTE]
-> Wenn in Ihrem AKS-Cluster RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true*.
+> Wenn in Ihrem AKS-Cluster RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true* .
 
 ```console
 kubectl create ns traefik
@@ -73,7 +73,7 @@ Rufen Sie die IP-Adresse des Traefik-Eingangscontrollerdiensts mithilfe von [kub
 kubectl get svc -n traefik --watch
 ```
 
-Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *traefik*-Namespace.
+Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *traefik* -Namespace.
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
@@ -82,7 +82,7 @@ traefik   LoadBalancer   10.0.205.78   <pending>     80:32484/TCP,443:30620/TCP 
 traefik   LoadBalancer   10.0.205.78   MY_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
 ```
 
-Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Eintrag mit der externen IP-Adresse des Traefik-Diensts hinzu.
+Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A* -Eintrag mit der externen IP-Adresse des Traefik-Diensts hinzu.
 
 ```azurecli
 az network dns record-set a add-record \
@@ -92,7 +92,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-Im obigen Beispiel wird der DNS-Zone *MY_CUSTOM_DOMAIN* ein *A*-Eintrag hinzugefügt.
+Im obigen Beispiel wird der DNS-Zone *MY_CUSTOM_DOMAIN* ein *A* -Eintrag hinzugefügt.
 
 In diesem Artikel verwenden Sie die [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp), um die Nutzung von Azure Dev Spaces zu veranschaulichen. Klonen Sie die Anwendung von GitHub, und navigieren Sie zum Verzeichnis der Anwendung:
 
@@ -102,8 +102,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Öffnen Sie [values.yaml][values-yaml], und führen Sie die folgenden Updates durch:
-* Ersetzen Sie alle Vorkommen von *<REPLACE_ME_WITH_HOST_SUFFIX>* durch *traefik.MY_CUSTOM_DOMAIN*, wobei Sie für *MY_CUSTOM_DOMAIN* Ihre Domäne verwenden. 
-* Ersetzen Sie *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* durch *kubernetes.io/ingress.class: traefik  # Custom Ingress*. 
+* Ersetzen Sie alle Vorkommen von *<REPLACE_ME_WITH_HOST_SUFFIX>* durch *traefik.MY_CUSTOM_DOMAIN* , wobei Sie für *MY_CUSTOM_DOMAIN* Ihre Domäne verwenden. 
+* Ersetzen Sie *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* durch *kubernetes.io/ingress.class: traefik  # Custom Ingress* . 
 
 Nachstehend finden Sie ein Beispiel für eine aktualisierte `values.yaml`-Datei:
 
@@ -128,7 +128,7 @@ gateway:
 
 Speichern Sie Ihre Änderungen, und schließen Sie die Datei.
 
-Erstellen Sie mithilfe von `azds space select` den *dev*-Raum mit Ihrer Beispielanwendung.
+Erstellen Sie mithilfe von `azds space select` den *dev* -Raum mit Ihrer Beispielanwendung.
 
 ```console
 azds space select -n dev -y
@@ -140,7 +140,7 @@ Stellen Sie die Beispielanwendung mithilfe von `helm install` bereit.
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-Im obigen Beispiel wird die Beispielanwendung für den *dev*-Namespace bereitgestellt.
+Im obigen Beispiel wird die Beispielanwendung für den *dev* -Namespace bereitgestellt.
 
 Zeigen Sie die URLs für den Zugriff auf die Beispielanwendung mit `azds list-uris` an.
 
@@ -157,7 +157,7 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+Navigieren Sie zum Dienst *bikesharingweb* , indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
 > [!NOTE]
 > Wenn anstelle des Diensts *bikesharingweb* eine Fehlerseite angezeigt wird, überprüfen Sie, ob Sie **sowohl** die Anmerkung *kubernetes.io/ingress.class* als auch den Host in der Datei *values.yaml* aktualisiert haben.
@@ -169,7 +169,7 @@ azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Die folgende Ausgabe zeigt die Beispiel-URLs aus `azds list-uris` für den Zugriff auf die Beispielanwendung im untergeordneten Entwicklungsbereich *azureuser1*.
+Die folgende Ausgabe zeigt die Beispiel-URLs aus `azds list-uris` für den Zugriff auf die Beispielanwendung im untergeordneten Entwicklungsbereich *azureuser1* .
 
 ```console
 Uri                                                  Status
@@ -178,7 +178,7 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigieren Sie zum Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel wird für den Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1* die öffentliche URL `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` verwendet.
+Navigieren Sie zum Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1* , indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel wird für den Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1* die öffentliche URL `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` verwendet.
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Konfigurieren des Traefik-Eingangscontrollers für die Verwendung von HTTPS
 
@@ -220,10 +220,10 @@ Verwenden Sie `kubectl`, um `letsencrypt-clusterissuer.yaml` anzuwenden.
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Entfernen Sie die vorherige *Traefik*-*ClusterRole* und -*ClusterRoleBinding*und führen Sie dann ein Upgrade von Traefik aus, um HTTPS mithilfe von `helm` zu verwenden.
+Entfernen Sie die vorherige *Traefik* - *ClusterRole* und - *ClusterRoleBinding* und führen Sie dann ein Upgrade von Traefik aus, um HTTPS mithilfe von `helm` zu verwenden.
 
 > [!NOTE]
-> Wenn in Ihrem AKS-Cluster RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true*.
+> Wenn in Ihrem AKS-Cluster RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true* .
 
 ```console
 kubectl delete ClusterRole traefik
@@ -237,7 +237,7 @@ Rufen Sie die aktualisierte IP-Adresse des Traefik-Eingangscontrollerdiensts mit
 kubectl get svc -n traefik --watch
 ```
 
-Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *traefik*-Namespace.
+Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *traefik* -Namespace.
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP          PORT(S)                      AGE
@@ -246,7 +246,7 @@ traefik   LoadBalancer   10.0.205.78   <pending>            80:32484/TCP,443:306
 traefik   LoadBalancer   10.0.205.78   MY_NEW_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
 ```
 
-Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Eintrag mit der neuen externen IP-Adresse des Traefik-Diensts hinzu, und entfernen Sie den vorherigen *A*-Eintrag mit [az network dns record-set a remove-record][az-network-dns-record-set-a-remove-record].
+Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A* -Eintrag mit der neuen externen IP-Adresse des Traefik-Diensts hinzu, und entfernen Sie den vorherigen *A* -Eintrag mit [az network dns record-set a remove-record][az-network-dns-record-set-a-remove-record].
 
 ```azurecli
 az network dns record-set a add-record \
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
     --ipv4-address PREVIOUS_EXTERNAL_IP
 ```
 
-Im Beispiel oben wird der *A*-Eintrag in der DNS-Zone *MY_CUSTOM_DOMAIN* aktualisiert, um *PREVIOUS_EXTERNAL_IP* zu verwenden.
+Im Beispiel oben wird der *A* -Eintrag in der DNS-Zone *MY_CUSTOM_DOMAIN* aktualisiert, um *PREVIOUS_EXTERNAL_IP* zu verwenden.
 
 Aktualisieren Sie [values.yaml][values-yaml], sodass die Details für die Verwendung von *cert-manager* und HTTPS eingeschlossen sind. Nachstehend finden Sie ein Beispiel für eine aktualisierte `values.yaml`-Datei:
 
@@ -301,7 +301,7 @@ Führen Sie für die Beispielanwendung mithilfe von `helm` ein Upgrade durch:
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden.
+Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1* , und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden.
 
 > [!IMPORTANT]
 > Es kann 30 Minuten oder länger dauern, bis die DNS-Änderungen abgeschlossen wurden und auf die Beispielanwendung zugegriffen werden kann.
@@ -325,7 +325,7 @@ Aktualisieren Sie zum Beheben dieses Fehlers die Datei [BikeSharingWeb/azds.yaml
 ...
 ```
 
-Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängigkeit für das *URL*-Paket.
+Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängigkeit für das *URL* -Paket.
 
 ```json
 {
@@ -337,7 +337,7 @@ Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängi
 ...
 ```
 
-Aktualisieren Sie die *getApiHostAsync*-Methode in [BikeSharingWeb/lib/helpers.js][helpers-js] zur Verwendung von HTTPS:
+Aktualisieren Sie die *getApiHostAsync* -Methode in [BikeSharingWeb/lib/helpers.js][helpers-js] zur Verwendung von HTTPS:
 
 ```javascript
 ...
@@ -361,7 +361,7 @@ cd ../BikeSharingWeb/
 azds up
 ```
 
-Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie ohne Fehler zur Verwendung von HTTPS umgeleitet werden.
+Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1* , und beachten Sie, dass Sie ohne Fehler zur Verwendung von HTTPS umgeleitet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren von Node.js-Apps
 description: Erfahren Sie, wie Sie eine Node.js-App in den nativen Windows-Instanzen oder in einem vordefinierten Linux-Container in Azure App Service konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
-ms.custom: devx-track-js
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311834"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744055"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Node.js-App für Azure App Service
 
@@ -123,7 +123,7 @@ Die Node.js-Container werden mit [PM2](https://pm2.keymetrics.io/), einem Manage
 
 ### <a name="run-custom-command"></a>Benutzerdefinierten Befehl ausführen
 
-App Service kann Ihre App mit einem benutzerdefinierten Befehl starten, z. B. mit einer ausführbaren Datei wie *run.sh*. Führen Sie z. B. zum Ausführen von `npm run start:prod` den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus:
+App Service kann Ihre App mit einem benutzerdefinierten Befehl starten, z. B. mit einer ausführbaren Datei wie *run.sh* . Führen Sie z. B. zum Ausführen von `npm run start:prod` den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -144,7 +144,7 @@ Um Ihre App mit `npm start` zu starten, stellen Sie einfach sicher, dass sich ei
 }
 ```
 
-Führen Sie den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus, um eine benutzerdefinierte *package.json*-Datei in Ihrem Projekt zu verwenden:
+Führen Sie den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus, um eine benutzerdefinierte *package.json* -Datei in Ihrem Projekt zu verwenden:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
@@ -163,8 +163,8 @@ Der Container startet Ihre App automatisch mit PM2, wenn sich eine der üblichen
 
 Sie können auch eine benutzerdefinierte Startdatei mit den folgenden Erweiterungen konfigurieren:
 
-- Eine *.js*-Datei
-- Eine [PM2-Datei](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) mit der Erweiterung *.json*, *.config.js*, *.yaml* oder *.yml*.
+- Eine *.js* -Datei
+- Eine [PM2-Datei](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) mit der Erweiterung *.json* , *.config.js* , *.yaml* oder *.yml* .
 
 Führen Sie zum Hinzufügen einer benutzerdefinierten Startdatei den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus:
 
@@ -179,7 +179,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Sie können Ihre Node.js-App remote in [Visual Studio Code](https://code.visualstudio.com/) debuggen, wenn Sie sie so konfigurieren, dass sie [mit PM2 ausgeführt](#run-with-pm2) wird, außer Sie führen sie mit einer *.config.js, *.yml oder *.yaml* aus.
 
-In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erforderlich. Wenn Ihre App mit einer *process.json*-Datei (Standard oder benutzerdefiniert) ausgeführt wird, muss sie über eine `script`-Eigenschaft im JSON-Stammverzeichnis verfügen. Beispiel:
+In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erforderlich. Wenn Ihre App mit einer *process.json* -Datei (Standard oder benutzerdefiniert) ausgeführt wird, muss sie über eine `script`-Eigenschaft im JSON-Stammverzeichnis verfügen. Beispiel:
 
 ```json
 {
@@ -191,7 +191,7 @@ In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erford
 
 Um Visual Studio Code für das Remotedebuggen einzurichten, installieren Sie die [App Service-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Folgen Sie den Anweisungen auf der Erweiterungsseite, und melden Sie sich in Visual Studio Code bei Azure an.
 
-Suchen Sie im Azure Explorer die App, die Sie debuggen möchten, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Remotedebuggen starten** aus. Klicken Sie auf **Ja**, um es für Ihre App zu aktivieren. App Service startet für Sie einen Tunnelproxy und fügt den Debugger an. Sie können dann Anforderungen an die App stellen und sehen, wie der Debugger an Haltepunkten anhält.
+Suchen Sie im Azure Explorer die App, die Sie debuggen möchten, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Remotedebuggen starten** aus. Klicken Sie auf **Ja** , um es für Ihre App zu aktivieren. App Service startet für Sie einen Tunnelproxy und fügt den Debugger an. Sie können dann Anforderungen an die App stellen und sehen, wie der Debugger an Haltepunkten anhält.
 
 Nachdem Sie mit dem Debuggen fertig sind, stoppen Sie den Debugger, indem Sie **Trennen** auswählen. Wenn Sie dazu aufgefordert werden, sollten Sie auf **Ja** klicken, um das Remotedebuggen zu deaktivieren. Um es später zu deaktivieren, klicken Sie mit der rechten Maustaste erneut auf Ihre App im Azure Explorer, und wählen Sie **Remotedebuggen deaktivieren** aus.
 
@@ -227,7 +227,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-Das Stammverzeichnis Ihres Repositorys enthält jetzt zwei zusätzliche Dateien: *.deployment* und *deploy.sh*.
+Das Stammverzeichnis Ihres Repositorys enthält jetzt zwei zusätzliche Dateien: *.deployment* und *deploy.sh* .
 
 Öffnen Sie *deploy.sh* und suchen Sie den Abschnitt `Deployment`, der wie folgt aussieht:
 

@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88082148"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743447"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *South Central US* (USA, Süden-Mitte) die Ressourcengruppe *myResourceGroup* erstellt. Wenn Sie alle unterstützten Standorte für App Service unter Linux im **Standard**-Tarif anzeigen möchten, führen Sie den Befehl [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) aus.
+Erstellen Sie in Cloud Shell mit dem Befehl [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *South Central US* (USA, Süden-Mitte) die Ressourcengruppe *myResourceGroup* erstellt. Wenn Sie alle unterstützten Standorte für App Service unter Linux im **Standard** -Tarif anzeigen möchten, führen Sie den Befehl [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) aus.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -470,11 +470,11 @@ Melden Sie sich bei der WordPress-Administration an. Wählen Sie im linken Navig
 
 Anzeige aller Plug-Ins
 
-Navigieren Sie auf der Seite mit den Plug-Ins zu **Redis Object Cache**, und klicken Sie auf **Activate** (Aktivieren).
+Navigieren Sie auf der Seite mit den Plug-Ins zu **Redis Object Cache** , und klicken Sie auf **Activate** (Aktivieren).
 
 ![Aktivieren von Redis][3]
 
-Klicken Sie auf **Einstellungen**.
+Klicken Sie auf **Einstellungen** .
 
 ![Klicken auf „Settings“ (Einstellungen)][4]
 

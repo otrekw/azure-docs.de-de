@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cf7e596c8ed057a3244ed2b12de59d02c4ba2cae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: baa6e10d33d1c0a1a9c367baa8888fdfb5a47c01
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977934"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746211"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -125,7 +125,7 @@ Sie können die Datenträgerverschlüsselung auf vorhandenen oder ausgeführten 
 
 1. Klicken Sie in der Azure-Schnellstartvorlage auf **Deploy to Azure** (In Azure bereitstellen).
 
-2. Wählen Sie das Abonnement, die Ressourcengruppe, den Standort, die Einstellungen, die rechtlichen Bedingungen und die Vereinbarung aus. Klicken Sie auf **Kaufen**, um die Verschlüsselung auf dem vorhandenen oder ausgeführten virtuellen IaaS-Computer zu aktivieren.
+2. Wählen Sie das Abonnement, die Ressourcengruppe, den Standort, die Einstellungen, die rechtlichen Bedingungen und die Vereinbarung aus. Klicken Sie auf **Kaufen** , um die Verschlüsselung auf dem vorhandenen oder ausgeführten virtuellen IaaS-Computer zu aktivieren.
 
 Die folgende Tabelle enthält die Resource Manager-Vorlagenparameter für vorhandene oder ausgeführte virtuelle Computer:
 
@@ -135,7 +135,7 @@ Die folgende Tabelle enthält die Resource Manager-Vorlagenparameter für vorhan
 | keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn abrufen, indem Sie das Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder den Azure CLI-Befehl `az keyvault list --resource-group "MyKeyVaultResourceGroup"` verwenden.|
 | keyVaultResourceGroup | Der Name der Ressourcengruppe mit dem Schlüsseltresor|
 |  keyEncryptionKeyURL | Die URL des Schlüsselverschlüsselungsschlüssels im Format „https://&lt;keyvault-name&gt;.vault.azure.net/key/&lt;key-name&gt;. Wenn Sie keinen Schlüsselverschlüsselungsschlüssels verwenden möchten, lassen Sie dieses Feld leer. |
-| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
+| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_ , _Data_ und _All_ . 
 | forceUpdateTag | Dient zum Übergeben eines eindeutigen Werts (beispielsweise einer GUID), wenn die Ausführung des Vorgangs erzwungen werden muss. |
 | resizeOSDisk | Gibt an, ob die Größe der Betriebssystempartition angepasst werden soll, um die gesamte Betriebssystem-VHD einzunehmen, bevor das Systemvolume aufgeteilt wird. |
 | location | Der Standort für alle Ressourcen. |

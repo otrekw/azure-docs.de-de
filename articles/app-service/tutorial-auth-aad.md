@@ -5,14 +5,14 @@ keywords: App Service, Azure App Service, AuthN, AuthZ, sicher, Sicherheit, mehr
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: devx-track-csharp, seodec18
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8620d6bc403882cb308405e8ffb4412917d0c6f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982901"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743827"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -241,21 +241,21 @@ Navigieren Sie in **Ressourcengruppen** zu Ihrer Ressourcengruppe, und wählen S
 
 :::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Screenshot: Azure App Service-REST-API-Beispiel in einem Browserfenster mit einer Aufgabenlisten-App":::
 
-Klicken Sie in Ihrer Back-End-App im Menü auf der linken Seite auf **Authentifizierung/Autorisierung**, und aktivieren Sie anschließend „App Service-Authentifizierung“, indem Sie **Ein** auswählen.
+Klicken Sie in Ihrer Back-End-App im Menü auf der linken Seite auf **Authentifizierung/Autorisierung** , und aktivieren Sie anschließend „App Service-Authentifizierung“, indem Sie **Ein** auswählen.
 
-Wählen Sie unter **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Mit Azure Active Directory anmelden**.
+Wählen Sie unter **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Mit Azure Active Directory anmelden** .
 
 Wählen Sie unter **Authentifizierungsanbieter** die Option **Azure Active Directory** aus.
 
 :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Screenshot: Azure App Service-REST-API-Beispiel in einem Browserfenster mit einer Aufgabenlisten-App":::
 
-Wählen Sie **Express** aus, und übernehmen Sie die Standardeinstellungen, um eine neue AD-App zu erstellen. Klicken Sie anschließend auf **OK**.
+Wählen Sie **Express** aus, und übernehmen Sie die Standardeinstellungen, um eine neue AD-App zu erstellen. Klicken Sie anschließend auf **OK** .
 
-Klicken Sie auf der Seite **Authentifizierung/Autorisierung** auf **Speichern**.
+Klicken Sie auf der Seite **Authentifizierung/Autorisierung** auf **Speichern** .
 
 Wenn die Benachrichtigung mit der Meldung `Successfully saved the Auth Settings for <back-end-app-name> App` angezeigt wird, aktualisieren Sie die Portalseite.
 
-Klicken Sie erneut auf **Azure Active Directory** und dann auf **Azure AD-App**.
+Klicken Sie erneut auf **Azure Active Directory** und dann auf **Azure AD-App** .
 
 Kopieren Sie die **Client-ID** der Azure AD-Anwendung in Editor. Sie benötigen diesen Wert später noch.
 
@@ -267,7 +267,7 @@ Wenn Sie den Vorgang hier abbrechen, verfügen Sie über eine eigenständige App
 
 Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die Client-ID nicht erforderlich.
 
-Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net` navigieren. Sie sollten auf eine sichere Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, *können Sie über die Back-End-App immer noch nicht auf die Daten zugreifen*, da für die Back-End-App nun die Azure Active Directory-Anmeldung über die Front-End-App erforderlich ist. Sie müssen drei Schritte ausführen:
+Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net` navigieren. Sie sollten auf eine sichere Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, *können Sie über die Back-End-App immer noch nicht auf die Daten zugreifen* , da für die Back-End-App nun die Azure Active Directory-Anmeldung über die Front-End-App erforderlich ist. Sie müssen drei Schritte ausführen:
 
 - Gewähren des Zugriffs auf das Back-End für das Front-End
 - Konfigurieren von App Service für die Rückgabe eines verwendbaren Tokens
@@ -298,13 +298,13 @@ Die Front-End-App verfügt jetzt über die erforderlichen Berechtigungen für de
 
 Navigieren Sie zu [Azure-Ressourcen-Explorer](https://resources.azure.com), und suchen Sie in der Ressourcenstruktur nach Ihrer Front-End-Web-App.
 
-Der [Azure-Ressourcen-Explorer](https://resources.azure.com) wird nun mit der in der Ressourcenstruktur ausgewählten Front-End-App geöffnet. Klicken Sie am oberen Rand der Seite auf **Lesen/Schreiben**, um die Bearbeitung Ihrer Azure-Ressourcen zu ermöglichen.
+Der [Azure-Ressourcen-Explorer](https://resources.azure.com) wird nun mit der in der Ressourcenstruktur ausgewählten Front-End-App geöffnet. Klicken Sie am oberen Rand der Seite auf **Lesen/Schreiben** , um die Bearbeitung Ihrer Azure-Ressourcen zu ermöglichen.
 
 :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Screenshot: Azure App Service-REST-API-Beispiel in einem Browserfenster mit einer Aufgabenlisten-App":::
 
 Führen Sie im Browser links einen Drilldown für **config** > **authsettings** aus.
 
-Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten**. Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Client-ID verwenden. 
+Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten** . Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Client-ID verwenden. 
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
@@ -350,7 +350,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-Führen Sie die Anmeldung an `https://<front-end-app-name>.azurewebsites.net` erneut durch. Klicken Sie auf der Seite mit der Vereinbarung zur Nutzung der Benutzerdaten auf **Akzeptieren**.
+Führen Sie die Anmeldung an `https://<front-end-app-name>.azurewebsites.net` erneut durch. Klicken Sie auf der Seite mit der Vereinbarung zur Nutzung der Benutzerdaten auf **Akzeptieren** .
 
 Es sollte nun möglich sein, dass Sie wie zuvor Daten für die Back-End-App erstellen, lesen, aktualisieren und löschen. Der einzige Unterschied ist, dass beide Apps jetzt per App Service-Authentifizierung und -Autorisierung geschützt sind (einschließlich Dienst-zu-Dienst-Aufrufe).
 

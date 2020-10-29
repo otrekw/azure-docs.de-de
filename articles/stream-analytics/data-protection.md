@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812861"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746401"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Schutz von Daten in Azure Stream Analytics 
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenr
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**. 
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen** . 
 
 1. Wählen Sie in der Ergebnisliste **Analytics** > **Stream Analytics-Auftrag** aus. 
 
@@ -73,10 +73,6 @@ Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenr
 
    ![Einstellungen des Speicherkontos für private Daten](./media/data-protection/storage-account-create.png)
 
-
-
-### <a name="known-issues"></a>Bekannte Probleme
-Derzeit gibt es eine bekannte Beschränkung, für die ein Auftrag, bei dem ein vom Kunden verwalteter Schlüssel verwendet wird, zu Fehlern führt, wenn die verwaltete Identität zur Authentifizierung bei Ein- oder Ausgaben verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

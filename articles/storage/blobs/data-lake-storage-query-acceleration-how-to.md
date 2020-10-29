@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659868"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746415"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage
 
@@ -26,7 +26,7 @@ Die Abfragebeschleunigung ermöglicht es Anwendungen und Analyseframeworks, die 
 
 - Sie benötigen ein Azure-Abonnement, um auf Azure Storage zuzugreifen. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Ein Speicherkonto vom Typ **Allgemein V2**. Informationen finden Sie unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md).
+- Ein Speicherkonto vom Typ **Allgemein V2** . Informationen finden Sie unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md).
 
 - Wählen Sie eine Registerkarte aus, um SDK-spezifische Voraussetzungen anzuzeigen.
 

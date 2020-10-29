@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151229"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744897"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service-Authentifizierung
 
@@ -64,7 +64,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     | Anwendungsname | *Azure SignalR Chat* (Azure SignalIR-Chat) | Der GitHub-Benutzer sollte in der Lage sein, die Anwendung, mit der er sich authentifiziert, zu erkennen und zu vertrauen.   |
     | Homepage URL (URL für Startseite) | `http://localhost:5000/home` | |
     | Application description (Anwendungsbeschreibung) | *Ein Chatroombeispiel, in dem Azure SignalR Service mit GitHub-Authentifizierung verwendet wird.* | Eine sinnvolle Beschreibung der Anwendung, die Anwendungsbenutzern hilft, den Kontext der verwendeten Authentifizierung zu verstehen. |
-    | Authorization callback URL (Autorisierungsrückruf-URL) | `http://localhost:5000/signin-github` | Dies ist die wichtigste Einstellung für Ihre OAuth-Anwendung. Es ist die Rückruf-URL, an die GitHub den Benutzer nach erfolgreicher Authentifizierung zurückgibt. In diesem Tutorial müssen Sie die StandardrückrufURL für das *AspNet.Security.OAuth.GitHub*-Paket */signin-github* verwenden.  |
+    | Authorization callback URL (Autorisierungsrückruf-URL) | `http://localhost:5000/signin-github` | Dies ist die wichtigste Einstellung für Ihre OAuth-Anwendung. Es ist die Rückruf-URL, an die GitHub den Benutzer nach erfolgreicher Authentifizierung zurückgibt. In diesem Tutorial müssen Sie die StandardrückrufURL für das *AspNet.Security.OAuth.GitHub* -Paket */signin-github* verwenden.  |
 
 4. Sobald die Registrierung der neuen OAuth-App abgeschlossen ist, fügen Sie *Client-ID* und *Geheimer Clientschlüssel* mit den folgenden Befehlen zum Secret Manager hinzu. Ersetzen Sie *Your_GitHub_Client_Id* und *Your_GitHub_Client_Secret* durch die Werte für Ihre OAuth-App.
 
@@ -77,7 +77,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ### <a name="update-the-startup-class-to-support-github-authentication"></a>Aktualisieren der Startklasse zur Unterstützung der GitHub-Authentifizierung
 
-1. Fügen Sie einen Verweis auf das neueste *Microsoft.AspNetCore.Authentication.Cookies*- und *AspNet.Security.OAuth.GitHub*-Paket hinzu, und stellen Sie alle Pakete wieder her.
+1. Fügen Sie einen Verweis auf das neueste *Microsoft.AspNetCore.Authentication.Cookies* - und *AspNet.Security.OAuth.GitHub* -Paket hinzu, und stellen Sie alle Pakete wieder her.
 
     ```dotnetcli
     dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
@@ -85,7 +85,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     dotnet restore
     ```
 
-1. Öffnen Sie *Startup.cs*, und fügen Sie `using`-Anweisungen für die folgenden Namespaces hinzu:
+1. Öffnen Sie *Startup.cs* , und fügen Sie `using`-Anweisungen für die folgenden Namespaces hinzu:
 
     ```csharp
     using System.Net.Http;
@@ -155,7 +155,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 In diesem Abschnitt wird eine `Login`-API implementiert, die Clients mit der GitHub-OAuth-App authentifiziert. Nach der Authentifizierung fügt die API ein Cookie zur Webclientantwort hinzu, bevor sie den Client zurück zur Chat-App leitet. Dieses Cookie wird dann verwendet, um den Client zu identifizieren.
 
-1. Fügen Sie eine neue Controllercodedatei zum Verzeichnis *chattest\Controllers* hinzu. Benennen Sie die Datei *AuthController.cs*.
+1. Fügen Sie eine neue Controllercodedatei zum Verzeichnis *chattest\Controllers* hinzu. Benennen Sie die Datei *AuthController.cs* .
 
 2. Fügen Sie den folgenden Code für den Authentifizierungscontroller hinzu. Stellen Sie sicher, dass Sie den Namespace aktualisieren, wenn Ihr Projektverzeichnis nicht *chattest* war:
 
@@ -193,7 +193,7 @@ Wenn ein Webclient versucht, sich mit dem SignalR-Dienst zu verbinden, wird die 
 
 In diesem Abschnitt aktivieren Sie die echte Authentifizierung, indem Sie der Hubklasse das Attribut `Authorize` hinzufügen und die Hubmethoden aktualisieren, um den Benutzernamen aus der Anforderung des authentifizierten Benutzers zu lesen.
 
-1. Öffnen Sie *Hub\Chat.cs*, und fügen Sie Verweise zu diesen Namespaces hinzu:
+1. Öffnen Sie *Hub\Chat.cs* , und fügen Sie Verweise zu diesen Namespaces hinzu:
 
     ```csharp
     using System.Threading.Tasks;
@@ -230,7 +230,7 @@ In diesem Abschnitt aktivieren Sie die echte Authentifizierung, indem Sie der Hu
 
 ### <a name="update-the-web-client-code"></a>Aktualisieren des Webclientcodes
 
-1. Öffnen Sie *wwwwroot\index.html*, und ersetzen Sie den Code, der nach dem Benutzernamen fragt, durch Code, um das vom Authentifizierungscontroller zurückgegebene Cookie zu verwenden.
+1. Öffnen Sie *wwwwroot\index.html* , und ersetzen Sie den Code, der nach dem Benutzernamen fragt, durch Code, um das vom Authentifizierungscontroller zurückgegebene Cookie zu verwenden.
 
     Entfernen Sie aus *index.html* den folgenden Code:
 
@@ -370,11 +370,11 @@ In diesem Abschnitt aktivieren Sie die echte Authentifizierung, indem Sie der Hu
                     Application started. Press Ctrl+C to shut down.
     ```
 
-4. Öffnen Sie ein Browserfenster, und navigieren Sie zu `http://localhost:5000`. Klicken Sie oben auf den Link **hier**, um sich bei GitHub anzumelden.
+4. Öffnen Sie ein Browserfenster, und navigieren Sie zu `http://localhost:5000`. Klicken Sie oben auf den Link **hier** , um sich bei GitHub anzumelden.
 
     ![OAuth abschließen in Azure](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    Sie werden aufgefordert, den Zugriff der Chat-App auf Ihr GitHub-Konto zu autorisieren. Klicken Sie auf die Schaltfläche **Autorisieren**.
+    Sie werden aufgefordert, den Zugriff der Chat-App auf Ihr GitHub-Konto zu autorisieren. Klicken Sie auf die Schaltfläche **Autorisieren** .
 
     ![Autorisieren der OAuth-App](media/signalr-concept-authenticate-oauth/signalr-authorize-oauth-app.png)
 
@@ -400,7 +400,7 @@ Achten Sie beim Erstellen der folgenden Ressourcen darauf, dass Sie die gleiche 
 
 ### <a name="create-the-web-app-and-plan"></a>Erstellen der Web-App und eines Plans
 
-Kopieren Sie den Text für die folgenden Befehle, und aktualisieren Sie die Parameter. Fügen Sie das aktualisierte Skript in die Azure Cloud Shell ein, und drücken Sie die **EINGABETASTE**, um einen neuen App Service-Plan und eine Web-App zu erstellen.
+Kopieren Sie den Text für die folgenden Befehle, und aktualisieren Sie die Parameter. Fügen Sie das aktualisierte Skript in die Azure Cloud Shell ein, und drücken Sie die **EINGABETASTE** , um einen neuen App Service-Plan und eine Web-App zu erstellen.
 
 ```azurecli-interactive
 #========================================================================
@@ -437,7 +437,7 @@ In diesem Abschnitt fügen Sie App-Einstellungen für die folgenden Komponenten 
 * Client-ID der GitHub-OAuth-App
 * Geheimer Clientschlüssel der GitHub-OAuth-App
 
-Kopieren Sie den Text für die folgenden Befehle, und aktualisieren Sie die Parameter. Fügen Sie das aktualisierte Skript in Ihre Azure Cloud Shell ein, und drücken Sie die **EINGABETASTE**, um die App-Einstellungen hinzuzufügen:
+Kopieren Sie den Text für die folgenden Befehle, und aktualisieren Sie die Parameter. Fügen Sie das aktualisierte Skript in Ihre Azure Cloud Shell ein, und drücken Sie die **EINGABETASTE** , um die App-Einstellungen hinzuzufügen:
 
 ```azurecli-interactive
 #========================================================================
@@ -572,13 +572,13 @@ Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie d
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen** .
 
-Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *SignalRTestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
+Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *SignalRTestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen** .
 
 ![Löschen](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.
+Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen** .
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 

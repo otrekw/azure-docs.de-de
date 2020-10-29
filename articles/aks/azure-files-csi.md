@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078356"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745786"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS) (Vorschauversion)
 
@@ -36,10 +36,10 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 Mit einer Speicherklasse wird festgelegt, wie eine Azure Files-Freigabe erstellt wird. In der [Knotenressourcengruppe][node-resource-group] wird automatisch ein Speicherkonto zur Verwendung mit der Speicherklasse und zur Speicherung von Azure Files-Freigaben erstellt. Wählen Sie für *skuName* eine der folgenden [Azure-Speicherredundanz-SKUs][storage-skus] aus:
 
 * **Standard_LRS:** Standard – lokal redundanter Speicher
-* **Standard_GRS**: Standard – georedundanter Speicher
-* **Standard_ZRS**: Standard – zonenredundanter Speicher
-* **Standard_RAGRS**: Standard – georedundanter Speicher mit Lesezugriff
-* **Premium_LRS**: Premium – lokal redundanter Speicher
+* **Standard_GRS** : Standard – georedundanter Speicher
+* **Standard_ZRS** : Standard – zonenredundanter Speicher
+* **Standard_RAGRS** : Standard – georedundanter Speicher mit Lesezugriff
+* **Premium_LRS** : Premium – lokal redundanter Speicher
 
 > [!NOTE]
 > Azure Files unterstützt Azure Storage Premium. Die kleinstmögliche Premium-Dateifreigabe beträgt 100 GB.
@@ -76,7 +76,7 @@ total 29
 
 Die Standardspeicherklassen eignen sich für die gängigsten Szenarien, aber nicht für alle. In einigen Fällen möchten Sie möglicherweise Ihre eigene Speicherklasse mit eigenen Parametern anpassen. Verwenden Sie z. B. das folgende Manifest, um die `mountOptions` der Dateifreigabe zu konfigurieren.
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei in Kubernetes eingebundenen Dateifreigaben *0777*. Sie können die verschiedenen Einbindungsoptionen im Speicherklassenobjekt angeben.
+Der Standardwert für *fileMode* und *dirMode* lautet bei in Kubernetes eingebundenen Dateifreigaben *0777* . Sie können die verschiedenen Einbindungsoptionen im Speicherklassenobjekt angeben.
 
 Erstellen Sie eine Datei mit dem Namen `azure-file-sc.yaml`, und fügen Sie das folgende Beispielmanifest ein:
 
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 Sie können einen [zustandsbehafteten Beispielsatz](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) bereitstellen, mit dem Zeitstempel in einer Datei `data.txt` gespeichert werden, indem Sie den folgenden Befehl mit dem Befehl [kubectl apply][kubectl-apply] bereitstellen:
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

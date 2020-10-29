@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 19eb5ae89598a0ebe040f1ffda5afd2b9e3d5e7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87059260"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746015"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit einer Azure-Vorlage
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -42,7 +42,7 @@ Wenn Sie die benutzerdefinierte Skripterweiterung in Aktion sehen möchten, kön
 ## <a name="create-custom-script-extension-definition"></a>Erstellen der Definition für die benutzerdefinierte Skripterweiterung
 Wenn Sie eine VM-Skalierungsgruppe mit einer Azure-Vorlage definieren, kann der Ressourcenanbieter *Microsoft.Compute/virtualMachineScaleSets* einen Abschnitt mit Erweiterungen enthalten. Mit *extensionsProfile* wird angegeben, was auf die VM-Instanzen in einer Skalierungsgruppe angewendet wird. Zur Verwendung der benutzerdefinierten Skripterweiterung geben Sie als Publisher *Microsoft.Azure.Extensions* und als Typ *CustomScript* an.
 
-Die *fileUris*-Eigenschaft wird verwendet, um die Quellskripts bzw. -pakete für die Installation zu definieren. Zum Starten des Installationsprozesses werden die erforderlichen Skripts in *commandToExecute* definiert. Im folgenden Beispiel wird ein Beispielskript von GitHub definiert, mit dem der NGINX-Webserver installiert und konfiguriert wird:
+Die *fileUris* -Eigenschaft wird verwendet, um die Quellskripts bzw. -pakete für die Installation zu definieren. Zum Starten des Installationsprozesses werden die erforderlichen Skripts in *commandToExecute* definiert. Im folgenden Beispiel wird ein Beispielskript von GitHub definiert, mit dem der NGINX-Webserver installiert und konfiguriert wird:
 
 ```json
 "extensionProfile": {

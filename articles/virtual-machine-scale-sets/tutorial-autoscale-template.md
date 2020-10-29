@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: f94a68833347d662f427fa0944dd83d33458bd14
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84629554"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745997"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit einer Azure-Vorlage
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren. In diesem Tutorial lernen Sie Folgendes:
@@ -33,7 +33,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 
 ## <a name="define-an-autoscale-profile"></a>Definieren eines Profils für die automatische Skalierung
-Sie definieren ein Profil für die automatische Skalierung in einer Azure-Vorlage mit dem Ressourcenanbieter *Microsoft.insights/autoscalesettings*. Mit einem *Profil* werden die Details zur Kapazität der Skalierungsgruppe und alle dazugehörigen Regeln angegeben. Im folgenden Beispiel wird ein Profil mit dem Namen *Autoscale by percentage based on CPU usage* (Automatische Skalierung nach Prozentsatz basierend auf der CPU-Auslastung) definiert und die Standardkapazität (und die minimale Kapazität) auf *2* VM-Instanzen und als Maximum *10* VM-Instanzen festgelegt:
+Sie definieren ein Profil für die automatische Skalierung in einer Azure-Vorlage mit dem Ressourcenanbieter *Microsoft.insights/autoscalesettings* . Mit einem *Profil* werden die Details zur Kapazität der Skalierungsgruppe und alle dazugehörigen Regeln angegeben. Im folgenden Beispiel wird ein Profil mit dem Namen *Autoscale by percentage based on CPU usage* (Automatische Skalierung nach Prozentsatz basierend auf der CPU-Auslastung) definiert und die Standardkapazität (und die minimale Kapazität) auf *2* VM-Instanzen und als Maximum *10* VM-Instanzen festgelegt:
 
 ```json
 {
@@ -143,7 +143,7 @@ Erstellen Sie zunächst mit [az group create](/cli/azure/group) eine Ressourceng
 az group create --name myResourceGroup --location eastus
 ```
 
-Sie erstellen nun mit [az group deployment create](/cli/azure/group/deployment) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen, z.B. *azureuser*, mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
+Sie erstellen nun mit [az group deployment create](/cli/azure/group/deployment) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen, z.B. *azureuser* , mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
 
 ```azurecli-interactive
 az group deployment create \
@@ -180,7 +180,7 @@ Stellen Sie eine SSH-Verbindung mit Ihrer ersten VM-Instanz her. Geben Sie mithi
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Installieren Sie nach dem Anmelden das Hilfsprogramm **stress**. Starten Sie *zehn* Worker vom Typ **stress**, um CPU-Last zu generieren. Diese Worker werden *420* Sekunden lang ausgeführt. Dieser Zeitraum reicht aus, um über die Regeln der automatischen Skalierung die gewünschte Aktion zu implementieren.
+Installieren Sie nach dem Anmelden das Hilfsprogramm **stress** . Starten Sie *zehn* Worker vom Typ **stress** , um CPU-Last zu generieren. Diese Worker werden *420* Sekunden lang ausgeführt. Dieser Zeitraum reicht aus, um über die Regeln der automatischen Skalierung die gewünschte Aktion zu implementieren.
 
 ```console
 sudo apt-get update
@@ -188,7 +188,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wenn für **stress** eine Ausgabe wie *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE*drücken, um zur Eingabeaufforderung zurückzukehren.
+Wenn für **stress** eine Ausgabe wie *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE* drücken, um zur Eingabeaufforderung zurückzukehren.
 
 Um zu bestätigen, dass **stress** CPU-Last generiert, können Sie die aktive Systemauslastung mit dem Hilfsprogramm **top** untersuchen:
 
@@ -196,7 +196,7 @@ Um zu bestätigen, dass **stress** CPU-Last generiert, können Sie die aktive Sy
 top
 ```
 
-Beenden Sie **top**, und schließen Sie dann Ihre Verbindung mit der VM-Instanz. **stress** wird auf der VM-Instanz weiterhin ausgeführt.
+Beenden Sie **top** , und schließen Sie dann Ihre Verbindung mit der VM-Instanz. **stress** wird auf der VM-Instanz weiterhin ausgeführt.
 
 ```console
 Ctrl-c
@@ -209,14 +209,14 @@ Stellen Sie über die Portnummer, die mit dem obigen Befehl [az vmss list-instan
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
-Installieren Sie **stress**, und führen Sie das Hilfsprogramm aus. Starten Sie auf dieser zweiten VM-Instanz anschließend zehn Worker.
+Installieren Sie **stress** , und führen Sie das Hilfsprogramm aus. Starten Sie auf dieser zweiten VM-Instanz anschließend zehn Worker.
 
 ```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Auch hier gilt wieder: Wenn für **stress** eine Ausgabe wie *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE*drücken, um zur Eingabeaufforderung zurückzukehren.
+Auch hier gilt wieder: Wenn für **stress** eine Ausgabe wie *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE* drücken, um zur Eingabeaufforderung zurückzukehren.
 
 Schließen Sie die Verbindung mit der zweiten VM-Instanz. **stress** wird auf der VM-Instanz weiterhin ausgeführt.
 
@@ -225,7 +225,7 @@ exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Überwachen der aktiven Regeln für die automatische Skalierung
-Verwenden Sie **watch**, um die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe zu überwachen. Es dauert fünf Minuten, bis die Regeln für die automatische Skalierung als Reaktion auf die CPU-Last, die mit **stress** auf den einzelnen VM-Instanzen generiert wurde, mit dem Aufskalieren beginnen:
+Verwenden Sie **watch** , um die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe zu überwachen. Es dauert fünf Minuten, bis die Regeln für die automatische Skalierung als Reaktion auf die CPU-Last, die mit **stress** auf den einzelnen VM-Instanzen generiert wurde, mit dem Aufskalieren beginnen:
 
 ```azurecli-interactive
 watch az vmss list-instances \

@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 2f1eddf33dc02b1afaffdc200ed8b79b18f77aa4
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 31c9f203a8602b6c078fe2e9c672c539140f9990
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999193"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744435"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 
@@ -56,7 +56,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
 
 Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Die folgende Liste beschreibt die wesentlichen für eine Bereitstellung erforderlichen Elemente:
 
-* Ein __Eingabeskript__. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
+* Ein __Eingabeskript__ . Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
 
     > [!IMPORTANT]
     > Das Eingabeskript ist spezifisch für Ihr Modell. Es muss das Format der Daten der eingehenden Anforderung, das Format der im Modell erwarteten Daten und das Format der an Clients zurückgegebenen Daten erkennen.
@@ -70,7 +70,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
 
     Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
-* **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
+* **Abhängigkeiten** , z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
 
 Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten.
 
@@ -146,7 +146,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     }
     ```
 
-    Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__.
+    Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__ .
 
 1. Wenn Sie noch nicht über eine Ressourcengruppe oder einen App Service-Plan für die Bereitstellung des Diensts verfügen, veranschaulichen die folgenden Befehle das Erstellen dieser beiden Elemente:
 
@@ -155,7 +155,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In diesem Beispiel wird der __Basic__-Tarif (`--sku B1`) verwendet.
+    In diesem Beispiel wird der __Basic__ -Tarif (`--sku B1`) verwendet.
 
     > [!IMPORTANT]
     > Die von Azure Machine Learning erstellten Images verwenden Linux, daher müssen Sie den Parameter `--is-linux` verwenden.

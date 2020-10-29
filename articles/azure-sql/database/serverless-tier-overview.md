@@ -4,19 +4,19 @@ description: In diesem Artikel wird die neue serverlose Computeebene beschrieben
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: test sqldbrb=1
+ms.custom: test sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
-ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321406"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743167"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen,
 
 Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der serverlosen Computeebene und der bereitgestellten Computeebene:
 
-| | **Serverloses Computing**: | **Bereitgestelltes Computing** |
+| | **Serverloses Computing** : | **Bereitgestelltes Computing** |
 |:---|:---|:---|
 |**Datenbanknutzungsmuster**| Wechselnde, unvorhersehbare Nutzung mit niedrigerer durchschnittlicher Computenutzung im Zeitverlauf. | Regelmäßigere Nutzungsmuster mit höherer durchschnittlicher Computenutzung im Zeitverlauf oder mehrere Datenbanken, die Pools für elastische Datenbanken verwenden.|
 | **Aufwand bei der Leistungsverwaltung** |Geringer|Höher|
@@ -314,17 +314,17 @@ Ressourceneinschränkungen werden unter [serverlose Computeebene](resource-limit
 
 Die abgerechnete Computeleistung basiert auf der maximal verwendeten CPU und dem verwendeten Arbeitsspeicher (pro Sekunde). Wenn die verwendete CPU und der verwendete Arbeitsspeicher kleiner als die bereitgestellte Mindestmenge sind, wird die bereitgestellte Menge abgerechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.
 
-- **Berechnete Ressource**: CPU und Arbeitsspeicher
-- **Berechneter Betrag**: Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
-- **Fakturierungsintervall**: Pro Sekunde
+- **Berechnete Ressource** : CPU und Arbeitsspeicher
+- **Berechneter Betrag** : Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
+- **Fakturierungsintervall** : Pro Sekunde
 
 Der Einzelpreis für virtuelle Kerne ergibt sich aus den Kosten pro virtuellem Kern pro Sekunde. Informationen zu Einzelpreisen in einer bestimmten Region finden Sie auf der Seite [Azure SQL-Datenbank – Preise ](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
 Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
-- **Metrik**: app_cpu_billed (virtueller Kern – Sekunden)
-- **Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
-- **Berichtsfrequenz**: Pro Minute
+- **Metrik** : app_cpu_billed (virtueller Kern – Sekunden)
+- **Definition** : Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
+- **Berichtsfrequenz** : Pro Minute
 
 Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.
 
