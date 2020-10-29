@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305631"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445680"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Harness für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Artikel zugrunde liegende Szenario setzt voraus, dass Sie bereits üb
 
 ## <a name="assign-users-to-harness"></a>Zuweisen von Benutzern zu Harness
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer oder Gruppen in Azure AD Zugriff auf Harness benötigen. Sie können diese Benutzer oder Gruppen anschließend Harness zuweisen, indem Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) befolgen.
 
@@ -82,11 +82,11 @@ Vor dem Konfigurieren von Harness für die automatische Benutzerbereitstellung m
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** .
 
     ![Der Link „Alle Anwendungen“](common/enterprise-applications.png)
 
-1. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -99,7 +99,7 @@ Vor dem Konfigurieren von Harness für die automatische Benutzerbereitstellung m
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern oder Gruppen in Harness auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Harness aktivieren. Befolgen Sie dazu die Anweisungen unter [Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Harness](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial). Sie können einmaliges Anmelden unabhängig von der automatischen Benutzerbereitstellung konfigurieren, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für Harness aktivieren. Befolgen Sie dazu die Anweisungen unter [Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Harness](./harness-tutorial.md). Sie können einmaliges Anmelden unabhängig von der automatischen Benutzerbereitstellung konfigurieren, obwohl diese beiden Features einander ergänzen.
 
 > [!NOTE]
 > Weitere Informationen zum Harness-SCIM-Endpunkt finden Sie im Harness-Artikel zu [API-Schlüsseln](https://docs.harness.io/article/smloyragsm-api-keys).
@@ -130,7 +130,7 @@ Führen Sie zum Konfigurieren der automatischen Benutzerbereitstellung für Harn
    b. Geben Sie im Feld **Geheimes Token** den Wert des SCIM-Authentifizierungstokens ein, den Sie in Schritt 6 des Abschnitts „Einrichten von Harness für die Bereitstellung“ gespeichert haben.  
    c. Um sicherzustellen, dass Azure AD eine Verbindung mit Harness herstellen kann, wählen Sie **Verbindung testen** aus. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr Harness-Konto über *Administratorberechtigungen* verfügt, und versuchen Sie es noch mal.
 
-1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
 
     ![Feld „Benachrichtigungs-E-Mail“](common/provisioning-notification-email.png)
 
@@ -154,7 +154,7 @@ Führen Sie zum Konfigurieren der automatischen Benutzerbereitstellung für Harn
 
 1. Informationen zum Konfigurieren von Bereichsfiltern finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-1. Ändern Sie zum Aktivieren des Azure AD-Bereitstellungsdiensts unter **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+1. Ändern Sie zum Aktivieren des Azure AD-Bereitstellungsdiensts unter **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
 
     ![Schalter „Bereitstellungsstatus“ auf „Ein“](common/provisioning-toggle-on.png)
 
