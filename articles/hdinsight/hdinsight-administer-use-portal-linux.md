@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598497"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533477"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -70,7 +70,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
     |Clustergröße|Dient zum Überprüfen, Erhöhen und Verringern der Anzahl von Workerknoten im Cluster. Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kontingentgrenzen|Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.|
     |SSH + Clusteranmeldung|Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage Gen1|Dient zum Konfigurieren des Data Lake Storage Gen1-Zugriffs.  Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Data Lake Storage Gen1|Dient zum Konfigurieren des Data Lake Storage Gen1-Zugriffs.  Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).|
     |Speicherkonten|Dient zum Anzeigen der Speicherkonten und Schlüssel. Die Speicherkonten werden während der Clustererstellung konfiguriert.|
     |Anwendungen|Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).|
     |Skriptaktionen|Dienst zum Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -109,7 +109,7 @@ Wählen Sie auf der [Cluster-Homepage](#homePage) unter **Einstellungen** die Op
 |STATUS|Enthält einen der folgenden Werte: Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization.|
 |REGION|Azure-Standort. Eine Liste der unterstützten Azure-Standorte finden Sie im Dropdownlistenfeld **Region** unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |DATE CREATED|Das Datum der Clusterbereitstellung.|
-|OPERATING SYSTEM|Entweder **Windows** oder **Linux**.|
+|OPERATING SYSTEM|Entweder **Windows** oder **Linux** .|
 |TYPE|Hadoop, HBase, Storm, Spark.|
 |Version|Siehe [HDInsight-Versionen](hdinsight-component-versioning.md).|
 |TLS-Mindestversion|Die TLS-Version.|
@@ -135,7 +135,7 @@ Wenn Sie einen Cluster löschen, werden dadurch weder das Standardspeicherkonto 
 
 Auf der [Startseite des Clusters](#homePage):
 
-1. Klicken Sie auf der oberen Menüleiste auf **Löschen**.
+1. Klicken Sie auf der oberen Menüleiste auf **Löschen** .
 2. Befolgen Sie die Anweisungen auf der neuen Seite.
 
 Siehe auch [Anhalten/Herunterfahren von Clustern](#pauseshut-down-clusters).
@@ -179,7 +179,7 @@ Auf der [Startseite des Clusters](#homePage):
     ![Apache Hadoop-Clustermenü in HDInsight](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. Wählen Sie auf der neuen Seite die **Ambari-Homepage** aus.
-1. Geben Sie den Benutzernamen und das Kennwort für den Cluster ein.  Der Standardbenutzername für den Cluster lautet _admin_.
+1. Geben Sie den Benutzernamen und das Kennwort für den Cluster ein.  Der Standardbenutzername für den Cluster lautet _admin_ .
 
 Weitere Informationen finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
@@ -196,13 +196,13 @@ Auf der [Startseite des Clusters](#homePage):
 1. Wählen Sie unter **Einstellungen** die Option **SSH + Clusteranmeldung** aus.
 2. Wählen Sie **Anmeldeinformation zurücksetzen** aus.
 3. Geben Sie in die Textfelder das neue Kennwort ein, und bestätigen Sie dieses.
-4. Klicken Sie auf **OK**.
+4. Klicken Sie auf **OK** .
 
 Das Kennwort wird auf allen Knoten im Cluster geändert.
 
 ### <a name="change-the-ssh-user-password-or-public-key"></a>Ändern des SSH-Benutzerkennworts oder des öffentlichen Schlüssels
 
-1. Speichern Sie den folgenden Text mit einem Text-Editor als Datei namens **changecredentials.sh**.
+1. Speichern Sie den folgenden Text mit einem Text-Editor als Datei namens **changecredentials.sh** .
 
     > [!IMPORTANT]  
     > Sie müssen einen Editor verwenden, der „LF“ als Zeilenende verwendet. Wenn der Editor „CRLF“ verwendet, funktioniert das Skript nicht.

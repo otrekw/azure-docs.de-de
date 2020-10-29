@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93ac9a0b8766da70a55ac04f864fe48106fe8774
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004858"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536741"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 
@@ -34,13 +34,13 @@ Auf dem Blatt **Übersicht** sind die folgenden vorkonfigurierten Überwachungsd
 
 ### <a name="monitoring-charts"></a>Überwachungsdiagramme
 
-Im Abschnitt **Überwachung** des Blatts **Übersicht** finden Sie die Diagramme **Treffer und Fehler**, **Abrufe und Sets**, **Verbindungen** sowie **Befehle gesamt**.
+Im Abschnitt **Überwachung** des Blatts **Übersicht** finden Sie die Diagramme **Treffer und Fehler** , **Abrufe und Sets** , **Verbindungen** sowie **Befehle gesamt** .
 
 ![Überwachungsdiagramme](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
 ### <a name="usage-charts"></a>Nutzungsdiagramme
 
-Der Abschnitt **Nutzung** des Blatts **Übersicht** umfasst die Diagramme **Redis-Serverlast**, **Speicherauslastung**, **Netzwerkbandbreite** und **CPU-Auslastung** und zeigt auch den **Tarif** für die Cache-Instanz an.
+Der Abschnitt **Nutzung** des Blatts **Übersicht** umfasst die Diagramme **Redis-Serverlast** , **Speicherauslastung** , **Netzwerkbandbreite** und **CPU-Auslastung** und zeigt auch den **Tarif** für die Cache-Instanz an.
 
 ![Nutzungsdiagramme](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
@@ -48,27 +48,27 @@ Der Bereich **Tarif** zeigt den Tarif für den Cache an und kann zum [Skalieren]
 
 ## <a name="view-metrics-with-azure-monitor"></a>Anzeigen von Metriken mit Azure Monitor
 
-Um Redis-Metriken anzuzeigen und benutzerdefinierte Diagramme mit Azure Monitor zu erstellen, klicken Sie im **Ressourcenmenü** auf **Metriken**, und passen Sie das Diagramm mit den gewünschten Metriken, dem Berichtsintervall, dem Diagrammtyp usw. an.
+Um Redis-Metriken anzuzeigen und benutzerdefinierte Diagramme mit Azure Monitor zu erstellen, klicken Sie im **Ressourcenmenü** auf **Metriken** , und passen Sie das Diagramm mit den gewünschten Metriken, dem Berichtsintervall, dem Diagrammtyp usw. an.
 
 ![Redis-Metriken](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie unter [Übersicht über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie unter [Übersicht über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportieren von Cachemetriken
 
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../azure-monitor/platform/archive-diagnostic-logs.md) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
 
 So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 
 1. Wählen Sie auf der Seite **Azure Cache for Redis** unter der Überschrift **Überwachung** die Option **Diagnose** aus.
 2. Wählen Sie **+Diagnoseeinstellung hinzufügen**  aus.
 3. Benennen Sie die Einstellungen.
-4. Aktivieren Sie **In einem Speicherkonto archivieren**. Ihnen werden normale Datenraten für Speicherung und Transaktionen in Rechnung gestellt, wenn Sie Diagnoseinformationen an ein Speicherkonto senden.
+4. Aktivieren Sie **In einem Speicherkonto archivieren** . Ihnen werden normale Datenraten für Speicherung und Transaktionen in Rechnung gestellt, wenn Sie Diagnoseinformationen an ein Speicherkonto senden.
 4. Wählen Sie **Konfigurieren** aus, um das Speicherkonto auszuwählen, in dem die Cachemetriken gespeichert werden sollen.
-5. Aktivieren Sie unter der Tabellenüberschrift **Metrik** das Kontrollkästchen neben den einzelnen Elementen, die Sie speichern möchten, z. B. **AllMetrics**. Geben Sie eine Richtlinie **Aufbewahrung (Tage)** an. Die maximale Anzahl von Tagen, die Sie für die Aufbewahrung angeben können, beträgt **365 Tage**. Wenn Sie die Metrikdaten aber unbegrenzt aufbewahren möchten, legen Sie die **Aufbewahrung (Tage)** auf **0** fest.
-6. Klicken Sie auf **Speichern**.
+5. Aktivieren Sie unter der Tabellenüberschrift **Metrik** das Kontrollkästchen neben den einzelnen Elementen, die Sie speichern möchten, z. B. **AllMetrics** . Geben Sie eine Richtlinie **Aufbewahrung (Tage)** an. Die maximale Anzahl von Tagen, die Sie für die Aufbewahrung angeben können, beträgt **365 Tage** . Wenn Sie die Metrikdaten aber unbegrenzt aufbewahren möchten, legen Sie die **Aufbewahrung (Tage)** auf **0** fest.
+6. Klicken Sie auf **Speichern** .
 
 
 ![Redis-Diagnose](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
@@ -85,7 +85,7 @@ Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie w
 
 ## <a name="available-metrics-and-reporting-intervals"></a>Verfügbare Metriken und Berichtsintervalle
 
-Cachemetriken werden in verschiedenen Berichtsintervallen gemeldet, z.B. **Letzte Stunde**, **Heute**, **Letzte Woche** und **Benutzerdefiniert**. Das Blatt **Metrik** für jedes Metrikdiagramm zeigt die Durchschnitts-, Minimal- und Maximalwerte für jede Metrik im Diagramm an. Einige Metriken zeigen einen Gesamtwert für das Berichtsintervall an. 
+Cachemetriken werden in verschiedenen Berichtsintervallen gemeldet, z.B. **Letzte Stunde** , **Heute** , **Letzte Woche** und **Benutzerdefiniert** . Das Blatt **Metrik** für jedes Metrikdiagramm zeigt die Durchschnitts-, Minimal- und Maximalwerte für jede Metrik im Diagramm an. Einige Metriken zeigen einen Gesamtwert für das Berichtsintervall an. 
 
 Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesamten Cache. Eine zweite Version der Metrik, deren Name `(Shard 0-9)` enthält, misst für Caches, die [Clustering](cache-how-to-premium-clustering.md) verwenden, die Leistung für einen einzelnen Shard in einem Cache. Wenn z. B. ein Cache vier Shards enthält, ist `Cache Hits` der Gesamtanzahl der Treffer für den gesamten Cache, und `Cache Hits (Shard 3)` gibt lediglich die Treffer für dieses Shard des Caches an.
 
@@ -103,7 +103,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 | Cache-Schreibvorgänge |Die Menge an Daten in Megabyte pro Sekunde (MB/s), die während des angegebenen Berichtsintervalls in den Cache geschrieben wurden. Dieser Wert wird von den Netzwerkschnittstellenkarten für die virtuelle Maschine abgeleitet, die den Cache hostet, und ist nicht Redis-spezifisch. Dieser Wert entspricht der Netzwerkbandbreite der vom Client an den Cache gesendeten Daten. |
 | Verbundene Clients |Die Anzahl von Clientverbindungen mit dem Cache während des angegebenen Berichtsintervalls. Diese Zahl ist `connected_clients` aus dem Redis-Befehl INFO zugeordnet. Sobald der [Grenzwert für Verbindungen](cache-configure.md#default-redis-server-configuration) erreicht ist, treten bei weiteren Verbindungsversuchen mit dem Cache Fehler auf. Auch wenn keine Clientanwendungen aktiv sind, können aufgrund interner Prozesse und Verbindungen dennoch einige Instanzen verbundener Clients vorhanden sein. |
 | CPU |Die CPU-Auslastung des Azure Cache for Redis-Servers in Prozent während des angegebenen Berichtsintervalls. Dieser Wert ist dem Betriebssystem-Leistungsindikator `\Processor(_Total)\% Processor Time` zugeordnet, |
-| Errors | Bestimmte Fehler und Leistungsprobleme, mit denen der Cache während eines angegebenen Berichtsintervalls konfrontiert werden könnte. Diese Metrik hat acht Dimensionen, die verschiedene Fehlertypen darstellen, könnte jedoch zukünftig mit weiteren ergänzt werden. Derzeit werden folgende Fehlertypen dargestellt: <br/><ul><li>**Failover**: Wenn ein Failover für einen Cache erfolgt (untergeordneter Cache wird zum primären Cache heraufgestuft)</li><li>**Dataloss**: Wenn Datenverlust auf dem Cache auftritt</li><li>**UnresponsiveClients**: Wenn die Clients nicht schnell genug Daten vom Server lesen</li><li>**AOF**: Wenn ein Problem im Zusammenhang mit der AOF-Persistenz auftritt</li><li>**RDB**: Wenn ein Problem im Zusammenhang mit der RDB-Persistenz auftritt</li><li>**Import**: Wenn ein Problem im Zusammenhang mit „Import RDB“ auftritt</li><li>**Export**: Wenn ein Problem im Zusammenhang mit „Export RDB“ auftritt</li></ul> |
+| Errors | Bestimmte Fehler und Leistungsprobleme, mit denen der Cache während eines angegebenen Berichtsintervalls konfrontiert werden könnte. Diese Metrik hat acht Dimensionen, die verschiedene Fehlertypen darstellen, könnte jedoch zukünftig mit weiteren ergänzt werden. Derzeit werden folgende Fehlertypen dargestellt: <br/><ul><li>**Failover** : Wenn ein Failover für einen Cache erfolgt (untergeordneter Cache wird zum primären Cache heraufgestuft)</li><li>**Dataloss** : Wenn Datenverlust auf dem Cache auftritt</li><li>**UnresponsiveClients** : Wenn die Clients nicht schnell genug Daten vom Server lesen</li><li>**AOF** : Wenn ein Problem im Zusammenhang mit der AOF-Persistenz auftritt</li><li>**RDB** : Wenn ein Problem im Zusammenhang mit der RDB-Persistenz auftritt</li><li>**Import** : Wenn ein Problem im Zusammenhang mit „Import RDB“ auftritt</li><li>**Export** : Wenn ein Problem im Zusammenhang mit „Export RDB“ auftritt</li></ul> |
 | Entfernte Schlüssel |Die Anzahl von Elementen, die aufgrund des `maxmemory` -Grenzwerts während des angegebenen Berichtsintervalls aus dem Cache entfernt wurden. Diese Zahl ist `evicted_keys` aus dem Redis-Befehl INFO zugeordnet. |
 | Abgelaufene Schlüssel |Die Anzahl von Elementen, die während des angegebenen Berichtsintervalls im Cache abgelaufen sind. Dieser Wert ist `expired_keys` aus dem Redis-Befehl „INFO“ zugeordnet.|
 | get-Vorgänge |Die Anzahl von get-Vorgängen im Cache während des angegebenen Berichtsintervalls. Dieser Wert ist die Summe der folgenden Werte aus dem Redis-INFO-Befehl "all": `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit` und `cmdstat_getrange` und entspricht der Summe aller Cachetreffer und Cachefehler während des angegebenen Berichtsintervalls. |
@@ -125,11 +125,11 @@ Sie können die Konfiguration so durchführen, dass Warnungen basierend auf Metr
 * Aufrufen eines Webhooks
 * Aufrufen einer Azure-Logik-App
 
-Klicken Sie zum Konfigurieren von Warnungsregeln für den Cache im **Ressourcenmenü** auf **Warnungsregeln**.
+Klicken Sie zum Konfigurieren von Warnungsregeln für den Cache im **Ressourcenmenü** auf **Warnungsregeln** .
 
 ![Überwachung](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Weitere Informationen zum Konfigurieren und Verwenden von Warnungen finden Sie unter [Übersicht über Warnungen](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Weitere Informationen zum Konfigurieren und Verwenden von Warnungen finden Sie unter [Übersicht über Warnungen](../azure-monitor/platform/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Aktivitätsprotokolle
 Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache for Redis-Instanzen ausgeführt wurden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet. Mit Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Azure Cache for Redis-Instanzen durchgeführt wurden. 
@@ -138,6 +138,6 @@ Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache
 > Aktivitätsprotokolle umfassen keine Lesevorgänge (GET).
 >
 
-Klicken Sie zum Anzeigen von Aktivitätsprotokollen für Ihren Cache im **Ressourcenmenü** auf **Aktivitätsprotokolle**.
+Klicken Sie zum Anzeigen von Aktivitätsprotokollen für Ihren Cache im **Ressourcenmenü** auf **Aktivitätsprotokolle** .
 
 Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).

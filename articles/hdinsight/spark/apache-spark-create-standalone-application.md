@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: deda7644d29fce5deb8d6c76f93da0caf0b22ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536918"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539444"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Tutorial: Erstellen einer Scala Maven-Anwendung für Apache Spark in HDInsight mithilfe von IntelliJ
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Eine Java-IDE. In diesem Artikel wird [IntelliJ IDEA Community  2018.3.4](https://www.jetbrains.com/idea/download/) verwendet.
 
-* Azure-Toolkit für IntelliJ.  Weitere Informationen finden Sie unter [Installieren des Azure-Toolkits für IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
+* Azure-Toolkit für IntelliJ.  Weitere Informationen finden Sie unter [Installieren des Azure-Toolkits für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Installieren des Scala-Plug-Ins für IntelliJ IDEA
 
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
 1. Öffnen Sie IntelliJ IDEA.
 
-2. Navigieren Sie auf der Willkommensseite zu **Konfigurieren** > **Plug-Ins**, um das Fenster **Plug-Ins** zu öffnen.
+2. Navigieren Sie auf der Willkommensseite zu **Konfigurieren** > **Plug-Ins** , um das Fenster **Plug-Ins** zu öffnen.
 
     ![IntelliJ IDEA: Aktivieren des Scala-Plug-Ins](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
 
@@ -92,7 +92,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
 2. Wählen Sie im linken Bereich die Option **Maven** aus.
 
-3. Geben Sie ein **Projekt-SDK**an. Klicken Sie auf **New...** (Neu...), und navigieren Sie zum Installationsverzeichnis von Java.
+3. Geben Sie ein **Projekt-SDK** an. Klicken Sie auf **New...** (Neu...), und navigieren Sie zum Installationsverzeichnis von Java.
 
 4. Aktivieren Sie das Kontrollkästchen **Create from archetype** (Archetypbasierte Erstellung).  
 
@@ -115,7 +115,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
 10. Überprüfen Sie den Projektnamen und einen Speicherort, und wählen Sie anschließend **Fertig stellen** aus.  Das Importieren des Projekts dauert ein paar Minuten.
 
-11. Navigieren Sie nach Abschluss des Projektimports im linken Bereich zu **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example**.  Klicken Sie mit der rechten Maustaste auf **MySpec**, und wählen Sie **Delete...** (Löschen...) aus. Sie brauchen diese Datei für die Anwendung nicht.  Wählen Sie im Dialogfeld **OK** aus.
+11. Navigieren Sie nach Abschluss des Projektimports im linken Bereich zu **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example** .  Klicken Sie mit der rechten Maustaste auf **MySpec** , und wählen Sie **Delete...** (Löschen...) aus. Sie brauchen diese Datei für die Anwendung nicht.  Wählen Sie im Dialogfeld **OK** aus.
   
 12. In späteren Schritten wird die Datei **pom.xml** aktualisiert, um die Abhängigkeiten für die Spark Scala-Anwendung zu definieren. Damit diese Abhängigkeiten automatisch heruntergeladen und aufgelöst werden, muss Maven konfiguriert sein.
 
@@ -125,11 +125,11 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
 15. Aktivieren Sie das Kontrollkästchen **Import Maven projects automatically** (Maven-Projekte automatisch importieren).
 
-16. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK**.  Daraufhin wird wieder das Projektfenster angezeigt.
+16. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK** .  Daraufhin wird wieder das Projektfenster angezeigt.
 
     ![Maven für automatische Downloads konfigurieren](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
-17. Navigieren Sie im linken Bereich zu **src** > **main** > **scala** > **com.microsoft.spark.example**, und doppelklicken Sie dann auf **App**, um „App.scala“ zu öffnen.
+17. Navigieren Sie im linken Bereich zu **src** > **main** > **scala** > **com.microsoft.spark.example** , und doppelklicken Sie dann auf **App** , um „App.scala“ zu öffnen.
 
 18. Ersetzen Sie den vorhandenen Beispielcode durch den folgenden Code, und speichern Sie die Änderungen. Dieser Code liest die Daten aus der Datei „HVAC.csv“ (verfügbar in allen HDInsight Spark-Clustern), ruft die Zeilen ab, die nur eine Ziffer in der sechsten Spalte enthalten, und schreibt die Ausgabe in **/HVACOut** unter dem Standardspeichercontainer für den Cluster.
 
@@ -157,7 +157,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
     }
     ```
 
-19. Doppelklicken Sie im linken Bereich auf **pom.xml**.  
+19. Doppelklicken Sie im linken Bereich auf **pom.xml** .  
 
 20. Fügen Sie in `<project>\<properties>` folgende Segmente hinzu:
 
@@ -197,7 +197,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
         ![IntelliJ IDEA-Projektstruktur: JAR aus Modul](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
-    6. Die Registerkarte **Output Layout** führt alle JAR-Dateien des Maven-Projekts auf. Sie können die Dateien auswählen und löschen, zu denen die Scala-Anwendung keine direkte Abhängigkeit hat. Bei der hier erstellten Anwendung können Sie alle bis auf die letzte (**SparkSimpleApp-Kompilierungsausgabe**) entfernen. Wählen Sie die zu löschenden JAR-Dateien und anschließend das Minussymbol **-** aus.
+    6. Die Registerkarte **Output Layout** führt alle JAR-Dateien des Maven-Projekts auf. Sie können die Dateien auswählen und löschen, zu denen die Scala-Anwendung keine direkte Abhängigkeit hat. Bei der hier erstellten Anwendung können Sie alle bis auf die letzte ( **SparkSimpleApp-Kompilierungsausgabe** ) entfernen. Wählen Sie die zu löschenden JAR-Dateien und anschließend das Minussymbol **-** aus.
 
         ![IntelliJ IDEA-Projektstruktur: Löschen der Ausgabe](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
@@ -211,7 +211,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
 Sie können die folgenden Ansätze nutzen, um die Anwendung im Cluster auszuführen:
 
-* **Kopieren Sie die JAR-Anwendungsdatei in das dem Cluster zugeordnete Azure Storage-Blob**. Hierzu können Sie das Befehlszeilenprogramm **AzCopy** verwenden. Daneben gibt es aber auch noch zahlreiche andere Clients, die Sie zum Hochladen von Daten verwenden können. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
+* **Kopieren Sie die JAR-Anwendungsdatei in das dem Cluster zugeordnete Azure Storage-Blob** . Hierzu können Sie das Befehlszeilenprogramm **AzCopy** verwenden. Daneben gibt es aber auch noch zahlreiche andere Clients, die Sie zum Hochladen von Daten verwenden können. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
 
 * **Verwenden Sie Apache Livy, um einen Anwendungsauftrag remote an den Spark-Cluster zu übermitteln.** Spark-Cluster in HDInsight enthalten Livy, um REST-Endpunkte für die Remoteübermittlung von Spark-Aufträgen verfügbar zu machen. Weitere Informationen finden Sie unter [Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md).
 
@@ -227,7 +227,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ).
 
-1. Klicken Sie auf **Löschen**. Wählen Sie **Ja** aus.
+1. Klicken Sie auf **Löschen** . Wählen Sie **Ja** aus.
 
 ![HDInsight im Azure-Portal: Löschen von Clustern](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
 

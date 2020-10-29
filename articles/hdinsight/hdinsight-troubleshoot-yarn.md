@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84224172dbfd63fee51b3a7b80f5990b04e5e228
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871965"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535024"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -24,7 +24,7 @@ Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache
 
 Erstellen Sie mit den folgenden Schritten in Ambari eine neue YARN-Warteschlange, und teilen Sie die Kapazitätszuordnung dann gleichmäßig auf alle Warteschlangen auf.
 
-In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**default** und **thriftsvr**) von 50% in 25% geändert, sodass die neue Warteschlange (spark) 50% Kapazität bekommt.
+In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **default** und **thriftsvr** ) von 50% in 25% geändert, sodass die neue Warteschlange (spark) 50% Kapazität bekommt.
 
 | Warteschlange | Capacity | Maximale Kapazität |
 | --- | --- | --- |
@@ -32,16 +32,16 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**defa
 | thrftsvr | 25 % | 50% |
 | spark | 50% | 50% |
 
-1. Wählen Sie das **Ambari-Ansichten**-Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
+1. Wählen Sie das **Ambari-Ansichten** -Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager** .
 
     ![Apache Ambari-Dashboard: YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wählen Sie die Warteschlange **default** aus.
 
     ![Apache Ambari YARN – Auswählen der Warteschlange „default“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Ändern Sie für die **default**-Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr**-Warteschlange **capacity** in 25%.
+3. Ändern Sie für die **default** -Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr** -Warteschlange **capacity** in 25%.
 
     ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue**.
+4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue** .
 
     ![Apache Ambari YARN-Dashboard – Hinzufügen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -49,10 +49,10 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**defa
 
     ![Apache Ambari YARN-Dashboard – Benennen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Lassen Sie die **capacity**-Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
+6. Lassen Sie die **capacity** -Werte auf 50%, und wählen Sie die Schaltfläche **Actions** .
 
     ![Apache Ambari YARN – Auswählen der Aktion](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Wählen Sie **Save and Refresh Queues**.
+7. Wählen Sie **Save and Refresh Queues** .
 
     ![„Save and Refresh Queues“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -131,7 +131,7 @@ Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angez
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>Zusätzliche Lektüre
 
-- [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop YARN concepts and applications](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow) (Apache Hadoop Yarn – Konzepte und -Anwendungen)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -142,4 +142,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 - Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support** . Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

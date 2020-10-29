@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462240"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540379"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight
 
@@ -27,11 +27,11 @@ HDInsight enthält außerdem Jython, eine in Java geschriebene Python-Implementi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Einen Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](apache-hadoop-linux-tutorial-get-started.md).
-* **SSH-Client**. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Einen Hadoop-Cluster in HDInsight** . Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](apache-hadoop-linux-tutorial-get-started.md).
+* **SSH-Client** . Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder adl:// für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI wasbs://.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
-* **Mögliche Änderungen an der Speicherkonfiguration**.  Wenn Sie ein Speicherkonto vom Typ `BlobStorage` verwenden, helfen Ihnen die Informationen unter [Speicherkonfiguration](#storage-configuration) weiter.
-* Optional.  Wenn Sie PowerShell verwenden möchten, müssen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) installieren.
+* **Mögliche Änderungen an der Speicherkonfiguration** .  Wenn Sie ein Speicherkonto vom Typ `BlobStorage` verwenden, helfen Ihnen die Informationen unter [Speicherkonfiguration](#storage-configuration) weiter.
+* Optional.  Wenn Sie PowerShell verwenden möchten, müssen Sie das [Az-Modul](/powershell/azure/new-azureps-module-az) installieren.
 
 > [!NOTE]  
 > Das in diesem Artikel verwendete Speicherkonto war vom Typ „Azure Storage mit aktivierter [sicherer Übertragung](../../storage/common/storage-require-secure-transfer.md)“, und deshalb wird im gesamten Artikel `wasbs` verwendet.
@@ -46,7 +46,7 @@ Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto vom Typ `Sto
 > * Sie erstellen die Python-Skripts in der lokalen Entwicklungsumgebung.
 > * Sie laden die Skripts entweder mit dem `scp`-Befehl oder dem bereitgestellten PowerShell-Skript in HDInsight hoch.
 >
-> Gehen Sie wie folgt vor, wenn Sie die [Azure Cloud Shell (Bash)](https://docs.microsoft.com/azure/cloud-shell/overview) für die Verwendung von HDInsight verwenden möchten:
+> Gehen Sie wie folgt vor, wenn Sie die [Azure Cloud Shell (Bash)](../../cloud-shell/overview.md) für die Verwendung von HDInsight verwenden möchten:
 >
 > * die Skripts in der Cloud Shell-Umgebung erstellen.
 > * `scp` zum Hochladen der Dateien aus Cloud Shell in HDInsight verwenden.
@@ -281,7 +281,7 @@ Get-AzHDInsightJobOutput `
     -HttpCredential $creds
 ```
 
-Die Ausgabe für den **Hive**-Auftrag sollte ungefähr folgendem Beispiel entsprechen:
+Die Ausgabe für den **Hive** -Auftrag sollte ungefähr folgendem Beispiel entsprechen:
 
 ```output
 100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -300,8 +300,8 @@ Ein Python-Skript kann mit der `GENERATE`-Anweisung von Pig aus als UDF verwende
 
 Verwenden Sie zum Angeben des Python-Interpreters `register`, wenn Sie auf das Python-Skript verweisen. In den folgenden Beispielen werden Skripts mit Pig als `myfuncs` registriert:
 
-* **Verwendung von Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **Verwendung von C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Verwendung von Jython** : `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **Verwendung von C Python** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Bei Verwendung von Jython kann der Pfad zur Datei „pig_jython“ entweder ein lokaler oder ein „WASBS://“-Pfad sein. Jedoch müssen Sie bei der Verwendung von C-Python auf eine Datei auf dem lokalen Dateisystem des Knotens verweisen, den Sie verwenden, um den Pig-Job zu übermitteln.
@@ -343,7 +343,7 @@ def create_structure(input):
 
 Im Pig Latin-Beispiel wird die `LINE`-Eingabe als chararray-Typ definiert, da es kein gleichbleibendes Schema für die Eingabe gibt. Das Python-Skript transformiert die Daten für die Ausgabe in ein gleichbleibendes Schema.
 
-1. Die `@outputSchema`-Anweisung definiert das Format der Daten, die an Pig zurückgegeben werden. In diesem Fall ist das ein **Datenbehälter**, also ein Pig-Datentyp. Der Behälter enthält folgende Felder, die alle Chararray (Zeichenfolgen) sind:
+1. Die `@outputSchema`-Anweisung definiert das Format der Daten, die an Pig zurückgegeben werden. In diesem Fall ist das ein **Datenbehälter** , also ein Pig-Datentyp. Der Behälter enthält folgende Felder, die alle Chararray (Zeichenfolgen) sind:
 
    * date – das Datum, an dem der Protokolleintrag erstellt wurde
    * time – die Zeit, zu der der Protokolleintrag erstellt wurde
@@ -423,7 +423,7 @@ Ersetzen Sie `sshuser` in den folgenden Befehlen durch den tatsächlichen Benutz
     #from pig_util import outputSchema
     ```
 
-    Mit dieser Zeile wird das Python-Skript so angepasst, dass es mit C Python (anstelle von Jython) verwendet werden kann. Nachdem die Änderung vorgenommen wurde, beenden Sie den Editor mit **STRG+X**. Wählen Sie **Y** und dann **EINGABE**, um die Änderungen zu speichern.
+    Mit dieser Zeile wird das Python-Skript so angepasst, dass es mit C Python (anstelle von Jython) verwendet werden kann. Nachdem die Änderung vorgenommen wurde, beenden Sie den Editor mit **STRG+X** . Wählen Sie **Y** und dann **EINGABE** , um die Änderungen zu speichern.
 
 6. Verwenden Sie den `pig` -Befehl, um die Shell neu zu starten. Geben Sie Folgendes an der `grunt>` -Eingabeaufforderung ein, um das Python-Skript mit dem C-Python-Interpreter auszuführen.
 
@@ -553,7 +553,7 @@ Get-AzHDInsightJobOutput `
     -HttpCredential $creds
 ```
 
-Die Ausgabe für den **Pig**-Job sollte ungefähr folgenden Daten entsprechen:
+Die Ausgabe für den **Pig** -Job sollte ungefähr folgenden Daten entsprechen:
 
 ```output
 ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
@@ -594,7 +594,7 @@ Die Fehlerinformationen (STDERR) und das Ergebnis des Auftrags (STDOUT) werden a
 
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
-Wenn Sie Python-Module laden müssen, die standardmäßig nicht bereitgestellt werden, lesen Sie [Bereitstellen eines Moduls für Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight).
+Wenn Sie Python-Module laden müssen, die standardmäßig nicht bereitgestellt werden, lesen Sie [Bereitstellen eines Moduls für Azure HDInsight](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight).
 
 Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie Informationen zur Verwendung von MapReduce finden Sie in diesen Dokumenten:
 

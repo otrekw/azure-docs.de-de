@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086556"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543235"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -45,8 +45,8 @@ Im folgenden Diagramm werden Anforderungen für Ressourcen, die auf das DNS-Suff
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
-* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/).
-* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](/powershell/azure/).
+* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-virtual-network-configuration"></a>Erstellen der Konfiguration des virtuellen Netzwerks
 
@@ -65,7 +65,7 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
   
-1. Klicken Sie im oberen Menü auf **+ Ressource erstellen**.
+1. Klicken Sie im oberen Menü auf **+ Ressource erstellen** .
 
     ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
@@ -80,15 +80,15 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
     |Name des virtuellen Computers | Geben Sie einen Anzeigename ein, über den dieser virtuelle Computer identifiziert wird. In diesem Beispiel wird **DNSProxy** verwendet.|
     |Region | Wählen Sie dieselbe Region wie für das virtuelle Netzwerk aus, das zuvor erstellt wurde.  Es sind nicht alle VM-Größen in allen Regionen verfügbar.  |
     |Verfügbarkeitsoptionen |  Wählen Sie die gewünschte Verfügbarkeitsstufe aus.  Azure bietet mehrere Optionen zum Verwalten der Verfügbarkeit und Resilienz für Ihre Anwendungen.  Entwerfen Sie Ihre Projektmappe, um replizierte virtuelle Computer in Verfügbarkeitszonen und Verfügbarkeitsgruppen zu verwenden, um so Ihre Apps und Daten vor Rechenzentrumsausfällen und bei Wartungsereignissen zu schützen. Bei diesem Beispiel wird der Wert **Keine Infrastrukturredundanz erforderlich** verwendet. |
-    |Image | Belassen Sie es bei **Ubuntu Server 18.04 LTS**. |
-    |Authentifizierungsart | __Kennwort__ oder __öffentlicher SSH-Schlüssel__: Die Authentifizierungsmethode für das SSH-Konto. Aus Sicherheitsgründen empfehlen wir die Verwendung öffentlicher Schlüssel. In diesem Beispiel wird **Password** verwendet.  Weitere Informationen finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).|
+    |Image | Belassen Sie es bei **Ubuntu Server 18.04 LTS** . |
+    |Authentifizierungsart | __Kennwort__ oder __öffentlicher SSH-Schlüssel__ : Die Authentifizierungsmethode für das SSH-Konto. Aus Sicherheitsgründen empfehlen wir die Verwendung öffentlicher Schlüssel. In diesem Beispiel wird **Password** verwendet.  Weitere Informationen finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).|
     |Benutzername |Geben Sie den Benutzernamen des Administrators für die VM ein.  In diesem Beispiel wird **sshuser** verwendet.|
     |Kennwort oder öffentlicher SSH-Schlüssel | Das verfügbare Feld wird durch Ihre Auswahl des **Authentifizierungstyps** bestimmt.  Geben Sie den entsprechenden Wert ein.|
     |Öffentliche Eingangsports|Wählen Sie **Ausgewählte Ports zulassen** aus. Wählen Sie dann **SSH (22)** aus der Dropdownliste **Eingehende Ports auswählen** aus.|
 
     ![Grundlegende Konfiguration des virtuellen Computers](./media/connect-on-premises-network/virtual-machine-basics.png)
 
-    Übernehmen Sie für alle weitere Einträge die Standardwerte, und klicken Sie dann auf die Registerkarte **Netzwerk**.
+    Übernehmen Sie für alle weitere Einträge die Standardwerte, und klicken Sie dann auf die Registerkarte **Netzwerk** .
 
 4. Geben Sie auf der Registerkarte **Netzwerk** dann die folgenden Informationen ein:
 
@@ -100,13 +100,13 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
 
     ![Einstellungen für virtuelles HDInsight-Netzwerk](./media/connect-on-premises-network/virtual-network-settings.png)
 
-    Übernehmen Sie für alle weitere Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
+    Übernehmen Sie für alle weitere Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen** .
 
 5. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus, um den virtuellen Computer zu erstellen.
 
 ### <a name="review-ip-addresses"></a>Überprüfen von IP-Adressen
 
-Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung **Bereitstellung erfolgreich** mit der Schaltfläche **Zu Ressource wechseln**.  Klicken Sie auf **Zu Ressource wechseln**, um zu Ihrem neuen virtuellen Computer zu wechseln.  Befolgen Sie in die Standardansicht für Ihren neuen virtuellen Computer die folgenden Schritte, um die zugeordneten IP-Adressen zu identifizieren:
+Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung **Bereitstellung erfolgreich** mit der Schaltfläche **Zu Ressource wechseln** .  Klicken Sie auf **Zu Ressource wechseln** , um zu Ihrem neuen virtuellen Computer zu wechseln.  Befolgen Sie in die Standardansicht für Ihren neuen virtuellen Computer die folgenden Schritte, um die zugeordneten IP-Adressen zu identifizieren:
 
 1. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus.
 
@@ -168,7 +168,7 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Zum Speichern der Datei drücken Sie __STRG+X__, __Y__ und dann die __EINGABETASTE__.
+    Zum Speichern der Datei drücken Sie __STRG+X__ , __Y__ und dann die __EINGABETASTE__ .
 
 4. Verwenden Sie aus der SSH-Sitzung den folgenden Befehl:
 
@@ -203,7 +203,7 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Zum Speichern der Datei drücken Sie __STRG+X__, __Y__ und dann die __EINGABETASTE__.
+    Zum Speichern der Datei drücken Sie __STRG+X__ , __Y__ und dann die __EINGABETASTE__ .
 
 6. Verwenden Sie den folgenden Befehl, um Bind zu starten:
 
@@ -238,11 +238,11 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung
 
 Führen Sie über das [Azure-Portal](https://portal.azure.com) die folgenden Schritte aus, damit das virtuelle Netzwerk anstelle des rekursiven Azure-Resolvers den benutzerdefinierten DNS-Server verwendet:
 
-1. Navigieren Sie im linken Menü zu **Alle Dienste** > **Netzwerk** > **Virtuelle Netzwerke**.
+1. Navigieren Sie im linken Menü zu **Alle Dienste** > **Netzwerk** > **Virtuelle Netzwerke** .
 
 2. Wählen Sie Ihr virtuelles Netzwerk aus der Liste aus, wodurch die Standardansicht für Ihre virtuelles Netzwerk geöffnet wird.  
 
-3. Klicken Sie in der Standardansicht unter **Einstellungen** auf **DNS-Server**.  
+3. Klicken Sie in der Standardansicht unter **Einstellungen** auf **DNS-Server** .  
 
 4. Wählen Sie __Benutzerdefiniert__ aus, und geben Sie die **PRIVATE IP-ADRESSE** des benutzerdefinierten DNS-Servers ein.
 
@@ -254,11 +254,11 @@ Führen Sie über das [Azure-Portal](https://portal.azure.com) die folgenden Sch
 
 Im vorherigen Abschnitt haben Sie den benutzerdefinierten DNS-Server so konfiguriert, dass Anforderungen an den lokalen DNS-Server weitergeleitet werden. Als Nächstes müssen Sie den lokalen DNS-Server so konfigurieren, dass Anforderungen an den benutzerdefinierten DNS-Server weitergeleitet werden.
 
-Informationen dazu, wie Sie Ihren DNS-Server konfigurieren, finden Sie in der Dokumentation zu Ihrer DNS-Serversoftware. Suchen Sie hierbei nach den Schritten zum Konfigurieren einer __bedingten Weiterleitung__.
+Informationen dazu, wie Sie Ihren DNS-Server konfigurieren, finden Sie in der Dokumentation zu Ihrer DNS-Serversoftware. Suchen Sie hierbei nach den Schritten zum Konfigurieren einer __bedingten Weiterleitung__ .
 
 Bei einer bedingten Weiterleitung werden nur Anforderungen für ein bestimmtes DNS-Suffix weitergeleitet. In diesem Fall müssen Sie eine Weiterleitung für das DNS-Suffix des virtuellen Netzwerks konfigurieren. Anforderungen an dieses Suffix sollen an die IP-Adresse des benutzerdefinierten DNS-Servers weitergeleitet werden. 
 
-Der folgende Text ist eine Beispielkonfiguration für eine bedingte Weiterleitung für die DNS-Software **Bind**:
+Der folgende Text ist eine Beispielkonfiguration für eine bedingte Weiterleitung für die DNS-Software **Bind** :
 
 ```DNS Zone file
 zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -267,7 +267,7 @@ zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
 };
 ```
 
-Informationen zur Verwendung von DNS in **Windows Server 2016** finden Sie in der [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone)-Dokumentation.
+Informationen zur Verwendung von DNS in **Windows Server 2016** finden Sie in der [Add-DnsServerConditionalForwarderZone](/powershell/module/dnsserver/add-dnsserverconditionalforwarderzone)-Dokumentation.
 
 Nachdem Sie den lokalen DNS-Server konfiguriert haben, können Sie mithilfe von `nslookup` überprüfen, ob Namen im virtuellen Netzwerk aufgelöst werden können. Beispiel: 
 
@@ -347,6 +347,6 @@ Zur direkten Verbindung mit HDInsight über das virtuelle Netzwerk führen Sie d
 
 * Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie in der [Übersicht zu virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md).
 
-* Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht zu Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
+* Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht zu Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
 
 * Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).

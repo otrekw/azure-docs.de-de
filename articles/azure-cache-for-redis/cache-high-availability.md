@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: yegu
-ms.openlocfilehash: 145be11436eb4d0c4f6b892e5239ccacd838d780
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: f0bb8fd2d0b0ac271a167ad5474a55646bdafc65
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91654060"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536792"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hochverfügbarkeit für Azure Cache for Redis
 
@@ -28,7 +28,7 @@ Azure Cache for Redis implementiert Hochverfügbarkeit durch Verwendung mehrerer
 
 ## <a name="standard-replication"></a>Standardreplikation
 
-Eine Azure Cache for Redis-Instanz im Tarif „Standard“ oder „Premium“ wird standardmäßig auf zwei Redis-Servern ausgeführt. Die beiden Server werden auf dedizierten virtuellen Computern gehostet. Bei Open-Source-Redis können Anforderungen zum Schreiben von Daten nur auf einem Server verarbeitet werden. Bei diesem Server handelt es sich um den *primären* Knoten, der andere Server ist der *Replikatknoten*. Nach dem Bereitstellen der Serverknoten weist Azure Cache for Redis diesen die primäre und die Replikatrolle zu. Der primäre Knoten dient normalerweise der Verarbeitung von Schreib- und Leseanforderungen von Redis-Clients. Bei einem Schreibvorgang wird ein neuer Schlüssel und eine Schlüsselaktualisierung in den internen Speicher des Knotens übertragen und sofort eine Antwort an den Client gesendet. Der Vorgang wird asynchron an das Replikat weitergeleitet.
+Eine Azure Cache for Redis-Instanz im Tarif „Standard“ oder „Premium“ wird standardmäßig auf zwei Redis-Servern ausgeführt. Die beiden Server werden auf dedizierten virtuellen Computern gehostet. Bei Open-Source-Redis können Anforderungen zum Schreiben von Daten nur auf einem Server verarbeitet werden. Bei diesem Server handelt es sich um den *primären* Knoten, der andere Server ist der *Replikatknoten* . Nach dem Bereitstellen der Serverknoten weist Azure Cache for Redis diesen die primäre und die Replikatrolle zu. Der primäre Knoten dient normalerweise der Verarbeitung von Schreib- und Leseanforderungen von Redis-Clients. Bei einem Schreibvorgang wird ein neuer Schlüssel und eine Schlüsselaktualisierung in den internen Speicher des Knotens übertragen und sofort eine Antwort an den Client gesendet. Der Vorgang wird asynchron an das Replikat weitergeleitet.
 
 :::image type="content" source="media/cache-high-availability/replication.png" alt-text="Einrichten der Datenreplikation":::
    
@@ -57,7 +57,7 @@ Azure Cache for Redis ermöglicht im Tarif „Premium“ zusätzliche Replikatkn
 >
 >
 
-Azure Cache for Redis unterstützt im Tarif „Premium“ zonenredundante Konfigurationen. Bei einem [zonenredundanten Cache](cache-how-to-zone-redundancy.md) können die zugehörigen Knoten in unterschiedlichen [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) derselben Region platziert werden. Ausfälle im Rechenzentrum oder in einer Verfügbarkeitszone werden als Single Point of Failure behoben. Damit wird die Gesamtverfügbarkeit des Caches erhöht.
+Azure Cache for Redis unterstützt im Tarif „Premium“ zonenredundante Konfigurationen. Bei einem [zonenredundanten Cache](cache-how-to-zone-redundancy.md) können die zugehörigen Knoten in unterschiedlichen [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) derselben Region platziert werden. Ausfälle im Rechenzentrum oder in einer Verfügbarkeitszone werden als Single Point of Failure behoben. Damit wird die Gesamtverfügbarkeit des Caches erhöht.
 
 Das folgende Diagramm veranschaulicht die zonenredundante Konfiguration:
 

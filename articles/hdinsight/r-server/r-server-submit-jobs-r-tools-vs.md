@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435249"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536231"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Übermitteln von Aufträgen über R Tools für Visual Studio
 
-[R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) ist eine kostenlose Open Source-Erweiterung für die (kostenlose) Community-Edition sowie für die Professional- und Enterprise-Edition von [Visual Studio 2017](https://www.visualstudio.com/downloads/) und [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) (oder höher). RTVS ist für [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019) nicht verfügbar.
+[R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) ist eine kostenlose Open Source-Erweiterung für die (kostenlose) Community-Edition sowie für die Professional- und Enterprise-Edition von [Visual Studio 2017](https://www.visualstudio.com/downloads/) und [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) (oder höher). RTVS ist für [Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019) nicht verfügbar.
 
-RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (Codevervollständigung), [Plotvisualisierung](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) über R-Bibliotheken wie „ggplot2“ und „ggviz“ und [R-Codedebugging](https://docs.microsoft.com/visualstudio/rtvs/debugging).
+RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (Codevervollständigung), [Plotvisualisierung](/visualstudio/rtvs/visualizing-data) über R-Bibliotheken wie „ggplot2“ und „ggviz“ und [R-Codedebugging](/visualstudio/rtvs/debugging).
 
 ## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
@@ -27,19 +27,19 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https:/
 
     ![Installieren von RTVS in Visual Studio 2017](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Wählen Sie die Workload *Data Science und analytische Anwendungen* und anschließend die Optionen **R-Sprachunterstützung**, **Runtimeunterstützung für R-Entwicklungstools** und **Microsoft R Client** aus.
+2. Wählen Sie die Workload *Data Science und analytische Anwendungen* und anschließend die Optionen **R-Sprachunterstützung** , **Runtimeunterstützung für R-Entwicklungstools** und **Microsoft R Client** aus.
 
 3. Sie benötigen öffentliche und private Schlüssel für die SSH-Authentifizierung.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Installieren Sie [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) auf Ihrem Computer. ML Server stellt die Funktionen [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) und `RxSpark` bereit.
+4. Installieren Sie [ML Server](/previous-versions/machine-learning-server/install/r-server-install-windows) auf Ihrem Computer. ML Server stellt die Funktionen [`RevoScaleR`](/machine-learning-server/r-reference/revoscaler/revoscaler) und `RxSpark` bereit.
 
 5. Installieren Sie [PuTTY](https://www.putty.org/), um einen Computekontext für die Ausführung von `RevoScaleR`-Funktionen zwischen Ihrem lokalen Client und Ihrem HDInsight-Cluster bereitzustellen.
 
 6. Sie haben die Möglichkeit, die Data Science-Einstellungen auf Ihre Visual Studio-Umgebung anzuwenden. Dadurch erhalten Sie ein neues Layout für Ihren Arbeitsbereich für die R Tools.
-   1. Wenn Sie Ihre aktuellen Visual Studio-Einstellungen speichern möchten, verwenden Sie den Befehl **Tools > Einstellungen importieren/exportieren**, klicken Sie auf **Ausgewählte Umgebungseinstellungen exportieren**, und geben Sie einen Dateinamen an. Wenn Sie die Einstellungen wiederherstellen möchten, verwenden Sie den gleichen Befehl, und klicken Sie auf **Ausgewählte Umgebungseinstellungen importieren**.
+   1. Wenn Sie Ihre aktuellen Visual Studio-Einstellungen speichern möchten, verwenden Sie den Befehl **Tools > Einstellungen importieren/exportieren** , klicken Sie auf **Ausgewählte Umgebungseinstellungen exportieren** , und geben Sie einen Dateinamen an. Wenn Sie die Einstellungen wiederherstellen möchten, verwenden Sie den gleichen Befehl, und klicken Sie auf **Ausgewählte Umgebungseinstellungen importieren** .
 
-   2. Navigieren Sie zum Menüelement **R Tools**, und klicken Sie auf **Data Science-Einstellungen...** .
+   2. Navigieren Sie zum Menüelement **R Tools** , und klicken Sie auf **Data Science-Einstellungen...** .
 
        ![Data Science-Einstellungen in Visual Studio](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
@@ -49,7 +49,7 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https:/
 ## <a name="execute-local-r-methods"></a>Ausführen lokaler R-Methoden
 
 1. Erstellen Sie Ihren HDInsight-ML Services-Cluster.
-2. Installieren Sie die [RTVS-Erweiterung](https://docs.microsoft.com/visualstudio/rtvs/installation).
+2. Installieren Sie die [RTVS-Erweiterung](/visualstudio/rtvs/installation).
 3. Laden Sie die [Beispiel-ZIP-Datei](https://github.com/Microsoft/RTVS-docs/archive/master.zip) herunter.
 4. Öffnen Sie `examples/Examples.sln`, um die Projektmappe in Visual Studio zu starten.
 5. Öffnen Sie die Datei `1-Getting Started with R.R` im Projektmappenordner `A first look at R`.
@@ -111,13 +111,13 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
     ![Erfolgreiche rx-Befehlsausführung](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
 1. Vergewissern Sie sich, dass `rxHadoopCopy` die Datei `people.json` erfolgreich aus dem Beispieldatenordner in den neu erstellten Ordner `/user/RevoShare/newUser` kopiert hat:
 
-    1. Klicken Sie in Azure im Bereich Ihres HDInsight-ML Services-Clusters im linken Menü auf **Speicherkonten**.
+    1. Klicken Sie in Azure im Bereich Ihres HDInsight-ML Services-Clusters im linken Menü auf **Speicherkonten** .
 
         ![Azure HDInsight Storage-Konten](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Wählen Sie das Standardspeicherkonto für Ihren Cluster aus, und notieren Sie sich den Container-/Verzeichnisnamen.
 
-    3. Klicken Sie im linken Menü des Speicherkontobereichs auf **Container**.
+    3. Klicken Sie im linken Menü des Speicherkontobereichs auf **Container** .
 
         ![Azure HDInsight Storage-Container](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 

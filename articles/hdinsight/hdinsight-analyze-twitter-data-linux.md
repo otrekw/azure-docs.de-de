@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086720"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533290"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analysieren von Twitter-Daten mit Apache Hive und Apache Hadoop in HDInsight
 
@@ -32,7 +32,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 2. Wählen Sie **Create New App** (Neue App erstellen) aus.
 
-3. Geben Sie **Name**, **Description** und **Website** ein. Für das Feld **Website** können Sie eine URL erfinden. Die folgende Tabelle zeigt einige mögliche Beispielwerte:
+3. Geben Sie **Name** , **Description** und **Website** ein. Für das Feld **Website** können Sie eine URL erfinden. Die folgende Tabelle zeigt einige mögliche Beispielwerte:
 
    | Feld | Wert |
    |--- |--- |
@@ -42,7 +42,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 4. Wählen Sie **Yes, I agree** (Ja, ich stimme zu) und dann **Create your Twitter application** (Erstellen Sie Ihre Twitter-Anwendung) aus.
 
-5. Wählen Sie die Registerkarte **Permissions** (Berechtigungen) aus. Die Standardberechtigung ist **Read only**.
+5. Wählen Sie die Registerkarte **Permissions** (Berechtigungen) aus. Die Standardberechtigung ist **Read only** .
 
 6. Wählen Sie die Registerkarte **Keys and Access Tokens** .
 
@@ -50,7 +50,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 8. Wählen Sie oben rechts auf der Seite **Test OAuth** (OAuth testen) aus.
 
-9. Notieren Sie **consumer key**, **Consumer secret**, **Access token** und **Access token secret**.
+9. Notieren Sie **consumer key** , **Consumer secret** , **Access token** und **Access token secret** .
 
 ### <a name="download-tweets"></a>Herunterladen von Tweets
 
@@ -283,7 +283,7 @@ Mit diesen Befehlen werden die Daten an einem Speicherort gespeichert, auf den a
    WHERE (length(json_response) > 500);
    ```
 
-1. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y**.
+1. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y** .
 
 1. Verwenden Sie den folgenden Befehl, um den in der Datei enthaltenen HiveQL-Auftrag auszuführen:
 
@@ -313,4 +313,4 @@ Mit diesen Befehlen werden die Daten an einem Speicherort gespeichert, auf den a
 Sie haben gelernt, wie Sie ein unstrukturiertes JSON-Dataset in eine strukturierte [Apache Hive](https://hive.apache.org/)-Tabelle umwandeln. Weitere Informationen zu Hive in HDInsight finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Analysieren von Daten zu Flugverspätungen mit HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Analysieren von Daten zu Flugverspätungen mit HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

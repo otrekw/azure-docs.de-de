@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895316"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535092"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -56,7 +56,7 @@ Im Azure-Portal können diese Informationen bereitgestellt werden:
 
 ![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-Sie können auch die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) verwenden:
+Sie können auch die [Azure CLI](/cli/azure/) verwenden:
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -78,11 +78,11 @@ Jeder HDInsight-Cluster basiert auf verschiedenen Azure-Diensten und auf Open-So
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Anzeigen von Einstellungen zur Clusterkonfiguration mit der Ambari-Benutzeroberfläche
 
-Apache Ambari ermöglicht die Verwaltung und Überwachung eines HDInsight-Clusters mit einer Webbenutzeroberfläche und einer REST-API. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Cluster-Dashboard**.  Wählen Sie den Bereich **HDInsight-Cluster-Dashboard**, um die Ambari-Benutzeroberfläche zu öffnen, und geben Sie die Anmeldeinformationen für die Anmeldung am Cluster ein.  
+Apache Ambari ermöglicht die Verwaltung und Überwachung eines HDInsight-Clusters mit einer Webbenutzeroberfläche und einer REST-API. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Cluster-Dashboard** .  Wählen Sie den Bereich **HDInsight-Cluster-Dashboard** , um die Ambari-Benutzeroberfläche zu öffnen, und geben Sie die Anmeldeinformationen für die Anmeldung am Cluster ein.  
 
 ![Apache Ambari-Dashboard – Übersicht](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
-Wählen Sie zum Öffnen einer Liste mit den Dienstansichten auf der Azure-Portalseite die Option **Ambari Views**.  Der Inhalt dieser Liste richtet sich danach, welche Bibliotheken installiert sind. Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.
+Wählen Sie zum Öffnen einer Liste mit den Dienstansichten auf der Azure-Portalseite die Option **Ambari Views** .  Der Inhalt dieser Liste richtet sich danach, welche Bibliotheken installiert sind. Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.
 
 #### <a name="check-for-azure-service-outages"></a>Durchführen einer Prüfung auf Ausfälle von Azure-Diensten
 
@@ -90,8 +90,8 @@ HDInsight basiert auf mehreren Azure-Diensten. Virtuelle Server werden in Azure 
 
 #### <a name="check-azure-service-usage-limits"></a>Überprüfen der Nutzungseinschränkungen von Azure-Diensten
 
-Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) erstellen.
+Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](../azure-portal/supportability/resource-manager-core-quotas-request.md) erstellen.
 
 #### <a name="check-the-release-version"></a>Überprüfen der Releaseversion
 
@@ -115,7 +115,7 @@ Das [Dashboard der Ambari-Benutzeroberfläche](#view-cluster-configuration-setti
 
 ### <a name="check-your-webhcat-service"></a>Überprüfen Ihres WebHCat-Diensts
 
-Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache Sqoop-Aufträgen ist ein Ausfall des [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)-Diensts (oder *Templeton*). WebHCat ist eine REST-Schnittstelle für die Remoteausführung von Aufträgen, z.B. Hive, Pig, Scoop und MapReduce. WebHCat übersetzt die Anforderungen zur Auftragsübermittlung in Apache Hadoop-YARN-Anwendungen und gibt einen Status zurück, der vom YARN-Anwendungsstatus abgeleitet wird.  In den folgenden Abschnitten werden allgemeine WebHCat-HTTP-Statuscodes beschrieben.
+Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache Sqoop-Aufträgen ist ein Ausfall des [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)-Diensts (oder *Templeton* ). WebHCat ist eine REST-Schnittstelle für die Remoteausführung von Aufträgen, z.B. Hive, Pig, Scoop und MapReduce. WebHCat übersetzt die Anforderungen zur Auftragsübermittlung in Apache Hadoop-YARN-Anwendungen und gibt einen Status zurück, der vom YARN-Anwendungsstatus abgeleitet wird.  In den folgenden Abschnitten werden allgemeine WebHCat-HTTP-Statuscodes beschrieben.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (Statuscode 502)
 
@@ -228,7 +228,7 @@ Die Skriptaktionsprotokolle befinden sich im Verzeichnis `\STORAGE_ACCOUNT_NAME\
 
 ### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>Anzeigen von HDInsight-Protokollen mit Ambari-Quicklinks
 
-Die HDInsight Ambari-Benutzeroberfläche enthält mehrere Abschnitte mit **Quicklinks**.  Öffnen Sie zum Zugreifen auf die Protokolllinks für einen bestimmten Dienst in Ihrem HDInsight-Cluster die Ambari-Benutzeroberfläche für den Cluster, und wählen Sie anschließend in der Liste auf der linken Seite den Dienstlink aus. Wählen Sie das Dropdownmenü **Quicklinks**, den gewünschten HDInsight-Knoten und dann den Link für das zugeordnete Protokoll aus.
+Die HDInsight Ambari-Benutzeroberfläche enthält mehrere Abschnitte mit **Quicklinks** .  Öffnen Sie zum Zugreifen auf die Protokolllinks für einen bestimmten Dienst in Ihrem HDInsight-Cluster die Ambari-Benutzeroberfläche für den Cluster, und wählen Sie anschließend in der Liste auf der linken Seite den Dienstlink aus. Wählen Sie das Dropdownmenü **Quicklinks** , den gewünschten HDInsight-Knoten und dann den Link für das zugeordnete Protokoll aus.
 
 Beispiel für Hadoop Distributed File System-Protokolle:
 
@@ -262,7 +262,7 @@ Als Hilfe beim Diagnostizieren der Quelle eines Clusterfehlers können Sie einen
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
-* [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)
+* [Analysieren von HDInsight-Protokollen](./hdinsight-troubleshoot-guide.md)
 * [Zugreifen auf die Apache Hadoop YARN-Anwendungsanmeldung unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Bekannte Probleme bei Apache Spark-Clustern unter HDInsight](hdinsight-apache-spark-known-issues.md)
+* [Bekannte Probleme bei Apache Spark-Clustern unter HDInsight](./spark/apache-spark-known-issues.md)

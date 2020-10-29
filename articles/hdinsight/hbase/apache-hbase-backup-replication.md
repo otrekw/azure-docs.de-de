@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505028"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542776"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Einrichten der Sicherung und Replikation für Apache HBase und Apache Phoenix in HDInsight
 
@@ -52,7 +52,7 @@ Nach dem Löschen des Clusters können Sie die Daten entweder an ihrem Speichero
 
 * Erstellen Sie eine neue HDInsight-Instanz, die auf den aktuellen Speicherort verweist. Die neue Instanz wird mit allen vorhandenen Daten erstellt.
 
-* Kopieren Sie den Ordner `hbase` in einen anderen Azure Storage-Blobcontainer oder an einen anderen Data Lake Storage-Speicherort, und starten Sie einen neuen Cluster mit diesen Daten. Verwenden Sie dazu entweder [AzCopy](../../storage/common/storage-use-azcopy.md) (Azure Storage) oder [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) (Data Lake Storage).
+* Kopieren Sie den Ordner `hbase` in einen anderen Azure Storage-Blobcontainer oder an einen anderen Data Lake Storage-Speicherort, und starten Sie einen neuen Cluster mit diesen Daten. Verwenden Sie dazu entweder [AzCopy](../../storage/common/storage-use-azcopy-v10.md) (Azure Storage) oder [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) (Data Lake Storage).
 
 ## <a name="export-then-import"></a>Exportieren und Importieren
 
@@ -173,7 +173,7 @@ In unserem Beispiel:
 
 ## <a name="snapshots"></a>Momentaufnahmen
 
-Mithilfe von [Momentaufnahmen](https://hbase.apache.org/book.html#ops.snapshots) können Sie eine Point-in-Time-Sicherung von Daten in Ihrem HBase-Datenspeicher erstellen. Momentaufnahmen verursachen nur einen minimalen Mehraufwand und sind in Sekundenschnelle abgeschlossen, da es sich bei einem Momentaufnahmevorgang im Grunde um einen Metadatenvorgang handelt, bei dem die Namen aller Dateien im Speicher auf einmal erfasst werden. Zum Zeitpunkt der Momentaufnahmenerstellung werden keine tatsächlichen Daten kopiert. Momentaufnahmen basieren auf der Unveränderlichkeit der im HDFS gespeicherten Daten, da Aktualisierungen, Löschungen und Einfügungen jeweils als neue Daten dargestellt werden. Sie können eine Momentaufnahme im gleichen Cluster wiederherstellen (*klonen*) oder in einen anderen Cluster exportieren.
+Mithilfe von [Momentaufnahmen](https://hbase.apache.org/book.html#ops.snapshots) können Sie eine Point-in-Time-Sicherung von Daten in Ihrem HBase-Datenspeicher erstellen. Momentaufnahmen verursachen nur einen minimalen Mehraufwand und sind in Sekundenschnelle abgeschlossen, da es sich bei einem Momentaufnahmevorgang im Grunde um einen Metadatenvorgang handelt, bei dem die Namen aller Dateien im Speicher auf einmal erfasst werden. Zum Zeitpunkt der Momentaufnahmenerstellung werden keine tatsächlichen Daten kopiert. Momentaufnahmen basieren auf der Unveränderlichkeit der im HDFS gespeicherten Daten, da Aktualisierungen, Löschungen und Einfügungen jeweils als neue Daten dargestellt werden. Sie können eine Momentaufnahme im gleichen Cluster wiederherstellen ( *klonen* ) oder in einen anderen Cluster exportieren.
 
 Stellen Sie zum Erstellen einer Momentaufnahme eine SSH-Verbindung mit dem Hauptknoten Ihres HDInsight HBase-Clusters her, und starten Sie die `hbase`-Shell:
 
@@ -245,4 +245,4 @@ Wenden Sie zum Aktivieren der Replikation in HDInsight eine Skriptaktion auf Ihr
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren von Apache HBase-Replikation](apache-hbase-replication.md)
-* [Arbeiten mit dem in HBase enthaltenen Import- und Exporthilfsprogramm](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [Arbeiten mit dem in HBase enthaltenen Import- und Exporthilfsprogramm](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

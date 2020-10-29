@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263259"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538645"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -23,7 +23,7 @@ Mit der nativen Integration zwischen [Azure Cosmos DB](https://azure.microsoft.c
 
 Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverlosen Apps wie folgt integrieren:
 
-* Erstellen Sie einen ereignisgesteuerten **Azure Functions-Trigger für Cosmos DB**. Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
+* Erstellen Sie einen ereignisgesteuerten **Azure Functions-Trigger für Cosmos DB** . Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
 * Sie können aber auch eine Azure-Funktion mithilfe einer **Eingabebindung** an einen Azure Cosmos-Container binden. Eingabebindungen lesen Daten aus einem Container, wenn eine Funktion ausgeführt wird.
 * Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an einen Azure Cosmos-Container. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
@@ -81,7 +81,7 @@ In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario 
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gaming-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB 
 
-Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB- oder SQL-Datenbank]() schreiben, aus der sie leicht abgerufen werden können.
+Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine Azure Cosmos DB- oder SQL-Datenbank schreiben, aus der sie leicht abgerufen werden können.
 
 **Implementierung:** Verwenden eines Azure Functions-Triggers und der Ausgabebindung für Cosmos DB
 
@@ -122,23 +122,23 @@ Azure Functions bietet die Möglichkeit, skalierbare Arbeitseinheiten bzw. präz
 
 Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Architektur für serverloses Computing:
 
-* **Sofortiger Zugriff auf alle Ihre Daten**: Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
+* **Sofortiger Zugriff auf alle Ihre Daten** : Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
 
-* **Ohne Schema**. Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
+* **Ohne Schema** . Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
 
-* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
+* **Skalierbarer Durchsatz** . Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
 
-* **Globale Replikation**. Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
+* **Globale Replikation** . Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
 
 Wenn Sie die Integration mit Azure Functions zum Speichern von Daten einrichten möchten und keine tiefe Indizierung gewünscht wird, oder wenn Sie Anhänge und Mediendateien speichern müssen, ist der [Azure Blob Storage-Trigger](../azure-functions/functions-bindings-storage-blob.md) möglicherweise die bessere Wahl.
 
 Vorteile von Azure Functions: 
 
-* **Ereignisgesteuert**. Azure Functions ist ereignisgesteuert und kann einen Änderungsfeed von Azure Cosmos DB überwachen. Das bedeutet, dass Sie keine Überwachungslogik schreiben müssen. Sie müssen lediglich ein Auge auf die überwachten Änderungen haben. 
+* **Ereignisgesteuert** . Azure Functions ist ereignisgesteuert und kann einen Änderungsfeed von Azure Cosmos DB überwachen. Das bedeutet, dass Sie keine Überwachungslogik schreiben müssen. Sie müssen lediglich ein Auge auf die überwachten Änderungen haben. 
 
-* **Keine Einschränkungen**. Funktionen werden parallel ausgeführt, und vom Dienst werden so viele Funktionen aufgerufen, wie benötigt werden. Die Parameter legen Sie fest.
+* **Keine Einschränkungen** . Funktionen werden parallel ausgeführt, und vom Dienst werden so viele Funktionen aufgerufen, wie benötigt werden. Die Parameter legen Sie fest.
 
-* **Geeignet für schnelle Aufgaben**. Bei jedem ausgelösten Ereignis ruft der Dienst neue Instanzen der Funktionen auf, und er schließt sie, sobald die Funktion abgeschlossen ist. Sie bezahlen lediglich für den Zeitraum, in dem Ihre Funktionen ausgeführt werden.
+* **Geeignet für schnelle Aufgaben** . Bei jedem ausgelösten Ereignis ruft der Dienst neue Instanzen der Funktionen auf, und er schließt sie, sobald die Funktion abgeschlossen ist. Sie bezahlen lediglich für den Zeitraum, in dem Ihre Funktionen ausgeführt werden.
 
 Wenn Sie nicht sicher sind, ob Flow, Logic Apps, Azure Functions oder WebJobs am besten für Ihre Implementierung geeignet sind, lesen Sie den Artikel [Auswahl zwischen Flow, Logic Apps, Functions und WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 

@@ -7,16 +7,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89399955"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535245"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
-Azure HDInsight-Diensttags für Netzwerksicherheitsgruppen (NSGs) sind Gruppen von IP-Adressen für Integritäts- und Verwaltungsdienste. Diese Gruppen reduzieren die Komplexität beim Erstellen von Sicherheitsregeln. [Diensttags](../virtual-network/security-overview.md#service-tags) lassen eingehendem Datenverkehr von bestimmten IP-Adressen zu, ohne dass alle [Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) in Ihre Netzwerksicherheitsgruppe eingegeben werden müssen.
+Azure HDInsight-Diensttags für Netzwerksicherheitsgruppen (NSGs) sind Gruppen von IP-Adressen für Integritäts- und Verwaltungsdienste. Diese Gruppen reduzieren die Komplexität beim Erstellen von Sicherheitsregeln. [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags) lassen eingehendem Datenverkehr von bestimmten IP-Adressen zu, ohne dass alle [Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) in Ihre Netzwerksicherheitsgruppe eingegeben werden müssen.
 
 Der HDInsight-Dienst verwaltet diese Diensttags. Sie können kein eigenes Diensttag erstellen oder ein vorhandenes Tag ändern. Microsoft verwaltet die Adresspräfixe, die dem Diensttag entsprechen, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
@@ -26,9 +26,9 @@ Wenn Sie eine bestimmte Region verwenden möchten und das Diensttag noch nicht a
 
 Sie haben zwei Optionen für die Verwendung von Diensttags in Ihrer Netzwerksicherheitsgruppe:
 
-- **Verwenden eines einzelnen globalen HDInsight-Diensttags**: Diese Option öffnet Ihr virtuelles Netzwerk für alle IP-Adressen, die der HDInsight-Dienst zur Überwachung von Clustern in allen Regionen verwendet. Diese Option ist die einfachste Methode, sie ist jedoch möglicherweise nicht geeignet, wenn Sie über restriktive Sicherheitsanforderungen verfügen.
+- **Verwenden eines einzelnen globalen HDInsight-Diensttags** : Diese Option öffnet Ihr virtuelles Netzwerk für alle IP-Adressen, die der HDInsight-Dienst zur Überwachung von Clustern in allen Regionen verwendet. Diese Option ist die einfachste Methode, sie ist jedoch möglicherweise nicht geeignet, wenn Sie über restriktive Sicherheitsanforderungen verfügen.
 
-- **Verwenden von mehreren regionalen Diensttags**: Diese Option öffnet Ihr virtuelles Netzwerk nur für die IP-Adressen, die HDInsight in dieser bestimmten Region verwendet. Wenn Sie jedoch mehrere Regionen verwenden, müssen Sie Ihrem virtuellen Netzwerk mehrere Diensttags hinzufügen.
+- **Verwenden von mehreren regionalen Diensttags** : Diese Option öffnet Ihr virtuelles Netzwerk nur für die IP-Adressen, die HDInsight in dieser bestimmten Region verwendet. Wenn Sie jedoch mehrere Regionen verwenden, müssen Sie Ihrem virtuellen Netzwerk mehrere Diensttags hinzufügen.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Verwenden eines einzelnen globalen HDInsight-Diensttags
 
@@ -125,5 +125,5 @@ Cluster in den Regionen *Deutschland, Mitte* und *Deutschland, Nordosten* müsse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Netzwerksicherheitsgruppen: Diensttags](../virtual-network/security-overview.md#security-rules)
+- [Netzwerksicherheitsgruppen: Diensttags](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster](hdinsight-create-virtual-network.md)

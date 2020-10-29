@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c02f9de5b41d58e40001ba103191f3ef015f5c5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873091"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534905"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -63,9 +63,9 @@ HDInsight unterstützt auch benutzerdefinierte Metastores, der für Produktionsc
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Erstellen und Konfigurieren der Azure SQL-Datenbank für den benutzerdefinierten Metastore
 
-Vor dem Einrichten eines benutzerdefinierten Hive-Metastores für einen HDInsight-Cluster müssen Sie eine Azure SQL-Datenbank erstellen, oder es muss bereits eine Azure SQL-Datenbank vorhanden sein.  Weitere Informationen finden Sie unter [Quickstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+Vor dem Einrichten eines benutzerdefinierten Hive-Metastores für einen HDInsight-Cluster müssen Sie eine Azure SQL-Datenbank erstellen, oder es muss bereits eine Azure SQL-Datenbank vorhanden sein.  Weitere Informationen finden Sie unter [Quickstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
 
-Beim Erstellen des Clusters muss der HDInsight-Dienst eine Verbindung mit dem externen metastore herstellen und Ihre Anmeldeinformationen überprüfen. Konfigurieren Sie die Regeln der Azure SQL-Datenbank-Firewall, um Azure-Diensten und -Ressourcen den Zugriff auf den Server zu ermöglichen. Aktivieren Sie diese Option im Azure-Portal, indem Sie **Serverfirewall festlegen** auswählen. Wählen Sie dann unterhalb von **Zugriff auf öffentliches Netzwerk verweigern** **Nein** und unterhalb von **Azure-Diensten Zugriff auf den Server erlauben** für Azure SQL-Datenbank **Ja** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+Beim Erstellen des Clusters muss der HDInsight-Dienst eine Verbindung mit dem externen metastore herstellen und Ihre Anmeldeinformationen überprüfen. Konfigurieren Sie die Regeln der Azure SQL-Datenbank-Firewall, um Azure-Diensten und -Ressourcen den Zugriff auf den Server zu ermöglichen. Aktivieren Sie diese Option im Azure-Portal, indem Sie **Serverfirewall festlegen** auswählen. Wählen Sie dann unterhalb von **Zugriff auf öffentliches Netzwerk verweigern** **Nein** und unterhalb von **Azure-Diensten Zugriff auf den Server erlauben** für Azure SQL-Datenbank **Ja** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
 Private Endpunkte für SQL-Speicher werden nicht unterstützt.
 

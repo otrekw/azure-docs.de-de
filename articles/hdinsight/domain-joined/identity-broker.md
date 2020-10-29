@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999952"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543150"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight-Identitätsbroker (Vorschauversion)
 
@@ -43,7 +43,7 @@ In diesem Diagramm muss der Client (d. h. ein Browser oder eine App) zuerst das
 
 Möglicherweise gibt es noch viele Legacyanwendungen, die nur die Standardauthentifizierung (d. h. Benutzername und Kennwort) unterstützen. Für diese Szenarien können Sie weiterhin die HTTP-Standardauthentifizierung verwenden, um eine Verbindung mit den Clustergateways herzustellen. Bei diesem Setup müssen Sie die Netzwerkkonnektivität von den Gatewayknoten zum Endpunkt der Active Directory Federation Services (AD FS) sicherstellen, um für den direkten Zugriff von Gatewayknoten zu sorgen.
 
-Das folgende Diagramm zeigt den Ablauf der Standardauthentifizierung für Verbundbenutzer. Zunächst versucht das Gateway, die Authentifizierung mithilfe des [ROPC-Flows](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) abzuschließen. Falls keine Kennworthashes mit Azure AD synchronisiert sind, greift es auf die Ermittlung des AD FS-Endpunkts zurück und schließt die Authentifizierung durch Zugriff auf den AD FS-Endpunkt ab.
+Das folgende Diagramm zeigt den Ablauf der Standardauthentifizierung für Verbundbenutzer. Zunächst versucht das Gateway, die Authentifizierung mithilfe des [ROPC-Flows](../../active-directory/develop/v2-oauth-ropc.md) abzuschließen. Falls keine Kennworthashes mit Azure AD synchronisiert sind, greift es auf die Ermittlung des AD FS-Endpunkts zurück und schließt die Authentifizierung durch Zugriff auf den AD FS-Endpunkt ab.
 
 :::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagramm zum Authentifizierungsablauf mit HDInsight-Identitätsbroker.":::
 
@@ -103,7 +103,7 @@ Wenn Sie dem Computeprofil Ihrer Vorlage eine neue Rolle namens `idbrokernode` m
 
 ## <a name="tool-integration"></a>Toolintegration
 
-HDInsight-Tools werden aktualisiert, um OAuth nativ zu unterstützen. Verwenden Sie diese Tools für den modernen OAuth-basierten Zugriff auf die Cluster. Das HDInsight [IntelliJ-Plug-In](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) kann für Java-basierte Anwendungen wie Scala verwendet werden. [Spark- und Hive-Tools für Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) können für PySpark- und Hive-Aufträge verwendet werden. Die Tools unterstützen Batch- und interaktive Aufträge.
+HDInsight-Tools werden aktualisiert, um OAuth nativ zu unterstützen. Verwenden Sie diese Tools für den modernen OAuth-basierten Zugriff auf die Cluster. Das HDInsight [IntelliJ-Plug-In](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib) kann für Java-basierte Anwendungen wie Scala verwendet werden. [Spark- und Hive-Tools für Visual Studio Code](../hdinsight-for-vscode.md) können für PySpark- und Hive-Aufträge verwendet werden. Die Tools unterstützen Batch- und interaktive Aufträge.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-Zugriff ohne Kennworthash in Azure AD DS
 
@@ -117,11 +117,11 @@ Sie müssen ein Kennwort angeben, um eine SSH-Verbindung mit einem in eine Domä
 
 Wenn Ihre Organisation keine Kennworthashes mit Azure AD DS synchronisiert, erstellen Sie als bewährte Methode einen einzelnen reinen Cloudbenutzer in Azure AD. Weisen Sie ihn dann beim Erstellen des Clusters als Clusteradministrator zu, und verwenden Sie ihn für Verwaltungszwecke. Sie können über ihn den Root-Zugriff auf die virtuellen Computer über SSH abrufen.
 
-Informationen zum Behandeln von Authentifizierungsfehlern finden Sie in diesem [Handbuch](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+Informationen zum Behandeln von Authentifizierungsfehlern finden Sie in diesem [Handbuch](./domain-joined-authentication-issues.md).
 
 ## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>Clients, die OAuth zum Herstellen einer Verbindung mit einem HDInsight-Gateway mithilfe des HDInsight-Identitätsbrokers verwenden
 
-Im HDInsight-Identitätsbrokersetup können benutzerdefinierte Apps und Clients aktualisiert werden, die eine Verbindung mit dem Gateway herstellen, um zuerst das erforderliche OAuth-Token abzurufen. Führen Sie die Schritte in diesem [Dokument](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) aus, um das Token mit den folgenden Informationen abzurufen:
+Im HDInsight-Identitätsbrokersetup können benutzerdefinierte Apps und Clients aktualisiert werden, die eine Verbindung mit dem Gateway herstellen, um zuerst das erforderliche OAuth-Token abzurufen. Führen Sie die Schritte in diesem [Dokument](../../storage/common/storage-auth-aad-app.md) aus, um das Token mit den folgenden Informationen abzurufen:
 
 *   OAuth-Ressourcen-URI: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
