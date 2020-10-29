@@ -3,19 +3,19 @@ title: Übersicht über den Connected Machine-Agent für Windows
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979154"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370167"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
 Mit dem Connected Machine-Agent für Azure Arc-fähige Server können Sie Ihre Windows- und Linux-Computer verwalten, die außerhalb von Azure in Ihrem Unternehmensnetzwerk oder bei einem anderen Cloudanbieter gehostet werden. Dieser Artikel enthält eine ausführliche Übersicht über den Agent sowie Informationen zu System- und Netzwerkanforderungen und zu den verschiedenen Bereitstellungsmethoden.
 
 >[!NOTE]
->Ab dem allgemeinen Release von Azure Arc-fähigen Servern im September 2020 werden alle Vorabversionen des Azure Connected Machine-Agents (Agents mit niedrigeren Versionen als 1.0) am **2. Februar 2021** **als veraltet markiert**.  Dieser Zeitrahmen ermöglicht Ihnen ein Upgrade auf Version 1.0 oder höher, bevor die Agents mit Vorabversionen nicht mehr in der Lage sind, mit dem Azure Arc-fähigen Serverdienst zu kommunizieren.
+>Ab dem allgemeinen Release von Azure Arc-fähigen Servern im September 2020 werden alle Vorabversionen des Azure Connected Machine-Agents (Agents mit niedrigeren Versionen als 1.0) am **2. Februar 2021** **als veraltet markiert** .  Dieser Zeitrahmen ermöglicht Ihnen ein Upgrade auf Version 1.0 oder höher, bevor die Agents mit Vorabversionen nicht mehr in der Lage sind, mit dem Azure Arc-fähigen Serverdienst zu kommunizieren.
 
 ## <a name="agent-component-details"></a>Agent-Komponentendetails
 
@@ -68,7 +68,7 @@ Bevor Sie Ihre Computer für Azure Arc-fähige Server konfigurieren, machen Sie 
 
 ### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1.2-Protokoll (TLS)
 
-Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wird dringend empfohlen, den Computer so zu konfigurieren, dass er TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.
+Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wird dringend empfohlen, den Computer so zu konfigurieren, dass er TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen** .
 
 |Plattform/Sprache | Support | Weitere Informationen |
 | --- | --- | --- |
@@ -105,7 +105,7 @@ Vorschau-Agents (Version 0.11 und niedriger) benötigen außerdem Zugriff auf di
 |`agentserviceapi.azure-automation.net`|Gastkonfiguration|
 |`*-agentservice-prod-1.azure-automation.net`|Gastkonfiguration|
 
-Eine Liste der IP-Adressen für die einzelnen Diensttags/Regionen finden Sie in der JSON-Datei unter [Azure-IP-Bereiche und -Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft veröffentlicht wöchentliche Updates zu den einzelnen Azure-Diensten und den dafür genutzten IP-Adressbereichen. Weitere Informationen finden Sie unter [Diensttags](../../virtual-network/security-overview.md#service-tags).
+Eine Liste der IP-Adressen für die einzelnen Diensttags/Regionen finden Sie in der JSON-Datei unter [Azure-IP-Bereiche und -Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft veröffentlicht wöchentliche Updates zu den einzelnen Azure-Diensten und den dafür genutzten IP-Adressbereichen. Weitere Informationen finden Sie unter [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Die URLs in der obigen Tabelle werden zusätzlich zu den Informationen zum Diensttag-IP-Adressbereich benötigt, da die meisten Dienste derzeit nicht über eine Diensttagregistrierung verfügen. Die IP-Adressen können sich also ändern. Falls IP-Adressbereiche für Ihre Firewallkonfiguration erforderlich sind, sollte das Diensttag **AzureCloud** verwendet werden, um den Zugriff auf alle Azure-Dienste zuzulassen. Deaktivieren Sie weder die Sicherheitsüberwachung noch die Überprüfung dieser URLs. Lassen Sie sie wie anderen Internetdatenverkehr zu.
 
@@ -118,21 +118,21 @@ Azure Arc-fähige Server benötigen folgende Azure-Ressourcenanbieter in Ihrem A
 
 Sollten sie nicht registriert sein, können Sie sie mithilfe der folgenden Befehle registrieren:
 
-Azure PowerShell:
+Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure-Befehlszeilenschnittstelle:
+Azure CLI:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 Sie können die Ressourcenanbieter auch über das Azure-Portal registrieren, indem Sie die Schritte unter [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) ausführen.
@@ -203,7 +203,7 @@ Nach der Installation des Connected Machine-Agents für Windows werden die folge
 
 * Die folgenden Artefakte werden bei der Deinstallation des Agents nicht gelöscht.
 
-    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
+    * *%ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent und untergeordnete Verzeichnisse
     * %ProgramData%\GuestConfig
 
