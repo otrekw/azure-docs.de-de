@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318426"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371884"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -40,13 +40,13 @@ Dazu zählen u.a. die folgenden Rollen:
 
 **Die Ebenen der Beteiligung und Verantwortlichkeiten können wie folgt definiert werden:**
 
-- **R**esponsible – Verantwortlich für die Implementierung von Projektplan und Ergebnis 
+- **R** esponsible – Verantwortlich für die Implementierung von Projektplan und Ergebnis 
 
-- **A**ccountable – Rechenschaftspflichtig. Genehmigt Projektplan und Ergebnis 
+- **A** ccountable – Rechenschaftspflichtig. Genehmigt Projektplan und Ergebnis 
 
-- **C**onsulted – Konsultiert. Wird zu Projektplan und Ergebnis befragt 
+- **C** onsulted – Konsultiert. Wird zu Projektplan und Ergebnis befragt 
 
-- **I**nformed – Zu informieren. Wird über Projektplan und Ergebnis informiert
+- **I** nformed – Zu informieren. Wird über Projektplan und Ergebnis informiert
 
 
 ## <a name="best-practices-for-a-pilot"></a>Bewährte Methoden für einen Pilotversuch
@@ -54,7 +54,7 @@ Bei einem Pilotversuch können Sie eine Funktion mit einer kleinen Gruppe testen
 
 Zielen Sie in der ersten Phase auf IT und Benutzerfreundlichkeit ab, und wählen Sie zum Testen andere geeignete Benutzer aus, die Feedback bereitstellen können. Anhand dieses Feedbacks sollten Sie die Kommunikation mit Ihren Benutzern und die entsprechenden Anweisungen weiterentwickeln. Außerdem erhalten Sie Erkenntnisse über die Art von Problemen, mit denen Ihr Supportpersonal möglicherweise konfrontiert ist. 
 
-Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Ausweitung der Zielgruppen vorgenommen werden. Dies kann über eine [dynamische Gruppenmitgliedschaft](../users-groups-roles/groups-dynamic-membership.md) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.
+Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Ausweitung der Zielgruppen vorgenommen werden. Dies kann über eine [dynamische Gruppenmitgliedschaft](../enterprise-users/groups-dynamic-membership.md) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.
 
 
 ## <a name="deploy-authentication"></a>Bereitstellen der Authentifizierung

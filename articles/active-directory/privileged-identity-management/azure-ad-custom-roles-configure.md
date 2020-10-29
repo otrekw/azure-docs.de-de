@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39e483c5cdb7e5acc0677b0d0cf2b41c390eef0b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538446"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371561"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurieren von benutzerdefinierten Azure AD-Rollen in Privileged Identity Management
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um die Einstellungen für eine Azure AD-
     ![Auswählen von „Benutzerdefinierte Azure AD-Rollen (Vorschau)“ zum Anzeigen berechtigter Rollenzuweisungen](./media/azure-ad-custom-roles-configure/settings-list.png)
 
 1. Wählen Sie **Einstellung** aus, um die Seite **Einstellungen** zu öffnen. Wählen Sie die Rolle aus, deren Einstellungen Sie konfigurieren möchten.
-1. Klicken Sie auf **Bearbeiten**, um die Seite **Rolleneinstellungen** zu öffnen.
+1. Klicken Sie auf **Bearbeiten** , um die Seite **Rolleneinstellungen** zu öffnen.
 
     ![Screenshot: Seite „Details zur Rolleneinstellung“ mit ausgewählter Aktion „Bearbeiten“](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
@@ -56,13 +56,13 @@ Beim Konfigurieren der Einstellungen für eine Rolle können Sie für jeden Zuwe
 
 Beim Typ *berechtigt* können Sie eine der folgenden Optionen für die Zuweisungsdauer wählen.
 
-- **Dauerhafte berechtigte Zuweisung zulassen**: Administratoren können eine dauerhafte berechtigte Mitgliedschaft zuweisen.
-- **Berechtigte Zuweisungen laufen ab nach**: Administratoren können anfordern, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben.
+- **Dauerhafte berechtigte Zuweisung zulassen** : Administratoren können eine dauerhafte berechtigte Mitgliedschaft zuweisen.
+- **Berechtigte Zuweisungen laufen ab nach** : Administratoren können anfordern, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben.
 
 Beim Typ *aktiv* können Sie eine der folgenden Optionen für die Zuweisungsdauer wählen:
 
-- **Permanente aktive Zuweisung zulassen**: Administratoren können eine permanente aktive Mitgliedschaft zuweisen.
-- **Aktive Zuweisungen laufen ab nach**: Administratoren können anfordern, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben.
+- **Permanente aktive Zuweisung zulassen** : Administratoren können eine permanente aktive Mitgliedschaft zuweisen.
+- **Aktive Zuweisungen laufen ab nach** : Administratoren können anfordern, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben.
 
 ### <a name="require-azure-multi-factor-authentication"></a>Anfordern von Azure Multi-Factor Authentication
 
@@ -70,11 +70,11 @@ Privileged Identity Management ermöglicht die optionale Erzwingung der Azure Mu
 
 - **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**
 
-  Wenn Sie ein Mitglied nur für kurze Zeit (z.B. einen Tag) einer Rolle zuweisen möchte, dauert es möglicherweise zu lange, wenn dieses Mitglied erst eine Aktivierung anfordern muss. In diesem Szenario kann PIM die Multi-Factor Authentication nicht erzwingen, wenn der Benutzer seine Rollenzuweisung aktiviert, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist. Um sicherzustellen, dass der Administrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erzwingen**.
+  Wenn Sie ein Mitglied nur für kurze Zeit (z.B. einen Tag) einer Rolle zuweisen möchte, dauert es möglicherweise zu lange, wenn dieses Mitglied erst eine Aktivierung anfordern muss. In diesem Szenario kann PIM die Multi-Factor Authentication nicht erzwingen, wenn der Benutzer seine Rollenzuweisung aktiviert, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist. Um sicherzustellen, dass der Administrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erzwingen** .
 
 - **Bei Aktivierung Multi-Factor Authentication anfordern**
 
-  Sie können anfordern, dass berechtigte Benutzer, die einer Rolle zugewiesen wurden, sich zuerst bei der Azure Multi-Factor Authentication registrieren müssen, bevor sie die Rolle aktivieren können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Rollen in Situationen geschützt, in denen ein Benutzerkonto möglicherweise kompromittiert wurde. Um von einem berechtigten Mitglied vor der Aktivierung die Ausführung der Azure Multi-Factor Authentication anzufordern, aktivieren Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern**.
+  Sie können anfordern, dass berechtigte Benutzer, die einer Rolle zugewiesen wurden, sich zuerst bei der Azure Multi-Factor Authentication registrieren müssen, bevor sie die Rolle aktivieren können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Rollen in Situationen geschützt, in denen ein Benutzerkonto möglicherweise kompromittiert wurde. Um von einem berechtigten Mitglied vor der Aktivierung die Ausführung der Azure Multi-Factor Authentication anzufordern, aktivieren Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern** .
 
 Weitere Informationen finden Sie unter [Multi-Factor Authentication und Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -84,23 +84,23 @@ Mit dem Schieberegler **Maximale Aktivierungsdauer** geben Sie die maximale Zeit
 
 ### <a name="require-justification"></a>Verlangen einer Begründung
 
-Sie können verlangen, dass Mitglieder bei aktiver Zuweisung oder bei Aktivierung eine Begründung eingeben. Um eine Begründung zu verlangen, aktivieren Sie das Kontrollkästchen **Begründung für aktive Zuweisung erforderlich** oder **Begründung für Aktivierung erforderlich**.
+Sie können verlangen, dass Mitglieder bei aktiver Zuweisung oder bei Aktivierung eine Begründung eingeben. Um eine Begründung zu verlangen, aktivieren Sie das Kontrollkästchen **Begründung für aktive Zuweisung erforderlich** oder **Begründung für Aktivierung erforderlich** .
 
 ### <a name="require-approval-to-activate"></a>Erzwingen der Genehmigung für die Aktivierung
 
 Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, gehen Sie wie folgt vor.
 
-1. Aktivieren Sie das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
-1. Klicken Sie auf **Genehmigende Personen auswählen**, um die Liste **Mitglied oder Gruppe auswählen** zu öffnen.
+1. Aktivieren Sie das Kontrollkästchen **Genehmigung zum Aktivieren anfordern** .
+1. Klicken Sie auf **Genehmigende Personen auswählen** , um die Liste **Mitglied oder Gruppe auswählen** zu öffnen.
 
     ![Öffnen der benutzerdefinierten Azure AD-Rolle zum Bearbeiten von Einstellungen](./media/azure-ad-custom-roles-configure/select-approvers.png)
 
-1. Wählen Sie mindestens ein Mitglied oder eine Gruppe aus, und klicken Sie dann auf **Auswählen**. Sie müssen mindestens eine genehmigende Person auswählen. Für genehmigende Personen gibt es keine Standardeinstellung. Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
-1. Wenn Sie die Rolleneinstellungen angegeben haben, klicken Sie auf **Aktualisieren**, um Ihre Änderungen zu speichern.
+1. Wählen Sie mindestens ein Mitglied oder eine Gruppe aus, und klicken Sie dann auf **Auswählen** . Sie müssen mindestens eine genehmigende Person auswählen. Für genehmigende Personen gibt es keine Standardeinstellung. Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
+1. Wenn Sie die Rolleneinstellungen angegeben haben, klicken Sie auf **Aktualisieren** , um Ihre Änderungen zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Aktivieren einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-activate.md)
 - [Zuweisen einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
 - [Entfernen oder Aktualisieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-update-remove.md)
-- [Rollendefinitionen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rollendefinitionen in Azure AD](../roles/permissions-reference.md)

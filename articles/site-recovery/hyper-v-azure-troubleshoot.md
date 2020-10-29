@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426121"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364030"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -26,10 +26,10 @@ In diesem Artikel werden häufig auftretende Probleme bei der Replikation von lo
 1. Prüfen Sie, ob die Hyper-V-Hosts und -VMs alle [Anforderungen und Voraussetzungen](hyper-v-azure-support-matrix.md) erfüllen.
 2. Wenn Hyper-V-Server sich in System Center Virtual Machine Manager-Clouds (VMM-Clouds) befinden, vergewissern Sie sich, dass Sie den [VMM-Server](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional) vorbereitet haben.
 3. Stellen Sie sicher, dass der Hyper-V-Verwaltungsdienst für virtuelle Computer auf den Hyper-V-Hosts ausgeführt wird.
-4. Überprüfen Sie auf Probleme, die bei der Hyper-V-VMMS\Admin-Anmeldung bei der VM angezeigt werden. Dieses Protokoll befindet sich unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows**.
+4. Überprüfen Sie auf Probleme, die bei der Hyper-V-VMMS\Admin-Anmeldung bei der VM angezeigt werden. Dieses Protokoll befindet sich unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** .
 5. Überprüfen Sie auf dem virtuellen Gastcomputer, ob WMI aktiviert und verfügbar ist.
    - [Informationen zu](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) grundlegenden WMI-Tests.
-   - [Problembehandlung](https://aka.ms/WMiTshooting) bei WMI.
+   - [Problembehandlung](/windows/win32/wmisdk/wmi-troubleshooting) bei WMI.
    - [Problembehandlung](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) bei WMI-Skripts und WMI-Diensten.
 6. Stellen Sie auf dem virtuellen Gastcomputer sicher, dass die neueste Version von Integration Services ausgeführt wird.
     - [Überprüfen Sie](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services), ob die letzte Version installiert ist.
@@ -42,8 +42,8 @@ Beheben Sie Probleme bei der anfänglichen und laufenden Replikation wie folgt:
 1. Stellen Sie sicher, dass die [neueste Version](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) der Site Recovery-Dienste ausgeführt wird.
 2. Überprüfen Sie, ob die Replikation angehalten wurde:
    - Überprüfen Sie den VM-Integritätsstatus in der Hyper-V-Manager-Konsole.
-   - Wenn dieser kritisch ist, klicken Sie mit der rechten Maustaste auf den virtuellen Computer > **Replikation** > **Replikationsstatus anzeigen**.
-   - Wenn die Replikation angehalten wurde, klicken Sie auf **Replikation fortsetzen**.
+   - Wenn dieser kritisch ist, klicken Sie mit der rechten Maustaste auf den virtuellen Computer > **Replikation** > **Replikationsstatus anzeigen** .
+   - Wenn die Replikation angehalten wurde, klicken Sie auf **Replikation fortsetzen** .
 3. Vergewissern Sie sich, dass die erforderlichen Dienste ausgeführt werden. Wenn dies nicht der Fall ist, starten Sie sie neu.
     - Wenn Sie Hyper-V ohne VMM replizieren, überprüfen Sie, ob folgende Dienste auf dem Hyper-V-Host ausgeführt werden:
         - Verwaltungsdienst für virtuelle Computer
@@ -53,8 +53,8 @@ Beheben Sie Probleme bei der anfänglichen und laufenden Replikation wie folgt:
     - Wenn Sie die Replikation mit VMM in der Umgebung durchführen, überprüfen Sie, ob folgende Dienste ausgeführt werden:
         - Überprüfen Sie auf dem Hyper-V-Host, ob der Verwaltungsdienst für virtuelle Computer, der Microsoft Azure Recovery Services-Agent und der WMI Provider Host-Dienst ausgeführt werden.
         - Stellen Sie auf dem VMM-Server sicher, dass der System Center Virtual Machine Manager-Dienst ausgeführt wird.
-4. Überprüfen Sie die Konnektivität zwischen dem Hyper-V-Server und Azure. Öffnen Sie zum Überprüfen der Konnektivität den Task-Manager auf dem Hyper-V-Host. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen**. Überprüfen Sie auf der Registerkarte **Netzwerk** > **Prozess mit Netzwerkaktivität**, ob „cbengine.exe“ aktiv große Datenvolumen (MB) sendet.
-5. Überprüfen Sie, ob die Hyper-V-Hosts eine Verbindung mit der Azure Storage Blob-URL herstellen können. Zum Überprüfen, ob der Host eine Verbindung herstellen kann, wählen und überprüfen Sie **cbengine.exe**. Öffnen Sie **TCP-Verbindungen**, um die Konnektivität zwischen dem Host und Azure Storage Blob zu prüfen.
+4. Überprüfen Sie die Konnektivität zwischen dem Hyper-V-Server und Azure. Öffnen Sie zum Überprüfen der Konnektivität den Task-Manager auf dem Hyper-V-Host. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen** . Überprüfen Sie auf der Registerkarte **Netzwerk** > **Prozess mit Netzwerkaktivität** , ob „cbengine.exe“ aktiv große Datenvolumen (MB) sendet.
+5. Überprüfen Sie, ob die Hyper-V-Hosts eine Verbindung mit der Azure Storage Blob-URL herstellen können. Zum Überprüfen, ob der Host eine Verbindung herstellen kann, wählen und überprüfen Sie **cbengine.exe** . Öffnen Sie **TCP-Verbindungen** , um die Konnektivität zwischen dem Host und Azure Storage Blob zu prüfen.
 6. Überprüfen Sie Leistungsprobleme entsprechend der folgenden Beschreibung.
     
 ### <a name="performance-issues"></a>Leistungsprobleme
@@ -78,9 +78,9 @@ Einschränkungen der Netzwerkbandbreite können sich auf die Replikation auswirk
     ![Replikationsintegrität](media/hyper-v-azure-troubleshoot/replication-health1.png)
     
 
-2. Klicken Sie auf **Replikationsstatus anzeigen**, um die Details anzuzeigen:
+2. Klicken Sie auf **Replikationsstatus anzeigen** , um die Details anzuzeigen:
 
-    - Wenn die Replikation angehalten wurde, klicken Sie mit der rechten Maustaste auf den virtuellen Computer > **Replikation** > **Replikation fortsetzen**.
+    - Wenn die Replikation angehalten wurde, klicken Sie mit der rechten Maustaste auf den virtuellen Computer > **Replikation** > **Replikation fortsetzen** .
     - Wenn ein virtueller Computer auf einem in Site Recovery konfigurierten Hyper-V-Host zu einem anderen Hyper-V-Host im selben Cluster oder zu einem eigenständigen Computer migriert wird, hat dies keine Auswirkung auf die Replikation für den virtuellen Computer. Stellen Sie lediglich sicher, dass der neue Hyper-V-Host alle Voraussetzungen erfüllt und in Site Recovery konfiguriert wurde.
 
 ## <a name="app-consistent-snapshot-issues"></a>Probleme in Bezug auf App-konsistente Momentaufnahmen
@@ -89,7 +89,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 
 ### <a name="vss-failing-inside-the-vm"></a>VSS-Fehler innerhalb des virtuellen Computers
 
-1. Stellen Sie sicher, dass die neueste Version von Integration Services installiert ist und ausgeführt wird.  Überprüfen Sie, ob ein Update verfügbar ist. Führen Sie dazu auf dem Hyper-V-Host den folgenden Befehl an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus: **get-vm  | select Name, State, IntegrationServicesState**.
+1. Stellen Sie sicher, dass die neueste Version von Integration Services installiert ist und ausgeführt wird.  Überprüfen Sie, ob ein Update verfügbar ist. Führen Sie dazu auf dem Hyper-V-Host den folgenden Befehl an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus: **get-vm  | select Name, State, IntegrationServicesState** .
 2. Vergewissern Sie sich, dass die VSS-Dienste ausgeführt werden und fehlerfrei sind:
    - Um die Dienste zu überprüfen, melden Sie sich bei der Gast-VM an. Öffnen Sie dann als Administrator eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus, um zu überprüfen, ob alle VSS-Writer fehlerfrei sind.
        - **Vssadmin list writers**
@@ -107,7 +107,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
     ![Dynamischer Datenträger](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Vergewissern Sie sich, dass kein iSCSI-Datenträger an den virtuellen Computer angefügt ist. Dies wird nicht unterstützt.
-5. Überprüfen Sie, ob der Backup-Dienst aktiviert ist. Überprüfen Sie dies unter **Hyper-V-Einstellungen** > **Integration Services**.
+5. Überprüfen Sie, ob der Backup-Dienst aktiviert ist. Überprüfen Sie dies unter **Hyper-V-Einstellungen** > **Integration Services** .
 6. Stellen Sie sicher, dass keine Konflikte mit Apps vorliegen, die VSS-Momentaufnahmen erstellen. Wenn mehrere Apps versuchen, gleichzeitig VSS-Momentaufnahmen zu erstellen, können Konflikte auftreten. Dies ist z.B. der Fall, wenn eine Backup-App VSS-Momentaufnahmen erstellt, in der Replikationsrichtlinie jedoch geplant ist, dass Site Recovery eine Momentaufnahme erstellt.   
 7. Überprüfen Sie, ob der virtuelle Computer eine hohe Änderungsrate aufweist:
     - Sie können die tägliche Datenänderungsrate für die virtuellen Gastcomputer mithilfe von Leistungsindikatoren auf dem Hyper-V-Host messen. Aktivieren Sie den folgenden Leistungsindikator zum Messen der Datenänderungsrate. Aggregieren Sie eine Stichprobe dieses Werts für die VM-Datenträger in einem Zeitraum von 5 bis 15 Minuten, um die Änderungsrate des virtuellen Computers zu ermitteln.
@@ -124,7 +124,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS-Fehler innerhalb des Hyper-V-Hosts
 
 1. Überprüfen Sie die Ereignisprotokolle auf VSS-Fehler und Empfehlungen:
-    - Öffnen Sie auf dem Hyper-V-Hostserver das Hyper-V-Admin-Ereignisprotokoll unter **Ereignisanzeige** > **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Hyper-V** > **Admin**.
+    - Öffnen Sie auf dem Hyper-V-Hostserver das Hyper-V-Admin-Ereignisprotokoll unter **Ereignisanzeige** > **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Hyper-V** > **Admin** .
     - Überprüfen Sie, ob Ereignisse vorhanden sind, die auf Fehler bei App-konsistenten Momentaufnahmen hinweisen.
     - Eine typische Fehlermeldung lautet: Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM „XYZ“ generieren. Beim Writer ist ein dauerhafter Fehler aufgetreten. Restarting the VSS service might resolve issues if the service is unresponsive.“ (Hyper-V konnte keinen VSS-Momentaufnahmesatz für den virtuellen Computer „XYZ“ generieren: Beim Writer ist ein dauerhafter Fehler aufgetreten. Möglicherweise können die Probleme durch einen Neustart des VSS-Diensts behoben werden, wenn der Dienst nicht reagiert.)
 
@@ -146,8 +146,8 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 
 Alle Ereignisse für die Hyper-V-Replikation werden im Protokoll „Hyper-V-VMMS\Admin“ unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** protokolliert. Außerdem können Sie wie folgt ein analytisches Protokoll für den Hyper-V-Verwaltungsdienst für virtuelle Computer aktivieren:
 
-1. Blenden Sie die analytischen und Debugprotokolle in der Ereignisanzeige ein. Klicken Sie dazu in der Ereignisanzeige auf **Ansicht** > **Analytische und Debugprotokolle einblenden**. Das analytische Protokoll wird unter **Hyper-V-VMMS** angezeigt.
-2. Klicken Sie im Bereich **Aktionen** auf **Protokoll aktivieren**. 
+1. Blenden Sie die analytischen und Debugprotokolle in der Ereignisanzeige ein. Klicken Sie dazu in der Ereignisanzeige auf **Ansicht** > **Analytische und Debugprotokolle einblenden** . Das analytische Protokoll wird unter **Hyper-V-VMMS** angezeigt.
+2. Klicken Sie im Bereich **Aktionen** auf **Protokoll aktivieren** . 
 
     ![Protokoll aktivieren](media/hyper-v-azure-troubleshoot/enable-log.png)
     

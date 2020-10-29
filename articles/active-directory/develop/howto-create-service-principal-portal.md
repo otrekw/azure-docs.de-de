@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265900"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366155"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -43,9 +43,9 @@ Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei I
    ![Suchen Sie Ihre Rolle. Wenn Ihnen die Rolle „Benutzer“ zugewiesen ist, stellen Sie sicher, dass Nicht-Administratoren Apps registrieren können.](./media/howto-create-service-principal-portal/view-user-info.png)
 
 1. Wählen Sie im linken Bereich **Benutzereinstellungen** aus.
-1. Überprüfen Sie die Einstellung **App-Registrierungen**. Dieser Wert kann nur von einem Administrator festgelegt werden. Die Einstellung **Ja** bedeutet, dass jeder Benutzer im Azure AD-Mandanten eine App registrieren kann.
+1. Überprüfen Sie die Einstellung **App-Registrierungen** . Dieser Wert kann nur von einem Administrator festgelegt werden. Die Einstellung **Ja** bedeutet, dass jeder Benutzer im Azure AD-Mandanten eine App registrieren kann.
 
-Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Benutzer mit Administratorrolle diese Arten von Anwendungen registrieren. Informationen zu verfügbaren Administratorrollen und den spezifischen Berechtigungen in Azure AD für die einzelnen Rollen finden Sie unter [verfügbare Rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) und [Rollenberechtigungen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions). Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung jedoch auf Administratorbenutzer begrenzt ist, bitten Sie Ihren Administrator, entweder Ihnen eine Administratorrolle zuzuweisen, die alle Aspekte von App-Registrierungen erstellen und verwalten kann, oder Benutzern das Registrieren von Apps zu ermöglichen.
+Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Benutzer mit Administratorrolle diese Arten von Anwendungen registrieren. Informationen zu verfügbaren Administratorrollen und den spezifischen Berechtigungen in Azure AD für die einzelnen Rollen finden Sie unter [verfügbare Rollen](../roles/permissions-reference.md#available-roles) und [Rollenberechtigungen](../roles/permissions-reference.md#role-permissions). Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung jedoch auf Administratorbenutzer begrenzt ist, bitten Sie Ihren Administrator, entweder Ihnen eine Administratorrolle zuzuweisen, die alle Aspekte von App-Registrierungen erstellen und verwalten kann, oder Benutzern das Registrieren von Apps zu ermöglichen.
 
 ### <a name="check-azure-subscription-permissions"></a>Überprüfen der Berechtigungen des Azure-Abonnements
 
@@ -53,7 +53,7 @@ In Ihrem Azure-Abonnement muss Ihr Konto über `Microsoft.Authorization/*/Write`
 
 So überprüfen Sie die Berechtigungen Ihres Abonnements:
 
-1. Suchen Sie nach **Abonnements**, und wählen diese Option aus, oder wählen Sie auf der Seite **Start** die Option **Abonnements** aus.
+1. Suchen Sie nach **Abonnements** , und wählen diese Option aus, oder wählen Sie auf der Seite **Start** die Option **Abonnements** aus.
 
    ![Suchen,](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -103,13 +103,13 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie beispielsweise die Rolle **Mitwirkender** aus, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen.  Erfahren Sie mehr über die [verfügbaren Rollen](../../role-based-access-control/built-in-roles.md). Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
+1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie beispielsweise die Rolle **Mitwirkender** aus, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten** , **Starten** und **Beenden** von Instanzen durchzuführen.  Erfahren Sie mehr über die [verfügbaren Rollen](../../role-based-access-control/built-in-roles.md). Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
 
    ![Rolle auswählen, die der Anwendung zugewiesen werden soll](./media/howto-create-service-principal-portal/select-role.png)
 
 1. Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer mit einer Rolle für diesen Bereich angezeigt.
 
-Ihr Dienstprinzipal wird eingerichtet. Sie können mit der Nutzung beginnen, um Ihre Skripts oder Apps auszuführen. Wechseln Sie zu **Unternehmensanwendungen**, um Ihren Dienstprinzipal zu verwalten (Berechtigungen, vom Benutzer genehmigte Berechtigungen, Anzeigen der genehmigenden Benutzer, Überprüfen von Berechtigungen, Anzeigen von Anmeldeinformationen usw.).
+Ihr Dienstprinzipal wird eingerichtet. Sie können mit der Nutzung beginnen, um Ihre Skripts oder Apps auszuführen. Wechseln Sie zu **Unternehmensanwendungen** , um Ihren Dienstprinzipal zu verwalten (Berechtigungen, vom Benutzer genehmigte Berechtigungen, Anzeigen der genehmigenden Benutzer, Überprüfen von Berechtigungen, Anzeigen von Anmeldeinformationen usw.).
 
 Im nächsten Abschnitt wird veranschaulicht, wie Sie Werte abrufen, die beim programmgesteuerten Anmelden benötigt werden.
 
@@ -125,13 +125,13 @@ Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanford
 
     Die Verzeichnis-ID (Mandanten-ID) finden Sie auch auf der Übersichtsseite des Standardverzeichnisses.
 
-1. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode.
+1. Kopieren Sie die **Anwendungs-ID** , und speichern Sie sie in Ihrem Anwendungscode.
 
    ![Anwendungs-ID (Client-ID) kopieren](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="authentication-two-options"></a>Authentifizierung: Zwei Optionen
 
-Für Dienstprinzipale sind zwei Arten von Authentifizierung verfügbar: kennwortbasierte Authentifizierung (Anwendungsgeheimnis) und zertifikatbasierte Authentifizierung. *Wir empfehlen die Verwendung eines Zertifikats*, Sie können aber auch ein Anwendungsgeheimnis erstellen.
+Für Dienstprinzipale sind zwei Arten von Authentifizierung verfügbar: kennwortbasierte Authentifizierung (Anwendungsgeheimnis) und zertifikatbasierte Authentifizierung. *Wir empfehlen die Verwendung eines Zertifikats* , Sie können aber auch ein Anwendungsgeheimnis erstellen.
 
 ### <a name="option-1-upload-a-certificate"></a>Option 1: Hochladen eines Zertifikats
 
@@ -147,7 +147,7 @@ Exportieren Sie dieses Zertifikat mit dem MMC-Snap-In [Benutzerzertifikat verwal
 
    Das Tool „Zertifikat-Manager“ für den aktuellen Benutzer wird angezeigt.
 
-1. Um Ihre Zertifikate anzuzeigen, erweitern Sie im linken Bereich unter **Zertifikate - Aktueller Benutzer** das Verzeichnis **Privat**.
+1. Um Ihre Zertifikate anzuzeigen, erweitern Sie im linken Bereich unter **Zertifikate - Aktueller Benutzer** das Verzeichnis **Privat** .
 1. Klicken Sie mit der rechten Maustaste auf das Zertifikat, das Sie erstellt haben, und wählen Sie **Alle Aufgaben->Exportieren** aus.
 1. Folgen Sie dem Zertifikatexport-Assistenten.  Exportieren Sie nicht den privaten Schlüssel, und exportieren Sie in eine CER-Datei.
 
@@ -160,7 +160,7 @@ So laden Sie das Zertifikat hoch:
 
     ![„Zertifikat hochladen“ auswählen und das hinzuzufügende Zertifikat auswählen](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Hinzufügen** .
 
 Nach dem Registrieren des Zertifikats bei Ihrer Anwendung im Portal der Anwendungsregistrierung müssen Sie dem Code der Clientanwendung die Verwendung des Zertifikats ermöglichen.
 

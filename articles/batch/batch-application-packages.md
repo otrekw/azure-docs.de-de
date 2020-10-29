@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "91277698"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
@@ -33,7 +33,7 @@ Es gibt Einschränkungen für die Anzahl der Anwendungen und Anwendungspakete in
 
 ## <a name="understand-applications-and-application-packages"></a>Grundlegendes zu Anwendungen und Anwendungspaketen
 
-In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangabe, die automatisch auf die Computeknoten in Ihrem Pool heruntergeladen werden können. Eine Anwendung enthält mindestens ein *Anwendungspaket*, das verschiedene Anwendungsversionen darstellt.
+In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangabe, die automatisch auf die Computeknoten in Ihrem Pool heruntergeladen werden können. Eine Anwendung enthält mindestens ein *Anwendungspaket* , das verschiedene Anwendungsversionen darstellt.
 
 Jedes *Anwendungspaket* ist eine ZIP-Datei mit den Anwendungsbinärdateien und allen unterstützenden Dateien. Nur das ZIP-Format wird unterstützt.
 
@@ -64,7 +64,7 @@ Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal](h
 
 Damit Sie Anwendungspakete verwenden können, müssen Sie zunächst ein [Azure Storage-Konto](accounts.md#azure-storage-accounts) mit Ihrem Batch-Konto verknüpfen. Der Batch-Dienst verwendet das zugeordnete Speicherkonto zum Speichern Ihrer Anwendungspakete. Es wird empfohlen, ein Speicherkonto speziell für die Verwendung mit Ihrem Batch-Konto zu erstellen.
 
-Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal **Anwendungen** auswählen. Um ein Speicherkonto mit Ihrem Batch-Konto zu verknüpfen, wählen Sie im Fenster **Warnung** die Option **Speicherkonto** aus, und klicken Sie dann noch mal auf **Speicherkonto**.
+Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal **Anwendungen** auswählen. Um ein Speicherkonto mit Ihrem Batch-Konto zu verknüpfen, wählen Sie im Fenster **Warnung** die Option **Speicherkonto** aus, und klicken Sie dann noch mal auf **Speicherkonto** .
 
 Nachdem Sie die beiden Konten verknüpft haben, kann Batch die im verknüpften Storage-Konto gespeicherten Pakete automatisch für Ihre Computeknoten bereitstellen.
 
@@ -81,19 +81,19 @@ Wenn Sie die Anwendungen in Ihrem Batch-Konto anzeigen möchten, wählen Sie im 
 
 Durch Auswählen dieser Menüoption wird das Fenster **Anwendungen** geöffnet. In diesem Fenster werden die IDs aller Anwendungen in Ihrem Konto und die folgenden Eigenschaften angezeigt:
 
-- **Pakete**: Die Anzahl von Versionen, die dieser Anwendung zugeordnet sind.
-- **Standardversion**: Gegebenenfalls die Anwendungsversion, die installiert wird, wenn bei der Bereitstellung der Anwendung keine Version angegeben wird.
-- **Updates zulassen**: Gibt an, ob Pakete aktualisiert und gelöscht werden dürfen.
+- **Pakete** : Die Anzahl von Versionen, die dieser Anwendung zugeordnet sind.
+- **Standardversion** : Gegebenenfalls die Anwendungsversion, die installiert wird, wenn bei der Bereitstellung der Anwendung keine Version angegeben wird.
+- **Updates zulassen** : Gibt an, ob Pakete aktualisiert und gelöscht werden dürfen.
 
-Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf einem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** aus. Wählen Sie danach den Pool aus, der den Serverknoten enthält. Wählen Sie den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen**.
+Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf einem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** aus. Wählen Sie danach den Pool aus, der den Serverknoten enthält. Wählen Sie den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen** .
 
 ### <a name="view-application-details"></a>Anzeigen von Anwendungsdetails
 
-Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster**Anwendungen** die entsprechende Anwendung aus. Sie können für Ihre Anwendung die folgenden Einstellungen konfigurieren.
+Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster **Anwendungen** die entsprechende Anwendung aus. Sie können für Ihre Anwendung die folgenden Einstellungen konfigurieren.
 
-- **Updates zulassen**: Gibt an, ob Anwendungspakete [aktualisiert oder gelöscht](#update-or-delete-an-application-package) werden können. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn sie auf **Nein** festgelegt wird, können vorhandene Anwendungspakete nicht aktualisiert oder gelöscht, neue Anwendungspaketversionen aber noch hinzugefügt werden.
-- **Standardversion**: Das Standardanwendungspaket, das bei der Bereitstellung der Anwendung verwendet werden soll, wenn keine Anwendung angegeben wurde.
-- **Anzeigename**: Ein Anzeigename, der von Ihrer Batch-Lösung beim Anzeigen von Informationen zur Anwendung verwendet werden kann. Dieser Name kann beispielsweise in der Benutzeroberfläche eines Diensts verwendet werden, den Sie Ihren Kunden über Batch bereitstellen.
+- **Updates zulassen** : Gibt an, ob Anwendungspakete [aktualisiert oder gelöscht](#update-or-delete-an-application-package) werden können. Die Option ist standardmäßig auf **Ja** festgelegt. Wenn sie auf **Nein** festgelegt wird, können vorhandene Anwendungspakete nicht aktualisiert oder gelöscht, neue Anwendungspaketversionen aber noch hinzugefügt werden.
+- **Standardversion** : Das Standardanwendungspaket, das bei der Bereitstellung der Anwendung verwendet werden soll, wenn keine Anwendung angegeben wurde.
+- **Anzeigename** : Ein Anzeigename, der von Ihrer Batch-Lösung beim Anzeigen von Informationen zur Anwendung verwendet werden kann. Dieser Name kann beispielsweise in der Benutzeroberfläche eines Diensts verwendet werden, den Sie Ihren Kunden über Batch bereitstellen.
 
 ### <a name="add-a-new-application"></a>Hinzufügen einer neuen Anwendung
 
@@ -105,9 +105,9 @@ Wählen Sie in Ihrem Batch-Konto **Anwendungen** und anschließend **Hinzufügen
 
 Geben Sie die folgenden Informationen ein:
 
-- **Anwendungs-ID**: Die ID Ihrer neuen Anwendung.
-- **Version**: Die Version des Anwendungspakets, das Sie hochladen.
-- **Anwendungspaket**: Die ZIP-Datei, die die Binärdateien der Anwendung und jegliche unterstützenden Dateien enthält, die für die Ausführung der Anwendung erforderlich sind.
+- **Anwendungs-ID** : Die ID Ihrer neuen Anwendung.
+- **Version** : Die Version des Anwendungspakets, das Sie hochladen.
+- **Anwendungspaket** : Die ZIP-Datei, die die Binärdateien der Anwendung und jegliche unterstützenden Dateien enthält, die für die Ausführung der Anwendung erforderlich sind.
 
 Die eingegebene **Anwendungs-ID** und **Version** müssen folgende Anforderungen erfüllen:
 

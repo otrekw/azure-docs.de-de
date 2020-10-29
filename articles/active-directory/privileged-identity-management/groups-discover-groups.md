@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68795033d36ad0bcb36b7cd81cea0d848ecd5113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef27475509c59b3c0caf194fd85530f3fdd6c7c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049008"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367838"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Verwalten von Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -27,7 +27,7 @@ In Azure Active Directory (Azure AD) können Sie Cloudgruppen integrierte Azure
 
 ## <a name="identify-groups-to-manage"></a>Festlegen zu verwaltender Gruppen
 
-Sie können in Azure AD eine Gruppe mit Rollenzuweisung erstellen, wie es unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md) beschrieben ist. Sie müssen ein Besitzer der Gruppe sein, um Sie der Verwaltung mit Privileged Identity Management zu unterstellen.
+Sie können in Azure AD eine Gruppe mit Rollenzuweisung erstellen, wie es unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md) beschrieben ist. Sie müssen ein Besitzer der Gruppe sein, um Sie der Verwaltung mit Privileged Identity Management zu unterstellen.
 
 1. [Melden Sie sich bei Azure AD](https://aad.portal.azure.com) mit den Berechtigungen der Rolle „Administrator für privilegierte Rollen“ an.
 1. Wählen Sie **Gruppen** aus, und wählen Sie dann die Gruppe mit Rollenzuweisung aus, die Sie in PIM verwalten möchten. Sie können die Liste durchsuchen und filtern.

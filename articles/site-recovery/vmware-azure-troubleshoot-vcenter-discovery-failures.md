@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135353"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366654"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problembehandlung von vCenter Server-Ermittlungsfehlern
 
@@ -54,7 +54,7 @@ Die folgenden Situationen treten auf, wenn dieses Problem vorliegt:
 
 So lösen Sie das Problem:
 
-Laden Sie das [PsExec-Tool](https://aka.ms/PsExec) herunter. 
+Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter. 
 
 Verwenden Sie das PsExec-Tool, um auf den Systembenutzerkontext zuzugreifen und zu bestimmen, ob die Proxyadresse konfiguriert ist. Anschließend können Sie vCenter mit den folgenden Verfahren zur Umgehungsliste hinzufügen.
 
@@ -81,4 +81,4 @@ Für die DRA-Proxykonfiguration:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

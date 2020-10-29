@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076441"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370626"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -40,15 +40,15 @@ In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Admin
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Klassische Administratoren**.
+1. Klicken Sie auf die Registerkarte **Klassische Administratoren** .
 
     ![Screenshot des Öffnens von „Klassische Administratoren“](./media/classic-administrators/classic-administrators.png)
 
-1. Klicken Sie auf **Hinzufügen** > **Co-Administrator hinzufügen**, um den Bereich „Co-Administratoren hinzufügen“ zu öffnen.
+1. Klicken Sie auf **Hinzufügen** > **Co-Administrator hinzufügen** , um den Bereich „Co-Administratoren hinzufügen“ zu öffnen.
 
     Wenn die Schaltfläche „Co-Administrator hinzufügen“ deaktiviert ist, fehlen Ihnen Berechtigungen.
 
-1. Wählen Sie den Benutzer aus, den Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen**.
+1. Wählen Sie den Benutzer aus, den Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen** .
 
     ![Screenshot, auf dem der Co-Administrator hinzugefügt wird](./media/classic-administrators/add-coadmin.png)
 
@@ -71,9 +71,9 @@ Bei Gastbenutzern mit der Rolle „Co-Administrator“ gibt es im Vergleich zu M
 
 Man würde erwarten, dass Benutzer B alles verwalten kann. Der Grund für den Unterschied ist, dass das Microsoft-Konto dem Abonnement nicht als Mitgliedsbenutzer, sondern als Gastbenutzer hinzugefügt wird. Gastbenutzer haben im Vergleich zu Mitgliedsbenutzern andere Standardberechtigungen in Azure AD. So können Mitgliedsbenutzer im Gegensatz zu Gastbenutzern beispielsweise andere Benutzer in Azure AD lesen. Mitgliedsbenutzer können neue Dienstprinzipale in Azure AD registrieren, Gastbenutzer nicht.
 
-Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Rollen zugewiesen werden, die er benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Weitere Informationen zum Gewähren des Zugriffs für Gastbenutzer finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal](role-assignments-external-users.md).
+Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Rollen zugewiesen werden, die er benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/roles/permissions-reference.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/roles/permissions-reference.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Weitere Informationen zum Gewähren des Zugriffs für Gastbenutzer finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal](role-assignments-external-users.md).
 
-Beachten Sie, dass sich die [integrierten Azure-Rollen](../role-based-access-control/built-in-roles.md) von den [Azure AD-Rollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) unterscheiden. Die integrierten Rollen ermöglichen keinerlei Azure AD-Zugriff. Weitere Informationen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/rbac-and-directory-admin-roles.md).
+Beachten Sie, dass sich die [integrierten Azure-Rollen](../role-based-access-control/built-in-roles.md) von den [Azure AD-Rollen](../active-directory/roles/permissions-reference.md) unterscheiden. Die integrierten Rollen ermöglichen keinerlei Azure AD-Zugriff. Weitere Informationen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 Eine vergleichende Betrachtung zu Mitglieds- und Gastbenutzern finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
@@ -85,13 +85,13 @@ Eine vergleichende Betrachtung zu Mitglieds- und Gastbenutzern finden Sie unter 
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Klassische Administratoren**.
+1. Klicken Sie auf die Registerkarte **Klassische Administratoren** .
 
 1. Fügen Sie ein Häkchen neben dem Co-Administrator hinzu, den Sie entfernen möchten.
 
-1. Klicken Sie auf **Entfernen**.
+1. Klicken Sie auf **Entfernen** .
 
-1. Klicken Sie im angezeigten Meldungsfeld auf **Ja**.
+1. Klicken Sie im angezeigten Meldungsfeld auf **Ja** .
 
     ![Screenshot, auf dem der Co-Administrator entfernt wird](./media/classic-administrators/remove-coadmin.png)
 
@@ -109,7 +109,7 @@ Befolgen Sie diese Schritte, um den Dienstadministrator im **Kontocenter** zu ä
 
 1. Klicken Sie auf ein Abonnement.
 
-1. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten**.
+1. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten** .
 
     ![Screenshot mit der Schaltfläche „Abonnementdetails bearbeiten“ im Kontocenter](./media/classic-administrators/editsub.png)
 
@@ -142,7 +142,7 @@ Gehen Sie folgendermaßen vor, um den Kontoadministrator anzuzeigen.
 
 1. Öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
 
-1. Klicken Sie auf **Eigenschaften**.
+1. Klicken Sie auf **Eigenschaften** .
 
     Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 

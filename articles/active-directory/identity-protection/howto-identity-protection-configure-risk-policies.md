@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49f3e082969b7483601088cd976d8cc30d500017
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337448"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367464"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien
 
@@ -45,7 +45,7 @@ Wenn Sie den Schwellenwert **Hoch** auswählen, wird die Richtlinie weniger häu
 
 ## <a name="exclusions"></a>Ausschlüsse
 
-Alle Richtlinien ermöglichen das Ausschließen von Benutzern, wie z.B. [Benutzer- oder Administratorkonten für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md). Organisationen können feststellen, dass sie andere Konten basierend auf der Art und Weise, wie die Konten verwendet werden, aus bestimmten Richtlinien ausschließen müssen. Alle Ausschlüsse sollten regelmäßig überprüft werden, um festzustellen, ob Sie weiterhin angewendet werden sollen.
+Alle Richtlinien ermöglichen das Ausschließen von Benutzern, wie z.B. [Benutzer- oder Administratorkonten für den Notfallzugriff](../roles/security-emergency-access.md). Organisationen können feststellen, dass sie andere Konten basierend auf der Art und Weise, wie die Konten verwendet werden, aus bestimmten Richtlinien ausschließen müssen. Alle Ausschlüsse sollten regelmäßig überprüft werden, um festzustellen, ob Sie weiterhin angewendet werden sollen.
 
 Konfigurierte vertrauenswürdige [Netzwerkadressen](../conditional-access/location-condition.md) werden von Identity Protection bei einigen Risikoerkennungen verwendet, um falsch positive Ergebnisse zu reduzieren.
 
@@ -54,23 +54,23 @@ Konfigurierte vertrauenswürdige [Netzwerkadressen](../conditional-access/locati
 Führen Sie die folgenden Schritte aus, um die Richtlinien zum Benutzerrisiko und zum Anmelderisiko zu aktivieren.
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Identity Protection** > **Übersicht**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Identity Protection** > **Übersicht** .
 1. Wählen Sie **Benutzerrisiko-Richtlinie** aus.
    1. Unter **Zuweisungen**
-      1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
+      1. **Benutzer** : Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
          1. Optional können Sie Benutzer aus der Richtlinie ausschließen.
-      1. **Bedingungen** - **Benutzerrisiko**: Die Empfehlung von Microsoft lautet, diese Option auf **Hoch** festzulegen.
+      1. **Bedingungen** - **Benutzerrisiko** : Die Empfehlung von Microsoft lautet, diese Option auf **Hoch** festzulegen.
    1. Unter **Steuerelemente**
-      1. **Zugriff**: Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **Kennwortänderung anzufordern**.
+      1. **Zugriff** : Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **Kennwortänderung anzufordern** .
    1. **Richtlinie erzwingen** - **Ein**
-   1. **Speichern**: Diese Aktion kehrt zur Seite **Übersicht** zurück.
+   1. **Speichern** : Diese Aktion kehrt zur Seite **Übersicht** zurück.
 1. Wählen Sie **Anmelderisiko-Richtlinie** aus.
    1. Unter **Zuweisungen**
-      1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
+      1. **Benutzer** : Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
          1. Optional können Sie Benutzer aus der Richtlinie ausschließen.
-      1. **Bedingungen** - **Anmelderisiko**: Die Empfehlung von Microsoft lautet, diese Option auf **Mittel und höher** festzulegen.
+      1. **Bedingungen** - **Anmelderisiko** : Die Empfehlung von Microsoft lautet, diese Option auf **Mittel und höher** festzulegen.
    1. Unter **Steuerelemente**
-      1. **Zugriff**: Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **mehrstufige Authentifizierung anzufordern**.
+      1. **Zugriff** : Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **mehrstufige Authentifizierung anzufordern** .
    1. **Richtlinie erzwingen** - **Ein**
    1. **Speichern**
 

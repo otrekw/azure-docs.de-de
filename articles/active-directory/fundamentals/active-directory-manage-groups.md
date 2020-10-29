@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 735f838ad4532b140eddcb4ce1ced24fba9a81be
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369113"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre cloudbasierten und lokalen Apps und Ihre Ressourcen mithilfe von Gruppen verwalten. Ihre Ressourcen können Teil der Azure AD-Organisation sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen in Azure AD, oder externe Ressourcen, etwa SaaS-Apps (Software-as-a-Service), Azure-Dienste, SharePoint-Websites und lokale Ressourcen.
@@ -43,7 +43,7 @@ Es gibt vier Möglichkeiten zum Zuweisen von Ressourcenzugriffsrechten zu Ihren 
 
 - **Gruppenzuweisung:** Der Ressourcenbesitzer weist der Ressource eine Azure AD-Gruppe zu. Dadurch erhalten automatisch alle Gruppenmitglieder Zugriff auf die Ressource. Die Gruppenmitgliedschaft wird vom Gruppenbesitzer und vom Ressourcenbesitzer verwaltet, sodass beide Besitzer Mitglieder zur Gruppe hinzufügen bzw. daraus entfernen können. Weitere Informationen zum Hinzufügen oder Entfernen der Gruppenmitgliedschaft finden Sie unter [Gewusst wie: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
 
-- **Regelbasierte Zuweisung:** Der Ressourcenbesitzer erstellt eine Gruppe und verwendet eine Regel, um festzulegen, welche Benutzer einer bestimmten Ressource zugewiesen werden. Die Regel basiert auf Attributen, die einzelnen Benutzern zugewiesen sind. Der Ressourcenbesitzer verwaltet die Regel und bestimmt, welche Attribute und Werte zum Zulassen des Zugriffs auf die Ressource erforderlich sind. Weitere Informationen finden Sie unter [Erstellen einer dynamischen Gruppe und Überprüfen des Status](../users-groups-roles/groups-create-rule.md).
+- **Regelbasierte Zuweisung:** Der Ressourcenbesitzer erstellt eine Gruppe und verwendet eine Regel, um festzulegen, welche Benutzer einer bestimmten Ressource zugewiesen werden. Die Regel basiert auf Attributen, die einzelnen Benutzern zugewiesen sind. Der Ressourcenbesitzer verwaltet die Regel und bestimmt, welche Attribute und Werte zum Zulassen des Zugriffs auf die Ressource erforderlich sind. Weitere Informationen finden Sie unter [Erstellen einer dynamischen Gruppe und Überprüfen des Status](../enterprise-users/groups-create-rule.md).
 
     Sie können außerdem dieses kurze Video mit einer kurzen Erläuterung zum Erstellen und Verwenden von dynamischen Gruppen anschauen:
 
@@ -56,13 +56,13 @@ Es gibt vier Möglichkeiten zum Zuweisen von Ressourcenzugriffsrechten zu Ihren 
 ## <a name="can-users-join-groups-without-being-assigned"></a>Können Benutzer Gruppen beitreten, ohne zugewiesen zu werden?
 Der Gruppenbesitzer kann zulassen, dass Benutzer ihre Gruppen selbst ermitteln, denen sie beitreten möchten, statt sie zuzuweisen. Der Besitzer kann die Gruppe auch so einrichten, dass sie alle beitretenden Benutzer automatisch akzeptiert oder dass eine Genehmigung erforderlich ist.
 
-Nachdem ein Benutzer den Beitritt zu einer Gruppe angefordert hat, wird diese Anforderung an den Gruppenbesitzer weitergeleitet. Wenn es erforderlich ist, kann der Besitzer die Anforderung genehmigen, und der Benutzer wird über die Gruppenmitgliedschaft informiert. Wenn jedoch mehrere Besitzer vorhanden sind und einer davon die Anforderung ablehnt, wird der Benutzer zwar benachrichtigt, aber nicht zur Gruppe hinzugefügt. Weitere Informationen sowie Anweisungen dazu, wie Sie Benutzern die Anforderung des Gruppenbeitritts ermöglichen, finden Sie unter [Einrichten von Azure Active Directory für die Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md).
+Nachdem ein Benutzer den Beitritt zu einer Gruppe angefordert hat, wird diese Anforderung an den Gruppenbesitzer weitergeleitet. Wenn es erforderlich ist, kann der Besitzer die Anforderung genehmigen, und der Benutzer wird über die Gruppenmitgliedschaft informiert. Wenn jedoch mehrere Besitzer vorhanden sind und einer davon die Anforderung ablehnt, wird der Benutzer zwar benachrichtigt, aber nicht zur Gruppe hinzugefügt. Weitere Informationen sowie Anweisungen dazu, wie Sie Benutzern die Anforderung des Gruppenbeitritts ermöglichen, finden Sie unter [Einrichten von Azure Active Directory für die Self-Service-Gruppenverwaltung](../enterprise-users/groups-self-service-management.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel enthielt eine kurze Einführung zur Zugriffsverwaltung mithilfe von Gruppen. Nun können Sie mit der Verwaltung Ihrer Ressourcen und Apps beginnen.
 
-- [Erstellen einer neuen Gruppe mit Azure Active Directory](active-directory-groups-create-azure-portal.md) oder [Erstellen und Verwalten einer neuen Gruppe mit PowerShell-Cmdlets](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Erstellen einer neuen Gruppe mit Azure Active Directory](active-directory-groups-create-azure-portal.md) oder [Erstellen und Verwalten einer neuen Gruppe mit PowerShell-Cmdlets](../enterprise-users/groups-settings-v2-cmdlets.md)
 
-- [Verwenden von Gruppen zum Zuweisen des Zugriffs auf eine integrierte SaaS-App](../users-groups-roles/groups-saasapps.md)
+- [Verwenden von Gruppen zum Zuweisen des Zugriffs auf eine integrierte SaaS-App](../enterprise-users/groups-saasapps.md)
 
 - [Synchronisieren einer lokalen Gruppe in Azure mittels Azure AD Connect](../hybrid/whatis-hybrid-identity.md)

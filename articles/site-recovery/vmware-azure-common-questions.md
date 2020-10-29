@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054970"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359797"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -75,7 +75,7 @@ Site Recovery ist für ISO 27001:2013 und 27018, HIPAA und DPA zertifiziert. Die
 
 Verwenden Sie den [Preisrechner](https://aka.ms/asr_pricing_calculator), um die Kosten für die Verwendung von Site Recovery zu schätzen.
 
-Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](https://aka.ms/siterecovery_deployment_planner) ausführen und den [Kostenschätzungsbericht](https://aka.ms/asr_DP_costreport) verwenden.
+Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](./site-recovery-deployment-planner.md) ausführen und den [Kostenschätzungsbericht](./site-recovery-vmware-deployment-planner-cost-estimation.md) verwenden.
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Besteht ein Unterschied zwischen der Replikation im Speicher und direkt in verwalteten Datenträgern?
 
@@ -114,7 +114,7 @@ Site Recovery repliziert lokale virtuelle VMware-Computer und physische Server i
 
 Nein. Seit März 2019 können Sie im Azure-Portal die Replikation nur in verwalteten Azure-Datenträgern durchführen.
 
-Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur über PowerShell ([Version 1.4.5 des Az.RecoveryServices-Moduls](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) oder die REST-API (Version 2018-01-10 oder 2016-08-10) verfügbar. [Hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) erfahren Sie, wie Sie die Replikation mithilfe der PowerShell-Befehle einrichten.
+Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur über PowerShell ([Version 1.4.5 des Az.RecoveryServices-Moduls](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) oder die REST-API (Version 2018-01-10 oder 2016-08-10) verfügbar. [Hier](./vmware-azure-disaster-recovery-powershell.md) erfahren Sie, wie Sie die Replikation mithilfe der PowerShell-Befehle einrichten.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Welche Vorteile hat die Replikation auf verwalteten Datenträgern?
 
@@ -153,7 +153,7 @@ Offlinereplikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedb
 
 ### <a name="what-is-asrseeddisk"></a>Was ist asrseeddisk?
 
-Für jeden Quelldatenträger werden Daten in einen verwalteten Datenträger in Azure repliziert. Dieser Datenträger hat das Präfix **asrseeddisk**. Er speichert die Kopie des Quelldatenträgers und alle Wiederherstellungspunkt-Momentaufnahmen.
+Für jeden Quelldatenträger werden Daten in einen verwalteten Datenträger in Azure repliziert. Dieser Datenträger hat das Präfix **asrseeddisk** . Er speichert die Kopie des Quelldatenträgers und alle Wiederherstellungspunkt-Momentaufnahmen.
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Kann ich Datenträger von der Replikation ausschließen?
 
@@ -190,7 +190,7 @@ Site Recovery generiert alle 5 Minuten einen absturzkonsistenten Wiederherstell
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Meine Version des Mobility Services-Agent oder des Konfigurationsservers ist alt, und beim Upgrade sind Fehler aufgetreten. Wie gehe ich vor?
 
-Für Site Recovery gilt das Supportmodell N-4. [Hier](https://aka.ms/asr_support_statement) finden Sie Informationen zum Upgrade von sehr alten Versionen.
+Für Site Recovery gilt das Supportmodell N-4. [Hier](./service-updates-how-to.md#support-statement-for-azure-site-recovery) finden Sie Informationen zum Upgrade von sehr alten Versionen.
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Wo finde ich die Versionshinweise und Updaterollups für Azure Site Recovery?
 
@@ -198,11 +198,11 @@ Für Site Recovery gilt das Supportmodell N-4. [Hier](https://aka.ms/asr_support
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Wo finde ich Informationen zum Upgrade für die Notfallwiederherstellung in Azure?
 
-Informationen zum Durchführen von Upgrades finden Sie [hier](https://aka.ms/asr_vmware_upgrades).
+Informationen zum Durchführen von Upgrades finden Sie [hier](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Muss ich die Quellcomputer für jedes Upgrade neu starten?
 
-Ein Neustart wird zwar empfohlen, ist jedoch nicht für jedes Upgrade erforderlich. [Weitere Informationen](https://aka.ms/asr_vmware_upgrades)
+Ein Neustart wird zwar empfohlen, ist jedoch nicht für jedes Upgrade erforderlich. [Weitere Informationen](./service-updates-how-to.md#reboot-after-mobility-service-upgrade)
 
 ## <a name="configuration-server"></a>Konfigurationsserver
 
@@ -246,7 +246,7 @@ Dies ist zwar möglich, aber die Azure-VM, die den Konfigurationsserver ausführ
 
 - Die neuesten Updateinformationen finden Sie auf der [Seite mit den Azure-Updates](https://azure.microsoft.com/updates/?product=site-recovery).
 - Sie können die neueste Version über das Portal herunterladen. Alternativ können Sie die neueste Version des Konfigurationsservers direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
-- Wenn zwischen Ihrer Version und der aktuellen Version mehr als vier Versionen liegen, nutzen Sie den [Supporthinweis](https://aka.ms/asr_support_statement) als Upgradeanleitung.
+- Wenn zwischen Ihrer Version und der aktuellen Version mehr als vier Versionen liegen, nutzen Sie den [Supporthinweis](./service-updates-how-to.md#support-statement-for-azure-site-recovery) als Upgradeanleitung.
 
 ### <a name="should-i-back-up-the-configuration-server"></a>Sollte ich den Konfigurationsserver sichern?
 
@@ -322,7 +322,7 @@ Ja, Sie können die IP-Adresse beim Failover behalten. Stellen Sie sicher, dass 
 
 ### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>Kann ich die Größe oder den Typ der Ziel-VM vor dem Failover ändern?
 
-Ja, Sie können den Typ oder die Größe des virtuellen Computers jederzeit vor dem Failover ändern. Verwenden Sie im Portal die **Compute und Netzwerk**-Einstellungen für den replizierten virtuellen Computer.
+Ja, Sie können den Typ oder die Größe des virtuellen Computers jederzeit vor dem Failover ändern. Verwenden Sie im Portal die **Compute und Netzwerk** -Einstellungen für den replizierten virtuellen Computer.
 
 ### <a name="how-far-back-can-i-recover"></a>Wie weit kann ich bei der Wiederherstellung zurückgehen?
 

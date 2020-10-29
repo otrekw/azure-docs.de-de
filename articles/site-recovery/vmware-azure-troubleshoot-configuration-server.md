@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113070"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371952"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -22,7 +22,7 @@ Dieser Artikel hilft Ihnen bei der Behandlung von Problemen bei der Bereitstellu
 
 Der Quellcomputer registriert sich während der Installation des Mobilitäts-Agents beim Konfigurationsserver. Sie können alle während dieses Setups auftretenden Fehler durch Befolgen der folgenden Anleitungen debuggen:
 
-1. Öffnen Sie die Datei „C:\Programme\ASR\home\svsystems\var\configurator_register_host_static_info.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente**.) Fehler können durch mehrere Probleme verursacht werden.
+1. Öffnen Sie die Datei „C:\Programme\ASR\home\svsystems\var\configurator_register_host_static_info.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente** .) Fehler können durch mehrere Probleme verursacht werden.
 
 2. Suchen Sie nach der Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden). Wenn die Zeichenfolge gefunden wird:
    1. Überprüfen Sie, ob die angeforderte Host-ID mit der Host-ID des Quellcomputers übereinstimmt.
@@ -31,10 +31,10 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
       - Für Windows: `> ipconfig /all`
       - Für Linux: `# ifconfig -a`
 
-3. Wenn die Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden) nicht gefunden wird, suchen Sie nach der Zeichenfolge **Reason=>NULL**. Dieser Fehler tritt auf, wenn der Quellcomputer einen leeren Host für die Registrierung beim Konfigurationsserver verwendet. Wenn die Zeichenfolge gefunden wird:
+3. Wenn die Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden) nicht gefunden wird, suchen Sie nach der Zeichenfolge **Reason=>NULL** . Dieser Fehler tritt auf, wenn der Quellcomputer einen leeren Host für die Registrierung beim Konfigurationsserver verwendet. Wenn die Zeichenfolge gefunden wird:
     - Nachdem Sie die Probleme behoben haben, befolgen Sie die Anleitungen unter [Registrieren des Quellcomputers beim Konfigurationsserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server), um die Registrierung manuell zu wiederholen.
 
-4. Wenn die Zeichenfolge **Reason=>NULL** nicht gefunden wird, öffnen Sie auf dem Quellcomputer die Datei „C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente**.) Fehler können durch mehrere Probleme verursacht werden. 
+4. Wenn die Zeichenfolge **Reason=>NULL** nicht gefunden wird, öffnen Sie auf dem Quellcomputer die Datei „C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente** .) Fehler können durch mehrere Probleme verursacht werden. 
 
 5. Suchen Sie nach der Zeichenfolge **post request: (7) – Couldn't connect to server** (Veröffentlichungsanforderung: (7) – Serververbindung konnte nicht hergestellt werden). Wenn die Zeichenfolge gefunden wird:
     1. Beheben Sie die Netzwerkprobleme zwischen dem Quellcomputer und dem Konfigurationsserver. Überprüfen Sie, ob der Konfigurationsserver vom Quellcomputer aus erreichbar ist, mithilfe von Netzwerktools wie Ping, Traceroute oder einem Webbrowser. Stellen Sie sicher, dass der Quellcomputer den Konfigurationsserver über Port 443 erreichen kann.
@@ -63,7 +63,7 @@ Dieser Fehler tritt auf, wenn der Dienst beim Installieren des Mobilitäts-Agent
 
 Um vCenter-Ermittlungsfehler zu beheben, fügen Sie den vCenter-Server zu den Proxy-Einstellungen der byPass-Liste hinzu. 
 
-- Laden Sie das Tool PsExec [hier](https://aka.ms/PsExec) herunter, um auf Systembenutzerinhalte zuzugreifen.
+- Laden Sie das Tool PsExec [hier](/sysinternals/downloads/psexec) herunter, um auf Systembenutzerinhalte zuzugreifen.
 - Öffnen Sie Internet Explorer im Systembenutzerinhalt, indem Sie die folgende Befehlszeile ausführen: psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 - Fügen Sie Proxyeinstellungen in Internet Explorer hinzu, und starten Sie den Dienst „tmanssvc“ neu.
 - Führen Sie zum Konfigurieren der DRA-Proxyeinstellungen „cd C:\Program Files\Microsoft Azure Site Recovery Provider“ aus.
@@ -163,16 +163,16 @@ Das Upgrade des Konfigurationsservers schlägt fehl, wenn bestimmte Dienste nich
 Um das Problem zu identifizieren, navigieren auf dem Konfigurationsserver zu C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile. Wenn Sie folgende Fehler finden, verwenden Sie zum Beheben des Problems die folgenden Schritte aus: 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 So lösen Sie das Problem:
@@ -194,7 +194,7 @@ Sie haben keine ausreichenden Berechtigungen, um eine Anwendung in Azure Active 
 
 Um das Problem zu beheben, melden Sie sich beim Azure-Portal an, und führen Sie einen der folgenden Schritte aus:
 
-- Fordern Sie die Rolle „Anwendungsentwickler“ in AAD an. Weitere Informationen zur Rolle des Anwendungsentwicklers finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+- Fordern Sie die Rolle „Anwendungsentwickler“ in AAD an. Weitere Informationen zur Rolle des Anwendungsentwicklers finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md).
 - Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Prozessserver/Masterziel können nicht mit dem Konfigurationsserver kommunizieren 
@@ -258,4 +258,3 @@ Dieses Problem kann auftreten, wenn die Systemzeit falsch ist.
 So lösen Sie das Problem:
 
 Stellen Sie die richtige Zeit am Computer ein, und versuchen Sie erneut, sich anzumelden. 
- 

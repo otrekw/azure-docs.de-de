@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101861"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367821"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den [Rollenzuweisungen](active-directory-users-assign-role-azure-portal.md) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen. Die Standardberechtigungen für Benutzer können nur in den Benutzereinstellungen in Azure AD geändert werden.
@@ -48,19 +48,18 @@ Die Standardberechtigungen für Mitgliedsbenutzer können auf folgende Weise ein
 Berechtigung | Erläuterung der Einstellung
 ---------- | ------------
 Benutzer können Anwendungen registrieren | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Anwendungsregistrierungen zu erstellen. Die Fähigkeit kann anschließend bestimmten Personen wieder gewährt werden, indem diese der Rolle „Anwendungsentwickler“ hinzugefügt werden.
-Benutzern die Verbindungsherstellung mit LinkedIn über ihr Geschäfts-, Schul- oder Unikonto erlauben | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, ihr Geschäfts-, Schul- oder Unikonto mit ihrem LinkedIn-Konto zu verbinden. Weitere Informationen finden Sie unter [Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen](../users-groups-roles/linkedin-user-consent.md).
-Fähigkeit zum Erstellen von Sicherheitsgruppen | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Sicherheitsgruppen zu erstellen. Globale Administratoren und Benutzeradministratoren können weiterhin Sicherheitsgruppen erstellen. Informationen zur Vorgehensweise finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../users-groups-roles/groups-settings-cmdlets.md).
-Möglichkeit zur Erstellung von Microsoft 365-Gruppen | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Microsoft 365-Gruppen zu erstellen. Durch das Festlegen dieser Option auf „Einige“ wird einem ausgewählten Benutzersatz das Erstellen von Microsoft 365-Gruppen ermöglicht. Globale Administratoren und Benutzeradministratoren können weiterhin Microsoft 365-Gruppen erstellen. Informationen zur Vorgehensweise finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../users-groups-roles/groups-settings-cmdlets.md).
+Benutzern die Verbindungsherstellung mit LinkedIn über ihr Geschäfts-, Schul- oder Unikonto erlauben | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, ihr Geschäfts-, Schul- oder Unikonto mit ihrem LinkedIn-Konto zu verbinden. Weitere Informationen finden Sie unter [Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen](../enterprise-users/linkedin-user-consent.md).
+Fähigkeit zum Erstellen von Sicherheitsgruppen | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Sicherheitsgruppen zu erstellen. Globale Administratoren und Benutzeradministratoren können weiterhin Sicherheitsgruppen erstellen. Informationen zur Vorgehensweise finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md).
+Möglichkeit zur Erstellung von Microsoft 365-Gruppen | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Microsoft 365-Gruppen zu erstellen. Durch das Festlegen dieser Option auf „Einige“ wird einem ausgewählten Benutzersatz das Erstellen von Microsoft 365-Gruppen ermöglicht. Globale Administratoren und Benutzeradministratoren können weiterhin Microsoft 365-Gruppen erstellen. Informationen zur Vorgehensweise finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md).
 Zugriff auf Azure AD-Verwaltungsportal einschränken | Wenn Sie diese Option auf „Nein“ festlegen, können Nichtadministratoren das Azure AD-Verwaltungsportal zum Lesen und Verwalten von Ressourcen verwenden. Mit der Einstellung „Ja“ wird der Zugriff auf Azure AD-Daten im Verwaltungsportal für Nichtadministratoren eingeschränkt.<p>**Hinweis** : Durch diese Einstellung wird der Zugriff auf Azure AD-Daten mithilfe von PowerShell oder anderen Clients wie Visual Studio nicht eingeschränkt. Wenn diese Einstellung auf „Ja“ festgelegt ist, kann einem bestimmten Benutzer, der kein Administrator ist, die Fähigkeit erteilt werden, das Azure AD-Verwaltungsportal zu verwenden, indem ihm eine beliebige Administratorrolle zugewiesen wird, z. B. die Rolle „Verzeichnisleseberechtigte“.<p>Diese Rolle ermöglicht das Lesen grundlegender Verzeichnisinformationen und ist den Mitgliedsbenutzern (nicht aber Gästen und Dienstprinzipalen) standardmäßig zugewiesen.
 Fähigkeit zum Lesen anderer Benutzer | Diese Einstellung ist nur in PowerShell verfügbar. Das Festlegen dieses Flags auf „$false“ verhindert, dass Nicht-Administratoren Benutzerinformationen aus dem Verzeichnis lesen können. Durch dieses Flag wird jedoch nicht verhindert, dass Benutzerinformationen in anderen Microsoft-Diensten wie z. B. Exchange Online gelesen werden können. Diese Einstellung ist für besondere Umstände bestimmt – die Festlegung dieses Flags auf „$false“ wird nicht empfohlen.
-
 
 ## <a name="restrict-guest-users-default-permissions"></a>Standardberechtigungen von Gastbenutzern einschränken
 
 Die Standardberechtigungen für Gastbenutzer können auf folgende Weise eingeschränkt werden:
 
->[!NOTE] 
->Die Einstellung **Berechtigungen für Gastbenutzer sind eingeschränkt** wurde durch die Einstellung für **Zugriffseinschränkungen für Gastbenutzer** ersetzt. Anleitungen zur Verwendung dieser Funktion finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+>[!NOTE]
+>Die Einstellung **Berechtigungen für Gastbenutzer sind eingeschränkt** wurde durch die Einstellung für Zugriffseinschränkungen für Gastbenutzer ersetzt. Anleitungen zur Verwendung dieser Funktion finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 
 Berechtigung | Erläuterung der Einstellung
 ---------- | ------------
@@ -143,7 +142,7 @@ Benutzer können die folgenden Aktionen für Gruppen ausführen, deren Besitzer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Einstellung für Zugriffseinschränkungen für Gastbenutzer finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+* Weitere Informationen zur Einstellung für Zugriffseinschränkungen für Gastbenutzer finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * Weitere Informationen zum Zuweisen von Azure AD-Administratorrollen finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md).
 * Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c6661a762886140997b9305f88f5c4e25476e57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74703367"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371697"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop-Streamingaktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -26,8 +26,8 @@ ms.locfileid: "74703367"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -95,7 +95,7 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
 Beachten Sie folgende Punkte:
 
 1. Legen Sie **linkedServiceName** auf den Namen des verknüpften Diensts fest, der auf Ihren HDInsight-Cluster verweist, auf dem der MapReduce-Streamingauftrag ausgeführt wird.
-2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming**fest.
+2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming** fest.
 3. Geben Sie für die **mapper** -Eigenschaft den Namen der ausführbaren Zuordnungsdatei an. Im Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
 4. Geben Sie für die **reducer** -Eigenschaft den Namen der ausführbaren Reduzierungsdatei an. Im Beispiel ist „wc.exe“ die ausführbare Reduzierungsdatei.
 5. Geben Sie für die **input** -Eigenschaft die Eingabedatei (einschließlich Speicherort) für die Zuordnung an. Im Beispiel `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` ist „adfsample“ der Blobcontainer, „example/data/Gutenberg“ der Ordner und „davinci.txt“ das Blob.
@@ -174,7 +174,7 @@ Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Für die HDInsight-St
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline in diesem Beispiel weist nur eine einzelne Aktivität vom Typ **HDInsightStreaming**auf. 
+Die Pipeline in diesem Beispiel weist nur eine einzelne Aktivität vom Typ **HDInsightStreaming** auf. 
 
 Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und „cat.exe“) und Daten („davinci.txt“) aufgefüllt. Standardmäßig entspricht der Name des Containers, der im HDInsight-Cluster verwendet wird, dem Namen des Clusters. Wenn der Name Ihres Clusters beispielsweise „myhdicluster“ lautet, lautet der Name des zugeordneten Blob-Containers auch „myhdicluster“.  
 

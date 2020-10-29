@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
-ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398000"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92202412"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Entwurf für die Notfallwiederherstellung mit privatem ExpressRoute-Peering
 
 ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keine einzelne Fehlerquelle im ExpressRoute-Pfad im Microsoft-Netzwerk. Entwurfsüberlegungen zum Maximieren der Verfügbarkeit einer ExpressRoute-Verbindung finden Sie unter [Entwerfen für Hochverfügbarkeit mit ExpressRoute][HA].
 
-Wir wollen jedoch Murphys populäres Sprichwort nicht vergessen: *Alles, was schiefgehen kann, wird auch schiefgehen*. Konzentrieren wir uns in diesem Artikel also auf Lösungen, die über Fehler hinausgehen, die mit einer einzigen ExpressRoute-Verbindung behoben werden können. Mit anderen Worten, lassen Sie uns in diesem Artikel Überlegungen zur Netzwerkarchitektur anstellen, um eine robuste Back-End-Netzwerkverbindung für die Notfallwiederherstellung mit georedundanten ExpressRoute-Verbindungen aufzubauen.
+Wir wollen jedoch Murphys populäres Sprichwort nicht vergessen: *Alles, was schiefgehen kann, wird auch schiefgehen* . Konzentrieren wir uns in diesem Artikel also auf Lösungen, die über Fehler hinausgehen, die mit einer einzigen ExpressRoute-Verbindung behoben werden können. Mit anderen Worten, lassen Sie uns in diesem Artikel Überlegungen zur Netzwerkarchitektur anstellen, um eine robuste Back-End-Netzwerkverbindung für die Notfallwiederherstellung mit georedundanten ExpressRoute-Verbindungen aufzubauen.
 
 >[!NOTE]
 >Die in diesem Artikel beschriebenen Konzepte gelten gleichermaßen, wenn eine ExpressRoute-Leitung innerhalb oder außerhalb eine Virtual WAN erstellt wird.
@@ -151,13 +151,8 @@ In diesem Artikel haben wir erläutert, wie Sie die Notfallwiederherstellung ein
 [10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "Aktiv/Aktiv-ExpressRoute-Verbindungen: Lösung 2"
 
 <!--Link References-->
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
+[HA]: ./designing-for-high-availability-with-expressroute.md
 [Enterprise DR]: https://azure.microsoft.com/solutions/architecture/disaster-recovery-enterprise-scale-dr/
 [SMB DR]: https://azure.microsoft.com/solutions/architecture/disaster-recovery-smb-azure-site-recovery/
-[con wgt]: https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection
-[AS Path Pre]: https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending
-
-
-
-
-
+[con wgt]: ./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection
+[AS Path Pre]: ./expressroute-optimize-routing.md#solution-use-as-path-prepending

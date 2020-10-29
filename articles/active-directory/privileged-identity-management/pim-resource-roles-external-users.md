@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88782735"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365526"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Laden Sie Gastbenutzer ein, und weisen Sie ihnen Azure-Ressourcenrollen in Privileged Identity Management zu.
 
@@ -67,9 +67,9 @@ Sie sollten Ihre Einstellungen für die Kollaboration mit Gästen überprüfen, 
 
 Mithilfe von Privileged Identity Management können Sie einen Gast einladen und ihn als berechtigt für eine Azure-Ressourcenrolle festlegen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) oder [Benutzeradministrator](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) oder [Benutzeradministrator](../roles/permissions-reference.md#user-administrator) ist.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 
 1. Wählen Sie **Azure-Ressourcen** aus.
 
@@ -89,19 +89,19 @@ Mithilfe von Privileged Identity Management können Sie einen Gast einladen und 
 
 1. Wählen Sie auf der Seite der Rolle **Mitglied hinzufügen** aus, um den Bereich „Neue Zuweisung“ zu öffnen.
 
-1. Klicken Sie auf **Mitglied oder Gruppe auswählen**.
+1. Klicken Sie auf **Mitglied oder Gruppe auswählen** .
 
     ![Neue Zuweisung: Auswählen eines Mitglieder- oder Gruppenbereichs mit Auflistung von Benutzern und Gruppen zusammen mit einer Einladungsoption](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Klicken Sie auf **Einladen**, um einen Gast einzuladen.
+1. Klicken Sie auf **Einladen** , um einen Gast einzuladen.
 
     ![Seite zum Einladen eines Gasts mit Feldern zur Eingabe einer E-Mail-Adresse und einer persönlichen Nachricht](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. Nachdem Sie einen Gast ausgewählt haben, klicken Sie auf **Einladen**.
+1. Nachdem Sie einen Gast ausgewählt haben, klicken Sie auf **Einladen** .
 
     Der Gast sollte als ausgewähltes Mitglied hinzugefügt werden.
 
-1. Klicken Sie im Bereich **Mitglied oder Gruppe auswählen** auf **Auswählen**.
+1. Klicken Sie im Bereich **Mitglied oder Gruppe auswählen** auf **Auswählen** .
 
 1. Wählen Sie im Bereich **Mitgliedschaftseinstellungen** den Zuweisungstyp und die Dauer aus.
 
@@ -123,7 +123,7 @@ Wenn Sie ein externer Benutzer sind, müssen Sie die Einladung, ein Gast in der 
 
 1. Wählen Sie den Link **Los geht's** in der E-Mail aus.
 
-1. Überprüfen Sie die Berechtigungen, und klicken Sie dann auf **Annehmen**.
+1. Überprüfen Sie die Berechtigungen, und klicken Sie dann auf **Annehmen** .
 
     ![Überprüfen der Berechtigungenseite in einem Browser mit einer Liste von Berechtigungen, die die Organisation überprüfen möchte](./media/pim-resource-roles-external-users/invite-accept.png)
 
@@ -141,7 +141,7 @@ Wenn Sie ein externer Benutzer sind, müssen Sie die Einladung, ein Gast in der 
 
     Je nach den Rolleneinstellungen müssen Sie möglicherweise bestimmte Informationen angeben, um die Rolle zu aktivieren.
 
-1. Nachdem Sie die Einstellungen für die Rolle angegeben haben, klicken Sie auf **Aktivieren**, um die Rolle zu aktivieren.
+1. Nachdem Sie die Einstellungen für die Rolle angegeben haben, klicken Sie auf **Aktivieren** , um die Rolle zu aktivieren.
 
     ![Aktivierungsseite mit Auflistung des Bereichs und Optionen zur Angabe von Startzeit, Dauer und Grund](./media/pim-resource-roles-external-users/activate-role.png)
 

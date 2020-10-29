@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597629"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368317"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In diesem Artikel wird die Zuweisung von Rollen über das Azure-Portal beschrieben.
 
-Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory finden Sie unter [Anzeigen und Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
+Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory finden Sie unter [Anzeigen und Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/roles/manage-roles-portal.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,17 +49,17 @@ Um die Seite „Zugriffssteuerung (IAM)“ möglichst effizient zu nutzen, befol
 
 Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource gewähren möchten, fügen Sie eine Rollenzuweisung hinzu. Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie dann den Bereich aus, auf den Sie Zugriff gewähren möchten. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** , und wählen Sie dann den Bereich aus, auf den Sie Zugriff gewähren möchten. Sie können beispielsweise **Verwaltungsgruppen** , **Abonnements** , **Ressourcengruppen** oder eine Ressource auswählen.
 
 1. Klicken Sie auf die gewünschte Ressource für diesen Bereich.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für diesen Bereich anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um die Rollenzuweisungen für diesen Bereich anzuzeigen.
 
     ![Zugriffssteuerung (IAM) und Registerkarte „Rollenzuweisungen“](./media/role-assignments-portal/role-assignments.png)
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen** .
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
@@ -69,11 +69,11 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource gewähren möchten, füg
 
    ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-portal/add-role-assignment.png)
 
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer** .
 
 1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
 
-1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
+1. Klicken Sie auf **Speichern** , um die Rolle zuzuweisen.
 
    Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Bereich zugewiesen.
 
@@ -83,17 +83,17 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource gewähren möchten, füg
 
 Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Sie ihm die Rolle [Besitzer](built-in-roles.md#owner) im Abonnementbereich zu. Durch die Rolle „Besitzer“ erhält der Benutzer Vollzugriff auf alle Ressourcen im Abonnement, einschließlich der Berechtigung, anderen Personen den Zugriff zu gewähren. Diese Schritte sind identisch mit allen anderen Rollenzuweisungen.
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements** .
 
 1. Klicken Sie auf das Abonnement, für das Sie Zugriff erteilen möchten.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für dieses Abonnement anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um die Rollenzuweisungen für dieses Abonnement anzuzeigen.
 
     ![Zugriffssteuerung (IAM) und Registerkarte „Rollenzuweisungen“](./media/role-assignments-portal/role-assignments.png)
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen** .
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
@@ -107,7 +107,7 @@ Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Si
 
 1. Wählen Sie in der Liste **Auswählen** einen Benutzer aus. Wird der Benutzer in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Suchbegriff eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen.
 
-1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
+1. Klicken Sie auf **Speichern** , um die Rolle zuzuweisen.
 
    Nach einigen Augenblicken wird dem Benutzer im Abonnementbereich die Rolle „Besitzer“ zugewiesen.
 
@@ -126,29 +126,29 @@ Führen Sie die folgenden Schritte aus, um einer systemseitig zugewiesenen verwa
 
 1. Öffnen Sie im Azure-Portal eine systemseitig zugewiesene verwaltete Identität.
 
-1. Klicken Sie im linken Menü auf **Identität**.
+1. Klicken Sie im linken Menü auf **Identität** .
 
     ![Systemseitig zugewiesene verwaltete Identität](./media/shared/identity-system-assigned.png)
 
-1. Klicken Sie unter **Berechtigungen** auf **Azure-Rollenzuweisungen**.
+1. Klicken Sie unter **Berechtigungen** auf **Azure-Rollenzuweisungen** .
 
     Wurden der ausgewählten systemseitig zugewiesenen verwalteten Identität bereits Rollen zugewiesen, wird die Liste der Rollenzuweisungen angezeigt. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
 
     ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/shared/role-assignments-system-assigned.png)
 
-1. Klicken Sie auf die Liste **Abonnement**, um das Abonnement zu ändern.
+1. Klicken Sie auf die Liste **Abonnement** , um das Abonnement zu ändern.
 
 1. Klicken Sie auf **Rollenzuweisung hinzufügen (Vorschau)** .
 
-1. Wählen Sie in den Dropdownlisten die Ressourcen aus, für die die Rollenzuweisung gelten soll, z. B. **Abonnement**, **Ressourcengruppe** oder Ressource.
+1. Wählen Sie in den Dropdownlisten die Ressourcen aus, für die die Rollenzuweisung gelten soll, z. B. **Abonnement** , **Ressourcengruppe** oder Ressource.
 
     Wenn Sie für den ausgewählten Bereich nicht über Schreibberechtigungen für die Rollenzuweisung verfügen, wird eine Inlinemeldung angezeigt. 
 
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer** .
 
    ![Bereich „Rollenzuweisung hinzufügen“ für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
-1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
+1. Klicken Sie auf **Speichern** , um die Rolle zuzuweisen.
 
    Nach einigen Augenblicken wird der verwalteten Identität die Rolle für den ausgewählten Bereich zugewiesen.
 
@@ -158,25 +158,25 @@ Führen Sie die folgenden Schritte aus, um einer benutzerseitig zugewiesenen ver
 
 1. Öffnen Sie im Azure-Portal eine benutzerseitig zugewiesene verwaltete Identität.
 
-1. Klicken Sie im Menü auf der linken Seite auf **Azure-Rollenzuweisungen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Azure-Rollenzuweisungen** .
 
     Wurden der ausgewählten benutzerseitig zugewiesenen verwalteten Identität bereits Rollen zugewiesen, wird die Liste der Rollenzuweisungen angezeigt. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
 
     ![Rollenzuweisungen für eine benutzerseitig zugewiesene verwaltete Identität](./media/shared/role-assignments-user-assigned.png)
 
-1. Klicken Sie auf die Liste **Abonnement**, um das Abonnement zu ändern.
+1. Klicken Sie auf die Liste **Abonnement** , um das Abonnement zu ändern.
 
 1. Klicken Sie auf **Rollenzuweisung hinzufügen (Vorschau)** .
 
-1. Wählen Sie in den Dropdownlisten die Ressourcen aus, für die die Rollenzuweisung gelten soll, z. B. **Abonnement**, **Ressourcengruppe** oder Ressource.
+1. Wählen Sie in den Dropdownlisten die Ressourcen aus, für die die Rollenzuweisung gelten soll, z. B. **Abonnement** , **Ressourcengruppe** oder Ressource.
 
     Wenn Sie für den ausgewählten Bereich nicht über Schreibberechtigungen für die Rollenzuweisung verfügen, wird eine Inlinemeldung angezeigt. 
 
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer** .
 
    ![Bereich „Rollenzuweisung hinzufügen“ für eine benutzerseitig zugewiesene verwaltete Identität](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
-1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
+1. Klicken Sie auf **Speichern** , um die Rolle zuzuweisen.
 
    Nach einigen Augenblicken wird der verwalteten Identität die Rolle für den ausgewählten Bereich zugewiesen.
 
@@ -186,17 +186,17 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
 1. Öffnen Sie das Blatt **Zugriffssteuerung (IAM)** für einen Bereich, z.B. für eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressource, für das bzw. die Sie den Zugriff entfernen möchten.
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
 
 1. Aktivieren Sie in der Liste der Rollenzuweisungen den Sicherheitsprinzipal mit der zu entfernenden Rollenzuweisung.
 
    ![Zum Entfernen ausgewählte Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment-select.png)
 
-1. Klicken Sie auf **Entfernen**.
+1. Klicken Sie auf **Entfernen** .
 
    ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment.png)
 
-1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
+1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja** .
 
     Wenn eine Meldung angezeigt wird, dass geerbte Rollenzuweisungen nicht entfernt werden können, versuchen Sie, eine Rollenzuweisung in einem untergeordneten Bereich zu entfernen. Öffnen Sie die Zugriffssteuerung (IAM) in dem Bereich, in dem die Rolle zugewiesen wurde, und versuchen Sie es noch mal. Eine Möglichkeit zum schnellen Öffnen der Zugriffssteuerung (IAM) im richtigen Bereich besteht darin, in der Spalte **Bereich** auf den Link neben **(Geerbt)** zu klicken.
 

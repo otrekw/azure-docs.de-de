@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107809"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364115"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -135,7 +135,7 @@ Die grundsätzliche Annahme, dass Sicherheitsverletzungen passieren, führt auch
 
 Aktivieren Sie Azure AD PIM, sehen Sie sich die Benutzer an, denen Administratorrollen zugewiesen sind, und entfernen Sie nicht benötigte Konten in diesen Rollen. Ändern Sie die Berechtigungen für die verbleibenden privilegierten Benutzer von „dauerhaft“ zu „berechtigt“. Zum Schluss richten Sie geeignete Richtlinien ein, um sicherzustellen, dass Benutzer mit der erforderlichen Änderungssteuerung sicher auf diese privilegierten Rollen zugreifen können, wenn es erforderlich ist.
 
-Wenn Sie den Prozess für die Bereitstellung privilegierter Konten einrichten, befolgen Sie die [bewährten Methoden zum Einrichten von mindestens zwei Notfallkonten](../../active-directory/users-groups-roles/directory-admin-roles-secure.md), um sicherzustellen, dass Sie weiterhin Zugriff auf Azure AD haben, falls Sie sich selbst ausgesperrt haben.
+Wenn Sie den Prozess für die Bereitstellung privilegierter Konten einrichten, befolgen Sie die [bewährten Methoden zum Einrichten von mindestens zwei Notfallkonten](../../active-directory/roles/security-planning.md), um sicherzustellen, dass Sie weiterhin Zugriff auf Azure AD haben, falls Sie sich selbst ausgesperrt haben.
 
 ## <a name="step-3---automate-threat-response"></a>Schritt 3: Automatisieren Sie die Reaktion auf Bedrohungen.
 
@@ -193,7 +193,7 @@ Die [Self-Service-Kennwortzurücksetzung](../../active-directory/authentication/
 
 ### <a name="implement-self-service-group-and-application-access"></a>Implementieren von Self-Service-Gruppen und Anwendungszugriff
 
-In Azure AD haben Benutzer ohne Administratorrechte die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen, Microsoft 365-Gruppen, Anwendungsrollen und Zugriffspaketkatalogen zu verwalten.  Über die [Self-Service-Gruppenverwaltung](../../active-directory/users-groups-roles/groups-self-service-management.md) können Gruppenbesitzer ihre eigenen Gruppen verwalten, ohne dass ihnen eine Administratorrolle zugewiesen sein muss. Benutzer können auch Microsoft 365-Gruppen erstellen und verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen. Nicht verwendete Gruppen laufen automatisch ab.  Ferner ermöglicht die [Azure AD-Berechtigungsverwaltung](../../active-directory/governance/entitlement-management-overview.md) die Delegierung und Sichtbarkeit durch umfassende Workflows für Zugriffsanforderungen und durch automatischen Ablauf.  Sie können an Benutzer ohne Administratorrechte die Möglichkeit delegieren, ihre eigenen Zugriffspakete für Gruppen, Teams, Anwendungen und SharePoint Online-Websites in ihrem Besitz zu konfigurieren. Dazu verwenden Sie benutzerdefinierte Richtlinien für Benutzer, die den Zugriff genehmigen müssen, darunter die Konfiguration von Managern von Mitarbeitern und Sponsoren von Geschäftspartnern als genehmigende Personen.
+In Azure AD haben Benutzer ohne Administratorrechte die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen, Microsoft 365-Gruppen, Anwendungsrollen und Zugriffspaketkatalogen zu verwalten.  Über die [Self-Service-Gruppenverwaltung](../../active-directory/enterprise-users/groups-self-service-management.md) können Gruppenbesitzer ihre eigenen Gruppen verwalten, ohne dass ihnen eine Administratorrolle zugewiesen sein muss. Benutzer können auch Microsoft 365-Gruppen erstellen und verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen. Nicht verwendete Gruppen laufen automatisch ab.  Ferner ermöglicht die [Azure AD-Berechtigungsverwaltung](../../active-directory/governance/entitlement-management-overview.md) die Delegierung und Sichtbarkeit durch umfassende Workflows für Zugriffsanforderungen und durch automatischen Ablauf.  Sie können an Benutzer ohne Administratorrechte die Möglichkeit delegieren, ihre eigenen Zugriffspakete für Gruppen, Teams, Anwendungen und SharePoint Online-Websites in ihrem Besitz zu konfigurieren. Dazu verwenden Sie benutzerdefinierte Richtlinien für Benutzer, die den Zugriff genehmigen müssen, darunter die Konfiguration von Managern von Mitarbeitern und Sponsoren von Geschäftspartnern als genehmigende Personen.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Implementieren von Azure AD-Zugriffsüberprüfungen
 

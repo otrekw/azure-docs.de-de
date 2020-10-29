@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070366"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363690"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -38,7 +38,7 @@ Die Aktivierung der automatischen Benutzerbereitstellung bietet die folgenden Ha
 
 * **Risikomanagement:** Sie können die Sicherheit erhöhen, indem Sie Änderungen basierend auf dem Mitarbeiterstatus oder den Gruppenmitgliedschaften automatisieren, die Rollen und/oder den Zugriff definieren.
 
-* **Erfüllung von Compliance und Governance**: Azure AD unterstützt systemeigene Überwachungsprotokolle für jede Benutzerbereitstellungsanforderung. Die Anforderungen werden sowohl im Quell- als auch im Zielsystem ausgeführt. Dadurch können Sie über einen einzigen Bildschirm nachverfolgen, wer Zugriff auf Anwendungen hat.
+* **Erfüllung von Compliance und Governance** : Azure AD unterstützt systemeigene Überwachungsprotokolle für jede Benutzerbereitstellungsanforderung. Die Anforderungen werden sowohl im Quell- als auch im Zielsystem ausgeführt. Dadurch können Sie über einen einzigen Bildschirm nachverfolgen, wer Zugriff auf Anwendungen hat.
 
 * **Kostensenkung:** Die automatische Benutzerbereitstellung reduziert Kosten, indem Ineffizienzen und menschliche Fehler vermieden werden, die bei einer manuellen Bereitstellung entstehen. Außerdem wird der Bedarf an benutzerdefinierten Benutzerbereitstellungslösungen, Skripts und Überwachungsprotokollen verringert.
 
@@ -120,7 +120,7 @@ In diesem Beispiel werden die Benutzer und/oder Gruppen in einer HR-Cloudanwendu
 3.  Der **Azure AD-Bereitstellungsdienst** ruft den Azure AD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, die die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das AD-Konto enthält.
 4.  Der **Azure AD Connect-Bereitstellungs-Agent** verwendet ein Dienstkonto zum Verwalten von AD-Kontodaten.
 5.  **Azure AD Connect** führt eine Deltasynchronisierung aus, um Updates in AD zu pullen.
-6.  **AD**-Updates werden mit Azure AD synchronisiert. 
+6.  **AD** -Updates werden mit Azure AD synchronisiert. 
 7.  Der **Azure AD-Bereitstellungsdienst** schreibt E-Mail-Attribut und Benutzername aus Azure AD in den Mandanten der HR-Cloud-App zurück.
 
 ## <a name="plan-the-deployment-project"></a>Planen des Bereitstellungsprojekts
@@ -139,13 +139,13 @@ Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Kom
 
 Es wird empfohlen, die Erstkonfiguration der automatischen Benutzerbereitstellung in einer Testumgebung mit einer kleinen Teilmenge von Benutzern vorzunehmen, bevor die Skalierung auf alle Benutzer in der Produktionsumgebung erfolgt. Siehe hierzu [Bewährte Methoden](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) für das Ausführen eines Politprojekts.
 
-#### <a name="best-practices-for-a-pilot"></a>Bewährte Methoden für einen Pilotversuch  
+#### <a name="best-practices-for-a-pilot"></a>Bewährte Methoden für einen Pilotversuch  
 
 Bei einem Pilotversuch können Sie eine Funktion mit einer kleinen Gruppe testen, bevor Sie die Funktion für alle Benutzer bereitstellen. Sorgen Sie im Rahmen Ihrer Tests dafür, dass die einzelnen Anwendungsfälle in Ihrer Organisation sorgfältig getestet werden.
 
 Zielen Sie in der ersten Phase auf IT und Benutzerfreundlichkeit ab, und wählen Sie zum Testen andere geeignete Benutzer aus, die Feedback bereitstellen können. Verwenden Sie dieses Feedback, um die Informationen und Anweisungen weiterzuentwickeln, die Sie an Ihre Benutzer senden, und Erkenntnisse über die Art von Problemen zu gewinnen, mit denen Ihre Supportmitarbeiter möglicherweise konfrontiert sind.
 
-Erweitern Sie das Rollout auf größere Benutzergruppen, indem Sie die Zielgruppe(n) ausweiten. Dies kann über eine [dynamische Gruppenmitgliedschaft](../users-groups-roles/groups-dynamic-membership.md) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.
+Erweitern Sie das Rollout auf größere Benutzergruppen, indem Sie die Zielgruppe(n) ausweiten. Dies kann über eine [dynamische Gruppenmitgliedschaft](../enterprise-users/groups-dynamic-membership.md) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.
 
 ## <a name="plan-application-connections-and-administration"></a>Planen der Anwendungsverbindungen und -verwaltung
 

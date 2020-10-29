@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979876"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362551"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
@@ -51,7 +51,7 @@ Nachfolgend wird eine Möglichkeit aufgezeigt, wie Hana die Zugriffskontrolle an
 
     Beachten Sie, dass Mamta, Mark und Joe die Kataloge der jeweils anderen nicht anzeigen können.
 
-1. Mamta erstellt einen Katalog **Marketing**, bei dem es sich um einen Container von Ressourcen handelt.
+1. Mamta erstellt einen Katalog **Marketing** , bei dem es sich um einen Container von Ressourcen handelt.
 
 1. Mamta fügt diesem Katalog die Ressourcen hinzu, die ihre Marketingabteilung besitzt.
 
@@ -124,20 +124,20 @@ Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator i
 
 | Azure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen | Kann Microsoft 365-Gruppe hinzufügen | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Benutzeradministrator](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Intune-Administrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange-Administrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  | :heavy_check_mark: |  |  |
-| [Teams-Dienstadministrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  | :heavy_check_mark: |  |  |
-| [SharePoint-Administrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
-| [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
+| [Globaler Administrator](../roles/permissions-reference.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Benutzeradministrator](../roles/permissions-reference.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Intune-Administrator](../roles/permissions-reference.md) | Katalogbesitzer | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Exchange-Administrator](../roles/permissions-reference.md) | Katalogbesitzer |  | :heavy_check_mark: |  |  |
+| [Teams-Dienstadministrator](../roles/permissions-reference.md) | Katalogbesitzer |  | :heavy_check_mark: |  |  |
+| [SharePoint-Administrator](../roles/permissions-reference.md) | Katalogbesitzer |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Anwendungsadministrator](../roles/permissions-reference.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
+| [Cloudanwendungsadministrator](../roles/permissions-reference.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
 | Benutzer | Katalogbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn App-Besitzer |  |
 
 > [!NOTE]
-> Wenn ein Benutzer eine Sicherheitsgruppe oder eine Microsoft 365-Gruppe hinzufügt, können dieser Gruppe keine Rollen zugewiesen werden. Wenn der Benutzer beim Erstellen eines Zugriffspakets eine Gruppe hinzufügt, der Rollen zugewiesen werden können, muss er auch Besitzer dieser speziellen Gruppe sein. Weitere Informationen finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md).
+> Wenn ein Benutzer eine Sicherheitsgruppe oder eine Microsoft 365-Gruppe hinzufügt, können dieser Gruppe keine Rollen zugewiesen werden. Wenn der Benutzer beim Erstellen eines Zugriffspakets eine Gruppe hinzufügt, der Rollen zugewiesen werden können, muss er auch Besitzer dieser speziellen Gruppe sein. Weitere Informationen finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md).
 
-Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möchten, können Sie auch [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management) zurate ziehen.
+Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möchten, können Sie auch [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../roles/delegate-by-task.md#entitlement-management) zurate ziehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145287"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366325"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -220,7 +220,7 @@ Das Erstellen einer Richtlinie für jede App ist nicht effizient und führt zu e
 
 ### <a name="set-up-emergency-access-accounts"></a>Einrichten von Konten für den Notfallzugriff
 
-Wenn Sie eine Richtlinie falsch konfigurieren, kann die Organisationen aus dem Azure-Portal ausgesperrt werden. Mildern Sie die Auswirkungen eines versehentlichen Aussperrens des Administrators ab, indem Sie mindestens zwei [Konten für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md) in Ihrer Organisation erstellen.
+Wenn Sie eine Richtlinie falsch konfigurieren, kann die Organisationen aus dem Azure-Portal ausgesperrt werden. Mildern Sie die Auswirkungen eines versehentlichen Aussperrens des Administrators ab, indem Sie mindestens zwei [Konten für den Notfallzugriff](../roles/security-emergency-access.md) in Ihrer Organisation erstellen.
 
 * Erstellen Sie ein Benutzerkonto, das für die Richtlinienverwaltung reserviert ist und von allen Richtlinien ausgeschlossen wird.
 
@@ -264,7 +264,7 @@ Der Benennungsstandard erleichtert die Suche nach Richtlinien und gibt Aufschlus
 
 ![Screenshot: Benennungsstandards für Richtlinien](media/plan-conditional-access/11.png)
 
-**Beispiel**: Eine Richtlinie, die erfordert, dass MFA für Marketingbenutzer, die auf die Dynamics CRP-App von externen Netzwerken aus zugreifen, verwendet wird:
+**Beispiel** : Eine Richtlinie, die erfordert, dass MFA für Marketingbenutzer, die auf die Dynamics CRP-App von externen Netzwerken aus zugreifen, verwendet wird:
 
 ![Benennungsstandard](media/plan-conditional-access/naming-example.png)
 
@@ -287,7 +287,7 @@ EM01 – ENABLE IN EMERGENCY: MFA Disruption [1/4] – Exchange SharePoint: Requ
 
 ### <a name="exclude-countries-from-which-you-never-expect-a-sign-in"></a>Ausschließen von Ländern, aus denen nie eine Anmeldung erwartet wird.
 
-Mit Azure Active Directory können Sie [benannte Standorte](location-condition.md) erstellen. Erstellen Sie einen benannten Standort, der alle Länder enthält, von denen Sie niemals eine Anmeldung erwarten. Erstellen Sie dann eine Richtlinie für alle Apps, die die Anmeldung von diesem benannten Standort blockieren. **Stellen Sie sicher, dass Ihre Administratoren von dieser Richtlinie ausgenommen sind**.
+Mit Azure Active Directory können Sie [benannte Standorte](location-condition.md) erstellen. Erstellen Sie einen benannten Standort, der alle Länder enthält, von denen Sie niemals eine Anmeldung erwarten. Erstellen Sie dann eine Richtlinie für alle Apps, die die Anmeldung von diesem benannten Standort blockieren. **Stellen Sie sicher, dass Ihre Administratoren von dieser Richtlinie ausgenommen sind** .
 
 ### <a name="plan-your-policy-deployment"></a>Planen der Richtlinienbereitstellung
 
@@ -421,7 +421,7 @@ Eine weitere Möglichkeit zum Überprüfen Ihrer Richtlinie für den bedingten Z
 
 Führen Sie jeden Test im Testplan mit Testbenutzern aus.
 
-**Testen Sie unbedingt die Ausschlusskriterien einer Richtlinie**. Sie können beispielsweise einen Benutzer oder eine Gruppe aus einer Richtlinie ausschließen, die eine mehrstufige Authentifizierung (MFA) erfordert. Testen Sie, ob ausgeschlossene Benutzer zur Verwendung der MFA aufgefordert werden, weil die Kombination anderer Richtlinien möglicherweise die Verwendung der MFA für diese Benutzer vorschreibt.
+**Testen Sie unbedingt die Ausschlusskriterien einer Richtlinie** . Sie können beispielsweise einen Benutzer oder eine Gruppe aus einer Richtlinie ausschließen, die eine mehrstufige Authentifizierung (MFA) erfordert. Testen Sie, ob ausgeschlossene Benutzer zur Verwendung der MFA aufgefordert werden, weil die Kombination anderer Richtlinien möglicherweise die Verwendung der MFA für diese Benutzer vorschreibt.
 
 ### <a name="roll-back-policies"></a>Rollback von Richtlinien
 

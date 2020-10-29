@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258148"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363418"
 ---
 # <a name="publisher-verification"></a>Herausgeberüberprüfung
 
@@ -29,11 +29,11 @@ Diese Funktion ist hauptsächlich für Entwickler vorgesehen, die mehrinstanzenf
 
 ## <a name="benefits"></a>Vorteile
 Die Herausgeberüberprüfung bietet die folgenden Vorteile:
-- **Erhöhte Transparenz und Risikominderung für Kunden**: Diese Funktion unterstützt Kunden dabei, zu verstehen, welche Apps in ihren Organisationen von Entwicklern veröffentlicht werden, denen sie vertrauen. 
+- **Erhöhte Transparenz und Risikominderung für Kunden** : Diese Funktion unterstützt Kunden dabei, zu verstehen, welche Apps in ihren Organisationen von Entwicklern veröffentlicht werden, denen sie vertrauen. 
 
-- **Verbessertes Branding**: In der Azure AD-[Zustimmungsaufforderung](application-consent-experience.md), auf der Seite „Unternehmens-Apps“ und auf weiteren von Endbenutzern und Administratoren verwendeten Benutzeroberflächen wird ein Überprüfungsbadge angezeigt. 
+- **Verbessertes Branding** : In der Azure AD- [Zustimmungsaufforderung](application-consent-experience.md), auf der Seite „Unternehmens-Apps“ und auf weiteren von Endbenutzern und Administratoren verwendeten Benutzeroberflächen wird ein Überprüfungsbadge angezeigt. 
 
-- **Reibungslosere Einführung in Unternehmen**: Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt.
+- **Reibungslosere Einführung in Unternehmen** : Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt.
 
 > [!NOTE]
 > Ab November 2020 können Endbenutzer den meisten neu registrierten mehrinstanzenfähigen Apps ohne verifizierten Herausgeber keine Benutzerzustimmung mehr erteilen. Dies gilt für Apps, die nach dem 8. November 2020 registriert werden. Verwenden Sie OAuth 2.0, um Berechtigungen anzufordern, die über das grundlegende Benutzerprofil mit Anmelden und Lesen hinausgehen, und fordern Sie in anderen Mandanten als dem, für den die App registriert ist, die Zustimmung von den Benutzern an. Auf dem Zustimmungsbildschirm wird eine Warnung angezeigt, welche die Benutzer informiert, dass diese Apps riskant sind und von nicht verifizierten Herausgebern stammen.    
@@ -49,7 +49,7 @@ Für die Herausgeberüberprüfung bestehen bestimmte Voraussetzungen, von denen 
 
 -  Der die Überprüfung durchführende Benutzer muss autorisiert sein, Änderungen an der App-Registrierung in Azure AD und am MPN-Konto in Partner Center vorzunehmen. 
 
-    -  In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden [Rollen](../users-groups-roles/directory-assign-admin-roles.md) sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
+    -  In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden [Rollen](../roles/permissions-reference.md) sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
 
     -  In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird).
     

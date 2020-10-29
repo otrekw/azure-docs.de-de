@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 54fb11598dc794248c1aae81734b548341c0eee6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400331"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369470"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -63,34 +63,34 @@ Viele betrachten Identität als primären Sicherheitsbereich. Dies ist eine Abke
 
 In den folgenden Abschnitten werden die Best Practices für die Identitäts- und Zugriffssicherheit mit Azure AD aufgeführt.
 
-**Bewährte Methode**: Zentrieren Sie Sicherheitskontrollen und Ermittlungen um Benutzer- und Dienstidentitäten.
-**Detail**: Verwenden Sie Azure AD, um Steuerelemente und Identitäten anzuordnen.
+**Bewährte Methode** : Zentrieren Sie Sicherheitskontrollen und Ermittlungen um Benutzer- und Dienstidentitäten.
+**Detail** : Verwenden Sie Azure AD, um Steuerelemente und Identitäten anzuordnen.
 
 ## <a name="centralize-identity-management"></a>Zentralisieren der Identitätsverwaltung
 
 In einem [Hybrididentitätsszenario](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) sollten Sie Ihre lokalen und Cloudverzeichnisse integrieren. Die Integration ermöglicht Ihrem IT-Team, Konten von einem Ort aus zu verwalten, unabhängig davon, wo ein Konto erstellt wird. Die Integration steigert auch die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird.
 
-**Bewährte Methode**: Einrichten einer einzelnen Azure AD-Instanz. Konsistenz und eine einzige autoritative Quelle verbessern die Übersichtlichkeit und vermindern Sicherheitsrisiken, die auf menschliche Fehler und Komplexität der Konfiguration zurückzuführen sind.
-**Detail**: Legen Sie ein einziges Azure AD-Verzeichnis als autoritative Quelle für Unternehmens- und Organisationskonten fest.
+**Bewährte Methode** : Einrichten einer einzelnen Azure AD-Instanz. Konsistenz und eine einzige autoritative Quelle verbessern die Übersichtlichkeit und vermindern Sicherheitsrisiken, die auf menschliche Fehler und Komplexität der Konfiguration zurückzuführen sind.
+**Detail** : Legen Sie ein einziges Azure AD-Verzeichnis als autoritative Quelle für Unternehmens- und Organisationskonten fest.
 
-**Bewährte Methode**: Integrieren Sie Ihre lokalen Verzeichnisse mit Azure AD.  
-**Detail**: Synchronisieren Sie per [Azure AD Connect](/azure/active-directory/connect/active-directory-aadconnect) Ihr lokales Verzeichnis mit Ihrem Cloudverzeichnis.
+**Bewährte Methode** : Integrieren Sie Ihre lokalen Verzeichnisse mit Azure AD.  
+**Detail** : Synchronisieren Sie per [Azure AD Connect](/azure/active-directory/connect/active-directory-aadconnect) Ihr lokales Verzeichnis mit Ihrem Cloudverzeichnis.
 
 > [!Note]
 > Es gibt [Faktoren, die die Leistung von Azure AD Connect beeinflussen](../../active-directory/hybrid/plan-connect-performance-factors.md). Stellen Sie sicher, dass Azure AD Connect über eine ausreichende Kapazität verfügt, um zu verhindern dass leistungsschwache Systeme Sicherheit und Produktivität beeinträchtigen. Große und komplexe Organisationen (Organisationen mit über 100.000 bereitgestellten Objekten) können die [Empfehlungen](../../active-directory/hybrid/whatis-hybrid-identity.md) nutzen, um ihre Azure AD Connect-Implementierung zu optimieren.
 
-**Bewährte Methode**: Synchronisieren Sie keine Konten mit Azure AD, die über hohe Berechtigungen in Ihrer vorhandenen Active Directory-Instanz verfügen.
-**Detail**: Ändern Sie nicht die standardmäßige [Azure AD Connect-Konfiguration](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md), die diese Konten herausfiltert. Eine solche Konfiguration mindert das Risiko, dass Unbefugte aus der Cloud heraus auf lokale Objekte zugreifen (was einen schwerwiegenden Vorfall darstellen könnte).
+**Bewährte Methode** : Synchronisieren Sie keine Konten mit Azure AD, die über hohe Berechtigungen in Ihrer vorhandenen Active Directory-Instanz verfügen.
+**Detail** : Ändern Sie nicht die standardmäßige [Azure AD Connect-Konfiguration](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md), die diese Konten herausfiltert. Eine solche Konfiguration mindert das Risiko, dass Unbefugte aus der Cloud heraus auf lokale Objekte zugreifen (was einen schwerwiegenden Vorfall darstellen könnte).
 
-**Bewährte Methode**: Aktivieren Sie die Kennworthashsynchronisierung.  
-**Detail**: Die Kennworthashsynchronisierung ist ein Feature zum Synchronisieren von Benutzerkennworthashes aus einer lokalen Active Directory-Instanz nach einer cloudbasierten Azure AD-Instanz. Diese Synchronisierung schützt davor, dass kompromittierte Anmeldeinformationen aus früheren Angriffe wiedergegeben werden.
+**Bewährte Methode** : Aktivieren Sie die Kennworthashsynchronisierung.  
+**Detail** : Die Kennworthashsynchronisierung ist ein Feature zum Synchronisieren von Benutzerkennworthashes aus einer lokalen Active Directory-Instanz nach einer cloudbasierten Azure AD-Instanz. Diese Synchronisierung schützt davor, dass kompromittierte Anmeldeinformationen aus früheren Angriffe wiedergegeben werden.
 
 Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennworthashsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihren lokalen Servern ein Fehler auftritt oder sie vorübergehend nicht verfügbar sind. Diese Synchronisierung ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen Active Directory-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen synchronisierter Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.
 
 Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
 
-**Bewährte Methode**: Verwenden Sie beim Entwickeln neuer Anwendungen für die Authentifizierung Azure AD.
-**Detail**: Verwenden Sie die richtigen Funktionen zum Unterstützen der Authentifizierung:
+**Bewährte Methode** : Verwenden Sie beim Entwickeln neuer Anwendungen für die Authentifizierung Azure AD.
+**Detail** : Verwenden Sie die richtigen Funktionen zum Unterstützen der Authentifizierung:
 
   - Azure AD für Mitarbeiter
   - [Azure AD B2B](../../active-directory/b2b/index.yml) für Gastbenutzer und externe Partner
@@ -102,7 +102,7 @@ Organisationen, die ihre lokale Identität nicht in ihre Cloudidentität integri
 > Sie müssen auswählen, in welchen Verzeichnissen sich wichtige Konten befinden und ob die verwendete Administrator-Arbeitsstation von neuen Clouddiensten oder vorhandenen Prozessen verwaltet wird. Die Verwendung vorhandener Verwaltungs- und Identitätsbereitstellungsprozesse kann einige Risiken mindern, jedoch auch die Gefahr mit sich bringen, dass ein Angreifer ein lokales Konto manipuliert und Daten in die Cloud überträgt. Für verschiedene Rollen können sich unterschiedliche Strategien empfehlen (z.B. für IT-Administratoren und Geschäftsbereichsadministratoren). Sie haben zwei Möglichkeiten. Die erste Möglichkeit besteht darin, Azure AD-Konten zu erstellen, die nicht mir Ihrer lokalen Active Directory-Instanz synchronisiert sind. Binden Sie Ihre Administrator-Arbeitsstation in Azure AD ein, und Sie können sie mit Microsoft Intune verwalten und patchen. Die zweite Möglichkeit: Verwenden Sie vorhandene Administratorkonten, indem Sie die Synchronisierung mit Ihrer lokalen Active Directory-Instanz ausführen. Verwenden Sie vorhandene Arbeitsstationen in Ihrer Active Directory-Domäne für Verwaltung und Sicherheit.
 
 ## <a name="manage-connected-tenants"></a>Verwalten von verbundenen Mandanten
-In Ihrer Sicherheitsorganisation muss Sichtbarkeit gegeben sein, um Risiken zu bewerten und zu bestimmen, ob die Richtlinien Ihrer Organisation und geltende gesetzliche Anforderungen eingehalten werden. Sie müssen dafür sorgen, dass Ihre Sicherheitsorganisation über Sichtbarkeit hinsichtlich aller Abonnements verfügt, die mit Ihrer Produktionsumgebung und Ihrem Produktionsnetzwerk verbunden sind (über [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). Ein [globaler Administrator/Unternehmensadministrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) in Azure AD kann die Zugriffsrechte auf die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) erweitern und alle Abonnements und verwalteten Gruppen anzeigen, die mit Ihrer Umgebung verbunden sind.
+In Ihrer Sicherheitsorganisation muss Sichtbarkeit gegeben sein, um Risiken zu bewerten und zu bestimmen, ob die Richtlinien Ihrer Organisation und geltende gesetzliche Anforderungen eingehalten werden. Sie müssen dafür sorgen, dass Ihre Sicherheitsorganisation über Sichtbarkeit hinsichtlich aller Abonnements verfügt, die mit Ihrer Produktionsumgebung und Ihrem Produktionsnetzwerk verbunden sind (über [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). Ein [globaler Administrator/Unternehmensadministrator](../../active-directory/roles/permissions-reference.md#company-administrator-permissions) in Azure AD kann die Zugriffsrechte auf die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) erweitern und alle Abonnements und verwalteten Gruppen anzeigen, die mit Ihrer Umgebung verbunden sind.
 
 Lesen Sie den Artikel [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](../../role-based-access-control/elevate-access-global-admin.md) durch, und stellen Sie sicher, dass Sie und Ihre Sicherheitsgruppe alle Abonnements oder Verwaltungsgruppen einsehen können, die mit Ihrer Umgebung verbunden sind. Sie sollten diese erweiterten Zugriffsrechte nach dem Bewerten von Risiken wieder aufheben.
 
@@ -112,8 +112,8 @@ In einer primär auf Mobil- und Cloudtechnologie ausgelegten Welt möchten Sie e
 
 Indem Sie für alle Ihre Apps und Ressourcen die gleiche Identitätslösung verwenden, können Sie SSO erreichen. Ihre Benutzer können die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen nutzen. Dabei spielt es keine Rolle, ob eine Ressource lokal ist oder sich in der Cloud befindet.
 
-**Bewährte Methode**: Aktivieren Sie einmaliges Anmelden.  
-**Detail**: Azure AD [erweitert das lokale Active Directory](/azure/active-directory/connect/active-directory-aadconnect) auf die Cloud. Benutzer können ihr primäres Geschäfts-, Schul- oder Unikonto für ihre in die Domäne eingebundenen Geräte und Unternehmensressourcen sowie alle Web-und SaaS-Anwendungen verwenden, die sie benötigen, um ihre Arbeit zu erledigen. Benutzer müssen sich keine Vielzahl von Benutzernamen und Kennwörtern mehr merken, und ihr Anwendungszugriff kann basierend auf ihrer Gruppenmitgliedschaft in der Organisation sowie ihrem Mitarbeiterstatus automatisch bereitgestellt (oder deaktiviert) werden. Und Sie können diesen Zugriff für Katalog-Apps oder für Ihre eigenen lokalen Apps steuern, die Sie über den [Azure AD-Anwendungsproxy](/azure/active-directory/active-directory-application-proxy-get-started) entwickelt und veröffentlicht haben.
+**Bewährte Methode** : Aktivieren Sie einmaliges Anmelden.  
+**Detail** : Azure AD [erweitert das lokale Active Directory](/azure/active-directory/connect/active-directory-aadconnect) auf die Cloud. Benutzer können ihr primäres Geschäfts-, Schul- oder Unikonto für ihre in die Domäne eingebundenen Geräte und Unternehmensressourcen sowie alle Web-und SaaS-Anwendungen verwenden, die sie benötigen, um ihre Arbeit zu erledigen. Benutzer müssen sich keine Vielzahl von Benutzernamen und Kennwörtern mehr merken, und ihr Anwendungszugriff kann basierend auf ihrer Gruppenmitgliedschaft in der Organisation sowie ihrem Mitarbeiterstatus automatisch bereitgestellt (oder deaktiviert) werden. Und Sie können diesen Zugriff für Katalog-Apps oder für Ihre eigenen lokalen Apps steuern, die Sie über den [Azure AD-Anwendungsproxy](/azure/active-directory/active-directory-application-proxy-get-started) entwickelt und veröffentlicht haben.
 
 Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Geschäfts-, Schul- oder Unikonto in Azure AD auf ihre [SaaS-Anwendungen](/azure/active-directory/active-directory-appssoaccess-whatis) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](/azure/active-directory/active-directory-saas-google-apps-tutorial) und [Salesforce](/azure/active-directory/active-directory-saas-salesforce-tutorial). Sie können Ihre Anwendung so konfigurieren, dass Azure AD als [SAML-Identitätsanbieter](/azure/active-directory/fundamentals-identity) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
 
@@ -125,11 +125,11 @@ Benutzer können mithilfe einer Vielzahl von Geräten und Apps von überall aus 
 
 Um das Gleichgewicht zwischen Sicherheit und Produktivität zu bewahren, müssen Sie bei der Entscheidung über die Zugriffssteuerung berücksichtigen, auf welche Weise auf eine Ressource zugegriffen wird. Mit dem bedingten Zugriff von Azure AD können Sie diese Anforderung erfüllen. Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen für den Zugriff auf Ihre Cloud-Apps automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung treffen.
 
-**Bewährte Methode**: Verwalten und steuern Sie den Zugriff auf Unternehmensressourcen.  
-**Detail**: Konfigurieren Sie allgemeine [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) in Azure AD basierend auf der Gruppen-, Standort- und Anwendungsvertraulichkeit für SaaS-Apps und über Azure AD verbundene Apps.
+**Bewährte Methode** : Verwalten und steuern Sie den Zugriff auf Unternehmensressourcen.  
+**Detail** : Konfigurieren Sie allgemeine [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) in Azure AD basierend auf der Gruppen-, Standort- und Anwendungsvertraulichkeit für SaaS-Apps und über Azure AD verbundene Apps.
 
-**Bewährte Methode**: Blockieren Sie ältere Authentifizierungsprotokolle.
-**Detail**: Angreifer nutzen tagtäglich Schwachstellen in älteren Protokollen aus, insbesondere für Kennwort-Spray-Angriffe. Konfigurieren Sie den bedingten Zugriff, um [ältere Protokolle zu blockieren](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md).
+**Bewährte Methode** : Blockieren Sie ältere Authentifizierungsprotokolle.
+**Detail** : Angreifer nutzen tagtäglich Schwachstellen in älteren Protokollen aus, insbesondere für Kennwort-Spray-Angriffe. Konfigurieren Sie den bedingten Zugriff, um [ältere Protokolle zu blockieren](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md).
 
 ## <a name="plan-for-routine-security-improvements"></a>Planen routinemäßiger Sicherheitsverbesserungen
 
@@ -137,21 +137,21 @@ Sicherheit wird ständig weiterentwickelt, und es ist wichtig, dass Sie in Ihr F
 
 Die Identitätssicherheitsbewertung basiert auf einer Reihe empfohlener Sicherheitskontrollen, die von Microsoft veröffentlicht werden und eine numerische Bewertung bereitstellen, um Ihren Sicherheitsstatus objektiv zu messen und zukünftige Sicherheitsverbesserungen zu planen. Sie können Ihre Bewertung auch mit Bewertungen in anderen Branchen und mit Ihren eigenen Trends im Zeitverlauf vergleichen.
 
-**Bewährte Methode**: Planen Sie routinemäßige Sicherheitsüberprüfungen und -verbesserungen basierend auf bewährten Methoden in ihrer Branche.
-**Detail**: Verwenden Sie das Feature Identity Secure Score, um die Verbesserungen im Lauf der Zeit zu bewerten.
+**Bewährte Methode** : Planen Sie routinemäßige Sicherheitsüberprüfungen und -verbesserungen basierend auf bewährten Methoden in ihrer Branche.
+**Detail** : Verwenden Sie das Feature Identity Secure Score, um die Verbesserungen im Lauf der Zeit zu bewerten.
 
 ## <a name="enable-password-management"></a>Aktivieren der Kennwortverwaltung
 
 Wenn Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden.
 
-**Bewährte Methode**: Richten Sie Self-Service-Kennwortzurücksetzung (SSPR, Self-Service Password Reset) für Ihre Benutzer ein.  
-**Detail**: Verwenden Sie das Feature [Self-Service-Kennwortzurücksetzung](/azure/active-directory-b2c/active-directory-b2c-reference-sspr) in Azure AD.
+**Bewährte Methode** : Richten Sie Self-Service-Kennwortzurücksetzung (SSPR, Self-Service Password Reset) für Ihre Benutzer ein.  
+**Detail** : Verwenden Sie das Feature [Self-Service-Kennwortzurücksetzung](/azure/active-directory-b2c/active-directory-b2c-reference-sspr) in Azure AD.
 
-**Bewährte Methode**: Überwachen Sie, wie oder ob SSPR tatsächlich verwendet wird.  
-**Detail**: Überwachen Sie die Benutzer, die sich registrieren, mit dem [Bericht zur Registrierung für die Kennwortzurücksetzung](/azure/active-directory/active-directory-passwords-get-insights) von Azure AD. Über die Berichtsfunktion, die von Azure AD bereitgestellt wird, können Sie Fragen beantworten, indem Sie vordefinierte Berichte verwenden. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen.
+**Bewährte Methode** : Überwachen Sie, wie oder ob SSPR tatsächlich verwendet wird.  
+**Detail** : Überwachen Sie die Benutzer, die sich registrieren, mit dem [Bericht zur Registrierung für die Kennwortzurücksetzung](/azure/active-directory/active-directory-passwords-get-insights) von Azure AD. Über die Berichtsfunktion, die von Azure AD bereitgestellt wird, können Sie Fragen beantworten, indem Sie vordefinierte Berichte verwenden. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen.
 
-**Bewährte Methode**: Weiten Sie cloudbasierte Kennwortrichtlinien auf Ihre lokale Infrastruktur aus.
-**Detail**: Weiten Sie Kennwortrichtlinien in Ihrer Organisation aus, indem Sie für Änderungen lokaler Kennwörter dieselben Prüfungen ausführen wie für Änderungen cloudbasierter Kennwörter. Installieren Sie [Azure AD-Kennwortschutz](/azure/active-directory/authentication/concept-password-ban-bad) für Windows Server Active Directory-Agents lokal, um die Liste gesperrter Kennwörter auf Ihre vorhandene Infrastruktur auszudehnen. Benutzer und Administratoren, die Kennwörter lokal ändern, festlegen oder zurücksetzen, müssen die gleiche Kennwortrichtlinie einhalten wie ausschließliche Cloudbenutzer.
+**Bewährte Methode** : Weiten Sie cloudbasierte Kennwortrichtlinien auf Ihre lokale Infrastruktur aus.
+**Detail** : Weiten Sie Kennwortrichtlinien in Ihrer Organisation aus, indem Sie für Änderungen lokaler Kennwörter dieselben Prüfungen ausführen wie für Änderungen cloudbasierter Kennwörter. Installieren Sie [Azure AD-Kennwortschutz](/azure/active-directory/authentication/concept-password-ban-bad) für Windows Server Active Directory-Agents lokal, um die Liste gesperrter Kennwörter auf Ihre vorhandene Infrastruktur auszudehnen. Benutzer und Administratoren, die Kennwörter lokal ändern, festlegen oder zurücksetzen, müssen die gleiche Kennwortrichtlinie einhalten wie ausschließliche Cloudbenutzer.
 
 ## <a name="enforce-multi-factor-verification-for-users"></a>Erzwingen der mehrstufigen Überprüfung für Benutzer
 
@@ -161,7 +161,7 @@ Es gibt mehrere Optionen, um eine zweistufige Überprüfung zu erzwingen. Die be
 
 Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschrieben:
 
-**Option 1**: Aktivieren Sie MFA für alle Benutzer und Anmeldemethoden mit Azure AD Sicherheitsstandards. **Vorteil**: Mit dieser Option können Sie MFA für alle Benutzer in Ihrer Umgebung problemlos und schnell erzwingen und einer strenge Richtlinie für folgende Aktionen anwenden:
+**Option 1** : Aktivieren Sie MFA für alle Benutzer und Anmeldemethoden mit Azure AD Sicherheitsstandards. **Vorteil** : Mit dieser Option können Sie MFA für alle Benutzer in Ihrer Umgebung problemlos und schnell erzwingen und einer strenge Richtlinie für folgende Aktionen anwenden:
 
 * Abfragen von Administratorkonten und administrativen Anmeldemechanismen
 * Erzwingen von MFA über Microsoft Authenticator für alle Benutzer
@@ -169,18 +169,18 @@ Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschri
 
 Diese Methode ist für alle Lizenzierungsstufen verfügbar, kann jedoch nicht mit vorhandenen Richtlinien für den bedingten Zugriff kombiniert werden. Weitere Informationen finden Sie unter [Azure AD-Sicherheitsstandardwerte](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 
-**Option 2**: [Aktivieren Sie Azure Multi-Factor Authentication durch Ändern des Benutzerstatus](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](/azure/active-directory/authentication/concept-mfa-whichversion). Bei dieser Methode müssen sich Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt.
+**Option 2** : [Aktivieren Sie Azure Multi-Factor Authentication durch Ändern des Benutzerstatus](../../active-directory/authentication/howto-mfa-userstates.md).   
+**Vorteil** : Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](/azure/active-directory/authentication/concept-mfa-whichversion). Bei dieser Methode müssen sich Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt.
 
 Um zu bestimmen, wann Multi-Factor Authentication aktiviert werden muss, lesen Sie den Artikel [Welche Version von Azure MFA ist für meine Organisation die richtige?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
-**Option 3**: [Aktivieren Sie Multi-Factor Authentication mithilfe einer Richtlinie für bedingten Zugriff](/azure/active-directory/authentication/howto-mfa-getstarted).
-**Vorteil**: Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
+**Option 3** : [Aktivieren Sie Multi-Factor Authentication mithilfe einer Richtlinie für bedingten Zugriff](/azure/active-directory/authentication/howto-mfa-getstarted).
+**Vorteil** : Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
 
 Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Option 4**: Aktivieren Sie die Multi-Factor Authentication mit Richtlinien für den bedingten Zugriff durch Auswertung von [risikobasierten Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
-**Vorteil**: Diese Option ermöglicht Ihnen Folgendes:
+**Option 4** : Aktivieren Sie die Multi-Factor Authentication mit Richtlinien für den bedingten Zugriff durch Auswertung von [risikobasierten Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
+**Vorteil** : Diese Option ermöglicht Ihnen Folgendes:
 
 * Ermitteln potenzieller Sicherheitsrisiken für Identitäten Ihrer Organisation.
 * Konfigurieren automatischer Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit den Identitäten Ihrer Organisation.
@@ -203,23 +203,23 @@ Ihrem Sicherheitsteam benötigt Einblicke in Ihre Azure-Ressourcen, um Risiken z
 
 Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](/azure/role-based-access-control/overview) verwenden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
-**Bewährte Methode**: Verteilen Sie Aufgaben in Ihrem Team, und gewähren Sie Benutzern nur den Zugriff, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, beschränken Sie die Berechtigungen auf bestimmte Aktionen in einem bestimmten Bereich.
-**Detail**: Verwenden Sie [in Azure integrierte Rollen](/azure/role-based-access-control/built-in-roles), um Benutzern Berechtigungen zuzuweisen.
+**Bewährte Methode** : Verteilen Sie Aufgaben in Ihrem Team, und gewähren Sie Benutzern nur den Zugriff, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, beschränken Sie die Berechtigungen auf bestimmte Aktionen in einem bestimmten Bereich.
+**Detail** : Verwenden Sie [in Azure integrierte Rollen](/azure/role-based-access-control/built-in-roles), um Benutzern Berechtigungen zuzuweisen.
 
 > [!Note]
 > Bestimmte Berechtigungen bringen unnötige Komplexität und Verwirrung und letztendlich eine „veraltete“ Konfiguration mit sich, die nur schwer korrigiert werden, ohne größere Schäden anzurichten. Vermeiden Sie ressourcenspezifische Berechtigungen. Verwenden Sie statt dessen Verwaltungsgruppen für unternehmensweite Berechtigungen und Ressourcengruppen für Berechtigungen innerhalb von Abonnements. Vermeiden Sie benutzerspezifische Berechtigungen. Weisen Sie stattdessen Gruppen Zugriffsberechtigungen in Azure AD zu.
 
-**Bewährte Methode**: Gewähren Sie Sicherheitsteams mit Azure-Aufgaben die Berechtigung, Azure-Ressourcen anzuzeigen, damit sie diese bewerten und Risiken beheben können.
-**Detail**: Gewähren Sie Sicherheitsteams die RBAC-Rolle [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](/azure/role-based-access-control/built-in-roles#security-reader). Sie können je nach Umfang der Pflichten die Stammverwaltungsgruppe oder die Segmentverwaltungsgruppe verwenden:
+**Bewährte Methode** : Gewähren Sie Sicherheitsteams mit Azure-Aufgaben die Berechtigung, Azure-Ressourcen anzuzeigen, damit sie diese bewerten und Risiken beheben können.
+**Detail** : Gewähren Sie Sicherheitsteams die RBAC-Rolle [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](/azure/role-based-access-control/built-in-roles#security-reader). Sie können je nach Umfang der Pflichten die Stammverwaltungsgruppe oder die Segmentverwaltungsgruppe verwenden:
 
 * **Stammverwaltungsgruppe** für Teams, die für alle Unternehmensressourcen zuständig sind
 * **Segmentverwaltungsgruppe** für Teams mit beschränkter Zuständigkeit (häufig aufgrund gesetzlicher oder sonstiger organisatorischer Beschränkungen)
 
-**Bewährte Methode**: Gewähren Sie Sicherheitsteams mit direkten operativen Pflichten die entsprechenden Berechtigungen.
-**Detail**: Überprüfen Sie die integrierten RBAC-Rollen hinsichtlich der geeigneten Rollenzuweisung. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie [benutzerdefinierte Azure-Rollen](/azure/role-based-access-control/custom-roles) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
+**Bewährte Methode** : Gewähren Sie Sicherheitsteams mit direkten operativen Pflichten die entsprechenden Berechtigungen.
+**Detail** : Überprüfen Sie die integrierten RBAC-Rollen hinsichtlich der geeigneten Rollenzuweisung. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie [benutzerdefinierte Azure-Rollen](/azure/role-based-access-control/custom-roles) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
 
 **Bewährte Methoden:** Gewähren Sie den Sicherheitsrollen Azure Security Center-Zugriff, die diesen benötigen. Security Center ermöglicht Sicherheitsteams das schnelle Identifizieren und Beheben von Risiken.
-**Detail**: Fügen Sie Sicherheitsteams mit diesem Bedarf der RBAC-Rolle [Sicherheitsadministrator](/azure/role-based-access-control/built-in-roles#security-admin) hinzu, sodass sie Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen können. Sie können hierzu je nach Umfang der Pflichten die Stammverwaltungsgruppe oder die Segmentverwaltungsgruppe verwenden.
+**Detail** : Fügen Sie Sicherheitsteams mit diesem Bedarf der RBAC-Rolle [Sicherheitsadministrator](/azure/role-based-access-control/built-in-roles#security-admin) hinzu, sodass sie Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen können. Sie können hierzu je nach Umfang der Pflichten die Stammverwaltungsgruppe oder die Segmentverwaltungsgruppe verwenden.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen Ihren Benutzern möglicherweise mehr Berechtigungen als erforderlich. Dies kann zur Gefährdung von Daten führen, indem Benutzern erlaubt wird, auf bestimmte Arten von Daten zuzugreifen (z.B. Daten mit hoher geschäftlicher Bedeutung), auf die sie eigentlich keinen Zugriff haben dürften.
 
@@ -233,17 +233,17 @@ Wir empfehlen Ihnen, eine Roadmap zum Schützen des privilegierten Zugriffs gege
 
 Im Folgenden werden die Best Practices in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure) zusammengefasst:
 
-**Bewährte Methode**: Verwalten, steuern und überwachen Sie den Zugriff auf privilegierte Konten.   
-**Detail**: Aktivieren Sie [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access). Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
+**Bewährte Methode** : Verwalten, steuern und überwachen Sie den Zugriff auf privilegierte Konten.   
+**Detail** : Aktivieren Sie [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access). Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
 
-**Bewährte Methode**: Stellen Sie sicher, dass alle wichtigen Administratorkonten verwaltete Azure AD-Konten sind.
-**Detail**: Entfernen Sie alle Consumer-Konten aus wichtigen Administratorrollen (z.B. Microsoft-Konten wie „hotmail.com“, „live.com“ und „outlook.com“).
+**Bewährte Methode** : Stellen Sie sicher, dass alle wichtigen Administratorkonten verwaltete Azure AD-Konten sind.
+**Detail** : Entfernen Sie alle Consumer-Konten aus wichtigen Administratorrollen (z.B. Microsoft-Konten wie „hotmail.com“, „live.com“ und „outlook.com“).
 
-**Bewährte Methode**: Stellen Sie sicher, dass alle wichtigen Administratorrollen ein separates Konto für administrative Aufgaben haben, um Phishing und andere Angriffe zu verhindern, bei denen Administratorrechte ausgenutzt werden.
-**Detail**: Erstellen Sie ein separates Administratorkonto an, dem die erforderlichen Berechtigungen für administrative Aufgaben zugewiesen sind. Blockieren Sie die Verwendung dieser Administratorkonten für gängige Produktivitätstools wie Microsoft 365-E-Mail und willkürliches Browsen im Web.
+**Bewährte Methode** : Stellen Sie sicher, dass alle wichtigen Administratorrollen ein separates Konto für administrative Aufgaben haben, um Phishing und andere Angriffe zu verhindern, bei denen Administratorrechte ausgenutzt werden.
+**Detail** : Erstellen Sie ein separates Administratorkonto an, dem die erforderlichen Berechtigungen für administrative Aufgaben zugewiesen sind. Blockieren Sie die Verwendung dieser Administratorkonten für gängige Produktivitätstools wie Microsoft 365-E-Mail und willkürliches Browsen im Web.
 
-**Bewährte Methode**: Identifizieren und kategorisieren Sie Konten in stark privilegierten Rollen.   
-**Detail**: Zeigen Sie nach dem Aktivieren von Azure AD Privileged Identity Management die Benutzer an, die die Rollen globaler Administrator, privilegierter Rollenadministrator und andere hoch privilegierte Rollen einnehmen. Entfernen Sie alle Konten, die nicht mehr in diesen Rollen benötigt werden, und kategorisieren Sie die restlichen Konten, die Administratorrollen zugewiesen sind:
+**Bewährte Methode** : Identifizieren und kategorisieren Sie Konten in stark privilegierten Rollen.   
+**Detail** : Zeigen Sie nach dem Aktivieren von Azure AD Privileged Identity Management die Benutzer an, die die Rollen globaler Administrator, privilegierter Rollenadministrator und andere hoch privilegierte Rollen einnehmen. Entfernen Sie alle Konten, die nicht mehr in diesen Rollen benötigt werden, und kategorisieren Sie die restlichen Konten, die Administratorrollen zugewiesen sind:
 
 * Einzeln Benutzern mit Administratorrechten zugewiesen, und kann nicht zu administrativen Zwecken (z.B. persönliche E-Mail) verwendet werden
 * Einzeln Benutzern mit Administratorrechten zugewiesen und nur für Verwaltungszwecke vorgesehen
@@ -252,39 +252,39 @@ Im Folgenden werden die Best Practices in [Schützen des privilegierten Zugriffs
 * Für automatisierte Skripts
 * Für externe Benutzer
 
-**Bewährte Methode**: Implementieren Sie Just-in-Time-Zugriff (JIT) zur weiteren Reduzierung der Offenlegungszeit von Berechtigungen und Steigern Ihres Einblicks in die Verwendung privilegierter Konten.   
-**Detail**: Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
+**Bewährte Methode** : Implementieren Sie Just-in-Time-Zugriff (JIT) zur weiteren Reduzierung der Offenlegungszeit von Berechtigungen und Steigern Ihres Einblicks in die Verwendung privilegierter Konten.   
+**Detail** : Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
 
 * Beschränken der Nutzung von Benutzerberechtigungen auf JIT.
 * Zuweisen von Rollen für eine verkürzte Dauer mit der Gewissheit, dass die Berechtigungen automatisch widerrufen werden.
 
-**Bewährte Methode**: Definieren Sie mindestens zwei Notfallzugriffskonten.   
-**Detail**: Notfallzugriffskonten unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen die Notfallkontennutzung auf die erforderliche Zeitspanne begrenzen.
+**Bewährte Methode** : Definieren Sie mindestens zwei Notfallzugriffskonten.   
+**Detail** : Notfallzugriffskonten unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen die Notfallkontennutzung auf die erforderliche Zeitspanne begrenzen.
 
 Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der `*.onmicrosoft.com`-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](/azure/active-directory/users-groups-roles/directory-emergency-access).
 
-**Bewährte Methode**: Richten Sie einen Notfallprozess für Notfallsituationen ein.
-**Detail**: Führen Sie die Schritte in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure) aus.
+**Bewährte Methode** : Richten Sie einen Notfallprozess für Notfallsituationen ein.
+**Detail** : Führen Sie die Schritte in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure) aus.
 
-**Bewährte Methode**: Fordern Sie, dass alle wichtigen Administratorkonten kennwortlos sind (bevorzugt), oder fordern Sie die Verwendung von Multi-Factor Authentication.
-**Detail**: Melden Sie sich mit der [Microsoft Authenticator-App](/azure/active-directory/authentication/howto-authentication-phone-sign-in) bei jedem beliebigen Azure AD-Konto an, ohne ein Kennwort zu verwenden. Wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischer Authentifizierung oder einer PIN beruhen.
+**Bewährte Methode** : Fordern Sie, dass alle wichtigen Administratorkonten kennwortlos sind (bevorzugt), oder fordern Sie die Verwendung von Multi-Factor Authentication.
+**Detail** : Melden Sie sich mit der [Microsoft Authenticator-App](/azure/active-directory/authentication/howto-authentication-phone-sign-in) bei jedem beliebigen Azure AD-Konto an, ohne ein Kennwort zu verwenden. Wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischer Authentifizierung oder einer PIN beruhen.
 
 Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) von Azure für alle Benutzer vor, die dauerhaft einzelnen oder mehreren der Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Aktivieren Sie [Multi-Factor Authentication für Ihre Administratorkonten](/azure/active-directory/authentication/howto-mfa-userstates), und stellen Sie sicher, dass alle Benutzer registriert sind.
 
-**Bewährte Methode**: Richten Sie für wichtige Administratorkonten eine Administrator-Arbeitsstation ein, auf der keine Produktionsaufgaben (wie Webbrowsen und E-Mail) ausgeführt werden dürfen. Dies schützt Ihre Administratorkonten vor Angriffsvektoren, die Webbrowsen und E-Mail ausnutzen, und Sie mindern das Risiken schwerwiegender Vorfälle erheblich.
-**Detail**: Verwenden Sie eine Administrator-Arbeitsstation. Wählen Sie ein Sicherheitsniveau für die Arbeitsstation aus:
+**Bewährte Methode** : Richten Sie für wichtige Administratorkonten eine Administrator-Arbeitsstation ein, auf der keine Produktionsaufgaben (wie Webbrowsen und E-Mail) ausgeführt werden dürfen. Dies schützt Ihre Administratorkonten vor Angriffsvektoren, die Webbrowsen und E-Mail ausnutzen, und Sie mindern das Risiken schwerwiegender Vorfälle erheblich.
+**Detail** : Verwenden Sie eine Administrator-Arbeitsstation. Wählen Sie ein Sicherheitsniveau für die Arbeitsstation aus:
 
 - Hochsichere Produktivitätsgeräte bieten umfassende Sicherheit für Webbrowsen und anderen Produktivitätsaufgaben.
 - [Privileged Access Workstations (PAWs)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsvektoren geschützt ist.
 
-**Bewährte Methode**: Heben Sie die Bereitstellung von Administratorkonten auf, wenn Mitarbeiter Ihre Organisation verlassen.
-**Detail**: Pflegen Sie einen Prozess, mit dem Administratorkonten deaktiviert oder gelöscht werden, wenn Mitarbeiter Ihre Organisation verlassen.
+**Bewährte Methode** : Heben Sie die Bereitstellung von Administratorkonten auf, wenn Mitarbeiter Ihre Organisation verlassen.
+**Detail** : Pflegen Sie einen Prozess, mit dem Administratorkonten deaktiviert oder gelöscht werden, wenn Mitarbeiter Ihre Organisation verlassen.
 
-**Bewährte Methode**: Testen Sie Administratorkonten regelmäßig mit aktuellen Angriffstechniken.
-**Detail**: Verwenden Sie den Angriffssimulator von Microsoft 365 oder ein Angebot eines Drittanbieters, um realistische Angriffsszenarien in Ihrer Organisation durchzuspielen. Damit können Sie gefährdete Benutzer identifizieren, bevor ein tatsächlicher Angriff stattfindet.
+**Bewährte Methode** : Testen Sie Administratorkonten regelmäßig mit aktuellen Angriffstechniken.
+**Detail** : Verwenden Sie den Angriffssimulator von Microsoft 365 oder ein Angebot eines Drittanbieters, um realistische Angriffsszenarien in Ihrer Organisation durchzuspielen. Damit können Sie gefährdete Benutzer identifizieren, bevor ein tatsächlicher Angriff stattfindet.
 
-**Bewährte Methode**: Führen Sie Maßnahmen zum Abwehren der am häufigsten verwendeten Angriffstechniken durch.  
-**Detail**: [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Geschäfts-, Schul- oder Unikonten umgestellt werden müssen.](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**Bewährte Methode** : Führen Sie Maßnahmen zum Abwehren der am häufigsten verwendeten Angriffstechniken durch.  
+**Detail** : [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Geschäfts-, Schul- oder Unikonten umgestellt werden müssen.](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
 [Stellen Sie separate Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten sicher.](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)  
 
@@ -323,7 +323,7 @@ Organisationen, die die Erstellung von Ressourcen nicht steuern, sind anfällige
 
 Ein aktives Identitätsüberwachungssystem kann schnell verdächtiges Verhalten erkennen und eine Warnung zur weiteren Untersuchung auslösen. Die folgende Tabelle enthält zwei Azure AD-Funktionen, mit denen Organisationen ihre Identitäten überwachen können:
 
-**Bewährte Methode**: Verwenden Sie eine Methode, um Folgendes zu identifizieren:
+**Bewährte Methode** : Verwenden Sie eine Methode, um Folgendes zu identifizieren:
 
 - Versuch einer Anmeldung [ohne Ablaufverfolgung](/azure/active-directory/active-directory-reporting-sign-ins-from-unknown-sources).
 - [Brute-Force](/azure/active-directory/active-directory-reporting-sign-ins-after-multiple-failures)-Angriffe gegen ein bestimmtes Konto.
@@ -331,10 +331,10 @@ Ein aktives Identitätsüberwachungssystem kann schnell verdächtiges Verhalten 
 - Anmeldungen von [infizierten Geräten](/azure/active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices).
 - Verdächtige IP-Adressen.
 
-**Detail**: Verwenden Sie [Anomalieberichte](/azure/active-directory/active-directory-view-access-usage-reports) von Azure AD Premium. Sie müssen über Prozesse und Verfahren verfügen, mit denen IT-Administratoren diese Berichte täglich oder bei Bedarf ausführen können (normalerweise in einem Szenario mit Reaktionen auf Zwischenfälle).
+**Detail** : Verwenden Sie [Anomalieberichte](/azure/active-directory/active-directory-view-access-usage-reports) von Azure AD Premium. Sie müssen über Prozesse und Verfahren verfügen, mit denen IT-Administratoren diese Berichte täglich oder bei Bedarf ausführen können (normalerweise in einem Szenario mit Reaktionen auf Zwischenfälle).
 
-**Bewährte Methode**: Sie haben ein aktives Überwachungssystem, das Sie über Risiken informiert, und können die Risikostufe (hoch, mittel oder niedrig) an Ihre geschäftlichen Anforderungen anpassen.   
-**Detail**: Verwenden Sie [Azure AD Identity Protection](/azure/active-directory/active-directory-identityprotection), das die aktuellen Risiken im eigenen Dashboard markiert und tägliche Zusammenfassungen per E-Mail sendet. Zum Schutz der Identitäten Ihrer Organisation können Sie risikobasierte Richtlinien konfigurieren, die automatisch auf erkannte Probleme reagieren, wenn eine angegebene Risikostufe erreicht ist.
+**Bewährte Methode** : Sie haben ein aktives Überwachungssystem, das Sie über Risiken informiert, und können die Risikostufe (hoch, mittel oder niedrig) an Ihre geschäftlichen Anforderungen anpassen.   
+**Detail** : Verwenden Sie [Azure AD Identity Protection](/azure/active-directory/active-directory-identityprotection), das die aktuellen Risiken im eigenen Dashboard markiert und tägliche Zusammenfassungen per E-Mail sendet. Zum Schutz der Identitäten Ihrer Organisation können Sie risikobasierte Richtlinien konfigurieren, die automatisch auf erkannte Probleme reagieren, wenn eine angegebene Risikostufe erreicht ist.
 
 Für Organisationen, die ihre Identitätssysteme nicht aktiv überwachen, besteht das Risiko, dass Anmeldeinformationen kompromittiert werden. Ohne das Wissen, dass diese Anmeldeinformationen für verdächtige Aktivitäten genutzt werden, können Organisationen dieser Art von Bedrohung nicht begegnen.
 

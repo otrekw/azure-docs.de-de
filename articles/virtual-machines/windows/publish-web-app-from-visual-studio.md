@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "87088392"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Veröffentlichen einer ASP.NET-Web-App auf einer Azure-VM aus Visual Studio
@@ -33,7 +33,7 @@ Der folgende Abschnitt beschreibt das Veröffentlichen einer vorhandenen ASP.NET
 
 1. Öffnen Sie Ihre Web-App-Projektmappe in Visual Studio 2019.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
-3. Scrollen Sie mit dem Pfeil auf der rechten Seite durch die Veröffentlichungsoptionen bis **Microsoft Azure Virtual Machines**.  
+3. Scrollen Sie mit dem Pfeil auf der rechten Seite durch die Veröffentlichungsoptionen bis **Microsoft Azure Virtual Machines** .  
 
    ![Seite „Veröffentlichen“ – Pfeil rechts]
 
@@ -96,12 +96,12 @@ Die Einstellungen sollten in etwa wie folgt aussehen:
 ![Veröffentlichungseinstellungen – Seite „Verbindung“]
 
 #### <a name="save-user-name-and-password"></a>Speichern von Benutzername und Kennwort
-- Vermeiden der Bereitstellung von Authentifizierungsinformationen bei jedem Mal, wenn Sie veröffentlichen. Füllen Sie zu diesem Zweck die Felder **Benutzernamen** und **Kennwort** aus, und aktivieren Sie das Feld **Kennwort speichern**.
+- Vermeiden der Bereitstellung von Authentifizierungsinformationen bei jedem Mal, wenn Sie veröffentlichen. Füllen Sie zu diesem Zweck die Felder **Benutzernamen** und **Kennwort** aus, und aktivieren Sie das Feld **Kennwort speichern** .
 - Mit der Schaltfläche **Verbindung überprüfen** können Sie sich vergewissern, dass Sie die richtigen Informationen eingegeben haben.
 
 #### <a name="deploy-to-clean-web-server"></a>Bereitstellen auf einem bereinigten Webserver
 
-- Wenn Sie nach jedem Upload sicherstellen möchten, dass der Webserver über eine bereinigte Kopie der Webanwendung verfügt (und dass keine anderen Dateien aus früheren Bereitstellungen zurück geblieben sind), aktivieren Sie auf der Registerkarte **Einstellungen** das Kontrollkästchen **Zusätzliche Dateien am Ziel entfernen**.
+- Wenn Sie nach jedem Upload sicherstellen möchten, dass der Webserver über eine bereinigte Kopie der Webanwendung verfügt (und dass keine anderen Dateien aus früheren Bereitstellungen zurück geblieben sind), aktivieren Sie auf der Registerkarte **Einstellungen** das Kontrollkästchen **Zusätzliche Dateien am Ziel entfernen** .
 
 - Warnung: Durch das Veröffentlichen mit dieser Einstellung werden alle Dateien auf dem Webserver (Verzeichnis „wwwroot“) gelöscht. Sie sollten unbedingt den Zustand des Computers kennen, bevor Sie eine Veröffentlichung mit dieser Option durchführen. 
 

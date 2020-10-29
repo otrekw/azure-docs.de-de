@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499754"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369402"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problembehandlung des Prozessservers
 
@@ -54,11 +54,11 @@ Die Prozessserver generiert zahlreiche Integritätswarnungen. Diese Warnungen (u
 ![Healthy][green] | Keine  | Der Prozessserver ist verbunden und fehlerfrei.
 ![Warnung][yellow] | Die angegebenen Dienste werden nicht ausgeführt. | 1. Überprüfen Sie, ob die Dienste ausgeführt werden.<br/> 2. Wenn die Dienste wie erwartet ausgeführt werden, befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu behandeln](#check-connectivity-and-replication).
 ![Warnung][yellow]  | CPU-Auslastung > 80 % während der letzten 15 Minuten. | 1. Fügen Sie keine neuen Computern hinzu.<br/>2. Überprüfen Sie, ob die Anzahl der VMs, die den Prozessserver verwenden, den [definierten Grenzwerten](site-recovery-plan-capacity-vmware.md#capacity-considerations) entspricht, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/>3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).
-![Kritisch][red] |  CPU-Auslastung > 95 % während der letzten 15 Minuten. | 1. Fügen Sie keine neuen Computern hinzu.<br/>2. Überprüfen Sie, ob die Anzahl der VMs, die den Prozessserver verwenden, den [definierten Grenzwerten](site-recovery-plan-capacity-vmware.md#capacity-considerations) entspricht, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/>3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).<br/> 4. Wenn das Problem weiterhin besteht, führen Sie den [Bereitstellungsplaner](https://aka.ms/asr-v2a-deployment-planner) für die Replikation von VMware- bzw. physischern Servern aus.
+![Kritisch][red] |  CPU-Auslastung > 95 % während der letzten 15 Minuten. | 1. Fügen Sie keine neuen Computern hinzu.<br/>2. Überprüfen Sie, ob die Anzahl der VMs, die den Prozessserver verwenden, den [definierten Grenzwerten](site-recovery-plan-capacity-vmware.md#capacity-considerations) entspricht, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/>3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).<br/> 4. Wenn das Problem weiterhin besteht, führen Sie den [Bereitstellungsplaner](./site-recovery-deployment-planner.md) für die Replikation von VMware- bzw. physischern Servern aus.
 ![Warnung][yellow] | Speicherauslastung > 80 % während der letzten 15 Minuten. |  1. Fügen Sie keine neuen Computern hinzu.<br/>2. Überprüfen Sie, ob die Anzahl der VMs, die den Prozessserver verwenden, den [definierten Grenzwerten](site-recovery-plan-capacity-vmware.md#capacity-considerations) entspricht, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/>3. Befolgen Sie die Anweisungen, die der Warnung zugeordnet sind.<br/> 4. Wenn das Problem weiterhin besteht, befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).
-![Kritisch][red] | Speicherauslastung > 95 % während der letzten 15 Minuten. | 1. Fügen Sie keine neuen Computern hinzu, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/> 2. Befolgen Sie die Anweisungen, die der Warnung zugeordnet sind.<br/> 3. 4. Wenn das Problem weiterhin besteht, befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).<br/> 4. Wenn das Problem weiterhin besteht, führen Sie den [Bereitstellungsplaner](https://aka.ms/asr-v2a-deployment-planner) für Replikationsprobleme von VMware- bzw. physischern Servern aus.
+![Kritisch][red] | Speicherauslastung > 95 % während der letzten 15 Minuten. | 1. Fügen Sie keine neuen Computern hinzu, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/> 2. Befolgen Sie die Anweisungen, die der Warnung zugeordnet sind.<br/> 3. 4. Wenn das Problem weiterhin besteht, befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).<br/> 4. Wenn das Problem weiterhin besteht, führen Sie den [Bereitstellungsplaner](./site-recovery-deployment-planner.md) für Replikationsprobleme von VMware- bzw. physischern Servern aus.
 ![Warnung][yellow] | Freier Speicherplatz des Cacheordners < 30 % während der letzten 15 Minuten. | 1. Fügen Sie keine neuen Computern hinzu, und ziehen Sie die Einrichtung eines [zusätzlichen Prozessservers](vmware-azure-set-up-process-server-scale.md) in Betracht.<br/>2. Überprüfen Sie, ob die Anzahl der VMs, die den Prozessserver verwenden, den [Richtlinien](site-recovery-plan-capacity-vmware.md#capacity-considerations) entspricht.<br/> 3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).
-![Kritisch][red] |  Freier Speicherplatz < 25 % während der letzten 15 Minuten. | 1. Befolgen Sie die Anweisungen, die der Warnung für dieses Problem zugeordnet sind.<br/> 2. 3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).<br/> 3. Wenn das Problem weiterhin besteht, führen Sie den [Bereitstellungsplaner](https://aka.ms/asr-v2a-deployment-planner) für die Replikation von VMware- bzw. physischern Servern aus.
+![Kritisch][red] |  Freier Speicherplatz < 25 % während der letzten 15 Minuten. | 1. Befolgen Sie die Anweisungen, die der Warnung für dieses Problem zugeordnet sind.<br/> 2. 3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).<br/> 3. Wenn das Problem weiterhin besteht, führen Sie den [Bereitstellungsplaner](./site-recovery-deployment-planner.md) für die Replikation von VMware- bzw. physischern Servern aus.
 ![Kritisch][red] | 15 Minuten oder länger kein Heartbeat vom Prozessserver. Der tmansvs-Dienst kommuniziert nicht mit dem Konfigurationsserver. | 1) Überprüfen Sie, ob der Prozessserver aktiv ist und ausgeführt wird.<br/> 2. Überprüfen Sie, ob tmassvc auf dem Prozessserver ausgeführt wird.<br/> 3. Befolgen Sie die Anweisungen unten, um [Konnektivitäts- und Replikationsprobleme zu beheben](#check-connectivity-and-replication).
 
 
@@ -85,7 +85,7 @@ Wenn kein Heartbeat vom Prozessserver (Fehlercode 806) vorhanden ist, führen Si
 1. Stellen Sie sicher, dass die Prozessserver-VM aktiv ist und ausgeführt wird.
 2. Überprüfen Sie die folgenden Protokolle auf Fehler.
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log, C\ProgramData\ASR\home\svsystems\monitor_protection*.log.
+    C:\ProgramData\ASR\home\svsystems\eventmanager *.log, C\ProgramData\ASR\home\svsystems\monitor_protection* .log.
 
 ## <a name="check-connectivity-and-replication"></a>Überprüfen der Konnektivität und Replikation
 
@@ -167,8 +167,8 @@ Probleme mit Datenuploads, die von den Quellcomputern zum Prozessdienst blockier
 Überprüfen Sie, ob der Prozessserver aktiv Daten in Azure pusht.
 
   1. Öffnen Sie auf dem Prozessserver den Task-Manager (drücken Sie STRG+UMSCHALT+ESC).
-  2. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen**.
-  3. Wählen Sie auf der Seite **Ressourcenmonitor** die Registerkarte **Netzwerk** aus. Überprüfen Sie unter **Prozess mit Netzwerkaktivität**, ob „cbengine.exe“ aktiv große Datenvolumen sendet.
+  2. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen** .
+  3. Wählen Sie auf der Seite **Ressourcenmonitor** die Registerkarte **Netzwerk** aus. Überprüfen Sie unter **Prozess mit Netzwerkaktivität** , ob „cbengine.exe“ aktiv große Datenvolumen sendet.
 
        ![Screenshot: Hoher Wert für Volumen unter „Prozesse mit Netzwerkaktivität“](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
@@ -177,7 +177,7 @@ Probleme mit Datenuploads, die von den Quellcomputern zum Prozessdienst blockier
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Schritt 9: Überprüfen der Prozessserververbindung mit Azure Blob Storage
 
 1. Wählen Sie im Ressourcenmonitor **cbengine.exe** aus.
-2. Überprüfen Sie unter **TCP-Verbindungen**, ob eine Verbindung vom Prozessserver mit dem Azure-Speicher besteht.
+2. Überprüfen Sie unter **TCP-Verbindungen** , ob eine Verbindung vom Prozessserver mit dem Azure-Speicher besteht.
 
   ![Screenshot: Konnektivität zwischen „cbengine.exe“ und der URL von Azure Blob Storage](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
@@ -233,9 +233,9 @@ Wenn keine Verbindung vom Prozessserver mit der URL von Azure Blob Storage beste
 1. Wenn Sie einen Proxyserver verwenden, stellen Sie sicher, dass der Proxyservername durch den DNS-Server aufgelöst wird. Überprüfen Sie den Wert, den Sie beim Einrichten des Konfigurationsservers im Registrierungsschlüssel **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings** angegeben haben.
 2. Stellen Sie sicher, dass dieselben Einstellungen vom Azure Site Recovery-Agent zum Senden von Daten verwendet werden.
 
-    a) Suchen Sie nach **Microsoft Azure Backup**.
+    a) Suchen Sie nach **Microsoft Azure Backup** .
 
-    b) Öffnen Sie **Microsoft Azure Backup**, und wählen Sie dann **Aktion** > **Eigenschaften ändern** aus.
+    b) Öffnen Sie **Microsoft Azure Backup** , und wählen Sie dann **Aktion** > **Eigenschaften ändern** aus.
 
     c) Auf der Registerkarte **Proxykonfiguration** sollte die Proxyadresse mit der Proxyadresse übereinstimmen, die in den Registrierungseinstellungen angezeigt wird. Wenn dies nicht der Fall ist, ändern Sie diese in dieselbe Adresse.
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387676"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363860"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Verwalten von benutzerdefinierten Azure AD B2C-Richtlinien mit Azure PowerShell
 
@@ -29,15 +29,15 @@ Azure PowerShell stellt mehrere Cmdlets für die befehlszeilen- und skriptgestü
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Azure AD B2C-Mandant](tutorial-create-tenant.md) und Anmeldeinformationen für einen Benutzer im Verzeichnis mit der Rolle [B2C-IEF-Richtlinienadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
+* [Azure AD B2C-Mandant](tutorial-create-tenant.md) und Anmeldeinformationen für einen Benutzer im Verzeichnis mit der Rolle [B2C-IEF-Richtlinienadministrator](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Benutzerdefinierte Richtlinien](custom-policy-get-started.md), die in Ihren Mandanten hochgeladen wurden
-* [Azure AD PowerShell-Modul für Graph (**Vorschauversion**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0))
+* [Azure AD PowerShell-Modul für Graph ( **Vorschauversion**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0))
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>Verbinden der PowerShell-Sitzung mit dem B2C-Mandanten
 
 Um in Ihrem Azure AD B2C-Mandanten mit benutzerdefinierten Richtlinien arbeiten zu können, müssen Sie zuerst mit dem Befehl [Connect-AzureAD][Connect-AzureAD] Ihre PowerShell-Sitzung mit dem Mandanten verbinden.
 
-Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `{b2c-tenant-name}` durch den Namen Ihres Azure AD B2C-Mandanten. Melden Sie sich mit einem Konto an, dem im Verzeichnis die Rolle [B2C-IEF-Richtlinienadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) zugewiesen ist.
+Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `{b2c-tenant-name}` durch den Namen Ihres Azure AD B2C-Mandanten. Melden Sie sich mit einem Konto an, dem im Verzeichnis die Rolle [B2C-IEF-Richtlinienadministrator](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) zugewiesen ist.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"

@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982491"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368246"
 ---
 # <a name="list-azure-role-definitions"></a>Auflisten von Azure-Rollendefinitionen
 
 Eine Rollendefinition ist eine Sammlung von ausführbaren Berechtigungen wie etwa Lesen, Schreiben und Löschen. Sie wird in der Regel einfach als „Rolle“ bezeichnet. [Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](overview.md) umfasst über 120 [integrierte Rollen](built-in-roles.md). Außerdem können Sie eigene benutzerdefinierte Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie die integrierten und benutzerdefinierten Rollen auflisten, die Sie verwenden können, um Zugriff auf Azure-Ressourcen zu gewähren.
 
-Eine Liste mit Administratorrollen für Azure Active Directory finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Eine Liste mit Administratorrollen für Azure Active Directory finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ## <a name="azure-portal"></a>Azure-Portal
 
@@ -33,13 +33,13 @@ Eine Liste mit Administratorrollen für Azure Active Directory finden Sie unter 
 
 Führen Sie diese Schritte aus, um alle Rollen im Azure-Portal aufzulisten.
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie anschließend einen Bereich aus. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** , und wählen Sie anschließend einen Bereich aus. Sie können beispielsweise **Verwaltungsgruppen** , **Abonnements** , **Ressourcengruppen** oder eine Ressource auswählen.
 
 1. Klicken Sie auf die gewünschte Ressource.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Rollen**, um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollen** , um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
 
    Sie können die Anzahl von Benutzern und Gruppen anzeigen, die jeder Rolle für den aktuellen Bereich zugewiesen sind.
 

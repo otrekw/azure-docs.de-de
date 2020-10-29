@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797524"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369130"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Bearbeiten Ihrer Gruppeninformationen in Azure Active Directory
 
@@ -47,13 +47,13 @@ In Azure Active Directory (Azure AD) können Sie die Einstellungen einer Gruppe 
 
     - **Gruppenname.** Bearbeiten Sie den vorhandenen Gruppennamen.
     
-    - **Gruppenbeschreibung**: Bearbeiten Sie die vorhandene Gruppenbeschreibung.
+    - **Gruppenbeschreibung** : Bearbeiten Sie die vorhandene Gruppenbeschreibung.
 
     - **Gruppentyp.** Sie können den Typ der Gruppe nach deren Erstellung nicht mehr ändern. Um den **Gruppentyp** zu ändern, müssen Sie die Gruppe löschen und eine neue erstellen.
     
     - **Mitgliedschaftstyp.** Ändern Sie den Typs der Mitgliedschaft. Weitere Informationen zu den verschiedenen verfügbaren Mitgliedschaften finden Sie unter [ Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](active-directory-groups-create-azure-portal.md).
     
-    - **Objekt-ID.** Sie können die Objekt-ID nicht ändern, aber Sie können sie kopieren, um sie in Ihren PowerShell-Befehlen für die Gruppe zu verwenden. Weitere Informationen zur Verwendung von PowerShell-Cmdlets finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../users-groups-roles/groups-settings-v2-cmdlets.md).
+    - **Objekt-ID.** Sie können die Objekt-ID nicht ändern, aber Sie können sie kopieren, um sie in Ihren PowerShell-Befehlen für die Gruppe zu verwenden. Weitere Informationen zur Verwendung von PowerShell-Cmdlets finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-v2-cmdlets.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
@@ -64,7 +64,7 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 - [Hinzufügen oder Entfernen von Mitgliedern zu/aus einer Gruppe](active-directory-groups-members-azure-portal.md)
 
-- [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](../users-groups-roles/groups-create-rule.md)
+- [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](../enterprise-users/groups-create-rule.md)
 
 - [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 

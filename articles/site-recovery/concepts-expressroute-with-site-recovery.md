@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 68671a98c7703514af11de2f8c505110129fe713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398645"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367991"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute mit Azure Site Recovery
 
@@ -37,7 +37,7 @@ Stellen Sie sicher, dass auch die [Netzwerkanforderungen](vmware-azure-configura
 
 Wenn Sie den Proxy vor Ort verwenden und ExpressRoute für den Replikationsdatenverkehr verwenden möchten, müssen Sie die Proxyumgehungsliste auf dem Konfigurationsserver und den Prozessservern konfigurieren. Führen Sie dafür die folgenden Schritte aus:
 
-- Laden Sie das Tool PsExec [hier](https://aka.ms/PsExec) herunter, um auf den Systembenutzerkontext zuzugreifen.
+- Laden Sie das Tool PsExec [hier](/sysinternals/downloads/psexec) herunter, um auf den Systembenutzerkontext zuzugreifen.
 - Öffnen Sie Internet Explorer im Systembenutzercontext, indem Sie die folgende Befehlszeile ausführen: psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 - Hinzufügen von Proxyeinstellungen in Internet Explorer
 - Fügen Sie in der Umgehungsliste die Azure-Speicher-URL *.blob.core.windows.net hinzu.

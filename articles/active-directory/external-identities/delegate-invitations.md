@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278786"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362925"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie die B2B-Zusammenarbeit in Azure Active D
 
 Per Standardeinstellung können alle Benutzer und Gäste in Ihrem Verzeichnis Gäste einladen, auch denn, wenn ihnen keine Administratorrolle zugewiesen ist. In den Einstellungen für die externe Zusammenarbeit können Sie die Möglichkeit, Gäste einzuladen, für verschiedene Benutzertypen in Ihrer Organisation aktivieren oder deaktivieren. Diese Möglichkeit können Sie auch an einzelne Benutzer delegieren, indem Sie diesen Benutzern Rollen zuweisen, die es ihnen ermöglichen, Gäste einzuladen.
 
-Mit Azure AD können Sie einschränken, was externe Gastbenutzer in Ihrem Azure AD-Verzeichnis sehen können. Standardmäßig ist Gastbenutzern eine eingeschränkte Berechtigungsstufe zugewiesen, die sie daran hindert, Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten, ihnen aber ermöglicht, die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzuzeigen. Mit einer neuen Vorschaueinstellung können Sie den Gastzugriff noch weiter einschränken, sodass Gäste nur ihre eigenen Profilinformationen sehen können. Einzelheiten finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau)](../users-groups-roles/users-restrict-guest-permissions.md).
+Mit Azure AD können Sie einschränken, was externe Gastbenutzer in Ihrem Azure AD-Verzeichnis sehen können. Standardmäßig ist Gastbenutzern eine eingeschränkte Berechtigungsstufe zugewiesen, die sie daran hindert, Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten, ihnen aber ermöglicht, die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzuzeigen. Mit einer neuen Vorschaueinstellung können Sie den Gastzugriff noch weiter einschränken, sodass Gäste nur ihre eigenen Profilinformationen sehen können. Einzelheiten finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau)](../enterprise-users/users-restrict-guest-permissions.md).
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Konfigurieren der Einstellungen für externe B2B-Zusammenarbeit
 
@@ -47,7 +47,7 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
 
    - **Gastbenutzer haben denselben Zugriff wie Mitglieder (umfassendste Einstellung)** : Diese Option gibt Gästen den gleichen Zugriff auf die Ressourcen und Verzeichnisdaten von Azure AD wie Mitgliedsbenutzern.
 
-   - **Gastbenutzer haben eingeschränkten Zugriff auf Eigenschaften und Mitgliedschaften von Verzeichnisobjekten**: (Standard) Diese Einstellung verhindert, dass Gäste bestimmte Verzeichnisaufgaben ausführen können, z. B. Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten. Gäste können die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzeigen.
+   - **Gastbenutzer haben eingeschränkten Zugriff auf Eigenschaften und Mitgliedschaften von Verzeichnisobjekten** : (Standard) Diese Einstellung verhindert, dass Gäste bestimmte Verzeichnisaufgaben ausführen können, z. B. Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten. Gäste können die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzeigen.
 
    - **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt (restriktivste Einstellung)** : Mit dieser Einstellung können Gäste nur auf Ihre eigenen Profile zugreifen. Gäste dürfen keine Profile, Gruppen oder Gruppenmitgliedschaften anderer Benutzer anzeigen.
   

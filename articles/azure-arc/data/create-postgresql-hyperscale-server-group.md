@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108302"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364421"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -80,7 +80,7 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 
 > [!NOTE]
 > - **Es stehen auch andere Befehlszeilenparameter zur Verfügung.  Sie können eine vollständige Liste der Optionen anzeigen, indem Sie `azdata arc postgres server create --help` ausführen.**
-> - Ohne Angabe wird die für Sicherungen verwendete Speicherklasse ( _--storage-class-backups -scb_) standardmäßig auf die Datenspeicherklasse des Datencontrollers festgelegt.
+> - Ohne Angabe wird die für Sicherungen verwendete Speicherklasse ( _--storage-class-backups -scb_ ) standardmäßig auf die Datenspeicherklasse des Datencontrollers festgelegt.
 > - Die von den Parametern „--volume-size-*“ akzeptierte Einheit ist eine Kubernetes-Ressourcenmenge (ein Integer gefolgt von einem SI-Suffix (T, G, M, K, m) oder einem Äquivalent mit Zweierpotenz (Ti, Gi, Mi, Ki)).
 > - Namen dürfen maximal 12 Zeichen lang sein und müssen den DNS-Benennungskonventionen entsprechen.
 > - Sie werden dazu aufgefordert, das Kennwort für den Standardadministrator für _Postgre_ einzugeben.  Sie können die interaktive Eingabeaufforderung überspringen, indem Sie die Sitzungsumgebungsvariable `AZDATA_PASSWORD` festlegen, bevor Sie den Befehl zum Erstellen ausführen.
@@ -138,7 +138,7 @@ Wenn Sie eine Azure-VM zum Testen verwenden, führen Sie die folgenden Anweisung
 
 Wenn Sie eine Azure-VM verwenden, zeigt die Endpunkt-IP-Adresse die _öffentliche_ IP-Adresse nicht an. Verwenden Sie den folgenden Befehl, um die öffentliche IP-Adresse zu ermitteln:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ Möglicherweise müssen Sie den Port der PostgreSQL Hyperscale-Servergruppe übe
 
 Zum Festlegen einer Regel müssen Sie den Namen Ihres Netzwerksicherheitsgateways kennen. Sie bestimmen das Netzwerksicherheitsgateway mithilfe des folgenden Befehls:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ Sobald Sie den Namen des Netzwerksicherheitsgateways kennen, können Sie mithilf
 
 Ersetzen Sie den Wert des Parameters „--destination-port-ranges“ unten durch die Portnummer, die Sie zuvor mithilfe des Befehls „azdata arc postgres server list“ abgerufen haben.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ az network nsg rule create -n db_port --destination-port-ranges 30655 --source-a
 
 Denken Sie daran, dass Sie die _öffentliche_ IP-Adresse benötigen, auf die Sie mithilfe des folgenden Befehls zugreifen können, wenn Sie eine Azure-VM verwenden:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 

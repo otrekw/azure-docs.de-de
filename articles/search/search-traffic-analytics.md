@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "91333731"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Sammeln von Telemetriedaten für „Datenverkehrsanalyse durchsuchen“
@@ -51,9 +51,9 @@ Eine Verknüpfung, die bei einigen Visual Studio-Projekttypen funktioniert, wird
 
 1. Öffnen Sie bei der Visual Studio- und ASP.NET-Entwicklung Ihre Lösung, und wählen Sie **Projekt** > **Application Insights-Telemetrie hinzufügen** aus.
 
-1. Klicken Sie auf **Erste Schritte**.
+1. Klicken Sie auf **Erste Schritte** .
 
-1. Registrieren Sie Ihre App durch Angabe eines Microsoft-Kontos, eines Azure-Abonnements und einer Application Insights-Ressource (standardmäßig eine neue Ressource). Klicken Sie auf **Registrieren**.
+1. Registrieren Sie Ihre App durch Angabe eines Microsoft-Kontos, eines Azure-Abonnements und einer Application Insights-Ressource (standardmäßig eine neue Ressource). Klicken Sie auf **Registrieren** .
 
 Jetzt ist Ihre Anwendung für die Anwendungsüberwachung eingerichtet. Dies bedeutet, dass alle Ladevorgänge der Seite mit Standardmetriken nachverfolgt werden. Weitere Informationen zu den vorherigen Schritten finden Sie unter [Aktivieren der serverseitigen Telemetrie für Application Insights](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Jede Suchanforderung eines Benutzers sollten Sie in einem benutzerdefinierten Application Insights-Ereignis mit dem nachstehenden Schema als Suchereignis protokollieren. Denken Sie daran, nur benutzergenerierte Suchabfragen zu protokollieren.
 
-+ **SearchServiceName**: (String) Suchdienstname
-+ **SearchId**: (GUID) eindeutiger Bezeichner der Suchabfrage (in der Suchantwort enthalten)
-+ **IndexName**: (String) abzufragender Suchdienstindex
-+ **QueryTerms**: (String) vom Benutzer eingegebene Suchbegriffe
-+ **ResultCount**: (Int) Anzahl der zurückgegebenen Dokumente (in der Suchantwort enthalten)
-+ **ScoringProfile**: (String) Name des verwendeten Bewertungsprofils, falls vorhanden
++ **SearchServiceName** : (String) Suchdienstname
++ **SearchId** : (GUID) eindeutiger Bezeichner der Suchabfrage (in der Suchantwort enthalten)
++ **IndexName** : (String) abzufragender Suchdienstindex
++ **QueryTerms** : (String) vom Benutzer eingegebene Suchbegriffe
++ **ResultCount** : (Int) Anzahl der zurückgegebenen Dokumente (in der Suchantwort enthalten)
++ **ScoringProfile** : (String) Name des verwendeten Bewertungsprofils, falls vorhanden
 
 > [!NOTE]
 > Fordern Sie die Anzahl der vom Benutzer generierten Abfragen an, indem Sie Ihrer Suchabfrage „$count=true“ hinzufügen. Weitere Informationen finden Sie unter [Durchsuchen von Dokumenten (REST).](/rest/api/searchservice/search-documents#counttrue--false)
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 Jedes Mal, wenn ein Benutzer auf ein Dokument klickt, ist dies ein Signal, dass für Suchanalysezwecke protokolliert werden muss. Verwenden Sie benutzerdefinierte Application Insights-Ereignisse, um diese Ereignisse mit dem folgenden Schema zu protokollieren:
 
-+ **ServiceName**: (String) Suchdienstname
-+ **SearchId**: (GUID) eindeutiger Bezeichner der zugehörigen Suchabfrage
-+ **DocId**: (String) Dokumentbezeichner
-+ **Position**: (Int) Rang des Dokuments auf der Seite „Suchergebnisse“
++ **ServiceName** : (String) Suchdienstname
++ **SearchId** : (GUID) eindeutiger Bezeichner der zugehörigen Suchabfrage
++ **DocId** : (String) Dokumentbezeichner
++ **Position** : (Int) Rang des Dokuments auf der Seite „Suchergebnisse“
 
 > [!NOTE]
 > Die Position bezieht sich auf die Hauptreihenfolge in der Anwendung. Sie können diese Zahl frei festlegen, solange sie immer identisch ist, um den Vergleich zu ermöglichen.
@@ -209,19 +209,19 @@ appInsights.trackEvent("Click", {
 
 Nachdem Sie Ihre App instrumentiert und sichergestellt haben, dass die Anwendung ordnungsgemäß mit Application Insights verbunden ist, laden Sie eine vordefinierte Berichtsvorlage herunter, um Daten in Power BI Desktop zu analysieren. Der Bericht enthält vordefinierte Diagramme und Tabellen, die nützlich für die Analyse der zusätzlichen Daten sind, die für die Analyse des Suchdatenverkehrs erfasst wurden.
 
-1. Klicken Sie im linken Navigationsbereich des Azure Cognitive Search-Dashboards unter **Einstellungen** auf **Datenverkehrsanalyse durchsuchen**.
+1. Klicken Sie im linken Navigationsbereich des Azure Cognitive Search-Dashboards unter **Einstellungen** auf **Datenverkehrsanalyse durchsuchen** .
 
-1. Klicken Sie auf der Seite **Datenverkehrsanalyse durchsuchen** in Schritt 3 auf **Power BI Desktop abrufen**, um Power BI zu installieren.
+1. Klicken Sie auf der Seite **Datenverkehrsanalyse durchsuchen** in Schritt 3 auf **Power BI Desktop abrufen** , um Power BI zu installieren.
 
    ![Abrufen von Power BI-Berichten](./media/search-traffic-analytics/get-use-power-bi.png "Abrufen von Power BI-Berichten")
 
-1. Klicken Sie auf derselben Seite auf **Power BI-Bericht herunterladen**.
+1. Klicken Sie auf derselben Seite auf **Power BI-Bericht herunterladen** .
 
 1. Der Bericht wird in Power BI Desktop geöffnet, und Sie werden aufgefordert, eine Verbindung mit Application Insights herzustellen und Anmeldeinformationen anzugeben. Sie finden Verbindungsinformationen auf den Seiten des Microsoft Azure-Portals für Ihre Application Insights-Ressource. Geben Sie für Anmeldeinformationen denselben Benutzernamen und dasselbe Kennwort wie für die Anmeldung beim Portal an.
 
    ![Herstellen einer Verbindung zu Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Herstellen einer Verbindung zu Application Insights")
 
-1. Klicken Sie auf **Laden**.
+1. Klicken Sie auf **Laden** .
 
 Der Bericht enthält Diagramme und Tabellen, mit denen Sie fundiertere Entscheidungen treffen können, um Leistung und Relevanz der Suche zu verbessern.
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398305"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92368008"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Netzwerkkonnektivitätsprobleme
 
@@ -39,10 +39,10 @@ Stellen Sie bei Verwendung eines benutzerdefinierten DNS sicher, dass der DNS-Se
 
 Überprüfen Sie wie folgt, ob für die VM eine Einstellung für das benutzerdefinierte DNS verwendet wird:
 
-1. Öffnen Sie **Virtuelle Computer**, und wählen Sie die VM aus.
-1. Navigieren Sie für die VM zu **Einstellungen**, und wählen Sie **Netzwerk** aus.
+1. Öffnen Sie **Virtuelle Computer** , und wählen Sie die VM aus.
+1. Navigieren Sie für die VM zu **Einstellungen** , und wählen Sie **Netzwerk** aus.
 1. Wählen Sie unter **Virtuelles Netzwerk/Subnetz** den Link zum Öffnen der Ressourcenseite des virtuellen Netzwerks aus.
-1. Navigieren Sie zu **Einstellungen**, und wählen Sie **DNS-Server** aus.
+1. Navigieren Sie zu **Einstellungen** , und wählen Sie **DNS-Server** aus.
 
 Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wenn der DNS-Server nicht erreichbar ist, können Sie ein Failover für den DNS-Server ausführen oder eine „Sichtverbindung“ zwischen dem Notfallwiederherstellungsnetzwerk und dem DNS herstellen.
 
@@ -60,7 +60,7 @@ Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von
 #### <a name="resolution"></a>Lösung
 
 - Azure Site Recovery benötigt für die Authentifizierung Zugriff auf die IP-Adressbereiche von Microsoft 365.
-- Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppenregeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit den IP-Adressbereichen von Microsoft 365 zulassen. Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (Azure AD)](../virtual-network/security-overview.md#service-tags), das den Zugriff auf alle IP-Adressen für Azure AD zulässt.
+- Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppenregeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit den IP-Adressbereichen von Microsoft 365 zulassen. Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (Azure AD)](../virtual-network/network-security-groups-overview.md#service-tags), das den Zugriff auf alle IP-Adressen für Azure AD zulässt.
 - Wenn Azure AD später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
 
 ### <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
@@ -87,15 +87,15 @@ Dieses Beispiel zeigt, wie NSG-Regeln für eine zu replizierende VM konfiguriert
 
 In diesem Beispiel sind diese NSG-Regeln erforderlich, damit nach dem Failover die Replikation von der Zielregion zur Quellregion aktiviert werden kann:
 
-1. Erstellen Sie eine HTTPS-Ausgangssicherheitsregel für _Storage.CentralUS_:
+1. Erstellen Sie eine HTTPS-Ausgangssicherheitsregel für _Storage.CentralUS_ :
 
-   - **Zieldiensttag**: _Storage.CentralUS_
-   - **Zielportbereiche**: _443_
+   - **Zieldiensttag** : _Storage.CentralUS_
+   - **Zielportbereiche** : _443_
 
-1. Erstellen Sie eine HTTPS-Ausgangssicherheitsregel für _AzureActiveDirectory_.
+1. Erstellen Sie eine HTTPS-Ausgangssicherheitsregel für _AzureActiveDirectory_ .
 
-   - **Zieldiensttag**: _AzureActiveDirectory_
-   - **Zielportbereiche**: _443_
+   - **Zieldiensttag** : _AzureActiveDirectory_
+   - **Zielportbereiche** : _443_
 
 1. Erstellen Sie (ähnlich zu den oben erstellten Sicherheitsregeln) eine Sicherheitsregel für ausgehenden HTTPS-Datenverkehr (443) für „EventHub.EastUS“ für die NSG, die dem Quellstandort entspricht. Dies ermöglicht den Zugriff auf Site Recovery-Überwachung.
 1. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureSiteRecovery“. Dies ermöglicht den Zugriff auf den Site Recovery-Dienst in jeder beliebigen Region.
@@ -121,10 +121,10 @@ Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der Agent des Azu
 1. Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von IE unter Windows und unter `/etc/environment` für Linux.
 1. Wenn nur für den Azure Site Recovery-Mobilitätsdienst ein Proxy festgelegt werden soll, können Sie die Proxydetails in _ProxyInfo.conf_ angeben, die sich hier befinden:
 
-   - **Linux**: `/usr/local/InMage/config/`
-   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux** : `/usr/local/InMage/config/`
+   - **Windows** : `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
-1. _ProxyInfo.conf_ sollte die Proxyeinstellungen im folgenden _INI_-Format enthalten:
+1. _ProxyInfo.conf_ sollte die Proxyeinstellungen im folgenden _INI_ -Format enthalten:
 
    ```plaintext
    [proxy]
@@ -133,7 +133,7 @@ Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der Agent des Azu
    ```
 
 > [!NOTE]
-> Der Agent des Azure Site Recovery-Mobilitätsdiensts unterstützt nur **nicht authentifizierte Proxys**.
+> Der Agent des Azure Site Recovery-Mobilitätsdiensts unterstützt nur **nicht authentifizierte Proxys** .
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070383"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363656"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -28,7 +28,7 @@ Azure AD nutzt diese Integration, um die folgenden Workflows für HR-Cloudanwend
 
 - **Bereitstellen von Benutzern in Azure Active Directory:** Ausgewählte Benutzergruppen aus einer HR-Cloud-App werden in einer oder mehreren Azure Active Directory-Domänen bereitgestellt.
 - **Bereitstellen reiner Cloudbenutzer in Azure AD:** In den Fällen, in denen Azure Active Directory nicht verwendet wird, werden Benutzer direkt aus der HR-Cloud-App in Azure AD bereitgestellt.
-- **Rückschreiben in die HR-Cloud-App**: E-Mail-Adressen und Benutzernamenattribute werden aus Azure AD zurück in die HR-Cloud-App geschrieben.
+- **Rückschreiben in die HR-Cloud-App** : E-Mail-Adressen und Benutzernamenattribute werden aus Azure AD zurück in die HR-Cloud-App geschrieben.
 
 > [!NOTE]
 > Dieser Bereitstellungsplan zeigt Ihnen, wie Sie die Workflows Ihrer HR-Cloud-App mithilfe der Azure AD-Benutzerbereitstellung bereitstellen können. Informationen zum Implementieren der automatischen Benutzerbereitstellung für SaaS-Apps (Software as a Service) finden Sie unter [Planen einer automatischen Benutzerbereitstellung](./plan-auto-user-provisioning.md).
@@ -60,9 +60,9 @@ Die Benutzerbereitstellung bildet die Grundlage für eine fortlaufende Identitä
 
 In diesem Artikel werden die folgenden Begriffe verwendet:
 
-- **Quellsystem**: Das Repository von Benutzern, aus dem die Azure AD-Bereitstellungen erfolgen, zum Beispiel eine HR-Cloud-App wie Workday oder SuccessFactors.
-- **Zielsystem**: Das Repository von Benutzern, in das die Azure AD-Bereitstellungen erfolgen, zum Beispiel Active Directory, Azure AD, Microsoft 365 oder andere SaaS-Apps.
-- **Prozess für Einstellungen/Wechsel/Kündigungen**: Ein Begriff, der bei Verwendung einer HR-Cloud-App als Datensatzsystem für Neueinstellungen, Versetzungen und Kündigungen verwendet wird. Der Prozess ist abgeschlossen, wenn der Dienst die erforderlichen Attribute für das Zielsystem erfolgreich bereitstellt.
+- **Quellsystem** : Das Repository von Benutzern, aus dem die Azure AD-Bereitstellungen erfolgen, zum Beispiel eine HR-Cloud-App wie Workday oder SuccessFactors.
+- **Zielsystem** : Das Repository von Benutzern, in das die Azure AD-Bereitstellungen erfolgen, zum Beispiel Active Directory, Azure AD, Microsoft 365 oder andere SaaS-Apps.
+- **Prozess für Einstellungen/Wechsel/Kündigungen** : Ein Begriff, der bei Verwendung einer HR-Cloud-App als Datensatzsystem für Neueinstellungen, Versetzungen und Kündigungen verwendet wird. Der Prozess ist abgeschlossen, wenn der Dienst die erforderlichen Attribute für das Zielsystem erfolgreich bereitstellt.
 
 ### <a name="key-benefits"></a>Hauptvorteile
 
@@ -70,7 +70,7 @@ Diese Funktion der vom Personalwesen (HR) gesteuerten IT-Bereitstellung bietet e
 
 - **Produktivitätssteigerung:** Sie können jetzt die Zuweisung von Benutzerkonten und Microsoft 365-Lizenzen automatisieren und den Zugriff auf Schlüsselgruppen ermöglichen. Durch die Automatisierung von Zuweisungen haben Neueinstellungen sofortigen Zugriff auf ihre Arbeitstools, und die Produktivität erhöht sich.
 - **Risikomanagement:** Sie können die Sicherheit erhöhen, indem Sie Änderungen anhand von Mitarbeiterstatus oder Gruppenmitgliedschaft mit Daten, die aus der HR-Cloud-App einfließen, automatisieren. Die Automatisierung von Änderungen stellt sicher, dass Benutzeridentitäten und der Zugriff auf wichtige Anwendungen automatisch aktualisiert werden, wenn Benutzer innerhalb des Unternehmen wechseln oder es verlassen.
-- **Umsetzen von Compliance und Governance**: Azure AD unterstützt native Überwachungsprotokolle für Benutzerbereitstellungsanforderungen, die von Apps aus dem Quell- und Zielsystem erfolgen. Durch die Überwachung können Sie über einen einzigen Bildschirm nachverfolgen, wer Zugriff auf die Apps hat.
+- **Umsetzen von Compliance und Governance** : Azure AD unterstützt native Überwachungsprotokolle für Benutzerbereitstellungsanforderungen, die von Apps aus dem Quell- und Zielsystem erfolgen. Durch die Überwachung können Sie über einen einzigen Bildschirm nachverfolgen, wer Zugriff auf die Apps hat.
 - **Kostenmanagement:** Durch Vermeiden von Ineffizienzen und menschlichen Fehlern, die bei einer manuellen Bereitstellung entstehen, reduziert die automatische Benutzerbereitstellung die Kosten. Sie reduziert auch den Bedarf an benutzerdefiniert entwickelten Lösungen für die Benutzerbereitstellung, die im Laufe der Zeit mithilfe älterer und veralteter Plattformen erstellt wurden.
 
 ### <a name="licensing"></a>Lizenzierung
@@ -81,8 +81,8 @@ Sie benötigen zudem eine gültige Abonnementlizenz für Azure AD Premium P1 ode
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Azure AD-[Hybrididentitätsadministrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) zum Konfigurieren des Bereitstellungs-Agents von Azure AD Connect
-- Die Rolle „Azure AD-[Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)“, um die Bereitstellungs-App im Azure-Portal zu konfigurieren
+- Azure AD-[Hybrididentitätsadministrator](../roles/permissions-reference.md#hybrid-identity-administrator) zum Konfigurieren des Bereitstellungs-Agents von Azure AD Connect
+- Die Rolle „Azure AD-[Anwendungsadministrator](../roles/permissions-reference.md#application-administrator)“, um die Bereitstellungs-App im Azure-Portal zu konfigurieren
 - Eine Test- und Produktionsinstanz der HR-Cloud-App
 - Administratorberechtigungen in der HR-Cloud-App zum Erstellen eines Systemintegrationsbenutzers für Testzwecke und Vornehmen von Änderungen zum Testen von Mitarbeiterdaten
 - Ein Server mit mindestens Windows Server 2012 und .NET 4.7.1 Runtime zum Hosten des Bereitstellungs-Agents von Azure AD Connect für die Benutzerbereitstellung in Active Directory
@@ -110,14 +110,14 @@ Im folgenden Beispiel wird die Lösungsarchitektur der End-to-End-Benutzerbereit
 
 #### <a name="description-of-workflow"></a>Beschreibung des Workflows
 
-Die wichtigsten Schritte gehen aus dem folgenden Diagramm hervor:  
+Die wichtigsten Schritte gehen aus dem folgenden Diagramm hervor:  
 
 1. Das **HR-Team** führt die Transaktionen im Mandanten der HR-Cloud-App durch.
 2. Der **Azure AD-Bereitstellungsdienst** führt die geplanten Zyklen vom Mandanten der HR-Cloud-App aus und erkennt Änderungen, die zur Synchronisierung mit Azure Active Directory verarbeitet werden müssen.
 3. Der **Azure AD-Bereitstellungsdienst** ruft den Azure AD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, welche die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das Azure Active Directory-Konto enthält.
 4. Der **Azure AD Connect-Bereitstellungs-Agent** verwendet ein Dienstkonto zum Verwalten der Azure Active Directory-Kontodaten.
-5. **Azure AD Connect** führt eine Delta[synchronisierung](../hybrid/how-to-connect-sync-whatis.md) aus, um per Pullvorgang Updates in Azure Active Directory abzurufen.
-6. Die **Azure Active Directory**-Updates werden mit Azure AD synchronisiert.
+5. **Azure AD Connect** führt eine Delta [synchronisierung](../hybrid/how-to-connect-sync-whatis.md) aus, um per Pullvorgang Updates in Azure Active Directory abzurufen.
+6. Die **Azure Active Directory** -Updates werden mit Azure AD synchronisiert.
 7. Der **Azure AD-Bereitstellungsdienst** schreibt E-Mail-Attribut und Benutzernamen aus Azure AD in den Mandanten der HR-Cloud-App zurück.
 
 ## <a name="plan-the-deployment-project"></a>Planen des Bereitstellungsprojekts
@@ -144,9 +144,9 @@ Führen Sie die anfängliche Konfiguration in einer [Pilotumgebung](../fundament
 
 Um Azure AD-Bereitstellungsworkflows zwischen der HR-Cloud-App und Azure Active Directory zu vereinfachen, können Sie über den Azure AD-App-Katalog mehrere Bereitstellungsconnector-Apps hinzufügen:
 
-- **Benutzerbereitstellung von der HR-Cloud-App in Azure Active Directory**: Diese Bereitstellungsconnector-App vereinfacht die Bereitstellung von Benutzerkonten von der HR-Cloud-App in einer einzelnen Azure Active Directory-Domäne. Wenn Sie über mehrere Domänen verfügen, können Sie eine Instanz dieser App aus dem Azure AD-App-Katalog für jede Active Directory-Domäne hinzufügen, in der die Bereitstellung erfolgen soll.
-- **Benutzerbereitstellung von der HR-Cloud-App in Azure AD**: Obwohl Azure AD Connect das Tool ist, das Sie zum Synchronisieren von Azure Active Directory-Benutzern mit Azure AD verwenden sollten, kann auch diese Bereitstellungsconnector-App verwendet werden, um die Bereitstellung reiner Cloudbenutzer von der HR-Cloud-App in einem einzelnen Azure AD-Mandanten zu vereinfachen.
-- **Rückschreiben in die HR-Cloud-App**: Diese Bereitstellungsconnector-App ermöglicht das Rückschreiben der E-Mail-Adressen des Benutzers von Azure AD in die HR-Cloud-App.
+- **Benutzerbereitstellung von der HR-Cloud-App in Azure Active Directory** : Diese Bereitstellungsconnector-App vereinfacht die Bereitstellung von Benutzerkonten von der HR-Cloud-App in einer einzelnen Azure Active Directory-Domäne. Wenn Sie über mehrere Domänen verfügen, können Sie eine Instanz dieser App aus dem Azure AD-App-Katalog für jede Active Directory-Domäne hinzufügen, in der die Bereitstellung erfolgen soll.
+- **Benutzerbereitstellung von der HR-Cloud-App in Azure AD** : Obwohl Azure AD Connect das Tool ist, das Sie zum Synchronisieren von Azure Active Directory-Benutzern mit Azure AD verwenden sollten, kann auch diese Bereitstellungsconnector-App verwendet werden, um die Bereitstellung reiner Cloudbenutzer von der HR-Cloud-App in einem einzelnen Azure AD-Mandanten zu vereinfachen.
+- **Rückschreiben in die HR-Cloud-App** : Diese Bereitstellungsconnector-App ermöglicht das Rückschreiben der E-Mail-Adressen des Benutzers von Azure AD in die HR-Cloud-App.
 
 In der folgenden Abbildung sind z. B. die Workday-Connector-Apps aufgelistet, die im Azure AD-App-Katalog verfügbar sind.
 
@@ -245,7 +245,7 @@ Wenn Sie den Einstellungsprozess starten, erfassen Sie die folgenden Anforderung
 
 Je nach Anforderungen unterstützt Azure AD durch die Bereitstellung konstanter Werte oder das [Schreiben von Ausdrücken für Attributzuordnungen](../app-provisioning/functions-for-customizing-application-data.md) die direkte Attributzuordnung (Attribut-Attribut). Mithilfe dieser Flexibilität können Sie genau steuern, was im Attribut der Ziel-App eingetragen wird. Mit der [Microsoft Graph-API](../app-provisioning/export-import-provisioning-configuration.md) und Graph Explorer können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren.
 
-Standardmäßig wird das Attribut in der HR-Cloud-App, das die eindeutige Mitarbeiter-ID darstellt, als übereinstimmendes Attribut verwendet, *das dem eindeutigen Attribut in Azure Active Directory zugeordnet wird*. Im Szenario mit der Workday-App wird z. B. das **Workday**-Attribut **WorkerID** dem Azure Active Directory-Attribut **employeeID** zugeordnet.
+Standardmäßig wird das Attribut in der HR-Cloud-App, das die eindeutige Mitarbeiter-ID darstellt, als übereinstimmendes Attribut verwendet, *das dem eindeutigen Attribut in Azure Active Directory zugeordnet wird* . Im Szenario mit der Workday-App wird z. B. das **Workday** -Attribut **WorkerID** dem Azure Active Directory-Attribut **employeeID** zugeordnet.
 
 Sie können mehrere übereinstimmende Attribute festlegen und geeignete Prioritäten zuweisen. Sie werden nach der Rangfolge für den Abgleich ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 
@@ -366,9 +366,9 @@ Es kann passieren, dass die Implementierung der HR-Cloud-App-Benutzerbereitstell
 
 Wählen Sie die HR-Cloud-App aus, die Ihren Lösungsanforderungen entspricht.
 
-**Workday**: Informationen zum Importieren von Workerprofilen von Workday in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Optional können Sie eine Rückschreibung von E-Mail-Adresse, Benutzername und Telefonnummer in Workday vornehmen.
+**Workday** : Informationen zum Importieren von Workerprofilen von Workday in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Optional können Sie eine Rückschreibung von E-Mail-Adresse, Benutzername und Telefonnummer in Workday vornehmen.
 
-**SAP SuccessFactors**: Informationen zum Importieren von Workerprofilen von SuccessFactors in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von SAP SuccessFactors für die automatische Benutzerbereitstellung](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md). Optional können Sie eine Rückschreibung von E-Mail-Adresse und Benutzername in SuccessFactors vornehmen.
+**SAP SuccessFactors** : Informationen zum Importieren von Workerprofilen von SuccessFactors in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von SAP SuccessFactors für die automatische Benutzerbereitstellung](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md). Optional können Sie eine Rückschreibung von E-Mail-Adresse und Benutzername in SuccessFactors vornehmen.
 
 ## <a name="manage-your-configuration"></a>Verwalten Ihrer Konfiguration
 

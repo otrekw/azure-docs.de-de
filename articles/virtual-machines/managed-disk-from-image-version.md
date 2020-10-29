@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/06/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: bf4a1feb91a1ac4b0bca0d6afdbac41a8be3aa4f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049496"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370983"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Erstellen eines verwalteten Datenträgers aus einer Imageversion
 
@@ -23,10 +23,10 @@ Falls es erforderlich ist, können Sie einen verwalteten Datenträger aus einer 
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Legen Sie die `source`-Variable auf die ID der Imageversion fest, und verwenden Sie anschließend [az disk create](/cli/azure/disk.md#az_disk_create), um den verwalteten Datenträger zu erstellen. 
+Legen Sie die `source`-Variable auf die ID der Imageversion fest, und verwenden Sie anschließend [az disk create](/cli/azure/disk#az_disk_create), um den verwalteten Datenträger zu erstellen. 
 
 
-Eine Liste der Imageversionen können Sie mithilfe von [az sig image-version list](/cli/azure/sig/image-version.md#az_sig_image_version_list) anzeigen. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* im Imagekatalog *myGallery* sind.
+Eine Liste der Imageversionen können Sie mithilfe von [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) anzeigen. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* im Imagekatalog *myGallery* sind.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -37,7 +37,7 @@ az sig image-version list \
 ```
 
 
-In diesem Beispiel erstellen wir einen verwalteten Datenträger mit dem Namen *myManagedDisk* in der Region *EastUS* und einer Ressourcengruppe mit dem Namen *myResourceGroup*. 
+In diesem Beispiel erstellen wir einen verwalteten Datenträger mit dem Namen *myManagedDisk* in der Region *EastUS* und einer Ressourcengruppe mit dem Namen *myResourceGroup* . 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"

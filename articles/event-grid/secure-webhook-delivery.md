@@ -3,12 +3,12 @@ title: Sichere WebHook-Zustellung mit Azure AD in Azure Event Grid
 description: Beschreibt, wie Ereignisse mittels Azure Event Grid an HTTPS-Endpunkte zugestellt werden, die von Azure Active Directory geschützt werden.
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.openlocfilehash: 0320e78e6b436f6ba1c0a6ca1bfec81eb974e106
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: dd898fadf718509504d44df36572ac75050b02d6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371663"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Veröffentlichen von Ereignissen auf mit Azure Active Directory geschützten Endpunkten
 
@@ -26,7 +26,7 @@ Beginnen Sie damit, eine Azure AD-Anwendung für Ihren geschützten Endpunkt zu 
 In diesem Abschnitt erfahren Sie, wie Sie Event Grid für die Verwendung Ihrer Azure AD-Anwendung aktivieren. 
 
 > [!NOTE]
-> Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) sein, um dieses Skript ausführen zu können.
+> Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../active-directory/roles/permissions-reference.md#available-roles) sein, um dieses Skript ausführen zu können.
 
 ### <a name="connect-to-your-azure-tenant"></a>Herstellen einer Verbindung mit Ihrem Azure-Mandanten
 Stellen Sie zunächst mithilfe des `Connect-AzureAD`-Befehls eine Verbindung mit Ihrem Azure-Mandanten her. 
@@ -58,7 +58,7 @@ if ($eventGridSP -match "Microsoft.EventGrid")
 ```
 
 ### <a name="create-a-role-for-your-application"></a>Erstellen einer Rolle für Ihre Anwendung   
-Führen Sie das folgende Skript aus, um eine Rolle für die Azure AD-Anwendung zu erstellen. In diesem Beispiel lautet der Rollenname wie folgt: **AzureEventGridSecureWebhook**. Ändern Sie `$myTenantId` des PowerShell-Skripts so, dass Ihre Azure AD-Mandanten-ID und `$myAzureADApplicationObjectId` mit der Objekt-ID Ihrer Azure AD-Anwendung verwendet wird.
+Führen Sie das folgende Skript aus, um eine Rolle für die Azure AD-Anwendung zu erstellen. In diesem Beispiel lautet der Rollenname wie folgt: **AzureEventGridSecureWebhook** . Ändern Sie `$myTenantId` des PowerShell-Skripts so, dass Ihre Azure AD-Mandanten-ID und `$myAzureADApplicationObjectId` mit der Objekt-ID Ihrer Azure AD-Anwendung verwendet wird.
 
 ```PowerShell
 # This is your Azure AD Application's ObjectId. 

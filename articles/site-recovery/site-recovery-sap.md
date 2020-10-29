@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86133706"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369419"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
 
@@ -39,13 +39,13 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie wissen, wie Sie die folgenden A
 
 Mit Azure Site Recovery können Sie eine Notfallwiederherstellungslösung in folgenden Szenarien implementieren:
 * Sie verfügen über SAP-Systeme, die in einem Azure-Rechenzentrum ausgeführt werden, und replizieren diese in ein anderes Azure-Rechenzentrum (Azure-zu-Azure-Notfallwiederherstellung). 
-   Weitere Informationen finden Sie unter [Architektur der Azure-zu-Azure-Replikation](https://aka.ms/asr-a2a-architecture).
+   Weitere Informationen finden Sie unter [Architektur der Azure-zu-Azure-Replikation](./azure-to-azure-architecture.md).
 * Sie verfügen über SAP-Systeme, die auf VMware-Servern (oder physischen Servern) lokal ausgeführt werden. Außerdem replizieren Sie die SAP-Systeme an einen Notfallwiederherstellungsstandort in einem Azure-Rechenzentrum (VMware-zu-Azure-Notfallwiederherstellung). 
-   Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [VMware in der Architektur für die Azure-Replikation](https://aka.ms/asr-v2a-architecture).
+   Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [VMware in der Architektur für die Azure-Replikation](./vmware-azure-architecture.md).
 * Sie verfügen über SAP-Systeme, die auf Hyper-V lokal ausgeführt werden. Außerdem replizieren Sie die SAP-Systeme an einen Notfallwiederherstellungsstandort in einem Azure-Rechenzentrum (Hyper-V-zu-Azure-Notfallwiederherstellung).
-   Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [Architektur der Replikation von Hyper-V in Azure](https://aka.ms/asr-h2a-architecture).
+   Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [Architektur der Replikation von Hyper-V in Azure](./hyper-v-azure-architecture.md).
 
-In diesem Artikel verwenden wir ein **Azure-zu-Azure**-Notfallwiederherstellungsszenario. Das Szenario zeigt Ihnen die SAP-Notfallwiederherstellungsfunktionen von Site Recovery. Da die Replikation mit Site Recovery nicht anwendungsspezifisch ist, gilt der beschriebene Prozess vermutlich auch für andere Szenarien.
+In diesem Artikel verwenden wir ein **Azure-zu-Azure** -Notfallwiederherstellungsszenario. Das Szenario zeigt Ihnen die SAP-Notfallwiederherstellungsfunktionen von Site Recovery. Da die Replikation mit Site Recovery nicht anwendungsspezifisch ist, gilt der beschriebene Prozess vermutlich auch für andere Szenarien.
 
 ### <a name="required-foundation-services"></a>Erforderliche Grunddienste
 In dem in diesem Artikel besprochenen Szenario werden die folgenden Foundation-Dienste bereitgestellt:
@@ -119,7 +119,7 @@ Zu Beginn des Replizieren aller virtuellen Computer für SAP-Anwendungen in ein 
 
 ## <a name="networking-configuration"></a>Netzwerkkonfiguration
 
-Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **Netzwerkschnittstellenkarte**.
+Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **Netzwerkschnittstellenkarte** .
 
 ![Screenshot, der zeigt, wie eine private IP-Adresse im Bereich „Site Recovery-Netzwerkschnittstellenkarte“ festgelegt wird](./media/site-recovery-sap/sap-static-ip.png)
 

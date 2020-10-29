@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 06836673f1a567f64217d49cf8e0ca82e132111f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930539"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368807"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -34,7 +34,7 @@ Gehen Sie wie folgt vor, um ein Defender für IoT-Sicherheitsmodul für IoT Ed
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. Vergewissern Sie sich in Ihrem IoT-Hub, dass Ihr Gerät [als IoT Edge-Gerät registriert](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal) ist.
+1. Vergewissern Sie sich in Ihrem IoT-Hub, dass Ihr Gerät [als IoT Edge-Gerät registriert](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device) ist.
 
 1. Das Defender für IoT Edge-Modul erfordert, dass das [AuditD-Framework](https://linux.die.net/man/8/auditd) auf dem IoT Edge-Gerät installiert ist.
 
@@ -49,15 +49,15 @@ Gehen Sie wie folgt vor, um ein Defender für IoT-Sicherheitsmodul für IoT Ed
 
 ### <a name="deployment-using-azure-portal"></a>Bereitstellung über das Azure-Portal
 
-1. Öffnen Sie im Azure-Portal den **Marketplace**.
+1. Öffnen Sie im Azure-Portal den **Marketplace** .
 
-1. Wählen Sie **Internet der Dinge** aus, suchen Sie nach **Defender für IoT**, und wählen Sie den Eintrag aus.
+1. Wählen Sie **Internet der Dinge** aus, suchen Sie nach **Defender für IoT** , und wählen Sie den Eintrag aus.
 
    ![Auswählen von Defender für IoT](media/howto/edge-onboarding-8.png)
 
-1. Klicken Sie auf **Erstellen**, um die Bereitstellung zu konfigurieren.
+1. Klicken Sie auf **Erstellen** , um die Bereitstellung zu konfigurieren.
 
-1. Wählen Sie das Azure-**Abonnement** Ihres IoT-Hubs und dann Ihren **IoT-Hub** aus.<br>Wählen Sie **Für Gerät bereitstellen** aus, um ein einzelnes Gerät als Bereitstellungsziel auszuwählen, oder wählen Sie **Im gewünschten Umfang bereitstellen** aus, um mehrere Geräte als Ziel festzulegen, und klicken Sie dann auf **Erstellen**. Weitere Informationen zur bedarfsorientierten Bereitstellung finden Sie im Thema zum [Bereitstellen](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor).
+1. Wählen Sie das Azure- **Abonnement** Ihres IoT-Hubs und dann Ihren **IoT-Hub** aus.<br>Wählen Sie **Für Gerät bereitstellen** aus, um ein einzelnes Gerät als Bereitstellungsziel auszuwählen, oder wählen Sie **Im gewünschten Umfang bereitstellen** aus, um mehrere Geräte als Ziel festzulegen, und klicken Sie dann auf **Erstellen** . Weitere Informationen zur bedarfsorientierten Bereitstellung finden Sie im Thema zum [Bereitstellen](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor).
 
     >[!Note]
     >Wenn Sie **Im gewünschten Umfang bereitstellen** ausgewählt haben, fügen Sie den Gerätenamen und die Details hinzu, bevor Sie in den folgenden Schritten mit der Registerkarte **Module hinzufügen** fortfahren.
@@ -67,7 +67,7 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 #### <a name="step-1-modules"></a>Schritt 1: Module
 
 1. Wählen Sie das Modul **AzureSecurityCenterforIoT** aus.
-1. Ändern Sie auf der Registerkarte **Moduleinstellungen** den **Namen** in **azureiotsecurity**.
+1. Ändern Sie auf der Registerkarte **Moduleinstellungen** den **Namen** in **azureiotsecurity** .
 1. Fügen Sie auf der Registerkarte **Umgebungsvariablen** bei Bedarf eine Variable hinzu (z. B. auf Debugebene).
 1. Fügen Sie auf der Registerkarte **Optionen für Containererstellung** die folgende Konfiguration hinzu:
 
@@ -112,7 +112,7 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 #### <a name="step-2-runtime-settings"></a>Schritt 2: Runtimeeinstellungen
 
 1. Wählen Sie **Runtimeeinstellungen** aus.
-1. Ändern Sie unter **Edge Hub** das **Image** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. Ändern Sie unter **Edge Hub** das **Image** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3** .
 1. Vergewissern Sie sich, dass **Erstellungsoptionen** auf die folgende Konfiguration festgelegt ist:
 
     ``` json
@@ -145,7 +145,7 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 
 #### <a name="step-3-specify-routes"></a>Schritt 3: Angeben von Routen
 
-1. Stellen Sie auf der Registerkarte **Routen angeben** sicher, dass Sie über eine Route verfügen (explizit oder implizit), mit der Nachrichten vom Modul **azureiotsecurity** entsprechend den folgenden Beispielen an **$upstream** weitergeleitet werden. Wählen Sie erst, wenn die Route vorhanden ist, **Weiter**aus.
+1. Stellen Sie auf der Registerkarte **Routen angeben** sicher, dass Sie über eine Route verfügen (explizit oder implizit), mit der Nachrichten vom Modul **azureiotsecurity** entsprechend den folgenden Beispielen an **$upstream** weitergeleitet werden. Wählen Sie erst, wenn die Route vorhanden ist, **Weiter** aus.
 
    Beispielrouten:
 

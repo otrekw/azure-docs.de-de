@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258335"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363452"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Markieren Ihrer App als durch den Herausgeber verifiziert
 
@@ -28,11 +28,11 @@ Wenn Sie bereits bei Microsoft Partner Network (MPN) registriert sind und die [V
 
 1. Melden Sie sich über die [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) im [App-Registrierungsportal](https://aka.ms/PublisherVerificationPreview) an.
 
-1. Wählen Sie eine App aus, und klicken Sie auf **Branding**. 
+1. Wählen Sie eine App aus, und klicken Sie auf **Branding** . 
 
-1. Klicken Sie auf **MPN-ID zum Überprüfen des Herausgebers hinzufügen**, und überprüfen Sie die aufgeführten Anforderungen.
+1. Klicken Sie auf **MPN-ID zum Überprüfen des Herausgebers hinzufügen** , und überprüfen Sie die aufgeführten Anforderungen.
 
-1. Geben Sie Ihre MPN-ID ein, und klicken Sie auf **Überprüfen und speichern**.
+1. Geben Sie Ihre MPN-ID ein, und klicken Sie auf **Überprüfen und speichern** .
 
 Ausführlichere Informationen zu bestimmten Vorteilen und Anforderungen sowie häufig gestellte Fragen finden Sie in der [Übersicht](publisher-verification-overview.md).
 
@@ -42,7 +42,7 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](publisher-verification-overvi
 
 1. Stellen Sie sicher, dass Sie über die [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) bei einem Organisationskonto (Azure AD) angemeldet sind, das autorisiert ist, Änderungen an der/den App(s), die Sie als durch den Herausgeber verifiziert markieren möchten, und am MPN-Konto in Partner Center vorzunehmen.
 
-    - In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden [Rollen](../users-groups-roles/directory-assign-admin-roles.md) sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
+    - In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden [Rollen](../roles/permissions-reference.md) sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
 
     - In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird). 
 
@@ -54,7 +54,7 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](publisher-verification-overvi
 
 1. Sorgen Sie dafür, dass entweder die Herausgeberdomäne oder eine DNS-verifizierte [benutzerdefinierte Domäne](../fundamentals/add-custom-domain.md) des Mandanten mit der Domäne der bei der MPN-Kontoüberprüfung verwendeten E-Mal-Adresse übereinstimmt.
 
-1. Klicken Sie unten auf der Seite auf **MPN-ID zum Überprüfen des Herausgebers hinzufügen**. 
+1. Klicken Sie unten auf der Seite auf **MPN-ID zum Überprüfen des Herausgebers hinzufügen** . 
 
 1. Geben Sie Ihre **MPN-ID** ein. Diese MPN-ID muss für Folgendes verwendet werden: 
 
@@ -62,7 +62,7 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](publisher-verification-overvi
 
     - Das globale Partnerkonto (Partner Global Account, PGA) für Ihre Organisation. 
 
-1. Klicken Sie auf **Überprüfen und speichern**. 
+1. Klicken Sie auf **Überprüfen und speichern** . 
 
 1. Warten Sie, bis die Anforderung verarbeitet wurde. Dieser Vorgang kann einige Minuten dauern. 
 

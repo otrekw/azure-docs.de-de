@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 35990312658492e1e41b47096a43748c3a4e653e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282577"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359899"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Pig-Aktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -26,8 +26,8 @@ ms.locfileid: "91282577"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -121,10 +121,10 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 Um dieses Pig-Skript in einer Data Factory-Pipeline auszuführen, führen Sie die folgenden Schritte aus:
 
-1. Erstellen Sie einen verknüpften Dienst, um [Ihren eigenen HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) zu registrieren oder einen [bedarfsgesteuerten HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) zu konfigurieren. Wir nennen diesen verknüpften Dienst **HDInsightLinkedService**.
-2. Erstellen Sie einen [verknüpften Dienst](data-factory-azure-blob-connector.md), um die Verbindung mit Azure Blob Storage zu konfigurieren, in dem die Daten gehostet werden. Wir nennen diesen verknüpften Dienst **StorageLinkedService**.
-3. Erstellen Sie [Datasets](data-factory-create-datasets.md) , die auf die Eingabe- und die Ausgabedaten verweisen. Wir nennen das Eingabedataset **PigSampleIn** und das Ausgabedataset **PigSampleOut**.
-4. Kopieren Sie die Pig-Abfrage in eine Datei in die in Schritt 2 konfigurierte Azure Blob Storage-Instanz. Wenn der Azure-Speicher, der die Daten hostet, sich von dem Speicher unterscheidet, der die Abfragedatei hostet, erstellen Sie einen separaten mit verknüpften Azure Storage-Dienst. Informationen dazu finden Sie im verknüpften Dienst in der Aktivitätskonfiguration. Verwenden Sie **scriptPath**, um den Pfad zur Pig-Skriptdatei und zu **scriptLinkedService** anzugeben. 
+1. Erstellen Sie einen verknüpften Dienst, um [Ihren eigenen HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) zu registrieren oder einen [bedarfsgesteuerten HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) zu konfigurieren. Wir nennen diesen verknüpften Dienst **HDInsightLinkedService** .
+2. Erstellen Sie einen [verknüpften Dienst](data-factory-azure-blob-connector.md), um die Verbindung mit Azure Blob Storage zu konfigurieren, in dem die Daten gehostet werden. Wir nennen diesen verknüpften Dienst **StorageLinkedService** .
+3. Erstellen Sie [Datasets](data-factory-create-datasets.md) , die auf die Eingabe- und die Ausgabedaten verweisen. Wir nennen das Eingabedataset **PigSampleIn** und das Ausgabedataset **PigSampleOut** .
+4. Kopieren Sie die Pig-Abfrage in eine Datei in die in Schritt 2 konfigurierte Azure Blob Storage-Instanz. Wenn der Azure-Speicher, der die Daten hostet, sich von dem Speicher unterscheidet, der die Abfragedatei hostet, erstellen Sie einen separaten mit verknüpften Azure Storage-Dienst. Informationen dazu finden Sie im verknüpften Dienst in der Aktivitätskonfiguration. Verwenden Sie **scriptPath** , um den Pfad zur Pig-Skriptdatei und zu **scriptLinkedService** anzugeben. 
    
    > [!NOTE]
    > Sie können das Pig-Skript auch inline in der Aktivitätsdefinition bereitstellen, indem Sie die **script** -Eigenschaft verwenden. Dieser Ansatz wird jedoch nicht empfohlen, da alle Sonderzeichen im Skript mit Escapezeichen versehen werden müssen und zu Debuggingproblemen führen können. Die bewährte Methode ist, Schritt 4 auszuführen.
@@ -172,7 +172,7 @@ Betrachten Sie das folgende Beispiel: Spielprotokolle werden täglich in Azure B
 
 Gehen Sie folgendermaßen vor, um das parametrisierte Pig-Skript zu verwenden:
 
-* Legen Sie die Parameter in **defines**fest.
+* Legen Sie die Parameter in **defines** fest.
 
     ```JSON
     {
@@ -210,7 +210,7 @@ Gehen Sie folgendermaßen vor, um das parametrisierte Pig-Skript zu verwenden:
       }
     }
     ```
-* Verweisen Sie im Pig-Skript mit " **$parameterName**" wie im folgenden Beispiel gezeigt auf die Parameter:
+* Verweisen Sie im Pig-Skript mit " **$parameterName** " wie im folgenden Beispiel gezeigt auf die Parameter:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

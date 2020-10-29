@@ -3,12 +3,12 @@ title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974395"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371102"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
@@ -78,7 +78,7 @@ Kunden möchten möglicherweise Einblick in die Abonnements und/oder Ressourceng
 
 Wir bieten eine in [Azure Policy integrierte Richtliniendefinition](../../governance/policy/samples/built-in-policies.md#lighthouse), um die [Delegierung von Bereichen an einen verwaltenden Mandanten zu überwachen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Sie können diese Richtlinie einer Verwaltungsgruppe zuordnen, die alle Abonnements umfasst, die Sie überwachen möchten. Wenn Sie die Compliance mit dieser Richtlinie überprüfen, werden alle delegierten Abonnements und/oder Ressourcengruppen (innerhalb der Verwaltungsgruppe, der die Richtlinie zugeordnet ist) im Zustand „nicht kompatibel“ angezeigt. Sie können dann die Ergebnisse überprüfen und bestätigen, dass es keine unerwarteten Delegierungen gibt.
 
-Mit einer weiteren [integrierten Richtliniendefinition](../../governance/policy/samples/built-in-policies.md#lighthouse) können Sie [Delegierungen auf bestimmte verwaltende Mandanten beschränken](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json). Diese Richtlinie kann auf ähnliche Weise auf eine Verwaltungsgruppe angewendet werden, in der alle Abonnements enthalten sind, für die Sie Delegierungen begrenzen möchten. Nach der Bereitstellung der Richtlinie werden alle Versuche abgelehnt, ein Abonnement an einen Mandanten außerhalb der von Ihnen angegebenen zu delegieren.
+Mit einer weiteren [integrierten Richtliniendefinition](../../governance/policy/samples/built-in-policies.md#lighthouse) können Sie [Delegierungen auf bestimmte verwaltende Mandanten beschränken](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json). Diese Richtlinie kann auf ähnliche Weise auf eine Verwaltungsgruppe angewendet werden, in der alle Abonnements enthalten sind, für die Sie Delegierungen begrenzen möchten. Nach der Bereitstellung der Richtlinie werden alle Versuche abgelehnt, ein Abonnement an einen Mandanten außerhalb der von Ihnen angegebenen zu delegieren.
 
 Weitere Informationen zum Zuweisen einer Richtlinie und zum Anzeigen der Ergebnisse in Bezug auf den Konformitätszustand finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung](../../governance/policy/assign-policy-portal.md).
 

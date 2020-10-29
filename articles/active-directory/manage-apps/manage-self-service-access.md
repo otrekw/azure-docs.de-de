@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88640751"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362364"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Konfigurieren der Self-Service-Anwendungszuweisung
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
 
 5. Um den Self-Service-Anwendungszugriff auf die Anwendung zu aktivieren, legen Sie **Benutzern das Anfordern des Zugriffs auf diese Anwendung erlauben?** auf **Ja** fest.
 
-6. Klicken Sie neben **Welcher Gruppe sollen zugewiesene Benutzer hinzugefügt werden?** auf **Gruppe auswählen**. Wählen Sie eine Gruppe, und klicken Sie auf **Auswählen**. Wenn die Anforderung eines Benutzers genehmigt wird, wird er dieser Gruppe hinzugefügt. Wenn Sie die Mitgliedschaft dieser Gruppe prüfen, können Sie erkennen, wem der Zugriff auf die Anwendung über einen Self-Service-Zugriff gewährt wurde.
+6. Klicken Sie neben **Welcher Gruppe sollen zugewiesene Benutzer hinzugefügt werden?** auf **Gruppe auswählen** . Wählen Sie eine Gruppe, und klicken Sie auf **Auswählen** . Wenn die Anforderung eines Benutzers genehmigt wird, wird er dieser Gruppe hinzugefügt. Wenn Sie die Mitgliedschaft dieser Gruppe prüfen, können Sie erkennen, wem der Zugriff auf die Anwendung über einen Self-Service-Zugriff gewährt wurde.
   
     > [!NOTE]
     > Diese Einstellung unterstützt keine Gruppen, die lokal synchronisiert werden.
@@ -70,16 +70,16 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
 
 8. **Optional: nur für Anwendungen mit einmaligem Anmelden per Kennwort:** Wenn Sie möchten, dass die genehmigenden Personen des Unternehmens die für genehmigte Benutzer an die Anwendung gesendeten Kennwörter angeben können, legen Sie **Genehmigenden Personen das Festlegen von Benutzerkennwörtern für diese Anwendung gestatten?** auf **Ja** fest.
 
-9. **Optional:** Um die genehmigenden Personen des Unternehmens anzugeben, die den Zugriff auf die Anwendung genehmigen können, klicken Sie auf neben **Wer darf den Zugriff auf diese Anwendung genehmigen?** auf **Genehmigende Person auswählen**. Hier können Sie bis zu 10 genehmigende Personen des Unternehmens auswählen. Klicken Sie dann auf **Auswählen**.
+9. **Optional:** Um die genehmigenden Personen des Unternehmens anzugeben, die den Zugriff auf die Anwendung genehmigen können, klicken Sie auf neben **Wer darf den Zugriff auf diese Anwendung genehmigen?** auf **Genehmigende Person auswählen** . Hier können Sie bis zu 10 genehmigende Personen des Unternehmens auswählen. Klicken Sie dann auf **Auswählen** .
 
     >[!NOTE]
     >Gruppen werden nicht unterstützt. Sie können bis zu 10 genehmigende Personen des Unternehmens auswählen. Wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person eine Zugriffsanforderung genehmigen.
 
-10. **Optional:** Wenn Sie **für Anwendungen, die Rollen verfügbar machen**, den für den Self-Service genehmigten Benutzern eine Rolle zuweisen möchten, klicken Sie neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?** auf **Rolle auswählen**, und wählen Sie dann die Rolle aus, die diesen Benutzern zugewiesen werden soll. Klicken Sie dann auf **Auswählen**.
+10. **Optional:** Wenn Sie **für Anwendungen, die Rollen verfügbar machen** , den für den Self-Service genehmigten Benutzern eine Rolle zuweisen möchten, klicken Sie neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?** auf **Rolle auswählen** , und wählen Sie dann die Rolle aus, die diesen Benutzern zugewiesen werden soll. Klicken Sie dann auf **Auswählen** .
 
-11. Klicken Sie abschließend oben im Bereich auf die Schaltfläche **Speichern**.
+11. Klicken Sie abschließend oben im Bereich auf die Schaltfläche **Speichern** .
 
 Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer in ihrem Bereich [Meine Apps](https://myapps.microsoft.com/) auf die Schaltfläche **Self-Service-Apps hinzufügen** klicken und die Apps suchen, die für den Self-Service-Zugriff aktiviert sind. Genehmigenden Personen aus einer Geschäftsabteilung wird in [Meine Apps](https://myapps.microsoft.com/) zudem eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md)
+[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](../enterprise-users/groups-self-service-management.md)

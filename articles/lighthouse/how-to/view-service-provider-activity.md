@@ -3,19 +3,19 @@ title: Anzeigen der Dienstanbieteraktivität
 description: Kunden können anhand von protokollierten Aktivitäten überprüfen, welche Aktionen Dienstanbieter im Rahmen der delegierten Azure-Ressourcenverwaltung ausgeführt haben.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974310"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371085"
 ---
 # <a name="view-service-provider-activity"></a>Anzeigen der Dienstanbieteraktivität
 
 Kunden, die delegierte Abonnements für [Azure Lighthouse](../overview.md) haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/platform/platform-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. Dadurch erhalten Kunden nicht nur einen umfassenden Einblick in Vorgänge, die von Dienstanbietern im Rahmen der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) ausgeführt werden, sondern auch in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten (Azure Active Directory) des Kunden ausgeführt werden.
 
 > [!TIP]
-> Wir bieten in Azure Policy integrierte Richtliniendefinitionen, um die [Delegierung an bestimmte verwaltende Mandanten einzuschränken](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) und die [Delegierung von Bereichen an einen verwaltenden Mandanten zu überwachen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Weitere Informationen finden Sie unter [Überwachen von Delegierungen in Ihrer Umgebung](view-manage-service-providers.md#audit-delegations-in-your-environment).
+> Wir bieten in Azure Policy integrierte Richtliniendefinitionen, um die [Delegierung an bestimmte verwaltende Mandanten einzuschränken](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) und die [Delegierung von Bereichen an einen verwaltenden Mandanten zu überwachen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Weitere Informationen finden Sie unter [Überwachen von Delegierungen in Ihrer Umgebung](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Anzeigen von Aktivitätsprotokolldaten
 

@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797236"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370915"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -28,7 +28,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 ## <a name="to-add-or-change-profile-information"></a>Hinzufügen oder Ändern von Profilinformationen
 1. Melden Sie sich als Benutzeradministrator für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Azure Active Directory**, **Benutzer** und dann einen Benutzer aus. Beispielsweise _Alain Charon_.
+2. Wählen Sie **Azure Active Directory** , **Benutzer** und dann einen Benutzer aus. Beispielsweise _Alain Charon_ .
 
     Daraufhin wird die Seite **Alain Charon – Profil** angezeigt.
 
@@ -66,4 +66,4 @@ Nachdem Sie Ihre Benutzerprofile aktualisiert haben, können Sie die folgenden g
 
 - [Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
 
-Sie können auch andere Aufgaben für die Benutzerverwaltung ausführen, z.B. Delegate zuweisen, Richtlinien verwenden und Benutzerkonten freigeben. Weitere Informationen zu anderen verfügbaren Aktionen finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../users-groups-roles/index.yml).
+Sie können auch andere Aufgaben für die Benutzerverwaltung ausführen, z.B. Delegate zuweisen, Richtlinien verwenden und Benutzerkonten freigeben. Weitere Informationen zu anderen verfügbaren Aktionen finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../enterprise-users/index.yml).

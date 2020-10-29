@@ -3,12 +3,12 @@ title: Vorbereiten von Azure Migrate für die Arbeit mit einem ISV-Tool/Movere
 description: In diesem Artikel wird beschrieben, wie Sie Azure Migrate für die Arbeit mit einem ISV-Tool oder Movere vorbereiten, sowie die ersten Schritte bei der Verwendung des Tools.
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103924"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369147"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Vorbereiten der Verwendung eines ISV-Tools oder von Movere
 
@@ -26,14 +26,14 @@ Ihr Azure-Benutzerkonto benötigt die folgenden Berechtigungen:
 
 1. Überprüfen Sie in Azure AD die Rolle Ihr Konto.
 2. Wenn Sie die Benutzerrolle besitzen, wählen Sie im linken Bereich **Benutzereinstellungen** aus, und überprüfen Sie, ob Benutzer Anwendungen registrieren können. Wenn die Einstellung auf **Ja** festgelegt ist, können aller Benutzer im Azure AD-Mandanten eine App registrieren. Wenn die Einstellung auf **Nein** festgelegt ist, können nur Administratorbenutzer Apps registrieren.   
-3. Wenn Sie keine Berechtigungen besitzen, kann ein Administratorbenutzer Ihrem Benutzerkonto die Rolle [Anwendungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-administrator) zuweisen, damit Sie die App registrieren können.
+3. Wenn Sie keine Berechtigungen besitzen, kann ein Administratorbenutzer Ihrem Benutzerkonto die Rolle [Anwendungsadministrator](../active-directory/roles/permissions-reference.md#application-administrator) zuweisen, damit Sie die App registrieren können.
 4. Nachdem das Tool mit Azure Migrate verknüpft wurde, kann der Administrator die Rolle aus Ihrem Konto entfernen.
 
 ### <a name="set-permissions-to-assign-a-role-to-an-azure-ad-app"></a>Festlegen von Berechtigungen zum Zuweisen einer Rolle zu einer Azure AD-App
  
-In Ihrem Azure-Abonnement muss Ihr Konto über **Microsoft.Authorization/*/Write**-Zugriff verfügen, um einer Azure AD-App eine Rolle zuzuweisen. 
+In Ihrem Azure-Abonnement muss Ihr Konto über **Microsoft.Authorization/*/Write** -Zugriff verfügen, um einer Azure AD-App eine Rolle zuzuweisen. 
 
-1. Öffnen Sie im Azure-Portal **Abonnements**.
+1. Öffnen Sie im Azure-Portal **Abonnements** .
 2. Wählen Sie das relevante Abonnement aus. Wenn es nicht angezeigt wird, wählen Sie den Filter **globale Abonnements** aus. 
 3. Wählen Sie **My permissions** (Meine Berechtigungen). Wählen Sie anschließend **Klicken Sie hier, um die vollständigen Zugangsdaten für dieses Abonnement anzuzeigen** aus.
 4. Überprüfen Sie in **Rollenzuweisungen** > **Ansicht** die Berechtigungen. Wenn Ihr Konto keine Berechtigungen besitzt, bitten Sie den Abonnementadministrator, Sie der Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../role-based-access-control/built-in-roles.md#owner) hinzuzufügen.

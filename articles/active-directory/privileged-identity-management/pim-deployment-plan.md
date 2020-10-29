@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367804"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
@@ -58,7 +58,7 @@ Dieser Abschnitt bietet eine Übersicht über die Planungszwecke der relevanten 
 
 ## <a name="roles-that-can-be-managed-by-pim"></a>Rollen, die von PIM verwaltet werden können
 
-**Azure AD-Rollen** sind Rollen in Azure Active Directory (z. B. „Globaler Administrator“, „Exchange-Administrator“ und „Sicherheitsadministrator“). Unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) erfahren Sie mehr über die Rollen und ihre Funktionen. [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md) hilft Ihnen dabei, Ihren Administratoren geeignete Rollen zuzuweisen.
+**Azure AD-Rollen** sind Rollen in Azure Active Directory (z. B. „Globaler Administrator“, „Exchange-Administrator“ und „Sicherheitsadministrator“). Unter [Berechtigungen der Administratorrolle in Azure Active Directory](../roles/permissions-reference.md) erfahren Sie mehr über die Rollen und ihre Funktionen. [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../roles/delegate-by-task.md) hilft Ihnen dabei, Ihren Administratoren geeignete Rollen zuzuweisen.
 
 **Azure-Rollen** sind mit einer Azure-Ressource, einer Ressourcengruppe, einem Abonnement oder einer Verwaltungsgruppe verknüpfte Rollen. Mit PIM können Sie Just-In-Time-Zugriff auf integrierte Azure-Rollen wie „Besitzer“, „Benutzerzugriffsadministrator“ und „Mitwirkender“ sowie auf [benutzerdefinierte Rollen](../../role-based-access-control/custom-roles.md) bereitstellen. Weitere Informationen zu Azure-Rollen finden Sie im Artikel über die [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md).
 
@@ -111,7 +111,7 @@ Bei Azure AD-Rollen ist es üblich, dass Organisationen die Rolle „Globaler A
 
 Führen Sie die folgenden Schritte aus, um das Prinzip der geringsten Rechte für Ihre Azure AD-Rollen zu implementieren.
 
-1. Einblicke in die Granularität der Rollen erhalten Sie durch Lesen und Verstehen von [Verfügbare Rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles). Sie und Ihr Team sollten außerdem den Artikel [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md) lesen, in dem die am wenigsten privilegierte Rolle für bestimmte Aufgaben erläutert wird.
+1. Einblicke in die Granularität der Rollen erhalten Sie durch Lesen und Verstehen von [Verfügbare Rollen](../roles/permissions-reference.md#available-roles). Sie und Ihr Team sollten außerdem den Artikel [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../roles/delegate-by-task.md) lesen, in dem die am wenigsten privilegierte Rolle für bestimmte Aufgaben erläutert wird.
 
 1. Erstellen Sie eine Liste der Benutzer mit privilegierten Rollen in Ihrer Organisation. Mit der Privileged Identity Management-Funktion [Ermittlung und Erkenntnisse (Vorschau)](pim-security-wizard.md) können Sie das Risiko reduzieren.
 
@@ -125,7 +125,7 @@ Wenn Sie die letzten beiden Schritte automatisieren möchten, können Sie Zugrif
 
 ![Erstellen eines Zugriffsüberprüfungsbereich für Azure AD-Rollen](./media/pim-deployment-plan/create-access-review.png)
 
-Legen Sie die Prüfer auf **Mitglieder (selbst)** fest. Alle Benutzer mit der Rolle erhalten eine E-Mail, in der sie aufgefordert werden, zu bestätigen, dass sie den Zugriff benötigen. Aktivieren Sie außerdem in den erweiterten Einstellungen die Option **Bei Genehmigung Grund anfordern**, damit Benutzer angeben müssen, warum sie die Rolle benötigen. Basierend auf diesen Informationen können Sie Benutzer aus nicht erforderlichen Rollen entfernen oder genauer abgestimmte Administratorrollen an sie delegieren.
+Legen Sie die Prüfer auf **Mitglieder (selbst)** fest. Alle Benutzer mit der Rolle erhalten eine E-Mail, in der sie aufgefordert werden, zu bestätigen, dass sie den Zugriff benötigen. Aktivieren Sie außerdem in den erweiterten Einstellungen die Option **Bei Genehmigung Grund anfordern** , damit Benutzer angeben müssen, warum sie die Rolle benötigen. Basierend auf diesen Informationen können Sie Benutzer aus nicht erforderlichen Rollen entfernen oder genauer abgestimmte Administratorrollen an sie delegieren.
 
 Bei Zugriffsüberprüfungen werden E-Mails gesendet, um Personen dazu aufzufordern, ihren Zugriff auf die Rollen zu überprüfen. Wenn Sie privilegierte Konten haben, mit denen keine E-Mail-Adressen verknüpft sind, achten Sie darauf, für diese Konten das Feld für die sekundäre E-Mail-Adresse auszufüllen. Weitere Informationen finden Sie im Artikel zum [proxyAddresses-Attribut in Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
@@ -161,14 +161,14 @@ Das Priorisieren des Schutzes von Azure AD-Rollen mit den meisten Berechtigunge
 1. Skype for Business-Administrator
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Verwalten Sie zuerst alle globalen Administratoren und Sicherheitsadministratoren mithilfe von Privileged Identity Management, weil diese Benutzer bei einer Kompromittierung den meisten Schaden anrichten können.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Verwalten Sie zuerst alle globalen Administratoren und Sicherheitsadministratoren mithilfe von Privileged Identity Management, weil diese Benutzer bei einer Kompromittierung den meisten Schaden anrichten können.
 
 Es ist wichtig zu berücksichtigen, welche Daten und Berechtigungen für Ihre Organisation am sensibelsten sind. Beispielsweise sollten einige Organisationen ihre Power BI-Administratorrolle oder ihre Teams-Administratorrolle mit Privileged Identity Management schützen, weil diese Administratoren auf Daten zugreifen und zentrale Workflows ändern können.
 
 Anfällig für Angriffe sind Rollen, denen Gastbenutzer zugewiesen sind.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Verwalten Sie alle Rollen für Gastbenutzer mit Privileged Identity Management, um Risiken im Zusammenhang mit kompromittierten Gastbenutzerkonten zu reduzieren.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Verwalten Sie alle Rollen für Gastbenutzer mit Privileged Identity Management, um Risiken im Zusammenhang mit kompromittierten Gastbenutzerkonten zu reduzieren.
 
 Leserrollen wie „Verzeichnisleseberechtigter“, „Nachrichtencenter-Leseberechtigter“ und „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ werden manchmal als weniger wichtig angesehen als andere Rollen, weil sie nicht über Schreibberechtigungen verfügen. Einige unserer Kunden schützen jedoch auch diese Rollen, weil Angreifer, die Zugriff auf diese Konten haben, möglicherweise vertrauliche Daten wie z. B. personenbezogene Daten lesen können. Berücksichtigen Sie dieses Risiko, wenn Sie entscheiden, ob Leserrollen in Ihrer Organisation mit Privileged Identity Management verwaltet werden sollen.
 
@@ -182,14 +182,14 @@ Bei der Entscheidung, welche Rollenzuweisungen mithilfe von Privileged Identity 
 Wenn Sie sich als globaler Administrator unsicher sind, welche Abonnements und Ressourcen am wichtigsten sind, bitten Sie die Abonnementbesitzer in Ihrer Organisation, eine Liste der von jedem Abonnement verwalteten Ressourcen zusammenzustellen. Gruppieren Sie dann in Zusammenarbeit mit den Abonnementbesitzern die Ressourcen basierend auf dem Schweregrad im Fall einer Kompromittierung (niedrig, mittel, hoch). Priorisieren Sie die Verwaltung von Ressourcen mit Privileged Identity Management basierend auf diesem Schweregrad.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Arbeiten Sie mit Abonnement-/Ressourcenbesitzern von kritischen Diensten zusammen, um den Privileged Identity Management-Workflow für alle Rollen in sensiblen Abonnements/Ressourcen einzurichten.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Arbeiten Sie mit Abonnement-/Ressourcenbesitzern von kritischen Diensten zusammen, um den Privileged Identity Management-Workflow für alle Rollen in sensiblen Abonnements/Ressourcen einzurichten.
 
 Privileged Identity Management für Azure-Ressourcen unterstützt zeitgebundene Dienstkonten. Behandeln Sie Dienstkonten genauso, wie Sie ein normales Benutzerkonto behandeln würden.
 
 Bei Abonnements/Ressourcen, die nicht so kritisch sind, müssen Sie Privileged Identity Management nicht für alle Rollen einrichten. Die Rollen „Besitzer“ und „Benutzerzugriffsadministrator“ sollten Sie jedoch weiterhin mit Privileged Identity Management schützen.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Verwalten Sie die Rollen „Besitzer“ und „Benutzerzugriffsadministrator“ aller Abonnements/Ressourcen mit Privileged Identity Management.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Verwalten Sie die Rollen „Besitzer“ und „Benutzerzugriffsadministrator“ aller Abonnements/Ressourcen mit Privileged Identity Management.
 
 ### <a name="decide-whether-to-use-a-group-to-assign-roles"></a>Entscheiden, ob Rollen einer Gruppe zugewiesen werden sollen
 
@@ -200,21 +200,21 @@ Ob eine Rolle einer Gruppe (statt einzelnen Benutzern) zugewiesen werden soll, i
 
 #### <a name="many-users-are-assigned-to-a-role"></a>Viele Benutzer sind einer Rolle zugewiesen
 
-Die Nachverfolgung, welchen Benutzern eine Rolle zugewiesen ist, und die bedarfsorientierte Verwaltung der jeweiligen Zuweisungen sind Aufgaben, die bei manueller Ausführung Zeit in Anspruch nehmen können. Wenn Sie eine Rolle einer Gruppe zuweisen möchten, [erstellen Sie zuerst eine Gruppe, der Rollen zugewiesen werden können](../users-groups-roles/roles-groups-create-eligible.md), und weisen Sie dann die Gruppe als für eine Rolle berechtigt zu. Bei dieser Aktion unterliegen alle Benutzer in der Gruppe demselben Aktivierungsprozess wie einzelne Benutzer, die für eine Erhöhung in die Rolle berechtigt sind. Gruppenmitglieder aktivieren ihre Zuweisungen für die Gruppe einzeln mithilfe des Aktivierungsanforderungs- und Genehmigungsprozesses von Privileged Identity Management. Die Gruppe wird nicht aktiviert, sondern nur die Gruppenmitgliedschaft des Benutzers.
+Die Nachverfolgung, welchen Benutzern eine Rolle zugewiesen ist, und die bedarfsorientierte Verwaltung der jeweiligen Zuweisungen sind Aufgaben, die bei manueller Ausführung Zeit in Anspruch nehmen können. Wenn Sie eine Rolle einer Gruppe zuweisen möchten, [erstellen Sie zuerst eine Gruppe, der Rollen zugewiesen werden können](../roles/groups-create-eligible.md), und weisen Sie dann die Gruppe als für eine Rolle berechtigt zu. Bei dieser Aktion unterliegen alle Benutzer in der Gruppe demselben Aktivierungsprozess wie einzelne Benutzer, die für eine Erhöhung in die Rolle berechtigt sind. Gruppenmitglieder aktivieren ihre Zuweisungen für die Gruppe einzeln mithilfe des Aktivierungsanforderungs- und Genehmigungsprozesses von Privileged Identity Management. Die Gruppe wird nicht aktiviert, sondern nur die Gruppenmitgliedschaft des Benutzers.
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>Sie möchten die Zuweisung der Rolle delegieren
 
-Ein Gruppenbesitzer kann die Mitgliedschaft für eine Gruppe verwalten. Für Gruppen, denen Azure AD-Rollen zugewiesen werden können, sind nur der Administrator für privilegierte Rollen, der globale Administrator und die Gruppenbesitzer in der Lage, die Gruppenmitgliedschaft zu verwalten. Wenn der Gruppe neue Mitglieder hinzugefügt werden, erhalten diese Mitglieder Zugriff auf die Rollen, die der Gruppe zugewiesen sind, unabhängig davon, ob die Zuweisung berechtigt oder aktiv ist. Verwenden Sie Gruppenbesitzer, um die Verwaltung der Gruppenmitgliedschaft für eine zugewiesene Rolle zu delegieren, damit der erforderliche Umfang der Berechtigungen reduziert werden kann. Weitere Informationen zum Zuweisen eines Besitzers zu einer Gruppe beim Erstellen der Gruppe finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md).
+Ein Gruppenbesitzer kann die Mitgliedschaft für eine Gruppe verwalten. Für Gruppen, denen Azure AD-Rollen zugewiesen werden können, sind nur der Administrator für privilegierte Rollen, der globale Administrator und die Gruppenbesitzer in der Lage, die Gruppenmitgliedschaft zu verwalten. Wenn der Gruppe neue Mitglieder hinzugefügt werden, erhalten diese Mitglieder Zugriff auf die Rollen, die der Gruppe zugewiesen sind, unabhängig davon, ob die Zuweisung berechtigt oder aktiv ist. Verwenden Sie Gruppenbesitzer, um die Verwaltung der Gruppenmitgliedschaft für eine zugewiesene Rolle zu delegieren, damit der erforderliche Umfang der Berechtigungen reduziert werden kann. Weitere Informationen zum Zuweisen eines Besitzers zu einer Gruppe beim Erstellen der Gruppe finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md).
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Binden Sie Gruppen, denen Azure AD-Rollen zugewiesen werden können, in die Verwaltung in Privileged Identity Management ein. Nach der Integration einer Gruppe, der Rollen zugewiesen werden können, in die Verwaltung in PIM wird sie als Gruppe mit privilegiertem Zugriff bezeichnet. Verwenden Sie PIM, um zu erzwingen, dass Gruppenbesitzer ihre Rollenzuweisung „Besitzer“ aktivieren, bevor sie Gruppenmitgliedschaften verwalten können. Weitere Informationen zum Einbinden von Gruppen in die PIM-Verwaltung finden Sie unter [Verwalten von Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management](groups-discover-groups.md).
+> :heavy_check_mark: **Microsoft-Empfehlung** : Binden Sie Gruppen, denen Azure AD-Rollen zugewiesen werden können, in die Verwaltung in Privileged Identity Management ein. Nach der Integration einer Gruppe, der Rollen zugewiesen werden können, in die Verwaltung in PIM wird sie als Gruppe mit privilegiertem Zugriff bezeichnet. Verwenden Sie PIM, um zu erzwingen, dass Gruppenbesitzer ihre Rollenzuweisung „Besitzer“ aktivieren, bevor sie Gruppenmitgliedschaften verwalten können. Weitere Informationen zum Einbinden von Gruppen in die PIM-Verwaltung finden Sie unter [Verwalten von Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management](groups-discover-groups.md).
 
 ### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Entscheiden, welche Rollenzuweisungen permanent oder berechtigt sein sollen
 
 Nachdem Sie die Liste der von Privileged Identity Management zu verwaltenden Rollen festgelegt haben, müssen Sie entscheiden, welche Benutzer die berechtigte Rolle anstatt der dauerhaft aktiven Rolle erhalten sollen. Dauerhaft aktive Rollen sind die normalen über Azure Active Directory und Azure-Ressourcen zugewiesenen Rollen, während berechtigte Rollen nur in Privileged Identity Management zugewiesen werden können.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Legen Sie für Azure AD-Rollen und Azure-Rollen keine anderen dauerhaft aktiven Zuweisungen fest als die empfohlenen [zwei Konten für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md), die über die permanente Rolle „Globaler Administrator“ verfügen müssen.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Legen Sie für Azure AD-Rollen und Azure-Rollen keine anderen dauerhaft aktiven Zuweisungen fest als die empfohlenen [zwei Konten für den Notfallzugriff](../roles/security-emergency-access.md), die über die permanente Rolle „Globaler Administrator“ verfügen müssen.
 
 Wir empfehlen zwar, überhaupt keinen ständigen Administratorzugriff bereitzustellen, für Organisationen ist es jedoch mitunter schwierig, dies sofort umzusetzen. Folgende Aspekte sind bei dieser Entscheidung zu berücksichtigen:
 
@@ -222,7 +222,7 @@ Wir empfehlen zwar, überhaupt keinen ständigen Administratorzugriff bereitzust
 - Für Ihre Organisation spezifische Fälle: Wenn die Person, der die berechtigte Rolle zugewiesen wird, einem entfernten Team angehört oder eine hochrangige Führungskraft ist, sodass die Kommunikation und die Durchsetzung der Erhöhung der Rechte schwierig ist, kann die Person für die permanente Rolle in Betracht gezogen werden.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Richten Sie laufende Zugriffsüberprüfungen für Benutzer mit permanenten Rollenzuweisungen ein (falls vorhanden). Im letzten Abschnitt dieses Bereitstellungsplans erfahren Sie mehr über laufende Zugriffsüberprüfungen.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Richten Sie laufende Zugriffsüberprüfungen für Benutzer mit permanenten Rollenzuweisungen ein (falls vorhanden). Im letzten Abschnitt dieses Bereitstellungsplans erfahren Sie mehr über laufende Zugriffsüberprüfungen.
 
 ### <a name="draft-your-privileged-identity-management-settings"></a>Entwerfen Ihrer Privileged Identity Management-Einstellungen
 
@@ -249,13 +249,13 @@ In der folgenden Tabelle sind die einzelnen Einstellungen beschrieben.
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Role | Name der Rolle, für die Sie die Einstellungen definieren. |
-| Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |
+| Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung** : Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |
 | Benachrichtigung | Ist diese Einstellung auf „true“ festgelegt, erhalten globale Administratoren, Administratoren für privilegierte Rollen und Sicherheitsadministratoren in der Organisation eine E-Mail-Benachrichtigung, wenn ein berechtigter Benutzer die Rolle aktiviert.<br/><br/>**Hinweis:** Einige Organisationen haben keine E-Mail-Adressen mit ihren Administratorkonten verknüpft. Um diese E-Mail-Benachrichtigungen zu erhalten müssen Sie eine alternative E-Mail-Adresse festlegen, damit Administratoren diese E-Mails erhalten. |
-| Vorfallsticket | Gibt an, ob der berechtigte Benutzer beim Aktivieren seiner Rolle eine Vorfallsticketnummer erfassen muss. Mit dieser Einstellung kann eine Organisation jede Aktivierung anhand einer internen Vorfallnummer identifizieren, um unerwünschte Aktivierungen zu verringern.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Nutzen Sie Incidentticketnummern, um Privileged Identity Management mit Ihrem internen System zu verknüpfen. Diese Methode kann für genehmigende Personen nützlich sein, die Kontext für die Aktivierung benötigen. |
-| Genehmigung anfordern | Gibt an, ob der berechtigte Benutzer eine Genehmigung zum Aktivieren der Rolle einholen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Richten Sie die Genehmigung für Rollen mit der höchsten Berechtigung ein. Basierend auf den Nutzungsmustern aller Privileged Identity Management-Kunden handelt es sich bei den Rollen „Globaler Administrator“, „Benutzeradministrator“, „Exchange-Administrator“, „Sicherheitsadministrator“ und „Kennwortadministrator“ um die am häufigsten verwendeten Rollen mit eingerichteter Genehmigung. |
-| Genehmigende Person | Wenn zum Aktivieren der berechtigten Rolle eine Genehmigung erforderlich ist, listen Sie die Personen auf, von denen die Anforderung genehmigt werden muss. Standardmäßig legt Privileged Identity Management alle Benutzer als genehmigende Person fest, die Administrator für privilegierte Rollen sind, unabhängig davon, ob es sich um eine permanente oder berechtigte Zuweisung handelt.<br/><br/>**Hinweis:** Wenn ein Benutzer sowohl für eine Azure AD-Rolle berechtigt als auch eine genehmigende Person der Rolle ist, kann er sich nicht selbst genehmigen.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Wählen Sie als genehmigende Personen statt eines globalen Administrators Benutzer aus, die am besten über die Rolle und deren häufige Benutzer Bescheid wissen. |
+| Vorfallsticket | Gibt an, ob der berechtigte Benutzer beim Aktivieren seiner Rolle eine Vorfallsticketnummer erfassen muss. Mit dieser Einstellung kann eine Organisation jede Aktivierung anhand einer internen Vorfallnummer identifizieren, um unerwünschte Aktivierungen zu verringern.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung** : Nutzen Sie Incidentticketnummern, um Privileged Identity Management mit Ihrem internen System zu verknüpfen. Diese Methode kann für genehmigende Personen nützlich sein, die Kontext für die Aktivierung benötigen. |
+| Genehmigung anfordern | Gibt an, ob der berechtigte Benutzer eine Genehmigung zum Aktivieren der Rolle einholen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung** : Richten Sie die Genehmigung für Rollen mit der höchsten Berechtigung ein. Basierend auf den Nutzungsmustern aller Privileged Identity Management-Kunden handelt es sich bei den Rollen „Globaler Administrator“, „Benutzeradministrator“, „Exchange-Administrator“, „Sicherheitsadministrator“ und „Kennwortadministrator“ um die am häufigsten verwendeten Rollen mit eingerichteter Genehmigung. |
+| Genehmigende Person | Wenn zum Aktivieren der berechtigten Rolle eine Genehmigung erforderlich ist, listen Sie die Personen auf, von denen die Anforderung genehmigt werden muss. Standardmäßig legt Privileged Identity Management alle Benutzer als genehmigende Person fest, die Administrator für privilegierte Rollen sind, unabhängig davon, ob es sich um eine permanente oder berechtigte Zuweisung handelt.<br/><br/>**Hinweis:** Wenn ein Benutzer sowohl für eine Azure AD-Rolle berechtigt als auch eine genehmigende Person der Rolle ist, kann er sich nicht selbst genehmigen.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung** : Wählen Sie als genehmigende Personen statt eines globalen Administrators Benutzer aus, die am besten über die Rolle und deren häufige Benutzer Bescheid wissen. |
 | Aktivierungsdauer | Die Zeitspanne, in der ein Benutzer in der Rolle aktiviert ist, bevor sie abläuft. |
-| Permanenter Administrator | Liste der Benutzer, die ein permanenter Administrator für die Rolle sein werden (d. h. sie nie aktivieren müssen).<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Legen Sie keine ständigen Administratoren für Rollen fest, mit Ausnahme von globalen Administratoren. Mehr dazu erfahren Sie in diesem Plan in den Abschnitten dazu, wer berechtigte und wer dauerhaft aktive Rollenzuweisungen erhalten sollte. |
+| Permanenter Administrator | Liste der Benutzer, die ein permanenter Administrator für die Rolle sein werden (d. h. sie nie aktivieren müssen).<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung** : Legen Sie keine ständigen Administratoren für Rollen fest, mit Ausnahme von globalen Administratoren. Mehr dazu erfahren Sie in diesem Plan in den Abschnitten dazu, wer berechtigte und wer dauerhaft aktive Rollenzuweisungen erhalten sollte. |
 | Aktiver Administrator | Für Azure-Ressourcen ist „Aktiver Administrator“ die Liste der Benutzer, die zur Verwendung der Rolle nie eine Aktivierung durchführen müssen. Diese wird nicht als permanenter Administrator wie bei Azure AD-Rollen bezeichnet, weil Sie eine Ablaufzeit festlegen können, nach der ein Benutzer diese Rolle verliert. |
 | Ablauf der Aktivierung | Aktive Rollenzuweisungen für Azure-Rollen laufen nach der konfigurierten Dauer ab. Sie können zwischen 15 Tagen, 1 Monat, 3 Monaten, 6 Monaten, 1 Jahr und dauerhafter Aktivität wählen. |
 | Ablauf der Berechtigung | Berechtigte Rollenzuweisungen für Azure-Rollen laufen nach dieser Dauer ab. Sie können zwischen 15 Tagen, 1 Monat, 3 Monaten, 6 Monaten, 1 Jahr und dauerhafter Berechtigung wählen. |
@@ -269,7 +269,7 @@ Die Grundlage für eine gründliche Planung ist die Basis, auf der Sie eine Anwe
 Verwenden Sie diesen Abschnitt, um einen Satz von Benutzern und Gruppen identifizieren, um die Implementierung zu überprüfen. Identifizieren Sie basierend auf den Einstellungen, die Sie im Planungsabschnitt ausgewählt haben, die Benutzer, die Sie für jede Rolle testen möchten.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Legen Sie Dienstbesitzer der einzelnen Azure AD-Rollen als Testbenutzer fest, damit sie mit dem Prozess vertraut werden und die Einführung intern unterstützen können.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Legen Sie Dienstbesitzer der einzelnen Azure AD-Rollen als Testbenutzer fest, damit sie mit dem Prozess vertraut werden und die Einführung intern unterstützen können.
 
 Identifizieren Sie in dieser Tabelle die Testbenutzer, die überprüfen, ob die Einstellungen für die Rollen funktionieren.
 
@@ -286,7 +286,7 @@ Nachdem Sie nun die Testbenutzer identifiziert haben, konfigurieren Sie in diese
 
 1. [Konfigurieren Sie die Einstellungen für Azure AD-Rollen](pim-how-to-change-default-settings.md) basierend auf Ihrer Planung.
 
-1. Navigieren Sie zu **Azure AD-Rollen**, wählen Sie **Rollen** aus, und wählen Sie dann die von Ihnen konfigurierte Rolle aus.
+1. Navigieren Sie zu **Azure AD-Rollen** , wählen Sie **Rollen** aus, und wählen Sie dann die von Ihnen konfigurierte Rolle aus.
 
 1. Wenn die Gruppe von Testbenutzern bereits ein permanenter Administrator ist, können Sie diese als berechtigt festlegen, indem Sie nach den Benutzern suchen und sie von permanent in berechtigt ändern. Wählen Sie hierzu die drei Punkte in der jeweils zugehörigen Zeile aus. Wenn sie die Rollenzuweisungen noch nicht haben, können Sie [neue berechtigte Zuweisung erstellen](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role).
 
@@ -328,7 +328,7 @@ Die Bereitstellung von Privileged Identity Management bringt zusätzliche Schrit
 - Kontaktinformationen oder Helpdesk-Link für Probleme im Zusammenhang mit PIM
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Vereinbaren Sie eine Zeit mit den Mitgliedern Ihres Helpdesk-/Supportteams, um sie Schritt für Schritt durch den Privileged Identity Management-Workflow zu führen (falls Ihre Organisation über ein internes IT-Supportteam verfügt). Stellen Sie ihnen die entsprechende Dokumentationen sowie Ihre Kontaktdaten zur Verfügung.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Vereinbaren Sie eine Zeit mit den Mitgliedern Ihres Helpdesk-/Supportteams, um sie Schritt für Schritt durch den Privileged Identity Management-Workflow zu führen (falls Ihre Organisation über ein internes IT-Supportteam verfügt). Stellen Sie ihnen die entsprechende Dokumentationen sowie Ihre Kontaktdaten zur Verfügung.
 
 ### <a name="move-to-production"></a>Überführen in die Produktion
 
@@ -341,7 +341,7 @@ Wenn Privileged Identity Management in der Produktionsumgebung nicht wie gewüns
 #### <a name="azure-ad-roles"></a>Azure AD-Rollen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 1. Wählen Sie **Azure AD-Rollen** aus, und wählen Sie dann **Rollen** aus.
 1. Wählen Sie für jede von Ihnen konfigurierte Rolle die Auslassungspunkte ( **...** ) für alle Benutzer mit einer berechtigten Zuweisung aus.
 1. Wählen Sie die Option **Als permanent festlegen** aus, um die Rollenzuweisung dauerhaft einzurichten.
@@ -349,7 +349,7 @@ Wenn Privileged Identity Management in der Produktionsumgebung nicht wie gewüns
 #### <a name="azure-roles"></a>Azure-Rollen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 1. Wählen Sie **Azure-Ressourcen** aus, und wählen Sie dann ein Abonnement oder eine Ressource aus, für das/die Sie ein Rollback ausführen möchten.
 1. Wählen Sie **Rollen** aus.
 1. Wählen Sie für jede von Ihnen konfigurierte Rolle die Auslassungspunkte ( **...** ) für alle Benutzer mit einer berechtigten Zuweisung aus.
@@ -364,11 +364,11 @@ Die erfolgreiche Bereitstellung von Privileged Identity Management in der Produk
 Weitere Informationen zum Verwenden der integrierten Warnungsfunktion von Privileged Identity Management zum Schutz Ihrer Organisation finden Sie unter [Sicherheitswarnungen](pim-how-to-configure-security-alerts.md#security-alerts). Diese Warnungen umfassen Folgendes: Administratoren verwenden keine privilegierten Rollen, Rollen sind außerhalb von Privileged Identity Management zugewiesen, Rollen werden zu häufig aktiviert und mehr. Zum vollständigen Schutz Ihrer Organisation sollten Sie die Liste der Warnungen regelmäßig prüfen und die Probleme beheben. So können Sie Ihre Warnungen anzeigen und beheben:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 1. Wählen Sie **Azure AD-Rollen** aus, und wählen Sie dann **Warnungen** aus.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Kümmern Sie sich um alle Warnungen mit hohem Schweregrad sofort. Über Warnungen mit mittlerem und geringem Schweregrad sollten Sie auf dem Laufenden bleiben und Änderungen vornehmen, wenn Sie glauben, dass ein Sicherheitsrisiko vorliegt.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Kümmern Sie sich um alle Warnungen mit hohem Schweregrad sofort. Über Warnungen mit mittlerem und geringem Schweregrad sollten Sie auf dem Laufenden bleiben und Änderungen vornehmen, wenn Sie glauben, dass ein Sicherheitsrisiko vorliegt.
 
 Wenn bestimmte Warnungen nicht nützlich sind oder für Ihre Organisation nicht gelten, können Sie solche Warnungen jederzeit auf der Warnungsseite schließen. Diese Aktion kann später jederzeit auf der Seite „Azure AD-Einstellungen“ rückgängig gemacht werden.
 
@@ -377,12 +377,12 @@ Wenn bestimmte Warnungen nicht nützlich sind oder für Ihre Organisation nicht 
 Zugriffsüberprüfungen sind die beste Methode, um Benutzer mit privilegierten Rollen oder bestimmte Prüfer zu fragen, ob sie die privilegierte Identität jeweils benötigen. Zugriffsüberprüfungen eignen sich hervorragend dazu, die Angriffsfläche zu reduzieren und konform zu bleiben. Weitere Informationen zum Starten einer Zugriffsüberprüfung finden Sie unter [Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in Privileged Identity Management](pim-how-to-start-security-review.md) und [Zugriffsüberprüfungen für Azure-Rollen](pim-resource-roles-start-access-review.md). Für einige Organisationen ist das Durchführen regelmäßiger Zugriffsüberprüfungen erforderlich, um Gesetze und Vorschriften einzuhalten. Für andere wiederum sind Zugriffsüberprüfungen die beste Möglichkeit, das Prinzip der geringsten Rechte innerhalb der Organisation durchzusetzen.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Richten Sie vierteljährliche Zugriffsüberprüfungen für alle Ihre Azure AD- und Azure-Rollen ein.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Richten Sie vierteljährliche Zugriffsüberprüfungen für alle Ihre Azure AD- und Azure-Rollen ein.
 
 In den meisten Fällen ist der Prüfer für Azure AD-Rollen der Benutzer selbst. Für Azure-Rollen dagegen ist der Prüfer der Besitzer des Abonnements, in dem sich die Rolle befindet. Unternehmen haben jedoch häufig privilegierte Konten, die nicht mit der E-Mail-Adresse einer bestimmten Person verknüpft sind. In diesen Fällen liest niemand die E-Mails und überprüft den Zugriff.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Fügen Sie eine sekundäre E-Mail-Adresse für alle Konten mit Zuweisungen privilegierter Rollen hinzu, die nicht mit einer regelmäßig überprüften E-Mail-Adresse verknüpft sind.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Fügen Sie eine sekundäre E-Mail-Adresse für alle Konten mit Zuweisungen privilegierter Rollen hinzu, die nicht mit einer regelmäßig überprüften E-Mail-Adresse verknüpft sind.
 
 ### <a name="get-the-most-out-of-your-audit-log-to-improve-security-and-compliance"></a>Optimale Nutzung des Überwachungsprotokolls zur Verbesserung der Sicherheit und Compliance
 
@@ -397,9 +397,9 @@ Mithilfe des Überwachungsprotokolls bleiben Sie auf dem Laufenden und halten Ri
 Globale Administratoren und Administratoren für privilegierte Rollen können auf die Überwachungsprotokolle zugreifen. Weitere Informationen finden Sie unter [Anzeigen des Überwachungsverlaufs für Azure AD-Rollen](pim-how-to-use-audit-log.md) und [Anzeigen von Aktivitäten und des Überwachungsverlaufs für Azure-Ressourcenrollen in Privileged Identity Management](azure-pim-resource-rbac.md).
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Mindestens ein Administrator sollte wöchentlich alle Überwachungsereignisse lesen und monatlich alle Überwachungsereignisse exportieren.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Mindestens ein Administrator sollte wöchentlich alle Überwachungsereignisse lesen und monatlich alle Überwachungsereignisse exportieren.
 
 Wenn Sie Ihre Überwachungsereignisse für einen längeren Zeitraum automatisch speichern möchten, wird das Privileged Identity Management-Überwachungsprotokoll automatisch mit den [Azure AD-Überwachungsprotokollen](../reports-monitoring/concept-audit-logs.md) synchronisiert.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft-Empfehlung**: Richten Sie die [Azure-Protokollüberwachung](../reports-monitoring/concept-activity-logs-azure-monitor.md) ein, um Überwachungsereignisse zwecks erhöhter Sicherheit und zu Compliancezwecken in einem Azure-Speicherkonto zu archivieren.
+> :heavy_check_mark: **Microsoft-Empfehlung** : Richten Sie die [Azure-Protokollüberwachung](../reports-monitoring/concept-activity-logs-azure-monitor.md) ein, um Überwachungsereignisse zwecks erhöhter Sicherheit und zu Compliancezwecken in einem Azure-Speicherkonto zu archivieren.

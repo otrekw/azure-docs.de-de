@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447089"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362500"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
@@ -51,7 +51,7 @@ Im folgenden Diagramm und den folgenden Schritten erhalten Sie einen Überblick 
 
 1. Sie senden einen [Link für das Portal „Mein Zugriff“](entitlement-management-access-package-settings.md) an Ihre Kontaktperson in der externen Organisation, den diese zur Anforderung des Zugriffspakets an die Benutzer weitergeben kann.
 
-1. Ein externer Benutzer (in diesem Beispiel **Requestor A**) verwendet den Link für das Portal „Mein Zugriff“, um [Zugriff auf das Zugriffspaket anzufordern](entitlement-management-request-access.md). Wie sich der Benutzer anmeldet, hängt vom Authentifizierungstyp des Verzeichnisses oder der Domäne ab, der bzw. die in der verbundenen Organisation definiert ist.
+1. Ein externer Benutzer (in diesem Beispiel **Requestor A** ) verwendet den Link für das Portal „Mein Zugriff“, um [Zugriff auf das Zugriffspaket anzufordern](entitlement-management-request-access.md). Wie sich der Benutzer anmeldet, hängt vom Authentifizierungstyp des Verzeichnisses oder der Domäne ab, der bzw. die in der verbundenen Organisation definiert ist.
 
 1. Eine genehmigende Person [genehmigt die Anforderung](entitlement-management-request-approve.md) (oder sie wird automatisch genehmigt).
 
@@ -75,7 +75,7 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 ### <a name="enable-catalog-for-external-users"></a>Aktivieren des Katalogs für externe Benutzer
 
-- Wenn Sie einen [neuen Katalog](entitlement-management-catalog-create.md) erstellen, wird es standardmäßig ermöglicht, dass externe Benutzer Zugriffspakete aus dem Katalog anfordern können. Stellen Sie sicher, dass **Für externe Benutzer aktiviert ist** auf **Ja**festgelegt ist.
+- Wenn Sie einen [neuen Katalog](entitlement-management-catalog-create.md) erstellen, wird es standardmäßig ermöglicht, dass externe Benutzer Zugriffspakete aus dem Katalog anfordern können. Stellen Sie sicher, dass **Für externe Benutzer aktiviert ist** auf **Ja** festgelegt ist.
 
     ![Bearbeiten von Katalogeinstellungen](./media/entitlement-management-shared/catalog-edit.png)
 
@@ -109,7 +109,7 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 - Wenn Sie möchten, dass externe Benutzer auf die SharePoint Online-Website und die der Microsoft 365-Gruppe zugeordneten Ressourcen zugreifen können, müssen Sie sicherstellen, dass die externe SharePoint Online-Freigabe aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Informationen zum Einrichten einer Gastrichtlinie für Microsoft 365-Gruppen auf Verzeichnisebene in PowerShell finden Sie in [Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Informationen zum Einrichten einer Gastrichtlinie für Microsoft 365-Gruppen auf Verzeichnisebene in PowerShell finden Sie in [Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Überprüfen der Freigabeeinstellungen für Microsoft Teams
 
@@ -121,11 +121,11 @@ Sie können auswählen, was passiert, wenn ein externer Benutzer, der per Genehm
 
 **Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance** .
 
-1. Klicken Sie im linken Menü im Abschnitt **Berechtigungsverwaltung** auf **Einstellungen**.
+1. Klicken Sie im linken Menü im Abschnitt **Berechtigungsverwaltung** auf **Einstellungen** .
 
-1. Klicken Sie auf **Bearbeiten**.
+1. Klicken Sie auf **Bearbeiten** .
 
     ![Einstellungen für die Verwaltung des Lebenszyklus von externen Benutzern](./media/entitlement-management-external-users/settings-external-users.png)
 
@@ -143,7 +143,7 @@ Sie können auswählen, was passiert, wenn ein externer Benutzer, der per Genehm
 
 1. Wenn Sie das Gastbenutzerkonto in diesem Verzeichnis entfernen möchten, können Sie die Anzahl von Tagen festlegen, die ablaufen sollen, bevor die Entfernung durchgeführt wird. Falls Sie das Gastbenutzerkonto entfernen möchten, sobald die letzte Zuweisung von Zugriffspaketen abgelaufen ist, legen Sie **Anzahl von Tagen, bevor ein externer Benutzer aus diesem Verzeichnis entfernt wird** auf **0** fest.
 
-1. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

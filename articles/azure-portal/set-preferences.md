@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205659"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367430"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 
@@ -96,7 +96,7 @@ Wenn Ihr Administrator eine Richtlinie für das Inaktivitätstimeout aktiviert h
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Ändern der Timeouteinstellung auf Verzeichnisebene (Administrator)
 
-Administratoren in der [globalen Administratorrolle](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Administratoren in der [globalen Administratorrolle](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauftimeout für alle Benutzer des Azure-Portals erzwingen möchten, führen Sie die folgenden Schritte aus:
 
@@ -108,7 +108,7 @@ Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauft
 
 1. Geben Sie als Nächstes die **Stunden** und die **Minuten** für die maximale Zeit ein, die sich ein Benutzer im Leerlauf befinden darf, bevor die Sitzung automatisch abgemeldet wird.
 
-1. Wählen Sie **Übernehmen**.
+1. Wählen Sie **Übernehmen** .
 
     ![Screenshot der Seite zum Festlegen des Inaktivitätstimeouts auf Verzeichnisebene](./media/set-preferences/configure.png)
 
@@ -136,7 +136,7 @@ Zum Exportieren Ihrer Portaleinstellungen wählen Sie **Alle Einstellungen expor
 
 ![Screenshot: Exportieren von Einstellungen](./media/set-preferences/useful-links-export-settings.png)
 
-Beim Exportieren von Einstellungen wird eine *JSON*-Datei erstellt, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards. Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON*-Datei importieren.
+Beim Exportieren von Einstellungen wird eine *JSON* -Datei erstellt, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards. Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON* -Datei importieren.
 
 ## <a name="delete-user-settings-and-dashboards"></a>Löschen von Benutzereinstellungen und Dashboards
 

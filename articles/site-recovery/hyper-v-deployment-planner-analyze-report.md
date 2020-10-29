@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653578"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369946"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 In diesem Artikel werden die Arbeitsblätter beschrieben, die im Excel-Bericht enthalten sind, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wird.
@@ -154,7 +154,7 @@ Es kann sein, dass Sie in einer bestimmten Situation wissen, dass Sie keine höh
 
 **Disk Storage Type** (Datenträger-Speichertyp): Entweder „Standard“ oder „Premium“. Dies ist das Speicherkonto, das zum Replizieren aller entsprechenden VMs verwendet wird, die in der Spalte **VMs to Place** (Anzuordnende VMs) angegeben sind.
 
-**Suggested Prefix** (Vorgeschlagenes Präfix): Das vorgeschlagene Präfix aus drei Zeichen, das zum Benennen des Speicherkontos verwendet werden kann. Sie können ein eigenes Präfix verwenden, aber der Vorschlag des Tools basiert auf der [Partitionsbenennungskonvention für Speicherkonten](https://aka.ms/storage-performance-checklist).
+**Suggested Prefix** (Vorgeschlagenes Präfix): Das vorgeschlagene Präfix aus drei Zeichen, das zum Benennen des Speicherkontos verwendet werden kann. Sie können ein eigenes Präfix verwenden, aber der Vorschlag des Tools basiert auf der [Partitionsbenennungskonvention für Speicherkonten](/en-in/azure/storage/blobs/storage-performance-checklist).
 
 **Suggested Account Name** (Vorgeschlagener Kontoname): Der Speicherkontoname nach Einbindung des vorgeschlagenen Präfix. Ersetzen Sie den Namen in den spitzen Klammern (< und >) durch Ihre benutzerdefinierte Eingabe.
 
@@ -209,7 +209,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **Memory (MB)** (Arbeitsspeicher (MB)): Der Arbeitsspeicher (RAM) auf der VM.
 
-**NICs**: Die Anzahl von NICs auf der VM.
+**NICs** : Die Anzahl von NICs auf der VM.
 
 **Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.
 
@@ -220,7 +220,7 @@ Der Excel-Bericht, der mit dem Site Recovery-Bereitstellungsplaner erstellt wurd
 
 **VM Name** (Name des virtuellen Computers): Der VM-Name, der in „VMListFile“ verwendet wird, wenn ein Bericht erstellt wird. In dieser Spalte sind auch die Datenträger (VHDs) angegeben, die an die VMs angefügt sind. Die Namen enthalten die Hyper-V-Hostnamen, für die die VMs angeordnet wurden, als sie vom Tool während des Profilerstellungszeitraums erkannt wurden.
 
-**VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](https://aka.ms/azure-storage-scalbility-performance) können dies folgende Gründe sein:
+**VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](/en-in/azure/storage/common/scalability-targets-standard-account) können dies folgende Gründe sein:
 
 * Die Datenträgergröße ist höher als 4.095 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 4.095 GB sind.
 
@@ -264,7 +264,7 @@ Der Excel-Bericht, der mit dem Site Recovery-Bereitstellungsplaner erstellt wurd
 
 **Memory (MB)** (Arbeitsspeicher (MB)): Die Größe des Arbeitsspeichers (RAM) auf der VM.
 
-**NICs**: Die Anzahl von NICs auf der VM.
+**NICs** : Die Anzahl von NICs auf der VM.
 
 **Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.
 
@@ -296,7 +296,7 @@ Im Arbeitsblatt wird der gesamte freie Speicherplatz für jedes Volume der Hyper
     Wenn nicht genügend freier Speicherplatz zum Speichern der Protokolldateien verfügbar ist, wird die Replikation angehalten. Der Replikationsstatus der VM wechselt in diesem Fall zu „Neusynchronisierung erforderlich“.
 * Falls die Netzwerkbandbreite nicht ausreicht, um die Protokolldateien per Pushvorgang nach Azure zu übertragen, bildet sich auf dem Volume für die Protokolldateien ein Rückstau. Im schlimmsten Fall, wenn die Größe der Protokolldateien auf mehr als 50% der VHD-Größe ansteigt, wird für die VM der Modus „Neusynchronisierung erforderlich“ aktiviert. Schlimmstenfalls benötigen Sie 50% zusätzlichen freien Speicherplatz der VHD-Größe für die Deltareplikation.
 
-**Hyper-V-Host**: Die Liste mit den Hyper-V-Servern für die Profilerstellung. Wenn ein Server Teil eines Hyper-V-Clusters ist, werden alle Clusterknoten gruppiert.
+**Hyper-V-Host** : Die Liste mit den Hyper-V-Servern für die Profilerstellung. Wenn ein Server Teil eines Hyper-V-Clusters ist, werden alle Clusterknoten gruppiert.
 
 **Volume (VHD path)** (Volume (VHD-Pfad)): Jedes Volume mit einem Hyper-V-Host, auf dem VHDs/VHDXs vorhanden sind. 
 

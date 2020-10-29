@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb13b350dfecf70e5f3a45755f6f77069a855c6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78185657"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363843"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -23,9 +23,9 @@ In Azure Active Directory B2C (Azure AD B2C) gibt es mehrere Kontoarten, die ers
 
 Die folgenden Arten von Konten sind verfügbar:
 
-- **Geschäftskonto**: Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
-- **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
-- **Consumerkonto**: Ein Consumerkonto wird von einem Benutzer der Anwendungen verwendet, die Sie bei Azure AD B2C registriert haben. Consumerkonten können wie folgt erstellt werden:
+- **Geschäftskonto** : Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
+- **Gastkonto** : Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
+- **Consumerkonto** : Ein Consumerkonto wird von einem Benutzer der Anwendungen verwendet, die Sie bei Azure AD B2C registriert haben. Consumerkonten können wie folgt erstellt werden:
   - Durch den Benutzer, der einen Benutzeranmeldeflow in einer Azure AD B2C-Anwendung durchläuft
   - Mithilfe der Microsoft Graph-API
   - Verwenden des Azure-Portals
@@ -36,14 +36,14 @@ Ein Geschäftskonto wird für alle Mandanten auf die gleiche Weise basierend auf
 
 Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigurationseinstellungen berücksichtigen:
 
-- **Name** und **Benutzername**: Die Eigenschaft **Name** enthält den Vor- und Nachnamen des Benutzers. Der **Benutzername** ist der Bezeichner, den der Benutzer eingibt, um sich anzumelden. Der Benutzername enthält den vollständigen Domänennamen. Der Domänennamensteil des Benutzernamens muss entweder der anfängliche Standarddomänenname *Ihre_Domäne.onmicrosoft.com* oder ein bestätigter, nicht im Verbund konfigurierter [benutzerdefinierter Domänenname](../active-directory/fundamentals/add-custom-domain.md) wie *contoso.com* sein.
-- **Profil**: Das Konto wird mit einem Profil mit Daten des Benutzers eingerichtet. Sie haben die Möglichkeit, einen Vornamen, Nachnamen, eine Position und einen Abteilungsnamen einzugeben. Sie können das Profil bearbeiten, nachdem das Konto erstellt wurde.
-- **Gruppen**: Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen.
-- **Verzeichnisrolle**: Sie müssen die Zugriffsebene angeben, die das Benutzerkonto auf Ressourcen in Ihrem Mandanten hat. Die folgenden Berechtigungsebenen sind verfügbar:
+- **Name** und **Benutzername** : Die Eigenschaft **Name** enthält den Vor- und Nachnamen des Benutzers. Der **Benutzername** ist der Bezeichner, den der Benutzer eingibt, um sich anzumelden. Der Benutzername enthält den vollständigen Domänennamen. Der Domänennamensteil des Benutzernamens muss entweder der anfängliche Standarddomänenname *Ihre_Domäne.onmicrosoft.com* oder ein bestätigter, nicht im Verbund konfigurierter [benutzerdefinierter Domänenname](../active-directory/fundamentals/add-custom-domain.md) wie *contoso.com* sein.
+- **Profil** : Das Konto wird mit einem Profil mit Daten des Benutzers eingerichtet. Sie haben die Möglichkeit, einen Vornamen, Nachnamen, eine Position und einen Abteilungsnamen einzugeben. Sie können das Profil bearbeiten, nachdem das Konto erstellt wurde.
+- **Gruppen** : Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen.
+- **Verzeichnisrolle** : Sie müssen die Zugriffsebene angeben, die das Benutzerkonto auf Ressourcen in Ihrem Mandanten hat. Die folgenden Berechtigungsebenen sind verfügbar:
 
-    - **Benutzer**: Benutzer können auf zugewiesene Ressourcen zugreifen, aber die meisten Mandantenressourcen nicht verwalten.
-    - **Globaler Administrator**: Globale Administratoren haben Vollzugriff auf alle Mandantenressourcen.
-    - **Eingeschränkter Administrator**: Wählen Sie die Verwaltungsrollen für den Benutzer aus. Weitere Informationen zu Rollen, die ausgewählt werden können, finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+    - **Benutzer** : Benutzer können auf zugewiesene Ressourcen zugreifen, aber die meisten Mandantenressourcen nicht verwalten.
+    - **Globaler Administrator** : Globale Administratoren haben Vollzugriff auf alle Mandantenressourcen.
+    - **Eingeschränkter Administrator** : Wählen Sie die Verwaltungsrollen für den Benutzer aus. Weitere Informationen zu Rollen, die ausgewählt werden können, finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ### <a name="create-a-work-account"></a>Erstellen eines Geschäftskontos
 

@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950492"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369436"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -71,7 +71,7 @@ Sehen Sie sich die Details unter [Azure Site Recovery – Preise](https://azure.
 
 Sie können den [Preisrechner](https://aka.ms/asr_pricing_calculator) verwenden, um die Kosten für die Verwendung von Site Recovery zu schätzen.
 
-Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](https://aka.ms/siterecovery_deployment_planner) oder [Hyper-V](https://aka.ms/asr-deployment-planner) ausführen und den [Kostenschätzungsbericht](https://aka.ms/asr_DP_costreport) verwenden.
+Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](./site-recovery-deployment-planner.md) oder [Hyper-V](https://aka.ms/asr-deployment-planner) ausführen und den [Kostenschätzungsbericht](./site-recovery-vmware-deployment-planner-cost-estimation.md) verwenden.
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>Zum Replizieren von virtuellen VMware-Computern und physischen Servern werden jetzt verwaltete Datenträger verwendet. Fallen zusätzliche Gebühren für das Cachespeicherkonto mit verwalteten Datenträgern an?
@@ -117,7 +117,7 @@ Auf den replizierten Elementen installierte Mobility-Agents kommunizieren aussch
 Die gesamte Kommunikation zwischen den Microservices von Azure Site Recovery erfolgt über das TLS 1.2-Protokoll. Site Recovery verwendet Sicherheitsanbieter, die im System (BS) konfiguriert sind, und verwendet das neueste verfügbare TLS-Protokoll. Sie müssen TLS 1.2 explizit in der Registrierung aktivieren, und dann wird Site Recovery mit der Verwendung von TLS 1.2 zur Kommunikation mit Diensten beginnen. 
 
 ### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>Wie erzwinge ich eingeschränkten Zugriff auf meine Speicherkonten, auf die der Site Recovery-Dienst zum Lesen/Schreiben von Replikationsdaten zugreift?
-Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, indem Sie zur *Identity*-Einstellung (Identität) wechseln. Nachdem der Tresor bei Azure Active Directory registriert wurde, können Sie zu Ihren Speicherkonten wechseln und den Tresor die folgenden Rollenzuweisungen zuweisen:
+Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, indem Sie zur *Identity* -Einstellung (Identität) wechseln. Nachdem der Tresor bei Azure Active Directory registriert wurde, können Sie zu Ihren Speicherkonten wechseln und den Tresor die folgenden Rollenzuweisungen zuweisen:
 
 - Resource Manager-basierte Speicherkonten (Standard):
   - [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor)
@@ -132,10 +132,10 @@ Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
 ### <a name="what-can-site-recovery-protect"></a>Was kann mit Site Recovery geschützt werden?
-* **Virtuelle Azure-Computer**: Mit Site Recovery können alle Workloads repliziert werden, die auf einem unterstützten virtuellen Azure-Computer ausgeführt werden.
-* **Virtuelle Hyper-V-Computer**: Mit Site Recovery kann jede Workload, die auf einer Hyper-V-VM ausgeführt wird, geschützt werden.
-* **Physische Server**: Mit Site Recovery können physische Server unter Windows oder Linux geschützt werden.
-* **Virtuelle VMware-Computer**: Mit Site Recovery kann jede Workload, die auf einer VMware-VM ausgeführt wird, geschützt werden.
+* **Virtuelle Azure-Computer** : Mit Site Recovery können alle Workloads repliziert werden, die auf einem unterstützten virtuellen Azure-Computer ausgeführt werden.
+* **Virtuelle Hyper-V-Computer** : Mit Site Recovery kann jede Workload, die auf einer Hyper-V-VM ausgeführt wird, geschützt werden.
+* **Physische Server** : Mit Site Recovery können physische Server unter Windows oder Linux geschützt werden.
+* **Virtuelle VMware-Computer** : Mit Site Recovery kann jede Workload, die auf einer VMware-VM ausgeführt wird, geschützt werden.
 
 ### <a name="what-workloads-can-i-protect-with-site-recovery"></a>Welche Workloads können mit Site Recovery geschützt werden?
 Mit Site Recovery können die meisten Workloads geschützt werden, die auf einer unterstützten VM oder einem physischen Server ausgeführt werden. Site Recovery bietet Unterstützung für die anwendungsorientierte Replikation, sodass für Apps ein „intelligenter Zustand“ wiederhergestellt werden kann. Eine Integration in Microsoft-Anwendungen wie SharePoint, Exchange, Dynamics, SQL Server und Active Directory ist möglich. Zudem kann Site Recovery eng in die Produkte führender Anbieter, z.B. Oracle, SAP, IBM und Red Hat, eingebunden werden. [Erfahren Sie mehr](site-recovery-workload.md) über den Schutz von Workloads.
@@ -304,7 +304,7 @@ Nein. Site Recovery bewahrt alle Ihre vorherigen Wiederherstellungspunkte auf. A
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde?
 
-Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
+Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** . Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Sind alle Wiederherstellungspunkte vollständige Kopien des virtuellen Computers oder gibt es Unterschiede?
 

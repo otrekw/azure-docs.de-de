@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de7395f42021144eab3dd400bf9a953d57b5a6ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312582"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371867"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -53,7 +53,7 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen 
 
 Anderen Benutzern, die sich mithilfe des gleichen Abonnements anmelden und auf die Dienste zugreifen müssen, können Sie die geeignete [integrierte Rolle](../../role-based-access-control/built-in-roles.md) zuweisen. Zusätzliche Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
-Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die globale Administratorrolle für das Verzeichnis zugewiesen. Der globale Administrator hat Zugriff auf alle Azure AD-Verzeichnisfunktionen. Azure AD weist eine andere Gruppe von Administratorrollen zum Verwalten der Features für Verzeichnisse und Identitäten. Diese Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal. Die Rolle des Administrators bestimmt, welche Aktionen er ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md) und [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die globale Administratorrolle für das Verzeichnis zugewiesen. Der globale Administrator hat Zugriff auf alle Azure AD-Verzeichnisfunktionen. Azure AD weist eine andere Gruppe von Administratorrollen zum Verwalten der Features für Verzeichnisse und Identitäten. Diese Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal. Die Rolle des Administrators bestimmt, welche Aktionen er ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md) und [Zuweisen von Administratorrollen in Azure Active Directory](../roles/permissions-reference.md).
 
 Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen zudem andere Webdienste wie Microsoft 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
 

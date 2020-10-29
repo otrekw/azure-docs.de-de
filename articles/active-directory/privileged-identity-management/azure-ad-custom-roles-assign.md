@@ -16,18 +16,18 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87413152"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371646"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Zuweisen einer benutzerdefinierten Azure AD-Rolle in Privileged Identity Management
 
 In diesem Artikel erfahren Sie, wie Sie Privileged Identity Management verwenden, um Just-In-Time- und zeitgebundene Zuweisungen zu benutzerdefinierten Rollen zu erstellen, die für die Verwaltung von Anwendungen auf der Administratoroberfläche von Azure Active Directory (Azure AD) erstellt wurden.
 
-- Weitere Informationen zum Erstellen benutzerdefinierter Rollen, um die Anwendungsverwaltung in Azure AD zu delegieren, finden Sie unter [Benutzerdefinierte Administratorrollen in Azure Active Directory (Vorschau)](../users-groups-roles/roles-custom-overview.md).
+- Weitere Informationen zum Erstellen benutzerdefinierter Rollen, um die Anwendungsverwaltung in Azure AD zu delegieren, finden Sie unter [Benutzerdefinierte Administratorrollen in Azure Active Directory (Vorschau)](../roles/custom-overview.md).
 - Wenn Sie Privileged Identity Management noch nie verwendet haben, informieren Sie sich zunächst auf der Seite [Einstieg in die Verwendung von PIM](pim-getting-started.md).
 - Informationen dazu, wie Sie anderen Administratoren Zugriff zum Verwalten von Privileged Identity Management gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
 
@@ -58,11 +58,11 @@ In Privileged Identity Management können Sie benutzerdefinierte Rollen verwalte
 
     ![Auswählen der berechtigten Rolle, die einem Benutzer zugewiesen werden soll](./media/azure-ad-custom-roles-assign/select-role.png)
 
-1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen**. Die Liste **Mitglied auswählen** wird geöffnet.
+1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen** . Die Liste **Mitglied auswählen** wird geöffnet.
 
     ![Auswählen des Benutzers, dem Sie die Rolle zuweisen](./media/azure-ad-custom-roles-assign/select-member.png)
 
-1. Wählen Sie einen Benutzer aus, dem Sie die Rolle zuweisen möchten, und klicken Sie dann auf **Auswählen**. Die Liste **Mitgliedschaftseinstellungen** wird geöffnet.
+1. Wählen Sie einen Benutzer aus, dem Sie die Rolle zuweisen möchten, und klicken Sie dann auf **Auswählen** . Die Liste **Mitgliedschaftseinstellungen** wird geöffnet.
 
     ![Festlegen des Rollenzuweisungstyps auf „berechtigt“ oder „aktiv“](./media/azure-ad-custom-roles-assign/membership-settings.png)
 
@@ -72,7 +72,7 @@ In Privileged Identity Management können Sie benutzerdefinierte Rollen verwalte
     - Bei **aktiven** Zuweisungen muss der zugewiesene Benutzer keine Aktion durchführen, um die Rolle verwenden zu können. Bei aktiven Benutzern sind die Berechtigungen der Rolle ständig zugewiesen.
 
 1. Wenn das Kontrollkästchen **Permanent** vorhanden und verfügbar ist (dies hängt von den Rolleneinstellungen ab), können Sie angeben, ob die Zuweisung dauerhaft ist. Aktivieren Sie das Kontrollkästchen, um die Zuweisung als „dauerhaft berechtigt“ oder „dauerhaft zugewiesen“ festzulegen. Deaktivieren Sie das Kontrollkästchen, um die Dauer einer Zuweisung anzugeben.
-1. Klicken Sie auf **Speichern** und dann auf **Hinzufügen**, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status des Zuweisungsprozesses wird angezeigt.
+1. Klicken Sie auf **Speichern** und dann auf **Hinzufügen** , um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status des Zuweisungsprozesses wird angezeigt.
 
 Um die Rollenzuweisung zu überprüfen, wählen Sie in einer offenen Rolle **Zuweisungen** > **Zuweisen** aus, und überprüfen Sie, ob die Rollenzuweisung ordnungsgemäß als „berechtigt“ oder „aktiv“ identifiziert wird.
 
@@ -83,4 +83,4 @@ Um die Rollenzuweisung zu überprüfen, wählen Sie in einer offenen Rolle **Zuw
 - [Aktivieren einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
 - [Entfernen oder Aktualisieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-update-remove.md)
 - [Konfigurieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-configure.md)
-- [Rollendefinitionen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rollendefinitionen in Azure AD](../roles/permissions-reference.md)

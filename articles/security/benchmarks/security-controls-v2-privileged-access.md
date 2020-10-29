@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758369"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367481"
 ---
 # <a name="security-control-v2-privileged-access"></a>Sicherheitskontrolle V2: Privilegierter Zugriff
 
@@ -34,15 +34,15 @@ Hinweis: Möglicherweise verfügen Sie über weitere kritische Rollen, die gereg
 
 Mit Azure AD Privileged Identity Management (PIM) können Sie privilegierten Just-in-Time-Zugriff (JIT) auf Azure-Ressourcen und Azure AD ermöglichen. JIT erteilt nur dann temporäre Berechtigungen zur Ausführung privilegierter Aufgaben, wenn die Benutzer sie benötigen. PIM kann auch Sicherheitswarnungen erzeugen, wenn es in Ihrer Azure AD-Organisation verdächtige oder unsichere Aktivitäten gibt.
 
-- [Administratorrollenberechtigungen in Azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Administratorrollenberechtigungen in Azure AD](../../active-directory/roles/permissions-reference.md)
 
 - [Verwenden von Sicherheitswarnungen von Azure Privileged Identity Management](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/roles/security-planning.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -70,9 +70,9 @@ Vergewissern Sie sich, dass Sie separate privilegierte Konten zuweisen, die sich
 
 - [Azure-Abonnementadministratoren](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -95,9 +95,9 @@ Hinweis: Einige Azure-Dienste unterstützen lokale Benutzer und Rollen, die nich
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../../active-directory/governance/access-reviews-overview.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -114,11 +114,11 @@ Hinweis: Einige Azure-Dienste unterstützen lokale Benutzer und Rollen, die nich
 Um zu verhindern, dass Sie versehentlich aus Ihrer Azure AD-Organisation ausgesperrt werden, richten Sie ein Konto für den Notfallzugriff ein, für den Fall, dass normale Verwaltungskonten nicht verwendet werden können. Konten für den Notfallzugriff verfügen normalerweise über umfangreiche Berechtigungen und sollten keinen Einzelpersonen zugewiesen werden. Konten für den Notfallzugriff sind auf Notfallsituationen oder Szenarien beschränkt, in denen normale Administratorkonten nicht verwendet werden können.
 Sie sollten sicherstellen, dass die Anmeldeinformationen (z. B. Kennwort, Zertifikat oder Smartcard) für Konten für den Notfallzugriff sicher aufbewahrt werden und nur den Personen bekannt sind, die für deren Verwendung im Notfall autorisiert sind.
 
-- [Verwalten von Konten für den Notfallzugriff in Azure AD](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [Verwalten von Konten für den Notfallzugriff in Azure AD](../../active-directory/roles/security-emergency-access.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -139,9 +139,9 @@ Verwenden Sie die Berechtigungsverwaltungsfeatures von Azure AD, um die Zugriffs
 
 - [Was ist die Azure AD-Berechtigungsverwaltung?](../../active-directory/governance/entitlement-management-overview.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -161,9 +161,9 @@ Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für di
 
 - [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -186,9 +186,9 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefin
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../../active-directory/governance/access-reviews-overview.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -208,9 +208,9 @@ In Supportszenarien, bei denen Microsoft auf Kundendaten zugreifen muss, bietet 
 
 - [Grundlegendes zu Kunden-Lockbox](../fundamentals/customer-lockbox-overview.md)
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit** : Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 

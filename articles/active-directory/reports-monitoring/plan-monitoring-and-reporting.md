@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311223"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362398"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -151,9 +151,9 @@ Folgende Rollen können Azure AD-Berichte lesen:
 
 * Report Reader (Leseberechtigter für Berichte)
 
-Im verlinkten Artikel finden Sie weitere Informationen zu [Azure AD-Administratorrollen](../users-groups-roles/directory-assign-admin-roles.md).
+Im verlinkten Artikel finden Sie weitere Informationen zu [Azure AD-Administratorrollen](../roles/permissions-reference.md).
 
-*Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern*. Sie sollten [Privileged Identity Management](../privileged-identity-management/pim-configure.md) implementieren, um Ihre Organisation noch besser zu schützen.
+*Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern* . Sie sollten [Privileged Identity Management](../privileged-identity-management/pim-configure.md) implementieren, um Ihre Organisation noch besser zu schützen.
 
 ##  
 

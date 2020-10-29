@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117616"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366393"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
 
@@ -27,7 +27,7 @@ ms.locfileid: "88117616"
 
 In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- als auch für OIDC-Datenflüsse (OpenID Connect) viel eingesetzt. Wenn Ihre App ein Zugriffstoken von Azure AD empfängt, sind darin Ansprüche enthalten. Mit diesen Ansprüchen werden die Berechtigungen beschrieben, über die Ihre App in Bezug auf eine bestimmte Ressource verfügt.
 
-*Berechtigungen*, die auch als *Bereiche* bezeichnet werden, vereinfachen die Autorisierung für die Ressource. Die Ressource muss lediglich prüfen, ob das Token die richtige Berechtigung für die API enthält, die von der App jeweils aufgerufen wird.
+*Berechtigungen* , die auch als *Bereiche* bezeichnet werden, vereinfachen die Autorisierung für die Ressource. Die Ressource muss lediglich prüfen, ob das Token die richtige Berechtigung für die API enthält, die von der App jeweils aufgerufen wird.
 
 ## <a name="types-of-permissions"></a>Arten von Berechtigungen
 
@@ -38,7 +38,7 @@ Azure AD definiert zwei Arten von Berechtigungen:
 
 Effektive Berechtigungen sind die Berechtigungen, über die Ihre App verfügt, wenn Anforderungen an eine API gesendet werden. 
 
-* Bei delegierten Berechtigungen verfügt Ihre App über die folgenden Berechtigungen: Die jeweils geringsten Rechte, die sich zusammen genommen aus den delegierten Berechtigungen, die der App (per Zustimmung) gewährt wurden, und den Berechtigungen des derzeit angemeldeten Benutzers ergeben. Ihre App kann niemals über mehr Berechtigungen als der angemeldete Benutzer verfügen. In Organisationen können die Berechtigungen des angemeldeten Benutzers anhand einer Richtlinie oder der Mitgliedschaft in einer oder mehreren Administratorrollen bestimmt werden. Um zu erfahren, welche Administratorrollen delegierten Berechtigungen zustimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* Bei delegierten Berechtigungen verfügt Ihre App über die folgenden Berechtigungen: Die jeweils geringsten Rechte, die sich zusammen genommen aus den delegierten Berechtigungen, die der App (per Zustimmung) gewährt wurden, und den Berechtigungen des derzeit angemeldeten Benutzers ergeben. Ihre App kann niemals über mehr Berechtigungen als der angemeldete Benutzer verfügen. In Organisationen können die Berechtigungen des angemeldeten Benutzers anhand einer Richtlinie oder der Mitgliedschaft in einer oder mehreren Administratorrollen bestimmt werden. Um zu erfahren, welche Administratorrollen delegierten Berechtigungen zustimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../roles/permissions-reference.md).
     Angenommen, für Ihre App wurde in Microsoft Graph die delegierte Berechtigung `User.ReadWrite.All` gewährt. Mit dieser Berechtigung wird Ihrer App nominell die Berechtigung zum Lesen und Aktualisieren des Profils jedes Benutzers einer Organisation gewährt. Wenn es sich beim angemeldeten Benutzer um einen globalen Administrator handelt, kann Ihre App das Profil jedes Benutzers in der Organisation aktualisieren. Falls der angemeldete Benutzer aber keine Administratorrolle innehat, kann Ihre App nur das Profil des angemeldeten Benutzers aktualisieren. Sie kann die Profile von anderen Benutzern der Organisation nicht aktualisieren, da der Benutzer, für den die App die Berechtigung zum Durchführen von Aktionen in dessen Namen hat, nicht über diese Berechtigungen verfügt.
 * Für Anwendungsberechtigungen umfassen die geltenden Rechte Ihrer App die vollständige Berechtigungsebene, die mit der Berechtigung verbunden ist. Beispielsweise kann eine App, die über die Anwendungsberechtigung `User.ReadWrite.All` verfügt, das Profil aller Benutzer der Organisation aktualisieren.
 

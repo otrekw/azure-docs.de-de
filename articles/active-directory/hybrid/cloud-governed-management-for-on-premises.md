@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662530"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369793"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
@@ -39,7 +39,7 @@ In diesem Artikel wird Microsofts Strategie für Hybrid-IDaaS erläutert und wie
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Der Azure AD-Ansatz für cloudgesteuerte Identitätsverwaltung
 
-Beim Übergang zur Cloud benötigen Organisationen Zusicherungen, dass sie die Kontrolle über ihre vollständige Umgebung behalten – mehr Sicherheit und mehr Einblick in Aktivitäten, unterstützt durch Automatisierung, sowie proaktive Erkenntnisse erhalten. „**Cloudgesteuerte Verwaltung**“ beschreibt, wie Organisationen ihre Benutzer, Anwendungen, Gruppen und Geräte aus der Cloud heraus verwalten und steuern.
+Beim Übergang zur Cloud benötigen Organisationen Zusicherungen, dass sie die Kontrolle über ihre vollständige Umgebung behalten – mehr Sicherheit und mehr Einblick in Aktivitäten, unterstützt durch Automatisierung, sowie proaktive Erkenntnisse erhalten. „ **Cloudgesteuerte Verwaltung** “ beschreibt, wie Organisationen ihre Benutzer, Anwendungen, Gruppen und Geräte aus der Cloud heraus verwalten und steuern.
 
 In dieser modernen Welt müssen Unternehmen aufgrund der zunehmenden Verbreitung von SaaS-Anwendungen und der zunehmenden Rolle von Zusammenarbeit und externen Identitäten in der Lage sein, effektiv und maßstabsgetreu zu verwalten. Die neue Risikolandschaft der Cloud bedeutet, dass eine Organisation reaktionsschneller sein muss – ein bösartiger Akteur, der einen Cloudbenutzer kompromittiert, könnte Cloud- und lokale Anwendungen beeinträchtigen.
 
@@ -107,11 +107,11 @@ Organisationen benötigen einen Prozess zum Verwalten des Zugriffs, der skalierb
 
 In der Regel delegiert die IT-Abteilung Entscheidungen bezüglich der Zugriffsgenehmigung an Entscheidungsträger im Unternehmen. Darüber hinaus kann die IT die Benutzer selbst in den Prozess einbeziehen. Beispielsweise müssen Benutzer, die in Europa auf vertrauliche Kundendaten in der Marketinganwendung eines Unternehmens zugreifen, die Richtlinien des Unternehmens kennen. Außerdem kennen Gastbenutzer die Anforderungen für die Behandlung von Daten in einer Organisation, zu der sie eingeladen wurden, möglicherweise nicht.
 
-Organisationen können den Zugriffslebenszyklusprozess mit Technologien wie [dynamischen Gruppen](../users-groups-roles/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Anwendungen](../saas-apps/tutorial-list.md) oder [mithilfe des SCIM-Standards (System for Cross-Domain Identity Management) integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren. Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md). Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md) überprüft werden.
+Organisationen können den Zugriffslebenszyklusprozess mit Technologien wie [dynamischen Gruppen](../enterprise-users/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Anwendungen](../saas-apps/tutorial-list.md) oder [mithilfe des SCIM-Standards (System for Cross-Domain Identity Management) integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren. Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md). Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md) überprüft werden.
 
 ## <a name="future-directions"></a>Künftige Ausrichtung
 
-Bei Hybridumgebungen verfolgt Microsoft die Strategie, Bereitstellungen zu ermöglichen, bei denen die **Cloud die Steuerungsebene für Identitäten ist**, und lokale Verzeichnisse und andere Identitätssysteme, z. B. Active Directory und andere lokale Anwendungen, das Ziel für die Bereitstellung von Benutzern mit Zugriff sind. Diese Strategie wird fortgesetzt, um die Rechte, Identitäten und den Zugriff in und auf diese Anwendungen und Workloads zu gewährleisten, die auf diesen basieren. In diesem Endzustand können Organisationen die Produktivität der Endbenutzer vollständig aus der Cloud heraus steuern.
+Bei Hybridumgebungen verfolgt Microsoft die Strategie, Bereitstellungen zu ermöglichen, bei denen die **Cloud die Steuerungsebene für Identitäten ist** , und lokale Verzeichnisse und andere Identitätssysteme, z. B. Active Directory und andere lokale Anwendungen, das Ziel für die Bereitstellung von Benutzern mit Zugriff sind. Diese Strategie wird fortgesetzt, um die Rechte, Identitäten und den Zugriff in und auf diese Anwendungen und Workloads zu gewährleisten, die auf diesen basieren. In diesem Endzustand können Organisationen die Produktivität der Endbenutzer vollständig aus der Cloud heraus steuern.
 
 ![Azure AD-Architektur](media/cloud-governed-management-for-on-premises/image6.png)
 

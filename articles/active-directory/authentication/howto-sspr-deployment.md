@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657212"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363724"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -48,13 +48,13 @@ Weitere Informationen zu SSPR. Lesen Sie [So funktioniert‘s: Self-Service-Kenn
 
 Die Aktivierung der Self-Service-Kennwortzurücksetzung (SSPR) bietet die folgenden wichtigen Vorteile:
 
-* **Kostenmanagement**. SSPR reduziert die Kosten für den IT-Support, da die Benutzer die Möglichkeit erhalten, ihre Kennwörter selbst zurückzusetzen. Reduziert werden auch die Kosten für den Zeitaufwand aufgrund vergessener Kennwörter und Kontosperren. 
+* **Kostenmanagement** . SSPR reduziert die Kosten für den IT-Support, da die Benutzer die Möglichkeit erhalten, ihre Kennwörter selbst zurückzusetzen. Reduziert werden auch die Kosten für den Zeitaufwand aufgrund vergessener Kennwörter und Kontosperren. 
 
-* **Intuitive Benutzerumgebung**. Durch den intuitiven einmaligen Benutzerregistrierungsprozess können Benutzer bei Bedarf und von jedem Gerät oder Standort aus ihre Kennwörter zurücksetzen und Konten entsperren. Mit SSPR können Benutzer schneller wieder an die Arbeit gehen und produktiver sein.
+* **Intuitive Benutzerumgebung** . Durch den intuitiven einmaligen Benutzerregistrierungsprozess können Benutzer bei Bedarf und von jedem Gerät oder Standort aus ihre Kennwörter zurücksetzen und Konten entsperren. Mit SSPR können Benutzer schneller wieder an die Arbeit gehen und produktiver sein.
 
-* **Flexibilität und Sicherheit**. SSPR ermöglicht Unternehmen den Zugang zu der Sicherheit und Flexibilität, die eine Cloudplattform bietet. Administratoren können Einstellungen ändern, neue Sicherheitsanforderungen aufnehmen und diese Änderungen ohne Unterbrechung des Anmeldevorgangs an die Benutzer weitergeben.
+* **Flexibilität und Sicherheit** . SSPR ermöglicht Unternehmen den Zugang zu der Sicherheit und Flexibilität, die eine Cloudplattform bietet. Administratoren können Einstellungen ändern, neue Sicherheitsanforderungen aufnehmen und diese Änderungen ohne Unterbrechung des Anmeldevorgangs an die Benutzer weitergeben.
 
-* **Zuverlässige Überwachung und Nutzungsverfolgung**. Auch wenn die Benutzer ihre eigenen Kennwörter zurücksetzen, kann eine Organisation die Sicherheit für ihre Geschäftssysteme gewährleisten. Zuverlässige Überwachungsprotokolle enthalten Informationen zu jedem Schritt des Kennwortzurücksetzungsprozesses. Diese Protokolle sind über eine API verfügbar, und der Benutzer hat die Möglichkeit, die Daten in ein SIEM-System (Security Incident and Event Monitoring) seiner Wahl zu importieren.
+* **Zuverlässige Überwachung und Nutzungsverfolgung** . Auch wenn die Benutzer ihre eigenen Kennwörter zurücksetzen, kann eine Organisation die Sicherheit für ihre Geschäftssysteme gewährleisten. Zuverlässige Überwachungsprotokolle enthalten Informationen zu jedem Schritt des Kennwortzurücksetzungsprozesses. Diese Protokolle sind über eine API verfügbar, und der Benutzer hat die Möglichkeit, die Daten in ein SIEM-System (Security Incident and Event Monitoring) seiner Wahl zu importieren.
 
 ### <a name="licensing"></a>Lizenzierung
 
@@ -151,7 +151,7 @@ Die folgenden Einstellungen sind erforderlich, um SSPR mit den empfohlenen Werte
 
 | Bereich | Einstellung | Wert |
 | --- | --- | --- |
-| **SSPR-Eigenschaften** | Self-Service-Kennwortzurücksetzung aktiviert | **Ausgewählte** Gruppe für das Pilotprojekt/**Alle** für die Produktion |
+| **SSPR-Eigenschaften** | Self-Service-Kennwortzurücksetzung aktiviert | **Ausgewählte** Gruppe für das Pilotprojekt/ **Alle** für die Produktion |
 | **Authentifizierungsmethoden** | Zum Registrieren erforderliche Authentifizierungsmethoden | Immer 1 mehr als für das Zurücksetzen erforderlich |
 |   | Zum Zurücksetzen erforderliche Authentifizierungsmethoden | Eine oder zwei |
 | **Registrierung** | Registrierung von Benutzern bei der Anmeldung verlangen | Ja |
@@ -167,7 +167,7 @@ Die folgenden Einstellungen sind erforderlich, um SSPR mit den empfohlenen Werte
 
 Wählen Sie beim Aktivieren von SSPR eine entsprechende Sicherheitsgruppe in der Pilotumgebung aus.
 
-* Um die SSPR-Registrierung für alle Gruppen zu erzwingen, empfehlen wir die Verwendung der Option **Alle**.
+* Um die SSPR-Registrierung für alle Gruppen zu erzwingen, empfehlen wir die Verwendung der Option **Alle** .
 * Wählen Sie ansonsten die entsprechende Azure AD- oder AD-Sicherheitsgruppe aus.
 
 ### <a name="authentication-methods"></a>Authentifizierungsmethoden
@@ -190,7 +190,7 @@ Legen Sie **Anzahl der Tage, bevor Benutzer aufgefordert werden, ihre Authentifi
 
 ### <a name="notifications-settings"></a>Benachrichtigungseinstellungen
 
-Konfigurieren Sie beide Einstellungen **Benutzer über Kennwortzurücksetzungen benachrichtigen?** und **Sollen alle Administratoren benachrichtigt werden, wenn andere Administratoren ihr Kennwort zurücksetzen?** mit **Ja**. Durch die Auswahl von **Ja** bei beiden Optionen erhöht sich die Sicherheit, da gewährleistet ist, dass Benutzer von der Zurücksetzung ihres Kennworts Kenntnis erhalten. Außerdem ist gewährleistet, dass alle Administratoren Kenntnis erhalten, wenn ein Administrator ein Kennwort ändert. Wenn Benutzer oder Administratoren eine derartige Benachrichtigung erhalten und die Änderung nicht veranlasst haben, können sie sofort ein mögliches Sicherheitsproblem melden.
+Konfigurieren Sie beide Einstellungen **Benutzer über Kennwortzurücksetzungen benachrichtigen?** und **Sollen alle Administratoren benachrichtigt werden, wenn andere Administratoren ihr Kennwort zurücksetzen?** mit **Ja** . Durch die Auswahl von **Ja** bei beiden Optionen erhöht sich die Sicherheit, da gewährleistet ist, dass Benutzer von der Zurücksetzung ihres Kennworts Kenntnis erhalten. Außerdem ist gewährleistet, dass alle Administratoren Kenntnis erhalten, wenn ein Administrator ein Kennwort ändert. Wenn Benutzer oder Administratoren eine derartige Benachrichtigung erhalten und die Änderung nicht veranlasst haben, können sie sofort ein mögliches Sicherheitsproblem melden.
 
 ### <a name="customization-settings"></a>Anpassungseinstellungen
 
@@ -313,7 +313,7 @@ Azure AD kann durch Überprüfungen und Berichte weitere Informationen zur SSPR-
 Mithilfe von vordefinierten Berichten im Azure-Portal können Sie die SSPR-Leistung messen. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen. Weitere Informationen finden Sie unter [Berichtsoptionen für die Azure AD-Kennwortverwaltung](./howto-sspr-reporting.md).
 
 > [!NOTE]
->  Sie müssen [ein globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) sein und zustimmen, dass diese Daten für Ihr Unternehmen erfasst werden. Als Bestätigung Ihrer Zustimmung müssen Sie die Registerkarte „Berichterstellung“ oder die Überwachungsprotokolle im Azure-Portal mindestens ein Mal aufrufen. Vorher werden die Daten für Ihre Organisation nicht gesammelt.
+>  Sie müssen [ein globaler Administrator](../roles/permissions-reference.md) sein und zustimmen, dass diese Daten für Ihr Unternehmen erfasst werden. Als Bestätigung Ihrer Zustimmung müssen Sie die Registerkarte „Berichterstellung“ oder die Überwachungsprotokolle im Azure-Portal mindestens ein Mal aufrufen. Vorher werden die Daten für Ihre Organisation nicht gesammelt.
 
 Überwachungsprotokolle für die Registrierung und die Kennwortzurücksetzung sind 30 Tage lang verfügbar. Wenn die Sicherheitsüberwachung in Ihrem Unternehmen eine längere Aufbewahrungszeit erfordert, müssen die Protokolle exportiert und in einem SIEM-Tool wie etwa [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk oder ArcSight genutzt werden.
 

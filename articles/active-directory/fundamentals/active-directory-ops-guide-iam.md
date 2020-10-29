@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601304"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371000"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory: Referenzleitfaden zu den Vorgängen der Identitäts- und Zugriffsverwaltung
 
@@ -45,7 +45,7 @@ Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Bes
 
 #### <a name="assigning-owners-recommended-reading"></a>Zuweisen von Leseempfehlungen zu Besitzern
 
-- [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Zuweisen von Administratorrollen in Azure Active Directory](../roles/permissions-reference.md)
 - [Governance in Azure](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Lokale Identitätssynchronisierung
@@ -90,8 +90,8 @@ Im Idealfall sollten Sie ein Gleichgewicht zwischen der Reduzierung der Anzahl v
 
 Azure AD Connect spielt eine wichtige Rolle bei der Bereitstellung. Wenn der Synchronisierungsserver ausfällt, können lokale Änderungen nicht in der Cloud aktualisiert werden und zu Problemen für die Benutzer führen. Daher ist es wichtig, eine Failoverstrategie festzulegen, die es Administratoren ermöglicht, die Synchronisierung schnell fortzusetzen, nachdem der Synchronisierungsserver offline geschaltet wurde. Diese Strategien können in die folgenden Kategorien fallen:
 
-- **Bereitstellen von Azure AD Connect-Servern im Stagingmodus**: Ermöglicht einem Administrator das Höherstufen des Stagingservers in die Produktion, indem ein einfacher Konfigurationsschalter verwendet wird.
-- **Verwenden der Virtualisierung**: Wenn Azure AD Connect auf einem virtuellen Computer (VM) bereitgestellt wird, können Administratoren ihren Virtualisierungsstapel für eine Livemigration nutzen oder die schnelle erneute Bereitstellung der VM verwenden und die Synchronisierung so fortsetzen.
+- **Bereitstellen von Azure AD Connect-Servern im Stagingmodus** : Ermöglicht einem Administrator das Höherstufen des Stagingservers in die Produktion, indem ein einfacher Konfigurationsschalter verwendet wird.
+- **Verwenden der Virtualisierung** : Wenn Azure AD Connect auf einem virtuellen Computer (VM) bereitgestellt wird, können Administratoren ihren Virtualisierungsstapel für eine Livemigration nutzen oder die schnelle erneute Bereitstellung der VM verwenden und die Synchronisierung so fortsetzen.
 
 Falls Ihre Organisation nicht über eine Notfallwiederherstellungs- und Failoverstrategie für die Synchronisierung verfügt, sollten Sie nicht zögern, Azure AD Connect im Stagingmodus bereitzustellen. Ebenso gilt Folgendes: Falls zwischen Ihrer Produktions- und Stagingkonfiguration ein Konflikt besteht, sollten Sie für den Azure AD Connect-Stagingmodus eine neue Baseline festlegen, um die Anpassung an die Produktionskonfiguration vorzunehmen (z. B. Softwareversionen und -konfigurationen).
 
@@ -107,7 +107,7 @@ Falls Ihre Azure AD Connect-Version mehr als sechs Monate alt ist, sollten Sie e
 
 Die Nutzung von **ms-DS-consistencyguid** als [Quellanker](../hybrid/plan-connect-design-concepts.md) ermöglicht eine einfachere Migration von Objekten über Gesamtstrukturen und Domänen hinweg. Dies ist die übliche Vorgehensweise bei der Konsolidierung/Bereinigung von AD-Domänen, Fusionen, Übernahmen und Veräußerungen.
 
-Wenn Sie derzeit **ObjectGuid** als Quellanker verwenden, empfehlen wir Ihnen die Umstellung auf **ms-DS-ConsistencyGuid**.
+Wenn Sie derzeit **ObjectGuid** als Quellanker verwenden, empfehlen wir Ihnen die Umstellung auf **ms-DS-ConsistencyGuid** .
 
 #### <a name="custom-rules"></a>Benutzerdefinierte Regeln
 
@@ -122,8 +122,8 @@ Wenn Sie übermäßig komplexe Regeln verwenden, sollten Sie die Gründe für di
 
 Beispiele für die fehlerhafte Anwendung von benutzerdefinierten Regeln:
 
-- **Kompensierung von nicht bereinigten Daten im Verzeichnis**: In diesem Fall empfehlen wir Ihnen, zur Problemlösung zusammen mit den Besitzern des AD-Teams die Daten im Verzeichnis zu bereinigen und die Prozesse anzupassen, um die Wiedereinführung fehlerhafter Daten zu vermeiden.
-- **Einmalige Bereinigung einzelner Benutzer**: Es kommt häufiger vor, dass sich für Regeln spezielle Ausreißer ergeben. Der Grund ist meist ein Problem mit einem bestimmten Benutzer.
+- **Kompensierung von nicht bereinigten Daten im Verzeichnis** : In diesem Fall empfehlen wir Ihnen, zur Problemlösung zusammen mit den Besitzern des AD-Teams die Daten im Verzeichnis zu bereinigen und die Prozesse anzupassen, um die Wiedereinführung fehlerhafter Daten zu vermeiden.
+- **Einmalige Bereinigung einzelner Benutzer** : Es kommt häufiger vor, dass sich für Regeln spezielle Ausreißer ergeben. Der Grund ist meist ein Problem mit einem bestimmten Benutzer.
 - **Zu komplizierte Cloudfilterung (CloudFiltering)** : Die Reduzierung der Anzahl von Objekten ist zwar eine bewährte Vorgehensweise, aber es besteht das Risiko, dass ein zu komplizierter Synchronisierungsbereich mit vielen Synchronisierungsregeln erstellt wird. Wenn die Logik zum Einschließen bzw. Ausschließen von Objekten über die Filterung von Organisationseinheiten hinaus sehr komplex ist, empfehlen wir Ihnen, diese Logik getrennt von der Synchronisierung zu behandeln und die Objekte mit einem einfachen „cloudFiltered“-Attribut zu bezeichnen, das mit einer einfachen Synchronisierungsregel genutzt werden kann.
 
 #### <a name="azure-ad-connect-configuration-documenter"></a>Azure AD Connect-Konfigurationsdokumentierer
@@ -140,11 +140,11 @@ Der [Azure AD Connect-Konfigurationsdokumentierer](https://github.com/Microsoft/
 
 Mit Azure Active Directory wird die Verwaltung von Lizenzen per [gruppenbasierter Lizenzierung](./active-directory-licensing-whatis-azure-portal.md) für Microsoft-Clouddienste optimiert. Auf diese Weise wird die Gruppeninfrastruktur und die delegierte Verwaltung dieser Gruppen per IAM für die richtigen Teams von Organisationen bereitgestellt. Es gibt mehrere Möglichkeiten, die Gruppenmitgliedschaft in Azure AD einzurichten, z. B.:
 
-- **Synchronisierung aus lokaler Umgebung**: Gruppen können aus lokalen Verzeichnissen stammen. Dies kann eine gute Option für Organisationen sein, die über etablierte Prozesse für die Gruppenverwaltung verfügen, für die eine Erweiterung zum Zuweisen von Lizenzen in Microsoft 365 möglich ist.
+- **Synchronisierung aus lokaler Umgebung** : Gruppen können aus lokalen Verzeichnissen stammen. Dies kann eine gute Option für Organisationen sein, die über etablierte Prozesse für die Gruppenverwaltung verfügen, für die eine Erweiterung zum Zuweisen von Lizenzen in Microsoft 365 möglich ist.
 
-- **Attributbasiert/Dynamisch**: Gruppen können in der Cloud anhand eines Ausdrucks erstellt werden, der auf Benutzerattributen basiert, z. B. Abteilung ist gleich „Sales“. Azure AD verwaltet die Mitglieder der Gruppe und sorgt für Konsistenz mit dem definierten Ausdruck. Diese Art von Gruppen für die Lizenzzuweisung ermöglicht eine attributbasierte Vorgehensweise, die gut für Organisationen geeignet ist, deren Verzeichnisse eine hohe Datenqualität aufweisen.
+- **Attributbasiert/Dynamisch** : Gruppen können in der Cloud anhand eines Ausdrucks erstellt werden, der auf Benutzerattributen basiert, z. B. Abteilung ist gleich „Sales“. Azure AD verwaltet die Mitglieder der Gruppe und sorgt für Konsistenz mit dem definierten Ausdruck. Diese Art von Gruppen für die Lizenzzuweisung ermöglicht eine attributbasierte Vorgehensweise, die gut für Organisationen geeignet ist, deren Verzeichnisse eine hohe Datenqualität aufweisen.
 
-- **Delegierter Besitz**: Gruppen können in der Cloud erstellt werden, und dabei können festgelegte Besitzer verwendet werden. So können Sie geschäftliche Besitzer, z. B. das Kollaborations- oder BI-Team, in die Lage versetzen, die Personen zu definieren, für die Zugriff gewährt werden soll.
+- **Delegierter Besitz** : Gruppen können in der Cloud erstellt werden, und dabei können festgelegte Besitzer verwendet werden. So können Sie geschäftliche Besitzer, z. B. das Kollaborations- oder BI-Team, in die Lage versetzen, die Personen zu definieren, für die Zugriff gewährt werden soll.
 
 Falls Sie derzeit einen manuellen Prozess nutzen, um Benutzern Lizenzen und Komponenten zuzuweisen, empfehlen wir Ihnen die Implementierung der gruppenbasierten Lizenzierung. Wenn bei Ihrem aktuellen Prozess keine Überwachung auf Lizenzierungsfehler oder des Status „Zugewiesen/Verfügbar“ erfolgt, sollten Sie Verbesserungen für den Prozess definieren, um Lizenzierungsfehler zu beheben und die Lizenzierungszuweisung zu überwachen.
 
@@ -157,20 +157,20 @@ Verwenden Sie die folgenden Richtlinien zum Definieren von Dienstplänen für Be
 - Optional kann ein Attribut so definiert werden, dass es die Pakete für Benutzer enthält.
 
 > [!IMPORTANT]
-> Mit der gruppenbasierten Lizenzierung in Azure AD wird für Benutzer das Konzept eines Fehlerzustands für die Lizenzierung eingeführt. Falls Sie Lizenzierungsfehler bemerken, sollten Sie sofort alle Probleme mit der Zuweisung von Lizenzen [identifizieren und beheben](../users-groups-roles/licensing-groups-resolve-problems.md).
+> Mit der gruppenbasierten Lizenzierung in Azure AD wird für Benutzer das Konzept eines Fehlerzustands für die Lizenzierung eingeführt. Falls Sie Lizenzierungsfehler bemerken, sollten Sie sofort alle Probleme mit der Zuweisung von Lizenzen [identifizieren und beheben](../enterprise-users/licensing-groups-resolve-problems.md).
 
 ![Screenshot: Automatisch generierte Beschreibung für einen Computerbildschirm](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Lebenszyklusverwaltung
 
-Falls Sie derzeit ein Tool verwenden, z. B. [Microsoft Identity Manager](/microsoft-identity-manager/) oder ein Drittanbietersystem, das auf einer lokalen Infrastruktur basiert, empfehlen wir Ihnen die folgende Vorgehensweise: Verlagern Sie die Zuweisung vom vorhandenen Tool, implementieren Sie die gruppenbasierte Lizenzierung, und definieren Sie die Verwaltung des Gruppenlebenszyklus basierend auf [Gruppen](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Ebenso gilt Folgendes: Falls bei Ihrem vorhandenen Prozess keine neuen Mitarbeiter oder ausscheidenden Mitarbeiter berücksichtigt werden, sollten Sie die gruppenbasierte Lizenzierung basierend auf dynamischen Gruppen bereitstellen und einen Lebenszyklus für die Gruppenmitgliedschaft definieren. Falls die gruppenbasierte Lizenzierung für lokale Gruppen bereitgestellt wird, für die keine Lebenszyklusverwaltung vorhanden ist, sollten Sie die Verwendung von Cloudgruppen erwägen, um Funktionen wie delegierter Besitz oder attributbasierte dynamische Mitgliedschaft zu ermöglichen.
+Falls Sie derzeit ein Tool verwenden, z. B. [Microsoft Identity Manager](/microsoft-identity-manager/) oder ein Drittanbietersystem, das auf einer lokalen Infrastruktur basiert, empfehlen wir Ihnen die folgende Vorgehensweise: Verlagern Sie die Zuweisung vom vorhandenen Tool, implementieren Sie die gruppenbasierte Lizenzierung, und definieren Sie die Verwaltung des Gruppenlebenszyklus basierend auf [Gruppen](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Ebenso gilt Folgendes: Falls bei Ihrem vorhandenen Prozess keine neuen Mitarbeiter oder ausscheidenden Mitarbeiter berücksichtigt werden, sollten Sie die gruppenbasierte Lizenzierung basierend auf dynamischen Gruppen bereitstellen und einen Lebenszyklus für die Gruppenmitgliedschaft definieren. Falls die gruppenbasierte Lizenzierung für lokale Gruppen bereitgestellt wird, für die keine Lebenszyklusverwaltung vorhanden ist, sollten Sie die Verwendung von Cloudgruppen erwägen, um Funktionen wie delegierter Besitz oder attributbasierte dynamische Mitgliedschaft zu ermöglichen.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>Zuweisung von Apps mit der Gruppe „Alle Benutzer“
 
 Ressourcenbesitzer sind unter Umständen der Meinung, dass die Gruppe **Alle Benutzer** nur **Mitarbeiter des Unternehmens** enthält, während eigentlich sowohl **Mitarbeiter des Unternehmens** als auch **Gäste** enthalten sind. Daher sollten Sie beim Verwenden der Gruppe **Alle Benutzer** für die Anwendungszuweisung und beim Gewähren des Zugriffs auf Ressourcen wie SharePoint-Inhalte oder -Anwendungen mit Bedacht vorgehen.
 
 > [!IMPORTANT]
-> Wenn die Gruppe **Alle Benutzer** aktiviert ist und für die Zuweisung von Richtlinien für den bedingten Zugriff, Apps oder Ressourcen verwendet wird, sollten Sie die [Gruppe unbedingt schützen](../external-identities/use-dynamic-groups.md), wenn darin keine Gastbenutzer enthalten sein sollen. Darüber hinaus sollten Sie Ihre Lizenzierungszuweisungen korrigieren, indem Sie nur Gruppen erstellen und für die Zuweisung nutzen, die ausschließlich **Mitarbeiter des Unternehmens** enthalten. Falls Sie dagegen ermitteln, dass die Gruppe **Alle Benutzer** aktiviert ist, aber nicht zum Gewähren des Zugriffs auf Ressourcen verwendet wird, sollten Sie sicherstellen, dass in Ihrer Organisation die Verwendung dieser Gruppe (sowohl mit **Mitarbeitern des Unternehmens** als auch mit **Gästen**) vorgegeben ist.
+> Wenn die Gruppe **Alle Benutzer** aktiviert ist und für die Zuweisung von Richtlinien für den bedingten Zugriff, Apps oder Ressourcen verwendet wird, sollten Sie die [Gruppe unbedingt schützen](../external-identities/use-dynamic-groups.md), wenn darin keine Gastbenutzer enthalten sein sollen. Darüber hinaus sollten Sie Ihre Lizenzierungszuweisungen korrigieren, indem Sie nur Gruppen erstellen und für die Zuweisung nutzen, die ausschließlich **Mitarbeiter des Unternehmens** enthalten. Falls Sie dagegen ermitteln, dass die Gruppe **Alle Benutzer** aktiviert ist, aber nicht zum Gewähren des Zugriffs auf Ressourcen verwendet wird, sollten Sie sicherstellen, dass in Ihrer Organisation die Verwendung dieser Gruppe (sowohl mit **Mitarbeitern des Unternehmens** als auch mit **Gästen** ) vorgegeben ist.
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatisierte Benutzerbereitstellung für Apps
 

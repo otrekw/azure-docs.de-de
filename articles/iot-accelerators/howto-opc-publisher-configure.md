@@ -9,12 +9,12 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b004bb4fbca768d782863f73d83ec5443bc66ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320608"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366954"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurieren von OPC Publisher
 
@@ -144,13 +144,13 @@ OPC Publisher implementiert die folgenden direkten IoT Hub-Methodenaufrufe:
 - ExitApplication
 - GetInfo
 
-Das Format der JSON-Nutzlast für die Anforderung und die Antworten der Methode sind in [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs) definiert.
+Das Format der JSON-Nutzlast für die Anforderung und die Antworten der Methode sind in [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher) definiert.
 
 Wenn Sie eine unbekannte Methode für das Modul aufrufen, wird als Antwort eine Zeichenfolge zurückgegeben, die angibt, dass die Methode nicht implementiert ist. Sie können eine unbekannte Methode als eine Möglichkeit aufrufen, das Modul zu pingen.
 
 ### <a name="configure-username-and-password-for-authentication"></a>Konfigurieren des Benutzernamens und Kennworts für die Authentifizierung
 
-Der Authentifizierungsmodus kann über einen direkten IoT Hub-Methodenaufruf festgelegt werden. Die Nutzlast muss die **OpcAuthenticationMode**-Eigenschaft sowie den Benutzernamen und das Kennwort enthalten:
+Der Authentifizierungsmodus kann über einen direkten IoT Hub-Methodenaufruf festgelegt werden. Die Nutzlast muss die **OpcAuthenticationMode** -Eigenschaft sowie den Benutzernamen und das Kennwort enthalten:
 
 ```csharp
 {
@@ -172,7 +172,7 @@ Das Kennwort wird vom IoT Hub-Workloadclient verschlüsselt und in der Konfigura
 }
 ```
 
-Wenn die **OpcAuthenticationMode**-Eigenschaft in der Nutzlast nicht festgelegt ist, bleiben die Authentifizierungseinstellungen in der Konfiguration unverändert.
+Wenn die **OpcAuthenticationMode** -Eigenschaft in der Nutzlast nicht festgelegt ist, bleiben die Authentifizierungseinstellungen in der Konfiguration unverändert.
 
 ## <a name="configure-telemetry-publishing"></a>Konfigurieren der Veröffentlichung von Telemetriedaten
 
@@ -185,7 +185,7 @@ Wenn OPC Publisher für Batchnachrichten konfiguriert ist, werden diese als gül
 Die Telemetriedaten werden von den folgenden Quellen abgeleitet:
 
 - OPC Publisher-Knotenkonfiguration für den Knoten
-- **MonitoredItem**-Objekt des OPC UA-Stapels, für den OPC Publisher eine Benachrichtigung erhalten hat
+- **MonitoredItem** -Objekt des OPC UA-Stapels, für den OPC Publisher eine Benachrichtigung erhalten hat
 - Das an diese Benachrichtigung übergebene Argument, das Details zur Änderung der Datenwerte enthält
 
 Die Telemetriedaten, die in der JSON-formatierten Nachricht enthalten sind, stellen eine Auswahl aus wichtigen Eigenschaften dieser Objekte dar. Wenn Sie weitere Eigenschaften benötigen, müssen Sie die OPC Publisher-Codebasis ändern.

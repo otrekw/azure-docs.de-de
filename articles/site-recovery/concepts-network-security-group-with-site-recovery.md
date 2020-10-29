@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
-ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069678"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367972"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netzwerksicherheitsgruppen mit Azure Site Recovery
 
-Netzwerksicherheitsgruppen werden verwendet, um den Netzwerkdatenverkehr auf Ressourcen in einem virtuellen Netzwerk zu beschränken. Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/security-overview.md#network-security-groups) enthält eine Liste mit Sicherheitsregeln, die ein- oder ausgehenden Netzwerkdatenverkehr basierend auf IP-Adresse, Port und Protokoll (für die Quelle bzw. das Ziel) zulassen oder ablehnen.
+Netzwerksicherheitsgruppen werden verwendet, um den Netzwerkdatenverkehr auf Ressourcen in einem virtuellen Netzwerk zu beschränken. Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) enthält eine Liste mit Sicherheitsregeln, die ein- oder ausgehenden Netzwerkdatenverkehr basierend auf IP-Adresse, Port und Protokoll (für die Quelle bzw. das Ziel) zulassen oder ablehnen.
 
 Im Resource Manager-Bereitstellungsmodell können Netzwerksicherheitsgruppen Subnetzen oder einzelnen Netzwerkschnittstellen zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die Regeln für alle Ressourcen, die mit dem Subnetz verbunden sind. Datenverkehr kann weiter eingeschränkt werden, indem eine NSG einzelnen Netzwerkschnittstellen in einem Subnetz zugeordnet wird, dem bereits eine NSG zugeordnet ist.
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie Netzwerksicherheitsgruppen mit Azure
 Jedem einzelnen Subnetz kann null (0) oder eine NSG zugeordnet werden. Jeder einzelnen Netzwerkschnittstelle kann auch null (0) oder eine NSG zugeordnet werden. Daher sind effektiv zwei Datenverkehrseinschränkungen für eine VM möglich, indem zunächst eine NSG einem Subnetz und dann eine andere NSG der Netzwerkschnittstelle der VM zugeordnet wird. Die Anwendung der NSG-Regeln hängt in diesem Fall von der Richtung des Datenverkehrs und der Priorität der angewendeten Sicherheitsregeln ab.
 
 Betrachten Sie ein einfaches Beispiel mit nur einer VM:
--    Die VM befindet sich innerhalb von **Contoso Subnet**.
+-    Die VM befindet sich innerhalb von **Contoso Subnet** .
 -    **Contoso Subnet** ist **Subnet NSG** zugeordnet.
 -    Der VM-Netzwerkschnittstelle ist außerdem die **VM-NSG** zugeordnet.
 
@@ -37,7 +37,7 @@ In diesem Beispiel für eingehenden Datenverkehr wird die Subnetz-NSG zuerst aus
 
 Dies ermöglicht die Anwendung einer präzisen Sicherheitsregel. Angenommen, Sie möchten für einige Anwendungs-VMs (z.B. Front-End-VMs) eingehenden Internetzugriff unter einem Subnetz zulassen, aber eingehenden Internetzugriff für andere VMs (z.B. Datenbank- und andere Back-End-VMs) einschränken. In diesem Fall können Sie eine weniger strenge Regel auf die Subnetz-NSG anwenden, Internetdatenverkehr zulassen und durch das Verweigern des Zugriffs auf die VM-NSG den Zugriff auf bestimmte virtuelle Computer beschränken. Das gleiche kann für ausgehenden Datenverkehr angewendet werden.
 
-Stellen Sie beim Einrichten der NSG-Konfigurationen sicher, dass die richtigen Prioritäten auf die [Sicherheitsregeln](../virtual-network/security-overview.md#security-rules) angewandt werden. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.
+Stellen Sie beim Einrichten der NSG-Konfigurationen sicher, dass die richtigen Prioritäten auf die [Sicherheitsregeln](../virtual-network/network-security-groups-overview.md#security-rules) angewandt werden. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.
 
 Es ist für Sie unter Umständen nicht immer klar erkennbar, wenn Netzwerksicherheitsgruppen sowohl auf eine Netzwerkschnittstelle als auch auf ein Subnetz angewendet werden. Sie können die Aggregatregeln, die auf eine Netzwerkschnittstelle angewendet werden, überprüfen, indem Sie die [effektiven Sicherheitsregeln](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) für eine Netzwerkschnittstelle anzeigen. Sie können auch in [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) die Funktion [Überprüfen des IP-Flusses](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) verwenden, um zu ermitteln, ob die Kommunikation für eine Netzwerkschnittstelle in ein- oder ausgehender Richtung zulässig ist. Das Tool gibt an, ob die Kommunikation zugelassen ist und für welche Netzwerksicherheitsregel Datenverkehr zugelassen ist oder abgelehnt wird.
 
@@ -65,14 +65,14 @@ Site Recovery erstellt bzw. repliziert keine NSGs als Teil des Failovervorgangs.
 
 Berücksichtigen Sie das weiter oben beschriebene [Beispielszenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups):
 -    Site Recovery kann Replikate von **Contoso VNet** und **Contoso Subnet** in der Azure-Zielregion erstellen, wenn die Replikation für den virtuellen Computer aktiviert ist.
--    Sie können die gewünschten Replikate von **Subnet NSG** und **VM NSG** (z.B. mit dem Namen **Zielsubnetz-NSG** bzw. **Ziel-VM-NSG**) in der Azure-Zielregion erstellen, wobei zusätzliche in der Zielregion erforderliche Regeln zugelassen sind.
+-    Sie können die gewünschten Replikate von **Subnet NSG** und **VM NSG** (z.B. mit dem Namen **Zielsubnetz-NSG** bzw. **Ziel-VM-NSG** ) in der Azure-Zielregion erstellen, wobei zusätzliche in der Zielregion erforderliche Regeln zugelassen sind.
 -    **Zielsubnetz-NSG** kann dann sofort dem Zielregionssubnetz zugeordnet werden, da sowohl NSG als auch Subnetz bereits verfügbar ist.
 -    **Ziel-VM-NSG** kann während des Failovers mit Wiederherstellungsplänen virtuellen Computern zugeordnet werden.
 
 Sobald die NSGs erstellt und konfiguriert sind, sollten Sie ein [Testfailover](azure-to-azure-tutorial-dr-drill.md) ausführen, um die im Skript vorgenommenen NSG-Zuordnungen und die VM-Konnektivität nach dem Failover zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
--    Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#network-security-groups).
--    Erfahren Sie mehr über NSG-[Sicherheitsregeln](../virtual-network/security-overview.md#security-rules).
+-    Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#network-security-groups).
+-    Erfahren Sie mehr über NSG-[Sicherheitsregeln](../virtual-network/network-security-groups-overview.md#security-rules).
 -    Erfahren Sie mehr über [effektive Sicherheitsregeln](../virtual-network/diagnose-network-traffic-filter-problem.md) für eine NSG.
 -    Informieren Sie sich ausführlicher über [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) zum Automatisieren des Anwendungsfailovers.

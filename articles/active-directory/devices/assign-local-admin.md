@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419817"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365832"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
 Um ein Windows-Gerät verwalten zu können, müssen Sie Mitglied der lokalen Administratorgruppe sein. Im Rahmen der Einbindung in Azure Active Directory (Azure AD) wird die Mitgliedschaft dieser Gruppe auf einem Gerät von Azure AD aktualisiert. Sie können die Mitgliedschaftsaktualisierung Ihren geschäftlichen Anforderungen entsprechend anpassen. Eine Mitgliedschaftsaktualisierung ist beispielsweise hilfreich, wenn Sie Helpdeskmitarbeitern die Ausführung von Aufgaben ermöglichen möchten, für die Administratorrechte erforderlich sind.
 
-In diesem Artikel erfahren Sie, wie die Mitgliedschaftsaktualisierung für lokale Administratoren funktioniert und wie Sie sie im Rahmen einer Azure AD-Einbindung anpassen können. Der Inhalt dieses Artikels gilt nicht für Geräte vom Typ **hybrid, in Azure AD eingebunden**.
+In diesem Artikel erfahren Sie, wie die Mitgliedschaftsaktualisierung für lokale Administratoren funktioniert und wie Sie sie im Rahmen einer Azure AD-Einbindung anpassen können. Der Inhalt dieses Artikels gilt nicht für Geräte vom Typ **hybrid, in Azure AD eingebunden** .
 
 ## <a name="how-it-works"></a>Funktionsweise
 
@@ -39,20 +39,20 @@ Azure AD fügt der lokalen Administratorgruppe darüber hinaus die Rolle des Azu
 
 Informationen zum Anzeigen und Aktualisieren der Mitgliedschaft in der globalen Administratorrolle finden Sie in den folgenden Artikeln:
 
-- [Anzeigen von Mitgliedern und Beschreibungen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Anzeigen von Mitgliedern und Beschreibungen von Administratorrollen in Azure Active Directory](../roles/manage-roles-portal.md)
 - [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
 ## <a name="manage-the-device-administrator-role"></a>Verwalten der Geräteadministratorrolle 
 
-Die Geräteadministratorrolle kann im Azure-Portal auf der Seite **Geräte** verwaltet werden. So öffnen Sie die Seite **Geräte**:
+Die Geräteadministratorrolle kann im Azure-Portal auf der Seite **Geräte** verwaltet werden. So öffnen Sie die Seite **Geräte** :
 
 1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus.
-1. Klicken Sie im Bereich **Verwalten** auf **Geräte**.
-1. Klicken Sie auf der Seite **Geräte** auf **Geräteeinstellungen**.
+1. Suchen Sie nach *Azure Active Directory* , und wählen Sie diese Option aus.
+1. Klicken Sie im Bereich **Verwalten** auf **Geräte** .
+1. Klicken Sie auf der Seite **Geräte** auf **Geräteeinstellungen** .
 
-Konfigurieren Sie die Einstellung **Weitere lokale Administratoren für in Azure AD eingebundene Geräte**, um die Geräteadministratorrolle anzupassen.  
+Konfigurieren Sie die Einstellung **Weitere lokale Administratoren für in Azure AD eingebundene Geräte** , um die Geräteadministratorrolle anzupassen.  
 
 ![Weitere lokale Administratoren](./media/assign-local-admin/10.png)
 

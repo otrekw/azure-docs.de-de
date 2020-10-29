@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eed12593168975b1dfda6e51b07b256cbd0c246
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004067"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92145808"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Abfragen von Avro-Daten mit Azure Data Lake Analytics
 
@@ -171,7 +171,7 @@ In diesem Abschnitt fragen Sie Avro-Daten ab und exportieren Sie in eine CSV-Dat
 
 In diesem Artikel haben Sie erfahren, wie Avro-Daten für ein effizientes Routing von Nachrichten von Azure IoT Hub zu Azure-Diensten abgefragt werden.
 
-Beispiele für vollständige End-to-End-Lösungen, die IoT Hub nutzen, finden Sie in der [Dokumentation zu Azure IoT Solution Accelerators](/azure/iot-accelerators).
+Beispiele für vollständige End-to-End-Lösungen, die IoT Hub nutzen, finden Sie in der [Dokumentation zu Azure IoT Solution Accelerators](../iot-accelerators/index.yml).
 
 Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md).
 

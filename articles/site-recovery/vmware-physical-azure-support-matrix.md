@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 8983923a6ccc3b5462c3e9f00337763b225ed9ac
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5b511eeb99b70fd64a5366b7b54900166f06b4d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330307"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369317"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -65,7 +65,7 @@ Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem u
 **Komponente** | **Details**
 --- | ---
 Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
-Computerworkload | Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem unterstützten Computer ausgeführt werden. [Weitere Informationen](https://aka.ms/asr_workload)
+Computerworkload | Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem unterstützten Computer ausgeführt werden. [Weitere Informationen](./site-recovery-workload.md)
 Computername | Stellen Sie sicher, dass der Anzeigename des Computers nicht in den Bereich der [für Azure reservierten Ressourcennamen](../azure-resource-manager/templates/error-reserved-resource-name.md) fällt.<br/><br/> Bei Namen logischer Volumes wird nicht zwischen Groß- und Kleinschreibung unterschieden. Stellen Sie sicher, dass keine zwei Volumes auf einem Gerät denselben Namen aufweisen. Beispiel: Volumes mit den Namen „voLUME1“, „volume1“ können nicht über Azure Site Recovery geschützt werden.
 
 ### <a name="for-windows"></a>Für Windows
@@ -235,7 +235,7 @@ Gast/Server – Datenträger ausschließen | Ja
 Gast-/Servermultipfad (MPIO) | Nein
 GPT-Partitionen von Gast/Server | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdiensts) unterstützt. Bisher wurden vier unterstützt.
 ReFS | Resilient File System (Robustes Dateisystem) wird ab Version 9.23 des Mobilitätsdiensts unterstützt.
-EFI-/UEFI-Start von Gast/Server | – Wird für alle [UEFI-Betriebssysteme in Azure Marketplace](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) mit Version 9.30 und höher des Mobilitäts-Agent von Site Recovery unterstützt <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+EFI-/UEFI-Start von Gast/Server | – Wird für alle [UEFI-Betriebssysteme in Azure Marketplace](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) mit Version 9.30 und höher des Mobilitäts-Agent von Site Recovery unterstützt <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replikationskanäle
 

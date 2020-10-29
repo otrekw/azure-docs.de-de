@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef46cf0947f1ea31c74a6d189b5bdf00fea44fc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963821"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363537"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Problembehandlung bei der Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -32,7 +32,7 @@ Wenn Sie Probleme beim Anzeigen oder Konfigurieren von SSPR-Optionen im Azure-Po
 
 Die Menüoption **Kennwort zurücksetzen** wird nicht angezeigt, wenn Sie dem Administrator, der den Vorgang durchführt, keine Azure AD-Lizenz zugewiesen haben.
 
-Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus.
+Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus.
 
 ### <a name="i-dont-see-a-particular-configuration-option"></a>Mir wird eine bestimmte Konfigurationsoption nicht angezeigt.
 
@@ -52,7 +52,7 @@ Wenn Sie im Azure-Portal Probleme bei der SSPR-Berichterstellung haben, überpr�
 
 Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde.
 
-Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus.
+Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus.
 
 ### <a name="user-registrations-show-multiple-times"></a>Benutzerregistrierungen werden mehrfach angezeigt.
 
@@ -68,13 +68,13 @@ Wenn Ihre Benutzer Probleme bei der SSPR-Registrierung haben, überprüfen Sie d
 
 Sie können die Self-Service-Kennwortzurücksetzung für alle Benutzer, für keinen Benutzer oder für ausgewählte Benutzergruppen aktivieren. Über das Azure-Portal kann derzeit nur eine Azure AD-Gruppe für SSPR aktiviert werden. Im Rahmen einer umfassenderen Bereitstellung von SSPR werden geschachtelte Gruppen unterstützt. Stellen Sie sicher, dass den Benutzern in den von Ihnen ausgewählten Gruppen die entsprechenden Lizenzen zugewiesen sind.
 
-Ändern Sie im Azure-Portal die Konfiguration **Self-Service-Kennwortzurücksetzung aktiviert** in *Ausgewählt* oder *Alle*, und wählen Sie dann **Speichern** aus.
+Ändern Sie im Azure-Portal die Konfiguration **Self-Service-Kennwortzurücksetzung aktiviert** in *Ausgewählt* oder *Alle* , und wählen Sie dann **Speichern** aus.
 
 ### <a name="the-user-doesnt-have-an-azure-ad-license-assigned-the-user-may-see-an-error-that-reports-your-administrator-has-not-enabled-you-to-use-this-feature"></a>Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. Dem Benutzer wird möglicherweise ein Fehler angezeigt, der besagt, dass der Administrator die Verwendung dieser Funktion nicht aktiviert hat.
 
 Über das Azure-Portal kann derzeit nur eine Azure AD-Gruppe für SSPR aktiviert werden. Im Rahmen einer umfassenderen Bereitstellung von SSPR werden geschachtelte Gruppen unterstützt. Stellen Sie sicher, dass den Benutzern in den von Ihnen ausgewählten Gruppen die entsprechenden Lizenzen zugewiesen sind. Überprüfen Sie den vorherigen Schritt zur Problembehandlung, um SSPR nach Bedarf zu aktivieren.
 
-Überprüfen Sie auch die Schritte zur Problembehandlung, um sicherzustellen, dass dem Administrator, der die Konfigurationsoptionen ausführt, eine Lizenz zugewiesen ist. Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus.
+Überprüfen Sie auch die Schritte zur Problembehandlung, um sicherzustellen, dass dem Administrator, der die Konfigurationsoptionen ausführt, eine Lizenz zugewiesen ist. Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus.
 
 ### <a name="theres-an-error-processing-the-request"></a>Beim Verarbeiten der Anforderung ist ein Fehler aufgetreten.
 
@@ -86,8 +86,8 @@ Wenn Sie oder Ihre Benutzer Probleme bei der Verwendung von SSPR haben, überpr�
 
 | Fehler | Lösung |
 | --- | --- |
-| Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. | Ändern Sie im Azure-Portal die Konfiguration **Self-Service-Kennwortzurücksetzung aktiviert** in *Ausgewählt* oder *Alle*, und wählen Sie dann **Speichern** aus. |
-| Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. | Dieses Problem kann auftreten, wenn Sie dem gewünschten Benutzer keine Azure AD-Lizenz zugewiesen haben. Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus. |
+| Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. | Ändern Sie im Azure-Portal die Konfiguration **Self-Service-Kennwortzurücksetzung aktiviert** in *Ausgewählt* oder *Alle* , und wählen Sie dann **Speichern** aus. |
+| Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. | Dieses Problem kann auftreten, wenn Sie dem gewünschten Benutzer keine Azure AD-Lizenz zugewiesen haben. Um dem fraglichen Administratorkonto eine Lizenz zuzuweisen, führen Sie die unter [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses) beschriebenen Schritte aus. |
 | Die Kennwortzurücksetzung ist für das Verzeichnis zwar aktiviert, für den Benutzer wurden jedoch nicht alle oder fehlerhafte Authentifizierungsinformationen konfiguriert. | Stellen Sie sicher, dass für den Benutzer ordnungsgemäß formatierte Kontaktdaten im Verzeichnis vorliegen. Weitere Informationen finden Sie unter [Von der Azure AD Self-Service-Kennwortzurücksetzung verwendete Daten](howto-sspr-authenticationdata.md). |
 | Die Kennwortzurücksetzung ist für das Verzeichnis zwar aktiviert, für den Benutzer ist jedoch nur ein einzelner Kontaktdatensatz hinterlegt, und die Richtlinie schreibt zwei Überprüfungsmethoden vor. | Stellen Sie sicher, dass für den Benutzer mindestens zwei ordnungsgemäß konfigurierte Kontaktmethoden vorhanden sind, beispielsweise eine Mobiltelefonnummer *und* eine geschäftliche Telefonnummer. |
 | Die Kennwortzurücksetzung ist für das Verzeichnis aktiviert, und der Benutzer ist ordnungsgemäß konfiguriert, kann aber nicht kontaktiert werden. | Dieses Problem kann durch einen vorübergehenden Dienstfehler oder durch falsche Kontaktdaten verursacht werden, die nicht ordnungsgemäß erkannt werden können. <br> <br> Wenn der Benutzer 10 Sekunden wartet, werden der Link „Erneut versuchen“ und der Link „Wenden Sie sich an Ihren Administrator“ angezeigt. Wenn der Benutzer „Erneut versuchen“ auswählt, wird der Aufruf wiederholt. Wenn der Benutzer „Wenden Sie sich an Ihren Administrator“ auswählt, wird eine formale E-Mail an die Administratoren gesendet, um eine Kennwortzurücksetzung für dieses Benutzerkonto anzufordern. |
@@ -127,22 +127,22 @@ Wenn Sie keine Antwort auf ein Problem finden, stehen Ihnen unsere Supportteams 
 
 Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Details wie möglich an, wenn Sie eine Anfrage erstellen. Hierzu gehören die folgenden Angaben:
 
-* **Allgemeine Beschreibung des Fehlers**: Welcher Fehler liegt vor? Welches Verhalten haben Sie festgestellt? Wie können wir den Fehler reproduzieren? Geben Sie bitte so viele Details wie möglich an.
-* **Seite**: Auf welcher Seite befanden Sie sich, als der Fehler aufgetreten ist? Geben Sie möglichst die URL an, und erstellen Sie einen Screenshot der Seite.
-* **Unterstützungscode**: Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist?
-   * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode**, und senden Sie die generierte GUID an den Supportmitarbeiter.
+* **Allgemeine Beschreibung des Fehlers** : Welcher Fehler liegt vor? Welches Verhalten haben Sie festgestellt? Wie können wir den Fehler reproduzieren? Geben Sie bitte so viele Details wie möglich an.
+* **Seite** : Auf welcher Seite befanden Sie sich, als der Fehler aufgetreten ist? Geben Sie möglichst die URL an, und erstellen Sie einen Screenshot der Seite.
+* **Unterstützungscode** : Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist?
+   * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode** , und senden Sie die generierte GUID an den Supportmitarbeiter.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="Der Unterstützungscode befindet sich unten rechts im Webbrowserfenster.":::
 
   * Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, suchen Sie nach der SID und der CID, und senden Sie beide Ergebnisse an den Supportmitarbeiter.
-* **Datum, Uhrzeit und Zeitzone**: Geben Sie das genaue Datum und die exakte Uhrzeit des Fehlers an (*einschließlich der Zeitzone*).
-* **Benutzer-ID**: Bei welchem Benutzer ist der Fehler aufgetreten? Ein Beispiel hierfür ist *Benutzer\@contoso.com*.
+* **Datum, Uhrzeit und Zeitzone** : Geben Sie das genaue Datum und die exakte Uhrzeit des Fehlers an ( *einschließlich der Zeitzone* ).
+* **Benutzer-ID** : Bei welchem Benutzer ist der Fehler aufgetreten? Ein Beispiel hierfür ist *Benutzer\@contoso.com* .
    * Handelt es sich um einen Verbundbenutzer?
    * Ist dies ein Benutzer mit Pass-Through-Authentifizierung?
    * Handelt es sich um einen Benutzer mit Kennworthashsynchronisierung?
    * Handelt es sich um einen reinen Cloudbenutzer?
-* **Lizenzierung**: Ist dem Benutzer eine Azure AD-Lizenz zugewiesen?
-* **Anwendungsereignisprotokoll**: Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
+* **Lizenzierung** : Ist dem Benutzer eine Azure AD-Lizenz zugewiesen?
+* **Anwendungsereignisprotokoll** : Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

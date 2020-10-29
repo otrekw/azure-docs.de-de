@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843106"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367005"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
@@ -42,7 +42,7 @@ Ein Vorfall kann mehrere Warnungen enthalten. Es ist eine Aggregation aller rele
 ## <a name="prerequisites"></a>Voraussetzungen
 - Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analyseregel die Entitätszuordnungsfelder verwendet haben. Das Untersuchungsdiagramm fordert, dass Ihr ursprünglicher Vorfall Entitäten enthält.
 
-- Wenn ein Gastbenutzer Vorfälle zuweisen muss, muss diesem im Azure AD-Mandanten die Rolle [Verzeichnisleseberechtigter](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zugewiesen werden. Regulären Benutzern (keine Gastbenutzer) ist diese Rolle standardmäßig zugewiesen.
+- Wenn ein Gastbenutzer Vorfälle zuweisen muss, muss diesem im Azure AD-Mandanten die Rolle [Verzeichnisleseberechtigter](../active-directory/roles/permissions-reference.md#directory-readers) zugewiesen werden. Regulären Benutzern (keine Gastbenutzer) ist diese Rolle standardmäßig zugewiesen.
 
 ## <a name="how-to-investigate-incidents"></a>Untersuchen von Vorfällen
 
@@ -72,11 +72,11 @@ Mithilfe des Untersuchungsdiagramms können Analysten für jede Untersuchung die
   
 Das Untersuchungsdiagramm bietet Ihnen Folgendes:
 
-- **Visueller Kontext aus Rohdaten**: Im visuellen Livediagramm werden Entitätsbeziehungen veranschaulicht, die automatisch aus den Rohdaten extrahiert werden. Dadurch können Sie auf einfache Weise Verbindungen zwischen verschiedenen Datenquellen erkennen.
+- **Visueller Kontext aus Rohdaten** : Im visuellen Livediagramm werden Entitätsbeziehungen veranschaulicht, die automatisch aus den Rohdaten extrahiert werden. Dadurch können Sie auf einfache Weise Verbindungen zwischen verschiedenen Datenquellen erkennen.
 
-- **Ermittlung des vollständigen Untersuchungsumfangs**: Erweitern Sie den Untersuchungsumfang mithilfe integrierter Auswertungsabfragen, um das vollständige Ausmaß einer Sicherheitsverletzung aufzudecken.
+- **Ermittlung des vollständigen Untersuchungsumfangs** : Erweitern Sie den Untersuchungsumfang mithilfe integrierter Auswertungsabfragen, um das vollständige Ausmaß einer Sicherheitsverletzung aufzudecken.
 
-- **Integrierte Untersuchungsschritte**: Stellen Sie mit vordefinierten Untersuchungsoptionen sicher, dass Sie angesichts einer Bedrohung die richtigen Fragen stellen.
+- **Integrierte Untersuchungsschritte** : Stellen Sie mit vordefinierten Untersuchungsoptionen sicher, dass Sie angesichts einer Bedrohung die richtigen Fragen stellen.
 
 So verwenden Sie das Untersuchungsdiagramm:
 
@@ -91,7 +91,7 @@ So verwenden Sie das Untersuchungsdiagramm:
 
     ![Entitäten in der Zuordnung anzeigen](media/tutorial-investigate-cases/map-entities.png)
   
-1. Erweitern Sie die Untersuchung, indem Sie den Mauszeiger über die einzelnen Entitäten bewegen. Dadurch wird eine Liste von Fragen eingeblendet, die von unseren Sicherheitsexperten und -analysten für den jeweiligen Entitätstyp entwickelt wurden, sodass Sie Ihre Untersuchung vertiefen können. Wir bezeichnen diese Optionen als **Erkundungsabfragen**.
+1. Erweitern Sie die Untersuchung, indem Sie den Mauszeiger über die einzelnen Entitäten bewegen. Dadurch wird eine Liste von Fragen eingeblendet, die von unseren Sicherheitsexperten und -analysten für den jeweiligen Entitätstyp entwickelt wurden, sodass Sie Ihre Untersuchung vertiefen können. Wir bezeichnen diese Optionen als **Erkundungsabfragen** .
 
     ![Weitere Details](media/tutorial-investigate-cases/exploration-cases.png)
 
@@ -111,7 +111,7 @@ So verwenden Sie das Untersuchungsdiagramm:
 
 ## <a name="closing-an-incident"></a>Schließen eines Incidents
 
-Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn die Untersuchung abgeschlossen wurde), sollten Sie den Status des Incidents auf **Geschlossen** festlegen. Dabei werden Sie gefragt, ob Sie den Incident klassifizieren möchten, indem Sie den Grund für die Schließung angeben. Dieser Schritt ist obligatorisch. Klicken Sie auf **Klassifizierung auswählen**, und wählen Sie aus der Dropdownliste eine der folgenden Optionen aus:
+Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn die Untersuchung abgeschlossen wurde), sollten Sie den Status des Incidents auf **Geschlossen** festlegen. Dabei werden Sie gefragt, ob Sie den Incident klassifizieren möchten, indem Sie den Grund für die Schließung angeben. Dieser Schritt ist obligatorisch. Klicken Sie auf **Klassifizierung auswählen** , und wählen Sie aus der Dropdownliste eine der folgenden Optionen aus:
 
 - Richtig positiv – verdächtige Aktivität
 - Unschädlich positiv – verdächtig, aber erwartet
@@ -121,7 +121,7 @@ Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn d
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Screenshot, der die in der Liste „Klassifizierung auswählen“ verfügbaren Klassifizierungen hervorhebt.":::
 
-Nachdem Sie eine geeignete Klassifizierung ausgewählt haben, fügen Sie in das Feld **Kommentar** einen beschreibenden Text hinzu. Dies ist nützlich, falls Sie sich noch einmal auf diesen Incident beziehen müssen. Wenn Sie fertig sind, klicken Sie auf **Anwenden**. Der Incident wird geschlossen.
+Nachdem Sie eine geeignete Klassifizierung ausgewählt haben, fügen Sie in das Feld **Kommentar** einen beschreibenden Text hinzu. Dies ist nützlich, falls Sie sich noch einmal auf diesen Incident beziehen müssen. Wenn Sie fertig sind, klicken Sie auf **Anwenden** . Der Incident wird geschlossen.
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="Screenshot, der die in der Liste „Klassifizierung auswählen“ verfügbaren Klassifizierungen hervorhebt.":::
 

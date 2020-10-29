@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88784010"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371510"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Verwaltungsfunktionen für Azure AD-Rollen in Privileged Identity Management
 
@@ -29,7 +29,7 @@ Mit dem aktuell eingeführten Update führen wir beide Funktionen in einer einzi
 
 ## <a name="time-bound-assignments"></a>Zeitgebundene Zuweisungen
 
-Bisher gab es zwei mögliche Zustände für Rollenzuweisungen: *Berechtigt* und *Permanent*. Nun können Sie auch eine Start- und Endzeit für jeden Zuweisungstyp festlegen. Diese Ergänzung erlaubt vier mögliche Zustände, die Sie einer Zuweisung zuordnen können:
+Bisher gab es zwei mögliche Zustände für Rollenzuweisungen: *Berechtigt* und *Permanent* . Nun können Sie auch eine Start- und Endzeit für jeden Zuweisungstyp festlegen. Diese Ergänzung erlaubt vier mögliche Zustände, die Sie einer Zuweisung zuordnen können:
 
 - Permanent berechtigt
 - Permanent aktiv
@@ -49,7 +49,7 @@ Wir fügen außerdem neue Einstellungen für Azure AD-Rollen hinzu.
 
 Wenn Sie sich mit der zeitgebundenen Zuweisung vertraut machen, fragen Sie sich vielleicht, was passiert, wenn eine Rolle abgelaufen ist? In dieser neuen Version bieten wir zwei Optionen für dieses Szenario:
 
-- **Erweitern**: Wenn eine Rollenzuweisung demnächst abläuft, kann der Benutzer über Privileged Identity Management eine Verlängerung für diese Rollenzuweisung anfordern.
+- **Erweitern** : Wenn eine Rollenzuweisung demnächst abläuft, kann der Benutzer über Privileged Identity Management eine Verlängerung für diese Rollenzuweisung anfordern.
 - **Verlängern:** Wenn eine Rollenzuweisung abgelaufen ist, kann der Benutzer über Privileged Identity Management eine Verlängerung für diese Rollenzuweisung anfordern.
 
 Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von einem globalen Administrator oder einem Administrator für privilegierte Rollen. Administratoren müssen sich also nicht mehr um die Verwaltung von ablaufenden Zuweisungen kümmern. Sie müssen nur auf die Anforderungen zur Verlängerung oder Erneuerung warten und sie genehmigen, wenn die Anforderung berechtigt ist.
@@ -69,4 +69,4 @@ Für Kunden, die das Privileged Identity Management-PowerShell-Modul für Azure�
 - [Zuweisen einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
 - [Entfernen oder Aktualisieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-update-remove.md)
 - [Konfigurieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-configure.md)
-- [Rollendefinitionen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rollendefinitionen in Azure AD](../roles/permissions-reference.md)

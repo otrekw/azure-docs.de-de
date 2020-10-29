@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321173"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370864"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 
-Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen *\<domainname>.onmicrosoft.com*. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können jedoch die Namen Ihrer Organisation hinzufügen. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise *alain\@contoso.com*).
+Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen *\<domainname>.onmicrosoft.com* . Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können jedoch die Namen Ihrer Organisation hinzufügen. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise *alain\@contoso.com* ).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -50,16 +50,16 @@ Nachdem Sie Ihr Verzeichnis erstellt haben, können Sie Ihren benutzerdefinierte
 
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Suchen Sie auf einer beliebigen Seite nach *Azure Active Directory*, und wählen Sie es aus. Wählen Sie dann **Benutzerdefinierte Domänennamen** > **Benutzerdefinierte Domäne hinzufügen** aus.
+1. Suchen Sie auf einer beliebigen Seite nach *Azure Active Directory* , und wählen Sie es aus. Wählen Sie dann **Benutzerdefinierte Domänennamen** > **Benutzerdefinierte Domäne hinzufügen** aus.
 
     ![Seite „Benutzerdefinierte Domänennamen“ mit Option „Benutzerdefinierte Domäne hinzufügen“](media/add-custom-domain/add-custom-domain.png)
 
-1. Geben Sie unter **Benutzerdefinierter Domänenname** den neuen Namen Ihrer Organisation ein, in diesem Beispiel *contoso.com*. Wählen Sie **Add domain** (Domäne hinzufügen) aus.
+1. Geben Sie unter **Benutzerdefinierter Domänenname** den neuen Namen Ihrer Organisation ein, in diesem Beispiel *contoso.com* . Wählen Sie **Add domain** (Domäne hinzufügen) aus.
 
     ![Seite „Benutzerdefinierte Domänennamen“ mit Seite „Benutzerdefinierte Domäne hinzufügen“](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >Der Domänenname muss *.com*, *.net* oder eine andere Erweiterung der obersten Ebene enthalten, damit dies korrekt funktioniert.
+    >Der Domänenname muss *.com* , *.net* oder eine andere Erweiterung der obersten Ebene enthalten, damit dies korrekt funktioniert.
 
     Die überprüfte Domäne wird hinzugefügt. Es wird die Seite **contoso.com** mit Ihren DNS-Informationen angezeigt. Speichern Sie diese Informationen. Sie benötigen sie später zum Erstellen eines TXT-Eintrag zum Konfigurieren von DNS.
 
@@ -82,13 +82,13 @@ So überprüfen Sie Ihren benutzerdefinierten Domänennamen:
 
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Suchen Sie auf einer beliebigen Seite nach *Azure Active Directory*, wählen Sie es aus, und klicken Sie dann auf **Benutzerdefinierte Domänennamen**.
+1. Suchen Sie auf einer beliebigen Seite nach *Azure Active Directory* , wählen Sie es aus, und klicken Sie dann auf **Benutzerdefinierte Domänennamen** .
 
-1. Wählen Sie unter **Benutzerdefinierte Domänennamen** den benutzerdefinierten Domänennamen aus. Wählen Sie in diesem Beispiel die Option **contoso.com**.
+1. Wählen Sie unter **Benutzerdefinierte Domänennamen** den benutzerdefinierten Domänennamen aus. Wählen Sie in diesem Beispiel die Option **contoso.com** .
 
     ![Seite „Fabrikam – Benutzerdefinierte Domänennamen“ mit hervorgehobener Domäne „contoso.com“](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
-1. Klicken Sie auf der Seite für **contoso.com** auf **Überprüfen**, um sicherzustellen, dass Ihre benutzerdefinierte Domäne korrekt registriert und für Azure AD gültig ist.
+1. Klicken Sie auf der Seite für **contoso.com** auf **Überprüfen** , um sicherzustellen, dass Ihre benutzerdefinierte Domäne korrekt registriert und für Azure AD gültig ist.
 
     ![Seite für Contoso mit DNS-Eintragsinformationen und der Schaltfläche „Überprüfen“](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
@@ -104,9 +104,9 @@ Versuchen Sie Folgendes, wenn Azure AD einen benutzerdefinierten Domänennamen n
 
   Falls Sie den Eintrag auf der Website der Registrierungsstelle nicht aktualisieren können, geben Sie ihn für eine Person mit den erforderlichen Berechtigungen frei, um den Eintrag hinzufügen und seine Richtigkeit überprüfen zu lassen.
 
-- **Stellen Sie sicher, dass der Domänenname nicht bereits in einem anderen Verzeichnis verwendet wird.** Ein Domänenname kann nur in einem Verzeichnis überprüft werden. Falls Ihr Domänenname gerade in einem anderen Verzeichnis überprüft wird, kann er daher nicht auch im neuen Verzeichnis überprüft werden. Um dieses Problem zu beheben, müssen Sie den Domänennamen aus dem alten Verzeichnis löschen. Weitere Informationen zum Löschen von Domänennamen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen](../users-groups-roles/domains-manage.md).
+- **Stellen Sie sicher, dass der Domänenname nicht bereits in einem anderen Verzeichnis verwendet wird.** Ein Domänenname kann nur in einem Verzeichnis überprüft werden. Falls Ihr Domänenname gerade in einem anderen Verzeichnis überprüft wird, kann er daher nicht auch im neuen Verzeichnis überprüft werden. Um dieses Problem zu beheben, müssen Sie den Domänennamen aus dem alten Verzeichnis löschen. Weitere Informationen zum Löschen von Domänennamen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen](../enterprise-users/domains-manage.md).
 
-- **Stellen Sie sicher, dass keine nicht verwalteten Power BI-Mandanten vorhanden sind.** Wenn Ihre Benutzer Power BI über die Self-Service-Registrierung aktiviert und einen nicht verwalteten Mandanten für Ihre Organisation erstellt haben, müssen Sie die Verwaltung als interner oder externer Administrator mithilfe von PowerShell übernehmen. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
+- **Stellen Sie sicher, dass keine nicht verwalteten Power BI-Mandanten vorhanden sind.** Wenn Ihre Benutzer Power BI über die Self-Service-Registrierung aktiviert und einen nicht verwalteten Mandanten für Ihre Organisation erstellt haben, müssen Sie die Verwaltung als interner oder externer Administrator mithilfe von PowerShell übernehmen. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../enterprise-users/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -114,6 +114,6 @@ Versuchen Sie Folgendes, wenn Azure AD einen benutzerdefinierten Domänennamen n
 
 - Fügen Sie Benutzer zu Ihrer Domäne hinzu. Weitere Informationen finden Sie unter [Hinzufügen oder Löschen von Benutzern](add-users-azure-active-directory.md).
 
-- Verwalten Sie die Informationen zu Ihrem Domänennamen in Azure AD. Weitere Informationen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen](../users-groups-roles/domains-manage.md).
+- Verwalten Sie die Informationen zu Ihrem Domänennamen in Azure AD. Weitere Informationen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen](../enterprise-users/domains-manage.md).
 
 - Falls Sie lokale Windows Server-Versionen haben, die Sie zusammen mit Azure Active Directory verwenden möchten, gehen Sie wie unter [Integrate your on-premises directories with Azure Active Directory](../hybrid/whatis-hybrid-identity.md) (Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory) beschrieben vor.

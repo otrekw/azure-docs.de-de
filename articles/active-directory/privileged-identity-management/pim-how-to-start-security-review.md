@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b3070a1296b368ea2c56038ec696942416a6fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d9fdc44681c8773d7b6f724174a74e76e57939e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743880"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369759"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in Privileged Identity Management
 
@@ -29,13 +29,13 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Öffnen von Zugriffsüberprüfungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer an, der Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 
 1. Wählen Sie **Azure AD-Rollen** aus.
 
@@ -63,7 +63,7 @@ Führen Sie bei einer einmaligen Überprüfung nach Ablauf des Zeitraums für di
 
 Um eine Serie von Zugriffsüberprüfungen zu verwalten, navigieren Sie zur Zugriffsüberprüfung. Dort finden Sie unter den geplanten Überprüfungen die anstehenden Überprüfungen, und Sie können das Enddatum bearbeiten oder Prüfer entsprechend hinzufügen/entfernen.
 
-Basierend auf Ihrer Auswahl unter **Einstellungen nach Abschluss** wird nach dem Enddatum der Überprüfung oder bei manueller Beendigung der Überprüfung die automatische Anwendung ausgeführt. Der Status der Überprüfung ändert sich von **Abgeschlossen** über Zwischenzustände wie **Wird angewandt** schließlich in den Status **Angewandt**. Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus den Rollen entfernt werden.
+Basierend auf Ihrer Auswahl unter **Einstellungen nach Abschluss** wird nach dem Enddatum der Überprüfung oder bei manueller Beendigung der Überprüfung die automatische Anwendung ausgeführt. Der Status der Überprüfung ändert sich von **Abgeschlossen** über Zwischenzustände wie **Wird angewandt** schließlich in den Status **Angewandt** . Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus den Rollen entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

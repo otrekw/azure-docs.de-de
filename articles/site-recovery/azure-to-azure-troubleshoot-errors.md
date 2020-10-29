@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b71c6b834a6217007134b3be961a0ffa103e2706
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397962"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368042"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
@@ -143,15 +143,15 @@ Führen Sie die folgenden Schritte aus, da SUSE Linux zum Verwalten einer Zertif
    -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem
    ```
 
-1. Erstellen Sie eine Kopie der Datei _VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem_ mit dem Dateinamen _b204d74a.0_:
+1. Erstellen Sie eine Kopie der Datei _VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem_ mit dem Dateinamen _b204d74a.0_ :
 
    `cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0`
 
-1. Erstellen Sie eine Kopie der Datei _Baltimore_CyberTrust_Root.pem_ mit dem Dateinamen _653b494a.0_:
+1. Erstellen Sie eine Kopie der Datei _Baltimore_CyberTrust_Root.pem_ mit dem Dateinamen _653b494a.0_ :
 
    `cp Baltimore_CyberTrust_Root.pem 653b494a.0`
 
-1. Erstellen Sie eine Kopie der Datei _DigiCert_Global_Root_CA.pem_ mit dem Dateinamen _3513523f.0_:
+1. Erstellen Sie eine Kopie der Datei _DigiCert_Global_Root_CA.pem_ mit dem Dateinamen _3513523f.0_ :
 
    `cp DigiCert_Global_Root_CA.pem 3513523f.0`
 
@@ -184,10 +184,10 @@ Stellen Sie bei Verwendung von benutzerdefiniertem DNS sicher, dass der DNS-Serv
 
 Überprüfen Sie wie folgt, ob für die VM eine Einstellung für das benutzerdefinierte DNS verwendet wird:
 
-1. Öffnen Sie **Virtuelle Computer**, und wählen Sie die VM aus.
-1. Navigieren Sie für die VM zu **Einstellungen**, und wählen Sie **Netzwerk** aus.
+1. Öffnen Sie **Virtuelle Computer** , und wählen Sie die VM aus.
+1. Navigieren Sie für die VM zu **Einstellungen** , und wählen Sie **Netzwerk** aus.
 1. Wählen Sie unter **Virtuelles Netzwerk/Subnetz** den Link zum Öffnen der Ressourcenseite des virtuellen Netzwerks aus.
-1. Navigieren Sie zu **Einstellungen**, und wählen Sie **DNS-Server** aus.
+1. Navigieren Sie zu **Einstellungen** , und wählen Sie **DNS-Server** aus.
 
 Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wenn der DNS-Server nicht erreichbar ist, können Sie ein Failover für den DNS-Server ausführen oder eine „Sichtverbindung“ zwischen dem Netzwerk für die Notfallwiederherstellung und dem DNS herstellen.
 
@@ -202,7 +202,7 @@ Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von
 #### <a name="fix-the-problem"></a>Beheben des Problems
 
 Azure Site Recovery benötigt zur Authentifizierung Zugriff auf IP-Adressbereiche von Microsoft 365.
-Wenn Sie Regeln für Azure-Netzwerksicherheitsgruppen (NSG-Regeln) oder einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität für die VM verwenden, muss sichergestellt werden, dass Sie zum Zulassen des Zugriffs auf AAD eine NSG-Regel verwenden, die auf dem [AAD-Diensttag (Azure Active Directory)](../virtual-network/security-overview.md#service-tags) basiert. Auf IP-Adressen basierende NSG-Regeln werden nicht mehr unterstützt.
+Wenn Sie Regeln für Azure-Netzwerksicherheitsgruppen (NSG-Regeln) oder einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität für die VM verwenden, muss sichergestellt werden, dass Sie zum Zulassen des Zugriffs auf AAD eine NSG-Regel verwenden, die auf dem [AAD-Diensttag (Azure Active Directory)](../virtual-network/network-security-groups-overview.md#service-tags) basiert. Auf IP-Adressen basierende NSG-Regeln werden nicht mehr unterstützt.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Fehler bei der Site Recovery-Konfiguration (151197)
 
@@ -225,10 +225,10 @@ Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der Mobilitätsdi
 1. Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer unter Windows und unter `/etc/environment` für Linux.
 1. Wenn nur für den Mobilitätsdienst ein Proxy festgelegt werden soll, können Sie die Proxydetails in _ProxyInfo.conf_ angeben, die sich hier befinden:
 
-   - **Linux**: `/usr/local/InMage/config/`
-   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux** : `/usr/local/InMage/config/`
+   - **Windows** : `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
-1. _ProxyInfo.conf_ sollte die Proxyeinstellungen im folgenden _INI_-Format enthalten.
+1. _ProxyInfo.conf_ sollte die Proxyeinstellungen im folgenden _INI_ -Format enthalten.
 
    ```plaintext
    [proxy]
@@ -260,7 +260,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Stellen Sie sicher, dass die Datenträger initialisiert wurden, und wiederholen Sie den Vorgang.
 
-- **Windows**: [Anfügen und Initialisieren eines neuen Datenträgers](../virtual-machines/windows/attach-managed-disk-portal.md).
+- **Windows** : [Anfügen und Initialisieren eines neuen Datenträgers](../virtual-machines/windows/attach-managed-disk-portal.md).
 - **Linux:** [Initialisieren eines neues Datenträgers unter Linux](../virtual-machines/linux/add-disk.md).
 
 Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
@@ -278,15 +278,15 @@ Damit der Replikationsstatus des virtuellen Computers wieder fehlerfrei ist, kö
 
 #### <a name="to-protect-the-disks"></a>So schützen Sie die Datenträger
 
-1. Wechseln Sie zu **Replizierte Elemente** > _Name des virtuellen Computers_ > **Datenträger**.
+1. Wechseln Sie zu **Replizierte Elemente** > _Name des virtuellen Computers_ > **Datenträger** .
 1. Wählen Sie den ungeschützten Datenträger und dann **Replikation aktivieren** aus:
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-error.":::
 
 #### <a name="to-dismiss-the-warning"></a>So ignorieren Sie die Warnung
 
-1. Wechseln Sie zu **Replizierte Elemente** > _Name des virtuellen Computers_.
-1. Wählen Sie die Warnung im Abschnitt **Übersicht** aus, und klicken Sie dann auf **OK**.
+1. Wechseln Sie zu **Replizierte Elemente** > _Name des virtuellen Computers_ .
+1. Wählen Sie die Warnung im Abschnitt **Übersicht** aus, und klicken Sie dann auf **OK** .
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-error.":::
 
@@ -312,7 +312,7 @@ Sie können diese Warnung ignorieren, wenn Sie diesen virtuellen Computer nicht 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error.":::
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
-1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID**, **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
+1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID** , **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
 1. Wenn Sie zur Eingabe von Azure-Anmeldeinformationen aufgefordert werden, geben Sie diese an. Überprüfen Sie dann, ob das Skript ohne Fehler ausgeführt wird.
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>Replikation auf VM mit veralteten Ressourcen nicht aktiviert (Fehlercode 150226)
@@ -337,7 +337,7 @@ Eine veraltete Konfiguration kann auf einem virtuellen Azure-Computer vorhanden 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error.":::
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
-1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID**, **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
+1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID** , **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
 1. Wenn Sie zur Eingabe von Azure-Anmeldeinformationen aufgefordert werden, geben Sie diese an. Überprüfen Sie dann, ob das Skript ohne Fehler ausgeführt wird.
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>VM oder Ressourcengruppe kann in Auftrag zum Aktivieren der Replikation nicht ausgewählt werden
@@ -346,7 +346,7 @@ Eine veraltete Konfiguration kann auf einem virtuellen Azure-Computer vorhanden 
 
 Site Recovery erfordert derzeit, dass sich die Quellressourcengruppe für die Region und der virtuelle Computer am selben Standort befinden müssen. Wenn das nicht der Fall ist, können Sie den virtuellen Computer oder die Ressourcengruppe nicht finden, wenn Sie versuchen, einen Schutz anzuwenden.
 
-Als Problemumgehung können Sie die Replikation über den virtuellen Computer statt aus dem Recovery Services-Tresor aktivieren. Navigieren Sie zu **Quell-VM** > **Eigenschaften** > **Notfallwiederherstellung**, und aktivieren Sie die Replikation.
+Als Problemumgehung können Sie die Replikation über den virtuellen Computer statt aus dem Recovery Services-Tresor aktivieren. Navigieren Sie zu **Quell-VM** > **Eigenschaften** > **Notfallwiederherstellung** , und aktivieren Sie die Replikation.
 
 ### <a name="issue-2-the-resource-group-isnt-part-of-the-selected-subscription"></a>Problem 2: Die Ressourcengruppe ist nicht Teil des ausgewählten Abonnements
 
@@ -370,7 +370,7 @@ Möglicherweise wird der virtuelle Computer, für den Sie die Replikation aktivi
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error.":::
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
-1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID**, **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
+1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID** , **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
 1. Wenn Sie zur Eingabe von Azure-Anmeldeinformationen aufgefordert werden, geben Sie diese an. Überprüfen Sie dann, ob das Skript ohne Fehler ausgeführt wird.
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>Eine VM für den Schutz kann nicht ausgewählt werden.
@@ -381,16 +381,16 @@ Auf dem virtuellen Computer ist eine fehlerhafte oder nicht reagierende Erweiter
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 
-Wechseln Sie zu **Virtuelle Computer** > **Einstellung** > **Erweiterungen**, und überprüfen Sie, ob es fehlerhafte Erweiterungen gibt. Deinstallieren Sie alle fehlerhaften Erweiterungen, und versuchen Sie dann erneut, den virtuellen Computer zu schützen.
+Wechseln Sie zu **Virtuelle Computer** > **Einstellung** > **Erweiterungen** , und überprüfen Sie, ob es fehlerhafte Erweiterungen gibt. Deinstallieren Sie alle fehlerhaften Erweiterungen, und versuchen Sie dann erneut, den virtuellen Computer zu schützen.
 
 ## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>VM-Bereitstellungsstatus ist ungültig (Fehlercode 150019)
 
 Um die Replikation auf dem virtuellen Computer zu aktivieren, muss dessen Bereitstellungsstatus **Erfolgreich** lauten. Gehen Sie folgendermaßen vor, um den Bereitstellungsstatus zu überprüfen:
 
 1. Wählen Sie im Azure-Portal unter **Alle Dienste** die Option **Ressourcen-Explorer** aus.
-1. Erweitern Sie die Liste **Abonnements**, und wählen Sie Ihr Abonnement aus.
-1. Erweitern Sie die Liste **Ressourcengruppen**, und wählen Sie die Ressourcengruppe des virtuellen Computers aus.
-1. Erweitern Sie die Liste **Ressourcen**, und wählen Sie den virtuellen Computer aus.
+1. Erweitern Sie die Liste **Abonnements** , und wählen Sie Ihr Abonnement aus.
+1. Erweitern Sie die Liste **Ressourcengruppen** , und wählen Sie die Ressourcengruppe des virtuellen Computers aus.
+1. Erweitern Sie die Liste **Ressourcen** , und wählen Sie den virtuellen Computer aus.
 1. Überprüfen Sie das Feld **provisioningState** in der Instanzansicht auf der rechten Seite.
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
@@ -408,7 +408,7 @@ Wenn die Quell-VM während der Konfiguration für die Notfallwiederherstellung T
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Problem 2: Sie haben die VM zuvor geschützt und dann die Replikation deaktiviert.
 
-Durch das Deaktivieren der Replikation eines virtuellen Computers wird die Netzwerkzuordnung nicht gelöscht. Die Zuordnung muss in dem Recovery Services-Tresor gelöscht werden, in dem der virtuelle Computer geschützt wurde. Wählen Sie den **Recovery Services-Tresor** aus, und wechseln Sie zu **Verwalten** > **Site Recovery-Infrastruktur** > **Für virtuelle Azure-Computer** > **Netzwerkzuordnung**.
+Durch das Deaktivieren der Replikation eines virtuellen Computers wird die Netzwerkzuordnung nicht gelöscht. Die Zuordnung muss in dem Recovery Services-Tresor gelöscht werden, in dem der virtuelle Computer geschützt wurde. Wählen Sie den **Recovery Services-Tresor** aus, und wechseln Sie zu **Verwalten** > **Site Recovery-Infrastruktur** > **Für virtuelle Azure-Computer** > **Netzwerkzuordnung** .
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-error.":::
 
@@ -459,11 +459,11 @@ Stellen Sie sicher, dass die Datenträgergröße innerhalb des unterstützten Gr
 
 ### <a name="possible-causes"></a>Mögliche Ursachen
 
-Die GRUB-Konfigurationsdateien von Linux (Grand Unified Bootloader, _/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_ oder _/etc/default/grub_) geben ggf. die tatsächlichen Gerätenamen anstelle der UUID (universell eindeutiger Bezeichner) für die Parameter `root` und `resume` an. Site Recovery erfordert UUIDs, da sich Gerätenamen ändern können. Beim Neustart wird ein virtueller Computer möglicherweise nicht mit demselben Namen im Failover angezeigt, was zu Problemen führt.
+Die GRUB-Konfigurationsdateien von Linux (Grand Unified Bootloader, _/boot/grub/menu.lst_ , _/boot/grub/grub.cfg_ , _/boot/grub2/grub.cfg_ oder _/etc/default/grub_ ) geben ggf. die tatsächlichen Gerätenamen anstelle der UUID (universell eindeutiger Bezeichner) für die Parameter `root` und `resume` an. Site Recovery erfordert UUIDs, da sich Gerätenamen ändern können. Beim Neustart wird ein virtueller Computer möglicherweise nicht mit demselben Namen im Failover angezeigt, was zu Problemen führt.
 
 Die folgenden Beispiele sind Zeilen aus GRUB-Dateien, bei denen Gerätenamen anstelle der erforderlichen UUIDs angezeigt werden:
 
-- Datei _/boot/grub2/grub.cfg_:
+- Datei _/boot/grub2/grub.cfg_ :
 
   `linux /boot/vmlinuz-3.12.49-11-default root=/dev/sda2  ${extra_cmdline} resume=/dev/sda1 splash=silent quiet showopts`
 
@@ -494,7 +494,7 @@ Ersetzen Sie jeden Gerätenamen durch die entsprechende UUID:
 
 ### <a name="possible-cause"></a>Mögliche Ursache
 
-Die GRUB-Konfigurationsdateien ( _/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_ oder _/etc/default/grub_) enthalten möglicherweise die Parameter `rd.lvm.lv` oder `rd_LVM_LV`. Mit diesen Parametern werden die LVM-Geräte (Logical Volume Manager) angegeben, die zum Startzeitpunkt erkannt werden sollen. Wenn diese LVM-Geräte nicht vorhanden sind, wird das geschützte System selbst nicht gestartet und bleibt im Startprozess hängen. Dasselbe Problem tritt auch bei der Failover-VM auf. Hier sind einige Beispiele angegeben:
+Die GRUB-Konfigurationsdateien ( _/boot/grub/menu.lst_ , _/boot/grub/grub.cfg_ , _/boot/grub2/grub.cfg_ oder _/etc/default/grub_ ) enthalten möglicherweise die Parameter `rd.lvm.lv` oder `rd_LVM_LV`. Mit diesen Parametern werden die LVM-Geräte (Logical Volume Manager) angegeben, die zum Startzeitpunkt erkannt werden sollen. Wenn diese LVM-Geräte nicht vorhanden sind, wird das geschützte System selbst nicht gestartet und bleibt im Startprozess hängen. Dasselbe Problem tritt auch bei der Failover-VM auf. Hier sind einige Beispiele angegeben:
 
 - Datei _/boot/grub2/grub.cfg_ für RHEL7:
 
@@ -560,7 +560,7 @@ Führen Sie die unten angegebenen Schritte aus, um dieses Problem zu beheben.
 
     `tar -xf <Tar Ball File>`
 
-4. Öffnen Sie die Datei _prereq_check_installer.json_, und löschen Sie die folgenden Zeilen. Speichern Sie anschließend die Datei.
+4. Öffnen Sie die Datei _prereq_check_installer.json_ , und löschen Sie die folgenden Zeilen. Speichern Sie anschließend die Datei.
 
     ```
        {

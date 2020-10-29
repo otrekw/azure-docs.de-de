@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964467"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366478"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Planen einer Bereitstellung von Azure Multi-Factor Authentication
 
@@ -37,7 +37,7 @@ Vor dem Starten einer Bereitstellung von Azure Multi-Factor Authentication sind 
 
 | Szenario | Voraussetzung |
 | --- | --- |
-| **Nur Cloud**-Identitätsumgebung mit moderner Authentifizierung | **Keine weiteren erforderlichen Aufgaben** |
+| **Nur Cloud** -Identitätsumgebung mit moderner Authentifizierung | **Keine weiteren erforderlichen Aufgaben** |
 | **Hybrididentitätsszenarien** | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) wird bereitgestellt, und Benutzeridentitäten werden mit den lokalen Active Directory Domain Services mit Azure Active Directory synchronisiert oder verbunden. |
 | Für den Cloudzugriff veröffentlichte lokale ältere Anwendungen | Azure AD-[Anwendungsproxy](../manage-apps/application-proxy.md) wird bereitgestellt. |
 | Verwenden von Azure MFA mit RADIUS-Authentifizierung | Ein [Netzwerkrichtlinienserver (Network Policy Server, NPS)](howto-mfa-nps-extension.md) wird bereitgestellt. |
@@ -51,7 +51,7 @@ Ihr MFA-Rolloutplan sollte eine Pilotbereitstellung enthalten, gefolgt von Berei
 
 Es ist entscheidend, die Benutzer mithilfe geplanter Benachrichtigungen über anstehende Änderungen, Anforderungen der Azure MFA-Registrierung und ggf. erforderliche Benutzerhandlungen zu informieren. Die Kommunikation sollte zusammen mit Vertretern aus Ihrer Organisation entwickelt werden, z. B. aus den Abteilungen Kommunikation, Change Management und Personalwesen.
 
-Microsoft stellt [Kommunikationsvorlagen](https://aka.ms/mfatemplates) und [Endbenutzerdokumentation](../user-help/security-info-setup-signin.md) zur Verfügung, mit denen Sie Ihre Informationsmitteilungen entwerfen können. Sie können Benutzer auf [https://myprofile.microsoft.com](https://myprofile.microsoft.com) verweisen, wo sie sich durch Auswahl der **Sicherheitsinformation**-Links auf dieser Seite direkt registrieren können.
+Microsoft stellt [Kommunikationsvorlagen](https://aka.ms/mfatemplates) und [Endbenutzerdokumentation](../user-help/security-info-setup-signin.md) zur Verfügung, mit denen Sie Ihre Informationsmitteilungen entwerfen können. Sie können Benutzer auf [https://myprofile.microsoft.com](https://myprofile.microsoft.com) verweisen, wo sie sich durch Auswahl der **Sicherheitsinformation** -Links auf dieser Seite direkt registrieren können.
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
@@ -92,13 +92,13 @@ Wir empfehlen Organisationen, den bedingten Zugriff zu verwenden und ihr Netzwer
 ### <a name="configuring-a-named-location"></a>Konfigurieren eines benannten Orts
 
 1. Öffnen Sie **Azure Active Directory** im Azure-Portal.
-2. Wählen Sie **Sicherheit**.
+2. Wählen Sie **Sicherheit** .
 3. Wählen Sie unter **Verwalten** die Option **Benannte Standorte** aus.
 4. Wählen Sie **Neuer Standort** aus.
 5. Geben Sie im Feld **Name** einen aussagekräftigen Namen an.
 6. Wählen Sie aus, ob Sie den Standort mithilfe von *IP-Bereichen* oder *Ländern/Regionen* definieren.
    1. Bei Verwendung von *IP-Bereichen*
-      1. Entscheiden Sie, ob Sie den *Standort als vertrauenswürdig markieren*. Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern. Markieren Sie diesen Standort nur dann als vertrauenswürdig, wenn die eingegebenen IP-Bereiche bekannt sind und in Ihrer Organisation als unbedenklich eingestuft werden.
+      1. Entscheiden Sie, ob Sie den *Standort als vertrauenswürdig markieren* . Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern. Markieren Sie diesen Standort nur dann als vertrauenswürdig, wenn die eingegebenen IP-Bereiche bekannt sind und in Ihrer Organisation als unbedenklich eingestuft werden.
       2. Angeben der IP-Bereiche
    2. Bei Verwendung von *Ländern/Regionen*
       1. Erweitern Sie das Dropdownmenü, und wählen Sie die Länder oder Regionen aus, die Sie für diesen benannten Ort definieren möchten.
@@ -133,17 +133,17 @@ Eine SMS mit dem Überprüfungscode wird an den Benutzer gesendet, und der Benut
 
 ### <a name="choose-verification-options"></a>Auswählen der Überprüfungsoptionen
 
-1. Wechseln Sie zu **Azure Active Directory**, **Benutzer**, **Multi-Factor Authentication**.
+1. Wechseln Sie zu **Azure Active Directory** , **Benutzer** , **Multi-Factor Authentication** .
 
    ![Zugreifen auf das Multi-Factor Authentication-Portal über das Blatt „Azure AD-Benutzer“ im Azure-Portal](media/howto-mfa-getstarted/users-mfa.png)
 
-1. Navigieren Sie auf der neuen Registerkarte, die geöffnet wird, zu **Diensteinstellungen**.
+1. Navigieren Sie auf der neuen Registerkarte, die geöffnet wird, zu **Diensteinstellungen** .
 1. Aktivieren Sie unter **Überprüfungsoptionen** alle Kontrollkästchen für Methoden, die den Benutzern zur Verfügung stehen sollen.
 
    ![Konfigurieren von Überprüfungsmethoden, in der Registerkarte „Diensteinstellung“ von Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
-1. Klicken Sie auf **Speichern**.
-1. Schließen Sie die Registerkarte **Diensteinstellungen**.
+1. Klicken Sie auf **Speichern** .
+1. Schließen Sie die Registerkarte **Diensteinstellungen** .
 
 ## <a name="plan-registration-policy"></a>Planen der Registrierungsrichtlinie
 
@@ -226,31 +226,31 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 Informationen zum Planen der Richtlinienstrategie für den bedingten Zugriff, die bestimmt, wann MFA und andere Steuerelemente erforderlich sind, finden Sie unter [Allgemeine Richtlinien für bedingten Zugriff](../conditional-access/concept-conditional-access-policy-common.md).
 
-Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten ausgesperrt zu werden. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie [mindestens zwei Konten für den Notfallzugriff in Ihrem Mandanten erstellen](../users-groups-roles/directory-emergency-access.md) und sie von Ihrer Richtlinie für bedingten Zugriff ausnehmen.
+Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten ausgesperrt zu werden. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie [mindestens zwei Konten für den Notfallzugriff in Ihrem Mandanten erstellen](../roles/security-emergency-access.md) und sie von Ihrer Richtlinie für bedingten Zugriff ausnehmen.
 
 ### <a name="create-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
 1. Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
-1. Wählen Sie **Neue Richtlinie**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** .
+1. Wählen Sie **Neue Richtlinie** .
    ![Erstellen einer Richtlinie für bedingten Zugriff zum Aktivieren von MFA für die Benutzer des Azure-Portals in der Pilotgruppe](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Geben Sie einen aussagekräftigen Namen für Ihre Richtlinie an.
-1. Unter **Benutzer und Gruppen**:
-   * Wählen Sie auf der Registerkarte **Einschließen** das Optionsfeld **Alle Benutzer**.
-   * Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen für **Benutzer und Gruppen**, und wählen Sie Ihre Konten für den Notfallzugriff aus.
-   * Klicken Sie auf **Fertig**.
-1. Aktivieren Sie unter **Cloud-Apps** das Optionsfeld **Alle Cloud-Apps**.
+1. Unter **Benutzer und Gruppen** :
+   * Wählen Sie auf der Registerkarte **Einschließen** das Optionsfeld **Alle Benutzer** .
+   * Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen für **Benutzer und Gruppen** , und wählen Sie Ihre Konten für den Notfallzugriff aus.
+   * Klicken Sie auf **Fertig** .
+1. Aktivieren Sie unter **Cloud-Apps** das Optionsfeld **Alle Cloud-Apps** .
    * OPTIONAL: Wählen Sie auf der Registerkarte **Ausschließen** die Cloud-Apps aus, für die Ihre Organisation keine MFA benötigt.
-   * Klicken Sie auf **Fertig**.
-1. Im Abschnitt **Bedingungen**:
+   * Klicken Sie auf **Fertig** .
+1. Im Abschnitt **Bedingungen** :
    * OPTIONAL: Wenn Sie Azure Identity Protection aktiviert haben, können Sie entscheiden, ob das Anmelderisiko im Rahmen der Richtlinie ausgewertet werden soll.
    * OPTIONAL: Wenn Sie vertrauenswürdige Speicherorte oder benannte Orte konfiguriert haben, können Sie angeben, ob diese in die Richtlinie ein- oder davon ausgeschlossen werden.
 1. Stellen Sie unter **Gewähren** sicher, dass das Optionsfeld **Zugriff gewähren** aktiviert ist.
-    * Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication anfordern**.
-    * Klicken Sie auf **Auswählen**.
-1. Überspringen Sie den Abschnitt **Sitzung**.
+    * Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication anfordern** .
+    * Klicken Sie auf **Auswählen** .
+1. Überspringen Sie den Abschnitt **Sitzung** .
 1. Legen Sie die Umschaltfläche **Richtlinie aktivieren** auf **Ein** fest.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Planen der Integration mit lokalen Systemen
 

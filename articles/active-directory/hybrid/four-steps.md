@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600795"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369776"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -156,7 +156,7 @@ Das Zuweisen von Benutzern zu Anwendungen erfolgt am besten mithilfe von Gruppen
 * Attributbasiert mithilfe dynamischer Gruppenmitgliedschaften
 * Delegierung an App-Besitzer
 
-Azure AD bietet die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen und erstellen und Microsoft 365-Gruppen zu verwalten. Diese Gruppen können von einem Gruppenbesitzer verwaltet werden, der Mitgliedschaftsanforderungen genehmigen oder ablehnen und die Steuerung der Gruppenmitgliedschaft delegieren kann. Diese als [Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md) bezeichnete Funktion spart Zeit, da sie Gruppenbesitzern, denen keine Administratorrolle zugewiesen ist, ermöglicht, Gruppen zu erstellen und zu verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen.
+Azure AD bietet die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen und erstellen und Microsoft 365-Gruppen zu verwalten. Diese Gruppen können von einem Gruppenbesitzer verwaltet werden, der Mitgliedschaftsanforderungen genehmigen oder ablehnen und die Steuerung der Gruppenmitgliedschaft delegieren kann. Diese als [Self-Service-Gruppenverwaltung](../enterprise-users/groups-self-service-management.md) bezeichnete Funktion spart Zeit, da sie Gruppenbesitzern, denen keine Administratorrolle zugewiesen ist, ermöglicht, Gruppen zu erstellen und zu verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen.
 
 ## <a name="step-4---operationalize-your-insights"></a>Schritt 4: Operationalisieren Ihrer Erkenntnisse
 
@@ -172,9 +172,9 @@ Sicherheitsprotokolle und Berichte bieten eine elektronische Aufzeichnung verdä
 
 Bei den Überlegungen zur Vorgehensweise beim Betrieb sind verschiedene Administrationsebenen zu berücksichtigen. Die erste Ebene umfasst den gesamten Verwaltungsaufwand Ihrer globalen Administratoren. Bei kleineren Unternehmen kann es sinnvoll sein, immer die globale Administratorrolle zu verwenden. In größeren Organisationen mit Helpdeskpersonal und Administratoren, die für unterschiedliche Aufgaben verantwortlich sind, kann das Zuweisen der Rolle eines globalen Administrators ein Sicherheitsrisiko darstellen, da es den entsprechenden Personen die Möglichkeit zur Verwaltung von Aufgaben bietet, die über ihren eigentlichen Verantwortungsbereich hinaus gehen.
 
-Sie sollten in diesem Fall eine weitere Ebene der Verwaltung in Betracht ziehen. Mithilfe von Azure AD können Sie Benutzer als „Administratoren mit eingeschränkten Rechten“ festlegen, die Aufgaben in Rollen mit weniger Rechten verwalten können. Sie könnten beispielsweise Ihrem Helpdeskpersonal die Rolle [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](../users-groups-roles/directory-assign-admin-roles.md#security-reader) zuweisen, um ihnen die Möglichkeit zum Verwalten von sicherheitsbezogenen Funktionen mit schreibgeschütztem Zugriff zu gewähren. Möglicherweise ist es auch sinnvoll, Personen die Rolle [Authentifizierungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator) zuzuweisen, um ihnen die Möglichkeit zum Zurücksetzen von Anmeldeinformationen (ohne Kennwörter) oder zum Lesen und Konfigurieren von Azure Service Health zu gewähren.
+Sie sollten in diesem Fall eine weitere Ebene der Verwaltung in Betracht ziehen. Mithilfe von Azure AD können Sie Benutzer als „Administratoren mit eingeschränkten Rechten“ festlegen, die Aufgaben in Rollen mit weniger Rechten verwalten können. Sie könnten beispielsweise Ihrem Helpdeskpersonal die Rolle [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](../roles/permissions-reference.md#security-reader) zuweisen, um ihnen die Möglichkeit zum Verwalten von sicherheitsbezogenen Funktionen mit schreibgeschütztem Zugriff zu gewähren. Möglicherweise ist es auch sinnvoll, Personen die Rolle [Authentifizierungsadministrator](../roles/permissions-reference.md#authentication-administrator) zuzuweisen, um ihnen die Möglichkeit zum Zurücksetzen von Anmeldeinformationen (ohne Kennwörter) oder zum Lesen und Konfigurieren von Azure Service Health zu gewähren.
 
-Weitere Informationen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Weitere Informationen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../roles/permissions-reference.md).
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Überwachen von Hybridkomponenten (Azure AD Connect-Synchronisierung, AD FS) mit Azure AD Connect Health
 

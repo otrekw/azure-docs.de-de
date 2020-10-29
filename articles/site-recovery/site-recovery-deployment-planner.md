@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: f930fbb9cad893363db2b1a6b9b6ea8acade5a54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a78b0ec53dfce0a1c1478790f404adb78a8c6b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083785"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359848"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für VMware in Azure
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -76,7 +76,7 @@ Das Tool verfügt über zwei Hauptphasen: die Profilerstellung und die Berichter
 
 | Serveranforderung | BESCHREIBUNG|
 |---|---|
-|Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Windows Server 2016 oder Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, HDD mit 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetzugriff auf Azure (*.blob.core.windows.net) von diesem Server aus, Port 443<br>[Dies ist optional. Sie können die verfügbare Bandbreite wahlweise während der Berichterstellung manuell bereitstellen.]</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene können auf 1 oder eine höhere Stufe festgelegt werden.</li><li>vCenterPort zulassen (standardmäßig 443): Der Site Recovery-Bereitstellungsplaner verwendet diesen Port zur Verbindungsherstellung mit dem vCenter Server/ESXi-Host.</ul></ul>|
+|Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Windows Server 2016 oder Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, HDD mit 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetzugriff auf Azure (*.blob.core.windows.net) von diesem Server aus, Port 443<br>[Dies ist optional. Sie können die verfügbare Bandbreite wahlweise während der Berichterstellung manuell bereitstellen.]</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene können auf 1 oder eine höhere Stufe festgelegt werden.</li><li>vCenterPort zulassen (standardmäßig 443): Der Site Recovery-Bereitstellungsplaner verwendet diesen Port zur Verbindungsherstellung mit dem vCenter Server/ESXi-Host.</ul></ul>|
 | Berichterstellung | Windows-PC oder Windows-Server mit Excel 2013 oder höher.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) ist nur erforderlich, wenn Sie die Option „-User“ im Berichtsgenerierungsbefehl zum Abrufen der neuesten VM-Konfigurationsinformationen der virtuellen Computer übergeben. Der Bereitstellungsplaner stellt eine Verbindung mit dem vCenter-Server her. Lassen Sie zu, dass der vCenter-Port (Standard 443) die Verbindung mit dem vCenter-Server herstellt.</li>|
 | Benutzerberechtigungen | Leseberechtigung für das Benutzerkonto, das zum Zugreifen auf den VMware vCenter-Server/VMware vSphere ESXi-Host während der Profilerstellung verwendet wird |
 
@@ -90,7 +90,7 @@ Das Tool verfügt über zwei Hauptphasen: die Profilerstellung und die Berichter
 Das Tool ist in einem ZIP-Ordner enthalten. Die aktuelle Version des Tools unterstützt nur das Szenario „VMware zu Azure“.
 
 2. Kopieren Sie den ZIP-Ordner auf den Windows-Server, auf dem Sie das Tool ausführen möchten.
-Sie können das Tool unter Windows Server 2012 R2 ausführen, wenn der Server Netzwerkzugriff hat, um eine Verbindung mit dem vCenter-Server/vSphere ESXi-Host herzustellen, der die VMs für die Profilerstellung enthält. Wir empfehlen Ihnen aber, das Tool auf einem Server auszuführen, dessen Hardwarekonfiguration die Anforderungen der [Größenrichtlinien für Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components) erfüllt. Führen Sie das Tool auf dem Konfigurationsserver aus, falls Sie Site Recovery-Komponenten bereits lokal bereitgestellt haben.
+Sie können das Tool unter Windows Server 2012 R2 ausführen, wenn der Server Netzwerkzugriff hat, um eine Verbindung mit dem vCenter-Server/vSphere ESXi-Host herzustellen, der die VMs für die Profilerstellung enthält. Wir empfehlen Ihnen aber, das Tool auf einem Server auszuführen, dessen Hardwarekonfiguration die Anforderungen der [Größenrichtlinien für Konfigurationsserver](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server) erfüllt. Führen Sie das Tool auf dem Konfigurationsserver aus, falls Sie Site Recovery-Komponenten bereits lokal bereitgestellt haben.
 
     Es wird empfohlen, auf dem Server, auf dem Sie das Tool ausführen, die gleiche Hardwarekonfiguration wie auf dem Konfigurationsserver (der über einen integrierten Prozessserver verfügt) zu verwenden. Mit dieser Konfiguration wird sichergestellt, das der vom Tool gemeldete erzielte Durchsatz mit dem tatsächlichen Durchsatz übereinstimmt, den Site Recovery während der Replikation erreichen kann. Die Berechnung des Durchsatzes richtet sich nach der verfügbaren Netzwerkbandbreite auf dem Server und der Hardwarekonfiguration (z.B. CPU und Speicher) des Servers. Wenn Sie das Tool auf einem anderen Server ausführen, wird der Durchsatz von diesem Server zu Azure berechnet. Da sich die Hardwarekonfiguration des Servers von der des Konfigurationsservers unterscheiden kann, ist es auch möglich, dass der vom Tool gemeldete Durchsatz ungenau ist.
 

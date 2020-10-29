@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371799"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
 In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
@@ -38,32 +38,32 @@ Sie können eine bestehende Sicherheitsgruppe zu einer anderen bestehenden Siche
 
 2. Wählen Sie **Azure Active Directory** und dann **Gruppen** aus.
 
-3. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die Mitglied einer anderen Gruppe werden soll. In dieser Übung verwenden wir die Gruppe **MDM-Richtlinie – Westen**.
+3. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die Mitglied einer anderen Gruppe werden soll. In dieser Übung verwenden wir die Gruppe **MDM-Richtlinie – Westen** .
 
     >[!Note]
     >Sie können Ihre Gruppe als Mitglied jeweils nur zu einer Gruppe hinzufügen. Darüber hinaus filtert das Feld **Gruppe auswählen** die Anzeige basierend auf einem Abgleich Ihrer Eingabe mit einem beliebigen Teil eines Benutzer- oder Gerätenamens. Platzhalterzeichen werden jedoch nicht unterstützt.
 
     ![Seite „Gruppen – Alle Gruppen“ mit ausgewählter „MDM-Richtlinie – Westen“](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
 
-4. Wählen Sie auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** die Option **Gruppenmitgliedschaften**, klicken Sie auf **Hinzufügen**, suchen Sie die Gruppe, zu der Ihre Gruppe gehören soll, und wählen Sie dann **Auswählen**. In dieser Übung verwenden wir die Gruppe **MDM-Richtlinie – Alle Org**.
+4. Wählen Sie auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** die Option **Gruppenmitgliedschaften** , klicken Sie auf **Hinzufügen** , suchen Sie die Gruppe, zu der Ihre Gruppe gehören soll, und wählen Sie dann **Auswählen** . In dieser Übung verwenden wir die Gruppe **MDM-Richtlinie – Alle Org** .
 
     Die Gruppe **MDM-Richtlinie – Westen** ist nun Mitglied der Gruppe **MDM-Richtlinie – Alle Org.** und übernimmt alle Eigenschaften und Konfigurationen der Gruppe „MDM-Richtlinie – Alle Org.“.
 
     ![Erstellen einer Gruppenmitgliedschaft durch Hinzufügen einer Gruppe zu einer anderen Gruppe](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
-5. Lesen Sie die Seite **MDM-Richtlinien – Westen – Gruppenmitgliedschaften**, um die Gruppe-Mitglied-Beziehung anzuzeigen.
+5. Lesen Sie die Seite **MDM-Richtlinien – Westen – Gruppenmitgliedschaften** , um die Gruppe-Mitglied-Beziehung anzuzeigen.
 
-6. Für eine detailliertere Ansicht der Gruppe-Mitglied-Beziehung wählen Sie die Gruppe (**MDM-Richtlinie – Alle Org.** ) und schauen Sie sich die Seitendetails **MDM-Richtlinie – Westen** an.
+6. Für eine detailliertere Ansicht der Gruppe-Mitglied-Beziehung wählen Sie die Gruppe ( **MDM-Richtlinie – Alle Org.** ) und schauen Sie sich die Seitendetails **MDM-Richtlinie – Westen** an.
 
 ## <a name="remove-a-group-from-another-group"></a>Entfernen einer Gruppe aus einer anderen Gruppe
 Sie können eine vorhandene Sicherheitsgruppe aus einer anderen Sicherheitsgruppe entfernen. Das Entfernen der Gruppe entfernt jedoch auch alle geerbten Attribute und Eigenschaften für die Mitglieder.
 
 ### <a name="to-remove-a-member-group-from-another-group"></a>Entfernen einer Mitgliedergruppe aus einer anderen Gruppe
-1. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die als Mitglied einer anderen Gruppe entfernt werden soll. In dieser Übung verwenden wir wieder die Gruppe **MDM-Richtlinie – Westen**.
+1. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die als Mitglied einer anderen Gruppe entfernt werden soll. In dieser Übung verwenden wir wieder die Gruppe **MDM-Richtlinie – Westen** .
 
-2. Klicken Sie auf der Übersichtsseite für **MDM-Richtlinie – Westen** auf **Gruppenmitgliedschaften**.
+2. Klicken Sie auf der Übersichtsseite für **MDM-Richtlinie – Westen** auf **Gruppenmitgliedschaften** .
 
-3. Wählen Sie die Gruppe **MDM-Richtlinie – Alle Org.** auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** aus, und wählen Sie dann **Entfernen** auf der Detailseite **MDM-Richtlinie – Westen**.
+3. Wählen Sie die Gruppe **MDM-Richtlinie – Alle Org.** auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** aus, und wählen Sie dann **Entfernen** auf der Detailseite **MDM-Richtlinie – Westen** .
 
     ![Seite „Gruppenmitgliedschaft“, die sowohl das Mitglied als auch die Gruppendetails anzeigt](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 
@@ -78,6 +78,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 - [Bearbeiten Ihrer Gruppeneinstellungen](active-directory-groups-settings-azure-portal.md)
 
-- [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](../users-groups-roles/groups-saasapps.md)
+- [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](../enterprise-users/groups-saasapps.md)
 
-- [Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

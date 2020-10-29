@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0f74f98adcc8a4e8aabc96f7f35c9c55ae277f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4778ce5efcd6145447c194eaab34bc230bcbe34c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536357"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371544"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM
 
@@ -31,8 +31,8 @@ Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) könn
 
 Ab November 2019 wird der Bereich „Azure AD-Rollen“ von Privileged Identity Management auf eine neue Version aktualisiert, die der Oberfläche von Azure-Rollen entspricht. Dadurch werden zusätzliche Features verfügbar, und es kommt zu [Änderungen an der vorhandenen API](azure-ad-roles-features.md#api-changes). Welche Verfahren Sie in diesem Artikel während der Einführung der neuen Version befolgen, hängt von Ihrer aktuellen Version von Privileged Identity Management ab. Führen Sie die Schritte in diesem Abschnitt aus, um Ihre Version von Privileged Identity Management zu ermitteln. Nachdem Sie Ihre Version von Privileged Identity Management kennen, können Sie die Verfahren in diesem Artikel auswählen, die dieser Version entsprechen.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
-1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) an.
+1. Öffnen Sie **Azure AD Privileged Identity Management** . Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version** .
 
     [![Wählen Sie „Azure AD“ > „Privileged Identity Management“ aus.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -46,7 +46,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 
 1. Wählen Sie **Anforderungen genehmigen** aus.
 
@@ -96,11 +96,11 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 
-1. Klicken Sie auf **Azure AD-Rollen**.
+1. Klicken Sie auf **Azure AD-Rollen** .
 
-1. Klicken Sie auf **Anforderungen genehmigen**.
+1. Klicken Sie auf **Anforderungen genehmigen** .
 
     ![Azure AD-Rollen – Anforderungen genehmigen](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
@@ -108,7 +108,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 ## <a name="approve-requests"></a>Genehmigen von Anforderungen
 
-1. Wählen Sie die Anforderungen aus, die Sie genehmigen möchten, und klicken Sie dann auf **Genehmigen**, um den Bereich „Ausgewählte Anforderungen genehmigen“ zu öffnen.
+1. Wählen Sie die Anforderungen aus, die Sie genehmigen möchten, und klicken Sie dann auf **Genehmigen** , um den Bereich „Ausgewählte Anforderungen genehmigen“ zu öffnen.
 
     ![Liste „Anforderungen genehmigen“ mit hervorgehobener Option „Genehmigen“](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
@@ -116,7 +116,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
     ![Bereich zum Genehmigen ausgewählter Anforderungen mit einem Genehmigungsgrund](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Klicken Sie auf **Approve**.
+1. Klicken Sie auf **Approve** .
 
     Das Statussymbol wird mit Ihrer Genehmigung aktualisiert.
 
@@ -124,7 +124,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 ## <a name="deny-requests"></a>Ablehnen von Anforderungen
 
-1. Wählen Sie die Anforderungen aus, die Sie ablehnen möchten, und klicken Sie dann auf **Ablehnen**, um den Bereich „Ausgewählte Anforderungen ablehnen“ zu öffnen.
+1. Wählen Sie die Anforderungen aus, die Sie ablehnen möchten, und klicken Sie dann auf **Ablehnen** , um den Bereich „Ausgewählte Anforderungen ablehnen“ zu öffnen.
 
     ![Liste „Anforderungen genehmigen“ mit hervorgehobener Option „Ablehnen“](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
