@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076673"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165484"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurieren der automatischen Skalierung für einen Clouddienst im Portal
 
@@ -34,7 +34,7 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 
 * Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
-* Die automatische Skalierung erfolgt nur, wenn der Status für alle Rollen **Bereit** lautet.  
+* Die automatische Skalierung erfolgt nur, wenn der Status für alle Rollen **Bereit** lautet.  
 
 
 ## <a name="where-scale-is-located"></a>Aufrufen der Funktion für die Skalierung
@@ -53,13 +53,13 @@ Sie können die Skalierungseinstellungen für eine Rolle **manuell** oder **auto
 
 Legen Sie die Option **Skalieren nach** auf **Zeitplan und Leistungsregeln** fest.
 
-![Clouddienst-Skalierungseinstellungen mit Profil und Regel](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![Screenshot: Option „Zeitplan und Leistungsregeln“](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Ein vorhandenes Profil.
 2. Fügen Sie eine Regel für das übergeordnete Profil hinzu.
 3. Fügen Sie ein weiteres Profil hinzu.
 
-Wählen Sie **Profil hinzufügen**aus. Das Profil bestimmt, welchen Modus Sie für die Skalierung verwenden möchten: **immer**, **Wiederholung**, **festes Datum**.
+Wählen Sie **Profil hinzufügen** aus. Das Profil bestimmt, welchen Modus Sie für die Skalierung verwenden möchten: **immer** , **Wiederholung** , **festes Datum** .
 
 Nachdem Sie das Profil und die Regeln konfiguriert haben, wählen Sie oben das Symbol **Speichern** aus.
 

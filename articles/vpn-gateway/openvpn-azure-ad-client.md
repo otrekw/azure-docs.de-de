@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 10/15/2020
+ms.author: alzam
+ms.openlocfilehash: 09d39acc867124acfd5c3c38d5c26053218972e7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819756"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109101"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-Authentifizierung: Konfigurieren eines VPN-Clients für P2S-OpenVPN-Protokollverbindungen
 
@@ -30,7 +30,7 @@ Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um
 
 1. Wechseln Sie zu „Start“, und wählen Sie dann „Einstellungen“ > „Datenschutz“ > „Hintergrund-Apps“ aus.
 2. Stellen Sie sicher, dass unter „Hintergrund-Apps“ die Option **Apps die Ausführung im Hintergrund gestatten** aktiviert ist.
-3. Aktivieren Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellung für „Azure-VPN-Client“ (**Ein**).
+3. Aktivieren Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellung für „Azure-VPN-Client“ ( **Ein** ).
 
   ![Berechtigung (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -62,7 +62,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>So importieren Sie ein Clientprofil
 
-1. Wählen Sie auf der Seite **Importieren**aus.
+1. Wählen Sie auf der Seite **Importieren** aus.
 
     ![Screenshot mit ausgewählter Schaltfläche „Hinzufügen“ und hervorgehobener „Importieren“-Aktion unten links im Fenster](./media/openvpn-azure-ad-client/import/import1.jpg)
 
@@ -94,7 +94,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Erstellen einer Verbindung
 
-1. Wählen Sie auf der Seite **+** aus und klicken Sie dann auf **+ Hinzufügen**.
+1. Wählen Sie auf der Seite **+** aus und klicken Sie dann auf **+ Hinzufügen** .
 
     ![Screenshot mit ausgewählter Schaltfläche „Hinzufügen“](./media/openvpn-azure-ad-client/create/create1.jpg)
 
@@ -126,7 +126,7 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 
     ![Screenshot des Dialogfelds „Wollten Sie die App wechseln?“ mit ausgewählter Schaltfläche „Ja“](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
-3. Vergewissern Sie sich, dass die Verbindung, die Sie festlegen möchten, noch nicht hergestellt ist, markieren Sie dann das Profil und aktivieren Sie das Kontrollkästchen **Automatisch verbinden**.
+3. Vergewissern Sie sich, dass die Verbindung, die Sie festlegen möchten, noch nicht hergestellt ist, markieren Sie dann das Profil und aktivieren Sie das Kontrollkästchen **Automatisch verbinden** .
 
     ![Screenshot des Fensters „Einstellungen“ mit aktiviertem Kontrollkästchen „Automatisch verbinden“](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
@@ -136,7 +136,7 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Diagnose von Verbindungsproblemen
 
-1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose**-Tool verwenden. Wählen Sie die **...** neben der VPN-Verbindung aus, die Sie diagnostizieren möchten, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
+1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose** -Tool verwenden. Wählen Sie die **...** neben der VPN-Verbindung aus, die Sie diagnostizieren möchten, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
 
     ![Screenshot, in dem die Auslassungspunkte und „Diagnose“ ausgewählt sind](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
@@ -153,6 +153,10 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
     ![Diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+
+### <a name="is-the-azure-vpn-client-supported-with-windows-fips-mode"></a>Wird der Azure VPN Client im Windows-FIPS-Modus unterstützt?
+
+Ja, mit dem Hotfix [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-kb4577063).
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Wie füge ich DNS-Suffixe zum VPN-Client hinzu?
 

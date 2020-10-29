@@ -4,12 +4,12 @@ description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung m
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993328"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173579"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -17,7 +17,7 @@ Azure Backup und Azure Database Services wurden zusammengeführt, um eine Sicher
 
 Neben der Langzeitaufbewahrung bietet die Lösung auch viele weitere Funktionen, wie die folgenden:
 
-- RBAC-basierter Zugriff auf die Datenbank über die Authentifizierung durch Azure Active Directory bzw. die verwaltete Dienstidentität (Managed Service Identity, MSI).
+- rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) für die Datenbank mithilfe von Azure Active Directory und der MSI-Authentifizierung (verwaltete Dienstidentität)
 - Kundenseitig gesteuerte, geplante und bedarfsorientierte Sicherungen der einzelnen Datenbanken.
 - Wiederherstellungen auf Datenbankebene auf einem beliebigen Postgres-Server oder direkt im Blobspeicher.
 - Langzeitaufbewahrung.
@@ -45,7 +45,7 @@ Sie können diese Lösung unabhängig oder zusätzlich zur nativen Sicherungslö
 
 ## <a name="backup-process"></a>Sicherungsprozess
 
-1. Diese Lösung verwendet **pg_dump**, um Sicherungen Ihrer Azure PostgreSQL-Datenbanken zu erstellen.
+1. Diese Lösung verwendet **pg_dump** , um Sicherungen Ihrer Azure PostgreSQL-Datenbanken zu erstellen.
 
 2. Nachdem Sie die zu sichernden Azure PostgreSQL-Datenbanken angegeben haben, überprüft der Dienst, ob er über die richtigen Berechtigungen und Zugriffsrechte verfügt, um den Sicherungsvorgang auf dem Server und der Datenbank durchzuführen.
 
@@ -71,7 +71,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
 1. Es gibt zwei Möglichkeiten, um den Prozess zu starten:
 
-    1. Wechseln Sie zu [Backup Center](backup-center-overview.md) -> **Übersicht** -> **Sicherung**.
+    1. Wechseln Sie zu [Backup Center](backup-center-overview.md) -> **Übersicht** -> **Sicherung** .
 
         ![Wechseln zu „Backup Center“](./media/backup-azure-database-postgresql/backup-center.png)
 
@@ -89,7 +89,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
     ![Auswählen des Sicherungstresors unter „Sicherung konfigurieren“](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. Wählen Sie eine **Sicherungsrichtlinie**aus, oder erstellen Sie eine.
+1. Wählen Sie eine **Sicherungsrichtlinie** aus, oder erstellen Sie eine.
 
     ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-database-postgresql/backup-policy.png)
 
@@ -107,7 +107,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
     ![Zu behebende Validierungsfehler](./media/backup-azure-database-postgresql/validation-errors.png)
 
-1. Bestätigen Sie alle Details unter **Überprüfen und konfigurieren**, und wählen Sie **Sicherung konfigurieren** aus, um den Vorgang zu übermitteln.
+1. Bestätigen Sie alle Details unter **Überprüfen und konfigurieren** , und wählen Sie **Sicherung konfigurieren** aus, um den Vorgang zu übermitteln.
 
     ![Bestätigen von Details unter „Überprüfen und Konfigurieren“](./media/backup-azure-database-postgresql/review-and-configure.png)
 
@@ -121,7 +121,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
 ## <a name="create-backup-policy"></a>Erstellen der Sicherungsrichtlinie
 
-1. Wechseln Sie zu **Backup Center** -> **Sicherungsrichtlinien** -> **Hinzufügen**. Alternativ können Sie direkt zu **Sicherungstresor** -> **Sicherungsrichtlinie** -> **Hinzufügen** wechseln.
+1. Wechseln Sie zu **Backup Center** -> **Sicherungsrichtlinien** -> **Hinzufügen** . Alternativ können Sie direkt zu **Sicherungstresor** -> **Sicherungsrichtlinie** -> **Hinzufügen** wechseln.
 
     ![Hinzufügen einer Sicherungsrichtlinie](./media/backup-azure-database-postgresql/add-backup-policy.png)
 
@@ -137,8 +137,8 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
 1. Sie können Ihre Sicherungen in einem der beiden Datenspeicher (oder in einer der beiden Ebenen) speichern: **Sicherungsdatenspeicher** (heiße Ebene) oder **Archivdatenspeicher** (in der Vorschau). Sie können zwischen **zwei Tiering-Optionen** wählen, um festzulegen, wann die Sicherungen über die beiden Datenspeicher verteilt werden:
 
-    - Kopieren Sie **sofort**, wenn Sie gleichzeitig eine Sicherungskopie für sowohl Sicherungs- als auch Archivdatenspeicher haben möchten.
-    - Wählen Sie die Option zum Verschieben nach **Ablauf**, wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.
+    - Kopieren Sie **sofort** , wenn Sie gleichzeitig eine Sicherungskopie für sowohl Sicherungs- als auch Archivdatenspeicher haben möchten.
+    - Wählen Sie die Option zum Verschieben nach **Ablauf** , wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.
 
 1. Die **Standardaufbewahrungsregel** wird angewandt, wenn keine andere Aufbewahrungsregel vorhanden ist. Sie hat einen Standardwert von drei Monaten.
 
@@ -148,7 +148,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
     ![Bearbeiten der Aufbewahrungsdauer](./media/backup-azure-database-postgresql/edit-retention.png)
 
 >[!NOTE]
->Die Aufbewahrungsregeln werden in einer vordefinierten Reihenfolge ausgewertet. Die oberste Priorität hat die Regel **Jährlich**, gefolgt von der Regel **Monatlich** und dann von der Regel **Wöchentlich**. Die Standardeinstellungen für die Aufbewahrung werden angewendet, wenn keine anderen Regeln zutreffen. Beispielsweise kann derselbe Wiederherstellungspunkt sowohl die erste erfolgreiche Sicherung, die jede Woche erstellt wird, als auch die erste erfolgreiche Sicherung, die jeden Monat erstellt wird, sein. Da die Priorität der monatlichen Regel jedoch höher als die der wöchentlichen Regel ist, gilt die Aufbewahrungsregel, die der ersten erfolgreichen, monatlich erstellten Sicherung entspricht.
+>Die Aufbewahrungsregeln werden in einer vordefinierten Reihenfolge ausgewertet. Die oberste Priorität hat die Regel **Jährlich** , gefolgt von der Regel **Monatlich** und dann von der Regel **Wöchentlich** . Die Standardeinstellungen für die Aufbewahrung werden angewendet, wenn keine anderen Regeln zutreffen. Beispielsweise kann derselbe Wiederherstellungspunkt sowohl die erste erfolgreiche Sicherung, die jede Woche erstellt wird, als auch die erste erfolgreiche Sicherung, die jeden Monat erstellt wird, sein. Da die Priorität der monatlichen Regel jedoch höher als die der wöchentlichen Regel ist, gilt die Aufbewahrungsregel, die der ersten erfolgreichen, monatlich erstellten Sicherung entspricht.
 
 ## <a name="restore"></a>Restore
 
@@ -157,7 +157,7 @@ Sie können eine Datenbank auf jedem beliebigen Azure PostgreSQL-Server innerhal
 Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
 1. Es gibt zwei Möglichkeiten, den Wiederherstellungsvorgang zu starten:
-    1. Wechseln Sie zu [Backup Center](backup-center-overview.md) -> **Übersicht** -> **Wiederherstellen**.
+    1. Wechseln Sie zu [Backup Center](backup-center-overview.md) -> **Übersicht** -> **Wiederherstellen** .
 
     ![Auswählen von „Wiederherstellen“ in Backup Center](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
@@ -173,15 +173,15 @@ Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
     ![Auswählen von „Wiederherstellen“](./media/backup-azure-database-postgresql/select-restore.png)
 
-1. Klicken Sie in der Liste der vollständigen Sicherungen, die für die ausgewählte Sicherungsinstanz verfügbar sind, auf **Wiederherstellungspunkt auswählen**. Standardmäßig ist der letzte Wiederherstellungspunkt ausgewählt.
+1. Klicken Sie in der Liste der vollständigen Sicherungen, die für die ausgewählte Sicherungsinstanz verfügbar sind, auf **Wiederherstellungspunkt auswählen** . Standardmäßig ist der letzte Wiederherstellungspunkt ausgewählt.
 
     ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-database-postgresql/select-recovery-point.png)
 
     ![Liste der Wiederherstellungspunkte](./media/backup-azure-database-postgresql/list-recovery-points.png)
 
-1. Geben Sie die **Wiederherstellungsparameter** ein. Nun können Sie sich für eine von zwei Wegen für die Wiederherstellung entscheiden: **Wiederherstellen als Datenbank** und **Wiederherstellen als Dateien**.
+1. Geben Sie die **Wiederherstellungsparameter** ein. Nun können Sie sich für eine von zwei Wegen für die Wiederherstellung entscheiden: **Wiederherstellen als Datenbank** und **Wiederherstellen als Dateien** .
 
-1. **Wiederherstellen als Datenbank**:  Stellen Sie die Sicherungsdaten wieder her, um eine neue Datenbank auf dem PostgreSQL-Zielserver zu erstellen.
+1. **Wiederherstellen als Datenbank** :  Stellen Sie die Sicherungsdaten wieder her, um eine neue Datenbank auf dem PostgreSQL-Zielserver zu erstellen.
 
     - Der Zielserver darf mit dem Quellserver identisch sein. Das Überschreiben der ursprünglichen Datenbank wird jedoch nicht unterstützt.
     - Sie können aus dem Server aus allen Abonnements, aber in derselben Region wie der Tresor auswählen.
@@ -189,7 +189,7 @@ Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
     ![Wiederherstellen als Datenbank](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **Wiederherstellen als Dateien**: Sichern Sie die Sicherungsdateien im Zielspeicherkonto (Blobs).
+1. **Wiederherstellen als Dateien** : Sichern Sie die Sicherungsdateien im Zielspeicherkonto (Blobs).
 
     - Sie können aus den Speicherkonten aus allen Abonnements, aber in derselben Region wie der Tresor auswählen.
     - Wählen Sie den Zielcontainer in der Liste der Container aus, die für das ausgewählte Speicherkonto gefiltert wurde.
@@ -211,7 +211,7 @@ Dies sind die Verwaltungsvorgänge, die Sie für die **Sicherungsinstanzen** aus
 
 ### <a name="on-demand-backup"></a>Bedarfsgesteuerte Sicherung
 
-Um eine Sicherung ohne den in der Richtlinie angegebenen Zeitplan zu starten, wechseln Sie zu **Sicherungsinstanzen** -> **Jetzt sichern**.
+Um eine Sicherung ohne den in der Richtlinie angegebenen Zeitplan zu starten, wechseln Sie zu **Sicherungsinstanzen** -> **Jetzt sichern** .
 Wählen Sie Aufbewahrungsregeln in der Liste aus, die in der zugehörigen Sicherungsrichtlinie definiert wurden.
 
 ![Auslösen von „Jetzt sichern“](./media/backup-azure-database-postgresql/backup-now.png)
@@ -244,7 +244,7 @@ Dieser Abschnitt enthält Informationen zur Problembehandlung beim Sichern von A
 
 Erteilen Sie der Sicherungstresor-MSI **Lesezugriff** auf dem PG-Server, den Sie sichern oder wiederherstellen möchten:
 
-Zum Herstellen einer sicheren Verbindung mit der PostgreSQL-Datenbank verwendet Azure Backup das Authentifizierungsmodell [Verwaltete Dienstidentität (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Dies bedeutet, dass der Sicherungstresor nur auf die Ressourcen zugreifen kann, denen der Benutzer explizit eine Berechtigung erteilt hat.
+Zum Herstellen einer sicheren Verbindung mit der PostgreSQL-Datenbank verwendet Azure Backup das Authentifizierungsmodell [Verwaltete Dienstidentität (MSI)](../active-directory/managed-identities-azure-resources/overview.md). Dies bedeutet, dass der Sicherungstresor nur auf die Ressourcen zugreifen kann, denen der Benutzer explizit eine Berechtigung erteilt hat.
 
 Eine System-MSI wird dem Tresor zum Zeitpunkt der Erstellung automatisch zugewiesen. Sie müssen dieser Tresor-MSI den Zugriff auf die PostgreSQL-Server einräumen, von denen Sie Datenbanken sichern möchten.
 
@@ -261,12 +261,12 @@ Schritte:
 1. Geben Sie im rechten Kontextbereich, der geöffnet wird, Folgendes ein:<br>
 
     **Rolle:** Leser<br>
-    **Zugriff zuweisen zu**: Wählen Sie **Sicherungstresor** aus.<br>
+    **Zugriff zuweisen zu** : Wählen Sie **Sicherungstresor** aus.<br>
     Wenn Sie in der Dropdownliste die Option **Sicherungstresor** nicht finden können, wählen Sie die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.<br>
 
     ![Rolle auswählen](./media/backup-azure-database-postgresql/select-role.png)
 
-    **Auswählen**: Geben Sie den Namen des Sicherungstresors ein, in dem Sie diesen Server und dessen Datenbanken sichern möchten.<br>
+    **Auswählen** : Geben Sie den Namen des Sicherungstresors ein, in dem Sie diesen Server und dessen Datenbanken sichern möchten.<br>
 
     ![Eingeben des Namens des Sicherungstresors](./media/backup-azure-database-postgresql/enter-backup-vault-name.png)
 
@@ -303,12 +303,12 @@ Richten Sie die Netzwerkleitung ein, indem Sie in der Serveransicht das Flag **Z
 #### <a name="permission-to-restore-to-a-storage-account-container-when-restoring-as-files"></a>Berechtigung zur Wiederherstellung in einem Speicherkontocontainer bei der Wiederherstellung als Dateien
 
 1. Erteilen Sie der Sicherungstresor-MSI die Berechtigung für den Zugriff auf die Speicherkontocontainer über das Azure-Portal.
-    1. Wechseln Sie zu **Speicherkonto** -> **Zugriffssteuerung** -> **Rollenzuweisung hinzufügen**.
+    1. Wechseln Sie zu **Speicherkonto** -> **Zugriffssteuerung** -> **Rollenzuweisung hinzufügen** .
     1. Weisen Sie Ihrer Sicherungstresor-MSI zunächst die Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
     ![Zuweisen der Rolle „Mitwirkender an Storage-Blobdaten“](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. Außerdem können Sie mit dem Azure CLI-Befehl [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment) differenzierte Berechtigungen für den bestimmten Container erteilen, auf dem Sie die Wiederherstellung durchführen.
+1. Außerdem können Sie mit dem Azure CLI-Befehl [az role assignment create](/cli/azure/role/assignment) differenzierte Berechtigungen für den bestimmten Container erteilen, auf dem Sie die Wiederherstellung durchführen.
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

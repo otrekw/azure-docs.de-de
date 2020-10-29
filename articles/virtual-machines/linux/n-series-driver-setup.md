@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284879"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168476"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -156,7 +156,7 @@ RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (etwa NC24
 
 Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Marketplace bereit, das RDMA-Konnektivität für VMs der N-Serie unterstützt:
   
-* **Ubuntu 16.04 LTS**: Konfigurieren Sie RDMA-Treiber auf der VM, und registrieren Sie sich bei Intel, um Intel MPI herunterzuladen:
+* **Ubuntu 16.04 LTS** : Konfigurieren Sie RDMA-Treiber auf der VM, und registrieren Sie sich bei Intel, um Intel MPI herunterzuladen:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
@@ -208,7 +208,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja**.
+6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja** .
 
 7. Nachdem die Installation abgeschlossen ist, kopieren Sie „/etc/nvidia/gridd.conf.template“ in eine neue Datei „gridd.conf at location /etc/nvidia/“.
 
@@ -281,7 +281,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja**.
+6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja** .
 
 7. Nachdem die Installation abgeschlossen ist, kopieren Sie „/etc/nvidia/gridd.conf.template“ in eine neue Datei „gridd.conf at location /etc/nvidia/“.
   
@@ -310,7 +310,7 @@ Stellen Sie zum Abfragen des GPU-Gerätestatus eine SSH-Verbindung mit der VM he
 
 Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden angezeigt. Beachten Sie, dass eine **GPU-Auslastung** von 0 % angezeigt wird, sofern gerade keine GPU-Workload auf dem virtuellen Computer ausgeführt wird. Die Treiberversion und die GPU-Informationen weichen möglicherweise von den angezeigten Informationen ab.
 
-![NVIDIA-Gerätestatus](./media/n-series-driver-setup/smi-nv.png)
+![Screenshot: Ausgabe, wenn der GPU-Gerätestatus abgefragt wird](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11-Server

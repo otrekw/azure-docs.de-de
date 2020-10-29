@@ -9,12 +9,12 @@ ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324407"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282373"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 
@@ -320,11 +320,11 @@ Die Details zum Indizierungsfortschritt zeigen den Fortschritt des aktuellen Ind
 
 ## <a name="background-index-updates"></a>Indexaktualisierungen im Hintergrund
 
-Unabhängig von dem für die **Hintergrund**-Indexeigenschaft angegebenen Wert werden Indexaktualisierungen immer im Hintergrund durchgeführt. Da Indexaktualisierungen Anforderungseinheiten (Request Units, RUs) mit einer niedrigeren Priorität als andere Datenbankvorgänge nutzen, führen Indexänderungen nicht zu Ausfallzeiten bei Schreib-, Update- oder Löschvorgängen.
+Unabhängig von dem für die **Hintergrund** -Indexeigenschaft angegebenen Wert werden Indexaktualisierungen immer im Hintergrund durchgeführt. Da Indexaktualisierungen Anforderungseinheiten (Request Units, RUs) mit einer niedrigeren Priorität als andere Datenbankvorgänge nutzen, führen Indexänderungen nicht zu Ausfallzeiten bei Schreib-, Update- oder Löschvorgängen.
 
 Das Hinzufügen eines neuen Indexes hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue Indizes erst dann, wenn die Indextransformation abgeschlossen ist. Während der Indextransformation werden von der Abfrage-Engine weiterhin vorhandene Indizes verwendet, sodass Sie während der Indextransformation eine ähnliche Leseleistung beobachten werden wie vor dem Einleiten der Indexänderung. Beim Hinzufügen neuer Indizes besteht auch kein Risiko, unvollständige oder inkonsistente Abfrageergebnisse zu erhalten.
 
-Wenn Indizes entfernt und sofort Abfragen ausgeführt werden, die nach den gelöschten Indizes filtern, können die Ergebnisse inkonsistent und unvollständig sein, solange die Indextransformation nicht abgeschlossen ist. Wenn Sie Indizes entfernen, gewährleistet die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse, falls Abfragen nach diesen soeben entfernten Indizes filtern. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen dafür auszuführen, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
+Wenn Indizes entfernt und sofort Abfragen ausgeführt werden, die nach den gelöschten Indizes filtern, können die Ergebnisse inkonsistent und unvollständig sein, solange die Indextransformation nicht abgeschlossen ist. Wenn Sie Indizes entfernen, bietet die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse, falls Abfragen nach diesen soeben entfernten Indizes filtern. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen dafür auszuführen, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
 
 > [!NOTE]
 > Sie können [den Indizierungsfortschritt nachverfolgen](#track-index-progress).

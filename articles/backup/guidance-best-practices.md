@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985518"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092306"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -32,29 +32,29 @@ Es ist zwar einfach, mit dem Schutz von Infrastruktur und Anwendungen auf Azure 
 
 Azure Backup ermöglicht den Datenschutz für verschiedene Workloads (lokale und Cloudworkloads). Es handelt sich um einen sicheren und zuverlässigen integrierten Datenschutzmechanismus in Azure. Azure Backup kann den Schutz nahtlos über mehrere Workloads hinweg skalieren, ohne dass Ihnen Verwaltungsaufwand entsteht. Es gibt auch mehrere Automatisierungskanäle, um dies zu ermöglichen (über PowerShell, CLI, Azure Resource Manager-Vorlagen und REST-APIs).
 
-* **Skalierbare, dauerhafte und sichere Speicher**: Azure Backup verwendet zuverlässigen BLOB-Speicher mit integrierten Sicherheits- und Hochverfügbarkeitsfeatures. Sie können LRS-, GRS- oder RA-GRS-Speicher für Ihre Sicherungsdaten wählen.  
+* **Skalierbare, dauerhafte und sichere Speicher** : Azure Backup verwendet zuverlässigen BLOB-Speicher mit integrierten Sicherheits- und Hochverfügbarkeitsfeatures. Sie können LRS-, GRS- oder RA-GRS-Speicher für Ihre Sicherungsdaten wählen.  
 
-* **Integration der nativen Workload**: Azure Backup bietet native Integration mit Azure Workloads (VMs, SAP HANA, SQL auf virtuellen Azure-Computern und sogar Azure Files), ohne dass Sie Automatisierung oder Infrastruktur verwalten müssen, um Agents bereitzustellen, neue Skripts zu schreiben oder Speicher bereitzustellen.
+* **Integration der nativen Workload** : Azure Backup bietet native Integration mit Azure Workloads (VMs, SAP HANA, SQL auf virtuellen Azure-Computern und sogar Azure Files), ohne dass Sie Automatisierung oder Infrastruktur verwalten müssen, um Agents bereitzustellen, neue Skripts zu schreiben oder Speicher bereitzustellen.
 
 ### <a name="data-plane"></a>Datenebene
 
-* **Automatisierte Speicherverwaltung**: Azure Backup automatisiert die Bereitstellung und Verwaltung von Speicherkonten für die Sicherungsdaten, um sicherzustellen, dass sie beim Anwachsen der Sicherungsdaten skaliert werden.
+* **Automatisierte Speicherverwaltung** : Azure Backup automatisiert die Bereitstellung und Verwaltung von Speicherkonten für die Sicherungsdaten, um sicherzustellen, dass sie beim Anwachsen der Sicherungsdaten skaliert werden.
 
-* **Schutz vor böswilligem Löschen**: Schützen Sie sich durch vorläufiges Löschen von Sicherungen vor versehentlichen und böswilligen Versuchen, Ihre Sicherungen zu löschen. Die gelöschten Sicherungsdaten werden 14 Tage lang kostenlos aufbewahrt und können aus diesem Zustand wiederhergestellt werden.
+* **Schutz vor böswilligem Löschen** : Schützen Sie sich durch vorläufiges Löschen von Sicherungen vor versehentlichen und böswilligen Versuchen, Ihre Sicherungen zu löschen. Die gelöschten Sicherungsdaten werden 14 Tage lang kostenlos aufbewahrt und können aus diesem Zustand wiederhergestellt werden.
 
-* **Sichere verschlüsselte Sicherungen**: Azure Backup stellt sicher, dass Ihre Sicherungsdaten auf sichere Weise gespeichert werden, und nutzt dabei die integrierten Sicherheitsfunktionen der Azure-Plattform wie RBAC und Verschlüsselung.
+* **Sichere verschlüsselte Sicherungen:** Azure Backup stellt sicher, dass Ihre Sicherungsdaten auf sichere Weise gespeichert werden, und nutzt dabei die integrierten Sicherheitsfunktionen der Azure-Plattform wie Azure RBAC und Verschlüsselung.
 
 * **Verwaltung des Sicherungsdaten-Lebenszyklus:** Azure Backup bereinigt ältere Sicherungsdaten automatisch gemäß den Aufbewahrungsrichtlinien. Sie können Ihre Daten auch aus dem operativen Speicher in den Tresorspeicher übertragen.
 
 ### <a name="management-plane"></a>Verwaltungsebene
 
-* **Zugriffssteuerung**: Tresore (Recovery Services- und Sicherungstresore) stellen die Verwaltungsfunktionen bereit, und es kann über Azure-Portal, Backup Center, Tresordashboards, SDK, Befehlszeilenschnittstelle und sogar REST-APIs darauf zugegriffen werden. Es handelt sich außerdem um eine RBAC-Grenze, die Ihnen die Möglichkeit bietet, den Zugriff auf Sicherungen auf autorisierte Sicherungsadministratoren zu beschränken.
+* **Zugriffssteuerung** : Tresore (Recovery Services- und Sicherungstresore) stellen die Verwaltungsfunktionen bereit, und es kann über Azure-Portal, Backup Center, Tresordashboards, SDK, Befehlszeilenschnittstelle und sogar REST-APIs darauf zugegriffen werden. Es handelt sich außerdem um eine Azure RBAC-Grenze, die Ihnen die Möglichkeit bietet, den Zugriff auf Sicherungen auf autorisierte Sicherungsadministratoren zu beschränken.
 
-* **Richtlinienverwaltung**: Azure Backup-Richtlinien innerhalb jedes Tresors definieren, wann die Sicherungen ausgelöst und wie lange sie aufbewahrt werden müssen. Sie können diese Richtlinien auch verwalten und auf mehrere Elemente anwenden.
+* **Richtlinienverwaltung** : Azure Backup-Richtlinien innerhalb jedes Tresors definieren, wann die Sicherungen ausgelöst und wie lange sie aufbewahrt werden müssen. Sie können diese Richtlinien auch verwalten und auf mehrere Elemente anwenden.
 
-* **Überwachung und Berichterstellung**: Azure Backup ist in Log Analytics integriert und bietet die Möglichkeit, Berichte auch über Workbooks einzusehen.
+* **Überwachung und Berichterstellung** : Azure Backup ist in Log Analytics integriert und bietet die Möglichkeit, Berichte auch über Workbooks einzusehen.
 
-* **Verwaltung von Momentaufnahmen**: Azure Backup erstellt Momentaufnahmen für einige native Azure-Workloads (VMs und Azure Files), verwaltet diese Momentaufnahmen und ermöglicht schnelle Wiederherstellungen aus ihnen. Diese Option verkürzt die Zeit zur Wiederherstellung Ihrer Daten auf dem Originalspeicher drastisch.
+* **Verwaltung von Momentaufnahmen** : Azure Backup erstellt Momentaufnahmen für einige native Azure-Workloads (VMs und Azure Files), verwaltet diese Momentaufnahmen und ermöglicht schnelle Wiederherstellungen aus ihnen. Diese Option verkürzt die Zeit zur Wiederherstellung Ihrer Daten auf dem Originalspeicher drastisch.
 
 ## <a name="vault-considerations"></a>Überlegungen zum Tresor
 
@@ -62,7 +62,7 @@ Azure Backup nutzt Tresore (Recovery Services- und Sicherungstresore) zum Orches
 
 ### <a name="align-to-subscription-design-strategy"></a>Ausrichten an der Abonnemententwurfsstrategie
 
-Da der Tresor auf ein Abonnement beschränkt ist, passen Sie den Tresorentwurf an die Strategie des Abonnemententwurfs an, z. B. die *Strategie der Anwendungskategorie*, bei der Abonnements auf der Grundlage bestimmter Anwendungen oder Dienste oder nach Anwendungsarchetypen getrennt werden. Weitere Informationen finden Sie in [diesem Artikel](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
+Da der Tresor auf ein Abonnement beschränkt ist, passen Sie den Tresorentwurf an die Strategie des Abonnemententwurfs an, z. B. die *Strategie der Anwendungskategorie* , bei der Abonnements auf der Grundlage bestimmter Anwendungen oder Dienste oder nach Anwendungsarchetypen getrennt werden. Weitere Informationen finden Sie in [diesem Artikel](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
 
 ### <a name="single-or-multiple-vault"></a>Einzelne oder mehrere Tresore
 
@@ -120,9 +120,9 @@ Berücksichtigen Sie beim Erstellen einer Sicherungsichtlinien die folgenden Ric
   * Bei einer Verkürzung der Aufbewahrung werden Wiederherstellungspunkte zum Löschen im Rahmen der nächsten Bereinigung markiert und dementsprechend gelöscht.
   * Die neuesten Aufbewahrungsregeln gelten für alle Aufbewahrungspunkte (mit Ausnahme von bedarfsgesteuerten Aufbewahrungspunkten). Wenn also der Aufbewahrungszeitraum verlängert wird (z. B. auf 100 Tage), dann werden beim Erstellen der Sicherung, gefolgt von einer Verkürzung des Aufbewahrungszeitraums (z. B. von 100 Tagen auf sieben Tage), alle Sicherungsdaten entsprechend des zuletzt angegebenen Aufbewahrungszeitraums (d. h. 7 Tage) aufbewahrt.
 
-* Azure Backup bietet Ihnen die Flexibilität, *den Schutz zu beenden und Ihre Sicherungen zu verwalten*:
-  * *Schutz beenden und Sicherungsdaten beibehalten*. Wenn Sie Ihre Datenquelle (VM, Anwendung) außer Betrieb nehmen oder einstellen, aber Daten zu Audit- oder Compliancezwecken aufbewahren müssen, können Sie diese Option verwenden, um alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Datenquelle zu beenden und die gesicherten Wiederherstellungspunkte beizubehalten. Anschließend können Sie den VM-Schutz wiederherstellen oder fortsetzen.
-  * *Schutz beenden und Sicherungsdaten löschen*. Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihres virtuellen Computers beendet und alle Wiederherstellungspunkte gelöscht. Sie können den virtuellen Computer nicht wiederherstellen und auch nicht die Option Sicherung fortsetzen verwenden.
+* Azure Backup bietet Ihnen die Flexibilität, *den Schutz zu beenden und Ihre Sicherungen zu verwalten* :
+  * *Schutz beenden und Sicherungsdaten beibehalten* . Wenn Sie Ihre Datenquelle (VM, Anwendung) außer Betrieb nehmen oder einstellen, aber Daten zu Audit- oder Compliancezwecken aufbewahren müssen, können Sie diese Option verwenden, um alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Datenquelle zu beenden und die gesicherten Wiederherstellungspunkte beizubehalten. Anschließend können Sie den VM-Schutz wiederherstellen oder fortsetzen.
+  * *Schutz beenden und Sicherungsdaten löschen* . Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihres virtuellen Computers beendet und alle Wiederherstellungspunkte gelöscht. Sie können den virtuellen Computer nicht wiederherstellen und auch nicht die Option Sicherung fortsetzen verwenden.
 
   * Wenn Sie den Schutz (einer Datenquelle, der mit „Daten beibehalten“ gestoppt wurde) wieder aufnehmen, gelten die Aufbewahrungsregeln. Abgelaufene Wiederherstellungspunkte werden (zum geplanten Zeitpunkt) entfernt.
 
@@ -174,11 +174,11 @@ Azure Backup erfordert das Verschieben von Daten Ihrer Workload in den Recovery 
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-* *Azure VM-Sicherung*: Die gesamte erforderliche Kommunikation und Datenübertragung zwischen Speicher und Azure Backup-Dienst erfolgt im Azure-Netzwerk, ohne dass auf Ihr virtuelles Netzwerk zugegriffen werden muss. Daher müssen Sie bei der Sicherung von virtuellen Azure-Computern, die sich in geschützten Netzwerken befinden, keinen Zugriff auf IP-Adressen oder FQDNs gewähren.
+* *Azure VM-Sicherung* : Die gesamte erforderliche Kommunikation und Datenübertragung zwischen Speicher und Azure Backup-Dienst erfolgt im Azure-Netzwerk, ohne dass auf Ihr virtuelles Netzwerk zugegriffen werden muss. Daher müssen Sie bei der Sicherung von virtuellen Azure-Computern, die sich in geschützten Netzwerken befinden, keinen Zugriff auf IP-Adressen oder FQDNs gewähren.
 
-* *SAP HANA-Datenbanken auf einem virtuellen Azure-Computer, SQL Server-Datenbanken auf einem virtuellen Azure-Computer*: Benötigen eine Verbindung zum Azure Backup-Dienst, zu Azure Storage und zu Azure Active Directory. Dies kann durch die Verwendung privater Endpunkte oder durch die Gewährung des Zugriffs auf die erforderlichen öffentlichen IP-Adressen oder FQDNs erreicht werden. Wenn keine ordnungsgemäße Verbindung zu den erforderlichen Azure-Diensten zugelassen wird, kann dies zu Fehlern bei Operationen wie der Datenbankermittlung, der Konfiguration von Sicherungen, der Durchführung von Sicherungen und der Wiederherstellung von Daten führen. Eine vollständige Anleitung bei Verwendung von NSG-Tags, Azure-Firewall und HTTP-Proxy im Netzwerk finden Sie in diesen Artikeln: [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) und [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity).
+* *SAP HANA-Datenbanken auf einem virtuellen Azure-Computer, SQL Server-Datenbanken auf einem virtuellen Azure-Computer* : Benötigen eine Verbindung zum Azure Backup-Dienst, zu Azure Storage und zu Azure Active Directory. Dies kann durch die Verwendung privater Endpunkte oder durch die Gewährung des Zugriffs auf die erforderlichen öffentlichen IP-Adressen oder FQDNs erreicht werden. Wenn keine ordnungsgemäße Verbindung zu den erforderlichen Azure-Diensten zugelassen wird, kann dies zu Fehlern bei Operationen wie der Datenbankermittlung, der Konfiguration von Sicherungen, der Durchführung von Sicherungen und der Wiederherstellung von Daten führen. Eine vollständige Anleitung bei Verwendung von NSG-Tags, Azure-Firewall und HTTP-Proxy im Netzwerk finden Sie in diesen Artikeln: [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) und [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity).
 
-* *Hybrid*: der MARS-Agent (Microsoft Azure Recovery Services) benötigt Netzwerkzugriff für alle wichtigen Vorgänge wie Installation, Konfiguration, Sicherung und Wiederherstellung. Der MARS-Agent kann eine Verbindung zum Azure Backup-Dienst über [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) herstellen, indem er öffentliches Peering (verfügbar für alte Leitungen) und Microsoft-Peering, über [private Endpunkte](install-mars-agent.md#private-endpoints) bzw. über [Proxy/Firewall mit entsprechenden Zugriffssteuerungen](install-mars-agent.md#verify-internet-access) nutzt.
+* *Hybrid* : der MARS-Agent (Microsoft Azure Recovery Services) benötigt Netzwerkzugriff für alle wichtigen Vorgänge wie Installation, Konfiguration, Sicherung und Wiederherstellung. Der MARS-Agent kann eine Verbindung zum Azure Backup-Dienst über [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) herstellen, indem er öffentliches Peering (verfügbar für alte Leitungen) und Microsoft-Peering, über [private Endpunkte](install-mars-agent.md#private-endpoints) bzw. über [Proxy/Firewall mit entsprechenden Zugriffssteuerungen](install-mars-agent.md#verify-internet-access) nutzt.
 
 ### <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -232,13 +232,13 @@ Als Sicherungsbenutzer oder -administrator sollten Sie alle Sicherungslösungen 
   * Das Dashboard bietet operative Aktivitäten für die letzten sieben Tage (maximal). Wenn Sie diese Daten aufbewahren müssen, können Sie sie als Excel-Datei exportieren und aufbewahren.
   * Als Azure Lighthouse-Benutzer können Sie Informationen über mehrere Mandanten hinweg anzeigen und so eine grenzenlose Überwachung ermöglichen.
 
-* Wenn Sie die operative Aktivitäten langfristig aufbewahren und anzeigen müssen, verwenden Sie **Berichte**. Eine häufige Anforderung an Sicherungsadministratoren besteht darin, basierend auf Daten, die sich über einen längeren Zeitraum erstrecken, Einblicke in Sicherungen zu erhalten. Anwendungsfälle für eine solche Lösung sind:
+* Wenn Sie die operative Aktivitäten langfristig aufbewahren und anzeigen müssen, verwenden Sie **Berichte** . Eine häufige Anforderung an Sicherungsadministratoren besteht darin, basierend auf Daten, die sich über einen längeren Zeitraum erstrecken, Einblicke in Sicherungen zu erhalten. Anwendungsfälle für eine solche Lösung sind:
   * Zuordnung und Vorhersagen des verbrauchten Cloudspeichers.
   * Überwachung von Sicherungen und Wiederherstellungen.
   * Identifizierung wichtiger Trends auf verschiedenen Granularitätsebenen.
 
 * Außerdem:
-  * Sie können Daten (z. B. Aufträge, Richtlinien usw.) an den **Log Analytics**-Arbeitsbereich senden. Auf diese Weise können Sie mit den Features von Azure Monitor Logs die Korrelation der Daten mit anderen von Azure Monitor gesammelten Überwachungsdaten ermöglichen, Protokolleinträge von mehreren Azure-Abonnements und -Mandanten an einem Ort für die gemeinsame Analyse konsolidieren, Protokollabfragen verwenden, um komplexe Analysen durchzuführen, und tiefe Einblicke in die Protokolleinträge gewinnen. [Hier erhalten Sie weitere Informationen](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
+  * Sie können Daten (z. B. Aufträge, Richtlinien usw.) an den **Log Analytics** -Arbeitsbereich senden. Auf diese Weise können Sie mit den Features von Azure Monitor Logs die Korrelation der Daten mit anderen von Azure Monitor gesammelten Überwachungsdaten ermöglichen, Protokolleinträge von mehreren Azure-Abonnements und -Mandanten an einem Ort für die gemeinsame Analyse konsolidieren, Protokollabfragen verwenden, um komplexe Analysen durchzuführen, und tiefe Einblicke in die Protokolleinträge gewinnen. [Hier erhalten Sie weitere Informationen](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
   * Sie können Daten an Event Hub senden, um Einträge z. B. an ein SIEM (Security Information and Event Management) eines Drittanbieters oder eine andere Protokollanalyselösung außerhalb von Azure zu senden. [Hier erhalten Sie weitere Informationen](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
   * Sie können Daten an ein Azure Storage Konto senden, wenn Sie die Protokolldaten für Überwachung, statische Analyse oder Sicherungszwecke länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archive in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform 90 Tage lang aufbewahrt werden. [Weitere Informationen](../azure-monitor/platform/activity-log.md#send-to--azure-storage)
 

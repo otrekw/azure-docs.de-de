@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045398"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218254"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftragsdiagramms in Visual Studio
 
@@ -87,7 +87,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
   
 #### <a name="output-sinks-live-output"></a>Ausgabesenken (Liveausgabe)
 
-![Lokale Ausgabesenken des Auftragsdiagramms](./media/debug-locally-using-job-diagram/live-output.png)
+![Auftragsdiagramm, das die lokalen Ausgabesenken zeigt.](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Metrik|BESCHREIBUNG|
 |-|-|
@@ -111,7 +111,7 @@ Wenn Sie das Auftragsdiagramm nicht mehr benötigen, wählen Sie in der oberen r
 
 ### <a name="view-job-level-metrics-and-stop-running"></a>Metriken auf Auftragsebene anzeigen und die Ausführung abbrechen
 
-In der Popupkonsole werden weiter Metriken auf Auftragsebene angezeigt. Drücken Sie in der Konsole **STRG+C**, wenn Sie den Auftrag beenden möchten.
+In der Popupkonsole werden weiter Metriken auf Auftragsebene angezeigt. Drücken Sie in der Konsole **STRG+C** , wenn Sie den Auftrag beenden möchten.
 
 ![Beenden des Auftrags im Auftragsdiagramm](./media/debug-locally-using-job-diagram/stop-job.png)
 

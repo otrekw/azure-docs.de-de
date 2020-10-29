@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310904"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Erstellen von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen mit Azure Data Studio
 
@@ -62,16 +62,16 @@ Sie können nun mit dem nächsten Schritt fortfahren.
 1. Klicken Sie auf der Registerkarte „Verbindungen“ auf die drei Punkte oben links, und wählen Sie dann „Neue Bereitstellung“ aus.
 1. Wählen Sie in den Bereitstellungsoptionen **PostgreSQL Hyperscale-Servergruppe - Azure Arc** aus.
     >[!NOTE]
-    > Möglicherweise werden Sie hier dazu aufgefordert, die `azdata`-CLI zu installieren, wenn dies noch nicht geschehen ist.
-1. Akzeptieren Sie die Datenschutz- und Lizenzbedingungen, und klicken Sie unten auf **Auswählen**.
+    > Möglicherweise werden Sie hier dazu aufgefordert, die [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] zu installieren, wenn dies noch nicht geschehen ist.
+1. Akzeptieren Sie die Datenschutz- und Lizenzbedingungen, und klicken Sie unten auf **Auswählen** .
 1. Geben Sie auf dem Blatt „PostgreSQL Hyperscale-Servergruppe - Azure Arc“ die folgenden Informationen ein:
    - Geben Sie einen Namen für die Servergruppe ein.
-   - Geben Sie ein Kennwort für den _Postgres_-Administratorbenutzer der Servergruppe ein, und bestätigen Sie es.
+   - Geben Sie ein Kennwort für den _Postgres_ -Administratorbenutzer der Servergruppe ein, und bestätigen Sie es.
    - Wählen Sie die Speicherklasse aus, die für die Daten geeignet ist.
    - Wählen Sie die Speicherklasse aus, die für Protokolle geeignet ist.
    - Wählen Sie die Speicherklasse aus, die für Sicherungen geeignet ist.
    - Wählen Sie die Anzahl der bereitzustellenden Workerknoten aus.
-1. Klicken Sie auf die Schaltfläche **Bereitstellen**.
+1. Klicken Sie auf die Schaltfläche **Bereitstellen** .
 
 Dadurch wird die Erstellung der Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe für den Datencontroller gestartet.
 

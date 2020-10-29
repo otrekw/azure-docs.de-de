@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589299"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165764"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -23,7 +23,7 @@ Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Der Instrumentierungsschlüssel für Application Insights. Verwenden Sie jeweils nur `APPINSIGHTS_INSTRUMENTATIONKEY` oder `APPLICATIONINSIGHTS_CONNECTION_STRING`. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md). 
+Der Instrumentierungsschlüssel für Application Insights. Verwenden Sie jeweils nur `APPINSIGHTS_INSTRUMENTATIONKEY` oder `APPLICATIONINSIGHTS_CONNECTION_STRING`. Wenn Application Insights in einer Sovereign Cloud ausgeführt wird, verwenden Sie `APPLICATIONINSIGHTS_CONNECTION_STRING`. Weitere Informationen finden Sie unter [Konfigurieren der Überwachung für Azure Functions](configure-monitoring.md). 
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -31,7 +31,12 @@ Der Instrumentierungsschlüssel für Application Insights. Verwenden Sie jeweils
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-Die Verbindungszeichenfolge für Application Insights. Verwenden Sie `APPLICATIONINSIGHTS_CONNECTION_STRING` anstelle von `APPINSIGHTS_INSTRUMENTATIONKEY`, wenn für Ihre Funktions-App die zusätzlichen Anpassungen erforderlich sind, die bei Verwendung der Verbindungszeichenfolge unterstützt werden. Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monitor/app/sdk-connection-string.md). 
+Die Verbindungszeichenfolge für Application Insights. Verwenden Sie in den folgenden Fällen `APPLICATIONINSIGHTS_CONNECTION_STRING` anstelle von `APPINSIGHTS_INSTRUMENTATIONKEY`:
+
++ Für Ihre Funktions-App sind die zusätzlichen Anpassungen erforderlich, die bei Verwendung der Verbindungszeichenfolge unterstützt werden. 
++ Ihre Application Insights-Instanz wird in einer Sovereign Cloud ausgeführt, für die ein benutzerdefinierter Endpunkt erforderlich ist.
+
+Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monitor/app/sdk-connection-string.md). 
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -204,7 +209,7 @@ Weitere Informationen finden Sie in der Python-Entwicklerreferenz unter [Benutze
 
 _Diese Einstellung befindet sich derzeit in der Vorschauphase._  
 
-Diese Einstellung dient zum Steuern der Protokollierung über den Azure Functions-Skalierungscontroller. Weitere Informationen finden Sie unter [Skalierungscontrollerprotokolle (Vorschau)](functions-monitoring.md#scale-controller-logs-preview).
+Diese Einstellung dient zum Steuern der Protokollierung über den Azure Functions-Skalierungscontroller. Weitere Informationen finden Sie unter [Skalierungscontrollerprotokolle (Vorschau)](functions-monitoring.md#scale-controller-logs).
 
 |Schlüssel|Beispielwert|
 |-|-|

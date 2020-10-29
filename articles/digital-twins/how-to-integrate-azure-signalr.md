@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 4b0e0bd38c8bb9ea1d2331a65fc891e157971eef
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131546"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495860"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrieren von Azure Digital Twins in Azure SignalR Service
 
@@ -147,7 +147,7 @@ Veröffentlichen Sie nun Ihre Funktion in Azure. Verwenden Sie dazu die Schritte
 
 1. Fügen Sie schließlich Ihre weiter oben abgerufene Azure SignalR- **Verbindungszeichenfolge** den App-Einstellungen der Funktion hinzu, indem Sie den folgenden Azure CLI-Befehl verwenden. Der Befehl kann in [Azure Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ist:
  
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
@@ -242,14 +242,8 @@ Bei Verwendung von Azure Cloud Shell oder der lokalen Azure CLI können Sie alle
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
-```
-
-Wenn Sie Ihre Azure Digital Twins-Instanz löschen, können Sie auch die Azure AD-App-Registrierung löschen, die Sie für sie im End-to-End-Tutorial erstellt haben, indem Sie diesen Befehl verwenden:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 Löschen Sie schließlich die Projektbeispielordner, die Sie auf Ihren lokalen Computer heruntergeladen haben ( *Azure_Digital_Twins_end_to_end_samples.zip* und *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip* ).

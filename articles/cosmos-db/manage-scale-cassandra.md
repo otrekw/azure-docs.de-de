@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87486509"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277672"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastisches Skalieren eines Cassandra-API-Kontos für Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Dieser Ansatz bietet den Vorteil, dass Sie dynamisch und auf eine Weise, die sic
 
 Zusätzlich zur manuellen (Standard) oder programmgesteuerten Bereitstellung des Durchsatzes können Sie Azure Cosmos-Container auch mit per Autoskalierung bereitgestelltem Durchsatz konfigurieren. Die Autoskalierung führt eine automatische und sofortige Skalierung auf die Nutzungsanforderungen innerhalb der angegebenen RU-Bereiche durch, ohne dass dabei SLAs gefährdet werden. Weitere Informationen finden Sie im Artikel [Erstellen von Azure Cosmos-Containern und -Datenbanken im Autoskalierungsmodus](provision-throughput-autoscale.md).
 
-Der Vorteil dieses Ansatzes: Er ist die einfachste Methode zum Verwalten der Skalierungsanforderungen in Ihrem System. Dieser Ansatz garantiert, dass **innerhalb der konfigurierten RU-Bereiche** keine Ratenbegrenzung angewendet wird. Der Nachteil: Wenn die Skalierungsanforderungen in Ihrem System vorhersagbar sind, ist die Autoskalierung möglicherweise weniger kosteneffektiv als die Verwendung der oben beschriebenen Methoden mit der Steuerungsebene oder der Verwendung des SDK.
+Der Vorteil dieses Ansatzes: Er ist die einfachste Methode zum Verwalten der Skalierungsanforderungen in Ihrem System. Er wendet **innerhalb der konfigurierten RU-Bereiche** keine Ratenbegrenzung an. Der Nachteil: Wenn die Skalierungsanforderungen in Ihrem System vorhersagbar sind, ist die Autoskalierung möglicherweise weniger kosteneffektiv als die Verwendung der oben beschriebenen Methoden mit der Steuerungsebene oder der Verwendung des SDK.
 
 Wenn Sie mithilfe von CQL den maximalen Durchsatz (RUs) für die automatische Skalierung festlegen oder ändern möchten, verwenden Sie Folgendes, und ersetzen Sie dabei Keyspace/Tabellenname entsprechend:
 

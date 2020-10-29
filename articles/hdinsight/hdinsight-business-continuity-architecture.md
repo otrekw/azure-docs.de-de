@@ -8,12 +8,12 @@ keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856431"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207579"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Architekturen zur Geschäftskontinuität von Azure HDInsight
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält einige Beispiele für Architekturen zur Geschäftskontin
 
 ## <a name="apache-hive-and-interactive-query"></a>Apache Hive und Interactive Query
 
-[Hive Replication V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) wird für die Geschäftskontinuität in HDInsight Hive- und Interactive Query-Clustern empfohlen. Die persistenten Abschnitte eines eigenständigen Hive-Clusters, die repliziert werden müssen, sind die Speicherebene und der Hive-Metastore. Hive-Cluster in einem Mehrbenutzerszenario mit Enterprise-Sicherheitspaket benötigen Azure Active Directory Domain Services und den Ranger-Metastore.
+[Version 2 von Hive Replication](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) wird für die Geschäftskontinuität in HDInsight Hive- und Interactive Query-Clustern empfohlen. Die persistenten Abschnitte eines eigenständigen Hive-Clusters, die repliziert werden müssen, sind die Speicherebene und der Hive-Metastore. Hive-Cluster in einem Mehrbenutzerszenario mit Enterprise-Sicherheitspaket benötigen Azure Active Directory Domain Services und den Ranger-Metastore.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Architektur von Hive und Interactive Query":::
 
@@ -57,6 +57,8 @@ In einer Architektur mit *aktivem primären Cluster mit sekundärem On-Demand-Cl
 In einer Architektur mit *aktivem primären Cluster und sekundärem Standbycluster* schreiben Anwendungen in die aktive primäre Region, während ein herunterskalierter sekundärer Standbycluster im schreibgeschützten Modus während des normalen Betriebs ausgeführt wird. Während des normalen Betriebs könnten Sie regionsspezifische Lesevorgänge auf sekundäre Cluster auslagern.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architektur von Hive und Interactive Query":::
+
+Weitere Informationen zu Hive Replication sowie Codebeispiele finden Sie unter [Verwenden von Apache Hive Replication in Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication).
 
 ## <a name="apache-spark"></a>Apache Spark
 

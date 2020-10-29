@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330784"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107894"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren vieler Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ In der folgenden Abbildung finden Sie ein Beispiel für eine Datenbank, die sich
 
    ![eine einzelne, für einen Pool geeignete Datenbank](./media/elastic-pool-overview/one-database.png)
 
-Im dargestellten Zeitraum von fünf Minuten schnellt DB1 auf bis zu 90 DTUs. Die mittlere Auslastung liegt jedoch bei unter 5 DTUs. Zum Ausführen dieser Workload in einer einzelnen Datenbank ist die Computegröße S3 erforderlich. Allerdings bewirkt dies, dass die meisten Ressourcen in Zeiten geringer Aktivität nicht verwendet werden.
+Das Diagramm veranschaulicht die DTU-Nutzung über einen Zeitraum von einer Stunde zwischen 12:00 und 13:00 Uhr, wobei jeder Datenpunkt eine Granularität von einer Minute hat. DB1 erreicht um 12:01 Uhr den Spitzenwert von 90 DTUs, die mittlere Auslastung liegt jedoch bei unter fünf DTUs. Zum Ausführen dieser Workload in einer einzelnen Datenbank ist die Computegröße S3 erforderlich. Allerdings bewirkt dies, dass die meisten Ressourcen in Zeiten geringer Aktivität nicht verwendet werden.
 
 Mit einem Pool können diese ungenutzten DTUs auf mehrere Datenbanken verteilt werden, wodurch sich die erforderlichen DTUs und damit auch die Gesamtkosten verringern.
 
@@ -74,7 +74,7 @@ Dieses Beispiel ist aus den folgenden Gründen ideal:
 - Die Spitzenauslastung jeder Datenbank ergibt sich zu jeweils unterschiedlichen Zeitpunkten.
 - eDTUs werden von mehreren Datenbanken gemeinsam genutzt.
 
-Der Preis eines Pools ergibt sich aus den eDTUs des Pools. Während der Preis pro eDTU für einen Pool 1,5 Mal höher als der Preis pro DTU für eine Einzeldatenbank ist, können hierbei **Pool-eDTUs von vielen Datenbanken gemeinsam genutzt werden, daher liegt der Preis unter der Gesamtanzahl der benötigten eDTUs**. Die Unterschiede bei der Preisgestaltung und die gemeinsame Nutzung von eDTUs sind die Basis des Einsparungspotenzials, das von Pools geboten wird.
+Der Preis eines Pools ergibt sich aus den eDTUs des Pools. Während der Preis pro eDTU für einen Pool 1,5 Mal höher als der Preis pro DTU für eine Einzeldatenbank ist, können hierbei **Pool-eDTUs von vielen Datenbanken gemeinsam genutzt werden, daher liegt der Preis unter der Gesamtanzahl der benötigten eDTUs** . Die Unterschiede bei der Preisgestaltung und die gemeinsame Nutzung von eDTUs sind die Basis des Einsparungspotenzials, das von Pools geboten wird.
 
 Die folgenden Faustregeln hinsichtlich der Anzahl der Datenbanken und ihrer Auslastung sollen Ihnen helfen, sicherzustellen, dass Pools kosteneffizienter als Comptegrößen für einzelne Datenbanken sind.
 
@@ -113,11 +113,11 @@ Die folgenden Schritte können Ihnen dabei helfen, einzuschätzen, ob ein Pool k
 
 DTU-basiertes Kaufmodell:
 
-MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche DTU-Auslastung pro Datenbank*>, <*Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *DTU-Spitzenauslastung pro Datenbank*>)
+MAX(< *Gesamtanzahl von Datenbanken* x *durchschnittliche DTU-Auslastung pro Datenbank* >, < *Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *DTU-Spitzenauslastung pro Datenbank* >)
 
 vCore-basiertes Kaufmodell:
 
-MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche vCore-Auslastung pro Datenbank*>, <*Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *vCore-Spitzenauslastung pro Datenbank*>)
+MAX(< *Gesamtanzahl von Datenbanken* x *durchschnittliche vCore-Auslastung pro Datenbank* >, < *Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *vCore-Spitzenauslastung pro Datenbank* >)
 
 2. Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet.
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das vCore-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.
@@ -155,7 +155,7 @@ Pooldatenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitäts
 
 Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es zwei Möglichkeiten.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um einen Pool für elastische Datenbanken zu erstellen. Suchen Sie nach **Azure SQL**, und wählen Sie die entsprechende Option aus.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um einen Pool für elastische Datenbanken zu erstellen. Suchen Sie nach **Azure SQL** , und wählen Sie die entsprechende Option aus.
 2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu Pools für elastische Datenbanken anzeigen, indem Sie **Details anzeigen** auf der Kachel **Datenbanken** auswählen.
 3. Wählen Sie auf der Kachel **Datenbanken** in der Dropdownliste **Ressourcentyp** die Option **Pool für elastische Datenbanken** und anschließend **Erstellen** aus:
 
@@ -168,7 +168,7 @@ Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es z
 
 Die Dienstebene des Pools bestimmt die Features für die elastischen Datenbanken im Pool sowie die für jede Datenbank verfügbare maximale Menge der Ressourcen. Ausführliche Informationen finden Sie in den Ressourceneinschränkungen für Pools für elastische Datenbanken im [DTU-Modell](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). Informationen zu V-Kern-basierte Ressourceneinschränkungen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen – Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).
 
-Zum Konfigurieren der Ressourcen und Preise des Pools klicken Sie auf **Pool konfigurieren**. Wählen Sie dann eine Dienstebene aus, fügen Sie den Pool Datenbanken hinzu, und konfigurieren Sie die Ressourceneinschränkungen für den Pool und seine Datenbanken.
+Zum Konfigurieren der Ressourcen und Preise des Pools klicken Sie auf **Pool konfigurieren** . Wählen Sie dann eine Dienstebene aus, fügen Sie den Pool Datenbanken hinzu, und konfigurieren Sie die Ressourceneinschränkungen für den Pool und seine Datenbanken.
 
 Wenn Sie die Konfiguration des Pools abgeschlossen haben, können Sie auf „Anwenden“ klicken, dem Pool einen Namen geben und auf „OK“ klicken, um den Pool zu erstellen.
 
@@ -187,7 +187,7 @@ Die folgende Abbildung zeigt ein Beispiel für einen Pool für elastische Datenb
 
 Wenn Sie weitere Informationen zum Pool anzeigen möchten, klicken Sie auf eine der in dieser Übersicht verfügbaren Informationen. Wenn Sie auf das Diagramm **Ressourcenverwendung** klicken, werden Sie zur Azure-Überwachungsansicht weitergeleitet, in der Sie die im Diagramm angezeigten Metriken und das Zeitfenster anpassen können. Wenn Sie auf einer der verfügbaren Benachrichtigungen klicken, gelangen Sie auf ein Blatt, das die vollständigen Details der Warnung oder Empfehlung anzeigt.
 
-Wenn Sie die Datenbanken in Ihrem Pool überwachen möchten, klicken Sie links im Ressourcenmenü im Abschnitt **Überwachung** auf **Datenbank-Ressourcennutzung**.
+Wenn Sie die Datenbanken in Ihrem Pool überwachen möchten, klicken Sie links im Ressourcenmenü im Abschnitt **Überwachung** auf **Datenbank-Ressourcennutzung** .
 
 ![Seite „Datenbank-Ressourcennutzung“](./media/elastic-pool-overview/db-utilization.png)
 

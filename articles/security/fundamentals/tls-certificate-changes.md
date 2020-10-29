@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc79261035ef0f8671b9e43e1332ad68d1c9d39
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: c183c906644d5d672b97642b1b072a2a08a70973
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91654067"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203754"
 ---
 # <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
 
@@ -24,7 +24,7 @@ Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten au
 
 - Für [Azure AD-Dienste](/azure/active-directory) (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
 - Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind.
-- Bereits vorhandene Azure-Endpunkte werden zwischen dem 13. August 2020 und dem 26. Oktober 2020 nach und nach umgestellt.
+- Bereits vorhandene Azure-Endpunkte werden ab dem 13. August 2020 nach und nach umgestellt.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](/azure/iot-dps/) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
 - [Azure Storage](/azure/storage) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518), um ausführliche Informationen zu erhalten.
 
@@ -58,7 +58,7 @@ Sollte sich dieses Datum ändern, wird das neue Widerrufsdatum bekanntgegeben.
 
 ## <a name="will-this-change-affect-me"></a>Betrifft mich diese Änderung? 
 
-Wir gehen davon aus, dass **die meisten Azure-Kunden nicht betroffen sein werden**.  Ihre Anwendung kann jedoch betroffen sein, wenn darin explizit eine Liste zulässiger Zertifizierungsstellen angegeben wird. Dies wird als Anheften von Zertifikaten bezeichnet.
+Wir gehen davon aus, dass **die meisten Azure-Kunden nicht betroffen sein werden** .  Ihre Anwendung kann jedoch betroffen sein, wenn darin explizit eine Liste zulässiger Zertifizierungsstellen angegeben wird. Dies wird als Anheften von Zertifikaten bezeichnet.
 
 Im Anschluss finden Sie verschiedene Methoden, mit denen Sie ermitteln können, ob Ihre Anwendung betroffen ist:
 

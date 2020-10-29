@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f687923f1185d848c2c4f2f40d949c71a7743d65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931773"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311126"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Konfigurieren von Azure Arc-fähigen SQL Managed Instance-Instanzen
 
@@ -22,11 +22,11 @@ In diesem Artikel wird erläutert, wie eine Azure Arc-fähige SQL Managed Instan
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configure-resources-for-azure-arc-enabled-sql-managed-instance"></a>Konfigurieren von Ressourcen für eine Azure Arc-fähige SQL Managed Instance-Instanz
+## <a name="configure-resources"></a>Konfigurieren der Ressourcen
 
-### <a name="configure-using-azdata"></a>Konfigurieren mithilfe von azdata
+### <a name="configure-using-azure-data-cli-azdata"></a>Konfigurieren mithilfe der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
-Sie können die Konfiguration von Azure Arc-fähigen SQL Managed Instance-Instanzen mit der `azdata` CLI bearbeiten. Führen Sie den folgenden Befehl aus, um die Konfigurationsoptionen anzuzeigen. 
+Sie können die Konfiguration von Azure Arc-fähigen SQL Managed Instance-Instanzen mithilfe der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] bearbeiten. Führen Sie den folgenden Befehl aus, um die Konfigurationsoptionen anzuzeigen. 
 
 ```
 azdata arc sql mi edit --help

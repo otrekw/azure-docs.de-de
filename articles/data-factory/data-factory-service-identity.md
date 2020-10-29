@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434944"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123748"
 ---
 # <a name="managed-identity-for-data-factory"></a>Verwaltete Identität für Data Factory
 
@@ -57,7 +57,7 @@ Sollte Ihrer Data Factory nach dem Schritt [Abrufen einer verwalteten Identität
 
 ### <a name="generate-managed-identity-using-powershell"></a>Generieren der verwalteten Identität mit PowerShell
 
-Rufen Sie erneut den Befehl **Set-AzDataFactoryV2** auf, woraufhin die „Identity“-Felder neu generiert werden:
+Rufen Sie den Befehl **Set-AzDataFactoryV2** auf, woraufhin die „Identity“-Felder neu generiert werden:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -79,7 +79,7 @@ Rufen Sie die unten angegebene API mit dem Abschnitt „identity“ im Anforderu
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Anforderungstext**: Fügen Sie Folgendes hinzu: „identity": { "type": "SystemAssigned" }.
+**Anforderungstext** : Fügen Sie Folgendes hinzu: „identity": { "type": "SystemAssigned" }.
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Generieren der verwalteten Identität mithilfe einer Azure Resource Manager-Vorlage
 
-**Vorlage**: Fügen Sie Folgendes hinzu: "identity": { "type": "SystemAssigned" }.
+**Vorlage** : Fügen Sie Folgendes hinzu: "identity": { "type": "SystemAssigned" }.
 
 ```json
 {
@@ -169,7 +169,7 @@ Wenn Sie eine Berechtigung erteilen, verwenden Sie die Objekt-ID oder den Data F
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Abrufen der verwalteten Identität mit PowerShell
 
-Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden folgendermaßen zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen: Verwenden Sie die **PrincipalId**, um Zugriff zu gewähren:
+Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden folgendermaßen zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen: Verwenden Sie die **PrincipalId** , um Zugriff zu gewähren:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -201,7 +201,7 @@ Rufen Sie die folgende API in der Anforderung auf:
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**Antwort**: Sie erhalten eine Antwort wie im nachfolgenden Beispiel gezeigt. Der Abschnitt für die Identität ist entsprechend ausgefüllt.
+**Antwort** : Sie erhalten eine Antwort wie im nachfolgenden Beispiel gezeigt. Der Abschnitt für die Identität ist entsprechend ausgefüllt.
 
 ```json
 {

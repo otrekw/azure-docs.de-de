@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Azure Cosmos DB-Daten mithilfe von SQL Serverless in Azure Synapse Link (Vorschau)
+title: Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
 description: In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB mit SQL Serverless in Azure Synapse Link abfragen (Vorschau).
 services: synapse analytics
 author: jovanpop-msft
@@ -9,27 +9,24 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057806"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122720"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe von SQL Serverless in Azure Synapse Link (Vorschau)
+# <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
 
-Mit Synapse SQL Serverless (ehemals SQL On-Demand) können Sie Daten in Ihren Azure Cosmos DB-Containern mit [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-Aktivierung nahezu in Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsworkloads auswirkt. SQL Serverless bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
+Mit einem serverlosen Synapse SQL-Pool (ehemals SQL On-Demand) können Sie Daten in Ihren Azure Cosmos DB-Containern mit [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-Aktivierung nahezu in Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsworkloads auswirkt. SQL Serverless bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
 
-> [!NOTE]
-> Die Unterstützung für das Abfragen des Azure Cosmos DB-Analysespeichers mit Synapse SQL Serverless befindet sich derzeit in der geschlossenen Vorschau. Die Public Preview wird auf der Seite für [Azure-Dienstupdates](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) angekündigt.
+Zum Abfragen von Azure Cosmos DB wird die vollständige [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand) können Sie die Ergebnisse der Abfrage, bei der Daten aus Azure Cosmos DB gelesen werden, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern der Abfrageergebnisse von einem serverlosen SQL-Pool in Azure Cosmos DB mit [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand) ist derzeit nicht möglich.
 
-Zum Abfragen von Azure Cosmos DB wird die vollständige [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand) können Sie die Ergebnisse der Abfrage, bei der Daten aus Azure Cosmos DB gelesen werden, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern von SQL Serverless-Abfrageergebnissen in Azure Cosmos DB mit [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand) ist derzeit nicht möglich.
-
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL Serverless erstellen, die Daten aus Azure Cosmos DB-Containern mit Synapse Link-Aktivierung abfragt. Anschließend erfahren Sie in [diesem Tutorial](./tutorial-data-analyst.md) mehr über das Erstellen von SQL Serverless-Ansichten über Azure Cosmos DB-Container und das Verbinden dieser Ansichten mit Power BI-Modellen. 
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool erstellen, die Daten aus Azure Cosmos DB-Containern mit Synapse Link-Aktivierung abfragt. Anschließend erfahren Sie in [diesem Tutorial](./tutorial-data-analyst.md) mehr über das Erstellen von serverlosen SQL-Poolsichten über Azure Cosmos DB-Container und das Verbinden dieser Sichten mit Power BI-Modellen. 
 
 ## <a name="overview"></a>Übersicht
 
-SQL Serverless verwendet die folgende `OPENROWSET`-Syntax, um das Abfragen und Analysieren von Daten im Azure Cosmos DB-Analysespeicher zu unterstützen:
+Der serverlose SQL-Pool verwendet die folgende `OPENROWSET`-Syntax, um das Abfragen und Analysieren von Daten im Azure Cosmos DB-Analysespeicher zu unterstützen:
 
 ```sql
 OPENROWSET( 
@@ -52,7 +49,7 @@ Die Verbindungszeichenfolge weist das folgende Format auf:
 Der Name des Azure Cosmos DB-Containers wird in der `OPENROWSET`-Syntax ohne Anführungszeichen angegeben. Wenn der Containername Sonderzeichen (z. B. einen Bindestrich, „-“) enthält, sollte er in der `OPENROWSET`-Syntax von `[]` (eckigen Klammern) umschlossen werden.
 
 > [!NOTE]
-> Abfragen des Azure Cosmos DB-Transaktionsspeichers werden in SQL Serverless nicht unterstützt.
+> Abfragen des Azure Cosmos DB-Transaktionsspeichers werden im serverlosen SQL-Pool nicht unterstützt.
 
 ## <a name="sample-data-set"></a>Beispieldataset
 
@@ -60,14 +57,14 @@ Die Beispiele in diesem Artikel basieren auf Daten aus den Datasets [European Ce
 
 Auf den verlinkten Seiten erhalten Sie Informationen zur Lizenz sowie zur Struktur der Daten und können Beispieldaten für das [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json)- und das [CORD-19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json)-Dataset herunterladen.
 
-Stellen Sie sicher, dass Sie die folgenden Ressourcen erstellen, um die in diesem Artikel beschriebenen Schritte zur Abfrage von Cosmos DB-Daten mit SQL Serverless ausführen zu können:
+Stellen Sie sicher, dass Sie die folgenden Ressourcen erstellen, um die in diesem Artikel beschriebenen Schritte zur Abfrage von Cosmos DB-Daten mit einem serverlosen SQL-Pool ausführen zu können:
 * Ein Azure Cosmos DB-Datenbankkonto mit [Synapse Link-Aktivierung](../../cosmos-db/configure-synapse-link.md)
 * Eine Azure Cosmos DB-Datenbank namens `covid`
 * Zwei Azure Cosmos DB-Container namens `EcdcCases` und `Cord19`, in die die obigen Beispieldatasets geladen wurden
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Untersuchen von Azure Cosmos DB-Daten mit automatischem Schemarückschluss
 
-Die einfachste Möglichkeit der Untersuchung von Daten in Azure Cosmos DB ist die Verwendung des automatischen Schemarückschlusses. Wenn Sie die `OPENROWSET`-Anweisung ohne die `WITH`-Klausel verwenden, können Sie SQL Serverless anweisen, das Schema des Analysespeichers des Azure Cosmos DB-Containers automatisch zu erkennen (Rückschlüsse zu ziehen).
+Die einfachste Möglichkeit der Untersuchung von Daten in Azure Cosmos DB ist die Verwendung des automatischen Schemarückschlusses. Wenn Sie die `OPENROWSET`-Anweisung ohne die `WITH`-Klausel verwenden, können Sie den serverlosen SQL-Pool anweisen, das Schema des Analysespeichers des Azure Cosmos DB-Containers automatisch zu erkennen (Rückschlüsse zu ziehen).
 
 ```sql
 SELECT TOP 10 *
@@ -76,7 +73,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-Im obigen Beispiel weisen Sie SQL Serverless an, eine Verbindung mit der `covid`-Datenbank im Azure Cosmos DB-Konto `MyCosmosDbAccount` mit Authentifizierung durch den Azure Cosmos DB-Schlüssel (Platzhalterwert im obigen Beispiel) herzustellen. Anschließend greifen Sie auf den Analysespeicher des Containers `EcdcCases` in der Region `West US 2` zu. Da keine Projektion bestimmter Eigenschaften vorgenommen wurde, gibt die `OPENROWSET`-Funktion alle Eigenschaften aus den Azure Cosmos DB-Elementen zurück.
+Im obigen Beispiel weisen Sie den serverlosen SQL-Pool an, eine Verbindung mit der `covid`-Datenbank im Azure Cosmos DB-Konto `MyCosmosDbAccount` mit Authentifizierung durch den Azure Cosmos DB-Schlüssel (Platzhalterwert im obigen Beispiel) herzustellen. Anschließend greifen Sie auf den Analysespeicher des Containers `EcdcCases` in der Region `West US 2` zu. Da keine Projektion bestimmter Eigenschaften vorgenommen wurde, gibt die `OPENROWSET`-Funktion alle Eigenschaften aus den Azure Cosmos DB-Elementen zurück.
 
 Wenn Sie Daten aus dem anderen Container in derselben Azure Cosmos DB-Datenbank untersuchen müssen, können Sie die gleiche Verbindungszeichenfolge verwenden und auf den erforderlichen Container als dritten Parameter verweisen:
 
@@ -123,7 +120,7 @@ Weitere Informationen zu den SQL-Typen, die für Azure Cosmos DB-Werte verwendet
 
 ## <a name="querying-nested-objects-and-arrays"></a>Abfragen von geschachtelten Objekten und Arrays
 
-Mit Azure Cosmos DB können Sie komplexere Datenmodelle in Form von geschachtelten Objekten oder Arrays darstellen. Die automatische Synchronisierungsfunktion von Synapse Link für Azure Cosmos DB verwaltet standardmäßig die Schemadarstellung im Analysespeicher. Diese umfasst auch die Verarbeitung von geschachtelten Datentypen, was eine umfangreiche Abfrage über SQL Serverless ermöglicht.
+Mit Azure Cosmos DB können Sie komplexere Datenmodelle in Form von geschachtelten Objekten oder Arrays darstellen. Die automatische Synchronisierungsfunktion von Synapse Link für Azure Cosmos DB verwaltet standardmäßig die Schemadarstellung im Analysespeicher. Diese umfasst auch die Verarbeitung von geschachtelten Datentypen, was eine umfangreiche Abfrage über den serverlosen SQL-Pool ermöglicht.
 
 Beispielsweise enthält das [CORD-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)-Dataset JSON-Dokumente mit folgender Struktur:
 
@@ -175,7 +172,7 @@ FROM
     ) AS docs;
 ```
 
-Hier erfahren Sie mehr über das Analysieren von [komplexen Datentypen in Synapse Link](../how-to-analyze-complex-schema.md) und [geschachtelten Strukturen in SQL Serverless](query-parquet-nested-types.md).
+Hier erfahren Sie mehr über das Analysieren von [komplexen Datentypen in Synapse Link](../how-to-analyze-complex-schema.md) und [geschachtelte Strukturen in serverlosen SQL-Pools](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
 > Wenn in Ihrem Text unerwartete Zeichen angezeigt werden, z. B. `MÃƒÂ©lade` statt `Mélade`, ist die Datenbanksortierung nicht auf [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8)-Sortierung festgelegt. 
@@ -206,7 +203,7 @@ Azure Cosmos DB-Daten verfügen möglicherweise über geschachtelte untergeordne
 }
 ```
 
-In einigen Fällen müssen Sie möglicherweise die Eigenschaften aus dem obersten Element (metadata) mit allen Elementen des Arrays (authors) verknüpfen. SQL Serverless ermöglicht Ihnen das Vereinfachen von geschachtelten Strukturen durch Anwenden der `OPENJSON`-Funktion auf das geschachtelte Array:
+In einigen Fällen müssen Sie möglicherweise die Eigenschaften aus dem obersten Element (metadata) mit allen Elementen des Arrays (authors) verknüpfen. Der serverlose SQL-Pool ermöglicht Ihnen das Vereinfachen von geschachtelten Strukturen durch Anwenden der `OPENJSON`-Funktion auf das geschachtelte Array:
 
 ```sql
 SELECT
@@ -241,7 +238,7 @@ Supplementary Information An eco-epidemi… | `[{"first":"Nicolas","last":"4#","
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Zuordnung von SQL-Typen zu Azure Cosmos DB
 
-Beachten Sie unbedingt Folgendes: Während der Azure Cosmos DB-Transaktionsspeicher schemaagnostisch ist, ist der Analysespeicher zur Optimierung für die Leistung von analytischen Abfragen schematisiert. Mit der automatischen Synchronisierungsfunktion von Synapse Link verwaltet Azure Cosmos DB standardmäßig die Schemadarstellung im Analysespeicher. Diese umfasst auch die Verarbeitung von geschachtelten Datentypen. Da SQL Serverless den Analysespeicher abfragt, ist es wichtig zu verstehen, wie Azure Cosmos DB-Eingabedatentypen SQL-Datentypen zugeordnet werden.
+Beachten Sie unbedingt Folgendes: Während der Azure Cosmos DB-Transaktionsspeicher schemaagnostisch ist, ist der Analysespeicher zur Optimierung für die Leistung von analytischen Abfragen schematisiert. Mit der automatischen Synchronisierungsfunktion von Synapse Link verwaltet Azure Cosmos DB standardmäßig die Schemadarstellung im Analysespeicher. Diese umfasst auch die Verarbeitung von geschachtelten Datentypen. Da der serverlose SQL-Pool den Analysespeicher abfragt, ist es wichtig zu verstehen, wie Azure Cosmos DB-Eingabedatentypen SQL-Datentypen zugeordnet werden.
 
 Azure Cosmos DB-Konten für die SQL (Core)-API unterstützen als JSON-Eigenschaftstypen Zahlen, Zeichenfolgen, boolesche Werte, NULL, geschachtelte Objekte und Arrays. Wenn Sie die `WITH`-Klausel in `OPENROWSET` verwenden, müssen Sie SQL-Typen auswählen, die zu diesen JSON-Typen passen. Im Folgenden sind die SQL-Spaltentypen aufgeführt, die für verschiedene Eigenschaftstypen in Azure Cosmos DB verwendet werden sollen.
 
@@ -261,7 +258,18 @@ Wenn Sie Azure Cosmos DB-Konten über die Mongo DB-API abfragen möchten, finden
 ## <a name="known-issues"></a>Bekannte Probleme
 
 - Der Alias **MUSS** nach der `OPENROWSET`-Funktion angegeben werden (z. B. `OPENROWSET (...) AS function_alias`). Das Weglassen des Alias kann zu Verbindungsproblemen führen, und der Synapse SQL Serverless-Endpunkt ist möglicherweise vorübergehend nicht verfügbar. Dieses Problem wird im November 2020 gelöst.
-- Die [Azure Cosmos DB-Schemadarstellung mit vollständiger Genauigkeit](../../cosmos-db/analytical-store-introduction.md#schema-representation) wird derzeit nicht von Synapse SQL Serverless unterstützt. Verwenden Sie Synapse SQL Serverless nur für den Zugriff auf das genau definierte Cosmos DB-Schema.
+- Die [Azure Cosmos DB-Schemadarstellung mit vollständiger Genauigkeit](../../cosmos-db/analytical-store-introduction.md#schema-representation) wird derzeit nicht vom serverlosen Synapse SQL-Pool unterstützt. Verwenden Sie den serverlosen SQL-Pool nur für den Zugriff auf das genau definierte Cosmos DB-Schema.
+
+In der folgenden Tabelle werden mögliche Fehler, und Problembehebungsmaßnahmen aufgelistet:
+
+| Fehler | Grundursache |
+| --- | --- |
+| Syntaxfehler:<br/> – Falsche Syntax in der Nähe von „Openrowset“.<br/> - `...` ist keine gültige BULK OPENROWSET-Anbieteroption.<br/> – Falsche Syntax in der Nähe von `...`. | Mögliche Grundursachen<br/> – „CosmosDB“ wird nicht als erster Parameter verwendet.<br/> – Verwendung eines Zeichenfolgenliterals anstelle eines Bezeichners im dritten Parameter.<br/> – Fehlende Angabe des dritten Parameters (Containername). |
+| Fehler in der CosmosDB-Verbindungszeichenfolge. | – Konto, Datenbank, Schlüssel wurde nicht angegeben. <br/> – Die Verbindungszeichenfolge enthält eine Option, die nicht gültig ist.<br/> – Am Ende der Verbindungszeichenfolge befindet sich ein Semikolon (`;`). |
+| Beim Auflösen des CosmosDB-Pfads ist der Fehler „Falscher Kontoname“ oder „Falscher Datenbankname“ aufgetreten. | Der angegebene Kontoname, der angegebene Datenbankname oder der angegebene Container wurde nicht gefunden, oder der analytische Speicher wurde nicht für die angegebene Sammlung aktiviert.|
+| Beim Auflösen des CosmosDB-Pfads ist der Fehler „Falscher Geheimniswert“ oder „Geheimnis ist Null oder leer“ aufgetreten. | Der Kontoschlüssel ist ungültig oder fehlt. |
+| Die Spalte `column name` des Typs `type name` ist mit dem externen Datentyp `type name` nicht kompatibel. | Der in der `WITH`-Klausel angegebene Spaltentyp stimmt nicht mit dem Typ im Cosmos DB-Container überein. Versuchen Sie, den Spaltentyp zu ändern, wie dies im Abschnitt [Zuordnung von SQL-Typen zu Azure Cosmos DB](#azure-cosmos-db-to-sql-type-mappings) beschrieben wird, oder verwenden Sie den Typ `VARCHAR`. |
+| Die Spalte enthält `NULL`-Werte in allen Zellen. | Möglicherweise falscher Spaltenname oder Pfadausdruck in `WITH`-Klausel. Der Spaltenname (oder Pfadausdruck hinter dem Spaltentyp) in der `WITH`-Klausel muss mit einem Eigenschaftsnamen in der Cosmos DB-Sammlung übereinstimmen. Beim Vergleich wird die **Groß-/Kleinschreibung beachtet** (z. B. `productCode` und `ProductCode` sind unterschiedliche Eigenschaften). |
 
 Auf der [Azure Synapse-Feedbackseite](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862) können Sie Vorschläge übermitteln und Probleme melden.
 

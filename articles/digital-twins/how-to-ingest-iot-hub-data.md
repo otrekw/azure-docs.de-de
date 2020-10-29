@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131495"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495816"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins
 
 Azure Digital Twins wird mit Daten von IoT-Geräten und anderen Quellen gesteuert. Eine gängige Quelle für Gerätedaten zur Verwendung in Azure Digital Twins ist [IoT Hub](../iot-hub/about-iot-hub.md).
 
-Der Prozess zum Erfassen von Daten in Azure Digital Twins besteht im Einrichten einer externen Computeressource wie einer [Azure-Funktion](../azure-functions/functions-overview.md), die die Daten empfängt und mithilfe der [Digital Twins-APIs](how-to-use-apis-sdks.md) Eigenschaften entsprechend festlegt oder Telemetrieereignisse zu [digitalen Zwillingen](concepts-twins-graph.md) auslöst. 
+Der Prozess zum Erfassen von Daten in Azure Digital Twins besteht im Einrichten einer externen Computeressource wie einer [Azure-Funktion](../azure-functions/functions-overview.md), die die Daten empfängt und mithilfe der [Digital Twins-APIs](/rest/api/digital-twins/dataplane/twins) Eigenschaften entsprechend festlegt oder Telemetrieereignisse zu [digitalen Zwillingen](concepts-twins-graph.md) auslöst. 
 
 In dieser Schrittanleitung wird erläutert, wie Sie eine Azure-Funktion schreiben, die Telemetrie von IoT Hub erfassen kann.
 
@@ -64,19 +64,15 @@ Das Modell sieht so aus:
 
 Zum **Hochladen dieses Modells zu Ihrer Digital Twins-Instanz** öffnen Sie die Azure CLI, und führen Sie den folgenden Befehl aus:
 
-```azurecli
+```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
 Anschließend müssen Sie **einen einzigen Zwilling mit diesem Modell erstellen** . Verwenden Sie den folgenden Befehl zum Erstellen eines Zwillings und zum Festlegen von „0,0“ als anfänglichen Temperaturwert.
 
-```azurecli
+```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 Die Ausgabe eines erfolgreichen Befehls zum Erstellen des Zwillings sollte so aussehen:
 ```json
@@ -252,9 +248,7 @@ Führen Sie im End-to-End-Tutorial die folgenden Schritte aus:
 
 Während der Ausführung des vorstehenden Gerätesimulators ändert sich der Temperaturwert Ihres digitalen Zwillings. Führen Sie in der Azure CLI den folgenden Befehl zum Anzeigen des Temperaturwerts aus.
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
 ```
 

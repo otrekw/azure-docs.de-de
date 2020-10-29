@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ddb6bc297a32be856172707a220fe1dfaefb9f6d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278772"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487448"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globales Verteilen Ihrer Daten mit Azure Cosmos DB
 
@@ -55,7 +55,6 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung:
 * [Hinzufügen/Entfernen von Regionen in Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie für SQL-API-Konten](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 * [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
-* [Auswählen der richtigen Konsistenzebene für Ihre Anwendung](consistency-levels-choosing.md)
-* [Konsistenzebenen und Azure Cosmos DB-APIs](consistency-levels-across-apis.md)
-* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
-
+* [Auswählen der richtigen Konsistenzebene für Ihre Anwendung](./consistency-levels.md)
+* [Konsistenzebenen und Azure Cosmos DB-APIs](./consistency-levels.md)
+* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](./consistency-levels.md)

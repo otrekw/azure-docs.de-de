@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334907"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167133"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorisieren des Datenbankzugriffs für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -65,10 +65,10 @@ Wenn Sie Azure SQL erstmals bereitstellen, legen Sie eine Administratoranmeldung
 
 ![SQL Server-Administratoren](./media/logins-create-manage/sql-admins.png)
 
-![SQL Server-Administratoren](./media/logins-create-manage/sql-admins2.png)
+![Screenshot: Hervorhebung der Menüoption „Eigenschaften“](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
-> Der Anmeldename des Administrators kann nach der Erstellung nicht geändert werden. Um das Kennwort für den Serveradministrator zurückzusetzen, klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL Server**, wählen Sie in der Liste den Server aus, und klicken Sie dann auf **Kennwort zurücksetzen**. Rufen Sie das Azure-Portal auf, klicken Sie auf die Instanz, und wählen Sie dann **Kennwort zurücksetzen** aus, um das Kennwort für die SQL Managed Instance zurückzusetzen. Sie können auch PowerShell oder die Azure CLI verwenden.
+> Der Anmeldename des Administrators kann nach der Erstellung nicht geändert werden. Um das Kennwort für den Serveradministrator zurückzusetzen, klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL Server** , wählen Sie in der Liste den Server aus, und klicken Sie dann auf **Kennwort zurücksetzen** . Rufen Sie das Azure-Portal auf, klicken Sie auf die Instanz, und wählen Sie dann **Kennwort zurücksetzen** aus, um das Kennwort für die SQL Managed Instance zurückzusetzen. Sie können auch PowerShell oder die Azure CLI verwenden.
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>Erstellen weiterer Anmeldungen und Benutzer mit Administratorberechtigungen
 
@@ -137,7 +137,7 @@ Nachdem Sie ein Benutzerkonto basierend auf einer Anmeldung oder als eigenständ
 
 - **Feste Datenbankrollen**
 
-  Fügen Sie das Benutzerkonto zu einer [festen Datenbankrolle](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) hinzu. Es gibt 9 feste Datenbankrollen, die jeweils über definierte Berechtigungen verfügen. Die folgenden festen Datenbankrollen werden am häufigsten verwendet: **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** und **db_denydatareader**. **db_owner** wird häufig verwendet, um nur einigen Benutzern uneingeschränkte Berechtigungen zu erteilen. Die anderen festen Datenbankrollen sind hilfreich, um bei der Entwicklung schnell eine einfache Datenbank zu erhalten, aber sie sind auch für die meisten Produktionsdatenbanken zu empfehlen. Die feste Datenbankrolle **db_datareader** gewährt beispielsweise Lesezugriff auf alle Tabellen in der Datenbank. Dies ist im nicht unbedingt erforderlich.
+  Fügen Sie das Benutzerkonto zu einer [festen Datenbankrolle](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) hinzu. Es gibt 9 feste Datenbankrollen, die jeweils über definierte Berechtigungen verfügen. Die folgenden festen Datenbankrollen werden am häufigsten verwendet: **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** und **db_denydatareader** . **db_owner** wird häufig verwendet, um nur einigen Benutzern uneingeschränkte Berechtigungen zu erteilen. Die anderen festen Datenbankrollen sind hilfreich, um bei der Entwicklung schnell eine einfache Datenbank zu erhalten, aber sie sind auch für die meisten Produktionsdatenbanken zu empfehlen. Die feste Datenbankrolle **db_datareader** gewährt beispielsweise Lesezugriff auf alle Tabellen in der Datenbank. Dies ist im nicht unbedingt erforderlich.
 
   - So fügen Sie einen Benutzer zu einer festen Datenbankrolle hinzu:
 

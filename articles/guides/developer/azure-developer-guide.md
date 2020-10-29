@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327817"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372207"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -281,7 +281,7 @@ Um ein Azure-Abonnement zu erstellen oder damit zu arbeiten, müssen Sie über e
 
 Jedes Azure-Abonnement weist eine Vertrauensstellung mit einer Azure AD-Instanz auf. Dies bedeutet, dass es diesem Verzeichnis bei der Authentifizierung von Benutzern, Diensten und Geräten vertraut. Mehrere Abonnements können dem gleichen Verzeichnis vertrauen, ein Abonnement vertraut jedoch nur einem Verzeichnis. Weitere Information finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Zusätzlich zum Definieren individueller Azure-Kontoidentitäten, auch *Benutzer* genannt, können Sie in Azure AD auch *Gruppen* definieren. Das Erstellen von Benutzergruppen ist eine gute Methode zum Verwalten des Zugriffs auf Ressourcen in einem Abonnement mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Informationen zum Erstellen von Gruppen finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Sie können Gruppen auch [mithilfe von PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) erstellen und verwalten.
+Zusätzlich zum Definieren individueller Azure-Kontoidentitäten, auch *Benutzer* genannt, können Sie in Azure AD auch *Gruppen* definieren. Das Erstellen von Benutzergruppen ist eine gute Methode zum Verwalten des Zugriffs auf Ressourcen in einem Abonnement mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Informationen zum Erstellen von Gruppen finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Sie können Gruppen auch [mithilfe von PowerShell](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md) erstellen und verwalten.
 
 ### <a name="manage-your-subscriptions"></a>Verwalten Ihrer Abonnements
 

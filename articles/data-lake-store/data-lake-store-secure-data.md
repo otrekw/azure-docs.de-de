@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149279"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370694"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Sichern von in Azure Data Lake Storage Gen1 gespeicherten Daten
 Das Schützen von Daten in Azure Data Lake Storage Gen1 ist ein Ansatz, der drei Schritte umfasst.  Die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) sowie die Zugriffssteuerungslisten (Access Control Lists, ACLs) müssen so festgelegt werden, dass der Zugriff auf Daten für Benutzer und Sicherheitsgruppen vollständig aktiviert ist.
@@ -39,7 +39,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 Eine Anleitung zum Erstellen von Azure AD-Sicherheitsgruppen und zum Hinzufügen von Benutzern zur Gruppe finden Sie unter [Verwalten von Sicherheitsgruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
-> Sie können im Azure-Portal sowohl Benutzer als auch andere Gruppen zu einer Gruppe in Azure AD hinzufügen. Verwenden Sie zum Hinzufügen eines Dienstprinzipals zu einer Gruppe jedoch das [PowerShell-Modul von Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> Sie können im Azure-Portal sowohl Benutzer als auch andere Gruppen zu einer Gruppe in Azure AD hinzufügen. Verwenden Sie zum Hinzufügen eines Dienstprinzipals zu einer Gruppe jedoch das [PowerShell-Modul von Azure AD](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md).
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

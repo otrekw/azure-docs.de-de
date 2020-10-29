@@ -4,16 +4,18 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377402"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173999"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
 Azure Backup enthält mehrere Sicherheitslösungen, deren Einsatz von den Anforderungen an die Sicherheit und der Infrastrukturtopologie (lokal oder Azure) abhängt. Alle Benutzer und Administratoren der Sicherung sollten die Vorgänge in allen Lösungen verfolgen können und in wichtigen Fällen benachrichtigt werden. In diesem Artikel werden die Überwachungs- und Benachrichtigungsfunktionen in Azure Backup näher erläutert.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Sicherungsaufträge im Recovery Services-Tresor
 
@@ -36,6 +38,9 @@ Aufträge aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure
 > Azure-Workloads wie SQL- und SAP HANA-Sicherungen in Azure-VMs umfassen viele Sicherungsaufträge. Protokollsicherungen können beispielsweise alle 15 Minuten ausgeführt werden. Für solche Datenbankworkloads werden darum nur vom Benutzer ausgelöste Vorgänge angezeigt. Geplante Sicherungsvorgänge werden nicht angezeigt.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Sicherungswarnungen im Recovery Services-Tresor
+
+> [!NOTE]
+> Das Anzeigen von Warnungen für verschiedene Tresore wird in Backup Center derzeit nicht unterstützt. Sie müssen zu einem einzelnen Tresor navigieren, um Warnungen für diesen Tresor anzuzeigen.
 
 Bei Warnungen handelt es sich in erster Linie um Szenarios, in denen Benutzer benachrichtigt werden, damit Sie entsprechende Maßnahmen ergreifen können. Im Abschnitt **Sicherungswarnungen** werden die von Azure Backup generierten Warnungen angezeigt. Diese Warnungen werden vom Dienst definiert. Es können keine benutzerdefinierten Warnungen erstellt werden.
 
@@ -76,7 +81,7 @@ Diese Ausnahmen wurden eingeführt, da das Ergebnis der oben aufgeführten Vorg�
 
 Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 
-- **Kritisch**: Im Prinzip führt jeder Fehler bei der Sicherung oder Wiederherstellung (geplant oder vom Benutzer ausgelöst) zu einer Warnung, die als „Kritisch“ angezeigt wird. Das gilt auch für destruktive Vorgänge wie das Löschen der Sicherung.
+- **Kritisch** : Im Prinzip führt jeder Fehler bei der Sicherung oder Wiederherstellung (geplant oder vom Benutzer ausgelöst) zu einer Warnung, die als „Kritisch“ angezeigt wird. Das gilt auch für destruktive Vorgänge wie das Löschen der Sicherung.
 - **Warnung:** Wenn der Sicherungsvorgang erfolgreich durchgeführt wurde, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt. Warnungen sind zurzeit nur für Sicherungen des Azure Backup-Agents verfügbar.
 - **Informativ:** Derzeit werden keine informativen Warnungen von Azure Backup generiert.
 
@@ -100,7 +105,7 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 
 ## <a name="inactivating-alerts"></a>Deaktivieren von Warnungen
 
-Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren**. Wenn Sie diese Schaltfläche auswählen, ändert sich der Status der Warnung zu **Inaktiv**. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
+Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren** . Wenn Sie diese Schaltfläche auswählen, ändert sich der Status der Warnung zu **Inaktiv** . Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
 
 ![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

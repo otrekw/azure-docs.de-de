@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273312"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101782"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce Sandbox für die automatische Benutzerbereitstellung
 
@@ -55,9 +55,9 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für Salesforce Sandbox aktivieren.
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen** .
 
-1. Wenn Sie Salesforce Sandbox bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Salesforce Sandbox-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Salesforce Sandbox**. Wählen Sie „Salesforce Sandbox“ in den Suchergebnissen aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
+1. Wenn Sie Salesforce Sandbox bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Salesforce Sandbox-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Salesforce Sandbox** . Wählen Sie „Salesforce Sandbox“ in den Suchergebnissen aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
 
 1. Wählen Sie Ihre Salesforce Sandbox-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
 
@@ -71,35 +71,35 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
    
     b. Geben Sie im Textfeld **Administratorkennwort** das Kennwort für dieses Konto ein.
 
-1. Um Ihr Salesforce Sandbox-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce Sandbox-Administratorkonto an. Klicken Sie in der rechten oberen Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen**.
+1. Um Ihr Salesforce Sandbox-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce Sandbox-Administratorkonto an. Klicken Sie in der rechten oberen Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen** .
 
-     ![Aktivieren der automatischen Benutzerbereitstellung](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatische Benutzerbereitstellung aktivieren")
+     ![Screenshot: Ausgewählter Link „Einstellungen“](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatische Benutzerbereitstellung aktivieren")
 
-1. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen**, um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen**.
+1. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen** , um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen** .
   
-    ![Aktivieren der automatischen Benutzerbereitstellung](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatische Benutzerbereitstellung aktivieren")
+    ![Screenshot: Ausgewählte Option „Reset My Security Token “ (Mein Sicherheitstoken zurücksetzen) unter „My Personal Information“ (Meine persönlichen Informationen)](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatische Benutzerbereitstellung aktivieren")
 
-1. Klicken Sie auf der Seite **Sicherheitstoken zurücksetzen** auf die Schaltfläche **Sicherheitstoken zurücksetzen**.
+1. Klicken Sie auf der Seite **Sicherheitstoken zurücksetzen** auf die Schaltfläche **Sicherheitstoken zurücksetzen** .
 
-    ![Aktivieren der automatischen Benutzerbereitstellung](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatische Benutzerbereitstellung aktivieren")
+    ![Screenshot: Seite „Rest Security Token“ (Sicherheitstoken zurücksetzen) mit erklärendem Text und der Option „Rest Security Token“ (Sicherheitstoken zurücksetzen)](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatische Benutzerbereitstellung aktivieren")
 
 1. Überprüfen Sie den E-Mail-Posteingang dieses Administratorkontos. Achten Sie auf eine E-Mail von „Salesforce Sandbox.com“, die das neue Sicherheitstoken enthält.
 
 1. Kopieren Sie das Token, wechseln Sie zu Ihrem Azure AD-Fenster, und fügen Sie es in das Feld **Geheimes Token** ein.
 
-1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce Sandbox-App herstellen kann.
+1. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce Sandbox-App herstellen kann.
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
-1. Klicken Sie auf **Speichern**.  
+1. Klicken Sie auf **Speichern** .  
     
 1.  Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Salesforce Sandbox synchronisieren** aus.
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Salesforce Sandbox synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Salesforce Sandbox für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-1. Um den Azure AD-Bereitstellungsdienst für Salesforce Sandbox zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**.
+1. Um den Azure AD-Bereitstellungsdienst für Salesforce Sandbox zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein** .
 
-1. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern** .
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Salesforce Sandbox im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in der Salesforce Sandbox-App ausgeführt werden.
 

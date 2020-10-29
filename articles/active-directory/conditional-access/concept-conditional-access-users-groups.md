@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145425"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366359"
 ---
 # <a name="conditional-access-users-and-groups"></a>Bedingter Zugriff: Benutzer und Gruppen
 
@@ -46,13 +46,13 @@ Beim Erstellen einer Richtlinie für bedingten Zugriff sind die folgenden Option
 > Wenn Benutzer oder Gruppen zu mehr als 2048 Gruppen gehören, kann ihr Zugriff blockiert werden. Diese Begrenzung gilt sowohl für die direkte als auch für die geschachtelte Gruppenmitgliedschaft.
 
 > [!WARNING]
-> Richtlinien für bedingten Zugriff unterstützen keine Benutzer, die einer [auf eine Verwaltungseinheit beschränkten](../users-groups-roles/roles-admin-units-assign-roles.md) Verzeichnisrolle zugewiesen sind. Das gleiche gilt für Benutzer, die Verzeichnisrollen zugewiesen sind, die sich direkt auf ein Objekt beziehen (z.B. über [benutzerdefinierte Rollen](../users-groups-roles/roles-create-custom.md)).
+> Richtlinien für bedingten Zugriff unterstützen keine Benutzer, die einer [auf eine Verwaltungseinheit beschränkten](../roles/admin-units-assign-roles.md) Verzeichnisrolle zugewiesen sind. Das gleiche gilt für Benutzer, die Verzeichnisrollen zugewiesen sind, die sich direkt auf ein Objekt beziehen (z.B. über [benutzerdefinierte Rollen](../roles/custom-create.md)).
 
 ## <a name="exclude-users"></a>Ausschließen von Benutzern
 
 Wenn Organisationen einen Benutzer oder eine Gruppe sowohl ein- als auch ausschließen, wird der Benutzer oder die Gruppe von der Richtlinie ausgeschlossen, da eine Ausschlussaktion das Einschließen in die Richtlinie außer Kraft setzt. Ausschlüsse werden häufig für Notfallzugriffskonten verwendet. Weitere Informationen zu Notfallzugriffskonten und warum sie wichtig sind, finden Sie in den folgenden Artikeln: 
 
-* [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md)
 * [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 Beim Erstellen einer Richtlinie für bedingten Zugriff sind die folgenden Optionen zum Ausschließen verfügbar.

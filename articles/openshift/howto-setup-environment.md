@@ -8,14 +8,20 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189c0902e694dc49d81a48433e3269e9f2a438c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470033"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216877"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 wird zum 30. Juni 2022 eingestellt. Unterstützung für die Erstellung neuer Azure Red Hat OpenShift 3.11-Cluster wird bis zum 30. November 2020 bereitgestellt. Nach der Einstellung werden die verbleibenden Azure Red Hat OpenShift 3.11-Cluster abgeschaltet, um Sicherheitsrisiken zu vermeiden.
+> 
+> Führen Sie die Schritte in diesem Leitfaden aus, um [einen Azure Red Hat OpenShift 4-Cluster zu erstellen](tutorial-create-cluster.md).
+> Wenn Sie spezielle Fragen haben, [kontaktieren Sie uns](mailto:arofeedback@microsoft.com).
 
 Für die Erstellung und Ausführung von Microsoft Azure Red Hat OpenShift-Anwendungen müssen Sie folgende Vorbereitungen treffen:
 
@@ -39,7 +45,7 @@ Die erste Zeile der Ausgabe zeigt die Version der Befehlszeilenschnittstelle, z.
 
 Wenn Sie eine Neuinstallation oder ein Upgrade benötigen, sehen Sie sich die Anweisungen zum [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) an.
 
-Alternativ können Sie auch die [Azure Cloud Shell](../cloud-shell/overview.md) verwenden. Wenn Sie die Azure Cloud Shell verwenden, stellen Sie sicher, dass die **Bash**-Umgebung ausgewählt ist, wenn Sie der Tutorialreihe [Erstellen und Verwalten eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) folgen möchten.
+Alternativ können Sie auch die [Azure Cloud Shell](../cloud-shell/overview.md) verwenden. Wenn Sie die Azure Cloud Shell verwenden, stellen Sie sicher, dass die **Bash** -Umgebung ausgewählt ist, wenn Sie der Tutorialreihe [Erstellen und Verwalten eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) folgen möchten.
 
 ## <a name="register-providers-and-features"></a>Registrieren von Anbietern und Features
 

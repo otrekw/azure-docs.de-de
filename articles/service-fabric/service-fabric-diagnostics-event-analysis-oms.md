@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257666"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329558"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen
  Azure Monitor-Protokolle sammeln und analysieren Telemetriedaten von Anwendungen und Diensten, die in der Cloud gehostet werden. Darüber hinaus sind Analysetools verfügbar, um die Verfügbarkeit und Leistung dieser Anwendungen und Dienste maximieren zu können. In diesem Artikel wird beschrieben, wie Sie Abfragen in Azure Monitor-Protokolle ausführen, um einen Einblick in den Cluster zu erhalten und Probleme zu beheben. Folgende allgemeine Fragen werden berücksichtigt:
@@ -28,7 +28,7 @@ ms.locfileid: "86257666"
 
 Azure Monitor-Protokolle sammeln Daten von verwalteten Ressourcen, z.B. von einer Azure Storage-Tabelle oder einem Agent, und verwalten sie in einem zentralen Repository. Die Daten können dann für Analyse, Warnungen und Visualisierung oder für den weiteren Export verwendet werden. Azure Monitor-Protokolle unterstützen Ereignisse, Leistungsdaten oder jegliche anderen benutzerdefinierten Daten. Überprüfen Sie die [Schritte zum Konfigurieren der Diagnoseerweiterung zum Aggregieren von Ereignissen](service-fabric-diagnostics-event-aggregation-wad.md) und die [Schritte zum Erstellen eines Log Analytics-Arbeitsbereichs zum Lesen der Ereignisse im Speicher](service-fabric-diagnostics-oms-setup.md), um sicherzustellen, dass Daten in Azure Monitor-Protokolle geschrieben werden.
 
-Nachdem Daten von Azure Monitor-Protokollen empfangen wurden, verfügt Azure über mehrere *Überwachungslösungen*. Dabei handelt es sich um vorkonfigurierte Lösungen oder operative Dashboards zum Überwachen eingehender Daten, die an verschiedene Szenarien angepasst sind. Dazu gehören eine *Service Fabric-Analyselösung* und eine *Containerlösung*. Dies sind die beiden wichtigsten Lösungen für die Diagnose und Überwachung bei Verwendung von Service Fabric-Clustern. In diesem Artikel wird die Verwendung der Service Fabric-Analyse-Lösung beschrieben, die im Arbeitsbereich erstellt wird.
+Nachdem Daten von Azure Monitor-Protokollen empfangen wurden, verfügt Azure über mehrere *Überwachungslösungen* . Dabei handelt es sich um vorkonfigurierte Lösungen oder operative Dashboards zum Überwachen eingehender Daten, die an verschiedene Szenarien angepasst sind. Dazu gehören eine *Service Fabric-Analyselösung* und eine *Containerlösung* . Dies sind die beiden wichtigsten Lösungen für die Diagnose und Überwachung bei Verwendung von Service Fabric-Clustern. In diesem Artikel wird die Verwendung der Service Fabric-Analyse-Lösung beschrieben, die im Arbeitsbereich erstellt wird.
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Zugriff auf die Service Fabric-Analyse-Lösung
 
@@ -36,13 +36,13 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Ressourcengrup
 
 Wählen Sie die Ressource **ServiceFabric\<nameOfOMSWorkspace\>** aus.
 
-In `Summary` werden Kacheln in Form eines Graphs für jede der aktivierten Lösungen angezeigt, dies schließt Service Fabric ein. Klicken Sie auf den Graph **Service Fabric**, um mit der Service Fabric-Analyse-Lösung fortzufahren.
+In `Summary` werden Kacheln in Form eines Graphs für jede der aktivierten Lösungen angezeigt, dies schließt Service Fabric ein. Klicken Sie auf den Graph **Service Fabric** , um mit der Service Fabric-Analyse-Lösung fortzufahren.
 
 ![Service Fabric-Lösung](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
 In der folgenden Abbildung ist die Startseite der Service Fabric-Analyse-Lösung dargestellt. Diese Startseite bietet eine Momentaufnahmeansicht der Vorgänge im Cluster.
 
-![Service Fabric-Lösung](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Screenshot: Startseite der Service Fabric-Analyse-Lösung](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  Wenn Sie die Diagnose bei der Clustererstellung aktiviert haben, werden folgende Ereignisse angezeigt: 
 
@@ -55,11 +55,11 @@ In der folgenden Abbildung ist die Startseite der Service Fabric-Analyse-Lösung
 
 ## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Anzeigen von Service Fabric-Ereignissen einschließlich Aktionen auf Knoten
 
-Klicken Sie auf der Seite „Service Fabric-Analyse“ auf den Graphen für **Service Fabric-Ereignisse**.
+Klicken Sie auf der Seite „Service Fabric-Analyse“ auf den Graphen für **Service Fabric-Ereignisse** .
 
 ![Service Fabric-Lösung – Betriebskanal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-Klicken Sie auf **Liste**, um die Ereignisse in einer Liste anzuzeigen. In der Liste werden alle gesammelten Systemereignisse angezeigt. Zur Referenz: Diese stammen aus **WADServiceFabricSystemEventsTable** im Azure Storage-Konto. Auch die Reliable Services- und Reliable Actors-Ereignisse, die als Nächstes angezeigt werden, stammen aus diesen entsprechenden Tabellen.
+Klicken Sie auf **Liste** , um die Ereignisse in einer Liste anzuzeigen. In der Liste werden alle gesammelten Systemereignisse angezeigt. Zur Referenz: Diese stammen aus **WADServiceFabricSystemEventsTable** im Azure Storage-Konto. Auch die Reliable Services- und Reliable Actors-Ereignisse, die als Nächstes angezeigt werden, stammen aus diesen entsprechenden Tabellen.
     
 ![Abfrage – Betriebskanal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
@@ -74,11 +74,11 @@ Sie können Abfragen für viele weitere Felder durchführen, z. B. für bestimm
 
 ## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Anzeigen von Service Fabric Reliable Service- und Reliable Actor-Ereignissen
 
-Klicken Sie auf der Seite „Service Fabric-Analyse“ auf den Graphen für **Reliable Services**.
+Klicken Sie auf der Seite „Service Fabric-Analyse“ auf den Graphen für **Reliable Services** .
 
 ![Service Fabric-Lösung – Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-Klicken Sie auf **Liste**, um die Ereignisse in einer Liste anzuzeigen. Hier werden Ereignisse aus den zuverlässigen Diensten angezeigt. Es werden unterschiedliche Ereignisse für den Start und das Ende des runasync-Diensts angezeigt. Dies erfolgt normalerweise bei Bereitstellungen und Upgrades. 
+Klicken Sie auf **Liste** , um die Ereignisse in einer Liste anzuzeigen. Hier werden Ereignisse aus den zuverlässigen Diensten angezeigt. Es werden unterschiedliche Ereignisse für den Start und das Ende des runasync-Diensts angezeigt. Dies erfolgt normalerweise bei Bereitstellungen und Upgrades. 
 
 ![Abfrage – Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277303"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475327"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -39,7 +39,7 @@ Bei Linux und anderen nicht unterstützten Plattformen, bei denen die Datei „S
 
 Die hier aufgeführten vier Anwendungstypen nutzen standardmäßig die 32-Bit-Hostverarbeitung. Um die Hostverarbeitung für Ihren Anwendungstyp auf die 64-Bit-Verarbeitung umzustellen, führen Sie die folgenden Schritte aus:
 
-- **Für ausführbare Anwendungen:** Legen Sie im Fenster **Projekteigenschaften** im Bereich **Build** das [Plattformziel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) auf **x64** fest.
+- **Für ausführbare Anwendungen:** Legen Sie im Fenster **Projekteigenschaften** im Bereich **Build** das [Plattformziel](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) auf **x64** fest.
 
 - **Für VSTest-basierte Testprojekte:** Wählen Sie im Visual Studio-Menü **Testen** die Optionen **Testen** > **Testeinstellungen** aus, und legen Sie dann **Standardmäßige Prozessorarchitektur** auf **X64** fest.
 
@@ -53,7 +53,7 @@ Die hier aufgeführten vier Anwendungstypen nutzen standardmäßig die 32-Bit-Ho
     
 **Aktivieren der serverseitigen Garbage Collection**
 
-In einigen Fällen kann es hilfreich sein, die Häufigkeit zu verringern, mit der die Garbage Collection ausgeführt wird. Legen Sie [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) in .NET auf `true` fest.
+In einigen Fällen kann es hilfreich sein, die Häufigkeit zu verringern, mit der die Garbage Collection ausgeführt wird. Legen Sie [gcServer](/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) in .NET auf `true` fest.
 
 **Erweitern Ihrer Clientworkload**
 
@@ -86,8 +86,8 @@ Bei der Ausführung über das TCP-Protokoll optimiert der Client die Latenz mith
 
 Wenn Sie in Szenarien mit geringem Zugriff eine im Vergleich zum Zugriff im Gatewaymodus höhere Anzahl von Verbindungen feststellen, haben Sie folgende Möglichkeiten:
 
-* Legen Sie die Eigenschaft [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) auf `PrivatePortPool` fest (gültig ab Frameworkversion 4.6.1 und ab .NET Core-Version 2.0). Über diese Eigenschaft kann das SDK einen kleinen Pool von kurzlebigen Ports für verschiedene Azure Cosmos DB-Zielendpunkte verwenden.
-* Konfigurieren Sie die Eigenschaft [CosmosClientOptions.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) so, dass sie mindestens zehn Minuten beträgt. Empfohlene Werte reichen von 20 Minuten bis 24 Stunden.
+* Legen Sie die Eigenschaft [CosmosClientOptions.PortReuseMode](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) auf `PrivatePortPool` fest (gültig ab Frameworkversion 4.6.1 und ab .NET Core-Version 2.0). Über diese Eigenschaft kann das SDK einen kleinen Pool von kurzlebigen Ports für verschiedene Azure Cosmos DB-Zielendpunkte verwenden.
+* Konfigurieren Sie die Eigenschaft [CosmosClientOptions.IdleConnectionTimeout](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) so, dass sie mindestens zehn Minuten beträgt. Empfohlene Werte reichen von 20 Minuten bis 24 Stunden.
 
 <a id="same-region"></a>
 
@@ -103,7 +103,7 @@ Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gle
 
 **Erhöhen der Anzahl von Threads/Aufgaben**
 
-Da Azure Cosmos DB-Aufrufe über das Netzwerk erfolgen, müssen Sie eventuell den Parallelitätsgrad Ihrer Anforderungen variieren, um die Wartezeit für die Clientanwendung zwischen Anforderungen auf ein Minimum zu reduzieren. Erstellen Sie beispielsweise bei Verwendung der [Task Parallel Library](https://msdn.microsoft.com//library/dd460717.aspx) von .NET mehrere Hundert Aufgaben für Lese- und Schreibvorgänge in Azure Cosmos DB.
+Da Azure Cosmos DB-Aufrufe über das Netzwerk erfolgen, müssen Sie eventuell den Parallelitätsgrad Ihrer Anforderungen variieren, um die Wartezeit für die Clientanwendung zwischen Anforderungen auf ein Minimum zu reduzieren. Erstellen Sie beispielsweise bei Verwendung der [Task Parallel Library](/dotnet/standard/parallel-programming/task-parallel-library-tpl) von .NET mehrere Hundert Aufgaben für Lese- und Schreibvorgänge in Azure Cosmos DB.
 
 **Aktivieren des beschleunigten Netzwerkbetriebs**
  
@@ -146,7 +146,7 @@ Aktivieren Sie die *Massenbearbeitung* für Szenarien, in denen die Workload ein
 
 **Erhöhen von System.Net MaxConnections pro Host bei Verwendung des Gatewaymodus**
 
-Azure Cosmos DB-Anforderungen erfolgen im Gatewaymodus über HTTPS/REST. Sie unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren Wert für `MaxConnections` festlegen (100 bis 1.000), damit die Clientbibliothek mehrere Verbindungen mit Azure Cosmos DB gleichzeitig nutzen kann. In .NET SDK 1.8.0 und höher ist der Standardwert für [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) „50“. Zum Ändern des Werts können Sie [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) auf einen höheren Wert festlegen.
+Azure Cosmos DB-Anforderungen erfolgen im Gatewaymodus über HTTPS/REST. Sie unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren Wert für `MaxConnections` festlegen (100 bis 1.000), damit die Clientbibliothek mehrere Verbindungen mit Azure Cosmos DB gleichzeitig nutzen kann. In .NET SDK 1.8.0 und höher ist der Standardwert für [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) „50“. Zum Ändern des Werts können Sie [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) auf einen höheren Wert festlegen.
 
 **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
@@ -170,7 +170,7 @@ Parallele Abfragen bieten zwei Parameter, die Sie an Ihre Anforderungen anpassen
 
 Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Werden Anforderungen gedrosselt, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. 
 
-Weitere Informationen finden Sie unter [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Weitere Informationen finden Sie unter [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Es gibt einen Mechanismus zum Protokollieren zusätzlicher Diagnoseinformationen und zum Beheben von Problemen mit der Wartezeit, wie im folgenden Beispiel gezeigt. Sie können die Diagnosezeichenfolge für Anforderungen protokollieren, die eine höhere Leselatenz aufweisen. Mithilfe der erfassten Diagnosezeichenfolge können Sie ermitteln, wie häufig bei einer bestimmten Anforderung der Fehler *429* aufgetreten ist.
 

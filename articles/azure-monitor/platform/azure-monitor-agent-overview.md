@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263775"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132702"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
@@ -84,7 +84,7 @@ Der Azure Monitor-Agent sendet Daten an Azure Monitor-Metriken oder an einen L
 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Log Analytics-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](agents-overview.md#supported-operating-systems).
+Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Azure Monitor-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](agents-overview.md#supported-operating-systems).
 
 
 

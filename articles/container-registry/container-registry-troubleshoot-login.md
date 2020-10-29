@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253353"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148451"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -56,7 +56,7 @@ Verwandte Links:
 
 ### <a name="specify-correct-registry-name"></a>Angeben des richtigen Registrierungsnamens
 
-Wenn Sie `docker login` verwenden, geben Sie den vollständigen Anmeldeservernamen der Registrierung an, z. B. *myregistry.azurecr.io*. Stellen Sie sicher, dass Sie nur Kleinbuchstaben verwenden. Beispiel:
+Wenn Sie `docker login` verwenden, geben Sie den vollständigen Anmeldeservernamen der Registrierung an, z. B. *myregistry.azurecr.io* . Stellen Sie sicher, dass Sie nur Kleinbuchstaben verwenden. Beispiel:
 
 ```console
 docker login myregistry.azurecr.io
@@ -95,7 +95,7 @@ Verwandte Links:
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Bestätigen, dass die Anmeldeinformationen für den Zugriff auf die Registrierung autorisiert sind
 
-Bestätigen Sie die Registrierungsberechtigungen, die mit den Anmeldeinformationen verknüpft sind, z. B. die RBAC-Rolle `AcrPull`, um Images aus der Registry zu pullen, oder die Rolle `AcrPush`, um Images zu pushen. 
+Überprüfen Sie die Registrierungsberechtigungen, die mit den Anmeldeinformationen verknüpft sind, z. B. die Azure-Rolle `AcrPull` zum Pullen von Images aus der Registrierung und die Rolle `AcrPush` zum Pushen von Images. 
 
 Zugriff auf eine Registrierung im Portal oder die Registrierungsverwaltung über die Azure CLI erfordert mindestens die Rolle `Reader`, um Azure Resource Manager-Vorgänge auszuführen.
 
@@ -103,7 +103,7 @@ Sie oder ein Registrierungsbesitzer müssen über ausreichende Berechtigungen im
 
 Verwandte Links:
 
-* [RBAC-Rollen und -Berechtigungen: Azure Container Registry](container-registry-roles.md)
+* [Azure Container Registry: Rollen und Berechtigungen](container-registry-roles.md)
 * [Anmelden mit einem Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md)
 * [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md)
 * [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ Wenn Sie Ihr Problem hier nicht lösen können, sehen Sie sich die folgenden Opt
   * [Beheben von Netzwerkproblemen mit der Registrierung](container-registry-troubleshoot-access.md)
   * [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 * [Optionen für Support durch die Community](https://azure.microsoft.com/support/community/)
-* [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A (Fragen und Antworten)](/answers/products/)
 * [Öffnen eines Supporttickets](https://azure.microsoft.com/support/create-ticket/): Basierend auf den von Ihnen bereitgestellten Informationen kann eine schnelle Diagnose für Authentifizierungsfehler in Ihrer Registrierung ausgeführt werden.
-
-

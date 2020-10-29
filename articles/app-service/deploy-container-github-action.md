@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893355"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203193"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Bereitstellen eines benutzerdefinierten Containers in App Service mithilfe von GitHub-Aktionen
 
@@ -33,7 +33,7 @@ Bei einem Azure App Service-Containerworkflow umfasst die Datei drei Abschnitte:
 - Ein Azure-Konto mit einem aktiven Abonnement. [Kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Ein GitHub-Konto. Falls Sie noch nicht über ein Konto verfügen, können Sie sich [kostenlos](https://github.com/join) registrieren.  
 - Eine funktionierende Containerregistrierung und eine Azure App Service-App für Container. In diesem Beispiel wird Azure Container Registry verwendet. 
-    - [Hier erfahren Sie, wie Sie eine Node.js-Containeranwendung mithilfe von Docker zu erstellen, das Containerimage in eine Registrierung pushen und das Image dann in Azure App Service bereitzustellen.](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [Hier erfahren Sie, wie Sie eine Node.js-Containeranwendung mithilfe von Docker zu erstellen, das Containerimage in eine Registrierung pushen und das Image dann in Azure App Service bereitzustellen.](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
 ## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
 
@@ -47,7 +47,7 @@ Ein Veröffentlichungsprofil stellt Anmeldeinformationen auf App-Ebene dar. Rich
 
 1. Wechseln Sie im Azure-Portal zu Ihrem App Service. 
 
-1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen**.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen** .
 
 1. Speichern Sie die heruntergeladene Datei. Zum Erstellen eines GitHub-Geheimnisses verwenden Sie den Inhalt der Datei.
 
@@ -100,7 +100,7 @@ Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen
 
 Um [Anmeldeinformationen auf App-Ebene](#generate-deployment-credentials) zu verwenden, fügen Sie den Inhalt der heruntergeladenen Veröffentlichungsprofildatei in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_WEBAPP_PUBLISH_PROFILE`.
 
-Wenn Sie Ihren GitHub-Workflow konfigurieren, verwenden Sie `AZURE_WEBAPP_PUBLISH_PROFILE` in der Bereitstellungsaktion für die Azure-Web-App. Beispiel:
+Wenn Sie Ihren GitHub-Workflow konfigurieren, verwenden Sie `AZURE_WEBAPP_PUBLISH_PROFILE` in der Bereitstellungsaktion für die Azure-Web-App. Zum Beispiel:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Bereitstellung in einem App Service-Container
 
-Um Ihr Image in einem benutzerdefinierten Container in App Service bereitzustellen, verwenden Sie die Aktion `azure/webapps-deploy@v2`. Diese Aktion umfasst fünf Parameter:
+Um Ihr Image in einem benutzerdefinierten Container in App Service bereitzustellen, verwenden Sie die Aktion `azure/webapps-deploy@v2`. Diese Aktion umfasst sieben Parameter:
 
 | **Parameter**  | **Erklärung**  |
 |---------|---------|
 | **app-name** | (Erforderlich): Name der App Service-App. | 
-| **publish-profile** | (Optional) Veröffentlichungsprofil-Dateiinhalte mit Web Deploy-Geheimnissen. |
-| **images** | Der vollqualifizierte Name der Containerimages. Beispiel: „myregistry.azurecr.io/nginx:latest“ oder „python:3.7.2-alpine/“. In einem Szenario mit mehreren Containern können mehrere Namen von Containerimages angegeben werden (mehrere getrennte Zeilen). |
+| **publish-profile** | (Optional) Gilt für Web-Apps(Windows und Linux) und Web-App-Container (Linux). Szenarien mit mehreren Containern werden nicht unterstützt. Veröffentlichungsprofil-Dateiinhalte (\*.publishsettings) mit Web Deploy-Geheimnissen | 
 | **slot-name** | (Optional): Geben Sie einen vorhandene Slot ein, bei dem es sich nicht um den Produktionsslot handelt. |
-| **configuration-file** | (Optional): Der Pfad der Docker-Compose-Datei |
+| **package** | (Optional) Gilt nur für Web-App: Pfad zum Paket oder Ordner. \*.zip, \*.war, \*.jar oder ein Ordner für die Bereitstellung |
+| **images** | (Erforderlich) Gilt nur für Web-App-Container: Geben Sie den vollqualifizierten Namen des bzw. der Containerimages an. Beispiel: „myregistry.azurecr.io/nginx:latest“ oder „python:3.7.2-alpine/“. Für eine App mit mehreren Containern können mehrere Namen von Containerimages angegeben werden (mehrere getrennte Zeilen). |
+| **configuration-file** | (Optional) Gilt nur für Web-App-Container: Der Pfad der Docker-Compose-Datei. Es muss sich um einen vollqualifizierten Pfad oder einen Pfad relativ zum Standardarbeitsverzeichnis handeln. Dieser Parameter ist beim Konfigurieren von Apps mit mehreren Containern erforderlich. |
+| **startup-command** | (Optional): Geben Sie den Startbefehl ein. Beispiel: „dotnet run“ oder „dotnet filename.dll“. |
 
 # <a name="publish-profile"></a>[Veröffentlichungsprofil](#tab/publish-profile)
 

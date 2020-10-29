@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 89a87cd881689f58bbc4d2b4bf2a63a992e8dae9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206202"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461633"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
 
@@ -260,7 +260,7 @@ Bleiben Sie gesund!
 **Neue Features**
 - Linux: Unterstützung für Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 mit [Anweisungen](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) zum Konfigurieren des Systems für Speech SDK hinzugefügt.
 - Linux: Unterstützung für .NET Core C# unter Linux ARM32 und ARM64 hinzugefügt. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
-- C#, C++: `UtteranceId` in `ConversationTranscriptionResult` hinzugefügt. Dies ist eine konsistente ID für alle Spracherkennungs-Zwischenergebnisse und -Endergebnisse. Ausführlichere Informationen für [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet) und [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
+- C#, C++: `UtteranceId` in `ConversationTranscriptionResult` hinzugefügt. Dies ist eine konsistente ID für alle Spracherkennungs-Zwischenergebnisse und -Endergebnisse. Ausführlichere Informationen für [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet&preserve-view=true) und [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
 - Python: Unterstützung für `Language ID` wurde hinzugefügt. Siehe „speech_sample.py“ im [GitHub-Repository](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 - Windows: Unterstützung für komprimierte Audioeingabeformate auf der Windows-Plattform für alle Win32-Konsolenanwendungen hinzugefügt. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
 - JavaScript: Unterstützung von Sprachsynthese (Text-to-Speech) in NodeJS. [Hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)erhalten Sie weitere Informationen. 
@@ -268,7 +268,7 @@ Bleiben Sie gesund!
         
 **Fehlerbehebungen**
 - C#, C++: Es wurde ein Problem behoben, sodass `SendMessageAsync` jetzt binäre Nachrichten als binären Typ sendet. Ausführlichere Informationen für [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_) und [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection).
-- C#, C++: Es wurde das Problem behoben, dass die Verwendung des `Connection MessageReceived`-Ereignisses einen Absturz verursachen kann, wenn `Recognizer` vor dem `Connection`-Objekt verworfen wird. Ausführlichere Informationen für [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet) und [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
+- C#, C++: Es wurde das Problem behoben, dass die Verwendung des `Connection MessageReceived`-Ereignisses einen Absturz verursachen kann, wenn `Recognizer` vor dem `Connection`-Objekt verworfen wird. Ausführlichere Informationen für [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet&preserve-view=true) und [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
 - Android: Die Audiopuffergröße des Mikrofons wurde von 800 ms auf 100 ms verringert, um die Wartezeit zu reduzieren.
 - Android: Es wurde ein [Problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) beim x86-Android-Emulator in Android Studio behoben.
 - JavaScript: Unterstützung für Regionen in China mit der `fromSubscription`-API hinzugefügt. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-). 

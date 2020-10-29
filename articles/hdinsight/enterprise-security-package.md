@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 91fa6a8da555d0b0cc79b262a83306c1f72aa68a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8801929412da614784c76dbdf7c8282b31364409
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567094"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327891"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Enterprise-Sicherheitspaket für Azure HDInsight
 
@@ -20,7 +20,7 @@ Enterprise Security für HDInsight ist ein optionales Paket, das Sie während de
 
 * Integration in Active Directory für die Authentifizierung
 
-    Bisher erstellten Sie HDInsight-Cluster ausschließlich mit einem lokalen Administratorbenutzer oder einem lokalen SSH-Benutzer. Der lokale Administratorbenutzer kann auf alle Dateien, Ordner, Tabellen und Spalten zugreifen.  Mit dem Enterprise-Sicherheitspaket können Sie die rollenbasierte Zugriffssteuerung aktivieren, indem Sie HDInsight mit Ihrem Azure Active Directory Domain Services integrieren.
+    Bisher erstellten Sie HDInsight-Cluster ausschließlich mit einem lokalen Administratorbenutzer oder einem lokalen SSH-Benutzer. Der lokale Administratorbenutzer kann auf alle Dateien, Ordner, Tabellen und Spalten zugreifen.  Mit dem Enterprise-Sicherheitspaket können Sie die rollenbasierte Zugriffssteuerung in Azure aktivieren, indem Sie HDInsight mit Ihren Azure Active Directory Domain Services integrieren.
 
     Weitere Informationen finden Sie unter
 

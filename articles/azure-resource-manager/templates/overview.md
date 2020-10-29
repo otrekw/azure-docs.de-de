@@ -3,12 +3,12 @@ title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen für die Bereitstellung von Ressourcen
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119360"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280041"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
@@ -22,17 +22,17 @@ Verwenden Sie Azure Resource Manager-Vorlagen (ARM), um Infrastructure-as-Code f
 
 Bei der Entscheidung zwischen ARM-Vorlagen und einem der anderen Infrastructure-as-Code-Dienste sollten Sie die folgenden Vorteile von Vorlagen berücksichtigen:
 
-* **Deklarative Syntax**: Mit ARM-Vorlagen können Sie eine gesamte Azure-Infrastruktur deklarativ erstellen und bereitstellen. Sie können beispielsweise nicht nur virtuelle Computer bereitstellen, sondern auch die Netzwerkinfrastruktur, die Speichersysteme und alle anderen Ressourcen, die Sie möglicherweise benötigen.
+* **Deklarative Syntax** : Mit ARM-Vorlagen können Sie eine gesamte Azure-Infrastruktur deklarativ erstellen und bereitstellen. Sie können beispielsweise nicht nur virtuelle Computer bereitstellen, sondern auch die Netzwerkinfrastruktur, die Speichersysteme und alle anderen Ressourcen, die Sie möglicherweise benötigen.
 
-* **Wiederholbare Ergebnisse**: Wiederholtes Bereitstellen Ihrer Infrastruktur während des gesamten Entwicklungslebenszyklus und Gewährleistung, dass Ihre Ressourcen einheitlich bereitgestellt werden. Vorlagen sind idempotent, d. h. Sie können dieselbe Vorlage mehrmals bereitstellen und erhalten immer dieselben Ressourcentypen im selben Zustand. Sie können eine Vorlage entwickeln, die den gewünschten Zustand darstellt, anstatt viele separate Vorlagen zur Darstellung von Aktualisierungen zu entwickeln.
+* **Wiederholbare Ergebnisse** : Wiederholtes Bereitstellen Ihrer Infrastruktur während des gesamten Entwicklungslebenszyklus und Gewährleistung, dass Ihre Ressourcen einheitlich bereitgestellt werden. Vorlagen sind idempotent, d. h. Sie können dieselbe Vorlage mehrmals bereitstellen und erhalten immer dieselben Ressourcentypen im selben Zustand. Sie können eine Vorlage entwickeln, die den gewünschten Zustand darstellt, anstatt viele separate Vorlagen zur Darstellung von Aktualisierungen zu entwickeln.
 
 * **Orchestrierung:** Sie müssen sich keine Gedanken über die Komplexität von Bestellvorgängen machen. Resource Manager orchestriert die Bereitstellung voneinander abhängiger Ressourcen, sodass diese in der richtigen Reihenfolge erstellt werden. Wenn möglich, stellt der Resource Manager Ressourcen parallel bereit, sodass Ihre Bereitstellungen schneller abgeschlossen werden als serielle Bereitstellungen. Sie stellen die Vorlage über einen Befehl statt über mehrere imperativer Befehle bereit.
 
    ![Vergleich von Vorlagenbereitstellungen](./media/overview/template-processing.png)
 
-* **Modulare Dateien**: Sie können Ihre Vorlagen in kleinere, wiederverwendbare Komponenten unterteilen und sie zum Zeitpunkt der Bereitstellung miteinander verknüpfen. Sie können eine Vorlage auch in anderen Vorlagen schachteln.
+* **Modulare Dateien** : Sie können Ihre Vorlagen in kleinere, wiederverwendbare Komponenten unterteilen und sie zum Zeitpunkt der Bereitstellung miteinander verknüpfen. Sie können eine Vorlage auch in anderen Vorlagen schachteln.
 
-* **Erstellen jeder Azure-Ressource**: Sie können neue Azure-Dienste und -Features sofort in Vorlagen verwenden. Sobald ein Ressourcenanbieter neue Ressourcen einführt, können Sie diese Ressourcen mithilfe von Vorlagen bereitstellen. Sie müssen nicht warten, bis Tools oder Module aktualisiert werden, bevor Sie die neuen Dienste verwenden.
+* **Erstellen jeder Azure-Ressource** : Sie können neue Azure-Dienste und -Features sofort in Vorlagen verwenden. Sobald ein Ressourcenanbieter neue Ressourcen einführt, können Sie diese Ressourcen mithilfe von Vorlagen bereitstellen. Sie müssen nicht warten, bis Tools oder Module aktualisiert werden, bevor Sie die neuen Dienste verwenden.
 
 * **Erweiterbarkeit:** Mit [Bereitstellungsskripts](deployment-script-template.md) können Sie Ihren Vorlagen PowerShell- oder Bash-Skripts hinzufügen. Die Bereitstellungsskripts erweitern die Möglichkeiten zum Einrichten von Ressourcen während der Bereitstellung. Ein Skript kann in die Vorlage eingeschlossen werden oder in einer externen Quelle gespeichert und in der Vorlage referenziert werden. Mit Bereitstellungsskripts haben Sie die Möglichkeit, die Einrichtung der End-to-End-Umgebung in einer einzelnen ARM-Vorlage abzuschließen.
 
@@ -40,21 +40,21 @@ Bei der Entscheidung zwischen ARM-Vorlagen und einem der anderen Infrastructure-
 
 * **Vorschau der Änderungen:** Sie können den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md) verwenden, um vor der Bereitstellung der Vorlage eine Vorschau der Änderungen anzuzeigen. Mit Was-wäre-wenn können Sie feststellen, welche Ressourcen erstellt, aktualisiert oder gelöscht und welche Ressourceneigenschaften geändert werden. Der Was-wäre-wenn-Vorgang überprüft den aktuellen Zustand Ihrer Umgebung, sodass Sie diesen nicht verwalten müssen.
 
-* **Integrierte Überprüfung**: Ihre Vorlage wird erst bereitgestellt, wenn sie die Überprüfung bestanden hat. Resource Manager überprüft die Vorlage vor Beginn der Bereitstellung, um sicherzustellen, dass die Bereitstellung erfolgreich sein wird. Es ist weniger wahrscheinlich, dass die Bereitstellung in einem halbfertigen Zustand beendet wird.
+* **Integrierte Überprüfung** : Ihre Vorlage wird erst bereitgestellt, wenn sie die Überprüfung bestanden hat. Resource Manager überprüft die Vorlage vor Beginn der Bereitstellung, um sicherzustellen, dass die Bereitstellung erfolgreich sein wird. Es ist weniger wahrscheinlich, dass die Bereitstellung in einem halbfertigen Zustand beendet wird.
 
-* **Nachverfolgte Bereitstellungen**: Im Azure-Portal können Sie den Bereitstellungsverlauf überprüfen und Informationen zur Vorlagenbereitstellung abrufen. Sie können die bereitgestellte Vorlage, die übergebenen Parameterwerte und die Ausgabewerte anzeigen. Andere Infrastructure-as-Code-Dienste werden nicht über das Portal nachverfolgt.
+* **Nachverfolgte Bereitstellungen** : Im Azure-Portal können Sie den Bereitstellungsverlauf überprüfen und Informationen zur Vorlagenbereitstellung abrufen. Sie können die bereitgestellte Vorlage, die übergebenen Parameterwerte und die Ausgabewerte anzeigen. Andere Infrastructure-as-Code-Dienste werden nicht über das Portal nachverfolgt.
 
    ![Bereitstellungsverlauf](./media/overview/deployment-history.png)
 
-* **Richtlinie als Code**: [Azure Policy](../../governance/policy/overview.md) ist eine Richtlinie in Form eines Codeframeworks zum Automatisieren der Governance. Wenn Sie Azure-Richtlinien verwenden, erfolgt die Richtlinienwartung für nicht kompatible Ressourcen bei der Bereitstellung über Vorlagen.
+* **Richtlinie als Code** : [Azure Policy](../../governance/policy/overview.md) ist eine Richtlinie in Form eines Codeframeworks zum Automatisieren der Governance. Wenn Sie Azure-Richtlinien verwenden, erfolgt die Richtlinienwartung für nicht kompatible Ressourcen bei der Bereitstellung über Vorlagen.
 
-* **Bereitstellungsblaupausen**: Sie können von Microsoft bereitgestellte [Blaupausen](../../governance/blueprints/overview.md) nutzen, um gesetzliche Vorgaben und Konformitätsstandards einzuhalten. Diese Blaupausen umfassen vorgefertigte Vorlagen für verschiedene Architekturen.
+* **Bereitstellungsblaupausen** : Sie können von Microsoft bereitgestellte [Blaupausen](../../governance/blueprints/overview.md) nutzen, um gesetzliche Vorgaben und Konformitätsstandards einzuhalten. Diese Blaupausen umfassen vorgefertigte Vorlagen für verschiedene Architekturen.
 
-* **CI/CD-Integration**: Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgaben verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von ARM-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](add-template-to-azure-pipelines.md) und [Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines](./deployment-tutorial-pipeline.md).
+* **CI/CD-Integration** : Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgaben verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von ARM-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](add-template-to-azure-pipelines.md) und [Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines](./deployment-tutorial-pipeline.md).
 
-* **Exportierbarer Code**: Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](export-template-portal.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
+* **Exportierbarer Code** : Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](export-template-portal.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 
-* **Dokumenterstellungstools**: Sie können Vorlagen mit [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) und der Vorlagentoolerweiterung erstellen. IntelliSense, Syntaxhervorhebung, Inlinehilfe und viele andere Sprachfunktionen stehen Ihnen zur Verfügung. Zusätzlich zu Visual Studio Code können Sie auch [Visual Studio](create-visual-studio-deployment-project.md) verwenden.
+* **Dokumenterstellungstools** : Sie können Vorlagen mit [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) und der Vorlagentoolerweiterung erstellen. IntelliSense, Syntaxhervorhebung, Inlinehilfe und viele andere Sprachfunktionen stehen Ihnen zur Verfügung. Zusätzlich zu Visual Studio Code können Sie auch [Visual Studio](create-visual-studio-deployment-project.md) verwenden.
 
 ## <a name="template-file"></a>Vorlagendatei
 

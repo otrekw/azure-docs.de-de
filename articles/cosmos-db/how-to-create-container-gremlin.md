@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 75591fbf9423ec715247af613cd047bf9440525b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 55dabccf5a5ab9e81ff0644056002f3beb644fa9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283164"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491154"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-gremlin-api"></a>Erstellen eines Containers in der Azure Cosmos DB-Gremlin-API
 
-In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Containers in der Azure Cosmos DB-Gremlin-API erläutert. Hier wird gezeigt, wie ein Container mithilfe des Azure-Portals, der Azure CLI, von PowerShell oder unterstützten SDKs erstellt wird. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
+In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Containers in der Azure Cosmos DB-Gremlin-API erläutert. Hier wird gezeigt, wie ein Container mithilfe des Azure-Portals, mit der Azure CLI, PowerShell oder unterstützten SDKs erstellt wird. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
 
 In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Containers in der Azure Cosmos DB-Gremlin-API erläutert. Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Erstellen des Containers unter [Erstellen eines Containers in der Azure Cosmos DB-API für MongoDB](how-to-create-container-mongodb.md), [Erstellen eines Containers in der Azure Cosmos DB-Cassandra-API](how-to-create-container-cassandra.md), [Erstellen eines Containers in der Azure Cosmos DB-Tabellen-API](how-to-create-container-table.md) und [Erstellen eines Azure Cosmos-Containers](how-to-create-container.md).
 
@@ -70,5 +70,4 @@ await client.CreateDocumentCollectionAsync(
 * [Partitioning in Azure Cosmos DB](partitioning-overview.md) (Partitionierung in Azure Cosmos DB)
 * [Anforderungseinheiten in Azure Cosmos DB](request-units.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
-* [Arbeiten mit einem Azure Cosmos-Konto](account-overview.md)
-
+* [Arbeiten mit einem Azure Cosmos-Konto](./account-databases-containers-items.md)

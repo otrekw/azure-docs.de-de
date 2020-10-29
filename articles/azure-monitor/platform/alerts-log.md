@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299419"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217557"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -54,8 +54,8 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 1. Wählen Sie mithilfe der Option [**Zeitraum**](alerts-unified-log.md#query-time-range) den Zeitbereich aus, für den die angegebene Bedingung überprüft werden soll.
 
 1. Protokollwarnungen können auf zwei Arten von [**Measures**](alerts-unified-log.md#measure) basieren:
-    1. **Anzahl von Ergebnissen**: Anzahl der von der Abfrage zurückgegebenen Datensätze.
-    1. **Metrische Maßeinheit**: *Aggregatwert*, der unter Verwendung von „summarize“ berechnet wird (gruppiert nach ausgewählten Ausdrücken und [bin()](/azure/kusto/query/binfunction)-Auswahl). Beispiel:
+    1. **Anzahl von Ergebnissen** : Anzahl der von der Abfrage zurückgegebenen Datensätze.
+    1. **Metrische Maßeinheit** : *Aggregatwert* , der unter Verwendung von „summarize“ berechnet wird (gruppiert nach ausgewählten Ausdrücken und [bin()](/azure/kusto/query/binfunction)-Auswahl). Beispiel:
 
     ```Kusto
     // Reported errors
@@ -75,13 +75,13 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
     ![Option „Aggregieren auf“](media/alerts-log/aggregate-on.png)
 
-1. Legen Sie als Nächstes auf der Grundlage der Vorschaudaten den [**Operator**, den **Schwellenwert**](alerts-unified-log.md#threshold-and-operator) und die [**Frequenz**](alerts-unified-log.md#frequency) fest.
+1. Legen Sie als Nächstes auf der Grundlage der Vorschaudaten den [**Operator** , den **Schwellenwert**](alerts-unified-log.md#threshold-and-operator) und die [**Frequenz**](alerts-unified-log.md#frequency) fest.
 
 1. Optional können Sie mithilfe von **„Sicherheitsverletzungen gesamt“ oder „Aufeinanderfolgende Sicherheitsverletzungen“** auch die [Anzahl von Verstößen zum Auslösen einer Warnung](alerts-unified-log.md#number-of-violations-to-trigger-alert) festlegen.
 
-1. Wählen Sie **Fertig**aus. 
+1. Wählen Sie **Fertig** aus. 
 
-1. Definieren Sie **Name der Warnungsregel** und **Beschreibung**, und wählen Sie den **Schweregrad** der Warnung aus. Diese Angaben werden in allen Warnungsaktionen verwendet. Darüber hinaus können Sie durch Auswählen von **Regel beim Erstellen aktivieren** festlegen, dass die Warnungsregel bei der Erstellung nicht aktiviert werden soll.
+1. Definieren Sie **Name der Warnungsregel** und **Beschreibung** , und wählen Sie den **Schweregrad** der Warnung aus. Diese Angaben werden in allen Warnungsaktionen verwendet. Darüber hinaus können Sie durch Auswählen von **Regel beim Erstellen aktivieren** festlegen, dass die Warnungsregel bei der Erstellung nicht aktiviert werden soll.
 
 1. Mithilfe der Option [**Warnungen unterdrücken**](alerts-unified-log.md#state-and-resolving-alerts) können Sie auswählen, ob Regelaktionen eine Weile unterdrückt werden sollen, nachdem eine Warnung ausgelöst wurde. Die Regel wird weiterhin ausgeführt und generiert Warnungen, es werden jedoch keine Aktionen ausgelöst, um Störungen zu vermeiden. Der Wert für „Aktionen unterdrücken“ muss größer sein als die Frequenz der Warnung, um wirksam zu sein.
 
@@ -94,8 +94,8 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
 1. Aktionen in Protokollwarnungsregeln können optional angepasst werden:
 
-    - **E-Mail-Betreff**: Überschreibt den *E-Mail-Betreff* von E-Mail-Aktionen. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht für E-Mail-Adressen vorgesehen**.
-    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Setzt den von Aktionsgruppen verwendeten Webhook-JSON-Code außer Kraft, wenn die Aktionsgruppe eine Webhookaktion enthält. Weitere Informationen zu Webhookaktionen für Protokollwarnungsregeln finden Sie [hier](./alerts-log-webhook.md).
+    - **E-Mail-Betreff** : Überschreibt den *E-Mail-Betreff* von E-Mail-Aktionen. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht für E-Mail-Adressen vorgesehen** .
+    - **Benutzerdefinierte JSON-Nutzlast einschließen** : Setzt den von Aktionsgruppen verwendeten Webhook-JSON-Code außer Kraft, wenn die Aktionsgruppe eine Webhookaktion enthält. Weitere Informationen zu Webhookaktionen für Protokollwarnungsregeln finden Sie [hier](./alerts-log-webhook.md).
 
     ![Aktionsüberschreibungen für Protokollwarnungen](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -110,7 +110,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 > [!NOTE]
 > Die Erstellung über die Warnungsverwaltung wird derzeit für ressourcenbezogene Protokolle nicht unterstützt.
 
-1. Navigieren Sie im [Portal](https://portal.azure.com/) zu **Monitor** > **Warnungen**.
+1. Navigieren Sie im [Portal](https://portal.azure.com/) zu **Monitor**  > **Warnungen** .
 
     ![Überwachung](media/alerts-log/AlertsPreviewMenu.png)
 
@@ -126,7 +126,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
     ![Erstellen einer Regel](media/alerts-log/AlertsPreviewAdd.png)
 
-1. Klicken Sie auf die Schaltfläche **Ressource auswählen**. Filtern Sie die Ansicht, indem Sie das *Abonnement* und den *Ressourcentyp* auswählen, und wählen Sie anschließend eine Ressource aus. Vergewissern Sie sich, dass für die Ressource Protokolle verfügbar sind.
+1. Klicken Sie auf die Schaltfläche **Ressource auswählen** . Filtern Sie die Ansicht, indem Sie das *Abonnement* und den *Ressourcentyp* auswählen, und wählen Sie anschließend eine Ressource aus. Vergewissern Sie sich, dass für die Ressource Protokolle verfügbar sind.
 
    ![Auswählen einer Ressource](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -146,7 +146,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 > [!NOTE]
 > Für die API-Version `2020-05-01-preview` und ressourcenbezogene Protokollwarnungen fallen aktuell keine zusätzlichen Gebühren an.  Die Preise für Previewfunktionen werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, die neue API-Version und ressourcenbezogene Protokollwarnungen über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt.
 
-1. Beginnen Sie auf der Registerkarte **Bedingung**:
+1. Beginnen Sie auf der Registerkarte **Bedingung** :
 
     1. Vergewissern Sie sich, dass die Angaben für [**Measure**](alerts-unified-log.md#measure), [**Aggregationstyp**](alerts-unified-log.md#aggregation-type) und [**Aggregationsgranularität**](alerts-unified-log.md#aggregation-granularity) korrekt sind. 
         1. Von der Regel wird standardmäßig die Anzahl von Ergebnissen in den letzten fünf Minuten gezählt.
@@ -164,7 +164,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
         ![Vorschaudiagramm](media/alerts-log/preview-chart.png)
 
-    1. Legen Sie als Nächstes auf der Grundlage der Vorschaudaten die **Warnungslogik**, den [**Operator**, den **Schwellenwert**](alerts-unified-log.md#threshold-and-operator) und die [**Frequenz**](alerts-unified-log.md#frequency) fest.
+    1. Legen Sie als Nächstes auf der Grundlage der Vorschaudaten die **Warnungslogik** , den [**Operator** , den **Schwellenwert**](alerts-unified-log.md#threshold-and-operator) und die [**Frequenz**](alerts-unified-log.md#frequency) fest.
 
         ![Vorschaudiagramm mit Schwellenwert und Warnungslogik](media/alerts-log/chart-and-alert-logic.png)
 
@@ -201,7 +201,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
     > [!NOTE]
     > Protokollwarnungsregeln sind aktuell [zustandslos und werden nicht aufgelöst](alerts-unified-log.md#state-and-resolving-alerts).
 
-1. Wählen Sie auf der oberen Leiste die Option **Regeln verwalten** aus, um Regeln zu bearbeiten:
+1. Klicken Sie auf der oberen Leiste auf **Warnungsregeln verwalten** , um Regeln zu bearbeiten:
 
     ![ Verwalten von Warnungsregeln](media/alerts-log/manage-alert-rules.png)
 

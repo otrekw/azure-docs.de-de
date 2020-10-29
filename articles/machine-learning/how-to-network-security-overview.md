@@ -1,5 +1,5 @@
 ---
-title: Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
+title: Übersicht über die Isolation und Sicherheit virtueller Netzwerke
 titleSuffix: Azure Machine Learning
 description: Mit einer isolierten Azure Virtual Network-Instanz mit Azure Machine Learning schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen.
 services: machine-learning
@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825509"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131937"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
 

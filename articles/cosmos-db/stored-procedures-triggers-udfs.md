@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279899"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480223"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -63,7 +63,7 @@ Transaktionen sind nativ in das JavaScript-Programmiermodell von Azure Cosmos DB
 
 ### <a name="data-consistency"></a>Datenkonsistenz
 
-Gespeicherte Prozeduren und Trigger werden immer auf dem primären Replikat eines Azure Cosmos-Containers ausgeführt. Dadurch wird sichergestellt, dass Lesevorgänge in gespeicherten Prozeduren eine [hohe Konsistenz](consistency-levels-tradeoffs.md) aufweisen. Abfragen mit benutzerdefinierten Funktionen können auf dem primären oder einem sekundären Replikat ausgeführt werden. Gespeicherte Prozeduren und Trigger dienen zur Unterstützung von transaktionalen Schreibvorgängen. Schreibgeschützte Logik lässt sich jedoch am besten als anwendungsseitige Logik implementieren, und Abfragen mit den [SDKs der SQL-API von Azure Cosmos DB](sql-api-dotnet-samples.md) helfen Ihnen, den Datenbankdurchsatz vollständig zu nutzen. 
+Gespeicherte Prozeduren und Trigger werden immer auf dem primären Replikat eines Azure Cosmos-Containers ausgeführt. Dadurch wird sichergestellt, dass Lesevorgänge in gespeicherten Prozeduren eine [hohe Konsistenz](./consistency-levels.md) aufweisen. Abfragen mit benutzerdefinierten Funktionen können auf dem primären oder einem sekundären Replikat ausgeführt werden. Gespeicherte Prozeduren und Trigger dienen zur Unterstützung von transaktionalen Schreibvorgängen. Schreibgeschützte Logik lässt sich jedoch am besten als anwendungsseitige Logik implementieren, und Abfragen mit den [SDKs der SQL-API von Azure Cosmos DB](sql-api-dotnet-samples.md) helfen Ihnen, den Datenbankdurchsatz vollständig zu nutzen. 
 
 > [!TIP]
 > Bei innerhalb einer gespeicherten Prozedur oder eines Triggers ausgeführten Abfragen werden möglicherweise keine Änderungen angezeigt, die von derselben Skripttransaktion an Elementen vorgenommen wurden. Dies gilt sowohl für SQL-Abfragen wie z. B. `getContent().getCollection.queryDocuments()` als auch für integrierte Sprachabfragen wie z. B. `getContext().getCollection().filter()`.

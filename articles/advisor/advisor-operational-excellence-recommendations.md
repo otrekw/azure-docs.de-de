@@ -3,12 +3,12 @@ title: Verbessern des optimalen Betriebs mit Advisor
 description: Verwenden Sie Azure Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077387"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122618"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
@@ -50,9 +50,15 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 
 **Angeben von zulässigen VM-SKUs für Bereitstellungen.** Über diese Richtlinie können Sie einen Satz von SKUs für virtuelle Computer angeben, die Ihre Organisation bereitstellen kann.
 
-**Erzwingen Sie *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden*.**
+**Erzwingen Sie *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden* .**
 
-**Aktivieren Sie *Tag von der Ressourcengruppe erben*.** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
+**Aktivieren Sie *Tag von der Ressourcengruppe erben* .** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
+
+Advisor empfiehlt ein paar einzelne Azure-Richtlinien, die Kunden dabei helfen, einen optimalen Betrieb durch Umsetzung bewährter Methoden zu erzielen. Wenn ein Kunde beschließt, eine empfohlene Richtlinie zuzuweisen, wird die Empfehlung unterdrückt. Wenn sich der Kunde entscheidet, die Richtlinie zu einem späteren Zeitpunkt zu entfernen, wird die Empfehlung weiterhin von Advisor unterdrückt, da wir die Entfernung als sicheres Signal für folgende Absichten interpretieren:
+
+1.  Der Kunde hat die Richtlinie entfernt, weil sie, trotz der Empfehlung von Advisor, nicht auf seinen speziellen Anwendungsfall zutrifft. 
+2.  Der Kunde kennt die Richtlinie und ist damit vertraut, nachdem er sie zugewiesen und entfernt hat, und kann Sie bei Bedarf ohne Anleitung erneut zuweisen oder entfernen, wenn sie später für seinen Anwendungsfall doch noch relevant werden sollte. Wenn der Kunde es für angebracht hält, dieselbe Richtlinie erneut zuzuweisen, kann er dies in Azure Policy tun, ohne dass eine Empfehlung von Advisor erforderlich ist. Beachten Sie, dass diese Logik insbesondere für die Richtlinienempfehlung in der Kategorie „Optimaler Betrieb“ (Operational Excellence) gilt. Diese Regeln gelten nicht für Sicherheitsempfehlungen.  
+
 
 ## <a name="no-validation-environment-enabled"></a>Keine Überprüfungsumgebung aktiviert
 Azure Advisor stellt fest, dass in Ihrem aktuellen Abonnement keine Überprüfungsumgebung aktiviert wurde. Beim Erstellen Ihrer Hostpools haben Sie auf der Registerkarte „Eigenschaften“ unter \"Überprüfungsumgebung\" die Option \"Nein\" ausgewählt. Mit der Aktivierung von mindestens einem Hostpool mit einer Überprüfungsumgebung sorgen Sie für Geschäftskontinuität durch Windows Virtual Desktop-Dienstbereitstellungen mit frühzeitiger Erkennung potenzieller Probleme. [Weitere Informationen](../virtual-desktop/create-validation-host-pool.md)

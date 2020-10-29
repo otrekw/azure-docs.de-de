@@ -3,12 +3,12 @@ title: Überwachen von Java-Anwendungen in beliebiger Umgebung – Azure Monitor
 description: Überwachen der Anwendungsleistung für Java-Anwendungen, die in einer beliebigen Umgebung ausgeführt werden, ohne die App zu instrumentieren. Verteilte Ablaufverfolgung und Anwendungszuordnung.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370033"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215279"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights – Public Preview
 
@@ -114,8 +114,8 @@ Ausführliche Informationen finden Sie unter [3.0 Public Preview: Konfigurations
 ### <a name="logs"></a>Protokolle
 
 * java.util.logging
-* Log4j
-* SLF4J/Logback
+* Log4j (einschließlich MDC-Eigenschaften)
+* SLF4J/Logback (einschließlich MDC-Eigenschaften)
 
 ### <a name="metrics"></a>Metriken
 

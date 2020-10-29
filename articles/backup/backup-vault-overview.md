@@ -3,20 +3,20 @@ title: Übersicht über Sicherungstresore
 description: Übersicht über Sicherungstresore
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993311"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091286"
 ---
 # <a name="backup-vaults-overview"></a>Übersicht über Sicherungstresore
 
 In diesem Artikel werden die Features eines Sicherungstresors beschrieben. Ein Sicherungstresor ist eine Speicherentität in Azure für Sicherungsdaten bestimmter neuerer, von Azure Backup unterstützter Workloads. Sie können Sicherungstresore für Sicherungsdaten von verschiedenen Azure-Diensten verwenden, z. B. von Azure Database for PostgreSQL-Servern und neueren Workloads, die Azure Backup unterstützen. Sicherungstresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Sicherungstresore basieren auf dem Azure Resource Manager-Modell von Azure, das Features wie die folgenden bietet:
 
-- **Erweiterte Funktionen zum Schutz von Sicherungsdaten**: Durch Sicherungstresore bietet Azure Backup Sicherheitsfunktionen zum Schutz von Cloudsicherungen. Mit diesen Sicherheitsfunktionen wird sichergestellt, dass Sie Ihre Sicherungen schützen und Daten sicher wiederherstellen können, selbst wenn Produktions- und Sicherungsserver kompromittiert sind. [Weitere Informationen](backup-azure-security-feature.md)
+- **Erweiterte Funktionen zum Schutz von Sicherungsdaten** : Durch Sicherungstresore bietet Azure Backup Sicherheitsfunktionen zum Schutz von Cloudsicherungen. Mit diesen Sicherheitsfunktionen wird sichergestellt, dass Sie Ihre Sicherungen schützen und Daten sicher wiederherstellen können, selbst wenn Produktions- und Sicherungsserver kompromittiert sind. [Weitere Informationen](backup-azure-security-feature.md)
 
-- **Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)** : Die RBAC ermöglicht eine präzise Verwaltung der Zugriffssteuerung in Azure. [Azure bietet verschiedene integrierte Rollen](../role-based-access-control/built-in-roles.md), während Azure Backup über drei [integrierte Rollen zum Verwalten von Wiederherstellungspunkten](backup-rbac-rs-vault.md) verfügt. Sicherungstresore sind mit der RBAC kompatibel, die den Zugriff auf Sicherungen und Wiederherstellungen auf die definierten Benutzerrollen beschränkt. [Weitere Informationen](backup-rbac-rs-vault.md)
+- **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)** : Azure RBAC ermöglicht eine differenzierte Verwaltung der Zugriffssteuerung in Azure. [Azure bietet verschiedene integrierte Rollen](../role-based-access-control/built-in-roles.md), während Azure Backup über drei [integrierte Rollen zum Verwalten von Wiederherstellungspunkten](backup-rbac-rs-vault.md) verfügt. Sicherungstresore sind mit der Azure RBAC kompatibel, die den Zugriff auf Sicherungen und Wiederherstellungen auf die definierten Benutzerrollen beschränkt. [Weitere Informationen](backup-rbac-rs-vault.md)
 
 ## <a name="storage-settings-in-the-backup-vault"></a>Speichereinstellungen im Sicherungstresor
 
@@ -53,7 +53,7 @@ Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
 
   ![Erstellen einer neuen Ressourcengruppe](./media/backup-vault-overview/new-resource-group.png)
 
-1. Geben Sie unter **Instanzendetails** die Zeichenfolge *myVault* als **Sicherungstresornamen** ein, und wählen Sie die gewünschte **Region** aus, in diesem Fall *USA, Osten*.
+1. Geben Sie unter **Instanzendetails** die Zeichenfolge *myVault* als **Sicherungstresornamen** ein, und wählen Sie die gewünschte **Region** aus, in diesem Fall *USA, Osten* .
 1. Wählen Sie nun die **Speicherredundanz** aus. Die Speicherredundanz kann nach dem Schützen von Elementen im Tresor nicht mehr geändert werden.
 1. Wir empfehlen, dass Sie, wenn Sie Azure als primären Endpunkt für den Sicherungsspeicher verwenden, weiterhin die Standardeinstellung **Georedundant** verwenden.
 1. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher.
@@ -88,13 +88,13 @@ Der folgende Vorgang ist destruktiv und kann nicht rückgängig gemacht werden. 
 Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser Reihenfolge ausführen:
 
 - Sie müssen überprüfen, ob geschützte Elemente vorhanden sind:
-  - Wechseln Sie in der linken Navigationsleiste zu **Sicherungsinstanzen**. Alle hier aufgelisteten Elemente müssen zuerst gelöscht werden.
+  - Wechseln Sie in der linken Navigationsleiste zu **Sicherungsinstanzen** . Alle hier aufgelisteten Elemente müssen zuerst gelöscht werden.
 
 Nachdem Sie diese Schritte abgeschlossen haben, können Sie mit dem Löschen des Tresors fortfahren.
 
 ### <a name="delete-the-backup-vault"></a>Löschen des Sicherungstresors
 
-Wenn sich keine Elemente mehr im Tresor befinden, klicken Sie im Tresordashboard auf **Löschen**. Sie werden in einem Bestätigungstext gefragt, ob Sie den Tresor löschen möchten.
+Wenn sich keine Elemente mehr im Tresor befinden, klicken Sie im Tresordashboard auf **Löschen** . Sie werden in einem Bestätigungstext gefragt, ob Sie den Tresor löschen möchten.
 
 ![Löschen des Tresors](./media/backup-vault-overview/delete-vault.png)
 
@@ -102,7 +102,7 @@ Wenn sich keine Elemente mehr im Tresor befinden, klicken Sie im Tresordashboard
 
 ## <a name="monitor-and-manage-the-backup-vault"></a>Überwachen und Verwalten des Sicherungstresors
 
-In diesem Abschnitt wird erläutert, wie Sie das Dashboard **Übersicht** für Sicherungstresore zum Überwachen und Verwalten von Sicherungstresoren verwenden. Der Übersichtsbereich enthält zwei Kacheln: **Aufträge** und **Instanzen**.
+In diesem Abschnitt wird erläutert, wie Sie das Dashboard **Übersicht** für Sicherungstresore zum Überwachen und Verwalten von Sicherungstresoren verwenden. Der Übersichtsbereich enthält zwei Kacheln: **Aufträge** und **Instanzen** .
 
 ![Übersichtsdashboard](./media/backup-vault-overview/overview-dashboard.png)
 

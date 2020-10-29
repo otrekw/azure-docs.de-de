@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563346"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173684"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Einrichten einer benutzerdefinierten Domäne in Azure Static Web Apps (Vorschau)
 
@@ -29,11 +29,11 @@ Beim Konfigurieren von Domänennamen werden A-Einträge verwendet, um Stammdomä
 
 Für eine Anwendung sind verschiedene Arten von DNS-Konfigurationen verfügbar.
 
-| Zweck                                 | Then                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| Unterstützung `www.example.com` oder `blog.example.net`| [Zuordnen eines CNAME-Eintrags](#map-a-cname-record)           |
-| Unterstützung für `example.com`                          | [Konfigurieren einer Stammdomäne](#configure-a-root-domain) |
-| Verweisen auf `www.example.com` für alle Unterdomänen      | [Zuordnen eines Platzhalters](#map-a-wildcard-domain)            |
+| Zweck | Then |
+|--|--|
+| Unterstützung `www.example.com` oder `blog.example.net` | [Zuordnen eines CNAME-Eintrags](#map-a-cname-record) |
+| Unterstützung für `example.com` | [Konfigurieren einer Stammdomäne](#configure-a-root-domain) |
+| Verweisen auf `www.example.com` für alle Unterdomänen | [Zuordnen eines Platzhalters](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>Zuordnen eines CNAME-Eintrags
 
@@ -41,27 +41,29 @@ Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können 
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 
-1. Suchen Sie nach **Static Web Apps**, und wählen Sie die Option aus.
+1. Suchen Sie nach **Static Web Apps** , und wählen Sie die Option aus.
 
 1. Wählen Sie auf der Seite _Static Web Apps_ den Namen Ihrer App aus.
 
-1. Klicken Sie im Menü auf **Benutzerdefinierte Domänen**.
+1. Klicken Sie im Menü auf **Benutzerdefinierte Domänen** .
 
-1. Kopieren Sie im Fenster _Benutzerdefinierte Domänen_ die URL im Feld **Wert**.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen** .
+
+1. Kopieren Sie im Fenster _Benutzerdefinierte Domänen_ die URL im Feld **Wert** .
 
 ### <a name="configure-dns-provider"></a>Konfigurieren des DNS-Anbieters
 
 1. Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
+2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname** , **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
 
-3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
+3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen** . Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei** , **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
     Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
     :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="Beispiel für die Konfiguration eines DNS-Anbieters":::
 
-4. Erstellen Sie einen neuen **CNAME**-Eintrag mit den folgenden Werten:
+4. Erstellen Sie einen neuen **CNAME** -Eintrag mit den folgenden Werten:
 
     | Einstellung             | Wert                     |
     | ------------------- | ------------------------- |
@@ -78,11 +80,11 @@ Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können 
 
 1. Geben Sie Ihre Domäne (einschließlich `www`) im Abschnitt _Benutzerdefinierte Domäne überprüfen_ ein.
 
-1. Klicken Sie auf die Schaltfläche **Überprüfen**.
+1. Klicken Sie auf die Schaltfläche **Überprüfen** .
 
-Nachdem die benutzerdefinierte Domäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden. Sie können den Stand der Weitergabe unter [dnspropagation.net](https://dnspropagation.net) überprüfen. Geben Sie Ihre benutzerdefinierte Domäne (einschließlich `www`) ein, wählen Sie in der Dropdownliste die Option „CNAME“ aus, und klicken Sie auf **Starten**.
+Nachdem die benutzerdefinierte Domäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden. Sie können den Stand der Weitergabe unter [dnspropagation.net](https://dnspropagation.net) überprüfen. Geben Sie Ihre benutzerdefinierte Domäne (einschließlich `www`) ein, wählen Sie in der Dropdownliste die Option „CNAME“ aus, und klicken Sie auf **Starten** .
 
-Nachdem Ihre DNS-Änderungen eingefügt wurden, gibt die Website die automatisch generierte URL Ihrer statischen Web-App zurück (z. B. _random-name-123456789c.azurestaticapps.net_).
+Nachdem Ihre DNS-Änderungen eingefügt wurden, gibt die Website die automatisch generierte URL Ihrer statischen Web-App zurück (z. B. _random-name-123456789c.azurestaticapps.net_ ).
 
 ## <a name="configure-a-root-domain"></a>Konfigurieren einer Stammdomäne
 
@@ -98,15 +100,15 @@ Es kann vorkommen, dass bei Ihnen der gesamte Datenverkehr, der an eine Unterdom
 
 1. Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
+2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname** , **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
 
-3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
+3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen** . Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei** , **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
     Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
     :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="Beispiel für die Konfiguration eines DNS-Anbieters":::
 
-4. Erstellen Sie einen neuen **CNAME**-Eintrag mit den folgenden Werten, und ersetzen Sie `www.example.com` durch den Namen Ihrer benutzerdefinierten Domäne.
+4. Erstellen Sie einen neuen **CNAME** -Eintrag mit den folgenden Werten, und ersetzen Sie `www.example.com` durch den Namen Ihrer benutzerdefinierten Domäne.
 
     | Einstellung | Wert                  |
     | ------- | ---------------------- |

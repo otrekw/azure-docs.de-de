@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339542"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurieren von Datenpersistenz für Azure Cache for Redis vom Typ „Premium“
 In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal Persistenz in einer Azure Cache for Redis-Instanz konfigurieren. Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. 
@@ -44,37 +44,37 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
    
    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Ziffern, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net*. | 
+   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Ziffern, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net* . | 
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus. Alternativ dazu wählen Sie **Neu erstellen** aus und geben einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
    | **Location** | Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihren Cache verwenden. |
    | **Cachetyp** | Öffnen Sie die Dropdownliste, und wählen Sie einen Premium-Cache aus, um Premium-Features zu konfigurieren. Weitere Informationen finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/). |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. Weitere Informationen finden Sie unter [What is Azure Cache for Redis](cache-overview.md) (Was ist Azure Cache for Redis?). |
 
-4. Wählen Sie die Registerkarte **Netzwerk** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Netzwerk**.
+4. Wählen Sie die Registerkarte **Netzwerk** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Netzwerk** .
 
 5. Wählen Sie auf der Registerkarte **Netzwerk** Ihre Konnektivitätsmethode aus. Bei Premium-Cache-Instanzen können Sie die Verbindung entweder öffentlich über öffentliche IP-Adressen oder Dienstendpunkte oder privat über einen privaten Endpunkt herstellen.
 
-6. Wählen Sie unten auf der Seite die Registerkarte **Weiter: Erweitert** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Erweitert**.
+6. Wählen Sie unten auf der Seite die Registerkarte **Weiter: Erweitert** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Erweitert** .
 
 7. Konfigurieren Sie auf der Registerkarte **Erweitert** für eine Premium-Cache-Instanz die Einstellungen für einen Nicht-TLS-Port sowie für Clustering und Datenpersistenz. Für die Datenpersistenz können Sie **RDB** oder **AOF** auswählen. 
 
 8. Zum Aktivieren der RDB-Persistenz klicken Sie auf **RDB** und konfigurieren die Einstellungen. 
    
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Sicherungshäufigkeit** | Öffnen Sie die Dropdownliste, und wählen Sie ein Sicherungsintervall aus. Zur Auswahl stehen **15 Minuten**, **30 Minuten**, **60 Minuten**, **6 Stunden**, **12 Stunden** und **24 Stunden**. | Dieses Intervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet. | 
-   | **Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Sie müssen ein Speicherkonto auswählen, das aus der gleichen Region wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist.  | 
+   | **Sicherungshäufigkeit** | Öffnen Sie die Dropdownliste, und wählen Sie ein Sicherungsintervall aus. Zur Auswahl stehen **15 Minuten** , **30 Minuten** , **60 Minuten** , **6 Stunden** , **12 Stunden** und **24 Stunden** . | Dieses Intervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet. | 
+   | **Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Sie müssen ein Speicherkonto auswählen, das aus derselben Region und demselben Abonnement wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist.  | 
    | **Storage Key (Speicherschlüssel)** | Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. | 
 
     Die erste Sicherung wird gestartet, sobald das Intervall für die Sicherungshäufigkeit abgelaufen ist.
 
 9. Zum Aktivieren der AOF-Persistenz klicken Sie auf **AOF** und konfigurieren die Einstellungen. 
    
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Erstes Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Dieses Speicherkonto muss aus der gleichen Region wie der Cache stammen. Es wird empfohlen, ein **Storage Premium**-Konto zu verwenden, da dieses einen höheren Durchsatz aufweist. | 
+   | **Erstes Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Dieses Speicherkonto muss aus derselben Region und demselben Abonnement wie der Cache stammen. Es wird empfohlen, ein **Storage Premium** -Konto zu verwenden, da dieses einen höheren Durchsatz aufweist. | 
    | **Erster Speicherschlüssel** | Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. | 
-   | **Zweites Speicherkonto** | (Optional) Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Sie können optional ein zusätzliches Speicherkonto konfigurieren. Wenn ein zweites Storage-Konto konfiguriert wurde, werden Schreibvorgänge im Replikatcache in dieses zweite Speicherkonto geschrieben. | 
+   | **Zweites Speicherkonto** | (Optional) Öffnen Sie die Dropdownliste, und wählen Sie Ihr sekundäres Speicherkonto aus. | Sie können optional ein zusätzliches Speicherkonto konfigurieren. Wenn ein zweites Storage-Konto konfiguriert wurde, werden Schreibvorgänge im Replikatcache in dieses zweite Speicherkonto geschrieben. | 
    | **Zweiter Speicherschlüssel** | (Optional) Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. | 
 
     Wenn AOF-Persistenz aktiviert wurde, werden Schreibvorgänge in den Cache im angegebenen Speicherkonto gespeichert (oder in den Konten, wenn Sie ein zweites Speicherkonto konfiguriert haben). Bei einem schwerwiegenden Fehler, der zu einem Ausfall des primären und des Replikatcaches führt, wird das gespeicherte AOF-Protokoll für die Neuerstellung des Caches verwendet.
@@ -83,11 +83,11 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
 
 11. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten. 
 
-12. Wählen Sie **Überprüfen und erstellen** aus. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+12. Klicken Sie auf **Überprüfen + erstellen** . Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 13. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
-Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite  **Übersicht**  von Azure Cache for Redis überwachen. Wenn  **Wird ausgeführt** als  **Status**  angezeigt wird, ist der Cache einsatzbereit. 
+Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit. 
 
 ## <a name="persistence-faq"></a>Persistenz – häufig gestellte Fragen
 Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Persistenz von Azure Cache for Redis-Instanzen.
@@ -96,6 +96,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Persisten
 * [Kann ich AOF- und RDB-Persistenz gleichzeitig aktivieren?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [Welches Persistenzmodell sollte ich auswählen?](#which-persistence-model-should-i-choose)
 * [Was geschieht, wenn ich auf eine andere Größe skaliert habe und eine Wiederherstellung aus einer Sicherung vorgenommen wird, die vor der Skalierung erstellt wurde?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [Kann ich dasselbe Speicherkonto für Persistenz in zwei verschiedenen Caches verwenden?](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
 
 
 ### <a name="rdb-persistence"></a>RDB-Persistenz
@@ -136,6 +137,9 @@ Für RDB- und AOF-Persistenz gilt Folgendes:
 * Wenn Sie auf eine kleinere Größe skaliert haben und eine benutzerdefinierte Einstellung für die [Datenbanken](cache-configure.md#databases) verwenden, die größer ist als der [Grenzwert für Datenbanken](cache-configure.md#databases) bei der neuen Größe, werden die Daten in diesen Datenbanken nicht wiederhergestellt. Weitere Informationen finden Sie unter [Hat die Skalierung Auswirkungen auf meine benutzerdefinierte Einstellung für Datenbanken?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
 * Wenn Sie auf eine kleinere Größe skaliert haben und dort nicht genug Platz für alle Daten aus der letzten Sicherung ist, werden beim Wiederherstellungsvorgang Schlüssel entfernt. Diese Entfernung wird in der Regel mithilfe der Entfernungsrichtlinie [allkeys-lru](https://redis.io/topics/lru-cache) vorgenommen.
 
+### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>Kann ich dasselbe Speicherkonto für Persistenz in zwei verschiedenen Caches verwenden?
+Ja, Sie können dasselbe Speicherkonto für Persistenz in zwei Caches verwenden.
+
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kann ich die Sicherungshäufigkeit für RDB-Persistenz ändern, nachdem ich den Cache erstellt habe?
 Ja. Sie können die Sicherungshäufigkeit für die RDB-Persistenz auf dem Blatt **Datenpersistenz** ändern. Anweisungen dazu finden Sie unter „Konfigurieren von Redis-Persistenz“.
 
@@ -156,7 +160,7 @@ Die AOF-Persistenz wirkt sich auf den Durchsatz mit ca. 15–20 % aus, wenn der 
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>Wie kann ich das zweite Speicherkonto entfernen?
 
-Sie können das sekundäre Speicherkonto für die AOF Persistenz entfernen, indem Sie für das zweite Speicherkonto denselben Wert wie für das erste Speicherkonto festlegen. Bei vorhandenen Caches erfolgt der Zugriff auf das Blatt **Datenpersistenz** über das **Ressourcenmenü** für Ihren Cache. Zum Deaktivieren der AOF-Persistenz klicken Sie auf **Deaktiviert**.
+Sie können das sekundäre Speicherkonto für die AOF Persistenz entfernen, indem Sie für das zweite Speicherkonto denselben Wert wie für das erste Speicherkonto festlegen. Bei vorhandenen Caches erfolgt der Zugriff auf das Blatt **Datenpersistenz** über das **Ressourcenmenü** für Ihren Cache. Zum Deaktivieren der AOF-Persistenz klicken Sie auf **Deaktiviert** .
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Was ist das Neuschreiben, und wie wirkt es sich auf meinen Cache aus?
 
