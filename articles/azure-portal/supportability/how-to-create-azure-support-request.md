@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091439"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372122"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -29,9 +29,9 @@ Azure ermöglicht das Erstellen und Verwalten von Supportanfragen (auch Supportt
 
 Die Oberfläche für Supportanfragen ist auf drei Hauptziele konzentriert:
 
-* **Optimierung**: Einfacheres Auffinden von Support und Problembehandlung und vereinfachtes Absenden einer Supportanfrage.
-* **Integration**: Bei der Behandlung eines Problems mit einer Azure-Ressource können Sie eine Supportanfrage ganz einfach öffnen, ohne den Kontext zu wechseln.
-* **Effizient**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
+* **Optimierung** : Einfacheres Auffinden von Support und Problembehandlung und vereinfachtes Absenden einer Supportanfrage.
+* **Integration** : Bei der Behandlung eines Problems mit einer Azure-Ressource können Sie eine Supportanfrage ganz einfach öffnen, ohne den Kontext zu wechseln.
+* **Effizient** : Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
 
 In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt, einschließlich Abrechnung, Kontingentanpassungen und Kontenübertragungen. Für technischen Support benötigen Sie einen Supportplan. Weitere Informationen finden Sie unter [Supportpläne vergleichen](https://azure.microsoft.com/support/plans).
 
@@ -41,7 +41,7 @@ Zu **Hilfe und Support** gelangen Sie im Azure-Portal. Die Option steht über da
 
 ### <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
-Um eine Supportanfrage erstellen zu können, müssen Sie ein [Besitzer](../../role-based-access-control/built-in-roles.md#owner) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) sein, oder Ihnen muss die Rolle [Mitwirkender für Supportanfragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) auf der Abonnementebene zugewiesen sein. Zum Erstellen einer Supportanfrage ohne Abonnement, z. B. in einem Azure Active Directory-Szenario, müssen Sie ein [Administrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) sein.
+Um eine Supportanfrage erstellen zu können, müssen Sie ein [Besitzer](../../role-based-access-control/built-in-roles.md#owner) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) sein, oder Ihnen muss die Rolle [Mitwirkender für Supportanfragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) auf der Abonnementebene zugewiesen sein. Zum Erstellen einer Supportanfrage ohne Abonnement, z. B. in einem Azure Active Directory-Szenario, müssen Sie ein [Administrator](../../active-directory/roles/permissions-reference.md) sein.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Über die globale Kopfzeile zu „Hilfe + Support“ wechseln
 
@@ -73,7 +73,7 @@ Wir führen Sie durch einige Schritte, um Informationen zu Ihrem Problem zu samm
 
 Im ersten Schritt des Prozesses für Supportanfragen werden grundlegende Informationen zu Ihrem Problem und Supportplan gesammelt.
 
-Verwenden Sie auf der Registerkarte **Grundlagen** von **Neue Supportanfrage** die Selektoren, um uns erste Informationen über das Problem mitzuteilen. Zuerst identifizieren Sie einige allgemeine Kategorien für den Problemtyp und wählen das zugehörige Abonnement aus. Wählen Sie den Dienst aus, z. B. **Virtueller Computer mit Windows**. Wählen Sie die Ressource aus, z. B. den Namen Ihres virtuellen Computers. Beschreiben Sie das Problem kurz mit eigenen Worten, und wählen Sie dann **Problemtyp** und **Problemuntertyp** aus, um genauere Informationen anzugeben.
+Verwenden Sie auf der Registerkarte **Grundlagen** von **Neue Supportanfrage** die Selektoren, um uns erste Informationen über das Problem mitzuteilen. Zuerst identifizieren Sie einige allgemeine Kategorien für den Problemtyp und wählen das zugehörige Abonnement aus. Wählen Sie den Dienst aus, z. B. **Virtueller Computer mit Windows** . Wählen Sie die Ressource aus, z. B. den Namen Ihres virtuellen Computers. Beschreiben Sie das Problem kurz mit eigenen Worten, und wählen Sie dann **Problemtyp** und **Problemuntertyp** aus, um genauere Informationen anzugeben.
 
 ![Blatt "Grundlagen"](./media/how-to-create-azure-support-request/basics2lower.png)
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536612"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425581"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replizieren von Daten in Azure Database for MariaDB
 
@@ -26,7 +26,7 @@ Zu den wichtigsten Szenarien, bei denen die Datenreplikation für Azure Database
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
 
 ### <a name="data-not-replicated"></a>Nicht replizierte Daten
-Die [*Systemdatenbank „mysql“* ](https://mariadb.com/kb/en/library/the-mysql-database-tables/) auf dem Quellserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Quellserver werden nicht repliziert. Wenn Sie ein Konto auf dem Quellserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
+Die [*Systemdatenbank „mysql“*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) auf dem Quellserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Quellserver werden nicht repliziert. Wenn Sie ein Konto auf dem Quellserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie in der [Dokumentation zu MariaDB](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 - Der Quellserver muss mindestens die MariaDB-Version 10.2 aufweisen.
@@ -34,8 +34,8 @@ Die [*Systemdatenbank „mysql“* ](https://mariadb.com/kb/en/library/the-mysql
 - Jede Tabelle muss über einen Primärschlüssel verfügen.
 - Der Quellserver sollte die InnoDB-Engine verwenden.
 - Benutzer müssen über Berechtigungen zum Konfigurieren der binären Protokollierung und zum Erstellen neuer Benutzer auf dem Quellserver verfügen.
-- Wenn für den Quellserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mariadb.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
-- Vergewissern Sie sich, dass die IP-Adresse des Quellservers den Firewallregeln des Azure Database for MariaDB-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
+- Wenn für den Quellserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mariadb.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
+- Vergewissern Sie sich, dass die IP-Adresse des Quellservers den Firewallregeln des Azure Database for MariaDB-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](howto-manage-firewall-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](howto-manage-firewall-cli.md).
 - Vergewissern Sie sich, dass für den Computer, der den Quellserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
 - Stellen Sie sicher, dass der Quellserver eine **öffentliche IP-Adresse** aufweist, das DNS öffentlich zugänglich ist oder ein vollqualifizierter Domänenname (FQDN) verfügbar ist.
 

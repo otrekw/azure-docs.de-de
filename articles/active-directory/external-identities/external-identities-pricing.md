@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265787"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442064"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Abrechnungsmodell für externe Identitäten in Azure AD
 
-Die Preise für externe Identitäten in Azure Active Directory (Azure AD) basieren auf den monatlich aktiven Benutzern (MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Abrechnungsmodell gilt sowohl für die Azure AD-Kollaboration von Gastbenutzern (B2B) als auch für [Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/billing). Die MAU-Abrechnung hilft Ihnen, Ihre Kosten zu senken, da sie einen kostenlosen Tarif und einen flexiblen, vorhersehbaren Preis bietet. In diesem Artikel erhalten Sie Informationen zur MAU-Abrechnung und zum Verknüpfen Ihrer Azure AD-Mandanten mit einem Abonnement.
+Die Preise für externe Identitäten in Azure Active Directory (Azure AD) basieren auf den monatlich aktiven Benutzern (MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Abrechnungsmodell gilt sowohl für die Azure AD-Kollaboration von Gastbenutzern (B2B) als auch für [Azure AD B2C-Mandanten](../../active-directory-b2c/billing.md). Die MAU-Abrechnung hilft Ihnen, Ihre Kosten zu senken, da sie einen kostenlosen Tarif und einen flexiblen, vorhersehbaren Preis bietet. In diesem Artikel erhalten Sie Informationen zur MAU-Abrechnung und zum Verknüpfen Ihrer Azure AD-Mandanten mit einem Abonnement.
 
 > [!IMPORTANT]
 > Dieser Artikel enthält keine Preisinformationen. Die aktuellen Informationen zur Verbrauchsabrechnung und zu den Preisen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -45,7 +45,7 @@ Der Tarif für Ihre Gastbenutzer basiert auf dem höchsten Tarif, der Ihrem Azur
 
 Ein Azure AD-Mandant muss mit einem Azure-Abonnement verknüpft werden, um eine ordnungsgemäße Abrechnung zu ermöglichen und Zugriff auf Features zu erhalten. Wenn das Verzeichnis nicht bereits über ein Abonnement verfügt, mit dem Sie eine Verknüpfung herstellen können, haben Sie die Möglichkeit, während dieses Vorgangs eine hinzuzufügen.
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) mit einem Azure-Konto an, dem mindestens die Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) innerhalb des Abonnements oder einer Ressourcengruppe im Abonnement zugewiesen wurde.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) mit einem Azure-Konto an, dem mindestens die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) innerhalb des Abonnements oder einer Ressourcengruppe im Abonnement zugewiesen wurde.
 
 2. Wählen Sie das Verzeichnis aus, zu dem Sie eine Verknüpfung herstellen möchten: Wählen Sie auf der Symbolleiste im Azure-Portal das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus.
 

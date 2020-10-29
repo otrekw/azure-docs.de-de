@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3edf6248d42878bb79115fad925ef38e3353c979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ffbacd9167f6c73fb2815f76f56bfe2ae08eca9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502270"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425950"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe der Azure CLI
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure Database for MariaDB-Server über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure Database for MariaDB finden Sie unter [Firewallregeln für den Azure Database for MariaDB-Server](./concepts-firewall-rules.md).
@@ -21,18 +21,18 @@ Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure Dat
 Virtual Network-Regeln (VNET) können auch verwendet werden, um den Zugriff auf Ihren Server zu sichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln mithilfe der Azure CLI](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 * [Azure Database for MariaDB-Server und eine Datenbank](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 ## <a name="firewall-rule-commands"></a>Befehle für Firewallregeln:
 Der Befehl **az mariadb server firewall-rule** wird in der Azure CLI zum Erstellen, Löschen, Auflisten, Anzeigen und Aktualisieren von Firewallregeln verwendet.
 
 Befehle:
-- **create**: Dient zum Erstellen einer Firewallregel für den Azure MariaDB-Server.
-- **delete**: Dient zum Löschen einer Firewallregel für den Azure MariaDB-Server.
-- **list**: Dient zum Auflisten der Firewallregeln für den Azure MariaDB-Server.
-- **show**: Dient zum Anzeigen der Details einer Firewallregel für den Azure MariaDB-Server.
-- **update**: Dient zum Aktualisieren einer Firewallregel für den Azure MariaDB-Server.
+- **create** : Dient zum Erstellen einer Firewallregel für den Azure MariaDB-Server.
+- **delete** : Dient zum Löschen einer Firewallregel für den Azure MariaDB-Server.
+- **list** : Dient zum Auflisten der Firewallregeln für den Azure MariaDB-Server.
+- **show** : Dient zum Anzeigen der Details einer Firewallregel für den Azure MariaDB-Server.
+- **update** : Dient zum Aktualisieren einer Firewallregel für den Azure MariaDB-Server.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MariaDB-Serverinstanzen
 Stellen Sie mit dem Befehl **az login** eine sichere Verbindung zwischen der Azure CLI und Ihrem Azure-Konto her.

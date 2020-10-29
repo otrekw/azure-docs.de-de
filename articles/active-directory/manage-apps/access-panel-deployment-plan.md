@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146622"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372479"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory
 
@@ -40,15 +40,15 @@ Administratoren können damit Folgendes verwalten:
 
 „Meine Apps“ in Azure AD bietet Unternehmen folgende Vorteile:
 
-**Bietet eine intuitive Benutzeroberfläche**: „Meine Apps“ bietet Ihnen eine einzige Plattform für alle mit einmaligem Anmelden (SSO) in Azure verbundenen Anwendungen. Sie verfügen über ein einheitliches Portal, um vorhandene Einstellungen und neue Funktionen, z. B. Gruppenverwaltung und Self-Service-Kennwortzurücksetzung, zu finden, sobald sie hinzugefügt wurden. Die intuitive Benutzeroberfläche ermöglicht es den Benutzern, schneller wieder an die Arbeit zu gehen und produktiver zu sein, während sie gleichzeitig ihre Frustration reduziert.
+**Bietet eine intuitive Benutzeroberfläche** : „Meine Apps“ bietet Ihnen eine einzige Plattform für alle mit einmaligem Anmelden (SSO) in Azure verbundenen Anwendungen. Sie verfügen über ein einheitliches Portal, um vorhandene Einstellungen und neue Funktionen, z. B. Gruppenverwaltung und Self-Service-Kennwortzurücksetzung, zu finden, sobald sie hinzugefügt wurden. Die intuitive Benutzeroberfläche ermöglicht es den Benutzern, schneller wieder an die Arbeit zu gehen und produktiver zu sein, während sie gleichzeitig ihre Frustration reduziert.
 
-**Steigerung der Produktivität**: Für alle Benutzeranwendungen im „Meine Apps“ ist SSO aktiviert. Die Aktivierung von SSO zwischen Unternehmensanwendungen und Microsoft 365 bietet eine optimierte Anmeldung, da hierdurch die Anzahl von zusätzlichen Anmeldeeingabeaufforderungen reduziert wird oder diese gänzlich beseitigt werden. „Meine Apps“ verwendet Self-Service und dynamische Mitgliedschaft und die Gesamtsicherheit Ihres Identitätsverwaltungssystems wird verbessert. „Meine Apps“ stellt sicher, dass der Zugriff auf die Anwendungen von den richtigen Personen verwaltet wird. „Meine Apps“ dient als kohärente Landing Page, damit Sie schnell Ressourcen finden und Arbeitsaufgaben fortsetzen können.
+**Steigerung der Produktivität** : Für alle Benutzeranwendungen im „Meine Apps“ ist SSO aktiviert. Die Aktivierung von SSO zwischen Unternehmensanwendungen und Microsoft 365 bietet eine optimierte Anmeldung, da hierdurch die Anzahl von zusätzlichen Anmeldeeingabeaufforderungen reduziert wird oder diese gänzlich beseitigt werden. „Meine Apps“ verwendet Self-Service und dynamische Mitgliedschaft und die Gesamtsicherheit Ihres Identitätsverwaltungssystems wird verbessert. „Meine Apps“ stellt sicher, dass der Zugriff auf die Anwendungen von den richtigen Personen verwaltet wird. „Meine Apps“ dient als kohärente Landing Page, damit Sie schnell Ressourcen finden und Arbeitsaufgaben fortsetzen können.
 
-**Verwaltung der Kosten**: Die Aktivierung von „Meine Apps“ mit Azure AD kann die Desinvestition von lokalen Infrastrukturen unterstützen. Dadurch werden die Supportkosten gesenkt, da Sie über ein einheitliches Portal verfügen, um alle Ihre Anwendungen zu finden, den Zugriff auf Ressourcen anzufordern und Konten zu verwalten.
+**Verwaltung der Kosten** : Die Aktivierung von „Meine Apps“ mit Azure AD kann die Desinvestition von lokalen Infrastrukturen unterstützen. Dadurch werden die Supportkosten gesenkt, da Sie über ein einheitliches Portal verfügen, um alle Ihre Anwendungen zu finden, den Zugriff auf Ressourcen anzufordern und Konten zu verwalten.
 
-**Steigerung von Flexibilität und Sicherheit**: Über „Meine Apps“ erhalten Sie die Sicherheit und Flexibilität, die eine Cloudplattform bietet. Administratoren können Einstellungen von Anwendungen und Ressourcen einfach ändern und neue Sicherheitsanforderungen erfüllen, ohne die Benutzer zu beeinträchtigen.
+**Steigerung von Flexibilität und Sicherheit** : Über „Meine Apps“ erhalten Sie die Sicherheit und Flexibilität, die eine Cloudplattform bietet. Administratoren können Einstellungen von Anwendungen und Ressourcen einfach ändern und neue Sicherheitsanforderungen erfüllen, ohne die Benutzer zu beeinträchtigen.
 
-**Ermöglichen einer zuverlässigen Überwachung und Nutzungsnachverfolgung**: Durch die Überwachung und Nutzungsnachverfolgung für alle Benutzerfunktionen erfahren Sie, wann Benutzer ihre Ressourcen nutzen, und Sie können die Sicherheit bewerten.
+**Ermöglichen einer zuverlässigen Überwachung und Nutzungsnachverfolgung** : Durch die Überwachung und Nutzungsnachverfolgung für alle Benutzerfunktionen erfahren Sie, wann Benutzer ihre Ressourcen nutzen, und Sie können die Sicherheit bewerten.
 
 ### <a name="licensing-considerations"></a>Lizenzierungsaspekte
 
@@ -225,7 +225,7 @@ Für die ausdrückliche Genehmigung des Zugriffs auf Anwendungen stehen Genehmig
 
 Sie können Benutzern die Erstellung und Verwaltung ihrer eigenen Sicherheitsgruppen oder Microsoft 365-Gruppen in Azure AD ermöglichen. Der Besitzer der Gruppe kann Mitgliedschaftsanforderungen genehmigen oder ablehnen sowie die Steuerung der Gruppenmitgliedschaft delegieren. Self-Service-Funktionen zur Gruppenverwaltung sind nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar.
 
-Zur Planung der Self-Service-Gruppenmitgliedschaft bestimmen Sie, ob Sie allen Benutzern in Ihrem Unternehmen oder nur einer Teilmenge von Benutzern erlauben, Gruppen zu erstellen und zu verwalten. Wenn Sie es nur einer Teilmenge von Benutzern erlauben, müssen Sie eine Gruppe einrichten, zu der diese Personen hinzugefügt werden. Weitere Informationen zum Aktivieren dieser Szenarien finden Sie unter [Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory](../users-groups-roles/groups-self-service-management.md).
+Zur Planung der Self-Service-Gruppenmitgliedschaft bestimmen Sie, ob Sie allen Benutzern in Ihrem Unternehmen oder nur einer Teilmenge von Benutzern erlauben, Gruppen zu erstellen und zu verwalten. Wenn Sie es nur einer Teilmenge von Benutzern erlauben, müssen Sie eine Gruppe einrichten, zu der diese Personen hinzugefügt werden. Weitere Informationen zum Aktivieren dieser Szenarien finden Sie unter [Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory](../enterprise-users/groups-self-service-management.md).
 
 ## <a name="plan-reporting-and-auditing"></a>Planen der Berichterstellung und Überwachung
 
@@ -299,7 +299,7 @@ Es ist wichtig, zu planen, was zu tun ist, wenn Ihre Bereitstellung nicht wie ge
 
 ## <a name="manage-your-implementation"></a>Verwalten Ihrer Implementierung
 
-Verwenden Sie die am wenigsten privilegierte Rolle, um eine erforderliche Aufgabe innerhalb von Azure Active Directory auszuführen. [Überprüfen Sie die verschiedenen verfügbaren Rollen](../users-groups-roles/directory-assign-admin-roles.md), und wählen Sie die richtige aus, um Ihre Anforderungen für jede Persona für diese Anwendung zu erfüllen. Einige Rollen müssen unter Umständen nur vorübergehend angewendet werden und können nach Abschluss der Bereitstellung wieder entfernt werden.
+Verwenden Sie die am wenigsten privilegierte Rolle, um eine erforderliche Aufgabe innerhalb von Azure Active Directory auszuführen. [Überprüfen Sie die verschiedenen verfügbaren Rollen](../roles/permissions-reference.md), und wählen Sie die richtige aus, um Ihre Anforderungen für jede Persona für diese Anwendung zu erfüllen. Einige Rollen müssen unter Umständen nur vorübergehend angewendet werden und können nach Abschluss der Bereitstellung wieder entfernt werden.
 
 | Personas| Rollen| Azure AD-Rolle  |
 | - | -| -|

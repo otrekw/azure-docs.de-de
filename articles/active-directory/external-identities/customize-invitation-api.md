@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295157"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442047"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B-Zusammenarbeit: API und Anpassung
 
-Viele Kunden haben uns berichtet, dass sie den Einladungsprozess auf die Anforderungen ihres Unternehmens anpassen möchten. Mit unserer API können Sie genau das tun. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Viele Kunden haben uns berichtet, dass sie den Einladungsprozess auf die Anforderungen ihres Unternehmens anpassen möchten. Mit unserer API können Sie genau das tun. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>Funktionen der Einladungs-API
 
@@ -105,7 +105,7 @@ Nachdem Sie einem externen Benutzer eine Einladung gesendet haben, können Sie m
 * **UserState** zeigt an, ob der Status der Einladung **PendingAcceptance** (Annahme ausstehend) oder **Accpeted** (Angenommen) ist.
 * **UserStateChangedOn** zeigt den Zeitstempel der neuesten Änderungen der Eigenschaft **UserState** an.
 
-Sie können dann mithilfe der Option **Filter** die Ergebnisse nach **UserState** filtern. Das folgende Beispiel zeigt, wie Sie Ergebnisse so filtern, dass nur Benutzer mit einer ausstehenden Einladung angezeigt werden. Das Beispiel zeigt außerdem die Option **Format-List**, mit der Sie die anzuzeigenden Eigenschaften angeben können. 
+Sie können dann mithilfe der Option **Filter** die Ergebnisse nach **UserState** filtern. Das folgende Beispiel zeigt, wie Sie Ergebnisse so filtern, dass nur Benutzer mit einer ausstehenden Einladung angezeigt werden. Das Beispiel zeigt außerdem die Option **Format-List** , mit der Sie die anzuzeigenden Eigenschaften angeben können. 
  
 
 ```powershell
@@ -117,7 +117,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Sehen Sie sich die Einladungs-API-Referenz in [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) an.
+Sehen Sie sich die Einladungs-API-Referenz in [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

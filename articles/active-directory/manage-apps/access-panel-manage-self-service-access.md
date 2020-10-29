@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181713"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372462"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Verwenden des Self-Service-Anwendungszugriffs
 
@@ -41,11 +41,11 @@ Der Self-Service-Anwendungszugriff bietet die Möglichkeit, dass Benutzer Anwend
 
 Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff auf eine Anwendung zu aktivieren:
 1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung** , indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-5. Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen** .
+5. Wählen Sie **Alle Anwendungen** , um eine Liste mit Ihren Anwendungen anzuzeigen.
+   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen** , und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 6. Wählen Sie in der Liste die Anwendung aus, für die Sie den Self-Service-Zugriff aktivieren möchten.
 7. Nachdem die Anwendung geladen wurde, wählen Sie im linken Navigationsmenü der Anwendung **Self-Service** aus.
 8. Um den Self-Service-Anwendungszugriff auf die Anwendung zu aktivieren, legen Sie **Benutzern das Anfordern des Zugriffs auf diese Anwendung erlauben?** auf **Ja** fest.
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
 11. **Optional: nur für Anwendungen mit einmaligem Anmelden per Kennwort:** Wenn Sie möchten, dass die genehmigenden Personen des Unternehmens die für genehmigte Benutzer an die Anwendung gesendeten Kennwörter angeben können, legen Sie **Genehmigenden Personen das Festlegen von Benutzerkennwörtern für diese Anwendung gestatten?** auf **Ja** fest.
 12. **Optional:** Geben Sie die genehmigenden Personen des Unternehmens an, denen der Zugriff auf diese App gestattet werden darf. Wählen Sie **Wer darf den Zugriff auf diese Anwendung genehmigen?** aus. Wählen Sie dann bis zu 10 genehmigende Personen des Unternehmens aus.
     * Gruppen werden nicht unterstützt.
-13. **Optional:** Wenn Sie **bei Anwendungen, die Rollen verfügbar machen**, den für den Self-Service genehmigten Benutzern eine Rolle zuweisen möchten, wählen Sie den Selektor neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?** und dann die Rolle aus, denen diese Benutzer zugewiesen werden sollen.
+13. **Optional:** Wenn Sie **bei Anwendungen, die Rollen verfügbar machen** , den für den Self-Service genehmigten Benutzern eine Rolle zuweisen möchten, wählen Sie den Selektor neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?** und dann die Rolle aus, denen diese Benutzer zugewiesen werden sollen.
 14. Wählen Sie oben die Schaltfläche **Speichern** aus, um den Vorgang zu beenden.
 
 Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer zu [Meine Apps](https://myapps.microsoft.com/) navigieren und die Schaltfläche **+Hinzufügen** auswählen, um die Apps zu suchen, für die Sie den Self-Service-Zugriff aktiviert haben. Außerdem wird genehmigenden Personen des Unternehmens auf der Seite [„Meine Apps“](https://myapps.microsoft.com/) eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist. 
@@ -67,4 +67,4 @@ Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen. Das
 -   Wenn der Self-Service-Anwendungszugriff kürzlich konfiguriert wurde, probieren Sie Folgendes aus: Melden Sie sich von „Meine Apps“ des Benutzers ab und nach einigen Minuten dort wieder an, um zu sehen, ob die Änderungen am Self-Service-Zugriff angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md)
+[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](../enterprise-users/groups-self-service-management.md)

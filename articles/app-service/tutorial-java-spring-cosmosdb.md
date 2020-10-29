@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152012"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427089"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Tutorial: Erstellen einer Java Spring Boot-Web-App mit Azure App Service für Linux und Azure Cosmos DB
 
@@ -238,7 +238,7 @@ Wenn Ausnahmen anstelle der Meldung „Started TodoApplication“ angezeigt werd
 
 ## <a name="deploy-to-app-service-on-linux"></a>Bereitstellen für Azure App Service unter Linux
 
-Verwenden Sie das Maven-Ziel `azure-webapp:deploy`, um die TODO-App in Azure App Service unter Linux bereitzustellen.
+Verwenden Sie das Maven-Ziel `mvn azure-webapp:deploy`, um die TODO-App in Azure App Service unter Linux bereitzustellen.
 
 ```bash
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 Die Ausgabe enthält die URL zu Ihrer bereitgestellten Anwendung (in diesem Beispiel `https://spring-todo-app.azurewebsites.net`). Sie können diese URL in Ihren Webbrowser kopieren oder den folgenden Befehl in Ihrem Terminalfenster ausführen, um Ihre App zu laden.
 
 ```bash
-open https://spring-todo-app.azurewebsites.net
+curl https://spring-todo-app.azurewebsites.net
 ```
 
 Sie sollten sehen, dass die App mit der Remote-URL in der Adressleiste ausgeführt wird:

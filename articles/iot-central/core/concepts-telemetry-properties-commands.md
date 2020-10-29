@@ -7,12 +7,13 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: device-developer
+ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291620"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427862"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 
@@ -802,7 +803,7 @@ Das Gerät empfängt die folgende Nutzlast von IoT Central:
 }
 ```
 
-Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an IoT Central senden. Diese Nachricht enthält die Versionsnummer des ursprünglichen Updates, das von IoT Central empfangen wurde. Wenn IoT Central diese Nachricht empfängt, kennzeichnet es die Eigenschaft in der Benutzeroberfläche als **synchronisiert**:
+Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an IoT Central senden. Diese Nachricht enthält die Versionsnummer des ursprünglichen Updates, das von IoT Central empfangen wurde. Wenn IoT Central diese Nachricht empfängt, kennzeichnet es die Eigenschaft in der Benutzeroberfläche als **synchronisiert** :
 
 ```json
 {
@@ -874,7 +875,7 @@ Das Gerät empfängt die folgende Nutzlast von IoT Central:
 }
 ```
 
-Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an IoT Central senden. Diese Nachricht enthält die Versionsnummer des ursprünglichen Updates, das von IoT Central empfangen wurde. Wenn IoT Central diese Nachricht empfängt, kennzeichnet es die Eigenschaft in der Benutzeroberfläche als **synchronisiert**:
+Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an IoT Central senden. Diese Nachricht enthält die Versionsnummer des ursprünglichen Updates, das von IoT Central empfangen wurde. Wenn IoT Central diese Nachricht empfängt, kennzeichnet es die Eigenschaft in der Benutzeroberfläche als **synchronisiert** :
 
 ```json
 {

@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079629"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440449"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
 
@@ -29,7 +29,6 @@ In diesem Artikel erfahren Sie, wie Sie verwaltete Identitäten für Folgendes v
 
  * Konfigurieren und Verwenden von ACR für Ihren Azure Machine Learning-Arbeitsbereich, ohne dass Sie den Zugriff für Administratorbenutzer für ACR aktivieren müssen.
  * Zugreifen auf eine private ACR außerhalb Ihres Arbeitsbereichs, um Basisimages für Training oder Rückschlüsse zu pullen.
- * Zugreifen auf Datasets für Training mithilfe von verwalteten Identitäten anstelle von Speicherzugriffsschlüsseln.
 
 > [!IMPORTANT]
 > Das Verwenden von verwalteten Identitäten zur Zugriffssteuerung auf Ressourcen mit Azure Machine Learning befindet sich derzeit in der Vorschau. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -39,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie verwaltete Identitäten für Folgendes v
 - Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 - Die [Azure CLI-Erweiterung für den Machine Learning Service](reference-azure-machine-learning-cli.md)
 - Das [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-- Zum Zuweisen von Rollen muss die Anmeldung für Ihr Azure-Abonnement die Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) oder eine andere Rolle aufweisen, die die erforderlichen Aktionen zulässt (z. B. __Besitzer__).
+- Zum Zuweisen von Rollen muss die Anmeldung für Ihr Azure-Abonnement die Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) oder eine andere Rolle aufweisen, die die erforderlichen Aktionen zulässt (z. B. __Besitzer__ ).
 - Sie müssen mit dem Erstellen und Arbeiten mit [verwalteten Identitäten](/azure/active-directory/managed-identities-azure-resources/overview) vertraut sein.
 
 ## <a name="configure-managed-identities"></a>Konfigurieren von verwalteten Identitäten
@@ -47,7 +46,7 @@ In diesem Artikel erfahren Sie, wie Sie verwaltete Identitäten für Folgendes v
 In einigen Situationen ist es notwendig, Administratorbenutzern den Zugriff auf Azure Container Registry zu verweigern. Beispielsweise kann die ACR freigegeben werden, und Sie müssen den Administratorzugriff für andere Benutzer sperren. Oder das Erstellen der ACR mit aktiviertem Administratorbenutzer wird durch eine Richtlinie für die Abonnementebene untersagt.
 
 > [!IMPORTANT]
-> Wenn Azure Machine Learning für Rückschlüsse auf Azure Container Instances (ACI) verwendet wird, ist der Administratorbenutzerzugriff auf ACR __erforderlich__. Deaktivieren Sie ihn nicht, wenn Sie vorhaben, Modelle zum Rückschließen für ACI bereitzustellen.
+> Wenn Azure Machine Learning für Rückschlüsse auf Azure Container Instances (ACI) verwendet wird, ist der Administratorbenutzerzugriff auf ACR __erforderlich__ . Deaktivieren Sie ihn nicht, wenn Sie vorhaben, Modelle zum Rückschließen für ACI bereitzustellen.
 
 Wenn Sie ACR erstellen, ohne den Administratorbenutzerzugriff zu aktivieren, werden verwaltete Identitäten für den Zugriff auf die ACR verwendet, um Docker-Images zu erstellen und zu pullen.
 
@@ -174,7 +173,7 @@ env.python.user_managed_dependencies = True
 
 In diesem Szenario erstellt Azure Machine Learning Service die Trainings- oder Rückschlussumgebung auf einem Basisimage, das Sie von einer privaten ACR zur Verfügung stellen. Da die Imageerstellungsaufgabe mithilfe von ACR-Aufgaben in der ACR des Arbeitsbereichs erfolgt, müssen Sie zusätzliche Schritte durchführen, um den Zugriff zu ermöglichen.
 
-1. Erstellen Sie eine __benutzerseitig zugewiesene verwaltete Identität__, und erteilen Sie der Identität den ACRPull-Zugriff auf die __private ACR__.  
+1. Erstellen Sie eine __benutzerseitig zugewiesene verwaltete Identität__ , und erteilen Sie der Identität den ACRPull-Zugriff auf die __private ACR__ .  
 1. Gewähren Sie der __systemseitig zugewiesenen verwalteten Identität__ des Arbeitsbereichs die Rolle „Operator für verwaltete Identität“ für die __benutzerseitig zugewiesene verwaltete Identität__ aus dem vorherigen Schritt. Diese Rolle ermöglicht es dem Arbeitsbereich, die benutzerseitig zugewiesene verwaltete Identität der ACR-Aufgabe zum Erstellen der verwalteten Umgebung zuzuweisen. 
 
     1. Abrufen der Prinzipal-ID der systemseitig zugewiesenen verwalteten Identität des Arbeitsbereichs:
@@ -222,31 +221,6 @@ identity.client_id="<UAI client ID>”
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
-
-## <a name="access-training-data"></a>Zugreifen auf Trainingsdaten
-
-Nachdem Sie, wie zuvor beschrieben, einen Computecluster für maschinelles Lernen mit verwalteter Identität erstellt haben, können Sie diese Identität verwenden, um ohne Speicherkontoschlüssel auf Trainingsdaten zuzugreifen. Sie können für dieses Szenario entweder die systemseitig oder benutzerseitig zugewiesene verwaltete Identität verwenden.
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>Erteilen des Zugriffs auf das Speicherkonto für die durch Compute verwaltete Identität
-
-[Erteilen Sie der verwalteten Identität eine Leserolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights) für das Speicherkonto, in dem Sie Ihre Trainingsdaten speichern.
-
-### <a name="register-data-store-with-workspace"></a>Registrieren von Datenspeichern über den Arbeitsbereich
-
-Nachdem Sie die verwaltete Identität zugewiesen haben, können Sie einen Datenspeicher erstellen, ohne Anmeldeinformationen für die Speicherung angeben zu müssen.
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>Übermitteln der Trainingsausführung
-
-Wenn Sie eine Trainingsausführung mithilfe des Datenspeichers übermitteln, verwendet der Compute für maschinelles Lernen seine verwaltete Identität, um auf Daten zuzugreifen.
 
 ## <a name="use-docker-images-for-inference"></a>Verwenden von Docker-Images für Rückschlüsse
 

@@ -11,25 +11,25 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87907238"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441554"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamische Gruppen und Azure Active Directory B2B-Zusammenarbeit
 
 ## <a name="what-are-dynamic-groups"></a>Was sind dynamische Gruppen?
-Die dynamische Konfiguration der Mitgliedschaft in Sicherheitsgruppen für Azure Active Directory (Azure AD) ist im [Azure-Portal](https://portal.azure.com) verfügbar. Administratoren können Regeln einrichten, um in Azure AD erstellte Gruppen anhand von Benutzerattributen (z.B. Benutzertyp, Abteilung oder Land/Region) aufzufüllen. Mitglieder können auf der Grundlage ihrer Attribute automatisch zu einer Sicherheitsgruppe hinzugefügt oder daraus entfernt werden. Diese Gruppen können Zugriff auf Anwendungen oder Cloudressourcen (SharePoint-Websites, Dokumente) gewähren oder den Mitgliedern Lizenzen zuweisen. Weitere Informationen zu dynamischen Gruppen erhalten Sie unter [Dedizierte Gruppen in Azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
+Die dynamische Konfiguration der Mitgliedschaft in Sicherheitsgruppen für Azure Active Directory (Azure AD) ist im [Azure-Portal](https://portal.azure.com) verfügbar. Administratoren können Regeln einrichten, um in Azure AD erstellte Gruppen anhand von Benutzerattributen (z.B. Benutzertyp, Abteilung oder Land/Region) aufzufüllen. Mitglieder können auf der Grundlage ihrer Attribute automatisch zu einer Sicherheitsgruppe hinzugefügt oder daraus entfernt werden. Diese Gruppen können Zugriff auf Anwendungen oder Cloudressourcen (SharePoint-Websites, Dokumente) gewähren oder den Mitgliedern Lizenzen zuweisen. Weitere Informationen zu dynamischen Gruppen erhalten Sie unter [Dedizierte Gruppen in Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
-Für die Erstellung und Verwendung dynamischer Gruppen wird die passende [Azure AD-Lizenzierung (Premium P1 oder Premium P2)](https://azure.microsoft.com/pricing/details/active-directory/) benötigt. Weitere Informationen finden Sie im Artikel [Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
+Für die Erstellung und Verwendung dynamischer Gruppen wird die passende [Azure AD-Lizenzierung (Premium P1 oder Premium P2)](https://azure.microsoft.com/pricing/details/active-directory/) benötigt. Weitere Informationen finden Sie im Artikel [Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory](../enterprise-users/groups-dynamic-membership.md).
 
 ## <a name="creating-an-all-users-dynamic-group"></a>Erstellen einer dynamischen Gruppe „Alle Benutzer“
 Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Benutzern innerhalb eines Mandanten erstellen. Wenn Benutzer in Zukunft zum Mandanten hinzugefügt oder daraus entfernt werden, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) mit einem Konto an, dem im Mandanten die Rolle „Globaler Administrator“ oder „Benutzeradministrator“ zugewiesen ist.
-1. Wählen Sie **Azure Active Directory**.
+1. Wählen Sie **Azure Active Directory** .
 2. Wählen Sie unter **Verwalten** die Option **Gruppen** und anschließend **Neue Gruppe** aus.
 1. Wählen Sie auf der Seite **Neue Gruppe** unter **Gruppentyp** die Option **Sicherheit** aus. Geben Sie einen **Gruppennamen** und eine **Gruppenbeschreibung** für die neue Gruppe ein. 
 2. Wählen Sie unter **Mitgliedschaftstyp** die Option **Dynamischer Benutzer** und dann **Dynamische Abfrage hinzufügen** aus. 
@@ -38,7 +38,7 @@ Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Benutzern 
    ```
    user.objectId -ne null
    ```
-1. Klicken Sie auf **OK**. Die Regel wird im Feld „Regelsyntax“ angezeigt:
+1. Klicken Sie auf **OK** . Die Regel wird im Feld „Regelsyntax“ angezeigt:
 
    ![Regelsyntax für dynamische Gruppe „Alle Benutzer“](media/use-dynamic-groups/all-user-rule-syntax.png)
 
@@ -76,4 +76,3 @@ Die folgende Abbildung zeigt die Regelsyntax für eine modifizierte dynamische G
 - [Eigenschaften von B2B-Zusammenarbeitsbenutzern](user-properties.md)
 - [Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle](add-guest-to-role.md)
 - [Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit](conditional-access.md)
-

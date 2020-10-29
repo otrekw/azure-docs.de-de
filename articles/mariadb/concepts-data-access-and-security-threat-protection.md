@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8485907eba75f80c8f0ed4fd0cc7368c6147b9fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad35c36e497e4719729c00a90eb8919b75ef0fd
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79532177"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425655"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB: Advanced Threat Protection
 
@@ -38,10 +38,10 @@ Advanced Threat Protection für Azure Database for MariaDB erkennt anomale Aktiv
 - **Zugriff über ein ungewöhnliches Azure-Rechenzentrum:** Diese Warnung wird ausgelöst, wenn sich das Zugriffsmuster für den Azure Database for MariaDB-Server geändert hat, weil  im letzten Überwachungszeitraum eine Serveranmeldung über ein ungewöhnliches Azure-Rechenzentrum festgestellt wurde. In einigen Fällen erkennt die Warnung eine legitime Aktion (eine neue Anwendung in Azure, Power BI). In anderen Fällen erkennt die Warnung ggf. eine schädliche Aktion einer Azure-Ressource bzw. eines -Diensts (ehemaliger Mitarbeiter, externer Angreifer).
 - **Zugriff über einen unbekannten Prinzipal:** Diese Warnung wird ausgelöst, wenn sich das Zugriffsmuster des Azure Database for MariaDB-Servers ändert, weil sich eine Person über einen ungewöhnlichen Prinzipal beim Server angemeldet hat (Azure Database for MariaDB-Benutzer). In einigen Fällen erkennt die Warnung eine legitime Aktion (neue Anwendung, Wartungsarbeiten von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (ehemaliger Mitarbeiter, externer Angreifer).
 - **Zugriff über eine potenziell schädliche Anwendung:** Diese Warnung wird ausgelöst, wenn zum Zugreifen auf die Datenbank eine potenziell schädliche Anwendung verwendet wird. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Angriff mit allgemeinen Angriffstools.
-- **Brute-Force-Angriffe auf Azure Database for MariaDB-Anmeldeinformationen**: Diese Warnung wird ausgelöst, wenn eine ungewöhnlich hohe Anzahl von fehlerhaften Anmeldungen mit unterschiedlichen Anmeldeinformationen vorliegt. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Brute-Force-Angriff.
+- **Brute-Force-Angriffe auf Azure Database for MariaDB-Anmeldeinformationen** : Diese Warnung wird ausgelöst, wenn eine ungewöhnlich hohe Anzahl von fehlerhaften Anmeldungen mit unterschiedlichen Anmeldeinformationen vorliegt. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Brute-Force-Angriff.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Weitere Informationen zu [Azure Security Center](../security-center/security-center-introduction.md)
 * Weitere Informationen zu Tarifen finden Sie unter [Azure Database for MariaDB – Preise](https://azure.microsoft.com/pricing/details/mariadb/). 
-* Konfigurieren von [Azure Database for MariaDB: Advanced Threat Protection](howto-database-threat-protection-portal.md) mit dem Azure-Portal  
+* Konfigurieren von [Azure Database for MariaDB: Advanced Threat Protection](howto-database-threat-protection-portal.md) mit dem Azure-Portal

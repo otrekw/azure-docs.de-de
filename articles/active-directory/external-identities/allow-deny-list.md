@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87907570"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442183"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen
 
@@ -49,7 +49,7 @@ So fügen Sie eine Verweigerungsliste hinzu
 
    ![Abbildung der Option zum Verweigern mit hinzugefügten Domänen](./media/allow-deny-list/DenyListSettings.png)
  
-6. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+6. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
 
 Wenn Sie nach dem Festlegen der Richtlinie versuchen, einen Benutzer von einer blockierten Domäne einzuladen, wird eine Meldung angezeigt, dass die Domäne des Benutzers derzeit durch die Einladungsrichtlinie blockiert ist.
  
@@ -70,7 +70,7 @@ So fügen Sie eine Zulassungsliste hinzu
 
    ![Abbildung der Option zum Zulassen mit hinzugefügten Domänen](./media/allow-deny-list/AllowListSettings.png)
  
-6. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+6. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
 
 Wenn Sie nach dem Festlegen der Richtlinie versuchen, einen Benutzer einzuladen, der nicht in der Zulassungsliste ist, wird eine Meldung angezeigt, dass die Domäne des Benutzers derzeit durch die Einladungsrichtlinie blockiert ist.
 
@@ -126,7 +126,7 @@ Wenn das Modul nicht installiert oder nicht die erforderliche Version installier
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Konfigurieren der Richtlinie mithilfe der AzureADPolicy-Cmdlets
 
-Verwenden Sie zum Erstellen einer Zulassungs- oder Verweigerungsliste das Cmdlet [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview). Im folgenden Beispiel wird gezeigt, wie Sie eine Verweigerungsliste festlegen, mit der die Domäne live.com blockiert wird.
+Verwenden Sie zum Erstellen einer Zulassungs- oder Verweigerungsliste das Cmdlet [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview). Im folgenden Beispiel wird gezeigt, wie Sie eine Verweigerungsliste festlegen, mit der die Domäne live.com blockiert wird.
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,19 +140,19 @@ Nachstehend sehen Sie das gleiche Beispiel, jedoch mit einer Inline-Richtliniend
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Verwenden Sie zum Festlegen der Richtlinie für die Zulassungs- oder Verweigerungsliste das Cmdlet [Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview). Beispiel:
+Verwenden Sie zum Festlegen der Richtlinie für die Zulassungs- oder Verweigerungsliste das Cmdlet [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview). Beispiel:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-Verwenden Sie zum Abrufen der Richtlinie das Cmdlet [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview). Beispiel:
+Verwenden Sie zum Abrufen der Richtlinie das Cmdlet [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview). Beispiel:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-Verwenden Sie zum Entfernen der Richtlinie das Cmdlet [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview). Beispiel:
+Verwenden Sie zum Entfernen der Richtlinie das Cmdlet [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview). Beispiel:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
@@ -162,6 +162,3 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 
 - Eine Übersicht über Azure AD B2B finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 - Informationen zum bedingten Zugriff und zur B2B-Zusammenarbeit finden Sie unter [Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit](conditional-access.md).
-
-
-

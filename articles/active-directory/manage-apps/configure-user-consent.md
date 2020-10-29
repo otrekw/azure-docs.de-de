@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.custom: contperfq2
+ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819272"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427638"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
@@ -35,19 +36,19 @@ Richtlinien zur Einwilligung für die App beschreiben Bedingungen, die erfüllt 
 
 Indem Sie auswählen, welche Richtlinien zur Einwilligung für die App für alle Benutzer gelten sollen, können Sie Grenzwerte im Hinblick darauf festlegen, wann Endbenutzer Einwilligung für Apps erteilen dürfen und wann sie zum Anfordern einer Überprüfung und Genehmigung durch den Administrator aufgefordert werden sollen:
 
-* **Benutzereinwilligung deaktivieren**: Benutzer können Anwendungen keine Berechtigungen erteilen. Benutzer können sich weiterhin bei Apps anmelden, in die sie zuvor einwilligt haben oder in die Administratoren in Ihrem Namen einwilligt haben. Sie sind jedoch nicht berechtigt, in neue Berechtigungen oder neue Apps eigenständig einzuwilligen. Nur Benutzer, denen eine Verzeichnisrolle mit der Berechtigung zum Erteilen von Einwilligung erteilt wurde, können in neue Apps einwilligen.
+* **Benutzereinwilligung deaktivieren** : Benutzer können Anwendungen keine Berechtigungen erteilen. Benutzer können sich weiterhin bei Apps anmelden, in die sie zuvor einwilligt haben oder in die Administratoren in Ihrem Namen einwilligt haben. Sie sind jedoch nicht berechtigt, in neue Berechtigungen oder neue Apps eigenständig einzuwilligen. Nur Benutzer, denen eine Verzeichnisrolle mit der Berechtigung zum Erteilen von Einwilligung erteilt wurde, können in neue Apps einwilligen.
 
-* **Benutzer können in Apps von verifizierten Herausgebern oder Ihrer Organisation einwilligen, aber nur für Berechtigungen, die Sie auswählen** – Alle Benutzer können nur in Apps einwilligen, die von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) veröffentlicht wurden, und in Apps, die in Ihrem Mandanten registriert sind. Benutzer können nur in die Berechtigungen einwilligen, die Sie als „geringe Auswirkung“ klassifiziert haben. Sie müssen [Berechtigungen klassifizieren](configure-permission-classifications.md), um auszuwählen, in welche Berechtigungen Benutzer einwilligen dürfen.
+* **Benutzer können in Apps von verifizierten Herausgebern oder Ihrer Organisation einwilligen, aber nur für Berechtigungen, die Sie auswählen**  – Alle Benutzer können nur in Apps einwilligen, die von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) veröffentlicht wurden, und in Apps, die in Ihrem Mandanten registriert sind. Benutzer können nur in die Berechtigungen einwilligen, die Sie als „geringe Auswirkung“ klassifiziert haben. Sie müssen [Berechtigungen klassifizieren](configure-permission-classifications.md), um auszuwählen, in welche Berechtigungen Benutzer einwilligen dürfen.
 
-* **Benutzer können in alle Apps einwilligen** – Diese Option ermöglicht es allen Benutzern, für beliebige Anwendungen in jede beliebige Berechtigung einzuwilligen, die keine Administratoreinwilligung erfordert.
+* **Benutzer können in alle Apps einwilligen**  – Diese Option ermöglicht es allen Benutzern, für beliebige Anwendungen in jede beliebige Berechtigung einzuwilligen, die keine Administratoreinwilligung erfordert.
 
-* **Benutzerdefinierte Richtlinie zur Einwilligung für die App**: Bei sogar mehr Optionen für die Bedingungen zur Steuerung der Benutzereinwilligung können Sie die [benutzerdefinierte Richtlinie zur Einwilligung für die App erstellen](manage-app-consent-policies.md#create-a-custom-app-consent-policy) und für Benutzereinwilligung konfigurieren.
+* **Benutzerdefinierte Richtlinie zur Einwilligung für die App** : Bei sogar mehr Optionen für die Bedingungen zur Steuerung der Benutzereinwilligung können Sie die [benutzerdefinierte Richtlinie zur Einwilligung für die App erstellen](manage-app-consent-policies.md#create-a-custom-app-consent-policy) und für Benutzereinwilligung konfigurieren.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So konfigurieren Sie die Einstellungen für die Benutzereinwilligung über das Azure-Portal:
 
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als [globaler Administrator](../roles/permissions-reference.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Einwilligung und Berechtigungen** > **Einstellungen für Benutzereinwilligung** aus.
 1. Wählen Sie unter **Benutzereinwilligung für Anwendungen** aus, welche Einwilligungseinstellung für alle Benutzer konfiguriert werden soll.
 1. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.

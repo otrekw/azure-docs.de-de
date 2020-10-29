@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285586"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427971"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Tutorial: Aktivieren des Eingangscontroller-Add-Ons (Vorschau) für einen neuen AKS-Cluster mit einer neuen Azure Application Gateway-Instanz
 
@@ -82,18 +82,18 @@ Sie stellen nun einen neuen AKS-Clusters mit aktiviertem AGIC-Add-On bereit. Wen
 > - Aktivieren Sie WAF für Application Gateway über das Portal. 
 > - Erstellen Sie zuerst die WAF_v2-Instanz von Application Gateway, und befolgen Sie dann die Anweisungen zum [Aktivieren des AGIC-Add-Ons mit einem vorhandenen AKS-Cluster und vorhandener Application Gateway Instanz](tutorial-ingress-controller-add-on-existing.md). 
 
-Im folgenden Beispiel stellen Sie einen neuen AKS-Cluster namens *myCluster* mithilfe von [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) und [verwalteten Identitäten](https://docs.microsoft.com/azure/aks/use-managed-identity) bereit. Das AGIC-Add-On wird in der Ressourcengruppe aktiviert, die Sie erstellt haben, *myResourceGroup*. 
+Im folgenden Beispiel stellen Sie einen neuen AKS-Cluster namens *myCluster* mithilfe von [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) und [verwalteten Identitäten](https://docs.microsoft.com/azure/aks/use-managed-identity) bereit. Das AGIC-Add-On wird in der Ressourcengruppe aktiviert, die Sie erstellt haben, *myResourceGroup* . 
 
 Wenn Sie einen neuen AKS-Cluster mit aktiviertem AGIC-Add-On ohne Angabe einer vorhandenen Application Gateway-Instanz bereitstellen, bedeutet dies, dass automatisch eine Standard_v2-SKU-Instanz von Application Gateway erstellt wird. Sie müssen also auch den Namen und den Subnetzadressraum der Application Gateway-Instanz angeben. Der Name der Application Gateway-Instanz ist dann *myApplicationGateway* und der verwendete Subnetzadressraum „10.2.0.0/16“. Vergewissern Sie sich, dass Sie am Anfang dieses Tutorials die „aks-preview“-Erweiterung hinzugefügt oder aktualisiert haben. 
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" 
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
 Um zusätzliche Parameter für den Befehl `az aks create` zu konfigurieren, lesen Sie [diese Referenzen](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
 
 > [!NOTE]
-> Der von Ihnen erstellte AKS-Cluster wird in der Ressourcengruppe aktiviert, die Sie erstellt haben, *myResourceGroup*. Allerdings befindet sich die automatisch erstellte Application Gateway-Instanz in der Knotenressourcengruppe, in der sich die Agentpools befinden. Die Knotenressourcengruppe hat standardmäßig den Namen *MC_resource-group-name_cluster-name_location*, der aber geändert werden kann. 
+> Der von Ihnen erstellte AKS-Cluster wird in der Ressourcengruppe aktiviert, die Sie erstellt haben, *myResourceGroup* . Allerdings befindet sich die automatisch erstellte Application Gateway-Instanz in der Knotenressourcengruppe, in der sich die Agentpools befinden. Die Knotenressourcengruppe hat standardmäßig den Namen *MC_resource-group-name_cluster-name_location* , der aber geändert werden kann. 
 
 ## <a name="deploy-a-sample-application-by-using-agic"></a>Bereitstellen einer Beispielanwendung mithilfe von AGIC
 

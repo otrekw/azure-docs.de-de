@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542426"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425900"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Azure Database for MariaDB-Servers mithilfe des Azure-Portals in eine andere Region
 
@@ -21,7 +21,7 @@ Es gibt verschiedene Szenarios, in denen ein vorhandener Azure Database for Mari
 Sie können ein [regionsübergreifendes Lesereplikat](concepts-read-replicas.md#cross-region-replication) für Azure Database for MariaDB verwenden, um die Verschiebung in eine andere Region vorzunehmen. Hierzu erstellen Sie zunächst ein Lesereplikat in der Zielregion. Beenden Sie anschließend die Replikation auf dem Lesereplikatserver, um ihn zu einem eigenständigen Server zu machen, der sowohl Lese- als auch Schreibdatenverkehr akzeptiert. 
 
 > [!NOTE]
-> Der Schwerpunkt des vorliegenden Artikels liegt auf dem Verschieben des Servers in eine andere Region. Wenn Sie Ihren Server in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben möchten, finden Sie entsprechende Informationen im Artikel [Verschieben](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription). 
+> Der Schwerpunkt des vorliegenden Artikels liegt auf dem Verschieben des Servers in eine andere Region. Wenn Sie Ihren Server in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben möchten, finden Sie entsprechende Informationen im Artikel [Verschieben](../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,13 +36,13 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals einen regi
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie den vorhandenen Azure Database for MariaDB-Server aus, den Sie als Quellserver verwenden möchten. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
 1. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
-1. Wählen Sie **Replikat hinzufügen**.
+1. Wählen Sie **Replikat hinzufügen** .
 1. Geben Sie einen Namen für den Replikatserver ein.
 1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Quellserver identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
 1. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen. Während der Replikaterstellung werden die Daten vom Quellserver auf das Replikat kopiert. Die Erstellung kann mehrere Minuten oder sogar länger dauern, dies hängt von der Größe des Quellservers ab.
 
 >[!NOTE]
-> Wenn Sie ein Replikat erstellen, erbt es nicht die VNet-Dienstendpunkte des Quellservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
+> Wenn Sie ein Replikat erstellen, erbt es nicht die VNET-Dienstendpunkte des Quellservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
 
 ## <a name="move"></a>Move
 
@@ -56,7 +56,7 @@ Das Beenden der Replikation auf dem Replikatserver macht diesen zu einem eigenst
 1. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 1. Wählen Sie den Replikatserver aus.
 1. Wählen Sie **Replikation beenden** aus.
-1. Klicken Sie auf **OK**, um zu bestätigen, dass Sie die Replikation beenden möchten.
+1. Klicken Sie auf **OK** , um zu bestätigen, dass Sie die Replikation beenden möchten.
 
 ## <a name="clean-up-source-server"></a>Bereinigen des Quellservers
 
@@ -65,7 +65,7 @@ Sie sollten den Azure Database for MariaDB-Quellserver löschen. Führen Sie daz
 1. Nachdem das Replikat erstellt wurde, suchen Sie den Azure Database for MariaDB-Quellserver, und wählen Sie ihn aus.
 1. Wählen Sie im Fenster **Übersicht** die Option **Löschen** aus.
 1. Geben Sie den Namen des Quellservers ein, um zu bestätigen, dass Sie ihn löschen möchten.
-1. Klicken Sie auf **Löschen**.
+1. Klicken Sie auf **Löschen** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

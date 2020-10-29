@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534436"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372428"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>„Ermittlung und Erkenntnisse (Vorschau)“ für Azure AD-Rollen (früher Sicherheits-Assistent)
 
@@ -29,7 +29,7 @@ Wenn Sie mit Privileged Identity Management (PIM) in Ihrer Azure AD-Organisatio
 
 Bevor Ihre Organisation Privileged Identity Management einsetzte, waren alle Rollenzuweisungen permanent. Benutzer befinden sich immer in den zugewiesenen Rollen, auch wenn sie deren Berechtigungen nicht benötigen. „Ermittlung und Erkenntnisse (Vorschau)“ ersetzt den früheren Sicherheits-Assistenten und zeigt Ihnen eine Liste privilegierter Rollen an sowie die Anzahl der Benutzer, die derzeit über diese Rollen verfügen. Sie können die Zuweisungen für eine Rolle auflisten, um mehr über die zugewiesenen Benutzer zu erfahren, wenn einer oder mehrere davon nicht vertraut sind.
 
-:heavy_check_mark: **Microsoft empfiehlt** Ihnen, zwei Konten für den Notfallzugriff zu verwalten, die dauerhaft der Rolle „Globaler Administrator“ zugewiesen sind. Stellen Sie sicher, dass für diese Konten nicht der gleiche MFA-Mechanismus wie für die normalen Verwaltungskonten zum Anmelden verwendet wird. Weitere Informationen finden Sie unter [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md).
+:heavy_check_mark: **Microsoft empfiehlt** Ihnen, zwei Konten für den Notfallzugriff zu verwalten, die dauerhaft der Rolle „Globaler Administrator“ zugewiesen sind. Stellen Sie sicher, dass für diese Konten nicht der gleiche MFA-Mechanismus wie für die normalen Verwaltungskonten zum Anmelden verwendet wird. Weitere Informationen finden Sie unter [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
 
 Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype oder Outlook.com). Wenn mehrstufige Authentifizierung für einen Benutzer mit einem Microsoft-Konto benötigt wird, um eine Rollenzuweisung zu aktivieren, wird der Benutzer gesperrt.
 
@@ -37,13 +37,13 @@ Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ei
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie **Azure AD Privileged Identity Management** .
 
 1. Wählen Sie **Azure AD-Rollen** und dann **Ermittlung und Erkenntnisse (Vorschau)** aus. Beim Öffnen der Seite beginnt der Ermittlungsvorgang, relevante Rollenzuweisungen zu suchen.
 
     ![Azure AD-Rollen – Seite „Ermittlung und Erkenntnisse“ mit den drei Optionen](./media/pim-security-wizard/new-preview-link.png)
 
-1. Wählen Sie **Anzahl globaler Administratoren verringern**.
+1. Wählen Sie **Anzahl globaler Administratoren verringern** .
 
     ![Screenshot: „Ermittlung und Erkenntnisse (Vorschau)“ mit der ausgewählten Aktion „Anzahl globaler Administratoren verringern“](./media/pim-security-wizard/new-preview-page.png)
 

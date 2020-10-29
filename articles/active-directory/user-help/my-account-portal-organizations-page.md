@@ -11,26 +11,26 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90005070"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370337"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Verwalten von Organisationen, auf die Sie über das Portal „Mein Konto“ zugreifen können
 
 Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organisationen (in der Regel der Name Ihrer Organisation) verwalten, auf die Sie Zugriff haben. Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
 
-- **Eigene Organisation**. Ihre eigene Organisation ist die Organisation, die Besitzer Ihres Geschäfts-, Schul- oder Unikontos ist. Ihre eigene Organisation können Sie nicht verlassen.
+- **Eigene Organisation** . Ihre eigene Organisation ist die Organisation, die Besitzer Ihres Geschäfts-, Schul- oder Unikontos ist. Ihre eigene Organisation können Sie nicht verlassen.
 
     >[!NOTE]
     > Wenn Sie nicht über eine zugewiesene eigene Organisation verfügen, sehen Sie nur eine einzige Überschrift „Organisationen“ und darunter die Liste der Organisationen, mit denen Sie verbunden sind.
 
-- **Andere Organisationen**. Zu den anderen Organisationen gehören alle Gruppen, bei denen Sie sich zuvor mit Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben. Sie können jede dieser Organisationen jederzeit verlassen.
+- **Andere Organisationen** . Zu den anderen Organisationen gehören alle Gruppen, bei denen Sie sich zuvor mit Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben. Sie können jede dieser Organisationen jederzeit verlassen.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, die Organisationsinformationen zu aktualisieren, auf die von einem Geschäfts-, Schul- oder Unikonto zugegriffen wird. Wenn Sie ein Administrator sind und nach Informationen zur Gruppen- und Benutzerverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, lesen Sie die [Dokumentation zur Verwaltung von Unternehmensbenutzern](../users-groups-roles/index.yml).
+>Dieser Artikel richtet sich an Benutzer, die versuchen, die Organisationsinformationen zu aktualisieren, auf die von einem Geschäfts-, Schul- oder Unikonto zugegriffen wird. Wenn Sie ein Administrator sind und nach Informationen zur Gruppen- und Benutzerverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, lesen Sie die [Dokumentation zur Verwaltung von Unternehmensbenutzern](../enterprise-users/index.yml).
 
 ## <a name="view-your-organizations"></a>Anzeigen Ihrer Organisationen
 
@@ -40,7 +40,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organi
 
     ![Seite „Mein Konto“ mit hervorgehobenen Links für Organisationen](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Überprüfen Sie die Informationen für Ihre **Eigene Organisation**.
+3. Überprüfen Sie die Informationen für Ihre **Eigene Organisation** .
 
     ![Seite „Organisationen“](media/my-account-portal/my-account-portal-organization-page.png)
 

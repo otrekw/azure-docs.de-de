@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 9c2f8ea55f99ac893dca0fa380729b7cc866812e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f61fef58485a905b96bdada32b915106e60d1a8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871281"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425127"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Verwenden des Warteschlangenspeichers mit Java
 
@@ -22,7 +22,7 @@ ms.locfileid: "88871281"
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Leitfaden wird das Codieren häufiger Szenarien mit dem Azure Queue Storage-Dienst veranschaulicht. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage SDK for Java]. Zu den Szenarien gehören **Einfügen**, **Einsehen**, **Abrufen** und **Löschen** von Warteschlangennachrichten. Der Code für das **Erstellen** und **Löschen** von Warteschlangen wird ebenfalls behandelt. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
+In diesem Leitfaden wird das Codieren häufiger Szenarien mit dem Azure Queue Storage-Dienst veranschaulicht. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage SDK for Java]. Zu den Szenarien gehören **Einfügen** , **Einsehen** , **Abrufen** und **Löschen** von Warteschlangennachrichten. Der Code für das **Erstellen** und **Löschen** von Warteschlangen wird ebenfalls behandelt. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -36,7 +36,7 @@ In diesem Leitfaden wird das Codieren häufiger Szenarien mit dem Azure Queue St
 
 So erstellen Sie eine Java-Anwendung mit dem Namen *queues-how-to-v12*
 
-1. Verwenden Sie Maven in einem Konsolenfenster (z. B. der Befehlszeile, PowerShell oder Bash), um eine neue Konsolen-App mit dem Namen *queues-how-to-v12* zu erstellen. Geben Sie den folgenden **mvn**-Befehl ein, um ein „Hallo Welt!“ -Java-Projekt zu erstellen.
+1. Verwenden Sie Maven in einem Konsolenfenster (z. B. der Befehlszeile, PowerShell oder Bash), um eine neue Konsolen-App mit dem Namen *queues-how-to-v12* zu erstellen. Geben Sie den folgenden **mvn** -Befehl ein, um ein „Hallo Welt!“ -Java-Projekt zu erstellen.
 
    ```bash
     mvn archetype:generate \
@@ -152,7 +152,7 @@ final String storageConnectionString =
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
-Sie können diese Zeichenfolge in der Dienstkonfigurationsdatei namens *ServiceConfiguration.cscfg* speichern. Für eine App, die innerhalb einer Microsoft Azure-Rolle ausgeführt wird, greifen Sie auf die Verbindungszeichenfolge zu, indem Sie **RoleEnvironment.getConfigurationSettings** aufrufen. Dieses Beispiel zeigt, wie die Verbindungszeichenfolge von einem **Setting**-Element mit der Bezeichnung *StorageConnectionString* abgerufen wird:
+Sie können diese Zeichenfolge in der Dienstkonfigurationsdatei namens *ServiceConfiguration.cscfg* speichern. Für eine App, die innerhalb einer Microsoft Azure-Rolle ausgeführt wird, greifen Sie auf die Verbindungszeichenfolge zu, indem Sie **RoleEnvironment.getConfigurationSettings** aufrufen. Dieses Beispiel zeigt, wie die Verbindungszeichenfolge von einem **Setting** -Element mit der Bezeichnung *StorageConnectionString* abgerufen wird:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -162,19 +162,19 @@ String storageConnectionString =
 
 ---
 
-In den folgenden Beispielen wird angenommen, dass Sie über ein **String**-Objekt verfügen, das die Speicherverbindungszeichenfolge enthält.
+In den folgenden Beispielen wird angenommen, dass Sie über ein **String** -Objekt verfügen, das die Speicherverbindungszeichenfolge enthält.
 
 ## <a name="how-to-create-a-queue"></a>Gewusst wie: Erstellen einer Warteschlange
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Ein **QueueClient**-Objekt enthält die Vorgänge für die Interaktion mit einer Warteschlange. Der folgende Code erstellt ein **QueueClient**-Objekt. Verwenden Sie das Objekt **QueueClient**, um die zu verwendende Warteschlange zu erstellen.
+Ein **QueueClient** -Objekt enthält die Vorgänge für die Interaktion mit einer Warteschlange. Der folgende Code erstellt ein **QueueClient** -Objekt. Verwenden Sie das Objekt **QueueClient** , um die zu verwendende Warteschlange zu erstellen.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_CreateQueue":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-Mit einem **CloudQueueClient**-Objekt können Sie Referenzobjekte für Warteschlangen abrufen. Der folgende Code erstellt ein **CloudQueueClient**-Objekt. (Hinweis: **CloudStorageAccount**-Objekte können auch noch auf andere Weise erstellt werden. Weitere Informationen finden Sie in der [Referenz für Azure Storage-Client-SDKs] unter **CloudStorageAccount**.
+Mit einem **CloudQueueClient** -Objekt können Sie Referenzobjekte für Warteschlangen abrufen. Der folgende Code erstellt ein **CloudQueueClient** -Objekt. (Hinweis: **CloudStorageAccount** -Objekte können auch noch auf andere Weise erstellt werden. Weitere Informationen finden Sie in der [Referenz für Azure Storage-Client-SDKs] unter **CloudStorageAccount** .
 
 Mithilfe des **CloudQueueClient** -Objekts können Sie einen Verweis auf die Warteschlange abrufen, die Sie verwenden möchten. Sie können die Warteschlange erstellen, wenn sie nicht vorhanden ist.
 
@@ -207,13 +207,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Um eine Nachricht in eine vorhandene Warteschlange einzufügen, rufen Sie die **sendMessage**-Methode auf. Eine Nachricht kann entweder eine Zeichenfolge (im UTF-8-Format) oder ein Bytearray sein. Dies ist der Code, der eine Zeichenfolgennachricht an die Warteschlange sendet.
+Um eine Nachricht in eine vorhandene Warteschlange einzufügen, rufen Sie die **sendMessage** -Methode auf. Eine Nachricht kann entweder eine Zeichenfolge (im UTF-8-Format) oder ein Bytearray sein. Dies ist der Code, der eine Zeichenfolgennachricht an die Warteschlange sendet.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_AddMessage":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues **CloudQueueMessage**-Objekt. Anschließend rufen Sie die **addMessage** -Methode auf. Die **CloudQueueMessage** kann entweder aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden. Mit diesem Code werden eine Warteschlange erstellt (falls noch nicht vorhanden) und die Nachricht „Hello, World“ eingefügt.
+Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues **CloudQueueMessage** -Objekt. Anschließend rufen Sie die **addMessage** -Methode auf. Die **CloudQueueMessage** kann entweder aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden. Mit diesem Code werden eine Warteschlange erstellt (falls noch nicht vorhanden) und die Nachricht „Hello, World“ eingefügt.
 
 ```java
 try
@@ -246,7 +246,7 @@ catch (Exception e)
 
 ## <a name="how-to-peek-at-the-next-message"></a>Gewusst wie: Einsehen der nächsten Nachricht
 
-Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode **peekMessage**aufrufen.
+Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode **peekMessage** aufrufen.
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
@@ -393,13 +393,13 @@ Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen.
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Die **GetProperties**-Methode fragt den Warteschlangendienst nach mehreren aktuellen Werten ab. Einer der Werte ist eine Zahl, die angibt, wie viele Nachrichten sich in einer Warteschlange befinden. Die Anzahl ist nur ein ungefährer Wert, da nach Ihrer Anforderung möglicherweise Nachrichten hinzugefügt oder gelöscht wurden. Die **getApproximateMessageCount**-Methode gibt den letzten von **getProperties** abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
+Die **GetProperties** -Methode fragt den Warteschlangendienst nach mehreren aktuellen Werten ab. Einer der Werte ist eine Zahl, die angibt, wie viele Nachrichten sich in einer Warteschlange befinden. Die Anzahl ist nur ein ungefährer Wert, da nach Ihrer Anforderung möglicherweise Nachrichten hinzugefügt oder gelöscht wurden. Die **getApproximateMessageCount** -Methode gibt den letzten von **getProperties** abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-Die **downloadAttributes**-Methode fragt den Warteschlangendienst nach mehreren aktuellen Werten ab. Einer der Werte ist eine Zahl, die angibt, wie viele Nachrichten sich in einer Warteschlange befinden. Die Anzahl ist nur ein ungefährer Wert, da nach Ihrer Anforderung möglicherweise Nachrichten hinzugefügt oder gelöscht wurden. Die **getApproximateMessageCount**-Methode gibt den letzten von **downloadAttributes** abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
+Die **downloadAttributes** -Methode fragt den Warteschlangendienst nach mehreren aktuellen Werten ab. Einer der Werte ist eine Zahl, die angibt, wie viele Nachrichten sich in einer Warteschlange befinden. Die Anzahl ist nur ein ungefährer Wert, da nach Ihrer Anforderung möglicherweise Nachrichten hinzugefügt oder gelöscht wurden. Die **getApproximateMessageCount** -Methode gibt den letzten von **downloadAttributes** abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
 
 ```java
 try
@@ -436,13 +436,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie **receiveMessage** aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für **receiveMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem **deleteMessage**aufrufen. Wenn Ihr Code eine Nachricht nicht verarbeiten kann, stellt dieser zweistufige Prozess sicher, dass Sie dieselbe Nachricht erhalten und es erneut versuchen können. Der Code ruft **deleteMessage** direkt nach der Verarbeitung der Nachricht auf.
+Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie **receiveMessage** aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für **receiveMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem **deleteMessage** aufrufen. Wenn Ihr Code eine Nachricht nicht verarbeiten kann, stellt dieser zweistufige Prozess sicher, dass Sie dieselbe Nachricht erhalten und es erneut versuchen können. Der Code ruft **deleteMessage** direkt nach der Verarbeitung der Nachricht auf.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie **retrieveMessage**aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für **retrieveMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem **deleteMessage**aufrufen. Wenn Ihr Code eine Nachricht nicht verarbeiten kann, stellt dieser zweistufige Prozess sicher, dass Sie dieselbe Nachricht erhalten und es erneut versuchen können. Der Code ruft **deleteMessage** direkt nach der Verarbeitung der Nachricht auf.
+Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie **retrieveMessage** aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für **retrieveMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem **deleteMessage** aufrufen. Wenn Ihr Code eine Nachricht nicht verarbeiten kann, stellt dieser zweistufige Prozess sicher, dass Sie dieselbe Nachricht erhalten und es erneut versuchen können. Der Code ruft **deleteMessage** direkt nach der Verarbeitung der Nachricht auf.
 
 ```java
 try
@@ -481,7 +481,7 @@ Es gibt zwei Möglichkeiten, das Abrufen von Nachrichten aus der Warteschlange a
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Im folgenden Codebeispiel wird die **receiveMessages**-Methode verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer **for** -Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten (300 Sekunden) pro Nachricht festgelegt. Das Zeitlimit beginnt für alle Nachrichten gleichzeitig. Wenn seit dem Aufruf von **receiveMessages** fünf Minuten vergangen sind, werden alle nicht gelöschten Nachrichten wieder sichtbar.
+Im folgenden Codebeispiel wird die **receiveMessages** -Methode verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer **for** -Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten (300 Sekunden) pro Nachricht festgelegt. Das Zeitlimit beginnt für alle Nachrichten gleichzeitig. Wenn seit dem Aufruf von **receiveMessages** fünf Minuten vergangen sind, werden alle nicht gelöschten Nachrichten wieder sichtbar.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
@@ -522,13 +522,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Rufen Sie zum Abrufen einer Liste der aktuellen Warteschlangen die Methode **QueueServiceClient.listQueues()** auf, die eine Sammlung von **QueueItem**-Objekten zurückgibt.
+Rufen Sie zum Abrufen einer Liste der aktuellen Warteschlangen die Methode **QueueServiceClient.listQueues()** auf, die eine Sammlung von **QueueItem** -Objekten zurückgibt.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ListQueues":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-Rufen Sie zum Abrufen einer Liste der aktuellen Warteschlangen die Methode **CloudQueueClient.listQueues()** auf, die eine Sammlung von **CloudQueue**-Objekten zurückgibt.
+Rufen Sie zum Abrufen einer Liste der aktuellen Warteschlangen die Methode **CloudQueueClient.listQueues()** auf, die eine Sammlung von **CloudQueue** -Objekten zurückgibt.
 
 ```java
 try
@@ -561,7 +561,7 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **delete** für das **QueueClient**-Objekt auf.
+Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **delete** für das **QueueClient** -Objekt auf.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DeleteMessageQueue":::
 
@@ -608,5 +608,5 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
 [Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
 [Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage
 [Referenz für Azure Storage-Client-SDKs]: https://azure.github.io/azure-sdk-for-java/storage.html
-[Azure Storage Services REST API]: https://docs.microsoft.com/rest/api/storageservices/
+[Azure Storage Services REST API]: /rest/api/storageservices/
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

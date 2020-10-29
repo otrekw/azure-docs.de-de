@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332041"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370439"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizi
 Wenn Sie NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen diese Diensttags zugelassen werden.
 
 - Für die Speicherkonten in der Quellregion:
-    - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
+    - Erstellen Sie ein [Speicherdiensttag](../virtual-network/network-security-groups-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
-- Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
+- Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/network-security-groups-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
 - Erstellen Sie eine auf dem EventsHub-Diensttag basierende NSG-Regel für die Zielregion, die den Zugriff auf Site Recovery-Überwachung ermöglicht.
 - Erstellen Sie eine auf dem Azure Site Recovery-Diensttag basierende NSG-Regel, um den Zugriff auf den Site Recovery-Dienst in einer beliebigen Region zuzulassen.
 - Erstellen Sie eine NSG-Regel, die auf einem AzureKeyVault-Diensttag basiert. Dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren.

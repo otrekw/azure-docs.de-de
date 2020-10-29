@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340604"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441877"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
@@ -63,7 +63,7 @@ Der nächste Abschnitt der E-Mail enthält Informationen darüber, wohin die ein
 
 ### <a name="footer-section"></a>Fußzeilenabschnitt
 
-Die Fußzeile enthält weitere Informationen zu der gesendeten Einladung. Es gibt immer eine Option, mit der die eingeladene Person zukünftige Einladungen blockieren kann. Wenn die Organisation [eine Datenschutzerklärung festgelegt hat](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), wird hier der entsprechende Link angezeigt.  Andernfalls zeigt ein Hinweis an, dass die Organisation keine Datenschutzerklärung festgelegt hat.
+Die Fußzeile enthält weitere Informationen zu der gesendeten Einladung. Es gibt immer eine Option, mit der die eingeladene Person zukünftige Einladungen blockieren kann. Wenn die Organisation [eine Datenschutzerklärung festgelegt hat](../fundamentals/active-directory-properties-area.md), wird hier der entsprechende Link angezeigt.  Andernfalls zeigt ein Hinweis an, dass die Organisation keine Datenschutzerklärung festgelegt hat.
 
 ![Abbildung des Footerabschnitts in der E-Mail](media/invitation-email-elements/footer-section.png)
 
@@ -85,8 +85,8 @@ Sie können als Gastbenutzer die folgenden Schritte ausführen, um die von Ihnen
 
 Die den Gastbenutzern in der Einladungs-E-Mail angezeigte Sprache richtet sich nach den folgenden Einstellungen. Diese Einstellungen sind in der Reihenfolge ihres Auftretens aufgeführt. Wenn eine Einstellung nicht konfiguriert ist, bestimmt die nächste Einstellung in der Liste die Sprache.
 
-- Die **messageLanguage** -Eigenschaft des [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0)-Objekts, wenn die API zum Erstellen von Einladungen verwendet wird
--   Die **preferredLanguage** -Eigenschaft, die im [user-Objekt](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) des Gasts angegeben ist
+- Die **messageLanguage** -Eigenschaft des [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0)-Objekts, wenn die API zum Erstellen von Einladungen verwendet wird
+-   Die **preferredLanguage** -Eigenschaft, die im [user-Objekt](/graph/api/resources/user?view=graph-rest-1.0) des Gasts angegeben ist
 -   Die **Benachrichtigungssprache** , die in den Eigenschaften des Stammmandanten des Gastbenutzers (nur bei Azure AD-Mandanten) festgelegt wurde
 -   Die **Benachrichtigungssprache** , die in den Eigenschaften des Ressourcenmandanten festgelegt ist
 

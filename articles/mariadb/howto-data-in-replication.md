@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598201"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426007"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurieren der Datenreplikation in Azure Database for MariaDB
 
@@ -56,7 +56,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
 
 2. Stellen Sie sicher, dass der Quellserver sowohl eingehenden als auch ausgehenden Datenverkehr an Port 3306 zulässt und über eine **öffentliche IP-Adresse** verfügt und dass der DNS öffentlich zugänglich ist oder über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügt. 
    
-   Testen Sie die Konnektivität mit dem Quellserver, indem Sie versuchen, eine Verbindung über ein Tool, z. B. die MySQL-Befehlszeile auf einem anderen Computer, oder über die im Azure-Portal verfügbare [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) herzustellen.
+   Testen Sie die Konnektivität mit dem Quellserver, indem Sie versuchen, eine Verbindung über ein Tool, z. B. die MySQL-Befehlszeile auf einem anderen Computer, oder über die im Azure-Portal verfügbare [Azure Cloud Shell](../cloud-shell/overview.md) herzustellen.
 
    Wenn in Ihrer Organisation strenge Sicherheitsrichtlinien gelten, die nicht zulassen, dass alle IP-Adressen auf dem Quellserver eine Kommunikation von Azure mit dem Quellserver ermöglichen, können Sie potenziell mit dem folgenden Befehl die IP-Adresse Ihres Azure Database for MariaDB-Servers ermitteln.
     
@@ -99,7 +99,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
 
    Wenn die Variable [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) den Wert `ON` zurückgibt, ist die binäre Protokollierung auf Ihrem Server aktiviert.
 
-   Wenn `log_bin` den Wert `OFF` zurückgibt, bearbeiten Sie die Datei **my.cnf**, damit `log_bin=ON` die binäre Protokollierung aktiviert. Starten Sie den Server neu, damit die Änderung wirksam wird.
+   Wenn `log_bin` den Wert `OFF` zurückgibt, bearbeiten Sie die Datei **my.cnf** , damit `log_bin=ON` die binäre Protokollierung aktiviert. Starten Sie den Server neu, damit die Änderung wirksam wird.
 
 3. Konfigurieren Sie die Quellservereinstellungen.
 
@@ -212,7 +212,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
 
 1. Legen Sie den Quellserver fest.
 
-   Alle Datenreplikationsfunktionen erfolgen über gespeicherte Prozeduren. Alle Prozeduren finden Sie unter [Gespeicherte Prozeduren für Datenreplikationen in Azure Database for MySQL](reference-data-in-stored-procedures.md). Gespeicherte Prozeduren können in der MySQL-Shell oder MySQL Workbench ausgeführt werden.
+   Alle Datenreplikationsfunktionen erfolgen über gespeicherte Prozeduren. Alle Prozeduren finden Sie unter [Gespeicherte Prozeduren für Datenreplikationen in Azure Database for MySQL](reference-stored-procedures.md). Gespeicherte Prozeduren können in der MySQL-Shell oder MySQL Workbench ausgeführt werden.
 
    Um zwei Server zu verknüpfen und die Replikation zu starten, melden Sie sich beim Zielreplikatserver im Dienst Azure Database for MariaDB an. Legen Sie anschließend die externe Instanz als Quellserver fest, indem Sie die gespeicherte Prozedur `mysql.az_replication_change_master` oder `mysql.az_replication_change_master_with_gtid` auf dem Azure Database for MariaDB-Server verwenden.
 

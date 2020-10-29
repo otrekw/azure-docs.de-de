@@ -3,12 +3,12 @@ title: Replizieren virtueller Azure Stack-Computer in Azure mit Azure Site Recov
 description: Hier erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für virtuelle Azure Stack-Computer mit dem Azure Site Recovery-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448974"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370524"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -25,12 +25,12 @@ Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfal
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * **Schritt 1: Vorbereiten virtueller Azure Stack-Computer für die Replikation**. Vergewissern Sie sich, dass die virtuellen Computer die Site Recovery-Anforderungen erfüllen, und bereiten Sie die Installation des Site Recovery-Mobilitätsdiensts vor. Dieser Dienst wird auf jedem virtuellen Computer installiert, den Sie replizieren möchten.
-> * **Schritt 2: Einrichten eines Recovery Services-Tresors**. Richten Sie einen Tresor für Site Recovery ein, und geben Sie an, was Sie replizieren möchten. Site Recovery-Komponenten und -Aktionen werden im Tresor konfiguriert und verwaltet.
-> * **Schritt 3: Einrichten der Quellreplikationsumgebung**. Richten Sie einen Site Recovery-Konfigurationsserver ein. Der Konfigurationsserver ist ein einzelner virtueller Azure Stack-Computer, auf dem alle von Site Recovery benötigten Komponenten ausgeführt werden. Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im Tresor.
-> * **Schritt 4: Einrichten der Replikationszielumgebung**. Wählen Sie Ihr Azure-Konto sowie das zu verwendende Azure-Speicherkonto und -Netzwerk aus. Während der Replikation werden Daten der virtuellen Computer in Azure Storage kopiert. Nach dem Failover werden virtuelle Azure-Computer mit dem angegebenen Netzwerk verbunden.
-> * **Schritt 5: Aktivieren der Replikation**. Konfigurieren Sie Replikationseinstellungen, und aktivieren Sie die Replikation für virtuelle Computer. Bei aktivierter Replikation wird der Mobilitätsdienst auf dem virtuellen Computer installiert. Site Recovery führt eine erste Replikation des virtuellen Computers aus, und anschließend beginnt die laufende Replikation.
-> * **Schritt 6: Durchführen eines Notfallwiederherstellungsverfahrens**: Sobald die Replikation betriebsbereit ist, vergewissern Sie sich, dass das Failover erwartungsgemäß funktioniert. Dazu führen Sie ein Testverfahren durch. Zum Einleiten des Testverfahrens führen Sie ein Testfailover in Site Recovery aus. Das Testfailover hat keinerlei Auswirkungen auf Ihre Produktionsumgebung.
+> * **Schritt 1: Vorbereiten virtueller Azure Stack-Computer für die Replikation** . Vergewissern Sie sich, dass die virtuellen Computer die Site Recovery-Anforderungen erfüllen, und bereiten Sie die Installation des Site Recovery-Mobilitätsdiensts vor. Dieser Dienst wird auf jedem virtuellen Computer installiert, den Sie replizieren möchten.
+> * **Schritt 2: Einrichten eines Recovery Services-Tresors** . Richten Sie einen Tresor für Site Recovery ein, und geben Sie an, was Sie replizieren möchten. Site Recovery-Komponenten und -Aktionen werden im Tresor konfiguriert und verwaltet.
+> * **Schritt 3: Einrichten der Quellreplikationsumgebung** . Richten Sie einen Site Recovery-Konfigurationsserver ein. Der Konfigurationsserver ist ein einzelner virtueller Azure Stack-Computer, auf dem alle von Site Recovery benötigten Komponenten ausgeführt werden. Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im Tresor.
+> * **Schritt 4: Einrichten der Replikationszielumgebung** . Wählen Sie Ihr Azure-Konto sowie das zu verwendende Azure-Speicherkonto und -Netzwerk aus. Während der Replikation werden Daten der virtuellen Computer in Azure Storage kopiert. Nach dem Failover werden virtuelle Azure-Computer mit dem angegebenen Netzwerk verbunden.
+> * **Schritt 5: Aktivieren der Replikation** . Konfigurieren Sie Replikationseinstellungen, und aktivieren Sie die Replikation für virtuelle Computer. Bei aktivierter Replikation wird der Mobilitätsdienst auf dem virtuellen Computer installiert. Site Recovery führt eine erste Replikation des virtuellen Computers aus, und anschließend beginnt die laufende Replikation.
+> * **Schritt 6: Durchführen eines Notfallwiederherstellungsverfahrens** : Sobald die Replikation betriebsbereit ist, vergewissern Sie sich, dass das Failover erwartungsgemäß funktioniert. Dazu führen Sie ein Testverfahren durch. Zum Einleiten des Testverfahrens führen Sie ein Testfailover in Site Recovery aus. Das Testfailover hat keinerlei Auswirkungen auf Ihre Produktionsumgebung.
 
 Wenn diese Schritte abgeschlossen sind, können Sie anschließend im Bedarfsfall ein vollständiges Failover zu Azure durchführen.
 
@@ -97,11 +97,11 @@ Auf jedem virtuellen Computer, den Sie replizieren möchten, muss der Mobilität
     - Sie geben dieses Konto beim Einrichten von Site Recovery an. Anschließend verwendet der Prozessserver bei aktivierter Replikation dieses Konto zum Installieren des Mobilitätsdiensts.
     - Dieses Konto wird nur von Site Recovery für die Pushinstallation und zum Aktualisieren des Mobilitätsdiensts verwendet.
     - Wenn Sie kein Domänenkonto verwenden, müssen Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer deaktivieren:
-        - Erstellen Sie in der Registrierung unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System“ den DWORD-Wert **LocalAccountTokenFilterPolicy**.
+        - Erstellen Sie in der Registrierung unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System“ den DWORD-Wert **LocalAccountTokenFilterPolicy** .
         - Legen Sie den Wert auf 1 fest.
-        - Geben Sie dazu an der Eingabeaufforderung Folgendes ein: **REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**.
+        - Geben Sie dazu an der Eingabeaufforderung Folgendes ein: **REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1** .
 - Lassen Sie in der Windows-Firewall auf dem virtuellen Computer, den Sie replizieren möchten, die Datei- und Druckerfreigabe sowie WMI zu.
-    - Dazu führen Sie **wf.msc** aus, um die Windows-Firewall-Konsole zu öffnen. Klicken Sie mit der rechten Maustaste auf **Eingehende Regeln** > **Neue Regel**. Wählen Sie **Vordefiniert** und dann in der Liste **Datei- und Druckerfreigabe** aus. Schließen Sie den Assistenten ab, wählen Sie das Zulassen der Verbindung und dann **Fertig stellen** aus.
+    - Dazu führen Sie **wf.msc** aus, um die Windows-Firewall-Konsole zu öffnen. Klicken Sie mit der rechten Maustaste auf **Eingehende Regeln** > **Neue Regel** . Wählen Sie **Vordefiniert** und dann in der Liste **Datei- und Druckerfreigabe** aus. Schließen Sie den Assistenten ab, wählen Sie das Zulassen der Verbindung und dann **Fertig stellen** aus.
     - Bei Domänencomputern können Sie zu diesem Zweck ein Gruppenrichtlinienobjekt verwenden.
 
 
@@ -116,7 +116,7 @@ Auf jedem virtuellen Computer, den Sie replizieren möchten, muss der Mobilität
 - Stellen Sie sicher, dass Secure Shell (SSH) auf Port 22 aktiviert ist und ausgeführt wird.
 - Aktivieren Sie das SFTP-Subsystem und die Kennwortauthentifizierung in der sshd_config-Datei:
     1. Dazu melden Sie sich als Root-Benutzer an.
-    2. Suchen Sie in der Datei „/etc/ssh/sshd_config“ nach der Zeile, die mit **PasswordAuthentication** beginnt. Heben Sie die Auskommentierung der Zeile auf, und ändern Sie den Wert in **yes**.
+    2. Suchen Sie in der Datei „/etc/ssh/sshd_config“ nach der Zeile, die mit **PasswordAuthentication** beginnt. Heben Sie die Auskommentierung der Zeile auf, und ändern Sie den Wert in **yes** .
     3. Suchen Sie die Zeile, die mit **Subsystem** beginnt, und heben Sie die Auskommentierung der Zeile auf.
 
         ![Linux-Mobilitätsdienst](./media/azure-stack-site-recovery/linux-mobility.png)
@@ -129,7 +129,7 @@ Auf jedem virtuellen Computer, den Sie replizieren möchten, muss der Mobilität
 Die IP-Adresse für jeden zu replizierenden Computer finden Sie wie folgt:
 
 1. Klicken Sie im Azure Stack-Portal auf den virtuellen Computer.
-2. Klicken Sie im Menü **Ressource** auf **Netzwerkschnittstellen**.
+2. Klicken Sie im Menü **Ressource** auf **Netzwerkschnittstellen** .
 3. Notieren Sie sich die private IP-Adresse.
 
     ![Private IP-Adresse](./media/azure-stack-site-recovery/private-ip.png)
@@ -138,10 +138,10 @@ Die IP-Adresse für jeden zu replizierenden Computer finden Sie wie folgt:
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Schritt 2: Erstellen eines Tresors und Auswählen eines Replikationsziels
 
 1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Verwaltungstools** > **Backup und Site Recovery** aus.
-2. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird.
-3. Erstellen Sie unter **Ressourcengruppe** eine Ressourcengruppe, oder wählen Sie eine Ressourcengruppe aus. Wir verwenden **ContosoRG**.
-4. Geben Sie unter **Standort** die Azure-Region ein. verwenden wir **Europa, Westen**.
-5. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
+2. Geben Sie unter **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird.
+3. Erstellen Sie unter **Ressourcengruppe** eine Ressourcengruppe, oder wählen Sie eine Ressourcengruppe aus. Wir verwenden **ContosoRG** .
+4. Geben Sie unter **Standort** die Azure-Region ein. verwenden wir **Europa, Westen** .
+5. Wählen Sie **An Dashboard anheften** > **Erstellen** , um über das Dashboard schnell auf den Tresor zuzugreifen.
 
    ![Erstellen eines neuen Tresors](./media/azure-stack-site-recovery/new-vault-settings.png)
 
@@ -149,11 +149,11 @@ Die IP-Adresse für jeden zu replizierenden Computer finden Sie wie folgt:
 
 ### <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
 
-1. Geben Sie unter **Recovery Services-Tresore** einen Tresornamen an. Wir verwenden **ContosoVMVault**.
-2. Wählen Sie unter **Erste Schritte** die Option „Site Recovery“ aus. Klicken Sie anschließend auf **Infrastruktur vorbereiten**.
+1. Geben Sie unter **Recovery Services-Tresore** einen Tresornamen an. Wir verwenden **ContosoVMVault** .
+2. Wählen Sie unter **Erste Schritte** die Option „Site Recovery“ aus. Klicken Sie anschließend auf **Infrastruktur vorbereiten** .
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
 4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
-5. Wählen Sie unter **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus. Klicken Sie anschließend auf **OK**.
+5. Wählen Sie unter **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus. Klicken Sie anschließend auf **OK** .
 
     ![Schutzziel](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -161,12 +161,12 @@ Die IP-Adresse für jeden zu replizierenden Computer finden Sie wie folgt:
 
 Richten Sie den Konfigurationsservercomputer ein, registrieren Sie ihn im Tresor, und ermitteln Sie Computer, die Sie replizieren möchten.
 
-1. Klicken Sie auf **Infrastruktur vorbereiten** > **Quelle**.
-2. Klicken Sie in **Quelle vorbereiten** auf **+Konfigurationsserver**.
+1. Klicken Sie auf **Infrastruktur vorbereiten** > **Quelle** .
+2. Klicken Sie in **Quelle vorbereiten** auf **+Konfigurationsserver** .
 
     ![Screenshot: Dialogfeld „+Konfigurationsserver“ mit der Meldung „Klicken Sie oben in der Befehlsleiste auf "+Konfigurationsserver", um einen Server in Ihrer Quellumgebung einzurichten und bei diesem Tresor zu registrieren.“](./media/azure-stack-site-recovery/plus-config-srv.png)
 
-3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
+3. Überprüfen Sie unter **Server hinzufügen** , ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
 5. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
 6. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen den Registrierungsschlüssel, wenn Sie das einheitliche Setup ausführen. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
@@ -186,7 +186,7 @@ Nun installieren Sie den Konfigurationsserver:
 > [!NOTE]
 > Der Konfigurationsserver kann auch über die Befehlszeile installiert werden. [Weitere Informationen](physical-manage-configuration-server.md#install-from-the-command-line)
 >
-> Es kann 15 Minuten oder länger dauern, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > ***Servername*** > **Server aktualisieren**.
+> Es kann 15 Minuten oder länger dauern, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > **_Servername_ *_ > _* Server aktualisieren** .
 
 ## <a name="step-4-set-up-the-target-environment"></a>Schritt 4: Einrichten der Zielumgebung
 
@@ -201,7 +201,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 ### <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
 
-1. Klicken Sie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen**.
+1. Klicken Sie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen** .
 2. Geben Sie unter **Replikationsrichtlinie erstellen** einen Richtliniennamen an.
 3. Geben Sie in **RPO-Schwellenwert** den RPO-Grenzwert (Recovery Point Objective) an.
     - Wiederherstellungspunkte für replizierte Daten werden gemäß der festgelegten Zeit erstellt.
@@ -216,7 +216,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 ### <a name="confirm-deployment-planning"></a>Bestätigen der Bereitstellungsplanung
 
-Sie können diesen Schritt zum jetzigen Zeitpunkt überspringen. Klicken Sie in der Dropdownliste **Bereitstellungsplanung** auf **Ja, ist abgeschlossen**.
+Sie können diesen Schritt zum jetzigen Zeitpunkt überspringen. Klicken Sie in der Dropdownliste **Bereitstellungsplanung** auf **Ja, ist abgeschlossen** .
 
 
 
@@ -224,30 +224,30 @@ Sie können diesen Schritt zum jetzigen Zeitpunkt überspringen. Klicken Sie in 
 
 Vergewissern Sie sich, dass Sie alle Aufgaben unter [Schritt 1: Vorbereiten des Computers](#step-1-prepare-azure-stack-vms) abgeschlossen haben. Dann aktivieren Sie die Replikation wie folgt:
 
-1. Klicken Sie auf **Anwendung replizieren** > **Quelle**.
+1. Klicken Sie auf **Anwendung replizieren** > **Quelle** .
 2. Wählen Sie unter **Quelle** den Konfigurationsserver aus.
 3. Wählen Sie unter **Computertyp** die Option **Physische Computer** aus.
-4. Wählen Sie den Prozessserver (Konfigurationsserver) aus. Klicken Sie dann auf **OK**.
+4. Wählen Sie den Prozessserver (Konfigurationsserver) aus. Klicken Sie dann auf **OK** .
 5. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. der Sie die virtuellen Computer nach dem Failover erstellen möchten. Wählen Sie das Bereitstellungsmodell aus, das für die virtuellen Computer verwendet werden soll, für die ein Failover durchgeführt wurde.
 6. Wählen Sie das Azure-Speicherkonto aus, in dem die replizierten Daten gespeichert werden sollen.
 7. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem virtuelle Azure-Computer, die nach einem Failover erstellt werden, eine Verbindung herstellen sollen.
 8. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, wenn Sie das Azure-Netzwerk für jeden Computer separat auswählen möchten.
-9. Klicken Sie unter **Physische Computer** auf **+Physischer Computer**. Geben Sie Name, IP-Adresse und BS-Typ der einzelnen Computer ein, die Sie replizieren möchten.
+9. Klicken Sie unter **Physische Computer** auf **+Physischer Computer** . Geben Sie Name, IP-Adresse und BS-Typ der einzelnen Computer ein, die Sie replizieren möchten.
 
     - Verwenden Sie die interne IP-Adresse des Computers.
     - Wenn Sie die öffentliche IP-Adresse angeben, funktioniert die Replikation möglicherweise nicht wie erwartet.
 
 10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren von Mobility Service auf dem Computer verwenden soll.
-11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist.
-12. Klicken Sie auf **Replikation aktivieren**.
-13. Verfolgen Sie den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge**. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
+11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren** , ob die richtige Replikationsrichtlinie ausgewählt ist.
+12. Klicken Sie auf **Replikation aktivieren** .
+13. Verfolgen Sie den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** . Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 > [!NOTE]
 > Site Recovery installiert Mobility Service, wenn die Replikation für einen virtuellen Computer aktiviert wird.
 >
 > Es kann länger als 15 Minuten dauern, bis die Änderungen wirksam und im Portal angezeigt werden.
 >
-> Überprüfen Sie zur Überwachung der hinzugefügten virtuellen Computer den Zeitpunkt der letzten Ermittlung für virtuelle Computer unter **Konfigurationsserver** > **Letzter Kontakt um**. Wenn Sie virtuelle Computer hinzufügen möchten, ohne auf die geplante Ermittlung zu warten, markieren Sie den Konfigurationsserver (wählen Sie ihn aber nicht aus), und klicken Sie auf **Aktualisieren**.
+> Überprüfen Sie zur Überwachung der hinzugefügten virtuellen Computer den Zeitpunkt der letzten Ermittlung für virtuelle Computer unter **Konfigurationsserver** > **Letzter Kontakt um** . Wenn Sie virtuelle Computer hinzufügen möchten, ohne auf die geplante Ermittlung zu warten, markieren Sie den Konfigurationsserver (wählen Sie ihn aber nicht aus), und klicken Sie auf **Aktualisieren** .
 
 
 ## <a name="step-6-run-a-disaster-recovery-drill"></a>Schritt 6: Durchführen eines Notfallwiederherstellungsverfahrens
@@ -259,7 +259,7 @@ Sie führen ein Testfailover zu Azure aus, um sicherzustellen, dass alles wie er
 Bevor Sie ein Testfailover ausführen, überprüfen Sie die Computereigenschaften, und stellen Sie sicher, dass sie die [Azure-Anforderungen](vmware-physical-azure-support-matrix.md#azure-vm-requirements) erfüllen. Sie können Eigenschaften wie folgt anzeigen und ändern:
 
 1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
-2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
+2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften** , um weitere Details anzuzeigen.
 3. Unter **Compute und Netzwerk** ändern Sie Einstellungen nach Bedarf.
 
     - Sie können den Namen des virtuellen Azure-Computers, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und Einstellungen verwalteter Datenträger ändern.
@@ -273,20 +273,20 @@ Beim Durchführen eines Testfailovers geschieht Folgendes:
 
 1. Eine Überprüfung der erforderlichen Komponenten wird ausgeführt, um sicherzustellen, dass alle Bedingungen für ein Failover erfüllt sind.
 2. Beim Failover werden die Daten gemäß dem angegebenen Wiederherstellungspunkt verarbeitet:
-    - **Letzte Verarbeitung**: Das Failover des Computers wird auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
-    - **Letzter anwendungskonsistenter Zeitpunkt**: Das Failover des Computers wird auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt.
-    - **Benutzerdefiniert**: Wählen Sie den für das Failover verwendeten Wiederherstellungspunkt aus.
+    - **Letzte Verarbeitung** : Das Failover des Computers wird auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
+    - **Letzter anwendungskonsistenter Zeitpunkt** : Das Failover des Computers wird auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt.
+    - **Benutzerdefiniert** : Wählen Sie den für das Failover verwendeten Wiederherstellungspunkt aus.
 
 3. Anhand der verarbeiteten Daten wird ein virtueller Azure-Computer erstellt.
 4. Bei einem Testfailover können virtuelle Azure-Computer, die während des Testverfahrens erstellt wurden, automatisch bereinigt werden.
 
 Führen Sie ein Testfailover für einen virtuellen Computer wie folgt aus:
 
-1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf die VM > **+Testfailover**.
+1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf die VM > **+Testfailover** .
 2. Bei dieser exemplarischen Vorgehensweise wird der Wiederherstellungspunkt **Letzte Verarbeitung** verwendet.
 3. Wählen Sie unter **Testfailover** das Azure-Zielnetzwerk aus.
-4. Klicken Sie auf **OK**, um den Failovervorgang zu starten.
-5. Verfolgen Sie den Fortschritt, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ klicken Sie auf den Auftrag **Testfailover** unter *Tresorname* > **Einstellungen** > **Aufträge** >**Site Recovery-Aufträge**.
+4. Klicken Sie auf **OK** , um den Failovervorgang zu starten.
+5. Verfolgen Sie den Fortschritt, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ klicken Sie auf den Auftrag **Testfailover** unter *Tresorname* > **Einstellungen** > **Aufträge** >**Site Recovery-Aufträge** .
 6. Nach Abschluss des Failovers wird der virtuelle Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt. Prüfen Sie, ob der virtuelle Computer die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
 7. Sie sollten nun eine Verbindung mit der replizierten VM in Azure herstellen können. [Weitere Informationen](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 8. Klicken Sie zum Löschen der während des Testfailovers erstellten Azure-VMs auf **Testfailover bereinigen** für die VM. Speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Testfailover.
@@ -300,13 +300,13 @@ Wenn Sie nach dem Failover eine Verbindung mit dem Computer in Azure herstellen 
 Dann führen Sie ein Failover wie folgt aus:
 
 
-1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** auf den Computer und dann auf **Failover**.
+1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** auf den Computer und dann auf **Failover** .
 2. Wählen Sie den gewünschten Wiederherstellungspunkt aus.
 3. Wählen Sie unter **Testfailover** das Azure-Zielnetzwerk aus.
 4. Wählen Sie **Computer vor Beginn des Failovers herunterfahren** aus. Bei dieser Einstellung versucht Site Recovery, den Quellcomputer herunterzufahren, bevor das Failover gestartet wird. Das Failover wird jedoch auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist.
-5. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
+5. Klicken Sie auf **OK** , um den Failovervorgang zu starten. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 6. Nach Abschluss des Failovers wird der virtuelle Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt. Wenn Sie eine Verbindung nach dem Failover vorbereitet haben, prüfen Sie, ob der virtuelle Computer die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
-7. Nachdem Sie den virtuellen Computer überprüft haben, klicken Sie auf **Commit**, um das Failover abzuschließen. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
+7. Nachdem Sie den virtuellen Computer überprüft haben, klicken Sie auf **Commit** , um das Failover abzuschließen. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
 > Brechen Sie ein Failover in Bearbeitung nicht ab: Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
@@ -314,7 +314,7 @@ Dann führen Sie ein Failover wie folgt aus:
 
 ### <a name="fail-back-to-azure-stack"></a>Failback zu Azure Stack
 
-Wenn der primäre Standort wieder betriebsbereit ist, können Sie ein Failback von Azure zu Azure Stack durchführen. Führen Sie dazu die [hier](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005) beschriebenen Schritte aus.
+Wenn der primäre Standort wieder betriebsbereit ist, können Sie ein Failback von Azure zu Azure Stack durchführen. Führen Sie dazu die [hier](/azure-stack/operator/site-recovery-failback?view=azs-2005) beschriebenen Schritte aus.
 
 ## <a name="conclusion"></a>Zusammenfassung
 
@@ -323,4 +323,3 @@ In diesem Artikel wurden virtuelle Azure Stack-Computer in Azure repliziert. Nac
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nach dem Failback können Sie den virtuellen Computer erneut schützen und die Replikation in Azure wieder starten. Dazu wiederholen Sie die Schritte in diesem Artikel.
-

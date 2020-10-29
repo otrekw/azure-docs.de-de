@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie mithilfe von PowerShell einen Agent für
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408666"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427284"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Erstellen eines Agents für elastische Aufträge über PowerShell (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Die Upgradeversion der Aufträge für die elastische Datenbank umfasst neue Powe
 
 Wenn Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Installieren Sie das Modul **Az.Sql**, um die aktuellen Cmdlets für elastische Aufträge zu erhalten. Führen Sie die folgenden Befehle in PowerShell mit Administratorzugriff aus.
+Installieren Sie das Modul **Az.Sql** , um die aktuellen Cmdlets für elastische Aufträge zu erhalten. Führen Sie die folgenden Befehle in PowerShell mit Administratorzugriff aus.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -53,7 +53,7 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
@@ -135,7 +135,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Bei einem Agent für elastische Aufträge handelt es sich um eine Azure-Ressource zum Erstellen, Ausführen und Verwalten von Aufträgen. Der Agent führt Aufträge gemäß einem Zeitplan oder einmalig aus.
 
-Für das Cmdlet **New-AzSqlElasticJobAgent** muss bereits eine Datenbank in Azure SQL-Datenbank vorhanden sein. Die Parameter *resourceGroupName*, *serverName* und *databaseName* müssen daher auf vorhandene Ressourcen verweisen.
+Für das Cmdlet **New-AzSqlElasticJobAgent** muss bereits eine Datenbank in Azure SQL-Datenbank vorhanden sein. Die Parameter *resourceGroupName* , *serverName* und *databaseName* müssen daher auf vorhandene Ressourcen verweisen.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -165,12 +165,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +192,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred
@@ -205,7 +205,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 Eine [Zielgruppe](job-automation-overview.md#target-group) definiert mindestens eine Gruppe von Datenbanken, für die ein Auftragsschritt ausgeführt wird.
 
-Der folgende Codeausschnitt erstellt zwei Zielgruppen: *serverGroup* und *serverGroupExcludingDb2*. *serverGroup* ist auf alle Datenbanken ausgerichtet, die zum Zeitpunkt der Ausführung auf dem Server vorhanden sind. *serverGroupExcludingDb2* ist ebenfalls auf alle Datenbanken auf dem Server ausgerichtet, schließt allerdings *targetDb2* aus:
+Der folgende Codeausschnitt erstellt zwei Zielgruppen: *serverGroup* und *serverGroupExcludingDb2* . *serverGroup* ist auf alle Datenbanken ausgerichtet, die zum Zeitpunkt der Ausführung auf dem Server vorhanden sind. *serverGroupExcludingDb2* ist ebenfalls auf alle Datenbanken auf dem Server ausgerichtet, schließt allerdings *targetDb2* aus:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +221,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>Erstellen eines Auftrags und von Schritten
 
-In diesem Beispiel werden ein Auftrag und zwei Auftragsschritte definiert, die durch den Auftrag ausgeführt werden sollen. Der erste Auftragsschritt (*step1*) erstellt in jeder Datenbank aus der Zielgruppe *ServerGroup* eine neue Tabelle (*Step1Table*). Der zweite Auftragsschritt (*step2*) erstellt in jeder Datenbank (mit Ausnahme von *TargetDb2*, da die zuvor definierte Zielgruppe diese Datenbank ausschließt) eine neue Tabelle (*Step2Table*).
+In diesem Beispiel werden ein Auftrag und zwei Auftragsschritte definiert, die durch den Auftrag ausgeführt werden sollen. Der erste Auftragsschritt ( *step1* ) erstellt in jeder Datenbank aus der Zielgruppe *ServerGroup* eine neue Tabelle ( *Step1Table* ). Der zweite Auftragsschritt ( *step2* ) erstellt in jeder Datenbank (mit Ausnahme von *TargetDb2* , da die zuvor definierte Zielgruppe diese Datenbank ausschließt) eine neue Tabelle ( *Step2Table* ).
 
 ```powershell
 Write-Output "Creating a new job..."

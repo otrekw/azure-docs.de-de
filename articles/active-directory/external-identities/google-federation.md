@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8c07a6a67e97deafa2f611b297574a801aa356d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273992"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441945"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -56,7 +56,7 @@ Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um e
    
    ![Screenshot mit einer Seite „Neues Projekt“ für Google](media/google-federation/google-new-project.png)
 
-4. Klicken Sie auf der Seite **APIs und Dienste**, die jetzt angezeigt wird, unter dem neuen Projekt auf **Anzeigen**.
+4. Klicken Sie auf der Seite **APIs und Dienste** , die jetzt angezeigt wird, unter dem neuen Projekt auf **Anzeigen** .
 
 5. Klicken Sie auf der Karte „APIs“ auf **Go to APIs overview** (Zur API-Übersicht wechseln). Wählen Sie **OAuth-Zustimmungsbildschirm** aus.
 
@@ -81,11 +81,11 @@ Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um e
     - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br>(`<tenant id>` ist Ihre Mandanten-ID.)
    
     > [!NOTE]
-    > Sie finden Ihre Mandanten-ID unter https://portal.azure.com. Wählen Sie dort unter **Azure Active Directory** die Option **Eigenschaften** aus, und kopieren Sie die **Mandanten-ID**.
+    > Sie finden Ihre Mandanten-ID unter https://portal.azure.com. Wählen Sie dort unter **Azure Active Directory** die Option **Eigenschaften** aus, und kopieren Sie die **Mandanten-ID** .
 
     ![Screenshot des Abschnitts „Autorisierte Umleitungs-URIs“](media/google-federation/google-create-oauth-client-id.png)
 
-12. Klicken Sie auf **Erstellen**. Kopieren Sie die Client-ID und den geheimen Clientschlüssel, die Sie verwenden möchten, um den Identitätsanbieter im Azure AD-Portal hinzuzufügen.
+12. Klicken Sie auf **Erstellen** . Kopieren Sie die Client-ID und den geheimen Clientschlüssel, die Sie verwenden möchten, um den Identitätsanbieter im Azure AD-Portal hinzuzufügen.
 
     ![Screenshot der OAuth-Client-ID und des Clientgeheimnisses](media/google-federation/google-auth-client-id-secret.png)
 
@@ -95,7 +95,7 @@ Nun legen Sie die Google-Client-ID und den geheimen Clientschlüssel entweder du
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>So konfigurieren Sie den Google-Verbund im Azure AD-Portal 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
 2. Wählen Sie **Externe Identitäten** aus.
-3. Wählen Sie **Alle Identitätsanbieter** aus, und klicken Sie dann auf die Schaltfläche **Google**.
+3. Wählen Sie **Alle Identitätsanbieter** aus, und klicken Sie dann auf die Schaltfläche **Google** .
 4. Geben Sie dann die Client-ID und den geheimen Clientschlüssel ein, die Sie zuvor erhalten haben. Wählen Sie **Speichern** aus. 
 
    ![Screenshot der Seite „Google als Identitätsanbieter hinzufügen“](media/google-federation/google-identity-provider.png)
@@ -109,7 +109,7 @@ Nun legen Sie die Google-Client-ID und den geheimen Clientschlüssel entweder du
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie hier erstellt haben: „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“. Weitere Informationen finden Sie im Artikel zu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
+   > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie hier erstellt haben: „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“. Weitere Informationen finden Sie im Artikel zu [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
  
 ## <a name="how-do-i-remove-google-federation"></a>Wie entferne ich einen Google Verbund?
 Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können Google-Gastbenutzer, die bereits seine Einladung eingelöst haben, sich nicht mehr anmelden. Sie können ihnen aber erneut Zugriff auf Ihre Ressourcen erteilen, indem Sie sie aus dem Verzeichnis löschen und erneut einladen. 
@@ -133,4 +133,4 @@ Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können 
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > Weitere Informationen finden Sie unter [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Weitere Informationen finden Sie unter [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview).

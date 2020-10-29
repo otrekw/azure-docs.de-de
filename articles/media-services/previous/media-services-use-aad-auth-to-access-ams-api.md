@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262498"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425920"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung 
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262498"
 
 Die Azure Media Services-API ist eine RESTful-API. Sie können sie nutzen, um Vorgänge für Medienressourcen durchzuführen, indem Sie eine REST-API oder verfügbare Client-SDKs verwenden. Azure Media Services stellt ein Media Services-Client-SDK für Microsoft .NET bereit. Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. 
 
-Für Media Services wird die [Azure Active Directory-basierte Authentifizierung](../../active-directory/fundamentals/active-directory-whatis.md) unterstützt. Für den Azure Media-REST-Dienst ist Folgendes erforderlich: Der Benutzer oder die Anwendung, der bzw. die die REST-API-Anforderungen sendet, muss entweder über die Rolle **Mitwirkender** oder **Besitzer** verfügen, um auf die Ressourcen zuzugreifen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
+Für Media Services wird die [Azure Active Directory-basierte Authentifizierung](../../active-directory/fundamentals/active-directory-whatis.md) unterstützt. Für den Azure Media-REST-Dienst ist Folgendes erforderlich: Der Benutzer oder die Anwendung, der bzw. die die REST-API-Anforderungen sendet, muss entweder über die Rolle **Mitwirkender** oder **Besitzer** verfügen, um auf die Ressourcen zuzugreifen. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).  
 
 Dieses Dokument enthält eine Übersicht darüber, wie Sie per REST- oder .NET-API auf die Media Services-API zugreifen.
 
@@ -40,7 +40,7 @@ Dieses Dokument enthält eine Übersicht darüber, wie Sie per REST- oder .NET-A
 
 Damit die Azure Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle „Mitwirkender“ oder „Besitzer“ für das Media Services-Konto verfügen, auf das zugegriffen werden soll.  
 Nur ein Benutzer mit der Rolle „Besitzer“ kann der Medienressource (Konto) Zugriff auf neue Benutzer oder Apps gewähren. Mit der Rolle „Mitwirkender“ ist nur der Zugriff auf die Medienressource möglich.
-Für nicht autorisierte Anforderungen tritt ein Fehler mit dem Statuscode 401 auf. Wenn dieser Fehlercode angezeigt wird, sollten Sie überprüfen, ob Ihr Benutzer die Rolle „Mitwirkender“ oder „Besitzer“ aufweist, die für das Media Services-Konto des Benutzers zugewiesen ist. Dies können Sie im Azure-Portal überprüfen. Suchen Sie nach Ihrem Media-Konto, und klicken Sie anschließend auf die Registerkarte **Zugriffssteuerung**. 
+Für nicht autorisierte Anforderungen tritt ein Fehler mit dem Statuscode 401 auf. Wenn dieser Fehlercode angezeigt wird, sollten Sie überprüfen, ob Ihr Benutzer die Rolle „Mitwirkender“ oder „Besitzer“ aufweist, die für das Media Services-Konto des Benutzers zugewiesen ist. Dies können Sie im Azure-Portal überprüfen. Suchen Sie nach Ihrem Media-Konto, und klicken Sie anschließend auf die Registerkarte **Zugriffssteuerung** . 
 
 ![Registerkarte „Zugriffssteuerung“](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
@@ -48,8 +48,8 @@ Für nicht autorisierte Anforderungen tritt ein Fehler mit dem Statuscode 401 au
  
 Wenn Sie die Azure AD-Authentifizierung mit Azure Media Services nutzen, stehen Ihnen zwei Authentifizierungsoptionen zur Verfügung:
 
-- **Benutzerauthentifizierung**. Dient zum Authentifizieren einer Person, die die App für die Interaktion mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
-- **Dienstprinzipalauthentifizierung**. Dient zum Authentifizieren eines Diensts. Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispiele sind Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices.
+- **Benutzerauthentifizierung** . Dient zum Authentifizieren einer Person, die die App für die Interaktion mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
+- **Dienstprinzipalauthentifizierung** . Dient zum Authentifizieren eines Diensts. Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispiele sind Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices.
 
 ### <a name="user-authentication"></a>Benutzerauthentifizierung 
 
@@ -153,7 +153,7 @@ Die folgenden Artikel enthalten Übersichten über Azure AD-Authentifizierungsko
 
 - [Grundlagen der Authentifizierung in Azure AD](../../active-directory/develop/authentication-vs-authorization.md)
 - [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)
-- [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

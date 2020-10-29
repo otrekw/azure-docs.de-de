@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044070"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425689"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -72,7 +72,7 @@ firstRowOnly | Gibt an, ob nur die erste Zeile oder alle Zeilen zurückgegeben w
 
 Das Lookupergebnis wird im Abschnitt `output` des Ergebnisses der Aktivitätsausführung zurückgegeben.
 
-* **Wenn `firstRowOnly` auf `true` (Standardwert) gesetzt ist** , wird das Ausgabeformat wie im folgenden Code gezeigt. Das Lookupergebnis befindet sich unter dem festen Schlüssel `firstRow`. Wenn Sie das Ergebnis in nachfolgenden Aktivitäten nutzen möchten, verwenden Sie das Muster `@{activity('LookupActivity').output.firstRow.table`.
+* **Wenn `firstRowOnly` auf `true` (Standardwert) gesetzt ist** , wird das Ausgabeformat wie im folgenden Code gezeigt. Das Lookupergebnis befindet sich unter dem festen Schlüssel `firstRow`. Wenn Sie das Ergebnis in nachfolgenden Aktivitäten nutzen möchten, verwenden Sie das Muster `@{activity('LookupActivity').output.firstRow.table}`.
 
     ```json
     {

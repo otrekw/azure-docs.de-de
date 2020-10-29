@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354988"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441435"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Sprachanpassung in Azure Active Directory (Vorschau)
 
@@ -43,8 +43,8 @@ Mit der Sprachanpassung können Sie alle Zeichenfolgen Ihres Benutzerflows anpas
 3. Wählen Sie den Benutzerflow aus, den Sie für Übersetzungen aktivieren möchten.
 4. Wählen Sie **Sprachen** aus.
 5. Wählen Sie auf der Seite **Sprachen** für den Benutzerflow die Sprache aus, die Sie anpassen möchten.
-6. Erweitern Sie die **Attributerfassungsseite**.
-7. Klicken Sie auf **Standardeinstellungen herunterladen** (oder **Außerkraftsetzungen herunterladen**, wenn Sie diese Sprache zuvor bearbeitet haben).
+6. Erweitern Sie die **Attributerfassungsseite** .
+7. Klicken Sie auf **Standardeinstellungen herunterladen** (oder **Außerkraftsetzungen herunterladen** , wenn Sie diese Sprache zuvor bearbeitet haben).
 
 Bei diesen Schritten erhalten Sie eine JSON-Datei, die Sie nutzen können, um mit dem Bearbeiten Ihrer Zeichenfolgen zu beginnen.
 
@@ -146,7 +146,7 @@ Von Chrome und Firefox wird jeweils die eigene festgelegte Sprache angefordert. 
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 
-Azure AD bietet Unterstützung für die folgenden Sprachen. Sprachen für Benutzerflows werden von Azure AD bereitgestellt. Die Sprachen für Benachrichtigungen von Multi-Factor Authentication (MFA) werden von [Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) bereitgestellt.
+Azure AD bietet Unterstützung für die folgenden Sprachen. Sprachen für Benutzerflows werden von Azure AD bereitgestellt. Die Sprachen für Benachrichtigungen von Multi-Factor Authentication (MFA) werden von [Azure MFA](../authentication/concept-mfa-howitworks.md) bereitgestellt.
 
 | Sprache              | Sprachcode | Benutzerabläufe         | MFA-Benachrichtigungen  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

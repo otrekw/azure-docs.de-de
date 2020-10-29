@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825427"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370422"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -167,11 +167,11 @@ HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Az
 
 #### <a name="control-access-with-nsg-rules"></a>Steuern des Zugriffs mit NSG-Regeln
 
-Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und aus Azure-Netzwerken/-Subnetzen mithilfe von [NSG-Regeln](../virtual-network/security-overview.md) steuern, beachten Sie die folgenden Voraussetzungen:
+Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und aus Azure-Netzwerken/-Subnetzen mithilfe von [NSG-Regeln](../virtual-network/network-security-groups-overview.md) steuern, beachten Sie die folgenden Voraussetzungen:
 
 - NSG-Regeln für die Azure-Quellregion sollten ausgehenden Zugriff für den Replikationsdatenverkehr zulassen.
 - Es wird empfohlen, die Regeln zunächst in einer Testumgebung zu erstellen, bevor sie in die Produktion übernommen werden.
-- Verwenden Sie [Diensttags](../virtual-network/security-overview.md#service-tags), anstatt einzelne IP-Adressen zuzulassen.
+- Verwenden Sie [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags), anstatt einzelne IP-Adressen zuzulassen.
     - Diensttags stellen eine Gruppe von IP-Adresspräfixen dar und vereinfachen die Erstellung von Sicherheitsregeln.
     - Microsoft aktualisiert die Diensttags im Lauf der Zeit automatisch. 
  

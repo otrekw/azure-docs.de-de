@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0950c92b5a7bb1e782537aa46acad2e949e565c7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705434"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441792"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Externe Microsoft 365-Freigaben und Azure Active Directory B2B-Zusammenarbeit
 
@@ -24,7 +24,7 @@ Sowohl bei der Azure AD B2B Collaboration als auch bei externen Microsoft 365
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Wie unterscheidet sich Azure AD B2B von externen Freigaben in SharePoint Online?
 
-OneDrive/SharePoint Online hat einen separaten Einladung-Manager. Unterstützung für die externe Freigabe in OneDrive/SharePoint Online begann, bevor die Unterstützung durch Azure AD entwickelt wurde. Im Lauf der Zeit wurde die externe OneDrive/SharePoint Online-Freigabe um eine Vielzahl von Features erweitert, und viele Millionen Benutzer verwenden das integrierte Freigabemuster des Produkts. Es gibt jedoch einige feine Unterschiede zwischen der Funktionsweise der externen OneDrive-/SharePoint Online-Freigaben und der Azure AD B2B-Kollaboration. Erfahren Sie mehr über externe OneDrive-/SharePoint Online-Freigaben in [Übersicht über externe Freigaben](https://docs.microsoft.com/sharepoint/external-sharing-overview). Ganz allgemein unterscheidet sich der Prozess von Azure AD B2B auf folgende Weise:
+OneDrive/SharePoint Online hat einen separaten Einladung-Manager. Unterstützung für die externe Freigabe in OneDrive/SharePoint Online begann, bevor die Unterstützung durch Azure AD entwickelt wurde. Im Lauf der Zeit wurde die externe OneDrive/SharePoint Online-Freigabe um eine Vielzahl von Features erweitert, und viele Millionen Benutzer verwenden das integrierte Freigabemuster des Produkts. Es gibt jedoch einige feine Unterschiede zwischen der Funktionsweise der externen OneDrive-/SharePoint Online-Freigaben und der Azure AD B2B-Kollaboration. Erfahren Sie mehr über externe OneDrive-/SharePoint Online-Freigaben in [Übersicht über externe Freigaben](/sharepoint/external-sharing-overview). Ganz allgemein unterscheidet sich der Prozess von Azure AD B2B auf folgende Weise:
 
 - OneDrive/SharePoint Online fügt Benutzer dem Verzeichnis hinzu, nachdem sie ihre Einladungen eingelöst haben. Deshalb werden die Benutzer vor dem Einlösen nicht im Azure AD-Portal angezeigt. Wenn der Benutzer in der Zwischenzeit von einer anderen Website eingeladen wird, wird eine neue Einladung generiert. Wenn Sie jedoch Azure AD B2B-Zusammenarbeit verwenden, werden Benutzer sofort bei Einladung hinzugefügt, sodass sie überall angezeigt werden.
 
@@ -32,7 +32,7 @@ OneDrive/SharePoint Online hat einen separaten Einladung-Manager. Unterstützung
 
 - In Azure AD B2B-Zusammenarbeit eingeladene Benutzer können in Freigabedialogfeldern von OneDrive/SharePoint Online ausgewählt werden. Benutzer, die über OneDrive/SharePoint Online eingeladen wurden, werden nach dem Einlösen der Einladung auch in Azure AD angezeigt.
 
-- Die Lizenzbedingungen unterscheiden sich. Für jede kostenpflichtige Azure AD-Lizenz können Sie bis zu 5 Gastbenutzern Zugriff auf Ihre kostenpflichtigen Azure AD-Features gewähren. Weitere Informationen zur Lizenzierung finden Sie unter [Azure AD B2B-Lizenzierung](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) und [„Was ist ein externer Benutzer?“ in der Übersicht über die externe SharePoint Online-Freigabe](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share).
+- Die Lizenzbedingungen unterscheiden sich. Für jede kostenpflichtige Azure AD-Lizenz können Sie bis zu 5 Gastbenutzern Zugriff auf Ihre kostenpflichtigen Azure AD-Features gewähren. Weitere Informationen zur Lizenzierung finden Sie unter [Azure AD B2B-Lizenzierung](./external-identities-pricing.md) und [„Was ist ein externer Benutzer?“ in der Übersicht über die externe SharePoint Online-Freigabe](/sharepoint/external-sharing-overview#what-happens-when-users-share).
 
 Um externe Freigaben in OneDrive/SharePoint Online mit der Azure AD B2B-Kollaboration zu verwalten, legen Sie die Einstellung für externe OneDrive-/SharePoint Online-Freigaben auf **Freigabe nur für externe Benutzer zulassen, die bereits im Verzeichnis Ihrer Organisation vorhanden sind** fest. Benutzer können zu extern freigegebenen Websites wechseln und aus externen Projektmitarbeitern auswählen, die der Administrator hinzugefügt hat. Ein Administrator kann die externen Projektmitarbeiter über die Einladungs-APIs der B2B-Zusammenarbeit hinzufügen.
 

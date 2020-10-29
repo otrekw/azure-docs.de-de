@@ -11,12 +11,12 @@ ms.date: 06/16/2020
 ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64ab70fed13d4ca907b2bfb3aa448acdedc39e9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87907233"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441452"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Definieren benutzerdefinierter Attribute für Benutzerflows (Vorschau)
 
@@ -25,7 +25,7 @@ ms.locfileid: "87907233"
 
 Sie haben unter Umständen für jede Anwendung andere Anforderungen an die Informationen, die Sie während der Registrierung sammeln möchten. Azure AD umfasst einen integrierten Satz von in Attributen gespeicherten Informationen, z. B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD können Sie die verschiedenen Attribute erweitern, die in einem Gastkonto gespeichert werden, wenn sich der externe Benutzer über einen Benutzerflow anmeldet.
 
-Im Azure-Portal können Sie benutzerdefinierte Attribute erstellen und in den Benutzerflows für die Self-Service-Registrierung verwenden. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) lesen und schreiben. Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in der Graph-API werden mithilfe der Konvention `extension_<extensions-app-id>_attributename` benannt. Beispiel:
+Im Azure-Portal können Sie benutzerdefinierte Attribute erstellen und in den Benutzerflows für die Self-Service-Registrierung verwenden. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](../../active-directory-b2c/manage-user-accounts-graph-api.md) lesen und schreiben. Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in der Graph-API werden mithilfe der Konvention `extension_<extensions-app-id>_attributename` benannt. Beispiel:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -45,13 +45,13 @@ Die `<extensions-app-id>` gilt nur für Ihren Mandanten. Um diese ID zu suchen, 
 5. Wählen Sie zum Hinzufügen eines Attributs **Hinzufügen** aus.
 6. Geben Sie im Bereich **Attribut hinzufügen** die folgenden Werte ein:
 
-   - **Name**: Geben Sie einen Namen für das benutzerdefinierte Attribut an (z. B. „Shoesize“).
-   - **Datentyp**: Wählen Sie einen Datentyp (**Zeichenfolge**, **Boolesch** oder **Ganze Zahl**) aus.
-   - **Beschreibung**: Geben Sie optional eine Beschreibung des benutzerdefinierten Attributs zur internen Verwendung ein. Diese Beschreibung ist für den Benutzer nicht sichtbar.
+   - **Name** : Geben Sie einen Namen für das benutzerdefinierte Attribut an (z. B. „Shoesize“).
+   - **Datentyp** : Wählen Sie einen Datentyp ( **Zeichenfolge** , **Boolesch** oder **Ganze Zahl** ) aus.
+   - **Beschreibung** : Geben Sie optional eine Beschreibung des benutzerdefinierten Attributs zur internen Verwendung ein. Diese Beschreibung ist für den Benutzer nicht sichtbar.
 
    ![Hinzufügen eines Attributs](media/user-flow-add-custom-attributes/add-an-attribute.png)
 
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Erstellen** .
 
 Das benutzerdefinierte Attribut steht jetzt in der Liste der Benutzerattribute zur Verfügung und kann in den Benutzerflows verwendet werden. Ein benutzerdefiniertes Attribut wird nur erstellt, wenn es zum ersten Mal in einem Benutzerflow verwendet wird, und nicht, wenn Sie es der Liste der Benutzerattribute hinzufügen.
 
