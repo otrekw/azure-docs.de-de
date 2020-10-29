@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653637"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330035"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
@@ -21,17 +21,17 @@ Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können trad
 ExpressRoute besteht aus einem Verbindungspaar für Hochverfügbarkeit, das den Abonnements einzelner Kunden zugeordnet ist und nicht von mehreren Kunden gemeinsam genutzt werden kann. Jede Verbindung muss in einem anderen Router enden, um Hochverfügbarkeit zu gewährleisten.
 
 > [!NOTE]
-> Bandbreite und Verbindung sind bei ExpressRoute gedeckelt. Bei umfangreichen/komplexen Implementierungen werden daher mehrere ExpressRoute-Verbindungen für einen einzelnen Kunden benötigt.
+> Für die Bandbreite und die möglichen Verbindungen für jede ExpressRoute-Leitung gelten bestimmte Grenzwerte. Wenn die Anforderungen eines einzelnen Kunden diese Grenzwerte überschreiten, benötigt er mehrere ExpressRoute-Leitungen für die Hybridnetzwerkimplementierung.
 > 
 > 
 
 Microsoft Azure stellt eine immer größere Anzahl von Diensten bereit, die Sie Ihren Kunden anbieten können. ExpressRoute bietet Zugriff auf die Microsoft Azure-Umgebung mit hoher Geschwindigkeit und geringer Wartezeit, sodass Sie und Ihre Kunden von diesen Diensten profitieren können.
 
 ## <a name="microsoft-azure-management"></a>Verwaltung von Microsoft Azure
-Microsoft stellt CSPs APIs zur Verfügung, die sich programmgesteuert in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
+Microsoft stellt CSPs APIs zur Verfügung, die sich programmgesteuert in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](/previous-versions/windows/mt844538(v=win.10)).
 
 ## <a name="microsoft-azure-resource-management"></a>Verwaltung von Microsoft Azure-Ressourcen
-Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „*Durchleitungsmodell*“ oder „*Direktverbindungsmodell*“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
+Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „ *Durchleitungsmodell* “ oder „ *Direktverbindungsmodell* “. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
 ![Abbildung des Durchleitungsmodells](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -60,7 +60,7 @@ Für dieses Verbindungsszenario ist es erforderlich, dass der Kunde die Verbindu
 
 Die Entscheidung für eine dieser beiden Optionen hängt von den Anforderungen Ihres Kunden sowie davon ab, ob Sie Azure-Dienste bereitstellen müssen. Details zu diesen Modellen sowie zur dazugehörigen rollenbasierten Zugriffssteuerung, zum Netzwerk und zu Identitätsentwurfsmustern finden Sie unter folgenden Links:
 
-* **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)** : RBAC basiert auf Azure Active Directory.  Weitere Informationen zu Azure RBAC finden Sie [hier](../role-based-access-control/role-assignments-portal.md).
+* **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)** : Azure RBAC basiert auf Azure Active Directory.  Weitere Informationen zu Azure RBAC finden Sie [hier](../role-based-access-control/role-assignments-portal.md).
 * **Netzwerk** : Behandelt die verschiedenen Netzwerkthemen in Microsoft Azure.
 * **Azure Active Directory (Azure AD)** : Azure AD stellt die Identitätsverwaltung für Microsoft Azure und SaaS-Drittanbieteranwendungen bereit. Weitere Informationen zu Azure AD finden Sie [hier](https://azure.microsoft.com/documentation/services/active-directory/).  
 
@@ -75,23 +75,23 @@ ExpressRoute unterstützt Netzwerkgeschwindigkeiten von 50 MB/s bis 10 GB/s. D
 ExpressRoute unterstützt die Verknüpfung mehrerer virtueller Netzwerke zu einer einzelnen ExpressRoute-Verbindung, um die Nutzung der schnelleren Verbindungen zu optimieren. Eine einzelne ExpressRoute-Verbindung kann von mehreren Azure-Abonnements des gleichen Kunden genutzt werden.
 
 ## <a name="configuring-expressroute"></a>Konfigurieren von ExpressRoute
-ExpressRoute kann so konfiguriert werden, dass über eine einzelne ExpressRoute-Verbindung drei Arten von Datenverkehr ([Routingdomänen](#expressroute-routing-domains)) abgewickelt werden können. Dieser Datenverkehr wird in Microsoft-Peering, öffentliches Azure-Peering und privates Peering unterteilt. Sie können entweder einzelne oder alle Arten von Datenverkehr über eine einzelne ExpressRoute-Verbindung senden oder mehrere ExpressRoute-Verbindungen verwenden. Diese Entscheidung ist abhängig vom Umfang der ExpressRoute-Verbindung und der vom Kunden benötigten Isolation. Bei bestimmten Kunden dürfen öffentlicher und privater Datenverkehr aus Sicherheitsgründen nicht über die gleiche Verbindung abgewickelt werden.
+ExpressRoute kann so konfiguriert werden, dass über eine einzelne ExpressRoute-Verbindung drei Arten von Datenverkehr ([Routingdomänen](#expressroute-routing-domains)) abgewickelt werden können. Dieser Datenverkehr wird in privates Peering, Microsoft-Peering und öffentliches Peering (veraltet) unterteilt. Sie können entweder einzelne oder alle Arten von Datenverkehr über eine einzelne ExpressRoute-Verbindung senden oder mehrere ExpressRoute-Verbindungen verwenden. Diese Entscheidung ist abhängig vom Umfang der ExpressRoute-Verbindung und der vom Kunden benötigten Isolation. Bei bestimmten Kunden dürfen öffentlicher und privater Datenverkehr aus Sicherheitsgründen nicht über die gleiche Verbindung abgewickelt werden.
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
-Bei einer Durchleitungskonfiguration sind Sie für das gesamte Netzwerkfundament zuständig, das erforderlich ist, um die Datencenterressourcen Ihrer Kunden mit den in Azure gehosteten Abonnements zu verbinden. Jeder Kunde, der Azure-Funktionen verwenden möchte, benötigt eine eigene, von Ihnen verwaltete ExpressRoute-Verbindung. Sie verwenden die gleichen Methoden, mit denen auch der Kunde die ExpressRoute-Verbindung bereitstellen würde. Sie führen die Schritte aus, die im Artikel [ExpressRoute-Workflows](expressroute-workflows.md) für die Verbindungsbereitstellung und Verbindungszustände erläutert werden. Anschließend konfigurieren Sie die Routen des Border Gateway-Protokolls (BGP), um den Datenverkehrsfluss zwischen dem lokalen Netzwerk und dem virtuellen Azure-Netzwerk zu steuern.
+Bei einer Durchleitungskonfiguration sind Sie für das gesamte Netzwerkfundament zuständig, das erforderlich ist, um die Rechenzentrumsressourcen Ihrer Kunden mit den in Azure gehosteten Abonnements zu verbinden. Jeder Kunde, der Azure-Funktionen verwenden möchte, benötigt eine eigene, von Ihnen verwaltete ExpressRoute-Leitung. Sie verwenden die gleichen Methoden, mit denen auch der Kunde die ExpressRoute-Leitung bereitstellen würde. Sie führen die Schritte aus, die im Artikel [ExpressRoute-Workflows](expressroute-workflows.md) für die Verbindungsbereitstellung und Leitungsstatus erläutert werden. Anschließend konfigurieren Sie die Routen des Border Gateway-Protokolls (BGP), um den Datenverkehrsfluss zwischen dem lokalen Netzwerk und dem virtuellen Azure-Netzwerk zu steuern.
 
 ### <a name="connect-to-model"></a>Direktverbindungsmodell
-Bei einer Direktverbindungskonfiguration verfügt Ihr Kunde bereits über eine Verbindung mit Azure oder initiiert eine Verbindung mit dem Internetdienstanbieter, der ExpressRoute direkt über das Datencenter Ihres Kunden mit Azure (anstatt mit Ihrem Datencenter) verknüpft. Zur Einleitung des Bereitstellungsprozesses führt Ihr Kunde die gleichen Schritte durch wie beim oben beschriebenen Durchleitungsmodell. Nach Einrichtung der Verbindung muss Ihr Kunde die lokalen Router konfigurieren, um sowohl auf Ihr Netzwerk als auch auf virtuelle Azure-Netzwerke zugreifen zu können.
+Bei einer Direktverbindungskonfiguration verfügt Ihr Kunde bereits über eine Verbindung mit Azure oder initiiert eine Verbindung mit dem Internetdienstanbieter, der ExpressRoute direkt über das eigene Rechenzentrum mit Azure (anstatt mit Ihrem Rechenzentrum) verknüpft. Zur Einleitung des Bereitstellungsprozesses führt Ihr Kunde die gleichen Schritte durch wie beim oben beschriebenen Durchleitungsmodell. Nach Einrichtung der Leitung muss Ihr Kunde die lokalen Router konfigurieren, um sowohl auf Ihr Netzwerk als auch auf virtuelle Azure-Netzwerke zugreifen zu können.
 
 Sie können den Kunden beim Einrichten der Verbindung und beim Konfigurieren der Routen unterstützen, um den Ressourcen in Ihren Datencentern die Kommunikation mit den Kundenressourcen in Ihrem Datencenter (oder mit den in Azure gehosteten Ressourcen) zu ermöglichen.
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute-Routingdomänen
-ExpressRoute bietet drei Routingdomänen: öffentliches Peering, privates Peering und Microsoft-Peering. Jede Routingdomäne ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für Hochverfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
+ExpressRoute bietet zwei Routingdomänen für neue Leitungen: privates Peering und Microsoft-Peering. Jede Routingdomäne ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für Hochverfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
 
 Sie können benutzerdefinierte Routenfilter definieren, um nur die gewünschten oder benötigten Routen zuzulassen. Weitere Informationen sowie eine Anleitung zum Vornehmen dieser Änderungen finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung mithilfe von PowerShell](expressroute-howto-routing-classic.md). Hier finden Sie auch ausführlichere Informationen zu Routingfiltern.
 
 > [!NOTE]
-> Microsoft-Peering und öffentliches Peering müssen über eine öffentliche IP-Adresse des Kunden oder CSPs erfolgen und sämtlichen definierten Regeln entsprechen. Weitere Informationen finden Sie auf der Seite [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md) .  
+> Microsoft-Peering muss über eine öffentliche IP-Adresse des Kunden oder CSPs erfolgen und sämtlichen definierten Regeln entsprechen. Weitere Informationen finden Sie auf der Seite [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md) .  
 > 
 > 
 
@@ -120,7 +120,7 @@ Je nach verwendetem Modell (Direktverbindung oder Durchleitung) definiert Ihr Ku
 1. **Kundenisolation** : Die Azure-Plattform sorgt für Kundenisolation, indem Kunden-ID und Informationen zum virtuellen Netzwerk in einer sicheren Datenbank gespeichert und zur Kapselung des jeweiligen Datenverkehrs eines Kunden in einem GRE-Tunnel verwendet werden.
 2. **Netzwerksicherheitsgruppen-Regeln** dienen zum Definieren des zulässigen ein- und ausgehenden Datenverkehrs für die Subnetze innerhalb virtueller Azure-Netzwerke. Standardmäßig enthält die NSG Blockierungsregeln, die Datenverkehr zwischen dem Internet und dem VNET blockieren, und Zulassungsregeln für Datenverkehr innerhalb eines VNETs. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie [hier](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Tunnelerzwingung** : Dient dazu, für das Internet bestimmten Datenverkehr aus Azure über die ExpressRoute-Verbindung an das lokale Datencenter umzuleiten. Weitere Informationen zur Tunnelerzwingung finden Sie [hier](expressroute-routing.md#advertising-default-routes).  
-4. **Verschlüsselung**: ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-Appliances von Drittanbietern installiert werden.
+4. **Verschlüsselung** : ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-Appliances von Drittanbietern installiert werden.
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
@@ -129,6 +129,6 @@ Der Cloud Solution Provider-Dienst ermöglicht es Ihnen, Ihren Nutzen für Kunde
 
 Weitere Informationen finden Sie unter den folgenden Links:
 
-[Azure im Cloud Solution Provider-Programm](https://docs.microsoft.com/azure/cloud-solution-provider)  
+[Azure im Cloud Solution Provider-Programm](/azure/cloud-solution-provider)  
 [Vorbereitung auf Transaktionen als Cloud Solution Provider](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch)  
 [Microsoft Cloud Solution Provider – Ressourcen](https://partner.microsoft.com/solutions/cloud-reseller-resources)

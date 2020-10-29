@@ -1,86 +1,53 @@
 ---
-title: Übersicht über die Zugriffssteuerung in Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
-description: Hier finden Sie grundlegende Informationen zur Funktionsweise der Zugriffssteuerung in Azure Data Lake Storage Gen2. Die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) und POSIX-ähnliche Zugriffssteuerungslisten werden unterstützt.
+title: Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
+description: Es wird beschrieben, wie POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) in Azure Data Lake Storage Gen2 funktionieren.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716101"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320473"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
+# <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungslisten (ACLs) in Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 implementiert ein Zugriffssteuerungsmodell, das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. In diesem Artikel werden die Grundlagen des Zugriffssteuerungsmodells für Data Lake Storage Gen2 zusammengefasst.
+Azure Data Lake Storage Gen2 implementiert ein Zugriffssteuerungsmodell, das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. In diesem Artikel werden Zugriffssteuerungslisten in Data Lake Storage Gen2 beschrieben. Informationen dazu, wie Sie Azure RBAC zusammen mit ACLs einbinden und wie diese vom System zum Treffen der Autorisierungsentscheidungen ausgewertet werden, finden Sie unter [Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md).
 
-<a id="azure-role-based-access-control-rbac"></a>
+<a id="access-control-lists-on-files-and-directories"></a>
 
-## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
+## <a name="about-acls"></a>Informationen zu ACLs
 
-Für Azure RBAC werden Rollenzuweisungen verwendet, um *Sicherheitsprinzipalen* effektiv Berechtigungen zuzuweisen. Ein *Sicherheitsprinzipal* ist ein Objekt, das einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität darstellt, der bzw. die in Azure Active Directory (AD) definiert ist und Zugriff auf Azure-Ressourcen anfordert.
-
-In der Regel sind diese Azure-Ressourcen auf Ressourcen oberster Ebene beschränkt, z. B. Azure Storage-Konten. Im Falle von Azure Storage und damit auch von Azure Data Lake Storage Gen2 wurde dieser Mechanismus auf die Containerressource (Dateisystem) ausgeweitet.
-
-Informationen zum Zuweisen von Rollen zu Sicherheitsprinzipalen im Bereich Ihres Speicherkontos finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Sie können einem [Sicherheitsprinzipal](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) eine Zugriffsebene für Dateien und Verzeichnisse zuordnen. Diese Zuordnungen werden in einer *Zugriffssteuerungsliste (ACL)* erfasst. Jede Datei und jedes Verzeichnis in Ihrem Speicherkonto verfügt über eine Zugriffssteuerungsliste. Wenn ein Sicherheitsprinzipal einen Vorgang für eine Datei oder ein Verzeichnis durchführen möchte, wird per ACL-Überprüfung ermittelt, ob dieser Sicherheitsprinzipal (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) über die richtige Berechtigungsstufe für die Durchführung des Vorgangs verfügt.
 
 > [!NOTE]
-> Ein Gastbenutzer kann keine Rollenzuweisung erstellen.
+> ACLs gelten nur für Sicherheitsprinzipale auf demselben Mandanten und nicht für Benutzer, die die Authentifizierung per gemeinsam verwendetem Schlüssel oder SAS-Token (Shared Access Signature) nutzen. Dies liegt daran, dass dem Aufrufer keine Identität zugeordnet ist und daher keine berechtigungsbasierte Autorisierung per Sicherheitsprinzipal durchgeführt werden kann.  
 
-### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Die Auswirkungen von Rollenzuweisungen auf Zugriffssteuerungslisten auf Datei- und Verzeichnisebene
-
-Azure-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Zugriffsberechtigungen, aber im Vergleich zu Zugriffssteuerungslisten nicht sehr detailliert. Die kleinste Granularität für Azure RBAC ist die Containerebene, und diese wird mit einer höheren Priorität als Zugriffssteuerungslisten ausgewertet. Wenn Sie einem Sicherheitsprinzipal im Bereich eines Containers eine Rolle zuweisen, hat dieser Sicherheitsprinzipal daher die Autorisierungsstufe dieser Rolle für ALLE Verzeichnisse und Dateien in diesem Container, unabhängig von den ACL-Zuweisungen.
-
-Wenn ein Sicherheitsprinzipal durch eine [integrierte Rolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues) oder eine benutzerdefinierte Rolle Azure RBAC-Datenberechtigungen erhält, werden diese Berechtigungen vor der Autorisierung einer Anforderung zunächst ausgewertet. Wenn der Anforderungsvorgang von den Azure-Rollenzuweisungen des Sicherheitsprinzipals autorisiert wurde, wird die Autorisierung sofort aufgelöst, und es werden keine weiteren ACL-Prüfungen durchgeführt. Wenn der Sicherheitsprinzipal nicht über eine Azure-Rollenzuweisung verfügt oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, werden alternativ ACL-Prüfungen durchgeführt, um zu bestimmen, ob der Sicherheitsprinzipal für die Durchführung des angeforderten Vorgangs autorisiert ist.
-
-> [!NOTE]
-> Wenn dem Sicherheitsprinzipal die integrierte Rolle des Besitzers der Speicherblobdaten zugewiesen wurde, gilt der Sicherheitsprinzipal als *super-user*, und er erhält Vollzugriff für alle Änderungsvorgänge, einschließlich Festlegung des Besitzers eines Verzeichnisses oder einer Datei sowie von ACLs für Verzeichnisse und Dateien, deren Besitzer er nicht ist. Dieser Administratorzugriff ist die einzige autorisierte Möglichkeit, den Besitzer einer Ressource zu ändern.
-
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Gemeinsam verwendeter Schlüssel und SAS-Authentifizierung (Shared Access Signature)
-
-Azure Data Lake Storage Gen2 unterstützt für die Authentifizierung die Methoden „Gemeinsam verwendeter Schlüssel“ und „SAS“. Ein Merkmal dieser Authentifizierungsmethoden ist, dass dem Aufrufer keine Identität zugeordnet wird und daher keine auf Sicherheitsprinzipalberechtigungen basierende Autorisierung erfolgen kann.
-
-Im Falle des gemeinsam verwendeten Schlüssels erhält der Aufrufer faktisch Administratorzugriff, was Vollzugriff zum Anwenden sämtlicher Vorgänge auf alle Ressourcen bedeutet, einschließlich Festlegung des Besitzers und Änderung von ACLs.
-
-SAS-Token enthalten zulässige Berechtigungen als Teil des Tokens. Die im SAS-Token enthaltenen Berechtigungen fließen effektiv in alle Berechtigungsentscheidungen ein, ohne dass zusätzliche ACL-Prüfungen erfolgen.
-
-## <a name="access-control-lists-on-files-and-directories"></a>Zugriffssteuerungslisten für Dateien und Verzeichnisse
-
-Sie können einem Sicherheitsprinzipal eine Zugriffsebene für Dateien und Verzeichnisse zuordnen. Diese Zuordnungen werden in einer *Zugriffssteuerungsliste (ACL)* erfasst. Jede Datei und jedes Verzeichnis in Ihrem Speicherkonto verfügt über eine Zugriffssteuerungsliste.
-
-> [!NOTE]
-> ACLs gelten nur für Sicherheitsprinzipale im gleichen Mandanten. 
-
-Wenn Sie einem Sicherheitsprinzipal eine Rolle auf Speicherkontoebene zugewiesen haben, können Sie diesem Sicherheitsprinzipal mit Zugriffssteuerungslisten Zugriff mit erhöhten Rechten auf bestimmte Dateien und Verzeichnisse gewähren.
-
-Zugriffssteuerungslisten können nicht verwendet werden, um eine Zugriffsebene bereitzustellen, die niedriger als eine durch eine Rollenzuweisung gewährte Ebene ist. Wenn Sie beispielsweise einem Sicherheitsprinzipal die Rolle [Mitwirkender an Speicherblob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) zuweisen, können Sie nicht mithilfe von Zugriffssteuerungslisten verhindern, dass dieser Sicherheitsprinzipal in ein Verzeichnis schreibt.
-
-
-### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe von Zugriffssteuerungslisten
+## <a name="how-to-set-acls"></a>Festlegen von ACLs
 
 Informationen zum Festlegen von Berechtigungen auf Datei- und Verzeichnisebene finden Sie in den folgenden Artikeln:
 
 | Environment | Artikel |
 |--------|-----------|
 |Azure Storage-Explorer |[Verwenden von Azure Storage-Explorer zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
-|.NET |[Verwenden von .NET zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
-|Java|[Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
-|Python|[Verwenden von Python zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
-|PowerShell|[Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[Verwenden der Azure CLI zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|.NET |[Verwenden von .NET zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
+|Java|[Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
+|Python|[Verwenden von Python zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
+|PowerShell|[Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
+|Azure CLI|[Verwenden der Azure CLI zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
 |REST-API |[Pfad – Aktualisierung](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Wenn der Sicherheitsprinzipal ein *Dienstprinzipal* ist, muss die Objekt-ID des Dienstprinzipals verwendet werden, nicht die Objekt-ID der zugehörigen App-Registrierung. Um die Objekt-ID des Dienstprinzipals abzurufen, öffnen Sie die Azure-Befehlszeilenschnittstelle, und verwenden Sie diesen Befehl: `az ad sp show --id <Your App ID> --query objectId`. Achten Sie darauf, den Platzhalter `<Your App ID>` durch die App-ID der App-Registrierung zu ersetzen.
 
-### <a name="types-of-access-control-lists"></a>Arten von Zugriffssteuerungslisten
+## <a name="types-of-acls"></a>Arten von ACLs
 
-Es gibt zwei Arten von Zugriffssteuerungslisten: *Zugriffs-ACLs* und *Standard-ACLs*.
+Es gibt zwei Arten von Zugriffssteuerungslisten: *Zugriffs-ACLs* und *Standard-ACLs* .
 
 Zugriffs-ACLs steuern den Zugriff auf ein Objekt. Dateien und Verzeichnisse verfügen jeweils über Zugriffs-ACLs.
 
@@ -91,22 +58,22 @@ Zugriffs- und Standard-ACLs haben die gleiche Struktur.
 > [!NOTE]
 > Änderungen an der Standard-ACL für ein übergeordnetes Element haben keine Auswirkungen auf die Zugriffs- oder Standard-ACL bereits vorhandener untergeordneter Elemente.
 
-### <a name="levels-of-permission"></a>Berechtigungsebenen
+## <a name="levels-of-permission"></a>Berechtigungsebenen
 
-Die Berechtigungen für ein Containerobjekt sind **Lesen**, **Schreiben** und **Ausführen**. Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Verzeichnisse angewendet werden:
+Die Berechtigungen für ein Containerobjekt sind **Lesen** , **Schreiben** und **Ausführen** . Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Verzeichnisse angewendet werden:
 
 |            |    Datei     |   Verzeichnis |
 |------------|-------------|----------|
-| **Lesen (Read, R)** | Berechtigt zum Lesen von Dateiinhalten | Erfordert **Lesen** und **Ausführen**, um den Inhalt des Verzeichnisses aufzulisten. |
-| **Schreiben (Write, W)** | Berechtigt zum Schreiben in eine Datei sowie zum Anfügen an eine Datei | Erfordert **Schreiben** und **Ausführen**, um untergeordnete Elemente in einem Verzeichnis zu erstellen. |
+| **Lesen (Read, R)** | Berechtigt zum Lesen von Dateiinhalten | Erfordert **Lesen** und **Ausführen** , um den Inhalt des Verzeichnisses aufzulisten. |
+| **Schreiben (Write, W)** | Berechtigt zum Schreiben in eine Datei sowie zum Anfügen an eine Datei | Erfordert **Schreiben** und **Ausführen** , um untergeordnete Elemente in einem Verzeichnis zu erstellen. |
 | **Ausführen (Execute, X)** | Hat im Kontext von Data Lake Storage Gen2 keine Bedeutung | Erfordert das Durchlaufen der untergeordneten Elemente eines Verzeichnisses |
 
 > [!NOTE]
 > Wenn Sie Berechtigungen ausschließlich mithilfe von Zugriffssteuerungslisten (ohne Azure RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Sicherheitsprinzipal dem Sicherheitsprinzipal die Berechtigung **Ausführen** für den Container und für jeden Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
 
-#### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
+### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
 
-**RWX** steht für **Lesen (Read), Schreiben (Write) und Ausführen (Execute)** . Es gibt auch ein noch kürzeres numerisches Format. Hierbei steht **4 für Lesen**, **2 für Schreiben** und **1 für Ausführen**, und Berechtigungen werden als Summe dieser Werte angegeben. Hier einige Beispiele.
+**RWX** steht für **Lesen (Read), Schreiben (Write) und Ausführen (Execute)** . Es gibt auch ein noch kürzeres numerisches Format. Hierbei steht **4 für Lesen** , **2 für Schreiben** und **1 für Ausführen** , und Berechtigungen werden als Summe dieser Werte angegeben. Hier einige Beispiele.
 
 | Numerische Form | Kurzform |      Bedeutung     |
 |--------------|------------|------------------------|
@@ -115,13 +82,17 @@ Die Berechtigungen für ein Containerobjekt sind **Lesen**, **Schreiben** und **
 | 4            | `R--`        | Lesen                   |
 | 0            | `---`        | Keine Berechtigungen         |
 
-#### <a name="permissions-inheritance"></a>Vererbung von Berechtigungen
+### <a name="permissions-inheritance"></a>Vererbung von Berechtigungen
 
 Im von Data Lake Storage Gen2 verwendeten POSIX-basierten Modell werden Berechtigungen für ein Element direkt im Element selbst gespeichert. Berechtigungen für ein Element können also nicht von den übergeordneten Elementen geerbt werden, wenn die Berechtigungen festgelegt werden, nachdem das untergeordnete Element bereits erstellt wurde. Berechtigungen werden nur dann geerbt, wenn für die übergeordneten Elemente Standardberechtigungen festgelegt wurden, bevor die untergeordneten Elemente erstellt werden.
 
-### <a name="common-scenarios-related-to-permissions"></a>Allgemeine Szenarien im Zusammenhang mit Berechtigungen
+## <a name="common-scenarios-related-to-acl-permissions"></a>Häufige Szenarien in Bezug auf ACL-Berechtigungen
 
-In der folgenden Tabelle sind einige allgemeine Szenarien aufgeführt, die veranschaulichen, welche Berechtigungen zum Anwenden bestimmter Vorgänge auf ein Speicherkonto erforderlich sind.
+Die folgende Tabelle enthält die ACL-Einträge, die benötigt werden, damit ein Sicherheitsprinzipal die in der Spalte **Vorgang** aufgeführten Vorgänge durchführen kann. 
+
+Diese Tabelle enthält eine Spalte, in der die einzelnen Ebenen einer fiktiven Verzeichnishierarchie dargestellt sind. Es gibt eine Spalte für das Stammverzeichnis des Containers (`\`), ein Unterverzeichnis mit dem Namen **Oregon** , ein Unterverzeichnis des Verzeichnisses „Oregon“ namens **Portland** und eine Textdatei im Verzeichnis „Portland“ mit dem Namen **Data.txt** . 
+
+> [!WICHTIG] Für diese Tabelle gilt die Annahme, dass Sie **ausschließlich** ACLs ohne Azure RBAC-Rollenzuweisungen verwenden. Eine ähnliche Tabelle, in der Azure RBAC mit ACLs kombiniert ist, finden Sie unter [Berechtigungstabelle: Kombinieren von Azure RBAC und ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
 
 |    Vorgang             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -136,7 +107,7 @@ In der folgenden Tabelle sind einige allgemeine Szenarien aufgeführt, die veran
 > [!NOTE]
 > Wenn die beiden obigen Bedingungen erfüllt sind, werden zum Löschen der Datei keine Schreibberechtigungen für die Datei benötigt.
 
-### <a name="users-and-identities"></a>Benutzer und Identitäten
+## <a name="users-and-identities"></a>Benutzer und Identitäten
 
 Alle Dateien und Verzeichnisse verfügen über eigene Berechtigungen für folgende Identitäten:
 
@@ -150,7 +121,7 @@ Alle Dateien und Verzeichnisse verfügen über eigene Berechtigungen für folgen
 
 Die Identitäten von Benutzern und Gruppen sind Azure AD-Identitäten (Azure Active Directory). Sofern nicht anderes angegeben, kann ein *Benutzer* im Data Lake Storage Gen2-Kontext also ein Benutzer, ein Dienstprinzipal, eine verwaltete Identität oder eine Sicherheitsgruppe in Azure AD sein.
 
-#### <a name="the-owning-user"></a>Der zuständige Benutzer
+### <a name="the-owning-user"></a>Der zuständige Benutzer
 
 Der Benutzer, der das Element erstellt hat, ist automatisch der zuständige Benutzer für das Element. Der zuständige Benutzer hat folgende Möglichkeiten:
 
@@ -160,25 +131,25 @@ Der Benutzer, der das Element erstellt hat, ist automatisch der zuständige Benu
 > [!NOTE]
 > Der zuständige Benutzer kann den zuständigen Benutzer einer Datei oder eines Verzeichnisses *nicht* ändern. Nur Administratoren können den zuständigen Benutzer einer Datei oder eines Verzeichnisses ändern.
 
-#### <a name="the-owning-group"></a>Die zuständige Gruppe
+### <a name="the-owning-group"></a>Die zuständige Gruppe
 
 In den POSIX-Zugriffssteuerungslisten ist jeder Benutzer einer *primären Gruppe* zugeordnet. So kann beispielsweise der Benutzer „Alice“ der Gruppe „finance“ angehören. Alice kann außerdem mehreren Gruppen angehören, aber eine Gruppe wird immer als ihre primäre Gruppe festgelegt. In POSIX gilt: Wenn Alice eine Datei erstellt, wird die zuständige Gruppe der Datei auf ihre primäre Gruppe festgelegt (in diesem Fall „finance“). Andernfalls verhält sich die zuständige Gruppe ähnlich wie zugewiesene Berechtigungen für andere Benutzer oder Gruppen.
 
-##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Zuweisen der zuständigen Gruppe für eine neue Datei oder ein neues Verzeichnis
+#### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Zuweisen der zuständigen Gruppe für eine neue Datei oder ein neues Verzeichnis
 
-* **Fall 1**: Das Stammverzeichnis „/“. Dieses Verzeichnis wird erstellt, wenn ein Data Lake Storage Gen2-Container erstellt wird. In diesem Fall wird die zuständige Gruppe auf den Benutzer festgelegt, der den Container erstellt hat, sofern dies mithilfe von OAuth erfolgt ist. Wenn der Container mithilfe eines gemeinsam verwendeten Schlüssels, einer Konto-SAS oder Dienst-SAS erstellt wird, werden der Besitzer und die zuständige Gruppe auf **$superuser** festgelegt.
+* **Fall 1** : Das Stammverzeichnis „/“. Dieses Verzeichnis wird erstellt, wenn ein Data Lake Storage Gen2-Container erstellt wird. In diesem Fall wird die zuständige Gruppe auf den Benutzer festgelegt, der den Container erstellt hat, sofern dies mithilfe von OAuth erfolgt ist. Wenn der Container mithilfe eines gemeinsam verwendeten Schlüssels, einer Konto-SAS oder Dienst-SAS erstellt wird, werden der Besitzer und die zuständige Gruppe auf **$superuser** festgelegt.
 * **Fall 2** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Verzeichnis kopiert.
 
-##### <a name="changing-the-owning-group"></a>Ändern der zuständigen Gruppe
+#### <a name="changing-the-owning-group"></a>Ändern der zuständigen Gruppe
 
 Die zuständige Gruppe kann von folgenden Benutzern geändert werden:
 * Beliebiger Administrator
 * Zuständiger Benutzer, sofern er auch der Zielgruppe angehört
 
 > [!NOTE]
-> Die zuständige Gruppe kann die ACLs einer Datei oder eines Verzeichnisses nicht ändern.  Im Fall des Stammordners (**Fall 1** weiter oben) wird die zuständige Gruppe zwar auf den Benutzer festgelegt, der das Konto erstellt hat, für die Bereitstellung von Berechtigungen über die zuständige Gruppe ist jedoch kein einzelnes Benutzerkonto zulässig. Sie können diese Berechtigung ggf. einer gültigen Benutzergruppe zuweisen.
+> Die zuständige Gruppe kann die ACLs einer Datei oder eines Verzeichnisses nicht ändern.  Im Fall des Stammordners ( **Fall 1** weiter oben) wird die zuständige Gruppe zwar auf den Benutzer festgelegt, der das Konto erstellt hat, für die Bereitstellung von Berechtigungen über die zuständige Gruppe ist jedoch kein einzelnes Benutzerkonto zulässig. Sie können diese Berechtigung ggf. einer gültigen Benutzergruppe zuweisen.
 
-### <a name="access-check-algorithm"></a>Algorithmus für die Zugriffsüberprüfung
+## <a name="access-check-algorithm"></a>Algorithmus für die Zugriffsüberprüfung
 
 Im folgenden Pseudocode wird der Zugriffsüberprüfungsalgorithmus für Speicherkonten veranschaulicht.
 
@@ -222,31 +193,38 @@ mask = get_mask( path )
 return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-#### <a name="the-mask"></a>Die Maske
+### <a name="the-mask"></a>Die Maske
 
 Wie im Algorithmus für die Zugriffsüberprüfung gezeigt, beschränkt die Maske den Zugriff auf benannte Benutzer, die zuständige Gruppe und benannte Gruppen.  
 
-> [!NOTE]
-> Für einen neuen Data Lake Storage Gen2-Container wird die Maske für die Zugriffs-ACL des Stammverzeichnisses („/“) für Verzeichnisse standardmäßig auf 750 und für Dateien auf 640 festgelegt. Dateien erhalten nicht das X-Bit, da es für Dateien in einem reinen Speichersystem irrelevant ist.
->
-> Die Maske kann aufrufbezogen festgelegt werden. Dies ermöglicht verschiedenen verarbeitenden Systemen, wie beispielsweise Clustern, für ihre Dateivorgänge unterschiedliche effektive Masken zu verwenden. Wenn eine Maske für eine bestimmte Anforderung angegeben wird, überschreibt sie die Standardmaske vollständig.
+Für einen neuen Data Lake Storage Gen2-Container wird die Maske für die Zugriffs-ACL des Stammverzeichnisses („/“) für Verzeichnisse standardmäßig auf **750** und für Dateien auf **640** festgelegt. In der folgenden Tabelle ist die Symbolnotation dieser Berechtigungsstufen angegeben.
 
-#### <a name="the-sticky-bit"></a>Das Sticky Bit
+|Entität|Verzeichnisse|Dateien|
+|--|--|--|
+|zuständige Benutzer|`rwx`|`r-w`|
+|zuständige Gruppe|`r-x`|`r--`|
+|Sonstiges|`---`|`---`|
+
+Dateien erhalten nicht das X-Bit, da es für Dateien in einem reinen Speichersystem irrelevant ist. 
+
+Die Maske kann aufrufbezogen festgelegt werden. Dies ermöglicht verschiedenen verarbeitenden Systemen, wie beispielsweise Clustern, für ihre Dateivorgänge unterschiedliche effektive Masken zu verwenden. Wenn eine Maske für eine bestimmte Anforderung angegeben wird, überschreibt sie die Standardmaske vollständig.
+
+### <a name="the-sticky-bit"></a>Das Sticky Bit
 
 Das Sticky Bit ist ein erweitertes Feature eines POSIX-Containers. Im Kontext von Data Lake Storage Gen2 wird das Sticky Bit höchstwahrscheinlich nicht benötigt. Kurz gefasst kann ein untergeordnetes Element nur vom jeweiligen zuständigen Benutzer gelöscht oder umbenannt werden, wenn das Sticky Bit für ein Verzeichnis aktiviert ist.
 
 Das Sticky Bit wird im Azure-Portal nicht angezeigt.
 
-### <a name="default-permissions-on-new-files-and-directories"></a>Standardberechtigungen für neue Dateien und Verzeichnisse
+## <a name="default-permissions-on-new-files-and-directories"></a>Standardberechtigungen für neue Dateien und Verzeichnisse
 
 Wenn in einem bereits vorhandenen Verzeichnis eine neue Datei oder ein Verzeichnis erstellt wird, bestimmt die Standard-ACL des übergeordneten Verzeichnisses Folgendes:
 
 - Eine Standard- und eine Zugriffs-ACL des untergeordneten Verzeichnisses
 - Eine Zugriffs-ACL der untergeordneten Datei (Dateien haben keine Standard-ACL)
 
-#### <a name="umask"></a>umask
+### <a name="umask"></a>umask
 
-Beim Erstellen einer Datei oder eines Verzeichnisses wird „umask“ verwendet, um zu ändern, wie Standard-ACLs für das untergeordnete Element festgelegt werden. „umask“ ist ein 9-Bit-Wert für übergeordnete Verzeichnisse, der einen RWX-Wert für den **zuständigen Benutzer**, die **zuständige Gruppe** und **andere** enthält.
+Beim Erstellen einer Datei oder eines Verzeichnisses wird „umask“ verwendet, um zu ändern, wie Standard-ACLs für das untergeordnete Element festgelegt werden. „umask“ ist ein 9-Bit-Wert für übergeordnete Verzeichnisse, der einen RWX-Wert für den **zuständigen Benutzer** , die **zuständige Gruppe** und **andere** enthält.
 
 Für Azure Data Lake Storage Gen2 ist „umask“ ein konstanter Wert, der auf „007“ festgelegt ist. Dieser Wert wird wie folgt übersetzt:
 
@@ -276,7 +254,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen2"></a>Allgemeine Fragen zu ACLs in Data Lake Storage Gen2
+## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Muss ich die Unterstützung für ACLs aktivieren?
 
@@ -286,7 +264,25 @@ Wenn HNS deaktiviert ist, gelten weiterhin die RBAC-Autorisierungsregeln von Azu
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>Wie werden ACLs am besten angewendet?
 
-Verwenden Sie in ACLs Azure AD-Sicherheitsgruppen stets als den zugewiesenen Prinzipal. Widerstehen Sie der Möglichkeit, einzelne Benutzer oder Dienstprinzipale direkt zuzuweisen. Die Verwendung dieser Struktur ermöglicht Ihnen, Benutzer oder Dienstprinzipale hinzuzufügen und zu entfernen, ohne dass Sie ACLs erneut auf eine gesamte Verzeichnisstruktur anwenden müssen. Sie müssen sie stattdessen nur der entsprechenden Azure AD-Sicherheitsgruppe hinzufügen oder daraus entfernen. Beachten Sie, dass ACLs nicht vererbt werden und die erneute Anwendung von ACLs daher eine Aktualisierung der ACL für jede Datei und jedes Unterverzeichnis erfordert. 
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)] 
+
+### <a name="how-are-azure-rbac-and-acl-permissions-evaluated"></a>Wie werden Azure RBAC- und ACL-Berechtigungen ausgewertet?
+
+Informationen dazu, wie Azure RBAC und ACLs gemeinsam ausgewertet werden, um Autorisierungsentscheidungen für Speicherkontoressourcen treffen zu können, finden Sie unter [Auswerten von Berechtigungen](data-lake-storage-access-control-model.md#how-permissions-are-evaluated).
+
+### <a name="what-are-the-limits-for-azure-rbac-role-assignments-and-acl-entries"></a>Welche Grenzwerte gelten für Azure RBAC-Rollenzuweisungen und ACL-Einträge?
+
+Die folgende Tabelle enthält eine Zusammenfassung der Grenzwerte, die Sie beim Verwenden von Azure RBAC zum Verwalten von „groben“ Berechtigungen (für Speicherkonten oder Container) und von ACLs zum Verwalten von „präzisen“ Berechtigungen (für Dateien und Verzeichnisse) berücksichtigen sollten. Verwenden Sie Sicherheitsgruppen für ACL-Zuweisungen. Wenn Sie Gruppen verwenden, ist es weniger wahrscheinlich, dass die maximale Anzahl von Rollenzuweisungen pro Abonnement und die maximale Anzahl von ACL-Einträgen pro Datei oder Verzeichnis überschritten werden. 
+
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-azure-rbac"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von Azure RBAC?
+
+Azure-Rollenzuweisungen werden vererbt. Zuweisungen werden aus Abonnement-, Ressourcengruppen und Speicherkontenressourcen an die Containerressource übertragen.
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von ACLs?
+
+Standard-ACLs können zum Festlegen von ACLs für neue untergeordnete Unterverzeichnisse und Dateien verwendet werden, die im übergeordneten Verzeichnis erstellt wurden. Zum Aktualisieren von ACLs für vorhandene untergeordnete Elemente müssen Sie ACLs für die gewünschte Verzeichnishierarchie rekursiv hinzufügen, aktualisieren oder entfernen. Weitere Informationen finden Sie unter [Festlegen von Zugriffssteuerungslisten (ACLs) für Azure Data Lake Storage Gen2](recursive-access-control-lists.md). 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Welche Berechtigungen werden zum rekursiven Löschen eines Verzeichnisses und seines Inhalts benötigt?
 
@@ -328,13 +324,13 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 Die OID wird angezeigt.
 
-Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie zur Seite **Zugang verwalten** im Storage-Explorer, um die OID hinzuzufügen und entsprechende Berechtigungen für die OID zuzuweisen. Klicken Sie auf **Speichern**.
+Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie zur Seite **Zugang verwalten** im Storage-Explorer, um die OID hinzuzufügen und entsprechende Berechtigungen für die OID zuzuweisen. Klicken Sie auf **Speichern** .
 
-### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von ACLs?
+### <a name="can-i-set-the-acl-of-a-container"></a>Kann ich die ACL eines Containers festlegen?
 
-Azure-Rollenzuweisungen werden vererbt. Zuweisungen werden aus Abonnement-, Ressourcengruppen und Speicherkontenressourcen an die Containerressource übertragen.
+Nein. Ein Container verfügt nicht über eine ACL. Sie können aber die ACL für das Stammverzeichnis des Containers festlegen. Jeder Container verfügt über ein Stammverzeichnis, das den gleichen Namen wie der Container hat. Wenn der Container beispielsweise den Namen `my-container` hat, lautet das Stammverzeichnis `myContainer/`. 
 
-ACLs werden nicht vererbt. Standard-ACLs können jedoch zum Festlegen von ACLs für untergeordnete Unterverzeichnisse und Dateien verwendet werden, die im übergeordneten Verzeichnis erstellt wurden. 
+Die Azure Storage-REST-API enthält einen Vorgang mit dem Namen [Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl), der aber nicht verwendet werden kann, um die ACL oder das Stammverzeichnis eines Containers festzulegen. Stattdessen wird dieser Vorgang verwendet, um anzugeben, ob auf Blobs in einem Container [öffentlich zugegriffen werden kann](anonymous-read-access-configure.md). 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Wo finde ich weitere Informationen zum POSIX-Zugriffssteuerungsmodell?
 
@@ -349,4 +345,4 @@ ACLs werden nicht vererbt. Standard-ACLs können jedoch zum Festlegen von ACLs f
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Übersicht über Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)
+- [Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md)

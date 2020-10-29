@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000616"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488995"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive und Apache Pig für Apache Hadoop in HDInsight
 
@@ -30,7 +30,7 @@ Sowohl Hive als auch Pig kann Daten zur Verarbeitung an externe Anwendungen übe
 
     Verwenden Sie eine beliebige IDE. Wir empfehlen [Visual Studio](https://www.visualstudio.com/vs) oder [Visual Studio Code](https://code.visualstudio.com/). Für die Schritte in diesem Artikel wird Visual Studio 2019 verwendet.
 
-* Eine Möglichkeit, EXE-Dateien in den Cluster hochzuladen und Pig- und Hive-Aufträge auszuführen. Wir empfehlen die [Data Lake-Tools für Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md), [Azure PowerShell](/powershell/azure) und die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). In den Schritten in diesem Artikel werden die Data Lake-Tools für Visual Studio zum Hochladen der Dateien und zum Ausführen der Hive-Beispielabfrage verwendet.
+* Eine Möglichkeit, EXE-Dateien in den Cluster hochzuladen und Pig- und Hive-Aufträge auszuführen. Wir empfehlen die [Data Lake-Tools für Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md), [Azure PowerShell](/powershell/azure) und die [Azure CLI](/cli/azure/install-azure-cli). In den Schritten in diesem Artikel werden die Data Lake-Tools für Visual Studio zum Hochladen der Dateien und zum Ausführen der Hive-Beispielabfrage verwendet.
 
     Informationen über weitere Möglichkeiten für die Ausführung von Hive-Abfragen finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hdinsight-use-hive.md).
 
@@ -38,7 +38,7 @@ Sowohl Hive als auch Pig kann Daten zur Verarbeitung an externe Anwendungen übe
 
 ## <a name="net-on-hdinsight"></a>.NET in HDInsight
 
-*Linux-basierte HDInsight*-Cluster nutzen [Mono (https://mono-project.com)](https://mono-project.com) für die Ausführung von .NET-Anwendungen. Mono-Version 4.2.1 ist in HDInsight Version 3.6 enthalten.
+*Linux-basierte HDInsight* -Cluster nutzen [Mono (https://mono-project.com)](https://mono-project.com) für die Ausführung von .NET-Anwendungen. Mono-Version 4.2.1 ist in HDInsight Version 3.6 enthalten.
 
 Weitere Informationen zur Kompatibilität von Mono mit .NET Framework-Versionen finden Sie unter [Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
 
@@ -56,9 +56,9 @@ So erstellen Sie ein C#-Projekt für eine benutzerdefinierte Apache Hive-Funktio
 
 2. Wählen Sie **Neues Projekt erstellen** aus.
 
-3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter**aus.
+3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter** aus.
 
-4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *HiveCSharp* ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *HiveCSharp* ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen** .
 
 5. Ersetzen Sie den Inhalt von *Program.cs* in Visual Studio IDE durch den folgenden Code:
 
@@ -123,9 +123,9 @@ So erstellen Sie ein C#-Projekt für eine benutzerdefinierte Apache Hive-Funktio
 
 2. Wählen Sie im Fenster **Start** die Option **Neues Projekt erstellen** aus.
 
-3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter**aus.
+3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter** aus.
 
-4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *PigUDF* ein, und navigieren Sie zum **Speicherort** für das neue Projekt oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *PigUDF* ein, und navigieren Sie zum **Speicherort** für das neue Projekt oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen** .
 
 5. Ersetzen Sie den Inhalt von *Program.cs* in Visual Studio IDE durch den folgenden Code:
 
@@ -170,7 +170,7 @@ Laden Sie als Nächstes die Hive- und Pig-Anwendungen für benutzerdefinierte Fu
 
 1. Wählen Sie in Visual Studio **Ansicht** > **Server-Explorer** aus.
 
-1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf **Azure**, klicken Sie auf **Verbindung mit Microsoft Azure-Abonnement herstellen**, und melden Sie sich an.
+1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf **Azure** , klicken Sie auf **Verbindung mit Microsoft Azure-Abonnement herstellen** , und melden Sie sich an.
 
 1. Erweitern Sie den HDInsight-Cluster, in dem Sie diese Anwendung bereitstellen möchten. Ein Eintrag mit dem Text **(Standardspeicherkonto)** ist aufgeführt.
 
@@ -186,11 +186,11 @@ Laden Sie als Nächstes die Hive- und Pig-Anwendungen für benutzerdefinierte Fu
 
         ![HDInsight-Uploadsymbol für neues Projekt](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
-        Wählen Sie im Dialogfeld **Neue Datei hochladen** unter **Dateiname** die Option **Durchsuchen** aus. Wechseln Sie im Dialogfeld **Blob hochladen** zum Ordner *bin\debug* dieses *HiveCSharp*-Projekts, und wählen Sie dann die Datei *HiveCSharp.exe* aus. Wählen Sie abschließend **Öffnen** und dann **OK** aus, um den Upload abzuschließen.
+        Wählen Sie im Dialogfeld **Neue Datei hochladen** unter **Dateiname** die Option **Durchsuchen** aus. Wechseln Sie im Dialogfeld **Blob hochladen** zum Ordner *bin\debug* dieses *HiveCSharp* -Projekts, und wählen Sie dann die Datei *HiveCSharp.exe* aus. Wählen Sie abschließend **Öffnen** und dann **OK** aus, um den Upload abzuschließen.
 
-    * Wenn Sie **Azure Data Lake Storage** verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann **Hochladen** aus. Wählen Sie abschließend die Datei *HiveCSharp.exe* aus und dann **Öffnen**.
+    * Wenn Sie **Azure Data Lake Storage** verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann **Hochladen** aus. Wählen Sie abschließend die Datei *HiveCSharp.exe* aus und dann **Öffnen** .
 
-    Sobald der Upload der Datei *HiveCSharp.exe* abgeschlossen ist, wiederholen Sie den Uploadvorgang für die Datei *PigUDF.exe*.
+    Sobald der Upload der Datei *HiveCSharp.exe* abgeschlossen ist, wiederholen Sie den Uploadvorgang für die Datei *PigUDF.exe* .
 
 ## <a name="run-an-apache-hive-query"></a>Ausführen einer Apache Hive-Abfrage
 
@@ -198,9 +198,9 @@ Nun können Sie eine Hive-Abfrage ausführen, die ihre Hive-Anwendung für benut
 
 1. Wählen Sie in Visual Studio **Ansicht** > **Server-Explorer** aus.
 
-2. Erweitern Sie erst **Azure** und dann **HDInsight**.
+2. Erweitern Sie erst **Azure** und dann **HDInsight** .
 
-3. Klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Anwendung *HiveCSharp* bereitgestellt haben, und wählen Sie dann **Hive-Abfrage schreiben**.
+3. Klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Anwendung *HiveCSharp* bereitgestellt haben, und wählen Sie dann **Hive-Abfrage schreiben** .
 
 4. Verwenden Sie für die Hive-Abfrage den folgenden Text:
 
@@ -224,7 +224,7 @@ Nun können Sie eine Hive-Abfrage ausführen, die ihre Hive-Anwendung für benut
 
     Mit dieser Abfrage werden die Felder `clientid`, `devicemake` und `devicemodel` aus `hivesampletable` ausgewählt und an die Anwendung *HiveCSharp.exe* übergeben. Die Abfrage erwartet, dass die Anwendung drei Felder zurückgibt, die als `clientid`, `phoneLabel` und `phoneHash` gespeichert werden. Darüber hinaus wird bei der Abfrage davon ausgegangen, dass sich *HiveCSharp.exe* im Stamm des standardmäßigen Speichercontainers befindet.
 
-5. Ändern Sie die Standardeinstellung **Interaktiv** in **Batch**, und wählen Sie dann **Senden** aus, um den Auftrag an den HDInsight-Cluster zu übermitteln. Das Fenster **Hive-Auftrag – Zusammenfassung** wird geöffnet.
+5. Ändern Sie die Standardeinstellung **Interaktiv** in **Batch** , und wählen Sie dann **Senden** aus, um den Auftrag an den HDInsight-Cluster zu übermitteln. Das Fenster **Hive-Auftrag – Zusammenfassung** wird geöffnet.
 
 6. Wählen Sie **Aktualisieren** aus, um die Zusammenfassung zu aktualisieren, bis sich der **Auftragsstatus** in **Abgeschlossen** ändert. Wählen Sie **Auftragsausgabe** aus, um die Auftragsausgabe anzuzeigen.
 
@@ -252,7 +252,7 @@ Sie können auch einen Pig-Auftrag ausführen, der Ihre Pig-Anwendung für benut
     DUMP DETAILS;
     ```
 
-    Die `DEFINE`-Anweisung erstellt einen Alias von `streamer` für die Anwendung *PigUDF.exe*, und `CACHE` lädt sie aus dem Standardspeicher für den Cluster. Später wird `streamer` mit dem `STREAM`-Operator verwendet, um die einzelnen Zeilen in `LOG` zu verarbeiten und die Daten als Serie von Spalten zurückzugeben.
+    Die `DEFINE`-Anweisung erstellt einen Alias von `streamer` für die Anwendung *PigUDF.exe* , und `CACHE` lädt sie aus dem Standardspeicher für den Cluster. Später wird `streamer` mit dem `STREAM`-Operator verwendet, um die einzelnen Zeilen in `LOG` zu verarbeiten und die Daten als Serie von Spalten zurückzugeben.
 
     > [!NOTE]
     > Der Anwendungsname, der für das Streaming verwendet wird, muss bei der Aliaserstellung mit \` (Graviszeichen) und bei der Verwendung mit `SHIP` von ' (einfaches Anführungszeichen) umschlossen werden.

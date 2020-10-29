@@ -4,12 +4,12 @@ description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der A
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055510"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144749"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -79,7 +79,7 @@ Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur 
     
     Bei der interaktiven Anmeldung bei Azure – wie im vorherigen Abschnitt beschrieben – werden Ihre Anmeldeinformationen zwischengespeichert, sodass die Azure CLI Sie mit diesen Anmeldeinformationen bei Ihrem Batch-Konto anmelden kann. Wenn Sie sich mithilfe eines Dienstprinzipals bei Azure anmelden, werden diese Anmeldeinformationen ebenfalls verwendet, um Sie bei Ihrem Batch-Konto anzumelden.
 
-    Ein Vorteil von Azure AD ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Bei der rollenbasierten Zugriffssteuerung richtet sich der Zugriff eines Benutzers nach der ihm zugewiesenen Rolle, nicht danach, ob der Benutzer über die Kontoschlüssel verfügt oder nicht. Sie verwalten also keine Kontoschlüssel, sondern Azure-Rollen, und Azure AD verarbeitet Zugriff und Authentifizierung.  
+    Ein Vorteil von Azure AD ist die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Bei der rollenbasierten Zugriffssteuerung von Azure richtet sich der Zugriff eines Benutzers nach der ihm zugewiesenen Rolle und nicht danach, ob der Benutzer über die Kontoschlüssel verfügt. Sie verwalten also keine Kontoschlüssel, sondern Azure-Rollen, und Azure AD verarbeitet Zugriff und Authentifizierung.  
 
      Um sich über Azure AD bei Ihrem Batch-Konto anzumelden, rufen Sie den Befehl [az batch account login](/cli/azure/batch/account#az-batch-account-login) auf: 
 
@@ -119,7 +119,7 @@ az batch pool create my_batch_pool.json
 
 Die meisten Batch-Ressourcen können zwar allein mithilfe von Befehlszeilenoptionen erstellt werden, manche Features erfordern jedoch die Angabe einer JSON-Datei mit den Ressourcendetails. Eine JSON-Datei ist beispielsweise erforderlich, wenn Sie Ressourcendateien für eine Startaufgabe angeben möchten.
 
-Die für die Ressourcenerstellung erforderliche JSON-Syntax finden Sie in der [Batch-REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen eines *Ressourcentyps*“ in der REST API-Referenz enthält JSON-Beispielskripts zum Erstellen dieser Ressource. Sie können diese JSON-Beispielskripts als Vorlage für JSON-Dateien verwenden, die Sie mit der Azure CLI verwenden möchten. Die JSON-Syntax für die Poolerstellung finden Sie beispielsweise unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool].
+Die für die Ressourcenerstellung erforderliche JSON-Syntax finden Sie in der [Batch-REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen eines *Ressourcentyps* “ in der REST API-Referenz enthält JSON-Beispielskripts zum Erstellen dieser Ressource. Sie können diese JSON-Beispielskripts als Vorlage für JSON-Dateien verwenden, die Sie mit der Azure CLI verwenden möchten. Die JSON-Syntax für die Poolerstellung finden Sie beispielsweise unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool].
 
 Ein Beispielskript, das eine JSON-Datei angibt, finden Sie unter [Ausführen eines Auftrags und von Tasks mit Batch](./scripts/batch-cli-sample-run-job.md).
 

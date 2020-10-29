@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 662b85bb2b928cbbcfb1b88adecb2c125c9ae5df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260490"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486615"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
 
@@ -22,7 +22,7 @@ Dieser Artikel stammt aus einer Reihe von Artikeln zur Integration der Cosmos DB
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Ein Azure Cosmos DB-Cassandra-API-Konto muss vorhanden sein.](create-cassandra-dotnet.md#create-a-database-account)
 
-* Stellen Sie eine Spark-Umgebung Ihrer Wahl [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Sonstiges] bereit.
+* Stellen Sie eine Spark-Umgebung Ihrer Wahl [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) | [Azure HDInsight Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) | Sonstiges] bereit.
 
 ## <a name="dependencies-for-connectivity"></a>Abhängigkeiten für die Konnektivität
 * **Spark-Connector für Cassandra:** Der Spark-Connector wird verwendet, um eine Verbindung mit der Azure Cosmos DB-Cassandra-API herzustellen.  Identifizieren und verwenden Sie die Version des Connectors unter [Maven > Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector), die mit den Spark- und Scala-Versionen Ihrer Spark-Umgebung kompatibel ist.

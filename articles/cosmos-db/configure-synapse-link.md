@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757842"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489267"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB (Vorschau)
 
@@ -38,7 +38,7 @@ Azure Synapse Link ist für Azure Cosmos DB SQL-API-Container oder für Azure Co
 
 1. [Erstellen Sie ein neues Azure-Konto](create-sql-api-dotnet.md#create-account), oder wählen Sie ein vorhandenes Azure Cosmos DB-Konto aus.
 
-1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie den Bereich **Features**.
+1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie den Bereich **Features** .
 
 1. Wählen Sie in der Liste mit den Features die Option **Synapse Link** aus.
 
@@ -64,9 +64,9 @@ Beim Erstellen des Containers können Sie den Analysespeicher in einem Azure Cos
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) oder beim [Azure Cosmos-Explorer](https://cosmos.azure.com/) an.
 
-1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
+1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer** .
 
-1. Wählen Sie **Neuer Container** aus, und geben Sie einen Namen für Ihre Datenbank, den Container, den Partitionsschlüssel und die Durchsatzdetails ein. Aktivieren Sie die Option **Analysespeicher**. Nach dem Aktivieren des Analysespeichers wird ein Container erstellt, für den die Eigenschaft `AnalyicalTTL` auf den Standardwert „-1“ (unbegrenzte Aufbewahrung) festgelegt ist. In diesem Analysespeicher wird der gesamte Versionsverlauf der Datensätze aufbewahrt.
+1. Wählen Sie **Neuer Container** aus, und geben Sie einen Namen für Ihre Datenbank, den Container, den Partitionsschlüssel und die Durchsatzdetails ein. Aktivieren Sie die Option **Analysespeicher** . Nach dem Aktivieren des Analysespeichers wird ein Container erstellt, für den die Eigenschaft `AnalyicalTTL` auf den Standardwert „-1“ (unbegrenzte Aufbewahrung) festgelegt ist. In diesem Analysespeicher wird der gesamte Versionsverlauf der Datensätze aufbewahrt.
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Suchen nach der Previewfunktion „Synapse Link“":::
 
@@ -172,14 +172,14 @@ Wenn Sie einen für Analysespeicher aktivierten Container über das Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) oder beim [Azure Cosmos-Explorer](https://cosmos.azure.com/) an.
 
-1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
+1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer** .
 
 1. Wählen Sie einen vorhandenen Container aus, für den Analysespeicher aktiviert ist. Erweitern Sie ihn, und ändern Sie die folgenden Werte:
 
   * Öffnen Sie das Fenster **Scale & Settings** (Skalierung und Einstellungen).
   * Suchen Sie unter **Einstellung** nach **Analytical Storage Time to Live** (Gültigkeitsdauer für Analysespeicher).
   * Wählen Sie **Ein (Standard)** aus, oder wählen Sie **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest.
-  * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+  * Klicken Sie zum Speichern der Änderungen auf **Speichern** .
 
 #### <a name="net-sdk"></a>.NET SDK
 
@@ -219,16 +219,13 @@ Befolgen Sie die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeic
 
 Mithilfe von Synapse SQL (serverlos) (einer Previewfunktion, die zuvor als **SQL On-Demand** bezeichnet wurde), können Sie Daten in Ihren Azure Cosmos DB-Containern abfragen und analysieren, die mit Azure Synapse Link aktiviert wurden. Sie können Daten nahezu in Echtzeit analysieren, ohne dass dadurch die Leistung Ihrer Transaktionsworkloads beeinträchtigt wird. SQL (serverlos) bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem Analysespeicher und – über die T-SQL-Schnittstelle – integrierte Konnektivität mit einer Vielzahl von BI-Tools und Ad-hoc-Abfragetools. Weitere Informationen finden Sie im Artikel [Abfragen des Analysespeichers mit Synapse SQL (serverlos)](../synapse-analytics/sql/query-cosmos-db-analytical-store.md).
 
-> [!NOTE]
-> Die Verwendung des Azure Cosmos DB-Analysespeichers mit Synapse SQL (serverlos) befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff anfordern möchten, wenden Sie sich an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
-
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Verwenden von Synapse SQL (serverlos) zum Analysieren und Visualisieren von Daten in Power BI
 
 Sie können eine Datenbank und Sichten für Synapse SQL (serverlos) über Synapse Link für Azure Cosmos DB erstellen. Später können Sie die Azure Cosmos-Container abfragen und dann ein Modell mit Power BI über diese Sichten erstellen, um die betreffende Abfrage anzuzeigen. Weitere Informationen finden Sie im Artikel zur Verwendung von [Synapse SQL (serverlos) zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link](synapse-link-power-bi.md).
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 
-Mit der [Azure Resource Manager-Vorlage](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) wird für die SQL-API ein Azure Cosmos DB-Konto erstellt, das Synapse Link-fähig ist. Mit dieser Vorlage wird ein Konto für die Core-API (SQL) in einer Region mit einem Container erstellt, für den die analytische Gültigkeitsdauer aktiviert ist, und es ist eine Option vorhanden, mit der die manuelle oder automatische Skalierung des Durchsatzes festgelegt werden kann. Klicken Sie zum Bereitstellen dieser Vorlage auf der Infoseite auf **Bereitstellen in Azure**.
+Mit der [Azure Resource Manager-Vorlage](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) wird für die SQL-API ein Azure Cosmos DB-Konto erstellt, das Synapse Link-fähig ist. Mit dieser Vorlage wird ein Konto für die Core-API (SQL) in einer Region mit einem Container erstellt, für den die analytische Gültigkeitsdauer aktiviert ist, und es ist eine Option vorhanden, mit der die manuelle oder automatische Skalierung des Durchsatzes festgelegt werden kann. Klicken Sie zum Bereitstellen dieser Vorlage auf der Infoseite auf **Bereitstellen in Azure** .
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Erste Schritte mit Azure Synpase Link – Beispiele
 

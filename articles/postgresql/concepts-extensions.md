@@ -6,18 +6,18 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707947"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485459"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Einzelserver
 PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Bei Erweiterungen werden mehrere zusammengehörige SQL-Objekte zu einem Paket gebündelt und mit nur einem Befehl in die Datenbank geladen oder daraus entfernt. Nach dem Laden in die Datenbank funktionieren Erweiterungen genauso wie integrierte Features.
 
 ## <a name="how-to-use-postgresql-extensions"></a>Wie werden PostgreSQL-Erweiterungen verwendet?
-Bevor Sie PostgreSQL-Erweiterungen verwenden können, müssen diese in Ihrer Datenbank installiert werden. Um eine bestimmte Erweiterung zu installieren, führen Sie zum Laden der gepackten Objekte in Ihrer Datenbank den Befehl  [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html)  über das psql-Tool aus.
+Bevor Sie PostgreSQL-Erweiterungen verwenden können, müssen diese in Ihrer Datenbank installiert werden. Um eine bestimmte Erweiterung zu installieren, führen Sie zum Laden der gepackten Objekte in Ihrer Datenbank den Befehl [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) über das psql-Tool aus.
 
 Azure Database for PostgreSQL unterstützt einen Teil der wichtigsten Erweiterungen, die unten aufgeführt sind. Sie können diese Informationen auch abrufen, indem Sie `SELECT * FROM pg_available_extensions;` ausführen. Andere Erweiterungen, die hier nicht aufgeführt sind, werden nicht unterstützt. Sie können in Azure Database for PostgreSQL keine eigenen Erweiterungen erstellen.
 
@@ -205,7 +205,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 Die [Erweiterung „pg_stat_statements“](https://www.postgresql.org/docs/current/pgstatstatements.html) wird auf jedem Azure Database for PostgreSQL-Server vorab geladen, um für Sie eine Möglichkeit zur Nachverfolgung von Ausführungsstatistiken von SQL-Anweisungen zu schaffen.
-Die Einstellung `pg_stat_statements.track`, die steuert, welche Anweisungen von der Erweiterung gezählt werden, ist standardmäßig auf `top` festgelegt, was bedeutet, dass alle Anweisungen, die direkt von Clients ausgestellt werden, nachverfolgt werden. Die beiden anderen Nachverfolgungsebenen sind `none` und `all`. Diese Einstellung kann als Serverparameter über das [Azure-Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) oder die [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli) konfiguriert werden.
+Die Einstellung `pg_stat_statements.track`, die steuert, welche Anweisungen von der Erweiterung gezählt werden, ist standardmäßig auf `top` festgelegt, was bedeutet, dass alle Anweisungen, die direkt von Clients ausgestellt werden, nachverfolgt werden. Die beiden anderen Nachverfolgungsebenen sind `none` und `all`. Diese Einstellung kann als Serverparameter über das [Azure-Portal](./howto-configure-server-parameters-using-portal.md) oder die [Azure CLI](./howto-configure-server-parameters-using-cli.md) konfiguriert werden.
 
 Zwischen den von pg_stat_statements bereitgestellten Abfrageausführungsinformationen und der Auswirkung auf die Serverleistung besteht ein Kompromiss, da jede SQL-Anweisung protokolliert wird. Wenn Sie die pg_stat_statements-Erweiterung nicht aktiv verwenden, empfiehlt es sich, `pg_stat_statements.track` auf `none` festzulegen. Beachten Sie, dass sich einige Überwachungsdienste von Drittanbietern auf pg_stat_statements beziehen können, um Statistiken zur Abfrageleistung zu liefern. Bestätigen Sie also, ob dieser Fall auf Sie zutrifft oder nicht.
 
@@ -245,7 +245,7 @@ Verwenden des [Azure-Portals](https://portal.azure.com/):
 
 5. Wählen Sie **Speichern** aus, um Ihre Änderungen beizubehalten. Sobald die Änderung gespeichert wurde, erhalten Sie eine entsprechende Benachrichtigung. 
 
-6. Nach Empfang der Benachrichtigung müssen Sie den Server **neu starten**, damit diese Änderungen übernommen werden. Die Vorgehensweise zum Neustart eines Servers finden Sie unter [Neustart eines Azure Database for PostgreSQL-Servers über das Azure-Portal](howto-restart-server-portal.md).
+6. Nach Empfang der Benachrichtigung müssen Sie den Server **neu starten** , damit diese Änderungen übernommen werden. Die Vorgehensweise zum Neustart eines Servers finden Sie unter [Neustart eines Azure Database for PostgreSQL-Servers über das Azure-Portal](howto-restart-server-portal.md).
 
 
 Sie können jetzt TimescaleDB in Ihrer Postgres-Datenbank aktivieren. Stellen Sie eine Verbindung mit der Datenbank her, und geben Sie den folgenden Befehl ein:

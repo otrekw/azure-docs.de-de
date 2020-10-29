@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell-Skript: Erstellen einer Einladung zu Azure Data Share | Microsoft-Dokumentation'
+title: 'PowerShell-Skript: Erstellen einer Azure Data Share-Einladung'
 description: Dieses PowerShell-Skript sendet eine Einladung zu einer Datenfreigabe.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 220677df3bd0c221f61efd28a80b05cfd76e2734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f65d081e724206c1c64ad08189d1b620bbb4f2c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086641"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221331"
 ---
 # <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>Verwenden eines PowerShell-Skripts zum Überwachen der Verwendung einer gesendeten Datenfreigabe
 
@@ -42,11 +39,11 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | Erstellt eine Einladung zu einer Datenfreigabe. |
+| [New-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation) | Erstellt eine Einladung zu einer Datenfreigabe. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Weitere PowerShell-Skriptbeispiele für Azure Data Share finden Sie unter [Azure PowerShell-Beispiele für Azure Data Share](../../samples-powershell.md).

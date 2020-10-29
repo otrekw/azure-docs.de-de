@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a81af14992c8557c245ab3a1073f031a6c505084
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4b072257d49011819fe19d6e2901560df43b26dc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019391"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275561"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -48,7 +48,7 @@ In diesem Abschnitt erfahren Sie mehr über die standardmäßigen und maximalen 
 + Azure Machine Learning Compute
 + Azure Machine Learning-Pipelines
 + Container Instances
-+ Speicher
++ Storage
 
 > [!IMPORTANT]
 > Änderungen bei Limits bleiben vorbehalten. Die aktuellen Limits finden Sie immer im [Dokument](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) zu Kontingenten auf Dienstebene für die meisten Azure-Dienste.
@@ -101,7 +101,7 @@ Die folgende Tabelle zeigt zusätzliche Grenzwerte, die nicht überschritten wer
 
 Weitere Informationen finden Sie unter [Grenzwerte für Container Instances](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Azure-Speicherkonten haben einen Grenzwert von 250 Speicherkonten pro Region und Abonnement. Dies umfasst sowohl Standard- als auch Storage Premium-Konten.
 
 Um den Grenzwert zu erhöhen, stellen Sie eine Anforderung über den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Das Azure Storage-Team überprüft Ihren Fall und kann bis zu 250 Speicherkonten für eine Region genehmigen.
@@ -138,7 +138,7 @@ Um Ihr Kontingent für verschiedene Azure-Ressourcen wie Virtual Machines, Stora
 
 Das Azure Machine Learning Compute-Kontingent für Ihr Abonnement wird getrennt von anderen Azure-Kontingenten verwaltet. 
 
-1. Navigieren Sie im Azure-Portal zu Ihrem **Azure Machine Learning**-Arbeitsbereich.
+1. Navigieren Sie im Azure-Portal zu Ihrem **Azure Machine Learning** -Arbeitsbereich.
 
 2. Wählen Sie im linken Bereich unter dem Abschnitt **Support + Problembehandlung** die Option **Nutzung + Kontingente** aus, um Ihre aktuellen Kontingentgrenzen und die Nutzung anzuzeigen.
 
@@ -177,12 +177,14 @@ Verwenden Sie die folgenden Schritte, um eine Zuteilung für diese Szenarien anz
     | ----- | ----- |
     | Typ des Problems | Technisch |
     | Dienst | Eigene Dienste. Wählen Sie in der Dropdownliste __Machine Learning__ aus. |
-    | Problemtyp | Arbeitsbereichseinrichtung, SDK und CLI |
-    | Problemuntertyp | Problem beim Bereitstellen oder Verwalten des Arbeitsbereichs |
+    | Problemtyp | Konfiguration und Sicherheit von Arbeitsbereichen |
+    | Problemuntertyp | Zuteilungsanforderung für private Endpunkte und private DNS-Zonen |
 
-2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__, um die zu verwendende Azure-Region und das Szenario anzugeben, dessen Verwendung Sie planen. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld auch die Abonnement-IDs an.
+2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__ , um die zu verwendende Azure-Region und das Szenario anzugeben, dessen Verwendung Sie planen. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld auch die Abonnement-IDs an.
 
 3. Wählen Sie __Erstellen__ aus, um die Anforderung zu erstellen.
+
+:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Screenshot: Anfordern einer Kontingenterhöhung für private Endpunkte und privates DNS":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

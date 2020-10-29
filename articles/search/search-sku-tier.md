@@ -1,23 +1,23 @@
 ---
-title: Auswählen von Tarif oder SKU
+title: Auswählen eines Tarifs
 titleSuffix: Azure Cognitive Search
-description: 'Die kognitive Azure-Suche kann in folgenden SKUs bereitgestellt werden: „Free“, „Basic“ und „Standard“, wobei „Standard“ mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar ist.'
+description: 'Azure Cognitive Search kann in folgenden Dienstebenen bereitgestellt werden: „Free“, „Basic“ und „Standard“, wobei „Standard“ mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar ist.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948084"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101272"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
-Beim Erstellen eines Diensts für die kognitive Azure-Suche erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif (oder einer SKU), der für die Lebensdauer des Diensts festgelegt ist. Folgende Tarife sind verfügbar: „Free“, „Basic“, „Standard“ und „Speicheroptimiert“. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt.
+Beim Erstellen eines Azure Cognitive Search-Diensts erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif, der für die Lebensdauer des Diensts festgelegt ist. Folgende Tarife sind verfügbar: „Free“, „Basic“, „Standard“ und „Speicheroptimiert“. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt.
 
 Die meisten Kunden starten mit dem Tarif „Free“, um den Dienst vorab zu testen. Nach der Auswertung wird oftmals ein zweiter Dienst mit einem der höheren Tarifen erstellst, der für Entwicklungs- und Produktionsbereitstellungen ist.
 
@@ -27,22 +27,22 @@ In der folgenden Tabelle werden die tarifbezogenen Featureeinschränkungen besch
 
 | Funktion | Einschränkungen |
 |---------|-------------|
-| [Indexer](search-indexer-overview.md) | Indexer sind auf S3 HD nicht verfügbar. |
+| [Indexer](search-indexer-overview.md) | Indexer sind auf S3 HD nicht verfügbar.  |
 | [KI-Anreicherung](search-security-manage-encryption-keys.md) | Wird im Free-Tarif ausgeführt, aber nicht empfohlen. |
 | [Von Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) | Im Free-Tarif nicht verfügbar. |
 | [IP-Firewallzugriff](service-configure-firewall.md) | Im Free-Tarif nicht verfügbar. |
-| [Integration mit Azure Private Link](service-create-private-endpoint.md) | Im Free-Tarif nicht verfügbar. |
+| [Privater Endpunkt (Integration mit Azure Private Link)](service-create-private-endpoint.md) | Für eingehende Verbindungen bei einem Suchdienst, nicht im Free-Tarif verfügbar. Für ausgehende Verbindungen von Indexern zu anderen Azure-Ressourcen, nicht verfügbar im Tarif „Free“ oder „S3 HD“. Für Indexer, die Skillsets verwenden, nicht verfügbar im Tarif „Free“, „Basic“, „S1“ oder „S3 HD“|
 
 Die meisten Features sind in jedem Tarif verfügbar, auch im Free-Tarif, aber ressourcenintensive Features funktionieren möglicherweise nicht gut, wenn ihnen keine ausreichende Kapazität zugewiesen wurde. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Skills mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 
-## <a name="tiers-skus"></a>Tarife (SKUs)
+## <a name="tiers"></a>Ebenen
 
 Die Tarife unterscheiden sich durch:
 
 + Anzahl der Indizes und Indexer (maximale Grenzwerte)
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 
-Der ausgewählte Tarif bestimmt den abzurechnenden Preis. Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). **Free**, **Basic** und **Standard** sind die gängigsten Tarife.
+Der ausgewählte Tarif bestimmt den abzurechnenden Preis. Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). **Free** , **Basic** und **Standard** sind die gängigsten Tarife.
 
 Mit **Free** wird ein eingeschränkter Suchdienst für kleinere Projekte erstellt, einschließlich Schnellstartanleitungen und Tutorials. Intern werden Replikate und Partitionen von mehreren Abonnenten gemeinsam genutzt. Es ist nicht möglich, einen kostenlosen Dienst zu skalieren oder signifikante Workloads auszuführen.
 
@@ -110,7 +110,7 @@ Mit dem Feature [Inkrementelle Anreicherung (Vorschau)](cognitive-search-increme
 
 Bei Vorgängen der kognitiven Azure-Suche ist das wichtigste Abrechnungskonzept die *Sucheinheit* (Search Unit, SU). Da die kognitive Azure-Suche bei der Indizierung und bei Abfragen sowohl von Replikaten als auch von Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider.
 
-Die SU ist das Produkt aus den von einem Dienst verwendeten *Replikaten* und *Partitionen*: **(R x P = SU)** .
+Die SU ist das Produkt aus den von einem Dienst verwendeten *Replikaten* und *Partitionen* : **(R x P = SU)** .
 
 Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Die maximale Anzahl von SUs für einen Dienst beträgt 36. Dieser Höchstwert kann auf verschiedene Weise erreicht werden: beispielsweise mit 6 Partitionen x 6 Replikaten oder mit 3 Partitionen x 12 Replikaten. Üblicherweise werden weniger als die Gesamtkapazität an SUs verwendet (3 Replikate x 3 Partitionen werden beispielsweise als 9 SUs abgerechnet). Gültige Kombinationen finden Sie in der Tabelle [Partitions- und Replikatskombinationen](search-capacity-planning.md#chart).
 
@@ -124,7 +124,7 @@ Die folgenden Vorschläge können Ihnen helfen, die Kosten zu senken oder effekt
 
 + Erstellen Sie alle Ressourcen in derselben Region oder in möglichst wenigen Regionen, um Bandbreitengebühren zu minimieren oder auszuschließen.
 
-+ Führen Sie alle Dienste in einer Ressourcengruppe zusammen, z.B. kognitive Azure-Suche, Cognitive Services und alle anderen in Ihrer Lösung verwendeten Azure-Dienste. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, und verwenden Sie die Befehle für **Kostenverwaltung**, um Einblicke in die tatsächlichen und projizierten Ausgaben zu erhalten.
++ Führen Sie alle Dienste in einer Ressourcengruppe zusammen, z.B. kognitive Azure-Suche, Cognitive Services und alle anderen in Ihrer Lösung verwendeten Azure-Dienste. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, und verwenden Sie die Befehle für **Kostenverwaltung** , um Einblicke in die tatsächlichen und projizierten Ausgaben zu erhalten.
 
 + Sie können Azure App Service für Ihre Front-End-Anwendung verwenden, sodass Anforderungen und Antworten innerhalb der Grenzen des Rechenzentrums bleiben.
 
@@ -158,7 +158,7 @@ Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-
 Bei der Volltextsuche entspricht die primäre Datenstruktur der Struktur eines [invertierten Indexes](https://en.wikipedia.org/wiki/Inverted_index), die über andere Eigenschaften als die Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie eingeben. Eine große Datenquelle mit hoher Redundanz könnte einen kleineren Index ergeben als ein kleineres Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
 
 > [!NOTE] 
-> Auch wenn sich das Schätzen der künftig benötigten Indizes und des erforderlichen Speichers wie bloßes Mutmaßen anfühlt, lohnt sich der Aufwand. Stellt sich die Kapazität eines Tarifs als zu gering heraus, müssen Sie einen neuen Dienst in einem höheren Tarif bereitstellen und anschließend die [Indizes neu laden](search-howto-reindex.md). Für einen Dienst kann kein direktes SKU-Upgrade durchgeführt werden.
+> Auch wenn sich das Schätzen der künftig benötigten Indizes und des erforderlichen Speichers wie bloßes Mutmaßen anfühlt, lohnt sich der Aufwand. Stellt sich die Kapazität eines Tarifs als zu gering heraus, müssen Sie einen neuen Dienst in einem höheren Tarif bereitstellen und anschließend die [Indizes neu laden](search-howto-reindex.md). Für einen Dienst kann kein direktes Upgrade von einem Tarif auf einen anderen durchgeführt werden.
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Schätzung mit dem Free-Tarif

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d898d3825fa40cbfd13337067c24cf14f9a544
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78184247"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102016"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph-Vorgänge, die für Azure AD B2C verfügbar sind
 
@@ -33,6 +33,15 @@ Jeder Link in den folgenden Abschnitten bezieht sich auf die entsprechende Seite
 - [Löschen eines Benutzers](https://docs.microsoft.com/graph/api/user-delete)
 
 Weitere Informationen zum Verwalten von Azure AD B2C-Benutzerkonten mit der Microsoft Graph-API finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).
+
+## <a name="user-phone-number-management"></a>Verwaltung der Telefonnummer des Benutzers
+
+- [Add (Hinzufügen)](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
+- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
+- [Aktualisieren](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
+- [Löschen](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+
+Weitere Informationen zum Verwalten der Telefonnummer für die Anmeldung eines Benutzers mit der Microsoft Graph-API finden Sie unter [b2cAuthenticationMethodsPolicy-Ressourcentyp](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Identitätsanbieter (Benutzerflow)
 
@@ -67,7 +76,7 @@ Mit den folgenden Vorgängen können Sie Ihre Azure AD B2C-Vertrauensframeworkri
 
 Das Identity Experience Framework speichert die Geheimnisse, auf die in einer benutzerdefinierten Richtlinie verwiesen wird, um Vertrauen zwischen den Komponenten herzustellen. Diese Geheimnisse können symmetrische oder asymmetrische Schlüssel/Werte sein. Im Azure-Portal werden diese Entitäten als **Richtlinienschlüssel** angezeigt.
 
-Die vorrangige Ressource für Richtlinienschlüssel in der Microsoft Graph-API ist das [Vertrauensframework-Keyset](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset). Jedes **Keyset** enthält mindestens einen **Schlüssel**. Zum Erstellen eines Schlüssels müssen Sie zunächst ein leeres Keyset erstellen und anschließend darin einen Schlüssel generieren. Sie können ein manuelles Geheimnis erstellen, ein Zertifikat hochladen oder einen PKCS12-Schlüssel erstellen. Der Schlüssel kann ein generiertes Geheimnis, eine von Ihnen definierte Zeichenfolge (z. B. der geheime Facebook-Anwendungsschlüssel) oder ein von Ihnen hochgeladenes Zertifikat sein. Wenn ein Keyset mehrere Schlüssel enthält, ist immer nur einer der Schlüssel aktiv.
+Die vorrangige Ressource für Richtlinienschlüssel in der Microsoft Graph-API ist das [Vertrauensframework-Keyset](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset). Jedes **Keyset** enthält mindestens einen **Schlüssel** . Zum Erstellen eines Schlüssels müssen Sie zunächst ein leeres Keyset erstellen und anschließend darin einen Schlüssel generieren. Sie können ein manuelles Geheimnis erstellen, ein Zertifikat hochladen oder einen PKCS12-Schlüssel erstellen. Der Schlüssel kann ein generiertes Geheimnis, eine von Ihnen definierte Zeichenfolge (z. B. der geheime Facebook-Anwendungsschlüssel) oder ein von Ihnen hochgeladenes Zertifikat sein. Wenn ein Keyset mehrere Schlüssel enthält, ist immer nur einer der Schlüssel aktiv.
 
 ### <a name="trust-framework-policy-keyset"></a>Vertrauensframeworkrichtlinie – Keyset
 

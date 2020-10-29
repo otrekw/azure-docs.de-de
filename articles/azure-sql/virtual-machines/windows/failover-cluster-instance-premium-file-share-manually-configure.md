@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298710"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164396"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,13 +37,13 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 - Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
 - [Mindestens zwei vorbereitete virtuelle Azure-Computer mit Windows](failover-cluster-instance-prepare-vm.md) in einer [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) oder unterschiedlichen [Verfügbarkeitszonen](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
 - Eine [Premium-Dateifreigabe ](../../../storage/files/storage-how-to-create-premium-fileshare.md) basierend auf dem Speicherkontingent Ihrer Datenbank für Ihre Datendateien, die als Clusterlaufwerk verwendet werden kann.
-- Die neueste Version von [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- Die neueste Version von [PowerShell](/powershell/azure/install-az-ps). 
 
 ## <a name="mount-premium-file-share"></a>Einbinden der Premium-Dateifreigabe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wechseln Sie dann zu Ihrem Speicherkonto.
-1. Navigieren Sie unter **Dateidienst** zu **Dateifreigaben**, und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
-1. Klicken Sie auf **Verbinden**, um die Verbindungszeichenfolge für Ihre Dateifreigabe anzuzeigen.
+1. Navigieren Sie unter **Dateidienst** zu **Dateifreigaben** , und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
+1. Klicken Sie auf **Verbinden** , um die Verbindungszeichenfolge für Ihre Dateifreigabe anzuzeigen.
 1. Wählen Sie in der Dropdownliste den gewünschten Laufwerkbuchstaben aus, und kopieren Sie dann beide Codeblöcke in Editor.
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
@@ -94,7 +94,7 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
 1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze**, wie hier gezeigt:
+1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze** , wie hier gezeigt:
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe"
    ```
@@ -168,7 +168,7 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 1. Nachdem das Setup die FCI auf dem ersten Knoten installiert hat, können Sie per RDP eine Verbindung mit dem zweiten Knoten herstellen.
 
-1. Öffnen Sie das **SQL Server-Installationscenter**, und wählen Sie **Installation** aus.
+1. Öffnen Sie das **SQL Server-Installationscenter** , und wählen Sie **Installation** aus.
 
 1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
@@ -194,7 +194,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 und Windows Server 2016 (oder höher) stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
+Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden. 
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -204,7 +204,8 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
+
 
 Wenn Premium-Dateifreigaben nicht die richtige FCI-Speicherlösung für Sie sind, können Sie Ihre FCI mithilfe von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) erstellen. 
 

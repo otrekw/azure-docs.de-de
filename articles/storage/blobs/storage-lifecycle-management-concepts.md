@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822401"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309794"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -22,18 +22,21 @@ Datasets haben eindeutige Lebenszyklen. Früh im Lebenszyklus greifen Benutzer h
 
 Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Aufgaben ausführen:
 
-- Überführen von Blobs in eine kältere Speicherebene (heiß in kalt, heiß in Archiv oder kalt in Archiv) zur Optimierung von Leistung und Kosten
-- Löschen von Blobs am Ende ihres Lebenszyklus
+- Sofortige Übertragung von kalten zu heißen Blobs, wenn zur Leistungsoptimierung darauf zugegriffen wird 
+- Übertragung von Blobs, Blobversionen und Blobmomentaufnahmen aus Kostengründen auf eine kältere Speicherebene (heiß zu kalt, heiß zu Archiv oder kalt zu Archiv), wenn für einen bestimmten Zeitraum nicht darauf zugegriffen wurde bzw. sie nicht geändert wurden
+- Löschen von Blobs, Blobversionen und Blobmomentaufnahmen am Ende ihrer Lebenszyklen
 - Definieren von Regeln, die ein Mal täglich auf Speicherkontoebene ausgeführt werden
 - Anwenden von Regeln auf Container oder eine Teilmenge von Blobs (mit Namenspräfixen oder [Blobindextags](storage-manage-find-blobs.md) als Filter)
 
 Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklus häufig auf Daten zugegriffen wird, nach zwei Wochen aber nur noch gelegentlich. Nach dem ersten Monat wird auf das Dataset nur noch selten zugegriffen. In diesem Szenario empfiehlt sich in den frühen Phasen heißer Speicher. Die kalte Speicherebene eignet sich am besten für den gelegentlichen Zugriff. Die Archivspeicherebene ist die beste Option, wenn die Daten mehr als einen Monat alt sind. Durch Anpassen der Speicherebenen im Hinblick auf das Alter der Daten können Sie die kostengünstigsten Speicheroptionen für Ihre Anforderungen entwerfen. Für diesen Übergang stehen Richtlinienregeln für die Lebenszyklusverwaltung zur Verfügung, um alternde Daten in kühlere Ebenen zu verschieben.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+>[!NOTE]
+>Wenn Daten lesbar bleiben müssen, z. B. wenn sie von StorSimple verwendet werden, legen Sie keine Richtlinie fest, um Blobs in die Archivebene zu verschieben.
 
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
-Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (General Purpose v2), Blob Storage-Konten und Premium-Blockblob-Speicherkonten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (Universell v2), Blob-Speicherkonten, Premium-Blockblob-Speicherkonten und Azure Data Lake Storage Gen2-Konten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -70,7 +73,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Wählen Sie die Registerkarte **Listenansicht** aus.
 
-1. Wählen Sie **Regel hinzufügen** aus, und geben Sie Ihrer Regel im Formular **Details** einen Namen. Darüber hinaus können Sie Werte für **Regelbereich**, **Blobtyp** und **Blobuntertyp** festlegen. Im folgenden Beispiel wird der Bereich zum Filtern von Blobs festgelegt. Daraufhin wird die Registerkarte **Filtersatz** angezeigt.
+1. Wählen Sie **Regel hinzufügen** aus, und geben Sie Ihrer Regel im Formular **Details** einen Namen. Darüber hinaus können Sie Werte für **Regelbereich** , **Blobtyp** und **Blobuntertyp** festlegen. Im folgenden Beispiel wird der Bereich zum Filtern von Blobs festgelegt. Daraufhin wird die Registerkarte **Filtersatz** angezeigt.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
 
@@ -263,29 +266,41 @@ Mit der folgenden Beispielregel wird das Konto so gefiltert, dass Aktionen für 
 - Blob 30 Tage nach der letzten Änderung in die kalte Ebene verschieben
 - Blob 90 Tage nach der letzten Änderung in die Archivebene verschieben
 - Blob 2.555 Tage (sieben Jahre) nach der letzten Änderung löschen
-- Blob-Momentaufnahmen 90 Tage nach der Erstellung der Momentaufnahmen löschen
+- Löschen früherer Blobversionen 90 Tage nach der Erstellung
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -306,30 +321,30 @@ Filter umfassen Folgendes:
 | blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein |
 
 > [!NOTE]
-> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
+> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte** , **Kanada, Osten** , **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Regelaktionen
 
 Aktionen werden auf die gefilterten Blobs angewandt, wenn die Ausführungsbedingung erfüllt ist.
 
-Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen von Blobs sowie von Blobmomentaufnahmen unterstützt. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
+Die Lebenszyklusverwaltung unterstützt Ebenenverschiebung und Löschen von Blobs, früheren Blobversionen und Blobmomentaufnahmen. Definieren Sie mindestens eine Aktion für jede Regel für Basisblobs, früheren Blobversionen oder Blobmomentaufnahmen.
 
-| Aktion                      | Basisblob                                   | Momentaufnahme      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | Unterstützt Blobs, die sich aktuell in der heißen Ebene befinden.         | Nicht unterstützt |
-| enableAutoTierToHotFromCool | Unterstützt Blobs, die sich aktuell in der kalten Ebene befinden.        | Nicht unterstützt |
-| tierToArchive               | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
-| delete                      | Für `blockBlob` und `appendBlob` unterstützt  | Unterstützt     |
+| Aktion                      | Basisblob                                  | Momentaufnahme      | Version
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | Unterstützt für `blockBlob`                  | Unterstützt     | Unterstützt     |
+| enableAutoTierToHotFromCool | Unterstützt für `blockBlob`                  | Nicht unterstützt | Nicht unterstützt |
+| tierToArchive               | Unterstützt für `blockBlob`                  | Unterstützt     | Unterstützt     |
+| delete                      | Für `blockBlob` und `appendBlob` unterstützt | Unterstützt     | Unterstützt     |
 
 >[!NOTE]
 >Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
 
-Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
+Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, Blobversionen den Erstellungszeitpunkt und Blobmomentaufnahmen den Erstellungszeitpunkt der Momentaufnahme, um das Alter nachzuverfolgen.
 
 | Aktionsausführungsbedingung               | Wert der Bedingung                          | BESCHREIBUNG                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Basisblobaktionen                                              |
-| daysAfterCreationGreaterThan       | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobmomentaufnahmen                                          |
+| daysAfterCreationGreaterThan       | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobversionen und Blobmomentaufnahmen                         |
 | daysAfterLastAccessTimeGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | (Vorschau) Die Bedingung für Basisblobaktionen, wenn die Uhrzeit für den letzten Zugriff aktiviert ist |
 
 ## <a name="examples"></a>Beispiele
@@ -522,26 +537,35 @@ Einige Daten sollten nur ablaufen, wenn sie explizit zur Löschung gekennzeichne
 }
 ```
 
-### <a name="delete-old-snapshots"></a>Löschen von alten Momentaufnahmen
+### <a name="manage-versions"></a>Verwalten von Versionen
 
-Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer regelmäßig zugegriffen wird, werden Momentaufnahmen häufig verwendet, um ältere Versionen der Daten nachzuverfolgen. Sie können eine Richtlinie erstellen, die alte Momentaufnahmen auf der Grundlage des Alters der Momentaufnahme löscht. Das Alter der Momentaufnahme wird durch Auswertung der Erstellungszeit der Momentaufnahme bestimmt. Diese Richtlinie löscht Blockblob-Momentaufnahmen in Container `activedata`, die mindestens 90 Tage alt sind (ab dem Zeitpunkt der Erstellung der Momentaufnahme).
+Für Daten, die während ihrer gesamten Lebensdauer regelmäßig geändert werden und auf die regelmäßig zugegriffen wird, können Sie die Blobspeicher-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu pflegen. Sie können eine Richtlinie erstellen, um frühere Versionen Ebenen zuzuordnen oder zu löschen. Das Alter der Version wird durch Auswertung der Erstellungszeit der Version bestimmt. Entsprechend dieser Richtlinienregel werden frühere Versionen innerhalb des Containers `activedata`, die 90 Tage oder älter sind (nach der Versionserstellung), der Ebene „kalt“ zugeordnet und frühere Versionen, die 365 Tage oder älter sind, gelöscht.
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }

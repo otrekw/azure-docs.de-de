@@ -9,17 +9,17 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873097"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217064"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
 > [!IMPORTANT]
-> Private Endpoint ist für Windows- und Linux-Web-Apps ggf. in Containern verfügbar und wird unter den folgenden App Service-Plänen gehostet: **Isolated**, **PremiumV2**, **PremiumV3**, **Functions Premium** (gelegentlich als elastischer Premium-Plan bezeichnet). 
+> Private Endpoint ist für Windows- und Linux-Web-Apps ggf. in Containern verfügbar und wird unter den folgenden App Service-Plänen gehostet: **Isolated** , **PremiumV2** , **PremiumV3** , **Functions Premium** (gelegentlich als elastischer Premium-Plan bezeichnet). 
 
 Sie können private Endpunkte für Ihre Azure-Web-App verwenden, um Clients in Ihrem privaten Netzwerk den sicheren Zugriff auf die App über Private Link zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihres virtuellen Azure-Netzwerks. Der Netzwerkdatenverkehr zwischen einem Client in Ihrem privaten Netzwerk und der Web-App wird über das virtuelle Netzwerk und Private Link im Microsoft-Backbonenetzwerk geleitet, sodass keine Verfügbarmachung im öffentlichen Internet erfolgt.
 
@@ -86,12 +86,12 @@ Der Name wird beispielsweise wie folgt aufgelöst:
 |cloudservicename.cloudapp.net|Ein|40.122.110.154|<– Diese öffentliche IP-Adresse ist nicht der private Endpunkt, führt zu einem Fehler 403|
 
 Sie müssen einen privaten DNS-Server oder eine private Azure DNS-Zone einrichten. Für Tests können Sie den Hosteintrag des Testcomputers ändern.
-Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net**. Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
+Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net** . Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
 |Name |type |Wert |Anmerkung |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure erstellt diesen Eintrag im öffentlichen Azure-DNS, um die App auf die private Verbindung zu verweisen. Dies wird von uns verwaltet.|
 |mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
 
 Nachdem Sie diese DNS-Konfiguration vorgenommen haben, können Sie Ihre Web-App privat unter dem Standardnamen mywebappname.azurewebsites.net erreichen. Dieser Name muss verwendet werden, da das Standardzertifikat für „*.azurewebsites.net“ ausgestellt wird.

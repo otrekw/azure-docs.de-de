@@ -3,12 +3,12 @@ title: Übersicht über Sicherheitsfeatures
 description: Erfahren Sie mehr über die Sicherheitsfunktionen in Azure Backup, die Ihnen helfen, Ihre Sicherungsdaten zu schützen und die Sicherheitsanforderungen Ihres Unternehmens zu erfüllen.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012550"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093343"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Übersicht über Sicherheitsfeatures in Azure Backup
 
@@ -16,7 +16,7 @@ Einer der wichtigsten Schritte zum Schutz Ihrer Daten besteht darin, eine zuverl
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Verwalten und Steuern von Identitäten und Benutzerzugriff
 
-Von Recovery Services-Tresoren verwendete Speicherkonten sind isoliert, sodass böswillige Akteure keinen Zugriff darauf erhalten. Der Zugriff ist nur über Azure Backup-Verwaltungsvorgänge, z. B. eine Wiederherstellung, zulässig. Mit Azure Backup können Sie die verwalteten Vorgänge über eine präzise Zugriffsverwaltung mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](./backup-rbac-rs-vault.md) steuern. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+Von Recovery Services-Tresoren verwendete Speicherkonten sind isoliert, sodass böswillige Akteure keinen Zugriff darauf erhalten. Der Zugriff ist nur über Azure Backup-Verwaltungsvorgänge, z. B. eine Wiederherstellung, zulässig. Mit Azure Backup können Sie die verwalteten Vorgänge über eine präzise Zugriffsverwaltung mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](./backup-rbac-rs-vault.md) steuern. Mithilfe von Azure RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
 Azure Backup bietet drei [integrierte Rollen](../role-based-access-control/built-in-roles.md), um Vorgänge der Sicherungsverwaltung zu steuern:
 
@@ -24,7 +24,7 @@ Azure Backup bietet drei [integrierte Rollen](../role-based-access-control/built
 * Sicherungsoperator: alle Berechtigungen eines Mitwirkenden, außer Entfernen von Sicherungen und Verwalten von Sicherungsrichtlinien
 * Sicherungsleser: Berechtigungen zum Anzeigen aller Vorgänge für die Sicherungsverwaltung
 
-Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup](./backup-rbac-rs-vault.md).
+Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung in Azure zum Verwalten von Azure Backup-Wiederherstellungspunkten](./backup-rbac-rs-vault.md).
 
 Azure Backup verfügt über mehrere integrierte Sicherheitskontrollen, um Sicherheitsrisiken zu verhindern, zu erkennen und darauf zu reagieren. Erfahren Sie mehr über [Sicherheitskontrollen für Azure Backup](./backup-security-controls.md).
 

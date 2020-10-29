@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708984"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488043"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver)
 
@@ -88,7 +88,7 @@ Legen Sie zum schnellen Einstieg `pgaudit.log` auf `WRITE` fest, und öffnen Sie
 ## <a name="viewing-audit-logs"></a>Anzeigen von Überwachungsprotokollen
 Wenn Sie LOG-Dateien verwenden, sind Ihre Überwachungsprotokolle in derselben Datei enthalten wie Ihre PostgreSQL-Fehlerprotokolle. Sie können Protokolldateien aus dem Azure-[Portal](howto-configure-server-logs-in-portal.md) oder der [CLI](howto-configure-server-logs-using-cli.md) herunterladen. 
 
-Wenn Sie Azure-Ressourcenprotokollierung verwenden, hängt die Art und Weise, wie Sie auf die Protokolle zugreifen, vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Wenn Sie Azure-Ressourcenprotokollierung verwenden, hängt die Art und Weise, wie Sie auf die Protokolle zugreifen, vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
 

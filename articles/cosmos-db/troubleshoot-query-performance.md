@@ -4,27 +4,27 @@ description: Erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089988"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277177"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 
-In diesem Artikel werden Sie durch einen allgemeinen empfohlenen Ansatz für die Problembehandlung von Abfragen in Azure Cosmos DB geführt. Sie sollten die in diesem Artikel beschriebenen Schritte zwar nicht als umfassende Verteidigung gegen mögliche Abfrageprobleme ansehen, hier sind jedoch die gängigsten Leistungstipps zusammengefasst. Sie können diesen Artikel als Ausgangspunkt für das Troubleshooting von langsamen oder aufwendigen Abfragen in der Core (SQL)-API von Azure Cosmos DB verwenden. Sie können auch [Diagnoseprotokolle](cosmosdb-monitor-resource-logs.md) verwenden, um Abfragen zu identifizieren, die langsam sind oder beträchtliche Durchsatzmengen verbrauchen.
+In diesem Artikel werden Sie durch einen allgemeinen empfohlenen Ansatz für die Problembehandlung von Abfragen in Azure Cosmos DB geführt. Sie sollten die in diesem Artikel beschriebenen Schritte zwar nicht als umfassende Verteidigung gegen mögliche Abfrageprobleme ansehen, hier sind jedoch die gängigsten Leistungstipps zusammengefasst. Sie können diesen Artikel als Ausgangspunkt für das Troubleshooting von langsamen oder aufwendigen Abfragen in der Core (SQL)-API von Azure Cosmos DB verwenden. Sie können auch [Diagnoseprotokolle](cosmosdb-monitor-resource-logs.md) verwenden, um Abfragen zu identifizieren, die langsam sind oder beträchtliche Durchsatzmengen verbrauchen. Wenn Sie die Azure Cosmos DB-API für MongoDB verwenden, wird das [Handbuch zur Problembehandlung bei Abfragen mit der Azure Cosmos DB-API für MongoDB](mongodb-troubleshoot-query.md) empfohlen.
 
-Sie können Abfrageoptimierungen in Azure Cosmos DB umfassend kategorisieren:
+Abfrageoptimierungen in Azure Cosmos DB lassen sich grob in folgende Kategorien unterteilen:
 
 - Optimierungen, die die Anzahl der verbrauchten Anforderungseinheiten (Request Units, RUs) der Abfrage verringern
 - Optimierungen ausschließlich zum Verringern der Latenz
 
-Durch Reduzieren der Anzahl der verbrauchten RUs einer Abfrage können Sie mit ziemlicher Sicherheit auch die Latenz verringern.
+Durch Senken der RU-Gebühr einer Abfrage können Sie in der Regel auch die Wartezeit verringern.
 
 Dieser Artikel enthält Beispiele, die Sie mit dem [Dataset „Nutrition“](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) neu erstellen können.
 
@@ -50,7 +50,7 @@ Beim Optimieren einer Abfrage in Azure Cosmos DB ist der erste Schritt immer da
 
 Vergleichen Sie nach dem Abrufen der Abfragemetriken die **Anzahl der abgerufenen Dokumente** mit der **Anzahl der Ausgabedokumente** für Ihre Abfrage. Verwenden Sie diesen Vergleich zum Identifizieren der relevanten Abschnitte, auf die in diesem Artikel verwiesen werden soll.
 
-Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Bei der **Anzahl der Ausgabedokumente** handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente**, konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
+Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Bei der **Anzahl der Ausgabedokumente** handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente** , konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
 
 Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierungen für Ihr Szenario besser zu verstehen.
 
@@ -92,7 +92,7 @@ Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierunge
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Abfragen, bei denen die Anzahl der abgerufenen Dokumente die Anzahl der Ausgabedokumente überschreitet
 
- Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Die **Anzahl der Ausgabedokumente** ist die Anzahl von Dokumenten, die von der Abfrage zurückgegebenen wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente**, konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
+ Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Die **Anzahl der Ausgabedokumente** ist die Anzahl von Dokumenten, die von der Abfrage zurückgegebenen wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente** , konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
 
 Nachstehend finden Sie ein Beispiel für eine Überprüfungsabfrage, die nicht vollständig vom Index bedient wurde:
 
@@ -191,7 +191,7 @@ Aktualisierte Indizierungsrichtlinie:
 
 **Verbrauchte RUs:** 2,98 RUs
 
-Sie können der Indizierungsrichtlinie jederzeit Eigenschaften hinzufügen, ohne dass sich dies auf die Schreibverfügbarkeit oder die Leistung auswirkt. Wenn Sie dem Index eine neue Eigenschaft hinzufügen, nutzen Abfragen, die diese Eigenschaft verwenden, den neuen verfügbaren Index sofort. Die Abfrage verwendet den neuen Index, während er erstellt wird. Daher können die Abfrageergebnisse während der Indexneuerstellung inkonsistent sein. Wenn eine neue Eigenschaft indiziert wird, sind Abfragen, die nur vorhandene Indizes verwenden, während der Indexneuerstellung nicht betroffen. Sie können den [Fortschritt der Indextransformation nachverfolgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Sie können der Indizierungsrichtlinie jederzeit Eigenschaften hinzufügen, ohne dass sich dies auf die Schreib- oder Leseverfügbarkeit auswirkt. Sie können den [Fortschritt der Indextransformation nachverfolgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Ermitteln der Systemfunktionen, die den Index verwenden
 
@@ -469,7 +469,7 @@ Hier ist der entsprechende zusammengesetzte Index:
 
 ## <a name="optimizations-that-reduce-query-latency"></a>Optimierungen zum Verringern der Abfragelatenz
 
-In vielen Fällen ist die Anzahl der verbrauchten RUs akzeptabel, aber die Abfragelatenz immer noch zu hoch. Die folgenden Abschnitte bieten eine Übersicht über Tipps zum Verringern der Abfragelatenz. Wenn Sie dieselbe Abfrage mehrmals für dasselbe Dataset ausführen, wird jedes Mal die gleiche Anzahl von RUs verbraucht. Die Abfragelatenz kann zwischen den einzelnen Abfrageausführungen variieren.
+In vielen Fällen ist die Anzahl der verbrauchten RUs akzeptabel, aber die Abfragelatenz immer noch zu hoch. Die folgenden Abschnitte bieten eine Übersicht über Tipps zum Verringern der Abfragelatenz. Wenn Sie dieselbe Abfrage mehrmals für dasselbe Dataset ausführen, wird in der Regel jedes Mal die gleiche Anzahl von RUs verbraucht. Die Abfragelatenz kann zwischen den einzelnen Abfrageausführungen variieren.
 
 ### <a name="improve-proximity"></a>Verbessern der Nähe
 

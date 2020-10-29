@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59781f9b86764d0982e1612f9671e8f0919ed490
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1de6aa5450a42bbc8fe35b220e810726f7dd2cda
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009507"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488434"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Erstellen von Containern mit großen Partitionsschlüsseln
 
@@ -22,7 +22,7 @@ Große Partitionsschlüssel werden durch eine Funktionalität einer verbesserten
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>Erstellen eines großen Partitionsschlüssels (Azure-Portal)
 
-Aktivieren Sie beim Erstellen eines neuen Containers über das Azure-Portal die Option **Mein Partitionsschlüssel ist größer als 100 Byte**, um einen großen Partitionsschlüssel zu erstellen. Deaktivieren Sie das Kontrollkästchen, wenn Sie keine großen Partitionsschlüssel benötigen oder wenn Sie Anwendungen verwenden, die mit SDK-Versionen vor 1.18 ausgeführt werden.
+Aktivieren Sie beim Erstellen eines neuen Containers über das Azure-Portal die Option **Mein Partitionsschlüssel ist größer als 100 Byte** , um einen großen Partitionsschlüssel zu erstellen. Deaktivieren Sie das Kontrollkästchen, wenn Sie keine großen Partitionsschlüssel benötigen oder wenn Sie Anwendungen verwenden, die mit SDK-Versionen vor 1.18 ausgeführt werden.
 
 :::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="Erstellen von großen Partitionsschlüsseln über das Azure-Portal":::
 
@@ -83,4 +83,4 @@ Derzeit können Sie in Power BI und Azure Logic Apps keine Container mit großem
 * [Partitioning in Azure Cosmos DB](partitioning-overview.md) (Partitionierung in Azure Cosmos DB)
 * [Anforderungseinheiten in Azure Cosmos DB](request-units.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
-* [Arbeiten mit einem Azure Cosmos-Konto](account-overview.md)
+* [Arbeiten mit einem Azure Cosmos-Konto](./account-databases-containers-items.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076894"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107588"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).
@@ -79,7 +79,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – Wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.
 - [Dapr-Integrationsrichtlinien](api-management-dapr-policies.md)
     - [Send request to a service](api-management-dapr-policies.md#invoke) (Anforderung an einen Dienst senden): Nutzt eine Dapr-Runtime für die Ermittlung eines Dapr-Microservice und die zuverlässige Kommunikation mit diesem Microservice.
-    -  [Send message to Pub/Sub topic](api-management-dapr-policies.md#pubsub) (Nachricht an Veröffentlichen/Abonnieren-Thema senden): Nutzt eine Dapr-Runtime zum Veröffentlichen einer Nachricht in einem Veröffentlichen/Abonnieren-Thema. Weitere Informationen zum Veröffentlichen/Abonnieren-Messaging in Dapr finden Sie hier: publish-subscribe-messaging/README.md.
+    -  [Send message to Pub/Sub topic](api-management-dapr-policies.md#pubsub) (Nachricht an Veröffentlichen/Abonnieren-Thema senden): Nutzt eine Dapr-Runtime zum Veröffentlichen einer Nachricht in einem Veröffentlichen/Abonnieren-Thema.
     -  [Trigger output binding](api-management-dapr-policies.md#bind) (Ausgabebindung auslösen): Nutzt eine Dapr-Runtime zum Aufrufen eines externen Systems über eine Ausgabebindung.
 
 ## <a name="next-steps"></a>Nächste Schritte

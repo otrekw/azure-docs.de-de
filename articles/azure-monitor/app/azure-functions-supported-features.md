@@ -6,16 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87033512"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168578"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Unterstützte Features in Application Insights für Azure Functions
 
-Azure Functions bietet [von Haus aus Integration](../../azure-functions/functions-monitoring.md) in Application Insights, die über die ILogger-Schnittstelle verfügbar ist. Unten folgt die Liste der aktuell unterstützten Features. Arbeiten Sie zum [Einstieg](../../azure-functions/functions-monitoring.md#enable-application-insights-integration) das Azure Functions-Handbuch durch.
+Azure Functions bietet [von Haus aus Integration](../../azure-functions/functions-monitoring.md) in Application Insights, die über die ILogger-Schnittstelle verfügbar ist. Unten folgt die Liste der aktuell unterstützten Features. Arbeiten Sie zum [Einstieg](../../azure-functions/configure-monitoring.md#enable-application-insights-integration) das Azure Functions-Handbuch durch.
 
 Weitere Informationen zu den Functions-Runtimeversionen finden Sie [hier](../../azure-functions/functions-versions.md).
 
@@ -47,7 +47,7 @@ Weitere Informationen zu kompatiblen Versionen von Application Insights finden S
 | &bull; EventHub                       |                   | Ja               | 
 | | | | 
 | **Konfigurierbar**                      |                   |                   |           
-| &bull;Vollständig konfigurierbar.<br/>Anweisungen finden Sie unter [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852).<br/>Alle Optionen finden Sie unter [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).               |                   | Ja                   | 
+| &bull;Vollständig konfigurierbar.<br/>Anweisungen finden Sie unter [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852).<br/>Alle Optionen finden Sie unter [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).               |                   | Ja                   | 
 
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
@@ -61,7 +61,7 @@ Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Live
 
 ## <a name="sampling"></a>Stichproben
 
-Azure Functions aktiviert die Stichprobenentnahme in der Konfiguration standardmäßig. Weitere Informationen finden Sie unter [Configure Sampling](../../azure-functions/functions-monitoring.md#configure-sampling) (Konfigurieren der Stichprobenentnahme).
+Azure Functions aktiviert die Stichprobenentnahme in der Konfiguration standardmäßig. Weitere Informationen finden Sie unter [Configure Sampling](../../azure-functions/configure-monitoring.md#configure-sampling) (Konfigurieren der Stichprobenentnahme).
 
 Wenn Ihr Projekt zur manuellen Nachverfolgung der Telemetrie vom Application Insights SDK abhängig ist, kann ein unerwartetes Verhalten auftreten, wenn Ihre Konfiguration der Stichprobenentnahme von der Konfiguration in Functions abweicht. 
 

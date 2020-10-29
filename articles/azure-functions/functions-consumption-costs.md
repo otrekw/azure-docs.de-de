@@ -3,12 +3,12 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207774"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168109"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
@@ -18,7 +18,7 @@ Zurzeit gibt es drei Typen von Hostingtarifen für eine App, die in Azure Functi
 | ---- | ----------- |
 | [**Verbrauch**](functions-scale.md#consumption-plan) | Ihnen wird nur die Zeit in Rechnung gestellt, die Ihre Funktions-App auch ausgeführt wird. Dieser Tarif umfasst pro Abonnement eine [free grant][seite mit der preisübersicht] (kostenlose Zuweisung).|
 | [**Premium**](functions-scale.md#premium-plan) | Bietet Ihnen dieselben Features und Skalierungsverfahren wie der Verbrauchstarif, aber mit mehr Leistung und VNET-Zugriff. Die Kosten basieren auf dem von Ihnen gewählten Tarif. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions](functions-premium-plan.md). |
-| [**Dediziert (App Service)** ](functions-scale.md#app-service-plan) <br/>(Tarif „Basic“ oder höher) | Wenn Sie in dedizierten VMs oder in Isolierung ausführen müssen, benutzerdefinierte Images verwenden oder die Überkapazität Ihres App Service-Plans nutzen möchten. Verwendet [normale App Service-Planabrechnung](https://azure.microsoft.com/pricing/details/app-service/). Die Kosten basieren auf dem von Ihnen gewählten Tarif.|
+| [**Dediziert (App Service)**](functions-scale.md#app-service-plan) <br/>(Tarif „Basic“ oder höher) | Wenn Sie in dedizierten VMs oder in Isolierung ausführen müssen, benutzerdefinierte Images verwenden oder die Überkapazität Ihres App Service-Plans nutzen möchten. Verwendet [normale App Service-Planabrechnung](https://azure.microsoft.com/pricing/details/app-service/). Die Kosten basieren auf dem von Ihnen gewählten Tarif.|
 
 Sie haben den Plan ausgewählt, der die Leistung Ihrer Funktion sowie Ihre Kostenanforderungen am besten unterstützt. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 
@@ -28,7 +28,7 @@ Durable Functions können auch in einem Verbrauchstarif ausgeführt werden. Weit
 
 ## <a name="consumption-plan-costs"></a>Kosten des Verbrauchstarifs
 
-Die Ausführungs*kosten* einer einzelnen Funktionsausführung werden in *GB-Sekunden* gemessen. Die Ausführungskosten werden berechnet, indem die Speichernutzung mit der Ausführungsdauer kombiniert wird. Eine Funktion, die länger ausgeführt wird, kostet mehr, ebenso wie eine Funktion, die mehr Arbeitsspeicher verbraucht. 
+Die Ausführungs *kosten* einer einzelnen Funktionsausführung werden in *GB-Sekunden* gemessen. Die Ausführungskosten werden berechnet, indem die Speichernutzung mit der Ausführungsdauer kombiniert wird. Eine Funktion, die länger ausgeführt wird, kostet mehr, ebenso wie eine Funktion, die mehr Arbeitsspeicher verbraucht. 
 
 Stellen Sie sich einen Fall vor, bei dem die von der Funktion verwendete Arbeitsspeichermenge konstant bleibt. In diesem Fall erfolgt die Berechnung der Kosten durch einfache Multiplikation. Nehmen wir beispielsweise an, dass ihre Funktion 0,5 GB für 3 Sekunden verbraucht hat. Dann betragen die Ausführungskosten `0.5GB * 3s = 1.5 GB-seconds`. 
 
@@ -50,24 +50,26 @@ Wenn Sie die Gesamtkosten für ihre Funktions-App und der zugehörige Dienste ab
 | Verwandte Kosten | BESCHREIBUNG |
 | ------------ | ----------- |
 | **Speicherkonto** | Für jede Funktions-App ist es erforderlich, dass Sie über ein zugeordnetes universelles [Azure Storage-Konto](../storage/common/storage-introduction.md#types-of-storage-accounts) verfügen, das [gesondert abgerechnet](https://azure.microsoft.com/pricing/details/storage/) wird. Dieses Konto wird von der Functions-Laufzeit intern verwendet, aber Sie können es auch für Storage-Trigger und -Bindungen verwenden. Wenn Sie kein Speicherkonto besitzen, wird mit der Erstellung der Funktions-App eins für Sie erstellt. Weitere Informationen finden Sie unter [Speicherkontoanforderungen](storage-considerations.md#storage-account-requirements).|
-| **Application Insights** | Functions basiert auf [Application Insights](../azure-monitor/app/app-insights-overview.md), um eine Hochleistungsüberwachungs-Erfahrung für Ihre Funktions-Apps bereitzustellen. Wenn dies auch nicht erforderlich ist, sollten Sie doch die [Application Insights-Integration aktivieren](functions-monitoring.md#enable-application-insights-integration). Monatlich ist eine kostenlose Zuweisung von Telemetriedaten enthalten. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). |
+| **Application Insights** | Functions basiert auf [Application Insights](../azure-monitor/app/app-insights-overview.md), um eine Hochleistungsüberwachungs-Erfahrung für Ihre Funktions-Apps bereitzustellen. Wenn dies auch nicht erforderlich ist, sollten Sie doch die [Application Insights-Integration aktivieren](configure-monitoring.md#enable-application-insights-integration). Monatlich ist eine kostenlose Zuweisung von Telemetriedaten enthalten. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). |
 | **Netzwerkbandbreite** | Sie bezahlen nicht für Datenübertragungen zwischen Azure-Diensten innerhalb derselben Region. Allerdings können Sie Kosten für ausgehende Datenübertragungen in eine andere Region oder außerhalb von Azure verursachen. Weitere Informationen finden Sie in den [Bandbreitenpreisdetails](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
 ## <a name="behaviors-affecting-execution-time"></a>Verhalten, die die Ausführungszeit beeinflussen
 
 Die folgenden Verhalten Ihrer Funktionen können sich auf die Ausführungszeit auswirken:
 
-+ **Trigger und Bindungen**: Die Zeit, die das Lesen von Eingaben aus Ihren und das Schreiben der Ausgaben in Ihre [Funktionsbindungen](functions-triggers-bindings.md) benötigt, wird als Ausführungszeit gezählt. Wenn Ihre Funktion beispielsweise eine Ausgabenbindung verwendet, um eine Nachricht in eine Azure Storage-Warteschlange zu schreiben, beinhaltet Ihre Ausführungszeit die Zeit, die zum Schreiben der Nachricht in die Warteschlange benötigt wird, was in die Berechnung der Funktionskosten einfließt. 
++ **Trigger und Bindungen** : Die Zeit, die das Lesen von Eingaben aus Ihren und das Schreiben der Ausgaben in Ihre [Funktionsbindungen](functions-triggers-bindings.md) benötigt, wird als Ausführungszeit gezählt. Wenn Ihre Funktion beispielsweise eine Ausgabenbindung verwendet, um eine Nachricht in eine Azure Storage-Warteschlange zu schreiben, beinhaltet Ihre Ausführungszeit die Zeit, die zum Schreiben der Nachricht in die Warteschlange benötigt wird, was in die Berechnung der Funktionskosten einfließt. 
 
-+ **Asynchrone Ausführung**: Die Zeit, die Ihre Funktion auf die Ergebnisse einer asynchronen Anforderung wartet (`await` in C#), wird als Ausführungszeit gezählt. Die GB-Sekunden-Berechnung basiert auf der Start- und Endzeit der Funktion und der Arbeitsspeichernutzung in diesem Zeitraum. Was im Verlauf dieses Zeitraums hinsichtlich der CPU-Aktivität geschieht, wird nicht in die Berechnung einbezogen. Sie können die Kosten möglicherweise während asynchroner Vorgänge verringern, indem Sie [Durable Functions](durable/durable-functions-overview.md) verwenden. In awaits verbrachte Zeit wird Ihnen für Orchestratorfunktionen nicht berechnet.
++ **Asynchrone Ausführung** : Die Zeit, die Ihre Funktion auf die Ergebnisse einer asynchronen Anforderung wartet (`await` in C#), wird als Ausführungszeit gezählt. Die GB-Sekunden-Berechnung basiert auf der Start- und Endzeit der Funktion und der Arbeitsspeichernutzung in diesem Zeitraum. Was im Verlauf dieses Zeitraums hinsichtlich der CPU-Aktivität geschieht, wird nicht in die Berechnung einbezogen. Sie können die Kosten möglicherweise während asynchroner Vorgänge verringern, indem Sie [Durable Functions](durable/durable-functions-overview.md) verwenden. In awaits verbrachte Zeit wird Ihnen für Orchestratorfunktionen nicht berechnet.
 
-## <a name="view-execution-data"></a>Ausführungsdaten anzeigen
+## <a name="viewing-cost-related-data"></a>Anzeigen von kostenbezogenen Daten
 
 In [Ihrer Rechnung](../cost-management-billing/understand/download-azure-invoice.md) können Sie die kostenbezogenen Daten **Total Executions – Functions** (Ausführungen gesamt) und **Execution Time – Functions** (Ausführungszeit) zusammen mit den tatsächlich abgerechneten Kosten sehen. Diese Rechnungsdaten stellen jedoch eine monatliche Aggregation für einen vergangenen Abrechnungszeitraum dar. 
 
+### <a name="function-app-level-metrics"></a>Metriken auf Ebene der Funktions-App
+
 Um die Kostenauswirkungen Ihrer Funktionen besser zu verstehen, können Sie Azure Monitor verwenden, um kostenbezogene Metriken anzuzeigen, die von Ihren Funktions-Apps generiert werden. Sie können entweder den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md) im [Azure portal] oder REST-APIs verwenden, um diese Daten zu erhalten.
 
-### <a name="monitor-metrics-explorer"></a>Monitor-Metrik-Explorer
+#### <a name="monitor-metrics-explorer"></a>Monitor-Metrik-Explorer
 
 Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md), um kostenbezogene Daten für Ihre Funktions-Apps im Verbrauchstarif in einem grafischen Format anzuzeigen. 
 
@@ -101,7 +103,7 @@ Da die Anzahl der Ausführungseinheiten so viel höher ist, als die Ausführunge
 
 Dieses Diagramm zeigt eine Gesamtzahl von 1,11 Mrd. `Function Execution Units`, die in einem Zeitraum von zwei Stunden verbraucht wurden, gemessen in MB-Millisekunden. Um den Wert in GB-Sekunden umzuwandeln, teilen Sie durch 1.024.000. In diesem Beispiel hat die Funktions-App `1110000000 / 1024000 = 1083.98` GB-Sekunden verbraucht. Sie können diesen Wert mit dem aktuellen Preis der Ausführungszeit auf der Seite mit den [Functions-Preisen][Seite mit der Preisübersicht] multiplizieren, wodurch Sie die Kosten für diese zwei Stunden erhalten, vorausgesetzt, Sie haben bereits alle kostenlosen Zuweisungen von Ausführungszeit verbraucht. 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Die [Azure CLI](/cli/azure/) enthält Befehle zum Abrufen von Metriken. Sie können die CLI aus einer lokalen Befehlsumgebung heraus oder direkt über das Portal mithilfe von [Azure Cloud Shell](../cloud-shell/overview.md) verwenden. Beispielsweise gibt der folgende [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list)-Befehl stündlich Daten aus demselben zuvor verwendeten Zeitraum zurück.
 
@@ -192,47 +194,13 @@ Dieser Befehl gibt eine JSON-Nutzlast zurück, die in etwa wie folgt aussieht:
 ```
 Diese spezifische Antwort zeigt, dass die App von `2019-09-11T21:46` bis `2019-09-11T23:18` 1.110.000.000 MB-Millisekunden (1.083,98 GB-Sekunden) verbraucht hat.
 
-## <a name="determine-memory-usage"></a>Arbeitsspeichernutzung ermitteln
+### <a name="function-level-metrics"></a>Metriken auf Funktionsebene
 
 Funktionsausführungseinheiten sind eine Kombination aus Ausführungszeit und Ihrer Speichernutzung, was diese zu einer schwierigen Metrik macht, um die Speichernutzung zu verstehen. Arbeitsspeicherdaten sind keine aktuell in Azure Monitor verfügbare Metrik. Wenn Sie jedoch die Speichernutzung Ihrer App optimieren möchten, können Sie die von Application Insights erfassten Daten der Leistungsindikatoren verwenden.  
 
-Falls noch nicht geschehen, [aktivieren Sie Application Insights in Ihrer Funktions-App](functions-monitoring.md#enable-application-insights-integration). Mit dieser aktivierten Integration können Sie [diese Telemetriedaten im Portal abfragen](functions-monitoring.md#query-telemetry-data).  
+Falls noch nicht geschehen, [aktivieren Sie Application Insights in Ihrer Funktions-App](configure-monitoring.md#enable-application-insights-integration). Mit dieser aktivierten Integration können Sie [diese Telemetriedaten im Portal abfragen](analyze-telemetry-data.md#query-telemetry-data). 
 
-Wählen Sie unter **Überwachung** den Eintrag **Protokolle (Analytics)** aus, kopieren Sie dann die folgende Telemetrieabfrage, fügen Sie sie in das Abfragefenster ein, und wählen Sie **Ausführen** aus. Diese Abfrage gibt die Gesamtarbeitsspeichernutzung zu jedem Stichprobenzeitpunkt zurück.
-
-```
-performanceCounters
-| where name == "Private Bytes"
-| project timestamp, name, value
-```
-
-Die Ergebnisse sehen ungefähr wie folgt aus:
-
-| Zeitstempel \[UTC\]          | name          | value       |
-|----------------------------|---------------|-------------|
-| 12.9.2019, 1:05:14\.947 AM | Private Bytes | 209.932.288 |
-| 12.9.2019, 1:06:14\.994 AM | Private Bytes | 212.189.184 |
-| 12.9.2019, 1:06:30\.010 AM | Private Bytes | 231.714.816 |
-| 12.9.2019, 1:07:15\.040 AM | Private Bytes | 210.591.744 |
-| 12.9.2019, 1:12:16\.285 AM | Private Bytes | 216.285.184 |
-| 12.9.2019, 1:12:31\.376 AM | Private Bytes | 235.806.720 |
-
-## <a name="function-level-metrics"></a>Metriken auf Funktionsebene
-
-Azure Monitor erfasst Metriken auf Ressourcenebene, wobei es sich für Functions um die Funktions-App handelt. Application Insights-Integration gibt Metriken pro Funktion aus. Im Folgenden finden Sie ein Beispiel für eine Analytics-Abfrage, mit der die durchschnittliche Dauer einer Funktion abgefragt wird:
-
-```
-customMetrics
-| where name contains "Duration"
-| extend averageDuration = valueSum / valueCount
-| summarize averageDurationMilliseconds=avg(averageDuration) by name
-```
-
-| name                       | averageDurationMilliseconds |
-|----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+[!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

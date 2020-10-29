@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e62a7d9b9beb8ecdfaabdd44fdd547dd78d38f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443806"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328189"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportieren in eine BACPAC-Datei – Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -46,17 +46,17 @@ Das Exportieren einer BACPAC-Datei einer Datenbank aus [Azure SQL Managed Instan
 > [!NOTE]
 > Computer, die über das Azure-Portal oder PowerShell übermittelte Import-/Exportanforderungen verarbeiten, müssen die BACPAC-Datei sowie die von Data-Tier Application Framework (DacFX) generierten temporären Dateien speichern. Der erforderliche Speicherplatz variiert bei Datenbanken mit derselben Größe enorm. Der erforderliche Speicherplatz kann bis zum Dreifachen der Größe der Datenbank betragen. Der lokale Speicherplatz von Computern, die die Import-/Exportanforderung ausführen, beträgt nur 450 GB. Daher kann bei einigen Anforderungen der Fehler `There is not enough space on the disk` auftreten. In diesem Fall besteht die Problemumgehung darin, „sqlpackage.exe“ auf einem Computer mit ausreichend Speicherplatz auszuführen. Es wird empfohlen, [SqlPackage](#sqlpackage-utility) zum Importieren oder Exportieren von Datenbanken zu verwenden, die größer als 150GB sind, um dieses Problem zu vermeiden.
 
-1. Um eine Datenbank über das [Azure-Portal](https://portal.azure.com) zu exportieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Exportieren**.
+1. Um eine Datenbank über das [Azure-Portal](https://portal.azure.com) zu exportieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Exportieren** .
 
-   ![Datenbankexport](./media/database-export/database-export1.png)
+   ![Screenshot mit hervorgehobener Schaltfläche „Exportieren“](./media/database-export/database-export1.png)
 
 2. Geben Sie den Namen der BACPAC-Datei an, und wählen Sie ein vorhandenes Azure-Speicherkonto und einen Container für den Export aus. Geben Sie anschließend die entsprechenden Anmeldeinformationen für den Zugriff auf die Quelldatenbank an. Eine SQL **Server-Administratoranmeldung** ist hier auch dann erforderlich, wenn Sie der Azure-Administrator sind, weil ein Azure-Administrator keine Administratorberechtigungen in Azure SQL-Datenbank oder Azure SQL Managed Instance hat.
 
     ![Datenbankexport](./media/database-export/database-export2.png)
 
-3. Klicken Sie auf **OK**.
+3. Klicken Sie auf **OK** .
 
-4. Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den Server mit der zu exportierenden Datenbank. Klicken Sie unter **Einstellungen** auf **Import-/Exportverlauf**.
+4. Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den Server mit der zu exportierenden Datenbank. Klicken Sie unter **Einstellungen** auf **Import-/Exportverlauf** .
 
    ![Exportverlauf](./media/database-export/export-history.png)
 

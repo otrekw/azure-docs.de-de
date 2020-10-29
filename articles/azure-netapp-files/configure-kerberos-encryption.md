@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461477"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217047"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung für Azure NetApp Files
 
@@ -53,7 +53,7 @@ Für die Verschlüsselung des NFSv4.1-Clients gelten die folgenden Anforderungen
 
     Sie können außerdem die Kerberos-Sicherheitsmethoden für das Volume ändern, indem Sie im Azure NetApp Files-Navigationsbereich auf „Exportrichtlinie“ klicken.
 
-3.  Klicken Sie zum Erstellen des NFSv4.1-Volumes auf **Überprüfen + erstellen**.
+3.  Klicken Sie zum Erstellen des NFSv4.1-Volumes auf **Überprüfen + erstellen** .
 
 ## <a name="configure-the-azure-portal"></a>Konfigurieren des Azure-Portals 
 
@@ -67,7 +67,7 @@ Für die Verschlüsselung des NFSv4.1-Clients gelten die folgenden Anforderungen
 
     ![Kerberos-Bereich](../media/azure-netapp-files/kerberos-realm.png)
  
-3.  Klicken Sie auf **Beitreten**, um die Konfiguration zu speichern.
+3.  Klicken Sie auf **Beitreten** , um die Konfiguration zu speichern.
 
 ## <a name="configure-active-directory-connection"></a>Konfigurieren der Active Directory-Verbindung 
 
@@ -75,7 +75,7 @@ Bei der Konfiguration von NFSv4.1-Kerberos werden zwei Computerkonten in Active 
 * Ein Computerkonto für SMB-Freigaben
 * Ein Computerkonto für NFSv4.1: Dieses Konto können Sie am Präfix `NFS-` erkennen. 
 
-Legen Sie nach dem Erstellen des ersten NFSv4.1-Kerberos-Volumes den Verschlüsselungstyp oder das Computerkonto durch Ausführen des folgenden PowerShell-Befehls fest:
+Legen Sie nach dem Erstellen des ersten NFSv4.1-Kerberos-Volumes den Verschlüsselungstyp für das Computerkonto durch Ausführen des folgenden PowerShell-Befehls fest:
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ Befolgen Sie die Anweisungen unter [Konfigurieren eines NFS-Clients für Azure N
 3. Erstellen Sie das Verzeichnis (Bereitstellungspunkt) für das neue Volume.  
 
 4. Legen Sie den Standardverschlüsselungstyp für das Computerkonto auf AES 256 fest:  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * Sie müssen diesen Befehl für jedes Computerkonto nur einmal ausführen.
     * Sie können diesen Befehl über einen Domänencontroller oder über einen PC ausführen, auf dem [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) installiert ist. 
-    * Die Variable `$COMPUTERACCOUNT` entspricht dem beim Bereitstellen des Kerberos-Volumes in Active Directory erstellten Computerkonto. Dabei handelt es sich um das Konto mit dem Präfix `NFS-`. 
+    * Die Variable `$NFSCOMPUTERACCOUNT` entspricht dem beim Bereitstellen des Kerberos-Volumes in Active Directory erstellten Computerkonto. Dabei handelt es sich um das Konto mit dem Präfix `NFS-`. 
     * Die Variable `$ANFSERVICEACCOUNT` entspricht einem Active Directory-Benutzerkonto ohne Berechtigungen mit delegierter Steuerung der Organisationseinheit, in der das Computerkonto erstellt wurde. 
 
 5. Binden Sie das Volume auf dem Host ein: 

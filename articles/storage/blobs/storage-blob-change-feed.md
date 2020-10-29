@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568233"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172902"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
-Zweck des Änderungsfeeds ist es, Transaktionsprotokolle für alle Änderungen bereitzustellen, die in den Blobs und Blobmetadaten in Ihrem Speicherkonto auftreten. Der Änderungsfeed bietet **sortierte**, **garantierte**, **permanente**, **unveränderliche** und **schreibgeschützte** Protokolle dieser Änderungen. Clientanwendungen können diese Protokolle jederzeit lesen, entweder im Streaming- oder im Batchmodus. Der Änderungsfeed ermöglicht es Ihnen, effiziente und skalierbare Lösungen zu erstellen, mit denen Änderungsereignisse, die in Ihrem Blob Storage-Konto auftreten, kostengünstig verarbeitet werden.
+Zweck des Änderungsfeeds ist es, Transaktionsprotokolle für alle Änderungen bereitzustellen, die in den Blobs und Blobmetadaten in Ihrem Speicherkonto auftreten. Der Änderungsfeed bietet **sortierte** , **garantierte** , **permanente** , **unveränderliche** und **schreibgeschützte** Protokolle dieser Änderungen. Clientanwendungen können diese Protokolle jederzeit lesen, entweder im Streaming- oder im Batchmodus. Der Änderungsfeed ermöglicht es Ihnen, effiziente und skalierbare Lösungen zu erstellen, mit denen Änderungsereignisse, die in Ihrem Blob Storage-Konto auftreten, kostengünstig verarbeitet werden.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -62,9 +62,9 @@ So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Port
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Datenschutz**.
+2. Navigieren Sie unter **Blob-Dienst** zur Option **Datenschutz** .
 
-3. Klicken Sie unter **Blobänderungsfeed** auf **Aktiviert**.
+3. Klicken Sie unter **Blobänderungsfeed** auf **Aktiviert** .
 
 4. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre **Datenschutzeinstellungen** zu bestätigen.
 
@@ -82,7 +82,7 @@ So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
 
 2. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
 
-3. Installieren Sie mindestens die Version 2.5.0 des Moduls **Az.Storage**.
+3. Installieren Sie mindestens die Version 2.5.0 des Moduls **Az.Storage** .
 
    ```powershell
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
@@ -103,9 +103,9 @@ So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
 ### <a name="template"></a>[Vorlage](#tab/template)
 So verwenden Sie eine Azure Resource Manager-Vorlage, um den Änderungsfeed für Ihr vorhandenes Speicherkonto über das Azure-Portal zu aktivieren:
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** .
 
-2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
+2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE** .
 
 3. Wählen Sie **[Benutzerdefinierte Vorlage bereitstellen](https://portal.azure.com/#create/Microsoft.Template)** und anschließend **Eigene Vorlage im Editor erstellen** aus.
 
@@ -130,7 +130,7 @@ So verwenden Sie eine Azure Resource Manager-Vorlage, um den Änderungsfeed für
    }
    ```
     
-5. Klicken Sie auf die Schaltfläche **Speichern**, geben Sie die Ressourcengruppe des Kontos an, und klicken Sie dann auf die Schaltfläche**Kaufen**, um die Vorlage bereitzustellen und den Änderungsfeed zu aktivieren.
+5. Klicken Sie auf die Schaltfläche **Speichern** , geben Sie die Ressourcengruppe des Kontos an, und klicken Sie dann auf die Schaltfläche **Kaufen** , um die Vorlage bereitzustellen und den Änderungsfeed zu aktivieren.
 
 ---
 
@@ -139,7 +139,7 @@ So verwenden Sie eine Azure Resource Manager-Vorlage, um den Änderungsfeed für
 Der Änderungsfeed erzeugt verschiedene Metadaten- und Protokolldateien. Diese Dateien befinden sich im Container **$blobchangefeed** des Speicherkontos. 
 
 > [!NOTE]
-> Im aktuellen Release ist der Container **$blobchangefeed** im Azure Storage-Explorer oder im Azure-Portal nicht sichtbar. Der Container „$blobchangefeed“ kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufzurufen, aber Sie können die ListBlobs-API direkt im Container aufrufen, um die Blobs anzuzeigen.
+> Im aktuellen Release ist der Container „$blobchangefeed“ nur im Azure-Portal, aber nicht im Azure Storage-Explorer sichtbar. Der Container „$blobchangefeed“ kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufrufen. Sie können aber die ListBlobs-API direkt im Container aufrufen, um die Blobs anzuzeigen.
 
 Ihre Clientanwendungen können den Änderungsfeed nutzen, indem sie die Prozessorbibliothek für den Änderungsfeed im Blob verwenden, die mit dem Change Feed Processor SDK bereitgestellt wird. 
 

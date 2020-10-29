@@ -4,22 +4,22 @@ description: Hier finden Sie Details zu allen Voraussetzungen für den Einstieg 
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
+ms.date: 10/07/2020
+ms.author: rkarlin
 ms.custom: references_regions
-ms.openlocfilehash: 19263f8db58c8d20288d3ae74c24efd85667bc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0913dc48f807c26396a38e31d293877b4561b7d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930452"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089178"
 ---
 # <a name="azure-defender-for-iot-prerequisites"></a>Voraussetzungen für Azure Defender für IoT
 
@@ -27,61 +27,23 @@ Dieser Artikel erläutert die verschiedenen Komponenten des Defender für IoT-Di
 
 ## <a name="minimum-requirements"></a>Mindestanforderungen
 
-- IoT Hub-Standard-Tarif
-  - Azure-Rollenberechtigungen auf der Ebene **Besitzer**
-- [Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
-- Azure Security Center (empfohlen)
-  - Die Verwendung von Azure Security Center ist eine Empfehlung und keine Anforderung. Ohne Azure Security Center können Sie Ihre anderen Azure-Ressourcen in IoT Hub nicht anzeigen.
+- Überwachung ohne Agents für IoT- und OT-Geräte (auf der Grundlage von CyberX-Technologie)
+    - Netzwerkswitches, die die Überwachung des Datenverkehrs über den SPAN-Port unterstützen
+    - Hardwareappliances für den NTA-Sensor. Weitere Informationen finden Sie unter [Zertifizierte Hardware](https://aka.ms/AzureDefenderforIoTBareMetalAppliance).
+    - Rolle **Mitwirkender** für das Azure-Abonnement (nur während des Onboardings zum Definieren von committeten Geräten erforderlich)
+    - Rolle **Mitwirkender** für IoT Hub (Tarif „Free“ oder „Standard“) (für cloudbasierte Verwaltung)
+- Sicherheit für verwaltete IoT-Geräte, die über Azure IoT Hub verwaltet werden
+    - Rolle **Mitwirkender** für IoT Hub (Tarif „Standard“)
+    - IoT Hub: Die Umschaltfläche für das Feature **Azure Defender für IoT** muss aktiviert sein.
+    - Für die Unterstützung von Sicherheitsmodulen auf Geräteebene  
+        - Defender für IoT-Agents unterstützt eine wachsende Anzahl von Geräten und Plattformen (siehe die [Liste unterstützter Plattformen](how-to-deploy-agent.md)).
 
-## <a name="working-with-defender-for-iot-service"></a>Arbeiten mit dem Defender für IoT-Dienst
-
-Defender für IoT-Einblicke und -Berichte sind über Azure IoT Hub und Azure Security Center verfügbar. Um Defender für IoT auf Ihrer Instanz von Azure IoT Hub zu aktivieren, ist ein Konto mit Berechtigungen der Ebene **Besitzer** erforderlich. Nach der Aktivierung von Defender für IoT in Ihrer IoT Hub-Instanz werden Defender für IoT-Einblicke in Azure IoT Hub als das Feature **Sicherheit** und in Azure Security Center als **IoT** angezeigt.
 
 ## <a name="supported-service-regions"></a>Unterstützte Servicebereiche
 
-Defender für IoT wird derzeit für IoT Hub-Instanzen in den folgenden Azure-Regionen unterstützt:
-
-- USA (Mitte)
-- East US
-- USA (Ost) 2
-- USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- USA, Süden-Mitte
-- USA Nord Mitte
-- Kanada, Mitte
-- Kanada, Osten
-- Nordeuropa
-- Brasilien Süd
-- Frankreich, Mitte
-- UK, Westen
-- UK, Süden
-- Europa, Westen
-- Nordeuropa
-- Japan, Westen
-- Japan, Osten
-- Australien, Südosten
-- Australien (Osten)
-- Asien, Osten
-- Asien, Südosten
-- Korea, Mitte
-- Korea, Süden
-- Indien, Mitte
-- Indien (Süden)
+Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub). 
 
 Defender für IoT leitet den gesamten Datenverkehr aus allen europäischen Regionen an das regionale Rechenzentrum von „Europa, Westen“ und aus allen anderen Regionen an das regionale Rechenzentrum von „USA, Mitte“ weiter.
-
-## <a name="wheres-my-iot-hub"></a>Wo ist meine IoT Hub-Instanz?
-
-Überprüfen Sie Ihren IoT Hub-Standort, um die Verfügbarkeit des Diensts zu sicherzustellen, bevor Sie beginnen.
-
-1. Öffnen Sie Ihre IoT Hub-Instanz.
-1. Klicken Sie auf **Overview**.
-1. Überprüfen Sie, ob der aufgeführte Standort mit einer der [unterstützten Dienstregionen](#supported-service-regions) übereinstimmt.
-
-## <a name="supported-platforms-for-agents"></a>Unterstützte Plattformen für Agents
-
-Defender für IoT-Agents unterstützt eine wachsende Anzahl von Geräten und Plattformen. In der [Liste der unterstützten Plattformen](how-to-deploy-agent.md) können Sie Ihre vorhandene oder geplante Gerätebibliothek überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

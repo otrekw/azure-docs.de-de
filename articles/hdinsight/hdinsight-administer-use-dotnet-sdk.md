@@ -8,24 +8,24 @@ ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: dd0d7a3a05c108f0d7e95719356079633a0e2276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367b47e8dbe0e1ee56fea620d97109631ba87a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016086"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484881"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)verwalten.
+Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](/dotnet/api/overview/azure/hdinsight)verwalten.
 
 **Voraussetzungen**
 
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Ein Azure-Abonnement** . Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="connect-to-azure-hdinsight"></a>Verbinden mit Azure HDInsight
 
@@ -268,7 +268,7 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Referenzdokumentation zum HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Referenzdokumentation zum HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
 * [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
 * [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision]

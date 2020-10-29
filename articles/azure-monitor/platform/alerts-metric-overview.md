@@ -4,12 +4,12 @@ description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikw
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578069"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342177"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -57,7 +57,7 @@ Ab der Erstellung der Warnungsregel erfolgt die Prüfung im 1-Minuten-Takt. Dabe
 
 ### <a name="view-and-resolution-of-fired-alerts"></a>Anzeige und Auflösung der ausgelösten Warnungen
 
-Die obigen Beispiele für die Auslösung der Warnungsregel finden Sie auch im Azure-Portal auf dem Blatt **Alle Warnungen**.
+Die obigen Beispiele für die Auslösung der Warnungsregel finden Sie auch im Azure-Portal auf dem Blatt **Alle Warnungen** .
 
 Wenn die Verwendung von „myVM“ bei nachfolgenden Prüfungen weiterhin über dem Schwellenwert liegt, wird die Warnungsregel erst nach Auflösen der Bedingungen wieder ausgelöst.
 
@@ -122,7 +122,7 @@ Wenn Sie die Anzahl der zurückliegenden Zeiträume und Verstöße erhöhen, kö
 
 > [!NOTE]
 >
-> Es wird empfohlen, eine *Aggregationsgranularität (Zeitraum)* auszuwählen, die größer ist als die *Häufigkeit der Auswertung*, um die Wahrscheinlichkeit zu verringern, dass die erste Auswertung einer hinzugefügten Zeitreihe in den folgenden Fällen ausgelassen wird:
+> Es wird empfohlen, eine *Aggregationsgranularität (Zeitraum)* auszuwählen, die größer ist als die *Häufigkeit der Auswertung* , um die Wahrscheinlichkeit zu verringern, dass die erste Auswertung einer hinzugefügten Zeitreihe in den folgenden Fällen ausgelassen wird:
 > - Metrikwarnungsregel, die mehrere Dimensionen überwacht: wenn eine neue Kombination aus Dimensionswerten hinzugefügt wird
 > - Metrikwarnungsregel, die mehrere Ressourcen überwacht: wenn dem Bereich eine neue Ressource hinzugefügt wird
 > - Metrikwarnungsregel, die eine nicht kontinuierlich ausgegebene Metrik überwacht (seltene Metrik): wenn die Metrik erst nach einem längeren Zeitraum als 24 Stunden wieder ausgegeben wird
@@ -179,4 +179,5 @@ Die vollständige Liste der unterstützten Ressourcentypen finden Sie in diesem 
 - [Erfahren Sie, wie Sie Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen können](./alerts-metric-create-templates.md).
 - [Erfahren Sie mehr über Aktionsgruppen](action-groups.md).
 - [Erfahren Sie mehr über den Bedingungstyp für dynamische Schwellenwerte.](alerts-dynamic-thresholds.md)
+- [Erfahren Sie mehr über das Behandeln von Problemen mit Metrikwarnungen.](alerts-troubleshoot-metric.md)
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978491"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167337"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -192,14 +192,17 @@ Die Hostnamen und die IP-Adressen für das vorgestellte Szenario lauten wie folg
 | --- | --- | --- |---| ---|
 | Erster ASCS-/SCS-Cluster des Clusterknotens |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
 | Zweiter ASCS-/SCS-Cluster des Clusterknotens |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| Name des Clusternetzwerks | pr1clust |10.0.0.42 (**nur** für Win 2016-Cluster) | – | – |
+| Name des Clusternetzwerks | pr1clust |10.0.0.42 ( **nur** für Win 2016-Cluster) | – | – |
 | Name des ASCS-Clusternetzwerks | pr1-ascscl |10.0.0.43 | – | – |
-| Name des ERS-Clusternetzwerks (**nur** für ERS2) | pr1-erscl |10.0.0.44 | – | – |
+| Name des ERS-Clusternetzwerks ( **nur** für ERS2) | pr1-erscl |10.0.0.44 | – | – |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Erstellen einer internen Azure Load Balancer-Instanz
 
 SAP ASCS, SAP SCS und das neue SAP-ERS2 verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erforderlich. Es wird dringend empfohlen, [Load Balancer Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu verwenden. 
+
+> [!IMPORTANT]
+> Floating IP-Adressen werden für sekundäre NIC-IP-Konfigurationen in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.    
 
 
 Die folgende Liste zeigt die Konfiguration des (A)SCS-/ERS-Lastenausgleichs. Die Konfiguration für SAP ASCS und ERS2 erfolgt in derselben Azure Load Balancer-Instanz.  
@@ -208,19 +211,19 @@ Die folgende Liste zeigt die Konfiguration des (A)SCS-/ERS-Lastenausgleichs. Die
 - Frontendkonfiguration
     - Statische ASCS-/SCS-IP-Adresse **10.0.0.43**
 - Backendkonfiguration  
-    Fügen Sie alle virtuellen Computer hinzu, die Teil des (A)SCS-/ERS-Clusters sein sollen. In diesem Beispiel sind dies die VMs **pr1-ascs-10** und **pr1-ascs-11**.
+    Fügen Sie alle virtuellen Computer hinzu, die Teil des (A)SCS-/ERS-Clusters sein sollen. In diesem Beispiel sind dies die VMs **pr1-ascs-10** und **pr1-ascs-11** .
 - Testport
-    - Port 620**nr**: Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
+    - Port 620 **nr** : Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
 - Lastenausgleichsregeln
     - Wenn Sie Load Balancer Standard verwenden, wählen Sie HA-Ports aus.
     - Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
-        - 32**Nr.** TCP
-        - 36**Nr.** TCP
-        - 39**Nr.** TCP
-        - 81**Nr.** TCP
-        - 5**Nr.** 13 TCP
-        - 5**Nr.** 14 TCP
-        - 5**Nr.** 16 TCP
+        - 32 **Nr.** TCP
+        - 36 **Nr.** TCP
+        - 39 **Nr.** TCP
+        - 81 **Nr.** TCP
+        - 5 **Nr.** 13 TCP
+        - 5 **Nr.** 14 TCP
+        - 5 **Nr.** 16 TCP
 
     - Stellen Sie sicher, dass „Leerlauftimeout (Minuten)“ auf den Höchstwert 30 festgelegt ist und dass „Floating IP (Direct Server Return)“ aktiviert ist.
 
@@ -234,17 +237,17 @@ Da Enqueue Replication Server 2 (ERS2) ebenfalls in Cluster unterteilt ist, mus
   Die VMs wurden dem ILB-Back-End-Pool bereits hinzugefügt.  
 
 - Zweiter Testport
-    - Port 621**nr**  
+    - Port 621 **nr**  
     Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
 
 - Regeln für den zweiten Lastenausgleich
     - Wenn Sie Load Balancer Standard verwenden, wählen Sie HA-Ports aus.
     - Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
-        - 32**Nr.** TCP
-        - 33**Nr.** TCP
-        - 5**Nr.** 13 TCP
-        - 5**Nr.** 14 TCP
-        - 5**Nr.** 16 TCP
+        - 32 **Nr.** TCP
+        - 33 **Nr.** TCP
+        - 5 **Nr.** 13 TCP
+        - 5 **Nr.** 14 TCP
+        - 5 **Nr.** 16 TCP
 
     - Stellen Sie sicher, dass „Leerlauftimeout (Minuten)“ auf den Höchstwert 30 festgelegt ist und dass „Floating IP (Direct Server Return)“ aktiviert ist.
 
@@ -347,7 +350,7 @@ Diese Einstellungen wurden bei Kunden getestet und stellen einen guten Kompromis
 Dieser Abschnitt gilt nur, wenn Sie einen freigegebenen Azure-Datenträger verwenden. 
 
 ### <a name="create-and-attach-azure-shared-disk-with-powershell"></a>Erstellen und Anfügen eines freigegebenen Azure-Datenträgers mit PowerShell
-Führen Sie diesen Befehl auf einem der Clusterknoten aus. Sie müssen die Werte für Ihre Ressourcengruppe, die Azure-Region, die SAD-SID usw. anpassen.  
+Führen Sie diesen Befehl auf einem der Clusterknoten aus. Sie müssen die Werte für Ihre Ressourcengruppe, die Azure-Region, die SAP-SID usw. anpassen.  
 
    ```powershell
     #############################
@@ -463,7 +466,7 @@ Erstellen Sie vor der Installation der SIOS-Software den Domänenbenutzer DataKe
 
    _Erste Seite der SIOS DataKeeper-Installation_
 
-2. Klicken Sie im Dialogfeld auf **Ja**.
+2. Klicken Sie im Dialogfeld auf **Ja** .
 
    ![Abbildung 32: Benachrichtigung über die Deaktivierung eines Diensts in DataKeeper][sap-ha-guide-figure-3032]
 
@@ -540,7 +543,7 @@ Beginnen Sie nach der Installation von SIOS DataKeeper auf beiden Knoten mit der
 
    ![Abbildung 43: Klicken auf „Ja“, um das replizierte Volume als Clustervolume festzulegen][sap-ha-guide-figure-3043]
 
-   _Auswählen von **Ja**, um das replizierte Volume als Clustervolume festzulegen_
+   _Auswählen von **Ja** , um das replizierte Volume als Clustervolume festzulegen_
 
    Nachdem das Volume erstellt wurde, zeigt das DataKeeper-Tool für die Verwaltung und Konfiguration an, dass der Replikationsauftrag aktiv ist.
 

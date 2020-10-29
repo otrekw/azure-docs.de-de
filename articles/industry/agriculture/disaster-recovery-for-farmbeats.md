@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683892"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164209"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Notfallwiederherstellung für FarmBeats
 
@@ -26,9 +26,9 @@ In den folgenden Abschnitten finden Sie Informationen zum Konfigurieren der Date
 
 ## <a name="enable-data-redundancy"></a>Aktivieren von Datenredundanz
 
-FarmBeats speichert Daten in drei Azure-Erstanbieterdiensten: **Azure Storage**, **Cosmos DB** und **Time Series Insights**. Führen Sie die folgenden Schritte aus, um Datenredundanz für diese Dienste in einer gekoppelten Azure-Region zu aktivieren:
+FarmBeats speichert Daten in drei Azure-Erstanbieterdiensten: **Azure Storage** , **Cosmos DB** und **Time Series Insights** . Führen Sie die folgenden Schritte aus, um Datenredundanz für diese Dienste in einer gekoppelten Azure-Region zu aktivieren:
 
-1.  **Azure Storage**: Befolgen Sie diese Anleitung, um Datenredundanz für jedes Speicherkonto in Ihrer FarmBeats-Bereitstellung zu aktivieren.
+1.  **Azure Storage** : Befolgen Sie diese Anleitung, um Datenredundanz für jedes Speicherkonto in Ihrer FarmBeats-Bereitstellung zu aktivieren.
 2.  **Azure Cosmos DB:** Befolgen Sie diese Anleitung, um Datenredundanz für ein Cosmos DB-Konto in Ihrer FarmBeats-Bereitstellung zu aktivieren.
 3.  **Azure Time Series Insights (TSI):** TSI bietet derzeit keine Datenredundanz. Um Time Series Insights-Daten wiederherzustellen, wechseln Sie zu Ihrem Sensor-/Wetterpartner, und pushen Sie die Daten erneut an die FarmBeats-Bereitstellung.
 
@@ -45,18 +45,18 @@ Sie können ein Failover initiieren und gespeicherte Daten für jeden der oben e
 Kopieren Sie den Zugriffsschlüssel der wiederhergestellten Cosmos DB-Datenbank, und aktualisieren Sie den Schlüsseltresor für den neuen FarmBeats-Datenhub.
 
 
-  ![Notfallwiederherstellung](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![Screenshot, auf dem hervorgehoben ist, wo der Zugriffsschlüssel kopiert wird](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Kopieren Sie die URL der wiederhergestellten Cosmos DB-Datenbank, und aktualisieren Sie sie in der App Service-Konfiguration für den neuen FarmBeats-Datenhub. Sie können jetzt das Cosmos DB-Konto in der neuen FarmBeats-Bereitstellung löschen.
 
-  ![Notfallwiederherstellung](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![Screenshot, der zeigt, wo die URL des wiederhergestellten Cosmos DB-Kontos kopiert wird](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Konfigurieren des Speicherkontos
 
 Kopieren Sie den Zugriffsschlüssel des wiederhergestellten Speicherkontos, und aktualisieren Sie ihn im Schlüsseltresor für den neuen FarmBeats-Datenhub.
 
-![Notfallwiederherstellung](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![Screenshot, der zeigt, wo der Zugriffsschlüssel des wiederhergestellten Speicherkontos kopiert wird](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Sie müssen unbedingt den Speicherkontonamen in der Batch-VM-Konfigurationsdatei für die neue FarmBeats-Bereitstellung aktualisieren.

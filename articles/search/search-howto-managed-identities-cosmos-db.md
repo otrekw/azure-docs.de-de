@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275284"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102692"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität
 
 Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
 
 Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexer ist, und wie Sie einen Indexer für Ihre Datenquelle einrichten. Weitere Informationen finden Sie unter den folgenden Links:
+
 * [Indexer (Übersicht)](search-indexer-overview.md)
 * [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md)
 
@@ -42,7 +43,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 1. Navigieren Sie im Azure-Portal zu dem Cosmos DB-Konto, in dem die Daten gespeichert werden, die indiziert werden sollen.
 2. Wählen Sie **Zugriffssteuerung (IAM)** aus.
-3. Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**.
+3. Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen** .
 
     ![Hinzufügen der Rollenzuweisung](./media/search-managed-identities/add-role-assignment-cosmos-db.png "Rollenzuweisung hinzufügen")
 
@@ -83,8 +84,8 @@ Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Fe
 |---------|-------------|
 | **name** | Erforderlich. Wählen Sie für Ihr Datenquellenobjekt einen beliebigen Namen aus. |
 |**type**| Erforderlich. Muss `cosmosdb`lauten. |
-|**credentials** | Erforderlich. <br/><br/>Beim Herstellen einer Verbindung mit einer verwalteten Identität sollten die **Anmeldeinformationen** das folgende Format aufweisen: *Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>Format von ResourceId: *ResourceId=/subscriptions/**Abonnement-ID**/resourceGroups/**Name der Ressourcengruppe**/providers/Microsoft.DocumentDB/databaseAccounts/**Name des Cosmos DB-Kontos**/;*<br/><br/>Für SQL-Sammlungen ist für die Verbindungszeichenfolge keine ApiKind erforderlich.<br/><br/>Bei MongoDB-Sammlungen fügen Sie der Verbindungszeichenfolge **ApiKind=MongoDb** hinzu. <br/><br/>Registrieren Sie sich bei Verwendung von Gremlin-Graphen und Cassandra-Tabellen für die [geschlossene Indexervorschau](https://aka.ms/azure-cognitive-search/indexer-preview), um Zugriff auf die Vorschauversion sowie Informationen zur Formatierung der Anmeldeinformationen zu erhalten.<br/>|
-| **container** | Enthält die folgenden Elemente: <br/>**name:** Erforderlich. Geben Sie die ID der zu indizierenden Datenbanksammlung an.<br/>**Abfrage**: Optional. Sie können eine Abfrage angeben, um ein beliebiges JSON-Dokument in einem Flatfile-Schema zu vereinfachen, das in der kognitiven Azure-Suche indiziert werden kann.<br/>Für die MongoDB-API, die Gremlin-API und die Cassandra-API werden keine Abfragen unterstützt. |
+|**credentials** | Erforderlich. <br/><br/>Beim Herstellen einer Verbindung mit einer verwalteten Identität sollten die **Anmeldeinformationen** das folgende Format aufweisen: *Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>Format von ResourceId: *ResourceId=/subscriptions/ **Abonnement-ID** /resourceGroups/ **Name der Ressourcengruppe** /providers/Microsoft.DocumentDB/databaseAccounts/ **Name des Cosmos DB-Kontos** /;*<br/><br/>Für SQL-Sammlungen ist für die Verbindungszeichenfolge keine ApiKind erforderlich.<br/><br/>Bei MongoDB-Sammlungen fügen Sie der Verbindungszeichenfolge **ApiKind=MongoDb** hinzu. <br/><br/>Registrieren Sie sich bei Verwendung von Gremlin-Graphen und Cassandra-Tabellen für die [geschlossene Indexervorschau](https://aka.ms/azure-cognitive-search/indexer-preview), um Zugriff auf die Vorschauversion sowie Informationen zur Formatierung der Anmeldeinformationen zu erhalten.<br/>|
+| **container** | Enthält die folgenden Elemente: <br/>**name:** Erforderlich. Geben Sie die ID der zu indizierenden Datenbanksammlung an.<br/>**Abfrage** : Optional. Sie können eine Abfrage angeben, um ein beliebiges JSON-Dokument in einem Flatfile-Schema zu vereinfachen, das in der kognitiven Azure-Suche indiziert werden kann.<br/>Für die MongoDB-API, die Gremlin-API und die Cassandra-API werden keine Abfragen unterstützt. |
 | **dataChangeDetectionPolicy** | Empfohlen |
 |**dataDeletionDetectionPolicy** | Optional |
 
@@ -145,7 +146,6 @@ Wenn Sie feststellen, dass Sie keine Daten aus Cosmos DB indizieren können, so
 
 1. Überprüfen Sie, ob der Zugriff des Cosmos DB-Kontos auf ausgewählte Netzwerke beschränkt ist. Falls ja, lesen Sie die Informationen unter [Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures](search-indexer-securing-resources.md).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Cosmos DB-Indexern:
 * [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976877"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329831"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
@@ -25,7 +25,7 @@ Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hie
 
 Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es muss kein Sprachcode angegeben werden. Weitere Informationen finden Sie unter [Optische Zeichenerkennung (OCR)](concept-recognizing-text.md).
 
-|Sprache| Sprachcode | OCR-API | Lesen v3.1 | Read v3.1-preview.2 |
+|Sprache| Sprachcode | OCR-API | Read 3.0 und 3.1 | Read v3.2-preview.1 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arabisch | `ar`|✔ | | |
 |Chinesisch (vereinfacht) | `zh-Hans`|✔ | |✔ |

@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016126"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145365"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
-Wie im Artikel [Was ist bedingter Zugriff?](overview.md) erläutert, ist eine Richtlinie für bedingten Zugriff eine If-Then-Anweisung mit **Zuweisungen** und **Zugriffssteuerungen**. Eine Richtlinie für bedingten Zugriff führt Signale zusammen, um Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen.
+Wie im Artikel [Was ist bedingter Zugriff?](overview.md) erläutert, ist eine Richtlinie für bedingten Zugriff eine If-Then-Anweisung mit **Zuweisungen** und **Zugriffssteuerungen** . Eine Richtlinie für bedingten Zugriff führt Signale zusammen, um Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen.
 
-Wie erstellt eine Organisation diese Richtlinien? Was ist erforderlich?
+Wie erstellt eine Organisation diese Richtlinien? Was ist erforderlich? Wie werden sie angewendet?
 
 ![Bedingter Zugriff (Signale + Entscheidungen + Erzwingung = Richtlinien)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+Mehrere Richtlinien für bedingten Zugriff können jederzeit auf einen einzelnen Benutzer angewendet werden. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) und eine weitere Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. Alle Zuweisungen sind logisch per **UND** -Operator verbunden. Wenn Sie mehr als eine Zuweisung konfiguriert haben, müssen die Bedingungen aller Zuweisungen erfüllt sein, damit eine Richtlinie ausgelöst wird.
+
+Alle Richtlinien werden in zwei Phasen erzwungen:
+
+- Phase 1: Sammeln von Sitzungsdetails 
+   - Sammeln Sie Sitzungsdetails wie Netzwerkstandort und Geräteidentität, die für die Richtlinienauswertung benötigt werden. 
+   - Phase 1 der Richtlinienauswertung gilt für aktivierte Richtlinien sowie für Richtlinien im Modus [Nur Bericht](concept-conditional-access-report-only.md).
+- Phase 2: Erzwingung 
+   - Identifizieren Sie anhand der in Phase 1 gesammelten Sitzungsdetails alle Anforderungen, die nicht erfüllt wurden. 
+   - Wenn es eine Richtlinie gibt, die so konfiguriert ist, dass der Zugriff blockiert wird (mit dem Gewährungssteuerelement „Blockieren“), wird die Erzwingung hier angehalten, und der Benutzer wird blockiert. 
+   - Der Benutzer wird aufgefordert, zusätzliche Anforderungen der Gewährungssteuerelemente zu erfüllen, die in Phase 1 nicht erfüllt wurden, und zwar in der folgenden Reihenfolge, bis die Richtlinie erfüllt ist:  
+      - Multi-Factor Authentication 
+      - Genehmigte Client-App/App-Schutzrichtlinie 
+      - Verwaltetes Gerät (kompatibel oder hybrid in Azure AD eingebunden) 
+      - Nutzungsbedingungen 
+      - Benutzerdefinierte Steuerelemente  
+   - Sobald alle Anforderungen der Gewährungssteuerelemente erfüllt wurden, wenden Sie Sitzungssteuerelemente an (von der App erzwungene Berechtigungen, Microsoft Cloud App Security und Tokengültigkeitsdauer). 
+   - Die zweite Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien durchlaufen. 
 
 ## <a name="assignments"></a>Zuweisungen
 
@@ -52,7 +71,7 @@ Organisationen mit mehreren Betriebssystemplattformen für ihre Geräte möchten
 
 Die zum Berechnen der Geräteplattform verwendeten Informationen stammen aus nicht überprüften Quellen wie Benutzer-Agent-Zeichenfolgen, die geändert werden können.
 
-#### <a name="locations"></a>Standorte
+#### <a name="locations"></a>Positionen
 
 Standortdaten werden von IP-Geolocation-Daten bereitgestellt. Administratoren können bei Bedarf Standorte definieren und einige als vertrauenswürdig kennzeichnen (z.B. die Netzwerkstandorte ihrer Organisation).
 
@@ -116,8 +135,8 @@ Eine Richtlinie für bedingten Zugriff muss mindestens Folgendes enthalten, um e
 
 - **Name** der Richtlinie.
 - **Zuweisungen**
-   - **Benutzer und/oder Gruppen**, auf die die Richtlinie angewendet werden soll.
-   - **Cloud-Apps oder Aktionen**, auf die die Richtlinie angewendet werden soll.
+   - **Benutzer und/oder Gruppen** , auf die die Richtlinie angewendet werden soll.
+   - **Cloud-Apps oder Aktionen** , auf die die Richtlinie angewendet werden soll.
 - **Steuerelemente**
    - Steuerelemente für **Gewähren** oder **Blockieren**
 

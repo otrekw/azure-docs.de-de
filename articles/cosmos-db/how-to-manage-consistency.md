@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279593"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491188"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Die [Standardkonsistenzebene](consistency-levels.md) ist die Konsistenzebene, di
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie den Bereich **Standardkonsistenz**. Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern**. Das Azure-Portal bietet auch eine Visualisierung verschiedener Konsistenzebenen mit Musiknoten. 
+Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie den Bereich **Standardkonsistenz** . Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern** . Das Azure-Portal bietet auch eine Visualisierung verschiedener Konsistenzebenen mit Musiknoten. 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Konsistenzmenü im Azure-Portal":::
 
@@ -279,7 +279,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Überwachen der PBS-Metrik (Probabilistically Bounded Staleness)
 
-Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Veraltung im Hinblick auf Versionsverlauf und Zeit anbieten. Die [**PBS-Metrik (Probabilistically Bounded Staleness)** ](https://pbs.cs.berkeley.edu/) versucht, die Wahrscheinlichkeit der Veraltung zu bestimmen und zeigt sie als Metrik an. Navigieren Sie zum Anzeigen der PBS-Metrik im Azure-Portal zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Metriken**, und wählen Sie die Registerkarte **Konsistenz**. Sehen Sie sich den Graphen mit dem Namen **Wahrscheinlichkeit stark konsistenter Lesevorgänge basierend auf Ihrer Workload (siehe PBS)** an.
+Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Veraltung im Hinblick auf Versionsverlauf und Zeit anbieten. Die [**PBS-Metrik (Probabilistically Bounded Staleness)**](https://pbs.cs.berkeley.edu/) versucht, die Wahrscheinlichkeit der Veraltung zu bestimmen und zeigt sie als Metrik an. Navigieren Sie zum Anzeigen der PBS-Metrik im Azure-Portal zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Metriken** , und wählen Sie die Registerkarte **Konsistenz** . Sehen Sie sich den Graphen mit dem Namen **Wahrscheinlichkeit stark konsistenter Lesevorgänge basierend auf Ihrer Workload (siehe PBS)** an.
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Konsistenzmenü im Azure-Portal":::
 
@@ -288,7 +288,7 @@ Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Ver
 Informieren Sie sich über das Verwalten von Datenkonflikten, oder fahren Sie mit dem nächsten wichtigen Konzept von Azure Cosmos DB fort. Weitere Informationen finden Sie in folgenden Artikeln:
 
 * [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
-* [Partitionierung und Datenverteilung](partition-data.md)
+* [Partitionierung und Datenverteilung](./partitioning-overview.md)
 * [Behandeln von Konflikten zwischen Regionen](how-to-manage-conflicts.md)
 * [Partitionierung und Datenverteilung](partitioning-overview.md)
 * [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)

@@ -3,22 +3,21 @@ title: Informationen zum Modellparser „Digital Twins“ | Microsoft-Dokumentat
 description: Hier erhalten Sie Informationen, wie Sie als Entwickler den DTDL-Parser zur Überprüfung von Modellen verwenden.
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87352001"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331786"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>Informationen zum Modellparser „Digital Twins“
 
-Die Digital Twins Definition Language (DTDL) wird unter [Digital Twins Definition Language](https://github.com/Azure/opendigitaltwins-dtdl) beschrieben. Benutzer können das _Digital Twins Model Parser_-NuGet-Paket verwenden, um ein Modell zu überprüfen und abzufragen, das in mehreren Dateien definiert ist.
+Die Digital Twins Definition Language (DTDL) wird unter [Digital Twins Definition Language](https://github.com/Azure/opendigitaltwins-dtdl) beschrieben. Benutzer können das _Digital Twins Model Parser_ -NuGet-Paket verwenden, um ein Modell zu überprüfen und abzufragen, das in mehreren Dateien definiert ist.
 
 ## <a name="install-the-dtdl-model-parser"></a>Installieren des DTDL-Modellparsers
 
@@ -28,9 +27,12 @@ Der Parser steht unter NuGet.org mit folgender ID zur Verfügung: [Microsoft.Azu
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> Zum Zeitpunkt der Artikelerstellung lautet die Parser-Version `3.12.5`.
+
 ## <a name="use-the-parser-to-validate-a-model"></a>Verwenden des Parsers zur Überprüfung eines Modells
 
-Das Modell, das Sie überprüfen möchten, kann aus mehreren in JSON-Dateien beschriebenen Schnittstellen bestehen. Sie können den Parser verwenden, um alle Dateien in einem bestimmten Ordner zu laden, und Sie können den Parser verwenden, um alle Dateien als Ganzes zu überprüfen, einschließlich zwischen den Dateien enthaltenen Verweisen:
+Ein Modell kann aus mehreren in JSON-Dateien beschriebenen Schnittstellen bestehen. Sie können den Parser verwenden, um alle Dateien in einem bestimmten Ordner zu laden, und Sie können den Parser verwenden, um alle Dateien als Ganzes zu überprüfen, einschließlich zwischen den Dateien enthaltenen Verweisen:
 
 1. Erstellen Sie eine `IEnumerable<string>`-Schnittstelle mit einer Liste aller Modellinhalte:
 
@@ -57,18 +59,20 @@ Das Modell, das Sie überprüfen möchten, kann aus mehreren in JSON-Dateien bes
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. Überprüfen Sie, ob Überprüfungsfehler auftreten. Wenn der Parser keine Fehler entdeckt, wird `AggregateException` mit einer Liste detaillierter Fehlermeldungen zurückgegeben:
+1. Überprüfen Sie, ob Überprüfungsfehler auftreten. Wenn der Parser Fehler entdeckt, wird `ParsingException` mit einer Liste der Fehler zurückgegeben:
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,19 +80,10 @@ Das Modell, das Sie überprüfen möchten, kann aus mehreren in JSON-Dateien bes
 1. Untersuchen Sie `Model`. Wenn die Überprüfung erfolgreich war, können Sie die Modellparser-API verwenden, um das Modell zu untersuchen. Der folgende Codeausschnitt zeigt, wie Sie alle geparsten Modelle durchlaufen, und die vorhandenen Eigenschaften anzeigen:
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 

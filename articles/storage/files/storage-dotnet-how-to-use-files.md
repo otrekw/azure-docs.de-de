@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fbfc347e1b514f9f59e2f238d2b1bfbaf59f2172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710701"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319799"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -70,7 +70,7 @@ Verweisen Sie in Ihrem Projekt auf die folgenden Pakete:
 Sie können die Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-1. Wählen Sie in **NuGet Package Manager** die Option **Durchsuchen** aus. Suchen Sie nach **Azure.Core**, und wählen Sie das Paket aus. Klicken Sie dann auf **Installieren**.
+1. Wählen Sie in **NuGet Package Manager** die Option **Durchsuchen** aus. Suchen Sie nach **Azure.Core** , und wählen Sie das Paket aus. Klicken Sie dann auf **Installieren** .
 
    Mit diesem Schritt werden das Paket und seine Abhängigkeiten installiert.
 
@@ -90,7 +90,7 @@ Sie können die Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 Sie können die Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-1. Wählen Sie in **NuGet Package Manager** die Option **Durchsuchen** aus. Suchen Sie dann nach **Microsoft.Azure.Storage.Blob**, und wählen Sie es aus. Wählen Sie dann **Installieren** aus.
+1. Wählen Sie in **NuGet Package Manager** die Option **Durchsuchen** aus. Suchen Sie dann nach **Microsoft.Azure.Storage.Blob** , und wählen Sie es aus. Wählen Sie dann **Installieren** aus.
 
    Mit diesem Schritt werden das Paket und seine Abhängigkeiten installiert.
 1. Suchen und installieren Sie diese Pakete:
@@ -135,7 +135,7 @@ Ersetzen Sie `myaccount` durch den Namen Ihres Speicherkontos und `StorageAccoun
 
 ## <a name="add-using-directives"></a>Hinzufügen von using-Direktiven
 
-Öffnen Sie im **Projektmappen-Explorer** die Datei *Program.cs*, und fügen Sie am Anfang der Datei mithilfe von using-Anweisungen Folgendes hinzu.
+Öffnen Sie im **Projektmappen-Explorer** die Datei *Program.cs* , und fügen Sie am Anfang der Datei mithilfe von using-Anweisungen Folgendes hinzu.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 

@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell-Skript: Auflisten vorhandener Freigaben in Azure Data Share | Microsoft-Dokumentation'
+title: 'PowerShell-Skript: Auflisten vorhandener Freigaben in Azure Data Share'
 description: Dieses PowerShell-Skript listet Details zu Freigaben auf und zeigt diese an.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54b4b6cedc2dc09e4a9d5c4b7b937e80750e17c6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307126"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220821"
 ---
 # <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>Verwenden von PowerShell zum Anzeigen der Details einer gesendeten Datenfreigabe
 
@@ -45,11 +43,11 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | Ruft die Freigaben in einem Konto ab und listet diese auf |
+| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare) | Ruft die Freigaben in einem Konto ab und listet diese auf |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Weitere PowerShell-Skriptbeispiele für Azure Data Share finden Sie unter [Azure PowerShell-Beispiele für Azure Data Share](../../samples-powershell.md).

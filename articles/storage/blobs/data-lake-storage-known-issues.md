@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fee5427981cbd2c04a5ee88500a1aee77e2e5ffd
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876123"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282210"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -68,7 +68,7 @@ Die Möglichkeit, ACL-Änderungen aus dem übergeordneten Verzeichnis rekursiv a
 
 ## <a name="azcopy"></a>AzCopy
 
-Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.
+Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).  Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.
 
 <a id="storage-explorer"></a>
 
@@ -84,7 +84,7 @@ ACLs werden noch nicht unterstützt.
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>Drittanbieteranwendungen
+## <a name="third-party-applications"></a>Drittanbieteranwendungen
 
 Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin, wenn Sie sie mit Data Lake Storage Gen2 verwenden. Anwendungen, die Blob-APIs aufrufen, funktionieren wahrscheinlich.
 
@@ -92,7 +92,11 @@ Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin,
 
 Wenn [anonymer Lesezugriff](storage-manage-access-to-resources.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.
 
-## <a name="premium-performance-blockblobstorage-storage-accounts"></a>BlockBlobStorage-Speicherkonten mit Premium-Leistung
+### <a name="diagnostic-logs"></a>Diagnoseprotokolle
+
+Die Einstellung für die Aufbewahrungsdauer wird noch nicht unterstützt. Sie können Protokolle jedoch manuell löschen, indem Sie ein beliebiges unterstütztes Tool wie Azure Storage Explorer, REST oder ein SDK verwenden.
+
+## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Spezifische Probleme im Zusammenhang mit BlockBlobStorage-Speicherkonten mit Premium-Leistung
 
 ### <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
@@ -108,8 +112,6 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 #Enable logging
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
-
-Die Einstellung für die Aufbewahrungsdauer wird noch nicht unterstützt. Sie können Protokolle jedoch manuell löschen, indem Sie ein beliebiges unterstütztes Tool wie Azure Storage Explorer, REST oder ein SDK verwenden.
 
 ### <a name="lifecycle-management-policies"></a>Richtlinien für die Lebenszyklusverwaltung
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057891"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173568"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -44,7 +44,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 
 - Im **Synchronisierungsschema** wird beschrieben, welche Daten synchronisiert werden.
-- Die **Synchronisierungsrichtung** kann bidirektional oder unidirektional sein. Für die Synchronisierungsrichtung kann also *Vom Hub zum Mitglied*, *Vom Mitglied zum Hub* oder beides gelten.
+- Die **Synchronisierungsrichtung** kann bidirektional oder unidirektional sein. Für die Synchronisierungsrichtung kann also *Vom Hub zum Mitglied* , *Vom Mitglied zum Hub* oder beides gelten.
 - Mit dem **Synchronisierungsintervall** wird die Häufigkeit der Synchronisierung angegeben.
 - Die **Richtlinie zur Konfliktlösung** ist eine Richtlinie auf Gruppenebene, die den Typ *Hub gewinnt* oder *Mitglied gewinnt* haben kann.
 
@@ -72,7 +72,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 
 - **Nachverfolgen von Datenänderungen:** Bei der Datensynchronisierung werden Änderungen mithilfe von Auslösern für Einfügen, Aktualisieren und Löschen nachverfolgt. Die Änderungen werden in der Benutzerdatenbank in einer Nebentabelle aufgezeichnet. Beachten Sie, dass BULK INSERT standardmäßig keine Trigger auslöst. Wenn FIRE_TRIGGERS nicht angegeben ist, werden keine Einfügungstrigger ausgeführt. Fügen Sie die Option FIRE_TRIGGERS hinzu, damit die Datensynchronisierung diese Einfügungen verfolgen kann. 
 - **Synchronisieren von Daten:** Für die Datensynchronisierung wird ein Hub-and-Spoke-Modell genutzt. Der Hub wird einzeln mit jedem Mitglied synchronisiert. Änderungen auf dem Hub werden für das Mitglied heruntergeladen, und anschließend werden Änderungen vom Mitglied auf den Hub hochgeladen.
-- **Beheben von Konflikten:** Die Datensynchronisierung bietet zwei Optionen für die Lösung von Konflikten, und zwar *Hub gewinnt* und *Mitglied gewinnt*.
+- **Beheben von Konflikten:** Die Datensynchronisierung bietet zwei Optionen für die Lösung von Konflikten, und zwar *Hub gewinnt* und *Mitglied gewinnt* .
   - Wenn Sie *Hub gewinnt* wählen, werden die Änderungen auf dem Mitglied immer durch die Änderungen des Hub überschrieben.
   - Bei Auswahl von *Mitglied gewinnt* werden die Änderungen auf dem Hub durch die Änderungen auf dem Mitglied überschrieben. Falls mehr als ein Mitglied vorhanden ist, hängt der endgültige Wert davon ab, welches Mitglied zuerst synchronisiert wird.
 
@@ -137,6 +137,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
 - Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
 - Gibt es Tabellen, die denselben Namen, aber unterschiedlichen Schemas haben (z. B. dbo.customers und sales.customers), kann nur eine der Tabellen in der Synchronisierung hinzugefügt werden.
+- Ein Tabellenname darf keine Zeichen enthalten, deren ASCII-Wert kleiner oder gleich „-“ ist.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 - Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
 

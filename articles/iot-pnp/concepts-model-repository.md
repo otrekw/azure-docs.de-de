@@ -1,18 +1,18 @@
 ---
-title: Konzepte des Gerätemodellrepositorys | Microsoft-Dokumentation
-description: Lernen Sie als Lösungsentwickler oder IT-Experte die grundlegenden Konzepte des Gerätemodellrepositorys kennen.
+title: Grundlegendes zu den Konzepten des Gerätemodellrepositorys | Microsoft-Dokumentation
+description: Hier lernen Sie als Lösungsentwickler oder IT-Experte die grundlegenden Konzepte des Gerätemodellrepositorys kennen.
 author: rido-min
 ms.author: rmpablos
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042880"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131359"
 ---
 # <a name="device-model-repository"></a>Gerätemodellrepository
 
@@ -24,20 +24,20 @@ Das DMR definiert ein Muster zum Speichern von DTDL-Schnittstellen in einer Ordn
 
 Microsoft hostet einen öffentlichen DMR mit folgenden Merkmalen:
 
-- Kuratierte Modelle. Microsoft überprüft und genehmigt alle verfügbaren Schnittstellen mithilfe eines offenen GitHub-PR-Validierungsworkflows.
+- Kuratierte Modelle. Microsoft überprüft und genehmigt alle verfügbaren Schnittstellen mithilfe eines GitHub-Pull Request (PR)-Validierungsworkflows.
 - Unveränderlichkeit.  Schnittstellen können nach der Veröffentlichung nicht aktualisiert werden.
-- Hyperskalierung. Microsoft stellt die gesamte erforderliche Infrastruktur zum Erstellen eines sicheren und hochgradig skalierbaren Endpunkts zur Verfügung.
+- Hyperskalierung. Microsoft stellt die erforderliche Infrastruktur zum Erstellen eines sicheren, skalierbaren Endpunkts bereit, in dem Sie Gerätemodelle veröffentlichen und nutzen können.
 
 ## <a name="custom-device-model-repository"></a>Benutzerdefiniertes Gerätemodellrepository
 
-Sie können in jedem Speichermedium das gleiche DMR-Muster verwenden, z. B. ein lokales Dateisystem oder benutzerdefinierte HTTP-Webserver, um ein benutzerdefiniertes DMR zu erstellen. Sie können Modelle aus dem benutzerdefinierten DMR in der gleichen Weise wie aus dem öffentlichen DRM abrufen, indem Sie einfach die für den Zugriff auf das DMR verwendete Basis-URL ändern.
+Sie können in jedem Speichermedium das gleiche DMR-Muster verwenden, z. B. ein lokales Dateisystem oder benutzerdefinierte HTTP-Webserver, um ein benutzerdefiniertes DMR zu erstellen. Sie können Gerätemodelle aus dem benutzerdefinierten DMR genauso wie aus dem öffentlichen DMR abrufen, indem Sie einfach die für den Zugriff auf das DMR verwendete Basis-URL ändern.
 
 > [!NOTE]
-> Die zum Validieren der Modelle im öffentlichen DMR verwendeten Tools können in benutzerdefinierten Repositorys wiederverwendet werden.
+> Microsoft stellt Tools zum Überprüfen von Gerätemodellen im öffentlichen DMR bereit. Sie können diese Tools in benutzerdefinierten Repositorys wiederverwenden.
 
 ## <a name="public-models"></a>Öffentliche Modelle
 
-Die im Modellrepository gespeicherten öffentlichen Digital Twins-Modelle sind für alle Benutzer verfügbar und können in Anwendungen integriert werden. Öffentliche Modelle ermöglichen ein offenes Ökosystem für Gerätehersteller und Lösungsentwickler, über das sie ihre IoT Plug & Play-Gerätemodelle teilen und wiederverwenden können.
+Die im Modellrepository gespeicherten öffentlichen Gerätemodelle stehen für alle Benutzer zur Verfügung und können in deren Anwendungen integriert werden. Öffentliche Gerätemodelle ermöglichen ein offenes Ökosystem für Gerätehersteller und Lösungsentwickler, über das sie ihre IoT Plug   Play-Gerätemodelle teilen und wiederverwenden können.
 
 Anweisungen zum Veröffentlichen eines Modells im Modellrepository finden Sie im Abschnitt [Veröffentlichen eines Modells](#publish-a-model).
 
@@ -88,14 +88,14 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 1. Forken Sie das öffentliche GitHub-Repository: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models).
 1. Klonen Sie das geforkte Repository. Erstellen Sie optional einen neuen Branch, um Ihre Änderungen vom `main`-Branch isoliert zu halten.
 1. Fügen Sie die neuen Schnittstellen dem Ordner `dtmi` hinzu, und befolgen Sie dabei die Ordner/Dateiname-Konvention. Mehr dazu finden Sie im [add-model](#add-model)-Tool.
-1. Überprüfen Sie die Modelle lokal mithilfe der Informationen im Abschnitt [Skripts zum Überprüfen von Änderungen](#validate-files).
+1. Überprüfen Sie die Gerätemodelle lokal anhand der Informationen im Abschnitt [Skripts zum Überprüfen von Änderungen](#validate-files).
 1. Committen Sie die Änderungen lokal, und pushen Sie sie auf Ihren Fork.
-1. Erstellen Sie aus Ihrem Fork einen PR mit dem `main`-Branch als Ziel. Weitere Informationen finden Sie in der Dokumentation zum [Erstellen eines Issues oder Pull Requests](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request).
-1. Überprüfen Sie die [PR-Anforderungen](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md).
+1. Erstellen Sie aus Ihrem Fork einen Pull Request mit dem `main`-Branch als Ziel. Weitere Informationen finden Sie in der Dokumentation zum [Erstellen eines Issues oder Pull Requests](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request).
+1. Überprüfen Sie die [Pull Request-Anforderungen](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md).
 
-Der PR löst eine Reihe von GitHub-Aktionen aus, mit deren Hilfe die neu gesendeten Schnittstellen validiert werden und sichergestellt wird, dass Ihr PR alle Prüfungen besteht.
+Der Pull Request löst eine Reihe von GitHub-Aktionen aus, mit deren Hilfe die neu gesendeten Schnittstellen validiert werden und sichergestellt wird, dass Ihr Pull Request alle Prüfungen besteht.
 
-Microsoft reagiert auf einen PR mit allen Prüfungen innerhalb von drei Geschäftstagen.
+Microsoft wird auf einen Pull Request mit allen Prüfungen innerhalb von drei Geschäftstagen reagieren.
 
 ### <a name="add-model"></a>add-model
 
@@ -109,7 +109,7 @@ Achten Sie auf eventuelle Fehlermeldungen in der Konsolenausgabe.
 
 ### <a name="local-validation"></a>Lokale Überprüfung
 
-Sie können die gleichen Validierungsprüfungen lokal ausführen, bevor Sie den PR absenden, um die Diagnose von Problemen vorab zu unterstützen.
+Sie können die gleichen Validierungsprüfungen lokal ausführen, bevor Sie den Pull Request absenden, um die Diagnose von Problemen vorab zu unterstützen.
 
 #### <a name="validate-files"></a>validate-files
 
@@ -125,7 +125,7 @@ Sie können die gleichen Validierungsprüfungen lokal ausführen, bevor Sie den 
 
 #### <a name="validate-models"></a>validate-models
 
-Sie können das [DTDL-Validierungsbeispiel](https://github.com/Azure-Samples/DTDL-Validator) ausführen, um Ihre Modelle lokal zu überprüfen.
+Sie können das [DTDL-Validierungsbeispiel](https://github.com/Azure-Samples/DTDL-Validator) ausführen, um Ihre Gerätemodelle lokal zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

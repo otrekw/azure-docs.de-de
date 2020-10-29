@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 320debcf2b744e949faf7b29dd72ed334fe0feea
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252112"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503724"
 ---
 # <a name="authentication-vs-authorization"></a>Authentifizierung im Vergleich zu Autorisierung
 
@@ -36,15 +36,17 @@ Die **Autorisierung** ist die Gewährung einer Handlungsberechtigung für eine a
 
 Statt Apps zu erstellen, die jeweils über eigene Informationen in Bezug auf Benutzername und Kennwort verfügen, was mit einem hohen Verwaltungsaufwand verbunden ist, wenn Sie für mehrere Apps Benutzer hinzufügen oder entfernen müssen, besteht die Möglichkeit, dass Apps diese Aufgabe an einen zentralen Identitätsanbieter delegieren können.
 
+> [!VIDEO https://www.youtube.com/embed/tkQJSHFsduY]
+
 Azure Active Directory (Azure AD) ist ein zentraler Identitätsanbieter in der Cloud. Die Delegierung der Authentifizierung und Autorisierung an den Anbieter ermöglicht beispielsweise die Verwendung von Richtlinien für bedingten Zugriff, die erfordern, dass sich ein Benutzer an einem bestimmten Ort befindet, die Verwendung der [mehrstufigen Authentifizierung](../authentication/concept-mfa-howitworks.md) (manchmal auch als zweistufige Authentifizierung oder 2FA bezeichnet) sowie die Schaffung der Möglichkeit, dass sich Benutzer nur einmal anmelden müssen und dann automatisch bei allen Web-Apps angemeldet werden, die dasselbe zentralisierte Verzeichnis nutzen. Diese Funktion wird als **einmaliges Anmelden** (Single Sign-On, SSO) bezeichnet.
 
 Microsoft Identity Platform vereinfacht die Autorisierung und Authentifizierung für Anwendungsentwickler durch die Bereitstellung von Identity-as-a-Service mit Unterstützung für branchenübliche Protokolle wie OAuth 2.0 und OpenID Connect sowie Open-Source-Bibliotheken für verschiedene Plattformen, damit Sie schnell mit der Programmierung beginnen können. Sie ermöglicht Entwicklern nicht nur das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, sondern auch das Abrufen von Token zum Aufrufen von [Microsoft Graph](https://developer.microsoft.com/graph/), anderen Microsoft-APIs oder von Entwicklern erstellten APIs.
 
 Im Folgenden finden Sie einen kurzen Vergleich der verschiedenen Protokolle, die von der Microsoft Identity Platform verwendet werden:
 
-* **OAuth im Vergleich zu OpenID Connect**: OAuth wird für die Autorisierung und OpenID Connect (OIDC) für die Authentifizierung verwendet. OpenID Connect baut auf OAuth 2.0 auf, sodass beide eine ähnliche Terminologie und einen ähnlichen Flow aufweisen. Sie können sogar in einer Anforderung einen Benutzer (mit OpenID Connect) authentifizieren und (mit OAuth 2.0) Autorisierung für den Zugriff auf eine geschützte Ressource erhalten, die der Benutzer besitzt. Weitere Informationen finden Sie unter [OAuth 2.0- und OpenID Connect-Protokolle](active-directory-v2-protocols.md) und [OpenID Connect-Protokoll](v2-protocols-oidc.md).
-* **OAuth im Vergleich zu SAML**: OAuth wird für die Autorisierung und SAML für die Authentifizierung verwendet. Unter [Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow](v2-saml-bearer-assertion.md) finden Sie weitere Informationen dazu, wie die beiden Protokolle zusammen verwendet werden können, um einen Benutzer (mit SAML) zu authentifizieren und (mit OAuth 2.0) Autorisierung für den Zugriff auf eine geschützte Ressource zu erhalten.
-* **OpenID Connect im Vergleich zu SAML**: Sowohl OpenID Connect als auch SAML werden zum Authentifizieren eines Benutzers und zum Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO) verwendet. Die SAML-Authentifizierung wird häufig bei Identitätsanbietern wie Active Directory-Verbunddienste (AD FS) im Verbund mit Azure AD und daher häufig in Unternehmensanwendungen verwendet. OpenID Connect wird häufig für Apps verwendet, die sich ausschließlich in der Cloud befinden, wie z. B. mobile Apps, Websites und Web-APIs.
+* **OAuth im Vergleich zu OpenID Connect** : OAuth wird für die Autorisierung und OpenID Connect (OIDC) für die Authentifizierung verwendet. OpenID Connect baut auf OAuth 2.0 auf, sodass beide eine ähnliche Terminologie und einen ähnlichen Flow aufweisen. Sie können sogar in einer Anforderung einen Benutzer (mit OpenID Connect) authentifizieren und (mit OAuth 2.0) Autorisierung für den Zugriff auf eine geschützte Ressource erhalten, die der Benutzer besitzt. Weitere Informationen finden Sie unter [OAuth 2.0- und OpenID Connect-Protokolle](active-directory-v2-protocols.md) und [OpenID Connect-Protokoll](v2-protocols-oidc.md).
+* **OAuth im Vergleich zu SAML** : OAuth wird für die Autorisierung und SAML für die Authentifizierung verwendet. Unter [Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow](v2-saml-bearer-assertion.md) finden Sie weitere Informationen dazu, wie die beiden Protokolle zusammen verwendet werden können, um einen Benutzer (mit SAML) zu authentifizieren und (mit OAuth 2.0) Autorisierung für den Zugriff auf eine geschützte Ressource zu erhalten.
+* **OpenID Connect im Vergleich zu SAML** : Sowohl OpenID Connect als auch SAML werden zum Authentifizieren eines Benutzers und zum Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO) verwendet. Die SAML-Authentifizierung wird häufig bei Identitätsanbietern wie Active Directory-Verbunddienste (AD FS) im Verbund mit Azure AD und daher häufig in Unternehmensanwendungen verwendet. OpenID Connect wird häufig für Apps verwendet, die sich ausschließlich in der Cloud befinden, wie z. B. mobile Apps, Websites und Web-APIs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,18 +9,18 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a1a3b28e7bf0ef5d6aa7c3339925d4f66f1e3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e80c3ecba7544a8e31eca1b4df443c41523579
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322664"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488400"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Erstellen einer App mit Node.js und der API für MongoDB von Azure Cosmos DB 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Java](sql-api-java-get-started.md)
+> * [.NET Core](./sql-api-get-started.md)
+> * [Java](./create-sql-api-java.md)
 > * [Node.js für MongoDB](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
@@ -34,7 +34,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
 
 ## <a name="create-the-app"></a>Erstellen der App
 
-1. Erstellen Sie eine *app.js*-Datei, kopieren Sie den unten stehenden Code, und fügen Sie ihn in die Datei ein.
+1. Erstellen Sie eine *app.js* -Datei, kopieren Sie den unten stehenden Code, und fügen Sie ihn in die Datei ein.
 
     ```javascript
     var MongoClient = require('mongodb').MongoClient;
@@ -153,7 +153,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
     });
     ```
     
-2. Ändern Sie die folgenden Variablen in der *app.js*-Datei gemäß Ihren Kontoeinstellungen (informieren Sie sich darüber, wie Sie Ihre [Verbindungszeichenfolge](connect-mongodb-account.md) finden):
+2. Ändern Sie die folgenden Variablen in der *app.js* -Datei gemäß Ihren Kontoeinstellungen (informieren Sie sich darüber, wie Sie Ihre [Verbindungszeichenfolge](connect-mongodb-account.md) finden):
 
     > [!IMPORTANT]
     > Bei Verwendung des **MongoDB-Node.js 3.0-Treibers** müssen Sonderzeichen im Cosmos DB-Kennwort codiert werden. Das Gleichheitszeichen (=) muss als „%3D“ codiert werden.

@@ -7,12 +7,12 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784ecd5c0539ee0dc84c8afd6b85dbc10a154982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318877"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206882"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub oder externen Partner
 
@@ -26,7 +26,7 @@ Bevor Sie das Streaming für eine Datenquelle konfigurieren, müssen Sie [einen 
 * Über die Anzahl von Partitionen können Sie den Verbrauch vieler Consumer parallelisieren. Eine einzelne Partition kann bis zu 20 MBit/s oder ungefähr 20.000 Nachrichten pro Sekunde unterstützen. Je nach Tool, das die Daten nutzt, ist es auch möglich, Daten von mehreren Partitionen zu verarbeiten. Wenn Sie sich nicht sicher sind, welche Anzahl von Partitionen festgelegt werden soll, ist es sinnvoll, mit vier Partitionen zu beginnen.
 * Legen Sie die Nachrichtenvermerkdauer für Ihren Event Hub auf mindestens 7 Tage fest. Wenn Ihr Tool mehr als einen Tag ausfällt, wird dadurch sichergestellt, dass das Tool für bis zu 7 Tage alte Ereignisse dort fortfahren kann, wo es aufgehört hatte.
 * Sie sollten die Standardconsumergruppe für Ihren Event Hub verwenden. Es ist nur dann erforderlich, andere Consumergruppen zu erstellen oder eine separate Consumergruppe zu verwenden, wenn Sie zwei verschiedenen Tools verwenden möchten, um dieselben Daten vom selben Event Hub zu verarbeiten.
-* Für das Azure-Aktivitätsprotokoll wählen Sie einen Event Hubs-Namespace aus. Azure Monitor erstellt dann in diesem Namespace den Event Hub _insights-logs-operational-logs_. Für andere Protokolltypen können Sie entweder einen vorhandenen Event Hub verwenden oder Azure Monitor für jede Protokollkategorie einen Event Hub erstellen lassen.
+* Für das Azure-Aktivitätsprotokoll wählen Sie einen Event Hubs-Namespace aus. Azure Monitor erstellt dann in diesem Namespace den Event Hub _insights-logs-operational-logs_ . Für andere Protokolltypen können Sie entweder einen vorhandenen Event Hub verwenden oder Azure Monitor für jede Protokollkategorie einen Event Hub erstellen lassen.
 * In der Regel müssen die ausgehenden Ports 5671 und 5672 auf dem Computer oder im VNET offen sein, der bzw. das die Daten vom Event Hub verarbeitet.
 
 ## <a name="monitoring-data-available"></a>Verfügbare Überwachungsdaten
@@ -51,7 +51,7 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 | Tool | In Azure gehostet | BESCHREIBUNG |
 |:---|:---| :---|
 |  IBM QRadar | Nein | Das DSM und Event Hub-Protokoll von Microsoft Azure sind zum Download auf der [Website des IBM-Supports](https://www.ibm.com/support) erhältlich. Weitere Informationen zur Integration in Azure finden Sie unter [QRadar DSM configuration (QRadar DSM-Konfiguration)](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
-| Splunk | Nein | Das [Azure Monitor-Add-On für Splunk](https://splunkbase.splunk.com/app/3534/) steht als Open-Source-Projekt in der Splunkbase zur Verfügung. Die Dokumentation ist unter [Azure Monitor-Add-On für Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk) erhältlich.<br><br> Falls Sie kein Add-On in Ihrer Splunk-Instanz installieren können, z. B. bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud, können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu die [Azure-Funktion für Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), die durch neue Nachrichten im Event Hub ausgelöst wird. |
+| Splunk | Nein | Das [Microsoft Azure-Add-On für Splunk](https://splunkbase.splunk.com/app/3757/) steht als Open-Source-Projekt in der Splunkbase zur Verfügung. <br><br> Falls Sie kein Add-On in Ihrer Splunk-Instanz installieren können, z. B. bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud, können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu die [Azure-Funktion für Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), die durch neue Nachrichten im Event Hub ausgelöst wird. |
 | sumologic | Nein | Anweisungen zum Einrichten von SumoLogic für die Nutzung von Daten aus einem Event Hub finden Sie unter [Collect Logs for the Azure Audit App from Event Hub (Sammeln von Protokollen für die Azure Audit App aus einem Event Hub)](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
 | ArcSight | Nein | Der intelligente Azure Event Hub-Connector von ArcSight wird im Rahmen dieser [ArcSight-Sammlung von intelligenten Connectors](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852) zur Verfügung gestellt. |
 | Syslog-Server | Nein | Wenn Sie Azure Monitor-Daten direkt an einen Syslog-Server streamen möchten, können Sie eine [auf einer Azure-Funktion basierende Lösung](https://github.com/miguelangelopereira/azuremonitor2syslog/) nutzen.

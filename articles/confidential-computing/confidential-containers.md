@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993492"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122202"
 ---
 # <a name="confidential-containers"></a>Vertrauliche Container
 
@@ -32,7 +32,7 @@ Vertrauliche Container schützen Folgendes:
 
 Eine hardwarebasierte vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) ist eine wichtige Komponente, die dank hardware- und softwarebasierter Messungen über TCB-Komponenten (Trusted Computing Base) umfassende Schutzmaßnahmen bietet. Die Überprüfung dieser Messungen hilft bei der Validierung des erwarteten Berechnungsergebnisses. Zudem wird damit kontrolliert, ob die Container-Apps manipuliert wurden.
 
-Vertrauliche Container unterstützen benutzerdefinierte Anwendungen, die mit **Python, Java, Node JS usw. oder mit gepackten Softwareanwendungen wie NGINX, Redis Cache, MemCache usw. entwickelt wurden**, um in AKS unverändert ausgeführt zu werden.
+Vertrauliche Container unterstützen benutzerdefinierte Anwendungen, die mit **Python, Java, Node JS usw. oder mit gepackten Softwareanwendungen wie NGINX, Redis Cache, MemCache usw. entwickelt wurden** , um in AKS unverändert ausgeführt zu werden.
 
 Vertrauliche Container sind der schnellste Weg zu Containervertraulichkeit. Hierzu gehören Containerschutz durch Verschlüsselung sowie die Ermöglichung von Lift & Shift ohne oder mit nur minimalen Änderungen an der Geschäftslogik.
 
@@ -67,7 +67,7 @@ Scone-Bereitstellungen auf Confidential Computing-Knoten mit AKS werden umfassen
 
 ### <a name="anjuna"></a>Anjuna
 
-[Anjuna](https://www.anjuna.io/) stellt SGX-Plattformsoftware bereit, mit der Container unverändert in AKS ausgeführt werden können. Weitere Informationen zu dieser **neue** Funktion und den Benutzerflow finden Sie [hier](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp).
+[Anjuna](https://www.anjuna.io/) stellt SGX-Plattformsoftware bereit, mit der Container unverändert in AKS ausgeführt werden können. [Hier](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp) erfahren Sie mehr über die Funktionen und können sich die Beispielanwendungen ansehen.
 
 Beginnen Sie mit einer Redis Cache-Beispielanwendung und einer benutzerdefinierten Python-Anwendung [hier](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp).
 

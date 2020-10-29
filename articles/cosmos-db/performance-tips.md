@@ -4,15 +4,15 @@ description: Informationen zu den Clientkonfigurationsoptionen zur Verbesserung 
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802139"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277229"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Leistungstipps für Azure Cosmos DB und .NET SDK v2
 
@@ -48,7 +48,7 @@ Für eine bessere Leistung wird die Windows-64-Bit-Hostverarbeitung empfohlen. D
 
 - Bei lokal bereitgestellten ASP.NET-Webanwendungen ändern Sie die Hostverarbeitung, indem Sie unter **Extras** > **Optionen** > **Projekte und Projektmappen** > **Webprojekte** die Option **64-Bit-Version von IIS Express für Websites und Projekte verwenden** aktivieren.
 
-- Für ASP.NET-Webanwendungen, die in Azure bereitgestellt werden, können Sie die Hostverarbeitung ändern, indem Sie im Azure-Portal unter **Anwendungseinstellungen** die **64-Bit**-Plattform auswählen.
+- Für ASP.NET-Webanwendungen, die in Azure bereitgestellt werden, können Sie die Hostverarbeitung ändern, indem Sie im Azure-Portal unter **Anwendungseinstellungen** die **64-Bit** -Plattform auswählen.
 
 > [!NOTE] 
 > Standardmäßig ist bei neuen Visual Studio-Projekten **Beliebige CPU** festgelegt. Es wird empfohlen, Ihr Projekt auf **x64** festzulegen, damit es nicht zu **x86** wechselt. Ein Projekt mit der Einstellung **Beliebige CPU** kann schnell zu **x86** wechseln, wenn eine Abhängigkeit hinzugefügt wird, die nur bei x86 verfügbar ist.<br/>
@@ -69,28 +69,7 @@ Wenn Sie auf einem hohen Durchsatzniveau testen (> 50.000 RU/s), kann sich die 
 
 **Verbindungsrichtlinie: Verwenden des direkten Verbindungsmodus**
 
-Die Art der Verbindungsherstellung zwischen einem Client und Azure Cosmos DB hat erhebliche Auswirkungen auf die Leistung, insbesondere im Hinblick auf die clientseitige Latenz. Für die Konfiguration der Verbindungsrichtlinie stehen zwei wichtige Konfigurationseinstellungen zur Verfügung: der *Verbindungsmodus* und das *Verbindungsprotokoll*.  Folgende Modi sind verfügbar:
-
-  * Gatewaymodus (Standard)
-      
-    Der Gatewaymodus wird auf allen SDK-Plattformen unterstützt und ist für das [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) als Standardoption konfiguriert. Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen DNS-Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind. Der Gatewayverbindungsmodus wird auch empfohlen, wenn Sie Anwendungen in Umgebungen mit einer begrenzten Anzahl von Socketverbindungen ausführen.
-
-    Beachten Sie bei Verwendung des SDK in Azure Functions – insbesondere beim [Verbrauchstarif](../azure-functions/functions-scale.md#consumption-plan) – die aktuellen [Grenzwerte für Verbindungen](../azure-functions/manage-connections.md). In diesem Fall empfiehlt sich möglicherweise der Gatewaymodus, wenn Sie auch mit anderen HTTP-basierten Clients innerhalb Ihrer Azure Functions-Anwendung arbeiten.
-
-  * Direkter Modus
-
-    Der direkte Modus unterstützt Verbindungen über das TCP-Protokoll.
-     
-Wenn Sie das TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. Wenn Sie den direkten Modus auf [privaten Endpunkten](./how-to-configure-private-endpoints.md) verwenden, sollte der gesamte Bereich der TCP-Ports von 0 bis 65535 geöffnet sein. Wenn diese Ports nicht geöffnet sind und Sie versuchen, das TCP zu verwenden, wird der 503-Fehler „Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle enthält die für verschiedene APIs verfügbaren Konnektivitätsmodi und die für die einzelnen APIs verwendeten Dienstports:
-
-|Verbindungsmodus  |Unterstütztes Protokoll  |Unterstützte SDKs  |API/Dienstport  |
-|---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle SDKs    |   SQL (443), MongoDB (10250, 10255, 10256), Tabelle (443), Cassandra (10350), Graph (443) <br> Port 10250 ist einer Instanz der Azure Cosmos DB-API für MongoDB ohne Georeplikation zugeordnet. Die Ports 10255 und 10256 hingegen sind der Instanz mit Georeplikation zugeordnet.   |
-|Direkt    |     TCP    |  .NET SDK    | Bei Verwendung von öffentlichen oder Dienstendpunkten: Ports im Bereich zwischen 10000 und 20000<br>Bei Verwendung von privaten Endpunkten: Ports im Bereich zwischen 0 und 65535 |
-
-Azure Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Das TCP-Protokoll nutzt TLS für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.
-
-Für das Microsoft.Azure.DocumentDB SDK konfigurieren Sie den Verbindungsmodus während der Erstellung der `DocumentClient`-Instanz mithilfe des Parameters `ConnectionPolicy`. Wenn Sie den direkten Modus verwenden, können Sie das `Protocol` auch mithilfe des Parameters `ConnectionPolicy` festlegen.
+Als Standardverbindungsmodus des .NET V3 SDK wird der Gatewaymodus verwendet. Sie konfigurieren den Verbindungsmodus während der Erstellung der `DocumentClient`-Instanz mithilfe des Parameters `ConnectionPolicy`. Wenn Sie den direkten Modus verwenden, müssen Sie `Protocol` ebenfalls mithilfe des Parameters `ConnectionPolicy` festlegen. Weitere Informationen zu verschiedenen Konnektivitätsoptionen finden Sie im Artikel zu den [Konnektivitätsmodi](sql-sdk-connection-modes.md).
 
 ```csharp
 Uri serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -102,10 +81,6 @@ new ConnectionPolicy
    ConnectionProtocol = Protocol.Tcp
 });
 ```
-
-Da TCP nur im direkten Modus unterstützt wird, wird bei Verwendung des Gatewaymodus immer das HTTPS-Protokoll für die Kommunikation mit dem Gateway verwendet, und der Wert von `Protocol` in `ConnectionPolicy` wird ignoriert.
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB-Verbindungsrichtlinie" border="false":::
 
 **Kurzfristige Portauslastung**
 
@@ -284,4 +259,4 @@ Der Anforderungsaufwand (also die Kosten für die Anforderungsverarbeitung) eine
 
 Eine Beispielanwendung zur Evaluierung von Azure Cosmos DB für Hochleistungsszenarien auf einigen Clientcomputern finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
 
-Weitere Informationen zum Entwerfen einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md).
+Weitere Informationen zum Entwerfen einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](partitioning-overview.md).

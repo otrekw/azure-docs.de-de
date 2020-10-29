@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628051"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165331"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -57,9 +57,9 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 
 ## <a name="upload-data"></a>Hochladen von Daten
 
-Navigieren Sie zum Hochladen der Daten zum <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Klicken Sie im Portal auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
+Navigieren Sie zum Hochladen der Daten zum <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Klicken Sie im Portal auf **Daten hochladen** , um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
 
-![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-select-audio.png)
+![Screenshot: Hervorgehobene Option zum Hochladen von Audio im Speech-Portal](./media/custom-speech/custom-speech-select-audio.png)
 
 Jedes hochgeladene Dataset muss den Anforderungen für den ausgewählten Datentyp entsprechen. Ihre Daten müssen ordnungsgemäß formatiert sein, bevor sie hochgeladen werden. Durch die richtige Formatierung wird sichergestellt, dass die Daten vom Custom Speech-Dienst korrekt verarbeitet werden. Die Anforderungen sind in den folgenden Abschnitten aufgelistet.
 

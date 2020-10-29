@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Überwachung eines Azure Kubernetes Servi
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994514"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165399"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
@@ -58,7 +58,7 @@ Wenn Sie die Integration in einen vorhandenen Arbeitsbereich vornehmen möchten,
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    Kopieren Sie den Wert für **SubscriptionId**.
+    Kopieren Sie den Wert für **SubscriptionId** .
 
 2. Wechseln Sie mit dem folgenden Befehl zu dem Abonnement, das den Log Analytics-Arbeitsbereich hostet:
 
@@ -72,7 +72,7 @@ Wenn Sie die Integration in einen vorhandenen Arbeitsbereich vornehmen möchten,
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Suchen Sie in der Ausgabe nach dem Namen des Arbeitsbereichs, und kopieren Sie dann die vollständige Ressourcen-ID dieses Log Analytics-Arbeitsbereichs unter dem Feld **id**.
+    Suchen Sie in der Ausgabe nach dem Namen des Arbeitsbereichs, und kopieren Sie dann die vollständige Ressourcen-ID dieses Log Analytics-Arbeitsbereichs unter dem Feld **id** .
 
 4. Führen Sie den folgenden Befehl aus, um das Überwachungs-Add-On zu aktivieren, und ersetzen Sie dabei den Wert für den `--workspace-resource-id`-Parameter. Der Zeichenfolgenwert muss in doppelte Anführungszeichen gesetzt werden:
 
@@ -111,7 +111,7 @@ Führen Sie die folgenden Schritte aus, um die Überwachung Ihres AKS-Clusters i
 
 3. Wählen Sie auf der Seite **Überwachung – Container** die Option **Nicht überwachte Cluster** aus.
 
-4. Suchen Sie in der Liste der nicht überwachten Cluster den Container, und klicken Sie auf **Aktivieren**.
+4. Suchen Sie in der Liste der nicht überwachten Cluster den Container, und klicken Sie auf **Aktivieren** .
 
 5. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird.
@@ -132,12 +132,10 @@ Führen Sie die folgenden Schritte aus, um die Überwachung direkt von einem Ihr
 2. Geben Sie in die Ressourcenliste **Containers** ein.  Die Liste wird anhand Ihrer Eingabe gefiltert.
 
 3. Wählen Sie **Kubernetes-Dienste** aus.
+    
+4. Wählen Sie in der Liste der Kubernetes-Dienste einen Dienst aus.
 
-    ![Link zu Kubernetes-Diensten](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. Wählen Sie in der Containerliste einen Container aus.
-
-5. Wählen Sie auf der Containerübersichtsseite **Container überwachen** aus.
+5. Wählen Sie auf der Übersichtsseite des Kubernetes-Diensts **Überwachung > Erkenntnisse** aus.
 
 6. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird.

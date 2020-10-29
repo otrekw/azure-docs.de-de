@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121725"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328758"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -24,7 +24,7 @@ Das Domain Name System (DNS) führt die Übersetzung bzw. Auflösung einer Websi
 
 DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern gehostet. Bei diesem System werden Anycast-Netzwerke verwendet, sodass jede DNS-Abfrage vom nächsten verfügbaren DNS-Server beantwortet wird. Azure DNS sorgt für Ihre Domäne für eine schnelle Leistung und Hochverfügbarkeit.
 
-Azure DNS basiert auf Azure Resource Manager. Azure DNS profitiert von Resource Manager-Funktionen, z. B. rollenbasierte Zugriffskontrolle, Überwachungsprotokolle und Ressourcensperren. Sie können Domänen und Einträge über das Azure-Portal, Azure PowerShell-Cmdlets und die plattformübergreifende Azure-Befehlszeilenschnittstelle verwalten. Anwendungen, für die eine automatische DNS-Verwaltung erforderlich ist, können über die REST-API und SDKs mit dem Dienst zusammenarbeiten.
+Azure DNS basiert auf Azure Resource Manager. Azure DNS profitiert von Resource Manager-Funktionen, z. B. rollenbasierter Zugriffskontrolle von Azure, Überwachungsprotokollen und Ressourcensperren. Sie können Domänen und Einträge über das Azure-Portal, Azure PowerShell-Cmdlets und die plattformübergreifende Azure-Befehlszeilenschnittstelle verwalten. Anwendungen, für die eine automatische DNS-Verwaltung erforderlich ist, können über die REST-API und SDKs mit dem Dienst zusammenarbeiten.
 
 ### <a name="how-much-does-azure-dns-cost"></a>Wie viel kostet Azure DNS?
 
@@ -44,7 +44,7 @@ Eine Domäne ist ein eindeutiger Name im Domain Name System. Ein Beispiel wäre 
 
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispielsweise kann die Domäne „contoso.com“ mehrere DNS-Einträge enthalten. Die Einträge können „mail.contoso.com“ für einen Mailserver und „www\.contoso.com“ für eine Website enthalten. Diese Einträge werden in der DNS-Zone „contoso.com“ gehostet.
 
-Ein Domänenname ist *nur ein Name*. Eine DNS-Zone ist eine Datenressource, die die DNS-Einträge für einen Domänennamen enthält. Azure DNS ermöglicht es Ihnen, eine DNS-Zone zu hosten und die DNS-Einträge für eine Domäne in Azure zu verwalten. Darüber hinaus stellt der Dienst DNS-Namenserver bereit, um DNS-Abfragen aus dem Internet zu beantworten.
+Ein Domänenname ist *nur ein Name* . Eine DNS-Zone ist eine Datenressource, die die DNS-Einträge für einen Domänennamen enthält. Azure DNS ermöglicht es Ihnen, eine DNS-Zone zu hosten und die DNS-Einträge für eine Domäne in Azure zu verwalten. Darüber hinaus stellt der Dienst DNS-Namenserver bereit, um DNS-Abfragen aus dem Internet zu beantworten.
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Muss ich einen DNS-Domänennamen erwerben, um Azure DNS nutzen zu können? 
 
@@ -177,7 +177,7 @@ Neue DNS-Zonen und DNS-Einträge werden normalerweise schnell auf den Azure DNS-
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Wie kann ich meine DNS-Zonen vor versehentlichem Löschen schützen?
 
-Azure DNS wird mit Azure Resource Manager verwaltet. Azure DNS profitiert von den Features für die Zugriffssteuerung, die von Azure Resource Manager bereitgestellt werden. Mit der rollenbasierten Zugriffssteuerung wird gesteuert, welche Benutzer über Lese- oder Schreibzugriff auf DNS-Zonen und -Ressourceneintragssätze verfügen. Mit Ressourcensperren wird die versehentliche Änderung oder Löschung von DNS-Zonen und -Ressourceneintragssätzen verhindert.
+Azure DNS wird mit Azure Resource Manager verwaltet. Azure DNS profitiert von den Features für die Zugriffssteuerung, die von Azure Resource Manager bereitgestellt werden. Mit der rollenbasierten Zugriffssteuerung von Azure kann gesteuert werden, welche Benutzer über Lese- oder Schreibzugriff auf DNS-Zonen und Ressourceneintragssätze verfügen. Mit Ressourcensperren wird die versehentliche Änderung oder Löschung von DNS-Zonen und -Ressourceneintragssätzen verhindert.
 
 Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen](dns-protect-zones-recordsets.md).
 

@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85118949"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489352"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Änderungsfeed-Entwurfsmuster in Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Zusätzlich zum Lesen aus dem Änderungsfeed eines Cosmos-Containers können Sie
 
 ### <a name="high-availability"></a>Hochverfügbarkeit
 
-Azure Cosmos DB bietet bis zu 99,999 % Lese- und Schreibverfügbarkeit. Im Gegensatz zu vielen Nachrichtenwarteschlangen können Azure Cosmos DB-Daten problemlos global verteilt und mit einer [RTO (Recovery Time Objective)](consistency-levels-tradeoffs.md#rto) von null konfiguriert werden.
+Azure Cosmos DB bietet bis zu 99,999 % Lese- und Schreibverfügbarkeit. Im Gegensatz zu vielen Nachrichtenwarteschlangen können Azure Cosmos DB-Daten problemlos global verteilt und mit einer [RTO (Recovery Time Objective)](./consistency-levels.md#rto) von null konfiguriert werden.
 
 Nachdem Sie Elemente im Änderungsfeed verarbeitet haben, können Sie eine materialisierte Sicht erstellen und aggregierte Werte in Azure Cosmos DB persistent speichern. Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
@@ -73,7 +73,7 @@ Wenn Sie Daten [über Partitionen und Container hinweg denormalisieren](how-to-m
 
 ## <a name="event-sourcing"></a>Ereignissourcing
 
-Das [Ereignissourcingmuster](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) beinhaltet die Verwendung eines reinen Anfügespeichers zum Aufzeichnen aller Aktionen für diese Daten. Der Änderungsfeed von Azure Cosmos DB ist eine gute Wahl als zentraler Datenspeicher in ereignisbasierten Architekturen, in denen die gesamte Datenerfassung als Schreibvorgänge (keine Aktualisierungen oder Löschungen) modelliert wird. In diesem Fall ist jeder Schreibvorgang in Azure Cosmos DB ein „Ereignis“, und Sie verfügen über einen vollständigen Datensatz früherer Ereignisse im Änderungsfeed. Typische Verwendungsmöglichkeiten von Ereignissen, die vom zentralen Ereignisspeicher veröffentlicht werden, sind die Verwaltung materialisierter Sichten oder die Integration in externe Systeme. Da es keine zeitliche Beschränkung für die Datenaufbewahrung im Änderungsfeed gibt, können Sie alle vergangenen Ereignisse wiedergeben, indem vom Anfang des Änderungsfeeds Ihres Cosmos-Containers lesen.
+Das [Ereignissourcingmuster](/azure/architecture/patterns/event-sourcing) beinhaltet die Verwendung eines reinen Anfügespeichers zum Aufzeichnen aller Aktionen für diese Daten. Der Änderungsfeed von Azure Cosmos DB ist eine gute Wahl als zentraler Datenspeicher in ereignisbasierten Architekturen, in denen die gesamte Datenerfassung als Schreibvorgänge (keine Aktualisierungen oder Löschungen) modelliert wird. In diesem Fall ist jeder Schreibvorgang in Azure Cosmos DB ein „Ereignis“, und Sie verfügen über einen vollständigen Datensatz früherer Ereignisse im Änderungsfeed. Typische Verwendungsmöglichkeiten von Ereignissen, die vom zentralen Ereignisspeicher veröffentlicht werden, sind die Verwaltung materialisierter Sichten oder die Integration in externe Systeme. Da es keine zeitliche Beschränkung für die Datenaufbewahrung im Änderungsfeed gibt, können Sie alle vergangenen Ereignisse wiedergeben, indem vom Anfang des Änderungsfeeds Ihres Cosmos-Containers lesen.
 
 Sie können [mehrere Consumer von Änderungsfeeds den Änderungsfeed des gleichen Containers abonnieren](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers) lassen. Abgesehen vom bereitgestelltem Durchsatz des [Leasecontainers](change-feed-processor.md#components-of-the-change-feed-processor) entstehen keine Kosten für die Nutzung des Änderungsfeeds. Der Änderungsfeed ist in jedem Container verfügbar, und zwar unabhängig davon, ob er verwendet wird.
 

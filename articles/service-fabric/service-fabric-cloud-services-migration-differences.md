@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836733"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091167"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Lernen Sie die Unterschiede zwischen Cloud Services und Service Fabric kennen, bevor Sie Anwendungen migrieren
 Microsoft Azure Service Fabric ist die neueste Generation der Cloudanwendungsplattformen für stark skalierbare, sehr zuverlässige verteilte Anwendungen. Es führt viele neue Funktionen zum Verpacken, Bereitstellen, Aktualisieren und Verwalten von verteilten Cloudanwendungen ein. 
@@ -69,7 +69,7 @@ Bei der direkten Kommunikation können die Ebenen direkt durch die auf jeder Ebe
 
 Service Fabric bietet einen Dienstermittlungsmechanismus namens „Naming Service“, welcher verwendet werden kann, um die Endpunktadressen der Dienste aufzulösen. 
 
-![Service Fabric direkte Kommunikation][6]
+![Diagramm, das zeigt, wie Service Fabric einen Dienstermittlungsmechanismus namens „Naming Service“ bietet, welcher verwendet werden kann, um die Endpunktadressen der Dienste aufzulösen][6]
 
 ### <a name="queues"></a>Warteschlangen
 Ein üblicher Kommunikationsmechanismus zwischen Ebenen in zustandslosen Umgebungen wie Cloud Services besteht in der Verwendung einer externen Speicherwarteschlange, um Arbeitsaufgaben dauerhaft von einer Ebene auf die andere zu speichern. Ein verbreitetes Szenario ist eine Web-Ebene, die Aufträge an eine Azure-Speicherwarteschlange oder einen Service Bus schickt. Dort können die Workerrolleninstanzen die Aufträge aus der Warteschlange entfernen und bearbeiten.

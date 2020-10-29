@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485374"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -39,7 +39,7 @@ In Azure Database for PostgreSQL wird beim Wiederherstellen eines Hyperscale (Ci
 
 
 > [!IMPORTANT]
-> Gelöschte Hyperscale (Citus)-Cluster können nicht wiederhergestellt werden. Wenn Sie den Cluster löschen, werden alle Knoten, die zu diesem Cluster gehören, gelöscht und können nicht wiederhergestellt werden. Administratoren können [Verwaltungssperren](/azure/azure-resource-manager/management/lock-resources) nutzen, um Clusterressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen.
+> Gelöschte Hyperscale (Citus)-Cluster können nicht wiederhergestellt werden. Wenn Sie den Cluster löschen, werden alle Knoten, die zu diesem Cluster gehören, gelöscht und können nicht wiederhergestellt werden. Administratoren können [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen, um Clusterressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen.
 
 ### <a name="point-in-time-restore-pitr"></a>Point-in-Time-Wiederherstellung
 
@@ -65,5 +65,5 @@ Nach beiden Wiederherstellungsverfahren sollten Sie die folgenden Aufgaben durch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über  [Azure-Verfügbarkeitszonen](/azure/availability-zones/az-overview).
-* Legen Sie  [vorgeschlagene Warnungen](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) für Hyperscale (Citus)-Servergruppen fest.
+* Erfahren Sie mehr über  [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md).
+* Legen Sie  [vorgeschlagene Warnungen](./howto-hyperscale-alert-on-metric.md#suggested-alerts) für Hyperscale (Citus)-Servergruppen fest.

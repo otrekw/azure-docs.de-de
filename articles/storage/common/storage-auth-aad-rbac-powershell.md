@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715807"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488757"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten mithilfe von PowerShell
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abges
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt ihm Azure Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-Dieser Artikel beschreibt, wie Sie mithilfe von Azure PowerShell integrierte Rollen auflisten und diese Benutzern zuweisen. Weitere Informationen zur Verwendung von Azure PowerShell finden Sie unter [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
+Dieser Artikel beschreibt, wie Sie mithilfe von Azure PowerShell integrierte Rollen auflisten und diese Benutzern zuweisen. Weitere Informationen zur Verwendung von Azure PowerShell finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

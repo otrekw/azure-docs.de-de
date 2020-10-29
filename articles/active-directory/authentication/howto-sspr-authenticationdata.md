@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cba2517f536c9044ad15c628c793529f93b988ce
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966490"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164997"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Vorausfüllen von Kontaktinformationen zur Benutzerauthentifizierung für die Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -28,7 +28,7 @@ Sie können die Kontaktinformationen für die Authentifizierung vorab ausfüllen
 * Sie verfügen über ordnungsgemäß formatierte Daten in Ihrem lokalen Verzeichnis.
 * Sie haben [Azure AD Connect](../hybrid/how-to-connect-install-express.md) für Ihren Azure AD-Mandanten konfiguriert.
 
-Telefonnummern müssen im Format *+Landesvorwahl Telefonnummer* eingegeben werden, z. B. *+1 4251234567*.
+Telefonnummern müssen im Format *+Landesvorwahl Telefonnummer* eingegeben werden, z. B. *+1 4251234567* .
 
 > [!NOTE]
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
@@ -48,16 +48,14 @@ Nachdem ein Benutzer die Mobiltelefonnummer verifiziert hat, wird diese Nummer i
 
 ## <a name="authentication-contact-info"></a>Kontaktinformationen für Authentifizierung
 
-Auf der Seite **Authentifizierungsmethoden** für einen Azure AD-Benutzer im Azure-Portal kann ein globaler Administrator die Kontaktinformationen für die Authentifizierung manuell festlegen, wie im folgenden Beispielscreenshot gezeigt:
+Auf der Seite **Authentifizierungsmethoden** für einen Azure AD-Benutzer im Azure-Portal kann ein globaler Administrator die Kontaktinformationen für die Authentifizierung manuell festlegen. Vorhandene Methoden können im Abschnitt *Verwendbare Authentifizierungsmethoden* oder **+Add authentication methods** (+Authentifizierungsmethoden hinzufügen) überprüft werden, wie im folgenden Screenshot gezeigt:
 
-![Kontaktinformationen für die Authentifizierung eines Benutzers in Azure AD][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="Verwalten von Authentifizierungsmethoden im Azure-Portal":::
 
 Die folgenden Überlegungen gelten für diese Kontaktinformationen zur Authentifizierung:
 
 * Wenn das Feld *Telefon* ausgefüllt und *Mobiltelefon* in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
-* Das Feld *Alternative Telefonnummer* wird nicht für die Kennwortzurücksetzung verwendet.
 * Wenn das Feld *E-Mail* ausgefüllt und *E-Mail* in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
-* Wenn das Feld *Alternative E-Mail-Adresse* ausgefüllt und *E-Mail* in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung nicht angezeigt – aber während des Workflows für die Kennwortzurücksetzung.
 
 ## <a name="security-questions-and-answers"></a>Sicherheitsfragen und -antworten
 
@@ -169,5 +167,3 @@ Nachdem die Kontaktinformationen zur Authentifizierung für die Benutzer ausgef�
 
 > [!div class="nextstepaction"]
 > [Aktivieren der Self-Service-Kennwortzurücksetzung in Azure AD](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Globale Administratoren können die Kontaktinformationen eines Benutzer für die Authentifizierung bearbeiten"

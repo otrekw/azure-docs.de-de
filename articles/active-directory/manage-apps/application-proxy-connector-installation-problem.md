@@ -1,48 +1,43 @@
 ---
-title: Problem beim Installieren des Anwendungsproxy-Agent-Connectors | Microsoft-Dokumentation
-description: Beheben von Problemen, die beim Installieren des Anwendungsproxy-Agent-Connectors auftreten können
+title: Problem beim Installieren des Anwendungsproxy-Agent-Connectors
+description: Beheben von Problemen, die beim Installieren des Anwendungsproxy-Agent-Connectors für Azure Active Directory auftreten können.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764688"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108200"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
-Der Microsoft AAD-Anwendungsproxyconnector ist eine interne Domänenkomponente, die ausgehende Verbindungen verwendet, um die Konnektivität zwischen dem von der Cloud zur Verfügung gestellten Endpunkt und der internen Domäne einzurichten.
+Der Microsoft Azure Active Directory-Anwendungsproxyconnector ist eine interne Domänenkomponente, die über ausgehende Verbindungen die Konnektivität zwischen dem von der Cloud zur Verfügung gestellten Endpunkt und der internen Domäne einrichtet.
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Allgemeine Problembereiche bei der Installation des Connectors
 
 Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Hauptursache in der Regel einem der folgenden Bereiche:
 
-1.  **Konnektivität**: Zum Abschluss einer erfolgreichen Installation muss der neue Connector zukünftige Eigenschaften der Vertrauensstellung registrieren und einrichten. Dies erfolgt durch das Herstellen einer Verbindung mit dem Clouddienst des AAD-Anwendungsproxys.
+1.  **Konnektivität** : Zum Abschluss einer erfolgreichen Installation muss der neue Connector zukünftige Eigenschaften der Vertrauensstellung registrieren und einrichten. Dies geschieht durch Herstellen einer Verbindung mit dem Azure Active Directory-Anwendungsproxy-Clouddienst.
 
-2.  **Einrichtung einer Vertrauensstellung**: Der neue Connector erstellt ein selbstsigniertes Zertifikat und registriert es beim Clouddienst.
+2.  **Einrichtung einer Vertrauensstellung** : Der neue Connector erstellt ein selbstsigniertes Zertifikat und registriert es beim Clouddienst.
 
-3.  **Authentifizierung des Administrators**: Während der Installation muss der Benutzer Anmeldeinformationen für den Administrator bereitstellen, um die Connectorinstallation abzuschließen.
+3.  **Authentifizierung des Administrators** : Während der Installation muss der Benutzer Anmeldeinformationen für den Administrator bereitstellen, um die Connectorinstallation abzuschließen.
 
 > [!NOTE]
 > Die Connectorinstallationsprotokolle befinden sich im Ordner „%TEMP%“ und können zusätzliche Informationen zur Ursache eines Installationsfehlers bieten.
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Überprüfen der Konnektivität mit dem Cloudanwendungsproxy-Dienst und der Microsoft-Anmeldeseite
 
-**Ziel**: Überprüfen Sie, ob der Connectorcomputer eine Verbindung mit dem Registrierungsendpunkt des AAD-Anwendungsproxys und der Microsoft-Anmeldeseite herstellen kann.
+**Ziel** : Überprüfen Sie, ob der Connectorcomputer eine Verbindung mit dem Registrierungsendpunkt des Anwendungsproxys und der Microsoft-Anmeldeseite herstellen kann.
 
 1.  Führen Sie auf dem Connectorserver einen Porttest aus, indem Sie [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) oder ein anderes Tool zum Testen von Ports verwenden, um zu überprüfen, ob die Ports 443 und 80 geöffnet sind.
 
@@ -52,7 +47,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Überprüfen der Unterstützung für das Vertrauensstellungszertifikat des Anwendungsproxys durch Computer und Back-End-Komponenten
 
-**Ziel**: Vergewissern Sie sich, dass Connectorcomputer, Back-End-Proxy und Firewall das Zertifikat unterstützen können, das vom Connector für die zukünftige Vertrauensstellung erstellt wurde, und dass dieses Zertifikat gültig ist.
+**Ziel** : Vergewissern Sie sich, dass Connectorcomputer, Back-End-Proxy und Firewall das Zertifikat unterstützen können, das vom Connector für die zukünftige Vertrauensstellung erstellt wurde, und dass dieses Zertifikat gültig ist.
 
 >[!NOTE]
 >Der Connector versucht ein SHA512-Zertifikat zu erstellen, das von TLS1.2 unterstützt wird. Wenn TLS 1.2 vom Computer oder von der Back-End-Firewall und dem Proxy nicht unterstützt wird, tritt bei der Installation ein Fehler auf.
@@ -67,7 +62,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 **So überprüfen Sie das Clientzertifikat**
 
-Überprüfen Sie den Fingerabdruck des aktuellen Clientzertifikats. Der Zertifikatspeicher befindet sich unter „%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml“.
+Überprüfen Sie den Fingerabdruck des aktuellen Clientzertifikats. Der Zertifikatspeicher befindet sich in `%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml`.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,23 +74,17 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 </ConnectorTrustSettingsFile>
 ```
 
-Im Folgenden sind die möglichen Werte und Bedeutungen für **IsInUserStore** aufgeführt:
+Die möglichen **IsInUserStore** -Werte lauten **true** und **false** . Der Wert **true** bedeutet: Das automatisch erneuerte Zertifikat wird im persönlichen Container im Benutzerzertifikatspeicher des Netzwerkdiensts gespeichert. Der Wert **false** bedeutet: Das Clientzertifikat wurde während der Installation oder Registrierung erstellt, die durch den Befehl „Register-AppProxyConnector“ initiiert wurde, und es wird im persönlichen Container im Zertifikatspeicher des lokalen Computers gespeichert.
 
-- **false:** Das Clientzertifikat wurde während der durch den Befehl Register-AppProxyConnector initiierten Installation oder Registrierung erstellt. Es wird im persönlichen Container im Zertifikatspeicher des lokalen Computers gespeichert. 
-
-Befolgen Sie die Schritte zum Überprüfen des Zertifikats:
-
-1. Führen Sie **certlm.msc** aus.
-2. Erweitern Sie in der Verwaltungskonsole den persönlichen Container, und klicken Sie auf „Zertifikate“.
-3. Suchen Sie das Zertifikat, das von **connectorregistrationca.msappproxy.net** ausgestellt wurde.
-
-- **true:** Das automatisch erneuerte Zertifikat wird im persönlichen Container im Benutzerzertifikatspeicher des Netzwerkdienstanbieters gespeichert. 
-
-Befolgen Sie die Schritte zum Überprüfen des Zertifikats:
-
+Wenn der Wert **true** lautet, führen Sie zur Überprüfung des Zertifikats die folgenden Schritte aus:
 1. Laden Sie [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) herunter.
 2. Extrahieren Sie [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) aus dem Paket, und führen Sie **psexec -i -u "nt authority\network service" cmd.exe** an einer Eingabeaufforderung mit erhöhten Rechten aus.
 3. Führen Sie **certmgr.msc** in der neu angezeigten Eingabeaufforderung aus.
+4. Erweitern Sie in der Verwaltungskonsole den persönlichen Container, und klicken Sie auf „Zertifikate“.
+5. Suchen Sie das Zertifikat, das von **connectorregistrationca.msappproxy.net** ausgestellt wurde.
+
+Wenn der Wert **false** lautet, führen Sie zur Überprüfung des Zertifikats die folgenden Schritte aus:
+1. Führen Sie **certlm.msc** aus.
 2. Erweitern Sie in der Verwaltungskonsole den persönlichen Container, und klicken Sie auf „Zertifikate“.
 3. Suchen Sie das Zertifikat, das von **connectorregistrationca.msappproxy.net** ausgestellt wurde.
 
@@ -116,7 +105,7 @@ Weitere Informationen zum Befehl Register-AppProxyConnector finden Sie unter [Er
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Überprüfen, dass der Connector vom Administrator installiert wird
 
-**Ziel**: Überprüfen Sie, ob der Benutzer, der versucht, den Connector zu installieren, ein Administrator mit den richtigen Anmeldeinformationen ist. Derzeit muss der Benutzer mindestens über die Rolle „Anwendungsadministrator“ verfügen, damit die Installation erfolgreich ausgeführt werden kann.
+**Ziel** : Überprüfen Sie, ob der Benutzer, der versucht, den Connector zu installieren, ein Administrator mit den richtigen Anmeldeinformationen ist. Derzeit muss der Benutzer mindestens über die Rolle „Anwendungsadministrator“ verfügen, damit die Installation erfolgreich ausgeführt werden kann.
 
 **So überprüfen Sie, ob die Anmeldeinformationen korrekt sind:**
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070009"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144687"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -193,10 +193,10 @@ Windows 10 und Windows Server 2016 unterstützen HTTP/2 auf Client- und Serverse
 
 1. Führen Sie „regedit.exe“ aus.
 2. Navigieren Sie zu folgendem Registrierungsschlüssel: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
-3. Erstellen Sie einen neuen DWORD-Wert namens **DuoEnabled**.
+3. Erstellen Sie einen neuen DWORD-Wert namens **DuoEnabled** .
 4. Legen Sie hierfür den Wert 1 fest.
 5. Starten Sie den Server neu.
-6. Wechseln Sie zu Ihrer **Standardwebsite**, und erstellen Sie unter **Bindungen** eine neue TLS-Bindung mit dem selbstsignierten Zertifikat, das Sie gerade erstellt haben. 
+6. Wechseln Sie zu Ihrer **Standardwebsite** , und erstellen Sie unter **Bindungen** eine neue TLS-Bindung mit dem selbstsignierten Zertifikat, das Sie gerade erstellt haben. 
 
 Weitere Informationen finden Sie unter
 
@@ -217,7 +217,7 @@ Weitere Informationen finden Sie unter [HTTP/2 on IIS](https://blogs.iis.net/dav
 ## <a name="permissions"></a>Berechtigungen
 
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Wie implementiere ich rollenbasierten Zugriff für Cloud Services?
-Das RBAC-Modell (Role-Based Access Control, rollenbasierter Zugriff) wird von Cloud Services nicht unterstützt, da es sich nicht um einen Azure Resource Manager-basierten Dienst handelt.
+Das Azure RBAC-Modell (Azure Role-Based Access Control, rollenbasierter Zugriff von Azure) wird von Cloud Services nicht unterstützt, da es sich nicht um einen Azure Resource Manager-basierten Dienst handelt.
 
 Weitere Informationen finden Sie unter [Grundlegendes zu den verschiedenen Rollen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -231,7 +231,7 @@ Bei Microsoft gilt ein strenger Verhaltenskodex, der es internen Technikern nich
 Dieser Fehler kann auftreten, wenn Sie die RDP-Datei eines Computers verwenden, der Mitglied von Azure Active Directory ist. Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 
 1. Klicken Sie mit der rechten Maustaste auf die heruntergeladene RDP-Datei, und wählen Sie **Bearbeiten** aus.
-2. Fügen Sie vor dem Benutzernamen das Präfix „&#92;“ hinzu. Verwenden Sie z. B. **.\username** anstelle von **username**.
+2. Fügen Sie vor dem Benutzernamen das Präfix „&#92;“ hinzu. Verwenden Sie z. B. **.\username** anstelle von **username** .
 
 ## <a name="scaling"></a>Skalierung
 

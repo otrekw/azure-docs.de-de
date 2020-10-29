@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2020
-ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269164"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317573"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -137,7 +137,7 @@ Bevor Sie Azure AD OAuth aktivieren, berücksichtigen Sie die folgenden Überleg
 
 * Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, der einen Wert als Azure AD-Aussteller-ID hat, der entweder mit `https://sts.windows.net/` oder mit `https://login.microsoftonline.com/` (OAuth V2) beginnt.
 
-  Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, **Zielgruppe** und **Aussteller**. Dieser [Beispielpayloadabschnitt](../active-directory/develop/access-tokens.md#payload-claims) für ein decodiertes Zugriffstoken umfasst beide Anspruchstypen, wobei `aud` der Wert **Zielgruppe** und `iss` der Wert **Aussteller** ist:
+  Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, **Zielgruppe** und **Aussteller** . Dieser [Beispielpayloadabschnitt](../active-directory/develop/access-tokens.md#payload-claims) für ein decodiertes Zugriffstoken umfasst beide Anspruchstypen, wobei `aud` der Wert **Zielgruppe** und `iss` der Wert **Aussteller** ist:
 
   ```json
   {
@@ -210,7 +210,7 @@ Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie
 
 1. Zum Hinzufügen einer weiteren Autorisierungsrichtlinie wählen Sie **Richtlinie hinzufügen** aus. Wiederholen Sie die vorherigen Schritte, um die Richtlinie einzurichten.
 
-1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
+1. Klicken Sie auf **Speichern** , wenn Sie fertig sind.
 
 1. Informationen, wie Sie den `Authorization`-Header aus dem Zugriffstoken in die anforderungsbasierten Triggerausgaben aufnehmen, finden Sie unter [Aufnehmen des „Authorization“-Headers in Anforderungstriggerausgaben](#include-auth-header).
 
@@ -316,14 +316,14 @@ Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die 
 
 1. Wählen Sie unter **Konfiguration der Zugriffssteuerung** > **Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
 
-1. Geben Sie unter **IP-Bereiche für Trigger** die IP-Adressbereiche an, die der Trigger akzeptiert.
+1. Wenn das Feld **IP-Bereiche für Trigger** angezeigt wird, geben Sie die IP-Adressbereiche an, die der Trigger akzeptiert. Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* .
 
-   Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
+   Wenn Sie beispielsweise festlegen möchten, dass Ihre Logik-App nur als geschachtelte Logik-App über die HTTP-Aktion aufgerufen werden kann, verwenden Sie die Option **Spezifische IP-Bereiche** (nicht die Option **Nur andere Logik-Apps** ), und geben Sie die [ausgehenden IP-Adressen](../logic-apps/logic-apps-limits-and-config.md#outbound) der übergeordneten Logik-App ein.
 
-Wenn Sie Ihre Logik-App nur als geschachtelte Logik-App auslösen möchten, wählen Sie in der Liste **Zulässige eingehende IP-Adressen** die Option **Nur andere Logik-Apps** aus. Diese Option schreibt ein leeres Array in Ihre Logik-App-Ressource. Auf diese Weise können nur Aufrufe über den Logic Apps-Dienst (übergeordnete Logik-Apps) die geschachtelte Logik-App auslösen.
+   Wenn Sie jedoch festlegen möchten, dass Ihre Logik-App nur als geschachtelte Logik-App über die integrierte [Azure Logic Apps-Aktion](../logic-apps/logic-apps-http-endpoint.md) aufgerufen werden kann, wählen Sie stattdessen die Option **Nur andere Logik-Apps** aus. Diese Option schreibt ein leeres Array in Ihre Logik-App-Ressource und legt fest, dass nur Aufrufe von anderen „übergeordneten“ Logik-Apps die geschachtelte Logik-App über die Aktion **Azure Logic Apps** auslösen können.
 
-> [!NOTE]
-> Unabhängig von der IP-Adresse können Sie eine Logik-App weiterhin ausführen, die einen anforderungsbasierten Trigger hat, indem Sie die Anforderung [Logic Apps-REST-API:  Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder die API Management verwenden. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
+   > [!NOTE]
+   > Unabhängig von den von Ihnen angegebenen IP-Adressen können Sie eine Logik-App, die einen anforderungsbasierten Trigger hat, mithilfe der Anforderung [Logic Apps-REST-API: Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder über API Management weiterhin ausführen. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
 
 <a name="restrict-inbound-ip-template"></a>
 
@@ -418,7 +418,7 @@ Sie können den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer L
 
 1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können.
 
-   Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
+   Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* .
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Einschränken von IP-Adressbereichen in einer Azure Resource Manager-Vorlage
 
@@ -477,7 +477,7 @@ Bei vielen Triggern und Aktionen stehen Einstellungen zur Verfügung, um Eingabe
 
    ![Öffnen von Trigger- oder Aktionseinstellungen](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
-1. Aktivieren Sie entweder **Sichere Eingaben**, **Sichere Ausgaben** oder beides. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+1. Aktivieren Sie entweder **Sichere Eingaben** , **Sichere Ausgaben** oder beides. Klicken Sie auf **Fertig** , wenn Sie fertig sind.
 
    ![Aktivieren von „Sichere Eingaben“ oder „Sichere Ausgaben“](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
@@ -546,7 +546,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
   ![Sichere Ausgaben als Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
 
-  Die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ weisen nur die Einstellung **Sichere Eingaben** auf. Wenn diese aktiviert wird, blendet diese Einstellung auch die Ausgaben dieser Aktionen aus. Wenn diese Aktionen explizit die sicheren Upstreamausgaben als Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** dieser Aktionen. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
+  Die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ weisen nur die Einstellung **Sichere Eingaben** auf. Wenn diese aktiviert wird, blendet diese Einstellung auch die Ausgaben dieser Aktionen aus. Wenn diese Aktionen explizit die sicheren Upstreamausgaben als Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** dieser Aktionen. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus* .
 
   ![Sichere Ausgaben als Eingaben mit nachgeschalteten Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
 
@@ -556,7 +556,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
   ![Sichere Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  Wenn die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ explizit die sichtbaren Ausgaben des Triggers oder der Aktion mit den sicheren Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der jeweiligen Aktion. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
+  Wenn die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ explizit die sichtbaren Ausgaben des Triggers oder der Aktion mit den sicheren Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der jeweiligen Aktion. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus* .
 
   ![Sichere Eingaben und nachgeschaltete Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -838,7 +838,7 @@ Im Folgenden finden Sie weitere Möglichkeiten, wie Sie Endpunkte, die Aufrufe v
 
 ### <a name="add-authentication-to-outbound-calls"></a>Hinzufügen der Authentifizierung zu ausgehenden Aufrufen
 
-HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung**. Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Authentifizierung** aus.
+HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung** . Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen** , und wählen Sie **Authentifizierung** aus.
 
 > [!IMPORTANT]
 > Um vertrauliche Informationen, die Ihre Logik-App verarbeitet, zu schützen, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf.
@@ -894,7 +894,7 @@ Wenn die Option [Clientzertifikat](../active-directory/authentication/active-dir
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der zu verwendende Authentifizierungstyp. Sie können Zertifikate mit [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) verwalten. <p></p>**Hinweis**: Benutzerdefinierte Connectors unterstützen sowohl für eingehende als auch für ausgehende Aufrufe keine zertifikatbasierte Authentifizierung. |
+| **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der zu verwendende Authentifizierungstyp. Sie können Zertifikate mit [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) verwalten. <p></p>**Hinweis** : Benutzerdefinierte Connectors unterstützen sowohl für eingehende als auch für ausgehende Aufrufe keine zertifikatbasierte Authentifizierung. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Kennwort** | `password`| Nein | <*password-for-pfx-file*> | Der Parameter für den Zugriff auf die PFX-Datei |
 |||||
@@ -929,7 +929,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
-Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) eingehende Anrufe für Ihre Logik-App mit [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
+Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) eingehende Anrufe für Ihre Logik-App mit [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth** -Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
@@ -1012,7 +1012,7 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 ### <a name="managed-identity-authentication"></a>Authentifizierung der verwalteten Identität
 
-Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [bestimmten Trigger oder eine bestimmte Aktion](#add-authentication-outbound) verfügbar ist, kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne*, manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [bestimmten Trigger oder eine bestimmte Aktion](#add-authentication-outbound) verfügbar ist, kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne* , manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Bevor Ihre Logik-App eine verwaltete Identität verwenden kann, führen Sie die Schritte in [Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md) aus. Diese Schritte aktivieren die verwaltete Identität in Ihrer Logik-App und richten den Zugriff dieser Identität auf die Zielressource in Azure ein.
 
@@ -1023,8 +1023,8 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
    | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
    |---------------------|-----------------|----------|-------|-------------|
    | **Authentifizierung** | `type` | Ja | **Verwaltete Identität** <br>oder <br>`ManagedServiceIdentity` | Der zu verwendende Authentifizierungstyp |
-   | **Verwaltete Identität** | `identity` | Ja | * **Systemseitig zugewiesene verwaltete Identität** <br>oder <br>`SystemAssigned` <p><p>* <*Name-der-benutzerseitig-zugewiesenen-Identität*> | Die zu verwendende verwaltete Identität |
-   | **Zielgruppe** | `audience` | Ja | <*target-resource-ID*> | Die Ressourcen-ID der Zielressource, auf die Sie zugreifen möchten. <p>Beispielsweise macht `https://storage.azure.com/` die [Zugriffstoken](../active-directory/develop/access-tokens.md) für die Authentifizierung für alle Speicherkonten gültig. Sie können jedoch auch für ein bestimmtes Speicherkonto eine Stammdienst-URL angeben, z. B. `https://fabrikamstorageaccount.blob.core.windows.net`. <p>**Hinweis**: Die Eigenschaft **Zielgruppe** kann in einigen Triggern oder Aktionen ausgeblendet sein. Um diese Eigenschaft einzublenden, öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Zielgruppe** aus. <p><p>**Wichtig**: Vergewissern Sie sich, dass diese Zielressourcen-ID *genau dem Wert entspricht*, den Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche. Daher erfordert die `https://storage.azure.com/`-Ressourcen-ID für alle Azure Blob Storage-Konten einen nachgestellten Schrägstrich. Allerdings erfordert die Ressourcen-ID für ein bestimmtes Speicherkonto keinen nachgestellten Schrägstrich. Diese Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
+   | **Verwaltete Identität** | `identity` | Ja | * **Systemseitig zugewiesene verwaltete Identität** <br>oder <br>`SystemAssigned` <p><p>* < *Name-der-benutzerseitig-zugewiesenen-Identität*> | Die zu verwendende verwaltete Identität |
+   | **Zielgruppe** | `audience` | Ja | <*target-resource-ID*> | Die Ressourcen-ID der Zielressource, auf die Sie zugreifen möchten. <p>Beispielsweise macht `https://storage.azure.com/` die [Zugriffstoken](../active-directory/develop/access-tokens.md) für die Authentifizierung für alle Speicherkonten gültig. Sie können jedoch auch für ein bestimmtes Speicherkonto eine Stammdienst-URL angeben, z. B. `https://fabrikamstorageaccount.blob.core.windows.net`. <p>**Hinweis** : Die Eigenschaft **Zielgruppe** kann in einigen Triggern oder Aktionen ausgeblendet sein. Um diese Eigenschaft einzublenden, öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen** , und wählen Sie **Zielgruppe** aus. <p><p>**Wichtig** : Vergewissern Sie sich, dass diese Zielressourcen-ID *genau dem Wert entspricht* , den Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche. Daher erfordert die `https://storage.azure.com/`-Ressourcen-ID für alle Azure Blob Storage-Konten einen nachgestellten Schrägstrich. Allerdings erfordert die Ressourcen-ID für ein bestimmtes Speicherkonto keinen nachgestellten Schrägstrich. Diese Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
    Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertrauliche Informationen zu verarbeiten und zu schützen, z. B. in einer [Azure Resource Manager-Vorlage zur Automatisierung der Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie zur Runtime mit Ausdrücken auf diese Parameterwerte zugreifen. In dieser Beispieldefinition einer HTTP-Aktion werden der `type` der Authentifizierung als `ManagedServiceIdentity` angegeben und die Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) verwendet, um die Parameterwerte abzurufen:
@@ -1065,7 +1065,7 @@ Sie können Azure Logic Apps in [Azure Government](../azure-government/documenta
 
   * [Azure App Service-Pläne](../app-service/overview-hosting-plans.md)
   * [Netzwerkoptionen von Azure Functions](../azure-functions/functions-networking-options.md)
-  * [Azure Dedicated Hosts für virtuelle Computer](../virtual-machines/windows/dedicated-hosts.md)
+  * [Azure Dedicated Hosts für virtuelle Computer](../virtual-machines/dedicated-hosts.md)
   * [Isolation von virtuellen Computern in Azure](../virtual-machines/isolation.md)
   * [Bereitstellen von dedizierten Azure-Diensten in virtuellen Netzwerken](../virtual-network/virtual-network-for-azure-services.md)
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509663"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220855"
 ---
 # <a name="view-system-test-results"></a>Anzeigen der Ergebnisse von Systemtests
 
@@ -70,12 +70,12 @@ So fordern Sie eine Bereitstellung an:
 
 2. Für erfolgreich trainierte Modelle, die noch nicht bereitgestellt wurden, wird die Schaltfläche „Bereitstellen“ angezeigt.
 
-    ![Bereitstellen des Modells](media/how-to/how-to-deploy-model.png)
+    ![Screenshot: Hervorgehobene Schaltfläche „Bereitstellen“ zum Bereitstellen eines Modells](media/how-to/how-to-deploy-model.png)
 
 3.  Klicken Sie auf „Bereitstellen“.
 4.  Wählen Sie **Bereitgestellt** für die Regionen aus, in denen das Modell bereitgestellt werden soll, und klicken Sie auf „Speichern“. **Bereitgestellt** kann für mehrere Regionen ausgewählt werden.
 
-    ![Bereitstellen des Modells](media/how-to/how-to-deploy-model-regions.png)
+    ![Screenshot, der zeigt, wo Sie ein Modell bereitstellen oder die Bereitstellung eines Modells aufheben können](media/how-to/how-to-deploy-model-regions.png)
 
 5.  Der Status Ihres Modells wird in der Spalte „Status“ angezeigt.
 
@@ -86,14 +86,14 @@ So fordern Sie eine Bereitstellung an:
 
 So aktualisieren Sie die Bereitstellungseinstellungen:
 
-1.  Wählen Sie ein Projekt aus, und navigieren Sie zur Registerkarte **Modelle**.
+1.  Wählen Sie ein Projekt aus, und navigieren Sie zur Registerkarte **Modelle** .
 
 2. Bei erfolgreich bereitgestellten Modellen wird die Schaltfläche **Aktualisieren** angezeigt.
 
-    ![Bereitstellen des Modells](media/how-to/how-to-update-undeploy-model.png)
+    ![Screenshot: Hervorgehobene Schaltfläche „Aktualisieren“ zum Aktualisieren der Bereitstellungseinstellungen](media/how-to/how-to-update-undeploy-model.png)
 
 3.  Wählen Sie **Update** aus.
-4.  Wählen Sie **Bereitgestellt** oder **Undeployed** (Nicht bereitgestellt) für die Regionen aus, in denen das Modell bereitgestellt oder nicht bereitgestellt werden soll, und klicken Sie auf **Speichern**.
+4.  Wählen Sie **Bereitgestellt** oder **Undeployed** (Nicht bereitgestellt) für die Regionen aus, in denen das Modell bereitgestellt oder nicht bereitgestellt werden soll, und klicken Sie auf **Speichern** .
 
     ![Bereitstellen des Modells](media/how-to/how-to-undeploy-model.png)
 

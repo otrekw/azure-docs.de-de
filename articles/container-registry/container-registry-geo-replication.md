@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116784"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486871"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -81,11 +81,11 @@ Eine Karte mit allen aktuellen Azure-Regionen wird angezeigt:
 * Grüne Sechsecke stellen mögliche Replikatregionen dar.
 * Graue Sechsecke stellen Azure-Regionen dar, die noch nicht für die Replikation verfügbar sind.
 
-Um ein Replikat konfigurieren, wählen Sie ein grünes Sechseck aus und klicken dann auf **Erstellen**:
+Um ein Replikat konfigurieren, wählen Sie ein grünes Sechseck aus und klicken dann auf **Erstellen** :
 
  ![Benutzeroberfläche zum Erstellen von Replikaten im Azure-Portal](media/container-registry-geo-replication/create-replication.png)
 
-Um zusätzliche Replikate zu konfigurieren, wählen Sie die grünen Sechsecke für andere Regionen aus und klicken dann auf **Erstellen**.
+Um zusätzliche Replikate zu konfigurieren, wählen Sie die grünen Sechsecke für andere Regionen aus und klicken dann auf **Erstellen** .
 
 ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald der Vorgang abgeschlossen ist, gibt das Portal *Bereit* zurück. Der Status des Replikats im Portal wird nicht automatisch aktualisiert. Klicken Sie auf die Schaltfläche „Aktualisieren“, um den aktualisierten Status anzuzeigen.
 
@@ -131,14 +131,14 @@ Um die DNS-Auflösung beim Pushen von Images auf das nächstgelegene Replikat zu
 
 Zum Troubleshooting von Vorgängen mit einer georeplizierten Registrierung sollten Sie das Traffic Manager-Routing zu einer oder mehreren Replikationen vorrübergehend deaktivieren. Ab der Azure CLI-Version 2.8 können Sie eine `--region-endpoint-enabled`-Option (Vorschau) konfigurieren, wenn Sie eine replizierte Region erstellen oder aktualisieren. Wenn Sie die `--region-endpoint-enabled`-Option einer Replikation auf `false` festlegen, leitet der Traffic Manager Pushanforderungen oder Pull Requests von Docker nicht mehr in diese Region weiter. Standardmäßig ist das Routing für alle Replikationen aktiviert. Die Datensynchronisierung wird für alle Replikationen ausgeführt, unabhängig davon, ob das Routing aktiviert oder deaktiviert ist.
 
-Zum Deaktivieren des Routings zu einer vorhandenen Replikation führen Sie zuerst [az acr replication list][az-acr-replication-list] aus, um die Replikationen in der Registrierung aufzuführen. Führen Sie dann [az acr replication update][az-acr-replication-update] aus, und legen Sie `--region-endpoint-enabled false` für eine bestimmte Replikation fest. Das Konfigurieren der Einstellung für die *westus*-Replikation in *myregistry* sieht beispielsweise folgendermaßen aus:
+Zum Deaktivieren des Routings zu einer vorhandenen Replikation führen Sie zuerst [az acr replication list][az-acr-replication-list] aus, um die Replikationen in der Registrierung aufzuführen. Führen Sie dann [az acr replication update][az-acr-replication-update] aus, und legen Sie `--region-endpoint-enabled false` für eine bestimmte Replikation fest. Das Konfigurieren der Einstellung für die *westus* -Replikation in *myregistry* sieht beispielsweise folgendermaßen aus:
 
 ```azurecli
 # Show names of existing replications
 az acr replication list --registry --output table
 
 # Disable routing to replication
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled false
 ```
@@ -146,7 +146,7 @@ az acr replication update update --name westus \
 So wird das Routing zu einer Replikation wiederhergestellt:
 
 ```azurecli
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled true
 ```

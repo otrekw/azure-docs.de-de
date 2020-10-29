@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9660aa3923964392f1789570d26dd825e0fef350
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71827898"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143182"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services
 
@@ -24,7 +24,7 @@ Diese Anleitung enthält ausführliche Anweisungen zum Aktivieren der Diagnosepr
 
 Sie benötigen zum Aktivieren der Diagnoseprotokollierung einen Speicherort für Ihre Protokolldaten. In diesem Tutorial werden Azure Storage und Log Analytics verwendet.
 
-* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) speichert die Diagnoseprotokolle für die Richtlinienüberwachung, statische Analysen oder als Sicherung. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
+* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) speichert die Diagnoseprotokolle für die Richtlinienüberwachung, statische Analysen oder als Sicherung. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden Azure RBAC-Zugriff auf beide Abonnements hat.
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) ist ein flexibles Tool für die Protokollsuche und -analyse, mit dem Sie die unformatierten Protokolle von einer Azure-Ressource analysieren können.
 
 > [!NOTE]
@@ -38,12 +38,12 @@ Beginnen Sie mit dem Aktivieren der Diagnoseprotokollierung im Azure-Portal.
 > Um dieses Feature mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle zu aktivieren, gehen Sie anhand der Anweisungen unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) vor.
 
 1. Navigieren Sie zum Azure-Portal. Suchen Sie anschließend eine Cognitive Services-Ressource, und wählen Sie sie aus. Sie können z. B. Ihr Abonnement für die Bing-Websuche verwenden.   
-2. Suchen Sie danach im Navigationsmenü auf der linken Seite nach **Überwachung**, und wählen Sie **Diagnoseeinstellungen** aus. Dieser Bildschirm enthält alle zuvor erstellten Diagnoseeinstellungen für diese Ressource.
+2. Suchen Sie danach im Navigationsmenü auf der linken Seite nach **Überwachung** , und wählen Sie **Diagnoseeinstellungen** aus. Dieser Bildschirm enthält alle zuvor erstellten Diagnoseeinstellungen für diese Ressource.
 3. Wenn Sie eine zuvor erstellte Ressource verwenden möchten, können Sie diese nun auswählen. Wählen Sie andernfalls **+ Diagnoseeinstellung hinzufügen** aus.
 4. Geben Sie einen Namen für die Einstellung ein. Wählen Sie **In einem Speicherkonto archivieren** und dann **An Log Analytics senden** aus.
-5. Wenn Sie zur Konfiguration aufgefordert werden, wählen Sie das Speicherkonto und einen OMS-Arbeitsbereich zum Speichern der Diagnoseprotokolle aus. **Hinweis**: Wenn Sie nicht über ein Speicherkonto oder einen OMS-Arbeitsbereich verfügen, befolgen Sie die Anweisungen zum Erstellen.
-6. Wählen Sie **Überwachung**, **RequestResponse** und **AllMetrics** aus. Legen Sie dann den Aufbewahrungszeitraum für Ihre Diagnoseprotokolldaten fest. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie unbegrenzt gespeichert.
-7. Klicken Sie auf **Speichern**.
+5. Wenn Sie zur Konfiguration aufgefordert werden, wählen Sie das Speicherkonto und einen OMS-Arbeitsbereich zum Speichern der Diagnoseprotokolle aus. **Hinweis** : Wenn Sie nicht über ein Speicherkonto oder einen OMS-Arbeitsbereich verfügen, befolgen Sie die Anweisungen zum Erstellen.
+6. Wählen Sie **Überwachung** , **RequestResponse** und **AllMetrics** aus. Legen Sie dann den Aufbewahrungszeitraum für Ihre Diagnoseprotokolldaten fest. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie unbegrenzt gespeichert.
+7. Klicken Sie auf **Speichern** .
 
 Es kann bis zu zwei Stunden dauern, bevor Protokollierungsdaten für Abfragen und Analysen zur Verfügung stehen. Sie müssen sich also keine Sorgen machen, wenn nicht sofort etwas angezeigt wird.
 
@@ -52,7 +52,7 @@ Es kann bis zu zwei Stunden dauern, bevor Protokollierungsdaten für Abfragen un
 Azure Storage ist eine stabile Objektspeicherlösung, die für das Speichern großer Mengen unstrukturierter Daten optimiert ist. In diesem Abschnitt erfahren Sie, wie Sie Ihr Speicherkonto nach der Summe der Transaktionen über einen Zeitraum von 30 Tage abfragen und die Daten nach Excel exportieren.
 
 1. Suchen Sie im Azure-Portal die Azure Storage-Ressource, die Sie im vorherigen Abschnitt erstellt haben.
-2. Suchen Sie im Navigationsmenü auf der linken Seite nach **Überwachung**, und wählen Sie **Metriken** aus.
+2. Suchen Sie im Navigationsmenü auf der linken Seite nach **Überwachung** , und wählen Sie **Metriken** aus.
 3. Verwenden Sie die verfügbaren Dropdownmenüs, um Ihre Abfrage zu konfigurieren. In diesem Beispiel legen Sie den Zeitbereich auf **Letzte 30 Tage** und die Metrik auf **Transaktion** fest.
 4. Wenn die Abfrage abgeschlossen ist, wird eine Visualisierung der Transaktionen der letzten 30 Tage angezeigt. Verwenden Sie zum Exportieren dieser Daten die Schaltfläche **Exportieren in Excel** am oberen Rand der Seite.
 
@@ -62,7 +62,7 @@ Erfahren Sie mehr über die Verwendungsmöglichkeiten von Diagnosedaten in [Azur
 
 Gehen Sie anhand der folgenden Anweisungen vor, um die Log Analytics-Daten für Ihre Ressource zu untersuchen.
 
-1. Suchen Sie im Azure-Portal im Navigationsmenü auf der linken Seite nach **Log Analytics**, und wählen Sie die Option aus.
+1. Suchen Sie im Azure-Portal im Navigationsmenü auf der linken Seite nach **Log Analytics** , und wählen Sie die Option aus.
 2. Suchen Sie die Ressource, die Sie beim Aktivieren der Diagnose erstellt haben, und wählen Sie sie aus.
 3. Wählen Sie unter **Allgemein** die Option **Protokolle** aus. Sie können auf dieser Seite Abfragen für Ihre Protokolle ausführen.
 

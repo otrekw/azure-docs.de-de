@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 17e3e8dca1c03f9783c0ca94350bb8a4ba5aca64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930598"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201901"
 ---
 # <a name="securing-azure-sql-edge"></a>Schützen von Azure SQL Edge
 
@@ -41,7 +41,7 @@ Weitere Informationen zu Azure SQL Edge-Netzwerkprotokollen und TDS-Endpunkten f
 ### <a name="authentication"></a>Authentifizierung  
 Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutzer derjenige ist, der er zu sein vorgibt. Azure SQL Edge unterstützt derzeit nur den `SQL Authentication`-Mechanismus.
 
-- *SQL-Authentifizierung*:
+- *SQL-Authentifizierung* :
 
     SQL-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers beim Herstellen einer Verbindung mit Azure SQL Edge mithilfe von Benutzername und Kennwort. Das SQL-Anmeldekennwort für **sa** muss während der SQL Edge-Bereitstellung angegeben werden. Danach können zusätzliche SQL-Anmeldungen und -Benutzer durch den Serveradministrator erstellt werden, sodass Benutzer eine Verbindung mithilfe von Benutzername und Kennwort herstellen können.
 
@@ -92,8 +92,8 @@ Analog zu Azure SQL und Microsoft SQL Server bietet Azure SQL Edge denselben Mec
 
 Zu den bewährten Methoden für Azure SQL Edge-Sicherheit gehört das Schreiben sicherer Clientanwendungen. Weitere Informationen zum Sichern von Clientanwendungen auf Netzwerkebene finden Sie unter [Client Network Configuration](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration).
 
-### <a name="sql-server-security-catalog-views-and-functions"></a>SQL Server-Sicherheitskatalogsichten und -Funktionen  
- Sicherheitsinformationen werden in zahlreichen Sichten und Funktionen verfügbar gemacht, die hinsichtlich Leistung und Dienstprogramm optimiert sind. Die folgende Tabelle enthält Informationen zu Sicherheitssichten und -funktionen.  
+### <a name="security-catalog-views-and-functions"></a>Sicherheitskatalogsichten und -funktionen  
+Sicherheitsinformationen werden in zahlreichen Sichten und Funktionen verfügbar gemacht, die hinsichtlich Leistung und Dienstprogramm optimiert sind. Die folgende Tabelle enthält Informationen zu Sicherheitssichten und -funktionen in Azure SQL Edge.  
   
 |Funktionen und Sichten|Links|  
 |---------------------------|---------|  

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2806216bff462a673eddd8eba994d38b1c5e1fdc
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930491"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205845"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -30,8 +30,8 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
 
 1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
-    > [!IMPORTANT]
-    > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) auflösen.
+   > [!IMPORTANT]
+   > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) auflösen, es sei denn, die App wird in einer [App Service-Umgebung](./environment/intro.md) gehostet.
 
 ## <a name="reference-syntax"></a>Verweissyntax
 
@@ -40,13 +40,13 @@ Ein Key Vault-Verweis hat die Form `@Microsoft.KeyVault({referenceString})`, wob
 > [!div class="mx-tdBreakAll"]
 > | Verweiszeichenfolge                                                            | BESCHREIBUNG                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** ist die vollständige URI der Datenebene eines Geheimnisses in Key Vault, einschließlich einer Version, z.B. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** ist der Name Ihrer Key Vault-Ressource. **SecretName** ist der Name des Zielgeheimnisses. **SecretVersion** ist die Version des zu verwendenden Geheimnisses. |
+> | SecretUri= _secretUri_                                                       | **SecretUri** ist die vollständige URI der Datenebene eines Geheimnisses in Key Vault, einschließlich einer Version, z.B. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
+> | VaultName= _vaultName_ ;SecretName= _secretName_ ;SecretVersion= _secretVersion_ | **VaultName** ist der Name Ihrer Key Vault-Ressource. **SecretName** ist der Name des Zielgeheimnisses. **SecretVersion** ist die Version des zu verwendenden Geheimnisses. |
 
 > [!NOTE] 
 > Zurzeit sind Versionen erforderlich. Beim Rotieren von Geheimnissen müssen Sie die Version in der Anwendungskonfiguration aktualisieren.
-
 Ein vollständiger Verweis kann beispielsweise wie folgt aussehen:
+
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
@@ -193,13 +193,13 @@ Sie können auch einen der integrierten Detektoren verwenden, um zusätzliche In
 1. Navigieren Sie im Portal zu Ihrer App.
 2. Wählen Sie **Probleme diagnostizieren und beheben** aus.
 3. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Web app down** aus.
-4. Suchen Sie nach **Key Vault Application Settings Diagnostics**, und klicken Sie auf **Details**.
+4. Suchen Sie nach **Key Vault Application Settings Diagnostics** , und klicken Sie auf **Details** .
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>Verwenden der Erkennung für Azure Functions
 
 1. Navigieren Sie im Portal zu Ihrer App.
-2. Navigieren Sie zu **Plattformfeatures**.
+2. Navigieren Sie zu **Plattformfeatures** .
 3. Wählen Sie **Probleme diagnostizieren und beheben** aus.
 4. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Function app down or reporting errors** aus.
-5. Klicken Sie auf **Key Vault Application Settings Diagnostics**.
+5. Klicken Sie auf **Key Vault Application Settings Diagnostics** .

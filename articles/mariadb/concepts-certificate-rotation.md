@@ -6,16 +6,19 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3182f7fa913cd61e6c51ea91be6b46e83a1ab949
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d1122d723058af7b11004589a9ebd14958cc4ef
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540101"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173109"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MariaDB
 
-Azure Database for MariaDB ändert das Stammzertifikat für die Clientanwendung oder den Clienttreiber mit SSL-Aktivierung, die bzw. den Sie zum [Herstellen einer Verbindung mit dem Datenbankserver](concepts-connectivity-architecture.md) verwenden. Für das derzeit verfügbare Stammzertifikat wird im Rahmen der standardmäßigen Wartung und bewährten Sicherheitsmethoden der Ablauf auf den 26. Oktober 2020 festgelegt. In diesem Artikel erhalten Sie ausführlichere Informationen zu den bevorstehenden Änderungen, den betroffenen Ressourcen sowie den Schritten, die erforderlich sind, um sicherzustellen, dass die Konnektivität Ihrer Anwendung mit dem Datenbankserver bestehen bleibt.
+Azure Database for MariaDB ändert das Stammzertifikat für die Clientanwendung oder den Clienttreiber mit SSL-Aktivierung, die bzw. den Sie zum [Herstellen einer Verbindung mit dem Datenbankserver](concepts-connectivity-architecture.md) verwenden. Für das zurzeit verfügbare Stammzertifikat wird im Rahmen der standardmäßigen Wartung und bewährten Sicherheitsmethoden der Ablauf auf den 15. Februar 2021 (15.02.2021) festgelegt. In diesem Artikel erhalten Sie ausführlichere Informationen zu den bevorstehenden Änderungen, den betroffenen Ressourcen sowie den Schritten, die erforderlich sind, um sicherzustellen, dass die Konnektivität Ihrer Anwendung mit dem Datenbankserver bestehen bleibt.
+
+>[!NOTE]
+> Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stammzertifizierungsstelle vom 26. Oktober 2020 bis zum 15. Februar 2021 verlängert. Wir hoffen, dass diese Verlängerung eine ausreichende Vorlaufzeit für unsere Benutzer zur Implementierung der Clientänderungen ermöglicht, wenn sie davon betroffen sind.
 
 ## <a name="what-update-is-going-to-happen"></a>Welches Update wird durchgeführt?
 
@@ -24,23 +27,23 @@ In einigen Fällen verwenden Anwendungen eine lokale Zertifikatdatei, die auf de
 Gemäß den Konformitätsanforderungen der Branche haben Zertifizierungsstellenanbieter damit begonnen, Zertifizierungsstellenzertifikate für nicht konforme Zertifizierungsstellen zu sperren, sodass Server Zertifikate verwenden müssen, die von konformen Zertifizierungsstellen ausgestellt und durch Zertifizierungsstellenzertifikate von diesen konformen Zertifizierungsstellen signiert wurden. Da Azure Database for MariaDB derzeit eines dieser nicht konformen Zertifikate verwendet, die von Clientanwendungen zum Überprüfen der SSL-Verbindungen genutzt werden, müssen wir sicherstellen, dass entsprechende Maßnahmen ergriffen werden (siehe unten), um die potenziellen Auswirkungen auf Ihre MariaDB-Server zu minimieren.
 
 
-Das neue Zertifikat wird ab dem 26. Oktober 2020 verwendet. Wenn Sie beim Herstellen einer Verbindung von einem MySQL-Client entweder die Zertifizierungsstellenüberprüfung oder die vollständige Überprüfung des Serverzertifikats („sslmode=verify-ca“ bzw. „sslmode=verify-full“) verwenden, müssen Sie die Anwendungskonfiguration vor dem 26. Oktober 2020 aktualisieren.
+Das neue Zertifikat wird ab dem 15. Februar 2021 (15.02.2021) verwendet. Wenn Sie beim Herstellen einer Verbindung von einem MySQL-Client entweder die Zertifizierungsstellenüberprüfung oder die vollständige Überprüfung des Serverzertifikats („sslmode=verify-ca“ bzw. „sslmode=verify-full“) verwenden, müssen Sie die Anwendungskonfiguration vor dem 15. Februar 2021 (15.02.2021) aktualisieren.
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Wie erkenne ich, ob meine Datenbank betroffen ist?
 
 Alle Anwendungen, die SSL/TLS verwenden und das Stammzertifikat überprüfen, müssen das Stammzertifikat aktualisieren. Durch Überprüfen der Verbindungszeichenfolge können Sie ermitteln, ob Ihre Verbindungen das Stammzertifikat überprüfen.
--   Wenn Ihre Verbindungszeichenfolge `sslmode=verify-ca` oder `sslmode=verify-full` enthält, müssen Sie das Zertifikat aktualisieren.
+-   Wenn Ihre Verbindungszeichenfolge `sslmode=verify-ca` oder `sslmode=verify-identity` enthält, müssen Sie das Zertifikat aktualisieren.
 -   Wenn Ihre Verbindungszeichenfolge `sslmode=disable`, `sslmode=allow`, `sslmode=prefer` oder `sslmode=require` enthält, müssen Sie keine Zertifikate aktualisieren. 
 -   Wenn in Ihrer Verbindungszeichenfolge „sslmode“ nicht angegeben ist, müssen Sie keine Zertifikat aktualisieren.
 
 Wenn Sie einen Client verwenden, der die Verbindungszeichenfolge abstrahiert, lesen Sie die Dokumentation des Clients, um zu ermitteln, ob Zertifikate überprüft werden.
 Informationen zum Azure Database for MariaDB-Parameter „sslmode“ finden Sie in der [Beschreibung der SSL-Modus](concepts-ssl-connection-security.md#default-settings).
 
-Informationen dazu, wie Sie verhindern, dass die Verfügbarkeit Ihrer Anwendung aufgrund unerwartet widerrufener Zertifikate unterbrochen wird, oder wie Sie ein widerrufenes Zertifikat aktualisieren, finden Sie im Abschnitt [**Was muss ich tun, um die Konnektivität aufrechtzuerhalten?** ](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity).
+Informationen dazu, wie Sie verhindern, dass die Verfügbarkeit Ihrer Anwendung aufgrund unerwartet widerrufener Zertifikate unterbrochen wird, oder wie Sie ein widerrufenes Zertifikat aktualisieren, finden Sie im Abschnitt [**Was muss ich tun, um die Konnektivität aufrechtzuerhalten?**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity).
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Was muss ich tun, um die Konnektivität aufrechtzuerhalten?
 
-Führen Sie die unten angegebenen Schritte aus, um zu verhindern, dass die Verfügbarkeit Ihrer Anwendung aufgrund unerwartet widerrufener Zertifikate unterbrochen wird, oder um ein Zertifikat zu aktualisieren. Die Idee dahinter ist, eine neue *PEM*-Datei zu erstellen, die das aktuelle Zertifikat und das neue Zertifikat kombiniert. Während der SSL-Zertifikatüberprüfung wird einer der zulässigen Werte verwendet. Sehen Sie sich die folgenden Schritte an:
+Führen Sie die unten angegebenen Schritte aus, um zu verhindern, dass die Verfügbarkeit Ihrer Anwendung aufgrund unerwartet widerrufener Zertifikate unterbrochen wird, oder um ein Zertifikat zu aktualisieren. Die Idee dahinter ist, eine neue *PEM* -Datei zu erstellen, die das aktuelle Zertifikat und das neue Zertifikat kombiniert. Während der SSL-Zertifikatüberprüfung wird einer der zulässigen Werte verwendet. Sehen Sie sich die folgenden Schritte an:
 
 *   Laden Sie die Stammzertifizierungsstellen **BaltimoreCyberTrustRoot** & **DigiCertGlobalRootG2** über die folgenden Links herunter:
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -83,6 +86,9 @@ Wenn Sie das ausgestellte Azure Database for MariaDB-Zertifikat wie hier dokumen
 *   Ungültiges Zertifikat/Widerrufenes Zertifikat
 *   Timeout bei Verbindung
 
+> [!NOTE]
+> Löschen oder ändern Sie das **Baltimore-Zertifikat** erst, nachdem die Zertifikatänderung vorgenommen wurde. Sobald die Änderung abgeschlossen ist, senden wir Ihnen eine Mitteilung,und danach können Sie das Baltimore-Zertifikat auf sichere Weise löschen. 
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. Muss ich die Stammzertifizierungsstelle auch aktualisieren, wenn ich SSL/TLS nicht verwende?
@@ -91,13 +97,13 @@ Wenn Sie SSL/TLS nicht verwenden, sind keine Schritte erforderlich.
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. Muss ich bei Verwendung von SSL/TLS meinen Datenbankserver neu starten, um die Stammzertifizierungsstelle zu aktualisieren?
 Nein, der Datenbankserver muss nicht neu gestartet werden, damit das neue Zertifikat verwendet werden kann. Die Zertifikataktualisierung ist eine clientseitige Änderung, und die eingehenden Clientverbindungen müssen das neue Zertifikat verwenden, um sicherzustellen, dass sie eine Verbindung mit dem Datenbankserver herstellen können.
 
-### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. Was geschieht, wenn ich das Stammzertifikat nicht vor dem 26. Oktober 2020 aktualisiere?
-Wenn Sie das Stammzertifikat nicht vor dem 26. Oktober 2020 aktualisieren, können Ihre Anwendung, die über SSL/TLS eine Verbindung herstellen und die Überprüfung des Stammzertifikats durchführen, nicht mit dem MariaDB-Datenbankserver kommunizieren. Außerdem treten Verbindungsprobleme im Zusammenhang mit dem MariaDB-Datenbankserver auf.
+### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-february-15-2021-02152021"></a>3. Was geschieht, wenn ich das Stammzertifikat bis zum 15. Februar 2021 (15.02.2021) nicht aktualisiere?
+Wenn Sie das Stammzertifikat vor dem 15. Februar 2021 (15.02.2021) nicht aktualisieren, können Ihre Anwendungen, die eine Verbindung über SSL/TLS herstellen und die Überprüfung für das Stammzertifikat durchführen, mit dem MariaDB-Datenbankserver nicht mehr kommunizieren. Außerdem treten bei der Anwendung Verbindungsprobleme im Zusammenhang mit Ihrem MariaDB-Datenbankserver auf.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. Welche Auswirkungen hat es, wenn App Service mit Azure Database for MariaDB verwendet wird?
 Für Azure App Service-Instanzen, die eine Verbindung mit Azure Database for MariaDB herstellen, gibt es zwei mögliche Szenarien, abhängig davon, wie Sie SSL mit Ihrer Anwendung verwenden.
 *   Dieses neue Zertifikat wurde App Service auf Plattformebene hinzugefügt. Wenn Sie die SSL-Zertifikate verwenden, die in der App Service-Plattform in Ihrer Anwendung enthalten sind, ist keine Aktion erforderlich.
-*   Wenn Sie den Pfad zur SSL-Zertifikatsdatei explizit in Ihren Code einschließen, müssen Sie das neue Zertifikat herunterladen und den Code so aktualisieren, dass das neue Zertifikat verwendet wird.
+*   Wenn Sie den Pfad zur SSL-Zertifikatsdatei explizit in Ihren Code einschließen, müssen Sie das neue Zertifikat herunterladen und den Code so aktualisieren, dass das neue Zertifikat verwendet wird. Ein gutes Beispiel für dieses Szenario: Wenn Sie benutzerdefinierte Container in App Service so verwenden, wie in der [App Service-Dokumentation](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md) zu lesen ist.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. Welche Auswirkungen hat es, wenn Azure Kubernetes Service (AKS) mit Azure Database for MariaDB verwendet wird?
 Wenn Sie versuchen, mithilfe von Azure Kubernetes Service (AKS) eine Verbindung mit Azure Database for MariaDB herzustellen, ähnelt dies dem Zugriff über eine dedizierte Kundenhostumgebung. Die entsprechenden Schritte finden Sie [hier](../aks/ingress-own-tls.md).
@@ -110,11 +116,11 @@ Bei einem Connector, der die selbstgehostete Integration Runtime verwendet, für
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. Muss ich für diese Änderung eine Wartungsdowntime für den Datenbankserver planen?
 Nein. Da die Änderung hier nur auf der Clientseite erfolgt, um eine Verbindung mit dem Datenbankserver herzustellen, ist für diese Änderung keine Wartungsdowntime beim Datenbankserver erforderlich.
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8.  Was geschieht, wenn vor dem 26. Oktober 2020 (26.10.2020) keine geplante Downtime für diese Änderung möglich ist?
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8.  Was geschieht, wenn vor dem 15. Februar 2021 (15.02.2021) keine geplante Downtime für diese Änderung möglich ist?
 Da die Clients, die zum Herstellen einer Verbindung mit dem Server verwendet werden, die Zertifikatinformationen gemäß [diesem Abschnitt](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) aktualisieren müssen, ist in diesem Fall keine Downtime beim Server erforderlich.
 
-### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. Bin ich betroffen, wenn ich nach dem 26. Oktober 2020 einen neuen Server erstelle?
-Für Server, die nach dem 26. Oktober 2020 erstellt werden, können Sie das neu ausgestellte Zertifikat für Ihre Anwendungen verwenden, um eine Verbindung mithilfe von SSL herzustellen.
+### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. Bin ich betroffen, wenn ich nach dem 15. Februar 2021 (15.02.2021) einen neuen Server erstelle?
+Bei Servern, die nach dem 15. Februar 2021 (15.02.2021) erstellt werden, können Sie das neu ausgestellte Zertifikat für Ihre Anwendungen nutzen, um eine Verbindung mithilfe von SSL herzustellen.
 
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Wie oft aktualisiert Microsoft seine Zertifikate, bzw. welche Ablaufrichtlinie gilt?
 Diese von Azure Database for MariaDB verwendeten Zertifikate werden von vertrauenswürdigen Zertifizierungsstellen (ZS) bereitgestellt. Die Unterstützung dieser Zertifikate in Azure Database for MariaDB ist also an die Unterstützung dieser Zertifikate durch die ZS gebunden. Wie in diesem Fall kann es jedoch zu unvorhergesehenen Fehlern in diesen vordefinierten Zertifikaten kommen, die schnellstmöglich behoben werden müssen.
@@ -137,7 +143,7 @@ Wenn Sie die [Datenreplikation](concepts-data-in-replication.md) verwenden, um e
 
     Wenn das Zertifikat für CA_file, SSL_Cert und SSL_Key bereitgestellt wird, müssen Sie die Datei aktualisieren, indem Sie das [neue Zertifikat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) hinzufügen.
 
-*   Wenn die Datenreplikation zwischen zwei Azure Database for MySQL-Instanzen erfolgt, müssen Sie das Replikat zurücksetzen, indem Sie **CALL mysql.az_replication_change_master** ausführen und das neue duale Stammzertifikat als letzten Parameter ([master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)) bereitstellen.
+*   Wenn die Datenreplikation zwischen zwei Azure Database for MySQL-Instanzen erfolgt, müssen Sie das Replikat zurücksetzen, indem Sie **CALL mysql.az_replication_change_master** ausführen und das neue duale Stammzertifikat als letzten Parameter ( [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)) bereitstellen.
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. Gibt es eine serverseitige Abfrage, um zu überprüfen, ob SSL verwendet wird?
 Um zu überprüfen, ob Sie eine SSL-Verbindung zum Herstellen einer Verbindung mit dem Server verwenden, lesen Sie die Informationen unter [Überprüfen der SSL-Verbindung](howto-configure-ssl.md#verify-the-ssl-connection).

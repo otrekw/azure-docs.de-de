@@ -9,18 +9,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408231"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490593"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gewusst wie: Verwenden des Schritts „Ausführungsprofil“ zum Auswerten Ihrer Gremlin-Abfragen
 
 Dieser Artikel enthält eine Übersicht über die Verwendung des Schritts „Ausführungsprofil“ für Graphdatenbanken der Gremlin-API für Azure Cosmos DB. In diesem Schritt werden relevante Informationen zur Problembehandlung und zu Abfrageoptimierungen bereitgestellt. Er ist mit allen Gremlin-Abfragen kompatibel, die für ein Cosmos DB-Gremlin-API-Konto ausgeführt werden können.
 
-Fügen Sie zum Verwenden dieses Schritts einfach den Funktionsaufruf `executionProfile()` am Ende Ihrer Gremlin-Abfrage an. **Ihre Gremlin-Abfrage wird ausgeführt**, und als Ergebnis des Vorgangs wird ein JSON-Antwortobjekt mit dem Ausführungsprofil der Abfrage zurückgegeben.
+Fügen Sie zum Verwenden dieses Schritts einfach den Funktionsaufruf `executionProfile()` am Ende Ihrer Gremlin-Abfrage an. **Ihre Gremlin-Abfrage wird ausgeführt** , und als Ergebnis des Vorgangs wird ein JSON-Antwortobjekt mit dem Ausführungsprofil der Abfrage zurückgegeben.
 
 Beispiel:
 
@@ -139,12 +139,12 @@ Dies ist ein mit Anmerkungen versehenes Beispiel für die Ausgabe, die zurückge
 ## <a name="execution-profile-response-objects"></a>Antwortobjekte des Ausführungsprofils
 
 Die Antwort der Funktion „executionProfile()“ führt zu einer Hierarchie mit JSON-Objekten mit der folgenden Struktur:
-  - **Gremlin-Vorgangsobjekt**: Steht für den gesamten Gremlin-Vorgang, der ausgeführt wurde. Es enthält die folgenden Eigenschaften.
+  - **Gremlin-Vorgangsobjekt** : Steht für den gesamten Gremlin-Vorgang, der ausgeführt wurde. Es enthält die folgenden Eigenschaften.
     - `gremlin`: Die explizite Gremlin-Anweisung, die ausgeführt wurde.
     - `totalTime`: Die Zeit in Millisekunden für die Ausführung des Schritts. 
     - `metrics`: Ein Array mit allen Cosmos DB-Runtimeoperatoren, die für die Abfrage ausgeführt wurden. Diese Liste ist in der Reihenfolge der Ausführung sortiert.
     
-  - **Cosmos DB-Runtimeoperatoren**: Steht für die Komponenten des gesamten Gremlin-Vorgangs. Diese Liste ist in der Reihenfolge der Ausführung sortiert. Jedes Objekt enthält die folgenden Eigenschaften:
+  - **Cosmos DB-Runtimeoperatoren** : Steht für die Komponenten des gesamten Gremlin-Vorgangs. Diese Liste ist in der Reihenfolge der Ausführung sortiert. Jedes Objekt enthält die folgenden Eigenschaften:
     - `name`: Name des Operators. Dies ist der Typ des Schritts, der ausgewertet und ausgeführt wurde. Die Tabelle unten enthält weitere Informationen.
     - `time`: Zeitraum in Millisekunden, der für einen bestimmten Operator benötigt wurde.
     - `annotations`: Enthält zusätzliche spezifische Informationen zum ausgeführten Operator.
@@ -220,8 +220,8 @@ Angenommen, für einen **partitionierten Graphen** ergibt sich die folgende Antw
 
 Hieraus können die folgenden Schlüsse gezogen werden:
 - Die Abfrage ist eine Suche nach einer einzelnen ID, da die Gremlin-Anweisung das Muster `g.V('id')` aufweist.
-- Anhand der Metrik `time` lässt sich erkennen, dass die Latenz dieser Abfrage wahrscheinlich hoch ist, da sie [für einen einzelnen Punktlesevorgang über 10 ms beträgt](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Wenn wir uns das `storeOps`-Objekt ansehen, ist erkennbar, dass `fanoutFactor` den Wert `5` hat. Dies bedeutet, dass von diesem Vorgang auf [5 Partitionen](https://docs.microsoft.com/azure/cosmos-db/partition-data) zugegriffen wurde.
+- Anhand der Metrik `time` lässt sich erkennen, dass die Latenz dieser Abfrage wahrscheinlich hoch ist, da sie [für einen einzelnen Punktlesevorgang über 10 ms beträgt](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Wenn wir uns das `storeOps`-Objekt ansehen, ist erkennbar, dass `fanoutFactor` den Wert `5` hat. Dies bedeutet, dass von diesem Vorgang auf [5 Partitionen](./partitioning-overview.md) zugegriffen wurde.
 
 Als Schlussfolgerung dieser Analyse können wir festhalten, dass von der ersten Abfrage auf mehr Partitionen als nötig zugegriffen wird. Dies kann geändert werden, indem der Partitionierungsschlüssel in der Abfrage als Prädikat angegeben wird. Dies führt zu einer niedrigeren Latenz und zu geringeren Kosten pro Abfrage. Informieren Sie sich eingehender über die [Graphpartitionierung](graph-partitioning.md). Eine besser geeignete Abfrage ist `g.V('tt0093640').has('partitionKey', 't1001')`.
 

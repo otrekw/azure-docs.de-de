@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964684"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221195"
 ---
 # <a name="unsupported-language-deployments"></a>Bereitstellungen in nicht unterstützten Sprachen
 
@@ -35,11 +35,11 @@ Damit sich Ihre Modelle für die Bereitstellung eignen, müssen sie die folgende
 ## <a name="process"></a>Prozess
 Nachdem Sie Modelle aus dem Hub migriert haben, die Kandidaten für die Bereitstellung sind, können Sie diese finden, indem Sie zur Seite **Einstellungen** für Ihren Arbeitsbereich wechseln und zum Seitenende scrollen, wo der Abschnitt **Nicht unterstützte Translator-Hub-Trainings** angezeigt wird.  Dieser Abschnitt wird nur angezeigt, wenn Sie über Projekte verfügen, die die oben genannten Voraussetzungen erfüllen.
 
-![So führen Sie die Migration aus dem Hub durch](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Screenshot: Hervorgehobener Abschnitt „Nicht unterstützte Translator-Hub-Trainings“](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 Auf der Auswahlseite **Nicht unterstützte Translator-Hub-Trainings** enthält die Registerkarte für **nicht angeforderte Trainings** die für die Bereitstellung geeigneten Modelle.  Wählen Sie die Modelle aus, die Sie bereitstellen möchten, und übermitteln Sie eine Anforderung.   Vor Ablauf der Bereitstellungsfrist am 30. April können Sie beliebig viele Modelle für die Bereitstellung auswählen.
  
-![So führen Sie die Migration aus dem Hub durch](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Screenshot: Registerkarte für nicht angeforderte Trainings](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Nach der Übermittlung ist das Modell nicht mehr auf der Registerkarte für **nicht angeforderte Trainings** verfügbar, sondern wird auf der Registerkarte für **angeforderte Trainings** angezeigt.  Sie können Ihre angeforderten Trainings jederzeit anzeigen.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996746"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139368"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -27,38 +27,19 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
 ### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK für Python v1.16.0
 + **Fehlerbehebungen und Verbesserungen**
   + **azure-cli-ml**
-    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Diese optionalen Grenzwerte können über 1 definiert werden. Festlegen von `cpu_cores_limit`- und `memory_gb_limit`-Parametern in der `AKSEndpoint.deploy_configuration()`- und `AKSWebservice.deploy_configuration()`-Methode 2. Festlegen von `--cpu-cores-limit`- und `--memory-gb-limit`-Flags in anwendbaren CLI-Aufrufen 3. Das Festlegen von `cpuLimit` und `memoryInGBLimit` in den `containerResourceRequirements` der JSON/YML-Dateien der Bereitstellungskonfiguration. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzen finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
-  + **azureml-contrib-interpret**
-    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
-  + **azureml-contrib-k8s**
-    + Unterstützung für das Anfügen von ArcKubernetes-Compute wurde hinzugefügt.
-  + **azureml-contrib-mir**
-    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Diese optionalen Grenzwerte können über 1 definiert werden. Festlegen von `cpu_cores_limit`- und `memory_gb_limit`-Parametern in der `AKSEndpoint.deploy_configuration()`- und `AKSWebservice.deploy_configuration()`-Methode 2. Festlegen von `--cpu-cores-limit`- und `--memory-gb-limit`-Flags in anwendbaren CLI-Aufrufen 3. Das Festlegen von `cpuLimit` und `memoryInGBLimit` in den `containerResourceRequirements` der JSON/YML-Dateien der Bereitstellungskonfiguration. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzen finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
-  + **azureml-contrib-server**
-    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Diese optionalen Grenzwerte können über 1 definiert werden. Festlegen von `cpu_cores_limit`- und `memory_gb_limit`-Parametern in der `AKSEndpoint.deploy_configuration()`- und `AKSWebservice.deploy_configuration()`-Methode 2. Festlegen von `--cpu-cores-limit`- und `--memory-gb-limit`-Flags in anwendbaren CLI-Aufrufen 3. Das Festlegen von `cpuLimit` und `memoryInGBLimit` in den `containerResourceRequirements` der JSON/YML-Dateien der Bereitstellungskonfiguration. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzen finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
+    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Sie können diese optionalen Grenzwerte verwenden, indem Sie die Flags `--cpu-cores-limit` und `--memory-gb-limit` in anwendbaren CLI-Aufrufen festlegen.
   + **azureml-core**
     + Hauptversionen von direkten Abhängigkeiten von azureml-core wurden angeheftet.
-    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzwerten finden Sie unter https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits.
+    + AKSWebservice und AKSEndpoints unterstützen jetzt CPU- und Speicherressourceneinschränkungen auf Podebene. Weitere Informationen zu Kubernetes-Ressourcen und -Grenzwerten finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits).
     + Run.log_table wurde aktualisiert, um die Protokollierung einzelner Zeilen zu gestatten.
-    + Die statische Methode `Run.get(workspace, run_id)` wurde hinzugefügt, um eine Ausführung nur mithilfe eines Arbeitsbereichs abzurufen. Die Instanzmethode `Workspace.get_run(run_id)` wurde hinzugefügt, um eine Ausführung innerhalb des Arbeitsbereichs abzurufen.
+    + Die statische Methode `Run.get(workspace, run_id)` wurde hinzugefügt, um eine Ausführung nur mithilfe eines Arbeitsbereichs abzurufen. 
+    + Die Instanzmethode `Workspace.get_run(run_id)` wurde hinzugefügt, um eine Ausführung innerhalb des Arbeitsbereichs abzurufen.
     + Die Befehlseigenschaft wurde in der Ausführungskonfiguration eingeführt, die es Benutzern ermöglicht, Befehle anstelle von Skripts und Argumenten zu übermitteln.
-  + **azureml-dataprep-native**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
-  + **azureml-explain-model**
-    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
   + **azureml-interpret**
     + Verhalten von Erklärungsclient is_raw flag wurde in azureml-interpret behoben.
-    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
-  + **azureml-pipeline-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
   + **azureml-sdk**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
-  + **azureml-tensorboard**
-    + Korrektur der Paketbeschreibungen führt zum pypi-Uploadfehler für azureml-interpret, azureml-explain-model, azureml-contrib-interpret und azureml-tensorboard
-  + **azureml-train**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
+    + `azureml-sdk` unterstützen Python 3.8 offiziell.
   + **azureml-train-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` unterstützen Python 3.8 offiziell.
     + Kuratierte TensorFlow 2.3-Umgebung wurde hinzugefügt.
     + Die Befehlseigenschaft wurde in der Ausführungskonfiguration eingeführt, die es Benutzern ermöglicht, Befehle anstelle von Skripts und Argumenten zu übermitteln.
   + **azureml-widgets**

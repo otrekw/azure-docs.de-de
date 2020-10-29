@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074259"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132481"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -589,8 +589,8 @@ Die folgende Funktion steht zur Verwendung in einer Richtlinienregel zur Verfüg
 Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime** : [Erforderlich] – Zeichenfolge im Universal ISO 8601-DateTime-Format (`yyyy-MM-ddTHH:mm:ss.fffffffZ`)
-  - **numberOfDaysToAdd** : [Erforderlich] Integer – Anzahl der hinzuzufügenden Tage
+  - **dateTime** : [Erforderlich] string – Zeichenfolge im Universal ISO 8601 DateTime-Format 'yyyy-MM-ddTHH:mm:ss.FFFFFFFZ'
+  - **numberOfDaysToAdd** : [Erforderlich] integer – Anzahl der hinzuzufügenden Tage
 - `field(fieldName)`
   - **fieldName** [erforderlich]: Zeichenfolge – Name des abzurufenden [Felds](#fields)
   - Gibt den Wert dieses Felds aus der Ressource zurück, die von der If-Bedingung ausgewertet wird

@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999876"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170312"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Informationen zum Verbinden von Geräten mit X.509-Zertifikaten mithilfe des Node.js-Geräte-SDKs für IoT Central-Anwendung
 
@@ -50,12 +50,15 @@ In diesem Abschnitt verwenden Sie ein X.509-Zertifikat zum Verbinden eines Gerä
     npm install
     ```
 
-1. Erstellen Sie ein Stammzertifikat, und leiten Sie dann ein Gerätezertifikat durch Ausführen des Skripts ab. Verwenden Sie für den Zertifikatnamen unbedingt nur Kleinbuchstaben und Bindestriche:
+1. Erstellen Sie ein Stammzertifikat, und leiten Sie dann ein Gerätezertifikat durch Ausführen des Skripts ab:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > Eine Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten.
 
 Mit diesen Befehlen werden jeweils drei Dateien für das Stamm- und das Gerätezertifikat erzeugt.
 
@@ -67,7 +70,7 @@ filename | Inhalt
 
 ## <a name="create-a-group-enrollment"></a>Erstellen einer Gruppenregistrierung
 
-1. Öffnen Sie Ihre IoT Central Anwendung, navigieren Sie im linken Bereich zu **Verwaltung**, und wählen Sie **Geräteverbindung** aus.
+1. Öffnen Sie Ihre IoT Central Anwendung, navigieren Sie im linken Bereich zu **Verwaltung** , und wählen Sie **Geräteverbindung** aus.
 
 1. Wählen Sie **+ Registrierungsgruppe erstellen** aus, und erstellen Sie die neue Registrierungsgruppe _MyX509Group_ mit dem Nachweistyp **Zertifikate (X.509)** .
 
@@ -91,7 +94,7 @@ Jetzt können Sie Geräte verbinden, die ein X.509-Zertifikat haben, das von die
 
 ## <a name="run-sample-device-code"></a>Ausführen des Beispiels für Gerätecode
 
-1. Wählen Sie in der Azure IoT Central-Anwendung **Geräte** aus, und erstellen Sie aus der Gerätevorlage _Environmental Sensor_ (Umgebungssensor) ein neues Gerät mit **mytestdevice** als **Geräte-ID**.
+1. Wählen Sie in der Azure IoT Central-Anwendung **Geräte** aus, und erstellen Sie aus der Gerätevorlage _Environmental Sensor_ (Umgebungssensor) ein neues Gerät mit **mytestdevice** als **Geräte-ID** .
 
 1. Kopieren Sie die Dateien _mytestdevice_key.pem_ und _mytestdevice_cert.pem_  Dateien in den Ordner, der die Anwendung _environmentalSensor.js_ enthält. Sie haben diese Anwendung beim Durcharbeiten des Tutorials [Verbinden eines Geräts (Node.js)](./tutorial-connect-device-nodejs.md) erstellt.
 
@@ -101,8 +104,8 @@ Jetzt können Sie Geräte verbinden, die ein X.509-Zertifikat haben, das von die
     npm install azure-iot-security-x509 --save
     ```
 
-1. Bearbeiten Sie die Datei **environmentalSensor.js**.
-    - Ersetzen Sie den Wert `idScope` durch die **Bereichs-ID**, die Sie sich zuvor notiert haben.
+1. Bearbeiten Sie die Datei **environmentalSensor.js** .
+    - Ersetzen Sie den Wert `idScope` durch die **Bereichs-ID** , die Sie sich zuvor notiert haben.
     - Ersetzen Sie den Wert `registrationId` durch `mytestdevice`.
 
 1. Bearbeiten Sie die `require`-Anweisungen wie folgt:
@@ -166,7 +169,7 @@ Erstellen Sie ein selbstsigniertes X.509-Gerätezertifikat durch Ausführen des 
 
 ## <a name="create-individual-enrollment"></a>Erstellen einer individuellen Registrierung
 
-1. Wählen Sie in der Azure IoT Central-Anwendung **Geräte** aus, und erstellen Sie aus der Gerätevorlage „Environmental Sensor“ (Umgebungssensor) ein neues Gerät mit der **Geräte-ID** als _mytestselfcertprimary_. Notieren Sie sich den **ID-Bereich**. Sie werden ihn später verwenden.
+1. Wählen Sie in der Azure IoT Central-Anwendung **Geräte** aus, und erstellen Sie aus der Gerätevorlage „Environmental Sensor“ (Umgebungssensor) ein neues Gerät mit der **Geräte-ID** als _mytestselfcertprimary_ . Notieren Sie sich den **ID-Bereich** . Sie werden ihn später verwenden.
 
 1. Öffnen Sie das erstellte Gerät, und wählen Sie **Verbinden** aus.
 
@@ -187,7 +190,7 @@ Das Gerät wird jetzt mit dem X.509-Zertifikat bereitgestellt.
 1. Kopieren Sie die Dateien _mytestselfcertprimary_key.pem_ und _mytestselfcertprimary_cert.pem_ in den Ordner, der die Anwendung „environmentalSensor.js“ enthält. Sie haben diese Anwendung beim Durcharbeiten des Tutorials [Verbinden eines Geräts (Node.js)](./tutorial-connect-device-nodejs.md) erstellt.
 
 1. Bearbeiten Sie die Datei **environmentalSensor.js** wie folgt, und speichern Sie sie.
-    - Ersetzen Sie den Wert `idScope` durch die **Bereichs-ID**, die Sie sich zuvor notiert haben.
+    - Ersetzen Sie den Wert `idScope` durch die **Bereichs-ID** , die Sie sich zuvor notiert haben.
     - Ersetzen Sie den Wert `registrationId` durch `mytestselfcertprimary`.
     - Ersetzen Sie **var deviceCert** durch:
 

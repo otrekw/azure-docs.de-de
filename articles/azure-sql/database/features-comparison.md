@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
-ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d11f350c82fa09abf0803e795a92fdb373c36c
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119363"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097608"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -87,7 +87,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Operatoren](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Die meisten (siehe einzelne Operatoren) |Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nein. Sie können Daten in den Dateien, die in Azure Blob Storage abgelegt sind, mit der `OPENROWSET`-Funktion abfragen. | Nein. Sie können Daten in den Dateien, die in Azure Blob Storage abgelegt sind, mit der `OPENROWSET`-Funktion abfragen. |
 | [Abfragebenachrichtigungen](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nein | Ja |
-| [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) (_früher R Services_)| Ja, in der [Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nein |
+| [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) ( _früher R Services_ )| Ja, in der [Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nein |
 | [Wiederherstellungsmodelle](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Nur die vollständige Wiederherstellung, die hohe Verfügbarkeit garantiert, wird unterstützt. Einfache und massenprotokollierte Wiederherstellungsmodelle sind nicht verfügbar. | Nur die vollständige Wiederherstellung, die hohe Verfügbarkeit garantiert, wird unterstützt. Einfache und massenprotokollierte Wiederherstellungsmodelle sind nicht verfügbar. |
 | [Ressourcenkontrolle](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nein | Ja |
 | [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nein | Ja, mit den obligatorischen `FROM URL`-Optionen für die Sicherungsdateien in Azure Blob Storage. Siehe [Unterschiede bei der Wiederherstellung](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
@@ -171,20 +171,20 @@ Azure SQL-Datenbank und Azure SQL Managed Instance unterstützen verschiedene D
 
 ## <a name="migration-methods"></a>Migrationsmethoden
 
-Sie können verschiedene Migrationsmethoden verwenden, um Ihre Daten zwischen SQL Server, Azure SQL-Datenbank und Azure SQL Managed Instance zu verschieben. Bei einigen Methoden handelt es sich um **Online**-Methoden, die alle an der Quelle vorgenommenen Änderungen erkennen, während Sie die Migration ausführen. Bei **Offline**-Methoden müssen Sie Ihre Workload, mit der Daten auf der Quelle geändert werden, dagegen anhalten, während der Migrationsvorgang ausgeführt wird.
+Sie können verschiedene Migrationsmethoden verwenden, um Ihre Daten zwischen SQL Server, Azure SQL-Datenbank und Azure SQL Managed Instance zu verschieben. Bei einigen Methoden handelt es sich um **Online** -Methoden, die alle an der Quelle vorgenommenen Änderungen erkennen, während Sie die Migration ausführen. Bei **Offline** -Methoden müssen Sie Ihre Workload, mit der Daten auf der Quelle geändert werden, dagegen anhalten, während der Migrationsvorgang ausgeführt wird.
 
 | **Quelle** | **Azure SQL-Datenbank** | **Verwaltete Azure SQL-Datenbank-Instanz** |
 | --- | --- | --- |
 | SQL Server (lokal, Azure-VM, Amazon RDS) | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Native Sicherung/Wiederherstellung, [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](../managed-instance/replication-transactional-overview.md) |
 | Einzeldatenbank | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| Verwaltete SQL-Instanz | **Online:** [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](../managed-instance/replication-transactional-overview.md) | **Online:** [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Instanzübergreifende Point-in-Time-Wiederherstellung ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) oder [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [Native Sicherung/Wiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](../managed-instance/replication-transactional-overview.md) |
+| Verwaltete SQL-Instanz | **Online:** [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](../managed-instance/replication-transactional-overview.md) | **Online:** [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Instanzübergreifende Point-in-Time-Wiederherstellung ( [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) oder [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [Native Sicherung/Wiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](../managed-instance/replication-transactional-overview.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Microsoft fügt Azure SQL-Datenbank ständig weitere Features hinzu. Besuchen Sie die Webseite mit Dienstupdates für Azure, und rufen Sie mithilfe dieser Filter die neuesten Updates ab:
 
 - Gefiltert nach [Azure SQL-Datenbank](https://azure.microsoft.com/updates/?service=sql-database).
-- Gefiltert nach allgemeiner Verfügbarkeit [Ankündigungen](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) für SQL-Datenbankfunktionen.
+- Gefiltert nach [Ankündigungen zur allgemeinen Verfügbarkeit \(GA\)](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) für SQL-Datenbank-Funktionen
 
 Weitere Informationen zu Azure SQL-Datenbank und Azure SQL Managed Instance finden Sie in:
 

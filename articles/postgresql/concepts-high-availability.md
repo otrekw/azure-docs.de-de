@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485442"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hochverfügbarkeit in Azure Database for PostgreSQL (Einzelserver)
 Der Dienst Azure Database for PostgreSQL (Einzelserver) bietet eine garantierte hohe Verfügbarkeit mit der finanziell abgesicherten Vereinbarung zum Servicelevel (Service Level Agreement, SLA) über [99,99 %](https://azure.microsoft.com/support/legal/sla/postgresql) Uptime. Azure Database for PostgreSQL bietet Hochverfügbarkeit sowohl bei geplanten Ereignissen wie benutzerseitig initiierten Skalierungscomputevorgängen als auch bei ungeplanten Ereignissen wie Ausfällen von zugrunde liegender Hardware oder Software oder Netzwerkausfällen. Der Dienst kann auch nach den kritischsten Umständen schnell wiederhergestellt werden, wodurch sichergestellt ist, dass es bei dessen Verwendung zu so gut wie keiner Anwendungsdowntime kommt.
@@ -40,8 +40,8 @@ Hier finden Sie einige Szenarien mit geplanter Wartung:
 | ------------ | ----------- |
 | <b>Hoch-/Herunterskalieren von Computeressourcen | Wenn ein Benutzer den Vorgang zum Hoch- bzw. Herunterskalieren von Computeressourcen ausführt, wird ein neuer Datenbankserver mit der skalierten Computekonfiguration bereitgestellt. Auf dem alten Datenbankserver können aktive Prüfpunkte abgeschlossen werden, Clientverbindungen werden entladen, alle Transaktionen ohne Commit werden abgebrochen, und anschließend wird der Server heruntergefahren. Der Speicher wird dann vom alten Datenbankserver getrennt und an den neuen Datenbankserver angefügt. Wenn die Clientanwendung versucht, die Verbindung wiederherzustellen oder eine neue Verbindung herzustellen, leitet das Gateway die Verbindungsanforderung an den neuen Datenbankserver weiter.|
 | <b>Hochskalieren des Speichers | Das Hochskalieren des Speichers ist ein Onlinevorgang, bei dem der Datenbankserver nicht unterbrochen wird.|
-| <b>Bereitstellung neuer Software (Azure) | Rollouts von neuen Features oder Fehlerbehebungen werden automatisch im Rahmen der geplanten Wartung des Diensts durchgeführt. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification) und im [Portal](https://aka.ms/servicehealthpm).|
-| <b>Upgrades auf Nebenversionen | Azure Database for PostgreSQL patcht Datenbankserver automatisch auf die von Azure festgelegte Nebenversion. Dies erfolgt im Rahmen der geplanten Wartung des Diensts. Dabei kommt es zu einer kurzen Downtime von ein paar Sekunden. Danach wird der Datenbankserver automatisch mit der neuen Nebenversion neu gestartet. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification) und im [Portal](https://aka.ms/servicehealthpm).|
+| <b>Bereitstellung neuer Software (Azure) | Rollouts von neuen Features oder Fehlerbehebungen werden automatisch im Rahmen der geplanten Wartung des Diensts durchgeführt. Weitere Informationen finden Sie in der [Dokumentation](./concepts-monitoring.md#planned-maintenance-notification) und im [Portal](https://aka.ms/servicehealthpm).|
+| <b>Upgrades auf Nebenversionen | Azure Database for PostgreSQL patcht Datenbankserver automatisch auf die von Azure festgelegte Nebenversion. Dies erfolgt im Rahmen der geplanten Wartung des Diensts. Dabei kommt es zu einer kurzen Downtime von ein paar Sekunden. Danach wird der Datenbankserver automatisch mit der neuen Nebenversion neu gestartet. Weitere Informationen finden Sie in der [Dokumentation](./concepts-monitoring.md#planned-maintenance-notification) und im [Portal](https://aka.ms/servicehealthpm).|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>Minimierung von ungeplanter Downtime
@@ -68,8 +68,8 @@ Im Folgenden finden Sie einige Fehlerszenarien, bei denen für die Wiederherstel
 
 | **Szenario** | **Plan für die Wiederherstellung** |
 | ---------- | ---------- |
-| <b> Regionsausfall | Regionen fallen nur selten aus. Wenn Sie jedoch Schutz vor einem Regionsausfall benötigen, können Sie ein oder mehrere Lesereplikate in anderen Regionen für die Notfallwiederherstellung konfigurieren. (Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) zum Erstellen und Verwalten von Lesereplikaten.) Bei einem Ausfall auf Regionsebene können Sie das in der anderen Region konfigurierte Lesereplikat manuell zum Produktionsdatenbankserver höher stufen. |
-| <b> Logische Fehler/Benutzerfehler | Die Wiederherstellung bei Benutzerfehlern, z. B. versehentlich gelöschten Tabellen oder falsch aktualisierten Daten, umfasst das Durchführen einer [Zeitpunktwiederherstellung](https://docs.microsoft.com/azure/postgresql/concepts-backup), bei der die Daten bis zu einem Zeitpunkt kurz vor dem Fehler wiederhergestellt werden.<br> <br>  Wenn Sie anstelle aller Datenbanken auf dem Datenbankserver nur eine Teilmenge von Datenbanken oder bestimmte Tabellen wiederherstellen möchten, können Sie den Datenbankserver in einer neuen Instanz wiederherstellen, die Tabelle(n) über [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) exportieren und sie dann über [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) in Ihrer Datenbank wiederherstellen. |
+| <b> Regionsausfall | Regionen fallen nur selten aus. Wenn Sie jedoch Schutz vor einem Regionsausfall benötigen, können Sie ein oder mehrere Lesereplikate in anderen Regionen für die Notfallwiederherstellung konfigurieren. (Weitere Informationen finden Sie in [diesem Artikel](./howto-read-replicas-portal.md) zum Erstellen und Verwalten von Lesereplikaten.) Bei einem Ausfall auf Regionsebene können Sie das in der anderen Region konfigurierte Lesereplikat manuell zum Produktionsdatenbankserver höher stufen. |
+| <b> Logische Fehler/Benutzerfehler | Die Wiederherstellung bei Benutzerfehlern, z. B. versehentlich gelöschten Tabellen oder falsch aktualisierten Daten, umfasst das Durchführen einer [Zeitpunktwiederherstellung](./concepts-backup.md), bei der die Daten bis zu einem Zeitpunkt kurz vor dem Fehler wiederhergestellt werden.<br> <br>  Wenn Sie anstelle aller Datenbanken auf dem Datenbankserver nur eine Teilmenge von Datenbanken oder bestimmte Tabellen wiederherstellen möchten, können Sie den Datenbankserver in einer neuen Instanz wiederherstellen, die Tabelle(n) über [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) exportieren und sie dann über [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) in Ihrer Datenbank wiederherstellen. |
 
 
 

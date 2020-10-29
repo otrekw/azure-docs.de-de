@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/21/2020
-ms.openlocfilehash: 1d9fc9f50ac21e2ea621e26ad2b1fe0f146116de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618487"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097574"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,7 +50,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|320|640|1280|1920|2560|
-|Max. Protokollrate (MBit/s)|3.8|7,5|15|22,5|30|
+|Max. Protokollrate (MBit/s)|4,5|9|18|27|36|
 |Max. gleichzeitige Worker (Anforderungen)|75|150|300|450|600|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|
@@ -76,7 +76,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|3200|3840|4480|5120|
-|Max. Protokollrate (MBit/s)|30|30|30|30|
+|Max. Protokollrate (MBit/s)|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|750|900|1050|1200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|
@@ -102,7 +102,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|5760|6400|7680|10.240|12800|
-|Max. Protokollrate (MBit/s)|30|30|30|30|30|
+|Max. Protokollrate (MBit/s)|36|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|1350|1500|1800|2400|3000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|
@@ -251,7 +251,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|320|640|960|1280|1600|1920|
-|Max. Protokollrate (MBit/s)|3,75|7,5|11,25|15|18,75|22,5|
+|Max. Protokollrate (MBit/s)|4,5|9|13,5|18|22,5|27|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -276,7 +276,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)
 |Max. Datenrate, IOPS*|2240|2560|2880|3200|5120|7680|
-|Max. Protokollrate (MBit/s)|26,3|30|30|30|30|30|
+|Max. Protokollrate (MBit/s)|31,5|36|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -303,7 +303,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|640|1280|1920|2560|3200|3840|4480|
-|Max. Protokollrate (MBit/s)|7,5|15|22,5|30|30|30|30|
+|Max. Protokollrate (MBit/s)|9|18|27|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -328,7 +328,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|5120|5760|6400|7680|10.240|12800|12800|
-|Max. Protokollrate (MBit/s)|30|30|30|30|30|30|30|
+|Max. Protokollrate (MBit/s)|36|36|36|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8\.000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -355,7 +355,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|2560|3200|3840|4480|5120|
-|Max. Protokollrate (MBit/s)|30|30|30|30|30|
+|Max. Protokollrate (MBit/s)|36|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|400|500|600|700|800|
 |Maximale Anzahl gleichzeitiger Anmeldungen|800|1000|1200|1400|1600|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
@@ -381,7 +381,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|5760|6400|7680|10.240|11.520|23.040|
-|Max. Protokollrate (MBit/s)|30|30|30|30|30|30|
+|Max. Protokollrate (MBit/s)|36|36|36|36|36|36|
 |Max. gleichzeitige Worker (Anforderungen)|900|1000|1200|1600|1800|3600|
 |Maximale Anzahl gleichzeitiger Anmeldungen|1800|2000|2400|3200|3600|7\.200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie durch die Verwendung statischer Verbindungscl
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213961"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168306"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verwalten von Verbindungen in Azure Functions
 
@@ -21,11 +21,11 @@ Die Anzahl der verfügbaren Verbindungen ist teilweise begrenzt, da eine Funktio
 
 Dieser Grenzwert gilt pro Instanz. Wenn der [Skalierungscontroller Funktions-App-Instanzen hinzufügt](functions-scale.md#how-the-consumption-and-premium-plans-work), um mehr Anforderungen zu verarbeiten, weist jede Instanz einen unabhängigen Verbindungsgrenzwert auf. Das heißt, es gibt keinen globalen Verbindungsgrenzwert, um sie können über alle aktiven Instanzen weit mehr als 600 aktive Verbindungen verwenden.
 
-Stellen Sie bei der Problembehandlung sicher, dass Sie Application Insights für Ihre Funktions-App aktiviert haben. Mit Application Insights können Sie Metriken für Ihre Funktions-Apps wie Ausführungen anzeigen. Weitere Informationen finden Sie unter [Anzeigen von Telemetriedaten in Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
+Stellen Sie bei der Problembehandlung sicher, dass Sie Application Insights für Ihre Funktions-App aktiviert haben. Mit Application Insights können Sie Metriken für Ihre Funktions-Apps wie Ausführungen anzeigen. Weitere Informationen finden Sie unter [Anzeigen von Telemetriedaten in Application Insights](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 
 ## <a name="static-clients"></a>Statische Clients
 
-Um zu vermeiden, dass mehr Verbindungen als nötig gehalten werden, erstellen Sie bei jedem Funktionsaufruf keine neuen Instanzen, sondern verwenden die Clientinstanzen erneut. Wir empfehlen, Clientverbindungen für jede Sprache, in der Sie Ihre Funktion erstellen, wiederzuverwenden. Beispielsweise können .NET-Clients wie [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) und [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) sowie Azure Storage-Clients Verbindungen verwalten, wenn Sie einen einzelnen, statischen Client verwenden.
+Um zu vermeiden, dass mehr Verbindungen als nötig gehalten werden, erstellen Sie bei jedem Funktionsaufruf keine neuen Instanzen, sondern verwenden die Clientinstanzen erneut. Wir empfehlen, Clientverbindungen für jede Sprache, in der Sie Ihre Funktion erstellen, wiederzuverwenden. Beispielsweise können .NET-Clients wie [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) und [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) sowie Azure Storage-Clients Verbindungen verwalten, wenn Sie einen einzelnen, statischen Client verwenden.
 
 Es folgen einige Richtlinien, die zu beachten sind, wenn Sie einen dienstspezifischen Client in einer Azure Functions-Anwendung verwenden:
 
@@ -39,7 +39,7 @@ Dieser Abschnitt veranschaulicht Best Practices für die Erstellung und Verwendu
 
 ### <a name="httpclient-example-c"></a>HttpClient-Beispiel (C#)
 
-Es folgt ein Beispiel für einen C#-Funktionscode, der eine statische [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)-Instanz erstellt:
+Es folgt ein Beispiel für einen C#-Funktionscode, der eine statische [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true)-Instanz erstellt:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-Eine häufig gestellte Frage zum [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) in .NET lautet: „Soll ich meinen Client löschen?“. Im Allgemeinen löschen Sie Objekte, die `IDisposable` implementieren, wenn Sie sie nicht mehr verwenden. Sie löschen jedoch keinen statischen Client, da dessen Verwendung mit dem Funktionsende nicht abgeschlossen ist. Der statische Client soll für die Dauer der Anwendung gültig sein.
+Eine häufig gestellte Frage zum [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) in .NET lautet: „Soll ich meinen Client löschen?“. Im Allgemeinen löschen Sie Objekte, die `IDisposable` implementieren, wenn Sie sie nicht mehr verwenden. Sie löschen jedoch keinen statischen Client, da dessen Verwendung mit dem Funktionsende nicht abgeschlossen ist. Der statische Client soll für die Dauer der Anwendung gültig sein.
 
 ### <a name="http-agent-examples-javascript"></a>HTTP-Agent-Beispiele (JavaScript)
 
@@ -103,7 +103,25 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+Wenn Sie Functions v3.x verwenden, benötigen Sie einen Verweis auf Microsoft.Azure.DocumentDB.Core. Fügen Sie einen Verweis im Code hinzu:
 
+```cs
+#r "Microsoft.Azure.DocumentDB.Core"
+```
+Erstellen Sie außerdem eine Datei mit dem Namen „function.proj“ für Ihren Trigger, und fügen Sie den folgenden Inhalt hinzu:
+
+```cs
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.12.0" />
+    </ItemGroup>
+</Project>
+
+```
 ### <a name="cosmosclient-code-example-javascript"></a>CosmosClient-Codebeispiel (JavaScript)
 [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) stellt eine Verbindung mit einer Azure Cosmos DB-Instanz her. In der Azure Cosmos DB-Dokumentation wird empfohlen, dass Sie [einen Singleton-Azure Cosmos DB-Client für die Lebensdauer der Anwendung verwenden](../cosmos-db/performance-tips.md#sdk-usage). Im folgenden Beispiel wird ein Muster dafür in einer Funktion gezeigt:
 
@@ -125,10 +143,10 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient-Verbindungen
 
-Funktionscode kann den .NET Framework-Datenanbieter für SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) verwenden, um Verbindungen zu einer relationalen SQL-Datenbank herzustellen. Dies ist auch der zugrunde liegende Anbieter für Daten-Frameworks, die ADO.NET verwenden, z.B. [Entity Framework](/ef/ef6/). Im Gegensatz zu [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)- und [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)-Verbindungen implementiert ADO.NET standardmäßig das Verbindungspooling. Da jedoch noch immer nicht genügend Verbindungen verfügbar sein können, sollten Sie die Verbindungen mit der Datenbank optimieren. Weitere Informationen finden Sie unter [SQL Server-Verbindungspooling (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
+Funktionscode kann den .NET Framework-Datenanbieter für SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) verwenden, um Verbindungen zu einer relationalen SQL-Datenbank herzustellen. Dies ist auch der zugrunde liegende Anbieter für Daten-Frameworks, die ADO.NET verwenden, z.B. [Entity Framework](/ef/ef6/). Im Gegensatz zu [HttpClient](/dotnet/api/system.net.http.httpclient)- und [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)-Verbindungen implementiert ADO.NET standardmäßig das Verbindungspooling. Da jedoch noch immer nicht genügend Verbindungen verfügbar sein können, sollten Sie die Verbindungen mit der Datenbank optimieren. Weitere Informationen finden Sie unter [SQL Server-Verbindungspooling (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Einige Daten-Frameworks, z.B. Entity Framework, rufen Verbindungszeichenfolgen üblicherweise aus dem Abschnitt **ConnectionStrings** einer Konfigurationsdatei ab. In diesem Fall müssen Sie der Sammlung **Verbindungszeichenfolgen** der Funktions-App-Einstellungen und der Datei [local.settings.json](functions-run-local.md#local-settings-file) im lokalen Projekt explizit SQL-Datenbank-Verbindungszeichenfolgen hinzufügen. Bei der Erstellung einer Instanz von [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) in Ihrem Funktionscode sollten Sie den Verbindungszeichenfolgenwert zusammen mit den anderen Verbindungen in den **Anwendungseinstellungen** speichern.
+> Einige Daten-Frameworks, z.B. Entity Framework, rufen Verbindungszeichenfolgen üblicherweise aus dem Abschnitt **ConnectionStrings** einer Konfigurationsdatei ab. In diesem Fall müssen Sie der Sammlung **Verbindungszeichenfolgen** der Funktions-App-Einstellungen und der Datei [local.settings.json](functions-run-local.md#local-settings-file) im lokalen Projekt explizit SQL-Datenbank-Verbindungszeichenfolgen hinzufügen. Bei der Erstellung einer Instanz von [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) in Ihrem Funktionscode sollten Sie den Verbindungszeichenfolgenwert zusammen mit den anderen Verbindungen in den **Anwendungseinstellungen** speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

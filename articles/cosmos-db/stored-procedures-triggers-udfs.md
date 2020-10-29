@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82509668"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279899"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
-Azure Cosmos DB ermöglicht die in die JavaScript-Sprache integrierte, transaktionale Ausführung von JavaScript. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User-Defined Functions, UDFs) in der JavaScript-Sprache schreiben. Sie können Ihre Logik in JavaScript-Code schreiben, der in der Datenbank-Engine ausgeführt wird. Sie können Trigger, gespeicherte Prozeduren und benutzerdefinierte Funktionen im [Azure-Portal](https://portal.azure.com/), mithilfe der [JavaScript-Language Integrated Query-API in Azure Cosmos DB](javascript-query-api.md) oder mit den [SQL-API-Client-SDKs von Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md) erstellen und ausführen.
+Azure Cosmos DB ermöglicht die in die JavaScript-Sprache integrierte, transaktionale Ausführung von JavaScript. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie **gespeicherte Prozeduren** , **Trigger** und **benutzerdefinierte Funktionen** (User-Defined Functions, UDFs) in der JavaScript-Sprache schreiben. Sie können Ihre Logik in JavaScript-Code schreiben, der in der Datenbank-Engine ausgeführt wird. Sie können Trigger, gespeicherte Prozeduren und benutzerdefinierte Funktionen im [Azure-Portal](https://portal.azure.com/), mithilfe der [JavaScript-Language Integrated Query-API in Azure Cosmos DB](javascript-query-api.md) oder mit den [SQL-API-Client-SDKs von Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md) erstellen und ausführen.
 
 ## <a name="benefits-of-using-server-side-programming"></a>Nutzen der serverseitigen Programmierung
 
@@ -24,7 +24,7 @@ Das Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Fun
 
 * **Prozedurale Logik:** JavaScript bietet als höhere Programmiersprache eine umfangreiche und vertraute Benutzeroberfläche zur Darstellung der Geschäftslogik. Sie können eine Sequenz komplexer Vorgänge für die Daten ausführen.
 
-* **Unteilbare Transaktionen:** Cosmos DB stellt sicher, dass die in einer einzelnen gespeicherten Prozedur oder einem Trigger ausgeführten Datenbankvorgänge unteilbar sind. Durch diese Unteilbarkeit kann eine Anwendung zusammengehörige Vorgänge in einem einzelnen Batch kombinieren, sodass entweder alle Vorgänge erfolgreich ausgeführt werden oder keiner von ihnen.
+* **Unteilbare Transaktionen:** Azure Cosmos DB-Datenbankvorgänge, die in einer einzelnen gespeicherten Prozedur oder einem Trigger ausgeführt werden, sind unteilbar. Durch diese Unteilbarkeit kann eine Anwendung zusammengehörige Vorgänge in einem einzelnen Batch kombinieren, sodass entweder alle Vorgänge erfolgreich ausgeführt werden oder keiner von ihnen.
 
 * **Leistung:** Die JSON-Daten sind dem Typensystem der JavaScript-Sprache zugeordnet. Diese Zuordnung ermöglicht eine Reihe von Optimierungen, beispielsweise die verzögerte Materialisierung von JSON-Dokumenten im Pufferpool und deren bedarfsgesteuerte Bereitstellung für den ausführenden Code. Weitere Leistungsvorteile betreffen die Übertragung der Geschäftslogik in die Datenbank:
 
@@ -41,7 +41,7 @@ Das Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Fun
 
 ## <a name="transactions"></a>Transaktionen
 
-Eine Transaktion in einer typischen Datenbank kann als Folge von Vorgängen definiert werden, die als einzelne logische Arbeitseinheit ausgeführt wird. Jede Transaktion bietet **ACID-Eigenschaftsgarantien**. ACID ist ein bekanntes Akronym und steht für **A**tomicity, **C**onsistency, **I**solation und **D**urability (Atomarität, Konsistenz, Isolation, Dauerhaftigkeit). 
+Eine Transaktion in einer typischen Datenbank kann als Folge von Vorgängen definiert werden, die als einzelne logische Arbeitseinheit ausgeführt wird. Jede Transaktion bietet **ACID-Eigenschaftsgarantien** . ACID ist ein bekanntes Akronym und steht für **A** tomicity, **C** onsistency, **I** solation und **D** urability (Atomarität, Konsistenz, Isolation, Dauerhaftigkeit). 
 
 * Die Atomarität bzw. Unteilbarkeit gewährleistet, dass alle innerhalb einer Transaktion ausgeführten Vorgänge als eine einzige Einheit betrachtet werden und entweder alle Vorgänge committet werden oder keiner von ihnen. 
 
@@ -55,7 +55,7 @@ In Azure Cosmos DB wird die JavaScript-Runtime in der Datenbank-Engine gehostet.
 
 ### <a name="scope-of-a-transaction"></a>Bereich einer Transaktion
 
-Gespeicherte Prozeduren sind einem Azure Cosmos-Container zugeordnet. Die Ausführung gespeicherter Prozeduren ist auf einen logischen Partitionsschlüssel beschränkt. Gespeicherte Prozeduren müssen während der Ausführung einen logischen Partitionsschlüsselwert enthalten, der die logische Partition für den Transaktionsumfang definiert. Weitere Informationen finden Sie unter [Partitionierung in Azure Cosmos DB](partition-data.md).
+Gespeicherte Prozeduren sind einem Azure Cosmos-Container zugeordnet. Die Ausführung gespeicherter Prozeduren ist auf einen logischen Partitionsschlüssel beschränkt. Gespeicherte Prozeduren müssen während der Ausführung einen logischen Partitionsschlüsselwert enthalten, der die logische Partition für den Transaktionsumfang definiert. Weitere Informationen finden Sie unter [Partitionierung in Azure Cosmos DB](partitioning-overview.md).
 
 ### <a name="commit-and-rollback"></a>Commit und Rollback
 

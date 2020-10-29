@@ -3,16 +3,18 @@ title: Azure Event Grid – Sicherheit und Authentifizierung
 description: In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119088"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328724"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorisieren des Zugriffs auf Event Grid-Ressourcen
-Azure Event Grid bietet die Möglichkeit, den Umfang zu steuern, in dem unterschiedliche Benutzer Zugriff auf verschiedene Verwaltungsvorgänge erhalten, z.B. Auflisten und Erstellen von Ereignisabonnements und Generieren von Schlüsseln. Event Grid nutzt die rollenbasierte Zugriffsüberprüfung (Role Based Access Control, RBAC) von Azure.
+Azure Event Grid bietet die Möglichkeit, den Umfang zu steuern, in dem unterschiedliche Benutzer Zugriff auf verschiedene **Verwaltungsvorgänge** erhalten, z. B. Auflisten und Erstellen von Ereignisabonnements und Generieren von Schlüsseln. Event Grid verwendet die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC).
 
+> [!NOTE]
+> Event Grid unterstützt Azure RBAC nicht zum Veröffentlichen von Ereignissen in Event Grid-Themen oder -Domänen. Verwenden Sie einen SAS-Schlüssel (Shared Access Signature) oder ein SAS-Token zum Authentifizieren von Clients, die Ereignisse veröffentlichen. Weitere Informationen finden Sie unter [Authentifizieren von Veröffentlichungsclients (Azure Event Grid)](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>Vorgangstypen
 
@@ -107,7 +109,7 @@ Wenn Sie Berechtigungen angeben müssen, die sich von den integrierten Rollen un
 
 Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutzern das Durchführen unterschiedlicher Aktionen ermöglichen. Diese benutzerdefinierten Rollen unterscheiden sich von den integrierten Rollen, da sie einen breiteren Zugriff ermöglichen als Ereignisabonnements.
 
-**EventGridReadOnlyRole.json**: Ausschließliches Zulassen schreibgeschützter Operationen.
+**EventGridReadOnlyRole.json** : Ausschließliches Zulassen schreibgeschützter Operationen.
 
 ```json
 {
@@ -126,7 +128,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Zulassen eingeschränkter Post-Aktionen, nicht aber von Löschaktionen.
+**EventGridNoDeleteListKeysRole.json** : Zulassen eingeschränkter Post-Aktionen, nicht aber von Löschaktionen.
 
 ```json
 {
@@ -149,7 +151,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 }
 ```
 
-**EventGridContributorRole.json**: Zulassen aller Event Grid-Aktionen.
+**EventGridContributorRole.json** : Zulassen aller Event Grid-Aktionen.
 
 ```json
 {

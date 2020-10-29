@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75475780"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165552"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generieren eines Wärmebilds zur Bodenfeuchtigkeit
 
@@ -54,7 +54,7 @@ Nachdem Sie Ihr Sensorkonto mit Azure FarmBeats verknüpft haben, müssen Sie di
 2.  Wählen Sie **MyFarm** > **Geräte hinzufügen** aus.
 3.  Das Fenster **Geräte hinzufügen** wird angezeigt. Wählen Sie ein beliebiges Gerät aus, das mit den Bodenfeuchtigkeitssensoren Ihres landwirtschaftlichen Betriebs verbunden ist.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Screenshot: Bildschirm „Geräte hinzufügen“](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. Wählen Sie **Geräte hinzufügen** aus.     
 
@@ -70,7 +70,7 @@ Mit diesem Schritt erstellen Sie einen Auftrag oder einen langfristigen Vorgang,
 6.  Geben Sie unter **Select Soil Moisture** **Sensor Measure** (Maß für Bodenfeuchtigkeitssensor auswählen) das Maß ein, das Sie für die Karte verwenden möchten.
     Wählen Sie zur Ermittlung der Sensormessung unter **Sensors** (Sensoren) einen beliebigen Bodenfeuchtigkeitssensor aus. Verwenden Sie unter **Sensor Properties** (Sensoreigenschaften) den Wert **Measure Name** (Name des Maßes) aus.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Screenshot: Bildschirm „Soil Moisture“ (Bodenfeuchtigkeit)](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  Wählen Sie **Karten generieren** aus.
@@ -93,4 +93,4 @@ Führen Sie die folgenden Schritte durch:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfolgreich ein Wärmebild zur Bodenfeuchtigkeit generiert haben, können Sie sich über das [Generieren der Sensorplatzierung](generate-maps-in-azure-farmbeats.md#sensor-placement-map) und die [Erfassung von Telemetrieverlaufsdaten](ingest-historical-telemetry-data-in-azure-farmbeats.md) informieren. 
+Nachdem Sie nun erfolgreich ein Wärmebild zur Bodenfeuchtigkeit generiert haben, können Sie sich über das [Generieren der Sensorplatzierung](generate-maps-in-azure-farmbeats.md#sensor-placement-map) und die [Erfassung von Telemetrieverlaufsdaten](ingest-historical-telemetry-data-in-azure-farmbeats.md) informieren. 

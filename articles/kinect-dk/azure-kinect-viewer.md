@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, Sensor, Viewer, Visualisierung, Tiefe, RGB, Farbe, IMU, Audiodaten, Mikrofon, Punktwolke
-ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85276677"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166104"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect Viewer
 
@@ -36,11 +36,11 @@ Der Viewer kann in zwei Modi ausgeführt werden: mit Livedaten des Sensors oder 
 
 Starten Sie die Anwendung durch Ausführen von `k4aviewer.exe`.
 
-![Überprüfen der Firmwareversion des Geräts mit dem Viewer](./media/how-to-guides/open-viewer.png)
+![Screenshot: Gestartete Viewer-Anwendung](./media/how-to-guides/open-viewer.png)
 
 ### <a name="use-the-viewer-with-live-data"></a>Verwenden des Viewers mit Livedaten
 
-1. Wählen Sie im Abschnitt **Open Device** (Gerät öffnen) die Seriennummer (**Serial Number**) des zu öffnenden Geräts aus. Wählen Sie dann **Refresh** (Aktualisieren) aus, wenn das Gerät nicht vorhanden ist.
+1. Wählen Sie im Abschnitt **Open Device** (Gerät öffnen) die Seriennummer ( **Serial Number** ) des zu öffnenden Geräts aus. Wählen Sie dann **Refresh** (Aktualisieren) aus, wenn das Gerät nicht vorhanden ist.
 2. Wählen Sie die Schaltfläche **Open Device** (Gerät öffnen) aus.
 3. Wählen Sie **Start** (Starten) aus, um das Streamen von Daten mit den Standardeinstellungen zu starten.
 

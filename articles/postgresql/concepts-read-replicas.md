@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.date: 10/15/2020
+ms.openlocfilehash: 7f81e6182209e29e41a21abadbaf05518844d201
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939833"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490168"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
@@ -43,7 +43,7 @@ Ein primärer Server kann in jeder beliebigen [Azure Database for PostgreSQL-Reg
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der primäre Server befindet. Dies sind die universellen Replikatregionen:
 
-„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“, USA, Westen-Mitte
+Australien, Osten; Australien, Südosten; Brasilien, Süden; Kanada, Mitte; Kanada, Osten; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2; USA, Westen-Mitte.
 
 ### <a name="paired-regions"></a>Regionspaare
 Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres primären Servers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
@@ -81,7 +81,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 Geben Sie an der Eingabeaufforderung das Kennwort für das Benutzerkonto ein.
 
 ## <a name="monitor-replication"></a>Überwachen der Replikation
-Azure Database for PostgreSQL stellt zwei Metriken zum Überwachen der Replikation bereit. Die beiden Metriken sind **Maximale Verzögerung zwischen Replikaten** und **Replikatverzögerung**. Informationen zum Anzeigen dieser Metriken finden Sie im Abschnitt **Monitor a replica** (Überwachen eines Replikats) im Artikel [Howto read replicas](howto-read-replicas-portal.md) (Gewusst wie: Lesereplikate).
+Azure Database for PostgreSQL stellt zwei Metriken zum Überwachen der Replikation bereit. Die beiden Metriken sind **Maximale Verzögerung zwischen Replikaten** und **Replikatverzögerung** . Informationen zum Anzeigen dieser Metriken finden Sie im Abschnitt **Monitor a replica** (Überwachen eines Replikats) im Artikel [Howto read replicas](howto-read-replicas-portal.md) (Gewusst wie: Lesereplikate).
 
 Die Metrik **Maximale Verzögerung zwischen Replikaten** zeigt die Verzögerung in Bytes zwischen dem primären Server und dem Replikat mit der größten Verzögerung an. Diese Metrik ist nur auf dem primären Server verfügbar und nur dann, wenn mindestens eines der Lesereplikate mit dem primären Server verbunden ist.
 
@@ -143,7 +143,7 @@ Wenn die Anwendung erfolgreich Lese- und Schreibvorgänge verarbeitet, haben Sie
 
 ### <a name="disaster-recovery"></a>Notfallwiederherstellung
 
-Bei einem schwerwiegenden Zwischenfall wie etwa bei Ausfällen auf Zonenebene oder bei regionalen Ausfällen können Sie eine Notfallwiederherstellung durchführen, indem Sie Ihr Lesereplikat höherstufen. Navigieren Sie über das UI-Portal zum Lesereplikatserver. Klicken Sie auf die Registerkarte „Replikation“. Hier können Sie das Replikat beenden, um es auf einen unabhängigen Server hochzustufen. Alternativ können Sie die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) verwenden, um den Replikatserver zu beenden und höherzustufen.
+Bei einem schwerwiegenden Zwischenfall wie etwa bei Ausfällen auf Zonenebene oder bei regionalen Ausfällen können Sie eine Notfallwiederherstellung durchführen, indem Sie Ihr Lesereplikat höherstufen. Navigieren Sie über das UI-Portal zum Lesereplikatserver. Klicken Sie auf die Registerkarte „Replikation“. Hier können Sie das Replikat beenden, um es auf einen unabhängigen Server hochzustufen. Alternativ können Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) verwenden, um den Replikatserver zu beenden und höherzustufen.
 
 ## <a name="considerations"></a>Überlegungen
 
@@ -154,9 +154,9 @@ Lesereplikate und [logische Decodierung](concepts-logical.md) sind beide vom Wri
 
 Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter für die Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
 
-* **Off**: Speichert am wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist auf den meisten Azure Database for PostgreSQL-Servern nicht verfügbar.  
-* **Replica**: Ausführlichere Informationen als bei **Off**. Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
-* **Logical**: Noch ausführlichere Informationen als bei **Replica**. Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
+* **Off** : Speichert am wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist auf den meisten Azure Database for PostgreSQL-Servern nicht verfügbar.  
+* **Replica** : Ausführlichere Informationen als bei **Off** . Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
+* **Logical** : Noch ausführlichere Informationen als bei **Replica** . Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
 
 Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Intern legt dieser Parameter die Postgres-Parameter `wal_level`, `max_replication_slots` und `max_wal_senders` fest.
 
@@ -172,8 +172,8 @@ Firewallregeln, VNET-Regeln und Parametereinstellungen werden beim Erstellen ein
 Skalieren virtueller Kerne zwischen „Universell“ und „Arbeitsspeicheroptimiert“:
 * PostgreSQL erfordert, dass die Einstellung `max_connections` auf einem sekundären Server [größer oder gleich der Einstellung auf dem primären Server](https://www.postgresql.org/docs/current/hot-standby.html) ist. Andernfalls wird der sekundäre Server nicht gestartet.
 * In Azure Database for PostgreSQL ist die maximal zulässige Anzahl von Verbindungen für jeden Server an die Compute-SKU gebunden, da Verbindungen Speicher belegen. Weitere Informationen zur [Zuordnung zwischen „max_connections“ und Compute-SKUs](concepts-limits.md)
-* **Hochskalieren**: Skalieren Sie zuerst die Computekapazität eines Replikats und dann den primären Server hoch. Diese Reihenfolge verhindert, dass die `max_connections`-Anforderung durch Fehler beeinträchtigt wird.
-* **Herunterskalieren**: Skalieren Sie zuerst die Computekapazität des primären Servers und dann das Replikat herunter. Wenn Sie auf das Replikat eine geringere Skalierung anwenden als auf den primären Server, tritt ein Fehler auf, weil die `max_connections`-Anforderung verletzt wird.
+* **Hochskalieren** : Skalieren Sie zuerst die Computekapazität eines Replikats und dann den primären Server hoch. Diese Reihenfolge verhindert, dass die `max_connections`-Anforderung durch Fehler beeinträchtigt wird.
+* **Herunterskalieren** : Skalieren Sie zuerst die Computekapazität des primären Servers und dann das Replikat herunter. Wenn Sie auf das Replikat eine geringere Skalierung anwenden als auf den primären Server, tritt ein Fehler auf, weil die `max_connections`-Anforderung verletzt wird.
 
 Skalieren des Speichers:
 * Für alle Replikate ist die automatische Speichervergrößerung aktiviert. Dies soll verhindern, dass aufgrund eines vollen Replikatspeichers Replikationsprobleme auftreten. Diese Einstellung kann nicht deaktiviert werden.

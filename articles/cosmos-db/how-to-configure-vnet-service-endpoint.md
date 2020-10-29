@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c1d96c373103e0a89a9553ce8dab6ce5cce23c7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279704"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490525"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 
@@ -93,7 +93,7 @@ Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreif
 
 Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Dienstendpunkt für ein Azure Cosmos DB-Konto zu konfigurieren:  
 
-1. Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps), und [melden Sie sich an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-Az-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).  
 
 1. Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines Virtual Network.  
 
@@ -317,7 +317,7 @@ Hier sind einige häufig gestellte Fragen zur Konfiguration des Zugriffs aus vir
 
 ### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Sind Notebooks und Mongo/Cassandra Shell zurzeit mit Virtual Network-fähigen Konten kompatibel?
 
-Zurzeit werden die Integrationen der [Mongo Shell](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) und der [Cassandra Shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) im Daten-Explorer von Cosmos DB sowie der [Jupyter Notebook-Dienst](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks) nicht mit VNET-Zugriff unterstützt. Diese Unterstützung befindet sich derzeit in der aktiven Entwicklung.
+Zurzeit werden die Integrationen der [Mongo Shell](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) und der [Cassandra Shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) im Daten-Explorer von Cosmos DB sowie der [Jupyter Notebook-Dienst](./cosmosdb-jupyter-notebooks.md) nicht mit VNET-Zugriff unterstützt. Diese Unterstützung befindet sich derzeit in der aktiven Entwicklung.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Kann ich sowohl den VNET-Dienstendpunkt als auch eine IP-Zugriffssteuerungsrichtlinie für ein Azure Cosmos DB-Konto festlegen? 
 

@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949849"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107826"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
-Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Cognitive Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
+Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Cognitive Search](search-create-service-portal.md) im Tarif **Free** , **Basic** , **Standard** oder **Storage Optimized** erfolgt.
 
 + **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. 
 
@@ -99,12 +99,11 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 <sup>5</sup> Die KI-Anreicherung und die Bildanalyse sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen der verfügbaren Verarbeitungskapazität verbrauchen. Die Laufzeit für diese Workloads wurde verkürzt, damit andere Aufträge in der Warteschlange bessere Chancen haben, ausgeführt zu werden.
 
 > [!NOTE]
-> Wie unter [Indexgrenzwerte](#index-limits) beschrieben, erzwingen Indexer die Obergrenze von 3.000 Elementen auch für alle komplexen Sammlungen pro Dokument – ab der neuesten allgemein verfügbaren API-Version, die komplexe Typen (`2019-05-06`) unterstützt. Dies bedeutet, dass dieser Grenzwert für Sie nicht gilt, wenn Sie Ihren Indexer mit einer früheren API-Version erstellt haben. Zur Sicherstellung der maximalen Kompatibilität wird ein Indexer, der mit einer früheren API-Version erstellt und dann mit API-Version `2019-05-06` oder höher aktualisiert wurde, trotzdem von der Begrenzung **ausgenommen**. Kunden sollten sich dieser negativen Auswirkungen, die wie oben erwähnt mit der Verwendung sehr komplexer Sammlungen verbunden sind, bewusst sein. Wir empfehlen Ihnen dringend, für die Erstellung aller neuen Indexer die neueste allgemein verfügbare API-Version zu nutzen.
+> Wie unter [Indexgrenzwerte](#index-limits) beschrieben, erzwingen Indexer die Obergrenze von 3.000 Elementen auch für alle komplexen Sammlungen pro Dokument – ab der neuesten allgemein verfügbaren API-Version, die komplexe Typen (`2019-05-06`) unterstützt. Dies bedeutet, dass dieser Grenzwert für Sie nicht gilt, wenn Sie Ihren Indexer mit einer früheren API-Version erstellt haben. Zur Sicherstellung der maximalen Kompatibilität wird ein Indexer, der mit einer früheren API-Version erstellt und dann mit API-Version `2019-05-06` oder höher aktualisiert wurde, trotzdem von der Begrenzung **ausgenommen** . Kunden sollten sich dieser negativen Auswirkungen, die wie oben erwähnt mit der Verwendung sehr komplexer Sammlungen verbunden sind, bewusst sein. Wir empfehlen Ihnen dringend, für die Erstellung aller neuen Indexer die neueste allgemein verfügbare API-Version zu nutzen.
 
-### <a name="shared-private-link-resource-limits"></a>Beschränkungen für freigegebene Private Link-Ressourcen
+## <a name="shared-private-link-resource-limits"></a>Beschränkungen für freigegebene Private Link-Ressourcen
 
-> [!NOTE]
-> Indexer haben über private Endpunkte, die über die [API für freigegebene Private Link-Ressourcen](/rest/api/searchmanagement/sharedprivatelinkresources) verwaltet werden, sicheren Zugriff auf Ressourcen. Eine Beschreibung hierzu finden Sie in [dieser Schrittanleitung](search-indexer-howto-access-private.md).
+Indexer haben [über private Endpunkte](search-indexer-howto-access-private.md), die über die [API für freigegebene Private Link-Ressourcen](/rest/api/searchmanagement/sharedprivatelinkresources) verwaltet werden, Zugriff auf Azure-Ressourcen. In diesem Abschnitt werden die Grenzwerte für diese Funktion beschrieben.
 
 | Resource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -113,7 +112,7 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 | Maximale Anzahl privater Endpunkte | – | 10 oder 30 | 100 | 400 | 400 | – | 20 | 20 |
 | Maximale Anzahl unterschiedlicher Ressourcentypen<sup>2</sup> | N/V | 4 | 7 | 15 | 15 | N/V | 4 | 4 |
 
-<sup>1</sup> KI-Anreicherung und Bildanalyse sind rechenintensiv und nehmen unverhältnismäßig viel verfügbare Verarbeitungsleistung in Anspruch. Daher kann sich die Ausführung in einer privaten Umgebung bei günstigeren Suchdiensttarifen negativ auf die Leistung und Stabilität des Suchdiensts auswirken.
+<sup>1</sup> Die KI-Anreicherung und die Bildanalyse sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen der verfügbaren Verarbeitungskapazität verbrauchen. Aus diesem Grund sind private Verbindungen in niedrigeren Tarifen deaktiviert, um negative Auswirkungen auf die Leistung und Stabilität des Suchdiensts selbst zu vermeiden.
 
 <sup>2</sup> Die Anzahl der unterschiedlichen Ressourcentypen wird als die Anzahl der eindeutigen `groupId`-Werte berechnet, die in allen freigegebenen Private Link-Ressourcen für einen bestimmten Dienst verwendet werden. Der Status der jeweiligen Ressource spielt dabei keine Rolle.
 

@@ -2,17 +2,18 @@
 title: 'Überprüfen des Verschlüsselungsstatus unter Linux: Azure Disk Encryption'
 description: In diesem Artikel finden Sie Anweisungen zum Überprüfen des Verschlüsselungsstatus auf der Plattform- und Betriebssystemebene.
 author: kailashmsft
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e39a230c71cf48422220768adfa8de91cbaa6692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f51aae39c2cb60d8b60d4fb496f74eadb91b33b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072841"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487652"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Überprüfen des Verschlüsselungsstatus unter Linux 
 
@@ -42,7 +43,7 @@ Weitere Details erhalten Sie, indem Sie die Erweiterung und dann die Option **De
 
 ![Detaillierter Status im JSON-Format](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-Eine weitere Möglichkeit zum Überprüfen des Verschlüsselungsstatus ist das Anzeigen des Abschnitts mit den **Datenträgereinstellungen**.
+Eine weitere Möglichkeit zum Überprüfen des Verschlüsselungsstatus ist das Anzeigen des Abschnitts mit den **Datenträgereinstellungen** .
 
 ![Verschlüsselungsstatus für Betriebssystemdatenträger und Datenträger](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
@@ -347,7 +348,7 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-Darüber hinaus können Sie überprüfen, welche **dm**-Geräte als **crypt** aufgeführt sind:
+Darüber hinaus können Sie überprüfen, welche **dm** -Geräte als **crypt** aufgeführt sind:
 
 ```bash
 dmsetup ls --target crypt

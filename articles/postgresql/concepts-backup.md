@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 0c1b0b5ac0c5c71dc5c98cb91d86f879a82809bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708453"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488009"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
 
@@ -32,11 +32,11 @@ Bei Servern, die bis zu 4 TB Speicher unterstützen, erfolgt jede Woche eine vo
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Server mit bis zu 16 TB Speicher
 
-In einigen [Azure-Regionen](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) unterstützen alle neu bereitgestellten Server bis zu 16 TB Speicher. Die Sicherungen auf diesen großen Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. An einem Tag werden drei differenzielle Momentaufnahmensicherungen durchgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. 
+In einigen [Azure-Regionen](./concepts-pricing-tiers.md#storage) unterstützen alle neu bereitgestellten Server bis zu 16 TB Speicher. Die Sicherungen auf diesen großen Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. An einem Tag werden drei differenzielle Momentaufnahmensicherungen durchgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. 
 
 ### <a name="backup-retention"></a>Sicherungsaufbewahrung
 
-Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 7 bis 35 Tagen auswählen. Der Standardaufbewahrungszeitraum beträgt sieben Tage. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) oder über die [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration) aktualisieren. 
+Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 7 bis 35 Tagen auswählen. Der Standardaufbewahrungszeitraum beträgt sieben Tage. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des [Azure-Portals](./howto-restore-server-portal.md#set-backup-configuration) oder über die [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration) aktualisieren. 
 
 Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Der Aufbewahrungszeitraum kann auch als Wiederherstellungsfenster im Hinblick auf die Wiederherstellung behandelt werden. Alle Sicherungen, die zum Durchführen einer Zeitpunktwiederherstellung innerhalb des Aufbewahrungszeitraums für die Sicherung erforderlich sind, werden im Sicherungsspeicher beibehalten. Wenn der Aufbewahrungszeitraum für Sicherungen beispielsweise auf sieben Tage festgelegt ist, entspricht das Wiederherstellungsfenster einer Dauer von sieben Tagen. In diesem Szenario bleiben alle Sicherungen erhalten, die zum Wiederherstellen des Servers in den letzten sieben Tagen erforderlich sind. Beispiel für Sicherungsaufbewahrungsfenster von sieben Tagen:
 - Bei Servern mit bis zu 4 TB Speicher werden bis zu zwei vollständige Datenbanksicherungen, alle differenziellen Sicherungen sowie Transaktionsprotokollsicherungen beibehalten, die seit der frühesten Datenbanksicherung durchgeführt wurden.
@@ -44,7 +44,7 @@ Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zur
 
 ### <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
 
-Bei Azure Database for PostgreSQL können Sie in den Tarifen „Allgemein“ und „Arbeitsspeicheroptimiert“ flexibel zwischen lokal redundantem und georedundantem Sicherungsspeicher wählen. Wenn die Sicherungen in einem georedundanten Sicherungsspeicher gespeichert werden, werden sie nicht nur in der Region vorgehalten, in der Ihr Server gehostet wird. Sie werden außerdem in einem [gekoppelten Datencenter](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) repliziert. Dies erhöht den Schutz und ermöglicht in einem Notfall die Wiederherstellung Ihres Servers in einer anderen Region. Im Tarif „Basic“ ist nur lokal redundanter Sicherungsspeicher verfügbar.
+Bei Azure Database for PostgreSQL können Sie in den Tarifen „Allgemein“ und „Arbeitsspeicheroptimiert“ flexibel zwischen lokal redundantem und georedundantem Sicherungsspeicher wählen. Wenn die Sicherungen in einem georedundanten Sicherungsspeicher gespeichert werden, werden sie nicht nur in der Region vorgehalten, in der Ihr Server gehostet wird. Sie werden außerdem in einem [gekoppelten Datencenter](../best-practices-availability-paired-regions.md) repliziert. Dies erhöht den Schutz und ermöglicht in einem Notfall die Wiederherstellung Ihres Servers in einer anderen Region. Im Tarif „Basic“ ist nur lokal redundanter Sicherungsspeicher verfügbar.
 
 > [!IMPORTANT]
 > Das Konfigurieren von lokal redundantem oder georedundantem Speicher für die Sicherung ist nur während der Erstellung des Servers zulässig. Nachdem der Server bereitgestellt wurde, können Sie die Option für die Sicherungsspeicherredundanz nicht mehr ändern.
@@ -69,7 +69,7 @@ Es gibt zwei Arten der Wiederherstellung:
 Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
 
 > [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) nutzen.
+> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen.
 
 ### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 

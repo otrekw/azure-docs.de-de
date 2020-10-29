@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951926"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486003"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
 In Azure Cosmos DB können Sie die Gültigkeitsdauer (Time to Live, TTL) auf der Containerebene konfigurieren oder auf der Elementebene außer Kraft setzen, nachdem Sie sie für den Container festgelegt haben. Die Gültigkeitsdauer für einen Container kann über das Azure-Portal oder mithilfe der sprachspezifischen SDKs konfiguriert werden. Die Außerkraftsetzung der Gültigkeitsdauer auf der Elementebene kann mithilfe der SDKs konfiguriert werden.
 
-> Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](https://docs.microsoft.com/azure/cosmos-db/synapse-link) ermöglicht, klicken Sie [hier](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl).
+> Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](./synapse-link.md) ermöglicht, klicken Sie [hier](./analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Aktivieren der Gültigkeitsdauer für einen Container über das Azure-Portal
 
@@ -28,14 +28,14 @@ Gehen Sie wie folgt vor, um die Gültigkeitsdauer für einen Container ohne Abla
 
 2. Erstellen Sie ein neues Azure Cosmos-Konto, oder wählen Sie ein bereits vorhandenes Konto aus.
 
-3. Öffnen Sie den Bereich **Daten-Explorer**.
+3. Öffnen Sie den Bereich **Daten-Explorer** .
 
 4. Wählen Sie einen vorhandenen Container aus, erweitern Sie ihn, und ändern Sie die folgenden Werte:
 
    * Öffnen Sie das Fenster **Scale & Settings** (Skalierung und Einstellungen).
-   * Suchen Sie unter **Einstellung** nach **Gültigkeitsdauer**.
+   * Suchen Sie unter **Einstellung** nach **Gültigkeitsdauer** .
    * Wählen Sie **Ein (Standard)** aus, oder wählen Sie **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest.
-   * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+   * Klicken Sie zum Speichern der Änderungen auf **Speichern** .
 
    :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Konfigurieren der Gültigkeitsdauer über das Azure-Portal":::
 
@@ -212,14 +212,14 @@ Gehen Sie wie folgt vor, um die Gültigkeitsdauer für ein Element zu aktivieren
 
 2. Erstellen Sie ein neues Azure Cosmos-Konto, oder wählen Sie ein bereits vorhandenes Konto aus.
 
-3. Öffnen Sie den Bereich **Daten-Explorer**.
+3. Öffnen Sie den Bereich **Daten-Explorer** .
 
 4. Wählen Sie einen vorhandenen Container aus, erweitern Sie ihn, und ändern Sie die folgenden Werte:
 
    * Öffnen Sie das Fenster **Scale & Settings** (Skalierung und Einstellungen).
-   * Suchen Sie unter **Einstellung** nach **Gültigkeitsdauer**.
+   * Suchen Sie unter **Einstellung** nach **Gültigkeitsdauer** .
    * Wählen Sie **Ein (Standard)** oder **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest. 
-   * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+   * Klicken Sie zum Speichern der Änderungen auf **Speichern** .
 
 5. Navigieren Sie anschließend zu dem Element, für das Sie die Gültigkeitsdauer festlegen möchten, fügen Sie die Eigenschaft `ttl` hinzu, und wählen Sie **Aktualisieren** aus. 
 

@@ -4,19 +4,19 @@ description: Verwenden eines Azure IoT Edge-Geräts als transparentes Gateway, d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/12/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048405"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147850"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -31,8 +31,8 @@ Dieser Artikel enthält detaillierte Anweisungen zur Konfiguration eines IoT Edg
 Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung mit einem transparenten Gateway. In diesem Artikel wird der erste Schritt behandelt:
 
 1. **Konfigurieren Sie das Gatewaygerät als Server, sodass sich nachgeschaltete Geräte sicher mit ihm verbinden können. Richten Sie das Gateway so ein, dass es Nachrichten von nachgeschalteten Geräten empfängt und sie an das richtige Ziel weiterleitet.**
-2. Erstellen Sie eine Geräteidentität für das nachgeschaltete Gerät, damit es sich beim IoT-Hub authentifizieren kann. Konfigurieren Sie das nachgeschaltete Gerät zum Senden von Nachrichten über das Gatewaygerät. Weitere Informationen finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. Verbinden Sie das nachgeschaltete Gerät mit dem Gatewaygerät, und beginnen Sie mit dem Senden von Nachrichten. Weitere Informationen finden Sie unter [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
+2. Erstellen Sie eine Geräteidentität für das nachgeschaltete Gerät, damit es sich beim IoT-Hub authentifizieren kann. Konfigurieren Sie das nachgeschaltete Gerät zum Senden von Nachrichten über das Gatewaygerät. Die dazu erforderlichen Schritte finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. Verbinden Sie das nachgeschaltete Gerät mit dem Gatewaygerät, und beginnen Sie mit dem Senden von Nachrichten. Die dazu erforderlichen Schritte finden Sie unter [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
 
 Damit ein Gerät als Gateway fungieren kann, muss es sichere Verbindungen mit nachgeschalteten Geräten herstellen können. Mit Azure IoT Edge können Sie mithilfe der Public Key-Infrastruktur sichere Verbindungen zwischen Geräten einrichten. In diesem Fall lassen wir zu, dass ein nachgeschaltetes Gerät eine Verbindung mit einem IoT Edge-Gerät, das als transparentes Gateway fungiert, herstellt. Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des Gatewaygeräts bestätigen. Diese Überprüfung der Identität verhindert, dass Ihre Geräte Verbindungen mit potenziell schädlichen Gateways herstellen.
 
@@ -48,6 +48,8 @@ In den folgenden Schritten werden Sie durch den Prozess zum Erstellen der Zertif
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Ein Linux- oder Windows-Gerät, auf dem IoT Edge installiert ist.
+
+Wenn Sie kein Gerät zur Hand haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](quickstart-linux.md) zum Erstellen eines IoT Hubs, Erstellen eines virtuellen Computers und Konfigurieren der IoT Edge-Runtime aus. 
 
 ## <a name="set-up-the-device-ca-certificate"></a>Einrichten des Zertifikats der Gerätezertifizierungsstelle
 
@@ -68,24 +70,27 @@ Halten Sie die folgenden Dateien bereit:
 
 In Produktionsszenarios sollten diese Dateien mit ihrer eigenen Zertifizierungsstelle generiert werden. Für Entwicklungs- und Testszenarios können Sie Demozertifikate verwenden.
 
-1. Wenn Sie Demozertifikate verwenden, gehen Sie bei der Erstellung Ihrer Dateien wie folgt vor:
-   1. [Erstellen des Zertifikats der Stammzertifizierungsstelle](how-to-create-test-certificates.md#create-root-ca-certificate) Am Ende dieser Anweisungen verfügen Sie über eine Zertifikatdatei der Stammzertifizierungsstelle:
-      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+1. Wenn Sie Demozertifikate verwenden, befolgen Sie die Anleitungen in [Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten](how-to-create-test-certificates.md) zum Erstellen Ihrer Dateien. Auf dieser Seite müssen Sie die folgenden Schritte ausführen:
 
-   2. [Erstellen von Zertifizierungsstellenzertifikaten für IoT Edge-Geräte](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates) Am Ende dieser Anweisungen verfügen Sie über zwei Dateien, ein Zertifikat der Gerätezertifizierungsstelle und den dazugehörigen privaten Schlüssel:
+   1. Richten Sie zuerst die Skripts zum Erstellen von Zertifikaten auf Ihrem Gerät ein.
+   2. Erstellen Sie ein Stammzertifikat der Zertifizierungsstelle. Am Ende dieser Anleitungen verfügen Sie über eine Zertifikatdatei der Stammzertifizierungsstelle:
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+   3. Erstellen Sie Zertifizierungsstellenzertifikate für IoT Edge-Geräte. Am Ende dieser Anleitungen verfügen Sie über ein Zertifikat der Gerätezertifizierungsstelle und den dazugehörigen privaten Schlüssel:
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` und
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. Wenn Sie diese Dateien auf einem anderen Computer erstellt haben, kopieren Sie sie auf Ihr IoT Edge-Gerät.
+2. Wenn Sie die Zertifikate auf einem anderen Computer erstellt haben, kopieren Sie sie auf Ihr IoT Edge-Gerät.
 
 3. Öffnen Sie die Konfigurationsdatei des Sicherheitsdaemons auf Ihrem IoT Edge-Gerät.
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-4. Suchen Sie den Abschnitt **Zertifikate** der Datei, und geben Sie die Datei-URIs für Ihre drei Dateien als Werte für die folgenden Eigenschaften an:
-   * **device_ca_cert**: Zertifikat der Gerätezertifizierungsstelle
-   * **device_ca_pk**: Privater Schlüssel der Gerätezertifizierungsstelle
-   * **trusted_ca_certs**: Zertifikat der Stammzertifizierungsstelle
+4. Suchen Sie den Abschnitt **Zertifikateinstellungen** der Datei. Heben Sie die Auskommentierung der vier Zeilen ab **Zertifikate:** auf, und geben Sie die Datei-URIs für Ihre drei Dateien als Werte für die folgenden Eigenschaften an:
+   * **device_ca_cert** : Zertifikat der Gerätezertifizierungsstelle
+   * **device_ca_pk** : Privater Schlüssel der Gerätezertifizierungsstelle
+   * **trusted_ca_certs** : Zertifikat der Stammzertifizierungsstelle
+
+   Sorgen Sie dafür, dass die Zeile **Zertifikate:** kein führendes Leerzeichen enthält und dass die anderen Zeilen um zwei Leerzeichen eingezogen werden.
 
 5. Speichern und schließen Sie die Datei.
 
@@ -109,25 +114,25 @@ Führen Sie die folgenden Schritte aus, um das Modul „IoT Edge-Hub“ bereitzu
 
 1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub.
 
-2. Wechseln Sie zu **IoT Edge**, und wählen Sie das IoT Edge-Gerät aus, das Sie als Gateway verwenden möchten.
+2. Wechseln Sie zu **IoT Edge** , und wählen Sie das IoT Edge-Gerät aus, das Sie als Gateway verwenden möchten.
 
 3. Wählen Sie **Module festlegen** aus.
 
 4. Auf der Seite **Module** können Sie alle Module hinzufügen, die Sie auf dem Gatewaygerät bereitstellen möchten. Für den Zweck dieses Artikels konzentrieren wir uns auf die Konfiguration und Bereitstellung des Moduls „edgeHub“, das auf dieser Seite nicht explizit festgelegt werden muss.
 
-5. Klicken Sie auf **Weiter: Routen**.
+5. Klicken Sie auf **Weiter: Routen** .
 
 6. Stellen Sie auf der Seite **Routen** sicher, dass es eine Route zum Verarbeiten von Nachrichten von nachgeschalteten Geräten gibt. Beispiel:
 
    * Eine Route, die alle Nachrichten – ganz gleich, ob von einem Modul oder einem nachgeschalteten Gerät – an IoT Hub sendet:
-       * **Name**: `allMessagesToHub`
-       * **Wert**: `FROM /messages/* INTO $upstream`
+       * **Name** : `allMessagesToHub`
+       * **Wert** : `FROM /messages/* INTO $upstream`
 
    * Eine Route, die sämtliche Nachrichten von allen nachgeschalteten Geräten an IoT Hub sendet:
-      * **Name**: `allDownstreamToHub`
-      * **Wert**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **Name** : `allDownstreamToHub`
+      * **Wert** : `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
-      Diese Route funktioniert, weil Nachrichten von nachgeschalteten Geräten – im Gegensatz zu Nachrichten von IoT Edge Modulen – keine Modul-ID zugeordnet ist. Mithilfe der **WHERE**-Klausel der Route können alle Nachrichten mit dieser Systemeigenschaft herausgefiltert werden.
+      Diese Route funktioniert, weil Nachrichten von nachgeschalteten Geräten – im Gegensatz zu Nachrichten von IoT Edge Modulen – keine Modul-ID zugeordnet ist. Mithilfe der **WHERE** -Klausel der Route können alle Nachrichten mit dieser Systemeigenschaft herausgefiltert werden.
 
       Weitere Informationen zum Routing von Nachrichten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen](./module-composition.md#declare-routes).
 
@@ -146,14 +151,6 @@ Damit ein Gatewayszenario funktioniert, muss mindestens eines der unterstützten
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
-
-## <a name="enable-extended-offline-operation"></a>Aktivieren des erweiterten Offlinebetriebs
-
-Ab [Release 1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) der IoT Edge-Runtime können das Gatewaygerät und die nachgeschalteten Geräte, die mit ihm verbunden sind, für einen erweiterten Offlinebetrieb konfiguriert werden.
-
-Mit dieser Funktion können lokale Module oder nachgeschaltete Geräte bei Bedarf eine erneute Authentifizierung beim IoT Edge-Gerät durchführen und über Nachrichten und Methoden miteinander kommunizieren, auch wenn sie vom IoT-Hub getrennt sind. Weitere Informationen finden Sie unter [Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte](offline-capabilities.md).
-
-Für die Aktivierung der erweiterten Offlinefunktionen, stellen Sie eine Beziehung mit über- und untergeordneten Geräten zwischen dem IoT Edge-Gatewaygerät und den nachgeschalteten Geräten her, die eine Verbindung mit diesem herstellen. Diese Schritte werden im nächsten Artikel dieser Reihe unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md) ausführlicher erläutert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

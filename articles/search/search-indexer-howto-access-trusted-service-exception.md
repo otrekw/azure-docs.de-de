@@ -1,34 +1,34 @@
 ---
-title: Zulassen des Zugriffs auf Speicher über eine Ausnahme für einen vertrauenswürdigen Dienst
+title: Indexer-Zugriff auf Azure Storage mithilfe der Ausnahme für vertrauenswürdige Dienste
 titleSuffix: Azure Cognitive Search
-description: In dieser Anleitung wird beschrieben, wie Sie eine Ausnahme für einen vertrauenswürdigen Dienst einrichten, um diesem den sicheren Zugriff auf Daten in Speicherkonten zu ermöglichen.
+description: Ermöglichen Sie den Datenzugriff durch einen Indexer in Azure Cognitive Search auf Daten, die sicher in Azure Storage gespeichert sind.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950023"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101374"
 ---
-# <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Sicheres Zugreifen auf Daten in Speicherkonten über eine Ausnahme für einen vertrauenswürdigen Dienst
+# <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>Indexer-Zugriff auf Azure Storage mithilfe der Ausnahme für vertrauenswürdige Dienste (Azure Cognitive Search)
 
-Indexer, die auf Daten in Speicherkonten zugreifen, können für den sicheren Zugriff auf Daten die Funktion [Ausnahme für vertrauenswürdige Dienste](../storage/common/storage-network-security.md#exceptions) nutzen. Dieser Mechanismus bietet Kunden, die [Indexer keinen Zugriff über IP-Firewallregeln](search-indexer-howto-access-ip-restricted.md) gewähren können, eine einfache, sichere und kostenlose Alternative für den Zugriff auf Daten in Speicherkonten.
+Indexer in einem Azure Cognitive Search-Dienst, die auf Daten in Azure Storage-Konten zugreifen, können für den sicheren Zugriff auf Daten die Funktion [Ausnahme für vertrauenswürdige Dienste](../storage/common/storage-network-security.md#exceptions) nutzen. Dieser Mechanismus bietet Kunden, die [Indexer keinen Zugriff über IP-Firewallregeln](search-indexer-howto-access-ip-restricted.md) gewähren können, eine einfache, sichere und kostenlose Alternative für den Zugriff auf Daten in Speicherkonten.
 
 > [!NOTE]
-> Die Unterstützung für den Zugriff auf Daten in Speicherkonten über eine Ausnahme für einen vertrauenswürdigen Dienst ist auf Azure Blob Storage und Azure Data Lake Storage Gen2 beschränkt. Azure Table Storage wird nicht unterstützt.
+> Die Unterstützung für den Zugriff auf Daten in Speicherkonten über eine Ausnahme für vertrauenswürdiger Dienste ist auf Azure Blob Storage und Azure Data Lake Storage Gen2 beschränkt. Azure Table Storage wird nicht unterstützt.
 
-## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>Schritt 1: Konfigurieren der Verbindung mit dem Speicherkonto über die Identität
+## <a name="step-1-configure-a-connection-using-a-managed-identity"></a>Schritt 1: Konfigurieren einer Verbindung mithilfe einer verwalteten Identität
 
-Befolgen Sie die Informationen im [Leitfaden für den Zugriff verwalteter Identitäten](search-howto-managed-identities-storage.md), um Indexer für den Zugriff auf Speicherkonten über die verwaltete Identität des Suchdiensts zu konfigurieren.
+Befolgen Sie die Anweisungen unter [Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität](search-howto-managed-identities-storage.md). Wenn Sie fertig sind, haben Sie Ihren Suchdienst bei Azure Active Directory als vertrauenswürdigen Dienst registriert und Berechtigungen in Azure Storage erteilt, die der Suchidentität bestimmte Rechte für den Zugriff auf Daten oder Informationen bietet.
 
 ## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>Schritt 2: Gewähren des Zugriffs vertrauenswürdiger Microsoft-Dienste auf das Speicherkonto
 
-Navigieren Sie im Azure-Portal zur Registerkarte „Firewalls und virtuelle Netzwerke“ des Speicherkontos. Vergewissern Sie sich, dass die Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ aktiviert ist. Mit dieser Option wird nur dieser spezifischen Suchdienstinstanz ein geeigneter rollenbasierter Zugriff auf das Speicherkonto (starke Authentifizierung) gewährt, damit er auf Daten im Speicherkonto zugreifen kann, auch wenn diese durch IP-Firewallregeln geschützt sind.
+Navigieren Sie im Azure-Portal zur Registerkarte **Firewalls und virtuelle Netzwerke** des Speicherkontos. Vergewissern Sie sich, dass die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert ist. Mit dieser Option wird nur dieser spezifischen Suchdienstinstanz ein geeigneter rollenbasierter Zugriff auf das Speicherkonto (starke Authentifizierung) gewährt, damit er auf Daten im Speicherkonto zugreifen kann, auch wenn diese durch IP-Firewallregeln geschützt sind.
 
 ![Ausnahme für vertrauenswürdige Dienste](media\search-indexer-howto-secure-access\exception.png "Ausnahme für vertrauenswürdige Dienste")
 

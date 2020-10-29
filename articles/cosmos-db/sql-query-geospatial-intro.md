@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b874ad4ce566cfca3b0dbd28bdfe48bf30272121
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482824"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Räumliche Daten und GeoJSON-Standortdaten in Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Räumliche Daten werden häufig in Abfragen zur örtlichen Nähe verwendet, beis
 
 Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und Geodaten. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees.
 
-Die SQL-API von Azure Cosmos DB unterstützt zwei Typen räumlicher Daten: **geometrische** und **geografische**.
+Die SQL-API von Azure Cosmos DB unterstützt zwei Typen räumlicher Daten: **geometrische** und **geografische** .
 
 - Der **geometrische** Datentyp stellt Daten in einem euklidischen (zweidimensionalen) Koordinatensystem dar.
 - Der **geography** -Datentyp stellt Daten in einem Erdkugel-Koordinatensystem dar.
@@ -210,7 +210,7 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Wenn Sie die Informationen zu Breiten- und Längengrad nicht haben, aber über die physischen Adressen und Standortnamen wie Stadt oder Land/Region verfügen, können Sie die tatsächlichen Koordinaten mithilfe eines Geocodierungsdiensts wie Bing Maps REST Services nachschlagen. [Hier](https://msdn.microsoft.com/library/ff701713.aspx)erfahren Sie mehr zur Bing Maps-Geocodierung.
+Wenn Sie die Informationen zu Breiten- und Längengrad nicht haben, aber über die physischen Adressen und Standortnamen wie Stadt oder Land/Region verfügen, können Sie die tatsächlichen Koordinaten mithilfe eines Geocodierungsdiensts wie Bing Maps REST Services nachschlagen. [Hier](/bingmaps/rest-services/)erfahren Sie mehr zur Bing Maps-Geocodierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

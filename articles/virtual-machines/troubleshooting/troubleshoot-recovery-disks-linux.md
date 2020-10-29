@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 191ea575ed8ce84d2d96227bf93cc4890edd00de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc796b4d9708c18f4d0612e6f3ebde9b2485d2f7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400482"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093139"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie die Azure CLI die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
@@ -35,6 +35,8 @@ Der Problembehebungsprozess sieht wie folgt aus:
 1. Ändern Sie den Betriebssystemdatenträger für die betroffene VM.
 
 Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
+
+Sie können die VM-Reparaturbefehle verwenden, um die Schritte 1, 2, 3, 4, 6 und 7 zu automatisieren. Weitergehende Dokumentation und Anleitungen finden Sie unter [Reparieren eines virtuellen Linux-Computers mit den Reparaturbefehlen virtueller Azure-Computer](repair-linux-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 > [!Important]
 > Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](../managed-disks-overview.md) verwenden. 

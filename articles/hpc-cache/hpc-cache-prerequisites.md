@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612981"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344014"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -65,7 +65,7 @@ Wenn Sie nur Zugriff auf Blobspeicher benötigen, können Sie den von Azure bere
 
 Ein einfacher DNS-Server kann außerdem für den Lastenausgleich für Clientverbindungen zwischen allen verfügbaren Cache-Einbindungspunkten verwendet werden.
 
-Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfigurationen finden Sie unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
+Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfigurationen finden Sie unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -73,7 +73,7 @@ Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfiguration
 
 * Die Cache-Instanz muss in der Lage sein, virtuelle Netzwerkschnittstellen (NICs) zu erstellen. Der Benutzer, der den Cache erstellt, muss über ausreichende Berechtigungen für das Abonnement verfügen, um NICs zu erstellen.
 
-* Bei der Verwendung von Blobspeicher benötigt Azure HPC Cache die Autorisierung zum Zugriff auf Ihr Speicherkonto. Verwenden Sie rollenbasierte Zugriffssteuerung (RBAC), um dem Cache Zugriff auf Ihren Blobspeicher zu erteilen. Zwei Rollen sind erforderlich: „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“.
+* Bei der Verwendung von Blobspeicher benötigt Azure HPC Cache die Autorisierung zum Zugriff auf Ihr Speicherkonto. Verwenden Sie rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um dem Cache Zugriff auf Ihren Blobspeicher zu erteilen. Zwei Rollen sind erforderlich: „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“.
 
   Befolgen Sie die Anweisungen unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um die Rollen hinzuzufügen.
 
@@ -110,7 +110,7 @@ Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise e
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel](troubleshoot-nas.md).
 
-* **Netzwerkkonnektivität:** Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden. Weitere Informationen zur Problembehandlung bei VPN-Einstellungen finden Sie unter [Einschränkungen der VPN-Paketgröße](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions).
+* **Netzwerkkonnektivität:** Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](../expressroute/index.yml) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden. Weitere Informationen zur Problembehandlung bei VPN-Einstellungen finden Sie unter [Einschränkungen der VPN-Paketgröße](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions).
 
 * **Portzugriff:** Der Cache benötigt Zugriff auf bestimmte TCP/UDP-Ports Ihres Speichersystems. Verschiedene Speichertypen haben unterschiedliche Portanforderungen.
 
@@ -143,7 +143,7 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konf
 * **Verzeichniszugriff:** Aktivieren Sie den Befehl `showmount` im Speichersystem. Mit diesem Befehl überprüft Azure HPC Cache, ob Ihre Speicherzielkonfiguration auf einen gültigen Export verweist. Außerdem wird sichergestellt, dass nicht von mehreren Einbindungen auf dieselben Unterverzeichnisse zugegriffen wird (Risiko von Dateikonflikten).
 
   > [!NOTE]
-  > **Aktivieren Sie `showmount` nicht**, wenn Ihr NFS-Speichersystem das ONTAP 9.2-Betriebssystem von NetApp verwendet. Erstellen Sie in diesem Fall ein Supportticket. Weitere Informationen finden Sie [hier](hpc-cache-support-ticket.md).
+  > **Aktivieren Sie `showmount` nicht** , wenn Ihr NFS-Speichersystem das ONTAP 9.2-Betriebssystem von NetApp verwendet. Erstellen Sie in diesem Fall ein Supportticket. Weitere Informationen finden Sie [hier](hpc-cache-support-ticket.md).
 
   Weitere Informationen zum Auflistungszugriff auf Verzeichnisse finden Sie im [Artikel zur Problembehandlung](troubleshoot-nas.md#enable-export-listing) für NFS-Speicherziele.
 

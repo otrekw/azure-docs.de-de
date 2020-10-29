@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409526"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490576"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB: Gremlin-Serverantwortheader
 In diesem Artikel werden Header behandelt, die der Cosmos DB Gremlin-Server bei der Anforderungsausführung an den Aufrufer zurückgibt. Diese Header sind nützlich für die Problembehandlung der Anforderungsleistung, beim Erstellen von Anwendungen, die sich nativ in den Cosmos DB-Dienst integrieren lassen, und bei der Vereinfachung des Kundensupports.
@@ -29,7 +29,7 @@ Beachten Sie, dass Sie die Portierbarkeit Ihrer Anwendung auf andere Gremlin-Imp
 | **x-ms-total-server-time-ms** | double | 130,512 | Erfolg und Fehler | Die Gesamtzeit in Millisekunden, die der Cosmos DB Gremlin-Server benötigt hat, um den gesamten Durchlauf auszuführen. Dieser Header ist in jeder Teilantwort enthalten. Er stellt eine kumulative Ausführungszeit seit dem Start der Anforderung dar. Die letzte Antwort gibt die Gesamtausführungszeit an. Dieser Header ist hilfreich, um zwischen Client und Server als Quelle von Latenz zu unterscheiden. Sie können die Ausführungszeit für den Durchlauf auf dem Client mit dem Wert dieses Headers vergleichen. |
 | **x-ms-status-code** | long | 200 | Erfolg und Fehler | Der Header gibt den internen Grund für den Abschluss oder die Beendigung der Anforderung an. Der Anwendung wird empfohlen, den Wert dieses Headers zu überprüfen und Korrekturmaßnahmen zu ergreifen. |
 | **x-ms-substatus-code** | long | 1003 | Nur Fehler | Bei Cosmos DB handelt es sich um eine Datenbank mit mehreren Modellen, die auf der vereinheitlichten Speicherschicht basiert. Dieser Header enthält zusätzliche Erkenntnisse über die Fehlerursache beim Auftreten von Fehlern in den unteren Schichten des Hochverfügbarkeitsstapels. Der Anwendung wird empfohlen, diesen Header zu speichern und zu verwenden, wenn Kontakt mit dem Cosmos DB-Kundensupport aufgenommen wird. Der Wert dieses Headers ist für die schnelle Problembehandlung durch einen Cosmos DB-Techniker nützlich. |
-| **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | Nur Fehler | Dieser Header ist eine Zeichenfolgendarstellung eines .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan)-Typs. Dieser Wert ist nur in Anforderungen enthalten, die aufgrund der bereitgestellten Durchsatzauslastung fehlgeschlagen sind. Die Anwendung sollte den Durchlauf nach einem angegebenen Zeitraum erneut übermitteln. |
+| **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | Nur Fehler | Dieser Header ist eine Zeichenfolgendarstellung eines .NET [TimeSpan](/dotnet/api/system.timespan)-Typs. Dieser Wert ist nur in Anforderungen enthalten, die aufgrund der bereitgestellten Durchsatzauslastung fehlgeschlagen sind. Die Anwendung sollte den Durchlauf nach einem angegebenen Zeitraum erneut übermitteln. |
 | **x-ms-activity-id** | string (Guid) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Erfolg und Fehler | Der Header enthält einen eindeutigen serverseitigen Bezeichner für eine Anforderung. Jeder Anforderung wird vom Server ein eindeutiger Bezeichner zu Nachverfolgungszwecken zugewiesen. Anwendungen sollten Aktivitätsbezeichner protokollieren, die vom Server für Anforderungen zurückgegeben werden, zu denen sich Kunden möglicherweise an den Kundensupport wenden möchten. Cosmos DB-Supportmitarbeiter können bestimmte Anforderungen durch diese Bezeichner in der Cosmos DB-Diensttelemetrie ermitteln. |
 
 ## <a name="status-codes"></a>Statuscodes

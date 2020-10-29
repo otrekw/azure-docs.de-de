@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570669"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486139"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Schreibvorgängen in mehreren Regionen in Ihren Anwendungen, die Azure Cosmos DB verwenden
 
@@ -129,8 +129,8 @@ Lesen Sie die folgenden Artikel:
 * [Konflikttypen und Konfliktauflösungsrichtlinien](conflict-resolution-policies.md)
 * [Hochverfügbarkeit mit Azure Cosmos DB](high-availability.md)
 * [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
-* [Auswählen der richtigen Konsistenzebene](consistency-levels-choosing.md)
-* [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](consistency-levels-tradeoffs.md)
-* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
-* [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md)
+* [Auswählen der richtigen Konsistenzebene](./consistency-levels.md)
+* [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](./consistency-levels.md)
+* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](./consistency-levels.md)
+* [Globales Skalieren von bereitgestelltem Durchsatz](./request-units.md)
 * [Globale Verteilung: Im Hintergrund](global-dist-under-the-hood.md)

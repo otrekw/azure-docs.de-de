@@ -1,6 +1,6 @@
 ---
-title: Aktualisieren auf die dynamische Überwachung der Einhaltung gesetzlicher Bestimmungen in Ihrem Azure Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen | Microsoft-Dokumentation
-description: Aktualisieren der Compliancepakete für die Einhaltung gesetzlicher Vorschriften
+title: Verwenden des Dashboards für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center
+description: Hier erfahren Sie, wie Sie gesetzliche Standards auf dem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Security Center hinzufügen und entfernen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078101"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342194"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
@@ -41,7 +41,7 @@ Microsoft überwacht die gesetzlichen Standards auch selbst und passt die Pakete
 
 Sie können Standards wie NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK Official & UK NHS, Canada Federal PBMM sowie Azure CIS 1.1.0 (neu) hinzufügen. Dabei handelt es sich um eine vollständigere Repräsentation für Azure CIS 1.1.0. 
 
-Zusätzlich können Sie den **Azure-Sicherheitsvergleichstest** hinzufügen. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Unter [Einführung zum Azure Security-Vergleichstest](https://docs.microsoft.com/azure/security/benchmarks/introduction) erhalten Sie weitere Informationen.
+Zusätzlich können Sie den **Azure-Sicherheitsvergleichstest** hinzufügen. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Unter [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/introduction.md) erhalten Sie weitere Informationen.
 
 Weitere Standards werden im Dashboard unterstützt, sobald sie verfügbar sind. 
 
@@ -107,7 +107,7 @@ Entfernen Sie einen Standard wie folgt:
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Entfernen eines gesetzlichen Standards aus Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center":::
 
-1. Wählen Sie **Ja** . Der Standard wird entfernt. 
+1. Wählen Sie **Ja** aus. Der Standard wird entfernt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -116,6 +116,6 @@ In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancepakete
 
 Weitere verwandte Informationen finden Sie in den folgenden Artikeln: 
 
-- [Einführung zum Azure Security-Vergleichstest](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/introduction.md)
 - [Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)
 - [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md)

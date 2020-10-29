@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4a4058cc6317e863fa20406449e64aa877810a54
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977730"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147468"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
@@ -119,13 +119,108 @@ ms.locfileid: "91977730"
 
 #### <a name="language-detection"></a>[Sprachenerkennung](#tab/language-detection)
 
-Die Textanalyse-API kann eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen erkennen.  Die Spracherkennung gibt das „Skript“ einer Sprache zurück. Für den englischen Satz „I have a dog“ wird beispielsweise `en` anstelle von `en-US` zurückgegeben. Der einzige Sonderfall tritt im Chinesischen auf. Für diese Sprache gibt die Spracherkennungsfunktion `zh_CHS` oder `zh_CHT` zurück, wenn sie das Skript anhand des verfügbaren Texts ermitteln kann. In Situationen, in denen kein bestimmtes Skript für ein Dokument auf Chinesisch ermittelt werden kann, wird nur `zh` zurückgegeben.
-
-Für dieses Feature wird keine genaue Liste mit Sprachen veröffentlicht. Es kann jedoch eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen erkennen. 
+Die Textanalyse-API kann eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen erkennen und erkannte Sprachen mit Name und Code zurückgeben. Sprachcodeparameter für die Sprachenerkennung der Textanalyse entsprechen dem Standard [BCP-47](https://tools.ietf.org/html/bcp47), und der Großteil ist mit [ISO-639-1](https://www.iso.org/iso-639-language-codes.html)-Bezeichnern konform. 
 
 Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerkennung ausprobieren, um zu sehen, ob sie einen Code zurückgibt. Die Antwort bei Sprachen, die nicht erkannt werden können, lautet `unknown`.
 
+| Sprache | Sprachcode |  v3-Unterstützung | Ab Modellversion 3 verfügbar: |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|
+|Afrikaans|`af`|✓|    |
+|Albanisch|`sq`|✓|    |
+|Arabisch|`ar`|✓|    |
+|Armenisch|`hy`|✓|    |
+|Baskisch|`eu`|✓|    |
+|Belarussisch|`be`|✓|    |
+|Bengali|`bn`|✓|    |
+|Bosnisch|`bs`|✓|2020-09-01|
+|Bulgarisch|`bg`|✓|    |
+|Birmanisch|`my`|✓|    |
+|Katalanisch, Valencianisch|`ca`|✓|    |
+|Khmer|`km`|✓|    |
+|Chinesisch|`zh`|✓|    |
+|Chinesisch (vereinfacht)|`zh_chs`|✓|    |
+|Chinesisch (traditionell)|`zh_cht`|✓|    |
+|Kroatisch|`hr`|✓|    |
+|Tschechisch|`cs`|✓|    |
+|Dänisch|`da`|✓|    |
+|Dari|`prs`|✓|2020-09-01|
+|Divehi, Dhivehi|`dv`|✓|    |
+|Niederländisch, Flämisch|`nl`|✓|    |
+|Englisch|`en`|✓|    |
+|Esperanto|`eo`|✓|    |
+|Estnisch|`et`|✓|    |
+|Fidschi|`fj`|✓|2020-09-01|
+|Finnisch|`fi`|✓|    |
+|Französisch|`fr`|✓|    |
+|Galizisch|`gl`|✓|    |
+|Georgisch|`ka`|✓|    |
+|Deutsch|`de`|✓|    |
+|Griechisch|`el`|✓|    |
+|Gujarati|`gu`|✓|    |
+|Haiti-Kreolisch, Haitianisches Kreolisch|`ht`|✓|    |
+|Hebräisch|`he`|✓|    |
+|Hindi|`hi`|✓|    |
+|Hmong Daw|`mww`|✓|2020-09-01|
+|Ungarisch|`hu`|✓|    |
+|Isländisch|`is`|✓|    |
+|Indonesisch|`id`|✓|    |
+|Inuktitut|`iu`|✓|    |
+|Irisch|`ga`|✓|    |
+|Italienisch|`it`|✓|    |
+|Japanisch|`ja`|✓|    |
+|Kannada|`kn`|✓|    |
+|Kasachisch|`kk`|✓|2020-09-01|
+|Koreanisch|`ko`|✓|    |
+|Kurdisch|`ku`|✓|    |
+|Laotisch|`lo`|✓|    |
+|Lateinisch|`la`|✓|    |
+|Lettisch|`lv`|✓|    |
+|Litauisch|`lt`|✓|    |
+|Mazedonisch|`mk`|✓|    |
+|Madagassisch|`mg`|✓|2020-09-01|
+|Malaiisch|`ms`|✓|    |
+|Malayalam|`ml`|✓|    |
+|Maltesisch|`mt`|✓|    |
+|Maori|`mi`|✓|2020-09-01|
+|Marathi|`mr`|✓|2020-09-01|
+|Norwegisch|`no`|✓|    |
+|Norwegisch Nynorsk|`nn`|✓|    |
+|Oriya|`or`|✓|    |
+|Paschtu, Pushto|`ps`|✓|    |
+|Persisch|`fa`|✓|    |
+|Polnisch|`pl`|✓|    |
+|Portugiesisch|`pt`|✓|    |
+|Punjabi, Panjabi|`pa`|✓|    |
+|Queretaro-Otomi|`otq`|✓|2020-09-01|
+|Rumänisch|`ro`|✓|    |
+|Russisch|`ru`|✓|    |
+|Samoanisch|`sm`|✓|2020-09-01|
+|Serbisch|`sr`|✓|    |
+|Singhalesisch|`si`|✓|    |
+|Slowakisch|`sk`|✓|    |
+|Slowenisch|`sl`|✓|    |
+|Somali|`so`|✓|    |
+|Spanisch, Kastilisch|`es`|✓|    |
+|Suaheli|`sw`|✓|    |
+|Schwedisch|`sv`|✓|    |
+|Tagalog|`tl`|✓|    |
+|Tahitisch|`ty`|✓|2020-09-01|
+|Tamilisch|`ta`|✓|    |
+|Telugu|`te`|✓|    |
+|Thailändisch|`th`|✓|    |
+|Tongaisch|`to`|✓|2020-09-01|
+|Türkisch|`tr`|✓|    |
+|Ukrainisch|`uk`|✓|    |
+|Urdu|`ur`|✓|    |
+|Usbekisch|`uz`|✓|    |
+|Vietnamesisch|`vi`|✓|    |
+|Walisisch|`cy`|✓|    |
+|Jiddisch|`yi`|✓|    |
+|Yukatekisches Maya|`yua`|✓|    |
+
+
 ---
+
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -6,18 +6,25 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710446"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123268"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurieren der TLS-Konnektivität in Azure Database for PostgreSQL (Einzelserver)
 
 Azure Database for PostgreSQL bevorzugt das Herstellen einer Verbindung zwischen Ihren Clientanwendungen und dem PostgreSQL-Dienst über TLS (Transport Layer Security), ehemals als SSL (Secure Sockets Layer) bezeichnet. Durch das Erzwingen von TLS-Verbindungen zwischen Ihrem Datenbankserver und Ihren Clientanwendungen können Sie sich vor Man-in-the-Middle-Angriffen schützen, indem Sie den Datenstrom zwischen dem Server und Ihrer Anwendung verschlüsseln.
 
 Standardmäßig ist der PostgreSQL-Datenbankdienst so konfiguriert, dass TLS-Verbindungen erforderlich sind. Sie können das Erfordern von TLS deaktivieren, wenn Ihre Clientanwendung keine TLS-Verbindungen unterstützt.
+
+>[!NOTE]
+> Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stamm Zertifizierungsstelle bis zum 15. Februar 2021 (15.02.2021) verlängert.
+
+> [!IMPORTANT] 
+> Das SSL-Stammzertifikat wird ab dem 15. Februar 2021 (15.02.2021) auslaufen. Aktualisieren Sie Ihre Anwendung bitte mithilfe des [neuen Zertifikats](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Weitere Informationen finden Sie unter [Geplante Zertifikatupdates](concepts-certificate-rotation.md)
+
 
 ## <a name="enforcing-tls-connections"></a>Erzwingen von TLS-Verbindungen
 
@@ -31,11 +38,11 @@ Sie können die Erzwingung von TLS-Verbindungen optional deaktivieren. Microsoft
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Rufen Sie Ihren Azure-Datenbank für PostgreSQL-Server auf, und klicken Sie auf **Verbindungssicherheit**. Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren/deaktivieren. Klicken Sie dann auf **Speichern**.
+Rufen Sie Ihren Azure-Datenbank für PostgreSQL-Server auf, und klicken Sie auf **Verbindungssicherheit** . Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren/deaktivieren. Klicken Sie dann auf **Speichern** .
 
 :::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="Verbindungssicherheit: Erzwingung von TLS/SSL deaktivieren":::
 
-Bestätigen Sie die Einstellung auf der Seite **Übersicht**, indem Sie den Indikator für den **SSL-Erzwingungsstatus** anzeigen.
+Bestätigen Sie die Einstellung auf der Seite **Übersicht** , indem Sie den Indikator für den **SSL-Erzwingungsstatus** anzeigen.
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -74,7 +81,7 @@ Azure Database for PostgreSQL (Einzelserver) unterstützt Verschlüsselung für 
 
 ### <a name="tls-settings"></a>TLS-Einstellungen
 
-Azure Database for PostgreSQL (Einzelserver) bietet die Möglichkeit, die TLS-Version für die Clientverbindungen vorzuschreiben. Um die TLS-Version zu erzwingen, verwenden Sie die Optionseinstellung **TLS-Mindestversion**. Für diese Optionseinstellung sind die folgenden Werte zulässig:
+Azure Database for PostgreSQL (Einzelserver) bietet die Möglichkeit, die TLS-Version für die Clientverbindungen vorzuschreiben. Um die TLS-Version zu erzwingen, verwenden Sie die Optionseinstellung **TLS-Mindestversion** . Für diese Optionseinstellung sind die folgenden Werte zulässig:
 
 |  TLS-Mindesteinstellung             | Unterstützte Client-TLS-Version                |
 |:---------------------------------|-------------------------------------:|

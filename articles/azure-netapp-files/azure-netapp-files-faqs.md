@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932259"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089314"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -80,9 +80,9 @@ Ja, Sie können bis zu fünf Regeln in einer einzigen NFS-Exportrichtlinie konfi
 
 Nein, Sie können derzeit keine Netzwerksicherheitsgruppen auf das delegierte Azure NetApp Files-Subnetz oder die vom Dienst erstellten Netzwerkschnittstellen anwenden.
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Kann ich Azure IAM mit Azure NetApp Files verwenden?
+### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Kann ich Azure RBAC mit Azure NetApp Files verwenden?
 
-Ja, Azure NetApp Files unterstützt RBAC-Features mit Azure IAM (Identity & Access Management).
+Ja, Azure NetApp Files unterstützt Azure RBAC-Features.
 
 ## <a name="performance-faqs"></a>Häufig gestellte Fragen zur Leistung
 
@@ -150,7 +150,7 @@ Ja, Sie müssen eine Active Directory-Verbindung erstellen, bevor Sie ein SMB-Vo
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Wie viele Active Directory-Verbindungen werden unterstützt?
 
-Azure NetApp Files bietet keine Unterstützung für mehrere Active Directory-Verbindungen in einer einzelnen *Region*. Dies gilt auch dann, wenn die AD-Verbindungen zu unterschiedlichen NetApp-Konten gehören. Sie können jedoch über mehrere AD-Verbindungen in einem einzelnen *Abonnement* verfügen, sofern sich die AD-Verbindungen in unterschiedlichen Regionen befinden. Wenn Sie mehrere AD-Verbindungen in einer einzelnen Region benötigen, können Sie hierfür separate Abonnements verwenden. 
+Azure NetApp Files bietet keine Unterstützung für mehrere Active Directory-Verbindungen in einer einzelnen *Region* . Dies gilt auch dann, wenn die AD-Verbindungen zu unterschiedlichen NetApp-Konten gehören. Sie können jedoch über mehrere AD-Verbindungen in einem einzelnen *Abonnement* verfügen, sofern sich die AD-Verbindungen in unterschiedlichen Regionen befinden. Wenn Sie mehrere AD-Verbindungen in einer einzelnen Region benötigen, können Sie hierfür separate Abonnements verwenden. 
 
 AD-Verbindungen werden für jeweils ein NetApp-Konto konfiguriert. Die AD-Verbindung ist ausschließlich über das NetApp-Konto sichtbar, in dem sie erstellt wurde.
 

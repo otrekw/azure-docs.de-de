@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537985"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220872"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -55,7 +55,7 @@ So migrieren Sie ein Projekt:
 
 3. Klicken sie auf den Link „Migrieren“ für das entsprechende Projekt.
 
-    ![So führen Sie die Migration aus dem Hub durch](media/how-to/how-to-migrate-from-hub.png)
+    ![Screenshot, auf dem die Schaltfläche „Migrieren“ für das ausgewählte Projekt hervorgehoben ist](media/how-to/how-to-migrate-from-hub.png)
 
 4. Nach dem Aktivieren des Links für die Migration wird ein Formular angezeigt, in dem Sie Folgendes ausführen können:
    * Angeben des Arbeitsbereichs, den Sie zu Benutzerdefinierter Translator übertragen möchten
@@ -76,7 +76,7 @@ So migrieren Sie einen Arbeitsbereich:
 
 3. Klicken Sie auf der Seite „Einstellungen“ auf „Arbeitsbereichsdaten zu Custom Translator migrieren“.
 
-    ![So führen Sie die Migration aus dem Hub durch](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Screenshot, auf dem die Option „Arbeitsbereichsdaten zu Custom Translator migrieren“ hervorgehoben ist](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. Wählen Sie auf der nächsten Seite eine der beiden Optionen aus:
 

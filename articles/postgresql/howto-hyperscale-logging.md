@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac0db7f8c94113ff87d1c0a3091e4c0cbd5ed2b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895875"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489845"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Protokolle in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -24,15 +24,15 @@ PostgreSQL-Protokolle sind auf jedem Knoten einer Hyperscale-Servergruppe (Citus
 
 :::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="Liste der Knoten":::
 
-Öffnen Sie für den ausgewählten Knoten die **Diagnoseeinstellungen**, und klicken Sie auf **+ Diagnoseeinstellung hinzufügen**.
+Öffnen Sie für den ausgewählten Knoten die **Diagnoseeinstellungen** , und klicken Sie auf **+ Diagnoseeinstellung hinzufügen** .
 
 :::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="Liste der Knoten":::
 
-Wählen Sie einen Namen für die neuen Diagnoseeinstellungen aus, und aktivieren Sie das Feld **PostgreSQLLogs**.  Wählen Sie aus, welche(s) Ziel(e) die Protokolle empfangen sollen.
+Wählen Sie einen Namen für die neuen Diagnoseeinstellungen aus, und aktivieren Sie das Feld **PostgreSQLLogs** .  Wählen Sie aus, welche(s) Ziel(e) die Protokolle empfangen sollen.
 
 :::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="Liste der Knoten":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erste Schritte mit Log Analytics-Abfragen](/azure/azure-monitor/log-query/get-started-portal)
-- Weitere Informationen zu [Azure Event Hubs](/azure/event-hubs/event-hubs-about)
+- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/get-started-portal.md)
+- Weitere Informationen zu [Azure Event Hubs](../event-hubs/event-hubs-about.md)

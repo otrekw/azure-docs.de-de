@@ -4,12 +4,12 @@ description: Dieser Artikel bietet Informationen zu verschiedenen Optionen zum A
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85323174"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332381"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorisieren des Zugriffs auf Azure Event Hubs
 Jedes Mal, wenn Sie Ereignisse/Daten von einem Event Hub veröffentlichen oder nutzen, versucht Ihr Client, auf Event Hubs-Ressourcen zuzugreifen. Jede Anforderung an eine sichere Ressource muss autorisiert sein, damit der Dienst sicherstellen kann, dass der Client über die erforderlichen Berechtigungen zum Veröffentlichen der Daten bzw. für den Zugriff darauf verfügt. 
@@ -23,7 +23,7 @@ Azure Event Hubs bietet die folgenden Optionen für die Autorisierung des Zugrif
 > Dieser Artikel gilt sowohl für Event Hubs als auch für [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)-Szenarien. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Die Azure Active Directory-Integration (Azure AD) für Event Hubs-Ressourcen bietet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen. Sie können die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Event Hubs-Ressource verwendet werden.
+Die Azure Active Directory-Integration (Azure AD) für Event Hubs-Ressourcen bietet rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen. Mit Azure RBAC können einem Sicherheitsprinzipal Berechtigungen erteilt werden. Bei einem Sicherheitsprinzipal kann es sich um einen Benutzer, um eine Gruppe oder um einen Anwendungsdienstprinzipal handeln. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Event Hubs-Ressource verwendet werden.
 
 Weitere Informationen zur Authentifizierung mit Azure AD finden Sie in den folgenden Artikeln:
 
@@ -40,7 +40,7 @@ Standardmäßig sind alle Event Hubs-Ressourcen gesichert und stehen nur dem Kon
 Weitere Informationen zur Autorisierung mit SAS finden Sie unter [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mithilfe von Shared Access Signatures](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Sehen Sie sich [RBAC-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) an, veröffentlicht in unserem GitHub-Repository. 
+- Sehen Sie sich die in unserem GitHub-Repository veröffentlichten [Azure RBAC-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) an. 
 - Weitere Informationen finden Sie in folgenden Artikeln:
     - [Authentifizieren von Anforderungen an Event Hubs über eine Anwendung mithilfe von Azure Active Directory](authenticate-application.md)
     - [Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen](authenticate-managed-identity.md)

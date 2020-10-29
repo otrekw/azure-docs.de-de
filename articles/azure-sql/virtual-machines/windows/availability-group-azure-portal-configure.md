@@ -13,22 +13,23 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482797"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164566"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Konfigurieren einer Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer (Azure-Portal – Vorschau)
+# <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Verwenden des Azure-Portals zum Konfigurieren einer Verfügbarkeitsgruppe (Vorschau) für SQL Server auf einem virtuellen Azure-Computer 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.azure.com) verwenden, um eine Verfügbarkeitsgruppe für SQL Server auf virtuellen Azure-Computern zu konfigurieren. 
 
 Im Azure-Portal können Sie einen neuen Cluster erstellen oder einen vorhandenen Cluster integrieren und dann die Verfügbarkeitsgruppe, den Listener und den internen Load Balancer erstellen. 
 
-   > [!NOTE]
-   > Dieses Feature befindet sich in der Vorschauphase und wird derzeit bereitgestellt. Wenn Ihre gewünschte Region nicht verfügbar ist, überprüfen Sie sie in Kürze erneut. 
+Diese Funktion steht derzeit als Vorschau zur Verfügung. 
+
+In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen über das Azure-Portal konfiguriert. Diese Konfiguration kann aber auch über [PowerShell oder die Azure CLI](availability-group-az-commandline-configure.md), [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder aber [manuell](availability-group-manually-configure-tutorial.md) erledigt werden. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -69,7 +70,7 @@ Wenn Sie noch keinen vorhandenen Cluster haben, führen Sie diese Schritte im Az
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen":::
 
-1. Erweitern Sie **Anmeldeinformationen des Windows Server-Failoverclusters**, um [Anmeldeinformationen](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) für das SQL Server-Dienstkonto sowie die Clusteroperator- und Bootstrapkonten anzugeben, sofern sie sich von dem für den SQL Server-Dienst verwendeten Konto unterscheiden. 
+1. Erweitern Sie **Anmeldeinformationen des Windows Server-Failoverclusters** , um [Anmeldeinformationen](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) für das SQL Server-Dienstkonto sowie die Clusteroperator- und Bootstrapkonten anzugeben, sofern sie sich von dem für den SQL Server-Dienst verwendeten Konto unterscheiden. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen"
     ```
@@ -137,14 +138,14 @@ Um Datenbanken mit SQL Server Management Studio zu Ihrer Verfügbarkeitsgruppe h
 1. Stellen Sie mit Ihrer bevorzugten Methode eine Verbindung zu einer Ihrer SQL Server-VMs her, wie z. B. Remote Desktop Connection (RDP). 
 1. Öffnen Sie SQL Server Management Studio (SSMS).
 1. Stellen Sie eine Verbindung mit Ihrer SQL Server-Instanz her. 
-1. Erweitern Sie **Always On-Hochverfügbarkeit** im **Objekt-Explorer**.
-1. Erweitern Sie **Verfügbarkeitsgruppen**, klicken Sie mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und wählen Sie **Datenbank hinzufügen** aus.
+1. Erweitern Sie **Always On-Hochverfügbarkeit** im **Objekt-Explorer** .
+1. Erweitern Sie **Verfügbarkeitsgruppen** , klicken Sie mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und wählen Sie **Datenbank hinzufügen** aus.
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen":::
 
 1. Folgen Sie den Eingabeaufforderungen, um die Datenbank(en) auszuwählen, die Sie zu Ihrer Verfügbarkeitsgruppe hinzufügen möchten. 
 1. Wählen Sie **OK** aus, um die Einstellungen zu speichern und die Datenbank zur Verfügbarkeitsgruppe hinzuzufügen. 
-1. Nachdem die Datenbank hinzugefügt wurde, aktualisieren Sie den **Objekt-Explorer**, um sich zu vergewissern, dass der Status der Datenbank jetzt `synchronized` lautet. 
+1. Nachdem die Datenbank hinzugefügt wurde, aktualisieren Sie den **Objekt-Explorer** , um sich zu vergewissern, dass der Status der Datenbank jetzt `synchronized` lautet. 
 
 Nachdem Datenbanken hinzugefügt wurden, können Sie den Status Ihrer Verfügbarkeitsgruppe im Azure-Portal überprüfen: 
 
@@ -161,9 +162,9 @@ Führen Sie die folgenden Schritte aus, um dem Cluster weitere SQL Server-VMs hi
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen":::
 
-1. Erweitern Sie **Windows Server-Failovercluster-Anmeldeinformationen**, und geben Sie in die Konten, die für den SQL Server-Dienst verwendet werden, Clusteroperator- und Clusterbootstrap-Konten ein. 
+1. Erweitern Sie **Windows Server-Failovercluster-Anmeldeinformationen** , und geben Sie in die Konten, die für den SQL Server-Dienst verwendet werden, Clusteroperator- und Clusterbootstrap-Konten ein. 
 1. Wählen Sie die SQL Server-VMs aus, die Sie dem Cluster hinzufügen möchten. 
-1. Wählen Sie **Übernehmen**. 
+1. Wählen Sie **Übernehmen** . 
 
 Sie können den Status Ihrer Bereitstellung im **Aktivitätsprotokoll** überprüfen, auf das Sie über das Glockensymbol in der oberen Navigationsleiste zugreifen können. 
 
@@ -171,13 +172,13 @@ Sie können den Status Ihrer Bereitstellung im **Aktivitätsprotokoll** überpr�
 ## <a name="modify-availability-group"></a>Ändern der Verfügbarkeitsgruppe 
 
 
-Auf der Seite **Hochverfügbarkeit** im Azure-Portal können Sie **der Verfügbarkeitsgruppe weitere Replikate hinzufügen**, **den Listener konfigurieren** oder **den Listener löschen**, indem Sie die Auslassungspunkte (...) neben Ihrer Verfügbarkeitsgruppe auswählen: 
+Auf der Seite **Hochverfügbarkeit** im Azure-Portal können Sie **der Verfügbarkeitsgruppe weitere Replikate hinzufügen** , **den Listener konfigurieren** oder **den Listener löschen** , indem Sie die Auslassungspunkte (...) neben Ihrer Verfügbarkeitsgruppe auswählen: 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen":::
 
 ## <a name="remove-cluster"></a>Entfernen des Clusters
 
-Entfernen Sie alle SQL Server-VMs aus dem Cluster, um ihn zu zerstören, und entfernen Sie dann die Clustermetadaten aus dem SQL-VM-Ressourcenanbieter. Verwenden Sie hierzu die neueste Version von [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder PowerShell. 
+Entfernen Sie alle SQL Server-VMs aus dem Cluster, um ihn zu zerstören, und entfernen Sie dann die Clustermetadaten aus dem SQL-VM-Ressourcenanbieter. Verwenden Sie hierzu die neueste Version von [Azure CLI](/cli/azure/install-azure-cli) oder PowerShell. 
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456725"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167881"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
 
@@ -43,7 +43,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
 1. Erweitern Sie im linken Bereich das Speicherkonto, in dem Sie die Dateifreigabe erstellen möchten.
 
-1. Klicken Sie mit der rechten Maustaste auf **Dateifreigaben**, und wählen Sie im Kontextmenü die Option **Dateifreigabe erstellen**.
+1. Klicken Sie mit der rechten Maustaste auf **Dateifreigaben** , und wählen Sie im Kontextmenü die Option **Dateifreigabe erstellen** .
 
     ![Erstellen einer Dateifreigabe](media/vs-azure-tools-storage-explorer-files/image1.png)
 
@@ -51,7 +51,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
     ![Benennen der Freigabe](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-1. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen der Dateifreigabe fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung der Dateifreigabe wird sie im Ordner **Dateifreigaben** für das ausgewählte Speicherkonto angezeigt.
+1. Drücken Sie die **EINGABETASTE** , wenn Sie mit dem Erstellen der Dateifreigabe fertig sind, oder drücken Sie **ESC** , um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung der Dateifreigabe wird sie im Ordner **Dateifreigaben** für das ausgewählte Speicherkonto angezeigt.
 
     ![Neue Freigabe](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -67,13 +67,13 @@ Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe 
 
 1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie anzeigen möchten, und wählen Sie im Kontextmenü die Option **Öffnen**. Sie können auch auf die Dateifreigabe doppelklicken, die Sie anzeigen möchten.
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie anzeigen möchten, und wählen Sie im Kontextmenü die Option **Öffnen** . Sie können auch auf die Dateifreigabe doppelklicken, die Sie anzeigen möchten.
 
     ![Öffnen der Freigabe](media/vs-azure-tools-storage-explorer-files/image4.png)
 
 1. Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
     
-    ![Inhalt der Freigabe](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Screenshot: Hauptbereich für eine Dateifreigabe im Storage-Explorer mit dem Inhalt der Freigabe](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Löschen einer Dateifreigabe
 
@@ -87,7 +87,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
 1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**. Sie können auch die **ENTF-TASTE** drücken, um die derzeit ausgewählte Dateifreigabe zu löschen.
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen** . Sie können auch die **ENTF-TASTE** drücken, um die derzeit ausgewählte Dateifreigabe zu löschen.
 
     ![Löschen](media/vs-azure-tools-storage-explorer-files/image6.png)
 
@@ -135,13 +135,13 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigab
 
     ![Dialogfeld „SAS“](media/vs-azure-tools-storage-explorer-files/image11.png)
 
-1. Wählen Sie **Erstellen**, wenn Sie das Angeben der SAS-Optionen abgeschlossen haben.
+1. Wählen Sie **Erstellen** , wenn Sie das Angeben der SAS-Optionen abgeschlossen haben.
 
 1. In einem zweiten Dialogfeld **Shared Access Signature** wird dann die Dateifreigabe zusammen mit der URL und den Abfragezeichenfolgen angezeigt, die Sie zum Zugreifen auf die Speicherressource verwenden können. Wählen Sie neben der URL, die Sie in die Zwischenablage kopieren möchten, die Option **Kopieren** .
     
     ![Zweites Dialogfeld „SAS“](media/vs-azure-tools-storage-explorer-files/image12.png)
 
-1. Wählen Sie abschließend die Option **Schließen**.
+1. Wählen Sie abschließend die Option **Schließen** .
 
 ## <a name="manage-access-policies-for-a-file-share"></a>Verwalten von Zugriffsrichtlinien für eine Dateifreigabe
 
@@ -165,7 +165,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine D
     
     - **Hinzufügen einer neuen Zugriffsrichtlinie:** Wählen Sie die Option **Hinzufügen** aus. Nach der Erstellung wird die neu hinzugefügte Zugriffsrichtlinie (mit Standardeinstellungen) im Dialogfeld **Zugriffsrichtlinien** angezeigt.
 
-    - **Bearbeiten einer Zugriffsrichtlinie:** Nehmen Sie die gewünschten Bearbeitungen vor, und wählen Sie anschließend die Option **Speichern**.
+    - **Bearbeiten einer Zugriffsrichtlinie:** Nehmen Sie die gewünschten Bearbeitungen vor, und wählen Sie anschließend die Option **Speichern** .
 
     - **Entfernen einer Zugriffsrichtlinie:** Wählen Sie neben der Zugriffsrichtlinie, die Sie entfernen möchten, die Option **Entfernen** aus.
 
@@ -191,7 +191,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
 1.  Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
 
-    ![Inhalt der Freigabe](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Screenshot: Hauptbereich für die Dateifreigabe „myazurefileshare“ im Storage-Explorer mit dem Inhalt der Freigabe, in dem der erste Ordner ausgewählt ist](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
 
@@ -207,7 +207,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
         ![Hinzufügen von Dateien](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. Wählen Sie die Option **Hochladen**.
+        c. Wählen Sie die Option **Hochladen** .
 
     - **Hochladen eines Ordners auf eine Dateifreigabe**
         
@@ -219,13 +219,13 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
         c. Optional können Sie einen Zielordner angeben, in den der Inhalt des ausgewählten Ordners hochgeladen wird. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
 
-        d. Wählen Sie die Option **Hochladen**.
+        d. Wählen Sie die Option **Hochladen** .
 
     - **Herunterladen einer Datei auf den lokalen Computer**
         
         a. Wählen Sie die Datei aus, die Sie herunterladen möchten.
         
-        b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen**.
+        b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen** .
         
         c. Geben Sie im Dialogfeld **Specify where to save the downloaded file** (Downloadspeicherort für Datei angeben) den Speicherort, an den die Datei heruntergeladen werden soll, und ihren Namen an.
 
@@ -235,7 +235,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
         
         a.  Wählen Sie die Datei aus, die Sie öffnen möchten.
         
-        b.  Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Öffnen**.
+        b.  Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Öffnen** .
         
         c.  Die Datei wird heruntergeladen und mit der Anwendung geöffnet, die dem zugrunde liegenden Dateityp der Datei zugeordnet ist.
 
@@ -243,17 +243,17 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
         a. Wählen Sie die Datei aus, die Sie kopieren möchten.
 
-        b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Kopieren**.
+        b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Kopieren** .
 
         c. Navigieren Sie im linken Bereich zu einer anderen Dateifreigabe, und doppelklicken Sie darauf, um sie im Hauptbereich anzuzeigen.
 
-        d. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Einfügen**, um eine Kopie der Datei zu erstellen.
+        d. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Einfügen** , um eine Kopie der Datei zu erstellen.
 
     - **Löschen von Dateien**
 
         a. Wählen Sie die Datei aus, die Sie löschen möchten.
 
-        b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Löschen**.
+        b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Löschen** .
 
         c. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
 

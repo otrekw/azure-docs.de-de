@@ -1,18 +1,16 @@
 ---
 title: Problembehandlung für U-SQL-Laufzeitfehler in Azure Data Lake Analytics
 description: Erfahren Sie, wie Sie die Problembehandlung für U-SQL-Laufzeitfehler durchführen.
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
-ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87475259"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216265"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Problembehandlung für U-SQL-Laufzeitfehler aufgrund von Laufzeitänderungen
 
@@ -35,7 +33,7 @@ Sie können den Verlauf der Laufzeitversionen, die von Ihren bisherigen Aufträg
 
 1. Gehen Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
 2. Wählen Sie **Alle Aufträge anzeigen** aus. Eine Liste mit allen aktiven und kürzlich abgeschlossenen Aufträge im Konto wird angezeigt.
-3. Klicken Sie optional auf **Filtern**, um die Aufträge nach den Werten **Zeitbereich**, **Auftragsname** und **Ersteller** zu suchen.
+3. Klicken Sie optional auf **Filtern** , um die Aufträge nach den Werten **Zeitbereich** , **Auftragsname** und **Ersteller** zu suchen.
 4. Die Laufzeit, die bei den abgeschlossenen Aufträgen verwendet wurde, wird angezeigt.
 
 ![Anzeigen der Laufzeitversion eines früheren Auftrags](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570722"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491120"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos 
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-Vorlage
 
-Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit Azure Resource Manager-Vorlagen](manage-sql-with-resource-manager.md).
+Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit Azure Resource Manager-Vorlagen](./manage-with-templates.md).
 
 ## <a name="addremove-regions-from-your-database-account"></a>Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto
 
@@ -41,7 +41,7 @@ Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren**.
+1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren** .
 
 1. Wenn Sie Regionen hinzufügen möchten, wählen Sie auf der Karte die Sechsecke mit der Beschriftung **+** aus, die den gewünschten Regionen entsprechen. Alternativ können Sie zum Hinzufügen einer Region die Option **+ Region hinzufügen** und anschließend eine Region aus dem Dropdownmenü auswählen.
 
@@ -67,7 +67,7 @@ Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen 
 
 ### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure-Portal
 
-Öffnen Sie die Registerkarte **Daten global replizieren**, und wählen Sie **Aktivieren** aus, um Schreibvorgänge für mehrere Regionen zu aktivieren. Nachdem Sie Schreibvorgänge für mehrere Regionen aktiviert haben, werden alle Leseregionen, die aktuell in Ihrem Konto konfiguriert sind, zu Lese- und Schreibregionen.
+Öffnen Sie die Registerkarte **Daten global replizieren** , und wählen Sie **Aktivieren** aus, um Schreibvorgänge für mehrere Regionen zu aktivieren. Nachdem Sie Schreibvorgänge für mehrere Regionen aktiviert haben, werden alle Leseregionen, die aktuell in Ihrem Konto konfiguriert sind, zu Lese- und Schreibregionen.
 
 :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
@@ -145,13 +145,13 @@ Die Option für automatisches Failover ermöglicht Azure Cosmos DB das Failover 
 
 ### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure-Portal
 
-1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren**.
+1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren** .
 
 2. Wählen Sie im oberen Bereich die Option **Automatisches Failover** aus.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
-3. Vergewissern Sie sich im Bereich **Automatisches Failover**, dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist. 
+3. Vergewissern Sie sich im Bereich **Automatisches Failover** , dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist. 
 
 4. Wählen Sie **Speichern** aus.
 
@@ -174,13 +174,13 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
 ### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure-Portal
 
-1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren**.
+1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren** .
 
 2. Wählen Sie im oberen Bereich die Option **Automatisches Failover** aus.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
-3. Vergewissern Sie sich im Bereich **Automatisches Failover**, dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist.
+3. Vergewissern Sie sich im Bereich **Automatisches Failover** , dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist.
 
 4. Ziehen Sie zum Ändern der Failoverpriorität die Leseregionen mithilfe der drei Punkte, die auf der linken Seite der Zeile angezeigt werden, wenn Sie darauf zeigen.
 
@@ -208,7 +208,7 @@ Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der 
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure-Portal
 
-1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren**.
+1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren** .
 
 2. Wählen Sie im oberen Bereich des Menüs die Option **Manuelles Failover** aus.
 

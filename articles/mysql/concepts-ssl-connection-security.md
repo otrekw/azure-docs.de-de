@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2969c963b491e4b08a0959d548e43ba11276d28a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439941"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126548"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-Konnektivität in Azure Database for MySQL
 
@@ -20,8 +20,11 @@ Azure-Datenbank für MySQL unterstützt die Verbindung Ihres Datenbankservers mi
 > [!NOTE]
 > Das Aktualisieren des Werts des `require_secure_transport`-Serverparameters wirkt sich nicht auf das Verhalten des MySQL-Diensts aus. Sichern Sie mit den in diesem Artikel beschriebenen SSL- und TLS-Erzwingungsfunktionen die Verbindungen mit Ihrer Datenbank.
 
+>[!NOTE]
+> Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stammzertifizierungsstelle bis zum 15. Februar 2021 (15.02.2021) verlängert.
+
 > [!IMPORTANT] 
-> Das SSL-Stammzertifikat läuft am 26. Oktober 2020 aus. Aktualisieren Sie Ihre Anwendung bitte mithilfe des [neuen Zertifikats](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Weitere Informationen finden Sie unter [Geplante Zertifikatupdates](concepts-certificate-rotation.md)
+> Das SSL-Stammzertifikat wird ab dem 15. Februar 2021 (15.02.2021) auslaufen. Aktualisieren Sie Ihre Anwendung bitte mithilfe des [neuen Zertifikats](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Weitere Informationen finden Sie unter [Geplante Zertifikatupdates](concepts-certificate-rotation.md)
 
 ## <a name="ssl-default-settings"></a>SSL-Standardeinstellungen
 
@@ -43,7 +46,7 @@ Azure Database for MySQL unterstützt Verschlüsselung für Clients, die eine Ve
 
 ### <a name="tls-settings"></a>TLS-Einstellungen
 
-Azure Database for MySQL bietet die Möglichkeit, die TLS-Version für die Clientverbindungen vorzuschreiben. Um die TLS-Version zu erzwingen, verwenden Sie die Optionseinstellung **TLS-Mindestversion**. Für diese Optionseinstellung sind die folgenden Werte zulässig:
+Azure Database for MySQL bietet die Möglichkeit, die TLS-Version für die Clientverbindungen vorzuschreiben. Um die TLS-Version zu erzwingen, verwenden Sie die Optionseinstellung **TLS-Mindestversion** . Für diese Optionseinstellung sind die folgenden Werte zulässig:
 
 |  TLS-Mindesteinstellung             | Unterstützte Client-TLS-Version                |
 |:---------------------------------|-------------------------------------:|
@@ -64,7 +67,7 @@ Informationen zum Festlegen der TLS-Einstellung für Ihren Azure Database for My
 
 ## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Unterstützung für Verschlüsselungsverfahren durch Azure Database for MySQL Single Server
 
-Im Rahmen der SSL/TLS-Kommunikation werden die Verschlüsselungssammlungen überprüft. Nur Sammlungen, die mit dem Datenbankserver kommunizieren dürfen, werden zugelassen. Die Überprüfung der Verschlüsselungssammlungen wird in der [Gatewayschicht](concepts-connectivity-architecture.md#connectivity-architecture) gesteuert, nicht explizit auf dem Knoten selbst. Wenn die Sammlungen keiner der unten aufgeführten Sammlungen entsprechen, werden eingehende Clientverbindungen abgelehnt.
+Im Rahmen der SSL/TLS-Kommunikation werden die Verschlüsselungssammlungen überprüft. Nur Sammlungen, die mit dem Datenbankserver kommunizieren dürfen, werden zugelassen. Die Überprüfung der Verschlüsselungssammlungen wird in der [Gatewayschicht](concepts-connectivity-architecture.md#connectivity-architecture) gesteuert, nicht explizit im Knoten selbst. Wenn die Sammlungen keiner der unten aufgeführten Sammlungen entsprechen, werden eingehende Clientverbindungen abgelehnt.
 
 ### <a name="cipher-suite-supported"></a>Unterstützte Verschlüsselungssammlungen
 

@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728657"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124185"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -50,7 +50,7 @@ Die Sicherungsspeicherredundanz für eine SQL-Datenbank-Instanz kann entweder be
 > Zonenredundanter Speicher steht zurzeit nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung. 
 
 > [!NOTE]
-> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist derzeit nur in der Azure-Region „Asien, Südosten“ als öffentliche Vorschau verfügbar. Für die Hyperscale-Ebene ist dieses Feature noch nicht verfügbar. 
+> Die konfigurierbare Sicherungsspeicherredundanz für Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Asien, Südosten“ allgemein verfügbar. Für die Hyperscale-Ebene ist dieses Feature noch nicht verfügbar. 
 
 ### <a name="backup-usage"></a>Sicherungsverwendung
 

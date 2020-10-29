@@ -3,15 +3,15 @@ title: Autorisieren des Zugriffs mit Azure Active Directory
 description: Dieser Artikel bietet Informationen zum Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566260"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332398"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory
-Azure Event Hubs unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Event Hubs-Ressourcen. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
+Azure Event Hubs unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Event Hubs-Ressourcen. Mit Azure AD können Sie Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung von Azure) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Übersicht
 Wenn ein Sicherheitsprinzipal (ein Benutzer oder eine Anwendung) versucht, auf eine Event Hubs-Ressource zuzugreifen, muss die Anforderung autorisiert werden. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess. 
@@ -33,24 +33,24 @@ Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gew�
 ## <a name="azure-built-in-roles-for-azure-event-hubs"></a>In Azure integrierte Rollen für Azure Event Hubs
 Azure stellt die folgenden integrierten Azure-Rollen zum Autorisieren des Zugriffs auf Event Hubs-Daten mithilfe von Azure AD und OAuth bereit:
 
-| Role | Beschreibung | 
+| Role | BESCHREIBUNG | 
 | ---- | ----------- | 
 | [Azure Event Hubs-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Mit dieser Rolle gewähren Sie Vollzugriff auf Event Hubs-Ressourcen. |
 | [Azure Event Hubs-Datensender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Mit dieser Rolle gewähren Sie Sendezugriff auf Event Hubs-Ressourcen. |
 | [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Mit dieser Rolle gewähren Sie Verbrauchs-/Sendezugriff auf Event Hubs-Ressourcen. |
 
-Informationen zu den integrierten Rollen für die Schemaregistrierung finden Sie unter [Schemaregistrierungsrollen](schema-registry-overview.md#role-based-access-control).
+Informationen zu den integrierten Rollen für die Schemaregistrierung finden Sie unter [Schemaregistrierungsrollen](schema-registry-overview.md#azure-role-based-access-control).
 
 ## <a name="resource-scope"></a>Ressourcenumfang 
 Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Event Hubs-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Consumergruppe**: Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer Azure-Rolle zu einem Sicherheitsprinzipal auf dieser Ebene. 
-- **Event Hub**: Die Rollenzuweisung gilt für die Event Hub-Entität und die darunter vorhandene Consumergruppe.
-- **Namespace**: Die Rollenzuweisung umfasst die gesamte Topologie von Event Hubs unter dem Namespace sowie die ihm zugeordnete Consumergruppe.
-- **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen unter der Ressourcengruppe.
-- **Abonnement**: Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen in allen Ressourcengruppen im Abonnement.
+- **Consumergruppe** : Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer Azure-Rolle zu einem Sicherheitsprinzipal auf dieser Ebene. 
+- **Event Hub** : Die Rollenzuweisung gilt für die Event Hub-Entität und die darunter vorhandene Consumergruppe.
+- **Namespace** : Die Rollenzuweisung umfasst die gesamte Topologie von Event Hubs unter dem Namespace sowie die ihm zugeordnete Consumergruppe.
+- **Ressourcengruppe** : Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen unter der Ressourcengruppe.
+- **Abonnement** : Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen in allen Ressourcengruppen im Abonnement.
 
 > [!NOTE]
 > - Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. 
@@ -64,16 +64,16 @@ Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie un
 ## <a name="samples"></a>Beispiele
 - [Microsoft.Azure.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs**-Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs**-Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
+    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs** -Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs** -Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [Azure.Messaging.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
-    Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs**-Bibliothek verwendet wird.
+    Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs** -Bibliothek verwendet wird.
 - [Event Hubs für Kafka – OAuth-Beispiele](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zum Zuweisen einer in Azure integrierten Rolle an einen Sicherheitsprinzipal finden Sie unter [Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mithilfe von Azure Active Directory](authenticate-application.md).
-- Informationen zum [Erstellen benutzerdefinierter Rollen mit RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
+- Informationen zum [Erstellen benutzerdefinierter Rollen mit Azure RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole)
 - Informationen zum [Verwenden von Azure Active Directory mit EH](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
 Weitere Informationen finden Sie in den folgenden verwandten Artikeln:

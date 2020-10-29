@@ -7,33 +7,33 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a5ce99927ce4cd2b04b5dd5cb865299b4be84ecb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f662d7e51c49006b191778ef70740ef79173828c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519795"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487941"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---hyperscale-citus-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for PostgreSQL – Hyperscale (Citus)-Computeressourcen mit reservierter Kapazität
 
 Mit Azure Database for PostgreSQL – Hyperscale (Citus) können Sie jetzt Geld im Vergleich zur nutzungsbasierten Bezahlung sparen, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierter Hyperscale (Citus)-Kapazität leisten Sie eine Vorauszahlung für eine Hyperscale (Citus)-Servergruppe für einen Zeitraum von einem Jahr oder drei Jahren und erhalten dafür einen umfangreichen Rabatt auf die Computekosten. Um reservierte Hyperscale (Citus)-Kapazität zu erwerben, müssen Sie die Azure-Region, den Reservierungszeitraum und die Abrechnungshäufigkeit angeben.
 
 > [!IMPORTANT]
-> In diesem Artikel geht es um reservierte Kapazität für Azure Database for PostgreSQL – Hyperscale (Citus). Informationen zu Reservekapazität für Azure Database for PostgreSQL – Einzelserver finden Sie unter [Vorauszahlung für Azure Database for PostgreSQL – Einzelserver-Computeressourcen mit reservierter Kapazität](/azure/postgresql/concept-reserved-pricing).
+> In diesem Artikel geht es um reservierte Kapazität für Azure Database for PostgreSQL – Hyperscale (Citus). Informationen zu Reservekapazität für Azure Database for PostgreSQL – Einzelserver finden Sie unter [Vorauszahlung für Azure Database for PostgreSQL – Einzelserver-Computeressourcen mit reservierter Kapazität](./concept-reserved-pricing.md).
 
 Sie müssen die Reservierung nicht bestimmten Hyperscale (Citus)-Servergruppen zuweisen. Eine Hyperscale (Citus)-Servergruppe, die bereits ausgeführt oder neu bereitgestellt wird, profitiert automatisch vom Reservierungspreisvorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung erworben haben, werden die Hyperscale (Citus)-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. 
 
 Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für die Hyperscale (Citus)-Servergruppen ab. Nach Ablauf des Reservierungszeitraums erlischt der Abrechnungsvorteil, und die Hyperscale (Citus)-Servergruppen werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure Database for PostgreSQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/hyperscale-citus/).
 
-Reservierte Hyperscale (Citus)-Kapazität kann über das [Azure-Portal](https://portal.azure.com/) erworben werden. Bezahlen Sie die Reservierung [im Voraus oder monatlich](https://docs.microsoft.com/azure/cost-management-billing/reservations/monthly-payments-reservations). So erwerben Sie reservierte Kapazität:
+Reservierte Hyperscale (Citus)-Kapazität kann über das [Azure-Portal](https://portal.azure.com/) erworben werden. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/prepare-buy-reservation.md). So erwerben Sie reservierte Kapazität:
 
 * Sie müssen für mindestens ein Enterprise Agreement (EA) oder ein individuelles Abonnement mit nutzungsbasierter Bezahlung über die Rolle „Besitzer“ verfügen.
 * Bei Enterprise Agreement-Abonnements muss **Reservierte Instanzen hinzufügen** im [EA Portal](https://ea.azure.com/) aktiviert sein. Wenn diese Einstellung deaktiviert ist, müssen Sie ein Enterprise Agreement-Administrator für das Abonnement sein.
 * Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents reservierte Hyperscale (Citus)-Kapazität erwerben.
 
 Ausführliche Informationen dazu, wie Reservierungskäufe bei Kunden mit einem Enterprise Agreement und Kunden mit einem Abonnement mit nutzungsbasierter Bezahlung in Rechnung gestellt werden, finden Sie in den folgenden Artikeln:
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für die Enterprise Agreement-Registrierung](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für die Enterprise Agreement-Registrierung](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
 ## <a name="determine-the-right-server-group-size-before-purchase"></a>Bestimmen der richtigen Servergruppengröße vor dem Kauf
 
@@ -49,9 +49,9 @@ In diesem Fall erwerben Sie eine einjährige Reservierung für:
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Kaufen von reservierter Kapazität für Azure Database for PostgreSQL
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
-1. Wählen Sie **Hinzufügen**. Wählen Sie im Bereich **Reservierungen erwerben** die Option **Azure Database for PostgreSQL** aus, um eine neue Reservierung für Ihre PostgreSQL-Datenbanken zu erwerben.
-1. Wählen Sie den **Hyperscale (Citus)-Computetyp** zum Kauf aus, und klicken Sie anschließend auf **Auswählen**.
+1. Klicken Sie auf **Alle Dienste** > **Reservierungen** .
+1. Wählen Sie **Hinzufügen** . Wählen Sie im Bereich **Reservierungen erwerben** die Option **Azure Database for PostgreSQL** aus, um eine neue Reservierung für Ihre PostgreSQL-Datenbanken zu erwerben.
+1. Wählen Sie den **Hyperscale (Citus)-Computetyp** zum Kauf aus, und klicken Sie anschließend auf **Auswählen** .
 1. Überprüfen Sie auf der Registerkarte **Produkte** die Menge für den ausgewählten Computetyp.
 1. Fahren Sie mit der Registerkarte **Buy + Review** (Kaufen und überprüfen) fort, um Ihren Kauf abzuschließen.
 
@@ -69,7 +69,7 @@ In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 
-Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>Flexibilität der V-Kern-Größe
 
@@ -85,9 +85,9 @@ Der Rabatt auf die Reservierung virtueller Kerne wird automatisch auf die Anzahl
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
-* [Was sind Azure-Reservierungen?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-* [Verwalten von Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Grundlegendes zum Rabatt für Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [Grundlegendes zur Nutzung von Reservierungen für die Enterprise Agreement-Registrierung](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure-Reservierungen im Azure Cloud Solution Provider-Programm im Partner Center](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Was sind Azure-Reservierungen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Verwalten von Azure-Reservierungen](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Grundlegendes zum Rabatt für Azure-Reservierungen](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [Grundlegendes zur Nutzung von Reservierungen für die Enterprise Agreement-Registrierung](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [Azure-Reservierungen im Azure Cloud Solution Provider-Programm im Partner Center](/partner-center/azure-reservations)

@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262819"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488451"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als Schlüsselwertspeicher – Kostenübersicht
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch und effizient alle erfassten Daten. Dies ermöglicht schnelle und konsistente [SQL](how-to-sql-query.md)-Abfragen (und [JavaScript](stored-procedures-triggers-udfs.md)-Abfragen) für die Daten. 
+Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch und effizient alle erfassten Daten. Dies ermöglicht schnelle und konsistente [SQL](./sql-query-getting-started.md)-Abfragen (und [JavaScript](stored-procedures-triggers-udfs.md)-Abfragen) für die Daten. 
 
 In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüssel-/Wertspeicher beschrieben. Zu den Schreibvorgängen zählen Einfügungen, Ersetzungen, Löschungen und Upserts von Datenelementen. Neben der garantierten SLA mit 99,999 % Verfügbarkeit für alle Konten mit mehreren Regionen bietet Azure Cosmos DB garantiert unter 10 ms Latenz für Lesevorgänge und für die (indizierten) Schreibvorgänge im 99. Perzentil. 
 
 ## <a name="why-we-use-request-units-rus"></a>Gründe für die Verwendung von Anforderungseinheiten (Request Units, RUs)
 
-Die Azure Cosmos DB-Leistung basiert auf der Menge des bereitgestellten Durchsatzes, der in [Anforderungseinheiten](request-units.md) (Request Units, RU) angegeben wird. Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RU pro Sekunde erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/cosmos-db/)). Betrachten Sie RUs als logische Abstraktion (eine Währung), die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Benutzer müssen nicht zwischen Lese- und Schreibdurchsatz differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Mit diesem bereitgestellten Kapazitätsmodell kann der Dienst einen **vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und Hochverfügbarkeit bieten**. Das RU-Modell wird außerdem zwar zur Darstellung des Durchsatzes verwendet, aber jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (z. B. Arbeitsspeicher, Kerne/CPU und IOPS).
+Die Azure Cosmos DB-Leistung basiert auf der Menge des bereitgestellten Durchsatzes, der in [Anforderungseinheiten](request-units.md) (Request Units, RU) angegeben wird. Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RU pro Sekunde erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/cosmos-db/)). Betrachten Sie RUs als logische Abstraktion (eine Währung), die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Benutzer müssen nicht zwischen Lese- und Schreibdurchsatz differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Mit diesem bereitgestellten Kapazitätsmodell kann der Dienst einen **vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und Hochverfügbarkeit bieten** . Das RU-Modell wird außerdem zwar zur Darstellung des Durchsatzes verwendet, aber jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (z. B. Arbeitsspeicher, Kerne/CPU und IOPS).
 
 Als global verteiltes Datenbanksystem ist Cosmos DB der einzige Azure-Dienst, der umfassende SLAs zu Latenz, Durchsatz, Konsistenz und Hochverfügbarkeit bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewandt, die Ihrem Cosmos-Konto zugeordnet sind. Für Lesevorgänge bietet Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. 
 
@@ -48,4 +48,3 @@ Die meisten grundlegenden Blob- oder Objektspeicherdienste berechnen Gebühren v
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Verwenden Sie den [RU-Rechner](https://cosmos.azure.com/capacitycalculator/) für die Schätzung des Durchsatzes für Ihre Workloads.
-

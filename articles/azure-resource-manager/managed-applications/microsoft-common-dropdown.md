@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87474341"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168340"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.DropDown“
 
@@ -28,7 +28,7 @@ Wenn Beschreibungen enthalten sind, wird das Steuerelement wie folgt angezeigt:
 
 :::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
 
-Wenn Mehrfachauswahl aktiviert ist, fügt das Steuerelement eine **Alles auswählen**-Option sowie Kontrollkästchen für die Auswahl mehrerer Elemente hinzu:
+Wenn Mehrfachauswahl aktiviert ist, fügt das Steuerelement eine **Alles auswählen** -Option sowie Kontrollkästchen für die Auswahl mehrerer Elemente hinzu:
 
 :::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
 
@@ -87,7 +87,7 @@ Wenn Filtern aktiviert ist, enthält das Steuerelement ein Textfeld zum Hinzufü
 - Standardmäßig ist `selectAll` `true`, wenn Mehrfachauswahl aktiviert ist.
 - Die `filter`-Eigenschaft ermöglicht Benutzer, innerhalb einer langen Liste von Optionen zu suchen.
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
-- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null**.
+- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null** .
 - `constraints.allowedValues` muss mindestens ein Element aufweisen.
 - Fügen Sie zum Emulieren eines nicht benötigten Werts `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
 - Die `defaultDescription`-Eigenschaft wird für Elemente verwendet, die keine Beschreibung besitzen.

@@ -7,23 +7,23 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d33308932ecd7c523c6fbe287648d4afc21ef0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252951"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485799"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
-Azure Cosmos DB bietet eine in die Sprache integrierte transaktionale Ausführung von JavaScript, mit der Sie **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) schreiben können. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie die gespeicherten Prozeduren, Trigger und UDFs in der JavaScript-Sprache definieren. Sie können Ihre Logik in JavaScript schreiben und in der Datenbank-Engine ausführen. Sie können Trigger, gespeicherte Prozeduren und UDFs im [Azure-Portal](https://portal.azure.com/), mithilfe der [in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md) und mit den [SQL-API-Client-SDKs von Cosmos DB](sql-api-dotnet-samples.md) erstellen und ausführen. 
+Azure Cosmos DB bietet eine in die Sprache integrierte transaktionale Ausführung von JavaScript, mit der Sie **gespeicherte Prozeduren** , **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) schreiben können. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie die gespeicherten Prozeduren, Trigger und UDFs in der JavaScript-Sprache definieren. Sie können Ihre Logik in JavaScript schreiben und in der Datenbank-Engine ausführen. Sie können Trigger, gespeicherte Prozeduren und UDFs im [Azure-Portal](https://portal.azure.com/), mithilfe der [in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md) und mit den [SQL-API-Client-SDKs von Cosmos DB](sql-api-dotnet-samples.md) erstellen und ausführen. 
 
 Um eine gespeicherte Prozedur, einen Trigger und einer benutzerdefinierte Funktion aufzurufen, müssen Sie das entsprechende Element registrieren. Weitere Informationen finden Sie unter [Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
 
 > [!NOTE]
 > Wenn Sie eine gespeicherte Prozedur in partitionierten Containern ausführen, muss in den Anforderungsoptionen ein Partitionsschlüsselwert angegeben werden. Gespeicherte Prozeduren gelten immer für einen bestimmten Partitionsschlüssel. Elemente, die einen anderen Partitionsschlüsselwert aufweisen, sind in der gespeicherten Prozedur nicht sichtbar. Dies gilt auch für Trigger.
 > [!Tip]
-> Cosmos unterstützt die Bereitstellung von Containern mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen. Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Containers mit serverseitiger Funktionalität](manage-sql-with-resource-manager.md#create-sproc).
+> Cosmos unterstützt die Bereitstellung von Containern mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen. Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Containers mit serverseitiger Funktionalität](./manage-with-templates.md#create-sproc).
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
 

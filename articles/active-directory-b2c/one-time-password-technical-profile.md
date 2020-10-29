@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418907"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172665"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -28,7 +28,7 @@ Das technische Einmalkennwortprofil kann bei der Codeüberprüfung auch eine Feh
 
 ## <a name="protocol"></a>Protocol
 
-Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly, die von Azure AD B2C verwendet wird, enthalten:
+Das **Name** -Attribut des **Protocol** -Elements muss auf `Proprietary` festgelegt werden. Das **handler** -Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly, die von Azure AD B2C verwendet wird, enthalten:
 
 ```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -49,23 +49,23 @@ Der erste Modus dieses technischen Profils besteht darin, einen Code zu generier
 
 ### <a name="input-claims"></a>Eingabeansprüche
 
-Das **InputClaims**-Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
+Das **InputClaims** -Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
 | ClaimReferenceId | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Bezeichner | Ja | Der Bezeichner zur Identifizierung des Benutzers, der den Code später überprüfen muss. Er wird häufig als Bezeichner des Ziels verwendet, an das der Code übermittelt wird, z.B. eine E-Mail-Adresse oder Telefonnummer. |
 
-Das **InputClaimsTransformations**-Element darf eine Sammlung von **InputClaimsTransformation**-Elementen enthalten, die zum Ändern der Eingabeansprüche oder zum Generieren neuer Ansprüche verwendet werden, bevor das Senden an den Anbieter des Einmalkennwortprotokolls erfolgt.
+Das **InputClaimsTransformations** -Element darf eine Sammlung von **InputClaimsTransformation** -Elementen enthalten, die zum Ändern der Eingabeansprüche oder zum Generieren neuer Ansprüche verwendet werden, bevor das Senden an den Anbieter des Einmalkennwortprotokolls erfolgt.
 
 ### <a name="output-claims"></a>Ausgabeansprüche
 
-Das **OutputClaims**-Element enthält eine Liste der Ansprüche, die vom Anbieter des Einmalkennwortprotokolls generiert werden. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
+Das **OutputClaims** -Element enthält eine Liste der Ansprüche, die vom Anbieter des Einmalkennwortprotokolls generiert werden. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
 | ClaimReferenceId | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | otpGenerated | Ja | Der generierte Code, dessen Sitzung von Azure AD B2C verwaltet wird. |
 
-Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
+Das **OutputClaimsTransformations** -Element darf eine Sammlung von **OutputClaimsTransformation** -Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
 ### <a name="metadata"></a>Metadaten
 
@@ -73,13 +73,15 @@ Die folgenden Einstellungen können verwendet werden, um den Codegenerierungsmod
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nein | Die Zeit in Sekunden bis zum Ablauf des Codes. Mindestwert: `60`, Maximalwert: `1200`, Standardwert: `600`. |
+| CodeExpirationInSeconds | Nein | Die Zeit in Sekunden bis zum Ablauf des Codes. Mindestwert: `60`, Maximalwert: `1200`, Standardwert: `600`. Bei jeder Codebereitstellung (gleicher Code mit `ReuseSameCode` oder neuer Code) wird der Codeablauf verlängert.  |
 | CodeLength | Nein | Die Länge des Codes. Standardwert: `6`. |
 | CharacterSet | Nein | Der Zeichensatz für den Code, der für die Verwendung in einem regulären Ausdruck formatiert ist. Beispiel: `a-z0-9A-Z`. Standardwert: `0-9`. Der Zeichensatz muss mindestens zehn verschiedene Zeichen enthalten, die im angegebenen Zeichensatz enthalten sind. |
 | NumRetryAttempts | Nein | Die Anzahl der Überprüfungsversuche, bevor der Code als ungültig betrachtet wird. Standardwert: `5`. |
 | NumCodeGenerationAttempts | Nein | Die maximale Anzahl von Codegenerierungsversuchen pro Bezeichner. Der Standardwert lautet „10“, wenn keine Angabe erfolgt. |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `GenerateCode`. |
-| ReuseSameCode | Nein | Gibt an, ob ein doppelter Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`. |
+| ReuseSameCode | Nein | Gibt an, ob der gleiche Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`.  |
+
+
 
 ### <a name="example"></a>Beispiel
 
@@ -113,26 +115,26 @@ Der zweite Modus dieses technischen Profils besteht darin, einen Code zu überpr
 
 ### <a name="input-claims"></a>Eingabeansprüche
 
-Das **InputClaims**-Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
+Das **InputClaims** -Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
 | ClaimReferenceId | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Bezeichner | Ja | Der Bezeichner, der den Benutzer identifiziert, der zuvor einen Code generiert hat. Er wird häufig als Bezeichner des Ziels verwendet, an das der Code übermittelt wird, z.B. eine E-Mail-Adresse oder Telefonnummer. |
 | otpToVerify | Ja | Der Überprüfungscode, der vom Benutzer bereitgestellt wird. |
 
-Das **InputClaimsTransformations**-Element darf eine Sammlung von **InputClaimsTransformation**-Elementen enthalten, die zum Ändern der Eingabeansprüche oder zum Generieren neuer Ansprüche verwendet werden, bevor das Senden an den Anbieter des Einmalkennwortprotokolls erfolgt.
+Das **InputClaimsTransformations** -Element darf eine Sammlung von **InputClaimsTransformation** -Elementen enthalten, die zum Ändern der Eingabeansprüche oder zum Generieren neuer Ansprüche verwendet werden, bevor das Senden an den Anbieter des Einmalkennwortprotokolls erfolgt.
 
 ### <a name="output-claims"></a>Ausgabeansprüche
 
 Während der Codeüberprüfung dieses Protokollanbieters werden keine Ausgabeansprüche bereitgestellt.
 
-Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
+Das **OutputClaimsTransformations** -Element darf eine Sammlung von **OutputClaimsTransformation** -Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
 ### <a name="metadata"></a>Metadaten
 
 Die folgenden Einstellungen können verwendet werden, um den Codeüberprüfungsmodus zu konfigurieren:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `VerifyCode`. |
 

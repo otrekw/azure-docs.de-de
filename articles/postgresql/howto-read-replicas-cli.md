@@ -7,25 +7,25 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707539"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489709"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über die Azure CLI und die REST-API erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
 ## <a name="azure-replication-support"></a>Azure-Replikationsunterstützung
-[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Postgres-Protokolliergrade. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
+[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Ebenen der Protokollierung durch Postgres. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
 
 Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter für die Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
 
-* **Off**: Speichert am wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist auf den meisten Azure Database for PostgreSQL-Servern nicht verfügbar.  
-* **Replica**: Ausführlichere Informationen als bei **Off**. Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
-* **Logical**: Noch ausführlichere Informationen als bei **Replica**. Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
+* **Off** : Speichert am wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist auf den meisten Azure Database for PostgreSQL-Servern nicht verfügbar.  
+* **Replica** : Ausführlichere Informationen als bei **Off** . Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
+* **Logical** : Noch ausführlichere Informationen als bei **Replica** . Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
 
 Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Intern legt dieser Parameter die Postgres-Parameter `wal_level`, `max_replication_slots` und `max_wal_senders` fest.
 
@@ -34,7 +34,7 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Installieren der Azure CLI 2.0](/cli/azure/install-azure-cli)
 - Ein [Azure Database for PostgreSQL-Server](quickstart-create-server-up-azure-cli.md), der als primärer Server verwendet wird.
 
 
@@ -60,7 +60,7 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
-Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) erfordert die folgenden Parameter:
+Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) erfordert die folgenden Parameter:
 
 | Einstellung | Beispielwert | BESCHREIBUNG  |
 | --- | --- | --- |
@@ -91,14 +91,14 @@ Wenn Sie den Parameter `azure.replication_support` auf einem universellen oder a
 > Bevor eine Primärservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 ### <a name="list-replicas"></a>Auflisten von Replikaten
-Sie können die Liste der Replikate eines primären Servers mit dem Befehl [az postgres server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) anzeigen.
+Sie können die Liste der Replikate eines primären Servers mit dem Befehl [az postgres server replica list](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) anzeigen.
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
-Sie können die Replikation zwischen einem primären Server und einem Lesereplikat mit dem Befehl [az postgres server replica stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) beenden.
+Sie können die Replikation zwischen einem primären Server und einem Lesereplikat mit dem Befehl [az postgres server replica stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) beenden.
 
 Das Beenden der Replikation zwischen einem primären Server und einem Lesereplikat kann nicht mehr rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
@@ -107,7 +107,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Löschen eines primären oder Replikatservers
-Wenn Sie einen primären oder Replikatserver löschen möchten, verwenden Sie den Befehl [az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete).
+Wenn Sie einen primären oder Replikatserver löschen möchten, verwenden Sie den Befehl [az postgres server delete](/cli/azure/postgres/server#az-postgres-server-delete).
 
 Wenn Sie einen primären Server löschen, wird die Replikation auf allen Lesereplikaten beendet. Die Lesereplikate werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 

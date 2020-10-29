@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5c650c2b828e2742df5dd92657003460bcda66a0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258641"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145108"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -103,12 +103,12 @@ In diesem Szenario hat Contoso entschieden, dass für den gesamten mobilen Zugri
 Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eines registrierten mobilen Geräts anzufordern.
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
-1. Wählen Sie **Neue Richtlinie**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** .
+1. Wählen Sie **Neue Richtlinie** .
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
-   1. Wählen Sie **Fertig**aus.
+   1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365** aus.
 1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
@@ -126,4 +126,4 @@ Unter Windows 7, iOS, Android, macOS und einigen Webbrowsern von Drittanbietern
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bevor Sie eine Richtlinie für den gerätebasierten bedingten Zugriff in Ihrer Umgebung konfigurieren, sollten Sie die [Bewährte Methoden für den bedingten Zugriff in Azure Active Directory](best-practices.md) kennen.
+[Bewerten Sie die Auswirkungen von Richtlinien für bedingten Zugriff, bevor Sie sie im reinen Berichtsmodus aktivieren](concept-conditional-access-report-only.md).

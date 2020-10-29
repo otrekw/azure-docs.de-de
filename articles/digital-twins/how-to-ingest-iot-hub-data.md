@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048048"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131495"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins
 
@@ -25,7 +25,7 @@ In dieser Schrittanleitung wird erläutert, wie Sie eine Azure-Funktion schreibe
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Beispiel fortfahren können, müssen Sie die folgenden Ressourcen als Voraussetzungen einrichten:
-* **Einen IoT-Hub**. Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in [diesem IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
+* **Einen IoT-Hub** . Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in [diesem IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
 * **Eine Azure-Funktion** mit den richtigen Berechtigungen zum Aufrufen Ihrer Digital Twins-Instanz. Anweisungen dazu finden Sie unter [*Gewusst wie: von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md). 
 * **Eine Azure Digital Twins-Instanz** zum Empfangen Ihrer Gerätetelemetrie. Anweisungen dazu finden Sie unter [*Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung*](./how-to-set-up-instance-portal.md).
 
@@ -70,7 +70,7 @@ az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
-Anschließend müssen Sie **einen einzigen Zwilling mit diesem Modell erstellen**. Verwenden Sie den folgenden Befehl zum Erstellen eines Zwillings und zum Festlegen von „0,0“ als anfänglichen Temperaturwert.
+Anschließend müssen Sie **einen einzigen Zwilling mit diesem Modell erstellen** . Verwenden Sie den folgenden Befehl zum Erstellen eines Zwillings und zum Festlegen von „0,0“ als anfänglichen Temperaturwert.
 
 ```azurecli
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
@@ -107,7 +107,7 @@ In den folgenden Schritten fügen Sie bestimmten Code hinzu, um IoT-Telemetrieer
     
 Telemetrieereignisse treffen in Form von Nachrichten vom Gerät ein. Beim Hinzufügen von Telemetrieverarbeitungscode besteht der erste Schritt im Extrahieren des relevanten Teils dieser Gerätenachricht aus dem Event Grid-Ereignis. 
 
-Unterschiedliche Geräte können ihre Nachrichten unterschiedlich strukturieren, sodass der Code für **diesen Schritt abhängig ist vom verbundenen Gerät**. 
+Unterschiedliche Geräte können ihre Nachrichten unterschiedlich strukturieren, sodass der Code für **diesen Schritt abhängig ist vom verbundenen Gerät** . 
 
 Der folgende Code zeigt ein Beispiel für ein einfaches Gerät, das Telemetrie als JSON sendet. Dieses Beispiel wird vollständig untersucht in [*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md). Der folgende Code ermittelt die Geräte-ID des Geräts, das die Nachricht gesendet hat, und den Temperaturwert.
 
@@ -207,7 +207,7 @@ Nach einer erfolgreichen Veröffentlichung wird die Ausgabe im Visual Studio-Bef
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
 ```
-Sie können Ihren Status des Veröffentlichungsvorgangs im [Azure-Portal](https://portal.azure.com/) auch überprüfen. Suchen Sie nach Ihrer _Ressourcengruppe_, navigieren Sie zu _Aktivitätsprotokoll_, suchen Sie in der Liste nach _Get Web App publishing profile_ (Veröffentlichungsprofil für Web-App abrufen), und überprüfen Sie, ob der Status „Erfolgreich“ lautet.
+Sie können Ihren Status des Veröffentlichungsvorgangs im [Azure-Portal](https://portal.azure.com/) auch überprüfen. Suchen Sie nach Ihrer _Ressourcengruppe_ , navigieren Sie zu _Aktivitätsprotokoll_ , suchen Sie in der Liste nach _Get Web App publishing profile_ (Veröffentlichungsprofil für Web-App abrufen), und überprüfen Sie, ob der Status „Erfolgreich“ lautet.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="Abbildung eines Flussdiagramms. Im Diagramm sendet ein IoT Hub-Gerät Temperaturtelemetrie über IoT Hub an eine Azure-Funktion, die eine Temperatureigenschaft in einem Zwilling in Azure Digital Twins aktualisiert.":::
 
@@ -221,18 +221,18 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Ins
 Füllen Sie auf der Seite **Ereignisabonnement erstellen** die Felder wie folgt aus:
   1. Geben Sie unter **Name** Ihren gewünschten Abonnementnamen ein.
   2. Wählen Sie unter **Ereignisschema** die Option _Event Grid-Schema_ aus.
-  3. Aktivieren Sie unter **Ereignistypen** das Kontrollkästchen _Gerätetelemetrie_, und deaktivieren Sie andere Ereignistypen.
+  3. Aktivieren Sie unter **Ereignistypen** das Kontrollkästchen _Gerätetelemetrie_ , und deaktivieren Sie andere Ereignistypen.
   4. Wählen Sie unter **Endpunkttyp** die Option _Azure-Funktion_ aus.
-  5. Wählen Sie unter **Endpunkt** den Link _Endpunkt auswählen_, um einen Endpunkt zu erstellen.
+  5. Wählen Sie unter **Endpunkt** den Link _Endpunkt auswählen_ , um einen Endpunkt zu erstellen.
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Abbildung eines Flussdiagramms. Im Diagramm sendet ein IoT Hub-Gerät Temperaturtelemetrie über IoT Hub an eine Azure-Funktion, die eine Temperatureigenschaft in einem Zwilling in Azure Digital Twins aktualisiert.":::
 
 Überprüfen Sie auf der daraufhin geöffneten Seite _Azure-Funktion auswählen_ die folgenden Details:
- 1. **Abonnement**: Ihr Azure-Abonnement
- 2. **Ressourcengruppe**: Ihre Ressourcengruppe
- 3. **Funktions-App**: Name Ihrer Funktions-App
- 4. **Slot**: _Produktion_
- 5. **Funktion**: Wählen Sie in der Dropdownliste Ihre Azure-Funktion aus.
+ 1. **Abonnement** : Ihr Azure-Abonnement
+ 2. **Ressourcengruppe** : Ihre Ressourcengruppe
+ 3. **Funktions-App** : Name Ihrer Funktions-App
+ 4. **Slot** : _Produktion_
+ 5. **Funktion** : Wählen Sie in der Dropdownliste Ihre Azure-Funktion aus.
 
 Wählen Sie die Schaltfläche _Auswahl bestätigen_ aus, um Ihre Details zu speichern.            
       
@@ -242,7 +242,7 @@ Wählen Sie die Schaltfläche _Erstellen_ aus, um ein Ereignisabonnement zu erst
 
 ## <a name="send-simulated-iot-data"></a>Senden von simulierten IoT-Daten
 
-Verwenden Sie zum Testen Ihrer neuen Eingangsfunktion den Gerätesimulator aus [*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md). Grundlage dieses Tutorials ist ein in C# geschriebenes Beispielprojekt. Den Beispielcode finden Sie hier: [Azure Digital Twins (Beispiele)](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Sie verwenden in diesem Repository das Projekt **DeviceSimulator**.
+Verwenden Sie zum Testen Ihrer neuen Eingangsfunktion den Gerätesimulator aus [*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md). Grundlage dieses Tutorials ist ein in C# geschriebenes Beispielprojekt. Den Beispielcode finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples) Sie verwenden in diesem Repository das Projekt **DeviceSimulator** .
 
 Führen Sie im End-to-End-Tutorial die folgenden Schritte aus:
 1. [*Registrieren des simulierten Geräts für IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

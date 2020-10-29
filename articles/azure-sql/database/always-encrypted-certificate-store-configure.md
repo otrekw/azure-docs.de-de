@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444774"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164515"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurieren von Always Encrypted mithilfe des Windows-Zertifikatspeichers
 
@@ -49,7 +49,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="enable-client-application-access"></a>Aktivieren des Zugriffs für Clientanwendungen
 
-Sie müssen Ihre Clientanwendung aktivieren, um auf Azure SQL-Datenbank oder eine verwaltete Azure SQL-Instanz zuzugreifen. Richten Sie dazu eine Azure Active Directory-Anwendung (AAD) ein, und kopieren Sie die *Anwendungs-ID* und den *Schlüssel*, die Sie zum Authentifizieren der Anwendung benötigen.
+Sie müssen Ihre Clientanwendung aktivieren, um auf Azure SQL-Datenbank oder eine verwaltete Azure SQL-Instanz zuzugreifen. Richten Sie dazu eine Azure Active Directory-Anwendung (AAD) ein, und kopieren Sie die *Anwendungs-ID* und den *Schlüssel* , die Sie zum Authentifizieren der Anwendung benötigen.
 
 Führen Sie zum Abrufen von *Anwendungs-ID* und *Schlüssel* die Schritte unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../../active-directory/develop/howto-create-service-principal-portal.md) aus.
 
@@ -59,7 +59,7 @@ Führen Sie zum Abrufen von *Anwendungs-ID* und *Schlüssel* die Schritte unter 
 
 Öffnen Sie SQL Server Management Studio (SSMS), und stellen Sie eine Verbindung zwischen Ihrer Datenbank und dem Server oder der verwalteten Instanz her.
 
-1. Öffnen Sie SSMS. (Klicken Sie auf **Verbinden** > **Datenbank-Engine**, um das Fenster **Mit Server verbinden** zu öffnen, falls es nicht geöffnet ist.)
+1. Öffnen Sie SSMS. (Klicken Sie auf **Verbinden** > **Datenbank-Engine** , um das Fenster **Mit Server verbinden** zu öffnen, falls es nicht geöffnet ist.)
 2. Geben Sie Ihren Servernamen und die Anmeldeinformationen ein.
 
     ![Verbindungszeichenfolge kopieren](./media/always-encrypted-certificate-store-configure/ssms-connect.png)
@@ -70,8 +70,8 @@ Wenn das Fenster **Neue Firewallregel** geöffnet wird, melden Sie sich bei Azur
 
 In diesem Abschnitt erstellen Sie eine Tabelle zum Speichern von Patientendaten. Das ist zunächst eine normale Tabelle – im nächsten Abschnitt konfigurieren Sie die Verschlüsselung.
 
-1. Erweitern Sie **Datenbanken**.
-2. Klicken Sie mit der rechten Maustaste auf die Datenbank **Clinic**, und klicken Sie dann auf **Neue Abfrage**.
+1. Erweitern Sie **Datenbanken** .
+2. Klicken Sie mit der rechten Maustaste auf die Datenbank **Clinic** , und klicken Sie dann auf **Neue Abfrage** .
 3. Fügen Sie den folgenden Transact-SQL-Code (T-SQL) in das Fenster mit der neuen Abfrage ein, und wählen Sie **Ausführen** .
     
     ```tsql
@@ -94,20 +94,20 @@ In diesem Abschnitt erstellen Sie eine Tabelle zum Speichern von Patientendaten.
 
 SSMS enthält einen Assistenten zum einfachen Konfigurieren von Always Encrypted durch Einrichten von CMK, CEK und verschlüsselten Spalten.
 
-1. Erweitern Sie **Datenbanken** > **Clinic** > **Tabellen**sichern.
-2. Klicken Sie mit der rechten Maustaste auf die Tabelle **Patients**, und wählen Sie **Spalten verschlüsseln** aus, um den Always Encrypted-Assistenten zu öffnen:
+1. Erweitern Sie **Datenbanken** > **Clinic** > **Tabellen** sichern.
+2. Klicken Sie mit der rechten Maustaste auf die Tabelle **Patients** , und wählen Sie **Spalten verschlüsseln** aus, um den Always Encrypted-Assistenten zu öffnen:
 
-    ![Spalten verschlüsseln](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![Der Screenshot zeigt die Menüoption „Spalten verschlüsseln“ in der Tabelle „Patients“.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-Der Always Encrypted-Assistent enthält die folgenden Abschnitte: **Spaltenauswahl**, **Konfiguration des Hauptschlüssels** (CMK), **Prüfung** und **Zusammenfassung**.
+Der Always Encrypted-Assistent enthält die folgenden Abschnitte: **Spaltenauswahl** , **Konfiguration des Hauptschlüssels** (CMK), **Prüfung** und **Zusammenfassung** .
 
 ### <a name="column-selection"></a>Spaltenauswahl
 
-Klicken Sie auf der Seite **Einführung** auf **Weiter**, um die Seite **Spaltenauswahl** zu öffnen. Wählen Sie auf dieser Seite die Spalten, die Sie verschlüsseln möchten, [den Typ der Verschlüsselung, und welcher Spaltenverschlüsselungsschlüssel (Column Encryption Key, CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) verwendet werden soll.
+Klicken Sie auf der Seite **Einführung** auf **Weiter** , um die Seite **Spaltenauswahl** zu öffnen. Wählen Sie auf dieser Seite die Spalten, die Sie verschlüsseln möchten, [den Typ der Verschlüsselung, und welcher Spaltenverschlüsselungsschlüssel (Column Encryption Key, CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) verwendet werden soll.
 
 Verschlüsseln Sie für jeden Patienten die Daten **SSN** (US-Sozialversicherungsnummer) und **BirthDate** (Geburtsdatum). Für die Spalte **SSN** wird die deterministische Verschlüsselung verwendet, die Suchvorgänge nach Gleichheit, Joins und Group By unterstützt. Für die Spalte **BirthDate** wird die zufällige Verschlüsselung verwendet, bei der keine Operationen unterstützt werden.
 
-Legen Sie als **Verschlüsselungstyp** für die Spalte **SSN** die Option **Deterministisch** und für die Spalte **BirthDate** die Option **Zufällig** fest. Klicken Sie auf **Weiter**.
+Legen Sie als **Verschlüsselungstyp** für die Spalte **SSN** die Option **Deterministisch** und für die Spalte **BirthDate** die Option **Zufällig** fest. Klicken Sie auf **Weiter** .
 
 ![Spalten verschlüsseln](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -115,13 +115,13 @@ Legen Sie als **Verschlüsselungstyp** für die Spalte **SSN** die Option **Dete
 
 Auf der Seite **Hauptschlüsselkonfiguration** richten Sie Ihren CMK ein und wählen den Schlüsselspeicheranbieter aus, unter dem der CMK gespeichert werden soll. Derzeit können Sie einen CMK im Windows-Zertifikatspeicher, im Azure-Schlüsseltresor oder in einem Hardwaresicherheitsmodul (HSM) speichern. In diesem Tutorial wird gezeigt, wie Sie Ihre Schlüssel im Windows-Zertifikatspeicher speichern.
 
-Vergewissern Sie sich, dass **Windows-Zertifikatspeicher** ausgewählt ist, und klicken Sie auf **Weiter**.
+Vergewissern Sie sich, dass **Windows-Zertifikatspeicher** ausgewählt ist, und klicken Sie auf **Weiter** .
 
 ![Hauptschlüsselkonfiguration](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Überprüfen
 
-Sie können die Spalten jetzt verschlüsseln oder ein PowerShell-Skript für die spätere Ausführung speichern. Wählen Sie für dieses Tutorial die Option **Jetzt fertig stellen**, und klicken Sie auf **Weiter**.
+Sie können die Spalten jetzt verschlüsseln oder ein PowerShell-Skript für die spätere Ausführung speichern. Wählen Sie für dieses Tutorial die Option **Jetzt fertig stellen** , und klicken Sie auf **Weiter** .
 
 ### <a name="summary"></a>Zusammenfassung
 
@@ -147,9 +147,9 @@ Nach dem Einrichten von Always Encrypted können Sie eine Anwendung erstellen, d
 > Für Ihre Anwendung müssen [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) -Objekte verwendet werden, wenn Klartextdaten an den Server mit Always Encrypted-Spalten übergeben werden. Das Übergeben von Literalwerten ohne SqlParameter-Objekte führt zu einer Ausnahme.
 
 1. Öffnen Sie Visual Studio, und erstellen Sie eine neue C#-Konsolenanwendung. Stellen Sie sicher, dass Ihr Projekt auf **.NET Framework 4.6** oder höher festgelegt ist.
-2. Geben Sie dem Projekt den Namen **AlwaysEncryptedConsoleApp**, und klicken Sie auf **OK**.
+2. Geben Sie dem Projekt den Namen **AlwaysEncryptedConsoleApp** , und klicken Sie auf **OK** .
 
-![Neue Konsolenanwendung](./media/always-encrypted-certificate-store-configure/console-app.png)
+![Der Screenshot zeigt das neu benannte Projekt „AlwaysEncryptedConsoleApp“.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Ändern der Verbindungszeichenfolge zur Aktivierung von Always Encrypted
 
@@ -157,7 +157,7 @@ In diesem Abschnitt wird beschrieben, wie Sie Always Encrypted in Ihrer Datenban
 
 Zum Aktivieren von Always Encrypted müssen Sie der Verbindungszeichenfolge das Schlüsselwort **Column Encryption Setting** hinzufügen und es auf **Enabled** festlegen.
 
-Sie können dies direkt in der Verbindungszeichenfolge festlegen, oder Sie können zum Festlegen ein [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx)-Element verwenden. Die Beispielanwendung im nächsten Abschnitt veranschaulicht, wie Sie das **SqlConnectionStringBuilder**-Element verwenden.
+Sie können dies direkt in der Verbindungszeichenfolge festlegen, oder Sie können zum Festlegen ein [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx)-Element verwenden. Die Beispielanwendung im nächsten Abschnitt veranschaulicht, wie Sie das **SqlConnectionStringBuilder** -Element verwenden.
 
 > [!NOTE]
 > Dies ist die einzige Änderung, die in einer Always Encrypted-Clientanwendung erforderlich ist. Wenn Sie über eine vorhandene Anwendung verfügen, bei der die Verbindungszeichenfolge extern gespeichert wird (also in einer Konfigurationsdatei), können Sie Always Encrypted unter Umständen auch aktivieren, ohne Code zu ändern.
@@ -510,15 +510,15 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Sie sehen, dass die verschlüsselten Spalten keine Klartextdaten enthalten.
 
-   ![Neue Konsolenanwendung](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![Der Screenshot zeigt verschlüsselte Daten in den verschlüsselten Spalten.](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 Um SSMS zu verwenden, um auf die Klartextdaten zuzugreifen, können Sie der Verbindung den Parameter **Column Encryption Setting=enabled** hinzufügen.
 
-1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server, und klicken Sie dann auf **Trennen**.
-2. Klicken Sie auf **Verbinden** > **Datenbank-Engine**, um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
-3. Klicken Sie auf **Zusätzliche Verbindungsparameter**, und geben Sie **Column Encryption Setting=enabled** ein.
+1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server, und klicken Sie dann auf **Trennen** .
+2. Klicken Sie auf **Verbinden** > **Datenbank-Engine** , um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen** .
+3. Klicken Sie auf **Zusätzliche Verbindungsparameter** , und geben Sie **Column Encryption Setting=enabled** ein.
 
-    ![Neue Konsolenanwendung](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![Der Screenshot zeigt die Registerkarte „Zusätzliche Verbindungsparameter“ mit der Eingabe „Column Encryption Setting=enabled“ im Feld.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Führen Sie die folgende Abfrage für die **Clinic** -Datenbank aus.
 
     ```tsql

@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShel
 description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup und PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975101"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094091"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -35,7 +35,7 @@ Die Objekthierarchie ist im folgenden Diagramm zusammengefasst.
 
 ![Recovery Services-Objekthierarchie](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-[Sehen Sie sich die ](/powershell/module/az.recoveryservices/)Cmdlet-Referenz zu **Az.RecoveryServices** in der Azure-Bibliothek an.
+[Sehen Sie sich die](/powershell/module/az.recoveryservices/)Cmdlet-Referenz zu **Az.RecoveryServices** in der Azure-Bibliothek an.
 
 ## <a name="set-up-and-register"></a>Einrichten und Registrieren
 
@@ -78,7 +78,7 @@ Vorbereitung:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-    In der Befehlsausgabe sollte sich der **RegistrationState**-Wert in **Registriert** ändern. Ist dies nicht der Fall, führen Sie einfach das Cmdlet **[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** erneut aus.
+    In der Befehlsausgabe sollte sich der **RegistrationState** -Wert in **Registriert** ändern. Ist dies nicht der Fall, führen Sie einfach das Cmdlet **[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** erneut aus.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -208,7 +208,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > Sie können die Startzeit nur in 30-Minuten-Einheiten angeben. Im vorstehenden Beispiel kann sie nur „01:00:00“ oder „02:30:00“ lauten. „01:15:00“ kann nicht als Startzeit angegeben werden.
 
-Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Im Beispiel werden diese Variablen verwendet, um die Parameter beim Erstellen einer Schutzrichtlinie,*NewPolicy*, zu definieren.
+Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Im Beispiel werden diese Variablen verwendet, um die Parameter beim Erstellen einer Schutzrichtlinie, *NewPolicy* , zu definieren.
 
 ```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
@@ -462,7 +462,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>Wiederherstellung der Datenträger
 
-Verwenden Sie das Cmdlet [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem), um Daten und die Konfiguration eines Sicherungselements auf einem Wiederherstellungspunkt wiederherzustellen. Nachdem Sie einen Wiederherstellungspunkt ermittelt haben, können Sie ihn als Wert für den **-RecoveryPoint**-Parameter verwenden. Im vorstehenden Beispiel wurde **$rp[0]** als Wiederherstellungspunkt verwendet. Im folgenden Beispielcode ist **$rp[0]** der Wiederherstellungspunkt, der zum Wiederherstellen des Datenträgers verwendet wird.
+Verwenden Sie das Cmdlet [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem), um Daten und die Konfiguration eines Sicherungselements auf einem Wiederherstellungspunkt wiederherzustellen. Nachdem Sie einen Wiederherstellungspunkt ermittelt haben, können Sie ihn als Wert für den **-RecoveryPoint** -Parameter verwenden. Im vorstehenden Beispiel wurde **$rp[0]** als Wiederherstellungspunkt verwendet. Im folgenden Beispielcode ist **$rp[0]** der Wiederherstellungspunkt, der zum Wiederherstellen des Datenträgers verwendet wird.
 
 So stellen Sie den Datenträger und die Konfigurationsinformationen wieder her:
 
@@ -529,7 +529,7 @@ Nachdem Sie die Datenträger wiederhergestellt haben, können Sie die folgenden 
 > [!NOTE]
 >
 > 1. Es ist AzureAz-Modul 3.0.0 erforderlich. <br>
-> 2. Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle über diese Berechtigung nicht verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md). <br>
+> 2. Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle über diese Berechtigung nicht verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md). <br>
 > 3. Nach der Wiederherstellung von Datenträgern können Sie jetzt eine Bereitstellungsvorlage abrufen, die Sie direkt verwenden können, um einen neuen virtuellen Computer zu erstellen. Sie benötigen zum Erstellen von verwalteten/nicht verwalteten virtuellen Computern, die verschlüsselt/nicht verschlüsselt sind, keine unterschiedlichen PowerShell-Cmdlets.<br>
 > <br>
 
@@ -598,7 +598,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
 4. Fügen Sie die Betriebssystemdatenträger und Datenträger hinzu. Dieser Schritt enthält Beispiele für verschiedene verwaltete und verschlüsselte VM-Konfigurationen. Verwenden Sie das Beispiel, das für Ihre VM-Konfiguration geeignet ist.
 
-    * **Nicht verwaltete unverschlüsselte VMs**: Verwenden Sie das folgende Beispiel für nicht verwaltete unverschlüsselte VMs.
+    * **Nicht verwaltete unverschlüsselte VMs** : Verwenden Sie das folgende Beispiel für nicht verwaltete unverschlüsselte VMs.
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -636,7 +636,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
         }
     ```
 
-    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob aus (dieser Schritt ist bei einem Datenblob nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist** , stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob aus (dieser Schritt ist bei einem Datenblob nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/secret der Quelle nicht verfügbar ist.
 
@@ -663,7 +663,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
         }
     ```
 
-    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob aus (dieser Schritt ist bei einem Datenblob nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist** , stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob aus (dieser Schritt ist bei einem Datenblob nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/key/secret der Quelle nicht verfügbar ist.
 
@@ -691,13 +691,13 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
         }
     ```
 
-    * **Verwaltete, unverschlüsselte VMs**: Fügen Sie für verwaltete und unverschlüsselte VMs die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
+    * **Verwaltete, unverschlüsselte VMs** : Fügen Sie für verwaltete und unverschlüsselte VMs die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
     * **Verwaltete, verschlüsselte VMs mit Azure AD (nur BEK):** Fügen Sie für verwaltete, verschlüsselte VMs mit Azure AD (nur mit BEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
     * **Verwaltete, verschlüsselte VMs mit Azure AD (BEK und KEK):** Fügen Sie für verwaltete, verschlüsselte VMs mit Azure AD (mit BEK und KEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für den wiederhergestellten Betriebssystemdatenträger aus (dieser Schritt ist bei einem Datenträger nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist** , stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für den wiederhergestellten Betriebssystemdatenträger aus (dieser Schritt ist bei einem Datenträger nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/secret der Quelle nicht verfügbar ist.  
 
@@ -718,7 +718,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
     Informationen darüber, wie Sie die wiederhergestellten verwalteten Datenträger anfügen, nachdem die Geheimnisse verfügbar sind und die Verschlüsselungsdetails auf dem Betriebssystemdatenträger festgelegt wurden, finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für den wiederhergestellten Betriebssystemdatenträger aus (dieser Schritt ist bei Datenträgern nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist** , stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für den wiederhergestellten Betriebssystemdatenträger aus (dieser Schritt ist bei Datenträgern nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/key/secret der Quelle nicht verfügbar ist.
 

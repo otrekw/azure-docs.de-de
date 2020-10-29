@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272525"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165237"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 - Ein Azure-Abonnement. [Kostenlos](https://azure.microsoft.com/free/) einsteigen. 
 - [Mindestens zwei vorbereitete Windows Azure-VMs](failover-cluster-instance-prepare-vm.md) in einer [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)
 - Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
-- Die neueste Version von [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0) 
+- Die neueste Version von [PowerShell](/powershell/azure/install-az-ps) 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>Feature zum Hinzufügen von Windows-Clustern
@@ -164,7 +164,7 @@ Die Datenträger für „Direkte Speicherplätze“ müssen leer sein. Sie dürf
 
 1. [Erstellen eines Volumes](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)
 
-   „Direkte Speicherplätze“ erstellt automatisch einen Speicherpool, wenn Sie „Direkte Speicherplätze“ aktivieren. Sie können jetzt ein Volume erstellen. Das PowerShell-Cmdlet `New-Volume` automatisiert den Volumeerstellungsprozess. Dieser Prozess umfasst Formatieren, Hinzufügen des Volumes zum Cluster und das Erstellen eines CSV. In diesem Beispiel wird ein CSV mit 800 GB erstellt:
+   „Direkte Speicherplätze“ erstellt automatisch einen Speicherpool, wenn Sie „Direkte Speicherplätze“ aktivieren. Sie können jetzt ein Volume erstellen. Das PowerShell-Cmdlet `New-Volume` automatisiert den Volumeerstellungsprozess. Dieser Prozess umfasst Formatieren, Hinzufügen des Volumes zum Cluster und das Erstellen eines CSV. In diesem Beispiel wird ein CSV mit 800 Gigabyte (GB) erstellt:
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -206,7 +206,7 @@ Nachdem Sie den Failovercluster und alle Clusterkomponenten einschließlich Spei
 
 1. Nachdem das Setup die FCI auf dem ersten Knoten installiert hat, können Sie per RDP eine Verbindung mit dem zweiten Knoten herstellen.
 
-1. Öffnen Sie das **SQL Server-Installationscenter**. Wählen Sie **Installation** aus.
+1. Öffnen Sie das **SQL Server-Installationscenter** . Wählen Sie **Installation** aus.
 
 1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
@@ -233,7 +233,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 und Windows Server 2016 (oder höher) stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
+Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden. 
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -243,12 +243,12 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 
 Wenn „Direkte Speicherplätze“ nicht die richtige FCI-Speicherlösung für Sie ist, können Sie Ihre FCI stattdessen mithilfe von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder [Premium-Dateifreigaben](failover-cluster-instance-premium-file-share-manually-configure.md) erstellen. 
 
 Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und unter [Bewährte Methoden für die Clusterkonfiguration](hadr-cluster-best-practices.md). 
 
-Weitere Informationen finden Sie hier: 
+Weitere Informationen finden Sie unter 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -1,19 +1,19 @@
 ---
 title: Azure Backup für auf einer Azure-VM ausgeführten SQL Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup in einem auf einem virtuellen Azure-Computer ausgeführten SQL Server registrieren.
-services: backup
 author: dcurwin
 manager: carmonm
-ms.service: backup
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511176"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490729"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup für auf einer Azure-VM ausgeführten SQL Server
 
@@ -109,7 +109,7 @@ $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der Status lautet **registriert**.
+Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der Status lautet **registriert** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

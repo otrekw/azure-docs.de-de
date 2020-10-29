@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: a09989e57729862cb18f148f95eb83f81a775b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542222"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149256"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -77,7 +77,7 @@ Erfahren Sie mehr über [Fehler beim Versionsimport](luis-how-to-manage-versions
 
 ## <a name="collaborating-and-contributing"></a>Zusammenarbeiten und mitwirken
 
-### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Wie weise ich Mitarbeitern Zugriff auf LUIS mit Azure Active Directory (Azure AD) oder der rollenbasierten Zugriffssteuerung (RBAC) zu?
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-azure-role-based-access-control-azure-rbac"></a>Wie weise ich Mitarbeitern Zugriff auf LUIS mit Azure Active Directory (Azure AD) oder der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) zu?
 
 Unter [Azure Active Directory-Ressourcen](luis-how-to-collaborate.md#azure-active-directory-resources) und [Azure Active Directory-Mandantenbenutzer](luis-how-to-collaborate.md#azure-active-directory-tenant-user) erfahren Sie, wie Sie Mitarbeitern den Zugriff gewähren.
 
@@ -132,7 +132,7 @@ Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwen
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Warum werden Endpunktabrufe nicht im App-Dashboard angezeigt?
 Die Gesamtzahl der Endpunktabrufe in Ihrem App-Dashboard wird regelmäßig aktualisiert. Die Metriken, die dem LUIS-Endpunktschlüssel im Azure-Portal zugeordnet sind, werden jedoch häufiger aktualisiert.
 
-Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich beim Azure-Portal an, suchen Sie nach der Ressource, die Ihrem LUIS-Endpunktschlüssel zugeordnet ist. Öffnen Sie **Metriken**, und wählen Sie die Metrik **Aufrufe gesamt** aus. Wenn der Endpunktschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregierten Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
+Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich beim Azure-Portal an, suchen Sie nach der Ressource, die Ihrem LUIS-Endpunktschlüssel zugeordnet ist. Öffnen Sie **Metriken** , und wählen Sie die Metrik **Aufrufe gesamt** aus. Wenn der Endpunktschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregierten Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Gibt es einen PowerShell-Befehl zum Abrufen des Endpunktkontingents?
 
@@ -190,7 +190,7 @@ Weitere Informationen finden Sie unter [Trainieren mit allen Daten](luis-how-to-
 ## <a name="app-publishing"></a>Veröffentlichen von Apps
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Was ist die Mandanten-ID im Fenster „Add a key to your app“ (Schlüssel zur App hinzufügen)?
-In Azure stellen Mandanten Clients oder Organisationen dar, die einem Dienst zugeordnet sind. Ihre Mandanten-ID finden Sie im Azure-Portal im Feld **Verzeichnis-ID**. Dieses rufen Sie über **Azure Active Directory** > **Verwalten** > **Eigenschaften** auf.
+In Azure stellen Mandanten Clients oder Organisationen dar, die einem Dienst zugeordnet sind. Ihre Mandanten-ID finden Sie im Azure-Portal im Feld **Verzeichnis-ID** . Dieses rufen Sie über **Azure Active Directory** > **Verwalten** > **Eigenschaften** auf.
 
 ![Mandanten-ID im Azure-Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 

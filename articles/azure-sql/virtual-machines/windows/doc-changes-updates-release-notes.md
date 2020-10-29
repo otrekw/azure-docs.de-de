@@ -10,18 +10,24 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/21/2020
-ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758641"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168323"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL Server-Image bereitstellen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server in Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. 
+
+## <a name="october-2020"></a>Oktober 2020
+
+| Änderungen | Details |
+| --- | --- |
+| **DNN für Verfügbarkeitsgruppe** | Sie können jetzt einen [DNN-Listener (Distributed Network Name, Name des verteilten Netzwerks)](availability-group-distributed-network-name-dnn-listener-configure.md) für SQL Server 2019 CU8 und höher als Ersatz für den herkömmlichen [VNN-Listener](availability-group-overview.md#connectivity) konfigurieren, so dass ein Azure Load Balancer nicht mehr erforderlich ist.   | 
 
 ## <a name="september-2020"></a>September 2020
 

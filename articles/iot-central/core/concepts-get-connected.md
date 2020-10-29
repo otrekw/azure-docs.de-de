@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fc10c9601deb66c8fb6182d5943011f1ef185ce
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714214"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170050"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -65,7 +65,7 @@ Um die Verbindungsinformationen für die importierten Geräte abzurufen, [export
 
 ### <a name="set-up-your-devices"></a>Einrichten Ihrer Geräte
 
-Verwenden Sie die Verbindungsinformationen aus der Exportdatei in Ihrem Gerätecode, um das Herstellen einer Verbindung Ihres Geräts mit Ihrer IoT Central-Anwendung und das Senden von Daten an IoT zu ermöglichen. Außerdem benötigen Sie den DPS-**ID-Bereich** für Ihre Anwendung. Diesen Wert finden Sie unter **Verwaltung > Geräteverbindung**.
+Verwenden Sie die Verbindungsinformationen aus der Exportdatei in Ihrem Gerätecode, um das Herstellen einer Verbindung Ihres Geräts mit Ihrer IoT Central-Anwendung und das Senden von Daten an IoT zu ermöglichen. Außerdem benötigen Sie den DPS- **ID-Bereich** für Ihre Anwendung. Diesen Wert finden Sie unter **Verwaltung > Geräteverbindung** .
 
 > [!NOTE]
 > Wie Sie Geräte verbinden können, ohne sie zuerst in IoT Central zu registrieren, erfahren Sie unter [Verbinden ohne vorherige Registrierung der Geräte](#connect-without-registering-devices).
@@ -76,7 +76,7 @@ In einer Produktionsumgebung ist die Verwendung von X.509-Zertifikaten der empfo
 
 So stellen Sie eine Verbindung eines Geräts mit einem X.509-Zertifikat mit Ihrer Anwendung her:
 
-1. Erstellen Sie eine *Registrierungsgruppe*, die den Nachweistyp **X.509-Zertifikate** verwendet.
+1. Erstellen Sie eine *Registrierungsgruppe* , die den Nachweistyp **X.509-Zertifikate** verwendet.
 2. Fügen Sie ein X.509-Zwischen- oder Stammzertifikat in der Registrierungsgruppe hinzu, und überprüfen Sie es.
 3. Registrieren Sie Geräte, die aus dem Stamm- oder Zwischenzertifikat in der Registrierungsgruppe generierte untergeordnete X.509-Zertifikate verwenden, und stellen Sie Verbindungen mit Ihnen her.
 
@@ -87,7 +87,7 @@ Eine [Registrierungsgruppe](../../iot-dps/concepts-service.md#enrollment) ist ei
 - In einer X.509-Registrierungsgruppe verwenden alle Geräte, die eine Verbindung mit IoT Central herstellen, aus dem Stamm- oder Zwischenzertifikat in der Registrierungsgruppe generierte untergeordnete X.509-Zertifikate.
 - In einer SAS-Registrierungsgruppe verwenden alle Geräte, die eine Verbindung mit IoT Central herstellen, ein aus dem SAS-Token in der Registrierungsgruppe generiertes SAS-Token.
 
-Die beiden Standardregistrierungsgruppen in jeder IoT Central-Anwendung sind SAS-Registrierungsgruppen – eine für IoT-Geräte und eine für Azure IoT Edge-Geräte. Navigieren Sie zum Erstellen einer X.509-Registrierungsgruppe zur Seite **Geräteverbindung**, und wählen Sie **+ Registrierungsgruppe hinzufügen** aus:
+Die beiden Standardregistrierungsgruppen in jeder IoT Central-Anwendung sind SAS-Registrierungsgruppen – eine für IoT-Geräte und eine für Azure IoT Edge-Geräte. Navigieren Sie zum Erstellen einer X.509-Registrierungsgruppe zur Seite **Geräteverbindung** , und wählen Sie **+ Registrierungsgruppe hinzufügen** aus:
 
 :::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
 
@@ -101,7 +101,7 @@ So fügen Sie ein Stamm- oder Zwischenzertifikat Ihrer Registrierungsgruppe hinz
 
     :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
 
-1. Klicken Sie auf **Prüfcode generieren**, um einen Code für das Tool zu generieren, das Sie zum Generieren des Überprüfungszertifikats verwenden. Wählen Sie **Überprüfen** aus, um das Überprüfungszertifikat hochzuladen.
+1. Klicken Sie auf **Prüfcode generieren** , um einen Code für das Tool zu generieren, das Sie zum Generieren des Überprüfungszertifikats verwenden. Wählen Sie **Überprüfen** aus, um das Überprüfungszertifikat hochzuladen.
 
 1. Nach erfolgreicher Überprüfung wird die folgende Bestätigung angezeigt:
 
@@ -113,7 +113,7 @@ Wenn eine Sicherheitsverletzung auftritt oder Ihr primäres Zertifikat abläuft,
 
 ### <a name="register-and-connect-devices"></a>Registrieren und Verbinden von Geräten
 
-Zum Massenverbinden von Geräten mithilfe von X.509-Zertifikaten registrieren Sie zunächst die Geräte in Ihrer Anwendung, indem Sie mithilfe einer CSV-Datei die [Geräte-IDs und Gerätenamen importieren](howto-manage-devices.md#import-devices). Die Geräte-IDs sollten ausschließlich Kleinbuchstaben aufweisen.
+Zum Massenverbinden von Geräten mithilfe von X.509-Zertifikaten registrieren Sie zunächst die Geräte in Ihrer Anwendung, indem Sie mithilfe einer CSV-Datei die [Geräte-IDs und Gerätenamen importieren](howto-manage-devices.md#import-devices). Eine Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten.
 
 Generieren Sie untergeordnete X.509-Zertifikate für Ihre Geräte mit dem Stamm- oder Zwischenzertifikat, das Sie in Ihre X.509-Registrierungsgruppe hochgeladen haben. Verwenden Sie die **Geräte-ID** als `CNAME`-Wert in den Blattzertifikaten. Für den Gerätecode werden der Wert **ID-Bereich** für Ihre Anwendung, die **Geräte-ID** und das entsprechende Gerätezertifikat benötigt.
 
@@ -145,11 +145,11 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Verbinden von Geräten, die SAS-Token verwenden, ohne Registrierung
 
-1. Kopieren Sie den Gruppenprimärschlüssel aus der **SAS-IoT-Devices**-Registrierungsgruppe:
+1. Kopieren Sie den Gruppenprimärschlüssel aus der **SAS-IoT-Devices** -Registrierungsgruppe:
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
 
-1. Verwenden Sie zum Generieren der SAS-Schlüssel für das Gerät den Befehl `az iot central device compute-device-key`. Verwenden Sie den primären Gruppenschlüssel aus dem vorherigen Schritt. Die Geräte-ID muss aus Kleinbuchstaben bestehen:
+1. Verwenden Sie zum Generieren der SAS-Schlüssel für das Gerät den Befehl `az iot central device compute-device-key`. Verwenden Sie den primären Gruppenschlüssel aus dem vorherigen Schritt. Die Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten:
 
     ```azurecli
     az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
@@ -159,9 +159,9 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 1. Wenn Sie ein Gerät einschalten, stellt es zuerst eine Verbindung mit DPS her, um seine IoT Central-Registrierungsinformationen abzurufen.
 
-    Das Gerät weist zunächst auf der Seite **Geräte** den Gerätestatus **Nicht zugeordnet** auf und ist keiner Gerätevorlage zugewiesen. **Migrieren** Sie auf der Seite **Geräte** das Gerät zur entsprechenden Gerätevorlage. Die Gerätebereitstellung ist nun abgeschlossen, der Gerätestatus lautet jetzt **Bereitgestellt**, und das Gerät kann mit dem Senden von Daten beginnen.
+    Das Gerät weist zunächst auf der Seite **Geräte** den Gerätestatus **Nicht zugeordnet** auf und ist keiner Gerätevorlage zugewiesen. **Migrieren** Sie auf der Seite **Geräte** das Gerät zur entsprechenden Gerätevorlage. Die Gerätebereitstellung ist nun abgeschlossen, der Gerätestatus lautet jetzt **Bereitgestellt** , und das Gerät kann mit dem Senden von Daten beginnen.
 
-    Auf der Seite **Verwaltung > Geräteverbindung** steuert die Option **Automatisch genehmigen**, ob Sie das Gerät manuell genehmigen müssen, bevor es mit dem Senden von Daten beginnen kann.
+    Auf der Seite **Verwaltung > Geräteverbindung** steuert die Option **Automatisch genehmigen** , ob Sie das Gerät manuell genehmigen müssen, bevor es mit dem Senden von Daten beginnen kann.
 
     > [!NOTE]
     > Informationen zum automatischen Zuordnen eines Geräts zu einer Gerätevorlage finden Sie unter [Automatisches Zuordnen eines Geräts zu einer Gerätevorlage](#automatically-associate-with-a-device-template).
@@ -170,22 +170,22 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 1. [Erstellen Sie eine Registrierungsgruppe](#create-an-enrollment-group), [fügen Sie dann ein X.509-Stamm- oder Zwischenzertifikat Ihrer IoT Central-Anwendung hinzu, und überprüfen Sie es](#add-and-verify-a-root-or-intermediate-x509-certificate).
 
-1. Generieren Sie die untergeordneten Zertifikate für Ihre Geräte, indem Sie das Stamm- bzw. Zwischenzertifikat verwenden, das Sie Ihrer IoT Central-Anwendung hinzugefügt haben. Verwenden Sie in den Blattzertifikaten Geräte-IDs in Kleinbuchstaben als `CNAME`.
+1. Generieren Sie die untergeordneten Zertifikate für Ihre Geräte, indem Sie das Stamm- bzw. Zwischenzertifikat verwenden, das Sie Ihrer IoT Central-Anwendung hinzugefügt haben. Verwenden Sie in den Blattzertifikaten Geräte-IDs als `CNAME`. Eine Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten.
 
 1. Der OEM schreibt für jedes Gerät eine Geräte-ID, ein generiertes X.509-Blattzertifikat und den Wert **ID-Bereich** der Anwendung in den Flashspeicher.
 
 1. Wenn Sie ein Gerät einschalten, stellt es zuerst eine Verbindung mit DPS her, um seine IoT Central-Registrierungsinformationen abzurufen.
 
-    Das Gerät weist zunächst auf der Seite **Geräte** den Gerätestatus **Nicht zugeordnet** auf und ist keiner Gerätevorlage zugewiesen. **Migrieren** Sie auf der Seite **Geräte** das Gerät zur entsprechenden Gerätevorlage. Die Gerätebereitstellung ist nun abgeschlossen, der Gerätestatus lautet jetzt **Bereitgestellt**, und das Gerät kann mit dem Senden von Daten beginnen.
+    Das Gerät weist zunächst auf der Seite **Geräte** den Gerätestatus **Nicht zugeordnet** auf und ist keiner Gerätevorlage zugewiesen. **Migrieren** Sie auf der Seite **Geräte** das Gerät zur entsprechenden Gerätevorlage. Die Gerätebereitstellung ist nun abgeschlossen, der Gerätestatus lautet jetzt **Bereitgestellt** , und das Gerät kann mit dem Senden von Daten beginnen.
 
-    Auf der Seite **Verwaltung > Geräteverbindung** steuert die Option **Automatisch genehmigen**, ob Sie das Gerät manuell genehmigen müssen, bevor es mit dem Senden von Daten beginnen kann.
+    Auf der Seite **Verwaltung > Geräteverbindung** steuert die Option **Automatisch genehmigen** , ob Sie das Gerät manuell genehmigen müssen, bevor es mit dem Senden von Daten beginnen kann.
 
     > [!NOTE]
     > Informationen zum automatischen Zuordnen eines Geräts zu einer Gerätevorlage finden Sie unter [Automatisches Zuordnen eines Geräts zu einer Gerätevorlage](#automatically-associate-with-a-device-template).
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Auf individueller Registrierung basierende Gerätekonnektivität
 
-Kunden, die Geräte mit gerätespezifischen Authentifizierungsanmeldeinformationen verbinden, verwenden individuelle Registrierungen. Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das verbunden werden darf. Individuelle Registrierungen verwenden als Nachweismechanismen X.509-Blattzertifikate oder SAS-Token (von einem physischen oder virtuellen Trusted Platform Module). Die Geräte-ID (auch als Registrierungs-ID bezeichnet) in einer individuellen Registrierung ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen. Weitere Informationen finden Sie unter [Individuelle DPS-Registrierung](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
+Kunden, die Geräte mit gerätespezifischen Authentifizierungsanmeldeinformationen verbinden, verwenden individuelle Registrierungen. Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das verbunden werden darf. Individuelle Registrierungen verwenden als Nachweismechanismen X.509-Blattzertifikate oder SAS-Token (von einem physischen oder virtuellen Trusted Platform Module). Die Geräte-ID (auch als „Registrierungs-ID“ bezeichnet) in einer individuellen Registrierung kann Buchstaben, Ziffern und das `-` Zeichen enthalten. Weitere Informationen finden Sie unter [Individuelle DPS-Registrierung](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Wenn Sie eine individuelle Registrierung für ein Gerät erstellen, hat diese Vorrang vor den Standardoptionen für Gruppenregistrierungen in Ihrer IoT Central-Anwendung.
@@ -194,17 +194,17 @@ Kunden, die Geräte mit gerätespezifischen Authentifizierungsanmeldeinformation
 
 IoT Central unterstützt die folgenden Nachweismechanismen für individuelle Registrierungen:
 
-- **Nachweis des symmetrischen Schlüssels:** Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts bei einer DPS-Instanz. Öffnen Sie zum Erstellen einer individuellen Registrierung, bei der symmetrische Schlüssel verwendet werden, die Seite **Geräteverbindung**, und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **Shared Access Signature (SAS)** als Mechanismus aus. Geben Sie Base64-codierte primäre und sekundäre Schlüssel ein, und speichern Sie die Änderungen. Verwenden Sie den **ID-Bereich**, die **Geräte-ID** und den primären oder den sekundären Schlüssel, um Ihr Gerät zu verbinden.
+- **Nachweis des symmetrischen Schlüssels:** Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts bei einer DPS-Instanz. Öffnen Sie zum Erstellen einer individuellen Registrierung, bei der symmetrische Schlüssel verwendet werden, die Seite **Geräteverbindung** , und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **Shared Access Signature (SAS)** als Mechanismus aus. Geben Sie Base64-codierte primäre und sekundäre Schlüssel ein, und speichern Sie die Änderungen. Verwenden Sie den **ID-Bereich** , die **Geräte-ID** und den primären oder den sekundären Schlüssel, um Ihr Gerät zu verbinden.
 
     > [!TIP]
     > Zum Testen können Sie **OpenSSL** verwenden, um Base64-codierte Schlüssel zu generieren: `openssl rand -base64 64`
 
-- **X.509-Zertifikate:** Öffnen Sie zum Erstellen einer individuellen Registrierung mit X.509-Zertifikaten die Seite **Geräteverbindung**, und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **Zertifikate (X.509)** als Mechanismus aus. Für Gerätezertifikate, die mit einem Eintrag für eine individuelle Registrierung verwendet werden, müssen der Aussteller und der Antragsteller-CN auf die Geräte-ID festgelegt werden.
+- **X.509-Zertifikate:** Öffnen Sie zum Erstellen einer individuellen Registrierung mit X.509-Zertifikaten die Seite **Geräteverbindung** , und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **Zertifikate (X.509)** als Mechanismus aus. Für Gerätezertifikate, die mit einem Eintrag für eine individuelle Registrierung verwendet werden, müssen der Aussteller und der Antragsteller-CN auf die Geräte-ID festgelegt werden.
 
     > [!TIP]
     > Zum Testen können Sie die [Tools für das Azure IoT Device Provisioning-Geräte-SDK für Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) verwenden, um ein selbstsigniertes Zertifikat zu generieren: `node create_test_cert.js device "mytestdevice"`
 
-- **Nachweis mit Trusted Platform Module (TPM):** Ein [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) ist ein Typ von Hardwaresicherheitsmodulen. Die Verwendung eines TPM stellt eine der sichersten Möglichkeiten dar, ein Gerät zu verbinden. In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder für Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Verwenden Sie keine Software-TPMs in Produktionsumgebungen. Öffnen Sie zum Erstellen einer individuellen Registrierung mit TPM die Seite **Geräteverbindung**, und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **TPM** als Mechanismus aus. Geben Sie den TPM-Endorsement Key ein, und speichern Sie die Geräteverbindungsinformationen.
+- **Nachweis mit Trusted Platform Module (TPM):** Ein [TPM](../../iot-dps/concepts-tpm-attestation.md) ist ein Typ von Hardwaresicherheitsmodulen. Die Verwendung eines TPM stellt eine der sichersten Möglichkeiten dar, ein Gerät zu verbinden. In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder für Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Verwenden Sie keine Software-TPMs in Produktionsumgebungen. Öffnen Sie zum Erstellen einer individuellen Registrierung mit TPM die Seite **Geräteverbindung** , und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **TPM** als Mechanismus aus. Geben Sie den TPM-Endorsement Key ein, und speichern Sie die Geräteverbindungsinformationen.
 
 ## <a name="automatically-associate-with-a-device-template"></a>Automatisches Zuordnen zu einer Gerätevorlage
 
@@ -236,13 +236,13 @@ Dies ist das Format für Geräte, die das öffentliche Vorschaugerät-SDK verwen
 
 Wenn ein echtes Gerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellt, ändert sich der Gerätestatus wie folgt:
 
-1. Der Gerätestatus lautet zuerst **Registriert**. Dieser Status bedeutet, dass das Gerät in IoT Central erstellt ist und über eine Geräte-ID verfügt. Ein Gerät ist registriert, wenn Folgendes zutrifft:
+1. Der Gerätestatus lautet zuerst **Registriert** . Dieser Status bedeutet, dass das Gerät in IoT Central erstellt ist und über eine Geräte-ID verfügt. Ein Gerät ist registriert, wenn Folgendes zutrifft:
     - Ein neues echtes Gerät wird auf der Seite **Geräte** hinzugefügt.
     - Eine Gruppe von Geräten wird auf der Seite **Geräte** mithilfe der Option **Importieren** hinzugefügt.
 
-1. Der Gerätestatus ändert sich in **Bereitgestellt**, wenn das Gerät, das mit gültigen Anmeldeinformationen eine Verbindung mit Ihrer IoT Central-Anwendung hergestellt hat, den Bereitstellungsschritt abschließt. In diesem Schritt verwendet das Gerät DPS, um automatisch eine Verbindungszeichenfolge vom IoT-Hub Ihrer IoT Central-Anwendung abzurufen. Das Gerät kann jetzt eine Verbindung mit IoT Central herstellen und Daten senden.
+1. Der Gerätestatus ändert sich in **Bereitgestellt** , wenn das Gerät, das mit gültigen Anmeldeinformationen eine Verbindung mit Ihrer IoT Central-Anwendung hergestellt hat, den Bereitstellungsschritt abschließt. In diesem Schritt verwendet das Gerät DPS, um automatisch eine Verbindungszeichenfolge vom IoT-Hub Ihrer IoT Central-Anwendung abzurufen. Das Gerät kann jetzt eine Verbindung mit IoT Central herstellen und Daten senden.
 
-1. Ein Operator kann ein Gerät blockieren. Wenn ein Gerät blockiert wird, kann es keine Daten an Ihre IoT Central-Anwendung senden. Blockierte Geräte weisen den Status **Blockiert** auf. Ein Operator muss das Gerät zurücksetzen, bevor es wieder Daten senden kann. Wenn ein Operator die Blockierung eines Geräts aufhebt, wird der Status auf den vorherigen Wert (**Registriert** oder **Bereitgestellt**) zurückgesetzt.
+1. Ein Operator kann ein Gerät blockieren. Wenn ein Gerät blockiert wird, kann es keine Daten an Ihre IoT Central-Anwendung senden. Blockierte Geräte weisen den Status **Blockiert** auf. Ein Operator muss das Gerät zurücksetzen, bevor es wieder Daten senden kann. Wenn ein Operator die Blockierung eines Geräts aufhebt, wird der Status auf den vorherigen Wert ( **Registriert** oder **Bereitgestellt** ) zurückgesetzt.
 
 1. Wenn der Gerätestatus **Warten auf Genehmigung** lautet, ist die Option **Automatische Genehmigung** deaktiviert. Ein Operator muss ein Gerät explizit genehmigen, bevor es mit dem Senden von Daten beginnt. Geräte, die auf der Seite **Geräte** nicht manuell registriert wurden, aber eine Verbindung mit gültigen Anmeldeinformationen hergestellt haben, weisen den Gerätestatus **Warten auf Genehmigung** auf. Diese Geräte können auf der Seite **Geräte** mithilfe der Schaltfläche **Genehmigen** von Operatoren genehmigt werden.
 

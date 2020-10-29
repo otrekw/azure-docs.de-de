@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265934"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145259"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -100,7 +100,7 @@ Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premi
    > [!NOTE]
    > Es wird empfohlen, für Authentifizierungsaufforderungen bei wichtigen Microsoft Office-Apps wie Exchange Online und SharePoint Online dieselbe Häufigkeit festzulegen, um eine optimale Benutzererfahrung zu gewährleisten.
 
-1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung**, und klicken Sie auf **Anmeldehäufigkeit**.
+1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung** , und klicken Sie auf **Anmeldehäufigkeit** .
 1. Geben Sie den erforderlichen Wert in Tagen und Stunden in das erste Textfeld ein.
 1. Wählen Sie einen Wert für **Stunden** oder **Tage** aus der Dropdownliste aus.
 1. Speichern Sie die Richtlinie.
@@ -117,7 +117,7 @@ Auf Windows-Geräten, die in Azure AD registriert sind, gilt die Anmeldung beim 
    > [!NOTE]
    > Beachten Sie, dass die Auswahl von „Alle Cloud-Apps“ als Bedingung bei dieser Steuerung erforderlich ist. Die Browsersitzungspersistenz wird durch das Token der Authentifizierungssitzung gesteuert. Da alle Registerkarten in einer Browsersitzung über dasselbe Sitzungstoken verfügen, müssen sie alle denselben Persistenzzustand aufweisen.
 
-1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung**, und klicken Sie auf **Persistente Browsersitzung**.
+1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung** , und klicken Sie auf **Persistente Browsersitzung** .
 1. Wählen Sie einen Wert aus der Dropdownliste aus.
 1. Speichern Sie die Richtlinie.
 
@@ -134,9 +134,8 @@ Verwenden Sie das Was-wäre-wenn-Tool, um eine Anmeldung des Benutzers bei der Z
 
 ## <a name="policy-deployment"></a>Richtlinienbereitstellung
 
-Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sich, sie zu testen, bevor Sie sie in der Produktionsumgebung verwenden. Idealerweise sollten Sie in einem Testmandanten überprüfen, ob die neue Richtlinie wie erwartet funktioniert. Weitere Informationen finden Sie im Artikel [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md).
+Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sich, sie zu testen, bevor Sie sie in der Produktionsumgebung verwenden. Idealerweise sollten Sie in einem Testmandanten überprüfen, ob die neue Richtlinie wie erwartet funktioniert. Weitere Informationen finden Sie im Artikel [Planen einer Bereitstellung für bedingten Zugriff](plan-conditional-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wenn Sie wissen möchten, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren, informieren Sie sich im Artikel [Schnellstart: Anfordern der mehrstufigen Authentifizierung für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](../authentication/tutorial-enable-azure-mfa.md).
-* Wenn Sie bereit sind, Richtlinien für bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie den Artikel [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md).
+* Wenn Sie Richtlinien für bedingten Zugriff für Ihre Umgebung konfigurieren möchten, lesen Sie den Artikel [Planen einer Bereitstellung für bedingten Zugriff](plan-conditional-access.md).

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292964"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093717"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -54,7 +54,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. Stellen Sie sicher, [dass Sie den richtigen Computer](#selecting-the-right-machine-to-run-the-script) zum Ausführen des Skripts verwenden. Wenn der richtige Computer derselbe Computer ist, auf den Sie das Skript heruntergeladen haben, können Sie mit dem Downloadabschnitt fortfahren. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner *Downloads*) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie Datei bzw. Skript mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die **EINGABETASTE**. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
+7. Stellen Sie sicher, [dass Sie den richtigen Computer](#selecting-the-right-machine-to-run-the-script) zum Ausführen des Skripts verwenden. Wenn der richtige Computer derselbe Computer ist, auf den Sie das Skript heruntergeladen haben, können Sie mit dem Downloadabschnitt fortfahren. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner *Downloads* ) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie Datei bzw. Skript mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die **EINGABETASTE** . Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
 
     ![Ausgabe der ausführbaren Datei](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -312,7 +312,7 @@ Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, 
 > [!NOTE]
 >
 > Im Namen der Skriptdatei, die Sie in Schritt 5 [weiter oben](#mount-the-volume-and-copy-files) heruntergeladen haben, ist der **geo-name** enthalten. Verwenden Sie diesen **geo-name** zum Ausfüllen der URL. Der Name des heruntergeladenen Skripts beginnt mit: \'VMname\'\_\'geoname\'_\'GUID\'.<br><br>
-> Ein Beispiel: Wenn der Name der Skriptdatei *ContosoVM_wcus_12345678* lautet, ist **wcus** der *geo-name*, und die URL wäre:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> Ein Beispiel: Wenn der Name der Skriptdatei *ContosoVM_wcus_12345678* lautet, ist **wcus** der *geo-name* , und die URL wäre:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
@@ -376,7 +376,7 @@ Dieses Feature wurde für den Zugriff auf VM-Daten in möglichst wenigen Schritt
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Auswählen des Wiederherstellungspunkts (der Skripts generieren kann)
 
-Das Skript stellt den Zugriff auf VM-Daten bereit. Deshalb ist es wichtig, zu regulieren, wer es überhaupt erstellen kann. Sie müssen sich mit einem [RBAC-autorisierten](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) Konto beim Azure-Portal anmelden, um das Skript zu generieren.
+Das Skript stellt den Zugriff auf VM-Daten bereit. Deshalb ist es wichtig, zu regulieren, wer es überhaupt erstellen kann. Sie müssen sich mit einem [Azure RBAC-autorisierten](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) Konto beim Azure-Portal anmelden, um das Skript zu generieren.
 
 Für die Dateiwiederherstellung ist die gleiche Autorisierung erforderlich wie für die VM- und Datenträgerwiederherstellung. Das heißt, nur autorisierte Benutzer können die VM-Daten anzeigen und das Skript generieren.
 
@@ -398,7 +398,7 @@ Der Datenfluss zwischen dem Wiederherstellungsdienst und dem Computer wird mithi
 
 Alle Zugriffssteuerungslisten (ACL) für Dateien, die auf der übergeordneten/gesicherten VM vorhanden sind, werden ebenfalls im eingebundenen Dateisystem gespeichert.
 
-Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und ist 12 Stunden lang gültig. Wenn Sie den Zugriff früher entfernen möchten, müssen Sie sich beim Azure-Portal, bei PowerShell oder bei der Befehlszeilenschnittstelle anmelden und die **Einbindung von Datenträgern für diesen Wiederherstellungspunkt aufheben**. Daraufhin wird das Skript sofort ungültig.
+Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und ist 12 Stunden lang gültig. Wenn Sie den Zugriff früher entfernen möchten, müssen Sie sich beim Azure-Portal, bei PowerShell oder bei der Befehlszeilenschnittstelle anmelden und die **Einbindung von Datenträgern für diesen Wiederherstellungspunkt aufheben** . Daraufhin wird das Skript sofort ungültig.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

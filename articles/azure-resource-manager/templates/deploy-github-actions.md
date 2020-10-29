@@ -2,90 +2,100 @@
 title: Bereitstellen von Resource Manager-Vorlagen mithilfe von GitHub Actions
 description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Vorlagen mithilfe von GitHub Actions bereitstellen.
 ms.topic: conceptual
-ms.date: 07/02/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: cea099088005fa91e1b3e9a793105df4796a66ee
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/13/2020
+ms.custom: github-actions-azure,subject-armqs
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018575"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282853"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Bereitstellen von Azure Resource Manager-Vorlagen mithilfe von GitHub Actions
 
-Mit [GitHub Actions](https://help.github.com/en/actions) können Sie direkt in dem GitHub-Repository, in dem Ihre Azure Resource Manager-Vorlagen (ARM) gespeichert sind, benutzerdefinierte Workflows für den Lebenszyklus der Softwareentwicklung erstellen. Ein [Workflow](https://help.github.com/actions/reference/workflow-syntax-for-github-actions) ist in einer YAML-Datei definiert. Workflows bestehen aus mindestens einem Auftrag, von denen jeder Schritte enthält, in denen jeweils eigene Tasks ausgeführt werden. In Schritten können Befehle ausgeführt oder eine Aktion verwendet werden. Sie können eigene Aktionen erstellen oder die verwenden, die in der [GitHub-Community](https://github.com/marketplace?type=actions) geteilt werden, und sie nach Bedarf anpassen. In diesem Artikel erfahren Sie, wie Sie Resource Manager-Vorlagen mithilfe von [Azure CLI Action](https://github.com/marketplace/actions/azure-cli-action) bereitstellen.
+Bei [GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) handelt es sich um eine Featuresammlung in GitHub, mit der sich Ihre Softwareentwicklungsworkflows am selben Ort automatisieren lassen, an dem Sie auch den Code speichern und gemeinsam an Pull Requests und Problemen arbeiten.
 
-Azure CLI Action verfügt über zwei abhängige Aktionen:
-
-- **[Auschecken:](https://github.com/marketplace/actions/checkout)** Checkt Ihr Repository aus, damit der Workflow auf alle angegebenen Resource Manager-Vorlagen zugreifen kann
-- **[Azure-Anmeldung:](https://github.com/marketplace/actions/azure-login)** Für die Anmeldung mit Ihren Azure-Anmeldeinformationen
-
-Ein grundlegender Workflow für die Bereitstellung einer Resource Manager-Vorlage kann drei Schritte umfassen:
-
-1. Auschecken einer Vorlagendatei
-2. Melden Sie sich bei Azure an.
-3. Bereitstellen einer Resource Manager-Vorlage
+Verwenden Sie die [Aktion zum Bereitstellen einer Azure Resource Manager-Vorlage](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template), um die Bereitstellung einer Resource Manager-Vorlage in Azure zu automatisieren. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein GitHub-Repository, in dem Sie Ihre Resource Manager-Vorlagen und Ihre Workflowdateien speichern können. Informationen zum Erstellen eines neuen Repositorys finden Sie [in diesem Hilfeartikel](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ein GitHub-Konto. Falls Sie noch nicht über ein Konto verfügen, können Sie sich [kostenlos](https://github.com/join) registrieren.  
+    - Ein GitHub-Repository, in dem Sie Ihre Resource Manager-Vorlagen und Ihre Workflowdateien speichern können. Informationen zum Erstellen eines neuen Repositorys finden Sie [in diesem Hilfeartikel](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
 
-## <a name="configure-deployment-credentials"></a>Konfigurieren von Anmeldeinformationen für die Bereitstellung
 
-Bei der Aktion „Azure-Anmeldung“ wird ein Dienstprinzipal für die Azure-Authentifizierung verwendet. Der Prinzipal eines CI/CD-Workflows benötigt in der Regel die integrierte Berechtigung „Mitwirkender“, um Azure-Ressourcen bereitzustellen.
+## <a name="workflow-file-overview"></a>Übersicht über die Workflowdatei
 
-Das folgende Azure CLI-Skript zeigt, wie Sie einen Azure-Dienstprinzipal mit Berechtigungen der Rolle „Mitwirkender“ für eine Azure-Ressourcengruppe generieren. In dieser Ressourcengruppe werden vom Workflow die in der Resource Manager-Vorlage definierten Ressourcen bereitgestellt.
+Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
 
-```azurecli
-$projectName="[EnterAProjectName]"
-$location="centralus"
-$resourceGroupName="${projectName}rg"
-$appName="http://${projectName}"
-$scope=$(az group create --name $resourceGroupName --location $location --query 'id')
-az ad sp create-for-rbac --name $appName --role Contributor --scopes $scope --sdk-auth
+Die Datei besteht aus zwei Abschnitten:
+
+|`Section`  |Aufgaben  |
+|---------|---------|
+|**Authentifizierung** | 1. Definieren eines Dienstprinzipals. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
+|**Bereitstellen** | 1. Bereitstellen der Resource Manager-Vorlage |
+
+## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
+
+
+Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Führen Sie diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** aus.
+
+Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist: 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
 ```
 
-Passen Sie im Skript die Werte von **$projectName** und **$location** an. Der Ressourcengruppenname ist der Projektname mit dem Zusatz **rg**. Sie müssen den Namen der Ressourcengruppe in Ihrem Workflow angeben.
+Ersetzen Sie den Platzhalter `myApp` durch den Namen Ihrer Anwendung. 
 
-Das Skript gibt ein JSON-Objekt aus, das dem folgenden ähnelt:
-
-```json
-{
-   "clientId": "<GUID>",
-   "clientSecret": "<GUID>",
-   "subscriptionId": "<GUID>",
-   "tenantId": "<GUID>",
-   (...)
-}
+```azurecli-interactive
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-Kopieren Sie die JSON-Ausgabe, und speichern Sie sie als GitHub-Geheimnis in Ihrem GitHub-Repository. Falls Sie noch kein Repository haben, lesen Sie sich noch einmal den Abschnitt [Voraussetzungen](#prerequisites) durch.
+Ersetzen Sie im obigen Beispiel die Platzhalter durch Ihre Abonnement-ID und den Ressourcengruppennamen. Die Ausgabe ist ein JSON-Objekt mit den Anmeldeinformationen für die Rollenzuweisung, die ähnlich wie unten Zugriff auf Ihre App Service-App gewähren. Kopieren Sie dieses JSON-Objekt zur späteren Verwendung. Sie benötigen nur die Abschnitte mit den Werten `clientId`, `clientSecret`, `subscriptionId` und `tenantId`. 
 
-1. Klicken Sie in Ihrem GitHub-Repository auf die Registerkarte **Settings** (Einstellungen).
-1. Klicken Sie im linken Bereich auf **Secrets** (Geheimnisse).
-1. Geben Sie die folgenden Werte ein:
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
-    - **Name**: AZURE_CREDENTIALS
-    - **Value**: (Fügen Sie die JSON-Ausgabe ein.)
-1. Klicken Sie auf **Add secret** (Geheimnis hinzufügen).
+> [!IMPORTANT]
+> Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Der Bereich im vorherigen Beispiel ist auf die Ressourcengruppe beschränkt.
 
-Sie müssen den Namen des Geheimnisses im Workflow angeben.
+
+
+## <a name="configure-the-github-secrets"></a>Konfigurieren der GitHub-Geheimnisse
+
+Sie müssen Geheimnisse für Ihre Azure-Anmeldeinformationen, Ressourcengruppe und Abonnements erstellen. 
+
+1. Suchen Sie auf [GitHub](https://github.com/) nach Ihrem Repository.
+
+1. Wählen Sie **Settings > Secrets > New secret** (Einstellungen > Geheimnisse > Neues Geheimnis) aus.
+
+1. Fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_CREDENTIALS`.
+
+1. Erstellen Sie ein weiteres Geheimnis mit dem Namen `AZURE_RG`. Fügen Sie den Namen Ihrer Ressourcengruppe dem Wertfeld des Geheimnisses hinzu (Beispiel: `myResourceGroup`). 
+
+1. Erstellen Sie ein zusätzliches Geheimnis namens `AZURE_SUBSCRIPTION`. Fügen Sie Ihre Abonnement-ID dem Wertfeld des Geheimnisses hinzu (Beispiel: `90fd3f9d-4c61-432d-99ba-1273f236afa2`). 
 
 ## <a name="add-resource-manager-template"></a>Hinzufügen von Resource Manager-Vorlagen
 
-Fügen Sie dem GitHub-Repository eine Resource Manager-Vorlage hinzu. Wenn Sie noch keine haben, können Sie die folgende Vorlage verwenden. Mithilfe der Vorlage wird ein Speicherkonto erstellt.
+Fügen Sie Ihrem GitHub-Repository eine Resource Manager-Vorlage hinzu. Mithilfe dieser Vorlage wird ein Speicherkonto erstellt.
 
 ```url
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Sie können die Datei an einer beliebigen Stelle im Repository ablegen. Im Workflowbeispiel im nächsten Abschnitt wird davon ausgegangen, dass die Vorlagendatei **azuredeploy.json** heißt und im Repositorystamm in einem Ordner namens **templates** gespeichert ist.
+Sie können die Datei an einer beliebigen Stelle im Repository ablegen. Im Workflowbeispiel im nächsten Abschnitt wird davon ausgegangen, dass die Vorlagendatei **azuredeploy.json** heißt und im Repositorystamm gespeichert ist.
 
 ## <a name="create-workflow"></a>Erstellen des Workflows
 
 Die Workflowdatei muss am Repositorystamm im Ordner **.github/workflows** gespeichert werden. Die Erweiterung der Workflowdatei kann entweder **.yml** oder **.yaml** lauten.
-
-Sie können entweder eine Workflowdatei erstellen und diese dann in das Repository pushen/hochladen oder wie folgt vorgehen:
 
 1. Klicken Sie in Ihrem GitHub-Repository im oberen Menü auf **Actions** (Aktionen).
 1. Klicken Sie auf **New workflow** (Neuer Workflow).
@@ -94,51 +104,40 @@ Sie können entweder eine Workflowdatei erstellen und diese dann in das Reposito
 1. Ersetzen Sie den Inhalt dieser YML-Datei durch den folgenden Code:
 
     ```yml
-    name: Deploy ARM Template
-
-    on:
-      push:
-        branches:
-          - master
-        paths:
-          - ".github/workflows/deployStorageAccount.yml"
-          - "templates/azuredeploy.json"
-
+    on: [push]
+    name: Azure ARM
     jobs:
-      deploy-storage-account-template:
+      build-and-deploy:
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout source code
-            uses: actions/checkout@master
 
-          - name: Login to Azure
-            uses: azure/login@v1
-            with:
-              creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # Checkout code
+        - uses: actions/checkout@master
 
-
-          - name: Deploy ARM Template
-            uses: azure/CLI@v1
-            with:
-              inlineScript: |
-                az deployment group create --resource-group myResourceGroup --template-file ./templates/azuredeploy.json
+          # Log into Azure
+        - uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+     
+          # Deploy ARM template
+        - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
+          with:
+            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+            resourceGroupName: ${{ secrets.AZURE_RG }}
+            template: ./azuredeploy.json
+            parameters: storageAccountType=Standard_LRS 
+        
+          # output containerName variable from template
+        - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > Sie können in der ARM-Bereitstellungsaktion stattdessen eine Parameterdatei im JSON-Format angeben (Beispiel: `.azuredeploy.parameters.json`).  
 
-    Die Workflowdatei besteht aus drei Abschnitten:
+    Der erste Abschnitt der Workflowdatei enthält Folgendes:
 
     - **name:** Der Name des Workflows.
     - **on:** Der Name der GitHub-Ereignisse, die den Workflow auslösen. Der Workflow wird ausgelöst, wenn ein Pushereignis für den Masterbranch auftritt, durch das mindestens eine der beiden angegebenen Dateien geändert wird. Bei den beiden Dateien handelt es sich um die Workflow- und die Vorlagendatei.
-
-        > [!IMPORTANT]
-        > Überprüfen Sie, ob die beiden Dateien und ihre Pfade mit denen übereinstimmen, die Ihnen vorliegen.
-    - **jobs:** Eine Workflowausführung besteht aus mindestens einem Auftrag. Es gibt nur einen Auftrag namens **deploy-storage-account-template**.  Dieser Auftrag umfasst drei Schritte:
-
-        - **Checkout source code** (Auschecken des Quellcodes)
-        - **Login to Azure** (Anmelden bei Azure)
-
-            > [!IMPORTANT]
-            > Überprüfen Sie, ob der Name des Geheimnisses mit dem übereinstimmt, den Sie im Repository gespeichert haben. Weitere Informationen finden Sie unter [Konfigurieren von Anmeldeinformationen für die Bereitstellung](#configure-deployment-credentials).
-        - **Deploy ARM template** (ARM-Vorlage anzeigen): Ersetzen Sie den Wert von **resourceGroupName**.  Wenn Sie im Abschnitt [Konfigurieren der Anmelde Informationen für die Bereitstellung verwendet haben](#configure-deployment-credentials) das Azure CLI-Skript verwendet haben, besteht der Name der generierten Ressourcengruppe aus dem Projektnamen, dem das Suffix **rg** angefügt wurde. Überprüfen Sie den Wert von **templateLocation**.
 
 1. Klicken Sie auf **Start commit** (Commit starten).
 1. Klicken Sie auf **Commit directly to the master branch** (Direkt im Masterbranch committen).
@@ -148,11 +147,15 @@ Da der Workflow so konfiguriert ist, dass er entweder von der Workflow- oder der
 
 ## <a name="check-workflow-status"></a>Überprüfen des Workflowstatus
 
-1. Klicken Sie auf die Registerkarte **Actions** (Aktionen). Ihnen sollte der Workflow **Create deployStorageAccount.yml** (deployStorageAccount.yml erstellen) angezeigt werden. Die Ausführung des Workflows dauert 1–2 Minuten.
+1. Klicken Sie auf die Registerkarte **Actions** (Aktionen). Ihnen wird der Workflow **Create deployStorageAccount.yml** (deployStorageAccount.yml erstellen) angezeigt. Die Ausführung des Workflows dauert 1–2 Minuten.
 1. Klicken Sie auf den Workflow, um ihn zu öffnen.
-1. Klicken Sie im Menü auf der linken Seite auf **deploy-storage-account-template** (Auftragsname). Der Auftragsname wird im Workflow definiert.
-1. Klicken Sie auf **Deploy ARM Template** (ARM-Vorlage bereitstellen) (Schrittname), um den Schritt zu erweitern. Nun wird Ihnen die Antwort der Rest-API angezeigt.
+1. Wählen Sie im Menü die Option **Run ARM deploy** (ARM-Bereitstellung ausführen) aus, um die Bereitstellung zu überprüfen.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Ihre Ressourcengruppe und das Repository nicht mehr benötigt werden, bereinigen Sie die bereitgestellten Ressourcen, indem Sie die Ressourcengruppe und Ihr GitHub-Repository löschen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](template-tutorial-create-first-template.md).
+> [!div class="nextstepaction"]
+> [Erstellen Ihrer ersten ARM-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

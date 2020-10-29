@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570813"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314502"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)
 
@@ -102,9 +102,9 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Anmelden am Dashboard (Kubernetes 1.16+)
 
 > [!IMPORTANT]
-> Ab [v1.10.1 des Kubernetes-Dashboards](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) oder Kubernetes v1.16+ kann das Dienstkonto „kubernetes-dashboard“ aufgrund eines [Sicherheitsfixes in diesem Release](https://github.com/kubernetes/dashboard/pull/3400) nicht mehr zum Abrufen von Ressourcen verwendet werden. Infolgedessen geben Anforderungen ohne Authentifizierungsinformationen einen Fehler vom Typ „401 – Nicht autorisiert“ zurück. Ein Bearertoken, das von einem Dienstkonto abgerufen wird, kann immer noch wie in diesem [Kubernetes-Dashboard-Beispiel](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui) verwendet werden, aber dies wirkt sich im Vergleich zu älteren Versionen auf den Anmeldefluss des Dashboard-Add-Ons aus.
+> Ab [v1.10.1 des Kubernetes-Dashboards](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) oder Kubernetes v1.16+ kann das Dienstkonto „kubernetes-dashboard“ aufgrund eines [Sicherheitsfixes in diesem Release](https://github.com/kubernetes/dashboard/pull/3400) nicht mehr zum Abrufen von Ressourcen verwendet werden. Infolgedessen geben Anforderungen ohne Authentifizierungsinformationen einen Fehler vom Typ [401 – Nicht autorisiert](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998) zurück. Ein Bearertoken, das von einem Dienstkonto abgerufen wird, kann immer noch wie in diesem [Kubernetes-Dashboard-Beispiel](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui) verwendet werden, aber dies wirkt sich im Vergleich zu älteren Versionen auf den Anmeldefluss des Dashboard-Add-Ons aus.
 >
->Wenn Sie noch eine ältere Version als 1.16 verwenden, können Sie immer noch Berechtigungen für das Dienstkonto „kubernetes-dashboard“ erteilen, aber dies wird **nicht empfohlen**:
+>Wenn Sie noch eine ältere Version als 1.16 verwenden, können Sie immer noch Berechtigungen für das Dienstkonto „kubernetes-dashboard“ erteilen, aber dies wird **nicht empfohlen** :
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
@@ -150,14 +150,14 @@ Um eine Anwendung zu erstellen, führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie die Schaltfläche **Erstellen** in der rechten oberen Ecke aus.
 1. Um den grafischen Assistenten zu verwenden, wählen Sie **App erstellen** aus.
-1. Geben Sie einen Namen für die Bereitstellung an, z.B. *nginx*.
-1. Geben Sie den Namen des zu verwendenden Containerimages ein, z.B. *nginx:1.15.5*.
+1. Geben Sie einen Namen für die Bereitstellung an, z.B. *nginx* .
+1. Geben Sie den Namen des zu verwendenden Containerimages ein, z.B. *nginx:1.15.5* .
 1. Um Port 80 für Webdatenverkehr verfügbar zu machen, erstellen Sie einen Kubernetes-Dienst. Wählen Sie unter **Dienst** die Option **Extern** aus, und geben Sie für den Port und den Zielport jeweils **80** ein.
 1. Wenn Sie fertig sind, wählen Sie **Bereitstellen** aus, um die App zu erstellen.
 
 ![Bereitstellen einer App im Kubernetes-Webdashboard](./media/kubernetes-dashboard/create-app.png)
 
-Es dauert einen Moment, bis eine externe öffentliche IP-Adresse dem Kubernetes-Dienst zugewiesen wird. Wählen Sie auf der linken Seite unter **Discovery and Load Balancing** (Ermittlung und den Lastenausgleich) die Option **Dienste** aus. Der Dienst Ihrer Anwendung wird aufgeführt, einschließlich der *externen Endpunkte*, wie im folgenden Beispiel gezeigt:
+Es dauert einen Moment, bis eine externe öffentliche IP-Adresse dem Kubernetes-Dienst zugewiesen wird. Wählen Sie auf der linken Seite unter **Discovery and Load Balancing** (Ermittlung und den Lastenausgleich) die Option **Dienste** aus. Der Dienst Ihrer Anwendung wird aufgeführt, einschließlich der *externen Endpunkte* , wie im folgenden Beispiel gezeigt:
 
 ![Anzeigen der Liste der Dienste und Endpunkte](./media/kubernetes-dashboard/view-services.png)
 
@@ -169,7 +169,7 @@ Wählen Sie die Endpunktadresse aus, um ein Webbrowserfenster auf der NGINX-Stan
 
 Das Kubernetes-Dashboard kann grundlegende Überwachungsmetriken und Informationen zur Problembehandlung wie z.B. Protokolle bereitstellen.
 
-Um weitere Informationen zu Ihren Anwendungspods anzuzeigen, wählen Sie im linken Menü **Pods** aus. Die Liste der verfügbaren Pods wird angezeigt. Wählen Sie Ihren *nginx*-Pod aus, um die Informationen anzuzeigen, etwa den Ressourcenverbrauch:
+Um weitere Informationen zu Ihren Anwendungspods anzuzeigen, wählen Sie im linken Menü **Pods** aus. Die Liste der verfügbaren Pods wird angezeigt. Wählen Sie Ihren *nginx* -Pod aus, um die Informationen anzuzeigen, etwa den Ressourcenverbrauch:
 
 ![Anzeigen von Podinformationen](./media/kubernetes-dashboard/view-pod-info.png)
 
@@ -179,14 +179,14 @@ Um weitere Informationen zu Ihren Anwendungspods anzuzeigen, wählen Sie im link
 
 So bearbeiten Sie eine Bereitstellung
 
-1. Wählen Sie im linken Menü **Bereitstellungen** und dann Ihre *nginx*-Bereitstellung aus.
+1. Wählen Sie im linken Menü **Bereitstellungen** und dann Ihre *nginx* -Bereitstellung aus.
 1. Wählen Sie auf der Navigationsleiste rechts oben **Bearbeiten** aus.
-1. Suchen Sie den Wert `spec.replica` in der Nähe von Zeile 20. Um die Anzahl der Replikate für die Anwendung zu erhöhen, ändern Sie diesen Wert von *1* in *3*.
-1. Klicken Sie abschließend auf **Aktualisieren**.
+1. Suchen Sie den Wert `spec.replica` in der Nähe von Zeile 20. Um die Anzahl der Replikate für die Anwendung zu erhöhen, ändern Sie diesen Wert von *1* in *3* .
+1. Klicken Sie abschließend auf **Aktualisieren** .
 
 ![Bearbeiten der Bereitstellung zum Aktualisieren der Anzahl von Replikaten](./media/kubernetes-dashboard/edit-deployment.png)
 
-Es dauert einige Zeit, bis die neuen Pods in einer Replikatgruppe erstellt werden. Wählen Sie im linken Menü **Replikatsätze** und dann Ihre *nginx*-Replikatgruppe aus. Die Liste der Pods entspricht nun der aktualisierten Replikatanzahl, wie in der folgenden Beispielausgabe gezeigt:
+Es dauert einige Zeit, bis die neuen Pods in einer Replikatgruppe erstellt werden. Wählen Sie im linken Menü **Replikatsätze** und dann Ihre *nginx* -Replikatgruppe aus. Die Liste der Pods entspricht nun der aktualisierten Replikatanzahl, wie in der folgenden Beispielausgabe gezeigt:
 
 ![Anzeigen von Informationen zur Replikatgruppe](./media/kubernetes-dashboard/view-replica-set.png)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326812"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152288"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
 
@@ -33,7 +33,7 @@ Informationen für .NET-Benutzer finden Sie unter <a href="https://docs.microsof
 
 ## <a name="authentication"></a>Authentifizierung
 
-Bei der Authentifizierung gibt es einige weit verbreitete Irrtümer. Authentifizierung und Autorisierung werden häufig miteinander verwechselt. Die Identität ist ebenfalls eine wichtige Sicherheitskomponente. Bei einer Identität handelt es sich um eine Sammlung von Informationen zu einem <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">Prinzipal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Identitätsanbieter (Identity Providers, IdPs) stellen Identitäten für Authentifizierungsdienste bereit. Bei der Authentifizierung handelt es sich um die Überprüfung der Identität eines Benutzers. Autorisierung ist die Angabe von Zugriffsrechten und Berechtigungen für Ressourcen für eine bestimmte Identität. Viele der Cognitive Services-Angebote beinhalten die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Mit der rollenbasierten Zugriffssteuerung lassen sich einige der Abläufe im Zusammenhang mit der manuellen Verwaltung von Prinzipalen vereinfachen. Ausführlichere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../role-based-access-control/overview.md).
+Bei der Authentifizierung gibt es einige weit verbreitete Irrtümer. Authentifizierung und Autorisierung werden häufig miteinander verwechselt. Die Identität ist ebenfalls eine wichtige Sicherheitskomponente. Bei einer Identität handelt es sich um eine Sammlung von Informationen zu einem <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">Prinzipal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Identitätsanbieter (Identity Providers, IdPs) stellen Identitäten für Authentifizierungsdienste bereit. Bei der Authentifizierung handelt es sich um die Überprüfung der Identität eines Benutzers. Autorisierung ist die Angabe von Zugriffsrechten und Berechtigungen für Ressourcen für eine bestimmte Identität. Viele der Cognitive Services-Angebote beinhalten die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Mit der rollenbasierten Zugriffssteuerung von Azure lassen sich einige der Abläufe im Zusammenhang mit der manuellen Verwaltung von Prinzipalen vereinfachen. Ausführlichere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).
 
 Weitere Informationen zur Authentifizierung mit Abonnementschlüsseln, Zugriffstoken und Azure Active Directory (AAD) finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Authentifizieren von Anforderungen an Azure Cognitive Services<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
@@ -60,7 +60,7 @@ Erstellen Sie eine persistente Umgebungsvariable, und weisen Sie sie dem entspre
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-Lesen Sie die Umgebungsvariable in einer neuen Instanz der **Eingabeaufforderung**.
+Lesen Sie die Umgebungsvariable in einer neuen Instanz der **Eingabeaufforderung** .
 
 ```CMD
 :: Prints the env var value
@@ -76,7 +76,7 @@ Erstellen Sie eine persistente Umgebungsvariable, und weisen Sie sie dem entspre
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-Lesen Sie die Umgebungsvariable von **Windows PowerShell**.
+Lesen Sie die Umgebungsvariable von **Windows PowerShell** .
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ Erstellen Sie eine persistente Umgebungsvariable, und weisen Sie sie dem entspre
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-Lesen Sie die Umgebungsvariable in einer neuen Instanz von **Bash**.
+Lesen Sie die Umgebungsvariable in einer neuen Instanz von **Bash** .
 
 ```Bash
 # Prints the env var value

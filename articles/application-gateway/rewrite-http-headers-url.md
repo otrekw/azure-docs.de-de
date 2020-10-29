@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281190"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216673"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Umschreiben von HTTP-Headern und einer URL mithilfe von Application Gateway
 
@@ -50,7 +50,7 @@ Mit der Funktion zum Umschreiben einer URL in Application Gateway können Sie fo
 
 Informationen zum Umschreiben der URL mit Application Gateway über das Azure-Portal finden Sie [hier](rewrite-url-portal.md).
 
-![Abbildung](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![Diagramm, das den Prozess zum Umschreiben einer URL mit Application Gateway beschreibt](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > Das Feature zum Umschreiben einer URL befindet sich in der Vorschauphase und ist nur für die Application Gateway-SKUs Standard_v2 und WAF_v2 verfügbar. Von der Verwendung dieser Option in Produktionsumgebungen wird abgeraten. Weitere Informationen zu Vorschauversionen finden Sie unter [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -60,9 +60,9 @@ Informationen zum Umschreiben der URL mit Application Gateway über das Azure-Po
 Mit Aktionen für das Umschreiben geben Sie die URL, Anforderungs- und Antwortheader an, die Sie umschreiben möchten, sowie den neu festzulegenden Wert. Der Wert einer URL oder eines neuen oder vorhandenen Headers kann auf die folgenden Typen von Werten festgelegt werden:
 
 * Text
-* Anforderungsheader. Um einen Anforderungsheader festzulegen, müssen Sie die Syntax {http_req_*Headername*} verwenden.
-* Antwortheader. Um einen Antwortheader festzulegen, müssen Sie die Syntax {http_resp_*Headername*} verwenden.
-* Servervariable. Um eine Servervariable festzulegen, müssen Sie die Syntax {var_*serverVariable*} verwenden. Sehen Sie sich die Liste mit den unterstützten Servervariablen an.
+* Anforderungsheader. Um einen Anforderungsheader festzulegen, müssen Sie die Syntax {http_req_ *Headername* } verwenden.
+* Antwortheader. Um einen Antwortheader festzulegen, müssen Sie die Syntax {http_resp_ *Headername* } verwenden.
+* Servervariable. Um eine Servervariable festzulegen, müssen Sie die Syntax {var_ *serverVariable* } verwenden. Sehen Sie sich die Liste mit den unterstützten Servervariablen an.
 * Eine Kombination aus Text, Anforderungsheader, Antwortheader und Servervariable. 
 
 ## <a name="rewrite-conditions"></a>Bedingungen für das Umschreiben
@@ -100,7 +100,7 @@ Wenn Sie den gesamten Wert verwenden möchten, sollten Sie die Nummer nicht ange
 
 ## <a name="server-variables"></a>Servervariablen
 
-Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für Informationen, die gespeichert werden, sind die IP-Adresse des Clients und der Webbrowsertyp. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten. Um den Wert von Servervariablen zum Umschreiben von Headern zu verwenden, müssen Sie diese Variablen in der Syntax {var_*Servervariablenname*} angeben.
+Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für Informationen, die gespeichert werden, sind die IP-Adresse des Clients und der Webbrowsertyp. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten. Um den Wert von Servervariablen zum Umschreiben von Headern zu verwenden, müssen Sie diese Variablen in der Syntax {var_ *Servervariablenname* } angeben.
 
 Das Application Gateway unterstützt die folgenden Servervariablen:
 
@@ -114,7 +114,7 @@ Das Application Gateway unterstützt die folgenden Servervariablen:
 | client_tcp_rtt            | Informationen zur TCP-Verbindung des Clients. Verfügbar auf Systemen, die die Socketoption „TCP_INFO“ unterstützen. |
 | client_user               | Wenn HTTP-Authentifizierung verwendet wird, der Benutzername, der bei der Authentifizierung angegeben wird. |
 | host                      | In dieser Reihenfolge: Hostname aus der Anforderungszeile, Hostname aus dem Anforderungsheaderfeld „Host“ oder der Servername, der mit einer Anforderung übereinstimmt. Beispiel: In der Anforderung `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` lautet der Wert von „Host“ `contoso.com`. |
-| cookie_*Name*             | Das *name*-Cookie.                                           |
+| cookie_ *Name*             | Das *name* -Cookie.                                           |
 | http_method               | Die Methode, die für die URL-Anforderung verwendet wird. Beispielsweise GET oder POST. |
 | http_status               | Der Sitzungsstatus. Beispielsweise 200, 400 oder 403.           |
 | http_version              | Das Anforderungsprotokoll. In der Regel HTTP/1.0, HTTP/1.1 oder HTTP/2.0. |
@@ -139,7 +139,7 @@ Ein Umschreibungsregelsatz enthält Folgendes:
 
 * **Routingregelzuordnung für die Anforderung:** Die Konfiguration für das Umschreiben wird dem Quelllistener über die Routingregel zugeordnet. Bei Verwendung einer einfachen Routingregel wird die Konfiguration für das Umschreiben einem Quelllistener zugeordnet und fungiert als Umschreibung eines globalen Headers. Beim Verwendung einer pfadbasierten Routingregel wird die Konfiguration der Umschreibung in der URL-Pfadzuordnung definiert. In diesem Fall gilt sie nur für den bestimmten Pfadbereich einer Site. Sie können mehrere solche Sätze für das Umschreiben erstellen, und jeder dieser Sätze kann auf mehrere Listener angewandt werden. Allerdings können Sie auf einen bestimmten Listener nur einen Satz für das erneute Generieren anwenden.
 
-* **Bedingung für das erneute Generieren**: Dies ist eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt. Wenn Sie der Aktion mehr als eine Bedingung zuordnen, erfolgt die Aktion nur, wenn alle Bedingungen erfüllt sind. Das heißt also, dass der Vorgang ein logischer UND-Vorgang ist.
+* **Bedingung für das erneute Generieren** : Dies ist eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt. Wenn Sie der Aktion mehr als eine Bedingung zuordnen, erfolgt die Aktion nur, wenn alle Bedingungen erfüllt sind. Das heißt also, dass der Vorgang ein logischer UND-Vorgang ist.
 
 * **Umschreibungstyp:**  Es stehen drei Typen von Umschreibungen zur Verfügung:
    * Umschreiben des Anforderungsheaders 
@@ -205,11 +205,11 @@ Zum Ausführen von Szenarien, in denen Sie den Back-End-Pool basierend auf dem W
 
 **Schritt 2 (a):** Erstellen Sie einen Umschreibungssatz mit drei Umschreibungsregeln: 
 
-* Die erste Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=shoes* überprüft, und eine Aktion, die den URL-Pfad in /*listing1* umschreibt. Außerdem ist **Pfadzuordnung neu auswerten** aktiviert.
+* Die erste Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=shoes* überprüft, und eine Aktion, die den URL-Pfad in / *listing1* umschreibt. Außerdem ist **Pfadzuordnung neu auswerten** aktiviert.
 
-* Die zweite Regel überprüft als Bedingung die Variable *query_string* auf *category=bags* und führt eine Aktion aus, die den URL-Pfad in /*listing2* umschreibt. **Pfadzuordnung neu auswerten** ist aktiviert.
+* Die zweite Regel überprüft als Bedingung die Variable *query_string* auf *category=bags* und führt eine Aktion aus, die den URL-Pfad in / *listing2* umschreibt. **Pfadzuordnung neu auswerten** ist aktiviert.
 
-* Die dritte Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=accessories* überprüft, und weist eine Aktion auf, die den URL-Pfad in /*listing3* umschreibt. Erneut ist **Pfadzuordnung neu auswerten** aktiviert.
+* Die dritte Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=accessories* überprüft, und weist eine Aktion auf, die den URL-Pfad in / *listing3* umschreibt. Erneut ist **Pfadzuordnung neu auswerten** aktiviert.
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
@@ -219,9 +219,9 @@ Zum Ausführen von Szenarien, in denen Sie den Back-End-Pool basierend auf dem W
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
-Wenn der Benutzer nun *contoso.com/listing?category=any* anfordert, erhält er den Standardpfad, da keines der Pfadmuster in der Pfadzuordnung (/listing1, /listing2, /listing3) übereinstimmt. Da Sie diesem Pfad den obigen Umschreibungssatz zugeordnet haben, wird dieser Umschreibungssatz ausgewertet. Da die Abfragezeichenfolge keiner der Bedingungen der drei Umschreibungsregeln in diesem Umschreibungssatz entspricht, wird keine Umschreibungsaktion durchgeführt. Die Anforderung wird also unverändert an das Back-End weitergeleitet, das dem Standardpfad zugeordnet ist (in diesem Fall *GenericList*).
+Wenn der Benutzer nun *contoso.com/listing?category=any* anfordert, erhält er den Standardpfad, da keines der Pfadmuster in der Pfadzuordnung (/listing1, /listing2, /listing3) übereinstimmt. Da Sie diesem Pfad den obigen Umschreibungssatz zugeordnet haben, wird dieser Umschreibungssatz ausgewertet. Da die Abfragezeichenfolge keiner der Bedingungen der drei Umschreibungsregeln in diesem Umschreibungssatz entspricht, wird keine Umschreibungsaktion durchgeführt. Die Anforderung wird also unverändert an das Back-End weitergeleitet, das dem Standardpfad zugeordnet ist (in diesem Fall *GenericList* ).
 
- Wenn der Benutzer *contoso.com/listing?category=shoes* anfordert, wird wieder der Standardpfad verwendet. In diesem Fall entspricht die Bedingung jedoch der ersten Regel. Aus diesem Grund wird die der Bedingung zugeordnete Aktion ausgeführt, die den URL-Pfad in /*listing1* umschreibt und die Pfadzuordnung neu auswertet. Nachdem die Pfadzuordnung neu ausgewertet wurde, entspricht die Anforderung nun dem Pfad, der dem Muster */listing1* zugeordnet ist, und die Anforderung wird an das Back-End weitergeleitet, das mit diesem Muster verknüpft ist – dies ist ShoesListBackendPool.
+ Wenn der Benutzer *contoso.com/listing?category=shoes* anfordert, wird wieder der Standardpfad verwendet. In diesem Fall entspricht die Bedingung jedoch der ersten Regel. Aus diesem Grund wird die der Bedingung zugeordnete Aktion ausgeführt, die den URL-Pfad in / *listing1* umschreibt und die Pfadzuordnung neu auswertet. Nachdem die Pfadzuordnung neu ausgewertet wurde, entspricht die Anforderung nun dem Pfad, der dem Muster */listing1* zugeordnet ist, und die Anforderung wird an das Back-End weitergeleitet, das mit diesem Muster verknüpft ist – dies ist ShoesListBackendPool.
 
 >[!NOTE]
 >Dieses Szenario kann auf beliebige Header- oder Cookiewerte, URL-Pfade, Abfragezeichenfolgen oder Servervariablen ausgeweitet werden. Die Grundlage bildet dabei immer die von Ihnen definierte Bedingung, sodass Sie Anforderungen basierend auf diesen Bedingungen weiterleiten können.
