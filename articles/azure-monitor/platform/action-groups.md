@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104392"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367736"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -157,7 +157,7 @@ Mithilfe der Aktion „Aktionsgruppenwebhook“ können Sie Azure Active Directo
 2. Aktivieren Sie Aktionsgruppen, um Ihre Azure AD-Anwendung zu verwenden.
 
     > [!NOTE]
-    > Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) sein, um dieses Skript ausführen zu können.
+    > Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../../active-directory/roles/permissions-reference.md#available-roles) sein, um dieses Skript ausführen zu können.
     
     - Ändern Sie den Connect-AzureAD-Befehl des PowerShell-Skripts so, dass Ihre Azure AD-Mandanten-ID verwendet wird.
     - Ändern Sie die Variable „$myAzureADApplicationObjectId“ des PowerShell-Skripts, um die Objekt-ID Ihrer Azure AD-Anwendung zu verwenden.

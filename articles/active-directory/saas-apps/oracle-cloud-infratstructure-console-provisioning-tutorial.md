@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 665e4870619751bbda062473d0c2549b26352d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f34eca7ce92a2f465cc34bdde48ada15b21860d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361601"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515694"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der Oracle Cloud Infrastructure-Konsole für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in der Oracle Cloud Infrastructure-Konsole als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD mithilfe des Azure AD-Bereitstellungsdiensts automatisch Benutzer und Gruppen für die [Oracle Cloud Infrastructure-Konsole](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) bereit bzw. hebt die Bereitstellung von Benutzern und Gruppen auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md). 
+In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in der Oracle Cloud Infrastructure-Konsole als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD mithilfe des Azure AD-Bereitstellungsdiensts automatisch Benutzer und Gruppen für die [Oracle Cloud Infrastructure-Konsole](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) bereit bzw. hebt die Bereitstellung von Benutzern und Gruppen auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
@@ -29,25 +29,25 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in der Oracle
 > * Entfernen von Benutzern aus der Oracle Cloud Infrastructure-Konsole, wenn sie keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und der Oracle Cloud Infrastructure-Konsole
 > * Bereitstellen von Gruppen und Gruppenmitgliedschaften in der Oracle Cloud Infrastructure-Konsole
-> * [Einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial) bei der Oracle Cloud Infrastructure-Konsole (empfohlen)
+> * [Einmaliges Anmelden](./oracle-cloud-tutorial.md) bei der Oracle Cloud Infrastructure-Konsole (empfohlen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-* [Azure AD-Mandant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Einen Oracle Cloud Infrastructure-[Mandanten](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton).
 * Ein Benutzerkonto in der Oracle Cloud Infrastructure-Konsole mit Administratorberechtigungen.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
-1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bestimmen Sie, wer [in den Bereitstellungsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) einbezogen werden soll.
-3. Legen Sie fest, welche Daten zwischen [Azure AD und der Oracle Cloud Infrastructure-Konsole zugeordnet werden sollen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
+2. Bestimmen Sie, wer [in den Bereitstellungsbereich](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) einbezogen werden soll.
+3. Legen Sie fest, welche Daten zwischen [Azure AD und der Oracle Cloud Infrastructure-Konsole zugeordnet werden sollen](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-oracle-cloud-infrastructure-console-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren der Oracle Cloud Infrastructure-Konsole für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Melden Sie sich beim Verwaltungsportal der Oracle Cloud Infrastructure-Konsole an. Navigieren Sie in der oberen linken Ecke des Bildschirms zu **Identität > Verbund**.
+1. Melden Sie sich beim Verwaltungsportal der Oracle Cloud Infrastructure-Konsole an. Navigieren Sie in der oberen linken Ecke des Bildschirms zu **Identität > Verbund** .
 
     ![Oracle-Verwaltung](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/identity.png)
 
@@ -55,33 +55,33 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![Oracle-URL](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/url.png)
 
-3. Klicken Sie auf **Identitätsanbieter hinzufügen**, um einen neuen Identitätsanbieter zu erstellen. Speichern Sie die IdP-ID, die als Teil der Mandanten-URL verwendet werden soll. Klicken Sie auf das Pluszeichen neben der Registerkarte **Anwendungen**, um einen OAuth-Client zu erstellen und die IDCS-App-Rolle „Identitätsdomänenadministrator“ zu erteilen.
+3. Klicken Sie auf **Identitätsanbieter hinzufügen** , um einen neuen Identitätsanbieter zu erstellen. Speichern Sie die IdP-ID, die als Teil der Mandanten-URL verwendet werden soll. Klicken Sie auf das Pluszeichen neben der Registerkarte **Anwendungen** , um einen OAuth-Client zu erstellen und die IDCS-App-Rolle „Identitätsdomänenadministrator“ zu erteilen.
 
     ![Oracle-Cloudsymbol](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/add.png)
 
-4. Nutzen Sie die folgenden Screenshots, um Ihre Anwendung zu konfigurieren. Klicken Sie nach Abschluss der Konfiguration auf **Speichern**.
+4. Nutzen Sie die folgenden Screenshots, um Ihre Anwendung zu konfigurieren. Klicken Sie nach Abschluss der Konfiguration auf **Speichern** .
 
     ![Oracle-Konfiguration](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/configuration.png)
 
     ![Oracle-Tokenausstellungsrichtlinie](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/token-issuance.png)
 
-5. Erweitern Sie auf der Registerkarte „Konfiguration“ Ihrer Anwendung die Option **Allgemeine Informationen**, um die Client-ID und den geheimen Clientschlüssel abzurufen.
+5. Erweitern Sie auf der Registerkarte „Konfiguration“ Ihrer Anwendung die Option **Allgemeine Informationen** , um die Client-ID und den geheimen Clientschlüssel abzurufen.
 
     ![Oracle-Tokengenerierung](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. Codieren Sie mit Base64 die Client-ID und den geheimen Clientschlüssel im Format **Client-ID:geheimer Clientschlüssel**, um ein geheimes Token zu generieren. Speichern Sie das geheime Token. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Cloud Infrastructure-Konsolenanwendung in das Feld **Geheimes Token** eingegeben.
+6. Codieren Sie mit Base64 die Client-ID und den geheimen Clientschlüssel im Format **Client-ID:geheimer Clientschlüssel** , um ein geheimes Token zu generieren. Speichern Sie das geheime Token. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Cloud Infrastructure-Konsolenanwendung in das Feld **Geheimes Token** eingegeben.
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen der Oracle Cloud Infrastructure-Konsole aus dem Azure AD-Anwendungskatalog
 
-Fügen Sie die Oracle Cloud Infrastructure-Konsole aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung für die Oracle Cloud Infrastructure-Konsole zu beginnen. Wenn Sie die Oracle Cloud Infrastructure-Konsole zuvor für das einmalige Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
+Fügen Sie die Oracle Cloud Infrastructure-Konsole aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung für die Oracle Cloud Infrastructure-Konsole zu beginnen. Wenn Sie die Oracle Cloud Infrastructure-Konsole zuvor für das einmalige Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 
-Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) beschriebenen Bereichsfilter verwenden. 
+Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) beschriebenen Bereichsfilter verwenden. 
 
-* Beim Zuweisen von Benutzern und Gruppen für die Oracle Cloud Infrastructure-Konsole müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) und weitere Rollen hinzufügen. 
+* Beim Zuweisen von Benutzern und Gruppen für die Oracle Cloud Infrastructure-Konsole müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](../develop/howto-add-app-roles-in-azure-ad-apps.md) und weitere Rollen hinzufügen. 
 
-* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) angeben. 
+* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) angeben. 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-oracle-cloud-infrastructure-console"></a>Schritt 5: Konfigurieren der automatischen Benutzerbereitstellung für die Oracle Cloud Infrastructure-Konsole 
@@ -90,7 +90,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-oracle-cloud-infrastructure-console-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für die Oracle Cloud Infrastructure-Konsole in Azure AD zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -98,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Der Link zur Oracle Cloud Infrastructure-Konsole in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung**.
+3. Wählen Sie die Registerkarte **Bereitstellung** .
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -106,11 +106,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL** im Format `https://<IdP ID>.identity.oraclecloud.com/admin/v1` ein. Beispiel: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Geben Sie den Wert für das geheime Token ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit der Oracle Cloud Infrastructure-Konsole herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Konto für die Oracle Cloud Infrastructure-Konsole über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL** im Format `https://<IdP ID>.identity.oraclecloud.com/admin/v1` ein. Beispiel: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Geben Sie den Wert für das geheime Token ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit der Oracle Cloud Infrastructure-Konsole herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Konto für die Oracle Cloud Infrastructure-Konsole über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -118,7 +118,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Oracle Cloud Infrastructure-Konsole synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) zu ändern, müssen Sie sicherstellen, dass die Oracle Cloud Infrastructure-Konsolen-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Oracle Cloud Infrastructure-Konsolen-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|
@@ -147,7 +147,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Oracle Cloud Infrastructure-Konsole synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|
@@ -155,9 +155,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
       |externalId|String|
       |members|Verweis|
 
-12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für die Oracle Cloud Infrastructure-Konsole zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+13. Um den Azure AD-Bereitstellungsdienst für die Oracle Cloud Infrastructure-Konsole zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -165,7 +165,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
@@ -174,15 +174,15 @@ Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benut
 ## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
 
-* Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
-* Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
-* Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+* Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+* Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+* Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)

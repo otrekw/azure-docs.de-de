@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 623ec6999add175e85f117e547fba61734d2b892
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a3c2567cf1799bca5750e90fbe5d89f6da952ff5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286007"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514890"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Smartsheet für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte erläutert, die in Smartsheet und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen bzw. Aufheben der Bereitstellung von Benutzern und/oder Gruppen in [Smartsheet](https://www.smartsheet.com/pricing) zu konfigurieren. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md). 
+In diesem Tutorial werden die Schritte erläutert, die in Smartsheet und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen bzw. Aufheben der Bereitstellung von Benutzern und/oder Gruppen in [Smartsheet](https://www.smartsheet.com/pricing) zu konfigurieren. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
@@ -37,25 +37,25 @@ In diesem Tutorial werden die Schritte erläutert, die in Smartsheet und Azure A
 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-* [Einen Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator)
+* [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator)
 * [Einen Smartsheet-Mandanten](https://www.smartsheet.com/pricing)
 * Ein Benutzerkonto in einem Smartsheet Enterprise- oder Enterprise Premier-Plan mit Systemadministratorberechtigungen
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
-1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bestimmen Sie, wer [in den Bereitstellungsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) einbezogen werden soll.
-3. Legen Sie fest, welche Daten [zwischen Azure AD und Smartsheet zugeordnet werden sollen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
+2. Bestimmen Sie, wer [in den Bereitstellungsbereich](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) einbezogen werden soll.
+3. Legen Sie fest, welche Daten [zwischen Azure AD und Smartsheet zugeordnet werden sollen](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-smartsheet-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Smartsheet für die Unterstützung der Bereitstellung mit Azure AD
 
 Bevor Sie Smartsheet für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie in Smartsheet die SCIM-Bereitstellung aktivieren.
 
-1. Melden Sie sich als **Systemadministrator** beim **[Smartsheet-Portal](https://app.smartsheet.com/b/home)** an, und navigieren Sie zu **Kontoadministrator**.
+1. Melden Sie sich als **Systemadministrator** beim **[Smartsheet-Portal](https://app.smartsheet.com/b/home)** an, und navigieren Sie zu **Kontoadministrator** .
 
     ![Smartsheet-Kontoadministrator](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
 
-2. Wechseln Sie zu **Sicherheitssteuerung > Automatisiertes Benutzer-Provisioning > Bearbeiten**.
+2. Wechseln Sie zu **Sicherheitssteuerung > Automatisiertes Benutzer-Provisioning > Bearbeiten** .
 
     ![Smartsheet-Sicherheitssteuerung](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
 
@@ -67,15 +67,15 @@ Bevor Sie Smartsheet für die automatische Benutzerbereitstellung mit Azure AD k
 
     ![Domäne in Smartsheet aktivieren](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
 
-5. Generieren Sie das **geheime Token**, das zum Konfigurieren der automatischen Benutzerbereitstellung mit Azure AD erforderlich ist, indem Sie zu **Apps & Integrationen** navigieren.
+5. Generieren Sie das **geheime Token** , das zum Konfigurieren der automatischen Benutzerbereitstellung mit Azure AD erforderlich ist, indem Sie zu **Apps & Integrationen** navigieren.
 
     ![Screenshot der Smartsheet-Administratorseite mit dem Benutzer „avatar“ und der aufgerufenen Option „Apps & Integrations“](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
-6. Wählen Sie **API-Zugriff** aus. Klicken Sie auf **Neues Zugriffstoken generieren**.
+6. Wählen Sie **API-Zugriff** aus. Klicken Sie auf **Neues Zugriffstoken generieren** .
 
     ![Screenshot des Dialogfelds „Persönliche Einstellungen“ mit den aufgerufenen Optionen „API-Zugriff“ und „Neues Zugriffstoken generieren“](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. Legen Sie den Namen des API-Zugriffstokens fest. Klicken Sie auf **OK**.
+7. Legen Sie den Namen des API-Zugriffstokens fest. Klicken Sie auf **OK** .
 
     ![Screenshot von Schritt 1 von 2: „Generieren eines API-Zugriffstokens“ mit der aufgerufenen Option „OK“](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
@@ -85,21 +85,21 @@ Bevor Sie Smartsheet für die automatische Benutzerbereitstellung mit Azure AD k
 
 ## <a name="step-3-add-smartsheet-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Smartsheets aus dem Azure AD-Anwendungskatalog
 
-Fügen Sie Smartsheet aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Smartsheet zu beginnen. Wenn Sie Smartsheet zuvor für das einmalige Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
+Fügen Sie Smartsheet aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Smartsheet zu beginnen. Wenn Sie Smartsheet zuvor für das einmalige Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 
-Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) beschriebenen Bereichsfilter verwenden. 
+Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) beschriebenen Bereichsfilter verwenden. 
 
-* Beim Zuweisen von Benutzern und Gruppen zu Smartsheet müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) und weitere Rollen hinzufügen. 
+* Beim Zuweisen von Benutzern und Gruppen zu Smartsheet müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](../develop/howto-add-app-roles-in-azure-ad-apps.md) und weitere Rollen hinzufügen. 
 
-* Um Parität der Benutzerrollenzuweisungen zwischen Smartsheet und Azure AD sicherzustellen, wird empfohlen, die gleichen Rollenzuweisungen zu verwenden, die in der vollständigen Smartsheet-Benutzerliste aufgefüllt sind. Wenn Sie diese Benutzerliste von Smartsheet abrufen möchten, navigieren Sie zu **Kontoadministrator > Benutzerverwaltung > Weitere Aktionen > Benutzerliste (CSV) herunterladen**.
+* Um Parität der Benutzerrollenzuweisungen zwischen Smartsheet und Azure AD sicherzustellen, wird empfohlen, die gleichen Rollenzuweisungen zu verwenden, die in der vollständigen Smartsheet-Benutzerliste aufgefüllt sind. Wenn Sie diese Benutzerliste von Smartsheet abrufen möchten, navigieren Sie zu **Kontoadministrator > Benutzerverwaltung > Weitere Aktionen > Benutzerliste (CSV) herunterladen** .
 
 * Damit ein Benutzer auf bestimmte Features in der App zugreifen kann, muss er in Smartsheet über mehrere Rollen verfügen. Weitere Informationen zu Benutzertypen und Berechtigungen in Smartsheet finden Sie unter [User Types and Permissions](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions) (Benutzertypen und Berechtigungen).
 
 *  Wenn einem Benutzer mehreren Rollen in Smartsheet zugewiesen sind, **MÜSSEN** Sie sicherstellen, dass diese Rollenzuweisungen in Azure AD repliziert werden, um ein Szenario zu vermeiden, in dem Benutzer den Zugriff auf Smartsheet-Objekte dauerhaft verlieren könnten. Jede eindeutige Rolle in Smartsheet **MUSS** einer anderen Gruppe in Azure AD zugewiesen werden. Der Benutzer **MUSS** dann allen Gruppen hinzugefügt werden, die den gewünschten Rollen entsprechen. 
 
-* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) angeben. 
+* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) angeben. 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-smartsheet"></a>Schritt 5: Konfigurieren der automatischen Benutzerbereitstellung für Smartsheet 
 
@@ -107,7 +107,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für Smartsheet in Azure AD zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -115,7 +115,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Smartsheet-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung**.
+3. Wählen Sie die Registerkarte **Bereitstellung** .
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -123,19 +123,19 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Smartsheet abgerufenen Werte für **SCIM 2.0 base URL and Access Token** („SCIM 2.0-Basis-URL“ und „Zugriffstoken“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Smartsheet herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Smartsheet-Konto über Systemadministratorberechtigungen verfügt, und versuchen Sie es erneut.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Smartsheet abgerufenen Werte für **SCIM 2.0 base URL and Access Token** („SCIM 2.0-Basis-URL“ und „Zugriffstoken“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Smartsheet herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Smartsheet-Konto über Systemadministratorberechtigungen verfügt, und versuchen Sie es erneut.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern**.
+7. Klicken Sie auf **Speichern** .
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Smartsheet synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Smartsheet synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Smartsheet für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Smartsheet synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Smartsheet für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -160,7 +160,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Um den Azure AD-Bereitstellungsdienst für Smartsheet zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+11. Um den Azure AD-Bereitstellungsdienst für Smartsheet zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -168,7 +168,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
@@ -177,9 +177,9 @@ Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet,
 ## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
 
-1. Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
-2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
-3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
