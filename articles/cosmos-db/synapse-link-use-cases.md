@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568045"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480053"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link für Azure Cosmos DB: Anwendungsfälle für Analysen in Quasi-Echtzeit
 
@@ -118,7 +118,7 @@ Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl tra
 
   * Hohe Durchsatzerfassung von Batch- und Streamingdatenfeeds mit [Echtzeitindizierung](index-policy.md) im Transaktionsspeicher.
 
-  * Der Azure Cosmos DB-Transaktionsspeicher bietet drei Optionen mehr als die beiden Extreme der starken und der letztlichen Konsistenz, um den [Kompromiss zwischen Verfügbarkeit und Leistung](consistency-levels-tradeoffs.md) zu erreichen, der den geschäftlichen Anforderungen am ehesten entspricht.
+  * Der Azure Cosmos DB-Transaktionsspeicher bietet drei Optionen mehr als die beiden Extreme der starken und der letztlichen Konsistenz, um den [Kompromiss zwischen Verfügbarkeit und Leistung](./consistency-levels.md) zu erreichen, der den geschäftlichen Anforderungen am ehesten entspricht.
 
 * Die Lieferkettenpartner von CompanyXYZ weisen hochgradig schwankende Datenverkehrsmuster auf, die von Hunderten bis zu Millionen von Anforderungen pro Sekunde reichen. Daher muss die Bestandsverwaltungsplattform mit unerwarteten Bursts im Datenverkehr umgehen.  Vorteile von Azure Cosmos DB:
 

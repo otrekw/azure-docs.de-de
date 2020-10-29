@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 8d249cdabcbfd82fc555c486f29bbdba200e1da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ae3c538c78be8af0fa4569592ac60547e7f5912
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710497"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481294"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 
@@ -57,11 +57,11 @@ Azure Database for PostgreSQL ist in die Azure Monitor-Diagnoseeinstellungen int
 
 ### <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-Sie können die Diagnoseeinstellungen für Ihren Postgres-Server aktivieren, indem Sie das Azure-Portal, die CLI, die REST-API und PowerShell verwenden. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs**. (Sie können auch andere Protokolle konfigurieren, wenn Sie den [Abfragespeicher](concepts-query-store.md) nutzen.)
+Sie können die Diagnoseeinstellungen für Ihren Postgres-Server aktivieren, indem Sie das Azure-Portal, die CLI, die REST-API und PowerShell verwenden. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs** . (Sie können auch andere Protokolle konfigurieren, wenn Sie den [Abfragespeicher](concepts-query-store.md) nutzen.)
 
 So aktivieren Sie Ressourcenprotokolle über das Azure-Portal:
 
-   1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen*.
+   1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen* .
    2. Wählen Sie *Diagnoseeinstellung hinzufügen*  aus.
    3. Benennen Sie die Einstellung. 
    4. Wählen Sie Ihren bevorzugten Endpunkt aus (Speicherkonto, Event Hub, Log Analytics). 
@@ -72,7 +72,7 @@ Informationen zum Aktivieren von Ressourcenprotokollen über PowerShell, die CLI
 
 ### <a name="access-resource-logs"></a>Zugreifen auf Ressourcenprotokolle
 
-Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
 

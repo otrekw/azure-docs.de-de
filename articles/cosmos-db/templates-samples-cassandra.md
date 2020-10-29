@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0ca022d91a43a4edc7619cdd860ee6283dc3b520
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: a3081b90fb715b55af394c9c5f8c73316233a1c3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283244"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477163"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Cassandra-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
@@ -51,7 +51,7 @@ Mit dieser Vorlage wird ein Azure Cosmos-Konto in zwei Regionen mit Optionen fü
 
 Hier sind einige zusätzlichen Ressourcen:
 
-* [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/)
+* [Dokumentation zu Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Schema von Azure Cosmos DB-Ressourcenanbietern](/azure/templates/microsoft.documentdb/allversions)
 * [Schnellstartvorlagen für Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)

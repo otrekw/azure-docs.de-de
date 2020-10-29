@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569500"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476993"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Gesamtkosten mit Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Durch das serverlose Bereitstellungsmodell von Azure Cosmos DB entfällt die Ber
 
 * **Stundenweise Abrechnung:** Umfangreiche Workloads, die jederzeit skaliert werden müssen, werden nur nach Stunden abgerechnet. Die Workloads für eine Anwendung variieren in der Regel übers Jahr und durch die Daten, die abgefragt werden. Mit Azure Cosmos DB können Sie nach Bedarf hoch- oder herunterskalieren und bezahlen nur das, was Sie wirklich benötigen. Bei lokalen oder über IaaS gehostete Systeme können Sie dieses Modell nicht anwenden, da es keine Möglichkeit gibt, Ihre Hardware stundenweise außer Betrieb zu nehmen. In solchen Fällen können Sie mit Azure Cosmos DB im Schnitt eine 10- bis 14-Fache Einsparung erzielen.
 
-* **Zahlreiche Features werden kostenlos bereitgestellt:** In Azure Cosmos DB sind Schreibworkloads im Vergleich zu alternativen Datenbankdiensten erheblich kostengünstiger. Darüber hinaus bietet Azure Cosmos DB unter anderem Funktionen wie [automatische Indizierung](indexing-policies.md), [Gültigkeitsdauer](time-to-live.md) und [Änderungsfeed](change-feed.md), die in der Regel von anderen Datenbankdiensten extra berechnet werden, kostenlos an.
+* **Zahlreiche Features werden kostenlos bereitgestellt:** In Azure Cosmos DB sind Schreibworkloads im Vergleich zu alternativen Datenbankdiensten erheblich kostengünstiger. Darüber hinaus bietet Azure Cosmos DB unter anderem Funktionen wie [automatische Indizierung](index-policy.md), [Gültigkeitsdauer](time-to-live.md) und [Änderungsfeed](change-feed.md), die in der Regel von anderen Datenbankdiensten extra berechnet werden, kostenlos an.
 
 * **Verwendung einer einheitlichen Währung für verschiedene Workloads:** Im Gegensatz zu anderen Angeboten müssen Sie bei Azure Cosmos DB Workloads nicht segmentieren (z. B. in Lese- und Schreibvorgänge) oder Durchsatz nach Workloadtyp (Lesedurchsatz und Schreibdurchsatz) bereitstellen. In Azure Cosmos DB wird der bereitgestellte Durchsatz mithilfe einer einheitlichen und normalisierten Währung in Form von Anforderungseinheiten oder RUs/Sek. reserviert. Azure Cosmos DB zwingt Sie nicht, Ihre Workloads zu priorisieren, eine Kapazitätsplanung vorzunehmen oder jeden Kapazitätstyp separat zu bezahlen. Ein derartiger Ansatz ermöglicht Ihnen, dieselben RUs/Sek. zwischen verschiedenen Operationen und Workloadtypen auszutauschen.
 
@@ -63,6 +63,6 @@ Durch das serverlose Bereitstellungsmodell von Azure Cosmos DB entfällt die Ber
 * Weitere Informationen unter [Optimieren der Durchsatzkosten](optimize-cost-throughput.md)
 * Weitere Informationen unter [Optimieren der Speicherkosten](optimize-cost-storage.md)
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
-* Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
+* Weitere Informationen unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)
 * Weitere Informationen im Whitepaper [Total Cost of (Non) Ownership of a NoSQL Database Cloud Service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf) (Gesamtkosten eines NoSQL-Datenbank-Clouddiensts).

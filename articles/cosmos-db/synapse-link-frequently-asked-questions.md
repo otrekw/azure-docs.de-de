@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014561"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480070"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Wenn Azure Synapse Link in der Vorschauversion für ein Konto mit mehreren Regio
 
 Für Container mit aktiviertem Analysespeicher wird derzeit die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher nicht unterstützt. 
 
-Wenn Synapse Link für ein Datenbankkonto aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall [Sicherungen](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) Ihrer Daten im Transaktionsspeicher (nur) von Containern. Beachten Sie dabei Folgendes: Wenn ein Container mit aktiviertem Analysespeicher in einem neuen Konto wiederhergestellt wird, ist im wiederhergestellten Container nur der Transaktionsspeicher aktiviert, nicht jedoch der Analysespeicher. 
+Wenn Synapse Link für ein Datenbankkonto aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall [Sicherungen](./online-backup-and-restore.md) Ihrer Daten im Transaktionsspeicher (nur) von Containern. Beachten Sie dabei Folgendes: Wenn ein Container mit aktiviertem Analysespeicher in einem neuen Konto wiederhergestellt wird, ist im wiederhergestellten Container nur der Transaktionsspeicher aktiviert, nicht jedoch der Analysespeicher. 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Kann ich die Azure Synapse Link-Funktion für mein Azure Cosmos DB-Konto deaktivieren?
 
@@ -97,6 +97,10 @@ Die Daten im Analysespeicher werden basierend auf der horizontalen Partitionieru
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>Kann ich die Art und Weise, wie Transaktionsdaten in das Spaltenformat im Analysespeicher transformiert werden, anpassen oder außer Kraft setzen?
 
 Derzeit können Sie die Datenelemente nicht transformieren, wenn sie automatisch aus dem Transaktionsspeicher in den Analysespeicher weitergegeben werden. Wenn Sie Szenarien durch diese Einschränkung blockiert haben, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
+
+### <a name="is-analytical-store-supported-by-terraform"></a>Wird der Analysespeicher von Terraform unterstützt?
+
+Derzeit unterstützt Terraform keine Analysespeichercontainer. Weitere Informationen finden Sie unter [Terraform GitHub Issues](https://github.com/hashicorp/terraform/issues) (GitHub-Probleme zu Terraform).
 
 ## <a name="analytical-time-to-live-ttl"></a>Analytische Gültigkeitsdauer (Time To Live, TTL)
 

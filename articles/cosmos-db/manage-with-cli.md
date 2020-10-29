@@ -4,22 +4,24 @@ description: Verwalten Sie Ressourcen für die Core (SQL)-API von Azure Cosmos 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b19d7681925296936fee5823f7df32e131f8bb8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840590"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482654"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Verwalten von Ressourcen für die Core (SQL)-API von Azure Cosmos mit der Azure CLI
 
-Der folgende Leitfaden erläutert die gängigen Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Konten und -Container mithilfe von Azure CLI. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb) verfügbar. Weitere Beispiele finden Sie auch in [Azur CLI-Beispiele für Azure Cosmos DB](cli-samples.md), einschließlich der Erstellung und Verwaltung von Cosmos DB-Konten, Datenbanken und Containern für MongoDB, Gremlin, Cassandra und die Tabellen-API.
+Der folgende Leitfaden erläutert die gängigen Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Konten und -Container mithilfe von Azure CLI. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar. Weitere Beispiele finden Sie auch in [Azur CLI-Beispiele für Azure Cosmos DB](cli-samples.md), einschließlich der Erstellung und Verwaltung von Cosmos DB-Konten, Datenbanken und Containern für MongoDB, Gremlin, Cassandra und die Tabellen-API.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die Azure CLI lokal installieren und verwenden möchten, ist für dieses Thema mindestens Version 2.12.1 erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+Azure CLI-Beispiele für andere APIs finden Sie unter [CLI-Beispiele für die Cassandra-API](cli-samples-cassandra.md), [CLI-Beispiele für die MongoDB-API](cli-samples-mongodb.md), [CLI-Beispiele für die Gremlin-API](cli-samples-gremlin.md) und [CLI-Beispiele für die Tabellen-API](cli-samples-table.md).
 
 > [!IMPORTANT]
 > Azure Cosmos DB-Ressourcen können nicht umbenannt werden, da dies gegen die Arbeitsweise von Azure Resource Manager mit Ressourcen-URIs verstößt.
@@ -543,5 +545,5 @@ az lock delete --ids $lockid
 Weitere Informationen zur Azure CLI finden Sie in:
 
 * [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
-* [Azure-CLI-Referenz](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Azure-CLI-Referenz](/cli/azure/cosmosdb)
 * [Zusätzliche Azure CLI-Beispiele für Azure Cosmos DB](cli-samples.md)

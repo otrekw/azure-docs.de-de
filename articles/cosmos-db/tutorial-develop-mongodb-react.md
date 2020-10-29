@@ -10,12 +10,12 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 83c4d7c0037a3f8bc1162993c8667df62e5d9123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c309de5054887a64e61d61345190c776835709
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316170"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476585"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Erstellen einer MongoDB-App mit React und Azure Cosmos DB  
 
@@ -90,8 +90,8 @@ In diesem Video erfahren Sie, wie Sie die App vervollständigen und die Integrat
 
 Wenn Sie diese App nicht weiterhin verwenden, löschen Sie mit den folgenden Schritten im Azure-Portal sämtliche Ressourcen, die mit diesem Tutorial erstellt wurden. 
 
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource. 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** , und klicken Sie auf den Namen der erstellten Ressource. 
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen** , geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -107,5 +107,4 @@ In diesem Tutorial wurde Folgendes vermittelt:
 Im nächsten Tutorial erfahren Sie, wie Sie MongoDB-Daten in Azure Cosmos DB importieren.  
 
 > [!div class="nextstepaction"]
-> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
- 
+> [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

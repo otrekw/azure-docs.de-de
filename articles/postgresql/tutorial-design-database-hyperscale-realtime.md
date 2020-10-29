@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd06491b5488223b9a8eba50839a7fdf0cd61b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895243"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478540"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen eines Dashboards für die Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -220,11 +220,11 @@ In einer Produktionsumgebung könnten Sie diese Abfragen in einer Funktion verpa
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe erstellt. Wenn Sie diese Ressourcen nicht mehr benötigen, löschen Sie die Servergruppe. Klicken Sie auf der Seite *Übersicht* für Ihre Servergruppe auf die Schaltfläche *Löschen*. Wenn Sie auf einer Popupseite dazu aufgefordert werden, bestätigen Sie den Namen der Servergruppe, und klicken Sie abschließend auf die Schaltfläche *Löschen*.
+In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe erstellt. Wenn Sie diese Ressourcen nicht mehr benötigen, löschen Sie die Servergruppe. Klicken Sie auf der Seite *Übersicht* für Ihre Servergruppe auf die Schaltfläche *Löschen* . Wenn Sie auf einer Popupseite dazu aufgefordert werden, bestätigen Sie den Namen der Servergruppe, und klicken Sie abschließend auf die Schaltfläche *Löschen* .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten in Rohform abzurufen und diese Daten regelmäßig zu aggregieren, die aggregierten Tabellen abzufragen und alte Daten ablaufen zu lassen.
 
-- Weitere Informationen zu [Knotentypen](https://aka.ms/hyperscale-concepts) von Servergruppen
+- Weitere Informationen zu [Knotentypen](./concepts-hyperscale-nodes.md) von Servergruppen
 - Bestimmen der besten [Anfangsgröße](howto-hyperscale-scaling.md#picking-initial-size) für Ihre Servergruppe

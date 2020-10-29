@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9f26dc5214222bb7564c0ba2b199adefad056ed5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: dac2ed3888dcf1d38fc5e2c21611edf8008a07f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281000"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476364"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Einschränkungen für eindeutige Schlüssel in Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Eindeutige Schlüssel können Sie nur beim Erstellen eines Azure Cosmos-Containe
 
 * Sie können einen bereits vorhandenen Container nicht für die Verwendung eines anderen eindeutigen Schlüssels aktualisieren. Anders ausgedrückt: Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, kann die Richtlinie nicht mehr geändert werden.
 
-* Um einen eindeutigen Schlüssel für einen bestehenden Container festzulegen, erstellen Sie einen neuen Container mit der Einschränkung für eindeutige Schlüssel. Verwenden Sie das entsprechende Datenmigrationstool, um die Daten aus dem vorhandenen Container in den neuen Container zu verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md), um die Daten zu verschieben. Verwenden Sie für MongoDB-Container [„mongoimport.exe“ oder „mongorestore.exe“](mongodb-migrate.md), um die Daten zu verschieben.
+* Um einen eindeutigen Schlüssel für einen bestehenden Container festzulegen, erstellen Sie einen neuen Container mit der Einschränkung für eindeutige Schlüssel. Verwenden Sie das entsprechende Datenmigrationstool, um die Daten aus dem vorhandenen Container in den neuen Container zu verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md), um die Daten zu verschieben. Verwenden Sie für MongoDB-Container [„mongoimport.exe“ oder „mongorestore.exe“](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json), um die Daten zu verschieben.
 
 * Eine Richtlinie für eindeutige Schlüssel kann maximal 16 Pfadwerte enthalten. Die Werte können z. B. `/firstName`, `/lastName` und `/address/zipCode` lauten. Jede Richtlinie für eindeutige Schlüssel kann höchstens 10 Einschränkungen auf eindeutige Schlüssel oder Kombinationen enthalten. Die kombinierten Pfade für jede Einschränkung für eindeutige Schlüssel dürfen 60 Byte nicht überschreiten. Die Kombination aus Vorname, Nachname und E-Mail-Adresse im vorherigen Beispiel ist eine Einschränkung. Diese Einschränkung verwendet drei der 16 möglichen Pfade.
 

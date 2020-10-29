@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021934"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476925"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Diagnose und Troubleshooting bei .NET SDK-Anforderungstimeoutausnahmen in Azure Cosmos DB
 Der Fehler „HTTP-408“ tritt auf, wenn das SDK die Anforderung nicht abschließen konnte, bevor das Timeoutlimit überschritten wurde.
@@ -28,7 +28,7 @@ Mit der Konfiguration `CosmosClientOptions.RequestTimeout` (bzw. `ConnectionPoli
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-Alle asynchronen Vorgänge im SDK enthalten einen optionalen CancellationToken-Parameter. Dieser [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling)-Parameter wird während des gesamten Vorgangs in allen Netzwerkanforderungen verwendet. Zwischen den Netzwerkanforderungen wird das Abbruchtoken (cancellation token) möglicherweise überprüft und ein Vorgang abgebrochen, wenn das zugehörige Token abgelaufen ist. Das Abruftoken (CancellationToken) sollte zum Definieren eines ungefähren erwarteten Timeouts für den Vorgangsbereich verwendet werden.
+Alle asynchronen Vorgänge im SDK enthalten einen optionalen CancellationToken-Parameter. Dieser [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling)-Parameter wird während des gesamten Vorgangs in allen Netzwerkanforderungen verwendet. Zwischen den Netzwerkanforderungen wird das Abbruchtoken (cancellation token) möglicherweise überprüft und ein Vorgang abgebrochen, wenn das zugehörige Token abgelaufen ist. Das Abruftoken (CancellationToken) sollte zum Definieren eines ungefähren erwarteten Timeouts für den Vorgangsbereich verwendet werden.
 
 > [!NOTE]
 > Der Parameter `CancellationToken` ist ein Mechanismus, bei dem die Bibliothek den Abbruch überprüft, wenn das [zu keinem ungültigen Status führt](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). Der Vorgang wird möglicherweise nicht exakt abgebrochen, wenn die im Abbruch definierte Zeit abgelaufen ist. Stattdessen wird er nach Ablauf der Zeit dann abgebrochen, wenn dies auf sichere Weise möglich ist.

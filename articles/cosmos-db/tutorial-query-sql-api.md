@@ -8,16 +8,16 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd76a6848c9ff6a5c7a29e328814fe0054655691
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88135996"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476432"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API
 
-Die [SQL-API](documentdb-introduction.md) von Azure Cosmos DB unterstützt die Abfrage von Dokumenten mit SQL. Dieser Artikel stellt ein Beispieldokument sowie zwei SQL-Beispielabfragen und Ergebnisse vor.
+Die [SQL-API](./introduction.md) von Azure Cosmos DB unterstützt die Abfrage von Dokumenten mit SQL. Dieser Artikel stellt ein Beispieldokument sowie zwei SQL-Beispielabfragen und Ergebnisse vor.
 
 In diesem Artikel werden die folgenden Aufgaben behandelt: 
 
@@ -149,4 +149,3 @@ Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie
 
 > [!div class="nextstepaction"]
 > [Globales Verteilen Ihrer Daten](tutorial-global-distribution-sql-api.md)
-

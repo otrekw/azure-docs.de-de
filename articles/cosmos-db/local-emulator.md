@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627590"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482620"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Installieren und Verwenden des Azure Cosmos-Emulators für lokale Entwicklung und Tests
 
@@ -80,7 +80,7 @@ Wenn Sie nach der Installation die Standardeinstellungen verwendet haben, werden
 
 ## <a name="use-the-emulator-on-windows"></a><a id="run-on-windows"></a>Verwenden des Emulators unter Windows
 
-Der Azure Cosmos-Emulator wird standardmäßig am Speicherort `C:\Program Files\Azure Cosmos DB Emulator` installiert. Wählen Sie zum Starten des Azure Cosmos-Emulators unter Windows die Schaltfläche **Start** aus, oder drücken Sie die WINDOWS-TASTE. Beginnen Sie mit der Eingabe von **Azure Cosmos-Emulator**, und wählen Sie den Emulator in der Liste mit den Anwendungen aus.
+Der Azure Cosmos-Emulator wird standardmäßig am Speicherort `C:\Program Files\Azure Cosmos DB Emulator` installiert. Wählen Sie zum Starten des Azure Cosmos-Emulators unter Windows die Schaltfläche **Start** aus, oder drücken Sie die WINDOWS-TASTE. Beginnen Sie mit der Eingabe von **Azure Cosmos-Emulator** , und wählen Sie den Emulator in der Liste mit den Anwendungen aus.
 
 :::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Wählen Sie die Schaltfläche „Start“ aus, oder drücken Sie die WINDOWS-TASTE. Beginnen Sie mit der Eingabe von „Azure Cosmos-Emulator“, und wählen Sie den Emulator in der Liste der Anwendungen aus.":::
 
@@ -243,7 +243,7 @@ Führen Sie die folgenden Schritte aus, um den Emulator in Linux- oder macOS-Umg
 1. Starten Sie in der Windows-VM den Azure Cosmos-Emulator mit den folgenden Optionen über die Befehlszeile. Einzelheiten zu den von der Befehlszeile unterstützten Parametern finden Sie in der [Referenz zum Befehlszeilentool für den Emulator](emulator-command-line-parameters.md):
 
    ```bash
-   Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM +4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+   Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    ```
 
 1. Schließlich müssen Sie den Zertifikatsvertrauensprozess zwischen der Anwendung, die in der Linux- oder Mac-Umgebung ausgeführt wird, und dem Emulator auflösen. Sie können eine der beiden folgenden Optionen wählen, um das Zertifikat aufzulösen:
@@ -289,7 +289,7 @@ Führen Sie in einer Mac-Umgebung die folgenden Schritte aus:
 
 1. Kopieren Sie die PFX-Datei in Ihre Mac-Umgebung.
 
-1. Öffnen Sie die Anwendung *Keychain Access*, und importieren Sie die PFX-Datei.
+1. Öffnen Sie die Anwendung *Keychain Access* , und importieren Sie die PFX-Datei.
 
 1. Öffnen Sie die Liste mit den Zertifikaten, und suchen Sie nach dem Zertifikat `localhost`.
 
@@ -369,7 +369,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>Tabelle-API
 
-Sobald der Azure Cosmos-Emulator auf Ihrem Desktop ausgeführt wird, können Sie das [SDK für die Tabellen-API von Azure Cosmos DB](table-storage-how-to-use-dotnet.md) für die Interaktion mit dem Emulator verwenden. Starten Sie den Emulator über die [Eingabeaufforderung](emulator-command-line-parameters.md) als Administrator mit „/EnableTableEndpoint“. Führen Sie anschließend den folgenden Code aus, um eine Verbindung mit dem Tabellen-API-Konto herzustellen:
+Sobald der Azure Cosmos-Emulator auf Ihrem Desktop ausgeführt wird, können Sie das [SDK für die Tabellen-API von Azure Cosmos DB](./tutorial-develop-table-dotnet.md) für die Interaktion mit dem Emulator verwenden. Starten Sie den Emulator über die [Eingabeaufforderung](emulator-command-line-parameters.md) als Administrator mit „/EnableTableEndpoint“. Führen Sie anschließend den folgenden Code aus, um eine Verbindung mit dem Tabellen-API-Konto herzustellen:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -462,7 +462,7 @@ Führen Sie die folgenden Schritte aus, um den Emulator zu deinstallieren:
 
 1. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und wählen Sie das Ergebnis **Apps & Features (Systemeinstellungen)** aus.
 
-1. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator**. Wählen Sie den Eintrag aus, und klicken Sie auf **Deinstallieren**. Bestätigen Sie den Vorgang, und wählen Sie erneut **Deinstallieren** aus.
+1. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator** . Wählen Sie den Eintrag aus, und klicken Sie auf **Deinstallieren** . Bestätigen Sie den Vorgang, und wählen Sie erneut **Deinstallieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 0d2d7b0e8d4a67b2ff67a780a71ea46ec54df1de
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f8b7cfd79188ca742ee163a02c2b6c3b8f36e6c2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280001"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481719"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>Erstellen einer Ressourcensperre für eine Tabellen-API-Tabelle von Azure Cosmos mithilfe der Azure PowerShell
 
@@ -42,11 +42,11 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 |**Azure-Ressource**| |
-| [New-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/new-azresourcelock) | Erstellt eine Ressourcensperre. |
-| [Get-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/get-azresourcelock) | Ruft eine Ressourcensperre ab oder listet Ressourcensperren auf. |
-| [Remove-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/remove-azresourcelock) | Entfernt eine Ressourcensperre. |
+| [New-AzResourceLock](/PowerShell/module/az.resources/new-azresourcelock) | Erstellt eine Ressourcensperre. |
+| [Get-AzResourceLock](/PowerShell/module/az.resources/get-azresourcelock) | Ruft eine Ressourcensperre ab oder listet Ressourcensperren auf. |
+| [Remove-AzResourceLock](/PowerShell/module/az.resources/remove-azresourcelock) | Entfernt eine Ressourcensperre. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/PowerShell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/PowerShell/).

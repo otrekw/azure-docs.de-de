@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567858"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476398"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
 Als vollständig verwalteter cloudnativer Datenbankdienst vereinfacht Azure Cosmos DB die Abrechnung, da nur die Datenbankvorgänge und die Speichernutzung berechnet werden. Im Vergleich zu lokalen oder über IaaS gehostete Alternativen gibt es keine zusätzlichen Lizenzgebühren und keine Kosten für Hardware, Hilfsprogramme oder Gebäude. Wenn Sie dazu noch die Funktionalität zum Einbeziehen mehrerer Regionen berücksichtigen, sorgt der Datenbankdienst gegenüber vorhandenen lokalen oder über IaaS gehosteten Lösungen für eine deutliche Reduzierung der Kosten.
 
-- **Datenbankvorgänge**: Die Art und Weise, wie Ihre Datenbankvorgänge abgerechnet werden, hängt vom Typ des Azure Cosmos-Kontos ab, das Sie verwenden.
+- **Datenbankvorgänge** : Die Art und Weise, wie Ihre Datenbankvorgänge abgerechnet werden, hängt vom Typ des Azure Cosmos-Kontos ab, das Sie verwenden.
 
-  - **Bereitgestellter Durchsatz**: Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz in Inkrementen von 100 RU/s.
-  - **Serverlos**: Ihnen wird die Gesamtmenge der durch Ihre Datenbankvorgänge pro Stunde verbrauchten Anforderungseinheiten in Rechnung gestellt.
+  - **Bereitgestellter Durchsatz** : Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz in Inkrementen von 100 RU/s.
+  - **Serverlos** : Ihnen wird die Gesamtmenge der durch Ihre Datenbankvorgänge pro Stunde verbrauchten Anforderungseinheiten in Rechnung gestellt.
 
-- **Storage**: Für die Gesamtmenge des Speichers (in GB), der für Daten und Indizes für eine angegebene Stunde genutzt wird, wird eine Pauschale berechnet.
+- **Storage** : Für die Gesamtmenge des Speichers (in GB), der für Daten und Indizes für eine angegebene Stunde genutzt wird, wird eine Pauschale berechnet.
 
 Aktuelle Preisinformationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
@@ -313,5 +313,5 @@ Als Nächstes können Sie sich in folgenden Artikeln über die Kostenoptimierung
 * Weitere Informationen unter [Optimieren der Durchsatzkosten](optimize-cost-throughput.md)
 * Weitere Informationen unter [Optimieren der Speicherkosten](optimize-cost-storage.md)
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
-* Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
+* Weitere Informationen unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)

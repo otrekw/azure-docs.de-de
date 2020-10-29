@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320896"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482229"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Verwenden von Azure Policy zum Implementieren von Governance und Kontrollen für Azure Cosmos DB-Ressourcen
 
@@ -39,7 +39,7 @@ Geben Sie im Schritt zur Auswahl der Richtliniendefinition im Suchfeld `Cosmos D
 
 ## <a name="create-a-custom-policy-definition"></a>Erstellen einer benutzerdefinierten Richtliniendefinition
 
-Für bestimmte Szenarien, die nicht durch die integrierten Richtliniendefinitionen abgedeckt werden, können Sie eine [benutzerdefinierte Richtliniendefinition](../governance/policy/tutorials/create-custom-policy-definition.md) erstellen. Später erstellen Sie aus Ihrer benutzerdefinierten _Richtliniendefinition_ eine _Richtlinienzuweisung_.
+Für bestimmte Szenarien, die nicht durch die integrierten Richtliniendefinitionen abgedeckt werden, können Sie eine [benutzerdefinierte Richtliniendefinition](../governance/policy/tutorials/create-custom-policy-definition.md) erstellen. Später erstellen Sie aus Ihrer benutzerdefinierten _Richtliniendefinition_ eine _Richtlinienzuweisung_ .
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>Eigenschaftstypen und Eigenschaftenaliase in Richtlinienregeln
 
@@ -134,4 +134,4 @@ Informationen zum Korrigieren nicht konformer Ressourcen finden Sie im Artikel z
 
 - [Überprüfen Sie benutzerdefinierte Richtliniendefinitionen für Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), einschließlich der oben gezeigten Richtlinien für mehrere Schreibstandorte und VNet-Filterung.
 - [Erstellen einer Richtlinienzuweisung im Azure-Portal](../governance/policy/assign-policy-portal.md)
-- [Überprüfen der integrierten Azure Policy-Richtliniendefinitionen für Azure Cosmos DB](./policy-samples.md)
+- [Überprüfen der integrierten Azure Policy-Richtliniendefinitionen für Azure Cosmos DB](./policy-reference.md)

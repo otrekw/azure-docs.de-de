@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850874"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460184"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Infor CloudSuite für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-infor-cloudsuite"></a>Zuweisen von Benutzern zu Infor CloudSuite
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Infor CloudSuite benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen Infor CloudSuite wie folgt zuweisen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -50,15 +50,15 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Einrichten von Infor CloudSuite für die Bereitstellung
 
-1. Melden Sie sich bei ihrer [Infor CloudSuite-Verwaltungskonsole](https://www.infor.com/customer-center) an. Klicken Sie auf das Benutzersymbol, und navigieren Sie dann zu **Benutzerverwaltung**.
+1. Melden Sie sich bei ihrer [Infor CloudSuite-Verwaltungskonsole](https://www.infor.com/customer-center) an. Klicken Sie auf das Benutzersymbol, und navigieren Sie dann zu **Benutzerverwaltung** .
 
     ![Infor CloudSuite-Verwaltungskonsole](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  Klicken Sie auf das Menüsymbol in der linken oberen Ecke des Bildschirms. Klicken Sie auf **Verwalten**.
+2.  Klicken Sie auf das Menüsymbol in der linken oberen Ecke des Bildschirms. Klicken Sie auf **Verwalten** .
 
     ![Infor CloudSuite – Hinzufügen von SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
-3.  Navigieren Sie zu den **SCIM-Konten**.
+3.  Navigieren Sie zu den **SCIM-Konten** .
 
     ![Infor CloudSuite – SCIM-Konto](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
@@ -70,7 +70,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Der Screenshot zeigt die Infor CloudSuite-Administratorkonsole mit einer hervorgehobenen Tabellenzeile. Die Zeile enthält eine Benutzer-ID, Kennwörter und einen Zeitstempel." border="false":::
 
-5. Um das Bearertoken zu generieren, kopieren Sie die **Benutzer-ID** und das **SCIM-Kennwort**. Fügen Sie sie durch einen Doppelpunkt getrennt in den Editor (Notepad++) ein. Codieren Sie den Zeichenfolgenwert, indem Sie zu **Plug-Ins > MIME-Tools > Basic64-Codierung** navigieren. 
+5. Um das Bearertoken zu generieren, kopieren Sie die **Benutzer-ID** und das **SCIM-Kennwort** . Fügen Sie sie durch einen Doppelpunkt getrennt in den Editor (Notepad++) ein. Codieren Sie den Zeichenfolgenwert, indem Sie zu **Plug-Ins > MIME-Tools > Basic64-Codierung** navigieren. 
 
     :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Der Screenshot zeigt die Infor CloudSuite-Administratorkonsole mit einer hervorgehobenen Tabellenzeile. Die Zeile enthält eine Benutzer-ID, Kennwörter und einen Zeitstempel." border="false":::
 
@@ -86,15 +86,15 @@ Bevor Sie Infor CloudSuite für die automatische Benutzerbereitstellung mit Azur
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Infor CloudSuite** ein, wählen Sie im Ergebnisbereich **Infor CloudSuite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Infor CloudSuite** ein, wählen Sie im Ergebnisbereich **Infor CloudSuite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
     ![Infor CloudSuite in der Ergebnisliste](common/search-new-app.png)
 
@@ -103,14 +103,14 @@ Bevor Sie Infor CloudSuite für die automatische Benutzerbereitstellung mit Azur
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern und/oder Gruppen in Infor CloudSuite auf der Grundlage von Benutzer- bzw. Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Infor CloudSuite aktivieren. Befolgen Sie hierzu die Anweisungen unter [Tutorial: Azure Active Directory-Integration mit Infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für Infor CloudSuite aktivieren. Befolgen Sie hierzu die Anweisungen unter [Tutorial: Azure Active Directory-Integration mit Infor CloudSuite](./infor-cloud-suite-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 > [!NOTE]
 > Weitere Informationen zum SCIM-Endpunkt von Infor CloudSuite finden Sie [hier](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
 
 ### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Infor CloudSuite in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -118,7 +118,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Infor CloudSuite-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung**.
+3. Wählen Sie die Registerkarte **Bereitstellung** .
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -126,35 +126,35 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` ein. Geben Sie den Wert für Bearertoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Infor CloudSuite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Infor CloudSuite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` ein. Geben Sie den Wert für Bearertoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Infor CloudSuite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Infor CloudSuite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern**.
+7. Klicken Sie auf **Speichern** .
 
-8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Infor CloudSuite synchronisieren**.
+8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Infor CloudSuite synchronisieren** .
 
     ![Infor CloudSuite – Benutzerzuordnungen](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
     ![Infor CloudSuite – Benutzerattribute](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Infor CloudSuite synchronisieren**.
+10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Infor CloudSuite synchronisieren** .
 
     ![Infor CloudSuite– Gruppenzuordnungen](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
     ![Infor CloudSuite– Gruppenattribute](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Infor CloudSuite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+13. Um den Azure AD-Bereitstellungsdienst für Infor CloudSuite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -162,7 +162,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

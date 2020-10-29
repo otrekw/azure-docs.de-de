@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: ed3ea64bf76eafd965e13f4dab1911840ed8139a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282849"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477333"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
 
@@ -78,7 +78,7 @@ Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Azure Storage-Verbin
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-Verwenden Sie für `<your_storage_account>` den Namen Ihres Speicherkontos. Verwenden Sie für „<your_storage_account_key>“ den Zugriffsschlüssel für das Speicherkonto, das im [Azure-Portal](https://portal.azure.com) angegeben ist. Weitere Informationen zu Storage-Konten und Zugriffsschlüsseln finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md).
+Verwenden Sie für `<your_storage_account>` den Namen Ihres Speicherkontos. Verwenden Sie für „<your_storage_account_key>“ den Zugriffsschlüssel für das Speicherkonto, das im [Azure-Portal](https://portal.azure.com) angegeben ist. Weitere Informationen zu Storage-Konten und Zugriffsschlüsseln finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Einrichten einer Azure Cosmos DB-Verbindungszeichenfolge
 
@@ -138,7 +138,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>Hinzufügen einer Entität zu einer Tabelle
 
-Erstellen Sie zum Hinzufügen einer Entität zu einer Tabelle ein neues `table_entity`-Objekt, und übergeben Sie es an `table_operation::insert_entity`. Im folgenden Code wird der Vorname des Kunden als Zeilenschlüssel und der Nachname als Partitionsschlüssel verwendet. In Kombination miteinander wird mit dem Partitions- und Zeilenschlüssel eine Entität in der Tabelle eindeutig identifiziert. Entitäten mit dem gleichen Partitionsschlüssel können schneller abgefragt werden als Entitäten mit verschiedenen Schlüsseln. Die Nutzung von unterschiedlichen Partitionsschlüsseln ermöglicht eine bessere Skalierbarkeit paralleler Vorgänge. Weitere Informationen finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/common/storage-performance-checklist.md).
+Erstellen Sie zum Hinzufügen einer Entität zu einer Tabelle ein neues `table_entity`-Objekt, und übergeben Sie es an `table_operation::insert_entity`. Im folgenden Code wird der Vorname des Kunden als Zeilenschlüssel und der Nachname als Partitionsschlüssel verwendet. In Kombination miteinander wird mit dem Partitions- und Zeilenschlüssel eine Entität in der Tabelle eindeutig identifiziert. Entitäten mit dem gleichen Partitionsschlüssel können schneller abgefragt werden als Entitäten mit verschiedenen Schlüsseln. Die Nutzung von unterschiedlichen Partitionsschlüsseln ermöglicht eine bessere Skalierbarkeit paralleler Vorgänge. Weitere Informationen finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/blobs/storage-performance-checklist.md).
 
 Mit dem folgenden Code wird eine neue Instanz von `table_entity` mit einigen zu speichernden Kundendaten erstellt. Als Nächstes wird im Code `table_operation::insert_entity` aufgerufen, um ein `table_operation`-Objekt zum Einfügen einer Entität in eine Tabelle zu erstellen und die neue Tabellenentität zuzuordnen. Abschließend wird im Code die `execute`-Methode für das `cloud_table`-Objekt aufgerufen. Mit dem neuen `table_operation`-Element wird eine Anforderung zum Einfügen der neuen Kundenentität in die Tabelle `people` an den Tabellenspeicherdienst gesendet.  
 
@@ -501,8 +501,8 @@ else
 
 Für Visual Studio Community Edition: Falls für Ihr Projekt aufgrund der Includedateien *storage_account.h* und *table.h* Buildfehler auftreten, sollten Sie den Compilerschalter **/permissive-** entfernen:
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Eigenschaften**.
-1. Erweitern Sie im Dialogfeld **Eigenschaftenseiten** die Option **Konfigurationseigenschaften** und dann **C/C++** , und wählen Sie die Option **Sprache**.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Eigenschaften** .
+1. Erweitern Sie im Dialogfeld **Eigenschaftenseiten** die Option **Konfigurationseigenschaften** und dann **C/C++** , und wählen Sie die Option **Sprache** .
 1. Legen Sie **Konformitätsmodus** auf **Nein** fest.
 
 ## <a name="next-steps"></a>Nächste Schritte

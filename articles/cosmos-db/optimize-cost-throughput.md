@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281058"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475463"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Sie können Durchsatz für Datenbanken oder Container bereitstellen, und jede St
 
 Die folgenden Richtlinien können bei der Entscheidung für eine Durchsatzbereitstellungsstrategie hilfreich sein:
 
-**Die Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank (mit einer Gruppe von Containern) empfiehlt sich unter folgenden Voraussetzungen**:
+**Die Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank (mit einer Gruppe von Containern) empfiehlt sich unter folgenden Voraussetzungen** :
 
 1. Sie haben ein paar Dutzend Azure Cosmos-Container und möchten den Durchsatz für alle oder einige freigeben. 
 
@@ -80,7 +80,7 @@ Die nativen SDKs (.NET/.NET Core, Java, Node.js und Python) fangen diese Antwort
 
 Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesen Fällen löst der Client die Ausnahme `RequestRateTooLargeException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. `RequestRateTooLargeException` mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) ist auf 3 festgelegt. Daher wird hier, wenn für einen Anforderungsvorgang aufgrund der Überschreitung des reservierten Durchsatzes für den Container ein Ratenlimit gilt, der Anforderungsvorgang dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) ist auf 60 festgelegt. In diesem Fall wird die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) ist auf 3 festgelegt. Daher wird hier, wenn für einen Anforderungsvorgang aufgrund der Überschreitung des reservierten Durchsatzes für den Container ein Ratenlimit gilt, der Anforderungsvorgang dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) ist auf 60 festgelegt. In diesem Fall wird die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +112,7 @@ Außerdem sollten Sie, wenn Sie Azure Cosmos DB verwenden und wissen, dass Sie b
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Optimieren durch Ändern der Indizierungsrichtlinie 
 
-Standardmäßig indiziert Azure Cosmos DB automatisch jede Eigenschaft von jedem Datensatz. Dies soll die Entwicklung erleichtern und eine ausgezeichnete Leistung für viele verschiedene Arten von Ad-hoc-Abfragen sicherstellen. Bei großen Datensätzen mit Tausenden von Eigenschaften ist eine Indizierung jeder Eigenschaft mit den daraus entstehenden Durchsatzkosten wahrscheinlich nicht praktikabel, besonders wenn Sie nur 10 oder 20 dieser Eigenschaften abfragen. Nachdem Sie nun erfahren haben, wie Sie Ihre spezielle Workload in den Griff bekommen können, empfehlen wir eine Optimierung Ihres Indizierungsrichtlinie. Umfassende Informationen zur Indizierungsrichtlinie von Azure Cosmos DB finden Sie [hier](indexing-policies.md). 
+Standardmäßig indiziert Azure Cosmos DB automatisch jede Eigenschaft von jedem Datensatz. Dies soll die Entwicklung erleichtern und eine ausgezeichnete Leistung für viele verschiedene Arten von Ad-hoc-Abfragen sicherstellen. Bei großen Datensätzen mit Tausenden von Eigenschaften ist eine Indizierung jeder Eigenschaft mit den daraus entstehenden Durchsatzkosten wahrscheinlich nicht praktikabel, besonders wenn Sie nur 10 oder 20 dieser Eigenschaften abfragen. Nachdem Sie nun erfahren haben, wie Sie Ihre spezielle Workload in den Griff bekommen können, empfehlen wir eine Optimierung Ihres Indizierungsrichtlinie. Umfassende Informationen zur Indizierungsrichtlinie von Azure Cosmos DB finden Sie [hier](index-policy.md). 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Überwachen des bereitgestellten und verbrauchten Durchsatzes 
 
@@ -156,7 +156,7 @@ Die folgenden Schritte sollen Ihnen dabei helfen, Ihre Lösungen beim Einsatz vo
 
 1. Wenn Sie den bereitgestellten Durchsatz für Container und Datenbanken erheblich überdimensioniert haben, sollten Sie das Verhältnis der bereitgestellten zu den verbrauchten Anforderungseinheiten überprüfen und die Workloads optimieren.  
 
-2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md). 
+2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md). 
 
 3. Als weitere Möglichkeit zum Abrufen von Vorgängen und deren Kosten in Anforderungseinheiten können Sie Azure Monitor-Protokolle aktivieren, eine Analyse, die Vorgänge/Dauer und die Anforderungsgebühr detailliert aufschlüsselt. Azure Cosmos DB gibt die Anforderungsgebühren für jeden Vorgang an. Daher kann jede Vorgangsgebühr separat von der Antwort gespeichert und anschließend für eine Analyse verwendet werden. 
 
@@ -182,6 +182,5 @@ Als Nächstes können Sie mithilfe der folgenden Artikel mehr über die Kostenop
 * Weitere Informationen unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md)
 * Weitere Informationen unter [Optimieren der Speicherkosten](optimize-cost-storage.md)
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
-* Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
+* Weitere Informationen unter [Optimieren der Kosten von Abfragen](./optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)
-

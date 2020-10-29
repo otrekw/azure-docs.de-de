@@ -3,12 +3,12 @@ title: Richtlinien für unzustellbare Nachrichten und Wiederholungen – Azure E
 description: Hier erfahren Sie, wie Sie Ereignisübermittlungsoptionen für Event Grid anpassen. Legen Sie ein Ziel für unzustellbare Nachrichten fest, und geben Sie an, wie lange die Übermittlung wiederholt wird.
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261803"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460936"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>Festlegen eines Speicherorts und einer Wiederholungsrichtlinie für unzustellbare Nachrichten
 
@@ -17,7 +17,7 @@ Bei der Erstellung von Ereignisabonnements können Sie die Einstellungen für di
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Informationen zur Nachrichtenübermittlung, Wiederholungsversuchen und unzustellbaren Nachrichten finden Sie im folgenden Konzeptartikel: [Event Grid – Übermittlung und Wiederholung von Nachrichten]()
+> Informationen zur Nachrichtenübermittlung, Wiederholungsversuchen und unzustellbaren Nachrichten finden Sie im folgenden Konzeptartikel: [Event Grid – Übermittlung und Wiederholung von Nachrichten](delivery-and-retry.md)
 
 ## <a name="set-dead-letter-location"></a>Festlegen eines Speicherorts für unzustellbare Nachrichten
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ae99f5fc1cd6f27c46f7a4444bc75b8c773b4f74
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014544"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480002"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Was ist Azure Synapse Link für Azure Cosmos DB (Vorschau)?
 
@@ -120,9 +120,7 @@ Synapse Link wird nicht empfohlen, wenn Sie herkömmliche Data Warehouse-Anforde
 
 * Zurzeit kann der analytische Speicher nur für neue Container aktiviert werden. Wenn Sie den analytischen Speicher für vorhandene Container verwenden möchten, migrieren Sie Daten mithilfe von [Azure Cosmos DB-Migrationstools](cosmosdb-migrationchoices.md) aus Ihren vorhandenen Containern in neue Container. Sie können Synapse Link für neue und vorhandene Azure Cosmos DB-Konten aktivieren.
 
-* Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (serverlos) befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff anfordern möchten, wenden Sie sich per E-Mail an das [Azure Synapse Link-Team](mailto:cosmosdbsynapselink@microsoft.com).
-
-* Für Container mit aktiviertem Analysespeicher wird derzeit die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher nicht unterstützt. Wenn Synapse Link für ein Datenbankkonto aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall [Sicherungen](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) Ihrer Daten im Transaktionsspeicher (nur) von Containern. Beachten Sie dabei Folgendes: Wenn ein Container mit aktiviertem Analysespeicher in einem neuen Konto wiederhergestellt wird, ist im wiederhergestellten Container nur der Transaktionsspeicher aktiviert, nicht jedoch der Analysespeicher. 
+* Für Container mit aktiviertem Analysespeicher wird derzeit die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher nicht unterstützt. Wenn Synapse Link für ein Datenbankkonto aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall [Sicherungen](./online-backup-and-restore.md) Ihrer Daten im Transaktionsspeicher (nur) von Containern. Beachten Sie dabei Folgendes: Wenn ein Container mit aktiviertem Analysespeicher in einem neuen Konto wiederhergestellt wird, ist im wiederhergestellten Container nur der Transaktionsspeicher aktiviert, nicht jedoch der Analysespeicher. 
 
 * Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (bereitgestellt) ist derzeit nicht verfügbar.
 

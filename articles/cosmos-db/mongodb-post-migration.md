@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409696"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475599"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Schritte zur Optimierung nach der Migration bei Verwendung der Azure Cosmos DB-API für MongoDB
 
@@ -32,8 +32,8 @@ In diesem Leitfaden lernen Sie Folgendes:
 ## <a name="connect-your-application"></a>Verbinden Ihrer Anwendung
 
 1. Melden Sie sich in einem neuen Fenster beim [Azure-Portal](https://www.portal.azure.com/) an.
-2. Öffnen Sie im [Azure-Portal](https://www.portal.azure.com/) im linken Bereich das Menü **Alle Ressourcen**, und suchen Sie das Azure Cosmos DB-Konto, zu dem Sie Ihre Daten migriert haben.
-3. Öffnen Sie das Blatt **Verbindungszeichenfolge**. Der rechte Bereich enthält alle Informationen, die Sie zum erfolgreichen Verbinden des Kontos benötigen.
+2. Öffnen Sie im [Azure-Portal](https://www.portal.azure.com/) im linken Bereich das Menü **Alle Ressourcen** , und suchen Sie das Azure Cosmos DB-Konto, zu dem Sie Ihre Daten migriert haben.
+3. Öffnen Sie das Blatt **Verbindungszeichenfolge** . Der rechte Bereich enthält alle Informationen, die Sie zum erfolgreichen Verbinden des Kontos benötigen.
 4. Verwenden Sie die Verbindungsinformationen in der Konfiguration Ihrer Anwendung (oder an anderen relevanten Stellen) für die Verbindung Ihrer App zur Azure Cosmos DB-API für MongoDB.
 :::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Screenshot: Einstellungen für eine Verbindungszeichenfolge":::
 
@@ -53,12 +53,12 @@ Informationen zum globalen Verteilen Ihrer Daten finden Sie unter [Globales Vert
 
 ## <a name="set-consistency-level"></a>Festlegen der Konsistenzebene
 
-Azure Cosmos DB bietet 5 klar definierte [Konsistenzebenen](consistency-levels.md). Informationen zur Zuordnung zwischen den Konsistenzebenen von MongoDB und Azure Cosmos DB finden Sie unter [Konsistenzebenen und Azure Cosmos DB-APIs](consistency-levels-across-apis.md). Die Standardkonsistenzebene ist „Sitzung“. Das Ändern der Konsistenzebene ist optional, kann Ihre App jedoch optimieren. So ändern Sie die Konsistenzebene im Azure-Portal
+Azure Cosmos DB bietet 5 klar definierte [Konsistenzebenen](consistency-levels.md). Informationen zur Zuordnung zwischen den Konsistenzebenen von MongoDB und Azure Cosmos DB finden Sie unter [Konsistenzebenen und Azure Cosmos DB-APIs](./consistency-levels.md). Die Standardkonsistenzebene ist „Sitzung“. Das Ändern der Konsistenzebene ist optional, kann Ihre App jedoch optimieren. So ändern Sie die Konsistenzebene im Azure-Portal
 
 1. Wechseln Sie zum Blatt **Standardkonsistenz** unter „Einstellungen“.
 2. Wählen Sie Ihre [Konsistenzebene](consistency-levels.md) aus.
 
-Die meisten Benutzer behalten als Konsistenzebene die Standardeinstellung „Sitzung“ bei. Sie sollten jedoch die [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md) beachten.
+Die meisten Benutzer behalten als Konsistenzebene die Standardeinstellung „Sitzung“ bei. Sie sollten jedoch die [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](./consistency-levels.md) beachten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

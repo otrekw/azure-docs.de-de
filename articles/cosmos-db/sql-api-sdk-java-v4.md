@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 686c1e37e093a358bb5122fbfeccdfd98eb301ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2632d5c4fe637222cb6248d35671057430d935e7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804230"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477316"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Versionshinweise und Ressourcen zu Azure Cosmos DB Java SDK v4 für die Core (SQL)-API
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "91804230"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -43,7 +43,7 @@ Das Azure Cosmos DB Java SDK v4 für Core (SQL) kombiniert eine asynchrone API u
 >
 > Mit den folgenden drei Schritten können Sie schnell einsteigen.
 > 1. Installieren Sie die [mindestens unterstützte Java-Runtime (JDK 8)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), damit Sie das SDK verwenden können.
-> 2. Durchlaufen Sie die [Schnellstartanleitung für Azure Cosmos DB Java SDK v4](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java), um Zugriff auf das Maven-Artefakt zu erhalten und die Verwendung grundlegender Azure Cosmos DB-Anforderungen zu erlernen.
+> 2. Durchlaufen Sie die [Schnellstartanleitung für Azure Cosmos DB Java SDK v4](./create-sql-api-java.md), um Zugriff auf das Maven-Artefakt zu erhalten und die Verwendung grundlegender Azure Cosmos DB-Anforderungen zu erlernen.
 > 3. Lesen Sie die Leitfaden mit [Leistungstipps](performance-tips-java-sdk-v4-sql.md) und zur [Problembehandlung](troubleshoot-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK v4, um das SDK für Ihre Anwendung zu optimieren.
 >
 > Die [Azure Cosmos DB-Workshops und -Labs](https://aka.ms/cosmosworkshop) sind eine weitere hervorragende Ressource, um die Verwendung des Azure Cosmos DB Java SDK v4 zu erlernen!
@@ -54,9 +54,9 @@ Das Azure Cosmos DB Java SDK v4 für Core (SQL) kombiniert eine asynchrone API u
 | Inhalt | Link |
 |---|---|
 |**SDK-Download**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API-Dokumentation** | [Java-API-Referenzdokumentation](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable&preserve-view=true) |
+|**API-Dokumentation** | [Java-API-Referenzdokumentation](/java/api/overview/azure/cosmosdb/client?preserve-view=true&view=azure-java-stable) |
 |**Am SDK mitwirken** | [Azure SDK für das zentrale Java-Repository auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
-|**Erste Schritte** | [Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [GitHub-Repository mit Schnellstartcode](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**Erste Schritte** | [Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten](./create-sql-api-java.md) <br> [GitHub-Repository mit Schnellstartcode](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Einfache Codebeispiele** | [Azure Cosmos DB: Java-Beispiele für die SQL-API](sql-api-java-sdk-samples.md) <br> [GitHub-Repository mit Beispielcode](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konsolen-App mit Änderungsfeed**| [Änderungsfeed: Java SDK v4-Beispiel](create-sql-api-java-changefeed.md) <br> [GitHub-Repository mit Beispielcode](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Web-App-Beispiel**| [Erstellen einer Web-App mit dem Java SDK v4](sql-api-java-application.md) <br> [GitHub-Repository mit Beispielcode](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|

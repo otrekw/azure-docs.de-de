@@ -1,17 +1,17 @@
 ---
-title: Erfassen benutzerdefinierter JSON-Daten in Azure Monitor | Microsoft-Dokumentation
+title: Erfassen benutzerdefinierter JSON-Datenquellen mit dem Log Analytics-Agent für Linux in Azure Monitor
 description: Benutzerdefinierte JSON-Datenquellen können in Azure Monitor unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, z.B. Curl oder eines von mehr als 300 Plug-Ins von FluentD. Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce83efea9337992209f9ade1f10ebad08edd57e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86111931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461174"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Erfassen benutzerdefinierter JSON-Datenquellen mit dem Log Analytics-Agent für Linux in Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

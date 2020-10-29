@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289037"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474766"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -79,7 +79,9 @@ Im Vergleich zu anderen Optimierungsoptionen, z. B. Skalierung und Statistikver
 
 **Eine andere Datenverteilungsstrategie für eine schnellere Abfrageleistung ist erforderlich**
 
-Azure Data Warehouse ist ein verteiltes System mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP).   Daten in einer Data Warehouse-Tabelle werden mit einer von drei [Verteilungsstrategien](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin oder replicated) über 60 Knoten verteilt.  
+Azure Data Warehouse ist ein verteiltes System mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP).  
+
+Synapse SQL ist ein verteiltes Abfragesystem, das es Unternehmen ermöglicht, Data Warehousing- und Datenvirtualisierungsszenarien mithilfe standardmäßiger T-SQL-Umgebungen zu implementieren, mit denen Dateningenieure vertraut sind. Darüber hinaus erweitert es die Funktionen von SQL für Streaming- und Machine Learning-Szenarien. Daten in einer Data Warehouse-Tabelle werden mit einer von drei [Verteilungsstrategien](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin oder replicated) über 60 Knoten verteilt.  
 
 Die Datenverteilung wird zum Zeitpunkt der Tabellenerstellung angegeben und bleibt so lange unverändert, bis die Tabelle gelöscht wird. Da die materialisierte Sicht eine virtuelle Tabelle auf Datenträger ist, unterstützt sie die Datenverteilungen hash und round_robin.  Benutzer können eine Datenverteilung wählen, die sich von den Basistabellen unterscheidet, aber optimal für die Leistung von Abfragen ist, die die Sichten regelmäßig verwenden.  
 

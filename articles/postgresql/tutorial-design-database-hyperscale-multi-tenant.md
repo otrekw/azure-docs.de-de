@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2939b3b3beac55b537c1dcf844f702a0ad73f06e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895264"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478608"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -269,11 +269,11 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe erstellt. Wenn Sie diese Ressourcen nicht mehr benötigen, löschen Sie die Servergruppe. Klicken Sie auf der Seite *Übersicht* für Ihre Servergruppe auf die Schaltfläche *Löschen*. Wenn Sie auf einer Popupseite dazu aufgefordert werden, bestätigen Sie den Namen der Servergruppe, und klicken Sie abschließend auf die Schaltfläche *Löschen*.
+In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe erstellt. Wenn Sie diese Ressourcen nicht mehr benötigen, löschen Sie die Servergruppe. Klicken Sie auf der Seite *Übersicht* für Ihre Servergruppe auf die Schaltfläche *Löschen* . Wenn Sie auf einer Popupseite dazu aufgefordert werden, bestätigen Sie den Namen der Servergruppe, und klicken Sie abschließend auf die Schaltfläche *Löschen* .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten sowohl innerhalb von als auch zwischen Mandanten abzufragen und das Schema mandantenweise anzupassen.
 
-- Weitere Informationen zu [Knotentypen](https://aka.ms/hyperscale-concepts) von Servergruppen
+- Weitere Informationen zu [Knotentypen](./concepts-hyperscale-nodes.md) von Servergruppen
 - Bestimmen der besten [Anfangsgröße](howto-hyperscale-scaling.md#picking-initial-size) für Ihre Servergruppe

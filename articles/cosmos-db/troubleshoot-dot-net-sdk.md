@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: e941c941c7b406be8d6931fd7af4108137220d56
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802412"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476908"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Gehen Sie die folgende Prüfliste durch, bevor Sie Ihre Anwendung in die Produkt
 *    Verwenden Sie das neueste [SDK](sql-api-sdk-dotnet-standard.md). SDKs in der Vorschauversion sollten nicht für die Produktion verwendet werden. Dadurch wird verhindert, dass bekannte Probleme, die bereits behoben wurden, erneut auftreten.
 *    Überprüfen Sie die [Leistungstipps](performance-tips.md), und implementieren Sie die Empfehlungen. Dadurch können Skalierungs-, Latenz- und andere Leistungsprobleme vermieden werden.
 *    Aktivieren Sie die SDK-Protokollierung, um die Problembehandlung zu unterstützen. Die Aktivierung der Protokollierung kann die Leistung beeinträchtigen, weshalb es am besten ist, sie nur für die Problembehandlung zu aktivieren. Sie können die folgenden Protokolle aktivieren:
-*    [Protokollmetriken](monitor-accounts.md) im Azure-Portal. Metriken im Portal zeigen die Azure Cosmos DB-Telemetriedaten, die hilfreich sind, um festzustellen, ob das Problem im Zusammenhang mit Azure Cosmos DB steht oder ob es von der Clientseite kommt.
-*    Protokollieren Sie die [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)-Eigenschaft im V2 SDK oder die [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)-Eigenschaft im V3 SDK in den Antworten der Punktoperationen.
+*    [Protokollmetriken](./monitor-cosmos-db.md) im Azure-Portal. Metriken im Portal zeigen die Azure Cosmos DB-Telemetriedaten, die hilfreich sind, um festzustellen, ob das Problem im Zusammenhang mit Azure Cosmos DB steht oder ob es von der Clientseite kommt.
+*    Protokollieren Sie die [DiagnosticsString](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)-Eigenschaft im V2 SDK oder die [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)-Eigenschaft im V3 SDK in den Antworten der Punktoperationen.
 *    Protokollieren Sie in allen Abfrageantworten die [SQL-Abfragemetriken](sql-api-query-metrics.md). 
 *    Führen Sie das Setup für die [SDK-Protokollierung]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) aus.
 
@@ -51,7 +51,7 @@ Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen
 * Aufgrund fehlender Ressourcen auf Ihrem Clientcomputer kann es zu Verbindungs-/Verfügbarkeitsproblemen kommen. Wir empfehlen, die CPU-Auslastung auf Knoten zu überwachen, auf denen der Azure Cosmos DB-Client ausgeführt wird, und hoch bzw. zentral zu skalieren, wenn ihre Last hoch ist.
 
 ### <a name="check-the-portal-metrics"></a>Überprüfen der Metriken im Portal
-Das Überprüfen der [Metriken im Portal](monitor-accounts.md) hilft festzustellen, ob es sich um ein Problem auf Clientseite handelt oder ob es ein Problem mit dem Dienst gibt. Wenn die Metriken beispielsweise viele Anforderungen mit Ratenbegrenzungen aufweisen (HTTP-Statuscode 429), bedeutet dies, dass die Anforderung gedrosselt wird. Siehe dann den Abschnitt [Anforderungsrate zu hoch](troubleshoot-request-rate-too-large.md). 
+Das Überprüfen der [Metriken im Portal](./monitor-cosmos-db.md) hilft festzustellen, ob es sich um ein Problem auf Clientseite handelt oder ob es ein Problem mit dem Dienst gibt. Wenn die Metriken beispielsweise viele Anforderungen mit Ratenbegrenzungen aufweisen (HTTP-Statuscode 429), bedeutet dies, dass die Anforderung gedrosselt wird. Siehe dann den Abschnitt [Anforderungsrate zu hoch](troubleshoot-request-rate-too-large.md). 
 
 ## <a name="common-error-status-codes"></a>Allgemeine Fehlerstatuscodes <a id="error-codes"></a>
 
@@ -78,11 +78,11 @@ Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse]
 
 * Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](../virtual-network/virtual-networks-acl.md) ein Subnetz hinzu.
+    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](/previous-versions/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
 * Weisen Sie Ihrem [virtuellen Azure-Computer eine öffentliche IP-Adresse](../load-balancer/troubleshoot-outbound-connection.md#assignilpip) zu.
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Hohe Netzwerklatenz
-Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true)-Eigenschaft im V2 SDK oder der [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
+Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet)-Eigenschaft im V2 SDK oder der [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
 
 Wenn keine [Timeouts](troubleshoot-dot-net-sdk-request-timeout.md) vorhanden sind und die Diagnose einzelne Anforderungen zeigt, bei denen die hohe Latenz durch den Unterschied zwischen `ResponseTime` und `RequestStartTime` wie folgt ersichtlich ist (in diesem Beispiel > 300 Millisekunden):
 
@@ -94,11 +94,11 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 Diese Latenz kann mehrere Ursachen haben:
 
 * Die Anwendung wird nicht in der gleichen Region ausgeführt, in der sich auch Ihr Azure Cosmos DB-Konto befindet.
-* Die [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations)- oder [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion)-Konfiguration ist falsch und versucht, eine Verbindung zu einer anderen Region herzustellen, in der die Anwendung derzeit ausgeführt wird.
+* Die [PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations)- oder [ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion)-Konfiguration ist falsch und versucht, eine Verbindung zu einer anderen Region herzustellen, in der die Anwendung derzeit ausgeführt wird.
 * Durch hohen Datenverkehr kann es zu einem Engpass in der Netzwerkschnittstelle kommen. Wenn die Anwendung auf virtuellen Azure-Computern ausgeführt wird, gibt es mögliche Problemumgehungen:
     * Erwägen Sie die Erstellung eines [virtuellen Computers, auf dem der beschleunigte Netzwerkbetrieb aktiviert ist](../virtual-network/create-vm-accelerated-networking-powershell.md).
     * Aktivieren Sie den [beschleunigten Netzwerkbetrieb auf einem vorhandenen virtuellen Computer](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
-    * Verwenden Sie ggf. einen [leistungsfähigeren virtuellen Computer](../virtual-machines/windows/sizes.md).
+    * Verwenden Sie ggf. einen [leistungsfähigeren virtuellen Computer](../virtual-machines/sizes.md).
 
 ### <a name="common-query-issues"></a>Häufige Probleme bei Abfragen
 

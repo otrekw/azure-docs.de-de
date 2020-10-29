@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34508abdfa509dc2f8238e8e3b0dbac21c26ff7d
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801918"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476551"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -25,33 +25,33 @@ In diesem Artikel wird gezeigt, wie Sie für eine ASP.NET-Anwendung eine CI-Pipe
 
 ## <a name="install-the-emulator-build-task"></a>Installieren des Emulator-Buildtasks
 
-Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator**, und klicken Sie auf **Kostenlos erhalten**.
+Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator** , und klicken Sie auf **Kostenlos erhalten** .
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
 Wählen Sie anschließend die Organisation aus, in der die Erweiterung installiert werden soll. 
 
 > [!NOTE]
-> Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts&preserve-view=true)
+> Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen.](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
 ## <a name="create-a-build-definition"></a>Erstellen einer Builddefinition
 
-Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrer Azure DevOps-Organisation an, und suchen Sie Ihr Projekt im Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&preserve-view=true&tabs=new-nav) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
+Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrer Azure DevOps-Organisation an, und suchen Sie Ihr Projekt im Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
 
-1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.** \> **Neue Buildpipeline**
+1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds** . Klicken Sie auf **+Neu.** \> **Neue Buildpipeline**
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
-2. Wählen Sie die gewünschte **Quelle**, das **Teamprojekt**, das **Repository** und den **Standardbranch für manuelle und geplante Builds** aus. Wählen Sie **Weiter** aus, nachdem Sie alle erforderlichen Optionen ausgewählt haben.
+2. Wählen Sie die gewünschte **Quelle** , das **Teamprojekt** , das **Repository** und den **Standardbranch für manuelle und geplante Builds** aus. Wählen Sie **Weiter** aus, nachdem Sie alle erforderlichen Optionen ausgewählt haben.
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
 3. Wählen Sie abschließend die gewünschte Vorlage für die Buildpipeline aus. In diesem Tutorial wird die Vorlage **ASP.NET** ausgewählt. Sie verfügen nun über eine Buildpipeline, die Sie für die Verwendung des Azure Cosmos DB-Emulator-Buildtasks einrichten können. 
 
 > [!NOTE]
-> Im Agent-Pool, der für diese CI ausgewählt werden soll, muss Docker für Windows installiert sein, es sei denn, die Installation erfolgt manuell in einer vorherigen Aufgabe als Teil der CI. Im Artikel [Von Microsoft gehostete Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) finden Sie eine Auswahl von Agent-Pools. Wir empfehlen, mit `Hosted VS2017` zu beginnen.
+> Im Agent-Pool, der für diese CI ausgewählt werden soll, muss Docker für Windows installiert sein, es sei denn, die Installation erfolgt manuell in einer vorherigen Aufgabe als Teil der CI. Im Artikel [Von Microsoft gehostete Agents](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops) finden Sie eine Auswahl von Agent-Pools. Wir empfehlen, mit `Hosted VS2017` zu beginnen.
 
 Vom Azure Cosmos DB-Emulator wird derzeit kein gehosteter VS2019-Agent-Pool unterstützt. VS2019 ist für den Emulator jedoch bereits installiert und kann verwendet werden, indem Sie den Emulator mit den folgenden PowerShell-Cmdlets starten. Sollten bei der Verwendung von VS2019 Probleme auftreten, wenden Sie sich an das [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html)-Team:
 
@@ -64,7 +64,7 @@ Start-CosmosDbEmulator
 
 1. Bevor Sie der Buildpipeline einen Task hinzufügen, müssen Sie einen Agent-Auftrag hinzufügen. Navigieren Sie zu Ihrer Buildpipeline. Wählen Sie **...** und anschließend **Agentauftrag hinzufügen** aus.
 
-1. Wählen Sie als Nächstes das Symbol **+** neben dem Agent-Auftrag aus, um den Emulator-Buildtask hinzuzufügen. Suchen Sie über das Suchfeld nach **cosmos**, wählen Sie den **Azure Cosmos DB-Emulator** aus, und fügen Sie ihn dem Agent-Auftrag hinzu. Der Buildtask startet einen Container, in dem bereits eine Instanz des Cosmos DB-Emulators ausgeführt wird. Der Azure Cosmos DB-Emulator-Task muss vor allen anderen Tasks platziert werden, die darauf angewiesen sind, dass der Emulator bereits aktiv ist.
+1. Wählen Sie als Nächstes das Symbol **+** neben dem Agent-Auftrag aus, um den Emulator-Buildtask hinzuzufügen. Suchen Sie über das Suchfeld nach **cosmos** , wählen Sie den **Azure Cosmos DB-Emulator** aus, und fügen Sie ihn dem Agent-Auftrag hinzu. Der Buildtask startet einen Container, in dem bereits eine Instanz des Cosmos DB-Emulators ausgeführt wird. Der Azure Cosmos DB-Emulator-Task muss vor allen anderen Tasks platziert werden, die darauf angewiesen sind, dass der Emulator bereits aktiv ist.
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
@@ -92,9 +92,9 @@ Dieser Schritt ist optional und nur erforderlich, wenn Sie die CI/CD-Pipeline mi
 
 Sie konfigurieren die Tests nun zur Verwendung des Emulators. Der Emulator-Buildtask exportiert die Umgebungsvariable „CosmosDbEmulator.Endpoint“. Diese kann von nachfolgenden Tasks in der Buildpipeline verwendet werden, um Anforderungen auszugeben. 
 
-In diesem Tutorial führen Sie mithilfe des [Visual Studio-Testtasks](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) Komponententests aus, die über eine Datei vom Typ **.runsettings** konfiguriert wurden. Weitere Informationen zur Komponententesteinrichtung finden Sie in der [Dokumentation](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017&preserve-view=true). Das in diesem Dokument verwendete vollständige Codebeispiel für die To-Do-Anwendung ist auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) verfügbar.
+In diesem Tutorial führen Sie mithilfe des [Visual Studio-Testtasks](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) Komponententests aus, die über eine Datei vom Typ **.runsettings** konfiguriert wurden. Weitere Informationen zur Komponententesteinrichtung finden Sie in der [Dokumentation](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017). Das in diesem Dokument verwendete vollständige Codebeispiel für die To-Do-Anwendung ist auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) verfügbar.
 
-Nachfolgend sehen Sie ein Beispiel einer Datei vom Typ **.runsettings**, die Parameter definiert, die an die Komponententests einer Anwendung übergeben werden sollen. Beachten Sie, dass die Variable `authKey` der [bekannte Schlüssel](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) für den Emulator ist. Dieses `authKey`-Element ist der vom Emulator-Buildtask erwartete Schlüssel. Er muss in der Datei vom Typ **.runsettings** definiert sein.
+Nachfolgend sehen Sie ein Beispiel einer Datei vom Typ **.runsettings** , die Parameter definiert, die an die Komponententests einer Anwendung übergeben werden sollen. Beachten Sie, dass die Variable `authKey` der [bekannte Schlüssel](./local-emulator.md#authenticate-requests) für den Emulator ist. Dieses `authKey`-Element ist der vom Emulator-Buildtask erwartete Schlüssel. Er muss in der Datei vom Typ **.runsettings** definiert sein.
 
 ```csharp
 <RunSettings>
@@ -163,7 +163,7 @@ Navigieren Sie zu den Ausführungsoptionen im Visual Studio-Testtask. Geben Sie 
 
 ## <a name="run-the-build"></a>Führen Sie den Buildvorgang durch.
 
-Verwenden Sie nun die Option **Speichern und in Warteschlange einreihen**, um den Build zu speichern und in die Warteschlange einzureihen. 
+Verwenden Sie nun die Option **Speichern und in Warteschlange einreihen** , um den Build zu speichern und in die Warteschlange einzureihen. 
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
@@ -177,6 +177,6 @@ Nach Abschluss des Builds sehen Sie, dass Ihre Tests, die für den Cosmos DB-Emu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwenden des Emulators für lokale Entwicklungs- und Testvorgänge finden Sie unter [Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
+Weitere Informationen zum Verwenden des Emulators für lokale Entwicklungs- und Testvorgänge finden Sie unter [Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge](./local-emulator.md).
 
-Informationen zum Exportieren von TLS-/SSL-Emulatorzertifikaten finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates).
+Informationen zum Exportieren von TLS-/SSL-Emulatorzertifikaten finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js](./local-emulator-export-ssl-certificates.md).

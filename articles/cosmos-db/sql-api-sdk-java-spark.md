@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ee7e180094c1584995e5d734adbe589a112754b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326676"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477571"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB-Connector für Apache Spark für die Core-API (SQL): Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "91326676"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -42,7 +42,7 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 
 | Komponente | Version |
 |---------|-------|
-| Apache Spark | 2.4.*x*, 2.3.*x*, 2.2.*x* und 2.1.*x* |
+| Apache Spark | 2.4. *x* , 2.3. *x* , 2.2. *x* und 2.1. *x* |
 | Scala | 2.11 |
 | Azure Databricks (Laufzeitversion) | Höher als 3.4 |
 
@@ -59,7 +59,7 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 | **SDK-Download** | [Herunterladen der neuesten JAR-Datei](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG), [Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) |
 |**API-Dokumentation** | [Spark Connector-Referenz]() |
 |**Am SDK mitwirken** | [Azure Cosmos DB-Connector für Apache Spark auf GitHub](https://github.com/Azure/azure-cosmosdb-spark) | 
-|**Erste Schritte** | [Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
+|**Erste Schritte** | [Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB](./spark-connector.md#bk_working_with_connector) <br> [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>Releaseverlauf
 

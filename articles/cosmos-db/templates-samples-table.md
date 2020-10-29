@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283243"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477027"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Tabellen-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure Cosmos DB-Konten, -Datenbanken und -Container mithilfe von Azure Resource Manager-Vorlagen bereitstellen und verwalten.
 
-Dieser Artikel enthält nur Beispiele für Tabellen-API-Konten. Weitere Beispiele für andere Arten von API-Konten finden Sie in den Artikeln zur Verwendung von Azure Resource Manager-Vorlagen mit der Azure Cosmos DB-API für [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md) und [SQL](manage-sql-with-resource-manager.md).
+Dieser Artikel enthält nur Beispiele für Tabellen-API-Konten. Weitere Beispiele für andere Arten von API-Konten finden Sie in den Artikeln zur Verwendung von Azure Resource Manager-Vorlagen mit der Azure Cosmos DB-API für [Cassandra](./templates-samples-cassandra.md), [Gremlin](./templates-samples-gremlin.md), [MongoDB](./templates-samples-mongodb.md) und [SQL](./manage-with-templates.md).
 
 > [!IMPORTANT]
 >
@@ -54,7 +54,7 @@ Mit dieser Vorlage wird ein Azure Cosmos-Konto für die Tabellen-API mit einer T
 
 Hier sind einige zusätzlichen Ressourcen:
 
-* [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/)
+* [Dokumentation zu Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Schema von Azure Cosmos DB-Ressourcenanbietern](/azure/templates/microsoft.documentdb/allversions)
 * [Schnellstartvorlagen für Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)

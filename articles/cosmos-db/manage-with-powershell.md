@@ -4,24 +4,24 @@ description: Verwalten Sie Ressourcen für die Core-API (SQL) von Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840879"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481005"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Verwalten von Ressourcen für die Core-API (SQL) von Azure Cosmos DB mit PowerShell
 
-In der folgenden Anleitung erfahren Sie, wie Sie PowerShell-Skripts verwenden und die Verwaltung von Ressourcen für die Core-API (SQL) von Azure Cosmos DB (einschließlich Cosmos-Konten, Datenbanken, Container und Durchsatz) automatisieren.
+In der folgenden Anleitung erfahren Sie, wie Sie PowerShell-Skripts verwenden und die Verwaltung von Ressourcen für die Core-API (SQL) von Azure Cosmos DB (einschließlich Cosmos-Konten, Datenbanken, Container und Durchsatz) automatisieren. PowerShell-Cmdlets für andere APIs finden Sie unter [Azure PowerShell-Beispiele für Azure Cosmos DB: Cassandra-API](powershell-samples-cassandra.md), [Azure PowerShell-Beispiele für Azure Cosmos DB: MongoDB-API](powershell-samples-mongodb.md), [Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API](powershell-samples-gremlin.md) und [Azure PowerShell-Beispiele für Azure Cosmos DB: Tabellen-API](powershell-samples-table.md).
 
 > [!NOTE]
 > In den Beispielen in diesem Artikel werden die [Az.CosmosDB](/powershell/module/az.cosmosdb)-Verwaltungs-Cmdlets verwendet. Informationen zu den letzten Änderungen finden Sie auf der Referenzseite zur [Az.CosmosDB](/powershell/module/az.cosmosdb)-API.
 
-Zur plattformübergreifenden Verwaltung von Azure Cosmos DB können Sie die Cmdlets `Az` und `Az.CosmosDB` mit [PowerShell (plattformübergreifend)](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) und die [Azure CLI](manage-with-cli.md), die [REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
+Zur plattformübergreifenden Verwaltung von Azure Cosmos DB können Sie die Cmdlets `Az` und `Az.CosmosDB` mit [PowerShell (plattformübergreifend)](/powershell/scripting/install/installing-powershell) und die [Azure CLI](manage-with-cli.md), die [REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -830,9 +830,9 @@ Remove-AzResourceLock `
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-[powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
+[powershell-install-configure]: /powershell/azure/
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md
-[azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
-[azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+[azure-resource-groups]: ../azure-resource-manager/management/overview.md#resource-groups
+[azure-resource-tags]: ../azure-resource-manager/management/tag-resources.md
 [rp-rest-api]: /rest/api/cosmos-db-resource-provider/

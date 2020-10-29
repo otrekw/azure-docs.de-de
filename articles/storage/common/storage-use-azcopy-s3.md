@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 022b6eb6595f25af4189d783a6a91031f95c7216
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037115"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479356"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3 in Azure Storage mithilfe von AzCopy
 
@@ -48,7 +48,7 @@ Halten Sie Ihren AWS-Zugriffsschlüssel und geheimen Zugriffsschlüssel bereit, 
 
 ## <a name="copy-objects-directories-and-buckets"></a>Kopieren von Objekten, Verzeichnisse und Buckets
 
-Da für AzCopy die [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-API verwendet wird, werden Daten direkt zwischen AWS S3 und Speicherservern kopiert. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt.
+Da für AzCopy die [Put Block From URL](/rest/api/storageservices/put-block-from-url)-API verwendet wird, werden Daten direkt zwischen AWS S3 und Speicherservern kopiert. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt.
 
 > [!TIP]
 > In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
@@ -135,7 +135,7 @@ Wenn mit AzCopy Dateien kopiert werden, wird auch eine Überprüfung auf Namensk
 
 ## <a name="handle-differences-in-object-metadata"></a>Behandeln von Unterschieden in Objektmetadaten
 
-Bei AWS S3 und Azure sind in den Namen von Objektschlüsseln unterschiedliche Zeichen zulässig. Informationen zu den Zeichen, die in AWS S3 genutzt werden können, finden Sie [hier](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys). Auf Azure-Seite unterliegen Blobobjektschlüssel den Benennungsregeln für [C#-Bezeichner](https://docs.microsoft.com/dotnet/csharp/language-reference/).
+Bei AWS S3 und Azure sind in den Namen von Objektschlüsseln unterschiedliche Zeichen zulässig. Informationen zu den Zeichen, die in AWS S3 genutzt werden können, finden Sie [hier](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys). Auf Azure-Seite unterliegen Blobobjektschlüssel den Benennungsregeln für [C#-Bezeichner](/dotnet/csharp/language-reference/).
 
 Im Rahmen des AzCopy-Befehls `copy` können Sie einen Wert für das optionale Flag `s2s-handle-invalid-metadata` angeben. Hiermit wird festgelegt, wie Dateien verarbeitet werden sollen, bei denen die Metadaten der Datei inkompatible Schlüsselnamen enthalten. In der folgenden Tabelle werden die einzelnen Flagwerte beschrieben.
 

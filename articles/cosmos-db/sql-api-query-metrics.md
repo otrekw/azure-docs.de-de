@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280521"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477826"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
-Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](how-to-sql-query.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
+Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](./sql-query-getting-started.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
 
 * Allgemeine Informationen zur Funktionsweise der SQL-Abfrageausführung in Azure Cosmos DB
 * Informationen zu Abfrageanforderungen, Antwortheadern und Client-SDK-Optionen
@@ -275,6 +275,4 @@ Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie eini
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](sql-query-getting-started.md). 
 * Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](request-units.md).
-* Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](index-policy.md). 
-
-
+* Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](index-policy.md).

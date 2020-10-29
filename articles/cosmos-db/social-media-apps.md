@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478149"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 
-Da Sie in einer hochgradig vernetzten Welt leben, werden Sie irgendwann Teil **sozialer Netzwerke**. Sie verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was Sie bewegt, mit Menschen mit den gleichen Interessen zu teilen.
+Da Sie in einer hochgradig vernetzten Welt leben, werden Sie irgendwann Teil **sozialer Netzwerke** . Sie verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was Sie bewegt, mit Menschen mit den gleichen Interessen zu teilen.
 
 Als Techniker oder Entwickler fragen Sie sich vielleicht, wie Ihre Daten für diese Netzwerke gespeichert und verknüpft werden. Es kann auch sein, dass Sie mit dem Erstellen oder Entwerfen eines neuen sozialen Netzwerks für einen bestimmten Nischenmarkt beauftragt wurden. Spätestens dann stellt sich die entscheidende Frage: Wie werden all diese Daten gespeichert?
 
@@ -216,9 +216,9 @@ Da Sie Azure Cosmos DB nutzen, können Sie ein Suchmodul mit [Azure Cognitive S
 
 Warum ist dieser Prozess so einfach?
 
-Azure Cognitive Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch den Indizes hinzufügen, sie aktualisieren oder daraus entfernen. Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobindexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure Cosmos DB-Indexer](../search/search-howto-index-documentdb.md). Die Übergabe von Informationen von Cosmos DB an Azure Cognitive Search ist einfach. Bei beiden Technologien werden Informationen im JSON-Format gespeichert, sodass Sie nur [Ihren Index erstellen](../search/search-create-index-portal.md) und die Attribute aus Ihren Dokumenten zuordnen müssen, die indiziert werden sollen. Fertig! Ihr gesamter Inhalt ist verfügbar, um innerhalb weniger Minuten (je nach Umfang Ihrer Daten) mit der besten Search-as-a-Service-Lösung der Cloudinfrastruktur durchsucht zu werden.
+Azure Cognitive Search implementiert sogenannte [Indexer](/rest/api/searchservice/Indexer-operations). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch den Indizes hinzufügen, sie aktualisieren oder daraus entfernen. Unterstützt werden [Azure SQL-Datenbank-Indexer](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search), [Azure-Blobindexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure Cosmos DB-Indexer](../search/search-howto-index-cosmosdb.md). Die Übergabe von Informationen von Cosmos DB an Azure Cognitive Search ist einfach. Bei beiden Technologien werden Informationen im JSON-Format gespeichert, sodass Sie nur [Ihren Index erstellen](../search/search-what-is-an-index.md) und die Attribute aus Ihren Dokumenten zuordnen müssen, die indiziert werden sollen. Fertig! Ihr gesamter Inhalt ist verfügbar, um innerhalb weniger Minuten (je nach Umfang Ihrer Daten) mit der besten Search-as-a-Service-Lösung der Cloudinfrastruktur durchsucht zu werden.
 
-Weitere Informationen zu Azure Cognitive Search finden Sie im [Hitchhiker’s Guide to Search](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/) (Per Anhalter durch Azure Search).
+Weitere Informationen zu Azure Cognitive Search finden Sie im [Hitchhiker’s Guide to Search](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search) (Per Anhalter durch Azure Search).
 
 ## <a name="the-underlying-knowledge"></a>Die verborgenen Informationen
 
@@ -238,7 +238,7 @@ Eine andere Option ist die Verwendung von [Azure Cognitive Services](https://www
 
 ## <a name="a-planet-scale-social-experience"></a>Eine soziale Erfahrung im globalen Maßstab
 
-Es gibt ein letztes, aber wichtiges Thema, das angesprochen werden muss : **Skalierbarkeit**. Beim Entwerfen einer Architektur sollte jede Komponente separat skaliert werden. Letztendlich müssen Sie mehr Daten verarbeiten, oder Sie benötigen eine größere geografische Abdeckung. Glücklicherweise ist die Erreichung beider Aufgaben mit Cosmos DB so einfach wie der **schlüsselfertige** Bezug eines Hauses.
+Es gibt ein letztes, aber wichtiges Thema, das angesprochen werden muss : **Skalierbarkeit** . Beim Entwerfen einer Architektur sollte jede Komponente separat skaliert werden. Letztendlich müssen Sie mehr Daten verarbeiten, oder Sie benötigen eine größere geografische Abdeckung. Glücklicherweise ist die Erreichung beider Aufgaben mit Cosmos DB so einfach wie der **schlüsselfertige** Bezug eines Hauses.
 
 Cosmos DB unterstützt standardmäßig die dynamische Partitionierung. Partitionen werden automatisch basierend auf einem bestimmten **Partitionsschlüssel** erstellt, der in Ihren Dokumenten als Attribut definiert ist. Das Definieren des richtigen Partitionsschlüssels muss zur Entwurfszeit durchgeführt werden. Weitere Informationen finden Sie unter [Partitionierung in Azure Cosmos DB](partitioning-overview.md).
 

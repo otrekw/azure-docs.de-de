@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278185"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482603"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Cassandra-API in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Funktionsunterschiede zwischen Apache Cassandra und
 - Das Festlegen eines Replikationsfaktors von „1“ ist mit Apache Cassandra möglich. Es führt jedoch zu geringer Verfügbarkeit, wenn der einzige Knoten mit den Daten ausfällt. Dies ist bei der Cassandra-API für Azure Cosmos DB kein Problem, weil immer ein Replikationsfaktor von „4“ (Quorum von „3“) verwendet wird.
 - Das Hinzufügen oder Entfernen von Knoten in Apache Cassandra erfordert manuelle Eingriffe sowie eine hohe CPU-Auslastung auf dem neuen Knoten, während vorhandene Knoten einige ihrer Tokenbereiche auf den neuen Knoten verschieben. Das ist auch bei der Außerbetriebnahme eines vorhandenen Knotens der Fall. Die Cassandra-API kann jedoch horizontal skaliert werden, ohne dass Probleme beim Dienst oder bei der Anwendung auftreten.
 - Sie müssen nicht wie in Apache Cassandra **num_tokens** auf jedem Knoten im Cluster festlegen. Knoten und Tokenbereiche werden von Azure Cosmos DB vollständig verwaltet.
-- Die Cassandra-API wird vollständig verwaltet. Sie benötigen nicht die **nodetool**-Befehle wie „Repair“ und „Decommission“, die in Apache Cassandra verwendet werden.
+- Die Cassandra-API wird vollständig verwaltet. Sie benötigen nicht die **nodetool** -Befehle wie „Repair“ und „Decommission“, die in Apache Cassandra verwendet werden.
 
 ## <a name="other-frequently-asked-questions"></a>Weitere häufig gestellte Fragen
 
@@ -75,7 +75,7 @@ Es ist wichtig, dass Sie überprüfen, welche Vorgänge (mit welchem Umfang) die
 
 Es sind Metriken verfügbar, die Ihnen zeigen, wie der Durchsatz von einzelnen Partitionen oder in aggregierter Form über Stunden, über Tage und pro Woche (sieben Tage) verwendet wird. Weitere Informationen finden Sie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
 
-Diagnoseprotokolle werden im Artikel [Diagnoseprotokollierung für Azure Cosmos DB](logging.md) erläutert.
+Diagnoseprotokolle werden im Artikel [Diagnoseprotokollierung für Azure Cosmos DB](./monitor-cosmos-db.md) erläutert.
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Entspricht die Primärschlüsselzuordnung dem Konzept von Partitionsschlüsseln von Azure Cosmos DB?
 
@@ -135,9 +135,9 @@ Ja. TTL wird unterstützt.
 
 Azure Cosmos DB ist ein Plattformdienst, mit dem Sie Ihre Produktivität steigern können, ohne sich Gedanken über die Verwaltung und Überwachung der Infrastruktur zu machen. Sie müssen beispielsweise nicht erst den Knotenstatus, Replikatstatus, GC und Betriebssystemparameter mit verschiedenen Tools überwachen. Sie müssen nur auf den Durchsatz achten, der in den Metriken im Portal angegeben ist, um zu erkennen, ob Ihr Durchsatz gedrosselt wird, und dann können Sie diesen Durchsatz erhöhen oder verringern. Ihre Möglichkeiten:
 
-- Überwachen von [SLAs](monitor-accounts.md)
+- Überwachen von [SLAs](./monitor-cosmos-db.md)
 - Verwenden von [Metriken](use-metrics.md)
-- Verwenden von [Diagnoseprotokollen](logging.md)
+- Verwenden von [Diagnoseprotokollen](./monitor-cosmos-db.md)
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Welche Client-SDKs können mit der Cassandra-API verwendet werden?
 
@@ -187,7 +187,7 @@ Informationen zu den Migrationsoptionen finden Sie im Tutorial [Migrieren Ihrer 
 Übermitteln Sie Ihr Feedback über [Uservoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Nächste Schritte
 

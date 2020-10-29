@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: f90160ba58983414b5421542c6292f4570f1e10a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 708a7139aec7b8d3fe9e5f08df2c5e93b99d0668
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142848"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476789"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Java SDK v4 mit SQL-API-Konten
 
@@ -34,7 +34,7 @@ Das Azure Cosmos DB Java SDK v4 bietet eine clientseitige logische Darstellung f
 Beginnen Sie mit dieser Liste:
 
 * Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen] in diesem Artikel an.
-* Sehen Sie sich das Java SDK im zentralen Azure Cosmos DB-Repository an, das [Open-Source auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) verfügbar ist. Es verfügt über einen aktiv überwachten [Problemabschnitt](https://github.com/Azure/azure-sdk-for-java/issues). Überprüfen Sie, ob Sie ein ähnliches Problem finden, für das bereits eine Problemumgehung dokumentiert wurde. Ein hilfreicher Tipp ist das Filtern von Problemen nach dem Tag *cosmos:v4-item*.
+* Sehen Sie sich das Java SDK im zentralen Azure Cosmos DB-Repository an, das [Open-Source auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) verfügbar ist. Es verfügt über einen aktiv überwachten [Problemabschnitt](https://github.com/Azure/azure-sdk-for-java/issues). Überprüfen Sie, ob Sie ein ähnliches Problem finden, für das bereits eine Problemumgehung dokumentiert wurde. Ein hilfreicher Tipp ist das Filtern von Problemen nach dem Tag *cosmos:v4-item* .
 * Sehen Sie sich die [Leistungstipps](performance-tips-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK v4 an, und implementieren Sie die empfohlenen Methoden.
 * Lesen Sie den Rest dieses Artikels, falls Sie keine Lösung gefunden haben. Reichen Sie anschließend ein [GitHub-Problem](https://github.com/Azure/azure-sdk-for-java/issues) ein. Wenn es eine Option zum Hinzufügen von Tags zu Ihrem GitHub-Issue gibt, fügen Sie das Tag *cosmos:v4-item* hinzu.
 
@@ -46,7 +46,7 @@ Beginnen Sie mit dieser Liste:
 Für eine optimale Leistung:
 * Vergewissern Sie sich, dass die App in der gleichen Region ausgeführt wird, in der sich auch Ihr Azure Cosmos DB-Konto befindet. 
 * Überprüfen Sie die CPU-Auslastung auf dem Host, auf dem die App ausgeführt wird. Wenn die CPU-Auslastung 50 Prozent oder mehr beträgt, führen Sie Ihre App auf einem Host mit einer höheren Konfiguration aus. Alternativ können Sie die Last auf mehrere Computer verteilen.
-    * Wenn Sie Ihre Anwendung in Azure Kubernetes Service ausführen, können Sie [Azure Monitor zum Überwachen der CPU-Auslastung verwenden](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze).
+    * Wenn Sie Ihre Anwendung in Azure Kubernetes Service ausführen, können Sie [Azure Monitor zum Überwachen der CPU-Auslastung verwenden](../azure-monitor/insights/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Verbindungsdrosselung
 Eine Verbindungsdrosselung kann entweder aufgrund eines [Verbindungslimit auf einem Hostcomputer] oder aufgrund von [Azure SNAT-Portauslastung (PAT)] auftreten.
@@ -62,13 +62,13 @@ Die maximal zulässige Anzahl geöffneter Dateien (nofile) muss mindestens doppe
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT-Portauslastung (PAT)
 
-Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) eingeschränkt.
+Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) eingeschränkt.
 
  Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und ein Prozess auf dem virtuellen Computer versucht, eine Verbindung mit einer öffentlichen IP-Adresse herzustellen. Es gibt zwei Problemumgehungen, um die Einschränkung durch Azure SNAT zu vermeiden:
 
-* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
+    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](/previous-versions/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
 * Weisen Sie Ihrem virtuellen Azure-Computer eine öffentliche IP-Adresse zu.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Dienst nicht erreichbar – Firewall
@@ -217,5 +217,3 @@ Viele Verbindungen mit dem Azure Cosmos DB-Endpunkt befinden sich möglicherweis
 [Enable client SDK logging]: #enable-client-sice-logging
 [Verbindungslimit auf einem Hostcomputer]: #connection-limit-on-host
 [Azure SNAT-Portauslastung (PAT)]: #snat
-
-

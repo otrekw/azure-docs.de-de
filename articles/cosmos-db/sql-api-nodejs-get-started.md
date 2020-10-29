@@ -9,19 +9,19 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: 68a2d354c45820bc9f2b291701deb9066a745235
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1e0f8c301d40ff10dbf977731d457a31b096328
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297877"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477996"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Node.js-Konsolen-App mit dem JavaScript SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [Async Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [Async Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
@@ -85,7 +85,7 @@ Ihre App ist erstellt. Stellen Sie nun sicher, dass sie mit Azure Cosmos DB komm
 
 1. Öffnen Sie die Datei *config.js* in einem Text-Editor Ihrer Wahl.
 
-1. Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn in die Datei *config.js*ein. Legen Sie die Eigenschaften `endpoint` und `key` auf den Endpunkt-URI und den Primärschlüssel Ihrer Azure Cosmos DB-Instanz fest. Die Datenbank- und Containernamen werden auf **Aufgaben** und **Elemente** festgelegt. Der Partitionsschlüssel, den Sie für diese Anwendung verwenden, ist **/category**.
+1. Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn in die Datei *config.js* ein. Legen Sie die Eigenschaften `endpoint` und `key` auf den Endpunkt-URI und den Primärschlüssel Ihrer Azure Cosmos DB-Instanz fest. Die Datenbank- und Containernamen werden auf **Aufgaben** und **Elemente** festgelegt. Der Partitionsschlüssel, den Sie für diese Anwendung verwenden, ist **/category** .
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -93,7 +93,7 @@ Ihre App ist erstellt. Stellen Sie nun sicher, dass sie mit Azure Cosmos DB komm
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Screenshot: Abrufen von Schlüsseln über das Azure-Portal":::
 
-Das JavaScript SDK verwendet die generischen Begriffe *Container* und *Element*. Ein Container kann eine Sammlung, ein Graph oder eine Tabelle sein. Ein Element kann ein Dokument, ein Edge/Vertex oder eine Zeile sein und stellt den Inhalt eines Containers dar. Im vorherigen Codeausschnitt wird der `module.exports = config;`-Code verwendet, um das Konfigurationsobjekt zu exportieren, sodass Sie in der Datei *app. js* darauf verweisen können.
+Das JavaScript SDK verwendet die generischen Begriffe *Container* und *Element* . Ein Container kann eine Sammlung, ein Graph oder eine Tabelle sein. Ein Element kann ein Dokument, ein Edge/Vertex oder eine Zeile sein und stellt den Inhalt eines Containers dar. Im vorherigen Codeausschnitt wird der `module.exports = config;`-Code verwendet, um das Konfigurationsobjekt zu exportieren, sodass Sie in der Datei *app. js* darauf verweisen können.
 
 ## <a name="create-a-database-and-a-container"></a>Erstellen einer Datenbank und eines Containers
 
@@ -103,7 +103,7 @@ Das JavaScript SDK verwendet die generischen Begriffe *Container* und *Element*.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/data/databaseContext.js" id="createDatabaseAndContainer":::
 
-   Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufgeteilt sind. Sie erstellen eine Datenbank mithilfe der Funktion `createIfNotExists` oder „create“ der **Databases**-Klasse. Ein Container besteht aus Elementen. Im Falle der SQL-API sind dies JSON-Dokumente. Sie erstellen einen Container mithilfe der Funktion `createIfNotExists` oder „create“ der **Containers**-Klasse. Nachdem Sie einen Container erstellt haben, können Sie die Daten speichern und abfragen.
+   Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufgeteilt sind. Sie erstellen eine Datenbank mithilfe der Funktion `createIfNotExists` oder „create“ der **Databases** -Klasse. Ein Container besteht aus Elementen. Im Falle der SQL-API sind dies JSON-Dokumente. Sie erstellen einen Container mithilfe der Funktion `createIfNotExists` oder „create“ der **Containers** -Klasse. Nachdem Sie einen Container erstellt haben, können Sie die Daten speichern und abfragen.
 
    > [!WARNING]
    > Die Erstellung eines Containers hat Auswirkungen auf die Preise. Auf der Seite mit den [Preisen](https://azure.microsoft.com/pricing/details/cosmos-db/) finden Sie weitere Informationen.
@@ -221,6 +221,6 @@ Wenn die Ressourcengruppe, das Azure Cosmos DB-Konto und die dazugehörigen Ress
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Überwachen eines Azure Cosmos DB-Kontos](monitor-accounts.md)
+> [Überwachen eines Azure Cosmos DB-Kontos](./monitor-cosmos-db.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account

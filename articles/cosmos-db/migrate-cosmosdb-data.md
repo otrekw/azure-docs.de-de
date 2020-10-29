@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263543"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480920"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrieren Hunderter Terabytes von Daten zu Azure Cosmos DB 
 
@@ -28,17 +28,17 @@ Azure Cosmos DB-Migrationsstrategien unterscheiden sich zurzeit je nach API-Ausw
 
 Die vorhandenen Tools zum Migrieren von Daten zu Azure Cosmos DB weisen einige Einschränkungen auf, die bei großen Datenmengen besonders offensichtlich werden:
 
- * **Eingeschränkte Funktionen für das Aufskalieren**: Um Terabyte an Daten so schnell wie möglich zu Azure Cosmos DB zu migrieren und den gesamten bereitgestellten Durchsatz effektiv zu nutzen, sollte für die Migrationsclients die Möglichkeit bestehen, unbegrenzt aufskaliert zu werden.  
+ * **Eingeschränkte Funktionen für das Aufskalieren** : Um Terabyte an Daten so schnell wie möglich zu Azure Cosmos DB zu migrieren und den gesamten bereitgestellten Durchsatz effektiv zu nutzen, sollte für die Migrationsclients die Möglichkeit bestehen, unbegrenzt aufskaliert zu werden.  
 
-* **Fehlende Fortschrittsverfolgung und Prüfpunkte**: Es ist wichtig, den Migrationsfortschritt nachzuverfolgen und bei der Migration großer Datasets Prüfpunkte zu verwenden. Andernfalls wird bei allen Fehlern, die während der Migration auftreten, die Migration beendet, und Sie müssen den Prozess von Grund auf neu starten. Es wäre nicht produktiv, den gesamten Migrationsprozess neu zu starten, wenn 99 % davon bereits abgeschlossen sind.  
+* **Fehlende Fortschrittsverfolgung und Prüfpunkte** : Es ist wichtig, den Migrationsfortschritt nachzuverfolgen und bei der Migration großer Datasets Prüfpunkte zu verwenden. Andernfalls wird bei allen Fehlern, die während der Migration auftreten, die Migration beendet, und Sie müssen den Prozess von Grund auf neu starten. Es wäre nicht produktiv, den gesamten Migrationsprozess neu zu starten, wenn 99 % davon bereits abgeschlossen sind.  
 
-* **Fehlende Warteschlange für unzustellbare Nachrichten**: In großen Datasets kann es in einigen Fällen zu Problemen mit Teilen der Quelldaten kommen. Außerdem treten möglicherweise vorübergehende Probleme mit dem Client oder dem Netzwerk auf. Beide Fälle sollten nicht bewirken, dass die gesamte Migration fehlschlägt. Obwohl die meisten Migrationstools über robuste Wiederholungsfunktionen verfügen, die vor zeitweiligen Problemen schützen, ist dies nicht immer ausreichend. Wenn z.B. weniger als 0,01 % der Quelldatendokumente größer als 2 MB sind, führt dies dazu, dass das Schreiben des Dokuments in Azure Cosmos DB fehlschlägt. Im Idealfall ist es nützlich, wenn das Migrationstool diese „fehlerhaften“ Dokumente in einer anderen Warteschlange für unzustellbare Nachrichten persistent speichert, die nach der Migration verarbeitet werden kann. 
+* **Fehlende Warteschlange für unzustellbare Nachrichten** : In großen Datasets kann es in einigen Fällen zu Problemen mit Teilen der Quelldaten kommen. Außerdem treten möglicherweise vorübergehende Probleme mit dem Client oder dem Netzwerk auf. Beide Fälle sollten nicht bewirken, dass die gesamte Migration fehlschlägt. Obwohl die meisten Migrationstools über robuste Wiederholungsfunktionen verfügen, die vor zeitweiligen Problemen schützen, ist dies nicht immer ausreichend. Wenn z.B. weniger als 0,01 % der Quelldatendokumente größer als 2 MB sind, führt dies dazu, dass das Schreiben des Dokuments in Azure Cosmos DB fehlschlägt. Im Idealfall ist es nützlich, wenn das Migrationstool diese „fehlerhaften“ Dokumente in einer anderen Warteschlange für unzustellbare Nachrichten persistent speichert, die nach der Migration verarbeitet werden kann. 
 
 Viele dieser Einschränkungen werden für Tools wie Azure Data Factory und Azure Data Migration Services korrigiert. 
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Benutzerdefiniertes Tool mit BulkExecutor-Bibliothek 
 
-Die im obigen Abschnitt beschriebenen Herausforderungen können durch die Verwendung eines benutzerdefinierten Tools gelöst werden, das leicht über mehrere Instanzen hinweg horizontal skaliert werden kann und resistent gegen vorübergehende Fehler ist. Außerdem kann das benutzerdefinierte Tool die Migration an verschiedenen Prüfpunkten anhalten und dann fortsetzen. Azure Cosmos DB stellt bereits die [BulkExecutor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) bereit, die einige dieser Features enthält. Beispielsweise verfügt die BulkExecutor-Bibliothek bereits über eine Funktionalität zur Behandlung vorübergehender Fehler und kann die Aufskalierung von Threads in einem einzelnen Knoten durchführen, um ungefähr 500.000 RUs pro Knoten zu nutzen. Die BulkExecutor-Bibliothek partitioniert auch das Quelldataset in Mikrobatches, die unabhängig als eine Form von Prüfpunkten verarbeitet werden.  
+Die im obigen Abschnitt beschriebenen Herausforderungen können durch die Verwendung eines benutzerdefinierten Tools gelöst werden, das leicht über mehrere Instanzen hinweg horizontal skaliert werden kann und resistent gegen vorübergehende Fehler ist. Außerdem kann das benutzerdefinierte Tool die Migration an verschiedenen Prüfpunkten anhalten und dann fortsetzen. Azure Cosmos DB stellt bereits die [BulkExecutor-Bibliothek](./bulk-executor-overview.md) bereit, die einige dieser Features enthält. Beispielsweise verfügt die BulkExecutor-Bibliothek bereits über eine Funktionalität zur Behandlung vorübergehender Fehler und kann die Aufskalierung von Threads in einem einzelnen Knoten durchführen, um ungefähr 500.000 RUs pro Knoten zu nutzen. Die BulkExecutor-Bibliothek partitioniert auch das Quelldataset in Mikrobatches, die unabhängig als eine Form von Prüfpunkten verarbeitet werden.  
 
 Das benutzerdefinierte Tool verwendet die BulkExecutor-Bibliothek und unterstützt das horizontale Skalieren auf mehreren Clients sowie das Nachverfolgen von Fehlern während des Erfassungsvorgangs. Um dieses Tool zu verwenden, sollten die Quelldaten in verschiedene Dateien in Azure Data Lake Storage (ADLS) unterteilt werden, sodass verschiedene Migrationsworker jede Datei verwenden und in Azure Cosmos DB erfassen können. Das benutzerdefinierte Tool verwendet eine separate Sammlung, in der Metadaten zum Migrationsfortschritt für jede einzelne Quelldatei in ADLS gespeichert und alle damit verbundenen Fehler nachverfolgt werden.  
 
@@ -152,4 +152,4 @@ Sie können diesen Leitfaden zwar zum erfolgreichen Migrieren großer Datasets z
 
 * Erfahren Sie mehr darüber, indem Sie die Beispielanwendungen ausprobieren, die die BulkExecutor-Bibliothek in [.NET](bulk-executor-dot-net.md) und [Java](bulk-executor-java.md) nutzen. 
 * Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](spark-connector.md).  
-* Wenden Sie sich an das Azure Cosmos DB-Team, indem Sie unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket erstellen, um weitere Hilfe zu größeren Migrationen zu erhalten. 
+* Wenden Sie sich an das Azure Cosmos DB-Team, indem Sie unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket erstellen, um weitere Hilfe zu größeren Migrationen zu erhalten.

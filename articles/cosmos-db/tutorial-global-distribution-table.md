@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2497a1fe5bfd3618246c9590685d08894e897f3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568656"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476517"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der Tabellen-API
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Herstellen einer Verbindung mit einer bevorzugten Region mithilfe der Tabellen-API
 
-Um die [globale Verteilung](distribute-data-globally.md) nutzen zu können, sollte von Clientanwendungen der aktuelle Standort angegeben werden, an dem die Anwendung ausgeführt wird. Hierfür wird die `CosmosExecutorConfiguration.CurrentRegion`-Eigenschaft festgelegt. Die `CurrentRegion`-Eigenschaft sollte nur einen Standort enthalten. Jede Clientinstanz kann ihre eigene Region angeben, um für Lesevorgänge eine geringe Latenz zu erzielen. Für die Benennung der Region muss jeweils der [Anzeigename](https://msdn.microsoft.com/library/azure/gg441293.aspx), z. B. „USA, Westen“ verwendet werden. 
+Um die [globale Verteilung](distribute-data-globally.md) nutzen zu können, sollte von Clientanwendungen der aktuelle Standort angegeben werden, an dem die Anwendung ausgeführt wird. Hierfür wird die `CosmosExecutorConfiguration.CurrentRegion`-Eigenschaft festgelegt. Die `CurrentRegion`-Eigenschaft sollte nur einen Standort enthalten. Jede Clientinstanz kann ihre eigene Region angeben, um für Lesevorgänge eine geringe Latenz zu erzielen. Für die Benennung der Region muss jeweils der [Anzeigename](/previous-versions/azure/reference/gg441293(v=azure.100)), z. B. „USA, Westen“ verwendet werden. 
 
 Das Azure Cosmos DB Table API SDK wählt je nach Kontokonfiguration und aktueller regionaler Verfügbarkeit automatisch den optimalen Endpunkt für die Kommunikation aus. Die nächstgelegene Region erhält Vorrang, um für Clients die Latenz zu verringern. Nachdem Sie die aktuelle `CurrentRegion`-Eigenschaft festgelegt haben, werden Lese- und Schreibanforderungen wie folgt weitergeleitet:
 
@@ -47,4 +47,3 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 > [!div class="checklist"]
 > * Konfigurieren der globalen Verteilung mit dem Azure-Portal
 > * Konfigurieren der globalen Verteilung mithilfe der Table-APIs von Azure Cosmos DB
-

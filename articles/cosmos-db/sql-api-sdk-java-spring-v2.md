@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15d3b5eb0dfd5eb35b81da1c0c1ef629aa0def63
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760824"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477418"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Spring Data Azure Cosmos DB v2 für die Core (SQL)-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "91760824"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -48,14 +48,14 @@ Sie können Spring Data Azure Cosmos DB in Ihren [Azure Spring Cloud](https://a
 > Spring Data Azure Cosmos DB unterstützt nur die SQL-API.
 >
 > In den folgenden Artikeln finden Sie Informationen zu Spring Data für andere Azure Cosmos DB-APIs:
-> * [Spring Data für Apache Cassandra mit Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Spring Data MongoDB mit Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Spring Data Gremlin Starter mit Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Spring Data für Apache Cassandra mit Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB mit Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin Starter mit Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Möchten Sie schnell loslegen?
 > 1. Installieren Sie die [mindestens unterstützte Java-Runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), damit Sie das SDK verwenden können.
-> 2. Erstellen Sie eine Spring Data Azure Cosmos DB-App mit dem [Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db). Es ist ganz leicht!
-> 3. Arbeiten Sie das [Entwicklerhandbuch zu Spring Data Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) durch. Darin werden einfache Azure Cosmos DB-Anforderungen Schritt für Schritt beschrieben.
+> 2. Erstellen Sie eine Spring Data Azure Cosmos DB-App mit dem [Starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db). Es ist ganz leicht!
+> 3. Arbeiten Sie das [Entwicklerhandbuch zu Spring Data Azure Cosmos DB](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) durch. Darin werden einfache Azure Cosmos DB-Anforderungen Schritt für Schritt beschrieben.
 >
 > Sie können Spring Boot Starter-Apps mithilfe von [Spring Initializr](https://start.spring.io/) schnell erstellen!
 >
@@ -69,9 +69,9 @@ Sie können Spring Data Azure Cosmos DB in Ihren [Azure Spring Cloud](https://a
 |**Tragen zum SDK bei** | [Spring Data Azure Cosmos DB-Repository auf GitHub](https://github.com/microsoft/spring-data-cosmosdb) | 
 |**Spring Boot Starter**| [Azure Cosmos DB Spring Boot Starter: Clientbibliothek für Java](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Spring-TODO-Beispiel-App mit Azure Cosmos DB**| [End-to-End-Java-Benutzeroberfläche in App Service unter Linux (Teil 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
-|**Entwicklerhandbuch** | [Entwicklerhandbuch zu Spring Data Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Verwenden von Starter** | [Verwendung von Spring Boot Starter mit der SQL-API von Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [GitHub-Repository für Azure Cosmos DB Spring Boot Starter](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
-|**Beispiel mit Azure App Service** | [Verwenden von Spring und Azure Cosmos DB mit App Service für Linux](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Beispiel für TODO-App](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
+|**Entwicklerhandbuch** | [Entwicklerhandbuch zu Spring Data Azure Cosmos DB](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
+|**Verwenden von Starter** | [Verwendung von Spring Boot Starter mit der SQL-API von Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [GitHub-Repository für Azure Cosmos DB Spring Boot Starter](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
+|**Beispiel mit Azure App Service** | [Verwenden von Spring und Azure Cosmos DB mit App Service für Linux](/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Beispiel für TODO-App](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>Releaseverlauf
 

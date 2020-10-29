@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322698"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478115"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Tutorial: Erstellen einer Node.js-Web-App mit dem JavaScript SDK zum Verwalten eines SQL API-Kontos in Azure Cosmos DB 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91322698"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -64,13 +64,13 @@ Nun erfahren Sie, wie Sie ein einfaches „Hallo Welt“-Node.js-Projekt mithilf
 
 1. Navigieren Sie zu dem Verzeichnis, in dem Sie die neue Anwendung speichern möchten.
 
-1. Verwenden Sie den Express Generator, um eine neue Anwendung namens **todo**zu erstellen.
+1. Verwenden Sie den Express Generator, um eine neue Anwendung namens **todo** zu erstellen.
 
    ```bash
    express todo
    ```
 
-1. Öffnen Sie das Verzeichnis **todo**, und installieren Sie die Abhängigkeiten.
+1. Öffnen Sie das Verzeichnis **todo** , und installieren Sie die Abhängigkeiten.
 
    ```bash
    cd todo
@@ -93,7 +93,7 @@ Nun erfahren Sie, wie Sie ein einfaches „Hallo Welt“-Node.js-Projekt mithilf
 
 Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstellten Dateien. Diese Datei enthält eine Liste zusätzlicher Module, die für Ihre Node.js-Anwendung erforderlich sind. Wenn Sie diese Anwendung in Azure bereitstellen, wird anhand dieser Datei bestimmt, welche Module in Azure installiert werden müssen, um Ihre Anwendung zu unterstützen. Installieren Sie für dieses Tutorial zwei weitere Pakete.
 
-1. Installieren Sie das **\@azure/cosmo**s-Modul über npm. 
+1. Installieren Sie das **\@azure/cosmo** s-Modul über npm. 
 
    ```bash
    npm install @azure/cosmos
@@ -103,11 +103,11 @@ Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstell
 Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als Nächstes Code, der von der To-Do-Anwendung für die Kommunikation mit Azure Cosmos DB benötigt wird.
 
 ### <a name="create-the-model"></a>Erstellen des Modells
-1. Erstellen Sie im Stamm des Projektverzeichnisses ein neues Verzeichnis namens **models**.  
+1. Erstellen Sie im Stamm des Projektverzeichnisses ein neues Verzeichnis namens **models** .  
 
-2. Erstellen Sie im Verzeichnis **models** eine neue Datei namens **taskDao.js**. Diese Datei enthält den erforderlichen Code zum Erstellen der Datenbank und des Containers. Sie definiert auch Methoden zum Lesen, Aktualisieren, Erstellen und Finden von Aufgaben in Azure Cosmos DB. 
+2. Erstellen Sie im Verzeichnis **models** eine neue Datei namens **taskDao.js** . Diese Datei enthält den erforderlichen Code zum Erstellen der Datenbank und des Containers. Sie definiert auch Methoden zum Lesen, Aktualisieren, Erstellen und Finden von Aufgaben in Azure Cosmos DB. 
 
-3. Kopieren Sie den folgenden Code in die Datei **taskDao.js**:
+3. Kopieren Sie den folgenden Code in die Datei **taskDao.js** :
 
    ```javascript
     // @ts-check
@@ -188,9 +188,9 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 ### <a name="create-the-controller"></a>Erstellen des Controllers
 
-1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js**.  
+1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js** .  
 
-2. Fügen Sie **tasklist.js**den folgenden Code hinzu. Dieser Code lädt die Module „CosmosClient“ und „async“, die von **tasklist.js** verwendet werden. Des Weiteren definiert er die Klasse **TaskList**, die als Instanz des zuvor definierten Objekts **TaskDao** übergeben wird:
+2. Fügen Sie **tasklist.js** den folgenden Code hinzu. Dieser Code lädt die Module „CosmosClient“ und „async“, die von **tasklist.js** verwendet werden. Des Weiteren definiert er die Klasse **TaskList** , die als Instanz des zuvor definierten Objekts **TaskDao** übergeben wird:
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -249,7 +249,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 ### <a name="add-configjs"></a>Fügen Sie config.js hinzu.
 
-1. Erstellen Sie im Stamm des Projektverzeichnisses eine neue Datei namens **config.js**. 
+1. Erstellen Sie im Stamm des Projektverzeichnisses eine neue Datei namens **config.js** . 
 
 2. Fügen Sie der Datei **config.cs** den folgenden Code hinzu. Mit diesem Code werden die für Ihre Anwendung erforderlichen Konfigurationseinstellungen und Werte definiert.
    
@@ -355,15 +355,15 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
     module.exports = app
    ```
 
-3. Speichern und schließen Sie abschließend die Datei **app.js**.
+3. Speichern und schließen Sie abschließend die Datei **app.js** .
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Erstellen einer Benutzeroberfläche
 
 Als Nächstes erstellen wir die Benutzeroberfläche, damit Benutzer mit der Anwendung interagieren können. Die im vorherigen Abschnitt erstellte Express-Anwendung verwendet **Jade** als Anzeige-Engine.
 
-1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade**-Dateien. Sie wird in diesem Schritt bearbeitet, um Twitter Bootstrap zu verwenden – ein Toolkit für die Websitegestaltung.  
+1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade** -Dateien. Sie wird in diesem Schritt bearbeitet, um Twitter Bootstrap zu verwenden – ein Toolkit für die Websitegestaltung.  
 
-2. Öffnen Sie die Datei **layout.jade** (im Ordner **views**), und ersetzen Sie die Inhalte durch folgenden Code:
+2. Öffnen Sie die Datei **layout.jade** (im Ordner **views** ), und ersetzen Sie die Inhalte durch folgenden Code:
 
    ```html
    doctype html
@@ -381,7 +381,7 @@ Als Nächstes erstellen wir die Benutzeroberfläche, damit Benutzer mit der Anwe
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    Dieser Code weist die **Jade-Engine**an, einige HTML-Elemente für unsere Anwendung darzustellen, und erstellt einen **Block** mit der Bezeichnung **content**, in dem wir das Layout für unsere Inhaltsseiten angeben können. Speichern und schließen Sie die Datei **layout.jade**.
+    Dieser Code weist die **Jade-Engine** an, einige HTML-Elemente für unsere Anwendung darzustellen, und erstellt einen **Block** mit der Bezeichnung **content** , in dem wir das Layout für unsere Inhaltsseiten angeben können. Speichern und schließen Sie die Datei **layout.jade** .
 
 3. Öffnen Sie nun die Datei **index.jade** (die Ansicht, die von der Anwendung verwendet wird), und ersetzen Sie den Inhalt der Datei durch den folgenden Code:
 
@@ -487,4 +487,3 @@ Wenn die Ressourcengruppe, das Azure Cosmos DB-Konto und die dazugehörigen Ress
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
-

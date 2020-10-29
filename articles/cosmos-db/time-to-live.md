@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476976"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Mit der **Gültigkeitsdauer** (Time to Live, TTL) bietet Azure Cosmos DB die Mö
 
 Das Löschen abgelaufener Elemente ist ein im Hintergrund ausgeführter Vorgang, bei dem die verbleibenden [Anforderungseinheiten](request-units.md) (also die nicht von Benutzeranforderungen verbrauchten Anforderungseinheiten) verbraucht werden. Wenn der Container mit Anforderungen überlastet ist und nicht genügend Anforderungseinheiten (RUs) verfügbar sind, wird die Datenlöschung auch nach Ablauf der Lebensdauer verzögert. Die Daten werden gelöscht, wenn genügend Anforderungseinheiten zum Ausführen des Löschvorgangs verfügbar sind. Obwohl die Datenlöschung verzögert wird, werden die Daten nach Ablauf der Lebensdauer über keine Abfragen (über keine API) zurückgegeben.
 
-> Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](https://docs.microsoft.com/azure/cosmos-db/synapse-link) ermöglicht, klicken Sie [hier](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl).
+> Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](./synapse-link.md) ermöglicht, klicken Sie [hier](./analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="time-to-live-for-containers-and-items"></a>Gültigkeitsdauer für Container und Elemente
 

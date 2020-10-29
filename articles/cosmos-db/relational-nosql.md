@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 63663d228052934616a59f5d84ff16a6510e46c9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 613e0dbfc90586475fe0ba9820ede1359a99d3a6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282080"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482212"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Verstehen der Unterschiede zwischen NoSQL- und relationalen Datenbanken
 
-In diesem Artikel werden einige der wichtigsten Vorteile von NoSQL-Datenbanken gegenüber relationalen Datenbanken aufgeführt. Außerdem werden einige der Herausforderungen beim Arbeiten mit NoSQL erörtert. Einen tieferen Einblick in die verschiedenen vorhandenen Datenspeicher finden Sie in unserem Artikel [Auswählen des richtigen Datenspeichers](https://docs.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview).
+In diesem Artikel werden einige der wichtigsten Vorteile von NoSQL-Datenbanken gegenüber relationalen Datenbanken aufgeführt. Außerdem werden einige der Herausforderungen beim Arbeiten mit NoSQL erörtert. Einen tieferen Einblick in die verschiedenen vorhandenen Datenspeicher finden Sie in unserem Artikel [Auswählen des richtigen Datenspeichers](/azure/architecture/guide/technology-choices/data-store-overview).
 
 ## <a name="high-throughput"></a>Hoher Durchsatz
 
@@ -25,7 +25,7 @@ Eine der offensichtlichsten Herausforderungen beim Verwalten eines relationalen 
 
 In diesen Szenarien können [verteilte Datenbanken](https://en.wikipedia.org/wiki/Distributed_database) eine skalierbarere Lösung bieten. Die Wartung kann jedoch trotzdem kostspielig und zeitaufwändig sein. Administratoren müssen möglicherweise zusätzliche Arbeit leisten, um sicherzustellen, dass die Verteilung des Systems transparent ist. Möglicherweise müssen sie auch den „getrennten“ Charakter der Datenbank berücksichtigen.
 
-Durch [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction) werden diese Aufgaben und Herausforderungen vereinfacht, weil die Bereitstellung weltweit in allen Azure-Regionen erfolgt. Partitionsbereiche können dynamisch unterteilt werden, um die Datenbank nahtlos mit der Anwendung zu vergrößern, während gleichzeitig Hochverfügbarkeit aufrechterhalten wird. Durch eine differenzierte Mehrinstanzenfähigkeit und streng kontrollierte, cloudbasierte Ressourcenkontrolle werden [erstaunliche Latenzgarantien](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs#consistency-levels-and-latency) und eine vorhersagbare Leistung ermöglicht. Die Partitionierung ist vollständig verwaltet, sodass Administratoren keinen Code schreiben oder Partitionen verwalten müssen.
+Durch [Azure Cosmos DB](./introduction.md) werden diese Aufgaben und Herausforderungen vereinfacht, weil die Bereitstellung weltweit in allen Azure-Regionen erfolgt. Partitionsbereiche können dynamisch unterteilt werden, um die Datenbank nahtlos mit der Anwendung zu vergrößern, während gleichzeitig Hochverfügbarkeit aufrechterhalten wird. Durch eine differenzierte Mehrinstanzenfähigkeit und streng kontrollierte, cloudbasierte Ressourcenkontrolle werden [erstaunliche Latenzgarantien](./consistency-levels.md#consistency-levels-and-latency) und eine vorhersagbare Leistung ermöglicht. Die Partitionierung ist vollständig verwaltet, sodass Administratoren keinen Code schreiben oder Partitionen verwalten müssen.
 
 Wenn Ihr Transaktionsvolumen ein extremes Niveau (z. B. viele Tausende von Transaktionen pro Sekunde) erreicht, sollten Sie eine verteilte NoSQL-Datenbank in Erwägung ziehen. Ziehen Sie die Verwendung von Azure Cosmos DB in Betracht, um von maximaler Effizienz, einer einfachen Wartung und geringeren Gesamtbetriebskosten profitieren zu können.
 
@@ -37,7 +37,7 @@ Es gibt eine beachtliche Anzahl von Anwendungsfällen, in denen Transaktionen in
 
 Heutzutage hat die Beliebtheit von Datenbanken im Dokumentstil jedoch deutlich zugenommen. Diese Datenbanken können als eine Neuerfindung des hierarchischen Datenbankparadigmas angesehen werden, das nun nicht mehr durch Bedenken im Hinblick auf die Kosten für das Speichern von Daten auf dem Datenträger gehemmt wird. Folglich könnte die Verwaltung vieler komplexer Beziehungen zwischen übergeordneten und untergeordneten Entitäten in einer relationalen Datenbank inzwischen als Antimuster im Vergleich zu modernen dokumentenorientierten Ansätzen angesehen werden.
 
-Das Aufkommen eines [objektorientierten Entwurfs](https://en.wikipedia.org/wiki/Object-oriented_design) und der [Impedance Mismatch](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch), der bei der Kombination mit relationalen Modellen entsteht, stellen auch ein Antimuster in relationalen Datenbanken für bestimmte Anwendungsfälle dar. Dadurch können versteckte, aber oft erhebliche Wartungskosten entstehen. Obwohl [ORM-Ansätze](https://en.wikipedia.org/wiki/Object-relational_mapping) entwickelt wurden, um dies teilweise zu mildern, können dokumentenorientierte Datenbanken dennoch viel besser mit objektorientierten Ansätzen kombiniert werden. Bei diesem Ansatz sind Entwickler nicht gezwungen, sich auf ORM-Treiber oder maßgeschneiderte sprachspezifische [OO-Datenbank-Engines](https://en.wikipedia.org/wiki/Object_database) festzulegen. Wenn Ihre Daten viele Beziehungen zwischen über- und untergeordneten Elementen und tiefgreifende Hierarchieebenen enthalten, sollten Sie die Verwendung einer NoSQL-Dokumentdatenbank wie die [Azure Cosmos DB SQL-API](https://docs.microsoft.com/azure/cosmos-db/introduction) in Erwägung ziehen.
+Das Aufkommen eines [objektorientierten Entwurfs](https://en.wikipedia.org/wiki/Object-oriented_design) und der [Impedance Mismatch](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch), der bei der Kombination mit relationalen Modellen entsteht, stellen auch ein Antimuster in relationalen Datenbanken für bestimmte Anwendungsfälle dar. Dadurch können versteckte, aber oft erhebliche Wartungskosten entstehen. Obwohl [ORM-Ansätze](https://en.wikipedia.org/wiki/Object-relational_mapping) entwickelt wurden, um dies teilweise zu mildern, können dokumentenorientierte Datenbanken dennoch viel besser mit objektorientierten Ansätzen kombiniert werden. Bei diesem Ansatz sind Entwickler nicht gezwungen, sich auf ORM-Treiber oder maßgeschneiderte sprachspezifische [OO-Datenbank-Engines](https://en.wikipedia.org/wiki/Object_database) festzulegen. Wenn Ihre Daten viele Beziehungen zwischen über- und untergeordneten Elementen und tiefgreifende Hierarchieebenen enthalten, sollten Sie die Verwendung einer NoSQL-Dokumentdatenbank wie die [Azure Cosmos DB SQL-API](./introduction.md) in Erwägung ziehen.
 
 :::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="Back-End":::
 
@@ -47,11 +47,11 @@ Ironischerweise stellen relationale Datenbanken in Anbetracht ihres Namens eine 
 
 Verschiedene Formen von „Netzwerkdatenbanken“ sind in der Zeit aufgekommen, in der relationale Datenbanken entstanden sind, aber wie hierarchische Datenbanken konnten auch diese Systeme nur schwer an Popularität gewinnen. Die langsame Akzeptanz war auf fehlende Anwendungsfälle zu dieser Zeit und auf Speicherineffizienzen zurückzuführen. Heute könnten Graphdatenbank-Engines als „Wiederauferstehung“ des Netzwerkdatenbank-Paradigmas angesehen werden. Der Hauptvorteil dieser Systeme besteht darin, dass Beziehungen als „First-Class Citizens“ in der Datenbank gespeichert werden. So können Beziehungen in konstanter Zeit durchlaufen werden, anstatt mit jedem neuen Join oder Kreuzprodukt an Zeitkomplexität zuzunehmen.
 
-Wenn Sie ein komplexes Beziehungsnetzwerk in Ihrer Datenbank verwalten, sollten Sie eine Graphdatenbank wie die [Azure Cosmos DB Gremlin-API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) zum Verwalten dieser Daten in Betracht ziehen.
+Wenn Sie ein komplexes Beziehungsnetzwerk in Ihrer Datenbank verwalten, sollten Sie eine Graphdatenbank wie die [Azure Cosmos DB Gremlin-API](./graph-introduction.md) zum Verwalten dieser Daten in Betracht ziehen.
 
 :::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Back-End":::
 
-Azure Cosmos DB ist ein Datenbankdienst mit mehreren Modellen, der eine API-Projektion für alle wichtigen NoSQL-Modelltypen (Spaltenfamilie, Dokument, Graph und Schlüssel-Wert) bietet. Die Schichten der APIs [Gremlin (Graph)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) und SQL (Core) sind vollständig interoperabel. Dies bietet Vorteile beim Wechseln zwischen verschiedenen Modellen auf Programmierbarkeitsebene. Graphspeicher können in Bezug auf komplexe Netzwerktransaktionen und in Bezug auf im selben Speicher als Dokumentdatensätze modellierte Transaktionen abgefragt werden.
+Azure Cosmos DB ist ein Datenbankdienst mit mehreren Modellen, der eine API-Projektion für alle wichtigen NoSQL-Modelltypen (Spaltenfamilie, Dokument, Graph und Schlüssel-Wert) bietet. Die Schichten der APIs [Gremlin (Graph)](./gremlin-support.md) und SQL (Core) sind vollständig interoperabel. Dies bietet Vorteile beim Wechseln zwischen verschiedenen Modellen auf Programmierbarkeitsebene. Graphspeicher können in Bezug auf komplexe Netzwerktransaktionen und in Bezug auf im selben Speicher als Dokumentdatensätze modellierte Transaktionen abgefragt werden.
 
 ## <a name="fluid-schema"></a>Flexibles Schema
 
@@ -64,8 +64,8 @@ Wenn Sie Daten verwalten, deren Strukturen ständig sehr schnell geändert werde
 Das [Microservice](https://en.wikipedia.org/wiki/Microservices)-Muster hat sich in den letzten Jahren deutlich entwickelt. Dieses Muster hat seine Wurzeln in der [dienstorientierten Architektur](https://en.wikipedia.org/wiki/Service-oriented_architecture). Der De-Facto-Standard für die Datenübertragung in diesen modernen Microservice-Architekturen ist [JSON](https://en.wikipedia.org/wiki/JSON), bei dem es sich auch um das Speichermedium für die große Mehrheit der dokumentenorientierten NoSQL-Datenbanken handelt. Dadurch werden NoSQL-Dokumentspeicher zu einer viel nahtloseren Lösung für die Persistenz und Synchronisierung (unter Verwendung von [Ereignissourcingmustern](https://en.wikipedia.org/wiki/Event-driven_architecture)) in komplexen Microservice-Implementierungen. Die Wartung von herkömmlichen relationalen Datenbanken kann in diesen Architekturen sehr viel komplexer sein. Dies liegt an dem größeren Transformationsaufwand, der sowohl für den Status als auch für die Synchronisierung über APIs erforderlich ist. Insbesondere verfügt Azure Cosmos DB über zahlreiche Features, durch die der Dienst zu einer noch nahtloseren Lösung für JSON-basierte Microservice-Architekturen wird als viele NoSQL-Datenbanken:
 
 * Eine Auswahl reiner JSON-Datentypen
-* Eine JavaScript-Engine und [Abfrage-API](https://docs.microsoft.com/azure/cosmos-db/javascript-query-api), die in die Datenbank integriert sind.
-* Ein hochmoderner [Änderungsfeed](https://docs.microsoft.com/azure/cosmos-db/change-feed), den Clients abonnieren können, um über Änderungen an einem Container benachrichtigt zu werden.
+* Eine JavaScript-Engine und [Abfrage-API](./javascript-query-api.md), die in die Datenbank integriert sind.
+* Ein hochmoderner [Änderungsfeed](./change-feed.md), den Clients abonnieren können, um über Änderungen an einem Container benachrichtigt zu werden.
 
 ## <a name="some-challenges-with-nosql-databases"></a>Einige Herausforderungen bei NoSQL-Datenbanken
 
@@ -80,13 +80,13 @@ Im Hinblick auf die erste Herausforderung ist die Faustregel in NoSQL-Datenbanke
 
 Eine bewährte Methode in einer NoSQL-Dokumentdatenbank wäre die direkte Denormalisierung des Kategorienamens und der Tagnamen in einem „Produktdokument“. Um jedoch Kategorien, Tags und Produkte synchron zu halten, sind die Entwurfsoptionen, die dies erleichtern, komplexer in der Verwaltung, weil die Daten über mehrere Datensätze im Produkt dupliziert werden, anstatt eine einfache Aktualisierung in einer „Eins-zu-viele“-Beziehung und ein Join zum Abrufen der Daten zu sein. 
 
-Der Kompromiss besteht darin, dass Lesevorgänge im denormalisierten Datensatz effizienter sind und immer effizienter werden, wenn die Anzahl der konzeptionell verknüpften Entitäten zunimmt. Doch so wie die Leseeffizienz mit zunehmender Anzahl verknüpfter Entitäten in einem denormalisierten Datensatz zunimmt, erhöht sich auch die Verwaltungskomplexität der Synchronisierung von Entitäten. Eine Möglichkeit, diesen Kompromiss abzuschwächen, besteht darin, ein [Hybriddatenmodell](https://docs.microsoft.com/azure/cosmos-db/modeling-data#hybrid-data-models) zu erstellen.
+Der Kompromiss besteht darin, dass Lesevorgänge im denormalisierten Datensatz effizienter sind und immer effizienter werden, wenn die Anzahl der konzeptionell verknüpften Entitäten zunimmt. Doch so wie die Leseeffizienz mit zunehmender Anzahl verknüpfter Entitäten in einem denormalisierten Datensatz zunimmt, erhöht sich auch die Verwaltungskomplexität der Synchronisierung von Entitäten. Eine Möglichkeit, diesen Kompromiss abzuschwächen, besteht darin, ein [Hybriddatenmodell](./modeling-data.md#hybrid-data-models) zu erstellen.
 
-Obwohl NoSQL-Datenbanken mehr Flexibilität für den Umgang mit diesen Kompromissen bieten, kann eine erhöhte Flexibilität auch zu weiteren Entwurfsentscheidungen führen. Lesen Sie unseren Artikel [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example). Darin finden Sie einen Ansatz zur [Synchronisierung denormalisierter Benutzerdaten](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example#denormalizing-usernames), bei dem sich die Benutzer nicht nur in verschiedenen Partitionen, sondern auch in verschiedenen Containern befinden.
+Obwohl NoSQL-Datenbanken mehr Flexibilität für den Umgang mit diesen Kompromissen bieten, kann eine erhöhte Flexibilität auch zu weiteren Entwurfsentscheidungen führen. Lesen Sie unseren Artikel [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](./how-to-model-partition-example.md). Darin finden Sie einen Ansatz zur [Synchronisierung denormalisierter Benutzerdaten](./how-to-model-partition-example.md#denormalizing-usernames), bei dem sich die Benutzer nicht nur in verschiedenen Partitionen, sondern auch in verschiedenen Containern befinden.
 
 Im Hinblick auf eine hohe Konsistenz ist es selten, dass diese im gesamten Dataset erforderlich ist. In Fällen, in denen dies erforderlich ist, kann dies jedoch in verteilten Datenbanken eine Herausforderung darstellen. Um eine hohe Konsistenz sicherzustellen, müssen die Daten in allen Replikaten und Regionen synchronisiert werden, bevor sie von Clients gelesen werden können. Dadurch kann sich die Latenz von Lesevorgängen erhöhen.
 
-Auch hier bietet Azure Cosmos DB mehr Flexibilität als relationale Datenbanken für die verschiedenen, hier relevanten Kompromisse, aber bei kleinen Implementierungen sind bei diesem Ansatz möglicherweise weitere Entwurfsüberlegungen zu berücksichtigen. Weitere Details zu diesem Thema finden Sie in unserem Artikel [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs).
+Auch hier bietet Azure Cosmos DB mehr Flexibilität als relationale Datenbanken für die verschiedenen, hier relevanten Kompromisse, aber bei kleinen Implementierungen sind bei diesem Ansatz möglicherweise weitere Entwurfsüberlegungen zu berücksichtigen. Weitere Details zu diesem Thema finden Sie in unserem Artikel [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](./consistency-levels.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
