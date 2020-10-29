@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: e37bc2c9a6f6ad48695ce5fe346ef2402f3c6a6c
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 4a8d05c05f0c6dc357ac8ea8623ab10cae1e4335
+  ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90086265"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92895357"
 landingContent:
 - title: Info zu Azure Maps
   linkLists:
@@ -77,17 +77,17 @@ landingContent:
     - text: Verwenden des Moduls für Gebäudepläne
       url: how-to-use-indoor-module.md
     - text: Verwenden von Azure Digital Twins zum Aktualisieren eines Gebäudeplans
-      url: https://docs.microsoft.com/azure/digital-twins/how-to-integrate-maps
+      url: ../digital-twins/how-to-integrate-maps.md
   - linkListType: reference
     links:
     - text: Konvertierungsdienst
-      url: https://docs.microsoft.com/rest/api/maps/conversion
+      url: /rest/api/maps/conversion
     - text: Datasetdienst
-      url: https://docs.microsoft.com/rest/api/maps/dataset
+      url: /rest/api/maps/dataset
     - text: Kachelsetdienst
-      url: https://docs.microsoft.com/rest/api/maps/tileset
+      url: /rest/api/maps/tileset
     - text: Dienst für Featurezustand
-      url: https://docs.microsoft.com/rest/api/maps/featurestate
+      url: /rest/api/maps/featurestate
 - title: Entwickeln mit Web SDK
   linkLists:
   - linkListType: concept
@@ -121,13 +121,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Kartensteuerelement
-      url: https://docs.microsoft.com/javascript/api/azure-maps-control/
+      url: /javascript/api/azure-maps-control/
     - text: Zeichentools-Modul
-      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/
+      url: /javascript/api/azure-maps-drawing-tools/
     - text: Dienstmodule
-      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/
+      url: /javascript/api/azure-maps-rest/
     - text: Räumliches IO-Modul
-      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/
+      url: /javascript/api/azure-maps-spatial-io/
 - title: Entwickeln mit Android SDK
   linkLists:
   - linkListType: how-to-guide
@@ -165,13 +165,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Suchdienst
-      url: https://docs.microsoft.com/rest/api/maps/search
+      url: /rest/api/maps/search
     - text: Routendienst
-      url: https://docs.microsoft.com/rest/api/maps/route
+      url: /rest/api/maps/route
     - text: Verkehrsinfodienst
-      url: https://docs.microsoft.com/rest/api/maps/traffic
+      url: /rest/api/maps/traffic
     - text: Zeitzonendienst
-      url: https://docs.microsoft.com/rest/api/maps/timezone
+      url: /rest/api/maps/timezone
 - title: Räumliche Analysen
   linkLists:
   - linkListType: concept
@@ -187,9 +187,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: Datendienst
-      url: https://docs.microsoft.com/rest/api/maps/data
+      url: /rest/api/maps/data
     - text: Räumlicher Dienst
-      url: https://docs.microsoft.com/rest/api/maps/spatial
+      url: /rest/api/maps/spatial
 - title: Räumliche Analyse mit Power BI
   linkLists:
   - linkListType: how-to-guide
@@ -215,7 +215,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: Mobility Service
-      url: https://docs.microsoft.com/rest/api/maps/mobility
+      url: /rest/api/maps/mobility
 - title: Entwickeln mit Weather Services
   linkLists:
   - linkListType: concept
@@ -229,4 +229,4 @@ landingContent:
   - linkListType: reference
     links:
     - text: Weather Service
-      url: https://docs.microsoft.com/rest/api/maps/weather
+      url: /rest/api/maps/weather

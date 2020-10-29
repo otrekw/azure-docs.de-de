@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220586"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900197"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Aktualisieren der Network Watcher-Erweiterung auf die neueste Version
 
@@ -73,16 +73,16 @@ Das sieht in etwa wie folgt aus: ![Screenshot: PowerShell](./media/network-watch
 
 Ist Ihre Version niedriger als `1.4.1654.1` (die derzeit aktuelle Version), aktualisieren Sie Ihre Erweiterung mithilfe einer der folgenden Optionen:
 
-#### <a name="option-1-use-powershell"></a>Option 1: Verwenden von PowerShell
+#### <a name="option-1-use-powershell"></a>Option 1: Verwenden von PowerShell
 
 Führen Sie die folgenden Befehle aus:
 
 ```powershell
 #Linux command
-Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"   
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
 ```
 
 Falls dies nicht funktioniert, entfernen Sie die Erweiterung, und installieren Sie sie noch einmal mithilfe der folgenden Schritte. Hierdurch wird die aktuelle Version automatisch hinzugefügt.
@@ -130,14 +130,14 @@ Installieren Sie die Erweiterung erneut:
 
 ```azurecli
 #Linux command
-az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentLinux" --publisher "Microsoft.Azure.NetworkWatcher"  
+az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentLinux" --publisher "Microsoft.Azure.NetworkWatcher"
 
 #Windows command
-az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentWindows" --publisher "Microsoft.Azure.NetworkWatcher" 
+az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentWindows" --publisher "Microsoft.Azure.NetworkWatcher"
 
 ```
 
-#### <a name="option-3-reboot-your-vms"></a>Option 3: Neustarten Ihrer virtuellen Computer
+#### <a name="option-3-reboot-your-vms"></a>Option 3: Neu starten Ihrer VMs
 
 Wenn Sie für die Network Watcher-Erweiterung das automatische Upgrade aktiviert haben, starten Sie Ihre VM-Installation neu, um die aktuelle Erweiterung zu erhalten.
 

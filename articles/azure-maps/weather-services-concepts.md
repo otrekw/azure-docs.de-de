@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972040"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896726"
 ---
 # <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
 
-In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von Azure Maps](https://aka.ms/AzureMapsWeatherService) gelten. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Wetter-APIs verwenden.
+In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von Azure Maps](/rest/api/maps/weather) gelten. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Wetter-APIs verwenden.
 
 ## <a name="unit-types"></a>Einheitstypen
 
@@ -100,7 +100,7 @@ Einige der Wetterinfodienst-APIs geben den `iconCode` in der Antwort zurück. De
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Farbskala für Radar- und Satellitenbilder
 
-Über die [Get Map Tile v2-API](https://aka.ms/AzureMapsWeatherTiles) können Benutzer die neuesten Radar- und Infrarotsatellitenbilder anfordern. Weitere Informationen zur Interpretation von Farben für Radar- und Satellitenkacheln finden Sie im nachfolgenden Leitfaden.
+Über die [Get Map Tile v2-API](/rest/api/maps/renderv2/getmaptilepreview) können Benutzer die neuesten Radar- und Infrarotsatellitenbilder anfordern. Weitere Informationen zur Interpretation von Farben für Radar- und Satellitenkacheln finden Sie im nachfolgenden Leitfaden.
 
 ### <a name="radar-images"></a>Radarbilder
 
@@ -475,7 +475,7 @@ Die detaillierte Farbpalette für Infrarotsatellitenkacheln sehen Sie unten.
 
 ## <a name="index-ids-and-index-groups-ids"></a>Index-IDs and Indexgruppen-IDs
 
-Über die [API zum Abrufen von Tagesindizes](https://aka.ms/AzureMapsWeatherDailyIndices) können Benutzer die zurückgegebenen Ergebnisse auf bestimmte Indextypen oder Indexgruppen beschränken.
+Über die [API zum Abrufen von Tagesindizes](/rest/api/maps/weather) können Benutzer die zurückgegebenen Ergebnisse auf bestimmte Indextypen oder Indexgruppen beschränken.
 
 Im Anschluss finden Sie eine Tabelle mit verfügbaren Index-IDs, den zugehörigen Namen und einem Link zu deren Bereichen. Danach folgt eine Tabelle mit den verschiedenen Indexgruppen.
 
@@ -547,7 +547,7 @@ Die folgende Liste enthält verfügbare Indexgruppen (indexGroupId):
 
 ## <a name="daily-index-range-sets"></a>Tagesindexbereiche
 
-Von der [API zum Abrufen von Tagesindizes](https://aka.ms/AzureMapsWeatherDailyIndices) werden der Bereichswert und der zugehörige Kategoriename für die jeweilige Index-ID zurückgegeben. Bereiche sind nicht für alle Indizes gleich. Die folgenden Tabellen enthalten die verschiedenen Bereiche, die von den unter [Index-IDs and Indexgruppen-IDs](#index-ids-and-index-groups-ids) aufgeführten unterstützten Indizes verwendet werden. Von welchen Indizes welche Bereiche verwendet werden, erfahren Sie im Abschnitt [Index-IDs and Indexgruppen-IDs](#index-ids-and-index-groups-ids) dieses Dokuments.
+Von der [API zum Abrufen von Tagesindizes](/rest/api/maps/weather) werden der Bereichswert und der zugehörige Kategoriename für die jeweilige Index-ID zurückgegeben. Bereiche sind nicht für alle Indizes gleich. Die folgenden Tabellen enthalten die verschiedenen Bereiche, die von den unter [Index-IDs and Indexgruppen-IDs](#index-ids-and-index-groups-ids) aufgeführten unterstützten Indizes verwendet werden. Von welchen Indizes welche Bereiche verwendet werden, erfahren Sie im Abschnitt [Index-IDs and Indexgruppen-IDs](#index-ids-and-index-groups-ids) dieses Dokuments.
 
 ### <a name="poor-excellent-1"></a>Schlecht bis ausgezeichnet 1
 

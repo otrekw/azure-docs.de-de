@@ -112,7 +112,7 @@
         - name: Kubernetes-Netzwerkrichtlinien
           href: kubernetes-network-policies.md
         - name: DDoS-Schutz
-          href: ddos-protection-overview.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-overview'
         - name: TAP eines virtuellen Netzwerks
           href: virtual-network-tap-overview.md
         - name: Sicherheitskontrollen von Azure Policy
@@ -299,9 +299,9 @@
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
         - name: Verwalten des DDoS-Schutzes
-          href: manage-ddos-protection.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/manage-ddos-protection'
         - name: Durchführen des Onboardings von Partnern für DDoS Protection Standard
-          href: ddos-protection-partner-onboarding.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-partner-onboarding'
         - name: Verwalten von Netzwerksicherheitsgruppen
           href: manage-network-security-group.md
         - name: Sicherheitsszenarien

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3f5dfcafe1c7b08a2c8320f807bf809107197d40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9b732bd25e7ef8aa084c98d5b059d422f86a4b0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335278"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895408"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Anzeigen der Azure Maps-API-Nutzungsmetriken
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure 
 
 ## <a name="view-metric-snapshot"></a>Anzeigen der Metrikenmomentaufnahme
 
-Sie sehen einige gängige Metriken auf der **Übersicht**-Seite Ihres Maps-Kontos. Derzeit werden *Anforderungen gesamt*, *Fehler gesamt * und *Verfügbarkeit* für einen auswählbaren Zeitraum angezeigt.
+Sie sehen einige gängige Metriken auf der **Übersicht** -Seite Ihres Maps-Kontos. Derzeit werden *Anforderungen gesamt* , *Fehler gesamt* und *Verfügbarkeit* für einen auswählbaren Zeitraum angezeigt.
 
 ![Übersicht zu Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/portal-overview.png)
 
@@ -31,18 +31,18 @@ Fahren Sie mit dem nächsten Abschnitt fort, wenn Sie diese Diagramme für Ihre 
 
 1. Melden Sie sich bei Ihrem Azure-Abonnement im [Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf der linken Seite auf die Menüoption **Alle Ressourcen**, und navigieren Sie zu Ihrem *Azure Maps-Konto*.
+2. Klicken Sie auf der linken Seite auf die Menüoption **Alle Ressourcen** , und navigieren Sie zu Ihrem *Azure Maps-Konto* .
 
-3. Sobald Ihr Maps-Konto geöffnet ist, klicken Sie auf der linken Seite auf das Menü **Metriken**.
+3. Sobald Ihr Maps-Konto geöffnet ist, klicken Sie auf der linken Seite auf das Menü **Metriken** .
 
 4. Wählen Sie im Bereich **Metriken** eine der folgenden Optionen aus:
 
-   1. **Verfügbarkeit**, womit der *Durchschnitt* der API-Verfügbarkeit über einen bestimmten Zeitraum angezeigt wird.
-   2. **Nutzung**, die Ihnen die *Anzahl* der Nutzungen für Ihr Konto anzeigt.
+   1. **Verfügbarkeit** , womit der *Durchschnitt* der API-Verfügbarkeit über einen bestimmten Zeitraum angezeigt wird.
+   2. **Nutzung** , die Ihnen die *Anzahl* der Nutzungen für Ihr Konto anzeigt.
 
       ![Bereich für Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Als Nächstes können Sie den *Zeitbereich* wählen, indem Sie auf **Letzte 24 Stunden (automatisch)** klicken. Standardmäßig ist der Zeitraum auf 24 Stunden festgelegt. Nach dem Klicken werden alle auswählbaren Zeitbereiche angezeigt. Sie können auch die *Zeitgranularität* auswählen und in der gleichen Dropdownliste wählen, ob Sie die *lokale* oder *GMT*-Uhrzeit anzeigen möchten. Klicken Sie auf **Anwenden**.
+5. Als Nächstes können Sie den *Zeitbereich* wählen, indem Sie auf **Letzte 24 Stunden (automatisch)** klicken. Standardmäßig ist der Zeitraum auf 24 Stunden festgelegt. Nach dem Klicken werden alle auswählbaren Zeitbereiche angezeigt. Sie können auch die *Zeitgranularität* auswählen und in der gleichen Dropdownliste wählen, ob Sie die *lokale* oder *GMT* -Uhrzeit anzeigen möchten. Klicken Sie auf **Anwenden** .
 
     ![Zeitbereich für Metriken von Azure Maps](media/how-to-view-api-usage/time-range.png)
 
@@ -50,11 +50,11 @@ Fahren Sie mit dem nächsten Abschnitt fort, wenn Sie diese Diagramme für Ihre 
 
     ![Filter für Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/filter.png)
 
-7. Sie können auch basierend auf Ihrer ausgewählten Metrikeigenschaft die **Aufteilung für Ihre Metrik anwenden**. Damit kann das Diagramm in mehrere Diagramme aufgeteilt werden – jeweils eines für jeden Wert dieser Eigenschaft. In der folgenden Abbildung entspricht die Farbe jedes Diagramms dem am unteren Rand des Diagramms angezeigten Eigenschaftswert.
+7. Sie können auch basierend auf Ihrer ausgewählten Metrikeigenschaft die **Aufteilung für Ihre Metrik anwenden** . Damit kann das Diagramm in mehrere Diagramme aufgeteilt werden – jeweils eines für jeden Wert dieser Eigenschaft. In der folgenden Abbildung entspricht die Farbe jedes Diagramms dem am unteren Rand des Diagramms angezeigten Eigenschaftswert.
 
     ![Aufteilung der Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/splitting.png)
 
-8. Um mehrere Metriken im gleichen Diagramm zu beobachten, klicken Sie einfach oben auf die Schaltfläche **Metrik hinzufügen**.
+8. Um mehrere Metriken im gleichen Diagramm zu beobachten, klicken Sie einfach oben auf die Schaltfläche **Metrik hinzufügen** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -66,4 +66,4 @@ Erfahren Sie mehr über die Azure Maps-APIs, für die Sie die Nutzung verfolgen 
 > [Azure Maps Android SDK: Anleitung](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Dokumentation zur REST API von Azure Maps](https://docs.microsoft.com/rest/api/maps)
+> [Dokumentation zur REST API von Azure Maps](/rest/api/maps)

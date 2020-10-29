@@ -4,12 +4,12 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641958"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900179"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -212,7 +212,7 @@ Wenn Sie mehr Kontrolle über diesen Übergang benötigen, sollten Sie Bereitste
 
 ## <a name="deployment-slots"></a>Bereitstellungsslots
 
-Wenn Sie Ihre Funktions-App in Azure bereitstellen, können Sie als Bereitstellungsziel einen separaten Bereitstellungsslot verwenden, anstatt die Bereitstellung direkt in der Produktionsumgebung vorzunehmen. Weitere Informationen zu Bereitstellungsslots finden Sie in der Dokumentation zu [Azure Functions-Bereitstellungsslots](../app-service/deploy-staging-slots.md).
+Wenn Sie Ihre Funktions-App in Azure bereitstellen, können Sie als Bereitstellungsziel einen separaten Bereitstellungsslot verwenden, anstatt die Bereitstellung direkt in der Produktionsumgebung vorzunehmen. Weitere Informationen zu Bereitstellungsslots finden Sie in der Dokumentation zu [Azure Functions-Bereitstellungsslots](functions-deployment-slots.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

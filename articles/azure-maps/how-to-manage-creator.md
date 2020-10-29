@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677947"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895799"
 ---
 # <a name="manage-azure-maps-creator"></a>Verwalten von Azure Maps Creator
 
@@ -25,19 +25,19 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Creator-Ressou
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
-2. Wählen Sie Ihr Azure Maps-Konto aus. Sollte Ihr Azure Maps-Konto unter **Kürzlich verwendete Ressourcen** nicht angezeigt werden, navigieren Sie zum Azure-Portalmenü. Wählen Sie **Alle Ressourcen**. Navigieren Sie zu Ihrem Azure Maps-Konto, und wählen Sie es aus.
+2. Wählen Sie Ihr Azure Maps-Konto aus. Sollte Ihr Azure Maps-Konto unter **Kürzlich verwendete Ressourcen** nicht angezeigt werden, navigieren Sie zum Azure-Portalmenü. Wählen Sie **Alle Ressourcen** . Navigieren Sie zu Ihrem Azure Maps-Konto, und wählen Sie es aus.
 
     ![Startseite des Azure Maps-Portals](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Navigieren Sie auf der Seite des Azure Maps-Kontos unter **Creator** zur Option **Übersicht**. Klicken Sie auf **Erstellen**, um eine Azure Maps Creator-Ressource zu erstellen.
+3. Navigieren Sie auf der Seite des Azure Maps-Kontos unter **Creator** zur Option **Übersicht** . Klicken Sie auf **Erstellen** , um eine Azure Maps Creator-Ressource zu erstellen.
 
     ![Azure Maps Creator-Erstellungsseite](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Geben Sie den Namen und den Standort für Ihre Creator-Ressource ein. Aktuell wird Creator nur in den USA unterstützt. Klicken Sie auf **Überprüfen + erstellen**.
+4. Geben Sie den Namen und den Standort für Ihre Creator-Ressource ein. Aktuell wird Creator nur in den USA unterstützt. Klicken Sie auf **Überprüfen + erstellen** .
 
    ![Seite zum Eingeben der Creator-Kontoinformationen](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Überprüfen Sie Ihre Einstellungen, und klicken Sie auf **Erstellen**.
+5. Überprüfen Sie Ihre Einstellungen, und klicken Sie auf **Erstellen** .
 
     ![Seite zum Bestätigen der Creator-Kontoeinstellungen](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -45,7 +45,7 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Creator-Ressou
 
    ![Statusseite für die Ressourcenbereitstellung](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. Klicken Sie auf **Zu Ressource wechseln**. Auf der Ansichtsseite Ihrer Creator-Ressource werden der Status Ihrer Creator-Ressource und die gewählte demografische Region angezeigt.
+7. Klicken Sie auf **Zu Ressource wechseln** . Auf der Ansichtsseite Ihrer Creator-Ressource werden der Status Ihrer Creator-Ressource und die gewählte demografische Region angezeigt.
 
     ![Creator-Statusseite](./media/how-to-manage-creator/creator-resource-view.png)
 
@@ -61,7 +61,7 @@ Navigieren Sie zum Löschen der Creator-Ressource zu Ihrem Azure Maps-Konto. W�
 
 ![Creator-Seite mit Schaltfläche „Löschen“](./media/how-to-manage-creator/creator-delete.png)
 
-Klicken Sie auf die Schaltfläche **Löschen**, und geben Sie Ihren Creator-Namen ein, um den Löschvorgang zu bestätigen. Nach dem Löschen der Ressource wird eine Bestätigungsseite wie die folgende angezeigt:
+Klicken Sie auf die Schaltfläche **Löschen** , und geben Sie Ihren Creator-Namen ein, um den Löschvorgang zu bestätigen. Nach dem Löschen der Ressource wird eine Bestätigungsseite wie die folgende angezeigt:
 
 ![Creator-Seite mit Löschbestätigung](./media/how-to-manage-creator/creator-confirmdelete.png)
 
@@ -69,7 +69,7 @@ Klicken Sie auf die Schaltfläche **Löschen**, und geben Sie Ihren Creator-Name
 
 Von Creator werden die Zugriffssteuerungseinstellungen (IAM) von Azure Maps geerbt. Alle API-Aufrufe für Datenzugriff müssen mit Authentifizierungs- und Autorisierungsregeln gesendet werden.
 
-Creator-Nutzungsdaten fließen in Ihre Azure Maps-Nutzungsdiagramme und in das Aktivitätsprotokoll mit ein.  Weitere Informationen finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Creator-Nutzungsdaten fließen in Ihre Azure Maps-Nutzungsdiagramme und in das Aktivitätsprotokoll mit ein.  Weitere Informationen finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="access-to-creator-services"></a>Zugreifen auf Creator-Dienste
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311087"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897091"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -39,7 +39,7 @@ Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP/HTTPS-URL zu einer
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK für Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installieren, um eine Karte zu laden.
+Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK für Azure Maps](./how-to-use-android-map-control-library.md) installieren, um eine Karte zu laden.
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Hinzufügen einer Kachelebene zur Karte
@@ -48,7 +48,7 @@ Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK f�
 
 Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufüg
     </FrameLayout>
     ```
 
-2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()**-Methode Ihrer `MainActivity.java`-Klasse.
+2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufüg
     });
     ```
     
-    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Anschließend wird ein `TileLayer`-Objekt erstellt und eine formatierte**xyz**-Kachel-URL an die `tileUrl`-Option weitergeleitet. Die Deckkraft der Ebene ist auf `0.8` festgelegt, und da die Kacheln des Kacheldiensts 256 Pixel aufweisen, werden diese Informationen an die `tileSize`-Option übermittelt. Die Kachelebene wird dann an den Kartenebenen-Manager weitergeleitet.
+    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Anschließend wird ein `TileLayer`-Objekt erstellt und eine formatierte **xyz** -Kachel-URL an die `tileUrl`-Option weitergeleitet. Die Deckkraft der Ebene ist auf `0.8` festgelegt, und da die Kacheln des Kacheldiensts 256 Pixel aufweisen, werden diese Informationen an die `tileSize`-Option übermittelt. Die Kachelebene wird dann an den Kartenebenen-Manager weitergeleitet.
 
     Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
     
@@ -179,4 +179,4 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt eine Lin
 Im folgenden Artikel erfahren Sie mehr zum Festlegen von Kartenstilen.
 
 > [!div class="nextstepaction"]
-> [Ändern von Kartenstilen auf Android-Karten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Ändern von Kartenstilen auf Android-Karten](./set-android-map-styles.md)

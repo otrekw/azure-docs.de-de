@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04773ef279717c7728cf1b07761c6e4c0726a877
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311307"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897125"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Form zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -21,14 +21,14 @@ Dieser Artikel zeigt Ihnen, wie Sie mit dem Android SDK für Azure Maps Formen a
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK für Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installieren, um eine Karte zu laden.
+Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK für Azure Maps](./how-to-use-android-map-control-library.md) installieren, um eine Karte zu laden.
 
 
 ## <a name="add-a-line-to-the-map"></a>Hinzufügen einer Linie zur Karte
 
 Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Führen Sie die folgenden Schritte aus, um eine Linie auf der Karte hinzuzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
     </FrameLayout>
     ```
 
-2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()**-Methode Ihrer `MainActivity.java`-Klasse.
+2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,7 +76,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
 
     ```
     
-    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Dann erstellt er ein Datenquellenobjekt mithilfe der **DataSource**-Klasse und fügt es der Karte hinzu. Anschließend wird eine Liste mit **Point**-Objekten erstellt. Eine **LineString** wird anhand der Liste der Punkte erstellt und der Datenquelle hinzugefügt. Eine **Linienebene** rendert Linienobjekte, die von einer Datenquelle auf der Karte umschlossen sind. Anschließend wird eine Linienebene erstellt, der die Datenquelle hinzugefügt wird.
+    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Dann erstellt er ein Datenquellenobjekt mithilfe der **DataSource** -Klasse und fügt es der Karte hinzu. Anschließend wird eine Liste mit **Point** -Objekten erstellt. Eine **LineString** wird anhand der Liste der Punkte erstellt und der Datenquelle hinzugefügt. Eine **Linienebene** rendert Linienobjekte, die von einer Datenquelle auf der Karte umschlossen sind. Anschließend wird eine Linienebene erstellt, der die Datenquelle hinzugefügt wird.
 
     Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
     
@@ -185,7 +185,7 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt eine Lin
 
 Mit der **Polygonebene** können Sie den Bereich des Polygons auf der Karte rendern. Gehen Sie folgendermaßen vor, um der Karte ein Polygon hinzuzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -238,7 +238,7 @@ Mit der **Polygonebene** können Sie den Bereich des Polygons auf der Karte rend
     });
     ```
 
-    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Dann erstellt er ein Datenquellenobjekt mithilfe der **DataSource**-Klasse und fügt es der Karte hinzu. Ein **Polygon**-Objekt wird dann anhand einer Liste von **Point**-Objekten erstellt und der Datenquelle hinzugefügt. Eine **Polygonebene** rendert Daten, die von der Datenquelle auf der Karte umschlossen sind. Anschließend wird eine Polygonebene erstellt, um den Polygonbereich zu rendern, dem die Datenquelle hinzugefügt wird. Eine **Linienebene** rendert Linienobjekte, die von einer Datenquelle umschlossen sind. Der letzte Teil des Codeausschnitts erzeugt eine Linienebene, um den Umriss des Polygons zu rendern, dem die Datenquelle hinzugefügt wird.
+    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Dann erstellt er ein Datenquellenobjekt mithilfe der **DataSource** -Klasse und fügt es der Karte hinzu. Ein **Polygon** -Objekt wird dann anhand einer Liste von **Point** -Objekten erstellt und der Datenquelle hinzugefügt. Eine **Polygonebene** rendert Daten, die von der Datenquelle auf der Karte umschlossen sind. Anschließend wird eine Polygonebene erstellt, um den Polygonbereich zu rendern, dem die Datenquelle hinzugefügt wird. Eine **Linienebene** rendert Linienobjekte, die von einer Datenquelle umschlossen sind. Der letzte Teil des Codeausschnitts erzeugt eine Linienebene, um den Umriss des Polygons zu rendern, dem die Datenquelle hinzugefügt wird.
 
     Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
 

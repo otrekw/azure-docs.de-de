@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie den Podzugang mittels Podsicherheitsrich
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: bec9c7b4be5c3c3e334a8e3cb3a8b2e0a7130de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9f6ead7edea7a3a6240e116d3073ea01fa9f6bb
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669303"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900112"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Vorschauversion: Schützen Ihres Clusters mithilfe von Podsicherheitsrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Zur Verbesserung der Sicherheit Ihres AKS-Clusters können Sie einschränken, we
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
@@ -58,7 +58,7 @@ Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wi
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService* :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="overview-of-pod-security-policies"></a>Übersicht über Podsicherheitsrichtlinien
 
-In einem Kubernetes-Cluster wird eine Zugangssteuerung verwendet, um an den API-Server gerichtete Anforderungen abzufangen, wenn eine Ressource erstellt werden soll. Die Zugangssteuerung kann dann die Ressourcenanforderung anhand einer Reihe von Regeln *überprüfen* oder die Ressource *mutieren*, um die Bereitstellungsparameter zu ändern.
+In einem Kubernetes-Cluster wird eine Zugangssteuerung verwendet, um an den API-Server gerichtete Anforderungen abzufangen, wenn eine Ressource erstellt werden soll. Die Zugangssteuerung kann dann die Ressourcenanforderung anhand einer Reihe von Regeln *überprüfen* oder die Ressource *mutieren* , um die Bereitstellungsparameter zu ändern.
 
 *PodSecurityPolicy* ist eine Zugangssteuerung, die überprüft, ob eine Podspezifikation die von Ihnen definierten Anforderungen erfüllt. Diese Anforderungen schränken möglicherweise die Verwendung privilegierter Container, den Zugriff auf bestimmte Arten von Speicher oder die Benutzer/Gruppen ein, als die der Container ausgeführt werden kann. Wenn Sie versuchen, eine Ressource bereitzustellen, bei der die Podspezifikationen nicht die in der Podsicherheitsrichtlinie beschriebenen Anforderungen erfüllen, wird die Anforderung abgelehnt. Die Möglichkeit zu steuern, welche Pods im AKS-Cluster geplant werden können, beugt einigen möglichen Sicherheitsrisiken und Rechteausweitungen vor.
 
@@ -134,16 +134,16 @@ Es ist wichtig zu verstehen, wie diese Standardrichtlinien mit den Benutzeranfor
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>Erstellen eines Testbenutzers in einem AKS-Cluster
 
-Bei Verwendung des Befehls [az aks get-credentials][az-aks-get-credentials] werden Ihrer `kubectl`-Konfiguration standardmäßig die Administratoranmeldeinformationen (*admin*) für den AKS-Cluster hinzugefügt. Der Administratorbenutzer umgeht die Erzwingung von Podsicherheitsrichtlinien. Wenn Sie für Ihre AKS-Cluster die Azure Active Directory-Integration verwenden, können Sie sich mit den Anmeldeinformationen eines Benutzers ohne Administratorrechte anmelden, um die Erzwingung von Richtlinien in Aktion zu sehen. In diesem Artikel erstellen wir ein Testbenutzerkonto im AKS-Cluster, das Sie verwenden können.
+Bei Verwendung des Befehls [az aks get-credentials][az-aks-get-credentials] werden Ihrer `kubectl`-Konfiguration standardmäßig die Administratoranmeldeinformationen ( *admin* ) für den AKS-Cluster hinzugefügt. Der Administratorbenutzer umgeht die Erzwingung von Podsicherheitsrichtlinien. Wenn Sie für Ihre AKS-Cluster die Azure Active Directory-Integration verwenden, können Sie sich mit den Anmeldeinformationen eines Benutzers ohne Administratorrechte anmelden, um die Erzwingung von Richtlinien in Aktion zu sehen. In diesem Artikel erstellen wir ein Testbenutzerkonto im AKS-Cluster, das Sie verwenden können.
 
-Erstellen Sie mithilfe des Befehls [kubectl create namespace][kubectl-create] einen Beispielnamespace namens *psp-aks* für Testressourcen. Erstellen Sie anschließend mithilfe des Befehls [kubectl create serviceaccount][kubectl-create] ein Dienstkonto namens *nonadmin-user*:
+Erstellen Sie mithilfe des Befehls [kubectl create namespace][kubectl-create] einen Beispielnamespace namens *psp-aks* für Testressourcen. Erstellen Sie anschließend mithilfe des Befehls [kubectl create serviceaccount][kubectl-create] ein Dienstkonto namens *nonadmin-user* :
 
 ```console
 kubectl create namespace psp-aks
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
 ```
 
-Erstellen Sie als Nächstes mithilfe des Befehls [kubectl create rolebinding][kubectl-create] eine Rollenbindung für *nonadmin-user*, um grundlegende Aktionen im Namespace ausführen zu können:
+Erstellen Sie als Nächstes mithilfe des Befehls [kubectl create rolebinding][kubectl-create] eine Rollenbindung für *nonadmin-user* , um grundlegende Aktionen im Namespace ausführen zu können:
 
 ```console
 kubectl create rolebinding \
@@ -158,7 +158,7 @@ kubectl create rolebinding \
 Zur Verdeutlichung des Unterschieds bei der Verwendung von `kubectl` zwischen dem regulären Administratorbenutzer und dem Benutzer ohne Administratorrechte, der in den vorherigen Schritten erstellt wurde, erstellen wir zwei Befehlszeilenaliase:
 
 * Der Alias **kubectl-admin** ist für den regulären Administratorbenutzer vorgesehen und auf den Namespace *psp-aks* ausgerichtet.
-* Der Alias **kubectl-nonadminuser** ist für den im vorherigen Schritt erstellten Benutzer ohne Administratorrechte (*nonadmin-user*) vorgesehen und auf den Namespace *psp-aks* ausgerichtet.
+* Der Alias **kubectl-nonadminuser** ist für den im vorherigen Schritt erstellten Benutzer ohne Administratorrechte ( *nonadmin-user* ) vorgesehen und auf den Namespace *psp-aks* ausgerichtet.
 
 Erstellen Sie diese beiden Aliase wie in den folgenden Befehlen gezeigt:
 
@@ -181,7 +181,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx:1.14.2
+      image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
       securityContext:
         privileged: true
 ```
@@ -216,7 +216,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx:1.14.2
+      image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
 ```
 
 Erstellen Sie den Pod mithilfe des Befehls [kubectl apply][kubectl-apply], und geben Sie den Namen Ihres YAML-Manifests an:
@@ -249,7 +249,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx:1.14.2
+      image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
       securityContext:
         runAsUser: 2000
 ```
@@ -272,7 +272,7 @@ Da der Pod die Planungsphase nicht erreicht, müssen keine Ressourcen gelöscht 
 
 ## <a name="create-a-custom-pod-security-policy"></a>Erstellen einer benutzerdefinierten Podsicherheitsrichtlinie
 
-Nachdem Sie nun mit dem Verhalten der Standard-Podsicherheitsrichtlinien vertraut sind, erfahren Sie als Nächstes, wie Sie dem Benutzer ohne Administratorrechte (*nonadmin-user*) die erfolgreiche Planung von Pods ermöglichen.
+Nachdem Sie nun mit dem Verhalten der Standard-Podsicherheitsrichtlinien vertraut sind, erfahren Sie als Nächstes, wie Sie dem Benutzer ohne Administratorrechte ( *nonadmin-user* ) die erfolgreiche Planung von Pods ermöglichen.
 
 Hierzu erstellen wir eine Richtlinie zur Ablehnung von Pods, die privilegierten Zugriff anfordern. Andere Optionen wie *RunAsUser* oder zulässige *Volumes* werden explizit nicht eingeschränkt. Diese Art von Richtlinie lehnt die Anforderung von privilegiertem Zugriff ab, lässt aber ansonsten die Ausführung der angeforderten Pods durch den Cluster zu.
 
@@ -303,7 +303,7 @@ Erstellen Sie die Richtlinie mithilfe des Befehls [kubectl apply][kubectl-apply]
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Verwenden Sie zum Anzeigen der verfügbaren Richtlinien den Befehl [kubectl get psp][kubectl-get], wie im folgenden Beispiel gezeigt. Vergleichen Sie die Richtlinie *psp-deny-privileged* mit der Standardrichtlinie *privilege*, die in den vorherigen Beispielen für die Poderstellung erzwungen wurde. Durch Ihre Richtlinie wird lediglich die Verwendung von *PRIV* für die Rechteausweitung abgelehnt. Bei der Richtlinie *psp-deny-privileged* gibt es keinerlei Benutzer- oder Gruppeneinschränkungen.
+Verwenden Sie zum Anzeigen der verfügbaren Richtlinien den Befehl [kubectl get psp][kubectl-get], wie im folgenden Beispiel gezeigt. Vergleichen Sie die Richtlinie *psp-deny-privileged* mit der Standardrichtlinie *privilege* , die in den vorherigen Beispielen für die Poderstellung erzwungen wurde. Durch Ihre Richtlinie wird lediglich die Verwendung von *PRIV* für die Rechteausweitung abgelehnt. Bei der Richtlinie *psp-deny-privileged* gibt es keinerlei Benutzer- oder Gruppeneinschränkungen.
 
 ```console
 $ kubectl get psp
@@ -315,9 +315,9 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Zulassen der Verwendung der benutzerdefinierten Podsicherheitsrichtlinie durch das Benutzerkonto
 
-Im vorherigen Schritt haben Sie eine Podsicherheitsrichtlinie erstellt, um Pods abzulehnen, die privilegierten Zugriff anfordern. Damit die Richtlinie verwendet werden kann, müssen Sie eine Rolle (*Role*) oder Clusterrolle (*ClusterRole*) erstellen. Anschließend müssen Sie eine dieser Rollen mithilfe einer Rollenbindung (*RoleBinding*) oder Clusterrollenbindung (*ClusterRoleBinding*) zuordnen.
+Im vorherigen Schritt haben Sie eine Podsicherheitsrichtlinie erstellt, um Pods abzulehnen, die privilegierten Zugriff anfordern. Damit die Richtlinie verwendet werden kann, müssen Sie eine Rolle ( *Role* ) oder Clusterrolle ( *ClusterRole* ) erstellen. Anschließend müssen Sie eine dieser Rollen mithilfe einer Rollenbindung ( *RoleBinding* ) oder Clusterrollenbindung ( *ClusterRoleBinding* ) zuordnen.
 
-In diesem Beispiel wird eine Clusterrolle erstellt, die es Ihnen ermöglicht, die im vorherigen Schritt erstellte Richtlinie *psp-deny-privileged* zu verwenden (*use*). Erstellen Sie eine Datei mit dem Namen `psp-deny-privileged-clusterrole.yaml`, und fügen Sie das folgende YAML-Manifest ein:
+In diesem Beispiel wird eine Clusterrolle erstellt, die es Ihnen ermöglicht, die im vorherigen Schritt erstellte Richtlinie *psp-deny-privileged* zu verwenden ( *use* ). Erstellen Sie eine Datei mit dem Namen `psp-deny-privileged-clusterrole.yaml`, und fügen Sie das folgende YAML-Manifest ein:
 
 ```yaml
 kind: ClusterRole
@@ -375,7 +375,7 @@ Versuchen Sie erneut, einen nicht privilegierten Pod zu erstellen, nachdem Sie I
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Der Pod wird erfolgreich geplant. Wenn Sie mithilfe des Befehls [kubectl get pods][kubectl-get] den Status des Pods überprüfen, sehen Sie, dass der Pod ausgeführt wird (*Running*):
+Der Pod wird erfolgreich geplant. Wenn Sie mithilfe des Befehls [kubectl get pods][kubectl-get] den Status des Pods überprüfen, sehen Sie, dass der Pod ausgeführt wird ( *Running* ):
 
 ```
 $ kubectl-nonadminuser get pods
@@ -416,7 +416,7 @@ Löschen Sie die Sicherheitsrichtlinie mithilfe des Befehls [kubectl delete][kub
 kubectl delete -f psp-deny-privileged.yaml
 ```
 
-Löschen Sie abschließend den Namespace *psp-aks*:
+Löschen Sie abschließend den Namespace *psp-aks* :
 
 ```console
 kubectl delete namespace psp-aks

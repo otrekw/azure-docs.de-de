@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fd4867532832e0304a27317b21950bf131de79
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443057"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900788"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
-GPUs (Graphical Processing Units) werden häufig für computeintensive Workloads (also etwa für grafikintensive und visualisierungsorientierte Workloads) verwendet. AKS unterstützt die Erstellung von GPU-fähigen Knotenpools, um diese computrintensiven Workloads in Kubernetes auszuführen. Weitere Informationen zu verfügbaren GPU-fähigen virtuellen Computern finden Sie unter [GPU-optimierte VM-Größen in Azure][gpu-skus]. Für die AKS-Knoten empfehlen wir eine Mindestgröße von *Standard_NC6*.
+GPUs (Graphical Processing Units) werden häufig für computeintensive Workloads (also etwa für grafikintensive und visualisierungsorientierte Workloads) verwendet. AKS unterstützt die Erstellung von GPU-fähigen Knotenpools, um diese computrintensiven Workloads in Kubernetes auszuführen. Weitere Informationen zu verfügbaren GPU-fähigen virtuellen Computern finden Sie unter [GPU-optimierte VM-Größen in Azure][gpu-skus]. Für die AKS-Knoten empfehlen wir eine Mindestgröße von *Standard_NC6* .
 
 > [!NOTE]
 > GPU-fähige virtuelle Computer verfügen über spezielle Hardware, für die höhere Preise gelten und die möglicherweise nicht in allen Regionen verfügbar ist. Weitere Informationen finden Sie in der [Preisübersicht][azure-pricing] sowie auf der [Website zur regionalen Verfügbarkeit][azure-availability].
@@ -26,7 +26,7 @@ Die Verwendung GPU-fähiger Knotenpools steht aktuell nur für Linux-Knotenpools
 
 Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit Knoten verfügen, die AKS unterstützen. Ihr AKS-Cluster muss Kubernetes 1.10 oder höher ausführen. Wenn Sie einen AKS-Cluster benötigen, der diese Anforderungen erfüllt, lesen Sie den ersten Abschnitt dieses Artikels zum [Erstellen eines AKS-Clusters](#create-an-aks-cluster).
 
-Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
@@ -58,13 +58,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Um die GPUs in den Knoten verwenden zu können, muss zunächst ein DaemonSet für das NVIDIA-Geräte-Plug-In bereitgestellt werden. Diese DaemonSet führt einen Pod für jeden Knoten aus, um die erforderlichen Treiber für die GPUs bereitzustellen.
 
-Erstellen Sie zunächst einen Namespace mit dem Befehl [kubectl create namespace][kubectl-create], z.B. *gpu-resources*:
+Erstellen Sie zunächst einen Namespace mit dem Befehl [kubectl create namespace][kubectl-create], z.B. *gpu-resources* :
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-Erstellen Sie eine Datei mit dem Namen *nvidia-device-plugin-ds.yaml*, und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest wird im Rahmen des Projekts [NVIDIA device plugin for Kubernetes][nvidia-github] (NVIDIA-Geräte-Plug-In für Kubernetes) bereitgestellt.
+Erstellen Sie eine Datei mit dem Namen *nvidia-device-plugin-ds.yaml* , und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest wird im Rahmen des Projekts [NVIDIA device plugin for Kubernetes][nvidia-github] (NVIDIA-Geräte-Plug-In für Kubernetes) bereitgestellt.
 
 ```yaml
 apiVersion: apps/v1
@@ -97,7 +97,7 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-      - image: nvidia/k8s-device-plugin:1.11
+      - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false
@@ -252,7 +252,7 @@ Non-terminated Pods:         (9 in total)
 
 Um die GPU in Aktion zu sehen, planen Sie eine GPU-fähige Workload mit der entsprechenden Ressourcenanforderung. In diesem Beispiel wird ein [TensorFlow](https://www.tensorflow.org/)-Auftrag für das [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/) ausgeführt.
 
-Erstellen Sie eine Datei mit dem Namen *samples-tf-mnist-demo.yaml*, und fügen Sie das folgende YAML-Manifest ein. Das folgende Auftragsmanifest enthält ein Ressourcenlimit von `nvidia.com/gpu: 1`:
+Erstellen Sie eine Datei mit dem Namen *samples-tf-mnist-demo.yaml* , und fügen Sie das folgende YAML-Manifest ein. Das folgende Auftragsmanifest enthält ein Ressourcenlimit von `nvidia.com/gpu: 1`:
 
 > [!NOTE]
 > Wenn Sie beim Aufruf von Treibern einen Versionsfehler erhalten (z. B., dass die CUDA-Treiberversion für die CUDA-Laufzeitversion nicht ausreicht), überprüfen Sie das NVIDIA-Treibermatrix-Kompatibilitätsdiagramm: [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -289,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Anzeigen des Status und der Ausgabe der GPU-fähigen Workload
 
-Überwachen Sie den Status des Auftrags mithilfe des Befehls [kubectl get jobs][kubectl-get] mit dem Argument `--watch`. Es kann einige Minuten dauern, um zunächst das Image zu pullen und das Dataset zu verarbeiten. Wenn die Spalte *ABSCHLÜSSE* die Angabe *1/1* enthält, wurde der Auftrag erfolgreich abgeschlossen. Beenden Sie den Befehl `kubetctl --watch` durch Drücken von*STRG+C*:
+Überwachen Sie den Status des Auftrags mithilfe des Befehls [kubectl get jobs][kubectl-get] mit dem Argument `--watch`. Es kann einige Minuten dauern, um zunächst das Image zu pullen und das Dataset zu verarbeiten. Wenn die Spalte *ABSCHLÜSSE* die Angabe *1/1* enthält, wurde der Auftrag erfolgreich abgeschlossen. Beenden Sie den Befehl `kubetctl --watch` durch Drücken von *STRG+C* :
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd8f6bb8ce93d1d423019f792624d8bdac56ecf8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87907573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892638"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 
@@ -28,7 +28,7 @@ Nachdem ein Gastbenutzer dem Verzeichnis in Azure AD hinzugefügt wurde, kann ei
  - Konfigurieren der App für Self-Service und Zuweisen der Gruppe zur App
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie die Self-Service-Verwaltung für katalog- und SAML-basierte Apps einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Sie können auch [die Self-Service-Verwaltung für Microsoft 365-Gruppen einrichten](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), damit Ihre Benutzer den Zugriff auf ihre eigenen Microsoft 365-Gruppen verwalten können. Weitere Möglichkeiten, über die Benutzer Office-Dateien und -Apps für Gastbenutzer freigeben können, finden Sie unter [Gastzugriff in Microsoft 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) und [Freigeben von SharePoint-Dateien oder -Ordnern](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> In diesem Artikel wird beschrieben, wie Sie die Self-Service-Verwaltung für katalog- und SAML-basierte Apps einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Sie können auch [die Self-Service-Verwaltung für Microsoft 365-Gruppen einrichten](../users-groups-roles/groups-self-service-management.md), damit Ihre Benutzer den Zugriff auf ihre eigenen Microsoft 365-Gruppen verwalten können. Weitere Möglichkeiten, über die Benutzer Office-Dateien und -Apps für Gastbenutzer freigeben können, finden Sie unter [Gastzugriff in Microsoft 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) und [Freigeben von SharePoint-Dateien oder -Ordnern](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Einladen eines Gastbenutzers zur App über den Zugriffsbereich
 
@@ -54,7 +54,7 @@ Nach dem Konfigurieren einer App für Self-Service können Anwendungsbesitzer Ga
 
 1. Stellen Sie sicher, dass Sie Besitzer der Self-Service-Gruppe sind, die Zugriff auf die App besitzt, die Sie freigeben möchten.
 2. Öffnen Sie Ihren Zugriffsbereich, indem Sie zu `https://myapps.microsoft.com` navigieren.
-3. Wählen Sie die **Gruppen**-App aus.
+3. Wählen Sie die **Gruppen** -App aus.
    
    ![Screenshot mit der Gruppen-App im Zugriffsbereich](media/add-users-iw/access-panel-groups.png)
    
@@ -75,7 +75,7 @@ Nach dem Konfigurieren einer App für Self-Service können Anwendungsbesitzer Ga
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Self-Service-App-Verwaltung ist ein anfängliches Setup durch einen globalen Administrator und einen Azure AD-Administrator erforderlich. Im Rahmen dieses Setups konfigurieren Sie die App für Self-Service und weisen der App eine Gruppe zu, die der Besitzer der Anwendung verwalten kann. Sie können die Gruppe auch so konfigurieren, dass jede beliebige Person die Mitgliedschaft anfordern kann, aber die Zustimmung eines Gruppenbesitzers erforderlich ist. (Weitere Informationen zur [Self-Service-Gruppenverwaltung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
+Für die Self-Service-App-Verwaltung ist ein anfängliches Setup durch einen globalen Administrator und einen Azure AD-Administrator erforderlich. Im Rahmen dieses Setups konfigurieren Sie die App für Self-Service und weisen der App eine Gruppe zu, die der Besitzer der Anwendung verwalten kann. Sie können die Gruppe auch so konfigurieren, dass jede beliebige Person die Mitgliedschaft anfordern kann, aber die Zustimmung eines Gruppenbesitzers erforderlich ist. (Weitere Informationen zur [Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md).) 
 
 > [!NOTE]
 > Sie können Gastbenutzer nicht einer dynamischen Gruppe oder einer Gruppe hinzufügen, die mit einer lokalen Active Directory-Instanz synchronisiert wird.
@@ -96,22 +96,22 @@ Für die Self-Service-App-Verwaltung ist ein anfängliches Setup durch einen glo
 5. Wählen Sie unter **Gruppentyp** die Option **Sicherheit** aus.
 6. Geben Sie einen **Gruppennamen** und eine **Gruppenbeschreibung** ein.
 7. Wählen Sie unter **Mitgliedschaftstyp** die Option **Zugewiesen** aus.
-8. Wählen Sie **Erstellen** aus, und schließen Sie die Seite **Gruppe**.
-9. Öffnen Sie die Gruppe auf der Seite **Gruppen – Alle Gruppen**. 
-10. Wählen Sie unter **Verwalten** die Option **Besitzer** > **Besitzer hinzufügen** aus. Suchen Sie nach dem Benutzer, der den Zugriff auf die Anwendung verwalten soll. Wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen**.
+8. Wählen Sie **Erstellen** aus, und schließen Sie die Seite **Gruppe** .
+9. Öffnen Sie die Gruppe auf der Seite **Gruppen – Alle Gruppen** . 
+10. Wählen Sie unter **Verwalten** die Option **Besitzer** > **Besitzer hinzufügen** aus. Suchen Sie nach dem Benutzer, der den Zugriff auf die Anwendung verwalten soll. Wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen** .
 
 ### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Konfigurieren der App für Self-Service und Zuweisen der Gruppe zur App
 1. Melden Sie sich als Azure AD-Administrator oder globaler Administrator am [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
-3. Klicken Sie unter **Verwalten** auf **Unternehmensanwendungen** > **Alle Anwendungen**.
+2. Klicken Sie im Navigationsbereich auf **Azure Active Directory** .
+3. Klicken Sie unter **Verwalten** auf **Unternehmensanwendungen** > **Alle Anwendungen** .
 4. Suchen Sie in der Anwendungsliste nach der App, und öffnen Sie diese.
-5. Wählen Sie unter **Verwalten** die Option **Einmaliges Anmelden** aus, und konfigurieren Sie die Anwendung für einmaliges Anmelden. (Details finden Sie unter [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
-6. Wählen Sie unter **Verwalten** die Option **Self-Service** aus, und richten Sie den Self-Service-App-Zugriff ein. (Details finden Sie unter [Verwenden des Self-Service-App-Zugriffs](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+5. Wählen Sie unter **Verwalten** die Option **Einmaliges Anmelden** aus, und konfigurieren Sie die Anwendung für einmaliges Anmelden. (Details finden Sie unter [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](../manage-apps/add-application-portal-setup-sso.md).)
+6. Wählen Sie unter **Verwalten** die Option **Self-Service** aus, und richten Sie den Self-Service-App-Zugriff ein. (Details finden Sie unter [Verwenden des Self-Service-App-Zugriffs](../manage-apps/access-panel-manage-self-service-access.md).) 
 
     > [!NOTE]
     > Wählen Sie für die Einstellung **Welcher Gruppe sollen zugewiesene Benutzer hinzugefügt werden?** die Gruppe aus, die Sie im vorherigen Abschnitt erstellt haben.
 7. Wählen Sie unter **Verwalten** die Option **Benutzer und Gruppen** aus, und stellen Sie sicher, dass die von Ihnen erstellte Self-Service-Gruppe in der Liste angezeigt wird.
-8. Wählen Sie zum Hinzufügen der App zum Zugriffsbereich des Gruppenbesitzers **Benutzer hinzufügen** > **Benutzer und Gruppen** aus. Suchen Sie nach dem Gruppenbesitzer, und wählen Sie den Benutzer aus. Klicken Sie dann auf **Auswählen** und **Zuweisen**, um den Benutzer der App hinzuzufügen.
+8. Wählen Sie zum Hinzufügen der App zum Zugriffsbereich des Gruppenbesitzers **Benutzer hinzufügen** > **Benutzer und Gruppen** aus. Suchen Sie nach dem Gruppenbesitzer, und wählen Sie den Benutzer aus. Klicken Sie dann auf **Auswählen** und **Zuweisen** , um den Benutzer der App hinzuzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -120,4 +120,4 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 - [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 - [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](add-users-administrator.md)
 - [B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md)
-- [Lizenzierung der Azure AD B2B-Zusammenarbeit](licensing-guidance.md)
+- [Preise für externe Identitäten](external-identities-pricing.md)

@@ -5,13 +5,13 @@ description: Erfahren Sie, wie Sie die Azure CLI verwenden, um einen AKS-Cluster
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 4b43cfe41943dcf086afe332508bc6e48fbdb4d7
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543077"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899883"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten mithilfe der Azure CLI
 
@@ -75,7 +75,7 @@ Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Featur
 
 Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert.
 
-Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock die Option **Ausprobieren** aus. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock die Option **Ausprobieren** aus. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren** , um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
 Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diesen Artikel die Azure CLI-Version 2.0.49 oder verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -89,7 +89,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit dem Befehl [az network vnet create][az-network-vnet-create] ein virtuelles Netzwerk. Das folgende Beispiel erstellt ein virtuelles Netzwerk namens *myVnet* mit dem Adresspräfix *10.0.0.0/8* und einem Subnetz namens *myAKSSubnet*. Das Adresspräfix dieses Subnetzes wird standardmäßig auf *10.240.0.0/16* festgelegt:
+Erstellen Sie mit dem Befehl [az network vnet create][az-network-vnet-create] ein virtuelles Netzwerk. Das folgende Beispiel erstellt ein virtuelles Netzwerk namens *myVnet* mit dem Adresspräfix *10.0.0.0/8* und einem Subnetz namens *myAKSSubnet* . Das Adresspräfix dieses Subnetzes wird standardmäßig auf *10.240.0.0/16* festgelegt:
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +100,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Erstellen Sie jetzt mit dem Befehl [az network vnet subnet create][az-network-vnet-subnet-create] ein weiteres Subnetz für virtuelle Knoten. Das folgende Beispiel erstellt ein Subnetz namens *myVirtualNodeSubnet* mit dem Adresspräfix *10.241.0.0/16*.
+Erstellen Sie jetzt mit dem Befehl [az network vnet subnet create][az-network-vnet-subnet-create] ein weiteres Subnetz für virtuelle Knoten. Das folgende Beispiel erstellt ein Subnetz namens *myVirtualNodeSubnet* mit dem Adresspräfix *10.241.0.0/16* .
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -132,7 +132,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 }
 ```
 
-Notieren Sie sich die App-ID (*appId*) und das Kennwort (*password*). Diese Werte werden in den folgenden Schritten verwendet.
+Notieren Sie sich die App-ID ( *appId* ) und das Kennwort ( *password* ). Diese Werte werden in den folgenden Schritten verwendet.
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>Zuweisen von Berechtigungen zum virtuellen Netzwerk
 
@@ -178,7 +178,7 @@ Nach einigen Minuten wird der Befehl abgeschlossen und gibt Informationen über 
 
 ## <a name="enable-virtual-nodes-addon"></a>Virtuelle Knoten aktivieren-Add-On
 
-Um die virtuellen Knoten zu aktivieren, verwenden Sie jetzt den Befehl [az aks enable-addons][az-aks-enable-addons]. Das folgende Beispiel verwendet das Subnetz *myVirtualNodeSubnet*, das in einem vorherigen Schritt erstellt wurde:
+Um die virtuellen Knoten zu aktivieren, verwenden Sie jetzt den Befehl [az aks enable-addons][az-aks-enable-addons]. Das folgende Beispiel verwendet das Subnetz *myVirtualNodeSubnet* , das in einem vorherigen Schritt erstellt wurde:
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -202,7 +202,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-Die folgende Beispielausgabe zeigt den erstellten einzelnen VM-Knoten und dann den virtuellen Knoten für Linux, *virtual-node-aci-linux*:
+Die folgende Beispielausgabe zeigt den erstellten einzelnen VM-Knoten und dann den virtuellen Knoten für Linux, *virtual-node-aci-linux* :
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -231,7 +231,7 @@ spec:
     spec:
       containers:
       - name: aci-helloworld
-        image: microsoft/aci-helloworld
+        image: mcr.microsoft.com/azuredocs/aci-helloworld
         ports:
         - containerPort: 80
       nodeSelector:

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: a1fafdf1db29917982bbf136de45237459712bcd
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900123"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Schützen von Pods mit Azure Policy
 
@@ -38,7 +38,7 @@ In diesem Dokument wird davon ausgegangen, dass Sie über Folgendes verfügen, d
 > 
 > Wenn das Azure Policy-Add-On in einem Cluster mit aktivierter Podsicherheitsrichtlinie installiert wird, [folgen Sie diesen Schritten, um die Podsicherheitsrichtlinie zu deaktivieren](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster).
 
-In einem AKS-Cluster wird eine Zugangssteuerung verwendet, um an den API-Server gerichtete Anforderungen abzufangen, wenn eine Ressource erstellt und aktualisiert werden soll. Der Zugangscontroller kann dann die Ressourcenanforderung anhand einer Reihe von Regeln *überprüfen*, um zu ermitteln, ob sie erstellt werden soll.
+In einem AKS-Cluster wird eine Zugangssteuerung verwendet, um an den API-Server gerichtete Anforderungen abzufangen, wenn eine Ressource erstellt und aktualisiert werden soll. Der Zugangscontroller kann dann die Ressourcenanforderung anhand einer Reihe von Regeln *überprüfen* , um zu ermitteln, ob sie erstellt werden soll.
 
 Zuvor wurde das Feature [Podsicherheitsrichtlinie (Vorschau)](use-pod-security-policies.md) über das Kubernetes-Projekt aktiviert, um einzuschränken, welche Pods bereitgestellt werden können.
 
@@ -50,7 +50,7 @@ In diesem Dokument wird ausführlich beschrieben, wie Sie mit Azure Policy die P
 
 Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On für Kubernetes-Cluster:
 
-- Das Azure Policy-Add-On für Kubernetes wird unter der Kubernetes-Version **1.14** oder höher unterstützt.
+- Das Azure Policy-Add-On für Kubernetes wird unter der Kubernetes-Version  **1.14** oder höher unterstützt.
 - Das Azure Policy-Add-On für Kubernetes kann nur für Linux-Knotenpools bereitgestellt werden.
 - Es werden nur integrierte Richtliniendefinitionen unterstützt.
 - Maximale Anzahl nicht konformer Datensätze pro Richtlinie pro Cluster: **500**
@@ -61,7 +61,7 @@ Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On f
 Die folgenden Einschränkungen gelten nur für das Azure Policy-Add-On für AKS:
 
 - Die [AKS-Podsicherheitsrichtlinie (Vorschau)](use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. 
-- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_, _gatekeeper-system_ und _aks-periscope_.
+- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_ , _gatekeeper-system_ und _aks-periscope_ .
 
 ### <a name="recommendations"></a>Empfehlungen
 
@@ -76,7 +76,7 @@ Die folgende Empfehlung gilt nur für AKS und das Azure Policy-Add-On:
 
 - Verwenden Sie zum Planen von Gatekeeper-Pods den Systemknotenpool mit einem `CriticalAddonsOnly`-Taint. Weitere Informationen finden Sie unter [Verwenden von Systemknotenpools](use-system-pools.md#system-and-user-node-pools).
 - Schützen Sie von Ihren AKS-Clustern ausgehenden Datenverkehr. Weitere Informationen finden Sie unter [Kontrollieren des ausgehenden Datenverkehrs für Clusterknoten](limit-egress-traffic.md).
-- Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+- Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Installieren zur Konfiguration einer Ausnahme die [YAML-Datei „mic-exception“](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 Das Azure Policy-Add-On erfordert den Betrieb von CPU- und Arbeitsspeicherressourcen. Diese Anforderungen erhöhen sich, wenn ein Cluster größer wird. Eine allgemeine Anleitung zur Verwendung des Azure Policy-Add-Ons finden Sie in den [Azure Policy-Empfehlungen][policy-recommendations].
@@ -128,7 +128,7 @@ Es gibt zusätzliche Azure-Richtlinien, die außerhalb der Anwendung einer Initi
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Nicht unterstützte integrierte Richtlinien für verwaltete AKS-Cluster
 
 > [!NOTE]
-> Die folgenden drei Richtlinien werden in AKS aufgrund von Anpassungsaspekten, die von AKS als verwalteter Dienst verwaltet und gesichert werden, **nicht unterstützt**. Diese Richtlinien sind speziell für mit Azure Arc verbundene Cluster mit nicht verwalteten Steuerungsebenen integriert.
+> Die folgenden drei Richtlinien werden in AKS aufgrund von Anpassungsaspekten, die von AKS als verwalteter Dienst verwaltet und gesichert werden, **nicht unterstützt** . Diese Richtlinien sind speziell für mit Azure Arc verbundene Cluster mit nicht verwalteten Steuerungsebenen integriert.
 
 |[Steuerung der Podsicherheitsrichtlinie](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
 |---|
@@ -209,7 +209,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         privileged: true
 ```
@@ -244,7 +244,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 Erstellen Sie den Pod mithilfe des Befehls [kubectl apply][kubectl-apply], und geben Sie den Namen Ihres YAML-Manifests an:
@@ -253,7 +253,7 @@ Erstellen Sie den Pod mithilfe des Befehls [kubectl apply][kubectl-apply], und g
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-Der Pod wird erfolgreich geplant. Wenn Sie mithilfe des Befehls [kubectl get pods][kubectl-get] den Status des Pods überprüfen, sehen Sie, dass der Pod ausgeführt wird (*Running*):
+Der Pod wird erfolgreich geplant. Wenn Sie mithilfe des Befehls [kubectl get pods][kubectl-get] den Status des Pods überprüfen, sehen Sie, dass der Pod ausgeführt wird ( *Running* ):
 
 ```console
 $ kubectl get pods
@@ -330,7 +330,7 @@ Weitere Informationen zum Einschränken des Netzwerkdatenverkehrs von Pods finde
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity
-[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
+[aad-pod-identity-exception]: https://azure.github.io/aad-pod-identity/docs/configure/application_exception
 
 <!-- LINKS - internal -->
 [policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394328"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900797"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Für Azure HDInsight verfügbare Apache-Komponenten und -Versionen
 
@@ -96,7 +96,7 @@ Die Tabelle enthält die im Azure-Portal und über andere Bereitstellungsmethode
 | HDInsight 3.6 ML Services      | 9.3               | 31. Dezember 2020                      | 31. Dezember 2020                |
 
 > [!NOTE]
-> Nachdem die Clusterunterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Azure-Portal verfügbar. In manchen Fällen stehen Clusterversionen bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den **Version**-Parameter im Windows PowerShell-Befehl [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
+> Nachdem die Clusterunterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Azure-Portal verfügbar. In manchen Fällen stehen Clusterversionen bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den **Version** -Parameter im Windows PowerShell-Befehl [New-AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
 
 ### <a name="retired-versions"></a>Eingestellte Versionen
 
@@ -133,6 +133,6 @@ Weitere Informationen dazu, welche SKUs für virtuelle Computer für Ihren Clust
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md)
-- [Verwenden eines Windows-Computers mit Apache Hadoop in HDInsight](hdinsight-hadoop-windows-tools.md)
-- [Hortonworks-Versionshinweise im Zusammenhang mit Azure HDInsight-Versionen](./hortonworks-release-notes.md)
 - [Enterprise-Sicherheitspaket](./enterprise-security-package.md)
+- [Hortonworks-Versionshinweise im Zusammenhang mit Azure HDInsight-Versionen](./hortonworks-release-notes.md)
+- [Verwenden eines Windows-Computers mit Apache Hadoop in HDInsight](hdinsight-hadoop-windows-tools.md)

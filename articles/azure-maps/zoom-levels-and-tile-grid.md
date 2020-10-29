@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825300"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896581"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Da die Werte für die Höhe und Breite der Karte für jeden Zoomfaktor unterschiedlich sind, gilt dies auch für die Pixelkoordinaten. Das Pixel in der oberen linken Ecke einer Karte weist immer die Pixelkoordinaten (0, 0) auf. Das Pixel in der unteren rechten Ecke einer Karte besitzt die Pixelkoordinaten *(width-1, height-1)* bzw. in Bezug auf die Gleichungen im vorherigen Abschnitt *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)* . Ein Beispiel: Bei 512 quadratischen Kacheln mit Zoomfaktor 2 reichen die Pixelkoordinaten von (0, 0) bis (2047, 2047), wie hier zu sehen:
+Da die Werte für die Höhe und Breite der Karte für jeden Zoomfaktor unterschiedlich sind, gilt dies auch für die Pixelkoordinaten. Das Pixel in der oberen linken Ecke einer Karte weist immer die Pixelkoordinaten (0, 0) auf. Das Pixel in der unteren rechten Ecke einer Karte besitzt die Pixelkoordinaten *(width-1, height-1)* bzw. in Bezug auf die Gleichungen im vorherigen Abschnitt *(tileSize \* 2 <sup>zoom</sup>–1, tileSize \* 2 <sup>zoom</sup>–1)* . Ein Beispiel: Bei 512 quadratischen Kacheln mit Zoomfaktor 2 reichen die Pixelkoordinaten von (0, 0) bis (2047, 2047), wie hier zu sehen:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Kachel mit Weltkarte":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Jede Kachel erhält XY-Koordinaten von (0, 0) in der oberen rechten Ecke bis *(2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)* in der rechten unteren Ecke. Bei Zoomfaktor 3 reichen die Kachelkoordinaten beispielsweise von (0, 0) bis(7, 7), wie hier zu sehen:
+Jede Kachel erhält XY-Koordinaten von (0, 0) in der oberen rechten Ecke bis *(2 <sup>zoom</sup>–1, 2 <sup>zoom</sup>–1)* in der rechten unteren Ecke. Bei Zoomfaktor 3 reichen die Kachelkoordinaten beispielsweise von (0, 0) bis(7, 7), wie hier zu sehen:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Kachel mit Weltkarte":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > Die interaktiven Kartensteuerelemente in den Azure Maps SDKs besitzen Hilfsfunktionen zum Konvertieren zwischen räumlichen Positionen und Viewportpixeln. 
-> - [Web SDK: Kartenpixel und Positionsberechnungen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK: Kartenpixel und Positionsberechnungen](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Greifen Sie über die Azure Maps-REST-Dienste direkt auf Kartenkacheln zu:
 
 > [!div class="nextstepaction"]
-> [Get map tiles](https://docs.microsoft.com/rest/api/maps/render/getmaptile) (Abrufen von Kartenkacheln)
+> [Get map tiles](/rest/api/maps/render/getmaptile) (Abrufen von Kartenkacheln)
 
 > [!div class="nextstepaction"]
-> [Get traffic flow tiles](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile) (Abrufen von Kacheln zum Verkehrsfluss)
+> [Get traffic flow tiles](/rest/api/maps/traffic/gettrafficflowtile) (Abrufen von Kacheln zum Verkehrsfluss)
 
 > [!div class="nextstepaction"]
-> [Get traffic incident tiles](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile) (Abrufen von Kacheln zu Verkehrsstörungen)
+> [Get traffic incident tiles](/rest/api/maps/traffic/gettrafficincidenttile) (Abrufen von Kacheln zu Verkehrsstörungen)
 
 Weitere Informationen zu räumlichen Konzepten:
 

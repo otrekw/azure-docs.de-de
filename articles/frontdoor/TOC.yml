@@ -14,6 +14,7 @@
     - name: 'Erstellen einer Front Door-Instanz: CLI'
       href: quickstart-create-front-door-cli.md
     - name: 'Erstellen einer Front Door-Instanz: ARM-Vorlage'
+      displayName: Resource Manager
       href: quickstart-create-front-door-template.md
 - name: Tutorials
   items:

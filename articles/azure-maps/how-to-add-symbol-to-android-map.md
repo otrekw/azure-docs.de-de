@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311273"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897108"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Symbolebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -21,7 +21,7 @@ Dieser Artikel zeigt Ihnen, wie Sie Punktdaten aus einer Datenquelle als Symbole
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Schritte in diesem Artikel vollständig abzuschließen, müssen Sie das [Android SDK für Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installieren, um eine Karte zu laden.
+Um die Schritte in diesem Artikel vollständig abzuschließen, müssen Sie das [Android SDK für Azure Maps](./how-to-use-android-map-control-library.md) installieren, um eine Karte zu laden.
 
 ## <a name="add-a-symbol-layer"></a>Hinzufügen einer Symbolebene
 
@@ -72,7 +72,7 @@ Um der Karte über die Symbolebene einen Marker hinzuzufügen, führen Sie die f
     
     ```
     
-    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Dann erstellt er ein Datenquellenobjekt mithilfe der **DataSource**-Klasse und fügt es der Karte hinzu. Er fügt der Karte anschließend ein **Feature** mit einer Punktgeometrie hinzu. Ein rotes Markerbild wird als Symbol für das Symbol festgelegt. Eine **Symbolebene** verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in der Datenquelle als Symbole auf der Karte umschlossen sind. Anschließend wird eine Symbolebene erstellt. Die Datenquelle wird an diese übergeben, um sie zu rendern, und dann den Ebenen der Karte hinzugefügt.
+    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Dann erstellt er ein Datenquellenobjekt mithilfe der **DataSource** -Klasse und fügt es der Karte hinzu. Er fügt der Karte anschließend ein **Feature** mit einer Punktgeometrie hinzu. Ein rotes Markerbild wird als Symbol für das Symbol festgelegt. Eine **Symbolebene** verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in der Datenquelle als Symbole auf der Karte umschlossen sind. Anschließend wird eine Symbolebene erstellt. Die Datenquelle wird an diese übergeben, um sie zu rendern, und dann den Ebenen der Karte hinzugefügt.
     
     Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
     
@@ -180,7 +180,7 @@ Wenn Sie Ihre Anwendung ausführen, sollten Sie an dieser Stelle einen Marker au
 Informationen dazu, wie Sie Ihrer Karte weitere Elemente hinzufügen, finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Formen zu einer Android-Karte](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Hinzufügen von Formen zu einer Android-Karte](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Anzeigen von Featureinformationen](display-feature-information-android.md)

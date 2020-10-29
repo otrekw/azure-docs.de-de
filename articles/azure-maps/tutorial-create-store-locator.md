@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335261"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896848"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
@@ -76,7 +76,7 @@ Sie können die [Excel-Arbeitsmappe herunterladen](https://github.com/Azure-Samp
 
 Wenn Sie sich den Screenshot mit den Daten ansehen, fällt Ihnen Folgendes auf:
 
-* Die Informationen zum Standort sind in den Spalten **AddressLine**, **City**, **Municipality** (Verwaltungsbezirk), **AdminDivision** (Bundesland/Kanton), **PostCode** (Postleitzahl) und **Country** enthalten.  
+* Die Informationen zum Standort sind in den Spalten **AddressLine** , **City** , **Municipality** (Verwaltungsbezirk), **AdminDivision** (Bundesland/Kanton), **PostCode** (Postleitzahl) und **Country** enthalten.  
 * Die Spalten **Latitude** und **Longitude** enthalten die Koordinaten für die einzelnen Coffee-Shop-Standorte von Contoso Coffee. Falls Sie keine Informationen zu Koordinaten besitzen, können Sie die Suchdienste in Azure Maps nutzen, um die Standortkoordinaten zu ermitteln.
 * Einige zusätzliche Spalten enthalten Metadaten zu den Coffee-Shops: eine Telefonnummer, boolesche Spalten sowie die Öffnungszeiten im 24-Stunden-Format. Die booleschen Spalten dienen zur Angabe von WLAN-Verfügbarkeit sowie von Barrierefreiheit für Rollstuhlfahrer. Sie können auch eigene Spalten mit Metadaten erstellen, die für Ihre Standortdaten eine höhere Relevanz haben.
 
@@ -87,7 +87,7 @@ Es gibt viele Möglichkeiten, um das Dataset für die Anwendung verfügbar zu ma
 
 Ein anderer Ansatz besteht darin, dieses Dataset in eine Textflatfile zu konvertieren, die vom Browser leicht analysiert werden kann. Die Datei selbst kann mit dem Rest der Anwendung gehostet werden. Diese Option sorgt für eine Vereinfachung, aber sie eignet sich gut für kleinere Datasets, weil der Benutzer alle Daten herunterlädt. Wir verwenden die Textflatfile für dieses Dataset, weil die Größe der Datendatei unter 1 MB liegt.  
 
-Speichern Sie die Arbeitsmappe als Datei mit Tabstopp-Trennzeichen, um sie in eine Textflatfile zu konvertieren. Die einzelnen Spalten sind durch ein Tabstoppzeichen getrennt, damit sie in unserem Code leicht analysiert werden können. Sie können auch das CSV-Format mit Kommas als Trennzeichen verwenden, aber für diese Option ist ein höherer Anteil an Logik für die Analyse erforderlich. Jedes Feld, das über ein Komma verfügt, wird mit Fragezeichen umschlossen. Wählen Sie **Speichern unter**, um diese Daten als Datei mit Tabstopps als Trennzeichen nach Excel zu exportieren. Wählen Sie in der Dropdownliste **Dateityp** die Option **Text (durch Tabstopps getrennt) (*.txt)** . Geben Sie der Datei den Namen *ContosoCoffee.txt*.
+Speichern Sie die Arbeitsmappe als Datei mit Tabstopp-Trennzeichen, um sie in eine Textflatfile zu konvertieren. Die einzelnen Spalten sind durch ein Tabstoppzeichen getrennt, damit sie in unserem Code leicht analysiert werden können. Sie können auch das CSV-Format mit Kommas als Trennzeichen verwenden, aber für diese Option ist ein höherer Anteil an Logik für die Analyse erforderlich. Jedes Feld, das über ein Komma verfügt, wird mit Fragezeichen umschlossen. Wählen Sie **Speichern unter** , um diese Daten als Datei mit Tabstopps als Trennzeichen nach Excel zu exportieren. Wählen Sie in der Dropdownliste **Dateityp** die Option **Text (durch Tabstopps getrennt) (*.txt)** . Geben Sie der Datei den Namen *ContosoCoffee.txt* .
 
 ![Screenshot: Dialogfeld „Dateityp“](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,7 +97,7 @@ Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wi
 
 ## <a name="set-up-the-project"></a>Einrichten des Projekts
 
-Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html*, *index.css* und *index.js*. Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data*, und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images*. In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker auf der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
+Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html* , *index.css* und *index.js* . Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data* , und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images* . In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker auf der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
 
 ![Screenshot: Projektordner für die einfache Shopsuche](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
@@ -160,7 +160,7 @@ Fügen Sie zum Erstellen der Benutzeroberfläche der Datei *index.html* Code hin
 
 Wenn Sie fertig sind, sollte *index.html* wie in [dieser index.html-Beispieldatei](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html) aussehen.
 
-Im nächsten Schritt werden die CSS-Stile definiert. Mit CSS-Stilen wird definiert, welches Layout die Anwendungskomponenten haben und wie die Anwendung aussieht. Öffnen Sie die Datei *index.css*, und fügen Sie ihr den folgenden Code hinzu. Mit dem Stil `@media` werden alternative Stiloptionen definiert, die verwendet werden können, wenn die Bildschirmbreite weniger als 700 Pixel beträgt.  
+Im nächsten Schritt werden die CSS-Stile definiert. Mit CSS-Stilen wird definiert, welches Layout die Anwendungskomponenten haben und wie die Anwendung aussieht. Öffnen Sie die Datei *index.css* , und fügen Sie ihr den folgenden Code hinzu. Mit dem Stil `@media` werden alternative Stiloptionen definiert, die verwendet werden können, wenn die Bildschirmbreite weniger als 700 Pixel beträgt.  
 
    ```CSS
     html, body {
@@ -369,7 +369,7 @@ Wenn Sie die Anwendung jetzt ausführen, werden die Kopfzeile, das Suchfeld und 
 
 ## <a name="wire-the-application-with-javascript"></a>Hinzufügen von JavaScript-Code zur Anwendung
 
-Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings noch den JavaScript-Code zum Laden und Analysieren der Daten sowie zum anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js*, und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
+Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings noch den JavaScript-Code zum Laden und Analysieren der Daten sowie zum anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js* , und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
 
 1. Fügen Sie globale Optionen hinzu, um das Aktualisieren der Einstellungen zu vereinfachen. Definieren Sie die Variablen für die Karte, das Popupfenster, die Datenquelle, die Symbolebene und den HTML-Marker. Legen Sie den HTML-Marker fest, um den Mittelpunkt eines Suchbereichs anzugeben. Definieren Sie eine Instanz des Azure Maps-Suchdienstclients.
 
@@ -385,7 +385,7 @@ Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings n
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Fügen Sie der Datei *index.js* Code hinzu. Der folgende Code dient zum Initialisieren der Karte. Wir haben einen [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) hinzugefügt, um zu warten, bis die Seite geladen wurde. Anschließend haben wir Ereignisse zur Überwachung des Kartenladevorgangs eingebunden und die Suchschaltfläche sowie die Schaltfläche zum Anzeigen des eigenen Standorts mit entsprechenden Funktionen verknüpft.
+1. Fügen Sie der Datei *index.js* Code hinzu. Der folgende Code dient zum Initialisieren der Karte. Wir haben einen [Ereignislistener](/javascript/api/azure-maps-control/atlas.map#events) hinzugefügt, um zu warten, bis die Seite geladen wurde. Anschließend haben wir Ereignisse zur Überwachung des Kartenladevorgangs eingebunden und die Suchschaltfläche sowie die Schaltfläche zum Anzeigen des eigenen Standorts mit entsprechenden Funktionen verknüpft.
 
    Wenn der Benutzer die Suchschaltfläche wählt oder im Suchfeld einen Standort eingibt und danach die EINGABETASTE drückt, wird für die Abfrage des Benutzers eine Fuzzysuche initiiert. Übergeben Sie ein Array mit ISO 2-Länder-/Regionswerten an die Option `countrySet`, um die Suchergebnisse auf diese Länder/Regionen zu begrenzen. Durch das Begrenzen der zu durchsuchenden Länder/Regionen kann die Genauigkeit der zurückgegebenen Ergebnisse erhöht werden. 
   
@@ -931,8 +931,8 @@ In diesem Tutorial wurde beschrieben, wie Sie mit Azure Maps eine einfache Shops
  * Ermöglichen Sie für Benutzer das [Filtern von Standorten anhand einer Route](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
  * Fügen Sie die Option zum [Festlegen von Filtern](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property) hinzu. 
  * Fügen Sie Unterstützung für das Angeben eines Anfangssuchwerts hinzu, indem Sie eine Abfragezeichenfolge verwenden. Wenn Sie diese Option in Ihre Shopsuche einfügen, können Benutzer Lesezeichen für Suchen festlegen und Suchvorgänge teilen. Außerdem ist dies eine einfache Methode, mit der Sie Suchen von einer anderen Seite an diese Seite übergeben können.  
- * Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](https://docs.microsoft.com/azure/app-service/quickstart-html) bereit. 
- * Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true).
+ * Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](../app-service/quickstart-html.md) bereit. 
+ * Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017).
 
 Sie können [vollständigen Quellcode anzeigen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), ein [Livebeispiel anzeigen](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) und mehr über die abgedeckten Bereiche und die Funktionen von Azure Maps erfahren, indem Sie [Zoomstufen und das Kachelraster](zoom-levels-and-tile-grid.md) verwenden. Sie können ferner [datengestützte Formatvorlagenausdrücke verwenden](data-driven-style-expressions-web-sdk.md), um sie auf Ihre Geschäftslogik anzuwenden.
 

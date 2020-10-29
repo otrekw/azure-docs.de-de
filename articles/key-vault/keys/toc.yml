@@ -16,6 +16,7 @@
     - name: Python
       href: quick-create-python.md
     - name: ARM-Vorlage
+      displayName: Resource Manager
       href: quick-create-template.md
 - name: Tutorials
   items:

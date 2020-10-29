@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86517296"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895374"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementieren dynamischer Stile für Gebäudepläne von Ersteller
 
-Mit dem [Featurezustandsdienst](https://docs.microsoft.com/rest/api/maps/featurestate) von Azure Maps-Ersteller können Sie Stile basierend auf den dynamischen Eigenschaften der Features von Gebäudeplandaten anwenden.  Beispielsweise können Sie Besprechungsräume der Einrichtung mit einer bestimmten Farbe rendern, um den Belegungsstatus anzuzeigen. In diesem Artikel erfahren Sie, wie Sie Features von Gebäudeplänen mithilfe des [Featurezustandsdiensts](https://docs.microsoft.com/rest/api/maps/featurestate) und des [Indoor-Webmoduls](how-to-use-indoor-module.md) rendern.
+Mit dem [Featurezustandsdienst](/rest/api/maps/featurestate) von Azure Maps-Ersteller können Sie Stile basierend auf den dynamischen Eigenschaften der Features von Gebäudeplandaten anwenden.  Beispielsweise können Sie Besprechungsräume der Einrichtung mit einer bestimmten Farbe rendern, um den Belegungsstatus anzuzeigen. In diesem Artikel erfahren Sie, wie Sie Features von Gebäudeplänen mithilfe des [Featurezustandsdiensts](/rest/api/maps/featurestate) und des [Indoor-Webmoduls](how-to-use-indoor-module.md) rendern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,15 +66,15 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
 
  Wir aktualisieren jetzt den Zustand der beiden Büros `UNIT26` und `UNIT27`:
 
-1. Wählen Sie in der Postman-Anwendung **Neu** aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
+1. Wählen Sie in der Postman-Anwendung **Neu** aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern** .
 
-2. Verwenden Sie die [Featureupdatezustände-API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview), um den Zustand zu aktualisieren. Übergeben Sie die Zustandsset-ID und `UNIT26` für eine der beiden Einheiten. Fügen Sie Ihren Azure Maps-Abonnementschlüssel an. Hier sehen Sie die URL einer **POST**-Anforderung zum Aktualisieren des Zustands:
+2. Verwenden Sie die [Featureupdatezustände-API](/rest/api/maps/featurestate/updatestatespreview), um den Zustand zu aktualisieren. Übergeben Sie die Zustandsset-ID und `UNIT26` für eine der beiden Einheiten. Fügen Sie Ihren Azure Maps-Abonnementschlüssel an. Hier sehen Sie die URL einer **POST** -Anforderung zum Aktualisieren des Zustands:
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Legen Sie in den **Headern** der **POST**-Anforderung `Content-Type` auf `application/json` fest. Schreiben Sie im **TEXT** der **POST**-Anforderung den folgenden JSON-Code mit den Featureupdates. Das Update wird nur gespeichert, wenn der gepostete Zeitstempel nach dem Zeitstempel liegt, der in früheren Featurezustandsaktualisierungs-Anforderungen für dieselbe `ID` des Features verwendet wurde. Übergeben Sie den `keyName` „occupied“ (ausgelastet), um seinen Wert zu aktualisieren.
+3. Legen Sie in den **Headern** der **POST** -Anforderung `Content-Type` auf `application/json` fest. Schreiben Sie im **TEXT** der **POST** -Anforderung den folgenden JSON-Code mit den Featureupdates. Das Update wird nur gespeichert, wenn der gepostete Zeitstempel nach dem Zeitstempel liegt, der in früheren Featurezustandsaktualisierungs-Anforderungen für dieselbe `ID` des Features verwendet wurde. Übergeben Sie den `keyName` „occupied“ (ausgelastet), um seinen Wert zu aktualisieren.
 
     ```json
     {
@@ -134,4 +134,3 @@ Informationen finden Sie in den API-Referenzen, die in diesem Artikel erwähnt w
 
 > [!div class="nextstepaction"]
 > [WFS-Dienst](creator-indoor-maps.md#web-feature-service-api)
-

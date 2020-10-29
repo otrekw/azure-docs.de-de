@@ -8,16 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b085fbc6e330d38b59fce0c494f672b00c712b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85120488"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891698"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-Schema-Referenzhandbuch für dynamische Karten
 
-Dieser Artikel ist ein Referenzhandbuch für das JSON-Schema und die Syntax für das `StylesObject`. Das `StylesObject` ist ein `StyleObject`-Array, das Zustandsset-Formatvorlagen darstellt. Verwenden Sie den [Featurezustandsdienst](https://docs.microsoft.com/rest/api/maps/featurestate) von Azure Maps-Ersteller, um Ihre Zustandsset-Formatvorlagen auf die Features von Gebäudeplandaten anzuwenden. Nachdem Sie Ihre Zustandsset-Formatvorlagen erstellt und den Features von Gebäudeplänen zugeordnet haben, können Sie sie zum Erstellen dynamischer Gebäudepläne verwenden. Weiter Informationen zum Erstellen dynamischer Gebäudepläne finden Sie unter [Implementieren dynamischer Formatvorlagen für Gebäudepläne von Ersteller](indoor-map-dynamic-styling.md).
+Dieser Artikel ist ein Referenzhandbuch für das JSON-Schema und die Syntax für das `StylesObject`. Das `StylesObject` ist ein `StyleObject`-Array, das Zustandsset-Formatvorlagen darstellt. Verwenden Sie den [Featurezustandsdienst](/rest/api/maps/featurestate) von Azure Maps-Ersteller, um Ihre Zustandsset-Formatvorlagen auf die Features von Gebäudeplandaten anzuwenden. Nachdem Sie Ihre Zustandsset-Formatvorlagen erstellt und den Features von Gebäudeplänen zugeordnet haben, können Sie sie zum Erstellen dynamischer Gebäudepläne verwenden. Weiter Informationen zum Erstellen dynamischer Gebäudepläne finden Sie unter [Implementieren dynamischer Formatvorlagen für Gebäudepläne von Ersteller](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -152,7 +152,7 @@ Eine `BooleanTypeStyleRule` ist ein [`StyleObject`](#styleobject) und besteht au
 |-----------|----------|-------------|-------------|
 | `keyName` | Zeichenfolge |  Der *Zustand* oder der dynamische Eigenschaftsname.  Ein `keyName` sollte im style-Array eindeutig sein.| Ja |
 | `type` | Zeichenfolge |Der Wert ist „boolesch“. | Ja |
-| `rules` | [`BooleanRuleObject`](#booleanruleobject)[1]| Ein boolesches Paar mit Farben für `true`- und `false`-Werte von *Zustand*.| Ja |
+| `rules` | [`BooleanRuleObject`](#booleanruleobject)[1]| Ein boolesches Paar mit Farben für `true`- und `false`-Werte von *Zustand* .| Ja |
 
 ### <a name="booleanruleobject"></a>BooleanRuleObject
 

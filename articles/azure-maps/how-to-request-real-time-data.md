@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6f0cf663b42c8487495602e4cdbf1a88427f9daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f6d0738cb1673b752e35761a112f2ca22a409e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310933"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895714"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Anfordern von Echtzeitdaten für den öffentlichen Nahverkehr mithilfe des Mobility Service von Azure Maps
 
-Dieser Artikel zeigt, wie Sie Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) verwenden, um Echtzeitdaten für den öffentlichen Nahverkehr anzufordern.
+Dieser Artikel zeigt, wie Sie Azure Maps [Mobility Service](/rest/api/maps/mobility) verwenden, um Echtzeitdaten für den öffentlichen Nahverkehr anzufordern.
 
 In diesem Artikel erfahren Sie, wie Sie die nächsten Ankunftszeiten für alle Linien anfordern, die an der angegebenen Haltestelle ankommen (in Echtzeit).
 
@@ -30,13 +30,13 @@ In diesem Artikel wird die [Postman-App](https://www.getpostman.com/apps) zum Er
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Anfordern der Ankunftszeiten für eine Haltestelle in Echtzeit
 
-Um für eine bestimmte Haltestelle von öffentlichen Verkehrsmitteln Ankunftszeiten in Echtzeit anzufordern, müssen Sie eine Anforderung an die [API für Ankunftszeiten in Echtzeit](https://aka.ms/AzureMapsMobilityRealTimeArrivals) von Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) richten. Für die Anforderung benötigen Sie die ID der Stadt (**metroID**) und die ID der Haltestelle (**stopID**). Weitere Informationen zum Anfordern dieser Parameter finden Sie in der Anleitung zum [Anfordern von Routen für den öffentlichen Nahverkehr](https://aka.ms/AMapsHowToGuidePublicTransitRouting).
+Um für eine bestimmte Haltestelle von öffentlichen Verkehrsmitteln Ankunftszeiten in Echtzeit anzufordern, müssen Sie eine Anforderung an die [API für Ankunftszeiten in Echtzeit](/rest/api/maps/mobility/getrealtimearrivalspreview) von Azure Maps [Mobility Service](/rest/api/maps/mobility) richten. Für die Anforderung benötigen Sie die ID der Stadt ( **metroID** ) und die ID der Haltestelle ( **stopID** ). Weitere Informationen zum Anfordern dieser Parameter finden Sie in der Anleitung zum [Anfordern von Routen für den öffentlichen Nahverkehr](./how-to-request-transit-data.md).
 
 Wir verwenden „522“ als Metro-ID. Dies ist die Metro-ID für das Gebiet „Seattle – Tacoma – Bellevue, WA“. Verwenden Sie „522---2060603“ als Haltestellen-ID. Dies ist die Bushaltestelle mit der Adresse „Ne 24th St & 162nd Ave Ne, Bellevue WA“. Gehen Sie wie folgt vor, um Echtzeitdaten zu den nächsten fünf Ankunftszeiten dieser Haltestelle anzufordern:
 
 1. Öffnen Sie die Postman-App, und erstellen Sie eine Sammlung zum Speichern der Anforderungen. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen).
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
 
     ![Erstellen einer Anforderung in Postman](./media/how-to-request-transit-data/postman-new.png)
 
@@ -121,4 +121,4 @@ Informieren Sie sich, wie Sie mithilfe von Mobility Service Daten zu öffentlich
 Machen Sie sich mit der API-Dokumentation für Azure Maps Mobility Service vertraut:
 
 > [!div class="nextstepaction"]
-> [API-Dokumentation für Mobility Service](https://aka.ms/AzureMapsMobilityService)
+> [API-Dokumentation für Mobility Service](/rest/api/maps/mobility)

@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311018"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895748"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
-In diesem Artikel wird erläutert, wie Sie den [statischen Bilddienst](https://docs.microsoft.com/rest/api/maps/render/getmapimage) mit der Bildzusammensetzungsfunktionalität verwenden können, um Überlagerungen auf einer Rasterkarte zu ermöglichen. Die Bildzusammensetzung beinhaltet die Möglichkeit, eine Rasterkachel mit zusätzlichen Daten wie benutzerdefinierten Ortsmarken, Bezeichnungen und Geometrieüberlagerungen abzurufen.
+In diesem Artikel wird erläutert, wie Sie den [statischen Bilddienst](/rest/api/maps/render/getmapimage) mit der Bildzusammensetzungsfunktionalität verwenden können, um Überlagerungen auf einer Rasterkarte zu ermöglichen. Die Bildzusammensetzung beinhaltet die Möglichkeit, eine Rasterkachel mit zusätzlichen Daten wie benutzerdefinierten Ortsmarken, Bezeichnungen und Geometrieüberlagerungen abzurufen.
 
-Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, Bezeichnungen und Geometrieüberlagerungen zu rendern. Sie können die [Datendienst-APIs](https://docs.microsoft.com/rest/api/maps/data) von Azure Maps verwenden, um Überlagerungen zu speichern und zu rendern.
+Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, Bezeichnungen und Geometrieüberlagerungen zu rendern. Sie können die [Datendienst-APIs](/rest/api/maps/data) von Azure Maps verwenden, um Überlagerungen zu speichern und zu rendern.
 
 > [!Tip]
 > Häufig ist die Nutzung des Azure Maps Web-SDK zum Anzeigen einer einfachen Karte auf einer Webseite kostengünstiger als die Verwendung des Diensts für statische Bilder. Das Web-SDK verwendet Kartenkacheln, und sofern der Benutzer in der Karte nicht schwenkt und zoomt, wird oftmals nur ein Bruchteil einer Transaktion pro Kartenladevorgang generiert. Beachten Sie, dass das Azure Maps Web SDK über Optionen zum Deaktivieren von Schwenken und Zoomen verfügt. Außerdem bietet das Azure Maps Web SDK umfassendere Optionen für die Datenvisualisierung als ein statischer Kartenwebdienst.  
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 
 1. Erstellen Sie eine Sammlung, in der die Anforderungen gespeichert werden. Klicken Sie in der Postman-App auf **New** (Neu). Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus. Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). 
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
     
     ![Erstellen einer Anforderung in Postman](./media/how-to-render-custom-data/postman-new.png)
 
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 > [!Note]
 > Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto im Tarif „S1“ erforderlich.
 
-Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe der [Datenupload-API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) abrufen. Gehen Sie folgendermaßen vor, um die Daten zu Pfaden und Ortsmarken hochladen.
+Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe der [Datenupload-API](/rest/api/maps/data/uploadpreview) abrufen. Gehen Sie folgendermaßen vor, um die Daten zu Pfaden und Ortsmarken hochladen.
 
 1. Öffnen Sie in der Postman-App eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „POST“ aus, und geben Sie die folgende URL ein, um eine POST-Anforderung zu erstellen:
 
@@ -172,7 +172,7 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
 > Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto im Tarif „S1“ erforderlich.
 
 
-Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit dem Parameter [path](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters) verwenden.
+Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit dem Parameter [path](/rest/api/maps/render/getmapimage#uri-parameters) verwenden.
 
 1. Öffnen Sie in der Postman-App eine neue Registerkarte in der zuvor erstellten Sammlung. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zum Rendern eines Polygons mit Farbe und Transparenz zu konfigurieren:
     
@@ -192,7 +192,7 @@ Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit
 > Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto im Tarif „S1“ erforderlich.
 
 
-Sie können die Darstellung der Ortsmarken durch Hinzufügen von Stilmodifizierern ändern. Sie können Ortsmarken und ihre Bezeichnungen beispielsweise vergrößern oder verkleinern, indem Sie den „Skalierungsstil“-Modifizierer `sc` verwenden. Dieser Modifizierer akzeptiert Werte über 0 (null). Der Wert 1 ist die Standardskalierung. Werte größer als 1 machen die Ortsmarken größer, und Werte kleiner als 1 machen sie kleiner. Weitere Informationen zu den Modifizierern finden Sie unter [static image service path parameters (Parameter für statische Bilddienstpfade)](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Sie können die Darstellung der Ortsmarken durch Hinzufügen von Stilmodifizierern ändern. Sie können Ortsmarken und ihre Bezeichnungen beispielsweise vergrößern oder verkleinern, indem Sie den „Skalierungsstil“-Modifizierer `sc` verwenden. Dieser Modifizierer akzeptiert Werte über 0 (null). Der Wert 1 ist die Standardskalierung. Werte größer als 1 machen die Ortsmarken größer, und Werte kleiner als 1 machen sie kleiner. Weitere Informationen zu den Modifizierern finden Sie unter [static image service path parameters (Parameter für statische Bilddienstpfade)](/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Führen Sie die folgenden Schritte aus, um einen Kreis und Ortsmarken mit benutzerdefinierten Bezeichnungen zu rendern:
@@ -222,6 +222,5 @@ Auf ähnliche Weise können Sie andere Stilmodifiziererer ändern, hinzufügen u
 ## <a name="next-steps"></a>Nächste Schritte
 
 
-* Machen Sie sich mit der API-Dokumentation zum [Get Map-Image-API von Azure Maps](https://docs.microsoft.com/rest/api/maps/render/getmapimage) vertraut.
-* Weitere Informationen zum Azure Maps-Datendienst finden Sie in der [Dienstdokumentation](https://docs.microsoft.com/rest/api/maps/data).
-
+* Machen Sie sich mit der API-Dokumentation zum [Get Map-Image-API von Azure Maps](/rest/api/maps/render/getmapimage) vertraut.
+* Weitere Informationen zum Azure Maps-Datendienst finden Sie in der [Dienstdokumentation](/rest/api/maps/data).

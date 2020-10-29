@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86524742"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895850"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler
 
-Die Schnellansicht für Zeichnungsfehler ist eine eigenständige Webanwendung zum Anzeigen von [Warnungen und Fehlern im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md), die im Zuge des Konvertierungsprozesses erkannt wurden. Bei der Webanwendung für die Fehlerschnellansicht handelt es sich um eine statische Seite, die ohne Internetverbindung verwendet werden kann.  Die Fehlerschnellansicht kann zur Behebung von Fehlern und Warnungen verwendet werden, um die [Anforderungen für Zeichnungspakete](drawing-requirements.md) zu erfüllen. Im Falle eines erkannten Fehlers wird von der [Azure Maps-Konvertierungs-API](https://docs.microsoft.com/rest/api/maps/conversion) lediglich eine Antwort mit einem Link zur Fehlerschnellansicht zurückgegeben.
+Die Schnellansicht für Zeichnungsfehler ist eine eigenständige Webanwendung zum Anzeigen von [Warnungen und Fehlern im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md), die im Zuge des Konvertierungsprozesses erkannt wurden. Bei der Webanwendung für die Fehlerschnellansicht handelt es sich um eine statische Seite, die ohne Internetverbindung verwendet werden kann.  Die Fehlerschnellansicht kann zur Behebung von Fehlern und Warnungen verwendet werden, um die [Anforderungen für Zeichnungspakete](drawing-requirements.md) zu erfüllen. Im Falle eines erkannten Fehlers wird von der [Azure Maps-Konvertierungs-API](/rest/api/maps/conversion) lediglich eine Antwort mit einem Link zur Fehlerschnellansicht zurückgegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,14 +58,14 @@ In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwen
 
 Das unter dem Link `diagnosticPackageLocation` heruntergeladene ZIP-Paket enthält zwei Dateien:
 
-* _VisualizationTool.zip_: Enthält den Quellcode, die Medien und die Webseite für die Schnellansicht für Zeichnungsfehler.
-* _ConversionWarningsAndErrors.json_: Enthält eine formatierte Liste mit Warnungen, Fehlern und zusätzlichen Details, die von der Schnellansicht für Zeichnungsfehler verwendet werden.
+* _VisualizationTool.zip_ : Enthält den Quellcode, die Medien und die Webseite für die Schnellansicht für Zeichnungsfehler.
+* _ConversionWarningsAndErrors.json_ : Enthält eine formatierte Liste mit Warnungen, Fehlern und zusätzlichen Details, die von der Schnellansicht für Zeichnungsfehler verwendet werden.
 
-Entzippen Sie den Ordner _VisualizationTool.zip_. Er enthält folgende Elemente:
+Entzippen Sie den Ordner _VisualizationTool.zip_ . Er enthält folgende Elemente:
 
-* Ordner _assets_: Bilder und Mediendateien
-* Ordner _static_: Quellcode
-* Datei _index.html_: die Webanwendung
+* Ordner _assets_ : Bilder und Mediendateien
+* Ordner _static_ : Quellcode
+* Datei _index.html_ : die Webanwendung
 
 Öffnen Sie die Datei _index.html_ mit einer der im Anschluss angegebenen Browserversionen. Sie können auch eine andere Version verwenden, sofern diese ein vergleichbar kompatibles Verhalten wie die aufgeführte Version bietet.
 
@@ -84,13 +84,13 @@ Die Datei _ConversionWarningsAndErrors.json_ wurde am Stamm des heruntergeladene
 
 :::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Schnellansicht-App für Zeichnungsfehler: Startseite":::
 
-Nachdem die Datei _ConversionWarningsAndErrors.json_ geladen wurde, wird eine Liste Ihrer Zeichnungspaketfehler und -warnungen angezeigt. Für alle Fehler bzw. Warnungen sind jeweils die Schicht, die Ebene und eine ausführliche Meldung angegeben. Ausführliche Informationen zu einem Fehler oder einer Warnung erhalten Sie durch Klicken auf den Link **Details**. Daraufhin wird unter der Liste ein entsprechender Abschnitt angezeigt. Nun können Sie zu den einzelnen Fehlern navigieren, um weitere Informationen zur Fehlerbehebung zu erhalten.
+Nachdem die Datei _ConversionWarningsAndErrors.json_ geladen wurde, wird eine Liste Ihrer Zeichnungspaketfehler und -warnungen angezeigt. Für alle Fehler bzw. Warnungen sind jeweils die Schicht, die Ebene und eine ausführliche Meldung angegeben. Ausführliche Informationen zu einem Fehler oder einer Warnung erhalten Sie durch Klicken auf den Link **Details** . Daraufhin wird unter der Liste ein entsprechender Abschnitt angezeigt. Nun können Sie zu den einzelnen Fehlern navigieren, um weitere Informationen zur Fehlerbehebung zu erhalten.
 
 :::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Schnellansicht-App für Zeichnungsfehler: Startseite":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr [Zeichnungspaket den Anforderungen entspricht](drawing-requirements.md), können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](https://docs.microsoft.com/rest/api/maps/conversion) in ein Dataset konvertieren. Anschließend können Sie das Webmodul für Gebäudepläne verwenden, um Ihre Anwendung zu entwickeln. Weitere Informationen finden Sie in den folgenden Artikeln:
+Wenn Ihr [Zeichnungspaket den Anforderungen entspricht](drawing-requirements.md), können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](/rest/api/maps/conversion) in ein Dataset konvertieren. Anschließend können Sie das Webmodul für Gebäudepläne verwenden, um Ihre Anwendung zu entwickeln. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 > [!div class="nextstepaction"]
 > [Fehler und Warnungen bei der Zeichnungskonvertierung](drawing-conversion-error-codes.md)

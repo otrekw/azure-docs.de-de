@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335227"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896817"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
 Azure Maps ist ein Portfolio mit Geodienst-APIs, die nativ in Azure integriert sind. Mit diesen APIs können Entwickler, Unternehmen und unabhängige Softwarehersteller (Independent Software Vendors, ISVs) standortbezogene Apps sowie Lösungen für die Bereiche IoT, Mobilität, Logistik und Assetnachverfolgung entwickeln. 
 
-Die Rest-APIs von Azure Maps können in Programmiersprachen wie Python und R aufgerufen werden, um Szenarien mit Geodatenanalyse und maschinellem Lernen zu ermöglichen. Azure Maps verfügt über stabile [APIs für die Routenplanung](https://docs.microsoft.com/rest/api/maps/route), mit denen Benutzer Routen zwischen mehreren Datenpunkten berechnen können. Die Berechnungen basieren auf unterschiedlichen Bedingungen, z. B. Fahrzeugtyp oder erreichbarer Bereich. 
+Die Rest-APIs von Azure Maps können in Programmiersprachen wie Python und R aufgerufen werden, um Szenarien mit Geodatenanalyse und maschinellem Lernen zu ermöglichen. Azure Maps verfügt über stabile [APIs für die Routenplanung](/rest/api/maps/route), mit denen Benutzer Routen zwischen mehreren Datenpunkten berechnen können. Die Berechnungen basieren auf unterschiedlichen Bedingungen, z. B. Fahrzeugtyp oder erreichbarer Bereich. 
 
 In diesem Tutorial helfen Sie einem Fahrer, der den Akku seines Elektrofahrzeugs aufladen muss. Der Fahrer muss die nächstgelegene Ladestation (relativ zum Fahrzeugstandort) finden.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen und Ausführen einer Jupyter Notebook-Datei in [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) in der Cloud
+> * Erstellen und Ausführen einer Jupyter Notebook-Datei in [Azure Notebooks](../notebooks/index.yml) in der Cloud
 > * Aufrufen von Azure Maps-REST-APIs in Python
 > * Suchen nach einem erreichbaren Bereich auf Grundlage des Verbrauchsmodells des Elektrofahrzeugs
 > * Suchen nach Ladestationen für Elektrofahrzeuge im erreichbaren Bereich bzw. in der Isochrone
@@ -49,7 +49,7 @@ Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verw
 
 Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure Notebooks-Projekt erstellen und die Jupyter Notebook-Datei herunterladen und ausführen. Die Jupyter Notebook-Datei enthält Python-Code, der das Szenario in diesem Tutorial implementiert. Gehen Sie wie folgt vor, um ein Azure Notebooks-Projekt zu erstellen und das Jupyter Notebook-Dokument in das Projekt hochzuladen:
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an Weitere Informationen finden Sie unter [Quickstart: Anmelden und Festlegen einer Benutzer-ID](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an Weitere Informationen finden Sie unter [Quickstart: Anmelden und Festlegen einer Benutzer-ID](../notebooks/quickstart-sign-in-azure-notebooks.md).
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite die Option **Meine Projekte** aus.
 
     ![Schaltfläche „Meine Projekte“](./media/tutorial-ev-routing/myproject.png)
@@ -62,7 +62,7 @@ Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure�
  
     ![Bereich „Neues Projekt erstellen“](./media/tutorial-ev-routing/create-project-window.png)
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 1. Nachdem das Projekt erstellt wurde, laden Sie [diese Jupyter Notebook-Dokumentdatei](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) aus dem [Repository für Jupyter Notebook in Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) herunter.
 
@@ -108,7 +108,7 @@ from IPython.display import Image, display
 
 Ein Kurierunternehmen hat einige Elektrofahrzeuge in seiner Flotte. Im Laufe des Tages müssen die Elektrofahrzeuge aufgeladen werden, ohne dafür zum Lager zurückkehren zu müssen. Sobald die Restkapazität auf unter eine Stunde fällt, wird nach erreichbaren Ladestationen gesucht. Sie suchen also im Grunde nach einer Ladestation, wenn die Akkukapazität niedrig ist, und Sie rufen die Grenzinformationen für die in Frage kommenden Ladestationen ab. 
 
-Da das Unternehmen die Nutzung von Routen bevorzugt, bei denen gleichermaßen auf Wirtschaftlichkeit und Geschwindigkeit geachtet wird, wird *eco* als angeforderter Routentyp (routeType) festgelegt. Mit dem folgenden Skript wird die [API zum Abrufen des Routenbereichs](https://docs.microsoft.com/rest/api/maps/route/getrouterange) des Azure Maps-Routenplanungsdiensts aufgerufen. Dabei werden Parameter für das Verbrauchsmodell des Fahrzeugs verwendet. Im Skript wird dann die Antwort analysiert, um ein Polygonobjekt im GEOJSON-Format zu erstellen, mit dem der maximal erreichbare Bereich des Fahrzeugs dargestellt wird.
+Da das Unternehmen die Nutzung von Routen bevorzugt, bei denen gleichermaßen auf Wirtschaftlichkeit und Geschwindigkeit geachtet wird, wird *eco* als angeforderter Routentyp (routeType) festgelegt. Mit dem folgenden Skript wird die [API zum Abrufen des Routenbereichs](/rest/api/maps/route/getrouterange) des Azure Maps-Routenplanungsdiensts aufgerufen. Dabei werden Parameter für das Verbrauchsmodell des Fahrzeugs verwendet. Im Skript wird dann die Antwort analysiert, um ein Polygonobjekt im GEOJSON-Format zu erstellen, mit dem der maximal erreichbare Bereich des Fahrzeugs dargestellt wird.
 
 Führen Sie das Skript in der folgenden Zelle aus, um die Grenzen für den erreichbaren Bereich des Elektrofahrzeugs zu ermitteln:
 
@@ -156,7 +156,7 @@ boundsData = {
 
 Nachdem Sie den erreichbaren Bereich (Isochrone) für das Elektrofahrzeug ermittelt haben, können Sie innerhalb dieses Bereichs nach Ladestationen suchen. 
 
-Mit dem folgenden Skript wird die [Post Search Inside Geometry-API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) von Azure Maps aufgerufen. Hiermit wird innerhalb der Grenzen des maximal erreichbaren Bereichs eines Elektrofahrzeugs nach Ladestationen gesucht. Anschließend analysiert das Skript die Antwort, um ein Array mit erreichbaren Standorten zu erhalten.
+Mit dem folgenden Skript wird die [Post Search Inside Geometry-API](/rest/api/maps/search/postsearchinsidegeometry) von Azure Maps aufgerufen. Hiermit wird innerhalb der Grenzen des maximal erreichbaren Bereichs eines Elektrofahrzeugs nach Ladestationen gesucht. Anschließend analysiert das Skript die Antwort, um ein Array mit erreichbaren Standorten zu erhalten.
 
 Führen Sie das folgende Skript aus, um im erreichbaren Bereich nach Ladestationen für Elektrofahrzeuge zu suchen:
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Hochladen des erreichbaren Bereichs und der Ladestationen in den Azure Maps-Datendienst
 
-Auf einer Karte empfiehlt es sich, die Ladestationen und die Grenze für den maximal erreichbaren Bereich des Elektrofahrzeugs zu visualisieren. Laden Sie hierzu die Daten zur Grenze und zu den Ladestationen als GeoJSON-Objekte in den Azure Maps-Datendienst hoch. Verwenden Sie hierzu die [Datenupload-API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
+Auf einer Karte empfiehlt es sich, die Ladestationen und die Grenze für den maximal erreichbaren Bereich des Elektrofahrzeugs zu visualisieren. Laden Sie hierzu die Daten zur Grenze und zu den Ladestationen als GeoJSON-Objekte in den Azure Maps-Datendienst hoch. Verwenden Sie hierzu die [Datenupload-API](/rest/api/maps/data/uploadpreview). 
 
 Führen Sie die beiden folgenden Zellen aus, um die Daten zur Grenze und zu den Ladestationen in den Azure Maps-Datendienst hochzuladen:
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>Rendern der Ladestationen und des erreichbaren Bereichs auf einer Karte
 
-Rufen Sie nach dem Hochladen der Daten in den Datendienst den [Dienst zum Abrufen des Kartenbilds](https://docs.microsoft.com/rest/api/maps/render/getmapimage) von Azure Maps auf. Dieser Dienst wird verwendet, um die Ladestationen sowie die Grenze des maximal erreichbaren Bereichs auf dem statischen Kartenbild zu rendern. Zu diesem Zweck wird das folgende Skript ausgeführt:
+Rufen Sie nach dem Hochladen der Daten in den Datendienst den [Dienst zum Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage) von Azure Maps auf. Dieser Dienst wird verwendet, um die Ladestationen sowie die Grenze des maximal erreichbaren Bereichs auf dem statischen Kartenbild zu rendern. Zu diesem Zweck wird das folgende Skript ausgeführt:
 
 ```python
 # Get boundaries for the bounding box.
@@ -283,7 +283,7 @@ display(Image(poiRangeMap))
 
 Als Erstes möchten Sie alle potenziellen Ladestationen im erreichbaren Bereich ermitteln. Anschließend möchten Sie wissen, welche davon am schnellsten zu erreichen ist. 
 
-Mit dem folgenden Skript wird die [API für die Matrixroutenplanung](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) von Azure Maps aufgerufen. Diese gibt die Fahrtzeit und Entfernung zu den einzelnen Ladestationen für den angegebenen Fahrzeugstandort zurück. Mit dem Skript in der nächsten Zelle wird die Antwort analysiert, um basierend auf der Fahrtzeit die nächstgelegene erreichbare Ladestation zu erhalten.
+Mit dem folgenden Skript wird die [API für die Matrixroutenplanung](/rest/api/maps/route/postroutematrix) von Azure Maps aufgerufen. Diese gibt die Fahrtzeit und Entfernung zu den einzelnen Ladestationen für den angegebenen Fahrzeugstandort zurück. Mit dem Skript in der nächsten Zelle wird die Antwort analysiert, um basierend auf der Fahrtzeit die nächstgelegene erreichbare Ladestation zu erhalten.
 
 Führen Sie das Skript in der folgenden Zelle aus, um die nächstgelegene erreichbare Ladestation zu ermitteln, die am schnellsten erreichbar ist:
 
@@ -314,7 +314,7 @@ closestChargeLoc = ",".join(str(i) for i in minDistLoc)
 
 ## <a name="calculate-the-route-to-the-closest-charging-station"></a>Berechnen der Route zur nächstgelegenen Ladestation
 
-Nachdem Sie nun die nächstgelegene Ladestation gefunden haben, können Sie die [API zum Abrufen von Wegbeschreibungen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) aufrufen, um die genaue Route vom aktuellen Standort des Elektrofahrzeugs zur Ladestation anzufordern.
+Nachdem Sie nun die nächstgelegene Ladestation gefunden haben, können Sie die [API zum Abrufen von Wegbeschreibungen](/rest/api/maps/route/getroutedirections) aufrufen, um die genaue Route vom aktuellen Standort des Elektrofahrzeugs zur Ladestation anzufordern.
 
 Führen Sie das Skript in der folgenden Zelle aus, um die Route zur Ladestation abzurufen und die Antwort zu analysieren, damit Sie ein GeoJSON-Objekt für die Route erhalten:
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Visualisieren der Route
 
-Zum Visualisieren der Route laden Sie zunächst die Routendaten als GeoJSON-Objekt in den Azure Maps-Datendienst hoch. Verwenden Sie dazu die [Datenupload-API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) von Azure Maps. Rufen Sie anschließend den Renderingdienst ([API zum Abrufen des Kartenbilds](https://docs.microsoft.com/rest/api/maps/render/getmapimage)) auf, um die Route auf der Karte zu rendern und zu visualisieren.
+Zum Visualisieren der Route laden Sie zunächst die Routendaten als GeoJSON-Objekt in den Azure Maps-Datendienst hoch. Verwenden Sie dazu die [Datenupload-API](/rest/api/maps/data/uploadpreview) von Azure Maps. Rufen Sie anschließend den Renderingdienst ([API zum Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)) auf, um die Route auf der Karte zu rendern und zu visualisieren.
 
 Führen Sie das folgende Skript aus, um ein Bild mit der gerenderten Route auf der Karte abzurufen:
 
@@ -391,17 +391,17 @@ In diesem Tutorial haben Sie erfahren, wie Sie REST-APIs von Azure Maps direkt 
 
 Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie unter:
 
-* [Abrufen des Routenbereichs](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
-* [Veröffentlichen einer Suche innerhalb der Geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
-* [Datenupload](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
-* [Rendern: Abrufen des Kartenbilds](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Veröffentlichen der Routenmatrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
-* [Abrufen von Wegbeschreibungen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
-* [Azure Maps-REST-APIs](https://docs.microsoft.com/azure/azure-maps/consumption-model)
+* [Abrufen des Routenbereichs](/rest/api/maps/route/getrouterange)
+* [Veröffentlichen einer Suche innerhalb der Geometrie](/rest/api/maps/search/postsearchinsidegeometry)
+* [Datenupload](/rest/api/maps/data/uploadpreview)
+* [Rendern: Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)
+* [Veröffentlichen der Routenmatrix](/rest/api/maps/route/postroutematrix)
+* [Abrufen von Wegbeschreibungen](/rest/api/maps/route/getroutedirections)
+* [Azure Maps-REST-APIs](./consumption-model.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Notebooks finden Sie hier
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
+> [Azure Notebooks](../notebooks/index.yml)

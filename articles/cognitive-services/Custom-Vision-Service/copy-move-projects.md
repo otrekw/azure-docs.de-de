@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900325"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopieren und Verschieben von Custom Vision-Projekten
 
@@ -37,8 +37,8 @@ Wenn Ihre App oder Ihr Unternehmen von der Verwendung eines Custom Vision-Projek
 Der Vorgang zum Kopieren eines Projekts umfasst die folgenden Schritte:
 
 1. Zuerst erhalten Sie die ID des Projekts in dem Quellkonto, das Sie kopieren möchten.
-1. Dann rufen Sie die **ExportProjekt**-API mithilfe der Projekt-ID und des Trainingsschlüssels Ihres Quellkontos auf. Sie erhalten eine temporäre Tokenzeichenfolge.
-1. Dann rufen Sie die **ImportProjekt**-API mithilfe der Tokenzeichenfolge und des Trainingsschlüssels Ihres Zielkontos auf. Das Projekt wird dann unter Ihrem Zielkonto aufgeführt.
+1. Dann rufen Sie die **ExportProjekt** -API mithilfe der Projekt-ID und des Trainingsschlüssels Ihres Quellkontos auf. Sie erhalten eine temporäre Tokenzeichenfolge.
+1. Dann rufen Sie die **ImportProjekt** -API mithilfe der Tokenzeichenfolge und des Trainingsschlüssels Ihres Zielkontos auf. Das Projekt wird dann unter Ihrem Zielkonto aufgeführt.
 
 ## <a name="get-the-project-id"></a>Abrufen der Projekt-ID
 
@@ -105,8 +105,9 @@ Sie erhalten eine `200/OK`-Antwort mit Metadaten zum exportierten Projekt und ei
 Rufen Sie **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** mithilfe Ihres Zieltrainingsschlüssels und -endpunkts zusammen mit dem Verweistoken auf. Sie können Ihrem Projekt auch einen Namen im neuen Konto zuordnen.
 
 ```curl
-curl -v -X POST "{endpoint}/customvision/v3.3/Training/projects/import?token={token}?name={name}"
--H "Training-key: {training key}"
+curl -v -G -X POST "{endpoint}/customvision/v3.3/Training/projects/import"
+--data-urlencode "token={token}" --data-urlencode "name={name}"
+-H "Training-key: {training key}" -H "Content-Length: 0"
 ```
 
 Sie erhalten eine `200/OK`-Antwort mit Metadaten zu Ihrem neu importierten Projekt.
