@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332915"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789861"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Bereitstellen einer Windows-VM mit SQL Server im Azure-Portal
 
@@ -56,7 +56,7 @@ Beim Erstellen eines virtuellen SQL Server-Computers können Sie eines von zahlr
    > Weitere Informationen zu diesen Optionen finden Sie unter [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
 
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 
 ## <a name="1-configure-basic-settings"></a>1. Grundeinstellungen konfigurieren
@@ -74,16 +74,16 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
 
 * Gehen Sie unter **Instanzendetails** wie folgt vor:
 
-    1. Geben Sie einen eindeutigen **Namen**für den virtuellen Computer ein.  
+    1. Geben Sie einen eindeutigen **Namen** für den virtuellen Computer ein.  
     1. Wählen Sie unter **Region** einen Standort aus. 
-    1. Übernehmen Sie für diese Anleitung für **Verfügbarkeitsoptionen** die Einstellung _Keine Infrastrukturredundanz erforderlich_. Weitere Informationen zu Verfügbarkeitsoptionen finden Sie unter [Verfügbarkeit](../../../virtual-machines/windows/availability.md). 
+    1. Übernehmen Sie für diese Anleitung für **Verfügbarkeitsoptionen** die Einstellung _Keine Infrastrukturredundanz erforderlich_ . Weitere Informationen zu Verfügbarkeitsoptionen finden Sie unter [Verfügbarkeit](../../../virtual-machines/availability.md). 
     1. Wählen Sie in der Liste unter **Image** die Option _Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016_ aus.  
     1. Wählen Sie unter **Größe** die Option **Größe ändern** aus, um die Größe des virtuellen Computers anzupassen, und wählen Sie das Angebot **Basic A2** aus. Bereinigen Sie unbedingt die Ressourcen, wenn Sie fertig sind, um unerwartete Gebühren zu vermeiden. Informationen zu Produktionsworkloads finden Sie in den Empfehlungen für die Computergröße und -konfiguration unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](performance-guidelines-best-practices.md).
 
     ![Instanzendetails](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> Bei den voraussichtlichen monatlichen Kosten im Fenster **Größe auswählen** sind SQL Server-Lizenzierungskosten nicht berücksichtigt. Bei dieser Schätzung handelt es sich ausschließlich um die Kosten für den virtuellen Computer. Bei der Express Edition und der Developer Edition von SQL Server umfasst die Schätzung die voraussichtlichen Gesamtkosten. Bei anderen Editionen können Sie auf der Seite [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Ihre Zieledition von SQL Server auswählen. Siehe auch die [Preisinformationen für virtuelle Azure-Computer unter SQL Server](pricing-guidance.md) und [Größen für virtuelle Windows-Computer in Azure](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Bei den voraussichtlichen monatlichen Kosten im Fenster **Größe auswählen** sind SQL Server-Lizenzierungskosten nicht berücksichtigt. Bei dieser Schätzung handelt es sich ausschließlich um die Kosten für den virtuellen Computer. Bei der Express Edition und der Developer Edition von SQL Server umfasst die Schätzung die voraussichtlichen Gesamtkosten. Bei anderen Editionen können Sie auf der Seite [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Ihre Zieledition von SQL Server auswählen. Siehe auch die [Preisinformationen für virtuelle Azure-Computer unter SQL Server](pricing-guidance.md) und [Größen für virtuelle Windows-Computer in Azure](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 * Geben Sie unter **Administratorkonto** einen Benutzernamen und ein Kennwort an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
 
@@ -104,7 +104,7 @@ Konfigurieren Sie auf der Registerkarte **Datenträger** die Datenträgeroptione
 * Wählen Sie unter **Erweitert** die Option **Ja** unter **Managed Disks verwenden** aus.
 
    > [!NOTE]
-   > Microsoft empfiehlt Managed Disks für SQL Server. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie unter [Azure Managed Disks – Übersicht](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/windows/manage-availability.md).
+   > Microsoft empfiehlt Managed Disks für SQL Server. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie unter [Azure Managed Disks – Übersicht](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/manage-availability.md).
 
 ![SQL-VM-Datenträgereinstellungen](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -113,7 +113,7 @@ Konfigurieren Sie auf der Registerkarte **Datenträger** die Datenträgeroptione
 
 Konfigurieren Sie auf der Registerkarte **Netzwerk** Ihre Netzwerkoptionen. 
 
-* Erstellen Sie ein neues **virtuelles Netzwerk**, oder verwenden Sie für Ihre SQL Server-VM ein bereits vorhandenes VNET. Legen Sie ebenfalls ein **Subnetz** fest. 
+* Erstellen Sie ein neues **virtuelles Netzwerk** , oder verwenden Sie für Ihre SQL Server-VM ein bereits vorhandenes VNET. Legen Sie ebenfalls ein **Subnetz** fest. 
 
 * Wählen Sie unter **NIC-Netzwerksicherheitsgruppe** entweder eine grundlegende Sicherheitsgruppe oder die erweiterte Sicherheitsgruppe aus. Die Wahl der grundlegenden Option ermöglicht Ihnen die Auswahl eingehender Ports für die SQL Server-VM. Dies sind die gleichen Werte, die auf der Registerkarte **Standard** konfiguriert wurden. Die Auswahl der erweiterten Option ermöglicht Ihnen, eine vorhandene Netzwerksicherheitsgruppe auszuwählen oder eine neue zu erstellen. 
 
@@ -146,10 +146,10 @@ Konfigurieren Sie auf der Registerkarte **SQL Server-Einstellungen** die speziel
 
 ### <a name="connectivity"></a>Konnektivität
 
-Geben Sie unter **SQL-Konnektivität**den Zugriffstyp an, den Sie für die SQL Server-Instanz auf dieser VM verwenden möchten. Wählen Sie für diese exemplarische Vorgehensweise die Option **Öffentlich (Internet)** aus, um für Computer oder Dienste im Internet Verbindungen mit SQL Server zuzulassen. Wenn diese Option aktiviert ist, konfiguriert Azure die Firewall und die Netzwerksicherheitsgruppe automatisch, um Datenverkehr über den ausgewählten Port zuzulassen.
+Geben Sie unter **SQL-Konnektivität** den Zugriffstyp an, den Sie für die SQL Server-Instanz auf dieser VM verwenden möchten. Wählen Sie für diese exemplarische Vorgehensweise die Option **Öffentlich (Internet)** aus, um für Computer oder Dienste im Internet Verbindungen mit SQL Server zuzulassen. Wenn diese Option aktiviert ist, konfiguriert Azure die Firewall und die Netzwerksicherheitsgruppe automatisch, um Datenverkehr über den ausgewählten Port zuzulassen.
 
 > [!TIP]
-> Standardmäßig lauscht SQL Server am bekannten Port **1433**. Ändern Sie den Port im vorherigen Dialogfeld, sodass an einem nicht standardmäßigen Port (beispielsweise 1401) gelauscht wird, um die Sicherheit zu erhöhen. Wenn Sie den Port ändern, muss die Verbindung in allen Clienttools (etwa SQL Server Management Studio) über diesen Port hergestellt werden.
+> Standardmäßig lauscht SQL Server am bekannten Port **1433** . Ändern Sie den Port im vorherigen Dialogfeld, sodass an einem nicht standardmäßigen Port (beispielsweise 1401) gelauscht wird, um die Sicherheit zu erhöhen. Wenn Sie den Port ändern, muss die Verbindung in allen Clienttools (etwa SQL Server Management Studio) über diesen Port hergestellt werden.
 
 ![SQL-VM-Sicherheit](./media/create-sql-vm-portal/azure-sqlvm-security.png)
 
@@ -171,13 +171,13 @@ Wenn Sie SQL Server-Authentifizierung benötigen, wählen Sie auf der Registerka
 > [!NOTE]
 > Wenn Sie über das Internet auf SQL Server zugreifen möchten (Konnektivitätsoption „Öffentlich“), müssen Sie die SQL Server-Authentifizierung hier aktivieren. Für den öffentlichen Zugriff auf SQL Server muss die SQL Server-Authentifizierung verwendet werden.
 
-Geben Sie beim Aktivieren der SQL Server-Authentifizierung **Anmeldename** und **Kennwort** an. Dieser Anmeldename ist als Anmeldung für die SQL Server-Authentifizierung konfiguriert und Mitglied der festen Serverrolle **sysadmin**. Weitere Informationen zu Authentifizierungsmodi finden Sie unter [Auswählen eines Authentifizierungsmodus](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode).
+Geben Sie beim Aktivieren der SQL Server-Authentifizierung **Anmeldename** und **Kennwort** an. Dieser Anmeldename ist als Anmeldung für die SQL Server-Authentifizierung konfiguriert und Mitglied der festen Serverrolle **sysadmin** . Weitere Informationen zu Authentifizierungsmodi finden Sie unter [Auswählen eines Authentifizierungsmodus](/sql/relational-databases/security/choose-an-authentication-mode).
 
 Wenn Sie die SQL Server-Authentifizierung nicht aktivieren möchten, können Sie das lokale Administratorkonto auf der VM verwenden, um die Verbindung mit der SQL Server-Instanz herzustellen.
 
 ### <a name="azure-key-vault-integration"></a>Azure-Schlüsseltresor-Integration
 
-Um Sicherheitsgeheimnisse in Azure zur Verschlüsselung zu speichern, wählen Sie **SQL-Servereinstellungen** aus, und scrollen Sie nach unten zu **Azure Key Vault-Integration**. Wählen Sie **Aktivieren** aus, und geben Sie die angeforderten Informationen an. 
+Um Sicherheitsgeheimnisse in Azure zur Verschlüsselung zu speichern, wählen Sie **SQL-Servereinstellungen** aus, und scrollen Sie nach unten zu **Azure Key Vault-Integration** . Wählen Sie **Aktivieren** aus, und geben Sie die angeforderten Informationen an. 
 
 ![Azure-Schlüsseltresor-Integration](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -188,7 +188,7 @@ In der folgenden Tabelle sind die Parameter aufgeführt, die zum Konfigurieren d
 | **Schlüsseltresor-URL** |Gibt den Speicherort des Schlüsseltresors an. |`https://contosokeyvault.vault.azure.net/` |
 | **Prinzipalname** |Gibt den Namen des Azure Active Directory-Dienstprinzipals an. Dieser Name wird auch als Client-ID bezeichnet. |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
 | **Geheimer Schlüssel des Prinzipals** |Der geheime Schlüssel des Azure Active Directory-Dienstprinzipals. Dieser geheime Schlüssel wird auch als geheimer Clientschlüssel bezeichnet. |`9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=` |
-| **Name der Anmeldeinformationen** |**Name der Anmeldeinformationen**: Die Azure Key Vault-Integration erstellt Anmeldeinformationen in SQL Server, damit die VM Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation. |`mycred1` |
+| **Name der Anmeldeinformationen** |**Name der Anmeldeinformationen** : Die Azure Key Vault-Integration erstellt Anmeldeinformationen in SQL Server, damit die VM Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation. |`mycred1` |
 
 Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern](azure-key-vault-integration-configure.md).
 
@@ -198,7 +198,7 @@ Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** unter **Speicherk
 
 ![SQL-VM-Speicherkonfiguration](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
-Wählen Sie unter **Speicher optimiert für**eine der folgenden Optionen:
+Wählen Sie unter **Speicher optimiert für** eine der folgenden Optionen:
 
 * **Allgemein** ist die Standardeinstellung und bietet Unterstützung für die meisten Workloads.
 * **Transaktionale Verarbeitung** optimiert den Speicher für herkömmliche OLTP-Datenbankworkloads.
@@ -224,7 +224,7 @@ Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server au
 
 ### <a name="automated-backup"></a>Automatisierte Sicherung
 
-Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte Sicherung**. Die automatisierte Sicherung ist standardmäßig deaktiviert.
+Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte Sicherung** . Die automatisierte Sicherung ist standardmäßig deaktiviert.
 
 Wenn Sie die automatisierte SQL-Sicherung aktivieren, können Sie folgende Einstellungen konfigurieren:
 
@@ -234,7 +234,7 @@ Wenn Sie die automatisierte SQL-Sicherung aktivieren, können Sie folgende Einst
 * Sichern von Systemdatenbanken
 * Konfigurieren des Sicherungszeitplans
 
-Wählen Sie **Aktivieren** aus, um die Sicherung zu verschlüsseln. Geben Sie dann das **Kennwort**an. Azure erstellt ein Zertifikat zum Verschlüsseln der Sicherungen und verwendet das angegebene Kennwort, um das Zertifikat zu schützen. Standardmäßig wird der Zeitplan automatisch festgelegt, aber Sie können einen manuellen Zeitplan erstellen, indem Sie **Manuell** auswählen. 
+Wählen Sie **Aktivieren** aus, um die Sicherung zu verschlüsseln. Geben Sie dann das **Kennwort** an. Azure erstellt ein Zertifikat zum Verschlüsseln der Sicherungen und verwendet das angegebene Kennwort, um das Zertifikat zu schützen. Standardmäßig wird der Zeitplan automatisch festgelegt, aber Sie können einen manuellen Zeitplan erstellen, indem Sie **Manuell** auswählen. 
 
 ![Automatisierte SQL VM-Sicherungen](./media/create-sql-vm-portal/automated-backup.png)
 
@@ -248,7 +248,7 @@ Sie können [Machine Learning Services](/sql/advanced-analytics/) aktivieren. Mi
 
 ## <a name="4-review--create"></a>4. Bewerten + erstellen
 
-Auf der Registerkarte **Überprüfen und erstellen**:
+Auf der Registerkarte **Überprüfen und erstellen** :
 1. Überprüfen Sie die Zusammenfassung.
 1. Wählen Sie **Erstellen** aus, um SQL Server, die Ressourcengruppe und die für diese VM angegebenen Ressourcen zu erstellen.
 

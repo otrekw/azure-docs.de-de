@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855921"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787464"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Erste Schritte mit Azure Queue Storage mit .NET
 
@@ -28,7 +28,7 @@ Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. 
 
 In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendete Szenarien mit Azure Queue Storage schreiben. Zu den behandelten Szenarien zählen das Erstellen und Löschen von Warteschlangen sowie das Hinzufügen, Lesen und Löschen von Warteschlangennachrichten.
 
-**Geschätzter Zeitaufwand**: 45 Minuten
+**Geschätzter Zeitaufwand** : 45 Minuten
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Richten Sie als Nächstes Ihre Entwicklungsumgebung in Visual Studio ein, damit 
 
 Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2019 erstellen. Die Schritte sind in anderen Versionen von Visual Studio ähnlich.
 
-1. Wählen Sie **Datei** > **Neu** > **Projekt**.
+1. Wählen Sie **Datei** > **Neu** > **Projekt** .
 2. Wählen Sie **Plattform** > **Windows** aus.
 3. Wählen Sie **Konsolen-App (.NET Framework)** .
 4. Wählen Sie **Weiter** aus.
@@ -71,8 +71,8 @@ Sie müssen in Ihrem Projekt auf die folgenden vier Pakete verweisen, um dieses 
 
 Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
-1. Wählen Sie **Durchsuchen**.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** .
+1. Wählen Sie **Durchsuchen** .
 1. Suchen Sie online nach „Azure.Storage.Queues“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und die zugehörigen Abhängigkeiten zu installieren. Dadurch werden auch die Bibliotheken Azure.Storage.Common und Azure.Core installiert, die Abhängigkeiten der Warteschlangenbibliothek sind.
 1. Suchen Sie online nach „System.Configuration.ConfigurationManager“, und wählen Sie **Installieren** aus, um Configuration Manager zu installieren.
 
@@ -86,8 +86,8 @@ Sie müssen in Ihrem Projekt auf die folgenden drei Pakete verweisen, um dieses 
 
 Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
-1. Wählen Sie **Durchsuchen**.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** .
+1. Wählen Sie **Durchsuchen** .
 1. Suchen Sie online nach „Microsoft.Azure.Storage.Queue“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und dazugehörigen Abhängigkeiten zu installieren. Dabei wird auch die Bibliothek „Microsoft.Azure.Storage.Common“ installiert, die eine Abhängigkeit der Warteschlangenbibliothek ist.
 1. Suchen Sie online nach „Microsoft.Azure.ConfigurationManager“, und wählen Sie **Installieren** aus, um Azure Configuration Manager zu installieren.
 
@@ -113,8 +113,8 @@ Der Beispielcode muss den Zugriff auf Ihr Speicherkonto autorisieren. Zur Autori
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 2. Suchen Sie nach Ihrem Speicherkonto.
-3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel**. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
-4. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren. Der Wert der Verbindungszeichenfolge wird in einem späteren Schritt einer Umgebungsvariablen hinzugefügt.
+3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel** . Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+4. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge** , und klicken Sie dann auf die Schaltfläche **Kopieren** , um die Verbindungszeichenfolge zu kopieren. Der Wert der Verbindungszeichenfolge wird in einem späteren Schritt einer Umgebungsvariablen hinzugefügt.
 
     ![Screenshot: Kopieren einer Verbindungszeichenfolge aus dem Azure-Portal](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 
@@ -123,7 +123,7 @@ Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfiguriere
 > [!NOTE]
 > Ihr Speicherkontoschlüssel ähnelt dem Stammkennwort für das Speicherkonto. Achten Sie darauf, den Speicherkontoschlüssel immer gut zu schützen. Geben Sie ihn nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie ihn nicht in einer Klartextdatei, auf die andere Benutzer zugreifen können. Generieren Sie Ihren Schlüssel mithilfe des Azure-Portals neu, wenn Sie der Meinung sind, dass er nicht mehr sicher ist.
 
-Am einfachsten lässt sich die Speicherverbindungszeichenfolge in einer Konfigurationsdatei verwalten. Öffnen Sie zum Konfigurieren der Verbindungszeichenfolge in Visual Studio im Projektmappen-Explorer die Datei *app.config*. Fügen Sie den Inhalt des `\<appSettings\>` -Elements hinzu (wie unten dargestellt). Ersetzen Sie *connection-string* durch den Wert, den Sie aus Ihrem Speicherkonto im Portal kopiert haben:
+Am einfachsten lässt sich die Speicherverbindungszeichenfolge in einer Konfigurationsdatei verwalten. Öffnen Sie zum Konfigurieren der Verbindungszeichenfolge in Visual Studio im Projektmappen-Explorer die Datei *app.config* . Fügen Sie den Inhalt des `\<appSettings\>` -Elements hinzu (wie unten dargestellt). Ersetzen Sie *connection-string* durch den Wert, den Sie aus Ihrem Speicherkonto im Portal kopiert haben:
 
 ```xml
 <configuration>
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Verwenden des Async-Await-Musters mit allgemeinen Warteschlangenspeicher-APIs
 
-In diesem Beispiel wird veranschaulicht, wie das Async-Await-Muster mit allgemeinen Warteschlangenspeicher-APIs verwendet wird. Im Beispiel werden jeweils die asynchronen Versionen der angegebenen Methoden aufgerufen, wie am Suffix *Async* der einzelnen Methoden erkennbar. Wenn eine asynchrone Methode verwendet wird, hält das Async-Await-Muster die lokale Ausführung an, bis der Aufruf abgeschlossen ist. Durch dieses Verhalten kann der aktuelle Thread eine andere Aktion ausführen, wodurch Leistungsengpässe vermieden werden und die allgemeine Reaktionsfähigkeit der Anwendung verbessert wird. Weitere Informationen zur Verwendung des Async-Await-Musters in .NET finden Sie unter [Async und Await (C# und Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+In diesem Beispiel wird veranschaulicht, wie das Async-Await-Muster mit allgemeinen Warteschlangenspeicher-APIs verwendet wird. Im Beispiel werden jeweils die asynchronen Versionen der angegebenen Methoden aufgerufen, wie am Suffix *Async* der einzelnen Methoden erkennbar. Wenn eine asynchrone Methode verwendet wird, hält das Async-Await-Muster die lokale Ausführung an, bis der Aufruf abgeschlossen ist. Durch dieses Verhalten kann der aktuelle Thread eine andere Aktion ausführen, wodurch Leistungsengpässe vermieden werden und die allgemeine Reaktionsfähigkeit der Anwendung verbessert wird. Weitere Informationen zur Verwendung des Async-Await-Musters in .NET finden Sie unter [Async und Await (C# und Visual Basic)](/previous-versions/hh191443(v=vs.140))
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
 - Vollständige Informationen zu verfügbaren APIs finden Sie in der Warteschlangendienst-Referenzdokumentation:
-  - [Referenz zur Storage-Clientbibliothek für .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST-API-Referenz](https://msdn.microsoft.com/library/azure/dd179355)
+  - [Referenz zur Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage)
+  - [REST-API-Referenz](/rest/api/storageservices/)
 - Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
-  - [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) zum Speichern strukturierter Daten
-  - [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) zum Speichern unstrukturierter Daten
+  - [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/tutorial-develop-table-dotnet.md) zum Speichern strukturierter Daten
+  - [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-quickstart-blobs-dotnet.md) zum Speichern unstrukturierter Daten
   - Informationen zum Speichern relationaler Daten finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbank mithilfe von .NET (C#)](../../azure-sql/database/connect-query-dotnet-core.md).
 - Erfahren Sie, wie Sie mithilfe des [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)den geschriebenen Code so vereinfachen, dass er mit Azure Storage funktioniert.

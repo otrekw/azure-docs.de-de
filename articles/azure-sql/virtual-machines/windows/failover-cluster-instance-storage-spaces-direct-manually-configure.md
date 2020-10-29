@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165237"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792513"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -81,7 +81,7 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Weitere Informationen zu den nächsten Schritten finden Sie in den Anweisungen im Abschnitt „Schritt 3: Konfigurieren von Direkte Speicherplätze“ von [Hyperkonvergente Lösung mit Direkte Speicherplätze in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Weitere Informationen zu den nächsten Schritten finden Sie in den Anweisungen im Abschnitt „Schritt 3: Konfigurieren von Direkte Speicherplätze“ von [Hyperkonvergente Lösung mit Direkte Speicherplätze in Windows Server 2016](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 
 ## <a name="validate-the-cluster"></a>Überprüfen des Clusters
@@ -150,9 +150,9 @@ Konfigurieren Sie die Quorumlösung, die Ihren Geschäftsanforderungen am besten
 
 ## <a name="add-storage"></a>Hinzufügen von Speicher
 
-Die Datenträger für „Direkte Speicherplätze“ müssen leer sein. Sie dürfen keine Partitionen oder andere Daten enthalten. Befolgen Sie die Anweisungen unter [Bereitstellen von „Direkte Speicherplätze“](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives), um die Datenträger zu bereinigen.
+Die Datenträger für „Direkte Speicherplätze“ müssen leer sein. Sie dürfen keine Partitionen oder andere Daten enthalten. Befolgen Sie die Anweisungen unter [Bereitstellen von „Direkte Speicherplätze“](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives), um die Datenträger zu bereinigen.
 
-1. [Aktivieren von „Direkte Speicherplätze“](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Aktivieren von „Direkte Speicherplätze“](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    Mit dem folgenden PowerShell-Skript wird „Direkte Speicherplätze“ aktiviert:  
 
@@ -162,7 +162,7 @@ Die Datenträger für „Direkte Speicherplätze“ müssen leer sein. Sie dürf
 
    Im **Failovercluster-Manager** wird jetzt der Speicherpool angezeigt.
 
-1. [Erstellen eines Volumes](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)
+1. [Erstellen eines Volumes](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes)
 
    „Direkte Speicherplätze“ erstellt automatisch einen Speicherpool, wenn Sie „Direkte Speicherplätze“ aktivieren. Sie können jetzt ein Volume erstellen. Das PowerShell-Cmdlet `New-Volume` automatisiert den Volumeerstellungsprozess. Dieser Prozess umfasst Formatieren, Hinzufügen des Volumes zum Cluster und das Erstellen eines CSV. In diesem Beispiel wird ein CSV mit 800 Gigabyte (GB) erstellt:
 
@@ -211,7 +211,7 @@ Nachdem Sie den Failovercluster und alle Clusterkomponenten einschließlich Spei
 1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
    >[!NOTE]
-   >Wenn Sie ein Azure Marketplace-Katalogimage, das SQL Server enthält, verwendet haben, sind die SQL Server-Tools im Image enthalten. Wenn Sie keines dieser Images verwendet haben, müssen Sie die SQL Server-Tools separat installieren. Weitere Informationen finden Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >Wenn Sie ein Azure Marketplace-Katalogimage, das SQL Server enthält, verwendet haben, sind die SQL Server-Tools im Image enthalten. Wenn Sie keines dieser Images verwendet haben, müssen Sie die SQL Server-Tools separat installieren. Weitere Informationen finden Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 
@@ -237,7 +237,7 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf CSVs und einen [Standardlastenausgleich](../../../load-balancer/load-balancer-standard-overview.md).
+- Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf CSVs und einen [Standardlastenausgleich](../../../load-balancer/load-balancer-overview.md).
 - Datenträger, die als NTFS-formatierte Datenträger angefügt wurden, können nur dann mit „Direkte Speicherplätze“ verwendet werden, wenn die Option für die Datenträgerberechtigung beim Hinzufügen von Speicher zum Cluster deaktiviert ist oder wird. 
 - Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#management-modes) wird unterstützt.
 

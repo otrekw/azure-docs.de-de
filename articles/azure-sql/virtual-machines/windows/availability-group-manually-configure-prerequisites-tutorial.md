@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ea9c8b91237f4590d1999c99fbb356d78994390d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 08d3d5bcdace113d3319b5af6375fff21405159a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166895"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790014"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -37,12 +37,12 @@ Das folgende Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstel
 
 ## <a name="review-availability-group-documentation"></a>Lesen der Dokumentation zu Verfügbarkeitsgruppen
 
-Für dieses Tutorial werden Grundkenntnisse über SQL Server Always On-Verfügbarkeitsgruppen vorausgesetzt. Wenn Sie mit dieser Technologie nicht vertraut sind, lesen Sie die [Übersicht über AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
+Für dieses Tutorial werden Grundkenntnisse über SQL Server Always On-Verfügbarkeitsgruppen vorausgesetzt. Wenn Sie mit dieser Technologie nicht vertraut sind, lesen Sie die [Übersicht über AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
 
 ## <a name="create-an-azure-account"></a>Erstellen eines Azure-Kontos
 
-Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) oder [Visual Studio-Abonnementvorteile aktivieren](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
+Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) oder [Visual Studio-Abonnementvorteile aktivieren](/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -144,7 +144,7 @@ In der folgenden Tabelle sind die Netzwerkkonfigurationseinstellungen zusammenge
 
 ## <a name="create-availability-sets"></a>Erstellen von Verfügbarkeitsgruppen
 
-Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeit bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeit bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 Sie benötigen zwei Verfügbarkeitsgruppen: Eine für die Domänencontroller Eine für die SQL Server-VMs
 
@@ -204,7 +204,7 @@ Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 | **Diagnosespeicherkonto** |*Automatisch erstellt* |
 
    >[!IMPORTANT]
-   >Sie können einen virtuellen Computer nur bei seiner Erstellung in einer Verfügbarkeitsgruppe platzieren. Die Verfügbarkeitsgruppe für einen virtuellen Computer kann nach dessen Erstellung nicht mehr geändert werden. Siehe [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/linux/manage-availability.md).
+   >Sie können einen virtuellen Computer nur bei seiner Erstellung in einer Verfügbarkeitsgruppe platzieren. Die Verfügbarkeitsgruppe für einen virtuellen Computer kann nach dessen Erstellung nicht mehr geändert werden. Siehe [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/manage-availability.md).
 
 Azure erstellt die virtuellen Computer.
 
@@ -228,7 +228,7 @@ In den folgenden Schritten konfigurieren Sie den Computer **ad-primary-dc** als 
 6. Wählen Sie die Rollen **Active Directory Domain Services** und **DNS-Server** aus. Wenn Sie dazu aufgefordert werden, fügen Sie alle für diese Rollen erforderlichen zusätzlichen Funktionen hinzu.
 
    > [!NOTE]
-   > In Windows wird die Warnung angezeigt, dass keine statische IP-Adresse vorhanden ist. Wenn Sie die Konfiguration testen, wählen Sie **Weiter** aus. Legen Sie in Produktionsszenarien die IP-Adresse über das Azure-Portal als statische Adresse fest, oder [verwenden Sie PowerShell, um die statische IP-Adresse des Domänencontrollercomputers festzulegen](../../../virtual-network/virtual-networks-reserved-private-ip.md).
+   > In Windows wird die Warnung angezeigt, dass keine statische IP-Adresse vorhanden ist. Wenn Sie die Konfiguration testen, wählen Sie **Weiter** aus. Legen Sie in Produktionsszenarien die IP-Adresse über das Azure-Portal als statische Adresse fest, oder [verwenden Sie PowerShell, um die statische IP-Adresse des Domänencontrollercomputers festzulegen](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip).
    >
 
     ![Dialogfeld „Rollen hinzufügen“](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
@@ -376,13 +376,13 @@ Nachdem Sie die Konfiguration von Active Directory und den Benutzerobjekten abge
 
 ## <a name="create-sql-server-vms"></a>Erstellen der virtuellen SQL Server-Computer
 
-Erstellen Sie drei zusätzliche virtuelle Computer. Die Lösung erfordert zwei virtuelle Computer mit SQL Server-Instanzen. Ein dritter virtueller Computer fungiert als Zeuge. Windows Server 2016 kann einen [Cloudzeugen](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) verwenden. Aus Gründen der Konsistenz mit älteren Betriebssystemen wird in diesem Artikel jedoch als Zeuge ein virtueller Computer verwendet.  
+Erstellen Sie drei zusätzliche virtuelle Computer. Die Lösung erfordert zwei virtuelle Computer mit SQL Server-Instanzen. Ein dritter virtueller Computer fungiert als Zeuge. Windows Server 2016 kann einen [Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness) verwenden. Aus Gründen der Konsistenz mit älteren Betriebssystemen wird in diesem Artikel jedoch als Zeuge ein virtueller Computer verwendet.  
 
 Bevor Sie fortfahren, sollten Sie die folgenden Entwurfsentscheidungen treffen.
 
 * **Speicher – Azure Managed Disks**
 
-   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Netzwerk – private IP-Adressen in der Produktion**
 
@@ -529,7 +529,7 @@ Um Failoverclusteringfeatures hinzuzufügen, führen Sie die folgenden Schritte 
 Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 
   >[!NOTE]
-  > Dieser Schritt kann jetzt zusammen mit dem tatsächlichen Verknüpfen von SQL Server-VMs mit dem Failovercluster über die [Azure SQL-VM-Befehlszeilenschnittstelle](availability-group-az-cli-configure.md) und [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) automatisiert werden.
+  > Dieser Schritt kann jetzt zusammen mit dem tatsächlichen Verknüpfen von SQL Server-VMs mit dem Failovercluster über die [Azure SQL-VM-Befehlszeilenschnittstelle](./availability-group-az-commandline-configure.md) und [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) automatisiert werden.
   >
 
 

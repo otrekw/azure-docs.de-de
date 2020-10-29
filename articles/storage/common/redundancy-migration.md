@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 286a4f47d542a500fb49f022f3c647088ebad637
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827301"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784217"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -62,7 +62,7 @@ Um die Redundanzoption für Ihr Speicherkonto im Azure-Portal zu ändern, führe
 
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Wählen Sie die Einstellung **Konfiguration** aus.
-1. Aktualisieren Sie die Einstellung **Replikation**.
+1. Aktualisieren Sie die Einstellung **Replikation** .
 
 ![Screenshot zur Änderung der Replikationsoption im Portal](media/redundancy-migration/change-replication-option.png)
 
@@ -125,28 +125,28 @@ Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.porta
 
 1. Wählen Sie **Neue Supportanfrage** aus.
 2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an: 
-    - **Problemtyp**: Wählen Sie **Technisch** aus.
-    - **Dienst**: Wählen Sie **Meine Dienste** und **Speicherkontenverwaltung** aus.
+    - **Problemtyp** : Wählen Sie **Technisch** aus.
+    - **Dienst** : Wählen Sie **Meine Dienste** und **Speicherkontenverwaltung** aus.
     - **Ressource:** Wählen Sie die Ressource aus, die Sie zu ZRS konvertieren möchten.
 3. Wählen Sie **Weiter** aus.
 4. Geben Sie im Abschnitt **Problem** die folgenden Werte an:
-    - **Schweregrad**: Behalten Sie den Standardwert bei.
-    - **Problemtyp**: Wählen Sie **Datenmigration** aus.
+    - **Schweregrad** : Behalten Sie den Standardwert bei.
+    - **Problemtyp** : Wählen Sie **Datenmigration** aus.
     - **Kategorie:** Wählen Sie **Zu ZRS migrieren** aus.
-    - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration**.
-    - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“.
+    - **Titel** : Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration** .
+    - **Details** : Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“.
 5. Wählen Sie **Weiter** aus.
 6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Erstellen** .
 
 Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen und Sie nach Bedarf und Wunsch unterstützen.
 
 > [!NOTE]
 > Die Livemigration wird für Premium-Dateifreigaben zurzeit nicht unterstützt. Derzeit wird nur das manuelle Kopieren oder Verschieben von Daten unterstützt.
 >
-> GZRS-Speicherkonten unterstützen die Archivebene derzeit nicht. Unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) finden Sie weitere Details.
+> GZRS-Speicherkonten unterstützen die Archivebene derzeit nicht. Unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md) finden Sie weitere Details.
 >
-> Verwaltete Datenträger sind nur für LRS verfügbar und können nicht zu ZRS migriert werden. Sie können Momentaufnahmen und Images für verwaltete SSD Standard-Datenträger in einem HDD Standard-Speicher speichern und [zwischen LRS- und ZRS-Optionen wählen](https://azure.microsoft.com/pricing/details/managed-disks/). Informationen zur Integration in Verfügbarkeitsgruppen finden Sie unter [Einführung in verwaltete Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
+> Verwaltete Datenträger sind nur für LRS verfügbar und können nicht zu ZRS migriert werden. Sie können Momentaufnahmen und Images für verwaltete SSD Standard-Datenträger in einem HDD Standard-Speicher speichern und [zwischen LRS- und ZRS-Optionen wählen](https://azure.microsoft.com/pricing/details/managed-disks/). Informationen zur Integration in Verfügbarkeitsgruppen finden Sie unter [Einführung in verwaltete Azure-Datenträger](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets).
 
 ## <a name="switch-from-zrs-classic"></a>Wechsel von ZRS (klassisch)
 

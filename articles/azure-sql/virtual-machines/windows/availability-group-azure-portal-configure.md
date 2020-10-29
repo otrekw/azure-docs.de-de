@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: 3a8086c75a7125b744730de83c760db44ce222e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790099"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Verwenden des Azure-Portals zum Konfigurieren einer Verfügbarkeitsgruppe (Vorschau) für SQL Server auf einem virtuellen Azure-Computer 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Zum Konfigurieren einer Always On-Verfügbarkeitsgruppe unter Verwendung des Az
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine Ressourcengruppe mit einem Domänencontroller. 
-- Mindestens ein in eine Domäne eingebundener [virtueller Azure-Computer mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der *gleichen* Verfügbarkeitsgruppe oder *anderen* Verfügbarkeitszonen befindet, die [beim Ressourcenanbieter im Verwaltbarkeitsmodus „Vollständig“ registriert wurden](sql-vm-resource-provider-register.md) und dasselbe Domänenkonto für den SQL Server-Dienst auf jedem virtuellen Computer verwenden.
+- Mindestens ein in eine Domäne eingebundener [virtueller Azure-Computer mit der Enterprise Edition von SQL Server 2016 (oder höher)](./create-sql-vm-portal.md), der sich in der *gleichen* Verfügbarkeitsgruppe oder *anderen* Verfügbarkeitszonen befindet, die [beim Ressourcenanbieter im Verwaltbarkeitsmodus „Vollständig“ registriert wurden](sql-vm-resource-provider-register.md) und dasselbe Domänenkonto für den SQL Server-Dienst auf jedem virtuellen Computer verwenden.
 - Zwei verfügbare (nicht von einer Entität verwendete) IP-Adressen. Eine wird für den internen Lastenausgleich verwendet. Die andere ist für den Verfügbarkeitsgruppenlistener innerhalb des Subnetzes vorgesehen, in dem sich auch die Verfügbarkeitsgruppe befindet. Wenn ein vorhandener Lastenausgleich verwendet wird, ist nur eine verfügbare IP-Adresse für den Verfügbarkeitsgruppenlistener erforderlich. 
 
 ## <a name="permissions"></a>Berechtigungen
@@ -70,7 +70,7 @@ Wenn Sie noch keinen vorhandenen Cluster haben, führen Sie diese Schritte im Az
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen":::
 
-1. Erweitern Sie **Anmeldeinformationen des Windows Server-Failoverclusters** , um [Anmeldeinformationen](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) für das SQL Server-Dienstkonto sowie die Clusteroperator- und Bootstrapkonten anzugeben, sofern sie sich von dem für den SQL Server-Dienst verwendeten Konto unterscheiden. 
+1. Erweitern Sie **Anmeldeinformationen des Windows Server-Failoverclusters** , um [Anmeldeinformationen](/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) für das SQL Server-Dienstkonto sowie die Clusteroperator- und Bootstrapkonten anzugeben, sofern sie sich von dem für den SQL Server-Dienst verwendeten Konto unterscheiden. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Erstellen Sie einen neuen Cluster, indem Sie „+ Neuer Cluster“ im Portal auswählen"
     ```

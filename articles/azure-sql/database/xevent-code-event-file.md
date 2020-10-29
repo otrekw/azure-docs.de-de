@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620187"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791306"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Code des Ziels „Ereignisdatei“ für erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620187"
 
 Sie suchen ein vollständiges Codebeispiel als stabile Option zum Erfassen und Melden von Informationen für erweiterte Ereignisse.
 
-In Microsoft SQL Server wird das [Ereignisdateiziel](https://msdn.microsoft.com/library/ff878115.aspx) zum Speichern von Ereignisausgaben in einer Datei auf der lokalen Festplatte verwendet. Solche Dateien sind für Azure SQL-Datenbank jedoch nicht verfügbar. Stattdessen wird das Ereignisdateiziel mithilfe des Azure Storage-Diensts unterstützt.
+In Microsoft SQL Server wird das [Ereignisdateiziel](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) zum Speichern von Ereignisausgaben in einer Datei auf der lokalen Festplatte verwendet. Solche Dateien sind für Azure SQL-Datenbank jedoch nicht verfügbar. Stattdessen wird das Ereignisdateiziel mithilfe des Azure Storage-Diensts unterstützt.
 
 In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 
@@ -39,22 +39,22 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 - Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 - Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
-  - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](single-database-create-quickstart.md).
+  - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT** -Demodatenbank erstellen](single-database-create-quickstart.md).
 
 - SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion.
   Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
   
-  - Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+  - Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
   - [Über diesen direkten Link zum Herunterladen.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - Die [Azure PowerShell-Module](https://go.microsoft.com/?linkid=9811175) müssen installiert sein.
 
-  - Die Module umfassen verschiedene Befehle, z.B. **New-AzStorageAccount**.
+  - Die Module umfassen verschiedene Befehle, z.B. **New-AzStorageAccount** .
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell-Code für den Azure-Speichercontainer
 
@@ -62,7 +62,7 @@ Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
 
 Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
 
-1. Fügen Sie das PowerShell-Skript in einem einfachen Texteditor (z.B. Editor) ein, und speichern Sie es als Datei mit der Erweiterung **.ps1**.
+1. Fügen Sie das PowerShell-Skript in einem einfachen Texteditor (z.B. Editor) ein, und speichern Sie es als Datei mit der Erweiterung **.ps1** .
 2. Starten Sie PowerShell ISE als Administrator.
 3. Geben Sie an der Eingabeaufforderung<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>ein, und drücken Sie dann die EINGABETASTE.
 4. Öffnen Sie in PowerShell ISE Ihre Datei mit der Erweiterung **.ps1** . Führen Sie das Skript aus.
@@ -258,7 +258,7 @@ Beim Beenden des PowerShell-Skripts wurden einige benannte Werte ausgegeben. Sie
 6. Speichern Sie die Änderungen, und führen Sie dann das Skript aus.
 
 > [!WARNING]
-> Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie *das vorangestellte Fragezeichen entfernen*. Andernfalls kann die Ausführung des Skripts aus Sicherheitsgründen blockiert werden.
+> Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie *das vorangestellte Fragezeichen entfernen* . Andernfalls kann die Ausführung des Skripts aus Sicherheitsgründen blockiert werden.
 
 ### <a name="transact-sql-code"></a>Transact-SQL-Code
 
@@ -451,7 +451,7 @@ GO
 
 ## <a name="output"></a>Output
 
-Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **\<event>** -Element mit einer UPDATE-Anweisung angezeigt.
+Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML** , nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **\<event>** -Element mit einer UPDATE-Anweisung angezeigt.
 
 Hier sehen Sie ein **\<event>** -Element, das beim Testen generiert wurde:
 
@@ -496,19 +496,19 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Im vorherigen Transact-SQL-Skript wurde die folgende Systemfunktion verwendet, um die Ereignisdatei zu lesen:
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterten Ereignissen finden Sie unter:
 
-- [Advanced Viewing of Target Data from Extended Events (Erweiterte Anzeige von Zieldaten aus erweiterten Ereignissen)](https://msdn.microsoft.com/library/mt752502.aspx)
+- [Advanced Viewing of Target Data from Extended Events (Erweiterte Anzeige von Zieldaten aus erweiterten Ereignissen)](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Konvertieren des Codebeispiels für die Ausführung in SQL Server
 
 Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsoft SQL Server ausführen.
 
-- Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch *C:\myeventdata.xel*. Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
-- Sie benötigen keine Transact-SQL-Anweisungen für **CREATE MASTER KEY** und **CREATE CREDENTIAL**.
-- In der **ADD TARGET**-Klausel der **CREATE EVENT SESSION**-Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z.B. *C:\myfile.xel*.
+- Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch *C:\myeventdata.xel* . Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
+- Sie benötigen keine Transact-SQL-Anweisungen für **CREATE MASTER KEY** und **CREATE CREDENTIAL** .
+- In der **ADD TARGET** -Klausel der **CREATE EVENT SESSION** -Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z.B. *C:\myfile.xel* .
   
   - Es wird kein Azure-Speicherkonto benötigt.
 
@@ -517,8 +517,8 @@ Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsof
 Weitere Informationen zu Konten und Containern im Azure Storage-Dienst finden Sie in den folgenden Artikeln:
 
 - [Verwenden des Blob-Speichers mit .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Benennen von Containern, BLOBs und Metadaten und Verweisen auf diese](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [Arbeiten mit dem Stammcontainer](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [Lektion 1: Erstellen einer gespeicherten Zugriffsrichtlinie und einer Shared Access Signature für einen Azure-Container](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [Lektion 2: Erstellen von SQL Server-Anmeldeinformationen mit einer Shared Access Signature (SAS)](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Erweiterte Ereignisse für Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [Benennen von Containern, BLOBs und Metadaten und Verweisen auf diese](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [Arbeiten mit dem Stammcontainer](/rest/api/storageservices/Working-with-the-Root-Container)
+- [Lektion 1: Erstellen einer gespeicherten Zugriffsrichtlinie und einer Shared Access Signature für einen Azure-Container](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [Lektion 2: Erstellen von SQL Server-Anmeldeinformationen mit einer Shared Access Signature (SAS)](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Erweiterte Ereignisse für Microsoft SQL Server](/sql/relational-databases/extended-events/extended-events)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8ee440c77ec94a7c3e61c37e589aa5ef23031ca7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 860fcb2948869d21eb78d0b318074b9a5e2ba0b9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332415"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790320"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, Azure Synapse Analytics, Data Factory und Power BI vertraut
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ SaaS-Anwendungen enthalten potentiell große Mengen an Mandantendaten in der Clo
 
 Der Zugriff auf die Daten für alle Mandanten ist einfach, wenn sämtliche Daten sich in nur einer mehrinstanzenfähigen Datenbank befinden. Komplexer wird der Zugriff, wenn die Daten auf Tausende von Datenbanken verteilt sind. Zur Vereinfachung können Sie die Daten für die Abfrage in eine Analysedatenbank oder ein Data Warehouse extrahieren.
 
-In diesem Tutorial wird ein End-to-End-Analyseszenario für die Wingtip Tickets SaaS-Anwendung gezeigt. Als erstes wird [Azure Data Factory (ADF)](../../data-factory/introduction.md) als Orchestrierungstool verwendet, um Ticketverkäufe und zugehörige Daten aus jeder Mandantendatenbank zu extrahieren. Diese Daten werden in einem Analysespeicher in Stagingtabellen geladen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL-Pool sein. In diesem Tutorial wird [Azure Synapse Analytics (früher SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) als Analysespeicher verwendet.
+In diesem Tutorial wird ein End-to-End-Analyseszenario für die Wingtip Tickets SaaS-Anwendung gezeigt. Als erstes wird [Azure Data Factory (ADF)](../../data-factory/introduction.md) als Orchestrierungstool verwendet, um Ticketverkäufe und zugehörige Daten aus jeder Mandantendatenbank zu extrahieren. Diese Daten werden in einem Analysespeicher in Stagingtabellen geladen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL-Pool sein. In diesem Tutorial wird [Azure Synapse Analytics (früher SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als Analysespeicher verwendet.
 
 Als Nächstes werden die extrahierten Daten in mehrere Tabellen im [Sternschema](https://www.wikipedia.org/wiki/Star_schema) transformiert und geladen. Die Tabellen bestehen aus einer zentralen Faktentabelle und den zugehörigen Dimensionstabellen:
 
@@ -70,10 +70,10 @@ Dieses Tutorial enthält grundlegende Beispiele für Erkenntnisse, die aus Wingt
 
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-- Die Anwendung Wingtip Tickets SaaS Database Per Tenant wird bereitgestellt. Unter [Bereitstellen und Kennenlernen der Wingtip-SaaS-Anwendung](../../sql-database/saas-dbpertenant-get-started-deploy.md) finden Sie Informationen zur Bereitstellung in weniger als fünf Minuten.
+- Die Anwendung Wingtip Tickets SaaS Database Per Tenant wird bereitgestellt. Unter [Bereitstellen und Kennenlernen der Wingtip-SaaS-Anwendung](./saas-dbpertenant-get-started-deploy.md) finden Sie Informationen zur Bereitstellung in weniger als fünf Minuten.
 - [Quellcode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) und Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant können von GitHub heruntergeladen werden. Weitere Informationen finden Sie in den Downloadanweisungen. Achten Sie darauf, die *ZIP-Datei zu entsperren* , bevor Sie ihren Inhalt extrahieren.
 - Power BI Desktop wird installiert. [Power BI Desktop herunterladen](https://powerbi.microsoft.com/downloads/)
-- Der Batch zusätzlicher Mandanten wurde bereitgestellt. Weitere Informationen finden Sie im [**Tutorial zum Bereitstellen von Mandanten**](../../sql-database/saas-dbpertenant-provision-and-catalog.md).
+- Der Batch zusätzlicher Mandanten wurde bereitgestellt. Weitere Informationen finden Sie im [**Tutorial zum Bereitstellen von Mandanten**](./saas-dbpertenant-provision-and-catalog.md).
 
 ### <a name="create-data-for-the-demo"></a>Erstellen von Daten für die Demo
 
@@ -85,7 +85,7 @@ In diesem Tutorial werden Analysen von Ticketverkaufsdaten betrachtet. In diesem
 
 ### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Bereitstellen von Azure Synapse Analytics, Data Factory und Blob Storage
 
-Die Transaktionsdaten der Mandanten werden in der Wingtip Tickets-App über viele Datenbanken verteilt. Azure Data Factory (ADF) wird verwendet, um das Extrahieren, Laden und Transformieren (ELT) dieser Daten in das Data Warehouse zu orchestrieren. Um Daten am effizientesten in Azure Synapse Analytics (früher SQL Data Warehouse) zu laden, extrahiert ADF Daten als Zwischenschritt in Blobdateien und verwendet anschließend [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading), um die Daten in das Data Warehouse zu laden.
+Die Transaktionsdaten der Mandanten werden in der Wingtip Tickets-App über viele Datenbanken verteilt. Azure Data Factory (ADF) wird verwendet, um das Extrahieren, Laden und Transformieren (ELT) dieser Daten in das Data Warehouse zu orchestrieren. Um Daten am effizientesten in Azure Synapse Analytics (früher SQL Data Warehouse) zu laden, extrahiert ADF Daten als Zwischenschritt in Blobdateien und verwendet anschließend [PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md), um die Daten in das Data Warehouse zu laden.
 
 In diesem Schritt stellen Sie zusätzliche Ressourcen bereit, die im Tutorial verwendet werden: einen SQL-Pool mit dem Namen _tenantanalytics_ , eine Azure Data Factory-Instanz namens _dbtodwload-\<user\>_ und ein Azure-Speicherkonto mit dem Namen _wingtipstaging\<user\>_ . Das Speicherkonto wird verwendet, um extrahierte Datendateien vorübergehend als Blobs aufzunehmen, bevor sie in das Data Warehouse geladen werden. Durch diesen Schritt wird auch das Data Warehouse-Schema bereitgestellt und die ADF-Pipeline definiert, die den ELT-Prozess orchestriert.
 
@@ -97,7 +97,7 @@ In diesem Schritt stellen Sie zusätzliche Ressourcen bereit, die im Tutorial ve
 
 #### <a name="tenant-databases-and-analytics-store"></a>Mandantendatenbanken und Analysespeicher
 
-Verwenden Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) zum Herstellen einer Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;** . Ersetzen Sie &lt;Benutzer&gt; durch die jeweiligen Werte, die Sie beim Bereitstellen der App verwendet haben. Verwenden Sie als Benutzernamen *developer* und als Kennwort *P\@ssword1* . Weitere Informationen finden Sie im [Einführungstutorial](../../sql-database/saas-dbpertenant-wingtip-app-overview.md).
+Verwenden Sie [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) zum Herstellen einer Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;** . Ersetzen Sie &lt;Benutzer&gt; durch die jeweiligen Werte, die Sie beim Bereitstellen der App verwendet haben. Verwenden Sie als Benutzernamen *developer* und als Kennwort *P\@ssword1* . Weitere Informationen finden Sie im [Einführungstutorial](./saas-dbpertenant-wingtip-app-overview.md).
 
 ![Verbinden mit SQL-Datenbank von SSMS](./media/saas-tenancy-tenant-analytics-adf/ssmsSignIn.JPG)
 
@@ -148,14 +148,14 @@ Dieser Abschnitt befasst sich mit den Objekten, die in der Data Factory erstellt
 
 ![adf_übersicht](./media/saas-tenancy-tenant-analytics-adf/adf-data-factory.PNG)
 
-Wechseln Sie auf der Seite „Übersicht“ zur Registerkarte **Autor** im linken Bereich. Sie werden sehen, dass drei [Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) und drei [Datasets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) erstellt wurden.
+Wechseln Sie auf der Seite „Übersicht“ zur Registerkarte **Autor** im linken Bereich. Sie werden sehen, dass drei [Pipelines](../../data-factory/concepts-pipelines-activities.md) und drei [Datasets](../../data-factory/concepts-datasets-linked-services.md) erstellt wurden.
 ![adf_autor](./media/saas-tenancy-tenant-analytics-adf/adf_author_tab.JPG)
 
 Die drei geschachtelte Pipelines sind: SQLDBToDW, DBCopy und TableCopy.
 
 **Pipeline 1: SQLDBToDW** sucht nach den Namen der Mandantendatenbanken, die in der Katalogdatenbank gespeichert sind (Tabellenname: [__ShardManagement].[ShardsGlobal]). Außerdem führt sie für jede Mandantendatenbank die Pipeline **DBCopy** aus. Nach Abschluss dieses Vorgangs wird das bereitgestellte gespeicherte Prozedurschema **sp_TransformExtractedData** ausgeführt. Diese gespeicherte Prozedur transformiert die geladenen Daten in Stagingtabellen und füllt die Tabellen im Sternschema auf.
 
-**Pipeline 2: DBCopy** sucht die Namen der Quelltabellen und -spalten aus einer Konfigurationsdatei, die in Blob Storage gespeichert ist.  Die **TableCopy** -Pipeline wird dann für jede der vier Tabellen ausgeführt: TicketFacts, CustomerFacts, EventFacts und VenueFacts. Die **[ForEach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** -Aktivität wird parallel für alle 20 Datenbanken ausgeführt. ADF lässt die Ausführung von maximal 20 parallelen Schleifeniterationen zu. Erwägen Sie die Erstellung mehrerer Pipelines für mehrere Datenbanken.
+**Pipeline 2: DBCopy** sucht die Namen der Quelltabellen und -spalten aus einer Konfigurationsdatei, die in Blob Storage gespeichert ist.  Die **TableCopy** -Pipeline wird dann für jede der vier Tabellen ausgeführt: TicketFacts, CustomerFacts, EventFacts und VenueFacts. Die **[ForEach](../../data-factory/control-flow-for-each-activity.md)** -Aktivität wird parallel für alle 20 Datenbanken ausgeführt. ADF lässt die Ausführung von maximal 20 parallelen Schleifeniterationen zu. Erwägen Sie die Erstellung mehrerer Pipelines für mehrere Datenbanken.
 
 **Pipeline 3: TableCopy** verwendet die Versionsnummern der Zeilen in SQL-Datenbank ( _Zeilenversion_ ), um Zeilen zu identifizieren, die geändert oder aktualisiert wurden. Diese Aktivität sucht nach der Start- und Endversion der Zeilen zum Extrahieren der Zeilen aus den Quelltabellen. Die Tabelle **CopyTracker** ist in jeder Mandantendatenbank gespeichert. Sie verfolgt bei jeder Ausführung die letzte Zeile, die aus jeder Quelltabelle extrahiert wurde. Neue oder geänderte Zeilen werden in die entsprechenden Stagingtabellen im Data Warehouse kopiert: **raw_Tickets** , **raw_Customers** , **raw_Venues** und **raw_Events** . Abschließend wird die letzte Zeilenversion in der Tabelle **CopyTracker** gespeichert, um als Anfangszeilenversion für die nächste Extraktion verwendet zu werden.
 
@@ -276,4 +276,4 @@ Glückwunsch!
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+- Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

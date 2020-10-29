@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617756"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791629"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Vom Benutzer initiiertes manuelles Failover für SQL Managed Instance
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-Verwenden Sie den PowerShell-Befehl [Invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) mit dem folgenden Beispiel, um ein Failover des primären Knotens zu initiieren. Dies gilt sowohl für die Dienstebene „Unternehmenskritisch“ als auch für die Ebene „Universell“.
+Verwenden Sie den PowerShell-Befehl [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) mit dem folgenden Beispiel, um ein Failover des primären Knotens zu initiieren. Dies gilt sowohl für die Dienstebene „Unternehmenskritisch“ als auch für die Ebene „Universell“.
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>Verwenden der REST-API
 
-Erfahrene Benutzer, die Failovervorgänge ihrer SQL Managed Instances zur Implementierung einer Pipeline für kontinuierliche Tests oder zur automatisierten Minimierung von Leistungsproblemen automatisieren müssen, können zur Initiierung auch einen API-Aufruf verwenden. Weitere Informationen finden Sie unter [Managed Instances – REST-API für Failover](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover).
+Erfahrene Benutzer, die Failovervorgänge ihrer SQL Managed Instances zur Implementierung einer Pipeline für kontinuierliche Tests oder zur automatisierten Minimierung von Leistungsproblemen automatisieren müssen, können zur Initiierung auch einen API-Aufruf verwenden. Weitere Informationen finden Sie unter [Managed Instances – REST-API für Failover](/rest/api/sql/managed%20instances%20-%20failover/failover).
 
 Wenn Sie ein Failover über einen REST-API-Aufruf initiieren möchten, generieren Sie zunächst mithilfe eines API-Clients Ihrer Wahl das Authentifizierungstoken. Das generierte Authentifizierungstoken wird als Autorisierungseigenschaft im Header der API-Anforderung verwendet und ist obligatorisch.
 

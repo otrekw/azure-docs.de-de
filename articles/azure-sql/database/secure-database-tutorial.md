@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885409"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792683"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,10 +39,10 @@ Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten zu schützen:
 > [!NOTE]
 > Eine verwaltete Azure SQL-Instanz wird mithilfe von Netzwerksicherheitsregeln und privaten Endpunkten geschützt, wie unter [Verwaltete Azure SQL-Instanz](../managed-instance/sql-managed-instance-paas-overview.md) und unter [Verbindungsarchitektur](../managed-instance/connectivity-architecture-overview.md) beschrieben.
 
-Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](security-overview.md).
+Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](./security-overview.md) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](security-overview.md).
 
 > [!TIP]
-> In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über das [Schützen Ihrer Datenbank in Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/) informieren.
+> In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über das [Schützen Ihrer Datenbank in Azure SQL-Datenbank](/learn/modules/secure-your-azure-sql-database/) informieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Für alle Schritte in diesem Tutorial ist eine Anmeldung beim [Azure-Portal](htt
 
 Datenbanken in Azure SQL-Datenbank werden in Azure durch Firewalls geschützt. Standardmäßig werden alle Verbindungen mit dem Server und der Datenbank abgelehnt. Weitere Informationen finden Sie unter [Firewallregeln auf Server- und Datenbankebene](firewall-configure.md).
 
-Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste erlauben** auf **AUS** festlegen. Erstellen Sie anschließend für die Ressource, die eine Verbindung herstellen muss (beispielsweise ein virtueller Computer oder ein Clouddienst), eine [reservierte IP-Adresse (klassische Bereitstellung)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip), und lassen Sie den Zugriff durch die Firewall nur für diese IP-Adresse zu. Bei Verwendung des [Resource Manager-Bereitstellungsmodells](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) wird für jede Ressource eine dedizierte öffentliche IP-Adresse benötigt.
+Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste erlauben** auf **AUS** festlegen. Erstellen Sie anschließend für die Ressource, die eine Verbindung herstellen muss (beispielsweise ein virtueller Computer oder ein Clouddienst), eine [reservierte IP-Adresse (klassische Bereitstellung)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip), und lassen Sie den Zugriff durch die Firewall nur für diese IP-Adresse zu. Bei Verwendung des [Resource Manager-Bereitstellungsmodells](../../virtual-network/public-ip-addresses.md) wird für jede Ressource eine dedizierte öffentliche IP-Adresse benötigt.
 
 > [!NOTE]
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihr Administrator den Port 1433 öffnet.
@@ -78,7 +78,7 @@ So richten Sie eine Firewallregel auf Serverebene ein:
     ![Serverfirewallregel](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > Kopieren Sie Ihren vollqualifizierten Servernamen (Beispiel: *<Ihr Server>.database.windows.net*). Er wird im weiteren Verlauf dieses Tutorials benötigt.
+    > Kopieren Sie Ihren vollqualifizierten Servernamen (Beispiel: *<Ihr Server>.database.windows.net* ). Er wird im weiteren Verlauf dieses Tutorials benötigt.
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Serverfirewall festlegen** aus. Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
 
@@ -86,7 +86,7 @@ So richten Sie eine Firewallregel auf Serverebene ein:
 
       ![Festlegen der Serverfirewallregel](./media/secure-database-tutorial/server-firewall-rule2.png)
 
-   1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
+   1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen** .
 
 Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit der angegebenen IP-Adresse oder dem angegebenen IP-Adressbereich herstellen.
 
@@ -187,7 +187,7 @@ So fügen Sie einen Benutzer mit SQL-Authentifizierung hinzu:
 
 ### <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
-Für die Azure Active Directory-Authentifizierung müssen Datenbankbenutzer als Benutzer für eigenständige Datenbanken erstellt werden. Benutzer für eigenständige Datenbanken sind einer Identität im Azure AD-Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist, und verfügen über keine Anmeldung in der *Masterdatenbank*. Die Azure AD-Identität kann entweder für einen einzelnen Benutzer oder für eine Gruppe verwendet werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable). Im Tutorial [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](authentication-aad-configure.md) finden Sie außerdem Informationen zur Authentifizierung mithilfe von Azure AD.
+Für die Azure Active Directory-Authentifizierung müssen Datenbankbenutzer als Benutzer für eigenständige Datenbanken erstellt werden. Benutzer für eigenständige Datenbanken sind einer Identität im Azure AD-Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist, und verfügen über keine Anmeldung in der *Masterdatenbank* . Die Azure AD-Identität kann entweder für einen einzelnen Benutzer oder für eine Gruppe verwendet werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable). Im Tutorial [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](authentication-aad-configure.md) finden Sie außerdem Informationen zur Authentifizierung mithilfe von Azure AD.
 
 > [!NOTE]
 > Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht über das Azure-Portal erstellt werden. Azure-Rollen werden nicht an SQL-basierte Server, Datenbanken oder Data Warehouses weitergegeben. Sie dienen lediglich zur Verwaltung von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen.
@@ -248,9 +248,9 @@ So aktivieren Sie Azure Defender für SQL
 
 1. Wählen Sie auf der Seite **Übersicht** den Link **Servername** aus. Die Serverseite wird geöffnet.
 
-1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Security Center** aus.
+1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit** , und wählen Sie **Security Center** aus.
 
-   1. Wählen Sie **EIN** unter **Azure Defender für SQL** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
+   1. Wählen Sie **EIN** unter **Azure Defender für SQL** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern** .
 
       ![Navigationsbereich](./media/secure-database-tutorial/threat-settings.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298828"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790031"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -79,7 +79,7 @@ Gehen Sie folgendermaßen vor, um die Hostdatei zu bearbeiten:
 
 1. Melden Sie sich per RDP beim virtuellen Computer an. 
 1. Wechseln Sie im **Datei-Explorer** zu `c:\windows\system32\drivers\etc`. 
-1. Klicken Sie mit der rechten Maustaste auf die Datei **hosts**, und öffnen Sie die Datei mit **Windows-Editor** (oder einem anderen Text-Editor).
+1. Klicken Sie mit der rechten Maustaste auf die Datei **hosts** , und öffnen Sie die Datei mit **Windows-Editor** (oder einem anderen Text-Editor).
 1. Fügen Sie am Ende der Datei einen Eintrag für jeden Knoten, die Verfügbarkeitsgruppe und den Listener in der Form `IP Address, DNS Suffix #comment` wie folgt hinzu: 
 
    ```
@@ -107,15 +107,15 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 In diesem Schritt erstellen Sie den Failovercluster. Wenn Sie mit diesen Schritten nicht vertraut sind, können Sie sich im [Tutorial für Failovercluster](failover-cluster-instance-storage-spaces-direct-manually-configure.md) darüber informieren.
 
 Wichtige Unterschiede zwischen dem Tutorial und den Aktionen, die für einen Arbeitsgruppencluster durchgeführt werden sollten:
-- Deaktivieren Sie beim Ausführen der Clusterüberprüfung **Speicher** und **Direkte Speicherplätze**. 
+- Deaktivieren Sie beim Ausführen der Clusterüberprüfung **Speicher** und **Direkte Speicherplätze** . 
 - Fügen Sie beim Hinzufügen der Knoten zum Cluster den vollqualifizierten Namen hinzu, z. B.:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- Deaktivieren Sie **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden**. 
+- Deaktivieren Sie **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden** . 
 
 Weisen Sie nach dem Erstellen des Clusters eine statische Cluster-IP-Adresse zu. Gehen Sie dazu folgendermaßen vor:
 
-1. Öffnen Sie in einem der Knoten **Failovercluster-Manager**, wählen Sie den Cluster aus, und klicken Sie unter **Hauptressourcen des Clusters** mit der rechten Maustaste auf **Name: \<ClusterNam>** . Wählen Sie anschließend **Eigenschaften** aus. 
+1. Öffnen Sie in einem der Knoten **Failovercluster-Manager** , wählen Sie den Cluster aus, und klicken Sie unter **Hauptressourcen des Clusters** mit der rechten Maustaste auf **Name: \<ClusterNam>** . Wählen Sie anschließend **Eigenschaften** aus. 
 
    ![Öffnen von „Eigenschaften“ für den Clusternamen](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
@@ -142,8 +142,8 @@ In diesem Schritt erstellen Sie Zertifikate, die in einer SQL-Anmeldung beim ver
 
 Führen Sie zum Konfigurieren des ersten Knotens folgende Schritte durch: 
 
-1. Öffnen Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrem ersten Knoten her, z. B. `AGNode1`. 
-1. Öffnen Sie ein **neues Abfragefenster**, und führen Sie die folgende T-SQL-Anweisung (Transact-SQL) aus, nachdem Sie das Kennwort komplexer und sicherer gestaltet haben:
+1. Öffnen Sie **SQL Server Management Studio** , und stellen Sie eine Verbindung mit Ihrem ersten Knoten her, z. B. `AGNode1`. 
+1. Öffnen Sie ein **neues Abfragefenster** , und führen Sie die folgende T-SQL-Anweisung (Transact-SQL) aus, nachdem Sie das Kennwort komplexer und sicherer gestaltet haben:
 
    ```sql
    USE master;  
@@ -179,7 +179,7 @@ Führen Sie zum Konfigurieren des ersten Knotens folgende Schritte durch:
    GO  
    ```
 
-1. Verwenden Sie den **Datei-Explorer**, um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
+1. Verwenden Sie den **Datei-Explorer** , um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
 1. Erstellen Sie manuell eine Kopie des Zertifikats (z. B. `AGNode1Cert.crt`) für den ersten Knoten, und übertragen Sie es an den gleichen Speicherort auf dem zweiten Knoten. 
 
 Führen Sie zum Konfigurieren des zweiten Knotens folgende Schritte durch: 
@@ -220,7 +220,7 @@ Führen Sie zum Konfigurieren des zweiten Knotens folgende Schritte durch:
    GO  
    ```
 
-1. Verwenden Sie den **Datei-Explorer**, um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
+1. Verwenden Sie den **Datei-Explorer** , um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
 1. Erstellen Sie manuell eine Kopie des Zertifikats (z. B. `AGNode2Cert.crt`) für den zweiten Knoten, und übertragen Sie es an den gleichen Speicherort auf dem ersten Knoten. 
 
 Wenn weitere Knoten im Cluster vorhanden sind, wiederholen Sie diese Schritte auch dort, und ändern Sie dabei die jeweiligen Zertifikatnamen. 
@@ -291,6 +291,4 @@ In diesem letzten Schritt konfigurieren Sie den Lastenausgleich im [Azure-Portal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch die [Azure-Befehlszeilenschnittstelle auf der SQL-VM](availability-group-az-cli-configure.md) verwenden, um eine Verfügbarkeitsgruppe zu konfigurieren. 
-
-
+Sie können auch die [Azure-Befehlszeilenschnittstelle auf der SQL-VM](./availability-group-az-commandline-configure.md) verwenden, um eine Verfügbarkeitsgruppe zu konfigurieren.

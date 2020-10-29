@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439774"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789572"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Neuer DBA in der Cloud – Verwalten von Azure SQL-Datenbank nach der Migration
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Üb
 
 ![Tarifbezogenes Überwachen der Datenbankleistung.](./media/manage-data-after-migrating-to-database/sqldb_service_tier_monitoring.png)
 
-Sie können zudem Benachrichtigungen für die Leistungsmetriken konfigurieren. Klicken Sie im Fenster **Metrik** auf die Schaltfläche **Warnung hinzufügen**. Befolgen Sie die Anweisungen des Assistenten, um die Benachrichtigung zu konfigurieren. Sie haben die Möglichkeit, Benachrichtigungen für den Fall zu konfigurieren, dass Metriken einen Schwellenwert überschreiten oder unterschreiten.
+Sie können zudem Benachrichtigungen für die Leistungsmetriken konfigurieren. Klicken Sie im Fenster **Metrik** auf die Schaltfläche **Warnung hinzufügen** . Befolgen Sie die Anweisungen des Assistenten, um die Benachrichtigung zu konfigurieren. Sie haben die Möglichkeit, Benachrichtigungen für den Fall zu konfigurieren, dass Metriken einen Schwellenwert überschreiten oder unterschreiten.
 
 Wenn Sie beispielsweise einen Anstieg der Workload Ihrer Datenbank erwarten, können Sie eine E-Mail-Benachrichtigung konfigurieren, die immer dann gesendet wird, wenn eine der Leistungsmetriken der Datenbank 80 % erreicht. Sie können dies als Frühwarnung verwenden, um zu ermitteln, wann Sie eventuell zur nächsthöheren Computegröße wechseln müssen.
 
@@ -102,7 +102,7 @@ Sicherheit und Datenschutz haben in SQL-Datenbank einen hohen Stellenwert. Die S
 SQL-Datenbank bietet zwei Authentifizierungsmethoden:
 
 - [Azure Active Directory-Authentifizierung](authentication-aad-overview.md)
-- [SQL-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [SQL-Authentifizierung](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (Azure AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. 
 
@@ -113,7 +113,7 @@ Azure AD unterstützt [Azure Multi-Factor Authentication](authentication-mfa-ssm
 |Azure Active Directory (Azure AD) lieber nicht in Azure verwenden möchten,|verwenden Sie [SQL-Authentifizierung](security-overview.md).|
 |AD auf einem lokalen SQL-Server verwendet haben,|[Verbinden Sie AD mit Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md), und verwenden Sie die Azure AD-Authentifizierung. So können Sie auf die Funktion „Einmaliges Anmelden“ zurückgreifen.|
 |eine mehrstufige Authentifizierung erzwingen müssen,|muss über den [bedingten Zugriff von Microsoft](conditional-access-configure.md) MFA als Richtlinie festgelegt sein, und Sie müssen die [universelle Authentifizierung mit MFA-Unterstützung in Azure AD](authentication-mfa-ssms-overview.md) verwenden.|
-|über Gastkonten aus Microsoft-Konten (live.com, outlook.com) oder anderen Domänen (gmail.com) verfügen,|verwenden Sie [die universelle Authentifizierung von Azure AD](authentication-mfa-ssms-overview.md) in SQL-Datenbank/Data Warehouse, die die [Zusammenarbeit zwischen Azure AD und B2B unterstützt](../../active-directory/b2b/what-is-b2b.md).|
+|über Gastkonten aus Microsoft-Konten (live.com, outlook.com) oder anderen Domänen (gmail.com) verfügen,|verwenden Sie [die universelle Authentifizierung von Azure AD](authentication-mfa-ssms-overview.md) in SQL-Datenbank/Data Warehouse, die die [Zusammenarbeit zwischen Azure AD und B2B unterstützt](../../active-directory/external-identities/what-is-b2b.md).|
 |mit Ihren Azure AD-Anmeldeinformationen aus einer Verbunddomäne bei Windows angemeldet sind,|verwenden Sie [Azure AD integrated authentication (die integrierte Azure AD-Authentifizierung)](authentication-aad-configure.md).|
 |mit Ihren Anmeldeinformationen aus einer Domäne, die nicht mit Azure verbunden ist, bei Windows angemeldet sind,|verwenden Sie [Azure AD integrated authentication (die integrierte Azure AD-Authentifizierung)](authentication-aad-configure.md).|
 |über Dienste auf mittlerer Ebene verfügen, die eine Verbindung mit SQL-Datenbank oder Azure Synapse Analytics herstellen müssen,|verwenden Sie [Azure AD integrated authentication (die integrierte Azure AD-Authentifizierung)](authentication-aad-configure.md).|
@@ -320,11 +320,11 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Wie werden Daten als BACPAC-Dateien in SQL-Datenbank mithilfe des Azure-Portals exportiert und importiert?
 
-- **Export**: Sie können Ihre Datenbank in Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
+- **Export** : Sie können Ihre Datenbank in Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
 
    ![Datenbankexport](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Import**: Sie können Daten im Azure-Portal auch als BACPAC-Datei in Ihre Datenbank in Azure SQL-Datenbank importieren.
+- **Import** : Sie können Daten im Azure-Portal auch als BACPAC-Datei in Ihre Datenbank in Azure SQL-Datenbank importieren.
 
    ![Datenbankimport](./media/manage-data-after-migrating-to-database/import1.png)
 

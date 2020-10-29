@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34f71dfeb0b4e5f94d953137fd45777bf14baa4e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618113"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790762"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Die Menge des für In-Memory-OLTP verfügbaren Speicherplatzes auf der Dienstebe
 SQL Managed Instance umfasst zwei Dienstebenen: [Universell](../database/service-tier-general-purpose.md) und [Unternehmenskritisch](../database/service-tier-business-critical.md). Diese Ebenen bieten [verschiedene Funktionen](../database/service-tiers-general-purpose-business-critical.md), die in der folgenden Tabelle beschrieben sind.
 
 > [!Important]
-> Die Dienstebene „Unternehmenskritisch“ bietet eine integrierte zusätzliche Kopie der SQL Managed Instance-Instanz (sekundäres Replikat), die für eine schreibgeschützte Workload verwendet werden kann. Wenn Sie Abfragen mit Lese-/Schreibzugriff und Schreibschutz-/Analyse-/Berichtsabfragen voneinander trennen können, erhalten Sie das Doppelte an virtuellen Kernen und Speicher für denselben Preis. Das sekundäre Replikat kann gegenüber der primären Instanz einige Sekunden verzögert sein, daher ist es auf die Auslagerung von Berichts-/Analyse-Workloads ausgelegt, bei denen der aktuelle Datenstatus nicht erforderlich ist. In der Tabelle unten sind die Abfragen, die auf dem sekundären Replikat ausgeführt werden, **Abfragen mit Schreibschutz**.
+> Die Dienstebene „Unternehmenskritisch“ bietet eine integrierte zusätzliche Kopie der SQL Managed Instance-Instanz (sekundäres Replikat), die für eine schreibgeschützte Workload verwendet werden kann. Wenn Sie Abfragen mit Lese-/Schreibzugriff und Schreibschutz-/Analyse-/Berichtsabfragen voneinander trennen können, erhalten Sie das Doppelte an virtuellen Kernen und Speicher für denselben Preis. Das sekundäre Replikat kann gegenüber der primären Instanz einige Sekunden verzögert sein, daher ist es auf die Auslagerung von Berichts-/Analyse-Workloads ausgelegt, bei denen der aktuelle Datenstatus nicht erforderlich ist. In der Tabelle unten sind die Abfragen, die auf dem sekundären Replikat ausgeführt werden, **Abfragen mit Schreibschutz** .
 
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ SQL Managed Instance unterstützt aktuell nur die Bereitstellung für folgende A
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [Clouddienstanbieter (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Clouddienstanbieter (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Abonnements mit monatlicher Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -132,8 +132,8 @@ SQL Managed Instance unterstützt aktuell nur die Bereitstellung für folgende A
 
 Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Abhängig vom Abonnementtyp gelten für SQL Managed Instance zwei Standardgrenzwerte pro Azure-Region (die bei Bedarf durch das Erstellen einer speziellen [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erhöht werden können):
 
-- **Subnetzlimit**: Die maximale Anzahl von Subnetzen, wenn Instanzen von SQL Managed Instance in einer einzelnen Region bereitgestellt werden.
-- **Grenzwert für virtuelle Kerneinheiten**: Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet 4 virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
+- **Subnetzlimit** : Die maximale Anzahl von Subnetzen, wenn Instanzen von SQL Managed Instance in einer einzelnen Region bereitgestellt werden.
+- **Grenzwert für virtuelle Kerneinheiten** : Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet 4 virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
 
 > [!Note]
 > Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Die Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erstellen, falls Sie mehr Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue Instanzen von SQL Managed Instance in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.

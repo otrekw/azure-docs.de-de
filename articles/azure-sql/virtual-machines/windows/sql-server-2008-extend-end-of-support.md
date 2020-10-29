@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668745"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784863"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Verlängerung des Supports für SQL Server 2008 und SQL Server 2008 R2 mit Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Kunden mit SQL Server 2008 müssen entweder selbst SQL Server 2008 R2 insta
 Bei über den Azure Marketplace bereitgestellten Images ist die SQL-IaaS-Erweiterung bereits installiert. Die SQL-IaaS-Erweiterung ist eine Voraussetzung für die flexible Lizenzierung und automatisierte Patches. Kunden, die selbst installierte virtuelle Computer bereitstellen, müssen die SQL-IaaS-Erweiterung manuell installieren. Die SQL-IaaS-Erweiterung wird unter Windows Server 2008 nicht unterstützt.
 
 > [!NOTE]
-> Die SQL Server-Blätter **Erstellen** und **Verwalten** funktionieren zwar mit dem SQL Server 2008 R2-Image im Azure-Portal, die folgenden Features werden jedoch _nicht unterstützt_: Automatische Sicherungen, Azure Key Vault-Integration, R-Dienste und Speicherkonfiguration.
+> Die SQL Server-Blätter **Erstellen** und **Verwalten** funktionieren zwar mit dem SQL Server 2008 R2-Image im Azure-Portal, die folgenden Features werden jedoch _nicht unterstützt_ : Automatische Sicherungen, Azure Key Vault-Integration, R-Dienste und Speicherkonfiguration.
 
 ## <a name="licensing"></a>Lizenzierung
 Bereitstellungen von SQL Server 2008 R2 mit nutzungsbasierter Bezahlung können in den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) konvertiert werden.
@@ -54,21 +54,21 @@ SQL Server-Instanzen am Ende des Supportlebenszyklus können mit manuellen Sich
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Für Massenmigrationsvorgänge empfehlen wir den Dienst [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). Mit Azure Site Recovery können Kunden den gesamten virtuellen Computer replizieren – einschließlich SQL Server von einer lokalen Instanz zu einem virtuellen Azure-Computer.
+Für Massenmigrationsvorgänge empfehlen wir den Dienst [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md). Mit Azure Site Recovery können Kunden den gesamten virtuellen Computer replizieren – einschließlich SQL Server von einer lokalen Instanz zu einem virtuellen Azure-Computer.
 
 SQL Server erfordert App-konsistente Azure Site Recovery-Momentaufnahmen, um die Wiederherstellung zu gewährleisten. Azure Site Recovery unterstützt App-konsistente Momentaufnahmen mit einem Mindestintervall von einer Stunde. Die kleinstmögliche Recovery Point Objective (RPO) für SQL Server mit Azure Site Recovery-Migrationen beträgt eine Stunde. Die Recovery Time Objective (RTO) beträgt zwei Stunden plus SQL Server-Wiederherstellungszeit.
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-[Azure Database Migration Service](/azure/dms/dms-overview) ist eine Option für Kunden, die von einer lokalen Instanz zu einem virtuellen Azure-Computer migrieren, indem sie SQL Server auf Version 2012 (oder eine höhere Version) upgraden.
+[Azure Database Migration Service](../../../dms/dms-overview.md) ist eine Option für Kunden, die von einer lokalen Instanz zu einem virtuellen Azure-Computer migrieren, indem sie SQL Server auf Version 2012 (oder eine höhere Version) upgraden.
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
 Für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus auf einem virtuellen Azure-Computer stehen folgende Lösungen zur Verfügung:
 
-- **SQL Server-Sicherungen:** Verwenden Sie Azure Backup, um Ihre SQL Server 2008- und 2008 R2-Instanzen am Ende des Supportlebenszyklus mit einem RPO von 15 Minuten und Point-in-Time-Wiederherstellung vor Ransomware, unbeabsichtigtem Löschen und Beschädigungen zu schützen. Ausführlichere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support).
+- **SQL Server-Sicherungen:** Verwenden Sie Azure Backup, um Ihre SQL Server 2008- und 2008 R2-Instanzen am Ende des Supportlebenszyklus mit einem RPO von 15 Minuten und Point-in-Time-Wiederherstellung vor Ransomware, unbeabsichtigtem Löschen und Beschädigungen zu schützen. Ausführlichere Informationen finden Sie in [diesem Artikel](../../../backup/sql-support-matrix.md#scenario-support).
 - **Protokollversand:** Sie können ein Protokollversandreplikat in einer anderen Zone oder Azure-Region mit fortlaufenden Wiederherstellungen erstellen, um das RTO zu verringern. Der Protokollversand muss manuell konfiguriert werden.
-- **Azure Site Recovery**: Sie können Ihren virtuellen Computer mithilfe der Azure Site Recovery-Replikation zonen- und regionsübergreifend replizieren. SQL Server erfordert App-konsistente Momentaufnahmen, um die Wiederherstellung im Notfall zu gewährleisten. Azure Site Recovery bietet für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus eine RPO von mindestens einer Stunde und eine RTO von mindestens zwei Stunden (plus SQL Server-Wiederherstellungszeit).
+- **Azure Site Recovery** : Sie können Ihren virtuellen Computer mithilfe der Azure Site Recovery-Replikation zonen- und regionsübergreifend replizieren. SQL Server erfordert App-konsistente Momentaufnahmen, um die Wiederherstellung im Notfall zu gewährleisten. Azure Site Recovery bietet für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus eine RPO von mindestens einer Stunde und eine RTO von mindestens zwei Stunden (plus SQL Server-Wiederherstellungszeit).
 
 ## <a name="security-patching"></a>Sicherheitspatches
 Erweiterte Sicherheitsupdates für virtuelle SQL Server-Computer werden über die Microsoft Update-Kanäle bereitgestellt, sobald die der virtuelle SQL Server-Computer beim SQL-VM-[Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert wurde. Patches können manuell oder automatisch heruntergeladen werden.

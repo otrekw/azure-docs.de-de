@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168153"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790065"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Tutorial: Manuelles Konfigurieren einer Verfügbarkeitsgruppe (SQL Server auf virtuellen Azure-Computern)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen manuell konfiguri
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial werden Grundkenntnisse über SQL Server Always On-Verfügbarkeitsgruppen vorausgesetzt. Weitere Informationen finden Sie in der [Übersicht über Always On-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
+Für dieses Tutorial werden Grundkenntnisse über SQL Server Always On-Verfügbarkeitsgruppen vorausgesetzt. Weitere Informationen finden Sie in der [Übersicht über Always On-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
 Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen für die Erstellung von Always On-Verfügbarkeitsgruppen in Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md) ausgeführt werden. Falls die Voraussetzungen bereits erfüllt werden, können Sie direkt mit dem [Erstellen des Clusters](#CreateCluster) fortfahren.
 
@@ -51,7 +51,7 @@ Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sei
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Domänenkonto für die Installation** | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
 
 >[!NOTE]
-> Viele der in diesem Tutorial behandelten Schritte können jetzt mit dem [Azure-Portal](availability-group-azure-portal-configure.md), mit [PowerShell und der Azure CLI](availability-group-az-cli-configure.md) und mit [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) automatisiert werden.
+> Viele der in diesem Tutorial behandelten Schritte können jetzt mit dem [Azure-Portal](availability-group-azure-portal-configure.md), mit [PowerShell und der Azure CLI](./availability-group-az-commandline-configure.md) und mit [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) automatisiert werden.
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -114,7 +114,7 @@ Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
    ![Bestätigung der Knotenhinzufügung](./media/availability-group-manually-configure-tutorial/46-addnodeconfirmation.png)
 
    >[!WARNING]
-   >Wenn Sie Speicherplätze verwenden und das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden.** nicht deaktivieren, trennt Windows die virtuellen Datenträger während des Clusterprozesses. Sie werden daher erst im Datenträger-Manager oder -Explorer angezeigt, nachdem die Speicherplätze aus dem Cluster entfernt und mithilfe von PowerShell erneut angefügt wurden. Mit Speicherplätzen werden mehrere Datenträger in Speicherpools gruppiert. Weitere Informationen finden Sie unter [Speicherplätze](https://technet.microsoft.com/library/hh831739).
+   >Wenn Sie Speicherplätze verwenden und das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden.** nicht deaktivieren, trennt Windows die virtuellen Datenträger während des Clusterprozesses. Sie werden daher erst im Datenträger-Manager oder -Explorer angezeigt, nachdem die Speicherplätze aus dem Cluster entfernt und mithilfe von PowerShell erneut angefügt wurden. Mit Speicherplätzen werden mehrere Datenträger in Speicherpools gruppiert. Weitere Informationen finden Sie unter [Speicherplätze](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)).
    >
 
 1. Wählen Sie **Weiter** aus.
@@ -127,7 +127,7 @@ Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>Hinzufügen einer Clusterquorum-Dateifreigabe
 
-In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein Clusterquorum. In diesem Tutorial wird ein Quorum vom Typ „Knoten- und Dateifreigabemehrheit“ verwendet. Weitere Informationen finden Sie unter [Grundlegendes zu Quorumkonfigurationen in einem Failovercluster](https://technet.microsoft.com/library/cc731739.aspx).
+In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein Clusterquorum. In diesem Tutorial wird ein Quorum vom Typ „Knoten- und Dateifreigabemehrheit“ verwendet. Weitere Informationen finden Sie unter [Grundlegendes zu Quorumkonfigurationen in einem Failovercluster](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731739(v=ws.11)).
 
 1. Stellen Sie über eine Remotedesktopsitzung eine Verbindung mit dem Dateifreigabenzeuge-Mitgliedsserver her.
 
@@ -176,7 +176,7 @@ Legen Sie als Nächstes das Clusterquorum fest.
 1. Klicken Sie unter **Quorumzeuge auswählen** auf **Dateifreigabenzeugen konfigurieren** .
 
    >[!TIP]
-   >Windows Server 2016 unterstützt einen Cloudzeugen. Bei Verwendung dieser Art von Zeuge benötigen Sie keinen Dateifreigabenzeugen. Weitere Informationen finden Sie unter [Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness) (Bereitstellen eines Cloudzeugen für einen Failovercluster). In diesem Tutorial wird ein Dateifreigabenzeuge verwendet, der von älteren Betriebssystemen unterstützt wird.
+   >Windows Server 2016 unterstützt einen Cloudzeugen. Bei Verwendung dieser Art von Zeuge benötigen Sie keinen Dateifreigabenzeugen. Weitere Informationen finden Sie unter [Deploy a cloud witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness) (Bereitstellen eines Cloudzeugen für einen Failovercluster). In diesem Tutorial wird ein Dateifreigabenzeuge verwendet, der von älteren Betriebssystemen unterstützt wird.
    >
 
 1. Geben Sie unter **Dateifreigabenzeugen konfigurieren** den Pfad für die erstellte Freigabe ein. Wählen Sie **Weiter** aus.
@@ -347,7 +347,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
    ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > Versuchen Sie nicht, ein Failover der Verfügbarkeitsgruppe aus dem Failovercluster-Manager heraus durchzuführen. Alle Failovervorgänge sollten aus dem **AlwaysOn-Dashboard** in SSMS ausgeführt werden. Weitere Informationen finden Sie unter [Failoverclustering und AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/ff929171.aspx).
+   > Versuchen Sie nicht, ein Failover der Verfügbarkeitsgruppe aus dem Failovercluster-Manager heraus durchzuführen. Alle Failovervorgänge sollten aus dem **AlwaysOn-Dashboard** in SSMS ausgeführt werden. Weitere Informationen finden Sie unter [Failoverclustering und AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server).
     >
 
 Sie verfügen nun über eine Verfügbarkeitsgruppe mit Replikaten in zwei Instanzen von SQL Server. Sie können die Verfügbarkeitsgruppe zwischen Instanzen verschieben. Sie können noch keine Verbindung mit der Verfügbarkeitsgruppe herstellen, da Sie über keinen Listener verfügen. Auf virtuellen Azure-Computern wird für den Listener ein Lastenausgleich benötigt. Im nächsten Schritt wird der Lastenausgleich in Azure erstellt.
@@ -535,7 +535,7 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet.
 
 > [!TIP]
-> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](https://technet.microsoft.com/library/cc753558.aspx).
+> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)).
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

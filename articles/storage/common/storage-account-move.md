@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515012"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792989"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Verschieben eines Azure Storage-Kontos in eine andere Region
 
@@ -67,7 +67,7 @@ So exportieren Sie eine Vorlage mithilfe des Azure-Portals
 
 So exportieren Sie eine Vorlage mithilfe von PowerShell
 
-1. Melden Sie sich mit dem Befehl [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
+1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -101,19 +101,19 @@ So exportieren Sie eine Vorlage mithilfe von PowerShell
 
 So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** .
 
-2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
+2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE** .
 
 3. Wählen Sie **Vorlagenbereitstellung** aus.
 
     ![Azure Resource Manager-Vorlagenbibliothek](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Erstellen** .
 
-5. Wählen Sie **Eigene Vorlage im Editor erstellen**.
+5. Wählen Sie **Eigene Vorlage im Editor erstellen** .
 
-6. Wählen Sie **Datei laden** aus, und befolgen Sie dann die Anweisungen zum Laden der Datei **template.json**, die Sie im vorherigen Abschnitt heruntergeladen haben.
+6. Wählen Sie **Datei laden** aus, und befolgen Sie dann die Anweisungen zum Laden der Datei **template.json** , die Sie im vorherigen Abschnitt heruntergeladen haben.
 
 7. Benennen Sie in der Datei **template.json** das Zielspeicherkonto, indem Sie den Standardwert des Speicherkontonamens festlegen. In diesem Beispiel wird der Standardwert des Speicherkontonamens auf `mytargetaccount` festgelegt.
     
@@ -137,7 +137,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
          "location": "centralus"
          }]          
     ```
-    Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
+    Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -156,7 +156,7 @@ So stellen Sie die Vorlage mithilfe von PowerShell bereit
     },
     ``` 
 
-2. Bearbeiten Sie die **location**-Eigenschaft in der Datei **template.json** in der Zielregion. Dieses Beispiel legt den Zielbereich auf `eastus` fest.
+2. Bearbeiten Sie die **location** -Eigenschaft in der Datei **template.json** in der Zielregion. Dieses Beispiel legt den Zielbereich auf `eastus` fest.
 
     ```json
     "resources": [{
@@ -167,7 +167,7 @@ So stellen Sie die Vorlage mithilfe von PowerShell bereit
          }]          
     ```
 
-    Sie können Regionscodes erhalten, indem Sie den Befehl [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) ausführen.
+    Sie können Regionscodes erhalten, indem Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation) ausführen.
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -182,21 +182,21 @@ Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Speichern Sie die Datei **template.json**.
+1. Speichern Sie die Datei **template.json** .
 
 2. Geben Sie die Eigenschaftswerte ein oder wählen Sie sie aus:
 
-- **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+- **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
 
-- **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
+- **Ressourcengruppe** : Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
 
-- **Standort**: Wählen Sie einen Azure-Standort aus.
+- **Standort** : Wählen Sie einen Azure-Standort aus.
 
-3. Klicken Sie auf das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann auf die Schaltfläche **Kauf auswählen**.
+3. Klicken Sie auf das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann auf die Schaltfläche **Kauf auswählen** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Rufen Sie die Abonnement-ID ab, für die Sie die öffentliche Ziel-IP-Adresse mit [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) bereitstellen möchten:
+1. Rufen Sie die Abonnement-ID ab, für die Sie die öffentliche Ziel-IP-Adresse mit [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) bereitstellen möchten:
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -232,14 +232,14 @@ In der folgenden Tabelle sind diese Features zusammen mit einer Anleitung zum Hi
 
 ### <a name="move-data-to-the-new-storage-account"></a>Verschieben der Daten in das neue Speicherkonto
 
-AzCopy ist das bevorzugte Tool zum Verschieben Ihrer Daten. Er ist für die Leistung optimiert.  Ein Grund für die höhere Leistung besteht darin, dass Daten direkt zwischen Speicherservern kopiert werden, sodass AzCopy nicht die Netzwerkbandbreite Ihres Computers nutzt. Verwenden Sie AzCopy über die Befehlszeile oder als Teil eines benutzerdefinierten Skripts. Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy ist das bevorzugte Tool zum Verschieben Ihrer Daten. Er ist für die Leistung optimiert.  Ein Grund für die höhere Leistung besteht darin, dass Daten direkt zwischen Speicherservern kopiert werden, sodass AzCopy nicht die Netzwerkbandbreite Ihres Computers nutzt. Verwenden Sie AzCopy über die Befehlszeile oder als Teil eines benutzerdefinierten Skripts. Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Sie können auch Azure Data Factory verwenden, um Ihre Daten zu verschieben. Die Anwendung bietet eine intuitive Benutzeroberfläche. Informationen zur Verwendung von Azure Data Factory finden Sie unter den folgenden Links: 
 
-  - [Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory](/azure/data-factory/connector-azure-blob-storage)
+  - [Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-lake-storage)
+  - [Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-file-storage)
+  - [Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -253,7 +253,7 @@ Um die Änderungen zu übernehmen und das Verschieben eines Speicherkonto abzusc
 
 So entfernen Sie ein Speicherkonto über das Azure-Portal
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Speicherkonten**, um die Liste mit Ihren Speicherkonten anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Speicherkonten** , um die Liste mit Ihren Speicherkonten anzuzeigen.
 
 2. Suchen Sie das zu löschende Zielspeicherkonto, und klicken Sie mit der rechten Maustaste rechts neben der Liste auf die Schaltfläche **Mehr** ( **...** ).
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 In diesem Tutorial haben Sie ein Azure-Speicherkonto aus einer Region in eine andere verschoben und die Quellressourcen bereinigt.  Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter:
 
 
-- [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Verschieben virtueller Azure-Computer in eine andere Region](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Verschieben virtueller Azure-Computer in eine andere Region](../../site-recovery/azure-to-azure-tutorial-migrate.md)

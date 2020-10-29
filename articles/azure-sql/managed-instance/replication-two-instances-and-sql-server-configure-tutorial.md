@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058555"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790796"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Tutorial: Konfigurieren der Transaktionsreplikation zwischen verwalteten Azure SQL-Instanzen und SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Dieses Tutorial ist für erfahrene Benutzer bestimmt. Es wird vorausgesetzt, das
 
 
 > [!NOTE]
-> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit [Failovergruppen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group). Dieses verwaltete Azure SQL Managed Instance-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen. Beim Konfigurieren der [Transaktionsreplikation mit Failovergruppen](replication-transactional-overview.md#with-failover-groups) sind weitere Aspekte zu berücksichtigen.
+> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit [Failovergruppen](../database/auto-failover-group-overview.md). Dieses verwaltete Azure SQL Managed Instance-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen. Beim Konfigurieren der [Transaktionsreplikation mit Failovergruppen](replication-transactional-overview.md#with-failover-groups) sind weitere Aspekte zu berücksichtigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -149,17 +149,17 @@ Eine private DNS-Zone ermöglicht das DNS-Routing zwischen den verwalteten Insta
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie die Option **Ressource erstellen** aus, um eine neue Azure-Ressource zu erstellen.
 1. Suchen Sie auf dem Azure Marketplace nach `private dns zone`.
-1. Wählen Sie die Ressource **Private DNS-Zone** aus, die von Microsoft veröffentlicht wird, und anschließend **Erstellen**, um die DNS-Zone zu erstellen.
+1. Wählen Sie die Ressource **Private DNS-Zone** aus, die von Microsoft veröffentlicht wird, und anschließend **Erstellen** , um die DNS-Zone zu erstellen.
 1. Wählen Sie in der Dropdownliste das Abonnement und die Ressourcengruppe aus.
 1. Geben Sie einen beliebigen Namen für Ihre DNS-Zone an, z. B. `repldns.com`.
 
    ![Erstellen einer privaten DNS-Zone](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Überprüfen Sie die Parameter für Ihre private DNS-Zone, und wählen Sie anschließend **Erstellen** aus, um Ihre Ressource zu erstellen.
+1. Klicken Sie auf **Überprüfen + erstellen** . Überprüfen Sie die Parameter für Ihre private DNS-Zone, und wählen Sie anschließend **Erstellen** aus, um Ihre Ressource zu erstellen.
 
 ### <a name="create-an-a-record"></a>Erstellen eines A-Eintrags
 
-1. Navigieren Sie zu Ihrer neuen **Privaten DNS-Zone**, und wählen Sie **Übersicht** aus.
+1. Navigieren Sie zu Ihrer neuen **Privaten DNS-Zone** , und wählen Sie **Übersicht** aus.
 1. Wählen Sie **+ Eintrag** aus, um einen neuen A-Eintrag zu erstellen.
 1. Geben Sie den Namen Ihrer SQL Server-VM und die private interne IP-Adresse an.
 
@@ -169,11 +169,11 @@ Eine private DNS-Zone ermöglicht das DNS-Routing zwischen den verwalteten Insta
 
 ### <a name="link-the-virtual-network"></a>Verknüpfen des virtuellen Networks
 
-1. Navigieren Sie zu Ihrer neuen **Privaten DNS-Zone**, und wählen Sie **Verknüpfungen virtueller Netzwerke** aus.
-1. Wählen Sie **+ Hinzufügen**.
+1. Navigieren Sie zu Ihrer neuen **Privaten DNS-Zone** , und wählen Sie **Verknüpfungen virtueller Netzwerke** aus.
+1. Wählen Sie **+ Hinzufügen** .
 1. Geben Sie einen Namen für die Verknüpfung an, z. B. `Pub-link`.
 1. Wählen Sie in der Dropdownliste Ihr Abonnement und anschließend das virtuelle Netzwerk für Ihre verwaltete Verlegerinstanz aus.
-1. Aktivieren Sie das Kontrollkästchen neben **Automatische Registrierung aktivieren**.
+1. Aktivieren Sie das Kontrollkästchen neben **Automatische Registrierung aktivieren** .
 
    ![Erstellen einer VNet-Verknüpfung](./media/replication-two-instances-and-sql-server-configure-tutorial/configure-vnet-link.png)
 
@@ -182,7 +182,7 @@ Eine private DNS-Zone ermöglicht das DNS-Routing zwischen den verwalteten Insta
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-[Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis und anschließend im Speicherkonto eine [Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md).
+[Erstellen Sie ein Azure-Speicherkonto](../../storage/common/storage-account-create.md#create-a-storage-account) für das Arbeitsverzeichnis und anschließend im Speicherkonto eine [Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md).
 
 Kopieren Sie den Dateifreigabepfad im Format: `\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -200,7 +200,7 @@ Erstellen Sie eine neue Datenbank auf der verwalteten Verlegerinstanz. Gehen Sie
 
 1. Starten Sie SQL Server Management Studio unter on SQL Server.
 1. Stellen Sie eine Verbindung mit der verwalteten Instanz `sql-mi-publisher` her.
-1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage**, und führen Sie die folgende T-SQL-Abfrage aus, um die Datenbank zu erstellen.
+1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage** , und führen Sie die folgende T-SQL-Abfrage aus, um die Datenbank zu erstellen.
 
 ```sql
 -- Create the databases
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -248,7 +248,7 @@ Nachdem die Verbindung hergestellt wurde und Sie über eine Beispieldatenbank ve
 
 1. Starten Sie SQL Server Management Studio unter on SQL Server.
 1. Stellen Sie eine Verbindung mit der verwalteten Instanz `sql-mi-distributor` her.
-1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage**, und führen Sie den folgenden Transact-SQL-Code aus, um die Verteilung auf der verwalteten Verteilerinstanz zu konfigurieren:
+1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage** , und führen Sie den folgenden Transact-SQL-Code aus, um die Verteilung auf der verwalteten Verteilerinstanz zu konfigurieren:
 
    ```sql
    EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
@@ -270,7 +270,7 @@ Nachdem die Verbindung hergestellt wurde und Sie über eine Beispieldatenbank ve
    > Achten Sie darauf, dass Sie für den Parameter @working_directory nur umgekehrte Schrägstriche (`\`) verwenden. Die Verwendung eines regulären Schrägstrichs (`/`) kann zu einem Fehler führen, wenn die Verbindung mit der Dateifreigabe hergestellt wird.
 
 1. Stellen Sie eine Verbindung mit der verwalteten Instanz `sql-mi-publisher` her.
-1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage**, und führen Sie den folgenden Transact-SQL-Code aus, um den Verteiler für den Verleger zu registrieren:
+1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage** , und führen Sie den folgenden Transact-SQL-Code aus, um den Verteiler für den Verleger zu registrieren:
 
    ```sql
    Use MASTER
@@ -283,11 +283,11 @@ Nachdem die Verteilung konfiguriert wurde, können Sie nun die Veröffentlichung
 
 1. Starten Sie SQL Server Management Studio unter on SQL Server.
 1. Stellen Sie eine Verbindung mit der verwalteten Instanz `sql-mi-publisher` her.
-1. Erweitern Sie im **Objekt-Explorer** den Knoten **Replikation**, und klicken Sie mit der rechten Maustaste auf den Ordner **Lokale Veröffentlichung**. Wählen Sie **Neue Veröffentlichung...** aus.
+1. Erweitern Sie im **Objekt-Explorer** den Knoten **Replikation** , und klicken Sie mit der rechten Maustaste auf den Ordner **Lokale Veröffentlichung** . Wählen Sie **Neue Veröffentlichung...** aus.
 1. Wählen Sie **Weiter** aus, um die Willkommensseite zu verlassen und den Vorgang fortzusetzen.
 1. Wählen Sie auf der Seite **Veröffentlichungsdatenbank** die Datenbank `ReplTutorial` aus, die Sie zuvor erstellt haben. Wählen Sie **Weiter** aus.
 1. Wählen Sie auf der Seite **Publikationstyp** die Option **Transaktionsveröffentlichung** aus. Wählen Sie **Weiter** aus.
-1. Aktivieren Sie auf der Seite **Artikel** das Kontrollkästchen neben **Tabellen**. Wählen Sie **Weiter** aus.
+1. Aktivieren Sie auf der Seite **Artikel** das Kontrollkästchen neben **Tabellen** . Wählen Sie **Weiter** aus.
 1. Wählen Sie auf der Seite **Tabellenzeilen filtern** die Option **Weiter** aus, ohne Filter hinzuzufügen.
 1. Aktivieren Sie auf der Seite **Momentaufnahme-Agent** das Kontrollkästchen neben der Option **Create snapshot immediately and keep the snapshot available to initialize subscriptions** (Momentaufnahme sofort erstellen und zum Initialisieren von Abonnements vorhalten). Wählen Sie **Weiter** aus.
 1. Wählen Sie auf der Seite **Agent-Sicherheit** die Option **Sicherheitseinstellungen...** aus. Geben Sie die Anmeldeinformationen für die SQL Server-Anmeldung an, die für den Momentaufnahmen-Agent und die Verbindungsherstellung mit dem Verleger verwendet werden sollen. Wählen Sie **OK** aus, um die Seite **Sicherheit für den Momentaufnahme-Agent** zu schließen. Wählen Sie **Weiter** aus.
@@ -296,7 +296,7 @@ Nachdem die Verteilung konfiguriert wurde, können Sie nun die Veröffentlichung
 
 1. Wählen Sie auf der Seite **Aktionen des Assistenten** die Option **Veröffentlichung erstellen** und (optional) **Skriptdatei mit Schritten zur Veröffentlichungserstellung generieren** aus, wenn Sie dieses Skript zur späteren Verwendung speichern möchten.
 1. Geben Sie Ihrer Veröffentlichung auf der Seite **Assistenten abschließen** den Namen `ReplTest`, und wählen Sie **Weiter** aus, um Ihre Veröffentlichung zu erstellen.
-1. Aktualisieren Sie nach der Erstellung der Veröffentlichung im **Objekt-Explorer** den Knoten **Replikation**, und erweitern Sie **Lokale Veröffentlichungen**, um Ihre neue Veröffentlichung anzuzeigen.
+1. Aktualisieren Sie nach der Erstellung der Veröffentlichung im **Objekt-Explorer** den Knoten **Replikation** , und erweitern Sie **Lokale Veröffentlichungen** , um Ihre neue Veröffentlichung anzuzeigen.
 
 ## <a name="create-the-subscription"></a>Erstellen des Abonnements
 
@@ -304,7 +304,7 @@ Nachdem die Veröffentlichung erstellt wurde, können Sie das Abonnement erstell
 
 1. Starten Sie SQL Server Management Studio unter on SQL Server.
 1. Stellen Sie eine Verbindung mit der verwalteten Instanz `sql-mi-publisher` her.
-1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage**, und führen Sie den folgenden Transact-SQL-Code aus, um das Abonnement und den Verteilungs-Agent hinzuzufügen. Verwenden Sie den DNS als Teil des Abonnentennamens.
+1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage** , und führen Sie den folgenden Transact-SQL-Code aus, um das Abonnement und den Verteilungs-Agent hinzuzufügen. Verwenden Sie den DNS als Teil des Abonnentennamens.
 
 ```sql
 use [ReplTutorial]
@@ -352,8 +352,8 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe.
-1. Wählen Sie die verwaltete(n) Instanz(en) und dann **Löschen** aus. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus. Dieser Vorgang kann im Hintergrund einige Zeit in Anspruch nehmen. Bis der Vorgang abgeschlossen ist, können Sie den *virtuellen Cluster* oder andere abhängige Ressourcen nicht löschen. Überwachen Sie den Löschvorgang auf der Registerkarte **Aktivität**, um zu bestätigen, dass die verwaltete Instanz gelöscht wurde.
-1. Nachdem die verwaltete Instanz gelöscht wurde, löschen Sie den *virtuellen Cluster*, indem Sie ihn in der Ressourcengruppe auswählen und dann **Löschen** auswählen. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus.
+1. Wählen Sie die verwaltete(n) Instanz(en) und dann **Löschen** aus. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus. Dieser Vorgang kann im Hintergrund einige Zeit in Anspruch nehmen. Bis der Vorgang abgeschlossen ist, können Sie den *virtuellen Cluster* oder andere abhängige Ressourcen nicht löschen. Überwachen Sie den Löschvorgang auf der Registerkarte **Aktivität** , um zu bestätigen, dass die verwaltete Instanz gelöscht wurde.
+1. Nachdem die verwaltete Instanz gelöscht wurde, löschen Sie den *virtuellen Cluster* , indem Sie ihn in der Ressourcengruppe auswählen und dann **Löschen** auswählen. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus.
 1. Löschen Sie alle verbleibenden Ressourcen. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus.
 1. Löschen Sie die Ressourcengruppe, indem Sie die Option **Ressourcengruppe löschen** auswählen, geben Sie den Namen der Ressourcengruppe (`myResourceGroup`) ein, und wählen Sie dann **Löschen** aus.
 
@@ -363,7 +363,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 `Exception Message: Windows logins are not supported in this version of SQL Server.`
 
-Der Agent wurde mit einer Windows-Anmeldung konfiguriert, aber stattdessen muss eine SQL Server-Anmeldung verwendet werden. Nutzen Sie die Seite **Agentsicherheit** unter **Veröffentlichungseigenschaften**, um die Anmeldeinformationen auf eine SQL Server-Anmeldung umzustellen.
+Der Agent wurde mit einer Windows-Anmeldung konfiguriert, aber stattdessen muss eine SQL Server-Anmeldung verwendet werden. Nutzen Sie die Seite **Agentsicherheit** unter **Veröffentlichungseigenschaften** , um die Anmeldeinformationen auf eine SQL Server-Anmeldung umzustellen.
 
 ### <a name="failed-to-connect-to-azure-storage"></a>Fehler beim Herstellen der Verbindung mit Azure Storage
 
@@ -414,7 +414,7 @@ Unter [Was ist die verwaltete SQL-Instanz?](sql-managed-instance-paas-overview.m
 - [Bedrohungserkennung](threat-detection-configure.md)
 - [Dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking)
 - [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security)
-- [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>Funktionen verwalteter SQL-Instanzen
 

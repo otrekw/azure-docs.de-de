@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 6dacb1cd910c6569d94f365b34a15494dde70a4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939340"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787685"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -31,7 +31,7 @@ Anhand der Beispielanwendung können Sie in einer End-to-End-Umgebung sehen, wie
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Zuweisen einer Rolle zu einem Azure AD-Sicherheitsprinzipal
 
-Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle in Azure (Azure Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert integrierte Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die Azure-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten mit Azure RBAC](storage-auth-aad-rbac.md).
+Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle in Azure (Azure Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert integrierte Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die Azure-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten mit Azure RBAC](./storage-auth-aad-rbac-portal.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrieren der Anwendung bei einem Azure AD-Mandanten
 
@@ -48,7 +48,7 @@ Nachdem Sie Ihre Anwendung registriert haben, wird die Anwendungs-ID (oder Clien
 
 :::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt":::
 
-Ausführlichere Informationen zum Registrieren einer Anwendung bei Azure AD finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
+Ausführlichere Informationen zum Registrieren einer Anwendung bei Azure AD finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md).
 
 ### <a name="grant-your-registered-app-permissions-to-azure-storage"></a>Erteilen von Berechtigungen für die registrierte App für Azure Storage
 
@@ -57,7 +57,7 @@ Erteilen Sie als Nächstes Ihrer Anwendung Berechtigungen zum Aufrufen von Azure
 1. Wählen Sie auf der Seite **API-Berechtigungen** für Ihre registrierte Anwendung **Berechtigung hinzufügen** aus.
 1. Wählen Sie auf der Registerkarte **Microsoft-APIs** die Option **Azure Storage** aus.
 1. Im Bereich **API-Berechtigungen anfordern** unter **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** wird als verfügbarer Berechtigungstyp **Delegierte Berechtigungen** angezeigt. Diese Option ist standardmäßig für Sie aktiviert.
-1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen neben **user_impersonation**, und klicken Sie auf die Schaltfläche **Berechtigungen hinzufügen**.
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen neben **user_impersonation** , und klicken Sie auf die Schaltfläche **Berechtigungen hinzufügen** .
 
     :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt":::
 
@@ -93,7 +93,7 @@ Konfigurieren Sie als Nächstes den Flow zur impliziten Genehmigung für Ihre An
 
 Sobald Sie Ihre Anwendung registriert und ihr Berechtigungen für den Zugriff auf Daten im Azure-Blob- oder -Warteschlangenspeicher erteilt haben, können Sie Ihrer Anwendung Code zum Authentifizieren eines Sicherheitsprinzipals und zum Beschaffen eines OAuth 2.0-Tokens hinzufügen. Zum Authentifizieren und Abrufen des Tokens können Sie entweder eine der [Authentifizierungsbibliotheken von Microsoft Identity Platform](../../active-directory/develop/reference-v2-libraries.md) oder eine andere Open-Source-Bibliothek verwenden, die OpenID Connect 1.0 unterstützt. Ihre Anwendung kann dann mit dem Zugriffstoken eine Anforderung an den Azure-Blob- oder -Warteschlangenspeicher autorisieren.
 
-Eine Liste der Szenarios, für die das Abrufen von Token unterstützt wird, finden Sie im Abschnitt zu [Authentifizierungsflows](/en-us/azure/active-directory/develop/msal-authentication-flows) in der Dokumentation [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview).
+Eine Liste der Szenarios, für die das Abrufen von Token unterstützt wird, finden Sie im Abschnitt zu [Authentifizierungsflows](../../active-directory/develop/msal-authentication-flows.md) in der Dokumentation [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md).
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>Bekannte Werte für die Authentifizierung mit Azure AD
 
@@ -140,7 +140,7 @@ Eine vollständige Beispielwebanwendung, die ein Token abruft und zum Erstellen 
 
 #### <a name="add-references-and-using-statements"></a>Hinzufügen von Verweisen und using-Anweisungen  
 
-Installieren Sie von Visual Studio aus die Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole**. Geben Sie im Konsolenfenster die folgenden Befehle ein, um die erforderlichen Pakete aus der Azure Storage-Clientbibliothek für .NET zu installieren:
+Installieren Sie von Visual Studio aus die Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole** . Geben Sie im Konsolenfenster die folgenden Befehle ein, um die erforderlichen Pakete aus der Azure Storage-Clientbibliothek für .NET zu installieren:
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -220,7 +220,7 @@ private static async Task<string> CreateBlob(string accessToken)
 
 Im obigen Beispiel wickelt die .NET-Clientbibliothek die Autorisierung der Anforderung für die Erstellung des Blockblobs ab. Die Autorisierung der Anforderung wird auch von Azure Storage-Clientbibliotheken für andere Sprachen für Sie abgewickelt. Wenn Sie jedoch über die REST-API einen Azure Storage-Vorgang mit einem OAuth-Token aufrufen, müssen Sie den **Autorisierungsheader** mithilfe des OAuth-Tokens erstellen.
 
-Wenn Sie Blob- und Warteschlangendienstvorgänge mit OAuth-Zugriffstoken aufrufen möchten, übergeben Sie das Zugriffstoken im **Autorisierungsheader** unter Verwendung des Schemas **Bearer**, und geben Sie mindestens die Dienstversion 2017-11-09 an, wie im folgenden Beispiel zu sehen:
+Wenn Sie Blob- und Warteschlangendienstvorgänge mit OAuth-Zugriffstoken aufrufen möchten, übergeben Sie das Zugriffstoken im **Autorisierungsheader** unter Verwendung des Schemas **Bearer** , und geben Sie mindestens die Dienstversion 2017-11-09 an, wie im folgenden Beispiel zu sehen:
 
 ```https
 GET /container/file.txt HTTP/1.1
@@ -290,6 +290,6 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
-- [Verwalten von Rechten für den Zugriff auf Speicherdaten mithilfe der Azure RBAC](storage-auth-aad-rbac.md)
+- [Microsoft Identity Platform](../../active-directory/develop/index.yml)
+- [Verwalten von Rechten für den Zugriff auf Speicherdaten mithilfe der Azure RBAC](./storage-auth-aad-rbac-portal.md)
 - [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md)

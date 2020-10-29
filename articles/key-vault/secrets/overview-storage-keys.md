@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612182"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786274"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 
@@ -32,13 +32,13 @@ Wenn Sie das Feature für verwaltete Speicherkontoschlüssel verwenden, sollten 
 
 Wir empfehlen die Verwendung der Azure Storage-Integration in Azure Active Directory (Azure AD), dem cloudbasierten Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Die Azure AD-Integration ist für [Azure-Blobs und -Warteschlangen](../../storage/common/storage-auth-aad.md) verfügbar und bietet tokenbasierten OAuth2-Zugriff auf Azure Storage (genau wie Azure Key Vault).
 
-Azure AD ermöglicht es Ihnen, Ihre Clientanwendung zu authentifizieren, indem Sie eine Anwendungs- oder Benutzeridentität anstelle von Speicherkontoanmeldeinformationen verwenden. Sie können eine [von Azure AD verwaltete Identität](/azure/active-directory/managed-identities-azure-resources/) verwenden, wenn Sie Ihre Clientanwendung in Azure ausführen. Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
+Azure AD ermöglicht es Ihnen, Ihre Clientanwendung zu authentifizieren, indem Sie eine Anwendungs- oder Benutzeridentität anstelle von Speicherkontoanmeldeinformationen verwenden. Sie können eine [von Azure AD verwaltete Identität](../../active-directory/managed-identities-azure-resources/index.yml) verwenden, wenn Sie Ihre Clientanwendung in Azure ausführen. Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
 
 Azure AD verwendet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um die Autorisierung zu verwalten. Dies wird auch von Key Vault unterstützt.
 
 ## <a name="service-principal-application-id"></a>Dienstprinzipal-Anwendungs-ID
 
-Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem [Dienstprinzipal](/azure/active-directory/develop/developer-glossary#service-principal-object) bereit. Der Dienstprinzipal dient als Anwendungs-ID, die während der Autorisierungseinrichtung verwendet wird, um über RBAC auf andere Azure-Ressourcen zuzugreifen.
+Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem [Dienstprinzipal](../../active-directory/develop/developer-glossary.md#service-principal-object) bereit. Der Dienstprinzipal dient als Anwendungs-ID, die während der Autorisierungseinrichtung verwendet wird, um über RBAC auf andere Azure-Ressourcen zuzugreifen.
 
 Key Vault ist eine Microsoft-Anwendung, die in allen Azure AD-Mandanten vorab registriert ist. Key Vault wird unter derselben Anwendungs-ID in jeder Azure-Cloud registriert.
 
@@ -163,6 +163,6 @@ Die Ausgabe dieses Befehls zeigt die Zeichenfolge Ihrer SAS-Definition als `valu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Schlüssel, Geheimnisse und Zertifikate](https://docs.microsoft.com/rest/api/keyvault/).
-- Lesen Sie Artikel im [Azure Key Vault Team Blog](https://blogs.technet.microsoft.com/kv/).
-- Weitere Informationen finden Sie in der Referenzdokumentation zu [az keyvault storage](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest).
+- Erfahren Sie mehr über [Schlüssel, Geheimnisse und Zertifikate](/rest/api/keyvault/).
+- Lesen Sie Artikel im [Azure Key Vault Team Blog](/archive/blogs/kv/).
+- Weitere Informationen finden Sie in der Referenzdokumentation zu [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest).

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8e64e1a63b01e900988c999321423dfe92df00c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335057"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789623"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Tutorial: Implementieren einer geografisch verteilten Datenbank (Azure SQL-Datenbank)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Für dieses Tutorial muss Folgendes installiert sein:
 
@@ -49,7 +49,7 @@ Für dieses Tutorial muss Folgendes installiert sein:
   > [!NOTE]
   > In diesem Tutorial wird die Beispieldatenbank *AdventureWorksLT* verwendet.
 
-- Java und Maven finden Sie unter [Erstellen einer App mit SQL Server](https://www.microsoft.com/sql-server/developer-get-started/). Markieren Sie **Java**, wählen Sie Ihre Umgebung aus, und führen Sie dann die Schritte aus.
+- Java und Maven finden Sie unter [Erstellen einer App mit SQL Server](https://www.microsoft.com/sql-server/developer-get-started/). Markieren Sie **Java** , wählen Sie Ihre Umgebung aus, und führen Sie dann die Schritte aus.
 
 > [!IMPORTANT]
 > Richten Sie auf dem Computer, auf dem Sie die Schritte des Tutorials ausführen, Firewallregeln für die öffentliche IP-Adresse des Computers ein. Firewallregeln auf Datenbankebene werden automatisch auf den sekundären Server repliziert.
@@ -132,7 +132,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Geben Sie **Y** ein, und drücken Sie die **EINGABETASTE**.
+1. Geben Sie **Y** ein, und drücken Sie die **EINGABETASTE** .
 
 1. Wechseln Sie zum Verzeichnis des neuen Projekts.
 
@@ -182,7 +182,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
    </build>
    ```
 
-1. Speichern und schließen Sie die Datei *pom.xml*.
+1. Speichern und schließen Sie die Datei *pom.xml* .
 
 1. Öffnen Sie die Datei *App.java* in „..\SqlDbSample\src\main\java\com\sqldbsamples“, und ersetzen Sie ihren Inhalt durch folgenden Code:
 
@@ -290,7 +290,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
    }
    ```
 
-1. Speichern und schließen Sie die Datei *App.java*.
+1. Speichern und schließen Sie die Datei *App.java* .
 
 1. Führen Sie den folgenden Befehl an der Befehlskonsole aus:
 

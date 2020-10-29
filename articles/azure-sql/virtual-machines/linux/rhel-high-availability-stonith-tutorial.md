@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358915"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790235"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -242,7 +242,7 @@ Die Ergebnisse des abgeschlossenen Befehls sollten wie folgt aussehen:
     done
     ```
 
-Der obige Befehl erstellt die virtuellen Computer sowie ein Standard-VNET für diese virtuellen Computer. Weitere Informationen zu den verschiedenen Konfigurationen finden Sie im [Artikel zu „az vm create“](https://docs.microsoft.com/cli/azure/vm).
+Der obige Befehl erstellt die virtuellen Computer sowie ein Standard-VNET für diese virtuellen Computer. Weitere Informationen zu den verschiedenen Konfigurationen finden Sie im [Artikel zu „az vm create“](/cli/azure/vm).
 
 Nach Abschluss des Befehls für die einzelnen virtuellen Computer sollten die Ergebnisse in etwa wie folgt aussehen:
 
@@ -324,7 +324,7 @@ Stellen Sie eine Verbindung mit den einzelnen VM-Knoten her, und gehen Sie wie i
     sudo vi /etc/hosts
     ```
 
-    Geben Sie im **vi**-Editor `i` ein, um Text einzufügen, und fügen Sie in einer leeren Zeile die **private IP-Adresse** des entsprechenden virtuellen Computers hinzu. Fügen Sie nach der IP-Adresse ein Leerzeichen und den VM-Namen hinzu. Jede Zeile muss einen separaten Eintrag enthalten.
+    Geben Sie im **vi** -Editor `i` ein, um Text einzufügen, und fügen Sie in einer leeren Zeile die **private IP-Adresse** des entsprechenden virtuellen Computers hinzu. Fügen Sie nach der IP-Adresse ein Leerzeichen und den VM-Namen hinzu. Jede Zeile muss einen separaten Eintrag enthalten.
 
     ```output
     <IP1> <VM1>
@@ -335,7 +335,7 @@ Stellen Sie eine Verbindung mit den einzelnen VM-Knoten her, und gehen Sie wie i
     > [!IMPORTANT]
     > Es wird empfohlen, oben Ihre **private IP-Adresse** zu verwenden. Mit der öffentlichen IP-Adresse ist diese Einrichtung nicht erfolgreich, und es wird davon abgeraten, den virtuellen Computer für externe Netzwerke verfügbar zu machen.
 
-    Drücken Sie zum Verlassen des **vi**-Editors **ESC**, und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
+    Drücken Sie zum Verlassen des **vi** -Editors **ESC** , und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
 
 ## <a name="create-the-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
 
@@ -487,13 +487,13 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  1. Besuchen Sie https://portal.azure.com.
  2. Öffnen Sie das Blatt [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Hierbei handelt es sich um die Mandanten-ID (`tenant ID`).
  3. Klicken Sie auf [**App-Registrierungen**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
- 4. Klicken Sie auf **Neue Registrierung**.
+ 4. Klicken Sie auf **Neue Registrierung** .
  5. Geben Sie unter **Name** einen Namen ein (beispielsweise `<resourceGroupName>-app`), und wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
- 6. Wählen Sie den Anwendungstyp **Web** aus, geben Sie eine Anmelde-URL ein (beispielsweise http://localhost) ), und klicken Sie auf „Hinzufügen“. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein. Klicken Sie anschließend auf **Registrieren**.
- 7. Wählen Sie **Zertifikate und Geheimnisse** für Ihre neue App-Registrierung aus, und klicken Sie auf **Neuer geheimer Clientschlüssel**.
- 8. Geben Sie eine Beschreibung für einen neuen Schlüssel (geheimer Clientschlüssel) ein, wählen Sie **Läuft nie ab** aus, und klicken Sie auf **Hinzufügen**.
+ 6. Wählen Sie den Anwendungstyp **Web** aus, geben Sie eine Anmelde-URL ein (beispielsweise http://localhost) ), und klicken Sie auf „Hinzufügen“. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein. Klicken Sie anschließend auf **Registrieren** .
+ 7. Wählen Sie **Zertifikate und Geheimnisse** für Ihre neue App-Registrierung aus, und klicken Sie auf **Neuer geheimer Clientschlüssel** .
+ 8. Geben Sie eine Beschreibung für einen neuen Schlüssel (geheimer Clientschlüssel) ein, wählen Sie **Läuft nie ab** aus, und klicken Sie auf **Hinzufügen** .
  9. Notieren Sie sich den Wert des Geheimnisses. Er dient als Kennwort für den Dienstprinzipal.
-10. Wählen Sie **Übersicht**. Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (Anmelde-ID in den folgenden Schritten) des Dienstprinzipals verwendet.
+10. Wählen Sie **Übersicht** . Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (Anmelde-ID in den folgenden Schritten) des Dienstprinzipals verwendet.
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Erstellen einer benutzerdefinierten Rolle für den Fence-Agent
 
@@ -568,10 +568,10 @@ Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle `Linux Fence Agent R
 2. Öffnen Sie das Blatt [Alle Ressourcen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll).
 3. Wählen Sie den virtuellen Computer des ersten Clusterknotens aus.
 4. Klicken Sie auf **Zugriffssteuerung (IAM)** .
-5. Klicken Sie auf **Rollenzuweisung hinzufügen**.
+5. Klicken Sie auf **Rollenzuweisung hinzufügen** .
 6. Wählen Sie in der Liste **Rolle** die Rolle `Linux Fence Agent Role-<username>` aus.
 7. Geben Sie in der Liste **Auswählen** den Namen der oben erstellten Anwendung (`<resourceGroupName>-app`) ein.
-8. Klicken Sie unten auf der Seite auf **Speichern**.
+8. Klicken Sie unten auf der Seite auf **Speichern** .
 9. Wiederholen Sie die obigen Schritte für alle Clusterknoten.
 
 ### <a name="create-the-stonith-devices"></a>Erstellen des STONITH-Geräts
@@ -601,7 +601,7 @@ sudo firewall-cmd --reload
 ## <a name="install-sql-server-and-mssql-tools"></a>Installieren von SQL Server und „mssql-tools“
 
 > [!NOTE]
-> Wenn Sie die VMs mit einer Vorinstallation von SQL Server 2019 unter RHEL8-HA erstellt haben, können Sie die unten angegebenen Schritte für die Installation von SQL Server und „mssql-tools“ überspringen. Starten Sie in diesem Fall mit dem Abschnitt **Konfigurieren einer Verfügbarkeitsgruppe**, nachdem Sie das Systemadministratorkennwort auf allen VMs eingerichtet haben, indem Sie den Befehl `sudo /opt/mssql/bin/mssql-conf set-sa-password` für alle VMs ausgeführt haben.
+> Wenn Sie die VMs mit einer Vorinstallation von SQL Server 2019 unter RHEL8-HA erstellt haben, können Sie die unten angegebenen Schritte für die Installation von SQL Server und „mssql-tools“ überspringen. Starten Sie in diesem Fall mit dem Abschnitt **Konfigurieren einer Verfügbarkeitsgruppe** , nachdem Sie das Systemadministratorkennwort auf allen VMs eingerichtet haben, indem Sie den Befehl `sudo /opt/mssql/bin/mssql-conf set-sa-password` für alle VMs ausgeführt haben.
 
 In diesem Abschnitt werden SQL Server und „mssql-tools“ auf den virtuellen Computern installiert. Sie können eines der unten angegebenen Beispiele auswählen, um SQL Server 2017 auf RHEL 7 oder SQL Server 2019 auf RHEL 8 zu installieren. Führen Sie jede dieser Aktionen auf allen Knoten aus. Weitere Informationen finden Sie unter [Schnellstart: Installieren von SQL Server und Erstellen einer Datenbank unter Red Hat](/sql/linux/quickstart-install-connect-red-hat).
 
@@ -868,7 +868,7 @@ Speichern Sie in allen SQL Server-Instanzen die für die SQL Server-Anmeldung 
     <password>
     ```
 
-    Drücken Sie zum Verlassen des **vi**-Editors **ESC**, und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
+    Drücken Sie zum Verlassen des **vi** -Editors **ESC** , und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
 
 1. Sorgen Sie dafür, dass die Datei nur mit root-Berechtigungen lesbar ist:
 

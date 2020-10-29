@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167949"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786427"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden für die Clusterkonfiguration (SQL Server auf Azure-VMS)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -135,7 +135,7 @@ Beachten Sie die folgenden Einschränkungen, wenn Sie mit FCIs oder Verfügbarke
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und mit [Azure Load Balancer Standard](../../../load-balancer/load-balancer-standard-overview.md) oder auf SQL Server-VMs, die freigegebene Azure-Datenträger verwenden. 
+Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und mit [Azure Load Balancer Standard](../../../load-balancer/load-balancer-overview.md) oder auf SQL Server-VMs, die freigegebene Azure-Datenträger verwenden. 
 
 In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Versionen mit freigegebenen Clustervolumes aus den folgenden Gründen nicht unterstützt:
 
@@ -145,5 +145,4 @@ In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die geeigneten bewährten Methoden für Ihre Lösung ermittelt haben, können Sie [Ihren virtuellen SQL Server-Computer für eine FCI vorbereiten](failover-cluster-instance-prepare-vm.md) oder Ihre Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), per [Azure-Befehlszeilenschnittstelle/PowerShell](availability-group-az-cli-configure.md) oder mithilfe von [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) erstellen. 
-
+Nachdem Sie die geeigneten bewährten Methoden für Ihre Lösung ermittelt haben, können Sie [Ihren virtuellen SQL Server-Computer für eine FCI vorbereiten](failover-cluster-instance-prepare-vm.md) oder Ihre Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), per [Azure-Befehlszeilenschnittstelle/PowerShell](./availability-group-az-commandline-configure.md) oder mithilfe von [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) erstellen.

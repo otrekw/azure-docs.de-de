@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542736"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791986"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indizieren verschlüsselter Blobs mithilfe von Blobindexern und Skillsets in Azure Cognitive Search
 
@@ -56,7 +56,7 @@ Der Skill „DecryptBlobFile“ verwendet die URL und das SAS-Token für die ein
 
 1. Wählen Sie **das Abonnement aus, in dem sich Ihre Azure Key Vault-Instanz befindet** (diese Anleitung funktioniert nicht, wenn Sie ein anderes Abonnement auswählen), und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue (wenn Sie eine neue erstellen, müssen Sie auch eine Region für die Bereitstellung auswählen).
 
-1. Wählen Sie **Überprüfen und erstellen** aus, stimmen Sie den Bedingungen zu, und klicken Sie dann auf **Erstellen**, um die Azure-Funktion bereitzustellen.
+1. Wählen Sie **Überprüfen und erstellen** aus, stimmen Sie den Bedingungen zu, und klicken Sie dann auf **Erstellen** , um die Azure-Funktion bereitzustellen.
 
     ![ARM-Vorlage im Portal](media/indexing-encrypted-blob-files/arm-template.jpg "ARM-Vorlage im Portal")
 
@@ -64,7 +64,7 @@ Der Skill „DecryptBlobFile“ verwendet die URL und das SAS-Token für die ein
 
 1. Navigieren Sie im Portal zu Ihrer Azure Key Vault-Instanz. [Erstellen Sie in Azure Key Vault eine Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md), mit der dem benutzerdefinierten Skill Schlüsselzugriff erteilt wird.
  
-    1. Wählen Sie unter **Einstellungen** die Option **Zugriffsrichtlinien** und dann **Zugriffsrichtlinie hinzufügen**.
+    1. Wählen Sie unter **Einstellungen** die Option **Zugriffsrichtlinien** und dann **Zugriffsrichtlinie hinzufügen** .
      
        ![Hinzufügen einer Zugriffsrichtlinie in Key Vault](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Zugriffsrichtlinien in Key Vault")
 
@@ -76,7 +76,7 @@ Der Skill „DecryptBlobFile“ verwendet die URL und das SAS-Token für die ein
      
         ![Hinzufügen einer Zugriffsrichtlinienvorlage in Key Vault](media/indexing-encrypted-blob-files/keyvault-add-access-policy.jpg "Zugriffsrichtlinienvorlage in Key Vault")
 
-    1. Klicken Sie auf der Zugriffsrichtlinienseite auf **Speichern**, bevor Sie die Seite verlassen, um die Zugriffsrichtlinie hinzuzufügen.
+    1. Klicken Sie auf der Zugriffsrichtlinienseite auf **Speichern** , bevor Sie die Seite verlassen, um die Zugriffsrichtlinie hinzuzufügen.
      
          ![Speichern einer Zugriffsrichtlinie in Key Vault](media/indexing-encrypted-blob-files/keyvault-save-access-policy.jpg "Speichern einer Zugriffsrichtlinie in Key Vault")
 
@@ -108,7 +108,7 @@ Nehmen Sie sich wie bei der Azure-Funktion die Zeit, den Administratorschlüssel
 
 2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-   ![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-javascript/service-name-and-keys.png)
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Header erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
 
@@ -141,26 +141,26 @@ Rufen Sie den Wert für `admin-key` ab, indem Sie den zuvor notierten Azure Cogn
 | `storage-container-name` | Der Name des Blobcontainers, der die verschlüsselten Dateien enthält, die indiziert werden sollen. | 
 | `function-uri` |  In der Azure-Funktion unter **Zusammenfassung** auf der Hauptseite | 
 | `function-code` | In der Azure-Funktion, indem Sie zu **App-Schlüssel** navigieren, klicken, um den **Standardschlüssel** anzuzeigen, und den Wert kopieren | 
-| `api-version` | Übernehmen Sie **2020-06-30**. |
-| `datasource-name` | Übernehmen Sie **encrypted-blobs-ds**. | 
-| `index-name` | Übernehmen Sie **encrypted-blobs-idx**. | 
-| `skillset-name` | Übernehmen Sie **encrypted-blobs-ss**. | 
-| `indexer-name` | Übernehmen Sie **encrypted-blobs-ixr**. | 
+| `api-version` | Übernehmen Sie **2020-06-30** . |
+| `datasource-name` | Übernehmen Sie **encrypted-blobs-ds** . | 
+| `index-name` | Übernehmen Sie **encrypted-blobs-idx** . | 
+| `skillset-name` | Übernehmen Sie **encrypted-blobs-ss** . | 
+| `indexer-name` | Übernehmen Sie **encrypted-blobs-ixr** . | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Überprüfen der Auflistung von Anforderungen in Postman
 
 Beim Ausführen dieser Anleitung müssen Sie vier HTTP-Anforderungen ausgeben: 
 
-- **PUT-Anforderung zum Erstellen des Index**: Dieser Index enthält die Daten, die von Azure Cognitive Search verwendet und zurückgegeben werden.
-- **POST-Anforderung zum Erstellen der Datenquelle**: Diese Datenquelle verbindet Ihren Azure Cognitive Search-Dienst mit Ihrem Speicherkonto und somit mit verschlüsselten Blobdateien. 
-- **PUT-Anforderung zum Erstellen des Skillsets**: Das Skillset gibt die benutzerdefinierte Skilldefinition für die Azure-Funktion an, die die Blobdateidaten entschlüsselt, und ein [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) zum Extrahieren des Texts aus den einzelnen Dokumenten nach der Entschlüsselung.
-- **PUT-Anforderung zum Erstellen des Indexers**: Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
+- **PUT-Anforderung zum Erstellen des Index** : Dieser Index enthält die Daten, die von Azure Cognitive Search verwendet und zurückgegeben werden.
+- **POST-Anforderung zum Erstellen der Datenquelle** : Diese Datenquelle verbindet Ihren Azure Cognitive Search-Dienst mit Ihrem Speicherkonto und somit mit verschlüsselten Blobdateien. 
+- **PUT-Anforderung zum Erstellen des Skillsets** : Das Skillset gibt die benutzerdefinierte Skilldefinition für die Azure-Funktion an, die die Blobdateidaten entschlüsselt, und ein [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) zum Extrahieren des Texts aus den einzelnen Dokumenten nach der Entschlüsselung.
+- **PUT-Anforderung zum Erstellen des Indexers** : Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
 
 Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) enthält eine Postman-Sammlung, in der die vier Anforderungen sowie einige nützliche Anschlussanforderungen enthalten sind. Wählen Sie zum Ausgeben der Anforderungen in Postman die jeweilige Registerkarte für die Anforderung und jeweils **Senden** aus.
 
 ## <a name="3---monitor-indexing"></a>3\. Überwachen der Indizierung
 
-Indizierung und Anreicherung beginnen, sobald Sie die Anforderung für die Indexererstellung übermitteln. Die Indizierung kann je nach der Anzahl der Dokumente in Ihrem Speicherkonto einige Zeit in Anspruch nehmen. Wenn Sie feststellen möchten, ob der Indexer noch ausgeführt wird, verwenden Sie die im Rahmen der Postman-Sammlung bereitgestellte Anforderung **Indexerstatus abrufen**. Anhand der Antwort können Sie erkennen, ob der Indexer ausgeführt wird, oder Sie können Fehler- und Warnungsinformationen anzeigen.  
+Indizierung und Anreicherung beginnen, sobald Sie die Anforderung für die Indexererstellung übermitteln. Die Indizierung kann je nach der Anzahl der Dokumente in Ihrem Speicherkonto einige Zeit in Anspruch nehmen. Wenn Sie feststellen möchten, ob der Indexer noch ausgeführt wird, verwenden Sie die im Rahmen der Postman-Sammlung bereitgestellte Anforderung **Indexerstatus abrufen** . Anhand der Antwort können Sie erkennen, ob der Indexer ausgeführt wird, oder Sie können Fehler- und Warnungsinformationen anzeigen.  
 
 Wenn Sie den Free-Tarif verwenden, sollte folgende Meldung angezeigt werden: `"Could not extract content or metadata from your document. Truncated extracted text to '32768' characters"`. Diese Meldung wird angezeigt, da die Blobindizierung im Free-Tarif [auf 32.000 extrahierbare Zeichen beschränkt](search-limits-quotas-capacity.md#indexer-limits) ist. Bei höheren Tarifen wird diese Meldung für das Dataset nicht angezeigt. 
 

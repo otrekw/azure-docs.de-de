@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b09d808201d58b571b2fe5ceb2e228d4e1c21d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316952"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786512"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,14 +42,14 @@ Um die Verwendung des Azure-Hybridvorteils für SQL Server auf einer Azure-VM a
 - Stellen Sie eine VM mit einem SQL Server-Image mit nutzungsbasierter Bezahlung aus dem Azure Marketplace bereit, und aktivieren Sie den Azure-Hybridvorteil.
 - Installieren Sie SQL Server selbst auf einer Azure-VM, [registrieren Sie sich manuell bei Ihrem SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md), und aktivieren Sie den Azure-Hybridvorteil.
 
-Der SQL Server-Lizenztyp kann beim Bereitstellen der VM konfiguriert und danach jederzeit geändert werden. Der Wechsel zwischen den Lizenzmodellen führt zu keinen Ausfallzeiten. Die VM oder der SQL Server-Dienst startet nicht neu, es entstehen keine zusätzlichen Kosten, und das neue Modell ist sofort wirksam. Durch die Aktivierung des Azure-Hybridvorteils werden die Kosten *reduziert*.
+Der SQL Server-Lizenztyp kann beim Bereitstellen der VM konfiguriert und danach jederzeit geändert werden. Der Wechsel zwischen den Lizenzmodellen führt zu keinen Ausfallzeiten. Die VM oder der SQL Server-Dienst startet nicht neu, es entstehen keine zusätzlichen Kosten, und das neue Modell ist sofort wirksam. Durch die Aktivierung des Azure-Hybridvorteils werden die Kosten *reduziert* .
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das Ändern des Lizenzierungsmodells Ihrer SQL Server-VM stellt die folgenden Anforderungen: 
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
-- Eine [SQL Server-VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), die beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert ist.
+- Eine [SQL Server-VM](./create-sql-vm-portal.md), die beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert ist.
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) ist eine Voraussetzung für die Verwendung des [Azure-Hybridvorteils](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
 
@@ -83,7 +83,7 @@ Sie können die Azure CLI (Azure-Befehlszeilenschnittstelle) nutzen, um das Liz
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**Nutzungsbasierte Bezahlung**: 
+**Nutzungsbasierte Bezahlung** : 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -180,5 +180,3 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 * [SQL Server auf Windows-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
-
-

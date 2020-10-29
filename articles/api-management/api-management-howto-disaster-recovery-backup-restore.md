@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1a1e9c394f3665845b1f2bbbd605322b43f5f25d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075330"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787226"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -61,28 +61,28 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
     > [!NOTE]
     > Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen.
 
-3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
+3. Klicken Sie auf **Registrierung einer neuen Anwendung** .
 
     Das Fenster **Erstellen** wird auf der rechten Seite angezeigt. Dort geben Sie die relevanten Informationen der AAD-App ein.
 
 4. Geben Sie einen Namen für die Anwendung ein.
 5. Wählen Sie als Anwendungstyp **Nativ** aus.
 6. Geben Sie eine Platzhalter-URL wie z.B. `http://resources` für den **Umleitungs-URI** ein, da es sich um ein Pflichtfeld handelt. Der Wert wird jedoch später nicht verwendet. Klicken Sie auf das Kontrollkästchen, um die Anwendung zu speichern.
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Erstellen** .
 
 ### <a name="add-an-application"></a>Hinzufügen einer Anwendung
 
-1. Klicken Sie nach dem Erstellen der Anwendung auf **API-Berechtigungen**.
+1. Klicken Sie nach dem Erstellen der Anwendung auf **API-Berechtigungen** .
 2. Klicken Sie auf **+ Add a permission** (+ Berechtigung hinzufügen).
 4. Klicken Sie auf **Select Microsoft APIs** (Microsoft-APIs auswählen).
 5. Klicken Sie auf **Azure Service Management** (Azure-Dienstverwaltung).
-6. Drücken Sie **Auswählen**.
+6. Drücken Sie **Auswählen** .
 
     ![Hinzufügen von Berechtigungen](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Klicken Sie neben der neu hinzugefügten Anwendung auf **Delegierte Berechtigungen**, und aktivieren Sie das Kontrollkästchen **Access Azure Service Management (Vorschau)** .
-8. Drücken Sie **Auswählen**.
-9. Klicken Sie auf **Berechtigungen erteilen**.
+7. Klicken Sie neben der neu hinzugefügten Anwendung auf **Delegierte Berechtigungen** , und aktivieren Sie das Kontrollkästchen **Access Azure Service Management (Vorschau)** .
+8. Drücken Sie **Auswählen** .
+9. Klicken Sie auf **Berechtigungen erteilen** .
 
 ### <a name="configuring-your-app"></a>Konfigurieren der App
 
@@ -152,7 +152,7 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 -   `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `2018-06-01-preview` ersetzen
+-   `api-version` – durch `2019-12-01` ersetzen
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -171,14 +171,14 @@ Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere
 
 #### <a name="constraints-when-making-backup-or-restore-request"></a>Einschränkungen beim Durchführen von Backup- oder Wiederherstellungsanforderungen
 
--   Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
+-   Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein** .
 -   Vermeiden Sie während der Sicherung **Verwaltungsänderungen im Dienst** wie beispielsweise SKU-Upgrades oder Herabstufungen, Änderungen am Domänennamen usw.
--   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
--   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
--   Sie müssen den Zugriff von der Steuerungsebene auf ein Azure Storage-Konto **zulassen**, wenn die [Firewall][azure-storage-ip-firewall] für das Konto aktiviert ist. Kunden sollte die [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in ihren Speicherkonten für Sicherungen oder Wiederherstellungen öffnen. Der Grund dafür ist, dass für Anforderungen an Azure Storage keine Übersetzung in eine öffentliche IP-Adresse über „Compute“ > (Azure API Management-Steuerungsebene) erfolgt. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung in die Quellnetzwerkadresse durchgeführt.
+-   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert** .
+-   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren** .
+-   Sie müssen den Zugriff von der Steuerungsebene auf ein Azure Storage-Konto **zulassen** , wenn die [Firewall][azure-storage-ip-firewall] für das Konto aktiviert ist. Kunden sollte die [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in ihren Speicherkonten für Sicherungen oder Wiederherstellungen öffnen. Der Grund dafür ist, dass für Anforderungen an Azure Storage keine Übersetzung in eine öffentliche IP-Adresse über „Compute“ > (Azure API Management-Steuerungsebene) erfolgt. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung in die Quellnetzwerkadresse durchgeführt.
 
 #### <a name="what-is-not-backed-up"></a>Nicht gesicherte Elemente
--   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
+-   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten** . Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
 -   [TLS/SSL-Zertifikate für die benutzerdefinierte Domäne](configure-custom-domain.md)
 -   [benutzerdefinierte CA-Zertifikate](api-management-howto-ca-certificates.md) einschließlich vom Kunden hochgeladener Zwischen- oder Stammzertifikate
 -   Integrationseinstellungen für [virtuelle Netzwerke](api-management-using-with-vnet.md)
@@ -202,7 +202,7 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
 -   `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
 -   `serviceName` – der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `2018-06-01-preview` ersetzen
+-   `api-version` – durch `api-version=2019-12-01` ersetzen
 
 Geben Sie im Anforderungstext den Speicherort der Sicherungsdatei an. Fügen Sie das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -222,7 +222,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 > [!IMPORTANT]
 > **Die SKU** des wiederherzustellenden Diensts **muss** mit der SKU des gesicherten Diensts übereinstimmen.
 >
-> **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Wiederherstellungsvorgangs vorgenommen werden, **könnten überschrieben werden**.
+> **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Wiederherstellungsvorgangs vorgenommen werden, **könnten überschrieben werden** .
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 

@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293355"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789844"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Direkte Änderung der SQL Server-Edition auf der Azure-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Nachdem die Edition von SQL Server intern in den SQL Server-VM geändert wurde, 
 Für eine direkte Änderung der Edition von SQL Server benötigen Sie Folgendes: 
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
-- Eine [SQL Server-VM unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), die beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert ist.
+- Eine [SQL Server-VM unter Windows](./create-sql-vm-portal.md), die beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert ist.
 - Setupmedien mit der **gewünschten Edition** von SQL Server. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus Azure Marketplace mit der gewünschten Edition verwenden (in der Regel unter `C:\SQLServerFull` gespeichert). 
 
 
@@ -46,11 +46,11 @@ Für eine direkte Änderung der Edition von SQL Server benötigen Sie Folgendes:
 Für ein Upgrade der SQL Server-Edition beschaffen Sie sich die SQL Server-Setupmedien für die gewünschte Edition, und führen Sie dann die folgenden Schritte aus:
 
 1. Rufen Sie in den SQL Server-Installationsmedien „Setup.exe“ auf. 
-1. Navigieren Sie zu **Wartung**, und wählen Sie die Option **Editionsupgrade** aus. 
+1. Navigieren Sie zu **Wartung** , und wählen Sie die Option **Editionsupgrade** aus. 
 
    ![Auswahl für das Upgrade der Edition von SQL Server](./media/change-sql-server-edition/edition-upgrade.png)
 
-1. Klicken Sie auf **Weiter**, bis Sie zur Seite **Die Edition kann jetzt aktualisiert werden** gelangen, und wählen Sie dann **Update** aus. Das Setupfenster reagiert möglicherweise einige Minuten nicht mehr, während die Änderung wirksam wird. Auf der Seite **Abgeschlossen** wird bestätigt, dass das Upgrade Ihrer Edition beendet wurde. 
+1. Klicken Sie auf **Weiter** , bis Sie zur Seite **Die Edition kann jetzt aktualisiert werden** gelangen, und wählen Sie dann **Update** aus. Das Setupfenster reagiert möglicherweise einige Minuten nicht mehr, während die Änderung wirksam wird. Auf der Seite **Abgeschlossen** wird bestätigt, dass das Upgrade Ihrer Edition beendet wurde. 
 
 Nach dem Upgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert.
 
@@ -102,5 +102,3 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 * [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)
-
-
