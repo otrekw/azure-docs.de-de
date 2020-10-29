@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663169"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327636"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Testergebnisse für die Hyper-V-Replikation an einen sekundären Standort
 
@@ -47,7 +47,7 @@ Von uns in der Testphase erledigte Schritte:
 * Hyper-V-Replikat nutzt selbstverwalteten Speichercache, um den IOPS-Zusatzaufwand für die Erfassung zu minimieren. Es speichert VHDX-Schreibvorgänge im Arbeitsspeicher und fügt sie der Protokolldatei hinzu, bevor das Protokoll an den Wiederherstellungsstandort gesendet wird. Das Leeren auf Festplatte findet auch statt, wenn die Schreibvorgänge einen zuvor festgelegten Schwellenwert erreichen.
 * Das folgende Diagramm zeigt den IOPS-Zusatzaufwand für die Replikation im stabilen Zustand. Wie Sie sehen, beträgt der replikationsbedingte IOPS-Zusatzaufwand gerade einmal etwa fünf Prozent.
 
-  ![Ergebnisse (primär)](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Diagramm zur Veranschaulichung des IOPS-Zusatzaufwands für die Replikation im stabilen Zustand](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V Replica nutzt Arbeitsspeicher auf dem primären Server, um die Datenträgerleistung zu optimieren. Wie im folgenden Diagramm zu sehen, ist die zusätzliche Arbeitsspeicherauslastung auf allen Servern im primären Cluster marginal. Bei der hier gezeigten Arbeitsspeicherauslastung handelt es sich um den von der Replikation beanspruchten Prozentsatz des installierten Gesamtspeichers auf dem Hyper-V-Server.
 
@@ -55,20 +55,20 @@ Hyper-V Replica nutzt Arbeitsspeicher auf dem primären Server, um die Datenträ
 
 Die zusätzliche CPU-Auslastung durch Hyper-V-Replikat ist minimal. Wie im Diagramm zu sehen, liegt der replikationsbedingte Zusatzaufwand zwischen zwei und drei Prozent.
 
-![Ergebnisse (primär)](./media/hyper-v-vmm-performance-results/IC744915.png)
+![Diagramm zur Veranschaulichung des replikationsbedingten Zusatzaufwands zwischen zwei und drei Prozent](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Leistung des sekundären Servers
 
 Hyper-V Replica verwendet einen kleinen Teil des Arbeitsspeichers auf dem Wiederherstellungsserver, um die Anzahl der Speichervorgänge zu optimieren. Das Diagramm fasst die Arbeitsspeicherauslastung auf dem Wiederherstellungsserver zusammen. Bei der hier gezeigten Arbeitsspeicherauslastung handelt es sich um den von der Replikation beanspruchten Prozentsatz des installierten Gesamtspeichers auf dem Hyper-V-Server.
 
-![Ergebnisse (sekundär)](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Diagramm zur Zusammenfassung der Arbeitsspeicherauslastung auf dem Wiederherstellungsserver](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 Die Menge der E/A-Vorgänge am Wiederherstellungsstandort ist eine Funktion der Anzahl von Schreibvorgängen am primären Standort. Vergleichen wir die Gesamtmenge der E/A-Vorgänge am Wiederherstellungsstandort mit der Gesamtmenge der E/A- und Schreibvorgänge am primären Standort. Die Diagramme zeigen, dass die Gesamtmenge der IOPS am Wiederherstellungsstandort:
 
 * etwa dem 1,5-fachen der Schreib-IOPS am primären Standort entspricht.
 * etwa 37 Prozent der Gesamt-IOPS am primären Standort ausmacht.
 
-![Ergebnisse (sekundär)](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Diagramm zum Vergleich von IOPS am primären bzw. sekundären Standort](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Ergebnisse (sekundär)](./media/hyper-v-vmm-performance-results/IC744918.png)
 

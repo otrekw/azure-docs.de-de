@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327730"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104392"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -21,14 +21,14 @@ In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erste
 Jede Aktion besteht aus den folgenden Eigenschaften:
 
 * **Typ:** Die ausgeführte Benachrichtigung oder Aktion. Beispiele sind das Senden eines Sprachanrufs, SMS, E-Mail oder das Auslösen verschiedener Arten von automatisierten Aktionen. Siehe „Typen“ weiter unten in diesem Artikel.
-* **Name**: Ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.
-* **Details**: Die entsprechenden Details. Diese können je nach *Typ* variieren.
+* **Name** : Ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.
+* **Details** : Die entsprechenden Details. Diese können je nach *Typ* variieren.
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Erstellen einer Aktionsgruppe mit dem Azure-Portal
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach dem Eintrag **Überwachen**, und wählen Sie ihn aus. Im Bereich **Überwachen** sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach dem Eintrag **Überwachen** , und wählen Sie ihn aus. Im Bereich **Überwachen** sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
 
 1. Wählen Sie **Warnungen** und dann **Aktionen verwalten** aus.
 
@@ -59,15 +59,15 @@ Gehen Sie unter **Instanzendetails** wie folgt vor:
 
 1. Definieren Sie eine Liste von Benachrichtigungen, die bei Auslösung einer Warnung gesendet werden. Geben Sie für jede Benachrichtigung Folgendes an:
 
-    a. **Benachrichtigungstyp**: Wählen Sie den Typ der zu sendenden Benachrichtigung aus. Verfügbare Optionen:
+    a. **Benachrichtigungstyp** : Wählen Sie den Typ der zu sendenden Benachrichtigung aus. Verfügbare Optionen:
       * E-Mail an Azure Resource Manager-Rolle: Sendet eine E-Mail an Benutzer, die bestimmten ARM-Rollen auf Abonnementebene zugewiesen sind.
       * E-Mail/SMS/Push/Sprachanruf: Sendet diese Benachrichtigungstypen an bestimmte Empfänger.
     
-    b. **Name**: Geben Sie einen eindeutigen Namen für die Benachrichtigung ein.
+    b. **Name** : Geben Sie einen eindeutigen Namen für die Benachrichtigung ein.
 
-    c. **Details**: Geben Sie je nach ausgewähltem Benachrichtigungstyp eine E-Mail-Adresse, eine Telefonnummer usw. ein.
+    c. **Details** : Geben Sie je nach ausgewähltem Benachrichtigungstyp eine E-Mail-Adresse, eine Telefonnummer usw. ein.
     
-    d. **Allgemeines Warnungsschema**: Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
+    d. **Allgemeines Warnungsschema** : Sie können auch das [allgemeine Warnungsschema](./alerts-common-schema.md) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
 
     ![Die Registerkarte „Benachrichtigungen“](./media/action-groups/action-group-2-notifications.png)
     
@@ -79,11 +79,11 @@ Gehen Sie unter **Instanzendetails** wie folgt vor:
 
     a. **Aktionstyp:** Wählen Sie „Automation-Runbook“, „Azure-Funktion“, „ITSM“, „Logik-App“, „Sicherer Webhook“ oder „Webhook“ aus.
     
-    b. **Name**: Geben Sie einen eindeutigen Namen für die Aktion ein.
+    b. **Name** : Geben Sie einen eindeutigen Namen für die Aktion ein.
 
-    c. **Details**: Geben Sie je nach Aktionstyp einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook ein. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
+    c. **Details** : Geben Sie je nach Aktionstyp einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook ein. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
     
-    d. **Allgemeines Warnungsschema**: Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
+    d. **Allgemeines Warnungsschema** : Sie können auch das [allgemeine Warnungsschema](./alerts-common-schema.md) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
     
     ![Die Registerkarte „Aktionen“](./media/action-groups/action-group-3-actions.png)
 
@@ -93,7 +93,7 @@ Gehen Sie unter **Instanzendetails** wie folgt vor:
 
     ![Die Registerkarte „Tags“](./media/action-groups/action-group-4-tags.png)
     
-1. Klicken Sie auf **Überprüfen + erstellen**, um die Einstellungen zu überprüfen. Dadurch wird eine schnelle Überprüfung Ihrer Eingaben vorgenommen, um sicherzustellen, dass alle erforderlichen Felder ausgewählt sind. Wenn Probleme vorliegen, werden diese hier angezeigt. Nachdem Sie die Einstellungen überprüft haben, klicken Sie auf **Erstellen**, um die Aktionsgruppe bereitzustellen.
+1. Klicken Sie auf **Überprüfen + erstellen** , um die Einstellungen zu überprüfen. Dadurch wird eine schnelle Überprüfung Ihrer Eingaben vorgenommen, um sicherzustellen, dass alle erforderlichen Felder ausgewählt sind. Wenn Probleme vorliegen, werden diese hier angezeigt. Nachdem Sie die Einstellungen überprüft haben, klicken Sie auf **Erstellen** , um die Aktionsgruppe bereitzustellen.
     
     ![Die Registerkarte „Überprüfen + erstellen“](./media/action-groups/action-group-5-review.png)
 
@@ -287,7 +287,32 @@ Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ih
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Webhookaktionen verfügen.
 
+### <a name="service-tag"></a>Diensttag
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln für eine Aktionsgruppe minimiert.
 
+1. Suchen Sie im Azure-Portal unter „Azure-Dienste“ nach *Netzwerksicherheitsgruppe* .
+2. Klicken Sie auf **Hinzufügen** , und erstellen Sie eine Netzwerksicherheitsgruppe.
+
+   1. Fügen Sie den Ressourcengruppennamen hinzu, und geben Sie die *Instanzdetails* ein.
+   1. Klicken Sie auf **Überprüfen + erstellen** und dann auf *Erstellen* .
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Beispiel für das Erstellen einer Netzwerksicherheitsgruppe"border="true":::
+
+3. Wechseln Sie zur Ressourcengruppe, und klicken Sie dann auf die erstellte *Netzwerksicherheitsgruppe* .
+
+    1. Klicken Sie auf *Eingangssicherheitsregeln* .
+    1. Klicken Sie auf **Hinzufügen** .
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
+
+4. Im rechten Bereich wird ein neues Fenster geöffnet.
+    1.  Auswählen der Quelle: **Diensttag**
+    1.  Quelldiensttag: **ActionGroup**
+    1.  Klicken Sie auf **Hinzufügen** .
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
+
+Die Verwendung von **Diensttags** für „ActionGroup“ hilft bei der Minimierung der Komplexität von häufigen Aktualisierungen von IP-Adressen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](./alerts-sms-behavior.md).  
@@ -296,4 +321,3 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von We
 * Weitere Informationen zu [Ratenlimits](./alerts-rate-limiting.md) für Warnungen.
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](./alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../service-health/alerts-activity-log-service-notifications-portal.md).
-

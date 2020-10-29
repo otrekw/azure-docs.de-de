@@ -3,12 +3,12 @@ title: Sichern von SQL Server in Azure als eine DPM-Workload
 description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe des Azure Backup-Diensts
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254583"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218084"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 
@@ -23,7 +23,8 @@ Zum Sichern und Wiederherstellen einer SQL Server-Datenbank in Azure führen Si
 1. Wiederherstellen der Datenbank aus Azure
 
 >[!NOTE]
->DPM 2019 UR2 unterstützt SQL Server-Failoverclusterinstanzen (FCI) unter Verwendung von freigegebenen Clustervolumes (CSV).
+>DPM 2019 UR2 unterstützt SQL Server-Failoverclusterinstanzen (FCI) unter Verwendung von freigegebenen Clustervolumes (CSV).<br><br>
+>Der Schutz von [Failoverclusterinstanzen mit „Direkte Speicherplätze“ (SQL Server auf Azure-VMs)](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure) und [Failoverclusterinstanzen mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) wird mit diesem Feature unterstützt. Der DPM-Server muss auf dem virtuellen Azure-Computer bereitgestellt werden, um die auf virtuellen Azure-Computern bereitgestellte SQL-FCI-Instanz schützen zu können. 
 
 ## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
 
@@ -70,11 +71,11 @@ Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken i
 1. Wählen Sie **Neu** aus, um eine Schutzgruppe zu erstellen.
 
     ![Erstellen einer Schutzgruppe](./media/backup-azure-backup-sql/protection-group.png)
-1. Lesen Sie auf der Startseite den Leitfaden zum Erstellen einer Schutzgruppe. Wählen Sie **Weiter**aus.
-1. Wählen Sie **Server**.
+1. Lesen Sie auf der Startseite den Leitfaden zum Erstellen einer Schutzgruppe. Wählen Sie **Weiter** aus.
+1. Wählen Sie **Server** .
 
     ![Auswählen des Schutzgruppentyps „Server“](./media/backup-azure-backup-sql/pg-servers.png)
-1. Erweitern Sie den virtuellen SQL Server-Computer, auf dem sich die zu sichernden Datenbanken befinden. Daraufhin werden die Datenquellen des Servers angezeigt, die gesichert werden können. Erweitern Sie **Alle SQL-Freigaben**, und wählen Sie die Datenbanken aus, die Sie sichern möchten. In diesem Beispiel werden die Datenbanken „ReportServer$MSDPM2012“ und „ReportServer$MSDPM2012TempDB“ ausgewählt. Wählen Sie **Weiter**aus.
+1. Erweitern Sie den virtuellen SQL Server-Computer, auf dem sich die zu sichernden Datenbanken befinden. Daraufhin werden die Datenquellen des Servers angezeigt, die gesichert werden können. Erweitern Sie **Alle SQL-Freigaben** , und wählen Sie die Datenbanken aus, die Sie sichern möchten. In diesem Beispiel werden die Datenbanken „ReportServer$MSDPM2012“ und „ReportServer$MSDPM2012TempDB“ ausgewählt. Wählen Sie **Weiter** aus.
 
     ![Auswählen einer SQL Server-Datenbank](./media/backup-azure-backup-sql/pg-databases.png)
 1. Benennen Sie die Schutzgruppe, und wählen Sie anschließend **Ich möchte Onlineschutz** aus.
@@ -99,7 +100,7 @@ Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken i
 
     Wenn Sie **Volumes automatisch erweitern** auswählen, kann DPM auf die zunehmende Größe des Sicherungsvolumens durch wachsende Produktionsdaten reagieren. Wenn Sie die Option **Volumes automatisch erweitern** nicht auswählen, beschränkt DPM den Sicherungsspeicher auf die Datenquellen in der Schutzgruppe.
 
-1. Administratoren können die Erstsicherung mithilfe der Option **Automatisch über das Netzwerk** automatisch über das Netzwerk übertragen und die gewünschte Übertragungszeit auswählen. Alternativ kann die Option **Manuell** verwendet werden, um die Sicherung manuell zu übertragen. Wählen Sie **Weiter**aus.
+1. Administratoren können die Erstsicherung mithilfe der Option **Automatisch über das Netzwerk** automatisch über das Netzwerk übertragen und die gewünschte Übertragungszeit auswählen. Alternativ kann die Option **Manuell** verwendet werden, um die Sicherung manuell zu übertragen. Wählen Sie **Weiter** aus.
 
     ![Auswählen der Replikaterstellungsmethode](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -107,13 +108,13 @@ Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken i
 
     Im Anschluss an die Erstsicherung werden inkrementelle Sicherungen auf der Grundlage der Erstsicherungskopie erstellt. Inkrementelle Sicherungen sind im Allgemeinen klein und lassen sich problemlos über das Netzwerk übertragen.
 
-1. Wählen Sie aus, wann eine Konsistenzprüfung ausgeführt werden soll. Wählen Sie **Weiter**aus.
+1. Wählen Sie aus, wann eine Konsistenzprüfung ausgeführt werden soll. Wählen Sie **Weiter** aus.
 
     ![Auswählen des Zeitpunkts für eine Konsistenzprüfung](./media/backup-azure-backup-sql/pg-consistent.png)
 
     DPM kann eine Konsistenzprüfung ausführen, um die Integrität des Sicherungspunkts zu überprüfen. Hierbei wird die Prüfsumme der Sicherungsdatei auf dem Produktionsserver (in diesem Beispiel: der SQL Server-Computer) und der gesicherten Daten für diese Datei in DPM berechnet. Sollte bei der Überprüfung ein Konflikt gefunden werden, wird davon ausgegangen, dass die gesicherte Datei in DPM beschädigt ist. DPM sendet daraufhin die von dem Prüfsummenkonflikt betroffenen Datenblöcke, um die gesicherten Daten zu korrigieren. Da die Konsistenzprüfung ein ressourcenintensiver Vorgang ist, können Administratoren wählen, ob die Prüfung zu einem bestimmten Zeitpunkt oder automatisch ausgeführt werden soll.
 
-1. Wählen Sie die Datenquellen aus, die in Azure geschützt werden sollen. Wählen Sie **Weiter**aus.
+1. Wählen Sie die Datenquellen aus, die in Azure geschützt werden sollen. Wählen Sie **Weiter** aus.
 
     ![Auswählen von Datenquellen, die in Azure geschützt werden sollen](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. Administratoren können Sicherungszeitpläne und Aufbewahrungsrichtlinien auswählen, die den Richtlinien ihrer Organisation entsprechen.
@@ -173,18 +174,18 @@ Ein Wiederherstellungspunkt wird erstellt, wenn die erste Sicherung durchgeführ
 
 So stellen Sie eine geschützte Entität (beispielsweise eine SQL Server-Datenbank) aus Azure wieder her:
 
-1. Öffnen Sie die DPM-Serververwaltungskonsole. Navigieren Sie zum Arbeitsbereich **Wiederherstellung**, um die von DPM gesicherten Server anzuzeigen. Wählen Sie die Datenbank aus (in diesem Beispiel: ReportServer$MSDPM2012). Wählen Sie unter **Wiederherstellungszeit** einen Wert aus, die mit **Online** endet.
+1. Öffnen Sie die DPM-Serververwaltungskonsole. Navigieren Sie zum Arbeitsbereich **Wiederherstellung** , um die von DPM gesicherten Server anzuzeigen. Wählen Sie die Datenbank aus (in diesem Beispiel: ReportServer$MSDPM2012). Wählen Sie unter **Wiederherstellungszeit** einen Wert aus, die mit **Online** endet.
 
     ![Wählen Sie einen Wiederherstellungspunkt](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 1. Klicken Sie mit der rechten Maustaste auf den Datenbanknamen, und wählen Sie **Wiederherstellen** aus.
 
     ![Wiederherstellen einer Datenbank aus Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM zeigt die Details zum Wiederherstellungspunkt an. Wählen Sie **Weiter** aus. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen**aus. Wählen Sie **Weiter**aus.
+1. DPM zeigt die Details zum Wiederherstellungspunkt an. Wählen Sie **Weiter** aus. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen** aus. Wählen Sie **Weiter** aus.
 
     ![Wiederherstellen einer Datenbank am ursprünglichen Speicherort](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     In diesem Beispiel ermöglicht DPM die Wiederherstellung der Datenbank in einer anderen SQL Server-Instanz oder in einen eigenständigen Netzwerkordner.
-1. Auf der Seite **Wiederherstellungsoptionen angeben** können Sie die Wiederherstellungsoptionen auswählen. So können Sie beispielsweise **Netzwerk-Bandbreiteneinschränkung** auswählen, um die von der Wiederherstellung beanspruchte Bandbreite zu drosseln. Wählen Sie **Weiter**aus.
+1. Auf der Seite **Wiederherstellungsoptionen angeben** können Sie die Wiederherstellungsoptionen auswählen. So können Sie beispielsweise **Netzwerk-Bandbreiteneinschränkung** auswählen, um die von der Wiederherstellung beanspruchte Bandbreite zu drosseln. Wählen Sie **Weiter** aus.
 1. Auf der Seite **Zusammenfassung** wird die aktuelle Wiederherstellungskonfiguration angezeigt. Wählen Sie **Wiederherstellen** aus.
 
     Der Wiederherstellungsstatus zeigt, dass die Datenbank wiederhergestellt wird. Sie können **Schließen** auswählen, um den Assistenten zu schließen und den Fortschritt im Arbeitsbereich **Überwachung** zu verfolgen.

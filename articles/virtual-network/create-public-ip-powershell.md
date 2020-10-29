@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 6174d108fd80df9725ca5ef0fb9296dfffaf4a64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10de2a4a00b716656626082a24ecbd56d0fcc3a4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300809"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127300"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Schnellstart: Erstellen einer öffentlichen IP-Adresse mit Azure PowerShell
 
@@ -36,7 +36,7 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie eine Ressourcengruppe mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) namens **myResourceGroup** am Speicherort **eastus2**.
+Erstellen Sie eine Ressourcengruppe mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) namens **myResourceGroup** am Speicherort **eastus2** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -106,7 +106,7 @@ Diese Auswahl ist in allen Regionen gültig und die Standardauswahl für öffent
 
 # <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-create-public-ip-basic)
 
-Verwenden Sie [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress), um eine statische öffentliche IP-Adresse vom Typ „Basic“ namens **myStandardPublicIP** in **myResourceGroup** zu erstellen.  Öffentliche IP-Adressen des Typs „Basic“ verwenden nicht das Konzept von Verfügbarkeitszonen.
+Verwenden Sie [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress), um eine statische öffentliche IP-Adresse vom Typ „Basic“ namens **myBasicPublicIP** in **myResourceGroup** zu erstellen.  Öffentliche IP-Adressen des Typs „Basic“ verwenden nicht das Konzept von Verfügbarkeitszonen.
 
 ```azurepowershell-interactive
 ## Variables for the command ##

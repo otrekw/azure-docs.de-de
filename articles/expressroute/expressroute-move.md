@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: duau
-ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649174e59c3e58b4675393ce665cf765016d5551
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395161"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331548"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
 Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell auf das Azure Resource Manager-Bereitstellungsmodell.
@@ -85,7 +85,7 @@ In diesem Abschnitt werden die unterstützten Funktionen für ExpressRoute-Verbi
 In diesem Abschnitt werden die nicht unterstützten Funktionen für ExpressRoute-Verbindungen beschrieben:
 
 * Verwalten des Lebenszyklus einer ExpressRoute-Verbindung über das klassische Bereitstellungsmodell.
-* Unterstützung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für das klassische Bereitstellungsmodell. Für eine Verbindung unter dem klassischen Bereitstellungsmodell können keine RBAC-Vorgänge ausgeführt werden. Jeder Administrator/Co-Administrator des Abonnements kann virtuelle Netzwerke mit der Verbindung verknüpfen oder die Verknüpfung aufheben.
+* Unterstützung der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) für das klassische Bereitstellungsmodell. Für eine Verbindung unter dem klassischen Bereitstellungsmodell können keine Azure RBAC-Vorgänge ausgeführt werden. Jeder Administrator/Co-Administrator des Abonnements kann virtuelle Netzwerke mit der Verbindung verknüpfen oder die Verknüpfung aufheben.
 
 ## <a name="configuration"></a>Konfiguration
 Folgen Sie den Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-howto-move-arm.md).

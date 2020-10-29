@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5c9ec20ffe52c23c2dec5a624fc157da7ebd4a41
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 749e0f7c2d79c03be052869d7d1d9539976a09c5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330936"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489301"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Striim
 
@@ -22,7 +22,7 @@ In diesem Artikel wird gezeigt, wie Sie Daten mithilfe von Striim aus einer **Or
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie kein [Azure-Abonnement](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
+* Wenn Sie kein [Azure-Abonnement](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
 
 * Eine lokal ausgeführte Oracle-Datenbank mit einigen Daten
 

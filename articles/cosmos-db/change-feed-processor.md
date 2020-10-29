@@ -6,15 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a802cc3d6178302445e0c31c52785d00207d0bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998542"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277038"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB
 
@@ -68,9 +68,9 @@ Der normale Lebenszyklus einer Hostinstanz sieht wie folgt aus:
 
 Der Änderungsfeedprozessor bietet Resilienz bei Benutzercodefehlern. Das bedeutet: Wenn Ihre Delegatimplementierung eine nicht behandelte Ausnahme (Schritt 4) aufweist, wird der Thread, der diesen speziellen Batch von Änderungen verarbeitet, beendet, und ein neuer Thread wird erstellt. Der neue Thread prüft den letzten Zeitpunkt, der im Leasespeicher für diesen Bereich von Partitionsschlüsselwerten vorliegt, und setzt den Vorgang an dieser Stelle fort, sodass letztendlich der gleiche Batch von Änderungen an den Delegaten gesendet wird. Dieses Verhalten wird so lange fortgesetzt, bis der Delegat die Änderungen ordnungsgemäß verarbeitet. Dies ist auch der Grund dafür, dass der Änderungsfeedprozessor über eine At-Least-Once-Garantie verfügt, denn sollte der Delegatcode eine Ausnahme auslösen, wird der entsprechende Batch wiederholt.
 
-Um zu verhindern, dass der Änderungsfeedprozessor fortlaufend denselben Batch von Änderungen wiederholt, sollten Sie im Delegatcode Logik hinzufügen, um bei einer Ausnahme Dokumente in eine Warteschlange für unzustellbare Nachrichten zu schreiben. Dieser Entwurf stellt sicher, dass Sie nicht verarbeitete Änderungen nachverfolgen und gleichzeitig zukünftige Änderungen verarbeiten können. Die Warteschlange für unzustellbare Nachrichten kann einfach ein anderer Cosmos-Container sein. Der genaue Datenspeicher spielt keine Rolle, da in ihm lediglich die nicht verarbeiteten Änderungen gespeichert werden sollen.
+Um zu verhindern, dass der Änderungsfeedprozessor fortlaufend denselben Batch von Änderungen wiederholt, sollten Sie im Delegatcode Logik hinzufügen, um bei einer Ausnahme Dokumente in eine Warteschlange für unzustellbare Nachrichten zu schreiben. Dieser Entwurf stellt sicher, dass Sie nicht verarbeitete Änderungen nachverfolgen und gleichzeitig zukünftige Änderungen verarbeiten können. Die Warteschlange für unzustellbare Nachrichten kann ein anderer Cosmos-Container sein. Der genaue Datenspeicher spielt keine Rolle, da in ihm lediglich die nicht verarbeiteten Änderungen gespeichert werden sollen.
 
-Darüber hinaus können Sie den Fortschritt Ihrer Änderungsfeedprozessor-Instanzen beim Lesen des Änderungsfeeds mithilfe des [Änderungsfeed-Estimators](how-to-use-change-feed-estimator.md) überwachen. Zusätzlich zur Überwachung, ob der Änderungsfeedprozessor immer denselben Batch von Änderungen wiederholt, können Sie auch ermitteln, ob der Änderungsfeedprozessor durch die Verfügbarkeit von Ressourcen wie CPU, Arbeitsspeicher und Netzwerkbandbreite Verzögerungen unterliegt.
+Darüber hinaus können Sie den Fortschritt Ihrer Änderungsfeedprozessor-Instanzen beim Lesen des Änderungsfeeds mithilfe des [Änderungsfeed-Estimators](how-to-use-change-feed-estimator.md) überwachen. Mithilfe dieser Schätzung können Sie feststellen, ob der Änderungsfeedprozessor aufgrund verfügbarer Ressourcen wie CPU, Arbeitsspeicher und Netzwerkbandbreite „hängt“ oder sich der Vorgang verzögert.
 
 ## <a name="deployment-unit"></a>Bereitstellungseinheit
 
@@ -94,7 +94,32 @@ Außerdem lässt sich der Änderungsfeedprozessor dynamisch an Containerskalieru
 
 ## <a name="change-feed-and-provisioned-throughput"></a>Änderungsfeed und bereitgestellter Durchsatz
 
-Ihnen werden die genutzten Anforderungseinheiten (Request Units, RUs) in Rechnung gestellt, da bei der Datenverschiebung in und aus Cosmos-Containern immer RUs verbraucht werden. Ihnen werden die vom Leasecontainer genutzten Anforderungseinheiten in Rechnung gestellt.
+Lesevorgänge des Änderungsfeeds für den überwachten Container verbrauchen RUs. 
+
+Vorgänge für den Leasecontainer verbrauchen RUs. Je höher die Anzahl der Instanzen, die denselben Leasecontainer verwenden, desto höher ist der potenzielle RU-Verbrauch. Denken Sie daran, den RU-Verbrauch für den Leasecontainer zu überwachen, wenn Sie die Anzahl der Instanzen skalieren und erhöhen möchten.
+
+## <a name="starting-time"></a>Startzeit
+
+Wenn ein Änderungsfeedprozessor zum ersten Mal gestartet wird, initialisiert er standardmäßig den Leasecontainer und startet seinen [Verarbeitungslebenszyklus](#processing-life-cycle). Änderungen, die im überwachten Container aufgetreten sind, bevor der Änderungsfeedprozessor zum ersten Mal initialisiert wurde, werden nicht erkannt.
+
+### <a name="reading-from-a-previous-date-and-time"></a>Lesen ab einem früheren Datum und einer früheren Uhrzeit
+
+Es ist möglich, den Änderungsfeedprozessor so zu initialisieren, dass er **an einem bestimmten Datum und zu einer bestimmten Uhrzeit** mit dem Lesen von Daten beginnt. Hierfür muss eine Instanz von `DateTime` an die `WithStartTime`-Generator-Erweiterung übergeben werden:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+
+Der Änderungsfeedprozessor wird an diesem angegeben Datum und zu dieser angegebenen Uhrzeit initialisiert und beginnt mit dem Lesen der Änderungen, die danach auftreten.
+
+### <a name="reading-from-the-beginning"></a>Lesen ab Anfang
+
+In anderen Szenarien wie Datenmigrationen oder Analysen des gesamten Verlaufs eines Containers muss der Änderungsfeed vom **Anfang der Lebensdauer dieses Containers** gelesen werden. Zu diesem Zweck verwenden wir `WithStartTime` in der Generator-Erweiterung, übergeben aber `DateTime.MinValue.ToUniversalTime()`, wodurch die UTC-Darstellung des Mindestwerts von `DateTime` generiert wird. Beispiel:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+
+Der Änderungsfeedprozessor wird initialisiert und beginnt mit dem Lesen von Änderungen ab dem Anfang der Lebensdauer des Containers.
+
+> [!NOTE]
+> Diese Anpassungsoptionen dienen nur dazu, den Startzeitpunkt für den Änderungsfeedprozessor festzulegen. Sobald der Leasecontainer zum ersten Mal initialisiert wurde, hat eine Änderung dieser Optionen keine Auswirkungen mehr.
 
 ## <a name="where-to-host-the-change-feed-processor"></a>Hosten des Änderungsfeedprozessors
 
@@ -105,7 +130,7 @@ Der Änderungsfeedprozessor kann auf allen Plattformen gehostet werden, die zeit
 * Ein Hintergrundauftrag in [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)
 * Ein [gehosteter ASP.Net-Dienst](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)
 
-Der Änderungsfeedprozessor kann zwar in kurzlebigen Umgebungen ausgeführt werden, da der Leasecontainer den Zustand beibehält, durch den Start-Stopp-Zyklus dieser Umgebungen kommt es jedoch zu einer Verzögerung beim Empfangen der Benachrichtigungen (aufgrund des Mehraufwands beim Prozessorstart bei jedem Start der Umgebung).
+Der Änderungsfeedprozessor kann zwar in kurzlebigen Umgebungen ausgeführt werden, da der Leasecontainer den Zustand beibehält, durch den Startzyklus dieser Umgebungen kommt es jedoch zu einer Verzögerung beim Empfangen der Benachrichtigungen (aufgrund des Mehraufwands beim Prozessorstart bei jedem Start der Umgebung).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

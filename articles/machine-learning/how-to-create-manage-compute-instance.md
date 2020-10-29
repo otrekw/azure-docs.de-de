@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756618"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207086"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -42,7 +42,7 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secur
 
 ## <a name="create"></a>Erstellen
 
-**Geschätzter Zeitaufwand**: Ca. fünf Minuten.
+**Geschätzter Zeitaufwand** : Ca. fünf Minuten.
 
 Das Erstellen einer Compute-Instanz ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können diese Compute als Entwicklungsarbeitsstation oder als Computeziel für das Training wiederverwenden. Sie können mehrere Compute-Instanzen an Ihren Arbeitsbereich anfügen.
 
@@ -87,7 +87,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 * [ComputeInstance.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
@@ -97,7 +97,7 @@ Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create 
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
+Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks** , wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
 
 Weitere Informationen zum Erstellen einer Compute-Instanz in Studio finden Sie unter [Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#compute-instance).
 
@@ -129,7 +129,7 @@ Hier erfahren Sie, wie Sie eine Compute-Instanz starten, beenden, neu starten un
 
 # <a name="python"></a>[Python](#tab/python)
 
-In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance**.
+In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance** .
 
 * Abrufen des Status
 
@@ -168,9 +168,9 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     instance.delete(wait_for_completion=True, show_output=True)
     ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance**.
+In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance** .
 
 * Beenden
 
@@ -255,7 +255,8 @@ Sie können Pakete direkt in einem Jupyter-Notebook oder in RStudio installieren
 * Verwenden Sie die Registerkarte **Pakete** unten rechts oder die Registerkarte **Konsole** oben links.  
 * Python: Fügen Sie Installationscode hinzu, und führen Sie ihn in einer Zelle im Jupyter-Notebook aus.
 
-Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML**.  Installieren Sie R-Pakete in der **R**-Umgebung.
+Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML** .  Installieren Sie R-Pakete in der **R** -Umgebung.
+Die magischen Funktionen „%pip“ und „%conda“ installieren automatisch Pakete in dem derzeit ausgeführten Kernel in der Jupyter-Notebooksitzung.
 
 ## <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
 

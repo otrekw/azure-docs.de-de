@@ -4,17 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: glenga
-ms.openlocfilehash: 49818cf59da2d63cef4bb0bdca38d38a2feafca5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906413d0a6702e6146779f79d628b5cebf383af1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169906"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165763"
 ---
 | | |
 |--|--|
-|**`<DESTINATION>`**| Das Ziel, an das Protokolle gesendet werden. Gültige Werte sind `AppInsights` und `Blob`.<br/>Wenn Sie `AppInsights` verwenden, vergewissern Sie sich, dass [Application Insights in der Funktions-App aktiviert ist](../articles/azure-functions/functions-monitoring.md#enable-application-insights-integration).<br/>Wenn Sie das Ziel auf `Blob` festgelegt haben, werden Protokolle in einem Blobcontainer mit dem Namen `azure-functions-scale-controller` in dem Standardspeicherkonto erstellt, das in der Anwendungseinstellung `AzureWebJobsStorage` festgelegt ist. |
+|**`<DESTINATION>`**| Das Ziel, an das Protokolle gesendet werden. Gültige Werte sind `AppInsights` und `Blob`.<br/>Wenn Sie `AppInsights` verwenden, vergewissern Sie sich, dass [Application Insights in der Funktions-App aktiviert ist](../articles/azure-functions/configure-monitoring.md#enable-application-insights-integration).<br/>Wenn Sie das Ziel auf `Blob` festgelegt haben, werden Protokolle in einem Blobcontainer mit dem Namen `azure-functions-scale-controller` in dem Standardspeicherkonto erstellt, das in der Anwendungseinstellung `AzureWebJobsStorage` festgelegt ist. |
 |**`<VERBOSITY>`** | Gibt die Protokollierungsstufe an. Unterstützte Werte sind `None`, `Warning` und `Verbose`.<br/>Wenn diese Einstellung auf `Verbose` festgelegt ist, protokolliert der Skalierungscontroller einen Grund für jede Änderung an der Workeranzahl sowie Informationen zu den Triggern, die diese Entscheidungen beeinflussen. Ausführliche Protokolle enthalten Triggerwarnungen und die Hashes, die von den Triggern vor und nach dem Ausführen des Skalierungscontrollers verwendet werden. |
 
-> [!CAUTION]
-> Lassen Sie die Protokollierung des Skalierungscontrollers nicht aktiviert. Aktivieren Sie die Protokollierung, bis Sie genügend Daten gesammelt haben, um das Verhalten des Skalierungscontrollers nachzuvollziehen, und deaktivieren Sie sie dann.
+> [!TIP]
+> Beachten Sie, dass es Auswirkungen auf die [potenziellen Kosten für die Überwachung Ihrer Funktions-App](../articles/azure-functions/functions-monitoring.md#application-insights-pricing-and-limits) haben kann, wenn die Protokollierung des Skalierungscontrollers weiterhin aktiviert ist. Erwägen Sie, die Protokollierung zu aktivieren, bis Sie genügend Daten gesammelt haben, um das Verhalten des Skalierungscontrollers nachzuvollziehen, und deaktivieren Sie sie dann.

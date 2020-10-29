@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71c84b35c001be7fafdc2df53014050ae21dec63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931297"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320207"
 ---
 # <a name="get-azure-arc-enabled-data-services-logs"></a>Abrufen von Protokollen für Azure Arc-fähige Datendienste
 
@@ -22,48 +22,60 @@ ms.locfileid: "90931297"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Protokolle für Azure Arc-fähige Datendienste abzurufen, benötigen Sie das Azure Data CLI-Tool. [Installationsanweisungen](./install-client-tools.md)
+Bevor Sie fortfahren, benötigen Sie Folgendes:
 
-Sie müssen in der Lage sein, sich als Administrator beim Controllerdienst für Azure Arc-fähige Datendienste anzumelden.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Installationsanweisungen](./install-client-tools.md)
+* Administratorkonto zum Anmelden beim Azure Arc-fähigen Data Services-Controller
 
 ## <a name="get-azure-arc-enabled-data-services-logs"></a>Abrufen von Protokollen für Azure Arc-fähige Datendienste
 
-Zur Problembehandlung können Sie die Protokolle für Azure Arc-fähige Datendienste zu allen Pods oder bestimmten Pods abrufen.  Dazu können Sie Kubernetes-Standardtools wie den Befehl `kubectl logs` verwenden. In diesem Artikel verwenden Sie alternativ das Azure Data CLI-Tool, das das Abrufen sämtlicher Protokolle auf einmal erleichtert.
+Zur Problembehandlung können Sie die Protokolle für Azure Arc-fähige Datendienste zu allen Pods oder bestimmten Pods abrufen. Dazu können Sie Kubernetes-Standardtools wie den Befehl `kubectl logs` verwenden. In diesem Artikel verwenden Sie alternativ das [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]-Tool, das das Abrufen sämtlicher Protokolle auf einmal erleichtert.
 
-Stellen Sie zunächst sicher, dass Sie beim Datencontroller angemeldet sind.
+1. Melden Sie sich mit einem Administratorkonto beim Datencontroller an.
 
-```console
-azdata login
-```
+   ```console
+   azdata login
+   ```
 
-Führen Sie dann den folgenden Befehl aus, um die Protokolle zu sichern:
-```console
-azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+2. Führen Sie den folgenden Befehl aus, um die Protokolle zu sichern:
 
-#Example:
-#azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
-```
+   ```console
+   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```
 
-Die Protokolldateien werden standardmäßig im aktuellen Arbeitsverzeichnis im Unterverzeichnis namens „logs“ erstellt.  Mithilfe des Parameters `--target-folder` können Sie die Protokolldateien in ein anderes Verzeichnis ausgeben.
+   Zum Beispiel:
 
-Sie können die Dateien komprimieren, indem Sie den Parameter `--skip-compress` weglassen.
+   ```console
+   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```
 
-Sie können Speicherabbilder auslösen und einschließen, indem Sie `--exclude-dumps` weglassen. Dies wird jedoch nur empfohlen, wenn Speicherabbilder vom Microsoft-Support angefordert wurden.  Zum Erstellen eines Speicherabbilds muss die Einstellung `allowDumps` des Datencontrollers zum Zeitpunkt der Erstellung des Datencontrollers auf `true` festgelegt sein.
+Der Datencontroller erstellt die Protokolldateien im aktuellen Arbeitsverzeichnis in ein Unterverzeichnis namens `logs`. 
 
-Optional können Sie die Protokolle filtern, um Protokolle nur für einen bestimmten Pod (`--pod`) oder Container (`--container`) nach Namen zu erfassen.
+## <a name="options"></a>Optionen
 
-Sie können auch Filter anwenden, um Protokolle für eine bestimmte benutzerdefinierte Ressource zu erfassen, indem Sie die Parameter `--resource-kind` und `--resource-name` übergeben.  Der Parameterwert `resource-kind` muss einem der Namen der benutzerdefinierten Ressourcendefinitionen entsprechen, die mit dem Befehl `kubectl get customresourcedefinition` abgerufen werden können.
+`azdata arc dc debug copy-logs` bietet die folgenden Optionen zum Verwalten der Ausgabe.
+
+* Mithilfe des Parameters `--target-folder` geben Sie die Protokolldateien in ein anderes Verzeichnis aus.
+* Sie komprimieren die Dateien, indem Sie den Parameter `--skip-compress` weglassen.
+* Sie lösen Speicherabbilder aus und schließen diese ein, indem Sie `--exclude-dumps` weglassen. Diese Methode wird nur empfohlen, wenn der Microsoft-Support die Speicherabbilder angefordert hat. Zum Erstellen eines Speicherabbilds muss die Einstellung `allowDumps` des Datencontrollers zum Zeitpunkt der Erstellung des Datencontrollers auf `true` festgelegt sein.
+* Durch Filtern nach Namen erfassen Sie nur Protokolle für einen bestimmten Pod (`--pod`) oder Container (`--container`).
+* Durch Filtern erfassen Sie Protokolle für eine bestimmte benutzerdefinierte Ressource, indem Sie die Parameter `--resource-kind` und `--resource-name` übergeben. Der Parameterwert `resource-kind` muss einem der Namen der benutzerdefinierten Ressourcendefinitionen entsprechen, die mit dem Befehl `kubectl get customresourcedefinition` abgerufen werden können.
+
+Mit diesen Parametern können Sie die `<parameters>` im folgenden Beispiel ersetzen. 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```
 
-#Example
+Beispiel:
+
+```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Beispiel für eine Ordnerhierarchie.  Beachten Sie, dass die Ordnerhierarchie nach Podnamen, dann nach Containern und dann nach der Verzeichnishierarchie innerhalb des Containers organisiert ist.
+Beispiel für eine Ordnerhierarchie. Die Ordnerhierarchie wird nach Podnamen, dann nach Containern und dann nach der Verzeichnishierarchie innerhalb des Containers organisiert.
 
-```console
+```output
 <export directory>
 ├───debuglogs-arc-20200827-180403
 │   ├───bootstrapper-vl8j2
@@ -181,3 +193,7 @@ Beispiel für eine Ordnerhierarchie.  Beachten Sie, dass die Ordnerhierarchie na
             ├───journal
             └───openvpn
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[azdata arc dc debug copy-logs](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

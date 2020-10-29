@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828015"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92510820"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Tutorial: Azure Active Directory-Integration mit Silverback
 
@@ -27,7 +27,7 @@ Die Integration von Silverback in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Silverback anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -41,7 +41,7 @@ Um die Azure AD-Integration mit Silverback konfigurieren zu können, benötigen 
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Silverback unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Silverback unterstützt **SP** -initiiertes einmaliges Anmelden.
 
 ## <a name="adding-silverback-from-the-gallery"></a>Hinzufügen von Silverback aus dem Katalog
 
@@ -49,25 +49,25 @@ Zum Konfigurieren der Integration von Silverback in Azure AD müssen Sie Silverb
 
 **Führen Sie die folgenden Schritte aus, um Silverback aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie in das Suchfeld **Silverback** ein, wählen Sie im Ergebnisbereich **Silverback** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie in das Suchfeld **Silverback** ein, wählen Sie im Ergebnisbereich **Silverback** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
      ![Silverback in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Silverback mithilfe eines Testbenutzers namens **Britta Simon**.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Silverback mithilfe eines Testbenutzers namens **Britta Simon** .
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Silverback eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Silverback zu konfigurieren und zu testen:
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -118,21 +118,21 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 1. Melden Sie sich in einem anderen Webbrowser als Administrator bei Ihrem Silverback-Server an.
 
-2. Navigieren Sie zu **Admin** > **Authentication Provider**.
+2. Navigieren Sie zu **Admin** > **Authentication Provider** .
 
 3. Führen Sie auf der Seite **Authentication Provider Settings** die folgenden Schritte aus:
 
     ![Administrator](./media/silverback-tutorial/tutorial_silverback_admin.png)
 
-    a.  Klicken Sie auf **Import from URL**.
+    a.  Klicken Sie auf **Import from URL** .
 
-    b.  Fügen Sie die kopierte Metadaten-URL ein, und klicken Sie auf **OK**.
+    b.  Fügen Sie die kopierte Metadaten-URL ein, und klicken Sie auf **OK** .
 
-    c.  Bestätigen Sie mit **OK**, woraufhin die Werte automatisch aufgefüllt werden.
+    c.  Bestätigen Sie mit **OK** , woraufhin die Werte automatisch aufgefüllt werden.
 
-    d.  Aktivieren Sie **Show on Login Page**.
+    d.  Aktivieren Sie **Show on Login Page** .
 
-    e.  Aktivieren Sie **Dynamic User Creation**, wenn Sie von Azure AD autorisierte Benutzer automatisch hinzufügen möchten (optional).
+    e.  Aktivieren Sie **Dynamic User Creation** , wenn Sie von Azure AD autorisierte Benutzer automatisch hinzufügen möchten (optional).
 
     f.  Erstellen Sie einen **Title** für die Schaltfläche im Self-Service-Portal.
 
@@ -140,13 +140,13 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     h.  Wählen Sie die **Color** des Hintergrunds für die Schaltfläche aus.
 
-    i.  Klicken Sie auf **Speichern**.
+    i.  Klicken Sie auf **Speichern** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -160,12 +160,12 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung** .  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Erstellen** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -183,15 +183,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
 
 ### <a name="create-silverback-test-user"></a>Erstellen eines Silverback-Testbenutzers
 
@@ -201,40 +201,39 @@ Damit sich Azure AD-Benutzer bei Silverback anmelden können, müssen sie in Sil
 
 1. Melden Sie sich als Administrator bei Ihrem Silverback-Server an.
 
-2. Navigieren Sie zu **Users** und **Add a new device user**.
+2. Navigieren Sie zu **Users** und **Add a new device user** .
 
 3. Führen Sie auf der Seite **Basic** die folgenden Schritte aus:
 
     ![Der Benutzer](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. Geben Sie in das Textfeld **Username** den Namen des Benutzers ein wie **Britta**.
+    a. Geben Sie in das Textfeld **Username** den Namen des Benutzers ein wie **Britta** .
 
-    b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein, z.B. **Britta**.
+    b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein, z.B. **Britta** .
 
-    c. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen des Benutzers ein, z.B. **Simon**.
+    c. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen des Benutzers ein, z.B. **Simon** .
 
-    d. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. **Brittasimon\@contoso.com**.
+    d. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. **Brittasimon\@contoso.com** .
 
     e. Geben Sie in das Textfeld **Password** Ihr Kennwort ein.
 
     f. Geben Sie in das Textfeld **Confirm Password** Ihr Kennwort erneut ein, und bestätigen Sie es.
 
-    g. Klicken Sie auf **Speichern**.
+    g. Klicken Sie auf **Speichern** .
 
 > [!NOTE]
-> Wenn Sie nicht jeden Benutzer manuell erstellen möchten, aktivieren Sie das Kontrollkästchen **Dynamic User Creation** unter **Admin** > **Authentication Provider**.
+> Wenn Sie nicht jeden Benutzer manuell erstellen möchten, aktivieren Sie das Kontrollkästchen **Dynamic User Creation** unter **Admin** > **Authentication Provider** .
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Silverback“ klicken, sollten Sie automatisch bei Ihrer Silverback-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Silverback“ klicken, sollten Sie automatisch bei Ihrer Silverback-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

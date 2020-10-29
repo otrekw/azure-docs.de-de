@@ -7,21 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630932"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127419"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurieren eines virtuellen Netzwerkgeräts in Azure HDInsight
 
 > [!Important]
-> Die folgenden Informationen sind **nur** erforderlich, wenn Sie ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) als Azure Firewall konfigurieren möchten.
+> Die folgenden Informationen sind **nur** erforderlich, wenn Sie ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) als [Azure Firewall](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic) konfigurieren möchten.
 
-Azure Firewall wird automatisch dazu konfiguriert, den Datenverkehr für viele der häufigen, wichtigen Szenarien zuzulassen. Bei Verwendung einer anderen virtuellen Netzwerkappliance müssen Sie eine Reihe zusätzlicher Features konfigurieren. Bedenken Sie beim Konfigurieren Ihrer virtuellen Netzwerkappliance Folgendes:
+Das FQDN-Tag in Azure Firewall wird automatisch so konfiguriert, dass der Datenverkehr für viele der gängigen, wichtigen FQDNs zugelassen wird. Bei Verwendung einer anderen virtuellen Netzwerkappliance müssen Sie eine Reihe zusätzlicher Features konfigurieren. Bedenken Sie beim Konfigurieren Ihrer virtuellen Netzwerkappliance Folgendes:
 
 * Dienstendpunktfähige Dienste können mit Dienstendpunkten konfiguriert werden, was zu einer Umgehung des virtuellen Netzwerkgeräts führt (in der Regel aus Kosten- oder Leistungsüberlegungen).
+* Wenn ResourceProviderConnection auf *Outbound* (Ausgehend) festgelegt ist, können Sie private Endpunkte für die Speicher- und SQL Server-Instanzen für Metastores verwenden, und es ist nicht erforderlich, sie dem NVA hinzuzufügen.
 * IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
 * FQDN HTTP/HTTPS-Endpunkte können auf Ihrem NVA-Gerät genehmigt werden.
 * Weisen Sie die Routingtabelle zu, die Sie für Ihr HDInsight-Subnetz erstellen.
@@ -40,22 +41,25 @@ Optional können Sie mindestens einen der folgenden Dienstendpunkte aktivieren, 
 
 | **Endpunkt** | **Details** |
 |---|---|
-| [Hier](hdinsight-management-ip-addresses.md) veröffentlichte IP-Adressen | Diese IP-Adressen gelten für die HDInsight-Steuerungsebene und sollten in der UDR enthalten sein, um asymmetrisches Routing zu vermeiden. |
-| Private AAD-DS-IP-Adressen | Nur für ESP-Cluster erforderlich|
+| [Hier](hdinsight-management-ip-addresses.md) veröffentlichte IP-Adressen | Diese IP-Adressen gelten für die HDInsight-Ressourcenanbieter und sollten in der UDR enthalten sein, um asymmetrisches Routing zu vermeiden. Diese Regel ist nur erforderlich, wenn ResourceProviderConnection auf *Inbound* (Eingehend) festgelegt ist. Wenn ResourceProviderConnection auf *Outbound* (Ausgehend) festgelegt ist, werden diese IP-Adressen in der UDR nicht benötigt.  |
+| Private AAD-DS-IP-Adressen | Nur für ESP-Cluster erforderlich, wenn die VNETs nicht per Peering verknüpft wurden.|
 
 
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN-HTTP/HTTPS-Abhängigkeiten
 
-> [!Important]
-> In der folgenden Liste sind nur einige FQDNs aufgeführt, die für das Patchen von Betriebssystemen und Sicherheitspatches oder Zertifikatüberprüfungen nach der Erstellung des Clusters und während der Lebensdauer der Clustervorgänge erforderlich sein können. Sie finden [in dieser Datei](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json) die Liste der FQDN-Abhängigkeiten (größtenteils Azure Storage und Azure Service Bus) zur Konfiguration Ihres virtuellen Netzwerkgeräts. Diese Abhängigkeiten werden vom HDInsight-Ressourcenanbieter (RP) genutzt, um Cluster erfolgreich zu erstellen und zu überwachen/verwalten. Dazu gehören Telemetrie-/Diagnoseprotokolle, Bereitstellungsmetadaten, clusterbezogene Konfigurationen, Skripts, ARM-Vorlagen usw. Die Liste der FQDN-Abhängigkeiten könnte sich mit der Veröffentlichung künftiger HDIngisht-Updates ändern.
+Sie finden [in diesem Repository](https://github.com/Azure-Samples/hdinsight-fqdn-lists/) die Liste der FQDN-Abhängigkeiten (größtenteils Azure Storage und Azure Service Bus) zur Konfiguration Ihres virtuellen Netzwerkgeräts. Die regionale Liste finden Sie [hier](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/master/Regional). Diese Abhängigkeiten werden vom HDInsight-Ressourcenanbieter (RP) genutzt, um Cluster erfolgreich zu erstellen und zu überwachen/verwalten. Dazu gehören Telemetrie-/Diagnoseprotokolle, Bereitstellungsmetadaten, clusterbezogene Konfigurationen, Skripts usw. Die Liste der FQDN-Abhängigkeiten könnte sich mit der Veröffentlichung künftiger HDInsight-Updates ändern.
 
-| **Endpunkt**                                                          |
+In der folgenden Liste sind nur einige FQDNs aufgeführt, die für das Patchen von Betriebssystemen und Sicherheitspatches oder Zertifikatüberprüfungen *nach* der Erstellung des Clusters und während der Lebensdauer der Clustervorgänge erforderlich sein können:
+
+| **FQDNs für Laufzeitabhängigkeiten**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
 | microsoft.com:80                                                      |
+|login.windows.net:443                                                  |
+|login.microsoftonline.com:443                                          |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

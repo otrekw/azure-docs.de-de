@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87311754"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104579"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Umgang mit ITP in Safari und anderen Browsern, in denen Cookies von Drittanbietern blockiert werden
 
@@ -26,7 +26,7 @@ Viele Browser blockieren mittlerweile Cookies von Drittanbietern – Cookies bei
 
 ## <a name="what-is-intelligent-tracking-protection-itp"></a>Was ist Intelligent Tracking Prevention (ITP)?
 
-Apple Safari verfügt über eine standardmäßig aktivierte Datenschutzfunktion namens [Intelligent Tracking Prevention](https://webkit.org/tracking-prevention-policy/) oder *ITP*. ITP blockiert Cookies von „Drittanbietern“. Das sind Cookies bei domänenübergreifenden Anforderungen.
+Apple Safari verfügt über eine standardmäßig aktivierte Datenschutzfunktion namens [Intelligent Tracking Prevention](https://webkit.org/tracking-prevention-policy/) oder *ITP* . ITP blockiert Cookies von „Drittanbietern“. Das sind Cookies bei domänenübergreifenden Anforderungen.
 
 Eine gängige Form der Benutzernachverfolgung erfolgt durch das Laden eines IFrames auf eine Drittanbieterwebsite im Hintergrund und das Verwenden von Cookies, um den Benutzer über das Internet zu korrelieren. Leider handelt es sich bei diesem Muster auch um die Standardmethode für das Implementieren des [impliziten Flusses](v2-oauth2-implicit-grant-flow.md) in Single-Page-Webanwendungen (Single-Page Apps, SPAs). Wenn ein Browser Cookies von Drittanbietern blockiert, um die Benutzernachverfolgung zu verhindern, werden auch SPAs unterbrochen.
 
@@ -41,7 +41,7 @@ Damit Benutzer in SPAs weiterhin authentifiziert werden können, müssen App-Ent
 In Bezug auf die Microsoft Identity Platform gelten für SPAs und native Clients ähnliche Protokollleitlinien:
 
 * Verwendung einer [PKCE-Codeabfrage](https://tools.ietf.org/html/rfc7636)
-    * PKCE ist für SPAs auf der Microsoft Identity Platform *erforderlich*. Für native und vertrauliche Clients wird PKCE *empfohlen*.
+    * PKCE ist für SPAs auf der Microsoft Identity Platform *erforderlich* . Für native und vertrauliche Clients wird PKCE *empfohlen* .
 * Keine Verwendung eines geheimen Clientschlüssels
 
 Für SPAs gelten zwei zusätzliche Einschränkungen:
@@ -49,7 +49,7 @@ Für SPAs gelten zwei zusätzliche Einschränkungen:
 * [Der Umleitungs-URI muss als Typ gekennzeichnet werden`spa`](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps), um CORS auf Anmeldeendpunkten zu aktivieren.
 * Über den Autorisierungscodeflow an `spa`-Umleitungs-URIs ausgegebene Aktualisierungstoken haben statt einer Lebensdauer von 90 Tagen eine Lebensdauer von 24 Stunden.
 
-![Codeflow für SPA-Apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Abbildung des OAuth 2.0-Autorisierungscodeflows zwischen einer Single-Page-Webanwendung und dem Endpunkt des Sicherheitstokendiensts" border="false":::
 
 ## <a name="performance-and-ux-implications"></a>Auswirkungen auf die Leistung und Benutzerfreundlichkeit
 

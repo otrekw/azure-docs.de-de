@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268824"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218954"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -72,15 +72,15 @@ Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-form
 > Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
 
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
-2. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen**, um ein Video hochzuladen.
+1. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen** , um ein Video hochzuladen.
 
-    ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Upload":::
+1. Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
 
-    Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
-
-    ![Hochgeladen](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Upload":::
+1. Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine E-Mail mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>Hochladen und Indizieren mithilfe der API
 
@@ -140,7 +140,7 @@ Der Preis richtet sich nach der gewählten Indizierungsoption.
 
 #### <a name="priority"></a>priority
 
-Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind gültig: **Niedrig**, **Normal** (Standard) und **Hoch**.
+Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind gültig: **Niedrig** , **Normal** (Standard) und **Hoch** .
 
 Der Parameter **priority** wird nur in kostenpflichtigen Konten unterstützt.
 
@@ -177,8 +177,8 @@ Nachdem Sie diesen Code auf Ihre Entwicklungsplattform kopiert haben, müssen Si
 
     * Navigieren Sie zu https://api-portal.videoindexer.ai/.
     * Anmeldename
-    * Navigieren Sie zu **Produkte** -> **Autorisierung** -> **Autorisierungsabonnement**.
-    * Kopieren Sie den **Primärschlüssel**.
+    * Navigieren Sie zu **Produkte** -> **Autorisierung** -> **Autorisierungsabonnement** .
+    * Kopieren Sie den **Primärschlüssel** .
 * Video-URL: Eine URL der zu indizierenden Video-/Audiodatei. Die URL muss auf eine Mediendatei zeigen (HTML-Seiten werden nicht unterstützt). Die Datei kann durch ein Zugriffstoken als Teil des URI geschützt werden, und der Endpunkt für die Datei muss mit TLS 1.2 oder höher gesichert werden. Die URL muss codiert sein.
 
 Das Ergebnis der erfolgreichen Ausführung des Codebeispiels umfasst eine Insight-Widget-URL und eine Player-Widget-URL, mit der Sie die Einblicke bzw. das hochgeladene Video untersuchen können. 

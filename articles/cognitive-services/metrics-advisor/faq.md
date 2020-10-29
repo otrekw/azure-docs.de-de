@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046807"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131682"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor: Häufig gestellte Fragen
 
@@ -31,7 +31,7 @@ Die [Demowebsite](https://anomaly-detector.azurewebsites.net/) ist öffentlich v
 
 :::image type="content" source="media/pricing.png" alt-text="Meldung, wenn eine F0-Ressource bereits vorhanden ist":::
 
-In der öffentlichen Vorschau darf nur eine Instanz von Metrics Advisor unter einem Abonnement in einer Region erstellt werden.
+In der öffentlichen Vorschau kann nur eine Instanz von Metrics Advisor pro Region unter einem Abonnement erstellt werden.
 
 Wenn Sie bereits über eine Instanz verfügen, die mit demselben Abonnement in derselben Region erstellt wurde, können Sie eine andere Region oder ein anderes Abonnement zum Erstellen einer neuen Instanz verwenden. Oder löschen Sie eine vorhandene Instanz, um eine neue Instanz zu erstellen.
 
@@ -108,6 +108,40 @@ Die intelligente Erkennung ist in der Lage, das Muster Ihrer Daten einschließli
 
 Wenn Ihre Daten normalerweise recht instabil sind und stark schwanken und Sie benachrichtigt werden möchten, wenn die Daten zu stabil sind oder sogar überhaupt keine Schwankungen mehr aufweisen, kann „Change Threshold“ (Änderungsschwellenwert) so konfiguriert werden, dass solche Datenpunkte erkannt werden, wenn die Änderung zu gering ist.
 Ausführliche Informationen finden Sie unter [Anomalieerkennungskonfiguration](how-tos/configure-metrics.md#anomaly-detection-methods).
+
+## <a name="advanced-concepts"></a>Erweiterte Konzepte
+
+### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>Wie erstellt Metrics Advisor eine Incidentstruktur für mehrdimensionale Metriken?
+
+Eine Metrik kann in mehrere Zeitreihen nach Dimensionen aufgeteilt werden. Beispielsweise wird die Metrik `Response latency` für alle Dienste überwacht, die im Besitz des Teams sind. Die `Service`-Kategorie könnte als Dimension verwendet werden, um die Metrik zu erweitern, sodass `Response latency` durch `Service1`, `Service2` usw. aufgeteilt wird. Jeder Dienst kann auf verschiedenen Computern in mehreren Rechenzentren bereitgestellt werden, damit die Metrik weiter durch `Machine` und `Data center` aufgeteilt werden kann.
+
+|Dienst| Rechenzentrum| Machine  | 
+|----|------|----------------   |
+| S1 |  DC1 |   M1 |
+| S1 |  DC1 |   M2 |
+| S1 |  DC2 |   M3 |
+| S1 |  DC2 |   M4 |
+| S2 |  DC1 |   M1 |
+| S2 |  DC1 |   M2 |
+| S2 |  DC2 |   M5 |
+| S2 |  DC2 |   M6 |
+| ...|      |      |
+
+Ausgehend von der Gesamtsumme `Response latency` können wir Detailinformationen der Metrik nach `Service`, `Data center` und `Machine` anzeigen. Möglicherweise ist es jedoch sinnvoller, dass die Dienstbesitzer den Pfad `Service` -> `Data center` -> `Machine` oder Infrastrukturtechniker den Pfad `Data Center` -> `Machine` -> `Service` benutzen. Dies hängt alles von den individuellen Geschäftsanforderungen des Benutzers ab. 
+
+Im Metrics Advisor können Benutzer jeden Pfad angeben, für den sie von einem Knoten der hierarchischen Topologie aus einen Drilldown oder ein Rollup ausführen möchten. Genauer gesagt handelt es sich bei der hierarchischen Topologie um ein gerichtetes azyklisches Diagramm und nicht um eine Baumstruktur. Es gibt eine vollständige hierarchische Topologie, die aus allen möglichen Dimensionskombinationen besteht, wie im folgenden Beispiel: 
+
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="Meldung, wenn eine F0-Ressource bereits vorhanden ist" lightbox="media/dimension-combinations-view.png":::
+
+Wenn die Dimension `Service` theoretisch `Ls` verschiedene Werte, die Dimension `Data center` `Ldc` verschiedene Werte und die Dimension `Machine` `Lm` verschiedene Werte aufweist, dann könnte es in der hierarchischen Topologie `(Ls + 1) * (Ldc + 1) * (Lm + 1)` Dimensionskombinationen geben. 
+
+In der Regel sind jedoch nicht alle Dimensionskombinationen gültig, was die Komplexität erheblich reduzieren kann. Wenn Benutzer die Metrik selbst aggregieren, wird die Anzahl der Dimensionen derzeit nicht beschränkt. Wenn Sie die von Metrics Advisor bereitgestellte Rollup-Funktion verwenden müssen, sollten nicht mehr als sechs Dimensionen vorhanden sein. Allerdings wird die Anzahl der von Dimensionen für eine Metrik erweiterten Zeitreihen auf weniger als 10.000 beschränkt.
+
+Das Tool **Incidentstruktur** auf der Diagnoseseite zeigt nur Knoten an, bei denen eine Anomalie erkannt wurde, und nicht die gesamte Topologie. Dies soll Ihnen helfen, das Augenmerk auf das aktuelle Problem zu richten. Außerdem werden möglicherweise nicht alle Anomalien innerhalb der Metrik angezeigt. Stattdessen werden die obersten Anomalien auf der Grundlage des Beitrags angezeigt. So lassen sich die Auswirkungen, der Umfang und der Verbreitungsweg der anormalen Daten schnell herausfinden. Dadurch wird die Anzahl der zu untersuchenden Anomalien erheblich verringert und Benutzern geholfen, ihre zentralen Probleme zu erkennen und zu finden. 
+ 
+Wenn beispielsweise eine Anomalie bei `Service = S2 | Data Center = DC2 | Machine = M5` auftritt, wirkt sich die Abweichung der Anomalie auf den übergeordneten Knoten `Service= S2` aus, der die Anomalie ebenfalls erkannt hat. Die Anomalie wirkt sich jedoch nicht auf das gesamte Rechenzentrum bei `DC2` und alle Dienste bei `M5` aus. Die Incidentstruktur wäre wie im unteren Screenshot aufgebaut, die oberste Anomalie ist bei `Service = S2` erfasst, und die Ursache könnte über zwei Pfade analysiert werden, die beide zu `Service = S2 | Data Center = DC2 | Machine = M5` führen.
+
+ :::image type="content" source="media/root-cause-paths.png" alt-text="Fünf markierte Knoten mit zwei verschiedenen Pfaden, die durch Kanten mit einem gemeinsamen Knoten mit der Bezeichnung S2 verbunden sind. Die obere Anomalie wird bei Service = S2 erfasst, und die Ursache kann anhand der beiden Pfade analysiert werden, die beide zu Service = S2 | Data Center = DC2 | Machine = M5" lightbox="media/root-cause-paths.png"::: führen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Übersicht über Metrics Advisor](overview.md)

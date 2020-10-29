@@ -5,28 +5,28 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 967fdae49f904f6c1cb450b637a8dbc5c481b135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776883"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147524"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Zusammenarbeiten mit anderen Autoren und Redakteuren
 
-Nutzen Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre QnA Maker-Ressource, um mit anderen Autoren und Redakteuren zusammenzuarbeiten.
+Nutzen Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) für Ihre QnA Maker-Ressource, um mit anderen Autoren und Redakteuren zusammenzuarbeiten.
 
 ## <a name="access-is-provided-on-the-qna-maker-resource"></a>Zugriff auf die QnA Maker-Ressource
 
 Alle Berechtigungen werden durch die Berechtigungen gesteuert, die für die QnA Maker-Ressource festgelegt wurden. Bei diesen Berechtigungen handelt es sich um Berechtigungen für Lese-, Schreib-, Veröffentlichungs- und Vollzugriff.
 
-Dieses RBAC-Feature umfasst Folgendes:
-* Azure Active Directory (AAD) ist vollständig mit der schlüsselbasierten Authentifizierung für Besitzer und Mitwirkende abwärtskompatibel. Kunden können in ihren Anforderungen entweder die schlüsselbasierte Authentifizierung oder die RBAC-basierte Authentifizierung verwenden.
+Dieses Azure RBAC-Feature umfasst Folgendes:
+* Azure Active Directory (AAD) ist vollständig mit der schlüsselbasierten Authentifizierung für Besitzer und Mitwirkende abwärtskompatibel. Kunden können in ihren Anforderungen entweder die schlüsselbasierte Authentifizierung oder die Azure RBAC-basierte Authentifizierung verwenden.
 * Da die Steuerung auf der Ressourcenebene und nicht auf der Ebene der Wissensdatenbank erfolgt, können Autoren und Redakteure schnell allen Wissensdatenbanken in der Ressource hinzugefügt werden.
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Zugriff durch eine definierte Rolle
 
-[!INCLUDE [RBAC permissions table](../includes/role-based-access-control.md)]
+[!INCLUDE [Azure RBAC permissions table](../includes/role-based-access-control.md)]
 
 ## <a name="authentication-flow"></a>Authentifizierungsfluss
 

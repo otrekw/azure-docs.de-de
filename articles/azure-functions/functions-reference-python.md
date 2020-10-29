@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642196"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108421"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -48,7 +48,7 @@ Verwenden Sie die Python-Anmerkungen im Paket [azure.functions.*](/python/api/az
 
 ## <a name="alternate-entry-point"></a>Alternativer Einstiegspunkt
 
-Sie können das Standardverhalten einer Funktion ändern, indem Sie die Eigenschaften `scriptFile` und `entryPoint` in der *function.json*-Datei angeben. Beispielsweise weist die unten stehende _function.json_ die Runtime an, die Methode `customentry()` in der _main.py_-Datei als Einstiegspunkt für Ihre Azure-Funktion zu verwenden.
+Sie können das Standardverhalten einer Funktion ändern, indem Sie die Eigenschaften `scriptFile` und `entryPoint` in der *function.json* -Datei angeben. Beispielsweise weist die unten stehende _function.json_ die Runtime an, die Methode `customentry()` in der _main.py_ -Datei als Einstiegspunkt für Ihre Azure-Funktion zu verwenden.
 
 ```json
 {
@@ -83,9 +83,9 @@ Die empfohlene Ordnerstruktur für ein Python Functions-Projekt sieht wie im fol
 ```
 Der Hauptprojektordner (\_\_app\_\_) kann die folgenden Dateien enthalten:
 
-* *local.settings.json*: Wird verwendet, um bei der lokalen Ausführung App-Einstellungen und Verbindungszeichenfolgen zu speichern. Diese Datei wird nicht in Azure veröffentlicht. Weitere Informationen finden Sie unter [local.settings.file](functions-run-local.md#local-settings-file).
-* *requirements.txt*: Enthält die Liste der bei der Veröffentlichung in Azure vom System installierten Pakete.
-* *host.json*: Enthält globale Konfigurationsoptionen, die sich auf alle Funktionen in einer Funktions-App auswirken. Diese Datei wird in Azure veröffentlicht. Nicht alle Optionen werden bei lokaler Ausführung unterstützt. Weitere Informationen finden Sie unter [host.json](functions-host-json.md).
+* *local.settings.json* : Wird verwendet, um bei der lokalen Ausführung App-Einstellungen und Verbindungszeichenfolgen zu speichern. Diese Datei wird nicht in Azure veröffentlicht. Weitere Informationen finden Sie unter [local.settings.file](functions-run-local.md#local-settings-file).
+* *requirements.txt* : Enthält die Liste der bei der Veröffentlichung in Azure vom System installierten Pakete.
+* *host.json* : Enthält globale Konfigurationsoptionen, die sich auf alle Funktionen in einer Funktions-App auswirken. Diese Datei wird in Azure veröffentlicht. Nicht alle Optionen werden bei lokaler Ausführung unterstützt. Weitere Informationen finden Sie unter [host.json](functions-host-json.md).
 * *.funcignore:* (Optional) Deklariert Dateien, die nicht in Azure veröffentlicht werden sollen.
 * *Dockerfile:* (Optional:) Wird verwendet, wenn Sie Ihr Projekt in einem [benutzerdefinierten Container](functions-create-function-linux-custom-image.md) veröffentlichen.
 
@@ -95,7 +95,7 @@ Wenn Sie Ihr Projekt in einer Funktions-App in Azure bereitstellen, sollte der g
 
 ## <a name="import-behavior"></a>Importverhalten
 
-Sie können Module in Ihrem Funktionscode sowohl über explizite relative und als auch über absolute Verweise importieren. Basierend auf der oben gezeigten Ordnerstruktur funktionieren die folgenden Importe innerhalb der Funktionsdatei *\_\_app\_\_\my\_first\_function\\_\_init\_\_.py*:
+Sie können Module in Ihrem Funktionscode sowohl über explizite relative und als auch über absolute Verweise importieren. Basierend auf der oben gezeigten Ordnerstruktur funktionieren die folgenden Importe innerhalb der Funktionsdatei *\_\_app\_\_\my\_first\_function\\_\_init\_\_.py* :
 
 ```python
 from . import example #(explicit relative)
@@ -295,21 +295,38 @@ In dieser Funktion wird der Wert des `name`-Abfrageparameters aus dem `params`-P
 
 Außerdem können Sie `status_code` und `headers` für die Antwortnachricht im zurückgegebenen [HttpResponse]-Objekt festlegen.
 
-## <a name="scaling-and-concurrency"></a>Skalierung und Parallelität
+## <a name="scaling-and-performance"></a>Skalierung und Leistung
 
-Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchstarif und Premium-Tarif](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Es ist wichtig zu verstehen, wie Ihre Funktionen ausgeführt werden und wie sich die Leistung auf die Skalierung Ihrer Funktions-App auswirkt. Dies ist besonders wichtig, wenn hochleistungsfähige Apps entworfen werden. Beim Entwerfen, Schreiben und Konfigurieren von Funktions-Apps sind die folgenden Punkte zu berücksichtigen.
 
-Dieses Skalierungsverhalten ist für zahlreiche Anwendungen ausreichend. Anwendungen mit einer der folgenden Eigenschaften werden jedoch möglicherweise nicht effektiv skaliert:
+### <a name="horizontal-scaling"></a>Horizontale Skalierung
+Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Functions verwendet integrierte Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Diese Schwellenwerte sind nicht vom Benutzer konfigurierbar. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-- Die Anwendung muss viele gleichzeitige Aufrufe verarbeiten.
-- Die Anwendung verarbeitet eine große Anzahl von E/A-Ereignissen.
-- Die Anwendung ist E/A-gebunden.
+### <a name="improving-throughput-performance"></a>Verbessern der Durchsatzleistung
 
-In solchen Fällen können Sie die Leistung durch Verwendung asynchroner Muster sowie mehrerer Sprachworkerprozesse weiter verbessern.
+Zur Verbesserung der Leistung müssen Sie zunächst verstehen, wie Ihre App Ressourcen verwendet, damit Sie Ihre Funktions-App entsprechend konfigurieren können.
 
-### <a name="async"></a>Async
+#### <a name="understanding-your-workload"></a>Grundlegendes zu Ihrer Workload
 
-Da Python eine Single-Thread-Laufzeit ist, kann eine Hostinstanz für Python jeweils nur einen Funktionsaufruf gleichzeitig verarbeiten. Bei Anwendungen, die eine große Anzahl von E/A-Ereignissen verarbeiten und/oder E/A-gebunden sind, können Sie die Leistung verbessern, indem Sie Funktionen asynchron ausführen.
+Die Standardkonfigurationen sind für die meisten Azure Functions-Anwendungen geeignet. Allerdings können Sie die Leistung des Durchsatzes Ihrer Anwendungen verbessern, indem Sie Konfigurationen einsetzen, die zu Ihrem Workloadprofil passen. Daher besteht der erste Schritt darin, zu verstehen, was für ein Typ von Workload ausgeführt wird.
+
+|| E/A-gebundene Workload | CPU-gebundene Workload |
+|--| -- | -- |
+|Merkmale der Funktions-App| <ul><li>Die App muss viele gleichzeitige Aufrufe verarbeiten.</li> <li> Die App verarbeitet eine große Anzahl von E/A-Ereignissen, wie z. B. Netzwerkaufrufe und Lese-/Schreibvorgänge auf Datenträgern.</li> </ul>| <ul><li>Die App führt Langzeitberechnungen durch, wie z. B. die Größenänderung von Bildern.</li> <li>Die App führt Datentransformationen durch.</li> </ul> |
+|Beispiele| <ul><li>Web-APIs</li><ul> | <ul><li>Datenverarbeitung</li><li> Machine Learning-Rückschluss</li><ul>|
+
+ 
+> [!NOTE]
+>  Da die Workload von Funktionen in der Praxis meist eine Mischung aus E/A- und CPU-gebundenen Workloads ist, wird empfohlen, ein Profil der Workload unter realistischen Produktionslasten zu erstellen.
+
+
+#### <a name="performance-specific-configurations"></a>Leistungsspezifische Konfigurationen
+
+Nachdem Sie das Workloadprofil ihrer Funktions-App nun kennen, können Sie die folgenden Konfigurationen zum Verbessern der Durchsatzleistung ihrer Funktionen einsetzen.
+
+##### <a name="async"></a>Async
+
+Da [Python eine Single-Thread-Laufzeit](https://wiki.python.org/moin/GlobalInterpreterLock) ist, kann eine Hostinstanz für Python jeweils nur einen Funktionsaufruf gleichzeitig verarbeiten. Bei Anwendungen, die eine große Anzahl von E/A-Ereignissen verarbeiten und/oder E/A-gebunden sind, können Sie die Leistung erheblich verbessern, indem Sie Funktionen asynchron ausführen.
 
 Um eine Funktion asynchron auszuführen, verwenden Sie die `async def`-Anweisung, die die Funktion mit [asyncio](https://docs.python.org/3/library/asyncio.html) direkt ausführt:
 
@@ -317,6 +334,21 @@ Um eine Funktion asynchron auszuführen, verwenden Sie die `async def`-Anweisung
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+Im Folgenden finden Sie ein Beispiel für eine Funktion mit HTTP-Triggern, die [aiohttp](https://pypi.org/project/aiohttp/)-HTTP-Clients verwendet:
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 Eine Funktion ohne das Schlüsselwort `async` wird automatisch in einem asyncio-Threadpool ausgeführt:
 
@@ -327,11 +359,25 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>Verwenden mehrerer Sprachworkerprozesse
+Um den vollen Nutzen aus der asynchronen Ausführung von Funktionen zu ziehen, muss der E/A-Vorgang bzw. die Bibliothek, die in Ihrem Code verwendet wird, ebenfalls asynchron implementiert sein. Die Verwendung synchroner E/A-Vorgänge in Funktionen, die als asynchron definiert sind, **kann die Gesamtleistung beeinträchtigen** .
+
+Hier sind einige Beispiele von Clientbibliotheken, die asynchrone Muster implementiert haben:
+- [aiohttp](https://pypi.org/project/aiohttp/): HTTP-Client/-Server für asyncio 
+- [Streams API](https://docs.python.org/3/library/asyncio-stream.html): Allgemeine async/await-fähige Primitiven für die Arbeit mit Netzwerkverbindungen
+- [Janus Queue](https://pypi.org/project/janus/): Threadsichere asyncio-fähige Warteschlange für Python
+- [pyzmq](https://pypi.org/project/pyzmq/): Python-Bindungen für ZeroMQ
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>Verwenden mehrerer Sprachworkerprozesse
 
 Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Sie können die Anzahl der Workerprozesse pro Host erhöhen (bis zu 10), indem Sie die Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) verwenden. Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen.
 
+Für CPU-gebundene Apps sollten Sie die Anzahl der Sprachworker gleich oder höher einstellen als die Anzahl der Kerne, die pro Funktions-App verfügbar sind. Weitere Informationen finden Sie unter [Verfügbare Instanz-SKUs](functions-premium-plan.md#available-instance-skus). 
+
+E/A-gebundene Apps können auch davon profitieren, eine höhere Anzahl von Workerprozessen im Vergleich zu den verfügbaren Kerne festzulegen. Denken Sie daran, dass eine zu hohe Anzahl von Workern die Gesamtleistung aufgrund der höheren Anzahl der erforderlichen Kontextwechsel beeinträchtigen kann. 
+
 Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen.
+
 
 ## <a name="context"></a>Kontext
 

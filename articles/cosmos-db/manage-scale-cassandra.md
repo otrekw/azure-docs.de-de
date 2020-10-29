@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277672"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482518"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastisches Skalieren eines Cassandra-API-Kontos für Azure Cosmos DB
 
 Es gibt verschiedene Möglichkeiten, die elastische Natur der Azure Cosmos DB-API für Cassandra zu erkunden. Um herauszufinden, wie eine effektive Skalierung in Azure Cosmos DB funktioniert, müssen Sie wissen, wie Sie die richtige Menge an Anforderungseinheiten (Request Units, RUs) bereitstellen, um die Leistungsanforderungen in Ihrem System zu erfüllen. Weitere Informationen zu Anforderungseinheiten finden Sie im Artikel [Anforderungseinheiten](request-units.md). 
 
-Für die Cassandra-API können Sie die Belastung durch Anforderungseinheiten für einzelne Abfragen mit dem [.NET SDK und Java-SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api) abrufen. Dies ist hilfreich, wenn Sie die Anzahl der Anforderungseinheiten ermitteln möchten, die Sie im Dienst bereitstellen müssen.
+Für die Cassandra-API können Sie die Belastung durch Anforderungseinheiten für einzelne Abfragen mit dem [.NET SDK und Java-SDK](./find-request-unit-charge-cassandra.md) abrufen. Dies ist hilfreich, wenn Sie die Anzahl der Anforderungseinheiten ermitteln möchten, die Sie im Dienst bereitstellen müssen.
 
 :::image type="content" source="./media/request-units/request-units.png" alt-text="Von Datenbankvorgängen genutzte Anforderungseinheiten" border="false":::
 
@@ -46,7 +46,7 @@ Der Vorteil dieser Methode besteht darin, dass sie eine unkomplizierte, „schl�
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Verwenden der Steuerungsebene
 
-Die Azure Cosmos DB-API für Cassandra bietet die Möglichkeit, den Durchsatz mithilfe unserer verschiedenen Features auf Steuerungsebene programmgesteuert anzupassen. Anleitungen und Beispiele finden Sie in den entsprechenden Artikeln zu [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [PowerShell](powershell-samples.md) und der [Azure CLI](cli-samples.md).
+Die Azure Cosmos DB-API für Cassandra bietet die Möglichkeit, den Durchsatz mithilfe unserer verschiedenen Features auf Steuerungsebene programmgesteuert anzupassen. Anleitungen und Beispiele finden Sie in den entsprechenden Artikeln zu [Azure Resource Manager](./templates-samples-cassandra.md), [PowerShell](powershell-samples.md) und der [Azure CLI](cli-samples.md).
 
 Diese Methode bietet den Vorteil, dass Sie das Hoch- oder Herunterskalieren von Ressourcen timerbasiert automatisieren können, um sowohl Lastspitzen als auch Zeiträume mit niedriger Aktivität zu berücksichtigen. Sehen Sie sich das Beispiel [hier](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) an, um zu erfahren, wie Sie dies mit Azure Functions und PowerShell erreichen.
 

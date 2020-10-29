@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281593"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482671"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Änderungsfeed in der Azure Cosmos DB-API für Cassandra
 
 Die Unterstützung für den [Änderungsfeed](change-feed.md) in der Azure Cosmos DB-API für Cassandra steht über die Abfrageprädikate in der Cassandra Query Language (CQL) zur Verfügung. Mit diesen Prädikatsbedingungen können Sie die Änderungsfeed-API abfragen. Anwendungen können die an einer Tabelle vorgenommenen Änderungen mithilfe des Primärschlüssels (auch als Partitionsschlüssel bezeichnet) abrufen, der in CQL erforderlich ist. Sie können dann anhand der Ergebnisse weitere Maßnahmen ergreifen. Änderungen an den Zeilen in der Tabelle werden in der Reihenfolge ihres Änderungszeitpunkts und die Sortierreihenfolge pro Partitionsschlüssel erfasst.
 
-Im folgenden Beispiel wird gezeigt, wie Sie einen Änderungsfeed für alle Zeilen in einer Cassandra-API-Keyspace-Tabelle mithilfe von .NET abrufen. Das Prädikat COSMOS_CHANGEFEED_START_TIME() wird direkt in CQL verwendet, um Elemente im Änderungsfeed ab einer angegebenen Startzeit (in diesem Fall das aktuelle Datum und die Uhrzeit) abzufragen. Sie können das ganze Beispiel für C# [hier](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) und für Java [hier](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java) herunterladen.
+Im folgenden Beispiel wird gezeigt, wie Sie einen Änderungsfeed für alle Zeilen in einer Cassandra-API-Keyspace-Tabelle mithilfe von .NET abrufen. Das Prädikat COSMOS_CHANGEFEED_START_TIME() wird direkt in CQL verwendet, um Elemente im Änderungsfeed ab einer angegebenen Startzeit (in diesem Fall das aktuelle Datum und die Uhrzeit) abzufragen. Sie können das ganze Beispiel für C# [hier](/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) und für Java [hier](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java) herunterladen.
 
 In jeder Iterationen wird die Abfrage mithilfe des Pagingzustands am letzten Punkt fortgesetzt, an dem Änderungen gelesen wurden. Sie können einen kontinuierlichen Stream neuer Änderungen an der Tabelle im Keyspace erkennen. Es werden Änderungen an Zeilen angezeigt, die eingefügt oder aktualisiert wurden. Die Überwachung auf Löschvorgänge mithilfe des Änderungsfeeds wird in der Cassandra-API derzeit nicht unterstützt.
 
@@ -146,4 +146,4 @@ Die folgenden Fehlercodes und -meldungen werden bei der Verwendung des Änderung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von Ressourcen für die Cassandra-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen](manage-cassandra-with-resource-manager.md)
+* [Verwalten von Ressourcen für die Cassandra-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen](./templates-samples-cassandra.md)

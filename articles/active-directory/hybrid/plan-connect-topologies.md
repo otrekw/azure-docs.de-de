@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f8987a8daccc012f9d6da53e46fe7c4e8b43ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658506"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146351"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -31,14 +31,14 @@ Legende für Bilder im Artikel:
 
 | BESCHREIBUNG | Symbol |
 | --- | --- |
-| Lokale Active Directory-Gesamtstruktur |![Lokale Active Directory-Gesamtstruktur](./media/plan-connect-topologies/LegendAD1.png) |
-| Lokales Active Directory mit gefiltertem Import |![Active Directory mit gefiltertem Import](./media/plan-connect-topologies/LegendAD2.png) |
-| Azure AD Connect-Synchronisierungsserver |![Azure AD Connect-Synchronisierungsserver](./media/plan-connect-topologies/LegendSync1.png) |
-| Azure AD Connect-Synchronisierungsserver „Stagingmodus“ |![Azure AD Connect-Synchronisierungsserver „Stagingmodus“](./media/plan-connect-topologies/LegendSync2.png) |
-| GALSync mit Forefront Identity Manager (FIM) 2010 oder Microsoft Identity Manager (MIM) 2016 |![GALSync mit FIM 2010 oder MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect-Synchronisierungsserver, detailliert |![Azure AD Connect-Synchronisierungsserver, detailliert](./media/plan-connect-topologies/LegendSync4.png) |
-| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
-| Nicht unterstütztes Szenario |![Nicht unterstütztes Szenario](./media/plan-connect-topologies/LegendUnsupported.png) |
+| Lokale Active Directory-Gesamtstruktur |![Lokale Active Directory-Gesamtstruktur](./media/plan-connect-topologies/legendad1.png) |
+| Lokales Active Directory mit gefiltertem Import |![Active Directory mit gefiltertem Import](./media/plan-connect-topologies/legendad2.png) |
+| Azure AD Connect-Synchronisierungsserver |![Azure AD Connect-Synchronisierungsserver](./media/plan-connect-topologies/legendsync1.png) |
+| Azure AD Connect-Synchronisierungsserver „Stagingmodus“ |![Azure AD Connect-Synchronisierungsserver „Stagingmodus“](./media/plan-connect-topologies/legendsync2.png) |
+| GALSync mit Forefront Identity Manager (FIM) 2010 oder Microsoft Identity Manager (MIM) 2016 |![GALSync mit FIM 2010 oder MIM 2016](./media/plan-connect-topologies/legendsync3.png) |
+| Azure AD Connect-Synchronisierungsserver, detailliert |![Azure AD Connect-Synchronisierungsserver, detailliert](./media/plan-connect-topologies/legendsync4.png) |
+| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/legendaad.png) |
+| Nicht unterstütztes Szenario |![Nicht unterstütztes Szenario](./media/plan-connect-topologies/legendunsupported.png) |
 
 
 > [!IMPORTANT]
@@ -46,17 +46,17 @@ Legende für Bilder im Artikel:
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Einzelne Gesamtstruktur, einzelner Azure AD-Mandant
-![Topologie für einzelne Gesamtstruktur und einzelnen Mandanten](./media/plan-connect-topologies/SingleForestSingleDirectory.png)
+![Topologie für einzelne Gesamtstruktur und einzelnen Mandanten](./media/plan-connect-topologies/singleforestsingledirectory.png)
 
 Die häufigste Topologie ist eine einzelne lokale Gesamtstruktur mit einer oder mehreren Domänen und einem einzelnen Azure AD-Mandanten. Für die Azure AD-Authentifizierung wird die Kennworthashsynchronisierung verwendet. Die Expressinstallation von Azure AD Connect unterstützt nur diese Topologie.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Einzelne Gesamtstruktur, mehrere Synchronisierungsserver zu einem Azure AD-Mandanten
-![Nicht unterstützte gefilterte-Topologie für eine einzelne Gesamtstruktur](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
+![Nicht unterstützte gefilterte-Topologie für eine einzelne Gesamtstruktur](./media/plan-connect-topologies/singleforestfilteredunsupported.png)
 
 Das Verbinden mehrerer Azure AD Connect-Synchronisierungsserver mit dem gleichen Azure AD-Mandanten wird nicht unterstützt, [Stagingserver](#staging-server) ausgenommen. Dies wird auch dann nicht unterstützt, wenn diese Server für die Synchronisierung sich gegenseitig ausschließender Objektsätze konfiguriert sind. Diese Topologie haben Sie möglicherweise in Betracht gezogen, wenn Sie nicht alle Domänen in der Gesamtstruktur über einen einzelnen Server erreichen können oder die Last auf mehrere Server verteilen möchten.
 
 ## <a name="multiple-forests-single-azure-ad-tenant"></a>Mehrere Gesamtstrukturen, einzelner Azure AD-Mandant
-![Topologie für mehrere Gesamtstrukturen und einen einzelnen Mandanten](./media/plan-connect-topologies/MultiForestSingleDirectory.png)
+![Topologie für mehrere Gesamtstrukturen und einen einzelnen Mandanten](./media/plan-connect-topologies/multiforestsingledirectory.png)
 
 Viele Organisationen verfügen über Umgebungen mit mehreren lokalen Active Directory-Gesamtstrukturen. Für die Verwendung mehrerer lokaler Active Directory-Gesamtstrukturen gibt es verschiedene Gründe. Typische Beispiele sind Entwürfe mit Kontoressourcengesamtstrukturen und Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme.
 
@@ -81,16 +81,16 @@ Wenn Ihre Umgebung diesen Annahmen nicht entspricht, passiert Folgendes:
 Ausführlichere Informationen finden Sie unter [Grundlegendes zur Standardkonfiguration](concept-azure-ad-connect-sync-default-configuration.md).
 
 ### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Mehrere Gesamtstrukturen, mehrere Synchronisierungsserver zu einem Azure AD-Mandanten
-![Nicht unterstützte Topologie für mehrere Gesamtstrukturen und mehrere Synchronisierungsserver](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
+![Nicht unterstützte Topologie für mehrere Gesamtstrukturen und mehrere Synchronisierungsserver](./media/plan-connect-topologies/multiforestmultisyncunsupported.png)
 
 Das Verbinden mehrerer Azure AD Connect-Synchronisierungsserver mit einem einzelnen Azure AD-Mandanten wird nicht unterstützt. Von dieser Regel sind lediglich [Stagingserver](#staging-server)ausgenommen.
 
 Diese Topologie unterscheidet sich von der folgenden dadurch, dass nicht **mehrere Synchronisierungsserver** unterstützt werden, die mit einem einzigen Azure AD-Mandanten verbunden sind.
 
 ### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Mehrere Gesamtstrukturen, ein einziger Synchronisierungsserver, Darstellung von Benutzern in einem einzigen Verzeichnis
-![Option: Benutzer werden nur einmal für alle Verzeichnisse dargestellt](./media/plan-connect-topologies/MultiForestUsersOnce.png)
+![Option: Benutzer werden nur einmal für alle Verzeichnisse dargestellt](./media/plan-connect-topologies/multiforestusersonce.png)
 
-![Abbildung mehrerer Gesamtstrukturen und separater Topologien](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
+![Abbildung mehrerer Gesamtstrukturen und separater Topologien](./media/plan-connect-topologies/multiforestseparatetopologies.png)
 
 In dieser Umgebung werden alle lokalen Gesamtstrukturen als getrennte Entitäten behandelt. Kein Benutzer ist in einer anderen Gesamtstruktur vorhanden. Jede Gesamtstruktur verfügt über eine eigene Exchange-Organisation, und es gibt keine GALSync zwischen den Gesamtstrukturen. Diese Topologie kann beispielsweise nach einer Fusion/Übernahme oder in einer Organisation vorliegen, in der jede Geschäftseinheit unabhängig agiert. Diese Gesamtstrukturen befinden sich in der gleichen Organisation in Azure AD und werden mit einer einheitlichen GAL angezeigt. In der vorherigen Abbildung wird jedes Objekt in jeder Gesamtstruktur einmal im Metaverse dargestellt und im Azure AD-Mandanten aggregiert.
 
@@ -98,9 +98,9 @@ In dieser Umgebung werden alle lokalen Gesamtstrukturen als getrennte Entitäten
 Diese Szenarien haben alle eins gemeinsam: Die Verteiler- und Sicherheitsgruppen können eine Kombination aus Benutzern, Kontakten und fremden Sicherheitsprinzipalen (Foreign Security Principals, FSPs) enthalten. FSPs werden in Active Directory Domain Services (AD DS) verwendet, um Mitglieder aus anderen Gesamtstrukturen in einer Sicherheitsgruppe darzustellen. Alle FSPs werden zu dem eigentlichen Objekt in Azure AD aufgelöst.
 
 ### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Mehrere Gesamtstrukturen: Vollständiges Netz mit optionaler GALSync
-![Option: Verwendung des E-Mail-Attributs für den Abgleich, wenn Benutzeridentitäten in mehreren Verzeichnissen vorhanden sind](./media/plan-connect-topologies/MultiForestUsersMail.png)
+![Option: Verwendung des E-Mail-Attributs für den Abgleich, wenn Benutzeridentitäten in mehreren Verzeichnissen vorhanden sind](./media/plan-connect-topologies/multiforestusersmail.png)
 
-![Vollständig vernetzte Topologie für mehrere Gesamtstrukturen](./media/plan-connect-topologies/MultiForestFullMesh.png)
+![Vollständig vernetzte Topologie für mehrere Gesamtstrukturen](./media/plan-connect-topologies/multiforestfullmesh.png)
 
 Mit einer vollständig vernetzten Topologie können sich Benutzer und Ressourcen in jeder Gesamtstruktur befinden. Häufig bestehen bidirektionale Vertrauensstellungen zwischen den Gesamtstrukturen.
 
@@ -109,9 +109,9 @@ Wenn Exchange in mehreren Gesamtstrukturen vorhanden ist, kann (optional) eine l
 In diesem Szenario werden Identitätsobjekte über das E-Mail-Attribut verknüpft. Ein Benutzer mit einem Postfach in einer Gesamtstruktur wird mit den Kontakten in den anderen Gesamtstrukturen verknüpft.
 
 ### <a name="multiple-forests-account-resource-forest"></a>Mehrere Gesamtstrukturen: Kontoressourcengesamtstruktur
-![Option Verwenden von ObjectSID- und msExchMasterAccountSID-Attribute für den Abgleich, wenn Identitäten in mehreren Verzeichnissen vorhanden sind](./media/plan-connect-topologies/MultiForestUsersObjectSID.png)
+![Option Verwenden von ObjectSID- und msExchMasterAccountSID-Attribute für den Abgleich, wenn Identitäten in mehreren Verzeichnissen vorhanden sind](./media/plan-connect-topologies/multiforestusersobjectsid.png)
 
-![Topologie mit Kontoressourcengesamtstruktur für mehrere Gesamtstrukturen](./media/plan-connect-topologies/MultiForestAccountResource.png)
+![Topologie mit Kontoressourcengesamtstruktur für mehrere Gesamtstrukturen](./media/plan-connect-topologies/multiforestaccountresource.png)
 
 In einer Topologie mit Kontoressourcengesamtstruktur verfügen Sie über eine oder mehrere *Kontogesamtstrukturen* mit aktiven Benutzerkonten. Außerdem verfügen Sie über mindestens eine *Ressourcengesamtstruktur* mit deaktivierten Konten.
 
@@ -128,9 +128,9 @@ Für einige Microsoft 365-Workloads gelten bestimmte Einschränkungen für unte
 Wenn es sich um eine größere Organisation handelt, sollten Sie die Verwendung des Features [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) in Erwägung ziehen. Mit diesem Feature können Sie festlegen, in welcher Rechenzentrumsregion sich die Ressourcen des Benutzers befinden.
 
 ## <a name="staging-server"></a>Stagingserver
-![Stagingserver in einer Topologie](./media/plan-connect-topologies/MultiForestStaging.png)
+![Stagingserver in einer Topologie](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect unterstützt die Installation eines zweiten Servers im *Stagingmodus*. Ein Server in diesem Modus liest Daten aus allen verbundenen Verzeichnissen, schreibt jedoch nicht in die verbundenen Verzeichnisse. Er verwendet den normalen Synchronisierungszyklus und verfügt daher über eine aktualisierte Kopie der Identitätsdaten.
+Azure AD Connect unterstützt die Installation eines zweiten Servers im *Stagingmodus* . Ein Server in diesem Modus liest Daten aus allen verbundenen Verzeichnissen, schreibt jedoch nicht in die verbundenen Verzeichnisse. Er verwendet den normalen Synchronisierungszyklus und verfügt daher über eine aktualisierte Kopie der Identitätsdaten.
 
 Bei einem notfallbedingten Ausfall des primären Servers kann ein Failover auf den Stagingserver durchgeführt werden. Hierzu wird der Azure AD Connect-Assistent verwendet. Dieser zweite Server kann sich in einem anderen Rechenzentrum befinden, da keine Infrastruktur mit dem primären Server gemeinsam genutzt wird. Jede am primären Server vorgenommene Konfigurationsänderung muss manuell an den zweiten Server kopiert werden.
 
@@ -144,12 +144,12 @@ Sie können mehrere Stagingserver verwenden, wenn Sie mehrere Sicherungen in ver
 Wir empfehlen einen einzelnen Mandanten in Azure AD für eine Organisation.
 Wenn Sie mehrere Azure AD-Mandanten verwenden möchten, erhalten Sie im Artikel [Verwaltung administrativer Einheiten in Azure AD](../users-groups-roles/directory-administrative-units.md) weitere Informationen. Es umfasst häufige Szenarien, in denen Sie einen einzelnen Mandanten verwenden können.
 
-![Topologie für mehrere Gesamtstrukturen und mehrere Mandanten](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
+![Topologie für mehrere Gesamtstrukturen und mehrere Mandanten](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
 Zwischen einem Azure AD Connect-Synchronisierungsserver und einem Azure AD-Mandanten besteht eine 1:1-Beziehung. Für jeden Azure AD-Mandanten benötigen Sie eine Azure AD Connect-Synchronisierungsserverinstallation. Die Azure AD-Mandanteninstanzen werden nach Entwurf isoliert. So werden Benutzern in einem Mandanten Benutzer im anderen Mandanten nicht angezeigt. Wünschen Sie diese Trennung, ist dies eine unterstützte Konfiguration. Andernfalls sollten Sie das Azure AD-Modell für Einzelmandanten verwenden.
 
 ### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Jedes Objekt nur einmal in einem Azure AD-Mandanten
-![Gefilterte-Topologie für eine einzelne Gesamtstruktur](./media/plan-connect-topologies/SingleForestFiltered.png)
+![Gefilterte-Topologie für eine einzelne Gesamtstruktur](./media/plan-connect-topologies/singleforestfiltered.png)
 
 In dieser Topologie ist ein Azure AD Connect-Synchronisierungsserver mit jedem Azure AD-Mandanten verbunden. Die Azure AD Connect-Synchronisierungsserver müssen für das Filtern konfiguriert werden, sodass sie im Betrieb über jeweils exklusive Gruppen von Objekten verfügen. So können Sie beispielsweise den Gültigkeitsbereich jedes Servers auf eine bestimmte Domäne oder Organisationseinheit festlegen.
 
@@ -161,7 +161,10 @@ Eine DNS-Domäne kann nur in einem einzelnen Azure AD-Mandanten registriert werd
 
 Bei dieser Topologie liegen die folgenden Einschränkungen bei ansonsten unterstützten Szenarien vor:
 
-* Nur einer der Azure AD-Mandanten kann die Exchange-Hybridbereitstellung mit der lokalen Active Directory-Instanz aktivieren.
+* Maximal fünf Azure Active Directory-Mandanten können über eine Exchange-Hybridbereitstellung mit der lokalen Active Directory-Instanz verfügen. Dieses Szenario wird unter [Update von September 2020 für den Hybridkonfigurations-Assistenten](https://techcommunity.microsoft.com/t5/exchange-team-blog/september-2020-hybrid-configuration-wizard-update/ba-p/1687698) beschrieben.
+* Exchange Server-Instanzen, die den Hybridkonfigurations-Assistenten ausführen, sollten Instanzen mit der Version 2016 CU18 oder 2019 CU7 oder höher sein.
+* Alle Azure AD Connect-Instanzen sollten auf einem in die Domäne eingebundenen Computer ausgeführt werden.
+* Azure AD Connect muss mit der Filteroption „Domain/OU“ (Domäne/OE) konfiguriert werden, um nach Benutzern aus Ihrem lokalen Verzeichnis zu filtern. Mit dieser Option wird sichergestellt, dass Benutzer in nur einem Exchange-Onlinemandanten angezeigt werden.
 * Windows 10-Geräte können nur mit einem Azure AD-Mandanten verknüpft werden.
 * Die SSO-Option für die Kennworthashsynchronisierung und Pass-Through-Authentifizierung kann nur mit einem Azure AD-Mandanten verwendet werden.
 
@@ -171,7 +174,7 @@ Die Anforderung für wechselseitig exklusive Gruppen von Objekten gilt auch für
 * Geräterückschreiben
 
 ### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Jedes Objekt mehrmals in einem Azure AD-Mandanten
-![Nicht unterstützte Topologie für eine einzelne Gesamtstruktur und mehrere Mandanten](./media/plan-connect-topologies/SingleForestMultiDirectoryUnsupported.png) ![Nicht unterstützte Topologie für eine einzelne Gesamtstruktur und mehrere Connectors](./media/plan-connect-topologies/SingleForestMultiConnectorsUnsupported.png)
+![Nicht unterstützte Topologie für eine einzelne Gesamtstruktur und mehrere Mandanten](./media/plan-connect-topologies/singleforestmultidirectoryunsupported.png) ![Nicht unterstützte Topologie für eine einzelne Gesamtstruktur und mehrere Connectors](./media/plan-connect-topologies/singleforestmulticonnectorsunsupported.png)
 
 Diese Aufgaben werden nicht unterstützt:
 
@@ -180,7 +183,7 @@ Diese Aufgaben werden nicht unterstützt:
 * Ändern der Azure AD Connect-Synchronisierung, sodass Verbindungen mit mehreren Azure AD-Mandanten hergestellt werden
 
 ### <a name="galsync-by-using-writeback"></a>GALSync mithilfe von Rückschreiben
-![Nicht unterstützte Topologie für mehrere Gesamtstrukturen und mehrere Verzeichnisse, Schwerpunkt von GALSync auf Azure AD](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Nicht unterstützte Topologie für mehrere Gesamtstrukturen und mehrere Verzeichnisse, Schwerpunkt von GALSync auf lokales Azure Active Directory](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
+![Nicht unterstützte Topologie für mehrere Gesamtstrukturen und mehrere Verzeichnisse, Schwerpunkt von GALSync auf Azure AD](./media/plan-connect-topologies/multiforestmultidirectorygalsync1unsupported.png) ![Nicht unterstützte Topologie für mehrere Gesamtstrukturen und mehrere Verzeichnisse, Schwerpunkt von GALSync auf lokales Azure Active Directory](./media/plan-connect-topologies/multiforestmultidirectorygalsync2unsupported.png)
 
 Azure AD-Mandanten sind absichtlich isoliert. Diese Aufgaben werden nicht unterstützt:
 
@@ -188,7 +191,7 @@ Azure AD-Mandanten sind absichtlich isoliert. Diese Aufgaben werden nicht unters
 * Exportieren von Benutzern als Kontakte in ein anderes lokales AD mithilfe der Azure AD Connect-Synchronisierung
 
 ### <a name="galsync-with-on-premises-sync-server"></a>GALSync mit lokalem Synchronisierungsserver
-![GALSync in einer Topologie für mehrere Gesamtstrukturen und mehrere Verzeichnisse](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
+![GALSync in einer Topologie für mehrere Gesamtstrukturen und mehrere Verzeichnisse](./media/plan-connect-topologies/multiforestmultidirectorygalsync.png)
 
 Sie können FIM 2010 oder MIM 2016 lokal verwenden, um Benutzer (über GALSync) zwischen zwei Exchange-Organisationen zu synchronisieren. Die Benutzer in der einen Organisation werden in der anderen Organisation als fremde Benutzer/Kontakte angezeigt. Diese anderen lokalen Active Directory-Instanzen können dann mit ihren eigenen Azure AD-Mandanten synchronisiert werden.
 

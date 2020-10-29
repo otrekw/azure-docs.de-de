@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zum Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy
 description: Hier finden Sie Antworten auf häufig gestellte Fragen (Frequently Asked Questions, FAQ) zur Verwendung des Azure AD-Anwendungsproxys zum Veröffentlichen interner, lokaler Anwendungen für Remotebenutzer.
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589162"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104562"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -48,7 +48,7 @@ Nein, dieses Szenario wird nicht unterstützt. Die Standardeinstellungen sind fo
 
 Nein, dies ist derzeit nicht möglich. Der Registrierungsversuch erfolgt immer beim Basismandanten des Benutzers.
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Meine Back-End-Anwendung wird auf mehreren Webservern gehostet und erfordert Benutzersitzungspersistenz (Stickiness). Wie kann ich Sitzungspersistenz erreichen? 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Meine Back-End-Anwendung wird auf mehreren Webservern gehostet und erfordert Benutzersitzungspersistenz (Stickiness). Wie kann ich Sitzungspersistenz erreichen? 
 
 Empfehlungen finden Sie unter [Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen](application-proxy-high-availability-load-balancing.md).
 
@@ -83,7 +83,6 @@ Für diesen Anwendungsproxy ist Windows Server 2012 R2 oder höher erforderlic
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
-
 
 ## <a name="application-configuration"></a>Anwendungskonfiguration
 
@@ -124,6 +123,12 @@ Weitere Informationen finden Sie im Whitepaper [Grundlegendes zur eingeschränkt
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Funktioniert die NTLM-Authentifizierung mit dem Azure AD-Anwendungsproxy?
 
 Die NTLM-Authentifizierung kann nicht als Vorauthentifizierung oder SSO-Methode verwendet werden. Die NTLM-Authentifizierung kann nur verwendet werden, wenn sie direkt zwischen dem Client und der veröffentlichten Webanwendung ausgehandelt werden kann. Bei Verwendung der NTLM-Authentifizierung wird in der Regel eine Anmeldeaufforderung im Browser angezeigt.
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>Kann die Anmeldeidentität „Lokaler Benutzerprinzipalname“ oder „Name des lokalen SAM-Kontos“ in einem B2B-IWA-Szenario mit einmaligem Anmelden verwendet werden?
+
+Nein, dies funktioniert nicht, da ein Gastbenutzer in Azure AD nicht über das Attribut verfügt, das von den oben erwähnten Anmeldeidentitäten benötigt wird.
+
+In diesem Fall wird ein Fallback auf „Benutzerprinzipalname“ durchgeführt. Weitere Details zum B2B-Szenario finden Sie unter [Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD](../external-identities/hybrid-cloud-to-on-premises.md).
 
 ## <a name="pass-through-authentication"></a>Passthrough-Authentifizierung
 
@@ -198,5 +203,5 @@ Dieses Szenario wird nicht direkt unterstützt. Sie haben bei diesem Szenario di
 1. Veröffentlichen Sie die HTTP-URL und die HTTPS-URL als separate Anwendungen mit einem Platzhalter, aber weisen Sie diesen jeweils eine andere benutzerdefinierte Domäne zu. Diese Konfiguration funktioniert, weil unterschiedliche externe URLs verwendet werden.
 
 2. Veröffentlichen Sie die HTTPS-URL über eine Platzhalteranwendung. Veröffentlichen Sie die HTTP-Anwendungen separat mithilfe der folgenden PowerShell-Cmdlets für den Anwendungsproxy:
-   - [Verwaltung von Anwendungsproxyanwendungen](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [Verwaltung von Anwendungsproxyconnectors](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [Verwaltung von Anwendungsproxyanwendungen](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Verwaltung von Anwendungsproxyconnectors](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

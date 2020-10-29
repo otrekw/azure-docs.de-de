@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708950"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329371"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -19,7 +19,7 @@ Dieser Artikel enthält eine Übersicht über die Standardkontingente für unter
 
 ## <a name="storage-and-database-operations"></a>Speicher und Datenbankvorgänge
 
-Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie Daten in Ihrem Konto verwalten, indem Sie [Datenbanken, Container und Elemente](databases-containers-items.md) erstellen.
+Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie Daten in Ihrem Konto verwalten, indem Sie [Datenbanken, Container und Elemente](account-databases-containers-items.md) erstellen.
 
 ### <a name="provisioned-throughput"></a>Bereitgestellter Durchsatz
 
@@ -27,15 +27,15 @@ Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anfo
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
-| Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
+| Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
+| Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
 | Maximale Anzahl RUs pro (logischer) Partition | 10.000 |
 | Maximale Speicherkapazität aller Elemente pro (logischer) Partition | 20 GB |
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
 | Maximale Speicherkapazität pro Container | Unbegrenzt |
 | Maximale Speicherkapazität pro Datenbank | Unbegrenzt |
 | Maximale Anlagengröße pro Konto (Anlagenfeature wird eingestellt) | 2 GB |
-| Mindestens erforderliche RUs pro 1 GB | 10 RU/s |
+| Mindestens erforderliche RU/s pro 1 GB | 10 RU/s<br>**Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als ein TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert. |
 
 > [!NOTE]
 > Informationen zu bewährten Methoden für die Verwaltung von Workloads, bei denen Partitionsschlüssel höhere Grenzwerte für Speicher oder Durchsatz erfordern, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
@@ -55,8 +55,8 @@ Hier sehen Sie eine Zusammenfassung der RU-Mindestgrenzwerte.
 
 | Resource | Standardlimit |
 | --- | --- |
-| Minimale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimale Anzahl RUs pro Container in einer Datenbank mit gemeinsam genutztem Durchsatz | 100 |
 
 Cosmos DB unterstützt flexible Skalierung von Durchsatz (RUs) pro Container bzw. Datenbank über die SDKs oder das Portal. Jeder Container kann synchron und sofort innerhalb eines Skalierungsbereichs von 10 bis 100 Mal zwischen Minimal- und Maximalwert skaliert werden. Wenn der angeforderte Durchsatzwert außerhalb des Bereichs liegt, wird die Skalierung asynchron durchgeführt. Die asynchrone Skalierung kann je nach angefordertem Durchsatz und Datenspeichergröße im Container Minuten bis Stunden dauern.  

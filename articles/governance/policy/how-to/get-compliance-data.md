@@ -3,12 +3,12 @@ title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 36645d5eb50aaf571c608fc51127b47ac885777d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873624"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320420"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -22,7 +22,7 @@ Es gibt mehrere Möglichkeiten, auf Konformitätsinformationen, die von Ihrer Ri
 Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, beschäftigen wir uns damit, wann Konformitätsinformationen aktualisiert werden und mit den Ereignissen, die einen Auswertungszyklus auslösen sowie mit der Häufigkeit.
 
 > [!WARNING]
-> Wenn der Konformitätszustand als **Nicht registriert** gemeldet wird, sollten Sie überprüfen, ob der **Microsoft.PolicyInsights**-Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) verfügt. Dies ist unter [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy) beschrieben.
+> Wenn der Konformitätszustand als **Nicht registriert** gemeldet wird, sollten Sie überprüfen, ob der **Microsoft.PolicyInsights** -Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) verfügt. Dies ist unter [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy) beschrieben.
 
 ## <a name="evaluation-triggers"></a>Auswertungsauslöser
 
@@ -82,7 +82,7 @@ Weitere Informationen und Workflowbeispiele finden Sie im [Repository „GitHub-
 
 Die Kompatibilitätsüberprüfung wird mit dem Befehl [az policy state trigger-scan](/cli/azure/policy/state#az-policy-state-trigger-scan) gestartet.
 
-Standardmäßig startet `az policy state trigger-scan` eine Auswertung für alle Ressourcen im aktuellen Abonnement. Verwenden Sie den Parameter **resource-group**, um eine Auswertung für eine bestimmte Ressourcengruppe zu starten. Im folgenden Beispiel wird eine Kompatibilitätsüberprüfung im aktuellen Abonnement für die _MyRG_-Ressourcengruppe gestartet:
+Standardmäßig startet `az policy state trigger-scan` eine Auswertung für alle Ressourcen im aktuellen Abonnement. Verwenden Sie den Parameter **resource-group** , um eine Auswertung für eine bestimmte Ressourcengruppe zu starten. Im folgenden Beispiel wird eine Kompatibilitätsüberprüfung im aktuellen Abonnement für die _MyRG_ -Ressourcengruppe gestartet:
 
 ```azurecli-interactive
 az policy state trigger-scan --resource-group "MyRG"
@@ -94,13 +94,13 @@ Sie können sich dafür entscheiden, nicht auf den Abschluss des asynchronen Pro
 
 Die Kompatibilitätsüberprüfung wird mit dem [Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan)-Cmdlet gestartet.
 
-Standardmäßig startet `Start-AzPolicyComplianceScan` eine Auswertung für alle Ressourcen im aktuellen Abonnement. Verwenden Sie den Parameter **ResourceGroupName**, um eine Auswertung für eine bestimmte Ressourcengruppe zu starten. Im folgenden Beispiel wird eine Kompatibilitätsüberprüfung im aktuellen Abonnement für die _MyRG_-Ressourcengruppe gestartet:
+Standardmäßig startet `Start-AzPolicyComplianceScan` eine Auswertung für alle Ressourcen im aktuellen Abonnement. Verwenden Sie den Parameter **ResourceGroupName** , um eine Auswertung für eine bestimmte Ressourcengruppe zu starten. Im folgenden Beispiel wird eine Kompatibilitätsüberprüfung im aktuellen Abonnement für die _MyRG_ -Ressourcengruppe gestartet:
 
 ```azurepowershell-interactive
 Start-AzPolicyComplianceScan -ResourceGroupName 'MyRG'
 ```
 
-Sie können PowerShell auf den Abschluss des asynchronen Aufrufes warten lassen, bevor Sie die Ergebnisausgabe bereitstellen, oder PowerShell im Hintergrund als [Auftrag](/powershell/module/microsoft.powershell.core/about/about_jobs) ausführen. Wenn Sie die Kompatibilitätsüberprüfung im Hintergrund mit einem PowerShell-Auftrag ausführen möchten, verwenden Sie den Parameter **AsJob**, und legen Sie den Wert auf ein Objekt fest, wie z. B. `$job` in diesem Beispiel:
+Sie können PowerShell auf den Abschluss des asynchronen Aufrufes warten lassen, bevor Sie die Ergebnisausgabe bereitstellen, oder PowerShell im Hintergrund als [Auftrag](/powershell/module/microsoft.powershell.core/about/about_jobs) ausführen. Wenn Sie die Kompatibilitätsüberprüfung im Hintergrund mit einem PowerShell-Auftrag ausführen möchten, verwenden Sie den Parameter **AsJob** , und legen Sie den Wert auf ein Objekt fest, wie z. B. `$job` in diesem Beispiel:
 
 ```azurepowershell-interactive
 $job = Start-AzPolicyComplianceScan -AsJob
@@ -118,7 +118,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
 ```
 
-Wenn die Kompatibilitätsüberprüfung abgeschlossen ist, ändert sich die **Status**-Eigenschaft in _Abgeschlossen_.
+Wenn die Kompatibilitätsüberprüfung abgeschlossen ist, ändert sich die **Status** -Eigenschaft in _Abgeschlossen_ .
 
 #### <a name="on-demand-evaluation-scan---rest"></a>Bedarfsgesteuerter Auswertungsscan – REST
 
@@ -143,13 +143,13 @@ Der Scan unterstützt die Auswertung von Ressourcen in einem Abonnement oder in 
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
-Der Aufruf gibt einen Status **202 - Akzeptiert** zurück. Im Antwortheader enthalten ist eine **Speicherort**-Eigenschaft mit dem folgenden Format:
+Der Aufruf gibt einen Status **202 - Akzeptiert** zurück. Im Antwortheader enthalten ist eine **Speicherort** -Eigenschaft mit dem folgenden Format:
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
-`{ResourceContainerGUID}` wird für den angeforderten Bereich statisch generiert. Wird für einen Bereich bereits ein bedarfsgesteuerter Scan ausgeführt, wird kein neuer Scan gestartet. Stattdessen wird der neuen Anforderung derselbe **Speicherort**-URI `{ResourceContainerGUID}` für den Status bereitgestellt. Ein REST-API-Befehl **GET** für den **Speicherort**-URI gibt während der laufenden Auswertung einen Status **202 - Akzeptiert** zurück. Nach Abschluss des Auswertungsscans wird ein Status **200 - OK** zurückgegeben. Der Text eines abgeschlossenen Scans ist eine JSON-Antwort mit folgendem Status:
+`{ResourceContainerGUID}` wird für den angeforderten Bereich statisch generiert. Wird für einen Bereich bereits ein bedarfsgesteuerter Scan ausgeführt, wird kein neuer Scan gestartet. Stattdessen wird der neuen Anforderung derselbe **Speicherort** -URI `{ResourceContainerGUID}` für den Status bereitgestellt. Ein REST-API-Befehl **GET** für den **Speicherort** -URI gibt während der laufenden Auswertung einen Status **202 - Akzeptiert** zurück. Nach Abschluss des Auswertungsscans wird ein Status **200 - OK** zurückgegeben. Der Text eines abgeschlossenen Scans ist eine JSON-Antwort mit folgendem Status:
 
 ```json
 {
@@ -157,9 +157,14 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
+#### <a name="on-demand-evaluation-scan---visual-studio-code"></a>Bedarfsgesteuerter Auswertungsscan – Visual Studio Code
+
+Mit der Azure Policy-Erweiterung für Visual Studio Code kann ein Auswertungsscan für eine bestimmte Ressource ausgeführt werden. Bei diesem Scan handelt es sich im Gegensatz zu den Azure PowerShell- und REST-Methoden um einen synchronen Prozess.
+Ausführliche Informationen und Schritte finden Sie unter [Verwenden der Azure Policy-Erweiterung für Visual Studio Code](./extension-for-vscode.md#on-demand-evaluation-scan).
+
 ## <a name="how-compliance-works"></a>Funktionsweise der Konformität
 
-In einer Zuweisung ist eine Ressource **nicht konform**, wenn dafür die Richtlinien- oder Initiativenregeln nicht eingehalten werden und wenn sie keine _Ausnahme_ ist. Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienauswirkungen, der Bedingungsauswertung und dem resultierenden Konformitätszustand:
+In einer Zuweisung ist eine Ressource **nicht konform** , wenn dafür die Richtlinien- oder Initiativenregeln nicht eingehalten werden und wenn sie keine _Ausnahme_ ist. Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienauswirkungen, der Bedingungsauswertung und dem resultierenden Konformitätszustand:
 
 | Ressourcenzustand | Wirkung | Richtlinienauswertung | Konformitätszustand |
 | --- | --- | --- | --- |
@@ -177,7 +182,7 @@ Angenommen, Sie verfügen über die Ressourcengruppe ContosoRG mit einigen Speic
    Im Diagramm werden Bilder für fünf Speicherkonten in der Ressourcengruppe „ContosoRG“ angezeigt.  Die Speicherkonten 1 und 3 sind blau, und die Speicherkonten zwei, vier und fünf sind rot.
 :::image-end:::
 
-In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem Sie nun eine Richtlinienzuweisung erstellt haben, wird sie für alle eingeschlossenen und nicht ausgenommenen Speicherkonten in der Ressourcengruppe „ContosoRG“ ausgewertet. Sie überprüft die drei nicht konformen Speicherkonten und ändert den Status daher jeweils in **nicht konform**.
+In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem Sie nun eine Richtlinienzuweisung erstellt haben, wird sie für alle eingeschlossenen und nicht ausgenommenen Speicherkonten in der Ressourcengruppe „ContosoRG“ ausgewertet. Sie überprüft die drei nicht konformen Speicherkonten und ändert den Status daher jeweils in **nicht konform** .
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagramm der Speicherkonten, die für öffentliche Netzwerke in der Ressourcengruppe „ContosoRG“ verfügbar gemacht werden." border="false":::
    Im Diagramm werden Bilder für fünf Speicherkonten in der Ressourcengruppe „ContosoRG“ angezeigt. Unter den Speicherkonten 1 und 3 befinden sich jetzt grüne Häkchen, und unter den Speicherkonten 2, 4 und 5 werden jetzt rote Warnzeichen angezeigt.
@@ -185,14 +190,14 @@ In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem
 
 Neben **Konform** und **Nicht konform** können Richtlinien und Ressourcen vier weitere Zustände aufweisen:
 
-- **Ausnahme**: Die Ressource befindet sich im Bereich einer Zuweisung, verfügt jedoch über eine [definierte Ausnahme](../concepts/exemption-structure.md).
-- **Steht in Konflikt**: Mindestens zwei Richtliniendefinitionen mit in Konflikt stehenden Regeln sind vorhanden. Beispielsweise zwei Definitionen, die das gleiche Tag mit unterschiedlichen Werten anfügen.
-- **Nicht gestartet**: Der Auswertungszyklus für die Richtlinie oder Ressource wurde noch nicht gestartet.
-- **Nicht registriert**: Der Azure Policy-Ressourcenanbieter wurde nicht registriert, oder das angemeldete Konto hat keine Berechtigung zum Lesen von Konformitätsdaten.
+- **Ausnahme** : Die Ressource befindet sich im Bereich einer Zuweisung, verfügt jedoch über eine [definierte Ausnahme](../concepts/exemption-structure.md).
+- **Steht in Konflikt** : Mindestens zwei Richtliniendefinitionen mit in Konflikt stehenden Regeln sind vorhanden. Beispielsweise zwei Definitionen, die das gleiche Tag mit unterschiedlichen Werten anfügen.
+- **Nicht gestartet** : Der Auswertungszyklus für die Richtlinie oder Ressource wurde noch nicht gestartet.
+- **Nicht registriert** : Der Azure Policy-Ressourcenanbieter wurde nicht registriert, oder das angemeldete Konto hat keine Berechtigung zum Lesen von Konformitätsdaten.
 
-Azure Policy verwendet die Felder **type**, **name** oder **kind** in der Definition der Richtlinienregel, um zu ermitteln, ob eine Ressource übereinstimmend ist. Falls ja, wird sie als anwendbar angesehen und hat entweder den Zustand **Konform**, **Nicht konform** oder **Ausnahme**. Wenn entweder **type**, **name** oder **kind** die einzige Eigenschaft in der Definition ist, werden alle eingeschlossenen und nicht ausgenommenen Ressourcen als anwendbar angesehen und ausgewertet.
+Azure Policy verwendet die Felder **type** , **name** oder **kind** in der Definition der Richtlinienregel, um zu ermitteln, ob eine Ressource übereinstimmend ist. Falls ja, wird sie als anwendbar angesehen und hat entweder den Zustand **Konform** , **Nicht konform** oder **Ausnahme** . Wenn entweder **type** , **name** oder **kind** die einzige Eigenschaft in der Definition ist, werden alle eingeschlossenen und nicht ausgenommenen Ressourcen als anwendbar angesehen und ausgewertet.
 
-Der Prozentsatz der Konformität wird ermittelt, indem die **konformen** und **ausgenommen** Ressourcen durch _Ressourcen gesamt_ geteilt werden. _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **Nicht konform**, **Ausnahme** und **Konflikt** definiert. Die Gesamtzahl für die Konformität ist die Summe der einzelnen Ressourcen mit dem Zustand **Konform** oder **Ausnahme**, dividiert durch die Summe aller einzelnen Ressourcen. Die Abbildung unten enthält 20 einzelne Ressourcen, die zutreffen, und nur eine davon ist **nicht konform**.
+Der Prozentsatz der Konformität wird ermittelt, indem die **konformen** und **ausgenommen** Ressourcen durch _Ressourcen gesamt_ geteilt werden. _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform** , **Nicht konform** , **Ausnahme** und **Konflikt** definiert. Die Gesamtzahl für die Konformität ist die Summe der einzelnen Ressourcen mit dem Zustand **Konform** oder **Ausnahme** , dividiert durch die Summe aller einzelnen Ressourcen. Die Abbildung unten enthält 20 einzelne Ressourcen, die zutreffen, und nur eine davon ist **nicht konform** .
 Daher lautet der Gesamtwert für die Ressourcenkonformität 95 % (19 von 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Diagramm der Speicherkonten, die für öffentliche Netzwerke in der Ressourcengruppe „ContosoRG“ verfügbar gemacht werden." border="false":::
@@ -244,7 +249,7 @@ Mithilfe der REST-API kann die Zusammenfassung nach Container, Definition oder Z
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
 ```
 
-Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet sich die zusammengefasste Konformität unter **value.results.nonCompliantResources** und **value.results.nonCompliantPolicies**. Diese Anforderung stellt weitere Details bereit, einschließlich jeder Zuweisung, aus der die nicht konformen Zahlen und die Definitionsinformationen für jede Zuweisung bestehen. Jedes Richtlinienobjekt in der Hierarchie bietet einen **queryResultsUri**, der zum Abrufen zusätzlicher Details auf dieser Ebene verwendet werden kann.
+Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet sich die zusammengefasste Konformität unter **value.results.nonCompliantResources** und **value.results.nonCompliantPolicies** . Diese Anforderung stellt weitere Details bereit, einschließlich jeder Zuweisung, aus der die nicht konformen Zahlen und die Definitionsinformationen für jede Zuweisung bestehen. Jedes Richtlinienobjekt in der Hierarchie bietet einen **queryResultsUri** , der zum Abrufen zusätzlicher Details auf dieser Ebene verwendet werden kann.
 
 ```json
 {
@@ -282,7 +287,7 @@ Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet
 
 ### <a name="query-for-resources"></a>Abfragen von Ressourcen
 
-Im obigen Beispiel stellt **value.policyAssignments.policyDefinitions.results.queryResultsUri** einen Beispiel-URI bereit, mit dem alle nicht konformen Ressourcen für eine bestimmte Richtliniendefinition abgerufen werden können. Sehen Sie sich den **$filter**-Wert an. Sie werden feststellen, dass „ComplianceState“ gleich (eq) „NonCompliant“ ist und „PolicyAssignmentId“ für die Richtliniendefinition sowie für „PolicyDefinitionId“ selbst angegeben ist. Der Grund für das Einschließen der „PolicyAssignmentId“ in den Filter ist der, dass die „PolicyDefinitionId“ in mehreren Zuweisungen von Richtlinien oder Initiativen mit verschiedenen Bereichen vorhanden sein kann. Durch Angeben der „PolicyAssignmentId“ und der „PolicyDefinitionId“ können wir die Ergebnisse eingrenzen, die wir suchen. Zuvor haben wir für „PolicyStates“ **latest** verwendet, womit automatisch ein Zeitfenster **from** (von) und **to** (bis) der letzten 24 Stunden festgelegt wird.
+Im obigen Beispiel stellt **value.policyAssignments.policyDefinitions.results.queryResultsUri** einen Beispiel-URI bereit, mit dem alle nicht konformen Ressourcen für eine bestimmte Richtliniendefinition abgerufen werden können. Sehen Sie sich den **$filter** -Wert an. Sie werden feststellen, dass „ComplianceState“ gleich (eq) „NonCompliant“ ist und „PolicyAssignmentId“ für die Richtliniendefinition sowie für „PolicyDefinitionId“ selbst angegeben ist. Der Grund für das Einschließen der „PolicyAssignmentId“ in den Filter ist der, dass die „PolicyDefinitionId“ in mehreren Zuweisungen von Richtlinien oder Initiativen mit verschiedenen Bereichen vorhanden sein kann. Durch Angeben der „PolicyAssignmentId“ und der „PolicyDefinitionId“ können wir die Ergebnisse eingrenzen, die wir suchen. Zuvor haben wir für „PolicyStates“ **latest** verwendet, womit automatisch ein Zeitfenster **from** (von) und **to** (bis) der letzten 24 Stunden festgelegt wird.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
@@ -669,7 +674,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-Das **PrincipalOid**-Feld kann verwendet werden, um einen bestimmten Benutzer mit dem Azure PowerShell-Cmdlet `Get-AzADUser` abzurufen. Ersetzen Sie **{principalOid}** mit der Antwort, die Sie aus dem vorherigen Beispiel erhalten haben.
+Das **PrincipalOid** -Feld kann verwendet werden, um einen bestimmten Benutzer mit dem Azure PowerShell-Cmdlet `Get-AzADUser` abzurufen. Ersetzen Sie **{principalOid}** mit der Antwort, die Sie aus dem vorherigen Beispiel erhalten haben.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName

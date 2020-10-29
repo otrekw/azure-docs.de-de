@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67bc9d6b35d4841999721a00592a6bbe23bff10f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389563"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340222"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C** , und wählen Sie dann diese Option aus.
 4. Wählen Sie **Benutzerflows (Richtlinien)** aus.
 5. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
 6. Wählen Sie **Eigenschaften** aus.
@@ -39,7 +39,10 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 
     ![Eigenschafteneinstellungen für die Tokengültigkeitsdauer im Azure-Portal](./media/configure-tokens/token-lifetime.png)
 
-8. Klicken Sie auf **Speichern**.
+8. Klicken Sie auf **Speichern** .
+
+> [!NOTE]
+> Bei Single-Page-Webanwendungen, die den Autorisierungscodeflow mit PKCE verwenden, hat das Aktualisierungstoken immer eine Lebensdauer von 24 Stunden. [Weitere Informationen zu Sicherheitsaspekten von Aktualisierungstoken im Browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)
 
 ## <a name="configure-jwt-token-compatibility"></a>Konfigurieren der Kompatibilität von JWT-Token
 
@@ -50,7 +53,18 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 
     ![Eigenschafteneinstellungen für die Tokenkompatibilität im Azure-Portal](./media/configure-tokens/token-compatibility.png)
 
-5. Klicken Sie auf **Speichern**.
+5. Klicken Sie auf **Speichern** .
+
+## <a name="provide-optional-claims-to-your-app"></a>Bereitstellen optionaler Ansprüche für Ihre App
+
+Die Anwendungsansprüche sind Werte, die an die Anwendung zurückgegeben werden. Aktualisieren Sie den Benutzerflow, sodass dieser die gewünschten Ansprüche enthält.
+
+1. Wählen Sie **Benutzerflows (Richtlinien)** aus.
+1. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
+1. Wählen Sie **Anwendungsansprüche** aus.
+1. Wählen Sie die Ansprüche und Attribute aus, die an die Anwendung zurückgesendet werden sollen.
+1. Klicken Sie auf **Speichern** .
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

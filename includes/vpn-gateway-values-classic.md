@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 75aec9f3509881c35de9309fa1532b961fb2bc03
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 11d2172d085fe9b47587f4084908f99d7b54437e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875550"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103236"
 ---
-Beim Erstellen von klassischen VNETs im Azure-Portal ist der angezeigte Name nicht der vollständige Name, den Sie für PowerShell verwenden. Beispielsweise kann ein VNET, das im Azure-Portal als **TestVNet1** angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name kann etwa wie folgt aussehen: **Group ClassicRG TestVNet1**. Bei der Erstellung Ihrer Verbindungen ist es wichtig, dass Sie die in der Netzwerkkonfigurationsdatei angezeigten Werte verwenden.
+Beim Erstellen von klassischen VNETs im Azure-Portal ist der angezeigte Name nicht der vollständige Name, den Sie für PowerShell verwenden. Beispielsweise kann ein VNET, das im Azure-Portal als **TestVNet1** angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Für ein VNET in der Ressourcengruppe „ClassicRG“ kann der Name wie folgt aussehen: **Gruppe ClassicRG TestVNet1** . Bei der Erstellung Ihrer Verbindungen ist es wichtig, dass Sie die in der Netzwerkkonfigurationsdatei angezeigten Werte verwenden.
 
 In den folgenden Schritten stellen Sie eine Verbindung zu Ihrem Azure-Konto her. Zudem laden Sie die Netzwerkkonfigurationsdatei herunter und zeigen diese an, um die für Ihre Verbindungen erforderlichen Werte abzurufen.
 
@@ -36,9 +36,10 @@ In den folgenden Schritten stellen Sie eine Verbindung zu Ihrem Azure-Konto her.
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
-1. Exportieren Sie die Netzwerkkonfigurationsdatei und zeigen Sie sie an. Erstellen Sie auf Ihrem Computer ein Verzeichnis, und exportieren Sie die Netzwerkkonfigurationsdatei in das Verzeichnis. In diesem Beispiel wird die Netzwerkkonfigurationsdatei in das Verzeichnis **C:\AzureNet** exportiert.
+1. Erstellen Sie ein Verzeichnis auf Ihrem Computer. Beispiel: C:\AzureVNet
+1. Exportieren Sie die Netzwerkkonfigurationsdatei in das Verzeichnis. In diesem Beispiel wird die Netzwerkkonfigurationsdatei in das Verzeichnis **C:\AzureNet** exportiert.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-1. Öffnen Sie die Datei mit einem Texteditor und zeigen Sie die Namen für Ihre VNETs und Standorte an. Dies sind die Namen, die Sie beim Erstellen Ihrer Verbindungen verwenden.<br>VNET-Namen werden unter **VirtualNetworkSite name =** aufgelistet.<br>Standortnamen werden unter **LocalNetworkSiteRef name =** aufgelistet.
+1. Öffnen Sie die Datei mit einem Texteditor und zeigen Sie die Namen für Ihre VNETs und Standorte an. Dies sind die Namen, die Sie beim Erstellen Ihrer Verbindungen verwenden.<br>**VNET-Namen** werden unter **VirtualNetworkSite name =** aufgelistet.<br>**Standortnamen** werden unter **LocalNetworkSiteRef name =** aufgelistet.

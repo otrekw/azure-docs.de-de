@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539396"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92166589"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungskomponenten in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -44,7 +44,7 @@ Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausf
 ## <a name="list-of-queries-part"></a>Komponente mit der Liste der Abfragen
 Die Komponente für die Liste der Abfragen zeigt eine Liste der Protokollabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können **+ Abfrage** wählen, um zusätzliche Abfragen hinzuzufügen.
 
-![Ansicht der Liste der Abfragen](media/view-designer-parts/view-list-queries.png)
+![Screenshot: Visualisierungskomponenten der „Liste der Abfragen“ im Azure Monitor-Ansichts-Designer](media/view-designer-parts/view-list-queries.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -60,7 +60,7 @@ Die Komponente für die Liste der Abfragen zeigt eine Liste der Protokollabfrage
 ## <a name="number-and-list-part"></a>Teil mit Zahl und Liste
 Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
-![Ansicht der Liste der Abfragen](media/view-designer-parts/view-number-list.png)
+![Screenshot: Visualisierungskomponenten der Anzahl und Liste im Azure Monitor-Ansichts-Designer](media/view-designer-parts/view-number-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -235,7 +235,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
-| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
+| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit* . Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
 | Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 | **Liste** | |
 | Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
@@ -271,7 +271,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
-| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
+| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit* . Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
 | Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 | **Liste** | |
 | Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
@@ -306,7 +306,7 @@ Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Diagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
-| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
+| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit* . Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
 | Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 
 ## <a name="common-settings"></a>Allgemeine Einstellungen
@@ -345,7 +345,7 @@ Mithilfe von Schwellenwerten können Sie ein farbiges Symbol neben jedem Element
 
 Wenn Sie Schwellenwerte für eine Komponente aktivieren, müssen Sie mindestens einen Schwellenwert angeben. Wenn der Wert eines Elements größer ist als ein Schwellenwert und kleiner als der nächste Schwellenwert, wird die entsprechende Farbe für diesen Wert verwendet. Wenn das Element größer ist als der höchste Schwellenwert, wird eine andere Farbe verwendet. 
 
-Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standard**. Wenn keine anderen Werte überschritten werden, wird diese Farbe verwendet. Sie können Schwellenwerte hinzufügen oder entfernen, indem Sie auf die Schaltfläche **Hinzufügen** (+) oder **Löschen** (x) klicken.
+Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standard** . Wenn keine anderen Werte überschritten werden, wird diese Farbe verwendet. Sie können Schwellenwerte hinzufügen oder entfernen, indem Sie auf die Schaltfläche **Hinzufügen** (+) oder **Löschen** (x) klicken.
 
 In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 

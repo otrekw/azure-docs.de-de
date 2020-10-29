@@ -2,13 +2,13 @@
 title: Konfigurieren der Datensammlung des Azure Monitor für Container-Agent | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Monitor für den Container-Agent so konfigurieren, dass dieser die Protokollsammlung von stdout-/stderr- sowie Umgebungsvariablen steuert.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994604"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320410"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurieren der Datensammlung des Azure Monitor für Container-Agent
 
@@ -25,11 +25,11 @@ In diesem Artikel erfahren Sie, wie Sie Ihren Anforderungen entsprechend eine Co
 Es wird eine Vorlagendatei für die ConfigMap bereitgestellt, die Sie einfach anpassen können, ohne sie von Grund auf neu erstellen zu müssen. Bevor Sie beginnen, sollten Sie die Kubernetes-Dokumentation zu [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) lesen und sich informieren, wie Sie ConfigMaps erstellen, konfigurieren und bereitstellen. So können Sie in den stderr- und stdout-Variablen oder im gesamten Cluster nach Namespace filtern. Zudem können Sie in den Umgebungsvariablen nach Containern filtern, die im Cluster auf allen Pods/Knoten laufen.
 
 >[!IMPORTANT]
->Die Agent-Mindestversion, die zum Erfassen von stdout-, stderr- und Umgebungsvariablen aus Containerworkloads unterstützt wird, ist „ciprod06142019“. Um die Agent-Version zu überprüfen, wählen Sie auf der Registerkarte **Knoten** einen Knoten aus, und notieren Sie im Eigenschaftenbereich den Wert der Eigenschaft **Agent-Imagetag**. Weitere Informationen zu den Agent-Versionen und den Inhalten der jeweiligen Releases finden Sie unter [Versionshinweise zum Agent](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod).
+>Die Agent-Mindestversion, die zum Erfassen von stdout-, stderr- und Umgebungsvariablen aus Containerworkloads unterstützt wird, ist „ciprod06142019“. Um die Agent-Version zu überprüfen, wählen Sie auf der Registerkarte **Knoten** einen Knoten aus, und notieren Sie im Eigenschaftenbereich den Wert der Eigenschaft **Agent-Imagetag** . Weitere Informationen zu den Agent-Versionen und den Inhalten der jeweiligen Releases finden Sie unter [Versionshinweise zum Agent](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod).
 
 ### <a name="data-collection-settings"></a>Einstellungen für Datensammlung
 
-Die folgenden Einstellungen können zur Steuerung der Datensammlung konfiguriert werden.
+In der folgenden Tabelle werden die Einstellungen beschrieben, die Sie zum Steuern der Datensammlung konfigurieren können:
 
 | Schlüssel | Datentyp | Wert | BESCHREIBUNG |
 |--|--|--|--|
@@ -43,16 +43,24 @@ Die folgenden Einstellungen können zur Steuerung der Datensammlung konfiguriert
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boolean | true oder false | Diese Einstellung steuert die Containerprotokollanreicherung zum Auffüllen der Eigenschaftswerte „Name“ und „Image“<br> für die einzelnen Protokolldatensätze, die in die ContainerLog-Tabelle für alle Containerprotokolle im Cluster geschrieben werden.<br> Die Standardeinstellung ist `enabled = false`, wenn sie nicht in ConfigMap angegeben ist. |
 | `[log_collection_settings.collect_all_kube_events]` | Boolean | true oder false | Diese Einstellung ermöglicht die Erfassung von Kube-Ereignissen jeder Art.<br> Standardmäßig werden Kube-Ereignisse mit dem Typ *Normal* nicht erfasst. Wenn diese Einstellung auf `true` festgelegt wird, werden die Ereignisse des Typs *Normal* nicht mehr gefiltert, und alle Ereignisse werden erfasst.<br> Sie ist standardmäßig auf `false` festgelegt. |
 
+### <a name="metric-collection-settings"></a>Einstellungen für Metriksammlung
+
+In der folgenden Tabelle werden die Einstellungen beschrieben, die Sie zum Steuern der Metriksammlung konfigurieren können:
+
+| Schlüssel | Datentyp | Wert | Beschreibung |
+|--|--|--|--|
+| `[metric_collection_settings.collect_kube_system_pv_metrics] enabled =` | Boolesch | true oder false | Diese Einstellung ermöglicht das Sammeln von Nutzungsmetriken für persistente Volumes (PV) im kube-system-Namespace. Standardmäßig werden Nutzungsmetriken für persistente Volumes mit Ansprüchen für persistente Volumes (Persistent Volume Claim, PVC) im kube-system-Namespace nicht gesammelt. Wenn diese Einstellung auf `true` festgelegt ist, werden die PV-Nutzungsmetriken für alle Namespaces gesammelt. Sie ist standardmäßig auf `false` festgelegt. |
+
 ConfigMaps ist eine globale Liste, und es kann nur eine ConfigMap auf den Agent angewendet werden. Es kann keine andere ConfigMaps vorhanden sein, die die Sammlungen außer Kraft setzt.
 
 ## <a name="configure-and-deploy-configmaps"></a>Konfigurieren und Bereitstellen von ConfigMaps
 
 Führen Sie die folgenden Schritte durch, um Ihre ConfigMap-Konfigurationsdatei zu konfigurieren und für Ihren Cluster bereitzustellen.
 
-1. [Laden Sie die Vorlagendatei (YAML) für die ConfigMap herunter](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml), und speichern Sie diese unter container-azm-ms-agentconfig.yaml. 
+1. Laden Sie die [YAML-Vorlagendatei für ConfigMap](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) herunter, und speichern Sie sie unter container-azm-ms-agentconfig.yaml. 
 
-   >[!NOTE]
-   >Dieser Schritt ist beim Arbeiten mit Azure Red Hat OpenShift nicht erforderlich, da die ConfigMap-Vorlage bereits im Cluster vorhanden ist.
+   > [!NOTE]
+   > Dieser Schritt ist bei der Arbeit mit Azure Red Hat OpenShift nicht erforderlich, da die ConfigMap-Vorlage bereits im Cluster vorhanden ist.
 
 2. Bearbeiten Sie die YAML-Datei für die ConfigMap mit Ihren Anpassungen für das Sammeln von stdout, stderr und/oder Umgebungsvariablen. Wenn Sie die ConfigMap-Datei (YAML-Datei) für Azure Red Hat OpenShift bearbeiten, führen Sie zuerst den Befehl `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` aus, um die Datei in einem Text-Editor zu öffnen.
 
@@ -93,7 +101,7 @@ Fehler im Zusammenhang mit der Anwendung von Konfigurationsänderungen können e
     config::error::Exception while parsing config map for log collection/env variable settings: \nparse error on value \"$\" ($end), using defaults, please check config map for errors
     ```
 
-- In der Tabelle **KubeMonAgentEvents** in Ihrem Log Analytics Arbeitsbereich. Für Konfigurationsfehler werden stündlich Daten mit dem Schweregrad *Fehler* gesendet. Wenn keine Fehler vorliegen, enthält der Eintrag in der Tabelle Daten mit dem Schweregrad *Info*, der Fehlerfreiheit angibt. Die Eigenschaft **Tags** enthält weitere Informationen zum Pod und der Container-ID, für die der Fehler aufgetreten ist, sowie zum ersten Vorkommen, letzten Vorkommen und der Anzahl in der letzten Stunde.
+- In der Tabelle **KubeMonAgentEvents** in Ihrem Log Analytics Arbeitsbereich. Für Konfigurationsfehler werden stündlich Daten mit dem Schweregrad *Fehler* gesendet. Wenn keine Fehler vorliegen, enthält der Eintrag in der Tabelle Daten mit dem Schweregrad *Info* , der Fehlerfreiheit angibt. Die Eigenschaft **Tags** enthält weitere Informationen zum Pod und der Container-ID, für die der Fehler aufgetreten ist, sowie zum ersten Vorkommen, letzten Vorkommen und der Anzahl in der letzten Stunde.
 
 - Überprüfen Sie bei Azure Red Hat OpenShift die omsagent-Protokolle, indem Sie die Tabelle **ContainerLog** durchsuchen, um zu überprüfen, ob die Protokollsammlung von „openshift-azure-logging“ aktiviert ist.
 

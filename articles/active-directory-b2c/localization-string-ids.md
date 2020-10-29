@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054745"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096197"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für die User Journeys unterstützen. Dieser Artikel enthält die Liste mit Lokalisierungs-IDs, die Sie in Ihrer Richtlinie verwenden können. Informationen zur Benutzeroberflächenlokalisierung finden Sie unter [Lokalisierung](localization.md).
+Mithilfe des **Localization** -Elements können Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für die User Journeys unterstützen. Dieser Artikel enthält die Liste mit Lokalisierungs-IDs, die Sie in Ihrer Richtlinie verwenden können. Informationen zur Benutzeroberflächenlokalisierung finden Sie unter [Lokalisierung](localization.md).
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Elemente auf der Anmelde- oder Registrierungsseite
 
@@ -57,7 +57,7 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>Identitätsanbieter für Registrierung und Anmeldung
 
-Die ID der Identitätsanbieter wird im **ClaimsExchange**-Element der User Journey konfiguriert. Um den Titel des Identitätsanbieters zu lokalisieren, wird **ElementType** auf `ClaimsProvider` festgelegt, während für **StringId** die ID von `ClaimsExchange` festgelegt wird.
+Die ID der Identitätsanbieter wird im **ClaimsExchange** -Element der User Journey konfiguriert. Um den Titel des Identitätsanbieters zu lokalisieren, wird **ElementType** auf `ClaimsProvider` festgelegt, während für **StringId** die ID von `ClaimsExchange` festgelegt wird.
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -343,7 +343,42 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 
 ## <a name="verification-display-control-user-interface-elements"></a>Anzeigesteuerelemente zur Überprüfung von Benutzeroberflächenelementen
 
-Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung](display-control-verification.md)
+Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung](display-control-verification.md) mit der [Seitenlayoutversion 2.1.0 oder höher](page-layout.md).
+
+| id | Standardwert |
+| -- | ------------- |
+|intro_msg| Es ist eine Überprüfung erforderlich. Klicken Sie auf die Schaltfläche „Senden“.|
+|success_send_code_msg | Der Prüfcode wurde an Ihr Postfach gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld.|
+|failure_send_code_msg | Beim Überprüfen Ihrer E-Mail-Adresse sind Probleme aufgetreten. Geben Sie eine gültige E-Mail-Adresse ein, und versuchen Sie es erneut.|
+|success_verify_code_msg | Die E-Mail-Adresse wurde verifiziert. Sie können den Vorgang jetzt fortsetzen.|
+|failure_verify_code_msg | Beim Überprüfen Ihrer E-Mail-Adresse sind Probleme aufgetreten. Wiederholen Sie den Vorgang.|
+|but_send_code | Überprüfungscode senden|
+|but_verify_code | Code überprüfen|
+|but_send_new_code | Neuen Code senden|
+|but_change_claims | E-Mail-Adresse ändern|
+
+### <a name="verification-display-control-example"></a>Beispiel für ein Anzeigesteuerelement zur Überprüfung
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Anzeigesteuerelemente zur Überprüfung von Benutzeroberflächenelementen (veraltet)
+
+Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung](display-control-verification.md) mit der [Seitenlayoutversion 2.0.0 oder höher](page-layout.md).
 
 | id | Standardwert |
 | -- | ------------- |
@@ -355,7 +390,7 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 |verification_control_but_verify_code |Code überprüfen |
 |verification_control_code_sent| Prüfcode wurde gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld. |
 
-### <a name="verification-display-control-example"></a>Beispiel für ein Anzeigesteuerelement zur Überprüfung
+### <a name="verification-display-control-example-deprecated"></a>Beispiel für ein Anzeigesteuerelement zur Überprüfung (veraltet)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>

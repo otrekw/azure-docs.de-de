@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie nachgeschaltete oder Blattgeräte für eine V
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 979ed3d21986ad43d805446a520a59333a6798ed
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045838"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149332"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -25,11 +25,11 @@ Dieser Artikel enthält Anweisungen zum Herstellen einer vertrauenswürdigen Ver
 
 Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung mit einem transparenten Gateway. In diesem Artikel wird der dritte Schritt behandelt:
 
-1. Konfigurieren Sie das Gatewaygerät als Server, sodass sich nachgeschaltete Geräte mit ihm sicher verbinden können. Richten Sie das Gateway so ein, dass es Nachrichten von nachgeschalteten Geräten empfängt und an das richtige Ziel weiterleitet. Weitere Informationen finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
-2. Erstellen Sie eine Geräteidentität für das nachgeschaltete Gerät, damit es sich bei IoT Hub authentifizieren kann. Konfigurieren Sie das nachgeschaltete Gerät zum Senden von Nachrichten über das Gatewaygerät. Weitere Informationen finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
+1. Konfigurieren Sie das Gatewaygerät als Server, sodass sich nachgeschaltete Geräte mit ihm sicher verbinden können. Richten Sie das Gateway so ein, dass es Nachrichten von nachgeschalteten Geräten empfängt und an das richtige Ziel weiterleitet. Die dazu erforderlichen Schritte finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
+2. Erstellen Sie eine Geräteidentität für das nachgeschaltete Gerät, damit es sich bei IoT Hub authentifizieren kann. Konfigurieren Sie das nachgeschaltete Gerät zum Senden von Nachrichten über das Gatewaygerät. Die Schritte finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
 3. **Verbinden Sie das nachgeschaltete Gerät mit dem Gatewaygerät, und beginnen Sie mit dem Senden von Nachrichten.**
 
-Dieser Artikel erläutert häufige Probleme beim Verbinden nachgeschalteter Geräte und führt Sie durch ihre Einrichtung. Behandelt werden die folgenden Themen:
+In diesem Artikel werden grundlegende Konzepte beim Verbinden nachgeschalteter Geräte und das Einrichten dieser Geräte erläutert:
 
 * Grundlagen von Transport Layer Security (TLS) und Zertifikaten
 * Funktionsweise von TLS-Bibliotheken mit verschiedenen Betriebssystemen und Verarbeiten von Zertifikaten durch die Betriebssysteme
@@ -39,7 +39,7 @@ In diesem Artikel beziehen sich die Begriffe *Gateway* und *IoT Edge-Gateway* au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Auf Ihrem nachgeschalteten Gerät muss die Datei für das Zertifikat der Stammzertifizierungsstelle zur Verfügung stehen, mit der das Zertifikat der Gerätezertifizierungsstelle in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) generiert wurde. Das nachgeschaltete Gerät verwendet dieses Zertifikat zum Überprüfen der Identität des Gatewaygeräts. Wenn Sie die Demozertifikate verwendet haben, hat das Stammzertifikat der Zertifizierungsstelle den Namen **azure-iot-test-only.root.ca.cert.pem**.
+* Auf Ihrem nachgeschalteten Gerät muss die Datei für das Zertifikat der Stammzertifizierungsstelle zur Verfügung stehen, mit der das Zertifikat der Gerätezertifizierungsstelle in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) generiert wurde. Das nachgeschaltete Gerät verwendet dieses Zertifikat zum Überprüfen der Identität des Gatewaygeräts. Wenn Sie die Demozertifikate verwendet haben, hat das Stammzertifikat der Zertifizierungsstelle den Namen **azure-iot-test-only.root.ca.cert.pem** .
 * Sie verfügen über die geänderte Verbindungszeichenfolge, die auf das Gatewaygerät verweist, wie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md) erläutert.
 
 ## <a name="prepare-a-downstream-device"></a>Vorbereiten eines nachgeschalteten Geräts
@@ -67,7 +67,7 @@ Wenn sich ein Client mit einem Server verbindet, präsentiert der Server eine Ke
 
 Wenn sich ein Gerät mit Azure IoT Hub verbindet, ist das Gerät der Client und der IoT Hub-Clouddienst der Server. Der IoT Hub-Clouddienst wird durch ein Stamm-ZS-Zertifikat namens **Baltimore CyberTrust Root** gesichert, das öffentlich verfügbar und weitverbreitet ist. Da das IoT Hub-ZS-Zertifikat auf den meisten Geräten bereits installiert ist, wird es von vielen TLS-Implementierungen (OpenSSL, Schannel, LibreSSL) bei der Serverzertifikatüberprüfung automatisch verwendet. Allerdings hat ein Gerät, das sich mit IoT Hub erfolgreich verbinden kann, hat möglicherweise Probleme beim Verbinden mit einem IoT Edge-Gateway.
 
-Wenn sich ein Gerät mit einem IoT Edge-Gateway verbindet, ist das nachgeschaltete Gerät der Client und das Gatewaygerät der Server. Mit Azure IoT Edge können Operatoren (und Benutzer) Gatewayzertifikatketten nach Belieben erstellen. Der Operator hat die Möglichkeit, ein öffentliches ZS-Zertifikat wie Baltimore oder ein selbstsigniertes (oder internes) Stamm-ZS-Zertifikat zu verwenden. Öffentliche ZS-Zertifikate sind oft mit Kosten verbunden und werden deswegen i.d.R. in Produktionsszenarien eingesetzt. Selbstsignierte ZS-Zertifikate werden für Entwicklung und Tests bevorzugt. Bei den in der Einführung aufgelisteten Artikeln zum Einrichten transparenter Gateways werden selbstsignierte Stamm-ZS-Zertifikate verwendet.
+Wenn sich ein Gerät mit einem IoT Edge-Gateway verbindet, ist das nachgeschaltete Gerät der Client und das Gatewaygerät der Server. Mit Azure IoT Edge können Sie Gatewayzertifikatketten nach Belieben erstellen. Sie haben die Möglichkeit, ein öffentliches Zertifikat der Zertifizierungsstelle (z. B. Baltimore) oder ein selbstsigniertes (oder internes) Zertifikat der Stammzertifizierungsstelle zu verwenden. Öffentliche ZS-Zertifikate sind oft mit Kosten verbunden und werden deswegen i.d.R. in Produktionsszenarien eingesetzt. Selbstsignierte ZS-Zertifikate werden für Entwicklung und Tests bevorzugt. Wenn Sie die Demozertifikate verwenden, handelt es sich dabei um selbstsignierte Zertifikate der Stammzertifizierungsstelle.
 
 Wenn Sie ein selbstsigniertes Stamm-ZS-Zertifikat für ein IoT Edge-Gateway verwenden, muss es auf allen nachgeschalteten Geräten installiert oder bereitgestellt werden, die sich mit dem Gateway verbinden wollen.
 
@@ -77,9 +77,11 @@ Weitere Informationen zu IoT Edge-Zertifikaten und einigen Auswirkungen auf die 
 
 ## <a name="provide-the-root-ca-certificate"></a>Bereitstellen des Stamm-ZS-Zertifikats
 
-Um die Zertifikate des Gatewaygeräts zu überprüfen, muss das nachgeschaltete Gerät über eine eigene Kopie des Stamm-ZS-Zertifikats verfügen. Wenn Sie die im IoT Edge-Git-Repository bereitgestellten Skripts zum Erstellen von Testzertifikaten verwendet haben, hat das Stamm-ZS-Zertifikat den Namen **azure-iot-test-only.root.ca.cert.pem**. Verschieben Sie diese Zertifikatdatei in ein beliebiges Verzeichnis auf dem nachgeschalteten Gerät, wenn dies noch im Rahmen der anderen Vorbereitungsschritte für nachgeschaltete Geräte geschehen ist. Sie können einen Dienst wie [Azure Key Vault](../key-vault/index.yml) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatdatei verwenden.
+Um die Zertifikate des Gatewaygeräts zu überprüfen, muss das nachgeschaltete Gerät über eine eigene Kopie des Stamm-ZS-Zertifikats verfügen. Wenn Sie die im IoT Edge-Git-Repository bereitgestellten Skripts zum Erstellen von Testzertifikaten verwendet haben, hat das Stamm-ZS-Zertifikat den Namen **azure-iot-test-only.root.ca.cert.pem** . Verschieben Sie diese Zertifikatdatei in ein beliebiges Verzeichnis auf dem nachgeschalteten Gerät, wenn dies noch im Rahmen der anderen Vorbereitungsschritte für nachgeschaltete Geräte geschehen ist. Sie können einen Dienst wie [Azure Key Vault](../key-vault/index.yml) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatdatei verwenden.
 
 ## <a name="install-certificates-in-the-os"></a>Installieren von Zertifikaten im Betriebssystem
+
+Wenn sich das Zertifikat der Stammzertifizierungsstelle auf dem nachgeschalteten Gerät befindet, müssen Sie sicherstellen, dass die Anwendungen, die eine Verbindung mit dem Gateway herstellen, auf das Zertifikat zugreifen können.
 
 Die Installation des Stamm-ZS-Zertifikats im Zertifikatspeicher des Betriebssystems ermöglicht den meisten Anwendungen die Verwendung des Stamm-ZS-Zertifikats. Es gibt einige Ausnahmen, z.B. die NodeJS-Anwendungen, die nicht den Zertifikatspeicher des Betriebssystems verwenden, sondern den internen Zertifikatspeicher der Node-Runtime. Wenn Sie das Zertifikat nicht auf Betriebssystemebene installieren können, fahren Sie mit [Verwenden von Zertifikaten mit Azure IoT SDKs](#use-certificates-with-azure-iot-sdks) fort.
 
@@ -106,14 +108,14 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 Außerdem können Sie Zertifikate mit dem Hilfsprogramm **certlm** installieren:
 
-1. Suchen Sie im Startmenü nach **Computerzertifikate verwalten**, und wählen Sie die Option aus. Daraufhin wird das Hilfsprogramm **certlm** geöffnet.
-2. Navigieren Sie zu **Zertifikate – Lokaler Computer** > **Vertrauenswürdige Stammzertifizierungsstellen**.
-3. Klicken Sie mit der rechten Maustaste auf **Zertifikat**, und wählen Sie **Alle Aufgaben** > **Importieren** aus. Der Zertifikatimport-Assistent wird gestartet.
+1. Suchen Sie im Startmenü nach **Computerzertifikate verwalten** , und wählen Sie die Option aus. Daraufhin wird das Hilfsprogramm **certlm** geöffnet.
+2. Navigieren Sie zu **Zertifikate – Lokaler Computer** > **Vertrauenswürdige Stammzertifizierungsstellen** .
+3. Klicken Sie mit der rechten Maustaste auf **Zertifikat** , und wählen Sie **Alle Aufgaben** > **Importieren** aus. Der Zertifikatimport-Assistent wird gestartet.
 4. Folgen Sie den Anweisungen und importieren Sie die Zertifikatsdatei `<path>/azure-iot-test-only.root.ca.cert.pem`. Wenn Sie damit fertig sind, sollte die Meldung „Der Import war erfolgreich.“ angezeigt werden.
 
 Sie können Zertifikate auch programmgesteuert über .NET-APIs installieren (siehe .NET-Beispiel weiter unten in diesem Artikel).
 
-I.d.R. verwenden Anwendungen den von Windows bereitgestellten TLS-Stapel namens [Schannel](/windows/desktop/com/schannel), um eine sichere Verbindung über TLS herzustellen. Schannel *erfordert*, dass alle Zertifikate im Windows-Zertifikatspeicher installiert werden, bevor eine TLS-Verbindung hergestellt werden kann.
+I.d.R. verwenden Anwendungen den von Windows bereitgestellten TLS-Stapel namens [Schannel](/windows/desktop/com/schannel), um eine sichere Verbindung über TLS herzustellen. Schannel *erfordert* , dass alle Zertifikate im Windows-Zertifikatspeicher installiert werden, bevor eine TLS-Verbindung hergestellt werden kann.
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>Verwenden von Zertifikaten mit Azure IoT SDKs
 
@@ -133,7 +135,7 @@ Dieser Abschnitt enthält eine Beispielanwendung zum Verbinden eines Azure IoT-N
 
 1. Rufen Sie das Beispiel für **edge_downstream_device.js** aus dem [Repository für das Azure IoT-Geräte-SDK für Node.js-Beispiele](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) ab.
 2. Stellen Sie sicher, dass alle Voraussetzungen zum Ausführen des Beispiels erfüllt sind, indem Sie die Datei **readme.md** überprüfen.
-3. Aktualisieren Sie in der Datei „edge_downstream_device_device.js“ die Variablen **connectionString** und **edge_ca_cert_path**.
+3. Aktualisieren Sie in der Datei „edge_downstream_device_device.js“ die Variablen **connectionString** und **edge_ca_cert_path** .
 4. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät.
 
 Zum besseren Verständnis dieses Beispiels zeigt der folgende Codeausschnitt, wie das Client-SDK die Zertifikatsdatei liest und damit eine sichere TLS-Verbindung herstellt:
@@ -152,10 +154,10 @@ Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-.NE
 
 1. Rufen Sie das Beispiel für **EdgeDownstreamDevice** aus dem Ordner [IoT Edge-.NET-Beispiele](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice) ab.
 2. Stellen Sie sicher, dass alle Voraussetzungen zum Ausführen des Beispiels erfüllt sind, indem Sie die Datei **readme.md** überprüfen.
-3. Aktualisieren Sie in der Datei **Properties/launchSettings.json** die Variablen **DEVICE_CONNECTION_STRING** und **CA_CERTIFICATE_PATH**. Wenn Sie das im vertrauenswürdigen Zertifikatspeicher auf dem Hostsystem installierte Zertifikat verwenden möchten, lassen Sie diese Variable leer.
+3. Aktualisieren Sie in der Datei **Properties/launchSettings.json** die Variablen **DEVICE_CONNECTION_STRING** und **CA_CERTIFICATE_PATH** . Wenn Sie das im vertrauenswürdigen Zertifikatspeicher auf dem Hostsystem installierte Zertifikat verwenden möchten, lassen Sie diese Variable leer.
 4. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät.
 
-Um ein vertrauenswürdiges Zertifikat programmgesteuert über eine .NET-Anwendung im Zertifikatspeicher zu installieren, verwenden Sie die Funktion **InstallCACert()** in der Datei **EdgeDownstreamDevice/Program.cs**. Dieser Vorgang ist idempotent, sodass er mehrfach mit den gleichen Werten ohne weitere Auswirkungen ausgeführt werden kann.
+Um ein vertrauenswürdiges Zertifikat programmgesteuert über eine .NET-Anwendung im Zertifikatspeicher zu installieren, verwenden Sie die Funktion **InstallCACert()** in der Datei **EdgeDownstreamDevice/Program.cs** . Dieser Vorgang ist idempotent, sodass er mehrfach mit den gleichen Werten ohne weitere Auswirkungen ausgeführt werden kann.
 
 ### <a name="c"></a>C
 
@@ -163,7 +165,7 @@ Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-C-G
 
 1. Rufen Sie die Anwendung **iotedge_downstream_device_sample** aus den [Beispielen für das Azure IoT-Geräte-SDK für C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples) ab.
 2. Stellen Sie sicher, dass alle Voraussetzungen zum Ausführen des Beispiels erfüllt sind, indem Sie die Datei **readme.md** überprüfen.
-3. Aktualisieren Sie in der Datei „iotedge_downstream_device_sample.c“ die Variablen **connectionString** und **edge_ca_cert_path**.
+3. Aktualisieren Sie in der Datei „iotedge_downstream_device_sample.c“ die Variablen **connectionString** und **edge_ca_cert_path** .
 4. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät.
 
 Das Azure IoT-Geräte-SDK für C bietet die Möglichkeit, beim Einrichten des Clients ein ZS-Zertifikat zu registrieren. Dieser Vorgang installiert das Zertifikat nicht, sondern verwendet ein Zeichenfolgenformat des Zertifikats im Speicher. Das gespeicherte Zertifikat wird dem zugrunde liegenden TLS-Stapel beim Verbindungsaufbau bereitgestellt.
@@ -192,7 +194,7 @@ Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-Pyt
 
 ## <a name="test-the-gateway-connection"></a>Testen der Gatewayverbindung
 
-Verwenden Sie diesen Beispielbefehl, um zu testen, ob Ihr nachgeschaltetes Gerät eine Verbindung mit dem Gatewaygerät herstellen kann:
+Verwenden Sie diesen Beispielbefehl auf dem nachgeschalteten Gerät, um zu testen, ob es eine Verbindung mit dem Gatewaygerät herstellen kann:
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
