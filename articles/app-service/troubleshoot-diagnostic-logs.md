@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie die Diagnoseprotokollierung aktivieren und In
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 7b27aae712843ece27fd61927c4bfecff00399fa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264370"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747020"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -27,7 +27,7 @@ In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Az
 |-|-|-|-|
 | Anwendungsprotokollierung | Windows, Linux | App Service-Dateisystem und/oder Azure Storage-Blobs | Protokolliert Meldungen, die von Ihrem Anwendungscode generiert werden. Die Meldungen können durch das von Ihnen ausgewählte Webframework oder direkt aus Ihrem Anwendungscode mithilfe des Standardprotokollierungsmusters Ihrer Sprache generiert werden. Jede Meldung wird einer der folgenden Kategorien zugewiesen: **Critical (Kritisch)** , **Error (Fehler)** , **Warning (Warnung)** , **Info (Information)** , **Debug (Debuggen)** und **Trace (Ablaufverfolgung)** . Sie können auswählen, wie ausführlich die Protokollierung erfolgen soll, indem Sie den Schweregrad beim Aktivieren der Anwendungsprotokollierung festlegen.|
 | Webserverprotokollierung| Windows | App Service-Dateisystem oder Azure Storage-Blobs| Unformatierte HTTP-Anforderungsdaten im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Jede Protokollmeldung enthält Daten, etwa die HTTP-Methode, den Ressourcen-URI, die Client-IP, den Clientport, den Benutzer-Agent, den Antwortcode usw. |
-| Detaillierte Fehlermeldungen| Windows | App Service-Dateisystem | Kopien der *HTM*-Fehlerseiten, die an den Clientbrowser gesendet wurden. Aus Sicherheitsgründen sollten ausführliche Fehlerseiten nicht an Clients in der Produktionsumgebung gesendet werden, aber App Service kann die Fehlerseite bei jedem Auftreten eines Anwendungsfehlers speichern, der HTTP-Code 400 oder höher aufweist. Die Seite kann Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat. |
+| Detaillierte Fehlermeldungen| Windows | App Service-Dateisystem | Kopien der *HTM* -Fehlerseiten, die an den Clientbrowser gesendet wurden. Aus Sicherheitsgründen sollten ausführliche Fehlerseiten nicht an Clients in der Produktionsumgebung gesendet werden, aber App Service kann die Fehlerseite bei jedem Auftreten eines Anwendungsfehlers speichern, der HTTP-Code 400 oder höher aufweist. Die Seite kann Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat. |
 | Ablaufverfolgung fehlgeschlagener Anforderungen | Windows | App Service-Dateisystem | Detaillierte Ablaufverfolgungsinformationen zu fehlgeschlagenen Anforderungen, einschließlich der Ablaufverfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist hilfreich, wenn Sie die Leistung der Website verbessern oder einen bestimmten HTTP-Fehler isolieren möchten. Für jede fehlerhafte Anforderung, die die XML-Protokolldatei enthält, wird ein Ordner sowie das XSL-Stylesheet generiert, mit dem die Protokolldatei angezeigt werden kann. |
 | Bereitstellungsprotokollierung | Windows, Linux | App Service-Dateisystem | Protokolle zur Veröffentlichung von Inhalten für eine App. Bereitstellungsprotokollierung erfolgt automatisch, und es gibt keine konfigurierbaren Einstellungen für die Bereitstellungsprotokollierung. Sie unterstützt Sie bei der Ermittlung, warum eine Bereitstellung fehlgeschlagen ist. Wenn Sie beispielsweise ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) verwenden, können Sie die Bereitstellungsprotokollierung nutzen, um festzustellen, warum das Skript fehlschlägt. |
 
@@ -46,14 +46,14 @@ Um Anwendungsprotokollierung für Windows-Apps im [Azure-Portal](https://portal.
 
 Wählen Sie für **Anwendungsprotokollierung (Dateisystem)** oder **Anwendungsprotokollierung (Blob)** oder beides die Option **Ein** aus. 
 
-Die Option **Dateisystem** ist für das temporäre Debuggen bestimmt und schaltet sich nach 12 Stunden aus. Die Option **Blob** ist für die langfristige Protokollierung vorgesehen und benötigt einen Blobspeichercontainer, in den Protokolle geschrieben werden.  Die Option **Blob** enthält auch zusätzliche Informationen in den Protokollmeldungen, z.B. die ID der ursprünglichen VM-Instanz der Protokollmeldung (`InstanceId`), die Thread-ID (`Tid`) und einen genaueren Zeitstempel ([`EventTickCount`](/dotnet/api/system.datetime.ticks)).
+Die Option **Dateisystem** ist für das temporäre Debuggen bestimmt und schaltet sich nach 12 Stunden aus. Die Option **Blob** ist für die langfristige Protokollierung vorgesehen und benötigt einen Blobspeichercontainer, in den Protokolle geschrieben werden.  Die Option **Blob** enthält auch zusätzliche Informationen in den Protokollmeldungen, z.B. die ID der ursprünglichen VM-Instanz der Protokollmeldung (`InstanceId`), die Thread-ID (`Tid`) und einen genaueren Zeitstempel ( [`EventTickCount`](/dotnet/api/system.datetime.ticks)).
 
 > [!NOTE]
 > Zurzeit können nur .NET-Anwendungsprotokolle in den Blobspeicher geschrieben werden. Anwendungsprotokoll für Java, PHP, Node.js, Python können nur im App Service-Dateisystem gespeichert werden (ohne Codeänderungen, um Protokolle in externen Speicher zu schreiben).
 >
 > Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-account-create.md), müssen Sie außerdem die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Zugriffsschlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
 >
-> 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus**. Speichern Sie die Einstellungen.
+> 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus** . Speichern Sie die Einstellungen.
 > 2. Aktivieren Sie die Protokollierung im Speicherkontoblob erneut. Speichern Sie die Einstellungen.
 >
 >
@@ -84,14 +84,14 @@ Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
 Um Webserverprotokollierung für Windows-Apps im [Azure-Portal](https://portal.azure.com) zu aktivieren, navigieren Sie zu Ihrer App und wählen **App Service-Protokolle** aus.
 
-Wählen Sie **Webserverprotokollierung** aus, wählen Sie **Speicher** aus, um Protokolle im Blobspeicher zu speichern, oder **Dateisystem**, um Protokolle im App Service-Dateisystem zu speichern. 
+Wählen Sie **Webserverprotokollierung** aus, wählen Sie **Speicher** aus, um Protokolle im Blobspeicher zu speichern, oder **Dateisystem** , um Protokolle im App Service-Dateisystem zu speichern. 
 
 Legen Sie unter **Aufbewahrungszeitraum (Tage)** die Anzahl der Tage fest, die die Protokolle aufbewahrt werden sollen.
 
 > [!NOTE]
 > Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-account-create.md), müssen Sie die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Schlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
 >
-> 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus**. Speichern Sie die Einstellungen.
+> 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus** . Speichern Sie die Einstellungen.
 > 2. Aktivieren Sie die Protokollierung im Speicherkontoblob erneut. Speichern Sie die Einstellungen.
 >
 >
@@ -102,7 +102,7 @@ Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
 Um die Fehlerseite oder die Ablaufverfolgung fehlerhafter Anforderungen für Windows-Apps im [Azure-Portal](https://portal.azure.com) zu aktivieren, navigieren Sie zu Ihrer App und wählen **App Service-Protokolle** aus.
 
-Wählen Sie **Ausführliche Fehlerprotokollierung** oder**Ablaufverfolgung fehlerhafter Anforderungen** aus, wählen Sie **Ein** aus, und wählen Sie dann **Speichern** aus.
+Wählen Sie **Ausführliche Fehlerprotokollierung** oder **Ablaufverfolgung fehlerhafter Anforderungen** aus, wählen Sie **Ein** aus, und wählen Sie dann **Speichern** aus.
 
 Beide Typen von Protokollen werden im App Service-Dateisystem gespeichert. Bis zu 50 Fehler (Dateien/Ordner) werden aufbewahrt. Wenn die Anzahl der HTML-Dateien 50 überschreitet, werden die 26 ältesten Fehler automatisch gelöscht.
 
@@ -162,7 +162,7 @@ Für Protokolle, die im App Service-Dateisystem gespeichert sind, ist die einfac
 - Linux-/Container-Apps: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
 - Windows-Apps: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
-Bei Linux-/Container-Apps enthält die ZIP-Datei Konsolenausgabeprotokolle für den Docker-Host und den Docker-Container. Für eine horizontal hochskalierte App enthält die ZIP-Datei einen Satz von Protokollen für jede Instanz. Im App Service-Dateisystem sind diese Protokolldateien der Inhalt des Verzeichnisses */home/LogFiles*.
+Bei Linux-/Container-Apps enthält die ZIP-Datei Konsolenausgabeprotokolle für den Docker-Host und den Docker-Container. Für eine horizontal hochskalierte App enthält die ZIP-Datei einen Satz von Protokollen für jede Instanz. Im App Service-Dateisystem sind diese Protokolldateien der Inhalt des Verzeichnisses */home/LogFiles* .
 
 Für Windows-Apps enthält die ZIP-Datei den Inhalt des Verzeichnisses *D:\Home\LogFiles* im App Service- Dateisystem. Sie hat folgende Struktur:
 
@@ -170,7 +170,7 @@ Für Windows-Apps enthält die ZIP-Datei den Inhalt des Verzeichnisses *D:\Home\
 |-|-|-|
 | **Anwendungsprotokolle** |*/LogFiles/Application/* | Enthält mindestens eine Textdatei. Das Format der Protokollmeldungen hängt vom verwendeten Protokollierungsanbieter ab. |
 | **Ablaufverfolgung für Anforderungsfehler** | */LogFiles/W3SVC#########/* | Enthält XML-Dateien und eine XSL-Datei. Sie können die formatierten XML-Dateien im Browser anzeigen. |
-| **Detaillierte Fehlerprotokolle** | */LogFiles/DetailedErrors/* | Enthält HTM-Fehlerdateien. Sie können die HTM-Dateien im Browser anzeigen.<br/>Eine andere Möglichkeit zum Anzeigen der Ablaufverfolgungen für Anforderungsfehler besteht darin, im Portal zur Seite Ihrer App zu navigieren. Wählen Sie im linken Menü **Diagnose und Problembehandlung** aus, und suchen Sie nach **Ablaufverfolgungsprotokolle für Anforderungsfehler**. Klicken Sie dann auf das Symbol, um die gewünschte Ablaufverfolgung zu durchsuchen und anzuzeigen. |
+| **Detaillierte Fehlerprotokolle** | */LogFiles/DetailedErrors/* | Enthält HTM-Fehlerdateien. Sie können die HTM-Dateien im Browser anzeigen.<br/>Eine andere Möglichkeit zum Anzeigen der Ablaufverfolgungen für Anforderungsfehler besteht darin, im Portal zur Seite Ihrer App zu navigieren. Wählen Sie im linken Menü **Diagnose und Problembehandlung** aus, und suchen Sie nach **Ablaufverfolgungsprotokolle für Anforderungsfehler** . Klicken Sie dann auf das Symbol, um die gewünschte Ablaufverfolgung zu durchsuchen und anzuzeigen. |
 | **Webserverprotokolle** | */LogFiles/http/RawLogs/* | Enthält Textdateien im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Diese Informationen können in einem Text-Editor oder mit einem Hilfsprogramm wie [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619) gelesen werden.<br/>App Service unterstützt die Felder `s-computername`, `s-ip` oder `cs-version` nicht. |
 | **Bereitstellungsprotokolle** | */LogFiles/Git/* und */deployments/* | Enthält Protokolle, die von den internen Bereitstellungsprozessen generiert werden, sowie Protokolle für Git-Bereitstellungen. |
 

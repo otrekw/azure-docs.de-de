@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3cdb7796f3f8c877f130f47b971dc66c113c4d36
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070111"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748846"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer Java Spring-App
 
@@ -61,7 +61,7 @@ In diesem Tutorial lernen Sie Folgendes:
     * Unter **Schlüsseltresorname** müssen Sie einen eindeutigen Namen eingeben. Geben Sie für dieses Tutorial **Contoso-vault2** ein.
     * Wählen Sie in der Dropdownliste **Region** einen Ort aus.
 1. Übernehmen Sie für die anderen Optionen unter **Schlüsseltresor erstellen** die Standardwerte.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 An diesem Punkt ist nur Ihr Azure-Konto für den Zugriff auf diesen neuen Tresor autorisiert.
 
@@ -69,16 +69,16 @@ An diesem Punkt ist nur Ihr Azure-Konto für den Zugriff auf diesen neuen Tresor
 
 ## <a name="add-a-secret-to-key-vault"></a>Hinzufügen eines Geheimnisses zu Key Vault
 
-Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusätzliche Schritte ausführen. In diesem Fall fügen Sie eine Nachricht hinzu, die Sie verwenden können, um den Key Vault-Abruf zu testen. Die Nachricht hat den Namen **Nachricht**, und Sie speichern darin den Wert „Hallo von Key Vault“.
+Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusätzliche Schritte ausführen. In diesem Fall fügen Sie eine Nachricht hinzu, die Sie verwenden können, um den Key Vault-Abruf zu testen. Die Nachricht hat den Namen **Nachricht** , und Sie speichern darin den Wert „Hallo von Key Vault“.
 
 1. Wählen Sie auf den Key Vault-Eigenschaftenseiten die Option **Geheimnisse** aus.
 1. Wählen Sie die Option **Generieren/Importieren** aus.
 1. Geben Sie im Bereich **Geheimnis erstellen** die folgenden Werte ein:
-    * **Uploadoptionen**: Geben Sie **Manuell** ein.
-    * **Name**: Geben Sie **Nachricht** ein.
-    * **Value**: Geben Sie **Hallo von Key Vault** ein.
+    * **Uploadoptionen** : Geben Sie **Manuell** ein.
+    * **Name** : Geben Sie **Nachricht** ein.
+    * **Value** : Geben Sie **Hallo von Key Vault** ein.
 1. Übernehmen Sie für die anderen Eigenschaften unter **Geheimnis erstellen** die Standardwerte.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Hinzufügen eines Key Vault-Verweises zu App Configuration
 
@@ -87,10 +87,10 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 1. Wählen Sie **Konfigurations-Explorer** aus.
 
 1. Wählen Sie **+ Erstellen** > **Schlüsseltresorverweis** aus, und geben Sie dann die folgenden Werte an:
-    * **Key**: Wählen Sie **/application/config.keyvaultmessage** aus.
+    * **Key** : Wählen Sie **/application/config.keyvaultmessage** aus.
     * **Bezeichnung:** Lassen Sie diesen Wert leer.
-    * **Abonnement**, **Ressourcengruppe** und **Schlüsseltresor**: Geben Sie die Werte ein, die den Werten des im vorherigen Abschnitt erstellten Schlüsseltresors entsprechen.
-    * **Geheimnis**: Wählen Sie das Geheimnis mit dem Namen **Nachricht** aus, das Sie im vorherigen Abschnitt erstellt haben.
+    * **Abonnement** , **Ressourcengruppe** und **Schlüsseltresor** : Geben Sie die Werte ein, die den Werten des im vorherigen Abschnitt erstellten Schlüsseltresors entsprechen.
+    * **Geheimnis** : Wählen Sie das Geheimnis mit dem Namen **Nachricht** aus, das Sie im vorherigen Abschnitt erstellt haben.
 
 ## <a name="connect-to-key-vault"></a>Verbindung mit Key Vault herstellen
 
@@ -129,7 +129,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Erstellen Sie die Umgebungsvariablen **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** und **AZURE_TENANT_ID**. Verwenden Sie dabei die Werte für den Dienstprinzipal, die im vorherigen Schritt angezeigt wurden. Führen Sie an der Befehlszeile die folgenden Befehle aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
+1. Erstellen Sie die Umgebungsvariablen **AZURE_CLIENT_ID** , **AZURE_CLIENT_SECRET** und **AZURE_TENANT_ID** . Verwenden Sie dabei die Werte für den Dienstprinzipal, die im vorherigen Schritt angezeigt wurden. Führen Sie an der Befehlszeile die folgenden Befehle aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -159,16 +159,16 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualisieren des Codes für die Verwendung eines Key Vault-Verweises
 
-1. Erstellen Sie eine Umgebungsvariable namens **APP_CONFIGURATION_ENDPOINT**. Legen Sie ihren Wert auf den Endpunkt Ihres App Configuration-Speichers fest. Den Endpunkt finden Sie im Azure-Portal auf dem Blatt **Zugriffsschlüssel**. Starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird. 
+1. Erstellen Sie eine Umgebungsvariable namens **APP_CONFIGURATION_ENDPOINT** . Legen Sie ihren Wert auf den Endpunkt Ihres App Configuration-Speichers fest. Den Endpunkt finden Sie im Azure-Portal auf dem Blatt **Zugriffsschlüssel** . Starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird. 
 
 
-1. Öffnen Sie die Datei *bootstrap.properties* im Ordner *Ressourcen*. Aktualisieren Sie diese Datei, sodass der Wert **APP_CONFIGURATION_ENDPOINT** verwendet wird. Entfernen Sie alle Verweise auf eine Verbindungszeichenfolge in dieser Datei. 
+1. Öffnen Sie die Datei *bootstrap.properties* im Ordner *Ressourcen* . Aktualisieren Sie diese Datei, sodass der Wert **APP_CONFIGURATION_ENDPOINT** verwendet wird. Entfernen Sie alle Verweise auf eine Verbindungszeichenfolge in dieser Datei. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. Öffnen Sie *MessageProperties.java*. Fügen Sie eine neue Variable mit dem Namen *keyVaultMessage* hinzu:
+1. Öffnen Sie *MessageProperties.java* . Fügen Sie eine neue Variable mit dem Namen *keyVaultMessage* hinzu:
 
     ```java
     private String keyVaultMessage;
@@ -182,7 +182,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     }
     ```
 
-1. Öffnen Sie *HelloController.java*. Aktualisieren Sie die *getMessage*-Methode, um die von Key Vault abgerufene Nachricht einzuschließen.
+1. Öffnen Sie *HelloController.java* . Aktualisieren Sie die *getMessage* -Methode, um die von Key Vault abgerufene Nachricht einzuschließen.
 
     ```java
     @GetMapping
@@ -191,7 +191,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     }
     ```
 
-1. Erstellen Sie eine neue Datei mit dem Namen *AzureCredentials.java*, und fügen Sie den folgenden Code hinzu:
+1. Erstellen Sie eine neue Datei mit dem Namen *AzureCredentials.java* , und fügen Sie den folgenden Code hinzu:
 
     ```java
     package com.example.demo;
@@ -220,7 +220,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     }
     ```
 
-1. Erstellen Sie eine neue Datei mit dem Namen *AppConfiguration.java*. Fügen Sie den folgenden Code hinzu:
+1. Erstellen Sie eine neue Datei mit dem Namen *AppConfiguration.java* . Fügen Sie den folgenden Code hinzu:
 
     ```java
     package com.example.demo;
@@ -238,7 +238,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     }
     ```
 
-1. Erstellen Sie im Verzeichnis „META-INF“ Ihrer Ressourcen eine neue Datei namens *spring.factories*, und fügen Sie den folgenden Code hinzu:
+1. Erstellen Sie im Verzeichnis „META-INF“ Ihrer Ressourcen eine neue Datei namens *spring.factories* , und fügen Sie den folgenden Code hinzu:
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
@@ -252,7 +252,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     mvn spring-boot:run
     ```
 
-1. Nachdem Ihre Anwendung ausgeführt wird, testen Sie sie mit *cURL*. Beispiel:
+1. Nachdem Ihre Anwendung ausgeführt wird, testen Sie sie mit *cURL* . Beispiel:
 
       ```shell
       curl -X GET http://localhost:8080/

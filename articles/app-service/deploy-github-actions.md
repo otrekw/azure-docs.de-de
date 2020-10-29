@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 4bb40cc1f5d1ae2563ddd802cd8b7de11427503b
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893219"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783078"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 
@@ -31,8 +31,6 @@ Verwenden Sie [GitHub Actions](https://help.github.com/en/articles/about-github-
 
 ## <a name="workflow-file-overview"></a>Übersicht über die Workflowdatei
 
-Azure App Service-Workflowdateien enthalten drei Abschnitte:
-
 Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
 
 Die Datei besteht aus drei Abschnitten:
@@ -48,7 +46,7 @@ Die Datei besteht aus drei Abschnitten:
 Mit dem App Service Deployment Center ist die Verwendung von GitHub Actions ganz einfach. Dort wird automatisch eine Workflowdatei generiert, die auf Ihrem Anwendungsstapel basiert, und ein Commit dieser Datei im richtigen Verzeichnis Ihres GitHub-Repositorys durchgeführt.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
-1. Klicken Sie auf der linken Seite auf **Deployment Center**.
+1. Klicken Sie auf der linken Seite auf **Deployment Center** .
 1. Wählen Sie unter **Continuous Deployment (CI/CD)** die Option **GitHub** aus.
 1. Wählen Sie als Nächstes **GitHub Actions** aus.
 1. Verwenden Sie die Dropdownlisten, um Ihr GitHub-Repository, den Branch und den Anwendungsstapel auszuwählen.
@@ -73,7 +71,7 @@ Ein Veröffentlichungsprofil stellt Anmeldeinformationen auf App-Ebene dar. Rich
 
 1. Wechseln Sie im Azure-Portal zu Ihrem App Service. 
 
-1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen**.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen** .
 
 1. Speichern Sie die heruntergeladene Datei. Zum Erstellen eines GitHub-Geheimnisses verwenden Sie den Inhalt der Datei.
 
@@ -125,7 +123,7 @@ Wenn Sie Ihren GitHub-Workflow konfigurieren, verwenden Sie `AZURE_WEBAPP_PUBLIS
 
 Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
 
-Um [Anmeldeinformationen auf Benutzerebene](#generate-deployment-credentials) zu verwenden, fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis einen Namen wie `AZURE_CREDENTIALS`.
+Um [Anmeldeinformationen auf Benutzerebene](#generate-deployment-credentials) zu verwenden, fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_CREDENTIALS`.
 
 Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis für die Eingabe `creds` der Azure-Anmeldeaktion. Beispiel:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191280"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779406"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnoseprotokolle: Azure Content Delivery Network
 
@@ -59,11 +59,11 @@ Befolgen Sie diese Schritte, um die Protokollierung für Ihren Azure CDN-Endpunk
 Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der Protokolle zu verwenden:
 
  >[!NOTE] 
- >Zur Durchführung dieser Schritte ist ein Speicherkonto erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Azure Storage-Kontos](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** .
+ >Zur Durchführung dieser Schritte ist ein Speicherkonto erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** .
     
 1. Geben Sie für **Name der Diagnoseeinstellung** einen Namen für Ihre Diagnoseprotokolleinstellungen ein.
  
-2. Wählen Sie **In einem Speicherkonto archivieren** und dann **CoreAnalytics**. 
+2. Wählen Sie **In einem Speicherkonto archivieren** und dann **CoreAnalytics** . 
 
 3. Wählen Sie für **Beibehaltungsdauer (Tage)** die Anzahl der Aufbewahrungstage. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert. 
 
@@ -78,7 +78,7 @@ Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der P
 Führen Sie die folgenden Schritte aus, um Log Analytics für die Protokolle zu verwenden:
 
 >[!NOTE] 
->Zum Ausführen dieser Schritte ist ein Log Analytics-Arbeitsbereich erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** .
+>Zum Ausführen dieser Schritte ist ein Log Analytics-Arbeitsbereich erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md)** .
     
 1. Geben Sie für **Name der Diagnoseeinstellung** einen Namen für Ihre Diagnoseprotokolleinstellungen ein.
 
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte aus, um Log Analytics für die Protokolle zu 
 Gehen Sie folgendermaßen vor, um einen Event Hub für die Protokolle zu verwenden:
 
 >[!NOTE] 
->Zur Durchführung dieser Schritte ist ein Event Hub erforderlich. Weitere Informationen finden Sie unter: **[Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** .
+>Zur Durchführung dieser Schritte ist ein Event Hub erforderlich. Weitere Informationen finden Sie unter: **[Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md)** .
     
 1. Geben Sie für **Name der Diagnoseeinstellung** einen Namen für Ihre Diagnoseprotokolleinstellungen ein.
 
@@ -187,12 +187,12 @@ In diesem Abschnitt werden das Schema der CDN-Basisanalyse und die Organisation 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Verwenden des Microsoft Azure Storage-Explorers
 Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](https://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
 
-1.  Öffnen Sie den **Microsoft Azure Storage-Explorer**.
+1.  Öffnen Sie den **Microsoft Azure Storage-Explorer** .
 2.  Ermitteln Sie das Speicherkonto.
 3.  Erweitern Sie den Knoten **Blobcontainer** unter diesem Speicherkonto.
 4.  Wählen Sie den Container mit dem Namen *insights-logs-coreanalytics* aus.
 5.  Im Bereich auf der rechten Seite werden Ergebnisse angezeigt. Es wird mit der ersten Ebene begonnen: *resourceId=* . Wählen Sie weiterhin jede Ebene aus, bis Sie die Datei *PT1H.json* gefunden haben. Eine Erläuterung des Pfads finden Sie unter [Blobpfadformat](cdn-azure-diagnostic-logs.md#blob-path-format).
-6.  Jede *PT1H.json*-Datei des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
+6.  Jede *PT1H.json* -Datei des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
 7.  Das Schema der Inhalte dieser JSON-Datei wird im Abschnitt „Schema der Basisanalyseprotokolle“ beschrieben.
 
 
@@ -229,7 +229,7 @@ Sie können das Tool wie folgt verwenden:
 
 ## <a name="log-data-delays"></a>Protokolldatenverzögerungen
 
-Die folgende Tabelle zeigt die Verzögerungen bei Protokolldaten für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon**.
+Die folgende Tabelle zeigt die Verzögerungen bei Protokolldaten für **Azure CDN Standard von Microsoft** , **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon** .
 
 Microsoft-Protokolldatenverzögerungen | Verizon-Protokolldatenverzögerungen | Akamai-Protokolldatenverzögerungen
 --- | --- | ---
@@ -369,14 +369,7 @@ Beispiele für Eigenschaften:
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [Analysieren von Azure CDN-Verwendungsmustern](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics-REST-API](https://docs.microsoft.com/rest/api/loganalytics)
-
-
-
-
-
-
-
+* [Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md)
+* [Analysieren von Azure CDN-Verwendungsmustern](./cdn-analyze-usage-patterns.md)
+* [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Log Analytics-REST-API](/rest/api/loganalytics)

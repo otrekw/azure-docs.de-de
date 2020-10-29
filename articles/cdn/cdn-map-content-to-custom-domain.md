@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e880d257b8a8bd6eb287b88e11a1f6c3243fe9a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362094"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778605"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -38,9 +38,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst ein CDN-Profil und mindestens einen CDN-Endpunkt erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
 
-Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](../app-service/manage-custom-dns-buy-domain.md).
 
-Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/azure/dns/dns-overview) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
+Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](../dns/dns-overview.md) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../dns/dns-delegate-domain-azure-dns.md). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
 
 
 ## <a name="create-a-cname-dns-record"></a>Erstellen eines CNAME-DNS-Eintrags
@@ -50,7 +50,7 @@ Bevor Sie eine benutzerdefinierte Domäne mit einem Azure CDN-Endpunkt verwenden
 Eine benutzerdefinierte Domäne und die dazugehörige Unterdomäne können jeweils nur einem Endpunkt zugeordnet werden. Sie können aber unterschiedliche Unterdomänen derselben benutzerdefinierten Domäne für unterschiedliche Azure-Dienstendpunkte verwenden, indem Sie mehrere CNAME-Einträge nutzen. Außerdem können Sie eine benutzerdefinierte Domäne mit unterschiedlichen Unterdomänen demselben CDN-Endpunkt zuordnen.
 
 > [!NOTE]
-> Für benutzerdefinierte Domänen kann jeder Aliaseintragstyp verwendet werden, wenn Sie Azure DNS als Domänenanbieter nutzen. In dieser exemplarischen Vorgehensweise wird der Eintragstyp CNAME verwendet. Wenn Sie die Eintragstypen A oder AAAA verwenden, führen Sie die gleichen unten gezeigten Schritte aus, und ersetzen Sie CNAME durch den Eintragstyp Ihrer Wahl. Wenn Sie einen Aliaseintrag verwenden, um eine Stammdomäne als benutzerdefinierte Domäne zu verwenden, und TLS aktivieren möchten, müssen Sie die manuelle Überprüfung verwenden, die [diesem Artikel](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint) beschrieben wird. Weitere Informationen finden Sie unter [Verweisen an der Zonenspitze auf Azure CDN-Endpunkte](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
+> Für benutzerdefinierte Domänen kann jeder Aliaseintragstyp verwendet werden, wenn Sie Azure DNS als Domänenanbieter nutzen. In dieser exemplarischen Vorgehensweise wird der Eintragstyp CNAME verwendet. Wenn Sie die Eintragstypen A oder AAAA verwenden, führen Sie die gleichen unten gezeigten Schritte aus, und ersetzen Sie CNAME durch den Eintragstyp Ihrer Wahl. Wenn Sie einen Aliaseintrag verwenden, um eine Stammdomäne als benutzerdefinierte Domäne zu verwenden, und TLS aktivieren möchten, müssen Sie die manuelle Überprüfung verwenden, die [diesem Artikel](./cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint) beschrieben wird. Weitere Informationen finden Sie unter [Verweisen an der Zonenspitze auf Azure CDN-Endpunkte](../dns/dns-alias.md#point-zone-apex-to-azure-cdn-endpoints).
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Zuordnen der temporären Unterdomäne „cdnverify“
 
@@ -62,7 +62,7 @@ Erstellen Sie wie folgt einen CNAME-Eintrag mit der Unterdomäne „cdnverify“
 
 1. Melden Sie sich an der Website des Domänenanbieters für Ihre benutzerdefinierte Domäne an.
 
-2. Suchen Sie mithilfe der Dokumentation des Anbieters nach der Seite für die Verwaltung von DNS-Einträgen, oder suchen Sie nach Bereichen der Website mit der Bezeichnung **Domänenname**, **DNS** oder **Namensserververwaltung**. 
+2. Suchen Sie mithilfe der Dokumentation des Anbieters nach der Seite für die Verwaltung von DNS-Einträgen, oder suchen Sie nach Bereichen der Website mit der Bezeichnung **Domänenname** , **DNS** oder **Namensserververwaltung** . 
 
 3. Erstellen Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne, und füllen Sie die Felder wie in der folgenden Tabelle gezeigt aus (Feldnamen können variieren):
 
@@ -84,21 +84,21 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 2. Wählen Sie im Abschnitt „Domänen“ die Option **Manage All** (Alle verwalten) und dann **DNS** | **Manage Zones** (Zonen verwalten).
 
-3. Geben Sie unter **Domänenname** Ihre benutzerdefinierte Domäne ein, und wählen Sie anschließend **Auswählen**.
+3. Geben Sie unter **Domänenname** Ihre benutzerdefinierte Domäne ein, und wählen Sie anschließend **Auswählen** .
 
-4. Wählen Sie auf der Seite **DNS-Verwaltung** die Option **Hinzufügen** und dann in der Liste **Typ** den Eintrag **CNAME**.
+4. Wählen Sie auf der Seite **DNS-Verwaltung** die Option **Hinzufügen** und dann in der Liste **Typ** den Eintrag **CNAME** .
 
 5. Füllen Sie für den CNAME-Eintrag die folgenden Felder aus:
 
     ![Screenshot, der den C NAME-Eintrag mit Typ, Host, „Verweist auf“ und T T L-Werten für eine temporäre „cdnverify“-Unterdomäne zeigt.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - Typ: Übernehmen Sie *CNAME*.
+    - Typ: Übernehmen Sie *CNAME* .
 
     - Host: Geben Sie die gewünschte Unterdomäne Ihrer benutzerdefinierten Domäne ein (einschließlich des Unterdomänennamens „cdnverify“). Beispiel: „cdnverify.www“.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres CDN-Endpunkts ein (einschließlich des Unterdomänennamens „cdnverify“). Beispiel: „cdnverify.contoso.azureedge.net“. 
 
-    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
+    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde* .
 
 6. Wählen Sie **Speichern** aus.
  
@@ -117,7 +117,7 @@ Nachdem Sie Ihre benutzerdefinierte Domäne registriert haben, können Sie sie d
 
    Die Seite **Endpunkt** wird geöffnet.
     
-3. Wählen Sie **Benutzerdefinierte Domäne**. 
+3. Wählen Sie **Benutzerdefinierte Domäne** . 
 
    ![Schaltfläche für benutzerdefinierte CDN-Domäne](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
 
@@ -129,13 +129,13 @@ Nachdem Sie Ihre benutzerdefinierte Domäne registriert haben, können Sie sie d
 
    ![Dialogfeld für benutzerdefinierte CDN-Domäne](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-6. Wählen Sie **Hinzufügen**.
+6. Wählen Sie **Hinzufügen** .
 
    Azure überprüft, ob der CNAME-Eintrag für den eingegebenen Namen der benutzerdefinierten Domäne vorhanden ist. Wenn der CNAME-Eintrag korrekt ist, wird Ihre benutzerdefinierte Domäne überprüft. 
 
    Es kann einige Zeit dauern, bis die neuen Einstellungen der benutzerdefinierten Domäne für alle CDN-Edgeknoten übernommen werden: 
     - Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
-    - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
+    - Bei **Azure CDN Standard von Akamai** -Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
     - Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen.   
 
 
@@ -156,7 +156,7 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
 
 1. Melden Sie sich an der Website des Domänenanbieters für Ihre benutzerdefinierte Domäne an.
 
-2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen mithilfe der Dokumentation des Anbieters, oder suchen Sie nach Bereichen der Website mit der Bezeichnung **Domänennamen**, **DNS**, oder **Namensserververwaltung**. 
+2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen mithilfe der Dokumentation des Anbieters, oder suchen Sie nach Bereichen der Website mit der Bezeichnung **Domänennamen** , **DNS** , oder **Namensserververwaltung** . 
 
 3. Erstellen Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne, und füllen Sie die Felder wie in der folgenden Tabelle gezeigt aus (Feldnamen können variieren):
 
@@ -182,21 +182,21 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 2. Wählen Sie im Abschnitt „Domänen“ die Option **Manage All** (Alle verwalten) und dann **DNS** | **Manage Zones** (Zonen verwalten).
 
-3. Geben Sie unter **Domänenname** Ihre benutzerdefinierte Domäne ein, und wählen Sie anschließend **Auswählen**.
+3. Geben Sie unter **Domänenname** Ihre benutzerdefinierte Domäne ein, und wählen Sie anschließend **Auswählen** .
 
-4. Wählen Sie auf der Seite **DNS-Verwaltung** die Option **Hinzufügen** und dann in der Liste **Typ** den Eintrag **CNAME**.
+4. Wählen Sie auf der Seite **DNS-Verwaltung** die Option **Hinzufügen** und dann in der Liste **Typ** den Eintrag **CNAME** .
 
 5. Füllen Sie die Felder für den CNAME-Eintrag aus:
 
     ![Screenshot, der den C NAME-Eintrag mit Typ, Host, „Verweist auf“ und T T L-Werten für eine dauerhafte benutzerdefinierte Domäne zeigt.](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - Typ: Übernehmen Sie *CNAME*.
+    - Typ: Übernehmen Sie *CNAME* .
 
     - Host: Geben Sie die Unterdomäne der gewünschten benutzerdefinierten Domäne ein. Beispiel: „www“ oder „cdn“.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres CDN-Endpunkts ein. Beispiel: „contoso.azureedge.net“. 
 
-    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
+    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde* .
 
 6. Wählen Sie **Speichern** aus.
  
@@ -206,7 +206,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 7. Wählen Sie bei Vorhandensein des CNAME-Eintrags „cdnverify“ daneben das Stiftsymbol und dann das Papierkorbsymbol aus.
 
-8. Wählen Sie **Löschen**, um den CNAME-Eintrag zu löschen.
+8. Wählen Sie **Löschen** , um den CNAME-Eintrag zu löschen.
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -215,7 +215,7 @@ In den vorherigen Schritten haben Sie einem CDN-Endpunkt eine benutzerdefinierte
  
 1. Wählen Sie in Ihrem CDN-Profil den Endpunkt mit der benutzerdefinierten Domäne aus, die Sie entfernen möchten.
 
-2. Klicken Sie auf der Seite **Endpunkt** unter „Benutzerdefinierte Domänen“ mit der rechten Maustaste auf die benutzerdefinierte Domäne, die Sie entfernen möchten, und wählen Sie im Kontextmenü dann die Option **Löschen**.  
+2. Klicken Sie auf der Seite **Endpunkt** unter „Benutzerdefinierte Domänen“ mit der rechten Maustaste auf die benutzerdefinierte Domäne, die Sie entfernen möchten, und wählen Sie im Kontextmenü dann die Option **Löschen** .  
 
    Die Zuordnung der benutzerdefinierten Domäne zum Endpunkt wird aufgehoben.
 
@@ -233,5 +233,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie HTTPS für e
 
 > [!div class="nextstepaction"]
 > [Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne](cdn-custom-ssl.md)
-
-

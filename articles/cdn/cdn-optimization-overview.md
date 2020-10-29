@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192590"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778363"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
 
@@ -39,7 +39,7 @@ Profile für **Azure CDN Standard von Microsoft** unterstützen die folgenden Op
 * [Allgemeine Webbereitstellung](#general-web-delivery). Diese Optimierung wird auch für Medienstreaming und den Download großer Datei verwendet.
 
 > [!NOTE]
-> Beschleunigung dynamischer Websites von Microsoft wird über [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) angeboten.
+> Beschleunigung dynamischer Websites von Microsoft wird über [Azure Front Door Service](../frontdoor/front-door-overview.md) angeboten.
 
 Profile für **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** unterstützen die folgenden Optimierungen:
 
@@ -95,7 +95,7 @@ Medienstreaming ist ein zeitkritischer Prozess, da das verspätete Eintreffen vo
 
 Hierbei handelt es sich um ein gängiges Szenario für Azure Media Services-Kunden. Wenn Sie Azure Media Services verwenden, erhalten Sie einen einzigen Streamingendpunkt, der für Live- und On-Demand-Streaming verwendet werden kann. Dadurch müssen Kunden keinen anderen Endpunkt verwenden, wenn sie von Livestreaming zu On-Demand-Streaming wechseln. Dieses Szenario wird von der Optimierungsoption „Allgemeines Medienstreaming“ unterstützt.
 
-Verwenden Sie für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um allgemeine Streamingmedieninhalte zu übermitteln.
+Verwenden Sie für **Azure CDN Standard von Microsoft** , **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um allgemeine Streamingmedieninhalte zu übermitteln.
 
 Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung über das Azure Content Delivery Network](cdn-media-streaming-optimization.md).
 
@@ -103,7 +103,7 @@ Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienst
 
 Die Optimierung „Video on Demand-Medienstreaming“ verbessert das Streamen von Video on Demand-Inhalten. Wählen Sie diese Option, wenn Sie einen Endpunkt für Video on Demand-Streaming verwenden.
 
-Verwenden Sie bei Profilen für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um Inhalte von Video on Demand-Streamingmedien zu übermitteln.
+Verwenden Sie bei Profilen für **Azure CDN Standard von Microsoft** , **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um Inhalte von Video on Demand-Streamingmedien zu übermitteln.
 
 Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung über das Azure Content Delivery Network](cdn-media-streaming-optimization.md).
 
@@ -115,22 +115,19 @@ Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienst
 
 Bei Verwendung von Profilen für **Azure CDN Standard von Akamai** ist der Download großer Dateien für Inhalte mit einer Größe von mehr als 10 MB optimiert. Wenn Ihre Dateien im Schnitt kleiner als 10 MB sind, verwenden Sie die Optimierung „Allgemeine Webbereitstellung“. Wenn Ihre Dateien durchweg größer als 10 MB sind, ist es unter Umständen effizienter, einen separaten Endpunkt für große Dateien zu erstellen. Firmware- oder Softwareupdates sind beispielsweise in der Regel große Dateien. Für die Bereitstellung von Dateien, die größer als 1,8 GB sind, ist die Optimierung für den Download großer Dateien erforderlich.
 
-Verwenden Sie bei Profilen für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um Inhalte umfangreicher Dateidownloads zu übermitteln. Es gibt keine Einschränkung hinsichtlich der Dateidownloadgröße.
+Verwenden Sie bei Profilen für **Azure CDN Standard von Microsoft** , **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um Inhalte umfangreicher Dateidownloads zu übermitteln. Es gibt keine Einschränkung hinsichtlich der Dateidownloadgröße.
 
 Weitere Informationen zur Optimierung für große Dateien finden Sie unter [Optimierung großer Dateidownloads über das Azure Content Delivery Network](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Beschleunigung dynamischer Websites
 
- Die Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) steht bei Profilen für **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** zur Verfügung. Die Verwendung dieser Optimierung ist mit zusätzlichen Kosten verbunden. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
+ Die Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) steht bei Profilen für **Azure CDN Standard von Akamai** , **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** zur Verfügung. Die Verwendung dieser Optimierung ist mit zusätzlichen Kosten verbunden. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
 
 > [!NOTE]
-> Die Beschleunigung dynamischer Websites wird über [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) angeboten. Dabei handelt es sich um einen globalen [Anycast](https://en.wikipedia.org/wiki/Anycast)-Dienst, der das private globale Netzwerk von Microsoft zum Übermitteln Ihrer Workloads nutzt.
+> Die Beschleunigung dynamischer Websites wird über [Azure Front Door Service](../frontdoor/front-door-overview.md) angeboten. Dabei handelt es sich um einen globalen [Anycast](https://en.wikipedia.org/wiki/Anycast)-Dienst, der das private globale Netzwerk von Microsoft zum Übermitteln Ihrer Workloads nutzt.
 
 DSA umfasst verschiedene Maßnahmen zur Verbesserung der Wartezeit und der Leistung dynamischer Inhalte. Hierzu zählen unter anderem Routen- und Netzwerkoptimierungen sowie TCP-Optimierungen. 
 
 Mit dieser Optimierung können Sie eine Web-App mit zahlreichen nicht zwischenspeicherbaren Antworten beschleunigen. Beispiele hierfür wären etwa Suchergebnisse, Auftragsabschlusstransaktionen oder Echtzeitdaten. Für statische Daten können Sie weiterhin die grundlegenden Azure CDN-Cachefunktionen verwenden. 
 
 Weitere Informationen zur Beschleunigung dynamischer Websites finden Sie unter [Beschleunigung dynamischer Websites durch Azure CDN](cdn-dynamic-site-acceleration.md).
-
-
-

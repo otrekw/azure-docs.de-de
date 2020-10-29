@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191163"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779168"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 
@@ -38,7 +38,7 @@ Eine Abrechnungsregion ist ein geografisches Gebiet, mit dem bestimmt wird, welc
 
 - Zone 5: Indien
 
-Informationen zu POP-Regionen (Point of Presence) finden Sie unter [Azure CDN-POP-Standorte nach Region](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Ein in Mexiko befindlicher POP gehört beispielsweise zur Region Nordamerika und daher zur Zone 1. 
+Informationen zu POP-Regionen (Point of Presence) finden Sie unter [Azure CDN-POP-Standorte nach Region](./cdn-pop-locations.md). Ein in Mexiko befindlicher POP gehört beispielsweise zur Region Nordamerika und daher zur Zone 1. 
 
 Weitere Informationen zur Azure CDN-Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -48,7 +48,7 @@ Die Azure CDN-Abrechnungsregion basiert auf dem Standort des Quellservers, der d
 Wenn beispielsweise ein Benutzer, der sich in Mexiko befindet, eine Anforderung sendet, und diese Anforderung aufgrund von Peering- oder Datenverkehrsbedingungen von einem Server an einem POP in den Vereinigten Staaten bedient wird, sind die Vereinigten Staaten die Abrechnungsregion.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Was ist eine abrechenbare Azure CDN-Transaktion?
-Jede HTTP(S)-Anforderung, die im CDN endet, ist ein abrechenbares Ereignis, das alle Antworttypen einschließt: Erfolg, Fehler oder andere. Allerdings können verschiedene Antworten unterschiedliche Datenverkehrsmengen generieren. Beispielsweise generieren *304 Nicht geändert*-Antworten und andere Antworten, die nur aus einem Header bestehen, nur wenig Datenverkehr, da es sich um kleine Headerantworten handelt; ebenso sind Fehlerantworten (z. B. *404 Nicht gefunden*) zwar abrechenbar, aber aufgrund der kleinen Antwortnutzlast fallen nur geringe Kosten an.
+Jede HTTP(S)-Anforderung, die im CDN endet, ist ein abrechenbares Ereignis, das alle Antworttypen einschließt: Erfolg, Fehler oder andere. Allerdings können verschiedene Antworten unterschiedliche Datenverkehrsmengen generieren. Beispielsweise generieren *304 Nicht geändert* -Antworten und andere Antworten, die nur aus einem Header bestehen, nur wenig Datenverkehr, da es sich um kleine Headerantworten handelt; ebenso sind Fehlerantworten (z. B. *404 Nicht gefunden* ) zwar abrechenbar, aber aufgrund der kleinen Antwortnutzlast fallen nur geringe Kosten an.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Welche sonstigen Azure-Kosten fallen für die Azure CDN-Verwendung an?
 Durch Verwenden von Azure CDN fallen auch einige Nutzungsgebühren für die Dienste an, die als Ursprung für Ihre Objekte verwendet werden. Diese Kosten belaufen sich in der Regel nur auf ein Bruchteil der gesamten Kosten für die CDN-Nutzung.
@@ -119,4 +119,4 @@ Wenn Sie einen der folgenden Azure-Dienste als CDN-Ursprung verwenden, wird Ihne
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Wie verwalte ich meine Kosten besonders effektiv?
-Legen Sie eine möglichst lange Gültigkeitsdauer für Ihre Inhalte fest. 
+Legen Sie eine möglichst lange Gültigkeitsdauer für Ihre Inhalte fest.

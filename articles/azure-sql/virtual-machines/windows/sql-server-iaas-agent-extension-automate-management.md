@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: df3e2ae2737aa8bfedd0e8d7daa9d42771f1937b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1b68242e7cb8eba885c78ab62572d257198d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570339"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779712"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Die Erweiterung für SQL Server-IaaS-Agent (SqlIaasExtension) wird auf virtuelle
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [SQL Server-IaaS-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
+Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [SQL Server-IaaS-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension).
 
 
 ## <a name="supported-services"></a>Unterstützte Dienste
@@ -51,7 +51,7 @@ Wenn die SQL Server-IaaS-Agent-Erweiterung installiert wurde und ausgeführt wi
 ## <a name="prerequisites"></a>Voraussetzungen
 Anforderungen für die Verwendung der SQL Server-IaaS-Agent-Erweiterung auf Ihrem virtuellen Computer:
 
-**Betriebssystem**:
+**Betriebssystem** :
 
 * Windows Server 2008 R2
 * Windows Server 2012
@@ -101,7 +101,7 @@ Um eine benannte Instanz von SQL Server zu verwenden, gehen Sie folgendermaßen 
 
 
 ## <a name="get-the-status-of-the-sql-server-iaas-extension"></a>Abrufen des Status der SQL Server-IaaS-Erweiterung
-Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie im Fenster des virtuellen Computers die Option **Alle Einstellungen** aus, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SqlIaasExtension** sollte aufgeführt sein.
+Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie im Fenster des virtuellen Computers die Option **Alle Einstellungen** aus, und klicken Sie dann auf **Erweiterungen** . Die Erweiterung **SqlIaasExtension** sollte aufgeführt sein.
 
 ![Status der SQL Server-IaaS-Agent-Erweiterung im Azure-Portal](./media/sql-server-iaas-agent-extension-automate-management/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -120,7 +120,7 @@ Der Befehl oben überprüft, ob der Agent installiert ist, und stellt allgemeine
    ```
 
 ## <a name="removal"></a>Entfernen
-Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie im Fenster **Erweiterungen** in den Eigenschaften des virtuellen Computers auf die Auslassungspunkte klicken. Wählen Sie anschließend die Option **Löschen**.
+Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie im Fenster **Erweiterungen** in den Eigenschaften des virtuellen Computers auf die Auslassungspunkte klicken. Wählen Sie anschließend die Option **Löschen** .
 
 ![Deinstallieren der SQL Server-IaaS-Agent-Erweiterung im Azure-Portal](./media/sql-server-iaas-agent-extension-automate-management/azure-rm-sql-server-iaas-agent-uninstall.png)
 

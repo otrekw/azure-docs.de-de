@@ -14,12 +14,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: a1410b9e8287b34c8b40e841ff513de784e1730a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150553"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748523"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware
 
@@ -140,7 +141,7 @@ Eine Konfiguration meldet zwei Arten von Metriken:
 
 Navigieren Sie zum Ordner **iot-hub/Tutorials/FirmwareUpdate** im heruntergeladenen Node.js-Beispielprojekt. Hier können Sie den simulierten Gerätecode anzeigen, mit dem die gewünschten Eigenschaften der Firmware verarbeitet werden, die von der Back-End-Anwendung gesendet werden. Öffnen Sie anschließend die Datei „SimulatedDevice.js“ in einem Text-Editor.
 
-Die simulierte Geräteanwendung erstellt einen Handler für Updates der gewünschten Eigenschaften (**properties.desired.firmware**) auf dem Gerätezwilling. Im Handler werden einige grundlegende Überprüfungen der gewünschten Eigenschaften durchgeführt, bevor der Updateprozesses gestartet wird:
+Die simulierte Geräteanwendung erstellt einen Handler für Updates der gewünschten Eigenschaften ( **properties.desired.firmware** ) auf dem Gerätezwilling. Im Handler werden einige grundlegende Überprüfungen der gewünschten Eigenschaften durchgeführt, bevor der Updateprozesses gestartet wird:
 
 [!code-javascript[Handle desired property update](~/iot-samples-node/iot-hub/Tutorials/FirmwareUpdate/SimulatedDevice.js?name=initiateUpdate "Handle desired property update")]
 
@@ -164,14 +165,14 @@ In diesem Abschnitt führen Sie zwei Beispielanwendungen aus, die nachverfolgt w
 
 Zum Ausführen der Anwendung zur Simulation eines Geräts und der Back-End-Anwendung benötigen Sie die Verbindungszeichenfolgen für das Gerät und den Dienst. Sie haben sich die Verbindungszeichenfolgen notiert, als Sie am Anfang dieses Tutorials die Ressourcen erstellt haben.
 
-Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate**. Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate** . Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate**. Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate** . Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
@@ -198,7 +199,7 @@ Da automatische Gerätekonfigurationen zum Zeitpunkt der Erstellung und dann all
 
 Wenn Sie das nächste Tutorial ausführen möchten, können Sie die Ressourcengruppe und die IoT Hub-Instanz beibehalten und später erneut verwenden.
 
-Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorial-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen**.
+Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorial-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen** .
 
 Verwenden Sie alternativ hierzu die CLI:
 

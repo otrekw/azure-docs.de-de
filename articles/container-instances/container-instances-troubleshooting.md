@@ -3,13 +3,13 @@ title: Häufig auftretende Probleme und Problembehandlung
 description: Informationen zum Beheben von häufigen Problemen beim Bereitstellen, Ausführen oder Verwalten von Azure Container Instances
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148609"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746909"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -213,7 +213,7 @@ Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lausche
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Suchen Sie die IP-Adresse der Containergruppe in der Befehlsausgabe von `az container create`. Suchen Sie den Wert von **ip**. 
+1. Suchen Sie die IP-Adresse der Containergruppe in der Befehlsausgabe von `az container create`. Suchen Sie den Wert von **ip** . 
 1. Nachdem der Container erfolgreich bereitgestellt wurde, navigieren Sie im Browser zu der IP-Adresse und dem Port der Container-App, z. B. `192.0.2.0:9000`. 
 
     In der Web-App sollte die Meldung „Willkommen bei Azure Container Instances“ angezeigt werden.

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5f4f6a6e72b57638688069111071a6e0a035c49
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887858"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778964"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
 
 > [!NOTE] 
-> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile von **Azure CDN von Microsoft** müssen Sie die [Standard-Regel-Engine](cdn-standard-rules-engine-reference.md) verwenden und für Profile von **Azure CDN Premium von Verizon** die [Verizon Premium-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal**, um eine ähnliche Funktionalität nutzen zu können.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile von **Azure CDN von Microsoft** müssen Sie die [Standard-Regel-Engine](cdn-standard-rules-engine-reference.md) verwenden und für Profile von **Azure CDN Premium von Verizon** die [Verizon Premium-Regel-Engine](./cdn-verizon-premium-rules-engine.md) im **Verwaltungsportal** , um eine ähnliche Funktionalität nutzen zu können.
  
 Azure Content Delivery Network (CDN) bietet zwei Möglichkeiten, um zu steuern, wie Ihre Dateien zwischengespeichert werden: 
 
@@ -54,11 +54,11 @@ Informationen zum Standardverhalten beim Zwischenspeichern und die Header mit Ca
 ## <a name="caching-behavior-settings"></a>Einstellungen für das Verhalten beim Zwischenspeichern
 Für globale und benutzerdefinierte Cacheregeln können Sie die folgenden Einstellungen für **Verhalten beim Zwischenspeichern** festlegen:
 
-- **Cache umgehen**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden nicht zwischengespeichert und ignoriert.
+- **Cache umgehen** : Die vom Ursprung angegebenen Header mit Cacheanweisungen werden nicht zwischengespeichert und ignoriert.
 
-- **Überschreiben**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden ignoriert, und stattdessen wird die angegebene Cachedauer verwendet. Dadurch wird „cache-control: no-cache“ nicht überschrieben.
+- **Überschreiben** : Die vom Ursprung angegebenen Header mit Cacheanweisungen werden ignoriert, und stattdessen wird die angegebene Cachedauer verwendet. Dadurch wird „cache-control: no-cache“ nicht überschrieben.
 
-- **Bei Fehlen festlegen**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden berücksichtigt, sofern diese vorhanden sind. Anderenfalls wird die angegebene Cachedauer verwendet.
+- **Bei Fehlen festlegen** : Die vom Ursprung angegebenen Header mit Cacheanweisungen werden berücksichtigt, sofern diese vorhanden sind. Anderenfalls wird die angegebene Cachedauer verwendet.
 
 ![Globale Cacheregeln](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
@@ -75,9 +75,9 @@ Bei globalen und benutzerdefinierten Cacheregeln können Sie die Dauer bis zum C
 
 Für benutzerdefinierte Cacheregeln sind zwei Übereinstimmungsbedingungen verfügbar:
  
-- **Pfad**: Diese Bedingung entspricht dem Pfad der URL, ausgenommen des Domänennamens, und unterstützt das Platzhaltersymbol (\*). Beispiel: _/myfile.html_, _/my/folder/*_ und _/my/images/*.jpg_. Die maximale Länge beträgt 260 Zeichen.
+- **Pfad** : Diese Bedingung entspricht dem Pfad der URL, ausgenommen des Domänennamens, und unterstützt das Platzhaltersymbol (\*). Beispiel: _/myfile.html_ , _/my/folder/*_ und _/my/images/*.jpg_ . Die maximale Länge beträgt 260 Zeichen.
 
-- **Erweiterung**: Diese Bedingung entspricht der Dateierweiterung der angeforderten Datei. Sie können eine Liste von durch Trennzeichen getrennten Dateierweiterungen angeben. Beispiel: _.jpg_, _.mp3_ oder _.png_. Die maximale Anzahl der Erweiterungen beträgt 50 und die maximale Anzahl der Zeichen pro Erweiterung 16. 
+- **Erweiterung** : Diese Bedingung entspricht der Dateierweiterung der angeforderten Datei. Sie können eine Liste von durch Trennzeichen getrennten Dateierweiterungen angeben. Beispiel: _.jpg_ , _.mp3_ oder _.png_ . Die maximale Anzahl der Erweiterungen beträgt 50 und die maximale Anzahl der Zeichen pro Erweiterung 16. 
 
 ## <a name="global-and-custom-rule-processing-order"></a>Reihenfolge der Verarbeitung von globalen und benutzerdefinierten Regeln
 Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge verarbeitet:
@@ -109,7 +109,7 @@ Wenn diese Regeln festgelegt sind, löst eine Anforderung für „ _&lt;Endpunkt
 > Bei Dateien, die vor einer Regeländerung zwischengespeichert werden, wird die Cachedauereinstellung des Ursprungs beibehalten. Um die Cachedauer zurückzusetzen, müssen Sie [die Datei bereinigen](cdn-purge-endpoint.md). 
 >
 > Es dauert eine gewisse Zeit, bis Änderungen an der Azure CDN-Konfiguration im gesamten Netzwerk verteilt wurden: 
-> - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
+> - Bei **Azure CDN Standard von Akamai** -Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
 > - Bei Profilen vom Typ **Azure CDN Standard von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen.  
 >
 

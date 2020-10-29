@@ -3,13 +3,13 @@ title: 'Tutorial: Wiederherstellen von Dateien auf einem virtuellen Computer mit
 description: Informationen zum Ausführen von Wiederherstellungen auf Dateiebene auf einer Azure-VM mit Sicherungs- und Wiederherstellungsdiensten.
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 6684e8717bad47248b539ecf70d135a46f459a4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cf55b9d64d7d716aee9862b0e1e3e24966629286
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324981"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746691"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 

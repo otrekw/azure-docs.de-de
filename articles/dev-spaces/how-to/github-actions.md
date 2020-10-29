@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: Überprüfen und Testen von Änderungen eines Pull Requests direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-js
-ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973103"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748145"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
@@ -49,7 +49,7 @@ az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 > [!IMPORTANT]
 > Der ACR-Name muss innerhalb von Azure eindeutig sein und aus 5 bis 50 alphanumerischen Zeichen bestehen. Alle verwendeten Buchstaben müssen Kleinbuchstaben sein.
 
-Speichern Sie den *loginServer*-Wert der Ausgabe, da er in einem späteren Schritt verwendet wird.
+Speichern Sie den *loginServer* -Wert der Ausgabe, da er in einem späteren Schritt verwendet wird.
 
 ## <a name="create-a-service-principal-for-authentication"></a>Erstellen eines Dienstprinzipals für die Authentifizierung
 
@@ -73,7 +73,7 @@ Verwenden Sie [az acr show][az-acr-show], um die *ID* der ACR anzuzeigen:
 az acr show --name <acrName> --query id
 ```
 
-Verwenden Sie [az role assignment create][az-role-assignment-create], um Zugriff als *Mitwirkender* auf Ihren AKS-Cluster und *AcrPush*-Zugriff auf Ihre ACR zu gewähren.
+Verwenden Sie [az role assignment create][az-role-assignment-create], um Zugriff als *Mitwirkender* auf Ihren AKS-Cluster und *AcrPush* -Zugriff auf Ihre ACR zu gewähren.
 
 ```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
@@ -88,31 +88,31 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > Für das Repository müssen GitHub-Aktionen aktiviert sein. Um GitHub-Aktionen für das Repository zu aktivieren, navigieren Sie in GitHub zu Ihrem Repository, klicken Sie auf die Registerkarte „Aktionen“ und aktivieren Sie Aktionen für dieses Repository.
 
-Navigieren Sie zum geforkten Repository und klicken Sie auf *Einstellungen*. Klicken Sie in der linken Randleiste auf *Geheimnisse*. Klicken Sie auf *Neues Geheimnis hinzufügen*, um die nachstehend aufgeführten neuen Geheimnisse hinzuzufügen:
+Navigieren Sie zum geforkten Repository und klicken Sie auf *Einstellungen* . Klicken Sie in der linken Randleiste auf *Geheimnisse* . Klicken Sie auf *Neues Geheimnis hinzufügen* , um die nachstehend aufgeführten neuen Geheimnisse hinzuzufügen:
 
-1. *AZURE_CREDENTIALS*: Die gesamte Ausgabe der Dienstprinzipalerstellung.
-1. *RESOURCE_GROUP*: Die Ressourcengruppe für den AKS-Cluster (in diesem Beispiel *MyResourceGroup*).
-1. *CLUSTER_NAME*: Der Name des AKS-Clusters (in diesem Beispiel *MyAKS*).
-1. *CONTAINER_REGISTRY*: Der *loginServer* für die ACR.
-1. *Host*: Der Host für den Entwicklungsbereich im Format *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* (in diesem Beispiel *dev.bikesharingweb.fedcab0987.eus.azds.io*).
-1. *IMAGE_PULL_SECRET*: Der Name des Geheimnisses, das Sie verwenden möchten, z. B. *demo-secret*.
-1. *MASTER_SPACE*: Der Name des übergeordneten Entwicklungsbereichs (in diesem Beispiel *dev*).
-1. *REGISTRY_USERNAME*: *clientID* in der JSON-Ausgabe der Dienstprinzipalerstellung.
-1. *REGISTRY_USERNAME*: *clientSecret* in der JSON-Ausgabe der Dienstprinzipalerstellung.
+1. *AZURE_CREDENTIALS* : Die gesamte Ausgabe der Dienstprinzipalerstellung.
+1. *RESOURCE_GROUP* : Die Ressourcengruppe für den AKS-Cluster (in diesem Beispiel *MyResourceGroup* ).
+1. *CLUSTER_NAME* : Der Name des AKS-Clusters (in diesem Beispiel *MyAKS* ).
+1. *CONTAINER_REGISTRY* : Der *loginServer* für die ACR.
+1. *Host* : Der Host für den Entwicklungsbereich im Format *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* (in diesem Beispiel *dev.bikesharingweb.fedcab0987.eus.azds.io* ).
+1. *IMAGE_PULL_SECRET* : Der Name des Geheimnisses, das Sie verwenden möchten, z. B. *demo-secret* .
+1. *MASTER_SPACE* : Der Name des übergeordneten Entwicklungsbereichs (in diesem Beispiel *dev* ).
+1. *REGISTRY_USERNAME* : *clientID* in der JSON-Ausgabe der Dienstprinzipalerstellung.
+1. *REGISTRY_USERNAME* : *clientSecret* in der JSON-Ausgabe der Dienstprinzipalerstellung.
 
 > [!NOTE]
 > Alle aufgeführten Geheimnisse werden von der GitHub-Aktion verwendet und in [.github/workflows/bikes.yml][github-action-yaml] konfiguriert.
 
-Optional: Wenn Sie den Masterbereich nach der PR-Zusammenführung aktualisieren möchten, können Sie das *GATEWAY_HOST*-Geheimnis im Format *<MASTERBEREICH>.gateway.<HOSTSUFFIX>* hinzufügen. In diesem Beispiel ist dies *dev.gateway.fedcab0987.eus.azds.io*. Nachdem Sie Ihre Änderungen im Master-Branch in Ihrem Fork zusammengeführt haben, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im Master-Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist *dev* der Masterbereich. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
+Optional: Wenn Sie den Masterbereich nach der PR-Zusammenführung aktualisieren möchten, können Sie das *GATEWAY_HOST* -Geheimnis im Format *<MASTERBEREICH>.gateway.<HOSTSUFFIX>* hinzufügen. In diesem Beispiel ist dies *dev.gateway.fedcab0987.eus.azds.io* . Nachdem Sie Ihre Änderungen im Master-Branch in Ihrem Fork zusammengeführt haben, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im Master-Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist *dev* der Masterbereich. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
 
-Wenn die Änderungen in Ihrem PR in einem untergeordneten Bereich ausgeführt werden sollen, aktualisieren Sie die Geheimnisse *MASTER_SPACE* und *HOST*. Ein Beispiel: Die Anwendung in *dev* wird mit einem untergeordneten Bereich *dev/azureuser1* ausgeführt. Der PR soll in einem untergeordneten Bereich von *dev/azureuser1* ausgeführt werden:
+Wenn die Änderungen in Ihrem PR in einem untergeordneten Bereich ausgeführt werden sollen, aktualisieren Sie die Geheimnisse *MASTER_SPACE* und *HOST* . Ein Beispiel: Die Anwendung in *dev* wird mit einem untergeordneten Bereich *dev/azureuser1* ausgeführt. Der PR soll in einem untergeordneten Bereich von *dev/azureuser1* ausgeführt werden:
 
-* Aktualisieren Sie *MASTER_SPACE* auf den untergeordneten Bereich, der zum übergeordneten Bereich werden soll; in diesem Beispiel *azureuser1*.
-* Aktualisieren Sie *HOST* auf *<GRANDPARENT_SPACE>.<APP_NAME>.<HOST_SUFFIX>* ; in diesem Beispiel ist dies *dev.bikesharingweb.fedcab0987.eus.azds.io*.
+* Aktualisieren Sie *MASTER_SPACE* auf den untergeordneten Bereich, der zum übergeordneten Bereich werden soll; in diesem Beispiel *azureuser1* .
+* Aktualisieren Sie *HOST* auf *<GRANDPARENT_SPACE>.<APP_NAME>.<HOST_SUFFIX>* ; in diesem Beispiel ist dies *dev.bikesharingweb.fedcab0987.eus.azds.io* .
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Neuen Branch für Codeänderungen erstellen
 
-Navigieren Sie zu `BikeSharingApp/` und erstellen Sie einen neue Branch mit dem Namen *bike-images*.
+Navigieren Sie zu `BikeSharingApp/` und erstellen Sie einen neue Branch mit dem Namen *bike-images* .
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
@@ -149,9 +149,9 @@ Verwenden Sie `git push`, um den neuen Branch per Push in Ihr geforktes Reposito
 git push origin bike-images
 ```
 
-Navigieren Sie nach dem Pushen in GitHub zum geforkten Repository und erstellen Sie eine Pull Request mit dem *master*-Branch in Ihrem geforkten Repository als Basisbranch im Vergleich zum *bike-images*-Branch.
+Navigieren Sie nach dem Pushen in GitHub zum geforkten Repository und erstellen Sie eine Pull Request mit dem *master* -Branch in Ihrem geforkten Repository als Basisbranch im Vergleich zum *bike-images* -Branch.
 
-Navigieren Sie nach dem Öffnen der Pull Request zur Registerkarte *Aktionen*. Vergewissern Sie sich, dass eine neue Aktion gestartet wurde und der *Bikes*-Dienst erstellt wird.
+Navigieren Sie nach dem Öffnen der Pull Request zur Registerkarte *Aktionen* . Vergewissern Sie sich, dass eine neue Aktion gestartet wurde und der *Bikes* -Dienst erstellt wird.
 
 ## <a name="view-the-child-space-with-your-changes"></a>Untergeordneten Bereich mit Ihren Änderungen anzeigen
 
@@ -160,9 +160,9 @@ Nachdem die Aktion abgeschlossen wurde, wird basierend auf den Änderungen in de
 > [!div class="mx-imgBorder"]
 > ![GitHub-Aktions-URL](../media/github-actions/github-action-url.png)
 
-Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die URL im Kommentar öffnen. Wählen Sie *Aurelia Briggs (customer)* als Benutzer und dann ein zu mietendes Fahrrad aus. Vergewissern Sie sich, dass das Platzhalterbild für das Fahrrad nicht mehr angezeigt wird.
+Navigieren Sie zum Dienst *bikesharingweb* , indem Sie die URL im Kommentar öffnen. Wählen Sie *Aurelia Briggs (customer)* als Benutzer und dann ein zu mietendes Fahrrad aus. Vergewissern Sie sich, dass das Platzhalterbild für das Fahrrad nicht mehr angezeigt wird.
 
-Wenn Sie Ihre Änderungen im *master*-Branch in Ihrem Fork zusammenführen, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im übergeordneten Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist der übergeordnete Bereich *dev*. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
+Wenn Sie Ihre Änderungen im *master* -Branch in Ihrem Fork zusammenführen, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im übergeordneten Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist der übergeordnete Bereich *dev* . Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
 
 ## <a name="clean-up-your-azure-resources"></a>Bereinigen Ihrer Azure-Ressourcen
 

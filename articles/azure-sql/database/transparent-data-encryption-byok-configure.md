@@ -5,19 +5,19 @@ description: Hier erfahren Sie, wie Sie eine Azure SQL-Datenbank und Azure Syna
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619116"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779967"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell und die Azure-Befehlszeilenschnittstelle: Aktivieren von Transparent Data Encryption mithilfe eines vom Kunden verwalteten Azure Key Vault-Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ In diesem Artikel wird die Verwendung eines Schlüssels aus Azure Key Vault für
 - Der Schlüssel muss die folgenden Attribute aufweisen, um für TDE verwendet werden zu können:
   - Kein Ablaufdatum
   - Nicht deaktiviert
-  - Fähigkeit zum Ausführen des *get*-, *wrap key*- und *unwrap key*-Vorgangs
+  - Fähigkeit zum Ausführen des *get* -, *wrap key* - und *unwrap key* -Vorgangs
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Anweisungen zur Installation des Az-Moduls finden Sie unter [Install Azure PowerShell](/powershell/azure/install-az-ps) (Installieren von Azure PowerShell). Spezifische Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+Anweisungen zur Installation des Az-Moduls finden Sie unter [Install Azure PowerShell](/powershell/azure/install-az-ps) (Installieren von Azure PowerShell). Spezifische Cmdlets finden Sie unter [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
 
 Weitere Informationen zu Key Vault finden Sie im Artikel zu [PowerShell-Anweisungen von Key Vault](../../key-vault/secrets/quick-create-powershell.md) und unter [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](../../key-vault/general/soft-delete-powershell.md).
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
-Informationen zum Installieren der erforderlichen Version der Azure-Befehlszeilenschnittstelle (2.0 oder höher) sowie zum Herstellen der Verbindung mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure-Befehlszeilenschnittstelle 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Informationen zum Installieren der erforderlichen Version der Azure-Befehlszeilenschnittstelle (2.0 oder höher) sowie zum Herstellen der Verbindung mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure-Befehlszeilenschnittstelle 2.0](/cli/azure/install-azure-cli).
 
 Spezifische Informationen zu Key Vault finden Sie unter [Verwalten von Key Vault mit der Azure CLI](../../key-vault/general/manage-with-cli2.md) und unter [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](../../key-vault/general/soft-delete-cli.md).
 
@@ -239,7 +239,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - Wenn der neue Schlüssel dem Server nicht hinzugefügt oder nicht als TDE-Schutzvorrichtung aktualisiert werden kann, überprüfen Sie Folgendes:
    - Der Schlüssel darf kein Ablaufdatum haben.
-   - Für den Schlüssel müssen die *get*-, *wrap key*- und *unwrap key*-Vorgänge aktiviert sein.
+   - Für den Schlüssel müssen die *get* -, *wrap key* - und *unwrap key* -Vorgänge aktiviert sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

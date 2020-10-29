@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782500"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Abbrechen von Verwaltungsvorgängen für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -54,7 +54,7 @@ Category  |Vorgang  |Kann abgebrochen werden  |Geschätzte Abbruchdauer  |
 Führen Sie die folgenden Schritte aus, um einen Verwaltungsvorgang über das Azure-Portal abzubrechen:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Wechseln Sie zum **Übersicht**-Blatt Ihrer verwalteten SQL-Instanz. 
+1. Wechseln Sie zum **Übersicht** -Blatt Ihrer verwalteten SQL-Instanz. 
 1. Wählen Sie unter **Benachrichtigungen** das Feld für den laufenden Vorgang aus, um die Seite **Laufende Vorgänge** zu öffnen. 
 
    :::image type="content" source="media/management-operations-cancel/open-ongoing-operation.png" alt-text="Wählen Sie das Feld für den laufenden Vorgang aus, um die Seite „Laufende Vorgänge“ zu öffnen.":::
@@ -75,7 +75,7 @@ Wenn bei der Abbruchanforderung ein Fehler auftritt oder wenn die Schaltfläche 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Sollte Azure PowerShell noch nicht installiert sein, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) weitere Informationen.
+Sollte Azure PowerShell noch nicht installiert sein, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weitere Informationen.
 
 Um einen Verwaltungsvorgang abzubrechen, müssen Sie dessen Namen angeben. Verwenden Sie daher zuerst den get-Befehl, um die Vorgangsliste abzurufen, und brechen Sie dann den speziellen Vorgang ab.
 
@@ -93,7 +93,7 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-Eine ausführliche Beschreibung der Befehle finden Sie unter [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) und [Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation).
+Eine ausführliche Beschreibung der Befehle finden Sie unter [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation) und [Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-Eine ausführliche Beschreibung der Befehle finden Sie unter [az sql mi op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Eine ausführliche Beschreibung der Befehle finden Sie unter [az sql mi op](/cli/azure/sql/mi/op).
 
 ---
 
 ## <a name="canceled-deployment-request"></a>Abgebrochene Bereitstellungsanforderung
 
-In der API-Version 2020-02-02 ist eine Instanz, sobald deren Erstellungsanforderung akzeptiert wurde, als Ressource vorhanden, unabhängig vom Status des Bereitstellungsprozesses (der Status der verwalteten Instanz ist **Provisioning**). Wenn Sie die Instanzbereitstellungsanforderung abbrechen (neue Instanzerstellung), wird der Status der verwalteten Instanz von **Provisioning** in **FailedToCreate** geändert.
+In der API-Version 2020-02-02 ist eine Instanz, sobald deren Erstellungsanforderung akzeptiert wurde, als Ressource vorhanden, unabhängig vom Status des Bereitstellungsprozesses (der Status der verwalteten Instanz ist **Provisioning** ). Wenn Sie die Instanzbereitstellungsanforderung abbrechen (neue Instanzerstellung), wird der Status der verwalteten Instanz von **Provisioning** in **FailedToCreate** geändert.
 
 Instanzen, die nicht erstellt werden konnten, sind weiterhin als Ressource vorhanden, und es gilt Folgendes: 
 

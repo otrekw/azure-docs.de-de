@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa295c0c0d30cb0797820baaf2a4b03a1b7c99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513289"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783452"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -33,7 +33,7 @@ Die Verwendung privater Endpunkte für Ihr Speicherkonto bietet Ihnen folgende M
 
 Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) (VNET). Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrem Speicher bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und dem Speicherdienst wird eine sichere private Verbindung verwendet.
 
-Anwendungen im VNET können eine nahtlose Verbindung mit dem Speicherdienst über den privaten Endpunkt herstellen, und zwar **mit denselben Verbindungszeichenfolgen und Autorisierungsmechanismen, die auch sonst verwendet würden**. Private Endpunkte können mit allen vom Speicherkonto unterstützten Protokollen verwendet werden, einschließlich REST und SMB.
+Anwendungen im VNET können eine nahtlose Verbindung mit dem Speicherdienst über den privaten Endpunkt herstellen, und zwar **mit denselben Verbindungszeichenfolgen und Autorisierungsmechanismen, die auch sonst verwendet würden** . Private Endpunkte können mit allen vom Speicherkonto unterstützten Protokollen verwendet werden, einschließlich REST und SMB.
 
 Private Endpunkte können in Subnetzen erstellt werden, die [Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) verwenden. Clients in einem Subnetz können somit eine Verbindung mit einem Speicherkonto über einen privaten Endpunkt herstellen, während für den Zugriff auf andere Konten Dienstendpunkte verwendet werden.
 
@@ -57,7 +57,7 @@ Für Lesezugriff auf die sekundäre Region mit einem Speicherkonto, das für geo
 
 Ausführlichere Informationen zum Erstellen eines privaten Endpunkts für das Speicherkonto finden Sie in den folgenden Artikeln:
 
-- [Herstellen einer privaten Verbindung mit einem Speicherkonto über die Benutzeroberfläche für Speicherkonten im Azure-Portal](../../private-link/create-private-endpoint-storage-portal.md)
+- [Herstellen einer privaten Verbindung mit einem Speicherkonto über die Benutzeroberfläche für Speicherkonten im Azure-Portal](../../private-link/tutorial-private-endpoint-storage-portal.md)
 - [Erstellen eines privaten Endpunkts über das Private Link Center im Azure-Portal](../../private-link/create-private-endpoint-portal.md)
 - [Erstellen eines privaten Endpunkts mit Azure CLI](../../private-link/create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts mit Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
@@ -114,8 +114,8 @@ Die empfohlenen DNS-Zonennamen für private Endpunkte für die Speicherdienste l
 
 Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
 
-- [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS-Konfiguration für private Endpunkte](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [DNS-Konfiguration für private Endpunkte](../../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="pricing"></a>Preise
 
@@ -137,7 +137,7 @@ Diese Einschränkung ist die Folge der DNS-Änderungen, die vorgenommen werden, 
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Netzwerksicherheitsgruppen-Regeln für Subnetze mit privaten Endpunkten
 
-Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppenregeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden nicht auf den privaten Endpunkt, sondern nur auf andere Endpunkte (z. B. NIC) angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
+Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppenregeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden nicht auf den privaten Endpunkt, sondern nur auf andere Endpunkte (z. B. NIC) angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645478"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781735"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -292,7 +292,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--s2s-handle-invalid-metadata** string   Gibt an, wie ungültige Metadatenschlüssel behandelt werden. Verfügbare Optionen: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (Standardwert: `ExcludeIfInvalid`) (Standardwert: „ExcludeIfInvalid“)
 
-**--s2s-preserve-access-tier:** behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)  (Der Standardwert lautet „true“.)
+**--s2s-preserve-access-tier:** behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)  (Der Standardwert lautet „true“.)
 
 **--s2s-preserve-properties:** behält die vollständigen Eigenschaften beim Kopieren zwischen Diensten bei. Für AWS S3 und Azure Files mit mehr als einer Dateiquelle gibt der Auflistungsvorgang nicht die vollständigen Eigenschaften von Objekten und Dateien zurück. Um die vollständigen Eigenschaften beizubehalten, muss AzCopy eine zusätzliche Anforderung pro Objekt oder Datei senden. (Standardwert: „true“)
 

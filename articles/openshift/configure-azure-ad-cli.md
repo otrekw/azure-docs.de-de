@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469421"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748033"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Konfigurieren von Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift 4-Cluster (CLI)
 
@@ -21,7 +21,7 @@ Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden m
 
 Rufen Sie die clusterspezifischen URLs ab, die zum Konfigurieren der Azure Active Directory-Anwendung verwendet werden.
 
-Erstellen Sie die OAuth-Rückruf-URL des Clusters, und speichern Sie sie in einer Variablen **oauthCallbackURL**. Stellen Sie sicher, dass Sie **aro-rg** durch den Namen Ihrer Ressourcengruppe ersetzen und **aro-cluster** durch den Namen Ihres Clusters.
+Erstellen Sie die OAuth-Rückruf-URL des Clusters, und speichern Sie sie in einer Variablen **oauthCallbackURL** . Stellen Sie sicher, dass Sie **aro-rg** durch den Namen Ihrer Ressourcengruppe ersetzen und **aro-cluster** durch den Namen Ihres Clusters.
 
 > [!NOTE]
 > Der Abschnitt `AAD` in der OAuth-Rückruf-URL sollte mit dem Namen des OAuth-Identitätsanbieters identisch sein, den Sie später einrichten.
@@ -76,7 +76,7 @@ Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 Wir konfigurieren OpenShift so, dass der `email`-Anspruch verwendet wird und ein Fallback auf `upn` erfolgt, um den bevorzugten Benutzernamen festzulegen, indem der `upn` als Teil des von Azure Active Directory zurückgegebenen ID-Tokens hinzugefügt wird.
 
-Erstellen Sie eine Datei **manifest.json**, um die Azure Active Directory-Anwendung zu konfigurieren.
+Erstellen Sie eine Datei **manifest.json** , um die Azure Active Directory-Anwendung zu konfigurieren.
 
 ```bash
 cat > manifest.json<< EOF
@@ -162,7 +162,7 @@ oc create secret generic openid-client-secret-azuread \
   --from-literal=clientSecret=<ClientSecret>
 ```
 
-Erstellen Sie eine Datei **oidc.yaml**, um OpenShift OpenID-Authentifizierung für Azure Active Directory zu konfigurieren. Ersetzen Sie **\<AppID>** und **\<TenantId>** durch die Werte, die Sie vorher abgerufen haben.
+Erstellen Sie eine Datei **oidc.yaml** , um OpenShift OpenID-Authentifizierung für Azure Active Directory zu konfigurieren. Ersetzen Sie **\<AppID>** und **\<TenantId>** durch die Werte, die Sie vorher abgerufen haben.
 
 ```bash
 cat > oidc.yaml<< EOF

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887431"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778019"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
@@ -60,11 +60,11 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 
 ## <a name="setting-up-token-authentication"></a>Einrichten der Tokenauthentifizierung
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil, und klicken Sie dann auf **Verwalten**, um das zusätzliche Portal zu starten.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil, und klicken Sie dann auf **Verwalten** , um das zusätzliche Portal zu starten.
 
     ![Schaltfläche „Verwalten“ für CDN-Profile](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Zeigen Sie mit der Maus auf **HTTP Large**, und klicken Sie im Flyout dann auf **Token Auth**. Sie können dann den Verschlüsselungsschlüssel und Verschlüsselungsparameter wie folgt einrichten:
+2. Zeigen Sie mit der Maus auf **HTTP Large** , und klicken Sie im Flyout dann auf **Token Auth** . Sie können dann den Verschlüsselungsschlüssel und Verschlüsselungsparameter wie folgt einrichten:
 
    1. Erstellen Sie einen oder mehrere Verschlüsselungsschlüssel. Bei einem Verschlüsselungsschlüssel muss die Groß-/Kleinschreibung beachtet werden, und er kann eine beliebige Kombination aus alphanumerischen Zeichen enthalten. Alle anderen Arten von Zeichen, einschließlich Leerzeichen, sind nicht zulässig. Die maximale Länge beträgt 250 Zeichen. Um sicherzustellen, dass die Verschlüsselungsschlüssel auf Zufallsbasis generiert werden, sollten sie mit dem [OpenSSL-Tool](https://www.openssl.org/) erstellt werden. 
 
@@ -80,9 +80,9 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
     
    2. Geben Sie einen eindeutigen Verschlüsselungsschlüssel in das Feld **Primärschlüssel** ein, und geben Sie optional einen Sicherungsschlüssel in das Feld **Sicherungsschlüssel** ein.
 
-   3. Wählen Sie in der Liste **Minimum Encryption Version** (Verschlüsselungsmindestversion) die Verschlüsselungsmindestversion aus, und klicken Sie dann auf **Aktualisieren**:
-      - **V2**: Gibt an, dass mit dem Schlüssel Token der Versionen 2.0 und 3.0 generiert werden können. Verwenden Sie diese Option nur bei der Umstellung von einem älteren Verschlüsselungsschlüssel der Version 2.0 auf einen Schlüssel der Version 3.0.
-      - **V3**: (Empfohlen) Gibt an, dass mit dem Schlüssel nur Token der Version 3.0 generiert werden können.
+   3. Wählen Sie in der Liste **Minimum Encryption Version** (Verschlüsselungsmindestversion) die Verschlüsselungsmindestversion aus, und klicken Sie dann auf **Aktualisieren** :
+      - **V2** : Gibt an, dass mit dem Schlüssel Token der Versionen 2.0 und 3.0 generiert werden können. Verwenden Sie diese Option nur bei der Umstellung von einem älteren Verschlüsselungsschlüssel der Version 2.0 auf einen Schlüssel der Version 3.0.
+      - **V3** : (Empfohlen) Gibt an, dass mit dem Schlüssel nur Token der Version 3.0 generiert werden können.
 
       ![CDN-Tokenauthentifizierung – Einrichten des Schlüssels](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
@@ -160,20 +160,20 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
     
    6. Wählen Sie in der Liste **Verschlüsselungsversion** eine Verschlüsselungsversion aus: **V2** für Version 2 oder **V3** für Version 3 (empfohlen). 
 
-   7. Klicken Sie auf **Verschlüsseln**, um das Token zu generieren.
+   7. Klicken Sie auf **Verschlüsseln** , um das Token zu generieren.
 
       Nachdem das Token generiert wurde, wird es im Feld **Generated Token** (Generiertes Token) angezeigt. Zur Verwendung des Tokens fügen Sie es als Abfragezeichenfolge am Ende der Datei im URL-Pfad ein. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-   8. Testen Sie Ihr Token optional mit dem Entschlüsselungstool, um die Parameter Ihres Tokens anzuzeigen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie den zu verwendenden Verschlüsselungsschlüssel aus der Liste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln**.
+   8. Testen Sie Ihr Token optional mit dem Entschlüsselungstool, um die Parameter Ihres Tokens anzuzeigen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie den zu verwendenden Verschlüsselungsschlüssel aus der Liste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln** .
 
       Nach der Entschlüsselung des Tokens werden seine Parameter im Feld **Ursprüngliche Parameter** angezeigt.
 
-   9. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie **Aktiviert** aus, und wählen Sie dann den Antwortcode aus der Liste **Antwortcode** aus. **Headername** wird automatisch auf **Speicherort** festgelegt. Klicken Sie auf **Speichern**, um den neuen Antwortcode zu implementieren. Für bestimmte Antwortcodes müssen Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. 
+   9. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie **Aktiviert** aus, und wählen Sie dann den Antwortcode aus der Liste **Antwortcode** aus. **Headername** wird automatisch auf **Speicherort** festgelegt. Klicken Sie auf **Speichern** , um den neuen Antwortcode zu implementieren. Für bestimmte Antwortcodes müssen Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. 
 
-3. Klicken Sie unter **HTTP Large** auf **Regel-Engine**. Sie verwenden die Regel-Engine, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regel-Engine](cdn-rules-engine-reference.md).
+3. Klicken Sie unter **HTTP Large** auf **Regel-Engine** . Sie verwenden die Regel-Engine, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regel-Engine](./cdn-verizon-premium-rules-engine-reference.md).
 
    1. Wählen Sie eine vorhandene Regel aus, oder erstellen Sie eine neue Regel, um das Asset oder den Pfad zu definieren, auf das bzw. den Sie die Tokenauthentifizierung anwenden möchten. 
-   2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** aus der Liste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
+   2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** aus der Liste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren** , wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen** , wenn Sie eine Regel erstellen.
         
       ![Beispiel für die CDN-Regel-Engine: Tokenauthentifizierung aktiviert](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 

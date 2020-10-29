@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 3bbe704e6223bb04a17af7109c61875ca3b21bf9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214136"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748199"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
 
@@ -80,7 +80,7 @@ namespace Company.Function
 
 Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet.
 
-Bindungsdaten in der Datei *function.json*:
+Bindungsdaten in der Datei *function.json* :
 
 ```json
 {
@@ -132,7 +132,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet.
 
-Bindungsdaten in der Datei *function.json*:
+Bindungsdaten in der Datei *function.json* :
 
 ```json
 {
@@ -163,7 +163,7 @@ module.exports = function (context, eventGridEvent) {
 
 Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [Python-Funktion](functions-reference-python.md), die die Bindung verwendet.
 
-Bindungsdaten in der Datei *function.json*:
+Bindungsdaten in der Datei *function.json* :
 
 ```json
 {
@@ -345,11 +345,11 @@ In Azure Functions 2.x und höher können Sie optional auch den folgenden Param
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Die Event Grid-Instanz ist über den Parameter verfügbar, der in der `name`-Eigenschaft der *function.json*-Datei konfiguriert ist.
+Die Event Grid-Instanz ist über den Parameter verfügbar, der in der `name`-Eigenschaft der *function.json* -Datei konfiguriert ist.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Event Grid-Instanz ist über den Parameter verfügbar, der in der als `func.EventGridEvent` typisierten `name`-Eigenschaft der *function.json*-Datei konfiguriert ist.
+Die Event Grid-Instanz ist über den Parameter verfügbar, der in der als `func.EventGridEvent` typisierten `name`-Eigenschaft der *function.json* -Datei konfiguriert ist.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -401,7 +401,7 @@ Erstellen Sie für den Empfang von HTTP-Anforderungen in Event Grid ein Event Gr
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Wählen Sie für Funktionen, die Sie im Azure-Portal mit dem Event Grid-Trigger entwickeln, nacheinander die Optionen **Integration**, **Event Grid-Trigger** und **Event Grid-Abonnement erstellen** aus.
+Wählen Sie für Funktionen, die Sie im Azure-Portal mit dem Event Grid-Trigger entwickeln, nacheinander die Optionen **Integration** , **Event Grid-Trigger** und **Event Grid-Abonnement erstellen** aus.
 
 :::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="Verbinden eines neuen Ereignisabonnements mit einem Trigger im Portal":::
 
