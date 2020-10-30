@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 098cfa1784571856cbd80d55fec4e6232e882d17
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3ea8e944a004dc89dadc74e4ab2e3e4b295b3a9b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339848"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900233"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -25,14 +25,19 @@ Azure Security Center befindet sich in der aktiven Entwicklung und wird ständig
 
 Es ist ratsam, diese Seite regelmäßig zu besuchen, da sie immer wieder aktualisiert wird. 
 
+Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security Center anstehen, finden Sie unter [Wichtige bevorstehende Änderungen in Azure Security Center](upcoming-changes.md). 
+
 > [!TIP]
 > Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerungen in Azure Security Center](release-notes-archive.md).
+
 
 
 ## <a name="october-2020"></a>Oktober 2020
 
 - [Sicherheitsrisikobewertung für lokale und Multi-Cloud-Computer (Vorschau)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Empfehlung für Azure Firewall hinzugefügt (Vorschau)](#azure-firewall-recommendation-added-preview)
+- [Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ wurde mit einer schnellen Problembehebung aktualisiert](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [Das Dashboard zur Einhaltung gesetzlicher Bestimmungen enthält jetzt die Option, Standards zu entfernen](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
 - [Microsoft.Security/securityStatuses-Tabelle aus Azure Resource Graph (ARG) entfernt](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Sicherheitsrisikobewertung für lokale und Multi-Cloud-Computer (Vorschau)
@@ -64,6 +69,24 @@ In der Empfehlung **Virtuelle Netzwerke müssen durch Azure Firewall geschützt 
 Erfahren Sie mehr über [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/).
 
 
+### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ wurde mit einer schnellen Problembehebung aktualisiert
+
+Für die Empfehlung **Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden** gibt es jetzt eine Option zur schnellen Problembehebung.
+
+Weitere Informationen zu dieser Empfehlung und allen anderen Security Center-Empfehlungen finden Sie unter [Sicherheitsempfehlungen: Referenzhandbuch](recommendations-reference.md).
+
+:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ mit einer Option zur schnellen Problembehebung":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>Das Dashboard zur Einhaltung gesetzlicher Bestimmungen enthält jetzt die Option, Standards zu entfernen
+
+Das Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Compliancevorgaben und -anforderungen.
+
+Das Dashboard enthält einen Standardsatz gesetzlicher Standards. Falls einer der angegebenen Standards für Ihre Organisation nicht relevant ist, ist es nun problemlos möglich, ihn einfach aus der Benutzeroberfläche für ein Abonnement zu entfernen. Standards können nur auf der Ebene des *Abonnements* entfernt werden, nicht der für den Verwaltungsgruppenbereich.
+
+Weitere Informationen finden Sie unter [Entfernen eines Standards aus Ihrem Dashboard](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
+
+
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft.Security/securityStatuses-Tabelle aus Azure Resource Graph (ARG) entfernt
 
 Azure Resource Graph ist ein Dienst in Azure, der eine effiziente Ressourcenuntersuchung mit der Fähigkeit bereitstellt, übergreifend für eine bestimmte Menge von Abonnements nach Bedarf Abfragen durchzuführen, sodass Sie Ihre Umgebung effektiv beherrschen können. 
@@ -75,33 +98,7 @@ Für Azure Security Center können Sie ARG und die [Kusto-Abfragesprache (KQL)](
 
 In ARG gibt es Datentabellen, die Sie in Ihren Abfragen verwenden können.
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph-Explorer und die verfügbaren Tabellen&quot;:::
-
-> [!TIP]
-> In der ARG-Dokumentation sind alle verfügbaren Tabellen unter [Azure Resource Graph-Tabelle und Ressourcentypreferenz](../governance/resource-graph/reference/supported-tables-resources.md) aufgelistet.
-
-Bei diesem Update wurde die **Microsoft.Security/securityStatuses** -Tabelle entfernt. Die securityStatuses-API ist weiterhin verfügbar.
-
-Zum Datenersatz kann die Microsoft.Security/Assessments-Tabelle verwendet werden.
-
-Der Hauptunterschied zwischen Microsoft.Security/securityStatuses und Microsoft.Security/Assessments besteht darin, dass Erstere die Aggregation von Bewertungen zeigt, während in der Zweiten jeweils ein einzelner Datensatz enthalten ist.
-
-Beispielsweise gibt Microsoft.Security/securityStatuses ein Ergebnis mit einem Array von zwei Richtlinienbewertungen (policyAssessments) zurück:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ mit einer Option zur schnellen Problembehebung"
 }
 ```
 Microsoft.Security/Assessments enthält hingegen einen Datensatz für jede Richtlinienbewertung:
@@ -301,33 +298,7 @@ Die integrierten Tools für die Sicherheitsrisikobewertung von Security Center g
 
 Die sicherheitsrelevanten Ergebnisse sind jetzt über den fortlaufenden Export verfügbar, wenn Sie Empfehlungen auswählen und die Option **Sicherheitsrelevante Ergebnisse einbeziehen** aktivieren.
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Azure Resource Graph-Explorer und die verfügbaren Tabellen&quot;:::
-
-> [!TIP]
-> In der ARG-Dokumentation sind alle verfügbaren Tabellen unter [Azure Resource Graph-Tabelle und Ressourcentypreferenz](../governance/resource-graph/reference/supported-tables-resources.md) aufgelistet.
-
-Bei diesem Update wurde die **Microsoft.Security/securityStatuses** -Tabelle entfernt. Die securityStatuses-API ist weiterhin verfügbar.
-
-Zum Datenersatz kann die Microsoft.Security/Assessments-Tabelle verwendet werden.
-
-Der Hauptunterschied zwischen Microsoft.Security/securityStatuses und Microsoft.Security/Assessments besteht darin, dass Erstere die Aggregation von Bewertungen zeigt, während in der Zweiten jeweils ein einzelner Datensatz enthalten ist.
-
-Beispielsweise gibt Microsoft.Security/securityStatuses ein Ergebnis mit einem Array von zwei Richtlinienbewertungen (policyAssessments) zurück:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ mit einer Option zur schnellen Problembehebung" :::
 
 Verwandte Seiten:
 
@@ -392,33 +363,7 @@ Außerdem führen Empfehlungen in der **Vorschauphase** nicht dazu, dass eine Re
 
 Beispiel für eine Vorschauempfehlung:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Azure Resource Graph-Explorer und die verfügbaren Tabellen&quot;:::
-
-> [!TIP]
-> In der ARG-Dokumentation sind alle verfügbaren Tabellen unter [Azure Resource Graph-Tabelle und Ressourcentypreferenz](../governance/resource-graph/reference/supported-tables-resources.md) aufgelistet.
-
-Bei diesem Update wurde die **Microsoft.Security/securityStatuses** -Tabelle entfernt. Die securityStatuses-API ist weiterhin verfügbar.
-
-Zum Datenersatz kann die Microsoft.Security/Assessments-Tabelle verwendet werden.
-
-Der Hauptunterschied zwischen Microsoft.Security/securityStatuses und Microsoft.Security/Assessments besteht darin, dass Erstere die Aggregation von Bewertungen zeigt, während in der Zweiten jeweils ein einzelner Datensatz enthalten ist.
-
-Beispielsweise gibt Microsoft.Security/securityStatuses ein Ergebnis mit einem Array von zwei Richtlinienbewertungen (policyAssessments) zurück:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ mit einer Option zur schnellen Problembehebung":::
 
 [Weitere Informationen zur Sicherheitsbewertung.](secure-score-security-controls.md)
 
@@ -427,33 +372,7 @@ properties:  {
 
 Die Detailseite für Empfehlungen enthält jetzt einen Indikator für das Aktualisierungsintervall (sofern relevant) und eine deutliche Anzeige des Schweregrads der Empfehlung.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Azure Resource Graph-Explorer und die verfügbaren Tabellen&quot;:::
-
-> [!TIP]
-> In der ARG-Dokumentation sind alle verfügbaren Tabellen unter [Azure Resource Graph-Tabelle und Ressourcentypreferenz](../governance/resource-graph/reference/supported-tables-resources.md) aufgelistet.
-
-Bei diesem Update wurde die **Microsoft.Security/securityStatuses** -Tabelle entfernt. Die securityStatuses-API ist weiterhin verfügbar.
-
-Zum Datenersatz kann die Microsoft.Security/Assessments-Tabelle verwendet werden.
-
-Der Hauptunterschied zwischen Microsoft.Security/securityStatuses und Microsoft.Security/Assessments besteht darin, dass Erstere die Aggregation von Bewertungen zeigt, während in der Zweiten jeweils ein einzelner Datensatz enthalten ist.
-
-Beispielsweise gibt Microsoft.Security/securityStatuses ein Ergebnis mit einem Array von zwei Richtlinienbewertungen (policyAssessments) zurück:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ mit einer Option zur schnellen Problembehebung":::
 
 
 
@@ -617,7 +536,7 @@ Die neuen Empfehlungen sind:
 - **Advanced Threat Protection muss für Azure Storage-Konten aktiviert sein**
 - **Advanced Threat Protection muss für virtuelle Computer aktiviert sein.**
 
-Diese neuen Empfehlungen gehören zur Sicherheitssteuerung **Advanced Threat Protection aktivieren** .
+Diese neuen Empfehlungen gehören zur Sicherheitssteuerung **Azure Defender aktivieren** .
 
 Die Empfehlungen schließen auch die Möglichkeit schneller Korrekturen ein. 
 
@@ -738,7 +657,7 @@ Weitere Informationen zu diesen beiden neuen Empfehlungen finden Sie in der Tabe
 
 In [Was ist der Log Analytics-Agent?](faq-data-collection-agents.md#what-is-the-log-analytics-agent) erfahren Sie mehr darüber, wie Azure Security Center den Agent verwendet.
 
-Erfahren Sie mehr über [Erweiterungen für Azure Arc-Computer](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
+Erfahren Sie mehr über [Erweiterungen für Azure Arc-Computer](../azure-arc/servers/manage-vm-extensions.md).
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Neue Richtlinien zum Erstellen von Konfigurationen für fortlaufenden Export und Workflowautomatisierung im großen Stil
@@ -760,7 +679,7 @@ Die Richtlinien finden Sie in der Azure-Richtlinie:
 
 Beginnen Sie mit [Vorlagen zur Workflowautomatisierung](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 
-Erfahren Sie mehr über die Verwendung der beiden Exportrichtlinien in [Continuously Export Azure Security Center Alerts and Recommendations via Policy](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745) (Fortlaufender Export von Azure Security Center-Warnungen und -Empfehlungen per Richtlinie).
+Weitere Informationen über die Verwendung der beiden Exportrichtlinien finden Sie unter [Konfigurieren der Workflowautomatisierung in großem Stile mit Hilfe der bereitgestellten Richtlinien](workflow-automation.md#configure-workflow-automation-at-scale-using-the-supplied-policies) und [Einrichten eines fortlaufenden Exports](continuous-export.md#set-up-a-continuous-export).
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>Neue Empfehlung zum Verwenden von NSGs zum Schützen von virtuellen Computern ohne Internetzugriff
@@ -877,33 +796,7 @@ Die Sicherheitssteuerelemente – und dieser Umschalter – sind Teil der neuen 
 
 Weitere Informationen zu Sicherheitssteuerelementen finden Sie unter [Erweiterte Sicherheitsbewertung (Vorschau) in Azure Security Center](secure-score-security-controls.md).
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Azure Resource Graph-Explorer und die verfügbaren Tabellen&quot;:::
-
-> [!TIP]
-> In der ARG-Dokumentation sind alle verfügbaren Tabellen unter [Azure Resource Graph-Tabelle und Ressourcentypreferenz](../governance/resource-graph/reference/supported-tables-resources.md) aufgelistet.
-
-Bei diesem Update wurde die **Microsoft.Security/securityStatuses** -Tabelle entfernt. Die securityStatuses-API ist weiterhin verfügbar.
-
-Zum Datenersatz kann die Microsoft.Security/Assessments-Tabelle verwendet werden.
-
-Der Hauptunterschied zwischen Microsoft.Security/securityStatuses und Microsoft.Security/Assessments besteht darin, dass Erstere die Aggregation von Bewertungen zeigt, während in der Zweiten jeweils ein einzelner Datensatz enthalten ist.
-
-Beispielsweise gibt Microsoft.Security/securityStatuses ein Ergebnis mit einem Array von zwei Richtlinienbewertungen (policyAssessments) zurück:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Die Empfehlung „Für Kubernetes-Dienste sollten autorisierte IP-Adressbereiche definiert werden“ mit einer Option zur schnellen Problembehebung":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Erweitertes Sicherheitssteuerelement „Bewährte Sicherheitsmethoden implementieren“ 
 

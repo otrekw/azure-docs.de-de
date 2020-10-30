@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340885"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900399"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Zusätzliche Bedrohungsschutzmaßnahmen in Azure Security Center
 Ebenso wie die integrierten [Azure Defender-Schutzmaßnahmen](azure-defender.md) bietet Azure Security Center auch die folgenden Funktionen zum Schutz vor Bedrohungen.
@@ -32,7 +32,6 @@ Die Netzwerkebenenanalysen von Security Center basieren auf exemplarischen [IPFI
 Einige Netzwerkkonfigurationen schränken Security Center möglicherweise in der Erstellung von Warnungen bei verdächtiger Netzwerkaktivität ein. Damit Security Center Netzwerkwarnungen generiert, stellen Sie Folgendes sicher:
 - Ihr virtueller Computer verfügt über eine öffentliche IP-Adresse (oder befindet sich auf einem Load Balancer mit einer öffentlichen IP-Adresse).
 - Der ausgehende Netzwerkdatenverkehr des virtuellen Computers wird nicht durch eine externe IDS-Lösung blockiert.
-- Ihrem virtuellen Computer wurde für die gesamte Stunde, in der die verdächtige Kommunikation stattgefunden hat, dieselbe IP-Adresse zugewiesen. Dies gilt auch für als Teil eines verwalteten Diensts (z. B. AKS, Databricks) erstellte virtuelle Computer.
 
 Eine Liste der Warnungen der Azure-Netzwerkebene finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-azurenetlayer).
 
@@ -51,7 +50,7 @@ Eine Liste der Warnungen von Azure Resource Manager (Vorschau) finden Sie in der
 > 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
 > 1. Wählen Sie das Abonnement aus, das Sie ändern möchten.
 > 1. Wählen Sie **Bedrohungserkennung** aus.
-> 1. Deaktivieren Sie **Microsoft Cloud App Security Zugriff auf meine Daten erteilen**, und wählen Sie anschließend **Speichern** aus.
+> 1. Deaktivieren Sie **Microsoft Cloud App Security Zugriff auf meine Daten erteilen** , und wählen Sie anschließend **Speichern** aus.
 
 
 >[!NOTE]
@@ -59,7 +58,7 @@ Eine Liste der Warnungen von Azure Resource Manager (Vorschau) finden Sie in der
 
 1. Legen Sie den Arbeitsbereich fest, für den Sie den Agent installieren. Stellen Sie sicher, dass sich der Arbeitsbereich im gleichen Abonnement befindet, das Sie in Security Center verwenden, und dass Sie über Lese-/Schreibberechtigungen für den Arbeitsbereich verfügen.
 
-1. Aktivieren Sie **Azure Defender**, und wählen Sie **Speichern** aus.
+1. Aktivieren Sie **Azure Defender** , und wählen Sie **Speichern** aus.
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Bedrohungsschutz für Azure Cosmos DB (Vorschauversion)<a name="cosmos-db"></a>
@@ -101,4 +100,4 @@ Weitere Informationen zu den Sicherheitswarnungen dieser Bedrohungsschutzfeature
 * [Referenztabelle für alle Azure Security Center-Warnungen](alerts-reference.md)
 * [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md)
+* [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md)

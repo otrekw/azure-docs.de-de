@@ -11,7 +11,8 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
+    - name: 'Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes: ARM-Vorlage'
+      displayName: Resource Manager
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Konzepte
   items:

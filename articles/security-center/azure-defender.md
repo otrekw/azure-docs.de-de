@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331684"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789113"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
@@ -65,7 +65,7 @@ Stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit,
 
 Wenn Azure Defender in einem der Bereiche Ihrer Umgebung eine Bedrohung erkennt, wird eine Warnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann.
 
-Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein integriertes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
+Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein integriertes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Streamen von Warnungen an eine SIEM-, SOAR- oder IT-Dienstverwaltungslösung](export-to-siem.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
 
 > [!NOTE]
 > Warnungen aus unterschiedlichen Quellen erfordern möglicherweise unterschiedlich lange Zeit, bis sie angezeigt werden. Beispielsweise kann es länger dauern, bis Warnungen, die eine Analyse des Netzwerkdatenverkehrs erfordern, angezeigt werden, als das Anzeigen von Warnungen im Zusammenhang mit verdächtigen Prozessen auf virtuellen Computern.

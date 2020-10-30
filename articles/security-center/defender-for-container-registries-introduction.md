@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275964"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558634"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -71,6 +71,12 @@ Ja. Die Ergebnisse befinden sich unter [Sub-Assessments Rest API](/rest/api/secu
 Eine Liste der Typen von Containerregistrierungen, die von Azure Defender für Containerregistrierungen unterstützt werden, finden Sie unter [Verfügbarkeit](defender-for-container-registries-usage.md#availability).
 
 Wenn Sie nicht unterstützte Registrierungen mit Ihrem Azure-Abonnement verbinden, werden sie nicht überprüft und Ihnen nicht in Rechnung gestellt.
+
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Kann ich die Ergebnisse der Überprüfung auf Sicherheitsrisiken anpassen?
+Ja. Wenn in Ihrer Organisation eine Suche ignoriert werden muss, anstatt sie zu beheben, können Sie sie optional deaktivieren. Deaktivierte Ergebnisse haben keine Auswirkung auf Ihre Sicherheitsbewertung und erzeugen kein unerwünschtes Rauschen.
+
+[Weitere Informationen zum Erstellen von Regeln zum Deaktivieren der Ergebnisse aus dem integrierten Sicherheitsrisikobewertungstool](defender-for-container-registries-usage.md#disable-specific-findings-preview).
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

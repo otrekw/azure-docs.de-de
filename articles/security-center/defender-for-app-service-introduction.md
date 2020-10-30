@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850964"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789062"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Einführung in Azure Defender für App Service
 
@@ -45,7 +45,7 @@ So schützen Sie Ihren Azure App Service-Plan mit Azure Defender für App Servic
 
 - Stellen Sie sicher, dass Sie über einen App Service-Plan verfügen, der dedizierten Computern zugeordnet ist. Unterstützte Pläne sind oben unter [Verfügbarkeit](#availability) aufgeführt.
 
-- Aktivieren Sie **Azure Defender** in Ihrem Abonnement (oder optional nur den **Azure Defender für App Service**-Plan), wie unter [Preise für Azure Security Center](security-center-pricing.md) beschrieben.
+- Aktivieren Sie **Azure Defender** in Ihrem Abonnement (oder optional nur den **Azure Defender für App Service** -Plan), wie unter [Preise für Azure Security Center](security-center-pricing.md) beschrieben.
 
 Das Security Center ist nativ in den App Service integriert, wodurch die Notwendigkeit von Bereitstellung und Onboarding entfällt – die Integration ist transparent.
 
@@ -64,7 +64,7 @@ In diesem Artikel haben Sie etwas über Azure Defender für App Service erfahren
 
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
-- Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
+- Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Streamen von Warnungen an eine SIEM-, SOAR- oder IT-Dienstverwaltungslösung](export-to-siem.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
 - Eine Liste der Azure App Service-Warnungen finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-azureappserv).
 - Weitere Informationen zu App Service-Plänen finden Sie unter [App Service-Pläne](https://azure.microsoft.com/pricing/details/app-service/plans/).
 - > [!div class="nextstepaction"]
