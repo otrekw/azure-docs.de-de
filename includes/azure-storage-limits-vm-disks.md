@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: e89676505bc211d01a4327f8816a048218e579fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91829043"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755566"
 ---
 Sie können eine Reihe von Datenträgern an einen virtuellen Azure-Computer anfügen. Basierend auf den Skalierbarkeits- und Leistungszielen für Datenträger eines virtuellen Computers können Sie die Anzahl und den Typ der Datenträger festlegen, die Sie benötigen, um Ihre Anforderungen an Leistung und Kapazität zu erfüllen.
 
@@ -18,7 +18,7 @@ Sie können eine Reihe von Datenträgern an einen virtuellen Azure-Computer anf�
 
 **Verwaltete Azure-Datenträger:**
 
-In der folgenden Tabelle sind die standardmäßigen und maximal zulässigen Limits für die Anzahl von Ressourcen pro Region und Abonnement aufgeführt. Es gilt kein Limit für die Anzahl von verwalteten Datenträgern, Momentaufnahmen und Images pro Ressourcengruppe.  
+In der folgenden Tabelle sind die standardmäßigen und maximal zulässigen Limits für die Anzahl von Ressourcen pro Region und Abonnement aufgeführt. Die Grenzwerte gelten unabhängig davon, ob Datenträger mit plattformseitig verwalteten Schlüsseln oder kundenseitig verwalteten Schlüsseln verschlüsselt werden. Es gilt kein Limit für die Anzahl von verwalteten Datenträgern, Momentaufnahmen und Images pro Ressourcengruppe.  
 
 > | Resource | Begrenzung |
 > | --- | --- |

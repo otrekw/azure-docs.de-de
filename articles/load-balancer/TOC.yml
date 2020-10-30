@@ -13,6 +13,7 @@
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-public-cli.md
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: ARM-Vorlage'
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: 'Erstellen eines internen Lastenausgleichs: Portal'
       href: quickstart-load-balancer-standard-internal-portal.md
@@ -21,6 +22,7 @@
     - name: 'Erstellen eines internen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-internal-cli.md
     - name: 'Erstellen eines internen Lastenausgleichs: ARM-Vorlage'
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Tutorials
@@ -53,6 +55,8 @@
       items:
         - name: Integritätstests
           href: load-balancer-custom-probe-overview.md
+        - name: Azure Monitor-Erkenntnisse für Load Balancer
+          href: load-balancer-insights.md
         - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
           href: load-balancer-standard-diagnostics.md
         - name: Azure Monitor-Protokolle für Load Balancer vom Typ „Basic“

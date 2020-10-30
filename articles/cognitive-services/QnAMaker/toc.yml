@@ -50,6 +50,8 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: Verwalten der QnA Maker-App
       href: How-To/manage-qna-maker-app.md
+    - name: Aktivieren des Features für aktives Lernen
+      href: How-To/use-active-learning.md
     - name: Verwalten einer Wissensdatenbank
       items:
         - name: Erstellen einer Wissensdatenbank
@@ -167,7 +169,7 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

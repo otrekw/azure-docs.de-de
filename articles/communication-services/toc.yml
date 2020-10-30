@@ -74,6 +74,8 @@
       href: concepts/sdk-options.md
     - name: Preismodell
       href: concepts/pricing.md
+    - name: Datenschutz
+      href: concepts/privacy.md
     - name: Authentifizierung
       href: concepts/authentication.md
     - name: Behandlung von Ereignissen

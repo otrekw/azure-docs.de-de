@@ -23,8 +23,6 @@
   items:
     - name: Benutzerdefinierte Modelle
       href: concepts-models.md
-    - name: Konvertieren von Branchenstandardmodellen
-      href: concepts-convert-models.md
     - name: Digitale Zwillinge und der Zwillingsgraph
       href: concepts-twins-graph.md
     - name: Abfragesprache
@@ -63,6 +61,8 @@
       items:
         - name: Verwalten benutzerdefinierter Modelle
           href: how-to-manage-model.md
+        - name: Konvertieren von Branchenstandardmodellen
+          href: how-to-convert-models.md
         - name: Analysieren und Validieren von Modellen
           href: how-to-parse-models.md
         - name: Hinzufügen von Tags
@@ -176,11 +176,15 @@
             - name: 'Java SDK: Quelle'
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: 'JavaScript SDK: npm'
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
             - name: 'JavaScript SDK: Referenz'
               href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
+            - name: 'JavaScript SDK: Quelle'
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: 'Python SDK: PyPi'
               href: 'https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/'
+            - name: 'Python SDK: Quelle'
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
     - name: 'Digital Twins: CLI'
       items:
         - name: 'Digital Twins: CLI-Referenz'
