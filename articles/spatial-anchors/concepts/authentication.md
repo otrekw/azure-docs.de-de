@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328537"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516918"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
-In diesem Artikel erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie sich aus Ihrer App oder Ihren Webdienst bei Azure Spatial Anchors authentifizieren können. Außerdem erfahren Sie mehr über die Möglichkeiten, wie Sie die rollenbasierte Zugriffssteuerung in Azure Active Directory (Azure AD) verwenden können, um den Zugriff auf Ihre Spatial Anchors-Konten zu steuern.
+In diesem Artikel erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie sich aus Ihrer App oder Ihren Webdienst bei Azure Spatial Anchors authentifizieren können. Außerdem erfahren Sie mehr über die Möglichkeiten, wie Sie die rollenbasierte Zugriffssteuerung (Azure RBC) in Azure Active Directory (Azure AD) verwenden können, um den Zugriff auf Ihre Spatial Anchors-Konten zu steuern.
 
 ## <a name="overview"></a>Übersicht
 
@@ -108,9 +108,9 @@ Für Anwendungen, die auf Azure Active Directory-Benutzer abzielen, empfehlen wi
    1.    Wechseln Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
    2.    Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
    3.    Wählen Sie **Rollenzuweisung hinzufügen** aus.
-   1.    [Wählen Sie eine Rolle aus](#role-based-access-control).
+   1.    [Wählen Sie eine Rolle aus](#azure-role-based-access-control).
    2.    Geben Sie im Feld **Auswählen** die Namen der Benutzer, Gruppen und/oder Anwendungen ein, denen Sie Zugriff gewähren möchten.
-   3.    Klicken Sie auf **Speichern** .
+   3.    Wählen Sie **Speichern** aus.
 
 **In Ihrem Code**
 1.    Stellen Sie sicher, dass Sie die Anwendungs-ID und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
@@ -176,19 +176,19 @@ Das Azure AD-Zugriffstoken wird mithilfe von [MSAL](../../active-directory/deve
 1.    Registrieren Ihrer Anwendung bei Azure AD:
         1.    Wählen Sie im Azure-Portal **Azure Active Directory** und anschließend **App-Registrierungen** aus.
         2.    Wählen Sie **Neue Registrierung** aus.
-        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Wählen Sie **Erstellen** aus.
+        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie auf **Erstellen** .
 4.    Wählen Sie in der Anwendung **Einstellungen** und dann die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und wählen Sie **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Geheimniswert speichern. Sie müssen diesen in den Code Ihres Webdiensts aufnehmen.
 2.    Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
         1.    Wechseln Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
         2.    Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
         3.    Wählen Sie **Rollenzuweisung hinzufügen** aus.
-        1.    [Wählen Sie eine Rolle aus](#role-based-access-control).
+        1.    [Wählen Sie eine Rolle aus](#azure-role-based-access-control).
         2.    Geben Sie im Feld **Auswählen** den oder die Namen der Benutzer der Anwendungen ein, denen Sie Zugriff gewähren möchten. Wenn Sie möchten, dass die Benutzer Ihrer App unterschiedliche Rollen im Spatial Anchors-Konto einnehmen, registrieren Sie mehrere Anwendungen in Azure AD, und weisen Sie jeder eine separate Rolle zu. Implementieren Sie dann Ihre Autorisierungslogik, damit die richtige Rolle für Ihre Benutzer verwendet wird.
         
               > [!NOTE] 
               > Wählen Sie im Bereich **Rollenzuweisung hinzufügen** in **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
     
-      3.    Klicken Sie auf **Speichern** .
+      3.    Wählen Sie **Speichern** aus.
     
 **In Ihrem Code** 
 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
 Damit Sie die Zugriffsebene für Anwendungen, Dienste oder Azure AD-Benutzer Ihres Diensts besser steuern können, können Sie diese bereits vorhandenen Rollen nach Bedarf für Ihre Azure Spatial Anchors-Konten zuweisen:
 

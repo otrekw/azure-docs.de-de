@@ -45,12 +45,12 @@
           href: how-to-use-cli.md
         - name: Einrichten einer Instanz und der Authentifizierung
           items:
-            - name: Skriptversion
-              href: how-to-set-up-instance-scripted.md
-            - name: CLI-Version
-              href: how-to-set-up-instance-cli.md
             - name: Portal-Version
               href: how-to-set-up-instance-portal.md
+            - name: CLI-Version
+              href: how-to-set-up-instance-cli.md
+            - name: Skriptversion
+              href: how-to-set-up-instance-scripted.md
         - name: Schreiben von App-Authentifizierungscode
           href: how-to-authenticate-client.md
         - name: Erstellen einer App-Registrierung
