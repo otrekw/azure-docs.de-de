@@ -322,7 +322,7 @@
         - name: Entwerfen für hohe Leistung
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Datenträgerbursting
-          href: disk-bursting.md
+          href: ../disk-bursting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Skalierbarkeitsziele für Datenträger
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger

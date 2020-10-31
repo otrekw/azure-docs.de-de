@@ -22,6 +22,8 @@
       href: resources-without-resource-group-limit.md
     - name: Sicherheit
       items:
+        - name: Sicherheitsbaseline
+          href: ./security-baseline.md
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -67,7 +69,7 @@
               href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure App Service
               href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure-Automatisierung
+            - name: Azure Automation
               href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
             - name: Azure Batch
               href: ../../batch/best-practices.md?toc=/azure/azure-resource-manager/management/toc.json#moving-batch-accounts-across-regions
