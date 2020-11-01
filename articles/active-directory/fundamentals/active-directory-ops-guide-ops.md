@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312609"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370949"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Allgemeiner Betriebsleitfaden für Azure Active Directory – Referenz
 
@@ -49,7 +49,7 @@ Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Bes
 
 #### <a name="owners-recommended-reading"></a>Empfohlene Artikel für Besitzer
 
-- [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Zuweisen von Administratorrollen in Azure Active Directory](../roles/permissions-reference.md)
 - [Governance in Azure](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Hybridverwaltung
@@ -154,7 +154,7 @@ In der folgenden Tabelle erfahren Sie, welche Art von Benachrichtigungen gesende
 
 ### <a name="ad-fs-lockdown"></a>AD FS-Sperre
 
-Organisationen, die Anwendungen für die direkte Authentifizierung in Azure AD konfigurieren, profitieren von der  [intelligenten Kennwortsperrung von Azure AD](../authentication/concept-sspr-howitworks.md). Wenn Sie AD FS in Windows Server 2012 R2 verwenden, implementieren Sie den  [Extranetsperrschutz](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) von AD FS. Wenn Sie AD FS in Windows Server 2016 oder höher verwenden, implementieren Sie die  [intelligente Extranetsperre](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Wir empfehlen Ihnen, mindestens die Extranetsperre zu aktivieren, um das Risiko von Brute-Force-Angriffen für das lokale Active Directory einzugrenzen. Wenn Sie jedoch AD FS unter Windows 2016 oder höher verwenden, sollten Sie auch die intelligente Extranetsperre aktivieren, die dazu beiträgt, das Risiko von [Kennwortspray](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)-Angriffen zu verringern.
+Organisationen, die Anwendungen für die direkte Authentifizierung in Azure AD konfigurieren, profitieren von der [intelligenten Kennwortsperrung von Azure AD](../authentication/concept-sspr-howitworks.md). Wenn Sie AD FS unter Windows Server 2012 R2 verwenden, implementieren Sie den [Extranetsperrschutz](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) von AD FS. Wenn Sie AD FS unter Windows Server 2016 oder höher verwenden, implementieren Sie [Extranet Smart Lockout](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Wir empfehlen Ihnen, mindestens die Extranetsperre zu aktivieren, um das Risiko von Brute-Force-Angriffen für das lokale Active Directory einzugrenzen. Wenn Sie jedoch AD FS unter Windows 2016 oder höher verwenden, sollten Sie auch die intelligente Extranetsperre aktivieren, die dazu beiträgt, das Risiko von [Kennwortspray](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)-Angriffen zu verringern.
 
 Wenn AD FS nur für den Azure AD-Verbund verwendet wird, können einige Endpunkte deaktiviert werden, um die Angriffsfläche zu minimieren. Wenn AD FS z. B. nur für Azure AD verwendet wird, sollten Sie andere WS-Trust-Endpunkte als die für **usernamemixed** und **windowstransport** aktivierten Endpunkte deaktivieren.
 
@@ -166,9 +166,9 @@ Das Active Directory-Verwaltungsebenenmodell wurde entwickelt, um Identitätssys
 
 Das [Ebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) besteht aus drei Ebenen und umfasst nur Verwaltungskonten, nicht Standardbenutzerkonten.
 
-- **Ebene 0** : Direkte Steuerung von Unternehmensidentitäten in der Umgebung. Ebene 0 umfasst Konten, Gruppen und andere Ressourcen, die direkt oder indirekt über die administrative Steuerung der Active Directory-Gesamtstruktur, Domänen oder Domänencontroller und aller darin enthaltenen Ressourcen verfügen. Die Sicherheitsempfindlichkeit aller Ressourcen der Ebene 0 ist gleichwertig, da sie sich effektiv alle gegenseitig kontrollieren.
-- **Ebene 1** : Steuerung von Unternehmensservern und -anwendungen. Zu den Ressourcen der Ebene 1 gehören Serverbetriebssysteme, Clouddienste und Unternehmensanwendungen. Administratorkonten der Ebene 1 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf diesen Ressourcen gehostet wird. Eine allgemeine Beispielrolle sind Serveradministratoren, die diese Betriebssysteme mit der Möglichkeit pflegen, auf alle Unternehmensdienste einwirken zu können.
-- **Ebene 2** : Steuerung von Benutzerarbeitsstationen und -geräten. Administratorkonten der Ebene 2 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf Benutzerarbeitsstationen und -geräten gehostet wird. Beispiele sind Helpdesk- und Computersupport-Administratoren, da sie auf die Integrität fast aller Benutzerdaten Einfluss nehmen können.
+- **Ebene 0** : Direkte Kontrolle von Unternehmensidentitäten innerhalb der Umgebung. Ebene 0 umfasst Konten, Gruppen und andere Ressourcen, die direkt oder indirekt über die administrative Steuerung der Active Directory-Gesamtstruktur, Domänen oder Domänencontroller und aller darin enthaltenen Ressourcen verfügen. Die Sicherheitsempfindlichkeit aller Ressourcen der Ebene 0 ist gleichwertig, da sie sich effektiv alle gegenseitig kontrollieren.
+- **Ebene 1** : Kontrolle von Unternehmensservern und -anwendungen. Zu den Ressourcen der Ebene 1 gehören Serverbetriebssysteme, Clouddienste und Unternehmensanwendungen. Administratorkonten der Ebene 1 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf diesen Ressourcen gehostet wird. Eine allgemeine Beispielrolle sind Serveradministratoren, die diese Betriebssysteme mit der Möglichkeit pflegen, auf alle Unternehmensdienste einwirken zu können.
+- **Ebene 2** : Kontrolle von Benutzerarbeitsstationen und -geräten. Administratorkonten der Ebene 2 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf Benutzerarbeitsstationen und -geräten gehostet wird. Beispiele sind Helpdesk- und Computersupport-Administratoren, da sie auf die Integrität fast aller Benutzerdaten Einfluss nehmen können.
 
 Sperren Sie den Zugriff auf lokale Identitätskomponenten wie Azure AD Connect, AD FS und SQL-Dienste auf dieselbe Weise wie bei Domänencontrollern.
 

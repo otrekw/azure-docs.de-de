@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570381"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670106"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Übersicht über Richtlinienschlüsseln in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Sie können geheime Schlüssel und Zertifikate für das Einrichten von Vertrauen
 
 ## <a name="policy-keyset-and-keys"></a>Richtlinienkeyset und Schlüssel
 
-Die Ressource der obersten Ebene für Richtlinienschlüssel in Azure AD B2C ist der **Keyset**-Container. Jedes Keyset enthält mindestens einen **Schlüssel**. Ein Schlüssel weist die folgenden Attribute auf:
+Die Ressource der obersten Ebene für Richtlinienschlüssel in Azure AD B2C ist der **Keyset** -Container. Jedes Keyset enthält mindestens einen **Schlüssel** . Ein Schlüssel weist die folgenden Attribute auf:
 
 | attribute |  Erforderlich | Bemerkungen |
 | --- | --- |--- |
@@ -46,11 +46,11 @@ Es wird empfohlen, die Werte für die Schlüsselaktivierung und den Schlüsselab
 
 Um einen Schlüssel zu erstellen, können Sie eine der folgenden Methoden verwenden:
 
-- **Manuell**: Erstellen Sie ein Geheimnis mit einer von Ihnen definierten Zeichenfolge. Das Geheimnis ist ein symmetrischer Schlüssel. Sie können das Aktivierungs-und Ablaufdatum festlegen.
-- **Generiert**: Lassen Sie einen Schlüssel automatisch erstellen. Sie können das Aktivierungs-und Ablaufdatum festlegen. Es stehen zwei Optionen zur Verfügung:
-  - **Geheimnis**: Generiert einen symmetrischen Schlüssel.
-  - **RSA**: Generiert ein Schlüsselpaar (asymmetrische Schlüssel).
-- **Hochladen**: Lädt ein Zertifikat oder einen PKCS12-Schlüssel hoch. Das Zertifikat muss die privaten und öffentlichen Schlüssel (asymmetrische Schlüssel) enthalten.
+- **Manuell** : Erstellen Sie ein Geheimnis mit einer von Ihnen definierten Zeichenfolge. Das Geheimnis ist ein symmetrischer Schlüssel. Sie können das Aktivierungs-und Ablaufdatum festlegen.
+- **Generiert** : Lassen Sie einen Schlüssel automatisch erstellen. Sie können das Aktivierungs-und Ablaufdatum festlegen. Es stehen zwei Optionen zur Verfügung:
+  - **Geheimnis** : Generiert einen symmetrischen Schlüssel.
+  - **RSA** : Generiert ein Schlüsselpaar (asymmetrische Schlüssel).
+- **Hochladen** : Lädt ein Zertifikat oder einen PKCS12-Schlüssel hoch. Das Zertifikat muss die privaten und öffentlichen Schlüssel (asymmetrische Schlüssel) enthalten.
 
 ## <a name="key-rollover"></a>Schlüsselrollover
 
@@ -58,7 +58,7 @@ Aus Sicherheitsgründen kann Azure AD B2C ein Rollover der Schlüssel periodisch
 
 Wenn ein Azure AD B2C-Keyset über mehrere Schlüssel verfügt, ist jeweils nur einer der Schlüssel aktiv, abhängig von den folgenden Kriterien:
 
-- Die Schlüsselaktivierung erfolgt anhand des **Aktivierungsdatums**.
+- Die Schlüsselaktivierung erfolgt anhand des **Aktivierungsdatums** .
   - Die Schlüssel sind nach Aktivierungsdatum in aufsteigender Reihenfolge sortiert. Schlüssel mit weiter in der Zukunft liegenden Aktivierungsdaten sind weiter unten aufgelistet. Schlüssel ohne Aktivierungsdatum befinden sich am Ende der Liste.
   - Wenn das aktuelle Datum und die aktuelle Uhrzeit nach dem Aktivierungsdatum eines Schlüssels liegen, aktiviert Azure AD B2C den Schlüssel und verwendet nicht mehr den zuvor aktiven Schlüssel.
 - Wenn die Gültigkeitsdauer des aktuellen Schlüssels abgelaufen ist und der Schlüsselcontainer einen neuen Schlüssel, dessen Gültigkeitsdauer *nicht davor* liegt, und ein *Ablaufdatum* enthält, wird der neue Schlüssel automatisch aktiv.
@@ -73,11 +73,18 @@ So fügen Sie Signatur- und Verschlüsselungsschlüssel hinzu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C** , und wählen Sie diese Option dann aus.
 1. Wählen Sie auf der Übersichtsseite unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Auswählen von **Richtlinienschlüssel** 
     1. Wählen Sie zum Hinzufügen eines neuen Schlüssels **Hinzufügen** aus.
     1. Um einen neuen Schlüssel zu entfernen, wählen Sie den Schlüssel und dann **Löschen** aus. Wenn Sie den Schlüssel löschen möchten, geben Sie den Namen des zu löschenden Schlüsselcontainers ein. Azure AD B2C löscht den Schlüssel und erstellt eine Kopie des Schlüssels mit der Suffix .bak.
+
+### <a name="replace-a-key"></a>Ersetzen eines Schlüssels
+
+Die Schlüssel in einem Keyset können nicht ersetzt oder entfernt werden. Wenn Sie einen vorhandenen Schlüssel ändern müssen, beachten Sie Folgendes:
+
+- Es wird empfohlen, einen neuen Schlüssel hinzuzufügen, für den das **Aktivierungsdatum**  auf das aktuelle Datum und die aktuelle Uhrzeit festgelegt ist. Azure AD B2C aktiviert dann den neuen Schlüssel und verwendet den vorherigen aktiven Schlüssel nicht mehr.
+- Alternativ können Sie ein neues Keyset mit den richtigen Schlüsseln erstellen. Aktualisieren Sie Ihre Richtlinie so, dass das neue Keyset verwendet wird, und entfernen Sie dann das alte Keyset. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

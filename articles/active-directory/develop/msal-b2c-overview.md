@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119789"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673514"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Verwenden von Microsoft Authentication Library für JavaScript für die Zusammenarbeit mit Azure AD B2C
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Schritt 3: Konfigurieren der Authentifizierung
 
-1. Öffnen Sie die Datei `config.js` im Beispiel.
+1. Öffnen Sie im Beispiel die Datei *config.json* .
 
-2. Konfigurieren Sie das Beispiel mit den Anwendungsanmeldeinformationen, die Sie zuvor bei der Registrierung Ihrer Anwendung erhalten haben. Ändern Sie die folgenden Codezeilen, indem Sie die entsprechenden Werte durch Ihre Client-ID, Ihren Host, Ihre Mandanten-ID und den Richtliniennamen ersetzen.
+2. Konfigurieren Sie das Beispiel mit den Anwendungsanmeldeinformationen, die Sie zuvor bei der Registrierung Ihrer Anwendung erhalten haben. Ändern Sie die folgenden Codezeilen. Ersetzen Sie dabei die Werte durch den Namen Ihres Mandanten, die Client-ID und den Richtliniennamen.
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 Weitere Informationen finden Sie in diesem [Beispiel für eine Node.js-B2C-Web-API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
@@ -92,7 +98,7 @@ Es gibt zwei Punkte, die beim Konfigurieren Ihrer Anwendung von Interesse sind:
 - Konfigurieren des API-Endpunkts und von verfügbar gemachten Bereichen
 - Konfigurieren von Authentifizierungsparametern und Tokenbereichen
 
-1. Öffnen Sie im Beispiel die Datei *apiConfig.js*.
+1. Öffnen Sie im Beispiel die Datei *apiConfig.js* .
 
 2. Konfigurieren Sie das Beispiel mit den Parametern, die Sie zuvor bei der Registrierung Ihrer Web-API erhalten haben. Ändern Sie die folgenden Codezeilen, indem Sie die entsprechenden Werte durch die Adresse Ihrer Web-API und die verfügbar gemachten Bereiche ersetzen.
 
@@ -104,7 +110,7 @@ Es gibt zwei Punkte, die beim Konfigurieren Ihrer Anwendung von Interesse sind:
     };
    ```
 
-1. Öffnen Sie im Beispiel die Datei *authConfig.js*.
+1. Öffnen Sie im Beispiel die Datei *authConfig.js* .
 
 1. Konfigurieren Sie das Beispiel mit den Parametern, die Sie zuvor bei der Registrierung Ihrer Single-Page-Webanwendung erhalten haben. Ändern Sie die folgenden Codezeilen, indem Sie die entsprechenden Werte durch Ihre Client-ID, Autoritätsmetadaten und Bereiche für die Tokenanforderung ersetzen.
 

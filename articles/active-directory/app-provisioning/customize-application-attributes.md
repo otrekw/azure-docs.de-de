@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069873"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899184"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -33,7 +33,7 @@ Führen Sie diese Schritte aus, um auf die Funktion **Zuordnungen** für die Ben
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 1. Wählen Sie eine beliebige App aus, um den App-Verwaltungsbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
-1. Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden. Wenn die Zielanwendung dies unterstützt, können Sie in diesem Abschnitt auch optional die Bereitstellung von Gruppen und Benutzerkonten konfigurieren.
+1. Erweitern Sie **Zuordnungen** , um die Benutzerattribute anzuzeigen und zu bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden. Wenn die Zielanwendung dies unterstützt, können Sie in diesem Abschnitt auch optional die Bereitstellung von Gruppen und Benutzerkonten konfigurieren.
 
    ![Verwenden von Zuordnungen zum Anzeigen und Bearbeiten von Benutzerattributen](./media/customize-application-attributes/21.png)
 
@@ -53,12 +53,12 @@ Mit Attributzuordnungen steuern Sie, wie die Attribute in einer SaaS-Anwendung e
 Vier verschiedene Zuordnungstypen werden unterstützt:
 
 - **Direkt** : Das Zielattribut wird mit dem Wert eines Attributs des verknüpften Objekts in Azure AD aufgefüllt.
-- **Konstante**: Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angegeben haben.
+- **Konstante** : Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angegeben haben.
 - **Ausdruck** : Das Zielattribut wird abhängig vom Ergebnis eines skriptähnlichen Ausdrucks mit Daten aufgefüllt.
   Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 - **Kein** : Das Zielattribut bleibt unverändert. Wenn das Zielattribut allerdings leer ist, wird es mit dem von Ihnen angegebenen Standardwert aufgefüllt.
 
-Zusätzlich zu diesen vier Basistypen unterstützen benutzerdefinierte Attributzuordnungen das Konzept einer optionalen Zuordnung von **Standardwerten**. Die Standardwertzuordnung stellt sicher, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder in Azure AD noch für das Zielobjekt ein Wert vorhanden ist. Bei der üblichen Konfiguration bleibt dieses Feld leer.
+Zusätzlich zu diesen vier Basistypen unterstützen benutzerdefinierte Attributzuordnungen das Konzept einer optionalen Zuordnung von **Standardwerten** . Die Standardwertzuordnung stellt sicher, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder in Azure AD noch für das Zielobjekt ein Wert vorhanden ist. Bei der üblichen Konfiguration bleibt dieses Feld leer.
 
 ### <a name="understanding-attribute-mapping-properties"></a>Grundlegendes zu Attributzuordnungseigenschaften
 
@@ -66,13 +66,13 @@ Im vorherigen Abschnitt haben Sie bereits die Attributzuordnungstyp-Eigenschaft 
 Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die folgenden Attribute:
 
 - **Quellattribut:** Das Benutzerattribut aus dem Quellsystem (Beispiel: Azure Active Directory).
-- **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
+- **Zielattribut** : Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
 - **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Beim Aktualisieren eines vorhandenen Benutzers wird „Standardwert bei Null“ nicht bereitgestellt. Wenn Sie z. B. alle vorhandenen Benutzer im Zielsystem mit einer bestimmten Position (die im Quellsystem den Wert NULL hat) bereitstellen möchten, können Sie den folgenden [Ausdruck](../app-provisioning/functions-for-customizing-application-data.md)verwenden: Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]). Stellen Sie sicher, dass Sie „Default Value“ durch den Wert ersetzen, den Sie beim Wert NULL im Quellsystem bereitstellen möchten. 
-- **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
-- **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet. Obwohl Sie beliebig viele übereinstimmende Attribute festlegen können, sollten Sie berücksichtigen, ob die Attribute, die Sie als übereinstimmende Attribute verwenden, tatsächlich eindeutig sind und übereinstimmen müssen. Im Allgemeinen verfügen Kunden in Ihrer Konfiguration über 1 oder 2 übereinstimmende Attribute. 
+- **Objekte mit diesem Attribut abgleichen** : Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
+- **Rangfolge für Abgleich** : Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet. Obwohl Sie beliebig viele übereinstimmende Attribute festlegen können, sollten Sie berücksichtigen, ob die Attribute, die Sie als übereinstimmende Attribute verwenden, tatsächlich eindeutig sind und übereinstimmen müssen. Im Allgemeinen verfügen Kunden in Ihrer Konfiguration über 1 oder 2 übereinstimmende Attribute. 
 - **Diese Zuordnung anwenden**
-  - **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
-  - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
+  - **Immer** : Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
+  - **Nur während der Erstellung** : Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Abgleichen von Benutzern im Quell- und Zielsystem
 Der Azure AD-Bereitstellungsdienst kann sowohl in „Greenfield“-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in „Brownfield“-Szenarien (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
@@ -107,17 +107,20 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 
 - Salesforce
 - ServiceNow
-- Workday
+- Workday in Active Directory/Workday in Azure Active Directory
+- SuccessFactors in Active Directory/SuccessFactors in Azure Active Directory
 - Azure Active Directory ([Azure AD Graph-API-Standardattribute](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) und benutzerdefinierte Verzeichniserweiterungen werden unterstützt)
 - Apps, die [SCIM 2.0](https://tools.ietf.org/html/rfc7643) unterstützen und das Hinzufügen von Attributen erfordern, die im [Kernschema](https://tools.ietf.org/html/rfc7643) definiert sind
+- Für das Azure Active Directory-Rückschreiben in Workday oder SuccessFactors wird das Aktualisieren relevanter Metadaten für unterstützte Attribute (XPATH und JSONPath) unterstützt. Das Hinzufügen neuer Workday- oder SuccessFactors-Attribute, die über die im Standardschema enthaltenen Attribute hinausgehen, wird jedoch nicht unterstützt.
+
 
 > [!NOTE]
 > Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools.
 
 Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaften verfügbar:
 
-- **Name**: Der im Schema des Zielobjekts definierte Systemname des Attributs.
-- **Typ**: Der im Schema des Zielobjekts definierte Datentyp, den das Attribut speichert. Möglich ist einer der folgenden Typen:
+- **Name** : Der im Schema des Zielobjekts definierte Systemname des Attributs.
+- **Typ** : Der im Schema des Zielobjekts definierte Datentyp, den das Attribut speichert. Möglich ist einer der folgenden Typen:
   - *Binary* – Das Attribut enthält Binärdaten.
   - *Boolean* – Das Attribut enthält einen Wert „True“ oder „False“.
   - *DateTime* – Das Attribut enthält eine Datumszeichenfolge.
@@ -128,21 +131,18 @@ Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaf
 - **Erforderlich?** Gibt an, ob das Attribut in der Zielanwendung oder im Zielsystem aufgefüllt werden muss.
 - **Mehrwertig?** : Gibt an, ob das Attribut mehrere Werte unterstützt.
 - **Exact case?** (Groß-/Kleinschreibung beachten?): Gibt an, ob die Attributwerte unter Berücksichtigung der Groß-/Kleinschreibung ausgewertet werden.
-- **API-Ausdruck**: Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu aufgefordert werden.
+- **API-Ausdruck** : Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu aufgefordert werden.
 - **Referenced Object Attribute** (Referenziertes Objektattribut): Im Fall eines Attributs vom Typ „Reference“ können Sie in diesem Menü die Tabelle und das Attribut in der Zielanwendung auswählen, die den zugehörigen Wert für das Attribut enthält. Bei einem Attribut mit dem Namen „Abteilung“, dessen gespeicherter Wert auf ein Objekt in einer separaten Tabelle „Abteilungen“ verweist, würden Sie beispielsweise „Abteilungen.Name“ auswählen. Die unterstützten Verweistabellen und Felder für die primäre ID für eine bestimmte Anwendung sind vorkonfiguriert und können derzeit nicht im Azure-Portal, aber mit der [Microsoft Graph-API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) bearbeitet werden.
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Bereitstellen eines benutzerdefinierten Erweiterungsattributs für eine SCIM-konforme Anwendung
 Die SCIM-RFC definiert ein zentrales Benutzer- und Gruppenschema, erlaubt aber gleichzeitig die Erweiterung des Schemas, um spezifische Anwendungsanforderungen zu erfüllen. So fügen Sie einer SCIM-Anwendung ein benutzerdefiniertes Attribut hinzu
-   1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an, wählen Sie **Unternehmensanwendungen**, anschließend Ihre Anwendung und dann **Bereitstellung** aus.
+   1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an, wählen Sie **Unternehmensanwendungen** , anschließend Ihre Anwendung und dann **Bereitstellung** aus.
    2. Wählen Sie unter **Zuordnungen** das Objekt (Benutzer oder Gruppe) aus, für das Sie ein benutzerdefiniertes Attribut hinzufügen möchten.
    3. Wählen Sie am unteren Rand der Seite die Option **Erweiterte Optionen anzeigen** aus.
    4. Wählen Sie **Attributliste für Anwendungsname bearbeiten** aus.
    5. Geben Sie unten in der Attributliste Informationen zum benutzerdefinierten Attribut in den angezeigten Feldern ein. Wählen Sie dann **Attribut hinzufügen** aus.
 
-Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel folgen. „CustomExtensionName“ und „CustomAttribute“ können in Abstimmung auf die Anforderungen Ihrer Anwendung angepasst werden, beispielsweise:  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
- * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
+Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel folgen. „CustomExtensionName“ und „CustomAttribute“ können gemäß den Anforderungen Ihrer Anwendung angepasst werden. Beispiel: urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
 
 Diese Anweisungen gelten nur für SCIM-konforme Anwendungen. Anwendungen wie ServiceNow und Salesforce sind nicht per SCIM mit Azure AD integriert. Aus diesem Grund benötigen sie nicht diesen spezifischen Namespace, wenn ein benutzerdefiniertes Attribut hinzugefügt wird.
 
@@ -174,7 +174,7 @@ Benutzerdefinierte Attribute können keine referenziellen Attribute oder Attribu
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {
