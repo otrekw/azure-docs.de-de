@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342143"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368083"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 
@@ -85,7 +85,7 @@ Nachdem Sie den Speicherort konfiguriert haben, kann dieser nicht mehr geändert
 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
 1. Wählen Sie das Abonnement aus, das Sie ändern möchten.
 1. Wählen Sie **Bedrohungserkennung** aus.
-1. Wählen Sie **Windows Defender ATP Zugriff auf meine Daten erteilen** und dann **Speichern** aus.
+1. Wählen Sie **Microsoft Defender für Endpunkt den Zugriff auf meine Daten erlauben** und dann **Speichern** aus.
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Security Center von Microsoft Defender für den Endpunkt":::
 

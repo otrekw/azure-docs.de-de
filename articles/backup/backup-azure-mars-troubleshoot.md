@@ -3,12 +3,12 @@ title: Behandeln von Problemen mit dem Azure Backup-Agent
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installation und Registrierung des Azure Backup-Agents behandeln.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 2e2e807a8b849af435fe82d54bbfdd96b729fa38
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4ae4142652d9d38d5bf384e5a10d6eeb7e3cc608
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091456"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900372"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -41,7 +41,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 
 | Ursache | Empfohlene Aktionen |
 | ---     | ---    |
-| **Die Tresor-Anmeldeinformationen sind ungültig** <br/> <br/> Die Dateien mit den Tresoranmeldeinformationen sind möglicherweise beschädigt oder abgelaufen. (Beispiel: Sie wurden möglicherweise mehr als 48 Stunden vor der Registrierung heruntergeladen.)| [Laden Sie neue Anmeldeinformationen aus dem Recovery Services-Tresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file). Führen Sie dann nach Bedarf die folgenden Schritte aus: <ul><li> Wenn Sie MARS bereits installiert und registriert haben, öffnen Sie die MMC-Konsole des Microsoft Azure Backup-Agents. Klicken Sie dann im Bereich **Aktionen** auf **Server registrieren** , um die Registrierung mit den neuen Anmeldeinformationen abzuschließen. <br/> <li> Wenn bei der Neuinstallation ein Fehler auftritt, wiederholen Sie den Installationsvorgang mit neuen Anmeldeinformationen.</ul> **Hinweis** : Wenn mehrere Dateien mit Tresor-Anmeldeinformationen heruntergeladen wurden, ist nur die zuletzt heruntergeladene Datei für die nächsten 48 Stunden gültig. Wir empfehlen, eine neue Datei mit Tresor-Anmeldeinformationen herunterzuladen.
+| **Die Tresor-Anmeldeinformationen sind ungültig** <br/> <br/> Dateien mit Tresoranmeldeinformationen können beschädigt oder abgelaufen sein, oder weisen vielleicht eine andere Dateierweiterung als *.vaultCredentials* auf. (Beispiel: Sie wurden möglicherweise mehr als 48 Stunden vor der Registrierung heruntergeladen.)| [Laden Sie neue Anmeldeinformationen aus dem Recovery Services-Tresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file). Führen Sie dann nach Bedarf die folgenden Schritte aus: <ul><li> Wenn Sie MARS bereits installiert und registriert haben, öffnen Sie die MMC-Konsole des Microsoft Azure Backup-Agents. Klicken Sie dann im Bereich **Aktionen** auf **Server registrieren** , um die Registrierung mit den neuen Anmeldeinformationen abzuschließen. <br/> <li> Wenn bei der Neuinstallation ein Fehler auftritt, wiederholen Sie den Installationsvorgang mit neuen Anmeldeinformationen.</ul> **Hinweis** : Wenn mehrere Dateien mit Tresor-Anmeldeinformationen heruntergeladen wurden, ist nur die zuletzt heruntergeladene Datei für die nächsten 48 Stunden gültig. Wir empfehlen, eine neue Datei mit Tresor-Anmeldeinformationen herunterzuladen.
 | **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.<br></br> Wenn Ihre Verbindung über Azure ExpressRoute hergestellt wird, stellen Sie sicher, dass die Einstellungen wie unter [Azure ExpressRoute-Unterstützung](backup-support-matrix-mars-agent.md#azure-expressroute-support) beschrieben konfiguriert sind.
 | **Antivirensoftware blockiert die Registrierung** | Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Ablageordner. Der Standardspeicherort ist C:\Programme\Microsoft Azure Recovery Services Agent\Scratch. <li> Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 

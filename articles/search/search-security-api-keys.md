@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740631"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675582"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Dienst für die kognitive Azure-Suche
 
-Für alle Anforderungen an einen Suchdienst wird ein schreibgeschützter API-Schlüssel benötigt, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Suchdienstendpunkt und muss in jede Anforderung einbezogen werden. In [REST-Lösungen](search-get-started-postman.md) wird der API-Schlüssel in der Regel im Anforderungsheader angegeben. In [.NET-Lösungen](search-howto-dotnet-sdk.md#core-scenarios) wird ein Schlüssel häufig als Konfigurationseinstellung angegeben und dann in Form von [Credentials](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (Administratorschlüssel) oder [SearchCredentials](/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (Abfrageschlüssel) auf dem [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) übergeben.
+Für alle Anforderungen an einen Suchdienst wird ein schreibgeschütztes `api-key`-Objekt benötigt, das speziell für Ihren Dienst generiert wurde. Dieses `api-key`-Objekt ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Suchdienstendpunkt und muss in jede Anforderung einbezogen werden. 
+
++ In [REST-Lösungen](search-get-started-postman.md) wird der API-Schlüssel in der Regel im Anforderungsheader angegeben.
+
++ In [.NET-Lösungen](search-howto-dotnet-sdk.md) wird ein Schlüssel oft als Konfigurationseinstellung angegeben und dann als [AzureKeyCredential](/dotnet/api/azure.azurekeycredential)-Objekt übergeben.
 
 Schlüssel werden während der Dienstbereitstellung mit dem Suchdienst erstellt. Sie können Schlüsselwerte im [Azure-Portal](https://portal.azure.com) anzeigen und abrufen.
 
@@ -45,7 +49,7 @@ Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API]
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
-3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**, um Administrator- und Abfrageschlüssel anzuzeigen.
+3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel** , um Administrator- und Abfrageschlüssel anzuzeigen.
 
    :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portalseite &gt; Einstellungen abrufen &gt; Abschnitt „Schlüssel“" border="false":::
 
@@ -57,8 +61,8 @@ Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wi
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
-3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**.
-4. Klicken Sie auf **Abfrageschlüssel verwalten**.
+3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel** .
+4. Klicken Sie auf **Abfrageschlüssel verwalten** .
 5. Verwenden Sie einen bereits für Ihren Dienst generierten Abfrageschlüssel, oder erstellen Sie bis zu 50 neue Abfrageschlüssel. Der Standardabfrageschlüssel ist nicht benannt. Sie können zusätzliche Abfrageschlüssel jedoch für eine einfachere Verwaltbarkeit benennen.
 
    :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portalseite &gt; Einstellungen abrufen &gt; Abschnitt „Schlüssel“" border="false":::
@@ -72,7 +76,7 @@ Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wi
 
 Für jeden Dienst werden zwei Administratorschlüssel erstellt, sodass Sie einen Primärschlüssel mit dem Sekundärschlüssel für Geschäftskontinuität rotieren können.
 
-1. Kopieren Sie den Sekundärschlüssel auf der Seite **Einstellungen** >**Schlüssel**.
+1. Kopieren Sie den Sekundärschlüssel auf der Seite **Einstellungen** >**Schlüssel** .
 2. Aktualisieren Sie für alle Anwendungen die Einstellungen des API-Schlüssels so, dass der Sekundärschlüssel verwendet wird.
 3. Generieren Sie den Primärschlüssel neu.
 4. Aktualisieren Sie alle Anwendungen so, dass sie den neuen Primärschlüssel verwenden.
@@ -86,7 +90,7 @@ Nach der Erstellung neuer Schlüssel über das Portal oder die Verwaltungsebene 
 ## <a name="secure-api-keys"></a>Sichern von API-Schlüsseln
 Die Sicherheit der Schlüssel wird erreicht, indem der Zugriff über das Portal oder Resource Manager-Oberflächen (PowerShell oder Befehlszeilenschnittstelle) eingeschränkt wird. Wie bereits erwähnt, können Abonnementadministratoren alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.
 
-+ Klicken Sie im Dashboard für den Dienst auf **Zugriffssteuerung (IAM)** und anschließend auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für Ihren Dienst anzuzeigen.
++ Klicken Sie im Dashboard für den Dienst auf **Zugriffssteuerung (IAM)** und anschließend auf die Registerkarte **Rollenzuweisungen** , um die Rollenzuweisungen für Ihren Dienst anzuzeigen.
 
 Mitglieder der folgenden Rollen können Schlüssel anzeigen und neu generieren: Besitzer, Mitwirkender, [Suchdienstmitwirkender](../role-based-access-control/built-in-roles.md#search-service-contributor)
 
@@ -95,6 +99,6 @@ Mitglieder der folgenden Rollen können Schlüssel anzeigen und neu generieren: 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Rollenbasierte Zugriffssteuerung in der kognitiven Azure-Suche](search-security-rbac.md)
++ [Rollenbasierte Azure-Zugriffssteuerung in Azure Cognitive Search](search-security-rbac.md)
 + [Verwalten mit PowerShell](search-manage-powershell.md) 
 + [Artikel zu Leistung und Optimierung](search-performance-optimization.md)
