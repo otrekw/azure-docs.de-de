@@ -6,6 +6,8 @@
     - name: Was ist Content Moderator?
       href: overview.md
       expanded: true
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: Testen von Content Moderator im Web

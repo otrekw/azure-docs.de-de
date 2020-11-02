@@ -79,8 +79,6 @@
   items:
     - name: Leitfaden zur Veröffentlichung nach Angebotstyp
       href: publisher-guide-by-offer-type.md
-    - name: Aktivieren der Angebotsauthentifizierung mit Azure AD
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure-Anwendungsangebote
       items:
         - name: Planen eines Lösungsvorlagenangebots
