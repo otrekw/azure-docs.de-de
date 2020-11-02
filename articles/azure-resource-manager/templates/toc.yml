@@ -146,7 +146,9 @@
               href: ../../azure-portal/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Ressourcendiagramm
               href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: "Rollenbasierte Zugriffssteuerung von Azure (Azure\_RBAC)"
+            - name: 'Rollenbasierte Zugriffssteuerung: Benutzerdefinierte Rollen'
+              href: ../../role-based-access-control/custom-roles-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 'Rollenbasierte Zugriffssteuerung: Rollenzuweisung'
               href: ../../role-based-access-control/quickstart-role-assignments-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Dienstintegrität
               href: ../../service-health/alerts-activity-log-service-notifications-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -321,7 +323,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variables
+        - name: Variablen
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md

@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595081"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101901"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -163,6 +163,8 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repo
 
 - Die GitHub-Integration in die visuellen Data Factory-Erstellungstools funktioniert nur in der allgemein verfügbaren Version von Data Factory.
 
+- Azure Data Factory unterstützt keine GitHub-Organisationskonten.
+
 - Von einer einzelnen GitHub-Verzweigung können maximal 1.000 Entitäten pro Ressourcentyp wie Pipelines und Datasets abgerufen werden. Sobald diese Begrenzung erreicht wurde, sollten Sie Ihre Ressourcen in einzelne Factorys aufteilen. Azure DevOps-Git-Repositorys unterliegen dieser Einschränkung nicht.
 
 ## <a name="version-control"></a>Versionskontrolle
@@ -175,7 +177,7 @@ Jedes Azure Repos Git-Repository, das einer Data Factory zugeordnet ist, verfüg
 
 ![Neuen Branch erstellen](media/author-visually/new-branch.png)
 
-Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollaborationsbranch zu mergen, klicken Sie auf das Dropdownmenü „Branch“ und dann auf **Pull Request erstellen**. Dann gelangen Sie zu Azure Repos Git und können Pull Requests auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen. (`master` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
+Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollaborationsbranch zu mergen, klicken Sie auf das Dropdownmenü „Branch“ und dann auf **Pull Request erstellen** . Dann gelangen Sie zu Azure Repos Git und können Pull Requests auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen. (`master` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
 
 ![Erstellen eines neuen Pull Requests](media/author-visually/create-pull-request.png)
 
@@ -196,11 +198,11 @@ In Azure Data Factory kann jeweils nur ein Veröffentlichungsbranch vorhanden se
 
 ### <a name="publish-code-changes"></a>Veröffentlichen von Codeänderungen
 
-Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`master` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen**, um Ihre Codeänderungen manuell im Masterbranch im Data Factory-Dienst zu veröffentlichen.
+Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`master` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen** , um Ihre Codeänderungen manuell im Masterbranch im Data Factory-Dienst zu veröffentlichen.
 
 ![Veröffentlichen von Änderungen für den Data Factory-Dienst](media/author-visually/publish-changes.png)
 
-Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für die Veröffentlichung und ausstehende Änderungen korrekt sind. Nachdem Sie Ihre Änderungen überprüft haben, klicken Sie auf **OK**, um die Veröffentlichung zu bestätigen.
+Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für die Veröffentlichung und ausstehende Änderungen korrekt sind. Nachdem Sie Ihre Änderungen überprüft haben, klicken Sie auf **OK** , um die Veröffentlichung zu bestätigen.
 
 ![Überprüfen des Branch für die Veröffentlichung](media/author-visually/configure-publish-branch.png)
 
@@ -246,7 +248,7 @@ Wenn Sie zu einem anderen Git-Repository wechseln möchten, navigieren Sie im Ve
 
 ![Git-Symbol](media/author-visually/remove-repository.png)
 
-Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
+Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen** , um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
 
 ![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repository-2.png)
 

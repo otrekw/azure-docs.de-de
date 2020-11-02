@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 05/12/2020
-ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033250"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204910"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -36,7 +36,7 @@ Die Co-Selling-Option im Partner Center ist zurzeit für einige Angebotstypen ve
 
 ## <a name="listing"></a>Auflisten
 
-Mithilfe von Co-Selling-Listings können Microsoft-Vertriebsteams Ihre Lösung für eine größere Zielgruppe vermarkten.
+Mithilfe von Co-Selling-Listings können Microsoft-Vertriebsteams Ihre Lösung für eine größere Zielgruppe vermarkten. *(Alle Felder erforderlich)*
 
 - Wählen Sie die Microsoft-Plattformen aus, für die Ihr Angebot erstellt wurde, durch die es erweitert wird oder in die es integriert werden kann.
 - Wählen Sie Zielmarktsegmente für Ihr Angebot aus.
@@ -58,26 +58,26 @@ Lösungstypen helfen bei der Definition der Szenarien, für die Ihr Angebot konz
 
 Lösungsbereiche helfen, Ihre Lösung näher zu definieren.
 
-Sie können bis zu drei Lösungsbereiche für Ihr Angebot hinzufügen. Für jeden Lösungsbereich können Sie bis zu zwei Lösungsteilbereiche auswählen. Um mehrere Unterkategorien auszuwählen, verwenden Sie die Taste `Ctrl` (unter Windows) oder die Befehlstaste (unter Mac OS).
+Sie können bis zu drei Lösungsbereiche für Ihr Angebot hinzufügen. Für jeden Lösungsbereich können Sie bis zu zwei Lösungsteilbereiche auswählen. Um mehrere Unterkategorien auszuwählen, verwenden Sie die Taste `Ctrl` (unter Windows) oder die Befehlstaste (unter macOS).
 
 ## <a name="documents"></a>Dokumente
 
-Sie haben die Möglichkeit, Begleitdokumente bereitzustellen, die Microsoft verwendet, um weitere Informationen zu Ihrem Angebot zu erhalten und dessen Eignung für Ihre Kundenanforderungen zu überprüfen. Alle in der folgenden Tabelle aufgeführten Dokumente sind optional.
+Sie haben die Möglichkeit, Begleitdokumente bereitzustellen, die Microsoft verwendet, um weitere Informationen zu Ihrem Angebot zu erhalten und dessen Eignung für Ihre Kundenanforderungen zu überprüfen.
 
 | **Dokumente**    | **Beschreibung**  |
 | :------------------- | :-------------------|
-| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Microsoft 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul> |
-| *Kundenpräsentation* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
+| *Einseitiges Dokument des Kunden (erforderlich)* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Microsoft 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul> |
+| *Kundenpräsentation (erforderlich)* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
 | *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft diese Lösung in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage. |
-| *Überprüfbare Kundengewinne (optional)* | Konkrete Beispiele für den Erfolg von Kunden nach dem Einsatz Ihrer Lösung. |
-| *Kanalpräsentation (optional)* | Eine Präsentation mit Informationen, die Vertriebspartnern helfen, mehr über Ihre Lösung zu erfahren und ihre Vertriebsteams darauf vorzubereiten, Ihr Angebot zu verkaufen. Dazu gehören in der Regel eine Kurzpräsentation, Informationen zu den Zielkunden, Fragen an die Kunden, Diskussionspunkte und Links zu Videos, Dokumentationen und Supportinformationen. |
+| *Überprüfbare Kundengewinne* | Konkrete Beispiele für den Erfolg von Kunden nach dem Einsatz Ihrer Lösung. |
+| *Kanalpräsentation* | Eine Präsentation mit Informationen, die Vertriebspartnern helfen, mehr über Ihre Lösung zu erfahren und ihre Vertriebsteams darauf vorzubereiten, Ihr Angebot zu verkaufen. Dazu gehören in der Regel eine Kurzpräsentation, Informationen zu den Zielkunden, Fragen an die Kunden, Diskussionspunkte und Links zu Videos, Dokumentationen und Supportinformationen. |
 | *Referenzarchitekturdiagramme* | Ein Dokument mit dem Modell, das das vom Partner erstellte IP zusammen mit seiner Beziehung zu Microsoft Cloud Services darstellt und wie es die technischen Anforderungen des IP-Co-Selling-Programms erfüllt. |
 | *Weitere Dokumente* | Optional können Sie bis zu fünf zusätzliche Dokumente oder Videos hochladen, um Microsoft-Vertriebsteams und Vertriebspartnern zu helfen, mehr über Ihre Lösung, Ihr Unternehmen und/oder Ihre Unterscheidungsmerkmale zu erfahren. |
 | *URL für externen Verweis* | Der Link zur Website Ihres Produkts, auf der Microsoft-Vertriebsteams und Vertriebspartner mehr über Ihre Lösung erfahren können. |
 
 ## <a name="contacts"></a>Kontakte
 
-Ihre Kontaktinformationen ermöglichen es Microsoft-Vertriebsteams und Vertriebspartnern, zusätzliche Informationen von der entsprechenden Ressource in Ihrem Unternehmen anzufordern. Die Kontaktinformationen sind für alle Microsoft-Vertriebsteams verfügbar. Wenn Sie Ihr Angebot im CSP-Programm zur Verfügung stellen, stehen diese Kontaktinformationen auch den Vertriebspartnern zur Verfügung.
+Ihre Kontaktinformationen ermöglichen es Microsoft-Vertriebsteams und Vertriebspartnern, zusätzliche Informationen von der entsprechenden Ressource in Ihrem Unternehmen anzufordern. Die Kontaktinformationen sind für alle Microsoft-Vertriebsteams verfügbar. *(Das Co-Selling-Programm erfordert einen Kontakt für jede Geografie, in der Ihr Angebot verfügbar ist.)* Wenn Sie Ihr Angebot im CSP-Programm zur Verfügung stellen, stehen diese Kontaktinformationen auch den Vertriebspartnern zur Verfügung.
 
 Sie können Ihre Kontakte bereitstellen, indem Sie die CSV-Vorlage aus dem Partner Center herunterladen, jede Zeile mit Informationen zum Kontakt ausfüllen und diese CSV-Datei dann importieren. Das Importieren einer CSV-Datei überschreibt die vorhandenen Kontakte.
 

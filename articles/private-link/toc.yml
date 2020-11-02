@@ -37,6 +37,8 @@
       items:
         - name: 'Herstellen einer Verbindung mit SQL Server: Portal'
           href: tutorial-private-endpoint-sql-portal.md
+        - name: 'Herstellen einer Verbindung mit SQL Server: PowerShell'
+          href: tutorial-private-endpoint-sql-powershell.md
 - name: Konzepte
   items:
     - name: Privater Endpunkt
@@ -67,7 +69,7 @@
           href: troubleshoot-private-link-connectivity.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

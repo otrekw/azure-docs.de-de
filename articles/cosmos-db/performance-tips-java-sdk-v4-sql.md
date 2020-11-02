@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258312"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277327"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Leistungstipps für das Azure Cosmos DB Java SDK v4
 
@@ -38,20 +38,13 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 * **Verbindungsmodus: Verwenden des direkten Modus**
 <a id="direct-connection"></a>
     
-    Die Art der Verbindung eines Clients mit Azure Cosmos DB hat erhebliche Auswirkungen auf die Leistung, insbesondere im Hinblick auf die clientseitige Latenz. Der Verbindungsmodus ist eine wichtige Einstellung bei der Clientkonfiguration. Dies sind die beiden für das Azure Cosmos DB Java SDK v4 verfügbaren Verbindungsmodi:  
-
-    * Direkter Modus (Standard)      
-    * Gatewaymodus
-
-    Diese Verbindungsmodi entscheiden im Wesentlichen über die Weiterleitung von Datenebenenanforderungen (Lese- und Schreibvorgänge für Dokumente) vom Clientcomputer an Partitionen im Azure Cosmos DB-Back-End. Im Allgemeinen ist der direkte Modus die bevorzugte Option für eine optimale Leistung. Er ermöglicht es dem Client, TCP-Verbindungen direkt mit Partitionen im Azure Cosmos DB-Back-End zu öffnen und Anforderungen *direkt* und ohne Vermittler zu senden. Im Gatewaymodus werden Anforderungen vom Client an einen sogenannten „Gatewayserver“ im Azure Cosmos DB-Front-End weitergeleitet, der wiederum Ihre Anforderungen an die entsprechenden Partitionen im Azure Cosmos DB-Back-End verteilt. Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich (Client zu Gateway und Gateway zu Partition), wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind.
-
-    Der Verbindungsmodus für Anforderungen auf Datenebene wird im Azure Cosmos DB-Client-Generator mithilfe der Methoden *directMode()* oder *gatewayMode()* konfiguriert, wie unten gezeigt. Um einen der beiden Modi mit den Standardeinstellungen zu konfigurieren, rufen Sie beide Methoden ohne Argumente auf. Andernfalls übergeben Sie eine Konfigurationseinstellungs-Klasseninstanz als Argument (*DirectConnectionConfig* für *directMode()* und *GatewayConnectionConfig* für *gatewayMode()* .)
+    Als Standardverbindungsmodus des Java SDK wird der direkte Modus verwendet. Sie können den Verbindungsmodus im Client-Generator mithilfe der Methode *directMode()* oder *gatewayMode()* wie unten gezeigt konfigurieren. Um einen der beiden Modi mit den Standardeinstellungen zu konfigurieren, rufen Sie beide Methoden ohne Argumente auf. Andernfalls übergeben Sie eine Konfigurationseinstellungs-Klasseninstanz als Argument ( *DirectConnectionConfig* für *directMode()* und *GatewayConnectionConfig* für *gatewayMode()* ). Weitere Informationen zu verschiedenen Konnektivitätsoptionen finden Sie im Artikel zu den [Konnektivitätsmodi](sql-sdk-connection-modes.md).
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>[Async](#tab/api-async)
 
-    Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+    Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
@@ -113,13 +106,13 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](https://docs.
 
 * **Verwenden der niedrigsten für die Anwendung erforderlichen Konsistenzebene**
 
-    Wenn Sie eine *CosmosClient*-Klasse erstellen, wird *Sitzung* als Standardkonsistenz festgelegt, falls keine andere explizite Angabe gemacht wird. Wenn die Konsistenz *Sitzung* für Ihre Anwendungslogik nicht erforderlich ist, legen Sie die *Konsistenz* auf *Letztlich* fest. Hinweis: Es wird empfohlen, mindestens *Sitzung* für die Konsistenz bei Anwendungen zu verwenden, die den Azure Cosmos DB-Änderungsfeedprozessor verwenden.
+    Wenn Sie eine *CosmosClient* -Klasse erstellen, wird *Sitzung* als Standardkonsistenz festgelegt, falls keine andere explizite Angabe gemacht wird. Wenn die Konsistenz *Sitzung* für Ihre Anwendungslogik nicht erforderlich ist, legen Sie die *Konsistenz* auf *Letztlich* fest. Hinweis: Es wird empfohlen, mindestens *Sitzung* für die Konsistenz bei Anwendungen zu verwenden, die den Azure Cosmos DB-Änderungsfeedprozessor verwenden.
 
 * **Verwenden der Async-API zum Ausschöpfen des bereitgestellten Durchsatzes**
 
     Das Azure Cosmos DB Java SDK v4 bündelt die APIs „Sync“ und „Async“. Grob gesagt implementiert die Async-API SDK-Funktionen, während die Sync-API ein einfacher Wrapper ist, der blockierende Aufrufe der Async-API durchführt. Dies steht im Kontrast zum älteren Azure Cosmos DB Async Java SDK v2, das nur die Async-API enthielt, und dem älteren Azure Cosmos DB Sync Java SDK v2, das lediglich die Sync-API enthielt und eine vollständig unterschiedliche Implementierung erforderte. 
     
-    Die Auswahl der API wird während der Clientinitialisierung getroffen. Eine *CosmosAsyncClient*-Klasse unterstützt die Async-API, während die *CosmosClient*-Klasse die Sync-API unterstützt. 
+    Die Auswahl der API wird während der Clientinitialisierung getroffen. Eine *CosmosAsyncClient* -Klasse unterstützt die Async-API, während die *CosmosClient* -Klasse die Sync-API unterstützt. 
     
     Die Async-API implementiert nicht blockierende E/A-Vorgänge und ist die beste Wahl, wenn Sie den Durchsatz beim Ausgeben von Anforderungen an Azure Cosmos DB voll ausschöpfen möchten. 
     
@@ -135,9 +128,9 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](https://docs.
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>[Async](#tab/api-async)
 
-    Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+    Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientAsync)]
 
@@ -159,15 +152,15 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](https://docs.
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Abbildung der Azure Cosmos DB-Verbindungsrichtlinie" border="false":::
 
-        Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf der Clientseite bis zu 10 **Kanäle** pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
+        Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf der Clientseite bis zu 10  **Kanäle** pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
 
     * ***Konfigurationsoptionen für den direkten Modus***
 
-        Wenn ein nicht standardmäßiges Verhalten beim direkten Modus gewünscht ist, erstellen Sie eine *DirectConnectionConfig*-Instanz, passen Sie deren Eigenschaften an, und übergeben Sie die angepasste Eigenschafteninstanz dann an die Methode *directMode()* im Azure Cosmos DB-Client-Generator.
+        Wenn ein nicht standardmäßiges Verhalten beim direkten Modus gewünscht ist, erstellen Sie eine *DirectConnectionConfig* -Instanz, passen Sie deren Eigenschaften an, und übergeben Sie die angepasste Eigenschafteninstanz dann an die Methode *directMode()* im Azure Cosmos DB-Client-Generator.
 
         Diese Konfigurationseinstellungen steuern das Verhalten der zugrunde liegenden Architektur des weiter oben behandelten direkten Modus.
 
-        Verwenden Sie als ersten Schritt die folgenden empfohlenen Konfigurationseinstellungen. Diese *DirectConnectionConfig*-Optionen sind erweiterte Konfigurationseinstellungen, die sich auf unerwartete Weise auf die SDK-Leistung auswirken können. Es wird empfohlen, dass Benutzer diese nicht ändern, es sei denn, sie kennen die möglichen Auswirkungen und dies ist absolut notwendig. Wenden Sie sich an das [Azure Cosmos DB-Team](mailto:CosmosDBPerformanceSupport@service.microsoft.com), wenn Sie mit diesem speziellen Thema Probleme haben.
+        Verwenden Sie als ersten Schritt die folgenden empfohlenen Konfigurationseinstellungen. Diese *DirectConnectionConfig* -Optionen sind erweiterte Konfigurationseinstellungen, die sich auf unerwartete Weise auf die SDK-Leistung auswirken können. Es wird empfohlen, dass Benutzer diese nicht ändern, es sei denn, sie kennen die möglichen Auswirkungen und dies ist absolut notwendig. Wenden Sie sich an das [Azure Cosmos DB-Team](mailto:CosmosDBPerformanceSupport@service.microsoft.com), wenn Sie mit diesem speziellen Thema Probleme haben.
 
         | Konfigurationsoption       | Standard    |
         | :------------------:       | :-----:    |
@@ -187,172 +180,172 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](https://docs.
 
         Es ist wichtig zu beachten, dass sich für parallele Abfragen die größten Vorteile ergeben, wenn die Daten in Bezug auf die Abfrage gleichmäßig auf alle Partitionen verteilt werden. Wenn die partitionierte Auflistung so partitioniert ist, dass sich alle Daten bzw. die meisten Daten, die von einer Abfrage zurückgegeben werden, auf einigen wenigen Partitionen befinden (schlimmstenfalls nur auf einer Partition), können aufgrund dieser Partitionierung Engpässe bei der Leistung auftreten.
 
-    * ***Optimieren von setMaxBufferedItemCount\:***
+    ***Optimieren von setMaxBufferedItemCount\:***
     
-        Parallele Abfragen sind so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch der Ergebnisse verarbeitet. Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage. setMaxBufferedItemCount begrenzt die Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie „setMaxBufferedItemCount“ auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
+        Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
-        Das vorherige Abrufen funktioniert unabhängig von MaxDegreeOfParallelism, und es ist nur ein Puffer für die Daten aller Partitionen vorhanden.
+        Pre-fetching works the same way irrespective of the MaxDegreeOfParallelism, and there is a single buffer for the data from all partitions.
 
-* **Aufskalieren Ihrer Clientworkload**
+Parallele Abfragen sind so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch der Ergebnisse verarbeitet.
 
-    Wenn Sie auf einem hohen Durchsatzniveau testen, kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerkauslastung deckelt. Wenn dieser Punkt erreicht wird, können Sie das Azure Cosmos DB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
+    If you are testing at high throughput levels, the client application may become the bottleneck due to the machine capping out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
-    Eine gute Faustregel ist, eine CPU-Auslastung von 50 Prozent auf einem beliebigen Server nicht zu überschreiten, um die Wartezeit gering zu halten.
+    A good rule of thumb is not to exceed >50% CPU utilization on any given server, to keep latency low.
 
    <a id="tune-page-size"></a>
 
-* **Optimieren der Seitengröße für Abfragen/Lesefeeds, um die Leistung zu verbessern**
+* Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage.
 
-    Wenn mehrere Dokumente mithilfe der Lesefeedfunktion (z. B. *readItems*) gleichzeitig gelesen werden oder eine SQL-Abfrage (*queryItems*) ausgegeben wird, werden die Ergebnisse bei der Rückgabe segmentiert, falls das Resultset zu groß ist. Ergebnisse werden standardmäßig in Blöcken mit je 100 Elementen oder 1 MB zurückgegeben (je nachdem, welcher Grenzwert zuerst erreicht wird).
+    setMaxBufferedItemCount begrenzt die Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie „setMaxBufferedItemCount“ auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
+
+    Das vorherige Abrufen funktioniert unabhängig von MaxDegreeOfParallelism, und es ist nur ein Puffer für die Daten aller Partitionen vorhanden. **Aufskalieren Ihrer Clientworkload** 
+
+    * Wenn Sie auf einem hohen Durchsatzniveau testen, kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerkauslastung deckelt. Wenn dieser Punkt erreicht wird, können Sie das Azure Cosmos DB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
+    
+    * Eine gute Faustregel ist, eine CPU-Auslastung von 50 Prozent auf einem beliebigen Server nicht zu überschreiten, um die Wartezeit gering zu halten. **Optimieren der Seitengröße für Abfragen/Lesefeeds, um die Leistung zu verbessern** 
+    
+    Wenn mehrere Dokumente mithilfe der Lesefeedfunktion (z. B. *readItems* ) gleichzeitig gelesen werden oder eine SQL-Abfrage ( *queryItems* ) ausgegeben wird, werden die Ergebnisse bei der Rückgabe segmentiert, falls das Resultset zu groß ist. Ergebnisse werden standardmäßig in Blöcken mit je 100 Elementen oder 1 MB zurückgegeben (je nachdem, welcher Grenzwert zuerst erreicht wird).
 
     Angenommen, die Anwendung gibt eine Abfrage an Azure Cosmos DB aus, und die Anwendung erfordert alle Abfrageergebnisse, um die Aufgabe abzuschließen zu können. Durch Anpassen des Anforderungsheaderfelds [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) können Sie die Seitengröße erhöhen, um die Anzahl von Netzwerkroundtrips zu verringern, die zum Abrufen aller entsprechenden Ergebnisse erforderlich sind. 
 
-    * Wenn Sie den [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers)-Feldwert bei Abfragen mit nur einer Partition auf „-1“ (keine Begrenzung für Seitengröße) festlegen, wird die Wartezeit maximiert, indem die Anzahl der Abfrageantwortseiten reduziert wird: Entweder wird das vollständige Resultset auf einer einzelnen Seite zurückgegeben, oder das Resultset wird auf der möglichen Mindestanzahl von Seiten zurückgegeben, wenn die Abfrage länger als der Timeoutintervall dauert. Dadurch wird ein Vielfaches der Zeit für Roundtripanforderungen eingespart.
-    
-    * Bei partitionsübergreifenden Abfragen kann das Festlegen des [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers)-Felds auf „-1“ und das Entfernen der Seitengrößenbeschränkung zu einer Überlastung des SDK mit nicht verwaltbaren Seitengrößen führen. In diesem Fall empfiehlt es sich, die Seitengrößenbeschränkung auf einen hohen, aber dennoch begrenzten Wert (z. B. 1.000) festzulegen, um die Wartezeit zu verringern. 
-    
-    In einigen Anwendungen benötigen Sie möglicherweise nicht alle Abfrageergebnisse. Falls nur einige wenige Ergebnisse angezeigt werden müssen (etwa, wenn von der Benutzeroberfläche oder Anwendungs-API gleichzeitig nur zehn Ergebnisse zurückgegeben werden), können Sie die Seitengröße auch auf „10“ verringern, um den durch Lese- und Abfragevorgänge beanspruchten Durchsatz zu reduzieren.
+* Wenn Sie den [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers)-Feldwert bei Abfragen mit nur einer Partition auf „-1“ (keine Begrenzung für Seitengröße) festlegen, wird die Wartezeit maximiert, indem die Anzahl der Abfrageantwortseiten reduziert wird: Entweder wird das vollständige Resultset auf einer einzelnen Seite zurückgegeben, oder das Resultset wird auf der möglichen Mindestanzahl von Seiten zurückgegeben, wenn die Abfrage länger als der Timeoutintervall dauert.
 
-    Sie können auch das Argument für die bevorzugte Seitengröße der *byPage*-Methode festlegen, anstatt das REST-Headerfeld direkt zu ändern. Beachten Sie, dass mit [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) oder dem Argument der *byPage*-Methode für die bevorzugte Seitengröße nur eine Obergrenze für die Seitengröße und keine absolute Anforderung festgelegt wird. Aus mehreren Gründen gibt Azure Cosmos DB möglicherweise Seiten zurück, die kleiner als die bevorzugte Seitengröße sind. 
+    Dadurch wird ein Vielfaches der Zeit für Roundtripanforderungen eingespart. Bei partitionsübergreifenden Abfragen kann das Festlegen des [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers)-Felds auf „-1“ und das Entfernen der Seitengrößenbeschränkung zu einer Überlastung des SDK mit nicht verwaltbaren Seitengrößen führen. In diesem Fall empfiehlt es sich, die Seitengrößenbeschränkung auf einen hohen, aber dennoch begrenzten Wert (z. B. 1.000) festzulegen, um die Wartezeit zu verringern. In einigen Anwendungen benötigen Sie möglicherweise nicht alle Abfrageergebnisse. Falls nur einige wenige Ergebnisse angezeigt werden müssen (etwa, wenn von der Benutzeroberfläche oder Anwendungs-API gleichzeitig nur zehn Ergebnisse zurückgegeben werden), können Sie die Seitengröße auch auf „10“ verringern, um den durch Lese- und Abfragevorgänge beanspruchten Durchsatz zu reduzieren.
 
-* **Verwenden des geeigneten Planers (Vermeiden des Diebstahls von Eventloop-E/A-Threads in Netty)**
-
-    Die asynchrone Funktionalität des Azure Cosmos DB Java SDK basiert auf nicht blockierenden E/A-Vorgängen in [Netty](https://netty.io/). Das SDK verwendet eine feste Anzahl (die Anzahl von CPU-Kernen Ihres Computers) von E/A-Eventloop-Threads in Netty zum Ausführen von E/A-Vorgängen. Das von der API zurückgegebene Flux-Objekt gibt das Ergebnis auf einem der freigegebenen E/A-Eventloop-Threads in Netty aus. Daher ist es wichtig, die freigegebenen E/A-Eventloop-Threads in Netty nicht zu blockieren. CPU-intensives Arbeiten oder das Blockieren von Vorgängen auf dem E/A-Eventloop-Thread in Netty kann einen Deadlock verursachen oder den SDK-Durchsatz deutlich reduzieren.
-
-    Beispiel: Der folgende Code führt eine CPU-intensive Arbeit auf dem E/A-Eventloop-Thread in Netty aus:
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-noscheduler"></a>Java SDK v4 (Maven com.azure::azure-cosmos): Async-API
+    Sie können auch das Argument für die bevorzugte Seitengröße der *byPage* -Methode festlegen, anstatt das REST-Headerfeld direkt zu ändern.
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a>Beachten Sie, dass mit [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) oder dem Argument der *byPage* -Methode für die bevorzugte Seitengröße nur eine Obergrenze für die Seitengröße und keine absolute Anforderung festgelegt wird. Aus mehreren Gründen gibt Azure Cosmos DB möglicherweise Seiten zurück, die kleiner als die bevorzugte Seitengröße sind.
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNeedsSchedulerAsync)]
 
-    Wenn Sie nach dem Empfang des Ergebnisses CPU-intensive Arbeit am Ergebnis durchführen möchten, sollte diese nicht auf dem E/A-Eventloop-Thread in Netty erfolgen. Stattdessen können Sie einen eigenen Planer bereitstellen, um wie unten gezeigt einen eigenen Thread für die Ausführung Ihrer Arbeit zur Verfügung zu stellen (erfordert `import reactor.core.scheduler.Schedulers`).
+    **Verwenden des geeigneten Planers (Vermeiden des Diebstahls von Eventloop-E/A-Threads in Netty)** Die asynchrone Funktionalität des Azure Cosmos DB Java SDK basiert auf nicht blockierenden E/A-Vorgängen in [Netty](https://netty.io/).
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a>Das SDK verwendet eine feste Anzahl (die Anzahl von CPU-Kernen Ihres Computers) von E/A-Eventloop-Threads in Netty zum Ausführen von E/A-Vorgängen.
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddSchedulerAsync)]
 
-    Je nach Art der Arbeit müssen Sie den entsprechenden vorhandenen Reactor-Planer verwenden. Lesen Sie hier nach: [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html).
+    Das von der API zurückgegebene Flux-Objekt gibt das Ergebnis auf einem der freigegebenen E/A-Eventloop-Threads in Netty aus. Daher ist es wichtig, die freigegebenen E/A-Eventloop-Threads in Netty nicht zu blockieren.
 
-    Weitere Informationen zum Azure Cosmos DB Java SDK v4 finden Sie im [Azure Cosmos DB-Verzeichnis des Azure SDK für Java-Monorepos auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos).
+    CPU-intensives Arbeiten oder das Blockieren von Vorgängen auf dem E/A-Eventloop-Thread in Netty kann einen Deadlock verursachen oder den SDK-Durchsatz deutlich reduzieren.
 
-* **Optimieren der Protokollierungseinstellungen in Ihrer Anwendung**
+* Beispiel: Der folgende Code führt eine CPU-intensive Arbeit auf dem E/A-Eventloop-Thread in Netty aus:
 
-    Aus verschiedenen Gründen kann es erforderlich sein, die Protokollierung in einem Thread hinzuzufügen, der einen hohen Anforderungsdurchsatz verursacht. Wenn das Ziel darin besteht, den bereitgestellten Durchsatz eines Containers mit den von diesem Thread generierten Anforderungen vollständig auszuschöpfen, kann die Leistung mithilfe von Protokollierungsoptimierungen erheblich verbessert werden.
+    <a id="java4-noscheduler"></a>Java SDK v4 (Maven com.azure::azure-cosmos): Async-API Wenn Sie nach dem Empfang des Ergebnisses CPU-intensive Arbeit am Ergebnis durchführen möchten, sollte diese nicht auf dem E/A-Eventloop-Thread in Netty erfolgen.
 
-    * ***Konfigurieren einer Async-Protokollierung***
+    * Stattdessen können Sie einen eigenen Planer bereitstellen, um wie unten gezeigt einen eigenen Thread für die Ausführung Ihrer Arbeit zur Verfügung zu stellen (erfordert `import reactor.core.scheduler.Schedulers`).
 
-        Die Wartezeit einer synchronen Protokollierung ist notwendigerweise ein Faktor der Berechnung der Gesamtwartezeit des Threads, der Anforderungen generiert. Eine asynchrone Protokollierung wie [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) wird empfohlen, um den Protokollierungsaufwand von Hochleistungsanwendungsthreads zu entkoppeln.
+        <a id="java4-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API Je nach Art der Arbeit müssen Sie den entsprechenden vorhandenen Reactor-Planer verwenden.
 
-    * ***Deaktivieren der Netty-Protokollierung***
+    Lesen Sie hier nach: [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html).
 
-        Die Netty-Bibliotheksprotokollierung führt zu übermäßiger Kommunikation und muss deaktiviert werden (das Unterdrücken der Anmeldung in der Konfiguration reicht möglicherweise nicht aus), um zusätzliche CPU-Kosten zu vermeiden. Wenn Sie sich nicht im Debuggingmodus befinden, deaktivieren Sie die Protokollierung von Netty vollständig. Wenn Sie also „log4j“ verwenden, um die zusätzlichen CPU-Kosten zu verhindern, die durch ``org.apache.log4j.Category.callAppenders()`` von Netty anfallen, fügen Sie Ihrer Codebasis die folgende Zeile hinzu:
+        Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
         ```
 
- * **Ressourcengrenzwert des Betriebssystems für geöffnete Dateien**
+ Weitere Informationen zum Azure Cosmos DB Java SDK v4 finden Sie im [Azure Cosmos DB-Verzeichnis des Azure SDK für Java-Monorepos auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos).
  
-    Einige Linux-Systeme (z. B. Red Hat) haben eine Obergrenze für die Anzahl von offenen Dateien und damit für die Gesamtanzahl von Verbindungen. Führen Sie den folgenden Befehl aus, um die aktuellen Grenzwerte anzuzeigen:
+    **Optimieren der Protokollierungseinstellungen in Ihrer Anwendung** Aus verschiedenen Gründen kann es erforderlich sein, die Protokollierung in einem Thread hinzuzufügen, der einen hohen Anforderungsdurchsatz verursacht.
 
     ```bash
     ulimit -a
     ```
 
-    Die Anzahl von geöffneten Dateien (nofile) muss groß sein, damit ausreichend Platz für Ihre konfigurierte Verbindungspoolgröße und andere offene Dateien des Betriebssystem vorhanden ist. Sie kann geändert werden, um einen größeren Verbindungspool zu ermöglichen.
+    Wenn das Ziel darin besteht, den bereitgestellten Durchsatz eines Containers mit den von diesem Thread generierten Anforderungen vollständig auszuschöpfen, kann die Leistung mithilfe von Protokollierungsoptimierungen erheblich verbessert werden. ***Konfigurieren einer Async-Protokollierung***
 
-    Öffnen Sie die Datei „limits.conf“:
+    Die Wartezeit einer synchronen Protokollierung ist notwendigerweise ein Faktor der Berechnung der Gesamtwartezeit des Threads, der Anforderungen generiert.
 
     ```bash
     vim /etc/security/limits.conf
     ```
     
-    Ändern Sie die folgenden Zeilen, bzw. fügen Sie sie hinzu:
+    Eine asynchrone Protokollierung wie [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) wird empfohlen, um den Protokollierungsaufwand von Hochleistungsanwendungsthreads zu entkoppeln.
 
     ```
     * - nofile 100000
     ```
 
-* **Angeben von Partitionsschlüsseln in Punktschreibvorgängen**
+* ***Deaktivieren der Netty-Protokollierung***
 
-    Geben Sie beim API-Aufruf mit Punktschreibvorgängen wie unten gezeigt Elementpartitionsschlüssel an, um die Leistung zu verbessern:
+    Die Netty-Bibliotheksprotokollierung führt zu übermäßiger Kommunikation und muss deaktiviert werden (das Unterdrücken der Anmeldung in der Konfiguration reicht möglicherweise nicht aus), um zusätzliche CPU-Kosten zu vermeiden.
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>Wenn Sie sich nicht im Debuggingmodus befinden, deaktivieren Sie die Protokollierung von Netty vollständig.
 
-    Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+    Wenn Sie also „log4j“ verwenden, um die zusätzlichen CPU-Kosten zu verhindern, die durch ``org.apache.log4j.Category.callAppenders()`` von Netty anfallen, fügen Sie Ihrer Codebasis die folgende Zeile hinzu:
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNoPKAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>**Ressourcengrenzwert des Betriebssystems für geöffnete Dateien**
 
-    Java SDK v4 (Maven com.azure::azure-cosmos): Sync-API
+    Einige Linux-Systeme (z. B. Red Hat) haben eine Obergrenze für die Anzahl von offenen Dateien und damit für die Gesamtanzahl von Verbindungen.
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceNoPKSync)]
 
     --- 
 
-    Geben Sie also nicht wie unten gezeigt nur die Elementinstanz an:
+    Führen Sie den folgenden Befehl aus, um die aktuellen Grenzwerte anzuzeigen:
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>Die Anzahl von geöffneten Dateien (nofile) muss groß sein, damit ausreichend Platz für Ihre konfigurierte Verbindungspoolgröße und andere offene Dateien des Betriebssystem vorhanden ist.
 
-    Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+    Sie kann geändert werden, um einen größeren Verbindungspool zu ermöglichen.
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddPKAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>Öffnen Sie die Datei „limits.conf“:
 
-    Java SDK v4 (Maven com.azure::azure-cosmos): Sync-API
+    Ändern Sie die folgenden Zeilen, bzw. fügen Sie sie hinzu:
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceAddPKSync)]
 
     --- 
 
-    Die letztere Option wird unterstützt, erhöht aber die Wartezeit Ihrer Anwendung. Das SDK muss das Element analysieren und den Partitionsschlüssel extrahieren.
+    **Angeben von Partitionsschlüsseln in Punktschreibvorgängen**
 
-## <a name="indexing-policy"></a>Indizierungsrichtlinie
+## <a name="indexing-policy"></a>Geben Sie beim API-Aufruf mit Punktschreibvorgängen wie unten gezeigt Elementpartitionsschlüssel an, um die Leistung zu verbessern:
  
-* **Beschleunigen von Schreibvorgängen durch Ausschließen nicht verwendeter Pfade von der Indizierung**
+* [Async](#tab/api-async)
 
-    Die Indizierungsrichtlinie von Azure Cosmos DB ermöglicht auch die Verwendung von Indizierungspfaden („setIncludedPaths“ und „setExcludedPaths“), um anzugeben, welche Dokumentpfade in die Indizierung ein- bzw. von der Indizierung ausgeschlossen werden sollen. Der folgende Code zeigt beispielsweise, wie Sie ganze Abschnitte der Dokumente (auch als Unterstruktur bezeichnet) mit dem Platzhalter „*“ bei der Indizierung ein- und ausschließen.
+    Java SDK V4 (Maven com.azure::azure-cosmos) Async-API [Sync](#tab/api-sync) Java SDK v4 (Maven com.azure::azure-cosmos): Sync-API
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a>Geben Sie also nicht wie unten gezeigt nur die Elementinstanz an:
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
-    Weitere Informationen finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](indexing-policies.md).
+    [Async](#tab/api-async)
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 <a id="measure-rus"></a>
 
-* **Messen und Optimieren (Senken) der Anzahl von Anforderungseinheiten pro Sekunde**
+* [Sync](#tab/api-sync)
 
-    Azure Cosmos DB bietet vielfältige Datenbankvorgänge (einschließlich relationaler und hierarchischer Abfragen mit UDFs, gespeicherter Prozeduren und Trigger), die alle in den Dokumenten innerhalb einer Datenbanksammlung ausgeführt werden. Die Kosten im Zusammenhang mit diesen Vorgängen variieren basierend auf dem CPU-, E/A- und Speicheraufwand, der für den jeweiligen Vorgang erforderlich ist. Anstelle sich Gedanken über Hardwareressourcen und deren Verwaltung zu machen, können Sie sich eine Anforderungseinheit (RU) als alleinige Maßeinheit für die Ressourcen vorstellen, die für das Durchführen der verschiedenen Datenbankvorgänge und das Ausführen einer Anwendungsanforderung erforderlich sind.
+    Java SDK v4 (Maven com.azure::azure-cosmos): Sync-API Die letztere Option wird unterstützt, erhöht aber die Wartezeit Ihrer Anwendung. Das SDK muss das Element analysieren und den Partitionsschlüssel extrahieren. Indizierungsrichtlinie
 
-    Der Durchsatz wird basierend auf der für jeden Container festgelegten Anzahl von [Anforderungseinheiten](request-units.md) bereitgestellt. Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Anwendungen, die die bereitgestellte Anforderungseinheitenrate für ihre Container überschreiten, werden begrenzt, bis die Rate wieder unter das bereitgestellte Niveau für den Container fällt. Wenn Ihre Anwendung einen höheren Durchsatz erfordert, können Sie ihn durch Bereitstellung zusätzlicher Anforderungseinheiten erhöhen.
+    **Beschleunigen von Schreibvorgängen durch Ausschließen nicht verwendeter Pfade von der Indizierung** Die Indizierungsrichtlinie von Azure Cosmos DB ermöglicht auch die Verwendung von Indizierungspfaden („setIncludedPaths“ und „setExcludedPaths“), um anzugeben, welche Dokumentpfade in die Indizierung ein- bzw. von der Indizierung ausgeschlossen werden sollen. Der folgende Code zeigt beispielsweise, wie Sie ganze Abschnitte der Dokumente (auch als Unterstruktur bezeichnet) mit dem Platzhalter „*“ bei der Indizierung ein- und ausschließen.
 
-    Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden. Die Anzahl von Prädikaten, die Art der Prädikate, die Anzahl von UDFs und die Größe des Quelldatasets beeinflussen die Kosten von Abfragevorgängen.
+    <a id="java4-indexing"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Weitere Informationen finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](indexing-policies.md).
 
-    Untersuchen Sie zum Ermitteln des Indizierungsaufwands für einen beliebigen Vorgang (Erstellen, Aktualisieren oder Löschen) den Header [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers). So ermitteln Sie die Anzahl von Anforderungseinheiten, die von diesen Vorgängen genutzt werden. Sie können sich außerdem die entsprechende RequestCharge-Eigenschaft in ResourceResponse\<T> oder FeedResponse\<T> ansehen.
+    Throughput **Messen und Optimieren (Senken) der Anzahl von Anforderungseinheiten pro Sekunde**
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>Azure Cosmos DB bietet vielfältige Datenbankvorgänge (einschließlich relationaler und hierarchischer Abfragen mit UDFs, gespeicherter Prozeduren und Trigger), die alle in den Dokumenten innerhalb einer Datenbanksammlung ausgeführt werden.
 
-    Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+    Die Kosten im Zusammenhang mit diesen Vorgängen variieren basierend auf dem CPU-, E/A- und Speicheraufwand, der für den jeweiligen Vorgang erforderlich ist.
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceRequestChargeAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>Anstelle sich Gedanken über Hardwareressourcen und deren Verwaltung zu machen, können Sie sich eine Anforderungseinheit (RU) als alleinige Maßeinheit für die Ressourcen vorstellen, die für das Durchführen der verschiedenen Datenbankvorgänge und das Ausführen einer Anwendungsanforderung erforderlich sind.
 
-    Java SDK v4 (Maven com.azure::azure-cosmos): Sync-API
+    Der Durchsatz wird basierend auf der für jeden Container festgelegten Anzahl von [Anforderungseinheiten](request-units.md) bereitgestellt.
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceRequestChargeSync)]
 
     --- 
 
-    Bei der in diesem Header zurückgegebenen Anforderungsbelastung handelt es sich um einen Bruchteil Ihres bereitgestellten Durchsatzes. Falls Sie beispielsweise 2000 RU/s bereitgestellt und die obige Abfrage 1000 Dokumente mit einer Größe von 1 KB zurückgibt, fallen für den Vorgang Kosten in Höhe von 1000 an. Somit werden vom Server innerhalb einer Sekunde nur zwei solcher Anforderungen berücksichtigt, und für weitere Anforderungen wird die Rate begrenzt. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](request-units.md) sowie unter dem [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner).
+    Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Anwendungen, die die bereitgestellte Anforderungseinheitenrate für ihre Container überschreiten, werden begrenzt, bis die Rate wieder unter das bereitgestellte Niveau für den Container fällt. Wenn Ihre Anwendung einen höheren Durchsatz erfordert, können Sie ihn durch Bereitstellung zusätzlicher Anforderungseinheiten erhöhen. Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden.
 
 <a id="429"></a>
-* **Behandeln von Ratenbeschränkungen/zu hohen Anforderungsraten**
+* Die Anzahl von Prädikaten, die Art der Prädikate, die Anzahl von UDFs und die Größe des Quelldatasets beeinflussen die Kosten von Abfragevorgängen.
 
-    Wenn ein Client versucht, den für ein Konto reservierten Durchsatz zu überschreiten, wird die Serverleistung nicht beeinträchtigt, und es wird kein über die reservierte Kapazität hinausgehender Durchsatz in Anspruch genommen. Der Server beendet die Anforderung präemptiv mit „RequestRateTooLarge“ (HTTP-Statuscode 429) und gibt den Header [x-ms-retry-after-ms](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) zurück. Darin ist die Zeitspanne (in Millisekunden) angegeben, die der Benutzer warten muss, bis ein neuer Anforderungsversuch unternommen werden kann.
+    Untersuchen Sie zum Ermitteln des Indizierungsaufwands für einen beliebigen Vorgang (Erstellen, Aktualisieren oder Löschen) den Header [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers). So ermitteln Sie die Anzahl von Anforderungseinheiten, die von diesen Vorgängen genutzt werden. Sie können sich außerdem die entsprechende RequestCharge-Eigenschaft in ResourceResponse\<T> oder FeedResponse\<T> ansehen.
 
     ```xml
         HTTP Status 429,
@@ -360,16 +353,16 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](https://docs.
         x-ms-retry-after-ms :100
     ```
 
-    Alle SDKs fangen diese Antwort implizit ab, berücksichtigen den vom Server angegebenen Header vom Typ „retry-after“ und wiederholen die Anforderung. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
+    [Asynchron](#tab/api-async) Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
-    Falls mehrere Clients kumulativ und kontinuierlich die Anforderungsrate überschreiten, reicht die intern vom Client festgelegte Standardanzahl von neun Wiederholungen unter Umständen nicht aus. In diesem Fall löst der Client für die Anwendung eine *CosmosClientException*-Klasse mit dem Statuscode 429 aus. Die standardmäßige Wiederholungsanzahl kann durch Verwendung von „setRetryOptions“ für die ConnectionPolicy-Instanz geändert werden. Die *CosmosClientException*-Klasse mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt.
+    [Sync](#tab/api-sync) Java SDK v4 (Maven com.azure::azure-cosmos): Sync-API Bei der in diesem Header zurückgegebenen Anforderungsbelastung handelt es sich um einen Bruchteil Ihres bereitgestellten Durchsatzes. Falls Sie beispielsweise 2000 RU/s bereitgestellt und die obige Abfrage 1000 Dokumente mit einer Größe von 1 KB zurückgibt, fallen für den Vorgang Kosten in Höhe von 1000 an.
 
-    Das automatisierte Wiederholungsverhalten trägt zwar bei den meisten Anwendungen zur Verbesserung der Resilienz und Nutzbarkeit bei, kann bei Leistungsbenchmarks aber auch hinderlich sein (insbesondere beim Ermitteln der Latenz). Die Wartezeit für den Client nimmt stark zu, wenn das Experiment die Serverdrosselung erreicht und damit die automatische Wiederholung durch das Client-SDK auslöst. Ermitteln Sie zur Vermeidung von Latenzspitzenwerten bei Leistungsexperimenten die von den einzelnen Vorgängen zurückgegebene Belastung, und stellen Sie sicher, dass die Anforderungen die reservierte Anforderungsrate nicht überschreiten. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](request-units.md).
+    Somit werden vom Server innerhalb einer Sekunde nur zwei solcher Anforderungen berücksichtigt, und für weitere Anforderungen wird die Rate begrenzt. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](request-units.md) sowie unter dem [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner). **Behandeln von Ratenbeschränkungen/zu hohen Anforderungsraten** Wenn ein Client versucht, den für ein Konto reservierten Durchsatz zu überschreiten, wird die Serverleistung nicht beeinträchtigt, und es wird kein über die reservierte Kapazität hinausgehender Durchsatz in Anspruch genommen.
 
-* **Konzipieren für kleinere Dokumente und höheren Durchsatz**
+* Der Server beendet die Anforderung präemptiv mit „RequestRateTooLarge“ (HTTP-Statuscode 429) und gibt den Header [x-ms-retry-after-ms](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) zurück. Darin ist die Zeitspanne (in Millisekunden) angegeben, die der Benutzer warten muss, bis ein neuer Anforderungsversuch unternommen werden kann.
 
-    Die Anforderungsbelastung (die Kosten für die Anforderungsverarbeitung) eines Vorgangs hängt direkt mit der Größe des Dokuments zusammen. Vorgänge für große Dokumente sind teurer als Vorgänge für kleine Dateien. Im Idealfall sollten Sie Ihre Anwendung und Workflows so entwerfen, dass die Größe der Elemente etwa ein Kilobyte beträgt oder diese eine ähnliche Größe aufweisen. Bei Anwendungen, die hinsichtlich der Wartezeit empfindlich sind, sollten große Elemente vermieden werden. Dokumente mit mehreren Megabyte verlangsamen Ihre Anwendung.
+    Alle SDKs fangen diese Antwort implizit ab, berücksichtigen den vom Server angegebenen Header vom Typ „retry-after“ und wiederholen die Anforderung. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt. Falls mehrere Clients kumulativ und kontinuierlich die Anforderungsrate überschreiten, reicht die intern vom Client festgelegte Standardanzahl von neun Wiederholungen unter Umständen nicht aus. In diesem Fall löst der Client für die Anwendung eine *CosmosClientException* -Klasse mit dem Statuscode 429 aus. Die standardmäßige Wiederholungsanzahl kann durch Verwendung von „setRetryOptions“ für die ConnectionPolicy-Instanz geändert werden.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Die *CosmosClientException* -Klasse mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt.
 
-Weitere Informationen zum Entwerfen einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md).
+Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448527"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174160"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -47,8 +47,8 @@ Sie können einen Arbeitsbereich mithilfe von [PowerShell](/powershell/module/az
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.
-3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus, und klicken Sie dann oben im mittleren Bereich auf **Löschen**.
-4. Es wird eine Bestätigungsseite mit der Datenerfassung für den Arbeitsbereich in der letzten Woche angezeigt. Geben Sie zur Bestätigung den Namen des Arbeitsbereichs ein, und klicken Sie dann auf **Löschen**.
+3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus, und klicken Sie dann oben im mittleren Bereich auf **Löschen** .
+4. Es wird eine Bestätigungsseite mit der Datenerfassung für den Arbeitsbereich in der letzten Woche angezeigt. Geben Sie zur Bestätigung den Namen des Arbeitsbereichs ein, und klicken Sie dann auf **Löschen** .
 
    ![Bestätigen des Löschvorgangs für den Arbeitsbereich](media/delete-workspace/workspace-delete.png)
 
@@ -84,11 +84,11 @@ Während des Zeitraums des vorläufigen Löschens kann der Arbeitsbereich wieder
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus. Die Liste der Arbeitsbereiche im ausgewählten Bereich wird angezeigt.
-3. Klicken Sie im Menü oben links auf **Wiederherstellen**, um eine Seite mit Arbeitsbereichen im Zustand des vorläufigen Löschens, die wiederhergestellt werden können, zu öffnen.
+3. Klicken Sie im Menü oben links auf **Wiederherstellen** , um eine Seite mit Arbeitsbereichen im Zustand des vorläufigen Löschens, die wiederhergestellt werden können, zu öffnen.
 
    ![Screenshot der Anzeige von Log Analytics-Arbeitsbereichen im Azure-Portal mit in der Menüleiste hervorgehobener Option „Wiederherstellen“](media/delete-workspace/recover-menu.png)
 
-4. Wählen Sie den Arbeitsbereich aus, und klicken Sie zum Wiederherstellen dieses Arbeitsbereichs auf **Wiederherstellen**.
+4. Wählen Sie den Arbeitsbereich aus, und klicken Sie zum Wiederherstellen dieses Arbeitsbereichs auf **Wiederherstellen** .
 
    ![Screenshot des Dialogfelds „Recover deleted Log Analytics workspaces“ (Wiederherstellen gelöschter Log Analytics-Arbeitsbereiche) im Azure-Portal mit hervorgehobenem Arbeitsbereich und ausgewählter Schaltfläche „Wiederherstellen“](media/delete-workspace/recover-workspace.png)
 
@@ -106,12 +106,15 @@ Der Arbeitsbereich und alle zugehörigen Daten sind nach dem Wiederherstellungsv
  
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Sie benötigen mindestens die Berechtigungen der Rolle *Log Analytics-Mitwirkender*, um einen Arbeitsbereich zu löschen.
+Sie benötigen mindestens die Berechtigungen der Rolle *Log Analytics-Mitwirkender* , um einen Arbeitsbereich zu löschen.
 
 * Wenn Sie sich nicht sicher sind, ob sich der gelöschte Arbeitsbereich im Zustand des vorläufigen Löschens befindet und wiederhergestellt werden kann, klicken Sie auf der Seite *Log Analytics-Arbeitsbereiche* auf [Wiederherstellen](#recover-workspace), um eine Liste vorläufig gelöschter Arbeitsbereiche nach Abonnement anzuzeigen. Dauerhaft gelöschte Arbeitsbereiche sind in der Liste nicht enthalten.
 * Wenn Sie beim Erstellen eines Arbeitsbereichs die Fehlermeldung *Dieser Arbeitsbereichsname wird bereits verwendet* oder einen *Konflikt* erhalten, kann dies folgende Gründe haben:
   * Der Name des Arbeitsbereichs ist nicht verfügbar und wird bereits von jemandem in Ihrer Organisation oder von einem anderen Kunden verwendet.
   * Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Zum Überschreiben der vorübergehenden Löschung und der dauerhaften Löschen des Arbeitsbereichs, um einen neuen, gleichnamigen Arbeitsbereich zu erstellen, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
-     1. [Stellen Sie Ihren Arbeitsbereich wieder her.](#recover-workspace)
-     2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](#permanent-workspace-delete)
-     3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.
+    1. [Stellen Sie Ihren Arbeitsbereich wieder her.](#recover-workspace)
+    2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](#permanent-workspace-delete)
+    3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.
+* Wenn ein Antwortcode 204 angezeigt wird, der *Ressource nicht gefunden* angibt, können aufeinander folgende Versuche, den Vorgang zum Löschen des Arbeitsbereichs zu verwenden, die Ursache sein. 204 ist eine leere Antwort. Das bedeutet in der Regel, dass die Ressource nicht vorhanden ist, sodass der Löschvorgang ohne erfolgte Aktion abgeschlossen wurde.
+  Nachdem der Löschaufruf auf dem Back-End erfolgreich abgeschlossen wurde, können Sie den Arbeitsbereich wiederherstellen und den dauerhaften Löschvorgang mit einer der zuvor vorgeschlagenen Methoden abschließen.
+

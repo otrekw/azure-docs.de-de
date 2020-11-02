@@ -179,7 +179,7 @@
               href: storage-blob-rehydration.md
             - name: Leistungsstufen
               href: storage-blob-performance-tiers.md
-            - name: Verwalten des Azure Blob Storage-Lebenszyklus
+            - name: Automatisieren des Lebenszyklus von Zugriffsebenen
               href: storage-lifecycle-management-concepts.md
         - name: Notfallwiederherstellung und Failover
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -367,7 +367,7 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: Erstellen einer Dienst-SAS (.NET)
+                - name: Erstellen einer Dienst-SAS
                   href: storage-blob-service-sas-create-dotnet.md
                 - name: Erstellen einer Konto-SAS (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
