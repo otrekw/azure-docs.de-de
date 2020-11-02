@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
 description: In diesem Artikel wird das Feature „Änderungsnachverfolgung und Bestand“ beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209245"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670738"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -48,7 +48,7 @@ Für Änderungsnachverfolgung und Bestand werden die folgenden Einschränkungen 
 - Rekursion für die Nachverfolgung der Windows-Registrierung
 - Netzwerkdateisysteme
 - Verschiedene Installationsmethoden
-- Unter Windows gespeicherte ***EXE** -Dateien
+- Unter Windows gespeicherte **_.exe_* -Dateien
 - Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
 - Wenn Sie versuchen, anhand eines 30-minütigen Sammlungszyklus mehr als 2.500 Dateien zu erfassen, wird das Feature „Änderungsnachverfolgung und Bestand“ unter Umständen beeinträchtigt.
 - Bei einem hohen Netzwerkdatenverkehr-Aufkommen kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
@@ -77,13 +77,15 @@ Wenn Sie Netzwerkgruppen-Sicherheitsregeln erstellen oder Azure Firewall so konf
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-Hier sind die Möglichkeiten angegeben, wie Sie Änderungsnachverfolgung und Bestand aktivieren und die zu verwaltenden Computer auswählen können:
+Sie können „Änderungsnachverfolgung und Bestand“ auf folgende Arten aktivieren:
 
-* [Von einem virtuellen Azure-Computer](enable-from-vm.md)
-* [Durch Durchsuchen mehrerer virtueller Azure-Computer](enable-from-portal.md)
-* [Über ein Azure Automation-Konto](enable-from-automation-account.md).
-* Installieren Sie für Arc-fähige Server oder nicht zu Azure gehörende Computer den Log Analytics-Agent über Azure Arc-fähige Server, indem Sie die [VM-Erweiterung](../../azure-arc/servers/manage-vm-extensions.md) verwenden und dann [Computer im Arbeitsbereich für Änderungsnachverfolgung und Bestand aktivieren](enable-from-automation-account.md#enable-machines-in-the-workspace).
-* [Verwenden eines Automation-Runbooks](enable-from-runbook.md).
+- Aus Ihrem [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer.
+
+- Manuell für Nicht-Azure-Computer, einschließlich Computer oder Server, die mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) registriert sind. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie „ [Log Analytics-Agent auf Azure Arc-Computern unter *Linux* oder *Windows* bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring)“ zuzuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+
+- Für einen einzelnen virtuellen Azure-Computer auf der [Seite für virtuelle Computer](enable-from-vm.md) im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter Linux oder Windows zur Verfügung.
+
+- Für [mehrere Azure-VMs](enable-from-portal.md), indem Sie diese auf der Seite für virtuelle Computer im Azure-Portal auswählen.
 
 ## <a name="tracking-file-changes"></a>Nachverfolgen von Dateiänderungen
 
@@ -125,7 +127,7 @@ Zum Nachverfolgen von Änderungen unter Windows und Linux verwendet Änderungsna
 
 - Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
 
-- Platzhalter können Sie nur im letzten Segment eines Pfads verwenden, z. B. **C:\Ordner\\Datei** * oder **/etc/*.conf** .
+- Platzhalter können Sie nur im letzten Segment eines Pfads verwenden, z. B. **C:\Ordner\\Datei** _ oder _ */etc/* .conf**.
 
 - Wenn eine Umgebungsvariable einen ungültigen Pfad besitzt, verläuft die Überprüfung zwar erfolgreich, doch bei der Ausführung tritt ein Fehler für den Pfad auf.
 

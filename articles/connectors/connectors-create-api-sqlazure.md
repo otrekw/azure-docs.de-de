@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169386"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426612"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -214,19 +214,16 @@ In diesem Beispiel beginnt die Logik-App mit dem [Wiederholungstrigger](../conne
 
 Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Connector nicht alle Ergebnisse gleichzeitig zurückgibt. Oder Sie wünschen sich eine bessere Kontrolle über die Größe und Struktur Ihrer Resultsets. Hier sind einige Möglichkeiten, wie Sie derartig große Resultsets verarbeiten können:
 
-* Aktivieren Sie *Paginierung* , um die Ergebnisse in kleineren Gruppen zu verwalten. Weitere Informationen finden Sie unter [Abrufen von Massendaten, Datensätzen und Elementen mithilfe der Paginierung](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
+* Aktivieren Sie *Paginierung* , um die Ergebnisse in kleineren Gruppen zu verwalten. Weitere Informationen finden Sie unter [Abrufen von Massendaten, Datensätzen und Elementen mithilfe der Paginierung](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Weitere Informationen finden Sie unter [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
-* Erstellen Sie eine gespeicherte Prozedur, die die Ergebnisse nach Ihren Vorstellungen organisiert.
+* Erstellen Sie eine [*gespeicherte Prozedur*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine), die die Ergebnisse nach Ihren Vorstellungen organisiert. Der SQL-Connector bietet viele Back-End-Funktionen, auf die Sie über Azure Logic Apps zugreifen können, sodass Sie Geschäftsaufgaben, die mit SQL-Datenbanktabellen arbeiten, einfacher automatisieren können.
 
   Beim Abrufen oder Einfügen mehrerer Zeilen kann Ihre Logik-App diese Zeilen mithilfe einer [*Until-Schleife*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) innerhalb dieser [Grenzwerte](../logic-apps/logic-apps-limits-and-config.md) durchlaufen. Wenn Ihre Logik-App jedoch mit so großen Datensatzgruppen arbeiten muss, die z. B. Tausende oder Millionen von Zeilen umfassen, dass Sie die Kosten für Aufrufe der Datenbank minimieren möchten.
 
-  Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine [*gespeicherte Prozedur*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY** -Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf.
+  Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine gespeicherte Prozedur erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY** -Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf. Weitere Informationen finden Sie unter [SELECT – ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql).
 
-  Weitere Details dieser Lösung finden Sie in den folgenden Artikeln:
-
-  * [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
-
-  * [SELECT - ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > Mit diesem Connector ist die Ausführung einer gespeicherten Prozedur auf einen [Timeoutwert von unter zwei Minuten beschränkt](/connectors/sql/#known-issues-and-limitations). Die Verarbeitung einiger gespeicherter Prozeduren kann bis zu ihrem Abschluss länger als dieses Limit dauern, wodurch ein `504 TIMEOUT`-Fehler generiert wird. Tatsächlich sind zu diesem Zweck einige Prozesse mit langer Ausführungsdauer explizit als gespeicherte Prozeduren programmiert. Wenn Sie diese Prozeduren aus Azure Logic Apps aufrufen, können aufgrund dieses Timeoutlimits Probleme entstehen. Obwohl der SQL-Connector nativ keinen asynchronen Modus unterstützt, können Sie diesen Modus mithilfe eines SQL-Abschlussauslösers, einer nativen SQL-Pass-Through-Abfrage, einer Zustandstabelle und serverseitiger Aufträge simulieren, indem Sie den [Azure-Agent für elastische Aufträge](../azure-sql/database/elastic-jobs-overview.md) verwenden.
 
 ### <a name="handle-dynamic-bulk-data"></a>Behandeln dynamischer Massendaten
 
@@ -253,13 +250,13 @@ Wenn Sie eine gespeicherte Prozedur mit dem SQL Server-Connector aufzurufen, ist
 
 ## <a name="troubleshoot-problems"></a>Behandeln von Problemen
 
-Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Hier einige Beispiele:
+* Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Im Folgenden finden Sie einige Beispiele:
 
-* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
 
-* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 

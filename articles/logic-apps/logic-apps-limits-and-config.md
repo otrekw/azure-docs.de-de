@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 8669330a8cfccea0dcc10c318c2be4acbcb7788c
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 0235b8350e21fa51d1b3fed747a11b681f125e67
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169352"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540719"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -41,14 +41,14 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Grenzwerte für Ausführungsdauer und Aufbewahrung
+## <a name="run-duration-and-retention-history-limits"></a>Grenzwerte für Ausführungsdauer und Aufbewahrungsverlauf
 
 Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 | Name | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
-| Ausführungsdauer | 90 Tage | 366 Tage | Die Ausführungsdauer wird mithilfe der Startzeit einer Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-duration) *zum Startzeitpunkt* festgelegten Grenzwerts festgelegt. <p><p>Informationen zum Ändern des Standardgrenzwerts (90 Tage) finden Sie unter [Ändern der Ausführungsdauer](#change-duration). |
-| Ausführungsbeibehaltung im Speicher | 90 Tage | 366 Tage | Die Ausführungsbeibehaltung wird mithilfe der Startzeit einer Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-retention) *zum aktuellen Zeitpunkt* festgelegten Grenzwerts festgelegt. Unabhängig davon, ob eine Ausführung abgeschlossen wird oder ein Timeout auftritt, wird bei der Beibehaltungsberechnung immer die Startzeit der Ausführung verwendet. Wenn die Dauer der Ausführung den *aktuellen* Beibehaltungsgrenzwert überschreitet, wird die Ausführung aus dem Ausführungsverlauf entfernt. <p><p>Wenn Sie diese Einstellung ändern, wird immer der aktuelle Grenzwert zum Berechnen der Beibehaltung verwendet, unabhängig vom vorherigen Grenzwert. Wenn Sie z. B. den Aufbewahrungsgrenzwert von 90 Tagen auf 30 Tage verringern, wird eine 60 Tage alte Ausführung aus dem Ausführungsverlauf entfernt. Wenn Sie die Beibehaltungsdauer von 30 Tagen auf 60 Tage erhöhen, verbleibt eine 20 Tage alte Ausführung für weitere 40 Tage im Ausführungsverlauf. <p><p>Informationen zum Ändern des Standardgrenzwerts (90 Tage) finden Sie unter [Ändern der Ausführungsbeibehaltung im Speicher](#change-retention). |
+| Ausführungsdauer | 90 Tage | 366 Tage | Die Ausführungsdauer wird mithilfe der Startzeit einer Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-duration) zum Startzeitpunkt festgelegten Grenzwerts berechnet. <p><p>Informationen zum Ändern des Standardgrenzwerts finden Sie unter [Ändern der Ausführungsdauer und Verlaufsaufbewahrung im Speicher](#change-duration). |
+| Aufbewahrung des Ausführungsverlaufs im Speicher | 90 Tage | 366 Tage | Wenn die Dauer einer Ausführung den aktuellen Aufbewahrungsgrenzwert für Ausführungsverläufe überschreitet, wird die Ausführung aus dem Ausführungsverlauf im Speicher entfernt. Egal, ob die Ausführung abgeschlossen wird oder einen Timeout hat, wird die Aufbewahrung des Ausführungsverlaufs immer mithilfe der Startzeit der Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-retention) festgelegten aktuellen Grenzwerts berechnet. Unabhängig vom vorherigen Grenzwert wird immer der aktuelle Grenzwert zum Berechnen der Aufbewahrung verwendet. <p><p>Informationen zum Ändern des Standardgrenzwerts sowie weitere Informationen finden Sie unter [Ändern der Dauer und Aufbewahrung des Ausführungsverlaufs im Speicher](#change-retention). Zum Erhöhen des maximalen Grenzwerts [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten. |
 | Kürzestes Wiederholungsintervall | 1 Sekunde | 1 Sekunde ||
 | Längstes Wiederholungsintervall | 500 Tage | 500 Tage ||
 |||||
@@ -56,17 +56,22 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-run-retention-in-storage"></a>Ändern von Ausführungsdauer und Ausführungsbeibehaltung im Speicher
+### <a name="change-run-duration-and-history-retention-in-storage"></a>Ändern von Ausführungsdauer und Verlaufsaufbewahrung im Speicher
 
-Gehen Sie folgendermaßen vor, um den Standardgrenzwert für die Ausführungsdauer und die Ausführungsbeibehaltung im Speicher zu ändern. Zum Erhöhen des maximalen Grenzwerts [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten.
+Dieselbe Einstellung steuert die maximale Anzahl von Tagen, die ein Workflow ausgeführt werden kann, als auch für die Aufbewahrung des Ausführungsverlaufs im Speicher. Gehen Sie folgendermaßen vor, um den Standard- oder aktuellen Grenzwert für diese Eigenschaften zu ändern.
 
-> [!NOTE]
-> Für Logik-Apps in Azure mit mehreren Mandanten ist der Standardgrenzwert von 90 Tagen gleich dem maximalen Grenzwert. Sie können diesen Wert nur verringern.
-> Für Logik-Apps in einer Integrationsdienstumgebung können Sie den Standardgrenzwert von 90 Tagen verringern oder erhöhen.
+* Für Logik-Apps in Azure mit mehreren Mandanten ist der Standardgrenzwert von 90 Tagen gleich dem maximalen Grenzwert. Sie können diesen Wert nur verringern.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Suchen Sie Suchfeld des Portals nach **Logik-Apps** , und wählen Sie sie aus.
+* Für Logik-Apps in einer Integrationsdienstumgebung können Sie den Standardgrenzwert von 90 Tagen verringern oder erhöhen.
 
-1. Wählen Sie Ihre Logik-App aus, und öffnen Sie sie im Logik-App-Designer.
+Nehmen wir beispielsweise an, dass Sie den Aufbewahrungsgrenzwert von 90 Tagen auf 30 Tage verringern möchten. Eine 60 Tage alte Ausführung wird dann aus dem Ausführungsverlauf entfernt. Wenn Sie die Aufbewahrungsdauer von 30 Tagen auf 60 Tage erhöhen, verbleibt eine 20 Tage alte Ausführung für weitere 40 Tage im Ausführungsverlauf.
+
+> [!IMPORTANT]
+> Wenn die Dauer einer Ausführung den aktuellen Aufbewahrungsgrenzwert für Ausführungsverläufe überschreitet, wird die Ausführung aus dem Ausführungsverlauf im Speicher entfernt. Um den Verlust des Ausführungsverlaufs zu vermeiden, stellen Sie sicher, dass die Aufbewahrungsdauer *immer* länger als die längste mögliche Dauer einer Ausführung ist.
+
+1. Suchen Sie Suchfeld des [Azure-Portals](https://portal.azure.com) nach **Logic Apps** , und wählen Sie es aus.
+
+1. Suchen Sie Ihre Logik-App, und wählen Sie sie aus. Öffnen Sie Ihre Logik-App im Logik-App-Designer.
 
 1. Wählen Sie im Menü der Logik-App **Workfloweinstellungen** aus.
 
@@ -75,6 +80,27 @@ Gehen Sie folgendermaßen vor, um den Standardgrenzwert für die Ausführungsdau
 1. Ziehen Sie den Schieberegler bis zur gewünschten Anzahl von Tagen.
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste **Workfloweinstellungen** die Option **Speichern** aus.
+
+Wenn Sie für Ihre Logik-App eine Azure Resource Manager-Vorlage generieren, wird diese Einstellung als Eigenschaft in der Ressourcendefinition Ihres Workflows angezeigt, die in der [Microsoft.Logic-Workflows-Vorlagenreferenz](/templates/microsoft.logic/workflows) beschrieben ist:
+
+```json
+{
+   "name": "{logic-app-name}",
+   "type": "Microsoft.Logic/workflows",
+   "location": "{Azure-region}",
+   "apiVersion": "2019-05-01",
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "runtimeConfiguration": {
+         "lifetime": {
+            "unit": "day",
+            "count": {number-of-days}
+         }
+      }
+   }
+}
+```
 
 <a name="looping-debatching-limits"></a>
 
