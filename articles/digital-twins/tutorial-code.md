@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201346"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792428"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
-Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Clientanwendung, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure IoT Digital Twin-Clientbibliothek für .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
+Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Clientanwendung, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure Digital Twins-SDK für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
 
 > [!div class="checklist"]
 > * Einrichten des Projekts
@@ -35,6 +35,8 @@ Zum Einstieg benötigen Sie Folgendes:
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
 
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
 ## <a name="set-up-project"></a>Einrichten des Projekts
 
 Sobald Ihre Azure Digital Twins-Instanz bereit ist, können Sie mit der Einrichtung des Client-App-Projekts beginnen. 
@@ -43,7 +45,7 @@ Sobald Ihre Azure Digital Twins-Instanz bereit ist, können Sie mit der Einricht
 
 Navigieren Sie zum neuen Verzeichnis.
 
-Öffnen Sie das Projektverzeichnis, und erstellen Sie ein leeres .NET-Konsolen-App-Projekt. Führen Sie im Befehlsfenster den folgenden Befehl aus, um ein C#-Minimalprojekt für die Konsole zu erstellen:
+Öffnen Sie das Projektverzeichnis, und **erstellen Sie ein leeres .NET-Konsolen-App-Projekt** . Im Befehlsfenster können Sie den folgenden Befehl ausführen, um ein C#-Minimalprojekt für die Konsole zu erstellen:
 
 ```cmd/sh
 dotnet new console
@@ -51,16 +53,11 @@ dotnet new console
 
 Auf diese Weise werden verschiedene Dateien in Ihrem Verzeichnis erstellt, darunter eine Datei mit dem Namen *Program.cs* , in der Sie den Großteil Ihres Codes schreiben werden.
 
-Als Nächstes fügen Sie zwei erforderliche Abhängigkeiten für die Arbeit mit Azure Digital Twins hinzu:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-Die erste Abhängigkeit ist die [Azure IoT Digital Twin-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Die zweite Abhängigkeit stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
-
 Lassen Sie das Befehlsfenster geöffnet, da Sie es während des gesamten Tutorials weiter verwenden werden.
+
+Als nächstes **fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu** , die für die Arbeit mit Azure Digital Twins erforderlich sind. Sie können die nachfolgenden Links verwenden, um zu den Paketen auf NuGet zu navigieren, wo Sie die Konsolenbefehle (einschließlich für .NET CLI) finden, um die jeweils neueste Version zu Ihrem Projekt hinzuzufügen.
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Dies ist das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). Diese Bibliothek stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
 
 ## <a name="get-started-with-project-code"></a>Erste Schritte mit dem Projektcode
 
@@ -116,9 +113,6 @@ Console.WriteLine($"Service client created – ready to go");
 ```
 
 Speichern Sie die Datei. 
-
->[!NOTE]
-> In diesem Beispiel werden Anmeldeinformationen vom Typ `DefaultAzureCredential` für die Authentifizierung verwendet. Informationen zu anderen Arten von Anmeldeinformationen finden Sie in der Dokumentation zum Thema [Microsoft Identity Plattform: Authentifizierungsbibliotheken](../active-directory/develop/reference-v2-libraries.md) oder im Azure Digital Twins-Artikel zur [Authentifizierung von Clientanwendungen](how-to-authenticate-client.md).
 
 Führen Sie in Ihrem Befehlsfenster den Code mit diesem Befehl aus: 
 
@@ -266,12 +260,18 @@ Von diesem Punkt an werden in diesem Tutorial alle Aufrufe von Dienstmethoden in
 
 Nun, da Sie ein Modell in Azure Digital Twins hochgeladen haben, können Sie diese Modelldefinition zum Erstellen **digitaler Zwillinge** verwenden. [Digitale Zwillinge](concepts-twins-graph.md) sind Instanzen eines Modells und repräsentieren die Entitäten in Ihrer Geschäftsumgebung – beispielsweise Sensoren in einer Farm, Räume in einem Gebäude oder die Beleuchtung in einem Fahrzeug. Im vorliegenden Abschnitt werden basierend auf dem zuvor hochgeladenen Modell einige digitale Zwillinge erstellt.
 
-Fügen Sie oben eine neue `using`-Anweisung hinzu, da Sie das integrierte .NET-JSON-Serialisierungsmodul in `System.Text.Json` benötigen:
+Fügen Sie diese neuen `using` Anweisungen oben hinzu, da dieses Codebeispiel das integrierte .NET JSON-Serialisierungsmodul in `System.Text.Json` und den `Serialization`-Namespace aus dem [Azure Digital Twins-SDK für .NET (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [LINK FÜR VORSCHAU GEÄNDERT] verwendet:
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` ist für die Verwendung von digitalen Zwillingen und Beziehungen nicht zwingend erforderlich. Es handelt sich um einen optionalen Namespace, mit dem Daten in das richtige Format gebracht werden können. Beispiele für Alternativen:
+>* Verketten von Zeichenfolgen zum Bilden eines JSON-Objekts
+>* Verwenden eines JSON-Parsers wie `System.Text.Json` zum dynamischen Erstellen eines JSON-Objekts
+>* Modellieren Ihrer benutzerdefinierten Typen in C# und Durchführen der Instanziierung und Serialisierung in Zeichenfolgen
 
 Fügen Sie anschließend am Ende der `Main`-Methode den folgenden Code hinzu, um basierend auf diesem Modell drei digitale Zwillinge zu erstellen und zu initialisieren.
 
@@ -301,17 +301,7 @@ Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler au
 
 Im nächsten Schritt können Sie **Beziehungen** zwischen den erstellten Zwillingen erstellen, um sie in einem **Zwillingsgraphen** zu verbinden. [Zwillingsgraphen](concepts-twins-graph.md) werden verwendet, um Ihre gesamte Umgebung darzustellen.
 
-Zur Unterstützung beim Erstellen von Beziehungen wird in diesem Codebeispiel der Namespace `Azure.DigitalTwins.Core.Serialization` verwendet. Sie haben ihn dem Projekt zuvor mit der folgenden `using`-Anweisung hinzugefügt:
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` ist für die Verwendung von digitalen Zwillingen und Beziehungen nicht zwingend erforderlich. Es handelt sich um einen optionalen Namespace, mit dem Daten in das richtige Format gebracht werden können. Beispiele für Alternativen:
->* Verketten von Zeichenfolgen zum Bilden eines JSON-Objekts
->* Verwenden eines JSON-Parsers wie `System.Text.Json` zum dynamischen Erstellen eines JSON-Objekts
->* Modellieren Ihrer benutzerdefinierten Typen in C# und Durchführen der Instanziierung und Serialisierung in Zeichenfolgen
+Zur Unterstützung beim Erstellen von Beziehungen wird in diesem Codebeispiel der Namespace `Azure.DigitalTwins.Core.Serialization` verwendet. Sie haben dies dem Projekt früher im Abschnitt [*Erstellen digitaler Zwillinge*](#create-digital-twins) hinzugefügt.
 
 Fügen Sie unterhalb der `Main`-Methode eine neue statische Methode zur `Program`-Klasse hinzu:
 

@@ -1,18 +1,17 @@
 ---
 title: include file
-description: include file
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116814"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897740"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -155,8 +154,11 @@ Images können auch, maßstäblich, freigegeben werden, sogar über eine mehrins
 
 ## <a name="billing"></a>Abrechnung
 Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche Gebühren an. Für folgende Ressourcen werden Gebühren berechnet:
-- Speicherkosten für die Speicherung der Versionen freigegebener Images. Die Kosten hängen von der Anzahl der Replikate der Imageversion sowie von der Anzahl der Regionen ab, in denen die Version repliziert wird. Wenn Sie z. B. 2 Images haben und beide in 3 Regionen repliziert werden, dann werden Ihnen 6 verwaltete Datenträger auf der Grundlage ihrer Größe berechnet. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise ](https://azure.microsoft.com/pricing/details/managed-disks/).
-- Ausgehender Netzwerkdatenverkehr wird für die Replikation der ersten Imageversion aus der Quellregion in die replizierten Regionen berechnet. Weitere Replikate werden in der Region verarbeitet, sodass keine zusätzlichen Gebühren anfallen. 
+-   Speicherkosten für die Speicherung der einzelnen Replikate. Die Speicherkosten werden als Momentaufnahme berechnet und richten sich nach der belegten Größe der Imageversion, der Anzahl der Replikate der Imageversion und der Anzahl der Regionen, in die die Version repliziert wird. 
+-   Ausgehender Netzwerkdatenverkehr wird für die Replikation der ersten Imageversion aus der Quellregion in die replizierten Regionen berechnet. Weitere Replikate werden in der Region verarbeitet, sodass keine zusätzlichen Gebühren anfallen. 
+
+Nehmen wir z. B. an, Sie verfügen über ein Image eines 127 GB-Betriebssystemdatenträgers, der nur 10 GB Speicherplatz belegt, und über einen leeren 32 GB-Datenträger. Die belegte Größe jedes Images beträgt nur 10 GB. Das Image wird in drei Regionen repliziert, und jede Region verfügt über zwei Replikate. Insgesamt wird es sechs Momentaufnahmen geben, die jeweils 10 GB verwenden. Ihnen werden die Speicherkosten für jede Momentaufnahme auf der Grundlage der belegten Größe von 10 GB in Rechnung gestellt. Sie zahlen Gebühren für ausgehenden Netzwerkdatenverkehr für das erste Replikat, das in die beiden anderen Regionen kopiert wird. Weitere Informationen zu den Preisen von Momentaufnahmen in den einzelnen Regionen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/). Weitere Informationen zum ausgehenden Netzwerkdatenverkehr finden Sie unter [Bandbreite: Preisübersicht](https://azure.microsoft.com/pricing/details/bandwidth/).
+
 
 ## <a name="updating-resources"></a>Aktualisieren von Ressourcen
 

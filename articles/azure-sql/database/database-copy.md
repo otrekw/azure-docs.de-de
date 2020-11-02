@@ -4,19 +4,19 @@ description: Erstellen Sie eine transaktionskonsistente Kopie einer vorhandenen 
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 67f123472a5fd6060bc4e2de36fb7ac1ea46d356
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7a80f6ef918ac42f43eee2ccc8acae09c5008129
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124394"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748896"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -82,7 +82,7 @@ Der Datenbank-Kopiervorgang ist ein asynchroner Vorgang, aber die Zieldatenbank 
 
 Melden Sie sich mit der Serveradministratoranmeldung oder der Anmeldung, mit der die zu kopierende Datenbank erstellt wurde, bei der Masterdatenbank an. Damit der Datenbankkopiervorgang funktioniert, müssen alle Anmeldungen, die kein Serveradministrator sind, Mitglieder der Rolle `dbmanager` sein. Weitere Informationen zu Anmeldungen und zum Herstellen einer Verbindung mit dem Server finden Sie unter [Verwalten von Anmeldungen](logins-create-manage.md).
 
-Starten Sie das Kopieren der Quelldatenbank mit der Anweisung [CREATE DATABASE ... AS COPY OF](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database). Die T-SQL-Anweisung wird weiter ausgeführt, bis der Datenbankkopiervorgang beendet ist.
+Starten Sie das Kopieren der Quelldatenbank mit der Anweisung [CREATE DATABASE ... AS COPY OF](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database). Die T-SQL-Anweisung wird weiter ausgeführt, bis der Datenbankkopiervorgang beendet ist.
 
 > [!NOTE]
 > Durch das Beenden der T-SQL-Anweisung wird der Datenbankkopiervorgang nicht beendet. Um den Vorgang zu beenden, müssen Sie die Zieldatenbank löschen.
@@ -100,6 +100,21 @@ Mit diesem Befehl wird Database1 in eine neue Datenbank mit dem Namen „Databas
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
+
+### <a name="copy-to-an-elastic-pool"></a>Kopieren in einen Pool für elastische Datenbanken
+
+Melden Sie sich mit der Serveradministratoranmeldung oder der Anmeldung, mit der die zu kopierende Datenbank erstellt wurde, bei der Masterdatenbank an. Damit der Datenbankkopiervorgang funktioniert, müssen alle Anmeldungen, die kein Serveradministrator sind, Mitglieder der `dbmanager`-Rolle sein.
+
+Dieser Befehl kopiert „Database1“ in eine neue Datenbank namens „Database2“ in einen Pool für elastische Datenbanken namens „pool1“. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Kopiervorgang abgeschlossen ist.
+
+„Database1“ kann eine einzelne oder eine Pooldatenbank sein. Das Kopieren zwischen verschiedenen Ebenenpools wird zwar unterstützt, aber einige ebenenübergreifende Kopien werden nicht erfolgreich sein. Sie können z. B. eine einzelne oder eine Datenbank vom Typ „Elastisch Standard“ in einen universellen Pool kopieren, aber Sie können keine Datenbank vom Typ „Elastisch Standard“ in einen Pool vom Typ „Premium“ kopieren. 
+
+   ```sql
+   -- execute on the master database to start copying
+   CREATE DATABASE "Database2"
+   AS COPY OF "Database1"
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
    ```
 
 ### <a name="copy-to-a-different-server"></a>Kopieren auf einen anderen Server
@@ -128,13 +143,13 @@ Sie können Ihre Datenbank mit den im Abschnitt [Kopieren einer SQL-Datenbank au
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Überwachen des Fortschritts des Kopiervorgangs
 
-Überwachen Sie den Kopiervorgang, indem Sie die Ansichten [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database) und [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) abfragen. Während des Kopiervorgangs wird die Spalte **state_desc** der Ansicht „sys.databases“ für die neue Datenbank auf **COPYING** gesetzt.
+Überwachen Sie den Kopiervorgang, indem Sie die Ansichten [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database) und [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) abfragen. Während des Kopiervorgangs wird die Spalte **state_desc** der Ansicht „sys.databases“ für die neue Datenbank auf **COPYING** gesetzt.
 
 * Wenn beim Kopieren ein Fehler auftritt, wird die Spalte **state_desc** der Ansicht „sys.databases“ für die neue Datenbank auf **SUSPECT** gesetzt. Führen Sie die DROP-Anweisung in der neuen Datenbank aus, und wiederholen Sie den Vorgang später noch einmal.
 * Wenn der Kopiervorgang erfolgreich ist, wird die Spalte **state_desc** der Ansicht „sys.databases“ für die neue Datenbank auf **ONLINE** gesetzt. Der Kopiervorgang ist abgeschlossen, und die neue Datenbank ist eine normale Datenbank, die unabhängig von der Quelldatenbank geändert werden kann.
 
 > [!NOTE]
-> Wenn Sie den Kopiervorgang während der Ausführung abbrechen möchten, führen Sie die Anweisung [DROP DATABASE](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) für die neue Datenbank aus.
+> Wenn Sie den Kopiervorgang während der Ausführung abbrechen möchten, führen Sie die Anweisung [DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql) für die neue Datenbank aus.
 
 > [!IMPORTANT]
 > Falls Sie eine Kopie mit einem deutlich niedrigeren Dienstziel als die Quelle erstellen müssen, verfügt die Zieldatenbank ggf. nicht über genügend Ressourcen für die Durchführung des Seedingprozesses. Möglicherweise schlägt dadurch der Kopiervorgang fehl. Verwenden Sie in diesem Szenario eine Anforderung einer Geowiederherstellung, um eine Kopie auf einem anderen Server bzw. in einer anderen Region zu erstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit Datenbanksicherungen](recovery-using-backups.md#geo-restore).
@@ -167,7 +182,7 @@ Wenn Sie die Vorgänge unter Bereitstellungen in der Ressourcengruppe im Portal 
 
 ## <a name="resolve-logins"></a>Auflösen von Anmeldungen
 
-Nachdem die neue Datenbank auf dem Zielserver online ist, können Sie die [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current)-Anweisung verwenden, um die Benutzer aus der neuen Datenbank den Anmeldungen auf dem Zielserver neu zuzuordnen. Informationen zum Auflösen von verwaisten Benutzern finden Sie unter [Problembehandlung bei verwaisten Benutzern](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server). Siehe auch [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](active-geo-replication-security-configure.md).
+Nachdem die neue Datenbank auf dem Zielserver online ist, können Sie die [ALTER USER](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true)-Anweisung verwenden, um die Benutzer aus der neuen Datenbank den Anmeldungen auf dem Zielserver neu zuzuordnen. Informationen zum Auflösen von verwaisten Benutzern finden Sie unter [Problembehandlung bei verwaisten Benutzern](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server). Siehe auch [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](active-geo-replication-security-configure.md).
 
 Für alle Benutzer werden in der neuen Datenbank die Berechtigungen beibehalten, über die sie auch in der Quelldatenbank verfügt haben. Der Benutzer, der das Kopieren der Datenbank initiiert hat, wird zum Datenbankbesitzer der neuen Datenbank. Nachdem der Kopiervorgang erfolgreich abgeschlossen wurde und bevor andere Benutzer neu zugeordnet werden, kann sich nur der Datenbankbesitzer bei der neuen Datenbank anmelden.
 

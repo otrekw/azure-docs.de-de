@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/29/2020
-ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c082c797c75ba912bafead15d24ea3941cfc25e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569636"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534191"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -28,36 +28,36 @@ Navigieren Sie in Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/)
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Erstellen einer Instanz von Azure Database for MySQL Flexible Server
 
-Eine Flexible Server-Instanz wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) erstellt.
+Eine Flexible Server-Instanz wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../../azure-resource-manager/management/overview.md) erstellt.
 
 Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erstellen:
 
-1. Wählen Sie links oben im Portal **Ressource erstellen** (+) aus.
+1. Suchen Sie mithilfe des Suchfelds im Portal nach „Azure Database for MySQL“, um den Dienst zu finden. 
+    
+    > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Suche nach Azure Database for MySQL":::
 
-2. Wählen Sie **Datenbanken** > **Azure-Datenbank für MySQL** aus. Sie können auch **MySQL** in das Suchfeld eingeben, um nach dem Dienst zu suchen.
+2. Wählen Sie **Hinzufügen** . 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="Option „Azure Database for MySQL“":::
-
-3. Wählen Sie **Flexible Server** als Bereitstellungsoption aus.
+3. Wählen Sie auf der Seite zum Auswählen der Bereitstellungsoption die Bereitstellungsoption **Flexibler Server** aus.
      
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Option „Azure Database for MySQL“":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Suche nach Azure Database for MySQL":::    
 
 4. Füllen Sie dann das Formular **Grundlagen** mit den folgenden Informationen aus: 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Option „Azure Database for MySQL“"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Suche nach Azure Database for MySQL"::: 
                                     
     |**Einstellung**|**Empfohlener Wert**|**Beschreibung**|
     |---|---|---|
     Subscription|Ihr Abonnementname|Das Azure-Abonnement, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet werden soll.|
     Resource group|*myresourcegroup*| Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement|
     Servername |*mydemoserver*|Ein eindeutiger Name, der Ihre Flexible Server-Instanz identifiziert. Der Domänenname *mysql.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss 3 bis 63 Zeichen umfassen.|
-    Administratorbenutzername |*mydemouser*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.|
+    Administratorbenutzername |*mydemouser*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser** , **admin** , **administrator** , **root** , **guest** oder **public** lauten.|
     Kennwort |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0 bis 9) und nicht alphanumerische Zeichen (!, $, #, % usw.).|
     Region|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist.|
     Version|5.7| MySQL-Hauptversion|
-    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **7 Tage** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. *Burstfähig*, *Standard_B1ms*, *10 GiB* und *7 Tage* sind die Standardwerte für **Computetarif**, **Computegröße**, **Speicher** und **Aufbewahrungszeitraum für Sicherung**. Sie können diese Schieberegler unverändert lassen oder sie anpassen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, klicken Sie auf **Speichern**. Der folgende Screenshot zeigt die Compute- und Speicheroptionen.|
+    Compute und Speicher | **Burstfähig** , **Standard_B1ms** , **10 GiB** , **7 Tage** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. *Burstfähig* , *Standard_B1ms* , *10 GiB* und *7 Tage* sind die Standardwerte für **Computetarif** , **Computegröße** , **Speicher** und **Aufbewahrungszeitraum für Sicherung** . Sie können diese Schieberegler unverändert lassen oder sie anpassen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, klicken Sie auf **Speichern** . Der folgende Screenshot zeigt die Compute- und Speicheroptionen.|
     
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Option „Azure Database for MySQL“":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Suche nach Azure Database for MySQL":::
 
 5. Konfigurieren von Netzwerkoptionen
 
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     > [!NOTE]
     > Die Konnektivitätsmethode kann nicht geändert werden, nachdem der Server erstellt wurde. Wenn Sie z. B. während der Erstellung *Privater Zugriff (VNET-Integration)* ausgewählt haben, können Sie nach der Erstellung nicht zu *Öffentlicher Zugriff (zugelassene IP-Adressen)* wechseln. Es wird dringend empfohlen, eine Serverinstanz mit privatem Zugriff zu erstellen, um mithilfe der VNET-Integration sicher auf den Server zugreifen zu können. Weitere Informationen zum privaten Zugriff finden Sie im Artikel zu [Konzepten](./concepts-networking.md).
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Option „Azure Database for MySQL“":::  
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Suche nach Azure Database for MySQL":::  
 
 6. Wählen Sie **Überprüfen + erstellen** aus, um Ihre Flexible Server-Konfiguration zu überprüfen.
 
@@ -74,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
 
 8. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** (Glockensymbol) aus, um den Bereitstellungsprozess zu überwachen. Nach Abschluss der Bereitstellung können Sie auf **An Dashboard anheften** klicken, um auf Ihrem Azure-Portal-Dashboard eine Kachel für die Flexible Server-Instanz zu erstellen, über die Sie direkt zur **Übersicht** des Servers gelangen. Wenn Sie auf **Zu Ressource wechseln** klicken, wird die **Übersicht** des Servers geöffnet.
 
-Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: **information_schema**, **mysql**, **performance_schema** und **sys**.
+Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: **information_schema** , **mysql** , **performance_schema** und **sys** .
 
 > [!NOTE]
 > Überprüfen Sie, ob Ihr Netzwerk ausgehenden Datenverkehr über Port 3306 zulässt. Dieser Port wird von Azure Database for MySQL Flexible Server verwendet, um Verbindungsprobleme zu vermeiden.  
@@ -95,7 +95,7 @@ Stellen Sie mit mysql.exe mithilfe des folgenden Befehls eine Verbindung her. Er
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Sie haben erfolgreich eine Azure Database for MySQL Flexible Server-Instanz in einer Ressourcengruppe erstellt.  Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, können Sie sie löschen, indem Sie die Ressourcengruppe oder einfach den MySQL-Server löschen. Um die Ressourcengruppe zu löschen, gehen Sie wie folgt vor:
 
-1. Suchen Sie im Azure-Portal nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im Azure-Portal nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
 1. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 1. Wählen Sie auf der Seite „Übersicht“ der Ressourcengruppe die Option **Ressourcengruppe löschen** aus.
 1. Geben Sie im Bestätigungsdialogfeld den Namen Ihrer Ressourcengruppe ein, und wählen Sie **Löschen** aus.
@@ -103,7 +103,7 @@ Sie haben erfolgreich eine Azure Database for MySQL Flexible Server-Instanz
 Zum Löschen des Servers können Sie auf der Seite **Übersicht** Ihres Servers auf die Schaltfläche **Löschen** klicken, wie hier gezeigt:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Option „Azure Database for MySQL“":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Suche nach Azure Database for MySQL":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

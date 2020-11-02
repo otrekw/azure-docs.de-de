@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd0ed78c56e4d656a2ecee6395d831ed093e85b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168289"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677366"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Problembehandlung in Azure FarmBeats
 
-In diesem Artikel finden Sie Lösungen für häufige Probleme mit Azure FarmBeats. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an unser [Supportforum für Fragen und Antworten](https://aka.ms/farmbeatssupport), oder senden Sie eine E-Mail an farmbeatssupport@microsoft.com.
+In diesem Artikel finden Sie Lösungen für häufige Probleme mit Azure FarmBeats. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an unser [Supportforum für Fragen und Antworten](/answers/topics/azure-farmbeats.html), oder senden Sie eine E-Mail an farmbeatssupport@microsoft.com.
 
 > [!NOTE]
   > Wenn Sie FarmBeats im April installiert haben und Ihre Aufträge mit einer leeren Fehlermeldung fehlschlagen, wurde Ihrer Installation möglicherweise kein Batchkontingent zugeteilt, um die Unterstützung für kritische medizinische und Sicherheitsorganisationen zu priorisieren. Weitere Informationen finden Sie [hier](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . Sie müssen anfordern, dass VMs dem Batch-Konto zugeteilt werden, um Aufträge erfolgreich ausführen zu können.
@@ -289,7 +289,7 @@ Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten
 2. Suchen Sie im Feld **Suche** nach der Ressourcengruppe für den FarmBeats-Datenhub.
 3. Suchen Sie im Dashboard **Ressourcengruppe** nach dem Speicherkonto *datahublogs\** . Beispiel: *datahublogsmvxmq* .  
 4. Wählen Sie in der Spalte **Name** das Speicherkonto aus, um das Dashboard **Speicherkonto** anzuzeigen.
-5. Wählen Sie im Bereich **datahublogs\*** die Option **In Explorer öffnen** aus, um die Anwendung **Azure Storage-Explorer öffnen** anzuzeigen.
+5. Wählen Sie im Bereich **datahublogs\* *_ die Option _* In Explorer öffnen** aus, um die Anwendung **Azure Storage-Explorer öffnen** anzuzeigen.
 6. Wählen Sie im linken Bereich **Blobcontainer** und dann **job-logs** für Azure Data Factory-Protokolle oder **appinsights-logs** für App Service-Protokolle aus.
 7. Wählen Sie **Herunterladen** aus, und laden Sie die Protokolle in einen lokalen Ordner auf Ihrem Computer herunter.
 
@@ -301,7 +301,7 @@ Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten
 2. Suchen Sie im Feld **Suche** nach der Ressourcengruppe für den FarmBeats-Accelerator.
 3. Suchen Sie im Dashboard **Ressourcengruppe** nach dem Speicherkonto *storage\** . Beispiel: *storagedop4k\** .
 4. Wählen Sie das Speicherkonto in der Spalte **Name** aus, um das Dashboard **Speicherkonto** anzuzeigen.
-5. Wählen Sie im Bereich **storage\*** die Option **In Explorer öffnen** aus, um die Anwendung Azure Storage-Explorer zu öffnen.
+5. Wählen Sie im Bereich **storage\* *_ die Option _* In Explorer öffnen** aus, um die Anwendung Azure Storage-Explorer zu öffnen.
 6. Wählen Sie im linken Bereich **Blobcontainer** und dann **job-logs** für Azure Data Factory-Protokolle oder **appinsights-logs** für App Service-Protokolle aus.
 7. Wählen Sie **Herunterladen** aus, und laden Sie die Protokolle in einen lokalen Ordner auf Ihrem Computer herunter.
 

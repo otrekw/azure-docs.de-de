@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/12/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.date: 10/23/2020
+ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
+ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341310"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735469"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Rückschlussumgebung mit virtuellen Netzwerken
 
@@ -42,12 +42,12 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Rückschlussressourcen in 
 
 + Ein vorhandenes virtuelles Netzwerk und Subnetz, die mit Ihren Computeressourcen verwendet werden können
 
-+ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
++ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
 
     - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
 
-    Weitere Informationen zur RBAC in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
+    Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
 
 <a id="aksvnet"></a>
 
@@ -123,7 +123,7 @@ Es gibt zwei Ansätze, um den Datenverkehr zwischen AKS-Cluster und virtuellem N
 * __Interner AKS-Lastenausgleich__ : Bei diesem Ansatz wird der Endpunkt für Ihre Bereitstellungen in AKS konfiguriert, um eine private IP-Adresse innerhalb des virtuellen Netzwerks zu verwenden.
 
 > [!WARNING]
-> **Verwenden Sie entweder einen privaten AKS-Cluster oder einen internen Lastenausgleich, aber nicht beides.**
+> Der interne Lastenausgleich funktioniert nicht mit einem AKS-Cluster, der Kubenet verwendet. Wenn Sie gleichzeitig einen internen Lastenausgleich und einen privaten AKS-Cluster verwenden möchten, konfigurieren Sie Ihren privaten AKS-Cluster mit Azure Container Networking Interface (CNI). Weitere Informationen finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service](../aks/configure-azure-cni.md).
 
 ### <a name="private-aks-cluster"></a>Privater AKS-Cluster
 
@@ -134,7 +134,7 @@ Nachdem Sie den privaten AKS-Cluster erstellt haben, [fügen Sie den Cluster an 
 > [!IMPORTANT]
 > Bevor Sie einen Private Link-fähigen AKS-Cluster mit Azure Machine Learning verwenden, müssen Sie einen Supportvorfall öffnen, um diese Funktion zu aktivieren. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
-## <a name="internal-aks-load-balancer"></a>Interner AKS-Lastenausgleich
+### <a name="internal-aks-load-balancer"></a>Interner AKS-Lastenausgleich
 
 Standardmäßig verwenden AKS-Bereitstellungen einen [öffentlichen Lastenausgleich](../aks/load-balancer-standard.md). In diesem Abschnitt erfahren Sie, wie Sie AKS für die Verwendung eines internen Lastenausgleichs konfigurieren. Ein internes (oder privates) Lastenausgleichsmodul wird verwendet, wenn nur private IP-Adressen als Front-End zulässig sind. Interne Lastenausgleichsmodule werden verwendet, um einen Lastausgleich für Datenverkehr innerhalb eines virtuellen Netzwerks vorzunehmen.
 

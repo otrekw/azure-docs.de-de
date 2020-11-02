@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173568"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791425"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -62,7 +62,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 |----------|----------------------------|
 | Notfallwiederherstellung | [Georedundante Sicherungen in Azure](automated-backups-overview.md) |
 | Leseskalierung | [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads (Vorschau)](read-scale-out.md) |
-| ETL (OLTP zu OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) oder [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| ETL (OLTP zu OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) oder [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | Migration von SQL Server zu Azure SQL-Datenbank | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
@@ -81,7 +81,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 | | Datensynchronisierung | Transaktionsreplikation |
 |---|---|---|
 | **Vorteile** | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration <br/>– Unterstützung von Azure SQL Managed Instance |
-| **Nachteile** | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
+| **Nachteile** | – 5 Minuten Mindestfrequenz zwischen den Synchronisierungen<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
 
 ## <a name="get-started"></a>Erste Schritte 
 
@@ -101,7 +101,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 
 ### <a name="did-something-go-wrong"></a>Ist etwas schiefgegangen?
 
-- [Troubleshoot issues with SQL Data Sync (Preview)](../../sql-database/sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+- [Troubleshoot issues with SQL Data Sync (Preview)](./sql-data-sync-troubleshoot.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 ## <a name="consistency-and-performance"></a>Konsistenz und Leistung
 
@@ -126,7 +126,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 > - Daten zwischen Hub und Mitglied können verloren gehen, auch wenn bei der Synchronisierung kein Problem gemeldet wird.
 > - Bei der Synchronisierung kann ein Fehler auftreten, weil die Nachverfolgungstabelle aufgrund der Primärschlüsseländerung über eine nicht vorhandene Zeile aus der Quelle verfügt.
 
-- Momentaufnahmeisolation muss sowohl für die Synchronisierungsmitglieder als auch den Hub aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Momentaufnahmeisolation muss sowohl für die Synchronisierungsmitglieder als auch den Hub aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen
 
@@ -135,9 +135,9 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Ein Primärschlüssel kann nicht über die folgenden Datentypen verfügen: sql_variant, binary, varbinary, image, xml.
 - Gehen Sie mit Bedacht vor, wenn Sie die folgenden Datentypen als Primärschlüssel verwenden, da nur die Genauigkeit bis auf die Sekunde unterstützt wird: time, datetime, datetime2, datetimeoffset.
 - Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
+- Ein Tabellenname darf keine druckbaren Zeichen enthalten: ! " # $ % ' ( ) * + - Leerzeichen
 - Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
 - Gibt es Tabellen, die denselben Namen, aber unterschiedlichen Schemas haben (z. B. dbo.customers und sales.customers), kann nur eine der Tabellen in der Synchronisierung hinzugefügt werden.
-- Ein Tabellenname darf keine Zeichen enthalten, deren ASCII-Wert kleiner oder gleich „-“ ist.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 - Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
 
@@ -166,7 +166,7 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 | Tabellen in einer Synchronisierungsgruppe                                          | 500                    | Erstellen mehrerer Synchronisierungsgruppen |
 | Spalten in einer Tabelle einer Synchronisierungsgruppe                              | 1000                   |                             |
 | Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
-| Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
+| Minimales Synchronisierungsfrequenzintervall                                 | 5 Minuten              |                             |
 
 > [!NOTE]
 > Es können bis zu 30 Endpunkte in einer einzelnen Synchronisierungsgruppe vorhanden sein, wenn es nur eine Synchronisierungsgruppe gibt. Wenn mehr als eine Synchronisierungsgruppe vorhanden ist, darf die Gesamtanzahl der Endpunkte in allen Synchronisierungsgruppen 30 nicht überschreiten. Wenn eine Datenbank mehreren Synchronisierungsgruppen angehört, wird sie als mehrere Endpunkte und nicht als einer gezählt.
@@ -248,20 +248,19 @@ Mit dem BYOD-Feature von Dynamics 365 können Administratoren Datenentitäten a
 
 Müssen Sie das Schema einer Datenbank in einer Synchronisierungsgruppe aktualisieren? Schemaänderungen werden nicht automatisch repliziert. Einige Lösungen finden Sie in den folgenden Artikeln:
 
-- [Automatisieren der Replikation von Schemaänderungen mit der SQL-Datensynchronisierung in Azure](../../sql-database/sql-database-update-sync-schema.md)
+- [Automatisieren der Replikation von Schemaänderungen mit der SQL-Datensynchronisierung in Azure](./sql-data-sync-update-sync-schema.md)
 - [Verwenden von PowerShell zum Aktualisieren des Synchronisierungsschemas in einer bestehenden Synchronisierungsgruppe](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Überwachen und Behandeln von Problemen
 
 Wird die SQL-Datensynchronisierung wie erwartet ausgeführt? Informationen zum Überwachen der Aktivität und Behandeln von Problemen finden Sie in den folgenden Artikeln:
 
-- [Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Troubleshoot issues with SQL Data Sync (Preview)](../../sql-database/sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+- [Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen](./monitor-tune-overview.md)
+- [Troubleshoot issues with SQL Data Sync (Preview)](./sql-data-sync-troubleshoot.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Weitere Informationen zu Azure SQL-Datenbank
 
 Weitere Informationen zu Azure SQL-Datenbank finden Sie in den folgenden Artikeln:
 
 - [Übersicht über die SQL-Datenbank](sql-database-paas-overview.md)
-- [Datenbank-Lebenszyklusverwaltung](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [Datenbank-Lebenszyklusverwaltung](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

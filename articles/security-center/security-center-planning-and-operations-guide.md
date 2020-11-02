@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 36c15907c0f45befacf35389652f6d91c0ab1958
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341242"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787906"
 ---
 # <a name="planning-and-operations-guide"></a>Leitfaden zu Planung und Betrieb
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -207,9 +207,9 @@ Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Reak
 
 Sie können Security Center-Warnungen in den folgenden Phasen verwenden:
 
-* **Erkennen**: Identifizieren einer verdächtigen Aktivität in Ressourcen
-* **Bewerten**: Durchführen der ersten Bewertung, um weitere Informationen zur verdächtigen Aktivität zu erhalten
-* **Diagnostizieren**: Verwenden der Wiederherstellungsschritte für das technische Verfahren zum Beheben des Problems
+* **Erkennen** : Identifizieren einer verdächtigen Aktivität in Ressourcen
+* **Bewerten** : Durchführen der ersten Bewertung, um weitere Informationen zur verdächtigen Aktivität zu erhalten
+* **Diagnostizieren** : Verwenden der Wiederherstellungsschritte für das technische Verfahren zum Beheben des Problems
 
 Die in jeder Sicherheitswarnung enthaltenen Informationen ermöglichen es, die Art des Angriffs zu ermitteln und mögliche Lösungen vorzuschlagen. Einige Warnungen enthalten auch Links zu weiteren Informationen oder zu anderen Informationsquellen in Azure. Sie können die bereitgestellten Informationen zur weiteren Untersuchung und zum Starten von Korrekturmaßnahmen verwenden. Außerdem können Sie die in Ihrem Arbeitsbereich gespeicherten, sicherheitsrelevanten Daten auch durchsuchen.
 

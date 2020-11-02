@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147924"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547417"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Schützen und Isolieren von Azure HDInsight-Clustern mit Private Link (Vorschauversion)
 
@@ -56,9 +56,11 @@ Für Private Link (standardmäßig deaktiviert) benötigen Sie umfassende Netzwe
 
 Wenn `privateLink` auf *Enabled* (Aktiviert) festgelegt ist, werden interne [Standard-Lastenausgleichsmodule](../load-balancer/load-balancer-overview.md) erstellt, und für jedes dieser Module wird ein Azure Private Link-Dienst bereitgestellt. Der Private Link-Dienst ermöglicht Ihnen den Zugriff auf den HDInsight-Cluster von privaten Endpunkten.
 
-Von Standard-Lastenausgleichsmodulen wird die [öffentliche Netzwerkadressenübersetzung in ausgehender Richtung](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) nicht wie bei Basic-Lastenausgleichsmodulen automatisch bereitgestellt. Sie müssen Ihre eigene NAT-Lösung, z. B. [Virtual Network NAT](../virtual-network/nat-overview.md) oder eine [Firewall](./hdinsight-restrict-outbound-traffic.md), für ausgehende Abhängigkeiten bereitstellen. Ihr HDInsight-Cluster benötigt weiterhin Zugriff auf seine ausgehenden Abhängigkeiten. Falls diese ausgehenden Abhängigkeiten nicht zulässig sind, tritt bei der Clustererstellung unter Umständen ein Fehler auf.
+Von Standard-Lastenausgleichsmodulen wird die [öffentliche Netzwerkadressenübersetzung in ausgehender Richtung](../load-balancer/load-balancer-outbound-connections.md) nicht wie bei Basic-Lastenausgleichsmodulen automatisch bereitgestellt. Sie müssen Ihre eigene NAT-Lösung, z. B. [Virtual Network NAT](../virtual-network/nat-overview.md) oder eine [Firewall](./hdinsight-restrict-outbound-traffic.md), für ausgehende Abhängigkeiten bereitstellen. Ihr HDInsight-Cluster benötigt weiterhin Zugriff auf seine ausgehenden Abhängigkeiten. Falls diese ausgehenden Abhängigkeiten nicht zulässig sind, tritt bei der Clustererstellung unter Umständen ein Fehler auf.
 
 ### <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
+
+Für die erfolgreiche Erstellung von Private Link-Diensten müssen Sie explizit die [Richtlinien für Private Link-Dienste deaktivieren](../private-link/disable-private-link-service-network-policy.md).
 
 Das folgende Diagramm enthält ein Beispiel für die Netzwerkkonfiguration, die vor dem Erstellen eines Clusters erforderlich ist. In diesem Beispiel wird für den gesamten ausgehenden Datenverkehr per UDR der Weg über Azure Firewall [erzwungen](../firewall/forced-tunneling.md), und die erforderlichen ausgehenden Abhängigkeiten sollten in der Firewall „zugelassen“ werden, bevor ein Cluster erstellt wird. Bei Clustern mit Enterprise-Sicherheitspaket kann die Netzwerkkonnektivität mit Azure Active Directory Domain Services per VNET-Peering bereitgestellt werden.
 

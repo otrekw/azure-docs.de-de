@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280862"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461072"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integration in Logic Apps mit einem benutzerdefinierten Connector
 
@@ -40,10 +40,10 @@ Zu den Voraussetzungen zählen auch die folgenden Punkte. Im weiteren Verlauf di
 
 Um eine Instanz von Azure Digital Twins mit Logic Apps in diesem Artikel zu verbinden, müssen Sie die **Azure Digital Twins-Instanz** bereits eingerichtet haben. 
 
-**Richten Sie zunächst eine Azure Digital Twins-Instanz** und die erforderliche Authentifizierung ein, um damit arbeiten zu können. Anweisungen hierzu finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md). Abhängig von Ihrer bevorzugten Umgebung wird der Setupartikel für das [Azure-Portal](how-to-set-up-instance-portal.md), die [CLI](how-to-set-up-instance-cli.md) oder das [automatisierte Cloud Shell-Bereitstellungsskriptbeispiel](how-to-set-up-instance-scripted.md) bereitgestellt. Alle Versionen der Anleitung enthalten auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
+Richten Sie zunächst eine **Azure Digital Twins-Instanz** und die erforderliche Authentifizierung ein, um damit arbeiten zu können. Anweisungen hierzu finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md). Abhängig von Ihrer bevorzugten Umgebung wird der Setupartikel für das [Azure-Portal](how-to-set-up-instance-portal.md), die [CLI](how-to-set-up-instance-cli.md) oder das [automatisierte Cloud Shell-Bereitstellungsskriptbeispiel](how-to-set-up-instance-scripted.md) bereitgestellt. Alle Versionen der Anleitung enthalten auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
 * Nach dem Einrichten der Azure Digital Twins-Instanz benötigen Sie den **_Hostnamen_** der Instanz ([im Azure-Portal suchen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
-Sie müssen zum Authentifizieren der ADT-Explorer-Anwendung außerdem eine **App-Registrierung** einrichten. Führen Sie die Anweisungen unter [ *Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins*](how-to-create-app-registration.md) aus, um diese einzurichten. 
+Um den Connector zu authentifizieren, müssen Sie außerdem eine **App-Registrierung** einrichten. Führen Sie die Anweisungen unter [ *Erstellen einer App-Registrierung*](how-to-create-app-registration.md) aus, um diese einzurichten. 
 * Wenn Sie über eine App-Registrierung verfügen, benötigen Sie die **_Anwendungs-ID (Client)_** und die **_Verzeichnis-ID (Mandant)_** ([im Azure-Portal suchen](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) der Registrierung.
 
 ### <a name="get-app-registration-client-secret"></a>Abrufen des geheimen Clientschlüssels für die Azure AD-App-Registrierung
@@ -66,7 +66,7 @@ Vergewissern Sie sich nun, dass der geheime Clientschlüssel auf der Seite _Zert
 
 In diesem Artikel wird Logic Apps verwendet, um einen Zwilling in Ihrer Azure Digital Twins-Instanz zu aktualisieren. Um fortzufahren, sollten Sie mindestens einen Zwilling in der Instanz hinzufügen. 
 
-Sie können Zwillinge mit den [DigitalTwins-APIs](how-to-use-apis-sdks.md), dem [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) oder der [Azure Digital Twins-CLI](how-to-use-cli.md) hinzufügen. Ausführliche Schritte zum Erstellen von Zwillingen mithilfe dieser Methoden finden Sie unter [*Vorgehensweise: Verwalten digitaler Zwillinge*](how-to-manage-twin.md).
+Sie können Zwillinge mit den [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins), dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) oder der [Azure Digital Twins-CLI](how-to-use-cli.md) hinzufügen. Ausführliche Schritte zum Erstellen von Zwillingen mithilfe dieser Methoden finden Sie unter [*Vorgehensweise: Verwalten digitaler Zwillinge*](how-to-manage-twin.md).
 
 Sie benötigen die **_Zwillings-ID_** eines Zwillings in Ihrer Instanz, den Sie erstellt haben.
 

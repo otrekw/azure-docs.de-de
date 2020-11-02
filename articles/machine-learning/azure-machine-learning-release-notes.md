@@ -9,18 +9,50 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6e18599e83a301ecda94525949f9f4cd077085a2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139368"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742028"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2020-10-26"></a>2020-10-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1170"></a>Azure Machine Learning SDK für Python v1.17.0
++ **Neue Beispiele**
+  + Ein neues von der Community betreutes Repository von Beispielen ist verfügbar unter https://github.com/Azure/azureml-examples
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + Es wurde ein Problem behoben, bei dem „get_output“ einen XGBoostError auslösen konnte.
+  + **azureml-automl-runtime**
+    + Zeit-/Kalenderbasierte Features, die mit AutoML erstellt wurden, weisen jetzt das Präfix auf.
+    + Ein IndexError, der während des Trainings von StackEnsemble für Klassifizierungsdatasets mit einer großen Anzahl von Klassen und aktivierter Subsampling-Funktion auftrat, wurde behoben.
+    + Es wurde ein Problem behoben, bei dem die Vorhersagen von VotingRegressor nach der Neuanpassung des Modells ungenau sein konnten.
+  + **azureml-core**
+    + Weitere Details über die Beziehung zwischen der AKS-Bereitstellungskonfiguration und den Azure Kubernetes Service-Konzepten wurden hinzugefügt.
+    + Kunden können das SDK für verknüpfte Dienste verwenden, um den Synapse-Arbeitsbereich mit dem AML-Arbeitsbereich zu verknüpfen. CRUD wird unterstützt.
+    + Unterstützung für Umgebungsclientbezeichnungen. Benutzer können Umgebungen beschriften und über Bezeichnungen darauf verweisen.
+  + **azureml-dataprep**
+    + Bessere Fehlermeldung bei der Verwendung von derzeit nicht unterstütztem Spark mit Scala 2.12.
+  + **azureml-explain-model**
+    + Das Paket „azureml-explain-model“ ist offiziell veraltet.
+  + **azureml-mlflow**
+    + Ein Fehler in „mlflow.projects.run“ für das azureml-Back-End, bei dem der Zustand „Ausführung wird abgeschlossen“ nicht richtig behandelt wurde, wurde behoben.
+  + **azureml-pipeline-core**
+    + Unterstützung zum Erstellen, Auflisten und Abrufen von Pipelineplänen auf der Basis eines Pipelineendpunkts wurde hinzugefügt.
+    +  Die Dokumentation von „PipelineData.as_dataset“ mit einem ungültigen Verwendungsbeispiel wurde verbessert. Die Verwendung von „PipelineData.as_dataset“ führt jetzt zum Auslösen von „ValueException“.
+    + Das HyperDriveStep-Pipelinenotebook wurde geändert, um das beste Modell innerhalb eines „PipelineSteps“ direkt nach der HyperDriveStep-Ausführung zu registrieren.
+  + **azureml-pipeline-steps**
+    + Das HyperDriveStep-Pipelinenotebook wurde geändert, um das beste Modell innerhalb eines „PipelineSteps“ direkt nach der HyperDriveStep-Ausführung zu registrieren.
+  + **azureml-train-automl-client**
+    + Es wurde ein Problem behoben, bei dem „get_output“ einen XGBoostError auslösen konnte.
+
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -179,7 +211,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + Neue Landing Page „Erste Schritte“ 
   
 + **Vorschaufunktionen**
-    + Funktion „Gather“ (Sammeln) in Notebooks. Mit der Funktion  [Gather](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#clean-your-notebook-preview) (Sammeln) können Benutzer jetzt problemlos Notebooks bereinigen. Sie verwendet eine automatisierte Abhängigkeitsanalyse Ihres Notebooks und stellt sicher, dass der wesentliche Code beibehalten wird, aber alle irrelevanten Elemente entfernt werden.
+    + Funktion „Gather“ (Sammeln) in Notebooks. Mit der Funktion [Gather](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#clean-your-notebook-preview) (Sammeln) können Benutzer jetzt problemlos Notebooks bereinigen. Sie verwendet eine automatisierte Abhängigkeitsanalyse Ihres Notebooks und stellt sicher, dass der wesentliche Code beibehalten wird, aber alle irrelevanten Elemente entfernt werden.
 
 + **Fehlerbehebungen und Verbesserungen**
   + Verbesserung der Geschwindigkeit und Zuverlässigkeit
@@ -2031,7 +2063,7 @@ Das [`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-
 
 + **Neue Features**
   + Das Azure Machine Learning SDK unterstützt jetzt Python 3.7.
-  + Azure Machine Learning-DNN-Kalkulatoren bieten jetzt integrierte Unterstützung mehrerer Versionen. Beispielsweise akzeptiert der Kalkulator `TensorFlow`  jetzt den Parameter `framework_version`, und Benutzer können als Version „1.10“ oder „1.12“ angeben. Eine Liste der von Ihrer aktuellen SDK-Version unterstützten Versionen erhalten Sie, indem Sie `get_supported_versions()` für die gewünschte Frameworkklasse aufrufen (z. B. `TensorFlow.get_supported_versions()`).
+  + Azure Machine Learning-DNN-Kalkulatoren bieten jetzt integrierte Unterstützung mehrerer Versionen. Beispielsweise akzeptiert der Schätzer `TensorFlow` jetzt den Parameter `framework_version`, und Benutzer können als Version „1.10“ oder „1.12“ angeben. Eine Liste der von Ihrer aktuellen SDK-Version unterstützten Versionen erhalten Sie, indem Sie `get_supported_versions()` für die gewünschte Frameworkklasse aufrufen (z. B. `TensorFlow.get_supported_versions()`).
   Eine Liste der von der aktuellen SDK-Version unterstützten Versionen finden Sie in der [Dokumentation für DNN-Kalkulatoren](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py&preserve-view=true).
 
 ## <a name="2019-03-25"></a>25.3.2019
