@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 10/12/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970638"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315932"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -42,7 +42,7 @@ In der Azure-REST-API enthalten die Befehle [Subscriptions – Get](/rest/api/re
 > [!NOTE]
 > Zusätzlich zu den Mandanteninformationen im Zusammenhang mit Azure Lighthouse können Mandanten, die von diesen APIs angezeigt werden, auch Partnermandanten für Azure Databricks oder verwaltete Azure-Anwendungen darstellen.
 
-Wir bieten außerdem APIs, die speziell für Azure Lighthouse-Aufgaben ausgelegt sind. Weitere Informationen finden Sie im Abschnitt **Referenz**.
+Wir bieten außerdem APIs, die speziell für Azure Lighthouse-Aufgaben ausgelegt sind. Weitere Informationen finden Sie im Abschnitt **Referenz** .
 
 ## <a name="enhanced-services-and-scenarios"></a>Verbesserte Dienste und Szenarien
 
@@ -69,6 +69,10 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Sichern und Wiederherstellen von Kundendaten [aus lokalen Workloads, Azure VMs, Azure-Dateifreigaben und mehr](../..//backup/backup-overview.md#what-can-i-back-up)
 - Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
 - Verwenden Sie übergreifende [Sicherungsberichte](../../backup/configure-reports.md) für delegierte Abonnements, um historische Trends nachzuverfolgen, den Sicherungsspeicherverbrauch zu analysieren und Sicherungen/Wiederherstellungen zu überwachen.
+
+[Azure Blueprints](../../governance/blueprints/index.yml):
+
+- Verwenden Sie Azure Blueprints zur Orchestrierung der Bereitstellung von Ressourcenvorlagen und anderen Artefakten (erfordert [zusätzlichen Zugriff](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) zur Vorbereitung des Kundenabonnements).
 
 [Azure-Kostenverwaltung und -Abrechnung](../../cost-management-billing/index.yml):
 

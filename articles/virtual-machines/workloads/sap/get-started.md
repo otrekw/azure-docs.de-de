@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/05/2020
+ms.date: 10/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4a21300872e98a35ea27835385b4045921f4657
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b481a1ccf36120a30bf7c923e2d59c5782433567
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969567"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282515"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -73,15 +73,15 @@ In diesem Abschnitt finden Sie Informationen zum Konfigurieren des einmaligen An
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>Dokumentation zur Integration von Azure-Diensten mit SAP-Komponenten
+In diesem Abschnitt finden Sie Dokumente zur PowerBI-Integration in SAP-Datenquellen sowie zur Integration von Azure Data Factory in SAP BW.
 
-- [Verwenden von SAP HANA in Power BI Desktop](/power-bi/desktop-sap-hana)
-- [DirectQuery und SAP HANA](/power-bi/desktop-directquery-sap-hana)
-- [Verwenden des SAP BW-Connectors in Power BI Desktop](/power-bi/desktop-sap-bw-connector) 
-- [SAP HANA- und Business Warehouse-Datenintegration mit Azure Data Factory](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 16.10.2020: Änderung in [Hochverfügbarkeit von IBM DB2 LUW auf Azure-VMs unter SLES mit Pacemaker](./dbms-guide-ha-ibm.md), [Hochverfügbarkeit für SAP NW auf Azure-VMs unter RHEL für SAP-Anwendungen](./high-availability-guide-rhel.md), [Hochverfügbarkeit von IBM DB2 LUW auf Azure-VMs unter RHEL](./high-availability-guide-rhel-ibm-db2-luw.md), [Hochverfügbarkeit für SAP NW auf Azure-VMs unter RHEL: Multi-SID-Leitfaden](./high-availability-guide-rhel-multi-sid.md), [Hochverfügbarkeit für SAP NW auf Azure-VMs unter RHEL mit ANF](./high-availability-guide-rhel-netapp-files.md), [Hochverfügbarkeit für SAP NW auf Azure-VMs unter SLES für SAP-Anwendungen](./high-availability-guide-suse.md), [Hochverfügbarkeit für SAP NNW auf Azure-VMs unter SLES: Multi-SID-Leitfaden](./high-availability-guide-suse-multi-sid.md), [Hochverfügbarkeit für SAP NW auf Azure-VMs unter SLES mit ANF für SAP-Anwendungen](./high-availability-guide-suse-netapp-files.md), [Hochverfügbarkeit für NFS auf Azure-VMs unter SLES](./high-availability-guide-suse-nfs.md), [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SLES](./sap-hana-high-availability.md), [Hochverfügbarkeit für SAP HANA-Hochskalierung mit ANF unter RHEL](./sap-hana-high-availability-netapp-files-red-hat.md), [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter RHEL](./sap-hana-high-availability-rhel.md), [SAP HANA-Herunterskalierung HSR mit Pacemaker auf Azure-VMs unter RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [Vorbereiten der Azure-Infrastruktur auf SAP ASCS/SCS mit WSFC und freigegebenem Datenträger](./sap-high-availability-infrastructure-wsfc-shared-disk.md), [Multi-SID-Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und freigegebenem Azure-Datenträger](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) und [Multi-SID-Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und freigegebenem Datenträger](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) zum Hinzufügen einer Anweisung, dass Floating IP-Adressen in Szenarien mit Lastenausgleich an sekundären IP-Adressen nicht unterstützt werden. 
+- 16.10.2020: Dokumentation zur Steuerung von Speichermomentaufnahmen von HANA (große Instanzen) wurde in [Sichern und Wiederherstellen von SAP HANA in HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore) hinzugefügt.
+- 15.10.2020: Veröffentlichung der Dokumentation zur SAP BusinessObjects BI-Plattform in Azure, [Planungs- und Implementierungsleitfaden für die SAP BusinessObjects BI-Plattform in Azure](businessobjects-deployment-guide.md) und [Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure](businessobjects-deployment-guide-linux.md).
 - 05.10.2020: Veröffentlichung des Konfigurationsleitfadens [SAP HANA-Scale-Out-HSR mit Pacemaker auf Azure-VMs unter RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md)
 - 30.09.2020: Änderung in [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter RHEL](./sap-hana-high-availability-rhel.md), [Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit ANF unter RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) und [Einrichten von Pacemaker unter RHEL in Azure](./high-availability-guide-rhel-pacemaker.md) zum Anpassen der Anweisungen auf RHEL 8.1
 - 29.09.2020: Deutlichere Kennzeichnung der Einschränkungen und Empfehlungen rund um die Nutzung von PPG im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](./sap-proximity-placement-scenarios.md) 

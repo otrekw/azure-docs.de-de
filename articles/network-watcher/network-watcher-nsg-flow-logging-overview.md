@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7d477e50ef4fc47042d57aa973d483a784465d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070580"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127334"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -35,13 +35,13 @@ Datenflussprotokolle sind die Quelle der Wahrheit für alle Netzwerkaktivitäten
 
 ## <a name="common-use-cases"></a>Gängige Anwendungsfälle
 
-**Netzwerküberwachung**: Erkennen Sie unbekannten oder unerwünschten Datenverkehr. Überwachen Sie die Datenverkehrsebenen und die Bandbreitennutzung. Filtern Sie Datenflussprotokolle nach IP-Adresse und Port, um das Anwendungsverhalten zu verstehen. Exportieren Sie Datenfluss Protokolle in Analyse- und Visualisierungstools Ihrer Wahl, um Überwachungsdashboards einzurichten.
+**Netzwerküberwachung** : Erkennen Sie unbekannten oder unerwünschten Datenverkehr. Überwachen Sie die Datenverkehrsebenen und die Bandbreitennutzung. Filtern Sie Datenflussprotokolle nach IP-Adresse und Port, um das Anwendungsverhalten zu verstehen. Exportieren Sie Datenfluss Protokolle in Analyse- und Visualisierungstools Ihrer Wahl, um Überwachungsdashboards einzurichten.
 
 **Nutzungsüberwachung und -optimierung:** Identifizieren Sie die wichtigsten Datenflüsse („Top Talkers“) in Ihrem Netzwerk. Kombinieren Sie Datenflüsse mit GeoIP-Daten, um regionsübergreifenden Datenverkehr zu identifizieren. Verstehen Sie das Wachstum des Datenverkehrs, um Kapazitätsprognosen abgeben zu können. Verwenden Sie Daten, um übermäßig restriktive Datenverkehrsregeln zu entfernen.
 
-**Compliance**: Verwenden Sie Datenflussdaten zum Überprüfen der Netzwerkisolation und -compliance mit Unternehmenszugriffsregeln.
+**Compliance** : Verwenden Sie Datenflussdaten zum Überprüfen der Netzwerkisolation und -compliance mit Unternehmenszugriffsregeln.
 
-**Netzwerkforensik und Sicherheitsanalyse**: Analysieren Sie Netzwerkdatenflüsse von kompromittierten IP-Adressen und Netzwerkschnittstellen. Exportieren Sie Datenflussprotokolle in ein beliebiges SIEM- oder IDS-Tool Ihrer Wahl.
+**Netzwerkforensik und Sicherheitsanalyse** : Analysieren Sie Netzwerkdatenflüsse von kompromittierten IP-Adressen und Netzwerkschnittstellen. Exportieren Sie Datenflussprotokolle in ein beliebiges SIEM- oder IDS-Tool Ihrer Wahl.
 
 ## <a name="how-logging-works"></a>Funktionsweise der Protokollierung
 
@@ -50,7 +50,7 @@ Datenflussprotokolle sind die Quelle der Wahrheit für alle Netzwerkaktivitäten
 - Datenflussprotokolle arbeiten auf [Ebene 4](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) und zeichnen alle IP-Datenflüsse auf, die eine NSG durchlaufen.
 - Protokolle werden über die Azure-Plattform erfasst und wirken sich nicht auf Kundenressourcen oder die Netzwerkleistung aus.
 - Protokolle werden im JSON-Format geschrieben und zeigen eingehende und ausgehende Datenflüsse auf NSG-Regelbasis ab.
-- Jeder Protokolldatensatz enthält die Netzwerkschnittstelle (NIC), auf die sich der Datenfluss bezieht, 5-Tupel-Informationen, die Datenverkehrsentscheidung und (nur Version 2) Durchsatzinformationen. Ausführliche Informationen finden Sie weiter unten unter _Protokollformat_.
+- Jeder Protokolldatensatz enthält die Netzwerkschnittstelle (NIC), auf die sich der Datenfluss bezieht, 5-Tupel-Informationen, die Datenverkehrsentscheidung und (nur Version 2) Durchsatzinformationen. Ausführliche Informationen finden Sie weiter unten unter _Protokollformat_ .
 - Datenflussprotokolle verfügen über eine Aufbewahrungsfunktion, die das automatische Löschen der Protokolle bis zu einem Jahr nach ihrer Erstellung ermöglicht. 
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Datenflussprotokolle sind die Quelle der Wahrheit für alle Netzwerkaktivitäten
 **Wichtige Konzepte**
 
 - Softwaredefinierte Netzwerke werden um virtuelle Netzwerke (VNETs) und Subnetze herum organisiert. Die Sicherheit dieser VNETs und Subnetze kann über eine Netzwerksicherheitsgruppe (NSG) verwaltet werden.
-- Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit _Sicherheitsregeln_, mit denen Netzwerkdatenverkehr in verbundenen Ressourcen zugelassen oder verweigert wird. NSGs können Subnetzen, einzelnen VMs oder einzelnen Netzwerkschnittstellen (NICs) zugeordnet werden, die mit virtuellen Computern (Resource Manager) verbunden sind. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
+- Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit _Sicherheitsregeln_ , mit denen Netzwerkdatenverkehr in verbundenen Ressourcen zugelassen oder verweigert wird. NSGs können Subnetzen, einzelnen VMs oder einzelnen Netzwerkschnittstellen (NICs) zugeordnet werden, die mit virtuellen Computern (Resource Manager) verbunden sind. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
 - Alle Datenverkehrsflüsse in Ihrem Netzwerk werden mithilfe der Regeln in der entsprechenden NSG ausgewertet.
 - Das Ergebnis dieser Auswertungen sind NSG-Datenflussprotokolle. Datenflussprotokolle werden über die Azure-Plattform erfasst und erfordern keine Änderung an den Kundenressourcen.
 - Hinweis: Es gibt zwei Arten von Regeln: beendende und nicht beendende, mit jeweils unterschiedlichem Protokollierungsverhalten.
@@ -73,9 +73,9 @@ Datenflussprotokolle sind die Quelle der Wahrheit für alle Netzwerkaktivitäten
 Datenflussprotokolle enthalten die folgenden Eigenschaften:
 
 * **time:** Zeitpunkt, zu dem das Ereignis ausgelöst wurde
-* **systemId**: System-ID der Netzwerksicherheitsgruppe.
-* **category**: Die Kategorie des Ereignisses. Die Kategorie ist immer **NetworkSecurityGroupFlowEvent**.
-* **resourceid**: Ressourcen-ID der Netzwerksicherheitsgruppe
+* **systemId** : System-ID der Netzwerksicherheitsgruppe.
+* **category** : Die Kategorie des Ereignisses. Die Kategorie ist immer **NetworkSecurityGroupFlowEvent** .
+* **resourceid** : Ressourcen-ID der Netzwerksicherheitsgruppe
 * **operationName:** immer NetworkSecurityGroupFlowEvents
 * **properties:** Sammlung der Eigenschaften des Datenflusses
     * **Version:** Versionsnummer des Ereignisschemas für das Datenflussprotokoll
@@ -92,7 +92,7 @@ Datenflussprotokolle enthalten die folgenden Eigenschaften:
                     * **Protokoll:** Protokoll des Datenflusses. Gültige Werte sind **T** für TCP und **U** für UDP.
                     * **Datenfluss:** Richtung des Datenflusses. Gültige Werte sind **I** für eingehende (inbound) und **O** für ausgehende (outbound) Nachrichten.
                     * **Entscheidung zum Datenverkehr:** Gibt an, ob Datenverkehr zugelassen oder verweigert wurde. Gültige Werte sind **A** für zugelassen (allowed) und **D** für verweigert (denied).
-                    * **Flowstatus (nur Version 2):** Erfasst den Flowstatus. Mögliche Statusangaben: **B**: („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt.
+                    * **Flowstatus (nur Version 2):** Erfasst den Flowstatus. Mögliche Statusangaben: **B** : („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C** : („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E** : („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt.
                     * **Pakete – Quelle zu Ziel – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden
                     * **Gesendete Bytes – Quelle zu Ziel – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
                     * **Pakete – Ziel zu Quelle – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden
@@ -319,7 +319,7 @@ Verwenden Sie den entsprechenden Link unten, um Anleitungen zum Aktivieren von D
 
 **Azure portal**
 
-Navigieren Sie im Azure-Portal zum Abschnitt „NSG-Datenflussprotokolle“ in Network Watcher. Klicken Sie dann auf den Namen der NSG. Dadurch wird der Bereich "Einstellungen" für das Datenflussprotokoll geöffnet. Ändern Sie die gewünschten Parameter, und klicken Sie auf **Speichern**, um die Änderungen bereitzustellen.
+Navigieren Sie im Azure-Portal zum Abschnitt „NSG-Datenflussprotokolle“ in Network Watcher. Klicken Sie dann auf den Namen der NSG. Dadurch wird der Bereich "Einstellungen" für das Datenflussprotokoll geöffnet. Ändern Sie die gewünschten Parameter, und klicken Sie auf **Speichern** , um die Änderungen bereitzustellen.
 
 **PS/CLI/REST/ARM**
 
@@ -355,25 +355,29 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - Standort: Das verwendete Speicherkonto muss sich in derselben Region wie die Netzwerksicherheitsgruppe befinden.
 - Rotation von selbstverwalteten Schlüsseln: Wenn Sie die Zugriffsschlüssel für Ihr Speicherkonto ändern oder rotieren, funktionieren die NSG-Datenflussprotokolle nicht mehr. Um dieses Problem zu beheben, müssen Sie die NSG-Datenflussprotokolle deaktivieren und anschließend wieder aktivieren.
 
-**Kosten der Datenflussprotokollierung**: Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Die Verwendung der Aufbewahrungsrichtlinienfunktion mit NSG-Datenflussprotokollierung bedeutet, dass separate Speicherkosten für längere Zeiträume anfallen. Wenn Sie die Aufbewahrungsrichtlinienfunktion nicht benötigen, empfehlen wir, dass Sie diesen Wert auf 0 festlegen. Weitere Informationen und zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+**Kosten der Datenflussprotokollierung** : Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Die Verwendung der Aufbewahrungsrichtlinienfunktion mit NSG-Datenflussprotokollierung bedeutet, dass separate Speicherkosten für längere Zeiträume anfallen. Wenn Sie die Aufbewahrungsrichtlinienfunktion nicht benötigen, empfehlen wir, dass Sie diesen Wert auf 0 festlegen. Weitere Informationen und zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 **Probleme mit benutzerdefinierten TCP-Eingangsregeln:** [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) werden als eine [zustandsbehaftete Firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) implementiert. Aufgrund der aktuellen Plattformeinschränkungen werden benutzerdefinierte Regeln, die sich auf eingehende TCP-Flows auswirken, jedoch in einer zustandslosen Weise implementiert. Aus diesem Grund führen die von den benutzerdefinierten Eingangsregeln betroffenen Flows zu keiner Beendigung. Darüber hinaus wird die Byte- und Paketanzahl für diese Flows nicht aufgezeichnet. Entsprechend kann die Anzahl der Bytes und Pakete, die in den NSG-Flussprotokollen (und der Datenverkehrsanalyse) gemeldet wird, von den tatsächlichen Werten abweichen. Ein Flag, das diese Probleme behebt und abonniert werden kann, soll spätestens im Dezember 2020 zur Verfügung stehen. In der Zwischenzeit können Kunden mit schwerwiegenden Problemen, die infolge dieses Verhaltens auftreten, die Aktivierung des Flags über den Support anfordern. Stellen Sie dazu unter „Network Watcher“ > „NSG-Flowprotokolle“ eine Supportanfrage.  
 
-**Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen**: Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
+**Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen** : Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
+
+**Inkompatible Dienste** : Aufgrund der derzeitigen Plattformeinschränkungen wird eine kleine Anzahl von Azure-Diensten nicht von NSG-Datenflussprotokollen unterstützt. Die aktuelle Liste der inkompatiblen Dienste lautet:
+- [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-**Aktivieren für kritische VNETs/Subnetze**: Datenflussprotokolle sollten für alle kritischen VNETs/Subnetze in Ihrem Abonnement als bewährte Methode für Überwachbarkeit und Sicherheit aktiviert werden. 
+**Aktivieren für kritische VNETs/Subnetze** : Datenflussprotokolle sollten für alle kritischen VNETs/Subnetze in Ihrem Abonnement als bewährte Methode für Überwachbarkeit und Sicherheit aktiviert werden. 
 
-**Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind**: Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, empfehlen wir, die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewendeten Netzwerksicherheitsgruppen zu aktivieren, um sicherzustellen, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Auswertung von Datenverkehr](../virtual-network/network-security-group-how-it-works.md).
+**Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind** : Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, empfehlen wir, die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewendeten Netzwerksicherheitsgruppen zu aktivieren, um sicherzustellen, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Auswertung von Datenverkehr](../virtual-network/network-security-group-how-it-works.md).
 
-**Speicherbereitstellung**: Speicher sollte in Abstimmung mit dem erwarteten Datenflussprotokoll-Volumen bereitgestellt werden.
+**Speicherbereitstellung** : Speicher sollte in Abstimmung mit dem erwarteten Datenflussprotokoll-Volumen bereitgestellt werden.
 
 ## <a name="troubleshooting-common-issues"></a>Behandeln allgemeiner Probleme
 
 **Ich konnte die NSG-Flussprotokolle nicht aktivieren.**
 
-- **Microsoft.Insights**-Ressourcenanbieter ist nicht registriert
+- **Microsoft.Insights** -Ressourcenanbieter ist nicht registriert
 
 Wenn Sie den Fehler _AuthorizationFailed_ oder _GatewayAuthenticationFailed_ erhalten, haben Sie unter Umständen den Microsoft Insights-Ressourcenanbieter für Ihr Abonnement nicht aktiviert. [Befolgen Sie die Anleitung](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider), um den Microsoft Insights-Anbieter zu aktivieren.
 

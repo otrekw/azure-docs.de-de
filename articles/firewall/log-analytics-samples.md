@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d4ed76e849385c4edecb7bd97d58087c8e5b4b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023872"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132787"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Monitor-Protokolle für Azure Firewall
 
@@ -27,10 +27,10 @@ Hier wird beschrieben, wie Sie eine Beispielvisualisierung für Azure Monitor-Pr
 Führen Sie die folgenden Schritte aus, um die Ansicht zu Ihrem Log Analytics-Arbeitsbereich hinzuzufügen:
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich im Azure-Portal.
-2. Öffnen Sie **Ansicht-Designer** unter **Allgemein**.
-3. Klicken Sie auf **Importieren**.
-4. Navigieren Sie zu der zuvor heruntergeladenen Datei **AzureFirewall.omsview**, und wählen Sie sie aus.
-5. Klicken Sie auf **Speichern**.
+2. Öffnen Sie **Ansicht-Designer** unter **Allgemein** .
+3. Klicken Sie auf **Importieren** .
+4. Navigieren Sie zu der zuvor heruntergeladenen Datei **AzureFirewall.omsview** , und wählen Sie sie aus.
+5. Klicken Sie auf **Speichern** .
 
 Die Ansicht der Anwendungsregelprotokolldaten sieht wie folgt aus:
 
@@ -48,10 +48,10 @@ Mit der nachfolgenden Abfrage werden die Anwendungsregelprotokolldaten analysier
 
 ```Kusto
 AzureDiagnostics
-| where Category == "AzureFirewallApplicationRule"
+| where Category == "AzureFirewallApplicationRule"
 //using :int makes it easier to pars but later we'll convert to string as we're not interested to do mathematical functions on these fields
 //this first parse statement is valid for all entries as they all start with this format
-| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " " TempDetails
+| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " " TempDetails
 //case 1: for records that end with: "was denied. Reason: SNI TLS extension was missing."
 | parse TempDetails with "was " Action1 ". Reason: " Rule1
 //case 2: for records that end with
@@ -84,8 +84,8 @@ Die gleiche Abfrage in einem komprimierteren Format:
 
 ```Kusto
 AzureDiagnostics
-| where Category == "AzureFirewallApplicationRule"
-| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " " TempDetails
+| where Category == "AzureFirewallApplicationRule"
+| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " " TempDetails
 | parse TempDetails with "was " Action1 ". Reason: " Rule1
 | parse TempDetails with "to " FQDN ":" TargetPortInt:int ". Action: " Action2 "." *
 | parse TempDetails with * ". Rule Collection: " RuleCollection2a ". Rule:" Rule2a
@@ -104,13 +104,13 @@ Mit der folgenden Abfrage werden die Netzwerkregelprotokolldaten analysiert. In 
 
 ```Kusto
 AzureDiagnostics
-| where Category == "AzureFirewallNetworkRule"
+| where Category == "AzureFirewallNetworkRule"
 //using :int makes it easier to pars but later we'll convert to string as we're not interested to do mathematical functions on these fields
 //case 1: for records that look like this:
 //TCP request from 10.0.2.4:51990 to 13.69.65.17:443. Action: Deny//Allow
 //UDP request from 10.0.3.4:123 to 51.141.32.51:123. Action: Deny/Allow
 //TCP request from 193.238.46.72:50522 to 40.119.154.83:3389 was DNAT'ed to 10.0.2.4:3389
-| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " to " TargetIP ":" TargetPortInt:int *
+| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " to " TargetIP ":" TargetPortInt:int *
 //case 1a: for regular network rules
 //TCP request from 10.0.2.4:51990 to 13.69.65.17:443. Action: Deny//Allow
 //UDP request from 10.0.3.4:123 to 51.141.32.51:123. Action: Deny/Allow
@@ -120,7 +120,7 @@ AzureDiagnostics
 | parse msg_s with * " was " Action1b " to " NatDestination
 //case 2: for ICMP records
 //ICMP request from 10.0.2.4 to 10.0.3.4. Action: Allow
-| parse msg_s with Protocol2 " request from " SourceIP2 " to " TargetIP2 ". Action: " Action2
+| parse msg_s with Protocol2 " request from " SourceIP2 " to " TargetIP2 ". Action: " Action2
 | extend
 SourcePort = tostring(SourcePortInt),
 TargetPort = tostring(TargetPortInt)
@@ -141,11 +141,11 @@ Die gleiche Abfrage in einem komprimierteren Format:
 
 ```Kusto
 AzureDiagnostics
-| where Category == "AzureFirewallNetworkRule"
-| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " to " TargetIP ":" TargetPortInt:int *
+| where Category == "AzureFirewallNetworkRule"
+| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " to " TargetIP ":" TargetPortInt:int *
 | parse msg_s with * ". Action: " Action1a
 | parse msg_s with * " was " Action1b " to " NatDestination
-| parse msg_s with Protocol2 " request from " SourceIP2 " to " TargetIP2 ". Action: " Action2
+| parse msg_s with Protocol2 " request from " SourceIP2 " to " TargetIP2 ". Action: " Action2
 | extend SourcePort = tostring(SourcePortInt),TargetPort = tostring(TargetPortInt)
 | extend Action = case(Action1a == "", case(Action1b == "",Action2,Action1b), Action1a),Protocol = case(Protocol == "", Protocol2, Protocol),SourceIP = case(SourceIP == "", SourceIP2, SourceIP),TargetIP = case(TargetIP == "", TargetIP2, TargetIP),SourcePort = case(SourcePort == "", "N/A", SourcePort),TargetPort = case(TargetPort == "", "N/A", TargetPort),NatDestination = case(NatDestination == "", "N/A", NatDestination)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 In den folgenden Protokollbeispielen werden die in einem Protokolleintrag enthaltenen Daten angezeigt.
 
-![Protokolleintrag 1](media/log-analytics-samples/log1.png)
+:::image type="content" source="media/log-analytics-samples/log1.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, eine Portnummer, eine Aktion, eine Regelsammlung und eine Regel." border="false":::
 
-![Protokolleintrag 2 ](media/log-analytics-samples/log2.png)
+:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, eine Portnummer, eine Aktion, eine Regelsammlung und eine Regel." border="false":::
 
-![Protokolleintrag 3](media/log-analytics-samples/log3.png)
+:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, eine Portnummer, eine Aktion, eine Regelsammlung und eine Regel." border="false":::
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu Azure Firewall-Überwachung und -Diagnose finden Sie unter [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](tutorial-diagnostics.md).

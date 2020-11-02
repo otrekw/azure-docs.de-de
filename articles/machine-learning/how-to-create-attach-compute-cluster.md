@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d33af7a9c2d48ded84bd675364469dab09a79d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710996"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207120"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -52,13 +52,15 @@ Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](h
 
 * Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](how-to-manage-quotas.md).
 
+* Azure ermöglicht Ihnen das Einrichten von _Sperren_ für Ressourcen, damit diese nicht gelöscht werden können oder schreibgeschützt sind. __Wenden Sie keine Ressourcensperren auf die Ressourcengruppe an, die Ihren Arbeitsbereich enthält__ . Wenn Sie eine Sperre auf die Ressourcengruppe anwenden, die Ihren Arbeitsbereich enthält, werden Skalierungsvorgänge für Azure ML-Computecluster unterbunden. Weitere Informationen zum Sperren von Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
+
 > [!TIP]
 > Cluster können in der Regel auf bis zu 100 Knoten skaliert werden, solange Ihr Kontingent für die Anzahl der erforderlichen Kerne ausreicht. Standardmäßig werden Cluster mit aktivierter Kommunikation zwischen den Knoten des Clusters eingerichtet, um beispielsweise MPI-Aufträge zu unterstützen. Sie können Ihre Cluster jedoch auf 1.000 Knoten skalieren, indem Sie einfach [ein Supportticket einreichen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) und die Aufnahme Ihrer Anwendung, des Arbeitsbereichs oder eines bestimmten Clusters in die Zulassungsliste anfordern, um die Kommunikation zwischen den Knoten zu deaktivieren. 
 
 
 ## <a name="create"></a>Erstellen
 
-**Geschätzter Zeitaufwand**: Ca. fünf Minuten.
+**Geschätzter Zeitaufwand** : Ca. fünf Minuten.
 
 Azure Machine Learning Compute kann in mehreren Ausführungen wiederverwendet werden. Compute kann für andere Benutzer im Arbeitsbereich freigegeben werden und wird zwischen den Ausführungen beibehalten. Dabei werden Knoten basierend auf der Anzahl der übermittelten Ausführungen und der Einstellung „max_nodes“ für Ihren Cluster automatisch hoch- oder herunterskaliert. Die Einstellung „min_nodes“ steuert die Mindestanzahl verfügbarer Knoten.
 
@@ -72,8 +74,8 @@ Die Computeressource skaliert automatisch auf Null herunter, wenn sie nicht ben�
 
 Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstellen, geben Sie die Eigenschaften **vm_size** und **max_nodes** an. Azure Machine Learning verwendet dann für die restlichen Eigenschaften intelligente Standardwerte. 
     
-* **vm_size**: Die VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
-* **max_nodes**: Die maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch hochskaliert wird.
+* **vm_size** : Die VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
+* **max_nodes** : Die maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch hochskaliert wird.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
@@ -81,7 +83,7 @@ Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstel
 Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erweiterte Eigenschaften konfigurieren. Mithilfe der Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.  Weitere Informationen finden Sie in der [AmlCompute-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true).
 
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 
 ```azurecli-interactive
@@ -171,7 +173,7 @@ Wählen Sie in Studio beim Erstellen einer VM **Niedrige Priorität** aus.
                                     identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
         ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 * Erstellen eines neuen verwalteten Computeclusters mit einer verwalteten Identität
 

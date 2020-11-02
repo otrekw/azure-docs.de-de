@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943965"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220889"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Szenario: Apache Hive-Protokolle füllen den gesamten Speicherplatz auf den Hauptknoten in Azure HDInsight
 
@@ -24,6 +24,7 @@ In einem Apache Hive/LLAP-Cluster nehmen unerwünschte Protokolle den gesamten S
 
 1. Beim SSH-Zugriff tritt ein Fehler auf, weil auf dem Hauptknoten kein Speicherplatz mehr vorhanden ist.
 2. Ambari gibt die Fehlermeldung *HTTP-FEHLER 503: Dienst nicht verfügbar* aus.
+3. Fehler beim Neustart von HiveServer2 Interactive.
 
 Die `ambari-agent`-Protokolle zeigen bei Auftreten des Problems Folgendes an.
 ```
@@ -35,7 +36,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Ursache
 
-In erweiterten Hive-log4j-Konfigurationen wird der Parameter *log4j.appender.RFA.MaxBackupIndex* ausgelassen. Dies bewirkt ein endloses Generieren von Protokolldateien.
+In erweiterten hive-log4j-Konfigurationen wird der aktuelle Standardlöschzeitplan für Dateien, die älter als 30 Tage sind, basierend auf dem Datum der letzten Änderung festgelegt.
 
 ## <a name="resolution"></a>Lösung
 
@@ -43,30 +44,28 @@ In erweiterten Hive-log4j-Konfigurationen wird der Parameter *log4j.appender.RFA
 
 2. Wechseln Sie in den erweiterten Einstellungen zum Abschnitt `Advanced hive-log4j`.
 
-3. Legen Sie den Parameter `log4j.appender.RFA` als „RollingFileAppender“ fest. 
+3. Legen Sie den Parameter `appender.RFA.strategy.action.condition.age` auf ein Alter Ihrer Wahl fest. Beispiel für 14 Tage: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Legen Sie `log4j.appender.RFA.MaxFileSize` und `log4j.appender.RFA.MaxBackupIndex` wie folgt fest.
+4. Wenn Sie keine entsprechenden Einstellungen sehen, fügen Sie die folgenden Einstellungen an.
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. Legen Sie `hive.root.logger` wie folgt auf `INFO,RFA` fest. Die Standardeinstellung ist „DEBUG“, wodurch Protokolle sehr groß werden.
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. Speichern Sie die Konfigurationen, und starten Sie die erforderlichen Komponenten neu.
 
@@ -78,4 +77,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support** . Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

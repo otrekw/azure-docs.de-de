@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460032"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221421"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -50,7 +50,7 @@ So erstellen Sie ein neues Notebook
 1. Benennen Sie die Datei. 
 1. Für Jupyter Notebook-Dateien wählen Sie **Notebook** als Dateityp aus.
 1. Wählen Sie ein Dateiverzeichnis aus.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen** .
 
 Sie können auch Textdateien erstellen.  Wählen Sie **Text** als Dateityp aus, und fügen Sie dem Namen die Erweiterung hinzu (z. B. „myfile.py“ oder „myfile.txt“)  
 
@@ -109,6 +109,16 @@ Wenn eine Computeinstanz ausgeführt wird, können Sie auch die Codevervollstän
 
 Sie können Jupyter oder JupyterLab auch über die Notebook-Symbolleiste starten.  Azure Machine Learning stellt keine Updates und Fehlerbehebungen von Jupyter oder JupyterLab zur Verfügung, da es sich um Open Source-Produkte außerhalb der Zuständigkeit des Microsoft-Supports handelt.
 
+### <a name="focus-mode"></a>Fokusmodus
+
+Verwenden Sie den Fokusmodus, um Ihre aktuelle Ansicht zu erweitern, sodass Sie sich auf Ihre aktiven Registerkarten konzentrieren können. Der Fokusmodus blendet den Datei-Explorer für Notebooks aus.
+
+1. Wählen Sie auf der Symbolleiste des Terminalfensters **Fokusmodus** aus, um den Fokusmodus zu aktivieren. Abhängig von Ihrer Fensterbreite befindet sich diese möglicherweise unter dem Menüpunkt **...** auf Ihrer Symbolleiste.
+1. Kehren Sie im Fokusmodus zur Standardansicht zurück, indem Sie **Standardansicht** auswählen.
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Erstellen einer neuen Datei":::
+
+
 ### <a name="use-intellisense"></a>Verwenden von IntelliSense
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) ist eine hilfreiche Anwendung zur Codevervollständigung mit Features wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wort vervollständigen. Diese Features helfen Ihnen, mehr über den von Ihnen verwendeten Code zu erfahren, die von Ihnen eingegebenen Parameter zu verfolgen und Aufrufe von Eigenschaften und Methoden mit nur wenigen Tastatureingaben hinzuzufügen.  
@@ -139,7 +149,7 @@ Wählen Sie in der Notebook-Symbolleiste das Menü und dann **Datei&gt;Save and 
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Erstellen einer neuen Datei":::
 
-Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Das automatische Speichern aktualisiert nur die ursprüngliche  *IPYNB* -Datei, nicht die Prüfpunktdatei.
+Jedes Notebook wird alle 30 Sekunden automatisch gespeichert.  Das automatische Speichern aktualisiert nur die ursprüngliche  *IPYNB* -Datei, nicht die Prüfpunktdatei.
  
 Wählen Sie **Checkpoints** (Prüfpunkte) im Notebook-Menü aus, um einen benannten Prüfpunkt zu erstellen und das Notebook auf einen gespeicherten Prüfpunkt zurückzusetzen.
 
@@ -157,9 +167,9 @@ Wählen Sie **Checkpoints** (Prüfpunkte) im Notebook-Menü aus, um einen benann
 
 ## <a name="delete-a-notebook"></a>Löschen eines Notebooks
 
-Sie können die **Beispiel**-Notebooks *nicht* löschen.  Diese Notebooks sind Teil des Studios und werden jedes Mal aktualisiert, wenn ein neues SDK veröffentlicht wird.  
+Sie können die **Beispiel** -Notebooks *nicht* löschen.  Diese Notebooks sind Teil des Studios und werden jedes Mal aktualisiert, wenn ein neues SDK veröffentlicht wird.  
 
-Sie *können* **Benutzerdateien**-Notebooks auf eine der folgenden Arten löschen:
+Sie *können* **Benutzerdateien** -Notebooks auf eine der folgenden Arten löschen:
 
 * Wählen Sie im Studio die **...** (Auslassungspunkte) am Ende eines Ordners oder einer Datei aus.  Stellen Sie sicher, dass Sie einen unterstützten Browser (Microsoft Edge, Chrome oder Firefox) verwenden.
 * Wählen Sie auf einer beliebigen Notebook-Symbolleiste [**Terminal öffnen**](#terminal) aus, um auf das Terminalfenster für die Computeinstanz zuzugreifen.
@@ -171,7 +181,7 @@ Um ein Experiment von einem Notebook aus durchzuführen, stellen Sie zunächst e
 
 1. Wählen Sie **+** auf der Notebook-Symbolleiste aus. 
 2. Benennen Sie die Computeinstanz, und wählen Sie eine **VM-Größe** aus. 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Erstellen** .
 4. Die Computeinstanz wird automatisch mit dem Notebook verbunden, und Sie können jetzt Ihre Zellen ausführen.
 
 Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  Ihre **Benutzerdateien** werden getrennt vom virtuellen Computer gespeichert und von allen Computeinstanzen im Arbeitsbereich gemeinsam genutzt.
@@ -223,11 +233,14 @@ Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Com
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
+> [!NOTE]
+> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda** , um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda** , die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
+
 Jeder der [verfügbaren Jupyter-Kernel](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kann installiert werden.
 
 ### <a name="status-indicators"></a>Statusanzeigen
 
-Ein Indikator neben der **Compute**-Dropdownliste zeigt seinen Status an.  Der Status wird auch in der Dropdownliste selbst angezeigt.  
+Ein Indikator neben der **Compute** -Dropdownliste zeigt seinen Status an.  Der Status wird auch in der Dropdownliste selbst angezeigt.  
 
 |Color |Computestatus |
 |---------|---------| 
@@ -237,7 +250,7 @@ Ein Indikator neben der **Compute**-Dropdownliste zeigt seinen Status an.  Der S
 |  Hellblau |Erstellen, Starten, Neustarten und Einrichten von Compute |
 |  Grau |Compute wird gelöscht, beendet |
 
-Ein Indikator neben der **Kernel**-Dropdownliste zeigt seinen Status an.
+Ein Indikator neben der **Kernel** -Dropdownliste zeigt seinen Status an.
 
 |Color |Kernelstatus |
 |---------|---------|
@@ -246,7 +259,7 @@ Ein Indikator neben der **Kernel**-Dropdownliste zeigt seinen Status an.
 
 ## <a name="find-compute-details"></a>Suchen von Computedetails 
 
-Hier finden Sie Details zu ihren Computeinstanzen auf der **Compute**-Seite in [Studio](https://ml.azure.com).
+Hier finden Sie Details zu ihren Computeinstanzen auf der **Compute** -Seite in [Studio](https://ml.azure.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 0611297164f3fe0afb1e18afe3abbbac00fd9c9a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 931794dba3266301dd9bb873ff68cacfcb3cac07
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016364"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106364"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -105,7 +105,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **du datamena** |Unterstützt |Unterstützt | Dubai2 |
 | **eir** |Unterstützt |Unterstützt |Dublin|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Unterstützt |Unterstützt |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong (SAR), London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Mailand, New York, Osaka, Paris, São Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Berlin, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong (SAR), London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Mailand, New York, Osaka, Paris, São Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC |
 | **Etisalat (VAE)** |Unterstützt |Unterstützt |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **FarEasTone** |Unterstützt |Unterstützt |Taipeh|
@@ -114,7 +114,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **GTT** |Unterstützt |Unterstützt |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Unterstützt| Unterstützt | Chennai, Mumbai |
 | **Intelsat** | Unterstützt | Unterstützt | Washington DC2 |
-| **[InterCloud](https://www.intercloud.com/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Hongkong, London, New York, Paris, Silicon Valley, Singapur, Washington DC, Zürich |
+| **[InterCloud](https://www.intercloud.com/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Frankfurt, Hongkong, London, New York, Paris, Silicon Valley, Singapur, Washington DC, Zürich |
 | **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |Unterstützt |Unterstützt |Chicago, Dallas, Silicon Valley, Washington DC |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **[Internet Solutions – Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg, London |

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309199"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173955"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)
 
@@ -227,7 +227,11 @@ Weitere Informationen finden Sie in der NGINX-Dokumentation unter [NGINX SSL Ter
 
 
 ## <a name="example-api-request"></a>Beispiel für API-Anforderung
-Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit.
+Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit.  Wir haben auch ein Visualisierungstool im Container bereitgestellt, auf das Sie zugreifen können, indem Sie z. B. die **Demo** an den Endpunkt des Containers anfügen:
+
+```bash
+http://<serverURL>:5000/demo
+```
 
 Verwenden Sie die unten aufgeführte cURL-Beispielanforderung, um eine Abfrage an den bereitgestellten Container zu senden, und ersetzen Sie die Variable `serverURL` durch den passenden Wert.
 
@@ -395,7 +399,7 @@ Bei Verwendung der Negationserkennung kann sich in manchen Fällen ein einzelner
 
 ### <a name="relation-extraction-output"></a>Ausgabe der Beziehungsextraktion
 
-Die Ausgabe der Beziehungsextraktion enthält URI-Verweise auf die *Quelle* der Beziehung und deren *Ziel*. Entitäten mit der Beziehungsrolle `ENTITY` werden dem `target`-Feld zugewiesen. Entitäten mit der Beziehungsrolle `ATTRIBUTE` werden dem `source`-Feld zugewiesen. Abkürzungsbeziehungen enthalten bidirektionale `source`- und `target`-Felder, und `bidirectional` wird auf `true` festgelegt. 
+Die Ausgabe der Beziehungsextraktion enthält URI-Verweise auf die *Quelle* der Beziehung und deren *Ziel* . Entitäten mit der Beziehungsrolle `ENTITY` werden dem `target`-Feld zugewiesen. Entitäten mit der Beziehungsrolle `ATTRIBUTE` werden dem `source`-Feld zugewiesen. Abkürzungsbeziehungen enthalten bidirektionale `source`- und `target`-Felder, und `bidirectional` wird auf `true` festgelegt. 
 
 ```json
 "relations": [

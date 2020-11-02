@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471855"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123526"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Häufig gestellte Fragen zu Azure Network Watcher
 Dier Dienst [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) stellt eine Sammlung von Tools für die Überwachung, Diagnose, Metrikanzeige sowie zur Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereit. In diesem Artikel werden häufig gestellte Fragen zum Dienst beantwortet.
@@ -64,7 +64,7 @@ Der Network Watcher-Dienst wird [automatisch](https://azure.microsoft.com/update
 Die übergeordnete Network Watcher-Ressource wird mit einer eindeutigen Instanz in den einzelnen Regionen bereitgestellt. Namensformat: NetworkWatcher_RegionName. Beispiel: „NetworkWatcher_centralus“ ist die Network Watcher-Ressource für die Region „USA, Mitte“.
 
 ### <a name="what-is-the-networkwatcherrg"></a>Was ist NetworkWatcherRG?
-Network Watcher-Ressourcen befinden sich in der ausgeblendeten **NetworkWatcherRG**-Ressourcengruppe, die automatisch erstellt wird. Die „NSG-Flussprotokolle“-Ressource ist z. B. eine untergeordnete Ressource von Network Watcher und wird in der NetworkWatcherRG aktiviert.
+Network Watcher-Ressourcen befinden sich in der ausgeblendeten **NetworkWatcherRG** -Ressourcengruppe, die automatisch erstellt wird. Die „NSG-Flussprotokolle“-Ressource ist z. B. eine untergeordnete Ressource von Network Watcher und wird in der NetworkWatcherRG aktiviert.
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Warum muss ich die Network Watcher-Erweiterung installieren? 
 Die Network Watcher-Erweiterung ist für alle Features erforderlich, die Datenverkehr von einer VM generieren oder abfangen müssen. 
@@ -81,6 +81,14 @@ Network Watcher muss lediglich einmal für ein Abonnement aktiviert werden, dami
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Wie kann ich die Network Watcher-Ressource verwalten? 
 Die Network Watcher-Ressource stellt den Back-End-Dienst für Network Watcher dar und wird vollständig von Azure verwaltet. Kunden müssen sie nicht verwalten. Vorgänge wie Verschieben werden für die Ressource nicht unterstützt. Jedoch [kann die Ressource gelöscht werden](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
 
+## <a name="service-availability-and-redundancy"></a>Dienstverfügbarkeit und Redundanz 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Ist die Dienstzone von Network Watcher resilient? 
+Ja. Der Network Watcher-Dienst ist standardmäßig zonenresilient. 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Wie konfiguriere ich den Network Watcher-Dienst so, dass er zonenresilient ist? 
+Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen. Zonenresilienz für Network Watcher-Ressourcen ist standardmäßig verfügbar und wird vom Dienst selbst verwaltet. 
+
 ## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Welche Aufgabe haben NSG-Flussprotokolle?
@@ -91,8 +99,8 @@ Azure-Netzwerkressourcen können mithilfe von [Netzwerksicherheitsgruppen (NSGs)
 Wenn Sie ein Speicherkonto hinter einer Firewall verwenden möchten, müssen Sie eine Ausnahme für vertrauenswürdige Microsoft-Dienste für den Zugriff auf Ihr Speicherkonto bereitstellen:
 
 * Navigieren Sie zum Speicherkonto, indem Sie im Portal oder auf der Seite [Speicherkonten](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) den Namen des Speicherkontos in das Feld für die globale Suche eingeben.
-* Wählen Sie unter **EINSTELLUNGEN** die Option **Firewalls und virtuelle Netzwerke**.
-* Wählen Sie unter „Zugriff erlauben von“ die Option **Ausgewählte Netzwerke** aus. Aktivieren Sie anschließend unter **Ausnahmen** das Kontrollkästchen neben **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. 
+* Wählen Sie unter **EINSTELLUNGEN** die Option **Firewalls und virtuelle Netzwerke** .
+* Wählen Sie unter „Zugriff erlauben von“ die Option **Ausgewählte Netzwerke** aus. Aktivieren Sie anschließend unter **Ausnahmen** das Kontrollkästchen neben **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** . 
 * Falls die Option bereits ausgewählt ist, ist keine Änderung erforderlich.  
 * Suchen Sie auf der Seite [NSG-Flussprotokolle: Übersicht](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) nach ihrer Ziel-NSG, und aktivieren Sie NSG-Flussprotokolle mit dem oben ausgewählten Speicherkonto.
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3441d7c7f42c58928bb97c945e7b1e7673f7afa
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876837"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328878"
 ---
 # <a name="configure-device-redirections"></a>Konfigurieren von Geräteumleitungen
 
@@ -50,7 +50,10 @@ Legen Sie die folgende RDP-Eigenschaft fest, um die Kameraumleitung zu konfiguri
 - `camerastoredirect:s:*` leitet alle Kameras um.
 - Mit `camerastoredirect:s:` deaktivieren Sie die Kameraumleitung.
 
-Sie können auch bestimmte Kameras mithilfe einer durch Semikolons getrennten Liste von KSCATEGORY_VIDEO_CAMERA-Schnittstellen umleiten, z. B. `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi`.
+>[!NOTE]
+>Selbst wenn die `camerastoredirect:s:`-Eigenschaft deaktiviert ist, können lokale Kameras über die `devicestoredirect:s:`-Eigenschaft umgeleitet werden. Um die Kameraumleitung vollständig zu deaktivieren, legen Sie `camerastoredirect:s:` fest und stellen Sie entweder `devicestoredirect:s:` ein, oder definieren Sie eine Teilmenge von Plug & Play-Geräten, die keine Kamera enthält.
+
+Sie können auch bestimmte Kameras mithilfe einer durch Semikolons getrennten Liste von KSCATEGORY_VIDEO_CAMERA-Schnittstellen umleiten, z. B. `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi`. 
 
 ### <a name="clipboard-redirection"></a>Umleitung der Zwischenablage
 
@@ -75,10 +78,10 @@ Legen Sie zunächst die folgende RDP-Eigenschaft fest, um die Umleitung von USB-
 
 Legen Sie dann die folgende Gruppenrichtlinie auf dem lokalen Gerät des Benutzers fest:
 
-- Wechseln Sie zu **Computerkonfiguration** > **Richtlinien**> **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopverbindungs-Client** > **RemoteFX USB-Geräteumleitung**.
+- Wechseln Sie zu **Computerkonfiguration** > **Richtlinien**> **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopverbindungs-Client** > **RemoteFX USB-Geräteumleitung** .
 - Wählen Sie **RDP-Umleitung für andere unterstützte RemoteFX USB-Geräte auf diesem Computer zulassen** aus.
-- Wählen Sie die Option **Aktiviert** aus, und aktivieren Sie anschließend unter „Zugriffsrechte für RemoteFX USB-Umleitung“ das Kontrollkästchen **Administratoren und Benutzer**.
-- Klicken Sie auf **OK**.
+- Wählen Sie die Option **Aktiviert** aus, und aktivieren Sie anschließend unter „Zugriffsrechte für RemoteFX USB-Umleitung“ das Kontrollkästchen **Administratoren und Benutzer** .
+- Klicken Sie auf **OK** .
 
 ### <a name="plug-and-play-device-redirection"></a>Umleitung von Plug & Play-Geräten
 
