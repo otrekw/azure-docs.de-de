@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946126"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736005"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (Node.js)
 
@@ -51,7 +51,7 @@ In diesem Schnellstart verwenden Sie ein Beispielthermostat, das in Node.js als 
 
 1. Öffnen Sie ein Terminalfenster, und navigieren Sie zu dem lokalen Ordner mit dem Microsoft Azure IoT SDK for Node.js, das Sie auf GitHub geklont haben.
 
-1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp*. Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
+1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp* . Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
 
     ```cmd/sh
     npm install
@@ -69,14 +69,14 @@ In diesem Schnellstart verwenden Sie ein Beispielthermostat, das in Node.js als 
 
 In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
 
-* **IOTHUB_CONNECTION_STRING**: die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
+* **IOTHUB_CONNECTION_STRING** : die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"`.
 
 In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js für die Interaktion mit dem gerade eingerichteten Beispielgerät.
 
-1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal**.
+1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal** .
 
-1. Navigieren Sie im geklonten Node SDK-Repository zum Ordner */azure-iot-sdk-node/service/samples/javascript*. Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
+1. Navigieren Sie im geklonten Node SDK-Repository zum Ordner */azure-iot-sdk-node/service/samples/javascript* . Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
 
     ```cmd/sh
     npm install
@@ -91,7 +91,7 @@ In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js für d
     sending telemetry message 0...
     ```
 
-1. Wechseln Sie zum **Dienstterminal**, und führen Sie den folgenden Befehl aus, um das Beispiel für das Lesen von Geräteinformationen auszuführen:
+1. Wechseln Sie zum **Dienstterminal** , und führen Sie den folgenden Befehl aus, um das Beispiel für das Lesen von Geräteinformationen auszuführen:
 
     ```cmd/sh
     node twin.js
@@ -146,7 +146,7 @@ In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js für d
     }
     ```
 
-1. Der folgende Codeausschnitt zeigt den Code in *twin.js*, mit dem die Modell-ID des Gerätezwillings abgerufen wird:
+1. Der folgende Codeausschnitt zeigt den Code in *twin.js* , mit dem die Modell-ID des Gerätezwillings abgerufen wird:
 
     ```javascript
     var registry = Registry.fromConnectionString(connectionString);
@@ -164,7 +164,7 @@ In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js für d
 In diesem Szenario wird `Model Id: dtmi:com:example:Thermostat;1` ausgegeben.
 
 > [!NOTE]
-> In diesen Dienstbeispielen wird die **Registry**-Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](concepts-developer-guide-service.md).
+> In diesen Dienstbeispielen wird die **Registry** -Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](concepts-developer-guide-service.md).
 
 ### <a name="update-a-writable-property"></a>Aktualisieren einer schreibbaren Eigenschaft
 
@@ -214,7 +214,7 @@ In diesem Szenario wird `Model Id: dtmi:com:example:Thermostat;1` ausgegeben.
     node twin.js
     ```
 
-1. In der Ausgabe des **Dienstterminals** wird im Abschnitt mit den gemeldeten Eigenschaften die gemeldete aktualisierte Zieltemperatur angezeigt. Es kann eine Weile dauern, bis das Gerät die Aktualisierung abgeschlossen hat. Wiederholen Sie diesen Schritt so oft, bis das Gerät die Eigenschaftsaktualisierung verarbeitet hat:
+1. In der Ausgabe des **Dienstterminals** wird im Abschnitt mit den `reported` Eigenschaften die gemeldete aktualisierte Zieltemperatur angezeigt. Es kann eine Weile dauern, bis das Gerät die Aktualisierung abgeschlossen hat. Wiederholen Sie diesen Schritt so oft, bis das Gerät die Eigenschaftsaktualisierung verarbeitet hat:
 
     ```json
     "reported": {
@@ -231,9 +231,9 @@ In diesem Szenario wird `Model Id: dtmi:com:example:Thermostat;1` ausgegeben.
 
 ### <a name="invoke-a-command"></a>Aufrufen eines Befehls
 
-1. Öffnen Sie die Datei *device_method.js*, und sehen Sie sich den Code an.
+1. Öffnen Sie die Datei *device_method.js* , und sehen Sie sich den Code an.
 
-1. Wechseln Sie zum **Dienstterminal**. Verwenden Sie den folgenden Befehl, um das Beispiel für das Aufrufen des Befehls auszuführen:
+1. Wechseln Sie zum **Dienstterminal** . Verwenden Sie den folgenden Befehl, um das Beispiel für das Aufrufen des Befehls auszuführen:
 
     ```cmd/sh
     set IOTHUB_METHOD_NAME=getMaxMinReport

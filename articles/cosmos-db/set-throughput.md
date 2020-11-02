@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331820"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367124"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -43,9 +43,6 @@ Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere log
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Hosten einer oder mehrerer logischer Partitionen eines Containers über eine physische Partition" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Festlegen des Durchsatzes für eine Datenbank
-
-> [!NOTE]
-> In Konten, in denen [kundenseitig verwaltete Schlüssel](how-to-setup-cmk.md) aktiviert sind, ist derzeit keine Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank möglich.
 
 Wenn Sie Durchsatz für eine Cosmos-Datenbank bereitstellen, wird der Durchsatz von allen Containern in der Datenbank gemeinsam genutzt (auch als gemeinsam genutzte Datenbankcontainer bezeichnet). Ausnahme: Sie haben einen bereitgestellten Durchsatz für bestimmte Container in der Datenbank angegeben. Die gemeinsame Nutzung des auf Datenbankebene bereitgestellten Durchsatzes durch die Container entspricht dem Hosten einer Datenbank in einem Computercluster. Da alle Container in einer Datenbank die auf einem Computer verfügbaren Ressourcen gemeinsam nutzen, erhalten Sie natürlich keine vorhersagbare Leistung für einen bestimmten Container. Informationen zum Konfigurieren des bereitgestellten Durchsatzes für eine Datenbank finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md). Informationen zum Konfigurieren des automatisch skalierten Durchsatzes für eine Datenbank finden Sie unter [Bereitstellen von automatisch skaliertem Durchsatz](how-to-provision-autoscale-throughput.md).
 

@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: ad7fc7d9d02cd9a9a6fe74534a7c674fe0ac778d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 76e7b3d0b0dd514feb7d16a6bc23d1b908be683f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893253"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207205"
 ---
 # <a name="pbr-materials"></a>PBR-Materialien
 
 *PBR-Materialien* sind einer der unterstützten [Materialtypen](../../concepts/materials.md) in Azure Remote Rendering. Sie werden für [Gittermodelle](../../concepts/meshes.md) verwendet, die eine realistische Beleuchtung erhalten sollen.
 
-PBR steht für **P**hysically **B**ased **R**endering. Dies besagt, dass das Material die visuellen Eigenschaften einer Oberfläche auf physikalisch plausible Weise beschreibt, sodass realistische Ergebnisse unter allen Beleuchtungsbedingungen möglich sind. Die meisten modernen Spiele-Engines und Inhaltserstellungstools unterstützen PBR-Materialien, da sie als die beste Annäherung an realistische Szenarien für Echtzeitrendering angesehen werden.
+PBR steht für **P** hysically **B** ased **R** endering. Dies besagt, dass das Material die visuellen Eigenschaften einer Oberfläche auf physikalisch plausible Weise beschreibt, sodass realistische Ergebnisse unter allen Beleuchtungsbedingungen möglich sind. Die meisten modernen Spiele-Engines und Inhaltserstellungstools unterstützen PBR-Materialien, da sie als die beste Annäherung an realistische Szenarien für Echtzeitrendering angesehen werden.
 
 ![Mit ARR gerendertes gITF-Beispielmodell eines Helms](media/helmet.png)
 
@@ -26,26 +26,26 @@ PBR-Materialien sind jedoch keine Universallösung. Es gibt Materialien, die Lic
 
 Diese Eigenschaften gelten für alle Materialien:
 
-* **albedoColor**: Diese Farbe wird mit anderen Farben multipliziert, z. B. mit *albedoMap* oder *:::no-loc text="vertex ":::-Farben*. Wenn *transparency* für ein Material aktiviert ist, wird der Alphakanal verwendet, um die Deckkraft anzupassen, wobei `1` vollständig undurchsichtig und `0` vollständig transparent bedeutet. Die Standardfarbe ist Weiß.
+* **albedoColor** : Diese Farbe wird mit anderen Farben multipliziert, z. B. mit *albedoMap* oder *:::no-loc text="vertex ":::-Farben* . Wenn *transparency* für ein Material aktiviert ist, wird der Alphakanal verwendet, um die Deckkraft anzupassen, wobei `1` vollständig undurchsichtig und `0` vollständig transparent bedeutet. Die Standardfarbe ist Weiß.
 
   > [!NOTE]
   > Wenn ein PBR-Material vollständig transparent ist, z. B. ein vollkommen sauberes Glas, wird die Umgebung immer noch von ihm reflektiert. Helle Stellen wie die Sonne sind in der Reflexion immer noch sichtbar. Dies ist bei [Farbmaterialien](color-materials.md) anders.
 
 * **albedoMap:** Eine [2D-Textur](../../concepts/textures.md) für Albedo-Werte pro Pixel.
 
-* **alphaClipEnabled** und **alphaClipThreshold**: Wenn *alphaClipEnabled* „true“ ist, werden alle Pixel, deren Albedo-Alphawert geringer als *alphaClipThreshold* ist, nicht gezeichnet. Alphaclipping kann auch ohne Aktivierung der Transparenz verwendet werden, und es beschleunigt das Rendern. Materialien, auf die Alphaclipping angewendet wird, werden dennoch langsamer gerendert als vollständig undurchsichtige Materialien. Alphaclipping ist standardmäßig deaktiviert.
+* **alphaClipEnabled** und **alphaClipThreshold** : Wenn *alphaClipEnabled* „true“ ist, werden alle Pixel, deren Albedo-Alphawert geringer als *alphaClipThreshold* ist, nicht gezeichnet. Alphaclipping kann auch ohne Aktivierung der Transparenz verwendet werden, und es beschleunigt das Rendern. Materialien, auf die Alphaclipping angewendet wird, werden dennoch langsamer gerendert als vollständig undurchsichtige Materialien. Alphaclipping ist standardmäßig deaktiviert.
 
-* **textureCoordinateScale** und **textureCoordinateOffset**: Die Skalierung wird mit den UV-Texturkoordinaten multipliziert, und der Offset wird addiert. Kann zum Strecken und Verschieben der Texturen verwendet werden. Die Standardskalierung ist (1, 1) und der Standardoffset ist (0, 0).
+* **textureCoordinateScale** und **textureCoordinateOffset** : Die Skalierung wird mit den UV-Texturkoordinaten multipliziert, und der Offset wird addiert. Kann zum Strecken und Verschieben der Texturen verwendet werden. Die Standardskalierung ist (1, 1) und der Standardoffset ist (0, 0).
 
-* **useVertexColor**: Wenn das Gittermodell :::no-loc text="vertex":::-Farben enthält und diese Option aktiviert ist, werden die :::no-loc text="vertex":::-Farben des Gittermodells in *albedoColor* und *albedoMap* multipliziert. Standardmäßig ist *useVertexColor* deaktiviert.
+* **useVertexColor** : Wenn das Gittermodell :::no-loc text="vertex":::-Farben enthält und diese Option aktiviert ist, werden die :::no-loc text="vertex":::-Farben des Gittermodells in *albedoColor* und *albedoMap* multipliziert. Standardmäßig ist *useVertexColor* deaktiviert.
 
-* **isDoubleSided**: Wenn diese Eigenschaft auf „true“ festgelegt ist, werden Dreiecke mit diesem Material auch dann gerendert, wenn die Kamera auf ihre Rückseite gerichtet ist. Für die PBR-Materialien wird die Beleuchtung auch für die Rückseite korrekt berechnet. Diese Option ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [:::no-loc text="Single-sided":::-Rendering](single-sided-rendering.md).
+* **isDoubleSided** : Wenn diese Eigenschaft auf „true“ festgelegt ist, werden Dreiecke mit diesem Material auch dann gerendert, wenn die Kamera auf ihre Rückseite gerichtet ist. Für die PBR-Materialien wird die Beleuchtung auch für die Rückseite korrekt berechnet. Diese Option ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [:::no-loc text="Single-sided":::-Rendering](single-sided-rendering.md).
 
 * **TransparencyWritesDepth:** Wenn das TransparencyWritesDepth-Flag für das Material festgelegt und das Material transparent ist, leisten Objekte, die dieses Material verwenden, einen Beitrag zum letzten Tiefenpuffer. Sehen Sie sich das PBR-Materialflag *transparent* im nächsten Abschnitt an. Es wird empfohlen, dieses Feature zu aktivieren, wenn Ihr Anwendungsfall einen plausibleren [Farbverschiebungsausgleich](late-stage-reprojection.md) für vollständig transparente Szenen erfordert. Bei Szenen, die teilweise transparent und teilweise nicht transparent sind, kann diese Einstellung zu nicht plausiblem Reprojektionsverhalten oder nicht plausiblen Reprojektionsartefakten führen. Aus diesem Grund wird dieses Flag für normale Anwendungsfälle standardmäßig deaktiviert. Diese Einstellung wird auch empfohlen. Die geschriebenen Tiefenwerte werden der pixelbasierten Tiefenebene des Objekts entnommen, das sich der Kamera am nächsten befindet.
 
 ## <a name="pbr-material-properties"></a>PBR-Materialeigenschaften
 
-Physically Based Rendering beinhaltet im Wesentlichen die Verwendung der Eigenschaften *BaseColor*, *Metalness* und *Roughness* zum Emulieren einer breite Palette realistischer Materialien. Eine ausführliche Beschreibung von PBR würde den Rahmen dieses Artikels sprengen. Ausführlichere Informationen zu PBR finden Sie in [weiteren Quellen](http://www.pbr-book.org). Die folgenden Eigenschaften gelten speziell für PBR-Materialien:
+Physically Based Rendering beinhaltet im Wesentlichen die Verwendung der Eigenschaften *BaseColor* , *Metalness* und *Roughness* zum Emulieren einer breite Palette realistischer Materialien. Eine ausführliche Beschreibung von PBR würde den Rahmen dieses Artikels sprengen. Ausführlichere Informationen zu PBR finden Sie in [weiteren Quellen](http://www.pbr-book.org). Die folgenden Eigenschaften gelten speziell für PBR-Materialien:
 
 * **baseColor:** In PBR-Materialien wird die *Albedo-Farbe* als *Basisfarbe* bezeichnet. In Azure Remote Rendering ist die Eigenschaft *Albedo-Farbe* bereits über die allgemeinen Materialeigenschaften vorhanden, sodass es keine zusätzliche Eigenschaft für die Basisfarbe gibt.
 
@@ -74,21 +74,21 @@ Physically Based Rendering beinhaltet im Wesentlichen die Verwendung der Eigensc
   ![Mit von null bis vollständig reichender Transparenz gerenderte Kugeln](./media/transparency.png) Beachten Sie in der obigen Abbildung, dass die äußerste rechte Kugel vollständig transparent ist und die Reflexion dennoch sichtbar ist.
 
   > [!IMPORTANT]
-  > Wenn ein Material zur Laufzeit von undurchsichtig in transparent geändert werden soll, muss der Renderer den *TileBasedComposition*-[Renderingmodus](../../concepts/rendering-modes.md) verwenden. Diese Einschränkung gilt nicht für Materialien, die zunächst als transparente Materialien konvertiert werden.
+  > Wenn ein Material zur Laufzeit von undurchsichtig in transparent geändert werden soll, muss der Renderer den *TileBasedComposition* - [Renderingmodus](../../concepts/rendering-modes.md) verwenden. Diese Einschränkung gilt nicht für Materialien, die zunächst als transparente Materialien konvertiert werden.
 
 ## <a name="technical-details"></a>Technische Details
 
 Azure Remote Rendering verwendet die auf dem Cook-Torrance-Modell basierende Mikrofacetten-BRDF. Diese beinhaltet GGX-NDF, die Schlick-Fresnel-Gleichung und eine mit GGX korrelierte Smith-Sichtbarkeitsfunktion mit einer Abschwächungsfunktion nach dem Lambert-Beer'schen Gesetz. Dieses Modell ist derzeit der Industriestandard. Ausführlichere Informationen finden Sie in diesem Artikel: [Physically based Rendering – Cook-Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx) (in englischer Sprache)
 
- Eine Alternative zu dem in Azure Remote Rendering verwendeten *Metalness-Roughness*-PBR-Modell ist das *Specular-Glossiness*-PBR-Modell. Dieses Modell kann einen breiteren Bereich von Materialien darstellen. Es ist jedoch teurer und eignet sich in der Regel nicht gut für die Anwendung in Echtzeit.
+ Eine Alternative zu dem in Azure Remote Rendering verwendeten *Metalness-Roughness* -PBR-Modell ist das *Specular-Glossiness* -PBR-Modell. Dieses Modell kann einen breiteren Bereich von Materialien darstellen. Es ist jedoch teurer und eignet sich in der Regel nicht gut für die Anwendung in Echtzeit.
 Eine Konvertierung von *Specular-Glossiness* in *Metalness-Roughness* ist nicht immer möglich, da *(Diffuse, Specular)* -Wertepaare vorhanden sind, die nicht in *(BaseColor, Metalness)* konvertiert werden können. Die Konvertierung in die andere Richtung ist einfacher und präziser, da alle *(BaseColor, Metalness)* -Paare wohldefinierten *(Diffuse, Specular)* -Paaren entsprechen.
 
 ## <a name="api-documentation"></a>API-Dokumentation
 
-* [C# PbrMaterial-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager.CreateMaterial()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
-* [C++ PbrMaterial-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager::CreateMaterial()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C# PbrMaterial-Klasse](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager.CreateMaterial()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ PbrMaterial-Klasse](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager::CreateMaterial()](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97873c9f59dc0d99293d2b1ebaf87af309dbcf47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627141"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208293"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -34,7 +34,7 @@ Nachdem Sie Azure Sentinel aktiviert haben, müssen Sie als Erstes eine Verbindu
 
    ![Konfigurieren von Datenconnectors](./media/collect-data/opened-connector-page.png)
   
-1. Klicken Sie auf die Registerkarte **Nächste Schritte**, um eine Liste mit vorgefertigten Inhalten anzuzeigen, die von Azure Sentinel für den spezifischen Datentyp bereitgestellt wird.
+1. Klicken Sie auf die Registerkarte **Nächste Schritte** , um eine Liste mit vorgefertigten Inhalten anzuzeigen, die von Azure Sentinel für den spezifischen Datentyp bereitgestellt wird.
 
    ![Nächste Schritte für Connectors](./media/collect-data/data-insights.png)
  
@@ -43,7 +43,7 @@ Nachdem Sie Azure Sentinel aktiviert haben, müssen Sie als Erstes eine Verbindu
 
 Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
 
-- **Dienst-zu-Dienst-Integration**:<br> Einige Dienste werden nativ verbunden, z. B. AWS und Microsoft-Dienste. Diese Dienste nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
+- **Dienst-zu-Dienst-Integration** :<br> Einige Dienste werden nativ verbunden, z. B. AWS und Microsoft-Dienste. Diese Dienste nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – Überwachungs- und Anmeldeprotokolle
     - [Azure-Aktivität](connect-azure-activity.md)
@@ -64,7 +64,7 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - [Windows-Firewall](connect-windows-firewall.md)
     - [Windows-Sicherheitsereignisse](connect-windows-security-events.md)
 
-- **Externe Lösungen per API**: Einige Datenquellen werden mit APIs verbunden, die von der verbundenen Datenquelle bereitgestellt werden. Normalerweise werden bei den meisten Sicherheitstechnologien verschiedene APIs bereitgestellt, über die Ereignisprotokolle abgerufen werden können. Mit den APIs wird eine Verbindung mit Azure Sentinel hergestellt, und es werden bestimmte Datentypen erfasst und an Azure Log Analytics gesendet. Per API verbundene Appliances sind:
+- **Externe Lösungen per API** : Einige Datenquellen werden mit APIs verbunden, die von der verbundenen Datenquelle bereitgestellt werden. Normalerweise werden bei den meisten Sicherheitstechnologien verschiedene APIs bereitgestellt, über die Ereignisprotokolle abgerufen werden können. Mit den APIs wird eine Verbindung mit Azure Sentinel hergestellt, und es werden bestimmte Datentypen erfasst und an Azure Log Analytics gesendet. Per API verbundene Appliances sind:
     
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
@@ -83,7 +83,7 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - [Zimperium](connect-zimperium-mtd.md)
 
 
-- **Externe Lösungen per Agent**: Azure Sentinel kann über einen Agent mit allen anderen Datenquellen verbunden werden, die ein Echtzeit-Protokollstreaming über das Syslog-Protokoll durchführen können.
+- **Externe Lösungen per Agent** : Azure Sentinel kann über einen Agent mit allen anderen Datenquellen verbunden werden, die ein Echtzeit-Protokollstreaming über das Syslog-Protokoll durchführen können.
 
     Für die meisten Appliances wird das Syslog-Protokoll zum Senden von Nachrichten genutzt, die das eigentliche Protokoll und die Daten zum Protokoll enthalten. Das Format der Protokolle variiert zwar, aber die meisten Appliances unterstützen die CEF-basierte Formatierung für Protokolldaten. 
 
@@ -158,8 +158,8 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | MCAS SecurityAlert  | [Herstellen einer Verbindung mit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (Ereignis) | [Herstellen einer Verbindung mit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Herstellen einer Verbindung mit Windows-Ereignissen](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon-Parser herunterladen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Die Sysmon-Sammlung wird auf virtuellen Computern standardmäßig nicht installiert. Weitere Informationen zum Installieren des Sysmon-Agents finden Sie unter [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
-| ConfigurationData  | [Automatisieren des VM-Bestands](../automation/automation-vm-inventory.md)| &#10007; | |
-| ConfigurationChange  | [Automatisieren der VM-Nachverfolgung](../automation/change-tracking.md) | &#10007; | |
+| ConfigurationData  | [Automatisieren des VM-Bestands](../automation/change-tracking/overview.md)| &#10007; | |
+| ConfigurationChange  | [Automatisieren der VM-Nachverfolgung](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Herstellen einer Verbindung mit F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |
 | McasShadowItReporting  |  | &#10007; | |
 | Barracuda_CL | [Herstellen einer Verbindung mit Barracuda](connect-barracuda.md) | &#10003; | |

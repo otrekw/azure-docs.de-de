@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216525"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670041"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure AD B2C
 
@@ -116,6 +116,72 @@ Nachdem Sie nun das Beispiel vorliegen haben, können Sie den Code mit dem Namen
       scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
     };
     ```
+
+1. Öffnen Sie die Datei *authConfig.js* im Ordner *JavaScriptSPA* .
+1. Aktualisieren Sie im Objekt `msalConfig` Folgendes:
+    * `clientId` mit der **Anwendungs-ID (Client)** , die Sie sich in einem früheren Schritt notiert haben
+    * Den URI `authority` mit dem Namen Ihres Azure AD B2C-Mandanten und dem Namen des Benutzerablaufs für die Registrierung/Anmeldung, den Sie im Rahmen der Voraussetzungen erstellt haben (z. B. *B2C_1_signupsignin1* )
+1. Öffnen Sie die Datei *policies.js* .
+1. Suchen Sie nach den Einträgen für `names` und `authorities`, und ersetzen Sie sie nach Bedarf durch die Namen der Richtlinien, die Sie in Schritt 2 erstellt haben. Ersetzen Sie `fabrikamb2c.onmicrosoft.com` durch den Namen Ihres Azure AD B2C-Mandanten, z. B. `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`.
+1. Öffnen Sie die Datei *apiConfig.js* .
+1. Suchen Sie die Zuweisung für die Bereiche `b2cScopes`, und ersetzen Sie die URL durch die Bereichs-URL, die Sie für die Web-API erstellt haben, z. B. `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`.
+1. Suchen Sie die Zuweisung für die API-URL `webApi`, und ersetzen Sie die aktuelle URL durch die URL, unter der Sie Ihre Web-API in Schritt 4  bereitgestellt haben, z. B. `webApi: http://localhost:5000/hello`.
+
+Der sich ergebende Code sollte so aussehen:
+
+### <a name="authconfigjs"></a>authConfig.js
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    validateAuthority: false
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+### <a name="policiesjs"></a>policies.js
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+        },
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
+        }
+    },
+}
+```
+### <a name="apiconfigjs"></a>apiConfig.js
+
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 

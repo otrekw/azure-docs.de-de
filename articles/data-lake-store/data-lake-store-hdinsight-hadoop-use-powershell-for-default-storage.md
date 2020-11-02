@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857009"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103423"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell
 
@@ -27,7 +27,7 @@ Hier sind einige wichtige Überlegungen zur Verwendung von HDInsight mit Data La
 
 * Die Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage Gen1 als Standardspeicher ist für die HDInsight-Versionen 3.5 und 3.6 verfügbar.
 
-* Die Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage Gen1 als Standardspeicher ist für HDInsight Premium-Cluster *nicht verfügbar*.
+* Die Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage Gen1 als Standardspeicher ist für HDInsight Premium-Cluster *nicht verfügbar* .
 
 Befolgen Sie die Anweisungen in den nächsten fünf Abschnitten, um HDInsight zum Arbeiten mit Data Lake Storage Gen1 mithilfe von PowerShell zu konfigurieren.
 
@@ -37,7 +37,7 @@ Befolgen Sie die Anweisungen in den nächsten fünf Abschnitten, um HDInsight zu
 
 Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgenden Anforderungen erfüllen:
 
-* **Ein Azure-Abonnement**: Navigieren Sie zu [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* **Ein Azure-Abonnement** : Navigieren Sie zu [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 oder höher:** Siehe [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 * **Windows Software Development Kit (SDK):** Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/downloads), um das Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
 * **Azure Active Directory-Dienstprinzipal:** In diesem Tutorial wird beschrieben, wie ein Dienstprinzipal in Azure Active Directory (Azure AD) erstellt wird. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
@@ -128,9 +128,9 @@ In diesem Abschnitt wird veranschaulicht, wie für einen Anwendungsdienst, z.B. 
 Sie müssen Aufgaben in den folgenden zwei Abschnitten ausführen, um die Active Directory-Authentifizierung für Data Lake Storage Gen1 einzurichten.
 
 ### <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
-Stellen Sie sicher, dass Sie das [Windows SDK](https://dev.windows.com/en-us/downloads) installiert haben, bevor Sie mit den Schritten in diesem Abschnitt fortfahren. Sie müssen auch ein Verzeichnis erstellt haben, z.B. *C:\mycertdir*, in dem das Zertifikat erstellt werden soll.
+Stellen Sie sicher, dass Sie das [Windows SDK](https://dev.windows.com/en-us/downloads) installiert haben, bevor Sie mit den Schritten in diesem Abschnitt fortfahren. Sie müssen auch ein Verzeichnis erstellt haben, z.B. *C:\mycertdir* , in dem das Zertifikat erstellt werden soll.
 
-1. Navigieren Sie im PowerShell-Fenster zu dem Speicherort, an dem Sie das Windows SDK installiert haben (normalerweise *C:\Programme (x86)\Windows Kits\10\bin\x86*), und verwenden Sie das Hilfsprogramm [MakeCert][makecert], um ein selbstsigniertes Zertifikat und einen privaten Schlüssel zu erstellen. Verwenden Sie die folgenden Befehle:
+1. Navigieren Sie im PowerShell-Fenster zu dem Speicherort, an dem Sie das Windows SDK installiert haben (normalerweise *C:\Programme (x86)\Windows Kits\10\bin\x86* ), und verwenden Sie das Hilfsprogramm [MakeCert][makecert], um ein selbstsigniertes Zertifikat und einen privaten Schlüssel zu erstellen. Verwenden Sie die folgenden Befehle:
 
     ```azurepowershell
     $certificateFileDir = "<my certificate directory>"
@@ -151,7 +151,7 @@ Stellen Sie sicher, dass Sie das [Windows SDK](https://dev.windows.com/en-us/dow
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals
 In diesem Abschnitt erstellen Sie einen Dienstprinzipal für eine Azure AD-Anwendung, weisen eine Rolle für den Dienstprinzipal zu, und authentifizieren Sie den Dienstprinzipal durch Bereitstellen eines Zertifikats. Führen Sie die folgenden Befehle zum Erstellen einer Anwendung in Azure AD aus.
 
-1. Fügen Sie die folgenden Cmdlets im PowerShell-Konsolenfenster ein. Stellen Sie sicher, dass der Wert, den Sie für die **-DisplayName**-Eigenschaft angeben, eindeutig ist. Die Werte für **-HomePage** und **-IdentiferUris** sind Platzhalterwerte und werden nicht überprüft.
+1. Fügen Sie die folgenden Cmdlets im PowerShell-Konsolenfenster ein. Stellen Sie sicher, dass der Wert, den Sie für die **-DisplayName** -Eigenschaft angeben, eindeutig ist. Die Werte für **-HomePage** und **-IdentiferUris** sind Platzhalterwerte und werden nicht überprüft.
 
     ```azurepowershell
     $certificateFilePath = "$certificateFileDir\CertFile.pfx"
@@ -285,5 +285,5 @@ Sie können auch den Befehl `hdfs dfs -put` verwenden, um Dateien in Data Lake S
 * [Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure-Portal: Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

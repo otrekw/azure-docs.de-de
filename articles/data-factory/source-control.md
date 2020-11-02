@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 43e3916e47aa0305209b8e6e32803426ac1ebe3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101901"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637563"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -50,7 +50,7 @@ Im Folgenden finden Sie eine Liste einiger der Vorteile der Git-Integration für
 
 ## <a name="author-with-azure-repos-git-integration"></a>Erstellen mit der Azure Repos Git-Integration
 
-Das visuelle Erstellen mit der Azure Repos Git-Integration unterstützt die Quellcodeverwaltung und Kollaboration beim Arbeiten an Data Factory-Pipelines. Sie können eine Data Factory einem Azure Repos Git-Organisationsrepository u.a. für die Quellcodeverwaltung, Kollaboration, Versionsverwaltung zuordnen. Eine einzelne Azure Repos Git-Organisation kann über mehrere Repositorys verfügen. Allerdings kann ein Azure Repos Git-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über eine Azure Repos-Organisation oder ein -Repository verfügen, folgen Sie [diesen Anweisungen](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) zum Erstellen der Ressourcen.
+Das visuelle Erstellen mit der Azure Repos Git-Integration unterstützt die Quellcodeverwaltung und Kollaboration beim Arbeiten an Data Factory-Pipelines. Sie können eine Data Factory einem Azure Repos Git-Organisationsrepository u.a. für die Quellcodeverwaltung, Kollaboration, Versionsverwaltung zuordnen. Eine einzelne Azure Repos Git-Organisation kann über mehrere Repositorys verfügen. Allerdings kann ein Azure Repos Git-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über eine Azure Repos-Organisation oder ein -Repository verfügen, folgen Sie [diesen Anweisungen](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) zum Erstellen der Ressourcen.
 
 > [!NOTE]
 > Sie können Skript- und Datendateien in einem Azure Repos Git-Repository speichern. Allerdings müssen Sie die Dateien manuell in Azure Storage hochladen. Eine Data Factory-Pipeline lädt Skript- oder Datendateien, die in einem Azure Repos Git-Repository gespeichert sind, nicht automatisch in Azure Storage hoch.
@@ -76,7 +76,7 @@ Bei beiden Methoden wird der Konfigurationsbereich für die Repositoryeinstellun
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | BESCHREIBUNG | Wert |
+| Einstellung | Beschreibung | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -93,13 +93,13 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Verwenden eines anderen Azure Active Directory-Mandanten
 
-Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen. Weitere Informationen finden Sie unter [Ändern des Abonnementadministrators](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator).
+Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen. Weitere Informationen finden Sie unter [Ändern des Abonnementadministrators](../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator).
 
 ### <a name="use-your-personal-microsoft-account"></a>Verwenden Ihres persönlichen Microsoft-Kontos
 
 Um ein persönliches Microsoft-Konto für die Git-Integration zu verwenden, können Sie Ihr persönliches Azure-Repository mit dem Active Directory Ihrer Organisation verknüpfen.
 
-1. Fügen Sie Ihr persönliches Microsoft-Konto als Gast zum Active Directory Ihrer Organisation hinzu. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/b2b/add-users-administrator.md).
+1. Fügen Sie Ihr persönliches Microsoft-Konto als Gast zum Active Directory Ihrer Organisation hinzu. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md).
 
 2. Melden Sie sich mit Ihrem persönlichen Microsoft-Konto beim Azure-Portal an. Wechseln Sie dann zum Active Directory Ihrer Organisation.
 
@@ -111,7 +111,7 @@ Weitere Informationen zum Verbinden von Azure Repos mit dem Active Directory Ihr
 
 ## <a name="author-with-github-integration"></a>Erstellen der GitHub-Integration
 
-Das visuelle Erstellen mit GitHub-Integration unterstützt Quellcodeverwaltung und Kollaboration beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem GitHub-Kontorepository für die Quellcodeverwaltung, Kollaboration und Versionsverwaltung zuordnen. Ein einzelnes GitHub-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein GitHub-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein GitHub-Konto oder -Repository verfügen, folgen Sie  [diesen Anweisungen](https://github.com/join)  zum Erstellen der Ressourcen.
+Das visuelle Erstellen mit GitHub-Integration unterstützt Quellcodeverwaltung und Kollaboration beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem GitHub-Kontorepository für die Quellcodeverwaltung, Kollaboration und Versionsverwaltung zuordnen. Ein einzelnes GitHub-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein GitHub-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein GitHub-Konto oder -Repository verfügen, folgen Sie [diesen Anweisungen](https://github.com/join) zum Erstellen der Ressourcen.
 
 Die GitHub-Integration von Data Factory unterstützt sowohl das öffentliche GitHub (also [https://github.com](https://github.com)) als auch GitHub Enterprise. Sie können öffentliche und private GitHub-Repositorys mit Data Factory verwenden, sofern Sie über Lese- und Schreibberechtigungen für das Repository in GitHub verfügen.
 

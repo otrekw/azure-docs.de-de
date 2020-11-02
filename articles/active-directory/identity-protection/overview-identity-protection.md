@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996525"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783180"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -107,9 +107,9 @@ Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei d
 | Risikorichtlinien | Benutzerrisiko-Richtlinie (über Identity Protection)  | Nein | Nein |Ja | 
 | Risikorichtlinien | Anmelderisiko-Richtlinie (über Identity Protection oder bedingten Zugriff)  | Nein |  Nein |Ja |
 | Sicherheitsberichte | Übersicht |  Nein | Nein |Ja |
-| Sicherheitsberichte | Riskante Benutzer  | Eingeschränkte Informationen | Eingeschränkte Informationen | Vollzugriff|
-| Sicherheitsberichte | Riskante Anmeldungen  | Eingeschränkte Informationen | Eingeschränkte Informationen | Vollzugriff|
-| Sicherheitsberichte | Risikoerkennungen   | Nein | Eingeschränkte Informationen| Vollzugriff|
+| Sicherheitsberichte | Riskante Benutzer  | Eingeschränkte Informationen. Nur Benutzer mit mittlerem und hohem Risiko werden angezeigt. Kein Drawer „Details“ oder Risikoverlauf. | Eingeschränkte Informationen. Nur Benutzer mit mittlerem und hohem Risiko werden angezeigt. Kein Drawer „Details“ oder Risikoverlauf. | Vollzugriff|
+| Sicherheitsberichte | Riskante Anmeldungen  | Eingeschränkte Informationen. Es werden keine Risikodetails oder Risikostufen angezeigt. | Eingeschränkte Informationen. Es werden keine Risikodetails oder Risikostufen angezeigt. | Vollzugriff|
+| Sicherheitsberichte | Risikoerkennungen   | Nein | Eingeschränkte Informationen. Kein Drawer „Details“.| Vollzugriff|
 | Benachrichtigungen | Warnungen zu erkannten gefährdeten Benutzern  | Nein | Nein |Ja |
 | Benachrichtigungen | Wöchentliche Übersicht| Nein | Nein | Ja | 
 | | Richtlinie für MFA-Registrierung | Nein | Nein | Ja |

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84f168104be4ba4cb8af2e31be82eed0e2ae83a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776271"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205183"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -28,7 +28,7 @@ Die „Hybrid Runbook Worker“-Rolle ist hinsichtlich ihrer Installation und Ko
 
 Wenn Sie über keinen Azure Monitor Log Analytics-Arbeitsbereich verfügen, lesen Sie zuerst die [Entwurfsanleitung für Azure Monitor-Protokolle](../azure-monitor/platform/design-logs-deployment.md), bevor Sie einen Arbeitsbereich erstellen.
 
-Wenn Sie einen Arbeitsbereich besitzen, dieser aber nicht mit Ihrem Automation-Konto verknüpft ist, fügt das Aktivieren einer Automation-Funktion Funktionen für Azure Automation hinzu, einschließlich der Unterstützung für den Hybrid Runbook Worker. Wenn Sie eine der Azure Automation-Funktionen in Ihrem Log Analytics-Arbeitsbereich aktivieren, insbesondere [Updateverwaltung](update-management/update-mgmt-overview.md) oder [Änderungsnachverfolgung und Bestand](change-tracking.md), werden die Workerkomponenten automatisch auf den Agentcomputer gepusht.
+Wenn Sie einen Arbeitsbereich besitzen, dieser aber nicht mit Ihrem Automation-Konto verknüpft ist, fügt das Aktivieren einer Automation-Funktion Funktionen für Azure Automation hinzu, einschließlich der Unterstützung für den Hybrid Runbook Worker. Wenn Sie eine der Azure Automation-Funktionen in Ihrem Log Analytics-Arbeitsbereich aktivieren, insbesondere [Updateverwaltung](update-management/update-mgmt-overview.md) oder [Änderungsnachverfolgung und Bestand](change-tracking/overview.md), werden die Workerkomponenten automatisch auf den Agentcomputer gepusht.
 
 Um Ihrem Arbeitsbereich die Funktion „Updateverwaltung“ hinzuzufügen, führen Sie das folgende PowerShell-Cmdlet aus:
 
@@ -47,7 +47,7 @@ Um Ihrem Arbeitsbereich die Funktion „Änderungsnachverfolgung und Bestand“ 
 Die „Hybrid Runbook Worker“-Rolle erfordert den [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) für das unterstützte Linux-Betriebssystem.
 
 >[!NOTE]
->Nach der Installation des Log Analytics-Agents für Linux sollten Sie die Berechtigungen für den `sudoers.d`-Ordner oder seine Eigentümerschaft nicht ändern. sudo-Berechtigungen sind für das **nxautomation**-Konto erforderlich. Dabei handelt es sich um den Benutzerkontext, unter dem der Hybrid Runbook Worker ausgeführt wird. Diese Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle könnte zu einem Breaking Change führen.
+>Nach der Installation des Log Analytics-Agents für Linux sollten Sie die Berechtigungen für den `sudoers.d`-Ordner oder seine Eigentümerschaft nicht ändern. sudo-Berechtigungen sind für das **nxautomation** -Konto erforderlich. Dabei handelt es sich um den Benutzerkontext, unter dem der Hybrid Runbook Worker ausgeführt wird. Diese Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle könnte zu einem Breaking Change führen.
 >
 
 ### <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
@@ -132,13 +132,13 @@ Zum Installieren und Konfigurieren eines Linux Hybrid Runbook Workers führen Si
 
 3. Führen Sie den folgenden Befehl aus, um den Computer zu einer Hybrid Runbook Worker-Gruppe hinzuzufügen, wobei Sie die Werte für die Parameter `-w`, `-k`, `-g` und `-e` angeben.
 
-    Sie finden die für die Parameter `-k` und `-e` erforderlichen Informationen in Ihrem Automation-Konto auf der Seite **Schlüssel**. Wählen Sie im linken Bereich der Seite im Abschnitt **Kontoeinstellungen** die Option **Schlüssel** aus.
+    Sie finden die für die Parameter `-k` und `-e` erforderlichen Informationen in Ihrem Automation-Konto auf der Seite **Schlüssel** . Wählen Sie im linken Bereich der Seite im Abschnitt **Kontoeinstellungen** die Option **Schlüssel** aus.
 
     ![Seite „Schlüssel verwalten“](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-    * Kopieren Sie für den Parameter `-e` den Wert für **URL**.
+    * Kopieren Sie für den Parameter `-e` den Wert für **URL** .
 
-    * Kopieren Sie für den Parameter `-k` den Wert für **PRIMÄRER ZUGRIFFSSCHLÜSSEL**.
+    * Kopieren Sie für den Parameter `-k` den Wert für **PRIMÄRER ZUGRIFFSSCHLÜSSEL** .
 
     * Geben Sie für den Parameter `-g` den Namen der Hybrid Runbook Worker-Gruppe an, der der neue Linux Hybrid Runbook Worker beitreten soll. Wenn diese Gruppe bereits im Automation-Konto vorhanden ist, wird ihr der aktuelle Computer hinzugefügt. Wenn diese Gruppe nicht vorhanden ist, wird sie mit diesem Namen erstellt.
 
