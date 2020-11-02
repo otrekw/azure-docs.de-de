@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89145551"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519672"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Schnellstart: Erstellen einer Funktion in Azure, die auf HTTP-Anforderungen antwortet
 
@@ -82,7 +82,11 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-Führen Sie in einem leeren Ordner den folgenden Befehl aus, um das Functions-Projekt über einen [Maven-Archetyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) zu generieren. Verwenden Sie `-DjavaVersion=11`, wenn Sie Ihre Funktionen in Java 11 ausführen möchten. Weitere Informationen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions). 
+Führen Sie in einem leeren Ordner den folgenden Befehl aus, um das Functions-Projekt über einen [Maven-Archetyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) zu generieren. 
+
+> [!IMPORTANT]
+> + Verwenden Sie `-DjavaVersion=11`, wenn Sie Ihre Funktionen in Java 11 ausführen möchten. Weitere Informationen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions). 
+> + Damit Sie diesen Artikel durcharbeiten können, muss die Umgebungsvariable `JAVA_HOME` auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
@@ -125,7 +129,7 @@ cd LocalFunctionProj
 cd fabrikam-functions
 ```
 ::: zone-end  
-Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE* -Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
 [!INCLUDE [functions-cli-add-function](../../includes/functions-cli-add-function.md)]
 
@@ -145,7 +149,7 @@ Das Rückgabeobjekt ist ein [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.
 
 ::: zone pivot="programming-language-java"
 #### <a name="functionjava"></a>Function.java
-*Function.java* enthält eine Methode vom Typ `run`, die Anforderungsdaten in der Variablen `request` empfängt. Hierbei handelt es sich um eine HTTP-Anforderungsnachricht ([HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)), die mit der Anmerkung [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) versehen ist, um das Triggerverhalten zu definieren. 
+*Function.java* enthält eine Methode vom Typ `run`, die Anforderungsdaten in der Variablen `request` empfängt. Hierbei handelt es sich um eine HTTP-Anforderungsnachricht ( [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)), die mit der Anmerkung [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) versehen ist, um das Triggerverhalten zu definieren. 
 
 :::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
@@ -153,13 +157,11 @@ Die Antwortnachricht wird von der API [HttpResponseMessage.Builder](/java/api/co
 
 #### <a name="pomxml"></a>pom.xml
 
-Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werden, werden in der generierten Datei „pom.xml“ im Konfigurationselement (**configuration**) des Plug-Ins mit der Gruppen-ID (**groupId**) `com.microsoft.azure` definiert. So wird beispielsweise durch das folgende Konfigurationselement eine Maven-basierte Bereitstellung angewiesen, eine Funktions-App in der Ressourcengruppe `java-functions-group` in der Region `westus` zu erstellen. Die Funktions-App selbst wird unter Windows mit Hosting im Tarif `java-functions-app-service-plan` ausgeführt. Bei dem Tarif handelt es sich standardmäßig um einen serverlosen Verbrauchstarif.    
+Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werden, werden in der generierten Datei „pom.xml“ im Konfigurationselement ( **configuration** ) des Plug-Ins mit der Gruppen-ID ( **groupId** ) `com.microsoft.azure` definiert. So wird beispielsweise durch das folgende Konfigurationselement eine Maven-basierte Bereitstellung angewiesen, eine Funktions-App in der Ressourcengruppe `java-functions-group` in der Region `westus` zu erstellen. Die Funktions-App selbst wird unter Windows mit Hosting im Tarif `java-functions-app-service-plan` ausgeführt. Bei dem Tarif handelt es sich standardmäßig um einen serverlosen Verbrauchstarif.    
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Diese Einstellungen ermöglichen die Steuerung der Ressourcenerstellung in Azure. Beispielsweise können Sie `runtime.os` vor der ersten Bereitstellung von `windows` in `linux` ändern. Eine umfassende Liste der Einstellungen, die vom Maven-Plug-In unterstützt werden, finden Sie in den [Konfigurationsdetails](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
-
-Wenn Sie Ihre Funktions-App unter Java 11 anstelle von Java 8 ausführen möchten, müssen Sie die Datei „pom.xml“ manuell mit Java 11-Werten aktualisieren. Weitere Informationen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions). Wenn die Ausführung unter Java 11 erfolgt, stellen Sie sicher, dass  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
@@ -192,7 +194,7 @@ Für einen HTTP-Trigger empfängt die Funktion Anforderungsdaten in der Variable
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-Für einen HTTP-Trigger empfängt die Funktion Anforderungsdaten in der Variablen `req` vom Typ **HttpRequest**, wie dies in *function.json* definiert ist. Das Rückgabeobjekt, das in *function.json* als `$return` definiert ist, ist die Antwort. 
+Für einen HTTP-Trigger empfängt die Funktion Anforderungsdaten in der Variablen `req` vom Typ **HttpRequest** , wie dies in *function.json* definiert ist. Das Rückgabeobjekt, das in *function.json* als `$return` definiert ist, ist die Antwort. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
@@ -367,9 +369,9 @@ mvn azure-functions:deploy
 
 Dadurch werden in Azure die folgenden Ressourcen erstellt:
 
-+ Ressourcengruppe namens _java-functions-group_.
++ Ressourcengruppe namens _java-functions-group_ .
 + Speicherkonto – von Functions benötigt. Der Name wird nach dem Zufallsprinzip basierend auf den Anforderungen für den Speicherkontonamen generiert.
-+ Hostingplan: Serverloses Hosting für Ihre Funktions-App in der Region _westus_. Der Name lautet _java-functions-app-service-plan_.
++ Hostingplan: Serverloses Hosting für Ihre Funktions-App in der Region _westus_ . Der Name lautet _java-functions-app-service-plan_ .
 + Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name wird auf Grundlage der _artifactId_ zufällig generiert und mit einer zufällig generierten Zahl angefügt. 
 
 Bei der Bereitstellung werden die Projektdateien mithilfe von [zip deployment](functions-deployment-technologies.md#zip-deploy) gepackt und für die neue Funktions-App bereitgestellt. Der Code wird über das Bereitstellungspaket in Azure ausgeführt.
@@ -381,7 +383,7 @@ Da für Ihre Funktion ein HTTP-Trigger verwendet wird, führen Sie das Aufrufen 
 
 # <a name="browser"></a>[Browser](#tab/browser)
 
-Kopieren Sie die vollständige **Aufruf-URL**, die in der Ausgabe des Befehls zum Veröffentlichen (publish) angezeigt wird, in eine Browseradressleiste, und fügen Sie den Abfrageparameter `&name=Functions` an. Im Browser sollte eine ähnliche Ausgabe wie bei der lokalen Ausführung der Funktion angezeigt werden.
+Kopieren Sie die vollständige **Aufruf-URL** , die in der Ausgabe des Befehls zum Veröffentlichen (publish) angezeigt wird, in eine Browseradressleiste, und fügen Sie den Abfrageparameter `&name=Functions` an. Im Browser sollte eine ähnliche Ausgabe wie bei der lokalen Ausführung der Funktion angezeigt werden.
 
 ![Ausgabe der in Azure ausgeführten Funktion in einem Browser](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 

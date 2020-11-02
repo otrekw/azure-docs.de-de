@@ -4,12 +4,12 @@ description: Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168408"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675283"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -17,9 +17,9 @@ ms.locfileid: "92168408"
 > * [Linux](service-fabric-get-started-linux.md)
 > * [Mac OS X](service-fabric-get-started-mac.md)
 
-Zur Bereitstellung und Ausführung von (Azure Service Fabric-Anwendungen)[service-fabric-application-model.md] auf Ihrem Linux-Entwicklungscomputer müssen Sie die Laufzeit und das allgemeine SDK installieren. Darüber hinaus können Sie auch optionale SDKs für die Java- und .NET Core-Entwicklung installieren. 
+Zur Bereitstellung und Ausführung von [Azure Service Fabric-Anwendungen](service-fabric-application-model.md) auf Ihrem Linux-Entwicklungscomputer müssen Sie die Laufzeit und das allgemeine SDK installieren. Darüber hinaus können Sie auch optionale SDKs für die Java- und .NET Core-Entwicklung installieren. 
 
-Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie eine native Installation unter Linux durchführen oder das (Service Fabric-OneBox-Containerimage)[https://hub.docker.com/_/microsoft-service-fabric-onebox ] verwenden, d. h. `mcr.microsoft.com/service-fabric/onebox:u18`.
+Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie eine native Installation unter Linux durchführen oder das [Service Fabric-OneBox-Containerimage](https://hub.docker.com/_/microsoft-service-fabric-onebox) verwenden, d. h. `mcr.microsoft.com/service-fabric/onebox:u18`.
 
 Sie können Service Fabric-Entitäten, die in der Cloud oder lokal gehostet werden, mit der Azure Service Fabric-Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwalten. Informationen zum Installieren der Befehlszeilenschnittstelle finden Sie unter [Azure Service Fabric CLI](./service-fabric-cli.md).
 
@@ -261,7 +261,7 @@ Erstellen Sie nach der Installation der Generatoren ausführbare Gastdateien ode
 
 ## <a name="set-up-net-core-31-development"></a>Einrichten der .NET Core 3.1-Entwicklung
 
-Installieren Sie das [.NET Core 3.1 SDK für Ubuntu](https://www.microsoft.com/net/core#linuxubuntu), um mit dem [Erstellen von Service Fabric-C#-Anwendungen](service-fabric-create-your-first-linux-application-with-csharp.md) zu beginnen. Pakete für Service Fabric-Anwendungen mit .NET Core werden auf NuGet.org gehostet.
+Installieren Sie das [.NET Core 3.1 SDK für Ubuntu](https://www.microsoft.com/net/core#linuxubuntu), um mit dem [Erstellen von Service Fabric-C#-Anwendungen](service-fabric-create-your-first-linux-application-with-csharp.md) zu beginnen. Pakete für Service Fabric-Anwendungen mit .NET Core werden auf NuGet.org gehostet.
 
 ## <a name="set-up-java-development"></a>Einrichten der Java-Entwicklung
 

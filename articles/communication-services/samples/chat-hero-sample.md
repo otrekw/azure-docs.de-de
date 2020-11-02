@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124584"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677413"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
 
@@ -25,16 +25,18 @@ ms.locfileid: "92124584"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Dieses Beispiel ist auf GitHub verfügbar.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
 Das **Hero-Beispiel für Gruppenchats** von Azure Communication Services veranschaulicht, wie die Communication Services-Webclientbibliothek für Chats verwendet werden kann, um eine Benutzeroberfläche für Gruppenchats zu erstellen.
 
 In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funktioniert, bevor wir es auf Ihrem lokalen Computer ausführen. Anschließend stellen wir das Beispiel in Azure bereit, indem wir Ihre eigenen Azure Communication Services-Ressourcen verwenden.
 
-> [!IMPORTANT]
-> [Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure-Samples/communication-services-web-chat-hero).
 
 ## <a name="overview"></a>Übersicht
 
-Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
+Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung** , die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
 
 Das Beispiel sieht wie folgt aus:
 
@@ -50,9 +52,9 @@ Nachdem Sie Ihren Anzeigenamen und Ihr Emoji konfiguriert haben, können Sie der
 
 Komponenten des Hauptbildschirms für Chats:
 
-- **Hauptbereich für Chats**: Dies ist der Hauptbereich für Chats, in dem Benutzer Nachrichten senden und empfangen können. Zum Senden von Nachrichten können Sie den Eingabebereich nutzen und dann die EINGABETASTE drücken (oder die Schaltfläche „Senden“ verwenden). Die empfangenen Chatnachrichten werden nach Absender mit dem zugehörigen Namen und Emoji kategorisiert. Im Chatbereich werden zwei Arten von Benachrichtigungen angezeigt: 1) Eingabebenachrichtigungen, wenn ein Benutzer Text eingibt, und 2) Sende- und Lesebenachrichtigungen für Nachrichten.
-- **Header**: Hier werden dem Benutzer der Titel des Chatthreads und die Steuerelemente zum Umschalten der Seitenleiste für die Teilnehmer und die Einstellungen angezeigt. Darüber hinaus ist eine Schaltfläche zum Beenden der Chatsitzung vorhanden.
-- **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Seitenleiste für Teilnehmer enthält eine Liste mit den Teilnehmern des Chats und einen Link zum Einladen von Teilnehmern zur Chatsitzung. Mit der Seitenleiste für die Einstellungen können Sie den Titel des Chatthreads konfigurieren. 
+- **Hauptbereich für Chats** : Dies ist der Hauptbereich für Chats, in dem Benutzer Nachrichten senden und empfangen können. Zum Senden von Nachrichten können Sie den Eingabebereich nutzen und dann die EINGABETASTE drücken (oder die Schaltfläche „Senden“ verwenden). Die empfangenen Chatnachrichten werden nach Absender mit dem zugehörigen Namen und Emoji kategorisiert. Im Chatbereich werden zwei Arten von Benachrichtigungen angezeigt: 1) Eingabebenachrichtigungen, wenn ein Benutzer Text eingibt, und 2) Sende- und Lesebenachrichtigungen für Nachrichten.
+- **Header** : Hier werden dem Benutzer der Titel des Chatthreads und die Steuerelemente zum Umschalten der Seitenleiste für die Teilnehmer und die Einstellungen angezeigt. Darüber hinaus ist eine Schaltfläche zum Beenden der Chatsitzung vorhanden.
+- **Seitenleiste** : Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Seitenleiste für Teilnehmer enthält eine Liste mit den Teilnehmern des Chats und einen Link zum Einladen von Teilnehmern zur Chatsitzung. Mit der Seitenleiste für die Einstellungen können Sie den Titel des Chatthreads konfigurieren. 
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 
@@ -75,7 +77,7 @@ Sie können das Beispiel lokal testen, indem Sie mehrere Browsersitzungen mit de
 ## <a name="before-running-the-sample-for-the-first-time"></a>Vor dem erstmaligen Ausführen des Beispiels
 
 1. Öffnen Sie eine Instanz von PowerShell, des Windows-Terminals, einer Eingabeaufforderung oder eines gleichwertigen Tools, und navigieren Sie zu dem Verzeichnis, in dem Sie das Beispiel klonen möchten.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Rufen Sie im Azure-Portal die `Connection String` (Verbindungszeichenfolge) ab. Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../quickstarts/create-communication-resource.md).
 4. Fügen Sie nach dem Abrufen von `Connection String` die Zeichenfolge der Datei **Chat/appsettings.json** hinzu, die im Ordner „Chat“ enthalten ist. Geben Sie Ihre Verbindungszeichenfolge in die Variable ein: `ResourceConnectionString`.
 

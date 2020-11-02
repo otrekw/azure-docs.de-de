@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4e50f6b2770f9f787c92e7a9c66f72cdbb252a94
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105123"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519689"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer Funktion in Azure mit Visual Studio Code
 
@@ -65,7 +65,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 - Sowohl [.NET Core 3.1](https://www.microsoft.com/net/download) als auch [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11.
 
 - [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 ::: zone-end
@@ -121,7 +121,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
     ::: zone pivot="programming-language-java"
     - **Select a language for your function project** (Wählen Sie eine Sprache für Ihr Funktionsprojekt aus.): Wählen Sie die Option `Java`.
 
-    - **Select a version of Java** (Wählen Sie eine Java-Version aus): Wählen Sie `Java 8` oder `Java 11 (preview)` aus, je nachdem, unter welcher Version Ihre Funktionen in Azure ausgeführt werden. Wählen Sie eine Java-Version aus, die Sie lokal überprüft haben.
+    - **Select a version of Java** (Wählen Sie eine Java-Version aus): Wählen Sie `Java 8` oder `Java 11` aus, je nachdem, unter welcher Version Ihre Funktionen in Azure ausgeführt werden. Wählen Sie eine Java-Version aus, die Sie lokal überprüft haben.
 
     - **Provide a group ID** (Geben Sie eine Gruppen-ID an.): Wählen Sie die Option `com.function`.
 
@@ -168,7 +168,7 @@ Nachdem Sie sich vergewissert haben, dass die Funktion auf Ihrem lokalen Compute
 
 ## <a name="run-the-function-in-azure"></a>Ausführen der Funktion in Azure
 
-1. Zurück im Bereich **Azure: Funktionen** auf der Seitenleiste die neue Funktions-App unter Ihrem Abonnement. Erweitern Sie **Funktionen**, klicken Sie mit der rechten Maustaste (Windows), bzw. klicken Sie bei gedrückter <kbd>CTRL-TASTE</kbd> (macOS) auf **HttpExample**, und wählen Sie **Copy function URL** (Funktions-URL kopieren) aus.
+1. Zurück im Bereich **Azure: Funktionen** auf der Seitenleiste die neue Funktions-App unter Ihrem Abonnement. Erweitern Sie **Funktionen** , klicken Sie mit der rechten Maustaste (Windows), bzw. klicken Sie bei gedrückter <kbd>CTRL-TASTE</kbd> (macOS) auf **HttpExample** , und wählen Sie **Copy function URL** (Funktions-URL kopieren) aus.
 
     ![Kopieren Sie die Funktions-URL für den neuen HTTP-Trigger.](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
