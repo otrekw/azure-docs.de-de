@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Lokal, OCR, Docker, Container
-ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536374"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677215"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installieren von Read-OCR-Docker-Containern (Vorschau) 
 
@@ -25,12 +25,14 @@ ms.locfileid: "91536374"
 
 Container ermöglichen Ihnen, die APIs für maschinelles Sehen in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie Container für maschinelles Sehen herunterladen, installieren und ausführen.
 
-Mit dem *Read*-OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](concept-recognizing-text.md#read-api).
+Mit dem *Read* -OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](concept-recognizing-text.md#read-api).
 
-## <a name="read-3x-containers"></a>Read 3.x-Container
-Es sind zwei Versionen der 3.x-Container in der Vorschau verfügbar. Beide Versionen bieten eine höhere Genauigkeit und zusätzliche Features gegenüber dem vorherigen Container.
+## <a name="read-31-container"></a>Read 3.1-Container
 
-Der Container „Read 3.0-preview“ bietet Folgendes:
+> [!NOTE]
+> Der Read 3.0-Vorschaucontainer wurde als veraltet markiert. 
+
+Der Read 3.1-Vorschaucontainer bietet Folgendes:
 * Neue Modelle für erweiterte Genauigkeit
 * Unterstützung für mehrere Sprachen innerhalb desselben Dokuments
 * Unterstützung für: Niederländisch, Englisch, Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch
@@ -38,14 +40,11 @@ Der Container „Read 3.0-preview“ bietet Folgendes:
 * Unterstützung für größere Dokumente und Bilder
 * Konfidenzscores zwischen 0 und 1.
 * Unterstützung für Dokumente mit gedrucktem und handgeschriebenem Text
-
-Der Container „Read 3.1-preview“ bietet dieselben Vorteile wie „v3.0-preview“, jedoch mit folgenden zusätzlichen Features:
-
 * Unterstützung für Chinesisch (vereinfacht) und Japanisch.
 * Konfidenzscores und Bezeichnungen für gedruckten und handgeschriebenen Text 
 * Möglichkeit, Text nur von ausgewählten Seiten in einem Dokument zu extrahieren
 
-Beachten Sie bei der Überlegung, welche Containerversion Sie verwenden möchten, dass sich „v3.1-preview“ in einem früheren Stadium der Vorschau befindet. Wenn Sie heute Read 2.0-Container verwenden, lesen Sie den [Migrationsleitfaden](read-container-migration-guide.md), um sich über die Änderungen in den neuen Versionen zu informieren.
+Wenn Sie heute Read 2.0-Container verwenden, lesen Sie den [Migrationsleitfaden](read-container-migration-guide.md), um sich über die Änderungen in den neuen Versionen zu informieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -93,7 +92,6 @@ Für das Lesen stehen Containerimages zur Verfügung.
 | Container | Container Registry/Repository/Imagename |
 |-----------|------------|
 | Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
@@ -104,12 +102,6 @@ Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/referenc
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
-```
-
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
 ```
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
@@ -152,24 +144,6 @@ Dieser Befehl:
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-
-```
-
-Dieser Befehl:
-
-* Führt den Container für das Lesen aus dem Containerimage aus
-* Ordnet 8 CPU-Kerne und 18 GB Arbeitsspeicher zu.
-* Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
-* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
-
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
 ```bash
@@ -195,13 +169,13 @@ Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
-Wenn Sie einen höheren Durchsatz (beispielsweise bei der Verarbeitung mehrseitiger Dateien) benötigen, ziehen Sie die Bereitstellung mehrerer v3.0- oder v3.1-Container [in einem Kubernetes-Cluster](deploy-computer-vision-on-premises.md) mithilfe von [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) und [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) in Betracht.
+Wenn Sie einen höheren Durchsatz (beispielsweise bei der Verarbeitung mehrseitiger Dateien) benötigen, ziehen Sie die Bereitstellung mehrerer Container [in einem Kubernetes-Cluster](deploy-computer-vision-on-premises.md) mithilfe von [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) und [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) in Betracht.
 
 Wenn Sie Azure Storage zum Speichern von Images für die Verarbeitung verwenden, können Sie eine [Verbindungszeichenfolge](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) erstellen, die beim Aufrufen des Containers verwendet werden soll.
 
 So finden Sie die Verbindungszeichenfolge:
 
-1. Navigieren Sie im Azure-Portal zu **Speicherkonten**, und suchen Sie Ihr Konto.
+1. Navigieren Sie im Azure-Portal zu **Speicherkonten** , und suchen Sie Ihr Konto.
 2. Klicken Sie in der linken Navigationsliste auf **Zugriffsschlüssel**.
 3. Die Verbindungszeichenfolge befindet sich unterhalb von **Verbindungszeichenfolge**.
 
@@ -218,10 +192,6 @@ Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bere
 # <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` anzeigen.
-
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` anzeigen.
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
@@ -295,75 +265,6 @@ Die `operation-location` ist die vollqualifizierte URL, auf die über HTTP GET z
               "style": "print",
               "styleConfidence": 0.603
             },
-            "words": [
-              {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
-                "text": "paces",
-                "confidence": 0.918
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-Sie können die Vorgänge `POST /vision/v3.0/read/analyze` und `GET /vision/v3.0/read/operations/{operationId}` kombiniert verwenden, um asynchron in einem Bild zu lesen, ähnlich wie der Dienst für maschinelles Sehen die entsprechenden REST-Vorgänge verwendet. Die asynchrone POST-Methode gibt eine `operationId` zurück, die als Bezeichner für die HTTP GET-Anforderung verwendet wird.
-
-Wählen Sie auf der Swagger-Benutzeroberfläche `asyncBatchAnalyze` aus, um die Option im Browser zu erweitern. Wählen Sie dann **Jetzt ausprobieren** > **Datei auswählen** aus. In diesem Beispiel verwenden wir das folgende Bild:
-
-![Tabstopps und Leerzeichen](media/tabs-vs-spaces.png)
-
-Wenn die asynchrone POST-Anforderung erfolgreich ausgeführt wurde, gibt sie den Statuscode **HTTP 202** zurück. Teil der Antwort ist ein `operation-location`-Header, der den Ergebnisendpunkt für die Anforderung enthält.
-
-```http
- content-length: 0
- date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
- server: Kestrel
-```
-
-Die `operation-location` ist die vollqualifizierte URL, auf die über HTTP GET zugegriffen wird. Hier ist die JSON-Antwort der Ausführung der URL `operation-location` aus dem vorherigen Bild:
-
-```json
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:24:49Z",
-  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
-  "analyzeResult": {
-    "version": "3.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 2.12,
-        "width": 502,
-        "height": 252,
-        "unit": "pixel",
-        "language": "",
-        "lines": [
-          {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
-            "text": "Tabs vs",
-            "words": [
-              {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
-                "text": "Tabs",
-                "confidence": 0.981
-              },
-              {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
-                "text": "vs",
-                "confidence": 0.958
-              }
-            ]
-          },
-          {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
-            "text": "paces",
             "words": [
               {
                 "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
@@ -453,10 +354,6 @@ Mit dem folgenden Vorgang können Sie ein Bild synchron lesen:
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-`POST /vision/v3.0/read/syncAnalyze`
-
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
 `POST /vision/v2.0/read/core/Analyze`
@@ -473,7 +370,7 @@ Wenn das Bild vollständig gelesen wird, dann – und nur dann – gibt die API 
 
 Das JSON-Antwortobjekt enthält dasselbe Objektdiagramm wie die asynchrone Version. Wenn Sie ein JavaScript-Benutzer sind und Typsicherheit wünschen, können Sie die JSON-Antwort mithilfe von TypeScript umwandeln.
 
-Ein Beispiel für einen Anwendungsfall finden Sie in <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">dieser TypeScript-Sandbox<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Wählen Sie **Ausführen** aus, um die Benutzerfreundlichkeit visuell darzustellen.
+Ein Beispiel für einen Anwendungsfall finden Sie in <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">dieser TypeScript-Sandbox <span class="docon docon-navigate-external x-hidden-focus"></span></a>. Wählen Sie **Ausführen** aus, um die Benutzerfreundlichkeit visuell darzustellen.
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 

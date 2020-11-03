@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102492"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494855"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
-Sie können [Modelle](concepts-models.md), die Ihrer Azure Digital Twins-Instanz bekannt sind, mithilfe der [**DigitalTwinsModels-APIs**](how-to-use-apis-sdks.md), dem [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) oder der [Azure Digital Twins-CLI](how-to-use-cli.md) verwalten. 
+Sie können [Modelle](concepts-models.md), die Ihrer Azure Digital Twins-Instanz bekannt sind, mithilfe der [**DigitalTwinModels-APIs**](/rest/api/digital-twins/dataplane/models), dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) oder der [Azure Digital Twins-CLI](how-to-use-cli.md) verwalten. 
 
 Zu den Verwaltungsvorgängen gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen. 
 
 ## <a name="create-models"></a>Erstellen von Modellen
 
-Azure Digital Twins-Modelle werden in DTDL geschrieben und als *JSON*-Dateien gespeichert. Für [Visual Studio Code](https://code.visualstudio.com/) gibt es auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl), die die Syntaxüberprüfung und andere Features zum Schreiben von DTDL-Dokumenten umfasst.
+Azure Digital Twins-Modelle werden in DTDL geschrieben und als *JSON* -Dateien gespeichert. Für [Visual Studio Code](https://code.visualstudio.com/) gibt es auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl), die die Syntaxüberprüfung und andere Features zum Schreiben von DTDL-Dokumenten umfasst.
 
 Angenommen, ein Krankenhaus möchte seine Räume digital überwachen. Jeder Raum enthält einen intelligenten Seifenspender, der das Händewaschen überwacht, sowie Sensoren, die den Durchgangsverkehr im Raum nachverfolgen.
 
@@ -61,7 +61,7 @@ Der erste Schritt zur Lösung besteht darin, Modelle zu erstellen, die verschied
 > [!NOTE]
 > Dies ist ein Beispieltext für eine JSON-Datei, in der ein Modell definiert und gespeichert wird, das als Teil eines Clientprojekts hochgeladen werden soll. Der REST-API-Aufruf hingegen verwendet ein Array mit Modelldefinitionen wie die obige (die einer `IEnumerable<string>` im .NET SDK zugeordnet ist). Damit Sie dieses Modell direkt in der REST-API verwenden können, sollten Sie es in Klammern setzen.
 
-Dieses Modell definiert einen Namen und eine eindeutige ID für das Patientenzimmer sowie Eigenschaften zur Darstellung der Anzahl der Besucher und zum Status des Händewaschens. Diese Werte werden von Bewegungssensoren und intelligenten Seifenspendern aktualisiert und gemeinsam verwendet, um eine Eigenschaft für das *Händewaschen (in Prozent)* zu berechnen. Das Modell definiert außerdem eine *hasDevices*-Beziehung, die verwendet wird, um einen [digitalen Zwilling](concepts-twins-graph.md) basierend auf dem *Raummodell* mit den tatsächlichen Geräten zu verbinden.
+Dieses Modell definiert einen Namen und eine eindeutige ID für das Patientenzimmer sowie Eigenschaften zur Darstellung der Anzahl der Besucher und zum Status des Händewaschens. Diese Werte werden von Bewegungssensoren und intelligenten Seifenspendern aktualisiert und gemeinsam verwendet, um eine Eigenschaft für das *Händewaschen (in Prozent)* zu berechnen. Das Modell definiert außerdem eine *hasDevices* -Beziehung, die verwendet wird, um einen [digitalen Zwilling](concepts-twins-graph.md) basierend auf dem *Raummodell* mit den tatsächlichen Geräten zu verbinden.
 
 Mit dieser Methode können Sie Modelle für die Stationen oder Bereiche des Krankenhauses oder sogar das gesamte Krankenhaus definieren.
 
@@ -170,7 +170,7 @@ Modelle werden nicht unbedingt genau in dem Dokumentformat zurückgegeben, in de
 
 Nachdem ein Modell in Ihre Azure Digital Twins-Instanz hochgeladen wurde, ist die gesamte Modellschnittstelle unveränderlich. Dies bedeutet, dass es kein herkömmliches „Bearbeiten“ von Modellen gibt. Azure Digital Twins lässt auch keinen erneuten Upload desselben Modells zu.
 
-Wenn Sie stattdessen Änderungen an einem Modell vornehmen möchten, wie ein Update von **oder**, können Sie eine `displayName`neuere Version`description` desselben Modells hochladen. 
+Wenn Sie stattdessen Änderungen an einem Modell vornehmen möchten, wie ein Update von **oder** , können Sie eine `displayName`neuere Version`description` desselben Modells hochladen. 
 
 #### <a name="model-versioning"></a>Versionsverwaltung der Modelle
 
@@ -192,7 +192,7 @@ Version 2 dieses Modells könnte wie folgt aussehen:
 
 Laden Sie dann die neue Version des Modells auf Ihre Instanz hoch. 
 
-Diese Version des Modells wird dann in Ihrer Instanz für digitale Zwillinge zur Verfügung stehen. Frühere Versionen des Modells werden dabei **nicht überschrieben**, sodass mehrere Versionen des Modells in Ihrer Instanz gleichzeitig vorhanden sind, bis Sie sie [ entfernen](#remove-models).
+Diese Version des Modells wird dann in Ihrer Instanz für digitale Zwillinge zur Verfügung stehen. Frühere Versionen des Modells werden dabei **nicht überschrieben** , sodass mehrere Versionen des Modells in Ihrer Instanz gleichzeitig vorhanden sind, bis Sie sie [ entfernen](#remove-models).
 
 #### <a name="impact-on-twins"></a>Auswirkungen auf Zwillinge
 
@@ -235,7 +235,7 @@ Im Rest dieses Abschnitts wird das Löschen von Modellen ausführlicher beschrie
 
 Generell können Modelle jederzeit gelöscht werden.
 
-Allerdings stellen Modelle, von denen andere Modelle abhängig sind (durch eine `extends`-Beziehung oder weil es sich um eine Komponente handelt), eine Ausnahme dar. Wenn beispielsweise ein *ConferenceRoom*-Modell ein *Room*-Modell erweitert und über ein *ACUnit*-Modell als Komponente verfügt, können Sie die Modelle *Room* und *ACUnit* erst löschen, wenn die jeweiligen Verweise für das Modell *ConferenceRoom* entfernt werden. 
+Allerdings stellen Modelle, von denen andere Modelle abhängig sind (durch eine `extends`-Beziehung oder weil es sich um eine Komponente handelt), eine Ausnahme dar. Wenn beispielsweise ein *ConferenceRoom* -Modell ein *Room* -Modell erweitert und über ein *ACUnit* -Modell als Komponente verfügt, können Sie die Modelle *Room* und *ACUnit* erst löschen, wenn die jeweiligen Verweise für das Modell *ConferenceRoom* entfernt werden. 
 
 Hierzu können Sie das abhängige Modell aktualisieren, um die Abhängigkeiten zu entfernen, oder das abhängige Modell vollständig löschen.
 
@@ -285,8 +285,6 @@ Azure Digital Twins geht dagegen nicht vor. Deshalb sollten Sie darauf achten, T
 ## <a name="manage-models-with-cli"></a>Verwalten von Modellen mit der CLI
 
 Modelle können auch mit der Azure Digital Twins-CLI verwaltet werden. Die Befehle finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

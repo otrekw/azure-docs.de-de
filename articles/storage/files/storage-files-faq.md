@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563691"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746826"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -76,7 +76,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Azure Files unterstützt zwei Speichertarife: Premium und Standard. Standard-Dateifreigaben werden in universellen Speicherkonten (GPv1 oder GPv2) und Premium-Dateifreigaben in FileStorage-Speicherkonten erstellt. Erfahren Sie mehr darüber, wie Sie [Standard-Dateifreigaben](storage-how-to-create-file-share.md) und [Premium-Dateifreigaben](storage-how-to-create-premium-fileshare.md) erstellen. 
     
     > [!NOTE]
-    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium*-Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard*-Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium*-Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
+    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium* -Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard* -Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium* -Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
 
 * <a id="file-locking"></a>
   **Unterstützt Azure Files das Sperren von Dateien?**  
@@ -257,7 +257,25 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="ad-multiple-forest"></a>
 **Unterstützt die Authentifizierung mit lokalen AD DS für Azure-Dateifreigaben die Integration in eine AD DS-Umgebung mit mehreren Gesamtstrukturen?**    
 
-    Die Azure Files-Authentifizierung mit lokalen AD DS ist nur in die Gesamtstruktur des Domänendiensts integriert, bei dem das Speicherkonto registriert ist. Zur Unterstützung der Authentifizierung von einer anderen Gesamtstruktur muss die Gesamtstruktur-Vertrauensstellung in Ihrer Umgebung ordnungsgemäß konfiguriert sein. Die Registrierung von Azure Files bei AD DS entspricht größtenteils der Registrierung eines regulären Dateiservers. Dabei wird in AD DS eine Identität (Computer- oder Dienstanmeldekonto) für die Authentifizierung erstellt. Der einzige Unterschied besteht darin, dass der registrierte SPN des Speicherkontos auf „file.core.windows.net“ endet, was nicht mit dem Domänensuffix übereinstimmt. Wenden Sie sich an Ihren Domänenadministrator, um festzustellen, ob ein Update Ihrer DNS-Routingrichtlinie erforderlich ist, um die Authentifizierung mit mehreren Gesamtstrukturen aufgrund des unterschiedlichen Domänensuffixes zu aktivieren.
+    Die Azure Files-Authentifizierung mit lokalen AD DS ist nur in die Gesamtstruktur des Domänendiensts integriert, bei dem das Speicherkonto registriert ist. Zur Unterstützung der Authentifizierung von einer anderen Gesamtstruktur muss die Gesamtstruktur-Vertrauensstellung in Ihrer Umgebung ordnungsgemäß konfiguriert sein. Die Registrierung von Azure Files bei AD DS entspricht größtenteils der Registrierung eines regulären Dateiservers. Dabei wird in AD DS eine Identität (Computer- oder Dienstanmeldekonto) für die Authentifizierung erstellt. Der einzige Unterschied besteht darin, dass der registrierte SPN des Speicherkontos auf „file.core.windows.net“ endet, was nicht mit dem Domänensuffix übereinstimmt. Wenden Sie sich an Ihren Domänenadministrator, um festzustellen, ob ein Update Ihrer Suffix-Routingrichtlinie erforderlich ist, um die Authentifizierung mit mehreren Gesamtstrukturen aufgrund des unterschiedlichen Domänensuffixes zu aktivieren. Unten finden Sie ein Beispiel für das Konfigurieren der Suffix-Routingrichtlinie.
+    
+    Beispiel: Wenn Benutzer in der Domäne der Gesamtstruktur A eine Dateifreigabe mit dem Speicherkonto erreichen möchten, das für eine Domäne in der Gesamtstruktur B registriert ist, funktioniert dies nicht automatisch, da der Dienstprinzipal des Speicherkontos kein Suffix hat, das mit dem Suffix einer Domäne in Gesamtstruktur A übereinstimmt. Sie können dieses Problem beheben, indem Sie manuell eine Suffix-Routingregel von Gesamtstruktur A nach Gesamtstruktur B für das benutzerdefinierte Suffix „file.core.windows.net“ konfigurieren.
+    Zunächst müssen Sie in Gesamtstruktur B ein neues benutzerdefiniertes Suffix hinzufügen. Stellen Sie sicher, dass Sie über die entsprechenden Administratorberechtigungen zum Ändern der Konfiguration verfügen, und führen Sie dann die folgenden Schritte aus:   
+    1. Melden Sie sich auf einem Computer in der Domäne der Gesamtstruktur B an.
+    2.  Öffnen Sie die Konsole „Active Directory-Domänen und -Vertrauensstellungen“.
+    3.  Klicken Sie mit der rechten Maustaste auf „Active Directory-Domänen und -Vertrauensstellungen“.
+    4.  Klicken Sie auf „Eigenschaften“.
+    5.  Klicken Sie auf „Hinzufügen“.
+    6.  Fügen Sie „file.core.windows.net“ als UPN-Suffix hinzu.
+    7.  Klicken Sie auf „Anwenden“ und dann auf „OK“, um den Assistenten zu schließen.
+    
+    Fügen Sie als Nächstes die Suffix-Routingregel für Gesamtstruktur A hinzu, damit eine Weiterleitung zu Gesamtstruktur B erfolgt.
+    1.  Melden Sie sich auf einem Computer in der Domäne der Gesamtstruktur A an.
+    2.  Öffnen Sie die Konsole „Active Directory-Domänen und -Vertrauensstellungen“.
+    3.  Klicken Sie mit der rechten Maustaste auf die Domäne, die auf die Dateifreigabe zugreifen soll. Klicken Sie dann auf die Registerkarte „Vertrauensstellungen“, und wählen Sie für ausgehende Vertrauensstellungen eine Domäne der Gesamtstruktur B aus. Wenn Sie noch keine Vertrauensstellung zwischen den beiden Gesamtstrukturen konfiguriert haben, müssen Sie diese zunächst einrichten.
+    4.  Klicken Sie auf „Eigenschaften“ und dann auf „Namensuffixrouting“.
+    5.  Überprüfen Sie, ob das Suffix „*.file.core.windows.net“ angezeigt wird. Klicken Sie andernfalls auf „Aktualisieren“.
+    6.  Wählen Sie „*.file.core.windows.net“ aus, und klicken Sie dann auf „Aktivieren“ und „Anwenden“.
 
 * <a id=""></a>
 **Welche Regionen sind für die AD DS-Authentifizierung von Azure Files verfügbar?**

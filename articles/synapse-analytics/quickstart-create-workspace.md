@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171775"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461106"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Schnellstart: Erstellen eines Synapse-Arbeitsbereichs
 In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal erläutert.
@@ -23,17 +23,12 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure S
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
 1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
-1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich mit diesen Einstellungen zu erstellen:
-
-    |Registerkarte|Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
-    |---|---|---|---|
-    |Grundlagen|**Arbeitsbereichsname**|Sie können einen beliebigen Namen eingeben.| In diesem Dokument wird **myworkspace** verwendet.|
-    |Grundlagen|**Region**|Wählen Sie dieselbe Region wie für das Speicherkonto aus.|
-
+1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
+1. Geben Sie auf der Registerkarte **Grundlagen** einen eindeutigen Namen für den Arbeitsbereich ein. In diesem Dokument wird **myworkspace** verwendet.
 1. Zum Erstellen eines Arbeitsbereichs benötigen Sie ein ADLSGEN2-Konto. Am einfachsten ist es, ein solches Konto neu zu erstellen. Wenn Sie ein vorhandenes Konto verwenden möchten, müssen Sie einige zusätzliche Konfigurationsschritte ausführen. 
 1. OPTION 1: Erstellen eines neuen ADLSGEN2-Kontos 
-    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Neu erstellen**, und geben Sie **contosolake** als Namen ein.
-    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Dateisystem**, und geben Sie **users** als Namen ein.
+    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Neu erstellen** , und geben Sie **contosolake** als Namen ein.
+    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Dateisystem** , und geben Sie **users** als Namen ein.
 1. OPTION 2: Anweisungen finden Sie unter **Vorbereiten eines Speicherkontos** am Ende dieses Dokuments.
 1. Ihr Azure Synapse-Arbeitsbereich verwendet dieses Speicherkonto als „primäres“ Speicherkonto und den Container zum Speichern von Arbeitsbereichsdaten. Im Arbeitsbereich werden Daten in Apache Spark-Tabellen gespeichert. Die Spark-Anwendungsprotokolle werden im Ordner **/synapse/workspacename** gespeichert.
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
@@ -54,7 +49,7 @@ Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglich
     * Weisen Sie sich selbst die Rolle **Besitzer von Speicherblobdaten** zu.
 1. Wählen Sie im linken Bereich die Option **Container** aus, und erstellen Sie einen Container.
 1. Sie können dem Container einen beliebigen Namen geben. In diesem Dokument hat der Container den Namen **users**.
-1. Übernehmen Sie die Standardeinstellung **Öffentliche Zugriffsebene**, und wählen Sie anschließend **Erstellen** aus.
+1. Übernehmen Sie die Standardeinstellung **Öffentliche Zugriffsebene** , und wählen Sie anschließend **Erstellen** aus.
 
 ### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>Konfigurieren des Zugriffs auf das Speicherkonto vom Arbeitsbereich
 

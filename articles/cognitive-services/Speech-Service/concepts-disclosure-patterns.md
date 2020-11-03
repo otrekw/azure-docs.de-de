@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: fe4f0cdcdb863582560b0eba3a22e95b93ff858b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150948"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425112"
 ---
 # <a name="disclosure-design-patterns"></a>Entwurfsmuster für die Offenlegung
 Nachdem Sie die richtige [Offenlegungsstufe](concepts-disclosure-guidelines.md#disclosure-assessment) für die Erfahrung mit Ihrer synthetischen Stimme festgelegt haben, ist es an der Zeit, mögliche Entwurfsmuster zu untersuchen.
@@ -184,7 +184,7 @@ Berücksichtigen Sie die verschiedenen Interaktionsmodi Ihrer Benutzererfahrung,
 
 Die Offenlegung kann implizit erreicht werden, indem genaue Erwartungen an das, was der digitale Assistent kann, gestellt werden. Stellen Sie Beispielbefehle bereit, damit Benutzer lernen können, wie sie mit dem digitalen Assistenten interagieren, und bieten Sie eine kontextbezogene Hilfe, um mehr über die synthetische Stimme in den frühen Phasen der Benutzererfahrung zu erfahren.
 
-![Visuelle Hinweise und Feedback](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Beispiel der Standardantworten auf eine Unterhaltung, die Sie gestalten können.](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>Interaktive Transparenz
 

@@ -8,13 +8,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 04/15/2020
-ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91651716"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742533"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Schnellstart: Erstellen eines Apache Spark-Pools in Azure Synapse Analytics mithilfe von Webtools
 
@@ -42,9 +42,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Ein Notebook ist eine interaktive Umgebung, die verschiedene Programmiersprachen unterstützt. Das Notebook ermöglicht es Ihnen, mit Ihren Daten zu interagieren, Code mit Markdowntext zu kombinieren und einfache Visualisierungen durchzuführen.
 
 1. Wählen Sie in der Azure-Portalansicht für den zu verwendenden Azure Synapse-Arbeitsbereich die Option **Synapse Studio starten** aus.
-2. Wählen Sie in Synapse Studio die Option **Entwickeln** aus. Zeigen Sie auf den Eintrag **Notebooks**. Wählen Sie die Auslassungspunkte ( **...** ) aus.
-3. Wählen Sie **Neues Notebook** aus. Ein neues Notebook mit einem automatisch generierten Namen wird erstellt und geöffnet.
-  ![Neues Notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Neues Notebook")
+2. Wählen Sie in Synapse Studio die Option **Entwickeln** aus. Wählen Sie dann das Symbol „ **+** “ aus, um eine neue Ressource hinzuzufügen.
+3. Wählen Sie dort **Notebook** aus. Ein neues Notebook mit einem automatisch generierten Namen wird erstellt und geöffnet.
+ 
+     ![Neues Notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Neues Notebook")
 
 4. Geben Sie im Fenster **Eigenschaften** einen Namen für das Notebook an.
 5. Klicken Sie auf der Symbolleiste auf **Veröffentlichen**.
@@ -64,11 +65,11 @@ Ein Notebook ist eine interaktive Umgebung, die verschiedene Programmiersprachen
    - Wählen Sie auf der linken Seite der Zelle das blaue Wiedergabesymbol aus.
    - Wählen Sie auf der Symbolleiste die Schaltfläche **Alle ausführen** aus.
 
-   ![Erstellen eines Datenrahmenobjekts](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Ausgabe des Spark-Auftrags")
+       ![Erstellen eines Datenrahmenobjekts](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png)
 
 10. Sollte die Instanz des Apache Spark-Pools noch nicht ausgeführt werden, wird sie automatisch gestartet. Der Status der Apache Spark-Poolinstanz wird unterhalb der ausgeführten Zelle sowie im Statusbereich am unteren Rand des Notebooks angezeigt. Je nach Poolgröße dauert der Startvorgang in der Regel zwischen zwei und fünf Minuten. Nach Abschluss der Codeausführung werden unterhalb der Zelle Informationen zur Ausführungsdauer und zur Ausführung angezeigt. Die Ausgabezelle enthält die Ausgabe.
 
-    ![Ausgabe nach Ausführung einer Zelle](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Ausgabe des Spark-Auftrags")
+    ![Ausgabe nach Ausführung einer Zelle](./media/quickstart-apache-spark-notebook/run-cell-with-output.png)
 
 11. Die Daten sind jetzt in einem Datenrahmen (DataFrame) vorhanden, von wo aus sie auf unterschiedlichste Weise verwendet werden können. Im weiteren Verlauf dieser Schnellstartanleitung werden sie in unterschiedlichen Formaten benötigt.
 12. Geben Sie den folgenden Code in eine andere Zelle ein, und führen Sie ihn aus. Dadurch werden eine Spark-Tabelle, eine CSV-Datei und eine Parquet-Datei mit Kopien der Daten erstellt:

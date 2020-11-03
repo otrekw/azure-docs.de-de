@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260137"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480478"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Grundlegende Konzepte für Apache Spark in Azure Synapse Analytics
 
@@ -60,7 +60,40 @@ Wenn Sie einen zweiten Auftrag übermitteln und Kapazität im Pool verfügbar is
 - Ein anderer Benutzer (U2) übermittelt einen Auftrag (J3), der zehn Knoten beansprucht, und es wird eine neue Spark-Instanz (SI2) erstellt, um den Auftrag zu verarbeiten.
 - Anschließend übermitteln Sie einen weiteren Auftrag (J2), der zehn Knoten beansprucht, und da noch Kapazität im Pool und in der Instanz verfügbar ist, wird „J2“ von „SI1“ verarbeitet.
 
+## <a name="quotas-and-resource-constraints-in-apache-spark-for-azure-synapse"></a>Kontingente und Ressourceneinschränkungen in Apache Spark für Azure Synapse
+
+### <a name="workspace-level"></a>Arbeitsbereichsebene
+
+Jeder Azure Synapse-Arbeitsbereich verfügt über ein Standardkontingent von virtuellen Kernen, das für Spark verwendet werden kann. Das Kontingent wird zwischen dem Benutzerkontingent und dem Datenflusskontingent aufgeteilt, sodass keines der beiden Verwendungsmuster alle virtuellen Kerne im Arbeitsbereich erschöpfend verwendet. Das Kontingent ist in Abhängigkeit vom Typ Ihres Abonnements jeweils anders, wird jedoch symmetrisch zwischen Benutzer und Datenfluss verteilt. Wenn Sie allerdings mehr virtuelle Kerne anfordern, als im Arbeitsbereich verbleiben, erhalten Sie die folgende Fehlermeldung:
+
+```console
+Failed to start session: [User] MAXIMUM_WORKSPACE_CAPACITY_EXCEEDED
+Your Spark job requested 480 vcores.
+However, the workspace only has xxx vcores available out of quota of yyy vcores.
+Try reducing the numbers of vcores requested or increasing your vcore quota. Click here for more information - https://go.microsoft.com/fwlink/?linkid=213499
+```
+
+Der Link in der Meldung verweist auf diesen Artikel.
+
+Im folgenden Artikel wird beschrieben, wie Sie eine Erhöhung des Arbeitsbereichskontingents für virtuelle Kerne anfordern.
+
+- Wählen Sie als Diensttyp „Azure Synapse Analytics“ aus.
+- Wählen Sie im Fenster „Kontingentdetails“ die Option „Apache Spark (vCore) pro Arbeitsbereich“ aus.
+
+[Anfordern einer Kapazitätserhöhung über das Azure-Portal](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+
+### <a name="spark-pool-level"></a>Spark-Poolebene
+
+Wenn Sie einen Spark-Pool definieren, definieren Sie de facto ein Kontingent pro Benutzer für diesen Pool. Wenn Sie mehrere Notebooks, Aufträge oder eine Mischung aus beidem ausführen, kann das Poolkontingent erschöpft werden. Kommt es hierzu, wird eine Fehlermeldung wie die folgende generiert.
+
+```console
+Failed to start session: Your Spark job requested xx vcores.
+However, the pool is consuming yy vcores out of available zz vcores.Try ending the running job(s) in the pool, reducing the numbers of vcores requested, increasing the pool maximum size or using another pool
+```
+
+Um dieses Problem zu beheben, müssen Sie Ihre Nutzung der Poolressourcen verringern, bevor Sie eine neue Ressourcenanforderung absenden, indem Sie ein Notebook oder einen Auftrag ausführen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark-Dokumentation](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark-Dokumentation](https://spark.apache.org/docs/2.4.5/)

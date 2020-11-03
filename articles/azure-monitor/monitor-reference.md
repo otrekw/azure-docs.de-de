@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206032"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461803"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -169,6 +169,19 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Virtual Network – NSG-Datenflussprotokolle | Nein | Ja | Nein |  |
 |VPN Gateway | Ja | Ja | Nein |  |
 |Windows Virtual Desktop | Nein | Nein | Nein |  |
+
+## <a name="virtual-machine-agents"></a>Agents für virtuelle Computer
+In der folgenden Tabelle sind die Agents aufgeführt, die Daten vom Gastbetriebssystem virtueller Computer sammeln und an Azure Monitor senden können. Jeder Agent kann verschiedene Daten sammeln und an „Metriken“ oder „Protokolle“ in Azure Monitor senden. 
+
+Ausführliche Informationen zu den Daten, die von den einzelnen Agents gesammelt werden können, finden Sie unter [Übersicht über Azure Monitor-Agents](platform/agents-overview.md).
+
+| Agent |  Metriken | Protokolle |
+|:---|:---|:---|:---|
+| [Azure Monitor-Agent (Vorschau)](platform/azure-monitor-agent-overview.md) | Ja | Ja |
+| [Log Analytics-Agent](platform/log-analytics-agent.md) | Nein | Ja|
+| [Diagnoseerweiterung](platform/diagnostics-extension-overview.md) | Ja | Nein |
+| [Telegraf-Agent](platform/collect-custom-metrics-linux-telegraf.md) | Ja | Nein |
+| [Dependency-Agent](insights/vminsights-enable-overview.md) | Nein | Ja |
 
 
 ## <a name="product-integrations"></a>Produktintegrationen

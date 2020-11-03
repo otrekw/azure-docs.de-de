@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654258"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785611"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -34,8 +34,8 @@ Der Schlüssel bei jeder Migration liegt in der Erfassung sämtlicher anwendbare
 
 Hier sind die beiden grundlegenden Komponenten einer Datei:
 
-- **Datenstrom**: Der Datenstrom einer Datei speichert den Dateiinhalt.
-- **Dateimetadaten**: Die Dateimetadaten weisen diese Unterkomponenten auf:
+- **Datenstrom** : Der Datenstrom einer Datei speichert den Dateiinhalt.
+- **Dateimetadaten** : Die Dateimetadaten weisen diese Unterkomponenten auf:
    * Dateiattribute, z. B. Schreibschutz
    * Dateiberechtigungen, als *NTFS-Berechtigungen* oder *Datei- und Ordner-ACLs* bezeichnet
    * Zeitstempel, insbesondere für Erstellung und letzte Änderung
@@ -111,7 +111,7 @@ Es sind mehrere Tools zum Kopieren von Dateien von Microsoft und anderen Anbiete
 
     Beim ersten Ausführen des Tools wird ein Großteil der Daten kopiert. Diese erste Ausführung kann eine Weile dauern. Es dauert häufig länger, als Sie die Datenquelle für Ihre Geschäftsprozesse offline nehmen möchten.
 
-    Indem Sie eine Quelle an einem Ziel spiegeln (z. B. mit **robocopy /MIR**), können Sie das Tool mit derselben Quelle und demselben Ziel erneut ausführen. Die Ausführung läuft viel schneller ab, da nur Änderungen an der Quelle transportiert werden müssen, die nach der vorherigen Ausführung aufgetreten sind. Ein Kopiertool auf diese Weise erneut auszuführen, kann die Ausfallzeit erheblich verringern.
+    Indem Sie eine Quelle an einem Ziel spiegeln (z. B. mit **robocopy /MIR** ), können Sie das Tool mit derselben Quelle und demselben Ziel erneut ausführen. Die Ausführung läuft viel schneller ab, da nur Änderungen an der Quelle transportiert werden müssen, die nach der vorherigen Ausführung aufgetreten sind. Ein Kopiertool auf diese Weise erneut auszuführen, kann die Ausfallzeit erheblich verringern.
 
 In der folgenden Tabelle sind Microsoft-Tools und deren aktuelle Eignung für Azure-Dateifreigaben klassifiziert:
 
@@ -121,7 +121,7 @@ In der folgenden Tabelle sind Microsoft-Tools und deren aktuelle Eignung für Az
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure-Dateisynchronisierung | Nativ in Azure-Dateifreigaben integriert. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Speichermigrationsdienst | Indirekt unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke auf SMS-Zielservern eingebunden werden. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, Version 10.4 oder höher| Unterstützt. | Vollständige Genauigkeit* |
-|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Unterstützt. | Kopiert keine Metadaten. [Data Box kann mit der Azure-Dateisynchronisierung verwendet werden](storage-sync-offline-data-transfer.md). |
+|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Unterstützt. | DataBox unterstützt Metadaten jetzt vollständig. [Data Box kann auch in Kombination mit der Azure-Dateisynchronisierung verwendet werden](storage-sync-offline-data-transfer.md). |
 |![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage-Explorer, Version 1.14 | Unterstützt. | Kopiert keine Zugriffssteuerungslisten (ACLs). Unterstützt Zeitstempel.  |
 |![Nicht empfohlen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Unterstützt. | Kopiert keine Metadaten. |
 |||||

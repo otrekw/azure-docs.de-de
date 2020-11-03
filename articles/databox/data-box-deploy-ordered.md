@@ -213,11 +213,11 @@ Ausführliche Informationen zum Anmelden bei Azure mit Windows PowerShell finden
 Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestellen.
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen unter folgender URL an: [https://portal.azure.com](https://portal.azure.com).
-2. Wählen Sie **+ Ressource erstellen** aus, und suchen Sie nach *Azure Data Box* . Wählen Sie **Azure Data Box** aus.
+2. Wählen Sie **+ Ressource erstellen** aus, und suchen Sie nach *Azure Data Box*. Wählen Sie **Azure Data Box** aus.
 
    ![Screenshot: Abschnitt „Neu“ mit „Azure Data Box“ im Suchfeld](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Klicken Sie auf **Erstellen** .
+3. Klicken Sie auf **Erstellen**.
 
    ![Screenshot: Abschnitt „Azure Data Box“ mit hervorgehobener Option „Erstellen“](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
@@ -237,7 +237,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
     ![Screenshot: Die verschiedenen zur Auswahl stehenden Datengrößen: „Data Box Disk“ (40 TB), „Data Box“ (100 TB), „Data Box Heavy“ (1.000 TB) und „Eigene Datenträger einsenden“ (1 TB).](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. Wechseln Sie in **Bestellung** zur Registerkarte **Grundlagen** . Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend Folgendes aus: **Weiter: Datenziel>** .
+6. Wechseln Sie in **Bestellung** zur Registerkarte **Grundlagen**. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend Folgendes aus: **Weiter: Datenziel>** .
 
     |Einstellung  |Wert  |
     |---------|---------|
@@ -303,7 +303,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
        Auf dem Bildschirm **Sicherheit** können Sie **View or change passwords** (Kennwörter anzeigen oder ändern) verwenden, um die Kennwörter zu ändern.
 
-1. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, erweitern Sie auf dem Bildschirm **Sicherheit** den Bereich **Double-encryption (for highly secure environments)** (Doppelte Verschlüsselung (für Umgebungen mit hoher Sicherheit)), und wählen Sie die Option **Doppelte Verschlüsselung für den Auftrag aktivieren** aus.
+1. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, erweitern Sie auf dem Bildschirm **Sicherheit** den Bereich **Double-encryption (for highly secure environments)**  (Doppelte Verschlüsselung (für Hochsicherheitsumgebungen)), und wählen Sie die Option **Doppelte Verschlüsselung für den Auftrag aktivieren** aus.
 
    ![Bildschirm „Sicherheit“ für Data Box-Import: Aktivieren der softwarebasierten Verschlüsselung für einen Data Box-Auftrag](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 

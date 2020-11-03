@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152157"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538577"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -29,7 +29,7 @@ IoT Hub ist einer der ersten Azure-Dienste, der die verteilte Ablaufverfolgung u
 Durch die Aktivierung der verteilten Ablaufverfolgung für IoT Hub können Sie die folgenden Aktionen ausführen:
 
 - Überwachen Sie ganz präzise den Fluss jeder Nachricht in IoT Hub mit dem [Überwachungskontext](https://github.com/w3c/trace-context). Dieser Überwachungskontext umfasst Korrelations-IDs, mit denen Sie Ereignisse von einer Komponente mit Ereignissen einer anderen Komponente korrelieren können. Anwendbar ist dies mithilfe eines [Gerätezwillings](iot-hub-devguide-device-twins.md) auf einige oder alle IoT-Gerätenachrichten.
-- Protokollieren Sie den Überwachungskontext in [Azure Monitor-Diagnoseprotokollen](iot-hub-monitor-resource-health.md).
+- Lassen Sie den Überwachungskontext in [Azure Monitor-Protokollen](monitor-iot-hub.md) automatisch protokollieren.
 - Messen und analysieren Sie den Nachrichtenfluss sowie die Latenzen von Geräten zu IoT Hub und Routingendpunkten.
 - Überlegen Sie, wie Sie die verteilte Ablaufverfolgung für Nicht-Azure-Dienste in Ihrer IoT-Lösung implementieren möchten.
 
@@ -55,9 +55,9 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Instanz so, dass die Attribut
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Instanz.
 
-1. Scrollen Sie im linken Bereich für den IoT Hub nach unten zum Abschnitt **Überwachung**, und klicken Sie auf **Diagnoseeinstellungen**.
+1. Scrollen Sie im linken Bereich für den IoT Hub nach unten zum Abschnitt **Überwachung** , und klicken Sie auf **Diagnoseeinstellungen**.
 
-1. Wenn noch keine Diagnoseeinstellungen aktiviert sind, klicken Sie auf **Diagnose aktivieren**. Wenn Sie bereits Diagnoseeinstellungen aktiviert haben, klicken Sie auf **Diagnoseeinstellung hinzufügen**.
+1. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 
 1. Geben Sie im Feld **Name** einen Namen für eine neue Diagnoseeinstellung ein, z.B. **DistributedTracingSettings**.
 
@@ -69,7 +69,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Instanz so, dass die Attribut
 
 1. Wählen Sie im Abschnitt **Protokoll** die Vorgänge aus, für die Protokollierungsinformationen erstellt werden sollen.
 
-    Stellen Sie sicher, dass Sie **DistributedTracing**, auswählen, und legen Sie unter **Aufbewahrung (Tage)** fest, für wie viele Tage die Protokollierung beibehalten werden soll. Die Dauer der Protokollbeibehaltung wirkt sich auf die Speicherkosten aus.
+    Stellen Sie sicher, dass Sie **DistributedTracing** , auswählen, und legen Sie unter **Aufbewahrung (Tage)** fest, für wie viele Tage die Protokollierung beibehalten werden soll. Die Dauer der Protokollbeibehaltung wirkt sich auf die Speicherkosten aus.
 
     ![Screenshot: Kategorie „DistributedTracing“ in den IoT-Diagnoseeinstellungen](./media/iot-hub-distributed-tracing/diag-logs.png)
 
@@ -83,7 +83,7 @@ Nachdem die Protokollierung aktiviert wurde, wird in IoT Hub bei Nachrichten mit
 - Die Nachricht wird vom IoT Hub verarbeitet.
 - Die Nachricht wird an benutzerdefinierte Endpunkte weitergeleitet. Das Routing muss aktiviert sein.
 
-Weitere Informationen zu diesen Protokollen und den zugehörigen Schemas finden Sie unter [Verteilte Ablaufverfolgung in IoT Hub-Diagnoseprotokollen](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
+Weitere Informationen zu diesen Protokollen und deren Schemas finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md) und [Verteilte Ablaufverfolgung in IoT Hub-Ressourcenprotokollen](monitor-iot-hub-reference.md#distributed-tracing-preview).
 
 ## <a name="set-up-device"></a>Einrichten des Geräts
 
@@ -162,7 +162,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="compile-and-run"></a>Kompilieren und Ausführen
 
-1. Navigieren Sie im zuvor erstellten CMake-Verzeichnis (`azure-iot-sdk-c/cmake`) zum Projektverzeichnis *iothub_ll_telemetry_sample*, und kompilieren Sie das Beispiel:
+1. Navigieren Sie im zuvor erstellten CMake-Verzeichnis (`azure-iot-sdk-c/cmake`) zum Projektverzeichnis *iothub_ll_telemetry_sample* , und kompilieren Sie das Beispiel:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -181,7 +181,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="workaround-for-third-party-clients"></a>Problemumgehung für Clients von Drittanbietern
 
-Es ist **nicht einfach**, eine Vorschau des Features zur verteilten Ablaufverfolgung anzuzeigen, ohne das C SDK zu verwenden. Daher wird dieser Ansatz nicht empfohlen.
+Es ist **nicht einfach** , eine Vorschau des Features zur verteilten Ablaufverfolgung anzuzeigen, ohne das C SDK zu verwenden. Daher wird dieser Ansatz nicht empfohlen.
 
 Zunächst müssen Sie alle IoT-Hub-Protokollgrundtypen in Ihren Nachrichten implementieren, indem Sie der Anleitung für Entwickler [Erstellen und Lesen von IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) folgen. Bearbeiten Sie dann die Protokolleigenschaften in den MQTT/AMQP-Nachrichten, um `tracestate` als **Systemeigenschaft** hinzuzufügen. Sie haben folgende Möglichkeiten:
 
@@ -249,7 +249,7 @@ Verwenden Sie zum Aktualisieren der Samplingkonfiguration der verteilten Ablaufv
 }
 ```
 
-| Elementname | Erforderlich | type | BESCHREIBUNG |
+| Elementname | Erforderlich | type | Beschreibung |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Integer | Derzeit werden zum Aktivieren und Deaktivieren des Samplings zwei Moduswerte unterstützt. `1` steht für „Aktiviert“ und `2` für „Deaktiviert“. |
 | `sampling_rate` | Ja | Integer | Dieser Wert ist ein Prozentsatz. Es sind nur Werte von `0` bis (einschließlich) `100` zulässig.  |
@@ -260,7 +260,7 @@ Um alle von einer IoT Hub-Instanz protokollierten Ablaufverfolgungen anzuzeigen,
 
 ### <a name="query-using-log-analytics"></a>Abfragen mithilfe von Log Analytics
 
-Wenn Sie [Log Analytics mit Diagnoseprotokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) eingerichtet haben, führen Sie die Abfragen durch Suchen von Protokollen in der Kategorie `DistributedTracing` durch. In der folgenden Abfrage sind beispielsweise alle protokollierten Ablaufverfolgungen aufgeführt:
+Wenn Sie [Log Analytics mit Ressourcenprotokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) eingerichtet haben, führen Sie die Abfragen durch Suchen nach Protokollen in der Kategorie `DistributedTracing` durch. In der folgenden Abfrage sind beispielsweise alle protokollierten Ablaufverfolgungen aufgeführt:
 
 ```Kusto
 // All distributed traces 
@@ -278,7 +278,7 @@ Beispiel für in Log Analytics angezeigte Protokolle:
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
 | 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
-Eine Beschreibung der unterschiedlichen Protokolltypen finden Sie unter [Azure IoT Hub-Diagnoseprotokolle](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
+Eine Beschreibung der unterschiedlichen Protokolltypen finden Sie unter [Azure IoT Hub-Protokolle für verteilte Ablaufverfolgung](monitor-iot-hub-reference.md#distributed-tracing-preview).
 
 ### <a name="application-map"></a>Anwendungszuordnung
 
@@ -313,7 +313,7 @@ Nach der Aktivierung erfolgt die Unterstützung der verteilten Ablaufverfolgung 
 1. Das IoT-Gerät sendet die Nachricht an IoT Hub.
 1. Die Nachricht wird am IoT Hub-Gateway empfangen.
 1. IoT Hub sucht in den Nachrichteneigenschaften nach `tracestate` und überprüft, ob das richtige Format vorliegt.
-1. In diesem Fall generiert IoT Hub eine global eindeutige `trace-id` für die Nachricht und eine `span-id` für den „Hop“ und protokolliert beide in Azure Monitor-Diagnoseprotokollen unter dem Vorgang `DiagnosticIoTHubD2C`.
+1. In diesem Fall generiert IoT Hub eine global eindeutige `trace-id` für die Nachricht sowie eine `span-id` für den „Hop“ und protokolliert beide in [IoT Hub-Protokollen für verteilte Ablaufverfolgung](monitor-iot-hub-reference.md#distributed-tracing-preview) unter dem Vorgang `DiagnosticIoTHubD2C`.
 1. Nach Abschluss der Nachrichtenverarbeitung generiert IoT Hub eine andere `span-id` und protokolliert sie zusammen mit der vorhandenen `trace-id` unter dem Vorgang `DiagnosticIoTHubIngress`.
 1. Wenn für die Nachricht das Routing aktiviert ist, schreibt IoT Hub die Nachricht in den benutzerdefinierten Endpunkt und protokolliert ein weiteres `span-id`-Element mit dem gleichen `trace-id`-Element unter der Kategorie `DiagnosticIoTHubEgress`.
 1. Diese Schritte werden für jede generierte Nachricht wiederholt.
@@ -330,3 +330,4 @@ Nach der Aktivierung erfolgt die Unterstützung der verteilten Ablaufverfolgung 
 - Weitere Informationen zum allgemeinen Muster der verteilten Ablaufverfolgung in Microservices finden Sie unter [Microservice architecture pattern: distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html) (Microservicearchitekturmuster: Verteilte Ablaufverfolgung).
 - Informationen zum Einrichten der Konfiguration zur Anwendung von Einstellungen der verteilten Ablaufverfolgung auf eine große Anzahl von Geräten finden Sie unter [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](./iot-hub-automatic-device-management.md).
 - Weitere Informationen zu Azure Monitor finden Sie unter [Was ist Azure Monitor?](../azure-monitor/overview.md).
+- Weitere Informationen zur Verwendung von Azure Monitor bei IoT Hub finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md).

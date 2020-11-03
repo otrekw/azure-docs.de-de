@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277290"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496131"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -85,7 +85,7 @@ Sie können den Container nicht ausführen, wenn Ihr Azure-Abonnement nicht gene
 
 ## <a name="set-up-the-host-computer"></a>Einrichten des Hostcomputers
 
-Wir empfehlen Ihnen, ein Azure Stack Edge-Gerät für Ihren Hostcomputer zu verwenden. Klicken Sie auf **Desktopcomputer**, wenn Sie ein anderes Gerät konfigurieren.
+Wir empfehlen Ihnen, ein Azure Stack Edge-Gerät für Ihren Hostcomputer zu verwenden. Klicken Sie auf **Desktopcomputer** , wenn Sie ein anderes Gerät konfigurieren.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-Gerät](#tab/azure-stack-edge)
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Wenn es sich beim Hostcomputer nicht um ein Azure Stack Edge-Gerät handelt, müssen Sie [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) Version 1.0.8 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
+Wenn es sich beim Hostcomputer nicht um ein Azure Stack Edge-Gerät handelt, müssen Sie [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) Version 1.0.9 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
 
 Ubuntu Server 18.04:
 ```bash
@@ -286,10 +286,10 @@ Aktualisieren Sie die Paketlisten auf Ihrem Gerät.
 sudo apt-get update
 ```
 
-Installieren Sie das Release 1.0.8:
+Installieren Sie das Release 1.0.9:
 
 ```bash
-sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
 ```
 
 Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal) verwenden.
@@ -314,7 +314,7 @@ Führen Sie die unten angegebenen Schritte aus, um den Container mit der Azure C
 
 ### <a name="iot-deployment-manifest"></a>IoT-Bereitstellungsmanifest
 
-Zum Optimieren der Containerbereitstellung auf mehreren Hostcomputern können Sie eine Bereitstellungsmanifestdatei erstellen, um die Optionen für die Containererstellung und die Umgebungsvariablen anzugeben. Ein Beispiel für ein [Bereitstellungsmanifest finden Sie auf GitHub](https://go.microsoft.com/fwlink/?linkid=2142179).
+Zum Optimieren der Containerbereitstellung auf mehreren Hostcomputern können Sie eine Bereitstellungsmanifestdatei erstellen, um die Optionen für die Containererstellung und die Umgebungsvariablen anzugeben. Ein Beispiel für ein Bereitstellungsmanifest [für Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) und [andere Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) finden Sie auf Github.
 
 In der folgenden Tabelle sind die verschiedenen Umgebungsvariablen aufgeführt, die vom IoT Edge-Modul verwendet werden. Sie können sie auch im oben verlinkten Bereitstellungsmanifest festlegen, indem Sie das Attribut `env` in `spatialanalysis` verwenden:
 
@@ -335,17 +335,16 @@ In der folgenden Tabelle sind die verschiedenen Umgebungsvariablen aufgeführt, 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
-Nachdem Sie die Beispieldatei [DeploymentManifest.json](https://go.microsoft.com/fwlink/?linkid=2142179) mit Ihren eigenen Einstellungen und Ihrer Auswahl von Vorgängen aktualisiert haben, können Sie den unten angegebenen [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)-Befehl verwenden, um den Container auf dem Hostcomputer als IoT Edge-Modul bereitzustellen.
+Nachdem Sie das Bereitstellungsmanifest für [Azure Stack Edge-Geräte](https://go.microsoft.com/fwlink/?linkid=2142179) oder [einen Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) mit Ihren eigenen Einstellungen und Ihrer Auswahl von Vorgängen aktualisiert haben, können Sie den unten dargestellten [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)-Befehl verwenden, um den Container auf dem Hostcomputer als IoT Edge-Modul bereitzustellen.
 
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parameter  |Beschreibung  |
 |---------|---------|
-| `--deployment-id` | Ein neuer Name für die Bereitstellung. |
 | `--hub-name` | Der Name Ihrer Azure IoT Hub-Instanz. |
 | `--content` | Der Name der Bereitstellungsdatei. |
 | `--target-condition` | Der Name Ihres IoT Edge-Geräts für den Hostcomputer. |
@@ -382,11 +381,11 @@ Sie können die räumliche Analyse sowohl für aufgezeichnete als auch für Live
     1. Ändern Sie **Sichere Übertragung erforderlich** in **Deaktiviert**.
     2. Ändern Sie **Öffentlichen Blobzugriff gestatten** in **Aktiviert**.
 
-Navigieren Sie zum Abschnitt **Container**, und erstellen Sie entweder einen neuen Container, oder verwenden Sie einen vorhandenen. Laden Sie anschließend die Videodatei in den Container hoch. Erweitern Sie die Dateieinstellungen für die hochgeladene Datei, und wählen Sie die Option **SAS generieren** aus. Achten Sie darauf, dass Sie unter **Ablaufdatum** einen Zeitraum angeben, der den Testzeitraum abdeckt. Legen Sie **Zulässige Protokolle** auf *HTTP* fest (*HTTPS* wird nicht unterstützt).
+Navigieren Sie zum Abschnitt **Container** , und erstellen Sie entweder einen neuen Container, oder verwenden Sie einen vorhandenen. Laden Sie anschließend die Videodatei in den Container hoch. Erweitern Sie die Dateieinstellungen für die hochgeladene Datei, und wählen Sie die Option **SAS generieren** aus. Achten Sie darauf, dass Sie unter **Ablaufdatum** einen Zeitraum angeben, der den Testzeitraum abdeckt. Legen Sie **Zulässige Protokolle** auf *HTTP* fest ( *HTTPS* wird nicht unterstützt).
 
-Klicken Sie auf **SAS-Token und -URL generieren**, und kopieren Sie die Blob-SAS-URL. Ersetzen Sie `https` am Anfang durch `http`, und testen Sie die URL in einem Browser, der die Videowiedergabe unterstützt.
+Klicken Sie auf **SAS-Token und -URL generieren** , und kopieren Sie die Blob-SAS-URL. Ersetzen Sie `https` am Anfang durch `http`, und testen Sie die URL in einem Browser, der die Videowiedergabe unterstützt.
 
-Ersetzen Sie `VIDEO_URL` im [Bereitstellungsmanifest](https://go.microsoft.com/fwlink/?linkid=2142179) für alle Graphen durch die von Ihnen erstellte URL. Legen Sie `VIDEO_IS_LIVE` auf `false` fest, und stellen Sie den Container für räumliche Analyse mit dem aktualisierten Manifest erneut bereit. Betrachten Sie das folgende Beispiel.
+Ersetzen Sie `VIDEO_URL` im Bereitstellungsmanifest für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder einen anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) durch die von Ihnen erstellte URL, und zwar für alle Graphen. Legen Sie `VIDEO_IS_LIVE` auf `false` fest, und stellen Sie den Container für räumliche Analyse mit dem aktualisierten Manifest erneut bereit. Betrachten Sie das folgende Beispiel.
 
 Das Modul für die räumliche Analyse beginnt mit der Nutzung der Videodatei und wird fortlaufend automatisch wiedergegeben.
 

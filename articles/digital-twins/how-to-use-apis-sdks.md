@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aa8d08dde3cf2dbfb5cb1e819ba9941aea4e387
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 52ecc1f7de2afb83d3f37ddae6b1b618a8a8e34d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203703"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636016"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -32,20 +32,20 @@ So verwenden Sie die Steuerungsebenen-APIs
 * Sie können die APIs direkt aufrufen, indem Sie auf den neuesten Swagger im [Swagger-Ordner der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins) verweisen. Dieses Repository enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen.
 * Sie können derzeit auf SDKs für Steuerungs-APIs in Folgendem zugreifen...
   - [.NET (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([Quelle](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([Referenz [automatisch generiert]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([Quelle](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([Referenz [automatisch generiert]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([Quelle](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) ([Referenz [automatisch generiert]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([Quelle](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([Quelle](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Go – Quelle](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
+  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([Quelle](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([Quelle](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 Sie können auch Steuerungsebenen-APIs anwenden, indem Sie mit Azure Digital Twins über das [Azure-Portal](https://portal.azure.com) und die [CLI](how-to-use-cli.md) interagieren.
 
 ## <a name="overview-data-plane-apis"></a>Übersicht: Datenebenen-APIs
 
 Bei den Datenebenen-APIs handelt es sich um die Azure Digital Twins-APIs, die verwendet werden, um die Elemente innerhalb Ihrer Azure Digital Twins-Instanz zu verwalten. Dazu gehören Vorgänge wie das Erstellen von Routen, das Hochladen von Modellen, das Erstellen von Beziehungen und die Verwaltung von Zwillingen. Sie lassen sich grob in die folgenden Kategorien einteilen:
-* **DigitalTwinsModels** – Die Kategorie „DigitalTwinsModels“ enthält APIs zur Verwaltung der [Modelle](concepts-models.md) in einer Azure Digital Twins-Instanz. Zu den Verwaltungsaktivitäten gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen, die in DTDL erstellt wurden.
+* **DigitalTwinModels** – Die Kategorie „DigitalTwinModels“ enthält APIs zur Verwaltung der [Modelle](concepts-models.md) in einer Azure Digital Twins-Instanz. Zu den Verwaltungsaktivitäten gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen, die in DTDL erstellt wurden.
 * **DigitalTwins** – Die Kategorie „DigitalTwins“ enthält die APIs, mit denen Entwickler [digitale Zwillinge](concepts-twins-graph.md) und ihre Beziehungen in einer Azure Digital Twins-Instanz erstellen, ändern und löschen können.
 * **Query** – Die Kategorie „Query“ ermöglicht es Entwicklern, [Gruppen von digitalen Zwillingen im Zwillingsgraphen](how-to-query-graph.md) beziehungsübergreifend zu finden.
-* **EventRoutes** – Die Kategorie „EventRoutes“ enthält APIs zur [Weiterleitung von Daten](concepts-route-events.md), durch das System und zu Downstreamdiensten.
+* **Event Routes** – Die Kategorie „Event Routes“ enthält APIs zur [Weiterleitung von Daten](concepts-route-events.md), durch das System und zu Downstreamdiensten.
 
 Die aktuellste Datenebenen-API-Version für die öffentliche Vorschau ist _**2020-10-31**_.
 
@@ -56,14 +56,17 @@ So verwenden Sie die Datenebenen-APIs
 * Sie können das **.NET (C#)** SDK verwenden. So verwenden Sie das .NET SDK
    - Sie können das Paket über NuGet anzeigen und hinzufügen: [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
    - Sie suchen die SDK-Quelle, einschließlich eines Ordner mit Beispielen, in GitHub: [Azure IoT Digital Twins-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - Sie können die [SDK-Referenzdokumentation](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview) anzeigen.
+   - Sie können die [SDK-Referenzdokumentation](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) anzeigen.
    - Sie können ausführliche Informationen und Anwendungsbeispiele anzeigen, indem Sie mit dem Abschnitt [.NET (C#) SDK (Datenebene)](#net-c-sdk-data-plane) dieses Artikels fortfahren.
-* Sie können das **JavaScript** SDK verwenden. So verwenden Sie das JavaScript SDK
-   - Sie können das Paket über npm anzeigen und installieren: [Azure Digital Twins-Clientbibliothek für JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
-   - Sie können die [SDK-Referenzdokumentation](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest) anzeigen.
-* Sie können das **Java**-SDK verwenden. Zum Verwenden des Java-SDK...
+* Sie können das **Java** -SDK verwenden. Zum Verwenden des Java-SDK...
    - Sie können das Paket über Maven anzeigen und installieren: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - Sie können die SDK-Quelle in GitHub finden: [Azure IoT Digital Twins-Clientbibliothek für Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - Sie können die [SDK-Referenzdokumentation](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) anzeigen.
+* Sie können das **JavaScript** SDK verwenden. So verwenden Sie das JavaScript SDK
+   - Sie können das Paket über npm anzeigen und installieren: [Azure Digital Twins-Clientbibliothek für JavaScript](https://www.npmjs.com/package/@azure/digital-twins).
+   - Sie können die [SDK-Referenzdokumentation](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest) anzeigen.
+* Sie können auch das **Python** SDK verwenden. Zum Verwenden des Python SDK...
+   - können Sie das folgende Paket anzeigen und installieren: [Azure Digital Twins-Hauptclientbibliothek für Python](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/).
 * Mit AutoRest können Sie ein SDK für eine andere Sprache generieren. Führen Sie die Anweisungen unter [ *Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest*](how-to-create-custom-sdks.md).
 
 Sie können auch Datenebenen-APIs anwenden, indem Sie mit Azure Digital Twins über die [CLI](how-to-use-cli.md) interagieren.
@@ -77,7 +80,7 @@ Das Azure Digital Twins .NET (C#) SDK ist Teil des Azure SDK für .NET. Es ist O
 
 Um das SDK zu verwenden, fügen Sie Ihrem Projekt das NuGet-Paket **Azure.DigitalTwins.Core** hinzu. Sie benötigen auch die aktuelle Version des Pakets **Azure.Identity**.
 
-* In Visual Studio können Sie Pakete mit dem NuGet-Paket-Manager hinzufügen (Zugriff über *Extras > NuGet-Paket-Manager > NuGet-Pakete für Lösung verwalten*). 
+* In Visual Studio können Sie Pakete mit dem NuGet-Paket-Manager hinzufügen (Zugriff über *Extras > NuGet-Paket-Manager > NuGet-Pakete für Lösung verwalten* ). 
 * Sie können das .NET-Befehlszeilentool verwenden:
 
     ```cmd/sh
@@ -99,6 +102,8 @@ string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
 var credential = new DefaultAzureCredential();
 DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 ```
+
+[!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
 Modell hochladen und Modelle auflisten:
 
@@ -270,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Allgemeine Hinweise zur API/SDK-Verwendung
 
 > [!NOTE]
-> Beachten Sie, dass **Cross-Origin Resource Sharing (CORS)** in Azure Digital Twins derzeit nicht unterstützt wird. Weitere Informationen zu den Auswirkungen und Lösungsstrategien finden Sie im Abschnitt [*Cross-Origin Resource Sharing (CORS)* ](concepts-security.md#cross-origin-resource-sharing-cors) unter *Konzepte: Sicherheit für Azure Digital Twins-Lösungen*.
+> Beachten Sie, dass **Cross-Origin Resource Sharing (CORS)** in Azure Digital Twins derzeit nicht unterstützt wird. Weitere Informationen zu den Auswirkungen und Lösungsstrategien finden Sie im Abschnitt [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) unter *Konzepte: Sicherheit für Azure Digital Twins-Lösungen*.
 
 Die folgende Liste enthält zusätzliche Details und allgemeine Richtlinien für die Verwendung der APIs und SDKs.
 

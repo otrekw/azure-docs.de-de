@@ -6,15 +6,15 @@ author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql
-ms.date: 3/19/2020
+ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 806831ac5e965afcd076066f4baa498297a43a3e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87036572"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740530"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Schnellstart: Erstellen eines Synapse SQL-Pools mithilfe von Synapse Studio
 
@@ -37,25 +37,31 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigieren zum Synapse-Arbeitsbereich
 
 1. Navigieren Sie zu dem Synapse-Arbeitsbereich, in dem der SQL-Pool erstellt werden soll, indem Sie in die Suchleiste den Dienstnamen (oder direkt den Ressourcennamen) eingeben.
-![Suchleiste im Azure-Portal mit der Eingabe „Synapse-Arbeitsbereiche“](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
+
+    ![Suchleiste im Azure-Portal mit der Eingabe „Synapse-Arbeitsbereiche“](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
 1. Geben Sie in der Liste der Arbeitsbereiche den Namen (oder einen Teil des Namens) des zu öffnenden Arbeitsbereichs ein. In diesem Beispiel verwenden wir einen Arbeitsbereich namens **contosoanalytics**.
-![Auflistung von Synapse-Arbeitsbereichen, die so gefiltert wurden, dass diejenigen, die den Namen „Contoso“ enthalten, angezeigt werden](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
+
+    ![Auflistung von Synapse-Arbeitsbereichen, die so gefiltert wurden, dass diejenigen angezeigt werden, die den Namen „Contoso“ enthalten.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="launch-synapse-studio"></a>Starten von Synapse Studio
 
 1. Wählen Sie in der Arbeitsbereichsübersicht **Synapse Studio starten** aus, um den Speicherort zu öffnen, an dem der SQL-Pool erstellt werden soll. Geben Sie den Dienstnamen oder Ressourcennamen direkt in die Suchleiste ein.
-![Synapse-Arbeitsbereichsübersicht im Azure-Portal mit hervorgehobenem „Synapse Studio starten“](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
+
+    ![Synapse-Arbeitsbereichsübersicht im Azure-Portal mit hervorgehobenem „Synapse Studio starten“](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 
 ## <a name="create-a-sql-pool-in-synapse-studio"></a>Erstellen eines SQL-Pools in Synapse Studio
 
-1. Navigieren Sie auf der Synapse Studio-Startseite im linken Navigationsbereich zum **Verwaltungshub**, indem Sie das Symbol **Verwalten** auswählen.
-![Synapse Studio-Startseite mit hervorgehobenem Abschnitt „Verwaltungshub“](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-21.png)
+1. Navigieren Sie auf der Synapse Studio-Startseite im linken Navigationsbereich zum **Verwaltungshub** , indem Sie das Symbol **Verwalten** auswählen.
 
-1. Sobald Sie sich im Verwaltungshub befinden, navigieren Sie zum Abschnitt **SQL-Pools**, um die aktuelle Liste der SQL-Pools anzuzeigen, die im Arbeitsbereich verfügbar sind.
-![Synapse Studio-Verwaltungshub mit ausgewählter Navigation für „SQL-Pools“](media/quickstart-create-sql-pool/create-sql-pool-studio-22.png)
+    ![Synapse Studio-Startseite mit hervorgehobenem Abschnitt „Verwaltungshub“](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-21.png)
+
+1. Sobald Sie sich im Verwaltungshub befinden, navigieren Sie zum Abschnitt **SQL-Pools** , um die aktuelle Liste der SQL-Pools anzuzeigen, die im Arbeitsbereich verfügbar sind.
+
+    ![Synapse Studio-Verwaltungshub mit ausgewählter Navigation für „SQL-Pools“](media/quickstart-create-sql-pool/create-sql-pool-studio-22.png)
 
 1. Wählen Sie den Befehl **+ Neu** aus. Dann wird der Assistent zum Erstellen eines neuen SQL-Pools angezeigt. 
-![Liste der SQL-Pools im Synapse Studio-Verwaltungshub](media/quickstart-create-sql-pool/create-sql-pool-studio-23.png)
+
+    ![Liste der SQL-Pools im Synapse Studio-Verwaltungshub](media/quickstart-create-sql-pool/create-sql-pool-studio-23.png)
 
 1. Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Informationen ein:
 
@@ -68,18 +74,21 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
     > [!IMPORTANT]
     > Beachten Sie, dass für die Namen, die von SQL-Pools verwendet werden können, bestimmte Einschränkungen gelten. Namen dürfen keine Sonderzeichen enthalten, höchstens 15 Zeichen lang sein und keine reservierten Wörter enthalten und müssen im Arbeitsbereich eindeutig sein.
 
-4. Wählen Sie auf der nächsten Registerkarte, **Zusätzliche Einstellungen**, die Option **Keine** aus, um den SQL-Pool ohne Daten bereitzustellen. Übernehmen Sie die bereits ausgewählte Standardsortierung.
-![Erstellungsflow für den SQL-Pool: Registerkarte „Zusätzliche Einstellungen“](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
+4. Wählen Sie auf der nächsten Registerkarte, **Zusätzliche Einstellungen** , die Option **Keine** aus, um den SQL-Pool ohne Daten bereitzustellen. Übernehmen Sie die bereits ausgewählte Standardsortierung.
 
-1. Wir fügen vorerst keine Tags hinzu. Wählen Sie deshalb aus **Weiter: Überprüfen + erstellen**.
+    ![Erstellungsflow für den SQL-Pool: Registerkarte „Zusätzliche Einstellungen“](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 
-1. Vergewissern Sie sich auf der Grundlage der vorherigen Eingaben auf der Registerkarte **Überprüfen + erstellen**, dass die Details korrekt sind, und klicken Sie auf **Erstellen**. 
-![Flow für die SQL-Poolerstellung: Registerkarte zum Überprüfen der Einstellungen](media/quickstart-create-sql-pool/create-sql-pool-studio-26.png)
+1. Wir fügen vorerst keine Tags hinzu. Wählen Sie also als Nächstes **Überprüfen + erstellen** aus.
+
+1. Vergewissern Sie sich auf der Grundlage der vorherigen Eingaben auf der Registerkarte **Überprüfen + erstellen** , dass die Details korrekt sind, und klicken Sie auf **Erstellen**. 
+
+    ![Flow für die SQL-Poolerstellung: Registerkarte zum Überprüfen der Einstellungen](media/quickstart-create-sql-pool/create-sql-pool-studio-26.png)
 
 1. Der Flow für die Ressourcenbereitstellung wird nun gestartet.
 
 1. Wenn Sie nach Abschluss der Bereitstellung zurück zum Arbeitsbereich navigieren, wird ein neuer Eintrag für den neu erstellten SQL-Pool angezeigt.
- ![Flow für die SQL-Poolerstellung: Ressourcenbereitstellung](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
+
+    ![Flow für die SQL-Poolerstellung: Ressourcenbereitstellung](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
 
 1. Sobald der SQL-Pool erstellt wurde, steht er im Arbeitsbereich zum Laden von Daten, Verarbeiten von Datenströmen, Lesen aus dem Data Lake usw. zur Verfügung.
 
@@ -92,10 +101,11 @@ Führen Sie die folgenden Schritte aus, um den SQL-Pool mithilfe von Synapse Stu
 Wenn Sie den SQL-Pool löschen möchten, führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie in Synapse Studio im Verwaltungshub zu den SQL-Pools.
-1. Wählen Sie die Auslassungspunkte in dem SQL-Pool aus, der gelöscht werden soll (in diesem Fall **contosoedw**), um die Befehle für den SQL-Pool anzuzeigen: ![Liste der SQL-Pools; der soeben erstellte Pool ist ausgewählt](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
+1. Wählen Sie die Auslassungspunkte in dem SQL-Pool aus, der gelöscht werden soll (in diesem Fall **contosoedw** ), um die Befehle für den SQL-Pool anzuzeigen:
+
+    ![Liste der SQL-Pools, wobei der soeben erstellte Pool ausgewählt ist.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. Klicken Sie auf **Löschen**.
 1. Bestätigen Sie den Löschvorgang, und klicken Sie auf die Schaltfläche **Löschen**.
- ![Bestätigungsdialogfeld zum Löschen des ausgewählten SQL-Pools](media/quickstart-create-sql-pool/create-sql-pool-studio-29.png)
 1. Wenn der Vorgang erfolgreich abgeschlossen wurde, wird der SQL-Pool nicht mehr in den Arbeitsbereichsressourcen aufgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte 

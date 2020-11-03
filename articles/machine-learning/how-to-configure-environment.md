@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
+ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203091"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743101"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -61,7 +61,7 @@ Für das Erstellen einer Arbeitsbereichskonfigurationsdatei können Sie eine der
 
 * Azure-Portal
 
-    **Datei herunterladen**: Wählen Sie im [Azure-Portal](https://ms.portal.azure.com) im Abschnitt **Übersicht** Ihres Arbeitsbereichs **config.json herunterladen** aus.
+    **Datei herunterladen** : Wählen Sie im [Azure-Portal](https://ms.portal.azure.com) im Abschnitt **Übersicht** Ihres Arbeitsbereichs **config.json herunterladen** aus.
 
     ![Azure-Portal](./media/how-to-configure-environment/configure.png)
 
@@ -122,6 +122,9 @@ Wenn Sie einen lokalen Jupyter Notebook-Server betreiben, sollten Sie ein IPytho
 
 Unter [Beispielnotebooks des Azure Machine Learning-Diensts](https://github.com/Azure/MachineLearningNotebooks) finden Sie Informationen zu den ersten Schritten mit Azure Machine Learning und Jupyter Notebook-Instanzen.
 
+> [!NOTE]
+> Ein Communityrepository mit Beispielen finden Sie unter https://github.com/Azure/azureml-examples.
+
 ### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 So verwenden Visual Studio Code für die Entwicklung
@@ -139,10 +142,10 @@ Für eine Compute-Instanz muss nichts installiert oder konfiguriert werden.
 
 In Ihrem Azure Machine Learning-Arbeitsbereich können Sie jederzeit eine Notebook-VM erstellen. Geben Sie einfach einen Namen und einen Azure-VM-Typ an. Sie die Einrichtung unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
 
-Weitere Informationen zu Compute-Instanzen, einschließlich der Installation von Paketen, finden Sie unter [Compute-Instanzen](concept-compute-instance.md).
+Weitere Informationen zu Compute-Instanzen, einschließlich der Installation von Paketen, finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz](how-to-create-manage-compute-instance.md).
 
 > [!TIP]
-> [Halten Sie die Compute-Instanz an](tutorial-1st-experiment-bring-data.md#clean-up-resources), um wiederkehrende Kosten für eine nicht genutzte Compute-Instanz zu vermeiden.
+> [Halten Sie die Compute-Instanz an](how-to-create-manage-compute-instance.md#manage), um wiederkehrende Kosten für eine nicht genutzte Compute-Instanz zu vermeiden.
 
 Zusätzlich zu einem Jupyter Notebook-Server und JupyterLab können Sie Compute-Instanzen im [integrierten Notebook-Feature in Azure Machine Learning Studio](how-to-run-jupyter-notebooks.md) verwenden.
 

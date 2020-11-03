@@ -10,22 +10,18 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131682"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893576"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor: Häufig gestellte Fragen
 
 ### <a name="what-is-the-cost-of-my-instance"></a>Welche Kosten fallen für meine Instanz an?
 
 Für die Verwendung Ihrer Instanz in der Vorschau fallen derzeit keine Kosten an.
-
-### <a name="why-is-the-demo-website-readonly"></a>Weshalb ist die Demowebsite schreibgeschützt?
-
-Die [Demowebsite](https://anomaly-detector.azurewebsites.net/) ist öffentlich verfügbar. Diese Instanz ist schreibgeschützt, um das versehentliche Hochladen von Daten zu verhindern.
 
 ### <a name="why-cant-i-create-the-resource-the-pricing-tier-is-unavailable-and-it-says-you-have-already-created-1-s0-for-this-subscription"></a>Warum kann ich die Ressource nicht erstellen? Der Tarif ist nicht verfügbar, und „You have already created 1 S0 for this subscription“ (Sie haben bereits 1 S0 für dieses Abonnement erstellt) wird angezeigt.
 
@@ -92,7 +88,7 @@ Achten Sie darauf, dass Sie die richtige Granularität für Ihre Zeitreihe verwe
 
 Beachten Sie, dass diese Abfragen nur Daten zu einem einzigen Zeitstempel zurückgeben und alle Dimensionskombinationen enthalten, die vom Metrics Advisor erfasst werden. 
 
-:::image type="content" source="media/query-result.png" alt-text="Meldung, wenn eine F0-Ressource bereits vorhanden ist" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="Ein Abfrageergebnis mit einem Zeitstempel" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Wie erkenne ich Spitzen und Einbrüche als Anomalien?
@@ -131,7 +127,7 @@ Ausgehend von der Gesamtsumme `Response latency` können wir Detailinformationen
 
 Im Metrics Advisor können Benutzer jeden Pfad angeben, für den sie von einem Knoten der hierarchischen Topologie aus einen Drilldown oder ein Rollup ausführen möchten. Genauer gesagt handelt es sich bei der hierarchischen Topologie um ein gerichtetes azyklisches Diagramm und nicht um eine Baumstruktur. Es gibt eine vollständige hierarchische Topologie, die aus allen möglichen Dimensionskombinationen besteht, wie im folgenden Beispiel: 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="Meldung, wenn eine F0-Ressource bereits vorhanden ist" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="hierarchisches Topologiediagramm, das aus mehreren miteinander verbundenen Knoten und Kanten mit mehreren Dimensionen besteht, die mit S, DC und M bezeichnet sind, mit entsprechenden Zahlen von 1 bis 6." lightbox="media/dimension-combinations-view.png":::
 
 Wenn die Dimension `Service` theoretisch `Ls` verschiedene Werte, die Dimension `Data center` `Ldc` verschiedene Werte und die Dimension `Machine` `Lm` verschiedene Werte aufweist, dann könnte es in der hierarchischen Topologie `(Ls + 1) * (Ldc + 1) * (Lm + 1)` Dimensionskombinationen geben. 
 
@@ -145,5 +141,4 @@ Wenn beispielsweise eine Anomalie bei `Service = S2 | Data Center = DC2 | Machin
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Übersicht über Metrics Advisor](overview.md)
-- [Ausprobieren der Demowebsite](quickstarts/explore-demo.md)
 - [Verwenden des Webportals](quickstarts/web-portal.md)

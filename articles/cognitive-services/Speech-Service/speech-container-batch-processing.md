@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319077"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425801"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batchverarbeitungskit für Speech-Container
 
@@ -75,9 +75,8 @@ Der Batchclient kann dynamisch erkennen, wenn ein Endpunkt nicht mehr verfügbar
 > [!NOTE] 
 > * In diesem Beispiel wird das gleiche Verzeichnis (`/my_nfs`) für die Konfigurationsdatei und die Eingabe-, Ausgabe- und Protokollverzeichnisse verwendet. Sie können gehostete oder in NFS eingebundene Verzeichnisse für diese Ordner verwenden.
 > * Beim Ausführen des Clients mit `–h` werden die verfügbaren Befehlszeilenparameter mit ihren Standardwerten aufgelistet. 
+> * Der Batchverarbeitungscontainer wird nur unter Linux unterstützt.
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 Verwenden Sie den `run`-Befehl von Docker, um den Container zu starten. Dadurch wird innerhalb des Containers eine interaktive Shell gestartet.
 
 ```Docker
@@ -96,17 +95,6 @@ So führen Sie Batchclient und-Container mit einem einzelnen Befehl aus:
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-So führen Sie Batchclient und-Container mit einem einzelnen Befehl aus:
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
-
 
 Die Ausführung des Clients beginnt. Wenn in einem vorherigen Testlauf bereits eine Audiodatei transkribiert wurde, wird die Datei vom Client automatisch übersprungen. Dateien werden für den Fall von Übertragungsfehlern mit automatischer Wiederholung gesendet, und Sie können unterscheiden, bei welchen Fehlern der Client die Wiederholung versuchen soll. Bei einem Transkriptionsfehler setzt der Client die Transkription fort, und Sie können ohne Verlust des Fortschritts einen Wiederholungsversuch unternehmen.  
 
@@ -118,7 +106,7 @@ Das Batchverarbeitungskit bietet über den Parameter `--run-mode` drei Modi.
 
 Im `ONESHOT`-Modus wird ein einzelner Batch von Audiodateien (aus einem Eingabeverzeichnis und einer optionalen Dateiliste) in einen Ausgabeordner transkribiert.
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Diagramm, das ein Beispiel für einen Batchkit-Containerworkflow darstellt.":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Ein Diagramm, das den Batchkit-Container beim Verarbeiten von Dateien im Oneshot-Modus zeigt.":::
 
 1. Definieren Sie die Speech-Containerendpunkte, die der Batchclient verwenden soll, in der Datei `config.yaml`. 
 2. Platzieren Sie Audiodateien für die Transkription in einem Eingabeverzeichnis.  
@@ -133,7 +121,7 @@ Im `ONESHOT`-Modus wird ein einzelner Batch von Audiodateien (aus einem Eingabev
 
 Im `DAEMON`-Modus werden die vorhandenen Dateien in einem bestimmen Ordner transkribiert; neue Audiodateien werden nach dem Hinzufügen fortlaufend transkribiert.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Diagramm, das ein Beispiel für einen Batchkit-Containerworkflow darstellt.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Ein Diagramm, das den Batchkit-Container beim Verarbeiten von Dateien im Daemon-Modus zeigt.":::
 
 1. Definieren Sie die Speech-Containerendpunkte, die der Batchclient verwenden soll, in der Datei `config.yaml`. 
 2. Rufen Sie den Container in einem Eingabeverzeichnis auf. Der Batchclient beginnt, das Verzeichnis auf eingehende Dateien zu überwachen. 
@@ -146,7 +134,7 @@ Im `DAEMON`-Modus werden die vorhandenen Dateien in einem bestimmen Ordner trans
 
 Der `REST`-Modus ist ein API-Servermodus, der einen grundlegenden Satz von HTTP-Endpunkten für die Batchübermittlung von Audiodateien, die Statusüberprüfung und die Verwendung langer Abrufintervalle bereitstellt. Er ermöglicht darüber hinaus programmgesteuerten Verbrauch mithilfe einer Python-Modulerweiterung oder das Importieren als Untermodul.
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Diagramm, das ein Beispiel für einen Batchkit-Containerworkflow darstellt.":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Ein Diagramm, das den Batchkit-Container beim Verarbeiten von Dateien im REST-Modus zeigt.":::
 
 1. Definieren Sie die Speech-Containerendpunkte, die der Batchclient verwenden soll, in der Datei `config.yaml`. 
 2. Senden Sie eine HTTP-Anforderung an einen der Endpunkte des API-Servers. 
@@ -168,7 +156,7 @@ Der `REST`-Modus ist ein API-Servermodus, der einen grundlegenden Satz von HTTP-
 > [!NOTE]
 > Der Batchclient überschreibt die Datei *run.log* regelmäßig, wenn sie zu groß wird.
 
-Der Client erstellt eine *run.log*-Datei in dem Verzeichnis, das im `-log_folder`-Argument im Docker-Befehl `run` angegeben ist. Protokolle werden standardmäßig mit dem Protokolliergrad DEBUG erfasst. Die gleichen Protokolle werden an `stdout/stderr` gesendet und anhand des `-log_level`-Arguments gefiltert. Dieses Protokoll ist nur zum Debuggen erforderlich oder wenn Sie eine Ablaufverfolgung an den Support senden müssen. Der Protokollierungsordner enthält außerdem die Protokolle des Speech SDK für die einzelnen Audiodateien.
+Der Client erstellt eine *run.log* -Datei in dem Verzeichnis, das im `-log_folder`-Argument im Docker-Befehl `run` angegeben ist. Protokolle werden standardmäßig mit dem Protokolliergrad DEBUG erfasst. Die gleichen Protokolle werden an `stdout/stderr` gesendet und anhand des `-log_level`-Arguments gefiltert. Dieses Protokoll ist nur zum Debuggen erforderlich oder wenn Sie eine Ablaufverfolgung an den Support senden müssen. Der Protokollierungsordner enthält außerdem die Protokolle des Speech SDK für die einzelnen Audiodateien.
 
 Das durch `-output_folder` angegebene Ausgabeverzeichnis enthält eine Datei *run_summary.json* , die regelmäßig alle 30 Sekunden oder beim Abschluss neuer Transkriptionen neu geschrieben wird. Sie können diese Datei verwenden, um bei fortschreitender Verarbeitung des Batches den Status zu überprüfen. Wenn der Batch abgeschlossen ist, enthält sie außerdem die endgültige Ausführungsstatistik und den Abschlussstatus jeder Datei. Der Batch ist abgeschlossen, wenn der Prozess zu einem ordnungsgemäßen Ende gelangt. 
 

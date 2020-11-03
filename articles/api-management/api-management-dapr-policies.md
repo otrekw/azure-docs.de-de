@@ -3,15 +3,15 @@ title: Azure API Management-Richtlinien für die Dapr-Integration | Microsoft-Do
 description: Erfahren Sie mehr über Azure API Management-Richtlinien für die Interaktion mit Dapr-Microservices-Erweiterungen.
 author: vladvino
 ms.author: vlvinogr
-ms.date: 9/13/2020
+ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339136"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558396"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management-Richtlinien für die Integration von Dapr
 
@@ -99,19 +99,19 @@ Die Richtlinie `forward-request` wird hier der besseren Verständlichkeit halber
 
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
-- **Richtlinienabschnitte**: inbound
+- **Richtlinienabschnitte** : inbound
 - **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="send-message-to-pubsub-topic"></a><a name="pubsub"></a> Nachricht an Pub/Sub-Thema senden
 
-Diese Richtlinie weist das API Management-Gateway an, eine Nachricht an ein Veröffentlichen/Abonnieren-Thema von Dapr zu senden. Die Richtlinie erreicht dies durch eine HTTP POST-Anforderung an `http://localhost:3500/v1.0/publish/{{pub-name}}/{{topic}}`, bei der Vorlagenparameter ersetzt werden und in der Richtlinienanweisung angegebener Inhalt hinzugefügt wird.
+Diese Richtlinie weist das API Management-Gateway an, eine Nachricht an ein Veröffentlichen/Abonnieren-Thema von Dapr zu senden. Die Richtlinie erreicht dies durch eine HTTP POST-Anforderung an `http://localhost:3500/v1.0/publish/{{pubsub-name}}/{{topic}}`, bei der Vorlagenparameter ersetzt werden und in der Richtlinienanweisung angegebener Inhalt hinzugefügt wird.
 
 Die Richtlinie geht davon aus, dass die Dapr-Runtime in einem Sidecar-Container in demselben Pod wie das Gateway ausgeführt wird. Die Dapr-Runtime implementiert die Pub/Sub-Semantik.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
-<publish-to-dapr topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -131,7 +131,8 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
      <inbound>
         <base />
         <publish-to-dapr
-               topic="@("orders/new")"
+           pubsub-name="orders"
+               topic="new"
                response-variable-name="dapr-response">
             @(context.Request.Body.As<string>())
         </publish-to-dapr>
@@ -158,7 +159,8 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 | attribute        | Beschreibung                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
-| topic            | Name des Zielthemas               | Ja      | –     |
+| pubsub-name      | Der Name der PubSub-Zielkomponente. Wird dem Parameter [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) in Dapr zugeordnet. Falls nicht vorhanden, muss der Attributwert __Thema__ die Form `pubsub-name/topic-name` haben.    | Nein       | Keine    |
+| topic            | Der Name des Themas. Wird dem Parameter [topic](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) in Dapr zugeordnet.               | Ja      | –     |
 | ignore-error     | Wenn dieses Attribut auf `true` festgelegt ist, wird die Richtlinie angewiesen, nicht den Abschnitt [„on-error“](api-management-error-handling-policies.md) auszulösen, wenn ein Fehler von der Dapr-Runtime empfangen wird | Nein | `false` |
 | response-variable-name | Name des Eintrags in der Sammlung [Variables](api-management-policy-expressions.md#ContextVariables), der zum Speichern der Antwort von der Dapr-Runtime verwendet werden soll | Nein | Keine |
 | timeout | Zeit (in Sekunden), wie lange auf die Antwort der Dapr-Runtime gewartet werden soll. Der Wert kann im Bereich von 1 bis 240 Sekunden liegen. | Nein | 5 |

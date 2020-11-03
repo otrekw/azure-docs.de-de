@@ -1,28 +1,28 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure SignalR Service-Instanz: ARM-Vorlage'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage eine Azure SignalR Service-Instanz erstellen.
+title: 'Schnellstart: Erstellen einer Azure SignalR Service-Instanz – ARM-Vorlage'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure SignalR Service-Instanz erstellen.
 author: mgblythe
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/02/2020
-ms.openlocfilehash: 04d0a98863dded93216f5fc669b8148f710f5f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858832"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487822"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Schnellstart: Verwenden einer ARM-Vorlage zum Bereitstellen von Azure SignalR Service
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie mit einer ARM-Vorlage (Azure Resource Manager) eine Azure SignalR Service-Instanz erstellen. Sie können die Azure SignalR Service-Instanz im Azure-Portal, mit PowerShell oder mit der CLI bereitstellen.
+In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure SignalR Service-Instanz erstellen. Sie können die Azure SignalR Service-Instanz im Azure-Portal, mit PowerShell oder mit der CLI bereitstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet, sobald Sie sich anmelden.
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen von Azure SignalR Service in Azure mit einer ARM-Vorlage im Azure-Portal":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen von Azure SignalR Service in Azure mithilfe einer ARM-Vorlage im Azure-Portal":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +60,7 @@ Die Vorlage definiert eine Azure-Ressource:
 
 Wählen Sie den folgenden Link aus, um die Azure SignalR Service-Instanz per ARM-Vorlage im Azure-Portal bereitzustellen:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen von Azure SignalR Service in Azure mit einer ARM-Vorlage im Azure-Portal":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen von Azure SignalR Service in Azure per ARM-Vorlage im Azure-Portal":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
 Auf der Seite **Deploy an Azure SignalR service** (Azure SignalR Service bereitstellen):
 
@@ -70,14 +70,14 @@ Auf der Seite **Deploy an Azure SignalR service** (Azure SignalR Service bereits
 
 3. Wenn Sie eine neue Ressourcengruppe erstellt haben, wählen Sie eine **Region** für die Ressourcengruppe aus.
 
-4. Sie können für die Azure SignalR Service-Instanz einen neuen **Namen** und **Standort** (z. B. **eastus2**) eingeben. Wenn Sie keinen Namen angeben, wird er automatisch generiert. Der Standort für die Azure SignalR Service-Instanz kann sich in derselben Region wie die Ressourcengruppe oder in einer anderen Region befinden. Wenn Sie keinen Standort angeben, wird dieselbe Region wie für die Ressourcengruppe verwendet.
+4. Sie können für die Azure SignalR Service-Instanz einen neuen **Namen** und **Standort** (z. B. **eastus2** ) eingeben. Wenn Sie keinen Namen angeben, wird er automatisch generiert. Der Standort für die Azure SignalR Service-Instanz kann sich in derselben Region wie die Ressourcengruppe oder in einer anderen Region befinden. Wenn Sie keinen Standort angeben, wird dieselbe Region wie für die Ressourcengruppe verwendet.
 
-5. Wählen Sie den **Tarif** (**Free_F1** oder **Standard_S1**) aus, geben Sie die **Kapazität** (Anzahl von SignalR-Einheiten) ein, und wählen Sie einen **Dienstmodus** aus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an Hubserver, wenn der Hub über eine Serververbindung verfügt). Wählen Sie anschließend die Option **Enable Connectivity Logs** (Konnektivitätsprotokolle aktivieren) oder **Enable Messaging Logs** (Messagingprotokolle aktivieren) aus.
+5. Wählen Sie den **Tarif** ( **Free_F1** oder **Standard_S1** ) aus, geben Sie die **Kapazität** (Anzahl von SignalR-Einheiten) ein, und wählen Sie einen **Dienstmodus** aus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an Hubserver, wenn der Hub über eine Serververbindung verfügt). Wählen Sie anschließend die Option **Enable Connectivity Logs** (Konnektivitätsprotokolle aktivieren) oder **Enable Messaging Logs** (Messagingprotokolle aktivieren) aus.
 
     > [!NOTE]
     > Für den Tarif **Free_F1** ist die Kapazität auf 1 Einheit beschränkt.
 
-    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Schaltfläche zum Bereitstellen von Azure SignalR Service in Azure mit einer ARM-Vorlage im Azure-Portal":::
+    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Screenshot: ARM-Vorlage zum Erstellen einer Azure SignalR Service-Instanz im Azure-Portal":::
 
 6. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -88,19 +88,19 @@ Auf der Seite **Deploy an Azure SignalR service** (Azure SignalR Service bereits
 > [!NOTE]
 > Wenn Sie die PowerShell-Skripts lokal ausführen möchten, geben Sie zunächst `Connect-AzAccount` ein, um Ihre Azure-Anmeldeinformationen einzurichten.
 
-Verwenden Sie den folgenden Code, um die Azure SignalR Service-Instanz mit der ARM-Vorlage bereitzustellen. Vom Code werden Sie zum Angeben der folgenden Informationen aufgefordert:
+Verwenden Sie den folgenden Code, um die Azure SignalR Service-Instanz mithilfe der ARM-Vorlage bereitzustellen. Vom Code werden Sie zum Angeben der folgenden Informationen aufgefordert:
 
 * Name und Region der neuen Azure SignalR Service-Instanz
 * Name und Region einer neuen Ressourcengruppe
-* Azure-Tarif (**Free_F1** oder **Standard_S1**)
+* Azure-Tarif ( **Free_F1** oder **Standard_S1** )
 * Kapazität der SignalR-Einheit (1, 2, 5, 10, 20, 50 oder 100)
   > [!NOTE]
   > Für den Tarif **Free_F1** ist die Kapazität auf 1 Einheit beschränkt.
 * Dienstmodus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an einen Hubserver, wenn der Hub über eine Serververbindung verfügt).
-* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging (**true** oder **false**)
+* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging ( **true** oder **false** )
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
 $serviceLocation = Read-Host -Prompt "Enter an Azure region (for example, westus2) for the service"
 $resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group to contain the service"
 $resourceGroupRegion = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
@@ -124,7 +124,7 @@ $paramObjHashTable = @{
     enableMessagingLogs = $enableMessageLogs
 }
 
-Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR service using an ARM template" -Verbose
+Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR Service using an ARM template" -Verbose
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -TemplateParameterObject $paramObjHashTable `
     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json
@@ -133,19 +133,19 @@ Read-Host "Press [ENTER] to continue"
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
-Verwenden Sie den folgenden Code, um die Azure SignalR Service-Instanz mit der ARM-Vorlage bereitzustellen. Vom Code werden Sie zum Angeben der folgenden Informationen aufgefordert:
+Verwenden Sie den folgenden Code, um die Azure SignalR Service-Instanz mithilfe der ARM-Vorlage bereitzustellen. Vom Code werden Sie zum Angeben der folgenden Informationen aufgefordert:
 
 * Name und Region der neuen Azure SignalR Service-Instanz
 * Name und Region einer neuen Ressourcengruppe
-* Azure-Tarif (**Free_F1** oder **Standard_S1**)
+* Azure-Tarif ( **Free_F1** oder **Standard_S1** )
 * Kapazität der SignalR-Einheit (1, 2, 5, 10, 20, 50 oder 100)
     > [!NOTE]
     > Für den Tarif **Free_F1** ist die Kapazität auf 1 Einheit beschränkt.
 * Dienstmodus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an einen Hubserver, wenn der Hub über eine Serververbindung verfügt).
-* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging (**true** oder **false**)
+* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging ( **true** oder **false** )
 
 ```azurecli-interactive
-read -p "Enter a name for the new Azure SignalR service: " serviceName &&
+read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
 read -p "Enter an Azure region (for example, westus2) for the service: " serviceLocation &&
 read -p "Enter a name for the new resource group to contain the service: " resourceGroupName &&
 read -p "Enter an Azure region (for example, centralus) for the resource group: " resourceGroupRegion &&
@@ -157,7 +157,7 @@ read -p "Specify whether to enable messaging logs (true or false): " enableMessa
 params='name='$serviceName' location='$serviceLocation' pricingTier='$priceTier' capacity='$unitCapacity' serviceMode='$servicingMode' enableConnectivityLogs='$enableConnectionLogs' enableMessagingLogs='$enableMessageLogs &&
 echo "CREATE RESOURCE GROUP:  az group create --name $resourceGroupName --location $resourceGroupRegion" &&
 az group create --name $resourceGroupName --location $resourceGroupRegion &&
-echo "RUN az deployment group create, which creates an Azure SignalR service using an ARM template" &&
+echo "RUN az deployment group create, which creates an Azure SignalR Service using an ARM template" &&
 az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json &&
 read -p "Press [ENTER] to continue: "
 ```
@@ -173,7 +173,7 @@ read -p "Press [ENTER] to continue: "
 
 Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihre neue Azure SignalR Service-Instanz anzuzeigen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **SignalR**, und wählen Sie diese Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **SignalR** , und wählen Sie diese Option aus.
 
 2. Wählen Sie in der SignalR-Liste Ihren neuen Dienst aus. Die Seite **Übersicht** für die neue Azure SignalR Service-Instanz wird angezeigt.
 
@@ -182,7 +182,7 @@ Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihre neue Azure
 Führen Sie den folgenden interaktiven Code aus, um Details zu Ihrer Azure SignalR Service-Instanz anzuzeigen. Sie müssen den Namen des neuen Diensts und die Ressourcengruppe eingeben.
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR Service"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 Write-Verbose "Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName" -Verbose
 Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName
@@ -194,7 +194,7 @@ Read-Host "Press [ENTER] to continue"
 Führen Sie den folgenden interaktiven Code aus, um Details zu Ihrer Azure SignalR Service-Instanz anzuzeigen. Sie müssen den Namen des neuen Diensts und die Ressourcengruppe eingeben.
 
 ```azurecli-interactive
-read -p "Enter the name of your Azure SignalR service: " serviceName &&
+read -p "Enter the name of your Azure SignalR Service: " serviceName &&
 read -p "Enter the resource group name: " resourceGroupName &&
 echo "SHOW SERVICE DETAILS:  az signalr show --resource-group $resourceGroupName --name $serviceName" &&
 az signalr show --resource-group $resourceGroupName --name $serviceName &&
@@ -209,7 +209,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 

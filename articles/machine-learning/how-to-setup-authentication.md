@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729031"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741888"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -26,9 +26,9 @@ Erfahren Sie, wie Sie sich bei Ihrem Azure Machine Learning-Arbeitsbereich und b
 Im Allgemeinen gibt es zwei Arten von Authentifizierung, die Sie für Azure Machine Learning verwenden können:
 
 * __Interaktiv:__ Sie verwenden Ihr Konto in Azure Active Directory, um sich entweder direkt zu authentifizieren oder ein Token zu erhalten, das für die Authentifizierung verwendet wird. Die interaktive Authentifizierung wird beim Experimentieren und bei der iterativen Entwicklung verwendet. Außerdem wird sie verwendet, wenn der Zugriff auf Ressourcen (z. B. einen Webdienst) auf Benutzerbasis gesteuert werden soll.
-* __Dienstprinzipal__: Sie erstellen ein Dienstprinzipalkonto in Azure Active Directory und verwenden es, um sich zu authentifizieren oder ein Token zu erhalten. Ein Dienstprinzipal wird verwendet, wenn ein automatisierter Prozess sich beim Dienst authentifizieren soll, ohne dass eine Benutzerinteraktion erforderlich ist. Ein Beispiel hierfür wäre ein Continuous-Integration- und Bereitstellungsskript, das ein Modell bei jeder Änderung des Trainingscodes trainiert und testet. Sie können einen Dienstprinzipal auch verwenden, um ein Token für die Authentifizierung bei einem Webdienst abzurufen, wenn Sie nicht möchten, dass sich der Endbenutzer des Diensts authentifizieren muss, oder wenn die Endbenutzerauthentifizierung nicht direkt in Azure Active Directory ausgeführt wird.
+* __Dienstprinzipal__ : Sie erstellen ein Dienstprinzipalkonto in Azure Active Directory und verwenden es, um sich zu authentifizieren oder ein Token zu erhalten. Ein Dienstprinzipal wird verwendet, wenn ein automatisierter Prozess sich beim Dienst authentifizieren soll, ohne dass eine Benutzerinteraktion erforderlich ist. Ein Beispiel hierfür wäre ein Continuous-Integration- und Bereitstellungsskript, das ein Modell bei jeder Änderung des Trainingscodes trainiert und testet. Sie können einen Dienstprinzipal auch verwenden, um ein Token für die Authentifizierung bei einem Webdienst abzurufen, wenn Sie nicht möchten, dass sich der Endbenutzer des Diensts authentifizieren muss, oder wenn die Endbenutzerauthentifizierung nicht direkt in Azure Active Directory ausgeführt wird.
 
-Unabhängig vom verwendeten Authentifizierungstyp wird die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene für die Ressourcen zu beschränken. Ein Konto, das zum Abrufen des Zugriffstokens für ein bereitgestelltes Modell verwendet wird, benötigt z. B. nur Lesezugriff auf den Arbeitsbereich. Weitere Informationen zur RBAC finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Unabhängig vom verwendeten Authentifizierungstyp wird die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene für die Ressourcen zu beschränken. Ein Konto, das zum Abrufen des Zugriffstokens für ein bereitgestelltes Modell verwendet wird, benötigt z. B. nur Lesezugriff auf den Arbeitsbereich. Weitere Informationen zur Azure RBAC finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -293,7 +293,7 @@ Die von Azure Machine Learning erstellten Modellbereitstellungen bieten zwei Aut
 
 ### <a name="key-based-web-service-authentication"></a>Schlüsselbasierte Webdienstauthentifizierung
 
-Für in Azure Kubernetes Service (AKS) bereitgestellte Webdienste ist die schlüsselbasierte Authentifizierung standardmäßig *aktiviert*. Für in Azure Container Instances (ACI) bereitgestellte Dienste ist die schlüsselbasierte Authentifizierung standardmäßig *deaktiviert*, aber Sie können sie aktivieren, indem Sie bei der Erstellung des ACI-Webdiensts `auth_enabled=True` festlegen. Der folgende Code zeigt ein Beispiel für die Erstellung einer ACI-Bereitstellungskonfiguration mit aktivierter schlüsselbasierter Authentifizierung.
+Für in Azure Kubernetes Service (AKS) bereitgestellte Webdienste ist die schlüsselbasierte Authentifizierung standardmäßig *aktiviert*. Für in Azure Container Instances (ACI) bereitgestellte Dienste ist die schlüsselbasierte Authentifizierung standardmäßig *deaktiviert* , aber Sie können sie aktivieren, indem Sie bei der Erstellung des ACI-Webdiensts `auth_enabled=True` festlegen. Der folgende Code zeigt ein Beispiel für die Erstellung einer ACI-Bereitstellungskonfiguration mit aktivierter schlüsselbasierter Authentifizierung.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -333,8 +333,8 @@ Weitere Informationen zur Authentifizierung bei einem bereitgestellten Modell fi
 
 Wenn Sie die Tokenauthentifizierung für einen Webdienst aktivieren, müssen die Benutzer ein Azure Machine Learning-JSON-Webtoken für den Webdienst bereitstellen, um auf den Dienst zugreifen zu können. Das Token läuft nach einem bestimmten Zeitrahmen ab und muss zum Durchführen weiterer Aufrufe aktualisiert werden.
 
-* Die Tokenauthentifizierung ist **standardmäßig deaktiviert**, wenn die Bereitstellung in Azure Kubernetes Service erfolgt.
-* Die Tokenauthentifizierung wird **nicht unterstützt**, wenn die Bereitstellung in Azure Container Instances erfolgt.
+* Die Tokenauthentifizierung ist **standardmäßig deaktiviert** , wenn die Bereitstellung in Azure Kubernetes Service erfolgt.
+* Die Tokenauthentifizierung wird **nicht unterstützt** , wenn die Bereitstellung in Azure Container Instances erfolgt.
 * Die Tokenauthentifizierung **und die schlüsselbasierte Authentifizierung können nicht gleichzeitig verwendet werden**.
 
 Wenn Sie die Tokenauthentifizierung steuern möchten, verwenden Sie beim Erstellen oder Aktualisieren einer Bereitstellung den Parameter `token_auth_enabled`:

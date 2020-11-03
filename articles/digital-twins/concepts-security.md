@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331752"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503316"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -20,7 +20,7 @@ Zur Gewährleistung der Sicherheit ermöglicht Azure Digital Twins eine exakte Z
 
 Azure Digital Twins unterstützt auch die Verschlüsselung ruhender Daten.
 
-## <a name="granting-permissions-with-azure-rbac"></a>Gewähren von Berechtigungen mit Azure RBAC
+## <a name="roles-and-permissions-with-azure-rbac"></a>Rollen und Berechtigungen mit Azure RBAC
 
 Azure RBAC wird in Azure Digital Twins über die Integration mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) bereitgestellt.
 
@@ -47,20 +47,32 @@ Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitä
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisierung: Azure-Rollen für Azure Digital Twins
 
-Für die Autorisierung des Zugriffs auf eine Azure Digital Twins-Ressource werden von Azure die folgenden integrierten Rollen bereitgestellt:
-* *Azure Digital Twins Owner (Preview)* (Azure Digital Twins-Besitzer (Vorschau)): Verwenden Sie diese Rolle, um Vollzugriff auf Azure Digital Twins-Ressourcen zu gewähren.
-* *Azure Digital Twins Reader (Preview)* (Azure Digital Twins-Leser (Vorschau)): Verwenden Sie diese Rolle, um Lesezugriff auf Azure Digital Twins-Ressourcen zu gewähren.
+Azure bietet **zwei integrierte Azure-Rollen** für die Autorisierung des Zugriffs auf die [Datenebenen-APIs](how-to-use-apis-sdks.md#overview-data-plane-apis) von Azure Digital Twins. Sie können auf die Rollen entweder über den Namen oder über die ID verweisen:
 
-> [!TIP]
-> Die Rolle *Azure Digital Twins Reader (Preview)* (Azure Digital Twins-Leser (Vorschau)) unterstützt jetzt auch das Durchsuchen von Beziehungen.
+| Integrierte Rolle | BESCHREIBUNG | id | 
+| --- | --- | --- |
+| Azure Digital Twins Data Owner (Azure Digital Twins-Datenbesitzer) | Bietet Vollzugriff auf Azure Digital Twins-Ressourcen | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Azure Digital Twins Data Reader (Azure Digital Twins-Datenleser) | Bietet schreibgeschützten Zugriff auf Azure Digital Twins-Ressourcen | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
-Weitere Informationen zur Definition integrierter Rollen finden Sie in der Azure RBAC-Dokumentation unter [*Grundlegendes zu Azure-Rollendefinitionen*](../role-based-access-control/role-definitions.md). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [*Benutzerdefinierte Azure-Rollen*](../role-based-access-control/custom-roles.md).
+>[!NOTE]
+> Diese Rollen wurden kürzlich in der Vorschau umbenannt:
+> * *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) war zuvor *Azure Digital Twins-Besitzer (Vorschau)* .
+> * *Azure Digital Twins Data Reader* (Azure Digital Twins-Datenleser) war zuvor *Azure Digital Twins-Leser (Vorschau)* .
 
 Rollen können auf zwei Arten zugewiesen werden:
 * Über den Bereich „Zugriffssteuerung (IAM)“ für Azure Digital Twins im Azure-Portal (weitere Informationen finden Sie unter [*Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal*](../role-based-access-control/role-assignments-portal.md))
 * Mithilfe von CLI-Befehlen zum Hinzufügen oder Entfernen einer Rolle
 
 Ausführlichere Informationen hierzu finden Sie im [*Azure Digital Twins-Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md).
+
+Weitere Informationen zur Definition integrierter Rollen finden Sie in der Azure RBAC-Dokumentation unter [*Grundlegendes zu Azure-Rollendefinitionen*](../role-based-access-control/role-definitions.md). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [*Benutzerdefinierte Azure-Rollen*](../role-based-access-control/custom-roles.md).
+
+##### <a name="automating-roles"></a>Automatisieren von Rollen
+
+Wenn Sie sich auf Rollen in automatisierten Szenarien beziehen, empfiehlt es sich, auf diese mit ihren **IDs** und nicht mit ihren Namen zu verweisen. Die Namen können sich zwischen den einzelnen Versionen ändern, die IDs jedoch nicht, was sie zu einer beständigeren Referenz in der Automation macht.
+
+> [!TIP]
+> Wenn Sie Rollen mit einem Cmdlet zuweisen, z. B. `New-AzRoleAssignment` ([Verweis](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)), können Sie den Parameter `-RoleDefinitionId` anstelle von `-RoleDefinitionName` verwenden, um eine ID anstelle eines Namens für die Rolle zu übergeben.
 
 ### <a name="permission-scopes"></a>Berechtigungsbereiche
 
@@ -75,7 +87,7 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 
 ### <a name="troubleshooting-permissions"></a>Problembehandlung bei Berechtigungen
 
-Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht zulässig ist, wird möglicherweise der folgende Fehler von der Dienstanforderung zurückgegeben: `403 (Forbidden)`. Weitere Informationen und Hilfe bei der Problembehandlung finden Sie unter [*Problembehandlung: Fehler bei Azure Digital Twins-Anforderung mit dem Status ''403 (Forbidden)'' (403 (Unzulässig))* ](troubleshoot-error-403.md).
+Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht zulässig ist, wird möglicherweise der folgende Fehler von der Dienstanforderung zurückgegeben: `403 (Forbidden)`. Weitere Informationen und Hilfe bei der Problembehandlung finden Sie unter [*Problembehandlung: Fehler bei Azure Digital Twins-Anforderung mit dem Status ''403 (Forbidden)'' (403 (Unzulässig))*](troubleshoot-error-403.md).
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209205"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740146"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps
 
@@ -47,7 +47,7 @@ Wenn Sie derzeit die [ADAL-Bibliothek](../azuread-dev/active-directory-authentic
 
 Für iOS-Anwendungen lesen Sie den [Schnellstart](quickstart-v2-ios.md) zur Einrichtung von Anmeldungen mithilfe von MSAL sowie die [Anleitungen zum Konfigurieren der MSAL für verschiedene SSO-Szenarien](single-sign-on-macos-ios.md).
 
-Für Android-Anwendungen lesen Sie den [Schnellstart](quickstart-v2-android.md) zum Einrichten von Anmeldungen mit MSAL sowie Anleitungen zu [Brokerauthentifizierung](brokered-auth.md) und [Autorisierungs-Agents](authorization-agents.md).
+Für Android-Anwendungen bieten wir einen [Schnellstart](quickstart-v2-android.md), der Ihnen zeigt, wie Sie Anmeldungen mithilfe von MSAL einrichten können, und eine Anleitung, [wie anwendungsübergreifendes SSO unter Android mithilfe von MSAL aktiviert werden kann](msal-android-single-sign-on.md).
 
 ### <a name="use-the-system-web-browser"></a>Verwenden des Systemwebbrowsers
 

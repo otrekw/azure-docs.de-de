@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984115"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478319"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -79,7 +79,7 @@ Im Vergleich zu anderen Optimierungsoptionen, wie z.B. Skalierung und Statistikv
 
 **Eine andere Datenverteilungsstrategie für eine schnellere Abfrageleistung ist erforderlich**
 
-Der SQL-Pool ist ein verteiltes System mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP).   Daten in einer SQL-Pooltabelle werden mit einer von drei [Verteilungsstrategien](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin oder replicated) über 60 Knoten verteilt.  
+Synapse SQL ist ein verteiltes Abfrageverarbeitungssystem.  Daten in einer SQL-Tabelle werden mit einer von drei [Verteilungsstrategien](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin oder replicated) über 60 Knoten verteilt.   
 
 Die Datenverteilung wird zum Zeitpunkt der Tabellenerstellung angegeben und bleibt so lange unverändert, bis die Tabelle gelöscht wird. Da die materialisierte Sicht eine virtuelle Tabelle auf Datenträger ist, unterstützt sie die Datenverteilungen hash und round_robin.  Benutzer können eine Datenverteilung wählen, die sich von den Basistabellen unterscheidet, aber optimal für die Leistung von Abfragen ist, die die Sichten am häufigsten verwenden.  
 

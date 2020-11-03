@@ -1,53 +1,59 @@
 ---
-title: Vom Kunden verwaltete Schlüssel oder BYOK (Bring Your Own Key) mit Media Services
-description: Dies ist ein Tutorial zur Verwendung von vom Kunden verwalteten Schlüsseln mit einem Media Services-Speicherkonto.
+title: Verwenden von vom Kunden verwalteter Schlüssel (Bring-Your-Own-Key, BYOK)
+description: Verwenden Sie in diesem Tutorial vom Kunden verwaltete Schlüssel (Bring-Your-Own-Key, BYOK) mit einem Azure Media Services-Speicherkonto.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: c26da9d888bbcdf72c052fa4bd7fcdf443a2d8f7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 010e5b8fc394448840f8ff8fd11e92ca2e1ec9d4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92325860"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740477"
 ---
-# <a name="tutorial-use-customer-managed-keys-or-bring-your-own-key-byok-with-media-services"></a>Tutorial: Verwenden von vom Kunden verwalteten Schlüsseln oder BYOK (Bring Your Own Key) mit Media Services
+# <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services"></a>Tutorial: Verwenden von vom Kunden verwalteten Schlüsseln (Bring-Your-Own-Key, BYOK) in Media Services
 
-Mit der 2020-05-01-API können Sie einen vom Kunden verwalteten RSA-Schlüssel mit einem Media Services-Konto verwenden, das eine vom System verwaltete Identität aufweist.  Dieses Tutorial enthält eine Postman-Sammlung und -Umgebung zum Senden von REST-Anforderungen an Azure-Dienste.  Verwendete Dienste:
+Mit der 2020-05-01-API können Sie einen vom Kunden verwalteten RSA-Schlüssel mit einem Media Services-Konto verwenden, das eine vom System verwaltete Identität aufweist. Dieses Tutorial enthält eine Postman-Sammlung und -Umgebung zum Senden von REST-Anforderungen an Azure-Dienste. Dies sind die verwendeten Dienste:
 
-- Azure Active Directory-Anwendungsregistrierung für Postman
+- Azure Active Directory-Anwendungsregistrierung (Azure AD) für Postman
 - Microsoft Graph-API
-- Azure-Speicher
+- Azure Storage
 - Azure Key Vault
-- Media Services
+- Azure Media Services
 
 In diesem Tutorial erfahren Sie, wie Sie Postman für die folgenden Zwecke nutzen:
 
 > [!div class="checklist"]
-> * Abrufen von Token für die Verwendung mit Azure-Diensten.
-> * Erstellen einer Ressourcengruppe und eines Speicherkontos.
-> * Erstellen eines Media Services-Kontos mit einer vom System verwalteten Identität
-> * Erstellen eines Schlüsseltresors zum Speichern eines (vom Kunden verwalteten) RSA-Schlüssels zur Verwendung mit dem Speicherkonto.
-> * Aktualisieren des Media Services-Kontos für die Verwendung des RSA-Schlüssels mit dem Speicherkonto.
-> * Verwenden von Variablen in Postman.
+> - Abrufen von Token für die Verwendung mit Azure-Diensten.
+> - Erstellen einer Ressourcengruppe und eines Speicherkontos.
+> - Erstellen eines Media Services-Kontos mit einer vom System verwalteten Identität.
+> - Erstellen eines Schlüsseltresors zum Speichern eines vom Kunden verwalteten RSA-Schlüssels.
+> - Aktualisieren des Media Services-Kontos für die Verwendung des RSA-Schlüssels mit dem Speicherkonto.
+> - Verwenden von Variablen in Postman.
 
 Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Testkonto](https://azure.microsoft.com/free/) erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Registrieren Sie einen Dienstprinzipal mit den entsprechenden Berechtigungen.
-- Installieren Sie [Postman](https://www.postman.com).
-- Laden Sie die Postman-Sammlung für dieses Tutorial unter [Azure-Beispiele: media-services-customer-managed-keys-byok](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok) herunter.
+1. Registrieren Sie einen Dienstprinzipal mit den entsprechenden Berechtigungen.
+1. Installieren Sie [Postman](https://www.postman.com).
+1. Laden Sie die Postman-Sammlung für dieses Tutorial unter [Azure-Beispiele: media-services-customer-managed-keys-byok](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok) herunter.
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>Registrieren Sie einen Dienstprinzipal mit den erforderlichen Berechtigungen
 
-[Erstellen Sie einen Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).  Unter [Option zwei](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options) finden Sie Informationen zum Abrufen des Dienstprinzipalgeheimnisses.  Notieren Sie sich das Geheimnis an einem geeigneten Ort, da Sie darauf nicht mehr zugreifen können, nachdem Sie die Geheimnisseite im Portal einmal verlassen haben.
+1. [Erstellen Sie einen Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+1. Gehen Sie zu [Option 2: Erstellen eines neuen Anwendungsgeheimnisses](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options), um das Geheimnis des Dienstprinzipals abzurufen.
 
-Der Dienstprinzipal benötigt die folgenden Berechtigungen zum Durchführen der Aufgaben in diesem Tutorial.
+   > [!IMPORTANT]
+   >Kopieren und speichern Sie das Geheimnis zur späteren Verwendung. Nachdem Sie die Geheimnisseite im Portal verlassen haben, können Sie nicht mehr auf das Geheimnis zugreifen.
 
-![Die erforderlichen Berechtigungen für den Dienstprinzipal](./media/tutorial-byok/service-principal-permissions-1.png)
+1. Weisen Sie dem Dienstprinzipal Berechtigungen zu, wie im folgenden Screenshot dargestellt:
+
+   :::image type="complex" source="./media/tutorial-byok/service-principal-permissions-1.png" alt-text="Screenshot der erforderlichen Berechtigungen für den Dienstprinzipal.":::
+   Die Berechtigungen sind nach Dienst, Name der Berechtigung, Typ und dann Beschreibung aufgelistet. Azure Key Vault: Benutzeridentitätswechsel, delegiert, Vollzugriff auf Azure Key Vault. Azure-Dienstverwaltung: Benutzeridentitätswechsel, delegiert, Zugriff auf die Azure-Dienstverwaltung als Organisationsbenutzer. Azure Storage: Benutzeridentitätswechsel, delegiert, Zugriff auf Azure Storage. Media Services: Benutzeridentitätswechsel, delegiert, Zugriff auf Media Services. Microsoft Graph: User.Read, delegiert, Anmelden und Benutzerprofil lesen.
+   :::image-end:::
 
 ### <a name="install-postman"></a>Installieren von Postman
 
@@ -57,69 +63,75 @@ Wenn Sie Postman noch nicht für die Verwendung mit Azure installiert haben, kö
 
 Laden Sie die Postman-Sammlung für dieses Tutorial unter [Azure-Beispiele: media-services-customer-managed-keys-byok](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok) herunter.
 
-## <a name="installation-of-collection-and-environment"></a>Installation von Sammlung und Umgebung
+## <a name="install-the-postman-collection-and-environment"></a>Installieren der Postman-Sammlung und -Umgebung
 
 1. Führen Sie Postman aus.
 1. Wählen Sie **Importieren** aus.
 1. Wählen Sie **Upload files** (Dateien hochladen) aus.
-1. Navigieren Sie zum Speicherort der Sammlungs- und Umgebungsdateien.
-1. Wählen Sie die Sammlungs- und Umgebungsdatei aus.
-1. Wählen Sie **Open** (Öffnen).  (Es wird eine Warnung angezeigt, dass die Dateien nicht als API sondern als Sammlungen importiert werden.  Das geht ist in Ordnung.  Es ist das gewünschte Verhalten.)
-1. Diese Sammlung wird nun in ihren Sammlungen als BYOK angezeigt.
-1. Die Umgebungsvariablen werden nun in ihren Umgebungen angezeigt.
+1. Navigieren Sie zu dem Ort, an dem Sie die Sammlungs- und Umgebungsdateien gespeichert haben.
+1. Wählen Sie die Sammlungs- und Umgebungsdateien aus.
+1. Klicken Sie auf **Öffnen**. Es wird eine Warnung angezeigt, dass die Dateien nicht als API sondern als Sammlungen importiert werden. Diese Warnung braucht Sie nicht zu beunruhigen. Es ist das gewünschte Verhalten.
+
+Die Sammlung wird nun in Ihren Sammlungen als BYOK angezeigt. Außerdem werden die Umgebungsvariablen in Ihren Umgebungen angezeigt.
 
 ### <a name="understand-the-rest-api-requests-in-the-collection"></a>Informationen zu den REST-API-Anforderungen in der Sammlung
 
-Die Sammlung stellt die folgenden REST-API-Anforderungen zur Verfügung. Die Anforderungen müssen in der bestehenden Reihenfolge gesendet werden, da die meisten von ihnen über Testskripts verfügen, die dynamisch globale Variablen für die nächste (oder nachfolgende) Anforderung in der Reihe erstellen. Es ist nicht erforderlich, die globalen Variablen manuell zu erstellen.
+Die Sammlung stellt die folgenden REST-API-Anforderungen zur Verfügung.
 
-In Postman werden diese Variablen in `{{ }}` eckigen Klammern angezeigt.  Beispiel: `{{bearerToken}}`.
+> [!NOTE]
+>
+>- Die Anforderungen müssen in der angegebenen Reihenfolge gesendet werden.
+>- Für die meisten Anforderungen bestehen Testskripts, mit denen dynamisch globale Variablen für die nächste Anforderung in der Abfolge erstellt werden.
+>- Sie brauchen globale Variablen nicht manuell zu erstellen.
 
-1. Get AAD token (AAD-Token abrufen): Der Test legt die globale Variable *bearerToken* fest
-2. Get Graph token (Graph-Token abrufen): Der Test legt die globale Variable *graphToken* fest
-3. Get Service Principal Details (Dienstprinzipaldetails abrufen): Der Text legt die globale Variable *servicePrincipalObjectId* fest
-4. Create a storage account (Speicherkonto erstellen): Der Test legt die globale Variable *storageAccountId* fest
-5. Create a Media Services Account with a System Managed Identity (Media Services Konto mit einer vom System verwalteten Identität erstellen): Der Test legt die globale Variable *principalId* fest
-6. Create a Key Vault, granting access to the service principal (Schlüsseltresor erstellen und Zugriff auf den Dienstprinzipal erteilen): Der Test legt die globale Variable *keyVaultId* fest
-7. Get a Key Vault token (Schlüsseltresortoken abrufen): Der Test legt die globale Variable *keyVaultToken* fest
-8. Create RSA key in the key vault (RSA-Schlüssel im Schlüsseltresor erstellen): Der Test legt die globale Variable *keyId* fest
-9. Update the Media Services account to use the key with the storage account (Media Services-Konto zum Verwenden des Schlüssels mit dem Speicherkonto aktualisieren): Es gibt kein Testskript für diese Anforderung.
+In Postman werden diese Variablen in eckigen Klammern eingeschlossen angezeigt. Beispiel: `{{bearerToken}}`.
+
+1. Abrufen eines Azure AD-Tokens: Der Test legt die globale Variable **bearerToken** fest.
+2. Abrufen eines Microsoft Graph-Tokens: Der Test legt die globale Variable **graphToken** fest.
+3. Abrufen von Details zu Dienstprinzipalen: Der Test legt die globale Variable **servicePrincipalObjectId** fest.
+4. Erstellen eines Speicherkontos: Der Test legt die globale Variable **storageAccountId** fest.
+5. Erstellen eines Media Services-Kontos mit einer vom System verwalteten Identität: Der Test legt die globale Variable **principalid** fest.
+6. Erstellen eines Schlüsseltresors, um Zugriff auf den Dienstprinzipal zu erteilen: Der Test legt die globale Variable **keyVaultId** fest.
+7. Abrufen eines Schlüsseltresortokens: Der Test legt die globale Variable **keyVaultToken** fest.
+8. Erstellen des RSA-Schlüssels im Schlüsseltresor: Der Test legt die globale Variable **keyId** fest.
+9. Aktualisieren des Media Services-Kontos für die Verwendung des Schlüssels mit dem Speicherkonto: Für diese Anforderung ist kein Testskript vorhanden.
 
 ## <a name="define-environment-variables"></a>Definieren von Umgebungsvariablen
 
-1. Wechseln Sie zu der heruntergeladenen Umgebung, indem Sie sie in der Dropdownliste der Umgebungen auswählen.
-1. Richten Sie Ihre Umgebungsvariablen in Postman ein. Sie werden ebenfalls als in eckige Klammern `{{ }}` eingeschlossene Variablen verwendet.  Beispiel: `{{tenantId}}`.
+1. Wählen Sie die Umgebungs-Dropdownliste aus, um zu der von Ihnen heruntergeladenen Umgebung zu wechseln.
+1. Richten Sie Ihre Umgebungsvariablen in Postman ein. Sie werden ebenfalls als in eckige Klammern eingeschlossene Variablen verwendet. Beispiel: `{{tenantId}}`.
 
-    * *tenantId* = Ihre Mandanten-ID
-    * *servicePrincipalId* = die ID des Dienstprinzipals, den Sie mit Ihrer bevorzugten Methode einrichten: Portal, CLI usw.
-    * *servicePrincipalSecret* = das für den Dienstprinzipal erstellte Geheimnis
-    * *subscription* = Ihre Abonnement-ID
-    * *storageName* = der Name, den Sie Ihrem Speicher geben möchten
-    * *accountName* = der Name des Media Service-Kontos, den Sie verwenden möchten
-    * *keyVaultName* = der Schlüsseltresorname, den Sie verwenden möchten
-    * *resourceLocation* = centralus (oder wo immer Sie Ihre Ressourcen platzieren möchten.  Diese Sammlung wurde nur mit centralus (USA, Mitte) getestet.)
-    * *resourceGroup* = der Name der Ressourcengruppe
+    - **tenantId** : Ihre Mandanten-ID.
+    - **servicePrincipalId** : Die ID des Dienstprinzipals, den Sie mit Ihrer bevorzugten Methode einrichten, im Portal, an der CLI usw.
+    - **servicePrincipalSecret** : Das für den Dienstprinzipal erstellte Geheimnis.
+    - **Abonnement** : Ihre Abonnement-ID.
+    - **storageName** : Der Name, den Sie Ihrem Speicher geben möchten.
+    - **accountName** : Der Name des Media Service-Kontos, den Sie verwenden möchten.
+    - **keyVaultName** : Der Schlüsseltresorname, den Sie verwenden möchten.
+    - **resourceLocation** : Der Standort **CentralUs** oder wo immer Sie Ihre Ressourcen platzieren möchten. Diese Sammlung wurde nur mit **CentralUs** (USA, Mitte) getestet.
+    - **resourceGroup** : Der Name der Ressourcengruppe.
 
-    Die folgenden Ressourcen stellen die Norm für das Arbeiten mit Azure-Ressourcen dar, daher gibt es keinen Grund, sie zu ändern.
+    Die folgenden Ressourcen stellen die Norm für das Arbeiten mit Azure-Ressourcen dar. Es gibt daher keinen Grund, sie zu ändern.
 
-    * *armResource* = `https://management.core.windows.net`
-    * *graphResource* = `https://graph.windows.net/`
-    * *keyVaultResource* = `https://vault.azure.net`
-    * *armEndpoint* = `management.azure.com`
-    * *graphEndpoint* = `graph.windows.net`
-    * *aadEndpoint* = `login.microsoftonline.com`
-    * *keyVaultDomainSuffix* = `vault.azure.net`
+    - **armResource** : `https://management.core.windows.net`
+    - **graphResource** : `https://graph.windows.net/`
+    - **keyVaultResource** : `https://vault.azure.net`
+    - **armEndpoint** : `management.azure.com`
+    - **graphEndpoint** : `graph.windows.net`
+    - **aadEndpoint** : `login.microsoftonline.com`
+    - **keyVaultDomainSuffix** : `vault.azure.net`
 
 ## <a name="send-the-requests"></a>Senden der Anforderungen
 
-Nachdem Sie Ihre Umgebungsvariablen definiert haben, können Sie die Anforderungen entweder einzeln in der oben angegebenen Reihenfolge ausführen oder das Ausführungsprogramm von Postman verwenden, um die Sammlung auszuführen.
+Nachdem Sie Ihre Umgebungsvariablen definiert haben, können Sie die Anforderungen nacheinander in der zuvor dargestellten Reihenfolge ausführen. Alternativ können Sie das Ausführungsmodul von Postman verwenden, um die Sammlung auszuführen.
 
 ## <a name="change-the-key"></a>Ändern des Schlüssels
 
-Media Services erkennt automatisch, wenn der Schlüssel geändert wurde.  Um dies zu testen, erstellen Sie eine weitere Schlüsselversion für denselben Schlüssel. Media Services sollte diesen Schlüssel in weniger als 15 Minuten erkennen.
+Media Services erkennt Änderungen des Schlüssels automatisch. Erstellen Sie eine weitere Schlüsselversion für den gleichen Schlüssel, um diesen Vorgang zu testen. Media Services sollte den Schlüssel in weniger als 15 Minuten erkennen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die von Ihnen erstellten Ressourcen nicht weiter verwenden möchten und **sie Ihnen nicht mehr in Rechnung gestellt werden sollen** , löschen Sie sie.
+Wenn Sie die von Ihnen erstellten Ressourcen nicht weiter verwenden möchten und *sie Ihnen nicht mehr in Rechnung gestellt werden sollen* , löschen Sie sie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

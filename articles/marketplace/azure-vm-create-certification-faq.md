@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331293"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677909"
 ---
 # <a name="vm-certification-troubleshooting"></a>Behandeln von Problemen bei der VM-Zertifizierung
 
@@ -37,6 +37,9 @@ Rufen Sie zum Beheben des Problems das Image aus Azure Marketplace ab, und nehme
 > [!Note]
 > Wenn Sie ein Linux-Basisimage verwenden, das nicht aus dem Azure Marketplace stammt, können Sie die erste Partition um 2048 KB versetzen. So kann der nicht formatierte Speicherplatz zum Hinzufügen neuer Abrechnungsinformationen verwendet werden, und Azure kann mit der Veröffentlichung Ihres virtuellen Computers im Azure Marketplace fortfahren.  
 
+> [!Note]
+> Wenn Sie ein Linux-Basisimage verwenden, das nicht aus dem Marketplace stammt, können Sie die erste Partition um 2.048 KB versetzen. So kann der nicht formatierte Speicherplatz zum Hinzufügen neuer Abrechnungsinformationen verwendet werden, und Azure kann mit der Veröffentlichung Ihres virtuellen Computers im Marketplace fortfahren.  
+
 ## <a name="vm-extension-failure"></a>Fehler bei einer VM-Erweiterung
 
 Überprüfen Sie, ob Ihr Image VM-Erweiterungen unterstützt.
@@ -44,7 +47,7 @@ Rufen Sie zum Beheben des Problems das Image aus Azure Marketplace ab, und nehme
 Gehen Sie zum Aktivieren von VM-Erweiterungen wie folgt vor:
 
 1. Wählen Sie Ihren virtuellen Linux-Computer aus.
-1. Navigieren Sie zu **Diagnoseeinstellungen** .
+1. Navigieren Sie zu **Diagnoseeinstellungen**.
 1. Aktivieren Sie Basismatrizen, indem Sie das **Speicherkonto** aktualisieren.
 1. Wählen Sie **Speichern** aus.
 
@@ -52,7 +55,7 @@ Gehen Sie zum Aktivieren von VM-Erweiterungen wie folgt vor:
 
 Überprüfen Sie wie folgt, ob die VM-Erweiterungen ordnungsgemäß aktiviert wurden:
 
-1. Wählen Sie auf dem virtuellen Computer die Registerkarte **VM-Erweiterungen** aus, und überprüfen Sie den Status der **Linux-Diagnoseerweiterung** .
+1. Wählen Sie auf dem virtuellen Computer die Registerkarte **VM-Erweiterungen** aus, und überprüfen Sie den Status der **Linux-Diagnoseerweiterung**.
 1. 
     * Ist der Status *Bereitstellung erfolgreich* , wurde der Testfall für Erweiterungen erfolgreich bestanden.  
     * Lautet der Status *Fehler beim Bereitstellen* , wurde der Testfall für Erweiterungen nicht bestanden, und Sie müssen das Festgeschrieben-Flag festlegen.
@@ -148,7 +151,7 @@ Die folgende Tabelle enthält die Windows-Testfälle, die vom Toolkit ausgeführ
 |17|WLAN-Dienst|WLAN-Dienst. Diese Serverfunktion wird noch nicht unterstützt. Die Anwendung sollte nicht von diesem Feature abhängen.|
 |
 
-Wenn im Zusammenhang mit den obigen Testfällen Fehler auftreten, finden Sie in der Tabelle in der Spalte **Beschreibung** Hinweise zur Fehlerbehebung. Wenn Sie weitere Informationen benötigen, wenden Sie sich an das Supportteam.
+Wenn im Zusammenhang mit den obigen Testfällen Fehler auftreten, finden Sie in der Tabelle in der Spalte **Beschreibung** Hinweise zur Fehlerbehebung. Wenn Sie weitere Informationen benötigen, wenden Sie sich an das Supportteam. 
 
 ## <a name="data-disk-size-verification"></a>Überprüfung der Datenträgergröße
 
@@ -181,7 +184,7 @@ Da VMs den Zugriff auf das zugrunde liegende Betriebssystem zulassen, vergewisse
 
 Um einen potenziellen Angriff im Zusammenhang mit dem WannaCry-Virus zu verhindern, stellen Sie sicher, dass alle Windows-Image-Anforderungen mit dem neuesten Patch aktualisiert sind.
 
-Angaben zum Betriebssystem und zur unterstützten Mindestversion der gepatchten Version von Windows Server finden Sie in der folgenden Tabelle:
+Angaben zum Betriebssystem und zur unterstützten Mindestversion der gepatchten Version von Windows Server finden Sie in der folgenden Tabelle: 
 
 Die Imagedateiversion kann über `C:\windows\system32\drivers\srv.sys` oder `srv2.sys`überprüft werden.
 
@@ -205,13 +208,13 @@ Aktualisieren Sie den Kernel mit einer genehmigten Version, und senden Sie die A
 
 Wenn das Image nicht mit einer der folgenden Kernelversionen installiert ist, aktualisieren Sie es mit den richtigen Patches. Fordern Sie die nötige Genehmigung vom Supportteam an, nachdem das Image mit diesen erforderlichen Patches aktualisiert wurde:
 
-- CVE-2019-11477
-- CVE-2019-11478
+- CVE-2019-11477 
+- CVE-2019-11478 
 - CVE-2019-11479
 
 |Betriebssystemfamilie|Version|Kernel|
 |---|---|---|
-|Ubuntu|14.04 LTS|4.4.0-151|
+|Ubuntu|14.04 LTS|4.4.0-151| 
 ||14.04 LTS|4.15.0-1049-*-azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
@@ -242,7 +245,7 @@ Wenn das Image nicht mit einer der folgenden Kernelversionen installiert ist, ak
 ||SLES15|4.12.14-5.30.1 (Kernel-Azure)|
 ||SLES15 für SAP|4.12.14-5.30.1 (Kernel-Azure)|
 ||SLES15SP1|4.12.14-5.30.1 (Kernel-Azure)|
-|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3
+|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK folgt auf obiges RHEL|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS Stable 2079.6.0|4.19.43*|
@@ -267,13 +270,22 @@ Treten Probleme im Zusammenhang mit verweigertem Zugriff beim Ausführen der Tes
 
 Überprüfen Sie, ob für das Konto, unter dem die Testfälle ausgeführt werden, der entsprechende Zugriff aktiviert ist. Wenn der Zugriff nicht aktiviert ist, aktivieren Sie ihn, um die Testfälle auszuführen. Wenn Sie den Zugriff nicht aktivieren möchten, können Sie die Ergebnisse des Selbsttestfalls mit dem Supportteam teilen.
 
-## <a name="download-failure"></a>Fehler beim Herunterladen
+Wenn Sie Ihre Anforderung mit einem Image mit deaktiviertem SSH für den Zertifizierungsprozess übermitteln möchten, führen Sie die folgenden Schritte aus:
 
+1. Führen Sie das Azure-Toolkit für Ihr Image aus. (Laden Sie das [neueste Toolkit](https://aka.ms/AzureCertificationTestTool) herunter.)
+
+2. Erstellen Sie ein [Supportticket](https://aka.ms/marketplacepublishersupport), fügen Sie den Toolkitbericht an, und geben Sie Angebotsdetails an: Angebotsname, Herausgebername, Plan-ID/-SKU und Version.
+
+3. Übermitteln Sie Ihre Zertifizierungsanforderung erneut.
+
+
+## <a name="download-failure"></a>Fehler beim Herunterladen
+    
 In der folgenden Tabelle finden Sie alle Probleme, die auftreten können, wenn Sie das VM-Image mithilfe einer SAS-URL (Shared Access Signature) herunterladen:
 
 |Szenario|Fehler|`Reason`|Lösung|
 |---|---|---|---|
-|1|Nicht gefundenes Blob|Die VHD wurde entweder gelöscht oder vom angegebenen Speicherort verschoben.||
+|1|Nicht gefundenes Blob|Die VHD wurde entweder gelöscht oder vom angegebenen Speicherort verschoben.|| 
 |2|Blob wird verwendet|Die VHD wird von einem anderen internen Prozess verwendet.|Die virtuelle Festplatte muss sich beim Herunterladen über eine SAS-URL im Status „Verwendet“ befinden.|
 |3|Ungültige SAS-URL|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|
 |4|Ungültige Signatur|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|
@@ -287,6 +299,91 @@ Stellen Sie beim Senden der VHD sicher, dass die ersten 2.048 KB der VHD leer s
 
 >[!NOTE]
 >\* Für bestimmte besondere Images wie die auf Azure Windows-Basisimages aus Azure Marketplace erstellten wird nach einem Abrechnungstag gesucht, und die MB-Partition wird ignoriert, wenn das Abrechnungstag vorhanden ist und unseren internen verfügbaren Werten entspricht.
+
+
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>Schritte zum Erstellen der ersten MB-Partition (2.048 KB) (nur für Linux) auf einer leeren VHD
+
+Schritt 1: Erstellen Sie einen beliebigen Typ von VM (z. B.: Ubuntu, CentOS usw.). Füllen Sie die erforderlichen Felder aus, und klicken Sie auf „Weiter: Datenträger >“.
+![Nächste Schritte: Datenträger >](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+Schritt 2: Erstellen Sie einen nicht verwalteten Datenträger für die obige VM.
+![Erstellen eines nicht verwalteten Datenträgers](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Beachten Sie, dass Sie die Standardwerte verwenden oder beliebige Werte für die Felder wie NIC, NSG und öffentliche IP-Adresse angeben können.
+
+Schritt 3: Klicken Sie nach dem Erstellen des virtuellen Computers auf „Datenträger“. Sie finden diese Option auf der linken Seite, wie unten dargestellt. ![Klicken auf „Datenträger“](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+Schritt 4:  Fügen Sie die VHD als Datenträger an die obige VM an, um die Partitionstabelle wie unten dargestellt zu erstellen.
+![Anfügen der VHD](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Klicken Sie auf „Datenträger hinzufügen“ und „Vorhandenes Blob“, navigieren Sie zu Ihrem VHD-Speicherkonto, und klicken Sie auf „Container“. Wählen Sie dann Ihre VHD aus, und klicken Sie auf „OK“, wie unten gezeigt.
+![VHD auswählen](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+Die VHD wird als Datenträger „LUN 0“ hinzugefügt. Starten Sie den virtuellen Computer nach dem Hinzufügen des Datenträgers neu.
+
+Schritt 5:  Melden Sie sich nach dem Neustart des virtuellen Computers mithilfe von PuTTY (oder einem anderen Client) auf der VM an, und führen Sie den Befehl „sudo -i“ aus, um root-Zugriff zu erhalten.
+
+![Anmelden auf der VM](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+Schritt 6: Führen Sie die folgenden Schritte aus, um auf der VHD eine Partition zu erstellen.
+
+a) Geben Sie den Befehl „fdisk /dev/sdb“ ein.
+
+b) Geben Sie zum Anzeigen der bestehenden Partitionsliste auf der VHD „p“ ein.
+
+c) Geben Sie „d“ ein, um alle auf der VHD vorhandenen Partitionen zu löschen. (Sie können diesen Schritt überspringen, wenn er nicht erforderlich ist.) ![Löschen aller vorhandenen Partitionen](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+d) Geben Sie „n“ ein, um eine neue Partition zu erstellen, und wählen Sie „p“ aus, um eine primäre Partition zu erstellen.
+
+e) Geben Sie als Wert für den ersten Sektor „2048“ ein. Den Wert für den letzten Sektor können Sie unverändert lassen, da der Standardwert verwendet wird. Beachten Sie, dass alle Daten bis 2.048 KB gelöscht werden.
+           
+>[!NOTE]
+>\* Beachten Sie, dass durch das Erstellen der Partition nach der Beschreibung oben alle zuvor vorhandenen Daten bis 2.048 KB gelöscht werden. Es wird daher empfohlen, vor dem Ausführen des obigen Befehls eine Sicherung der virtuellen Festplatte durchzuführen.
+
+Sehen Sie sich den folgenden Screenshot als Referenz an.
+![Gelöschte Daten](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+f) Geben Sie „w“ ein, um die Erstellung der Partition zu bestätigen. 
+
+![Erstellung der Partition](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+g) Sie können die Partitionstabelle überprüfen, indem Sie den Befehl „fdisk /dev/sdb“ und dann „p“ eingeben. Sie sehen dann, dass die Partition wie unten mit einem Offset von 2.048 KB erstellt wurde. 
+
+ ![2\.048-KB-Offset](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+Schritt 7: Trennen Sie die VHD vom virtuellen Computer, und löschen Sie den virtuellen Computer.
+
+         
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>Schritte zum Erstellen der ersten MB-Partition (2048 KB) (nur für Linux) durch Verschieben vorhandener Daten auf eine VHD
+
+Schritt 1: Erstellen Sie einen beliebigen Typ von VM (z. B.: Ubuntu, CentOS usw.). Füllen Sie die erforderlichen Felder aus, und klicken Sie auf „Weiter: Datenträger >“.
+![Klicken auf „Weiter: Datenträger >“](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+Schritt 2: Erstellen Sie einen nicht verwalteten Datenträger für die obige VM.
+![Erstellen eines nicht verwalteten Datenträgers](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Beachten Sie, dass Sie die Standardwerte verwenden oder beliebige Werte für die Felder wie NIC, NSG und öffentliche IP-Adresse angeben können.
+
+Schritt 3: Klicken Sie nach dem Erstellen des virtuellen Computers auf „Datenträger“. Sie finden diese Option auf der linken Seite, wie unten dargestellt. ![Klicken auf „Datenträger“](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+Schritt 4:  Fügen Sie die VHD als Datenträger an die obige VM an, um die Partitionstabelle wie unten dargestellt zu erstellen.
+![Partitionstabelle](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Klicken Sie auf „Datenträger hinzufügen“ und „Vorhandenes Blob“, navigieren Sie zu Ihrem VHD-Speicherkonto, und klicken Sie auf „Container“. Wählen Sie dann Ihre VHD aus, und klicken Sie auf „OK“, wie unten gezeigt.
+![VHD auswählen](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+Die VHD wird als Datenträger „LUN 0“ hinzugefügt. Starten Sie den virtuellen Computer nach dem Hinzufügen des Datenträgers neu.
+
+Schritt 5:  Melden Sie sich nach dem Neustart des virtuellen Computers mithilfe von PuTTY auf der VM an, und führen Sie den Befehl „sudo -i“ aus, um root-Zugriff zu erhalten. \
+![Anmelden nach dem Neustart](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+Schritt 6: Führen Sie den Befehl „echo '+1M,' | sfdisk --move-data /dev/sdc -N 1“ aus. ![Ausführen des Befehls](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+>[!NOTE]
+>\* Beachten Sie, dass der obige Befehl möglicherweise mehr Zeit in Anspruch nimmt, da er von der Größe des Datenträgers abhängig ist.
+
+Schritt 7: Trennen Sie die VHD vom virtuellen Computer, und löschen Sie den virtuellen Computer.
+
 
 ## <a name="default-credentials"></a>Standardanmeldeinformationen
 
@@ -326,7 +423,7 @@ In der folgenden Tabelle sind Fehlerbehebungsoptionen für Fehler in Verbindung 
 
 ## <a name="remote-access-issue"></a>Problem mit dem Remotezugriff
 
-Wenn für das Windows-Image nicht die RDP-Option (Remote Desktop Protocol, Remotedesktopprotokoll) aktiviert ist, wird dieser Fehler angezeigt.
+Wenn für das Windows-Image nicht die RDP-Option (Remote Desktop Protocol, Remotedesktopprotokoll) aktiviert ist, wird dieser Fehler angezeigt. 
 
 Aktivieren Sie vor dem Senden den RDP-Zugriff für Windows-Images.
 
@@ -359,7 +456,7 @@ In den folgenden Abschnitten werden die wichtigsten Szenarien erläutert, in den
 
 Es gibt grundsätzlich drei Szenarien/Fälle, in denen Herausgeber Ausnahmen anfordern.
 
-- **Ausnahme für mindestens einen Testfall** : Herausgeber kontaktieren den Partner Center-[Support](https://aka.ms/marketplacepublishersupport), um Ausnahmen für Testfälle anzufordern.
+- **Ausnahme für mindestens einen Testfall** : Herausgeber kontaktieren den Partner Center- [Support](https://aka.ms/marketplacepublishersupport), um Ausnahmen für Testfälle anzufordern.
 
 - **Gesperrte VMs/kein Root-Zugriff** : Einige Herausgeber verfügen über Szenarien, in denen VMs gesperrt werden müssen, da Software wie Firewalls auf der VM installiert ist. In diesem Fall können Herausgeber das [Certified Test Tool](https://aka.ms/AzureCertificationTestTool) herunterladen und den Bericht beim Partner Center-[Support](https://aka.ms/marketplacepublishersupport) einreichen.
 
@@ -433,7 +530,7 @@ Fahren Sie mit dem nächsten Abschnitt unten fort, um das Angebot erneut zu ver�
 
 1. Wählen Sie **Überprüfen und veröffentlichen** aus.
 2. Wenn Sie Informationen für das Zertifizierungsteam bereitstellen müssen, fügen Sie diese dem Feld **Hinweise zur Zertifizierung** hinzu.
-3. Wählen Sie **Veröffentlichen** .
+3. Wählen Sie **Veröffentlichen**.
 
 Unter [Überprüfen und Veröffentlichen von Angeboten](review-publish-offer.md) erfahren Sie, wie Sie die Veröffentlichung abschließen.
 

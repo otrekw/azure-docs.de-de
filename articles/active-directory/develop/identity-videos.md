@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: c03f0221fe781deffed6ecab107ab33d8a5ab829
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f9b016e95689b7faba952bdf4a7012a55e8cae41
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203216"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534214"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videos zu Microsoft Identity Platform
 
@@ -37,8 +37,10 @@ ___
         <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank"> <img src="./media/identity-videos/id-for-devs-07.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
+        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank">Moderne Authentifizierung: Wie es dazu kam – Microsoft Identity Platform <span class="docon docon-navigate-external x-hidden-focus"></span></a> (15:47)
     :::column-end:::
     :::column:::
+        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank"> <img src="./media/identity-videos/id-for-devs-08.jpg" alt="Video thumbnail" class="mx-imgBorder"> </a>
     :::column-end:::
 :::row-end:::
 
@@ -282,7 +284,7 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">Welche AAD-App-Typen gibt es, und wie unterscheiden sie sich voneinander? <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+        <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">Was sind die verschiedenen Azure Active Directory-App-Typen, und worin unterscheiden sie sich? <span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank"> <img src="./media/identity-videos/aad-basics-13.jpg" alt="Video thumbnail"> </a>

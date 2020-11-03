@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Rollen in Ihrem Arbeitsbereich
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung auf einen Azure Machine Learning-Arbeitsbereich zugreifen können.
+description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) auf einen Azure Machine Learning-Arbeitsbereich zugreifen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736619"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -34,9 +34,9 @@ Ein Azure Machine Learning-Arbeitsbereich ist eine Azure-Ressource. Wie jede and
 | **Benutzerdefinierte Rolle** | Hiermit können Sie den Zugriff auf bestimmte Vorgänge auf Steuerungs- oder Datenebene innerhalb eines Arbeitsbereichs anpassen. Bei diesen Vorgängen kann es sich beispielsweise um das Übermitteln einer Ausführung, das Erstellen einer Berechnung, das Bereitstellen eines Modells oder das Registrieren eines Datasets handeln. |
 
 > [!IMPORTANT]
-> Der Rollenzugriff kann für mehrere Ebenen in Azure gelten. Es kann z. B. sein, dass ein Benutzer mit Vollzugriff für einen Arbeitsbereich für die Ressourcengruppe, die diesen Arbeitsbereich enthält, keinen Vollzugriff hat. Weitere Informationen erhalten Sie im Abschnitt „Funktionsweise von RBAC“ unter [Was ist die rollenbasierte Zugriffssteuerung für Azure-Ressourcen?](/azure/role-based-access-control/overview#how-rbac-works).
+> Der Rollenzugriff kann für mehrere Ebenen in Azure gelten. Es kann z. B. sein, dass ein Benutzer mit Vollzugriff für einen Arbeitsbereich für die Ressourcengruppe, die diesen Arbeitsbereich enthält, keinen Vollzugriff hat. Weitere Informationen finden Sie unter [Funktionsweise von Azure RBAC](/azure/role-based-access-control/overview#how-azure-rbac-works).
 
-Weitere Informationen zu Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/role-based-access-control/built-in-roles).
+Weitere Informationen zu bestimmten integrierten Rollen finden Sie unter [In Azure integrierte Rollen](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Verwalten des Arbeitsbereichszugriffs
 
@@ -432,13 +432,13 @@ Im Folgenden finden Sie einige Aspekte, die Sie bei der Verwendung der rollenbas
     - „Microsoft.Network/virtualNetworks/join/action“ in der VNET-Ressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ in der Subnetzressource
     
-    Weitere Informationen zur rollenbasierten Zugriffssteuerung in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
+    Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
 
 - Es kann bis zu einer Stunde dauern, bis neue Rollenzuweisungen über zwischengespeicherte Berechtigungen im gesamten Stapel wirksam werden.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Q. Welche Berechtigungen benötige ich, um eine benutzerseitig zugewiesene verwaltete Identität mit meinen Amlcompute-Clustern zu verwenden?
 
-Um eine benutzerseitig zugewiesene Identität in Amlcompute-Clustern zuzuweisen, benötigen Sie Schreibberechtigungen zum Erstellen von Berechnungen sowie die Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Weitere Informationen zu RBAC mit verwalteten Identitäten finden Sie unter [Verwalten einer vom Benutzer zugewiesenen Identität](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+Um eine benutzerseitig zugewiesene Identität in Amlcompute-Clustern zuzuweisen, benötigen Sie Schreibberechtigungen zum Erstellen von Berechnungen sowie die Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Weitere Informationen zu Azure RBAC mit verwalteten Identitäten finden Sie unter [Verwalten einer vom Benutzer zugewiesenen Identität](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Q. Unterstützen wir die rollenbasierte Zugriffssteuerung im Studio-Portal?

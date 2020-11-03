@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585830"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426576"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrieren von Key Vault in Azure Private Link
 
@@ -51,7 +51,7 @@ Wählen Sie nach dem Konfigurieren der Grundeinstellungen des Schlüsseltresors 
 1. Wählen Sie auf der Registerkarte „Netzwerk“ das Optionsfeld „Privater Endpunkt“ aus.
 1. Klicken Sie auf die Schaltfläche "+ Hinzufügen", um einen privaten Endpunkt hinzuzufügen.
 
-    ![Image](../media/private-link-service-1.png)
+    ![Screenshot: Erster Bildschirm beim Erstellen eines Schlüsseltresors](../media/private-link-service-1.png)
  
 1. Wählen Sie auf dem Blatt „Privaten Endpunkt erstellen“ im Feld „Standort“ die Region aus, in der sich Ihr virtuelles Netzwerk befindet. 
 1. Geben Sie im Feld „Name“ einen aussagekräftigen Namen an, um den privaten Endpunkt problemlos identifizieren zu können. 
@@ -59,7 +59,7 @@ Wählen Sie nach dem Konfigurieren der Grundeinstellungen des Schlüsseltresors 
 1. Lassen Sie die Option „In private DNS-Zone integrieren“ unverändert.  
 1. Klicken Sie auf „OK“.
 
-    ![Image](../media/private-link-service-8.png)
+    ![Screenshot: Wichtige Felder beim Konfigurieren eines privaten Endpunkts](../media/private-link-service-8.png)
  
 Der konfigurierte private Endpunkt wird nun angezeigt. Sie haben nun die Möglichkeit, diesen privaten Endpunkt zu löschen oder zu bearbeiten. Wählen Sie die Schaltfläche „Bewerten + erstellen“ aus, und erstellen Sie den Schlüsseltresor. Der Bereitstellungsvorgang dauert fünf bis zehn Minuten. 
 
@@ -74,12 +74,10 @@ Wenn Sie bereits über einen Schlüsseltresor verfügen, können Sie wie folgt e
 1. Wählen Sie im oberen Seitenbereich die Registerkarte „Private Endpunktverbindungen“ aus.
 1. Wählen Sie im oberen Seitenbereich die Schaltfläche „+ Privater Endpunkt“ aus.
 
-    ![Abbildung](../media/private-link-service-3.png) ![Abbildung](../media/private-link-service-4.png)
+    ![Screenshot: Schaltfläche „+ Privater Endpunkt“](../media/private-link-service-3.png)
+    ![Screenshot: Bildschirm zum Erstellen eines privaten Endpunkts](../media/private-link-service-4.png)
 
 Auf diesem Blatt können Sie einen privaten Endpunkt für eine beliebige Azure-Ressource erstellen. Sie können die Dropdownmenüs verwenden, um einen Ressourcentyp und eine Ressource in Ihrem Verzeichnis auszuwählen. Alternativ können Sie unter Verwendung einer Ressourcen-ID eine Verbindung mit einer beliebigen Azure-Ressource herstellen. Lassen Sie die Option „In private DNS-Zone integrieren“ unverändert.  
-
-![Abbildung](../media/private-link-service-3.png)
-![Abbildung](../media/private-link-service-4.png)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Einrichten einer Private Link-Verbindung mit dem Schlüsseltresor über die Befehlszeilenschnittstelle
 

@@ -9,22 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873879"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503554"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Tutorial: Migrieren von Android-Apps aus Google Maps
 
-Das Android SDK für Azure Maps verfügt über eine API-Schnittstelle, die dem Web SDK ähnelt. Wenn Sie bei Ihrer Entwicklung eines dieser SDKs verwendet haben, sind viele der Konzepte, bewährten Methoden und Architekturen identisch.
+Das Android SDK für Azure Maps verfügt über eine API-Schnittstelle, die dem Web SDK ähnelt. Wenn Sie bei Ihrer Entwicklung eines dieser SDKs verwendet haben, sind viele der Konzepte, bewährten Methoden und Architekturen identisch. In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Laden einer Karte
+> * Lokalisieren einer Karte
+> * Hinzufügen von Markern, Polylinien und Polygonen.
+> * Überlagern einer Kachelebene
+> * Anzeigen von Datenverkehrsdaten
 
 Das Android SDK für Azure Maps unterstützt API 21 als Mindestversion von Android: Android 5.0.0 (Lollipop).
 
 Alle Beispiele werden in Java bereitgestellt. Sie können aber auch Kotlin mit dem Azure Maps Android SDK verwenden.
 
 Weitere Informationen zum Entwickeln mit dem Android SDK für Azure Maps finden Sie unter [Erste Schritte mit dem Android SDK für Azure Maps](how-to-use-android-map-control-library.md).
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+2. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt) Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="load-a-map"></a>Laden einer Karte
 
@@ -150,7 +163,7 @@ Wenn Sie eine Anwendung ausführen, wird das Kartensteuerelement wie in der folg
 
 Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen möchten, gehen Sie wie folgt vor:
 
-1. Öffnen Sie die übergeordnete Datei **build.gradle**, und fügen Sie dem Blockabschnitt **all projects** den folgenden Code hinzu:
+1. Öffnen Sie die übergeordnete Datei **build.gradle** , und fügen Sie dem Blockabschnitt **all projects** den folgenden Code hinzu:
 
     ```JAVA
     maven {
@@ -158,7 +171,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
     }
     ```
 
-2. Aktualisieren Sie **app/build.gradle**, und fügen Sie den folgenden Code hinzu:
+2. Aktualisieren Sie **app/build.gradle** , und fügen Sie den folgenden Code hinzu:
 
     1. Stellen Sie sicher, dass **minSdkVersion** Ihres Projekts mindestens auf API 21 festgelegt ist.
 
@@ -180,7 +193,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
         > [!Note]
         > Das Azure Maps Android SDK wird regelmäßig aktualisiert und verbessert. Die aktuelle Versionsnummer von Azure Maps finden Sie unter [Erste Schritte mit dem Android-Kartensteuerelement](how-to-use-android-map-control-library.md). Außerdem können Sie die Versionsnummer von „0.2“ auf „0+“ festlegen, damit Ihr Code immer auf die neueste Version verweist.
 
-    4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie auf **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren).
+    4. Wechseln Sie auf der Symbolleiste zu **Datei** , und klicken Sie auf **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren).
 
 3. Fügen Sie der Hauptaktivität („resources pwd“ \> „layout“ \> „activity\_main.xml“) ein Kartenfragment hinzu:
 
@@ -745,6 +758,18 @@ mapControl.onReady(map -> {
 
 ![Verkehrsinformationen in Azure Maps](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
+## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zum Android SDK für Azure Maps:
 
-[Verwenden des Android-Kartensteuerelements](how-to-use-android-map-control-library.md)
+> [!div class="nextstepaction"]
+> [Verwenden des Android-Kartensteuerelements](how-to-use-android-map-control-library.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Symbolebene zu einer Android-Karte](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen von Formen zu einer Android-Karte](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Ändern von Kartenstilen auf Android-Karten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

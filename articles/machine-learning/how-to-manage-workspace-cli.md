@@ -9,13 +9,13 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-azurecli
+ms.openlocfilehash: 42f47ad61c0d90752928a8273872b734574e02c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631204"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740795"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 
@@ -62,11 +62,11 @@ Der Azure Machine Learning-Arbeitsbereich basiert auf den folgenden Azure-Dienst
 > [!IMPORTANT]
 > Wenn Sie keinen vorhandenen Azure-Dienst angeben, wird während der Erstellung des Arbeitsbereichs automatisch ein Dienst erstellt. Sie müssen immer eine Ressourcengruppe angeben. Wenn Sie Ihr eigenes Speicherkonto anfügen, stellen Sie sicher, dass es die folgenden Kriterien erfüllt:
 >
-> * Das Speicherkonto ist _kein_Premium-Konto (Premium_LRS oder Premium_GRS).
+> * Das Speicherkonto ist _kein_ Premium-Konto (Premium_LRS oder Premium_GRS).
 > * Sowohl Azure Blob- als auch Azure-Dateifunktionen sind aktiviert.
 > * Der hierarchische Namespace (ADLS Gen 2) ist deaktiviert.
 >
-> Diese Anforderungen gelten nur für das _Standard_speicherkonto, das vom Arbeitsbereich verwendet wird.
+> Diese Anforderungen gelten nur für das _Standard_ speicherkonto, das vom Arbeitsbereich verwendet wird.
 
 | Dienst | Parameter zum Angeben einer vorhandenen Instanz |
 | ---- | ---- |
@@ -78,7 +78,7 @@ Der Azure Machine Learning-Arbeitsbereich basiert auf den folgenden Azure-Dienst
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Der Azure Machine Learning-Arbeitsbereich muss innerhalb einer Ressourcengruppe erstellt werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
+Der Azure Machine Learning-Arbeitsbereich muss innerhalb einer Ressourcengruppe erstellt werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um __eine neue Ressourcengruppe zu erstellen__ , verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
 
 > [!TIP]
 > Wählen Sie eine Region aus, in der Azure Machine Learning verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -107,7 +107,7 @@ Weitere Informationen zum Arbeiten mit Ressourcengruppen finden Sie unter [az gr
 
 ### <a name="automatically-create-required-resources"></a>Automatisches Erstellen der erforderlichen Ressourcen
 
-Um einen neuen Arbeitsbereich zu erstellen, in dem die __Dienste automatisch erstellt werden__, verwenden Sie den folgenden Befehl:
+Um einen neuen Arbeitsbereich zu erstellen, in dem die __Dienste automatisch erstellt werden__ , verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -160,18 +160,17 @@ Standardmäßig werden Metriken und Metadaten für den Arbeitsbereich in einer A
 
 Anstatt den von Microsoft verwalteten Schlüssel zu verwenden, können Sie Ihren eigenen Schlüssel bereitstellen. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert. Verwenden Sie den `--cmk-keyvault`-Parameter, um den Azure Key Vault anzugeben, der den Schlüssel enthält, und `--resource-cmk-uri`, um die URL des Schlüssels innerhalb des Tresors anzugeben.
 
-> [!IMPORTANT]
-> Bevor Sie die Parameter `--cmk-keyvault` und `--resource-cmk-uri` verwenden, müssen Sie zunächst die folgenden Aktionen ausführen:
->
-> 1. Autorisieren Sie die __Machine Learning-App__ (in der Identitäts- und Zugriffsverwaltung) mit den Berechtigungen für Mitwirkende in Ihrem Abonnement.
-> 1. Befolgen Sie die Schritte in [Konfigurieren von kundenseitig verwalteten Schlüsseln](/azure/cosmos-db/how-to-setup-cmk), um:
->     * Registrieren des Azure Cosmos DB-Anbieters
->     * Erstellen und Konfigurieren einer Azure Key Vault-Instanz
->     * Generieren eines Schlüssels
->
->     Sie müssen die Azure Cosmos DB-Instanz nicht manuell erstellen. Es wird eine während der Erstellung des Arbeitsbereichs für Sie erstellt. Diese Azure Cosmos DB-Instanz wird in einer separaten Ressourcengruppe mit einem Namen erstellt, der auf diesem Muster basiert: `<your-resource-group-name>_<GUID>`.
->
-> Diese Einstellung kann nach dem Erstellen des Arbeitsbereichs nicht mehr geändert werden. Wenn Sie die von Ihrem Arbeitsbereich verwendete Azure Cosmos DB löschen, müssen Sie auch den Arbeitsbereich löschen, der sie verwendet.
+Bevor Sie die Parameter `--cmk-keyvault` und `--resource-cmk-uri` verwenden, müssen Sie zunächst die folgenden Aktionen ausführen:
+
+1. Autorisieren Sie die __Machine Learning-App__ (in der Identitäts- und Zugriffsverwaltung) mit den Berechtigungen für Mitwirkende in Ihrem Abonnement.
+1. Befolgen Sie die Schritte in [Konfigurieren von kundenseitig verwalteten Schlüsseln](/azure/cosmos-db/how-to-setup-cmk), um:
+    * Registrieren des Azure Cosmos DB-Anbieters
+    * Erstellen und Konfigurieren einer Azure Key Vault-Instanz
+    * Generieren eines Schlüssels
+
+Sie müssen die Azure Cosmos DB-Instanz nicht manuell erstellen. Es wird eine während der Erstellung des Arbeitsbereichs für Sie erstellt. Diese Azure Cosmos DB-Instanz wird in einer separaten Ressourcengruppe mit einem Namen erstellt, der auf diesem Muster basiert: `<your-resource-group-name>_<GUID>`.
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Verwenden Sie den `--hbi-workspace`-Parameter, um die von Microsoft in Ihrem Arbeitsbereich gesammelten Daten zu beschränken. 
 
@@ -187,16 +186,16 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
 > [!IMPORTANT]
 > Sie müssen nicht alle vorhandenen Ressourcen angeben. Sie können eine oder mehrere angeben. Beispielsweise können Sie ein vorhandenes Speicherkonto angeben, und der Arbeitsbereich erstellt die sonstigen Ressourcen.
 
-+ **Azure Storage-Konto**: `az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage-Konto** : `az storage account show --name <storage-account-name> --query "id"`
 
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für Ihr Speicherkonto:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
     > [!IMPORTANT]
-    > Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standard_speicherkonto des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
+    > Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standard_ speicherkonto des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
 
-+ **Azure Application Insights**:
++ **Azure Application Insights** :
 
     1. Installieren Sie die Erweiterung Application Insights:
 
@@ -214,13 +213,13 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
 
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für Ihren Schlüsseltresor:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für die Containerregistrierung:
 
@@ -359,7 +358,7 @@ Verwenden Sie den folgenden Befehl, um einen Arbeitsbereich mit einem anderen Be
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung (Roles-Based Access Control, RBAC) mit Azure Machine Learning finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Weitere Informationen zur rollenbasierten Zugriffssteuerung (Roles-Based Access Control, RBAC) in Azure mit Azure Machine Learning finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share).
 

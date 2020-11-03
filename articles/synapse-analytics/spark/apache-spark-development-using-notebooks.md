@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893083"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738747"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks (Vorschauversion) in Azure Synapse Analytics
 
@@ -44,7 +44,7 @@ Notebooks bestehen aus Zellen, bei denen es sich um einzelne Codeblöcke oder Te
 
 Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
-1. Erweitern Sie die Schaltfläche oben links **+ Zelle**, und wählen Sie **Codezelle hinzufügen** oder **Textzelle hinzufügen** aus.
+1. Erweitern Sie die Schaltfläche oben links **+ Zelle** , und wählen Sie **Codezelle hinzufügen** oder **Textzelle hinzufügen** aus.
 
     ![Hinzufügen-Zelle-mit-Schaltfläche-Zelle](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
@@ -52,7 +52,7 @@ Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
     ![Hinzufügen-Zelle-Zwischenraum](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
-3. Verwenden Sie [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **A**, um eine Zelle oberhalb der aktuellen Zelle einzufügen. Drücken Sie **B**, um eine Zelle unterhalb der aktuellen Zelle einzufügen.
+3. Verwenden Sie [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **A** , um eine Zelle oberhalb der aktuellen Zelle einzufügen. Drücken Sie **B** , um eine Zelle unterhalb der aktuellen Zelle einzufügen.
 
 ### <a name="set-a-primary-language"></a>Festlegen einer primären Sprache
 
@@ -73,9 +73,9 @@ Sie können in einem Notebook mehrere Sprachen verwenden, indem Sie den richtige
 
 |Magic-Befehl |Sprache | BESCHREIBUNG |  
 |---|------|-----|
-|%%pyspark| Python | Eine **Python**-Abfrage im Spark-Kontext ausführen.  |
-|%%spark| Scala | Eine **Scala**-Abfrage im Spark-Kontext ausführen.  |  
-|%%sql| SparkSQL | Eine **SparkSQL**-Abfrage im Spark-Kontext ausführen.  |
+|%%pyspark| Python | Eine **Python** -Abfrage im Spark-Kontext ausführen.  |
+|%%spark| Scala | Eine **Scala** -Abfrage im Spark-Kontext ausführen.  |  
+|%%sql| SparkSQL | Eine **SparkSQL** -Abfrage im Spark-Kontext ausführen.  |
 |%%csharp | .NET für Spark (C#) | Führen Sie eine Abfrage vom Typ **.NET für Spark (C#)** für Spark-Kontext aus. |
 
 Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage mit dem Magic-Befehl **%%pyspark** schreiben können oder eine SparkSQL-Abfrage mit dem Magic-Befehl **%%sql** in einem **Spark (Scala)** -Notebook. Beachten Sie, dass die primäre Sprache für das Notebook auf PySpark festgelegt ist.
@@ -128,7 +128,7 @@ Sie können die Formatschaltflächen auf der Textzellen-Symbolleiste verwenden, 
   ![Synapse-Text-Zelle-Symbolleiste](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 ### <a name="undo-cell-operations"></a>Rückgängigmachen von Zellenvorgängen
-Wählen Sie die Schaltfläche **Rückgängig**, oder drücken Sie **STRG+Z**, um den letzten Zellenvorgang aufzuheben. Sie können jetzt die bis zu letzten 20 zurückliegenden Zellenaktionen rückgängig machen. 
+Wählen Sie die Schaltfläche **Rückgängig** , oder drücken Sie **STRG+Z** , um den letzten Zellenvorgang aufzuheben. Sie können jetzt die bis zu letzten 20 zurückliegenden Zellenaktionen rückgängig machen. 
 
    ![Synapse-Rückgängig-Zellen](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
@@ -136,7 +136,7 @@ Wählen Sie die Schaltfläche **Rückgängig**, oder drücken Sie **STRG+Z**, um
 
 Wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen. Wählen Sie dann **Zelle nach oben verschieben** oder **Zelle nach unten verschieben** aus, um die aktuelle Zelle zu verschieben. 
 
-Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **STRG+ALT+↑**, um die aktuelle Zelle nach oben zu verschieben. Drücken Sie **STRG+ALT+↓**, um die aktuelle Zelle nach unten zu verschieben.
+Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **STRG+ALT+↑** , um die aktuelle Zelle nach oben zu verschieben. Drücken Sie **STRG+ALT+↓** , um die aktuelle Zelle nach unten zu verschieben.
 
    ![eine-Zelle-verschieben](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
@@ -144,7 +144,7 @@ Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-comm
 
 Um eine Zelle zu löschen, wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen, und wählen Sie dann **Zelle löschen** aus. 
 
-Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **D,D**, um die aktuelle Zelle zu löschen.
+Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **D,D** , um die aktuelle Zelle zu löschen.
   
    ![eine-Zelle-löschen](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
@@ -176,7 +176,7 @@ Es gibt mehrere Methoden, um den Code in einer Zelle auszuführen.
 
    ![Zelle-2-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
-3. Verwenden Sie [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **UMSCHALT+EINGABE**, um die aktuelle Zelle auszuführen und die Zelle darunter auszuwählen. Drücken Sie **ALT+EINGABE**, um die aktuelle Zelle auszuführen und darunter eine neue Zelle einzufügen.
+3. Verwenden Sie [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **UMSCHALT+EINGABE** , um die aktuelle Zelle auszuführen und die Zelle darunter auszuwählen. Drücken Sie **ALT+EINGABE** , um die aktuelle Zelle auszuführen und darunter eine neue Zelle einzufügen.
 
 
 ### <a name="run-all-cells"></a>Ausführen aller Zellen
@@ -277,13 +277,13 @@ Sie können auf Daten im primären Speicherkonto direkt zugreifen. Es besteht ke
 
 Eine tabellarische Ergebnisansicht wird zusammen mit der Möglichkeit zum Erstellen eines Balkendiagramms, eines Liniendiagramms, eines Kreisdiagramms, eines Punktdiagramms und eines Flächendiagramms bereitgestellt. Sie können Ihre Daten visualisieren, ohne Code schreiben zu müssen. Die Diagramme lassen sich in den **Diagrammoptionen** anpassen. 
 
-Die Ausgabe der **%%sql**-Magic-Befehle wird standardmäßig in der gerenderten Tabellenansicht angezeigt. Sie können <code>display(df)</code> für Spark-Datenrahmen, Pandas-Datenrahmen, Listen oder die Funktion „Resilient Distributed Datasets“ (RDD) aufrufen, um die gerenderte Tabellenansicht zu erzeugen.
+Die Ausgabe der **%%sql** -Magic-Befehle wird standardmäßig in der gerenderten Tabellenansicht angezeigt. Sie können <code>display(df)</code> für Spark-Datenrahmen, Pandas-Datenrahmen, Listen oder die Funktion „Resilient Distributed Datasets“ (RDD) aufrufen, um die gerenderte Tabellenansicht zu erzeugen.
 
    [![integrierte-Diagramme](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
 ### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Visualisieren von integrierten Diagrammen aus umfangreichen Datasets 
 
-Die <code>display(df)</code>-Funktion erfasst standardmäßig nur die ersten 1.000 Zeilen der Daten zum Rendern der Diagramme. Überprüfen Sie die **Gesamtergebnisse der Aggregation**, und wählen Sie **Anwenden** aus, um die Diagrammgenerierung auf das gesamte Dataset anzuwenden. Ein Spark-Auftrag wird ausgelöst, wenn die Diagrammeinstellung geändert wird. Es dauert eine Weile, bis die Berechnung abgeschlossen und das Diagramm gerendert wird. 
+Die <code>display(df)</code>-Funktion erfasst standardmäßig nur die ersten 1.000 Zeilen der Daten zum Rendern der Diagramme. Überprüfen Sie die **Gesamtergebnisse der Aggregation** , und wählen Sie **Anwenden** aus, um die Diagrammgenerierung auf das gesamte Dataset anzuwenden. Ein Spark-Auftrag wird ausgelöst, wenn die Diagrammeinstellung geändert wird. Es dauert eine Weile, bis die Berechnung abgeschlossen und das Diagramm gerendert wird. 
     [![builtin-charts-aggregation-all](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
@@ -337,7 +337,7 @@ displayHTML(html)
 
 Sie können ein einzelnes Notebook oder alle Notebooks in Ihrem Arbeitsbereich speichern.
 
-1. Um an einem einzelnen Notebook vorgenommene Änderungen zu speichern, wählen Sie auf der Notebook-Befehlsleiste die Schaltfläche**Veröffentlichen** aus.
+1. Um an einem einzelnen Notebook vorgenommene Änderungen zu speichern, wählen Sie auf der Notebook-Befehlsleiste die Schaltfläche **Veröffentlichen** aus.
 
    ![Notebook-veröffentlichen](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
 
@@ -357,7 +357,7 @@ Verfügbare Magic-Befehle für Zeilen: [%lsmagic](https://ipython.readthedocs.io
 Verfügbare Zellen-Magics: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%%sql](#use-multiple-languages), [%%pyspark](#use-multiple-languages), [%%spark](#use-multiple-languages), [%%csharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>Orchestrieren von Notebooks
+## <a name="integrate-a-notebook"></a>Integrieren eines Notebooks
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Hinzufügen eines Notebooks zu einer Pipeline
 
@@ -367,7 +367,7 @@ Wählen Sie in der oberen rechten Ecke **Zur Pipeline hinzufügen** aus, um ein 
 
 ### <a name="designate-a-parameters-cell"></a>Festlegen einer Parameterzelle
 
-Klicken Sie zum Parametrisieren Ihres Notebooks auf die Auslassungspunkte (...), um auf das Menü für zusätzliche Zellenaktionen ganz rechts zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten**, um die Zelle als Parameterzelle festzulegen.
+Klicken Sie zum Parametrisieren Ihres Notebooks auf die Auslassungspunkte (...), um auf das Menü für zusätzliche Zellenaktionen ganz rechts zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten** , um die Zelle als Parameterzelle festzulegen.
 
 ![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

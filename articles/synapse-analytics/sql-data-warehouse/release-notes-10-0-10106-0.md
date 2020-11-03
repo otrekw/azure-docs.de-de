@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676117"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics: Versionshinweise
 
@@ -39,6 +39,13 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="oct-2020"></a>Oktober 2020
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**T-SQL: Inline-Tabellenwertfunktionen (Vorschau)**|Ab dieser Version können Sie mit Transact-SQL Inline-Tabellenwertfunktionen erstellen und deren Ergebnisse wie eine Tabelle abfragen. Dieses Feature befindet sich derzeit in der Vorschauphase und wird bei allgemeiner Verfügbarkeit in Tools unterstützt. Weitere Informationen finden Sie unter [CREATE FUNCTION (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest).|
+|**MERGE-Befehl (Vorschau)**|Sie können jetzt Einfüge-, Aktualisierungs- oder Löschvorgänge für eine Zieltabelle anhand der Ergebnisse eines Joins mit einer Quelltabelle ausführen. Sie können z.&nbsp;B. zwei Tabellen synchronisieren, indem Sie Zeilen in einer Tabelle anhand von Unterschieden, die in der anderen Tabelle gefunden wurden, einfügen, aktualisieren oder löschen.  Weitere Informationen finden Sie unter [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current).|
 
 ## <a name="aug-2020"></a>August 2020
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321148"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778034"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Überwachungsmetriken und unformatierte Protokolle für Azure CDN von Microsoft
 Mit Azure CDN von Microsoft können Sie Ressourcen auf folgende Weise überwachen, um Probleme zu behandeln, nachzuverfolgen und zu debuggen. 
@@ -59,15 +59,15 @@ So konfigurieren Sie unformatierte Protokolle für Azure CDN über Microsoft-Pro
     * **In einem Speicherkonto archivieren**
         * Wählen Sie das **Abonnement** und das **Speicherkonto** aus.
     * **An einen Event Hub streamen**
-        * Wählen Sie das **Abonnement**, den **Event Hub-Namespace**, den **Event Hub-Namen** (optional) und den **Event Hub-Richtliniennamen** aus.
+        * Wählen Sie das **Abonnement** , den **Event Hub-Namespace** , den **Event Hub-Namen** (optional) und den **Event Hub-Richtliniennamen** aus.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Konfigurieren des Ziels für Protokolleinstellungen" border="true":::
 
 7. Wählen Sie **Speichern** aus.
 
 ## <a name="configuration---azure-powershell"></a>Konfiguration – Azure PowerShell
 
-Verwenden Sie [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting), um die Diagnoseeinstellung für unformatierte Protokolle zu konfigurieren.
+Verwenden Sie [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting), um die Diagnoseeinstellung für unformatierte Protokolle zu konfigurieren.
 
 Aufbewahrungsdaten werden durch die Option **-RetentionInDays** im Befehl definiert.
 
@@ -178,7 +178,7 @@ Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit. U
     ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>An eingestellte Unterstützung von Origin Shield gesendet
-Die unformatierte Protokolleigenschaft **isSentToOriginShield** wurde eingestellt und durch ein neues Feld, **isReceivedFromClient**, ersetzt. Verwenden Sie das neue Feld, wenn Sie bereits das veraltete Feld verwenden. 
+Die unformatierte Protokolleigenschaft **isSentToOriginShield** wurde eingestellt und durch ein neues Feld, **isReceivedFromClient** , ersetzt. Verwenden Sie das neue Feld, wenn Sie bereits das veraltete Feld verwenden. 
 
 Unformatierte Protokolle umfassen Protokolle, die sowohl über CDN Edge (untergeordneter POP) als auch Origin Shield generiert wurden. Origin Shield bezieht sich auf übergeordnete Knoten, die strategisch über den Globus verteilt sind. Diese Knoten kommunizieren mit den Ursprungsservern und reduzieren den Datenverkehr am Ursprung. 
 
@@ -211,7 +211,7 @@ Die Metriken werden in Diagrammen angezeigt und können über PowerShell, die Be
 
 Die Metriken von Azure CDN von Microsoft werden in Intervallen von 60 Sekunden gemessen und gesendet. Es kann bis zu 3 Minuten dauern, bis die Metriken im Portal angezeigt werden. 
 
-Weitere Informationen finden Sie unter [Azure Monitor-Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md).
 
 **In Azure CDN von Microsoft unterstützte Metriken**
 
@@ -222,7 +222,7 @@ Weitere Informationen finden Sie unter [Azure Monitor-Metriken](https://docs.mic
 | ResponseSize    | Die Anzahl der vom CDN-Edge als Antworten an Clients gesendeten Bytes                                                  |Endpunkt </br> Land des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe                                                                                          |
 | TotalLatency    | Die Gesamtzeit zwischen dem Empfang der Clientanforderung in CDN **und dem letzten von CDN an den Client gesendeten Antwortbyte** |Endpunkt </br> Land des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe                                                                                             |
 
-***Bytetrefferquote = (ausgehende Daten vom Edge - ausgehende Daten vom Ursprung) / ausgehende Daten vom Edge**
+**_Bytetrefferquote = (vom Edge ausgehende Daten – vom Ursprung ausgehende Daten) : vom Edge ausgehende Daten_*
 
 Von der Berechnung der Bytetrefferquote ausgeschlossene Szenarien:
 
@@ -235,23 +235,23 @@ Von der Berechnung der Bytetrefferquote ausgeschlossene Szenarien:
 
 2. Wählen Sie unter **Überwachung** die Option **Metriken** aus:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Metriken für CDN-Profil" border="true":::
 
 3. Wählen Sie **Metrik hinzufügen** und dann die hinzuzufügende Metrik aus:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Hinzufügen und Auswählen der Metrik für CDN-Profil" border="true":::
 
 4. Wählen Sie **Filter hinzufügen** aus, um einen Filter hinzuzufügen:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Anwenden eines Filters auf die Metrik" border="true":::
 
 5. Wählen Sie **Apply splitting** (Teilung anwenden) aus, um Trends nach verschiedenen Dimensionen anzuzeigen:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Anwenden der Teilung auf die Metrik" border="true":::
 
 6. Wählen Sie **Neues Diagramm** aus, um ein neues Diagramm hinzuzufügen:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Hinzufügen eines neuen Diagramms in der Metrikansicht" border="true":::
 
 ### <a name="alerts"></a>Alerts
 
@@ -259,9 +259,9 @@ Durch Auswählen von **Überwachung** >> **Warnungen** können Sie Warnungen fü
 
 Wählen Sie **Neue Warnungsregel** für die im Abschnitt „Metriken“ aufgeführten Metriken aus:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Konfigurieren von Warnungen für CDN-Endpunkt" border="true":::
 
-Die Warnung wird basierend auf Azure Monitor abgerechnet. Weitere Informationen zu Warnungen finden Sie unter [Azure Monitor-Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+Die Warnung wird basierend auf Azure Monitor abgerechnet. Weitere Informationen zu Warnungen finden Sie unter [Azure Monitor-Warnungen](../azure-monitor/platform/alerts-overview.md).
 
 ### <a name="additional-metrics"></a>Zusätzliche Metriken
 Sie können zusätzliche Metriken über Azure Log Analytics und gegen einen Aufpreis unformatierte Protokolle aktivieren.
@@ -270,21 +270,21 @@ Sie können zusätzliche Metriken über Azure Log Analytics und gegen einen Aufp
 
 2. Wählen Sie den erstellten Log Analytics-Arbeitsbereich aus:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Auswählen des Log Analytics-Arbeitsbereichs" border="true":::   
 
 3. Wählen Sie im Log Analytics-Arbeitsbereich unter **Allgemein** die Option **Protokolle** aus.  Wählen Sie dann **Erste Schritte** aus:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log Analytics-Arbeitsbereich der Ressource" border="true":::   
  
 4. Wählen Sie **CDN-Profile** aus.  Wählen Sie eine Beispielabfrage für die Ausführung aus, oder schließen Sie das Beispielfenster, um eine benutzerdefinierte Abfrage einzugeben:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Fenster mit Beispielabfragen" border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Abfrageausführung" border="true":::   
 
 4. Wählen Sie **Diagramm** aus, um Daten nach Diagrammen anzuzeigen.  Wählen Sie **An Dashboard anheften** aus, um das Diagramm an das Azure-Dashboard anzuheften:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="„Diagnoseeinstellung hinzufügen“ für CDN-Profil" border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Heften Sie ein Diagramm an ein Dashboard an." border="true"::: 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie unformatierte HTTP-Protokolle für den Microsoft CDN-Dienst aktiviert.
@@ -293,6 +293,6 @@ Weitere Informationen zu Azure CDN und den anderen in diesem Artikel erwähnten 
 
 * [Analysieren](cdn-log-analysis.md) Sie Azure CDN-Verwendungsmuster.
 
-* Weitere Informationen zu Azure Monitor finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/overview).
+* Weitere Informationen zu Azure Monitor finden Sie [hier](../azure-monitor/overview.md).
 
-* Konfigurieren Sie [Log Analytics in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+* Konfigurieren Sie [Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md).

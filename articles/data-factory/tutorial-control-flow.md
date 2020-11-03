@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983413"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637699"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -40,7 +40,7 @@ Dieses Tutorial beschreibt, wie die folgenden Aufgaben ausgeführt werden:
 > * Starten einer Pipelineausführung.
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
-Dieses Tutorial verwendet .NET SDK. Sie können andere Mechanismen zur Interaktion mit Azure Data Factory verwenden. Data Factory-Schnellstarts finden Sie unter [Schnellstarts](/azure/data-factory/quickstart-create-data-factory-portal).
+Dieses Tutorial verwendet .NET SDK. Sie können andere Mechanismen zur Interaktion mit Azure Data Factory verwenden. Data Factory-Schnellstarts finden Sie unter [Schnellstarts](./quickstart-create-data-factory-portal.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -65,8 +65,8 @@ Erstellen Sie eine Anwendung, wie unter [Erstellen einer Azure Active Directory-
    Tamika|Walsh
    ```
 
-1. Öffnen Sie den Azure Storage-Explorer. Erweitern Sie Ihr Speicherkonto. Klicken Sie mit der rechten Maustaste auf **Blobcontainer**, und wählen Sie **Blobcontainer erstellen** aus.
-1. Geben Sie dem neuen Container den Namen *adfv2branch*, und wählen Sie **Hochladen** aus, um die Datei *input.txt* zum Container hinzuzufügen.
+1. Öffnen Sie den Azure Storage-Explorer. Erweitern Sie Ihr Speicherkonto. Klicken Sie mit der rechten Maustaste auf **Blobcontainer** , und wählen Sie **Blobcontainer erstellen** aus.
+1. Geben Sie dem neuen Container den Namen *adfv2branch* , und wählen Sie **Hochladen** aus, um die Datei *input.txt* zum Container hinzuzufügen.
 
 ## <a name="create-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts<a name="create-visual-studio-project"></a>
 
@@ -90,7 +90,7 @@ Erstellen Sie eine C# .NET-Konsolenanwendung:
 
 ### <a name="create-a-data-factory-client"></a>Erstellen eines Data Factory-Clients
 
-1. Öffnen Sie *Program.cs*, und fügen Sie die folgenden Anweisungen hinzu:
+1. Öffnen Sie *Program.cs* , und fügen Sie die folgenden Anweisungen hinzu:
 
    ```csharp
    using System;
@@ -344,7 +344,7 @@ Nachdem Sie den Workflow gespeichert haben, kopieren Sie den Wert **HTTP-POST-UR
 
 ## <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow
 
-Klonen Sie **CopySuccessEmail**, und erstellen Sie einen weiteren Logic Apps-Workflow mit dem Namen *CopyFailEmail*. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie das Format Ihrer E-Mail (beispielsweise `Subject`), um eine E-Mail für einen nicht erfolgreichen Vorgang zu erhalten. Beispiel:
+Klonen Sie **CopySuccessEmail** , und erstellen Sie einen weiteren Logic Apps-Workflow mit dem Namen *CopyFailEmail*. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie das Format Ihrer E-Mail (beispielsweise `Subject`), um eine E-Mail für einen nicht erfolgreichen Vorgang zu erhalten. Beispiel:
 
 ![Logik-App-Designer: Workflow für fehlerhafte E-Mail](media/tutorial-control-flow/fail-email-workflow.png)
 
@@ -490,7 +490,7 @@ Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. We
         }
 ```
 
-Fügen Sie in der `Url`-Eigenschaft die **HTTP-POST-URL**-Endpunkte aus Ihrem Logic Apps-Workflow ein. Erstellen Sie in der Eigenschaft `Body` eine Instanz der Klasse `EmailRequest`. Die E-Mail-Anforderung enthält die folgenden Eigenschaften:
+Fügen Sie in der `Url`-Eigenschaft die **HTTP-POST-URL** -Endpunkte aus Ihrem Logic Apps-Workflow ein. Erstellen Sie in der Eigenschaft `Body` eine Instanz der Klasse `EmailRequest`. Die E-Mail-Anforderung enthält die folgenden Eigenschaften:
 
 * Message (Nachricht): Übergibt den Wert von `@{activity('CopyBlobtoBlob').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zu, und übergibt den Wert von `dataWritten`. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
 * Data Factory-Name. Übergibt den Wert von `@{pipeline().DataFactory}`. Diese Systemvariable ermöglicht Ihnen den Zugriff auf den Namen der entsprechenden Data Factory. Eine Liste der Systemvariablen finden Sie unter [Systemvariablen](control-flow-system-variables.md).
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 In diesem Tutorial haben Sie folgende Aufgaben ausgeführt:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory
+> Erstellen einer Data Factory
 > * Erstellen eines verknüpften Azure Storage-Diensts
 > * Erstellen eines Azure-Blobdatasets.
 > * Erstellen einer Pipeline, die eine Kopieraktivität und eine Webaktivität enthält.

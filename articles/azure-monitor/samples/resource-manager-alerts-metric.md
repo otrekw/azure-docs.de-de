@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322294"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893980"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Metrikwarnungsregeln in Azure Monitor
 
@@ -502,7 +502,7 @@ Für das Verwenden von Dimensionen in einer Warnungsregel, die mehrere Kriterien
 - Innerhalb jedes Kriteriums können Sie nur einen Wert pro Dimension auswählen.
 - Sie können „\*“ nicht als Dimensionswert verwenden.
 - Wenn Metriken, die in verschiedenen Kriterien konfiguriert sind, dieselbe Dimension unterstützen, dann muss auf gleiche Weise ein konfigurierter Dimensionswert explizit für alle diese Metriken in den relevanten Kriterien festgelegt werden.
-    - Im untenstehenden Beispiel muss *criterion2* für die Dimension *ApiName* auch einen **„GetBlob“** -Wert festlegen, da die Metriken **Transactions** und **SuccessE2ELatency** beide eine  **ApiName**-Dimension haben, und *criterion1* den *„GetBlob“* -Wert für die Dimension **ApiName** angibt.
+    - Im untenstehenden Beispiel muss *criterion2* für die Dimension *ApiName* auch einen **„GetBlob“** -Wert festlegen, da die Metriken **Transactions** und **SuccessE2ELatency** beide eine  **ApiName** -Dimension haben, und *criterion1* den *„GetBlob“* -Wert für die Dimension **ApiName** angibt.
 
 ### <a name="template-file"></a>Vorlagendatei
 
@@ -708,14 +708,14 @@ Für das Verwenden von Dimensionen in einer Warnungsregel, die mehrere Kriterien
 Mit einer einzelnen Warnungsregel können mehrere metrische Zeitreihen gleichzeitig überwacht werden, sodass weniger Warnungsregeln zu verwalten sind. Im folgenden Beispiel wird eine statische Metrikwarnungsregel für dimensionale Metriken erstellt.
 
 In diesem Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **ResponseType** und **ApiName** für die Metrik **Transactions** überwacht:
-1. **ResponseType**: Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **ResponseType**, einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
-2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
+1. **ResponseType** : Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **ResponseType** , einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
+2. **ApiName** : Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
 
 Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Vorlagendatei
 
@@ -899,14 +899,14 @@ Eine einzige Warnungsregel mit dynamischem Schwellenwert kann angepasste Schwell
 
 
 In diesem Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **ResponseType** und **ApiName** für die Metrik **Transactions** überwacht:
-1. **ResponseType**: Für jeden Wert der Dimension **ResponseType**, einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
-2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
+1. **ResponseType** : Für jeden Wert der Dimension **ResponseType** , einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
+2. **ApiName** : Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
 
 Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
 
 >[!NOTE]
 > Für Metrikwarnungsregeln mit dynamischem Schwellenwert werden derzeit mehrere Kriterien nicht unterstützt.
@@ -3132,7 +3132,7 @@ Mithilfe von [Application Insights-Verfügbarkeitstests](../app/monitor-web-app-
 > [!NOTE]
 > `&amp`; ist der HTML-Entitätsverweis für „&.“ URL-Parameter werden weiterhin durch einen einzelnen „&“ getrennt, aber wenn Sie die URL in HTML erwähnen, müssen Sie sie codieren. Wenn Ihr pingURL-Parameterwert also einen „&“ enthält, müssen Sie ihn mit dem Escapezeichen `&amp`; versehen.
 
-### <a name="parameter-file"></a>Parameterdatei
+### <a name="template-file"></a>Vorlagendatei
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Mithilfe von [Application Insights-Verfügbarkeitstests](../app/monitor-web-app-
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>Parameterdatei
 
 ```json
@@ -3254,12 +3252,53 @@ Mithilfe von [Application Insights-Verfügbarkeitstests](../app/monitor-web-app-
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+Eine zusätzliche Konfiguration des `pingText`-Parameters für Inhaltsübereinstimmung wird im `Configuration/Webtest`-Teil der Vorlagendatei gesteuert. Dies ist insbesondere der nachfolgende Abschnitt:
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>Teststandorte
+
+|Id                  | Region           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | Europa, Westen      |
+| `us-ca-sjc-azr`    | USA (Westen)          |
+| `emea-ru-msa-edge` | UK, Süden         |
+| `emea-se-sto-edge` | UK, Westen          |
+| `apac-sg-sin-azr`  | Asien, Südosten   |
+| `us-tx-sn1-azr`    | USA Süd Mitte |
+| `us-il-ch1-azr`    | USA Nord Mitte |
+| `emea-gb-db3-azr`  | Nordeuropa     |
+| `apac-jp-kaw-edge` | Japan, Osten       |
+| `emea-fr-pra-edge` | Frankreich, Mitte   |
+| `emea-ch-zrh-edge` | Frankreich, Süden     |
+| `us-va-ash-azr`    | East US          |
+| `apac-hk-hkn-azr`  | Asien, Osten        |
+| `us-fl-mia-edge`   | USA (Mitte)       |
+| `latam-br-gru-edge`| Brasilien Süd      |
+| `emea-au-syd-edge` | Australien (Osten)   |
+
+### <a name="us-government-test-locations"></a>US Government-Teststandorte
+
+|Id                    | Region           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

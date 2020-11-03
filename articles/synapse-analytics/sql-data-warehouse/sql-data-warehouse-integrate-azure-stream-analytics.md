@@ -42,7 +42,7 @@ Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics Auftrag, und klicken Si
 
 ### <a name="step-2"></a>Schritt 2
 
-Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie im Dropdownmenü die Option **Azure Synapse Analytics** aus.
+Klicken Sie auf die Schaltfläche **Hinzufügen** , und wählen Sie im Dropdownmenü die Option **Azure Synapse Analytics** aus.
 
 ![Auswählen von Azure Synapse Analytics](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output.png)
 
@@ -51,13 +51,13 @@ Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie im Dropdownme
 Geben Sie die folgenden Werte ein:
 
 * *Ausgabealias:* Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
-* *Abonnement*:
+* *Abonnement* :
   * Befindet sich Ihr Data Warehouse im selben Abonnement wie der Stream Analytics-Auftrag, klicken Sie auf ***Select Azure Synapse Analytics from your subscriptions*** (Azure Synapse Analytics aus Abonnements auswählen).
-  * Wenn sich das Data Warehouse in einem anderen Abonnement befindet, klicken Sie auf „Provide Azure Synapse Analytics settings manually“ (Azure Synapse Analytics-Einstellungen manuell bereitstellen).
-* *Datenbank*: Wählen Sie in der Dropdownliste die Zieldatenbank aus.
-* *Benutzername*: Geben Sie den Benutzernamen eines Kontos mit Schreibberechtigungen für die Datenbank an.
-* *Kennwort*: Geben Sie das Kennwort für das angegebene Benutzerkonto an.
-* *Tabelle*: Geben Sie den Namen der Zieltabelle in der Datenbank an.
+  * Wenn sich das Data Warehouse in einem anderen Abonnement befindet, klicken Sie auf „Provide Azure Synapse Analytics settings manually“ (Azure Synapse Analytics-Einstellungen manuell angeben)
+* *Datenbank* : Wählen Sie in der Dropdownliste die Zieldatenbank aus.
+* *Benutzername* : Geben Sie den Benutzernamen eines Kontos mit Schreibberechtigungen für die Datenbank an.
+* *Kennwort* : Geben Sie das Kennwort für das angegebene Benutzerkonto an.
+* *Tabelle* : Geben Sie den Namen der Zieltabelle in der Datenbank an.
 * Klicken Sie auf die Schaltfläche **Speichern**.
 
 ![Ausgefülltes Azure Synapse Analytics-Formular](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
@@ -106,7 +106,7 @@ Klicken Sie im Azure-Portal für Ihren Stream Analytics-Auftrag auf den Auftrags
 
 ### <a name="step-6"></a>Schritt 6
 
-Klicken Sie unter ***Auftragstopologie*** auf das Menü ***Abfrage***, und ändern Sie die Abfrage so, dass Daten in die von Ihnen erstellte Streamausgabe eingefügt werden.  Klicken Sie auf die Schaltfläche ***Ausgewählte Abfrage testen***, um die Abfrage zu testen.  Klicken Sie auf die Schaltfläche ***Abfrage speichern***, wenn der Abfragetest erfolgreich war.
+Klicken Sie unter ***Auftragstopologie*** auf das Menü ***Abfrage*** , und ändern Sie die Abfrage so, dass Daten in die von Ihnen erstellte Streamausgabe eingefügt werden.  Klicken Sie auf die Schaltfläche ***Ausgewählte Abfrage testen*** , um die Abfrage zu testen.  Klicken Sie auf die Schaltfläche ***Abfrage speichern*** , wenn der Abfragetest erfolgreich war.
 
 ![Speichern der Abfrage](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 

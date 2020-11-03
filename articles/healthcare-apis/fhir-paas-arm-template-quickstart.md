@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Bereitstellen von Azure API for FHIR mit einer ARM-Vorlage'
-description: In diesem Schnellstart erfahren Sie, wie Sie Azure API for Fast Healthcare Interoperability Resources (FHIR®) mithilfe einer Azure Resource Manager-Vorlage bereitstellen.
+description: In diesem Schnellstart erfahren Sie, wie Sie Azure API for Fast Healthcare Interoperability Resources (FHIR®) mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen.
 author: mgblythe
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/06/2020
-ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772735"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521440"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Schnellstart: Verwenden Sie eine ARM-Vorlage zum Bereitstellen von Azure API for FHIR
 
@@ -69,9 +69,9 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 
 Wählen Sie den folgenden Link aus, um Azure API for FHIR mit einer ARM-Vorlage im Azure-Portal bereitzustellen:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen eines Azure API for FHIR-Diensts mithilfe einer ARM-Vorlage im Azure-Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen eines Azure API for FHIR-Diensts mithilfe der ARM-Vorlage im Azure-Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
-Auf der Seite **Azure API for FHIR bereitstellen**:
+Auf der Seite **Azure API for FHIR bereitstellen** :
 
 1. Wenn Sie möchten, ändern Sie das **Abonnement** aus dem Standardabonnement in ein anderes Abonnement.
 
@@ -81,7 +81,7 @@ Auf der Seite **Azure API for FHIR bereitstellen**:
 
 4. Geben Sie einen neuen **Dienstnamen** ein, und wählen Sie den **Standort** für Azure API for FHIR aus. Der Standort kann mit dem Standort der Ressourcengruppe identisch sein oder sich davon unterscheiden.
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Bereitstellen eines Azure API for FHIR-Diensts mithilfe einer ARM-Vorlage im Azure-Portal.":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Bereitstellen von Azure API for FHIR mit einer ARM-Vorlage im Azure-Portal.":::
 
 5. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -150,7 +150,7 @@ read -p "Press [ENTER] to continue: "
 
 Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihren neuen Azure API for FHIR-Dienst anzuzeigen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure API for FHIR**, und wählen Sie diese Option dann aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure API for FHIR** , und wählen Sie diese Option dann aus.
 
 2. Wählen Sie in der FHIR-Liste den neuen Dienst aus. Die Seite **Übersicht** für den neuen Azure API for FHIR-Dienst wird angezeigt.
 
@@ -196,7 +196,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 
@@ -224,9 +224,14 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+Ein Tutorial mit schrittweisen Anleitungen zum Erstellen einer ARM-Vorlage finden Sie im [Tutorial zum Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Tutorial mit Schritt-für-Schritt-Anleitungen zum Erstellen einer ARM-Vorlage finden Sie unter folgendem Link:
+In dieser Schnellstartanleitung haben Sie Azure API for FHIR in Ihrem Abonnement bereitgestellt. Wenn Sie zusätzliche Einstellungen in Azure API for FHIR festlegen möchten, fahren Sie mit der Schrittanleitung für zusätzliche Einstellungen fort. Wenn Sie Azure API for FHIR verwenden möchten, informieren Sie sich ausführlicher über das Registrieren von Anwendungen.
 
-> [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+>[!div class="nextstepaction"]
+>[Zusätzliche Einstellungen in Azure API for FHIR](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[Registrieren der Azure Active Directory-Apps für Azure API for FHIR](fhir-app-registration.md)

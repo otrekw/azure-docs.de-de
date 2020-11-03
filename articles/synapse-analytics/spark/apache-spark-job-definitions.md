@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
-ms.date: 04/15/2020
-ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260273"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738184"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
@@ -47,11 +47,11 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
 
      ![Beispieldateien](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.py** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch. 
+3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.py** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch. 
 
      ![Python-Datei hochladen](./media/apache-spark-job-definitions/upload-python-file.png)
 
-4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. 
+4. Wählen Sie den Hub **Entwickeln** , das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. 
 
      ![Neue Definition für Python erstellen](./media/apache-spark-job-definitions/create-new-definition.png)
 
@@ -89,11 +89,11 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
  
      ![Beispieldateien für Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.jar** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
+ 3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.jar** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
  
      ![Scala-Struktur vorbereiten](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
+ 4. Wählen Sie den Hub **Entwickeln** , das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
 
  5. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **Spark (Scala)** aus.
 
@@ -129,11 +129,11 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 
      ![Beispieldateien für dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.zip** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
+ 3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.zip** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
  
      ![DotNet-Struktur vorbereiten](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
+ 4. Wählen Sie den Hub **Entwickeln** , das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
 
  5. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **.NET Spark (C#/F#)** aus.
 

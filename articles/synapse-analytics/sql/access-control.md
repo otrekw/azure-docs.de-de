@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289479"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503282"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines
 
 Hier erfahren Sie, wie Sie die Zugriffssteuerung für Arbeitsbereiche, Daten und Pipelines in einem Azure Synapse Analytics-Arbeitsbereich (Vorschauversion) verwalten.
 
 > [!NOTE]
-> In der allgemein verfügbaren Version werden zur Weiterentwicklung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) Synapse-spezifische Azure-Rollen eingeführt.
+> In der allgemein verfügbaren Version werden zur Weiterentwicklung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, Azure RBAC) Synapse-spezifische Azure-Rollen eingeführt.
 
 ## <a name="access-control-for-workspace"></a>Zugriffssteuerung für den Arbeitsbereich
 
@@ -144,7 +144,7 @@ Führen Sie den Schritt des folgenden Beispiels aus, um einem Benutzer Vollzugri
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="sql-pools"></a>SQL-Pools

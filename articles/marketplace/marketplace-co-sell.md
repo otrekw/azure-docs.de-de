@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207705"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520987"
 ---
 # <a name="co-sell-partner-engagement"></a>Partner-Engagement für Co-Selling
 
@@ -67,19 +67,28 @@ Starten Sie Ihre Co-Selling-Aktivitäten direkt im Partner Center, indem Sie die
 
 1. Stellen Sie grundlegende Auflistungsdetails bereit, um Microsoft-Verkäufern zu helfen, Ihr Angebot im **Auflistungsabschnitt** schnell zu sortieren und zu ermitteln. ( *Erforderlich: alle Felder* )
 
-    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::  
+    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="In dieser Abbildung ist der Auflistungsabschnitt auf der Registerkarte „Co-Selling“ dargestellt.":::  
 
 1. Geben Sie Details zu Ihrem Angebot an, und laden Sie im Abschnitt **Dokumente** Begleitmaterialien hoch. Diese Informationen werden von Microsoft-Verkäufern verwendet, um Ihr Angebot zu empfehlen und zu verkaufen. ( *Erforderlich: Kundeninformationsblatt und Kundenpräsentation* )
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::
+    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="In dieser Abbildung ist der Abschnitt „Dokumente“ auf der Registerkarte „Co-Selling“ dargestellt.":::
  
 1. Laden Sie im Abschnitt **Kontakte** Informationen zum Verkaufskontakt hoch. Microsoft-Verkäufer können sich an diese Kontakte wenden, um zusätzliche Informationen zu Ihrem Angebot anzufordern. ( *Erforderlich: ein Kontakt für jede Geografie, in der Ihr Angebot verfügbar ist* )
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="In dieser Abbildung ist der Abschnitt „Kontakte“ auf der Registerkarte „Co-Selling“ dargestellt.":::
 
 1. Speichern Sie den Entwurf, bevor Sie fortfahren.
 1. Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, können Sie es zum Überprüfen und Veröffentlichen übermitteln. Wählen Sie in der rechten oberen Ecke **Überprüfen und veröffentlichen** aus. Überprüfen Sie die Angebotsdetails, und wählen Sie dann **Veröffentlichen** aus.
-1. Wir überprüfen die von Ihnen hochgeladenen Materialien, und ermitteln, ob Ihr Angebot für das Co-Selling-Programm berechtigt ist.
+1. Nachdem Sie sich vergewissert haben, dass Sie die [Kriterien für den von Ihnen angestrebten Co-Selling-Status erfüllen](#co-sell-publishing-steps-and-requirements), befolgen Sie die nachfolgenden Leitlinien, um Ihr Angebot für Co-Selling zu nominieren:
+    1. **Wenn Sie über einen Microsoft Partner-Manager (z. B. PDM) verfügen** , wenden Sie sich an Ihren Partnermanager, um Unterstützung zu erhalten. Sie führen Sie durch den Nominierungsprozess für den Co-Selling-Status „Ready“ und Azure-IP-Co-Selling oder Business Applications – Co-Sell Incentivized (falls zutreffend).
+    
+    1. **Wenn Sie keinen Microsoft Partner-Manager (z. B. PDM) haben,** [nominieren Sie sich über Cloud Enablement Desk (CED) selbst](https://aka.ms/cednominate). Wählen Sie in der Dropdownliste „Desired CED Services“ die Option „Becoming co-sell ready“ aus:
+<ul><ul>
+
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Diese Abbildung zeigt die Dropdownliste „CED“ zum Beantragen einer Co-Selling-Prüfung":::
+
+Das CED wird sich an Sie wenden, um den Vorgang abzuschließen.
+</ul></ul>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

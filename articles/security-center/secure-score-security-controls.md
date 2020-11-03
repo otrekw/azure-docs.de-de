@@ -11,49 +11,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 24e10dad6a4b9a6232ce74b5365d9a9df7860079
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339933"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425383"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
 ## <a name="introduction-to-secure-score"></a>Einführung in Secure Score
 
-Azure Security Center hat zwei Hauptziele: Unterstützung beim Ermitteln Ihrer aktuellen Sicherheitssituation sowie beim effizienten und effektiven Verbessern Ihrer Sicherheit. Der zentrale Aspekt von Security Center, mit dem Sie diese Ziele erreichen können, ist Secure Score.
+Azure Security Center hat zwei Hauptziele: 
+
+- Ihre aktuelle Sicherheitslage besser verstehen
+- Ihre Sicherheit effizient und effektiv verbessern
+
+Der zentrale Aspekt von Security Center, mit dem Sie diese Ziele erreichen können, ist die **Sicherheitsbewertung**.
 
 Security Center führt eine ständige Bewertung Ihrer Ressourcen, Abonnements und Organisation in Bezug auf Sicherheitsprobleme durch. Anschließend werden alle Ergebnisse in einer einzigen Bewertung zusammengefasst, sodass Sie auf einen Blick Ihre aktuelle Sicherheitssituation erkennen können: je höher die Bewertung, desto geringer das ermittelte Risiko.
 
-Die Seite „Secure Score“ von Security Center umfasst Folgendes:
+Die Sicherheitsbewertung wird auf den Seiten des Azure-Portals als Prozentwert angezeigt, aber auch die zugrunde liegenden Werte sind übersichtlich dargestellt:
 
-- **Score:** Die Sicherheitsbewertung wird als Prozentwert angezeigt, die zugrunde liegenden Werte sind aber ebenfalls klar:
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="Sicherheitsbewertung insgesamt, wie im Portal angezeigt":::
 
-    [![Sicherheitsbewertung als Prozentwert mit deutlich erkennbaren zugrunde liegenden Zahlen](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+Um Ihre Sicherheit zu verbessern, sehen Sie auf der Seite „Empfehlungen“ von Security Center nach, welche Maßnahmen erforderlich sind, um Ihre Bewertung zu steigern. Jede Empfehlung enthält Anweisungen, die Ihnen helfen sollen, das spezifische Problem zu beheben.
 
-- **Sicherheitskontrollen:** Jede Sicherheitskontrolle ist eine logische Gruppe verwandter Sicherheitsempfehlungen, die anfällige Angriffsflächen widerspiegelt. Eine Sicherheitskontrolle umfasst eine Reihe von Sicherheitsempfehlungen mit Anweisungen, mit denen Sie diese Empfehlungen implementieren können. Ihre Bewertung verbessert sich nur, wenn Sie *alle* Empfehlungen für eine einzelne Ressource innerhalb einer Sicherheitskontrolle umsetzen.
+Die Empfehlungen sind nach **Sicherheitskontrollen** gruppiert. Jede Sicherheitskontrolle ist eine logische Gruppe verwandter Sicherheitsempfehlungen, die anfällige Angriffsflächen widerspiegelt. Ihre Bewertung verbessert sich nur, wenn Sie *alle* Empfehlungen für eine einzelne Ressource innerhalb einer Sicherheitskontrolle umsetzen. Um zu sehen, wie gut jede einzelne Angriffsfläche in Ihrer Organisation geschützt ist, sehen Sie sich die Bewertungen für die einzelnen Sicherheitskontrollen an.
 
-    Um sofort zu sehen, wie gut jede einzelne Angriffsfläche in Ihrer Organisation geschützt ist, sehen Sie sich die Bewertungen für die einzelnen Sicherheitskontrollen an.
-
-    Weitere Informationen finden Sie unter [Berechnen Ihrer Sicherheitsbewertung](secure-score-security-controls.md#how-your-secure-score-is-calculated). 
-
-
->[!TIP]
-> Frühere Versionen von Security Center verteilten Punkte auf Empfehlungsebene: Wenn Sie eine Empfehlung für eine einzelne Ressource umgesetzt hatten, wurde Ihre Sicherheitsbewertung verbessert. Nun wird die Bewertung nur verbessert, wenn Sie *alle* Empfehlungen für eine einzelne Ressource innerhalb einer Sicherheitskontrolle umsetzen. Das bedeutet, dass sich Bewertung nur verbessert, wenn die Sicherheit einer Ressource verbessert wird.
+Weitere Informationen finden Sie unter [Berechnen Ihrer Sicherheitsbewertung](secure-score-security-controls.md#how-your-secure-score-is-calculated). 
 
 
 ## <a name="access-your-secure-score"></a>Zugriff auf Ihre Sicherheitsbewertung
 
-Ihre Sicherheitsbewertung insgesamt sowie Ihre Bewertung pro Abonnement können Sie im Azure-Portal finden oder programmatisch mit der Azure Security Center-REST-API abrufen.
+Ihre Sicherheitsbewertung insgesamt sowie Ihre Bewertung pro Abonnement können Sie im Azure-Portal finden oder entsprechend den Angaben in den folgenden Abschnitten programmgesteuert abrufen:
+
+- [Abrufen der Sicherheitsbewertung aus dem Portal](#get-your-secure-score-from-the-portal)
+- [Abrufen der Sicherheitsbewertung über die REST-API](#get-your-secure-score-from-the-rest-api)
+- [Abrufen der Sicherheitsbewertung aus Azure Resource Graph](#get-your-secure-score-from-azure-resource-graph-arg)
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Abrufen ihrer Sicherheitsbewertung aus dem Portal
 
-Security Center zeigt Ihre Bewertung im Portal hervorgehoben an. Sie ist auf der Übersichtsseite als Erstes zu sehen. Wenn Sie sich zur dedizierten Seite von Secure Score durchklicken, wird die Bewertung nach Abonnement aufgeschlüsselt angezeigt. Klicken Sie auf ein einzelnes Abonnement, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat.
+Von Security Center wird Ihre Bewertung im Portal auf der Übersichtsseite als erste Hauptkachel gut sichtbar angezeigt. Wenn Sie diese Kachel auswählen, gelangen Sie zur dedizierten Seite mit der Sicherheitsbewertung, auf der Sie die Bewertung nach Abonnement aufgeschlüsselt sehen. Wählen Sie ein einzelnes Abonnement aus, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat.
 
-![Sicherheitsbewertung insgesamt, wie im Portal angezeigt](media/secure-score-security-controls/single-secure-score-via-ui.png)
+Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Security Center-Portals an den folgenden Stellen gezeigt.
+
+- Auf einer Kachel der **Übersicht** in Security Center (Hauptdashboard):
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Die Sicherheitsbewertung auf dem Security Center-Dashboard":::
+
+- Auf der dedizierten Seite **Sicherheitsbewertung** :
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Die Sicherheitsbewertung auf der Security Center-Seite „Sicherheitsbewertung“":::
+
+- Oben auf der Seite **Empfehlungen** :
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Die Sicherheitsbewertung auf der Security Center-Seite „Empfehlungen“":::
+
+
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Abrufen ihrer Sicherheitsbewertung über die REST-API
 
@@ -62,6 +79,40 @@ Sie können auf Ihre Bewertung über die Sicherheitsbewertungs-API (derzeit in d
 ![Abrufen einer einzelnen Sicherheitsbewertung über die API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Beispiele für Tools, die auf der Sicherheitsbewertungs-API basieren, finden Sie im [Bereich zu den Sicherheitsbewertungen in unserer GitHub-Community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+
+
+### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Abrufen der Sicherheitsbewertung aus Azure Resource Graph
+
+Azure Resource Graph bietet mit zuverlässigen Funktionen zum Filtern, Gruppieren und Sortieren sofortigen Zugriff auf Ressourceninformationen in Ihren Cloudumgebungen. Es ist eine schnelle und effiziente Möglichkeit, Informationen über Azure-Abonnements programmgesteuert oder aus dem Azure-Portal heraus abzufragen. [Erfahren Sie mehr über Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/).
+
+So greifen Sie mithilfe von Azure Resource Graph auf Sicherheitsbewertungen für mehrere Abonnements zu:
+
+1. Öffnen Sie im Azure-Portal **Azure Resource Graph-Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+
+1. Geben Sie Ihre Kusto-Abfrage ein (in den nachstehenden Beispielen finden Sie Anleitungen).
+
+    - Diese Abfrage gibt die Abonnement-ID, die aktuelle Bewertung in Punkten und als Prozentsatz sowie die maximale Bewertung des Abonnements zurück. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores' 
+        | extend current = properties.score.current, max = todouble(properties.score.max)
+        | project subscriptionId, current, max, percentage = ((current / max)*100)
+        ```
+
+    - Diese Abfrage gibt den Status aller Sicherheitskontrollen zurück. Für jede Sicherheitskontrolle erhalten Sie die Anzahl fehlerhafter Ressourcen sowie die aktuelle und maximale Bewertung. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores/securescorecontrols'
+        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
+        | project SecureControl , unhealthy, currentscore, maxscore
+        ```
+
+1. Wählen Sie **Abfrage ausführen** aus.
 
 ## <a name="how-your-secure-score-is-calculated"></a>Berechnen Ihrer Sicherheitsbewertung 
 
@@ -79,7 +130,7 @@ Der maximal mögliche Wert für das Steuerelement „Systemupdates anwenden“ i
 
 * **Potenzielle Steigerung** (0,12 x 8 fehlerhafte Ressourcen = 0,96): Die Anzahl der noch verfügbaren Punkte des Steuerelements. Wenn Sie alle Empfehlungen für dieses Steuerelement umsetzen, steigt die Bewertung um 2 % (in diesem Fall um 0,96 Punkte, die auf 1 Punkt aufgerundet werden). 
 * **Aktuelle Bewertung** (0,12 x 42 fehlerfreie Ressourcen = 5,04): Die aktuelle Bewertung für dieses Steuerelement. Jedes Kontrollelement trägt zur Gesamtbewertung bei. In diesem Beispiel trägt das Steuerelement 5,04 Punkte zur aktuellen Gesamtbewertung bei.
-* **Maximale Bewertung**: Die maximale Anzahl von Punkten, die Sie durch Erfüllen aller Empfehlungen innerhalb eines Kontrollelements erhalten können. Die maximale Bewertung für ein Kontrollelement gibt die relative Bedeutung dieses Kontrollelements an. Verwenden Sie die maximale Bewertung, um die Probleme zu selektieren, die zuerst behandelt werden müssen. 
+* **Maximale Bewertung** : Die maximale Anzahl von Punkten, die Sie durch Erfüllen aller Empfehlungen innerhalb eines Kontrollelements erhalten können. Die maximale Bewertung für ein Kontrollelement gibt die relative Bedeutung dieses Kontrollelements an. Verwenden Sie die maximale Bewertung, um die Probleme zu selektieren, die zuerst behandelt werden müssen. 
 
 
 ### <a name="calculations---understanding-your-score"></a>Berechnungen – Verstehen der Bewertung

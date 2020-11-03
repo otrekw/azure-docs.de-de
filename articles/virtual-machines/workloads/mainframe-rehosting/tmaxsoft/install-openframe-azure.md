@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9189be5f2f513cd27fe8783d6a1825aac016522c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987472"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677748"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Install TmaxSoft OpenFrame on Azure (Installieren von TmaxSoft OpenFrame in Azure)
 
@@ -130,13 +130,13 @@ Sie können die OpenFrame-Umgebung über verschiedene Bereitstellungsmuster einr
 
      ![Option „Weitere“ im Azure-Portal](media/vm-03.png)
 
-5. Klicken Sie auf **CentOS-basiertes 7.3**, um diese exemplarische Vorgehensweise genau zu befolgen, oder wählen Sie eine andere unterstützte Linux-Distribution aus.
+5. Klicken Sie auf **CentOS-basiertes 7.3** , um diese exemplarische Vorgehensweise genau zu befolgen, oder wählen Sie eine andere unterstützte Linux-Distribution aus.
 
      ![Betriebssystemoptionen im Azure-Portal](media/vm-04.png)
 
-6. Geben Sie bei den **Grundlagen**-Einstellungen **Name**, **Benutzername**, **Authentifizierungstyp**, **Abonnement** (die nutzungsbasierte Bezahlung ist der AWS-Zahlungsstil) und **Ressourcengruppe** (eine vorhandene Ressourcengruppe verwenden oder eine TmaxSoft-Gruppe erstellen) ein.
+6. Geben Sie bei den **Grundlagen** -Einstellungen **Name** , **Benutzername** , **Authentifizierungstyp** , **Abonnement** (die nutzungsbasierte Bezahlung ist der AWS-Zahlungsstil) und **Ressourcengruppe** (eine vorhandene Ressourcengruppe verwenden oder eine TmaxSoft-Gruppe erstellen) ein.
 
-7. Klicken Sie nach Abschluss des Vorgangs (einschließlich des öffentlichen/privaten Schlüsselpaars für **Authentifizierungstyp**) auf **Senden**.
+7. Klicken Sie nach Abschluss des Vorgangs (einschließlich des öffentlichen/privaten Schlüsselpaars für **Authentifizierungstyp** ) auf **Senden**.
 
 > [!NOTE]
 > Befolgen Sie bei Verwendung eines öffentlichen SSH-Schlüssels für **Authentifizierungstyp** die Schritte im nächsten Abschnitt, um das öffentliche/private Schlüsselpaar zu generieren, und setzen Sie dann die Schritte hier fort.
@@ -164,7 +164,7 @@ Wenn neue Personen Zugriff auf den virtuellen Computer erhalten:
 
 3.  Klicken Sie auf **Generate (Generieren)** .
 
-    ![Dialogfeld „PuTTY Key Generator“ (PuTTY-Schlüsselgenerator)](media/puttygen-02.png)
+    ![Screenshot des Dialogfelds „PuTTY Key Generator“, in dem die Schaltfläche „Generate“ hervorgehoben ist.](media/puttygen-02.png)
 
 4.  Speichern Sie nach der Generierung sowohl den öffentlichen als auch den privaten Schlüssel. Fügen Sie den Inhalt des öffentlichen Schlüssels in den Abschnitt **Öffentlicher SSH-Schlüssel** des Bereichs **Virtuellen Computer erstellen \> Grundlagen** ein (im vorherigen Abschnitt in den Schritten 6 und 7 gezeigt).
 
@@ -176,7 +176,7 @@ Wenn neue Personen Zugriff auf den virtuellen Computer erhalten:
 
     ![„Virtuellen Computer erstellen > Grundlagen“](media/create-vm-01.png)
 
-2. Klicken Sie auf **3 Einstellungen**, und verwenden Sie die Standardeinstellungen, um optionale Features zu konfigurieren.
+2. Klicken Sie auf **3 Einstellungen** , und verwenden Sie die Standardeinstellungen, um optionale Features zu konfigurieren.
 3. Überprüfen Sie Ihre Zahlungsinformationen.
 
     ![„Virtuellen Computer erstellen > Kaufen“](media/create-vm-02.png)
@@ -191,7 +191,7 @@ Wenn neue Personen Zugriff auf den virtuellen Computer erhalten:
 
 7. Geben Sie für **Host Name** (Hostname) Ihren Benutzernamen und die öffentliche IP-Adresse ein, die Sie kopiert haben. Beispiel: **Benutzername\@publicip**.
 
-    ![Dialogfeld „PuTTY Configuration“ (PuTTY-Konfiguration)](media/putty-01.png)
+    ![Screenshot des Dialogfelds „PuTTY Configuration“, in dem das Feld „Host Name (or IP address)“ hervorgehoben ist.](media/putty-01.png)
 
 8. Klicken Sie im Feld **Category** (Kategorie) auf **Connection (Verbindung) \> SSH \> Auth**. Geben Sie den Pfad zu Ihrer **Private key file** (privaten Schlüsseldatei) an.
 
@@ -645,7 +645,7 @@ Der Base-Anwendungsserver wird vor den einzelnen Diensten installiert, mit denen
 
      ![tmboot-Befehlsausgabe](media/base-02.png)
 
-10. Stellen Sie mit dem tmadmin-Befehl in si sicher, dass der Prozessstatus „ready“ (bereit) ist. „RDY“ wird für jeden Prozess in der **status**-Spalte angezeigt:
+10. Stellen Sie mit dem tmadmin-Befehl in si sicher, dass der Prozessstatus „ready“ (bereit) ist. „RDY“ wird für jeden Prozess in der **status** -Spalte angezeigt:
 
      ![tmadmin-Befehlsausgabe](media/base-03.png)
 
@@ -855,7 +855,7 @@ TACF-Manager ist ein OpenFrame-Dienstmodul, das den Benutzerzugriff auf Systeme 
      [oframe7\@ofdemo \~]\$ tmadmin
      ```
 
-     In der **status**-Spalte wird RDY angezeigt:
+     In der **status** -Spalte wird RDY angezeigt:
 
     ![RDY in der Spalte „status“](media/tmboot-02.png)
 
@@ -909,7 +909,7 @@ ProSort ist ein Hilfsprogramm, das in Batchtransaktionen zum Sortieren von Daten
 
 **So installieren Sie ProSort**
 
-1. Stellen Sie sicher, dass die Batch-Installation erfolgreich war, und überprüfen Sie, ob die **prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz**-Installationsprogrammdatei vorhanden ist.
+1. Stellen Sie sicher, dass die Batch-Installation erfolgreich war, und überprüfen Sie, ob die **prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz** -Installationsprogrammdatei vorhanden ist.
 
 2. Führen Sie das Installationsprogramm mithilfe der properties-Datei aus. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -1254,7 +1254,7 @@ OSC ist die IBM CICS ähnliche OpenFrame-Umgebung, die Hochgeschwindigkeits-OLTP
           TMBOOT: TLM(tlm) is starting: Mon Sep 12 01:40:25 2016 
      ```
 
-11. Stellen Sie mithilfe des `tmadmin`-Befehls in si sicher, dass der Prozessstatus „ready“ (bereit) ist. Für alle Prozesse sollte „RDY“ in der **status**-Spalte angezeigt werden.
+11. Stellen Sie mithilfe des `tmadmin`-Befehls in si sicher, dass der Prozessstatus „ready“ (bereit) ist. Für alle Prozesse sollte „RDY“ in der **status** -Spalte angezeigt werden.
 
     ![Prozesse, für die „RDY“ angezeigt wird](media/tmadmin-02.png)
 
@@ -1308,8 +1308,8 @@ Installieren Sie vor JEUS das Apache Ant-Paket, das die zum Installieren von JEU
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
-2. Erstellen Sie einen **jeus**-Ordner (`mkdir jeus7`), und entzippen Sie die Binärdatei.
-3. Wechseln Sie zum **setup**-Verzeichnis (oder verwenden Sie den JEUS-Parameter für Ihre eigene Umgebung). Beispiel:
+2. Erstellen Sie einen **jeus** -Ordner (`mkdir jeus7`), und entzippen Sie die Binärdatei.
+3. Wechseln Sie zum **setup** -Verzeichnis (oder verwenden Sie den JEUS-Parameter für Ihre eigene Umgebung). Beispiel:
 
      ```
      [oframe7@ofdemo ~]$ cd jeus7/setup/
@@ -1393,7 +1393,7 @@ Installieren Sie vor JEUS das Apache Ant-Paket, das die zum Installieren von JEU
 
     1.  Ändern Sie **Nodename** (Knotennamen) in **ofdemo**.
     2.  Klicken Sie auf der rechten Seite des Fensters auf **OK**.
-    3.  Klicken Sie links unten im Fenster auf **Änderungen übernehmen**, und geben Sie als Beschreibung *Hostnamenänderung* ein.
+    3.  Klicken Sie links unten im Fenster auf **Änderungen übernehmen** , und geben Sie als Beschreibung *Hostnamenänderung* ein.
 
     ![JEUS-WebAdmin-Bildschirm](media/jeus-02.png)
 

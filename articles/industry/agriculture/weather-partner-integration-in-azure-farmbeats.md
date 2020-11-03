@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496994"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740770"
 ---
 # <a name="weather-partner-integration"></a>Integration von Partnern für Wetterdaten
 
@@ -28,7 +28,7 @@ Ein Partner für Wetterdaten muss ein Docker-Image/-Programm (mit den unten aufg
 - Kundenspezifische API-Schlüssel/-Anmeldeinformationen für den Zugriff auf die Wetterdaten des Partnersystems
 - SKU-Details zu virtuellen Computern (können von den Partnern bereitgestellt werden, falls für die Docker-Instanz bestimmte VM-Anforderungen gelten, andernfalls können die Kunden aus den in Azure unterstützten VM-SKUs wählen)
 
-Unter Verwendung der aufgelisteten Docker-Informationen können sich die Kunden bei einem Partner für Wetterdaten in ihrer FarmBeats-Instanz registrieren. Weitere Informationen zur Erfassung von Wetterdaten in FarmBeats mithilfe von Docker finden Sie im Leitfaden [Abrufen von Wetterdaten](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner).
+Unter Verwendung der aufgelisteten Docker-Informationen können sich die Kunden bei einem Partner für Wetterdaten in ihrer FarmBeats-Instanz registrieren. Weitere Informationen zur Erfassung von Wetterdaten in FarmBeats mithilfe von Docker finden Sie im Leitfaden [Abrufen von Wetterdaten](./get-weather-data-from-weather-partner.md).
 
 ## <a name="connector-docker-development"></a>Entwickeln der Docker-Komponente „Connector“
 
@@ -71,9 +71,9 @@ Damit sich Kunden während der Docker-Ausführung über die APIs auf Partnerseit
    }
 }
 ```
-Dieses Wörterbuch wird vom API-Dienst serialisiert und in einem [Schlüsseltresor](https://docs.microsoft.com/azure/key-vault/basic-concepts) gespeichert.
+Dieses Wörterbuch wird vom API-Dienst serialisiert und in einem [Schlüsseltresor](../../key-vault/general/basic-concepts.md) gespeichert.
 
-Mithilfe von [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) werden Wetteraufträge orchestriert und die Ressourcen für die Ausführung des Docker-Codes gestartet. Zudem enthält Azure Data Factory einen Mechanismus, um die Daten sicher per Push auf den virtuellen Computer zu übertragen, auf dem der Docker-Auftrag ausgeführt wird. Die in einem Schlüsseltresor gespeicherten API-Anmeldeinformationen werden als sichere Zeichenfolgen aus dem Schlüsseltresor gelesen und als erweiterte Eigenschaften im Arbeitsverzeichnis des Docker-Containers über die Datei „activity.json“ verfügbar gemacht (der Dateipfad lautet „/mnt/working_dir/activity.json“). Die Anmeldeinformationen können vom Docker-Code während der Laufzeit aus dieser Datei gelesen werden, um im Namen des Kunden auf die APIs auf Partnerseite zuzugreifen. Die Anmeldeinformationen sind in der Datei in der folgenden Form verfügbar:
+Mithilfe von [Azure Data Factory](../../data-factory/introduction.md) werden Wetteraufträge orchestriert und die Ressourcen für die Ausführung des Docker-Codes gestartet. Zudem enthält Azure Data Factory einen Mechanismus, um die Daten sicher per Push auf den virtuellen Computer zu übertragen, auf dem der Docker-Auftrag ausgeführt wird. Die in einem Schlüsseltresor gespeicherten API-Anmeldeinformationen werden als sichere Zeichenfolgen aus dem Schlüsseltresor gelesen und als erweiterte Eigenschaften im Arbeitsverzeichnis des Docker-Containers über die Datei „activity.json“ verfügbar gemacht (der Dateipfad lautet „/mnt/working_dir/activity.json“). Die Anmeldeinformationen können vom Docker-Code während der Laufzeit aus dieser Datei gelesen werden, um im Namen des Kunden auf die APIs auf Partnerseite zuzugreifen. Die Anmeldeinformationen sind in der Datei in der folgenden Form verfügbar:
 
 ```json
 { 
@@ -89,7 +89,7 @@ Die FarmBeats-Bibliothek enthält Hilfsfunktionen für die Partner zum Lesen der
 
 Die Lebensdauer der Datei erstreckt sich nur über die Zeit der Ausführung des Docker-Codes. Nach Abschluss der Docker-Ausführung wird die Datei gelöscht.
 
-Weitere Informationen zur Funktionsweise von ADF-Pipelines und -Aktivitäten finden Sie unter [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping).
+Weitere Informationen zur Funktionsweise von ADF-Pipelines und -Aktivitäten finden Sie unter [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md).
 
 **HTTP-Anforderungsheader**
 
@@ -121,10 +121,10 @@ Bootstrap ist für das Erstellen der erforderlichen Metadaten zuständig, damit 
 Die folgenden Metadaten werden im Rahmen dieses Vorgangs erstellt. 
 
  > [!NOTE]
- > **Beachten Sie**: Wenn Sie die Datei „bootstrap_manifest.json“ wie in der [Referenzimplementierung](https://github.com/azurefarmbeats/noaa_docker) beschrieben aktualisieren, müssen Sie die unten aufgeführten Metadaten nicht erstellen. Diese werden von Bootstrap auf der Grundlage der Manifestdatei erstellt.
+ > **Beachten Sie** : Wenn Sie die Datei „bootstrap_manifest.json“ wie in der [Referenzimplementierung](https://github.com/azurefarmbeats/noaa_docker) beschrieben aktualisieren, müssen Sie die unten aufgeführten Metadaten nicht erstellen. Diese werden von Bootstrap auf der Grundlage der Manifestdatei erstellt.
 
-- /**WeatherDataModel**:  Das Modell „WeatherDataModel“ dient der Darstellung von Wetterdaten und entspricht verschiedenen Datasets, die von der Quelle bereitgestellt werden. Das Modell „DailyForecastSimpleModel“ stellt beispielsweise Informationen zur durchschnittlichen Temperatur, Luftfeuchtigkeit und Niederschlagsmenge bereit, während das Modell „DailyForecastAdvancedModel“ einige weitere Informationen in Stundenintervallen umfasst. Sie können beliebig viele WeatherDataModels-Modelle erstellen.
-- /**JobType**: FarmBeats verfügt über ein erweiterbares Auftragsverwaltungssystem. Als Anbieter von Wetterdaten können Sie Ihre verschiedenen Datasets/APIs (z. B. „GetDailyForecasts“) in FarmBeats als Aufträge vom Typ „JobType“ aktivieren. Kunden können einen Auftrag vom Typ „JobType“, den Sie erstellt haben, auslösen, um Wetterdaten für einen bestimmten Standort/landwirtschaftlichen Betrieb abzurufen (weitere Informationen hierzu finden Sie unter[FarmBeats-Swagger](https://aka.ms/farmbeatsswagger) in den APIs „JobType“ und „Job“).
+- /**WeatherDataModel** :  Das Modell „WeatherDataModel“ dient der Darstellung von Wetterdaten und entspricht verschiedenen Datasets, die von der Quelle bereitgestellt werden. Das Modell „DailyForecastSimpleModel“ stellt beispielsweise Informationen zur durchschnittlichen Temperatur, Luftfeuchtigkeit und Niederschlagsmenge bereit, während das Modell „DailyForecastAdvancedModel“ einige weitere Informationen in Stundenintervallen umfasst. Sie können beliebig viele WeatherDataModels-Modelle erstellen.
+- /**JobType** : FarmBeats verfügt über ein erweiterbares Auftragsverwaltungssystem. Als Anbieter von Wetterdaten können Sie Ihre verschiedenen Datasets/APIs (z. B. „GetDailyForecasts“) in FarmBeats als Aufträge vom Typ „JobType“ aktivieren. Kunden können einen Auftrag vom Typ „JobType“, den Sie erstellt haben, auslösen, um Wetterdaten für einen bestimmten Standort/landwirtschaftlichen Betrieb abzurufen (weitere Informationen hierzu finden Sie unter[FarmBeats-Swagger](https://aka.ms/farmbeatsswagger) in den APIs „JobType“ und „Job“).
 
 ### <a name="jobs"></a>Aufträge
 
@@ -161,7 +161,7 @@ Diese Komponente wird aufgerufen, wenn ein FarmBeats-Benutzer einen Auftrag vom 
   location  | Breitengrad, Längengrad und Höhe |
   Name | Name des Objekts |
   BESCHREIBUNG | BESCHREIBUNG |
-  farmId | **Optional**: ID des landwirtschaftlichen Betriebs, wird vom Kunden als Parameter für den Auftrag bereitgestellt. |
+  farmId | **Optional** : ID des landwirtschaftlichen Betriebs, wird vom Kunden als Parameter für den Auftrag bereitgestellt. |
   Eigenschaften  | Zusätzliche Eigenschaften des Herstellers
 
  Informationen zu den einzelnen Objekten und ihren Eigenschaften finden Sie unter [Swagger](https://aka.ms/FarmBeatsSwagger).
@@ -180,7 +180,7 @@ Die Docker-Komponente „Connector“ sollte Aktualisierungen für die Metadaten
 
 ## <a name="weather-data-telemetry-specifications"></a>Spezifikationen für Wetterdaten (Telemetriedaten)
 
-Die Wetterdaten werden einer kanonischen Nachricht zugeordnet, die zur Verarbeitung per Push in eine Azure Event Hub-Instanz übertragen wird. Der Azure Event Hub-Dienst ermöglicht die Erfassung von Echtzeitdaten (Telemetrie) von verbundenen Geräten und Anwendungen. Wenn Sie Wetterdaten an FarmBeats senden möchten, müssen Sie einen Client erstellen, der Nachrichten an eine Event Hub-Instanz in FarmBeats sendet. Weitere Informationen zum Senden von Telemetriedaten finden Sie unter [Senden von Telemetriedaten an eine Event Hub-Instanz](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send).
+Die Wetterdaten werden einer kanonischen Nachricht zugeordnet, die zur Verarbeitung per Push in eine Azure Event Hub-Instanz übertragen wird. Der Azure Event Hubs-Dienst ermöglicht die Erfassung von Echtzeitdaten (Telemetrie) von verbundenen Geräten und Anwendungen. Wenn Sie Wetterdaten an FarmBeats senden möchten, müssen Sie einen Client erstellen, der Nachrichten an eine Event Hub-Instanz in FarmBeats sendet. Weitere Informationen zum Senden von Telemetriedaten finden Sie unter [Senden von Telemetriedaten an eine Event Hub-Instanz](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 Im Folgenden ein Beispiel für Python-Code, mit dem Telemetriedaten als Client an einen angegebenen Event Hub gesendet werden.
 

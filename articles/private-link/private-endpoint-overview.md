@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277511"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508028"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -30,7 +30,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
 |Unterressource des Ziels   |      Die Unterressource, mit der eine Verbindung hergestellt wird. Jeder Private Link-Ressourcentyp verfügt über verschiedene Optionen, die je nach Präferenz ausgewählt werden können.    |
 |Methode zur Genehmigung der Verbindung    |  Automatisch oder manuell. Je nach Berechtigungen gemäß rollenbasierter Zugriffssteuerung (RBAC) kann Ihr privater Endpunkt automatisch genehmigt werden. Wenn Sie versuchen, sich mit einer Private Link-Ressource ohne RBAC zu verbinden, verwenden Sie die manuelle Methode, um dem Besitzer der Ressource zu ermöglichen, die Verbindung zu genehmigen.        |
 |Anforderungsnachricht     |  Sie können eine Nachricht für angeforderte Verbindungen angeben, die manuell genehmigt werden sollen. Mithilfe dieser Nachricht kann eine bestimmte Anforderung identifiziert werden.        |
-|Verbindungsstatus   |   Eine schreibgeschützte Eigenschaft, die angibt, ob der private Endpunkt aktiv ist. Nur private Endpunkte in genehmigtem Zustand können zum Senden von Datenverkehr verwendet werden. Weitere verfügbare Zustände: <br>-**Genehmigt**: Die Verbindung wurde automatisch oder manuell genehmigt und ist zur Verwendung bereit.</br><br>-**Ausstehend**: Die Verbindung wurde manuell erstellt, wobei die Genehmigung des Besitzers der Private Link-Ressource aussteht.</br><br>-**Abgelehnt**: Die Verbindung wurde vom Besitzer der Private Link-Ressource abgelehnt.</br><br>-**Getrennt**: Die Verbindung wurde vom Besitzer der Private Link-Ressource entfernt. Der private Endpunkt dient nur noch Informationszwecken und sollte zur Bereinigung gelöscht werden. </br>|
+|Verbindungsstatus   |   Eine schreibgeschützte Eigenschaft, die angibt, ob der private Endpunkt aktiv ist. Nur private Endpunkte in genehmigtem Zustand können zum Senden von Datenverkehr verwendet werden. Weitere verfügbare Zustände: <br>-**Genehmigt** : Die Verbindung wurde automatisch oder manuell genehmigt und ist zur Verwendung bereit.</br><br>-**Ausstehend** : Die Verbindung wurde manuell erstellt, wobei die Genehmigung des Besitzers der Private Link-Ressource aussteht.</br><br>-**Abgelehnt** : Die Verbindung wurde vom Besitzer der Private Link-Ressource abgelehnt.</br><br>-**Getrennt** : Die Verbindung wurde vom Besitzer der Private Link-Ressource entfernt. Der private Endpunkt dient nur noch Informationszwecken und sollte zur Bereinigung gelöscht werden. </br>|
 
 Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten: 
 - Ein privater Endpunkt ermöglicht die Verbindung zwischen den Consumern im selben VNet, in regionalen VNets mit Peering, globalen VNets mit Peering und lokalen Standorten mit [VPN](https://azure.microsoft.com/services/vpn-gateway/) oder [Express Route](https://azure.microsoft.com/services/expressroute/) und Diensten auf Basis von Private Link.
@@ -133,15 +133,16 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)
-- [Erstellen eines privaten Endpunkts mit Azure PowerShell](create-private-endpoint-powershell.md)
-- [Schnellstart: Erstellen eines privaten Endpunkts mit Azure CLI](create-private-endpoint-cli.md)
+- [Erstellen eines privaten Endpunkts für Azure SQL-Datenbank im Portal](create-private-endpoint-portal.md)
+- [Erstellen eines privaten Endpunkts für Azure SQL-Datenbank mit PowerShell](create-private-endpoint-powershell.md)
+- [Erstellen eines privaten Endpunkts für Azure SQL-Datenbank mit der CLI](create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts für das Speicherkonto im Portal](create-private-endpoint-storage-portal.md)
 - [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Erstellen eines eigenen Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)
-- [Erstellen eines eigenen Private Link für Azure Database for PostgreSQL – Einzelserver über das Portal](../postgresql/howto-configure-privatelink-portal.md)
+- [Erstellen eines eigenen Private Link für Azure Database for PostgreSQL – Einzelserver im Portal](../postgresql/howto-configure-privatelink-portal.md)
 - [Erstellen eines eigenen Private Link für Azure Database for PostgreSQL – Einzelserver über die Befehlszeilenschnittstelle](../postgresql/howto-configure-privatelink-cli.md)
-- [Erstellen eines eigenen Private Link für Azure Database for MySQL über das Portal](../mysql/howto-configure-privatelink-portal.md)
+- [Erstellen eines eigenen Private Link für Azure Database for MySQL im Portal](../mysql/howto-configure-privatelink-portal.md)
 - [Erstellen eines eigenen Private Link für Azure Database for MySQL über die Befehlszeilenschnittstelle](../mysql/howto-configure-privatelink-cli.md)
-- [Erstellen eines eigenen Private Link für Azure Database for MariaDB über das Portal](../mariadb/howto-configure-privatelink-portal.md)
+- [Erstellen eines eigenen Private Link für Azure Database for MariaDB im Portal](../mariadb/howto-configure-privatelink-portal.md)
 - [Erstellen eines eigenen Private Link für Azure Database for MariaDB über die Befehlszeilenschnittstelle](../mariadb/howto-configure-privatelink-cli.md)
+- [Erstellen eines eigenen Private Link für Azure Key Vault im Portal und mit der CLI](../key-vault/general/private-link-service.md)

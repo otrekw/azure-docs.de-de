@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fe358e35f2d68a3e55e9d9bb4ac57a13f42085e3
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340018"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629237"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Grundlegendes zum Just-In-Time(JIT)-VM-Zugriff
 
@@ -66,6 +66,10 @@ Wenn Security Center einen Computer findet, der von JIT profitieren kann, wird d
 ## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>Häufig gestellte Fragen: Fragen zum Just-in-Time-Zugriff auf virtuelle Computer
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?
+
+JIT erfordert, dass für das Abonnement [Azure Defender für Server](defender-for-servers-introduction.md) aktiviert ist. 
+
+Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.
 
 Wenn Sie benutzerdefinierte Rollen erstellen möchten, die mit JIT arbeiten können, benötigen Sie die Details aus der folgenden Tabelle.
 

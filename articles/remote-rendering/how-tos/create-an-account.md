@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: fb321aeeae1f0ef5aaadce22e228024895176143
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202649"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427482"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Erstellen eines Azure Remote Rendering-Kontos
 
-Dieses Kapitel führt Sie durch die Schritte zum Erstellen eines Kontos für den **Azure Remote Rendering**-Dienst. Zum Abschließen der Schnellstarts oder Tutorials ist ein gültiges Konto zwingend erforderlich.
+Dieses Kapitel führt Sie durch die Schritte zum Erstellen eines Kontos für den **Azure Remote Rendering** -Dienst. Zum Abschließen der Schnellstarts oder Tutorials ist ein gültiges Konto zwingend erforderlich.
 
 ## <a name="create-an-account"></a>Erstellen eines Kontos
 
@@ -38,7 +38,7 @@ Der Standort, der bei der Kontoerstellung eines Kontos angegeben wird, bestimmt,
 
 ### <a name="retrieve-the-account-information"></a>Abrufen der Kontoinformationen
 
-In den Beispielen und Tutorials müssen Sie die Konto-ID und einen Schlüssel angeben. Beispielsweise in der Datei **arrconfig.json**, die für die PowerShell-Beispielskripts verwendet wird:
+In den Beispielen und Tutorials müssen Sie die Konto-ID und einen Schlüssel angeben. Beispielsweise in der Datei **arrconfig.json** , die für die PowerShell-Beispielskripts verwendet wird:
 
 ```json
 "accountSettings": {
@@ -85,14 +85,14 @@ Es wird davon ausgegangen, dass Sie jetzt über ein Speicherkonto verfügen. Nav
 
 ![Speicherkonto (IAM): Rollenzuweisung hinzufügen](./media/azure-add-role-assignment.png)
 
-* Die erste zuzuweisende Rolle ist **Besitzer**, wie im Screenshot oben gezeigt.
+* Die erste zuzuweisende Rolle ist **Besitzer** , wie im Screenshot oben gezeigt.
 * Wählen Sie **Remote Rendering-Konto** aus der Dropdownliste **Zugriff zuweisen zu** aus.
 * Wählen Sie in den letzten Dropdownlisten Ihr Abonnement und das Remote Rendering-Konto aus.
 
 > [!WARNING]
 > Wenn Ihr Remote Rendering-Konto nicht aufgeführt ist, lesen Sie den [Abschnitt zur Problembehandlung](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
-Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle**:
+Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle** :
 
 * **Mitwirkender von Speicherkonto**
 * **Mitwirkender an Speicherblobdaten**
@@ -101,7 +101,7 @@ Die anderen Dropdownlisten werden wie im ersten Schritt beschrieben ausgewählt.
 
 Nachdem Sie alle drei Rollen hinzugefügt haben, besitzt Ihr Azure Remote Rendering-Konto Zugriff auf Ihr Speicherkonto unter Verwendung der systemseitig zugewiesenen verwalteten Dienstidentitäten.
 > [!IMPORTANT]
-> Azure-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher entsteht unter Umständen eine Verzögerung von 30 Minuten zwischen dem Zeitpunkt der Zugriffsgewährung für das Remote Rendering-Konto und dem Zeitpunkt, zu dem es für den Zugriff auf das Speicherkonto verwendet werden kann. Ausführliche Informationen finden Sie in der [Dokumentation zur rollenbasierten Zugriffssteuerung](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected).
+> Azure-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher entsteht unter Umständen eine Verzögerung von 30 Minuten zwischen dem Zeitpunkt der Zugriffsgewährung für das Remote Rendering-Konto und dem Zeitpunkt, zu dem es für den Zugriff auf das Speicherkonto verwendet werden kann. Detailinformationen finden Sie in der [Dokumentation zur rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

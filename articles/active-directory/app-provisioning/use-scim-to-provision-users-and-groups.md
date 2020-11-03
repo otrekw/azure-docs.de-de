@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: contperfq2
+ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070196"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424592"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Tutorial: Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -764,7 +765,7 @@ Das Projekt _Microsoft.SCIM_ ist eine Bibliothek und definiert die Komponenten d
 
 ![Aufschlüsselung: Eine Anforderung, die in Aufrufe der Methoden des Anbieters übersetzt wurde](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
 
-Das Projekt _Microsoft.SCIM.WebHostSample_ ist eine ASP.NET Core-Webanwendung von Visual Studio, die auf der _leeren_ Vorlage basiert. Dadurch kann der Beispielcode eigenständig bereitgestellt werden und in Containern oder in Internetinformationsdiensten gehostet werden. Implementiert wird auch die Schnittstelle _Microsoft.SCIM.IProvider_, die Klassen im Arbeitsspeicher als Beispielidentitätsspeicher beibehält.
+Das Projekt _Microsoft.SCIM.WebHostSample_ ist eine ASP.NET Core-Webanwendung von Visual Studio, die auf der _leeren_ Vorlage basiert. Dadurch kann der Beispielcode eigenständig bereitgestellt werden und in Containern oder in Internetinformationsdiensten gehostet werden. Implementiert wird auch die Schnittstelle _Microsoft.SCIM.IProvider_ , die Klassen im Arbeitsspeicher als Beispielidentitätsspeicher beibehält.
 
 ```csharp
     public class Startup
@@ -807,7 +808,7 @@ Weitere Informationen zu HTTPS in ASP.NET Core erhalten Sie über folgenden Link
 
 Anforderungen aus Azure Active Directory enthalten ein OAuth 2.0-Bearertoken. Alle Dienste, die die Anforderung empfangen, müssen den Aussteller als Azure Active Directory für den erwarteten Azure Active Directory-Mandanten authentifizieren.
 
-Im Token wird der Aussteller durch einen iss-Anspruch identifiziert (z. B. `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`). In diesem Beispiel wird die Basisadresse des Anspruchswerts (`https://sts.windows.net`) zum Identifizieren von Azure Active Directory als Aussteller verwendet, während das Segment mit der relativen Adresse (_cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_) ein eindeutiger Bezeichner des Azure Active Directory-Mandanten ist, für den das Token ausgestellt wurde.
+Im Token wird der Aussteller durch einen iss-Anspruch identifiziert (z. B. `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`). In diesem Beispiel wird die Basisadresse des Anspruchswerts (`https://sts.windows.net`) zum Identifizieren von Azure Active Directory als Aussteller verwendet, während das Segment mit der relativen Adresse ( _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ ) ein eindeutiger Bezeichner des Azure Active Directory-Mandanten ist, für den das Token ausgestellt wurde.
 
 Zielgruppe für das Token ist die Anwendungsvorlagen-ID für die Anwendung im Katalog. Jede in einem einzelnen Mandanten registrierte Anwendung empfängt mit SCIM-Anforderungen möglicherweise denselben `iss`-Anspruch. Die Anwendungsvorlagen-ID für alle benutzerdefinierten Apps lautet _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_. Das vom Azure AD-Bereitstellungsdienst generierte Token sollte nur für Tests verwendet werden. Es darf nicht in Produktionsumgebungen verwendet werden.
 
@@ -915,7 +916,7 @@ Senden Sie eine GET-Anforderung an den Tokencontroller, um ein gültiges Bearert
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Vorgehensweise beim Bereitstellen und beim Aufheben der Bereitstellung von Benutzern
 
-***Beispiel 1: Abfragen des Diensts nach einem passenden Benutzer***
+***Beispiel 1. Abfragen des Diensts nach einem passenden Benutzer** _
 
 Azure Active Directory fragt den Dienst nach einem Benutzer mit einem `externalId`-Attributwert ab, der mit dem mailNickname-Attributwert eines Benutzers in Azure AD übereinstimmt. Die Abfrage wird als Hypertext Transfer-Protokoll-Anforderung (HTTP-Anforderung) wie in diesem Beispiel ausgedrückt, wobei „jyoung“ ein Beispiel für ein mailNickname-Attribut eines Benutzers in Azure Active Directory ist.
 
@@ -943,12 +944,12 @@ Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des 
 
 In der Beispielabfrage für einen Benutzer mit einem bestimmten Wert für das Attribut `externalId` lauten die Werte der Argumente, die an die QueryAsync-Methode übergeben werden, wie folgt:
 
-* parameters.AlternateFilters.Count: 1
+_ parameters.AlternateFilters.Count: 1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
 
-***Beispiel 2: Bereitstellen eines Benutzers***
+***Beispiel 2. Bereitstellen eines Benutzers** _
 
 Wenn in der Antwort auf eine Abfrage an den Webdienst für einen Benutzer mit einem `externalId`-Attributwert, der mit dem mailNickname-Attributwert eines Benutzers übereinstimmt, keine Benutzer zurückgegeben werden, stellt Azure Active Directory die folgende Anforderung: Der Dienst muss einen Benutzer bereitstellen, der dem Benutzer in Azure Active Directory entspricht.  Dies ist ein Beispiel für eine Anforderung dieser Art: 
 
@@ -997,7 +998,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der CreateAsync-Methode des
 
 In der Anforderung einer Benutzerbereitstellung entspricht der Wert des Ressourcenarguments einer Instanz der Klasse „Microsoft.SCIM.Core2EnterpriseUser“, die in der Microsoft.SCIM.Schemas-Bibliothek definiert ist.  Wenn die Anforderung der Benutzerbereitstellung erfolgreich ist, soll die Implementierung der Methode eine Instanz der Klasse „Microsoft.SCIM.Core2EnterpriseUser“ zurückgeben. Dabei muss der Wert der Eigenschaft „Identifier“ auf den eindeutigen Bezeichner des neu bereitgestellten Benutzers eingestellt sein.  
 
-***Beispiel 3: Abfragen des aktuellen Status eines Benutzers*** 
+_*_Beispiel 3: Abfragen des aktuellen Status eines Benutzers_*_ 
 
 Zum Aktualisieren eines Benutzers, der in einem Identitätsspeicher mit vorgelagertem SCIM vorhanden ist, geht Azure Active Directory so vor, dass der aktuelle Status dieses Benutzers vom Dienst per Anforderung abgefragt wird. Die Anforderung hierzu sieht wie folgt aus: 
 
@@ -1021,14 +1022,14 @@ Im Beispielcode wird die Anforderung in einen Aufruf der RetrieveAsync-Methode d
 
 Im Beispiels für eine Anforderung zum Abrufen des aktuellen Status eines Benutzers lauten die Werte der Eigenschaften des Objekts, das als Wert des parameters-Arguments angegeben wird, wie folgt: 
   
-* Bezeichner: „54D382A4-2050-4C03-94D1-E769F1D15682“
+_ Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-***Beispiel 4: Abfragen des Werts eines zu aktualisierenden Referenzattributs*** 
+***Beispiel 4. Abfragen des Werts eines zu aktualisierenden Referenzattributs** _ 
 
 Wenn ein Verweisattribut aktualisiert werden soll, fragt Azure Active Directory den Dienst ab, um zu ermitteln, ob der aktuelle Wert des Verweisattributs im Identitätsspeicher mit vorgelagertem Dienst bereits mit dem Wert dieses Attributs in Azure Active Directory übereinstimmt. Bei Benutzern ist das einzige Attribut, für das der aktuelle Wert auf diese Weise abgefragt wird, das manager-Attribut. Dies ist ein Beispiel für eine Anforderung, mit der ermittelt wird, ob das „manager“-Attribut eines Benutzerobjekts derzeit über einen bestimmten Wert verfügt: Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des Dienstanbieters übersetzt. Der Wert der Eigenschaften des Objekts, das als Wert des parameters-Arguments angegeben wird, lautet wie folgt: 
   
-* parameters.AlternateFilters.Count: 2
+_ parameters.AlternateFilters.Count: 2
 * parameters.AlternateFilters.ElementAt(x).AttributePath: „ID“
 * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(x).ComparisonValue: „54D382A4-2050-4C03-94D1-E769F1D15682“
@@ -1040,7 +1041,7 @@ Wenn ein Verweisattribut aktualisiert werden soll, fragt Azure Active Directory 
 
 Hier kann der Wert von Index x „0“ und der Wert von Index y „1“ lauten, oder der Wert von x kann „1“ und der Wert von y „0“ lauten. Dies hängt von der Reihenfolge bei den Ausdrücken des Filterabfrageparameters ab.   
 
-***Beispiel 5: Anforderung von Azure AD an einen SCIM-Dienst zur Aktualisierung eines Benutzers*** 
+***Beispiel 5. Anforderung von Azure AD an einen SCIM-Dienst zur Aktualisierung eines Benutzers** _ 
 
 Dies ist ein Beispiel für eine Anforderung von Azure Active Directory an einen SCIM-Dienst zum Aktualisieren eines Benutzers: 
 
@@ -1079,7 +1080,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der UpdateAsync-Methode des
 
 Im Beispiel für eine Anforderung zum Aktualisieren eines Benutzers verfügt das Objekt, das als Wert des patch-Arguments angegeben wird, über diese Eigenschaftswerte: 
   
-* ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+_ ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 * (PatchRequest as PatchRequest2).Operations.Count: 1
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName: OperationName.Add
@@ -1088,7 +1089,7 @@ Im Beispiel für eine Anforderung zum Aktualisieren eines Benutzers verfügt das
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
 
-***Beispiel 6: Aufheben der Bereitstellung eines Benutzers***
+***Beispiel 6. Aufheben der Bereitstellung eines Benutzers** _
 
 Um die Bereitstellung für einen Benutzer aus einem Identitätsspeicher mit vorgelagertem SCIM-Dienst aufzuheben, sendet Azure AD eine Anforderung der folgenden Art:
 
@@ -1111,7 +1112,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der DeleteAsync-Methode des
 
 Im Beispiel für eine Anforderung zum Aufheben der Bereitstellung eines Benutzers verfügt das Objekt, das als Wert des resourceIdentifier-Arguments angegeben wird, über diese Eigenschaftswerte: 
 
-* ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+_ ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Schritt 4: Integrieren Ihres SCIM-Endpunkts mit dem Azure AD SCIM-Client
@@ -1132,7 +1133,7 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an. Beachten Sie, dass Sie auf eine kostenlose Testversion für Azure Active Directory mit P2-Lizenzen zugreifen können, indem Sie sich für das [Entwicklerprogramm](https://developer.microsoft.com/office/dev-program) registrieren.
 2. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 3. Wählen Sie **+ Neue Anwendung** > **Alle** > **Nicht-Kataloganwendung**.
-4. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Hinzufügen**, um ein App-Objekt zu erstellen. Die neue App wird der Liste mit den Unternehmensanwendungen hinzugefügt und mit dem App-Verwaltungsbildschirm geöffnet.
+4. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Hinzufügen** , um ein App-Objekt zu erstellen. Die neue App wird der Liste mit den Unternehmensanwendungen hinzugefügt und mit dem App-Verwaltungsbildschirm geöffnet.
 
    ![Screenshot des Azure AD-Anwendungskatalogs](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
    *Azure AD-Anwendungskatalog*
@@ -1146,13 +1147,13 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 7. Geben Sie im Feld **Mandanten-URL** die URL des SCIM-Endpunkts der Anwendung ein. Beispiel: `https://api.contoso.com/scim/`
 8. Wenn der SCIM-Endpunkt ein OAuth-Bearertoken benötigt, das von einem anderen Aussteller als Azure AD stammt, kopieren Sie das erforderliche OAuth-Bearertoken in das optionale Feld **Geheimes Token**. Wird dieses Feld leer gelassen, fügt Azure AD in jede Anforderung ein von Azure AD ausgestelltes OAuth-Bearertoken ein. Apps, die Azure AD als Identitätsanbieter verwenden, können dieses von Azure AD ausgestellte Token überprüfen. 
    > [!NOTE]
-   > Es wird ***nicht*** empfohlen, dieses Feld leer zu lassen und sich auf ein von Azure AD generiertes Token zu verlassen. Diese Option steht in erster Linie zu Testzwecken zur Verfügung.
-9. Wählen Sie die Option **Verbindung testen**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn der Versuch nicht erfolgreich ist, werden Fehlerinformationen angezeigt.  
+   > Es wird * *_nicht_* _ empfohlen, dieses Feld leer zu lassen und sich auf ein von Azure AD generiertes Token zu verlassen. Diese Option steht in erster Linie zu Testzwecken zur Verfügung.
+9. Wählen Sie die Option _ *Verbindung testen* *, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn der Versuch nicht erfolgreich ist, werden Fehlerinformationen angezeigt.  
 
     > [!NOTE]
     > Die Option **Verbindung testen** fragt den SCIM-Endpunkt nach einem Benutzer ab, der nicht vorhanden ist, und verwendet dabei einen zufälligen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als entsprechende Eigenschaft, die in der Azure AD-Konfiguration ausgewählt wurde. Die erwartete richtige Antwort ist „HTTP 200 OK“ mit einer leeren SCIM ListResponse-Meldung.
 
-10. Wählen Sie bei einer erfolgreichen Verbindungsherstellung mit der Anwendung die Option **Speichern**, um die Administratoranmeldeinformationen zu speichern.
+10. Wählen Sie bei einer erfolgreichen Verbindungsherstellung mit der Anwendung die Option **Speichern** , um die Administratoranmeldeinformationen zu speichern.
 11. Im Abschnitt **Zuordnungen** stehen zwei Sätze von [Attributzuordnungen](customize-application-attributes.md) zur Verfügung: eine für Benutzerobjekte und eine für Gruppenobjekte. Wählen Sie beide nacheinander aus, um die Attribute zu überprüfen, die von Azure Active Directory mit Ihrer App synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzer und Gruppen in Ihrer App für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
     > [!NOTE]
@@ -1160,7 +1161,7 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 
 12. Im Feld **Bereich** unter **Einstellungen** wird festgelegt, welche Benutzer und Gruppen synchronisiert werden. Wählen Sie **Nur zugewiesene Benutzer und Gruppen synchronisieren** (empfohlen) aus, damit nur Benutzer und Gruppen synchronisiert werden, die auf der Registerkarte **Benutzer und Gruppen** zugewiesen sind.
 13. Legen Sie den **Bereitstellungsstatus** nach Abschluss der Konfiguration auf **Ein** fest.
-14. Wählen Sie **Speichern**, um den Azure AD-Bereitstellungsdienst zu starten.
+14. Wählen Sie **Speichern** , um den Azure AD-Bereitstellungsdienst zu starten.
 15. Wenn nur zugewiesene Benutzer und Gruppen synchronisiert werden (empfohlen), sollten Sie darauf achten, dass die Registerkarte **Benutzer und Gruppen** ausgewählt ist und die Benutzer bzw. Gruppen zugewiesen sind, die synchronisiert werden sollen.
 
 Nachdem der erste Zyklus gestartet wurde, können Sie im linken Bereich die Option **Bereitstellungsprotokolle** auswählen, um den Fortschritt zu überwachen. Hier werden alle Aktionen angezeigt, die vom Bereitstellungsdienst für Ihre App durchgeführt werden. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](check-status-user-account-provisioning.md).

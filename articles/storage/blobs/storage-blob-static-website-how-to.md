@@ -7,13 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289870"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746462"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -34,15 +34,15 @@ Das Feature zum Hosten statischer Websites muss für das Speicherkonto aktiviert
 
 2. Suchen Sie nach Ihrem Speicherkonto, und zeigen Sie die Kontoübersicht an.
 
-3. Wählen Sie die Option **Statische Website**, um die Konfigurationsseite für statische Websites anzuzeigen.
+3. Wählen Sie die Option **Statische Website** , um die Konfigurationsseite für statische Websites anzuzeigen.
 
-4. Wählen Sie **Aktiviert**, um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
+4. Wählen Sie **Aktiviert** , um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
 
-5. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite an (z. B. *index.html*). 
+5. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite an (z. B. *index.html* ). 
 
    Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.  
 
-6. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite an (z. B. *404.html*). 
+6. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite an (z. B. *404.html* ). 
 
    Die Standardfehlerseite wird angezeigt, wenn ein Benutzer versucht, zu einer Seite zu navigieren, die auf Ihrer statischen Website nicht vorhanden ist.
 
@@ -136,11 +136,11 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-In diesen Anweisungen wird gezeigt, wie Sie Dateien mit der Version von Storage-Explorer hochladen, die im Azure-Portal angezeigt wird. Sie können aber auch die Version von [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, die außerhalb vom Azure-Portal ausgeführt wird. Sie können [AzCopy](../common/storage-use-azcopy-v10.md), PowerShell, die CLI oder eine beliebige benutzerdefinierte Anwendung verwenden, die Dateien in den **$web**-Container Ihres Kontos hochladen kann. Ein Schritt-für-Schritt-Tutorial, in dem Dateien mithilfe von Visual Studio Code hochgeladen werden, finden Sie unter [Tutorial: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
+In diesen Anweisungen wird gezeigt, wie Sie Dateien mit der Version von Storage-Explorer hochladen, die im Azure-Portal angezeigt wird. Sie können aber auch die Version von [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, die außerhalb vom Azure-Portal ausgeführt wird. Sie können [AzCopy](../common/storage-use-azcopy-v10.md), PowerShell, die CLI oder eine beliebige benutzerdefinierte Anwendung verwenden, die Dateien in den **$web** -Container Ihres Kontos hochladen kann. Ein Schritt-für-Schritt-Tutorial, in dem Dateien mithilfe von Visual Studio Code hochgeladen werden, finden Sie unter [Tutorial: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
 
 1. Wählen Sie **Storage-Explorer (Vorschau)** aus.
 
-2. Erweitern Sie den Knoten **BLOBCONTAINER**, und wählen Sie dann den **$web**-Container aus.
+2. Erweitern Sie den Knoten **BLOBCONTAINER** , und wählen Sie dann den **$web** -Container aus.
 
 3. Wählen Sie die Schaltfläche **Hochladen** aus, um Dateien hochzuladen.
 
@@ -259,17 +259,17 @@ Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien
 
 4. Wählen Sie dann die Metrik **Ausgehend** aus.
 
-   ![Metriken von statischen Websites in Azure Storage: Metrik](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Der Screenshot zeigt die Metrik „Ausgehend“ für statische Websites in Azure Storage.](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. Wählen Sie **Summe** aus dem Selektor *Aggregation* aus.
 
    ![Metriken von statischen Websites in Azure Storage: Aggregation](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
 
-6. Klicken Sie auf die Schaltfläche **Filter hinzufügen**, und wählen Sie **API-Name** aus dem Selektor *Eigenschaft* aus.
+6. Klicken Sie auf die Schaltfläche **Filter hinzufügen** , und wählen Sie **API-Name** aus dem Selektor *Eigenschaft* aus.
 
    ![Metriken von statischen Websites in Azure Storage: API-Name](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
 
-7. Aktivieren Sie das Kontrollkästchen neben **GetWebContent** im Selektor *Werte*, um den Metrikbericht zu füllen.
+7. Aktivieren Sie das Kontrollkästchen neben **GetWebContent** im Selektor *Werte* , um den Metrikbericht zu füllen.
 
    ![Metriken von statischen Websites in Azure Storage: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 

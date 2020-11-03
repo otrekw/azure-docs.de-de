@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119343"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891804"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Tutorial: Problembehandlung bei Bereitstellungen von ARM-Vorlagen
 
@@ -96,14 +96,14 @@ Der Bereitstellungsfehler lässt sich im Azure-Portal mit dem folgenden Verfahre
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Öffnen Sie die Ressourcengruppe, indem Sie **Ressourcengruppen** und dann den Namen der Ressourcengruppe auswählen. Unter **Bereitstellung** sollte **1 Fehler** angezeigt werden.
 
-    ![Resource Manager-Tutorial zur Problembehandlung](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+    ![Screenshot, auf dem die fehlerhafte Bereitstellung hervorgehoben ist](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
 3. Wählen Sie **Fehlerdetails** aus.
 
-    ![Resource Manager-Tutorial zur Problembehandlung](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Screenshot, auf dem der Link „Fehlerdetails“ hervorgehoben ist](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     Die Fehlermeldung ist identisch mit der zuvor gezeigten:
 
-    ![Resource Manager-Tutorial zur Problembehandlung](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Screenshot der Fehlerdetails](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 Sie können den Fehler auch in den Aktivitätsprotokollen finden:
 

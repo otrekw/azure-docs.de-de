@@ -2,17 +2,24 @@
 title: Schaltfläche zum Bereitstellen in Azure
 description: Verwenden Sie diese Schaltfläche, um Azure Resource Manager-Vorlagen aus einem GitHub-Repository bereitzustellen.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079469"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675390"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository
 
-In diesem Artikel wird beschrieben, wie Sie die Schaltfläche **In Azure bereitstellen** verwenden, um Vorlagen aus einem GitHub-Repository bereitzustellen. Sie können die Schaltfläche direkt zur README.md-Datei in Ihrem GitHub-Repository oder zu einer Webseite hinzufügen, die auf das Repository verweist. Diese Methode unterstützt nur die Bereitstellung auf Ressourcengruppenebene.
+In diesem Artikel wird beschrieben, wie Sie die Schaltfläche **In Azure bereitstellen** verwenden, um Vorlagen aus einem GitHub-Repository bereitzustellen. Sie können die Schaltfläche direkt zur Datei „README.md“ in Ihrem GitHub-Repository hinzufügen. Oder Sie können die Schaltfläche zu einer Webseite hinzufügen, die auf das Repository verweist.
+
+Der Bereitstellungsumfang wird durch das Vorlagenschema bestimmt. Weitere Informationen finden Sie unter
+
+* [resource groups](deploy-to-resource-group.md)
+* [subscriptions](deploy-to-subscription.md)
+* [Verwaltungsgruppen](deploy-to-management-group.md)
+* [Mandanten](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Verwenden eines einheitlichen Bilds
 
@@ -28,7 +35,7 @@ Das Bild sieht so aus:
 
 ## <a name="create-url-for-deploying-template"></a>Erstellen einer URL zum Bereitstellen einer Vorlage
 
-Beginnen Sie mit der unformatierten URL für die Vorlage in Ihrem Repository, um die URL für Ihre Vorlage zu erstellen: Klicken Sie auf **Roh**, um die unformatierte URL anzuzeigen.
+Beginnen Sie mit der unformatierten URL für die Vorlage in Ihrem Repository, um die URL für Ihre Vorlage zu erstellen: Klicken Sie auf **Roh** , um die unformatierte URL anzuzeigen.
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="Schaltfläche „Roh“ anklicken":::
 
@@ -38,7 +45,7 @@ Die URL hat folgendes Format:
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Wenden Sie dann eine URL-Codierung an. Sie können einen Onlineencoder verwenden oder einen Befehl ausführen. Das folgende PowerShell-Beispiel zeigt, wie ein Wert URL-codiert wird.
+Konvertieren Sie dann die URL in einen URL-codierten Wert. Sie können einen Onlineencoder verwenden oder einen Befehl ausführen. Das folgende PowerShell-Beispiel zeigt, wie ein Wert URL-codiert wird.
 
 ```powershell
 [uri]::EscapeDataString($url)
