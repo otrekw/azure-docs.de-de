@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743261"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426978"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -107,7 +107,7 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen beim Azure-Portal unter der folgenden URL an: [https://portal.azure.com](https://portal.azure.com).
 
-2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
+2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway** , und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
 
 3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät verwenden möchten. Wählen Sie das Land aus, in das das physische Gerät versendet werden soll. Wählen Sie **Geräte anzeigen** aus.
 
@@ -137,7 +137,6 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
     ![Ressource erstellen5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
-
 8. Klicken Sie auf **Weiter: Lieferanschrift**.
 
     - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich habe ein Azure Stack Edge Pro-Gerät**.
@@ -150,7 +149,7 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
 9. Klicken Sie auf **Weiter: Tags**. Geben Sie optional Tags an, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
+10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails** , die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
 
     ![Ressource erstellen 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
@@ -167,6 +166,9 @@ Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Si
 Nach der Bestellung wird diese von Microsoft geprüft, und Sie erhalten eine E-Mail mit den Versanddetails.
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+
+> [!NOTE]
+>Wenn Sie mehrere Bestellungen gleichzeitig erstellen oder eine vorhandene Bestellung klonen möchten, können Sie die [Skripts in den Azure-Beispielen](https://github.com/Azure-Samples/azure-stack-edge-order) verwenden. Weitere Informationen finden Sie in der Infodatei.
 
 Wenn Sie während des Bestellvorgangs auf Probleme stoßen, informieren Sie sich unter [Behandeln von Bestellproblemen](azure-stack-edge-troubleshoot-ordering.md).
 

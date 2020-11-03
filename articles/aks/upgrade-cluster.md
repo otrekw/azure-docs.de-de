@@ -3,13 +3,13 @@ title: Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (
 description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Clusters (AKS) vornehmen, um die neuesten Funktionen und Sicherheitsupdates zu erhalten.
 services: container-service
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050614"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461446"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -80,7 +80,7 @@ Die Registrierung dauert einige Minuten. Verwenden Sie den folgenden Befehl, um 
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MaxSurgePreview')].{Name:name,State:properties.state}"
 ```
 
-In der Vorschauphase benötigen Sie die CLI-Erweiterung *aks-preview*, um den maximalen Anstieg verwenden zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+In der Vorschauphase benötigen Sie die CLI-Erweiterung *aks-preview* , um den maximalen Anstieg verwenden zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -107,7 +107,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Aktualisieren eines AKS-Clusters
 
-Wenn Sie die Liste der verfügbaren Versionen für Ihren AKS-Cluster angezeigt haben, verwenden Sie den Befehl [az aks upgrade][az-aks-upgrade], um den Cluster zu aktualisieren. Während des Upgradeprozesses fügt AKS dem Cluster einen neuen Knoten hinzu, auf dem die angegebene Kubernetes-Version ausgeführt wird. Danach sorgt AKS dafür, dass einer der alten Knoten [als unplanbar markiert und entleert wird][kubernetes-drain] (cordon/drain), um die Beeinträchtigung für ausgeführte Anwendungen möglichst gering zu halten. Wenn für den neuen Knoten die Ausführung von Anwendungspods bestätigt wird, wird der alte Knoten gelöscht. Dieser Prozess wird wiederholt, bis alle Knoten im Cluster aktualisiert wurden.
+Wenn Sie die Liste der verfügbaren Versionen für Ihren AKS-Cluster angezeigt haben, verwenden Sie den Befehl [az aks upgrade][az-aks-upgrade], um den Cluster zu aktualisieren. Während des Upgradevorgangs fügt AKS dem Cluster, auf dem die angegebene Kubernetes-Version ausgeführt wird, einen neuen Pufferknoten (oder die in [max surge](#customize-node-surge-upgrade-preview) konfigurierte Anzahl von Knoten) hinzu. Anschließend wird einer der alten Knoten [abgesperrt und ausgeglichen][kubernetes-drain], um Unterbrechungen bei der Ausführung von Anwendungen zu minimieren. (Wenn Sie „max surge“ verwenden, werden so viele Knoten gleichzeitig [abgesperrt und ausgeglichen][kubernetes-drain], wie als Anzahl der angegebenen Pufferknoten angegeben wurde.) Wenn der alte Knoten vollständig ausgeglichen wurde, wird für diesen ein Reimaging durchgeführt, damit er die neue Version erhält, und er wird zum Pufferknoten, damit der folgende Knoten aktualisiert werden kann. Dieser Prozess wird wiederholt, bis alle Knoten im Cluster aktualisiert wurden. Am Ende des Vorgangs wird der letzte ausgeglichene Knoten gelöscht, um die Anzahl der vorhandenen Agent-Knoten beizubehalten.
 
 ```azurecli-interactive
 az aks upgrade \

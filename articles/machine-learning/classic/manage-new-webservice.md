@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361890"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427567"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Studio (klassisch) Web Services-Portal
 
@@ -44,7 +44,7 @@ Wenn die Benutzer nicht über die korrekten Berechtigungen verfügen, um auf Res
 
 Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs](create-workspace.md).
 
-Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Verwalten des Zugriffs mit RBAC und dem Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+Weitere Informationen zu Festlegen von Zugriffsberechtigungen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 
 ## <a name="manage-new-web-services"></a>Verwalten neuer Webdienste
@@ -64,8 +64,8 @@ Um einen Webdienst zu verwalten, klicken Sie auf „Web Services“. Auf der Sei
 
 Wenn Sie auf einen Webdienst klicken, wird die Seite „Quickstart“ des Webdiensts geöffnet. Die Seite „Quickstart“ des Webdienst bietet zwei Menüoptionen, die Ihnen das Verwalten des Webdiensts ermöglichen:
 
-* **DASHBOARD**: Hier können Sie die Nutzung des Webdiensts anzeigen.
-* **CONFIGURE**: Ermöglicht das Hinzufügen von beschreibendem Text, das Aktualisieren des Schlüssels des Speicherkontos, das dem Webdienst zugeordnet ist, sowie das Aktivieren und Deaktivieren von Beispieldaten.
+* **DASHBOARD** : Hier können Sie die Nutzung des Webdiensts anzeigen.
+* **CONFIGURE** : Ermöglicht das Hinzufügen von beschreibendem Text, das Aktualisieren des Schlüssels des Speicherkontos, das dem Webdienst zugeordnet ist, sowie das Aktivieren und Deaktivieren von Beispieldaten.
 
 ### <a name="monitoring-how-the-web-service-is-being-used"></a>Überwachen der Nutzung des Webdiensts
 Klicken Sie auf die Registerkarte **DASHBOARD** .
@@ -99,7 +99,7 @@ Klicken Sie auf der Seite „Quickstart“ des Webdiensts auf die Menüoption **
 * **Upgrade/Downgrade** können Sie einen vorhandenen Plan hochskalieren, um Kapazität hinzuzufügen.
 * **Delete** ermöglicht das Löschen eines Plans.
 
-Klicken Sie auf einen Plan, um dessen Dashboard anzuzeigen. Das Dashboard zeigt eine Momentaufnahme der Plannutzung in einem ausgewählten Zeitraum. Klicken Sie rechts oben im Dashboard auf die Dropdownliste **Period**, um den anzuzeigenden Zeitraum auszuwählen. 
+Klicken Sie auf einen Plan, um dessen Dashboard anzuzeigen. Das Dashboard zeigt eine Momentaufnahme der Plannutzung in einem ausgewählten Zeitraum. Klicken Sie rechts oben im Dashboard auf die Dropdownliste **Period** , um den anzuzeigenden Zeitraum auszuwählen. 
 
 Das Dashboard des Plans enthält die folgenden Informationen:
 
@@ -131,8 +131,8 @@ Auf der Seite „Classic Web Service endpoint“ können Sie Endpunkte für den 
 
 Klicken Sie auf einen der Endpunkte, um die Webdienstseite „Quickstart“ zu öffnen. Die Seite „Quickstart“ bietet zwei Menüoptionen, die Ihnen das Verwalten des Webdiensts ermöglichen:
 
-* **DASHBOARD**: Hier können Sie die Nutzung des Webdiensts anzeigen.
-* **CONFIGURE**: Ermöglicht das Hinzufügen von beschreibendem Text, das Ein- und Ausschalten der Fehlerprotokollierung, das Aktualisieren des Schlüssels des Speicherkontos, das dem Webdienst zugeordnet ist, sowie das Aktivieren und Deaktivieren von Beispieldaten.
+* **DASHBOARD** : Hier können Sie die Nutzung des Webdiensts anzeigen.
+* **CONFIGURE** : Ermöglicht das Hinzufügen von beschreibendem Text, das Ein- und Ausschalten der Fehlerprotokollierung, das Aktualisieren des Schlüssels des Speicherkontos, das dem Webdienst zugeordnet ist, sowie das Aktivieren und Deaktivieren von Beispieldaten.
 
 ### <a name="monitoring-how-the-web-service-is-being-used"></a>Überwachen der Nutzung des Webdiensts
 Klicken Sie auf die Registerkarte **DASHBOARD** .

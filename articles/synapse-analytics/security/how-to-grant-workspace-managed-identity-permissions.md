@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535041"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487193"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
@@ -60,7 +60,7 @@ Wenn Sie bei der Erstellung eines Arbeitsbereichs der verwalteten Identität nic
 
 #### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Schritt 1: Navigieren zum ADLS Gen2-Speicherkonto im Azure-Portal
 
-Öffnen Sie im Azure-Portal das ADLS Gen2-Speicherkonto, und klicken Sie im linken Navigationsbereich auf **Übersicht**. Sie müssen die Rolle *Mitwirkender an Storage-Blobdaten* nur auf Container- oder Dateisystemebene zuweisen. Wählen Sie **Container**aus.  
+Öffnen Sie im Azure-Portal das ADLS Gen2-Speicherkonto, und klicken Sie im linken Navigationsbereich auf **Übersicht**. Sie müssen die Rolle *Mitwirkender an Storage-Blobdaten* nur auf Container- oder Dateisystemebene zuweisen. Wählen Sie **Container** aus.  
 ![ADLS Gen2-Speicherkonto – Übersicht](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>Schritt 2: Auswählen des Containers
@@ -70,7 +70,7 @@ Die verwaltete Identität sollte über Datenzugriff auf den Container (das Datei
 
 
 Wählen Sie denselben Container oder dasselbe Dateisystem aus, um der verwalteten Identität die Rolle *Mitwirkender an Storage-Blobdaten* zu gewähren.
-![Auswahl des ADLS Gen2-Speicherkontocontainers](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![Screenshot, der den Container oder das Dateisystem zeigt, den/das Sie auswählen sollten.](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>Schritt 3: Navigieren zur Zugriffssteuerung
 
@@ -104,7 +104,7 @@ Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs. Suche
 
 #### <a name="step-8-select-the-managed-identity"></a>Schritt 8: Auswählen der verwalteten Identität
 
-Wählen Sie die verwaltete Identität für **Ausgewählte Mitglieder** aus. Klicken Sie auf **Speichern**, um die Rollenzuweisung hinzuzufügen.
+Wählen Sie die verwaltete Identität für **Ausgewählte Mitglieder** aus. Klicken Sie auf **Speichern** , um die Rollenzuweisung hinzuzufügen.
 
 ![Auswählen der verwalteten Identität](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-13.png)
 

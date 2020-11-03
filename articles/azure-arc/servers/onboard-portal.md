@@ -1,15 +1,14 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
-ms.date: 09/24/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.custom: references_regions
-ms.openlocfilehash: 2ba834d8c55f53792606fffe65d65794e837e9e3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101731"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370150"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
@@ -17,7 +16,7 @@ Azure Arc-fähige Server können mithilfe einiger manueller Schritte für einen 
 
 Für diese Methode müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie der Gruppe der lokalen Administratoren angehören.
 
-Bevor Sie beginnen, sollten Sie die [Voraussetzungen](agent-overview.md#prerequisites) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen.
+Bevor Sie beginnen, sollten Sie die [Voraussetzungen](agent-overview.md#prerequisites) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen. Weitere Informationen zu unterstützten Regionen und andere Überlegungen finden Sie unter [Unterstützte Azure-Regionen](overview.md#supported-regions).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -25,22 +24,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum Herstellen der Verbindung mit Azure Arc ist über das Azure-Portal verfügbar. Gehen Sie wie folgt vor:
 
-1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://aka.ms/hybridmachineportal).
+1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
 
 1. Wählen Sie auf der Seite **Server - Azure Arc** oben links **Hinzufügen** aus.
 
 1. Wählen Sie auf der Seite **Methode auswählen** die Kachel **Server über ein interaktives Skript hinzufügen** und dann **Skript generieren** aus.
 
-1. Wählen Sie auf der Seite **Skript generieren** das Abonnement und die Ressourcengruppe für die Verwaltung des Computers in Azure aus. Wählen Sie einen Azure-Standort zum Speichern der Computermetadaten aus.
-
-    >[!NOTE]
-    >Von Azure Arc-fähigen Servern werden nur die folgenden Regionen unterstützt:
-    >- EastUS
-    >- WestUS2
-    >- Europa, Westen
-    >- SoutheastAsia
-    >
-    >Überprüfen Sie weitere Überlegungen bei der Auswahl einer Region [hier](overview.md#supported-regions) im Übersichtsartikel.
+1. Wählen Sie auf der Seite **Skript generieren** das Abonnement und die Ressourcengruppe für die Verwaltung des Computers in Azure aus. Wählen Sie einen Azure-Standort zum Speichern der Computermetadaten aus. Bei diesem Standort kann es sich um denselben Standort wie bei der Ressourcengruppe oder um einen anderen Standort handeln.
 
 1. Lesen Sie sich die Informationen auf der Seite **Voraussetzungen** durch, und wählen Sie dann **Weiter: Ressourcendetails** aus.
 
@@ -52,7 +42,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
     1. Wenn der Computer über einen Proxyserver kommuniziert, um eine Verbindung mit dem Internet herzustellen, geben Sie die IP-Adresse des Proxyservers oder den Namen und die Portnummer an, die der Computer für die Kommunikation mit dem Proxyserver verwenden wird. Geben Sie den Wert im Format `http://<proxyURL>:<proxyport>` ein.
     1. Klicken Sie auf **Weiter: Tags**.
 
-1. Überprüfen Sie auf der Seite **Tags** die vorgeschlagenen standardmäßigen **physischen Speicherorttags**, und geben Sie einen Wert ein, oder geben Sie mindestens ein **benutzerdefiniertes Tag** an, um Ihre Standards zu unterstützen.
+1. Überprüfen Sie auf der Seite **Tags** die vorgeschlagenen standardmäßigen **physischen Speicherorttags** , und geben Sie einen Wert ein, oder geben Sie mindestens ein **benutzerdefiniertes Tag** an, um Ihre Standards zu unterstützen.
 
 1. Klicken Sie auf **Weiter: Skript herunterladen und ausführen**.
 
@@ -84,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\AzureConnectedMachineAgentAgent\logs*.
+    Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis lautet *%ProgramData%\AzureConnectedMachineAgent\log*.
 
 2. Wenn der Computer über einen Proxyserver kommunizieren muss, führen Sie den folgenden Befehl aus, um die Umgebungsvariable für den Proxyserver festzulegen:
 
@@ -117,7 +107,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. Navigieren Sie zu dem Ordner bzw. zu der Freigabe, in den bzw. in die Sie das Skript kopiert haben, und führen Sie es auf dem Server aus, indem Sie das Skript `./OnboardingScript.ps1` ausführen.
 
-Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\AzureConnectedMachineAgentAgent\logs*.
+Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis lautet *%ProgramData%\AzureConnectedMachineAgent\log*.
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Installieren und Überprüfen des Agents unter Linux
 

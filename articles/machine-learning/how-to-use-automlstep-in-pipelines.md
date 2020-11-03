@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 82e2a484e23d55b91ff0c7820302b2cc83537cb8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057704"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494923"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Verwenden von automatisiertem ML in einer Azure Machine Learning-Pipeline in Python
 
@@ -73,7 +73,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-Über den Code wird zunächst die Anmeldung beim Azure Machine Learning-Arbeitsbereich durchgeführt, der in **config.json** definiert ist (eine Erläuterung finden Sie unter [Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK](tutorial-1st-experiment-sdk-setup.md)). Wenn noch kein Dataset mit dem Namen `'titanic_ds'` registriert wurde, wird dieses Dataset erstellt. Der Code lädt CSV-Daten aus dem Internet herunter, verwendet diese Daten zum Instanziieren eines `TabularDataset` und registriert das Dataset dann beim Arbeitsbereich. Anschließend wird das `Dataset` über die Funktion `Dataset.get_by_name()` zu `titanic_ds` zugewiesen. 
+Über den Code wird zunächst die Anmeldung beim Azure Machine Learning-Arbeitsbereich durchgeführt, der in **config.json** definiert ist (eine Erläuterung finden Sie unter [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace)). Wenn noch kein Dataset mit dem Namen `'titanic_ds'` registriert wurde, wird dieses Dataset erstellt. Der Code lädt CSV-Daten aus dem Internet herunter, verwendet diese Daten zum Instanziieren eines `TabularDataset` und registriert das Dataset dann beim Arbeitsbereich. Anschließend wird das `Dataset` über die Funktion `Dataset.get_by_name()` zu `titanic_ds` zugewiesen. 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Konfigurieren Ihres Speicher- und Computeziels
 
@@ -222,7 +222,7 @@ Die verschiedenen `prepare_`-Funktionen im obigen Codeausschnitt ändern die rel
 
 Nachdem die Datenaufbereitungsfunktionen über den Code definiert wurden, analysiert der Code das Eingabeargument (den Pfad zum Schreiben unserer Daten). (Diese Werte werden durch `PipelineData`-Objekte bestimmt, die im nächsten Schritt erläutert werden.) Der Code ruft das registrierte `Dataset` `'titanic_cs'` ab, wandelt es in ein Pandas-`DataFrame`-Element um, und ruft die verschiedenen Datenaufbereitungsfunktionen auf. 
 
-Da `output_path` vollqualifiziert ist, wird die Funktion `os.makedirs()` zum Vorbereiten der Verzeichnisstruktur verwendet. An dieser Stelle könnten Sie `DataFrame.to_csv()` zum Schreiben der Ausgabedaten verwenden, Parquet-Dateien sind jedoch effizienter. Bei einem kleinen Dataset wie diesem ist diese Effizienz vermutlich nicht relevant, bei Verwendung der Funktionen `from_pandas()` und `write_table()` aus dem **PyArrow**-Paket müssen jedoch nur einige wenige Tasten mehr gedrückt werden als bei `to_csv()`.
+Da `output_path` vollqualifiziert ist, wird die Funktion `os.makedirs()` zum Vorbereiten der Verzeichnisstruktur verwendet. An dieser Stelle könnten Sie `DataFrame.to_csv()` zum Schreiben der Ausgabedaten verwenden, Parquet-Dateien sind jedoch effizienter. Bei einem kleinen Dataset wie diesem ist diese Effizienz vermutlich nicht relevant, bei Verwendung der Funktionen `from_pandas()` und `write_table()` aus dem **PyArrow** -Paket müssen jedoch nur einige wenige Tasten mehr gedrückt werden als bei `to_csv()`.
 
 Parquet-Dateien werden vom unten beschriebenen Schritt für automatisiertes ML nativ unterstützt, sodass keine speziellen Verarbeitungsschritte erforderlich sind, um diese Dateien zu nutzen. 
 

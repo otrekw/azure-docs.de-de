@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440517"
 ---
 # <a name="azure-key-vault-backup"></a>Sicherung in Azure Key Vault
 
@@ -30,6 +30,9 @@ Key Vault gewährleistet die Verfügbarkeit in Notfallszenarien und führt autom
 Wenn Sie Ihre Geheimnisse vor versehentlichem oder böswilligem Löschen schützen möchten, konfigurieren Sie für Ihren Schlüsseltresor die Funktionen zum Schutz vor vorläufigem und endgültigem Löschen. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Einschränkungen
+
+> [!IMPORTANT]
+> Key Vault unterstützt nicht die Möglichkeit, mehr als 500 frühere Versionen eines Schlüssels, Geheimnisses oder Zertifikatobjekts zu sichern. Der Versuch, einen Schlüssel, ein Geheimnis oder ein Zertifikatobjekt zu sichern, kann zu einem Fehler führen. Es ist nicht möglich, frühere Versionen eines Schlüssels, Geheimnisses oder Zertifikats zu löschen.
 
 Key Vault unterstützt derzeit keine Methode zum Sichern eines gesamten Schlüsseltresors in einem einzigen Vorgang. Versuche, die in diesem Dokument aufgeführten Befehle zum Ausführen einer automatisierten Sicherung eines Schlüsseltresors zu verwenden, können zu Fehlern führen und werden von Microsoft oder dem Azure Key Vault-Team nicht unterstützt. 
 

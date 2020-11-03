@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123890"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426256"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
     ![Abrufen von Anmeldeinformationen für SMB-Freigaben](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
+2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Wenn das Kennwort Sonderzeichen enthält, fügen Sie vor und hinter dem Kennwort doppelte Anführungszeichen ein. Klicken Sie anschließend auf **OK**.
     
     ![Abrufen des Benutzernamens und des Kennworts für eine Freigabe](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrem Speicherkonto (*utsac1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
+3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrem Speicherkonto ( *utsac1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -103,7 +103,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
     
     ![Im Datei-Explorer angezeigte Freigaben](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
+    **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root* -Ordner im Speicherkonto zu kopieren.
     
 Wenn Sie einen Linux-Client verwenden, stellen Sie mit folgendem Code die SMB-Freigabe bereit. Der unten angegebene Parameter „vers“ ist die Version des SMB, den Ihr Linux-Host unterstützt. Geben Sie die entsprechende Version in den folgenden Befehl ein. Von Data Box unterstützte SMB-Versionen finden Sie unter [Unterstützte Dateisysteme für Linux-Clients](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients). 
 
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopieren Sie im nächsten Schritt Ihre Daten. Bevor Sie mit dem Kopieren der Daten beginnen, sollten Sie folgende Aspekte beachten:
 
 * Stellen Sie sicher, dass Sie die Daten in Freigaben kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in die Freigabe für Blockblobs. Kopieren Sie die VHDs in einen Seitenblob. Wenn das Datenformat nicht mit dem entsprechenden Freigabetyp übereinstimmt, tritt später beim Hochladen der Daten in Azure ein Fehler auf.
-* Erstellen Sie immer unter der Freigabe einen Ordner für die Dateien, die Sie kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den die Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
+* Erstellen Sie immer unter der Freigabe einen Ordner für die Dateien, die Sie kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den die Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root* -Ordner im Speicherkonto zu kopieren.
 * Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Größenbeschränkungen für Azure-Speicherkonten](data-box-limits.md#azure-storage-account-size-limits) beschrieben sind.
 * Wenn Sie beim Übertragen von Daten an Azure Files Metadaten (ACLs, Zeitstempel und Dateiattribute) beibehalten möchten, befolgen Sie die Anweisungen unter [Beibehalten von ACLs, Attributen und Zeitstempeln von Dateien mit Azure Data Box](data-box-file-acls-preservation.md).  
 * Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.

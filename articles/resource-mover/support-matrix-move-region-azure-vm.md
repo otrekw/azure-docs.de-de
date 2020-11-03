@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945912"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521304"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Unterstützung für das Verschieben von virtuellen Azure-Computern zwischen Azure-Regionen
 
@@ -107,7 +107,7 @@ Azure-Katalogimages (von Microsoft veröffentlicht) | Unterstützt | Wird unters
 Azure-Katalogimages (von Drittanbietern veröffentlicht)  | Unterstützt | Wird unterstützt, wenn auf der VM ein unterstütztes Betriebssystem ausgeführt wird.
 Benutzerdefinierte Images (von Drittanbietern veröffentlicht)| Unterstützt | Wird unterstützt, wenn auf der VM ein unterstütztes Betriebssystem ausgeführt wird.
 Virtuelle Computer, auf denen Site Recovery verwendet wird | Nicht unterstützt | Verschieben Sie im Back-End mithilfe von Site Recovery Ressourcen in Regionen für virtuelle Computer. Wenn Sie Site Recovery bereits verwenden, deaktivieren Sie die Replikation, und starten Sie anschließend den Vorbereitungsprozess.
-RBAC-Richtlinien | Nicht unterstützt | Richtlinien für die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) auf virtuellen Computern werden nicht in den virtuellen Computer in der Zielregion kopiert.
+Azure RBAC-Richtlinien | Nicht unterstützt | Richtlinien für die rollenbasierte Zugriffssteuerung in Azure (Role Based Access Control, RBAC) auf virtuellen Computern werden nicht auf den virtuellen Computer in der Zielregion kopiert.
 Erweiterungen | Nicht unterstützt | Erweiterungen werden nicht in den virtuellen Computer in der Zielregion kopiert. Daher müssen Sie sie nach dem Verschieben manuell installieren.
 
 
@@ -180,7 +180,7 @@ Service Bus | `*.servicebus.windows.net` | Ermöglicht es der VM, die Site Recov
 ## <a name="nsg-rules"></a>NSG-Regeln
 Wenn Sie Regeln für Netzwerksicherheitsgruppen (NSG) zum Steuern der ausgehenden Verbindung verwenden, erstellen Sie diese [Diensttagregeln](../virtual-network/service-tags-overview.md). Alle Regeln müssen den ausgehenden Zugriff auf HTTPS (443) erlauben.
 - Erstellen Sie eine Storage-Tagregel für die Quellregion.
-- Erstellen Sie eine *AzureSiteRecovery*-Tagregel, um den Zugriff auf den Site Recovery-Dienst in allen Regionen zu ermöglichen. Dieses Tag weist Abhängigkeiten mit diesen anderen Tags auf. Daher müssen Sie für diese ebenfalls Regeln erstellen:
+- Erstellen Sie eine *AzureSiteRecovery* -Tagregel, um den Zugriff auf den Site Recovery-Dienst in allen Regionen zu ermöglichen. Dieses Tag weist Abhängigkeiten mit diesen anderen Tags auf. Daher müssen Sie für diese ebenfalls Regeln erstellen:
     - *AzureActiveDirectory*
     - **EventHub*
     - *AzureKeyVault*

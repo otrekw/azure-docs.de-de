@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005478"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674931"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Databricks Delta-Tabelle
 
@@ -126,7 +126,7 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
 2. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen für das Notebook ein. Wählen Sie **Python** als Sprache und anschließend den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notebooks in Databricks](./media/data-lake-storage-events/new-databricks-notebook.png "Erstellen eines Notebooks in Databricks")
+    ![Der Screenshot zeigt das Dialogfeld „Notebook erstellen“ und die Auswahl von Python als Sprache.](./media/data-lake-storage-events/new-databricks-notebook.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 
@@ -155,9 +155,9 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
     > [!NOTE]
     > In einer Produktionsumgebung empfiehlt es sich, Ihren Authentifizierungsschlüssel in Azure Databricks zu speichern. Fügen Sie dem Codeblock dann einen Suchschlüssel anstelle des Authentifizierungsschlüssels hinzu. <br><br>Anstelle der Codezeile `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` verwenden Sie die folgende Codezeile: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Sehen Sie sich nach Abschluss dieses Tutorials die Beispiele für diesen Ansatz im Artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) auf der Azure Databricks-Website an.
 
-2. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
+2. Drücken Sie **UMSCHALT+EINGABE** , um den Code in diesem Block auszuführen.
 
-3. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in eine andere Zelle ein. Drücken Sie anschließend **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
+3. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in eine andere Zelle ein. Drücken Sie anschließend **UMSCHALT+EINGABE** , um den Code in diesem Block auszuführen.
 
    ```Python
    from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
@@ -268,9 +268,9 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
 
 5. Klicken Sie auf der Seite **Übersicht** der Funktions-App auf **Konfiguration**.
 
-   ![Konfigurieren der Funktions-App](./media/data-lake-storage-events/configure-function-app.png "Konfigurieren der Funktions-App")
+   ![Der Screenshot hebt die Option „Konfiguration“ unter den konfigurierten Features hervor.](./media/data-lake-storage-events/configure-function-app.png "Konfigurieren der Funktions-App")
 
-6. Wählen Sie auf der Seite **Anwendungseinstellungen** die Schaltfläche **Neue Anwendungseinstellung**, um die einzelnen Einstellungen hinzuzufügen.
+6. Wählen Sie auf der Seite **Anwendungseinstellungen** die Schaltfläche **Neue Anwendungseinstellung** , um die einzelnen Einstellungen hinzuzufügen.
 
    ![Hinzufügen der Konfigurationseinstellungen](./media/data-lake-storage-events/add-application-setting.png "Hinzufügen der Konfigurationseinstellungen")
 
@@ -287,13 +287,13 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
 
 8. Wählen Sie **Azure Event Grid-Trigger**.
 
-   Installieren Sie die Erweiterung **Microsoft.Azure.WebJobs.Extensions.EventGrid**, wenn Sie dazu aufgefordert werden. Bei der Installation müssen Sie erneut **Azure Event Grid-Trigger** wählen, um die Funktion zu erstellen.
+   Installieren Sie die Erweiterung **Microsoft.Azure.WebJobs.Extensions.EventGrid** , wenn Sie dazu aufgefordert werden. Bei der Installation müssen Sie erneut **Azure Event Grid-Trigger** wählen, um die Funktion zu erstellen.
 
    Der Bereich **Neue Funktion** wird angezeigt.
 
-9. Geben Sie im Bereich **Neue Funktion** der Funktion den Namen **UpsertOrder**, und klicken Sie anschließend auf die Schaltfläche **Erstellen**.
+9. Geben Sie im Bereich **Neue Funktion** der Funktion den Namen **UpsertOrder** , und klicken Sie anschließend auf die Schaltfläche **Erstellen**.
 
-10. Ersetzen Sie den Inhalt der Codedatei durch diesen Code, und klicken Sie dann auf die Schaltfläche **Speichern**:
+10. Ersetzen Sie den Inhalt der Codedatei durch diesen Code, und klicken Sie dann auf die Schaltfläche **Speichern** :
 
     ```cs
     using "Microsoft.Azure.EventGrid"
@@ -337,7 +337,7 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
     }
     ```
 
-   Mit diesem Code werden Informationen zum ausgelösten Speicherereignis analysiert, und anschließend wird eine Anforderungsnachricht mit der URL der Datei, die das Ereignis ausgelöst hat, erstellt. Im Rahmen der Nachricht übergibt die Funktion einen Wert an das Widget **source_file**, das Sie zuvor erstellt haben. Der Funktionscode sendet die Nachricht an den Databricks-Auftrag und verwendet das Token, das Sie abgerufen haben, als Authentifizierung.
+   Mit diesem Code werden Informationen zum ausgelösten Speicherereignis analysiert, und anschließend wird eine Anforderungsnachricht mit der URL der Datei, die das Ereignis ausgelöst hat, erstellt. Im Rahmen der Nachricht übergibt die Funktion einen Wert an das Widget **source_file** , das Sie zuvor erstellt haben. Der Funktionscode sendet die Nachricht an den Databricks-Auftrag und verwendet das Token, das Sie abgerufen haben, als Authentifizierung.
 
 ## <a name="create-an-event-grid-subscription"></a>Erstellen eines Event Grid-Abonnements
 
@@ -345,7 +345,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
 
 1. Klicken Sie auf der Seite mit dem Funktionscode auf die Schaltfläche **Event Grid-Abonnement hinzufügen**.
 
-   ![Neues Ereignisabonnement](./media/data-lake-storage-events/new-event-subscription.png "Neues Ereignisabonnement")
+   ![Der Screenshot hebt die Schaltfläche „Event Grid-Abonnement hinzufügen“ hervor.](./media/data-lake-storage-events/new-event-subscription.png "Neues Ereignisabonnement")
 
 2. Geben Sie dem Abonnement auf der Seite **Ereignisabonnement erstellen** einen Namen, und verwenden Sie dann die Felder auf der Seite, um Ihr Speicherkonto auszuwählen.
 
@@ -366,7 +366,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
 
    Durch das Hochladen einer Datei wird das Ereignis **Microsoft.Storage.BlobCreated** ausgelöst. Event Grid benachrichtigt alle Abonnenten über dieses Ereignis. In unserem Fall ist die Azure-Funktion der einzige Abonnent. Die Azure-Funktion analysiert die Ereignisparameter, um zu ermitteln, welches Ereignis eingetreten ist. Anschließend übergibt sie die URL der Datei an den Databricks-Auftrag. Der Databricks-Auftrag liest die Datei und fügt der Databricks Delta-Tabelle in Ihrem Speicherkonto eine Zeile hinzu.
 
-3. Gehen Sie wie folgt vor, um zu überprüfen, ob der Auftrag erfolgreich war: Öffnen Sie Ihren Databricks-Arbeitsbereich, klicken Sie auf die Schaltfläche **Aufträge**, und öffnen Sie anschließend Ihren Auftrag.
+3. Gehen Sie wie folgt vor, um zu überprüfen, ob der Auftrag erfolgreich war: Öffnen Sie Ihren Databricks-Arbeitsbereich, klicken Sie auf die Schaltfläche **Aufträge** , und öffnen Sie anschließend Ihren Auftrag.
 
 4. Wählen Sie den Auftrag aus, um die Auftragsseite zu öffnen.
 

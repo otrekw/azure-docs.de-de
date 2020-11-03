@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328563"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632684"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Mithilfe von Azure Private Link können Sie eine Verbindung mit verschiedenen PaaS-Bereitstellungen (Platform as a Service) in Azure über einen privaten Endpunkt herstellen. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten virtuellen Netzwerk und Subnetz. Eine Liste der PaaS-Bereitstellungen, die die Private Link-Funktionalität unterstützen, finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link/). 
+Mithilfe von Azure Private Link können Sie eine Verbindung mit verschiedenen PaaS-Bereitstellungen (Platform as a Service) in Azure über einen privaten Endpunkt herstellen. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten virtuellen Netzwerk und Subnetz. Eine Liste der PaaS-Bereitstellungen, die die Private Link-Funktionalität unterstützen, finden Sie in der [Dokumentation zu Private Link](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Sichere Kommunikation zwischen dem Kundennetzwerk und Azure Data Factory 
 Sie können Azure Virtual Network als logische Darstellung Ihres Netzwerks in der Cloud einrichten. Diese Vorgehensweise bietet folgende Vorteile:
@@ -67,7 +67,7 @@ Die Aktivierung des Private Link-Diensts für die genannten Kommunikationskanäl
 > Wenn Sie einen verknüpften Dienst erstellen, stellen Sie sicher, dass die Anmeldeinformationen in Azure Key Vault gespeichert werden. Andernfalls funktionieren die Anmeldeinformationen nicht, wenn Sie Private Link in Azure Data Factory aktivieren.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Einrichten von Private Link für Azure Data Factory
-Private Endpunkte können über das [Azure-Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden.
+Private Endpunkte können über das [Azure-Portal](../private-link/create-private-endpoint-portal.md) erstellt werden.
 
 Sie können auch im Azure-Portal zu Ihrer Azure Data Factory-Instanz navigieren und einen privaten Endpunkt erstellen, wie im Folgenden dargestellt:
 
@@ -89,4 +89,3 @@ Wenn Sie den öffentlichen Zugriff auf diese Azure Data Factory-Instanz blockier
 - [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md)
 - [Einführung in den Azure Data Factory-Dienst](introduction.md)
 - [Visuelles Erstellen in Azure Data Factory](author-visually.md)
-

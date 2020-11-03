@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b75df9df2e81f01543b407b019c752c77ee6807
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207047"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628829"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -29,6 +29,7 @@ Azure App Service ist ein verteiltes System. Die Rollen, mit denen eingehende HT
 | Von der App zugewiesene Adresse | Hybridverbindungen |
 | Zugriffseinschränkungen | VNET-Integration, die ein Gateway erfordert |
 | Dienstendpunkte | VNET-Integration |
+| Private Endpunkte ||
 
 Sofern nicht anders angegeben ist, können alle Funktionen zusammen verwendet werden. Sie können die Funktionen kombinieren, um Ihre verschiedenen Probleme zu lösen.
 
@@ -89,20 +90,23 @@ Informationen, wie Sie eine Adresse für Ihre App festlegen, finden Sie im Tutor
 
 ### <a name="access-restrictions"></a>Zugriffseinschränkungen 
 
-Über die Funktionalität „Zugriffsbeschränkungen“ können Sie **eingehende** Anforderungen anhand der Ursprungs-IP-Adresse filtern. Die Filteraktion wird mit den Front-End-Rollen ausgeführt, die den Workerrollen vorgelagert sind, mit denen Ihre Apps ausgeführt werden. Da die Front-End-Rollen den Workern vorgelagert sind, kann die Funktionalität „Zugriffsbeschränkungen“ als Schutz auf Netzwerkebene für Ihre Apps angesehen werden. Die Funktion ermöglicht es Ihnen, eine Liste von zulässigen und abgelehnten Adressblöcken zu erstellen, die in der Reihenfolge ihrer Priorität ausgewertet werden. Diese Funktion ist mit der Netzwerksicherheitsgruppe-Funktion (NSG-Funktion) vergleichbar, die in Azure-Netzwerken vorhanden ist.  Sie können diese Funktion in einer App Service-Umgebung (ASE) oder im mehrinstanzenfähigen Dienst verwenden. Bei Verwendung mit einer ILB ASE können Sie den Zugriff von privaten Adressblöcken beschränken.
+Über die Funktionalität „Zugriffsbeschränkungen“ können Sie **eingehende** Anforderungen filtern. Die Filteraktion wird mit den Front-End-Rollen ausgeführt, die den Workerrollen vorgelagert sind, mit denen Ihre Apps ausgeführt werden. Da die Front-End-Rollen den Workern vorgelagert sind, kann die Funktionalität „Zugriffsbeschränkungen“ als Schutz auf Netzwerkebene für Ihre Apps angesehen werden. Die Funktion ermöglicht Ihnen, eine Liste von zulässigen und abgelehnten Regeln zu erstellen, die in der Reihenfolge ihrer Priorität ausgewertet werden. Diese Funktion ist mit der Netzwerksicherheitsgruppe-Funktion (NSG-Funktion) vergleichbar, die in Azure-Netzwerken vorhanden ist.  Sie können diese Funktion in einer App Service-Umgebung (ASE) oder im mehrinstanzenfähigen Dienst verwenden. Bei Verwendung mit einer ILB-ASE oder einem privaten Endpunkt können Sie den Zugriff von privaten Adressblöcken beschränken.
+> [!NOTE]
+> Pro App können bis zu 512 Regeln zur Zugriffseinschränkung konfiguriert werden. 
 
 ![Zugriffseinschränkungen](media/networking-features/access-restrictions.png)
+#### <a name="ip-based-access-restriction-rules"></a>IP-basierte Zugriffseinschränkungsregeln
 
-Die „Zugriffsbeschränkungen“-Funktion ist in den Fällen nützlich, in denen Sie die IP-Adressen einschränken möchten, über die Ihre App erreicht werden kann. Zu den Anwendungsfällen für diese Funktion gehören:
+Das Feature zur IP-basierten Zugriffseinschränkung ist in Situationen nützlich, in denen Sie die IP-Adressen einschränken möchten, über die Ihre App erreicht werden kann. Sowohl IPv4 als auch IPv6 werden unterstützt. Zu den Anwendungsfällen für diese Funktion gehören:
 
 * Beschränken des Zugriffs auf Ihre App aus einem Satz klar definierter Adressen 
-* Beschränken des Zugriffs so, dass er über einen Lastenausgleichsdienst erfolgt, z. B. über Azure Front Door. Wenn Sie Ihren eingehenden Datenverkehr an Azure Front Door sperren möchten, erstellen Sie Regeln, um Datenverkehr von 147.243.0.0/16 und 2a01:111:2050::/44 zuzulassen. 
+* Beschränken des Zugriffs über einen Lastenausgleichsdienst wie Azure Front Door
 
 ![Zugriffsbeschränkungen mit Azure Front Door](media/networking-features/access-restrictions-afd.png)
 
-Wenn Sie den Zugriff auf Ihre App sperren möchten, sodass sie nur von Ressourcen in Ihrem virtuellen Azure-Netzwerk (VNet) erreicht werden kann, benötigen Sie eine statische öffentliche Adresse für jede Komponente, die in Ihrem VNet als Quelle fungiert. Haben die Ressourcen keine öffentliche Adresse, sollten Sie stattdessen die Funktion „Dienstendpunkte“ verwenden. Informationen, wie Sie diese Funktion aktivieren, finden Sie im Tutorial zu [Azure App Service – Statische Zugriffseinschränkungen][iprestrictions].
+Informationen, wie Sie diese Funktion aktivieren, finden Sie im Tutorial zu [Azure App Service – Statische Zugriffseinschränkungen][iprestrictions].
 
-### <a name="service-endpoints"></a>Dienstendpunkte
+#### <a name="service-endpoint-based-access-restriction-rules"></a>Dienstendpunkt-basierte Zugriffseinschränkungsregeln
 
 Mit Dienstendpunkten können Sie **eingehenden** Zugriff auf Ihre App so sperren, dass die Quelladresse aus einem Satz von Subnetzen stammen muss, die Sie auswählen. Diese Funktion funktioniert zusammen mit den IP-Zugriffseinschränkungen. Dienstendpunkte sind mit Remotedebugging nicht kompatibel. Wenn Sie Remotedebuggen mit Ihrer App verwenden möchten, darf sich Ihr Client nicht in einem Subnetz mit aktivierten Dienstendpunkten befinden. Dienstendpunkte werden in derselben Benutzeroberfläche wie die IP-Zugriffseinschränkungen festgelegt. Sie können eine Zulassungs-/Verweigerungsliste mit Zugriffsregeln erstellen, die sowohl öffentliche Adressen als auch Subnetze in Ihren VNets umfassen. Diese Funktion unterstützt Szenarien wie die folgenden:
 
@@ -113,7 +117,7 @@ Mit Dienstendpunkten können Sie **eingehenden** Zugriff auf Ihre App so sperren
 
 ![Dienstendpunkte mit Anwendungsgateway](media/networking-features/service-endpoints-appgw.png)
 
-Weitere Informationen zum Konfigurieren von Dienstendpunkten mit Ihrer App finden Sie im Tutorial zu [Azure App Service – Statische Zugriffseinschränkungen][serviceendpoints].
+Weitere Informationen zum Konfigurieren von Dienstendpunkten mit Ihrer App finden Sie im Tutorial zum [Konfigurieren von Zugriffseinschränkungen nach Dienstendpunkten][serviceendpoints].
 
 ### <a name="private-endpoints"></a>Private Endpunkte
 
@@ -243,19 +247,19 @@ Verwenden von Dienstendpunkten, um eingehenden Datenverkehr an Ihre API-App dadu
 
 Die Vor- und Nachteile beider Methoden sind:
 
-* Mit Dienstendpunkten müssen Sie nur den Datenverkehr zu Ihrer API-App in das Integrationssubnetz sichern. Hierdurch wird die API-App gesichert, aber es bestünde immer noch die Möglichkeit zur Datenexfiltration aus Ihrer Front-End-App in andere Apps im App Service.
+* Mit Dienstendpunkten müssen Sie nur den Datenverkehr zu Ihrer API-App in das Integrationssubnetz schützen. Hierdurch wird die API-App gesichert, aber es bestünde immer noch die Möglichkeit zur Datenexfiltration aus Ihrer Front-End-App in andere Apps im App Service.
 * Mit privaten Endpunkten verfügen Sie über zwei aktive Subnetze. Dies erhöht die Komplexität. Außerdem ist der private Endpunkt eine Ressource der obersten Ebene, die den Verwaltungsaufwand erhöht. Der Vorteil bei der Verwendung privater Endpunkte besteht darin, dass eine Datenexfiltration ausgeschlossen ist. 
 
 Beide Methoden funktionieren mit mehreren Front-Ends. In kleineren Szenarien lassen sich Dienstendpunkte wesentlich einfacher verwenden, weil Sie Dienstendpunkte einfach für die API-App im Front-End-Integrationssubnetz aktivieren. Wenn Sie weitere Front-End-Apps hinzufügen, müssen Sie jede API-App so anpassen, dass sie über Dienstendpunkte in dem Integrationssubnetz verfügt. Mit privaten Endpunkten haben Sie eine höhere Komplexität, müssen aber nichts bei Ihren API-Apps ändern, nachdem Sie einen privaten Endpunkt festgelegt haben. 
 
 ### <a name="line-of-business-applications"></a>Branchenanwendungen
 
-Branchenanwendungen (Line-of-Business, LOB) sind interne Anwendungen, die in der Regel nicht für den Zugriff über das Internet verfügbar gemacht werden. Diese Anwendungen werden aus Unternehmensnetzwerken heraus aufgerufen, in denen sich der Zugriff streng kontrollieren lässt. Wenn Sie eine ILB-ASE verwenden, lassen sich Ihre Branchenanwendungen einfach hosten. Wenn Sie den mehrinstanzenfähigen Dienst verwenden, können Sie entweder private Endpunkte oder Dienstendpunkte in Kombination mit einem Application Gateway verwenden. Es gibt zwei Gründe, um ein Application Gateway mit Dienstendpunkten anstelle privater Endpunkte zu verwenden:
+Branchenanwendungen (Line-of-Business, LOB) sind interne Anwendungen, die in der Regel nicht für den Zugriff über das Internet verfügbar gemacht werden. Diese Anwendungen werden aus Unternehmensnetzwerken heraus aufgerufen, in denen sich der Zugriff streng kontrollieren lässt. Wenn Sie eine ILB-ASE verwenden, lassen sich Ihre Branchenanwendungen einfach hosten. Wenn Sie den mehrinstanzenfähigen Dienst verwenden, können Sie entweder private Endpunkte oder Dienstendpunkte in Kombination mit einem Anwendungsgateway verwenden. Es gibt zwei Gründe, um ein Anwendungsgateway mit Dienstendpunkten anstelle privater Endpunkte zu verwenden:
 
 * Sie benötigen WAF-Schutz für Ihre Branchenanwendungen.
 * Sie möchten einen Lastenausgleich für mehrere Instanzen Ihrer Branchenanwendungen ausführen.
 
-Wenn nichts davon der Fall ist, ist es besser, private Endpunkte zu verwenden. Wenn private Endpunkte in App Service verfügbar sind, können Sie Ihre Apps über private Adressen in Ihrem VNet verfügbar machen. Der private Endpunkt, den Sie in Ihrem VNet platzieren, kann über ExpressRoute- und VPN-Verbindungen erreicht werden. Das Konfigurieren privater Endpunkte macht Ihre Apps über eine private Adresse verfügbar, aber Sie müssen das DNS so konfigurieren, dass diese Adresse von lokalen Standorten aus erreichbar ist. Damit dies funktioniert, müssen Sie die private Azure DNS-Zone, die Ihre privaten Endpunkten enthält, an Ihre lokalen DNS-Server weiterleiten. Private Azure DNS-Zonen unterstützen keine Zonenweiterleitung, aber Sie können dies unterstützen, indem Sie einen DNS-Server zu diesem Zweck verwenden. Diese Vorlage, [DNS-Weiterleitung](https://azure.microsoft.com/resources/templates/301-dns-forwarder/), vereinfacht das Weiterleiten Ihrer privaten Azure DNS-Zone an Ihre lokalen DNS-Server.
+Wenn nichts davon zutrifft, ist es besser, private Endpunkte zu verwenden. Wenn private Endpunkte in App Service verfügbar sind, können Sie Ihre Apps über private Adressen in Ihrem VNET verfügbar machen. Der private Endpunkt, den Sie in Ihrem VNet platzieren, kann über ExpressRoute- und VPN-Verbindungen erreicht werden. Das Konfigurieren privater Endpunkte macht Ihre Apps über eine private Adresse verfügbar, aber Sie müssen das DNS so konfigurieren, dass diese Adresse von lokalen Standorten aus erreichbar ist. Damit dies funktioniert, müssen Sie die private Azure DNS-Zone, die Ihre privaten Endpunkten enthält, an Ihre lokalen DNS-Server weiterleiten. Private Azure DNS-Zonen unterstützen keine Zonenweiterleitung, aber Sie können dies unterstützen, indem Sie einen DNS-Server zu diesem Zweck verwenden. Diese Vorlage, [DNS-Weiterleitung](https://azure.microsoft.com/resources/templates/301-dns-forwarder/), vereinfacht das Weiterleiten Ihrer privaten Azure DNS-Zone an Ihre lokalen DNS-Server.
 
 ## <a name="app-service-ports"></a>App Service-Ports
 

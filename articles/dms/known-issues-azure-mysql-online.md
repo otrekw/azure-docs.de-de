@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893746"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494444"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Onlinemigrationsprobleme und Einschränkungen bei Azure DB for MySQL mit Azure Database Migration Service
 
@@ -32,7 +32,7 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 - Azure Database for MySQL unterstützt Folgendes:
   - MySQL Community-Edition
   - InnoDB-Engine
-- Migration zu derselben Version. Die Migration von MySQL 5.6 zu Azure Database for MySQL 5.7 wird nicht unterstützt.
+- Migration zu derselben Version. Die Migration von MySQL 5.6 zu Azure Database for MySQL 5.7 wird nicht unterstützt. Eine Migration zu oder von MySQL 8.0 wird nicht unterstützt.
 - Aktivieren Sie die binäre Protokollierung in „my.ini“ (Windows) oder „my.cnf“ (Unix).
   - Legen Sie „Server_id“ auf eine beliebige Zahl größer oder gleich 1 fest, z.B. Server_id=1 (nur für MySQL 5.6).
   - Legen Sie „log-bin = \<path>“ fest (nur für MySQL 5.6).
@@ -66,28 +66,28 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
 ## <a name="datatype-limitations"></a>Einschränkungen bei Datentypen
 
-- **Einschränkung**: Wenn die MySQL-Quelldatenbank einen JSON-Datentyp enthält, tritt bei der Migration während der fortlaufenden Synchronisierung ein Fehler auf.
+- **Einschränkung** : Wenn die MySQL-Quelldatenbank einen JSON-Datentyp enthält, tritt bei der Migration während der fortlaufenden Synchronisierung ein Fehler auf.
 
-    **Problemumgehung**: Ändern Sie den JSON-Datentyp in der MySQL-Quelldatenbank in „mediumtext“ oder „longtext“.
+    **Problemumgehung** : Ändern Sie den JSON-Datentyp in der MySQL-Quelldatenbank in „mediumtext“ oder „longtext“.
 
-- **Einschränkung**: Wenn in Tabellen kein Primärschlüssel vorhanden ist, tritt bei der fortlaufenden Synchronisierung ein Fehler auf.
+- **Einschränkung** : Wenn in Tabellen kein Primärschlüssel vorhanden ist, tritt bei der fortlaufenden Synchronisierung ein Fehler auf.
 
-    **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
+    **Problemumgehung** : Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
 
 ## <a name="lob-limitations"></a>LOB-Einschränkungen
 
 LOB-Spalten (Large Object) sind Spalten, die groß werden können. Bei MySQL sind „Mediumtext“, „Longtext“, „Blob“, „Mediumblob“, „Longblob“ usw. einige der LOB-Datentypen.
 
-- **Einschränkung**: Wenn LOB-Datentypen als Primärschlüssel verwendet werden, tritt bei der Migration ein Fehler auf.
+- **Einschränkung** : Wenn LOB-Datentypen als Primärschlüssel verwendet werden, tritt bei der Migration ein Fehler auf.
 
-    **Problemumgehung**: Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
+    **Problemumgehung** : Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
 
-- **Einschränkung**: Wenn die Länge der LOB-Spalte (Large Object) den Parameter „LOB-Größe beschränken“ überschreitet (sollte nicht größer als 64 KB sein), werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
+- **Einschränkung** : Wenn die Länge der LOB-Spalte (Large Object) den Parameter „LOB-Größe beschränken“ überschreitet (sollte nicht größer als 64 KB sein), werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Problemumgehung**: Wenn Sie über ein LOB-Objekt verfügen, das größer als 64 KB ist, verwenden Sie den Parameter „Unbegrenzte LOB-Größe zulassen“. Beachten Sie, dass Migrationen mit dem Parameter „Unbegrenzte LOB-Größe zulassen“ langsamer als Migrationen mit dem Parameter „LOB-Größe beschränken“ sind.
+    **Problemumgehung** : Wenn Sie über ein LOB-Objekt verfügen, das größer als 64 KB ist, verwenden Sie den Parameter „Unbegrenzte LOB-Größe zulassen“. Beachten Sie, dass Migrationen mit dem Parameter „Unbegrenzte LOB-Größe zulassen“ langsamer als Migrationen mit dem Parameter „LOB-Größe beschränken“ sind.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Einschränkungen bei der Onlinemigration von AWS RDS MySQL
 
@@ -95,8 +95,8 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
 
 - **Fehler:** Datenbank „{0}“ verfügt auf dem Ziel über Fremdschlüssel. Beheben Sie den Fehler für das Ziel, und starten Sie eine neue Aktivität für die Datenmigration. Führen Sie das unten angegebene Skript auf dem Ziel aus, um die Fremdschlüssel aufzulisten.
 
-  **Einschränkung**: Enthält das Schema Fremdschlüssel, tritt beim ersten Ladevorgang und bei der fortlaufenden Synchronisierung der Migration ein Fehler auf.
-  **Problemumgehung**: Führen Sie das folgende Skript in MySQL Workbench aus, um das Skript zum Löschen des Fremdschlüssels und das Skript zum Hinzufügen des Fremdschlüssels zu extrahieren:
+  **Einschränkung** : Enthält das Schema Fremdschlüssel, tritt beim ersten Ladevorgang und bei der fortlaufenden Synchronisierung der Migration ein Fehler auf.
+  **Problemumgehung** : Führen Sie das folgende Skript in MySQL Workbench aus, um das Skript zum Löschen des Fremdschlüssels und das Skript zum Hinzufügen des Fremdschlüssels zu extrahieren:
 
   ```
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
@@ -104,21 +104,21 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
 
 - **Fehler:** Die Datenbank „{0}“ ist auf dem Server nicht vorhanden. Für den angegebenen MySQL-Quellserver wird die Groß-/Kleinschreibung beachtet. Überprüfen Sie den Datenbanknamen.
 
-  **Einschränkung**: Für Benutzer tritt dieser Fehler ggf. auf, wenn sie eine MySQL-Datenbank über die Befehlszeilenschnittstelle (CLI) zu Azure migrieren. Der Dienst konnte die Datenbank auf dem Quellserver nicht finden. Möglicherweise wurde ein falscher Datenbankname angegeben, oder die Datenbank ist auf dem angegebenen Server nicht vorhanden. Beachten Sie, dass bei Datenbanknamen die Groß-/Kleinschreibung berücksichtigt wird.
+  **Einschränkung** : Für Benutzer tritt dieser Fehler ggf. auf, wenn sie eine MySQL-Datenbank über die Befehlszeilenschnittstelle (CLI) zu Azure migrieren. Der Dienst konnte die Datenbank auf dem Quellserver nicht finden. Möglicherweise wurde ein falscher Datenbankname angegeben, oder die Datenbank ist auf dem angegebenen Server nicht vorhanden. Beachten Sie, dass bei Datenbanknamen die Groß-/Kleinschreibung berücksichtigt wird.
 
-  **Problemumgehung**: Geben Sie den genauen Datenbanknamen an, und wiederholen Sie den Vorgang.
+  **Problemumgehung** : Geben Sie den genauen Datenbanknamen an, und wiederholen Sie den Vorgang.
 
 - **Fehler:** Die Datenbank „{database}“ enthält Tabellen mit demselben Namen. Azure Database for MySQL unterscheidet bei Tabellennamen keine Groß-/Kleinschreibung.
 
-  **Einschränkung**: Dieser Fehler tritt auf, wenn in der Quelldatenbank zwei Tabellen den gleichen Namen haben. Azure Database for MySQL unterscheidet bei Tabellennamen keine Groß-/Kleinschreibung.
+  **Einschränkung** : Dieser Fehler tritt auf, wenn in der Quelldatenbank zwei Tabellen den gleichen Namen haben. Azure Database for MySQL unterscheidet bei Tabellennamen keine Groß-/Kleinschreibung.
 
-  **Problemumgehung**: Aktualisieren Sie die Tabellennamen, sodass sie eindeutig sind, und wiederholen Sie dann den Vorgang.
+  **Problemumgehung** : Aktualisieren Sie die Tabellennamen, sodass sie eindeutig sind, und wiederholen Sie dann den Vorgang.
 
 - **Fehler:** Die Zieldatenbank „{database}“ ist leer. Migrieren Sie das Schema.
 
-  **Einschränkung**: Dieser Fehler tritt auf, wenn die Azure Database for MySQL-Zieldatenbank nicht über das erforderliche Schema verfügt. Die Schemamigration ist erforderlich, um Daten zu Ihrem Ziel migrieren zu können.
+  **Einschränkung** : Dieser Fehler tritt auf, wenn die Azure Database for MySQL-Zieldatenbank nicht über das erforderliche Schema verfügt. Die Schemamigration ist erforderlich, um Daten zu Ihrem Ziel migrieren zu können.
 
-  **Problemumgehung**: [Migrieren Sie das Schema](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) von Ihrer Quell- zur Zieldatenbank.
+  **Problemumgehung** : [Migrieren Sie das Schema](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) von Ihrer Quell- zur Zieldatenbank.
 
 ## <a name="other-limitations"></a>Weitere Einschränkungen
 
@@ -140,6 +140,6 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
 
 - **Fehler:** Zeile zu groß (> 8126). Das Ändern einiger Spalten in TEXT oder BLOB kann helfen. Beim aktuellen Zeilenformat wird das BLOB-Präfix von 0 Byte inline gespeichert.
 
-  **Einschränkung**: Dieser Fehler tritt auf, wenn Sie mithilfe der InnoDB-Speicher-Engine zu Azure Database for MySQL migrieren und eine Tabellenzeilen zu groß ist (> 8126 Bytes).
+  **Einschränkung** : Dieser Fehler tritt auf, wenn Sie mithilfe der InnoDB-Speicher-Engine zu Azure Database for MySQL migrieren und eine Tabellenzeilen zu groß ist (> 8126 Bytes).
 
-  **Problemumgehung**: Aktualisieren Sie das Schema der Tabelle, die eine Zeilengröße von mehr als 8126 Bytes aufweist. Es wird nicht empfohlen, den Strict-Modus zu ändern, da die Daten abgeschnitten werden. Das Ändern von „page_size“ wird nicht unterstützt.
+  **Problemumgehung** : Aktualisieren Sie das Schema der Tabelle, die eine Zeilengröße von mehr als 8126 Bytes aufweist. Es wird nicht empfohlen, den Strict-Modus zu ändern, da die Daten abgeschnitten werden. Das Ändern von „page_size“ wird nicht unterstützt.

@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802395"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496088"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnose und Troubleshooting für die Ausnahme „Nicht gefunden“ in Azure Cosmos DB
 Der HTTP-Statuscode 404 steht dafür, dass die Ressource nicht mehr vorhanden ist.
@@ -28,7 +28,7 @@ Es sind mehrere SDK-Clientinstanzen vorhanden, und der Lesevorgang ist vor dem S
 
 #### <a name="solution"></a>Lösung:
 1. Die standardmäßig für Azure Cosmos DB festgelegte Kontokonsistenz ist die Sitzungskonsistenz. Wenn ein Element erstellt oder aktualisiert wird, wird bei der Antwort ein Sitzungstoken zurückgegeben, das zwischen den SDK-Instanzen weitergegeben werden kann. Damit wird sichergestellt, dass bei der Leseanforderung aus einem Replikat mit dieser Änderung gelesen wird.
-1. Ändern Sie die [Konsistenzebene](consistency-levels-choosing.md) in eine [höhere Ebene](consistency-levels-tradeoffs.md).
+1. Ändern Sie die [Konsistenzebene](./consistency-levels.md) in eine [höhere Ebene](./consistency-levels.md).
 
 ### <a name="invalid-partition-key-and-id-combination"></a>Ungültige Kombination aus Partitionsschlüssel und ID
 Die Kombination aus Partitionsschlüssel und ID ist ungültig.
@@ -37,7 +37,7 @@ Die Kombination aus Partitionsschlüssel und ID ist ungültig.
 Korrigieren Sie die Anwendungslogik, die die falsche Kombination verursacht. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Ungültiges Zeichen in einer Element-ID
-Ein Element mit einem [ungültigen Zeichen](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) in der Element-ID wird in Azure Cosmos DB eingefügt.
+Ein Element mit einem [ungültigen Zeichen](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) in der Element-ID wird in Azure Cosmos DB eingefügt.
 
 #### <a name="solution"></a>Lösung:
 Ändern Sie die ID in einen anderen Wert, der keine Sonderzeichen enthält. Wenn das Ändern der ID nicht möglich ist, können Sie die ID mit Base64 codieren, um keine Sonderzeichen zu verwenden.
@@ -79,7 +79,7 @@ while (invalidItemsIterator.HasMoreResults)
 ```
 
 ### <a name="time-to-live-purge"></a>Bereinigung nach Ablauf der Gültigkeitsdauer
-Für das Element wurde die Eigenschaft [Gültigkeitsdauer (TTL)](https://docs.microsoft.com/azure/cosmos-db/time-to-live) festgelegt. Das Element wurde bereinigt, da die Gültigkeitsdauer abgelaufen war.
+Für das Element wurde die Eigenschaft [Gültigkeitsdauer (TTL)](./time-to-live.md) festgelegt. Das Element wurde bereinigt, da die Gültigkeitsdauer abgelaufen war.
 
 #### <a name="solution"></a>Lösung:
 Ändern Sie die Eigenschaft für die Gültigkeitsdauer, um zu verhindern, dass das Element bereinigt wird.
@@ -94,7 +94,7 @@ Warten Sie, bis die Indizierung auf den aktuellen Stand gebracht wurde, oder än
 Die Datenbank oder der Container, in der bzw. dem sich das Element befindet, wurde gelöscht.
 
 #### <a name="solution"></a>Lösung:
-1. [Stellen Sie die übergeordnete Ressource wieder her](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period), oder erstellen Sie die Ressourcen neu.
+1. [Stellen Sie die übergeordnete Ressource wieder her](./online-backup-and-restore.md#request-data-restore-from-a-backup), oder erstellen Sie die Ressourcen neu.
 1. Erstellen Sie eine neue Ressource, um die gelöschte Ressource zu ersetzen.
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. Bei Container-/Sammlungsnamen wird zwischen Groß- und Kleinschreibung unterschieden

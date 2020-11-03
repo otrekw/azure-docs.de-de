@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147982"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517360"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -73,13 +73,13 @@ Weitere Informationen finden Sie in der [Checkliste für die Netzwerkplanung](tu
 
 Identifizieren Sie ein IP-Segment, um Ihr erstes Netzwerk (NSX-Segment) in Ihrer privaten Cloud zu erstellen.  Anders ausgedrückt: Sie möchten ein Netzwerksegment in Azure VMware Solution erstellen, damit Sie virtuelle Computer unter Azure VMware Solution bereitstellen können.   
 
-Auch wenn Sie eine Erweiterung von L2-Netzwerken planen, sollten Sie ein Netzwerksegment erstellen, weil dies zum Überprüfen der Umgebung nützlich ist.
+Auch wenn Sie eine Erweiterung von L2-Netzwerken planen, sollten Sie ein Netzwerksegment erstellen, das die Umgebung überprüft.
 
 Beachten Sie, dass alle erstellten IP-Segmente in Ihrer Azure- und lokalen Umgebung eindeutig sein müssen.  
 
 **Beispiel:** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifizieren: IP-Adressensegment" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifizieren: IP-Adressensegment für VM-Workloads" border="false":::     
 
 ## <a name="optional-extend-networks"></a>(Optional) Erweitern von Netzwerken
 
@@ -96,7 +96,7 @@ Identifizieren Sie einen CIDR-Netzwerkadressblock vom Typ `/29`, der für das Ex
 
 **Beispiel:** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifizieren: IP-Adressensegment" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifizieren: ExpressRoute Global Reach-Peeringnetzwerk" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Anfügen von Azure VMware Solution an ein Azure Virtual Network
 
@@ -119,7 +119,7 @@ Dokumentieren Sie in beiden Fällen, was Sie in diesem Schritt tun möchten.
 >[!NOTE]
 >Dieses virtuelle Netzwerk wird von Ihrer lokalen Umgebung und von Azure VMware Solution erkannt. Stellen Sie daher sicher, dass sich das in diesem virtuellen Netzwerk verwendete IP-Segment und die Subnetze nicht überlappen.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identifizieren: IP-Adressensegment" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identifizieren: Azure Virtual Network zum Anfügen von Azure VMware Solution" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX-Netzwerksegmente
 

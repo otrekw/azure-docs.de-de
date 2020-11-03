@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460546"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486938"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Entwerfen von Tabellen in einem Synapse SQL-Pool
 
@@ -79,7 +79,7 @@ Ein SQL-Pool unterstützt die am häufigsten verwendeten Datentypen. Eine Liste 
 
 ## <a name="distributed-tables"></a>Verteilte Tabellen
 
-Ein grundlegendes Feature von SQL-Pools ist die Art und Weise, wie Tabellen über [Verteilungen](massively-parallel-processing-mpp-architecture.md#distributions) hinweg gespeichert und ausgeführt werden können.  SQL-Pools unterstützen drei Verfahren für die Verteilung der Daten: Roundrobin (Standard), Hash und repliziert.
+Ein grundlegendes Feature von Synapse SQL ist die Art und Weise, wie Tabellen über [Verteilungen](massively-parallel-processing-mpp-architecture.md#distributions) hinweg gespeichert und ausgeführt werden können. Synapse SQL unterstützt drei Verfahren für die Verteilung der Daten: Roundrobin (Standard), Hash und repliziert.
 
 ### <a name="hash-distributed-tables"></a>Tabellen mit Hashverteilung
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441873"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440728"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -36,6 +36,8 @@ Die Voraussetzungen lauten wie folgt:
     - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Schritt 1: Erstellen eines Exportauftrags
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag zu erstellen.
 
@@ -69,8 +71,8 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
          ![Alle exportieren](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
     - Sie können angeben, welche Container und Blobs exportiert werden sollen.
-        - **So geben Sie ein zu exportierendes Blob an**: Verwenden Sie den Selektor **Gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
-        - **So geben Sie alle Blobs an, die mit einem Präfix beginnen**: Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
+        - **So geben Sie ein zu exportierendes Blob an** : Verwenden Sie den Selektor **Gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
+        - **So geben Sie alle Blobs an, die mit einem Präfix beginnen** : Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
 
            ![Exportieren ausgewählter Container und Blobs](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -98,7 +100,84 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
         > [!NOTE]
         > Senden Sie die Datenträger immer an das im Azure-Portal angegebene Rechenzentrum. Wenn die Datenträger an das falsche Rechenzentrum versendet werden, wird der Auftrag nicht verarbeitet.
 
-    - Klicken Sie auf **OK**, um das Erstellen des Exportauftrags abzuschließen.
+    - Klicken Sie auf **OK** , um das Erstellen des Exportauftrags abzuschließen.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag zu erstellen.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Erstellen eines Auftrags
+
+1. Verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add), um die Erweiterung [az import-export](/cli/azure/ext/import-export/import-export) hinzuzufügen:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Um eine Liste der Standorte abzurufen, von denen Sie Datenträger erhalten können, verwenden Sie den Befehl [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list):
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Führen Sie wie folgt den Befehl [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) aus, um einen Exportauftrag zu erstellen, der Ihr vorhandenes Speicherkonto verwendet:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
+
+   Dieser Auftrag exportiert alle Blobs in Ihrem Speicherkonto. Sie können ein Blob für den Export angeben, indem Sie **--export** durch diesen Wert ersetzen:
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   Dieser Parameterwert exportiert das Blob mit dem Namen *logo.bmp* im Stammcontainer.
+
+   Sie haben auch die Möglichkeit, mithilfe eines Präfix alle Blobs in einem Container auszuwählen. Ersetzen Sie **--export** durch diesen Wert:
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
+
+   > [!NOTE]
+   > Wenn das zu exportierende Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
+
+1. Verwenden Sie den Befehl [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie den Befehl [az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) aus:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 <!--## (Optional) Step 2: -->
 
@@ -117,7 +196,7 @@ Wenn Sie die Anzahl der benötigten Laufwerke nicht kennen, fahren Sie mit [Übe
 Wenn im Dashboard angegeben wird, dass der Auftrag abgeschlossen wurde, werden die Laufwerke an Sie versendet, und die Nachverfolgungsnummer für die Lieferung ist im Portal verfügbar.
 
 1. Wenn Sie die Laufwerke mit exportierten Daten erhalten haben, benötigen Sie die BitLocker-Schlüssel, um die Laufwerke zu entsperren. Wechseln Sie im Azure-Portal zum Exportauftrag. Klicken auf die Registerkarte **Import/Export**.
-2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **Verschlüsselung**, und kopieren Sie die Schlüssel.
+2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **Verschlüsselung** , und kopieren Sie die Schlüssel.
 
    ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
@@ -213,7 +292,7 @@ Die folgende Tabelle enthält Beispiele für gültige Blob-Pfade:
    | Starts With |/$root/ |Exportiert alle Blobs im Stammcontainer |
    | Starts With |/book |Exportiert alle Blobs in allen Containern mit dem Präfix **book** |
    | Starts With |/music/ |Exportiert alle Blobs im Container **music** |
-   | Starts With |/music/love |Exportiert alle Blobs im Container **music**, die mit dem Präfix **love** beginnen |
+   | Starts With |/music/love |Exportiert alle Blobs im Container **music** , die mit dem Präfix **love** beginnen |
    | Equal To |$root/logo.bmp |Exportiert das Blob **logo.bmp** im Stammcontainer |
    | Equal To |videos/story.mp4 |Exportiert das Blob **story.mp4** im Container **videos** |
 

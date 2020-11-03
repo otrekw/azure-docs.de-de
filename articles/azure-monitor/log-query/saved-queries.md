@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d712aab6dcb52f64af340b3110e475c8da2b10
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959841"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542606"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Gespeicherte Abfragen in Azure Monitor Log Analytics
 
@@ -54,7 +54,7 @@ Jede Beispielabfrage wird durch eine Karte dargestellt. Sie können die Abfragen
 
 Auf alle Funktionen des Dialogfelds kann auch über den Bereich „Abfragen“ auf der linken Seitenleiste von Log Analytics zugegriffen werden. Sie können mit dem Mauszeiger auf den Namen einer Abfrage zeigen, um die Beschreibung und zusätzliche Funktionen der Abfrage anzuzeigen.
 
-![Seitenleiste](media/saved-queries/sidebar-3.png)
+![Screenshot des Bereichs mit Abfragen](media/saved-queries/sidebar-3.png)
 
 ## <a name="finding-and-filtering-queries"></a>Suchen und Filtern von Abfragen
 

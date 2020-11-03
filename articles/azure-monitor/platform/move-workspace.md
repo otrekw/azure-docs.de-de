@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282873"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372275"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -40,11 +40,20 @@ Folgende Lösungen müssen vor dem Aufheben der Verknüpfung mit Ihrem Automatio
 
 >[!IMPORTANT]
 > **Azure Sentinel-Kunden**
-> - Nach der Bereitstellung in einem Arbeitsbereich bietet Azure Sentinel **derzeit keine Unterstützung** für das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements. 
-> - Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics** , und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen wirksam sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
+> - Derzeit wird nach der Bereitstellung von Azure Sentinel in einem Arbeitsbereich das Verschieben des Arbeitsbereichs in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt. 
+> - Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics** , und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen eine effektive Lösung sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
 > 
-> **Warnungen**
-> - Alle Warnungen müssen nach dem Verschieben neu erstellt werden, da die Berechtigungen auf der Azure-Ressourcen-ID des Arbeitsbereichs basieren und diese sich bei der Verschiebung des Arbeitsbereichs ändern. 
+> **Neuerstellen von Warnungen**
+> - Alle Warnungen müssen nach einem Verschieben neu erstellt werden, da die Berechtigungen auf der Azure-Ressourcen-ID des Arbeitsbereichs basieren, die sich bei der Verschiebung des Arbeitsbereichs ändert.
+>
+> **Aktualisieren von Ressourcenpfaden**
+> - Nach dem Verschieben eines Arbeitsbereichs müssen alle Azure- oder externen Ressourcen, die auf den Arbeitsbereich verweisen, überprüft und aktualisiert werden, damit sie auf den neuen Ressourcenzielpfad verweisen.
+> 
+>   *Beispiele:*
+>   - [Azure Monitor-Warnungsregeln](alerts-resource-move.md)
+>   - Drittanbieteranwendungen
+>   - Benutzerdefinierte Skripterstellung
+>
 
 ### <a name="delete-solutions-in-azure-portal"></a>Löschen von Lösungen aus dem Azure-Portal
 Verwenden Sie das folgende Verfahren, um die Lösungen mithilfe des Azure-Portals zu entfernen:
@@ -68,9 +77,9 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 ### <a name="remove-alert-rules-for-startstop-vms-solution"></a>Entfernen von Warnungsregeln für die Lösung zum Starten/Beenden von VMs
 Für die Lösung **zum Starten/Beenden von VMs** müssen Sie ebenfalls die Warnungsregeln entfernen, die von der Lösung erstellt werden. Verwenden Sie das folgende Verfahren, um diese Regeln im Azure-Portal zu entfernen.
 
-1. Öffnen Sie das Menü **Monitor** , und klicken Sie dann auf **Warnungen** .
-2. Klicken Sie auf **Warnungsregeln verwalten** .
-3. Wählen Sie die folgenden drei Warnungsregeln aus, und klicken Sie dann auf **Löschen** .
+1. Öffnen Sie das Menü **Monitor** , und klicken Sie dann auf **Warnungen**.
+2. Klicken Sie auf **Warnungsregeln verwalten**.
+3. Wählen Sie die folgenden drei Warnungsregeln aus, und klicken Sie dann auf **Löschen**.
 
    - AutoStop_VM_Child
    - ScheduledStartStop_Parent
@@ -93,7 +102,7 @@ Verwenden Sie das folgende Verfahren, um mithilfe des Azure-Portals die Verknüp
 Verwenden Sie das folgende Verfahren, um den Arbeitsbereich mithilfe des Azure-Portals zu verschieben:
 
 1. Öffnen Sie das Menü **Log Analytics-Arbeitsbereiche** , und wählen Sie dann den Arbeitsbereich aus.
-2. Klicken Sie auf der Seite **Übersicht** neben **Ressourcengruppe** oder **Abonnement** auf **Ändern** .
+2. Klicken Sie auf der Seite **Übersicht** neben **Ressourcengruppe** oder **Abonnement** auf **Ändern**.
 3. Es wird eine neue Seite mit einer Liste von Ressourcen geöffnet, die mit dem Arbeitsbereich verknüpft sind. Wählen Sie die Ressourcen aus, die in das gleiche Zielabonnement und die gleiche Ressourcengruppe wie der Arbeitsbereich verschoben werden sollen. 
 4. Wählen Sie ein gültiges **Zielabonnement** und eine **Ressourcengruppe** aus. Wenn Sie den Arbeitsbereich in eine andere Ressourcengruppe im gleichen Abonnement verschieben, wird die Option **Abonnement** nicht angezeigt.
 5. Klicken Sie auf **OK** , um den Arbeitsbereich und die ausgewählten Ressourcen zu verschieben.

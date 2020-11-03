@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 0dbab7db45a9f97db48bbf97aba55b5943f623a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a568f7cd0b8efaed4ee5210dde4000ca472529
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282441"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546788"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Tutorial: Onlinemigration von MongoDB zur Azure Cosmos DB-API für MongoDB mit DMS
 
@@ -81,7 +81,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-an-instance"></a>Erstellen einer Instanz
 
-1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**, suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus der Dropdownliste aus.
+1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen** , suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus der Dropdownliste aus.
 
     ![Azure Marketplace](media/tutorial-mongodb-to-cosmosdb-online/portal-marketplace.png)
 
@@ -106,13 +106,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media/tutorial-mongodb-to-cosmosdb-online/dms-settings3.png)
 
-7. Wählen Sie **Erstellen**, um den Dienst zu erstellen.
+7. Wählen Sie **Erstellen** , um den Dienst zu erstellen.
 
 ## <a name="create-a-migration-project"></a>Erstellen eines Migrationsprojekts
 
 Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Sie ihn, und erstellen Sie anschließend ein neues Migrationsprojekt.
 
-1. Wählen Sie im Azure-Portal **Alle Dienste**, suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus.
+1. Wählen Sie im Azure-Portal **Alle Dienste** , suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus.
 
     ![Suchen aller Instanzen von Azure Database Migration Service](media/tutorial-mongodb-to-cosmosdb-online/dms-search.png)
 
@@ -128,7 +128,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
     ![Erstellen eines Database Migration Service-Projekts](media/tutorial-mongodb-to-cosmosdb-online/dms-create-project1.png)
 
-5. Klicken Sie auf **Speichern**, und wählen Sie dann **Aktivität erstellen und ausführen**, um das Projekt zu erstellen und die Migrationsaktivität auszuführen.
+5. Klicken Sie auf **Speichern** , und wählen Sie dann **Aktivität erstellen und ausführen** , um das Projekt zu erstellen und die Migrationsaktivität auszuführen.
 
 ## <a name="specify-source-details"></a>Angeben von Quelldetails
 
@@ -138,9 +138,9 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
    > Azure Cosmos DB als Quelle wird von Azure Database Migration Service nicht unterstützt.
 
     Es gibt drei Modi, um eine Verbindung mit einer Quelle herzustellen:
-   * **Standardmodus**, in dem ein vollqualifizierter Domänenname oder eine IP-Adresse, eine Portnummer und die Anmeldeinformationen für die Verbindung akzeptiert werden.
-   * **Verbindungszeichenfolgen-Modus**, in dem eine MongoDB-Verbindungszeichenfolge akzeptiert wird. Dies ist im Artikel [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/) (URI-Format von Verbindungszeichenfolgen) beschrieben.
-   * **Daten aus Azure-Speicher**, wobei eine Blobcontainer-SAS-URL akzeptiert wird. Aktivieren Sie die Option **Das Blob enthält BSON-Speicherabbilder**, wenn für den Blobcontainer vom MongoDB-Tool [bsondump](https://docs.mongodb.com/manual/reference/program/bsondump/) erstellte BSON-Speicherabbilder vorhanden sind. Deaktivieren Sie sie, wenn der Container JSON-Dateien enthält.
+   * **Standardmodus** , in dem ein vollqualifizierter Domänenname oder eine IP-Adresse, eine Portnummer und die Anmeldeinformationen für die Verbindung akzeptiert werden.
+   * **Verbindungszeichenfolgen-Modus** , in dem eine MongoDB-Verbindungszeichenfolge akzeptiert wird. Dies ist im Artikel [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/) (URI-Format von Verbindungszeichenfolgen) beschrieben.
+   * **Daten aus Azure-Speicher** , wobei eine Blobcontainer-SAS-URL akzeptiert wird. Aktivieren Sie die Option **Das Blob enthält BSON-Speicherabbilder** , wenn für den Blobcontainer vom MongoDB-Tool [bsondump](https://docs.mongodb.com/manual/reference/program/bsondump/) erstellte BSON-Speicherabbilder vorhanden sind. Deaktivieren Sie sie, wenn der Container JSON-Dateien enthält.
 
      Bei Verwendung dieser Option muss die Verbindungszeichenfolge für das Speicherkonto folgendes Format haben:
 
@@ -150,9 +150,9 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
      Beachten Sie außerdem den folgenden Aspekt (abhängig von der Art der Sicherungsinformationen in Azure Storage):
 
-     * Bei BSON-Sicherungen müssen die Daten im Blobcontainer im bsondump-Format vorliegen, sodass Datendateien in Ordnern platziert werden, die nach den enthaltenden Datenbanken im Format „sammlung.bson“ benannt sind. Gegebenenfalls vorhandene Metadatendateien müssen im Format „*sammlung*.metadata.json“ benannt werden.
+     * Bei BSON-Sicherungen müssen die Daten im Blobcontainer im bsondump-Format vorliegen, sodass Datendateien in Ordnern platziert werden, die nach den enthaltenden Datenbanken im Format „sammlung.bson“ benannt sind. Gegebenenfalls vorhandene Metadatendateien müssen im Format „ *sammlung*.metadata.json“ benannt werden.
 
-     * Bei JSON-Sicherungen müssen die Dateien im Blobcontainer in Ordnern platziert werden, die nach den enthaltenden Datenbanken benannt sind. Innerhalb der einzelnen Datenbankordner müssen Datendateien in einem Unterordner namens „data“ platziert und im Format „*sammlung*.json“ benannt werden. Gegebenenfalls vorhandene Metadaten müssen in einem Unterordner namens „metadata“ platziert und ebenfalls im Format „*sammlung*.json“ benannt werden. Die Metadatendateien müssen in dem Format vorliegen, das vom MongoDB-Tool „bsondump“ generiert wird.
+     * Bei JSON-Sicherungen müssen die Dateien im Blobcontainer in Ordnern platziert werden, die nach den enthaltenden Datenbanken benannt sind. Innerhalb der einzelnen Datenbankordner müssen Datendateien in einem Unterordner namens „data“ platziert und im Format „ *sammlung*.json“ benannt werden. Gegebenenfalls vorhandene Metadaten müssen in einem Unterordner namens „metadata“ platziert und ebenfalls im Format „ *sammlung*.json“ benannt werden. Die Metadatendateien müssen in dem Format vorliegen, das vom MongoDB-Tool „bsondump“ generiert wird.
 
     > [!IMPORTANT]
     > Es wird nicht empfohlen, ein selbstsigniertes Zertifikat auf dem Mongo-Server zu verwenden. Wenn dennoch eines verwendet wird, stellen Sie die Verbindung mit dem Server im **Verbindungszeichenfolgen-Modus** her, und stellen Sie sicher, dass Ihre Verbindungszeichenfolge in Anführungszeichen eingeschlossen ist.
@@ -221,7 +221,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 ## <a name="monitor-the-migration"></a>Überwachen der Migration
 
-* Klicken Sie auf dem Bildschirm „Migrationsaktivität“ auf **Aktualisieren**, um die Anzeige zu aktualisieren, bis der **Status** der Migration **Wird wiedergegeben** lautet.
+* Klicken Sie auf dem Bildschirm „Migrationsaktivität“ auf **Aktualisieren** , um die Anzeige zu aktualisieren, bis der **Status** der Migration **Wird wiedergegeben** lautet.
 
    > [!NOTE]
    > Sie können die Aktivität zum Abrufen von Details der Migrationsmetriken auf Datenbank- und Sammlungsebene auswählen.
@@ -233,7 +233,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 1. Nehmen Sie Änderungen an Ihrer MongoDB-Quelldatenbank vor.
 2. Stellen Sie eine Verbindung mit COSMOS DB her, um zu überprüfen, ob die Daten vom MongoDB-Quellserver repliziert werden.
 
-    ![Status „Wird wiedergegeben“ der Aktivität](media/tutorial-mongodb-to-cosmosdb-online/dms-verify-data.png)
+    ![Der Screenshot zeigt, wo Sie überprüfen können, ob die Daten repliziert wurden.](media/tutorial-mongodb-to-cosmosdb-online/dms-verify-data.png)
 
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
@@ -241,7 +241,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
     Mit dieser Aktion wird die Wiedergabe aller ausstehenden Änderungen durchgeführt und die Migration fertiggestellt.
 
-    ![Status „Wird wiedergegeben“ der Aktivität](media/tutorial-mongodb-to-cosmosdb-online/dms-finish-migration.png)
+    ![Der Screenshot zeigt die Menüoption „Fertig stellen“.](media/tutorial-mongodb-to-cosmosdb-online/dms-finish-migration.png)
 
 ## <a name="post-migration-optimization"></a>Optimierung nach der Migration
 

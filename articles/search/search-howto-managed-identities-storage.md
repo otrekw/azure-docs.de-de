@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275131"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519553"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität
 
@@ -30,7 +30,7 @@ Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexe
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1\. Aktivieren einer systemseitig zugewiesenen verwalteten Identität
 
-Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert ist, wird in Azure eine Identität für den Suchdienst erstellt, die für die Authentifizierung bei anderen Azure-Diensten innerhalb desselben Mandanten und desselben Abonnements verwendet werden kann. Anschließend können Sie diese Identität in RBAC-Zuweisungen (rollenbasierte Zugriffssteuerung) verwenden, die den Zugriff auf Daten während der Indizierung ermöglichen.
+Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert ist, wird in Azure eine Identität für den Suchdienst erstellt, die für die Authentifizierung bei anderen Azure-Diensten innerhalb desselben Mandanten und desselben Abonnements verwendet werden kann. Anschließend können Sie diese Identität in Azure RBAC-Zuweisungen (rollenbasierte Zugriffssteuerung) verwenden, die den Zugriff auf Daten während der Indizierung ermöglichen.
 
 ![Aktivieren einer systemseitig zugewiesenen verwalteten Identität](./media/search-managed-identities/turn-on-system-assigned-identity.png "Aktivieren einer systemseitig zugewiesenen verwalteten Identität")
 
@@ -77,8 +77,8 @@ Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folge
 * **credentials**
     * Beim Verwenden einer verwalteten Identität zur Authentifizierung unterscheidet sich das Format **credentials** von dem für die Authentifizierung ohne verwaltete Identität. Hier geben Sie eine Ressourcen-ID an, der kein Kontoschlüssel und kein Kennwort zugewiesen ist. Die Ressourcen-ID muss die Abonnement-ID des Speicherkontos, die Ressourcengruppe des Speicherkontos und den Speicherkontonamen enthalten.
     * Format für verwaltete Identitäten: 
-        * *ResourceId=/subscriptions/**Ihre Abonnement-ID**/resourceGroups/**Ihr Ressourcengruppenname**/providers/Microsoft.Storage/storageAccounts/**Ihr Speicherkontoname**/;*
-* Mit **container** wird ein Container oder Tabellenname in Ihrem Speicherkonto festgelegt. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
+        * *ResourceId=/subscriptions/ **Ihre Abonnement-ID** /resourceGroups/ **Ihr Ressourcengruppenname** /providers/Microsoft.Storage/storageAccounts/ **Ihr Speicherkontoname** /;*
+* Mit **container** wird ein Container oder Tabellenname in Ihrem Speicherkonto festgelegt. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query** -Parameter angeben.
 
 Beispiel zum Erstellen eines Blob-Datenquellenobjekts mithilfe der [REST-API](/rest/api/searchservice/create-data-source):
 

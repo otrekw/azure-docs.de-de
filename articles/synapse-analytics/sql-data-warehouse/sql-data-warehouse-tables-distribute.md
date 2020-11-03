@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85214008"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487006"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Leitfaden für das Entwerfen verteilter Tabellen im Synapse SQL-Pool
 
 Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen im Synapse SQL-Pool.
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung im Synapse SQL-Pool vertraut sind.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – MPP-Architektur (Massively Parallel Processing)](massively-parallel-processing-mpp-architecture.md).
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung in Synapse SQL vertraut sind.  Weitere Informationen finden Sie unter [Azure Synapse Analytics-Architektur](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Was ist eine verteilte Tabelle?
 
@@ -32,7 +32,7 @@ Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich 
 
 Eine andere Tabellenspeicheroption besteht darin, eine kleine Tabelle auf allen Computeknoten zu replizieren. Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md). Eine praktische Entscheidungshilfe für die Wahl einer der drei Optionen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md) unter „Verteilte Tabellen“.
 
-Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
+Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.    Stellen Sie sich beispielsweise die folgenden Fragen:
 
 - Wie groß ist die Tabelle?
 - Wie oft wird die Tabelle aktualisiert?

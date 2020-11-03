@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1833a606f3dbbc9826858bac4f3ba056b5b7ad8a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249364"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369861"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace: Ein Indizierungssubsystem für Apache Spark
 
@@ -410,7 +410,7 @@ FROM T
 WHERE Y = 2
 ```
 
-X kann eine Indexspalte und Y eine eingeschlossene Spalte sein.
+Y kann eine Indexspalte und X eine eingeschlossene Spalte sein.
 
 :::zone pivot = "programming-language-scala"
 
@@ -886,7 +886,7 @@ Die Ausgabe der Ausführung der folgenden Zelle zeigt:
 * Abfrageergebnis, bei dem es sich um einen einzelnen Abteilungsnamen handelt.
 * Abfrageplan, den Spark zur Ausführung der Abfrage verwendet hat.
 
-Im Abfrageplan zeigt der **FileScan**-Operator am unteren Rand des Plans die Datenquelle an, aus der die Datensätze gelesen wurden. Der Speicherort dieser Datei gibt den Pfad zur neuesten Version des Index „deptIndex1“ an. Diese Informationen zeigen, dass Spark gemäß der Abfrage und mithilfe der Hyperspace-Optimierungsregeln zur Laufzeit beschlossen hat, den richtigen Index zu verwerten.
+Im Abfrageplan zeigt der **FileScan** -Operator am unteren Rand des Plans die Datenquelle an, aus der die Datensätze gelesen wurden. Der Speicherort dieser Datei gibt den Pfad zur neuesten Version des Index „deptIndex1“ an. Diese Informationen zeigen, dass Spark gemäß der Abfrage und mithilfe der Hyperspace-Optimierungsregeln zur Laufzeit beschlossen hat, den richtigen Index zu verwerten.
 
 :::zone pivot = "programming-language-scala"
 
@@ -974,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-Ähnlich wie im ersten Beispiel zeigt die Ausgabe der folgenden Zelle die Abfrageergebnisse (Namen von zwei Abteilungen) und den Abfrageplan. Der Speicherort der Datendatei im **FileScan**-Operator zeigt, dass „deptIndex1“ zur Ausführung der Abfrage verwendet wurde.
+Ähnlich wie im ersten Beispiel zeigt die Ausgabe der folgenden Zelle die Abfrageergebnisse (Namen von zwei Abteilungen) und den Abfrageplan. Der Speicherort der Datendatei im **FileScan** -Operator zeigt, dass „deptIndex1“ zur Ausführung der Abfrage verwendet wurde.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1060,7 +1060,7 @@ SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-Die Ausgabe der Ausführung der folgenden Zelle zeigt die Abfrageergebnisse. Dies sind die Namen von 14 Mitarbeitern und der Name der Abteilung, in der die einzelnen Mitarbeiter arbeiten. Der Abfrageplan ist ebenfalls in der Ausgabe enthalten. Beachten Sie, wie die Dateispeicherorte für zwei **FileScan**-Operatoren zeigen, dass Spark die Indizes „empIndex“ und „deptIndex1“ verwendet hat, um die Abfrage auszuführen.
+Die Ausgabe der Ausführung der folgenden Zelle zeigt die Abfrageergebnisse. Dies sind die Namen von 14 Mitarbeitern und der Name der Abteilung, in der die einzelnen Mitarbeiter arbeiten. Der Abfrageplan ist ebenfalls in der Ausgabe enthalten. Beachten Sie, wie die Dateispeicherorte für zwei **FileScan** -Operatoren zeigen, dass Spark die Indizes „empIndex“ und „deptIndex1“ verwendet hat, um die Abfrage auszuführen.
 
 :::zone pivot = "programming-language-scala"
 

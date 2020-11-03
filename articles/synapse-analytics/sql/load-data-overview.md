@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483727"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474664"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Entwerfen einer Strategie für den Azure Synapse SQL-Pool zum Laden von PolyBase-Daten
 
-In herkömmlichen SMP-Data Warehouses wird zum Laden von Daten ein ETL-Prozess (Extrahieren, Transformieren und Laden) verwendet. Der Azure SQL-Pool ist eine Architektur mit massiver Parallelverarbeitung (MPP), die die Vorteile der Skalierbarkeit und Flexibilität von Compute- und Speicherressourcen nutzt. Ein ELT-Prozess (Extrahieren, Laden, Transformieren) kann die Vorteile von MPP nutzen und Ressourcen entfernen, die vor dem Laden zum Transformieren der Daten erforderlich sind.
+In herkömmlichen SMP-Data Warehouses wird zum Laden von Daten ein ETL-Prozess (Extrahieren, Transformieren und Laden) verwendet. Der Azure SQL-Pool ist eine Architektur mit massiver Parallelverarbeitung (MPP), die die Vorteile der Skalierbarkeit und Flexibilität von Compute- und Speicherressourcen nutzt. Ein ELT-Prozess (Extrahieren, Laden, Transformieren) kann die Vorteile von integrierten verteilten Abfrageverarbeitungsfunktionen nutzen und Ressourcen beseitigen, die vor dem Laden zum Transformieren der Daten erforderlich sind.
 
 Auch wenn der SQL-Pool viele Lademethoden unterstützt (u. a. Nicht-PolyBase-Optionen wie BCP und die SQL-BulkCopy-API), stellt PolyBase die schnellste und am besten skalierbare Möglichkeit zum Laden von Daten dar.  PolyBase ist eine Technologie, die über die T-SQL-Sprache auf externe Daten zugreift, die in Azure Blob Storage oder Azure Data Lake Storage gespeichert sind.
 
@@ -112,7 +112,7 @@ So formatieren Sie die Textdateien
 
 ## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. Laden der Daten in die Stagingtabellen des SQL-Pools mithilfe von PolyBase
 
-Es hat sich bewährt, die Daten in eine Stagingtabelle zu laden. Stagingtabellen ermöglichen das Behandeln von Fehlern, ohne die Produktionstabellen zu beeinträchtigen. Eine Stagingtabelle bietet Ihnen außerdem die Möglichkeit, Datentransformationen mit SQL Pool-MPP durchzuführen, bevor die Daten in Produktionstabellen eingefügt werden.
+Es hat sich bewährt, die Daten in eine Stagingtabelle zu laden. Stagingtabellen ermöglichen das Behandeln von Fehlern, ohne die Produktionstabellen zu beeinträchtigen. Eine Stagingtabelle bietet Ihnen außerdem die Möglichkeit, in SQL-Pool integrierte verteilte Abfrageverarbeitungsfunktionen für Datentransformationen zu verwenden, bevor die Daten in Produktionstabellen eingefügt werden.
 
 ### <a name="options-for-loading-with-polybase"></a>Optionen beim Laden mit PolyBase
 

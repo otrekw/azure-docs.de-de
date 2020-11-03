@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202856"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628659"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,9 +24,9 @@ ms.locfileid: "85202856"
 
 Sie können das Aussehen und Verhalten von [selbstbestätigten technischen Profilen](self-asserted-technical-profile.md) anpassen. Azure Active Directory B2C (Azure AD B2C) führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens Cross-Origin Resource Sharing (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen).
 
-Zum Anpassen der Benutzeroberfläche geben Sie im **ContentDefinition**-Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie in dem selbstbestätigten technischen Profil oder in **OrchestrationStep** auf den Bezeichner der Inhaltsdefinition. Die Inhaltsdefinition darf ein **LocalizedResourcesReferences**-Element mit einer Liste der lokalisierten Ressourcen, die geladen werden sollen, enthalten. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an.
+Zum Anpassen der Benutzeroberfläche geben Sie im **ContentDefinition** -Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie in dem selbstbestätigten technischen Profil oder in **OrchestrationStep** auf den Bezeichner der Inhaltsdefinition. Die Inhaltsdefinition darf ein **LocalizedResourcesReferences** -Element mit einer Liste der lokalisierten Ressourcen, die geladen werden sollen, enthalten. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an.
 
-Das **ContentDefinitions**-Element enthält die URLs für HTML5-Vorlagen, die in einer User Journey verwendet werden können. Der HTML5-Seiten-URI wird für einen angegebenen Schritt auf der Benutzeroberfläche verwendet. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Sie können neue Inhaltsdefinitionen nach Ihren Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen im Lokalisierungsbezeichner, der im [Localization](localization.md)-Element angegeben wird, enthalten.
+Das **ContentDefinitions** -Element enthält die URLs für HTML5-Vorlagen, die in einer User Journey verwendet werden können. Der HTML5-Seiten-URI wird für einen angegebenen Schritt auf der Benutzeroberfläche verwendet. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Sie können neue Inhaltsdefinitionen nach Ihren Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen im Lokalisierungsbezeichner, der im [Localization](localization.md)-Element angegeben wird, enthalten.
 
 Das folgende Beispiel zeigt den Bezeichner für die Inhaltsdefinition und die Definition von lokalisierten Ressourcen:
 
@@ -44,7 +44,7 @@ Das folgende Beispiel zeigt den Bezeichner für die Inhaltsdefinition und die De
     ...
 ```
 
-Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWithLogonEmail** enthalten den Bezeichner für die Inhaltsdefinition **ContentDefinitionReferenceId**, der auf `api.localaccountsignup` festgelegt ist.
+Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWithLogonEmail** enthalten den Bezeichner für die Inhaltsdefinition **ContentDefinitionReferenceId** , der auf `api.localaccountsignup` festgelegt ist.
 
 ```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -59,13 +59,13 @@ Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWit
 
 ## <a name="contentdefinition"></a>ContentDefinition
 
-Das **ContentDefinition**-Element enthält das folgende Attribut:
+Das **ContentDefinition** -Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner für eine Inhaltsdefinition. Der Wert wird im Abschnitt **ID für Inhaltsdefinitionen** weiter unten auf dieser Seite beschrieben. |
 
-Das **ContentDefinition**-Element enthält die folgenden Elemente:
+Das **ContentDefinition** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -77,7 +77,7 @@ Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
 ### <a name="datauri"></a>DataUri
 
-Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`. Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
+Das **DataUri** -Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`. Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
 
 | Seitenbezeichner | BESCHREIBUNG |
 | ----- | ----------- |
@@ -111,7 +111,7 @@ Das folgende Beispiel zeigt den **DataUri** von `selfasserted`version`1.2.0`:
 
 #### <a name="migrating-to-page-layout"></a>Migrieren zum Seitenlayout
 
-Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_. Um ein Seitenlayout in Ihren benutzerdefinierten Richtlinien anzugeben, die einen alten **DataUri**-Wert verwenden, verwenden Sie die folgende Tabelle für das Migrieren zum neuen Format.
+Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:b2c:elements: **contract** :page-name:version_. Um ein Seitenlayout in Ihren benutzerdefinierten Richtlinien anzugeben, die einen alten **DataUri** -Wert verwenden, verwenden Sie die folgende Tabelle für das Migrieren zum neuen Format.
 
 | Alter DataUri-Wert | Neuer DataUri-Wert |
 | ----------------- | ----------------- |
@@ -126,16 +126,49 @@ Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **DataUri** für den Seitenvertrag gezeigt: 
+
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
 
 ### <a name="metadata"></a>Metadaten
 
-Das **Metadata**-Element enthält die folgenden Elemente:
+Das **Metadata** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Element | 0:n | Die Metadaten zu der Inhaltsdefinition. |
 
-Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
+Das **Item** -Element des **Metadata** -Elements enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -145,24 +178,24 @@ Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
 Die Inhaltsdefinition unterstützt die folgenden Metadatenelemente:
 
-| Schlüssel | Erforderlich | BESCHREIBUNG |
+| Key | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | DisplayName | Nein | Eine Zeichenfolge, die den Namen der Inhaltsdefinition enthält. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
-Das **LocalizedResourcesReferences**-Element enthält die folgenden Elemente:
+Das **LocalizedResourcesReferences** -Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | Eine Liste mit Verweisen auf lokalisierte Ressourcen für die Inhaltsdefinition. |
 
-Das **LocalizedResourcesReference**-Element enthält die folgenden Attribute:
+Das **LocalizedResourcesReference** -Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Sprache | Ja | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
-| LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources**-Elements. |
+| LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources** -Elements. |
 
 Das folgende Beispiel zeigt eine Inhaltsdefinition für die Registrierung oder Anmeldung mit einem Verweis auf die Lokalisierung für Englisch, Französisch und Spanisch:
 
@@ -186,9 +219,9 @@ Weitere Informationen zum Hinzufügen von Unterstützung für die Lokalisierung 
 
 ## <a name="content-definition-ids"></a>ID für Inhaltsdefinitionen
 
-Das ID-Attribut des **ContentDefinition**-Elements gibt den Typ der Seite an, die mit der Inhaltsdefinition verknüpft ist. Das Element definiert den Kontext, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die vom Identity Experience Framework erkannt werden, und die entsprechenden Seitentypen beschrieben. Sie können eigene Inhaltsdefinitionen mit beliebigen IDs erstellen.
+Das ID-Attribut des **ContentDefinition** -Elements gibt den Typ der Seite an, die mit der Inhaltsdefinition verknüpft ist. Das Element definiert den Kontext, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die vom Identity Experience Framework erkannt werden, und die entsprechenden Seitentypen beschrieben. Sie können eigene Inhaltsdefinitionen mit beliebigen IDs erstellen.
 
-| id | Standardvorlage | BESCHREIBUNG |
+| ID | Standardvorlage | Beschreibung |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite:** zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters:** Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Anmeldung wählen können. Bei den Optionen handelt es sich normalerweise um Unternehmensidentitätsanbieter oder Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |

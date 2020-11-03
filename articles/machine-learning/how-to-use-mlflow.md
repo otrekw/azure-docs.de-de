@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250690"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676644"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Nachverfolgen von Experimentausführungen und Bereitstellen von ML-Modellen mit MLflow und Azure Machine Learning (Vorschauversion)
 
@@ -360,6 +360,9 @@ Beachten Sie Folgendes, falls Sie nicht planen, die protokollierten Metriken und
 ## <a name="example-notebooks"></a>Beispielnotebooks
 
 Die [Notebooks „MLflow mit Azure ML“](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) demonstrieren und erklären die in diesem Artikel vorgestellten Konzepte.
+
+> [!NOTE]
+> Ein Communityrepository mit Beispielen, die MLflow verwenden, finden Sie unter https://github.com/Azure/azureml-examples.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8e4c0174e9f5e1a15fe85d5744ddcb6ee21c4a86
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048269"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461157"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways mit PowerShell
 
@@ -26,7 +26,7 @@ Azure VPN-Gateways ermöglichen standortübergreifende Konnektivität zwischen l
 
 Im folgenden Diagramm sind das virtuelle Netzwerk und das VPN-Gateway dargestellt, die im Rahmen dieses Tutorials erstellt wurden.
 
-![VNet und VPN-Gateway](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
+:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="Diagramm zum VNet- und VPN-Gateway":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -124,7 +124,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 
 Wichtige Parameterwerte:
 * GatewayType: Verwenden Sie **Vpn** für Site-to-Site- und VNET-zu-VNET-Verbindungen.
-* VpnType: Verwenden Sie **RouteBased**, um mit einem größeren Bereich von VPN-Geräten und mehr Routingfeatures zu interagieren.
+* VpnType: Verwenden Sie **RouteBased** , um mit einem größeren Bereich von VPN-Geräten und mehr Routingfeatures zu interagieren.
 * GatewaySku: Die Standardeinstellung ist **VpnGw1**. Ändern Sie diese in eine andere VpnGw-SKU, wenn Sie einen höheren Durchsatz oder mehr Verbindungen benötigen. Weitere Informationen finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 Wenn Sie „TryIt“ verwenden, kann ein Timeout für die Sitzung auftreten. Das ist kein Problem. Das Gateway wird trotzdem erstellt.
@@ -187,4 +187,4 @@ In diesem Tutorial haben Sie Informationen zur grundlegenden Erstellung und Verw
 Fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
-> * [Tutorial: Erstellen und Verwalten von S2S-VPN-Verbindungen mit PowerShell](vpn-gateway-tutorial-vpnconnection-powershell.md)
+> * [Erstellen einer Site-to-Site-Verbindung](vpn-gateway-create-site-to-site-rm-powershell.md)

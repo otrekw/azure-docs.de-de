@@ -3,17 +3,17 @@ title: Einrichten der AWS-Integration mit Azure Cost Management
 description: Dieser Artikel erläutert das Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten in Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/23/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e900d63ba7e521cbf7e63d8580d22b08726d1ef6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266082"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517343"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
@@ -39,14 +39,12 @@ Verwenden Sie die Seite **Cost & Usage Reports** (Kosten- und Nutzungsberichte) 
 6. Wählen Sie für **Data refresh settings** (Datenaktualisierungseinstellungen) aus, ob der AWS-Kosten- und Nutzungsbericht aktualisiert werden soll, wenn AWS nach der abschließenden Bearbeitung Ihrer Rechnung Rückerstattungen, Gutschriften oder Supportgebühren auf Ihrem Konto verbucht. Wenn ein Bericht aktualisiert wird, wird ein neuer Bericht auf Amazon S3 hochgeladen. Es wird empfohlen, die Einstellung aktiviert zu lassen.
 7. Wählen Sie **Weiter** aus.
 8. Wählen Sie für **S3 bucket** (S3-Bucket) die Option **Configure** (Konfigurieren) aus.
-9. Führen Sie im Dialogfeld „Configure S3 Bucket“ (S3-Bucket konfigurieren) eine der folgenden Aufgaben aus:
-    1. Wählen Sie aus der Dropdownliste einen vorhandenen Bucket aus, und wählen Sie dann **Next** (Weiter) aus.
-    2. Geben Sie einen Bucketnamen und die Region ein, in der Sie einen neuen Bucket erstellen möchten, und wählen Sie dann **Next** aus.
-10.    Wählen Sie **I have confirmed that this policy is correct** (Ich habe bestätigt, dass diese Richtlinie richtig ist) aus, und klicken Sie dann auf **Save** (Speichern).
-11.    (Optional) Geben Sie unter „Report path prefix“ (Berichtspfadpräfix) das Berichtspfadpräfix ein, das dem Namen Ihres Berichts vorangestellt werden soll.
+9. Geben Sie im Dialogfeld „Configure S3 Bucket“ (S3-Bucket konfigurieren) einen Bucketnamen und die Region ein, in der Sie einen neuen Bucket erstellen möchten, und wählen Sie **Next** (Weiter) aus.
+10. Wählen Sie **I have confirmed that this policy is correct** (Ich habe bestätigt, dass diese Richtlinie richtig ist) aus, und klicken Sie dann auf **Save** (Speichern).
+11. (Optional) Geben Sie unter „Report path prefix“ (Berichtspfadpräfix) das Berichtspfadpräfix ein, das dem Namen Ihres Berichts vorangestellt werden soll.
 Wenn Sie kein Präfix angeben, ist das Standardpräfix der Name, den Sie für den Bericht angegeben haben. Der Datumsbereich hat das Format `/report-name/date-range/`.
 12. Für **Zeiteinheit** wählen Sie **Stündlich** aus.
-13.    Wählen Sie für **Report versioning** (Berichtsversionsverwaltung) aus, ob neue Berichtsversionen die vorherigen Berichtsversionen überschreiben oder ob zusätzliche neue Berichte erstellt werden sollen.
+13. Wählen Sie für **Report versioning** (Berichtsversionsverwaltung) aus, ob neue Berichtsversionen die vorherigen Berichtsversionen überschreiben oder ob zusätzliche neue Berichte erstellt werden sollen.
 14. Für **Enable data integration for** (Datenintegration aktivieren für) ist keine Auswahl erforderlich.
 15. Für **Komprimierung** wählen Sie die Option **GZIP** aus.
 16. Wählen Sie **Weiter** aus.
@@ -175,7 +173,7 @@ Wenn den Benutzern nach dem Erkennen Connectorberechtigungen zugewiesen werden, 
 
 - [Richten Sie Verwaltungsgruppen ein](../../governance/management-groups/overview.md#initial-setup-of-management-groups), sofern das noch nicht geschehen ist.
 - Stellen Sie sicher, dass Ihrer Bereichsauswahl neue Bereiche hinzugefügt wurden. Wählen Sie **Aktualisieren** aus, um die neuesten Daten anzuzeigen.
-- Wählen Sie auf der Seite **Cloudconnectors** Ihren Connector aus, und klicken Sie auf **Zu Abrechnungskonto wechseln**, um das verknüpfte Konto Verwaltungsgruppen zuzuweisen.
+- Wählen Sie auf der Seite **Cloudconnectors** Ihren Connector aus, und klicken Sie auf **Zu Abrechnungskonto wechseln** , um das verknüpfte Konto Verwaltungsgruppen zuzuweisen.
 
 > [!NOTE]
 > Verwaltungsgruppen werden derzeit nicht für Microsoft-Kundenvereinbarung-Kunden (Microsoft Customer Agreement, MCA) unterstützt. MCA-Kunden können den Connector erstellen und ihre AWS-Daten anzeigen. Allerdings können MCA-Kunden ihre Azure-Kosten und AWS-Kosten nicht zusammen in einer Verwaltungsgruppe anzeigen.

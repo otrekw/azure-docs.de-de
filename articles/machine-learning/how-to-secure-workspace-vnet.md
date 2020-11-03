@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776040"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672865"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Schützen eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken
 
@@ -48,7 +48,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Arbeitsbereichsressourcen 
     - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
 
-    Weitere Informationen zur RBAC in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
+    Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Schützen des Arbeitsbereichs mit privatem Endpunkt
@@ -85,7 +85,12 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
         > [!IMPORTANT]
         > Das Speicherkonto muss sich in demselben virtuellen Netzwerk und Subnetz befinden wie die Compute-Instanzen oder Cluster, die für Training oder Rückschluss verwendet werden.
 
-    1. Aktivieren Sie das Kontrollkästchen __Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben__.
+    1. Aktivieren Sie das Kontrollkästchen __Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben__. Dadurch erhalten nicht alle Azure-Dienste Zugriff auf Ihr Speicherkonto.
+    
+        * Ressourcen einiger Dienste, **die in Ihrem Abonnement registriert sind** , können für bestimmte Vorgänge auf das Speicherkonto **im selben Abonnement** zugreifen. Hierzu zählen beispielsweise das Schreiben von Protokollen und Sicherungsvorgänge.
+        * Ressourcen einiger Dienste kann durch __Zuweisen einer Azure-Rolle__ zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
+
+        Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
     > [!IMPORTANT]
     > Wenn Sie mit dem Azure Machine Learning SDK arbeiten, muss Ihre Entwicklungsumgebung eine Verbindung mit dem Azure Storage-Konto herstellen können. Wenn sich das Speicherkonto innerhalb eines virtuellen Netzwerks befindet, muss die Firewall den Zugriff über die IP-Adresse der Entwicklungsumgebung zulassen.
@@ -281,6 +286,13 @@ Sind diese Anforderungen erfüllt, führen Sie die folgenden Schritte zum Aktivi
     ]
     }
     ```
+
+    Diese Vorlage erstellt einen _privaten Endpunkt_ für den Netzwerkzugriff aus dem Arbeitsbereich auf Ihre ACR. Der folgende Screenshot zeigt ein Beispiel für diesen privaten Endpunkt.
+
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Einstellungen des privaten ACR-Endpunkts":::
+
+    > [!IMPORTANT]
+    > Löschen Sie diesen Endpunkt nicht! Wenn Sie ihn versehentlich löschen, können Sie die Vorlage aus diesem Schritt erneut anwenden, um einen neuen zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

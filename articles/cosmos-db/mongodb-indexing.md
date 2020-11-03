@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282373"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487380"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 
@@ -40,7 +40,10 @@ Bei einer Abfrage werden mehrere Einzelfeldindizes verwendet, soweit verfügbar.
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Zusammengesetzte Indizes (MongoDB-Serverversion 3.6)
 
-Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die Version 3.6 des Wire-Protokolls verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. **Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss.** Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen.
+Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die Version 3.6 des Wire-Protokolls verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen. 
+
+> [!NOTE]
+> Für geschachtelte Eigenschaften oder Arrays können Sie keine zusammengesetzten Indizes erstellen.
 
 Der folgende Befehl erstellt einen zusammengesetzten Index für die Felder `name` und `age`:
 
@@ -59,7 +62,7 @@ Allerdings muss die Reihenfolge der Pfade im zusammengesetzten Index exakt mit d
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> Für geschachtelte Eigenschaften oder Arrays können Sie keine zusammengesetzten Indizes erstellen.
+> Zusammengesetzte Indizes werden nur in Abfragen verwendet, mit denen Ergebnisse sortiert werden. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie mehrere Einzelfeldindizes erstellen.
 
 ### <a name="multikey-indexes"></a>Indizes mit mehreren Schlüsseln
 
@@ -75,7 +78,7 @@ Hier sehen Sie ein Beispiel für das Erstellen eines räumlichen Indexes für da
 
 ### <a name="text-indexes"></a>Textindizes
 
-Derzeit unterstützt die Azure Cosmos DB-API für MongoDB Textindizes noch nicht. Bei Textsuchabfragen für Zeichenfolgen sollten Sie die [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb)-Integration mit Azure Cosmos DB verwenden.
+Derzeit unterstützt die Azure Cosmos DB-API für MongoDB Textindizes noch nicht. Bei Textsuchabfragen für Zeichenfolgen sollten Sie die [Azure Cognitive Search](../search/search-howto-index-cosmosdb.md)-Integration mit Azure Cosmos DB verwenden. 
 
 ## <a name="wildcard-indexes"></a>Platzhalterindizes
 
@@ -131,7 +134,10 @@ So erstellen Sie einen Platzhalterindex für alle Felder:
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-Zu Beginn der Entwicklung kann es hilfreich sein, einen Platzhalterindex für alle Felder zu erstellen. Wenn nach und nach mehr Eigenschaften in einem Dokument indiziert werden, erhöht sich die RU-Gebühr (Request Unit, Anforderungseinheit) für das Schreiben und Aktualisieren des Dokuments. Bei schreibintensiven Workloads empfiehlt es sich daher, Pfade einzeln zu indizieren, anstatt Platzhalterindizes zu verwenden.
+> [!NOTE]
+> Wenn Sie gerade mit der Entwicklung beginnen, wird **dringend** empfohlen, mit einem Platzhalterindex für alle Felder zu beginnen. Dies kann sowohl die Entwicklung als auch die Optimierung von Abfragen vereinfachen.
+
+Dokumente mit vielen Feldern können eine hohe Gebühr für Anforderungseinheiten (Request Unit, RU) für Schreibvorgänge und Updates aufweisen. Bei schreibintensiven Workloads empfiehlt es sich daher, Pfade einzeln zu indizieren, anstatt Platzhalterindizes zu verwenden.
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -335,7 +341,7 @@ Derzeit ist die Erstellung von eindeutigen Indizes nur möglich, wenn die Sammlu
 
 ## <a name="indexing-for-mongodb-version-32"></a>Indizierung für MongoDB-Version 3.2
 
-Bei Azure Cosmos-Konten, die mit Version 3.2 des MongoDB-Wire-Protokolls kompatibel sind, weichen die verfügbaren Indizierungsfeatures und Standardwerte ab. Sie können [die Version Ihres Kontos überprüfen](mongodb-feature-support-36.md#protocol-support). Sie können ein Upgrade auf die Version 3.6 durchführen, indem Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) einreichen.
+Bei Azure Cosmos-Konten, die mit Version 3.2 des MongoDB-Wire-Protokolls kompatibel sind, weichen die verfügbaren Indizierungsfeatures und Standardwerte ab. Sie können [die Version Ihres Kontos überprüfen](mongodb-feature-support-36.md#protocol-support) und [eine Upgrade auf Version 3.6 durchführen](mongodb-version-upgrade.md).
 
 Wenn Sie Version 3.2 verwenden, beachten Sie die in diesem Abschnitt erläuterten wichtigen Unterschiede zu Version 3.6.
 
@@ -352,11 +358,11 @@ Nachdem Sie die Standardindizes gelöscht haben, können Sie zusätzliche Indize
 
 ### <a name="compound-indexes-version-32"></a>Zusammengesetzte Indizes (Version 3.2)
 
-Zusammengesetzte Indizes enthalten Verweise auf mehrere Felder eines Dokuments. Wenn Sie einen zusammengesetzten Index erstellen möchten, führen Sie ein Upgrade auf Version 3.6 durch, indem Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) erstellen.
+Zusammengesetzte Indizes enthalten Verweise auf mehrere Felder eines Dokuments. Wenn Sie einen zusammengesetzten Index erstellen möchten, [führen Sie ein Upgrade auf Version 3.6 durch](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Platzhalterindizes (Version 3.2)
 
-Wenn Sie einen Platzhalterindex erstellen möchten, erstellen Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um ein Upgrade auf die Version 3.6 durchzuführen.
+Wenn Sie einen Platzhalterindex erstellen möchten, [führen Sie ein Upgrade auf Version 3.6 durch](mongodb-version-upgrade.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

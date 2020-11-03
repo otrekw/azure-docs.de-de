@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88539724"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Tutorial: Azure Active Directory-Integration mit Signagelive
 
@@ -27,7 +27,7 @@ Die Integration von Signagelive in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Signagelive anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md). Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,11 +52,11 @@ Führen Sie die folgenden Schritte aus, um Signagelive über den Katalog hinzuzu
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um Signagelive über den Katalog hinzuzu
 
      ![Signagelive in der Ergebnisliste](common/search-new-app.png)
 
-5. Wählen Sie im Ergebnisbereich **Signagelive** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+5. Wählen Sie im Ergebnisbereich **Signagelive** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -94,7 +94,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Signagel
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Signagel
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Signagelive-Client](mailto:support@signagelive.com), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen. Speichern Sie das Zertifikat anschließend auf Ihrem Computer.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende Zertifikat ( **Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen. Speichern Sie das Zertifikat anschließend auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/certificateraw.png)
 
@@ -129,7 +129,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von Signagelive müssen Sie
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -145,7 +145,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
     b. Geben Sie im Feld **Benutzername** die Zeichenfolge „brittasimon@yourcompanydomain.extension“ ein. In diesem Fall können Sie beispielsweise „BrittaSimon@contoso.com“ eingeben.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie den Wert im Feld „Kennwort“.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie den Wert im Feld „Kennwort“.
 
     d. Klicken Sie auf **Erstellen**.
 
@@ -153,7 +153,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Signagelive gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**, danach **Alle Anwendungen** und dann **Signagelive** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** , danach **Alle Anwendungen** und dann **Signagelive** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -177,19 +177,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-a-signagelive-test-user"></a>Erstellen eines Signagelive-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Signagelive einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Signagelive-Plattform vom  [Signagelive-Supportteam](mailto:support@signagelive.com) unterstützen. Sie müssen Benutzer erstellen und aktivieren, bevor Sie einmaliges Anmelden verwenden.
+In diesem Abschnitt erstellen Sie in Signagelive einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Signagelive-Plattform vom [Signagelive-Supportteam](mailto:support@signagelive.com) unterstützen. Sie müssen Benutzer erstellen und aktivieren, bevor Sie einmaliges Anmelden verwenden.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
 
-Wenn Sie im Portal „Meine Apps“ auf die Kachel **Signagelive** klicken, sollten Sie automatisch angemeldet werden. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Was ist das Portal „Meine Apps“?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Portal „Meine Apps“ auf die Kachel **Signagelive** klicken, sollten Sie automatisch angemeldet werden. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Was ist das Portal „Meine Apps“?](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

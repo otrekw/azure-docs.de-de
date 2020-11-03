@@ -1,20 +1,23 @@
 ---
-title: IIS-Protokolle in Azure Monitor | Microsoft-Dokumentation
+title: Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
 description: IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt werden können.  In diesem Artikel wird erläutert, wie Sie das Sammeln von IIS-Protokollen konfigurieren. Darüber hinaus enthält der Artikel Details zu den Datensätzen, die in Azure Monitor erstellt werden.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008182"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461191"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Sammeln von IIS-Protokollen in Azure Monitor
-IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt und als [Protokolldaten](data-platform.md) gespeichert werden können.
+# <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
+IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die vom Log Analytics-Agent gesammelt und in [Azure Monitor-Protokollen](data-platform.md) gespeichert werden können.
+
+> [!IMPORTANT]
+> In diesem Artikel wird das Sammeln von IIS-Protokollen mit dem [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![IIS-Protokolle](media/data-sources-iis-logs/overview.png)
 
@@ -23,7 +26,7 @@ Azure Monitor sammelt Einträge aus von IIS erstellten Protokolldateien. Daher m
 
 Azure Monitor unterstützt nur IIS-Protokolldateien im W3C-Format, aber keine benutzerdefinierten Felder oder die erweiterte IIS-Protokollierung. Protokolle im NCSA- oder nativen IIS-Format werden nicht gesammelt.
 
-IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellungen](agent-data-sources.md#configuring-data-sources) konfiguriert werden.  Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln**ist keine Konfiguration erforderlich.
+IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellungen](agent-data-sources.md#configuring-data-sources) für den Log Analytics-Agent konfiguriert werden.  Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln** ist keine Konfiguration erforderlich.
 
 
 ## <a name="data-collection"></a>Datensammlung

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551893"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514536"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Trend Micro Web Security (TMWS)
 
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Trend Micro Web Security (TMWS) in Azur
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei TMWS anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Zunächst benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * TMWS unterstützt SP-initiiertes einmaliges Anmelden.
-* Nach dem Konfigurieren von TMWS können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. Informationen zum Erzwingen der Sitzungssteuerung mithilfe von Microsoft Cloud App Security finden Sie unter [Integrieren und Bereitstellen der App-Steuerung für bedingten Zugriff für beliebige Apps](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nach dem Konfigurieren von TMWS können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. Informationen zum Erzwingen der Sitzungssteuerung mithilfe von Microsoft Cloud App Security finden Sie unter [Integrieren und Bereitstellen der App-Steuerung für bedingten Zugriff für beliebige Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-tmws-from-the-gallery"></a>Hinzufügen von TMWS über den Katalog
 
@@ -70,7 +70,7 @@ Führen Sie die folgenden grundlegenden Schritte aus, um das einmalige Anmelden 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Trend Micro Web Security (TMWS)** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Trend Micro Web Security (TMWS)** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten:
 
@@ -116,17 +116,17 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** Folgendes ein: `B.Simon`.  
-   1. Geben Sie im Feld **Benutzername** den Namen ***Benutzername *@* IhreUnternehmensdomäne *.* Erweiterung*** ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+   1. Geben Sie im Feld **Benutzername** den Namen * *_Benutzername_@* IhreUnternehmensdomäne *.* Erweiterung*** ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="grant-the-azure-ad-test-user-access-to-tmws"></a>Gewähren des Zugriffs auf TMWS für den Azure AD-Testbenutzer
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf TMWS gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Trend Micro Web Security (TMWS)** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus:
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus:
 
    ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
 
@@ -224,21 +224,20 @@ Nachdem Sie den Azure AD-Dienst konfiguriert und Azure AD als Methode für die
 
 1. Rufen Sie eine beliebige Website im Internet auf. TMWS leitet Sie an das Captive Portal von TMWS weiter.
 
-1. Geben Sie ein Active Directory-Konto (Format: *domain*\\*sAMAccountName* oder *sAMAccountName*@*domain*), eine E-Mail-Adresse oder einen UPN an, und wählen Sie dann **Log On** (Anmelden) aus. TMWS leitet Sie zum Azure AD-Anmeldefenster weiter.
+1. Geben Sie ein Active Directory-Konto (Format: *domain*\\*sAMAccountName* oder *sAMAccountName*@*domain* ), eine E-Mail-Adresse oder einen UPN an, und wählen Sie dann **Log On** (Anmelden) aus. TMWS leitet Sie zum Azure AD-Anmeldefenster weiter.
 
 1. Geben Sie im Azure AD-Anmeldefenster die Anmeldeinformationen für das Azure AD-Konto ein. Sie sollten jetzt bei TMWS angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
 
 - [Trend Micro Web Security mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716079"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486388"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -104,7 +104,7 @@ Für die Authentifizierung mit lokalen AD DS müssen Sie Ihren AD-Domänencontro
 
 Das folgende Diagramm stellt die lokale AD DS-Authentifizierung für Azure-Dateifreigaben über SMB dar. Die lokale AD DS-Instanz muss mithilfe Azure AD Connect-Synchronisierung mit Azure AD synchronisiert werden. Nur Hybridbenutzer, die sowohl in der lokalen AD DS-Instanz als auch in Azure AD vorhanden sind, können authentifiziert und für den Zugriff auf Azure-Dateienfreigaben autorisiert werden. Dies liegt daran, dass die Berechtigung auf Freigabeebene mit der in Azure AD dargestellten Identität konfiguriert ist, wo die Berechtigung auf Verzeichnis-/Dateibene damit in AD DS erzwungen wird. Stellen Sie sicher, dass Sie die Berechtigungen mit demselben Hybridbenutzer ordnungsgemäß konfigurieren.
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagramm":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagramm der lokalen AD DS-Authentifizierung für Azure-Dateifreigaben über SMB":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 

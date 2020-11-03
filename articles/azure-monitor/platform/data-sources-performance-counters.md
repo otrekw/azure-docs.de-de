@@ -1,25 +1,28 @@
 ---
-title: Sammeln und Analysieren von Leistungsindikatoren in Azure Monitor | Microsoft-Dokumentation
+title: Datenquellen für das Sammeln von Windows- und Linux-Leistungsdaten mit dem Log Analytics-Agent in Azure Monitor
 description: Leistungsindikatoren werden von Azure Monitor gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im Arbeitsbereich gespeichert werden und wie sie im Azure-Portal analysiert werden können.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/21/2020
+ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131189"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461361"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
-Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows- und Linux-Leistungsdaten mit dem Log Analytics-Agent
+Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren von Log Analytics-Agents abrufen, um Analysen in Quasi-Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
+
+> [!IMPORTANT]
+> In diesem Artikel wird das Sammeln von Leistungsdaten mit dem [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![Leistungsindikatoren](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
-Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in den erweiterten Einstellungen](agent-data-sources.md#configuring-data-sources).
+Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in „Erweiterte Einstellungen“](agent-data-sources.md#configuring-data-sources) für den Log Analytics-Arbeitsbereich.
 
 Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen neuen Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen.  Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.  Stellen Sie sicher, dass alle Leistungsindikatoren aktiviert sind, die Sie anfänglich erstellen möchten, und klicken Sie dann auf **Ausgewählte Leistungsindikatoren hinzufügen**.
 
@@ -51,7 +54,7 @@ Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzu
 
 Gehen Sie folgendermaßen vor, um einen neuen Linus-Leistungsindikator hinzuzufügen, aus dem Daten gesammelt werden sollen.
 
-1. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agenten ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*, und führen Sie die folgenden Anleitungen aus.
+1. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agenten ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden* , und führen Sie die folgenden Anleitungen aus.
 2. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  
 3. Klicken Sie auf **+** oder drücken Sie die **EINGABETASTE** um den Indikator der Liste der anderen Leistungsindikatoren für das Objekt hinzuzufügen.
 4. Alle Leistungsindikatoren für ein Objekt verwenden das gleiche **Stichprobenintervall**.  Der Standardwert ist 10 Sekunden.  Sie können einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
@@ -78,7 +81,7 @@ Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle besc
 | Parameter | BESCHREIBUNG |
 |:--|:--|
 | object\_name | Der Objektname für die Sammlung. |
-| instance\_regex |  Ein *regulärer Ausdruck*, der definiert, welche Instanzen gesammelt werden sollen. Der Wert `.*` gibt alle Instanzen an. Sie können `_Total` angeben, um die Prozessormetriken nur für die Instanz „\_Total“ zu sammeln. Sie können `(crond\|sshd)`angeben, um die Prozessmetriken nur für die „crond“- oder „sshd“-Instanzen zu sammeln. |
+| instance\_regex |  Ein *regulärer Ausdruck* , der definiert, welche Instanzen gesammelt werden sollen. Der Wert `.*` gibt alle Instanzen an. Sie können `_Total` angeben, um die Prozessormetriken nur für die Instanz „\_Total“ zu sammeln. Sie können `(crond\|sshd)`angeben, um die Prozessmetriken nur für die „crond“- oder „sshd“-Instanzen zu sammeln. |
 | counter\_name\_regex | Ein *regulärer Ausdruck* für die zu sammelnden Leistungsindikatoren (für das Objekt). Geben Sie `.*`an, um alle Indikatoren für das Objekt zu sammeln. Um nur Indikatoren für Speicherauslagerungsbereiche zu sammeln, können Sie beispielsweise `.+Swap.+` angeben |
 | interval | Häufigkeit, mit der die Indikatoren des Objekts gesammelt werden. |
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310915"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372292"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Erstellen des Azure Arc-Datencontrollers
 
@@ -39,13 +39,13 @@ Derzeit werden die folgenden Kubernetes-Dienste und -Distributionen unterstützt
 > * Die unterstützte Mindestversion von Kubernetes ist v1.14.
 > * Unter [Konnektivitätsanforderungen](connectivity.md) erfahren Sie, welche Konnektivität zwischen Ihrer Umgebung und Azure erforderlich ist.
 > * Informationen zum Konfigurieren Ihres beständigen Speichers finden Sie in der [Anleitung zur Speicherkonfiguration](storage-configuration.md).
-> * Wenn Sie Azure Kubernetes Service verwenden, muss die Größe der Workerknoten-VM Ihres Clusters mindestens **Standard_D8s_v3** betragen, und der Cluster muss **Premium-Datenträger** nutzen. 
+> * Wenn Sie Azure Kubernetes Service verwenden, muss die Größe der Workerknoten-VM Ihres Clusters mindestens **Standard_D8s_v3** betragen, und der Cluster muss **Premium-Datenträger** nutzen. Der Cluster sollte sich nicht über mehrere Verfügbarkeitszonen hinweg ausdehnen. 
 > * Wenn Sie eine andere Kubernetes-Distribution oder einen anderen Kubernetes-Dienst verwenden, sollten Sie sicherstellen, dass der Knoten eine Mindestgröße von 8 GB RAM und 4 Kerne umfasst und dass auf allen Kubernetes-Knoten eine Gesamtkapazität von 32 GB RAM zur Verfügung steht. Beispielsweise können Sie über einen Knoten mit 32 GB RAM und 4 Kernen oder über zwei Knoten mit jeweils 16 GB RAM und vier Kernen verfügen.
 
 > [!NOTE]
 > Bei Verwendung von Red Hat OpenShift Container Platform in Azure empfiehlt es sich, die neueste verfügbare Version zu verwenden.
 
-Abhängig von der gewählten Option sind bestimmte Tools _erforderlich_ . Es wird jedoch empfohlen, [alle Clienttools zu installieren](./install-client-tools.md), bevor Sie mit der Erstellung des Azure Arc-Datencontrollers beginnen.
+Abhängig von der gewählten Option sind bestimmte Tools _erforderlich_. Es wird jedoch empfohlen, [alle Clienttools zu installieren](./install-client-tools.md), bevor Sie mit der Erstellung des Azure Arc-Datencontrollers beginnen.
 
 Unabhängig von der gewählten Option müssen Sie während der Erstellung die folgenden Informationen angeben:
 

@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132362"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460681"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
 In diesem Artikel werden allgemeine Schritte zum Übertragen von Azure-Abonnements zwischen Cloud Solution Provider-Partnern (CSP-Partnern) und ihren Kunden beschrieben. Die hier aufgeführten Informationen sollen den Azure-Abonnenten bei der Koordination mit dem Partner unterstützen. Die Informationen, die Microsoft-Partner für den Übertragungsprozess verwenden, werden in [Erfahren Sie, wie Sie die Azure-Abonnements eines Kunden auf einen anderen Partner übertragen](/partner-center/switch-azure-subscriptions-to-a-different-partner) beschrieben.
+
+Bevor Sie eine Übertragungsanforderung starten, sollten Sie alle Kosten- und Abrechnungsinformationen herunterladen oder exportieren, die Sie behalten möchten. Abrechnungs- und Nutzungsinformationen werden nicht mit dem Abonnement übertragen. Weitere Informationen zum Exportieren von Cost Management-Daten finden Sie unter [Erstellen und Verwalten von exportierten Daten](../costs/tutorial-export-acm-data.md). Weitere Informationen zum Herunterladen Ihrer Rechnungs- und Nutzungsdaten finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](download-azure-invoice-daily-usage-date.md).
+
+Wenn Sie bereits über Reservierungen verfügen, sind diese nach der Übertragung eines Abonnements nicht mehr gültig. Achten Sie darauf, [alle Reservierungen zu stornieren und zu erstatten](../reservations/exchange-and-refund-azure-reservations.md), bevor Sie ein Abonnement übertragen.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Übertragen von Enterprise Agreement-Abonnements auf einen CSP-Partner
 

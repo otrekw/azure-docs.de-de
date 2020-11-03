@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965147"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424578"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, was die kombinierte Registrierung von Sicher
 
 Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die [Benutzerdokumentation](../user-help/security-info-setup-signin.md) heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
 
-Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nationale Clouds wie Azure US Government, Azure Deutschland oder Azure China 21Vianet derzeit nicht verfügbar.
+Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nationale Clouds wie Azure Deutschland oder Azure China 21Vianet derzeit nicht verfügbar. Sie ist jedoch für Azure US Government verfügbar.
 
 > [!IMPORTANT]
 > Benutzern, die für die ursprüngliche Vorschau und für die erweiterte kombinierte Registrierungsumgebung aktiviert sind, wird das neue Verhalten angezeigt. Benutzern, die für beide Umgebungen aktiviert sind, wird nur die neue Umgebung „Mein Profil“ angezeigt. Die neue Oberfläche *Mein Profil* entspricht dem Erscheinungsbild der kombinierten Registrierung und bietet Benutzern eine nahtlose Umgebung. Benutzer können „Mein Profil“ anzeigen, indem sie zu [https://myprofile.microsoft.com](https://myprofile.microsoft.com) navigieren.
