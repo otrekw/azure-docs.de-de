@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119309"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896989"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Tutorial: Verwenden von Bedingungen in ARM-Vorlagen
 
@@ -88,7 +88,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 1. Ersetzen Sie die drei **variables('storageAccountName')** in der gesamten Vorlage durch **parameters('storageAccountName')** .
 1. Entfernen Sie die folgende Variablendefinition:
 
-    ![Diagramm der Bedingungen zum Verwenden der Resource Manager-Vorlage](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Der Screenshot hebt die Variablendefinitionen hervor, die Sie entfernen müssen.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. Fügen Sie am Anfang des Parameterabschnitts die folgenden beiden Parameter hinzu:
 
@@ -105,7 +105,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
     },
     ```
 
-    Drücken Sie **[ALT]+[UMSCHALT]+ F**, um die Vorlage in Visual Studio Code zu formatieren.
+    Drücken Sie **[ALT]+[UMSCHALT]+ F** , um die Vorlage in Visual Studio Code zu formatieren.
 
     Die aktualisierte Parameterdefinition sieht wie folgt aus:
 
@@ -121,7 +121,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
     Die aktualisierte Speicherkontodefinition sieht wie folgt aus:
 
-    ![Resource Manager-Nutzungsbedingung](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![Der Screenshot zeigt die aktualisierte Speicherkontodefinition.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. Aktualisieren Sie die Eigenschaft **storageUri** der VM-Ressourcendefinition mit dem folgenden Wert:
 
     ```json

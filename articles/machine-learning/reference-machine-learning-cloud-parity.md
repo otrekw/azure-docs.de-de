@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892970"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426525"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Sovereign Cloud-Parität für Azure Machine Learning
 
@@ -122,7 +122,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | Root- und SSH-Zugriff auf Computeressourcen                                          | YES | YES |  |
 | Gewährleisten der Sicherheit bereitgestellter Systeme (Instanzen, Endpunkte usw.) – einschließlich Endpunktschutz, Patches und Protokollierung |  PARTIAL|  PARTIAL |ACI hinter VNET und privatem Endpunkt derzeit nicht verfügbar |                                  
 | Steuern (Deaktivieren/Einschränken/Beschränken) der Nutzung der ACI-/AKS-Integration                    | PARTIAL| PARTIAL |ACI hinter VNET und privatem Endpunkt derzeit nicht verfügbar|
-| Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC): Erstellung benutzerdefinierter Rollen                           | YES | YES |  |
+| Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC): Erstellung benutzerdefinierter Rollen                           | YES | YES |  |
 | Steuern des Zugriffs auf die vom ML-Dienst verwendeten ACR-Images (von Azure bereitgestellt/verwaltet versus benutzerdefiniert)  |PARTIAL|  PARTIAL | ACR hinter privatem Endpunkt und VNET wird in Azure Government nicht unterstützt. |
 | **Allgemeine Verwendung des Machine Learning-Diensts** |  | | |
 | Möglichkeit zur Verwendung einer Entwicklungsumgebung, um ein Modell zu erstellen, zu trainieren, als Endpunkt zu hosten und über eine Web-App zu nutzen     | YES | YES |  |

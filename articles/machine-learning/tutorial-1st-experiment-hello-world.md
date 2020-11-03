@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372543"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895884"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ (Teil 2 von 4)
 
 In diesem Tutorial erfahren Sie, wie das Azure Machine Learning SDK für Python verwendet wird, um ein Python-Skript „Hello World“ zu übermitteln und auszuführen.
 
-Dieses Tutorial ist *Teil 2 einer vierteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten Ihres lokalen Computers für Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
+Dieses Tutorial ist *Teil 2 einer vierteiligen Tutorialreihe* , in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten Ihres lokalen Computers für Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
 
 In diesem Tutorial wird Folgendes vermittelt:
 
@@ -142,6 +142,9 @@ Führen Sie Ihr Steuerungsskript aus, das seinerseits `hello.py` auf dem Compute
 ```bash
 python 03-run-hello.py
 ```
+
+> [!TIP]
+> Wenn Sie beim Ausführen dieses Codes den Fehler erhalten, dass Sie keinen Zugriff auf das Abonnement haben, finden Sie Informationen zu Authentifizierungsoptionen unter [Herstellen einer Verbindung mit einem Arbeitsbereich](how-to-manage-workspace.md?tab=python#connect-multi-tenant).
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Überwachen Ihres Codes in der Cloud mithilfe von Studio
 

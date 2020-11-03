@@ -1,5 +1,5 @@
 ---
-title: Unternehmenssicherheit
+title: Unternehmenssicherheit und -governance
 titleSuffix: Azure Machine Learning
 description: 'Verwenden Sie Azure Machine Learning sicher: Authentifizierung, Autorisierung, Netzwerksicherheit, Datenverschlüsselung und Überwachung.'
 services: machine-learning
@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b45c5cd1a750ee4b3f182920c4ee2f2e47756867
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207936"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899316"
 ---
-# <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
+# <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
 In diesem Artikel lernen Sie Sicherheitsfeatures kennen, die für Azure Machine Learning zur Verfügung stehen.
 
-Wenn Sie einen Clouddienst verwenden, empfiehlt es sich, den Zugriff auf die Benutzer zu beschränken, die ihn benötigen. Als Erstes sollten Sie dabei das vom Dienst verwendete Authentifizierungs- und Autorisierungsmodell kennenlernen. Ggf. ist es auch erforderlich, den Zugriff auf das Netzwerk einzuschränken oder Ressourcen in Ihrem lokalen Netzwerk sicher mit der Cloud zu verknüpfen. Datenverschlüsselung ist auch von zentraler Bedeutung, sowohl im Ruhezustand als auch während des Verschiebens der Daten zwischen Diensten. Schließlich müssen Sie in der Lage sein, den Dienst zu überwachen und ein Überwachungsprotokoll aller Aktivitäten zu erstellen.
+Wenn Sie einen Clouddienst verwenden, empfiehlt es sich, den Zugriff auf die Benutzer zu beschränken, die ihn benötigen. Als Erstes sollten Sie dabei das vom Dienst verwendete Authentifizierungs- und Autorisierungsmodell kennenlernen. Ggf. ist es auch erforderlich, den Zugriff auf das Netzwerk einzuschränken oder Ressourcen in Ihrem lokalen Netzwerk sicher mit der Cloud zu verknüpfen. Datenverschlüsselung ist auch von zentraler Bedeutung, sowohl im Ruhezustand als auch während des Verschiebens der Daten zwischen Diensten. Möglicherweise möchten Sie auch Richtlinien zur Erzwingung bestimmter Konfigurationen erstellen oder protokollieren, wenn nicht konforme Konfigurationen erstellt werden. Schließlich müssen Sie in der Lage sein, den Dienst zu überwachen und ein Überwachungsprotokoll aller Aktivitäten zu erstellen.
 
 > [!NOTE]
 > Die Informationen in diesem Artikel arbeiten mit dem Azure Machine Learning Python-SDK Version 1.0.83.1 oder höher.
@@ -158,12 +158,7 @@ Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden
         > [!NOTE]
         > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Diese Cosmos DB-Instanz wird zusammen mit benötigten Ressourcen in einer von Microsoft verwalteten Ressourcengruppe in Ihrem Abonnement erstellt. Die verwaltete Ressourcengruppe wird im Format `<AML Workspace Resource Group Name><GUID>` benannt. Wenn im Azure Machine Learning-Arbeitsbereich ein privater Endpunkt verwendet wird, wird auch ein virtuelles Netzwerk für die Cosmos DB-Instanz erstellt. Dieses VNet wird zum Sichern der Kommunikation zwischen Cosmos DB und Azure Machine Learning verwendet.
-
-> [!IMPORTANT]
-> * Löschen Sie die Ressourcengruppe, die diese Cosmos DB Instanz enthält, und Ressourcen, die automatisch in dieser Gruppe erstellt wurden, nicht. Wenn Sie die Ressourcengruppe, die Cosmos DB-Instanz usw. löschen müssen, müssen Sie den Azure Machine Learning-Arbeitsbereich löschen, der diese verwendet. Die Ressourcengruppe, die Cosmos DB-Instanz und andere automatisch erstellte Ressourcen werden gelöscht, wenn der zugehörige Arbeitsbereich gelöscht wird.
-> * Die standardmäßigen [__Anforderungseinheiten__](../cosmos-db/request-units.md) für dieses Cosmos-DB-Konto sind auf __8000__ festgelegt. Die Änderung dieses Werts wird nicht unterstützt.
-> * Sie können kein eigenes VNet für die Verwendung mit der erstellten Cosmos DB-Instanz bereitstellen. Außerdem ist es nicht möglich, das virtuelle Netzwerk zu ändern. Beispielsweise können Sie den verwendeten IP-Adressbereich nicht ändern.
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Wenn Sie Ihren Schlüssel __rotieren oder widerrufen__ müssen, können Sie dies jederzeit veranlassen. Wenn ein Schlüssel rotiert wird, beginnt Cosmos DB, den neuen Schlüssel (neueste Version) zur Verschlüsselung der ruhenden Daten zu verwenden. Wenn ein Schlüssel widerrufen (deaktiviert) wird, kümmert sich Cosmos DB um fehlgeschlagene Anforderungen. Normalerweise dauert es eine Stunde, bis die Rotation oder der Widerruf wirksam wird.
 
@@ -183,6 +178,7 @@ Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung Ihrer A
 Ein Beispiel für die Erstellung eines Arbeitsbereichs unter Verwendung einer bestehenden Azure Container Registry finden Sie in den folgenden Artikeln:
 
 * [Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI](how-to-manage-workspace-cli.md).
+* [Erstellen eines Arbeitsbereichs mit dem Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace).
 * [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Azure Container Instances
@@ -370,8 +366,8 @@ Es folgen die Details:
 
 [Azure Policy](/azure/governance/policy) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
-* **Kundenseitig verwalteter Schlüssel**: Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
-* **Private Link**: Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
+* **Kundenseitig verwalteter Schlüssel** : Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
+* **Private Link** : Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
 
 Weitere Informationen zu Azure Policy finden Sie in der [Dokumentation zu Azure Policy](/azure/governance/policy/overview).
 

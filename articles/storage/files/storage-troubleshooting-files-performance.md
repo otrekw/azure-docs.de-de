@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707593"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426469"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -70,7 +70,7 @@ Wenn die Anwendung, die vom Kunden verwendet wird, eine Singlethread-Anwendung i
 ### <a name="solution"></a>Lösung
 
 - Erhöhen Sie die Parallelität Ihrer Anwendung, indem Sie die Anzahl von Threads erhöhen.
-- Wechseln Sie zu Anwendungen, in denen Parallelität möglich ist. Für Kopiervorgänge könnten Kunden z. B. „AzCopy“ oder „RoboCopy“ von Windows-Clients oder den **parallel**-Befehl auf Linux-Clients verwenden.
+- Wechseln Sie zu Anwendungen, in denen Parallelität möglich ist. Für Kopiervorgänge könnten Kunden z. B. „AzCopy“ oder „RoboCopy“ von Windows-Clients oder den **parallel** -Befehl auf Linux-Clients verwenden.
 
 ## <a name="very-high-latency-for-requests"></a>Sehr hohe Latenz für Anforderungen
 
@@ -102,8 +102,8 @@ Dies ist ein bekanntes Problem mit der Implementierung des SMB-Clients unter Lin
 ### <a name="workaround"></a>Problemumgehung
 
 - Verteilen Sie die Last auf mehrere virtuelle Computer.
-- Verwenden Sie auf einem virtuellen Computer mehrere Bereitstellungspunkte mit der **nosharesock**-Option, und verteilen Sie die Last auf diese Bereitstellungspunkte.
-- Versuchen Sie unter Linux, die Einbindung mit der Option **nostrictsync** durchzuführen, um eine SMB-Leerung bei jedem Aufruf von **fsync** zu vermeiden. Für Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz, kann jedoch zu veralteten Dateimetadaten in der Verzeichnisauflistung (Befehl **ls -l**) führen. Durch direktes Abfragen von Metadaten der Datei (Befehl **stat**) werden die aktuellsten Dateimetadaten zurückgegeben.
+- Verwenden Sie auf einem virtuellen Computer mehrere Bereitstellungspunkte mit der **nosharesock** -Option, und verteilen Sie die Last auf diese Bereitstellungspunkte.
+- Versuchen Sie unter Linux, die Einbindung mit der Option **nostrictsync** durchzuführen, um eine SMB-Leerung bei jedem Aufruf von **fsync** zu vermeiden. Für Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz, kann jedoch zu veralteten Dateimetadaten in der Verzeichnisauflistung (Befehl **ls -l** ) führen. Durch direktes Abfragen von Metadaten der Datei (Befehl **stat** ) werden die aktuellsten Dateimetadaten zurückgegeben.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hohe Latenzen bei metadatenorientierten hohen Arbeitslasten, die sich aus umfangreichen Öffnen-/Schließen-Vorgängen ergeben.
 
@@ -177,17 +177,17 @@ Zugriffe auf Azure-Dateien haben für E/A-intensive Workloads eine höhere Laten
 
 1. Navigieren Sie im **Azure-Portal** zu Ihrem **Speicherkonto**.
 2. Klicken Sie im Abschnitt „Überwachung“ auf **Warnungen** und anschließend auf **+ Neue Warnungsregel**.
-3. Klicken Sie auf **Ressource bearbeiten**, wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos z. B. „contoso“ lautet, wählen Sie die Ressource „contoso/datei“ aus.
-4. Klicken Sie auf **Bedingung auswählen**, um eine Bedingung hinzuzufügen.
+3. Klicken Sie auf **Ressource bearbeiten** , wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos z. B. „contoso“ lautet, wählen Sie die Ressource „contoso/datei“ aus.
+4. Klicken Sie auf **Bedingung auswählen** , um eine Bedingung hinzuzufügen.
 5. Wählen Sie in der daraufhin angezeigten Liste der für das Speicherkonto unterstützten Signale die Metrik **Transaktionen** aus.
-6. Klicken Sie auf dem Blatt **Signallogik konfigurieren** auf das Dropdownmenü **Dimensionsname**, und wählen Sie **Antworttyp** aus.
-7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie **SuccessWithThrottling** (für SMB) oder **ClientThrottlingError** (für REST) aus.
+6. Klicken Sie auf dem Blatt **Signallogik konfigurieren** auf das Dropdownmenü **Dimensionsname** , und wählen Sie **Antworttyp** aus.
+7. Klicken Sie auf die Dropdownliste **Dimensionswerte** , und wählen Sie **SuccessWithThrottling** (für SMB) oder **ClientThrottlingError** (für REST) aus.
 
   > [!NOTE]
-  > Wenn der Dimensionswert „SuccessWithThrottling“ oder „ClientThrottlingError“ nicht angezeigt wird, bedeutet dies, dass die Ressource nicht gedrosselt wurde. Klicken Sie zum Hinzufügen des Dimensionswerts neben der Dropdownliste **Dimensionswerte** auf **Benutzerdefinierten Wert hinzufügen**, geben Sie **SuccessWithThrottling** oder **ClientThrottlingError** ein, klicken Sie auf **OK**, und wiederholen Sie anschließend Schritt 7.
+  > Wenn der Dimensionswert „SuccessWithThrottling“ oder „ClientThrottlingError“ nicht angezeigt wird, bedeutet dies, dass die Ressource nicht gedrosselt wurde. Klicken Sie zum Hinzufügen des Dimensionswerts neben der Dropdownliste **Dimensionswerte** auf **Benutzerdefinierten Wert hinzufügen** , geben Sie **SuccessWithThrottling** oder **ClientThrottlingError** ein, klicken Sie auf **OK** , und wiederholen Sie anschließend Schritt 7.
 
-8. Klicken Sie auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
-9. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
+8. Klicken Sie auf die Dropdownliste **Dimensionsname** , und wählen Sie **Dateifreigabe** aus.
+9. Klicken Sie auf die Dropdownliste **Dimensionswerte** , und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
 
   > [!NOTE]
   > Handelt es sich bei der Dateifreigabe um eine Standarddateifreigabe, wählen Sie **Alle aktuellen und zukünftigen Werte** aus. Die Dateifreigaben werden in der Dropdownliste mit den Dimensionswerten nicht aufgeführt, da für Standarddateifreigaben keine freigabespezifischen Metriken zur Verfügung stehen. Die Drosselung von Warnungen für Standarddateifreigaben wird ausgelöst, wenn eine Dateifreigabe im Speicherkonto gedrosselt wird und die Warnung nicht identifiziert, welche Freigabe gedrosselt wurde. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
@@ -197,9 +197,9 @@ Zugriffe auf Azure-Dateien haben für E/A-intensive Workloads eine höhere Laten
   > [!TIP]
   > Bei Verwendung eines statischen Schwellenwerts kann das Metrikdiagramm bei der Ermittlung eines sinnvollen Schwellenwerts helfen, wenn die Dateifreigabe gerade gedrosselt wird. Falls Sie einen dynamischen Schwellenwert verwenden, zeigt das Metrikdiagramm die berechneten Schwellenwerte basierend auf aktuellen Daten an.
 
-11. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
-12. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
-13. Klicken Sie auf **Warnungsregel erstellen**, um die Warnung zu erstellen.
+11. Klicken Sie auf **Aktionsgruppe auswählen** , um der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+12. Geben Sie die **Warnungsdetails** wie **Warnungsregelname** , **Beschreibung** und **Schweregrad** ein.
+13. Klicken Sie auf **Warnungsregel erstellen** , um die Warnung zu erstellen.
 
 Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
@@ -207,23 +207,23 @@ Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Si
 
 1. Navigieren Sie im **Azure-Portal** zu Ihrem **Speicherkonto**.
 2. Klicken Sie im Abschnitt „Überwachung“ auf **Warnungen** und anschließend auf **+ Neue Warnungsregel**.
-3. Klicken Sie auf **Ressource bearbeiten**, wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos z. B. „contoso“ lautet, wählen Sie die Ressource „contoso/datei“ aus.
-4. Klicken Sie auf **Bedingung auswählen**, um eine Bedingung hinzuzufügen.
+3. Klicken Sie auf **Ressource bearbeiten** , wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos z. B. „contoso“ lautet, wählen Sie die Ressource „contoso/datei“ aus.
+4. Klicken Sie auf **Bedingung auswählen** , um eine Bedingung hinzuzufügen.
 5. Wählen Sie in der daraufhin angezeigten Liste der für das Speicherkonto unterstützten Signale die Metrik **Ausgehend** aus.
 
   > [!NOTE]
   > Sie müssen drei separate Warnungen erstellen, um benachrichtigt zu werden, wenn „Eingehend“, „Ausgehend“ oder „Transaktionen“ den festgelegten Schwellenwert überschreiten. Das liegt daran, dass eine Warnung nur ausgelöst wird, wenn alle Bedingungen erfüllt sind. Wenn Sie also alle Bedingungen in eine Warnung einfügen, werden Sie nur benachrichtigt, wenn der Schwellenwert für „Eingehend“, „Ausgehend“ und „Transaktionen“ überschritten wird.
 
-6. Scrollen Sie nach unten. Klicken Sie auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
-7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
+6. Scrollen Sie nach unten. Klicken Sie auf die Dropdownliste **Dimensionsname** , und wählen Sie **Dateifreigabe** aus.
+7. Klicken Sie auf die Dropdownliste **Dimensionswerte** , und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
 8. Definieren Sie die **Warnungsparameter** (Schwellenwert, Operator, Aggregationsgranularität und Häufigkeit der Auswertung), und klicken Sie auf **Fertig**.
 
   > [!NOTE]
-  > Die Metriken „Eingehend“, „Ausgehend“ und „Transaktionen“ werden minutenweise gemeldet, obwohl die Abrechnung für die Metriken und die IOPS nach Sekunden erfolgt. (Wenn also eine Aggregationsgranularität über minutenweise zu viele Warnungen generiert, wählen Sie eine andere aus.) Wenn Ihr bereitgestellter Ausgang z. B. 90 MiB/s beträgt und Sie als Schwellenwert 80 % des bereitgestellten Ausgangswerts festlegen möchten, sollten Sie die folgenden Warnungsparameter auswählen: „75497472“ als **Schwellenwert**, „größer als oder gleich“ als **Operator** und „Durchschnitt“ als **Aggregationstyp**. Abhängig davon, wie häufig die Warnung gesendet werden soll, können Sie andere Werte für die Aggregationsgranularität und die Auswertungshäufigkeit auswählen. Wenn beispielsweise die Warnung den durchschnittlichen Eingangswert über einen Zeitraum von einer Stunde berücksichtigen und die Warnungsregel einmal pro Stunde ausgeführt werden soll, wählen Sie als **Aggregationsgranularität** 1 Stunde und als **Häufigkeit der Auswertung** ebenfalls 1 Stunde aus.
+  > Die Metriken „Eingehend“, „Ausgehend“ und „Transaktionen“ werden minutenweise gemeldet, obwohl die Abrechnung für die Metriken und die IOPS nach Sekunden erfolgt. (Wenn also eine Aggregationsgranularität über minutenweise zu viele Warnungen generiert, wählen Sie eine andere aus.) Wenn Ihr bereitgestellter Ausgang z. B. 90 MiB/s beträgt und Sie als Schwellenwert 80 % des bereitgestellten Ausgangswerts festlegen möchten, sollten Sie die folgenden Warnungsparameter auswählen: „75497472“ als **Schwellenwert** , „größer als oder gleich“ als **Operator** und „Durchschnitt“ als **Aggregationstyp**. Abhängig davon, wie häufig die Warnung gesendet werden soll, können Sie andere Werte für die Aggregationsgranularität und die Auswertungshäufigkeit auswählen. Wenn beispielsweise die Warnung den durchschnittlichen Eingangswert über einen Zeitraum von einer Stunde berücksichtigen und die Warnungsregel einmal pro Stunde ausgeführt werden soll, wählen Sie als **Aggregationsgranularität** 1 Stunde und als **Häufigkeit der Auswertung** ebenfalls 1 Stunde aus.
 
-9. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
-10. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
-11. Klicken Sie auf **Warnungsregel erstellen**, um die Warnung zu erstellen.
+9. Klicken Sie auf **Aktionsgruppe auswählen** , um der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+10. Geben Sie die **Warnungsdetails** wie **Warnungsregelname** , **Beschreibung** und **Schweregrad** ein.
+11. Klicken Sie auf **Warnungsregel erstellen** , um die Warnung zu erstellen.
 
   > [!NOTE]
   > Damit Sie benachrichtigt werden, wenn Ihre Premium-Dateifreigabe aufgrund des bereitgestelltem Eingangswerts demnächst gedrosselt wird, führen Sie dieselben Schritte aus, wählen aber in Schritt 5 stattdessen die Metrik **Eingehend** aus.

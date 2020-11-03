@@ -1,5 +1,5 @@
 ---
-title: Überwachen und Verwalten von Compliance mit Azure Policy
+title: Überwachen und Verwalten der Richtlinienkonformität
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit Azure Policy integrierte Richtlinien für Azure Machine Learning verwenden.
 author: jhirono
@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e7eebb22efe32b290e078348337049c6c3e762db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d371ea077b479ad2256e782dadd5d037f53004f2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993292"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900137"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Überwachen und Verwalten von Azure Machine Learning mit Azure Policy
 
 [Azure Policy](/azure/governance/policy) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
-* **Kundenseitig verwalteter Schlüssel**: Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
-* **Private Link**: Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
+* **Kundenseitig verwalteter Schlüssel** : Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
+* **Private Link** : Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
 
 Richtlinien können in unterschiedlichen Bereichen festgelegt werden, z. B. auf Abonnement- oder Ressourcengruppenebene. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](/azure/governance/policy/overview).
 

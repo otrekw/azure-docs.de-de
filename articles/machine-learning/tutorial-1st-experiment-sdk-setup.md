@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841845"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913295"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Tutorial: Machen Sie sich mit den ersten Schritten mit Azure Machine Learning in Jupyter Notebooks vertraut.
 
@@ -34,7 +34,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 Ein Azure Machine Learning-Arbeitsbereich ist eine grundlegende Cloudressource zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen. Er verknüpft Ihr Azure-Abonnement und Ihre Ressourcengruppe mit einem einfach nutzbaren Objekt im Dienst.
 
-Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Konsole zum Verwalten Ihrer Azure-Ressourcen.
+Springen Sie zu [Klonen eines Notebook-Ordners](#clone), wenn Sie bereits über einen Azure Machine Learning-Arbeitsbereich verfügen.  
+
+Es gibt viele [Möglichkeiten, einen Arbeitsbereich zu erstellen](how-to-manage-workspace.md).  In diesem Tutorial erstellen Sie einen Arbeitsbereich über das Azure-Portal, einer webbasierten Konsole zum Verwalten Ihrer Azure-Ressourcen.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -49,7 +51,7 @@ Azure Machine Learning enthält einen cloudbasierten Notebook-Server in Ihrem Ar
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
-### <a name="clone-a-notebook-folder"></a>Klonen eines Notebook-Ordners
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Klonen eines Notebook-Ordners
 
 Sie führen die folgenden Schritte zum Einrichten und Ausführen des Experiments in Azure Machine Learning Studio aus. Diese konsolidierte Benutzeroberfläche umfasst Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler aller Qualifikationsstufen.
 
@@ -73,14 +75,14 @@ Sie führen die folgenden Schritte zum Einrichten und Ausführen des Experiments
 
 ### <a name="open-the-cloned-notebook"></a><a name="open"></a>Öffnen des geklonten Notebooks
 
-1. Öffnen Sie den Ordner **Tutorials**, den Sie im Abschnitt **Benutzerdateien** geschlossen haben.
+1. Öffnen Sie den Ordner **Tutorials** , den Sie im Abschnitt **Benutzerdateien** geschlossen haben.
 
     > [!IMPORTANT]
     > Im Ordner **Beispiele** können Notebooks angezeigt, aber nicht ausgeführt werden. Öffnen Sie zum Ausführen eines Notebooks die geklonte Version des Notebooks unbedingt im Abschnitt **Benutzerdateien**.
     
 1. Wählen Sie die Datei **tutorial-1st-experiment-sdk-train.ipynb** im Ordner **tutorials/image-classification-mnist-data** aus.
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Screenshot: Klonen des Ordners „Tutorials“":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Screenshot: Öffnen des Ordners „Tutorials“":::
 
 1. Wählen Sie auf der oberen Leiste eine Computeinstanz aus, die zum Ausführen des Notebooks verwendet werden soll. Diese virtuellen Computer werden [mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen](concept-compute-instance.md#contents).
 

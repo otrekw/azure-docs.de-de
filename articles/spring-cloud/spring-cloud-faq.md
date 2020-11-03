@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945395"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900283"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -39,6 +39,9 @@ Sicherheit und Datenschutz gehören zu den wichtigsten Prioritäten für Azure- 
 
 „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“ und „Australien, Osten“.
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Werden Kundendaten außerhalb der angegebenen Region gespeichert?
+
+Azure Spring Cloud ist ein regionaler Dienst. Alle Kundendaten in Azure Spring Cloud werden aus Redundanzgründen in mehreren Regionen innerhalb desselben geografischen Raums wie die angegebene Region gespeichert. Weitere Informationen zu geografischen Räumen und Regionen finden Sie unter [Data Residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Welche Einschränkungen sind für Azure Spring Cloud bekannt?
 
@@ -54,7 +57,7 @@ Welchen Tarif sollte ich verwenden, und welche Beschränkungen gelten für die e
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Wie kann ich Feedback geben und Probleme melden?
 
-Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Besuchen Sie [Azure-Feedback](https://feedback.azure.com/forums/34192--general-feedback), um eine Featureanforderung oder Feedback einzureichen.
+Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). Besuchen Sie [Azure-Feedback](https://feedback.azure.com/forums/34192--general-feedback), um eine Featureanforderung oder Feedback einzureichen.
 
 ## <a name="development"></a>Entwicklung
 
@@ -70,9 +73,9 @@ Azure Spring Cloud unterstützt Java 8 und 11. Weitere Informationen finden Sie 
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Wo kann ich meine Spring Cloud-Anwendungsprotokolle und -metriken einsehen?
 
-Metriken finden Sie auf der Registerkarte „App Overview“ (App-Übersicht) sowie der Registerkarte [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics).
+Metriken finden Sie auf der Registerkarte „App Overview“ (App-Übersicht) sowie der Registerkarte [Azure Monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics).
 
-Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsprotokollen und -metriken in Azure Storage, EventHub und [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). Der Tabellenname im Log Analytics lautet *AppPlatformLogsforSpring*. Informationen zum Aktivieren dieser Protokollierung finden Sie unter [Diagnosedienste](diagnostic-services.md).
+Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsprotokollen und -metriken in Azure Storage, EventHub und [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). Der Tabellenname im Log Analytics lautet *AppPlatformLogsforSpring*. Informationen zum Aktivieren dieser Protokollierung finden Sie unter [Diagnosedienste](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Unterstützt Azure Spring Cloud die verteilte Ablaufverfolgung?
 
@@ -106,7 +109,7 @@ Sie können die Diagnoseeinstellungen von Spring Cloud mithilfe der Azure-Befehl
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Welche Versionen der Java-Runtime werden in Azure Spring Cloud unterstützt?
 
-Azure Spring Cloud unterstützt Java LTS-Versionen mit den neuesten Builds. Aktuell, d. h. im Juni 2020, werden Java 8 Build 252 und Java 11 Build 7 unterstützt. Weitere Informationen finden Sie unter [Installieren des JDK für Azure und Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Azure Spring Cloud unterstützt Java LTS-Versionen mit den neuesten Builds. Aktuell, d. h. im Juni 2020, werden Java 8 und Java 11 unterstützt. Weitere Informationen finden Sie unter [Installieren des JDK für Azure und Azure Stack](/azure/developer/java/fundamentals/java-jdk-install).
 
 ### <a name="who-built-these-java-runtimes"></a>Wer hat diese Java-Runtimeversionen erstellt?
 
@@ -118,14 +121,14 @@ Für LTS- und MTS-JDK-Releases werden vierteljährliche Sicherheitsupdates, Fehl
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Wie lange werden Java 8- und Java 11 LTS-Versionen unterstützt?
 
-Weitere Informationen finden Sie unter [Langfristiger Java-Support für Azure und Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Weitere Informationen finden Sie unter [Langfristiger Java-Support für Azure und Azure Stack](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Java 8 LTS wird bis Dezember 2030 unterstützt.
 * Java 11 LTS wird bis September 2027 unterstützt.
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Wie kann ich eine unterstützte Java-Runtime für die lokale Entwicklung herunterladen?
 
-Weitere Informationen finden Sie unter [Installieren des JDK für Azure und Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Weitere Informationen finden Sie unter [Installieren des JDK für Azure und Azure Stack](/azure/developer/java/fundamentals/java-jdk-install).
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Welche Außerkraftsetzungsrichtlinie gilt für ältere Java-Runtimeversionen?
 
@@ -136,7 +139,7 @@ Der öffentliche Hinweis wird 12 Monate vor dem Auslaufen einer alten Runtimeve
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Wie erhalte ich Support für Probleme auf der Ebene der Java-Runtime?
 
-Sie können beim Azure-Support ein Supportticket öffnen.  Weitere Informationen finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Sie können beim Azure-Support ein Supportticket öffnen.  Weitere Informationen finden Sie unter [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>Welches Betriebssystem wird zum Ausführen meiner Apps verwendet?
 
@@ -163,7 +166,7 @@ Ja. Weitere Informationen finden Sie unter [Starten Ihrer Spring Cloud-Anwendung
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Unterstützt Azure Spring Cloud die automatische Skalierung in App-Instanzen?
 
-Nein.
+Ja.  Weitere Informationen finden Sie unter [Einrichten einer Domäne](spring-cloud-tutorial-setup-autoscale.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Wie lauten die bewährten Methoden für die Migration vorhandener Spring Cloud-Microservices zu Azure Spring Cloud?

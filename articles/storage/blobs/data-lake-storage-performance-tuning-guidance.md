@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905404"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677345"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 kann skaliert werden, um den erforderlichen Durchsatz fü
 
 Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen2 ist zu berücksichtigen, dass es bei der Quellhardware, bei der Quellnetzwerkhardware und bei der Netzwerkkonnektivität mit Data Lake Storage Gen2 zu Engpässen kommen kann.  
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Diagramm, das die Faktoren aufzeigt, die beim Erfassen von Daten aus einem Quellsystem in Data Lake Storage Gen2 zu berücksichtigen sind.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 Es ist unbedingt sicherzustellen, dass die Datenverschiebung durch diese Faktoren nicht beeinträchtigt wird.
 
@@ -79,9 +79,9 @@ Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen
 
 Aufträge lassen sich in einer der folgenden drei Kategorien unterteilen:
 
-* **CPU-intensive Aufträge**:  Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf.  Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.  
-* **Speicherintensive Aufträge**:  Solche Aufträge belegen viel Speicher,  z.B. PageRank- und Echtzeitanalyseaufträge.  
-* **E/A-intensive Aufträge**:  Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht.  Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nicht nur Lesevorgänge, sondern auch Schreibvorgänge durchgeführt werden.  Ein weiteres Beispiel sind Datenvorbereitungsaufträge, die eine große Menge an Daten lesen, Datentransformationen durchführen und die Daten dann wieder in den Speicher schreiben.  
+* **CPU-intensive Aufträge** :  Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf.  Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.  
+* **Speicherintensive Aufträge** :  Solche Aufträge belegen viel Speicher,  z.B. PageRank- und Echtzeitanalyseaufträge.  
+* **E/A-intensive Aufträge** :  Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht.  Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nicht nur Lesevorgänge, sondern auch Schreibvorgänge durchgeführt werden.  Ein weiteres Beispiel sind Datenvorbereitungsaufträge, die eine große Menge an Daten lesen, Datentransformationen durchführen und die Daten dann wieder in den Speicher schreiben.  
 
 Die folgende Anleitung gilt nur für E/A-intensive Aufträge.
 
@@ -92,8 +92,8 @@ Verwenden Sie daher nach Möglichkeit E/A-Vorgänge mit einer Größe zwischen 4
 
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>Allgemeine Überlegungen zu HDInsight-Clustern
 
-* **HDInsight-Versionen**: Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
-* **Regionen**: Platzieren Sie das Data Lake Storage Gen2-Konto in der gleichen Region wie den HDInsight-Cluster.  
+* **HDInsight-Versionen** : Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
+* **Regionen** : Platzieren Sie das Data Lake Storage Gen2-Konto in der gleichen Region wie den HDInsight-Cluster.  
 
 Ein HDInsight-Cluster besteht aus zwei Hauptknoten und einigen Workerknoten. Jeder Workerknoten stellt eine bestimmte Anzahl von Kernen und eine bestimmte Menge an Speicher bereit, die durch den VM-Typ festgelegt wird.  Bei der Ausführung eines Auftrags ist YARN der Verhandlungspartner für Ressourcen, der den verfügbaren Speicher und die Kerne zur Erstellung von Containern zuordnet.  Jeder Container führt die für den Auftrag erforderlichen Aufgaben durch.  Zur schnellen Verarbeitung von Aufgaben werden Container parallel ausgeführt. Aus diesem Grund wird eine bessere Leistung erzielt, indem Sie so viele Container wie möglich parallel ausführen.
 
@@ -107,7 +107,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Führen Sie Cluster mit einer größeren Anzahl von Knoten und/oder größeren VMs aus.**  Bei einem größeren Cluster können Sie mehr YARN-Container ausführen, wie in der folgenden Abbildung gezeigt wird.
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Diagramm, das zeigt, wie ein größerer Cluster es Ihnen ermöglicht, mehr YARN-Container auszuführen.](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **Verwenden Sie VMs mit mehr Netzwerkbandbreite.**  Ist die Netzwerkbandbreite kleiner als der Data Lake Storage Gen2-Durchsatz, kann dies zu einem Engpass führen.  Die Menge der Netzwerkbandbreite variiert je nach VM.  Wählen Sie einen VM-Typ, der die größtmögliche Netzwerkbandbreite aufweist.
 
@@ -115,7 +115,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Verwenden Sie kleinere YARN-Container.**  Reduzieren Sie die Größe der einzelnen YARN-Container, um mit derselben Menge an Ressourcen mehr Container zu erstellen.
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Diagramm, das das Ergebnis zeigt, wenn Sie die Größe jedes YARN-Containers verringern, um mehr Container zu erstellen.](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container erforderlich. Wenn Sie einen zu kleinen Container auswählen, treten bei Ihren Aufträgen Probleme aufgrund von unzureichendem Speicherplatz auf. In der Regel dürfen YARN-Container nicht kleiner als 1 GB sein. Üblich sind YARN-Container mit 3 GB. Für einige Workloads benötigen Sie möglicherweise größere YARN-Container.  
 
@@ -125,7 +125,7 @@ Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container e
 
 **Verwenden Sie alle verfügbaren Container.**  Legen Sie die Anzahl von Aufgaben auf dieselbe oder eine höhere Anzahl der verfügbaren Containern fest, damit alle Ressourcen ausgelastet sind.
 
-![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Diagramm, das die Verwendung aller Container zeigt.](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **Aufgaben, die mit Fehlern beendet werden, sind kostspielig.** Sind bei jeder Aufgabe große Mengen an Daten zu verarbeiten, führen fehlerhafte Aufgaben zu einer kostenintensiven Wiederholung.  Aus diesem Grund empfiehlt es sich, mehr Aufgaben zu erstellen, bei denen jeweils eine kleine Menge von Daten verarbeitet wird.
 
