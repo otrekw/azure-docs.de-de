@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688619"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896122"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI
 
@@ -58,7 +58,7 @@ Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unters
 ### <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
 Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
 
-Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, D/Dsv4, E/Esv3, Ea/Easv4, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
+Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, D/Dsv4, Dd/Ddv4, Da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, Ea/Easv4, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
 
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -87,7 +87,7 @@ Nach dem Erstellen des virtuellen Computers können Sie sich vergewissern, dass 
 ## <a name="cli-creation"></a>CLI-Erstellung
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
+Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup* , *myNic* und *myVm*.
 
 Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>Erstellen einer VM und Anfügen der NIC
 Geben Sie bei der Erstellung der VM mit `--nics` die NIC an, die Sie erstellt haben. Wählen Sie aus der Auflistung unter [Beschleunigter Netzwerkbetrieb für Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) eine Größe und eine Distribution aus. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
+Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt ( *Standard_DS4_v2* ):
 
 ```azurecli
 az vm create \
@@ -192,7 +192,7 @@ Nachdem die VM erstellt wurde, wird eine ähnliche Ausgabe wie die folgende Beis
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie `<your-public-ip-address>` durch die öffentliche IP-Adresse, die dem von Ihnen erstellten virtuellen Computer zugewiesen wurde, und ersetzen Sie *azureuser*, wenn Sie für `--admin-username` einen anderen Wert als bei der VM-Erstellung verwendet haben.
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie `<your-public-ip-address>` durch die öffentliche IP-Adresse, die dem von Ihnen erstellten virtuellen Computer zugewiesen wurde, und ersetzen Sie *azureuser* , wenn Sie für `--admin-username` einen anderen Wert als bei der VM-Erstellung verwendet haben.
 
 ```bash
 ssh azureuser@<your-public-ip-address>
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 Geben Sie in der Bash-Shell `uname -r` ein, und vergewissern Sie sich, dass es sich bei der Kernelversion um eine der folgenden Versionen oder eine höhere Version handelt:
 
-* **Ubuntu 16.04**: 4.11.0-1013
-* **SLES SP3**: 4.4.92-6.18
-* **RHEL**: 7.4.2017120423
-* **CentOS**: 7.4.20171206
+* **Ubuntu 16.04** : 4.11.0-1013
+* **SLES SP3** : 4.4.92-6.18
+* **RHEL** : 7.4.2017120423
+* **CentOS** : 7.4.20171206
 
 
 Vergewissern Sie sich, dass mithilfe des Befehls `lspci` das Mellanox VF-Gerät für die VM verfügbar gemacht wurde. Die zurückgegebene Ausgabe sieht in etwa wie folgt aus:

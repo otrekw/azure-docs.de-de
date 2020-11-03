@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eecc93558625d3ae891ca589424aec218036adae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151587"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744702"
 ---
 # <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
 
@@ -29,7 +29,7 @@ LUIS lässt drei Arten von Azure-Ressourcen sowie eine Azure-fremde Ressource zu
 
 |Resource|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
 |--|--|--|--|
-|Erstellungsressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. [Erstellen Sie eine LUIS-Erstellungsressource](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal), wenn Sie LUIS-Apps programmgesteuert oder über das LUIS-Portal erstellen möchten. Sie müssen zunächst [Ihr LUIS-Konto migrieren](luis-migration-authoring.md#what-is-migration), damit Sie Ihre Azure-Erstellungsressourcen mit der Anwendung verknüpfen können. Sie können die Berechtigungen für die Erstellungsressource steuern, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen. <br><br> Für die LUIS-Erstellungsressource ist ein Tarif verfügbar:<br> Die * **F0-Erstellungsressource „Free“** , die Ihnen monatlich 1 Mio. kostenlose Erstellungstransaktionen und 1.000 kostenlose Testanforderungen für den Vorhersageendpunkt bietet |`LUIS.Authoring`|`Cognitive Services`|
+|Erstellungsressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. [Erstellen Sie eine LUIS-Erstellungsressource](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal), wenn Sie LUIS-Apps programmgesteuert oder über das LUIS-Portal erstellen möchten. Sie müssen zunächst [Ihr LUIS-Konto migrieren](luis-migration-authoring.md#what-is-migration), damit Sie Ihre Azure-Erstellungsressourcen mit der Anwendung verknüpfen können. Sie können die Berechtigungen für die Erstellungsressource steuern, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen. <br><br> Für die LUIS-Erstellungsressource ist ein einziger Tarif verfügbar:<br> Die * **Erstellungsressource „Free F0“** , die Ihnen monatlich 1 Mio. kostenlose Erstellungstransaktionen und 1000 kostenlose Testanforderungen für den Vorhersageendpunkt bietet. |`LUIS.Authoring`|`Cognitive Services`|
 |Vorhersageressource| Nachdem Sie die LUIS-Anwendung veröffentlicht haben, verwenden Sie die Vorhersageressource/den Vorhersageschlüssel, um Anforderungen für den Vorhersageendpunkt abzufragen. Erstellen Sie eine LUIS-Vorhersageressource, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Erstellungs- oder Startressource zur Verfügung gestellt werden. <br><br> Für die Vorhersageressource sind zwei Tarife verfügbar:<br> Die * **F0-Vorhersageressource „Free“** , die Ihnen monatlich 10.000 kostenlose Anforderungen für den Vorhersageendpunkt bietet<br> Die * **S0-Vorhersageressource „Standard“** , die der kostenpflichtige Tarif ist [Weitere Preisinformationen](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Start-/Testressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. Sie wird standardmäßig erstellt, wenn Sie bei der ersten Registrierung bei LUIS als Option die Startressource auswählen. Der Startschlüssel wird jedoch letztendlich nicht mehr unterstützt, und alle LUIS-Benutzer müssen [ihre Konten migrieren](luis-migration-authoring.md#what-is-migration) und ihre LUIS-Anwendungen mit einer Erstellungsressource verknüpfen. Im Gegensatz zur Erstellungsressource erhalten Sie mit dieser Ressource keine Berechtigungen für die rollenbasierte Zugriffssteuerung in Azure. <br><br> Wie die Erstellungsressource bietet Ihnen die Startressource 1 Mio. kostenlose Erstellungstransaktionen und 1.000 kostenlose Testanforderungen für den Vorhersageendpunkt.|-|Keine Azure-Ressource|
 |[Cognitive Service-Ressourcenschlüssel für mehrere Dienste](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Anforderungen von Abfragevorhersageendpunkten, die mit LUIS und anderen unterstützten Cognitive Services geteilt werden.|`CognitiveServices`|`Cognitive Services`|
@@ -48,7 +48,7 @@ Eine Azure-Ressource (beispielsweise eine LUIS-Ressource) gehört zu dem Abonnem
 
 Der Besitz einer Ressource kann wie folgt übertragen werden:
 * Übertragen des [Besitzes](../../cost-management-billing/manage/billing-subscription-transfer.md) Ihres Abonnements
-* Exportieren Sie die LUIS-App als Datei, und importieren Sie sie anschließend in einem anderen Abonnement. Die Exportfunktion finden Sie im LUIS-Portal auf der Seite **Meine Apps** .
+* Exportieren Sie die LUIS-App als Datei, und importieren Sie sie anschließend in einem anderen Abonnement. Die Exportfunktion finden Sie im LUIS-Portal auf der Seite **Meine Apps**.
 
 
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
@@ -222,7 +222,7 @@ Beachten Sie Folgendes: Wenn Sie über kein Azure-Abonnement verfügen, können 
 Mit dem folgenden Verfahren können Sie eine Erstellungs- oder Vorhersageressource für eine Anwendung zuweisen oder erstellen:
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie dann in der Liste **Meine Apps** eine App aus.
-1. Navigieren Sie zur Seite **Verwalten > Azure-Ressourcen** .
+1. Navigieren Sie zur Seite **Verwalten > Azure-Ressourcen**.
 
     ![„Verwalten -> Azure-Ressourcen“ im LUIS-Portal auswählen, um der App eine Ressource zuzuweisen.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
@@ -267,7 +267,7 @@ Möglicherweise soll zu Automatisierungszwecken, etwa wegen einer CI/CD-Pipeline
 ## <a name="unassign-resource"></a>Aufheben der Zuweisung einer Ressource
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie dann in der Liste **Meine Apps** eine App aus.
-1. Navigieren Sie zur Seite **Verwalten -> Azure-Ressourcen** .
+1. Navigieren Sie zur Seite **Verwalten -> Azure-Ressourcen**.
 1. Wählen Sie die Registerkarte „Vorhersageressourcen“ oder „Erstellungsressource“ aus, und wählen Sie dann die Schaltfläche **Ressourcenzuweisung aufheben** aus.
 
 Wenn Sie die Zuweisung einer Ressource aufheben, wird diese nicht aus Azure gelöscht. Lediglich die Verknüpfung mit LUIS wird aufgehoben.

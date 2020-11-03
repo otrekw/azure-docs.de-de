@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630507"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747901"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbinden der externen Lösung mithilfe von Common Event Format
 
@@ -44,7 +44,7 @@ Alternativ gilt diese Einrichtung, wenn Sie eine VM in einer anderen Cloud oder 
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
-Stellen Sie sicher, dass Sie die Sicherheit des Computers gemäß der Sicherheitsrichtlinie Ihrer Organisation konfigurieren. Beispielsweise können Sie das Netzwerk so konfigurieren, dass es der Sicherheitsrichtlinie für das Unternehmensnetzwerk entspricht, und die Ports und Protokolle im Daemon Ihren Anforderungen entsprechend ändern. Anhand der folgenden Anleitungen können Sie die Sicherheitskonfiguration Ihrer Computer verbessern:   [Sichern virtueller Computer in Azure](../virtual-machines/security-policy.md), [Bewährte Methoden für die Netzwerksicherheit](../security/fundamentals/network-best-practices.md).
+Stellen Sie sicher, dass Sie die Sicherheit des Computers gemäß der Sicherheitsrichtlinie Ihrer Organisation konfigurieren. Beispielsweise können Sie das Netzwerk so konfigurieren, dass es der Sicherheitsrichtlinie für das Unternehmensnetzwerk entspricht, und die Ports und Protokolle im Daemon Ihren Anforderungen entsprechend ändern. Anhand der folgenden Anleitungen können Sie die Sicherheitskonfiguration Ihrer Computer verbessern:  [Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure](../virtual-machines/security-policy.md), [Bewährte Methoden für die Netzwerksicherheit in Azure](../security/fundamentals/network-best-practices.md).
 
 Wenn Sie die TLS-Kommunikation zwischen der Syslog-Lösung und Syslog Forwarder verwenden möchten, müssen Sie den Syslog-Daemon (rsyslog oder syslog-ng) für die Kommunikation in TLS konfigurieren: [Verschlüsseln von Syslog-Datenverkehr mit TLS – rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [Verschlüsseln von Protokollmeldungen mit TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
@@ -55,14 +55,14 @@ Stellen Sie sicher, dass auf dem Linux-Computer, den Sie als Proxy verwenden, ei
 - 64 Bit
   - CentOS 7 und Unterversionen sowie höhere Versionen (Version 6 ausgenommen)
   - Amazon Linux 2017.09
-  - Oracle Linux 6 und 7
+  - Oracle Linux 7
   - RHEL-Server 7 (Red Hat Enterprise Linux) und Unterversionen sowie höhere Versionen (Version 6 ausgenommen)
   - Debian GNU/Linux 8 und 9
   - Ubuntu Linux 14.04 LTS, 16.04 LTS und 18.04 LTS
   - SUSE Linux Enterprise Server 12
 - 32 Bit
    - CentOS 7:
-   - Oracle Linux 6
+   - Oracle Linux 7
    - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 und 9
    - Ubuntu Linux 14.04 LTS und 16.04 LTS
@@ -79,7 +79,7 @@ Stellen Sie sicher, dass Ihr Computer auch die folgenden Anforderungen erfüllt:
 - Berechtigungen
     - Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. 
 - Softwareanforderungen
-    - Stellen Sie sicher, dass Python (Version 2.7 oder höher) auf dem Computer ausgeführt wird.
+    - Stellen Sie sicher, dass Python 2.7 auf dem Computer ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

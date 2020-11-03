@@ -13,25 +13,24 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669102"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789793"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Ausführen einer SQL Server-VM auf einem Azure Dedicated Host 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel werden die Besonderheiten für die Verwendung einer SQL Server-VM mit einem [Azure Dedicated Host](/azure/virtual-machines/windows/dedicated-hosts) erläutert. Weitere Informationen zum Azure Dedicated Host bzw. zum Dienst Azure Dedicated Host finden Sie im Blogbeitrag [Einführung von Azure Dedicated Host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
+In diesem Artikel werden die Besonderheiten für die Verwendung einer SQL Server-VM mit einem [Azure Dedicated Host](../../../virtual-machines/dedicated-hosts.md) erläutert. Weitere Informationen zum Azure Dedicated Host bzw. zum Dienst Azure Dedicated Host finden Sie im Blogbeitrag [Einführung von Azure Dedicated Host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
 
 ## <a name="overview"></a>Übersicht
-[Azure Dedicated Host](/azure/virtual-machines/windows/dedicated-hosts) ist ein Dienst zum Bereitstellen physischer Server, die virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind. Dedizierte Hosts sind die in Microsofts Rechenzentren verwendeten physischen Server, die als Ressource bereitgestellt werden. Sie können dedizierte Hosts in einer Region, einer Verfügbarkeitszone und einer Fehlerdomäne bereitstellen. Anschließend können Sie VMs direkt in Ihren bereitgestellten Hosts platzieren, und zwar in einer beliebigen Konfiguration, die Ihren Anforderungen am besten entspricht.
+[Azure Dedicated Host](../../../virtual-machines/dedicated-hosts.md) ist ein Dienst zum Bereitstellen physischer Server, die virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind. Dedizierte Hosts sind die in Microsofts Rechenzentren verwendeten physischen Server, die als Ressource bereitgestellt werden. Sie können dedizierte Hosts in einer Region, einer Verfügbarkeitszone und einer Fehlerdomäne bereitstellen. Anschließend können Sie VMs direkt in Ihren bereitgestellten Hosts platzieren, und zwar in einer beliebigen Konfiguration, die Ihren Anforderungen am besten entspricht.
 
 ## <a name="limitations"></a>Einschränkungen
 
-- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Die folgenden VM-Serien werden unterstützt: DSv3 und ESv3. 
+- Nicht alle VM-Serien werden auf dedizierten Hosts unterstützt, und die Verfügbarkeit der VM-Serien variiert je nach Region. Weitere Informationen finden Sie unter [Übersicht über dedizierte Azure-Hosts](../../../virtual-machines/dedicated-hosts.md).
 
 ## <a name="licensing"></a>Lizenzierung
 
@@ -55,7 +54,7 @@ Optionen auf Hostebene für das Verwenden vorhandener SQL Server-Lizenzen:
 
 
 ## <a name="provisioning"></a>Bereitstellung  
-Das Bereitstellen einer SQL Server-VM auf dem dedizierten Host unterscheidet sich nicht von der Vorgehensweise für andere Azure-VMs. Sie können dazu [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), das [Azure-Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md) und die [Azure-Befehlszeilenschnittstelle](../../../virtual-machines/linux/dedicated-hosts-cli.md) verwenden.
+Das Bereitstellen einer SQL Server-VM auf dem dedizierten Host unterscheidet sich nicht von der Vorgehensweise für andere Azure-VMs. Sie können dazu [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), das [Azure-Portal](../../../virtual-machines/dedicated-hosts-portal.md) und die [Azure-Befehlszeilenschnittstelle](../../../virtual-machines/linux/dedicated-hosts-cli.md) verwenden.
 
 Das Hinzufügen einer vorhandenen SQL Server-VM zu dem dedizierten Host erfordert Ausfallzeit, wirkt sich jedoch nicht auf Daten aus und bewirkt keinen Datenverlust. Trotzdem sollten vor dem Verschieben alle Datenbanken, einschließlich der Systemdatenbanken, gesichert werden.
 
@@ -79,5 +78,3 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 * [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)
-
-

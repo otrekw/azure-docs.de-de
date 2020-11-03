@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015701"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791595"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -37,6 +37,25 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 > Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und -Aufträgen sowie Abrufen von Informationen über das Zugreifen auf APIs und Verschlüsseln von Inhalten. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für die Verwaltung von Transformationen und Aufträgen) die [REST-API](/rest/api/media/accountfilters), die [CLI](/cli/azure/ams) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 >
 > Weitere Informationen finden Sie in den häufig gestellten Fragen im Abschnitt über [Einschränkungen im Azure-Portal im Zusammenhang mit Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="basic-audio-analysis"></a>Audioanalyse im Tarif „Basic“
+Die Voreinstellung für die Audioanalyse enthält jetzt einen Basic-Tarif. Der neue Basic-Modus für die Audioanalyse bietet eine kostengünstige Option zum Extrahieren von Transkriptionen für gesprochenen Text sowie zum Formatieren von Beschriftungstext und Untertiteln. In diesem Modus werden Transkriptionen von gesprochenen Texten erstellt und VTT-Dateien mit Untertiteln und Beschriftungstexten generiert. Die Ausgabe in diesem Modus beinhaltet eine Insights JSON-Datei, die nur die Stichwörter, die Transkription und Zeitinformationen enthält. Eine automatische Spracherkennung und Sprecherdiarisierung sind nicht Bestandteil dieses Modus. Mehr dazu finden Sie in der Liste der [unterstützten Sprachen](analyzing-video-audio-files-concept.md#built-in-presets).
+
+Kunden, die Indexer v1 und Indexer v2 verwenden, sollten zur Voreinstellung für die Audioanalyse im Tarif „Basic“ migrieren.
+
+Weitere Informationen zum Basic-Modus für die Audioanalyse finden Sie unter [Analysieren von Video- und Audiodateien](analyzing-video-audio-files-concept.md).  Informationen zur Verwendung des Basic-Modus für die Audioanalyse mit der REST-API finden Sie unter [Erstellen einer Audiotransformation im Tarif „Basic“](how-to-create-basic-audio-transform.md).
+
+## <a name="live-events"></a>Liveereignisse
+
+Aktualisierungen der meisten Eigenschaften sind jetzt zulässig, wenn Liveereignisse beendet werden. Darüber hinaus dürfen Benutzer ein Präfix für den statischen Hostnamen für die Eingabe- und Vorschau-URLs von Liveereignissen angeben. VanityUrl heißt jetzt `useStaticHostName`, um den Zweck der Eigenschaft besser widerzuspiegeln.
+
+Liveereignisse verfügen jetzt über einen Standbyzustand.  Weitere Informationen finden Sie unter [Liveereignisse und Liveausgaben in Media Services](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+
+Ein Liveereignis unterstützt den Empfang verschiedener Seitenverhältnisse bei Eingaben. Der Stretchingmodus ermöglicht es Kunden, das Stretchingverhalten für die Ausgabe anzugeben.
+
+Live Encoding bietet jetzt die Möglichkeit, feste Keyframe-Intervallfragmente zwischen 0,5 und 20 Sekunden auszugeben.
 
 ## <a name="august-2020"></a>August 2020
 
@@ -94,7 +113,7 @@ Media Services ist nun in den folgenden Azure Government-Regionen allgemein verf
 
 ## <a name="december-2019"></a>Dezember 2019
 
-CDN-Unterstützung für *Origin-Assist Prefetch*-Header für Livestreaming und On-Demand-Videostreaming wurde hinzugefügt und ist für Kunden mit direktem Vertrag mit Akamai CDN verfügbar. Die Funktion „Origin-Assist CDN-Prefetch“ umfasst den folgenden HTTP-Header-Austausch zwischen Akamai CDN und dem Azure Media Services-Ursprung:
+CDN-Unterstützung für *Origin-Assist Prefetch* -Header für Livestreaming und On-Demand-Videostreaming wurde hinzugefügt und ist für Kunden mit direktem Vertrag mit Akamai CDN verfügbar. Die Funktion „Origin-Assist CDN-Prefetch“ umfasst den folgenden HTTP-Header-Austausch zwischen Akamai CDN und dem Azure Media Services-Ursprung:
 
 |HTTP-Header|Werte|Sender|Receiver|Zweck|
 | ---- | ---- | ---- | ---- | ----- |
@@ -256,7 +275,7 @@ Sie sollten weder die MPI-Datei ändern oder entfernen noch beliebige Abhängigk
 
 Zu den Updates in der GA-Version der V3-API gehören:
        
-* Die **PresentationTimeRange**-Eigenschaften sind nicht mehr für **Medienobjektfilter** und **Kontofilter** erforderlich. 
+* Die **PresentationTimeRange** -Eigenschaften sind nicht mehr für **Medienobjektfilter** und **Kontofilter** erforderlich. 
 * Die Abfrageoptionen „$top“ und „$skip“ für **Aufträge** und **Transformationen** wurden entfernt, und „$orderby“ wurde hinzugefügt. Beim Hinzufügen der neuen Sortierungsfunktionalität wurde festgestellt, dass die Optionen „$top“ und „$skip“ versehentlich zuvor verfügbar gemacht wurden, obwohl sie nicht implementiert sind.
 * Enumerationserweiterbarkeit wurde erneut aktiviert. Dieses Feature wurde in den Vorschauversionen des SDK aktiviert und wurde in der GA-Version versehentlich deaktiviert.
 * Zwei vordefinierte Streamingrichtlinien wurden umbenannt. **SecureStreaming** ist jetzt **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** ist jetzt **Predefined_MultiDrmStreaming**.
@@ -333,11 +352,11 @@ Die folgenden Verbesserungen wurden eingeführt:
 
 #### <a name="new-transform-object"></a>Neues Transform-Objekt
 
-Mit dem neuen **Transform**-Objekt wird das Codierungsmodell vereinfacht. Es ist mit dem neuen Objekt einfach, Resource Manager-Vorlagen und -Voreinstellungen für die Codierung zu erstellen und gemeinsam zu nutzen. 
+Mit dem neuen **Transform** -Objekt wird das Codierungsmodell vereinfacht. Es ist mit dem neuen Objekt einfach, Resource Manager-Vorlagen und -Voreinstellungen für die Codierung zu erstellen und gemeinsam zu nutzen. 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory-Authentifizierung und rollenbasierte Zugriffssteuerung
+#### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory-Authentifizierung und Azure-RBAC
 
-Mit der Azure AD-Authentifizierung und rollenbasierten Zugriffssteuerung (RBAC) werden sichere Transformationen, Liveereignisse, Richtlinien für Inhaltsschlüssel oder Medienobjekte nach Rolle oder Benutzer in Azure AD ermöglicht.
+Die Azure AD-Authentifizierung und die rollenbasierte Zugriffssteuerung in Azure (Azure-RBAC) ermöglichen sichere Transformationen, Liveereignisse, Richtlinien für Inhaltsschlüssel oder den Zugriff auf Medienobjekte nach Rolle oder Benutzer in Azure AD.
 
 #### <a name="client-sdks"></a>Client-SDKs  
 

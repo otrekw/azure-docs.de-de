@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448187"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893402"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -39,6 +39,9 @@ Diese Erweiterung funktioniert mit beiden Azure-Bereitstellungsmodellen.
 ## <a name="installing-the-extension-in-your-vm"></a>Installieren der Erweiterung auf Ihrem virtuellen Computer
 
 Sie können diese Erweiterung über Azure PowerShell-Cmdlets, Azure-Befehlszeilenschnittstellenskripts, Azure Resource Manager-Vorlagen oder das Azure-Portal aktivieren. Weitere Informationen finden Sie unter [Erweiterungsfeatures](features-linux.md).
+
+>[!NOTE]
+>Einige Komponenten der VM-Erweiterung für Diagnosen werden auch mit der [Log Analytics-VM-Erweiterung](./oms-linux.md) geliefert. Aufgrund dieser Architektur können Konflikte auftreten, wenn beide Erweiterungen in derselben ARM-Vorlage instanziiert werden. Um solche Konflikte zur Installationszeit zu vermeiden, verwenden Sie die [`dependsOn`-Anweisung](../../azure-resource-manager/templates/define-resource-dependency.md#dependson), um sicherzustellen, dass die Erweiterungen nacheinander installiert werden. Die Erweiterungen können in beliebiger Reihenfolge installiert werden.
 
 Diese Installationsanweisungen konfigurieren mithilfe einer [herunterladbare Beispielkonfiguration](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) LAD 3.0 für Folgendes:
 
@@ -210,7 +213,7 @@ storageAccountSasToken | Ein [Konto-SAS-Token](https://azure.microsoft.com/blog/
 mdsdHttpProxy | (optional:) HTTP-Proxyinformationen, die erforderlich sind, damit die Erweiterung Verbindungen mit dem angegebenen Speicherkonto und dem Endpunkt herstellen kann
 sinksConfig | (optional:) Details zu alternativen Zielen, an die Metriken und Ereignisse übermittelt werden können. Die spezifischen Details der einzelnen Datensenken, die von der Erweiterung unterstützt werden, sind in den folgenden Abschnitten beschrieben.
 
-Verwenden Sie die **listAccountSas**-Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
+Verwenden Sie die **listAccountSas** -Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 Sie können das erforderliche SAS-Token einfach über das Azure-Portal erstellen.
 

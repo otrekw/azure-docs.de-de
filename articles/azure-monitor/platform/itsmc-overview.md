@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613763"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745681"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -65,7 +65,7 @@ Bevor Sie eine Verbindung herstellen können, müssen Sie die ITSM-Connector-Lö
    >[!NOTE]
    >Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor werden OMS-Arbeitsbereiche nun als Log Analytics-Arbeitsbereiche bezeichnet.
 
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **OK**.
 
 Sobald die Ressource für die Lösung bereitgestellt ist, wird oben rechts im Fenster eine Benachrichtigung angezeigt.
 
@@ -85,7 +85,7 @@ Abhängig von dem ITSM-Produkt, mit dem die Verbindung hergestellt werden soll, 
 
 Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie die folgenden Schritte zum Erstellen einer Verbindung aus:
 
-1. Wechseln Sie zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)** .
+1. Wechseln Sie zu **Alle Ressourcen** , und suchen Sie nach **ServiceDesk(YourWorkspaceName)** .
 2. Klicken Sie im linken Bereich unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
    ![ITSM-Verbindungen](media/itsmc-overview/itsm-connections.png)
 
@@ -106,6 +106,10 @@ Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie die folgenden Schritt
 ## <a name="using-the-solution"></a>Verwenden der Lösung
    Mit der ITSM-Connector-Lösung können Sie Arbeitselemente aus Azure-Warnungen, Log Analytics-Warnungen und Log Analytics-Protokolldatensätzen erstellen.
 
+## <a name="template-definitions"></a>Vorlagendefinitionen
+   Hierbei handelt es sich um Arten von Arbeitselementen, die vom ITSM-Tool definierte Vorlagen verwenden können.
+Mithilfe von Vorlagen können Kunden Felder definieren, die anhand von festgelegten Werten automatisch aufgefüllt werden. Diese Werte sind als Teil der Aktionsgruppe definiert. Die Definition der Vorlagen erfolgt im ITSM-Tool.
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen
 
 Nach dem Einrichten der ITSM-Verbindung können Sie in Ihrem ITSM-Tool Arbeitselemente basierend auf Azure-Warnungen erstellen, indem Sie die **ITSM-Aktion** in **Aktionsgruppen** verwenden.
@@ -118,23 +122,29 @@ Die wiederverwendbaren Aktionsgruppen bieten Ihnen die Möglichkeit, modular Akt
 
 Gehen Sie dazu wie folgt vor:
 
-1. Klicken Sie im Azure-Portal auf **Überwachen**.
-2. Klicken Sie im linken Bereich auf **Aktionsgruppen**. Das Fenster **Aktionsgruppe hinzufügen** wird angezeigt.
+1. Klicken Sie im Azure-Portal auf **Warnungen**.
+2. Klicken Sie im oberen Bereich auf **Aktionen verwalten**. Das Fenster **Aktionsgruppe hinzufügen** wird angezeigt.
 
-    ![Aktionsgruppen](media/itsmc-overview/action-groups.png)
+    [![Aktionsgruppen](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
 
-3. Geben Sie **Name** und **Kurzname** für Ihre Aktionsgruppe ein. Wählen Sie die **Ressourcengruppe** und das **Abonnement** aus, in der bzw. dem Sie Ihre Aktionsgruppe erstellen möchten.
+3. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, in dem bzw. der Sie Ihre Aktionsgruppe erstellen möchten. Geben Sie den **Aktionsgruppennamen** und den **Anzeigenamen** für Ihre Aktionsgruppe an. Klicken Sie auf **Weiter: Benachrichtigungen**.
 
     ![Aktionsgruppendetail](media/itsmc-overview/action-groups-details.png)
 
-4. Wählen Sie in der Liste „Aktionen“ in der Dropdownliste für **Aktionstyp** die Option **ITSM** aus. Geben Sie einen **Namen** für die Aktion an, und klicken Sie auf **Details bearbeiten**.
-5. Wählen Sie das **Abonnement**, in dem sich Ihr Log Analytics-Arbeitsbereich befindet. Wählen Sie den Namen der **Verbindung** (Ihr ITSM-Connectorname) gefolgt vom Namen Ihres Arbeitsbereichs aus. Beispiel: „MyITSMMConnector(MyWorkspace)“.
+4. Klicken Sie in der Benachrichtigungsliste auf **Weiter: Aktionen**.
+5. Wählen Sie in der Liste „Aktionen“ in der Dropdownliste für **Aktionstyp** die Option **ITSM** aus. Geben Sie einen **Namen** für die Aktion an, und klicken Sie auf das Stiftsymbol für **Details bearbeiten**.
+6. Wählen Sie das **Abonnement** , in dem sich Ihr Log Analytics-Arbeitsbereich befindet. Wählen Sie den Namen der **Verbindung** (Ihr ITSM-Connectorname) gefolgt vom Namen Ihres Arbeitsbereichs aus. Beispiel: „MyITSMMConnector(MyWorkspace)“.
 
-    ![ITSM-Aktionsdetails](media/itsmc-overview/itsm-action-details.png)
+    ![ITSM-Aktionsdetails](media/itsmc-overview/itsm-action-configuration.png)
 
-6. Wählen Sie im Dropdownmenü den Typ **Arbeitselement** aus.
-   Wählen Sie eine vorhandene Vorlage, oder füllen Sie die erforderlichen Felder Ihres ITSM-Produkts aus.
-7. Klicken Sie auf **OK**.
+7. Wählen Sie im Dropdownmenü den Typ **Arbeitselement** aus.
+
+8. Wenn Sie die Felder mit festgelegten Werten auffüllen möchten, aktivieren Sie das Kontrollkästchen „Benutzerdefinierte Vorlage verwenden“. Andernfalls wählen Sie eine vorhandene [Vorlage](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) aus der Dropdownliste aus, und füllen Sie die Vorlagenfelder mit festgelegten Werten auf.
+
+9. Durch Aktivieren des Kontrollkästchens **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** erhält jedes Konfigurationselement ein eigenes Arbeitselement. Das bedeutet, dass für jedes Konfigurationselement nur ein Arbeitselement existiert und gemäß den erstellten Warnungen aktualisiert wird.
+Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** deaktivieren, erstellt jede Warnung ein neues Arbeitselement. Das bedeutet, dass pro Konfigurationselement mehr als eine Warnung vorliegen kann.
+
+10. Klicken Sie auf **OK**.
 
 Verwenden Sie beim Erstellen/Bearbeiten einer Azure-Warnungsregel eine Aktionsgruppe mit einer ITSM-Aktion. Wenn die Warnung ausgelöst wird, wird das Arbeitselement im ITSM-Tool erstellt bzw. aktualisiert.
 
@@ -153,7 +163,7 @@ Basierend auf Ihrer Konfiguration, die Sie beim Einrichten einer Verbindung vorg
 
 Die Incident- und Änderungsanforderungsdaten können über das Dashboard des ITSM-Connectors in der Lösung visuell dargestellt werden.
 
-![Log Analytics-Bildschirm](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![Screenshot des Dashboards des ITSM-Connectors.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Das Dashboard bietet darüber hinaus Informationen zum Connectorstatus, die als Ausgangspunkt bei der Analyse von Verbindungsproblemen verwendet werden können.
 
@@ -179,7 +189,7 @@ Die folgenden Informationen sind Beispiele für Daten, die vom ITSMC gesammelt w
 >
 > Abhängig vom in Log Analytics importierten Arbeitselementtyp enthält **ServiceDesk_CL** die folgenden Felder:
 
-**Arbeitselement**: **Incidents**  
+**Arbeitselement** : **Incidents**  
 ServiceDeskWorkItemType_s="Incident"
 
 **Fields**
@@ -206,7 +216,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Computer
 
 
-**Arbeitselement**: **Änderungsanforderungen**
+**Arbeitselement** : **Änderungsanforderungen**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
@@ -298,7 +308,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 2. Wenn Daten von ServiceNow nicht in Log Analytics synchronisiert werden, stellen Sie sicher, dass sich die ServiceNow-Instanz nicht im Energiesparmodus befindet. ServiceNow-Entwicklungsinstanzen wechseln manchmal nach längerem Leerlauf in den Energiesparmodus. Melden Sie das Problem andernfalls.
 3. Wenn Log Analytics-Warnungen ausgelöst werden, aber keine Arbeitselemente im ITSM-Produkt oder keine Konfigurationselemente erstellt bzw. diese nicht mit Arbeitselementen verknüpft werden, nutzen Sie folgende Quellen. Dort finden Sie darüber hinaus allgemeine Informationen:
    -  ITSMC: Die Lösung zeigt eine Zusammenfassung der Verbindungen/Arbeitselemente/Computer usw. Klicken Sie auf die Kachel **Connectorstatus**. Sie werden zur **Protokollsuche** mit der relevanten Abfrage umgeleitet. Untersuchen Sie die Protokolldatensätze, für die „LogType_S“ den Wert „ERROR“ enthält, auf weitere Informationen.
-   - Seite **Protokollsuche**: Sie können die Fehler und die zugehörigen Informationen mithilfe der Abfrage `*`ServiceDeskLog_CL`*` anzeigen.
+   - Seite **Protokollsuche** : Sie können die Fehler und die zugehörigen Informationen mithilfe der Abfrage `*`ServiceDeskLog_CL`*` anzeigen.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problembehandlung bei der Service Manager-Web-App-Bereitstellung
 1.  Stellen Sie bei Problemen mit der Web-App-Bereitstellung sicher, dass Sie für das angegebene Abonnement über ausreichende Berechtigungen zum Erstellen/Bereitstellen von Ressourcen verfügen.
