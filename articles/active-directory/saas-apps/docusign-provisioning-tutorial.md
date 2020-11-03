@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317428"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454676"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung
 
@@ -35,7 +35,7 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Ihre DocuSign-App benötigen. Anschließend können Sie diese Benutzer Ihrer DocuSign-App zuweisen, indem Sie diese Anweisungen befolgen:
 
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>Wichtige Tipps zum Zuweisen von Benutzern zu DocuSign
 
@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 > [!NOTE]
 > Wenn sowohl SSO als auch die Benutzerbereitstellung eingerichtet ist, müssen die für die Bereitstellung verwendeten Autorisierungsanmeldeinformationen so konfiguriert werden, dass sie sowohl mit SSO als auch mit Benutzername bzw. Kennwort funktionieren.
 
-1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer DocuSign-App herstellen kann.
+1. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer DocuSign-App herstellen kann.
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
@@ -93,6 +93,12 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 Dadurch wird die Erstsynchronisierung aller Benutzer gestartet, die DocuSign im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer DocuSign-App ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
+
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+* Rollen oder Berechtigungsprofile für Benutzer können in DocuSign mithilfe eines Ausdrucks in den Attributzuordnungen bereitgestellt werden. Verwenden Sie dafür die Funktionen [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) und [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment). Ein Beispiel: Der unten stehende Ausdruck stellt die ID „8032066“ bereit, wenn einem Benutzer in Azure AD die Rolle „DS-Administrator zugewiesen wurde. Ein Berechtigungsprofil wird nicht bereitgestellt, wenn dem Benutzer keine Rolle auf Azure AD-Seite zugewiesen wurde. Die ID kann über das [Portal](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles) von DocuSign abgerufen werden.
+
+Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
+
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

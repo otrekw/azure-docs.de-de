@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221421"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628676"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -50,7 +50,7 @@ So erstellen Sie ein neues Notebook
 1. Benennen Sie die Datei. 
 1. Für Jupyter Notebook-Dateien wählen Sie **Notebook** als Dateityp aus.
 1. Wählen Sie ein Dateiverzeichnis aus.
-1. Klicken Sie auf **Erstellen** .
+1. Klicken Sie auf **Erstellen**.
 
 Sie können auch Textdateien erstellen.  Wählen Sie **Text** als Dateityp aus, und fügen Sie dem Namen die Erweiterung hinzu (z. B. „myfile.py“ oder „myfile.txt“)  
 
@@ -80,11 +80,11 @@ So greifen Sie auf das Terminal zu
 1. Wählen Sie ein **Computeziel** aus, oder erstellen Sie ein neues Ziel, und warten Sie, bis es ausgeführt wird.
 1. Wählen Sie das Symbol **Terminal öffnen** aus.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Erstellen einer neuen Datei":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Öffnen Sie ein Terminal.":::
 
 1. Wird das Symbol nicht angezeigt, wählen Sie **...** rechts neben dem Computeziel und dann **Terminal öffnen** aus.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Erstellen einer neuen Datei":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminal öffnen über...":::
 
 
 Erfahren Sie mehr über das [Klonen von Git-Repositorys in Ihrem Arbeitsbereichsdateisystem](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
@@ -113,10 +113,10 @@ Sie können Jupyter oder JupyterLab auch über die Notebook-Symbolleiste starten
 
 Verwenden Sie den Fokusmodus, um Ihre aktuelle Ansicht zu erweitern, sodass Sie sich auf Ihre aktiven Registerkarten konzentrieren können. Der Fokusmodus blendet den Datei-Explorer für Notebooks aus.
 
-1. Wählen Sie auf der Symbolleiste des Terminalfensters **Fokusmodus** aus, um den Fokusmodus zu aktivieren. Abhängig von Ihrer Fensterbreite befindet sich diese möglicherweise unter dem Menüpunkt **...** auf Ihrer Symbolleiste.
-1. Kehren Sie im Fokusmodus zur Standardansicht zurück, indem Sie **Standardansicht** auswählen.
+1. Wählen Sie auf der Symbolleiste des Terminalfensters **Fokusmodus** aus, um den Fokusmodus zu aktivieren. Abhängig von Ihrer Fensterbreite befindet sich diese möglicherweise unter dem Menüpunkt **...** auf Ihrer Symbolleiste.
+1. Kehren Sie im Fokusmodus zur Standardansicht zurück, indem Sie **Standardansicht** auswählen.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Erstellen einer neuen Datei":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Wechsel zwischen Fokusmodus/Standardansicht":::
 
 
 ### <a name="use-intellisense"></a>Verwenden von IntelliSense
@@ -136,20 +136,20 @@ Im Laufe der Erstellung eines Notebooks verfügen Sie in der Regel über Zellen,
 1. Führen Sie alle Notebookzellen aus.
 1. Wählen Sie die Zelle aus mit dem Code aus, den das neue Notebook ausführen soll, beispielsweise Code zum Übermitteln eines Experiments oder vielleicht Code zum Registrieren eines Modells.
 1. Wählen Sie das Symbol **Sammeln** aus, das auf der Symbolleiste für Zellen angezeigt wird.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Erstellen einer neuen Datei":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Screenshot: Auswählen des Symbols „Sammeln“":::
 1. Geben Sie den Namen für das neue „gesammelte“ Notebook ein.  
 
 Das neue Notebook enthält nur Codezellen. Dabei müssen alle Zellen die gleichen Ergebnisse wie die Zelle generieren, die Sie für die Sammlung ausgewählt haben.
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Speichern eines Notebooks und Hinzufügen eines Prüfpunkts
 
-Azure Machine Learning erstellt eine Prüfpunktdatei, wenn Sie eine  *IPYNB* -Datei erstellen.
+Azure Machine Learning erstellt eine Prüfpunktdatei, wenn Sie eine *IPYNB* -Datei erstellen.
 
 Wählen Sie in der Notebook-Symbolleiste das Menü und dann **Datei&gt;Save and Checkpoint** (Speichern und Prüfpunkt), um das Notebook manuell zu speichern. Dadurch wird eine dem Notebook zugeordnete Prüfpunktdatei hinzugefügt.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Erstellen einer neuen Datei":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Screenshot des Speichertools auf der Notebook-Symbolleiste":::
 
-Jedes Notebook wird alle 30 Sekunden automatisch gespeichert.  Das automatische Speichern aktualisiert nur die ursprüngliche  *IPYNB* -Datei, nicht die Prüfpunktdatei.
+Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Die automatische Speicherung aktualisiert nur die ursprüngliche *IPYNB* -Datei, nicht die Prüfpunktdatei.
  
 Wählen Sie **Checkpoints** (Prüfpunkte) im Notebook-Menü aus, um einen benannten Prüfpunkt zu erstellen und das Notebook auf einen gespeicherten Prüfpunkt zurückzusetzen.
 
@@ -181,7 +181,7 @@ Um ein Experiment von einem Notebook aus durchzuführen, stellen Sie zunächst e
 
 1. Wählen Sie **+** auf der Notebook-Symbolleiste aus. 
 2. Benennen Sie die Computeinstanz, und wählen Sie eine **VM-Größe** aus. 
-3. Klicken Sie auf **Erstellen** .
+3. Klicken Sie auf **Erstellen**.
 4. Die Computeinstanz wird automatisch mit dem Notebook verbunden, und Sie können jetzt Ihre Zellen ausführen.
 
 Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  Ihre **Benutzerdateien** werden getrennt vom virtuellen Computer gespeichert und von allen Computeinstanzen im Arbeitsbereich gemeinsam genutzt.
@@ -218,7 +218,7 @@ Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Com
 1. Wählen Sie auf der Notebook-Symbolleiste [**Terminal öffnen**](#terminal) aus.
 1. Verwenden Sie das Terminalfenster, um eine neue Umgebung zu erstellen.  Beispielsweise erstellt der folgende Code `newenv`:
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. Aktivieren Sie die Umgebung.  Beispielsweise nach dem Erstellen von `newenv`:
 
@@ -228,8 +228,8 @@ Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Com
 1. Installieren Sie das pip- und ipykernel-Paket in der neuen Umgebung, und erstellen Sie einen Kernel für diese conda-Umgebung.
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996179"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480359"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 
@@ -37,12 +37,12 @@ Hier ein Überblick über den Aufbau von Azure:
 - Zwei Oracle-Datenbanken mit Data Guard (primär und Standby)
 - Zwei Oracle-Datenbanken mit Golden Gate oder Data Guard (nur am primären Standort)
 - Zwei Anwendungsdienste, einer am primären und einer am DR-Standort
-- Eine *Verfügbarkeitsgruppe*, die für Datenbank- und Anwendungsdienste am primären Standort verwendet wird
+- Eine *Verfügbarkeitsgruppe* , die für Datenbank- und Anwendungsdienste am primären Standort verwendet wird
 - Eine Jumpbox an jedem Standort, die den Zugriff auf das private Netzwerk einschränkt und nur Anmeldung durch einen Administrator zulässt
 - Jumpbox, Anwendungsdienst, Datenbank und VPN-Gateway befinden sich in separaten Subnetzen
 - Netzwerksicherheitsgruppe (Network Security Group, NSG) wird auf den Anwendungs- und Datenbanksubnetzen erzwungen
 
-![Screenshot der DR-Topologieseite](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Diagramm mit primären und DR-Standorten in Azure.](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Szenario 2: Lokaler primärer Standort und DR-Standort in Azure
 
@@ -68,7 +68,7 @@ Hier ein Überblick über den Aufbau von Azure:
 - Eine NSG-Richtlinie/Regel, um den eingehenden TCP-Port 1521 (oder einen benutzerdefinierten) zuzulassen
 - Eine NSG-Richtlinie/Regel, damit nur die lokale/n IP-Adresse/n (Datenbank oder Anwendung) auf das virtuelle Netzwerk zugreifen kann/können
 
-![Screenshot der DR-Topologieseite](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Diagramm: Direkte Verbindungen zwischen dem lokalen Standort und Azure, für die TCP-Ports in der Firewall geöffnet sein müssen.](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Site-to-Site-VPN
 Das Site-to-Site-VPN ist ein besserer Ansatz. Weitere Informationen zum Einrichten eines VPN finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md).

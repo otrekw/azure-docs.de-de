@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87479845"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426546"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -58,7 +58,7 @@ So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 
 3. Listen Sie mit **Get-AzRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
 
-Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
@@ -142,7 +142,7 @@ Wählen Sie eine unterstützte Region aus. Wenn Sie eine nicht unterstützte Reg
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Was ist, wenn ich den Status „Fehler beim Laden“ unter der Seite mit den NSG-Datenflussprotokollen erhalte?
 
-Der Anbieter „Microsoft.Insights“ muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl, und führen Sie dann die folgenden Befehle über PowerShell aus:
+Der Microsoft.Insights-Anbieter muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl, und führen Sie dann die folgenden Befehle über PowerShell aus:
 
 ```powershell-interactive
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
@@ -345,7 +345,7 @@ Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
         
 ### <a name="keyboard-navigation-on-the-map"></a>Tastaturnavigation auf der Karte
     
-- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten (**Azure-Rechenzentrum** oder **Land/Region**) in der Kartenansicht.
+- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten ( **Azure-Rechenzentrum** oder **Land/Region** ) in der Kartenansicht.
 - Um zu anderen hervorgehobenen Knoten auf der Karte zu gelangen, drücken Sie für die Vorwärtsbewegung entweder die Taste `Tab` oder `Right arrow`. Drücken Sie für die Rückwärtsbewegung `Shift+Tab` oder die Taste `Left arrow`.
 - Zur Auswahl eines markierten Knotens in der Karte verwenden Sie `Enter` oder die Taste `Down arrow`.
 - Bei Auswahl eines solchen Knotens wird der Fokus auf die **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus auf die geschlossene Schaltfläche in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
@@ -364,7 +364,7 @@ Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
 Die Seite mit der Topologie der virtuellen Netzwerke hat zwei Hauptabschnitte:
     
 - **Banner:** Das Banner in der Topologie der virtuellen Netzwerke bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z.B. verbundene virtuelle Netzwerke, getrennte virtuelle Netzwerke und öffentliche IP-Adressen). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven virtuellen Netzwerke in Ihrer Bereitstellung hervorgehoben.
-- **Topology**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter den virtuellen Netzwerken gezeigt.
+- **Topology** : Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter den virtuellen Netzwerken gezeigt.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
     
@@ -375,7 +375,7 @@ Die Seite mit der Topologie der virtuellen Netzwerke hat zwei Hauptabschnitte:
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Tastaturnavigation in der Topologie
     
-- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zum hervorgehobenen Knoten (**VNet**) in der Topologieansicht.
+- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zum hervorgehobenen Knoten ( **VNet** ) in der Topologieansicht.
 - Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
 - Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` oder `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
 - Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.
@@ -386,7 +386,7 @@ Die Seite mit der Topologie der virtuellen Netzwerke hat zwei Hauptabschnitte:
 Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
     
 - **Banner:** Das Banner in der Topologie der Subnetze bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z.B. „Aktiv“, „Mittel“ und „Gatewaysubnetze“). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven Subnetze in Ihrer Bereitstellung hervorgehoben.
-- **Topology**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter den virtuellen Subnetzen gezeigt.
+- **Topology** : Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter den virtuellen Subnetzen gezeigt.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
     
@@ -397,7 +397,7 @@ Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Tastaturnavigation in der Topologie
     
-- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten (**Subnetz**) in der Topologieansicht.
+- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten ( **Subnetz** ) in der Topologieansicht.
 - Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
 - Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
 - Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.    

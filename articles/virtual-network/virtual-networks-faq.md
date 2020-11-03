@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d676d891683cc11dd8c1999c26464373d17e97be
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932021"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518006"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -283,10 +283,10 @@ Nein. Bei sich überlappenden Adressbereichen ist kein VNET-Peering möglich.
 Für das Erstellen einer VNET-Peeringverbindung fallen keine Gebühren an. Die Datenübertragung über Peeringverbindungen wird in Rechnung gestellt. [Siehe hier](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Wird VNET-Peeringdatenverkehr verschlüsselt?
-Nein. Datenverkehr zwischen Ressourcen in per Peering verknüpften VNETs ist privat und isoliert. Er bleibt vollständig im Microsoft-Backbone.
+Wenn Azure-Datenverkehr zwischen Rechenzentren (außerhalb physischer Grenzen, die nicht von Microsoft oder im Auftrag von Microsoft kontrolliert werden) bewegt wird, wird auf der zugrunde liegenden Netzwerkhardware eine [MACsec-Verschlüsselung der Sicherungsschicht](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) verwendet.  Dies gilt für VNET-Peeringdatenverkehr.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Warum hat meine Peeringverbindung den Status *Getrennt*?
-VNET-Peeringverbindungen wechseln in den Status *Getrennt*, wenn ein VNET-Peeringlink gelöscht wird. Sie müssen beide Links löschen, um erfolgreich eine Peeringverbindung wiederherzustellen.
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Warum hat meine Peeringverbindung den Status *Getrennt* ?
+VNET-Peeringverbindungen wechseln in den Status *Getrennt* , wenn ein VNET-Peeringlink gelöscht wird. Sie müssen beide Links löschen, um erfolgreich eine Peeringverbindung wiederherzustellen.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Wenn ich eine Peeringverbindung zwischen VNetA und VNetB sowie VNetB und VNetC herstelle, bedeutet dies, dass eine Peeringverbindung zwischen VNetA und VNetC besteht?
 Nein. Transitives Peering wird nicht unterstützt. Sie müssen hierzu eine Peeringverbindung zwischen VNetA und VNetC herstellen.
@@ -326,7 +326,7 @@ Das Schützen einer Azure-Dienstressource über Dienstendpunkte erfolgt in zwei 
 1. Aktivieren von Dienstendpunkten für den Azure-Dienst
 2. Einrichten von VNET-ACLs für den Azure-Dienst
 
-Der erste Schritt ist ein netzwerkseitiger Vorgang, und der zweite Schritt ist ein Vorgang auf der Seite der Dienstressource. Beide Schritte können durch denselben oder verschiedene Administratoren erfolgen, basierend auf den RBAC-Berechtigungen der Administratorrolle. Es wird empfohlen, zunächst Dienstendpunkte für Ihr virtuelles Netzwerk zu aktivieren, bevor Sie VNET-ACLs auf der Seite des Azure-Diensts einrichten. Die Schritte müssen daher in der oben angegebenen Reihenfolge ausgeführt werden, um VNET-Dienstendpunkte einzurichten.
+Der erste Schritt ist ein netzwerkseitiger Vorgang, und der zweite Schritt ist ein Vorgang auf der Seite der Dienstressource. Beide Schritte können durch denselben oder verschiedene Administratoren erfolgen, basierend auf den Azure RBAC-Berechtigungen der Administratorrolle. Es wird empfohlen, zunächst Dienstendpunkte für Ihr virtuelles Netzwerk zu aktivieren, bevor Sie VNET-ACLs auf der Seite des Azure-Diensts einrichten. Die Schritte müssen daher in der oben angegebenen Reihenfolge ausgeführt werden, um VNET-Dienstendpunkte einzurichten.
 
 >[!NOTE]
 > Beide der oben beschriebenen Verfahren müssen ausgeführt werden, bevor Sie den Zugriff auf den Azure-Dienst auf das zulässige VNET und Subnetz einschränken können. Wenn Sie nur die Dienstendpunkte für den Azure-Dienst auf der Netzwerkseite aktivieren, erhalten Sie noch keinen eingeschränkten Zugriff. Sie müssen zusätzlich auch VNET-ACLs auf der Seite des Azure-Diensts festlegen.

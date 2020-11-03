@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319978"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457961"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Microsoft 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, mit der sie E-Mails an andere Personen senden und diese anrufen können. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um den integrierten Scheduler zu deaktiv
 Führen Sie die folgenden Schritte aus, um die geplante Aufgabe zu deaktivieren, mit der jeweils im Abstand von drei Stunden ein Synchronisierungszyklus ausgelöst wird:
 
 1. Starten Sie im **Startmenü** die **Aufgabenplanung**.
-2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe namens **Azure AD-Synchronisierungsplaner**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Deaktivieren** aus.  
+2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe namens **Azure AD-Synchronisierungsplaner** , klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Deaktivieren** aus.  
    ![Aufgabenplanung](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
 3. Sie können jetzt Konfigurationsänderungen vornehmen und das Synchronisierungsmodul manuell über die Konsole **Synchronization Service Manager** ausführen.
 
@@ -116,7 +116,7 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
    ![Screenshot: Verzeichnispartitionen im Fenster „Eigenschaften“](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Wenn Sie Ihre lokale Active Directory-Infrastruktur geändert und der Gesamtstruktur Domänen hinzugefügt oder daraus entfernt haben, können Sie auf die Schaltfläche **Aktualisieren** klicken, um eine aktualisierte Liste zu erhalten. Beim Aktualisieren werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie Anmeldeinformationen an, die Ihnen den Lesezugriff auf Windows Server Active Directory ermöglichen. Es muss sich nicht um den Benutzer handeln, der im Dialogfeld bereits angegeben ist.  
    ![Aktualisierung erforderlich](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
-6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, werden Sie in einer Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.
+6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften** , indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, werden Sie in einer Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.
 7. Fahren Sie mit dem Anpassen der Ausführungsprofile fort.
 
 #### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Wählen Sie die zu synchronisierenden Domänen mit dem Azure AD Connect-Assistenten aus.
@@ -124,10 +124,10 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
 
 1.  Starten Sie den Azure AD Connect-Assistenten.
 2.  Klicken Sie auf **Konfigurieren**.
-3.  Wählen Sie **Synchronisierungsoptionen anpassen**, und klicken Sie auf **Weiter**.
+3.  Wählen Sie **Synchronisierungsoptionen anpassen** , und klicken Sie auf **Weiter**.
 4.  Geben Sie Ihre Azure AD-Anmeldeinformationen ein.
 5.  Klicken Sie auf dem Bildschirm **Verbundene Verzeichnisse**  auf **Weiter**.
-6.  Klicken Sie auf der Seite **Filtern von Domänen und Organisationseinheiten** auf **Aktualisieren**.  Neue Domänen werden nun angezeigt und gelöschte Domänen werden ausgeblendet.
+6.  Klicken Sie auf der Seite **Filtern von Domänen und Organisationseinheiten** auf **Aktualisieren**.  Neue Domänen werden nun angezeigt, und gelöschte Domänen werden ausgeblendet.
    ![Partitionen](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Aktualisieren von Ausführungsprofilen
@@ -178,7 +178,7 @@ Führen Sie zum Konfigurieren der auf Organisationseinheiten basierenden Filteru
    * Wählen Sie eine beliebige andere Organisationseinheit aus, in der Benutzer, iNetOrgPersons, Gruppen, Kontakte und Computer enthalten sind. In der Abbildung befinden sich all diese Organisationseinheiten in der Organisationseinheit „ManagedObjects“.
    * Wenn Sie die gruppenbasierte Filterung verwenden, muss die Organisationseinheit, zu der die Gruppe gehört, enthalten sein.
    * Hinweis: Sie können konfigurieren, ob neue Organisationseinheiten, die nach Abschluss der Filterkonfiguration hinzugefügt wurden, synchronisiert werden sollen. Weitere Details finden Sie im nächsten Abschnitt.
-7. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken.
+7. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften** , indem Sie auf **OK** klicken.
 8. Um die Konfiguration abzuschließen, müssen Sie einen **vollständigen Import** und eine **Deltasynchronisierung** durchführen. Fahren Sie mit dem Abschnitt [Anwenden und Überprüfen von Änderungen](#apply-and-verify-changes) fort.
 
 ### <a name="synchronize-new-ous"></a>Synchronisieren neuer Organisationseinheiten
@@ -212,9 +212,9 @@ Die attributbasierte Filterung ist die flexibelste Möglichkeit zum Filtern von 
 Die Filterung kann sowohl in [eingehender](#inbound-filtering) Richtung von Active Directory zur Metaverse als auch in [ausgehender](#outbound-filtering) Richtung von der Metaverse zu Azure AD angewendet werden. Es wird empfohlen, die eingehende Filterung anzuwenden, da dies am einfachsten zu verwalten ist. Die ausgehende Filterung sollte nur verwendet werden, wenn Objekte aus mehreren Gesamtstrukturen verknüpft werden müssen, bevor die Auswertung stattfinden kann.
 
 ### <a name="inbound-filtering"></a>Eingehende Filterung
-Bei der eingehenden Filterung wird die Standardkonfiguration genutzt, bei der für an Azure AD gesendete Objekte das Metaverse-Attribut „cloudFiltered“ nicht auf einen Wert festgelegt sein darf, damit die Synchronisierung erfolgen kann. Wenn der Wert dieses Attributs auf **TRUE**festgelegt ist, wird das Objekt nicht synchronisiert. Es sollte nicht standardmäßig auf **FALSE** festgelegt sein. Um sicherzustellen, dass über andere Regeln ein Wert beigetragen werden kann, sollte dieses Attribut nur über die Werte **TRUE** oder **NULL** (nicht vorhanden) verfügen.
+Bei der eingehenden Filterung wird die Standardkonfiguration genutzt, bei der für an Azure AD gesendete Objekte das Metaverse-Attribut „cloudFiltered“ nicht auf einen Wert festgelegt sein darf, damit die Synchronisierung erfolgen kann. Wenn der Wert dieses Attributs auf **TRUE** festgelegt ist, wird das Objekt nicht synchronisiert. Es sollte nicht standardmäßig auf **FALSE** festgelegt sein. Um sicherzustellen, dass über andere Regeln ein Wert beigetragen werden kann, sollte dieses Attribut nur über die Werte **TRUE** oder **NULL** (nicht vorhanden) verfügen.
 
-Bei der eingehenden Filterung nutzen Sie die Leistungsfähigkeit des **Bereichs**, um zu ermitteln, welche Objekte synchronisiert werden sollen. Hierbei nehmen Sie die Anpassungen vor, um die Anforderungen Ihres Unternehmens zu erfüllen. Das Bereichsmodul verfügt über die Elemente **group** (Gruppe) und **clause** (Klausel), um zu bestimmen, wann eine Synchronisierungsregel zum Bereich gehören soll. Eine Gruppe enthält eine oder mehrere Klauseln. Ein logisches „Und“ wird zwischen mehreren Klauseln und ein logisches „Oder“ zwischen mehreren Gruppen verwendet.
+Bei der eingehenden Filterung nutzen Sie die Leistungsfähigkeit des **Bereichs** , um zu ermitteln, welche Objekte synchronisiert werden sollen. Hierbei nehmen Sie die Anpassungen vor, um die Anforderungen Ihres Unternehmens zu erfüllen. Das Bereichsmodul verfügt über die Elemente **group** (Gruppe) und **clause** (Klausel), um zu bestimmen, wann eine Synchronisierungsregel zum Bereich gehören soll. Eine Gruppe enthält eine oder mehrere Klauseln. Ein logisches „Und“ wird zwischen mehreren Klauseln und ein logisches „Oder“ zwischen mehreren Gruppen verwendet.
 
 Beispiel:  
 ![Screenshot: Beispiel für das Hinzufügen von Bereichsfiltern](./media/how-to-connect-sync-configure-filtering/scope.png)  
@@ -235,7 +235,7 @@ Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert
 5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der **Operator** auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
    ![Eingehend 2 Bereich](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
 6. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
-7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Textfeld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
+7. Klicken Sie auf **Transformation hinzufügen** , und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Textfeld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 3 Transformation](./media/how-to-connect-sync-configure-filtering/inbound3.png)
 8. Um die Konfiguration abzuschließen, müssen Sie eine **vollständige Synchronisierung** durchführen. Fahren Sie mit dem Abschnitt [Anwenden und Überprüfen von Änderungen](#apply-and-verify-changes) fort.
 
@@ -244,7 +244,7 @@ Das Ausdrücken der positiven Filterung kann mit mehr Aufwand verbunden sein. Si
 
 Die positive Filterung erfordert zwei Synchronisierungsregeln. Sie benötigen eine Regel (oder mehrere) mit dem richtigen Bereich der zu synchronisierenden Objekte. Darüber hinaus benötigen Sie eine zweite Catchall-Synchronisierungsregel, die alle Objekte herausfiltert, die noch nicht als ein zu synchronisierendes Objekt identifiziert wurden.
 
-Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das department-Attribut den Wert **Sales**hat.
+Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das department-Attribut den Wert **Sales** hat.
 
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
@@ -254,14 +254,14 @@ Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das d
 5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
    ![Eingehend 5 Bereich](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
 6. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
-7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **False** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
+7. Klicken Sie auf **Transformation hinzufügen** , und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **False** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 6 Transformation](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
    Dies ist ein Sonderfall, in dem cloudFiltered explizit auf **FALSE** festgelegt wird.
 8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 99). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.  
    ![Eingehend 7 Beschreibung](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
 9. Lassen Sie **Scoping filter** leer, und klicken Sie auf **Next**. Ein leerer Filter gibt an, dass die Regel nicht auf alle Objekte angewendet wird.
 10. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
-11. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
+11. Klicken Sie auf **Transformation hinzufügen** , und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
     ![Eingehend 3 Transformation](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
 12. Um die Konfiguration abzuschließen, müssen Sie eine **vollständige Synchronisierung** durchführen. Fahren Sie mit dem Abschnitt [Anwenden und Überprüfen von Änderungen](#apply-and-verify-changes) fort.
 
@@ -314,7 +314,7 @@ Wenn Sie zufrieden sind, können Sie die Änderungen nach Azure AD exportieren.
 Jetzt ist es an der Zeit, den Scheduler wieder zu aktivieren.
 
 1. Starten Sie im **Startmenü** die **Aufgabenplanung**.
-2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe mit dem Namen **Azure AD-Synchronisierungsplaner**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Aktivieren** aus.
+2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe mit dem Namen **Azure AD-Synchronisierungsplaner** , klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Aktivieren** aus.
 
 ## <a name="group-based-filtering"></a>Gruppenbasierte Filterung
 Die gruppenbasierte Filterung kann bei der erstmaligen Installation von Azure AD Connect als [benutzerdefinierte Installation](how-to-connect-install-custom.md#sync-filtering-based-on-groups) konfiguriert werden. Die Option ist für Pilotbereitstellungen gedacht, bei denen nur ein kleiner Satz von Objekten synchronisiert werden soll. Wenn Sie die gruppenbasierte Filterung deaktiviert haben, können Sie sie nicht mehr aktivieren. Die Verwendung der gruppenbasierten Filterung in einer benutzerdefinierten Konfiguration wird *nicht unterstützt*. Die Konfiguration dieses Features wird nur mit dem Installations-Assistenten unterstützt. Wenn Sie Ihr Pilotprojekt abgeschlossen haben, sollten Sie eine der anderen Filteroptionen in diesem Thema verwenden. Wenn Sie die organisationseinheitenbasierte Filterung zusammen mit der gruppenbasierten Filterung verwenden, müssen die Organisationseinheiten mit den Gruppen- und Mitgliedsobjekten eingeschlossen werden.

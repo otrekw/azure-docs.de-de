@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76937454"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489607"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS-Metriken und -Warnungen
 Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur ausführt. Dieser Artikel beschreibt die Metriken und Warnungen für den Azure DNS-Dienst.
@@ -55,9 +55,9 @@ Die Metrik *Anzahl der Recordsets* zeigt die Anzahl der Recordsets in Azure DNS 
 
 
 ### <a name="record-set-capacity-utilization"></a>Kapazitätsauslastung von Datensatzgruppen
-Die Metrik *Kapazitätsauslastung der Recordsets* in Azure DNS zeigt den Prozentsatz der Auslastung der Recordsetkapazität für eine DNS-Zone an. Für jede DNS-Zone in Azure DNS gilt ein Recordsetgrenzwert, der die maximale Anzahl von Recordsets definiert, die für die Zone zulässig sind (siehe [DNS-Grenzwerte](dns-zones-records.md#limits)). Daher zeigt diese Metrik, wie weit Sie noch von diesem Recordsetgrenzwert entfernt sind. Wenn Sie beispielsweise 500 Recordsets für Ihre DNS-Zone konfiguriert haben und die Zone den Standardgrenzwert für Recordsets von 5.000 aufweist, zeigt die Metrik RecordSetCapacityUtilization den Wert 10 % an (der durch Division von 500 durch 5.000 ermittelt wird). Die Maßeinheit ist **Prozentsatz**, und der Typ der **Aggregation** ist **Maximum**. Wählen Sie zum Anzeigen dieser Metrik „Metriken (Vorschau)“ in der Explorer-Benutzeroberfläche auf der Registerkarte „Überwachen“ im Azure-Portal aus. Wählen Sie Ihre DNS-Zone aus der Dropdownliste „Ressource“ aus, wählen Sie die Metrik „Kapazitätsauslastung der Recordsets“ aus, und wählen Sie dann „Max“ als „Aggregation“ aus. Der Screenshot unten zeigt ein Beispiel. Weitere Informationen zur Benutzeroberfläche des Metrik-Explorers und zur Diagrammerstellung finden Sie unter [Metrik-Explorer von Azure Monitor](../azure-monitor/platform/metrics-charts.md). 
+Die Metrik *Kapazitätsauslastung der Recordsets* in Azure DNS zeigt den Prozentsatz der Auslastung der Recordsetkapazität für eine DNS-Zone an. Für jede DNS-Zone in Azure DNS gilt ein Recordsetgrenzwert, der die maximale Anzahl von Recordsets definiert, die für die Zone zulässig sind (siehe [DNS-Grenzwerte](dns-zones-records.md#limits)). Daher zeigt diese Metrik, wie weit Sie noch von diesem Recordsetgrenzwert entfernt sind. Wenn Sie beispielsweise 500 Recordsets für Ihre DNS-Zone konfiguriert haben und die Zone den Standardgrenzwert für Recordsets von 5.000 aufweist, zeigt die Metrik RecordSetCapacityUtilization den Wert 10 % an (der durch Division von 500 durch 5.000 ermittelt wird). Die Maßeinheit ist **Prozentsatz** , und der Typ der **Aggregation** ist **Maximum**. Wählen Sie zum Anzeigen dieser Metrik „Metriken (Vorschau)“ in der Explorer-Benutzeroberfläche auf der Registerkarte „Überwachen“ im Azure-Portal aus. Wählen Sie Ihre DNS-Zone aus der Dropdownliste „Ressource“ aus, wählen Sie die Metrik „Kapazitätsauslastung der Recordsets“ aus, und wählen Sie dann „Max“ als „Aggregation“ aus. Der Screenshot unten zeigt ein Beispiel. Weitere Informationen zur Benutzeroberfläche des Metrik-Explorers und zur Diagrammerstellung finden Sie unter [Metrik-Explorer von Azure Monitor](../azure-monitor/platform/metrics-charts.md). 
 
-![Anzahl von Datensatzgruppen](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Screenshot mit einer Beispielanzeige von Metriken.](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *Abbildung: Metriken zur Azure DNS-Kapazitätsauslastung der Recordsets*
 

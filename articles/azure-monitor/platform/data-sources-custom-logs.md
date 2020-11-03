@@ -1,21 +1,24 @@
 ---
-title: Erfassen benutzerdefinierter Protokolle in Azure Monitor | Microsoft-Dokumentation
+title: Sammeln von benutzerdefinierten Protokollen mit dem Log Analytics-Agent in Azure Monitor
 description: Azure Monitor kann Ereignisse aus Textdateien auf Windows- und Linux-Computern erfassen.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die in Azure Monitor erstellt werden.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269487"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461565"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von benutzerdefinierten Protokollen mit dem Log Analytics-Agent in Azure Monitor
 
-Mithilfe der Datenquelle „Benutzerdefinierte Protokolle“ in Azure Monitor können Ereignisse aus Textdateien auf Windows- und Linux-Computern erfasst werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien. Die erfassten Daten können entweder in Ihren Abfragen zu einzelnen Feldern aufgeschlüsselt oder während der Erfassung in einzelne Felder extrahiert werden.
+Mithilfe der Datenquelle „Benutzerdefinierte Protokolle“ für den Log Analytics-Agent in Azure Monitor können Ereignisse aus Textdateien auf Windows- und Linux-Computern erfasst werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien. Die erfassten Daten können entweder in Ihren Abfragen zu einzelnen Feldern aufgeschlüsselt oder während der Erfassung in einzelne Felder extrahiert werden.
+
+> [!IMPORTANT]
+> In diesem Artikel wird das Sammeln von benutzerdefinierten Protokollen mit dem [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![Benutzerdefinierte Protokollsammlung](media/data-sources-custom-logs/overview.png)
 
@@ -61,7 +64,7 @@ Das Standardtrennzeichen **Neue Zeile** wird für Protokolldateien verwendet, di
 
 Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in Azure Monitor gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, zu dem Azure Monitor den Eintrag erfasst hat.
 
-1. Klicken Sie auf **Durchsuchen**, und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
+1. Klicken Sie auf **Durchsuchen** , und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
 2. Klicken Sie auf **Weiter**.
 3. Der Assistent für benutzerdefinierte Protokolle lädt die Datei hoch und führt die ermittelten Datensätze auf.
 4. Ändern Sie das Trennzeichen, das zur Identifizierung eines neuen Datensatzes verwendet wird, und wählen Sie das Trennzeichen aus, das für die Einträge in Ihrer Protokolldatei am besten geeignet ist.
@@ -101,12 +104,12 @@ Sobald Azure Monitor mit der Erfassung von Einträgen aus dem benutzerdefinierte
 > Sollte die RawData-Eigenschaft in der Abfrage nicht vorhanden sein, müssen Sie unter Umständen Ihren Browser schließen und wieder öffnen.
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Schritt 6: Analysieren der Einträge des benutzerdefinierten Protokolls
-Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawData**gespeichert.  Wahrscheinlich möchten Sie die verschiedenen Einzelinformationen der jeweiligen Einträge auf einzelne Eigenschaften für jeden Datensatz aufteilen. Optionen zum Aufschlüsseln von **RawData** in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).
+Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawData** gespeichert.  Wahrscheinlich möchten Sie die verschiedenen Einzelinformationen der jeweiligen Einträge auf einzelne Eigenschaften für jeden Datensatz aufteilen. Optionen zum Aufschlüsseln von **RawData** in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).
 
 ## <a name="removing-a-custom-log"></a>Entfernen eines benutzerdefinierten Protokolls
 Gehen Sie im Azure-Portal wie folgt vor, um ein benutzerdefiniertes Protokoll zu entfernen, das Sie zuvor definiert haben:
 
-1. Klicken Sie im Menü **Daten** in den erweiterten **Einstellungen** für Ihren Arbeitsbereich auf **Benutzerdefinierte Protokolle**, um eine Liste mit allen Ihren benutzerdefinierten Protokollen anzuzeigen.
+1. Klicken Sie im Menü **Daten** in den erweiterten **Einstellungen** für Ihren Arbeitsbereich auf **Benutzerdefinierte Protokolle** , um eine Liste mit allen Ihren benutzerdefinierten Protokollen anzuzeigen.
 2. Klicken Sie neben dem benutzerdefinierten Protokoll, das Sie entfernen möchten, auf **Entfernen**.
 
 ## <a name="data-collection"></a>Datensammlung
@@ -152,7 +155,7 @@ Wir verwenden den Namen *MyApp_CL* und geben eine **Beschreibung** ein.
 ![Protokollname](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Überprüfen, ob die benutzerdefinierten Protokolle gesammelt werden
-Wir verwenden die einfache Abfrage *MyApp_CL*, um alle Datensätze aus dem gesammelten Protokoll zurückzugeben.
+Wir verwenden die einfache Abfrage *MyApp_CL* , um alle Datensätze aus dem gesammelten Protokoll zurückzugeben.
 
 ![Protokollabfrage ohne benutzerdefinierte Felder](media/data-sources-custom-logs/query-01.png)
 

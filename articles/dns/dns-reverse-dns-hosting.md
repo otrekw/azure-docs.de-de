@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709197"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489675"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hosten von Reverse-DNS-Lookupzonen in Azure DNS
 
@@ -33,7 +33,7 @@ In diesem Artikel werden die Schritte zum Erstellen Ihrer ersten Reverse-Lookup-
 
    ![Klicken auf „DNS-Zone“](./media/dns-reverse-dns-hosting/figure1.png)
 
-1. Benennen Sie Ihre DNS-Zone im Bereich **DNS-Zone erstellen**. Der Name der Zone wird für IPv4- und IPv6-Präfixe unterschiedlich definiert. Gehen Sie zum Benennen der Zone gemäß den Anweisungen für [IPv4](#ipv4) oder [IPv6](#ipv6) vor. Klicken Sie abschließend auf **Erstellen**, um die Zone zu erstellen.
+1. Benennen Sie Ihre DNS-Zone im Bereich **DNS-Zone erstellen**. Der Name der Zone wird für IPv4- und IPv6-Präfixe unterschiedlich definiert. Gehen Sie zum Benennen der Zone gemäß den Anweisungen für [IPv4](#ipv4) oder [IPv6](#ipv6) vor. Klicken Sie abschließend auf **Erstellen** , um die Zone zu erstellen.
 
 ### <a name="ipv4"></a>IPv4
 
@@ -48,7 +48,7 @@ Der Name einer IPv4-Reverse-Lookupzone basiert auf dem IP-Adressbereich, den sie
 
 Das folgende Beispiel zeigt, wie Sie über das Azure-Portal eine Reverse-DNS-Zone der Klasse C mit dem Namen `2.0.192.in-addr.arpa` in Azure DNS erstellen:
 
- ![Bereich „DNS-Zone erstellen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure2.png)
+ ![Screenshot, der zeigt, wie Sie über das Azure-Portal eine Reverse-DNS-Zone der Klasse C mit dem Namen „2.0.192.in-addr.arpa“ in Azure DNS erstellen.](./media/dns-reverse-dns-hosting/figure2.png)
 
 **Ressourcengruppenstandort** definiert den Standort für die Ressourcengruppe. Die Angabe hat keine Auswirkungen auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt.
 
@@ -115,16 +115,16 @@ Für Forward-Lookupzonen wird der Vorgang der Delegierung einer DNS-Zone unter [
 
 Im folgenden Beispiel wird die Erstellung eines PTR-Eintrags in einer Reverse-DNS-Zone in Azure DNS ausführlich erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md).
 
-1. Klicken Sie oben im Bereich **DNS-Zone** auf **+ Datensatzgruppe**, um den Bereich **Datensatzgruppe hinzufügen** zu öffnen.
+1. Klicken Sie oben im Bereich **DNS-Zone** auf **+ Datensatzgruppe** , um den Bereich **Datensatzgruppe hinzufügen** zu öffnen.
 
-   ![Schaltfläche zum Erstellen einer Datensatzgruppe](./media/dns-reverse-dns-hosting/figure4.png)
+   ![Screenshot des Bereichs der DNS-Zone mit einem Pfeil, der auf die Schaltfläche „+ Datensatzgruppe“ zeigt.](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. Der Name des Datensatzes für einen PTR-Eintrag muss der restliche Teil der IPv4-Adresse in umgekehrter Reihenfolge sein. 
 
    In diesem Beispiel werden die ersten drei Oktette bereits als Teil des Namens der Zone (.2.0.192) eingetragen. Aus diesem Grund wird im Feld **Name** nur das letzte Oktett angegeben. Eine Datensatzgruppe für eine Ressource mit der IP-Adresse 192.0.2.15 können Sie beispielsweise **15** nennen.  
 1. Wählen Sie unter **Typ** die Option **PTR** aus.  
 1. Geben Sie für **DOMÄNENNAME** den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Ressource an, die die IP-Adresse verwendet.
-1. Klicken Sie im unteren Bereich auf **OK**, um den DNS-Eintrag zu erstellen.
+1. Klicken Sie im unteren Bereich auf **OK** , um den DNS-Eintrag zu erstellen.
 
    ![Bereich „Datensatzgruppe hinzufügen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure5.png)
 
@@ -151,7 +151,7 @@ az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.a
 
 Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen PTR-Eintrags erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md).
 
-1. Klicken Sie oben im Bereich **DNS-Zone** auf **+ Datensatzgruppe**, um den Bereich **Datensatzgruppe hinzufügen** zu öffnen.
+1. Klicken Sie oben im Bereich **DNS-Zone** auf **+ Datensatzgruppe** , um den Bereich **Datensatzgruppe hinzufügen** zu öffnen.
 
    ![Schaltfläche zum Erstellen einer Datensatzgruppe](./media/dns-reverse-dns-hosting/figure6.png)
 
@@ -160,9 +160,9 @@ Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen P
    In diesem Beispiel wurden die ersten 64 Bits der IPv6-Adresse bereits als Teil des Zonennamens aufgefüllt (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa). Aus diesem Grund werden im Feld **Name** nur die letzten 64 Bits angegeben. Die letzten 64 Bits der IP-Adresse werden in umgekehrter Reihenfolge eingegeben, und die einzelnen hexadezimalen Zahlen werden jeweils durch einen Punkt getrennt. Eine Datensatzgruppe für eine Ressource, deren IP-Adresse 2001:0db8:abdc:0000:f524:10bc:1af9:405e lautet, kann beispielsweise wie mit **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** benannt werden.  
 3. Wählen Sie unter **Typ** die Option **PTR** aus.  
 4. Geben Sie für **DOMÄNENNAME** den FQDN der Ressource an, die die IP-Adresse verwendet.
-5. Klicken Sie im unteren Bereich auf **OK**, um den DNS-Eintrag zu erstellen.
+5. Klicken Sie im unteren Bereich auf **OK** , um den DNS-Eintrag zu erstellen.
 
-![Bereich „Datensatzgruppe hinzufügen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure7.png)
+![Screenshot des Bereichs „Datensatzgruppe hinzufügen“ mit einem Pfeil, der auf den Wert im Typfeld zeigt.](./media/dns-reverse-dns-hosting/figure7.png)
 
 Die folgenden Beispiele zeigen, wie diese Aufgabe mit PowerShell oder mit der Azure-Befehlszeilenschnittstelle durchgeführt wird:
 

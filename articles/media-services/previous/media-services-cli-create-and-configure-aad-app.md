@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258349"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427249"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Erstellen einer Azure AD-App mithilfe der Azure-Befehlszeilenschnittstelle und Konfigurieren ihres Zugriffs auf die Media Services-API
 
@@ -61,13 +61,13 @@ In diesem Beispiel ist der **scope** der vollständige Ressourcenpfad für das M
 
 So kann beispielsweise eine der folgenden Ebenen festgelegt sein:
  
-* Die **Abonnement**-Ebene.
-* Die **Ressourcengruppen**-Ebene.
-* Die **Ressourcen**-Ebene (z.B. ein Media-Konto).
+* Die **Abonnement** -Ebene.
+* Die **Ressourcengruppen** -Ebene.
+* Die **Ressourcen** -Ebene (z.B. ein Media-Konto).
 
 Weitere Informationen finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Siehe auch [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md). 
+Lesen Sie auch [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

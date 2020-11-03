@@ -2,17 +2,17 @@
 title: Übersicht über dedizierte Event Hubs – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Übersicht über dedizierte Azure Event Hubs, die Bereitstellungen von Event Hubs mit einzelnen Mandanten bieten.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/23/2020
+ms.openlocfilehash: 20b153c9093c96e7357a8e439b6655f1db80bd46
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322440"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516993"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
-*Event Hubs-Cluster* bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Einzelmandantangebot verfügt über ein garantiertes 99,99 %-SLA und ist nur in unserem Dedicated-Tarif verfügbar. Ein Event Hubs-Cluster kann Millionen eingehender Ereignisse pro Sekunde mit garantierter Kapazität und Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb des dedizierten Clusters erstellt werden, bieten alle Funktionen des Standardangebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Enthalten ist ferner die beliebte [Event Hubs Capture](event-hubs-capture-overview.md)-Funktion ohne zusätzliche Kosten, die es Ihnen ermöglicht, Datenströme zu Batches zusammenzufassen und in Azure Storage oder Azure Data Lake zu protokollieren. 
+*Event Hubs-Cluster* bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Einzelmandantangebot verfügt über ein garantiertes 99,99 %-SLA und ist nur in unserem Dedicated-Tarif verfügbar. Ein Event Hubs-Cluster kann Millionen Ereignisse pro Sekunde mit garantierter Kapazität und Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb des dedizierten Clusters erstellt werden, bieten alle Funktionen des Standardangebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Enthalten ist ferner die beliebte [Event Hubs Capture](event-hubs-capture-overview.md)-Funktion ohne zusätzliche Kosten, die es Ihnen ermöglicht, Datenströme zu Batches zusammenzufassen und in Azure Storage oder Azure Data Lake zu protokollieren. 
 
 Cluster werden in Form von **Kapazitätseinheiten (Capacity Units, CUs)** bereitgestellt und abgerechnet, einem vorab zugewiesenen Maß an CPU- und Arbeitsspeicherressourcen. Sie können für jeden Cluster 1, 2, 4, 8, 12, 16 oder 20 CUs erwerben. Wie viele eingehende Daten Sie pro CU erfassen und streamen können, hängt von einer Vielzahl verschiedener Faktoren ab, wie z. B. der Anzahl von Producern und Consumern, Form der Nutzlast, Ausgangsrate (Weitere Informationen finden Sie weiter unten in den Benchmarkergebnissen). 
 
@@ -25,13 +25,13 @@ Dedizierte Event Hubs bieten drei bestechende Vorteile für Kunden, die Kapazit�
 
 #### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Ein Einzelmandant garantiert Kapazität für bessere Leistung
 
-Ein dedizierter Cluster garantiert Kapazität in vollem Umfang und kann im Rahmen von bis zu Gigabytes eingehender Streamingdaten mit vollständig dauerhaftem Speicher und Wartezeiten von unter einer Sekunde erfassen, um jegliche Spitze im Datenverkehr zu verarbeiten. 
+Ein Dedicated-Cluster garantiert Kapazität in vollem Umfang und kann mehrere Gigabytes an eingehenden Streamingdaten mit vollständig dauerhaftem Speicher und Latenzen von unter einer Sekunde verarbeiten, sodass Bursts kein Problem mehr darstellen. 
 
 #### <a name="inclusive-and-exclusive-access-to-features"></a>Inklusiver und exklusiver Zugriff auf Funktionen 
-Das dedizierte Angebot umfasst Funktionen wie Capture ohne zusätzliche Kosten sowie exklusiven Zugriff auf bevorstehende Funktionen wie BYOK (Bring Your Own Key). Der Dienst verwaltet auch den Lastenausgleich, BS-Updates, Sicherheitspatches und Partitionierung für den Kunden, damit Sie weniger Zeit auf die Wartung der Infrastruktur verwenden müssen und mehr Zeit zum Erstellen von clientseitigen Features haben.  
+Das Dedicated-Angebot umfasst Funktionen wie Capture ohne zusätzliche Kosten sowie exklusiven Zugriff auf neue Features wie BYOK (Bring Your Own Key). Der Dienst verwaltet auch Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und Partitionierung für den Kunden, damit Sie weniger Zeit auf die Wartung der Infrastruktur verwenden müssen und mehr Zeit zum Erstellen von clientseitigen Features haben.  
 
 #### <a name="cost-savings"></a>Kostenersparnis
-Bei hohen Eingangsvolumen (> 100 TUs) kostet ein Cluster bedeutend weniger pro Stunde als der Kauf einer vergleichbaren Menge von Durchsatzeinheiten (TUs) im Standard-Tarifangebot.
+Bei hohen Eingangsvolumen (> 100 Durchsatzeinheiten) kostet ein Cluster bedeutend weniger pro Stunde als der Kauf einer vergleichbaren Menge an Durchsatzeinheiten im Standard-Angebot.
 
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Kontingente und Limits von Event Hubs Dedicated
@@ -53,38 +53,11 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
-Die Self-Service-Erfahrung zum [Erstellen eines Event Hubs-Clusters](event-hubs-dedicated-cluster-create-portal.md) über das [Azure-Portal](https://aka.ms/eventhubsclusterquickstart) befindet sich jetzt in der Vorschauphase. Wenden Sie Fragen haben oder Hilfe beim Onboarding von Event Hubs Dedicated benötigen, wenden Sie sich bitte an das [Event Hubs-Team](mailto:askeventhubs@microsoft.com).
+Die Self-Service-Funktion zum [Erstellen eines Event Hubs-Clusters](event-hubs-dedicated-cluster-create-portal.md) über das [Azure-Portal](https://aka.ms/eventhubsclusterquickstart) befindet sich jetzt in der Vorschauphase. Wenn Sie Fragen haben oder Hilfe beim Onboarding von Event Hubs Dedicated benötigen, wenden Sie sich an das [Event Hubs-Team](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Was kann ich mit einem Cluster erreichen?
-
-Welche Datenmengen Sie für einen Event Hubs-Cluster erfassen und streamen können, hängt von verschiedenen Faktoren ab, z.B. von den Producern, den Consumern, der Rate für die Erfassung und Verarbeitung und vielem mehr. 
-
-In der folgenden Tabelle sind die Ergebnisse aufgeführt, die bei unseren Vergleichstests erreicht wurden:
-
-| Form der Nutzlast | Empfänger | Eingangsbandbreite| Eingangsnachrichten | Ausgangsbandbreite | Ausgangsnachrichten | TUs gesamt | TUs pro CU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches von 100 x 1 KB | 2 | 400 MB/s | 400T Nachrichten/Sek. | 800 MB/s | 800T Nachrichten/Sek. | 400 TUs | 100 TUs | 
-| Batches von 10 x 10 KB | 2 | 666 MB/s | 66,6T Nachrichten/Sek. | 1,33 GB/s | 133T Nachrichten/Sek. | 666 TUs | 166 TUs |
-| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34T Nachrichten/Sek. | 1,05 GB/s | 34T Nachrichten/Sek. | 1\.000 TUs | 250 TUs |
-
-Bei den Tests wurden folgende Kriterien verwendet:
-
-- Es wurde ein Event Hubs-Cluster des Dedicated-Tarif mit vier Kapazitätseinheiten (Capacity Units, CUs) verwendet. 
-- Der für die Erfassung verwendete Event Hub umfasste 200 Partitionen. 
-- Die erfassten und von allen Partitionen eingehenden Daten wurden von zwei Empfängeranwendungen empfangen.
-
-#### <a name="can-i-scale-updown-my-cluster"></a>Kann ich meinen Cluster hoch-/herunterskalieren?
-
-Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rechnung gestellt. In der Vorschauversion der Self-Service-Erfahrung können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) an das Event Hubs-Team übermitteln unter *Technisch &gt; Kontingent &gt; Anforderung zum Hoch- oder Herunterskalieren eines dedizierten Clusters*, um Ihren Cluster hoch- oder herunterzuskalieren. Es kann bis zu 7 Tage dauern, bis die Anfrage zum zentralen Herunterskalieren abgeschlossen wird. 
-
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Wie wird die Geo-Notfallwiederherstellung mit meinem Cluster funktionieren?
-
-Sie können einen Namespace unter einem Cluster des Dedicated-Tarifs geografisch mit einem anderen Namespace unter einem Cluster des Dedicated-Tarifs koppeln. Wir empfehlen nicht, einen Namespace eines Dedicated-Tarifs mit einem Namespace in unserem Standardangebot zu koppeln, da das Durchsatzlimit inkompatibel ist und somit zu Fehlern führen wird. 
-
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Kann ich meine Standard-Namespaces migrieren, damit sie zu einem Cluster des Dedicated-Tarifs gehören?
-Zurzeit unterstützen wird keinen automatisierten Migrationsprozess für die Migration Ihrer Event Hubs-Daten von einem Standard-Namespace zu einem im Dedicated-Tarif. 
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

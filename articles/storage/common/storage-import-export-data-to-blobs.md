@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514214"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460732"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -51,7 +51,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 1. Stellen Sie die Verbindung Ihrer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
 2. Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
 3. Aktivieren Sie die BitLocker-Verschlüsselung auf dem NTFS-Volume. Wenn Sie ein Windows Server-System verwenden, lesen Sie die Anweisungen unter [Aktivieren von BitLocker auf Windows Server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-4. Kopieren Sie Daten in das verschlüsselte Volume. Verwenden Sie Drag & Drop oder Robocopy oder ein ähnliches Kopiertool. Eine Journaldatei (*JRN*) wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben.
+4. Kopieren Sie Daten in das verschlüsselte Volume. Verwenden Sie Drag & Drop oder Robocopy oder ein ähnliches Kopiertool. Eine Journaldatei ( *JRN* ) wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben.
 
    Wenn das Laufwerk gesperrt ist und Sie es entsperren müssen, können sich die Schritte zum Entsperren je nach Anwendungsfall unterscheiden.
 
@@ -73,7 +73,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    Eine Journaldatei wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben. Es werden noch zwei weitere Dateien erstellt: eine *XML*-Datei (im Ordner, in dem Sie das Tool ausführen) und die Datei *LaufwerkManifest.xml* (im Ordner, in dem sich die Daten befinden).
+    Eine Journaldatei wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben. Es werden noch zwei weitere Dateien erstellt: eine *XML* -Datei (im Ordner, in dem Sie das Tool ausführen) und die Datei *LaufwerkManifest.xml* (im Ordner, in dem sich die Daten befinden).
 
     Die verwendeten Parameter werden in der folgenden Tabelle beschrieben:
 
@@ -94,6 +94,8 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     > * Zusammen mit der Journaldatei wird auch eine `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei erstellt, und zwar im gleichen Ordner, in dem sich das Tool befindet. Die XML-Datei wird beim Erstellen eines Auftrags anstelle der Journaldatei verwendet, wenn die Journaldatei zu groß ist.
 
 ## <a name="step-2-create-an-import-job"></a>Schritt 2: Erstellen eines Importauftrags
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal zu erstellen.
 
@@ -139,9 +141,88 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 7. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
    * Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
-   * Klicken Sie auf **OK**, um den Importauftrag zu erstellen.
+   * Klicken Sie auf **OK** , um den Importauftrag zu erstellen.
 
      ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Führen Sie die folgenden Schritte aus, um einen Importauftrag über die Azure-Befehlszeilenschnittstelle zu erstellen.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Erstellen eines Auftrags
+
+1. Verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add), um die Erweiterung [az import-export](/cli/azure/ext/import-export/import-export) hinzuzufügen:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen:
+
+    ```azurecli
+    az group create --name myierg --location "West US"
+    ```
+
+1. Sie können ein vorhandenes Speicherkonto verwenden oder ein neues erstellen. Führen Sie den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) aus, um ein Speicherkonto zu erstellen:
+
+    ```azurecli
+    az storage account create --resource-group myierg --name myssdocsstorage --https-only
+    ```
+
+1. Um eine Liste der Standorte abzurufen, an die Sie Datenträger senden können, verwenden Sie den Befehl [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list):
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Verwenden Sie den Befehl [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show), um Standorte für Ihre Region abzurufen:
+
+    ```azurecli
+    az import-export location show --location "West US"
+    ```
+
+1. Führen Sie den folgenden Befehl [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) aus, um einen Importauftrag zu erstellen:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name MyIEjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --drive-list bit-locker-key=439675-460165-128202-905124-487224-524332-851649-442187 \
+            drive-header-hash= drive-id=AZ31BGB1 manifest-file=\\DriveManifest.xml \
+            manifest-hash=69512026C1E8D4401816A2E5B8D7420D \
+        --type Import \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --return-shipping carrier-name=FedEx carrier-account-number=123456789 \
+        --storage-account myssdocsstorage
+    ```
+
+   > [!TIP]
+   > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
+
+1. Verwenden Sie den Befehl [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie den Befehl [az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) aus:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>Schritt 3 (optional): Konfigurieren des kundenseitig verwalteten Schlüssels
 
@@ -151,11 +232,11 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-5-update-the-job-with-tracking-information"></a>Schritt 5: Aktualisieren des Auftrags mit Nachverfolgungsinformationen
+## <a name="step-5-update-the-job-with-tracking-information"></a>Schritt 5: Aktualisieren des Auftrags mit Nachverfolgungsinformationen
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-6-verify-data-upload-to-azure"></a>Schritt 6: Überprüfen des Datenuploads in Azure
+## <a name="step-6-verify-data-upload-to-azure"></a>Schritt 6: Überprüfen des Datenuploads in Azure
 
 Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, dass die Daten erfolgreich hochgeladen wurden.
 

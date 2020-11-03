@@ -15,18 +15,18 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652072"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458050"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
 
 ## <a name="how-password-hash-synchronization-works"></a>So funktioniert die Kennworthashsynchronisierung
-Der Active Directory-Domänendienst speichert Kennwörter in Form einer Hashwertdarstellung des tatsächlichen Benutzerkennworts. Ein Hashwert ist das Ergebnis einer unidirektionalen mathematischen Funktion (des „*Hashalgorithmus*“). Es ist nicht möglich, das Ergebnis einer unidirektionalen Funktion in die Nur-Text-Version eines Kennworts umzukehren. 
+Der Active Directory-Domänendienst speichert Kennwörter in Form einer Hashwertdarstellung des tatsächlichen Benutzerkennworts. Ein Hashwert ist das Ergebnis einer unidirektionalen mathematischen Funktion (des „ *Hashalgorithmus* “). Es ist nicht möglich, das Ergebnis einer unidirektionalen Funktion in die Nur-Text-Version eines Kennworts umzukehren. 
 
 Um Ihr Kennwort zu synchronisieren, extrahiert die Azure AD Connect-Synchronisierung den Kennworthash aus der lokalen Active Directory-Instanz. Vor der Synchronisierung mit dem Azure Active Directory-Authentifizierungsdienst wird der Kennworthash einer zusätzlichen Sicherheitsverarbeitung unterzogen. Kennwörter werden pro Benutzer und in chronologischer Reihenfolge synchronisiert.
 
@@ -91,9 +91,9 @@ Sie können sich mit einem synchronisierten Kennwort, das in der lokalen Umgebun
 
 ##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
-Wenn synchronisierte Benutzer vorhanden sind, die nur mit integrierten Azure AD-Diensten interagieren und auch eine Kennwortablaufrichtlinie einhalten müssen, können Sie die Einhaltung Ihrer Azure AD-Kennwortablaufrichtlinie erzwingen, indem Sie das *EnforceCloudPasswordPolicyForPasswordSyncedUsers*-Feature aktivieren.
+Wenn synchronisierte Benutzer vorhanden sind, die nur mit integrierten Azure AD-Diensten interagieren und auch eine Kennwortablaufrichtlinie einhalten müssen, können Sie die Einhaltung Ihrer Azure AD-Kennwortablaufrichtlinie erzwingen, indem Sie das *EnforceCloudPasswordPolicyForPasswordSyncedUsers* -Feature aktivieren.
 
-Wenn*EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standardeinstellung), legt Azure AD Connect das „PasswordPolicies“-Attribut von synchronisierten Benutzern auf „DisablePasswordExpiration“ fest. Dies erfolgt jedes Mal, wenn das Kennwort eines Benutzers synchronisiert wird, und weist Azure AD an, die Cloudkennwort-Ablaufrichtlinie für diesen Benutzer zu ignorieren. Sie können den Wert des Attributs mithilfe des Azure AD PowerShell-Moduls mit dem folgenden Befehl überprüfen:
+Wenn *EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standardeinstellung), legt Azure AD Connect das „PasswordPolicies“-Attribut von synchronisierten Benutzern auf „DisablePasswordExpiration“ fest. Dies erfolgt jedes Mal, wenn das Kennwort eines Benutzers synchronisiert wird, und weist Azure AD an, die Cloudkennwort-Ablaufrichtlinie für diesen Benutzer zu ignorieren. Sie können den Wert des Attributs mithilfe des Azure AD PowerShell-Moduls mit dem folgenden Befehl überprüfen:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Nach der Aktivierung des Features wechselt Azure AD nicht zu jedem synchronisierten Benutzer, um den `DisablePasswordExpiration`-Wert aus dem „PasswordPolicies“-Attribut zu entfernen. Stattdessen wird der Wert während der nächsten Kennwortsynchronisierung für jeden Benutzer auf `None` festgelegt, wenn das Kennwort beim nächsten Mal in der lokalen AD-Instanz geändert wird.  
+Nach der Aktivierung des Features wechselt Azure AD nicht zu jedem synchronisierten Benutzer, um den `DisablePasswordExpiration`-Wert aus dem „PasswordPolicies“-Attribut zu entfernen. Stattdessen wird der Wert `DisablePasswordExpiration` bei der nächsten Kennworthashsynchronisierung für jeden Benutzer nach der nächsten Kennwortänderung im lokalen Active Directory aus „PasswordPolicies“ entfernt.
 
 Es wird empfohlen, „EnforceCloudPasswordPolicyForPasswordSyncedUsers“ vor dem Aktivieren der Kennworthashsynchronisierung zu aktivieren, damit bei der Erstsynchronisierung von Kennworthashes dem „PasswordPolicies“-Attribut für die Benutzer nicht der `DisablePasswordExpiration`-Wert hinzugefügt wird.
 
@@ -178,10 +178,10 @@ Wenn Sie Azure AD Domain Services verwenden, um die Legacyauthentifizierung für
 1. Für jeden Benutzer, dessen Kennwort geändert wurde, führt Azure AD Connect die folgenden Schritte aus:
     * Generiert einen zufälligen symmetrischen AES-256-Bit-Schlüssel.
     * Generiert einen zufälligen Initialisierungsvektor, der für die erste Verschlüsselungsrunde erforderlich ist.
-    * Extrahiert Kerberos-Kennworthashes aus den *supplementalCredentials*-Attributen.
+    * Extrahiert Kerberos-Kennworthashes aus den *supplementalCredentials* -Attributen.
     * Überprüft die Einstellung *SyncNtlmPasswords* der Azure AD Domain Services-Sicherheitskonfiguration.
-        * Wenn diese Einstellung deaktiviert ist, wird ein zufälliger NTLM-Hash mit hoher Entropie generiert (der sich vom Kennwort des Benutzers unterscheidet). Dieser Hash wird dann mit den extrahierten Kerberos-Kennworthashes aus dem *supplementalCrendetials*-Attribut in einer Datenstruktur kombiniert.
-        * Wenn diese Einstellung aktiviert ist, wird der Wert des *unicodePwd*-Attributs mit den extrahierten Kerberos-Kennworthashes aus dem *supplementalCredentials*-Attribut in einer Datenstruktur kombiniert.
+        * Wenn diese Einstellung deaktiviert ist, wird ein zufälliger NTLM-Hash mit hoher Entropie generiert (der sich vom Kennwort des Benutzers unterscheidet). Dieser Hash wird dann mit den extrahierten Kerberos-Kennworthashes aus dem *supplementalCrendetials* -Attribut in einer Datenstruktur kombiniert.
+        * Wenn diese Einstellung aktiviert ist, wird der Wert des *unicodePwd* -Attributs mit den extrahierten Kerberos-Kennworthashes aus dem *supplementalCredentials* -Attribut in einer Datenstruktur kombiniert.
     * Verschlüsselt die einzelne Datenstruktur mit dem symmetrischen AES-Schlüssel.
     * Verschlüsselt den symmetrischen AES-Schlüssel mit dem öffentlichen Azure AD Domain Services-Schlüssel des Mandanten.
 1. Azure AD Connect überträgt den verschlüsselten symmetrischen AES-Schlüssel, die verschlüsselte Datenstruktur mit den Kennworthashes und den Initialisierungsvektor an Azure AD.
@@ -191,8 +191,8 @@ Wenn Sie Azure AD Domain Services verwenden, um die Legacyauthentifizierung für
 1. Für jeden verschlüsselten Datensatz (der die Kennwortänderung eines einzelnen Benutzers darstellt) führt Azure AD Domain Services dann die folgenden Schritte aus:
     * Verwendet den privaten Schlüssel zum Entschlüsseln des symmetrischen AES-Schlüssels.
     * Verwendet den symmetrischen AES-Schlüssel mit dem Initialisierungsvektor zum Entschlüsseln der verschlüsselten Datenstruktur, die die Kennworthashes enthält.
-    * Schreibt die empfangenen Kerberos-Kennworthashes auf den Azure AD Domain Services-Domänencontroller. Die Hashes werden im *supplementalCredentials*-Attribut des Benutzerobjekts gespeichert, das in den öffentlichen Schlüssel des Azure AD Domain Services-Domänencontrollers verschlüsselt wird.
-    * Azure AD Domain Services schreibt den empfangenen NTLM-Kennworthash auf den Azure AD Domain Services-Domänencontroller. Der Hash wird im *unicodePwd*-Attribut des Benutzerobjekts gespeichert, das in den öffentlichen Schlüssel des Azure AD Domain Services-Domänencontrollers verschlüsselt wird.
+    * Schreibt die empfangenen Kerberos-Kennworthashes auf den Azure AD Domain Services-Domänencontroller. Die Hashes werden im *supplementalCredentials* -Attribut des Benutzerobjekts gespeichert, das in den öffentlichen Schlüssel des Azure AD Domain Services-Domänencontrollers verschlüsselt wird.
+    * Azure AD Domain Services schreibt den empfangenen NTLM-Kennworthash auf den Azure AD Domain Services-Domänencontroller. Der Hash wird im *unicodePwd* -Attribut des Benutzerobjekts gespeichert, das in den öffentlichen Schlüssel des Azure AD Domain Services-Domänencontrollers verschlüsselt wird.
 
 ## <a name="enable-password-hash-synchronization"></a>Aktivieren der Kennworthashsynchronisierung
 
