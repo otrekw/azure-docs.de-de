@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: da8dc11212d33627a165dc5e11acc64087fb6c43
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131818"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792020"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -36,7 +36,7 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
 
 > [!IMPORTANT]
-> Obwohl Studio überwiegend mit Daten arbeitet, die in einem virtuellen Netzwerk gespeichert sind, gilt dies __nicht__ für integrierte Notebooks. Integrierte Notebooks unterstützen die Verwendung von Speicher in einem virtuellen Netzwerk nicht. Stattdessen können Sie Jupyter-Notebooks aus einer Compute-Instanz verwenden. Weitere Informationen finden Sie im Abschnitt [Zugreifen auf Daten auf einem Compute-Instanz-Notebook]().
+> Wenn sich Ihr Arbeitsbereich in einer __Sovereign Cloud__ befindet, z. B. Azure Government oder Azure China 21Vianet, wird von integrierten Notebooks die Verwendung von Speicher, der sich in einem virtuellen Netzwerk befindet, _nicht_ unterstützt. Stattdessen können Sie Jupyter-Notebooks aus einer Compute-Instanz verwenden. Weitere Informationen finden Sie im Abschnitt [Zugreifen auf Daten auf einem Compute-Instanz-Notebook](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -53,7 +53,7 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
 Wenn Sie über eine Ressource innerhalb eines virtuellen Netzwerks (z. B. eine Computeinstanz oder eine VM) auf das Studio zugreifen, müssen Sie aus dem virtuellen Netzwerk an das Studio ausgehenden Datenverkehr zulassen. 
 
-Wenn Sie z. B. ausgehenden Datenverkehr mit Netzwerksicherheitsgruppen (NSG) einschränken, fügen Sie einem __Diensttag__-Ziel von __AzureFrontDoor.Frontend__ eine Regel hinzu.
+Wenn Sie z. B. ausgehenden Datenverkehr mit Netzwerksicherheitsgruppen (NSG) einschränken, fügen Sie einem __Diensttag__ -Ziel von __AzureFrontDoor.Frontend__ eine Regel hinzu.
 
 ## <a name="access-data-using-the-studio"></a>Zugreifen auf Daten mithilfe von Studio
 
@@ -66,9 +66,6 @@ Wenn Sie die verwaltete Identität nicht aktivieren, erhalten Sie den Fehler `Er
 * Senden eines AutoML-Experiments.
 * Starten eines Beschriftungsprojekts.
 
-> [!NOTE]
-> [Von der ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-labeling) werden keine Standardspeicherkonten unterstützt, die hinter einem virtuellen Netzwerk gesichert sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Das nicht standardmäßige Speicherkonto kann hinter dem virtuellen Netzwerk gesichert werden. 
-
 Das Studio unterstützt das Lesen von Daten aus den folgenden Datenspeichertypen in einem virtuellen Netzwerk:
 
 * Azure Blob
@@ -76,7 +73,11 @@ Das Studio unterstützt das Lesen von Daten aus den folgenden Datenspeichertypen
 * Azure Data Lake Storage Gen2
 * Azure SQL-Datenbank
 
-### <a name="configure-datastores-to-use-managed-identity"></a>Konfigurieren von Datenspeichern für die Verwendung der verwalteten Identität
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Gewähren von __Lesezugriff__ auf die private Speicherverbindung für die vom Arbeitsbereich verwaltete Identität
+
+Dieser Schritt ist nur erforderlich, wenn Sie Ihrem virtuellen Netzwerk das Azure-Speicherkonto mit einem [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) hinzugefügt haben. Weitere Informationen finden Sie unter der integrierten Rolle [Leser](../role-based-access-control/built-in-roles.md#reader).
+
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Konfigurieren von Datenspeichern für die Verwendung der vom Arbeitsbereich verwalteten Identität
 
 Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um eine Verbindung mit Speicherkonten herzustellen. Führen Sie die folgenden Schritte aus, um die Verwendung der verwalteten Identität in Ihren Datenspeichern zu konfigurieren. 
 
@@ -89,7 +90,7 @@ Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um
 1. Wählen Sie in den Datenspeichereinstellungen __Ja__ für __Allow Azure Machine Learning service to access the storage using workspace managed identity__ (Azure Machine Learning Service den Zugriff auf den Speicher über die vom Arbeitsbereich verwaltete Identität erlauben).
 
 
-Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe der ressourcenbasierten Zugriffssteuerung (Resource-Based Access Control, RBAC) von Azure dem Speicherdienst als __Reader__ hinzugefügt. Mit __Reader__-Zugriff kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen.
+Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe der ressourcenbasierten Zugriffssteuerung von Azure (Azure Resource-Based Access Control, Azure RBAC) dem Speicherdienst als __Leser__ hinzugefügt. Mit __Reader__ -Zugriff kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen.
 
 > [!NOTE]
 > Diese Änderungen können bis zu 10 Minuten dauern.
@@ -104,9 +105,9 @@ Für __Azure Blob Storage__ wird die vom Arbeitsbereich verwaltete Identität au
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Zugriffssteuerung von Azure Data Lake Storage Gen2
 
-Sie können den Datenzugriff innerhalb eines virtuellen Netzwerks mit RBAC- und POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) steuern.
+Sie können den Datenzugriff innerhalb eines virtuellen Netzwerks mit Azure RBAC- und POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) steuern.
 
-Um RBAC zu verwenden, fügen Sie die vom Arbeitsbereich verwaltete Identität der [Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)-Rolle hinzu. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+Fügen Sie die vom Arbeitsbereich verwaltete Identität der Rolle [Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) hinzu, um Azure RBAC zu verwenden. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 Um ACLs zu verwenden, kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzip Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

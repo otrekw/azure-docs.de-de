@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150779"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538424"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -28,25 +28,25 @@ Verbindungsprobleme bei IoT-Geräten können schwierig zu behandeln sein, weil e
 
 Verwenden Sie Azure Monitor zum Abrufen von Warnungen und Schreiben von Protokollen, wenn Geräteverbindungen getrennt werden.
 
-### <a name="turn-on-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle
+### <a name="turn-on-logs"></a>Aktivieren von Protokollen
 
-Aktivieren Sie Diagnosen für IoT Hub, um Geräteverbindungsereignisse und -fehler zu protokollieren. Wir empfehlen, diese Diagnoseprotokolle frühestmöglich zu aktivieren, denn wenn die Protokolle nicht aktiviert sind, erhalten Sie im Fall einer Trennung von Geräteverbindungen keine Informationen zur Behebung des Problems.
+Erstellen zum Protokollieren von Geräteverbindungsereignissen und -fehlern eine Diagnoseeinstellung für [verbindungsbezogene IoT Hub-Ressourcenprotokolle](monitor-iot-hub-reference.md#connections). Es empfiehlt sich, diese Einstellung so früh wie möglich zu erstellen, da diese Protokolle nicht standardmäßig erfasst werden und ohne sie keine Informationen zur Problembehandlung zur Verfügung stehen, wenn Geräteverbindungen getrennt werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Navigieren Sie zu Ihrer IoT Hub-Instanz.
+1. Navigieren Sie zu Ihrer IoT Hub-Instanz.
 
-3. Wählen Sie **Diagnoseeinstellungen** aus.
+1. Wählen Sie **Diagnoseeinstellungen** aus.
 
-4. Wählen Sie **Diagnose aktivieren**.
+1. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 
-5. Aktivieren Sie **Verbindungen**, damit Protokolle erfasst werden.
+1. Wählen Sie Protokolle vom Typ **Verbindungen** aus.
 
-6. Aktivieren Sie zur Vereinfachung der Analyse die Option **An Log Analytics senden** ([siehe Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/)). Siehe dazu das Beispiel unter [Lösen von Konnektivitätsproblemen](#resolve-connectivity-errors).
+1. Wählen Sie zur Vereinfachung der Analyse die Option **An Log Analytics senden** aus ([siehe Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/)). Siehe dazu das Beispiel unter [Lösen von Konnektivitätsproblemen](#resolve-connectivity-errors).
 
    ![Empfohlene Einstellungen](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-Weitere Informationen finden Sie unter [Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen](iot-hub-monitor-resource-health.md).
+Weitere Informationen finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md).
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Einrichten von Warnungen im großen Stil bei einer Trennung der Geräteverbindung
 
@@ -72,7 +72,7 @@ Wenn Sie getrennte Geräteverbindungen *pro Gerät* erkennen möchten und beispi
 
 ## <a name="resolve-connectivity-errors"></a>Lösen von Konnektivitätsproblemen
 
-Wenn Sie Diagnoseprotokolle und Warnungen für verbundene Geräte aktivieren, erhalten Sie Warnungen, wenn Fehler auftreten. In diesem Abschnitt wird beschrieben, wie Sie nach häufig auftretenden Problemen suchen, wenn Sie eine Warnung erhalten haben. In den folgenden Schritten wird davon ausgegangen, dass Sie für Ihre Diagnoseprotokolle Azure Monitor-Protokolle eingerichtet haben.
+Wenn Sie Protokolle und Warnungen für verbundene Geräte aktivieren, erhalten Sie Warnungen, wenn Fehler auftreten. In diesem Abschnitt wird beschrieben, wie Sie nach häufig auftretenden Problemen suchen, wenn Sie eine Warnung erhalten haben. In den folgenden Schritten wird davon ausgegangen, dass Sie bereits eine Diagnoseeinstellung erstellt haben, um IoT Hub-Verbindungsprotokolle an einen Log Analytics Arbeitsbereich zu senden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 

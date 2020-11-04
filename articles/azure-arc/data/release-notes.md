@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bbd3ab02cd1eccd00e2d36c14eebf2f63205
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319725"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360304"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Versionshinweise – Azure Arc-fähige Datendienste (Vorschauversion)
 
@@ -33,9 +33,9 @@ Anweisungen finden Sie unter [Was sind Azure Arc-fähige Datendienste?](overview
 
 Für diese Version gelten die folgenden Probleme:
 
-* **Löschen einer PostgreSQL Hyperscale-Servergruppe**: Wenn Sie die Konfiguration Ihrer Servergruppe oder -instanz geändert haben, warten Sie, bis der Bearbeitungsvorgang abgeschlossen ist, bevor Sie eine PostgreSQL Hyperscale-Servergruppe löschen.
+* **Löschen einer PostgreSQL Hyperscale-Servergruppe** : Wenn Sie die Konfiguration Ihrer Servergruppe oder -instanz geändert haben, warten Sie, bis der Bearbeitungsvorgang abgeschlossen ist, bevor Sie eine PostgreSQL Hyperscale-Servergruppe löschen.
 
-* **`azdata notebook run` kann fehlschlagen**: Um dieses Problem zu umgehen, führen Sie `azdata notebook run` in einer virtuellen Python-Umgebung aus. Dieses Problem tritt auch bei einem fehlerhaften Versuch auf, eine verwaltete SQL-Instanz oder eine PostgreSQL Hyperscale-Servergruppe mithilfe des Azure Data Studio-Bereitstellungs-Assistenten zu erstellen. In diesem Fall können Sie das Notebook öffnen und oben im Notebook auf die Schaltfläche **Alle ausführen** klicken.
+* **`azdata notebook run` kann fehlschlagen** : Um dieses Problem zu umgehen, führen Sie `azdata notebook run` in einer virtuellen Python-Umgebung aus. Dieses Problem tritt auch bei einem fehlerhaften Versuch auf, eine verwaltete SQL-Instanz oder eine PostgreSQL Hyperscale-Servergruppe mithilfe des Azure Data Studio-Bereitstellungs-Assistenten zu erstellen. In diesem Fall können Sie das Notebook öffnen und oben im Notebook auf die Schaltfläche **Alle ausführen** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -62,3 +62,8 @@ Für diese Version gelten die folgenden Probleme:
 - Das _Herunterskalieren_ der Anzahl von Postgres Hyperscale-Workerknoten wird nicht unterstützt.
 - Wenn Sie die Azure Kubernetes Service Engine (AKS-Engine) in Azure Stack Hub mit Azure Arc-Datencontrollern und -Datenbankinstanzen verwenden, wird kein Upgrade auf eine neuere Kubernetes-Version unterstützt. Deinstallieren Sie den Azure Arc-Datencontroller und alle Datenbankinstanzen, bevor Sie den Kubernetes-Cluster aktualisieren.
 - Die Vorschau unterstützt keine Sicherung/Wiederherstellung für Version 11 der Postgres-Engine. Es wird nur die Sicherung/Wiederherstellung für die Postgres-Version 12 unterstützt.
+- AKS-Cluster (Azure Kubernetes Service), die [mehrere Verfügbarkeitszonen](../../aks/availability-zones.md) umfassen, werden für Datendienste mit Azure Arc-Unterstützung derzeit nicht unterstützt. Löschen Sie zur Vermeidung dieses Problems alle Zonen aus dem Auswahlsteuerelement, wenn Sie den AKS-Cluster im Azure-Portal erstellen und eine Region mit verfügbaren Zonen auswählen. Sehen Sie sich die folgende Abbildung an:
+
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Deaktivieren der Kontrollkästchen für die einzelnen Zonen, um keine Zone anzugeben":::
+
+  

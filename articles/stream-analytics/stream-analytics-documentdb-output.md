@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596571"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424779"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-Ausgabe an Azure Cosmos DB  
-Azure Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt.
+Azure Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt. Wenn Sie Azure Cosmos DB als Ausgabe verwenden, empfiehlt es sich, den Auftrag auf den Kompatibilitätsgrad 1.2 festzulegen.
 
 Wenn Sie mit Azure Cosmos DB nicht vertraut sind, lesen Sie zum Einstieg die [Azure Cosmos DB-Dokumentation](https://docs.microsoft.com/azure/cosmos-db/). 
 
@@ -44,7 +44,7 @@ Außerdem aktiviert Azure Cosmos DB für jeden CRUD-Vorgang in Ihrem Container d
 Weitere Informationen finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../cosmos-db/consistency-levels.md).
 
 ## <a name="upserts-from-stream-analytics"></a>Einfügen/Aktualisieren über Stream Analytics
-Die Stream Analytics-Integration mit Azure Cosmos DB ermöglicht das Einfügen oder Aktualisieren von Datensätzen in Ihrem Container auf der Grundlage einer angegebenen **Dokument-ID**-Spalte. Dies wird auch als *Upsert* bezeichnet.
+Die Stream Analytics-Integration mit Azure Cosmos DB ermöglicht das Einfügen oder Aktualisieren von Datensätzen in Ihrem Container auf der Grundlage einer angegebenen **Dokument-ID** -Spalte. Dies wird auch als *Upsert* bezeichnet.
 
 Stream Analytics verwendet einen optimistischen Upsertansatz. Updates werden nur ausgeführt, wenn bei einer Einfügung ein Fehler aufgrund eines Dokument-ID-Konflikts auftritt. 
 
@@ -58,7 +58,7 @@ Wenn im eingehenden JSON-Dokument ein ID-Feld vorhanden ist, wird dieses Feld au
 - Doppelte IDs und die Angabe **ID** für **Dokument-ID** lösen einen Upsertvorgang aus
 - Doppelte IDs und eine nicht angegebene **Dokument-ID** lösen nach dem ersten Dokument einen Fehler aus.
 
-Wenn Sie *alle* Dokumente speichern möchten, einschließlich derjenigen mit einer doppelten ID, benennen Sie das ID-Feld in der Abfrage um (mit dem Schlüsselwort **AS**). Lassen Sie Azure Cosmos DB das ID-Feld erstellen, oder ersetzen Sie die ID durch den Wert einer anderen Spalte (mithilfe des Schlüsselworts **AS** oder der Einstellung **Dokument-ID**).
+Wenn Sie *alle* Dokumente speichern möchten, einschließlich derjenigen mit einer doppelten ID, benennen Sie das ID-Feld in der Abfrage um (mit dem Schlüsselwort **AS** ). Lassen Sie Azure Cosmos DB das ID-Feld erstellen, oder ersetzen Sie die ID durch den Wert einer anderen Spalte (mithilfe des Schlüsselworts **AS** oder der Einstellung **Dokument-ID** ).
 
 ## <a name="data-partitioning-in-azure-cosmos-db"></a>Partitionierung von Daten in Azure Cosmos DB
 Azure Cosmos DB skaliert Partitionen automatisch auf der Grundlage Ihrer Workload. Daher empfiehlt es sich, für die Partitionierung Ihrer Daten [unbegrenzte](../cosmos-db/partition-data.md) Container zu wählen. Beim Schreiben in unbegrenzte Container verwendet Stream Analytics so viele parallele Writer wie im vorherigen Abfrageschritt oder im eingegebenen Partitionierungsschema.
@@ -99,7 +99,7 @@ Die Rate der in Event Hubs eingehenden Ereignisse ist zweimal höher als die der
 
 Mit Kompatibilitätsgrad 1.2 ist Stream Analytics in der Lage, 100 Prozent des verfügbaren Durchsatzes in Azure Cosmos DB intelligenter zu nutzen, mit sehr wenigen erneuten Übermittlungen aufgrund von Drosselung oder Ratenbegrenzung. Dies ermöglicht eine bessere Erfahrung für andere Workloads, wie z.B. Abfragen, die gleichzeitig auf den Container angewendet werden. Wenn Sie sehen möchten, wie Stream Analytics mit Azure Cosmos DB als Senke für 1.000 bis 10.000 Nachrichten pro Sekunde horizontal hochskaliert, probieren Sie dieses [Azure-Beispielprojekt](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) aus.
 
-Der Durchsatz der Azure Cosmos DB-Ausgabe ist bei Kompatibilitätsgrad 1.0 und 1.1 identisch. Es wird *dringend empfohlen*, in Stream Analytics Azure Cosmos DB Kompatibilitätsgrad 1.2 zu verwenden.
+Der Durchsatz der Azure Cosmos DB-Ausgabe ist bei Kompatibilitätsgrad 1.0 und 1.1 identisch. Es wird *dringend empfohlen* , in Stream Analytics Azure Cosmos DB Kompatibilitätsgrad 1.2 zu verwenden.
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>Azure Cosmos DB-Einstellungen für die JSON-Ausgabe
 
@@ -137,3 +137,17 @@ Falls ein vorübergehender Fehler, eine Nichtverfügbarkeit oder eine Drosselung
 - NotFound (HTTP-Fehlercode 404)
 - Forbidden (HTTP-Fehlercode 403)
 - BadRequest (HTTP-Fehlercode 400)
+
+## <a name="common-issues"></a>Häufige Probleme
+
+1. Der Sammlung wird eine Einschränkung für eindeutige Indizes hinzugefügt, und diese Einschränkung wird von den Stream Analytics-Ausgabedaten nicht erfüllt. Stellen Sie sicher, dass die Ausgabedaten von Stream Analytics Eindeutigkeitseinschränkungen erfüllen, oder entfernen Sie Einschränkungen. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel in Azure Cosmos DB](../cosmos-db/unique-keys.md).
+
+2. Die Spalte `PartitionKey` ist nicht vorhanden.
+
+3. Die Spalte `Id` ist nicht vorhanden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Grundlegendes zu den Ausgaben von Azure Stream Analytics](stream-analytics-define-outputs.md) 
+* [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md)
+* [Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md)

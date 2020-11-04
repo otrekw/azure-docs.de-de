@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43b7488f2bb3fec810e8a9de67829a676f6b599
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743521"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369266"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -25,7 +25,7 @@ Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in A
 1. Öffnen Sie das [Azure-Portal][1].
 1. Klicken Sie auf das Azure Monitor-Zeichen im linken Bereich.
   ![Öffnen Sie Azure Monitor][2].
-1. Klicken Sie auf **Automatische Skalierung**, um alle Ressourcen anzuzeigen, für die die automatische Skalierung zutrifft, zusammen mit dem aktuellen Status der automatischen Skalierung.
+1. Klicken Sie auf **Automatische Skalierung** , um alle Ressourcen anzuzeigen, für die die automatische Skalierung zutrifft, zusammen mit dem aktuellen Status der automatischen Skalierung.
   ![Entdecken von Metriken und automatischer Skalierung in Azure Monitor][3]
 
 Über den Filterbereich im oberen Bereich können Sie die Liste nach unten verschieben, um Ressourcen in einer bestimmten Ressourcengruppe, bestimmte Ressourcentypen oder eine bestimmte Ressource auszuwählen.
@@ -33,14 +33,14 @@ Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in A
 Zu jeder Ressource finden Sie die aktuelle Anzahl der Instanzen sowie den jeweiligen Autoskalierungsstatus. Der Autoskalierungsstatus kann wie folgt lauten:
 
 - **Nicht konfiguriert:** Sie haben die automatische Skalierung für diese Ressource noch nicht aktiviert.
-- **Enabled**: Sie haben die automatische Skalierung für diese Ressource aktiviert.
-- **Disabled**: Sie haben die automatische Skalierung für diese Ressource deaktiviert.
+- **Enabled** : Sie haben die automatische Skalierung für diese Ressource aktiviert.
+- **Disabled** : Sie haben die automatische Skalierung für diese Ressource deaktiviert.
 
 ## <a name="create-your-first-autoscale-setting"></a>Erstellen Ihrer ersten Autoskalierungseinstellung
 
 Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erstellen Ihrer ersten Einstellung für die automatische Skalierung durchgehen.
 
-1. Öffnen Sie in Azure Monitor das Blatt **Automatisch skalieren**, und wählen Sie eine Ressource aus, die skaliert werden soll. (Die folgenden Schritte beruhen auf einem App Service-Plan, der einer Web-App zugeordnet ist. Sie können [Ihre erste ASP.NET-Web-App in Azure in fünf Minuten erstellen][4].)
+1. Öffnen Sie in Azure Monitor das Blatt **Automatisch skalieren** , und wählen Sie eine Ressource aus, die skaliert werden soll. (Die folgenden Schritte beruhen auf einem App Service-Plan, der einer Web-App zugeordnet ist. Sie können [Ihre erste ASP.NET-Web-App in Azure in fünf Minuten erstellen][4].)
 1. Beachten Sie, dass die aktuelle Instanzenanzahl 1 beträgt. Klicken Sie auf **Automatische Skalierung aktivieren**.
   ![Skalierungseinstellung für die neue Web-App][5]
 1. Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf **Regel hinzufügen**. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf **Hinzufügen**.
@@ -121,7 +121,7 @@ Um die Funktion mit ARM-Vorlagen zu aktivieren, legen Sie die Eigenschaft `healt
 
 ### <a name="health-check-path"></a>Pfad der Integritätsüberprüfung
 
-Der Pfad muss innerhalb von zwei Minuten mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Wenn der Pfad nicht innerhalb von zwei Minuten antwortet oder einen Statuscode außerhalb des Bereichs zurückgibt, gilt die Instanz als fehlerhaft. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP**S**“ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP**S** gesendet.
+Der Pfad muss innerhalb einer Minute mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Sollte der Pfad nicht innerhalb einer Minute antworten oder einen Statuscode außerhalb des Bereichs zurückgeben, gilt die Instanz als fehlerhaft. App Service folgt keinen 302-Umleitungen im Integritätsüberprüfungspfad. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP **S** “ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP **S** gesendet.
 
 Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anwendung überprüfen. Wenn Ihre Anwendung z. B. von einer Datenbank und einem Messagingsystem abhängig ist, sollte der Endpunkt der Integritätsüberprüfung eine Verbindung mit diesen Komponenten herstellen. Wenn die Anwendung keine Verbindung mit einer kritischen Komponente herstellen kann, sollte der Pfad einen Antwortcode auf 500-Ebene zurückgeben, um damit anzugeben, dass die App fehlerhaft ist.
 
@@ -133,7 +133,7 @@ Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderunge
 
 Wenn der Pfad der Integritätsprüfung angegeben ist, sendet App Service auf allen Instanzen ein Ping an den Pfad. Wenn nach 5 Pings kein erfolgreicher Antwortcode empfangen wird, gilt diese Instanz als fehlerhaft. Fehlerhafte Instanzen werden von der Lastenausgleichsrotation ausgeschlossen. Wenn Sie darüber hinaus zentral hoch- oder herunterskalieren, pingt App Service den Pfad der Integritätsüberprüfung, um sicherzustellen, dass die neuen Instanzen für Anforderungen bereit sind.
 
-Die verbleibenden fehlerfreien Instanzen werden möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Im ungünstigsten Fall, in dem alle Instanzen fehlerhaft sind, wird keine ausgeschlossen.
+Die verbleibenden fehlerfreien Instanzen werden möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Sollten im ungünstigsten Fall alle Instanzen fehlerhaft sein, wird keine Instanz ausgeschlossen. Wenn Sie dieses Verhalten überschreiben möchten, können Sie die App-Einstellung `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` auf einen Wert zwischen `0` und `100` festlegen. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. (Der Standardwert ist „50“.)
 
 Wenn eine Instanz für eine Stunde fehlerhaft bleibt, wird sie durch eine neue Instanz ersetzt. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
 

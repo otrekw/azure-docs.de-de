@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654190"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370235"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
@@ -22,16 +22,16 @@ Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder �
 Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und einen virtuellen Computer in Ihrem Azure-Abonnement bereitgestellt haben. Stellen Sie sicher, dass die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert ist und dass Sie mit [az login](/cli/azure/reference-index) bei Ihrem Azure-Abonnement angemeldet sind, bevor Sie [einen virtuellen Computer erstellen](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Betriebssystem-Datenträger von Azure
-Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger ( **/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
+Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger ( **/dev/sda** ) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Hinzufügen von Datenträgern für Größe und Leistung
 Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 32 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 20.000 IOPS (Storage Premium).
 
 Um bei Storage Premium-Datenträgern mit der Cacheeinstellung **ReadOnly** oder **None** die höchstmögliche IOPS-Leistung zu erzielen, müssen beim Bereitstellen des Dateisystems in Linux so genannte **Barriers** deaktiviert werden. „Barriers“ werden nicht benötigt, da Schreibvorgänge auf Storage Premium-Datenträger bei diesen Cacheeinstellungen beständig sind.
 
-* Wenn Sie **reiserFS**verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `barrier=none` (zum Aktivieren von Barriers verwenden Sie `barrier=flush`).
-* Wenn Sie **ext3/ext4**verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `barrier=0` (zum Aktivieren von Barriers verwenden Sie `barrier=1`).
-* Wenn Sie **XFS**verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `nobarrier` (zum Aktivieren von Barriers verwenden Sie `barrier`).
+* Wenn Sie **reiserFS** verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `barrier=none` (zum Aktivieren von Barriers verwenden Sie `barrier=flush`).
+* Wenn Sie **ext3/ext4** verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `barrier=0` (zum Aktivieren von Barriers verwenden Sie `barrier=1`).
+* Wenn Sie **XFS** verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `nobarrier` (zum Aktivieren von Barriers verwenden Sie `barrier`).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Überlegungen zu nicht verwalteten Speicherkonten
 Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI ist die Verwendung von Azure Managed Disks.  Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung.  Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es sind einige Leistungsaspekte zu bedenken.  Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../managed-disks-overview.md).  Im folgenden Abschnitt werden einige Leistungsaspekte erläutert, die nur zu berücksichtigen sind, wenn Sie nicht verwaltete Datenträger verwenden.  Um es noch einmal zu betonen: Die standardmäßige und empfohlene Speicherlösung sind verwaltete Datenträger.
@@ -42,12 +42,43 @@ Wenn Sie sehr IOPS-intensive Workloads verarbeiten müssen und sich für Datentr
  
 
 ## <a name="your-vm-temporary-drive"></a>Temporäres Laufwerk des virtuellen Computers
-Beim Erstellen eines virtuellen Computers stellt Azure standardmäßig einen Betriebssystem-Datenträger ( **/dev/sda**) und einen temporären Datenträger ( **/dev/sdb**) bereit.  Alle weiteren Datenträger, die Sie hinzufügen, werden als **/dev/sdc**, **/dev/sdd**, **/dev/sde** usw. angezeigt. Die Daten auf dem temporären Datenträger ( **/dev/sdb**) sind nicht beständig und können in bestimmten Fällen verloren gehen – etwa, wenn Größenänderungen, erneute Bereitstellungen oder Wartungsarbeiten einen Neustart des virtuellen Computers erzwingen.  Größe und Typ des temporären Datenträgers hängen mit der Größe des virtuellen Computers zusammen, die Sie zum Zeitpunkt der Bereitstellung ausgewählt haben. Bei allen virtuellen Computern in Premium-Tarifen (Serien DS, G und DS_V2) wird das temporäre Laufwerk durch eine lokale SSD unterstützt, um eine höhere Leistung von bis zu 48.000 IOPS zu erzielen. 
+Beim Erstellen eines virtuellen Computers stellt Azure standardmäßig einen Betriebssystem-Datenträger ( **/dev/sda** ) und einen temporären Datenträger ( **/dev/sdb** ) bereit.  Alle weiteren Datenträger, die Sie hinzufügen, werden als **/dev/sdc** , **/dev/sdd** , **/dev/sde** usw. angezeigt. Die Daten auf dem temporären Datenträger ( **/dev/sdb** ) sind nicht beständig und können in bestimmten Fällen verloren gehen – etwa, wenn Größenänderungen, erneute Bereitstellungen oder Wartungsarbeiten einen Neustart des virtuellen Computers erzwingen.  Größe und Typ des temporären Datenträgers hängen mit der Größe des virtuellen Computers zusammen, die Sie zum Zeitpunkt der Bereitstellung ausgewählt haben. Bei allen virtuellen Computern in Premium-Tarifen (Serien DS, G und DS_V2) wird das temporäre Laufwerk durch eine lokale SSD unterstützt, um eine höhere Leistung von bis zu 48.000 IOPS zu erzielen. 
 
 ## <a name="linux-swap-partition"></a>Linux-Swap-Partition
 Wenn Ihre Azure-VM von einem Ubuntu- oder CoreOS-Image erstellt wurde, können Sie mit CustomData eine Cloud-Config-Datei an Cloud-Init senden. Wenn Sie [ein benutzerdefiniertes Linux-Image hochgeladen haben](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), das cloud-init verwendet, können Sie auch Swap-Partitionen konfigurieren, die cloud-init verwenden.
 
-Für Ubuntu-Cloud-Images müssen Sie cloud-init verwenden, um die Swap-Partition zu konfigurieren. Weitere Informationen finden Sie unter [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+Die Datei **/etc/waagent.conf** kann nicht verwendet werden, um die Auslagerung für alle Images zu verwalten, die von cloud-init bereitgestellt und unterstützt werden. Die vollständige Liste der Images finden Sie unter [cloud-init-Unterstützung für virtuelle Computer in Azure](using-cloud-init.md). 
+
+Die Auslagerung lässt sich für diese Images am einfachsten wie folgt verwalten:
+
+1. Erstellen Sie im Ordner **/var/lib/cloud/scripts/per-boot** eine Datei namens **create_swapfile.sh** :
+
+   **$ sudo touch /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
+
+1. Fügen Sie der Datei die folgenden Zeilen hinzu:
+
+   **$ sudo vi /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > Sie können den Wert gemäß Ihren Anforderungen und unter Berücksichtigung des verfügbaren Speicherplatzes auf Ihrem Ressourcendatenträger ändern. Dieser unterscheidet sich je nach verwendeter VM-Größe.
+
+1. Machen Sie die Datei zu einer ausführbaren Datei:
+
+   **$ sudo chmod +x /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
+
+1. Führen Sie das Skript direkt nach dem letzten Schritt aus, um die Auslagerungsdatei zu erstellen:
+
+   **$ sudo /var/lib/cloud/scripts/per-boot/./create_swapfile.sh**
 
 Über den Azure Marketplace bereitgestellte VM-Images verfügen für Images ohne cloud-init-Unterstützung über einen in das Betriebssystem integrierten VM-Linux-Agent. Dieser Agent ermöglicht dem virtuellen Computer die Interaktion mit verschiedenen Azure-Diensten. Falls Sie ein Standardimage aus dem Azure Marketplace bereitgestellt haben, gehen Sie wie folgt vor, um die Einstellungen für die Linux-Auslagerungsdatei korrekt zu konfigurieren:
 
