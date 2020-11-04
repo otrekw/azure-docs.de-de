@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b4408b2f8c631453281ecf6f214d49318252a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408214"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785050"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie zeitweilige Verbindungsfehler und zugeh�
 Im Azure-App-Dienst gehostete Anwendungen und Funktionen weisen möglicherweise eines oder mehrere der folgenden Symptome auf:
 
 * Langsame Reaktionszeiten bei allen oder einigen der Instanzen in einem Dienstplan.
-* Zeitweilig auftretende 5xx- oder **Ungültiges Gateway**-Fehler.
+* Zeitweilig auftretende 5xx- oder **Ungültiges Gateway** -Fehler.
 * Timeoutfehlermeldungen
 * Es konnte keine Verbindung mit externen Endpunkten hergestellt werden (z. B. SQLDB, Service Fabric, andere App-Dienste usw.).
 
@@ -32,7 +32,7 @@ Im Azure-App-Dienst gehostete Anwendungen und Funktionen weisen möglicherweise 
 Eine Hauptursache für diese Symptome ist, dass die Anwendungsinstanz keine neue Verbindung mit dem externen Endpunkt öffnen kann, da sie eins der folgenden Limits erreicht hat:
 
 * TCP-Verbindungen: Die Anzahl herstellbarer ausgehender Verbindungen ist begrenzt. Dies ist an die Größe des verwendeten Workers gebunden.
-* SNAT-Ports: Wie in [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md) erläutert, verwendet Azure SNAT (Source Network Address Translation, Quellnetzwerkadressen-Übersetzung) und einen Load Balancer (dem Kunden nicht verfügbar gemacht), um mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum zu kommunizieren, sowie interne Endpunkte in Azure, die Dienstendpunkte nicht nutzen. Jeder Instanz im Azure-App-Dienst wird zunächst eine vorab zugeordnete Anzahl von **128** SNAT-Ports zugewiesen. Dieses Limit wirkt sich auf das Öffnen von Verbindungen mit derselben Host- und Portkombination aus. Wenn Ihre App Verbindungen mit einer Mischung aus Adress- und Portkombinationen herstellt, werden Sie Ihre SNAT-Ports nicht aufbrauchen. Die SNAT-Ports werden aufgebraucht, wenn Sie wiederholten Aufrufe an dieselbe Kombination aus Adresse und Port vornehmen. Nach der Freigabe eines Ports kann er bei Bedarf erneut verwendet werden. Der Azure-Netzwerklastenausgleich gibt SNAT-Ports von geschlossenen Verbindungen erst nach einer Wartezeit von 4 Minuten zurück.
+* SNAT-Ports: Wie in [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md) erläutert, verwendet Azure SNAT (Source Network Address Translation, Quellnetzwerkadressen-Übersetzung) und einen Lastenausgleich (der dem Kunden nicht zur Verfügung gestellt wird), um mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum zu kommunizieren, sowie interne Endpunkte in Azure, die private Endpunkte/Dienstendpunkte nicht nutzen. Jeder Instanz im Azure-App-Dienst wird zunächst eine vorab zugeordnete Anzahl von **128**  SNAT-Ports zugewiesen. Dieses Limit wirkt sich auf das Öffnen von Verbindungen mit derselben Host- und Portkombination aus. Wenn Ihre App Verbindungen mit einer Mischung aus Adress- und Portkombinationen herstellt, werden Sie Ihre SNAT-Ports nicht aufbrauchen. Die SNAT-Ports werden aufgebraucht, wenn Sie wiederholten Aufrufe an dieselbe Kombination aus Adresse und Port vornehmen. Nach der Freigabe eines Ports kann er bei Bedarf erneut verwendet werden. Der Azure-Netzwerklastenausgleich gibt SNAT-Ports von geschlossenen Verbindungen erst nach einer Wartezeit von 4 Minuten zurück.
 
 Wenn Anwendungen oder Funktionen schnell eine neue Verbindung öffnen, können Sie ihr vorab zugewiesenes Kontingent von 128 Ports schnell erschöpfen. Sie werden dann blockiert, bis ein neuer SNAT-Port verfügbar wird, entweder durch dynamisches Zuweisen zusätzlicher SNAT-Ports oder durch Wiederverwendung eines freigegebenen SNAT-Ports. Bei Anwendungen oder Funktionen, die blockiert werden, weil keine neuen Verbindungen erstellt werden können, tritt mindestens eines der Probleme auf, die im Abschnitt **Symptome** dieses Artikels beschrieben werden.
 

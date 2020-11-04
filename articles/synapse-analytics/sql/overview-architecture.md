@@ -1,6 +1,6 @@
 ---
 title: 'Synapse SQL: Architektur'
-description: In diesem Artikel erfahren Sie, wie in Azure Synapse SQL durch Kombination von Massively Parallel Processing (MPP) und Azure Storage hohe Leistung und Skalierbarkeit erzielt werden.
+description: In diesem Artikel erfahren Sie, wie Azure Synapse SQL die Verarbeitungsfunktionen für verteilte Abfragen mit Azure Storage kombiniert, um hohe Leistung und Skalierbarkeit zu erzielen.
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046860"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476007"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-Architektur 
 
@@ -35,7 +35,7 @@ Beim serverlosen SQL On-Demand erfolgt die Skalierung automatisch, um den Anford
 
 Synapse SQL verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der der einzige Einstiegspunkt für Synapse SQL ist. 
 
-Der Steuerknoten des SQL-Pools nutzt die MPP-Engine, um die Abfragen für die Parallelverarbeitung zu optimieren und dann Vorgänge an Computeknoten zu übergeben, sodass die Vorgänge parallel ausgeführt werden. 
+Der Azure Synapse SQL-Steuerknoten nutzt eine Engine für verteilte Abfragen, um die Abfragen für die Parallelverarbeitung zu optimieren und dann Vorgänge an Computeknoten zu übergeben, sodass die Vorgänge parallel ausgeführt werden. 
 
 Der SQL On-Demand-Steuerknoten verwendet eine DQP-Engine (Distributed Query Processing), um die verteilte Ausführung von Benutzerabfragen zu optimieren und zu orchestrieren, indem er sie in kleinere Abfragen aufteilt, die auf den Computeknoten ausgeführt werden. Jede kleine Abfrage wird als Aufgabe bezeichnet und stellt eine verteilte Ausführungseinheit dar. Sie liest Dateien aus dem Speicher, verknüpft Ergebnisse aus anderen Aufgaben, gruppiert oder ordnet Daten an, die aus anderen Aufgaben abgerufen wurden. 
 
@@ -61,7 +61,7 @@ Mit SQL On-Demand können Sie Dateien in Ihrem Data Lake schreibgeschützt abfra
 
 Der Steuerknoten ist der zentrale Knoten der Architektur. Dies ist das Front-End, das mit allen Anwendungen und Verbindungen interagiert. 
 
-Im SQL-Pool wird die MPP-Engine auf dem Steuerknoten ausgeführt, um parallele Abfragen zu optimieren und zu koordinieren. Wenn Sie eine T-SQL-Abfrage an den SQL-Pool übermitteln, wird sie vom Steuerknoten in Abfragen transformiert, die für die einzelnen Verteilungen parallel ausgeführt werden.
+Die Engine für verteilte Abfragen wird in Synapse SQL auf dem Steuerknoten ausgeführt, um parallele Abfragen zu optimieren und zu koordinieren. Wenn Sie eine T-SQL-Abfrage an den SQL-Pool übermitteln, wird sie vom Steuerknoten in Abfragen transformiert, die für die einzelnen Verteilungen parallel ausgeführt werden.
 
 In SQL On-Demand wird die DQP-Engine auf dem Steuerknoten ausgeführt, um die verteilte Ausführung der Benutzerabfrage zu optimieren und zu koordinieren, indem sie in kleinere Abfragen aufgeteilt wird, die auf den Computeknoten ausgeführt werden. Sie weist auch Sätze von Dateien zu, die von den einzelnen Knoten verarbeitet werden sollen.
 
@@ -69,7 +69,7 @@ In SQL On-Demand wird die DQP-Engine auf dem Steuerknoten ausgeführt, um die ve
 
 Die Serverknoten liefern die Rechnerleistung. 
 
-Bei SQL-Pool werden Verteilungen zur Verarbeitung zu Serverknoten zugeordnet. Wenn Sie für weitere Computeressourcen bezahlen, ordnet der Pool die Verteilungen den verfügbaren Serverknoten neu zu. Die Anzahl der Serverknoten liegt zwischen 1 und 60 und wird durch die Dienstebene für den SQL-Pool bestimmt. Jedem Serverknoten ist eine Knoten-ID zugewiesen, die in Systemsichten sichtbar ist. Sie können die Serverknoten-ID anzeigen, indem Sie in den Systemsichten, deren Namen mit „sys.pdw_nodes“ beginnen, nach der Spalte „node_id“ suchen. Eine Liste dieser Systemsichten finden Sie unter [MPP-Systemsichten](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Bei SQL-Pool werden Verteilungen zur Verarbeitung zu Serverknoten zugeordnet. Wenn Sie für weitere Computeressourcen bezahlen, ordnet der Pool die Verteilungen den verfügbaren Serverknoten neu zu. Die Anzahl der Serverknoten liegt zwischen 1 und 60 und wird durch die Dienstebene für den SQL-Pool bestimmt. Jedem Serverknoten ist eine Knoten-ID zugewiesen, die in Systemsichten sichtbar ist. Sie können die Serverknoten-ID anzeigen, indem Sie in den Systemsichten, deren Namen mit „sys.pdw_nodes“ beginnen, nach der Spalte „node_id“ suchen. Eine Liste dieser Systemsichten finden Sie unter [Synapse SQL-Systemsichten](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 Bei SQL On-Demand wird jedem Computeknoten eine Aufgabe und ein Satz von Dateien zugewiesen, für die die Aufgabe ausgeführt werden soll. „Aufgabe“ ist eine verteilte Abfrageausführungseinheit, die eigentlich Teil der vom Benutzer eingereichten Abfrage ist. Es erfolgt eine automatische Skalierung, um sicherzustellen, dass genügend Computeknoten zur Ausführung der Benutzerabfrage verwendet werden.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen benutzerdefinierten Container in Azure 
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264574"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787056"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -139,7 +139,7 @@ Sie können das Verzeichnis *C:\home* im Dateisystem Ihrer App verwenden, damit 
 
 Wenn der beständige Speicher deaktiviert ist, bleiben Schreibvorgänge in das Verzeichnis `C:\home` nicht erhalten. [Docker-Hostprotokolle und -Containerprotokolle](#access-diagnostic-logs) werden in einem standardmäßigen permanenten freigegebenen Speicher gespeichert, der nicht an den Container angefügt ist. Wenn der beständige Speicher aktiviert ist, bleiben alle Schreibvorgänge in das Verzeichnis `C:\home` erhalten, alle Instanzen einer horizontal skalierten App können darauf zugreifen, und das Protokoll ist unter `C:\home\LogFiles` verfügbar.
 
-Standardmäßig ist der beständige Speicher *deaktiviert*, und die Einstellung wird in den Anwendungseinstellungen nicht angezeigt. Um ihn zu aktivieren, legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` über die [Cloud Shell](https://shell.azure.com) fest. In Bash:
+Standardmäßig ist der beständige Speicher *deaktiviert* , und die Einstellung wird in den Anwendungseinstellungen nicht angezeigt. Um ihn zu aktivieren, legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` über die [Cloud Shell](https://shell.azure.com) fest. In Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -216,7 +216,7 @@ Docker-Protokolle werden im Portal auf der Seite **Containereinstellungen** Ihre
 
 ### <a name="from-the-kudu-console"></a>In der Kudu-Konsole
 
-Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`, und klicken Sie auf den Ordner **LogFiles**, um die einzelnen Protokolldateien anzuzeigen. Um das gesamte Verzeichnis **LogFiles** herunterzuladen, klicken Sie auf das Symbol **Herunterladen** links neben dem Verzeichnisnamen. Sie können auch über einen FTP-Client auf diesen Ordner zugreifen.
+Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`, und klicken Sie auf den Ordner **LogFiles** , um die einzelnen Protokolldateien anzuzeigen. Um das gesamte Verzeichnis **LogFiles** herunterzuladen, klicken Sie auf das Symbol **Herunterladen** links neben dem Verzeichnisnamen. Sie können auch über einen FTP-Client auf diesen Ordner zugreifen.
 
 Im Konsolenterminal können Sie nicht standardmäßig auf den Ordner `C:\home\LogFiles` zugreifen, da der persistente freigegebene Speicher nicht aktiviert ist. Um dieses Verhalten im Konsolenterminal zu aktivieren, [aktivieren Sie den persistenten freigegebenen Speicher](#use-persistent-shared-storage).
 
@@ -272,7 +272,7 @@ Bei den Prozessoren kann es sich um Mehrkern- oder Hyperthreading-Prozessoren ha
 
 ## <a name="customize-health-ping-behavior"></a>Anpassen des Integritäts-Ping-Verhaltens
 
-In App Service wird ein Container als erfolgreich gestartet betrachtet, wenn der Container gestartet wird und auf einen HTTP-Ping antwortet. Der Container der Integritäts-Ping-Anforderung ist der Header `User-Agent= "App Service Hyper-V Container Availability Check"`. Wenn der Container gestartet wird, aber nach einem bestimmten Zeitraum nicht auf einen Ping antwortet, protokolliert App Service ein Ereignis im Docker-Protokoll, das besagt, dass der Container nicht gestartet wurde. 
+In App Service wird ein Container als erfolgreich gestartet betrachtet, wenn der Container gestartet wird und auf einen HTTP-Ping antwortet. Die Integritäts-Ping-Anforderung enthält den Header `User-Agent= "App Service Hyper-V Container Availability Check"`. Wenn der Container gestartet wird, aber nach einem bestimmten Zeitraum nicht auf einen Ping antwortet, protokolliert App Service ein Ereignis im Docker-Protokoll, das besagt, dass der Container nicht gestartet wurde. 
 
 Wenn Ihre Anwendung ressourcenintensiv ist, antwortet der Container möglicherweise nicht rechtzeitig auf den HTTP-Ping. Um die Aktionen zu kontrollieren, wenn HTTP-Pings fehlschlagen, legen Sie die App-Einstellung `CONTAINER_AVAILABILITY_CHECK_MODE` fest. Sie können sie über die [Cloud Shell](https://shell.azure.com) festlegen. In Bash:
 
@@ -318,14 +318,14 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
     Diese Konfiguration erlaubt keine externen Verbindungen zum Container. SSH ist nur über `https://<app-name>.scm.azurewebsites.net` verfügbar und wird mit den Anmeldeinformationen für die Veröffentlichung authentifiziert.
 
-- Fügen Sie [diese sshd_config-Datei](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) zu Ihrem Imagerepository hinzu, und kopieren Sie die Datei mit dem Befehl [COPY](https://docs.docker.com/engine/reference/builder/#copy) in das Verzeichnis */etc/ssh/*. Weitere Informationen zu *sshd_config*-Dateien finden Sie in der [OpenBSD-Dokumentation](https://man.openbsd.org/sshd_config).
+- Fügen Sie [diese sshd_config-Datei](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) zu Ihrem Imagerepository hinzu, und kopieren Sie die Datei mit dem Befehl [COPY](https://docs.docker.com/engine/reference/builder/#copy) in das Verzeichnis */etc/ssh/*. Weitere Informationen zu *sshd_config* -Dateien finden Sie in der [OpenBSD-Dokumentation](https://man.openbsd.org/sshd_config).
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
     > [!NOTE]
-    > Die *sshd_config*-Datei muss Folgendes enthalten:
+    > Die *sshd_config* -Datei muss Folgendes enthalten:
     > - `Ciphers` muss mindestens ein Element aus dieser Liste enthalten: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs` muss mindestens ein Element aus dieser Liste enthalten: `hmac-sha1,hmac-sha1-96`.
 

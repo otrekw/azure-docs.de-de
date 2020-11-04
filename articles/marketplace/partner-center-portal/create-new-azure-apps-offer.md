@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710718"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428209"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -134,7 +134,7 @@ Auf der Seite **Angebotseinrichtung** können Sie eine Testversion und die Leadv
 
 Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, vor dem Kauf einen Test durchzuführen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Weitere Informationen zu Testversionen finden Sie [hier](../what-is-test-drive.md).
 
-Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen. Konfigurieren Sie die Umgebung für die Testversion wie im Abschnitt [Technische Konfiguration der Testversion](#test-drive-technical-configuration) weiter unten in diesem Artikel beschrieben.
+Aktivieren Sie das Kontrollkästchen **Testversion aktivieren** , um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen. Konfigurieren Sie die Umgebung für die Testversion wie im Abschnitt [Technische Konfiguration der Testversion](#test-drive-technical-configuration) weiter unten in diesem Artikel beschrieben.
 
 Weitere Informationen finden Sie unter [Ermöglichen Sie Ihren Kunden das Testen Ihres Angebots](test-drive.md). Sie können auch mehr über die [bewährten Methoden für Testversionen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) erfahren und die [PDF-Datei mit einer Übersicht über Testversionen](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) herunterladen (stellen Sie hierzu sicher, dass Ihr Popupblocker deaktiviert ist).
 
@@ -193,7 +193,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure-Portal angezeigt werden:
 
-:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure-Portal angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -236,7 +236,7 @@ Fügen Sie Links zu zusätzlichen optionalen Onlinedokumentationen zu Ihrer Lös
 
 ### <a name="contact-information"></a>Kontaktinformationen
 
-Geben Sie den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Supportkontakt**, **Engineering-Kontakt** und einen **CSP-Programm-Kontakt** an. Diese Informationen werden Kunden nicht angezeigt, sind aber für Microsoft verfügbar und werden möglicherweise an CSP-Partner weitergegeben. Für einige Kontakte können weitere Informationen erforderlich sein.
+Geben Sie den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Supportkontakt** , **Engineering-Kontakt** und einen **CSP-Programm-Kontakt** an. Diese Informationen werden Kunden nicht angezeigt, sind aber für Microsoft verfügbar und werden möglicherweise an CSP-Partner weitergegeben. Für einige Kontakte können weitere Informationen erforderlich sein.
 
 ### <a name="marketplace-media"></a>Marketplace-Medien
 
@@ -287,7 +287,7 @@ Ihre Vorschauzielgruppe wird durch Azure-Abonnement-ID-GUIDs zusammen mit einer 
 Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 10) oder durch Hochladen einer CSV-Datei (bis zu 100). Durch Hinzufügen dieser Abonnement-IDs definieren Sie, wer Ihr Angebot als Vorschau anzeigen kann, bevor es live veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
 
 > [!NOTE]
-> Eine Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Eine Vorschauzielgruppe kann auf das Angebot zugreifen, *bevor* es in den Marketplaces live veröffentlicht wird. Sie kann alle Pläne sehen und überprüfen, einschließlich der Pläne, die nach der vollständigen Veröffentlichung Ihres Angebots im Marketplace nur für eine private Zielgruppe verfügbar sind. Eine private Zielgruppe (definiert in der Registerkarte **Preise und Verfügbarkeit**) hat exklusiven Zugriff auf einen bestimmten Plan.
+> Eine Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Eine Vorschauzielgruppe kann auf das Angebot zugreifen, *bevor* es in den Marketplaces live veröffentlicht wird. Sie kann alle Pläne sehen und überprüfen, einschließlich der Pläne, die nach der vollständigen Veröffentlichung Ihres Angebots im Marketplace nur für eine private Zielgruppe verfügbar sind. Eine private Zielgruppe (definiert in der Registerkarte **Preise und Verfügbarkeit** ) hat exklusiven Zugriff auf einen bestimmten Plan.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -304,8 +304,8 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 Mit der technischen Konfiguration werden die Details (Mandanten-ID und App-ID) definiert, die zur Identifikation Ihres Diensts dienen, der Messereignisse für eine verwaltete Anwendung mit den [Marketplace-Messungsdienst-APIs](./marketplace-metering-service-apis.md) ausgibt.  Geben Sie die Identität an, die Ihr Dienst beim Ausgeben von Messereignissen verwendet.
 
-* **ID des Azure AD-Mandanten** (erforderlich): Im Azure-Portal müssen Sie eine [Azure AD-App (Active Directory) erstellen](../../active-directory/develop/howto-create-service-principal-portal.md), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Rufen Sie Ihre Azure Active Directory-Instanz auf, klicken Sie auf **Eigenschaften**, und suchen Sie dann nach der **Verzeichnis-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um die [Mandanten-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) zu finden.
-* **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) und einen Authentifizierungsschlüssel. Rufen Sie Ihre Azure Active Directory-Instanz auf, klicken Sie auf **App-Registrierungen**, und suchen Sie dann nach der **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese Werte abzurufen. Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
+* **ID des Azure AD-Mandanten** (erforderlich): Im Azure-Portal müssen Sie eine [Azure AD-App (Active Directory) erstellen](../../active-directory/develop/howto-create-service-principal-portal.md), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Rufen Sie Ihre Azure Active Directory-Instanz auf, klicken Sie auf **Eigenschaften** , und suchen Sie dann nach der **Verzeichnis-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um die [Mandanten-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) zu finden.
+* **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) und einen Authentifizierungsschlüssel. Rufen Sie Ihre Azure Active Directory-Instanz auf, klicken Sie auf **App-Registrierungen** , und suchen Sie dann nach der **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese Werte abzurufen. Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen** , und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
 
 >[!Note]
 >Die Azure-Anwendungs-ID wird Ihrer Herausgeber-ID zugeordnet und kann nur mit diesem Herausgeberkonto wiederverwendet werden.
@@ -328,16 +328,16 @@ Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem akt
 
 ### <a name="create-new-plan"></a>Erstellen eines neuen Plans
 
-***Plan-ID:*** Erstellen Sie für jeden Plan im Angebot eine eindeutige Plan-ID. Diese ID ist für Kunden in der Produkt-URL sichtbar.  Verwenden Sie nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche. Für die Plan-ID sind maximal 50 Zeichen zulässig. Die Plan-ID kann nach der Erstellung nicht geändert werden.
+**_Plan-ID:_* Erstellen Sie für jeden Plan im Angebot eine eindeutige Plan-ID. Diese ID ist für Kunden in der Produkt-URL sichtbar.  Verwenden Sie nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche. Für die Plan-ID sind maximal 50 Zeichen zulässig. Die Plan-ID kann nach der Erstellung nicht geändert werden.
 
-***Planname***: Kunden sehen diesen Namen, wenn sie einen Plan in Ihrem Angebot auswählen. Erstellen Sie für jeden Plan im Angebot einen eindeutigen Angebotsnamen. Der Planname wird verwendet, um Softwarepläne zu unterscheiden, die möglicherweise Teil desselben Angebots sind (z. B. Angebotsname: Windows Server, Pläne: Windows Server 2016, Windows Server 2019).
+_*_Planname:_*_ Kunden sehen diesen Namen, wenn sie einen Plan in Ihrem Angebot auswählen. Erstellen Sie für jeden Plan im Angebot einen eindeutigen Angebotsnamen. Der Planname wird verwendet, um Softwarepläne zu unterscheiden, die möglicherweise Teil desselben Angebots sind (z. B. Angebotsname: Windows Server, Pläne: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Plansetup
 
 Mithilfe dieser Registerkarte können Sie die allgemeine Konfiguration für den Plantyp festlegen sowie angeben, ob Pakete von einem anderen Plan wiederverwendet werden und in welchen Clouds der Plan verfügbar sein soll. Ihre Antworten auf dieser Registerkarte beeinflussen, welche Felder auf anderen Registerkarten desselben Plans angezeigt werden.
 
 #### <a name="plan-type"></a>Plantyp
-Wählen Sie den Plantyp für Ihr Angebot aus. Ein Plan mit **Lösungsvorlage** wird vollständig vom Kunden verwaltet. Ein Plan mit **verwalteter Anwendung** ermöglicht Herausgebern, die Anwendung für den Kunden zu verwalten. Ausführliche Informationen finden Sie unter [Typen von Azure-Anwendungsplänen](#types-of-azure-application-plans).
+Wählen Sie den Plantyp für Ihr Angebot aus. Ein Plan mit *Lösungsvorlage* * wird vollständig vom Kunden verwaltet. Ein Plan mit **verwalteter Anwendung** ermöglicht Herausgebern, die Anwendung für den Kunden zu verwalten. Ausführliche Informationen finden Sie unter [Typen von Azure-Anwendungsplänen](#types-of-azure-application-plans).
 
 #### <a name="re-use-technical-configuration"></a>Wiederverwenden von technischen Konfigurationen
 
@@ -393,7 +393,7 @@ Sie können den Plan für alle Benutzer oder nur für bestimmte Kunden (eine pri
 
 Sie können festlegen, dass jeder Plan für alle Benutzer oder nur für eine von Ihnen ausgewählte Zielgruppe angezeigt wird. Sie können mithilfe von Azure Abonnement-IDs die Mitgliedschaft in dieser eingeschränkten Zielgruppe zuweisen.
 
-Aktivieren Sie die Option **Dies ist ein privater Plan**, um den Plan als privaten Plan festzulegen und nur für die von Ihnen ausgewählte eingeschränkte Zielgruppe anzuzeigen. Nachdem Sie den Plan als privaten Plan veröffentlicht haben, können Sie die Zielgruppe aktualisieren oder den Plan für alle Benutzer verfügbar machen. Sobald ein Plan als für alle Benutzer als sichtbar veröffentlicht wurde, muss er für alle Benutzer sichtbar bleiben. Der Plan kann nicht in einen privaten Plan umkonfiguriert werden.
+Aktivieren Sie die Option **Dies ist ein privater Plan** , um den Plan als privaten Plan festzulegen und nur für die von Ihnen ausgewählte eingeschränkte Zielgruppe anzuzeigen. Nachdem Sie den Plan als privaten Plan veröffentlicht haben, können Sie die Zielgruppe aktualisieren oder den Plan für alle Benutzer verfügbar machen. Sobald ein Plan als für alle Benutzer als sichtbar veröffentlicht wurde, muss er für alle Benutzer sichtbar bleiben. Der Plan kann nicht in einen privaten Plan umkonfiguriert werden.
 
 Wenn Sie den Plan als privat konfigurieren, geben Sie **Azure-Abonnement-IDs** und eine dazugehörige Beschreibung ein. Jede entspricht einer Zielgruppe, die auf diesen privaten Plan zugreifen kann. Der Zugriff wird mit Azure-Abonnement-IDs zugewiesen. Dabei kann eine Beschreibung jeder zugewiesenen Azure-Abonnement-ID angegeben werden. Fügen Sie bis zu 10 Abonnement-IDs von Kunden einzeln hinzu, oder fügen Sie durch Importieren einer CSV-Datei 20.000 hinzu. Azure-Abonnement-IDs werden als GUIDs dargestellt. Buchstaben müssen in Kleinbuchstaben angegeben werden.
 
@@ -408,7 +408,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ### <a name="pricing-and-availability-managed-application-plans-only"></a>Preise und Verfügbarkeit (nur für Pläne mit verwalteter Anwendung)
 
-Sie können diese Registerkarte zum Konfigurieren der **Märkte**, in denen der Plan verfügbar ist, der monatlichen **Tarife** für die Verwaltung der Lösung und der **Sichtbarkeit des Plans** verwenden, wenn er nur für spezifische Kunden angezeigt werden soll (d. h. eine private Zielgruppe).
+Sie können diese Registerkarte zum Konfigurieren der **Märkte** , in denen der Plan verfügbar ist, der monatlichen **Tarife** für die Verwaltung der Lösung und der **Sichtbarkeit des Plans** verwenden, wenn er nur für spezifische Kunden angezeigt werden soll (d. h. eine private Zielgruppe).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -438,7 +438,7 @@ Preise in USD (USD = US-Dollar) werden beim Speichern gemäß dem aktuellen Wech
 
 Sie können festlegen, dass jeder Plan für alle Benutzer oder nur für eine von Ihnen ausgewählte Zielgruppe angezeigt wird. Sie können mithilfe von Azure Abonnement-IDs die Mitgliedschaft in dieser eingeschränkten Zielgruppe zuweisen.
 
-Aktivieren Sie die Option **Dies ist ein privater Plan**, um den Plan als privaten Plan festzulegen und nur für die von Ihnen ausgewählte eingeschränkte Zielgruppe anzuzeigen. Nachdem Sie den Plan als privaten Plan veröffentlicht haben, können Sie die Zielgruppe aktualisieren oder den Plan für alle Benutzer verfügbar machen. Sobald ein Plan als für alle Benutzer als sichtbar veröffentlicht wurde, muss er für alle Benutzer sichtbar bleiben. Der Plan kann nicht in einen privaten Plan umkonfiguriert werden.
+Aktivieren Sie die Option **Dies ist ein privater Plan** , um den Plan als privaten Plan festzulegen und nur für die von Ihnen ausgewählte eingeschränkte Zielgruppe anzuzeigen. Nachdem Sie den Plan als privaten Plan veröffentlicht haben, können Sie die Zielgruppe aktualisieren oder den Plan für alle Benutzer verfügbar machen. Sobald ein Plan als für alle Benutzer als sichtbar veröffentlicht wurde, muss er für alle Benutzer sichtbar bleiben. Der Plan kann nicht in einen privaten Plan umkonfiguriert werden.
 
 >[!Note]
 >Eine private oder eingeschränkte Zielgruppe unterscheidet sich von der auf der Registerkarte **Vorschau** definierten Vorschauzielgruppe. Eine Vorschauzielgruppe kann auf das Angebot zugreifen, _bevor_ es in den Marketplaces live veröffentlicht wird. Die Auswahl der privaten Zielgruppe gilt nur für einen bestimmten Plan, aber die private Zielgruppe kann alle Pläne (private und nicht private Pläne) zu Validierungszwecken anzeigen.
@@ -508,17 +508,17 @@ Geben Sie einen HTTPS-Webhookendpunkt an, um Benachrichtigungen zu allen CRUD-Vo
 
 Wählen Sie diese Option aus, um festzulegen, welche Aktionen Kunden neben den standardmäßig verfügbaren „`*/read`“-Aktionen für verwaltete Ressourcen ausführen können.
 
-Listen Sie hier die zusätzlichen Aktionen auf, durch Semikolons getrennt, die Sie Ihren Kunden ermöglichen möchten.  Weitere Informationen finden Sie unter Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen für Azure-Ressourcen](../../role-based-access-control/deny-assignments.md). Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu.
+Listen Sie hier die zusätzlichen Aktionen auf, durch Semikolons getrennt, die Sie Ihren Kunden ermöglichen möchten.  Weitere Informationen finden Sie unter Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen für Azure-Ressourcen](../../role-based-access-control/deny-assignments.md). Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu.
 
 #### <a name="global-azure--azure-government-cloud"></a>Global Azure / Azure Government Cloud
 
 Geben Sie an, wer in jeder unterstützten Cloud über Verwaltungszugriff auf diese verwaltete Anwendung verfügen soll. Benutzer, Gruppen oder Anwendungen, denen Berechtigungen für die verwaltete Ressourcengruppe erteilt werden sollen, werden mithilfe von Azure Active Directory-Identitäten (AD) identifiziert.
 
-**Azure Active Directory-Mandanten-ID**: Hierbei handelt es sich um die Azure AD-Mandanten-ID (auch als Verzeichnis-ID bezeichnet), die die Identitäten der Benutzer, Gruppen oder Anwendungen enthält, denen Sie Berechtigungen erteilen möchten. Sie finden Ihre Azure AD-Mandanten-ID im Azure-Portal unter [Eigenschaften für Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+**Azure Active Directory-Mandanten-ID** : Hierbei handelt es sich um die Azure AD-Mandanten-ID (auch als Verzeichnis-ID bezeichnet), die die Identitäten der Benutzer, Gruppen oder Anwendungen enthält, denen Sie Berechtigungen erteilen möchten. Sie finden Ihre Azure AD-Mandanten-ID im Azure-Portal unter [Eigenschaften für Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 
 **Autorisierungen:** Fügen Sie die Azure Active Directory-Objekt-ID des Benutzers, der Gruppe oder der Anwendung hinzu, dem oder der die Berechtigung für die verwaltete Ressourcengruppe erteilt werden soll. Sie können den Benutzer anhand seiner Prinzipal-ID auf dem [Blatt „Azure Active Directory Benutzer“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) identifizieren.
 
-Wählen Sie für jeden Prinzipal eine der in Azure AD integrierten Rollen aus der Liste aus (Besitzer oder Mitwirkender). Die von Ihnen ausgewählte Rolle beschreibt die Berechtigungen, die der Prinzipal für die Ressourcen im Kundenabonnement erhält. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Erste Schritte mit RBAC im Azure-Portal](../../role-based-access-control/overview.md).
+Wählen Sie für jeden Prinzipal eine der in Azure AD integrierten Rollen aus der Liste aus (Besitzer oder Mitwirkender). Die von Ihnen ausgewählte Rolle beschreibt die Berechtigungen, die der Prinzipal für die Ressourcen im Kundenabonnement erhält. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Obwohl Sie bis zu 100 Autorisierungen pro Cloud hinzufügen können, ist es im Allgemeinen einfacher, eine Active Directory-Benutzergruppe zu erstellen und ihre ID in der „Prinzipal-ID“ anzugeben. Dies ermöglicht Ihnen, nach der Bereitstellung des Plans weitere Benutzer zur Verwaltungsgruppe hinzuzufügen, und verringert die Notwendigkeit, den Plan zu aktualisieren, nur um weitere Autorisierungen hinzuzufügen.
@@ -545,21 +545,21 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 Richten Sie eine Demonstration (Testversion) ein, mit der Kunden Ihr Angebot vor dem Erwerb ausprobieren können. Informationen zum Erstellen einer Demonstrationsumgebung, mit der Kunden Ihr Angebot für einen bestimmten Zeitraum testen können, finden Sie unter [Ermöglichen Sie Ihren Kunden das Testen Ihres Angebots](test-drive.md).
 
-Aktivieren Sie auf der Registerkarte [Angebotseinrichtung](#test-drive) das Kontrollkästchen **Testversion aktivieren**, um eine Testversion zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
+Aktivieren Sie auf der Registerkarte [Angebotseinrichtung](#test-drive) das Kontrollkästchen **Testversion aktivieren** , um eine Testversion zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
 
 ### <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
-- **Azure AD-App-ID** (erforderlich): Geben Sie die [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) von Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen**, und suchen Sie dann die **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden.
+- **Azure AD-App-ID** (erforderlich): Geben Sie die [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) von Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen** , und suchen Sie dann die **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden.
 
 #### <a name="deployment-subscription-details"></a>Abonnementdetails für Bereitstellung der Testversion
 
 Erstellen Sie ein separates eindeutiges Azure-Abonnement, und stellen Sie es bereit (für Power BI-Testversionen nicht erforderlich), damit die Testversion in Ihrem Auftrag bereitstellen kann.
 
 * **Azure-Abonnement-ID** (erforderlich für den Azure Resource Manager und Logic Apps): Geben Sie die Abonnement-ID ein, um für Ressourcennutzungsberichte und Abrechnungszwecke Zugriff auf die Dienste Ihres Azure-Kontos zu gewähren. Es wird empfohlen, [ein eigenes Azure-Abonnement zu erstellen](../../billing/billing-create-subscription.md), das für Testversionen verwendet wird, falls Sie es noch nicht getan haben. Sie finden die Azure-Abonnement-IDs, indem Sie sich beim [Azure-Portal](https://portal.azure.com/) anmelden und im Menü auf der linken Seite zu den **Abonnements** navigieren. Durch Auswahl der Registerkarte wird Ihre Abonnement-ID angezeigt (z. B. „a83645ac-1234-5ab6-6789-1h234g764ghty“).
-* **Azure AD-Mandanten-ID** (erforderlich): Geben Sie Ihre [Mandanten-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **Eigenschaften**, und suchen Sie dann die **Verzeichnis-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden. Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
+* **Azure AD-Mandanten-ID** (erforderlich): Geben Sie Ihre [Mandanten-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **Eigenschaften** , und suchen Sie dann die **Verzeichnis-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden. Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
 * **Azure AD tenant name** (Name des Azure AD-Mandanten) (erforderlich für Dynamics 365): Geben Sie den Namen Ihrer Azure Active Directory-Instanz (AD) ein. Um diesen Namen zu suchen, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Oben rechts wird der Mandantenname unter Ihrem Kontonamen angegeben.
-* **Azure AD-App-ID** (erforderlich): Geben Sie Ihre [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Navigationsmenü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen**, und suchen Sie dann die **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden.
-* **Clientgeheimnis für Azure Active Directory-Anwendung** (erforderlich): Geben Sie den [geheimen Clientschlüssel](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Navigationsmenü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, und wählen Sie dann die Testversion Ihrer App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. (Stellen Sie sicher, dass Sie sich den Wert notieren, bevor Sie diese Seite schließen.)
+* **Azure AD-App-ID** (erforderlich): Geben Sie Ihre [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Navigationsmenü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen** , und suchen Sie dann die **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden.
+* **Clientgeheimnis für Azure Active Directory-Anwendung** (erforderlich): Geben Sie den [geheimen Clientschlüssel](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Navigationsmenü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen** , und wählen Sie dann die Testversion Ihrer App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. (Stellen Sie sicher, dass Sie sich den Wert notieren, bevor Sie diese Seite schließen.)
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -584,13 +584,13 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 Nachdem Sie alle erforderlichen Abschnitte des Angebots ausgefüllt haben, klicken Sie rechts oben im Portal auf **Überprüfen und veröffentlichen**.
 
 Überprüfen Sie den Abschlussstatus der einzelnen Abschnitte des Angebots.
-    - *Nicht gestartet*: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - *Unvollständig*: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
-    - *Abgeschlossen*: Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+    - *Nicht gestartet* : Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+    - *Unvollständig* : Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+    - *Abgeschlossen* : Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 
 Wenn Sie dieses Angebot zum ersten Mal veröffentlichen, können Sie Testanweisungen für das Zertifizierungsteam bereitstellen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird. Außerdem können Sie ergänzende Hinweise bereitstellen, die das Verständnis Ihrer App erleichtern.
 
-Klicken Sie auf **Senden**, um Ihr Angebot zur Veröffentlichung zu übermitteln. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können.
+Klicken Sie auf **Senden** , um Ihr Angebot zur Veröffentlichung zu übermitteln. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können.
 
 Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.
 

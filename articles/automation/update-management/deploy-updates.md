@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 10/14/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8b9b3df024839007a349d3a412de4a70ff3a1cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221749"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742291"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -54,12 +54,12 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Das Betriebssystem wird automatisch erkannt.
 
-5. Definieren Sie im Bereich **Zu aktualisierende Gruppen (Vorschau)** eine Abfrage mit einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Verwenden dynamischer Gruppen mit der Updateverwaltung](configure-groups.md).
+5. Definieren Sie im Bereich **Zu aktualisierende Gruppen** eine Abfrage mit einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags zur Erstellung einer dynamischen Gruppe von virtuellen Azure-Computern, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Verwenden dynamischer Gruppen mit der Updateverwaltung](configure-groups.md).
 
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
 
-6. Wählen Sie im Bereich **Zu aktualisierende Computer** eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Mit dieser Option können Sie die Bereitschaft des Log Analytics-Agents für jeden Computer erkennen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/platform/computer-groups.md). Sie können in eine geplante Updatebereitstellung können bis zu maximal 500 Computer aufnehmen.
+6. Wählen Sie im Bereich **Zu aktualisierende Computer** eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Mit dieser Option können Sie die Bereitschaft des Log Analytics-Agents für jeden Computer erkennen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/platform/computer-groups.md). Sie können maximal 1.000 Computer in eine geplante Updatebereitstellung miteinbeziehen.
 
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
@@ -68,7 +68,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 
     Wenn Ihre Bereitstellung nur für ausgewählte Updates gelten soll, ist es erforderlich, alle vorab ausgewählten Updateklassifizierungen zu deaktivieren, wenn die Option  **Updates einschließen/ausschließen** wie im nächsten Schritt beschrieben konfiguriert wird. Dadurch wird sichergestellt, dass nur die Updates, die Sie in diese Bereitstellung *einschließen* möchten, auf den Zielcomputern installiert werden.
 
-8. Über den Bereich **Updates ein-/ausschließen** können Sie ausgewählte Updates in die Bereitstellung einschließen oder von ihr ausschließen. Auf der Seite **Einschließen/Ausschließen** geben Sie KB-Artikel-ID-Nummern ein, die ein- oder ausgeschlossen werden sollen.
+8. Über den Bereich **Updates ein-/ausschließen** können Sie ausgewählte Updates in die Bereitstellung einschließen oder von ihr ausschließen. Geben Sie auf der Seite **Updates ein-/ausschließen** die IDs der KB-Artikel ein, die bei Windows-Updates ein- oder ausgeschlossen werden sollen. Für unterstützte Linux-Distributionen geben Sie den Paketnamen an.
 
    > [!IMPORTANT]
    > Denken Sie daran, dass Ausschlüsse eine höhere Priorität haben als Einschlüsse. Wenn Sie also beispielsweise die Ausschlussregel `*` definieren, schließt die Updateverwaltung alle Patches oder Pakete aus der Installation aus. Ausgeschlossene Patches werden weiterhin als auf dem Computer nicht vorhanden angezeigt. Wenn Sie für Linux-Computer ein Paket mit einem ausgeschlossenen abhängigen Paket einschließen, wird das Hauptpaket von der Updateverwaltung nicht installiert.
@@ -111,7 +111,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     > [!NOTE]
     > Wählen Sie nach Abschluss der Konfiguration des Bereitstellungszeitplans für einen Arc-fähigen Server **Überprüfen und erstellen** aus.
 
-15. Das Statusdashboard wird wieder angezeigt. Wählen Sie **Bereitstellungszeitpläne** aus, um den erstellten Bereitstellungszeitplan anzuzeigen.
+15. Das Statusdashboard wird wieder angezeigt. Wählen Sie **Bereitstellungszeitpläne** aus, um den erstellten Bereitstellungszeitplan anzuzeigen. Es werden maximal 500 Zeitpläne aufgeführt. Wenn Sie über mehr als 500 Zeitpläne verfügen und die vollständige Liste überprüfen möchten, sehen Sie sich den Artikel zur entsprechenden REST-API-Methode unter [Softwareupdatekonfigurationen: Liste](/rest/api/automation/softwareupdateconfigurations/list) an. Geben Sie die API-Version 2019-06-01 oder höher an.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Programmgesteuertes Planen einer Updatebereitstellung
 
@@ -121,7 +121,7 @@ Sie können auch ein Beispielrunbook zum Erstellen einer wöchentlichen Updatebe
 
 ## <a name="check-deployment-status"></a>Überprüfen des Bereitstellungsstatus
 
-Nach dem Start Ihrer geplanten Bereitstellung wird ihr Status auf der Registerkarte **Verlauf** unter **Updateverwaltung** angezeigt. Der Status lautet **In Bearbeitung** , wenn die Bereitstellung derzeit ausgeführt wird. Nach erfolgreichem Abschluss der Bereitstellung ändert sich der Status in **Erfolgreich** . Wenn bei einzelnen oder mehreren Updates in der Bereitstellung Fehler auftreten, wird der Status als **Fehlgeschlagen** angezeigt.
+Nach dem Start Ihrer geplanten Bereitstellung wird ihr Status auf der Registerkarte **Verlauf** unter **Updateverwaltung** angezeigt. Der Status lautet **In Bearbeitung** , wenn die Bereitstellung derzeit ausgeführt wird. Nach erfolgreichem Abschluss der Bereitstellung ändert sich der Status in **Erfolgreich**. Wenn bei einzelnen oder mehreren Updates in der Bereitstellung Fehler auftreten, wird der Status als **Fehlgeschlagen** angezeigt.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Anzeigen der Ergebnisse einer abgeschlossenen Updatebereitstellung
 

@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204981"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742458"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Kapazitätsgrenzen in Azure Synapse Analytics (ehemals SQL DW)
 
@@ -61,8 +61,8 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure Synapse Analyti
 
 | Category | BESCHREIBUNG | Maximum |
 |:--- |:--- |:--- |
-| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>PolyBase lädt Zeilen, die kleiner als 1 MB sind. Das Laden von LOB-Datentypen in Tabellen mit einem gruppierten Columnstore-Index (CCI) wird nicht unterstützt.<br/><br/> |
-||||
+| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>PolyBase lädt Zeilen, die kleiner als 1 MB sind. Das Laden von LOB-Datentypen in Tabellen mit einem gruppierten Columnstore-Index (CCI) wird nicht unterstützt.<br/> |
+|PolyBase-Auslastung|Gesamtanzahl de Dateien|1\.000.000<br/><br/>Polybase-Lasten dürfen ein Limit von 1 Mio. Dateien nicht überschreiten. Möglicherweise erhalten Sie die folgende Fehlermeldung: **Fehler beim Vorgang, weil die Teilungsanzahl die Obergrenze von 1.000.000 überschreitet.**|
 
 ## <a name="queries"></a>Abfragen
 

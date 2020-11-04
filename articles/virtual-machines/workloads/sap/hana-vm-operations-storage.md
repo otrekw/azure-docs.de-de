@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978253"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670668"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -42,11 +42,11 @@ Eine Liste der Speichertypen und deren Vereinbarungen zum Servicelevel für IOPS
 
 Die minimalen für SAP HANA zertifizierten Bedingungen für die verschiedenen Speichertypen sind: 
 
-- Azure Storage Premium – **/hana/log** ist erforderlich, um von der Azure-[Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) unterstützt zu werden. Das Volume **/hana/data** kann ohne Azure-Schreibbeschleunigung auf Storage Premium oder auf Disk Ultra platziert werden.
+- Azure Storage Premium – **/hana/log** ist erforderlich, um von der Azure- [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) unterstützt zu werden. Das Volume **/hana/data** kann ohne Azure-Schreibbeschleunigung auf Storage Premium oder auf Disk Ultra platziert werden.
 - Azure Disk Ultra mindestens für das Volume **/hana/log**. Das Volume **/hana/data** kann entweder ohne Azure-Schreibbeschleunigung auf Storage Premium oder für schnellere Neustartzeiten auf Disk Ultra platziert werden.
-- **NFS v4.1**-Volumes basierend auf Azure NetApp Files für **/hana/log und /hana/data**. Das Volume von „/hana/shared“ kann das Protokoll NFS v3 oder NFS v4.1 verwenden.
+- **NFS v4.1** -Volumes basierend auf Azure NetApp Files für **/hana/log und /hana/data**. Das Volume von „/hana/shared“ kann das Protokoll NFS v3 oder NFS v4.1 verwenden.
 
-Einige Speichertypen können kombiniert werden. Es ist z. B. möglich, **/hana/data** unter Storage Premium zu speichern, und **/hana/log** kann unter Disk Storage Ultra gespeichert werden, um die erforderliche geringe Wartezeit zu erzielen. Wenn Sie ein auf ANF basierendes Volume für **/hana/data** verwenden, muss das Volume **/hana/log** zusätzlich zu ANF auch auf NFS basieren. Die Verwendung von NFS über ANF für eines der Volumes (z. B. „/hana/data“) und Azure Storage Premium oder Disk Ultra für das andere Volume (z. B. **/hana/log**) wird **nicht unterstützt**.
+Einige Speichertypen können kombiniert werden. Es ist z. B. möglich, **/hana/data** unter Storage Premium zu speichern, und **/hana/log** kann unter Disk Storage Ultra gespeichert werden, um die erforderliche geringe Wartezeit zu erzielen. Wenn Sie ein auf ANF basierendes Volume für **/hana/data** verwenden, muss das Volume **/hana/log** zusätzlich zu ANF auch auf NFS basieren. Die Verwendung von NFS über ANF für eines der Volumes (z. B. „/hana/data“) und Azure Storage Premium oder Disk Ultra für das andere Volume (z. B. **/hana/log** ) wird **nicht unterstützt**.
 
 In der lokalen Umgebung mussten Sie sich nur selten Gedanken über die E/A-Subsysteme und deren Funktionen machen. Das lag daran, dass der Hersteller des Geräts sicherstellen musste, dass die Mindestspeicheranforderungen für SAP HANA erfüllt sind. Da Sie die Azure-Infrastruktur selbst erstellen, sollten Sie mit einigen dieser SAP-Anforderungen vertraut sein. Einige der von SAP empfohlenen minimalen Durchsatzmerkmale sind:
 
@@ -61,7 +61,7 @@ Einige Leitprinzipien bei der Auswahl Ihrer Speicherkonfiguration für HANA kön
 
 - Entscheiden Sie sich für den Speichertyp auf der Grundlage von [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../disks-types.md).
 - Beachten Sie den E/A-Gesamtdurchsatz und die IOPS-Grenzwerte eines virtuellen Computers, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Gesamtspeicherdurchsatz ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) beschrieben.
-- Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data**-Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data**-Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data**-Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
+- Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data** -Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data** -Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data** -Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
 - Wenn Sie Azure Storage Premium verwenden, ist die kostengünstigste Konfiguration die Verwendung von logischen Volume-Managern zur Erstellung von Stripesets für die Volumes **/hana/data** und **/hana/log**.
 
 > [!IMPORTANT]
@@ -141,38 +141,38 @@ Insbesondere auf kleineren DBMS-Systemen, auf denen Ihre Workload nur ein paar h
 
 **Empfehlung: Die empfohlenen Konfigurationen mit Azure Storage Premium für Produktionsszenarien sehen wie folgt aus:**
 
-Konfiguration für SAP **/hana/data**-Volume:
+Konfiguration für SAP **/hana/data** -Volume:
 
-| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/data | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
+| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/data | Bereitgestellter Durchsatz | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBit/s | 4 x P6 | 680 MBit/s | 960 | 14.000 |
-| M32ls | 256 GiB | 500 MBit/s | 4 x P6 | 680 MBit/s | 960 | 14.000 |
-| M64ls | 512 GB | 1\.000 MBit/s | 4 x P10 |  680 MBit/s | 2\.000 | 14.000 |
-| M64s | 1\.000 GiB | 1\.000 MBit/s | 4 x P15 | 680 MBit/s | 4\.400 | 14.000 |
-| M64ms | 1\.750 GiB | 1\.000 MBit/s | 4 x P20 | 680 MBit/s | 9\.200 | 14.000 |  
-| M128s | 2\.000 GiB | 2\.000 MBit/s | 4 x P20 | 680 MBit/s | 9\.200| 14.000 | 
-| M128ms | 3\.800 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s (bereitgestellt) | 20.000 | Kein Burst | 
-| M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 4 x P30 | 800 MBit/s (bereitgestellt) | 20.000| Kein Burst | 
-| M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 4 x P40 | 1\.000 MBit/s (bereitgestellt) | 25.000 | Kein Burst |
-| M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 4 x P40 | 1\.000 MBit/s (bereitgestellt) | 25.000 | Kein Burst |
-| M416ms_v2 | 11.400 GiB | 2\.000 MBit/s | 4 x P50 | 2\.000 MBit/s (bereitgestellt) | 25.000 | Kein Burst |
+| M32ts | 192 GiB | 500 MBit/s | 4 x P6 | 200 MBit/s | 680 MBit/s | 960 | 14.000 |
+| M32ls | 256 GiB | 500 MBit/s | 4 x P6 | 200 MBit/s | 680 MBit/s | 960 | 14.000 |
+| M64ls | 512 GB | 1\.000 MBit/s | 4 x P10 | 400 MBit/s | 680 MBit/s | 2\.000 | 14.000 |
+| M64s | 1\.000 GiB | 1\.000 MBit/s | 4 x P15 | 500 MBit/s | 680 MBit/s | 4\.400 | 14.000 |
+| M64ms | 1\.750 GiB | 1\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200 | 14.000 |  
+| M128s | 2\.000 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
+| M128ms | 3\.800 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
+| M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000| kein Bursting | 
+| M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 4 x P40 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
+| M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 4 x P40 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
+| M416ms_v2 | 11.400 GiB | 2\.000 MBit/s | 4 x P50 | 2\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
 
 
 Für das Volume **/hana/log**. Die Konfiguration würde wie folgt aussehen:
 
-| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | Volume **/hana/log** | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
+| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | Volume **/hana/log** | Bereitgestellter Durchsatz | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBit/s | 3 x P10 | 510 MBit/s | 1\.500 | 10.500 | 
-| M32ls | 256 GiB | 500 MBit/s | 3 x P10 | 510 MBit/s | 1\.500 | 10.500 | 
-| M64ls | 512 GB | 1\.000 MBit/s | 3 x P10 | 510 MBit/s | 1\.500 | 10.500 | 
-| M64s | 1\.000 GiB | 1\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 | 
-| M64ms | 1\.750 GiB | 1\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 |  
-| M128s | 2\.000 GiB | 2\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500|  
-| M128ms | 3\.800 GiB | 2\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 | 
-| M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 |  
-| M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 |  
-| M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 |  
-| M416ms_v2 | 11.400 GiB | 2\.000 MBit/s | 3 x P15 | 510 MBit/s | 3\.300 | 10.500 | 
+| M32ts | 192 GiB | 500 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 | 
+| M32ls | 256 GiB | 500 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 | 
+| M64ls | 512 GB | 1\.000 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 | 
+| M64s | 1\.000 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| M64ms | 1\.750 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
+| M128s | 2\.000 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500|  
+| M128ms | 3\.800 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
+| M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
+| M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
+| M416ms_v2 | 11.400 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
 
 
 Für die anderen Volumes würde die Konfiguration wie folgt aussehen:
@@ -198,13 +198,13 @@ Die Azure-Schreibbeschleunigung funktioniert nur in Verbindung mit [verwalteten 
 
 Für die HANA-zertifizierten VMs der Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series)- und [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)-Familie müssen Sie für die Volumes **/hana/data** und **/hana/log** eine ANF erstellen. Oder Sie müssen nur für das Volume **/hana/log** Azure Disk Storage Ultra anstelle von Azure Storage Premium verwenden. Infolgedessen könnten die Konfigurationen für das Volume **/hana/data** in Azure Storage Premium wie folgt aussehen:
 
-| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/data | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
+| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/data | Bereitgestellter Durchsatz | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
 | --- | --- | --- | --- | --- | --- | --- |
-| E20ds_v4 | 160 GiB | 480 MBit/s | 3 x P10 | 510 MBit/s | 1\.500 | 10.500 |
-| E32ds_v4 | 256 GiB | 768 MBit/s | 3 x P10 |  510 MBit/s | 1\.500 | 10.500|
-| E48ds_v4 | 384 GiB | 1\.152 MBit/s | 3 x P15 |  510 MBit/s | 3\.300  | 10.500 | 
-| E64ds_v4 | 504 GiB | 1\.200 MBit/s | 3 x P15 |  510 MBit/s | 3\.300 | 10.500 | 
-| E64s_v3 | 432 GiB | 1\.200 MB/s | 3 x P15 |  510 MBit/s | 3\.300 | 10.500 | 
+| E20ds_v4 | 160 GiB | 480 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 |
+| E32ds_v4 | 256 GiB | 768 MBit/s | 3 x P10 |  300 MBit/s | 510 MBit/s | 1\.500 | 10.500|
+| E48ds_v4 | 384 GiB | 1\.152 MBit/s | 3 x P15 |  375 MBit/s |510 MBit/s | 3\.300  | 10.500 | 
+| E64ds_v4 | 504 GiB | 1\.200 MBit/s | 3 x P15 |  375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| E64s_v3 | 432 GiB | 1\.200 MB/s | 3 x P15 |  375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
 
 Für die anderen Volumes, einschließlich **/hana/log** auf Disk Ultra, könnte die Konfiguration wie folgt aussehen:
 

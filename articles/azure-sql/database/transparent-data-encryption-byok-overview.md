@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602668"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790881"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Bei Azure SQL-Datenbank und Azure Synapse Analytics wird der TDE-Schutz auf der 
 > Für diejenigen, die eine dienstseitig verwaltete TDE verwenden und auf eine kundenseitig verwalteten TDE umsteigen möchten, bleiben die Daten während der Umstellung verschlüsselt, und es kommt nicht zu Ausfallzeiten oder einer Neuverschlüsselung der Datenbankdateien. Der Wechsel von einem dienstseitig verwalteten Schlüssel zu einem kundenseitig verwalteten Schlüssel erfordert lediglich eine erneute Verschlüsselung des Datenbankverschlüsselungsschlüssels (DEK), die schnell und online durchzuführen ist.
 
 > [!NOTE]
-> Um für Azure SQL-Kunden zwei Ebenen der Verschlüsselung von ruhenden Daten bereitzustellen, wird die Infrastrukturverschlüsselung (mit AES-256-Verschlüsselungsalgorithmus) mit plattformverwalteten Schlüsseln eingeführt. Dadurch erhalten sie neben TDE mit vom Kunden verwalteten Schlüsseln (bereits verfügbar) eine zusätzliche Ebene der Verschlüsselung von ruhenden Daten. Zurzeit müssen Kunden den Zugriff anfordern, um diese Funktion verwenden zu können. Wenn Sie an dieser Funktion interessiert sind, wenden Sie sich an AzureSQLDoubleEncryptionAtRest@service.microsoft.com.
+> <a id="doubleencryption"></a> Zum Bereitstellen von zwei Ebenen der Verschlüsselung von ruhenden Daten für Azure SQL-Kunden wird die Infrastrukturverschlüsselung (mithilfe des AES-256-Verschlüsselungsalgorithmus) mit von der Plattform verwalteten Schlüsseln eingeführt. Dadurch erhalten sie neben TDE mit vom Kunden verwalteten Schlüsseln (bereits verfügbar) eine zusätzliche Ebene der Verschlüsselung von ruhenden Daten. Für Azure SQL-Datenbank und Managed Instance werden alle Datenbanken verschlüsselt, einschließlich der Masterdatenbank und anderer Systemdatenbanken, wenn die Infrastrukturverschlüsselung aktiviert wird. Zurzeit müssen Kunden den Zugriff anfordern, um diese Funktion verwenden zu können. Wenn Sie an dieser Funktion interessiert sind, wenden Sie sich an AzureSQLDoubleEncryptionAtRest@service.microsoft.com.
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Vorteile der kundenseitig verwalteten TDE
 
@@ -95,7 +95,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 - Wenn Sie einen vorhandenen Schlüssel in den Schlüsseltresor importieren, müssen Sie ihn in einem unterstützten Dateiformat (.pfx, .byok oder .backup) bereitstellen.
 
 > [!NOTE]
-> Azure SQL unterstützt nun die Verwendung eines RSA-Schlüssels, der in einem verwalteten HSM als TDE-Schutzvorrichtung gespeichert ist. Dieses Feature befindet sich in der **Public Preview**. Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer, Einzelmandanten- und standardkonformer Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit FIPS 140-2 Level 3 validiert sind. Erfahren Sie mehr über [verwaltete HSMs](https://aka.ms/mhsm).
+> Azure SQL unterstützt nun die Verwendung eines RSA-Schlüssels, der in einem verwalteten HSM als TDE-Schutzvorrichtung gespeichert ist. Dieses Feature befindet sich in der **Public Preview**. Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer, Einzelmandanten- und standardkonformer Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit FIPS 140-2 Level 3 validiert sind. Erfahren Sie mehr über [verwaltete HSMs](../../key-vault/managed-hsm/index.yml).
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Empfehlungen für die Konfiguration einer kundenseitig verwalteten TDE
@@ -106,7 +106,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Legen Sie eine Ressourcensperre für den Schlüsseltresor fest, um zu steuern, wer diese wichtige Ressource löschen kann, und um ein versehentliches oder nicht autorisiertes Löschen zu verhindern. Erfahren Sie mehr über [Ressourcensperren](../../azure-resource-manager/management/lock-resources.md).
 
-- Aktivieren Sie die Überwachung und Berichterstellung für alle Verschlüsselungsschlüssel: Key Vault stellt Protokolle bereit, die sich problemlos in andere SIEM-Tools (Security Information & Event Management) einfügen lassen. [Log Analytics](../../azure-monitor/insights/azure-key-vault.md) in Operations Management Suite ist ein Beispiel für einen Dienst, der bereits integriert ist.
+- Aktivieren Sie die Überwachung und Berichterstellung für alle Verschlüsselungsschlüssel: Key Vault stellt Protokolle bereit, die sich problemlos in andere SIEM-Tools (Security Information & Event Management) einfügen lassen. [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) in Operations Management Suite ist ein Beispiel für einen Dienst, der bereits integriert ist.
 
 - Verknüpfen Sie jeden Server mit zwei Schlüsseltresoren in unterschiedlichen Regionen, aber mit denselben Schlüsselmaterialien, um die Hochverfügbarkeit verschlüsselter Datenbanken zu gewährleisten. Markieren Sie nur den Schlüssel aus dem Schlüsseltresor in derselben Region als TDE-Schutzvorrichtung. Wenn es zu einem Ausfall kommt, der sich auf den Schlüsseltresor in derselben Region auswirkt, wechselt das System automatisch zu diesem Tresor.
 
@@ -118,7 +118,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Erstellen Sie immer eine neue Sicherung, wenn Änderungen am Schlüssel vorgenommen werden (z. B. Schlüsselattribute, Tags, ACLs).
 
-- **Lassen Sie frühere Versionen** des Schlüssels beim Rotieren von Schlüsseln im Schlüsseltresor, damit ältere Datenbanksicherungen wiederhergestellt werden können. Wenn die TDE-Schutzvorrichtung für eine Datenbank geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert**, um die aktuelle TDE-Schutzvorrichtung zu verwenden. Bei der Wiederherstellung ist für jede Sicherung die TDE-Schutzvorrichtung erforderlich, mit der sie zum Erstellungszeitpunkt verschlüsselt wurde. Schlüsselrotationen können anhand der Anweisungen unter [Rotieren der Transparent Data Encryption-Schutzvorrichtung mithilfe von PowerShell](transparent-data-encryption-byok-key-rotation.md) durchgeführt werden.
+- **Lassen Sie frühere Versionen** des Schlüssels beim Rotieren von Schlüsseln im Schlüsseltresor, damit ältere Datenbanksicherungen wiederhergestellt werden können. Wenn die TDE-Schutzvorrichtung für eine Datenbank geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert** , um die aktuelle TDE-Schutzvorrichtung zu verwenden. Bei der Wiederherstellung ist für jede Sicherung die TDE-Schutzvorrichtung erforderlich, mit der sie zum Erstellungszeitpunkt verschlüsselt wurde. Schlüsselrotationen können anhand der Anweisungen unter [Rotieren der Transparent Data Encryption-Schutzvorrichtung mithilfe von PowerShell](transparent-data-encryption-byok-key-rotation.md) durchgeführt werden.
 
 - Bewahren Sie alle zuvor verwendeten Schlüssel in AKV auf, auch nachdem Sie zu dienstseitig verwalteten Schlüsseln gewechselt haben. Dadurch wird sichergestellt, dass Datenbanksicherungen mit den in AKV gespeicherten TDE-Schutzvorrichtungen wiederhergestellt werden können.  Mit Azure Key Vault erstellte TDE-Schutzvorrichtungen müssen beibehalten werden, bis alle gespeicherte Sicherungen mit dienstseitig verwalteten Schlüsseln erstellt wurden. Erstellen Sie mithilfe von [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey) wiederherstellbare Sicherungskopien dieser Schlüssel.
 
@@ -146,7 +146,7 @@ Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werd
 
 Es kann vorkommen, dass ein Benutzer mit ausreichenden Zugriffsrechten für den Schlüsseltresor den Serverzugriff auf den Schlüssel versehentlich durch eine der folgende Aktionen deaktiviert:
 
-- Widerrufen der Berechtigungen *get*, *wrapKey*, *unwrapKey* des Schlüsseltresors vom Server
+- Widerrufen der Berechtigungen *get* , *wrapKey* , *unwrapKey* des Schlüsseltresors vom Server
 
 - Löschen des Schlüssels
 
@@ -163,12 +163,12 @@ Erfahren Sie mehr über [häufige Ursachen für Zugriffsprobleme bei Datenbanken
 Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu überwachen und Warnungen bei Verlust des Zugriffs auf die TDE-Schutzvorrichtung zu aktivieren:
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md): Eine Datenbank, auf die nicht zugegriffen werden kann und die den Zugriff auf die TDE-Schutzvorrichtung verloren hat, wird als „Nicht verfügbar“ angezeigt, nachdem die erste Verbindung mit der Datenbank verweigert wurde.
-- [Aktivitätsprotokoll](../../service-health/alerts-activity-log-service-notifications.md): Ist der Zugriff auf die TDE-Schutzvorrichtung im vom Kunden verwalteten Schlüsseltresor nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt.  Durch die Erstellung von Warnungen für diese Ereignisse können Sie den Zugriff schnellstmöglich wiederherstellen.
+- [Aktivitätsprotokoll](../../service-health/alerts-activity-log-service-notifications-portal.md): Ist der Zugriff auf die TDE-Schutzvorrichtung im vom Kunden verwalteten Schlüsseltresor nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt.  Durch die Erstellung von Warnungen für diese Ereignisse können Sie den Zugriff schnellstmöglich wiederherstellen.
 - [Aktionsgruppen](../../azure-monitor/platform/action-groups.md) können definiert werden, um Benachrichtigungen und Warnungen gemäß Ihren Präferenzen zu senden – also etwa per E-Mail/SMS/Pushbenachrichtigung/Sprachnachricht, per Logik-App, per Webhook, per ITSM oder per Automation-Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Datenbanksicherung und -wiederherstellung mit der kundenseitig verwalteten TDE
 
-Nachdem eine Datenbank mithilfe eines Schlüssels aus Key Vault mit TDE verschlüsselt wurde, werden alle neu generierten Sicherungen ebenfalls mit der gleichen TDE-Schutzvorrichtung verschlüsselt. Wenn die TDE-Schutzvorrichtung geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert**, um die aktuelle TDE-Schutzvorrichtung zu verwenden.
+Nachdem eine Datenbank mithilfe eines Schlüssels aus Key Vault mit TDE verschlüsselt wurde, werden alle neu generierten Sicherungen ebenfalls mit der gleichen TDE-Schutzvorrichtung verschlüsselt. Wenn die TDE-Schutzvorrichtung geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert** , um die aktuelle TDE-Schutzvorrichtung zu verwenden.
 
 Zum Wiederherstellen einer Sicherung, die mit einer TDE-Schutzvorrichtung aus Key Vault verschlüsselt ist, stellen Sie sicher, dass das Schlüsselmaterial für den Zielserver verfügbar ist. Es wird daher empfohlen, alle alten Versionen der TDE-Schutzvorrichtung im Schlüsseltresor beizubehalten, damit Datenbanksicherungen wiederhergestellt werden können.
 
