@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+zone_pivot_groups: keyword-quickstart
+ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166453"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305848"
 ---
 # <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 
@@ -34,9 +35,9 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 > Benutzerdefinierte Schlüsselwortmodelle und die daraus resultierenden `.table`-Dateien können **nur** in Speech Studio erstellt werden.
 > Sie können keine benutzerdefinierten Schlüsselwörter über das SDK oder mit REST-Aufrufen erstellen.
 
-1. Wechseln Sie zu [Speech Studio](https://aka.ms/sdsdk-speechportal), und **melden Sie sich an** . Wenn Sie kein Speech-Abonnement haben, wählen Sie [**Abonnement erstellen**](https://go.microsoft.com/fwlink/?linkid=2086754) aus.
+1. Wechseln Sie zu [Speech Studio](https://aka.ms/sdsdk-speechportal), und **melden Sie sich an**. Wenn Sie kein Speech-Abonnement haben, wählen Sie [**Abonnement erstellen**](https://go.microsoft.com/fwlink/?linkid=2086754) aus.
 
-1. Erstellen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) ein **neues Projekt** . 
+1. Erstellen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) ein **neues Projekt**. 
 
 1. Geben Sie unter **Name** einen Namen und unter **Beschreibung** eine optionale Beschreibung ein, und wählen Sie die Sprache aus. Sie benötigen jeweils ein Projekt pro Sprache, und der Support ist derzeit auf die Sprache `en-US` beschränkt.
 
@@ -46,9 +47,9 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
     ![Auswählen Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. Klicken Sie zum Erstellen eines neuen Schlüsselwortmodells auf **Modell trainieren** .
+1. Klicken Sie zum Erstellen eines neuen Schlüsselwortmodells auf **Modell trainieren**.
 
-1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter** . Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword).
+1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter**. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword).
 
     ![Eingeben Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -56,7 +57,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
     ![Der Screenshot zeigt, wo Sie die richtigen Aussprachen auswählen.](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. Die Generierung des Modells kann bis zu dreißig Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich** . Nun können Sie die Datei herunterladen.
+1. Die Generierung des Modells kann bis zu dreißig Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. Nun können Sie die Datei herunterladen.
 
     ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-download-model.png)
 
@@ -64,25 +65,17 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>Verwenden eines Schlüsselwortmodells mit dem SDK
 
-Laden Sie zunächst die Schlüsselwortmodelldatei mithilfe der statischen Funktion `FromFile()`, die ein `KeywordRecognitionModel` zurückgibt. Verwenden Sie den Pfad zu der `.table`-Datei, die Sie von Speech Studio heruntergeladen haben. Zusätzlich erstellen Sie eine `AudioConfig` unter Verwendung des Standardmikrofons und instanziieren dann ein neues `KeywordRecognizer` unter Verwendung der Audiokonfiguration.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python Basics include](includes/how-to/keyword-recognition/keyword-basics-python.md)]
+::: zone-end
 
-var keywordModel = KeywordRecognitionModel.FromFile("your/path/to/Activate_device.table");
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var keywordRecognizer = new KeywordRecognizer(audioConfig);
-```
-
-Als nächstes erfolgt die Ausführung der Schlüsselworterkennung mit einem Aufruf von `RecognizeOnceAsync()` durch Übergabe Ihres Modellobjekts. Dadurch wird eine Sitzung zur Schlüsselworterkennung gestartet, die so lange dauert, bis das Schlüsselwort erkannt wird. Daher verwenden Sie dieses Entwurfsmuster in der Regel in Multithreadanwendungen oder in Anwendungsfällen, in denen Sie möglicherweise auf unbestimmte Zeit auf ein Aktivierungswort warten.
-
-```csharp
-KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(keywordModel);
-```
-
-> [!NOTE]
-> Das hier gezeigte Beispiel verwendet die lokale Schlüsselworterkennung, da es kein `SpeechConfig`-Objekt für den Authentifizierungskontext benötigt und das Back-End nicht kontaktiert. Sie können jedoch sowohl die Schlüsselworterkennung als auch die Überprüfung [unter Verwendung einer kontinuierlichen Back-End-Verbindung](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword) ausführen.
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 

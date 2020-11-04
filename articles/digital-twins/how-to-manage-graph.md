@@ -7,21 +7,25 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 947a0c9a0af3c38d6c4d6f66da691d62530a69e7
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495768"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279505"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
 Das Herzstück von Azure Digital Twins ist der [Zwillingsgraph](concepts-twins-graph.md), der Ihre gesamte Umgebung darstellt. Der Zwillingsgraph setzt sich aus einzelnen digitalen Zwillingen zusammen, die über **Beziehungen** verbunden sind. 
 
-Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](/rest/api/digital-twins/dataplane/twins) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
+Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](/rest/api/digital-twins/dataplane/twins) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
 
 Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen unter [ *Verwalten digitaler Zwillinge*](how-to-manage-twin.md).
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+    
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Erstellen von Beziehungen
@@ -53,7 +57,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
             try
             {
                 string relId = $"{srcId}-{relName}->{targetId}";
-                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
                 Console.WriteLine($"Created {relName} relationship successfully");
             }
             catch (RequestFailedException rex)
@@ -104,13 +108,12 @@ public static async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync
             try
             {
                 // GetRelationshipsAsync will throw if an error occurs
-                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
                 List<BasicRelationship> results = new List<BasicRelationship>();
-                await foreach (string relJson in relsJson)
+                await foreach (BasicRelationship rel in rels)
                 {
-                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
                     results.Add(rel);
-                    Console.WriteLine(relJson);
+                    Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
                 }
 
                 return results;
@@ -151,7 +154,7 @@ public static async Task<List<IncomingRelationship>> FindIncomingRelationshipsAs
                 await foreach (IncomingRelationship incomingRel in incomingRels)
                 {
                     results.Add(incomingRel);
-                    Console.WriteLine(incomingRel);
+                    Console.WriteLine($"Found incoming relationship-{incomingRel.RelationshipId}");
 
                 }
                 return results;
@@ -177,8 +180,7 @@ Mithilfe der oben genannten Methoden zur Auflistung der aus- und eingehenden Bez
 private static async Task FetchAndPrintTwinAsync(DigitalTwinsClient client, string twin_Id)
         {
             BasicDigitalTwin twin;
-            Response<string> res = client.GetDigitalTwin(twin_Id);
-            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Response<BasicDigitalTwin> res = client.GetDigitalTwin(twin_Id);
             
             await FindOutgoingRelationshipsAsync(client, twin_Id);
             await FindIncomingRelationshipsAsync(client, twin_Id);
@@ -284,7 +286,7 @@ namespace minimal
             floorTwin.Metadata.ModelId = "dtmi:example:Floor;1";
             //Floor twins have no properties, so nothing to initialize
             //Create the twin
-            await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(floorTwin));
+            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, floorTwin);
             Console.WriteLine("Twin created successfully");
 
             //Create second (Room) digital twin
@@ -296,9 +298,9 @@ namespace minimal
             Dictionary<string, object> props = new Dictionary<string, object>();
             props.Add("Temperature", 35.0);
             props.Add("Humidity", 55.0);
-            roomTwin.CustomProperties = props;
+            roomTwin.Contents = props;
             //Create the twin
-            await client.CreateDigitalTwinAsync(targetId, JsonSerializer.Serialize<BasicDigitalTwin>(roomTwin));
+            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(targetId, roomTwin);
             
             //Create relationship between them
             await CreateRelationship(client, srcId, targetId, "contains");
@@ -349,7 +351,7 @@ namespace minimal
             try
             {
                 string relId = $"{srcId}-{relName}->{targetId}";
-                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
                 Console.WriteLine($"Created {relName} relationship successfully");
             }
             catch (RequestFailedException rex)
@@ -362,8 +364,7 @@ namespace minimal
         private static async Task FetchAndPrintTwinAsync(string twin_Id, DigitalTwinsClient client)
         {
             BasicDigitalTwin twin;
-            Response<string> res = client.GetDigitalTwin(twin_Id);
-            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Response<BasicDigitalTwin> res = client.GetDigitalTwin(twin_Id);
             await FindOutgoingRelationshipsAsync(client, twin_Id);
             await FindIncomingRelationshipsAsync(client, twin_Id);
 
@@ -377,13 +378,12 @@ namespace minimal
             try
             {
                 // GetRelationshipsAsync will throw if an error occurs
-                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
                 List<BasicRelationship> results = new List<BasicRelationship>();
-                await foreach (string relJson in relsJson)
+                await foreach (BasicRelationship rel in rels)
                 {
-                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
                     results.Add(rel);
-                    Console.WriteLine(relJson);
+                    Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
                 }
 
                 return results;
@@ -408,8 +408,7 @@ namespace minimal
                 await foreach (IncomingRelationship incomingRel in incomingRels)
                 {
                     results.Add(incomingRel);
-                    Console.WriteLine(incomingRel.RelationshipId);
-
+                    Console.WriteLine($"Found incoming relationship-{incomingRel.RelationshipId}");
                 }
                 return results;
             }
@@ -487,13 +486,13 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
     }
 
     BasicDigitalTwin twin = new BasicDigitalTwin();
-    twin.CustomProperties = initData;
+    twin.Contents = initData;
     // Set the type of twin to be created
     twin.Metadata = new DigitalTwinMetadata() { ModelId = modelId };
     
     try
     {
-        await client.CreateDigitalTwinAsync(sourceId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+        await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(sourceId, twin);
     }
     catch (RequestFailedException e)
     {
@@ -502,7 +501,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
     foreach (BasicRelationship rec in RelationshipRecordList)
     { 
         try { 
-            await client.CreateRelationshipAsync(rec.sourceId, Guid.NewGuid().ToString(), JsonSerializer.Serialize<BasicRelationship>(rec));
+            await client.CreateOrReplaceRelationshipAsync(rec.sourceId, Guid.NewGuid().ToString(), rec);
         }
         catch (RequestFailedException e)
         {

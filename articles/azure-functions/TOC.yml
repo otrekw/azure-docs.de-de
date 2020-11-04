@@ -270,7 +270,7 @@
         - name: Verwalten von Verbindungen
           href: manage-connections.md
           displayName: best practice
-        - name: Fehlerbehandlung
+        - name: Fehlerbehandlung und Wiederholungsversuche
           href: functions-bindings-error-pages.md
         - name: Manuelles Ausführen einer Funktion ohne HTTP-Trigger
           href: functions-manually-run-non-http.md

@@ -406,6 +406,8 @@
           href: backup-encryption.md
         - name: Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
           href: encryption-at-rest-with-cmk.md
+        - name: Transport Layer Security
+          href: transport-layer-security.md
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -437,7 +439,7 @@
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/backup
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
@@ -454,7 +456,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
