@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409475"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892620"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -26,11 +26,11 @@ Dies ist die einzige Testversionsoption für VM- oder Azure-App-Angebote, die zu
 
 ## <a name="hosted-test-drive"></a>Gehostete Testversion
 
-Microsoft kann mit diesem Typ von Testversion die Dienstbereitstellung hosten und verwalten, um das Einrichten einer Testversion zu vereinfachen. Die Konfiguration für diesen Typ einer gehosteten Testversion ist unabhängig davon gleich, ob die Testversion für Dynamics 365 Business Central, Dynamics 365 Customer Engagement oder Dynamics 365 Operation vorgesehen ist.
+Microsoft kann die Dienstbereitstellung und die Aufhebung der Bereitstellung hosten und verwalten, um das Einrichten einer Testversion zu vereinfachen. Die Konfiguration für diese Art von Testversion ist unabhängig davon gleich, ob die Testversion für Dynamics 365 Customer Engagement oder Dynamics 365 Operation vorgesehen ist.
 
 - **Maximale Anzahl gleichzeitig ausgeführter Testversionen:** Legen Sie die maximale Anzahl von Kunden fest, die Ihre Testversion gleichzeitig verwenden können. Jeder gleichzeitige Benutzer nutzt eine Dynamics 365-Lizenz, solange die Testversion aktiv ist. Stellen sie daher sicher, dass genügend Lizenzen für die festgelegte maximale Anzahl verfügbar sind. Es wird ein Wert zwischen 3 und 5 empfohlen.
 
-- **Dauer der Testversion** (erforderlich): Geben Sie die Anzahl von Stunden ein, für die die Testversion aktiv bleiben soll (mindestens eine Stunde). Nach Ablauf dieses Zeitraums wird die Sitzung beendet und nutzt keine Ihrer Lizenzen mehr. Der empfohlene Wert beträgt 2 bis 24 Stunden, abhängig von der Komplexität Ihres Angebots. Diese Dauer kann nur in ganzen Stunden angegeben werden. („2“ ist z. B. ein gültiger Wert, „1.5“ nicht.) Der Benutzer kann eine neue Sitzung anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
+- **Dauer der Testversion** (erforderlich): Geben Sie die Anzahl von Stunden ein, für die die Testversion für Kunden aktiv bleiben soll. Nach Ablauf dieses Zeitraums wird die Sitzung beendet und nutzt keine Ihrer Lizenzen mehr. Der empfohlene Wert beträgt 2 bis 24 Stunden, abhängig von der Komplexität Ihres Angebots. Diese Dauer kann nur in ganzen Stunden angegeben werden („2 Stunden“ ist beispielsweise ein gültiger Wert, „1,5 Stunden“ jedoch nicht). Der Benutzer kann eine neue Sitzung anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
 
 - **Instanz-URL** (erforderlich): Geben Sie die URL an, über die der Kunde die Testversion startet. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App mit installierten Beispieldaten ausgeführt wird (z. B. `https://testdrive.crm.dynamics.com`).
 
@@ -48,7 +48,7 @@ Diese Art von Testversion wird nicht von Microsoft gehostet. Nutzen Sie sie, um 
 
 - **Maximale Anzahl gleichzeitig ausgeführter Testversionen** (erforderlich): Legen Sie die maximale Anzahl von Kunden fest, die Ihre Testversion gleichzeitig verwenden können. Diese Testversionen sind bereits bereitgestellt, sodass Kunden sofort auf sie zugreifen können, ohne auf eine Bereitstellung warten zu müssen.
 
-- **Dauer der Testversion** (erforderlich): Geben Sie die Anzahl von Stunden ein, für die die Testversion aktiv bleiben soll (mindestens eine Stunde). Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet.
+- **Dauer der Testversion** (erforderlich): Geben Sie die Dauer in Stunden ein, für die die Testversion aktiv bleiben soll. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet.
 
 - **Name der Azure-Ressourcengruppe** (erforderlich): Geben Sie den Namen der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups) ein, in der die Testversion für die Logik-App gespeichert ist.
 
@@ -74,7 +74,7 @@ Erstellen Sie ein separates eindeutiges Azure-Abonnement, und stellen Sie es ber
 
 - **Azure AD-App-ID** (erforderlich): Geben Sie Ihre [Anwendungs-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Um diese ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ und dann **App-Registrierungen** aus, und suchen Sie die unter **Anwendungs-ID** aufgeführte Nummer (z. B. `50c464d3-4930-494c-963c-1e951d15360e`).
 
-- **Azure AD app client secret** (Geheimer Clientschlüssel der Azure AD-App) (erforderlich): Geben Sie den [geheimen Clientschlüssel](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Menü die Registerkarte **Azure Active Directory** aus, wählen Sie **App-Registrierungen** aus und dann Ihre Testversion-App. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Wert kopieren. Navigieren Sie erst von der Seite weg, nachdem Sie den Wert kopiert haben.
+- **Azure AD app client secret** (Geheimer Clientschlüssel der Azure AD-App) (erforderlich): Geben Sie den [geheimen Clientschlüssel](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Menü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen** , und wählen Sie dann Ihre Testversion-App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und klicken Sie dann auf **Hinzufügen**. Stellen Sie sicher, dass Sie den Wert kopieren. Navigieren Sie erst von der Seite weg, nachdem Sie den Wert kopiert haben.
 
 ## <a name="test-drive-listings"></a>Listungen von Testversionen
 
@@ -93,6 +93,14 @@ Auf der Partner Center-Registerkarte **Test drive listings** (Listungen von Test
 
 Wenn Sie Ihre Testversion derzeit im Partner Center erstellen, wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
+- [Bewährte Methoden für Testversionen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Übersicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF-Datei; stellen Sie sicher, dass Ihr Popupblocker deaktiviert ist.)
 - [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](partner-center-portal/update-existing-offer.md)
+
+## <a name="additional-resources"></a>Weitere Ressourcen
+
+## <a name="feedback"></a>Feedback
+
+Sie können Feedback für [dieses Produkt](https://feedback.azure.com/forums/216369-azure-marketplace) einreichen und anzeigen.

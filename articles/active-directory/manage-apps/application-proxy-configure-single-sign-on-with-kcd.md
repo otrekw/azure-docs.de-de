@@ -1,29 +1,25 @@
 ---
-title: Einmaliges Anmelden mit Anwendungsproxy | Microsoft Docs
-description: Erläutert das Bereitstellen von einmaligem Anmelden mit Azure AD-Anwendungsproxy.
+title: Kerberos-basiertes einmaliges Anmelden (SSO) in Azure Active Directory mit Anwendungsproxy
+description: Hier wird das Bereitstellen des einmaligen Anmeldens (SSO) mithilfe eines Azure Active Directory-Anwendungsproxys erläutert.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq2
+ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299747"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426491"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
+# <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden (SSO) bei Ihren Apps mit dem Anwendungsproxy
 
 Sie können das einmalige Anmelden für lokale Anwendungen, die über den Anwendungsproxy veröffentlicht und mit der integrierte Windows-Authentifizierung gesichert werden, bereitstellen. Diese Anwendungen erfordern ein Kerberos-Ticket für den Zugriff. Der Anwendungsproxy verwendet die eingeschränkte Kerberos-Delegierung (KCD), um diese Anwendungen zu unterstützen. 
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578222"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782228"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung
 
@@ -65,7 +65,7 @@ Informationen zum Konfigurieren der Azure Storage-Verschlüsselung mit kundensei
 > [!IMPORTANT]
 > Kundenseitig verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure AD. Verwaltete Identitäten unterstützen derzeit keine verzeichnisübergreifenden Szenarien. Wenn Sie vom Kunden verwaltete Schlüssel im Azure-Portal konfigurieren, wird Ihrem Speicherkonto eine verwaltete Identität im Hintergrund automatisch zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder das Speicherkonto von einem Azure AD-Verzeichnis in ein anderes Verzeichnis verschieben, wird die dem Speicherkonto zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass vom Kunden verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie in [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) unter **Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen**.  
 
-Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit einer Größe von 2.048, 3.072 und 4.096 Bit. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit einer Größe von 2.048, 3.072 und 4.096 Bit. Weitere Informationen über Schlüssel finden Sie unter [Informationen zu Schlüsseln](../../key-vault/keys/about-keys.md).
 
 Die Verwendung eines Schlüsseltresors oder eines verwalteten HSM verursacht Kosten. Weitere Informationen finden Sie auf der Seite [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
 
@@ -109,7 +109,7 @@ Stellen Sie den Zugriff auf den vom Kunden verwalteten Schlüssel wieder her, um
 
 Alle Datenvorgänge, die in diesem Abschnitt nicht aufgeführt sind, können durchgeführt werden, nachdem vom Kunden verwaltete Schlüssel widerrufen wurden oder ein Schlüssel deaktiviert oder gelöscht wurde.
 
-Zum Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel können Sie [PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) oder die [Azure-Befehlszeilenschnittstelle](storage-encryption-keys-cli.md#revoke-customer-managed-keys) verwenden.
+Zum Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel können Sie [PowerShell](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) oder die [Azure-Befehlszeilenschnittstelle](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) verwenden.
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Von Kunden verwaltete Schlüssel für verwaltete Azure-Datenträger
 

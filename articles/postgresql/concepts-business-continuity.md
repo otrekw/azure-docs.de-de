@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939867"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629339"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
@@ -29,9 +29,9 @@ In der folgenden Tabelle werden RTO und RPO in einem typischen Szenario verglich
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Point-in-Time-Wiederherstellung von Sicherung | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer |
 | Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | RTO: variiert <br/>RPO < 1 Stunde | RTO: variiert <br/>RPO < 1 Stunde |
-| Lesereplikate | RTO: mehrere Minuten <br/>RPO < 5 Min.* | RTO: mehrere Minuten <br/>RPO < 5 Min.*| RTO: mehrere Minuten <br/>RPO < 5 Min.*|
+| Lesereplikate | RTO – Minuten* <br/>RPO < 5 Min.* | RTO – Minuten* <br/>RPO < 5 Min.*| RTO – Minuten* <br/>RPO < 5 Min.*|
 
-\* Die RPO kann in einigen Fällen in Abhängigkeit von verschiedenen Faktoren wie der Workload der primären Datenbank und der Wartezeit zwischen Regionen höher sein. 
+\* RTOs und RPOs können in einigen Fällen in Abhängigkeit von verschiedenen Faktoren wie der Workload der primären Datenbank und der Wartezeit zwischen Regionen deutlich höher sein. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Wiederherstellen eines Servers nach einem Benutzer- oder Anwendungsfehler
 

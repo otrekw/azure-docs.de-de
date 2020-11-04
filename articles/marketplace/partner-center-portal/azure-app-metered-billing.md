@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896533"
 ---
 # <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
 
@@ -56,11 +56,11 @@ Ein Azure-Kunde, der den CoA-Dienst abonniert, kann Berichte pro Monat basierend
 
 Abrechnungsdimensionen werden verwendet, um Kunden über die Abrechnung der Softwarenutzung zu informieren.  Diese Dimensionen werden auch verwendet, um Nutzungsereignisse an Microsoft zu übermitteln. Sie sind wie folgt definiert:
 
-* **Dimensionsbezeichner**: Die unveränderliche Kennung, auf die bei der Ausgabe von Nutzungsereignissen verwiesen wird.
-* **Dimensionsname**: Der der Dimension zugeordnete Anzeigename (z. B. „Gesendete SMS“).
-* **Maßeinheit**: Die Beschreibung der Abrechnungseinheit (z. B. „pro SMS“ oder „pro 100 E-Mails“).
-* **Preis pro Einheit**: Der Preis für eine Einheit der Dimension.
-* **Enthaltene Menge für monatliche Laufzeit**: Die Menge der pro Monat enthaltenen Dimension für Kunden, die die wiederkehrende monatliche Gebühr bezahlen. Muss eine ganze Zahl sein.
+* **Dimensionsbezeichner** : Die unveränderliche Kennung, auf die bei der Ausgabe von Nutzungsereignissen verwiesen wird.
+* **Dimensionsname** : Der der Dimension zugeordnete Anzeigename (z. B. „Gesendete SMS“).
+* **Maßeinheit** : Die Beschreibung der Abrechnungseinheit (z. B. „pro SMS“ oder „pro 100 E-Mails“).
+* **Preis pro Einheit** : Der Preis für eine Einheit der Dimension.
+* **Enthaltene Menge für monatliche Laufzeit** : Die Menge der pro Monat enthaltenen Dimension für Kunden, die die wiederkehrende monatliche Gebühr bezahlen. Muss eine ganze Zahl sein.
 
 Abrechnungsdimensionen werden in allen Plänen für ein Angebot verwendet. Manche Attribute gelten für die Dimension über alle Pläne hinweg, andere Attribute sind dagegen planspezifisch.
 
@@ -79,7 +79,7 @@ Die anderen Attribute einer Dimension sind planspezifisch und können von Plan z
 Dimensionen verfügen auch über zwei spezielle Konzepte: „aktiviert“ und „unbegrenzt“:
 
 * **Aktiviert** gibt an, dass dieser Plan Teil dieser Dimension ist.  Lassen Sie diese Option ggf. deaktiviert, wenn Sie einen neuen Plan erstellen, der keine auf dieser Dimension basierenden Nutzungsereignisse sendet. Außerdem werden alle neuen Dimensionen, die nach der ersten Veröffentlichung eines Plans hinzugefügt wurden, für den bereits veröffentlichten Plan als „nicht aktiviert“ angezeigt.  Eine deaktivierte Dimension wird in keiner Dimensionenliste für einen Plan angezeigt, der für Kunden sichtbar ist.
-* **Unbegrenzt**, dargestellt durch das Unendlichkeitssymbol „∞“, gibt an, dass dieser Plan Teil dieser Dimension ist, jedoch ohne gemessene Nutzung für diese Dimension. Dadurch können Sie Ihren Kunden vermitteln, dass die durch diese Dimension dargestellte Funktion im Plan enthalten und die Nutzung nicht begrenzt ist.  Eine Dimension mit unbegrenzter Nutzung wird in Dimensionenlisten für einen Plan angezeigt, der für Kunden sichtbar ist.  Für diesen Plan fällt niemals eine Gebühr an.
+* **Unbegrenzt** , dargestellt durch das Unendlichkeitssymbol „∞“, gibt an, dass dieser Plan Teil dieser Dimension ist, jedoch ohne gemessene Nutzung für diese Dimension. Dadurch können Sie Ihren Kunden vermitteln, dass die durch diese Dimension dargestellte Funktion im Plan enthalten und die Nutzung nicht begrenzt ist.  Eine Dimension mit unbegrenzter Nutzung wird in Dimensionenlisten für einen Plan angezeigt, der für Kunden sichtbar ist.  Für diesen Plan fällt niemals eine Gebühr an.
 
 >[!Note] 
 >Folgende Szenarien werden explizit unterstützt:  <br> - Sie können einem neuen Plan eine neue Dimension hinzufügen.  Die neue Dimension wird nicht für bereits veröffentlichte Pläne aktiviert. <br> - Sie können einen Plan mit einer festen Monatsgebühr und ohne Dimensionen veröffentlichen und anschließend einen neuen Plan hinzufügen und eine neue Dimension für diesen Plan konfigurieren. Die neue Dimension wird nicht für bereits veröffentlichte Pläne aktiviert.
@@ -107,7 +107,7 @@ Nachdem ein Plan veröffentlicht wurde, können die Details auf der Planebene ni
 
 ### <a name="upper-limits"></a>Obergrenzen
 
-Für ein einzelnes Angebot können maximal 18 individuelle Dimensionen konfiguriert werden.
+Für ein einzelnes Angebot können maximal 30 individuelle Dimensionen konfiguriert werden.
 
 ## <a name="get-support"></a>Support
 

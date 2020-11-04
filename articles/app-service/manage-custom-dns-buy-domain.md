@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09ef109be68dbdb6c82ce5fc89761b10bec85f3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970053"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781684"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -24,12 +24,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Erstellen Sie eine App Service-App](./index.yml), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
 * [Entfernen Sie das Ausgabenlimit für Ihr Abonnement.](../cost-management-billing/manage/spending-limit.md#remove) Sie können keine App Service-Domänen mit kostenlosem Abonnementguthaben erwerben.
+* Eine App Service-Instanz in einer öffentlichen Azure-Region Beachten Sie, dass nationale Azure-Clouds derzeit nicht unterstützt werden.
 
 ## <a name="prepare-the-app"></a>Vorbereiten der App
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Um benutzerdefinierte Domänen in Azure App Service zu verwenden, muss der [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App einen kostenpflichtigen Tarif (**Shared**, **Basic**, **Standard** oder **Premium**) aufweisen. Stellen Sie in diesem Schritt sicher, dass sich die App im richtigen Tarif befindet.
+Um benutzerdefinierte Domänen in Azure App Service zu verwenden, muss der [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App einen kostenpflichtigen Tarif ( **Shared** , **Basic** , **Standard** oder **Premium** ) aufweisen. Stellen Sie in diesem Schritt sicher, dass sich die App im richtigen Tarif befindet.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -45,7 +46,7 @@ Die Verwaltungsseite der App Service-App wird angezeigt.
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
-Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Hochskalieren (App Service-Plan)** .
+Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen** , und wählen Sie **Hochskalieren (App Service-Plan)** .
 
 ![Menü „Zentral hochskalieren“](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -53,15 +54,15 @@ Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Vergewi
 
 :::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Screenshot: Linkes Navigationsmenü der App-Seite, auf der „Zentral hochskalieren (App Service-Plan)“ hervorgehoben ist":::
 
-Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Hochskalieren**, und fahren Sie mit [Domäne kaufen](#buy-the-domain) fort.
+Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Hochskalieren** , und fahren Sie mit [Domäne kaufen](#buy-the-domain) fort.
 
 ### <a name="scale-up-the-app-service-plan"></a>Hochskalieren des App Service-Plans
 
-Wählen Sie einen der kostenpflichtigen Tarife aus (**D1**, **B1**, **B2**, **B3** oder einen beliebigen Tarif aus der Kategorie **Produktion**). Klicken Sie auf **Alle Optionen anzeigen**, um weitere Optionen anzuzeigen.
+Wählen Sie einen der kostenpflichtigen Tarife aus ( **D1** , **B1** , **B2** , **B3** oder einen beliebigen Tarif aus der Kategorie **Produktion** ). Klicken Sie auf **Alle Optionen anzeigen** , um weitere Optionen anzuzeigen.
 
 Klicken Sie auf **Anwenden**.
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Screenshot: Linkes Navigationsmenü der App-Seite, auf der „Zentral hochskalieren (App Service-Plan)“ hervorgehoben ist":::
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Screenshot: Tarife für benutzerdefinierte Domäne in der Kategorie „Produktion“, in der die Registerkarte „Produktion“, der Plan „B1“ und die Schaltfläche „Anwenden“ hervorgehoben sind":::
 
 Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvorgang abgeschlossen.
 
@@ -96,11 +97,11 @@ Tippen Sie den Domänennamen auf der Seite **App Service Domain** (App Service-D
 ![Screenshot des Suchfelds „Nach Domäne suchen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
-> Die folgenden [Domänen der obersten Ebene](https://wikipedia.org/wiki/Top-level_domain) werden von App Service-Domänen unterstützt: _com_, _net_, _co.uk_, _org_, _nl_, _in_, _biz_, _org.uk_ und _co.in_.
+> Die folgenden [Domänen der obersten Ebene](https://wikipedia.org/wiki/Top-level_domain) werden von App Service-Domänen unterstützt: _com_ , _net_ , _co.uk_ , _org_ , _nl_ , _in_ , _biz_ , _org.uk_ und _co.in_.
 >
 >
 
-Klicken Sie auf **Kontaktinformationen**, und füllen Sie das Formular mit den Kontaktinformationen für die Domäne aus. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite „App Service-Domäne“ zurückzukehren.
+Klicken Sie auf **Kontaktinformationen** , und füllen Sie das Formular mit den Kontaktinformationen für die Domäne aus. Wenn Sie fertig sind, klicken Sie auf **OK** , um zur Seite „App Service-Domäne“ zurückzukehren.
 
 Es ist wichtig, dass Sie alle erforderlichen Felder so genau wie möglich ausfüllen. Fehlerhafte Daten in den Kontaktinformationen können dazu führen, dass der Domänenkauf fehlschlägt.
 
@@ -156,7 +157,7 @@ Wählen Sie auf der Seite **App Services** (App-Dienste) den Namen Ihrer App aus
 
 ![Screenshot mit hervorgehobener Option „Benutzerdefinierte Domänen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-Stellen Sie sicher, dass Ihre erworbene Domäne im Abschnitt**App Service Domains** (App Service-Domänen) aufgelistet ist, aber klicken Sie sie nicht an. 
+Stellen Sie sicher, dass Ihre erworbene Domäne im Abschnitt **App Service Domains** (App Service-Domänen) aufgelistet ist, aber klicken Sie sie nicht an. 
 
 ![Screenshot Ihrer erworbenen Domäne im App Service-Bereich zu Domänen](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
@@ -168,7 +169,7 @@ Stellen Sie sicher, dass Ihre erworbene Domäne im Abschnitt**App Service Domain
 Wählen Sie **Hostnamen hinzufügen**.
 
 ### <a name="configure-hostname"></a>Konfigurieren des Hostnamens
-Tippen Sie im Dialogfeld**Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel:
+Tippen Sie im Dialogfeld **Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel:
 
 - kontoso.net
 - www\.kontoso.net
@@ -281,7 +282,7 @@ Wenn die Kündigungsfrist für die erworbene Domäne nicht abgelaufen ist, klick
 
 ![Screenshot, der zeigt, wo eine erworbene Domäne gelöscht oder der Kauf abgebrochen werden kann](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-Klicken Sie auf **Ja**, um den Vorgang zu bestätigen.
+Klicken Sie auf **Ja** , um den Vorgang zu bestätigen.
 
 Nachdem der Vorgang abgeschlossen ist, ist die Domäne aus Ihrem Abonnement freigegeben und steht wieder für jeden zum Kauf zur Verfügung. 
 

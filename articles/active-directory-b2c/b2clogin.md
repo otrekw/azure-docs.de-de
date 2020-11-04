@@ -8,27 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82edf39185067e4c761c7598b159a655dfc370c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735413"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
-Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD B2C) einrichten, müssen Sie eine Umleitungs-URL angeben. Für die Authentifizierung von Benutzern in Azure AD B2C sollte in Ihren Anwendungen und APIs nicht mehr auf *login.microsoftonline.com* verwiesen werden. Verwenden Sie stattdessen für alle neuen Anwendungen *b2clogin.com*, und migrieren Sie vorhandene Anwendungen von *login.microsoftonline.com* nach *b2clogin.com*.
+Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD B2C) einrichten, müssen Sie eine Umleitungs-URL angeben. Für die Authentifizierung von Benutzern in Azure AD B2C sollte in Ihren Anwendungen und APIs nicht mehr auf *login.microsoftonline.com* verwiesen werden. Verwenden Sie stattdessen für alle neuen Anwendungen *b2clogin.com* , und migrieren Sie vorhandene Anwendungen von *login.microsoftonline.com* nach *b2clogin.com*.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Einstellung von login.microsoftonline.com
 
-Am 4. Dezember 2019 wurde bekannt gegeben, dass login.microsoftonline.com in Azure AD B2C ab dem **4. Dezember 2020** nicht mehr unterstützt wird:
+**Update vom Oktober 2020:** Für Mandanten, die das ursprünglich angekündigte Veraltungsdatum am 4. Dezember 2020 nicht einhalten können, wird die Toleranzperiode verlängert. Die Außerbetriebnahme von login.microsoftonline.com findet nun erst am **14. Januar 2021**.
 
-[Azure Active Directory B2C: Einstellung von login.microsoftonline.com](https://azure.microsoft.com/updates/b2c-deprecate-msol/)
-
-login.microsoftonline.com wird am 4. Dezember 2020 für alle Azure AD B2C-Mandanten eingestellt. Damit haben vorhandene Mandanten ein (1) Jahr Zeit für die Migration zu b2clogin.com. Neue Mandanten, die nach dem 4. Dezember 2019 erstellt werden, akzeptieren keine Anforderungen von login.microsoftonline.com. Alle Funktionen stehen auf dem Endpunkt b2clogin.com weiterhin unverändert zur Verfügung.
+**Begründung:** Am 4. Dezember 2019 wurde ursprünglich [bekannt gegeben](https://azure.microsoft.com/updates/b2c-deprecate-msol/), dass login.microsoftonline.com in Azure AD B2C ab dem 4. Dezember 2020 nicht mehr unterstützt wird. Somit verfügten vorhandene Mandanten über genau ein Jahr Zeit, um zu b2clogin.com zu migrieren. Neue Mandanten, die nach dem 4. Dezember 2019 erstellt werden, akzeptieren keine Anforderungen von login.microsoftonline.com. Alle Funktionen stehen auf dem Endpunkt b2clogin.com weiterhin unverändert zur Verfügung.
 
 Die Einstellung von login.microsoftonline.com wirkt sich nicht auf Azure Active Directory-Mandanten aus. Von dieser Änderung sind ausschließlich Azure Active Directory B2C-Mandanten betroffen.
 
@@ -63,7 +61,7 @@ Sie müssen möglicherweise eine Reihe von Änderungen vornehmen, um Ihre Anwend
 
 * Ändern Sie die Umleitungs-URL in den Anwendungen Ihres Identitätsanbieters so, dass auf *b2clogin.com* verwiesen wird.
 * Aktualisieren Sie Ihre Azure AD B2C-Anwendungen so, dass *b2clogin.com* in den Verweisen auf Benutzerflows und Tokenendpunkte verwendet wird. Dieser Schritt kann das Aktualisieren der Verwendung einer Authentifizierungsbibliothek wie Microsoft Authentication Library (MSAL) umfassen.
-* Aktualisieren Sie alle **zulässigen Ursprünge**, die Sie in den CORS-Einstellungen zur [Anpassung der Benutzeroberfläche](custom-policy-ui-customization.md) definiert haben.
+* Aktualisieren Sie alle **zulässigen Ursprünge** , die Sie in den CORS-Einstellungen zur [Anpassung der Benutzeroberfläche](custom-policy-ui-customization.md) definiert haben.
 
 Ein alter Endpunkt kann wie folgt aussehen:
 - <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
@@ -115,7 +113,7 @@ Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2
 
 ### <a name="msalnet-validateauthority-property"></a>MSAL.NET: Eigenschaft „ValidateAuthority“
 
-Wenn Sie [MSAL.NET][msal-dotnet] v2 oder früher verwenden, legen Sie die **ValidateAuthority**-Eigenschaft bei der Clientinstanziierung auf `false` fest, um Umleitungen zu *b2clogin.com* zuzulassen. Für MSAL.NET v3 und höher ist es nicht erforderlich, diesen Wert auf `false` festzulegen.
+Wenn Sie [MSAL.NET][msal-dotnet] v2 oder früher verwenden, legen Sie die **ValidateAuthority** -Eigenschaft bei der Clientinstanziierung auf `false` fest, um Umleitungen zu *b2clogin.com* zuzulassen. Für MSAL.NET v3 und höher ist es nicht erforderlich, diesen Wert auf `false` festzulegen.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

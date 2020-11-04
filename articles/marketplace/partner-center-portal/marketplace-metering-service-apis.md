@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278028"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674624"
 ---
 # <a name="marketplace-metered-billing-apis"></a>APIs für getaktete Abrechnung im Marketplace
 
@@ -34,7 +34,7 @@ Für jede Stunde eines Kalendertags kann nur ein Nutzungsereignis ausgegeben wer
 
 Für jede Stunde eines Kalendertags kann pro Ressource nur ein Nutzungsereignis ausgegeben werden. Wenn mehr als eine Einheit in einer Stunde verwendet wird, sammeln Sie alle in dieser Stunde verwendeten Einheiten, und geben Sie diese dann in einem einzelnen Ereignis aus. Nutzungsereignisse können nur für die letzten 24 Stunden ausgegeben werden. Wenn Sie ein Nutzungsereignis zu einem Zeitpunkt zwischen 8:00 Uhr und 8:59:59 Uhr ausgeben (und es akzeptiert wird) und ein zusätzliches Ereignis für denselben Tag zwischen 8:00 und 8:59:59 senden, wird es als Duplikat zurückgewiesen.
 
-**POST**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Abfrageparameter:*
 
@@ -67,7 +67,7 @@ Für jede Stunde eines Kalendertags kann pro Ressource nur ein Nutzungsereignis 
 >[!NOTE]
 >`resourceId` hat für SaaS-Apps und für verwaltete Apps, die benutzerdefinierte Verbrauchseinheiten ausgeben, eine andere Bedeutung. 
 
-Bei Plänen für verwaltete Azure-Apps ist `resourceId` das `resourceUsageId`-Element unter dem `billingDetails`-Element des Metadatenobjekts für verwaltete Apps. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+Bei von Azure-Anwendungen verwalteten App-Plänen ist `resourceId` die `resource group Id` der verwalteten App. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
 Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 
@@ -191,7 +191,7 @@ Mit der API für Batchnutzungsereignisse können Sie Nutzungsereignisse gleichze
 >[!NOTE]
 >`resourceId` hat für SaaS-Apps und für verwaltete Apps, die benutzerdefinierte Verbrauchseinheiten ausgeben, eine andere Bedeutung. 
 
-Bei Plänen für verwaltete Azure-Apps ist `resourceId` das `resourceUsageId`-Element unter dem `billingDetails`-Element des Metadatenobjekts für verwaltete Apps. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+Bei von Azure-Anwendungen verwalteten App-Plänen ist `resourceId` die `resource group Id` der verwalteten App. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
 Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 

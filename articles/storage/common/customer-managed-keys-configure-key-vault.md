@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992789"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782381"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind
 
@@ -58,7 +58,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-Informationen zum Aktivieren des Löschschutzes für einen vorhandenen Schlüsseltresor mit PowerShell finden Sie unter [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/soft-delete-powershell.md).
+Informationen zum Aktivieren des Löschschutzes für einen vorhandenen Schlüsseltresor mit PowerShell finden Sie unter [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/key-vault-recovery.md).
 
 Weisen Sie als Nächstes dem Speicherkonto eine systemseitig zugewiesene verwaltete Identität zu. Sie verwenden diese Identität, um dem Speicherkonto die Zugriffsberechtigungen für den Schlüsseltresor zu gewähren. Weitere Informationen zu systemseitig zugewiesenen verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -93,7 +93,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Informationen zum Aktivieren des Löschschutzes für einen vorhandenen Schlüsseltresor mit der Azure CLI finden Sie unter [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/soft-delete-cli.md).
+Informationen zum Aktivieren des Löschschutzes für einen vorhandenen Schlüsseltresor mit der Azure CLI finden Sie unter [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/key-vault-recovery.md).
 
 Weisen Sie als Nächstes dem Speicherkonto eine systemseitig zugewiesene verwaltete Identität zu. Sie verwenden diese Identität, um dem Speicherkonto die Zugriffsberechtigungen für den Schlüsseltresor zu gewähren. Weitere Informationen zu systemseitig zugewiesenen verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -129,7 +129,7 @@ az keyvault set-policy \
 
 Als Nächstes fügen Sie im Schlüsseltresor einen Schlüssel hinzu.
 
-Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit einer Größe von 2.048, 3.072 und 4.096 Bit. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit einer Größe von 2.048, 3.072 und 4.096 Bit. Weitere Informationen über Schlüssel finden Sie unter [Informationen zu Schlüsseln](../../key-vault/keys/about-keys.md).
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
@@ -190,7 +190,7 @@ Führen Sie die folgenden Schritte aus, um kundenseitig verwaltete Schlüssel mi
 
 Nachdem Sie den Schlüssel angegeben haben, sehen Sie im Azure-Portal, dass die automatische Aktualisierung der Schlüsselversion aktiviert ist. Außerdem wird die Schlüsselversion angezeigt, die derzeit für die Verschlüsselung verwendet wird.
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Screenshot, der veranschaulicht, wie der Löschschutz beim Erstellen eines Schlüsseltresors aktiviert wird":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Screenshot, der die automatische Aktualisierung der aktivierten Schlüsselversion anzeigt":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -241,7 +241,7 @@ Wenn Sie die Schlüsselversion manuell aktualisieren möchten, geben Sie die Ver
 Um kundenseitig verwaltete Schlüssel mit der manuellen Aktualisierung der Schlüsselversion im Azure-Portal zu konfigurieren, geben Sie den Schlüssel-URI einschließlich der Version an. Gehen Sie wie folgt vor, um einen Schlüssel als URI anzugeben:
 
 1. Um den Schlüssel-URI im Azure-Portal anzuzeigen, navigieren Sie zu Ihrem Schlüsseltresor, und wählen die Einstellung **Schlüssel** aus. Wählen Sie den gewünschten Schlüssel aus, und klicken Sie darauf, um dessen Versionen anzuzeigen. Wählen Sie eine Schlüsselversion aus, um die Einstellungen für diese Version anzuzeigen.
-1. Kopieren Sie den Wert im Feld **Schlüsselbezeichner**, das den URI enthält.
+1. Kopieren Sie den Wert im Feld **Schlüsselbezeichner** , das den URI enthält.
 
     ![Screenshot mit Schlüssel-URI des Schlüsseltresors](media/customer-managed-keys-configure-key-vault/portal-copy-key-identifier.png)
 

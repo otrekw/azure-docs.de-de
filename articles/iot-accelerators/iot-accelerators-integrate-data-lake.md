@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069844"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670931"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ihrem IoT Hub in Ihren Azure Data Lake Store.
 
-1. Klicken Sie auf **Ressource erstellen**, wählen Sie Internet der Dinge (IoT) aus Marketplace aus, und klicken Sie dann auf **Stream Analytics-Auftrag**.
+1. Klicken Sie auf **Ressource erstellen** , wählen Sie Internet der Dinge (IoT) aus Marketplace aus, und klicken Sie dann auf **Stream Analytics-Auftrag**.
 
     ![Neuer Stream Analytics-Auftrag](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -79,7 +79,7 @@ Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ih
 
     ![Seite „Übersicht“](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
-1. Klicken Sie auf **Datenstromeingabe hinzufügen**, und wählen Sie dann **IoT Hub** aus der Dropdownliste aus.
+1. Klicken Sie auf **Datenstromeingabe hinzufügen** , und wählen Sie dann **IoT Hub** aus der Dropdownliste aus.
 
     ![Hinzufügen der Eingabe](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
@@ -95,7 +95,7 @@ Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ih
 
     ![Hinzufügen von Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
-1. Klicken Sie auf **Hinzufügen**, und wählen Sie **Data Lake Store** aus der Dropdownliste aus.
+1. Klicken Sie auf **Hinzufügen** , und wählen Sie **Data Lake Store** aus der Dropdownliste aus.
 
     ![Hinzufügen der Ausgabe](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 
@@ -170,9 +170,9 @@ Azure Stream Analytics verwendet eine SQL-ähnliche Abfragesprache zum Angeben e
 
 1. Klicken Sie auf der Registerkarte „Übersicht“ auf **Daten-Explorer**.
 
-1. Führen Sie im Daten-Explorer einen Drilldown zum Ordner **/streaming** aus. Es wurden Ordner mit dem Format „JJJJ/MM/TT/HH“ erstellt.
+1. Führen Sie im Daten-Explorer einen Drilldown zum Ordner **/streaming** aus. Es werden Ordner mit dem Format „JJJJ/MM/TT“ erstellt.
 
-    ![Untersuchen der Streamingdaten](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
+    ![Screenshot des Pfads zum Ordner /streaming/JJJJ/MM/TT/HH.](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
 
     Es werden JSON-Dateien (eine Datei pro Stunde) erstellt.
 

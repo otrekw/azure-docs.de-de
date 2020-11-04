@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279081"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737857"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Verwenden gespeicherter Prozeduren in Synapse SQL
 
@@ -24,6 +24,9 @@ Tipps zum Implementieren gespeicherter Prozeduren in einem Synapse SQL-Pool für
 ## <a name="what-to-expect"></a>Ausblick
 
 Synapse SQL unterstützt viele der T-SQL-Features, die in SQL Server verwendet werden. Darüber hinaus sind bestimmte Features für das horizontale Hochskalieren vorhanden, mit denen Sie die Leistung Ihrer Lösung verbessern können.
+
+> [!NOTE]
+> Im Text der Prozedur können Sie nur die Features verwenden, die auf der Synapse SQL-Oberfläche unterstützt werden. Lesen Sie [diesen Artikel](overview-features.md), um Objekte und Anweisungen zu identifizieren, die in gespeicherten Prozeduren verwendet werden können. In den Beispielen in diesen Artikeln werden allgemeine Features verwendet, die sowohl auf der serverlosen als auch auf der bereitgestellten Oberfläche verfügbar sind.
 
 In Bezug auf die Verwaltung der Skalierung und Leistung des SQL-Pools sind auch einige Features und Funktionen vorhanden, die Unterschiede beim Verhalten aufweisen. Es gibt auch Features, die nicht unterstützt werden.
 

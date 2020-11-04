@@ -8,14 +8,14 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604078"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748493"
 ---
-# <a name="azure-key-vault-recovery-overview"></a>Übersicht über die Azure Key Vault-Wiederherstellung
+# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Vorläufiges Löschen und Löschschutz aktivieren
 
 In diesem Artikel werden die beiden Wiederherstellungsfeatures vorläufiges Löschen und Löschschutz von Azure Key Vault behandelt. Dieses Dokument enthält eine Übersicht über diese Features und zeigt, wie Sie sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwalten.
 
@@ -241,14 +241,6 @@ Der **Löschschutz** soll das Löschen von Schlüsseltresoren, Schlüsseln, Gehe
 
     ```powershell
     Get-AzKeyVault -VaultName "ContosoVault"
-    ```
-
-* Aktivieren des vorläufigen Löschens für den Schlüsseltresor
-
-    ```powershell
-    ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
-
-    Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
 * Löschen von Schlüsseltresoren

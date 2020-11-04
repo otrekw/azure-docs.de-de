@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667859"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792003"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -40,7 +40,7 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
     
     Die AML-Steuerungsebene kommuniziert nicht mit dieser öffentlichen IP-Adresse. Sie kommuniziert mit der AKS-Steuerungsebene für Bereitstellungen. 
 
-- Wenn Sie einen AKS-Cluster **anfügen**, der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/download/confirmation.aspx?id=56519) für beide [Regionspaare](/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren.
+- Wenn Sie einen AKS-Cluster **anfügen** , der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/download/confirmation.aspx?id=56519) für beide [Regionspaare](/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren.
 
     Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.
 
@@ -52,16 +52,16 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
     - Der Name muss mit einem Buchstaben beginnen.
     - Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.
    
- - Wenn Sie Modelle auf **GPU**-Knoten oder **FPGA**-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
+ - Wenn Sie Modelle auf **GPU** -Knoten oder **FPGA** -Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
  
-- Beim Erstellen oder Anfügen eines Clusters können Sie auswählen, ob der Cluster für __Dev/Test__ oder die __Produktion__ erstellt werden soll. Wenn Sie einen AKS-Cluster für __Entwicklung__, __Validierung__ und __Tests__ statt für die Produktion erstellen möchten, legen Sie __Clusterzweck__ auf __Dev/Test__ fest. Wenn Sie den Clusterzweck nicht angeben, wird ein Cluster für die __Produktion__ erstellt. 
+- Beim Erstellen oder Anfügen eines Clusters können Sie auswählen, ob der Cluster für __Dev/Test__ oder die __Produktion__ erstellt werden soll. Wenn Sie einen AKS-Cluster für __Entwicklung__ , __Validierung__ und __Tests__ statt für die Produktion erstellen möchten, legen Sie __Clusterzweck__ auf __Dev/Test__ fest. Wenn Sie den Clusterzweck nicht angeben, wird ein Cluster für die __Produktion__ erstellt. 
 
     > [!IMPORTANT]
-    > Ein __Dev/Test__-Cluster ist nicht für Produktionsdatenverkehr geeignet und kann Rückschlusszeiten erhöhen. Entwicklungs- und Testcluster garantieren auch keine Fehlertoleranz.
+    > Ein __Dev/Test__ -Cluster ist nicht für Produktionsdatenverkehr geeignet und kann Rückschlusszeiten erhöhen. Entwicklungs- und Testcluster garantieren auch keine Fehlertoleranz.
 
-- Wenn ein Cluster beim Erstellen oder Anfügen des Clusters für die __Produktion__ verwendet wird, muss er mindestens 12 __virtuelle CPUs__ enthalten. Die Anzahl der virtuellen CPUs kann berechnet werden, indem die __Anzahl der Knoten__ im Cluster mit der __Anzahl der Kerne__, die von der ausgewählten VM-Größe bereitgestellt werden, multipliziert wird. Wenn Sie beispielsweise die VM-Größe „Standard_D3_v2“ verwenden, die 4 virtuelle CPUs hat, müssen Sie für die Anzahl der Knoten einen Wert von mindestens 3 wählen.
+- Wenn ein Cluster beim Erstellen oder Anfügen des Clusters für die __Produktion__ verwendet wird, muss er mindestens 12 __virtuelle CPUs__ enthalten. Die Anzahl der virtuellen CPUs kann berechnet werden, indem die __Anzahl der Knoten__ im Cluster mit der __Anzahl der Kerne__ , die von der ausgewählten VM-Größe bereitgestellt werden, multipliziert wird. Wenn Sie beispielsweise die VM-Größe „Standard_D3_v2“ verwenden, die 4 virtuelle CPUs hat, müssen Sie für die Anzahl der Knoten einen Wert von mindestens 3 wählen.
 
-    Für ein __Dev/Test__-Cluster werden mindestens 2 virtuelle CPUs empfohlen.
+    Für ein __Dev/Test__ -Cluster werden mindestens 2 virtuelle CPUs empfohlen.
 
 - Das Azure Machine Learning-SDK bietet keine Unterstützung zur Skalierung eines AKS-Clusters. Die Knoten in Ihrem Cluster können Sie über die Benutzeroberfläche Ihres AKS-Clusters in Azure Machine Learning Studio skalieren. Sie können nur die Knotenanzahl ändern, nicht die VM-Größe des Clusters. Weitere Informationen zum Skalieren der Knoten in einem AKS-Cluster finden Sie in den folgenden Artikeln:
 
@@ -72,13 +72,13 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
 
 Mit Azure Kubernetes Service können Sie einen Cluster mit einer Vielzahl von Kubernetes-Versionen erstellen. Weitere Informationen zu verfügbaren Versionen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service](/azure/aks/supported-kubernetes-versions).
 
-Wenn Sie einen Azure Kubernetes Service-Cluster mithilfe einer der folgenden Methoden **erstellen**, *können Sie die Version des Clusters nicht auswählen*, der erstellt wird:
+Wenn Sie einen Azure Kubernetes Service-Cluster mithilfe einer der folgenden Methoden **erstellen** , *können Sie die Version des Clusters nicht auswählen* , der erstellt wird:
 
 * Azure Machine Learning Studio oder den Abschnitt „Azure Machine Learning“ im Azure-Portal.
 * Machine Learning-Erweiterung für die Azure CLI.
 * Azure Machine Learning SDK.
 
-Diese Methoden zum Erstellen eines AKS-Clusters verwenden die __Standardversion__ des Clusters. *Die Standardversion ändert sich im Laufe der Zeit*, wenn neue Kubernetes-Versionen veröffentlicht werden.
+Diese Methoden zum Erstellen eines AKS-Clusters verwenden die __Standardversion__ des Clusters. *Die Standardversion ändert sich im Laufe der Zeit* , wenn neue Kubernetes-Versionen veröffentlicht werden.
 
 Beim **Anfügen** an einen vorhandenen AKS-Cluster werden alle derzeit unterstützten AKS-Versionen unterstützt.
 
@@ -147,7 +147,7 @@ Um die Standardversion zu ermitteln, die beim **Erstellen** eines Clusters über
 
 ## <a name="create-a-new-aks-cluster"></a>Erstellen eines neuen AKS-Clusters
 
-**Geschätzter Zeitaufwand**: Ca. zehn Minuten.
+**Geschätzter Zeitaufwand** : Ca. zehn Minuten.
 
 Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Vorgang. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen. Sie können an Ihren Arbeitsbereich mehrere AKS-Cluster anfügen.
 
@@ -302,7 +302,7 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Wählen Sie im Azure Machine Learning Studio __Compute__, __Rückschlusscluster__ und den Cluster aus, den Sie entfernen möchten. Verwenden Sie den Link __Trennen__, um den Cluster zu trennen.
+Wählen Sie im Azure Machine Learning Studio __Compute__ , __Rückschlusscluster__ und den Cluster aus, den Sie entfernen möchten. Verwenden Sie den Link __Trennen__ , um den Cluster zu trennen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

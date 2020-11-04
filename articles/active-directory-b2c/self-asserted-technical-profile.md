@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096214"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670118"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -133,7 +133,7 @@ In einem selbstbestätigten technischen Profil gibt die Sammlung der Ausgabeansp
 
 Verwenden Sie die Ausgabeansprüche in folgenden Fällen:
 
-- **Ansprüche werden von der Ausgabeanspruchstransformation ausgegeben** .
+- **Ansprüche werden von der Ausgabeanspruchstransformation ausgegeben**.
 - **Festlegen eines Standardwerts in einem Ausgabeanspruch** : Ohne Daten vom Benutzer zu erfassen oder die Daten aus dem technischen Validierungsprofil zurückgeben. Das selbstbestätigte technische Profil `LocalAccountSignUpWithLogonEmail` legt den Anspruch **executed-SelfAsserted-Input** auf `true` fest.
 - **Ein technisches Validierungsprofil gibt die Ausgabeansprüche zurück** : Ihr technisches Profil ruft möglicherweise ein technisches Validierungsprofil auf, das einige Ansprüche zurückgibt. Sie sollten die Ansprüche sammeln und an die nächsten Orchestrierungsschritte in der User Journey zurückzugeben. Bei der Anmeldung mit einem lokalen Konto ruft beispielsweise das selbstbestätigte technische Profil mit dem Namen `SelfAsserted-LocalAccountSignin-Email` das technische Validierungsprofil mit dem Namen `login-NonInteractive` auf. Dieses technische Profil überprüft die Anmeldeinformationen des Benutzers und gibt das Benutzerprofil zurück. Beispiele: „userPrincipalName“, „displayName“, „givenName“ und „surName“.
 - **Ein Anzeigesteuerelement gibt die Ausgabeansprüche zurück** : Ihr technisches Profil weist möglicherweise einen Verweis auf ein [Anzeigesteuerelement](display-controls.md) auf. Das Anzeigesteuerelement gibt einige Ansprüche zurück, beispielsweise die überprüfte E-Mail-Adresse. Sie sollten die Ansprüche sammeln und an die nächsten Orchestrierungsschritte in der User Journey zurückzugeben. Diese Funktion „Anzeigesteuerelement“ steht derzeit als **Vorschau** zur Verfügung.
@@ -175,6 +175,14 @@ Im folgenden Beispiel wird die Verwendung eines selbstbestätigten technischen P
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>Ausgabeansprüche für eine Registrierungs- oder Anmeldeseite
+
+Bei einer kombinierten Registrierungs- und Anmeldeseite müssen Sie Folgendes beachten, wenn Sie ein [DataUri](contentdefinitions.md#datauri)-Element für die Inhaltsdefinition verwenden, das den Seitentyp `unifiedssp` oder `unifiedssd` festlegt:
+
+- Nur die Ansprüche für den Benutzernamen und das Kennwort werden gerendert.
+- Bei den ersten zwei Ausgabeansprüchen muss es sich um den Benutzernamen und das Kennwort handeln (in dieser Reihenfolge). 
+- Alle anderen Ansprüche werden nicht gerendert. Für diese Ansprüche müssen Sie entweder `defaultValue` festlegen oder ein technisches Profil für die Validierung des Anspruchsformulars aufrufen. 
+
 ## <a name="persist-claims"></a>Beibehalten von Ansprüchen
 
 Das PersistedClaims-Element wird nicht verwendet. Das selbstbestätigte technische Profil speichert die Daten nicht in Azure AD B2C. Stattdessen wird ein technisches Validierungsprofil aufgerufen, das für die Beibehaltung der Daten verantwortlich ist. So verwendet beispielsweise die Registrierungsrichtlinie das selbstbestätigte technische Profil `LocalAccountSignUpWithLogonEmail`, um das neue Benutzerprofil zu erfassen. Das technische Profil `LocalAccountSignUpWithLogonEmail` ruft das technische Validierungsprofil auf, um das Konto in Azure AD B2C zu erstellen.
@@ -203,7 +211,7 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 | setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.|
 | setting.enableRememberMe <sup>2</sup>| Nein| Zeigt das Kontrollkästchen [Angemeldet bleiben](custom-policy-keep-me-signed-in.md) an. Mögliche Werte: `true` oder `false` (Standardwert). |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nein| Verbessert die Benutzererfahrung, indem gewartet wird, bis der Benutzer die Eingabe beendet hat. Dann wird der Wert überprüft. Der Standardwert ist 2.000 Millisekunden. |
-| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 Hinweise:
 1. Verfügbar für die Inhaltsdefinition: [DataUri](contentdefinitions.md#datauri), Typ `unifiedssp` oder `unifiedssd`.

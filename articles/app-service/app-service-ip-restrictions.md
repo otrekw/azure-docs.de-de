@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 61ccc0231989589836e00088b9ca03d0cb49baca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168221"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790949"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service-Zugriffseinschränkungen
 
@@ -24,13 +24,17 @@ Wenn eine Anforderung an Ihre App gesendet wird, wird die VON-Adresse anhand der
 
 Die Funktion „Zugriffseinschränkungen“ wird in den App Service-Front-End-Rollen implementiert, die den Workerhosts vorgeschaltet sind, auf denen Ihr Code ausgeführt wird. Es handelt sich somit bei Zugriffseinschränkungen im Grunde um Zugriffssteuerungslisten für das Netzwerk.
 
-Die Möglichkeit, den Zugriff auf Ihre Web-App auf ein Azure Virtual Network (VNET) zu beschränken, wird als [Dienstendpunkte][serviceendpoints] bezeichnet. Mit Dienstendpunkten können Sie den Zugriff auf einen mehrinstanzenfähigen Dienst auf ausgewählte Subnetze beschränken. Dies muss im Netzwerk sowie für den Dienst, für den die Aktivierung gilt, aktiviert sein. Der Datenverkehr für Apps, die in einer App Service-Umgebung gehostet werden, kann dadurch nicht eingeschränkt werden. In einer App Service-Umgebung können Sie den Zugriff auf Ihre App mit IP-Adressregeln steuern.
+Die Möglichkeit, den Zugriff auf Ihre Web-App auf ein Azure Virtual Network (VNET) zu beschränken, wird als [Dienstendpunkte][serviceendpoints] bezeichnet. Mit Dienstendpunkten können Sie den Zugriff auf einen mehrinstanzenfähigen Dienst auf ausgewählte Subnetze beschränken. Der Datenverkehr für Apps, die in einer App Service-Umgebung gehostet werden, kann dadurch nicht eingeschränkt werden. In einer App Service-Umgebung können Sie den Zugriff auf Ihre App mit IP-Adressregeln steuern.
+
+> [!NOTE]
+> Dienstendpunkte müssen sowohl für die Netzwerkseite als auch für den Azure-Dienst aktiviert werden, mit dem die Aktivierung erfolgt. Eine Liste der Azure-Dienste, die Dienstendpunkte unterstützen, finden Sie unter [Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
+>
 
 ![Flow von Zugriffseinschränkungen](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Hinzufügen und Bearbeiten von Regeln für Zugriffseinschränkungen im Portal ##
 
-Um Ihrer App eine Zugriffseinschränkungsregel hinzuzufügen, wählen Sie im Menü **Netzwerk**>**Zugriffseinschränkungen** aus und klicken auf **Zugriffseinschränkungen konfigurieren** .
+Um Ihrer App eine Zugriffseinschränkungsregel hinzuzufügen, wählen Sie im Menü **Netzwerk**>**Zugriffseinschränkungen** aus und klicken auf **Zugriffseinschränkungen konfigurieren**.
 
 ![App Service-Netzwerkoptionen](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -61,7 +65,8 @@ Der Zugriff auf Apps, die in einer App Service-Umgebung ausgeführt werden, kann
 Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WAF-Geräten konfigurieren. Sie können auch Anwendungen mit mehreren Ebenen und sicheren Back-Ends konfigurieren. Weitere Informationen zu diesen Möglichkeiten finden Sie unter [App Service-Netzwerkfunktionen](networking-features.md) und [Application Gateway-Integration mit Dienstendpunkten](networking/app-gateway-with-service-endpoints.md).
 
 > [!NOTE]
-> Dienstendpunkte werden derzeit für Web-Apps nicht unterstützt, die eine virtuelle IP (VIP) mit IP-SSL verwenden. 
+> - Dienstendpunkte werden derzeit für Web-Apps nicht unterstützt, die eine virtuelle IP (VIP) mit IP-SSL verwenden.
+> - Der Grenzwert für IP- oder Dienstendpunkteinschränkungen liegt bei 512 Zeilen. Wenn Sie mehr als 512 Zeilen an Einschränkungen benötigen, sollten Sie ein eigenständiges Sicherheitsprodukt in Erwägung ziehen, z. B. Azure Front Door, Azure Application Gateway oder Web Application Firewall (WAF).
 >
 
 ## <a name="managing-access-restriction-rules"></a>Verwalten von Zugriffseinschränkungsregeln
@@ -74,7 +79,7 @@ Wenn Sie eine Regel bearbeiten, können Sie den Typ nicht zwischen einer IP-Adre
 
 ![Screenshot des Dialogfelds „IP-Einschränkung bearbeiten“ im Azure-Portal mit den Einstellungen für eine Regel für virtuelle Netzwerke.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Klicken Sie zum Löschen einer Regel für die entsprechende Regel auf **...** und dann auf **Entfernen** .
+Klicken Sie zum Löschen einer Regel für die entsprechende Regel auf **...** und dann auf **Entfernen**.
 
 ![Löschen einer Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
