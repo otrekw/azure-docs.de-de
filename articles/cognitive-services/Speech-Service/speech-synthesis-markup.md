@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207681"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311638"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -46,7 +46,7 @@ Jedes SSML-Dokument wird mit SSML-Elementen (oder Tags) erstellt. Diese Elemente
 
 ## <a name="create-an-ssml-document"></a>Erstellen eines SSML-Dokuments
 
-`speak` ist das Stammelement und bei allen SSML-Dokumenten **erforderlich** . Das `speak`-Element enthält wichtige Informationen, z.B. die Version, Sprache und die Definition des Markupvokabulars.
+`speak` ist das Stammelement und bei allen SSML-Dokumenten **erforderlich**. Das `speak`-Element enthält wichtige Informationen, z.B. die Version, Sprache und die Definition des Markupvokabulars.
 
 **Syntax**
 
@@ -233,6 +233,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 | `en-US-JennyNeural`     | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
 |                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
+|                         | `style="newscast"`        | Gewandter und ungezwungener Ton für die Mitteilung allgemeiner Nachrichten   |
 | `en-US-GuyNeural`       | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
@@ -538,8 +539,8 @@ Weil Attributwerte für den Satzrhythmus über einen breiten Bereich variieren k
 | `contour` |Die Kontur unterstützt jetzt sowohl neuronale als auch Standardstimmen. Die Kontur stellt Änderungen der Tonhöhe dar. Diese Änderungen werden als ein Array von Zielen an den angegebenen Zeitpositionen in der Sprachausgabe dargestellt. Jedes Ziel wird durch Gruppen von Parameterpaaren definiert. Beispiel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Der erste Wert in jeder Gruppe von Parametern gibt den Ort der Tonhöhenänderung als Prozentsatz der Textdauer an. Der zweite Wert gibt den Betrag an, um den die Tonhöhe erhöht oder verringert werden soll. Dazu wird ein relativer Wert oder ein Aufzählungswert für die Tonhöhe verwendet (siehe `pitch`). | Optional |
 | `range` | Ein Wert, der den Tonhöhenbereich für den Text darstellt. Sie können `range` mit denselben absoluten Werten, relativen Werten oder Aufzählungswerten ausdrücken, mit denen beschrieben `pitch` wird. | Optional |
 | `rate` | Gibt die Sprechgeschwindigkeit für den Text an. Sie können `rate` ausdrücken als:<ul><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, die als Multiplikator des Standards fungiert. So führt beispielsweise der Wert *1* zu keiner Änderung der Geschwindigkeit. Der Wert *0,5* führt zu einer Halbierung der Geschwindigkeit. Der Wert *3* führt zu einer Verdreifachung der Geschwindigkeit.</li><li>Einen konstanten Wert:<ul><li>x-slow</li><li>langsam</li><li>mittel</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | Optional |
-| `duration` | Die Zeitspanne in Sekunden oder Millisekunden, die vergehen sollte, während der Sprachsynthesedienst den Text liest. Beispiel: *2s* oder *1800ms* . Die Dauer unterstützt nur Standardstimmen.| Optional |
-| `volume` | Gibt die Lautstärke der Sprechstimme an. Sie können die Lautstärke ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl im Bereich von 0,0 bis 100,0 – von *am leisesten* bis zu *am lautesten* . Beispiel: „75“. Der Standardwert ist „100,0“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der ein „+“ oder „–“ steht und die einen Betrag zum Ändern der Lautstärke angibt. Beispiel: „+10“ oder „-5,5“.</li><li>Einen konstanten Wert:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>mittel</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | Optional |
+| `duration` | Die Zeitspanne in Sekunden oder Millisekunden, die vergehen sollte, während der Sprachsynthesedienst den Text liest. Beispiel: *2s* oder *1800ms*. Die Dauer unterstützt nur Standardstimmen.| Optional |
+| `volume` | Gibt die Lautstärke der Sprechstimme an. Sie können die Lautstärke ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl im Bereich von 0,0 bis 100,0 – von *am leisesten* bis zu *am lautesten*. Beispiel: „75“. Der Standardwert ist „100,0“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der ein „+“ oder „–“ steht und die einen Betrag zum Ändern der Lautstärke angibt. Beispiel: „+10“ oder „-5,5“.</li><li>Einen konstanten Wert:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>mittel</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | Optional |
 
 ### <a name="change-speaking-rate"></a>Ändern der Sprechgeschwindigkeit
 
