@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 8c0aef1817581e2b09297d8807676cf0049e1d3e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5766eb821800568b567350e1360ca4cf5403be6d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169084"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136247"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Linux verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription-service.md) zu verwenden. Derzeit wird nur das [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) unterstützt.
 
@@ -100,7 +100,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.13.0</version>
+             <version>1.14.0</version>
         </dependency>
     </dependencies>
    ```
@@ -111,11 +111,11 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
    ![Screenshot: Bearbeiten der Startkonfiguration](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. Kopieren Sie die binären Audiodateien für Ihre Zielarchitektur entweder aus **Linux-arm** oder **Linux-x64** in den Speicherort des Java-Projekts, z. B. **/home/wcaltest/JRE-Sample-Release** .
+1. Kopieren Sie die binären Audiodateien für Ihre Zielarchitektur entweder aus **Linux-arm** oder **Linux-x64** in den Speicherort des Java-Projekts, z. B. **/home/wcaltest/JRE-Sample-Release**.
 
-1. Wählen Sie ebenfalls im Fenster **Konfiguration bearbeiten** die Seite **Umgebung** und dann **Neu** . Das Fenster **New Environment Variable** (Neue Umgebungsvariable) wird angezeigt. Geben Sie im Feld **Name** den Namen **LD_LIBRARY_PATH** und im Feld **Wert** den Ordner mit den SO-Dateien ein, z. B. **/home/wcaltest/JRE-Sample-Release** .
+1. Wählen Sie ebenfalls im Fenster **Konfiguration bearbeiten** die Seite **Umgebung** und dann **Neu**. Das Fenster **New Environment Variable** (Neue Umgebungsvariable) wird angezeigt. Geben Sie im Feld **Name** den Namen **LD_LIBRARY_PATH** und im Feld **Wert** den Ordner mit den SO-Dateien ein, z. B. **/home/wcaltest/JRE-Sample-Release**.
 
-1. Kopieren Sie `kws.table` und `participants.properties` in den Projektordner **target/classes** .
+1. Kopieren Sie `kws.table` und `participants.properties` in den Projektordner **target/classes**.
 
 
 ## <a name="configure-the-sample-application"></a>Konfigurieren der Beispielanwendung
@@ -147,7 +147,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
     Wenn Sie ein neues Schlüsselwort verwenden möchten, aktualisieren Sie die folgende Zeile in `FunctionsList.java`, und kopieren Sie das Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `machine.zip` verwenden möchten:
 
-   * Kopieren Sie die Datei `kws.table` aus dem ZIP-Paket in den Projektordner **target/classes** .
+   * Kopieren Sie die Datei `kws.table` aus dem ZIP-Paket in den Projektordner **target/classes**.
 
    * Aktualisieren Sie `FunctionsList.java` mit dem Schlüsselwortnamen:
 
@@ -163,18 +163,18 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
    ![Screenshot: Beispielanwendung des Speech-Geräte-SDK und Optionen](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Testen Sie die neue Demoversion der **Unterhaltungstranskription** . Beginnen Sie mit der Transkription, indem Sie **Session** > **Start** (Sitzung > Starten) verwenden. Standardmäßig ist jeder Gast. Wenn Sie aber über Stimmsignaturen der Teilnehmer verfügen, können diese im Projektordner **target/classes** in `participants.properties` eingefügt werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Testen Sie die neue Demoversion der **Unterhaltungstranskription**. Beginnen Sie mit der Transkription, indem Sie **Session** > **Start** (Sitzung > Starten) verwenden. Standardmäßig ist jeder Gast. Wenn Sie aber über Stimmsignaturen der Teilnehmer verfügen, können diese im Projektordner **target/classes** in `participants.properties` eingefügt werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](../how-to-use-conversation-transcription-service.md).
 
    ![Screenshot: Demo für Unterhaltungstranskription-Anwendung](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>Erstellen und Ausführen der eigenständigen Anwendung
 
-1. Klicken Sie im **Paket-Explorer** mit der rechten Maustaste auf Ihr Projekt. Wählen Sie **Exportieren** . 
-1. Das Fenster **Exportieren** wird angezeigt. Erweitern Sie die Option **Java** , und wählen Sie **Runnable JAR file** (Ausführbare JAR-Datei) und dann **Weiter** .
+1. Klicken Sie im **Paket-Explorer** mit der rechten Maustaste auf Ihr Projekt. Wählen Sie **Exportieren**. 
+1. Das Fenster **Exportieren** wird angezeigt. Erweitern Sie die Option **Java** , und wählen Sie **Runnable JAR file** (Ausführbare JAR-Datei) und dann **Weiter**.
 
    ![Screenshot: Exportfenster](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. Das Fenster **Runnable JAR File Export** (Ausführbare JAR-Datei: Export) wird angezeigt. Wählen Sie ein **Exportziel** für die Anwendung aus, und wählen Sie anschließend **Fertig stellen** .
+1. Das Fenster **Runnable JAR File Export** (Ausführbare JAR-Datei: Export) wird angezeigt. Wählen Sie ein **Exportziel** für die Anwendung aus, und wählen Sie anschließend **Fertig stellen**.
  
    ![Screenshot: Ausführbare JAR-Datei – Exportfenster](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717896"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913108"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -102,7 +102,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
+Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](/cli/azure/install-azure-cli) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
 
 Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
 
@@ -149,7 +149,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Herstellen einer Verbindung mit Azure AD zur Autorisierung
 
-Wir empfehlen, Ihre Web-App mit Azure Active Directory zu verbinden. Dadurch wird sichergestellt, dass nur Benutzer mit gültigen Anmeldeinformationen sich anmelden und Ihre Web-App verwenden können. Folgen Sie den Anweisungen unter [Konfigurieren Ihrer App Service-App ](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad), um eine Verbindung mit Azure Active Directory herzustellen.
+Wir empfehlen, Ihre Web-App mit Azure Active Directory zu verbinden. Dadurch wird sichergestellt, dass nur Benutzer mit gültigen Anmeldeinformationen sich anmelden und Ihre Web-App verwenden können. Folgen Sie den Anweisungen unter [Konfigurieren Ihrer App Service-App ](../../app-service/configure-authentication-provider-aad.md), um eine Verbindung mit Azure Active Directory herzustellen.
 
 ## <a name="open-source-on-github"></a>Open-Source auf GitHub
 

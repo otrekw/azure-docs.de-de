@@ -11,12 +11,12 @@ ms.date: 9/17/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262483"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911442"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
@@ -34,7 +34,7 @@ Der Gesichtserkennungsdienst verfügt über verschiedene Funktionen für die Ges
 Mit dem Gesichtserkennungsdienst können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional können bei der Gesichtserkennung verschiedene Gesichtsattribute extrahiert werden, z. B. Kopfhaltung, Geschlecht, Alter, Emotionen, Gesichtsbehaarung und Brille.
 
 > [!NOTE]
-> Die Funktion zur Gesichtserkennung ist auch über den [Dienst für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) verfügbar. Falls Sie aber weitere Vorgänge mit Gesichtserkennungsdaten durchführen möchten, sollten Sie stattdessen den hier beschriebenen Dienst verwenden.
+> Die Funktion zur Gesichtserkennung ist auch über den [Dienst für maschinelles Sehen](../computer-vision/overview.md) verfügbar. Falls Sie aber weitere Vorgänge mit Gesichtserkennungsdaten durchführen möchten, sollten Sie stattdessen den hier beschriebenen Dienst verwenden.
 
 ![Bild von einer Frau und einem Mann mit um die Gesichter gezeichneten Rechtecken und Anzeige von Alter und Geschlecht](./Images/Face.detection.jpg)
 

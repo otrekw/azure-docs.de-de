@@ -10,19 +10,19 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 5fbe316580cfa2ca280a2587536df037146e8d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5354581be519172c498e57d25510f9fc5c0daa4
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86538121"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911255"
 ---
 # <a name="deploy-the-face-container-to-azure-container-instances"></a>Bereitstellen eines Containers für die Gesichtserkennung in Azure Container Instances
 
 > [!IMPORTANT]
 > Das Limit für Benutzer von Gesichtserkennungscontainern wurde erreicht. Wir akzeptieren derzeit keine neuen Anträge für den Gesichtserkennungscontainer.
 
-Erfahren Sie, wie Sie Container für die [Gesichtserkennung](../face-how-to-install-containers.md) von Cognitive Services für Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Dieses Verfahren veranschaulicht die Erstellung der Azure-Ressource für die Gesichtserkennung. Anschließend wird das Abrufen des dazugehörigen Containerimages erläutert. Abschließend erklären wir, wie Sie die Orchestrierung von Ressource und Image über einen Browser ausführen können. Die Verwendung von Containern kann die Aufmerksamkeit der Entwickler von der Verwaltung der Infrastruktur auf die Anwendungsentwicklung lenken.
+Erfahren Sie, wie Sie Container für die [Gesichtserkennung](../face-how-to-install-containers.md) von Cognitive Services für Azure [Container Instances](../../../container-instances/index.yml) bereitstellen. Dieses Verfahren veranschaulicht die Erstellung der Azure-Ressource für die Gesichtserkennung. Anschließend wird das Abrufen des dazugehörigen Containerimages erläutert. Abschließend erklären wir, wie Sie die Orchestrierung von Ressource und Image über einen Browser ausführen können. Die Verwendung von Containern kann die Aufmerksamkeit der Entwickler von der Verwaltung der Infrastruktur auf die Anwendungsentwicklung lenken.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 

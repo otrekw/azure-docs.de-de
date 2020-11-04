@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272592"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912870"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderieren von Text über die API-Konsole
 
@@ -50,7 +50,7 @@ Wählen Sie die Abfrageparameter aus, die Sie für Ihre Textüberprüfung verwen
 >
 > Verwenden Sie für die Erkennung **anstößiger Begriffe** den [ISO 639-3-Code](http://www-01.sil.org/iso639-3/codes.asp) der unterstützten Sprachen aus diesem Artikel, oder lassen Sie ihn leer.
 
-Wählen Sie für **autocorrect**, **PII** und **classify (preview)** die Option **true**. Lassen Sie das Feld **ListId** leer.
+Wählen Sie für **autocorrect** , **PII** und **classify (preview)** die Option **true**. Lassen Sie das Feld **ListId** leer.
 
   ![Konsole „Text – Screen“ (Text – Überprüfen) – Abfrageparameter](images/text-api-console-inputs.PNG)
 
@@ -137,4 +137,4 @@ Eine ausführliche Erläuterung aller Abschnitte in der JSON-Antwort finden Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die REST-API im Code, oder befolgen Sie die Anweisungen im [.NET SDK-Schnellstart](dotnet-sdk-quickstart.md) für die Integration mit Ihrer Anwendung.
+Verwenden Sie die REST-API im Code, oder befolgen Sie die Anweisungen im [.NET SDK-Schnellstart](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) für die Integration mit Ihrer Anwendung.

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 0f87bc13a75355306f7d2d15b22ff9cdfaa53794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77282502a0032a5b1811e32d9aa47d9b4ede569
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858221"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912819"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und Node.js
 
@@ -42,7 +42,7 @@ npm install axios --save
 
 ## <a name="write-the-nodejs-script"></a>Schreiben des Node.js-Skripts
 
-Fügen Sie den folgenden Code in *facedetection.js* ein. Mit diesen Feldern wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. [Erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication), und fügen Sie Schlüssel und Endpunkt Ihres Gesichtserkennungsabonnements hinzu. Ändern Sie bei Bedarf das Feld `imageUrl`, um auf Ihr eigenes Eingabebild zu verweisen.
+Fügen Sie den folgenden Code in *facedetection.js* ein. Mit diesen Feldern wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. [Erstellen Sie Umgebungsvariablen](../../cognitive-services-apis-create-account.md?tabs=multiservice%252cwindows#configure-an-environment-variable-for-authentication), und fügen Sie Schlüssel und Endpunkt Ihres Gesichtserkennungsabonnements hinzu. Ändern Sie bei Bedarf das Feld `imageUrl`, um auf Ihr eigenes Eingabebild zu verweisen.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

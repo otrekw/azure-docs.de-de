@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919351"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912853"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysieren von Videoinhalten auf anstößiges Material in C#
 
@@ -33,17 +33,17 @@ Die Videomoderationsfunktion von Content Moderator ist als **Medienprozessor** i
 
 ### <a name="create-an-azure-media-services-account"></a>Erstellen eines Azure Media Services-Kontos
 
-Befolgen Sie die Anweisungen in [Erstellen eines Azure Media Services-Kontos](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account), um AMS zu abonnieren und ein zugeordnetes Azure Storage-Konto zu erstellen. Erstellen Sie in diesem Speicherkonto einen neuen Blob Storage-Container.
+Befolgen Sie die Anweisungen in [Erstellen eines Azure Media Services-Kontos](../../media-services/previous/media-services-portal-create-account.md), um AMS zu abonnieren und ein zugeordnetes Azure Storage-Konto zu erstellen. Erstellen Sie in diesem Speicherkonto einen neuen Blob Storage-Container.
 
 ### <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
 Navigieren Sie zu Ihrem neuen AMS-Abonnement im Azure-Portal, und wählen Sie **API-Zugriff** aus im seitlichen Menü. Wählen Sie **Verbindung mit Azure Media Services über Dienstprinzipal herstellen** aus. Notieren Sie den Wert im Feld **REST-API-Endpunkt**. Diesen benötigen Sie später.
 
-Wählen Sie im Abschnitt **Azure AD-App** die Option **Neue erstellen** und benennen Sie Ihre neue Azure AD-Anwendungsregistrierung (z.B. „VideoModADApp“). Klicken Sie auf **Speichern**, und warten Sie einige Minuten, während die Anwendung konfiguriert wird. Ihre neue App-Registrierung sollte dann im Abschnitt **Azure AD-App** der Seite angezeigt werden.
+Wählen Sie im Abschnitt **Azure AD-App** die Option **Neue erstellen** und benennen Sie Ihre neue Azure AD-Anwendungsregistrierung (z.B. „VideoModADApp“). Klicken Sie auf **Speichern** , und warten Sie einige Minuten, während die Anwendung konfiguriert wird. Ihre neue App-Registrierung sollte dann im Abschnitt **Azure AD-App** der Seite angezeigt werden.
 
-Wählen Sie Ihre App-Registrierung, und klicken Sie darunter auf **Anwendung verwalten**. Notieren Sie den Wert im Feld **Anwendungs-ID**. Diesen benötigen Sie später. Wählen Sie **Einstellungen** > **Schlüssel** aus, und geben Sie eine Beschreibung für einen neuen Schlüssel ein (z.B. „VideoModKey“). Klicken Sie auf **Speichern**, und notieren Sie den neuen Schlüsselwert. Kopieren Sie diese Zeichenfolge, und speichern Sie sie an einem sicheren Ort.
+Wählen Sie Ihre App-Registrierung, und klicken Sie darunter auf **Anwendung verwalten**. Notieren Sie den Wert im Feld **Anwendungs-ID**. Diesen benötigen Sie später. Wählen Sie **Einstellungen** > **Schlüssel** aus, und geben Sie eine Beschreibung für einen neuen Schlüssel ein (z.B. „VideoModKey“). Klicken Sie auf **Speichern** , und notieren Sie den neuen Schlüsselwert. Kopieren Sie diese Zeichenfolge, und speichern Sie sie an einem sicheren Ort.
 
-Eine ausführlichere Erläuterung für das oben beschriebene Verfahren finden Sie unter [Erste Schritte mit Azure AD-Authentifizierung](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+Eine ausführlichere Erläuterung für das oben beschriebene Verfahren finden Sie unter [Erste Schritte mit Azure AD-Authentifizierung](../../media-services/previous/media-services-portal-get-started-with-aad.md).
 
 Wenn Sie fertig sind, können Sie die Videomoderation des Medienprozessors auf zwei unterschiedliche Arten verwenden.
 
@@ -131,7 +131,7 @@ Sie müssen auch die Datei _preset.json_ im aktuellen Verzeichnis erstellen und 
 
 ### <a name="load-the-input-videos"></a>Laden des/der Eingabevideos
 
-Die **Main**-Methode der **Program**-Klasse erstellt zunächst einen Azure-Medienkontext und anschließend einen Azure-Speicherkontext, falls Ihre Videos sich in Blob Storage befinden. Der restliche Code überprüft ein Video aus einem lokalen Ordner, einem Blob oder mehreren Blogs innerhalb eines Azure-Speichercontainers. Sie können alle Optionen testen, indem Sie die anderen Codezeilen auskommentieren.
+Die **Main** -Methode der **Program** -Klasse erstellt zunächst einen Azure-Medienkontext und anschließend einen Azure-Speicherkontext, falls Ihre Videos sich in Blob Storage befinden. Der restliche Code überprüft ein Video aus einem lokalen Ordner, einem Blob oder mehreren Blogs innerhalb eines Azure-Speichercontainers. Sie können alle Optionen testen, indem Sie die anderen Codezeilen auskommentieren.
 
 ```csharp
 // Create Azure Media Context
@@ -159,7 +159,7 @@ RunContentModeratorJob(asset);
 
 ### <a name="create-an-azure-media-context"></a>Erstellen eines Azure-Medienkontexts
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dabei werden Ihre AMS-Anmeldeinformationen zum Zulassen der Kommunikation mit AMS verwendet.
+Fügen Sie der **Program** -Klasse die folgende Methode hinzu. Dabei werden Ihre AMS-Anmeldeinformationen zum Zulassen der Kommunikation mit AMS verwendet.
 
 ```csharp
 // Creates a media context from azure credentials
@@ -180,7 +180,7 @@ static void CreateMediaContext()
 
 ### <a name="add-the-code-to-create-an-azure-storage-context"></a>Code zum Erstellen eines Azure-Speicherkontexts
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Sie verwenden den Speicherkontext, der mithilfe Ihrer Storage-Anmeldeinformationen erstellt wurden, um auf Blob Storage zuzugreifen.
+Fügen Sie der **Program** -Klasse die folgende Methode hinzu. Sie verwenden den Speicherkontext, der mithilfe Ihrer Storage-Anmeldeinformationen erstellt wurden, um auf Blob Storage zuzugreifen.
 
 ```csharp
 // Creates a storage context from the AMS associated storage name and key
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSON-Antwort. Diese besteht aus folgenden Elementen:
 
 - Zusammenfassung der Videoinformationen
-- **Screenshots** als "**fragments**"
-- **Keyframes** als "**events**" mit dem Flag **reviewRecommended" (= true or false)"** , das auf **adultScore** und **racyScore** basiert.
-- **start**, **duration**, **totalDuration** und **timestamp** werden in „Takten“ angegeben. Teilen Sie diese Werte durch **timescale**, um die Anzahl in Sekunden zu erhalten.
+- **Screenshots** als " **fragments** "
+- **Keyframes** als " **events** " mit dem Flag **reviewRecommended" (= true or false)"** , das auf **adultScore** und **racyScore** basiert.
+- **start** , **duration** , **totalDuration** und **timestamp** werden in „Takten“ angegeben. Teilen Sie diese Werte durch **timescale** , um die Anzahl in Sekunden zu erhalten.
  
 > [!NOTE]
 > - `adultScore` gibt das mögliche Vorhandensein und die Vorhersage von Inhalten an, die in bestimmten Situationen als explizit sexuell oder nicht jugendfrei betrachtet werden können.

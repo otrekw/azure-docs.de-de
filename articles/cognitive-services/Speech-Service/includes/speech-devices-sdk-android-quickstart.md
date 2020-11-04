@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e83650bc9861f982c4905e26fbb674abbd4de97
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226072"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135903"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Android verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription-service.md) zu verwenden.
 
@@ -58,7 +58,7 @@ Bevor Sie das Speech Devices SDK verwenden, sind folgende Schritte erforderlich:
    >
    > ![Vysor-Dateiordner](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Wählen Sie **Settings**aus. Suchen Sie nach „Mac-Adresse“, und wählen Sie dann **Mac-Adresse** > **Erweitertes WLAN** aus. Notieren Sie sich die MAC-Adresse, die im unteren Bereich des Dialogfelds angezeigt wird.
+   > Wählen Sie **Settings** aus. Suchen Sie nach „Mac-Adresse“, und wählen Sie dann **Mac-Adresse** > **Erweitertes WLAN** aus. Notieren Sie sich die MAC-Adresse, die im unteren Bereich des Dialogfelds angezeigt wird.
    >
    > ![Vysor-MAC-Adresse](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
     Aktualisieren Sie **build.gradle(Module:app)** , indem Sie dem Abschnitt „dependencies“ die folgende Zeile hinzufügen: 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
     ```
     
 1. Fügen Sie dem Quellcode den Abonnementschlüssel für Ihre Spracherkennung hinzu. Wenn Sie die Absichtserkennung ausprobieren möchten, fügen Sie auch Ihren Abonnementschlüssel für den [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) und die Anwendungs-ID hinzu.

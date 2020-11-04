@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893685"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913193"
 ---
 # <a name="receipt-concepts"></a>Konzepte zu Belegen
 
@@ -449,7 +449,7 @@ Die Belegausgabe ist auch für die allgemeine Buchhaltung für den geschäftlich
 
 Belege enthalten nützliche Daten, die Sie verwenden können, um Kundenverhalten und Einkaufstrends zu analysieren.
 
-Die Beleg-API ermöglicht außerdem die [AIBuilder-Belegverarbeitungsfunktion](https://docs.microsoft.com/ai-builder/prebuilt-receipt-processing).
+Die Beleg-API ermöglicht außerdem die [AIBuilder-Belegverarbeitungsfunktion](/ai-builder/prebuilt-receipt-processing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -459,4 +459,4 @@ Die Beleg-API ermöglicht außerdem die [AIBuilder-Belegverarbeitungsfunktion](h
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist die Formularerkennung?](./overview.md)
-* [REST-API-Referenzdokumente](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)
+* [REST-API-Referenzdokumente](./index.yml)

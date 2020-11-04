@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfda4d7970c734d92c9f2355d553721ef6165e43
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044115"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911850"
 ---
 # <a name="create-human-reviews"></a>Erstellen von Überprüfungen durch Personen
 
@@ -28,7 +28,7 @@ In diesem Artikel wird erläutert, wie Sie [Überprüfungen](../review-api.md#re
 ## <a name="image-reviews"></a>Bildbetrachtungen
 
 1. Navigieren Sie zum [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), wählen Sie die Registerkarte **Ausprobieren** aus, und laden Sie einige Bilder zum Überprüfen hoch.
-1. Navigieren Sie nach der abgeschlossenen Verarbeitung der hochgeladenen Bilder zur Registerkarte **Überprüfen**, und wählen Sie **Bild** aus.
+1. Navigieren Sie nach der abgeschlossenen Verarbeitung der hochgeladenen Bilder zur Registerkarte **Überprüfen** , und wählen Sie **Bild** aus.
 
     ![Chrome-Browser mit dem Prüfungstool und hervorgehobener Bildüberprüfungsoption](images/review-images-1.png)
 
@@ -46,7 +46,7 @@ In diesem Artikel wird erläutert, wie Sie [Überprüfungen](../review-api.md#re
 
     ![Ein Bild mit aufgeführten Moderationsdetails in einem separaten Bereich](images/review-images-4.png)
 
-1. Wenn Sie die Markierungszuweisungen überprüft und ggf. aktualisiert haben, klicken Sie auf **Weiter**, um Ihre Überprüfungen einzusenden. Nach dem Absenden haben Sie etwa fünf Sekunden Zeit, um auf die Schaltfläche **Vorh.** zu klicken, um zum vorherigen Bildschirm zurückzukehren und die Bilder erneut zu überprüfen. Danach sind die Bilder nicht mehr in der Warteschlange zum Senden und die Schaltfläche **Vorh.** ist nicht mehr verfügbar.
+1. Wenn Sie die Markierungszuweisungen überprüft und ggf. aktualisiert haben, klicken Sie auf **Weiter** , um Ihre Überprüfungen einzusenden. Nach dem Absenden haben Sie etwa fünf Sekunden Zeit, um auf die Schaltfläche **Vorh.** zu klicken, um zum vorherigen Bildschirm zurückzukehren und die Bilder erneut zu überprüfen. Danach sind die Bilder nicht mehr in der Warteschlange zum Senden und die Schaltfläche **Vorh.** ist nicht mehr verfügbar.
 
 ## <a name="text-reviews"></a>Textüberprüfungen
 
@@ -56,4 +56,4 @@ Die Funktion für Textüberprüfungen ist der Funktion für Bildüberprüfungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde erläutert, wie Sie Überprüfungen über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-review.md) oder den [.NET SDK-Schnellstart](../dotnet-sdk-quickstart.md) an, um zu erfahren, wie Überprüfungen programmgesteuert erstellt werden können.
+In diesem Artikel wurde erläutert, wie Sie Überprüfungen über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-review.md) oder den [.NET SDK-Schnellstart](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) an, um zu erfahren, wie Überprüfungen programmgesteuert erstellt werden können.

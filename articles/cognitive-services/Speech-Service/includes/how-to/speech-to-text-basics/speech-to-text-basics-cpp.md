@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 7575e174f1f47d55c507fdbf0386fbd578649839
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6240cdb184e0e226e5d407c8d24fed7395a285c2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499081"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135714"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -37,7 +37,7 @@ Um den Speech-Dienst über das Speech SDK aufrufen zu können, muss eine Sprach
 using namespace std;
 using namespace Microsoft::CognitiveServices::Speech;
 
-auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 ```
 
 Es gibt noch einige andere Möglichkeiten, eine Sprachkonfiguration ([`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)) zu initialisieren:

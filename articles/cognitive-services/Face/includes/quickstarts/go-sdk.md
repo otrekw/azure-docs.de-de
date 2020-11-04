@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: d84fd9e66c03fd92f3824b685bc550c70d4a6340
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886575"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918686"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Go. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -34,7 +34,7 @@ Die Gesichtserkennungsdienst-Clientbibliothek für Go kann für Folgendes verwen
 * Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Erstellen einer Gesichtserkennungsressource"  target="_blank"> eine Gesichtserkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Gesichtserkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
-* Nachdem Sie einen Schlüssel und einen Endpunkt erhalten haben, [erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und den Endpunkt mit dem Namen `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
+* Nachdem Sie einen Schlüssel und einen Endpunkt erhalten haben, [erstellen Sie Umgebungsvariablen](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) für den Schlüssel und den Endpunkt mit dem Namen `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -112,7 +112,7 @@ In den folgenden Codebeispielen werden einfache Aufgaben mithilfe der Gesichtser
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 > [!NOTE] 
-> In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie für den Schlüssel und den Endpunkt der Gesichtserkennung (`FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`) [Umgebungsvariablen erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
+> In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie für den Schlüssel und den Endpunkt der Gesichtserkennung (`FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`) [Umgebungsvariablen erstellt haben](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication).
 
 Erstellen Sie eine Funktion vom Typ **main** , und fügen Sie ihr den folgenden Code hinzu, um einen Client mit Ihrem Endpunkt und Schlüssel zu instanziieren. Sie erstellen ein Objekt vom Typ **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** mit Ihrem Schlüssel und verwenden es mit Ihrem Endpunkt, um ein Objekt vom Typ **[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** zu erstellen. Durch diesen Code wird auch ein Kontextobjekt instanziiert, das für die Erstellung von Clientobjekten benötigt wird. Darüber hinaus wird ein Remotespeicherort definiert, an dem sich einige der Beispielbilder dieser Schnellstartanleitung befinden.
 
