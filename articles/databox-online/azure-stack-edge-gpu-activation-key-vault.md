@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: c841c96326f636e16f3b4f86fcb88a0962011c0f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976830"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367600"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Integration von Azure Key Vault in Azure Stack Edge 
 
@@ -22,7 +22,7 @@ Azure Key Vault wird zur Verwaltung von Geheimnissen in eine Azure Stack Edge-Re
 
 ## <a name="about-key-vault-and-azure-stack-edge"></a>Informationen zu Azure Key Vault und Azure Stack Edge
 
-Mit dem Azure Key Vault-Clouddienst werden Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse sicher gespeichert und der Zugriff darauf gesteuert. Key Vault vereinfacht auch das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
+Mit dem Azure Key Vault-Clouddienst werden Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse sicher gespeichert und der Zugriff darauf gesteuert. Key Vault vereinfacht auch das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. Weitere Informationen zu zulässigen Transaktionen und den entsprechenden Kosten finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
 
 Eines der für den Azure Stack Edge-Dienst verwendeten Geheimnisse ist der Channel Integrity Key (CIK). Mit diesem Schlüssel können Sie Ihre Geheimnisse verschlüsseln. Durch die Integration von Key Vault wird der CIK sicher in der Key Vault-Instanz gespeichert. Weitere Informationen finden Sie unter [Sicheres Speichern von Geheimnissen und Schlüsseln](../key-vault/general/overview.md#securely-store-secrets-and-keys).
 
@@ -44,6 +44,8 @@ Bei der Generierung von Aktivierungsschlüsseln wird eine Key Vault-Instanz für
 - Sie können den Standardnamen übernehmen oder einen benutzerdefinierten Namen für die Key Vault-Instanz angeben. Der Name der Key Vault-Instanz muss zwischen 3 und 24 Zeichen lang sein. Sie können keine Key Vault-Instanz verwenden, die bereits verwendet wird. <!--The MSI is then used to authenticate to key vault to retrieve secrets.--> 
 
     ![Während der Erstellung der Azure Stack Edge-Ressource erstellte MSI](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+
+- Um den Azure-Schlüsseltresor anzuzeigen, navigieren Sie in Ihrer Azure Stack Edge-Ressource zu **Eigenschaften** , und wählen Sie den Namen des gewünschten Schlüsseltresors aus. 
 
 - Um ein versehentliches Löschen zu verhindern, wird eine Ressourcensperre für die Key Vault-Instanz aktiviert. Außerdem wird ein vorläufiges Löschen für die Key Vault-Instanz aktiviert, wodurch sie im Fall eines versehentlichen Löschens innerhalb von 90 Tagen wiederhergestellt werden kann. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md).
 

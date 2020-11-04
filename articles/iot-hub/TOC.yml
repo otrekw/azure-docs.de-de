@@ -74,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: Nachrichtenergänzungen
       href: tutorial-message-enrichments.md
-    - name: Verwenden von Metriken und Diagnoseprotokollen
+    - name: Verwenden von Metriken und Protokollen
       href: tutorial-use-metrics-and-diags.md
     - name: Ausführen eines manuellen Failovers
       href: tutorial-manual-failover.md

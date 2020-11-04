@@ -21,13 +21,13 @@
     - name: 1. Erstellen eines Synapse-Arbeitsbereichs
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2. Analysieren mithilfe eines SQL-Pools
+    - name: 2. Analysieren mithilfe eines dedizierten SQL-Pools
       href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 3. Analysieren mithilfe von Spark
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4. Analysieren mithilfe von SQL On-Demand
+    - name: 4. Analysieren mithilfe eines serverlosen SQL-Pools
       href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 5. Analysieren von Daten in einem Speicherkonto
@@ -119,7 +119,7 @@
                   href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 'Synapse-Arbeitsbereich: Verwaltete Identität'
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: Pool und bedarfsgesteuert
+                - name: SQL-Pools
                   href: ./sql/access-control.md
                   displayname: 'access, control'
         - name: 'Toolintegration (KI, ETL, BI)'
@@ -149,6 +149,8 @@
                   displayname: links
                 - name: Bereitstellen und Schützen eines verknüpften Diensts per verwaltetem VNET
                   href: ./data-integration/linked-service.md
+                - name: Herstellen einer Verbindung mit einem Synapse-Arbeitsbereich über ein eingeschränktes Netzwerk
+                  href: security/how-to-connect-to-workspace-from-restricted-network.md
 - name: Synapse-SQL
   items:
     - name: Übersicht
@@ -156,10 +158,10 @@
         - name: 'Synapse-SQL: Architektur'
           href: sql/overview-architecture.md
           displayName: overview
-        - name: SQL On-Demand
+        - name: Serverloser SQL-Pool
           href: sql/on-demand-workspace-overview.md
           displayname: overview
-        - name: SQL-Pool
+        - name: Dedizierter SQL-Pool
           href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           displayname: overview
         - name: Aufbau
@@ -168,17 +170,17 @@
           href: sql/overview-features.md
         - name: Modelle zum Ressourcenverbrauch
           href: sql/resource-consumption-models.md
-        - name: Bewährte Methoden für SQL On-Demand
+        - name: Best Practices für serverlose SQL-Pools
           href: sql/best-practices-sql-on-demand.md
-        - name: Bewährte Methoden für SQL-Pools
+        - name: Best Practices für dedizierte SQL-Pools
           href: sql/best-practices-sql-pool.md
     - name: Schnellstarts
       items:
-        - name: Erstellen eines SQL-Pools mithilfe von Synapse Studio
+        - name: Erstellen eines dedizierten SQL-Pools mithilfe von Synapse Studio
           href: quickstart-create-sql-pool-studio.md
-        - name: Erstellen eines SQL-Pools über das Azure-Portal
+        - name: Erstellen eines dedizierten SQL-Pools mithilfe des Azure-Portals
           href: quickstart-create-sql-pool-portal.md
-        - name: Laden von Daten mit SQL-Pools
+        - name: Laden von Daten mit dedizierten SQL-Pools
           items:
             - name: COPY-Anweisung
               href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -189,11 +191,11 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: Verwenden von SQL On-Demand
+        - name: Verwenden eines serverlosen SQL-Pools
           href: quickstart-sql-on-demand.md
     - name: Tutorials
       items:
-        - name: Analysieren von Daten mit SQL On-Demand
+        - name: Verwenden eines serverlosen SQL-Pools zum Analysieren von Daten
           href: ./sql/tutorial-data-analyst.md
         - name: Power BI Desktop
           href: ./sql/tutorial-connect-power-bi-desktop.md
@@ -517,12 +519,16 @@
           href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: "Abfragen des Azure\_Cosmos\_DB-Analysespeichers mit Apache Spark"
           href: ./synapse-link/how-to-query-analytical-store-spark.md
-        - name: "Kopieren von Daten von Synapse\_Link in einen SQL-Pool mithilfe von Apache Spark"
+        - name: "Kopieren von Daten von Synapse\_Link in einen dedizierten SQL-Pool mithilfe von Apache Spark"
           href: ./synapse-link/how-to-copy-to-sql-pool.md
-        - name: "Abfragen des Azure\_Cosmos\_DB-Analysespeichers mit SQL\_On-Demand"
+        - name: "Abfragen des Azure\_Cosmos\_DB-Analysespeichers mit einem serverlosen SQL-Pool"
           href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Pipeline und Datenfluss
   items:
+    - name: Schnellstarts
+      items:
+        - name: Laden von Daten in SQL-Pools mithilfe der Copy-Aktivität
+          href: quickstart-copy-activity-load-sql-pool.md
     - name: Konzepte
       items:
         - name: Pipeline und Aktivität
@@ -1013,7 +1019,7 @@
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Selbsthilfe für Kunden
       items:
-        - name: SQL On-Demand
+        - name: Serverloser SQL-Pool
           href: sql/resources-self-help-sql-on-demand.md
     - name: Partner
       items:

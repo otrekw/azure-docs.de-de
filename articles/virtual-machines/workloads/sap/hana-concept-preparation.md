@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101262"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424252"
 ---
 # <a name="disaster-recovery-principles"></a>Prinzipien für die Notfallwiederherstellung
 
@@ -68,7 +68,7 @@ Als Nächstes installieren Sie in der Azure-Region für die Notfallwiederherstel
 - Beenden Sie die neu installierte SAP HANA-Instanz auf der HANA-Einheit (große Instanzen) in der Azure-Region für die Notfallwiederherstellung.
 - Heben Sie die Bereitstellung dieser PRD-Volumes auf, und wenden Sie sich an das Dienstverwaltungsteam für SAP HANA in Azure. Die Volumes können nicht mehr für die Einheit bereitgestellt werden, da nicht auf diese zugegriffen werden kann, wenn sie als Speicherreplikationsziel fungiert.  
 
-![Schritt zur Notfallwiederherstellungseinrichtung vor der Einrichtung der Replikation](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Diagramm: Replikationsbeziehung zwischen den PRD-Volumes in der Azure-Produktionsregion und den PRD-Volumes in der Azure-Region für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 Das Betriebsteam stellt die Replikationsbeziehung zwischen den PRD-Volumes in der Azure-Produktionsregion und den PRD-Volumes in der Azure-Region für die Notfallwiederherstellung her.
 
@@ -76,8 +76,8 @@ Das Betriebsteam stellt die Replikationsbeziehung zwischen den PRD-Volumes in de
 >Das Volume „/hana/log“ wird nicht repliziert, da es nicht erforderlich ist, die replizierte SAP HANA-Datenbank am Notfallwiederherstellungsstandort in einem konsistenten Zustand wiederherzustellen.
 
 Als Nächstes müssen Sie den Sicherungszeitplan für Speichermomentaufnahmen einrichten oder anpassen, um Ihren RTO- und RPO-Wert für den Notfall zu ermitteln. Legen Sie zur Minimierung der Recovery Point Objective folgende Replikationsintervalle im HANA-Dienst (große Instanz) fest:
-- Legen Sie für die durch die kombinierte Momentaufnahme abgedeckten Volumes (Momentaufnahmetyp **hana**) fest, dass sie alle 15 Minuten an die entsprechenden Speichervolumeziele am Standort für die Notfallwiederherstellung repliziert werden.
-- Legen Sie für das Volume für die Transaktionsprotokollsicherung (Momentaufnahmetyp **logs**) fest, dass es alle drei Minuten an den entsprechenden Speichervolumezielen am Standort für die Notfallwiederherstellung repliziert wird.
+- Legen Sie für die durch die kombinierte Momentaufnahme abgedeckten Volumes (Momentaufnahmetyp **hana** ) fest, dass sie alle 15 Minuten an die entsprechenden Speichervolumeziele am Standort für die Notfallwiederherstellung repliziert werden.
+- Legen Sie für das Volume für die Transaktionsprotokollsicherung (Momentaufnahmetyp **logs** ) fest, dass es alle drei Minuten an den entsprechenden Speichervolumezielen am Standort für die Notfallwiederherstellung repliziert wird.
 
 Richten Sie zur Minimierung der Recovery Point Objective Folgendes ein:
 - Führen Sie alle 30 bis 60 Minuten eine Speichermomentaufnahme vom Typ **hana** (siehe „Schritt 7: Durchführen von Momentaufnahmen“) durch.

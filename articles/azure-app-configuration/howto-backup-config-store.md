@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074854"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737095"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisches Sichern von App Configuration-Speichern
 
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>Erstellen eines App Configuration-Speichers
 
 Erstellen Sie Ihren primären und sekundären App Configuration-Speicher in unterschiedlichen Regionen.
-Ersetzen Sie  `<primary_appconfig_name>` und `<secondary_appconfig_name>` durch eindeutige Namen für ihre Konfigurationsspeicher. Der Speichername muss immer eindeutig sein, da er als DNS-Name verwendet wird.
+Ersetzen Sie `<primary_appconfig_name>` und `<secondary_appconfig_name>` durch eindeutige Namen für ihre Konfigurationsspeicher. Der Speichername muss immer eindeutig sein, da er als DNS-Name verwendet wird.
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"

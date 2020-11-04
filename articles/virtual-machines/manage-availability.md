@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 11444fc599b46ceff90eda562d2fd557bcaf53b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9d9a9c878c96c7f5a38466c494e4b90287c984da
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961339"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92734946"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Verwalten der Verfügbarkeit virtueller Linux-Computer
 
@@ -97,7 +97,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträgern zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden.
 
 1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
-2. **Überprüfen Sie die [Grenzwerte](../storage/blobs/scalability-targets-premium-page-blobs.md) für die Anzahl von nicht verwalteten Datenträgern eines Azure Storage-Kontos**, bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
+2. **Überprüfen Sie die [Grenzwerte](../storage/blobs/scalability-targets-premium-page-blobs.md) für die Anzahl von nicht verwalteten Datenträgern eines Azure Storage-Kontos** , bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
 3. **Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe.** Geben Sie Storage-Konten mit mehreren VMs in derselben Verfügbarkeitsgruppe nicht für die gemeinsame Nutzung frei. Für VMs, die über verschiedene Verfügbarkeitsgruppen hinweg verteilt sind, können Speicherkonten freigegeben werden, solange die oben genannten bewährten Methoden befolgt werden. ![Fehlerdomänen nicht verwalteter Datenträger](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Verwenden von Scheduled Events für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken

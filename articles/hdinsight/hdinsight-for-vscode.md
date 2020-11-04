@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c9a610eb30b33adb82cebda74e99c37f84dacf9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319457"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543082"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
@@ -37,7 +37,7 @@ Wenn die Voraussetzungen erfüllt sind, können Sie Spark- und Hive-Tools für V
 
 1. Öffnen Sie Visual Studio Code.
 
-2. Navigieren Sie über die Menüleiste zu **Ansicht** > **Erweiterungen** .
+2. Navigieren Sie über die Menüleiste zu **Ansicht** > **Erweiterungen**.
 
 3. Geben Sie **Spark & Hive** in das Suchfeld ein.
 
@@ -51,7 +51,7 @@ Wenn die Voraussetzungen erfüllt sind, können Sie Spark- und Hive-Tools für V
 
 Um einen Arbeitsordner zu öffnen und eine Datei in Visual Studio Code zu erstellen, führen Sie die folgenden Schritte aus:
 
-1. Navigieren Sie auf der Menüleiste zu **Datei** > **Ordner öffnen...**  > **C:\HD\HDexample** , und klicken Sie dann auf die Schaltfläche **Ordner auswählen** . Daraufhin wird der Ordner links in der Ansicht **Explorer** angezeigt.
+1. Navigieren Sie auf der Menüleiste zu **Datei** > **Ordner öffnen...**  > **C:\HD\HDexample** , und klicken Sie dann auf die Schaltfläche **Ordner auswählen**. Daraufhin wird der Ordner links in der Ansicht **Explorer** angezeigt.
 
 2. Wählen Sie in der **Explorer** -Ansicht den Ordner **HDexample** aus, und wählen Sie dann neben dem Arbeitsordner das Symbol **Neue Datei** aus:
 
@@ -63,8 +63,8 @@ Um einen Arbeitsordner zu öffnen und eine Datei in Visual Studio Code zu erstel
 
 Führen Sie für Benutzer der nationalen Cloud diese Schritte aus, um zunächst die Azure-Umgebung festzulegen, und verwenden Sie anschließend den Befehl **Azure: Anmelden** , um sich bei Azure anzumelden:
 
-1. Navigieren Sie zu **Datei** > **Einstellungen** > **Einstellungen** .
-2. Suchen Sie nach folgender Zeichenfolge: **Azure: Cloud** .
+1. Navigieren Sie zu **Datei** > **Einstellungen** > **Einstellungen**.
+2. Suchen Sie nach folgender Zeichenfolge: **Azure: Cloud**.
 3. Wählen Sie in der Liste die nationale Cloud aus:
 
    ![Festlegen der Konfiguration des Standardanmeldeeintrags](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
@@ -93,7 +93,7 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
 
 3. Geben Sie die HDInsight-Cluster-URL ein.
 
-4. Geben Sie Ihren Ambari-Benutzernamen ein. Der Standardname ist **admin** .
+4. Geben Sie Ihren Ambari-Benutzernamen ein. Der Standardname ist **admin**.
 
 5. Geben Sie Ihr Ambari-Kennwort ein.
 
@@ -101,7 +101,7 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
 
 7. Legen Sie den Anzeigenamen des Clusters fest (optional).
 
-8. Überprüfen Sie die **Ausgabe** .
+8. Überprüfen Sie die **Ausgabe**.
 
    > [!NOTE]  
    > Der verknüpfte Benutzername und das verknüpfte Kennwort werden verwendet, wenn der Cluster beim Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.  
@@ -116,11 +116,11 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
 
 4. Wählen Sie als Autorisierungstyp **Standard** oder **Keine** aus.  Wenn Sie **Standard** auswählen:  
    
-   1. Geben Sie Ihren Ambari-Benutzernamen ein. Der Standardname ist **admin** .  
+   1. Geben Sie Ihren Ambari-Benutzernamen ein. Der Standardname ist **admin**.  
 
    2. Geben Sie Ihr Ambari-Kennwort ein.
 
-5. Überprüfen Sie die **Ausgabe** .
+5. Überprüfen Sie die **Ausgabe**.
 
 ## <a name="list-clusters"></a>Auflisten der Cluster
 
@@ -128,7 +128,7 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
 
 2. Wählen Sie das gewünschte Abonnement aus.
 
-3. Überprüfen Sie die Ansicht **Ausgabe** . Diese Ansicht zeigt Ihre verknüpften Cluster und alle Cluster in Ihrem Azure-Abonnement:
+3. Überprüfen Sie die Ansicht **Ausgabe**. Diese Ansicht zeigt Ihre verknüpften Cluster und alle Cluster in Ihrem Azure-Abonnement:
 
    ![Legen Sie eine Standardkonfiguration für die Cluster fest.](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -248,7 +248,7 @@ Das Tool unterstützt auch die **Spark SQL** -Abfrage:
 
    ![#%% hinzugefügt](./media/hdinsight-for-vscode/run-cell.png)
 
-2. Klicken Sie auf **Zelle ausführen** . Nach kurzer Zeit werden die Python Interactive-Ergebnisse auf einer neuen Registerkarte angezeigt. Klicken Sie auf PySpark, um den Kernel auf PySpark/Synapse PySpark umzustellen. Wenn Sie anschließend erneut auf **Zelle ausführen** klicken, ist die Ausführung erfolgreich.
+2. Klicken Sie auf **Zelle ausführen**. Nach kurzer Zeit werden die Python Interactive-Ergebnisse auf einer neuen Registerkarte angezeigt. Klicken Sie auf PySpark, um den Kernel auf PySpark/Synapse PySpark umzustellen. Wenn Sie anschließend erneut auf **Zelle ausführen** klicken, ist die Ausführung erfolgreich.
 
    ![Ergebnisse von „Zelle ausführen“](./media/hdinsight-for-vscode/run-cell-get-results.png)
 
@@ -260,7 +260,7 @@ Das Tool unterstützt auch die **Spark SQL** -Abfrage:
 
    ![Festlegen des Spark-Standardpools und erneutes Laden](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
 
-3. Klicken Sie auf PySpark, um den Kernel auf **PySpark/Synapse PySpark** umzustellen, und klicken Sie dann auf **Zelle ausführen** . Nach einer Weile wird das Ergebnis angezeigt.
+3. Klicken Sie auf PySpark, um den Kernel auf **PySpark/Synapse PySpark** umzustellen, und klicken Sie dann auf **Zelle ausführen**. Nach einer Weile wird das Ergebnis angezeigt.
 
    ![Ausführen von IPYNB-Ergebnissen](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
@@ -299,13 +299,13 @@ Das Tool unterstützt auch die **Spark SQL** -Abfrage:
 
 4. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
 
-5. Klicken Sie mit der rechten Maustaste in den Skript-Editor, und wählen Sie dann **Spark: PySpark Batch** oder **Synapse: PySpark Batch***.
+5. Klicken Sie mit der rechten Maustaste in den Skript-Editor, und wählen Sie dann **Spark: PySpark Batch** oder **Synapse: PySpark Batch** _ aus.
 
 6. Wählen Sie einen Cluster/Spark-Pool aus, an den Ihr PySpark-Auftrag übermittelt werden soll:
 
    ![Ergebnisausgabe für die Übermittlung des Python-Auftrags](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Nachdem Sie einen Python-Auftrag übermittelt haben, werden Übermittlungsprotokolle im **Ausgabefenster** in Visual Studio Code angezeigt. Die URL der Spark-Benutzeroberfläche und die URL der Yarn-Benutzeroberfläche werden ebenfalls angezeigt. Wenn Sie den Batchauftrag an einen Apache Spark-Pool übermitteln, werden die URL der Spark-Verlaufsoberfläche und die URL der Benutzeroberfläche der Spark-Auftragsanwendung ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Status des Auftrags zu verfolgen.
+Nachdem Sie einen Python-Auftrag übermittelt haben, werden Übermittlungsprotokolle in Visual Studio Code im Fenster _ *AUSGABE* * angezeigt. Die URL der Spark-Benutzeroberfläche und die URL der Yarn-Benutzeroberfläche werden ebenfalls angezeigt. Wenn Sie den Batchauftrag an einen Apache Spark-Pool übermitteln, werden die URL der Spark-Verlaufsoberfläche und die URL der Benutzeroberfläche der Spark-Auftragsanwendung ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Status des Auftrags zu verfolgen.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrieren in den HDInsight-Identitätsbroker (HIB)
 
@@ -329,9 +329,9 @@ Die [Apache Livy](https://livy.incubator.apache.org/)-Konfiguration wird unterst
 
 ### <a name="method-1"></a>Methode 1  
 
-1. Navigieren Sie in der Menüleiste zu **Datei** > **Einstellungen** > **Einstellungen** .
+1. Navigieren Sie in der Menüleiste zu **Datei** > **Einstellungen** > **Einstellungen**.
 2. Geben Sie in das Feld **Sucheinstellungen** die Zeichenfolge **HDInsight Job Submission: Livy Conf** (HDInsight-Auftragsübermittlung: Livy-Konfiguration) ein.  
-3. Klicken Sie beim relevanten Suchergebnis auf **In „settings.json“ bearbeiten** .
+3. Klicken Sie beim relevanten Suchergebnis auf **In „settings.json“ bearbeiten**.
 
 ### <a name="method-2"></a>Methode 2
 
@@ -390,11 +390,11 @@ Sie können eine Vorschau der Hive-Tabelle in Ihren Clustern direkt über den **
 
 2. Wählen Sie das **Azure** -Symbol in der äußerst linken Spalte aus.
 
-3. Erweitern Sie im linken Bereich **AZURE: HDINSIGHT** . Die verfügbaren Abonnements und Cluster werden aufgelistet.
+3. Erweitern Sie im linken Bereich **AZURE: HDINSIGHT**. Die verfügbaren Abonnements und Cluster werden aufgelistet.
 
 4. Erweitern Sie den Cluster, um die Hive-Metadatendatenbank und das Hive-Tabellenschema anzuzeigen.
 
-5. Klicken Sie mit der rechten Maustaste auf die Hive-Tabelle. Zum Beispiel: **hivesampletable** . Wählen Sie **Vorschau** aus.
+5. Klicken Sie mit der rechten Maustaste auf die Hive-Tabelle. Zum Beispiel: **hivesampletable**. Wählen Sie **Vorschau** aus.
 
    ![Spark und Hive für Visual Studio Code: Vorschau für Hive-Tabelle](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
 
@@ -433,7 +433,7 @@ Spark und Hive für Visual Studio Code unterstützt auch die folgenden Features:
 
 ## <a name="reader-only-role"></a>Rolle nur mit Leseberechtigung
 
-Benutzer, denen für den Cluster die Rolle „Nur Leser“ (reader-only) zugewiesen ist, können keine Aufträge an den HDInsight-Cluster übermitteln und die Hive-Datenbank nicht anzeigen. Wenden Sie sich an den Clusteradministrator, damit Ihre Rolle im [Azure-Portal](https://portal.azure.com/) auf [**HDInsight-Clusteroperator**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) aktualisiert wird. Wenn Sie gültige Ambari-Anmeldeinformationen haben, können Sie manuell mit dem Cluster verknüpfen, indem Sie die weiter unten aufgeführten Anweisungen ausführen.
+Benutzer, denen für den Cluster die Rolle „Nur Leser“ (reader-only) zugewiesen ist, können keine Aufträge an den HDInsight-Cluster übermitteln und die Hive-Datenbank nicht anzeigen. Wenden Sie sich an den Clusteradministrator, damit Ihre Rolle im [Azure-Portal](https://portal.azure.com/) auf [**HDInsight-Clusteroperator**](./hdinsight-migrate-granular-access-cluster-configurations.md#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) aktualisiert wird. Wenn Sie gültige Ambari-Anmeldeinformationen haben, können Sie manuell mit dem Cluster verknüpfen, indem Sie die weiter unten aufgeführten Anweisungen ausführen.
 
 ### <a name="browse-the-hdinsight-cluster"></a>Durchsuchen des HDInsight-Clusters  
 

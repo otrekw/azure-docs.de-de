@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801799"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424633"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -52,7 +53,7 @@ Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieter
 
 Es ist ein vorkonfigurierter Satz von Attributen und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps verfügbar. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen.
 
-Überprüfen und konfigurieren Sie beim Einrichten der Bereitstellung unbedingt die Attributzuordnungen und Workflows, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) zwischen Azure AD und der Anwendung übertragen werden. Überprüfen und konfigurieren Sie die übereinstimmende Eigenschaft (**Objekte mit diesem Attribut abgleichen**), mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden.
+Überprüfen und konfigurieren Sie beim Einrichten der Bereitstellung unbedingt die Attributzuordnungen und Workflows, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) zwischen Azure AD und der Anwendung übertragen werden. Überprüfen und konfigurieren Sie die übereinstimmende Eigenschaft ( **Objekte mit diesem Attribut abgleichen** ), mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden.
 
 Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können. Ausführliche Informationen hierzu finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](./customize-application-attributes.md).
 
@@ -65,15 +66,15 @@ Bei der Ausgangsbereitstellung von Azure AD für eine SaaS-Anwendung stellt die 
 
 * **Gruppen.** Mit einem Azure AD Premium-Lizenzplan können Sie Gruppen zum Zuweisen des Zugriffs auf eine SaaS-Anwendung verwenden. Wenn der Bereitstellungsbereich auf **Nur zugewiesene Benutzer und Gruppen synchronisieren** festgelegt ist, werden dann Benutzer vom Azure AD-Benutzerbereitstellungsdienst basierend darauf bereitgestellt oder deren Bereitstellungen aufgehoben, ob sie Mitglieder einer der Anwendung zugewiesenen Gruppe sind. Das Gruppenobjekt selbst wird nur bereitgestellt, wenn die Anwendung Gruppenobjekte unterstützt. Stellen Sie sicher, dass die Eigenschaft „SecurityEnabled“ bei Gruppen, die Ihrer Anwendung zugewiesen sind, auf „True“ eingestellt ist.
 
-* **Dynamische Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) lesen und bereitstellen. Berücksichtigen Sie die folgenden Einschränkungen und Empfehlungen:
+* **Dynamische Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in [dynamischen Gruppen](../enterprise-users/groups-create-rule.md) lesen und bereitstellen. Berücksichtigen Sie die folgenden Einschränkungen und Empfehlungen:
 
   * Dynamische Gruppen können die Leistung der End-to-End-Bereitstellung von Azure AD in SaaS-Anwendungen beeinträchtigen.
 
-  * Wie schnell ein Benutzer in einer dynamischen Gruppe bereitgestellt oder die Bereitstellung in einer SaaS-Anwendung aufgehoben wird, hängt davon ab, wie schnell die dynamische Gruppe Änderungen an der Mitgliedschaft auswerten kann. Informationen dazu, wie Sie den Verarbeitungsstatus einer dynamischen Gruppe überprüfen, finden Sie unter [Überprüfen des Verarbeitungsstatus für eine Mitgliedschaftsregel](../users-groups-roles/groups-create-rule.md).
+  * Wie schnell ein Benutzer in einer dynamischen Gruppe bereitgestellt oder die Bereitstellung in einer SaaS-Anwendung aufgehoben wird, hängt davon ab, wie schnell die dynamische Gruppe Änderungen an der Mitgliedschaft auswerten kann. Informationen dazu, wie Sie den Verarbeitungsstatus einer dynamischen Gruppe überprüfen, finden Sie unter [Überprüfen des Verarbeitungsstatus für eine Mitgliedschaftsregel](../enterprise-users/groups-create-rule.md).
 
   * Wenn ein Benutzer die Mitgliedschaft der dynamischen Gruppe verliert, wird dies als Bereitstellungsaufhebungsereignis betrachtet. Berücksichtigen Sie dieses Szenario beim Erstellen von Regeln für dynamische Gruppen.
 
-* **Verschachtelte Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in verschachtelten Gruppen lesen oder bereitstellen. Der Dienst kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder einer explizit zugewiesenen Gruppe sind. Diese Einschränkung von „gruppenbasierten Zuweisungen zu Anwendungen“ wirkt sich auch auf das einmalige Anmelden aus (siehe [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](../users-groups-roles/groups-saasapps.md)). Weisen Sie stattdessen die Gruppen mit den Benutzern, die bereitgestellt werden müssen, direkt zu, oder [definieren Sie den entsprechenden Bereich](define-conditional-rules-for-provisioning-user-accounts.md) auf andere Weise.
+* **Verschachtelte Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in verschachtelten Gruppen lesen oder bereitstellen. Der Dienst kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder einer explizit zugewiesenen Gruppe sind. Diese Einschränkung von „gruppenbasierten Zuweisungen zu Anwendungen“ wirkt sich auch auf das einmalige Anmelden aus (siehe [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](../enterprise-users/groups-saasapps.md)). Weisen Sie stattdessen die Gruppen mit den Benutzern, die bereitgestellt werden müssen, direkt zu, oder [definieren Sie den entsprechenden Bereich](define-conditional-rules-for-provisioning-user-accounts.md) auf andere Weise.
 
 ### <a name="attribute-based-scoping"></a>Attributbasierte Bereichsdefinition 
 
@@ -134,7 +135,7 @@ Nach dem ersten Zyklus führen alle anderen Zyklen folgende Aktionen aus:
 10. Legen Sie am Ende des inkrementellen Zyklus einen neuen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Zyklen dient.
 
 > [!NOTE]
-> Optional können Sie die Vorgänge **Erstellen**, **Aktualisieren** und **Löschen** deaktivieren. Dazu verwenden Sie im Abschnitt **Zuordnungen** die Kontrollkästchen für [Zielobjektaktionen](customize-application-attributes.md). Die Logik zum Deaktivieren eines Benutzers während eines Updates wird ebenfalls per Attributzuordnung über ein Feld wie „accountEnabled“ gesteuert.
+> Optional können Sie die Vorgänge **Erstellen** , **Aktualisieren** und **Löschen** deaktivieren. Dazu verwenden Sie im Abschnitt **Zuordnungen** die Kontrollkästchen für [Zielobjektaktionen](customize-application-attributes.md). Die Logik zum Deaktivieren eines Benutzers während eines Updates wird ebenfalls per Attributzuordnung über ein Feld wie „accountEnabled“ gesteuert.
 
 Der Bereitstellungsdienst führt aufeinander folgende inkrementelle Zyklen in bestimmten (im [jeweiligen Anwendungstutorial](../saas-apps/tutorial-list.md) angegebenen) Intervallen aus. Die inkrementellen Zyklen werden ausgeführt, bis eines der folgenden Ereignisse auftritt:
 
@@ -171,7 +172,7 @@ Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure 
 ## <a name="de-provisioning"></a>Aufheben der Bereitstellung
 Der Azure AD-Bereitstellungsdienst sorgt für die Synchronisierung von Quell- und Zielsystem, indem die Bereitstellung von Konten aufgehoben wird, wenn Benutzerzugriff entfernt wurde.
 
-Der Bereitstellungsdienst unterstützt sowohl das Löschen als auch das Deaktivieren (manchmal auch als vorläufiges Löschen bezeichnet) von Benutzern. Die genaue Definition von „Deaktivieren“ und „Löschen“ variiert je nach Implementierung der Ziel-App, aber normalerweise ist durch ein „Deaktivieren“ gekennzeichnet, dass sich der Benutzer nicht anmelden kann. Ein „Löschen“ kennzeichnet, dass der Benutzer vollständig aus der Anwendung entfernt wurde. Bei einer SCIM-Anwendungen ist ein Deaktivieren eine Anforderung, die *active*-Eigenschaft für einen Benutzer auf „false“ festzulegen. 
+Der Bereitstellungsdienst unterstützt sowohl das Löschen als auch das Deaktivieren (manchmal auch als vorläufiges Löschen bezeichnet) von Benutzern. Die genaue Definition von „Deaktivieren“ und „Löschen“ variiert je nach Implementierung der Ziel-App, aber normalerweise ist durch ein „Deaktivieren“ gekennzeichnet, dass sich der Benutzer nicht anmelden kann. Ein „Löschen“ kennzeichnet, dass der Benutzer vollständig aus der Anwendung entfernt wurde. Bei einer SCIM-Anwendungen ist ein Deaktivieren eine Anforderung, die *active* -Eigenschaft für einen Benutzer auf „false“ festzulegen. 
 
 **Konfigurieren Ihrer Anwendung, um einen Benutzer zu deaktivieren**
 
@@ -179,17 +180,21 @@ Vergewissern Sie sich, dass das Kontrollkästchen für Updates aktiviert ist.
 
 Stellen Sie sicher, dass Sie die Zuordnung für *active* für Ihre Anwendung haben. Wenn Sie eine Anwendung aus dem App-Katalog verwenden, kann die Zuordnung etwas unterschiedlich sein. Stellen Sie sicher, dass Sie die standardmäßige/vorgesehene Zuordnung für Kataloganwendungen verwenden.
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Deaktivieren eines Benutzers" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **Konfigurieren Ihrer Anwendung, um einen Benutzer zu löschen**
 
 In den folgenden Szenarien wird ein Deaktivieren oder Löschen ausgelöst: 
 * Ein Benutzer wird in Azure AD vorläufig gelöscht (wird in den Papierkorb gesendet, und die AccountEnabled-Eigenschaft wird auf „false“ festgelegt).
-    30 Tage nach dem Löschen eines Benutzers in Azure AD wird der Benutzer dauerhaft aus dem Mandanten gelöscht. Dann sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der Anwendung zu löschen. Während des Zeitfensters von 30 Tagen können Sie jederzeit  [einen Benutzer manuell dauerhaft löschen](../fundamentals/active-directory-users-restore.md), wodurch eine Löschanforderung an die Anwendung gesendet wird.
+    30 Tage nach dem Löschen eines Benutzers in Azure AD wird der Benutzer dauerhaft aus dem Mandanten gelöscht. Dann sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der Anwendung zu löschen. Während des Zeitfensters von 30 Tagen können Sie jederzeit [einen Benutzer manuell dauerhaft löschen](../fundamentals/active-directory-users-restore.md), wodurch eine Löschanforderung an die Anwendung gesendet wird.
 * Ein Benutzer wird dauerhaft aus dem Papierkorb in Azure AD gelöscht/entfernt.
 * Die Zuweisung eines Benutzers zu einer App wird aufgehoben.
 * Ein Benutzer wechselt von „im Gültigkeitsbereich“ zu „außerhalb des Gültigkeitsbereichs“ (er durchläuft keinen Bereichsfilter mehr).
-    
-Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsdienst vorläufig gelöscht oder deaktiviert. Wenn Sie dieses Standardverhalten außer Kraft setzen möchten, können Sie das Flag „SkipOutOfScopeDeletions“ so festlegen, dass  [Löschvorgänge von Benutzerkonten außerhalb des gültigen Bereichs übersprungen werden](skip-out-of-scope-deletions.md).
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Löschen eines Benutzers" lightbox="./media/how-provisioning-works/delete-user.png":::
+
+Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsdienst vorläufig gelöscht oder deaktiviert. Wenn Sie dieses Standardverhalten außer Kraft setzen möchten, können Sie ein Flag zum [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md) festlegen.
 
 Wenn eines der obigen vier Ereignisse auftritt und die Zielanwendung vorläufiges Löschen nicht unterstützt, sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der App zu löschen.
 

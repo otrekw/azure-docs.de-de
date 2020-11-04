@@ -380,7 +380,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ams
     - name: SDKs
       items:
@@ -417,7 +417,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
@@ -437,5 +437,7 @@
       href: limits-quotas-constraints.md
     - name: Azure-Clouds und -Regionen
       href: azure-clouds-regions.md
+    - name: Regionale Codenamen und Endpunkte
+      href: azure-regions-code-names.md
     - name: Dokumentationsupdates
       href: docs-release-notes.md

@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362515"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428433"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 
@@ -62,7 +62,7 @@ Diese Ereignisse werden über Azure Event Grid veröffentlicht. Über das Azure-
 
 Beim Einrichten von Ereignissen können Sie Filter anwenden, damit nur bei bestimmten Ereignisdaten eine Auslösung erfolgt. Im nachstehenden Beispiel können Sie Ereignisse bei geändertem Ausführungsstatus nach Ausführungstypen filtern. Das Ereignis wird nur ausgelöst, wenn die Kriterien erfüllt sind. Weitere Informationen zu Ereignisdaten, nach denen Sie filtern können, finden Sie im [Event Grid-Schema für Azure Machine Learning](/azure/event-grid/event-schema-machine-learning). 
 
-Abonnements für Azure Machine Learning-Ereignisse werden durch rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) geschützt. Nur ein [Mitwirkender oder Besitzer](how-to-assign-roles.md#default-roles) eines Arbeitsbereichs kann Ereignisabonnements erstellen, aktualisieren und löschen.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) des Ereignisabonnements oder zu einem späteren Zeitpunkt Filter angewendet werden. 
+Abonnements für Azure Machine Learning-Ereignisse werden durch rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) geschützt. Nur ein [Mitwirkender oder Besitzer](how-to-assign-roles.md#default-roles) eines Arbeitsbereichs kann Ereignisabonnements erstellen, aktualisieren und löschen.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) des Ereignisabonnements oder zu einem späteren Zeitpunkt Filter angewendet werden. 
 
 
 1. Wechseln Sie zum Azure-Portal, und wählen Sie ein neues oder ein vorhandenes Abonnement aus. 
@@ -72,9 +72,9 @@ Abonnements für Azure Machine Learning-Ereignisse werden durch rollenbasierte Z
     :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Filtern von Ereignissen":::
 
 
-+ **Filtern nach Ereignistyp**: In einem Ereignisabonnement können ein oder mehrere Azure Machine Learning-Ereignistypen angegeben sein.
++ **Filtern nach Ereignistyp** : In einem Ereignisabonnement können ein oder mehrere Azure Machine Learning-Ereignistypen angegeben sein.
 
-+ **Filtern nach Ereignisgegenstand**: Azure Event Grid unterstützt Gegenstandsfilter auf Grundlage von __beginnt mit__- und __endet mit__-Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Gegenstand an den Abonnenten übermittelt werden. Unterschiedliche Machine Learning-Ereignisse haben unterschiedliche Gegenstandsformate.
++ **Filtern nach Ereignisgegenstand** : Azure Event Grid unterstützt Gegenstandsfilter auf Grundlage von __beginnt mit__ - und __endet mit__ -Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Gegenstand an den Abonnenten übermittelt werden. Unterschiedliche Machine Learning-Ereignisse haben unterschiedliche Gegenstandsformate.
 
   | Ereignistyp | Gegenstandsformat | Beispielgegenstand |
   | ---------- | ----------- | ----------- |
@@ -84,7 +84,7 @@ Abonnements für Azure Machine Learning-Ereignisse werden durch rollenbasierte Z
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **Erweiterte Filterung**: Azure Event Grid unterstützt auch erweitertes Filtern anhand eines veröffentlichten Ereignisschemas. Ausführliche Informationen zum Azure Machine Learning-Ereignisschema finden Sie unter [Azure Event Grid-Ereignisschema für Azure Machine Learning](../event-grid/event-schema-machine-learning.md).  Einige Beispiele für erweitertes Filtern, das Sie ausführen können, sind:
++ **Erweiterte Filterung** : Azure Event Grid unterstützt auch erweitertes Filtern anhand eines veröffentlichten Ereignisschemas. Ausführliche Informationen zum Azure Machine Learning-Ereignisschema finden Sie unter [Azure Event Grid-Ereignisschema für Azure Machine Learning](../event-grid/event-schema-machine-learning.md).  Einige Beispiele für erweitertes Filtern, das Sie ausführen können, sind:
 
   Für das `Microsoft.MachineLearningServices.ModelRegistered`-Ereignis Filtern des Tagwerts eines Modells:
 
@@ -120,7 +120,7 @@ Mit Azure Event Grid können Kunden entkoppelte Meldungshandler erstellen, die d
 
     ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
-1. Wählen Sie den Typ des zu nutzenden Ereignisses aus. Im folgenden Screenshot sind beispielsweise __Modell registriert__, __Model bereitgestellt__, __Ausführung abgeschlossen__ und __Datasetdrift erkannt__ aktiviert:
+1. Wählen Sie den Typ des zu nutzenden Ereignisses aus. Im folgenden Screenshot sind beispielsweise __Modell registriert__ , __Model bereitgestellt__ , __Ausführung abgeschlossen__ und __Datasetdrift erkannt__ aktiviert:
 
     ![add-event-type](./media/how-to-use-event-grid/add-event-type-updated.png)
 
@@ -230,7 +230,7 @@ In diesem Beispiel wird eine einfache Data Factory-Pipeline verwendet, um Dateie
 
     ![Screenshot: Bereich „Create a pipeline run“ (Pipelineausführung erstellen) mit verschiedenen Werten](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
-1. Speichern und erstellen Sie die Logik-App über die **Speichern**-Schaltfläche oben links auf der Seite. Um Ihre App anzuzeigen, wechseln Sie in Ihrem Arbeitsbereich in das [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Ereignisse**.
+1. Speichern und erstellen Sie die Logik-App über die **Speichern** -Schaltfläche oben links auf der Seite. Um Ihre App anzuzeigen, wechseln Sie in Ihrem Arbeitsbereich in das [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Ereignisse**.
 
     ![Screenshot: Ereignisse mit hervorgehobener Logik-App](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
@@ -242,7 +242,7 @@ Ab jetzt wird die Data Factory-Pipeline ausgelöst, wenn eine Datendrift auftrit
 
 Ein Azure Machine Learning-Modellobjekt enthält Parameter, über die Sie Bereitstellungen abwickeln können, so z. B. Modellname, Version, Tag und Eigenschaft. Das Modellregistrierungsereignis kann einen Endpunkt auslösen, und Sie können eine Azure-Funktion verwenden, um ein Modell entsprechend den Werten dieser Parameter bereitzustellen.
 
-Ein Beispiel finden Sie im Repository unter [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid). Führen Sie die Schritte aus, die in der **README**-Datei angegeben sind.
+Ein Beispiel finden Sie im Repository unter [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid). Führen Sie die Schritte aus, die in der **README** -Datei angegeben sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

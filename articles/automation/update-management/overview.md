@@ -3,35 +3,25 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92d8c52ee9da1df67be27ea0867e788e2aaed37b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d26354d8c247f0839bb96564c4e004158743bd88
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221613"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742203"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
 Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupdates für Ihre Windows- und Linux-Computer in Azure, in lokalen Umgebungen und in anderen Cloudumgebungen verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
-Die Updateverwaltung für virtuelle Computer können Sie auf die folgenden Arten aktivieren:
-
-* Aus Ihrem [Azure Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer.
-* Manuell für Nicht-Azure-Computer, einschließlich Computer oder Server, die mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) registriert sind (Vorschau).
-* Für einen einzelnen virtuellen Azure-Computer auf der Seite für virtuelle Computer im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) oder [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) zur Verfügung.
-* Für [mehrere Azure-VMs](enable-from-portal.md), indem Sie diese auf der Seite für virtuelle Computer im Azure-Portal auswählen.
-
-> [!NOTE]
-> Die Updateverwaltung erfordert, dass ein Log Analytics Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](../how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
-
-Eine [Azure Resource Manager-Vorlage](enable-from-template.md) ist verfügbar, die Ihnen bei der Bereitstellung der Updateverwaltung in einem neuen oder vorhandenen Automation-Konto und Log Analytics-Arbeitsbereich in Ihrem Abonnement helfen soll.
-
 > [!NOTE]
 > Auf einem Computer, der mit der Updateverwaltung konfiguriert ist, können Sie keine benutzerdefinierten Skripts aus Azure Automation ausführen. Auf diesem Computer kann nur das von Microsoft signierte Updateskript ausgeführt werden.
 
 Informationen zum automatischen Herunterladen und Installieren verfügbarer Patches vom Typ *Kritisch* und *Sicherheit* auf Ihren virtuellen Azure-Computer finden Sie unter [Automatische VM-Gastpatches](../../virtual-machines/windows/automatic-vm-guest-patching.md) für Windows-VMs.
+
+Machen Sie sich mit den Informationen in den folgenden Abschnitten vertraut, bevor Sie die Updateverwaltung bereitstellen und die Verwaltung auf Ihren Computern ermöglichen.  
 
 ## <a name="about-update-management"></a>Informationen zur Updateverwaltung
 
@@ -41,6 +31,7 @@ Computer, die mit der Updateverwaltung verwaltet werden, verwenden folgende Konf
 * PowerShell Desired State Configuration (DSC) für Linux
 * Automation Hybrid Runbook Worker
 * Microsoft Update oder Windows Server Update Services (WSUS) für Windows-Computer
+* Privates oder öffentliches Updaterepository für Linux-Computer
 
 Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen Windows Server- und Linux-Server eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet:
 
@@ -76,7 +67,7 @@ Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Ana
 Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen und -patching. Patchen erfordert einen Hybrid Runbook Worker. Informationen zu den Anforderungen für Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) und [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
 
 > [!NOTE]
-> Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt, die in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich aufgeführt sind. 
+> Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt, die in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich aufgeführt sind.
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
@@ -106,7 +97,7 @@ Der folgende Abschnitt enthält Informationen zu betriebssystemspezifischen Clie
 
 #### <a name="windows"></a>Windows
 
-Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert sein oder erfordern Zugriff auf Microsoft Update. Informationen zur Installation des Log Analytics-Agents für Windows finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../../azure-monitor/platform/agent-windows.md).
+Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert sein oder erfordern Zugriff auf Microsoft Update. Informationen zum Log Analytics-Agent finden Sie unter [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie „[Log Analytics-Agent für Windows-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring)“ zuzuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen zu Integrationsszenarien finden Sie unter [Integrieren der Updateverwaltung in Windows Endpoint Configuration Manager](mecmintegration.md). Der [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) ist für Windows-Server erforderlich, die von Sites in Ihrer Configuration Manager-Umgebung verwaltet werden. 
 
@@ -122,7 +113,7 @@ Für Linux erfordert der Computer Zugriff auf ein Updaterepository, entweder pri
 > [!NOTE]
 > Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt. Informationen finden Sie in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich.
 
-Weitere Informationen zum Installieren des Log Analytics-Agents für Linux und zum Herunterladen der aktuellen Version finden Sie unter [Log Analytics Agent for Linux (Log Analytics-Agent für Linux)](../../azure-monitor/platform/agent-linux.md).
+Informationen zum Log Analytics-Agent finden Sie unter [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Linux zu installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie „[Log Analytics-Agent für Linux-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 Virtuelle Computer, die auf der Grundlage der über Azure Marketplace erhältlichen On-Demand-RHEL-Images (Red Hat Enterprise Linux) erstellt werden, werden für den Zugriff auf die in Azure bereitgestellte [Red Hat-Updateinfrastruktur (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md) registriert. Alle anderen Linux-Distributionen müssen über das jeweilige Onlinedateirepository der Distributionen mithilfe der von der jeweiligen Distribution unterstützten Methoden aktualisiert werden.
 
@@ -203,7 +194,7 @@ Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetv
 
 ## <a name="update-classifications"></a>Updateklassifizierungen
 
-In der folgenden Tabelle sind die Klassifizierungen definiert, die von der Updateverwaltung für Windows-Updates unterstützt werden. 
+In der folgenden Tabelle sind die Klassifizierungen definiert, die von der Updateverwaltung für Windows-Updates unterstützt werden.
 
 |Klassifizierung  |BESCHREIBUNG  |
 |---------|---------|
@@ -250,14 +241,18 @@ In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet,
 
 ## <a name="enable-update-management"></a>Aktivieren der Updateverwaltung
 
-Eine [Azure Resource Manager-Vorlage](enable-from-template.md) ist verfügbar, die Ihnen bei der Bereitstellung der Updateverwaltung in einem neuen oder vorhandenen Automation-Konto und Azure Monitor Log Analytics-Arbeitsbereich in Ihrem Abonnement helfen soll. Sie konfiguriert nicht den Bereich der Computer, die verwaltet werden sollen. Dies erfolgt als gesonderter Schritt nach der Verwendung der Vorlage.
-
 Hier finden Sie die Möglichkeiten, wie Sie die Updateverwaltung aktivieren und zu verwaltende Computer auswählen können:
 
-* [Von einem virtuellen Azure-Computer](enable-from-vm.md)
-* [Durch Durchsuchen mehrerer virtueller Azure-Computer](enable-from-portal.md)
-* [Aus einem Azure Automation-Konto](enable-from-automation-account.md)
-* Installieren Sie für Arc-fähige Server (Vorschau) oder Nicht-Azure-Computer den [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md), und [aktivieren Sie dann Computer im Arbeitsbereich](enable-from-automation-account.md#enable-machines-in-the-workspace) zur Updateverwaltung.
+- Verwendung einer [Azure Resource Manager-Vorlage](enable-from-template.md) für die Bereitstellung der Updateverwaltung in einem neuen oder vorhandenen Automation-Konto und Azure Monitor Log Analytics-Arbeitsbereich in Ihrem Abonnement. Sie konfiguriert nicht den Bereich der Computer, die verwaltet werden sollen. Dies erfolgt als gesonderter Schritt nach der Verwendung der Vorlage.
+
+- Über Ihr [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Server mit Arc-Unterstützung
+
+- Für einen [ausgewählten virtuellen Azure-Computer](enable-from-vm.md) über die Seite für virtuelle Computer im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter Linux oder Windows zur Verfügung.
+
+- Für [mehrere Azure-VMs](enable-from-portal.md), indem Sie diese auf der Seite für virtuelle Computer im Azure-Portal auswählen.
+
+> [!NOTE]
+> Die Updateverwaltung erfordert, dass ein Log Analytics Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](../how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

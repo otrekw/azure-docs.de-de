@@ -2,17 +2,17 @@
 title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385754"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371442"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
-In einem Azure Batch-Workflow ist ein *Computeknoten* (bzw. *Knoten*) ein virtueller Computer, der einen Teil der Workload Ihrer Anwendung verarbeitet. Ein *Pool* ist eine Sammlung von Knoten, auf denen Ihre Anwendung ausgeführt wird. In diesem Artikel erfahren Sie mehr über Knoten und Pools sowie Aspekte bei deren Erstellung und Nutzung in einem Azure Batch-Workflow.
+In einem Azure Batch-Workflow ist ein *Computeknoten* (bzw. *Knoten* ) ein virtueller Computer, der einen Teil der Workload Ihrer Anwendung verarbeitet. Ein *Pool* ist eine Sammlung von Knoten, auf denen Ihre Anwendung ausgeführt wird. In diesem Artikel erfahren Sie mehr über Knoten und Pools sowie Aspekte bei deren Erstellung und Nutzung in einem Azure Batch-Workflow.
 
 ## <a name="nodes"></a>Nodes
 
@@ -26,7 +26,7 @@ Alle Computeknoten in Batch enthalten außerdem Folgendes:
 
 - Eine standardmäßige [Ordnerstruktur](files-and-directories.md) und die dazugehörigen [Umgebungsvariablen](jobs-and-tasks.md), die zur Referenzierung durch Tasks verfügbar sind.
 - **Firewalleinstellungeneinstellungen** .
-- [Remotezugriff](error-handling.md#connect-to-compute-nodes) auf Windows-Knoten (Remotedesktopprotokoll, RDP) und Linux-Knoten (Secure Shell, SSH).
+- [Remotezugriff](error-handling.md#connect-to-compute-nodes) auf Windows-Knoten (Remotedesktopprotokoll, RDP) und Linux-Knoten (Secure Shell, SSH), es sei denn, Sie [erstellen einen Pool mit deaktiviertem Remotezugriff](pool-endpoint-configuration.md)
 
 Standardmäßig können Knoten miteinander kommunizieren, sie können jedoch nicht mit virtuellen Computern kommunizieren, die nicht Teil desselben Pools sind. Um die sichere Kommunikation zwischen Knoten und anderen VMs oder einem lokalen Netzwerk zu ermöglichen, können Sie den Pool in einem [Subnetz eines virtuellen Azure-Netzwerks (VNet)](batch-virtual-network.md) bereitstellen. Sie können dann über öffentliche IP-Adressen auf Ihre Knoten zugreifen. Diese öffentlichen IP-Adressen werden von Batch erstellt und können sich im Laufe der Lebensdauer des Pools ändern. Sie können auch einen [Pool mit statischen öffentlichen IP-Adressen erstellen](create-pool-public-ip.md), die von Ihnen gesteuert werden, sodass sichergestellt ist, dass sie sich nicht unerwartet ändern.
 
@@ -127,7 +127,7 @@ Eine Skalierungsformel kann auf den folgenden Metriken basieren:
 
 - **Zeitmetriken** : Basieren auf Statistiken, die alle fünf Minuten für die angegebene Anzahl von Stunden erfasst werden.
 - **Ressourcenmetriken** : Basieren auf CPU-Auslastung, Bandbreitenauslastung, Speicherauslastung und Knotenanzahl.
-- **Taskmetriken**: Basieren auf dem Taskstatus – beispielsweise *Aktiv* (in der Warteschlange), *Wird ausgeführt* oder *Abgeschlossen*.
+- **Taskmetriken** : Basieren auf dem Taskstatus – beispielsweise *Aktiv* (in der Warteschlange), *Wird ausgeführt* oder *Abgeschlossen*.
 
 Wenn die Anzahl von Computeknoten in einem Pool durch die automatische Skalierung verringert wird, müssen Sie sich überlegen, wie Sie Tasks behandeln, die zum Zeitpunkt des Verringerungsvorgangs ausgeführt werden. Hierfür verfügt Batch über eine [*Option zum Aufheben der Knotenzuordnung*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption), die Sie in Ihre Formeln einfügen können. Sie können beispielsweise angeben, dass ausgeführte Tasks sofort beendet und dann für die Ausführung auf einem anderen Knoten erneut in die Warteschlange eingereiht werden oder dass die Fertigstellung abgewartet werden soll, bevor der Knoten aus dem Pool entfernt wird. Beachten Sie, dass das Festlegen der Optionen zum Aufheben der Knotenzuordnung auf `taskcompletion` oder `retaineddata` Vorgänge zum Ändern der Poolgröße verhindert, bis alle Aufgaben abgeschlossen sind bzw. alle Aufbewahrungszeiträume von Tasks abgelaufen sind.
 
@@ -179,7 +179,7 @@ Weitere Informationen zum Einrichten eines Batch-Pools in einem VNet finden Sie 
 
 Beim Entwerfen Ihrer Azure Batch-Lösung müssen Sie angeben, wie und wann Pools erstellt werden und wie lange Computeknoten innerhalb dieser Pools verfügbar bleiben sollen.
 
-An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen, den Sie senden, und den Pool dann löschen, sobald die Ausführung seiner Tasks abgeschlossen ist. Auf diese Weise wird die Effektivität der Nutzung erhöht, da die Knoten nur bei Bedarf zugeordnet und heruntergefahren werden, wenn sie sich im Leerlauf befinden. Dies bedeutet, dass der Auftrag bis zur Zuteilung der Knoten warten muss. Dabei ist aber wichtig zu erwähnen, dass für die Tasks die Ausführung geplant wird, sobald die Knoten einzeln zugeteilt wurden und der Starttask abgeschlossen ist. Batch wartet mit dem Zuweisen von Tasks zu den Knoten *nicht*, bis alle Knoten in einem Pool verfügbar sind. Dadurch ist eine maximale Auslastung aller verfügbaren Knoten gewährleistet.
+An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen, den Sie senden, und den Pool dann löschen, sobald die Ausführung seiner Tasks abgeschlossen ist. Auf diese Weise wird die Effektivität der Nutzung erhöht, da die Knoten nur bei Bedarf zugeordnet und heruntergefahren werden, wenn sie sich im Leerlauf befinden. Dies bedeutet, dass der Auftrag bis zur Zuteilung der Knoten warten muss. Dabei ist aber wichtig zu erwähnen, dass für die Tasks die Ausführung geplant wird, sobald die Knoten einzeln zugeteilt wurden und der Starttask abgeschlossen ist. Batch wartet mit dem Zuweisen von Tasks zu den Knoten *nicht* , bis alle Knoten in einem Pool verfügbar sind. Dadurch ist eine maximale Auslastung aller verfügbaren Knoten gewährleistet.
 
 Falls dagegen der sofortige Start von Aufträgen höchste Priorität hat, können Sie bereits vorab einen Pool erstellen und die zugehörigen Knoten vor der Auftragsübermittlung verfügbar machen. Dieses Szenario ermöglicht zwar den sofortigen Start von Tasks, führt aber unter Umständen auch dazu, dass sich Knoten im Leerlauf befinden, während sie auf die Zuteilung warten.
 

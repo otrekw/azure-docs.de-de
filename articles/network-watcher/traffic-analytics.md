@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951569"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424258"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -46,8 +46,8 @@ Virtuelle Azure-Netzwerke bieten NSG-Datenflussprotokolle mit Informationen zum 
 
 - **Netzwerksicherheitsgruppe (NSG)** : Enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken verbunden sind, zugelassen oder abgelehnt wird. NSGs können Subnetzen, einzelnen VMs (klassisch) oder einzelnen Netzwerkschnittstellen (NICs), die mit VMs (Resource Manager) verbunden sind, zugeordnet werden. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **NSG-Flussprotokolle (Netzwerksicherheitsgruppe)** : Ermöglichen das Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe. Die NSG-Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, Fünf-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr. Weitere Informationen zu NSG-Flussprotokollen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen wie z.B. Netzwerkleistungsmonitor und Datenverkehrsanalyse werden auf der Grundlage von Azure Monitor-Protokollen erstellt. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics-Arbeitsbereich**: Eine Instanz von Azure Monitor-Protokollen, in die der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics** : Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen wie z.B. Netzwerkleistungsmonitor und Datenverkehrsanalyse werden auf der Grundlage von Azure Monitor-Protokollen erstellt. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics-Arbeitsbereich** : Eine Instanz von Azure Monitor-Protokollen, in die der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher:** Ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Funktionsweise der Datenverkehrsanalyse
@@ -197,7 +197,7 @@ Um Datenverkehr analysieren zu können, benötigen Sie eine Instanz von Network 
 
 Vor der Aktivierung der NSG-Flussprotokollierung benötigen Sie eine Netzwerksicherheitsgruppe, deren Datenflüsse Sie protokollieren möchten. Falls Sie noch nicht über eine Netzwerksicherheitsgruppe verfügen, erstellen Sie eine anhand der Informationen in [Erstellen von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md#create-a-network-security-group).
 
-Wechseln Sie im Azure-Portal zu **Network Watcher**, und wählen Sie **NSG-Flussprotokolle** aus. Wählen Sie die Netzwerksicherheitsgruppe aus, für die Sie ein NSG-Flussprotokoll aktivieren möchten, wie in der folgenden Abbildung gezeigt:
+Wechseln Sie im Azure-Portal zu **Network Watcher** , und wählen Sie **NSG-Flussprotokolle** aus. Wählen Sie die Netzwerksicherheitsgruppe aus, für die Sie ein NSG-Flussprotokoll aktivieren möchten, wie in der folgenden Abbildung gezeigt:
 
 ![Auswählen von Netzwerksicherheitsgruppen für die Aktivierung der NSG-Flussprotokolle](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -271,7 +271,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 - Statistik des bösartigen zugelassenen/blockierten Datenverkehrs
   - Warum empfängt ein Host bösartigen Datenverkehr, und warum ist der Datenfluss aus bösartigen Quellen zugelassen? Dieses Verhalten erfordert weitere Untersuchungen und wahrscheinlich eine Optimierung der Konfiguration.
 
-    Wählen Sie unter **Host** die Option **Alle anzeigen**, wie in der folgenden Abbildung gezeigt:
+    Wählen Sie unter **Host** die Option **Alle anzeigen** , wie in der folgenden Abbildung gezeigt:
 
     ![Dashboard mit Details zum Host mit dem meisten Datenverkehr](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
@@ -299,7 +299,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 
 - Welches Anwendungsprotokoll wird in Ihrer Umgebung am häufigsten verwendet, und welche Hosts verwenden das Anwendungsprotokoll als Kommunikationspartner am meisten?
     - Sind diese Anwendungen im Netzwerk zugelassen?
-    - Sind die Anwendungen ordnungsgemäß konfiguriert? Verwenden sie das richtige Protokoll für die Kommunikation? Als erwartetes Verhalten können allgemeine Ports wie z.B. 80 oder 443 angenommen werden. Für die Standardkommunikation ist – sofern ungewöhnliche Ports angezeigt werden – eventuell eine Konfigurationsänderung erforderlich. Wählen Sie unter **Anwendungsport** die Option **Alle anzeigen**, wie in der folgenden Abbildung gezeigt:
+    - Sind die Anwendungen ordnungsgemäß konfiguriert? Verwenden sie das richtige Protokoll für die Kommunikation? Als erwartetes Verhalten können allgemeine Ports wie z.B. 80 oder 443 angenommen werden. Für die Standardkommunikation ist – sofern ungewöhnliche Ports angezeigt werden – eventuell eine Konfigurationsänderung erforderlich. Wählen Sie unter **Anwendungsport** die Option **Alle anzeigen** , wie in der folgenden Abbildung gezeigt:
 
         ![Dashboard mit den häufigsten Anwendungsprotokollen](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
 
@@ -315,7 +315,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
     - Jede VPN-SKU erlaubt eine gewisse Bandbreite. Werden die VPN-Gateways zu wenig ausgelastet?
     - Erreichen Ihre Gateways ihre Kapazität? Sollten Sie ein Upgrade auf die nächsthöhere SKU ausführen?
 - Welche Hosts kommunizieren am häufigsten über welches VPN-Gateway und welchen Port?
-    - Ist dieses Muster normal? Wählen Sie unter **VPN-Gateway** die Option **Alle anzeigen**, wie in der folgenden Abbildung gezeigt:
+    - Ist dieses Muster normal? Wählen Sie unter **VPN-Gateway** die Option **Alle anzeigen** , wie in der folgenden Abbildung gezeigt:
 
         ![Dashboard mit den aktivsten VPN-Verbindungen](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
 
@@ -331,7 +331,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
   - Wenn Sie in einem Rechenzentrum mehr Last beobachten, können Sie eine effizientere Verteilung des Datenverkehrs planen.
   - Wenn betrügerische Netzwerke im Rechenzentrum kommunizieren, korrigieren Sie die NSG-Regeln, um diese Netzwerke zu blockieren.
 
-    Wählen Sie unter **Ihre Umgebung** die Option **Karte anzeigen**, wie in der folgenden Abbildung gezeigt:
+    Wählen Sie unter **Ihre Umgebung** die Option **Karte anzeigen** , wie in der folgenden Abbildung gezeigt:
 
     ![Dashboard mit Verteilung des Datenverkehrs](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
@@ -353,7 +353,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
   - Verstehen, welches virtuelle Netzwerk mit welchem virtuellen Netzwerk kommuniziert. Wenn die Kommunikation nicht der Erwartung entspricht, kann sie korrigiert werden.
   - Wenn bösartige Netzwerke mit einem virtuellen Netzwerk kommunizieren, können Sie die NSG-Regeln anpassen, um diese Netzwerke zu blockieren.
  
-    Wählen Sie unter **Ihre Umgebung** die Option **VNETs anzeigen**, wie in der folgenden Abbildung gezeigt:
+    Wählen Sie unter **Ihre Umgebung** die Option **VNETs anzeigen** , wie in der folgenden Abbildung gezeigt:
 
     ![Dashboard mit VNET-Verteilung](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 

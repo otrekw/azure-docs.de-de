@@ -39,6 +39,8 @@
           href: tutorial-private-endpoint-sql-portal.md
         - name: 'Herstellen einer Verbindung mit SQL Server: PowerShell'
           href: tutorial-private-endpoint-sql-powershell.md
+        - name: 'Herstellen einer Verbindung mit SQL Server: Azure CLI'
+          href: tutorial-private-endpoint-sql-cli.md
 - name: Konzepte
   items:
     - name: Privater Endpunkt

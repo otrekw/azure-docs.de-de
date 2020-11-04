@@ -2,13 +2,13 @@
 title: Löschung des vollständigen Modus
 description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 ms.topic: conceptual
-ms.date: 10/06/2020
-ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766720"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370123"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -24,7 +24,6 @@ Die Ressourcen werden nach dem Ressourcenanbieter-Namespace aufgelistet. Informa
 
 > [!NOTE]
 > Verwenden Sie immer den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md), bevor Sie eine Vorlage im vollständigen Modus bereitstellen. Anhand von Was-wäre-wenn-Vorgänge können Sie sehen, welche Ressourcen erstellt, gelöscht oder geändert werden. Verwenden Sie Was-wäre-wenn-Vorgänge, um ein unbeabsichtigtes Löschen von Ressourcen zu vermeiden.
-
 Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
@@ -47,6 +46,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.AzureStackHCI](#microsoftazurestackhci)
+> - [Microsoft.BareMetalInfrastructure](#microsoftbaremetalinfrastructure)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -176,6 +176,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.Services](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft.Singularity](#microsoftsingularity)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.SQL](#microsoftsql)
@@ -364,6 +365,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | privateClouds | Ja |
+> | privateClouds/addons | Nein |
 > | privateClouds/authorizations | Nein |
 > | privateClouds/clusters | Nein |
 > | privateClouds/globalReachConnections | Nein |
@@ -426,12 +428,21 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | clusters | Ja |
 
+## <a name="microsoftbaremetalinfrastructure"></a>Microsoft.BareMetalInfrastructure
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | bareMetalInstances | Ja |
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | batchAccounts | Ja |
+> | batchAccounts/certificates | Nein |
+> | batchAccounts/pools | Nein |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -833,7 +844,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ReservationRecommendations | Nein |
 > | ReservationSummaries | Nein |
 > | ReservationTransactions | Nein |
-> | `Tags` | Nein |
+> | Tags | Nein |
 > | tenants | Nein |
 > | Begriffe | Nein |
 > | UsageDetails | Nein |
@@ -973,7 +984,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | workspaces | Ja |
 > | workspaces/dbWorkspaces | Nein |
-> | workspaces/storageEncryption | Nein |
 > | workspaces/virtualNetworkPeerings | Nein |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -1129,6 +1139,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | applicationgroups/desktops | Nein |
 > | applicationgroups/startmenuitems | Nein |
 > | hostpools | Ja |
+> | hostpools/msixpackages | Nein |
 > | hostpools/sessionhosts | Nein |
 > | hostpools/sessionhosts/usersessions | Nein |
 > | hostpools/usersessions | Nein |
@@ -1381,12 +1392,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | devices | Ja |
+> | networkFunctions | Ja |
+> | networkFunctionVendors | Nein |
 > | registeredSubscriptions | Nein |
 > | vendors | Nein |
-> | vendors/vendorskus | Nein |
-> | vendors/vendorskus/previewSubscriptions | Nein |
-> | virtualnetworkfunctions | Ja |
-> | virtualnetworkfunctionvendors | Nein |
+> | vendors/vendorSkus | Nein |
+> | vendors/vendorSkus/previewSubscriptions | Nein |
+> | virtualNetworkFunctions | Ja |
+> | virtualNetworkFunctionVendors | Nein |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1507,9 +1520,20 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | workspaces | Ja |
+> | workspaces/batchEndpoints | Ja |
+> | workspaces/batchEndpoints/deployments | Ja |
+> | workspaces/codes | Nein |
+> | workspaces/codes/versions | Nein |
 > | workspaces/computes | Nein |
+> | workspaces/datastores | Nein |
 > | workspaces/eventGridFilters | Nein |
+> | workspaces/jobs | Nein |
+> | workspaces/labelingJobs | Nein |
 > | workspaces/linkedServices | Nein |
+> | workspaces/models | Nein |
+> | workspaces/models/versions | Nein |
+> | workspaces/onlineEndpoints | Ja |
+> | workspaces/onlineEndpoints/deployments | Ja |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2157,6 +2181,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | SignalR | Ja |
 > | SignalR/eventGridFilters | Nein |
 
+## <a name="microsoftsingularity"></a>Microsoft.Singularity
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | accounts | Ja |
+> | accounts/accountQuotaPolicies | Nein |
+> | accounts/groupPolicies | Nein |
+> | accounts/jobs | Nein |
+> | accounts/storageContainers | Nein |
+
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
 > [!div class="mx-tableFixed"]
@@ -2289,6 +2324,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | clusters | Ja |
+> | clusters/privateEndpoints | Nein |
 > | streamingjobs | Ja |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
@@ -2423,6 +2459,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | runtimes | Nein |
 > | serverFarms | Ja |
 > | serverFarms/eventGridFilters | Nein |
+> | serverFarms/firstPartyApps | Nein |
+> | serverFarms/firstPartyApps/keyVaultSettings | Nein |
 > | sites | Ja |
 > | sites/config  | Nein |
 > | sites/eventGridFilters | Nein |

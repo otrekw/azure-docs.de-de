@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939016"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359678"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Leistungsstufen für verwaltete Datenträger (Vorschau)
 
@@ -52,9 +52,9 @@ Informationen zur Abrechnung finden Sie unter [Verwaltete Datenträger – Preis
 ## <a name="restrictions"></a>Beschränkungen
 
 - Dieses Feature wird derzeit nur für SSD Premium unterstützt.
-- Sie müssen den Datenträger von einer ausgeführten VM trennen, bevor Sie die Stufe des Datenträgers ändern können.
+- Sie müssen entweder die Zuordnung des virtuellen Computers aufheben oder den Datenträger von einem ausgeführten virtuellen Computer trennen, damit Sie die Stufe des Datenträgers ändern können.
 - Die Verwendung der Leistungsstufen P60, P70 und P80 ist auf Datenträger mit 4.096 GiB oder mehr beschränkt.
-- Die Leistungsstufe eines Datenträgers kann nur ein Mal alle 24 Stunden geändert werden.
+- Die Leistungsstufe eines Datenträgers kann nur ein Mal alle 24 Stunden herabgestuft werden.
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 

@@ -261,7 +261,7 @@
           items:
             - name: IP-Firewallregeln auf Serverebene
               href: database/firewall-create-server-level-portal-quickstart.md
-        - name: GitHub-Aktionen
+        - name: GitHub Actions
           href: database/connect-github-actions-sql-db.md
     - name: Tutorials
       items:
@@ -625,7 +625,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -938,7 +938,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -993,6 +993,8 @@
                   href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Verwaltung
               items:
+                - name: Erweiterung für den SQL-IaaS-Agent
+                  href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                 - name: Dedicated Host
                   href: virtual-machines/windows/dedicated-host.md
                 - name: Erweitern der Unterstützung für SQL 2008 und R2
@@ -1021,12 +1023,14 @@
                   href: virtual-machines/windows/change-sql-server-version.md
                 - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Automatisiertes Patchen
+                  href: virtual-machines/windows/automated-patching.md
                 - name: Azure Key Vault-Integration
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrieren von Speicher zu Azure
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: Registrieren bei SQL-VM-RP
-                  displayName: 'resource provider, registration'
+                - name: Installieren der Erweiterung für den SQL-IaaS-Agent
+                  displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: Automatische Registrierung
                       href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
@@ -1034,12 +1038,6 @@
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Durchführen der Massenregistrierung für mehrere VMs
                       href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-                - name: Automatisieren von Verwaltungsaufgaben
-                  items:
-                    - name: Verwenden der Erweiterung für SQL Server-IaaS-Agent
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: Automatisiertes Patchen
-                      href: virtual-machines/windows/automated-patching.md
             - name: Migrieren
               items:
                 - name: SQL Server-Datenbank zu VM
@@ -1112,7 +1110,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: /cli/azure/
             - name: T-SQL
               href: /sql/t-sql/language-reference
@@ -1177,7 +1175,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

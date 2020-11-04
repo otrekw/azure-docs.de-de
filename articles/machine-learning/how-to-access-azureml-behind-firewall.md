@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629458"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning
 
@@ -26,7 +26,7 @@ Die Informationen in diesem Dokument basieren zwar auf [Azure Firewall](../firew
 
 ## <a name="application-rules"></a>Anwendungsregeln
 
-Erstellen Sie in Ihrer Firewall eine _Anwendungsregel_, die Datenverkehr zu und von den Adressen in diesem Artikel zulässt.
+Erstellen Sie in Ihrer Firewall eine _Anwendungsregel_ , die Datenverkehr zu und von den Adressen in diesem Artikel zulässt.
 
 > [!TIP]
 > Legen Sie beim Hinzufügen der Netzwerkregel das __Protokoll__ auf „Beliebig“ und die Ports auf `*` fest.
@@ -63,6 +63,8 @@ Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen 
 | **mcr.microsoft.com** | Microsoft Container Registry für Basis-Docker-Images |
 | **your-acr-server-name.azurecr.io** | Nur erforderlich, wenn sich Ihre Azure Container Registry-Instanz hinter dem virtuellen Netzwerk befindet – in dieser Konfiguration wird ein privater Link von der Microsoft-Umgebung zur ACR-Instanz in Ihrem Abonnement erstellt. Verwenden Sie den ACR-Servernamen für Ihren Azure Machine Learning-Arbeitsbereich. |
 | **\*.notebooks.azure.net** | Wird von den Notebooks in Azure Machine Learning Studio benötigt |
+| **\*.file.core.windows.net** | Wird vom Datei-Explorer in Azure Machine Learning Studio benötigt. |
+| **\*.dfs.core.windows.net** | Wird vom Datei-Explorer in Azure Machine Learning Studio benötigt. |
 | **graph.windows.net** | Für Notebooks erforderlich |
 
 > [!TIP]

@@ -179,7 +179,7 @@
       href: howto-faq.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:
@@ -221,6 +221,8 @@
           href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: API-Referenz für IoT Central
       href: /rest/api/iotcentral/
+    - name: Data Residency für Kundendaten
+      href: iot-central-customer-data-residency.md
     - name: Kundendatenanforderungen
       href: iot-central-customer-data-requests.md
     - name: Unterstützte Browser

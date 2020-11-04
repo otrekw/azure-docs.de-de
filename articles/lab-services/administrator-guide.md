@@ -2,13 +2,13 @@
 title: Azure Lab Services – Administratorhandbuch | Microsoft-Dokumentation
 description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab Services erstellen und verwalten.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: ad3bc110d93efb5b735f77fb8a0b2af9e4f9a7cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444147"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425307"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem ein Lab-Konto eingerichtet wurde, erstellen Administratoren oder Lehrkräfte Classroom-Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -144,11 +144,11 @@ Der Speicherort, an dem ein Classroom-Lab vorhanden ist, variiert basierend auf 
     > [!NOTE]
     > Wenn für ein Lab-Konto Peering mit einem VNET erfolgt, ist die Einstellung **Auswahl des Lab-Speicherorts durch Lab-Ersteller zulassen** deaktiviert. Weitere Informationen zu dieser Einstellung finden Sie im folgenden Artikel: [Auswahl des Lab-Speicherorts durch Lab-Ersteller zulassen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-  - **Kein Peering mit VNET ***und*** Lab-Ersteller dürfen den Lab-Speicherort nicht auswählen**
+  - **Kein Peering mit VNET, * *_und_* _ Lab-Ersteller dürfen den Lab-Speicherort nicht auswählen._*
   
     Wenn **kein** Peering eines VNET mit dem Lab-Konto erfolgt *und* [Lab-Ersteller **nicht** den Lab-Speicherort auswählen dürfen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), werden Classroom-Labs automatisch in einer Region erstellt, die über verfügbare VM-Kapazität verfügt.  Azure Lab Services sucht insbesondere in [Regionen, die sich im gleichen geografischen Raum wie das Lab-Konto befinden](https://azure.microsoft.com/global-infrastructure/regions), nach Verfügbarkeit.
 
-  - **Kein Peering mit VNET ***und*** Lab-Ersteller dürfen den Lab-Speicherort auswählen**
+  - **Kein Peering mit VNET, * *_und_* _ Lab-Ersteller dürfen den Lab-Speicherort auswählen._*
        
     Wenn **kein** Peering mit dem VNET erfolgt und [Lab-Ersteller den Lab-Speicherort auswählen dürfen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), basieren die Speicherorte, die vom Lab-Ersteller ausgewählt werden können, auf der verfügbaren Kapazität.
 
@@ -171,14 +171,14 @@ Wenn Administratoren oder Ersteller von Labs ein Classroom-Lab erstellen, könne
 | Medium | <ul><li>4 Kerne</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. |
 | Mittel (geschachtelte Virtualisierung) | <ul><li>4 Kerne</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen.
 | Groß | <ul><li>8 Kerne</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
-| Groß (geschachtelte Virtualisierung) | <ul><li>8 Kerne</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. |
+| Groß (geschachtelte Virtualisierung) | <ul><li>8 Kerne</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. |
 | Kleine GPU (Visualisierung) | <ul><li>6 Kerne</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
 | Kleine GPU (Compute) | <ul><li>6 Kerne</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Diese Größe eignet sich am besten für rechenintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |
 | Mittlere GPU (Visualisierung) | <ul><li>12 Kerne</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
 
 ## <a name="manage-identity"></a>Verwalten der Identität
 
-Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) können die folgenden Rollen zugewiesen werden, um Zugriff auf Lab-Konten und Classroom-Labs zu gestatten:
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) können die folgenden Rollen zugewiesen werden, um Zugriff auf Labkonten und Classroom-Labs zu gestatten:
 
 - **Lab-Kontobesitzer**
 
