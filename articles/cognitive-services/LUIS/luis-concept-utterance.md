@@ -82,7 +82,7 @@ Wenn Sie eine Normalisierungseinstellung aktivieren, ändern sich Bewertungen im
 
 Wenn Sie eine Version im LUIS-Portal klonen, werden die Versionseinstellungen in der neuen geklonten Version übernommen.
 
-Die Versionseinstellungen können über das LUIS-Portal, im Abschnitt **Verwalten**, auf der Seite **Anwendungseinstellungen** oder über die [API zum Aktualisieren der Versionseinstellungen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) festgelegt werden. Weitere Informationen zu diesen Normalisierungsänderungen finden Sie in der [Referenz](luis-reference-application-settings.md).
+Die Versionseinstellungen können über das LUIS-Portal, im Abschnitt **Verwalten** , auf der Seite **Anwendungseinstellungen** oder über die [API zum Aktualisieren der Versionseinstellungen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) festgelegt werden. Weitere Informationen zu diesen Normalisierungsänderungen finden Sie in der [Referenz](luis-reference-application-settings.md).
 
 ### <a name="word-forms"></a>Wortformen
 

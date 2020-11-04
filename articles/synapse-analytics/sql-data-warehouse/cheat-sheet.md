@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136098"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319675"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheatsheet für Azure Synapse Analytics (früher SQL DW)
 
@@ -37,7 +37,7 @@ Wenn Sie im Voraus wissen, welche Arten von Vorgängen vorhanden sind, können S
 
 ## <a name="data-migration"></a>Datenmigration
 
-Laden Sie zunächst Ihre Daten in [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder Azure Blob Storage. Verwenden Sie als Nächstes die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Vorschau), um Ihre Daten in Stagingtabellen zu laden. Verwenden Sie die folgende Konfiguration:
+Laden Sie zunächst Ihre Daten in [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder Azure Blob Storage. Verwenden Sie als Nächstes die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (Vorschau), um Ihre Daten in Stagingtabellen zu laden. Verwenden Sie die folgende Konfiguration:
 
 | Entwurf | Empfehlung |
 |:--- |:--- |
@@ -64,8 +64,8 @@ Abhängig von den Tabelleneigenschaften sollten Sie folgende Strategien verwende
 * Stellen Sie sicher, dass gemeinsame Hashschlüssel dasselbe Datenformat aufweisen.
 * Führen Sie Verteilungen nicht im varchar-Format durch.
 * Dimensionstabellen mit einem gemeinsamem Hashschlüssel zu einer Faktentabelle mit häufigen Verknüpfungsvorgängen können mit einer Hashverteilung versehen sein.
-* Verwenden Sie *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* , um eine etwaige Schiefe in den Daten zu analysieren.
-* Verwenden Sie *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* , um Datenverschiebungen nach Abfragen zu analysieren, die Zeitübertragung zu überwachen und Vorgänge zu mischen. Dies ist für die Überprüfung Ihre Verteilungsstrategie hilfreich.
+* Verwenden Sie *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* , um eine etwaige Schiefe in den Daten zu analysieren.
+* Verwenden Sie *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* , um Datenverschiebungen nach Abfragen zu analysieren, die Zeitübertragung zu überwachen und Vorgänge zu mischen. Dies ist für die Überprüfung Ihre Verteilungsstrategie hilfreich.
 
 Weitere Informationen finden Sie in den Artikeln zu [replizierten Tabellen](design-guidance-for-replicated-tables.md) und [verteilten Tabellen](sql-data-warehouse-tables-distribute.md).
 
@@ -121,7 +121,7 @@ Ressourcengruppen werden genutzt, um Arbeitsspeicher für Abfragen zuzuweisen. W
 
 Wenn Sie feststellen, dass Abfragen zu lange dauern, stellen Sie sicher, dass Ihre Benutzer keine Vorgänge in umfangreichen Ressourcenklassen ausführen. Umfangreiche Ressourcenklassen beanspruchen viele Parallelitätsslots. Dies kann dazu führen, dass sich andere Abfragen in der Warteschlange ansammeln.
 
-Bei Verwendung von Gen2 für den [SQL-Pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) erhält jede Ressourcenklasse zudem 2,5-mal mehr Speicher als bei Gen1.
+Bei Verwendung von Gen2 für den [SQL-Pool](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) erhält jede Ressourcenklasse zudem 2,5-mal mehr Speicher als bei Gen1.
 
 Weitere Informationen finden Sie im Artikel zum Arbeiten mit [Ressourcenklassen und Parallelität](resource-classes-for-workload-management.md).
 
