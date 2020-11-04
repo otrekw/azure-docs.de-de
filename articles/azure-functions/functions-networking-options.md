@@ -1,15 +1,16 @@
 ---
 title: Netzwerkoptionen von Azure Functions
 description: Enthält eine Übersicht über alle Netzwerkoptionen, die in Azure Functions verfügbar sind.
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530086"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897074"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -66,11 +67,30 @@ Um eine höhere Sicherheitsstufe zu gewährleisten, können Sie eine Reihe von A
 
 Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk (Vorschau)
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Für dieses Konto können derzeit keine Einschränkungen für virtuelle Netzwerke verwendet werden. Wenn Sie einen Dienstendpunkt des virtuellen Netzwerks für das Speicherkonto konfigurieren, das Sie für ihre Funktions-App verwenden, funktioniert die App nicht mehr.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt.  Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist.  Diese Previewfunktion kann aktuell nur mit Premium-Tarifen von Windows in der Region „Europa, Westen“ verwendet werden.  Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
 
-Weitere Informationen finden Sie unter [Speicherkontoanforderungen](./functions-create-function-app-portal.md#storage-account-requirements).
+> [!NOTE]
+> Das Beschränken des Speicherkontos ist aktuell nur für Premium-Funktionen mit Windows in der Region „Europa, Westen“ möglich.
+
+1. Erstellen Sie eine Funktion mit einem Speicherkonto, für das keine Dienstendpunkte aktiviert sind.
+1. Konfigurieren Sie die Funktion so, dass eine Verbindung zum virtuellen Netzwerk hergestellt wird.
+1. Erstellen oder konfigurieren Sie ein anderes Speicherkonto.  Dabei handelt es sich um das Speicherkonto, in dem die Dienstendpunkte abgesichert und die Verbindung zur Funktion hergestellt werden sollen.
+1. [Erstellen Sie eine Dateifreigabe](../storage/files/storage-how-to-create-file-share.md#create-file-share) im abgesicherten Speicherkonto.
+1. Aktivieren Sie Dienstendpunkte oder einen privaten Endpunkt für das Speicherkonto.  
+    * Sorgen Sie dafür, das für Ihre Funktions-Apps dedizierte Subnetz zu aktivieren, wenn ein Dienstendpunkt verwendet wird.
+    * Achten Sie darauf, einen DNS-Eintrag zu erstellen und Ihre App so zu konfigurieren, dass sie [mit privaten Endpunkten verwendet](#azure-dns-private-zones) werden kann, wenn ein privater Endpunkt verwendet werden soll.  Für das Speicherkonto ist ein privater Endpunkt für die `file`- und `blob`-Subressourcen erforderlich.  Wenn bestimmte Funktionen wie Durable Functions verwendet werden, muss der Zugriff auf `queue` und `table` außerdem über eine private Endpunktverbindung möglich sein.
+1. Optional: Kopieren Sie die Datei und den Blobinhalt aus dem Speicherkonto der Funktions-App in das geschützte Speicherkonto und die Dateifreigabe.
+1. Kopieren Sie die Verbindungszeichenfolge für dieses Speicherkonto.
+1. Aktualisieren Sie die **Anwendungseinstellungen** unter **Konfiguration** für die Funktions-App folgendermaßen:
+    - Legen Sie `AzureWebJobsStorage` als Verbindungszeichenfolge für das geschützte Speicherkonto fest.
+    - Legen Sie `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` als Verbindungszeichenfolge für das geschützte Speicherkonto fest.
+    - Legen Sie `WEBSITE_CONTENTSHARE` für den Namen der Dateifreigabe fest, die im geschützten Speicherkonto erstellt wurde.
+    - Erstellen Sie eine neue Einstellung mit dem Namen `WEBSITE_CONTENTOVERVNET` und einem Wert von `1`.
+1. Speichern Sie die Anwendungseinstellungen.  
+
+Die Funktions-App wird neu gestartet und ist nun mit einem geschützten Speicherkonto verbunden.
 
 ## <a name="use-key-vault-references"></a>Verwenden von Key Vault-Verweisen
 
@@ -136,8 +156,8 @@ Wenn Sie eine Funktions-App in einen Premium-Tarif oder einen App Service-Plan 
 ## <a name="automation"></a>Automation
 Die folgenden APIs ermöglichen es Ihnen, regionale Integrationen virtueller Netzwerke programmgesteuert zu verwalten:
 
-+ **Azure CLI**: Verwenden Sie die Befehle [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration), um Integrationen regionaler virtueller Netzwerk hinzuzufügen, aufzulisten oder zu entfernen.  
-+ **ARM-Vorlagen**: Die Integration regionaler virtueller Netzwerke kann mithilfe einer Azure Resource Manager-Vorlage aktiviert werden. Ein vollständiges Beispiel finden Sie in [dieser Functions-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure CLI** : Verwenden Sie die Befehle [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration), um Integrationen regionaler virtueller Netzwerk hinzuzufügen, aufzulisten oder zu entfernen.  
++ **ARM-Vorlagen** : Die Integration regionaler virtueller Netzwerke kann mithilfe einer Azure Resource Manager-Vorlage aktiviert werden. Ein vollständiges Beispiel finden Sie in [dieser Functions-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

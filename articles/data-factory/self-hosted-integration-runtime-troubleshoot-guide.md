@@ -2,17 +2,17 @@
 title: Problembehandlung bei der selbstgehosteten Integration Runtime in Azure Data Factory
 description: Hier erfahren Sie, wie Sie eine Problembehandlung im Fall von Problemen bei der selbstgehosteten Integration Runtime in Azure Data Factory durchführen können.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/16/2020
-ms.author: abnarain
-ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/26/2020
+ms.author: lle
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131305"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637189"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -24,7 +24,7 @@ In diesem Artikel werden allgemeine Methoden zur Problembehandlung bei selbstgeh
 
 Bei fehlgeschlagenen Aktivitäten in selbstgehosteter IR/freigegebener IR unterstützt Azure Data Factory das Anzeigen und Hochladen von Fehlerprotokollen. Sie können die folgenden Schritte zum Abrufen der Fehlerberichts-ID ausführen und dann diese ID eingeben, um verwandte bekannte Probleme zu finden.
 
-1. Wechseln Sie zur Seite **Aktivitätsausführungen** .
+1. Wechseln Sie zur Seite **Aktivitätsausführungen**.
 
 1. Klicken Sie unter der Spalte **FEHLER** auf die unten gezeigte Schaltfläche.
 
@@ -65,7 +65,7 @@ Dies ist ein bekanntes Problem in WCF: Die WCF-TLS/SSL-Überprüfung überprüft
 #### <a name="resolution"></a>Lösung
 
 In der selbstgehosteten IR von Azure Data Factory v2 wird ein Platzhalterzertifikat unterstützt. Dieses Problem tritt normalerweise auf, weil das SSL-Zertifikat falsch ist. Das letzte „DNSName“ im SAN muss gültig sein. Führen Sie die folgenden Schritte aus, um dies zu überprüfen. 
-1.  Öffnen Sie die Verwaltungskonsole, und überprüfen Sie in den „Zertifikatdetails“ sowohl *Betreff* als auch *Alternativer Antragstellername* . In diesem Fall ist beispielsweise das letzte Element in *Alternativer Antragstellername* , „DNS Name = microsoft.com.com“, nicht legitim.
+1.  Öffnen Sie die Verwaltungskonsole, und überprüfen Sie in den „Zertifikatdetails“ sowohl *Betreff* als auch *Alternativer Antragstellername*. In diesem Fall ist beispielsweise das letzte Element in *Alternativer Antragstellername* , „DNS Name = microsoft.com.com“, nicht legitim.
 2.  Bitten Sie das Unternehmen, von dem das Zertifikat ausgestellt wurde, den falschen DNS-Namen zu entfernen.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problem beim Limit für gleichzeitige Aufträge
@@ -102,7 +102,7 @@ Bei der Behandlung von Fällen im Zusammenhang mit dem SSL/TLS-Handshake könnte
 
 - Hier ist eine schnelle und intuitive Möglichkeit zum Beheben von Fehlern beim Erstellen der X.509-Zertifikatkette.
  
-    1. Exportieren Sie das Zertifikat, das überprüft werden muss. Wechseln Sie zu „Computerzertifikat verwalten“, suchen Sie das Zertifikat, das Sie überprüfen möchten, und klicken Sie mit der rechten Maustaste auf **Alle Tasks** -> **Exportieren** .
+    1. Exportieren Sie das Zertifikat, das überprüft werden muss. Wechseln Sie zu „Computerzertifikat verwalten“, suchen Sie das Zertifikat, das Sie überprüfen möchten, und klicken Sie mit der rechten Maustaste auf **Alle Tasks** -> **Exportieren**.
     
         ![Aufgaben exportieren](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -183,7 +183,7 @@ In der nachstehenden Fehlermeldung können Sie genau sehen, dass die Assembly *S
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-Weitere Informationen zu GAC finden Sie [in diesem Artikel](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+Weitere Informationen zu GAC finden Sie [in diesem Artikel](/dotnet/framework/app-domains/gac).
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>„Überwachen von Schlüssel für selbstgehostete IR“ fehlt
@@ -210,7 +210,7 @@ Wenn keiner der vorstehenden Gründe zutrifft, können Sie zum Ordner *%ProgramD
 
 #### <a name="symptoms"></a>Symptome
 
-Nachdem Sie selbstgehostete IRs für Quell- und Zieldatenspeicher erstellt haben, möchten Sie die beiden IRs miteinander verbinden, um einen Kopiervorgang abzuschließen. Wenn die Datenspeicher in unterschiedlichen VNETs konfiguriert wurden oder den Gatewaymechanismus nicht verstehen können, treten Fehler auf wie: *der Treiber für die Quelle wird in der Ziel-IR nicht gefunden* ; *die Ziel-IR kann auf die Quelle nicht zugreifen* .
+Nachdem Sie selbstgehostete IRs für Quell- und Zieldatenspeicher erstellt haben, möchten Sie die beiden IRs miteinander verbinden, um einen Kopiervorgang abzuschließen. Wenn die Datenspeicher in unterschiedlichen VNETs konfiguriert wurden oder den Gatewaymechanismus nicht verstehen können, treten Fehler auf wie: *der Treiber für die Quelle wird in der Ziel-IR nicht gefunden* ; *die Ziel-IR kann auf die Quelle nicht zugreifen*.
  
 #### <a name="cause"></a>Ursache
 
@@ -291,7 +291,7 @@ Wechseln Sie zum Integration Runtime-Ereignisprotokoll, um den Fehler zu überpr
 Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führen Sie die folgenden Anweisungen aus:
 
 
-1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService* .
+1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService*.
 
     ![Dienstanmeldekonto](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
@@ -305,7 +305,7 @@ Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führ
         1. Führen Sie eine saubere Deinstallation der aktuellen selbstgehosteten IR durch.
         1. Installieren Sie die selbstgehosteten IR-Bits.
         1. Führen Sie die Anweisungen unten zum Ändern des Dienstkontos aus: 
-            1. Wechseln Sie zum Installationsordner für die selbstgehostete IR und darin zum Ordner: *Microsoft Integration Runtime\4.0\Shared* .
+            1. Wechseln Sie zum Installationsordner für die selbstgehostete IR und darin zum Ordner: *Microsoft Integration Runtime\4.0\Shared*.
             1. Starten Sie eine Befehlszeile mit erhöhten Rechten. Ersetzen Sie *\<user>* und *\<password>* durch Ihren eigenen Benutzernamen und Ihr Kennwort, und führen Sie dann den folgenden Befehl aus:
                        
                 ```
@@ -325,9 +325,9 @@ Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führ
             1. Sie können den lokalen Benutzer/Domänenbenutzer für das Anmeldekonto des IR-Diensts verwenden.            
         1. Registrieren Sie die Integration Runtime.
 
-Wenn der Fehler so angezeigt wird: *Der Dienst „Integration Runtime Service“ (DIAHostService) konnte nicht gestartet werden. Überprüfen Sie, ob Sie ausreichende Berechtigungen zum Starten von Systemdiensten besitzen* . Führen Sie dazu die folgenden Anweisungen aus:
+Wenn der Fehler so angezeigt wird: *Der Dienst „Integration Runtime Service“ (DIAHostService) konnte nicht gestartet werden. Überprüfen Sie, ob Sie ausreichende Berechtigungen zum Starten von Systemdiensten besitzen*. Führen Sie dazu die folgenden Anweisungen aus:
 
-1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService* .
+1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService*.
    
     ![Dienstanmeldekonto](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
@@ -431,7 +431,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Fac
     ```
         
    > [!NOTE]     
-   > Die Dienst-URL kann abhängig vom jeweiligen Data Factory-Speicherort abweichen. Sie finden die Dienst-URL unter **ADF-Benutzeroberfläche** > **Verbindungen** > **Integration Runtimes** > **Selfgehostete IR bearbeiten** > **Knoten** > **Dienst-URLs anzeigen** .
+   > Die Dienst-URL kann abhängig vom jeweiligen Data Factory-Speicherort abweichen. Sie finden die Dienst-URL unter **ADF-Benutzeroberfläche** > **Verbindungen** > **Integration Runtimes** > **Selfgehostete IR bearbeiten** > **Knoten** > **Dienst-URLs anzeigen**.
             
     Die folgende Antwort wird erwartet:
             
@@ -468,7 +468,7 @@ Die folgende Antwort wird erwartet:
 
 > [!NOTE] 
 > Proxy-Aspekte:
-> *    Überprüfen Sie, ob der Proxyserver in die Liste der sicheren Empfänger eingefügt werden muss. Stellen Sie in diesem Fall sicher, dass [diese Domänen](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) in der Liste der sicheren Empfänger enthalten sind.
+> *    Überprüfen Sie, ob der Proxyserver in die Liste der sicheren Empfänger eingefügt werden muss. Stellen Sie in diesem Fall sicher, dass [diese Domänen](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) in der Liste der sicheren Empfänger enthalten sind.
 > *    Überprüfen Sie, ob das TLS/SSL-Zertifikat „wu2.frontend.clouddatahub.net/“ auf dem Proxyserver vertrauenswürdig ist.
 > *    Wenn Sie im Proxy die Active Directory-Authentifizierung verwenden, ändern Sie das Dienstkonto in das Benutzerkonto, das als „Integration Runtime-Dienst“ auf den Proxy zugreifen kann.
 
@@ -590,8 +590,8 @@ Wenn Sie versuchen, Telnet **8.8.8.8 888** mit der erfassten Netmon-Ablaufverfol
 Dies bedeutet, dass Sie keine TCP-Verbindung mit der Serverseite **8.8.8.8** basierend auf Port **888** herstellen können. Daher sehen Sie zwei zusätzliche **SynReTransmit** -Pakete. Da die Quelle **SELF-HOST2** keine Verbindung mit **8.8.8.8** beim ersten Paket herstellen konnte, wird die Verbindung weiterhin hergestellt.
 
 > [!TIP]
-> - Klicken Sie auf **Filter laden** -> **Standard Filter (Standardfilter)**  -> **Adressen** -> **IPv4-Adressen** .
-> - Geben Sie **IPv4.Address == 8.8.8.8** als Filter ein, und klicken Sie auf **Anwenden** . Anschließend wird Ihnen nur die Kommunikation vom lokalen Computer zum Ziel **8.8.8.8** angezeigt.
+> - Klicken Sie auf **Filter laden** -> **Standard Filter (Standardfilter)**  -> **Adressen** -> **IPv4-Adressen**.
+> - Geben Sie **IPv4.Address == 8.8.8.8** als Filter ein, und klicken Sie auf **Anwenden**. Anschließend wird Ihnen nur die Kommunikation vom lokalen Computer zum Ziel **8.8.8.8** angezeigt.
 
 ![Filteradressen 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -618,34 +618,76 @@ Das folgende Beispiel zeigt, wie ein gutes Szenario aussehen würde.
 
 ### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Empfang einer E-Mail zum Aktualisieren der Netzwerkkonfiguration, um die Kommunikation mit neuen IP-Adressen zuzulassen
 
-#### <a name="symptoms"></a>Symptome
+#### <a name="email-notification-from-microsoft"></a>E-Mail-Benachrichtigung von Microsoft
 
 Möglicherweise erhalten Sie die folgende E-Mail-Benachrichtigung, in der eine Aktualisierung der Netzwerkkonfiguration empfohlen wird, um die Kommunikation mit neuen IP-Adressen für Azure Data Factory zum 8. November 2020 zuzulassen:
 
    ![E-Mail-Benachrichtigung](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
 
-#### <a name="resolution"></a>Lösung
+#### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>Ermitteln der Relevanz dieser Benachrichtigung für Ihre Situation
 
-Diese Benachrichtigung betrifft die **ausgehende Kommunikation** von Ihrer **lokal** oder innerhalb eines **Azure-VPN** ausgeführten **Integration Runtime** zum ADF-Dienst. Wenn Sie z. B. über eine selbstgehostete IR oder Azure-SSIS IR (SQL Server Integration Services) in Azure VNET verfügen, die auf den ADF-Dienst zugreifen muss, müssen Sie überprüfen, ob Sie diesen neuen IP-Adressbereich in Ihren Regeln für **Netzwerksicherheitsgruppen (NSG)** hinzufügen müssen. Wenn Ihre NSG-Ausgangsregel das Diensttag verwendet, hat dies keine Auswirkungen.
+Diese Benachrichtigung betrifft die folgenden Szenarios:
+##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Szenario 1: Von einer selbstgehosteten Integration Runtime ausgehende Kommunikation, die lokal hinter der Unternehmensfirewall ausgeführt wird
+So ermitteln Sie, ob Sie Maßnahmen ergreifen müssen:
+- Diese Benachrichtigung betrifft Sie nicht, wenn Sie Firewallregeln mithilfe des unter [Firewallkonfiguration und Einrichten einer Positivliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) beschriebenen Ansatzes auf Basis der vollqualifizierten Domänennamen definieren.
+- Sie sind jedoch betroffen, wenn Sie die Positivliste für ausgehende IP-Adressen in der Unternehmensfirewall explizit aktiviert haben.
 
-#### <a name="more-details"></a>Weitere Informationen
+Erforderliche Maßnahme, wenn Sie betroffen sind: Benachrichtigen Sie das für die Netzwerkinfrastruktur zuständige Team, um Ihre Netzwerkkonfiguration zu aktualisieren, damit bis zum 8. November 2020 die neuesten Data Factory-IP-Adressen verwendet werden.  Navigieren Sie zum Herunterladen der aktuellen IP-Adressen zu [Downloadlink für Diensttags für IP-Adressbereiche](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
-Diese neuen IP-Adressbereiche **haben nur Auswirkungen auf Regeln für die ausgehende Kommunikation** von Ihrer **lokalen Firewall** oder Ihrem **Azure-VPN** zum ADF-Dienst (siehe [ Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)) für Szenarien, in denen Sie über eine selbstgehostete IR oder SSIS IR im lokalen Netzwerk oder virtuellen Azure-Netzwerk verfügen, das mit dem ADF-Dienst kommunizieren muss.
+##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Szenario 2: Von einer selbstgehosteten Integration Runtime ausgehende Kommunikation, die auf einer Azure-VM innerhalb eines vom Kunden verwalteten virtuellen Azure-Netzwerks ausgeführt wird
+So ermitteln Sie, ob Sie Maßnahmen ergreifen müssen:
+- Überprüfen Sie, ob in Ihrem privaten Netzwerk, das die selbstgehostete Integration Runtime enthält, Regeln von Netzwerksicherheitsgruppen (NSG) für ausgehende Kommunikation gelten. Wenn keine Beschränkungen für ausgehende Kommunikation vorliegen, sind Sie nicht betroffen.
+- Wenn Einschränkungen für Ausgangsregeln bestehen, prüfen Sie, ob Sie das Diensttag verwenden. Wenn Sie das Diensttag verwenden, muss nichts geändert oder hinzugefügt werden, da die neuen IP-Adressbereiche dem vorhandenen Diensttag unterliegen. 
+ ![Zielüberprüfung](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+- Sie müssen jedoch Maßnahmen ergreifen, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen der NSG-Regeln im virtuellen Azure-Netzwerk explizit aktiviert haben.
 
-Für vorhandene Benutzer, die **Azure-VPN** verwenden:
+Erforderliche Maßnahme, wenn Sie betroffen sind: Benachrichtigen Sie das für die Netzwerkinfrastruktur zuständige Team, um die NSG-Regeln in der Konfiguration Ihres virtuellen Azure-Netzwerks zu aktualisieren, damit bis zum 8. November 2020 die neuesten Data Factory-IP-Adressen verwendet werden.  Navigieren Sie zum Herunterladen der aktuellen IP-Adressen zu [Downloadlink für Diensttags für IP-Adressbereiche](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
-1. Überprüfen Sie alle NSG-Ausgangsregeln in Ihrem privaten Netzwerk, in dem SSIS oder Azure SSIS konfiguriert ist. Wenn keine Ausgangseinschränkungen vorliegen, gibt es keine Auswirkung darauf.
-1. Wenn Einschränkungen für Ausgangsregeln bestehen, prüfen Sie, ob Sie das Diensttag verwenden. Wenn Sie das Diensttag verwenden, muss nichts geändert oder hinzugefügt werden, da die neuen IP-Adressbereiche dem vorhandenen Diensttag unterliegen. 
-  
-    ![Zielüberprüfung](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Szenario 3: Von einer SSIS-Integration Runtime ausgehende Kommunikation, die in einem vom Kunden verwalteten virtuellen Azure-Netzwerk ausgeführt wird
+- Überprüfen Sie, ob in Ihrem privaten Netzwerk, das die SSIS-Integration Runtime enthält, NSG-Regeln für ausgehende Kommunikation gelten. Wenn keine Beschränkungen für ausgehende Kommunikation vorliegen, sind Sie nicht betroffen.
+- Wenn Einschränkungen für Ausgangsregeln bestehen, prüfen Sie, ob Sie das Diensttag verwenden. Wenn Sie das Diensttag verwenden, muss nichts geändert oder hinzugefügt werden, da die neuen IP-Adressbereiche dem vorhandenen Diensttag unterliegen.
+- Sie müssen jedoch Maßnahmen ergreifen, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen der NSG-Regeln im virtuellen Azure-Netzwerk explizit aktiviert haben.
 
-1. Wenn Sie IP-Adressen direkt in der Regeleinstellung verwenden, überprüfen Sie über den [Downloadlink für den IP-Adressbereich der Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files), ob alle IP-Adressbereiche hinzugefügt wurden. Die neuen IP-Adressbereiche sind bereits in dieser Datei enthalten. Für neue Benutzer: Sie müssen lediglich die zutreffende Konfiguration der selbstgehosteten IR oder SSIS IR im Dokument zum Konfigurieren von NSG-Regeln durchführen.
+Erforderliche Maßnahme, wenn Sie betroffen sind: Benachrichtigen Sie das für die Netzwerkinfrastruktur zuständige Team, um die NSG-Regeln in der Konfiguration Ihres virtuellen Azure-Netzwerks zu aktualisieren, damit bis zum 8. November 2020 die neuesten Data Factory-IP-Adressen verwendet werden.  Navigieren Sie zum Herunterladen der aktuellen IP-Adressen zu [Downloadlink für Diensttags für IP-Adressbereiche](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
-Für vorhandene Benutzer mit **lokaler** SSIS IR oder selbstgehosteter IR:
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Für den geschützten SSL/TLS-Kanal konnte keine Vertrauensstellung hergestellt werden 
 
-- Führen Sie eine Überprüfung gemeinsam mit Ihrem Netzwerkinfrastrukturteam durch, und stellen Sie fest, ob die neuen IP-Adressbereiche für die Kommunikation für Ausgangsregeln eingebunden werden müssen.
-- Bei Firewallregeln, die auf vollqualifizierten Domänennamen basieren, sind keine Aktualisierungen erforderlich, wenn Sie die Einstellungen verwenden, die unter [Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) dokumentiert sind. 
-- Einige lokale Firewalls unterstützen Diensttags. Wenn Sie die aktualisierte Konfigurationsdatei für Azure-Diensttags verwenden, sind keine weiteren Änderungen erforderlich.
+#### <a name="symptoms"></a>Symptome
+
+Die selbstgehostete Integration Runtime konnte keine Verbindung zum ADF-Dienst herstellen.
+
+Wenn Sie das Ereignisprotokoll der selbstgehosteten Integration Runtime oder die Clientbenachrichtigungsprotokolle in der Tabelle „CustomLogEvent“ überprüfen, finden Sie die folgende Fehlermeldung:
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+So überprüfen Sie das Serverzertifikat des ADF-Diensts:
+
+Die einfachste Möglichkeit besteht darin, die URL des ADF-Diensts im Browser zu öffnen (z. B. https://eu.frontend.clouddatahub.net/ auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist) und die Informationen zu Serverzertifikat anzuzeigen:
+
+  ![Überprüfen des Serverzertifikats des ADF-Diensts](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![Überprüfen des Pfads des Serverzertifikats](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>Ursache
+
+Es gibt zwei mögliche Gründe für dieses Problem:
+
+- Auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, gilt die Stammzertifizierungsstelle des Serverzertifikats des ADF-Diensts nicht als vertrauenswürdig. 
+- Sie verwenden einen Proxy in Ihrer Umgebung, und das Serverzertifikat des ADF-Diensts wird durch den Proxy ersetzt, während das ersetzte Serverzertifikat auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als nicht vertrauenswürdig eingestuft wird.
+
+#### <a name="solution"></a>Lösung
+
+- Stellen Sie für Grund 1 sicher, dass das ADF-Serverzertifikat und die dazugehörige Zertifikatkette auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als vertrauenswürdig gelten.
+- Stellen Sie für Grund 2 entweder auf dem Computer mit der selbstgehosteten Integration Runtime eine Vertrauensstellung zur ersetzten Stammzertifizierungsstelle her, oder konfigurieren Sie den Proxy so, dass das ADF-Serverzertifikat nicht ersetzt wird.
+
+Ausführliche Informationen zum Herstellen einer Vertrauensbeziehung zu einem Zertifikat unter Windows finden Sie [in diesem Artikel](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
+
+#### <a name="additional-info"></a>Zusätzliche Informationen
+Wir führen ein Rollout eines neuem SSL-Zertifikats aus, das von DigiCert signiert ist. Überprüfen Sie, ob „DigiCert Global Root G2“ in der vertrauenswürdigen Stammzertifizierungsstelle enthalten ist.
+
+  ![DigiCert Global Root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+Falls dem nicht so ist, können Sie es [hier](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ) herunterladen. 
 
 ## <a name="self-hosted-ir-sharing"></a>Freigabe der selbstgehosteten Integration Runtime
 
@@ -667,7 +709,7 @@ Weitere Hilfe zur Problembehandlung finden Sie in den folgenden Ressourcen:
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-data-factory.html)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Anleitung zur Leistung der Mapping Data Flow-Funktion](concepts-data-flow-performance.md)
