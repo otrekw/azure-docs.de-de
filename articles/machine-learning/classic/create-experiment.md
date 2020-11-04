@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: d23702a71bababec2e172181c8e75c26241d0460
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348101"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307969"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Machine Learning Studio (Classic)
 
-**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -51,7 +51,7 @@ Studio (klassisch) enthält bereits einige Beispieldatasets, die Sie verwenden k
 Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.
 
 > [!TIP]
-> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Wechseln Sie zu **[Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich (klassisch) herunterzuladen.
+> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Wechseln Sie zu **[Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , und klicken Sie auf **In Studio öffnen** , um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich (klassisch) herunterzuladen.
 
 Hier wird erklärt, wie Sie das Dataset in Ihr Experiment importieren.
 
@@ -78,7 +78,7 @@ In diesem Dataset steht jede Zeile für ein Fahrzeug, und die Variablen, die den
 
 ![Anzeigen der Fahrzeugdaten im Fenster für die Datenvisualisierung](./media/create-experiment/visualize-auto-data.png)
 
-Schließen Sie das Visualisierungsfenster, indem Sie auf das "**X**" in der oberen rechten Ecke klicken.
+Schließen Sie das Visualisierungsfenster, indem Sie auf das " **X** " in der oberen rechten Ecke klicken.
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
@@ -148,7 +148,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
 
 1. Klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**.
 
-1. Klicken Sie auf **With rules**(Mit Regeln).
+1. Klicken Sie auf **With rules** (Mit Regeln).
 
 1. Klicken Sie unter **Begin With** (Beginnen mit) auf **No columns** (Alle Spalten). Wählen Sie in der Filterzeile **Include** (Einbeziehen) und **column names** (Spaltennamen) aus, und wählen Sie im Textfeld unsere Liste mit Spaltennamen aus. Mit diesem Filter wird das Modul angewiesen, keine Spalten (Funktionen) außer den angegebenen zu übergeben.
 
@@ -189,7 +189,7 @@ Wir verwenden unsere Daten sowohl für das Trainieren als auch das Testen des Mo
 
     ![Verbinden des Moduls „Train Model“mit den Modulen „Linear Regression“ und „Split Data“](./media/create-experiment/connect-train-model.png)
 
-1. Klicken Sie auf das Modul [Train Model][train-model] (Modell trainieren), klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**, und wählen Sie dann die Spalte **price** aus. **price** ist der Wert, den unser Modell vorhersagen wird.
+1. Klicken Sie auf das Modul [Train Model][train-model] (Modell trainieren), klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten** , und wählen Sie dann die Spalte **price** aus. **price** ist der Wert, den unser Modell vorhersagen wird.
 
     Wählen Sie die Spalte **Price** in der Spaltenauswahl aus, indem Sie sie aus der Liste **Available columns** (Verfügbare Spalten) in die Liste **Selected columns** (Ausgewählte Spalten) verschieben.
 
@@ -227,11 +227,11 @@ Die folgenden Statistiken werden für unser Modell angezeigt:
 
 - **Mean Absolute Error** (MAE): Der Mittelwert der absoluten Fehler. (Ein *Fehler* ist die Differenz zwischen dem prognostizierten und dem tatsächlichen Wert.)
 - **Root Mean Squared Error** (RMSE): Die Quadratwurzel des Durchschnitts des Quadrats der Prognosefehler für das Testdataset.
-- **Relative Absolute Error**: Der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-- **Relative Squared Error**: Der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-- **Coefficient of Determination**: Dieser auch als **R-Quadrat** bezeichnete Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
+- **Relative Absolute Error** : Der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Relative Squared Error** : Der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Coefficient of Determination** : Dieser auch als **R-Quadrat** bezeichnete Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
 
-Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an, dass die Vorhersagen genauer mit den tatsächlichen Werten übereinstimmen. Für den **Bestimmungskoeffizienten**gilt: Je näher der Bestimmungskoeffizient am Wert eins (1,0) liegt, desto besser die Vorhersage.
+Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an, dass die Vorhersagen genauer mit den tatsächlichen Werten übereinstimmen. Für den **Bestimmungskoeffizienten** gilt: Je näher der Bestimmungskoeffizient am Wert eins (1,0) liegt, desto besser die Vorhersage.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -245,10 +245,10 @@ In dieser Schnellstartanleitung haben Sie anhand eines Beispieldatasets ein einf
 > [Tutorial: Entwickeln einer prädiktiven Lösung in Studio (klassisch)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model

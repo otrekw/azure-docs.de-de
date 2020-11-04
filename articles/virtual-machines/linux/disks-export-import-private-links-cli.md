@@ -8,16 +8,16 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 66c331a79a4da7b8fb397e7d0209b24e00645783
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20b2f74b33ae57016188ee66af29570f7ec1b529
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741717"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289265"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links
 
-Die Unterstützung privater Links mit verwalteten Datenträgern befindet sich derzeit in der Vorschauphase. Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) verwenden, um den Export und Import verwalteter Datenträger einzuschränken und sicheren Zugriff auf Daten über einen [privaten Link](../../private-link/private-link-overview.md) von Clients in Ihrem virtuellen Azure-Netzwerk zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum des virtuellen Netzwerks für Ihren Dienst für verwaltete Datenträger. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den verwalteten Datenträgern wird nur über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet und somit nicht dem öffentlichen Internet ausgesetzt.
+Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) verwenden, um den Export und Import verwalteter Datenträger einzuschränken und sicheren Zugriff auf Daten über einen [privaten Link](../../private-link/private-link-overview.md) von Clients in Ihrem virtuellen Azure-Netzwerk zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum des virtuellen Netzwerks für Ihren Dienst für verwaltete Datenträger. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den verwalteten Datenträgern wird nur über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet und somit nicht dem öffentlichen Internet ausgesetzt.
 
 Wenn Sie private Links zum Exportieren und Importieren verwalteter Datenträger verwenden möchten, erstellen Sie zunächst eine Datenträgerzugriffsressource und verknüpfen sie mit einem virtuellen Netzwerk im gleichen Abonnement, indem Sie einen privaten Endpunkt erstellen. Ordnen Sie dann einer Instanz des Datenträgerzugriffs einen Datenträger oder eine Momentaufnahme zu. Legen Sie abschließend die NetworkAccessPolicy-Eigenschaft des Datenträgers oder der Momentaufnahme auf `AllowPrivate` fest. Dadurch wird der Zugriff auf das virtuelle Netzwerk beschränkt. 
 

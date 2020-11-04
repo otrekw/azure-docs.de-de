@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 98ad02c134df919c593c87dd96a9a71d73371a1c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490610"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087416"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Einführung in die Gremlin-API von Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 [Azure Cosmos DB](introduction.md) ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Diese Datenbank für mehrere Modelle unterstützt Dokument-, Schlüssel-Wert-Paar-, Diagramm- und spaltenbasierte Datenmodelle. Azure Cosmos DB bietet über die Gremlin-API einen Graphendatenbankdienst für einen vollständig verwalteten Datenbankdienst, der für einen beliebigen Maßstab entworfen wurde.  
 
@@ -106,7 +107,7 @@ Graphdatenbanken werden oft NoSQL- oder nicht relationalen Datenbanken zugeordne
 
 Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedrückt werden können. Die folgende Abbildung zeigt eine Geschäftsanwendung, die Daten zu Benutzern, Interessen und Geräten in Form eines Diagramms verwaltet.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Architektur von Azure Cosmos DB-Diagrammen" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Beispieldatenbank mit Personen, Geräten und Interessen" border="false"::: 
 
 Dieser Graph weist folgende *Vertex* -Typen (in Gremlin auch „Bezeichnung“ genannt) auf:
 

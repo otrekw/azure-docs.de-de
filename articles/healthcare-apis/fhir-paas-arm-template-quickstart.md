@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Bereitstellen von Azure API for FHIR mit einer ARM-Vorlage'
 description: In diesem Schnellstart erfahren Sie, wie Sie Azure API for Fast Healthcare Interoperability Resources (FHIR®) mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen.
-author: mgblythe
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521440"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289283"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Schnellstart: Verwenden Sie eine ARM-Vorlage zum Bereitstellen von Azure API for FHIR
 

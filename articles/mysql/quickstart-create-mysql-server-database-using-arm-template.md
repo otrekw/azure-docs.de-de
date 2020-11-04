@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure DB for MySQL-Instanz – ARM-Vorlage'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Azure Database for MySQL-Server mit Integration eines virtuellen Netzwerks erstellen.
-author: mgblythe
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 952bfa7182997511ce072c051d872140c3b907cb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041208"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe einer ARM-Vorlage
 
@@ -74,26 +74,26 @@ Gehen Sie auf der Seite **Deploy Azure Database for MySQL with VNet** (Azure Dat
 
 2. Wenn Sie eine neue Ressourcengruppe erstellt haben, wählen Sie für die Ressourcengruppe und den neuen Server eine Angabe unter **Standort** aus.
 
-3. Geben Sie Werte für **Servername**, **Administratoranmeldung** und **Kennwort für die Administratoranmeldung** ein.
+3. Geben Sie Werte für **Servername** , **Administratoranmeldung** und **Kennwort für die Administratoranmeldung** ein.
 
-    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Bereitstellen in Azure":::
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Fenster „Deploy Azure Database for MySQL with VNet“ (Azure Database for MySQL mit VNET bereitstellen) unter „Azure-Schnellstartvorlage“ im Azure-Portal":::
 
 4. Ändern Sie ggf. die anderen Standardeinstellungen:
 
-    * **Abonnement**: das für den Server zu verwendende Azure-Abonnement
-    * **SKU-Kapazität**: die Kapazität des virtuellen Kerns. Mögliche Werte: *2* (Standardeinstellung), *4*, *8*, *16*, *32* oder *64*
-    * **SKU-Name**: Präfix des SKU-Tarifs, SKU-Familie und SKU-Kapazität, verbunden durch Unterstriche. Beispiele: *B_Gen5_1*, *GP_Gen5_2* (Standardeinstellung) oder *MO_Gen5_32*
-    * **Sku Size MB** (SKU-Größe (MB)): Speichergröße des Azure Database for MySQL-Servers in Megabyte (Standardeinstellung: *5120*)
-    * **SKU-Tarif**: der Bereitstellungstarif, etwa *Basic*, *GeneralPurpose* (Standardeinstellung) oder *MemoryOptimized*
-    * **SKU-Familie**: *Gen4* oder *Gen5* (Standardeinstellung). Mit dieser Option wird die Hardwaregeneration für die Serverbereitstellung angegeben.
-    * **MySQL-Version**: die Version des bereitzustellenden MySQL-Servers, etwa *5.6* oder *5.7* (Standardeinstellung)
-    * **Backup Retention Days** (Sicherungsaufbewahrung in Tagen): der gewünschte Zeitraum für die Aufbewahrung georedundanter Sicherungen in Tagen (Standardeinstellung: *7*)
-    * **Georedundante Sicherung**: *Aktiviert* oder *Deaktiviert* (Standardeinstellung), abhängig von den Anforderungen an die georedundante Notfallwiederherstellung (Geo-Disaster Recovery, Geo-DR)
-    * **Name des virtuellen Netzwerks**: der Name des virtuellen Netzwerks (Standardeinstellung: *azure_mysql_vnet*)
-    * **Subnetzname**: der Name des Subnetzes (Standardeinstellung: *azure_mysql_subnet*)
-    * **Virtual Network Rule Name** (Name der VNET-Regel): der Name der VNET-Regel, die das Subnetz zulässt (Standardeinstellung: *AllowSubnet*)
-    * **Vnet Address Prefix** (VNET-Adresspräfix): das Adresspräfix für das virtuelle Netzwerk (Standardeinstellung: *10.0.0.0/16*)
-    * **Subnetzpräfix**: das Adresspräfix für das Subnetz (Standardeinstellung: *10.0.0.0/16*)
+    * **Abonnement** : das für den Server zu verwendende Azure-Abonnement
+    * **SKU-Kapazität** : die Kapazität des virtuellen Kerns. Mögliche Werte: *2* (Standardeinstellung), *4* , *8* , *16* , *32* oder *64*
+    * **SKU-Name** : Präfix des SKU-Tarifs, SKU-Familie und SKU-Kapazität, verbunden durch Unterstriche. Beispiele: *B_Gen5_1* , *GP_Gen5_2* (Standardeinstellung) oder *MO_Gen5_32*
+    * **Sku Size MB** (SKU-Größe (MB)): Speichergröße des Azure Database for MySQL-Servers in Megabyte (Standardeinstellung: *5120* )
+    * **SKU-Tarif** : der Bereitstellungstarif, etwa *Basic* , *GeneralPurpose* (Standardeinstellung) oder *MemoryOptimized*
+    * **SKU-Familie** : *Gen4* oder *Gen5* (Standardeinstellung). Mit dieser Option wird die Hardwaregeneration für die Serverbereitstellung angegeben.
+    * **MySQL-Version** : die Version des bereitzustellenden MySQL-Servers, etwa *5.6* oder *5.7* (Standardeinstellung)
+    * **Backup Retention Days** (Sicherungsaufbewahrung in Tagen): der gewünschte Zeitraum für die Aufbewahrung georedundanter Sicherungen in Tagen (Standardeinstellung: *7* )
+    * **Georedundante Sicherung** : *Aktiviert* oder *Deaktiviert* (Standardeinstellung), abhängig von den Anforderungen an die georedundante Notfallwiederherstellung (Geo-Disaster Recovery, Geo-DR)
+    * **Name des virtuellen Netzwerks** : der Name des virtuellen Netzwerks (Standardeinstellung: *azure_mysql_vnet* )
+    * **Subnetzname** : der Name des Subnetzes (Standardeinstellung: *azure_mysql_subnet* )
+    * **Virtual Network Rule Name** (Name der VNET-Regel): der Name der VNET-Regel, die das Subnetz zulässt (Standardeinstellung: *AllowSubnet* )
+    * **Vnet Address Prefix** (VNET-Adresspräfix): das Adresspräfix für das virtuelle Netzwerk (Standardeinstellung: *10.0.0.0/16* )
+    * **Subnetzpräfix** : das Adresspräfix für das Subnetz (Standardeinstellung: *10.0.0.0/16* )
 
 5. Lesen Sie die Geschäftsbedingungen, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** aus.
 
@@ -153,7 +153,7 @@ echo "Press [ENTER] to continue ..."
 
 Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihren neuen Azure Database for MySQL-Server anzuzeigen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Database for MySQL-Server**, und wählen Sie die Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Database for MySQL-Server** , und wählen Sie die Option aus.
 
 2. Wählen Sie in der Datenbankliste den neuen Server aus. Die Seite **Übersicht** für den neuen Azure Database for MySQL-Server wird angezeigt.
 
@@ -187,7 +187,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 

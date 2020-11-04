@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b7b46f2d280577f40f927a0d8eb6fcf2ed33e04a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519672"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927429"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Schnellstart: Erstellen einer Funktion in Azure, die auf HTTP-Anforderungen antwortet
 
@@ -369,9 +369,9 @@ mvn azure-functions:deploy
 
 Dadurch werden in Azure die folgenden Ressourcen erstellt:
 
-+ Ressourcengruppe namens _java-functions-group_ .
++ Ressourcengruppe namens _java-functions-group_.
 + Speicherkonto – von Functions benötigt. Der Name wird nach dem Zufallsprinzip basierend auf den Anforderungen für den Speicherkontonamen generiert.
-+ Hostingplan: Serverloses Hosting für Ihre Funktions-App in der Region _westus_ . Der Name lautet _java-functions-app-service-plan_ .
++ Hostingplan: Serverloses Hosting für Ihre Funktions-App in der Region _westus_. Der Name lautet _java-functions-app-service-plan_.
 + Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name wird auf Grundlage der _artifactId_ zufällig generiert und mit einer zufällig generierten Zahl angefügt. 
 
 Bei der Bereitstellung werden die Projektdateien mithilfe von [zip deployment](functions-deployment-technologies.md#zip-deploy) gepackt und für die neue Funktions-App bereitgestellt. Der Code wird über das Bereitstellungspaket in Azure ausgeführt.

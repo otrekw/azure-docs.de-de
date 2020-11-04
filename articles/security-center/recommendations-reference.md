@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: edee1948780b827eed5047c6c9c919b66eb619d0
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 553f83151289adf6f0f4420d106af7ae37047bda
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900225"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148319"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
 In diesem Artikel sind die Empfehlungen aufgeführt, die in Azure Security Center angezeigt werden können. Welche Empfehlungen in Ihrer Umgebung angezeigt werden, hängt von den geschützten Ressourcen und Ihrer angepassten Konfiguration ab.
 
-Security Center-Empfehlungen beruhen auf Best Practices. Zum Teil orientieren sie sich am **Azure-Sicherheitsvergleichstest** . Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
+Security Center-Empfehlungen beruhen auf Best Practices. Zum Teil orientieren sie sich am **Azure-Sicherheitsvergleichstest**. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
 
 Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md).
 
@@ -217,6 +217,5 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlunge
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Empfehlungen finden Sie in den folgenden Artikeln:
 
-* [Im Microsoft Learn-Modul zur Analyse der Security Center-Empfehlungen](/learn/modules/identify-threats-with-azure-security-center/)
 * [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
 * [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)

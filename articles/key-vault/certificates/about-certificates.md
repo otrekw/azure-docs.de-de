@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126772"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289780"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informationen zu Azure Key Vault-Zertifikaten
 
@@ -44,7 +44,7 @@ Wenn ein Key Vault-Zertifikat erstellt wird, kann es aus dem adressierbaren Gehe
 
 Der adressierbare Schlüssel erhält bei nicht exportierbaren Key Vault-Zertifikaten höhere Relevanz. Die Vorgänge des adressierbaren Key Vault-Schlüssels werden vom Feld *keyusage* der Key Vault-Zertifikatrichtlinie zugeordnet, mit der das Key Vault-Zertifikat erstellt wird.  
 
- - Unterstützte Schlüsseltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) aufgeführt). Exportierbare Schlüssel sind nur bei RSA und EC zulässig. HSM-Schlüssel sind nicht exportierbar.
+ - Unterstützte Schlüsseltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) aufgeführt). Exportierbare Schlüssel sind nur bei RSA und EC zulässig. HSM-Schlüssel sind nicht exportierbar.
 
 
 ## <a name="certificate-attributes-and-tags"></a>Zertifikatattribute und Tags
@@ -57,7 +57,7 @@ Die Zertifikatattribute werden in Attributen des adressierbaren Schlüssels und 
 
 Ein Key Vault-Zertifikat weist folgende Attribute auf:  
 
--   *enabled* : Boolesch, optional, Standardwert ist **true** . Mit diesem Attribut kann angegeben werden, ob die Zertifikatdaten als Geheimnis oder als funktionsfähiger Schlüssel abgerufen werden können. Das Attribut wird auch in Verbindung mit *nbf* und *exp* verwendet, wenn ein Vorgang zwischen *nbf* und *exp* stattfindet. Der Vorgang wird nur zugelassen, wenn „enabled“ auf „true“ festgelegt ist. Vorgänge außerhalb des Fensters zwischen *nbf* und *exp* werden automatisch nicht zugelassen.  
+-   *enabled* : Boolesch, optional, Standardwert ist **true**. Mit diesem Attribut kann angegeben werden, ob die Zertifikatdaten als Geheimnis oder als funktionsfähiger Schlüssel abgerufen werden können. Das Attribut wird auch in Verbindung mit *nbf* und *exp* verwendet, wenn ein Vorgang zwischen *nbf* und *exp* stattfindet. Der Vorgang wird nur zugelassen, wenn „enabled“ auf „true“ festgelegt ist. Vorgänge außerhalb des Fensters zwischen *nbf* und *exp* werden automatisch nicht zugelassen.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen werden:
 
@@ -82,11 +82,11 @@ Eine Zertifikatrichtlinie enthält Informationen zum Erstellen und Verwalten des
 
 Wenn ein Key Vault-Zertifikat von Grund auf neu erstellt wird, muss eine Richtlinie angegeben werden. Die Richtlinie gibt an, wie diese oder die nächste Key Vault-Zertifikatversion erstellt werden soll. Nachdem eine Richtlinie eingerichtet wurde, ist bei nachfolgenden Erstellungsvorgängen für zukünftige Versionen keine weitere Richtlinie erforderlich. Es gibt nur eine Instanz einer Richtlinie für alle Versionen eines Key Vault-Zertifikats.  
 
-Generell enthält eine Zertifikatsrichtlinie folgende Informationen (deren Definitionen finden Sie [hier](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
+Generell enthält eine Zertifikatsrichtlinie folgende Informationen (deren Definitionen finden Sie [hier](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
 
 -   Eigenschaften des X.509-Zertifikats: Enthält den Namen und einen alternativen Namen des Antragstellers sowie weitere Eigenschaften zum Erstellen einer X.509-Zertifikatanforderung.  
 -   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Exportierbarkeits- und ReuseKeyOnRenewal-Felder. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll. 
-     - Unterstützte Schlüsseltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) aufgeführt) 
+     - Unterstützte Schlüsseltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) aufgeführt) 
 -   Geheimniseigenschaften: enthält Geheimniseigenschaften wie den Inhaltstyp eines adressierbaren Geheimnisses zum Generieren des Geheimniswerts, um das Zertifikat als Geheimnis abzurufen.  
 -   Lebensdaueraktionen: enthält Lebensdaueraktionen für das Key Vault-Zertifikat. Jede Lebensdaueraktion enthält:  
 
@@ -133,7 +133,7 @@ Bevor ein Zertifikatsaussteller in einer Key Vault-Instanz erstellt werden kann,
 
     -   Stellt die Konfiguration zum Erstellen eines Ausstellerobjekts des Anbieters im Schlüsseltresor bereit  
 
-Weitere Informationen zum Erstellen von Ausstellerobjekten im Zertifikateportal finden Sie im [Blog zu Key Vault-Zertifikaten](https://aka.ms/kvcertsblog).  
+Weitere Informationen zum Erstellen von Ausstellerobjekten im Zertifikateportal finden Sie im [Blog zu Key Vault-Zertifikaten](/archive/blogs/kv/manage-certificates-via-azure-key-vault).  
 
 Key Vault ermöglicht die Erstellung mehrerer Ausstellerobjekte mit unterschiedlicher Ausstelleranbieterkonfiguration. Sobald ein Ausstellerobjekt erstellt ist, kann in einer oder mehreren Zertifikatrichtlinien auf seinen Namen verwiesen werden. Beim Verweis auf das Ausstellerobjekt wird Key Vault angewiesen, die Konfiguration gemäß den Angaben im Ausstellerobjekt zu verwenden, wenn das X509-Zertifikat bei Zertifikaterstellung und -verlängerung beim CA-Anbieter angefordert wird.  
 

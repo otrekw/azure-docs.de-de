@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: e6b299b5befec93f21e9e8476d0cc74710612d66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c6282f487d6a20de4654118df94c8bfac8a441d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323803"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075924"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Schnellstart: Registrieren eines TPM-Geräts bei IoT Hub Device Provisioning Service per Java Service SDK
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie programmgesteuert eine ind
 - Ausführung der Schritte unter [Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md).
 - Ausführung der Schritte unter [Lesen kryptografischer Schlüssel vom TPM-Gerät](quick-create-simulated-device.md#simulatetpm).
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks) In dieser Schnellstartanleitung wird weiter unten das [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) installiert. Es funktioniert sowohl unter Windows als auch unter Linux. In dieser Schnellstartanleitung wird Windows verwendet.
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks) In dieser Schnellstartanleitung wird weiter unten das [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) installiert. Es funktioniert sowohl unter Windows als auch unter Linux. In dieser Schnellstartanleitung wird Windows verwendet.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -62,7 +62,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie programmgesteuert eine ind
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die Bereitstellungsdetails Ihres TPM-Geräts dem Beispielcode hinzufügen. 
 
-1. Öffnen Sie eine Eingabeaufforderung. Klonen Sie das GitHub-Repository für das Codebeispiel zur Geräteregistrierung, indem Sie das [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) verwenden:
+1. Öffnen Sie eine Eingabeaufforderung. Klonen Sie das GitHub-Repository für das Codebeispiel zur Geräteregistrierung, indem Sie das [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) verwenden:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -72,7 +72,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Bereitstellungsdetails Ihr
 
    1. Fügen Sie das Element `[Provisioning Connection String]` für Ihren Provisioning-Dienst wie folgt aus dem Portal hinzu:
        1. Navigieren Sie zu Ihrem Provisioning-Dienst im [Azure-Portal](https://portal.azure.com). 
-       2. Öffnen Sie **Freigegebene Zugriffsrichtlinien**, und wählen Sie eine Richtlinie aus, die über die Berechtigung *EnrollmentWrite* verfügt.
+       2. Öffnen Sie **Freigegebene Zugriffsrichtlinien** , und wählen Sie eine Richtlinie aus, die über die Berechtigung *EnrollmentWrite* verfügt.
        3. Kopieren Sie die **Primärschlüssel-Verbindungszeichenfolge**. 
 
            ![Abrufen der Verbindungszeichenfolge für die Bereitstellung aus dem Portal](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
@@ -130,7 +130,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Bereitstellungsdetails Ihr
     mvn install -DskipTests
     ```
 
-   Mit diesem Befehl wird das Maven-Paket [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) auf Ihren Computer heruntergeladen. Das Paket enthält die Binärdateien für das [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/), das mit dem Beispielcode erstellt werden soll. 
+   Mit diesem Befehl wird das Maven-Paket [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) auf Ihren Computer heruntergeladen. Das Paket enthält die Binärdateien für das [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/), das mit dem Beispielcode erstellt werden soll. 
 
 3. Führen Sie das Beispiel aus, indem Sie im Befehlsfenster diese Befehle verwenden:
 
@@ -150,7 +150,7 @@ Wenn Sie planen, sich das Beispiel des Java-Diensts näher anzusehen, sollten Si
 
 1. Schließen Sie das Ausgabefenster des Java-Beispiels auf Ihrem Computer.
 1. Schließen Sie ggf. das TPM-Simulatorfenster, das Sie erstellt haben, um Ihr TPM-Gerät zu simulieren.
-1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und klicken Sie anschließend auf die Registerkarte **Individuelle Registrierungen**. Aktivieren Sie das Kontrollkästchen der *Registrierungs-ID* für den Registrierungseintrag, den Sie in diesem Schnellstart erstellt haben, und klicken Sie oben im Bereich auf die Schaltfläche **Löschen**.
+1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten** , und klicken Sie anschließend auf die Registerkarte **Individuelle Registrierungen**. Aktivieren Sie das Kontrollkästchen der *Registrierungs-ID* für den Registrierungseintrag, den Sie in diesem Schnellstart erstellt haben, und klicken Sie oben im Bereich auf die Schaltfläche **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Schnellstart haben Sie ein simuliertes TPM-Gerät für Ihren Gerätebereitstellungsdienst registriert. Ausführlichere Informationen zur Gerätebereitstellung finden Sie im Tutorial zur Einrichtung des Device Provisioning-Diensts über das Azure-Portal. 

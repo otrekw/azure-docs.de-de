@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489318"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073103"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können mit der Cassandra-API von Azure Cosmos DB über Open-Source-[Clienttreiber](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) für Cassandra kommunizieren, die mit der Version 4 des binären CQL-[Wire-Protokolls](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) kompatibel sind. 
 
@@ -199,7 +200,7 @@ Die Cassandra-API für Azure Cosmos DB ist eine verwaltete Dienstplattform. Sie 
 
 Sie können eine gehostete native Cassandra-Shell (CQLSH v5.0.1) direkt über den Daten-Explorer im [Azure-Portal](data-explorer.md) oder über den [Azure Cosmos-Explorer](https://cosmos.azure.com/) öffnen. Vor dem Aktivieren der CQL-Shell müssen Sie [das Feature „Notebooks“ in Ihrem Konto aktivieren](enable-notebooks.md). (Sollte es noch nicht aktiviert sein, werden Sie beim Klicken auf `Open Cassandra Shell` dazu aufgefordert.) Informationen zu unterstützten Azure-Regionen finden Sie im hervorgehobenen Hinweis des Artikels [Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)](enable-notebooks.md).
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Öffnen von CQLSH&quot;:::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Öffnen von CQLSH":::
 
 Sie können auch in Azure Cosmos DB eine Verbindung mit der Cassandra-API herstellen, indem Sie die auf einem lokalen Computer installierte CQLSH-Instanz verwenden. Sie enthält Apache Cassandra 3.1.1 und kann durch Festlegen der Umgebungsvariablen sofort verwendet werden. In den folgenden Abschnitten finden Sie Anleitungen zur Installation, Konfiguration und Verbindungsherstellung mit der Cassandra-API in Azure Cosmos DB unter Windows oder Linux mit CQLSH.
 
@@ -223,7 +224,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
