@@ -33,7 +33,7 @@ In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwend
 
 ## <a name="scopes"></a>Bereiche
 
-Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope**-Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z. B. den **Bereichswert** `read` für die API mit dem **App-ID-URI** `https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
+Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope**-Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z.B. den **Bereichswert** `read` für die API mit dem **App-ID-URI** `https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
 
 Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter der Anforderung hinzufügen.
 
