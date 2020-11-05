@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521304"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341857"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Unterstützung für das Verschieben von virtuellen Azure-Computern zwischen Azure-Regionen
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 und 15 SP1 |  Alle SUSE 15- und 15-Stock-Kernel
 **Einstellung** | **Unterstützung** | **Details**
 --- | --- | ---
 Size | Jede Größe von virtuellen Azure-Computern mit mindestens zwei CPU-Kernen und 1 GB RAM | Überprüfen Sie die [Größen der virtuellen Azure-Computer](../virtual-machines/sizes-general.md).
-Verfügbarkeitsgruppen | Derzeit nicht unterstützt | Wenn Sie einen virtuellen Azure-Computer mit einer Verfügbarkeitsgruppe zur Sammlung für die Verschiebung mit den Standardoptionen hinzufügen, tritt beim Vorbereitungsprozess ein Fehler auf. Sie können den virtuellen Computer in eine Verfügbarkeitszone oder als Einzelinstanz-VM verschieben. Sie können diese Einstellungen auf der Seite mit den Eigenschaften des Bearbeitungsziels ändern.
+Verfügbarkeitsgruppen | Unterstützt | Unterstützt.
 Verfügbarkeitszonen | Unterstützt | Wird je nach Unterstützung der Zielregion unterstützt.
 Azure-Katalogimages (von Microsoft veröffentlicht) | Unterstützt | Wird unterstützt, wenn auf der VM ein unterstütztes Betriebssystem ausgeführt wird.
 Azure-Katalogimages (von Drittanbietern veröffentlicht)  | Unterstützt | Wird unterstützt, wenn auf der VM ein unterstütztes Betriebssystem ausgeführt wird.

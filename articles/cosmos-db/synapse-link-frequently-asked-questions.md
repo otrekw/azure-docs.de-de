@@ -6,14 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480070"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341287"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Synapse Link für Azure Cosmos DB sorgt für eine enge Integration zwischen Azure Cosmos DB und Azure Synapse Analytics. Dadurch können Kunden Analysen in Quasi-Echtzeit zu ihren operativen Daten durchführen, wobei eine vollständige Leistungsisolation von ihren Transaktionsworkloads ohne ETL-Pipeline besteht. Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Synapse Link für Azure Cosmos DB.
 
@@ -156,7 +157,7 @@ Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist 
 
 Ein Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Wie werden Azure Cosmos DB-Anmeldeinformationen von Azure Synapse Studio übermittelt?
 

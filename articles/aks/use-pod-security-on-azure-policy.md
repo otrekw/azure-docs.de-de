@@ -4,13 +4,12 @@ description: Erfahren Sie, wie Sie Pods mit Azure Policy in Azure Kubernetes Ser
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-author: jluk
-ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900123"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348524"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Schützen von Pods mit Azure Policy
 
@@ -61,7 +60,7 @@ Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On f
 Die folgenden Einschränkungen gelten nur für das Azure Policy-Add-On für AKS:
 
 - Die [AKS-Podsicherheitsrichtlinie (Vorschau)](use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. 
-- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_ , _gatekeeper-system_ und _aks-periscope_ .
+- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_ , _gatekeeper-system_ und _aks-periscope_.
 
 ### <a name="recommendations"></a>Empfehlungen
 
@@ -128,7 +127,7 @@ Es gibt zusätzliche Azure-Richtlinien, die außerhalb der Anwendung einer Initi
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Nicht unterstützte integrierte Richtlinien für verwaltete AKS-Cluster
 
 > [!NOTE]
-> Die folgenden drei Richtlinien werden in AKS aufgrund von Anpassungsaspekten, die von AKS als verwalteter Dienst verwaltet und gesichert werden, **nicht unterstützt** . Diese Richtlinien sind speziell für mit Azure Arc verbundene Cluster mit nicht verwalteten Steuerungsebenen integriert.
+> Die folgenden drei Richtlinien werden in AKS aufgrund von Anpassungsaspekten, die von AKS als verwalteter Dienst verwaltet und gesichert werden, **nicht unterstützt**. Diese Richtlinien sind speziell für mit Azure Arc verbundene Cluster mit nicht verwalteten Steuerungsebenen integriert.
 
 |[Steuerung der Podsicherheitsrichtlinie](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
 |---|

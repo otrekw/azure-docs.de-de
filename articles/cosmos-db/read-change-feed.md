@@ -4,17 +4,19 @@ description: In diesem Artikel werden die verschiedenen Optionen beschrieben, di
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785254"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339273"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Lesen des Azure Cosmos DB-Änderungsfeeds
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Für die Arbeit mit dem Azure Cosmos DB-Änderungsfeed können Sie ein Pushmodell oder ein Pullmodell verwenden. Bei einem Pushmodell pusht der Änderungsfeedprozessor die Aufgaben an einen Client, der über Geschäftslogik zur Verarbeitung dieser Aufgaben verfügt. Die Komplexität der Überprüfung auf Aufgaben und das Speichern des Zustands der zuletzt verarbeiteten Aufgaben wird jedoch im Änderungsfeedprozessor behandelt.
 

@@ -4,17 +4,19 @@ description: Mit TTL bietet Microsoft Azure Cosmos DB die Möglichkeit, im Syste
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f439fcd8b2aa1c75e1aff2c6b775921beabbcddf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476976"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340549"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Mit der **Gültigkeitsdauer** (Time to Live, TTL) bietet Azure Cosmos DB die Möglichkeit, Elemente nach einem bestimmten Zeitraum automatisch aus einem Container zu löschen. Standardmäßig können Sie die Gültigkeitsdauer auf der Containerebene festlegen und den Wert für einzelne Elemente außer Kraft setzen. Wenn Sie eine Gültigkeitsdauer für einen Container oder ein Element festgelegt haben, werden die betroffenen Elemente nach Ablauf der angegebenen Zeit (seit der letzten Änderung des Elements) automatisch von Azure Cosmos DB gelöscht. Der Wert für die Gültigkeitsdauer wird in Sekunden konfiguriert. Wenn Sie eine Gültigkeitsdauer konfigurieren, löscht das System die abgelaufenen Elemente automatisch auf der Grundlage des entsprechenden Werts, ohne dass ein Löschvorgang explizit von der Clientanwendung initiiert werden muss. Der maximale Wert für TTL ist 2147483647.
 

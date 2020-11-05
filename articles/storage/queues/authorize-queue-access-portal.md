@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc6c4e57d0e04cc85bd83c11ba583b3f0b24fa82
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715505"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345991"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten im Azure-Portal
 
-Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Warteschlangendaten zugreifen, werden vom Portal im Hintergrund Anforderungen an Azure Storage gesendet. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.  
+Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Warteschlangendaten zugreifen, werden vom Portal im Hintergrund Anforderungen an Azure Storage gesendet. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.
 
 ## <a name="permissions-needed-to-access-queue-data"></a>Für den Zugriff auf Warteschlangendaten benötigte Berechtigungen
 
@@ -28,7 +28,7 @@ Je nachdem, wie Sie den Zugriff Warteschlangendaten im Azure-Portal autorisieren
 
 ### <a name="use-the-account-access-key"></a>Verwenden des Kontozugriffsschlüssels
 
-Für den Zugriff auf Warteschlangendaten mit dem Kontozugriffsschlüssel muss Ihnen eine Azure-Rolle zugewiesen sein, die die Azure RBAC-Aktion **Microsoft.Storage/storageAccounts/listkeys/action** umfasst. Bei dieser Azure-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Es folgen integrierte Rollen mit Unterstützung für **Microsoft.Storage/storageAccounts/listkeys/action**:
+Für den Zugriff auf Warteschlangendaten mit dem Kontozugriffsschlüssel muss Ihnen eine Azure-Rolle zugewiesen sein, die die Azure RBAC-Aktion **Microsoft.Storage/storageAccounts/listkeys/action** umfasst. Bei dieser Azure-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Es folgen integrierte Rollen mit Unterstützung für **Microsoft.Storage/storageAccounts/listkeys/action** :
 
 - Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
 - Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
@@ -55,7 +55,7 @@ Im Folgenden die integrierten Rollen, die den Zugriff auf Ihre Warteschlangendat
 
 Benutzerdefinierte Rollen können verschiedene Kombinationen der von den integrierten Rollen gebotenen Berechtigungen unterstützen. Weitere Informationen zum Erstellen benutzerdefinierter Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md) und [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](../../role-based-access-control/role-definitions.md).
 
-Das Auflisten von Warteschlangen wird von der Rolle „Administrator für klassisches Abonnement“ nicht unterstützt. Um Warteschlangen auflisten zu können, muss einem Benutzer die Azure Resource Manager-Rolle **Leser**, die Rolle **Storage-Warteschlangendatenleser** oder die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen sein.
+Das Auflisten von Warteschlangen wird von der Rolle „Administrator für klassisches Abonnement“ nicht unterstützt. Um Warteschlangen auflisten zu können, muss einem Benutzer die Azure Resource Manager-Rolle **Leser** , die Rolle **Storage-Warteschlangendatenleser** oder die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen sein.
 
 > [!IMPORTANT]
 > Die Vorschauversion des Storage-Explorers im Azure-Portal unterstützt nicht die Verwendung von Azure AD-Anmeldeinformationen zum Anzeigen und Ändern von Warteschlangendaten. Storage-Explorer im Azure-Portal verwendet immer die Kontoschlüssel für den Zugriff auf Daten. Um Storage-Explorer im Azure-Portal verwenden zu können, muss Ihnen eine Rolle zugewiesen werden, in der **Microsoft.Storage/storageAccounts/listkeys/action** enthalten ist.
@@ -74,23 +74,23 @@ Wenn Sie zu einer Warteschlange navigieren, wird im Azure-Portal angezeigt, ob S
 
 Wenn Sie sich mit dem Kontozugriffsschlüssel authentifizieren, wird im Portal **Zugriffsschlüssel** als Authentifizierungsmethode angegeben:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Screenshot, der zeigt, wie Sie im Azure-Portal zu Warteschlangendaten navigieren":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Screenshot eines Benutzers, der gegenwärtig mit dem Kontoschlüssel auf Warteschlangen zugreift":::
 
 Um zur Verwendung des Azure AD-Kontos zu wechseln, klicken Sie auf den in der Abbildung hervorgehobenen Link. Wenn Sie über die Ihnen zugewiesenen Azure-Rollen die entsprechenden Berechtigungen haben, können Sie fortfahren. Wenn Ihnen jedoch die benötigten Berechtigungen fehlen, erhalten Sie eine Fehlermeldung wie die folgende:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Screenshot, der zeigt, wie Sie im Azure-Portal zu Warteschlangendaten navigieren":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Angezeigter Fehler, wenn das Azure AD-Konto den Zugriff nicht unterstützt":::
 
-Beachten Sie, dass in der Liste keine Warteschlangen enthalten sind, wenn Ihrem Azure AD-Konto die Anzeigeberechtigung fehlt. Klicken Sie auf den Link **Zum Zugriffsschlüssel wechseln**, um erneut den Zugriffsschlüssel für die Authentifizierung zu nutzen.
+Beachten Sie, dass in der Liste keine Warteschlangen enthalten sind, wenn Ihrem Azure AD-Konto die Anzeigeberechtigung fehlt. Klicken Sie auf den Link **Zum Zugriffsschlüssel wechseln** , um erneut den Zugriffsschlüssel für die Authentifizierung zu nutzen.
 
 ### <a name="authenticate-with-your-azure-ad-account"></a>Authentifizierung mit dem Azure AD-Konto
 
 Wenn Sie sich mit Ihrem Azure AD-Konto authentifizieren, wird im Portal **Azure AD-Benutzerkonto** als Authentifizierungsmethode angegeben:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Screenshot, der zeigt, wie Sie im Azure-Portal zu Warteschlangendaten navigieren":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Screenshot eines Benutzers, der gegenwärtig mit dem Azure AD-Konto auf Warteschlangen zugreift":::
 
 Um zur Verwendung des Zugriffsschlüssels zu wechseln, klicken Sie auf den in der Abbildung hervorgehobenen Link. Wenn Sie Zugriff auf den Kontoschlüssel haben, können Sie fortfahren. Wenn Sie jedoch keinen Zugriff auf den Kontoschlüssel haben, wird im Azure-Portal eine Fehlermeldung angezeigt.
 
-Warteschlangen werden nicht im Portal aufgeführt, wenn Sie keinen Zugriff auf die Kontoschlüssel haben. Klicken Sie auf den Link **Zum Azure AD-Benutzerkonto wechseln**, um erneut das Azure AD-Konto für die Authentifizierung zu nutzen.
+Warteschlangen werden nicht im Portal aufgeführt, wenn Sie keinen Zugriff auf die Kontoschlüssel haben. Klicken Sie auf den Link **Zum Azure AD-Benutzerkonto wechseln** , um erneut das Azure AD-Konto für die Authentifizierung zu nutzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

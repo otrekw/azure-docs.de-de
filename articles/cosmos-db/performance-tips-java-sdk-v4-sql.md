@@ -3,19 +3,21 @@ title: Leistungstipps für das Azure Cosmos DB Java SDK v4
 description: Informieren Sie sich, wie Sie mit Clientkonfigurationsoptionen die Leistung von Azure Cosmos-Datenbanken für das Java SDK v4 verbessern.
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: 6b87a06620a6e20ff67bde6fde9ed01aaef7fc9e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475225"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339715"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Leistungstipps für das Azure Cosmos DB Java SDK v4
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)

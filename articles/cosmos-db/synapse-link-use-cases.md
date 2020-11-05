@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480053"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340174"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link für Azure Cosmos DB: Anwendungsfälle für Analysen in Quasi-Echtzeit
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Azure Synapse Link](synapse-link.md) für Azure Cosmos DB ist eine cloudnative hybride Verarbeitungsfunktion für Transaktionen und Analysen (Hybrid Transactional and Analytical Processing, HTAP), mit der Sie in Azure Cosmos DB in Quasi-Echtzeit Analysen für operative Daten ausführen können. Synapse Link sorgt für eine nahtlose Integration zwischen Azure Cosmos DB und Azure Synapse Analytics.
 
@@ -70,7 +71,7 @@ Im Folgenden finden Sie eine Anleitung für die Datenintegration für Batch- und
 
 Einzelhändler müssen sichere und skalierbare E-Commerce-Lösungen erstellen, die die Anforderungen von Kunden und Unternehmen erfüllen. Diese E-Commerce-Lösungen müssen eine Kundenbindung durch angepasste Produkte und Angebote herstellen, Transaktionen schnell und sicher verarbeiten und sich auf Fulfillment und Kundendienst konzentrieren. Azure Cosmos DB und Synapse Link für Azure Cosmos DB ermöglichen es Einzelhändlern, personalisierte Empfehlungen für Kunden in Echtzeit zu generieren. Sie verwenden anpassbare Konsistenzeinstellungen mit geringer Wartezeit, um unmittelbare Erkenntnisse zu erhalten, wie sie in der folgenden Architektur dargestellt sind:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse Link für Azure Cosmos DB in Echtzeitpersonalisierung" border="false":::
 
 Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
@@ -82,7 +83,7 @@ Industrielle IOT-Innovationen haben die Ausfallzeiten von Geräten enorm verring
 
 Im Folgenden sehen Sie eine Architektur, die die cloudnativen HTAP-Funktionen von Azure Synapse Link für Azure Cosmos DB in IOT-Predictive Maintenance nutzt:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse Link für Azure Cosmos DB in IoT-Predictive Maintenance" border="false" :::
 
 Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
@@ -104,7 +105,7 @@ In der folgenden Liste finden Sie eine Übersicht über die verschiedenen Worklo
 
 Azure Synapse Link ermöglicht Azure Cosmos DB nicht nur die Unterstützung von Transaktionsworkloads, sondern auch das Durchführen von Analyseworkloads in Quasi-Echtzeit für operative Verlaufsdaten. Dies geschieht ohne ETL-Anforderungen und mit einer garantierten Leistungsisolation von den Transaktionsworkloads.
 
-Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false":::
+Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Workloadmuster für Azure Synapse Link für Azure Cosmos DB" border="false":::
 
 Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl transaktionale als auch analytische Anforderungen einer Bestandsverwaltungsplattform unterstützt, soll am Beispiel des E-Commerce-Unternehmens CompanyXYZ verdeutlicht werden, das in mehr als 20 Ländern/Regionen tätig ist.
 

@@ -3,18 +3,21 @@ title: Troubleshooting für Ausnahmen aufgrund einer zu hohen Azure Cosmos DB-A
 description: Erfahren Sie mehr über das Diagnostizieren und Beheben von Problemen bei einer Ausnahme aufgrund einer zu hohen Anforderungsrate.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c985cea24ea772fe9e0c9bcad59f63a66b2489cc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277145"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340106"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>Diagnostizieren und Behandeln von Problemen im Zusammenhang mit der Azure Cosmos DB-Ausnahme, dass die Anforderungsrate zu hoch ist
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Eine Fehlermeldung über eine zu hohe Anforderungsrate oder der Fehlercode 429 deuten darauf hin, dass Ihre Anforderungen gedrosselt werden.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung

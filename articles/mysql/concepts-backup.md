@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: ef53fc3de87eeaa41d3859fd8b10dd3cc942afc7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547213"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348456"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Sicherung und Wiederherstellung in Azure Database for MySQL
 
@@ -38,13 +38,13 @@ Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
 Der universelle Speicher ist der Back-End-Speicher, der die [Server im Tarif „Universell“](concepts-pricing-tiers.md) und [„Arbeitsspeicheroptimiert“](concepts-pricing-tiers.md) unterstützt. Bei Servern mit universellem Speicher von bis zu 4 TB erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. Die Sicherungen in universellen Speichern mit bis zu 4 TB basieren nicht auf Momentaufnahmen und beanspruchen zum Zeitpunkt der Sicherung E/A-Bandbreite. Bei großen Datenbanken (> 1 TB) in einem 4-TB-Speicher wird Folgendes empfohlen:
 
 - Bereitstellung von mehr IOPs zum Sichern von IOs ODER
-- Alternativ können Sie zu einem universellen Speicher migrieren, der bis zu 16 TB unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in Ihren bevorzugten [Azure-Regionen](./concepts-pricing-tiers.md#storage) verfügbar ist. Für einen universellen Speicher, der bis zu 16 TB unterstützt, fallen keine zusätzlichen Kosten an. Unterstützung bei der Migration auf einen 16-TB-Speicher erhalten Sie, indem Sie über das Azure-Portal ein Supportticket öffnen.
+- Alternativ können Sie zu einem universellen Speicher migrieren, der bis zu 16 TB unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in Ihren bevorzugten [Azure-Regionen](/azure/mysql/concepts-pricing-tiers#storage) verfügbar ist. Für einen universellen Speicher, der bis zu 16 TB unterstützt, fallen keine zusätzlichen Kosten an. Unterstützung bei der Migration auf einen 16-TB-Speicher erhalten Sie, indem Sie über das Azure-Portal ein Supportticket öffnen.
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Universelle Speicherserver mit bis zu 16 TB Speicher
 
-In einigen [Azure-Regionen](./concepts-pricing-tiers.md#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](./concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen.
+In einigen [Azure-Regionen](/azure/mysql/concepts-pricing-tiers#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen.
 
-In einigen [Azure-Regionen](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](/concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen.
+In einigen [Azure-Regionen](concepts-pricing-tiers.md#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen.
 
 Differentielle Momentaufnahmesicherungen werden mindestens einmal täglich erstellt. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. Differenzielle Momentaufnahmesicherungen werden alle 24 Stunden ausgeführt, sofern das Transaktionsprotokoll (binlog in MySQL) seit der letzten differenziellen Sicherung den Wert von 50 GB nicht überschreitet. An einem Tag sind maximal sechs differenzielle Momentaufnahmen zulässig.
 
@@ -67,9 +67,9 @@ Eine Langzeitaufbewahrung von Sicherungen (mehr als 35 Tage) wird vom Dienst de
 
 Bei Azure Database for MySQL können Sie in den Tarifen „Allgemein“ und „Arbeitsspeicheroptimiert“ flexibel zwischen lokal redundantem und georedundantem Sicherungsspeicher wählen. Wenn die Sicherungen in einem georedundanten Sicherungsspeicher gespeichert werden, werden sie nicht nur in der Region vorgehalten, in der Ihr Server gehostet wird. Sie werden außerdem in einem [gekoppelten Datencenter](../best-practices-availability-paired-regions.md) repliziert. Diese Georedundanz bietet besseren Schutz und ermöglicht im Notfall die Wiederherstellung Ihres Servers in einer anderen Region. Im Tarif „Basic“ ist nur lokal redundanter Sicherungsspeicher verfügbar.
 
-#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Wechsel von lokal redundantem zu georedundantem Sicherungsspeicher
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Wechseln von lokal redundantem zu georedundantem Sicherungsspeicher
 
-Das Konfigurieren von lokal redundantem oder georedundantem Speicher für die Sicherung ist nur während der Erstellung des Servers zulässig. Nachdem der Server bereitgestellt wurde, können Sie die Option für die Sicherungsspeicherredundanz nicht mehr ändern. Zum Verlagern des Sicherungsspeichers von lokal redundantem Speicher zu georedundantem Speicher ist das Erstellen eines neuen Servers und Migrieren der Daten mithilfe von [Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md) die einzige unterstützte Option.
+Das Konfigurieren von lokal redundantem oder georedundantem Speicher für die Sicherung ist nur während der Erstellung des Servers zulässig. Nachdem der Server bereitgestellt wurde, können Sie die Option für die Sicherungsspeicherredundanz nicht mehr ändern. Wenn Sie Ihren Sicherungsspeicher von lokal redundantem Speicher auf georedundanten Speicher umstellen möchten, ist das Erstellen eines neuen Servers und Migrieren der Daten mithilfe von [Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md) die einzige unterstützte Option.
 
 ### <a name="backup-storage-cost"></a>Kosten für Sicherungsspeicher
 

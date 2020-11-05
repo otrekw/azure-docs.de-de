@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3599052e49b91747580bf506f06ebfb8d2e34423
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317789"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346807"
 ---
 # <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
 
@@ -38,8 +38,8 @@ Zusätzlich zur Vertrautheit mit Ihrer Lösungsdomäne sollte sich Ihr Engineeri
 
 Wählen Sie eine oder beide der folgenden Skriptumgebungen als Unterstützung bei der Verwaltung Ihres Containerimages aus:
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- [Azure PowerShell](/powershell/azure/)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/).
 
 Sie sollten Ihrer Entwicklungsumgebung diese Tools hinzufügen:
 

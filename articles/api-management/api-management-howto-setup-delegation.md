@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148771"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341840"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
@@ -37,7 +37,7 @@ Der komplette Workflow sieht wie folgt aus:
 3. Der Delegierungsendpunkt wiederum leitet den Benutzer um oder zeigt eine Benutzeroberfläche für die Anmeldung oder Registrierung an.
 4. Im Erfolgsfall wird der Benutzer anschließend wieder auf die Seite im API Management-Entwicklerportal umgeleitet, von der er ursprünglich gekommen ist.
 
-Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihren Delegierungsendpunkt ein. Suchen Sie im Azure-Portal in Ihrer API Management-Ressource nach **Sicherheit** , und klicken Sie auf das Element **Delegierung** . Klicken Sie auf das Kontrollkästchen zum Aktivieren von „Anmeldung und Abmeldung delegieren“.
+Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihren Delegierungsendpunkt ein. Suchen Sie im Azure-Portal in Ihrer API Management-Ressource nach **Sicherheit** , und klicken Sie auf das Element **Delegierung**. Klicken Sie auf das Kontrollkästchen zum Aktivieren von „Anmeldung und Abmeldung delegieren“.
 
 ![Delegierungsseite][api-management-delegation-signin-up]
 
@@ -71,7 +71,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt** einrichten. Dieser Endpun
    * [Fordern Sie ein SAS-Token an]. Verwenden Sie hierzu die REST-API von API Management.
    * Hängen Sie einen returnUrl-Abfrageparameter an die SSO-URL an, die Sie aus dem obigen API-Aufruf erhalten haben:
      
-     > Beispiel: `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     > Beispiel: `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
    * Leiten Sie den Benutzer an die oben generierte URL um.
 

@@ -3,18 +3,20 @@ title: Leistungs- und Skalierungstests mit Azure Cosmos DB
 description: Erfahren Sie, wie Sie Skalierungs- und Leistungstests mit Azure Cosmos DB durchführen. Sie können dann die Funktionalität von Azure Cosmos DB für Anwendungsszenarien mit hoher Leistung auswerten.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6ddc428a1b2228c7e6e15093c12deb25ddd65c27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281037"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341772"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Bei vielen Anwendungen hat die Datenbankebene einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit. Daher ist sie eine wichtige Komponente für Leistungstests. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist speziell für elastische Skalierung und vorhersagbare Leistung ausgelegt. Durch diese Eigenschaften eignet es sich hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen. 
 

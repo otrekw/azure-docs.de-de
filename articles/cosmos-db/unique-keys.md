@@ -4,17 +4,19 @@ description: Erfahren Sie, wie Sie eindeutige Schlüssel für eine Azure Cosmos-
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: dac2ed3888dcf1d38fc5e2c21611edf8008a07f6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c3c42146ba93115e257924c23dc34785c8258533
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340446"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Einschränkungen für eindeutige Schlüssel in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Eindeutige Schlüssel fügen einem Azure Cosmos-Container eine Datenintegritätsebene hinzu. Eine Richtlinie für eindeutige Schlüssel wird erstellt, wenn Sie einen Azure Cosmos-Container erstellen. Mit eindeutigen Schlüsseln stellen Sie die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Sie können auch die Eindeutigkeit pro [Partitionsschlüssel](partitioning-overview.md) gewährleisten.
 

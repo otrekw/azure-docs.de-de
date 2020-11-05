@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 0b4592b846477fe16e5ebcff7c9adfb45f7fe559
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ac75b89548d346945901d752672ef0f08601ccfb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790507"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345651"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Verwenden von Azure Queue Storage mit Python
 
@@ -33,7 +33,7 @@ Die Beispiele in diesem Artikel sind in Python geschrieben und verwenden die [Az
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Herunterladen und Installieren des Azure Storage SDKs für Python
 
 Das [Azure Storage SDK für Python](https://github.com/azure/azure-storage-python) erfordert Python Version 2.7, 3.3 oder höher.
- 
+
 ### <a name="install-via-pypi"></a>Installieren über PyPI
 
 Geben Sie für die Installation über Python Package Index (PyPI) folgenden Befehl ein:
@@ -73,7 +73,7 @@ Das Objekt [QueueService](/azure/developer/python/sdk/storage/azure-storage-queu
 
 ```python
 from azure.storage.queue import (
-        QueueService, 
+        QueueService,
         QueueMessageFormat
 )
 
@@ -297,9 +297,9 @@ queue_service.delete_queue(queue_name)
 
 Nachdem Sie sich nun mit den Grundlagen von Queue Storage vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
 
-* [API-Referenz zu Azure-Warteschlangen für Python](/python/api/azure-storage-queue)
-* [Python Developer Center](https://azure.microsoft.com/develop/python/)
-* [REST-API für Azure-Speicherdienste](/rest/api/storageservices/)
+- [API-Referenz zu Azure-Warteschlangen für Python](/python/api/azure-storage-queue)
+- [Python Developer Center](https://azure.microsoft.com/develop/python/)
+- [REST-API für Azure-Speicherdienste](/rest/api/storageservices/)
 
 [Azure Queue Storage-Clientbibliothek für Python]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
 [Azure-SDK für Python]: https://github.com/azure/azure-sdk-for-python

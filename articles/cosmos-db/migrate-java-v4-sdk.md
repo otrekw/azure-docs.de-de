@@ -5,17 +5,19 @@ author: anfeldma-ms
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327853"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339762"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrieren einer Anwendung für die Verwendung des Azure Cosmos DB Java SDK V4
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]  
 > Weitere Informationen zu diesem SDK finden Sie in den [Versionshinweisen](sql-api-sdk-java-v4.md) zu Azure Cosmos DB Java SDK V4, im [Maven-Repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), in den [Tipps zur Leistungssteigerung](performance-tips-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK V4 und im [Leitfaden zur Problembehandlung](troubleshoot-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK V4.
@@ -64,9 +66,9 @@ Im Folgenden sind die Änderungen auf API-Ebene in Azure Cosmos DB Java SDK 4.x.
 
   * **Java SDK 4.0** : Alle Klassen gehören zur synchronen API, sofern dem Klassennamen kein `Async` nach `Cosmos` nachgestellt ist.
 
-  * **Java SDK 3.x.x**: Alle Klassen gehören zur asynchronen API, sofern dem Klassennamen kein `Async` nach `Cosmos` nachgestellt ist.
+  * **Java SDK 3.x.x** : Alle Klassen gehören zur asynchronen API, sofern dem Klassennamen kein `Async` nach `Cosmos` nachgestellt ist.
 
-  * **Async Java SDK 2.x.x**: Die Klassennamen ähneln dem Sync Java SDK 2.x.x, der Name beginnt jedoch mit *Async*.
+  * **Async Java SDK 2.x.x** : Die Klassennamen ähneln dem Sync Java SDK 2.x.x, der Name beginnt jedoch mit *Async*.
 
 ### <a name="hierarchical-api-structure"></a>Hierarchische API-Struktur
 

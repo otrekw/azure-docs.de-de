@@ -9,22 +9,22 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 5dd2d9e932bd1be3da74a2bdc9bd918401076aa3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951399"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348609"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps
 
-„Suche während der Eingabe“ ist ein gängiges Verfahren für mehr Produktivität bei von Benutzern initiierten Abfragen. In Azure Cognitive Search wird dieses Vorgehen durch die Funktion *AutoVervollständigen* unterstützt, die einen Begriff oder einen Ausdruck auf der Grundlage von partiellen Eingaben vervollständigt (aus „Micro“ wird z. B. „Microsoft“). Eine andere Form sind *Vorschläge*, d. h. eine kurze Liste übereinstimmender Dokumente (Buchtitel werden mit einer ID zurückgegeben, sodass Sie eine Verknüpfung zu einer Detailseite herstellen können). Sowohl AutoVervollständigen als auch Vorschläge basieren auf einer Entsprechung im Index. Der Dienst bietet keine Abfragen an, die keine Ergebnisse zurückgeben.
+„Suche während der Eingabe“ ist ein gängiges Verfahren für mehr Produktivität bei von Benutzern initiierten Abfragen. In Azure Cognitive Search wird dieses Vorgehen durch die Funktion *AutoVervollständigen* unterstützt, die einen Begriff oder einen Ausdruck auf der Grundlage von partiellen Eingaben vervollständigt (aus „Micro“ wird z. B. „Microsoft“). Eine andere Form sind *Vorschläge* , d. h. eine kurze Liste übereinstimmender Dokumente (Buchtitel werden mit einer ID zurückgegeben, sodass Sie eine Verknüpfung zu einer Detailseite herstellen können). Sowohl AutoVervollständigen als auch Vorschläge basieren auf einer Entsprechung im Index. Der Dienst bietet keine Abfragen an, die keine Ergebnisse zurückgeben.
 
 Zum Implementieren dieser Verfahren in Azure Cognitive Search benötigen Sie Folgendes:
 
 + Eine *Vorschlagsfunktion* auf dem Back-End.
 + Eine *Abfrage* mit Angabe der [AutoVervollständigen](/rest/api/searchservice/autocomplete)- oder [Vorschlags](/rest/api/searchservice/suggestions)-API für die Anforderung.
-+ Ein *UI-Steuerelement*, um Interaktionen bei der Suche während der Eingabe in Ihrer Client-App zu verarbeiten. Wir empfehlen für diesen Zweck eine vorhandene JavaScript-Bibliothek.
++ Ein *UI-Steuerelement* , um Interaktionen bei der Suche während der Eingabe in Ihrer Client-App zu verarbeiten. Wir empfehlen für diesen Zweck eine vorhandene JavaScript-Bibliothek.
 
 In Azure Cognitive Search werden automatisch vervollständigte Abfragen und vorgeschlagene Ergebnisse aus dem Suchindex abgerufen, und zwar aus ausgewählten Feldern, die Sie bei einer Vorschlagsfunktion registriert haben. Eine Vorschlagsfunktion ist Bestandteil des Index und gibt an, welche Felder Inhalte zum Vervollständigen einer Abfrage und/oder zum Vorschlagen eines Ergebnisses bereitstellen. Wenn der Index erstellt und geladen wird, wird intern eine Vorschlagsdatenstruktur zum Speichern von Präfixen erstellt, die für die Übereinstimmung bei partiellen Abfragen verwendet werden. Bei Vorschlägen ist es für die Sucherfahrung äußerst wichtig, geeignete Felder auszuwählen, die einmalig sind oder sich zumindest nicht wiederholen. Weitere Informationen finden Sie unter [Erstellen einer Vorschlagsfunktion](index-add-suggesters.md).
 
@@ -117,7 +117,7 @@ $(function () {
 });
 ```
 
-`source` teilt der Funktion „jQuery UI Autocomplete“ mit, wo die Liste der unter dem Suchfeld anzuzeigenden Elemente abgerufen werden soll. Da es sich um ein MVC-Projekt handelt, ruft es die **Vorschlags**funktion in der Datei **HomeController.cs** auf, die die Logik für die Rückgabe der Abfragevorschläge enthält. Diese Funktion übergibt auch einige Parameter zur Steuerung von Hervorhebungen, für die Fuzzyübereinstimmung und für Benennungen. Die JavaScript-API zur automatischen Vervollständigung fügt den Parameter für Begriffe hinzu.
+`source` teilt der Funktion „jQuery UI Autocomplete“ mit, wo die Liste der unter dem Suchfeld anzuzeigenden Elemente abgerufen werden soll. Da es sich um ein MVC-Projekt handelt, ruft es die **Vorschlags** funktion in der Datei **HomeController.cs** auf, die die Logik für die Rückgabe der Abfragevorschläge enthält. Diese Funktion übergibt auch einige Parameter zur Steuerung von Hervorhebungen, für die Fuzzyübereinstimmung und für Benennungen. Die JavaScript-API zur automatischen Vervollständigung fügt den Parameter für Begriffe hinzu.
 
 `minLength: 3` stellt sicher, dass Empfehlungen nur angezeigt werden, wenn mindestens drei Zeichen in das Suchfeld eingegeben wurden.
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Aktivieren der Hervorhebung
 
-Durch die Hervorhebung wird auf die Zeichen im Ergebnis, die der Eingabe entsprechen, ein Schriftschnitt angewendet. Wenn beispielsweise die partielle Eingabe „micro“ lautet", würde das Ergebnis als „**micro**soft“, „**micro**scope“ usw. angezeigt. Die Hervorhebung basiert auf den HighlightPreTag- und HighlightPostTag-Parametern, die zusammen mit der Vorschlagsfunktion definiert werden.
+Durch die Hervorhebung wird auf die Zeichen im Ergebnis, die der Eingabe entsprechen, ein Schriftschnitt angewendet. Wenn beispielsweise die partielle Eingabe „micro“ lautet", würde das Ergebnis als „ **micro** soft“, „ **micro** scope“ usw. angezeigt. Die Hervorhebung basiert auf den HighlightPreTag- und HighlightPostTag-Parametern, die zusammen mit der Vorschlagsfunktion definiert werden.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Vorschlagsfunktion
 
-Wenn Sie C# und eine MVC-Anwendung verwenden, können Sie in der Datei **HomeController.cs** im Verzeichnis des Controllers eine Klasse für vorgeschlagene Ergebnisse erstellen. In .NET basiert eine Vorschlagsfunktion auf der [DocumentsOperationsExtensions.Suggest-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](./search-howto-dotnet-sdk.md).
+Wenn Sie C# und eine MVC-Anwendung verwenden, können Sie in der Datei **HomeController.cs** im Verzeichnis des Controllers eine Klasse für vorgeschlagene Ergebnisse erstellen. In .NET basiert eine Vorschlagsfunktion auf der [DocumentsOperationsExtensions.Suggest-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
 Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Eigenschaften der Klasse [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) bestimmen, welche Felder durchsucht und in den Ergebnissen zurückgegeben werden sowie die Anzahl der Übereinstimmungen und ob die Fuzzyübereinstimmung verwendet wird. 
 
@@ -253,4 +253,3 @@ Mithilfe dieser Links können Sie End-to-End-Anweisungen oder Code anzeigen, der
 
 + [Tutorial: Erstellen Ihrer ersten App in C# (Lektion 3)](tutorial-csharp-type-ahead-and-suggestions.md)
 + [C#-Codebeispiel: azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [Codebeispiele für C# und JavaScript zusammen mit REST](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

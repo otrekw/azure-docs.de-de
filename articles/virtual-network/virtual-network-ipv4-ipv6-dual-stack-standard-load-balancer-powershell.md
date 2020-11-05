@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: a13a2a081815f2a3b668caf9b4e78c2208601cb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3a30d13aeef2ffd8e03a5a5d7ddf8b58a336ee5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84702987"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348320"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure – PowerShell
 
@@ -30,7 +30,7 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Bevor Sie Ihr virtuelles Netzwerk mit dualem Stapel erstellen können, müssen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe namens *myRGDualStack* am Standort *east us*:
+Bevor Sie Ihr virtuelles Netzwerk mit dualem Stapel erstellen können, müssen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe namens *myRGDualStack* am Standort *east us* :
 
 ```azurepowershell-interactive
    $rg = New-AzResourceGroup `
@@ -39,7 +39,7 @@ Bevor Sie Ihr virtuelles Netzwerk mit dualem Stapel erstellen können, müssen S
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>Erstellen der öffentlichen IPv4- und IPv6-Adressen
-Um im Internet auf Ihre virtuellen Computer zugreifen zu können, benötigen Sie öffentliche IPv4- und IPv6-Adressen für den Lastenausgleich. Erstellen Sie mit [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) öffentliche IP-Adressen. Das folgende Beispiel erstellt öffentliche IPv4- und IPv6-Adressen mit den Namen *dsPublicIP_v4* und *dsPublicIP_v6* in der Ressourcengruppe *dsRG1*:
+Um im Internet auf Ihre virtuellen Computer zugreifen zu können, benötigen Sie öffentliche IPv4- und IPv6-Adressen für den Lastenausgleich. Erstellen Sie mit [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) öffentliche IP-Adressen. Das folgende Beispiel erstellt öffentliche IPv4- und IPv6-Adressen mit den Namen *dsPublicIP_v4* und *dsPublicIP_v6* in der Ressourcengruppe *dsRG1* :
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -99,7 +99,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>Konfigurieren des Back-End-Adresspools
 
-Erstellen Sie mit [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) einen Back-End-Adresspool. In den verbleibenden Schritten werden die virtuellen Computer an diesen Back-End-Pool angefügt. Das folgende Beispiel erstellt Back-End-Adresspools mit den Namen *dsLbBackEndPool_v4* und *dsLbBackEndPool_v6*, um VMs mit sowohl IPv4- als auch IPv6-NIC-Konfigurationen einzubeziehen:
+Erstellen Sie mit [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) einen Back-End-Adresspool. In den verbleibenden Schritten werden die virtuellen Computer an diesen Back-End-Pool angefügt. Das folgende Beispiel erstellt Back-End-Adresspools mit den Namen *dsLbBackEndPool_v4* und *dsLbBackEndPool_v6* , um VMs mit sowohl IPv4- als auch IPv6-NIC-Konfigurationen einzubeziehen:
 
 ```azurepowershell-interactive
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -117,7 +117,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol tcp -Port 3389 -I
 
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie virtuelle Computer Datenverkehr empfangen, können Sie optional einen Integritätstest definieren. Der grundlegende Lastenausgleich verwendet einen IPv4-Test, um die Integrität sowohl für IPv4- als auch für IPv6-Endpunkte auf den virtuellen Computern zu bewerten. Der Standardlastenausgleich unterstützt explizite IPv6-Integritätstests.
 
-Erstellen Sie mit [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) eine Lastenausgleichsregel. Das folgende Beispiel erstellt Load Balancer-Regeln mit den Namen *dsLBrule_v4* und *dsLBrule_v6* und führt Lastenausgleich des Datenverkehrs an *TCP*-Port *80* zu den IPv4- und IPv6-Front-End-IP-Konfigurationen aus:
+Erstellen Sie mit [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) eine Lastenausgleichsregel. Das folgende Beispiel erstellt Load Balancer-Regeln mit den Namen *dsLBrule_v4* und *dsLBrule_v6* und führt Lastenausgleich des Datenverkehrs an *TCP* -Port *80* zu den IPv4- und IPv6-Front-End-IP-Konfigurationen aus:
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -151,8 +151,8 @@ $lb = New-AzLoadBalancer `
 -Sku "Standard" `
 -FrontendIpConfiguration $frontendIPv4,$frontendIPv6 `
 -BackendAddressPool $backendPoolv4,$backendPoolv6 `
--LoadBalancingRule $lbrule_v4,$lbrule_v6
-
+-LoadBalancingRule $lbrule_v4,$lbrule_v6 `
+-probe $probe
 ```
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
@@ -245,17 +245,17 @@ $vnet = New-AzVirtualNetwork `
 Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) virtuelle NICs. Das folgende Beispiel erstellt zwei virtuelle Netzwerkkarten mit IPv4- und IPv6-Konfigurationen. (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen).
 
 ```azurepowershell-interactive
-  $Ip4Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp4Config `
+  $Ip4Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp4Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv4 `
+    -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_1
       
-  $Ip6Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp6Config `
+  $Ip6Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp6Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv6 `
+    -PrivateIpAddressVersion IPv6 `
     -LoadBalancerBackendAddressPool $backendPoolv6
     
   $NIC_1 = New-AzNetworkInterface `
@@ -265,10 +265,10 @@ Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-azn
     -NetworkSecurityGroupId $nsg.Id `
     -IpConfiguration $Ip4Config,$Ip6Config 
     
-  $Ip4Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp4Config `
+  $Ip4Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp4Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv4 `
+    -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_2  
 

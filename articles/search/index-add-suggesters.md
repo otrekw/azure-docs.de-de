@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537598"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347640"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Erstellen einer Vorschlagsfunktion zum Ermöglichen von AutoVervollständigen und vorgeschlagenen Ergebnissen in einer Abfrage
 
-In Azure Cognitive Search wird die Suche während der Eingabe über ein Konstrukt mit einer **Vorschlagsfunktion** ermöglicht, das einem [Suchindex](search-what-is-an-index.md) hinzugefügt wird. Eine Vorschlagsfunktion unterstützt zwei Umgebungen: *AutoVervollständigen* zum Vervollständigen einer partiellen Eingabe zu einem Gesamtbegriff für eine Abfrage und *Vorschläge*, die zum Durchklicken zu einer bestimmten Übereinstimmung einladen. AutoVervollständigen führt zu einer Abfrage. Vorschläge führen zu einem übereinstimmenden Dokument.
+In Azure Cognitive Search wird die Suche während der Eingabe über ein Konstrukt mit einer **Vorschlagsfunktion** ermöglicht, das einem [Suchindex](search-what-is-an-index.md) hinzugefügt wird. Eine Vorschlagsfunktion unterstützt zwei Umgebungen: *AutoVervollständigen* zum Vervollständigen einer partiellen Eingabe zu einem Gesamtbegriff für eine Abfrage und *Vorschläge* , die zum Durchklicken zu einer bestimmten Übereinstimmung einladen. AutoVervollständigen führt zu einer Abfrage. Vorschläge führen zu einem übereinstimmenden Dokument.
 
 Der folgende Screenshot aus dem Beispiel [Erstellen Ihrer ersten App in C#](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht beide Varianten. AutoVervollständigen erwartet einen potenziellen Begriff und ergänzt etwa „Zw“ mit „illing“. Vorschläge sind Minisuchergebnisse, bei denen ein Feld wie „Hotelname“ für ein entsprechendes Hotelsuchdokument aus dem Index steht. Für Vorschläge können Sie alle Felder bereitstellen, die beschreibende Informationen enthalten.
 
@@ -52,7 +52,7 @@ AutoVervollständigen profitiert von einem größeren Pool von Feldern, aus dene
 
 Andererseits führen Vorschläge zu besseren Ergebnissen, wenn die Feldauswahl selektiv ist. Denken Sie daran, dass es sich bei einem Vorschlag um einen Proxy für ein Suchdokument handelt. Daher benötigen Sie Felder, die am besten ein Einzelergebnis darstellen. Namen, Titel oder andere eindeutige Felder, die für Unterscheidung zwischen mehreren Übereinstimmungen sorgen, funktionieren am besten. Wenn Felder aus wiederkehrenden Werten bestehen, setzen sich die Vorschläge aus identischen Ergebnissen zusammen, und ein Benutzer weiß nicht, auf welches er klicken soll.
 
-Um beide Anforderungen für die Suche während der Eingabe zu erfüllen, fügen Sie alle Felder hinzu, die Sie zum AutoVervollständigen benötigen, und steuern Sie dann mit **$Select**, **$top**, **$filter** und **searchFields** die Ergebnisse für Vorschläge.
+Um beide Anforderungen für die Suche während der Eingabe zu erfüllen, fügen Sie alle Felder hinzu, die Sie zum AutoVervollständigen benötigen, und steuern Sie dann mit **$Select** , **$top** , **$filter** und **searchFields** die Ergebnisse für Vorschläge.
 
 ### <a name="choose-analyzers"></a>Auswählen der Analysetools
 
@@ -146,14 +146,14 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 Eine Vorschlagsfunktion wird in einer Abfrage verwendet. Nachdem Sie eine Vorschlagsfunktion erstellt haben, rufen Sie eine der folgenden APIs auf, um eine Umgebung für die Suche während der Eingabe bereitzustellen:
 
-+ [Vorschläge-REST-API](/rest/api/searchservice/suggestions) 
-+ [AutoVervollständigen-REST-API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync method](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?
++ [Vorschläge-REST-API](/rest/api/searchservice/suggestions)
++ [AutoVervollständigen-REST-API](/rest/api/searchservice/autocomplete)
++ [SuggestWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
 + [AutocompleteWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 In einer Suchanwendung sollte für Clientcode eine Bibliothek wie [jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) verwendet werden, um die partielle Abfrage zu erfassen und die Übereinstimmung bereitzustellen. Weitere Informationen zu dieser Aufgabe finden Sie unter [Hinzufügen von AutoVervollständigen oder Vorschlägen zu Clientcode](search-autocomplete-tutorial.md).
 
-Die Verwendung der API wird im folgenden Aufruf der AutoVervollständigen-REST-API veranschaulicht. In diesem Beispiel ergeben sich zwei wichtige Erkenntnisse. Erstens: Wie bei allen Abfragen wird der Vorgang für die Dokumentensammlung eines Indexes ausgeführt. Die Abfrage enthält einen **Such**parameter, der in diesem Fall die partielle Abfrage bereitstellt. Zweitens: Sie müssen der Anforderung den Namen der Vorschlagsfunktion (**suggesterName**) hinzufügen. Wenn eine Vorschlagsfunktion nicht im Index definiert ist, tritt bei einem Aufruf von „AutoVervollständigen“ oder „Vorschläge“ ein Fehler auf.
+Die Verwendung der API wird im folgenden Aufruf der AutoVervollständigen-REST-API veranschaulicht. In diesem Beispiel ergeben sich zwei wichtige Erkenntnisse. Erstens: Wie bei allen Abfragen wird der Vorgang für die Dokumentensammlung eines Indexes ausgeführt. Die Abfrage enthält einen **Such** parameter, der in diesem Fall die partielle Abfrage bereitstellt. Zweitens: Sie müssen der Anforderung den Namen der Vorschlagsfunktion ( **suggesterName** ) hinzufügen. Wenn eine Vorschlagsfunktion nicht im Index definiert ist, tritt bei einem Aufruf von „AutoVervollständigen“ oder „Vorschläge“ ein Fehler auf.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
@@ -166,8 +166,6 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 ## <a name="sample-code"></a>Beispielcode
 
 + Das Beispiel [Erstellen Ihrer ersten App in C# (Lektion 3 – Hinzufügen der Suche während der Eingabe)](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht ein Vorschlagsfunktion-Konstrukt, vorgeschlagene Abfragen, AutoVervollständigen und Facettennavigation. Dieses Codebeispiel wird in einem Sandboxdienst für die kognitive Azure-Suche ausgeführt und verwendet einen vorinstallierten Hotelindex, sodass Sie zum Ausführen der Anwendung lediglich F5 drücken müssen. Es ist weder ein Abonnement noch eine Anmeldung erforderlich.
-
-+ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) ist ein älteres Beispiel, das sowohl C#- als auch Java-Code enthält. Es veranschaulicht ebenfalls ein Vorschlagsfunktion-Konstrukt, vorgeschlagene Abfragen, AutoVervollständigen und Facettennavigation. In diesem Codebeispiel werden die Beispieldaten des gehosteten [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) verwendet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

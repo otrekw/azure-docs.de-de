@@ -3,17 +3,19 @@ title: Häufig gestellte Fragen zur Gremlin-API in Azure Cosmos DB
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Gremlin-API in Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281562"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339358"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Gremlin-API in Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 In diesem Artikel werden einige häufig gestellte Fragen zur Gremlin-API in Azure Cosmos DB beantwortet.
 

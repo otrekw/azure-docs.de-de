@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791136"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345702"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Queue Storage mit Azure PowerShell
 
@@ -22,12 +22,12 @@ Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer An
 
 > [!div class="checklist"]
 >
-> * Erstellen einer Warteschlange
-> * Abrufen einer Warteschlange
-> * Hinzufügen einer Nachricht
-> * Lesen einer Nachricht
-> * Löschen einer Nachricht
-> * Löschen einer Warteschlange
+> - Erstellen einer Warteschlange
+> - Abrufen einer Warteschlange
+> - Hinzufügen einer Nachricht
+> - Lesen einer Nachricht
+> - Löschen einer Nachricht
+> - Löschen einer Warteschlange
 
 Für diese Anleitung ist Version 0.7 oder höher des Az-Moduls von Azure PowerShell erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu.
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Abrufen der Standortliste
 
-Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In dieser Übung wird **eastus** verwendet. Speichern Sie diesen Wert für die zukünftige Verwendung in der Variable **Standort** .
+Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In dieser Übung wird **eastus** verwendet. Speichern Sie diesen Wert für die zukünftige Verwendung in der Variable **Standort**.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -127,7 +127,7 @@ Wenn Sie [Azure Storage-Explorer](https://storageexplorer.com) verwenden, könne
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Lesen und Löschen einer Nachricht aus der Warteschlange
 
-Nachrichten werden in der Reihenfolge „Best Try“, „First In“, „First Out“ gelesen. Dies ist nicht gewährleistet. Wenn Sie eine Nachricht aus der Warteschlange lesen, wird diese unsichtbar für alle anderen Prozesse, die die Warteschlange betrachten. Dadurch wird sichergestellt, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt.  
+Nachrichten werden in der Reihenfolge „Best Try“, „First In“, „First Out“ gelesen. Dies ist nicht gewährleistet. Wenn Sie eine Nachricht aus der Warteschlange lesen, wird diese unsichtbar für alle anderen Prozesse, die die Warteschlange betrachten. Dadurch wird sichergestellt, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt.
 
 Dieses **Unsichtbarkeitstimeout** definiert, wie lange die Nachricht unsichtbar bleibt, bevor sie wieder für die Verarbeitung verfügbar ist. Der Standardwert ist 30 Sekunden.
 
@@ -185,17 +185,17 @@ In dieser Anleitung haben Sie Folgendes über die grundlegende Verwaltung von Qu
 
 > [!div class="checklist"]
 >
-> * Erstellen einer Warteschlange
-> * Abrufen einer Warteschlange
-> * Hinzufügen einer Nachricht
-> * Lesen der nächsten Nachricht
-> * Löschen einer Nachricht
-> * Löschen einer Warteschlange
+> - Erstellen einer Warteschlange
+> - Abrufen einer Warteschlange
+> - Hinzufügen einer Nachricht
+> - Lesen der nächsten Nachricht
+> - Löschen einer Nachricht
+> - Löschen einer Warteschlange
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell Storage-Cmdlets
 
-* [Storage PowerShell-Cmdlets](/powershell/module/az.storage)
+- [Storage PowerShell-Cmdlets](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage-Explorer
 
-* Beim [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+- Beim [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.

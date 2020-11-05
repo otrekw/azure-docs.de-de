@@ -10,12 +10,12 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: queues
-ms.openlocfilehash: 6937f3aa136ee4d5b906492c3f8cffc86acbc2e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785662"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346025"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten
 
@@ -27,7 +27,7 @@ Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugrif
 
 Die Azure Storage-Erweiterungen werden für Vorgänge für Warteschlangendaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei PowerShell anmelden. Die Berechtigungen für Azure Storage-Warteschlangen werden über die rollenbasierte Zugriffssteuerung von Azure zugewiesen. Wenn Ihnen beispielsweise die Rolle **Storage-Warteschlangendatenleser** zugewiesen wurde, können Sie Skriptbefehle ausführen, die Daten aus einer Warteschlange lesen. Wurde Ihnen die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen, können Sie Skriptbefehle ausführen, die eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
 
-Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge für Warteschlangen erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge für Warteschlangen erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Aufrufen von PowerShell-Befehlen mithilfe von Azure AD-Anmeldeinformationen
 
@@ -45,7 +45,7 @@ Im folgenden Beispiel sehen Sie, wie Sie in einem neuen Speicherkonto mithilfe I
 
     Weitere Informationen zum Anmelden mit Azure PowerShell finden Sie unter [Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps).
 
-1. Erstellen Sie eine Azure-Ressourcengruppe, indem Sie [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) aufrufen. 
+1. Erstellen Sie eine Azure-Ressourcengruppe, indem Sie [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) aufrufen.
 
     ```powershell
     $resourceGroup = "sample-resource-group-ps"

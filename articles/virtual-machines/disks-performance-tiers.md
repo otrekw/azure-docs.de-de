@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359678"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348694"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Leistungsstufen für verwaltete Datenträger (Vorschau)
 
@@ -55,10 +55,6 @@ Informationen zur Abrechnung finden Sie unter [Verwaltete Datenträger – Preis
 - Sie müssen entweder die Zuordnung des virtuellen Computers aufheben oder den Datenträger von einem ausgeführten virtuellen Computer trennen, damit Sie die Stufe des Datenträgers ändern können.
 - Die Verwendung der Leistungsstufen P60, P70 und P80 ist auf Datenträger mit 4.096 GiB oder mehr beschränkt.
 - Die Leistungsstufe eines Datenträgers kann nur ein Mal alle 24 Stunden herabgestuft werden.
-
-## <a name="regional-availability"></a>Regionale Verfügbarkeit
-
-Die Möglichkeit zum Anpassen der Leistungsstufe eines verwalteten Datenträgers besteht zurzeit nur für SSDs Premium in folgenden Regionen: USA, Osten 2; USA, Süden-Mitte; USA, Westen-Mitte und Australien, Südosten
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Erstellen/Aktualisieren eines Datenträgers mit einer höheren Stufe als der Baselinestufe
 

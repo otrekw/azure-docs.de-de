@@ -3,18 +3,20 @@ title: Leistungstipps für Azure Cosmos DB und .NET SDK v3
 description: Hier finden Sie Informationen zu den Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB und NET SDK v3.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475327"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341738"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)

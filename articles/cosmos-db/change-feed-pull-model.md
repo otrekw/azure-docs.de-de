@@ -4,18 +4,20 @@ description: Erfahren Sie, wie Sie das Pullmodell für den Azure Cosmos DB-Änd
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b3f7a8fbe2afcf9b5603f288fe6e3bc429b14532
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784676"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340191"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pullmodell für den Änderungsfeed in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Mit dem Pullmodell für den Änderungsfeed können Sie den Azure Cosmos DB-Änderungsfeed in Ihrem eigenen Tempo verwenden. Wie Sie bereits beim [Änderungsfeedprozessor](change-feed-processor.md) können Sie das Pullmodell für den Änderungsfeed verwenden, um die Verarbeitung von Änderungen über mehrere Änderungsfeedconsumer zu parallelisieren.
 

@@ -3,18 +3,21 @@ title: Troubleshooting für Timeoutausnahmen bei Dienstanforderungen (Service Re
 description: Hier erfahren Sie etwas zu Diagnose und Fehlerbehebung für Timeoutausnahmen bei Dienstanforderungen (Service Requests) in Azure Cosmos DB.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 76a1558534728613dcdedc78b64a0366f2bd643d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e52acd2f7f594523059b22fefd121314bd77921
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871070"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340063"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>Diagnose und Troubleshooting für Anforderungstimeoutausnahmen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 In Azure Cosmos DB wurde ein HTTP-408-Anforderungstimeout zurückgegeben.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung

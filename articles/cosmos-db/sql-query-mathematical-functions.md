@@ -3,18 +3,20 @@ title: Mathematische Funktionen in der Abfragesprache für Azure Cosmos DB
 description: Erfahren Sie etwas über die mathematischen Funktionen in Azure Cosmos DB, mit denen Berechnungen basierend auf Eingabewerten, die als Argument bereitgestellt werden und einen numerischen Wert zurückgeben, durchgeführt werden.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85562830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338368"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Mathematische Funktionen (Azure Cosmos DB)  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Jede mathematische Funktion führt eine Berechnung durch, basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück.
 

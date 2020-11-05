@@ -3,18 +3,20 @@ title: Azure Cosmos DB SQL SDK-Konnektivitätsmodi
 description: Erfahren Sie mehr über die unterschiedlichen Konnektivitätsmodi, die für die Azure Cosmos DB SQL SDKs verfügbar sind.
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: 892d73c2b23a9806cd38b188f594f129fda9303d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283058"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340718"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK-Konnektivitätsmodi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Die Art der Verbindungsherstellung zwischen einem Client und Azure Cosmos DB hat erhebliche Auswirkungen auf die Leistung, insbesondere im Hinblick auf die clientseitige Latenz. Azure Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS, das Gatewaymodus genannt wird. Außerdem ist ein effizientes TCP-Protokoll enthalten, das ebenfalls RESTful in seinem Kommunikationsmodell ist und TLS für die anfängliche Authentifizierung und die Verschlüsselung des Datenverkehrs verwendet, den sogenannten direkten Modus.
 

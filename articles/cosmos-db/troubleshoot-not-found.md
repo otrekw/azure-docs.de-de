@@ -3,18 +3,21 @@ title: Troubleshooting für die Ausnahme „Nicht gefunden“ in Azure Cosmos D
 description: Erfahren Sie mehr über die Diagnose und Behebung der Ausnahme „Nicht gefunden“.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f0fa8e5923639ea74a83a9a775bd5d580234b7ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496088"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340123"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnose und Troubleshooting für die Ausnahme „Nicht gefunden“ in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Der HTTP-Statuscode 404 steht dafür, dass die Ressource nicht mehr vorhanden ist.
 
 ## <a name="expected-behavior"></a>Erwartetes Verhalten

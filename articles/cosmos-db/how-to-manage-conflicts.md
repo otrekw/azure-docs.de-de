@@ -3,18 +3,20 @@ title: Behandeln von Konflikten zwischen Regionen in Azure Cosmos DB
 description: Erfahren Sie, wie Sie Konflikte in Azure Cosmos DB verwalten, indem Sie die Richtlinie zur Konfliktlösung erstellen, bei der der letzte Schreibvorgang Priorität hat.
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3edaf55c8acb4def4f074c0d8f96eb399d98b6ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491086"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339341"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Verwalten von Konfliktauflösungsrichtlinien in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bei Schreibvorgängen in mehreren Regionen können Konflikte auftreten, wenn mehrere Clients in das gleiche Element schreiben. Wenn es zu einem Konflikt kommt, können Sie diesen mithilfe verschiedener Konfliktlösungsrichtlinien beheben. In diesem Artikel erfahren Sie, wie Sie Konfliktlösungsrichtlinien verwalten.
 
