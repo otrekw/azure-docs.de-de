@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908088"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323780"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Lösung:** Dieser Fehler wird durch viele Bedingungen verursacht und es gibt keine bestimmte Lösung.  
  Die folgende Tabelle enthält allgemeine Meldungen zu diesem Fehler, auf die eine bestimmte Beschreibung der Bedingung folgt. 
 
- Wenn keine Details verfügbar sind, besuchen Sie die [Microsoft-Seite mit Fragen und Antworten zum Senden von Feedback](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), und stellen Sie Informationen zu den Modulen, die den Fehler ausgelöst haben, und zu den entsprechenden Bedingungen bereit.
+ Wenn keine Details verfügbar sind, besuchen Sie die [Microsoft-Seite mit Fragen und Antworten zum Senden von Feedback](/answers/topics/azure-machine-learning-studio-classic.html), und stellen Sie Informationen zu den Modulen, die den Fehler ausgelöst haben, und zu den entsprechenden Bedingungen bereit.
 
 |Ausnahmemeldungen|
 |------------------------|
@@ -862,7 +862,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 
  Dieser Fehler in Azure Machine Learning tritt auf, wenn der Schlüssel für den Zugriff auf das Azure-Speicherkonto falsch ist. Dieser Fehler kann z. B. auftreten, wenn der Azure-Speicherschlüssel beim Kopieren und Einfügen abgeschnitten oder der falsche Schlüssel verwendet wurde.  
 
- Weitere Informationen zum Abrufen des Schlüssels für ein Azure-Speicherkonto finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/).  
+ Weitere Informationen zum Abrufen des Schlüssels für ein Azure-Speicherkonto finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../../storage/common/storage-account-create.md).  
 
 **Lösung:** Rufen Sie das Modul erneut auf und überprüfen Sie, ob der Azure-Speicherschlüssel für das Konto richtig ist. Kopieren Sie den Schlüssel bei Bedarf erneut aus dem klassischen Azure-Portal.  
 
@@ -1083,9 +1083,9 @@ Die Fehlermeldung von Hive wird normalerweise im Fehlerprotokoll gemeldet, sodas
 
 In den folgenden Artikeln finden Sie Hilfe bei Hive-Abfragen für maschinelles Lernen:
 
-+ [Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Durchsuchen von Daten in Tabellen mithilfe von Hive-Abfragen](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage](../team-data-science-process/move-hive-tables.md)
++ [Durchsuchen von Daten in Tabellen mithilfe von Hive-Abfragen](../team-data-science-process/explore-data-hive-tables.md)
++ [Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen](../team-data-science-process/create-features-hive.md)
 + [Cheat Sheet für Hive für SQL-Benutzer (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1164,7 +1164,7 @@ Dieser Fehler in Azure Machine Learning tritt bei dem Versuch auf, Daten mit ein
 
 Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von Azure Machine Learning eingeführt, die eine umfassendere Anpassung der Quantisierungsmethoden ermöglichte. Derzeit basieren alle Quantisierungsmethoden auf einer Auswahl aus einer Dropdownliste, sodass es technisch nicht mehr möglich sein sollte, diesen Fehler zu erhalten.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Ausnahmemeldungen|
 |------------------------|
@@ -1322,7 +1322,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
   
  Dieser Fehler in Azure Machine Learning tritt auf, wenn Sie eine XML-Definition für ein benutzerdefiniertes Modul erstellen und der Typ eines Parameters oder Arguments in der Definition nicht mit einem unterstützten Typ übereinstimmt.  
   
-**Lösung:** Stellen Sie sicher, dass die Typeigenschaft eines beliebigen **Arg**-Elements in der XML-Definitionsdatei für das benutzerdefinierte Modul ein unterstützter Typ ist.  
+**Lösung:** Stellen Sie sicher, dass die Typeigenschaft eines beliebigen **Arg** -Elements in der XML-Definitionsdatei für das benutzerdefinierte Modul ein unterstützter Typ ist.  
   
 |Ausnahmemeldungen|  
 |------------------------|  
@@ -1516,11 +1516,10 @@ Interne Bibliotheksausnahme.
 
 Dieser Fehler wird bereitgestellt, um ansonsten unbehandelte interne Enginefehler zu erfassen. Daher kann die Ursache für diesen Fehler je nach Modul, das den Fehler generiert hat, unterschiedlich sein.  
 
-Um weitere Hilfe zu erhalten, wird empfohlen, die ausführliche Meldung, die dem Fehler zugeordnet ist, zusammen mit einer Beschreibung des Szenarios (einschließlich der als Eingaben verwendeten Daten) an das [Azure Machine Learning-Forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) zu senden. Dieses Feedback hilft uns, Fehler zu priorisieren und die wichtigsten Probleme für die weitere Arbeit zu identifizieren.  
+Um weitere Hilfe zu erhalten, wird empfohlen, die ausführliche Meldung, die dem Fehler zugeordnet ist, zusammen mit einer Beschreibung des Szenarios (einschließlich der als Eingaben verwendeten Daten) an das [Azure Machine Learning-Forum](/answers/topics/azure-machine-learning.html) zu senden. Dieses Feedback hilft uns, Fehler zu priorisieren und die wichtigsten Probleme für die weitere Arbeit zu identifizieren.  
 
 |Ausnahmemeldungen|
 |------------------------|
 |Bibliotheksausnahme.|
 |Bibliotheksausnahme: {exception}.|
 |Ausnahme für unbekannte Bibliothek: {exception}. {customer_support_guidance}.|
-

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250656"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322013"
 ---
 # <a name="feature-engineering-in-data-science"></a>Featureentwicklung im Data Science-Prozess
 
 In diesem Artikel erfahren Sie mehr über Feature Engineering und seine Rolle bei der Datenaufbereitung in Machine Learning. Lernen Sie aus den anschaulichen Beispielen, die aus [Azure Machine Learning Studio (Classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) entnommen wurden. 
 
-* **Featureentwicklung**: Das Erstellen neuer Features aus Rohdaten, um die Vorhersageleistung des Lernalgorithmus zu erhöhen. Die entwickelten Features sollten zusätzliche Informationen erfassen, die im ursprünglichen Satz der Features nicht leicht ersichtlich sind.
-* **Featureauswahl**: Das Auswählen der wichtigsten Teilmenge von Features, um die Anzahl der Dimensionen des Trainingsproblems zu verringern.
+* **Featureentwicklung** : Das Erstellen neuer Features aus Rohdaten, um die Vorhersageleistung des Lernalgorithmus zu erhöhen. Die entwickelten Features sollten zusätzliche Informationen erfassen, die im ursprünglichen Satz der Features nicht leicht ersichtlich sind.
+* **Featureauswahl** : Das Auswählen der wichtigsten Teilmenge von Features, um die Anzahl der Dimensionen des Trainingsproblems zu verringern.
 
 Normalerweise wird **Feature Engineering** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
 
@@ -60,7 +60,7 @@ Neben Featuregruppe A, die bereits in den ursprünglichen Rohdaten vorhanden ist
 
 ### <a name="feature-engineering-using-studio-classic"></a>Feature Engineering mit Studio (Classic)
 
-Diese vier Trainingsdatasets werden im Studio (Classic)-Experiment über vier Verzweigungen aus den vorbearbeiteten Eingabedatasets gebildet. Mit Ausnahme der am weitesten links liegenden Verzweigung enthält jede dieser Verzweigungen das Modul [Execute R Script](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/), in dem die abgeleiteten Features (Featuregruppe B, C und D) erstellt und an das importierte Dataset angehängt werden.
+Diese vier Trainingsdatasets werden im Studio (Classic)-Experiment über vier Verzweigungen aus den vorbearbeiteten Eingabedatasets gebildet. Mit Ausnahme der am weitesten links liegenden Verzweigung enthält jede dieser Verzweigungen das Modul [Execute R Script](/azure/machine-learning/studio-module-reference/execute-r-script), in dem die abgeleiteten Features (Featuregruppe B, C und D) erstellt und an das importierte Dataset angehängt werden.
 
 Die folgende Abbildung veranschaulicht das R-Skript, das zur Erstellung der Featuregruppe B in der zweiten Verzweigung von links verwendet wird.
 
@@ -80,9 +80,9 @@ Feature Engineering wird häufig in Aufgaben verwendet, die mit Textmining im Zu
 
 ### <a name="feature-hashing"></a>Feature Hashing
 
-Für diese Aufgabe wird ein Verfahren namens [Feature Hashing](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) angewendet, um beliebige Textfeatures effizient in Indizes zu verwandeln. Statt jedes Textfeature (Wörter/Ausdrücke) einem bestimmten Index zuzuweisen, wird bei dieser Methode durch Anwenden einer Hashfunktion auf die Features und die direkte Verwendung ihrer Hashwerte als Indizes ein Ergebnis erzielt.
+Für diese Aufgabe wird ein Verfahren namens [Feature Hashing](/azure/machine-learning/studio-module-reference/feature-hashing) angewendet, um beliebige Textfeatures effizient in Indizes zu verwandeln. Statt jedes Textfeature (Wörter/Ausdrücke) einem bestimmten Index zuzuweisen, wird bei dieser Methode durch Anwenden einer Hashfunktion auf die Features und die direkte Verwendung ihrer Hashwerte als Indizes ein Ergebnis erzielt.
 
-Studio (Classic) enthält das Modul [Feature Hashing](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing), das Wort/Ausdruck-Features bequem erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Dieses Modul dient dem Zweck, eine Reihe von neuen Features abzurufen, die die Häufigkeit des Auftretens entsprechender Wörter/Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, führen Sie die folgenden Schritte aus:
+Studio (Classic) enthält das Modul [Feature Hashing](/azure/machine-learning/studio-module-reference/feature-hashing), das Wort/Ausdruck-Features bequem erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Dieses Modul dient dem Zweck, eine Reihe von neuen Features abzurufen, die die Häufigkeit des Auftretens entsprechender Wörter/Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, führen Sie die folgenden Schritte aus:
 
 * Wählen Sie zuerst die Spalte, die den eingegebenen Text enthält (in diesem Beispiel "Col2").
 * Legen Sie dann "Hashing bitsize" auf 8 fest, d. h. 2^8 = 256 Features werden erstellt. Die Wörter/Ausdrücke im gesamten Text werden auf 256 Indizes gehasht. Der Parameter "Hashing bitsize" reicht von 1 bis 31. Die Wörter/Ausdrücke werden mit geringerer Wahrscheinlichkeit in den gleichen Index gehasht, wenn eine größere Zahl festgelegt wird.

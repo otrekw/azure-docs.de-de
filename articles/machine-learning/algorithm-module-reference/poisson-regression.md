@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905258"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319423"
 ---
 # <a name="poisson-regression"></a>Poisson-Regression
 
@@ -29,7 +29,7 @@ Erstellen Sie mit diesem Modul ein lineares Poisson-Regressionsmodell in einer P
 - Eine Poisson-Verteilung ist eine gleichmäßige Verteilung, darum ist es nicht sinnvoll, diese Methode mit Zahlen zu verwenden, die keine Ganzzahlen sind.
 
 > [!TIP]
-> Wenn der Zielwert keine Anzahl ist, ist die Poisson-Regression wahrscheinlich keine geeignete Methode. Probieren Sie [andere Regressionsmodule im Designer](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms) aus. 
+> Wenn der Zielwert keine Anzahl ist, ist die Poisson-Regression wahrscheinlich keine geeignete Methode. Probieren Sie [andere Regressionsmodule im Designer](./module-reference.md#machine-learning-algorithms) aus. 
 
 Nachdem Sie die Regressionsmethode eingerichtet haben, müssen Sie das Modell mithilfe eines Datasets trainieren, das Beispiele für den Wert enthält, den Sie vorhersagen möchten. Das trainierte Modell kann danach verwendet werden, um Vorhersagen zu treffen.
 
@@ -73,7 +73,7 @@ Da die Antwortvariable eine Poisson-Verteilung aufweist, trifft das Modell ander
 
     In diesem Modul können Sie eine Kombination aus L1- und L2-Regularisierungen anwenden. Durch Kombinieren von L1- und L2-Regularisierung können Sie eine Strafe für die Größenordnung der Parameterwerte festlegen. Das Lernmodul versucht, die Strafe im Kompromiss mit dem Minimieren des Verlusts zu minimieren.
 
-    Eine gute Erörterung der L1-und L2-Regularisierung finden Sie unter [Testlauf – L1-und L2-Regularisierung für Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx).
+    Eine gute Erörterung der L1-und L2-Regularisierung finden Sie unter [Testlauf – L1-und L2-Regularisierung für Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
 6. **Memory Size for L-BFGS** (Arbeitsspeichergröße für L-BFGS): Geben Sie an, wieviel Arbeitsspeicher für Anpassung und Optimierung des Modells reserviert werden soll.
 
@@ -105,4 +105,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

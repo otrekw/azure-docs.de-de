@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495709"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324804"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -52,9 +52,9 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
 + Im Web:
     + [Azure Machine Learning-Studio](https://ml.azure.com) 
     + [Azure Machine Learning-Designer](concept-designer.md) 
-+ In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
++ In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
 + In jeder R-Umgebung mit dem [Azure Machine Learning SDK für R (Vorschau)](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
-+ Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) für Azure Machine Learning
++ Über die Befehlszeile mit der [CLI-Erweiterung](./reference-azure-machine-learning-cli.md) für Azure Machine Learning
 + [Azure Machine Learning-VS Code-Erweiterung](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -103,7 +103,7 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 + [Azure Storage-Konto](https://azure.microsoft.com/services/storage/): Wird als Standarddatenspeicher für den Arbeitsbereich verwendet.  Jupyter-Notebooks, die mit Ihren Azure Machine Learning-Compute-Instanzen verwendet werden, werden ebenfalls hier gespeichert. 
   
   > [!IMPORTANT]
-  > Beim Speicherkonto handelt es sich standardmäßig um ein Konto vom Typ „Universell V1“. Nach der Erstellung des Arbeitsbereichs können Sie ein [Upgrade auf „Universell V2“ durchführen](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade). Aktivieren Sie keinen hierarchischen Namespace für das Speicherkonto, nachdem Sie ein Upgrade auf Universell v2 ausgeführt haben.
+  > Beim Speicherkonto handelt es sich standardmäßig um ein Konto vom Typ „Universell V1“. Nach der Erstellung des Arbeitsbereichs können Sie ein [Upgrade auf „Universell V2“ durchführen](../storage/common/storage-account-upgrade.md). Aktivieren Sie keinen hierarchischen Namespace für das Speicherkonto, nachdem Sie ein Upgrade auf Universell v2 ausgeführt haben.
 
   Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standardspeicherkonto_ des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
   

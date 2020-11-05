@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883077"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325441"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 
@@ -29,7 +29,7 @@ In dieser Anleitung erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
 > * Nutzen eines Pipelineendpunkts
 > * Verwalten von Endpunktversionen
 
-Informationen zum Einrichten von Batchbewertungsdiensten mit dem SDK finden Sie in der begleitenden [Anleitung](how-to-run-batch-predictions.md).
+Informationen zum Einrichten von Batchbewertungsdiensten mit dem SDK finden Sie in der begleitenden [Anleitung](./tutorial-pipeline-batch-scoring-classification.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -80,7 +80,7 @@ Jetzt sind Sie bereit, die Rückschlusspipeline bereitzustellen. Dadurch wird di
 
 1. Wählen Sie die Schaltfläche **Veröffentlichen** aus.
 
-1. Erweitern Sie im angezeigten Dialogfeld die Dropdownliste für **PipelineEndpoint**, und wählen Sie **Neuer PipelineEndpoint** aus.
+1. Erweitern Sie im angezeigten Dialogfeld die Dropdownliste für **PipelineEndpoint** , und wählen Sie **Neuer PipelineEndpoint** aus.
 
 1. Geben Sie einen Endpunktnamen und eine optionale Beschreibung an.
 

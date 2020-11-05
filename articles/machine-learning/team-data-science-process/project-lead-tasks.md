@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76714415"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321941"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Aufgaben von Projektleitern im Team Data Science-Prozess
 
@@ -40,7 +40,7 @@ Für Schritt 6: „Einrichten der Sicherheitskontrolle eines Projektrepositorys
 
 In diesem Tutorial wird davon ausgegangen, dass die folgenden Ressourcen und Berechtigungen von Ihrem [Gruppenmanager](group-manager-tasks.md) und Ihrem [Teamleiter](team-lead-tasks.md) eingerichtet wurden:
 
-- Die Azure DevOps-**Organisation** für Ihre Dateneinheit
+- Die Azure DevOps- **Organisation** für Ihre Dateneinheit
 - Ein **Teamprojekt** für Ihr Data Science Team
 - **Repositorys** für Teamvorlagen und Hilfsprogramme
 - **Berechtigungen** für Ihr Organisationskonto, damit Sie Repositorys für Ihr Projekte erstellen und bearbeiten können
@@ -49,15 +49,15 @@ Um Repositorys zu klonen und deren Inhalt auf Ihrem lokalen Computer oder Ihrer 
 
 - Ein Azure-Abonnement.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.
-- Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
-- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation**, und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
+- Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
+- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation** , und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
 - Für eine Linux-DSVM muss ein öffentlicher SSH-Schlüssel auf Ihrer DSVM eingerichtet und in Azure DevOps hinzugefügt werden. Weitere Informationen und Anweisungen finden Sie im [Anhang zu Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 
 ## <a name="create-a-project-repository-in-your-team-project"></a>Erstellen eines Projektrepositorys in Ihrem Teamprojekt
 
 So erstellen Sie ein Projektrepository im Projekt **MyTeam** Ihres Teams
 
-1. Wechseln Sie zur Seite **Zusammenfassung** für das Projekt Ihres Teams unter *https:\//\<server name>/\<organization name>/\<team name>* , z. B. **https:\//dev.azure.com/DataScienceUnit/MyTeam**, und wählen Sie im linken Navigationsbereich **Repos** aus. 
+1. Wechseln Sie zur Seite **Zusammenfassung** für das Projekt Ihres Teams unter *https:\//\<server name>/\<organization name>/\<team name>* , z. B. **https:\//dev.azure.com/DataScienceUnit/MyTeam** , und wählen Sie im linken Navigationsbereich **Repos** aus. 
    
 1. Wählen Sie oben auf der Seite den Repositorynamen und dann in der Dropdownliste die Option **Neues Repository** aus.
    

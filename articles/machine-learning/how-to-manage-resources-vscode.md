@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/30/2020
-ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e410cbc7813031929ea040b2cc4fb2967b99c1b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530628"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319352"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Verwalten von Azure Machine Learning-Ressourcen mit der VS Code-Erweiterung (Vorschau)
 
@@ -47,7 +47,7 @@ Weitere Informationen finden Sie im [Artikel zu Arbeitsbereichen](concept-worksp
 
 Alternative Verfahren zum Erstellen eines Arbeitsbereichs:
 
-- Öffnen Sie die Befehlspalette **Ansicht > Befehlspalette**, und geben Sie in die Texteingabeaufforderung **Azure ML: Arbeitsbereich erstellen** ein.
+- Öffnen Sie die Befehlspalette **Ansicht > Befehlspalette** , und geben Sie in die Texteingabeaufforderung **Azure ML: Arbeitsbereich erstellen** ein.
 - Klicken Sie oben in der Azure Machine Learning-Ansicht auf das Symbol `+`.
 - Erstellen Sie einen neuen Arbeitsbereich, wenn Sie während der Bereitstellung anderer Ressourcen aufgefordert werden, einen Arbeitsbereich auszuwählen.
 
@@ -80,7 +80,7 @@ Weitere Informationen finden Sie im [Artikel zu Datenspeichern](concept-data.md#
     1. Wählen Sie den Datenspeichertyp aus.
     1. Wählen Sie die Speicherressource aus. Sie können entweder eine Speicherressource auswählen, die dem Arbeitsbereich zugeordnet ist, oder eine beliebige gültige Speicherressource in ihren Azure-Abonnements auswählen.
     1. Wählen Sie den Container aus, in dem sich Ihre Daten in der zuvor ausgewählten Speicherressource befinden.
-1. In VS Code wird eine Konfigurationsdatei angezeigt. Wenn Sie mit Ihrer Konfigurationsdatei zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. In VS Code wird eine Konfigurationsdatei angezeigt. Wenn Sie mit Ihrer Konfigurationsdatei zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ### <a name="manage-a-datastore"></a>Verwalten eines Datenspeichers
 
@@ -105,7 +105,7 @@ Weitere Informationen finden Sie im [Artikel zu Datasets](concept-data.md#datase
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Datenspeicher erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datasets**, und wählen Sie **Create dataset** (Dataset erstellen) aus.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datasets** , und wählen Sie **Create dataset** (Dataset erstellen) aus.
 1. An der Eingabeaufforderung:
     1. Wählen Sie den Datasettyp aus.
     1. Hiermit wird definiert, ob sich die Daten auf Ihrem PC oder im Web befinden.
@@ -159,12 +159,12 @@ Weitere Informationen finden Sie im [Artikel zu Umgebungen](concept-environments
 1. An der Eingabeaufforderung:
     1. Geben Sie einen Namen für die Umgebung an.
     1. Definieren Sie die Umgebungskonfiguration:
-        - *Zusammengestellte Umgebungen*: Dies sind vorkonfigurierte Umgebungen in Azure Machine Learning. Sie können die Umgebung weiter anpassen, indem Sie die `dependencies`-Eigenschaft in der JSON-Datei ändern. [Weitere Informationen zu zusammengestellten Umgebungen](resource-curated-environments.md).
-        - *Conda-Abhängigkeitsdatei*: In Anaconda-Umgebungen kann die Datei, die die Umgebungsdefinition enthält, bereitgestellt werden.
-        - *Pip-Anforderungsdatei*: In Pip-Umgebungen kann die Datei, die die Umgebungsdefinition enthält, bereitgestellt werden.
-        - *Vorhandene Conda-Umgebung*: Hierbei werden die Conda-Umgebungen auf dem lokalen PC gesucht, und es wird versucht, eine Umgebung aus der ausgewählten Umgebung zu erstellen.
-        - *Benutzerdefiniert*: Definieren Sie eigene Kanäle und Abhängigkeiten.
-    1. Die Konfigurationsdatei wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+        - *Zusammengestellte Umgebungen* : Dies sind vorkonfigurierte Umgebungen in Azure Machine Learning. Sie können die Umgebung weiter anpassen, indem Sie die `dependencies`-Eigenschaft in der JSON-Datei ändern. [Weitere Informationen zu zusammengestellten Umgebungen](resource-curated-environments.md).
+        - *Conda-Abhängigkeitsdatei* : In Anaconda-Umgebungen kann die Datei, die die Umgebungsdefinition enthält, bereitgestellt werden.
+        - *Pip-Anforderungsdatei* : In Pip-Umgebungen kann die Datei, die die Umgebungsdefinition enthält, bereitgestellt werden.
+        - *Vorhandene Conda-Umgebung* : Hierbei werden die Conda-Umgebungen auf dem lokalen PC gesucht, und es wird versucht, eine Umgebung aus der ausgewählten Umgebung zu erstellen.
+        - *Benutzerdefiniert* : Definieren Sie eigene Kanäle und Abhängigkeiten.
+    1. Die Konfigurationsdatei wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ### <a name="view-environment-configurations"></a>Anzeigen von Umgebungskonfigurationen
 
@@ -182,7 +182,7 @@ So bearbeiten Sie die Abhängigkeiten und Konfigurationen für eine bestimmte Um
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Environments** (Umgebungen) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf die Umgebung, die Sie anzeigen möchten, und wählen Sie **Edit environment** (Umgebung bearbeiten) aus.
-1. Wenn Sie die Änderungen vorgenommen haben und mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Wenn Sie die Änderungen vorgenommen haben und mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ## <a name="experiments"></a>Experimente
 
@@ -217,7 +217,7 @@ So zeigen Sie Ihr Experiment in Azure Machine Learning Studio an:
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Experiments** (Experimente) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf das Experiment, das Sie anzeigen möchten, und wählen Sie **View Experiment** (Experiment anzeigen) aus. 
-1. Es wird die Aufforderung angezeigt, die Experiment-URL in Azure Machine Learning Studio zu öffnen. Wählen Sie **Open**(Öffnen).
+1. Es wird die Aufforderung angezeigt, die Experiment-URL in Azure Machine Learning Studio zu öffnen. Wählen Sie **Open** (Öffnen).
 
 ### <a name="track-run-progress"></a>Nachverfolgen des Ausführungsfortschritts
 
@@ -227,7 +227,7 @@ Wenn Sie das Experiment ausführen, möchten Sie möglicherweise den Fortschritt
 1. Erweitern Sie den Knoten **Experiments** (Experimente) in Ihrem Arbeitsbereich.
 1. Erweitern Sie den Experimentknoten, für den Sie den Fortschritt nachverfolgen möchten.
 1. Klicken Sie mit der rechten Maustaste die Ausführung, und wählen Sie **View Run in Azure portal** (Ausführung im Azure-Portal anzeigen) aus.
-1. Es wird die Aufforderung angezeigt, die Ausführungs-URL in Azure Machine Learning Studio zu öffnen. Wählen Sie **Open**(Öffnen).
+1. Es wird die Aufforderung angezeigt, die Ausführungs-URL in Azure Machine Learning Studio zu öffnen. Wählen Sie **Open** (Öffnen).
 
 ### <a name="download-run-logs--outputs"></a>Herunterladen von Ausführungsprotokollen und Ausgaben
 
@@ -257,7 +257,7 @@ Weitere Informationen finden Sie im Artikel über [Compute-Instanzen](concept-co
     1. Geben Sie einen Namen für Ihre Compute-Instanz an.
     1. Wählen Sie in der Liste eine VM-Größe aus.
     1. Geben Sie an, ob Sie SSH-Zugriff aktivieren möchten.
-        1. Wenn Sie SSH-Zugriff aktivieren, müssen Sie auch den öffentlichen SSH-Schlüssel angeben oder die Datei, die den Schlüssel enthält. Weitere Informationen finden Sie in der [Anleitung zum Erstellen und Verwenden von SSH-Schlüsseln in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+        1. Wenn Sie SSH-Zugriff aktivieren, müssen Sie auch den öffentlichen SSH-Schlüssel angeben oder die Datei, die den Schlüssel enthält. Weitere Informationen finden Sie in der [Anleitung zum Erstellen und Verwenden von SSH-Schlüsseln in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
 ### <a name="stop-or-restart-compute-instance"></a>Anhalten oder Neustart einer Compute-Instanz
 
@@ -290,10 +290,10 @@ Weitere Informationen finden Sie im [Artikel zu Computezielen](concept-compute-t
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Computecluster erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Computecluster**, und wählen Sie **Create Compute** (Computeressource erstellen) aus.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten **Computecluster** , und wählen Sie **Create Compute** (Computeressource erstellen) aus.
 1. An der Eingabeaufforderung:
     1. Wählen Sie einen Computetyp aus.
-    1. Wählen Sie eine VM-Größe aus. [Weitere Informationen zu VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+    1. Wählen Sie eine VM-Größe aus. [Weitere Informationen zu VM-Größen](../virtual-machines/sizes.md).
     1. Geben Sie einen Computnamen an.
 
 ### <a name="view-compute-configuration"></a>Anzeigen der Computekonfiguration
@@ -307,7 +307,7 @@ Weitere Informationen finden Sie im [Artikel zu Computezielen](concept-compute-t
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Compute clusters** (Computecluster) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf die Regel, die Sie bearbeiten möchten, und wählen Sie **Edit Compute** (Computeressource bearbeiten) aus.
-1. Die Compute-Konfigurationsdatei wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Die Compute-Konfigurationsdatei wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ### <a name="delete-compute"></a>Löschen einer Computeressource
 
@@ -325,17 +325,17 @@ So erstellen Sie eine Laufzeitkonfiguration in der Erweiterung:
 1. An der Eingabeaufforderung:
     1. Geben Sie einen Namen für das Computeziel an.
     1. Wählen Sie eine Umgebung aus, oder erstellen Sie sie.
-    1. Geben Sie den Namen des Skripts ein, das Sie ausführen möchten, oder drücken Sie die Eingabetaste****, um das Skript auf dem lokalen Computer zu suchen.
+    1. Geben Sie den Namen des Skripts ein, das Sie ausführen möchten, oder drücken Sie die Eingabetaste, um das Skript auf dem lokalen Computer zu suchen.
     1. Optional: Wählen Sie aus, ob Sie einen Datenverweis für die Trainingsausführung erstellen möchten. Dabei werden Sie aufgefordert, ein Dataset in der Laufzeitkonfiguration zu definieren.
-        1. Wählen Sie eines der registrierten Datasets aus, um eine Verknüpfung mit der Laufzeitkonfiguration zu erstellen. Eine Konfigurationsdatei für das Dataset wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
-    1. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+        1. Wählen Sie eines der registrierten Datasets aus, um eine Verknüpfung mit der Laufzeitkonfiguration zu erstellen. Eine Konfigurationsdatei für das Dataset wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+    1. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ### <a name="edit-run-configuration"></a>Bearbeiten der Laufzeitkonfiguration
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Computeclusterknoten im Knoten **Compute clusters** (Computecluster) Ihres Arbeitsbereichs.
 1. Klicken Sie mit der rechten Maustaste auf die Laufzeitkonfiguration, die Sie bearbeiten möchten, und wählen Sie **Edit Run Configuration** (Laufzeitkonfiguration bearbeiten) aus.
-1. Die Konfigurationsdatei für die Laufzeitkonfiguration wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Die Konfigurationsdatei für die Laufzeitkonfiguration wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ### <a name="delete-run-configuration"></a>Löschen der Laufzeitkonfiguration
 
@@ -357,7 +357,7 @@ Weitere Informationen finden Sie im [Artikel zu Modellen](concept-azure-machine-
     1. Geben Sie einen Namen für das Modell ein.
     1. Wählen Sie aus, ob das Modell eine Datei oder ein Ordner ist.
     1. Suchen Sie das Modell auf dem lokalen PC.
-    1. Die Konfigurationsdatei für das Modell wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+    1. Die Konfigurationsdatei für das Modell wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 ### <a name="view-model-properties"></a>Anzeigen von Modelleigenschaften
 
@@ -401,7 +401,7 @@ Weitere Informationen finden Sie unter [Webdienst-Endpunkt](concept-azure-machin
     1. Geben Sie einen Namen für das Modell ein.
     1. Stellen Sie das Skript bereit, das beim Bewerten des Modells ausgeführt werden soll.
     1. Stellen Sie eine Conda-Abhängigkeitsdatei bereit.
-    1. Im Editor wird die Konfigurationsdatei für die Bereitstellung angezeigt. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+    1. Im Editor wird die Konfigurationsdatei für die Bereitstellung angezeigt. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
 
 > [!NOTE]
 > Alternativ dazu können Sie im Knoten *Models* (Modelle) mit der rechten Maustaste auf ein registriertes Modell klicken und **Deploy Service From Registered Model** (Dienst aus registriertem Modell bereitstellen) auswählen.
@@ -421,7 +421,7 @@ Zusätzlich zum Erstellen und Löschen von Bereitstellungen können Sie auch die
 1. Erweitern Sie den Knoten **Endpoints** (Endpunkte) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf die zu verwaltende Bereitstellung:
     - Wählen Sie zum Bearbeiten der Einstellungen **Edit service** (Dienst bearbeiten) aus.
-        - Im Editor wird die Konfigurationsdatei für die Bereitstellung angezeigt. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+        - Im Editor wird die Konfigurationsdatei für die Bereitstellung angezeigt. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette ( **View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
     - Wählen Sie zum Anzeigen der Konfigurationseinstellungen für die Bereitstellung **View service properties** (Diensteigenschaften anzeigen) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791323"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325003"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ Bei Azure SQL-Datenbank gelten für VNET-Regeln folgende Einschränkungen:
 
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, VNET-Regeln jedoch nicht:
   - [Virtuelles privates S2S-Netzwerk (Site-to-Site-VPN)][vpn-gateway-indexmd-608y]
-  - Lokal über [ExpressRoute][expressroute-indexmd-744v]
+  - Lokal über [ExpressRoute](../../expressroute/index.yml)
 
 ### <a name="considerations-when-using-service-endpoints"></a>Überlegungen zur Verwendung von Dienstendpunkten
 
@@ -215,7 +215,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie im [Azure-Portal][http-azure-p
 > [!NOTE]
 > Wenn Sie beabsichtigen, einen Dienstendpunkt zu den VNET-Firewallregeln Ihres Servers hinzuzufügen, stellen Sie zunächst sicher, dass die Dienstendpunkte für das Subnetz eingeschaltet sind.
 >
-> Wenn Dienstendpunkte für das Subnetz nicht eingeschaltet werden, fordert Sie das Portal auf, diese zu aktivieren. Klicken Sie auf demselben Blatt, auf dem Sie auch die Regel hinzufügen, auf die Schaltfläche **Aktivieren** .
+> Wenn Dienstendpunkte für das Subnetz nicht eingeschaltet werden, fordert Sie das Portal auf, diese zu aktivieren. Klicken Sie auf demselben Blatt, auf dem Sie auch die Regel hinzufügen, auf die Schaltfläche **Aktivieren**.
 
 ## <a name="powershell-alternative"></a>PowerShell-Alternative
 
@@ -231,7 +231,7 @@ Intern rufen die PowerShell-Cmdlets für SQL-VNet-Aktionen REST-APIs auf. Sie k�
 
 Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dienstendpunkt gekennzeichnet ist, *geben Sie den Namen ein* , der zur Azure SQL-Datenbank-Instanz gehört.
 
-- Der Typname dieses Endpunkts ist **Microsoft.Sql** .
+- Der Typname dieses Endpunkts ist **Microsoft.Sql**.
 - Wenn Ihr Subnetz nicht mit dem Typnamen gekennzeichnet werden kann, lesen Sie unter [Überprüfen, ob Ihr Subnetz ein Endpunkt ist][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100] nach.
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
@@ -247,7 +247,7 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dien
     > [!IMPORTANT]
     > Wenn Sie für das Steuerelement die Einstellung „EIN“ beibehalten, akzeptiert der Server jegliche Kommunikation aus einem Subnetz innerhalb der Azure-Grenze (also jegliche Kommunikation, die von einer der IP-Adressen stammt, die innerhalb der für Azure-Rechenzentren definierten Bereiche liegen). Das Steuerelement auf ON festgelegt zu lassen, führt also möglicherweise aus Sicht der Sicherheit zu einem übermäßigen Zugriff. Mithilfe der Funktionen „Microsoft Azure Virtual Network-Dienstendpunkte“ und „VNET-Regel“ von SQL-Datenbank können Sie die sicherheitsbezogene Angriffsfläche verkleinern.
 
-4. Klicken Sie im Abschnitt **Virtuelle Netzwerke** auf **+ Vorhandene hinzufügen** .
+4. Klicken Sie im Abschnitt **Virtuelle Netzwerke** auf **+ Vorhandene hinzufügen**.
 
     ![Klicken Sie auf „Vorhandene hinzufügen“ (Subnetzendpunkt, als SQL-Regel).][image-portal-firewall-vnet-add-existing-10-png]
 
@@ -255,11 +255,11 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dien
 
     > [!TIP]
     > Sie müssen das richtige **Adresspräfix** für Ihr Subnetz hinzufügen. Den Wert finden Sie im Portal.
-    > Navigieren Sie zu **Alle Ressourcen** &gt; **Alle Typen** &gt; **Virtuelle Netzwerke** . Der Filter zeigt Ihre virtuellen Netzwerke an. Klicken Sie auf das virtuelle Netzwerk und dann auf **Subnetze** . Die Spalte **ADRESSBEREICH** weist das Adresspräfix auf, das Sie benötigen.
+    > Navigieren Sie zu **Alle Ressourcen** &gt; **Alle Typen** &gt; **Virtuelle Netzwerke**. Der Filter zeigt Ihre virtuellen Netzwerke an. Klicken Sie auf das virtuelle Netzwerk und dann auf **Subnetze**. Die Spalte **ADRESSBEREICH** weist das Adresspräfix auf, das Sie benötigen.
 
     ![Füllen Sie Felder für die neue Regel aus.][image-portal-firewall-create-update-vnet-rule-20-png]
 
-6. Klicken Sie am unteren Rand des Bereichs auf die Schaltfläche **OK** .
+6. Klicken Sie am unteren Rand des Bereichs auf die Schaltfläche **OK**.
 
 7. Die resultierende VNET-Regel wird im Firewallbereich angezeigt.
 

@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999079"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324966"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Bereitstellen von ML-Modellen für Field Programmable Gate Arrays (FPGAs) mit Azure Machine Learning 
 
-In diesem Artikel erfahren Sie mehr über FPGAs und die Bereitstellung von ML-Modellen in einem Azure-FPGA mithilfe des [Python-Pakets für hardwarebeschleunigte Modelle](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) von [Azure Machine Learning](overview-what-is-azure-ml.md).
+In diesem Artikel erfahren Sie mehr über FPGAs und die Bereitstellung von ML-Modellen in einem Azure-FPGA mithilfe des [Python-Pakets für hardwarebeschleunigte Modelle](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) von [Azure Machine Learning](overview-what-is-azure-ml.md).
 
 ## <a name="what-are-fpgas"></a>Was sind FPGAs?
 FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung. 
@@ -56,7 +56,7 @@ Die **PBS-Familie virtueller Azure-Computer** enthält Intel Arria 10 FPGAs. In 
 
 ## <a name="deploy-models-on-fpgas"></a>Bereitstellen von Modellen auf FPGAs
 
-Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure Machine Learning-Modellen](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. 
+Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure Machine Learning-Modellen](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. 
 
 In diesem Beispiel erstellen Sie ein TensorFlow-Diagramm, um das Eingabebild vorzuverarbeiten, machen daraus mit ResNet50 einen Featurizer für ein FPGA und führen dann die Features über einen mit dem ImageNet-Dataset trainierten Klassifizierer aus. Anschließend wird das Modell in einem AKS-Cluster bereitgestellt.
 
@@ -68,7 +68,7 @@ In diesem Beispiel erstellen Sie ein TensorFlow-Diagramm, um das Eingabebild vor
  
 - Das Paket mit hardwarebeschleunigten Modellen: `pip install --upgrade azureml-accel-models[cpu]`    
     
-- Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+- Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 
 - FPGA-Kontingent. Übermitteln Sie eine [Kontingentanforderung](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u), oder führen Sie den CLI-Befehl aus, um das Kontingent zu überprüfen: 
 
@@ -80,7 +80,7 @@ In diesem Beispiel erstellen Sie ein TensorFlow-Diagramm, um das Eingabebild vor
 
 ### <a name="define-the-tensorflow-model"></a>Definieren des TensorFlow-Modells
 
-Erstellen Sie zunächst mithilfe des [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) eine Dienstdefinition. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
+Erstellen Sie zunächst mithilfe des [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) eine Dienstdefinition. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
 
 1. Azure Machine Learning-Arbeitsbereich
 
@@ -223,7 +223,7 @@ Bevor Sie in FPGAs bereitstellen können, müssen Sie das Modell in das [ONNX](h
 
 ### <a name="containerize-and-deploy-the-model"></a>Containerisieren und Bereitstellen des Modells
 
-Erstellen Sie dann ein Docker-Image aus dem konvertierten Modell und allen Abhängigkeiten.  Dieses Docker-Image kann dann bereitgestellt und instanziiert werden.  Zu den unterstützten Bereitstellungszielen zählen Azure Kubernetes Service (AKS) in der Cloud oder ein Edge-Gerät (etwa [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)).  Sie können auch Tags und Beschreibungen für das registrierte Docker-Image hinzufügen.
+Erstellen Sie dann ein Docker-Image aus dem konvertierten Modell und allen Abhängigkeiten.  Dieses Docker-Image kann dann bereitgestellt und instanziiert werden.  Zu den unterstützten Bereitstellungszielen zählen Azure Kubernetes Service (AKS) in der Cloud oder ein Edge-Gerät (etwa [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md)).  Sie können auch Tags und Beschreibungen für das registrierte Docker-Image hinzufügen.
 
    ```python
    from azureml.core.image import Image
@@ -297,7 +297,7 @@ Erstellen Sie dann ein Docker-Image aus dem konvertierten Modell und allen Abhä
 
 #### <a name="deploy-to-a-local-edge-server"></a>Bereitstellung auf einem lokalen Edge-Server
 
-Alle [Azure Data Box-Edge-Geräte](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+Alle [Azure Data Box-Edge-Geräte](../databox-online/azure-stack-edge-overview.md
 ) enthalten ein FPGA für die Ausführung des Modells.  Es kann nur jeweils ein Modell gleichzeitig auf dem FPGA ausgeführt werden.  Um ein anderes Modell auszuführen, stellen Sie einfach einen neuen Container bereit. Anleitungen und Beispielcode finden Sie in [diesem Azure-Beispiel](https://github.com/Azure-Samples/aml-hardware-accelerated-models).
 
 ### <a name="consume-the-deployed-model"></a>Nutzen des bereitgestellten Modells
@@ -349,7 +349,7 @@ for top in sorted_results[:5]:
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Zum Vermeiden unnötiger Kosten bereinigen Sie Ihre Ressourcen **in dieser Reihenfolge**: Webdienst, dann Image und dann das Modell.
+Zum Vermeiden unnötiger Kosten bereinigen Sie Ihre Ressourcen **in dieser Reihenfolge** : Webdienst, dann Image und dann das Modell.
 
 ```python
 aks_service.delete()

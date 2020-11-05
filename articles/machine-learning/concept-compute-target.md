@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841946"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322281"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -44,7 +44,7 @@ Die folgenden Computeressourcen können zum Hosten Ihrer Modellimplementierung v
 
 Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Docker-Container, der das Modell und zugehörige Ressourcen hostet, die für die Verwendung erforderlich sind. Dieser Container wird dann in einem der folgenden Bereitstellungsszenarien verwendet:
 
-* Als *Webdienst*, der für Echtzeitrückschlüsse verwendet wird. Webdienstbereitstellungen verwenden eines der folgenden Computeziele:
+* Als *Webdienst* , der für Echtzeitrückschlüsse verwendet wird. Webdienstbereitstellungen verwenden eines der folgenden Computeziele:
 
     * [Lokaler Computer](how-to-attach-compute-targets.md#local)
     * [Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md)
@@ -52,9 +52,9 @@ Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Dock
     * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
     * Azure Functions (Vorschau). Bei der Bereitstellung in Azure Functions wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Von dort aus wird es mithilfe von Azure Functions bereitgestellt. Weitere Informationen finden Sie unter [Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)](how-to-deploy-functions.md).
 
-* Als Endpunkt für _Batchrückschlüsse_, der zur regelmäßigen Verarbeitung von Datenbatches verwendet wird. Batchrückschlüsse verwenden [Azure Machine Learning-Computecluster](how-to-create-attach-compute-cluster.md).
+* Als Endpunkt für _Batchrückschlüsse_ , der zur regelmäßigen Verarbeitung von Datenbatches verwendet wird. Batchrückschlüsse verwenden [Azure Machine Learning-Computecluster](how-to-create-attach-compute-cluster.md).
 
-* Auf ein _IoT-Gerät_ (Vorschau). Bei der Bereitstellung auf einem IoT-Gerät wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Anschließend erfolgt die Bereitstellung über Azure IoT Edge. Weitere Informationen finden Sie unter [Deploy as an IoT Edge module (preview)](/azure/iot-edge/tutorial-deploy-machine-learning) (Bereitstellen als IoT Edge-Modul (Vorschau)).
+* Auf ein _IoT-Gerät_ (Vorschau). Bei der Bereitstellung auf einem IoT-Gerät wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Anschließend erfolgt die Bereitstellung über Azure IoT Edge. Weitere Informationen finden Sie unter [Deploy as an IoT Edge module (preview)](../iot-edge/tutorial-deploy-machine-learning.md) (Bereitstellen als IoT Edge-Modul (Vorschau)).
 
 Erfahren Sie, [wo und wie Sie Ihr Modell auf einem Computeziel bereitstellen](how-to-deploy-and-where.md).
 
@@ -89,7 +89,7 @@ Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten v
 
 ### <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
 
-Wenn Sie eine Knotengröße für eine verwaltete Computeressource in Azure Machine Learning auswählen, können Sie unter den in Azure verfügbaren VM-Größen auswählen. Azure bietet eine Reihe von Größen für Linux und Windows für verschiedene Workloads. Weitere Informationen finden Sie unter [VM-Typen und -Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Wenn Sie eine Knotengröße für eine verwaltete Computeressource in Azure Machine Learning auswählen, können Sie unter den in Azure verfügbaren VM-Größen auswählen. Azure bietet eine Reihe von Größen für Linux und Windows für verschiedene Workloads. Weitere Informationen finden Sie unter [VM-Typen und -Größen](../virtual-machines/sizes.md).
 
 Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
 
@@ -133,7 +133,7 @@ Die aktuellen Angebote für isolierte VMs umfassen Folgendes:
 
 *RDMA-fähig
 
-Weitere Informationen zur Isolation finden Sie unter [Isolation in der öffentlichen Azure-Cloud](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices).
+Weitere Informationen zur Isolation finden Sie unter [Isolation in der öffentlichen Azure-Cloud](../security/fundamentals/isolation-choices.md).
 
 ## <a name="unmanaged-compute"></a>Nicht verwaltete Computeressourcen
 

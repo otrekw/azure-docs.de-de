@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996367"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314233"
 ---
 # <a name="collect-data-from-models-in-production"></a>Sammeln von Daten von Modellen in der Produktion
 
@@ -67,11 +67,11 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 
 - Sie benötigen einen AKS-Cluster. Informationen zum Erstellen und Bereitstellen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
-- [Einrichten Ihrer Umgebung](how-to-configure-environment.md) und Installieren des [Azure Machine Learning Monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+- [Einrichten Ihrer Umgebung](how-to-configure-environment.md) und Installieren des [Azure Machine Learning Monitoring SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
 
 ## <a name="enable-data-collection"></a>Aktivieren der Datensammlung
 
-Sie können die [Datensammlung](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) ungeachtet des über Azure Machine Learning oder andere Tools bereitgestellten Modells aktivieren.
+Sie können die [Datensammlung](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) ungeachtet des über Azure Machine Learning oder andere Tools bereitgestellten Modells aktivieren.
 
 Führen Sie zum Aktivieren der Datensammlung folgende Schritte aus:
 
@@ -153,7 +153,7 @@ Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Blobspeicher erf
 
 1. Laden Sie [Power BI Desktop](https://www.powerbi.com) herunter, und öffnen Sie diese Anwendung.
 
-1. Wählen Sie **Daten abrufen** und anschließend [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources) aus.
+1. Wählen Sie **Daten abrufen** und anschließend [**Azure Blob Storage**](/power-bi/desktop-data-sources) aus.
 
     [![Power BI-Blob-Setup](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
@@ -163,7 +163,7 @@ Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Blobspeicher erf
 
     [![Power BI-Navigator](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Klicken Sie im Abfrage-Editor unter der Spalte **Name**, und fügen Sie Ihr Speicherkonto hinzu.
+1. Klicken Sie im Abfrage-Editor unter der Spalte **Name** , und fügen Sie Ihr Speicherkonto hinzu.
 
 1. Geben Sie Ihren Modellpfad in den Filter ein. Erweitern Sie einfach den Filterpfad, wenn Sie sich nur die Dateien für ein bestimmtes Jahr oder einen bestimmten Monat ansehen möchten. Verwenden Sie beispielsweise den folgenden Filterpfad, wenn Sie nur die Daten vom März anzeigen möchten:
 
@@ -181,13 +181,13 @@ Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Blobspeicher erf
 
 1. Wählen Sie **Schließen und übernehmen** aus.
 
-1. Wenn Sie Eingaben und Vorhersagen hinzugefügt haben, werden Ihre Tabellen automatisch anhand der **RequestId**-Werte sortiert.
+1. Wenn Sie Eingaben und Vorhersagen hinzugefügt haben, werden Ihre Tabellen automatisch anhand der **RequestId** -Werte sortiert.
 
 1. Beginnen Sie mit der Erstellung Ihrer benutzerdefinierten Berichte in Ihren Modelldaten.
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Analysieren von Modelldaten mit Azure Databricks
 
-1. Erstellen Sie einen [Azure Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+1. Erstellen Sie einen [Azure Databricks-Arbeitsbereich](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 1. Greifen Sie auf Ihren Databricks-Arbeitsbereich zu.
 

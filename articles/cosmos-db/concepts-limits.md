@@ -6,14 +6,15 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489284"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319830"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Dieser Artikel enthält eine Übersicht über die Standardkontingente für unterschiedliche Ressourcen in Azure Cosmos DB.
 
@@ -132,7 +133,6 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 | Maximale Länge des Partitionsschlüsselwerts | 2\.048 Bytes |
 | Maximale Länge des ID-Werts | 1\.023 Bytes |
 | Maximale Anzahl der Eigenschaften pro Element | Praktisch unbegrenzt |
-| Maximale Schachtelungstiefe | Praktisch unbegrenzt |
 | Maximale Länge des Eigenschaftsnamens | Praktisch unbegrenzt |
 | Maximale Länge des Eigenschaftswerts | Praktisch unbegrenzt |
 | Maximale Länge des Zeichenfolgen-Eigenschaftswerts | Praktisch unbegrenzt |

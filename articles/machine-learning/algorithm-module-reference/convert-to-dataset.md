@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898708"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323056"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
@@ -35,7 +35,7 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
 
 2. Verbinden Sie es mit einem beliebigen Modul, das ein Dataset ausgibt.   
 
-    Solange die Daten [tabellarisch](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) sind, können Sie sie in ein Dataset konvertieren. Dies schließt Daten ein, die mit [Import Data](import-data.md) (Daten importieren) geladen oder mithilfe von [Enter Data Manually](enter-data-manually.md) (Daten manuell eingeben) erstellt wurden, sowie Datasets, die mithilfe von [Apply Transformation](apply-transformation.md) (Transformation anwenden) transformiert wurden.
+    Solange die Daten [tabellarisch](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) sind, können Sie sie in ein Dataset konvertieren. Dies schließt Daten ein, die mit [Import Data](import-data.md) (Daten importieren) geladen oder mithilfe von [Enter Data Manually](enter-data-manually.md) (Daten manuell eingeben) erstellt wurden, sowie Datasets, die mithilfe von [Apply Transformation](apply-transformation.md) (Transformation anwenden) transformiert wurden.
 
 3.  Geben Sie in der Dropdownliste **Aktion** an, ob vor dem Speichern des Datasets eine Datenbereinigung durchgeführt werden soll:  
   
@@ -45,8 +45,8 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
   
     - **ReplaceValues:** Verwenden Sie diese Option, um einen einzelnen exakten Wert anzugeben, der durch einen anderen exakten Wert ersetzt werden soll. Sie können fehlende oder benutzerdefinierte Werte ersetzen, indem Sie die Methode **Ersetzen** festlegen:
 
-      - **Missing**: Wählen Sie diese Option aus, um fehlende Werte im Eingabedataset zu ersetzen. Geben Sie für **Neuer Wert** den Wert ein, durch den die fehlenden Werte ersetzt werden sollen.
-      - **Benutzerdefiniert**: Wählen Sie diese Option aus, um benutzerdefinierte Werte im Eingabedataset zu ersetzen. Geben Sie für **Benutzerdefinierter Wert** den Wert ein, den Sie suchen möchten. Wenn die Daten z. B. die Zeichenfolge `obs` als Platzhalter für fehlende Werte enthalten, geben Sie `obs` ein. Geben Sie für **Neuer Wert** den neuen Wert ein, durch den die ursprüngliche Zeichenfolge ersetzt werden soll.
+      - **Missing** : Wählen Sie diese Option aus, um fehlende Werte im Eingabedataset zu ersetzen. Geben Sie für **Neuer Wert** den Wert ein, durch den die fehlenden Werte ersetzt werden sollen.
+      - **Benutzerdefiniert** : Wählen Sie diese Option aus, um benutzerdefinierte Werte im Eingabedataset zu ersetzen. Geben Sie für **Benutzerdefinierter Wert** den Wert ein, den Sie suchen möchten. Wenn die Daten z. B. die Zeichenfolge `obs` als Platzhalter für fehlende Werte enthalten, geben Sie `obs` ein. Geben Sie für **Neuer Wert** den neuen Wert ein, durch den die ursprüngliche Zeichenfolge ersetzt werden soll.
   
     Beachten Sie, dass der Vorgang **ReplaceValues** nur für exakte Übereinstimmungen gilt. Diese Zeichenfolgen sind z. B. nicht betroffen: `obs.`, `obsolete`.  
  
@@ -70,4 +70,4 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
   
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

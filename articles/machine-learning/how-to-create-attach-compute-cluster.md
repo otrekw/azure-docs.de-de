@@ -11,30 +11,30 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207120"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318212"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
 Erfahren Sie, wie Sie einen [Computecluster](concept-compute-target.md#azure-machine-learning-compute-managed) in Ihrem Azure Machine Learning-Arbeitsbereich erstellen und verwalten.
 
-Sie können Azure Machine Learning-Computecluster verwenden, um einen Trainings- oder Batchrückschlussprozess in einem Cluster von CPU- oder GPU-Computeknoten in der Cloud zu verteilen. Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+Sie können Azure Machine Learning-Computecluster verwenden, um einen Trainings- oder Batchrückschlussprozess in einem Cluster von CPU- oder GPU-Computeknoten in der Cloud zu verteilen. Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](../virtual-machines/sizes-gpu.md). 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Erstellen eines Computeclusters
 *  Senken Ihrer Computeclusterkosten
-* Einrichten einer [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) für den Cluster
+* Einrichten einer [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für den Cluster
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
+* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 ## <a name="what-is-a-compute-cluster"></a>Was ist ein Computecluster?
 
@@ -52,7 +52,7 @@ Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](h
 
 * Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](how-to-manage-quotas.md).
 
-* Azure ermöglicht Ihnen das Einrichten von _Sperren_ für Ressourcen, damit diese nicht gelöscht werden können oder schreibgeschützt sind. __Wenden Sie keine Ressourcensperren auf die Ressourcengruppe an, die Ihren Arbeitsbereich enthält__ . Wenn Sie eine Sperre auf die Ressourcengruppe anwenden, die Ihren Arbeitsbereich enthält, werden Skalierungsvorgänge für Azure ML-Computecluster unterbunden. Weitere Informationen zum Sperren von Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
+* Azure ermöglicht Ihnen das Einrichten von _Sperren_ für Ressourcen, damit diese nicht gelöscht werden können oder schreibgeschützt sind. __Wenden Sie keine Ressourcensperren auf die Ressourcengruppe an, die Ihren Arbeitsbereich enthält__. Wenn Sie eine Sperre auf die Ressourcengruppe anwenden, die Ihren Arbeitsbereich enthält, werden Skalierungsvorgänge für Azure ML-Computecluster unterbunden. Weitere Informationen zum Sperren von Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
 
 > [!TIP]
 > Cluster können in der Regel auf bis zu 100 Knoten skaliert werden, solange Ihr Kontingent für die Anzahl der erforderlichen Kerne ausreicht. Standardmäßig werden Cluster mit aktivierter Kommunikation zwischen den Knoten des Clusters eingerichtet, um beispielsweise MPI-Aufträge zu unterstützen. Sie können Ihre Cluster jedoch auf 1.000 Knoten skalieren, indem Sie einfach [ein Supportticket einreichen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) und die Aufnahme Ihrer Anwendung, des Arbeitsbereichs oder eines bestimmten Clusters in die Zulassungsliste anfordern, um die Kommunikation zwischen den Knoten zu deaktivieren. 
@@ -80,7 +80,7 @@ Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstel
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erweiterte Eigenschaften konfigurieren. Mithilfe der Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.  Weitere Informationen finden Sie in der [AmlCompute-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true).
+Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erweiterte Eigenschaften konfigurieren. Mithilfe der Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.  Weitere Informationen finden Sie in der [AmlCompute-Klasse](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py).
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -90,7 +90,7 @@ Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erwei
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true).
+Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -217,4 +217,4 @@ Weitere Informationen finden Sie unter [Einrichten einer verwalteten Identität]
 Verwenden Sie Ihren Computecluster für Folgendes:
 
 * [Übermitteln einer Trainingsausführung an ein Computeziel](how-to-set-up-training-targets.md) 
-* [Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning](how-to-use-parallel-run-step.md).
+* [Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning](./tutorial-pipeline-batch-scoring-classification.md).

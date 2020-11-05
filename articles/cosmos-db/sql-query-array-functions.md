@@ -3,18 +3,20 @@ title: Arrayfunktionen in der Abfragesprache für Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie mithilfe von Arrayfunktionen Vorgänge für Arrays in Azure Cosmos DB ausführen.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2a4033088a9152363a91c368109136062cace4ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a180c8325e9b379e919e68afd9a0af6c196b55f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85563513"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332609"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Arrayfunktionen (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Die Array Funktionen ermöglichen das Ausführen von Vorgängen für Arrays in Azure Cosmos DB.
 

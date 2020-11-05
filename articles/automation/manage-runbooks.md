@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521066"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317091"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -28,7 +28,7 @@ Sie können ein neues Runbook in Azure Automation über das Azure-Portal oder mi
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
 2. Wählen Sie im Hub unter **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
-3. Klicken Sie auf **Runbook erstellen** .
+3. Klicken Sie auf **Runbook erstellen**.
 4. Geben Sie einen Namen für das Runbook ein, und wählen Sie dessen [Typ](automation-runbook-types.md) aus. Der Name des Runbooks muss mit einem Buchstaben beginnen und darf Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.
 5. Klicken Sie auf **Erstellen** , um das Runbook zu erstellen und den Editor zu öffnen.
 
@@ -64,11 +64,11 @@ Mit dem folgenden Verfahren können eine Skriptdatei in Azure Automation importi
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
 2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
-3. Klicken Sie auf **Runbook importieren** .
+3. Klicken Sie auf **Runbook importieren**.
 4. Klicken Sie auf **Runbookdatei** , und wählen Sie die zu importierende Datei aus.
 5. Wenn das Feld **Name** aktiviert ist, haben Sie die Möglichkeit, den Namen des Runbooks zu ändern. Der Name muss mit einem Buchstaben beginnen und darf Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.
 6. Der [Runbooktyp](automation-runbook-types.md) wird automatisch ausgewählt, Sie können den Typ jedoch unter Berücksichtigung der geltenden Einschränkungen ändern.
-7. Klicken Sie auf **Erstellen** . Das neue Runbook wird in der Liste der Runbooks für das Automation-Konto angezeigt.
+7. Klicken Sie auf **Erstellen**. Das neue Runbook wird in der Liste der Runbooks für das Automation-Konto angezeigt.
 8. Sie müssen [das Runbook veröffentlichen](#publish-a-runbook) , bevor Sie es ausführen können.
 
 > [!NOTE]
@@ -228,7 +228,7 @@ So verwenden Sie ein benutzerdefiniertes Skript
 
 ## <a name="test-a-runbook"></a>Testen eines Runbooks
 
-Wenn Sie ein Runbook testen, wird die [Entwurfsversion](#publish-a-runbook) ausgeführt, und alle darin ausgeführten Aktionen werden abgeschlossen. Es wird kein Auftragsverlauf erstellt. Allerdings werden die Datenströme [Ausgabe](automation-runbook-output-and-messages.md#use-the-output-stream) sowie [Warnung und Fehler](automation-runbook-output-and-messages.md#monitor-message-streams) im Ausgabebereich „Test“ angezeigt. Nachrichten an den [ausführlichen Datenstrom](automation-runbook-output-and-messages.md#monitor-message-streams) werden nur dann im Ausgabebereich, wenn die Variable [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) auf `Continue` festgelegt ist.
+Wenn Sie ein Runbook testen, wird die [Entwurfsversion](#publish-a-runbook) ausgeführt, und alle darin ausgeführten Aktionen werden abgeschlossen. Es wird kein Auftragsverlauf erstellt. Allerdings werden die Datenströme [Ausgabe](automation-runbook-output-and-messages.md#use-the-output-stream) sowie [Warnung und Fehler](automation-runbook-output-and-messages.md#working-with-message-streams) im Ausgabebereich „Test“ angezeigt. Nachrichten an den [ausführlichen Datenstrom](automation-runbook-output-and-messages.md#write-output-to-verbose-stream) werden nur dann im Ausgabebereich, wenn die Variable [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) auf `Continue` festgelegt ist.
 
 Auch wenn die Entwurfsversion ausgeführt wird, wird das Runbook trotzdem normal ausgeführt, und alle Aktionen werden auf die Ressourcen in der Umgebung angewendet. Aus diesem Grund sollten Sie Runbooks nur auf Ressourcen testen, die sich nicht in der Produktionsumgebung befinden.
 
@@ -249,8 +249,8 @@ Wenn Sie ein neues Runbooks erstellen oder importieren, müssen Sie es veröffen
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>Veröffentlichen eines Runbooks im Azure-Portal
 
 1. Öffnen Sie das Runbook im Azure-Portal.
-2. Klicken Sie auf **Bearbeiten** .
-3. Klicken Sie auf **Veröffentlichen** und dann als Antwort in der Bestätigungsmeldung auf **Ja** .
+2. Klicken Sie auf **Bearbeiten**.
+3. Klicken Sie auf **Veröffentlichen** und dann als Antwort in der Bestätigungsmeldung auf **Ja**.
 
 ### <a name="publish-a-runbook-using-powershell"></a>Veröffentlichen eines Runbooks mithilfe von PowerShell
 
@@ -275,7 +275,7 @@ Nachdem Ihr Runbook veröffentlicht wurde, können Sie einen Zeitplan für seine
 4. Wählen Sie im Bereich „Runbook planen“ **Zeitplan mit Runbook verknüpfen** aus.
 5. Wählen Sie im Bereich „Zeitplan“ **Neuen Zeitplan erstellen** aus.
 6. Geben Sie im Bereich „Neuer Zeitplan“ einen Namen, eine Beschreibung und andere Parameter ein.
-7. Nachdem der Zeitplan erstellt wurde, markieren Sie ihn, und klicken Sie auf **OK** . Er sollte jetzt mit Ihrem Runbook verknüpft sein.
+7. Nachdem der Zeitplan erstellt wurde, markieren Sie ihn, und klicken Sie auf **OK**. Er sollte jetzt mit Ihrem Runbook verknüpft sein.
 8. Suchen Sie in Ihrem Postfach nach einer E-Mail, die Sie über den Status des Runbooks informiert.
 
 ## <a name="obtain-job-statuses"></a>Abrufen des Auftragsstatus
@@ -298,7 +298,7 @@ Sie können die Auftragsliste filtern, indem Sie **Aufträge filtern** auswähle
 
 Alternativ können Sie für ein bestimmtes Runbook eine Auftragszusammenfassung anzeigen, indem Sie in Ihrem Automation-Konto zuerst auf der Seite „Runbooks“ das Runbook und dann **Aufträge** auswählen. Mit dieser Aktion wird die Seite „Aufträge“ angezeigt. Wenn Sie dort auf einen Auftragsdatensatz klicken, werden die zugehörigen Details und Ausgaben angezeigt.
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Screenshot der Seite „Aufträge“.":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Screenshot der Seite „Aufträge“ mit hervorgehobener Schaltfläche „Fehler“.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Abrufen des Auftragsstatus mithilfe von PowerShell
 

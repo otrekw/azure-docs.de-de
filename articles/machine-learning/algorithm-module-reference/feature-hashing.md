@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907916"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323722"
 ---
 # <a name="feature-hashing-module-reference"></a>Referenz des Moduls „Feature Hashing“
 
@@ -22,7 +22,7 @@ In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Desi
 
 Verwenden Sie das Modul „Feature Hashing“, um einen Datenstrom aus englischem Text in eine Reihe von ganzzahligen Merkmalen umzuwandeln. Anschließend können Sie diese gehashte Merkmalssammlung an einen Machine Learning-Algorithmus übergeben, um ein Textanalysemodell zu trainieren.
 
-Die in diesem Modul bereitgestellte Feature Hashing-Funktionalität basiert auf dem nimbusml-Framework. Weitere Informationen finden Sie unter [NgramHash-Klasse](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Die in diesem Modul bereitgestellte Feature Hashing-Funktionalität basiert auf dem nimbusml-Framework. Weitere Informationen finden Sie unter [NgramHash-Klasse](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
 ## <a name="what-is-feature-hashing"></a>Was ist Feature Hashing?
 
@@ -131,4 +131,4 @@ Der optimale Satz von Vorverarbeitungsmethoden, der in einer Lösung zum Einsatz
 
 ## <a name="next-steps"></a>Nächste Schritte
             
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

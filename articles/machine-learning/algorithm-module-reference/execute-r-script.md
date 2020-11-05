@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330392"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323737"
 ---
 # <a name="execute-r-script-module"></a>Execute R Script-Module
 
@@ -121,7 +121,7 @@ Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des
 
 ## <a name="access-to-registered-dataset"></a>Zugreifen auf ein registriertes Dataset
 
-Verwenden Sie den folgenden Beispielcode, um [auf die in Ihrem Arbeitsbereich registrierten Datasets zuzugreifen](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script):
+Verwenden Sie den folgenden Beispielcode, um [auf die in Ihrem Arbeitsbereich registrierten Datasets zuzugreifen](../how-to-create-register-datasets.md):
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -226,7 +226,7 @@ Die „Execute R Script“-Module können mehrere Ausgaben zurückgeben, müssen
 
 Standardmeldungen und -fehler aus R werden im Protokoll des Moduls zurückgegeben.
 
-Wenn Sie Ergebnisse im R-Skript ausgeben müssen, finden Sie im rechten Panel des Moduls die ausgegebenen Ergebnisse auf der Registerkarte **Outputs+logs** in **70_driver_log** .
+Wenn Sie Ergebnisse im R-Skript ausgeben müssen, finden Sie im rechten Panel des Moduls die ausgegebenen Ergebnisse auf der Registerkarte **Outputs+logs** in **70_driver_log**.
 
 ## <a name="sample-scripts"></a>Beispielskripts
 
@@ -241,7 +241,7 @@ Das Modul „Execute R Script“ unterstützt beliebige R-Skriptdateien als Eing
 
 1. Überprüfen Sie, ob die ZIP-Datei in der Liste **My Datasets** (Meine Datasets) unter der Kategorie **Datasets** in der linken Modulstruktur angezeigt wird.
 
-1.  Verbinden Sie das Dataset mit dem Eingabeport **Script Bundle** .
+1.  Verbinden Sie das Dataset mit dem Eingabeport **Script Bundle**.
 
 1. Alle Dateien in der ZIP-Datei sind während der Laufzeit der Pipeline verfügbar. 
 
@@ -289,10 +289,10 @@ azureml_main <- function(dataframe1, dataframe2){
 
 Dieses Beispiel zeigt, wie Sie ein Dataset in einer ZIP-Datei als Eingabe für das Modul „Execute R Script“ verwenden.
 
-1. Erstellen Sie die Datendatei im CSV-Format, und nennen Sie sie **mydatafile.csv** .
+1. Erstellen Sie die Datendatei im CSV-Format, und nennen Sie sie **mydatafile.csv**.
 1. Erstellen Sie eine ZIP-Datei, und fügen Sie die CSV-Datei dem Archiv hinzu.
 1. Laden Sie die ZIP-Datei in Ihren Azure Machine Learning-Arbeitsbereich hoch. 
-1. Verbinden Sie das resultierende Dataset mit der **ScriptBundle** -Eingabe Ihres Moduls **Execute R Script** .
+1. Verbinden Sie das resultierende Dataset mit der **ScriptBundle** -Eingabe Ihres Moduls **Execute R Script**.
 1. Verwenden Sie den folgenden Code, um die CSV-Daten aus der ZIP-Datei zu lesen.
 
 ```R
@@ -505,4 +505,4 @@ Die folgenden vorinstallierten R-Pakete sind zurzeit verfügbar:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

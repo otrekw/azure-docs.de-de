@@ -3,17 +3,19 @@ title: Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und Azure Functions ereignisgesteuerte, serverlose Computing-Apps erstellen.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538645"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334071"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Das serverlose Computing beruht im Wesentlichen auf der Fähigkeit, sich auf einzelne Logikelemente zu konzentrieren, die wiederholbar und zustandslos sind. Diese Elemente erfordern keine Infrastrukturverwaltung, und Ressourcen werden von ihnen lediglich für die Sekunden oder sogar Millisekunden ihrer Ausführung verbraucht. Den Kern der serverlosen Computing-Aktivitäten stellen Funktionen dar, die von [Azure Functions](https://azure.microsoft.com/services/functions) im Azure-Ökosystem verfügbar gemacht werden. Weitere Informationen zu anderen serverlosen Ausführungsumgebungen in Azure finden Sie auf der Seite [Serverlos in Azure](https://azure.microsoft.com/solutions/serverless/). 
 
@@ -23,7 +25,7 @@ Mit der nativen Integration zwischen [Azure Cosmos DB](https://azure.microsoft.c
 
 Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverlosen Apps wie folgt integrieren:
 
-* Erstellen Sie einen ereignisgesteuerten **Azure Functions-Trigger für Cosmos DB** . Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
+* Erstellen Sie einen ereignisgesteuerten **Azure Functions-Trigger für Cosmos DB**. Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
 * Sie können aber auch eine Azure-Funktion mithilfe einer **Eingabebindung** an einen Azure Cosmos-Container binden. Eingabebindungen lesen Daten aus einem Container, wenn eine Funktion ausgeführt wird.
 * Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an einen Azure Cosmos-Container. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
@@ -61,7 +63,7 @@ In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontr
 
 Die folgende Abbildung zeigt den Code, der für diesen Trigger in das Azure-Portal geschrieben wird.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Integration von Azure Cosmos DB und Azure Functions":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Erstellen einer durch Azure Cosmos DB ausgelösten Funktion":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finanzieller Anwendungsfall – Trigger mit Timer und Eingabebindung
 
@@ -75,9 +77,9 @@ Bei finanziellen Implementierungen können Sie beispielsweise eine Funktion aufr
 
 In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario gezeigt.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Integration von Azure Cosmos DB und Azure Functions":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Datei „index.js“ für einen Trigger mit Timer für ein Finanzszenario":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Integration von Azure Cosmos DB und Azure Functions":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Datei „run.csx“ für einen Trigger mit Timer für ein Finanzszenario":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gaming-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB 
 
@@ -124,21 +126,21 @@ Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Ar
 
 * **Sofortiger Zugriff auf alle Ihre Daten** : Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
 
-* **Ohne Schema** . Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
+* **Ohne Schema**. Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
 
-* **Skalierbarer Durchsatz** . Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
+* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
 
-* **Globale Replikation** . Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
+* **Globale Replikation**. Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
 
 Wenn Sie die Integration mit Azure Functions zum Speichern von Daten einrichten möchten und keine tiefe Indizierung gewünscht wird, oder wenn Sie Anhänge und Mediendateien speichern müssen, ist der [Azure Blob Storage-Trigger](../azure-functions/functions-bindings-storage-blob.md) möglicherweise die bessere Wahl.
 
 Vorteile von Azure Functions: 
 
-* **Ereignisgesteuert** . Azure Functions ist ereignisgesteuert und kann einen Änderungsfeed von Azure Cosmos DB überwachen. Das bedeutet, dass Sie keine Überwachungslogik schreiben müssen. Sie müssen lediglich ein Auge auf die überwachten Änderungen haben. 
+* **Ereignisgesteuert**. Azure Functions ist ereignisgesteuert und kann einen Änderungsfeed von Azure Cosmos DB überwachen. Das bedeutet, dass Sie keine Überwachungslogik schreiben müssen. Sie müssen lediglich ein Auge auf die überwachten Änderungen haben. 
 
-* **Keine Einschränkungen** . Funktionen werden parallel ausgeführt, und vom Dienst werden so viele Funktionen aufgerufen, wie benötigt werden. Die Parameter legen Sie fest.
+* **Keine Einschränkungen**. Funktionen werden parallel ausgeführt, und vom Dienst werden so viele Funktionen aufgerufen, wie benötigt werden. Die Parameter legen Sie fest.
 
-* **Geeignet für schnelle Aufgaben** . Bei jedem ausgelösten Ereignis ruft der Dienst neue Instanzen der Funktionen auf, und er schließt sie, sobald die Funktion abgeschlossen ist. Sie bezahlen lediglich für den Zeitraum, in dem Ihre Funktionen ausgeführt werden.
+* **Geeignet für schnelle Aufgaben**. Bei jedem ausgelösten Ereignis ruft der Dienst neue Instanzen der Funktionen auf, und er schließt sie, sobald die Funktion abgeschlossen ist. Sie bezahlen lediglich für den Zeitraum, in dem Ihre Funktionen ausgeführt werden.
 
 Wenn Sie nicht sicher sind, ob Flow, Logic Apps, Azure Functions oder WebJobs am besten für Ihre Implementierung geeignet sind, lesen Sie den Artikel [Auswahl zwischen Flow, Logic Apps, Functions und WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 

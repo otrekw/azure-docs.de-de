@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Clients für ein als Webdienst bereitgestelltes Modell
 titleSuffix: Azure Machine Learning
-description: Es wird beschrieben, wie ein Webdienst-Endpunkt aufgerufen werden kann, der bei der Bereitstellung eines Modells über Azure Machine Learning generiert wurde. Vom Endpunkt wird eine REST-API verfügbar gemacht, die Sie aufrufen können, um für das Modell einen Rückschlussvorgang durchzuführen. Erstellen Sie Clients für diese API mithilfe einer Programmiersprache Ihrer Wahl.
+description: Es wird beschrieben, wie ein Webdienst-Endpunkt aufgerufen werden kann, der bei der Bereitstellung eines Modells über Azure Machine Learning generiert wurde.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966099"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318158"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
 
 Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird ein REST-API-Endpunkt erstellt. Sie können Daten an diesen Endpunkt senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
 
-Sie erstellen einen Webdienst, wenn Sie ein Modell in Ihrer lokalen Umgebung oder für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Der URI für den Zugriff auf den Webdienst kann über das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
+Sie erstellen einen Webdienst, wenn Sie ein Modell in Ihrer lokalen Umgebung oder für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Der URI für den Zugriff auf den Webdienst kann über das [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
 
 Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine Learning-Webdienst verwendet:
 
@@ -39,7 +39,7 @@ Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine 
 > [!NOTE]
 > Verwenden Sie das Azure Machine Learning SDK zum Abrufen der Webdienstinformationen. Dies ist ein Python SDK. Sie können eine beliebige Sprache verwenden, um einen Client für den Dienst zu erstellen.
 
-Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true)-Klasse stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
+Die [azureml.core.Webservice](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)-Klasse stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
 
 * `auth_enabled`: Wenn Schlüsselauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `token_auth_enabled`: Wenn Tokenauthentifizierung aktiviert ist `True`, andernfalls `False`.
@@ -59,7 +59,7 @@ Es gibt verschiedene Möglichkeiten zum Abrufen dieser Informationen für bereit
     print(service.swagger_uri)
     ```
 
-* Mit `Webservice.list` können Sie eine Liste bereitgestellter Webdienste für Modelle in Ihrem Arbeitsbereich abrufen. Sie können Filter hinzufügen, um die Liste der zurückgegebenen Informationen einzugrenzen. Weitere Informationen zu den möglichen Filtern finden Sie in der Referenzdokumentation [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true).
+* Mit `Webservice.list` können Sie eine Liste bereitgestellter Webdienste für Modelle in Ihrem Arbeitsbereich abrufen. Sie können Filter hinzufügen, um die Liste der zurückgegebenen Informationen einzugrenzen. Weitere Informationen zu den möglichen Filtern finden Sie in der Referenzdokumentation [Webservice.list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py).
 
     ```python
     services = Webservice.list(ws)
@@ -77,7 +77,7 @@ Es gibt verschiedene Möglichkeiten zum Abrufen dieser Informationen für bereit
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Wenn Sie den Namen des bereitgestellten Diensts kennen, verwenden Sie den Befehl [az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show):
+Wenn Sie den Namen des bereitgestellten Diensts kennen, verwenden Sie den Befehl [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show):
 
 ```azurecli
 az ml service show -n <service-name>
@@ -85,7 +85,7 @@ az ml service show -n <service-name>
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Wählen Sie im Azure Machine Learning Studio __Endpunkte__, __Echtzeitendpunkte__ und dann den Endpunktnamen aus. In den Details für den Endpunkt enthält das Feld __REST-Endpunkt__ den Bewertungs-URI. Das Feld __Swagger-URI__ enthält den Swagger-URI.
+Wählen Sie im Azure Machine Learning Studio __Endpunkte__ , __Echtzeitendpunkte__ und dann den Endpunktnamen aus. In den Details für den Endpunkt enthält das Feld __REST-Endpunkt__ den Bewertungs-URI. Das Feld __Swagger-URI__ enthält den Swagger-URI.
 
 ---
 
@@ -117,7 +117,7 @@ Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf
 |Schlüssel|Standardmäßig deaktiviert| Standardmäßig aktiviert|
 |Token| Nicht verfügbar.| Standardmäßig deaktiviert |
 
-Verwenden Sie beim Senden einer Anforderung an einen Dienst, der mit einem Schlüssel oder Token gesichert ist, den __Authorization__-Header, um den Schlüssel oder das Token zu übergeben. Der Schlüssel oder das Token muss als `Bearer <key-or-token>` formatiert sein, wobei `<key-or-token>` der Schlüssel- oder Tokenwert ist.
+Verwenden Sie beim Senden einer Anforderung an einen Dienst, der mit einem Schlüssel oder Token gesichert ist, den __Authorization__ -Header, um den Schlüssel oder das Token zu übergeben. Der Schlüssel oder das Token muss als `Bearer <key-or-token>` formatiert sein, wobei `<key-or-token>` der Schlüssel- oder Tokenwert ist.
 
 Der primäre Unterschied zwischen Schlüsseln und Token besteht darin, dass **Schlüssel statisch sind und manuell neu generiert werden können** und **Token bei Ablauf aktualisiert werden müssen**. Die schlüsselbasierte Authentifizierung wird für Webdienste unterstützt, die über Azure Container Instances und Azure Kubernetes Service bereitgestellt werden. Die tokenbasierte Authentifizierung ist **nur** für Azure Kubernetes Service-Bereitstellungen verfügbar. Weitere Informationen sowie spezifische Codebeispiele finden Sie in der [Vorgehensweise](how-to-setup-authentication.md#web-service-authentication) zur Authentifizierung.
 
@@ -139,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true).
+> Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py).
 
 #### <a name="authentication-with-tokens"></a>Authentifizierung mit Tokens
 
@@ -527,7 +527,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 ## <a name="web-service-schema-openapi-specification"></a>Webdienst Schema (OpenAPI-Spezifikation)
 
-Wenn Sie automatische Schemagenerierung mit Ihrer Bereitstellung verwendet haben, können Sie die Adresse der OpenAPI-Spezifikation für den Dienst mithilfe der [swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)-Eigenschaft abrufen. (Beispiel: `print(service.swagger_uri)`.) Verwenden Sie eine GET-Anforderung, oder öffnen Sie den URI in einem Browser, um die Spezifikation abzurufen.
+Wenn Sie automatische Schemagenerierung mit Ihrer Bereitstellung verwendet haben, können Sie die Adresse der OpenAPI-Spezifikation für den Dienst mithilfe der [swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)-Eigenschaft abrufen. (Beispiel: `print(service.swagger_uri)`.) Verwenden Sie eine GET-Anforderung, oder öffnen Sie den URI in einem Browser, um die Spezifikation abzurufen.
 
 Das folgende JSON-Dokument ist ein Beispiel für ein Schema (OpenAPI-Spezifikation), das für eine Bereitstellung generiert wurde:
 
@@ -669,15 +669,15 @@ Ein Hilfsprogramm, das Clientbibliotheken aus der Spezifikation erstellen kann, 
 
 
 > [!TIP]
-> Sie können das JSON-Schemadokument abrufen, nachdem Sie den Dienst bereitgestellt haben. Verwenden Sie die [swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)-Eigenschaft des bereitgestellten Webdiensts (beispielsweise `service.swagger_uri`), um den URI für die Swagger-Datei des lokalen Webdiensts abzurufen.
+> Sie können das JSON-Schemadokument abrufen, nachdem Sie den Dienst bereitgestellt haben. Verwenden Sie die [swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)-Eigenschaft des bereitgestellten Webdiensts (beispielsweise `service.swagger_uri`), um den URI für die Swagger-Datei des lokalen Webdiensts abzurufen.
 
 ## <a name="consume-the-service-from-power-bi"></a>Nutzen des Diensts aus Power BI
 
 Power BI unterstützt die Nutzung von Azure Machine Learning-Webdiensten, um die Daten in Power BI um Vorhersagen zu erweitern. 
 
-Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
+Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-Nachdem der Webdienst bereitgestellt wurde, kann er über Power BI-Dataflows genutzt werden. [Informieren Sie sich über die Integration von Azure Machine Learning in Power BI (Vorschau)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Nachdem der Webdienst bereitgestellt wurde, kann er über Power BI-Dataflows genutzt werden. [Informieren Sie sich über die Integration von Azure Machine Learning in Power BI (Vorschau)](/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

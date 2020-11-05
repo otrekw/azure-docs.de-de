@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296755"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320709"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 
@@ -26,13 +26,13 @@ Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, 
 Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für ein Azure Storage-Konto ändern. Wenn Sie den Zugriffsschlüssel neu generieren, muss Azure Machine Learning aktualisiert werden, um den neuen Schlüssel zu verwenden. Azure Machine Learning kann das Speicherkonto sowohl für die Modellspeicherung als auch als Datenspeicher verwenden.
 
 > [!IMPORTANT]
-> Anmeldeinformationen, die mit Datenspeichern registriert werden, werden im Azure Key Vault gespeichert, der dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) für Ihren Key Vault aktiviert haben, sollten Sie diesen Artikel zum Aktualisieren von Anmeldeinformationen befolgen. Das Aufheben der Registrierung des Datenspeichers und die erneute Registrierung unter demselben Namen schlägt fehl.
+> Anmeldeinformationen, die mit Datenspeichern registriert werden, werden im Azure Key Vault gespeichert, der dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](../key-vault/general/soft-delete-overview.md) für Ihren Key Vault aktiviert haben, sollten Sie diesen Artikel zum Aktualisieren von Anmeldeinformationen befolgen. Das Aufheben der Registrierung des Datenspeichers und die erneute Registrierung unter demselben Namen schlägt fehl.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* Das [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
@@ -132,7 +132,7 @@ Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwende
         
         ```
     
-    1. Klicken Sie im linken Bereich von Studio auf **Datenspeicher**, **um Datenspeicher über Studio erneut zu registrieren**. 
+    1. Klicken Sie im linken Bereich von Studio auf **Datenspeicher** , **um Datenspeicher über Studio erneut zu registrieren**. 
         1. Wählen Sie den Datenspeicher aus, den Sie aktualisieren möchten.
         1. Klicken Sie oben links auf die Schaltfläche **Update credentials** (Anmeldeinformationen aktualisieren). 
         1. Verwenden Sie den neuen Zugriffsschlüssel aus Schritt 1, um das Formular auszufüllen, und klicken Sie auf **Speichern**.
@@ -141,4 +141,4 @@ Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Registrierung von Datenspeichern finden Sie in der Referenz der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true)-Klasse.
+Weitere Informationen zur Registrierung von Datenspeichern finden Sie in der Referenz der [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py)-Klasse.

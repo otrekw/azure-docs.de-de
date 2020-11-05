@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339530"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325019"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Erste Schritte mit Azure Machine Learning Studio (Classic) in R
 
-**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -78,7 +78,7 @@ Testen und Debuggen Sie Ihren R-Code in geringem Umfang in RStudio. Es gibt Fäl
 
 Ausgaben der Ausführung Ihres R-Codes und von der Machine Learning Studio-Plattform (Classic) finden sich hauptsächlich in der Datei „output.log“. Einige zusätzliche Informationen finden Sie auch in der Datei „error.log“.
 
-Tritt in Machine Learning Studio (Classic) ein Fehler während der Ausführung Ihres R-Codes auf, sollten Sie als Erstes in der Datei „error.log“ nachsehen. Die Datei "error.log" kann nützliche Fehlermeldungen enthalten, die Ihnen dabei helfen, den Fehler zu verstehen und zu korrigieren. Klicken Sie im Bereich „Eigenschaften“ für das Modul [R-Skript ausführen][execute-r-script] auf **Fehlerprotokoll anzeigen**, um die Datei „error.log“ anzuzeigen.
+Tritt in Machine Learning Studio (Classic) ein Fehler während der Ausführung Ihres R-Codes auf, sollten Sie als Erstes in der Datei „error.log“ nachsehen. Die Datei "error.log" kann nützliche Fehlermeldungen enthalten, die Ihnen dabei helfen, den Fehler zu verstehen und zu korrigieren. Klicken Sie im Bereich „Eigenschaften“ für das Modul [R-Skript ausführen][execute-r-script] auf **Fehlerprotokoll anzeigen** , um die Datei „error.log“ anzuzeigen.
 
 Wir haben beispielsweise im Modul [R-Skript ausführen][execute-r-script] den folgenden R-Code mit der nicht definierten Variable „y“ ausgeführt.
 
@@ -143,8 +143,8 @@ Der vollständige Code für diesen Abschnitt befindet sich unter [MachineLearnin
 Wir beginnen damit, dass wir die Datei **csdairydata.csv** in Machine Learning Studio (Classic) laden.
 
 1. Starten Sie Ihre Umgebung von Machine Learning Studio (Classic).
-1. Klicken Sie unten links auf dem Bildschirm auf **+ Neu**, und wählen Sie **Dataset** aus.
-1. Klicken Sie auf **Aus lokaler Datei** und anschließend auf **Durchsuchen**, um die Daten auszuwählen.
+1. Klicken Sie unten links auf dem Bildschirm auf **+ Neu** , und wählen Sie **Dataset** aus.
+1. Klicken Sie auf **Aus lokaler Datei** und anschließend auf **Durchsuchen** , um die Daten auszuwählen.
 1. Wählen Sie **Generische CSV-Datei mit Header (.csv)** als Dataset-Typ aus.
 1. Aktivieren Sie das Kontrollkästchen.
 1. Nachdem das Dataset hochgeladen wurde, können Sie es anzeigen, indem Sie auf die Registerkarte **Datasets** klicken.
@@ -153,13 +153,13 @@ Wir beginnen damit, dass wir die Datei **csdairydata.csv** in Machine Learning S
 
 Nachdem wir nun einige Daten in Machine Learning Studio (Classic) geladen haben, erstellen wir ein Experiment, um die Analyse durchführen zu können.  
 
-1. Klicken Sie unten links auf dem Bildschirm auf **+ Neu**, und wählen Sie **Experiment** > **Leeres Experiment** aus.
+1. Klicken Sie unten links auf dem Bildschirm auf **+ Neu** , und wählen Sie **Experiment** > **Leeres Experiment** aus.
 1. Geben Sie dem Experiment einen Namen, indem Sie oben auf der Seite den Titel **Experiment erstellt am** auswählen und bearbeiten. Ändern Sie den Titel beispielsweise in **CA Dairy Analysis**.
 1. Wählen Sie links auf der Experimentseite **Gespeicherte Datasets** > **Meine Datasets** aus. Hier wird die Datei **cadairydata.csv** angezeigt, die Sie zuvor hochgeladen haben.
 1. Ziehen Sie das Dataset **csdairydata.csv** in das Experiment.
 1. Geben Sie links oben in das Feld **Search experiment items** (Experimentelemente suchen) als Suchbegriff [R-Skript ausführen][execute-r-script] ein. Daraufhin wird das Modul in der Suchliste angezeigt.
 1. Ziehen Sie das Modul [R-Skript ausführen][execute-r-script] auf Ihre Palette.
-1. Verbinden Sie die Ausgabe von **csdairydata.csv** mit der Eingabe links außen (**Dataset1**) von [R-Skript ausführen][execute-r-script].
+1. Verbinden Sie die Ausgabe von **csdairydata.csv** mit der Eingabe links außen ( **Dataset1** ) von [R-Skript ausführen][execute-r-script].
 1. Wählen Sie **Speichern**.
 
 Jetzt sollte das Experiment ungefähr wie in diesem Beispiel aussehen.
@@ -169,7 +169,7 @@ Jetzt sollte das Experiment ungefähr wie in diesem Beispiel aussehen.
 
 #### <a name="check-on-the-data"></a>Überprüfen der Daten
 
-Lassen Sie uns einen Blick auf die Daten werfen, die wir in unser Experiment geladen haben. Klicken Sie im Experiment auf die Ausgabe des Datasets **cadairydata.csv**, und wählen Sie **Visualisieren** aus. Die Ausgabe sollte in etwa wie diese Zusammenfassung aussehen.
+Lassen Sie uns einen Blick auf die Daten werfen, die wir in unser Experiment geladen haben. Klicken Sie im Experiment auf die Ausgabe des Datasets **cadairydata.csv** , und wählen Sie **Visualisieren** aus. Die Ausgabe sollte in etwa wie diese Zusammenfassung aussehen.
 
 ![Abbildung: Zusammenfassung des Datasets „cadairydata.csv“](./media/r-quickstart/fig4.png)
 
@@ -237,7 +237,7 @@ Das Laden von Datasets wurde bereits unter [Laden des Datasets](#loading) erläu
 
 1. Ziehen Sie die ZIP-Datei aus **Datasets** in den **Bereich von ML Studio (Classic)** .
 
-1. Verbinden Sie die Ausgabe des **ZIP-Daten**-Symbols mit der Eingabe **Script Bundle** des Moduls [R-Skript ausführen][execute-r-script].
+1. Verbinden Sie die Ausgabe des **ZIP-Daten** -Symbols mit der Eingabe **Script Bundle** des Moduls [R-Skript ausführen][execute-r-script].
 
 1. Geben Sie die `source()`-Funktion mit dem Namen Ihrer ZIP-Datei in das Codefenster des Moduls [R-Skript ausführen][execute-r-script] ein. In diesem Fall geben Sie `source("src/simpleplot.R")` ein.
 
@@ -323,7 +323,7 @@ Diese Ausgabe ist identisch mit der Eingabe, genau wie erwartet.
 
 Die Geräteausgabe des Moduls [R-Skript ausführen][execute-r-script] enthält Meldungen und Grafikausgaben. Sowohl die Standardausgabe als auch die Standardfehlermeldungen von R werden an den "R Device"-Ausgabeport gesendet.
 
-Klicken Sie auf den Port und dann auf **Visualisieren**, um die „R Device“-Ausgabe anzuzeigen. Die Standardausgabe und Standardfehlermeldung des R-Skripts werden wie hier angezeigt.
+Klicken Sie auf den Port und dann auf **Visualisieren** , um die „R Device“-Ausgabe anzuzeigen. Die Standardausgabe und Standardfehlermeldung des R-Skripts werden wie hier angezeigt.
 
 ![Screenshot: Standardausgabe und Standardfehlermeldung des „R Device“-Ports](./media/r-quickstart/fig8.png)
 
@@ -404,7 +404,7 @@ Führen wir nun diesen Code aus, und sehen wir uns die Ausgabe des R-Skripts an.
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-Der Typ von „Month“ sollte nun „**Factor w/ 14 levels**“ (Faktor mit 14 Ebenen) lauten. Dieser Typ stellt ein Problem dar, weil das Jahr nur 12 Monate hat. Sie können auch überprüfen, ob der Typ in **Visualize** des „Result Dataset“-Ports **Categorical** ist.
+Der Typ von „Month“ sollte nun „ **Factor w/ 14 levels** “ (Faktor mit 14 Ebenen) lauten. Dieser Typ stellt ein Problem dar, weil das Jahr nur 12 Monate hat. Sie können auch überprüfen, ob der Typ in **Visualize** des „Result Dataset“-Ports **Categorical** ist.
 
 Das Problem ist, dass die Spalte „Month“ nicht systematisch codiert wurde. In einigen Fällen wird ein Monat als „April“ bezeichnet, während er in anderen Fällen als „Apr“ abgekürzt wird. Wir können dieses Problem beheben, indem wir die Zeichenfolge auf drei Zeichen kürzen. Die Codezeile sieht nun wie im folgenden Beispiel aus.
 
@@ -912,7 +912,7 @@ outframe
 
 Die erste Codezeile ist etwas schwieriger, doch einige Erläuterungen sollten Ihnen helfen, sie zu verstehen. Gehen Sie von innen nach außen vor:
 
-1. Der „ **[[** “-Operator wählt mit dem „**1**“-Argument den Vektor der Korrelationen an den Verzögerungen aus dem ersten Element der ccf-Objektliste aus.
+1. Der „ **[[** “-Operator wählt mit dem „ **1** “-Argument den Vektor der Korrelationen an den Verzögerungen aus dem ersten Element der ccf-Objektliste aus.
 1. Die `do.call()`-Funktion wendet die `rbind()`-Funktion auf die Elemente der Liste an, die von `lapply()` zurückgegeben wird.
 1. Die `data.frame()`-Funktion wandelt das von `do.call()` erzeugte Ergebnis in ein Dataframe um.
 
@@ -1029,10 +1029,10 @@ Mit dieser Funktion wird die folgende Ausgabe generiert.
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1062,10 +1062,10 @@ Mit dieser Funktion wird die folgende Ausgabe generiert.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1113,21 +1113,21 @@ Mit dieser Funktion wird die folgende Ausgabe generiert.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1276,8 +1276,8 @@ Anhand dieser Ergebnisse können wir erkennen, dass der RMS-Fehler durch das Hin
 
 RStudio ist ausführlich dokumentiert. Hier finden Sie einige Links zu den wichtigsten Abschnitten der RStudio-Dokumentation, die Ihnen den Einstieg erleichtern.
 
-* **Erstellen von Projekten**: Sie können Ihren R-Code mit RStudio in Projekten organisieren. Weitere Informationen finden Sie unter [Using Projects (Verwenden von Projekten)](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Befolgen Sie diese Anweisungen, und erstellen Sie für die R-Codebeispiele in diesem Artikel ein Projekt.
-* **Bearbeiten und Ausführen von R-Code**: RStudio bietet eine integrierte Umgebung zum Bearbeiten und Ausführen von R-Code. Weitere Informationen finden Sie unter [Editing and Executing Code (Bearbeiten und Ausführen von Code)](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Erstellen von Projekten** : Sie können Ihren R-Code mit RStudio in Projekten organisieren. Weitere Informationen finden Sie unter [Using Projects (Verwenden von Projekten)](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Befolgen Sie diese Anweisungen, und erstellen Sie für die R-Codebeispiele in diesem Artikel ein Projekt.
+* **Bearbeiten und Ausführen von R-Code** : RStudio bietet eine integrierte Umgebung zum Bearbeiten und Ausführen von R-Code. Weitere Informationen finden Sie unter [Editing and Executing Code (Bearbeiten und Ausführen von Code)](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
 * **Debuggen:** RStudio enthält leistungsfähige Debugfunktionen. Weitere Informationen zu diesen Features finden Sie unter [Debugging with RStudio (Debuggen mit RStudio)](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Weitere Informationen zu den Features zur Behandlung von Problemen mit Breakpoints finden Sie unter [Breakpoint Troubleshooting (Behandlung von Problemen mit Breakpoints)](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
 ## <a name="further-reading"></a><a id="appendixb"></a>Weitere Informationen

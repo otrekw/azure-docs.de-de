@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651146"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322231"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Verteiltes Training mit Azure Machine Learning
 
@@ -24,7 +24,7 @@ Beim verteilten Training wird die Arbeitsauslastung zum Trainieren eines Modells
 
 ## <a name="deep-learning-and-distributed-training"></a>Deep Learning und verteiltes Training 
 
-Es gibt zwei Haupttypen von verteiltem Training: [Datenparallelität](#data-parallelism) und [Modellparallelität](#model-parallelism). Das [Azure Machine Learning-SDK in Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) unterstützt für verteiltes Training in Deep Learning-Modellen Integrationen in die beliebten Frameworks PyTorch und TensorFlow. Beide Frameworks nutzen Datenparallelität für verteiltes Training und können mithilfe von [Horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) die Rechengeschwindigkeit optimieren. 
+Es gibt zwei Haupttypen von verteiltem Training: [Datenparallelität](#data-parallelism) und [Modellparallelität](#model-parallelism). Das [Azure Machine Learning-SDK in Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) unterstützt für verteiltes Training in Deep Learning-Modellen Integrationen in die beliebten Frameworks PyTorch und TensorFlow. Beide Frameworks nutzen Datenparallelität für verteiltes Training und können mithilfe von [Horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) die Rechengeschwindigkeit optimieren. 
 
 * [Verteiltes Training](how-to-train-pytorch.md#distributed-training) (PyTorch)
 
@@ -51,6 +51,6 @@ Bei Modellparallelität müssen die Workerknoten nur die freigegebenen Parameter
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie [Computeziele für das Modelltraining](how-to-set-up-training-targets.md) mit dem Python SDK verwenden.
-* Ein technisches Beispiel finden Sie im [Referenzarchitekturszenario](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
+* Ein technisches Beispiel finden Sie im [Referenzarchitekturszenario](/azure/architecture/reference-architectures/ai/training-deep-learning).
 * [Trainieren von ML-Modellen mit TensorFlow](how-to-train-tensorflow.md)
-* [Trainieren von ML-Modellen mit PyTorch](how-to-train-pytorch.md) 
+* [Trainieren von ML-Modellen mit PyTorch](how-to-train-pytorch.md)

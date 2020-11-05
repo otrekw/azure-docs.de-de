@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743101"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320481"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -55,7 +55,7 @@ Die Arbeitsbereichs-Konfigurationsdatei ist eine JSON-Datei, die das SDK zur Kom
 
 Diese JSON-Datei muss sich in der Verzeichnisstruktur befinden, die Ihre Python-Skripts oder Jupyter Notebooks enthält. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden.
 
-Verwenden Sie die [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true)-Methode, um diese Datei in Ihrem Code zu verwenden. Dieser Code lädt die Informationen aus der Datei und stellt eine Verbindung mit Ihrem Arbeitsbereich her.
+Verwenden Sie die [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true)-Methode, um diese Datei in Ihrem Code zu verwenden. Dieser Code lädt die Informationen aus der Datei und stellt eine Verbindung mit Ihrem Arbeitsbereich her.
 
 Für das Erstellen einer Arbeitsbereichskonfigurationsdatei können Sie eine der folgenden beiden Methoden verwenden:
 
@@ -67,7 +67,7 @@ Für das Erstellen einer Arbeitsbereichskonfigurationsdatei können Sie eine der
 
 * Python-SDK für Azure Machine Learning
 
-    Erstellen Sie ein Skript, um eine Verbindung zu Ihrem Azure Machine Learning-Arbeitsbereich herzustellen, und verwenden Sie die [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true)-Methode, um Ihre Datei zu erstellen. Speichern Sie sie als *.azureml/config.json*. Achten Sie darauf, dass Sie `subscription_id`, `resource_group` und `workspace_name` durch Ihre eigenen Werte ersetzen.
+    Erstellen Sie ein Skript, um eine Verbindung zu Ihrem Azure Machine Learning-Arbeitsbereich herzustellen, und verwenden Sie die [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true)-Methode, um Ihre Datei zu erstellen. Speichern Sie sie als *.azureml/config.json*. Achten Sie darauf, dass Sie `subscription_id`, `resource_group` und `workspace_name` durch Ihre eigenen Werte ersetzen.
 
     ```python
     from azureml.core import Workspace
@@ -97,7 +97,7 @@ Konfigurieren einer lokalen Entwicklungsumgebung (dies könnte auch eine Remote-
     > Wenn Sie unter Linux oder macOS eine andere Shell als Bash verwenden (z.B. zsh), werden beim Ausführen einiger Befehle möglicherweise Fehler ausgegeben. Um dieses Problem zu umgehen, starten Sie mit dem Befehl `bash` eine neue Bash-Shell starten, und führen Sie die Befehle in dieser aus.
 
 1. Aktivieren Sie Ihre neu erstellte virtuelle Python-Umgebung.
-1. Installieren Sie das [Python SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+1. Installieren Sie das [Python SDK für Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 1. [Erstellen Sie eine Arbeitsbereichskonfigurationsdatei](#workspace), oder verwenden Sie eine vorhandene, um Ihre lokale Umgebung so zu konfigurieren, dass Ihr Azure Machine Learning-Arbeitsbereich verwendet wird.
 
 Da Sie nun Ihre lokale Umgebung eingerichtet haben, können Sie mit der Verwendung von Azure Machine Learning beginnen. Informationen zu den ersten Schritten finden Sie unter [Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung (Teil 1 von 4)](tutorial-1st-experiment-sdk-setup-local.md).
@@ -223,7 +223,7 @@ Azure Databricks kann auf folgende Weisen mit Azure Machine Learning verwendet w
 
 ### <a name="set-up-your-databricks-cluster"></a>Einrichten des Databricks-Clusters
 
-Erstellen Sie einen [Databricks-Cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Einige Einstellungen sind nur erforderlich, wenn Sie das SDK für automatisiertes Machine Learning in Databricks verwenden.
+Erstellen Sie einen [Databricks-Cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Einige Einstellungen sind nur erforderlich, wenn Sie das SDK für automatisiertes Machine Learning in Databricks verwenden.
 **Die Erstellung des Clusters dauert einige Minuten.**
 
 Verwenden Sie die folgenden Einstellungen:
@@ -297,4 +297,4 @@ So können Sie Azure Databricks testen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](tutorial-train-models-with-aml.md) in Azure Machine Learning mit der MNIST-Datenbank
-- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+- Anzeigen der Referenz [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)

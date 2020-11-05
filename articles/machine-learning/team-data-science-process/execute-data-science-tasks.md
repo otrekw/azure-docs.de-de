@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320522"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321157"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
 Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und Bereitstellen. In diesem Artikel wird gezeigt, wie mit den Hilfsprogrammen **IDEAR (Interactive Data Exploration, Analysis, and Reporting)** und **AMAR (Automated Modeling and Reporting)** verschiedene häufige Data Science-Aufgaben wie interaktive Datendurchsuchung, Datenanalyse, Berichterstellung und Modellbildung ausgeführt werden. Zu den Optionen für die Bereitstellung eines Modells in einer Produktionsumgebung können die folgenden gehören:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL Server mit ML-Diensten](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [SQL Server mit ML-Diensten](/sql/advanced-analytics/r/r-services)
+- [Microsoft Machine Learning Server](/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> Durchsuchen 
@@ -76,7 +76,7 @@ Nachdem mehrere Modelle erstellt wurden, benötigen Sie in der Regel ein System 
 1. [Azure Machine Learning-Modellverwaltungsdienst](../index.yml)
 2. [ModelDB von MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL Server als ein Modellverwaltungssystem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> Bereitstellung
 
@@ -87,8 +87,8 @@ Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen i
 
 
 - [Modellentwicklung in Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Bereitstellung eines Modells in SQL Server](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Vor der Bereitstellung muss sichergestellt werden, dass bei der Bewertung durch das Modell ausreichend geringe Latenzen für eine Verwendung in der Produktion auftreten.

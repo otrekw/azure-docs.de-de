@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276083"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322305"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -53,9 +53,9 @@ Sie können einen Arbeitsbereich mit anderen Benutzern teilen.
 
 Azure Machine Learning führt zwei vollständig verwaltete, cloudbasierte virtuelle Computer (VM) ein, die für Machine Learning-Aufgaben konfiguriert sind:
 
-* <a name="compute-instance"></a> **Compute-Instanz**: Eine Compute-Instanz ist eine VM, die mehrere für maschinelles Lernen installierte Tools und Umgebungen umfasst. Eine Compute-Instanz wird primär für Ihre Entwicklungsarbeitsstation verwendet.  Sie können ohne Setup mit der Ausführung von Beispiel-Notebooks beginnen. Eine Compute-Instanz kann auch als Computeziel für Trainings- und Rückschlussaufträge verwendet werden.
+* <a name="compute-instance"></a> **Compute-Instanz** : Eine Compute-Instanz ist eine VM, die mehrere für maschinelles Lernen installierte Tools und Umgebungen umfasst. Eine Compute-Instanz wird primär für Ihre Entwicklungsarbeitsstation verwendet.  Sie können ohne Setup mit der Ausführung von Beispiel-Notebooks beginnen. Eine Compute-Instanz kann auch als Computeziel für Trainings- und Rückschlussaufträge verwendet werden.
 
-* **Computecluster**: Computecluster sind Cluster von VMs, in denen mehrere Knoten skaliert werden können. Computecluster eignen sich besser für Computeziele für große Aufträge und Produktion.  Beim Übermitteln eines Auftrags wird der Cluster automatisch hochskaliert.  Verwenden Sie ihn als Trainingscomputeziel oder zur Dev/Test-Bereitstellung.
+* **Computecluster** : Computecluster sind Cluster von VMs, in denen mehrere Knoten skaliert werden können. Computecluster eignen sich besser für Computeziele für große Aufträge und Produktion.  Beim Übermitteln eines Auftrags wird der Cluster automatisch hochskaliert.  Verwenden Sie ihn als Trainingscomputeziel oder zur Dev/Test-Bereitstellung.
 
 Weitere Informationen zum Trainieren von Computezielen finden Sie unter [Trainieren von Computezielen](concept-compute-target.md#train).  Weitere Informationen zur Bereitstellung von Computezielen finden Sie unter [Bereitstellungsziele](concept-compute-target.md#deploy).
 
@@ -102,7 +102,7 @@ Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Model
 
 [Arbeitsbereich](#workspace) > [Experimente](#experiments) > [Ausführen](#runs) > **Ausführen der Konfiguration**
 
-Eine Ausführungskonfiguration definiert, wie ein Skript in einem bestimmten Computeziel ausgeführt werden sollte. Verwenden Sie die Konfiguration, um das Skript, das Computeziel und die Azure ML-Umgebung für die Ausführung, alle verteilten auftragsspezifischen Konfigurationen und einige zusätzliche Eigenschaften anzugeben. Weitere Informationen zum vollständigen Satz konfigurierbarer Optionen für Ausführungen finden Sie unter [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+Eine Ausführungskonfiguration definiert, wie ein Skript in einem bestimmten Computeziel ausgeführt werden sollte. Verwenden Sie die Konfiguration, um das Skript, das Computeziel und die Azure ML-Umgebung für die Ausführung, alle verteilten auftragsspezifischen Konfigurationen und einige zusätzliche Eigenschaften anzugeben. Weitere Informationen zum vollständigen Satz konfigurierbarer Optionen für Ausführungen finden Sie unter [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
 
 Eine Laufzeitkonfiguration kann in einer Datei in dem Verzeichnis, in dem Ihr Trainingsskript enthalten ist, beständig gespeichert werden.   Alternativ kann sie als Objekt im Arbeitsspeicher erstellt und zum Übermitteln einer Ausführung verwendet werden.
 
@@ -233,10 +233,10 @@ In Studio greifen Sie auch auf die interaktiven Tools zu, die Teil von Azure Mac
 > Die unten markierten Tools (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
 > Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) verwenden.
++  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) verwenden.
 + Interagieren Sie mit dem Dienst in einer beliebigen R-Umgebung, indem Sie das [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Vorschauversion) verwenden.
 + Verwenden Sie den [Azure Machine Learning-Designer](concept-designer.md), um die Workflowschritte auszuführen – ganz ohne Programmierung. 
-+ Verwenden Sie die [Azure Machine Learning-CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) zur Automatisierung.
++ Verwenden Sie die [Azure Machine Learning-CLI](./reference-azure-machine-learning-cli.md) zur Automatisierung.
 + Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 
 ## <a name="next-steps"></a>Nächste Schritte

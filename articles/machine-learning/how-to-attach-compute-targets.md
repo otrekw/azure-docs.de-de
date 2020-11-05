@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cc4256ae0591e9fc82dcdce7c66514710fad3f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710980"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320834"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Einrichten von Computezielen für das Training und die Bereitstellung von Modellen
 
@@ -43,7 +43,7 @@ Informationen zur Verwendung von Computezielen, die von Azure Machine Learning v
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
+* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -60,7 +60,7 @@ Mit Azure Machine Learning können Sie Ihr Modell für eine Vielzahl von Ressour
 
 Wenn Sie Ihren lokalen Computer für das **Training** verwenden, ist es nicht erforderlich, ein Computeziel zu erstellen.  [Übermitteln Sie einfach die Trainingsausführung](how-to-set-up-training-targets.md) von Ihrem lokalen Computer aus.
 
-Wenn Sie Ihren lokalen Computer für **Rückschlüsse** verwenden, muss Docker installiert sein. Zum Ausführen der Bereitstellung definieren Sie den vom Webdienst verwendeten Port in [LocalWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-). Folgen Sie dann dem normalen Bereitstellungsprozess, wie in [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md) beschrieben.
+Wenn Sie Ihren lokalen Computer für **Rückschlüsse** verwenden, muss Docker installiert sein. Zum Ausführen der Bereitstellung definieren Sie den vom Webdienst verwendeten Port in [LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-). Folgen Sie dann dem normalen Bereitstellungsprozess, wie in [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md) beschrieben.
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuelle Remotecomputer
 
@@ -68,16 +68,16 @@ Azure Machine Learning bietet Ihnen auch die Möglichkeit, eine eigene Computere
 
 Sie können eine systemseitig erstellte Conda-Umgebung, eine bereits vorhandene Python-Umgebung oder einen Docker-Container verwenden. Zur Ausführung auf einem Docker-Container muss die Docker-Engine auf der VM ausgeführt werden. Diese Funktion ist besonders nützlich, wenn Sie eine cloudbasierte Entwicklungs-/Experimentierumgebung nutzen möchten, die Ihnen mehr Flexibilität bietet als Ihr lokaler Computer.
 
-Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als virtuellen Azure-Computer. Diese VM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure. Die VM bietet eine zusammengestellte Auswahl an Tools und Frameworks für die Entwicklung des maschinellen Lernens über den gesamten Lebenszyklus. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm).
+Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als virtuellen Azure-Computer. Diese VM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure. Die VM bietet eine zusammengestellte Auswahl an Tools und Frameworks für die Entwicklung des maschinellen Lernens über den gesamten Lebenszyklus. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](./how-to-configure-environment.md#dsvm).
 
-1. **Erstellen**: Erstellen Sie eine DSVM, bevor Sie si zum Trainieren Ihres Modells verwenden. Informationen zum Erstellen dieser Ressource finden Sie in [Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Erstellen** : Erstellen Sie eine DSVM, bevor Sie si zum Trainieren Ihres Modells verwenden. Informationen zum Erstellen dieser Ressource finden Sie in [Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Von Azure Machine Learning werden nur virtuelle Computer unterstützt, auf denen **Ubuntu** ausgeführt wird. Wenn Sie eine VM erstellen oder eine vorhandene VM auswählen, müssen Sie eine VM auswählen, die Ubuntu verwendet.
     > 
     > Von Azure Machine Learning wird außerdem vorausgesetzt, dass der virtuelle Computer über eine __öffentliche IP-Adresse__ verfügt.
 
-1. **Anfügen**: Wenn Sie einen vorhandenen virtuellen Computer als Computeziel anfügen möchten, müssen Sie die Ressourcen-ID, den Benutzernamen und das Kennwort für den virtuellen Computer angeben. Die Ressourcen-ID des virtuellen Computers kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des virtuellen Computers im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
+1. **Anfügen** : Wenn Sie einen vorhandenen virtuellen Computer als Computeziel anfügen möchten, müssen Sie die Ressourcen-ID, den Benutzernamen und das Kennwort für den virtuellen Computer angeben. Die Ressourcen-ID des virtuellen Computers kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des virtuellen Computers im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
 
  
    ```python
@@ -102,7 +102,7 @@ Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als v
     > [!WARNING]
     > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für die gleichen DSVM in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
-1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das DSVM-Computeziel. Zum Erstellen und Konfigurieren der Trainingsumgebung in der DSVM werden Docker und Conda verwendet.
+1. **Konfigurieren** : Erstellen Sie eine Ausführungskonfiguration für das DSVM-Computeziel. Zum Erstellen und Konfigurieren der Trainingsumgebung in der DSVM werden Docker und Conda verwendet.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als v
 
 Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattform stellt Apache Spark bereit, das zum Training Ihres Modells verwendet werden kann.
 
-1. **Erstellen**:  Erstellen Sie den HDInsight-Cluster, bevor Sie ihn zum Training Ihres Modells verwenden. Informationen zum Erstellen von Spark in einem HDInsight-Cluster finden Sie unter [Erstellen eines Spark-Clusters in HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
+1. **Erstellen** :  Erstellen Sie den HDInsight-Cluster, bevor Sie ihn zum Training Ihres Modells verwenden. Informationen zum Erstellen von Spark in einem HDInsight-Cluster finden Sie unter [Erstellen eines Spark-Clusters in HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Von Azure Machine Learning wird vorausgesetzt, dass der HDInsight-Cluster über eine __öffentliche IP-Adresse__ verfügt.
@@ -137,7 +137,7 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
     
     Stellen Sie nach der Erstellung des Clusters eine Verbindung mit dem Hostnamen „\<clustername>-ssh.azurehdinsight.net“ her, wobei \<clustername> der Name ist, den Sie für den Cluster angegeben haben. 
 
-1. **Anfügen**: Wenn Sie einen HDInsight-Cluster als Computeziel anfügen möchten, müssen Sie den die Ressourcen-ID, den Benutzernamen und das Kennwort für den HDInsight-Cluster angeben. Die Ressourcen-ID des HDInsight-Clusters kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des HDInsight-Clusters im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+1. **Anfügen** : Wenn Sie einen HDInsight-Cluster als Computeziel anfügen möchten, müssen Sie den die Ressourcen-ID, den Benutzernamen und das Kennwort für den HDInsight-Cluster angeben. Die Ressourcen-ID des HDInsight-Clusters kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des HDInsight-Clusters im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
     > [!WARNING]
     > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für den gleichen HDInsight in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
-1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das HDI-Computeziel. 
+1. **Konfigurieren** : Erstellen Sie eine Ausführungskonfiguration für das HDI-Computeziel. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch wird verwendet, um umfangreiche, auf Parallelverarbeitung ausgelegte
 
 Um Azure Batch als Computeziel anzufügen, müssen Sie das Azure Machine Learning SDK verwenden und die folgenden Informationen angeben:
 
--    **Azure Batch-Computename**: Ein Computeanzeigename, der innerhalb des Arbeitsbereichs verwendet wird.
--    **Azure Batch-Kontoname**: Der Name des Azure Batch-Kontos.
--    **Ressourcengruppe**: Die Ressourcengruppe, die das Azure Batch-Konto enthält.
+-    **Azure Batch-Computename** : Ein Computeanzeigename, der innerhalb des Arbeitsbereichs verwendet wird.
+-    **Azure Batch-Kontoname** : Der Name des Azure Batch-Kontos.
+-    **Ressourcengruppe** : Die Ressourcengruppe, die das Azure Batch-Konto enthält.
 
 Der folgende Code veranschaulicht, wie Azure Batch als Computeziel angefügt wird:
 
@@ -219,15 +219,15 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 
-Erstellen Sie vor der Verwendung einen Azure Databricks-Arbeitsbereich. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+Erstellen Sie vor der Verwendung einen Azure Databricks-Arbeitsbereich. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 Geben Sie zum Anfügen von Azure Databricks als Computeziel die folgenden Informationen an:
 
-* __Databricks-Computename__: Der Name, der dieser Computeressource zugewiesen werden soll.
-* __Name des Databricks-Arbeitsbereichs__: Der Name des Azure Databricks-Arbeitsbereichs.
-* __Databricks-Zugriffstoken__: Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie im Dokument [Authentifizierung](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html).
+* __Databricks-Computename__ : Der Name, der dieser Computeressource zugewiesen werden soll.
+* __Name des Databricks-Arbeitsbereichs__ : Der Name des Azure Databricks-Arbeitsbereichs.
+* __Databricks-Zugriffstoken__ : Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie im Dokument [Authentifizierung](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html).
 
-Der folgende Code veranschaulicht, wie Sie Azure Databricks als Computeziel mit dem Azure Machine Learning SDK anfügen (__der Databricks-Arbeitsbereich muss im gleichen Abonnement wie der AML-Arbeitsbereich vorhanden sein__):
+Der folgende Code veranschaulicht, wie Sie Azure Databricks als Computeziel mit dem Azure Machine Learning SDK anfügen ( __der Databricks-Arbeitsbereich muss im gleichen Abonnement wie der AML-Arbeitsbereich vorhanden sein__ ):
 
 ```python
 import os
@@ -275,13 +275,13 @@ Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://ak
 
 Azure Data Lake Analytics ist eine umfangreiche Datenanalyseplattform in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 
-Erstellen Sie vor der Verwendung ein Azure Data Lake Analytics-Konto. Informationen zum Erstellen dieser Ressource finden Sie im Dokument [Erste Schritte mit Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
+Erstellen Sie vor der Verwendung ein Azure Data Lake Analytics-Konto. Informationen zum Erstellen dieser Ressource finden Sie im Dokument [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
 Um Data Lake Analytics als Computeziel anzufügen, müssen Sie das Azure Machine Learning SDK verwenden und die folgenden Informationen angeben:
 
-* __Computename__: Der Name, der dieser Computeressource zugewiesen werden soll.
-* __Ressourcengruppe__: Die Ressourcengruppe, die das Data Lake Analytics-Konto enthält.
-* __Kontoname__: Der Name des Data Lake Analytics-Kontos.
+* __Computename__ : Der Name, der dieser Computeressource zugewiesen werden soll.
+* __Ressourcengruppe__ : Die Ressourcengruppe, die das Data Lake Analytics-Konto enthält.
+* __Kontoname__ : Der Name des Data Lake Analytics-Kontos.
 
 Der folgende Code veranschaulicht, wie Data Lake Analytics als Computeziel angefügt wird:
 
@@ -325,7 +325,7 @@ Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://ak
 > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für das gleiche ADLA in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
 > [!TIP]
-> Azure Machine Learning-Pipelines können nur ausgeführt werden, wenn die Daten im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert werden. Wenn die Daten, die Sie verwenden möchten, in einem nicht standardmäßigen Speicher gespeichert sind, können Sie die Daten mithilfe von [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) vor dem Trainieren kopieren.
+> Azure Machine Learning-Pipelines können nur ausgeführt werden, wenn die Daten im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert werden. Wenn die Daten, die Sie verwenden möchten, in einem nicht standardmäßigen Speicher gespeichert sind, können Sie die Daten mithilfe von [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) vor dem Trainieren kopieren.
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instances
 
@@ -350,4 +350,4 @@ Beispiele für das Training mit verschiedenen Computeziele finden Sie in diesen 
 * [Tutorial: Trainieren eines Modells](tutorial-train-models-with-aml.md) verwendet ein verwaltetes Computeziel zum Trainieren eines Modells.
 * Erfahren Sie, wie [Hyperparameter optimiert werden](how-to-tune-hyperparameters.md), um bessere Modelle zu erstellen.
 * Erfahren Sie nach der Erstellung eines trainierten Modells, [wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
-* [Verwenden von Azure Machine Learning mit virtuellen Azure-Netzwerken](how-to-enable-virtual-network.md)
+* [Verwenden von Azure Machine Learning mit virtuellen Azure-Netzwerken](./how-to-network-security-overview.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
-ms.openlocfilehash: d214a746a4eb5035e007136da80f4c69ae1dd1c8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204459"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314757"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -242,9 +242,9 @@ Einschränkungen und bekannte Probleme bei Datendriftüberwachungen:
 
     1. Überprüfen Sie, ob Sie oben auf der Seite den richtigen Datumsbereich ausgewählt haben.  
     1. Wählen Sie auf der Registerkarte **Datasetüberwachungen** den Experimentlink aus, um den Ausführungsstatus zu prüfen.  Dieser Link befindet sich ganz rechts in der Tabelle.
-    1. Wenn die Ausführung erfolgreich abgeschlossen wurde, überprüfen Sie in den Treiberprotokollen, wie viele Metriken generiert wurden oder ob Warnmeldungen vorhanden sind.  Die Treiberprotokolle finden Sie nach dem Klicken auf ein Experiment auf der Registerkarte **Ausgabe + Protokolle** .
+    1. Wenn die Ausführung erfolgreich abgeschlossen wurde, überprüfen Sie in den Treiberprotokollen, wie viele Metriken generiert wurden oder ob Warnmeldungen vorhanden sind.  Die Treiberprotokolle finden Sie nach dem Klicken auf ein Experiment auf der Registerkarte **Ausgabe + Protokolle**.
 
-* Wenn die SDK-Funktion `backfill()` nicht die erwartete Ausgabe generiert, kann dies auf ein Authentifizierungsproblem zurückzuführen sein.  Verwenden Sie beim Erstellen des Computeziels, das an diese Funktion übergeben wird, nicht `Run.get_context().experiment.workspace.compute_targets`.  Verwenden Sie stattdessen [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true), wie hier zu sehen, um das Computeziel zu erstellen, das Sie an die Funktion `backfill()` übergeben: 
+* Wenn die SDK-Funktion `backfill()` nicht die erwartete Ausgabe generiert, kann dies auf ein Authentifizierungsproblem zurückzuführen sein.  Verwenden Sie beim Erstellen des Computeziels, das an diese Funktion übergeben wird, nicht `Run.get_context().experiment.workspace.compute_targets`.  Verwenden Sie stattdessen [ServicePrincipalAuthentication](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py), wie hier zu sehen, um das Computeziel zu erstellen, das Sie an die Funktion `backfill()` übergeben: 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -273,7 +273,7 @@ time.sleep(600)
 
 Protokolle von Echtzeitendpunkten sind Kundendaten. Für die Problembehandlung für Echtzeitendpunkte können Sie den folgenden Code zum Aktivieren von Protokollen verwenden. 
 
-Weitere Informationen zur Überwachung von Webdienst-Endpunkten finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models).
+Weitere Informationen zur Überwachung von Webdienst-Endpunkten finden Sie in [diesem Artikel](./how-to-enable-app-insights.md#query-logs-for-deployed-models).
 
 ```python
 from azureml.core import Workspace
@@ -299,7 +299,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und SKLearn. Die Verwendung dieser Estimators stellt sicher, dass die hauptsächlichen Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
  
     Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
-    Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks).
+    Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks), [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks), [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks), [sklearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks).
 
     > [!Note]
     > Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
@@ -308,7 +308,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod wurde heruntergefahren** : In den meisten Fällen, wenn „AbortedError: Horovod wurde heruntergefahren“ auftritt, bedeutet dies, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfachere Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von Horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
 
-* **Löschen von Ausführungen oder Experimenten** :  Experimente können mit der Methode [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
+* **Löschen von Ausführungen oder Experimenten** :  Experimente können mit der Methode [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
 
     Das endgültige Löschen einzelner Experimente oder Ausführungen wird derzeit nicht unterstützt. Weitere Informationen zum Löschen von Arbeitsbereichsressourcen finden Sie unter [Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst](how-to-export-delete-data.md).
 
@@ -452,7 +452,7 @@ kubectl get secret/azuremlfessl -o yaml
 
 ### <a name="detaching-azure-kubernetes-service"></a>Trennen von Azure Kubernetes Service
 
-Wenn Sie einen AKS-Cluster mit dem Azure Machine Learning Studio, dem SDK oder der Azure CLI-Erweiterung für maschinelles Lernen trennen, wird der AKS-Cluster nicht gelöscht. Informationen zum Löschen des Clusters finden Sie unter [Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+Wenn Sie einen AKS-Cluster mit dem Azure Machine Learning Studio, dem SDK oder der Azure CLI-Erweiterung für maschinelles Lernen trennen, wird der AKS-Cluster nicht gelöscht. Informationen zum Löschen des Clusters finden Sie unter [Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle](../aks/kubernetes-walkthrough.md#delete-the-cluster).
 
 ### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webdienstefehler in Azure Kubernetes Service
 
@@ -496,4 +496,4 @@ Hier finden Sie weitere Artikel zur Problembehandlung in Azure Machine Learning:
 * [Debuggen und Problembehandlung für Machine Learning-Pipelines](how-to-debug-pipelines.md)
 * [Debugging und Problembehandlung von ParallelRunStep](how-to-debug-parallel-run-step.md)
 * [Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote](how-to-debug-visual-studio-code.md)
-* [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)
+* [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](./how-to-log-pipelines-application-insights.md)

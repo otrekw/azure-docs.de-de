@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739148"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323942"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -22,7 +22,7 @@ Erfahren Sie mehr über die Daten und Ressourcen, die von Azure Monitor aus Ihre
 
 ## <a name="metrics"></a>Metriken
 
-In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Machine Learning gesammelt werden. Der Ressourcenanbieter für diese Metriken ist [Microsoft.MachineLearningServices/workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Machine Learning gesammelt werden. Der Ressourcenanbieter für diese Metriken ist [Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modell**
 
@@ -73,7 +73,7 @@ Informationen zu Trainingsausführungen
 
 ## <a name="metric-dimensions"></a>Metrikdimensionen
 
-Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
 
 Den Metriken in Azure Machine Learning sind die folgenden Dimensionen zugeordnet.
 
@@ -87,7 +87,7 @@ Den Metriken in Azure Machine Learning sind die folgenden Dimensionen zugeordnet
 | NodeId | ID des erstellten Knotens, auf dem der Auftrag ausgeführt wird. Diese Dimension ist nur für CpuUtilization und GpuUtilization verfügbar. |
 | RunId | ID des Laufs/Auftrags. Diese Dimension ist nur für CpuUtilization und GpuUtilization verfügbar. |
 | ComputeType | Der für die Ausführung verwendete Computetyp Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
-| PipelineStepType | Der Typ des [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true)-Objekts, das in der Ausführung verwendet wurde Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
+| PipelineStepType | Der Typ des [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py)-Objekts, das in der Ausführung verwendet wurde Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
 | PublishedPipelineId | Die ID der veröffentlichten Pipeline, die in der Ausführung verwendet wurde Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
 | RunType | Der Typ der Ausführung. Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
 
@@ -116,7 +116,7 @@ In der folgenden Tabelle finden Sie die Vorgänge in Zusammenhang mit Azure Mach
 
 In diesem Abschnitt werden die Typen der Ressourcenprotokolle aufgeführt, die für einen Azure Machine Learning-Arbeitsbereich erfasst werden können.
 
-Ressourcenanbieter und Typ: [Microsoft.MachineLearningServices/workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+Ressourcenanbieter und Typ: [Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategorie | Anzeigename |
 | ----- | ----- |
@@ -231,4 +231,4 @@ Die folgenden Schemas werden von Azure Machine Learning verwendet.
 ## <a name="see-also"></a>Weitere Informationen
 
 - Eine Beschreibung der Überwachung von Azure Machine Learning finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](/azure/azure-monitor/insights/monitor-azure-resource).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md).

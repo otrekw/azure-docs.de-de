@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: b45c5cd1a750ee4b3f182920c4ee2f2e47756867
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f9d6f58256ccc21e5121a16a429e0f4c3ff1e485
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323098"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
@@ -85,7 +85,7 @@ Besitzer und Mitwirkende können alle Computeziele und Datenspeicher verwenden, 
 
 Jedem Arbeitsbereich ist außerdem eine vom System zugewiesene verwaltete Identität zugeordnet, die den gleichen Namen wie der Arbeitsbereich trägt. Die verwaltete Identität verfügt über die folgenden Berechtigungen für angefügte Ressourcen, die im Arbeitsbereich verwendet werden.
 
-Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
 | Resource | Berechtigungen |
 | ----- | ----- |
@@ -118,7 +118,7 @@ Sie können auch Azure Private Link für Ihren Arbeitsbereich aktivieren. Privat
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
 > [!IMPORTANT]
-> Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. Das `hbi_workspace`-Flag kann nur beim Erstellen eines Arbeitsbereichs festgelegt werden. Es kann für einen vorhandenen Arbeitsbereich nicht geändert werden.
+> Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. Das `hbi_workspace`-Flag kann nur beim Erstellen eines Arbeitsbereichs festgelegt werden. Es kann für einen vorhandenen Arbeitsbereich nicht geändert werden.
 
 Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken gesammelten Daten](#microsoft-collected-data) und ermöglicht eine [zusätzliche Verschlüsselung in von Microsoft verwalteten Umgebungen](../security/fundamentals/encryption-atrest.md). Darüber hinaus ermöglicht es folgende Aktionen:
 
@@ -131,7 +131,7 @@ Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken
 
 Azure Machine Learning speichert Momentaufnahmen, Ausgaben und Protokolle in dem Azure Blob Storage-Konto, das mit dem Azure Machine Learning-Arbeitsbereich und Ihrem Abonnement verknüpft ist. Alle in Azure Blob Storage gespeicherten Daten werden im Ruhezustand mit von Microsoft verwalteten Schlüsseln verschlüsselt.
 
-Informationen dazu, wie Sie Ihre eigenen Schlüssel für die in Azure Blob Storage gespeicherten Daten verwenden können, finden Sie unter [Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe des Azure-Portals](../storage/common/storage-encryption-keys-portal.md).
+Informationen dazu, wie Sie Ihre eigenen Schlüssel für die in Azure Blob Storage gespeicherten Daten verwenden können, finden Sie unter [Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe des Azure-Portals](../storage/common/customer-managed-keys-configure-key-vault.md).
 
 Trainingsdaten werden in der Regel auch in Azure Blob Storage gespeichert, damit sie zum Trainieren von Computezielen zur Verfügung stehen. Dieser Speicher wird nicht von Azure Machine Learning verwaltet, sondern er wird Computezielen als Remotedateisystem bereitgestellt.
 
@@ -151,12 +151,12 @@ Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden
 
 * Verwenden Sie die folgenden Parameter, wenn Sie den Azure Machine Learning-Arbeitsbereich erstellen. Beide Parameter sind obligatorisch und werden in SDK-, CLI-, REST-APIs und Resource Manager-Vorlagen unterstützt.
 
-    * `resource_cmk_uri`: Dieser Parameter ist der vollständige Ressourcen-URI des vom Kunden verwalteten Schlüssels in Ihrem Schlüsseltresor, einschließlich der [Versionsinformationen für den Schlüssel](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning). 
+    * `resource_cmk_uri`: Dieser Parameter ist der vollständige Ressourcen-URI des vom Kunden verwalteten Schlüssels in Ihrem Schlüsseltresor, einschließlich der [Versionsinformationen für den Schlüssel](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). 
 
     * `cmk_keyvault`: Dieser Parameter ist die Ressourcen-ID des Schlüsseltresors in Ihrem Abonnement. Dieser Schlüsseltresor muss sich in derselben Region und demselben Abonnement befinden, das Sie für den Azure Machine Learning-Arbeitsbereich verwenden werden. 
     
         > [!NOTE]
-        > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
+        > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -171,7 +171,7 @@ Alle Containerimages in Ihrer Registrierung (Azure Container Registry) werden im
 Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung Ihrer Azure Container Registry zu verwenden, müssen Sie Ihre eigene ACR erstellen und diese während der Bereitstellung des Arbeitsbereichs anfügen oder die Standardinstanz verschlüsseln, die zum Zeitpunkt der Arbeitsbereichsbereitstellung erstellt wird.
 
 > [!IMPORTANT]
-> Azure Machine Learning erfordert, dass das Administratorkonto in Ihrer Azure Container Registry aktiviert ist. Diese Einstellung ist standardmäßig deaktiviert, wenn Sie eine Containerregistrierung erstellen. Informationen zum Aktivieren des Administratorkontos finden Sie unter [Administratorkonto](/azure/container-registry/container-registry-authentication#admin-account).
+> Azure Machine Learning erfordert, dass das Administratorkonto in Ihrer Azure Container Registry aktiviert ist. Diese Einstellung ist standardmäßig deaktiviert, wenn Sie eine Containerregistrierung erstellen. Informationen zum Aktivieren des Administratorkontos finden Sie unter [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account).
 >
 > Nachdem eine Azure Container Registry für einen Arbeitsbereich erstellt wurde, dürfen Sie diese nicht mehr löschen. Dadurch wird Ihr Azure Machine Learning-Arbeitsbereich beschädigt.
 
@@ -193,7 +193,7 @@ Erstellen Sie zur Verwendung des Schlüssels bei der Bereitstellung eines Modell
 
 Weitere Informationen zum Erstellen und Verwenden einer Bereitstellungskonfiguration finden Sie in den folgenden Artikeln:
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)-Referenz
+* [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)-Referenz
 * [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md)
 * [Bereitstellen eines Modells in Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
@@ -222,7 +222,7 @@ Azure Databricks kann in Azure Machine Learning-Pipelines verwendet werden. Das 
 
 Azure Machine Learning verwendet TLS zum Sichern der internen Kommunikation zwischen Azure Machine Learning-Microservices. Der gesamte Azure Storage-Zugriff erfolgt ebenfalls über einen sicheren Kanal.
 
-Zum Sichern externer Aufrufe an den Bewertungsendpunkt verwendet Azure Machine Learning TLS. Weitere Informationen finden Sie unter [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
+Zum Sichern externer Aufrufe an den Bewertungsendpunkt verwendet Azure Machine Learning TLS. Weitere Informationen finden Sie unter [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](./how-to-secure-web-service.md).
 
 ### <a name="using-azure-key-vault"></a>Verwenden von Azure Key Vault
 
@@ -242,7 +242,7 @@ Jedem Arbeitsbereich ist eine vom System zugewiesene verwaltete Identität zugeo
 
 Microsoft sammelt möglicherweise Informationen, z. B. Ressourcennamen (wie den Datasetnamen oder den Namen des Machine Learning-Experiments) oder Variablen von Auftragsumgebungen zu Diagnosezwecken, die nicht den Benutzer identifizieren. Alle diese Daten werden mit von Microsoft verwalteten Schlüsseln in einem Speicher gespeichert, der in Microsoft-eigenen Abonnements gehostet wird, und folgen den [Standarddatenschutzrichtlinien und Datenverarbeitungsstandards von Microsoft](https://privacy.microsoft.com/privacystatement).
 
-Microsoft empfiehlt außerdem, keine vertraulichen Informationen (z. B. Geheimnisse von Kontoschlüsseln) in Umgebungsvariablen zu speichern. Umgebungsvariablen werden von uns protokolliert, verschlüsselt und gespeichert. Vermeiden Sie beim Benennen von [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) daher vertrauliche Informationen wie Benutzernamen oder geheime Projektnamen. Diese Informationen können in Telemetrieprotokollen enthalten sein, auf die Microsoft-Supporttechniker zugreifen können.
+Microsoft empfiehlt außerdem, keine vertraulichen Informationen (z. B. Geheimnisse von Kontoschlüsseln) in Umgebungsvariablen zu speichern. Umgebungsvariablen werden von uns protokolliert, verschlüsselt und gespeichert. Vermeiden Sie beim Benennen von [run_id](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) daher vertrauliche Informationen wie Benutzernamen oder geheime Projektnamen. Diese Informationen können in Telemetrieprotokollen enthalten sein, auf die Microsoft-Supporttechniker zugreifen können.
 
 Sie können sich von der Erfassung von Diagnosedaten abmelden, indem Sie den Parameter `hbi_workspace` während der Bereitstellung des Arbeitsbereichs auf `TRUE` festlegen. Diese Funktionalität wird unterstützt, wenn AzureML Python-SDK-, CLI-, REST-APIs oder Azure Resource Manager-Vorlagen verwendet werden.
 
@@ -262,7 +262,7 @@ Sie können Azure Monitor-Metriken verwenden, um Metriken für Ihren Azure Machi
 
 Die Metriken umfassen Informationen zu Ausführungen, Bereitstellungen und Registrierungen.
 
-Weitere Informationen finden Sie unter [Azure Monitor-Metriken](/azure/azure-monitor/platform/data-platform-metrics).
+Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md).
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 
@@ -289,7 +289,7 @@ Details der Bewertungsanforderung werden in Application Insights gespeichert. Ap
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 
-Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Für Azure Machine Learning sollten Sie die Überprüfung der Azure Container Registry-Ressourcen sowie der Azure Kubernetes Service-Ressourcen aktivieren. Informationen finden Sie unter [Einführung in Azure Defender für Containerregistrierungen](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) und [Einführung in Azure Defender für Kubernetes](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
+Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Für Azure Machine Learning sollten Sie die Überprüfung der Azure Container Registry-Ressourcen sowie der Azure Kubernetes Service-Ressourcen aktivieren. Informationen finden Sie unter [Einführung in Azure Defender für Containerregistrierungen](../security-center/defender-for-container-registries-introduction.md) und [Einführung in Azure Defender für Kubernetes](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="data-flow-diagrams"></a>Datenflussdiagramme
 
@@ -364,12 +364,12 @@ Es folgen die Details:
 
 ## <a name="audit-and-manage-compliance"></a>Überwachen und Verwalten der Compliance
 
-[Azure Policy](/azure/governance/policy) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
+[Azure Policy](../governance/policy/index.yml) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
 * **Kundenseitig verwalteter Schlüssel** : Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
 * **Private Link** : Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
 
-Weitere Informationen zu Azure Policy finden Sie in der [Dokumentation zu Azure Policy](/azure/governance/policy/overview).
+Weitere Informationen zu Azure Policy finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
 
 Weitere Informationen zu den Richtlinien, die speziell für Azure Machine Learning gelten, finden Sie unter [Überwachen und Verwalten der Compliance mit Azure Policy](how-to-integrate-azure-policy.md).
 
@@ -384,4 +384,4 @@ Weitere Informationen zu den Richtlinien, die speziell für Azure Machine Learni
 * [Verwenden von Azure Machine Learning hinter Azure Firewall](how-to-access-azureml-behind-firewall.md)
 * [Verwenden von Azure Machine Learning mit einem virtuellen Azure-Netzwerk](how-to-network-security-overview.md)
 * [Bewährte Methoden für das Erstellen von Empfehlungssystemen](https://github.com/Microsoft/Recommenders)
-* [Erstellen einer Echtzeitempfehlungs-API in Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)
+* [Erstellen einer Echtzeitempfehlungs-API in Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)

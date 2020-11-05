@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721250"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321926"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess
 
 In diesem Thema werden die Aufgaben beschrieben, die von einem *einzelnen Mitwirkenden* zum Einrichten eines Projekts im [Team Data Science-Prozess](overview.md) (TDSP) abgeschlossen werden. Ziel ist es, in einer auf Zusammenarbeit ausgerichteten Teamumgebung zu arbeiten, die gemäß dem TDSP vereinheitlicht ist. Der TDSP soll die Zusammenarbeit und die Lernprozesse im Team verbessern. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und die zugehörigen Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß dem TDSP anstrebt.
 
-Das folgende Diagramm zeigt die Aufgaben, die einzelne Mitwirkende (Data Scientists) zum Einrichten ihrer Teamumgebung ausführen. Informationen zum Ausführen eines Data Science-Projekts gemäß dem TDSP finden Sie unter [Ausführung von Data Science-Projekten](project-execution.md). 
+Das folgende Diagramm zeigt die Aufgaben, die einzelne Mitwirkende (Data Scientists) zum Einrichten ihrer Teamumgebung ausführen. Informationen zum Ausführen eines Data Science-Projekts gemäß dem TDSP finden Sie unter [Ausführung von Data Science-Projekten](./agile-development.md). 
 
 ![Aufgaben einzelner Mitwirkender](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
@@ -36,18 +36,18 @@ Das folgende Diagramm zeigt die Aufgaben, die einzelne Mitwirkende (Data Scienti
 
 In diesem Tutorial wird davon ausgegangen, dass die folgenden Ressourcen und Berechtigungen von Ihrem [Gruppenleiter](group-manager-tasks.md), dem [Teamleiter](team-lead-tasks.md) und dem [Projektleiter](project-lead-tasks.md) eingerichtet wurden:
 
-- Die Azure DevOps-**Organisation** für Ihre Data Science-Einheit
-- Ein **Projektrepository**, das von Ihrem Projektleiter für die gemeinsame Nutzung von Projektvorlagen und Ressourcen eingerichtet wurde
-- Die Repositorys **GroupUtilities** und **TeamUtilities**, die ggf. vom Gruppenleiter und Teamleiter eingerichtet werden
-- Azure-**Dateispeicher**, der ggf. für freigegebene Ressourcen für Ihr Team oder Projekt eingerichtet wurde
+- Die Azure DevOps- **Organisation** für Ihre Data Science-Einheit
+- Ein **Projektrepository** , das von Ihrem Projektleiter für die gemeinsame Nutzung von Projektvorlagen und Ressourcen eingerichtet wurde
+- Die Repositorys **GroupUtilities** und **TeamUtilities** , die ggf. vom Gruppenleiter und Teamleiter eingerichtet werden
+- Azure- **Dateispeicher** , der ggf. für freigegebene Ressourcen für Ihr Team oder Projekt eingerichtet wurde
 - **Berechtigungen** für das Klonen aus dem Projektrepository und das Pushen zurück in dieses 
 
 Damit Sie Repositorys klonen und Inhalte auf Ihrem lokalen Computer oder Ihrer DSVM ändern können oder um Azure-Dateispeicher auf Ihrer DSVM einzubinden, müssen Sie die folgende Prüfliste beachten:
 
 - Ein Azure-Abonnement.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.
-- Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
-- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation**, und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
+- Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
+- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation** , und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
 - Für eine Linux-DSVM muss ein öffentlicher SSH-Schlüssel auf Ihrer DSVM eingerichtet und in Azure DevOps hinzugefügt werden. Weitere Informationen und Anweisungen finden Sie im [Anhang zu Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 - Die Azure-Dateispeicherinformationen für alle Azure-Dateispeicher, die Sie auf Ihrer DSVM einbinden müssen. 
 
@@ -103,4 +103,3 @@ Es folgen Links zu ausführlichen Beschreibungen der anderen Rollen und Aufgaben
 - [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md)
 - [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md)
 - [Project Lead tasks for a data science team (Aufgaben des Projektleiters eines Data Science-Teams)](project-lead-tasks.md)
-

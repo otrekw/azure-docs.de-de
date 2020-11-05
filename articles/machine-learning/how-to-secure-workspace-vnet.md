@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672865"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316690"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Schützen eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken
 
@@ -48,7 +48,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Arbeitsbereichsressourcen 
     - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
 
-    Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
+    Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Schützen des Arbeitsbereichs mit privatem Endpunkt
@@ -66,7 +66,7 @@ Azure Machine Learning unterstützt Speicherkonten, die so konfiguriert sind, da
 >
 > Das Standardspeicherkonto wird automatisch bereitgestellt, wenn Sie einen Arbeitsbereich erstellen.
 >
-> Für Nicht-Standardspeicherkonten können Sie mit dem `storage_account`-Parameter in der [`Workspace.create()`-Funktion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) ein benutzerdefiniertes Speicherkonto über die Azure-Ressourcen-ID angeben.
+> Für Nicht-Standardspeicherkonten können Sie mit dem `storage_account`-Parameter in der [`Workspace.create()`-Funktion](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) ein benutzerdefiniertes Speicherkonto über die Azure-Ressourcen-ID angeben.
 
 Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbeitsbereich in einem virtuellen Netzwerk zu verwenden:
 
@@ -188,7 +188,7 @@ Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter
 
 Damit Sie Container Registry in einem virtuellen Netzwerk verwenden können, müssen die folgenden Voraussetzungen erfüllt sein:
 
-* Für Ihre Azure Container Registry-Instanz (ACR) muss ein Premium-Tarif erworben worden sein. Informationen zum Durchführen eines Upgrades finden Sie unter [Wechseln von SKUs](/azure/container-registry/container-registry-skus#changing-skus).
+* Für Ihre Azure Container Registry-Instanz (ACR) muss ein Premium-Tarif erworben worden sein. Informationen zum Durchführen eines Upgrades finden Sie unter [Wechseln von SKUs](../container-registry/container-registry-skus.md#changing-tiers).
 
 * Azure Container Registry muss sich in demselben virtuellen Netzwerk und Subnetz befinden wie das Speicherkonto und die Computeziele, die für Training oder Rückschluss verwendet werden.
 
@@ -233,7 +233,7 @@ Sind diese Anforderungen erfüllt, führen Sie die folgenden Schritte zum Aktivi
     > [!IMPORTANT]
     > Das Speicherkonto, der Computecluster und die Azure Container Registry-Instanz müssen sich in demselben Subnetz des virtuellen Netzwerks befinden.
     
-    Weitere Informationen finden Sie in der Referenz zur [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true)-Methode.
+    Weitere Informationen finden Sie in der Referenz zur [update()](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true)-Methode.
 
 1. Wenden Sie die folgende Azure Resource Manager-Vorlage an. Durch diese Vorlage kann Ihr Arbeitsbereich mit ACR kommunizieren.
 

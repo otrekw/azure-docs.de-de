@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427536"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318016"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -38,7 +38,7 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secur
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
+* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 ## <a name="create"></a>Erstellen
 
@@ -82,9 +82,9 @@ except ComputeTargetException:
 
 Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden und Parametern finden Sie in den folgenden Referenzdokumenten:
 
-* [„ComputeInstance“-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance.computeinstance?view=azure-ml-py&preserve-view=true)
-* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeInstance.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false--is-delete-operation-false-)
+* [„ComputeInstance“-Klasse](/python/api/azureml-core/azureml.core.compute.computeinstance.computeinstance?preserve-view=true&view=azure-ml-py)
+* [ComputeTarget.create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
@@ -93,7 +93,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance).
+Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -129,7 +129,7 @@ Hier erfahren Sie, wie Sie eine Compute-Instanz starten, beenden, neu starten un
 
 # <a name="python"></a>[Python](#tab/python)
 
-In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance** .
+In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance**.
 
 * Abrufen des Status
 
@@ -170,7 +170,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance** .
+In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance**.
 
 * Beenden
 
@@ -178,7 +178,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    Weitere Informationen finden Sie unter [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
 
 * Start 
 
@@ -186,7 +186,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    Weitere Informationen finden Sie unter [az ml computetarget start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
 
 * Neu starten 
 
@@ -194,7 +194,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    Weitere Informationen finden Sie unter [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
 
 * Löschen
 
@@ -202,7 +202,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget delete -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-delete).
+    Weitere Informationen finden Sie unter [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -226,7 +226,7 @@ Für jede Compute-Instanz in Ihrem Arbeitsbereich, die Sie erstellt haben (oder 
 
 ---
 
-Mithilfe von [Azure RBAC](/azure/role-based-access-control/overview) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz weist die Einzelbenutzeranmeldung auf, und alle Aktionen verwenden die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
+Mithilfe von [Azure RBAC](../role-based-access-control/overview.md) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz weist die Einzelbenutzeranmeldung auf, und alle Aktionen verwenden die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
 
 Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -255,8 +255,10 @@ Sie können Pakete direkt in einem Jupyter-Notebook oder in RStudio installieren
 * Verwenden Sie die Registerkarte **Pakete** unten rechts oder die Registerkarte **Konsole** oben links.  
 * Python: Fügen Sie Installationscode hinzu, und führen Sie ihn in einer Zelle im Jupyter-Notebook aus.
 
-Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML** .  Installieren Sie R-Pakete in der **R** -Umgebung.
-Die magischen Funktionen „%pip“ und „%conda“ installieren automatisch Pakete in dem derzeit ausgeführten Kernel in der Jupyter-Notebooksitzung.
+Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML**.  Installieren Sie R-Pakete in der **R** -Umgebung.
+
+> [!NOTE]
+> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda** , um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda** , die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
 
 ## <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
 
@@ -292,4 +294,4 @@ Jeder der [verfügbaren Jupyter-Kernel](https://github.com/jupyter/jupyter/wiki/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übermitteln einer Trainingsausführung](how-to-set-up-training-targets.md) 
+* [Übermitteln einer Trainingsausführung](how-to-set-up-training-targets.md)

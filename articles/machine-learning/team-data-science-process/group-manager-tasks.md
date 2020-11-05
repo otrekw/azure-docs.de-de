@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721352"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321222"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Aufgaben eines Gruppenleiters im Team Data Science-Prozess
 
@@ -27,8 +27,8 @@ Das folgende Diagramm zeigt die sechs wichtigsten Einrichtungsaufgaben des Grupp
 
 1. Richten Sie eine **Azure DevOps-Organisation** für die Gruppe ein.
 2. Erstellen Sie das standardmäßige **GroupCommon-Projekt** in der Azure DevOps-Organisation.
-3. Erstellen Sie das **GroupProjectTemplate**-Repository in Azure Repos.
-4. Erstellen Sie das **GroupUtilities**-Repository in Azure Repos.
+3. Erstellen Sie das **GroupProjectTemplate** -Repository in Azure Repos.
+4. Erstellen Sie das **GroupUtilities** -Repository in Azure Repos.
 5. Importieren Sie die Inhalte der Repositorys **ProjectTemplate** und **Utilities** des Microsoft TDSP-Teams in die gemeinsamen Repositorys der Gruppe.
 6. Richten Sie **Mitgliedschaft** und **Berechtigungen** ein, damit Teammitglieder auf die Gruppe zugreifen können.
 
@@ -65,19 +65,19 @@ Die Seite **Zusammenfassung** des Projekts **GroupCommon** wird geöffnet. Die S
 
 Azure Repos hostet die folgenden Arten von Repositorys für Ihre Gruppe:
 
-- **Allgemeine Gruppenrepositorys**: Universelle Repositorys, die von mehreren Teams innerhalb einer Data Science-Einheit für viele Data Science-Projekte übernommen werden können. 
-- **Teamrepositorys**:  Repositorys für bestimmte Teams in einer Data Science-Einheit. Diese Repositorys sind spezifisch für die Anforderungen eines Teams und können für mehrere Projekte innerhalb dieses Teams verwendet werden. Sie sind aber nicht ausreichend universell, um von mehreren Teams innerhalb einer Data Science-Einheit verwendet zu werden.
-- **Projektrepositorys**: Repositorys für bestimmte Projekte. Solche Repositorys sind möglicherweise nicht ausreichend universell für mehrere Projekte innerhalb eines Teams oder für andere Teams in einer Data Science-Einheit.
+- **Allgemeine Gruppenrepositorys** : Universelle Repositorys, die von mehreren Teams innerhalb einer Data Science-Einheit für viele Data Science-Projekte übernommen werden können. 
+- **Teamrepositorys** :  Repositorys für bestimmte Teams in einer Data Science-Einheit. Diese Repositorys sind spezifisch für die Anforderungen eines Teams und können für mehrere Projekte innerhalb dieses Teams verwendet werden. Sie sind aber nicht ausreichend universell, um von mehreren Teams innerhalb einer Data Science-Einheit verwendet zu werden.
+- **Projektrepositorys** : Repositorys für bestimmte Projekte. Solche Repositorys sind möglicherweise nicht ausreichend universell für mehrere Projekte innerhalb eines Teams oder für andere Teams in einer Data Science-Einheit.
 
 Gehen Sie wie folgt vor, um die allgemeinen Gruppenrepositorys in Ihrem Projekt einzurichten: 
 - Benennen Sie das Standardrepository **GroupCommon** in **GroupProjectTemplate** um.
-- Erstellen Sie ein neues **GroupUtilities**-Repository.
+- Erstellen Sie ein neues **GroupUtilities** -Repository.
 
 ### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Benennen Sie das Standardprojektrepository in „GroupProjectTemplate“ um.
 
-So benennen Sie das standardmäßige **GroupCommon**-Projektrepository in **GroupProjectTemplate** um
+So benennen Sie das standardmäßige **GroupCommon** -Projektrepository in **GroupProjectTemplate** um
 
-1. Wählen Sie auf der Seite **Zusammenfassung** des Projekts **GroupCommon** die Option **Repos** aus. Diese Aktion führt Sie zum standardmäßigen **GroupCommon**-Repository des GroupCommon-Projekts, das derzeit leer ist.
+1. Wählen Sie auf der Seite **Zusammenfassung** des Projekts **GroupCommon** die Option **Repos** aus. Diese Aktion führt Sie zum standardmäßigen **GroupCommon** -Repository des GroupCommon-Projekts, das derzeit leer ist.
    
 1. Wählen Sie oben auf der Seite den Pfeil neben **GroupCommon** und dann **Repositorys verwalten** aus.
    
@@ -93,7 +93,7 @@ So benennen Sie das standardmäßige **GroupCommon**-Projektrepository in **Grou
 
 ### <a name="create-the-grouputilities-repository"></a>Erstellen des GroupUtilities-Repositorys
 
-So erstellen Sie das **GroupUtilities**-Repository
+So erstellen Sie das **GroupUtilities** -Repository
 
 1. Wählen Sie auf der Seite **Zusammenfassung** des Projekts **GroupCommon** die Option **Repos** aus. 
    
@@ -115,7 +115,7 @@ In diesem Teil des Tutorials importieren Sie den Inhalt der vom Microsoft TDSP-T
 
 So importieren Sie die TDSP-Teamrepositorys
 
-1. Wählen Sie auf der Startseite des **GroupCommon**-Projekts auf der linken Navigationsleiste **Repos** aus. Das standardmäßige **GroupProjectTemplate**-Repository wird geöffnet. 
+1. Wählen Sie auf der Startseite des **GroupCommon** -Projekts auf der linken Navigationsleiste **Repos** aus. Das standardmäßige **GroupProjectTemplate** -Repository wird geöffnet. 
    
 1. Wählen Sie auf der Seite **GroupProjectTemplate ist leer** die Option **Importieren** aus. 
    
@@ -127,9 +127,9 @@ So importieren Sie die TDSP-Teamrepositorys
    
 1. Wählen Sie oben auf der Seite **Repos** das Dropdownmenü und dann das Repository **GroupUtilities** aus.
    
-1. Wiederholen Sie den Importvorgang, um den Inhalt des Microsoft TDSP-Teamsrepositorys **Utilities**, *https:\//github.com/Azure/Azure-TDSP-Utilities.git*, in Ihr **GroupUtilities**-Repository zu importieren. 
+1. Wiederholen Sie den Importvorgang, um den Inhalt des Microsoft TDSP-Teamsrepositorys **Utilities** , *https:\//github.com/Azure/Azure-TDSP-Utilities.git* , in Ihr **GroupUtilities** -Repository zu importieren. 
    
-Jedes Ihrer beiden Gruppenrepositorys enthält nun alle Dateien, mit Ausnahme der Dateien im Verzeichnis *.git*, aus dem entsprechenden Repository des Microsoft TDSP-Teams. 
+Jedes Ihrer beiden Gruppenrepositorys enthält nun alle Dateien, mit Ausnahme der Dateien im Verzeichnis *.git* , aus dem entsprechenden Repository des Microsoft TDSP-Teams. 
 
 ## <a name="customize-the-contents-of-the-group-repositories"></a>Anpassen der Inhalte der Gruppenrepositorys
 
@@ -167,13 +167,13 @@ Wenn Sie Änderungen mit Ihrem lokalen Computer oder der DSVM vornehmen und die 
 
 - Ein Azure-Abonnement, wenn Sie eine DSVM erstellen möchten.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.
-- Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
-- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation**, und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
+- Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
+- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation** , und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
 - Für eine Linux-DSVM muss ein öffentlicher SSH-Schlüssel auf Ihrer DSVM eingerichtet und in Azure DevOps hinzugefügt werden. Weitere Informationen und Anweisungen finden Sie im [Anhang zu Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 
 Kopieren oder *klonen* Sie zunächst das Repository auf Ihren lokalen Computer. 
    
-1. Wählen Sie auf der Seite **Zusammenfassung** des **GroupCommon**-Projekts die Option **Repos** und dann oben auf der Seite das zu klonende Repository aus.
+1. Wählen Sie auf der Seite **Zusammenfassung** des **GroupCommon** -Projekts die Option **Repos** und dann oben auf der Seite das zu klonende Repository aus.
    
 1. Wählen Sie auf der Repositoryseite oben rechts **Klonen** aus.
    
@@ -206,7 +206,7 @@ Kopieren oder *klonen* Sie zunächst das Repository auf Ihren lokalen Computer.
 
 Nachdem Sie alle gewünschten Änderungen im lokalen Klon Ihres Repositorys vorgenommen haben, können Sie die Änderungen per Push in die gemeinsamen Repositorys der freigegebenen Gruppe übertragen. 
 
-Führen Sie die folgenden Git Bash-Befehle in Ihrem lokalen **GroupProjectTemplate**- oder **GroupUtilities**-Verzeichnis aus.
+Führen Sie die folgenden Git Bash-Befehle in Ihrem lokalen **GroupProjectTemplate** - oder **GroupUtilities** -Verzeichnis aus.
 
 ```bash
 git add .
@@ -227,7 +227,7 @@ git push
 
 So fügen Sie der Gruppe Mitglieder hinzu
 
-1. Wählen Sie in Azure DevOps auf der Startseite des **GroupCommon**-Projekts die Option **Projekteinstellungen** im linken Navigationsbereich aus. 
+1. Wählen Sie in Azure DevOps auf der Startseite des **GroupCommon** -Projekts die Option **Projekteinstellungen** im linken Navigationsbereich aus. 
    
 1. Wählen Sie unter **Projekteinstellungen** die Option **Teams** und dann auf der Seite **Teams** die Option **GroupCommon-Team** aus. 
    

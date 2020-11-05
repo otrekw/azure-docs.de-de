@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530673"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325588"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
@@ -38,7 +38,7 @@ Verwenden Sie die Azure Machine Learning-Erweiterung zum Überprüfen, Ausführe
 > Stellen Sie unter Windows sicher, dass Sie [in Docker konfigurieren, dass Linux-Container verwendet werden](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 > [!TIP]
-> Für Windows wird die Verwendung von [Docker mit dem Windows-Subsystem für Linux (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop) dringend empfohlen, auch wenn dies nicht erforderlich ist.
+> Für Windows wird die Verwendung von [Docker mit dem Windows-Subsystem für Linux (WSL) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop) dringend empfohlen, auch wenn dies nicht erforderlich ist.
 
 > [!IMPORTANT]
 > Bevor Sie Ihr Experiment lokal ausführen, stellen Sie sicher, dass Docker ausgeführt wird.
@@ -58,7 +58,7 @@ Verwenden Sie die Azure Machine Learning-Erweiterung zum Überprüfen, Ausführe
     1. Geben Sie den Namen des Skripts an, das Sie ausführen möchten. Der Pfad ist relativ zum Verzeichnis, das in VS Code geöffnet ist.
     1. Wählen Sie aus, ob Sie ein Azure Machine Learning-Dataset verwenden möchten. Mithilfe der Erweiterung können Sie [Azure Machine Learning-Datasets](how-to-manage-resources-vscode.md#create-dataset) erstellen.
     1. Debugpy ist erforderlich, um den Debugger an den Container anzufügen, der Ihr Experiment ausführt. Klicken Sie auf **Add debugpy** (Debugpy hinzufügen), um debugpy als Abhängigkeit hinzuzufügen. Klicken Sie andernfalls auf **Skip** (Überspringen). Wenn Sie debugpy nicht als Abhängigkeit hinzufügen, wird das Experiment ohne Anfügen an den Debugger ausgeführt.
-    1. Eine Konfigurationsdatei mit den Einstellungen für die Laufzeitkonfiguration wird im Editor geöffnet. Wenn Sie mit den Einstellungen zufrieden sind, klicken Sie auf **Submit experiment** (Experiment übermitteln). Öffnen Sie alternativ die Befehlspalette (**View > Command Palette**; Ansicht > Befehlspalette) in der Menüleiste, und geben Sie den Befehl `Azure ML: Submit experiment` in das Textfeld ein.
+    1. Eine Konfigurationsdatei mit den Einstellungen für die Laufzeitkonfiguration wird im Editor geöffnet. Wenn Sie mit den Einstellungen zufrieden sind, klicken Sie auf **Submit experiment** (Experiment übermitteln). Öffnen Sie alternativ die Befehlspalette ( **View > Command Palette** ; Ansicht > Befehlspalette) in der Menüleiste, und geben Sie den Befehl `Azure ML: Submit experiment` in das Textfeld ein.
 1. Nachdem das Experiment übermittelt wurde, wird ein Docker-Image erstellt, das Ihr Skript und die in der Laufzeitkonfiguration angegebenen Konfigurationen enthält.
 
     Wenn der Buildprozess für das Docker-Image beginnt, wird der Inhalt der `60_control_log.txt`-Datei an die Ausgabekonsole in VS Code gestreamt.
@@ -86,10 +86,10 @@ In einigen Fällen muss der in Ihrer ML-Pipeline verwendete Python-Code ggf. int
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* __Azure Machine Learning-Arbeitsbereich__, die für die Verwendung eines __virtuellen Azure-Netzwerks__ konfiguriert ist.
-* __Azure Machine Learning-Pipeline__, deren Schritte Python-Skripts enthalten (Beispiel: PythonScriptStep).
+* __Azure Machine Learning-Arbeitsbereich__ , die für die Verwendung eines __virtuellen Azure-Netzwerks__ konfiguriert ist.
+* __Azure Machine Learning-Pipeline__ , deren Schritte Python-Skripts enthalten (Beispiel: PythonScriptStep).
 * Azure Machine Learning Compute-Cluster, der sich __im virtuellen Netzwerk__ befindet und __von der Pipeline zum Trainieren verwendet wird__.
-* __Entwicklungsumgebung__, die sich __im virtuellen Netzwerk__ befindet. Mögliche Entwicklungsumgebung wären etwa:
+* __Entwicklungsumgebung__ , die sich __im virtuellen Netzwerk__ befindet. Mögliche Entwicklungsumgebung wären etwa:
 
   * Ein virtueller Azure-Computer im virtuellen Netzwerk
   * Eine Compute-Instanz einer Notebook-VM im virtuellen Netzwerk
@@ -339,7 +339,7 @@ Speichern Sie den Wert von `ip_address`. Sie werden im nächsten Abschnitt verwe
 In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Python-Code ggf. interaktiv debuggen. Dies ist beispielsweise der Fall, wenn das Einstiegsskript fehlschlägt und der Grund nicht durch zusätzliche Protokollierung ermittelt werden kann. Mit VS Code und debugpy können Sie Elemente an den Code anfügen, der im Docker-Container ausgeführt wird.
 
 > [!IMPORTANT]
-> Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.
+> Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.
 
 Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Weitere Informationen zum Verwenden von Docker finden Sie in der [Docker-Dokumentation](https://docs.docker.com/). Beachten Sie bei Verwendung von Compute-Instanzen, dass Docker bereits installiert ist.
 

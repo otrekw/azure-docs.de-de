@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628676"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325407"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -188,7 +188,7 @@ Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  
 
 ### <a name="view-logs-and-output"></a>Anzeigen von Protokollen und Ausgaben
 
-Verwenden Sie [Notebook-Widgets](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true), um den Fortschritt der Ausführung und der Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
+Verwenden Sie [Notebook-Widgets](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py), um den Fortschritt der Ausführung und der Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
 
 ## <a name="change-the-notebook-environment"></a>Ändern der Notebookumgebung
 

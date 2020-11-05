@@ -11,13 +11,13 @@ ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-ms.date: 04/23/2020
-ms.openlocfilehash: 27daa160cc784665a487a0988429e3783257962e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/02/2020
+ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678149"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321635"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurieren von Always Encrypted mithilfe von Azure Key Vault 
 
@@ -100,8 +100,8 @@ az group create --location $location --name $resourceGroupName
 
 az keyvault create --name $vaultName --resource-group $resourceGroupName --location $location
 
-az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
-az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
+az keyvault set-policy --name $vaultName --key-permissions create get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
+az keyvault set-policy --name $vaultName --key-permissions get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
 ---
@@ -122,8 +122,8 @@ Wenn das Fenster **Neue Firewallregel** geöffnet wird, melden Sie sich bei Azur
 
 In diesem Abschnitt erstellen Sie eine Tabelle zum Speichern von Patientendaten. Sie ist anfänglich nicht verschlüsselt – im nächsten Abschnitt konfigurieren Sie die Verschlüsselung.
 
-1. Erweitern Sie **Datenbanken** .
-2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und klicken Sie dann auf **Neue Abfrage** .
+1. Erweitern Sie **Datenbanken**.
+2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und klicken Sie dann auf **Neue Abfrage**.
 3. Fügen Sie den folgenden Transact-SQL-Code (T-SQL) in das Fenster mit der neuen Abfrage ein, und wählen Sie **Ausführen** .
 
 ```sql
@@ -151,7 +151,7 @@ SSMS enthält einen Assistenten zum einfachen Konfigurieren von Always Encrypted
 
     ![Der Screenshot hebt die Menüoption „Spalten verschlüsseln“ hervor.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
-Der Always Encrypted-Assistent enthält die folgenden Abschnitte: **Spaltenauswahl** , **Konfiguration des Hauptschlüssels** , **Prüfung** und **Zusammenfassung** .
+Der Always Encrypted-Assistent enthält die folgenden Abschnitte: **Spaltenauswahl** , **Konfiguration des Hauptschlüssels** , **Prüfung** und **Zusammenfassung**.
 
 ### <a name="column-selection"></a>Spaltenauswahl
 
@@ -159,7 +159,7 @@ Klicken Sie auf der Seite **Einführung** auf **Weiter** , um die Seite **Spalte
 
 Verschlüsseln Sie für jeden Patienten die Daten **SSN** (US-Sozialversicherungsnummer) und **BirthDate** (Geburtsdatum). Für die Spalte „SSN“ wird die deterministische Verschlüsselung verwendet, bei der Suchvorgänge nach Gleichheit, Joins und Group By unterstützt werden. Für die Spalte „BirthDate“ wird die zufällige Verschlüsselung verwendet, bei der keine Operationen unterstützt werden.
 
-Legen Sie als **Verschlüsselungstyp** für die Spalte „SSN“ **Deterministisch** und für die Spalte „BirthDate“ **Zufällig** fest. Klicken Sie auf **Weiter** .
+Legen Sie als **Verschlüsselungstyp** für die Spalte „SSN“ **Deterministisch** und für die Spalte „BirthDate“ **Zufällig** fest. Klicken Sie auf **Weiter**.
 
 ![Spalten verschlüsseln](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,13 +171,13 @@ Dieses Tutorial zeigt, wie Sie Ihre Schlüssel in Azure Key Vault speichern.
 
 1. Wählen Sie **Azure Key Vault** aus.
 2. Wählen Sie in der Dropdownliste den gewünschten Schlüsseltresor aus.
-3. Klicken Sie auf **Weiter** .
+3. Klicken Sie auf **Weiter**.
 
 ![Hauptschlüsselkonfiguration](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Überprüfen
 
-Sie können die Spalten jetzt verschlüsseln oder ein PowerShell-Skript für die spätere Ausführung speichern. Wählen Sie für dieses Tutorial die Option **Jetzt fertig stellen** , und klicken Sie auf **Weiter** .
+Sie können die Spalten jetzt verschlüsseln oder ein PowerShell-Skript für die spätere Ausführung speichern. Wählen Sie für dieses Tutorial die Option **Jetzt fertig stellen** , und klicken Sie auf **Weiter**.
 
 ### <a name="summary"></a>Zusammenfassung
 
@@ -203,7 +203,7 @@ Nach dem Einrichten von Always Encrypted können Sie eine Anwendung erstellen, d
 > Für Ihre Anwendung müssen [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) -Objekte verwendet werden, wenn Klartextdaten an den Server mit Always Encrypted-Spalten übergeben werden. Das Übergeben von Literalwerten ohne SqlParameter-Objekte führt zu einer Ausnahme.
 
 1. Öffnen Sie Visual Studio und erstellen Sie eine neue C#- **Konsolenanwendung** (Visual Studio 2015 und früher) oder **Konsolenanwendung (.NET Framework)** (Visual Studio 2017 und höher). Stellen Sie sicher, dass Ihr Projekt auf **.NET Framework 4.6** oder höher festgelegt ist.
-2. Geben Sie dem Projekt den Namen **AlwaysEncryptedConsoleAKVApp** , und klicken Sie auf **OK** .
+2. Geben Sie dem Projekt den Namen **AlwaysEncryptedConsoleAKVApp** , und klicken Sie auf **OK**.
 3. Installieren Sie die NuGet-Pakete, indem Sie zu **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** navigieren.
 
 Führen Sie die zwei folgenden Codezeilen in der Paket-Manager-Konsole aus:
@@ -576,12 +576,12 @@ Sie sehen, dass die verschlüsselten Spalten keine Klartextdaten enthalten.
 
    ![Der Screenshot zeigt, dass die verschlüsselten Spalten keine Klartextdaten enthalten.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-Um mit SSMS auf Klartextdaten zuzugreifen, müssen Sie zuerst sicherstellen, dass der Benutzer über die erforderlichen Berechtigungen für den Azure Key Vault verfügt: *get* , *unwrapKey* und *verify* . Ausführliche Informationen finden Sie unter [Erstellen und Speichern von Spaltenhauptschlüsseln (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+Um mit SSMS auf Klartextdaten zuzugreifen, müssen Sie zuerst sicherstellen, dass der Benutzer über die erforderlichen Berechtigungen für den Azure Key Vault verfügt: *get* , *unwrapKey* und *verify*. Ausführliche Informationen finden Sie unter [Erstellen und Speichern von Spaltenhauptschlüsseln (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Fügen Sie dann während der Verbindung den Parameter *Column Encryption Setting=enabled* hinzu.
 
-1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server, und wählen Sie **Trennen** .
-2. Klicken Sie auf **Verbinden** > **Datenbank-Engine** , um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen** .
+1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server, und wählen Sie **Trennen**.
+2. Klicken Sie auf **Verbinden** > **Datenbank-Engine** , um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
 3. Klicken Sie auf **Zusätzliche Verbindungsparameter** , und geben Sie **Column Encryption Setting=enabled** ein.
 
     ![Der Screenshot zeigt die Registerkarte „Zusätzliche Verbindungsparameter“.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
