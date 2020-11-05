@@ -8,6 +8,9 @@
       "locale": "de-de",
       "monikers": [],
       "moniker_ranges": [],
+      "xref_query_tags": [
+        "/dotnet"
+      ],
       "open_to_public_contributors": true,
       "type_mapping": {
         "ZonePivotGroups": "Toc",
@@ -413,7 +416,7 @@
       "path_to_root": "spring-data-azure-cosmos-db-sql-tutorial",
       "url": "https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/",
       "branch": "main"
-    },
+    },    
     {
       "path_to_root": "azure-cosmos-spark",
       "url": "https://github.com/Azure/azure-cosmosdb-spark",
@@ -560,13 +563,13 @@
       "path_to_root": "azure-cosmos-java-sql-api-samples",
       "url": "https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples",
       "branch": "master"
-    },    
+    }, 
     {
       "path_to_root": "azure-cosmos-java-sql-app-example",
       "url": "https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example",
       "branch": "master"
-    },              
-    {  
+    },         
+    {
       "path_to_root": "azure-storage-snippets",
       "url": "https://github.com/azure-samples/AzureStorageSnippets",
       "branch": "master"
