@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 97a887b9fbb0edd4b1574d3e68399ea83fe11451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46164a5cd96941609c8a6484470fff863680f9d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326744"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096596"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Die Unterstützung von [Änderungsfeeds](change-feed.md) in der API für MongoDB von Azure Cosmos DB ist über die API für Änderungsdatenströme verfügbar. Mithilfe der API für Änderungsdatenströme können Ihre Anwendungen die Änderungen an der Sammlung oder an den Elementen in einem einzelnen Shard abrufen. Später können Sie auf der Grundlage der Ergebnisse weitere Maßnahmen ergreifen. Änderungen an den Elementen in der Sammlung werden in der Reihenfolge ihres Änderungszeitpunkts erfasst und die Sortierreihenfolge ist für die einzelnen Shardschlüssel sichergestellt.
 
@@ -146,7 +147,7 @@ Anders als beim Änderungsfeed in der SQL-API von Azure Cosmos DB gibt es keine 
 
 Die folgenden Fehlercodes und Meldungen werden bei der Verwendung von Änderungsdatenströmen unterstützt:
 
-* **HTTP-Fehlercode 16500**: Wenn der Änderungsdatenstrom gedrosselt wird, wird eine leere Seite zurückgegeben.
+* **HTTP-Fehlercode 16500** : Wenn der Änderungsdatenstrom gedrosselt wird, wird eine leere Seite zurückgegeben.
 
 * **NamespaceNotFound (OperationType Invalidate)** : Wenn Sie den Änderungsdatenstrom für die nicht existierende Sammlung ausführen oder die Sammlung verworfen wird, wird ein `NamespaceNotFound`-Fehler zurückgegeben. Da die `operationType`-Eigenschaft nicht im Ausgabedokument zurückgegeben werden kann, wird anstelle des Fehlers `operationType Invalidate` der Fehler `NamespaceNotFound` zurückgegeben.
 

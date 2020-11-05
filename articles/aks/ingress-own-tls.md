@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller, der Ihre eige
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 42e9f2128063caa13cf3fca1a28ec7e6465ba74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8ea245444fa5e8e042644bd3f7a34ed021ccd1d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855693"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131036"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers und Verwenden Ihrer eigenen TLS-Zertifikate in Azure Kubernetes Service (AKS)
 
@@ -81,11 +81,11 @@ Es wurden noch keine Eingangsregeln erstellt. Wenn Sie zu der öffentlichen IP-A
 
 ## <a name="generate-tls-certificates"></a>Generieren von TLS-Zertifikaten
 
-In diesem Artikel generieren wir ein selbstsigniertes Zertifikat mit `openssl`. Für die Produktion sollten Sie ein vertrauenswürdiges, signiertes Zertifikat über einen Anbieter oder Ihre eigene Zertifizierungsstelle anfordern. Im nächsten Schritt generieren Sie ein Kubernetes-*Geheimnis* unter Verwendung des TLS-Zertifikats und des privaten Schlüssels, der von OpenSSL generiert wurde.
+In diesem Artikel generieren wir ein selbstsigniertes Zertifikat mit `openssl`. Für die Produktion sollten Sie ein vertrauenswürdiges, signiertes Zertifikat über einen Anbieter oder Ihre eigene Zertifizierungsstelle anfordern. Im nächsten Schritt generieren Sie ein Kubernetes- *Geheimnis* unter Verwendung des TLS-Zertifikats und des privaten Schlüssels, der von OpenSSL generiert wurde.
 
 Im folgenden Beispiel wird ein RSA X509-Zertifikat (2048 Bit) namens *aks-ingress-tls.crt* generiert, das für 365 Tage gültig ist. Die private Schlüsseldatei heißt *aks-ingress-tls.key*. Für ein Kubernetes-TLS-Geheimnis sind beide Dateien erforderlich.
 
-Dieser Artikel verwendet den allgemeinen Antragstellernamen *demo.azure.com*, der nicht geändert werden muss. Geben Sie für die Produktion Ihre eigenen Organisationswerte für den `-subj`-Parameter an:
+Dieser Artikel verwendet den allgemeinen Antragstellernamen *demo.azure.com* , der nicht geändert werden muss. Geben Sie für die Produktion Ihre eigenen Organisationswerte für den `-subj`-Parameter an:
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -111,9 +111,9 @@ kubectl create secret tls aks-ingress-tls \
 
 Ein Eingangscontroller und ein Geheimnis für Ihr Zertifikat wurden konfiguriert. Nun führen wir zwei Demoanwendungen im AKS-Cluster-aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen Hallo-Welt-Anwendung auszuführen.
 
-Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt* -Anwendung auszuführen.
 
-Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -151,7 +151,7 @@ spec:
     app: aks-helloworld
 ```
 
-Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *ingress-demo.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -170,7 +170,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -278,7 +278,7 @@ $ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 [...]
 ```
 
-Durch den Parameter *-v* in unserem `curl`-Befehl werden ausführliche Informationen ausgegeben, einschließlich des erhaltenen TLS-Zertifikats. Während der CURL-Ausgabe können Sie überprüfen, ob Ihr eigenes TLS-Zertifikat verwendet wurde. Durch den Parameter *-k* wird die Seite auch dann weiterhin geladen, wenn wir ein selbstsigniertes Zertifikat verwenden. Das folgende Beispiel zeigt, dass das Zertifikat*issuer: CN=demo.azure.com; O=aks-ingress-tls* verwendet wurde:
+Durch den Parameter *-v* in unserem `curl`-Befehl werden ausführliche Informationen ausgegeben, einschließlich des erhaltenen TLS-Zertifikats. Während der CURL-Ausgabe können Sie überprüfen, ob Ihr eigenes TLS-Zertifikat verwendet wurde. Durch den Parameter *-k* wird die Seite auch dann weiterhin geladen, wenn wir ein selbstsigniertes Zertifikat verwenden. Das folgende Beispiel zeigt, dass das Zertifikat *issuer: CN=demo.azure.com; O=aks-ingress-tls* verwendet wurde:
 
 ```
 [...]
@@ -325,7 +325,7 @@ Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressource
 helm list --namespace ingress-basic
 ```
 
-Suchen Sie nach einer Chart mit dem Namen *nginx-ingress*, wie in der folgenden Beispielausgabe gezeigt:
+Suchen Sie nach einer Chart mit dem Namen *nginx-ingress* , wie in der folgenden Beispielausgabe gezeigt:
 
 ```
 $ helm list --namespace ingress-basic

@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129591"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
 In diesem Artikel werden die verschiedenen Möglichkeiten und Anforderungen für das Veröffentlichen eines VM-Angebots (Virtual Machine, virtueller Computer) im kommerziellen Marketplace erläutert. VM-Angebote sind transaktionsfähige Angebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden.
 
-Erstellen Sie, bevor Sie beginnen, [ein Konto für den kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), und stellen Sie sicher, dass Ihr Konto für das kommerzielle Marketplace-Programm registriert ist.
+Erstellen Sie, bevor Sie beginnen, [ein Konto für den kommerziellen Marketplace in Partner Center](./partner-center-portal/create-account.md), und stellen Sie sicher, dass Ihr Konto für das kommerzielle Marketplace-Programm registriert ist.
 
 ### <a name="technical-fundamentals"></a>Technische Grundlagen
 
@@ -70,7 +70,7 @@ Sie können Einladungen an E-Mail-Adressen mit Microsoft-Konto (MSA) oder in Azu
 
 Für VM-Angebote ist mindestens ein Plan erforderlich. Ein Plan definiert den Umfang und die Einschränkungen einer Lösung sowie ggf. die zugehörigen Preise. Sie können mehrere Pläne für Ihr Angebot erstellen, um verschiedene technische Optionen und Lizenzierungsoptionen sowie kostenlose Testversionen für Ihre Kunden bereitzustellen. Eine allgemeine Anleitung zu Plänen, einschließlich Preismodellen, kostenlosen Testversionen und privaten Plänen, finden Sie unter [Pläne und Preise für Angebote im kommerziellen Marketplace](plans-pricing.md). 
 
-VMs können vollständig kommerziell genutzt werden, wobei dafür das Modell der nutzungsbasierten Bezahlung oder das Bring-Your-Own-Licence-Lizenzierungsmodell (BYOL) verwendet wird. Microsoft hostet die kommerzielle Transaktion und führt für Sie die Abrechnung mit Ihrem Kunden durch. Sie haben den Vorteil, dass Sie die bevorzugte Zahlungsmethoden zwischen Ihrem Kunden und Microsoft, einschließlich des Enterprise Agreements, nutzen können. Weitere Informationen finden Sie unter [Transaktionsfunktionen im kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations).
+VMs können vollständig kommerziell genutzt werden, wobei dafür das Modell der nutzungsbasierten Bezahlung oder das Bring-Your-Own-Licence-Lizenzierungsmodell (BYOL) verwendet wird. Microsoft hostet die kommerzielle Transaktion und führt für Sie die Abrechnung mit Ihrem Kunden durch. Sie haben den Vorteil, dass Sie die bevorzugte Zahlungsmethoden zwischen Ihrem Kunden und Microsoft, einschließlich des Enterprise Agreements, nutzen können. Weitere Informationen finden Sie unter [Transaktionsfunktionen im kommerziellen Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
 > Der mit einem Enterprise Agreement verbundene Mindestverbrauch kann auf die Azure-Nutzung Ihrer VM angewendet werden, aber nicht auf Ihre Softwarelizenzgebühren.
@@ -84,7 +84,7 @@ Für VM-Angebote sind die folgenden Lizenzierungsoptionen verfügbar:
 | Lizenzierungsoption | Transaktionsprozess |
 | --- | --- |
 | Kostenlose Testversion | Bieten Sie Ihren Kunden eine kostenlose ein-, drei- oder sechsmonatige Testversion an. |
-| Testversion | Mit dieser Option können Ihre Kunden VMs ohne zusätzliche Kosten bewerten. Sie müssen keine bestehenden Azure-Kunden sein, um die Testversion nutzen zu können. Weitere Informationen finden Sie unter [Worum handelt es sich bei einer Testversion?](https://docs.microsoft.com/azure/marketplace/what-is-test-drive) |
+| Testversion | Mit dieser Option können Ihre Kunden VMs ohne zusätzliche Kosten bewerten. Sie müssen keine bestehenden Azure-Kunden sein, um die Testversion nutzen zu können. Weitere Informationen finden Sie unter [Worum handelt es sich bei einer Testversion?](./what-is-test-drive.md) |
 | BYOL | Die Option „Bring Your Own License“ ermöglicht es Ihren Kunden, bereits vorhandene Softwarelizenzen in Azure zu übernehmen.\* |
 | Nutzungsbasiert | Die nutzungsbasierte Bezahlung ermöglicht Ihren Kunden eine Zahlung auf Stundenbasis. |
 | Interaktive Demo  | Bieten Sie Ihren Kunden mit einer interaktiven Demo eine Einführung in Ihre Lösung. Der Vorteil dieser Option besteht darin, dass Sie eine Testversion anbieten können, ohne ein kompliziertes Setup für Ihre komplexe Lösung bereitstellen zu müssen. |
@@ -129,7 +129,7 @@ Wenn Sie sich für die Verwendung des Standardvertrags entscheiden, können Sie 
 Wenn Sie Ihr Angebot in Partner Center erstellen, wird die Registerkarte **Weiterverkauf über CSPs** angezeigt. Diese Option ermöglicht es Partnern, die am Microsoft Cloud Solution Provider-Programm (CSP) teilnehmen, Ihre VM als Teil eines Bundleangebots weiterzuverkaufen. Alle BYOL-Pläne (Bring-Your-Own-License) werden im Programm automatisch aktiviert. Sie können auch Ihre Nicht-BYOL-Pläne aktivieren. Weitere Informationen finden Sie unter [Cloud-Lösungsanbieter-Programm](cloud-solution-providers.md). 
 
 > [!NOTE]
-> Die Option zur Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar. Weitere Informationen zur Vermarktung Ihres Angebots über Microsoft CSP-Partnerkanäle finden Sie unter [**Cloud Solution Provider-Programm**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+> Die Option zur Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar. Weitere Informationen zur Vermarktung Ihres Angebots über Microsoft CSP-Partnerkanäle finden Sie unter [**Cloud Solution Provider-Programm**](./cloud-solution-providers.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

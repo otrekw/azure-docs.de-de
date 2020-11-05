@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7008c305525c7564e57fd225e961b462bf6939f2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275417"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130832"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Support für den kommerziellen Microsoft-Marketplace
 
@@ -32,7 +32,7 @@ Haben Sie Fragen dazu, wie Sie als Publisher für den kommerziellen Microsoft-Ma
 
 | Supportkanal | BESCHREIBUNG |  
 |:--- |:--- |  
-| MSDN-Foren: Marketplace auf der [Frageseite „Microsoft Q&A“](https://docs.microsoft.com/answers/products/azure) | Microsoft Developer Network-Forum. |  
+| MSDN-Foren: Marketplace auf der [Frageseite „Microsoft Q&A“](/answers/products/azure) | Microsoft Developer Network-Forum. |  
 | Stack Overflow: Azure unter [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow-Umgebung für Lösungen und Antworten auf allgemeine Fragen zu Azure Marketplace<ul> <li>Stack Overflow: Azure Marketplace unter [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager unter [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtuelle Computer in Azure unter [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Container in Azure unter [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>Marketingressourcen  

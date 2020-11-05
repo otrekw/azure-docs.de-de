@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b89b2b81c4be25f42d67d6947ef845149f1c10b4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 21e69cf8d90f004d397778c2eeb6b5f774196574
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474800"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098738"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-Sicherheitsbaseline für Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Die Azure-Sicherheitsbaseline für Cosmos DB enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
@@ -842,7 +843,7 @@ Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/inde
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden** : Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden** : Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung** : Nicht verfügbar
 
@@ -878,7 +879,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden** : Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden** : Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung** : Nicht verfügbar
 

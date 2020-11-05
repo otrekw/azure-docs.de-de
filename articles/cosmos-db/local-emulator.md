@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482620"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088742"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Installieren und Verwenden des Azure Cosmos-Emulators für lokale Entwicklung und Tests
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Der Azure Cosmos-Emulator stellt eine lokale Umgebung bereit, die zu Entwicklungszwecken den Dienst Azure Cosmos DB emuliert. Mit dem Azure Cosmos-Emulator können Sie Ihre Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement erstellen zu müssen oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktionsweise der Anwendung im Azure Cosmos-Emulator zufrieden sind, können Sie auf ein Azure Cosmos-Konto in der Cloud umsteigen. In diesem Artikel erfahren Sie, wie der Azure Cosmos DB-Emulator für Windows, Linux, macOS und in Docker-Umgebungen unter Windows installiert und verwendet wird.
 
@@ -86,13 +87,13 @@ Der Azure Cosmos-Emulator wird standardmäßig am Speicherort `C:\Program Files\
 
 Nach Start des Emulators wird im Infobereich der Windows-Taskleiste ein Symbol angezeigt. Darüber wird der Daten-Explorer von Azure Cosmos automatisch an der URL `https://localhost:8081/_explorer/index.html` in Ihrem Browser geöffnet.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Wählen Sie die Schaltfläche „Start“ aus, oder drücken Sie die WINDOWS-TASTE. Beginnen Sie mit der Eingabe von „Azure Cosmos-Emulator“, und wählen Sie den Emulator in der Liste der Anwendungen aus.":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Benachrichtigung des lokalen Azure Cosmos DB-Emulators in der Taskleiste":::
 
 Sie können den Emulator auch über die Befehlszeile oder PowerShell-Befehle starten und beenden. Weitere Informationen finden Sie im Artikel mit der [Referenz zum Befehlszeilentool](emulator-command-line-parameters.md).
 
 Der Azure Cosmos-Emulator wird standardmäßig auf dem lokalen Computer (localhost) ausgeführt und lauscht an Port 8081. Die Adresse wird als `https://localhost:8081/_explorer/index.html` angezeigt. Wenn Sie den Explorer schließen und ihn später erneut öffnen möchten, können Sie entweder die URL in Ihrem Browser öffnen oder (wie unten gezeigt) über den Azure Cosmos-Emulator im Windows-Taskleistensymbol starten.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Wählen Sie die Schaltfläche „Start“ aus, oder drücken Sie die WINDOWS-TASTE. Beginnen Sie mit der Eingabe von „Azure Cosmos-Emulator“, und wählen Sie den Emulator in der Liste der Anwendungen aus.":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Startprogramm für den Daten-Explorer des lokalen Azure Cosmos-Emulators":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>Verwenden des Emulators in Docker für Windows
 
@@ -295,7 +296,7 @@ Führen Sie in einer Mac-Umgebung die folgenden Schritte aus:
 
 1. Wählen Sie im Kontextmenü für dieses Element die Option *Element abrufen* und anschließend unter *Vertrauensstellung* > *Bei Verwendung dieses Zertifikats* die Option *Immer vertrauen* aus. 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Wählen Sie die Schaltfläche „Start“ aus, oder drücken Sie die WINDOWS-TASTE. Beginnen Sie mit der Eingabe von „Azure Cosmos-Emulator“, und wählen Sie den Emulator in der Liste der Anwendungen aus.":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Auswählen der Option „Element abrufen“ im Kontextmenü für dieses Element und anschließendes Auswählen von „Immer vertrauen“ unter „Vertrauensstellung“ > „Bei Verwendung dieses Zertifikats“":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>Option 2: Deaktivieren der SSL-Überprüfung in der Anwendung
 
@@ -462,7 +463,7 @@ Führen Sie die folgenden Schritte aus, um den Emulator zu deinstallieren:
 
 1. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und wählen Sie das Ergebnis **Apps & Features (Systemeinstellungen)** aus.
 
-1. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator** . Wählen Sie den Eintrag aus, und klicken Sie auf **Deinstallieren** . Bestätigen Sie den Vorgang, und wählen Sie erneut **Deinstallieren** aus.
+1. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator**. Wählen Sie den Eintrag aus, und klicken Sie auf **Deinstallieren**. Bestätigen Sie den Vorgang, und wählen Sie erneut **Deinstallieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

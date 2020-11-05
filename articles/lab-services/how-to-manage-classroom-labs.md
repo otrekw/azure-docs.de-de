@@ -3,12 +3,12 @@ title: Verwalten von Classroom-Labs in Azure Lab Services | Microsoft-Dokumentat
 description: Erfahren Sie, wie Sie ein Classroom-Lab erstellen, alle Classroom-Labs anzeigen, den Registrierungslink für einen Lab-Benutzer freigeben oder ein Lab löschen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dd05b13a34e2be1a9d6bdc011a9aa24e79bc8dd1
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251676"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148370"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -19,7 +19,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 
 1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). Internet Explorer 11 wird noch nicht unterstützt. 
-1. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
+1. Wählen Sie **Anmelden** , und geben Sie Ihre Anmeldeinformationen ein. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 1. Wählen Sie **Neues Lab** aus. 
     
     ![Erstellen eines Classroom-Labs](./media/tutorial-setup-classroom-lab/new-lab-button.png)
@@ -44,12 +44,12 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
         > Notieren Sie sich den Benutzernamen und das Kennwort. Diese Angaben werden nicht noch einmal angezeigt.
     3. Deaktivieren Sie die Option **Use same password for all virtual machines** (Dasselbe Kennwort für alle virtuellen Computer verwenden), wenn Sie möchten, dass die Kursteilnehmer ihre eigenen Kennwörter festlegen. Dieser Schritt ist **optional**. 
 
-        Ein Lehrer/Dozent kann auch dasselbe Kennwort für alle VMs im Lab verwenden, oder den Kursteilnehmern erlauben, die Kennwörter für ihre virtuellen Computer selbst festzulegen. Standardmäßig ist diese Einstellung für alle Windows- und Linux-Images mit Ausnahme von Ubuntu aktiviert. Bei der Auswahl einer **Ubuntu**-VM ist diese Einstellung deaktiviert, sodass die Kursteilnehmer bei der ersten Anmeldung aufgefordert werden, ein Kennwort festzulegen.  
+        Ein Lehrer/Dozent kann auch dasselbe Kennwort für alle VMs im Lab verwenden, oder den Kursteilnehmern erlauben, die Kennwörter für ihre virtuellen Computer selbst festzulegen. Standardmäßig ist diese Einstellung für alle Windows- und Linux-Images mit Ausnahme von Ubuntu aktiviert. Bei der Auswahl einer **Ubuntu** -VM ist diese Einstellung deaktiviert, sodass die Kursteilnehmer bei der ersten Anmeldung aufgefordert werden, ein Kennwort festzulegen.  
 
         ![Fenster „Neues Lab“](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. Wählen Sie dann **Weiter** auf der Seite **VM-Anmeldeinformationen** aus. 
 5. Führen Sie auf der Seite **Labrichtlinien** die folgenden Schritte aus:
-    1. Geben Sie die Anzahl von Stunden ein, die jedem Benutzer außerhalb der geplanten Zeit für das Lab zugeteilt wird (**Kontingent pro Benutzer**). 
+    1. Geben Sie die Anzahl von Stunden ein, die jedem Benutzer außerhalb der geplanten Zeit für das Lab zugeteilt wird ( **Kontingent pro Benutzer** ). 
     2. Geben Sie für die Option **Richtlinie zum Herunterfahren** an, ob der virtuelle Computer automatisch heruntergefahren werden soll, wenn der Benutzer die Verbindung trennt. Sie können auch angeben, wie lange der virtuelle Computer vor dem automatischen Herunterfahren darauf warten soll, dass der Benutzer die Verbindung wiederherstellt. Weitere Informationen finden Sie unter [Aktivieren des automatischen Herunterfahrens von VMs beim Trennen](how-to-enable-shutdown-disconnect.md).
     3. Wählen Sie anschließend **Fertig stellen** aus. 
 
@@ -61,7 +61,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 8. Führen Sie auf der Seite **Vorlage** die folgenden Schritte aus: Diese Schritte sind für das Tutorial **optional**.
 
     1. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder über einen Remotedesktop mit grafischer Benutzeroberfläche hergestellt werden soll.  Zur Verwendung eines Remotedesktops mit grafischer Benutzeroberfläche ist ein zusätzliches Setup erforderlich. Weitere Informationen finden Sie unter [Aktivieren eines Remotedesktops mit GUI für Linux-VMs](how-to-use-remote-desktop-linux-student.md).
-    1. Klicken Sie auf **Kennwort zurücksetzen**, um das Kennwort für die VM zurückzusetzen. 
+    1. Klicken Sie auf **Kennwort zurücksetzen** , um das Kennwort für die VM zurückzusetzen. 
     1. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
     1. **Beenden** Sie den virtuellen Computer.  
     1. Geben Sie eine **Beschreibung** für die Vorlage ein.
@@ -77,7 +77,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 11. Auf der Seite wird der **Veröffentlichungsstatus** der Vorlage angezeigt. Dieser Vorgang kann bis zu einer Stunde dauern. 
 
     ![Veröffentlichen der Vorlage – Status](./media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. Wechseln Sie zur Seite **VM-Pool**, indem Sie im linken Menü die Option „Virtuelle Computer“ bzw. die entsprechende Kachel auswählen. Vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Teilnehmern starten lassen. 
+12. Wechseln Sie zur Seite **VM-Pool** , indem Sie im linken Menü die Option „Virtuelle Computer“ bzw. die entsprechende Kachel auswählen. Vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Teilnehmern starten lassen. 
 
     ![Virtuelle Computer im Status „Beendet“](./media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -103,22 +103,26 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 > [!NOTE]
 > Beim Erstellen eines Classroom-Labs werden möglicherweise einige dieser VM-Größen nicht in der Liste angezeigt. Die Liste wird basierend auf der aktuellen Kapazität des Standorts des Labs aufgefüllt. Wenn der Ersteller des Lab-Kontos [Lab-Erstellern das Auswählen eines Standorts für das Lab gestattet](allow-lab-creator-pick-lab-location.md), können Sie versuchen, einen anderen Ort für das Lab auszuwählen, und dann nachsehen, ob die VM-Größe verfügbar ist. 
 
-
 ## <a name="view-all-classroom-labs"></a>Anzeigen aller Classroom-Labs
+
 1. Navigieren Sie zum [Azure Lab Services-Portal](https://labs.azure.com).
-2. Wählen Sie **Anmelden**. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
-3. Stellen Sie sicher, dass alle Labs im ausgewählten Lab-Konto angezeigt werden. Auf der Kachel des Labs sehen Sie die Anzahl der virtuellen Computer im Lab und das Kontingent für jeden Benutzer (außerhalb der geplanten Zeit).
+1. Wählen Sie **Anmelden**. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
+
+    [!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+1. Stellen Sie sicher, dass alle Labs im ausgewählten Lab-Konto angezeigt werden. Auf der Kachel des Labs sehen Sie die Anzahl der virtuellen Computer im Lab und das Kontingent für jeden Benutzer (außerhalb der geplanten Zeit).
 
     ![Alle Labs](./media/how-to-manage-classroom-labs/all-labs.png)
-3. Verwenden Sie die Dropdownliste im oberen Bereich, um ein anderes Lab-Konto auszuwählen. Die Labs im ausgewählten Lab-Konto werden angezeigt. 
+1. Verwenden Sie die Dropdownliste im oberen Bereich, um ein anderes Lab-Konto auszuwählen. Die Labs im ausgewählten Lab-Konto werden angezeigt. 
 
 ## <a name="delete-a-classroom-lab"></a>Löschen eines Classroom-Labs
+
 1. Wählen Sie auf der Kachel für das Lab die drei Punkte (...) in der Ecke und dann **Löschen** aus. 
 
     ![Schaltfläche „Löschen“](./media/how-to-manage-classroom-labs/delete-button.png)
-3. Wählen Sie im Dialogfeld **Lab löschen** den Befehl **Löschen** aus, um mit dem Löschvorgang fortzufahren. 
+1. Wählen Sie im Dialogfeld **Lab löschen** den Befehl **Löschen** aus, um mit dem Löschvorgang fortzufahren. 
 
 ## <a name="switch-to-another-classroom-lab"></a>Zu einem anderen Classroom-Lab wechseln
+
 Um aus dem aktuellen zu einem anderen Classroom-Lab zu wechseln, treffen Sie im Lab-Konto oben in der Dropdownliste mit den Labs eine Wahl.
 
 ![Wählen Sie das Lab in der Dropdownliste oben aus.](./media/how-to-manage-classroom-labs/switch-lab.png)

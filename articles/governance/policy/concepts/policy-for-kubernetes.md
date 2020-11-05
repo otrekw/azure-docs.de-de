@@ -3,12 +3,12 @@ title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676706"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146295"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -25,7 +25,7 @@ Von Azure Policy für Kubernetes werden folgende Clusterumgebungen unterstützt:
 - [AKS-Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Die Add-Ons für AKS-Engine und Kubernetes mit Arc-Aktivierung sind in der **Vorschauversion** verfügbar. Azure Policy für Kubernetes unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes** . Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_ . Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
+> Die Add-Ons für AKS-Engine und Kubernetes mit Arc-Aktivierung sind in der **Vorschauversion** verfügbar. Azure Policy für Kubernetes unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes**. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ## <a name="overview"></a>Übersicht
 
@@ -37,7 +37,7 @@ Gehen Sie wie folgt vor, um Azure Policy zu aktivieren und mit Ihrem Kubernetes-
    - [AKS-Engine](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > Informationen zu häufigen Problemen bei der Installation finden Sie unter [Problembehandlung – Azure Policy-Add-On](../troubleshoot/general.md#add-on-installation-errors).
+   > Informationen zu häufigen Problemen bei der Installation finden Sie unter [Problembehandlung – Azure Policy-Add-On](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors).
 
 1. [Machen Sie sich mit der Azure Policy-Sprache für Kubernetes vertraut.](#policy-language)
 
@@ -62,7 +62,7 @@ Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On f
 Die folgenden Einschränkungen gelten nur für das Azure Policy-Add-On für AKS:
 
 - Die [AKS-Podsicherheitsrichtlinie](../../../aks/use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. Weitere Informationen hierzu finden Sie unter [Einschränkungen im Hinblick auf die AKS-Podsicherheit](../../../aks/use-pod-security-on-azure-policy.md#limitations).
-- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_ , _gatekeeper-system_ und _aks-periscope_ .
+- Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_ , _gatekeeper-system_ und _aks-periscope_.
 
 ## <a name="recommendations"></a>Empfehlungen
 
@@ -93,7 +93,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
 
    - Azure-Portal:
 
-     Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights** . Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLI:
 
@@ -107,7 +107,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
      az provider register --namespace Microsoft.PolicyInsights
      ```
 
-1. Wenn Richtliniendefinitionen der eingeschränkten Vorschauversion installiert wurden, entfernen Sie das Add-On in Ihrem AKS-Cluster auf der Seite **Richtlinien** mithilfe der Schaltfläche **Deaktivieren** .
+1. Wenn Richtliniendefinitionen der eingeschränkten Vorschauversion installiert wurden, entfernen Sie das Add-On in Ihrem AKS-Cluster auf der Seite **Richtlinien** mithilfe der Schaltfläche **Deaktivieren**.
 
 1. Der AKS-Cluster muss die Version  _1.14_ oder höher aufweisen. Verwenden Sie das folgende Skript, um Ihre AKS-Clusterversion zu überprüfen:
 
@@ -217,7 +217,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 
-1. Weisen Sie dem Kubernetes-Cluster mit Azure Arc-Aktivierung die Rolle „Policy Insights Data Writer (Preview)“ (Policy Insights-Datenschreiber (Vorschau)) zu. Ersetzen Sie `<subscriptionId>` durch Ihre Abonnement-ID, `<rg>` durch die Ressourcengruppe des Kubernetes-Clusters mit Azure Arc-Aktivierung und `<clusterName>` durch den Namen des Kubernetes-Clusters mit Azure Arc-Aktivierung. Erfassen Sie die zurückgegebenen Werte für _appId_ , _password_ und _tenant_ . Sie werden für die Installationsschritte benötigt.
+1. Weisen Sie dem Kubernetes-Cluster mit Azure Arc-Aktivierung die Rolle „Policy Insights Data Writer (Preview)“ (Policy Insights-Datenschreiber (Vorschau)) zu. Ersetzen Sie `<subscriptionId>` durch Ihre Abonnement-ID, `<rg>` durch die Ressourcengruppe des Kubernetes-Clusters mit Azure Arc-Aktivierung und `<clusterName>` durch den Namen des Kubernetes-Clusters mit Azure Arc-Aktivierung. Erfassen Sie die zurückgegebenen Werte für _appId_ , _password_ und _tenant_. Sie werden für die Installationsschritte benötigt.
 
    - Azure CLI
 
@@ -409,9 +409,9 @@ Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitio
 
 1. Festlegen von **Parameterwerten**
 
-   - Geben Sie die Liste der Namespaces im Parameter **Namespaceausschlüsse** an, um Kubernetes-Namespaces aus der Richtlinienauswertung auszuschließen. Es wird empfohlen, Folgendes auszuschließen: _kube-system_ , _gatekeeper-system_ und _azure-arc_ .
+   - Geben Sie die Liste der Namespaces im Parameter **Namespaceausschlüsse** an, um Kubernetes-Namespaces aus der Richtlinienauswertung auszuschließen. Es wird empfohlen, Folgendes auszuschließen: _kube-system_ , _gatekeeper-system_ und _azure-arc_.
 
-1. Klicken Sie auf **Überprüfen + erstellen** .
+1. Klicken Sie auf **Überprüfen + erstellen**.
 
 Verwenden Sie alternativ [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](../assign-policy-portal.md), um eine Kubernetes-Richtlinie zu finden und zuzuweisen. Suchen Sie nach einer Kubernetes-Richtliniendefinition anstelle des Musters „audit vms“.
 

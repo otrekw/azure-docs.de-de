@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9f58d03e2cfa7e1ab9c359cdb6600c42c8970a9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370592"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125800"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -71,7 +71,7 @@ So richten Sie Ihr Auszahlungskonto ein
 1. Navigieren Sie in Partner Center zur [Übersichtsseite des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 2. Wählen Sie im Abschnitt „Profil“ neben **Auszahlungsprofil** die Option **Aktualisieren** aus.
 3. **Zahlungsmethode auswählen** : Bankkonto oder PayPal.
-4. **Zahlungsinformationen hinzufügen** : Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. \* Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrer Marktregion unterstützt wird, finden Sie unter [PayPal-Informationen](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+4. **Zahlungsinformationen hinzufügen** : Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. \* Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrer Marktregion unterstützt wird, finden Sie unter [PayPal-Informationen](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Wenn Sie Ihr Zahlungskonto ändern, kann dies dazu führen, dass sich Ihre Zahlungen um maximal einen Zahlungszyklus verzögern. Diese Verzögerung tritt auf, weil wir die Kontoänderung überprüfen müssen. Dies ist der gleiche Vorgang wie bei der ersten Einrichtung des Auszahlungskontos. Nachdem das Konto bestätigt wurde, erhalten Sie trotzdem den vollen Betrag. Zahlungen, die für den aktuellen Zahlungszyklus fällig sind, werden im nächsten Zyklus hinzugefügt.  
@@ -98,13 +98,13 @@ Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die e
 
 Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begünstigungen durch Steuerabkommen profitieren. Diese Begünstigungen unterschieden sich je nach Land/Region und ermöglichen Ihnen unter Umständen, den Steuerbetrag zu reduzieren, den Microsoft einbehält. Begünstigungen durch Steuerabkommen können Sie in Anspruch nehmen, indem Sie Teil II des Formulars W-8BEN ausfüllen. Es wird empfohlen, mit den entsprechenden Ressourcen in Ihrem Land oder in Ihrer Region zu kommunizieren, um zu ermitteln, ob diese Begünstigungen für Sie infrage kommen.
 
-[Erfahren Sie mehr über Steuerdetails für Entwickler von Windows-Apps/-Spielen und Azure Marketplace-Herausgeber](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
+[Erfahren Sie mehr über Steuerdetails für Entwickler von Windows-Apps/-Spielen und Azure Marketplace-Herausgeber](/windows/uwp/publish/tax-details-for-paid-apps).
 
 #### <a name="payout-hold-status"></a>Aufbewahrungsstatus für Auszahlungen
 
 Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Sie können Ihre Auszahlungen jedoch zurückhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Haltesperre aufheben.
 
-Um Ihre Zahlungen zurückzuhalten, wechseln Sie zu **Kontoeinstellungen** . Stellen Sie unter **Finanzielle Details** im Abschnitt **Aufbewahrungsstatus für Auszahlungen** den Schieberegler auf **Ein** . Sie können den Aufbewahrungsstatus für Auszahlungen jederzeit ändern, aber beachten Sie, dass sich Ihre Entscheidung auf die nächste monatliche Auszahlung auswirkt. Wenn Sie zum Beispiel die Auszahlung für April zurückhalten möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende März auf **Ein** fest.
+Um Ihre Zahlungen zurückzuhalten, wechseln Sie zu **Kontoeinstellungen**. Stellen Sie unter **Finanzielle Details** im Abschnitt **Aufbewahrungsstatus für Auszahlungen** den Schieberegler auf **Ein**. Sie können den Aufbewahrungsstatus für Auszahlungen jederzeit ändern, aber beachten Sie, dass sich Ihre Entscheidung auf die nächste monatliche Auszahlung auswirkt. Wenn Sie zum Beispiel die Auszahlung für April zurückhalten möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende März auf **Ein** fest.
 
 Sobald Sie den Aufbewahrungsstatus für Auszahlungen auf **Ein** festgelegt haben, werden alle Auszahlungen zurückgehalten, bis Sie den Schieberegler wieder auf **Aus** festlegen. In diesem Fall werden Sie in den nächsten monatlichen Auszahlungszyklus eingeschlossen (vorausgesetzt, alle geltenden Zahlungsschwellenwerte sind erfüllt). Wenn Sie Ihre Auszahlungen zum Beispiel zurückgehalten haben, aber eine Auszahlung im Juni veranlassen möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende Mai auf **Aus** fest.
 
@@ -113,7 +113,7 @@ Sobald Sie den Aufbewahrungsstatus für Auszahlungen auf **Ein** festgelegt habe
 
 ### <a name="devices"></a>Geräte
 
-Der Einstellungen für die Geräteverwaltung gelten nur für UWP-Veröffentlichungen. [Weitere Informationen](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)
+Der Einstellungen für die Geräteverwaltung gelten nur für UWP-Veröffentlichungen. [Weitere Informationen](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)
 
 ### <a name="tracking-guids"></a>Nachverfolgungs-GUIDs
 
@@ -174,7 +174,7 @@ Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigu
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen** ), und wählen Sie **Benutzer hinzufügen** und dann **Neue Benutzer erstellen** aus.
 1. Geben Sie einen Vornamen, einen Nachnamen und einen Benutzernamen für jeden neuen Benutzer ein. 
-1. Wenn Sie dem neuen Benutzer ein globales Administratorkonto im Verzeichnis Ihrer Organisation zuweisen möchten, aktivieren Sie das Kontrollkästchen **Diesen Benutzer als globalen Administrator in Azure AD festlegen, mit vollständiger Kontrolle über alle Verzeichnisressourcen** . Dadurch erhält der Benutzer vollständigen Zugriff auf alle Administratorfunktionen in Ihrem Unternehmens-Azure AD. Dieser Benutzer kann dann Benutzer im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens hinzufügen und verwalten, allerdings nicht in Partner Center, es sei denn, Sie gewähren dem Konto die entsprechende Rolle/Berechtigungen.
+1. Wenn Sie dem neuen Benutzer ein globales Administratorkonto im Verzeichnis Ihrer Organisation zuweisen möchten, aktivieren Sie das Kontrollkästchen **Diesen Benutzer als globalen Administrator in Azure AD festlegen, mit vollständiger Kontrolle über alle Verzeichnisressourcen**. Dadurch erhält der Benutzer vollständigen Zugriff auf alle Administratorfunktionen in Ihrem Unternehmens-Azure AD. Dieser Benutzer kann dann Benutzer im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens hinzufügen und verwalten, allerdings nicht in Partner Center, es sei denn, Sie gewähren dem Konto die entsprechende Rolle/Berechtigungen.
 1. Wenn Sie das Kontrollkästchen aktiviert haben, um **diesen Benutzer als globalen Administrator festzulegen** , müssen Sie eine **E-Mail-Adresse zur Kennwortwiederherstellung** für den Benutzer angeben, damit dieser bei Bedarf sein Kennwort wiederherstellen kann.
 1. Wählen Sie im Abschnitt **Gruppenmitgliedschaft** alle Gruppen aus, zu denen der neue Benutzer gehören soll.
 1. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für den Benutzer an.
@@ -196,7 +196,7 @@ Die von Ihnen eingeladenen Benutzer erhalten eine E-Mail-Einladung zur Teilnahme
 Wenn Sie eine Einladung erneut senden möchten, wechseln Sie auf die Seite **Benutzer** , suchen Sie die Einladung in der Benutzerliste, und wählen Sie die betreffende E-Mail-Adresse aus (oder den Text *Die Einladung steht aus* ). Wählen Sie dann am unteren Rand der Seite **Einladung erneut senden** aus.
 
 > [!NOTE]
-> Wenn Ihre Organisation [Verzeichnisintegration](https://go.microsoft.com/fwlink/p/?LinkID=724033) verwendet, um den lokalen Verzeichnisdienst mit Ihrem Azure AD zu synchronisieren, können Sie keine neuen Benutzer, Gruppen oder Azure AD-Anwendungen in Partner Center erstellen. Diese müssen Sie (oder ein anderer Administrator in Ihrem lokalen Verzeichnis) direkt im lokalen Verzeichnis erstellen, bevor Sie sie im Partner Center anzeigen und hinzufügen können.
+> Wenn Ihre Organisation [Verzeichnisintegration](/previous-versions/azure/azure-services/jj573653(v=azure.100)) verwendet, um den lokalen Verzeichnisdienst mit Ihrem Azure AD zu synchronisieren, können Sie keine neuen Benutzer, Gruppen oder Azure AD-Anwendungen in Partner Center erstellen. Diese müssen Sie (oder ein anderer Administrator in Ihrem lokalen Verzeichnis) direkt im lokalen Verzeichnis erstellen, bevor Sie sie im Partner Center anzeigen und hinzufügen können.
 
 ### <a name="remove-a-user"></a>Benutzer entfernen
 
@@ -261,7 +261,7 @@ So fügen Sie Anwendungen hinzu, die bereits im Azure Active Directory Ihres Unt
 
 ### <a name="add-new-azure-ad-applications"></a>Hinzufügen neuer Azure AD-Anwendungen
 
-Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren möchten, erstellen Sie dieses im Abschnitt **Benutzer** . Hierdurch wird ein neues Konto im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens und nicht nur in Ihrem Partner Center-Konto erstellt. Wenn Sie diese Azure AD-Anwendung in erster Linie für die Partner Center-Authentifizierung verwenden und die Benutzer keinen direkten Zugriff benötigen, können Sie alle gültigen Adressen für die **Antwort-URL** und den **App-ID-URI** eingeben, sofern diese Werte noch nicht von einer anderen Azure AD-Anwendung in Ihrem Verzeichnis verwendet werden.
+Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren möchten, erstellen Sie dieses im Abschnitt **Benutzer**. Hierdurch wird ein neues Konto im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens und nicht nur in Ihrem Partner Center-Konto erstellt. Wenn Sie diese Azure AD-Anwendung in erster Linie für die Partner Center-Authentifizierung verwenden und die Benutzer keinen direkten Zugriff benötigen, können Sie alle gültigen Adressen für die **Antwort-URL** und den **App-ID-URI** eingeben, sofern diese Werte noch nicht von einer anderen Azure AD-Anwendung in Ihrem Verzeichnis verwendet werden.
 
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen** ) die Option **Azure AD-Anwendungen hinzufügen** aus.
 2. Wählen Sie auf der nächsten Seite **Neue Azure AD-Anwendung** aus.
@@ -302,7 +302,7 @@ Im Programm für den kommerziellen Marketplace in Partner Center können den Ben
 > [!NOTE]
 > Für das Programm „Kommerzieller Marketplace“ werden die Rollen „Globaler Administrator“, „Mitwirkender im Geschäftsbereich“, „Mitwirkender im Finanzbereich“ und „Händler“ nicht verwendet. Das Zuweisen dieser Rollen zu Benutzern besitzt keine Auswirkungen. Nur die Rollen „Manager“ und „Developer“ erteilen Benutzern Berechtigungen.
 
-Weitere Informationen zum Verwalten von Rollen und Berechtigungen in anderen Bereichen von Partner Center, zum Beispiel Azure Active Directory (AD), Cloud Solution Provider (CSP), Control Panel Vendor (CPV), Gastbenutzer oder Microsoft Partner Network (MPN) finden Sie unter [Zuweisen von Rollen und Berechtigungen in Partner Center](https://docs.microsoft.com/partner-center/permissions-overview).
+Weitere Informationen zum Verwalten von Rollen und Berechtigungen in anderen Bereichen von Partner Center, zum Beispiel Azure Active Directory (AD), Cloud Solution Provider (CSP), Control Panel Vendor (CPV), Gastbenutzer oder Microsoft Partner Network (MPN) finden Sie unter [Zuweisen von Rollen und Berechtigungen in Partner Center](/partner-center/permissions-overview).
 
 ## <a name="manage-tenants"></a>Verwalten von Mandanten
 

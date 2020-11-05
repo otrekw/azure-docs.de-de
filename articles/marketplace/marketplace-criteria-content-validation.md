@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75bf1e3d81b466098884a354826019aa94a94174
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484271"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126106"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 | 4 |  Beschreibung des Angebots | <ul><li> Umfasst 2 bis 3 Absätze.</li><li>Das Lösungsangebot ist auf einen Blick leicht verständlich.</li><li>Ist frei von Rechtschreib- und Grammatikfehlern.</li><li>Ist ausführlich und enthält die Zielgruppe, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen).</li><li>Ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die einfach zu verstehen sind.</li></ul> | <ul><li> Die Zielbranche ist kurz beschrieben (sofern relevant).</li><li>Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem einzigen Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne lange Absätze lesen zu müssen.</li><li>Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden. Die Beschreibung liest sich wie eine Autobroschüre. Das heißt, sie ist umfassend und beschreibt das Angebot in einfachen Worten ohne technischen Fachjargon. | 
 | 5 | Kategorien und Branchen | <ul><li>Kategorien und Unterkategorien müssen den Angebotsfunktionen entsprechen. </li><li>Wählen Sie keine Kategorien/Unterkategorien aus, die nicht Ihren Angebotsfunktionen entsprechen. </li></ul> | <ul><li>Wählen Sie bis zu zwei Kategorien aus, einschließlich einer primären und einer sekundären Kategorie (optional).</li><li>Wählen Sie bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie aus. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin unter der ausgewählten Kategorie auffindbar.</li></ul> |
 | 6 | Bilder | <ul><li>Die Anforderungen für Bilder sind in Partner Center aufgeführt.</li><li>Text im Screenshot ist lesbar, und das Bild ist scharf. | Das Lösungsangebot ist auf einen Blick leicht verständlich. |
-| 7 | Videos | <ul><li>Videos sind nicht erforderlich. Werden Videos bereitgestellt, müssen sie sich fehlerfrei wiedergeben lassen.</li><li>In Videos darf nicht auf Konkurrenzunternehmen verwiesen werden, *es sei denn*, es handelt sich um eine Migrationslösung. |<ul><li>Idealerweise beträgt die Länge 3 Minuten oder mehr.</li><li>Das Lösungsangebot wird im Videoinhalt leicht verständlich vorgestellt.</li><li>Funktionen der Lösung werden in einer Demo dargestellt. |
+| 7 | Videos | <ul><li>Videos sind nicht erforderlich. Werden Videos bereitgestellt, müssen sie sich fehlerfrei wiedergeben lassen.</li><li>In Videos darf nicht auf Konkurrenzunternehmen verwiesen werden, *es sei denn* , es handelt sich um eine Migrationslösung. |<ul><li>Idealerweise beträgt die Länge 3 Minuten oder mehr.</li><li>Das Lösungsangebot wird im Videoinhalt leicht verständlich vorgestellt.</li><li>Funktionen der Lösung werden in einer Demo dargestellt. |
 | 8 | Listungsstatus (Listungsoptionen) | <ul><li>Es muss eine der folgenden Bezeichnungen verwendet werden: <ul><li>*Kontaktformular*</li><li>*Kostenlose Testversion*/*Testversion jetzt anfordern*/*Testversion starten*/*Testversion*</li><li>*Jetzt kaufen*/*Jetzt anfordern*</li></ul></ul> | Die nächsten Schritte sind für den Kunden leicht zu verstehen: <ol><li>Testversion ausprobieren</li><li>Jetzt kaufen</li><li>Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termine für Proofs of Concept, Bewertungen oder Briefings zu vereinbaren</li></ol> | 
 | 9 | Preise der Lösung | Eine Registerkarte oder Details zum Preis der Lösung müssen enthalten sein, und Preise müssen in der Landeswährung des Partners angegeben sein. | Es sollten mehrere Abrechnungsoptionen mit gestaffelten Preisen verfügbar sein, zwischen denen der Kunde wählen kann. |
 | 10 | Weitere Informationen | Links am unteren Rand (unter der Beschreibung, nicht unter den Azure Marketplace-Links auf der linken Seite) führen zu weiteren Informationen zur Lösung, sind öffentlich verfügbar und werden richtig angezeigt. |    Es sind Links zu bestimmten Elementen (z. B. Spezifikationsseiten auf der Website des Partners) und nicht nur zur Homepage des Partners verfügbar. | 
@@ -40,7 +40,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 
 | Nein. | Auflistungselement | Grundlegende Anforderung | Optimale Anforderung | 
 |:--- |:--- |:--- |:--- |
-|  | Listungsstatus (Listungsoption) | Der Link muss zu einer kundengeführten Testbenutzeroberfläche führen *.* | Andere Listungsoptionen (z. B. *Jetzt kaufen*) sind ebenfalls verfügbar. | 
+|  | Listungsstatus (Listungsoption) | Der Link muss zu einer kundengeführten Testbenutzeroberfläche führen *.* | Andere Listungsoptionen (z. B. *Jetzt kaufen* ) sind ebenfalls verfügbar. | 
 |||
 
 ## <a name="saas-application-requirements"></a>Anforderungen für SaaS-Anwendungen
@@ -48,7 +48,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 | Nein. | Auflistungselement | Grundlegende Anforderung | Optimale Anforderung | 
 |:--- |:--- |:--- |:--- |
 | 1 | Titel des Angebots |<ul><li>Darf nur klein geschriebene Buchstaben, alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Der Titel kann nach der Veröffentlichung nicht geändert werden.</li><li>Beschreibt das Lösungsangebot.</li><li>Entspricht der Onlinewerbung für die Lösung auf der Website des Partners. | Enthält wichtige Suchbegriffe. |
-| 2 | Technische Informationen: Konfiguration |<ul><li>Entscheiden Sie bei SaaS-Apps (Software-as-a-Service), ob Ihre App nur aufgelistet werden soll oder Kunden in der Lage sein sollen, die App über Azure zu erwerben.</li><li>Wählen Sie den gewünschten Text für die Schaltfläche zum Beziehen Ihres Angebots aus: *Kostenlos*, *Kostenlose Testversion* oder *Kontakt mit mir aufnehmen*</li><li>Wählen Sie im Popupfenster nur ein zutreffendes Produkt aus, wenn Ihre App die Technologie verwendet: Cortana Intelligence, Power BI-Lösungsvorlagen oder Power Apps. |  |
+| 2 | Technische Informationen: Konfiguration |<ul><li>Entscheiden Sie bei SaaS-Apps (Software-as-a-Service), ob Ihre App nur aufgelistet werden soll oder Kunden in der Lage sein sollen, die App über Azure zu erwerben.</li><li>Wählen Sie den gewünschten Text für die Schaltfläche zum Beziehen Ihres Angebots aus: *Kostenlos* , *Kostenlose Testversion* oder *Kontakt mit mir aufnehmen*</li><li>Wählen Sie im Popupfenster nur ein zutreffendes Produkt aus, wenn Ihre App die Technologie verwendet: Cortana Intelligence, Power BI-Lösungsvorlagen oder Power Apps. |  |
 | 3 | Testversion | Wählen Sie *Ja* oder *Nein*. | Die nächsten Schritte sind für den Kunden leicht zu verstehen: <ol><li>Testversion ausprobieren</li><li>Jetzt kaufen</li><li>Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termin für Proofs of Concept, Bewertungen oder Briefings zu vereinbaren</li></ol> |
 | 4 | Details zum Onlineshop: Angebotszusammenfassung | Wird auf der Suchseite Ihrer App angezeigt und umfasst maximal 100 Zeichen. | |
 | 5 | Details zum Onlineshop: Branchen | Branchen (max. 2): Wählen Sie die Branchen aus, für die Ihre App am besten geeignet und am relevantesten ist. | |
@@ -91,7 +91,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über die verschiedenen Angebotstypen im Azure Marketplace:
-  * [SaaS-Apps](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
-  * [Container](https://docs.microsoft.com/azure/marketplace/marketplace-containers)
-  * [Beratungsdienste](https://docs.microsoft.com/azure/marketplace/consulting-services)
-* [Bestimmung Ihrer Veröffentlichungsoption](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+  * [SaaS-Apps](./plan-saas-offer.md)
+  * [Container](./marketplace-containers.md)
+  * [Beratungsdienste](./consulting-services.md)
+* [Bestimmung Ihrer Veröffentlichungsoption](./determine-your-listing-type.md)

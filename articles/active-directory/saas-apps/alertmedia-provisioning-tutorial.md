@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ae06a8ed59f7987f58aba8b8017833315e6529f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096074"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von AlertMedia für die automatische Benutzerbereitstellung
 
@@ -95,9 +95,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
     ![Registerkarte „Bereitstellung“, Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** Ihre **Mandanten-URL** für AlertMedia als einen der folgenden Werte ein.
-      * (keine benutzerdefinierte Domäne) https://dashboard.alertmedia.com/api/scim/v3
+      * (keine benutzerdefinierte Domäne) https://docs.gitlab.com/ee/api/scim.html
 
-      * (benutzerdefinierte Domäne) https://subdomain.alertmedia.com/api/scim/v3
+      * (benutzerdefinierte Domäne) https://developer.github.com/v3/scim/
 
       Geben Sie das **Geheime Token** ein, das Sie in Schritt 2 abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit AlertMedia herstellen kann. Vergewissern Sie bei einem Verbindungsfehler, dass Ihr AlertMedia-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

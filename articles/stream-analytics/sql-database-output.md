@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 4310bd94edd5ebe14eab40b6d19e2bacbdd1b03c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906225"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129829"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL-Datenbank aus Azure Stream Analytics
 
 Sie können [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) als Ausgabe für relationale Daten oder für Anwendungen verwenden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Azure Stream Analytics-Aufträge schreiben Daten in eine vorhandene Tabelle in SQL-Datenbank. Das Tabellenschema muss genau den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. Sie können auch [Azure Synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) als Ausgabe über die Ausgabeoption „SQL-Datenbank“ angeben. Weitere Informationen zu Möglichkeiten zur Verbesserung des Schreibdurchsatzes finden Sie im Artikel [Stream Analytics mit Azure SQL-Datenbank als Ausgabe](stream-analytics-sql-output-perf.md).
 
-Sie können auch eine [verwaltete Azure SQL-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Ausgabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten SQL-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und dann in Azure Stream Analytics manuell die folgenden Einstellungen konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
+Sie können auch eine [verwaltete Azure SQL-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) als Ausgabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten SQL-Instanz konfigurieren](../azure-sql/managed-instance/public-endpoint-configure.md) und dann in Azure Stream Analytics manuell die folgenden Einstellungen konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
 
 ## <a name="output-configuration"></a>Ausgabekonfiguration
 
@@ -37,9 +37,9 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 
 Es gibt zwei Adapter, die eine Ausgabe von Azure Stream Analytics an Azure Synapse Analytics (früher SQL Data Warehouse) ermöglichen: SQL-Datenbank und Azure Synapse. Es wird empfohlen, den Azure Synapse Analytics-Adapter anstelle des SQL-Datenbank-Adapters auszuwählen, wenn eine der folgenden Bedingungen zutrifft:
 
-* **Durchsatz**: Wenn der erwartete Durchsatz jetzt oder in Zukunft über 10 MB/s liegt, verwenden Sie die Azure Synapse-Ausgabeoption, um eine bessere Leistung zu erzielen.
+* **Durchsatz** : Wenn der erwartete Durchsatz jetzt oder in Zukunft über 10 MB/s liegt, verwenden Sie die Azure Synapse-Ausgabeoption, um eine bessere Leistung zu erzielen.
 
-* **Eingabepartitionen**: Wenn Sie über acht oder mehr Eingabepartitionen verfügen, verwenden Sie die Azure Synapse-Ausgabeoption, um das horizontale Skalieren zu verbessern.
+* **Eingabepartitionen** : Wenn Sie über acht oder mehr Eingabepartitionen verfügen, verwenden Sie die Azure Synapse-Ausgabeoption, um das horizontale Skalieren zu verbessern.
 
 ## <a name="partitioning"></a>Partitionierung
 
@@ -47,7 +47,7 @@ Die Partitionierung muss aktiviert werde und basiert auf der PARTITION BY-Klause
 
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 
-Die maximale Nachrichtengröße kann über die Option **Maximal zulässige Batchanzahl** konfiguriert werden. Der standardmäßige Höchstwert beträgt 10.000, der standardmäßige Mindestwert 100 Zeilen pro Masseneinfügungsvorgang. Weitere Informationen finden Sie unter [Azure SQL-Limits](../sql-database/sql-database-resource-limits.md). Jeder Batch wird zunächst mit maximaler Batchanzahl als Massenvorgang eingefügt. Der Batch wird in der Mitte (bis zur minimalen Batchanzahl) basierend auf wiederholbaren Fehlern aus SQL unterteilt.
+Die maximale Nachrichtengröße kann über die Option **Maximal zulässige Batchanzahl** konfiguriert werden. Der standardmäßige Höchstwert beträgt 10.000, der standardmäßige Mindestwert 100 Zeilen pro Masseneinfügungsvorgang. Weitere Informationen finden Sie unter [Azure SQL-Limits](../azure-sql/database/resource-limits-logical-server.md). Jeder Batch wird zunächst mit maximaler Batchanzahl als Massenvorgang eingefügt. Der Batch wird in der Mitte (bis zur minimalen Batchanzahl) basierend auf wiederholbaren Fehlern aus SQL unterteilt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

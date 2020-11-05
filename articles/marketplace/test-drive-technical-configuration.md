@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892620"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125681"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -50,7 +50,7 @@ Diese Art von Testversion wird nicht von Microsoft gehostet. Nutzen Sie sie, um 
 
 - **Dauer der Testversion** (erforderlich): Geben Sie die Dauer in Stunden ein, für die die Testversion aktiv bleiben soll. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet.
 
-- **Name der Azure-Ressourcengruppe** (erforderlich): Geben Sie den Namen der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups) ein, in der die Testversion für die Logik-App gespeichert ist.
+- **Name der Azure-Ressourcengruppe** (erforderlich): Geben Sie den Namen der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md#resource-groups) ein, in der die Testversion für die Logik-App gespeichert ist.
 
 - **Azure logic app name** (Name der Azure-Logik-App) (erforderlich): Geben Sie den Namen der Logik-App ein, von der die Testversion dem Benutzer zugewiesen wird. Diese Logik-App muss in der oben angegebenen Azure-Ressourcengruppe gespeichert werden.
 
@@ -60,7 +60,7 @@ Diese Art von Testversion wird nicht von Microsoft gehostet. Nutzen Sie sie, um 
 
 Für Produkte, mit denen ein interaktives Power BI-Visual veranschaulicht werden soll, kann ein eingebetteter Link zum Freigeben eines benutzerdefinierten Dashboards als Testversion verwendet werden. Deshalb ist keine technische Konfiguration erforderlich. Sie müssen hier lediglich Ihre eingebettete Power BI-URL hochladen.
 
-Weitere Informationen zum Einrichten von Power BI-Apps finden Sie unter [Was sind Power BI-Apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
+Weitere Informationen zum Einrichten von Power BI-Apps finden Sie unter [Was sind Power BI-Apps?](/power-bi/service-template-apps-overview).
 
 ## <a name="deployment-subscription-details"></a>Abonnementdetails für Bereitstellung der Testversion
 

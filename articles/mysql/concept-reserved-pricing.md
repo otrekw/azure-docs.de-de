@@ -1,17 +1,17 @@
 ---
 title: Vorauszahlung für Compute mit reservierter Kapazität – Azure Database for MySQL
 description: Vorauszahlung für Azure Database for MySQL-Computeressourcen mit reservierter Kapazität
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 27cd1c9085771bd9ac2b18c37b73235d7f18ad5a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 33c2617a22945ecb11586bc282e7f9f61b6e49ca
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538084"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240901"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for MySQL-Computeressourcen mit reservierter Kapazität
 
@@ -38,7 +38,7 @@ Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-MySQL-Datenbank 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Kaufen von reservierter Kapazität für Azure Database for MySQL
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **Alle Dienste** > **Reservierungen** .
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie **Hinzufügen** und dann im Bereich „Reservierungen erwerben“ die Option **Azure Database for MySQL** aus, um eine neue Reservierung für Ihre MySQL-Datenbanken zu erwerben.
 4. Füllen Sie die Pflichtfelder aus. Bei vorhandenen oder neuen Datenbanken, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt auf reservierte Kapazitäten angewendet. Die tatsächliche Anzahl der Azure Database for MySQL-Server, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331208"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131410"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -88,14 +88,14 @@ Für die in Partner Center unterstützten Angebotstypen wurden alle Angebote una
 | Container | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Azure-Containerangebots](partner-center-portal/create-azure-container-offer.md). |
 | Beratungsdienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Beratungsdienstangebots](partner-center-portal/create-consulting-service-offer.md). |
 | Verwalteter Dienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](partner-center-portal/create-new-managed-service-offer.md). |
-| Verwalteter Dynamics NAV-Dienst | Nein | Microsoft hat „Verwalteter Dynamics NAV-Dienst“ zu [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/) weiterentwickelt. Aus diesem Grund wurden Liveangebote für „Verwalteter Dynamics NAV-Dienst“ aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die Dynamics 365 Business Central-Angebote an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie in AppSource verfügbar zu machen. Weitere Informationen finden Sie unter [Erstellen eines Angebots für Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | Nein | Da Microsoft die Produktroadmap für Cortana Intelligence weiterentwickelt hat, wurden Cortana Intelligence-Liveangebote aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die SaaS-Angebote (Software-as-a-Service) an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie auf dem kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Prüfliste für die Erstellung von SaaS-Angeboten](partner-center-portal/offer-creation-checklist.md). |
+| Verwalteter Dynamics NAV-Dienst | Nein | Microsoft hat „Verwalteter Dynamics NAV-Dienst“ zu [Dynamics 365 Business Central](/dynamics365/business-central/) weiterentwickelt. Aus diesem Grund wurden Liveangebote für „Verwalteter Dynamics NAV-Dienst“ aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die Dynamics 365 Business Central-Angebote an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie in AppSource verfügbar zu machen. Weitere Informationen finden Sie unter [Erstellen eines Angebots für Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | Nein | Da Microsoft die Produktroadmap für Cortana Intelligence weiterentwickelt hat, wurden Cortana Intelligence-Liveangebote aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die SaaS-Angebote (Software-as-a-Service) an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie auf dem kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Prüfliste für die Erstellung von SaaS-Angeboten](./plan-saas-offer.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Ich kann meine Cloud-Partnerportal-Angebote im Partner Center nicht finden
 
 Die in Partner Center angezeigten Informationen richten sich nach den Programmen, für die Sie sich registriert haben, Ihren Konten und den Benutzerrollen und Berechtigungen, die Ihnen zugewiesen wurden. Es sind viele Partner Center-Programme verfügbar, und Sie können sich für mehrere Programme registrieren. Sie haben mit denselben Benutzeranmeldeinformationen auch Zugriff auf mehrere Konten.
 
-Die Angebote, die Sie im Cloud-Partnerportal erstellt haben, sind in Partner Center unter dem Programm **Kommerzieller Marketplace** und unter dem Konto verfügbar, das zum Erstellen der Angebote verwendet wird. Führen Sie die unten angegebenen Schritte aus, um sicherzustellen, dass Sie das richtige Programm und das richtige Konto anzeigen. Weitere Tipps zur Problembehandlung finden Sie unter [Verwalten Ihres Partner Center-Kontos](https://docs.microsoft.com/partner-center/partner-center-account-setup).
+Die Angebote, die Sie im Cloud-Partnerportal erstellt haben, sind in Partner Center unter dem Programm **Kommerzieller Marketplace** und unter dem Konto verfügbar, das zum Erstellen der Angebote verwendet wird. Führen Sie die unten angegebenen Schritte aus, um sicherzustellen, dass Sie das richtige Programm und das richtige Konto anzeigen. Weitere Tipps zur Problembehandlung finden Sie unter [Verwalten Ihres Partner Center-Kontos](/partner-center/partner-center-account-setup).
 
 ### <a name="access-the-right-program-in-partner-center"></a>Zugreifen auf das richtige Programm in Partner Center
 
@@ -127,7 +127,7 @@ Falls Sie sich nicht bei Ihrem Konto anmelden können, können Sie [hier ein Sup
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Wo finde ich eine Anleitung zur Verwendung von Partner Center?
 
-Wechseln Sie zur [Dokumentation zum kommerziellen Marketplace](index.yml), und erweitern Sie **Portal für den kommerziellen Marketplace in Partner Center** . Erweitern Sie **Neues Angebot erstellen** , um Hilfeartikel zum Erstellen von Angeboten in Partner Center anzuzeigen.
+Wechseln Sie zur [Dokumentation zum kommerziellen Marketplace](index.yml), und erweitern Sie **Portal für den kommerziellen Marketplace in Partner Center**. Erweitern Sie **Neues Angebot erstellen** , um Hilfeartikel zum Erstellen von Angeboten in Partner Center anzuzeigen.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Was ist der Unterschied zwischen der Veröffentlichungs- und Angebotsverwaltung?
 
@@ -143,7 +143,7 @@ Die Aktualisierungen, die Sie nicht veröffentlichen, werden als Entwürfe gespe
 
 ### <a name="enhanced-preview-options"></a>Erweiterte Vorschauoptionen
 
-Partner Center enthält eine [Vergleichsfunktion](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) mit verbesserten Filteroptionen. Damit können Sie die Vorschauversion mit der Liveversion des Angebots vergleichen.
+Partner Center enthält eine [Vergleichsfunktion](partner-center-portal/update-existing-offer.md#compare-changes-to-your-offer) mit verbesserten Filteroptionen. Damit können Sie die Vorschauversion mit der Liveversion des Angebots vergleichen.
 
 [![Screenshot: Vergleichsfunktion in Partner Center](media/cpp-pc-faq/compare.png "Vergleichsfunktion in Partner Center")](media/cpp-pc-faq/compare.png#lightbox)
 

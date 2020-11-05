@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128996"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 
@@ -49,7 +49,7 @@ In der folgenden Tabelle sind die Veröffentlichungsoptionen für Angebotstypen 
 
 ## <a name="choose-a-listing-option"></a>Auswählen einer Auflistungsoption
 
-Die verfügbaren Auflistungsoptionen ermöglichen eine differenzierte Kundenbindung, ebnen Ihnen den Weg zum gemeinsamen Zugriff auf Leads, und bieten Ihnen die [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Beachten Sie die Auflistungsoptionen, die der Veröffentlichungsoption entsprechen:
+Die verfügbaren Auflistungsoptionen ermöglichen eine differenzierte Kundenbindung, ebnen Ihnen den Weg zum gemeinsamen Zugriff auf Leads, und bieten Ihnen die [Vorteile des kommerziellen Marketplace](./gtm-your-marketplace-benefits.md). Beachten Sie die Auflistungsoptionen, die der Veröffentlichungsoption entsprechen:
 
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|

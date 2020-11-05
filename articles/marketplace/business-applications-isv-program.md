@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126735"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 
@@ -25,7 +25,7 @@ Arbeiten Sie die folgenden Abschnitte dieses Artikels durch, um sich zu registri
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Einrichten Ihres Microsoft Partner Center-Kontos
 
-Führen Sie die Schritte im folgenden Artikel aus, um Ihr Konto für das ISV Connect-Programm einzurichten und zu verwalten: [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Dieser Artikel enthält alle Schritte zum Erstellen eines neuen Kontos sowie Informationen zum Hinzufügen von neuen Herausgebern zum Programm „Kommerzieller Marketplace“.
+Führen Sie die Schritte im folgenden Artikel aus, um Ihr Konto für das ISV Connect-Programm einzurichten und zu verwalten: [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](./partner-center-portal/create-account.md). Dieser Artikel enthält alle Schritte zum Erstellen eines neuen Kontos sowie Informationen zum Hinzufügen von neuen Herausgebern zum Programm „Kommerzieller Marketplace“.
 
 > [!NOTE]
 > Für diesen Schritt ist die Rolle *Besitzer* oder *Verwalter* in Partner Center erforderlich.
@@ -66,11 +66,11 @@ Nachdem Sie die obigen Schritte ausgeführt haben, stehen Ihre vorhandenen Dynam
 
 Der letzte Schritt für die Registrierung beim Business Applications ISV Connect Program besteht darin, Ihre bereits vorhandenen Anwendungen zu veröffentlichen und zu zertifizieren. Verwenden Sie den folgenden Link, um Ihre Anwendung in AppSource zu veröffentlichen und zu zertifizieren:
 
-- [Für Dynamics 365 Customer Engagement](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [Für Dynamics 365 for Finance and Operations](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [Für Dynamics 365 Customer Engagement](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [Für Dynamics 365 for Finance and Operations](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> Sie müssen Ihre Apps alle sechs Monate neu zertifizieren, damit ihr Livezustand in AppSource gewahrt bleibt. Weitere Informationen finden Sie unter [Zertifizierungsrichtlinien für den kommerziellen Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies).
+> Sie müssen Ihre Apps alle sechs Monate neu zertifizieren, damit ihr Livezustand in AppSource gewahrt bleibt. Weitere Informationen finden Sie unter [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
