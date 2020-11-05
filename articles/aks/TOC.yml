@@ -154,6 +154,8 @@
           href: cluster-container-registry-integration.md
         - name: Erstellen von virtuellen Knoten
           items:
+            - name: Verwenden von virtuellen Knoten
+              href: virtual-nodes.md
             - name: Verwenden der Azure-CLI
               href: virtual-nodes-cli.md
             - name: Verwenden des Azure-Portals

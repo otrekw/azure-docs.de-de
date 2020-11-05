@@ -68,6 +68,8 @@
   items:
     - name: Microsoft Antimalware
       href: antimalware.md
+    - name: Microsoft Antimalware-Codebeispiele
+      href: antimalware-code-samples.md
     - name: Übersicht über die Sicherheit von virtuellen Computern
       href: virtual-machines-overview.md
     - name: 'Bewährte Methoden: IaaS-Workloads'
