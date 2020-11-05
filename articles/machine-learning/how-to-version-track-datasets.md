@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fc9f082a012922a8595c2726764e84be038a26
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302093"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312222"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versionieren und Nachverfolgen von Datasets in Experimenten
 
@@ -32,7 +32,7 @@ Typische Versionierungsszenarios:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installiertes Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Dieses SDK enthält das Paket [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true).
+- [Installiertes Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Dieses SDK enthält das Paket [azureml-datasets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py).
     
 - Ein [Azure Machine Learning-Arbeitsbereich](concept-workspace.md). Rufen Sie einen vorhandenen Arbeitsbereich ab, indem Sie den folgenden Code ausführen, oder [erstellen Sie einen neuen Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Abrufen eines Datasets anhand des Namens
 
-Die Methode [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück. 
+Die Methode [get_by_name()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück. 
 
 Mit dem folgenden Code wird Version 1 des `titanic_ds`-Datasets abgerufen.
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 Sie können die als Eingabe verwendeten Datasets für jedes Machine Learning-Experiment einfach über das `Run`-Objekt des Experiments nachverfolgen.
 
-Im folgenden Code wird die [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
+Im folgenden Code wird die [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
 
 ```Python
 # get input datasets
@@ -171,7 +171,7 @@ input_dataset.to_path()
 
 Die `input_datasets` aus den Experimenten können Sie auch anhand von https://ml.azure.com/ suchen. 
 
-Die folgende Abbildung zeigt, wo Sie das Eingabedataset eines Experiments im Azure Machine Learning Studio finden. Wechseln Sie in diesem Beispiel zum Bereich **Experimente**, und öffnen Sie die Registerkarte **Eigenschaften** für eine bestimmte Ausführung Ihres Experiments, `keras-mnist`.
+Die folgende Abbildung zeigt, wo Sie das Eingabedataset eines Experiments im Azure Machine Learning Studio finden. Wechseln Sie in diesem Beispiel zum Bereich **Experimente** , und öffnen Sie die Registerkarte **Eigenschaften** für eine bestimmte Ausführung Ihres Experiments, `keras-mnist`.
 
 ![Eingabedatasets](./media/how-to-version-track-datasets/input-datasets.png)
 

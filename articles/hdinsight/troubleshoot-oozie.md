@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: f30c66839228e43f9a6fbdce9914f1ca1572c0ec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: edbe5274de8576fccb29e1e69d260a6531d4ab05
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538934"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287400"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Problembehandlung für Apache Oozie in Azure HDInsight
 
@@ -30,7 +30,7 @@ Im Folgenden sehen Sie Fehlermeldungen, die auftreten können, und Möglichkeite
 
 ### <a name="issue"></a>Problem
 
-Der Auftragsstatus ändert sich in **SUSPENDED** . In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
+Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
 
 ```output
 JA009: Cannot initialize Cluster. Please check your configuration for map
@@ -50,7 +50,7 @@ Die in der Datei **job.xml** verwendeten Azure-Blobspeicheradressen enthalten ni
 
 ### <a name="issue"></a>Problem
 
-Der Auftragsstatus ändert sich in **SUSPENDED** . In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
+Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
 
 ```output
 JA002: User: oozie is not allowed to impersonate <USER>
@@ -77,7 +77,7 @@ sudo adduser USERNAME users
 
 ### <a name="issue"></a>Problem
 
-Der Auftragsstatus ändert sich in **KILLED** . In den Auftragsdetails wird der Status von `RunSqoopExport` als **ERROR** (Fehler) angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
+Der Auftragsstatus ändert sich in **KILLED**. In den Auftragsdetails wird der Status von `RunSqoopExport` als **ERROR** (Fehler) angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
 
 ```output
 Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
@@ -107,10 +107,4 @@ Für das Auftragsbeispiel aus [Verwenden von Hadoop Oozie-Workflows](hdinsight-u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-* Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support** . Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311594"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
 
@@ -347,15 +347,15 @@ Wenn das Dataset sowie die globalen und lokalen Erklärungen verfügbar sind, we
 Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Machine Learning-Studio zuzugreifen:
 
 * Bereich **Experimente** (Vorschau)
-  1. Klicken Sie im linken Bereich auf **Experimente**, damit Ihnen eine Liste mit Experimenten angezeigt wird, die Sie in Azure Machine Learning ausgeführt haben.
+  1. Klicken Sie im linken Bereich auf **Experimente** , damit Ihnen eine Liste mit Experimenten angezeigt wird, die Sie in Azure Machine Learning ausgeführt haben.
   1. Wählen Sie ein bestimmtes Experiment aus, um alle Ausführungen in diesem Experiment anzuzeigen.
-  1. Wählen Sie eine Ausführung aus, und klicken Sie dann auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+  1. Wählen Sie eine Ausführung aus, und klicken Sie dann auf die Registerkarte **Erklärungen** , um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
    [![Lokale Featurerelevanz für das Visualisierungsdashboard in AzureML Studio in Experimenten](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Bereich **Modelle**
-  1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.
-  1. Wählen Sie ein Modell aus, und klicken Sie dann auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+  1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](./how-to-deploy-and-where.md) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.
+  1. Wählen Sie ein Modell aus, und klicken Sie dann auf die Registerkarte **Erklärungen** , um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
 ## <a name="interpretability-at-inference-time"></a>Interpretierbarkeit beim Ziehen von Rückschlüssen
 
@@ -419,7 +419,7 @@ Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen 
 
 1. Stellen Sie das Image einem Computeziel bereit, indem Sie folgende Schritte ausführen:
 
-   1. Registrieren Sie gegebenenfalls Ihr ursprüngliches Vorhersagemodell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+   1. Registrieren Sie gegebenenfalls Ihr ursprüngliches Vorhersagemodell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](./how-to-deploy-and-where.md).
 
    1. Erstellen Sie eine Bewertungsdatei.
 
@@ -553,4 +553,3 @@ Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen 
 [Weitere Informationen zur Modellinterpretierbarkeit](how-to-machine-learning-interpretability.md)
 
 [Weitere Informationen finden Sie in den Azure Machine Learning-Beispielnotebooks zur Interpretierbarkeit](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

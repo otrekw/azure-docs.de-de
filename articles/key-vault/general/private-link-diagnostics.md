@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998402"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289379"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostizieren von Problemen bei der Konfiguration privater Verbindungen in Azure Key Vault
 
@@ -56,7 +56,7 @@ Wenn die Anwendung, das Skript oder das Portal in einem beliebigen, mit dem Inte
 
 Dieser Leitfaden gilt NICHT für Lösungen, die von Microsoft verwaltet werden, wobei ein Azure-Produkt auf den Schlüsseltresor zugreift, das unabhängig vom virtuellen Netzwerk des Kunden vorhanden ist. Beispiele für derartige Szenarien sind Azure Storage oder Azure SQL, die für die Verschlüsselung ruhender Daten konfiguriert sind, Azure Event Hub, der Daten mit kundenseitig bereitgestellten Schlüsseln verschlüsselt, Azure Data Factory, das auf im Schlüsseltresor gespeicherte Dienstanmeldeinformationen zugreift, Azure Pipelines, das Geheimnisse aus dem Schlüsseltresor abruft und weitere ähnliche Szenarien. In diesen Fällen *müssen Sie überprüfen, ob das Produkt Schlüsseltresore mit aktivierter Firewall unterstützt*. Diese Unterstützung erfolgt in der Regel über die Funktion [Vertrauenswürdige Dienste](overview-vnet-service-endpoints.md#trusted-services) der Key Vault-Firewall. Viele Produkte sind jedoch aus verschiedenen Gründen nicht in der Liste der vertrauenswürdigen Dienste enthalten. Wenden Sie sich in diesem Fall an den produktspezifischen Support.
 
-Eine kleine Anzahl von Azure-Produkten unterstützt das Konzept der *VNet-Einfügung*. Einfach gesprochen, fügt das Produkt ein Netzwerkgerät im virtuellen Netzwerk des Kunden hinzu, wodurch dieses Anforderungen senden kann, als ob es im virtuellen Netzwerk bereitgestellt wäre. Ein erwähnenswertes Beispiel ist [Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Produkte wie dieses können mithilfe der privaten Verbindungen Anforderungen an den Schlüsseltresor stellen, wobei dieser Leitfaden möglicherweise hilfreich sein kann.
+Eine kleine Anzahl von Azure-Produkten unterstützt das Konzept der *VNet-Einfügung*. Einfach gesprochen, fügt das Produkt ein Netzwerkgerät im virtuellen Netzwerk des Kunden hinzu, wodurch dieses Anforderungen senden kann, als ob es im virtuellen Netzwerk bereitgestellt wäre. Ein erwähnenswertes Beispiel ist [Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Produkte wie dieses können mithilfe der privaten Verbindungen Anforderungen an den Schlüsseltresor stellen, wobei dieser Leitfaden möglicherweise hilfreich sein kann.
 
 ## <a name="2-confirm-that-the-connection-is-approved-and-succeeded"></a>2. Bestätigen, dass die Verbindung genehmigt und erfolgreich ist
 
@@ -76,7 +76,7 @@ Es empfiehlt sich, nicht wirksame Verbindungen zu löschen, um die Struktur übe
 >[!IMPORTANT]
 > Durch das Ändern von Firewalleinstellungen kann der Zugriff von legitimen Clients entfernt werden, die noch keine privaten Verbindungen verwenden. Stellen Sie sicher, dass Sie sich der Auswirkungen jeder einzelnen Änderung in der Firewallkonfiguration bewusst sind.
 
-Ein wichtiger Aspekt ist, dass die Funktion für private Verbindungen nur Zugriff auf Ihren Schlüsseltresor in einem virtuellen Netzwerk *gewährt*, das geschlossen ist, um Datenexfiltration zu verhindern. Es wird kein vorhandener Zugriff *entfernt*. Um Zugriffe aus dem öffentlichen Internet wirkungsvoll zu blockieren, müssen Sie die Firewall des Schlüsseltresors explizit aktivieren:
+Ein wichtiger Aspekt ist, dass die Funktion für private Verbindungen nur Zugriff auf Ihren Schlüsseltresor in einem virtuellen Netzwerk *gewährt* , das geschlossen ist, um Datenexfiltration zu verhindern. Es wird kein vorhandener Zugriff *entfernt*. Um Zugriffe aus dem öffentlichen Internet wirkungsvoll zu blockieren, müssen Sie die Firewall des Schlüsseltresors explizit aktivieren:
 
 1. Öffnen Sie das Azure-Portal, und öffnen Sie Ihre Schlüsseltresorressource.
 2. Wählen Sie im linken Menü **Netzwerk** aus.
@@ -127,7 +127,7 @@ Sie müssen eine Diagnose der Hostnamensauflösung durchführen, wofür Sie wied
 6. Auf der Übersichtsseite wird möglicherweise ein0 Abschnitt namens **Benutzerdefinierte DNS-Einstellungen** angezeigt. Vergewissern Sie sich, dass dort nur ein Eintrag vorhanden ist, der mit dem Hostnamen des Schlüsseltresors übereinstimmt. Dieser Eintrag zeigt die private IP-Adresse des Schlüsseltresors an.
 7. Sie können auch auf den Link bei **Netzwerkschnittstelle** klicken und sicherstellen, dass die private IP-Adresse mit der im vorherigen Schritt angezeigten identisch ist. Die Netzwerkschnittstelle ist ein virtuelles Gerät, das den Schlüsseltresor darstellt.
 
-Die IP-Adresse ist eine, die virtuelle Computer und andere Geräte, die *im selben virtuellen Netzwerk ausgeführt werden*, zum Herstellen einer Verbindung mit dem Schlüsseltresor verwenden werden. Notieren Sie sich die IP-Adresse, oder lassen Sie die Browserregisterkarte geöffnet und unberührt, während Sie weitere Untersuchungen durchführen.
+Die IP-Adresse ist eine, die virtuelle Computer und andere Geräte, die *im selben virtuellen Netzwerk ausgeführt werden* , zum Herstellen einer Verbindung mit dem Schlüsseltresor verwenden werden. Notieren Sie sich die IP-Adresse, oder lassen Sie die Browserregisterkarte geöffnet und unberührt, während Sie weitere Untersuchungen durchführen.
 
 >[!NOTE]
 > Wenn Ihr Schlüsseltresor über mehrere private Endpunkte verfügt, verfügt er auch über mehrere private IP-Adressen. Dies ist nur nützlich, wenn Sie über mehrere virtuelle Netzwerke verfügen, die auf denselben Schlüsseltresor zugreifen, wobei jedes über einen eigenen privaten Endpunkt zugreift (der private Endpunkt gehört zu einem einzigen virtuellen Netzwerk). Stellen Sie sicher, dass Sie das Problem für das richtige virtuelle Netzwerk diagnostizieren, und wählen Sie im obigen Verfahren die richtige private Endpunktverbindung aus. Erstellen Sie ferner **nicht** mehrere private Endpunkte für denselben Schlüsseltresor im selben virtuellen Netzwerk. Dies ist nicht erforderlich, und stelle eine Quelle für Verwirrung dar.
@@ -188,7 +188,7 @@ Linux:
 
 Der bemerkenswerte Unterschied zum vorherigen Szenario besteht darin, dass ein neuer Alias mit dem Wert `{vaultname}.privatelink.vaultcore.azure.net` vorhanden ist. Dies bedeutet, dass die Datenebene des Schlüsseltresors zur Annahme von Anforderungen von privaten Verbindungen bereit ist.
 
-Es bedeutet nicht, dass Anforderungen, die von Computern *außerhalb* des virtuellen Netzwerks ausgeführt werden (wie von dem, den Sie gerade verwendet haben) private Verbindungen verwenden – sie werden nicht verwendet. Dies erkennen Sie an der Tatsache, dass der Hostname weiterhin zu einer öffentlichen IP-Adresse aufgelöst wird. Nur Computer, die *mit dem virtuellen Netzwerk verbunden sind*, können private Verbindungen verwenden. Weitere Informationen hierzu folgen noch.
+Es bedeutet nicht, dass Anforderungen, die von Computern *außerhalb* des virtuellen Netzwerks ausgeführt werden (wie von dem, den Sie gerade verwendet haben) private Verbindungen verwenden – sie werden nicht verwendet. Dies erkennen Sie an der Tatsache, dass der Hostname weiterhin zu einer öffentlichen IP-Adresse aufgelöst wird. Nur Computer, die *mit dem virtuellen Netzwerk verbunden sind* , können private Verbindungen verwenden. Weitere Informationen hierzu folgen noch.
 
 Wenn der Alias `privatelink` nicht angezeigt wird, bedeutet dies, dass der Schlüsseltresor keine privaten Endpunktverbindungen im Zustand `Approved` aufweist. Wechseln Sie zurück zu [diesem Abschnitt](#2-confirm-that-the-connection-is-approved-and-succeeded), bevor Sie es noch mal versuchen.
 
@@ -278,7 +278,7 @@ Wie Sie sehen, unterliegt die Namensauflösung Ihrer Kontrolle. Die Hintergründ
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>Abfragen des `/healthstatus`-Endpunkts des Schlüsseltresors
 
-Ihr Schlüsseltresor stellt den `/healthstatus`-Endpunkt bereit, der für die Diagnose verwendet werden kann. Die Antwortheader enthalten die Ursprungs-IP-Adresse aus Sicht des Key Vault-Diensts. Sie können diesen Endpunkt mit dem folgenden Befehl aufrufen (**denken Sie daran, den Hostnamen Ihres Schlüsseltresors zu verwenden**):
+Ihr Schlüsseltresor stellt den `/healthstatus`-Endpunkt bereit, der für die Diagnose verwendet werden kann. Die Antwortheader enthalten die Ursprungs-IP-Adresse aus Sicht des Key Vault-Diensts. Sie können diesen Endpunkt mit dem folgenden Befehl aufrufen ( **denken Sie daran, den Hostnamen Ihres Schlüsseltresors zu verwenden** ):
 
 Windows (PowerShell):
 

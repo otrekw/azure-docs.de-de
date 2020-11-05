@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789759"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285374"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -157,7 +157,7 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
 1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** alle Tests aus, *ausgenommen* den Test **Speicher** .
+1. Wählen Sie unter **Testauswahl** alle Tests aus, *ausgenommen* den Test **Speicher**.
 
 ## <a name="test-cluster-failover"></a>Testen des Failovers des Clusters
 
@@ -217,7 +217,7 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#management-modes) wird unterstützt.
+- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

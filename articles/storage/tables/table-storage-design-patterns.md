@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215602"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307459"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -22,7 +22,7 @@ Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeich
 ![Suchen nach verknüpften Daten](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-In der Muster-Karte oben werden einige Beziehungen zwischen Muster (Blau) und Antimuster (Orange) hervorgehoben, die in diesem Handbuch dokumentiert sind. Es gibt viele weitere Muster, die in Betracht gezogen werden können. Beispielsweise ist eines der Hauptszenarien für den Tabellenspeicherdienst die Verwendung des [Materialized View Pattern](https://msdn.microsoft.com/library/azure/dn589782.aspx) (Muster für materialisierte Sichten) aus dem [Command Query Responsibility Segregation (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx)-Muster.  
+In der Muster-Karte oben werden einige Beziehungen zwischen Muster (Blau) und Antimuster (Orange) hervorgehoben, die in diesem Handbuch dokumentiert sind. Es gibt viele weitere Muster, die in Betracht gezogen werden können. Beispielsweise ist eines der Hauptszenarien für den Tabellenspeicherdienst die Verwendung des [Materialized View Pattern](/previous-versions/msp-n-p/dn589782(v=pandp.10)) (Muster für materialisierte Sichten) aus dem [Command Query Responsibility Segregation (CQRS)](/previous-versions/msp-n-p/jj554200(v=pandp.10))-Muster.  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>Sekundäres Indexmuster für Intra-Partition
 Speichern mehrerer Kopien jeder Entität mit unterschiedlichen **RowKey** -Werten (in der gleichen Partition) zur Ermöglichung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey** -Werten. Updates zwischen Kopien können durch die Verwendung von EGT konsistent sein.  
@@ -49,7 +49,7 @@ Bei einer Abfrage nach einem Bereich von Mitarbeiterentitäten können Sie einen
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von 000100 bis 000199 zu finden, verwenden Sie: $filter=(PartitionKey eq 'Vertrieb') und (RowKey ge 'empid_000100') und (RowKey le 'empid_000199')  
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, verwenden Sie: $filter=(PartitionKey eq 'Sales') und (RowKey ge 'email_a') und (RowKey lt 'email_b')  
   
-  Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](/rest/api/storageservices/Query-Entities).  
 
 ### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -105,7 +105,7 @@ Bei einer Abfrage nach einem Bereich von Mitarbeiterentitäten können Sie einen
 * Verwenden Sie Folgendes, um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von **000100** bis **000199** zu suchen und nach Mitarbeiter-ID zu sortieren: $filter=(PartitionKey eq 'empid_Vertrieb') und (RowKey ge '000100') und (RowKey le '000199').  
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, und die in E-Mail-Adressen-Reihenfolge sortiert sind, verwenden Sie: $filter=(PartitionKey eq 'email_Sales') und (RowKey ge 'a') und (RowKey lt 'b')  
 
-Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](/rest/api/storageservices/Query-Entities).  
 
 ### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -145,18 +145,18 @@ EGTs ermöglichen atomische Transaktionen über mehrere Entitäten, die den glei
 
 ### <a name="solution"></a>Lösung
 Mithilfe von Azure-Warteschlangen können Sie eine Lösung implementieren, die Eventual Consistency über zwei oder mehr Partitionen oder Speichersysteme bietet.
-Zur Veranschaulichung dieses Ansatzes gehen Sie davon aus, dass Sie eine Anforderung haben, veraltete Mitarbeiterentitäten archivieren zu können. Alte Mitarbeiterentitäten werden selten abgefragt und sollten aus allen Aktivitäten ausgeschlossen werden, die sich mit den aktuellen Mitarbeitern beschäftigen. Um diese Anforderung zu implementieren, speichern Sie die aktiven Mitarbeiter in der Tabelle **Aktuell** und ehemalige Mitarbeiter in der Tabelle **Archiv** . Zum Archivieren eines Mitarbeiters löschen Sie die Entität aus der Tabelle **Aktuell** und fügen die Entität der Tabelle **Archiv** hinzu. Für diese beiden Vorgänge kann allerdings keine EGT verwendet werden. Um das Risiko zu vermeiden, das aufgrund eines Fehlers eine Entität in beiden oder in keiner Tabelle angezeigt wird, muss der Archivierungsvorgang letztendlich Eventual Consistency aufweisen. Das folgende Sequenzdiagramm beschreibt die Schritte bei diesem Vorgang. Mehr Details zu Ausnahmepfaden werden im folgenden Text zur Verfügung gestellt.  
+Zur Veranschaulichung dieses Ansatzes gehen Sie davon aus, dass Sie eine Anforderung haben, veraltete Mitarbeiterentitäten archivieren zu können. Alte Mitarbeiterentitäten werden selten abgefragt und sollten aus allen Aktivitäten ausgeschlossen werden, die sich mit den aktuellen Mitarbeitern beschäftigen. Um diese Anforderung zu implementieren, speichern Sie die aktiven Mitarbeiter in der Tabelle **Aktuell** und ehemalige Mitarbeiter in der Tabelle **Archiv**. Zum Archivieren eines Mitarbeiters löschen Sie die Entität aus der Tabelle **Aktuell** und fügen die Entität der Tabelle **Archiv** hinzu. Für diese beiden Vorgänge kann allerdings keine EGT verwendet werden. Um das Risiko zu vermeiden, das aufgrund eines Fehlers eine Entität in beiden oder in keiner Tabelle angezeigt wird, muss der Archivierungsvorgang letztendlich Eventual Consistency aufweisen. Das folgende Sequenzdiagramm beschreibt die Schritte bei diesem Vorgang. Mehr Details zu Ausnahmepfaden werden im folgenden Text zur Verfügung gestellt.  
 
 ![Lösung mit Azure-Warteschlangen](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
 
-Ein Client startet den Archiv-Vorgang, indem er eine Meldung auf einer Azure-Warteschlange ablegt. In diesem Beispiel wird Mitarbeiter #456 archiviert. Eine Workerrolle fragt die Warteschlange auf neue Meldungen ab. Wird eine gefunden, liest sie die Meldung und hinterlässt eine verborgene Kopie in der Warteschlange. Die Workerrolle ruft als Nächstes eine Kopie der Entität aus der Tabelle **Aktuell** ab, fügt eine Kopie in die Tabelle **Archiv** ein und löscht dann die ursprüngliche Entität aus der Tabelle **Aktuell** . Falls keine Fehler in den vorangegangenen Schritten aufgetreten sind, löscht die Workerrolle schlussendlich die verborgene Nachricht aus der Warteschlange.  
+Ein Client startet den Archiv-Vorgang, indem er eine Meldung auf einer Azure-Warteschlange ablegt. In diesem Beispiel wird Mitarbeiter #456 archiviert. Eine Workerrolle fragt die Warteschlange auf neue Meldungen ab. Wird eine gefunden, liest sie die Meldung und hinterlässt eine verborgene Kopie in der Warteschlange. Die Workerrolle ruft als Nächstes eine Kopie der Entität aus der Tabelle **Aktuell** ab, fügt eine Kopie in die Tabelle **Archiv** ein und löscht dann die ursprüngliche Entität aus der Tabelle **Aktuell**. Falls keine Fehler in den vorangegangenen Schritten aufgetreten sind, löscht die Workerrolle schlussendlich die verborgene Nachricht aus der Warteschlange.  
 
 In diesem Beispiel fügt Schritt 4 den Mitarbeiter in die Tabelle **Archiv** ein. Es könnte den Mitarbeiter einem Blob im Blob-Dienst oder einer Datei in einem Dateisystem hinzufügen.  
 
 ### <a name="recovering-from-failures"></a>Wiederherstellung bei Fehlern
 Für den Fall, dass die Workerrolle den Archivierungsvorgang neu starten muss, müssen die Vorgänge in den Schritten **4** und **5** *idempotent* sein. Bei Verwendung des Tabellenspeicherdiensts müssen Sie für Schritt **4** einen Vorgang vom Typ „Einfügen oder Ersetzen“ und für Schritt **5** in der verwendeten Clientbibliothek einen Vorgang vom Typ „Löschen, falls vorhanden“ ausführen. Wenn Sie ein anderes Speichersystem verwenden, müssen Sie einen entsprechenden idempotenten Vorgang verwenden.  
 
-Wenn die Workerrolle Schritt **6** niemals abschließt, erscheint nach einem Timeout die Meldung wieder in der Warteschlange, damit die Workerrolle versuchen kann, sie erneut zu verarbeiten. Die Workerrolle kann überprüfen, wie oft eine Meldung in der Warteschlange gelesen wurde und bei Bedarf markieren, dass dies eine "unzustellbare" Meldung ist und sie zur Untersuchung an eine eigene Warteschlange senden. Weitere Informationen zum Lesen von Warteschlangenmeldungen und zur Überprüfung des Zählers für Entfernungsvorgänge aus der Warteschlange finden Sie unter [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
+Wenn die Workerrolle Schritt **6** niemals abschließt, erscheint nach einem Timeout die Meldung wieder in der Warteschlange, damit die Workerrolle versuchen kann, sie erneut zu verarbeiten. Die Workerrolle kann überprüfen, wie oft eine Meldung in der Warteschlange gelesen wurde und bei Bedarf markieren, dass dies eine "unzustellbare" Meldung ist und sie zur Untersuchung an eine eigene Warteschlange senden. Weitere Informationen zum Lesen von Warteschlangenmeldungen und zur Überprüfung des Zählers für Entfernungsvorgänge aus der Warteschlange finden Sie unter [Get Messages](/rest/api/storageservices/Get-Messages).  
 
 Einige Fehler aus der Tabelle und den Warteschlangendiensten sind vorübergehende Fehler. Ihre Clientanwendung sollte diese über eine geeignete Wiederholungslogik bedienen können.  
 
@@ -634,7 +634,7 @@ Eine optimale Abfrage gibt auf der Grundlage eines **PartitionKey** - und eines 
 
 In solchen Szenarien sollten Sie die Leistung Ihrer Anwendung immer vollständig testen.  
 
-Eine Abfrage für den Tabellenspeicherdienst kann maximal 1000 Entitäten gleichzeitig zurückgeben und für maximal fünf Sekunden ausgeführt werden. Wenn der Ergebnissatz mehr als 1.000 Entitäten enthält, wenn die Abfrage nicht innerhalb von fünf Sekunden abgeschlossen wurde oder die Abfrage die Partitionsgrenzen überschreitet, gibt der Tabellenspeicherdienst ein Fortsetzungstoken zurück, das der Clientanwendung ermöglicht, den nächsten Satz Entitäten anzufordern. Weitere Informationen über die Funktionsweise von Fortsetzungstoken finden Sie unter [Abfragetimeout und Paginierung](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Eine Abfrage für den Tabellenspeicherdienst kann maximal 1000 Entitäten gleichzeitig zurückgeben und für maximal fünf Sekunden ausgeführt werden. Wenn der Ergebnissatz mehr als 1.000 Entitäten enthält, wenn die Abfrage nicht innerhalb von fünf Sekunden abgeschlossen wurde oder die Abfrage die Partitionsgrenzen überschreitet, gibt der Tabellenspeicherdienst ein Fortsetzungstoken zurück, das der Clientanwendung ermöglicht, den nächsten Satz Entitäten anzufordern. Weitere Informationen über die Funktionsweise von Fortsetzungstoken finden Sie unter [Abfragetimeout und Paginierung](/rest/api/storageservices/Query-Timeout-and-Pagination).  
 
 Bei Verwendung der Storage Client Library kann diese automatisch Fortsetzungstoken für Sie handhaben, da es Entitäten aus dem Tabellenspeicherdienst zurückgibt. Das folgende C#-Codebeispiel verwendet die Storage Client Library und handhabt automatisch Fortsetzungstoken, wenn er vom Tabellenspeicherdienst in der Antwort zurückgegeben wird:  
 

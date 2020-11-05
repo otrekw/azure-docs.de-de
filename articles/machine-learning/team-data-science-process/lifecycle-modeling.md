@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336444"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305610"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modellierungsphase des Team Data Science-Prozesslebenszyklus
 
@@ -41,8 +41,8 @@ Dies ist eine visuelle Darstellung des TDSP-Lebenszyklus:
 ## <a name="how-to-do-it"></a>Vorgehensweise
 In dieser Phase werden drei Hauptaufgaben durchgeführt:
 
-  * **Featureentwicklung**: Erstellen Sie Datenfeatures aus den Rohdaten, um das Trainieren des Modells zu ermöglichen.
-  * **Modelltraining**: Ermitteln Sie das Modell, mit dem die Frage am genauesten beantwortet wird, indem Sie die Erfolgsmetriken vergleichen.
+  * **Featureentwicklung** : Erstellen Sie Datenfeatures aus den Rohdaten, um das Trainieren des Modells zu ermöglichen.
+  * **Modelltraining** : Ermitteln Sie das Modell, mit dem die Frage am genauesten beantwortet wird, indem Sie die Erfolgsmetriken vergleichen.
   * Bestimmen Sie, ob Ihr Modell **für die Produktion geeignet** ist.
 
 ### <a name="feature-engineering"></a>Featureentwicklung
@@ -63,7 +63,7 @@ Der Prozess für das Modelltraining umfasst die folgenden Schritte:
    * **Ermitteln Sie die „beste“ Lösung** für die Beantwortung der Frage, indem Sie die Erfolgsmetrik für die alternativen Methoden vergleichen.
 
 > [!NOTE]
-> **Vermeiden von Datenlecks**: Datenlecks können dadurch verursacht werden, dass Daten von außerhalb des Trainingsdatasets einbezogen werden, sodass ein Modell oder ein Algorithmus für maschinelles Lernen unrealistisch gute Vorhersagen ergibt. Datenlecks sind häufig der Grund dafür, warum Data Scientists nervös werden, wenn die Vorhersageergebnisse zu schön sind, um wahr zu sein. Es kann schwierig sein, diese Abhängigkeiten zu erkennen. Um Datenlecks zu vermeiden, ist häufig das wiederholte Durchlaufen der Schritte zur Erstellung eines Analyse-DataSets, Erstellung eines Modells und Auswertung der Genauigkeit der Ergebnisse erforderlich. 
+> **Vermeiden von Datenlecks** : Datenlecks können dadurch verursacht werden, dass Daten von außerhalb des Trainingsdatasets einbezogen werden, sodass ein Modell oder ein Algorithmus für maschinelles Lernen unrealistisch gute Vorhersagen ergibt. Datenlecks sind häufig der Grund dafür, warum Data Scientists nervös werden, wenn die Vorhersageergebnisse zu schön sind, um wahr zu sein. Es kann schwierig sein, diese Abhängigkeiten zu erkennen. Um Datenlecks zu vermeiden, ist häufig das wiederholte Durchlaufen der Schritte zur Erstellung eines Analyse-DataSets, Erstellung eines Modells und Auswertung der Genauigkeit der Ergebnisse erforderlich. 
 > 
 > 
 
@@ -74,7 +74,7 @@ In dieser Phase werden die folgenden Artefakte produziert:
 
    * [Featuregruppen](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Featuregruppen** des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
    * [Modellbericht](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Für jedes getestete Modell wird ein vorlagenbasierter Standardbericht mit Details zu den einzelnen Experimenten erstellt.
-   * **Prüfpunktentscheidung**: Analysieren Sie, ob das Modell für die Produktion geeignet ist. Einige wichtige Fragen lauten:
+   * **Prüfpunktentscheidung** : Analysieren Sie, ob das Modell für die Produktion geeignet ist. Einige wichtige Fragen lauten:
      * Kann die Frage mit dem Modell basierend auf den Testdaten ausreichend beantwortet werden? 
      * Sollten Alternativen ausprobiert werden? Sollten weitere Daten erfasst, weitere Features entwickelt oder Experimente mit anderen Algorithmen durchgeführt werden?
 
@@ -90,4 +90,4 @@ Hier finden Sie Links zu jedem Schritt im Lebenszyklus des TDSP:
 
 Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden, sind ebenfalls verfügbar. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 
-Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](./index.yml).

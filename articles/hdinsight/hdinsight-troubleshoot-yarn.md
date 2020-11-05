@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 84224172dbfd63fee51b3a7b80f5990b04e5e228
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535024"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288977"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -32,7 +32,7 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **def
 | thrftsvr | 25 % | 50% |
 | spark | 50% | 50% |
 
-1. Wählen Sie das **Ambari-Ansichten** -Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager** .
+1. Wählen Sie das **Ambari-Ansichten** -Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
 
     ![Apache Ambari-Dashboard: YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wählen Sie die Warteschlange **default** aus.
@@ -41,7 +41,7 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **def
 3. Ändern Sie für die **default** -Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr** -Warteschlange **capacity** in 25%.
 
     ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue** .
+4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue**.
 
     ![Apache Ambari YARN-Dashboard – Hinzufügen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -49,10 +49,10 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **def
 
     ![Apache Ambari YARN-Dashboard – Benennen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Lassen Sie die **capacity** -Werte auf 50%, und wählen Sie die Schaltfläche **Actions** .
+6. Lassen Sie die **capacity** -Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
 
     ![Apache Ambari YARN – Auswählen der Aktion](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Wählen Sie **Save and Refresh Queues** .
+7. Wählen Sie **Save and Refresh Queues**.
 
     ![„Save and Refresh Queues“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -136,10 +136,4 @@ Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angez
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
-
-- Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
-- Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-
-- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support** . Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

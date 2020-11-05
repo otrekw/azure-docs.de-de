@@ -1,17 +1,17 @@
 ---
 title: 'Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln: Azure Database for PostgreSQL-Einzelserver'
 description: Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem vom Kunden verwalteten Schlüssel ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c07f59ae183c2d4ac920c6b3773fc6d177622ad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490185"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242414"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -79,7 +79,7 @@ Wenn Sie Datenverschlüsselung durch einen vom Kunden verwalteten Schlüssel ver
 * Stellen Sie sicher, dass sich Key Vault und Azure Database for PostgreSQL-Einzelserver in derselben Region befinden, um einen schnelleren Zugriff für Wrap- und Unwrap-Vorgänge bei DEKs sicherzustellen.
 * Sperren Sie Azure Key Vault ausschließlich auf den **privaten Endpunkt und die ausgewählten Netzwerke** , und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten* , die Ressourcen zu schützen.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Vertrauenswürdiger Dienst mit AKV":::
 
 Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 
@@ -89,13 +89,13 @@ Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Kein Zugriff auf den kundenseitig verwalteten Schlüssel
 
-Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Azure Key Vault konfigurieren, wird fortlaufender Zugriff auf diesen Schlüssel benötigt, damit der Server online bleiben kann. Wenn der Server in Key Vault den Zugriff auf den vom Kunden verwalteten Schlüssel verliert, beginnt der Server innerhalb von 10 Minuten damit, alle Verbindungen zu verweigern. Der Server gibt eine entsprechende Fehlermeldung aus und ändert den Serverstatus in *Zugriff nicht möglich* . Der Server kann diesen Zustand u. a. aus den folgenden Gründen erreichen:
+Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Azure Key Vault konfigurieren, wird fortlaufender Zugriff auf diesen Schlüssel benötigt, damit der Server online bleiben kann. Wenn der Server in Key Vault den Zugriff auf den vom Kunden verwalteten Schlüssel verliert, beginnt der Server innerhalb von 10 Minuten damit, alle Verbindungen zu verweigern. Der Server gibt eine entsprechende Fehlermeldung aus und ändert den Serverstatus in *Zugriff nicht möglich*. Der Server kann diesen Zustand u. a. aus den folgenden Gründen erreichen:
 
-* Wenn Sie einen Server für die Point-in-Time-Wiederherstellung für Ihren Azure Database for PostgreSQL-Einzelserver erstellen, auf dem die Datenverschlüsselung aktiviert ist, hat der neu erstellte Server den Status *Kein Zugriff* . Sie können den Serverstatus über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Befehlszeilenschnittstelle](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
-* Wenn Sie ein Lesereplikat für Ihren Azure Database for PostgreSQL-Einzelserver erstellen, für das die Datenverschlüsselung aktiviert ist, hat der neu erstellte Replikatserver den Status *Kein Zugriff* . Sie können den Serverstatus über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Befehlszeilenschnittstelle](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
-* Wenn Sie den Schlüsseltresor löschen, kann der Azure Database for PostgreSQL-Einzelserver nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff* . Stellen Sie den [Schlüsseltresor](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
-* Wenn Sie den Schlüssel im Schlüsseltresor löschen, kann der Azure Database for PostgreSQL-Einzelserver nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff* . Stellen Sie den [Schlüssel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
-* Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Der Azure Database for PostgreSQL-Einzelserver wechselt dann in den Zustand *Kein Zugriff* . Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [Befehlszeilenschnittstelle](/cli/azure/keyvault/key#az-keyvault-key-set-attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
+* Wenn Sie einen Server für die Point-in-Time-Wiederherstellung für Ihren Azure Database for PostgreSQL-Einzelserver erstellen, auf dem die Datenverschlüsselung aktiviert ist, hat der neu erstellte Server den Status *Kein Zugriff*. Sie können den Serverstatus über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Befehlszeilenschnittstelle](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
+* Wenn Sie ein Lesereplikat für Ihren Azure Database for PostgreSQL-Einzelserver erstellen, für das die Datenverschlüsselung aktiviert ist, hat der neu erstellte Replikatserver den Status *Kein Zugriff*. Sie können den Serverstatus über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Befehlszeilenschnittstelle](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
+* Wenn Sie den Schlüsseltresor löschen, kann der Azure Database for PostgreSQL-Einzelserver nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüsseltresor](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
+* Wenn Sie den Schlüssel im Schlüsseltresor löschen, kann der Azure Database for PostgreSQL-Einzelserver nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüssel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
+* Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Der Azure Database for PostgreSQL-Einzelserver wechselt dann in den Zustand *Kein Zugriff*. Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [Befehlszeilenschnittstelle](/cli/azure/keyvault/key#az-keyvault-key-set-attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Versehentliche Sperrung des Zugriffs auf den Schlüssel durch Key Vault
 
@@ -135,7 +135,7 @@ Bei Azure Database for PostgreSQL gelten für die Unterstützung der Verschlüss
 * Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie im Abschnitt zu Speicher in der Dokumentation [hier](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]
-    > - Für alle neuen PostgreSQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar** . Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
+    > - Für alle neuen PostgreSQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar**. Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
     > - Um zu überprüfen, ob Ihr bereitgestellter Server bis zu 16 TB unterstützt, können Sie im Portal zum Blatt „Tarif“ navigieren und die maximale Speichergröße anzeigen, die Ihr bereitgestellter Server unterstützt. Wenn Sie den Schieberegler auf bis zu 4 TB verschieben können, unterstützt Ihr Server möglicherweise keine Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die Daten sind jedoch jederzeit mit dienstseitig verwalteten Schlüsseln verschlüsselt. Wenn Sie weitere Fragen haben, wenden Sie sich an AskAzureDBforPostgreSQL@service.microsoft.com.
 
 * Verschlüsselung wird nur mit RSA 2048-Kryptografieschlüsseln unterstützt.

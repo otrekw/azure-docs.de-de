@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604121"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286221"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundlagen der Key Vault-Authentifizierung
 
@@ -24,8 +24,8 @@ Als Administrator können Sie genau steuern, welche Benutzer und Anwendungen auf
 
 In diesem Dokument wird vorausgesetzt, dass Sie mit folgenden Konzepten vertraut sind. Wenn Sie sich mit diesen Konzepten nicht auskennen, nutzen Sie die Hilfelinks, bevor Sie fortfahren.
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-* [Sicherheitsprinzipale](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals)
+* [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+* [Sicherheitsprinzipale](./authentication.md#app-identity-and-security-principals)
 
 ## <a name="key-vault-configuration-steps-summary"></a>Zusammenfassung der Schritte zur Key Vault-Konfiguration
 
@@ -42,8 +42,8 @@ Wenn ein Benutzer oder eine Anwendung eine Anforderung an den Schlüsseltresor �
 Unter den nachfolgenden Dokumentationslinks erfahren Sie, wie Sie einen Benutzer oder eine Anwendung in Azure Active Directory registrieren.
 **Erstellen Sie unbedingt ein Kennwort für die Benutzerregistrierung und für Anwendungen ein Clientgeheimnis oder ein Clientzertifikat mit den Anmeldeinformationen.**
 
-* [Registrieren eines Benutzers in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)
-* [Registrieren einer Anwendung in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+* [Registrieren eines Benutzers in Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md)
+* [Registrieren einer Anwendung in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Zuweisen einer Rolle in Azure Active Directory zu Ihrem Sicherheitsprinzipal
 
@@ -57,8 +57,8 @@ Bei Key Vault legen diese Rollenzuweisungen die Zugriffsebene eines Sicherheitsp
 >[!NOTE]
 > Wenn Sie einem Benutzer eine Rollenzuweisung auf Mandantenebene von Azure Active Directory zuweisen, werden die zugehörigen Berechtigungen auf alle Abonnements, Ressourcengruppen und Ressourcen im Bereich der Zuweisung übertragen. Um das Prinzip minimaler Berechtigung einzuhalten, können Sie diese Rollenzuweisung auf einen differenzierteren Bereich anwenden. Beispielsweise können Sie einem Benutzer die Rolle „Leser“ auf Abonnementebene und die Rolle „Besitzer“ für einen spezifischen Schlüsseltresor zuweisen. Wenn Sie präzisere Rollenzuweisungen vornehmen möchten, wechseln Sie zu den IAM-Einstellungen (Identity & Access Management) des Abonnements, der Ressourcengruppe oder des Schlüsseltresors.
 
-* [Weitere Informationen zu Azure Active Directory-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-* [Weitere Informationen zum Zuweisen oder Aufheben von Rollenzuweisungen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Weitere Informationen zu Azure Active Directory-Rollen](../../role-based-access-control/built-in-roles.md)
+* [Weitere Informationen zum Zuweisen oder Aufheben von Rollenzuweisungen](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Konfigurieren von Zugriffsrichtlinien auf den Schlüsseltresor für einen Sicherheitsprinzipal
 
@@ -121,8 +121,8 @@ Key Vault-Rollenzuweisungen sind verschiedene in Azure integrierte Rollen mit al
 
 Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Key Vault finden Sie in den folgenden Dokumenten:
 
-* [Azure Key Vault-RBAC](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)
-* [RBAC-Rollen in Azure Key Vault (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview)
+* [Azure Key Vault-RBAC](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* [RBAC-Rollen in Azure Key Vault (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurieren der Key Vault-Firewall
 
@@ -132,9 +132,9 @@ Zum Aktivieren der Key Vault-Firewall klicken Sie im Portal des Schlüsseltresor
 
 * Fügen Sie der Positivliste der Key Vault-Firewall IPv4-Adressen hinzu. Diese Option funktioniert am besten bei Anwendungen mit statischen IP-Adressen.
 
-* Fügen Sie der Key Vault-Firewall ein virtuelles Netzwerk hinzu. Diese Option funktioniert am besten bei Azure-Ressourcen mit dynamischen IP-Adressen, z. B. virtuellen Computern. Sie können Azure-Ressourcen einem virtuellen Netzwerk hinzufügen und das virtuelle Netzwerk dann der Positivliste der Key Vault-Firewall hinzufügen. Bei dieser Option wird ein Dienstendpunkt verwendet, eine private IP-Adresse im virtuellen Netzwerk. Dies bietet eine zusätzliche Sicherheitsebene, da kein Datenverkehr zwischen dem Schlüsseltresor und Ihrem virtuellen Netzwerk über das öffentliche Internet weitergeleitet wird. Weitere Informationen zu Dienstendpunkten finden Sie in dieser Dokumentation: [Link](https://docs.microsoft.com/azure/key-vault/general/network-security).
+* Fügen Sie der Key Vault-Firewall ein virtuelles Netzwerk hinzu. Diese Option funktioniert am besten bei Azure-Ressourcen mit dynamischen IP-Adressen, z. B. virtuellen Computern. Sie können Azure-Ressourcen einem virtuellen Netzwerk hinzufügen und das virtuelle Netzwerk dann der Positivliste der Key Vault-Firewall hinzufügen. Bei dieser Option wird ein Dienstendpunkt verwendet, eine private IP-Adresse im virtuellen Netzwerk. Dies bietet eine zusätzliche Sicherheitsebene, da kein Datenverkehr zwischen dem Schlüsseltresor und Ihrem virtuellen Netzwerk über das öffentliche Internet weitergeleitet wird. Weitere Informationen zu Dienstendpunkten finden Sie in dieser Dokumentation: [Link](./network-security.md).
 
-* Fügen Sie eine private Verbindung mit dem Schlüsseltresor hinzu. Bei dieser Option wird das virtuelle Netzwerk direkt mit einer bestimmten Instanz von Key Vault verbunden, sodass Ihr Schlüsseltresor in Ihr virtuelles Netzwerk eingebunden wird. Weitere Informationen zum Konfigurieren einer Verbindung zwischen einem privaten Endpunkt und einem Schlüsseltresor finden Sie unter folgendem [Link](https://docs.microsoft.com/azure/key-vault/general/private-link-service).
+* Fügen Sie eine private Verbindung mit dem Schlüsseltresor hinzu. Bei dieser Option wird das virtuelle Netzwerk direkt mit einer bestimmten Instanz von Key Vault verbunden, sodass Ihr Schlüsseltresor in Ihr virtuelles Netzwerk eingebunden wird. Weitere Informationen zum Konfigurieren einer Verbindung zwischen einem privaten Endpunkt und einem Schlüsseltresor finden Sie unter folgendem [Link](./private-link-service.md).
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>Testen des Zugriffs Ihres Sicherheitsprinzipals auf den Schlüsseltresor
 
@@ -142,11 +142,11 @@ Nachdem Sie alle oben beschriebenen Schritte ausgeführt haben, können Sie Gehe
 
 ### <a name="authentication-process-for-users-examples"></a>Authentifizierungsvorgang für Benutzer (Beispiele)
 
-* Benutzer den Schlüsseltresor verwenden, indem sie sich beim Azure-Portal anmelden. [Schnellstart für das Key Vault-Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* Benutzer den Schlüsseltresor verwenden, indem sie sich beim Azure-Portal anmelden. [Schnellstart für das Key Vault-Portal](./quick-create-portal.md)
 
-* Benutzer können den Schlüsseltresor über die Azure-Befehlszeilenschnittstelle verwenden. [Schnellstart für die Verwendung der Azure-Befehlszeilenschnittstelle mit Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* Benutzer können den Schlüsseltresor über die Azure-Befehlszeilenschnittstelle verwenden. [Schnellstart für die Verwendung der Azure-Befehlszeilenschnittstelle mit Key Vault](./quick-create-cli.md)
 
-* Benutzer können den Schlüsseltresor über Azure PowerShell verwenden. [Schnellstart für die Verwendung von Azure PowerShell mit Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* Benutzer können den Schlüsseltresor über Azure PowerShell verwenden. [Schnellstart für die Verwendung von Azure PowerShell mit Key Vault](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>Azure Active Directory-Authentifizierungsprozess für Anwendungen oder Dienste (Beispiele)
 
@@ -156,14 +156,14 @@ Nachdem Sie alle oben beschriebenen Schritte ausgeführt haben, können Sie Gehe
 
 * Eine Azure-Ressource verwendet die MSI-Authentifizierung, um ein Azure Active Directory-Token zu erhalten. 
 
-* [Weitere Informationen zur MSI-Authentifizierung](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [Weitere Informationen zur MSI-Authentifizierung](../../active-directory/managed-identities-azure-resources/overview.md)
 
 ### <a name="authentication-process-for-application-python-example"></a>Authentifizierungsvorgang für die Anwendungen (Python-Beispiel)
 
 Verwenden Sie das folgende Codebeispiel, um zu testen, ob Ihre Anwendung mit dem von Ihnen konfigurierten Dienstprinzipal ein Geheimnis aus Ihrem Schlüsseltresor abrufen kann.
 
 >[!NOTE]
->Dieses Beispiel dient nur zu Demonstrations- und Testzwecken. **VERWENDEN SIE DIE AUTHENTIFIZIERUNG MIT GEHEIMEN CLIENTSCHLÜSSELN NICHT IN PRODUKTIONSUMGEBUNGEN**, da dies keine sichere Entwurfspraxis darstellt. Sie sollten ein Clientzertifikat oder die MSI-Authentifizierung als bewährte Methode nutzen.
+>Dieses Beispiel dient nur zu Demonstrations- und Testzwecken. **VERWENDEN SIE DIE AUTHENTIFIZIERUNG MIT GEHEIMEN CLIENTSCHLÜSSELN NICHT IN PRODUKTIONSUMGEBUNGEN** , da dies keine sichere Entwurfspraxis darstellt. Sie sollten ein Clientzertifikat oder die MSI-Authentifizierung als bewährte Methode nutzen.
 
 ```python
 from azure.identity import ClientSecretCredential
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Key Vault-Authentifizierung finden Sie im folgenden Dokument: [Authentifizieren bei Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+Weitere Informationen zur Key Vault-Authentifizierung finden Sie im folgenden Dokument: [Authentifizieren bei Azure Key Vault](./authentication.md)

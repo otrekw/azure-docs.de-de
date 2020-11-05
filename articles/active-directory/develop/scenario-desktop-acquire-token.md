@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 26f0c18fee8fe56a9bc0fa163ef59dfe0977cad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac22305e64e2f6bc2ec61bc65f7e92f1b1af1bf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825340"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287533"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -602,7 +602,7 @@ Sie können ein Token auch abrufen, indem Sie Benutzername und Kennwort angeben.
 
 ### <a name="this-flow-isnt-recommended"></a>Dieser Flow wird nicht empfohlen.
 
-Dieser Flow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
+Dieser Flow wird *nicht empfohlen* , da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
 
 > [!NOTE]
 > In manchen Fällen ist auch die Verwendung eines Benutzernamens und Kennworts hilfreich, z. B. in DevOps-Szenarien. Wenn Sie jedoch Benutzernamen und Kennwort in interaktiven Szenarien verwenden möchten, in denen Sie Ihre eigene Benutzeroberfläche bereitstellen, sollten Sie sich Gedanken darüber machen, wie Sie das ändern können. Durch die Verwendung von Benutzername und Kennwort geben Sie eine Reihe von Vorteilen auf:
@@ -954,7 +954,7 @@ Im folgenden Beispielcode wird der aktuelle Fall veranschaulicht. Außerdem erha
 ```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
-private readonly string[] Scopes = new string[] { "user.read" };
+private readonly string[] scopes = new string[] { "user.read" };
 
 static async Task<AuthenticationResult> GetATokenForGraph()
 {
@@ -969,7 +969,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
     // All AcquireToken* methods store the tokens in the cache, so check the cache first
     try
     {
-        return await pca.AcquireTokenSilent(Scopes, accounts.FirstOrDefault())
+        return await pca.AcquireTokenSilent(scopes, accounts.FirstOrDefault())
             .ExecuteAsync();
     }
     catch (MsalUiRequiredException ex)
@@ -1169,7 +1169,7 @@ Klassen und Schnittstellen, die an der Serialisierung über den Tokencache betei
 > [!IMPORTANT]
 > MSAL.NET erstellt automatisch Tokencaches und stellt den `IToken`-Cache für Sie bereit, wenn Sie die `UserTokenCache`-Methode und die `AppTokenCache`-Eigenschaften einer Anwendung aufrufen. Sie müssen die Schnittstelle nicht selbst implementieren. Beim Implementieren einer benutzerdefinierten Serialisierung des Tokencaches müssen Sie folgende Aufgaben ausführen:
 >
-> - Sie müssen auf Ereignisse vom Typ `BeforeAccess` und `AfterAccess` (oder auf deren *Async*-Pendant) reagieren. Der `BeforeAccess`-Delegat ist für das Deserialisieren des Caches verantwortlich. Der `AfterAccess`-Delegat ist für das Serialisieren des Caches verantwortlich.
+> - Sie müssen auf Ereignisse vom Typ `BeforeAccess` und `AfterAccess` (oder auf deren *Async* -Pendant) reagieren. Der `BeforeAccess`-Delegat ist für das Deserialisieren des Caches verantwortlich. Der `AfterAccess`-Delegat ist für das Serialisieren des Caches verantwortlich.
 > - Denken Sie daran, dass einige dieser Ereignisse Blobs speichern oder laden, die über das Ereignisargument an den gewünschten Speicher übergeben werden.
 
 Die Strategien variieren, je nachdem, ob Sie eine Tokencacheserialisierung für eine öffentliche Clientanwendung (z. B. ein Desktop) oder eine vertrauliche Clientanwendung (z. B. Web-App oder Web-API bzw. Daemon-App) schreiben.

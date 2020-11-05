@@ -1,18 +1,18 @@
 ---
 title: 'Datenverschlüsselung: Azure-Befehlszeilenschnittstelle – Azure Database for MySQL'
 description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenverschlüsselung für Azure Database for MySQL einrichten und verwalten.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799818"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242091"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Datenverschlüsselung für Azure Database for MySQL über die Azure-Befehlszeilenschnittstelle
 
@@ -50,7 +50,7 @@ Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenversch
 * Der Schlüssel muss die folgenden Attribute aufweisen, damit er als vom Kunden verwalteter Schlüssel verwendet werden kann:
   * Kein Ablaufdatum
   * Nicht deaktiviert
-  * Ausführen der Vorgänge **get**, **wrap** und **unwrap**
+  * Ausführen der Vorgänge **get** , **wrap** und **unwrap**
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Festlegen der richtigen Berechtigungen für Schlüsselvorgänge
 
@@ -68,7 +68,7 @@ Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenversch
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. Legen Sie die **Schlüsselberechtigungen** (**Get**, **Wrap**, **Unwrap**) für den **Prinzipal** (der Name des MySQL-Servers) fest.
+2. Legen Sie die **Schlüsselberechtigungen** ( **Get** , **Wrap** , **Unwrap** ) für den **Prinzipal** (der Name des MySQL-Servers) fest.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -148,7 +148,7 @@ Sie können die Datenverschlüsselung nicht nur im Azure-Portal, sondern auch au
 
 Verwenden Sie eine der vorab erstellten Azure Resource Manager-Vorlagen, um den Server mit aktivierter Datenverschlüsselung bereitzustellen: [Beispiel mit Datenverschlüsselung](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-Diese Azure Resource Manager-Vorlage erstellt einen Azure Database for MySQL-Server und verwendet **KeyVault** und **Key**, die als Parameter übergeben werden, um die Datenverschlüsselung auf dem Server zu aktivieren.
+Diese Azure Resource Manager-Vorlage erstellt einen Azure Database for MySQL-Server und verwendet **KeyVault** und **Key** , die als Parameter übergeben werden, um die Datenverschlüsselung auf dem Server zu aktivieren.
 
 ### <a name="for-an-existing-server"></a>Vorhandener Server
 

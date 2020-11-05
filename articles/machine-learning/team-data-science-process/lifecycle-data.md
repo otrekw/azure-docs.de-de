@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195071"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311877"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Phase „Datenerfassung und -auswertung“ des Team Data Science-Prozesses
 
@@ -41,8 +41,8 @@ Dies ist eine visuelle Darstellung des TDSP-Lebenszyklus:
 In dieser Phase werden drei Hauptaufgaben durchgeführt:
 
    * **Erfassen der Daten** in der Zielanalyseumgebung.
-   * **Untersuchen der Daten**, um zu ermitteln, ob die Datenqualität für die Beantwortung der Frage ausreicht. 
-   * **Einrichten einer Datenpipeline**, um neue oder regelmäßig aktualisierte Daten bewerten zu können.
+   * **Untersuchen der Daten** , um zu ermitteln, ob die Datenqualität für die Beantwortung der Frage ausreicht. 
+   * **Einrichten einer Datenpipeline** , um neue oder regelmäßig aktualisierte Daten bewerten zu können.
 
 ### <a name="ingest-the-data"></a>Erfassen der Daten
 Richten Sie den Prozess so ein, dass die Daten von den Quellspeicherorten an die Zielspeicherorte verschoben werden, an denen Analysevorgänge wie das Trainieren oder das Erstellen von Vorhersagen ausgeführt werden. Technische Details und Optionen zum Verschieben der Daten mit den verschiedenen Azure-Datendiensten finden Sie unter [Laden von Daten in Speicherumgebungen für Analysen](ingest-data.md). 
@@ -67,8 +67,8 @@ In dieser Phase entwickeln Sie eine Lösungsarchitektur der Datenpipeline. Sie e
 Hier sind die Ergebnisse dieser Phase angegeben:
 
    * [Bericht zur Datenqualität](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Dieser Bericht enthält Datenzusammenfassungen, Beziehungen zwischen den einzelnen Attributen und Zielen, die Rangfolge der Variablen usw. Mit dem in TDSP enthaltenen Tool [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) können Sie diesen Bericht für alle DataSets in Tabellenform, z.B. als CSV-Datei oder relationale Tabelle, schnell erstellen. 
-   * **Lösungsarchitektur**: Dies kann ein Diagramm oder eine Beschreibung Ihrer Datenpipeline sein, die zum Ausführen von Bewertungen oder Vorhersagen für neue Daten nach dem Erstellen eines Modells verwendet wird. Die Pipeline zum erneuten Trainieren Ihres Modells basierend auf den neuen Daten ist ebenfalls enthalten. Speichern Sie das Dokument im Verzeichnis [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project), wenn Sie die Vorlage für die TDSP-Verzeichnisstruktur verwenden.
-   * **Prüfpunktentscheidung**: Bevor Sie mit der vollständigen Featureentwicklung und Modellerstellung beginnen, können Sie das Projekt erneut auswerten, um zu ermitteln, ob Daten in ausreichender Menge vorhanden sind. Es kann beispielsweise sein, dass Sie bereit zum Fortfahren sind oder mehr Daten erfassen müssen oder das Projekt beenden müssen, weil für die Beantwortung der Frage keine Daten zur Verfügung stehen.
+   * **Lösungsarchitektur** : Dies kann ein Diagramm oder eine Beschreibung Ihrer Datenpipeline sein, die zum Ausführen von Bewertungen oder Vorhersagen für neue Daten nach dem Erstellen eines Modells verwendet wird. Die Pipeline zum erneuten Trainieren Ihres Modells basierend auf den neuen Daten ist ebenfalls enthalten. Speichern Sie das Dokument im Verzeichnis [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project), wenn Sie die Vorlage für die TDSP-Verzeichnisstruktur verwenden.
+   * **Prüfpunktentscheidung** : Bevor Sie mit der vollständigen Featureentwicklung und Modellerstellung beginnen, können Sie das Projekt erneut auswerten, um zu ermitteln, ob Daten in ausreichender Menge vorhanden sind. Es kann beispielsweise sein, dass Sie bereit zum Fortfahren sind oder mehr Daten erfassen müssen oder das Projekt beenden müssen, weil für die Beantwortung der Frage keine Daten zur Verfügung stehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -82,4 +82,4 @@ Hier finden Sie Links zu jedem Schritt im Lebenszyklus des TDSP:
 
 Wir bieten vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für bestimmte Szenarien gezeigt werden. Der Artikel mit [exemplarischen Vorgehensweisen](walkthroughs.md) enthält eine Liste der Szenarien mit Links und Kurzbeschreibungen. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools sowie Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 
-Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
+Beispiele für die Ausführung der Schritte in TDSPs mit Azure Machine Learning Studio finden Sie unter [Verwenden des TDSP mit Azure Machine Learning]().

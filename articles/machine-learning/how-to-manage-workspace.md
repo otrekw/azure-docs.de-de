@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897159"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312542"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
-In diesem Artikel erstellen, betrachten und löschen Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-ml.md) über das Azure-Portal oder mit dem [SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true).
+In diesem Artikel erstellen, betrachten und löschen Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-ml.md) über das Azure-Portal oder mit dem [SDK für Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py).
 
 Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisierung zunehmen, können Sie Arbeitsbereiche auch [mithilfe der CLI](reference-azure-machine-learning-cli.md) oder [über die VS-Code-Erweiterung](tutorial-setup-vscode-extension.md) erstellen und löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
-* Wenn Sie das Python SDK verwenden, [installieren Sie das SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* Wenn Sie das Python SDK verwenden, [installieren Sie das SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
@@ -105,7 +105,7 @@ Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisieru
                              exist_ok=False)
    ```
 
-Weitere Informationen finden Sie unter [SDK-Referenz für den Arbeitsbereich](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+Weitere Informationen finden Sie unter [SDK-Referenz für den Arbeitsbereich](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
 
 Wenn Sie Probleme beim Zugriff auf Ihr Abonnement haben, finden Sie weitere Informationen unter [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](how-to-setup-authentication.md) sowie im Notebook [Authentifizierung in Azure Machine Learning](https://aka.ms/aml-notebook-auth).
 
@@ -155,7 +155,7 @@ Wenn Sie Probleme beim Zugriff auf Ihr Abonnement haben, finden Sie weitere Info
 
 # <a name="python"></a>[Python](#tab/python)
 
-Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py&preserve-view=true), die mit [Workspace.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) verwendet werden kann, um einen Arbeitsbereich mit einem privaten Endpunkt zu erstellen. Diese Klasse erfordert ein vorhandenes virtuelles Netzwerk.
+Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py), die mit [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) verwendet werden kann, um einen Arbeitsbereich mit einem privaten Endpunkt zu erstellen. Diese Klasse erfordert ein vorhandenes virtuelles Netzwerk.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -183,11 +183,11 @@ Wenn Sie einen privaten Endpunkt erstellen, wird eine neue private DNS-Zone name
 2. Klicken Sie unter __Einstellungen__ auf __VNET-Verknüpfungen__.
 3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__ , um die Netzwerkverknüpfung hinzuzufügen.
 
-Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](/azure/private-link/private-endpoint-dns).
+Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 
-Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Sie sollten zulassen, dass Azure Security Center Ihre Ressourcen überprüft und die Empfehlungen befolgt. Weitere Informationen finden Sie unter [Azure Container Registry-Imagescans durch Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) und [Azure Kubernetes Service-Integration in Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
+Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Sie sollten zulassen, dass Azure Security Center Ihre Ressourcen überprüft und die Empfehlungen befolgt. Weitere Informationen finden Sie unter [Azure Container Registry-Imagescans durch Security Center](../security-center/defender-for-container-registries-introduction.md) und [Azure Kubernetes Service-Integration in Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
 ### <a name="advanced"></a>Erweitert
 
@@ -210,7 +210,7 @@ Führen Sie die folgenden Schritte aus, um Ihren eigenen Schlüssel bereitzustel
 > Vor diesen Schritten müssen Sie zunächst die folgenden Aktionen ausführen:   
 >
 > 1. Autorisieren Sie die __Machine Learning-App__ (in der Identitäts- und Zugriffsverwaltung) mit den Berechtigungen für Mitwirkende in Ihrem Abonnement.  
-> 1. Befolgen Sie die Schritte in [Konfigurieren von kundenseitig verwalteten Schlüsseln](/azure/cosmos-db/how-to-setup-cmk), um:
+> 1. Befolgen Sie die Schritte in [Konfigurieren von kundenseitig verwalteten Schlüsseln](../cosmos-db/how-to-setup-cmk.md), um:
 >     * Registrieren des Azure Cosmos DB-Anbieters
 >     * Erstellen und Konfigurieren einer Azure Key Vault-Instanz
 >     * Generieren eines Schlüssels

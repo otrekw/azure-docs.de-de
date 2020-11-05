@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37a17105be0b6754bbdfd935c6c17933314114d4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426441"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289584"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -202,8 +202,8 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] | 
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | 
+| Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 
 Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service](../../aks/use-managed-identity.md).
@@ -281,8 +281,8 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 |Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Vorschau | Vorschau | Vorschau |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | Vorschau | Vorschau | Vorschau |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Sets anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 

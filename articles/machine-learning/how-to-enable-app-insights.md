@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897648"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314214"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
 
@@ -143,7 +143,7 @@ Verwenden Sie den folgenden Code, um Azure Application Insights zu deaktivieren:
 Sie können Azure Application Insights auch in Azure Machine Learning Studio aktivieren. Sobald Ihr Modell als Webdienst bereitgestellt werden kann, führen Sie die folgenden Schritte aus, um Application Insights zu aktivieren:
 
 1. Melden Sie sich unter https://ml.azure.com bei Studio an.
-1. Navigieren Sie zu **Modelle**, und wählen Sie das bereitzustellende Modell aus.
+1. Navigieren Sie zu **Modelle** , und wählen Sie das bereitzustellende Modell aus.
 1. Wählen Sie **+ Bereitstellen** aus.
 1. Füllen Sie das Formular **Modell bereitstellen** aus.
 1. Erweitern Sie das Menü **Erweitert**.
@@ -204,9 +204,9 @@ Zum Protokollieren von Informationen zu Webdienstanforderungen fügen Sie der Da
 ## <a name="export-data-for-retention-and-processing"></a>Exportieren von Daten für die Aufbewahrung und die Verarbeitung
 
 >[!Important]
-> Azure Application Insights unterstützt nur Exporte in einen Blobspeicher. Weitere Informationen zu den Beschränkungen dieser Implementierung finden Sie unter [Exportieren von Telemetriedaten aus App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Azure Application Insights unterstützt nur Exporte in einen Blobspeicher. Weitere Informationen zu den Beschränkungen dieser Implementierung finden Sie unter [Exportieren von Telemetriedaten aus App Insights](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration).
 
-Verwenden Sie den [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) von Application Insights, um Daten in ein Blobspeicherkonto zu exportieren, für das Sie die Aufbewahrungseinstellungen definieren können. Application Insights exportiert die Daten im JSON-Format. 
+Verwenden Sie den [fortlaufenden Export](../azure-monitor/app/export-telemetry.md) von Application Insights, um Daten in ein Blobspeicherkonto zu exportieren, für das Sie die Aufbewahrungseinstellungen definieren können. Application Insights exportiert die Daten im JSON-Format. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Fortlaufendem Export":::
 
@@ -215,8 +215,8 @@ Verwenden Sie den [fortlaufenden Export](https://docs.microsoft.com/azure/azure-
 In diesem Artikel haben Sie gelernt, wie Sie die Protokollierung aktivieren und Protokolle für Webdienst-Endpunkte anzeigen. In den folgenden Artikeln werden die nächsten Schritte erläutert:
 
 
-* [Bereitstellen eines Modells in einem AKS-Cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [Bereitstellen eines Modells in einem AKS-Cluster](./how-to-deploy-azure-kubernetes-service.md)
 
-* [Bereitstellen eines Modells in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [Bereitstellen eines Modells in Azure Container Instances](./how-to-deploy-azure-container-instance.md)
 
-* [MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) erfahren Sie, wie Sie von Modellen in der Produktion erfasste Daten nutzen. Solche Daten können Sie dabei unterstützen, Ihren Machine Learning-Prozess kontinuierlich zu verbessern.
+* [MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](./concept-model-management-and-deployment.md) erfahren Sie, wie Sie von Modellen in der Produktion erfasste Daten nutzen. Solche Daten können Sie dabei unterstützen, Ihren Machine Learning-Prozess kontinuierlich zu verbessern.

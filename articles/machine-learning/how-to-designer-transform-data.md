@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983842"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312807"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformieren von Daten in Azure Machine Learning-Designer
 
 
 In diesem Artikel erfahren Sie, wie Sie Datasets in Azure Machine Learning-Designer transformieren und speichern, um Ihre eigenen Daten für Machine Learning vorzubereiten.
 
-Verwenden Sie das Datasetbeispiel [Adult Census Income Binary Classification](sample-designer-datasets.md) (Binäres Klassifizierungsdataset der Einkommenserhebung für Erwachsene), um zwei Datasets vorzubereiten: ein Dataset mit Erhebungsinformationen von Erwachsenen nur aus den USA und ein weiteres Dataset mit Erhebungsinformationen von Erwachsenen außerhalb der USA.
+Verwenden Sie das Datasetbeispiel [Adult Census Income Binary Classification](./samples-designer.md) (Binäres Klassifizierungsdataset der Einkommenserhebung für Erwachsene), um zwei Datasets vorzubereiten: ein Dataset mit Erhebungsinformationen von Erwachsenen nur aus den USA und ein weiteres Dataset mit Erhebungsinformationen von Erwachsenen außerhalb der USA.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um das Beispieldataset zu importieren.
 
 In diesem Abschnitt verwenden Sie das Modul [Split Data](algorithm-module-reference/split-data.md) (Daten aufteilen), um Zeilen zu identifizieren und aufzuteilen, die „United-States“ in der Spalte „native-country“ enthalten. 
 
-1. Erweitern Sie in der Modulpalette auf der linken Seite Canvas den Abschnitt **Datentransformation**, und suchen Sie nach dem Modul **Split Data** (Daten aufteilen).
+1. Erweitern Sie in der Modulpalette auf der linken Seite Canvas den Abschnitt **Datentransformation** , und suchen Sie nach dem Modul **Split Data** (Daten aufteilen).
 
 1. Ziehen Sie das Modul **Split Data** (Daten aufteilen) per Drag & Drop unter das Datasetmodul auf der Canvas.
 
@@ -74,7 +74,7 @@ In diesem Abschnitt verwenden Sie das Modul [Split Data](algorithm-module-refere
 
 1. Legen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Splitter Modus** (Aufteilungsmodus) auf **Regulärer Ausdruck** fest.
 
-1. Geben Sie den **regulären Ausdruck**ein: `\"native-country" United-States`.
+1. Geben Sie den **regulären Ausdruck** ein: `\"native-country" United-States`.
 
     Der Modus **Regulärer Ausdruck** überprüft eine einzelne Spalte auf einen Wert. Weitere Informationen zum Modul „Split Data“ (Daten aufteilen) finden Sie auf der entsprechenden [Referenzseite für Algorithmen und Module](algorithm-module-reference/split-data.md).
 
@@ -89,44 +89,44 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
 1. Erweitern Sie in der Modulpalette auf der linken Seite Canvas den Abschnitt **Data Input and Output** (Dateneingabe und -ausgabe), und suchen Sie nach dem Modul **Export Data** (Daten exportieren).
 
-1. Ziehen Sie zwei Module zum Exportieren von Daten (**Export Data**) per Drag &Drop unter das Modul **Split Data** (Daten aufteilen).
+1. Ziehen Sie zwei Module zum Exportieren von Daten ( **Export Data** ) per Drag &Drop unter das Modul **Split Data** (Daten aufteilen).
 
-1. Verbinden Sie jeden Ausgabeport des Moduls **Split Data** (Daten aufteilen) mit jeweils einem **Export Data**-Modul (Daten exportieren).
+1. Verbinden Sie jeden Ausgabeport des Moduls **Split Data** (Daten aufteilen) mit jeweils einem **Export Data** -Modul (Daten exportieren).
 
     Ihre Pipeline sollte in etwa wie folgt aussehen:
 
     ![Screenshot: Verbinden der Module zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png)erforderlich.
 
-1. Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *links* des Moduls zum Aufteilen von Dateien (**Split Data**) verbunden ist.
+1. Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *links* des Moduls zum Aufteilen von Dateien ( **Split Data** ) verbunden ist.
 
     Die Reihenfolge der Ausgabeports ist für das Modul **Split Data** (Daten aufteilen) von Bedeutung. Der erste Ausgabeport enthält die Zeilen, in denen der reguläre Ausdruck „true“ ist. In diesem Fall enthält der erste Port Zeilen für ein US-bezogenes Einkommen, und der zweite Port enthält Zeilen für Nicht-US-bezogenes Einkommen.
 
 1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die folgenden Optionen aus:
     
-    **Datenspeichertyp**: Azure Blob Storage
+    **Datenspeichertyp** : Azure Blob Storage
 
-    **Datenspeicher**: Wählen Sie einen vorhandenen Datenspeicher aus, oder klicken Sie auf „Neuer Datenspeicher“, um einen neuen Datenspeicher zu erstellen.
+    **Datenspeicher** : Wählen Sie einen vorhandenen Datenspeicher aus, oder klicken Sie auf „Neuer Datenspeicher“, um einen neuen Datenspeicher zu erstellen.
 
-    **Pfad**: `/data/us-income`
+    **Pfad** : `/data/us-income`
 
-    **Dateiformat**: CSV
+    **Dateiformat** : CSV
 
     > [!NOTE]
     > In diesem Artikel wird davon ausgegangen, dass Sie Zugriff auf einen Datenspeicher haben, der für den aktuellen Azure Machine Learning-Arbeitsbereich registriert ist. Anweisungen zum Einrichten eines Datenspeichers finden Sie unter [Herstellen einer Verbindung mit Azure-Speicherdiensten](how-to-connect-data-ui.md#create-datastores).
 
     Wenn Sie über keinen Datenspeicher verfügen, können Sie nun einen erstellen. In diesem Artikel werden die Datasets beispielsweise im standardmäßigen BLOB-Speicherkonto gespeichert, das dem Arbeitsbereich zugeordnet ist. Die Datasets werden im `azureml`-Container in einem neuen Ordner mit dem Namen `data` gespeichert.
 
-1.  Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *rechts* des Moduls zum Aufteilen von Dateien (**Split Data**) verbunden ist.
+1.  Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *rechts* des Moduls zum Aufteilen von Dateien ( **Split Data** ) verbunden ist.
 
 1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die folgenden Optionen aus:
     
-    **Datenspeichertyp**: Azure Blob Storage
+    **Datenspeichertyp** : Azure Blob Storage
 
-    **Datenspeicher**: Wählen Sie den gleichen Datenspeicher wie oben aus.
+    **Datenspeicher** : Wählen Sie den gleichen Datenspeicher wie oben aus.
 
-    **Pfad**: `/data/non-us-income`
+    **Pfad** : `/data/non-us-income`
 
-    **Dateiformat**: CSV
+    **Dateiformat** : CSV
 
 1. Überprüfen Sie, ob das Modul **Export Data** (Daten exportieren), das mit dem linken Port des Moduls zum **Aufteilen von Dateien** (Split Data) verbunden ist, den **Pfad** `/data/us-income` aufweist.
 

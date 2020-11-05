@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bd42b6e9f1498db294b57d0ea1ffdac5245be8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907702"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309976"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
@@ -22,7 +22,7 @@ In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein logistisches Regressionsmodell zu erstellen, mit dem Sie zwei (und nur zwei) Ergebnisse vorhersagen können. 
 
-Die logistische Regression ist eine bekannte statistische Methode, die zur Modellierung vieler Arten von Problemen verwendet wird. Dieser Algorithmus ist eine *überwachte Lernmethode*, weshalb Sie ein Dataset bereitstellen müssen, das bereits die Ergebnisse zum Trainieren des Modells enthält.  
+Die logistische Regression ist eine bekannte statistische Methode, die zur Modellierung vieler Arten von Problemen verwendet wird. Dieser Algorithmus ist eine *überwachte Lernmethode* , weshalb Sie ein Dataset bereitstellen müssen, das bereits die Ergebnisse zum Trainieren des Modells enthält.  
 
 ### <a name="about-logistic-regression"></a>Informationen zur logistischen Regression  
 
@@ -58,11 +58,11 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
      Dieser Algorithmus unterstützt eine lineare Kombination von L1- und L2-Regularisierungswerten, d.h. wenn <code>x = L1</code> und <code>y = L2</code>, dann definiert <code>ax + by = c</code> die lineare Spanne der Regalisierungsbegriffe.  
   
     > [!NOTE]
-    >  Möchten Sie mehr zur L1- und L2-Regularisierung erfahren? Der folgende Artikel bietet eine Diskussion darüber, inwieweit sich die L1- und L2-Regularisierung unterscheiden und wie sie sich auf die Modellanpassung auswirken, sowie Codebeispiele für logistische Regressions- und neuronale Netzmodelle:  [L1- und L2-Regularisierung für Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Möchten Sie mehr zur L1- und L2-Regularisierung erfahren? Der folgende Artikel bietet eine Diskussion darüber, inwieweit sich die L1- und L2-Regularisierung unterscheiden und wie sie sich auf die Modellanpassung auswirken, sowie Codebeispiele für logistische Regressions- und neuronale Netzmodelle:  [L1- und L2-Regularisierung für Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)  
     >
     > Für logistische Regressionsmodelle wurden verschiedene lineare Kombinationen von L1- und L2-Begriffen entwickelt: zum Beispiel [Regularisierung mit elastischem Netz](https://wikipedia.org/wiki/Elastic_net_regularization). Wir empfehlen, dass Sie sich auf diese Kombinationen beziehen, um eine lineare Kombination zu definieren, die in Ihrem Modell wirksam ist.
       
-5.  Geben Sie für **Memory size for L-BFGS** (Speichergröße für L-BFGS) die Speichergröße an, die für die *L-BFGS*-Optimierung verwendet werden soll.  
+5.  Geben Sie für **Memory size for L-BFGS** (Speichergröße für L-BFGS) die Speichergröße an, die für die *L-BFGS* -Optimierung verwendet werden soll.  
   
      L-BFGS steht für „limited memory Broyden-Fletcher-Goldfarb-Shanno“. Es handelt sich um einen Optimierungsalgorithmus, der häufig zur Parameterschätzung verwendet wird. Dieser Parameter gibt die Anzahl der bisherigen Positionen und Gradienten an, die für die Berechnung des nächsten Schritts gespeichert werden sollen.  
   
@@ -97,4 +97,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

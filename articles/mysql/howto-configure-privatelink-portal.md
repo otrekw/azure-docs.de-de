@@ -1,17 +1,17 @@
 ---
 title: Private Link – Azure-Portal – Azure Database for MySQL
 description: Erfahren Sie, wie Sie Privat Link für Azure Database for MySQL über das Azure-Portal konfigurieren.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: b6a2725c6e4d72e8e79e3e45cc60060c02d90cac
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545003"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242397"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL im Portal
 
@@ -61,37 +61,37 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
     | **INSTANZDETAILS** |  |
     | Name des virtuellen Computers | Geben Sie *myVm* ein. |
     | Region | Wählen Sie **Europa, Westen** aus. |
-    | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich** . |
+    | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich**. |
     | Image | Wählen Sie **Windows Server 2019 Datacenter** aus. |
-    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2** . |
+    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
     | **ADMINISTRATORKONTO** |  |
     | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **REGELN FÜR EINGEHENDE PORTS** |  |
-    | Öffentliche Eingangsports | Übernehmen Sie den Standardwert **Keine** . |
+    | Öffentliche Eingangsports | Übernehmen Sie den Standardwert **Keine**. |
     | **SPAREN SIE GELD** |  |
-    | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein** . |
+    | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein**. |
     |||
 
-1. Klicken Sie auf **Weiter: Datenträger** .
+1. Klicken Sie auf **Weiter: Datenträger**.
 
-1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk** .
+1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk**.
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork** .  |
-    | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24** .|
+    | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
+    | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
     | Subnet | Übernehmen Sie den Standardwert **mySubnet (10.1.0.0/24)** .|
-    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **(neu) myVm-ip** . |
+    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **(neu) myVm-ip**. |
     | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
     | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus.|
     |||
 
 
-1. Klicken Sie auf **Überprüfen + erstellen** . Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
@@ -117,8 +117,8 @@ In diesem Abschnitt erstellen Sie einen Azure Database for MySQL-Server in Azure
     | Compute + Speicher| Wählen Sie den für den Server erforderlichen Tarif basierend auf der Workload aus. |
     |||
  
-7. Klicken Sie auf **OK** . 
-8. Klicken Sie auf **Überprüfen + erstellen** . Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
+7. Klicken Sie auf **OK**. 
+8. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
 9. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus. 
 10. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie „Erstellen“ aus. 
 
@@ -175,10 +175,10 @@ In diesem Abschnitt erstellen Sie einen MySQL-Server und fügen diesem einen pri
     > [!Note] 
     > Verwenden Sie die vordefinierte private DNS-Zone für Ihren Dienst, oder geben Sie Ihren bevorzugten DNS-Zonennamen an. Ausführliche Informationen finden Sie unter [DNS-Zonenkonfiguration für Azure-Dienste](../private-link/private-endpoint-dns.md).
 
-1. Klicken Sie auf **Überprüfen + erstellen** . Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
+1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
 2. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Übersicht über Private Link":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Erstellter Private Link":::
 
     > [!NOTE] 
     > Der FQDN in der DNS-Einstellung des Kunden wird nicht in die konfigurierte private IP-Adresse aufgelöst. Sie müssen eine DNS-Zone für den konfigurierten FQDN einrichten, wie [hier](../dns/dns-operations-recordsets-portal.md) gezeigt.
@@ -194,7 +194,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei ( *RDP* ) und lädt sie auf Ihren Computer herunter.
 
-1. Öffnen Sie die Datei *downloaded.rdp* .
+1. Öffnen Sie die Datei *downloaded.rdp*.
 
     1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
@@ -203,7 +203,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
         > [!NOTE]
         > Unter Umständen müssen Sie **Weitere Optionen** > **Anderes Konto verwenden** auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 
-1. Klicken Sie auf **OK** .
+1. Klicken Sie auf **OK**.
 
 1. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn Sie eine Zertifikatwarnung erhalten, wählen Sie **Ja** oder **Weiter** aus.
 
@@ -249,7 +249,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MySQL-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
 
 1. Geben Sie oben im Portal im Feld **Suchen** die Zeichenfolge *myResourceGroup* ein, und wählen Sie in den Suchergebnissen den Eintrag *myResourceGroup* aus.
-2. Wählen Sie die Option **Ressourcengruppe löschen** .
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
 3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

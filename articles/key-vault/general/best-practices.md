@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a522e58677e2c71cb52ad7e04b288622ad62d91
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189883"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287329"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Bewährte Methoden zum Verwenden von Key Vault
 
@@ -39,15 +39,15 @@ Stellen Sie sicher, dass Sie regelmäßig Sicherungskopien Ihres Schlüsseltreso
 
 ### <a name="azure-powershell-backup-commands"></a>Sicherungsbefehle für Azure PowerShell
 
-* [Sichern eines Zertifikats](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate?view=azurermps-6.13.0)
-* [Sichern eines Schlüssels](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey?view=azurermps-6.13.0)
-* [Sichern eines Geheimnisses](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret?view=azurermps-6.13.0)
+* [Sichern eines Zertifikats](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate?view=azurermps-6.13.0)
+* [Sichern eines Schlüssels](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey?view=azurermps-6.13.0)
+* [Sichern eines Geheimnisses](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret?view=azurermps-6.13.0)
 
 ### <a name="azure-cli-backup-commands"></a>Sicherungsbefehle der Azure-Befehlszeilenschnittstelle
 
-* [Sichern eines Zertifikats](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-backup)
-* [Sichern eines Schlüssels](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-backup)
-* [Sichern eines Geheimnisses](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-backup)
+* [Sichern eines Zertifikats](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-backup)
+* [Sichern eines Schlüssels](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-backup)
+* [Sichern eines Geheimnisses](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-backup)
 
 
 ## <a name="turn-on-logging"></a>Aktivieren der Protokollierung

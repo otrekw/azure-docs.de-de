@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164396"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285278"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -96,7 +96,17 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 1. Wählen Sie **Weiter** aus.
 1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze** , wie hier gezeigt:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Auswählen von Tests zur Überprüfung des Clusters":::
+
+1. Wählen Sie **Weiter** aus.
+1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
+
+Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
+
+Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
    ```
 
 Erstellen Sie nach dem Validieren des Clusters den Failovercluster.
@@ -141,7 +151,7 @@ Konfigurieren Sie die Quorumlösung, die Ihren Geschäftsanforderungen am besten
 
 Testen Sie das Failover Ihres Clusters. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf den Cluster, und wählen Sie **Weitere Aktionen** > **Hauptclusterressource verschieben** > **Knoten auswählen** und dann den anderen Knoten des Clusters aus. Verschieben Sie die Hauptclusterressource auf alle Knoten des Clusters und dann zurück auf den primären Knoten. Wenn Sie den Cluster erfolgreich auf jeden Knoten verschieben können, können Sie SQL Server installieren.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Testen des Clusterfailovers durch Verschieben der Hauptressource auf die anderen Knoten":::
 
 
 ## <a name="create-sql-server-fci"></a>Erstellen der SQL Server-FCI
@@ -162,7 +172,7 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
    Die FCI-Datenverzeichnisse müssen sich auf der Premium-Dateifreigabe befinden. Geben Sie den vollständigen Pfad der Freigabe im folgenden Format ein: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Eine Warnung wird angezeigt, die Sie darüber informiert, dass Sie einen Dateiserver als Datenverzeichnis angegeben haben. Diese Warnung ist erwartungsgemäß. Vergewissern Sie sich zur Vermeidung möglicher Fehler, dass das Benutzerkonto, mit dem Sie beim persistenten Speichern der Dateifreigabe über RDP auf die VM zugegriffen haben, dasselbe Konto ist, das der SQL Server-Dienst verwendet.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Verwenden der Dateifreigabe als SQL-Datenverzeichnisse":::
 
 1. Nach Abschluss der Schritte des Assistenten wird vom Setup eine SQL Server-FCI auf dem ersten Knoten installiert.
 
@@ -200,7 +210,7 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 - MS DTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden unter Windows Server 2016 und früheren Versionen nicht unterstützt. 
 - Filestream wird für einen Failovercluster mit einer Premium-Dateifreigabe nicht unterstützt. Um Filestream zu verwenden, stellen Sie den Cluster stattdessen mithilfe von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) oder von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) bereit.
-- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#management-modes) wird unterstützt. 
+- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

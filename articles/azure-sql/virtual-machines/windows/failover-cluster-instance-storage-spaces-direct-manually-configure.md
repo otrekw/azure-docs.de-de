@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792513"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289957"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -206,7 +206,7 @@ Nachdem Sie den Failovercluster und alle Clusterkomponenten einschließlich Spei
 
 1. Nachdem das Setup die FCI auf dem ersten Knoten installiert hat, können Sie per RDP eine Verbindung mit dem zweiten Knoten herstellen.
 
-1. Öffnen Sie das **SQL Server-Installationscenter** . Wählen Sie **Installation** aus.
+1. Öffnen Sie das **SQL Server-Installationscenter**. Wählen Sie **Installation** aus.
 
 1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
@@ -239,7 +239,7 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 - Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf CSVs und einen [Standardlastenausgleich](../../../load-balancer/load-balancer-overview.md).
 - Datenträger, die als NTFS-formatierte Datenträger angefügt wurden, können nur dann mit „Direkte Speicherplätze“ verwendet werden, wenn die Option für die Datenträgerberechtigung beim Hinzufügen von Speicher zum Cluster deaktiviert ist oder wird. 
-- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#management-modes) wird unterstützt.
+- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

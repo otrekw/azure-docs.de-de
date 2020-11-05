@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327415"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289537"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
 
@@ -23,7 +23,7 @@ Azure Key Vault ermöglicht das einfache Bereitstellen und Verwalten von digital
 
 Azure Key Vault-Benutzer können DigiCert-Zertifikate direkt aus ihrem Key Vault generieren. Key Vault würde die Verwaltung des End-to-End-Zertifikatlebenszyklus für solche Zertifikate sicherstellen, die von DigiCert über die vertrauenswürdige Partnerschaft von Key Vault mit der DigiCert-Zertifizierungsstelle ausgestellt wurden.
 
-Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vault-Zertifikate](/azure/key-vault/certificates/about-certificates).
+Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vault-Zertifikate](./about-certificates.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -61,7 +61,7 @@ Nachdem Sie die Informationen aus dem DigiCert CertCentral-Konto gesammelt haben
     -   **Account ID (Konto-ID)** : Geben Sie Ihre DigiCert CertCentral-Konto-ID ein.
     -   **Kontokennwort** : Geben Sie den API-Schlüssel ein, den Sie in Ihrem DigiCert CertCentral-Konto erstellt haben.
     -   **Organisations-ID** : Geben Sie die aus dem DigiCert CertCentral-Konto gesammelte OrgID ein. 
-    -   Klicken Sie auf **Erstellen** .
+    -   Klicken Sie auf **Erstellen**.
    
 6.  Sie werden feststellen, dass DigicertCA jetzt in der Liste der Zertifizierungsstellen hinzugefügt ist.
 
@@ -76,7 +76,7 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 Login-AzAccount
 ```
 
-1.  Erstellen Sie eine **Ressourcengruppe** .
+1.  Erstellen Sie eine **Ressourcengruppe**.
 
 Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
@@ -84,7 +84,7 @@ Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azre
 New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 ```
 
-2. Erstellen Sie einen **Schlüsseltresor** .
+2. Erstellen Sie einen **Schlüsseltresor**.
 
 Sie müssen einen eindeutigen Namen für Ihren Schlüsseltresor verwenden. Hier ist „Contoso-Vaultname“ der Name für den Schlüsseltresor in diesem Handbuch.
 

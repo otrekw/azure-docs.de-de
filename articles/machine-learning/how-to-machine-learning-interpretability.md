@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322358"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311505"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
 
@@ -39,7 +39,7 @@ Die Möglichkeit, ein Machine Learning-Modell erklären zu können, ist in zwei 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretierbarkeit mit Azure Machine Learning
 
-Die Interpretierbarkeitsklassen werden über das folgende SDK-Paket zur Verfügung gestellt: (Erfahren Sie, wie Sie [SDK-Pakete für Azure Machine Learning installieren](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).)
+Die Interpretierbarkeitsklassen werden über das folgende SDK-Paket zur Verfügung gestellt: (Erfahren Sie, wie Sie [SDK-Pakete für Azure Machine Learning installieren](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).)
 
 * `azureml.interpret`, enthält von Microsoft unterstützte Funktionen.
 
@@ -65,7 +65,7 @@ Erfahren Sie hier mehr über unterstützte Interpretierbarkeitstechniken, unters
 |Interpretierbarkeitstechnik|BESCHREIBUNG|type|
 |--|--|--------------------|
 |SHAP Tree Explainer| Der Tree Explainer von [SHAP](https://github.com/slundberg/shap), der auf den schnellen Schätzalgorithmus für Werte von SHAP für die Polynomialzeit speziell für **Baumstrukturen und Gruppen von Baumstrukturen** ausgelegt ist.|Modellspezifisch|
-|SHAP Deep Explainer| Basierend auf der Erläuterung von SHAP ist DeepExplainer „ein schneller Näherungsalgorithmus für SHAP-Werte in Deep-Learning-Modellen, der auf einer im [NIPS-Paper über SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions) beschriebenen Verbindung mit DeepLIFT aufbaut. **TensorFlow**- und **Keras**-Modelle, die das TensorFlow-Back-End verwenden, werden unterstützt (es gibt auch eine vorläufige Unterstützung für PyTorch)“.|Modellspezifisch|
+|SHAP Deep Explainer| Basierend auf der Erläuterung von SHAP ist DeepExplainer „ein schneller Näherungsalgorithmus für SHAP-Werte in Deep-Learning-Modellen, der auf einer im [NIPS-Paper über SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions) beschriebenen Verbindung mit DeepLIFT aufbaut. **TensorFlow** - und **Keras** -Modelle, die das TensorFlow-Back-End verwenden, werden unterstützt (es gibt auch eine vorläufige Unterstützung für PyTorch)“.|Modellspezifisch|
 |SHAP Linear Explainer| LinearExplainer in SHAP berechnet SHAP-Werte für ein **lineares Modell** und erklärt optional Korrelationen zwischen Features.|Modellspezifisch|
 |SHAP Kernel Explainer| KernelExplainer in SHAP verwendet eine speziell gewichtete lokale lineare Regression zum Schätzen von SHAP-Werten für **alle Modelle**.|Modellagnostisch|
 |Mimic Explainer (Globaler Surrogat)| Der Mimic Explainer basiert auf der Idee des Trainierens von [globalen Surrogatmodellen](https://christophm.github.io/interpretable-ml-book/global.html) zur Nachahmung von Blackboxmodellen. Ein globales Surrogatmodell ist ein eigenständig interpretierbares Modell, das trainiert wird, um die Vorhersagen **eines Blackbox-Modells** so genau wie möglich zu treffen. Data Scientists können das Surrogatmodell interpretieren, um Rückschlüsse in Bezug auf das Blackbox-Modell zu ziehen. Sie können eines der folgenden interpretierbaren Modelle als Surrogatmodell verwenden: LightGBM (LGBMExplainableModel), Linear Regression (LinearExplainableModel), Stochastic Gradient Descent explainable model (SGDExplainableModel) und Decision Tree (DecisionTreeExplainableModel).|Modellagnostisch|

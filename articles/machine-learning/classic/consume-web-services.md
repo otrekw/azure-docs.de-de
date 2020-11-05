@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339301"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305561"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Nutzen eines Webdiensts in Machine Learning Studio (Classic)
 
-**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Sobald Sie ein (klassisches) Azure Machine Learning Studio-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
@@ -89,7 +89,7 @@ Im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/):
 
 Klicken Sie auf **Use Web Service** (Webdienst verwenden), um die URIs für die Dienste „Request-Reposonse“ und „Batch Execution“ und Beispielcode in C#, R und Python abzurufen.
 
-Klicken Sie auf **Swagger API**, um auf Swagger basierende Dokumentation zu den APIs abzurufen, die über die angegebenen URIs aufgerufen werden.
+Klicken Sie auf **Swagger API** , um auf Swagger basierende Dokumentation zu den APIs abzurufen, die über die angegebenen URIs aufgerufen werden.
 
 ### <a name="c-sample"></a>C#-Beispiel
 Verwenden Sie zum Verbinden mit einem Machine Learning-Webdienst einen **HttpClient** durch Übergeben von ScoreData. ScoreData enthält ein FeatureVector, ein n-dimensionaler Vektor von numerischen Funktionen, die die ScoreData darstellen. Sie authentifizieren sich mit einem API-Schlüssel beim Machine Learning-Dienst.
@@ -250,7 +250,7 @@ except urllib2.HTTPError, error:
 
 ### <a name="r-sample"></a>R-Beispiel
 
-Für eine Verbindung mit einem Machine Learning-Webdienst verwenden Sie die Bibliotheken **RCurl** und **rjson**, um die Anforderung auszuführen und die zurückgegebene JSON-Antwort zu verarbeiten. Sie übergeben „ScoreData“. Darin ist ein „FeatureVector“-Element enthalten, ein n-dimensionaler Vektor von numerischen Features, die „ScoreData“ darstellen. Sie authentifizieren sich mit einem API-Schlüssel beim Machine Learning-Dienst.
+Für eine Verbindung mit einem Machine Learning-Webdienst verwenden Sie die Bibliotheken **RCurl** und **rjson** , um die Anforderung auszuführen und die zurückgegebene JSON-Antwort zu verarbeiten. Sie übergeben „ScoreData“. Darin ist ein „FeatureVector“-Element enthalten, ein n-dimensionaler Vektor von numerischen Features, die „ScoreData“ darstellen. Sie authentifizieren sich mit einem API-Schlüssel beim Machine Learning-Dienst.
 
 **So sieht eine vollständige Anforderung aus.**
 ```r

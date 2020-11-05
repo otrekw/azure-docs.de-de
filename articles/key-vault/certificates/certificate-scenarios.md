@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124220"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286890"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -37,7 +37,7 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
 
 **Schritt 1** : Anbieter von Zertifizierungsstellen  
 -   Onboarding als IT-Administrator, PKI-Administrator oder als ein anderer Benutzer, der Konten bei Zertifizierungsstellen verwaltet, für ein bestimmtes Unternehmen (z.B. Contoso) ist eine Voraussetzung für die Verwendung von Key Vault-Zertifikaten.  
-    Die folgenden Zertifizierungsstellen sind aktuell Key Vault-Partneranbieter. [Hier](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers) erhalten Sie weitere Informationen.   
+    Die folgenden Zertifizierungsstellen sind aktuell Key Vault-Partneranbieter. [Hier](./create-certificate.md#partnered-ca-providers) erhalten Sie weitere Informationen.   
     -   DigiCert: Key Vault bietet OV-TLS-/SSL-Zertifikate mit DigiCert.  
     -   GlobalSign: Key Vault bietet OV-TSL-/SSL-Zertifikate mit GlobalSign.  
 
@@ -50,7 +50,7 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
     -   Anbieter  
     -   Anmeldeinformationen: Kontoanmeldeinformationen für die Zertifizierungsstelle. Jede Zertifizierungsstelle verfügt über eigene spezifische Daten.  
 
-    Weitere Informationen zum Erstellen von Konten bei Anbietern von Zertifizierungsstellen finden Sie im zugehörigen Beitrag im [Key Vault-Blog](https://aka.ms/kvcertsblog).  
+    Weitere Informationen zum Erstellen von Konten bei Anbietern von Zertifizierungsstellen finden Sie im zugehörigen Beitrag im [Key Vault-Blog](/archive/blogs/kv/manage-certificates-via-azure-key-vault).  
 
 **Schritt 3.1** : Einrichten von [Zertifikatkontakten](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) für Benachrichtigungen. Dies ist der Kontakt für den Key Vault-Benutzer. Key Vault erzwingt diesen Schritt nicht.  
 
@@ -82,7 +82,7 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Netzwerksicherheit und Zugriffsrichtlinien, die der integrierten Zertifizierungsstelle zugeordnet sind
-Der Key Vault-Dienst sendet Anforderungen an die Zertifizierungsstelle (ausgehender Datenverkehr). Daher ist sie vollständig kompatibel mit firewallfähigen Schlüsseltresoren. Der Key Vault-Dienst verwendet keine Zugriffsrichtlinien gemeinsam mit der Zertifizierungsstelle. Die Zertifizierungsstelle muss so konfiguriert werden, dass Signieranforderungen unabhängig akzeptiert werden. [Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Der Key Vault-Dienst sendet Anforderungen an die Zertifizierungsstelle (ausgehender Datenverkehr). Daher ist sie vollständig kompatibel mit firewallfähigen Schlüsseltresoren. Der Key Vault-Dienst verwendet keine Zugriffsrichtlinien gemeinsam mit der Zertifizierungsstelle. Die Zertifizierungsstelle muss so konfiguriert werden, dass Signieranforderungen unabhängig akzeptiert werden. [Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>Importieren eines Zertifikats  
  Alternative: Ein Zertifikat kann in Key Vault als PFX oder PEM importiert werden.  

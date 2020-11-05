@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: b04bd6975a2ba8824124c769e66da1e4ebe7534a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309932"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285842"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -24,11 +24,11 @@ Weitere Informationen zu Key Vault finden Sie unter [Informationen zu Azure Key 
 
 ## <a name="access-model-overview"></a>Übersicht über das Zugriffsmodell
 
-Der Zugriff auf einen Schlüsseltresor wird über zwei Schnittstellen gesteuert: die **Verwaltungsebene** und die **Datenebene** . Die Verwaltungsebene dient zum Verwalten des Schlüsseltresors selbst. Zu den Vorgängen in dieser Ebene gehören das Erstellen und Löschen von Schlüsseltresoren, das Abrufen von Schlüsseltresor-Eigenschaften und das Aktualisieren von Zugriffsrichtlinien. Auf der Datenebene arbeiten Sie mit den in einem Schlüsseltresor gespeicherten Daten. Sie können Schlüssel, Geheimnisse und Zertifikate hinzufügen, löschen und ändern.
+Der Zugriff auf einen Schlüsseltresor wird über zwei Schnittstellen gesteuert: die **Verwaltungsebene** und die **Datenebene**. Die Verwaltungsebene dient zum Verwalten des Schlüsseltresors selbst. Zu den Vorgängen in dieser Ebene gehören das Erstellen und Löschen von Schlüsseltresoren, das Abrufen von Schlüsseltresor-Eigenschaften und das Aktualisieren von Zugriffsrichtlinien. Auf der Datenebene arbeiten Sie mit den in einem Schlüsseltresor gespeicherten Daten. Sie können Schlüssel, Geheimnisse und Zertifikate hinzufügen, löschen und ändern.
 
-Für die Authentifizierung verwenden beide Ebenen [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Für die Autorisierung wird auf der Verwaltungsebene die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) verwendet, während auf der Datenebene eine [Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) und [Azure RBAC für Key Vault-Vorgänge auf Datenebene (Vorschau)](https://docs.microsoft.com/azure/key-vault/general/rbac-guide) zum Einsatz kommen.
+Für die Authentifizierung verwenden beide Ebenen [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Für die Autorisierung wird auf der Verwaltungsebene die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md) verwendet, während auf der Datenebene eine [Key Vault-Zugriffsrichtlinie](./assign-access-policy-portal.md) und [Azure RBAC für Key Vault-Vorgänge auf Datenebene (Vorschau)](./rbac-guide.md) zum Einsatz kommen.
 
-Um auf einen Schlüsseltresor in beiden Ebenen zugreifen zu können, müssen alle Anrufe (Benutzer oder Anwendungen) über eine ordnungsgemäße Authentifizierung und Autorisierung verfügen. Die Authentifizierung stellt die Identität des Anrufers fest. Die Autorisierung bestimmt, welche Vorgänge der Aufrufer ausführen darf. Die Authentifizierung mit Key Vault funktioniert in Verbindung mit [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), was für die Authentifizierung der Identität eines bestimmten **Sicherheitsprinzipals** zuständig ist.
+Um auf einen Schlüsseltresor in beiden Ebenen zugreifen zu können, müssen alle Anrufe (Benutzer oder Anwendungen) über eine ordnungsgemäße Authentifizierung und Autorisierung verfügen. Die Authentifizierung stellt die Identität des Anrufers fest. Die Autorisierung bestimmt, welche Vorgänge der Aufrufer ausführen darf. Die Authentifizierung mit Key Vault funktioniert in Verbindung mit [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), was für die Authentifizierung der Identität eines bestimmten **Sicherheitsprinzipals** zuständig ist.
 
 Ein Sicherheitsprinzipal ist ein Objekt, das Benutzer, Gruppen, Dienste oder Anwendungen darstellt, die Zugriff auf Azure-Ressourcen anfordern. Azure weist jedem Sicherheitsprinzipal eine eindeutige **Objekt-ID** zu.
 
@@ -36,7 +36,7 @@ Ein Sicherheitsprinzipal ist ein Objekt, das Benutzer, Gruppen, Dienste oder Anw
 
 * Eine **Gruppe** als Sicherheitsprinzipal identifiziert eine Gruppe von Benutzern, die in Azure Active Directory erstellt wurden. Alle Rollen oder Berechtigungen, die der Gruppe zugewiesen werden, werden allen Benutzern in der Gruppe erteilt.
 
-* Ein **Dienstprinzipal** ist ein Typ des Sicherheitsprinzipals, der für eine Anwendung oder einen Dienst steht und sozusagen ein Codeabschnitt anstelle eines Benutzers oder einer Gruppe ist. Die Objekt-ID eines Dienstprinzipals wird als dessen **Client-ID** bezeichnet und verhält sich wie der Benutzername. Der **geheime Clientschlüssel** oder das **Zertifikat** des Dienstprinzipals verhält sich wie sein Kennwort. Viele Azure-Dienste unterstützen das Zuweisen von [Verwaltete Identität](/azure/active-directory/managed-identities-azure-resources/overview) mit automatisierter Verwaltung von **Client-ID** und **Zertifikat** . „Verwaltete Identität“ ist die sicherste und empfohlene Option zum Authentifizieren in Azure.
+* Ein **Dienstprinzipal** ist ein Typ des Sicherheitsprinzipals, der für eine Anwendung oder einen Dienst steht und sozusagen ein Codeabschnitt anstelle eines Benutzers oder einer Gruppe ist. Die Objekt-ID eines Dienstprinzipals wird als dessen **Client-ID** bezeichnet und verhält sich wie der Benutzername. Der **geheime Clientschlüssel** oder das **Zertifikat** des Dienstprinzipals verhält sich wie sein Kennwort. Viele Azure-Dienste unterstützen das Zuweisen von [Verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) mit automatisierter Verwaltung von **Client-ID** und **Zertifikat**. „Verwaltete Identität“ ist die sicherste und empfohlene Option zum Authentifizieren in Azure.
 
 Weitere Informationen zur Authentifizierung bei Key Vault finden Sie unter [Authentifizieren bei Azure Key Vault](authentication.md).
 
@@ -48,7 +48,7 @@ Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser
 - **Nur Benutzerzugriff** : Der Benutzer greift auf den Schlüsseltresor aus allen Anwendungen zu, die im Mandanten registriert sind. Beispiele für diese Art von Zugriff wären etwa Azure PowerShell und das Azure-Portal. Damit dieses Szenario funktioniert, muss die `objectId` des Benutzers in der Zugriffsrichtlinie angegeben werden, und die `applicationId` darf _nicht_ angegeben werden oder muss `null` sein.
 - **Anwendungs- und Benutzerzuriff** (manchmal als _Verbundidentität_ bezeichnet): Der Benutzer muss aus einer bestimmten Anwendung auf den Schlüsseltresor zugreifen, _und_ die Anwendung muss den On-Behalf-Of-Authentifizierungsdatenfluss verwenden, um die Identität des Benutzers anzunehmen. Damit dieses Szenario funktioniert, müssen sowohl `applicationId` als auch `objectId` in der Zugriffsrichtlinie angegeben werden. `applicationId` identifiziert die erforderliche Anwendung, und `objectId` identifiziert den Benutzer. Diese Option ist derzeit nicht verfügbar für die Azure RBAC-Datenebene (Vorschau).
 
-Bei allen Arten des Zugriffs wird die Anwendung in Azure AD authentifiziert. Die Anwendung verwendet eine beliebige [unterstützte Authentifizierungsmethode](../../active-directory/develop/authentication-scenarios.md), die auf dem Anwendungstyp basiert. Die Anwendung erwirbt ein Token für eine Ressource in der Ebene, um den Zugriff zu gewähren. Die Ressource ist ein Endpunkt in der Verwaltungs- oder Datenebene, basierend auf der Azure-Umgebung. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an einen Schlüsseltresor. Weitere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Bei allen Arten des Zugriffs wird die Anwendung in Azure AD authentifiziert. Die Anwendung verwendet eine beliebige [unterstützte Authentifizierungsmethode](../../active-directory/develop/authentication-vs-authorization.md), die auf dem Anwendungstyp basiert. Die Anwendung erwirbt ein Token für eine Ressource in der Ebene, um den Zugriff zu gewähren. Die Ressource ist ein Endpunkt in der Verwaltungs- oder Datenebene, basierend auf der Azure-Umgebung. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an einen Schlüsseltresor. Weitere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
 Das Modell eines einzelnen Mechanismus für die Authentifizierung für beide Ebenen hat mehrere Vorteile:
 
@@ -69,9 +69,9 @@ Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 
 ## <a name="management-plane-and-azure-rbac"></a>Verwaltungsebene und Azure RBAC
 
-Auf Verwaltungsebene autorisieren Sie mit [Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure)](https://docs.microsoft.com/azure/role-based-access-control/overview) die Vorgänge, die ein Aufrufer ausführen darf. Im Azure RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure AD. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden.
+Auf Verwaltungsebene autorisieren Sie mit [Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure)](../../role-based-access-control/overview.md) die Vorgänge, die ein Aufrufer ausführen darf. Im Azure RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure AD. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden.
 
-Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende Azure-Rollen zuordnen. Wenn Sie also einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle [Key Vault-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
+Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende Azure-Rollen zuordnen. Wenn Sie also einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor) zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
 
 - **Abonnement** : Eine auf Abonnementebene zugewiesene Azure-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
 - **Ressourcengruppe** : Eine auf Ressourcengruppenebene zugewiesene Azure-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
@@ -79,7 +79,7 @@ Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und 
 
 Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht Ihren Anforderungen entspricht, können Sie Ihre eigene Rolle definieren. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). 
 
-Sie benötigen `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner).
+Sie benötigen `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../../role-based-access-control/built-in-roles.md#owner).
 
 > [!IMPORTANT]
 > Falls ein Benutzer für eine Schlüsseltresor-Verwaltungsebene über die Berechtigung `Contributor` verfügt, kann er sich durch Festlegen einer Zugriffsrichtlinie für den Schlüsseltresor selbst Zugriff auf die Datenebene gewähren. Deshalb sollten sie stets kontrollieren, wer als `Contributor` auf Ihre Schlüsseltresore zugreifen kann. Stellen Sie sicher, dass nur autorisierte Personen auf Ihre Schlüsseltresore, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
@@ -92,7 +92,7 @@ Sie können den Datenebenenzugriff durch Festlegen von Key Vault-Zugriffsrichtli
 
 Sie können einem Benutzer, einer Gruppe oder einer Anwendung Zugriff auf das Ausführen bestimmter Vorgänge für Schlüssel oder Geheimnisse in einem Schlüsseltresor gewähren. Der Schlüsseltresor unterstützt bis zu 1.024 Zugriffsrichtlinien. Erstellen Sie eine Azure AD-Sicherheitsgruppe, und fügen Sie ihr Benutzer hinzu, um mehreren Benutzern Datenebenenzugriff zu gewähren.
 
-Die vollständige Liste der Vorgänge für Schlüsseltresore und Geheimnisse finden Sie hier: [Tresorvorgänge](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
+Die vollständige Liste der Vorgänge für Schlüsseltresore und Geheimnisse finden Sie hier: [Tresorvorgänge](/rest/api/keyvault/#vault-operations)
 
 Mit <a id="key-vault-access-policies"></a>Schlüsseltresor-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden.  Zugriffsberechtigungen für Schlüssel, Geheimnisse und Zertifikate gelten auf Tresorebene. 
 
@@ -109,13 +109,13 @@ Die rollenbasierte Zugriffssteuerung in Azure ist ein alternatives Berechtigungs
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Schlüsseltresors oder aber eines einzelnen Schlüssels, Geheimnisses oder Zertifikats begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-Die Hauptvorteile der Verwendung von Azure RBAC-Berechtigungen gegenüber Tresorzugriffsrichtlinien liegen in der zentralisierten Verwaltung der Zugriffssteuerung und ihrer Integration in [Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure). Privileged Identity Management bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, um die Risiken durch übermäßige, unnötige oder missbrauchte Zugriffsberechtigungen für wichtige Ressourcen zu verringern.
+Die Hauptvorteile der Verwendung von Azure RBAC-Berechtigungen gegenüber Tresorzugriffsrichtlinien liegen in der zentralisierten Verwaltung der Zugriffssteuerung und ihrer Integration in [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md). Privileged Identity Management bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, um die Risiken durch übermäßige, unnötige oder missbrauchte Zugriffsberechtigungen für wichtige Ressourcen zu verringern.
 
 Weitere Informationen zur Key Vault-Datenebene mit RBAC finden Sie unter [Key Vault Schlüssel, -Zertifikate und -Geheimnisse mit einer rollenbasierten Zugriffssteuerung in Azure (Vorschau)](rbac-guide.md).
 
 ## <a name="firewalls-and-virtual-networks"></a>Firewalls und virtuelle Netzwerke
 
-Konfigurieren Sie Firewallregeln und VNET-Regeln, um eine zusätzliche Sicherheitsebene zu erstellen. Sie können Key Vault-Firewalls und virtuelle Netzwerke so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) standardmäßig verweigert wird. Sie können Zugriff auf Datenverkehr aus bestimmten [virtuellen Azure-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) und IP-Adressbereichen des öffentlichen Internets gewähren, sodass Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen können.
+Konfigurieren Sie Firewallregeln und VNET-Regeln, um eine zusätzliche Sicherheitsebene zu erstellen. Sie können Key Vault-Firewalls und virtuelle Netzwerke so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) standardmäßig verweigert wird. Sie können Zugriff auf Datenverkehr aus bestimmten [virtuellen Azure-Netzwerken](../../virtual-network/virtual-networks-overview.md) und IP-Adressbereichen des öffentlichen Internets gewähren, sodass Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen können.
 
 Hier finden Sie einige Beispiele dafür, wie Sie Dienstendpunkte verwenden können:
 
@@ -144,7 +144,7 @@ Allgemeine Szenarien zur Verwendung von Private Link für Azure-Dienste:
  
 - **Ausweiten auf Ihre eigenen Dienste** : Aktivieren Sie die gleichen Funktionen, um Ihren Dienst privat für Consumer in Azure zu rendern. Wenn Sie Ihren Dienst hinter einem Azure Load Balancer Standard platzieren, können Sie ihn für Private Link aktivieren. Der Consumer kann dann mithilfe eines privaten Endpunkts in seinem eigenen virtuellen Netzwerk eine direkte Verbindung mit dem Dienst herstellen. Die Verbindungsanforderungen können mithilfe eines Ablaufs für Genehmigungsaufrufe verwaltet werden. Azure Private Link funktioniert für Consumer und Dienste, die zu unterschiedlichen Azure Active Directory-Mandanten gehören. 
 
-Weitere Informationen zu privaten Endpunkten finden Sie unter [Key Vault mit Azure Private Link](https://docs.microsoft.com/azure/key-vault/general/private-link-service).
+Weitere Informationen zu privaten Endpunkten finden Sie unter [Key Vault mit Azure Private Link](./private-link-service.md).
 
 ## <a name="example"></a>Beispiel
 
@@ -184,11 +184,11 @@ Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die
 
 | Role | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene: Tresorzugriffsrichtlinien | Berechtigungen auf Datenebene: Azure RBAC (Vorschau)  |
 | --- | --- | --- | --- |
-| Sicherheitsteam | [Key Vault-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | [Key Vault-Administrator (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
+| Sicherheitsteam | [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | [Key Vault-Administrator (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | Entwickler und&nbsp;Operatoren | Berechtigung zum Bereitstellen von Schlüsseltresoren<br><br> **Hinweis** : Mit dieser Berechtigung können die bereitgestellten VMs Geheimnisse aus einem Schlüsseltresor abrufen. | Keine | Keine |
 | Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis** : Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | [Key Vault Reader (Vorschau)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
-| Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | [Key Vault Reader (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview), [Key Vault Secret User (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
+| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | [Key Vault Reader (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 Die drei Teamrollen benötigen neben Schlüsseltresor-Berechtigungen auch Zugriff auf andere Ressourcen. Damit Entwickler oder Operatoren VMs (oder das Web-Apps-Feature von Azure App Service) bereitstellen können, müssen diese den Zugriff bereitstellen. Prüfer benötigen Lesezugriff auf das Speicherkonto mit den gespeicherten Schlüsseltresorprotokollen.
 
@@ -200,10 +200,10 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. Echte Szenarien k
 ## <a name="resources"></a>Ressourcen
 
 - [Informationen zu Azure Key Vault](overview.md)
-- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 - [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
-- [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Azure RBAC](../../role-based-access-control/overview.md)
+- [Private Link](../../private-link/private-link-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

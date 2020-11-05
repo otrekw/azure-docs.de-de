@@ -1,17 +1,17 @@
 ---
 title: 'Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel: Azure Database for MySQL'
 description: Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c7b4d4cf61c1d605bd632ac6fe210171b2ebe01b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 23cf8a79c4978ccb3a65ad968b2ed5a01bb3d0ec
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544119"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242329"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
 
@@ -80,7 +80,7 @@ Wenn Sie Datenverschlüsselung durch einen vom Kunden verwalteten Schlüssel ver
 * Stellen Sie sicher, dass sich Key Vault und Azure Database for MySQL in derselben Region befinden, um einen schnelleren Zugriff für wrap- und unwrap-Vorgänge bei DEKs sicherzustellen.
 * Schränken Sie Azure Key Vault auf den **privaten Endpunkt und die ausgewählten Netzwerke** ein, und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten* , die Ressourcen zu schützen.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Vertrauenswürdiger Dienst mit AKV":::
 
 Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 
@@ -90,13 +90,13 @@ Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Kein Zugriff auf den kundenseitig verwalteten Schlüssel
 
-Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Azure Key Vault konfigurieren, wird fortlaufender Zugriff auf diesen Schlüssel benötigt, damit der Server online bleiben kann. Wenn der Server in Key Vault den Zugriff auf den vom Kunden verwalteten Schlüssel verliert, beginnt der Server innerhalb von 10 Minuten damit, alle Verbindungen zu verweigern. Der Server gibt eine entsprechende Fehlermeldung aus und ändert den Serverstatus in *Zugriff nicht möglich* . Der Server kann diesen Zustand u. a. aus den folgenden Gründen erreichen:
+Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Azure Key Vault konfigurieren, wird fortlaufender Zugriff auf diesen Schlüssel benötigt, damit der Server online bleiben kann. Wenn der Server in Key Vault den Zugriff auf den vom Kunden verwalteten Schlüssel verliert, beginnt der Server innerhalb von 10 Minuten damit, alle Verbindungen zu verweigern. Der Server gibt eine entsprechende Fehlermeldung aus und ändert den Serverstatus in *Zugriff nicht möglich*. Der Server kann diesen Zustand u. a. aus den folgenden Gründen erreichen:
 
-* Wenn Sie einen Server für die Point-in-Time-Wiederherstellung für Ihre Azure Database for MySQL-Instanz erstellen, auf dem die Datenverschlüsselung aktiviert ist, hat der neu erstellte Server den Status *Kein Zugriff* . Sie können den Fehler über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Azure CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
-* Wenn Sie ein Lesereplikat für Ihre Azure Database for MySQL-Instanz erstellen, für das die Datenverschlüsselung aktiviert ist, hat der neu erstellte Replikatserver den Status *Kein Zugriff* . Sie können den Fehler über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Azure CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
-* Wenn Sie den Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff* . Stellen Sie den [Schlüsseltresor](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
-* Wenn Sie den Schlüssel aus dem Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff* . Stellen Sie den [Schlüssel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
-* Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Die Azure Database for MySQL-Instanz wechselt dann in den Zustand *Kein Zugriff* . Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
+* Wenn Sie einen Server für die Point-in-Time-Wiederherstellung für Ihre Azure Database for MySQL-Instanz erstellen, auf dem die Datenverschlüsselung aktiviert ist, hat der neu erstellte Server den Status *Kein Zugriff*. Sie können den Fehler über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Azure CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
+* Wenn Sie ein Lesereplikat für Ihre Azure Database for MySQL-Instanz erstellen, für das die Datenverschlüsselung aktiviert ist, hat der neu erstellte Replikatserver den Status *Kein Zugriff*. Sie können den Fehler über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Azure CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
+* Wenn Sie den Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüsseltresor](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
+* Wenn Sie den Schlüssel aus dem Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüssel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
+* Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Die Azure Database for MySQL-Instanz wechselt dann in den Zustand *Kein Zugriff*. Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Versehentliche Sperrung des Zugriffs auf den Schlüssel durch Key Vault
 
@@ -135,7 +135,7 @@ Bei Azure Database for MySQL gelten für die Unterstützung der Verschlüsselung
 * Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie im Abschnitt zu Speicher in der Dokumentation [hier](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]
-    > - Für alle neuen MySQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar** . Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
+    > - Für alle neuen MySQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar**. Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
     > - Um zu überprüfen, ob Ihr bereitgestellter Server bis zu 16 TB unterstützt, können Sie im Portal zum Blatt „Tarif“ navigieren und die maximale Speichergröße anzeigen, die Ihr bereitgestellter Server unterstützt. Wenn Sie den Schieberegler auf bis zu 4 TB verschieben können, unterstützt Ihr Server möglicherweise keine Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die Daten sind jedoch jederzeit mit dienstseitig verwalteten Schlüsseln verschlüsselt. Wenn Sie weitere Fragen haben, wenden Sie sich an AskAzureDBforMySQL@service.microsoft.com.
 
 * Verschlüsselung wird nur mit RSA 2048-Kryptografieschlüsseln unterstützt.
