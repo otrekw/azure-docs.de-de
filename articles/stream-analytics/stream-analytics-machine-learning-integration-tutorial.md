@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123760"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Durchführen von Stimmungsanalysen mit Azure Stream Analytics und Azure Machine Learning Studio (Classic)
 
@@ -63,7 +63,7 @@ In diesem Schritt laden Sie eine CSV-Datei in Ihren Speichercontainer hoch.
 
    ![Erstellen eines Blobspeichercontainers für Eingabe](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Geben Sie einen Namen für den Container an, und vergewissern Sie sich, dass **Öffentliche Zugriffsebene** auf **Privat** festgelegt ist. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+5. Geben Sie einen Namen für den Container an, und vergewissern Sie sich, dass **Öffentliche Zugriffsebene** auf **Privat** festgelegt ist. Wählen Sie **Erstellen** , wenn Sie fertig sind.
 
    ![Details zum Blobcontainer angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
@@ -202,7 +202,7 @@ Sie können den Stream Analytics-Auftrag jetzt starten.
 
 2. Wählen Sie im oberen Bereich der Seite **Starten** aus.
 
-3. Wählen Sie in **Auftrag starten** die Option **Benutzerdefiniert** aus, und wählen Sie dann einen Zeitpunkt aus, der vor dem Zeitpunkt des Hochladens der CSV-Datei in den Blobspeicher liegt. Klicken Sie auf **Starten**, wenn Sie fertig sind.  
+3. Wählen Sie in **Auftrag starten** die Option **Benutzerdefiniert** aus, und wählen Sie dann einen Zeitpunkt aus, der vor dem Zeitpunkt des Hochladens der CSV-Datei in den Blobspeicher liegt. Klicken Sie auf **Starten** , wenn Sie fertig sind.  
 
 ### <a name="check-the-output"></a>Überprüfen der Ausgabe
 
@@ -227,6 +227,6 @@ Sie können auch auf die Studio (klassisch)-Funktion bezogene Metriken anzeigen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
 * [Integrieren von REST-API und Machine Learning Studio (klassisch)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 07d9ae0d7cdf8e823bb59cb376d40cdf846bb2cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674748"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092754"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Überwachen der Integrität des Log Analytics-Arbeitsbereichs in Azure Monitor
 Um die Leistung und Verfügbarkeit Ihres Log Analytics-Arbeitsbereichs in Azure Monitor zu gewährleisten, müssen Sie in der Lage sein, jedes auftretende Probleme proaktiv zu erkennen. In diesem Artikel wird beschrieben, wie Sie die Integrität Ihres Log Analytics-Arbeitsbereichs mithilfe von Daten in der Tabelle [Operation](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) überwachen. Diese Tabelle ist in jedem Log Analytics-Arbeitsbereich enthalten und enthält Fehler und Warnungen, die im Arbeitsbereich auftreten. Sie sollten diese Daten regelmäßig überprüfen und Warnungen erstellen, damit Sie proaktiv benachrichtigt werden, wenn im Arbeitsbereich wichtige Vorfälle auftreten.
@@ -60,8 +60,8 @@ Erfassungsvorgänge sind Probleme, die während der Datenerfassung aufgetreten s
 | Metadaten | Fehler | Ein Konfigurationsfehler wurde erkannt. | |
 | Datensammlung | Fehler   | Daten wurden verworfen, da die Anforderung vor der festgelegten Anzahl von Tagen erstellt wurde. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Datensammlung | Info    | Die Konfiguration des Sammlungscomputers wurde erkannt.| |
-| Datensammlung | Info    | Die Datensammlung wurde aufgrund eines neuen Tags gestartet. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| Datensammlung | Warnung | Die Datensammlung wurde beendet, da das Tageslimit erreicht wurde.| [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Datensammlung | Info    | Die Datensammlung wurde aufgrund eines neuen Tags gestartet. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
+| Datensammlung | Warnung | Die Datensammlung wurde beendet, da das Tageslimit erreicht wurde.| [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
 | Datenverarbeitung | Fehler   | Ungültiges JSON-Format. | [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)](data-collector-api.md#request-body) | 
 | Datenverarbeitung | Warnung | Der Wert wurde auf die maximal zulässige Größe gekürzt. | [Azure Monitor-Diensteinschränkungen](../service-limits.md#log-analytics-workspaces) |
 | Datenverarbeitung | Warnung | Der Feldwert wurde abgeschnitten, da das Größenlimit erreicht wurde. | [Azure Monitor-Diensteinschränkungen](../service-limits.md#log-analytics-workspaces) | 

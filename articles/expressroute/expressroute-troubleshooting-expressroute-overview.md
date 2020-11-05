@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92204638"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
@@ -100,7 +100,7 @@ Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 ```
 
 >[!TIP]
->Wenn Sie den Namen einer Ressourcengruppe suchen, können Sie ihn durch Auflisten aller Ressourcengruppen in Ihrem Abonnement ermitteln. Verwenden Sie dazu den Befehl *Get-AzResourceGroup* .
+>Wenn Sie den Namen einer Ressourcengruppe suchen, können Sie ihn durch Auflisten aller Ressourcengruppen in Ihrem Abonnement ermitteln. Verwenden Sie dazu den Befehl *Get-AzResourceGroup*.
 >
 
 

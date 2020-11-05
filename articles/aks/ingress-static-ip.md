@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller mit einer stat
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e3e052915b6bcc1f6dee89f5ed5e2acf13dd78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290547"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124355"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers mit einer statischen öffentlichen IP-Adresse in Azure Kubernetes Service (AKS)
 
@@ -50,9 +50,9 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Mit den obigen Befehlen wird eine IP-Adresse erstellt, die beim Löschen Ihres AKS-Clusters gelöscht wird. Alternativ können Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, die separat von Ihrem AKS-Cluster verwaltet werden kann. Wenn Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, muss sichergestellt werden, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt (z. B. *Netzwerkmitwirkender*). Weitere Informationen finden Sie unter [Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem AKS-Lastenausgleich][aks-static-ip].
+> Mit den obigen Befehlen wird eine IP-Adresse erstellt, die beim Löschen Ihres AKS-Clusters gelöscht wird. Alternativ können Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, die separat von Ihrem AKS-Cluster verwaltet werden kann. Wenn Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, muss sichergestellt werden, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt (z. B. *Netzwerkmitwirkender* ). Weitere Informationen finden Sie unter [Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem AKS-Lastenausgleich][aks-static-ip].
 
-Nun stellen Sie das *nginx-ingress*-Diagramm mit Helm bereit. Für zusätzliche Redundanz werden zwei Replikate der NGINX-Eingangscontroller mit dem Parameter `--set controller.replicaCount` bereitgestellt. Um vollständig von der Ausführung von Replikaten des Eingangscontrollers zu profitieren, stellen Sie sicher, dass sich mehr als ein Knoten im AKS-Cluster befindet.
+Nun stellen Sie das *nginx-ingress* -Diagramm mit Helm bereit. Für zusätzliche Redundanz werden zwei Replikate der NGINX-Eingangscontroller mit dem Parameter `--set controller.replicaCount` bereitgestellt. Um vollständig von der Ausführung von Replikaten des Eingangscontrollers zu profitieren, stellen Sie sicher, dass sich mehr als ein Knoten im AKS-Cluster befindet.
 
 Sie müssen zwei zusätzliche Parameter an das Helm-Release übergeben, damit der Eingangscontroller sowohl die statische IP-Adresse des Lastenausgleichs, der dem Eingangscontrollerdienst zugeordnet werden soll, als auch die DNS-Namensbezeichnung kennt, die auf die öffentliche IP-Adressressource angewandt wird. Damit die HTTPS-Zertifikate ordnungsgemäß funktionieren, wird eine DNS-Namensbezeichnung verwendet, um einen vollqualifizierten Domänennamen (FQDN) für die IP-Adresse des Eingangscontrollers zu konfigurieren.
 
@@ -67,7 +67,7 @@ Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Win
 > [!TIP]
 > Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert TLS-Pass-Through nicht.
 
-Aktualisieren Sie das folgende Skript mit der **IP-Adresse** des Eingangscontrollers und einem **eindeutigen Namen**, den Sie als FQDN-Präfix verwenden möchten.
+Aktualisieren Sie das folgende Skript mit der **IP-Adresse** des Eingangscontrollers und einem **eindeutigen Namen** , den Sie als FQDN-Präfix verwenden möchten.
 
 > [!IMPORTANT]
 > *STATIC_IP* und *DNS_LABEL* müssen beim Ausführen des Befehls durch Ihre eigene IP-Adresse und Ihren eindeutigen Namen ersetzt werden.
@@ -178,9 +178,9 @@ clusterissuer.cert-manager.io/letsencrypt-staging created
 
 Ein Eingangscontroller und eine Zertifikatsverwaltungslösung wurden konfiguriert. Nun führen wir zwei Demoanwendungen im AKS-Cluster-aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen Hallo-Welt-Anwendung auszuführen.
 
-Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt* -Anwendung auszuführen.
 
-Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -199,7 +199,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -218,7 +218,7 @@ spec:
     app: aks-helloworld
 ```
 
-Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *ingress-demo.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -237,7 +237,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -366,7 +366,7 @@ certificate.cert-manager.io/tls-secret created
 
 Öffnen Sie einen Webbrowser für den FQDN des Kubernetes-Eingangscontrollers, z.B. *`https://demo-aks-ingress.eastus.cloudapp.azure.com`* .
 
-Da diese Beispiele `letsencrypt-staging` verwenden, ist das ausgestellte TLS/SSL-Zertifikat für den Browser nicht vertrauenswürdig. Akzeptieren Sie die Eingabeaufforderung der Warnung, um Ihre Anwendung zu öffnen. Die Zertifikatinformationen zeigen, dass dieses *Fake LE Intermediate X1*-Zertifikat von Let‘s Encrypt ausgestellt wurde. Dieses gefälschte Zertifikat gibt an, dass `cert-manager` die Anforderung korrekt verarbeitet und ein Zertifikat vom Anbieter erhalten hat:
+Da diese Beispiele `letsencrypt-staging` verwenden, ist das ausgestellte TLS/SSL-Zertifikat für den Browser nicht vertrauenswürdig. Akzeptieren Sie die Eingabeaufforderung der Warnung, um Ihre Anwendung zu öffnen. Die Zertifikatinformationen zeigen, dass dieses *Fake LE Intermediate X1* -Zertifikat von Let‘s Encrypt ausgestellt wurde. Dieses gefälschte Zertifikat gibt an, dass `cert-manager` die Anforderung korrekt verarbeitet und ein Zertifikat vom Anbieter erhalten hat:
 
 ![Let's Encrypt-Bereitstellungszertifikat](media/ingress/staging-certificate.png)
 
@@ -403,7 +403,7 @@ kubectl delete -f certificates.yaml
 kubectl delete -f cluster-issuer.yaml
 ```
 
-Listen Sie nun mit dem Befehl `helm list` die Helm-Versionen auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *cert-manager*, wie in der folgenden Beispielausgabe gezeigt:
+Listen Sie nun mit dem Befehl `helm list` die Helm-Versionen auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *cert-manager* , wie in der folgenden Beispielausgabe gezeigt:
 
 ```
 $ helm list --all-namespaces
@@ -435,7 +435,7 @@ Löschen Sie den Namespace selbst. Verwenden Sie dazu den `kubectl delete`-Befeh
 kubectl delete namespace ingress-basic
 ```
 
-Entfernen Sie abschließend die statische öffentliche IP-Adresse, die für den Eingangscontroller erstellt wurde. Stellen Sie den *MC_* -Namen Ihrer Clusterressourcengruppe bereit, den Sie im ersten Schritt dieses Artikels abgerufen haben, z. B. *MC_meineRessourcenGruppe_meinAKSCluster_eastus*:
+Entfernen Sie abschließend die statische öffentliche IP-Adresse, die für den Eingangscontroller erstellt wurde. Stellen Sie den *MC_* -Namen Ihrer Clusterressourcengruppe bereit, den Sie im ersten Schritt dieses Artikels abgerufen haben, z. B. *MC_meineRessourcenGruppe_meinAKSCluster_eastus* :
 
 ```azurecli-interactive
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP

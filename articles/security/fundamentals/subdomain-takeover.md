@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447365"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911391"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -51,7 +51,7 @@ Ein häufiges Szenario für eine Unterdomänenübernahme:
 
     1. Der Bedrohungsakteur stellt eine Azure-Ressource bereit, die den gleichen vollqualifizierten Domänennamen besitzt wie die Ressource, die sich zuvor unter Ihrer Kontrolle befand. In diesem Beispiel ist dies `app-contogreat-dev-001.azurewebsites.net`.
 
-    1. An die Unterdomäne `myapp.contoso.com` gesendeter Datenverkehr wird nun an die Ressource des bösartigen Akteurs weitergeleitet, wo er die Kontrolle über die Inhalte hat.
+    1. An die Unterdomäne `greatapp.contoso.com` gesendeter Datenverkehr wird nun an die Ressource des bösartigen Akteurs weitergeleitet, wo er die Kontrolle über die Inhalte hat.
 
 
 

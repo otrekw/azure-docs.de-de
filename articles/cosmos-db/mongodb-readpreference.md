@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482263"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096392"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Globale Verteilung von Lesevorgängen mit der Azure Cosmos DB-API für MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Dieser Artikel zeigt, wie Lesevorgänge mit [MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference/)-Einstellungen mit der Azure Cosmos DB-API für MongoDB global verteilt werden können.
 
@@ -86,8 +87,8 @@ Weitere Informationen zum Verhalten der einzelnen Lesepräferenzeinstellungen fi
 
 Basierend auf allgemeine Szenarien empfiehlt sich die Verwendung der folgenden Einstellungen:
 
-1. Wenn **niedrigere Latenz für Lesevorgänge** erforderlich ist, verwenden Sie den Lesepräferenzmodus **NEAREST** . Mit dieser Einstellung werden die Lesevorgänge an die nächste verfügbare Region weitergeleitet. Beachten Sie Folgendes: Wenn die nächstgelegene Region die WRITE-Region ist, werden diese Vorgänge an diese Region weitergeleitet.
-2. Wenn **Hochverfügbarkeit und Geoverteilung von Lesevorgängen** erforderlich sind (Latenz ist keine Einschränkung), verwenden Sie den Lesepräferenzmodus **PRIMARY PREFERRED** oder **SECONDARY PREFERRED** . Mit dieser Einstellung werden die Lesevorgänge jeweils an eine verfügbare WRITE- oder READ-Region weitergeleitet. Wenn die Region nicht verfügbar ist, werden Anforderungen gemäß dem Lesevoreinstellungsverhalten an die nächste verfügbare Region weitergeleitet.
+1. Wenn **niedrigere Latenz für Lesevorgänge** erforderlich ist, verwenden Sie den Lesepräferenzmodus **NEAREST**. Mit dieser Einstellung werden die Lesevorgänge an die nächste verfügbare Region weitergeleitet. Beachten Sie Folgendes: Wenn die nächstgelegene Region die WRITE-Region ist, werden diese Vorgänge an diese Region weitergeleitet.
+2. Wenn **Hochverfügbarkeit und Geoverteilung von Lesevorgängen** erforderlich sind (Latenz ist keine Einschränkung), verwenden Sie den Lesepräferenzmodus **PRIMARY PREFERRED** oder **SECONDARY PREFERRED**. Mit dieser Einstellung werden die Lesevorgänge jeweils an eine verfügbare WRITE- oder READ-Region weitergeleitet. Wenn die Region nicht verfügbar ist, werden Anforderungen gemäß dem Lesevoreinstellungsverhalten an die nächste verfügbare Region weitergeleitet.
 
 Der folgende Codeausschnitt aus der Beispielanwendung veranschaulicht, wie die Lesepräferenz NEAREST in NodeJS konfiguriert wird:
 
@@ -145,7 +146,7 @@ Zusätzlich zum Read Preference-Modus ermöglicht das MongoDB-Protokoll die Verw
       }
 ```
 
-Daher kann MongoClient das `region`-Tag zusammen mit dem Regionsnamen verwenden, um Lesevorgänge an bestimmte Regionen weiterzuleiten. Für Cosmos-Konten finden Sie die Regionsnamen im Azure-Portal auf der linken Seite unter **Einstellungen > Daten global replizieren** . Diese Einstellung ist nützlich, um **Leseisolierung** zu erreichen: Fälle, in denen die Clientanwendung Lesevorgänge nur an eine bestimmte Region weiterleiten möchte. Diese Einstellung ist ideal für Szenarien vom Typ Nicht-Produktion/Analyse geeignet, die im Hintergrund ausgeführt werden und keine produktionsrelevanten Dienste sind.
+Daher kann MongoClient das `region`-Tag zusammen mit dem Regionsnamen verwenden, um Lesevorgänge an bestimmte Regionen weiterzuleiten. Für Cosmos-Konten finden Sie die Regionsnamen im Azure-Portal auf der linken Seite unter **Einstellungen > Daten global replizieren**. Diese Einstellung ist nützlich, um **Leseisolierung** zu erreichen: Fälle, in denen die Clientanwendung Lesevorgänge nur an eine bestimmte Region weiterleiten möchte. Diese Einstellung ist ideal für Szenarien vom Typ Nicht-Produktion/Analyse geeignet, die im Hintergrund ausgeführt werden und keine produktionsrelevanten Dienste sind.
 
 Der folgende Codeausschnitt aus der Beispielanwendung veranschaulicht, wie die Lesepräferenz mit Tags in NodeJS konfiguriert wird:
 
@@ -167,7 +168,7 @@ In diesem Artikel haben Sie erfahren, wie Lesevorgänge mit MongoDB Read Prefere
 Wenn Sie diese App nicht weiterhin verwenden, löschen Sie im Azure-Portal sämtliche Ressourcen, die mit diesem Artikel erstellt wurden. Führen Sie dazu folgende Schritte aus:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** , und klicken Sie auf den Namen der erstellten Ressource. 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen** , geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen** .
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen** , geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

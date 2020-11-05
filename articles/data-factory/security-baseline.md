@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637002"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089082"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-Sicherheitsbaseline für Azure Data Factory
 
@@ -688,9 +688,9 @@ Wenn Ihre Integration Runtime auf einer Azure-VM ausgeführt wird, sollten Sie d
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-* [Updateverwaltung in Azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Updateverwaltung in Azure](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Verwalten von Updates und Patches für Ihre Azure-VMs](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden** : Wenn Ihre Integration Runtime auf einer Azure-VM ausgeführt wird, können Sie eine Drittanbieterlösung für die Patchverwaltung verwenden. Sie können die Azure-Updateverwaltung verwenden, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Updateverwaltung in Azure](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Verwalten von Updates und Patches für Ihre Azure-VMs](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Azure Security Center-Überwachung** : Zurzeit nicht verfügbar
 

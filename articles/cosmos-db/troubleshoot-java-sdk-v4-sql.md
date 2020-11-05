@@ -9,14 +9,15 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 708a7139aec7b8d3fe9e5f08df2c5e93b99d0668
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b714c2c1c9524741d2dc0b7e8ff3ed082cadd106
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476789"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079171"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Java SDK v4 mit SQL-API-Konten
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
@@ -34,7 +35,7 @@ Das Azure Cosmos DB Java SDK v4 bietet eine clientseitige logische Darstellung f
 Beginnen Sie mit dieser Liste:
 
 * Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen] in diesem Artikel an.
-* Sehen Sie sich das Java SDK im zentralen Azure Cosmos DB-Repository an, das [Open-Source auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) verfügbar ist. Es verfügt über einen aktiv überwachten [Problemabschnitt](https://github.com/Azure/azure-sdk-for-java/issues). Überprüfen Sie, ob Sie ein ähnliches Problem finden, für das bereits eine Problemumgehung dokumentiert wurde. Ein hilfreicher Tipp ist das Filtern von Problemen nach dem Tag *cosmos:v4-item* .
+* Sehen Sie sich das Java SDK im zentralen Azure Cosmos DB-Repository an, das [Open-Source auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) verfügbar ist. Es verfügt über einen aktiv überwachten [Problemabschnitt](https://github.com/Azure/azure-sdk-for-java/issues). Überprüfen Sie, ob Sie ein ähnliches Problem finden, für das bereits eine Problemumgehung dokumentiert wurde. Ein hilfreicher Tipp ist das Filtern von Problemen nach dem Tag *cosmos:v4-item*.
 * Sehen Sie sich die [Leistungstipps](performance-tips-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK v4 an, und implementieren Sie die empfohlenen Methoden.
 * Lesen Sie den Rest dieses Artikels, falls Sie keine Lösung gefunden haben. Reichen Sie anschließend ein [GitHub-Problem](https://github.com/Azure/azure-sdk-for-java/issues) ein. Wenn es eine Option zum Hinzufügen von Tags zu Ihrem GitHub-Issue gibt, fügen Sie das Tag *cosmos:v4-item* hinzu.
 
@@ -182,7 +183,7 @@ log4j.rootLogger=INFO, A1
 
 log4j.category.com.azure.cosmos=DEBUG
 #log4j.category.io.netty=INFO
-#log4j.category.io.reactivex=INFO
+#log4j.category.io.projectreactor=INFO
 # A1 is set to be a ConsoleAppender.
 log4j.appender.A1=org.apache.log4j.ConsoleAppender
 

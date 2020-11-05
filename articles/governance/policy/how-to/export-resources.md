@@ -1,15 +1,15 @@
 ---
 title: Exportieren von Azure Policy-Ressourcen
 description: Erfahren Sie, wie Sie Azure Policy-Ressourcen wie Richtliniendefinitionen und Richtlinienzuweisungen nach GitHub exportieren.
-ms.date: 09/30/2020
+ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777087"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025713"
 ---
 # <a name="export-azure-policy-resources"></a>Exportieren von Azure Policy-Ressourcen
 
@@ -23,16 +23,16 @@ Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Az
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Definitionen** aus.
 
-1. Verwenden Sie die Schaltfläche **Definitionen exportieren**, oder wählen Sie die Auslassungspunkte in der Zeile einer Richtliniendefinition und dann **Definition exportieren** aus.
+1. Verwenden Sie die Schaltfläche **Definitionen exportieren** , oder wählen Sie die Auslassungspunkte in der Zeile einer Richtliniendefinition und dann **Definition exportieren** aus.
 
 1. Wählen Sie die Schaltfläche **Mit GitHub anmelden** aus. Wenn Sie sich noch nicht bei GitHub authentifiziert haben, um Azure Policy zum Exportieren der Ressource zu autorisieren, überprüfen Sie in dem neuen Fenster, das geöffnet wird, welchen Zugriff [GitHub Actions](https://github.com/features/actions) benötigt, und wählen Sie **Authorize AzureGitHubActions** (AzureGitHubActions autorisieren), um mit dem Exportvorgang fortzufahren. Sobald der Vorgang abgeschlossen ist, wird das neue Fenster automatisch geschlossen.
 
 1. Legen Sie auf der Registerkarte **Grundlagen** die folgenden Optionen fest, und wählen Sie dann die Registerkarte **Richtlinien** oder die Schaltfläche **Weiter: Richtlinien** unten auf der Seite aus.
 
-   - **Repositoryfilter**: Legen Sie hierfür _Meine Repositorys_ fest, sodass nur die Repositorys in Ihrem Besitz angezeigt werden, oder _Alle Repositorys_, um alle anzuzeigen, denen Sie den Zugriff auf GitHub Actions gewährt haben.
-   - **Repository**: Legen Sie hierfür das Repository fest, in das Sie die Azure Policy-Ressourcen exportieren möchten.
-   - **Branch**: Legen Sie den Branch im Repository fest. Die Verwendung eines anderen Branches als des standardmäßigen ist eine gute Möglichkeit, Ihre Updates zu validieren, bevor Sie sie in den Quellcode einbringen.
-   - **Verzeichnis:** Der _Ordner auf Stammebene_, in den die Azure Policy-Ressourcen exportiert werden sollen. Die Unterordner in diesem Verzeichnis werden auf Basis der exportierten Ressourcen erstellt.
+   - **Repositoryfilter** : Legen Sie hierfür _Meine Repositorys_ fest, sodass nur die Repositorys in Ihrem Besitz angezeigt werden, oder _Alle Repositorys_ , um alle anzuzeigen, denen Sie den Zugriff auf GitHub Actions gewährt haben.
+   - **Repository** : Legen Sie hierfür das Repository fest, in das Sie die Azure Policy-Ressourcen exportieren möchten.
+   - **Branch** : Legen Sie den Branch im Repository fest. Die Verwendung eines anderen Branches als des standardmäßigen ist eine gute Möglichkeit, Ihre Updates zu validieren, bevor Sie sie in den Quellcode einbringen.
+   - **Verzeichnis:** Der _Ordner auf Stammebene_ , in den die Azure Policy-Ressourcen exportiert werden sollen. Die Unterordner in diesem Verzeichnis werden auf Basis der exportierten Ressourcen erstellt.
 
 1. Legen Sie auf der Registerkarte **Richtlinien** den Suchbereich fest, indem Sie die Auslassungspunkte und dann eine Kombination von Verwaltungsgruppen, Abonnements oder Ressourcengruppen auswählen.
    
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Az
 
 1. Überprüfen Sie auf der Registerkarte **Überprüfen + exportieren** die Übereinstimmung im Detail, und verwenden Sie dann die Schaltfläche **Exportieren** unten auf der Seite.
 
-1. Überprüfen Sie das GitHub-Repository, den Branch und den _Ordner auf Stammebene_, um zu sehen, dass die ausgewählten Ressourcen nun in die Quellcodeverwaltung exportiert werden.
+1. Überprüfen Sie das GitHub-Repository, den Branch und den _Ordner auf Stammebene_ , um zu sehen, dass die ausgewählten Ressourcen nun in die Quellcodeverwaltung exportiert werden.
 
 Die Azure Policy-Ressourcen werden in die folgende Struktur innerhalb des ausgewählten GitHub-Repositorys und des _Ordners auf Stammebene_ exportiert:
 
@@ -61,7 +61,7 @@ Die Azure Policy-Ressourcen werden in die folgende Struktur innerhalb des ausgew
 
 ## <a name="export-with-azure-cli"></a>Exportieren mit Azure CLI
 
-Azure Policy-Definitionen, Initiativen und Zuweisungen können jeweils im JSON-Code mit [Azure CLI](/cli/azure/install-azure-cli) exportiert werden. Jeder dieser Befehle verwendet einen **name**-Parameter, um anzugeben, für welches Objekt der JSON-Code verwendet werden soll. Die **name**-Eigenschaft ist oft eine _GUID_ und nicht der **displayName** des Objekts.
+Azure Policy-Definitionen, Initiativen und Zuweisungen können jeweils im JSON-Code mit [Azure CLI](/cli/azure/install-azure-cli) exportiert werden. Jeder dieser Befehle verwendet einen **name** -Parameter, um anzugeben, für welches Objekt der JSON-Code verwendet werden soll. Die **name** -Eigenschaft ist oft eine _GUID_ und nicht der **displayName** des Objekts.
 
 - Definition – [az policy definition show](/cli/azure/policy/definition#az-policy-definition-show)
 - Initiative – [az policy set-definition show](/cli/azure/policy/set-definition#az-policy-set-definition-show)
@@ -75,7 +75,7 @@ az policy definition show --name 'VirtualMachineStorage'
 
 ## <a name="export-with-azure-powershell"></a>Exportieren mit Azure PowerShell
 
-Azure Policy-Definitionen, Initiativen und Zuweisungen können jeweils im JSON-Code mit [Azure PowerShell](/powershell/azure/) exportiert werden. Jedes dieser Cmdlets verwendet einen **Name**-Parameter, um anzugeben, für welches Objekt der JSON-Code verwendet werden soll. Die **Name**-Eigenschaft ist oft eine _GUID_ und nicht der **displayName** des Objekts.
+Azure Policy-Definitionen, Initiativen und Zuweisungen können jeweils im JSON-Code mit [Azure PowerShell](/powershell/azure/) exportiert werden. Jedes dieser Cmdlets verwendet einen **Name** -Parameter, um anzugeben, für welches Objekt der JSON-Code verwendet werden soll. Die **Name** -Eigenschaft ist oft eine _GUID_ und nicht der **displayName** des Objekts.
 
 - Definition – [Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition)
 - Initiative – [Get-AzPolicySetDefinition](/powershell/module/az.resources/get-azpolicysetdefinition)
@@ -84,7 +84,7 @@ Azure Policy-Definitionen, Initiativen und Zuweisungen können jeweils im JSON-C
 Im Folgenden finden Sie ein Beispiel für das Abrufen des JSON-Codes für eine Richtliniendefinition, wobei **Name** den Wert _VirtualMachineStorage_ hat:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage' | ConvertTo-Json -Depth 10
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

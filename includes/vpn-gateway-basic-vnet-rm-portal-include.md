@@ -9,10 +9,10 @@ ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92328431"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -26,7 +26,7 @@ ms.locfileid: "92328431"
 
    ![Seite „Virtuelles Netzwerk“](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Wählen Sie „Erstellen“ aus.")
 1. Nachdem Sie **Erstellen** ausgewählt haben, wird die Seite **Virtuelles Netzwerk erstellen** geöffnet.
-1. Konfigurieren Sie auf der Registerkarte **Grundlagen** die VNET-Einstellungen **Projektdetails** und **Instanzendetails** .
+1. Konfigurieren Sie auf der Registerkarte **Grundlagen** die VNET-Einstellungen **Projektdetails** und **Instanzendetails**.
 
    ![Registerkarte „Grundlagen“:](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Registerkarte „Grundlagen“") Beim Ausfüllen der Felder wird ein grünes Häkchen angezeigt, nachdem die eingegebenen Zeichen überprüft wurden. Einige Werte werden automatisch eingetragen und können durch eigene Werte ersetzt werden:
 

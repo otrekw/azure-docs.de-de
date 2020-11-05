@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8e24dd6cb8a1fa90f1a6caf9117ab3c344c00b12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547672"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913873"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Verwalten von Azure Database for PostgreSQL – Flexible Server mithilfe der Azure CLI
 
@@ -29,7 +29,7 @@ Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-l
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id** . Sie verwenden ihn im Befehl als Wert für das Argument **subscription** . Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Skalieren von Compute und Speicher
 
-Mithilfe des folgenden Befehls können Sie Ihren Computetarif, Ihre virtuelle Kerne und Ihren Speicher mühelos hochskalieren. Sie können den gesamten Servervorgang anzeigen, indem Sie den Befehl [az postgres flexible-server server overview](https://azure.microsoft.com/services/postgresql/) ausführen.
+Mithilfe des folgenden Befehls können Sie Ihren Computetarif, Ihre virtuelle Kerne und Ihren Speicher mühelos hochskalieren. Sie können den gesamten Servervorgang anzeigen, indem Sie den Befehl [az postgres flexible-server server overview](https://docs.microsoft.com/cli/azure/postgres/flexible-server) ausführen.
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Löschen eines Servers
 
-Wenn Sie nur den flexiblen PostgreSQL-Server löschen möchten, können Sie den Befehl [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) ausführen.
+Wenn Sie nur den flexiblen PostgreSQL-Server löschen möchten, können Sie den Befehl [az postgres flexible-server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) ausführen.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

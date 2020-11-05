@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 6b8b145c919a1f4e2ea9129a032da69bd30e6b71
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 63b633ed67c03a006a154bc69a1aafb4cb4aa6d0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283160"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086277"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-cassandra-api-resources"></a>Bereitstellen des Durchsatzes für Datenbank, Container oder Autoskalierung in Ressourcen der Cassandra-API für Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 In diesem Artikel wird erläutert, wie Sie den Durchsatz in der Cassandra-API für Azure Cosmos DB bereitstellen. Sie können Standarddurchsatz (manuell) oder automatsch skalierten Durchsatz für einen Container oder eine Datenbank bereitstellen und gemeinsam für die Container in der Datenbank verwenden. Der Durchsatz kann über das Azure-Portal, über die Azure CLI oder mithilfe der Azure Cosmos DB SDKs bereitgestellt werden.
 
@@ -33,7 +34,7 @@ Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereits
    * Geben Sie die Tabellen-ID im CQL-Befehl ein.
    * Geben Sie einen Primärschlüsselwert ein (z. B. `/userrID`).
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
-   * Klicken Sie auf **OK** .
+   * Klicken Sie auf **OK**.
 
     :::image type="content" source="./media/how-to-provision-throughput-cassandra/provision-table-throughput-portal-cassandra-api.png" alt-text="Screenshot von Daten-Explorer beim Erstellen einer neuen Sammlung mit Durchsatz auf Datenbankebene":::
 

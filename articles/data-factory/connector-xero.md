@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 89ac5645ccbb9c926bc5ff70605dd1e5de14e823
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 342d0aabe2222393f33aa4ce93646da9f29cf1fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427617"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926460"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory
 
@@ -210,9 +210,9 @@ Legen Sie zum Kopieren von Daten aus Xero den Quelltyp in der Kopieraktivität a
 
 Beachten Sie Folgendes, wenn Sie die Xero-Abfrage angeben:
 
-- Tabellen mit komplexen Elementen werden in mehrere Tabellen aufgeteilt. Beispielsweise enthält die Tabelle mit den Banktransaktionen die komplexe Datenstruktur „LineItems“, sodass die Daten einer Banktransaktion den Tabellen `Bank_Transaction` und `Bank_Transaction_Line_Items` mit `Bank_Transaction_ID` als Fremdschlüssel zugeordnet werden, um sie miteinander verknüpfen.
+- Tabellen mit komplexen Elementen werden in mehrere Tabellen aufgeteilt. Beispielsweise weist die Tabelle zu den Banktransaktionen eine komplexe Datenstruktur „LineItems“ auf, sodass Daten von Banktransaktion den Tabellen `Bank_Transaction` und `Bank_Transaction_Line_Items` mit `Bank_Transaction_ID` als Fremdschlüssel zugeordnet werden, um sie miteinander verknüpfen.
 
-- Xero-Daten sind über zwei Schemas verfügbar: `Minimal` (Standardeinstellung) und `Complete`. Das gesamte Schema enthält erforderliche Aufruftabellen, die zusätzliche Daten (z. B. eine ID-Spalte) erfordern, bevor die gewünschte Abfrage ausgeführt wird.
+- Xero-Daten sind über zwei Schemas verfügbar: `Minimal` (Standardeinstellung) und `Complete`. Das gesamte Schema enthält erforderliche Aufruftabellen, die zusätzliche Daten (z.B. eine ID-Spalte) erfordern, bevor Sie die gewünschte Abfrage vornehmen können.
 
 Die folgenden Tabellen enthalten die gleichen Informationen im Schema „Minimal“ und „Complete“. Verwenden Sie zum Verringern der Anzahl der API-Aufrufe das Schema „Minimal“ (Standardeinstellung).
 

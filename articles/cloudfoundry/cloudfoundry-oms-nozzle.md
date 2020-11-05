@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277359"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040760"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 
@@ -61,13 +61,13 @@ Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erst
 1. Durchsuchen Sie im Azure-Portal die Marketplace-Dienstliste, und wählen Sie dann Log Analytics-Arbeitsbereiche aus.
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
 
-   * **Log Analytics-Arbeitsbereich**: Geben Sie einen Namen für den Arbeitsbereich ein.
-   * **Abonnement**: Wählen Sie das Abonnement aus, das Ihrer CF-Bereitstellung entspricht, falls Sie über mehrere Abonnements verfügen.
-   * **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder die gleiche wie für Ihre CF-Bereitstellung verwenden.
-   * **Standort**: Geben Sie den Standort ein.
+   * **Log Analytics-Arbeitsbereich** : Geben Sie einen Namen für den Arbeitsbereich ein.
+   * **Abonnement** : Wählen Sie das Abonnement aus, das Ihrer CF-Bereitstellung entspricht, falls Sie über mehrere Abonnements verfügen.
+   * **Ressourcengruppe** : Sie können eine neue Ressourcengruppe erstellen oder die gleiche wie für Ihre CF-Bereitstellung verwenden.
+   * **Standort** : Geben Sie den Standort ein.
    * **Tarif:** Wählen Sie **OK** aus, um den Vorgang abzuschließen.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](../azure-monitor/overview.md).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Gehen Sie wie folgt vor, um den Log Analytics-Arbeitsbereich über die Überwachungsvorlage aus dem Azure Marketplace zu erstellen:
 
@@ -76,13 +76,13 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protoko
 1. Geben Sie im Suchfenster „Cloud Foundry“ ein, und wählen Sie „Cloud Foundry-Überwachungslösung“ aus.
 1. Die Titelseite der Vorlage der Cloud Foundry-Überwachungslösung wird geladen. Klicken Sie auf „Erstellen“, um die Vorlage zu starten.
 1. Geben Sie die erforderlichen Parameter ein:
-    * **Abonnement**: Wählen Sie ein Azure-Abonnement für den Log Analytics-Arbeitsbereich aus, in der Regel identisch mit der Cloud Foundry-Bereitstellung.
-    * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe für den Log Analytics-Arbeitsbereich.
-    * **Ressourcengruppenstandort**: Wählen Sie den Standort der Ressourcengruppe aus.
-    * **OMS_Workspace_Name**: Geben Sie einen Arbeitsbereichnamen ein. Wenn der Arbeitsbereich noch nicht vorhanden ist, wird die Vorlage einen neuen erstellen.
-    * **OMS_Workspace_Region**: Wählen Sie den Speicherort für den Arbeitsbereich aus.
-    * **OMS_Workspace_Pricing_Tier**: Wählen Sie das SKU für den Log Analytics-Arbeitsbereich aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
-    * **Rechtliche Bedingungen**: Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
+    * **Abonnement** : Wählen Sie ein Azure-Abonnement für den Log Analytics-Arbeitsbereich aus, in der Regel identisch mit der Cloud Foundry-Bereitstellung.
+    * **Ressourcengruppe** : Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe für den Log Analytics-Arbeitsbereich.
+    * **Ressourcengruppenstandort** : Wählen Sie den Standort der Ressourcengruppe aus.
+    * **OMS_Workspace_Name** : Geben Sie einen Arbeitsbereichnamen ein. Wenn der Arbeitsbereich noch nicht vorhanden ist, wird die Vorlage einen neuen erstellen.
+    * **OMS_Workspace_Region** : Wählen Sie den Speicherort für den Arbeitsbereich aus.
+    * **OMS_Workspace_Pricing_Tier** : Wählen Sie das SKU für den Log Analytics-Arbeitsbereich aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
+    * **Rechtliche Bedingungen** : Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
 1. Wenn Sie alle Parameter angegeben haben, klicken Sie auf „Erstellen“, um die Vorlage bereitzustellen. Wenn die Bereitstellung abgeschlossen ist, wird der Status auf der Registerkarte „Benachrichtigung“ angezeigt.
 
 
@@ -183,7 +183,7 @@ Wenn Sie den Log Analytics-Arbeitsbereich manuell erstellt haben, gehen Sie wie 
 
 ### <a name="1-import-the-oms-view"></a>1. Importieren der OMS-Ansicht
 
-Navigieren Sie über das OMS-Portal zu **Ansicht-Designer** > **Importieren** > **Durchsuchen**, und wählen Sie einige OMSVIEW-Dateien aus. Wählen Sie beispielsweise *Cloud Foundry.omsview* aus, und speichern Sie die Ansicht. Auf der Seite **Übersicht** wird nun eine Kachel angezeigt. Wählen Sie diese Kachel aus, um visualisierte Metriken anzuzeigen.
+Navigieren Sie über das OMS-Portal zu **Ansicht-Designer** > **Importieren** > **Durchsuchen** , und wählen Sie einige OMSVIEW-Dateien aus. Wählen Sie beispielsweise *Cloud Foundry.omsview* aus, und speichern Sie die Ansicht. Auf der Seite **Übersicht** wird nun eine Kachel angezeigt. Wählen Sie diese Kachel aus, um visualisierte Metriken anzuzeigen.
 
 Sie können diese Ansichten über den **Ansicht-Designer** anpassen oder neue Ansichten erstellen.
 
@@ -191,7 +191,7 @@ Sie können diese Ansichten über den **Ansicht-Designer** anpassen oder neue An
 
 ### <a name="2-create-alert-rules"></a>2. Erstellen von Warnungsregeln
 
-Sie können [die Warnungen erstellen](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
+Sie können [die Warnungen erstellen](../azure-monitor/platform/alerts-overview.md) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
 
 | Suchabfrage                                                                  | Warnung generieren basierend auf | BESCHREIBUNG                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
@@ -216,7 +216,7 @@ Verwenden Sie zum Hochskalieren der Nozzle-Komponente entweder Apps Manager oder
 
 ### <a name="scale-the-loggregator"></a>Skalieren von Loggregator
 
-Loggregator sendet eine Protokollmeldung **LGR**, um auf Probleme mit dem Protokollierungsprozess hinzuweisen. Sie können die Warnung überwachen, um zu ermitteln, ob Loggregator zentral hochskaliert werden muss.
+Loggregator sendet eine Protokollmeldung **LGR** , um auf Probleme mit dem Protokollierungsprozess hinzuweisen. Sie können die Warnung überwachen, um zu ermitteln, ob Loggregator zentral hochskaliert werden muss.
 Erhöhen Sie zum Hochskalieren von Loggregator entweder die Doppler-Puffergröße, oder fügen Sie im CF-Manifest zusätzliche Doppler-Serverinstanzen hinzu. Weitere Informationen finden Sie im [Leitfaden zum Skalieren von Loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
 ## <a name="update"></a>Aktualisieren

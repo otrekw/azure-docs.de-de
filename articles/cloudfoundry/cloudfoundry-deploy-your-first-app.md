@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84754320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040031"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Bereitstellen Ihrer ersten App in Cloud Foundry in Microsoft Azure
 
@@ -114,7 +114,7 @@ Sie können die Cloud Foundry CLI verwenden, um Protokolle für eine Anwendung a
 cf logs hello-spring-cloud
 ```
 
-Standardmäßig verwendet der Befehl „logs“ *tail*, wodurch neue Protokolle angezeigt werden, während sie geschrieben werden. Damit neue Protokolle angezeigt werden, aktualisieren Sie die App Hello Spring Cloud im Browser.
+Standardmäßig verwendet der Befehl „logs“ *tail* , wodurch neue Protokolle angezeigt werden, während sie geschrieben werden. Damit neue Protokolle angezeigt werden, aktualisieren Sie die App Hello Spring Cloud im Browser.
 
 Um Protokolle anzuzeigen, die bereits geschrieben wurden, fügen Sie den Schalter `recent` hinzu:
 
@@ -146,7 +146,7 @@ Bei Anwenden des Befehls `cf app` auf die Anwendung wird deutlich, dass Cloud Fo
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
-[cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
+[cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-framework]: https://spring.io

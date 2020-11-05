@@ -3,21 +3,22 @@ title: Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 description: Erfahren Sie mehr über den Azure Maps-Suchdienst. Sehen Sie, wie Sie diese Gruppe von APIs für die Geocodierung, inverse Geocodierung, Fuzzysuchen und umgekehrte Querstraßensuchen verwenden.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895697"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910983"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 
 Beim [Azure Maps-Suchdienst](/rest/api/maps/search) handelt es sich um eine Gruppe von RESTful-APIs, die Entwickler bei der Suche nach Adressen, Orten, Brancheneinträgen (nach Name oder Kategorie) und weiteren geografischen Informationen unterstützen. Zusätzlich zur Unterstützung der traditionellen Geocodierung kann mit den Diensten eine inverse Geocodierung für Adressen und Querstraßen basierend auf Breiten- und Längengraden durchgeführt werden. Die bei der Suche zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Azure Maps-Diensten verwendet werden, beispielsweise in den Diensten für [Routen](/rest/api/maps/route) und [Wetter](/rest/api/maps/weather).
+
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -44,9 +45,7 @@ In diesem Beispiel wird die Azure Maps-[API zum Abrufen der Suchadresse](/rest/a
 
 2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
-3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. In dieser Anforderung suchen wir nach einer bestimmten Adresse: `400 Braod St, Seattle, WA 98109`.
-
-    Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
+3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. In dieser Anforderung suchen wir nach einer bestimmten Adresse: `400 Braod St, Seattle, WA 98109`. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ In diesem Beispiel wird die Azure Maps-[API zum Abrufen der Suchadresse](/rest/a
 
 6. Legen Sie als Nächstes den Schlüssel `query`auf `400 Broa` fest.
 
-7. Klicken Sie auf die Schaltfläche **Senden** .  Sie sehen, dass die Antwort Daten aus mehreren Ländern umfasst. Fügen Sie der Anforderung immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen.
+7. Klicken Sie auf die Schaltfläche **Senden**. Sie sehen, dass die Antwort Daten aus mehreren Ländern umfasst. Fügen Sie der Anforderung immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen.
 
 ## <a name="using-fuzzy-search-api"></a>Verwenden der API für die Fuzzysuche
 
@@ -78,7 +77,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
 
 1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
-2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
@@ -95,7 +94,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
 
 4. Das Standardverhalten besteht darin, die ganze Welt zu durchsuchen, wodurch unnötige Ergebnisse zurückgegeben werden können. Als Nächstes führen wir eine Suche nach „pizza“ nur in den USA durch. Fügen Sie dem Abschnitt `countrySet`Params **den Schlüssel** hinzu, und legen Sie seinen Wert auf `US` fest. Durch das Festlegen des Schlüssels `countrySet` auf `US` werden die Ergebnisse auf die USA beschränkt.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Suchen nach einer Adresse":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Suche nach „pizza“ in den USA":::
 
     Die Ergebnisse werden nun durch den Ländercode begrenzt, und die Abfrage gibt Pizzerien in den USA zurück.
 
@@ -110,7 +109,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
     | Radius | 400 |
     | limit | 5|
 
-6. Klicken Sie auf **Send** . Die Antwort enthält die Ergebnisse für Pizzerien in der Nähe der Space Needle in Seattle.
+6. Klicken Sie auf **Send**. Die Antwort enthält die Ergebnisse für Pizzerien in der Nähe der Space Needle in Seattle.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Suchen nach einer Adresse mithilfe der inversen Adresssuche
 
@@ -143,15 +142,15 @@ In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Para
     | returnRoadUse | true | Gibt den Straßentyp an der Adresse zurück. Eine Übersicht der möglichen Straßentypen finden Sie im Abschnitt [URI-Parameter](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Gibt den Typ der Übereinstimmung zurück. Eine Übersicht der möglichen Werte finden Sie unter [SearchAddressReverseResult](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult).
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Suchen nach einer Adresse":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Umgekehrte Suche":::
 
 5. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 
 6. Als Nächstes fügen wir den Schlüssel `entityType` hinzu und legen seinen Wert auf `Municipality` fest. Der Schlüssel `entityType` überschreibt den Schlüssel `returnMatchType` im vorherigen Schritt. Wir müssen außerdem `returnSpeedLimit` und `returnRoadUse` entfernen, weil wir Informationen zur Gemeinde anfordern.  Eine Liste aller möglichen Typen finden Sie unter [EntityType](/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Suchen nach einer Adresse":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Umgekehrte Suche nach „entityType“":::
 
-7. Klicken Sie auf **Send** . Vergleichen Sie die Ergebnisse mit denen in Schritt 5.  Der angeforderte Entitätstyp lautet jetzt `municipality`, deshalb enthält die Antwort keine Informationen zur Anschrift. Der zurückgegebene `geometryId`-Wert kann darüber hinaus zum Anfordern eines Begrenzungspolygons über die Azure Maps-[API zum Abrufen von Suchpolygonen](/rest/api/maps/search/getsearchpolygon) verwendet werden.
+7. Klicken Sie auf **Send**. Vergleichen Sie die Ergebnisse mit denen in Schritt 5.  Der angeforderte Entitätstyp lautet jetzt `municipality`, deshalb enthält die Antwort keine Informationen zur Anschrift. Der zurückgegebene `geometryId`-Wert kann darüber hinaus zum Anfordern eines Begrenzungspolygons über die Azure Maps-[API zum Abrufen von Suchpolygonen](/rest/api/maps/search/getsearchpolygon) verwendet werden.
 
 >[!TIP]
 >Weitere Informationen zu diesen und weiteren Parametern finden Sie im Abschnitt zu den [Parametern für die umgekehrte Suche](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
@@ -168,7 +167,7 @@ In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach e
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suchen nach einer Adresse":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suche nach einer Querstraße":::
   
 3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. Beachten Sie, dass die Antwort den Wert `Occidental Avenue South` für `crossStreet` enthält.
 

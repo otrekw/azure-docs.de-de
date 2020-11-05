@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47afaea03e58cf6a24382727c6fc7193fde5abe4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044412"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123811"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags
 
@@ -30,7 +30,7 @@ In diesem Abschnitt werden Sie durch die Schritte geführt, in denen Sie die Anm
 3. Kopieren Sie den neu generierten Schlüssel.    
 4. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
 5. Suchen Sie nach der Blob-/Tabellespeichereingabe/-ausgabe, für die Sie die Anmeldeinformationen aktualisieren möchten.    
-6. Suchen Sie nach dem Feld **Speicherkontoschlüssel**, fügen Sie Ihren neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
+6. Suchen Sie nach dem Feld **Speicherkontoschlüssel** , fügen Sie Ihren neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
 7. Wenn Sie die Änderungen speichern, wird automatisch ein Verbindungstest gestartet. Diesen können Sie sich auf der Registerkarte „Benachrichtigungen“ ansehen. Es gibt zwei Benachrichtigungen, wobei eine dem Speichern der Aktualisierung und die andere dem Testen der Verbindung entspricht:  
    ![Benachrichtigungen nach einem Bearbeiten des Schlüssels](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
@@ -38,12 +38,12 @@ In diesem Abschnitt werden Sie durch die Schritte geführt, in denen Sie die Anm
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu dem Event Hub, den Sie als Eingabe/Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
-2. Öffnen Sie im Abschnitt „Einstellungen“ die Option **SAS-Richtlinien**, und wählen Sie die erforderliche Zugriffsrichtlinie aus. Wählen Sie aus **Primärer Schlüssel** und **Sekundärer Schlüssel** denjenigen aus, der nicht für Ihren Auftrag verwendet wird, und generieren Sie ihn neu:  
+2. Öffnen Sie im Abschnitt „Einstellungen“ die Option **SAS-Richtlinien** , und wählen Sie die erforderliche Zugriffsrichtlinie aus. Wählen Sie aus **Primärer Schlüssel** und **Sekundärer Schlüssel** denjenigen aus, der nicht für Ihren Auftrag verwendet wird, und generieren Sie ihn neu:  
    ![Neugenerieren von Schlüsseln für Event Hubs](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Kopieren Sie den neu generierten Schlüssel.    
 4. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
 5. Suchen Sie nach der Event Hubs-Eingabe/-Ausgabe, für die Sie die Anmeldeinformationen aktualisieren möchten.    
-6. Suchen Sie nach dem Feld **Event Hub-Richtlinienschlüssel**, fügen Sie den neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
+6. Suchen Sie nach dem Feld **Event Hub-Richtlinienschlüssel** , fügen Sie den neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
 7. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.    
 8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
 
@@ -76,7 +76,7 @@ Sie müssen eine Verbindung mit der SQL-Datenbank herstellen, um die Anmeldeinfo
 
 ## <a name="start-your-job-from-the-last-stopped-time"></a>Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung
 
-1. Navigieren Sie zum **Übersicht**-Bereich des Auftrags, und wählen Sie **Starten** aus, um den Auftrag zu starten.    
+1. Navigieren Sie zum **Übersicht** -Bereich des Auftrags, und wählen Sie **Starten** aus, um den Auftrag zu starten.    
 2. Wählen Sie **Zeitpunkt der letzten Beendigung** aus, und klicken Sie auf **Starten**. Beachten Sie, dass die Option „Zeitpunkt der letzten Beendigung“ nur angezeigt wird, wenn Sie den Auftrag zuvor ausgeführt und dabei etwas Ausgabe generiert haben. Der Auftrag wird anhand des Zeitpunkts des letzten Ausgabewerts neu gestartet.
    ![Starten des Stream Analytics-Auftrags](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
@@ -84,5 +84,5 @@ Sie müssen eine Verbindung mit der SQL-Datenbank herstellen, um die Anmeldeinfo
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)

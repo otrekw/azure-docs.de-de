@@ -8,19 +8,21 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085767"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale Endpunkte für Azure Cosmos DB-Graphkonto
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Die Azure Cosmos DB-Graphdatenbank ist [global verteilt](distribute-data-globally.md), sodass Anwendungen mehrere Leseendpunkte verwenden können. Für Anwendungen, die Schreibzugriff an mehreren Speicherorten benötigen, muss die Funktion [Schreibvorgänge in mehreren Regionen](how-to-multi-master.md) aktiviert sein.
 
 Gründe für die Auswahl mehrerer Regionen:
-1. **Horizontale Leseskalierbarkeit**: Wenn die Anwendungslast zunimmt, kann es ratsam sein, Lesedatenverkehr an verschiedene Azure-Regionen weiterzuleiten.
-2. **Niedrigere Latenz**: Sie die Netzwerklatenz bei jedem Durchlauf verringern, indem Sie Lese- und Schreibdatenverkehr an die nächstgelegene Azure-Region weiterleiten.
+1. **Horizontale Leseskalierbarkeit** : Wenn die Anwendungslast zunimmt, kann es ratsam sein, Lesedatenverkehr an verschiedene Azure-Regionen weiterzuleiten.
+2. **Niedrigere Latenz** : Sie die Netzwerklatenz bei jedem Durchlauf verringern, indem Sie Lese- und Schreibdatenverkehr an die nächstgelegene Azure-Region weiterleiten.
 
 Die Anforderung an die **Datenresidenz** Anforderung wird durch Festlegen der Azure Resource Manager-Richtlinie für das Cosmos DB-Konto erfüllt. Der Kunde kann Regionen einschränken, in die Cosmos DB Daten repliziert.
 

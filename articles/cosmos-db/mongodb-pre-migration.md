@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: jasonh
-ms.openlocfilehash: 2ad56bf0295efca45ee958e1ce135d79ed850d62
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8e3a0ac6996762bc7f4bd1a6d9dde8cfb59db662
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277597"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096426"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Vor dem Migrieren Ihrer Daten aus MongoDB (lokal oder in der Cloud) zur Azure Cosmos DB-API für MongoDB sollten Sie die folgenden Schritte ausführen:
 
@@ -30,13 +31,13 @@ Wenn Sie die obigen erforderlichen vorbereitenden Schritte für die Migration be
 
 Nachfolgend werden spezifische Merkmale der Azure Cosmos DB-API für MongoDB aufgeführt:
 
-- **Kapazitätsmodell**: Die Datenbankkapazität in Azure Cosmos DB basiert auf einem durchsatzbasierten Modell. Dieses Modell basiert auf [Anforderungseinheiten pro Sekunde](request-units.md). Dabei handelt es sich um eine Einheit, die die Anzahl von Datenbankvorgängen darstellt, die pro Sekunde für eine Sammlung ausgeführt werden können. Diese Kapazität kann auf [Datenbank- oder Sammlungsebene](set-throughput.md) zugeordnet werden, und sie kann in einem Zuordnungsmodell oder mithilfe des [per Autoskalierung bereitgestellten Durchsatzes](provision-throughput-autoscale.md) bereitgestellt werden.
+- **Kapazitätsmodell** : Die Datenbankkapazität in Azure Cosmos DB basiert auf einem durchsatzbasierten Modell. Dieses Modell basiert auf [Anforderungseinheiten pro Sekunde](request-units.md). Dabei handelt es sich um eine Einheit, die die Anzahl von Datenbankvorgängen darstellt, die pro Sekunde für eine Sammlung ausgeführt werden können. Diese Kapazität kann auf [Datenbank- oder Sammlungsebene](set-throughput.md) zugeordnet werden, und sie kann in einem Zuordnungsmodell oder mithilfe des [per Autoskalierung bereitgestellten Durchsatzes](provision-throughput-autoscale.md) bereitgestellt werden.
 
-- **Anforderungseinheiten**: In Azure Cosmos DB sind jedem Datenbankvorgang Kosten für Anforderungseinheiten (Request Units, RUs) zugeordnet. Bei der Ausführung werden diese von der verfügbaren Anforderungseinheitenebene für eine bestimmte Sekunde subtrahiert. Wenn für eine Anforderung mehr RUs als die aktuell zugeordnete Anzahl von Anforderungseinheiten pro Sekunde erforderlich sind, gibt es zwei Möglichkeiten, das Problem zu beheben: Sie können die Anzahl von RUs erhöhen oder warten, bis die nächste Sekunde beginnt, und dann den Vorgang wiederholen.
+- **Anforderungseinheiten** : In Azure Cosmos DB sind jedem Datenbankvorgang Kosten für Anforderungseinheiten (Request Units, RUs) zugeordnet. Bei der Ausführung werden diese von der verfügbaren Anforderungseinheitenebene für eine bestimmte Sekunde subtrahiert. Wenn für eine Anforderung mehr RUs als die aktuell zugeordnete Anzahl von Anforderungseinheiten pro Sekunde erforderlich sind, gibt es zwei Möglichkeiten, das Problem zu beheben: Sie können die Anzahl von RUs erhöhen oder warten, bis die nächste Sekunde beginnt, und dann den Vorgang wiederholen.
 
-- **Elastische Kapazität**: Die Kapazität für eine bestimmte Sammlung oder Datenbank kann sich jederzeit ändern. Dadurch kann die Datenbank elastisch an die Durchsatzanforderungen Ihrer Workload angepasst werden.
+- **Elastische Kapazität** : Die Kapazität für eine bestimmte Sammlung oder Datenbank kann sich jederzeit ändern. Dadurch kann die Datenbank elastisch an die Durchsatzanforderungen Ihrer Workload angepasst werden.
 
-- **Automatisches Sharding**: Azure Cosmos DB bietet ein automatisches Partitionierungssystem, das nur einen Shard (oder einen Partitionsschlüssel) erfordert. Der [automatische Partitionierungsmechanismus](partitioning-overview.md) wird von allen Azure Cosmos DB-APIs gemeinsam genutzt und ermöglicht nahtlose Daten und die gesamte Skalierung durch horizontale Verteilung.
+- **Automatisches Sharding** : Azure Cosmos DB bietet ein automatisches Partitionierungssystem, das nur einen Shard (oder einen Partitionsschlüssel) erfordert. Der [automatische Partitionierungsmechanismus](partitioning-overview.md) wird von allen Azure Cosmos DB-APIs gemeinsam genutzt und ermöglicht nahtlose Daten und die gesamte Skalierung durch horizontale Verteilung.
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Migrationsoptionen für die Azure Cosmos DB-API für MongoDB
 
@@ -56,11 +57,11 @@ In Azure Cosmos DB wird der Durchsatz vorab bereitgestellt und in Anforderungsei
 Sie können den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) verwenden, um die Anzahl von Anforderungseinheiten basierend auf der Konfiguration Ihres Datenbankkontos, der Datenmenge, der Dokumentgröße und den erforderlichen Lese- und Schreibvorgängen pro Sekunde zu ermitteln.
 
 Im Folgenden sind wichtige Faktoren beschrieben, die sich auf die Anzahl der erforderlichen RUs auswirken:
-- **Dokumentgröße**: Je größer ein Element/Dokument, desto mehr RUs werden beim Lesen oder Schreiben des Elements/Dokuments genutzt.
+- **Dokumentgröße** : Je größer ein Element/Dokument, desto mehr RUs werden beim Lesen oder Schreiben des Elements/Dokuments genutzt.
 
-- **Anzahl der Dokumenteigenschaften**: Die Anzahl der zum Erstellen oder Aktualisieren eines Dokuments verbrauchten RUs bezieht sich auf die Anzahl, Komplexität und Länge der zugehörigen Eigenschaften. Sie können die für Schreibvorgänge genutzten Anforderungseinheiten verringern, indem Sie die [Anzahl indizierter Eigenschaften begrenzen](mongodb-indexing.md).
+- **Anzahl der Dokumenteigenschaften** : Die Anzahl der zum Erstellen oder Aktualisieren eines Dokuments verbrauchten RUs bezieht sich auf die Anzahl, Komplexität und Länge der zugehörigen Eigenschaften. Sie können die für Schreibvorgänge genutzten Anforderungseinheiten verringern, indem Sie die [Anzahl indizierter Eigenschaften begrenzen](mongodb-indexing.md).
 
-- **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten von ihr verbraucht werden. 
+- **Abfragemuster** : Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten von ihr verbraucht werden. 
 
 Am besten können Sie die Kosten von Abfragen verstehen, wenn Sie Beispieldaten in Azure Cosmos DB verwenden und mithilfe des Befehls `getLastRequestStastistics` [Beispielabfragen aus der MongoDB-Shell ausführen](connect-mongodb-account.md), um die Anforderungsgebühr abzurufen. Dadurch wird die Anzahl der verbrauchten RUs ausgegeben:
 

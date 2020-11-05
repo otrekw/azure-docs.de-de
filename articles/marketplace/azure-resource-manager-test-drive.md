@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735601"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125137"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
 Verwenden Sie diesen Typ, wenn Sie über ein Angebot auf Azure Marketplace oder AppSource verfügen, eine Testversion jedoch nur mit Azure-Ressourcen erstellen möchten. Eine ARM-Vorlage (Azure Resource Manager) ist ein codierter Container mit Azure-Ressourcen, den Sie so entwerfen, dass Ihre Lösung optimal präsentiert wird. Die Testversion übernimmt die bereitgestellte ARM-Vorlage und stellt alle erforderlichen Ressourcen in einer Ressourcengruppe bereit. Dies ist die einzige Testversionsoption für VM- und Azure-App-Angebote.
 
-Wenn Sie mit ARM-Vorlagen nicht vertraut sind, lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/resource-group-overview.md) und [Verstehen der Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md), um zu erfahren, wie Sie Ihre eigenen Vorlagen erstellen und testen können.
+Wenn Sie mit ARM-Vorlagen nicht vertraut sind, lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/template-syntax.md), um zu erfahren, wie Sie Ihre eigenen Vorlagen erstellen und testen können.
 
 Informationen zu einer **gehosteten** oder **Logik-App** -Testversion finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
 
@@ -34,7 +34,7 @@ Eine Bereitstellungsvorlage enthält alle Azure-Ressourcen, aus denen Ihre Lösu
 
   - **Kalt** : Dieser Instanztyp stellt die Gesamtzahl von Instanzen dar, die pro Region bereitgestellt werden können. Bei Instanzen des Typs „Kalt“ muss die Bereitstellung der gesamten Resource Manager-Vorlage für die Testversion durchgeführt werden, wenn der Kunde die Testversion anfordert. Daher dauert das Laden von Instanzen des Typs *Kalt* weitaus länger als das Laden von Instanzen des Typs *Heiß*. Sie müssen jedoch nur für die Dauer der Testversion bezahlen. Instanzen vom Typ „Kalt“ werden *nicht* wie Instanzen vom Typ *Heiß* stets im Azure-Abonnement ausgeführt.
 
-- **Azure Resource Manager-Vorlage für Testversion:** Laden Sie die ZIP-Datei mit Ihrer Azure Resource Manager-Vorlage hoch. Im Schnellstartartikel [Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) erhalten Sie weitere Informationen zum Erstellen einer Azure Resource Manager-Vorlage.
+- **Azure Resource Manager-Vorlage für Testversion:** Laden Sie die ZIP-Datei mit Ihrer Azure Resource Manager-Vorlage hoch. Im Schnellstartartikel [Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) erhalten Sie weitere Informationen zum Erstellen einer Azure Resource Manager-Vorlage.
 
     > [!note]
     > Für eine erfolgreiche Veröffentlichung ist es wichtig, die Formatierung der Resource Manager-Vorlage zu überprüfen. Hierfür gibt es zwei Möglichkeiten: (1) Verwendung eines [Online-API-Tools](https://docs.microsoft.com/rest/api/resources/deployments/validate) oder (2) Durchführung einer [Testbereitstellung](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).

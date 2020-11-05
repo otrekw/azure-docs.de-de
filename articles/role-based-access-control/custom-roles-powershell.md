@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd518828668ed20a4fa7be0cd6c9798a013055a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790210"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909572"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell
 
@@ -63,7 +63,7 @@ API Management Service Contributor                   False
 Im folgenden Beispiel werden nur die benutzerdefinierten Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
 
 ```azurepowershell
-Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+Get-AzRoleDefinition -Custom | FT Name, IsCustom
 ```
 
 ```Example
@@ -163,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 Wenn Sie PowerShell verwenden, um eine benutzerdefinierte Rolle zu erstellen, können Sie eine der [integrierten Rollen](built-in-roles.md) als Ausgangspunkt verwenden oder von Grund auf beginnen. Das erste Beispiel in diesem Abschnitt beginnt mit einer integrierten Rolle. Diese wird dann mit weiteren Berechtigungen angepasst. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten `Actions`, `NotActions` oder `AssignableScopes` hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
 
-Das folgende Beispiel beginnt mit der integrierten Rolle [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor), um eine benutzerdefinierte Rolle namens *Virtual Machine Operator* zu erstellen. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
+Das folgende Beispiel beginnt mit der integrierten Rolle [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor), um eine benutzerdefinierte Rolle namens *Virtual Machine Operator* zu erstellen. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute* , *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"

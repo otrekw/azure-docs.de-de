@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Event Gri
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736863"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074215"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Schnellstart: Senden von Ereignissen aus der privaten Containerregistrierung an Event Grid
 
@@ -19,11 +19,11 @@ Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, werden Ereignisse,
 
 ![Rendering der Webanwendung mit drei empfangenen Ereignissen im Webbrowser][sample-app-01]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash** -Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
+- Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash** -Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

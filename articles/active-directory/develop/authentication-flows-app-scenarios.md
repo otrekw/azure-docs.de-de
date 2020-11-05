@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: ff92f66d4d7b96660fe83b79273f65ca50eb22f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906adb5b9535ee66fd7bc4a22c5c30a86b561547
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89292893"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910252"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -168,7 +168,7 @@ Weitere Informationen finden Sie unter [Szenario: Geschützte Web-API](scenario-
 
 ### <a name="web-api-that-calls-another-web-api-on-behalf-of-a-user"></a>Web-API, die eine andere Web-API im Namen eines Benutzers aufruft
 
-Damit Ihre geschützte Web-API eine andere Web-API im Namen eines Benutzers aufrufen kann, muss Ihre App ein Token für die Downstream-Web-API abrufen. Solche Aufrufe werden manchmal auch als *Dienst-zu-Dienst*-Aufrufe bezeichnet. Web-APIs, die andere Web-APIs aufrufen, müssen auch eine benutzerdefinierte Cacheserialisierung bereitstellen.
+Damit Ihre geschützte Web-API eine andere Web-API im Namen eines Benutzers aufrufen kann, muss Ihre App ein Token für die Downstream-Web-API abrufen. Solche Aufrufe werden manchmal auch als *Dienst-zu-Dienst* -Aufrufe bezeichnet. Web-APIs, die andere Web-APIs aufrufen, müssen auch eine benutzerdefinierte Cacheserialisierung bereitstellen.
 
 ![Eine Web-API, die eine andere Web-API aufruft](media/scenarios/web-api.svg)
 
@@ -217,7 +217,7 @@ Szenarien mit Tokenabruf werden auch OAuth 2.0-Authentifizierungsflows zugeordne
  </tr>
 
   <tr>
-   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
+   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that calls web APIs" src="media/scenarios/web-app.svg"></a></td>
    <td><a href="scenario-web-app-call-api-overview.md">Web-App, die Web-APIs aufruft</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">Autorisierungscode</a></td>
    <td>Geschäfts-, Schul- oder Unikonten, persönliche Konten und Azure AD B2C</td>

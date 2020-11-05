@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476398"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073824"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Als vollständig verwalteter cloudnativer Datenbankdienst vereinfacht Azure Cosmos DB die Abrechnung, da nur die Datenbankvorgänge und die Speichernutzung berechnet werden. Im Vergleich zu lokalen oder über IaaS gehostete Alternativen gibt es keine zusätzlichen Lizenzgebühren und keine Kosten für Hardware, Hilfsprogramme oder Gebäude. Wenn Sie dazu noch die Funktionalität zum Einbeziehen mehrerer Regionen berücksichtigen, sorgt der Datenbankdienst gegenüber vorhandenen lokalen oder über IaaS gehosteten Lösungen für eine deutliche Reduzierung der Kosten.
 
@@ -102,7 +103,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 * Wenn in einem Monat mit 720 Stunden Ihr bereitgestellter Durchsatz 300 Stunden lang 120.000 RUs/Sek. und während der restlichen 420 Stunden 155.000 RUs/Sek. betrug, weist Ihre Monatsrechnung Folgendes aus: (300 x 9,60 US-Dollar/Stunde) + (420 x 12,40 US-Dollar/Stunde) = 2.880 + 5.208 = 8.088 US-Dollar pro Monat. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Abrechnungsbeispiel für dedizierten Durchsatz":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Abrechnungsbeispiel für gemeinsam genutzten Durchsatz":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Abrechnungsbeispiele mit Georeplikation und Schreibvorgängen für mehrere Regionen  
 
@@ -192,7 +193,7 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit mehreren Re
 
 Visuell werden die Änderungen im insgesamt bereitgestellten Durchsatz während der 720 Stunden im Monat in der folgenden Abbildung dargestellt: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Abrechnungsbeispiel für dedizierten Durchsatz":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Praxisbeispiel":::
 
 Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgesetzt) wie folgt berechnet:
 

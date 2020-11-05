@@ -8,14 +8,15 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476551"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073892"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Der Azure Cosmos DB-Emulator stellt eine lokale Umgebung bereit, die zu Entwicklungszwecken den Azure Cosmos DB-Dienst emuliert. Mithilfe des Emulators können Sie Ihre Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen oder sonstige Kosten zu verursachen. 
 
@@ -25,7 +26,7 @@ In diesem Artikel wird gezeigt, wie Sie für eine ASP.NET-Anwendung eine CI-Pipe
 
 ## <a name="install-the-emulator-build-task"></a>Installieren des Emulator-Buildtasks
 
-Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator** , und klicken Sie auf **Kostenlos erhalten** .
+Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator** , und klicken Sie auf **Kostenlos erhalten**.
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
@@ -34,19 +35,19 @@ Wählen Sie anschließend die Organisation aus, in der die Erweiterung installie
 > [!NOTE]
 > Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen.](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Auswählen einer Azure DevOps-Organisation für die Installation einer Erweiterung":::
 
 ## <a name="create-a-build-definition"></a>Erstellen einer Builddefinition
 
 Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrer Azure DevOps-Organisation an, und suchen Sie Ihr Projekt im Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
 
-1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds** . Klicken Sie auf **+Neu.** \> **Neue Buildpipeline**
+1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.** \> **Neue Buildpipeline**
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Erstellen einer neuen Buildpipeline":::
 
 2. Wählen Sie die gewünschte **Quelle** , das **Teamprojekt** , das **Repository** und den **Standardbranch für manuelle und geplante Builds** aus. Wählen Sie **Weiter** aus, nachdem Sie alle erforderlichen Optionen ausgewählt haben.
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Auswählen von Teamprojekt, Repository und Branch für die Buildpipeline":::
 
 3. Wählen Sie abschließend die gewünschte Vorlage für die Buildpipeline aus. In diesem Tutorial wird die Vorlage **ASP.NET** ausgewählt. Sie verfügen nun über eine Buildpipeline, die Sie für die Verwendung des Azure Cosmos DB-Emulator-Buildtasks einrichten können. 
 
@@ -66,7 +67,7 @@ Start-CosmosDbEmulator
 
 1. Wählen Sie als Nächstes das Symbol **+** neben dem Agent-Auftrag aus, um den Emulator-Buildtask hinzuzufügen. Suchen Sie über das Suchfeld nach **cosmos** , wählen Sie den **Azure Cosmos DB-Emulator** aus, und fügen Sie ihn dem Agent-Auftrag hinzu. Der Buildtask startet einen Container, in dem bereits eine Instanz des Cosmos DB-Emulators ausgeführt wird. Der Azure Cosmos DB-Emulator-Task muss vor allen anderen Tasks platziert werden, die darauf angewiesen sind, dass der Emulator bereits aktiv ist.
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Hinzufügen des Emulator-Buildtasks zur Builddefinition":::
 
 In diesem Tutorial fügen Sie den Task am Anfang hinzu, um sicherzustellen, dass der Emulator vor der Testausführung verfügbar ist.
 
@@ -159,21 +160,21 @@ namespace todo.Tests
 
 Navigieren Sie zu den Ausführungsoptionen im Visual Studio-Testtask. Geben Sie unter **Einstellungsdatei** an, dass die Tests mit der Datei **.runsettings** konfiguriert sind. Fügen Sie unter **Testlaufparameter überschreiben** die Zeichenfolge `-endpoint $(CosmosDbEmulator.Endpoint)` ein. Dadurch wird der Testtask so konfiguriert, dass er auf den Endpunkt des Emulator-Buildtasks und nicht auf den in der Datei **.runsettings** definierten Endpunkt verweist.  
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Überschreiben der Endpunktvariablen mit dem Endpunkt des Emulator-Buildtasks":::
 
 ## <a name="run-the-build"></a>Führen Sie den Buildvorgang durch.
 
 Verwenden Sie nun die Option **Speichern und in Warteschlange einreihen** , um den Build zu speichern und in die Warteschlange einzureihen. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Screenshot eines Builds mit ausgewählter Option „Speichern und in Warteschlange einreihen“":::
 
 Nach dem Start des Builds sehen Sie, dass der Cosmos DB-Emulatortask damit begonnen hat, das Docker-Image mit dem installierten Emulator abzurufen. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Screenshot des Abrufvorgangs des Cosmos DB-Emulatortasks":::
 
 Nach Abschluss des Builds sehen Sie, dass Ihre Tests, die für den Cosmos DB-Emulator aus dem Buildtask ausgeführt wurden, erfolgreich waren.
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Screenshot des Fortschrittswerts auf der Registerkarte „Zusammenfassung“":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

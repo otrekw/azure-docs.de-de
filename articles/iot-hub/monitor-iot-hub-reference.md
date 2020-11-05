@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: b4d5b3682114d44ceaadc73252f355e4cdc9cc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078202"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Referenz zu Azure IoT Hub-Überwachungsdaten
 
@@ -60,9 +60,9 @@ Bei den meisten Metriken sind alle Aggregationstypen zulässig. Bei Metriken vom
 |Metrikanzeigename|Metrik|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
 |Abgelaufene C2D-Nachrichten (Vorschau)|C2DMessagesExpired|Anzahl|Gesamt|Anzahl von abgelaufenen Cloud-zu-Gerät-Nachrichten|Keine|
-|Abgeschlossene C2D-Nachrichtenübermittlungen|c2d.commands.egress.<br>complete.success|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichtenübermittlungen, die vom Gerät erfolgreich abgeschlossen wurden|Keine|
-|Abgebrochene C2D-Nachrichten|c2d.commands.egress.<br>abandon.success|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgebrochen wurden|Keine|
-|Abgelehnte C2D-Nachrichten|c2d.commands.egress.<br>reject.success|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgelehnt wurden|Keine|
+|Abgeschlossene C2D-Nachrichtenübermittlungen|c2d.commands.egress.complete.success|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichtenübermittlungen, die vom Gerät erfolgreich abgeschlossen wurden|Keine|
+|Abgebrochene C2D-Nachrichten|c2d.commands.egress.abandon.success|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgebrochen wurden|Keine|
+|Abgelehnte C2D-Nachrichten|c2d.commands.egress.reject.success|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgelehnt wurden|Keine|
 
 Bei Metriken mit dem Wert **Anzahl** für **Einheit** ist nur die Aggregation „Gesamt“ (Summe) gültig. Die Aggregationen „Minimum“, „Maximum“ und „Durchschnitt“ geben immer „1“ zurück. Weitere Informationen finden Sie unter [Unterstützte Aggregationen](#supported-aggregations).
 
@@ -113,7 +113,7 @@ Bei *Gesamtzahl verwendeter Nachrichten* werden nur die Aggregationen „Minimum
 |Metrikanzeigename|Metrik|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
 |Geräte gesamt (veraltet)|devices.totalDevices|Anzahl|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|Keine|
-|Verbundene Geräte (veraltet) |devices.connectedDevices.<br>allProtocol|Anzahl|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|Keine|
+|Verbundene Geräte (veraltet) |devices.connectedDevices.allProtocol|Anzahl|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|Keine|
 |Geräte gesamt (Vorschau)|totalDeviceCount|Anzahl|Average|Die Anzahl von Geräten, die beim IoT Hub registriert sind|Keine|
 |Verbundene Geräte (Vorschau)|connectedDeviceCount|Anzahl|Average|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|Keine|
 
@@ -127,9 +127,9 @@ Für *Geräte gesamt (Vorschau)* und *Verbundene Geräte (Vorschau)* sind nur di
 
 |Metrikanzeigename|Metrik|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|Anzahl von Drosselungsfehlern|d2c.telemetry.ingress.<br>sendThrottle|Anzahl|Gesamt|Anzahl von Drosselungsfehlern aufgrund von Drosselungen des Gerätedurchsatzes|Keine|
-|Telemetry message send attempts (Sendeversuche für Telemetrienachrichten)|d2c.telemetry.ingress.<br>allProtocol|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|Keine|
-|Telemetry messages sent (Gesendete Telemetrienachrichten)|d2c.telemetry.ingress.<br>success|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die erfolgreich an Ihren IoT Hub gesendet wurden|Keine|
+|Anzahl von Drosselungsfehlern|d2c.telemetry.ingress.sendThrottle|Anzahl|Gesamt|Anzahl von Drosselungsfehlern aufgrund von Drosselungen des Gerätedurchsatzes|Keine|
+|Telemetry message send attempts (Sendeversuche für Telemetrienachrichten)|d2c.telemetry.Ingress.allProtocol|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|Keine|
+|Telemetry messages sent (Gesendete Telemetrienachrichten)|d2c.telemetry.ingress.success|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die erfolgreich an Ihren IoT Hub gesendet wurden|Keine|
 
 Bei Metriken mit dem Wert **Anzahl** für **Einheit** ist nur die Aggregation „Gesamt“ (Summe) gültig. Die Aggregationen „Minimum“, „Maximum“ und „Durchschnitt“ geben immer „1“ zurück. Weitere Informationen finden Sie unter [Unterstützte Aggregationen](#supported-aggregations).
 
@@ -161,13 +161,13 @@ Bei Metriken mit dem Wert **Anzahl** für **Einheit** ist nur die Aggregation �
 |---|---|---|---|---|---|
 |Abgeschlossene Aufträge|jobs.completed|Anzahl|Gesamt|Gibt die Anzahl von abgeschlossenen Aufträgen an.|Keine|
 |Failed calls to list jobs (Nicht erfolgreiche Aufrufe von Auflistungsaufträgen)|jobs.listJobs.failure|Anzahl|Gesamt|Gibt an, wie viele nicht erfolgreiche Aufrufe von Auflistungsaufträgen durchgeführt wurden.|Keine|
-|Failed creations of method invocation jobs (Nicht erfolgreiche Erstellungen von Methodenaufrufaufträgen)|jobs.createDirectMethodJob.<br>failure|Anzahl|Gesamt|Gibt die Anzahl von nicht erfolgreichen Erstellungen von Aufträgen für direkte Methodenaufrufe an.|Keine|
-|Failed creations of twin update jobs (Nicht erfolgreiche Erstellungen von Zwillingsaktualisierungsaufträgen)|jobs.createTwinUpdateJob.<br>failure|Anzahl|Gesamt|Gibt die Anzahl von allen nicht erfolgreichen Erstellungen von Zwillingsaktualisierungsaufträgen an.|Keine|
+|Failed creations of method invocation jobs (Nicht erfolgreiche Erstellungen von Methodenaufrufaufträgen)|jobs.createDirectMethodJob.failure|Anzahl|Gesamt|Gibt die Anzahl von nicht erfolgreichen Erstellungen von Aufträgen für direkte Methodenaufrufe an.|Keine|
+|Failed creations of twin update jobs (Nicht erfolgreiche Erstellungen von Zwillingsaktualisierungsaufträgen)|jobs.createTwinUpdateJob.failure|Anzahl|Gesamt|Gibt die Anzahl von allen nicht erfolgreichen Erstellungen von Zwillingsaktualisierungsaufträgen an.|Keine|
 |Failed job cancellations (Nicht erfolgreiche Auftragsabbrüche)|jobs.cancelJob.failure|Anzahl|Gesamt|Gibt an, wie viele nicht erfolgreiche Aufrufe von Auftragsabbrüchen durchgeführt wurden.|Keine|
 |Failed job queries (Nicht erfolgreiche Auftragsabfragen)|jobs.queryJobs.failure|Anzahl|Gesamt|Gibt an, wie viele nicht erfolgreiche Aufrufe von Abfrageaufträgen durchgeführt wurden.|Keine|
 |Fehlerhafte Aufträge|jobs.failed|Anzahl|Gesamt|Gibt die Anzahl aller fehlerhaften Aufträge an.|Keine|
 |Successful calls to list jobs (Erfolgreiche Aufrufe von Auflistungsaufträgen)|jobs.listJobs.success|Anzahl|Gesamt|Gibt an, wie viele erfolgreiche Aufrufe von Auflistungsaufträgen durchgeführt wurden.|Keine|
-|Successful creations of method invocation jobs (Erfolgreiche Erstellungen von Methodenaufrufaufträgen)|jobs.createDirectMethodJob.<br>success|Anzahl|Gesamt|Gibt die Anzahl von erfolgreichen Erstellungen von Aufträgen für direkte Methodenaufrufe an.|Keine|
+|Successful creations of method invocation jobs (Erfolgreiche Erstellungen von Methodenaufrufaufträgen)|jobs.createDirectMethodJob.success|Anzahl|Gesamt|Gibt die Anzahl von erfolgreichen Erstellungen von Aufträgen für direkte Methodenaufrufe an.|Keine|
 |Successful creations of twin update jobs (Erfolgreiche Erstellungen von Zwillingsaktualisierungsaufträgen)|jobs.createTwinUpdateJob.<br>success|Anzahl|Gesamt|Gibt die Anzahl von allen erfolgreichen Erstellungen von Zwillingsaktualisierungsaufträgen an.|Keine|
 |Successful job cancellations (Erfolgreiche Auftragsabbrüche)|jobs.cancelJob.success|Anzahl|Gesamt|Gibt an, wie viele erfolgreiche Aufrufe von Auftragsabbrüchen durchgeführt wurden.|Keine|
 |Successful job queries (Erfolgreiche Auftragsabfragen)|jobs.queryJobs.success|Anzahl|Gesamt|Gibt an, wie viele erfolgreiche Aufrufe von Abfrageaufträgen durchgeführt wurden.|Keine|
@@ -181,23 +181,23 @@ Bei Metriken mit dem Wert **Anzahl** für **Einheit** ist nur die Aggregation �
 | Routingzustellversuche (Vorschau) |RoutingDeliveries | Anzahl | Gesamt |Dies ist die Metrik zur Routingzustellung. Identifizieren Sie anhand der Dimensionen den Zustellungsstatus für einen bestimmten Endpunkt oder eine bestimmte Routingquelle.| Result,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>EndpointName<br>*Weitere Informationen finden Sie unter [Metrikdimensionen](#metric-dimensions).* |
 | Größe der Routingzustellungsdaten in Bytes (Vorschau)|RoutingDataSizeInBytesDelivered| Byte | Gesamt |Die Gesamtanzahl von Bytes, die von IoT Hub an einen benutzerdefinierten und einen integrierten Endpunkt weitergeleitet wurden. Identifizieren Sie anhand der Dimensionen die Größe der Daten, die an einen bestimmten Endpunkt oder eine bestimmte Routingquelle weitergeleitet wurden.| RoutingSource,<br>EndpointType<br>EndpointName<br>*Weitere Informationen finden Sie unter [Metrikdimensionen](#metric-dimensions).*|
 | Routinglatenz (Vorschau) |RoutingDeliveryLatency| Millisekunden | Average |Dies ist die Metrik zur Routingzustellungslatenz. Identifizieren Sie anhand der Dimensionen die Latenz für einen bestimmten Endpunkt oder eine bestimmte Routingquelle.| RoutingSource,<br>EndpointType,<br>EndpointName<br>*Weitere Informationen finden Sie unter [Metrikdimensionen](#metric-dimensions).*|
-|Routing: An den Speicher übermittelte Blobs|d2c.endpoints.egress.<br>storage.blobs|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Blobs an Speicherendpunkte übermittelt hat.|Keine|
-|Routing: An den Speicher übermittelte Daten|d2c.endpoints.egress.<br>storage.bytes|Byte|Gesamt|Die Datenmenge (Bytes), die das IoT Hub-Routing an die Speicherendpunkte übermittelt.|Keine|
-|Routing: Nachrichtenwartezeit für Event Hub|d2c.endpoints.latency.<br>eventHubs|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei benutzerdefinierten Endpunkten vom Typ „Event Hub“. Diese Metrik enthält keine an integrierte Endpunkte übermittelten Nachrichten (Ereignisse).|Keine|
-|Routing: Nachrichtenwartezeit für Service Bus-Warteschlange|d2c.endpoints.latency.<br>serviceBusQueues|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Warteschlangenendpunkt.|Keine|
-|Routing: Nachrichtenwartezeit für Service Bus-Thema|d2c.endpoints.latency.<br>serviceBusTopics|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Themenendpunkt.|Keine|
-|Routing: Nachrichtenwartezeit für Nachrichten/Ereignisse|d2c.endpoints.latency.<br>builtIn.events|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht beim integrierten Endpunkt (Nachrichten/Ereignisse) und der Fallbackroute.|Keine|
-|Routing: Nachrichtenwartezeit für Speicher|d2c.endpoints.latency.<br>storage|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei einem Speicherendpunkt.|Keine|
-|Routing: An Event Hub übermittelte Nachrichten|d2c.endpoints.egress.<br>eventHubs|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an benutzerdefinierte Endpunkt vom Typ „Event Hub“ übermittelt hat. Diese Metrik enthält keine an integrierte Endpunkte übermittelten Nachrichten (Ereignisse).|Keine|
-|Routing: An Service Bus-Warteschlange übermittelte Nachrichten|d2c.endpoints.egress.<br>serviceBusQueues|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Service Bus-Warteschlangenendpunkte übermittelt hat.|Keine|
-|Routing: An Service Bus-Thema übermittelte Nachrichten|d2c.endpoints.egress.<br>serviceBusTopics|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Service Bus-Themaendpunkte übermittelt hat.|Keine|
-|Routing: An den Fallback übermittelte Nachrichten|d2c.telemetry.egress.<br>fallback|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten an den mit der Fallbackroute verbundenen Endpunkt übermittelt hat.|Keine|
-|Routing: An Nachrichten/Ereignisse übermittelte Nachrichten|d2c.endpoints.egress.<br>builtIn.events|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an den integrierter Endpunkt (Nachrichten/Ereignisse) und die Fallbackroute übermittelt hat.|Keine|
-|Routing: An den Speicher übermittelte Nachrichten|d2c.endpoints.egress.<br>storage|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Speicherendpunkte übermittelt hat.|Keine|
-|Routing: Übermittelte Telemetrienachrichten|d2c.telemetry.egress.<br>success|Anzahl|Gesamt|Die Anzahl der erfolgreichen Nachrichtenübermittlungen an alle Endpunkte über das IoT Hub-Routing Wenn eine Nachricht an mehrere Endpunkte weitergeleitet wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins Wenn eine Nachricht mehrmals an denselben Endpunkt übermittelt wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins|Keine|
-|Routing: Verworfene Telemetrienachrichten |d2c.telemetry.egress.<br>dropped|Anzahl|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine|
-|Routing: Nicht kompatible Telemetrienachrichten|d2c.telemetry.egress.<br>ungültig|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten aufgrund einer Inkompatibilität mit dem Endpunkt nicht übermitteln konnte. Eine Nachricht ist mit einem Endpunkt inkompatibel, wenn IoT Hub versucht, die Nachricht an den Endpunkt zu übermitteln und ein nicht vorübergehender Fehler auftritt. Es wird nicht versucht, ungültige Nachrichten erneut zuzustellen. Dieser Wert umfasst keine Wiederholungen.|Keine|
-|Routing: Verwaiste Telemetrienachrichten |d2c.telemetry.egress.<br>orphaned|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing zu verwaisten Nachrichten führte, weil sie keiner Routingabfrage entsprachen (wenn die Fallbackroute deaktiviert wurde).|Keine|
+|Routing: An den Speicher übermittelte Blobs|d2c.endpoints.egress.storage.blobs|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Blobs an Speicherendpunkte übermittelt hat.|Keine|
+|Routing: An den Speicher übermittelte Daten|d2c.endpoints.egress.storage.bytes|Byte|Gesamt|Die Datenmenge (Bytes), die das IoT Hub-Routing an die Speicherendpunkte übermittelt.|Keine|
+|Routing: Nachrichtenwartezeit für Event Hub|d2c.endpoints.latency.eventHubs|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei benutzerdefinierten Endpunkten vom Typ „Event Hub“. Diese Metrik enthält keine an integrierte Endpunkte übermittelten Nachrichten (Ereignisse).|Keine|
+|Routing: Nachrichtenwartezeit für Service Bus-Warteschlange|d2c.endpoints.latency.serviceBusQueues|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Warteschlangenendpunkt.|Keine|
+|Routing: Nachrichtenwartezeit für Service Bus-Thema|d2c.endpoints.latency.serviceBusTopics|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Themenendpunkt.|Keine|
+|Routing: Nachrichtenwartezeit für Nachrichten/Ereignisse|d2c.endpoints.latency.builtIn.events|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht beim integrierten Endpunkt (Nachrichten/Ereignisse) und der Fallbackroute.|Keine|
+|Routing: Nachrichtenwartezeit für Speicher|d2c.endpoints.latency.storage|Millisekunden|Average|Die durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang einer Nachricht bei IoT Hub und dem Eingang der Nachricht bei einem Speicherendpunkt.|Keine|
+|Routing: An Event Hub übermittelte Nachrichten|d2c.endpoints.egress.eventHubs|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an benutzerdefinierte Endpunkt vom Typ „Event Hub“ übermittelt hat. Diese Metrik enthält keine an integrierte Endpunkte übermittelten Nachrichten (Ereignisse).|Keine|
+|Routing: An Service Bus-Warteschlange übermittelte Nachrichten|d2c.endpoints.egress.serviceBusQueues|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Service Bus-Warteschlangenendpunkte übermittelt hat.|Keine|
+|Routing: An Service Bus-Thema übermittelte Nachrichten|d2c.endpoints.egress.serviceBusTopics|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Service Bus-Themaendpunkte übermittelt hat.|Keine|
+|Routing: An den Fallback übermittelte Nachrichten|d2c.telemetry.egress.fallback|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten an den mit der Fallbackroute verbundenen Endpunkt übermittelt hat.|Keine|
+|Routing: An Nachrichten/Ereignisse übermittelte Nachrichten|d2c.endpoints.egress.builtIn.events|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an den integrierter Endpunkt (Nachrichten/Ereignisse) und die Fallbackroute übermittelt hat.|Keine|
+|Routing: An den Speicher übermittelte Nachrichten|d2c.endpoints.egress.storage|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Speicherendpunkte übermittelt hat.|Keine|
+|Routing: Übermittelte Telemetrienachrichten|d2c.telemetry.egress.success|Anzahl|Gesamt|Die Anzahl der erfolgreichen Nachrichtenübermittlungen an alle Endpunkte über das IoT Hub-Routing Wenn eine Nachricht an mehrere Endpunkte weitergeleitet wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins Wenn eine Nachricht mehrmals an denselben Endpunkt übermittelt wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins|Keine|
+|Routing: Verworfene Telemetrienachrichten |d2c.telemetry.egress.dropped|Anzahl|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine|
+|Routing: Nicht kompatible Telemetrienachrichten|d2c.telemetry.egress.invalid|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten aufgrund einer Inkompatibilität mit dem Endpunkt nicht übermitteln konnte. Eine Nachricht ist mit einem Endpunkt inkompatibel, wenn IoT Hub versucht, die Nachricht an den Endpunkt zu übermitteln und ein nicht vorübergehender Fehler auftritt. Es wird nicht versucht, ungültige Nachrichten erneut zuzustellen. Dieser Wert umfasst keine Wiederholungen.|Keine|
+|Routing: Verwaiste Telemetrienachrichten |d2c.telemetry.egress.orphaned|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing zu verwaisten Nachrichten führte, weil sie keiner Routingabfrage entsprachen (wenn die Fallbackroute deaktiviert wurde).|Keine|
 
 Bei Metriken mit dem Wert **Anzahl** für **Einheit** ist nur die Aggregation „Gesamt“ (Summe) gültig. Die Aggregationen „Minimum“, „Maximum“ und „Durchschnitt“ geben immer „1“ zurück. Weitere Informationen finden Sie unter [Unterstützte Aggregationen](#supported-aggregations).
 
@@ -689,4 +689,4 @@ Eine Referenz zu allen Azure Monitor-Protokollen und Log Analytics-Tabellen find
 ## <a name="see-also"></a>Weitere Informationen
 
 * Unter [Überwachen von Azure IoT Hub](monitor-iot-hub.md) finden Sie eine Beschreibung der Überwachung von Azure IoT Hub.
-* Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](/azure/azure-monitor/insights/monitor-azure-resources).
+* Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](/azure/azure-monitor/insights/monitor-azure-resource).

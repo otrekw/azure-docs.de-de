@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570571"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085733"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 In diesem Artikel wird erläutert, wie Sie mithilfe von [Azure Cosmos DB-Ressourcentoken](secure-access-to-data.md) über das Gremlin SDK auf die Graphdatenbank zugreifen.
 
@@ -25,11 +26,11 @@ Das Apache TinkerPop Gremlin SDK enthält keine API zum Erstellen von Ressourcen
 
 Die Objektmodellhierarchie über Ressourcentoken ist in der folgenden Gliederung dargestellt:
 
-- **Azure Cosmos DB-Konto**: Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos DB-Konto** : Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
   - **Azure Cosmos DB-Datenbank**
     - **Benutzer**
       - **Berechtigung**
-        - **Token**: Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
+        - **Token** : Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
 
 Ein Ressourcentoken verwendet das folgende Format: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Diese Zeichenfolge ist für die Clients nicht transparent und muss unverändert verwendet werden.
 

@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: jasonh
-ms.openlocfilehash: 27a9c7eb48c4a0148401c0d146a50a5197593806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa33e2ccc5c6cca94ab4e2294a4865745145c1ce
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409628"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096324"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Behandeln häufiger Probleme in der Azure Cosmos DB-API für MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Im folgenden Artikel werden allgemeine Fehler und Lösungen für Datenbanken beschrieben, die die Azure Cosmos DB-API für MongoDB verwenden.
 
@@ -29,7 +30,7 @@ Im folgenden Artikel werden allgemeine Fehler und Lösungen für Datenbanken bes
 | TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Skalieren Sie über das Azure-Portal ggf. den Durchsatz, der einem Container oder einer Gruppe von Containern zugewiesen ist, oder wiederholen Sie den Vorgang. |
 | ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. Beispiel: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | Der Indexpfad zum angegebenen ORDER BY-Element ist ausgeschlossen./Die ORDER BY-Abfrage verfügt nicht über einen entsprechenden zusammengesetzten Index für die Bereitstellung. | 2 | Die Abfrage fordert eine Sortierung für ein Feld an, das nicht indiziert ist. | Erstellen Sie einen übereinstimmenden Index (oder zusammengesetzten Index) für die durchzuführende Sortierabfrage. |
-| Probleme mit der MongoDB-Wire-Version | - | Ältere Versionen von MongoDB-Treibern können den Namen des Azure Cosmos-Kontos in den Verbindungszeichenfolgen nicht erkennen. | Fügen Sie am Ende der Verbindungszeichenfolge Ihrer Azure Cosmos DB-API für MongoDB *appName=@**Kontoname**@* hinzu, und ersetzen Sie dabei ***Kontoname*** durch den Namen Ihres Cosmos DB-Kontos. |
+| Probleme mit der MongoDB-Wire-Version | - | Ältere Versionen von MongoDB-Treibern können den Namen des Azure Cosmos-Kontos in den Verbindungszeichenfolgen nicht erkennen. | Fügen Sie am Ende der Verbindungszeichenfolge Ihrer Azure Cosmos DB-API für MongoDB *appName=@ **Kontoname**@* hinzu, und ersetzen Sie dabei ***Kontoname*** durch den Namen Ihres Cosmos DB-Kontos. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: af9122aaa0233fe5248f31ffe805e01a98831eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447430"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081449"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>Behandeln von Problemen bei Verwendung des Azure Cosmos-Emulators
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Der Azure Cosmos-Emulator stellt eine lokale Umgebung bereit, die zu Entwicklungszwecken den Azure Cosmos DB-Dienst emuliert. Verwenden Sie die Tipps in diesem Artikel, um Probleme zu beheben, die bei der Installation oder Verwendung des Azure Cosmos-Emulators auftreten können. 
 

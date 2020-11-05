@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: e8323c5a290ee2a78e2a3a131d50883d5f8c5a28
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92330987"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
@@ -157,17 +157,17 @@ Nachdem Sie VNet1 konfiguriert haben, erstellen Sie VNet4 und das VNet4-Gateway,
 
 Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für VNet1 und VNet4 können Sie die Verbindungen für das virtuelle Netzwerkgateway erstellen. In diesem Abschnitt erstellen Sie eine Verbindung von „VNet1“ zu „VNet4“. Diese Schritte gelten nur für VNets in demselben Abonnement. Wenn sich Ihre VNETs in unterschiedlichen Abonnements befinden, müssen Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) zum Herstellen der Verbindung verwenden. Wenn Ihre VNETs in verschiedenen Ressourcengruppen in demselben Abonnement enthalten sind, können Sie sie jedoch mithilfe des Portals verbinden.
 
-1. Wählen Sie im Azure-Portal **Alle Ressourcen** aus, geben Sie *Gateway für virtuelle Netzwerke* in das Suchfeld ein, und navigieren Sie dann zum Gateway für virtuelle Netzwerke für Ihr VNET. Beispiel: **VNet1GW** . Wählen Sie das Gateway aus, um die Seite **Gateway für virtuelle Netzwerke** zu öffnen.
-1. Auf der Gatewayseite wechseln Sie zu **Einstellungen ->Verbindungen** . Wählen Sie anschließend **+Hinzufügen** aus.
+1. Wählen Sie im Azure-Portal **Alle Ressourcen** aus, geben Sie *Gateway für virtuelle Netzwerke* in das Suchfeld ein, und navigieren Sie dann zum Gateway für virtuelle Netzwerke für Ihr VNET. Beispiel: **VNet1GW**. Wählen Sie das Gateway aus, um die Seite **Gateway für virtuelle Netzwerke** zu öffnen.
+1. Auf der Gatewayseite wechseln Sie zu **Einstellungen ->Verbindungen**. Wählen Sie anschließend **+Hinzufügen** aus.
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Seite „Verbindungen“":::
 1. Die Seite **Verbindung hinzufügen** wird geöffnet.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Seite „Verbindungen“":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Verbindung hinzufügen":::
 
    Geben Sie auf der Seite **Verbindung hinzufügen** die Werte zum Herstellen der Verbindung ein:
 
-   * **Name** : Geben Sie einen Namen für Ihre Verbindung ein. Beispiel: *VNet1toVNet4* .
+   * **Name** : Geben Sie einen Namen für Ihre Verbindung ein. Beispiel: *VNet1toVNet4*.
 
    * **Verbindungstyp** : Wählen Sie **VNET-zu-VNET** in der Dropdownliste aus.
 
@@ -175,7 +175,7 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für VNet1 und
 
    * **Zweites Gateway für virtuelle Netzwerke** : Dieses Feld enthält das virtuelle Netzwerkgateway des VNET, mit dem Sie eine Verbindung herstellen möchten. Wählen Sie **Ein weiteres virtuelles Netzwerkgateway auswählen** aus, um die Seite **Ein Gateway für virtuelle Netzwerke auswählen** zu öffnen.
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Seite „Verbindungen“":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Gateway auswählen":::
 
      * Sehen Sie sich die auf der Seite aufgeführten virtuellen Netzwerkgateways an. Beachten Sie, dass nur virtuelle Netzwerkgateways aus Ihrem Abonnement aufgeführt werden. Falls Sie eine Verbindung mit einem Gateway für virtuelle Netzwerke herstellen möchten, das nicht in Ihrem Abonnement enthalten ist, verwenden Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
 
@@ -193,10 +193,10 @@ Erstellen Sie als Nächstes eine Verbindung zwischen VNet4 und VNet1. Ermitteln 
 1. Suchen Sie im Azure-Portal nach dem Gateway für virtuelle Netzwerke. 
 1. Wählen Sie auf der Seite **Gateway für virtuelle Netzwerke** **Verbindungen** aus, um die Seite **Verbindungen** für das Gateway für virtuelle Netzwerke anzuzeigen. Nach dem Verbindungsaufbau sehen Sie, dass sich die Werte für **Status** in **Verbunden** ändern.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Seite „Verbindungen“":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Überprüfen von Verbindungen":::
 1. Wählen Sie unter der Spalte **Name** eine der Verbindungen aus, um weitere Informationen anzuzeigen. Sobald Daten übertragen werden, werden Werte für **Eingehende Daten** und **Ausgehende Daten** angezeigt.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Seite „Verbindungen“":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Der Screenshot zeigt eine Ressourcengruppe mit Werten für „Eingehende Daten“ und „Ausgehende Daten“.":::
 
 ## <a name="add-additional-connections"></a>Hinzufügen zusätzlicher Verbindungen
 

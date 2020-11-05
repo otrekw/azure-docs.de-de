@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0ae81177ca8488c410e40ca56642199694c08c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510282"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072643"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Änderungsfeed in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Zur Unterstützung des Änderungsfeeds in Azure Cosmos DB wird gelauscht, ob in einem Azure Cosmos-Container Änderungen auftreten. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Die Änderungen bleiben erhalten und können asynchron und inkrementell verarbeitet werden, und die Ausgabe kann über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden.
 

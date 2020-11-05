@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices des Clusteroperators für die Verwend
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530060"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125630"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -80,14 +80,14 @@ Wenn Sie ein Upgrade für einen Knotenpool in AKS durchführen, folgen Taints un
 - **Standardcluster, die VM-Skalierungsgruppen verwenden**
   - Sie können einen Knotenpool über die AKS-API [mit Taints versehen][taint-node-pool], damit neu aufskalierte Knoten die von der API angegebenen Knotentaints erhalten.
   - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
-  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
+  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4* , und die Taints werden entsprechend übergeben.
   - Die ursprünglichen *node1* und *node2* werden gelöscht.
 
 - **Cluster ohne Unterstützung für VM-Skalierungsgruppen**
-  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten (*node3*) erstellt.
+  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten ( *node3* ) erstellt.
   - Die Taints aus *node1* gelten für *node3*. *node1* wird gelöscht.
-  - Ein weiterer neuer Knoten wird erstellt (mit dem Namen *node1*, da der vorherige *node1* gelöscht wurde), und die Taints aus *node2* gelten nun für den neuen *node1*. *node2* wird gelöscht.
-  - Zusammengefasst wird *node1* zu *node3*, und *node2* wird zu *node1*.
+  - Ein weiterer neuer Knoten wird erstellt (mit dem Namen *node1* , da der vorherige *node1* gelöscht wurde), und die Taints aus *node2* gelten nun für den neuen *node1*. *node2* wird gelöscht.
+  - Zusammengefasst wird *node1* zu *node3* , und *node2* wird zu *node1*.
 
 Wenn Sie einen Knotenpool in AKS skalieren, werden Taints und Toleranzen absichtlich nicht übertragen.
 
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,7 +131,7 @@ Weitere Informationen zur Verwendung von Knotenselektoren finden Sie unter [Zuwe
 
 ### <a name="node-affinity"></a>Knotenaffinität
 
-Ein Knotenselektor ist eine grundlegende Methode, um einem bestimmten Knoten Pods zuzuordnen. Mehr Flexibilität ist anhand von *Knotenaffinität* möglich. Mit Knotenaffinität definieren Sie, was passiert, wenn der Pod nicht mit einem Knoten abgeglichen werden kann. Sie können *anfordern*, dass der Kubernetes-Scheduler einem Pod mit einem bezeichneten Host entspricht. Oder Sie können *eine Übereinstimmung bevorzugen*, aber erlauben, dass der Pod auf einem anderen Host geplant wird, wenn keine Übereinstimmung verfügbar ist.
+Ein Knotenselektor ist eine grundlegende Methode, um einem bestimmten Knoten Pods zuzuordnen. Mehr Flexibilität ist anhand von *Knotenaffinität* möglich. Mit Knotenaffinität definieren Sie, was passiert, wenn der Pod nicht mit einem Knoten abgeglichen werden kann. Sie können *anfordern* , dass der Kubernetes-Scheduler einem Pod mit einem bezeichneten Host entspricht. Oder Sie können *eine Übereinstimmung bevorzugen* , aber erlauben, dass der Pod auf einem anderen Host geplant wird, wenn keine Übereinstimmung verfügbar ist.
 
 Im folgenden Beispiel wird die Knotenaffinität auf *RequiredDuringSchedulingIgnoredDuringExecution* festgelegt. Aufgrund dieser Affinität muss der Kubernetes-Scheduler einen Knoten mit einer übereinstimmenden Bezeichnung verwenden. Wenn kein Knoten verfügbar ist, muss der Pod warten, bis die Planung fortgesetzt wird. Damit der Pod auf einem anderen Knoten geplant werden kann, können Sie den Wert stattdessen auf *preferredDuringSchedulingIgnoreDuringExecution* festlegen:
 
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -161,7 +161,7 @@ spec:
             values: highmem
 ```
 
-Der *IgnoredDuringExecution*-Teil der Einstellung gibt an, dass der Pod aus dem Knoten entfernt werden soll, wenn sich die Bezeichnung des Knotens ändert. Der Kubernetes-Scheduler verwendet nur die aktualisierten Knotenbezeichnungen für neue Pods, die geplant werden, nicht für bereits geplante Pods auf den Knoten.
+Der *IgnoredDuringExecution* -Teil der Einstellung gibt an, dass der Pod aus dem Knoten entfernt werden soll, wenn sich die Bezeichnung des Knotens ändert. Der Kubernetes-Scheduler verwendet nur die aktualisierten Knotenbezeichnungen für neue Pods, die geplant werden, nicht für bereits geplante Pods auf den Knoten.
 
 Weitere Informationen finden Sie unter [Affinität und Antiaffinität][k8s-affinity].
 

@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098772"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Mit Azure Cosmos DB können Sie bereitgestellten Durchsatz für Ihre Datenbanken und Container festlegen. Es gibt zwei Arten von bereitgestelltem Durchsatz: Standard (manuell) oder automatische Skalierung. In diesem Artikel erhalten Sie einen Überblick über die Funktionsweise des bereitgestellten Durchsatzes. 
 
@@ -72,7 +73,7 @@ Wenn Ihr Azure Cosmos DB-Konto bereits eine gemeinsam genutzte Durchsatzdatenban
 
 Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Hosten einer oder mehrerer logischer Partitionen eines Containers über eine physische Partition" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Hosten einer oder mehrerer logischer Partitionen von verschiedenen Containern über eine physische Partition" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Festlegen des Durchsatzes für eine Datenbank und einen Container
 
@@ -81,7 +82,7 @@ Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf
 * Sie können eine Azure Cosmos-Datenbank namens *Z* mit standardmäßig (manuell) bereitgestelltem Durchsatz von *K* RUs erstellen. 
 * Als Nächstes erstellen Sie die fünf Container *A* , *B* , *C* , *D* und *E* innerhalb der Datenbank. Achten Sie beim Erstellen von Container B darauf, die **Option zum Bereitstellen von dediziertem Durchsatz für diesen Container** zu aktivieren, und konfigurieren Sie explizit *P* RUs des bereitgestellten Durchsatzes für diesen Container. Sie können freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Hosten einer oder mehrerer logischer Partitionen eines Containers über eine physische Partition":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Festlegen des Durchsatzes auf Containerebene":::
 
 * Der Durchsatz von *K* RUs ist für die vier Container *A* , *C* , *D* , und *E* freigegeben. Die genaue für *A* , *C* , *D* oder *E* verfügbare Durchsatzmenge variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
 * Für den Container *B* wird jederzeit ein Durchsatz von *P* RUs sichergestellt. Er wird durch SLAs abgedeckt.

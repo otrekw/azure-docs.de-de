@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490542"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081874"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Wie bietet Azure Cosmos DB Hochverfügbarkeit?
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB bietet hauptsächlich auf zwei Arten Hochverfügbarkeit. Zum einen repliziert Azure Cosmos DB Daten in mehrere in einem Cosmos-Konto konfigurierte Regionen, zum anderen verwaltet Azure Cosmos DB vier Replikate von Daten innerhalb einer Region.
 
@@ -73,7 +74,7 @@ Für die seltenen Fälle eines regionalen Ausfalls stellt Azure Cosmos DB siche
 * Wenn die vom Ausfall betroffene Schreibregion wiederhergestellt ist, steht sie automatisch als Leseregion zur Verfügung. Sie können zurück zur wiederhergestellten Region als Schreibregion wechseln. Sie können die Regionen per [PowerShell, Azure CLI oder Azure-Portal](how-to-manage-database-account.md#manual-failover) wechseln. Vor, während und nach dem Wechsel zur Schreibregion tritt kein **Daten- oder Verfügbarkeitsverlust** auf, und Ihre Anwendung ist weiterhin hochverfügbar.
 
 > [!IMPORTANT]
-> Wir empfehlen Ihnen dringend, die für Produktionsworkloads genutzten Azure Cosmos-Konten zu konfigurieren, um **automatische Failover zu ermöglichen** . Für ein manuelles Failover ist eine Verbindung zwischen der sekundären und primären Schreibregion erforderlich, damit eine Konsistenzprüfung durchgeführt und sichergestellt werden kann, dass es beim Failover nicht zu Datenverlust kommt. Wenn die primäre Region nicht verfügbar ist, kann diese Konsistenzprüfung nicht vollständig durchgeführt werden, und das manuelle Failover ist nicht erfolgreich. Dies hat einen Verlust der Schreibverfügbarkeit für die Dauer des regionalen Ausfalls zur Folge.
+> Wir empfehlen Ihnen dringend, die für Produktionsworkloads genutzten Azure Cosmos-Konten zu konfigurieren, um **automatische Failover zu ermöglichen**. Für ein manuelles Failover ist eine Verbindung zwischen der sekundären und primären Schreibregion erforderlich, damit eine Konsistenzprüfung durchgeführt und sichergestellt werden kann, dass es beim Failover nicht zu Datenverlust kommt. Wenn die primäre Region nicht verfügbar ist, kann diese Konsistenzprüfung nicht vollständig durchgeführt werden, und das manuelle Failover ist nicht erfolgreich. Dies hat einen Verlust der Schreibverfügbarkeit für die Dauer des regionalen Ausfalls zur Folge.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Konten mit mehreren Regionen mit einer einzelnen Schreibregion (Ausfall einer Leseregion)
 

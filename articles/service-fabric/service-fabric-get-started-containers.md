@@ -4,12 +4,12 @@ description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Ser
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087059"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -90,7 +90,7 @@ Erstellen Sie eine Flask-Webanwendung, die an Port 80 lauscht und `Hello World!`
 Flask
 ```
 
-Erstellen Sie auch die Datei *app.py*, und fügen Sie den folgenden Codeausschnitt hinzu:
+Erstellen Sie auch die Datei *app.py* , und fügen Sie den folgenden Codeausschnitt hinzu:
 
 ```python
 from flask import Flask
@@ -191,7 +191,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie beim Erstellen einer Containeranwendung zu unterstützen.
 
 1. Starten Sie Visual Studio. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
-2. Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
+2. Wählen Sie **Service Fabric-Anwendung** , benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
 3. Wählen Sie in der Liste **Dienstvorlagen** die Option **Container** aus.
 4. Geben Sie unter **Imagename** „myregistry.azurecr.io/samples/helloworldapp“ ein, das Image, das Sie mithilfe von Push an Ihr Containerrepository übertragen haben.
 5. Geben Sie dem Dienst einen Namen, und klicken Sie auf **OK**.
@@ -284,11 +284,11 @@ Die [Ressourcenkontrolle](service-fabric-resource-governance.md) beschränkt die
 ```
 ## <a name="configure-docker-healthcheck"></a>Konfigurieren von „docker HEALTHCHECK“ 
 
-Beim Starten von Version 6.1 integriert Service Fabric automatisch [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)-Ereignisse in seinen Bericht zur Systemintegrität. Wenn für Ihren Container **HEALTHCHECK** aktiviert ist, bedeutet dies Folgendes: Von Service Fabric wird die Dienstintegrität immer dann gemeldet, wenn sich der Integritätsstatus des Containers gemäß Meldung durch Docker ändert. Die Integritätsmeldung **OK** wird in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) angezeigt, wenn für *health_status* die Meldung *healthy* erfolgt, und **WARNING**, wenn für *health_status* die Meldung *unhealthy* erfolgt. 
+Beim Starten von Version 6.1 integriert Service Fabric automatisch [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)-Ereignisse in seinen Bericht zur Systemintegrität. Wenn für Ihren Container **HEALTHCHECK** aktiviert ist, bedeutet dies Folgendes: Von Service Fabric wird die Dienstintegrität immer dann gemeldet, wenn sich der Integritätsstatus des Containers gemäß Meldung durch Docker ändert. Die Integritätsmeldung **OK** wird in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) angezeigt, wenn für *health_status* die Meldung *healthy* erfolgt, und **WARNING** , wenn für *health_status* die Meldung *unhealthy* erfolgt. 
 
-Ab dem neuesten Aktualisierungsrelease v6.4 können Sie festlegen, dass Docker-HEALTHCHECK-Auswertungen als Fehler gemeldet werden. Wenn diese Option aktiviert ist, wird die Integritätsmeldung **OK** angezeigt, wenn *health_status* als *healthy* gemeldet wird, bzw. **ERROR**, wenn *health_status* als *unhealthy* gemeldet wird.
+Ab dem neuesten Aktualisierungsrelease v6.4 können Sie festlegen, dass Docker-HEALTHCHECK-Auswertungen als Fehler gemeldet werden. Wenn diese Option aktiviert ist, wird die Integritätsmeldung **OK** angezeigt, wenn *health_status* als *healthy* gemeldet wird, bzw. **ERROR** , wenn *health_status* als *unhealthy* gemeldet wird.
 
-Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der Dockerfile-Datei enthalten sein, die beim Generieren des Containerimages verwendet wurde.
+Die Anweisung **HEALTHCHECK** , die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der Dockerfile-Datei enthalten sein, die beim Generieren des Containerimages verwendet wurde.
 
 ![Screenshot mit Details des bereitgestellten Dienstpakets „NodeServicePackage“][3]
 
@@ -296,7 +296,7 @@ Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachu
 
 ![HealthCheckUnhealthyDsp][5]
 
-Sie können das **HEALTHCHECK**-Verhalten für jeden Container konfigurieren, indem Sie **HealthConfig**-Optionen im Rahmen von **ContainerHostPolicies** im Anwendungsmanifest angeben.
+Sie können das **HEALTHCHECK** -Verhalten für jeden Container konfigurieren, indem Sie **HealthConfig** -Optionen im Rahmen von **ContainerHostPolicies** im Anwendungsmanifest angeben.
 
 ```xml
 <ServiceManifestImport>
@@ -310,16 +310,16 @@ Sie können das **HEALTHCHECK**-Verhalten für jeden Container konfigurieren, in
     </Policies>
 </ServiceManifestImport>
 ```
-*IncludeDockerHealthStatusInSystemHealthReport* ist standardmäßig auf **true**, *RestartContainerOnUnhealthyDockerHealthStatus* auf **false** und *TreatContainerUnhealthyStatusAsError* auf **false** festgelegt. 
+*IncludeDockerHealthStatusInSystemHealthReport* ist standardmäßig auf **true** , *RestartContainerOnUnhealthyDockerHealthStatus* auf **false** und *TreatContainerUnhealthyStatusAsError* auf **false** festgelegt. 
 
 Wenn *RestartContainerOnUnhealthyDockerHealthStatus* auf **true** festgelegt ist, wird ein Container, für den wiederholt ein nicht fehlerfreier Zustand (unhealthy) gemeldet wird, neu gestartet (ggf. auf anderen Knoten).
 
 Wenn *TreatContainerUnhealthyStatusAsError* auf **true** festgelegt ist, werden Integritätsmeldungen als **ERROR** angezeigt, wenn der *health_status* des Containers *unhealthy* lautet.
 
-Falls Sie die **HEALTHCHECK**-Integration für den gesamten Service Fabric-Cluster deaktivieren möchten, müssen Sie [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) auf **false** festlegen.
+Falls Sie die **HEALTHCHECK** -Integration für den gesamten Service Fabric-Cluster deaktivieren möchten, müssen Sie [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) auf **false** festlegen.
 
 ## <a name="deploy-the-container-application"></a>Bereitstellen der Containeranwendung
-Speichern Sie alle Änderungen, und erstellen Sie die Anwendung. Klicken Sie zum Veröffentlichen Ihrer Anwendung im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen**.
+Speichern Sie alle Änderungen, und erstellen Sie die Anwendung. Klicken Sie zum Veröffentlichen Ihrer Anwendung im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer** , und wählen Sie **Veröffentlichen**.
 
 Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ein, Beispiel: `containercluster.westus2.cloudapp.azure.com:19000`. Den Clientverbindungsendpunkt finden Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Übersicht“ für Ihren Cluster.
 
@@ -369,7 +369,7 @@ Die folgenden Verfahren werden empfohlen, um sicherzustellen, dass die Container
  
 ## <a name="specify-os-build-specific-container-images"></a>Angeben spezifischer Containerimages für den Build des Betriebssystems 
 
-Windows Server-Container sind möglicherweise nicht mit allen Versionen des Betriebssystems kompatibel. Beispielsweise funktionieren Windows Server-Container, die mit Windows Server 2016 erstellt wurden, im Prozessisolationsmodus nicht für Windows Server Version 1709. Daher tritt für Containerdienste, die mit älteren Versionen des Betriebssystems erstellt wurden, ggf. ein Fehler auf, wenn die Clusterknoten auf die aktuelle Version aktualisiert werden. Um dies mit Version 6.1 der Runtime (und höher) zu umgehen, unterstützt Service Fabric das Angeben mehrerer Betriebssystemimages pro Container und das Tagging mit den Buildversionen des Betriebssystems im Anwendungsmanifest. Sie rufen die Buildversion des Betriebssystems ab, indem Sie `winver` an einer Windows-Eingabeaufforderung ausführen. Aktualisieren Sie zunächst die Anwendungsmanifeste, und geben Sie Imageaußerkraftsetzungen pro Betriebssystemversion an, bevor Sie das Betriebssystem auf den Knoten aktualisieren. Im folgenden Codeausschnitt wird veranschaulicht, wie Sie im Anwendungsmanifest (**ApplicationManifest.xml**) mehrere Containerimages angeben:
+Windows Server-Container sind möglicherweise nicht mit allen Versionen des Betriebssystems kompatibel. Beispielsweise funktionieren Windows Server-Container, die mit Windows Server 2016 erstellt wurden, im Prozessisolationsmodus nicht für Windows Server Version 1709. Daher tritt für Containerdienste, die mit älteren Versionen des Betriebssystems erstellt wurden, ggf. ein Fehler auf, wenn die Clusterknoten auf die aktuelle Version aktualisiert werden. Um dies mit Version 6.1 der Runtime (und höher) zu umgehen, unterstützt Service Fabric das Angeben mehrerer Betriebssystemimages pro Container und das Tagging mit den Buildversionen des Betriebssystems im Anwendungsmanifest. Sie rufen die Buildversion des Betriebssystems ab, indem Sie `winver` an einer Windows-Eingabeaufforderung ausführen. Aktualisieren Sie zunächst die Anwendungsmanifeste, und geben Sie Imageaußerkraftsetzungen pro Betriebssystemversion an, bevor Sie das Betriebssystem auf den Knoten aktualisieren. Im folgenden Codeausschnitt wird veranschaulicht, wie Sie im Anwendungsmanifest ( **ApplicationManifest.xml** ) mehrere Containerimages angeben:
 
 
 ```xml
@@ -534,7 +534,7 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

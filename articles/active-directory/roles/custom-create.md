@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254ab7a10eb9779706ee31e5a16d51fe03b7122b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373801"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097990"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
@@ -183,4 +183,4 @@ Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organ
 
 - Im [Forum für Azure AD-Administratorrollen](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) können Sie sich gerne mit uns in Verbindung setzen.
 - Weitere Informationen zu Rollen und zur Zuweisung von Administratorrollen finden Sie unter [Zuweisen von Administratorrollen](permissions-reference.md).
-- Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](/azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).
+- Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](/azure/active-directory/fundamentals/users-default-permissions).

@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91277698"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
@@ -64,7 +64,7 @@ Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal](h
 
 Damit Sie Anwendungspakete verwenden können, müssen Sie zunächst ein [Azure Storage-Konto](accounts.md#azure-storage-accounts) mit Ihrem Batch-Konto verknüpfen. Der Batch-Dienst verwendet das zugeordnete Speicherkonto zum Speichern Ihrer Anwendungspakete. Es wird empfohlen, ein Speicherkonto speziell für die Verwendung mit Ihrem Batch-Konto zu erstellen.
 
-Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal **Anwendungen** auswählen. Um ein Speicherkonto mit Ihrem Batch-Konto zu verknüpfen, wählen Sie im Fenster **Warnung** die Option **Speicherkonto** aus, und klicken Sie dann noch mal auf **Speicherkonto** .
+Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal **Anwendungen** auswählen. Um ein Speicherkonto mit Ihrem Batch-Konto zu verknüpfen, wählen Sie im Fenster **Warnung** die Option **Speicherkonto** aus, und klicken Sie dann noch mal auf **Speicherkonto**.
 
 Nachdem Sie die beiden Konten verknüpft haben, kann Batch die im verknüpften Storage-Konto gespeicherten Pakete automatisch für Ihre Computeknoten bereitstellen.
 
@@ -77,7 +77,7 @@ Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als
 
 Wenn Sie die Anwendungen in Ihrem Batch-Konto anzeigen möchten, wählen Sie im linken Navigationsmenü **Anwendungen** aus.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Abbildung: Übersicht über Anwendungen und Anwendungspakete":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Screenshot: Menüelement „Anwendungen“ im Azure-Portal":::
 
 Durch Auswählen dieser Menüoption wird das Fenster **Anwendungen** geöffnet. In diesem Fenster werden die IDs aller Anwendungen in Ihrem Konto und die folgenden Eigenschaften angezeigt:
 
@@ -85,7 +85,7 @@ Durch Auswählen dieser Menüoption wird das Fenster **Anwendungen** geöffnet. 
 - **Standardversion** : Gegebenenfalls die Anwendungsversion, die installiert wird, wenn bei der Bereitstellung der Anwendung keine Version angegeben wird.
 - **Updates zulassen** : Gibt an, ob Pakete aktualisiert und gelöscht werden dürfen.
 
-Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf einem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** aus. Wählen Sie danach den Pool aus, der den Serverknoten enthält. Wählen Sie den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen** .
+Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf einem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** aus. Wählen Sie danach den Pool aus, der den Serverknoten enthält. Wählen Sie den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen**.
 
 ### <a name="view-application-details"></a>Anzeigen von Anwendungsdetails
 
@@ -101,7 +101,7 @@ Zum Erstellen einer neuen Anwendung fügen Sie ein Anwendungspaket hinzu und geb
 
 Wählen Sie in Ihrem Batch-Konto **Anwendungen** und anschließend **Hinzufügen** aus.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Abbildung: Übersicht über Anwendungen und Anwendungspakete":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Screenshot: Prozess zum Erstellen einer neuen Anwendung im Azure-Portal":::
 
 Geben Sie die folgenden Informationen ein:
 
@@ -128,7 +128,7 @@ Geben Sie wie bei der neuen Anwendung die **Version** für das neue Paket ein, l
 
 Wenn Sie ein vorhandenes Anwendungspaket aktualisieren oder löschen möchten, wählen Sie die Anwendung im Abschnitt **Anwendungen** in Ihrem Batch-Konto aus. Wählen Sie die Auslassungspunkte in der Zeile des Anwendungspakets aus, das Sie ändern möchten, und wählen Sie dann die Aktion aus, die Sie durchführen möchten.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Abbildung: Übersicht über Anwendungen und Anwendungspakete":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Screenshot: Optionen zum Aktualisieren und Löschen von Anwendungspaketen im Azure-Portal":::
 
 Wenn Sie **Aktualisieren** auswählen, können Sie eine neue ZIP-Datei hochladen. Dadurch wird die vorherige ZIP-Datei ersetzt, die Sie für diese Version hochgeladen haben.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78231fa5cc6e5061ab3e2b26faf97da76da83b32
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427901"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913958"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -98,7 +98,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine oder CurrentUser (Groß-/Kleinschreibung beachten) | Zeichenfolge |
 | requiredInitialSync | true | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Zeichenfolgenarray
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | Zeichenfolgenarray
 | msiEndpoint | http://169.254.169.254/metadata/identity | Zeichenfolge |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | Zeichenfolge |
 
@@ -132,7 +132,7 @@ Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment de
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
         }      
       }
       }
@@ -154,7 +154,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName =  "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -174,7 +174,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName = "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -200,7 +200,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
          --publisher Microsoft.Azure.KeyVault `
          -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 * So stellen Sie die Erweiterung in einer VM-Skalierungsgruppe bereit:
@@ -211,7 +211,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
          --publisher Microsoft.Azure.KeyVault `
          -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 Beachten Sie hierbei die folgenden Einschränkungen bzw. Anforderungen:
@@ -221,31 +221,30 @@ Beachten Sie hierbei die folgenden Einschränkungen bzw. Anforderungen:
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
-### <a name="troubleshoot"></a>Problembehandlung
-
-Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe von Azure PowerShell abgerufen werden. Führen Sie über Azure PowerShell den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für eine bestimmte VM anzuzeigen.
-
 ### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 * Gibt es einen Grenzwert für die Anzahl von „observedCertificates“, die Sie einrichten können?
   Nein, die Key Vault-VM-Erweiterung weist keinen Grenzwert für die Anzahl von „observedCertificates“ auf.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+### <a name="troubleshoot"></a>Problembehandlung
+
+Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe von Azure PowerShell abgerufen werden. Führen Sie über Azure PowerShell den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für eine bestimmte VM anzuzeigen.
+
+**Azure PowerShell**
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+**Azure-Befehlszeilenschnittstelle**
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
-Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokolliert:
+#### <a name="logs-and-configuration"></a>Protokolle und Konfiguration
 
 ```
 %windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
 ```
-
 
 ### <a name="support"></a>Support
 

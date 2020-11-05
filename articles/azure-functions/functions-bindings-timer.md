@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6423ec481c65155b511e398885b4954522bbb376
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325792"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025900"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions
 
@@ -56,7 +56,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
 
-Bindungsdaten in der Datei *function.json*:
+Bindungsdaten in der Datei *function.json* :
 
 ```json
 {
@@ -99,7 +99,7 @@ public void keepAlive(
 
 Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Ein[Timerobjekt](#usage) wird an die Funktion übergeben.
 
-Bindungsdaten in der Datei *function.json*:
+Bindungsdaten in der Datei *function.json* :
 
 ```json
 {
@@ -165,7 +165,7 @@ Eine Instanz des [timer-Objekts](#usage) wird als erstes Argument an die Funktio
 
 Im folgenden Beispiel wird eine Triggerbindung mit Timer verwendet, deren Konfiguration in der Datei *function.json* beschrieben ist. Die eigentliche [Python-Funktion](functions-reference-python.md), von der die Bindung genutzt wird, ist in der Datei *__init__.py* beschrieben. Das an die Funktion übergebene Objekt hat den Typ [azure.functions.TimerRequest-Objekt](/python/api/azure-functions/azure.functions.timerrequest). Mit der Funktionslogik werden Daten in die Protokolle geschrieben, um anzugeben, ob der aktuelle Aufruf aufgrund eines versäumten Zeitplantermins erfolgt.
 
-Bindungsdaten in der Datei *function.json*:
+Bindungsdaten in der Datei *function.json* :
 
 ```json
 {
@@ -276,18 +276,18 @@ Bei Aufruf einer Trigger-mit-Timer-Funktion wird ein Timerobjekt an die Funktion
 
 ```json
 {
-    "Schedule":{
+    "schedule":{
     },
-    "ScheduleStatus": {
-        "Last":"2016-10-04T10:15:00+00:00",
-        "LastUpdated":"2016-10-04T10:16:00+00:00",
-        "Next":"2016-10-04T10:20:00+00:00"
+    "scheduleStatus": {
+        "last":"2016-10-04T10:15:00+00:00",
+        "lastUpdated":"2016-10-04T10:16:00+00:00",
+        "next":"2016-10-04T10:20:00+00:00"
     },
-    "IsPastDue":false
+    "isPastDue":false
 }
 ```
 
-Die Eigenschaft `IsPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf später als geplant erfolgt. Beispielsweise kann ein Neustart der Funktionen-App dazu führen, dass ein Aufruf nicht erkannt wird.
+Die Eigenschaft `isPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf später als geplant erfolgt. Beispielsweise kann ein Neustart der Funktionen-App dazu führen, dass ein Aufruf nicht erkannt wird.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke
 

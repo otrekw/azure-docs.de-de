@@ -7,14 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3a1bb36910b09d24c3328c8fc8ae94e1e3321642
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482246"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080701"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Planen und Verwalten von Kosten für Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kosten für Azure Cosmos DB planen und verwalten können:
 
@@ -66,12 +67,12 @@ Sobald Sie die Gesamtzahl der Anforderungseinheiten und GB an Speicherplatz bere
 Wenn Sie damit beginnen, Azure Cosmos DB-Ressourcen über das Azure-Portal zu nutzen, können Sie die geschätzten Kosten anzeigen. Führen Sie die folgenden Schritte aus, um die Kostenschätzung zu überprüfen:
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrem Azure Cosmos-Konto.
-1. Navigieren Sie zum Abschnitt **Übersicht** .
+1. Navigieren Sie zum Abschnitt **Übersicht**.
 1. Überprüfen Sie das Diagramm **Kosten** unten in der Übersicht. Dieses Diagramm zeigt eine Schätzung Ihrer aktuellen Kosten über einen konfigurierbaren Zeitraum an:
 1. Erstellen Sie einen neuen Container, z. B. einen Graph-Container.
 1. Geben Sie den Durchsatz ein, der für Ihre Workload benötigt wird, z. B. 400 RU/s. Nach dem Eingeben des Durchsatzwerts wird die Kostenschätzung wie im folgenden Screenshot angezeigt:
 
-   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Kostenschätzung im Azure Cosmos DB Capacity Calculator":::
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Kostenschätzung im Azure-Portal":::
 
 ## <a name="use-budgets-and-cost-alerts"></a>Verwenden von Budgets und Kostenwarnungen
 
@@ -93,7 +94,7 @@ Bei Verwendung der Kostenanalyse können Sie die Azure Cosmos DB-Kosten in Graph
 
 1. Wählen Sie zum Eingrenzen der Kosten auf einen Dienst, z. B. Azure Cosmos DB, die Option **Filter hinzufügen** und dann **Dienstname** aus. Wählen Sie anschließend in der Liste die Option **Azure Cosmos DB** aus. In diesem Beispiel werden nur die Kosten für Azure Cosmos DB angezeigt:
  
-   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Kostenschätzung im Azure Cosmos DB Capacity Calculator":::
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Überwachen der Kosten im Bereich „Kostenanalyse“":::
 
 Im obigen Beispiel sind die aktuellen Kosten für Azure Cosmos DB für den Monat Februar angegeben. Darüber hinaus enthalten die Diagramme auch die Azure Cosmos DB-Kosten nach Standort und Ressourcengruppe.
 

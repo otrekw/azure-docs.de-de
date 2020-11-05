@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743895"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092805"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Die Steuerungsebene in Azure Cosmos DB ist ein RESTful-Dienst, mit dem Sie eine Vielzahl von Vorgängen im Azure Cosmos-Konto ausführen können. Sie stellt ein öffentliches Ressourcenmodell (z. B. Datenbank, Konto) und verschiedene Vorgänge für die Endbenutzer bereit, um Aktionen für das Ressourcenmodell auszuführen. Vorgänge der Steuerungsebene schließen Änderungen am Azure Cosmos-Konto oder -Container ein. Zu den Vorgängen der Steuerungsebene gehören beispielsweise das Erstellen eines Azure Cosmos-Kontos, das Hinzufügen einer Region, das Aktualisieren des Durchsatzes, das Durchführen von Failovern für Regionen und das Hinzufügen von VNETs. In diesem Artikel wird erläutert, wie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwacht werden. Sie können die Vorgänge der Steuerungsebene für Azure Cosmos-Konten mithilfe der Azure-Befehlszeilenschnittstelle, des Azure-Portals oder von PowerShell ausführen, während Sie für Container die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden.
 
@@ -45,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um die Protokollierung für Vorgänge au
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Azure Cosmos-Konto.
 
-1. Öffnen Sie den Bereich **Diagnoseeinstellungen**, und geben Sie einen **Namen** für die zu erstellenden Protokolle an.
+1. Öffnen Sie den Bereich **Diagnoseeinstellungen** , und geben Sie einen **Namen** für die zu erstellenden Protokolle an.
 
 1. Wählen Sie **ControlPlaneRequests** als Protokolltyp aus, und klicken Sie dann auf die Option **An Log Analytics senden**.
 
@@ -59,7 +60,7 @@ Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schri
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-1. Öffnen Sie im linken Navigationsbereich die Registerkarte **Überwachen**, und klicken Sie dann auf den Bereich **Protokolle**. Es wird eine Benutzeroberfläche geöffnet, mit der Sie problemlos Abfragen mit diesem spezifischen Konto im Bereich ausführen können. Führen Sie die folgende Abfrage aus, um die Protokolle auf Steuerungsebene anzuzeigen:
+1. Öffnen Sie im linken Navigationsbereich die Registerkarte **Überwachen** , und klicken Sie dann auf den Bereich **Protokolle**. Es wird eine Benutzeroberfläche geöffnet, mit der Sie problemlos Abfragen mit diesem spezifischen Konto im Bereich ausführen können. Führen Sie die folgende Abfrage aus, um die Protokolle auf Steuerungsebene anzuzeigen:
 
    ```kusto
    AzureDiagnostics
@@ -69,17 +70,17 @@ Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schri
 
 Die folgenden Screenshots zeigen Protokolle beim Ändern der Konsistenzebene für ein Azure Cosmos-Konto:
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Protokolle auf Steuerungsebene beim Hinzufügen eines VNET":::
 
 In den folgenden Screenshots werden Protokolle erfasst, wenn der Keyspace oder eine Tabelle eines Cassandra-Kontos erstellt wird und der Durchsatz aktualisiert wird. Die Protokolle auf Steuerungsebene für Erstellungs- und Aktualisierungsvorgänge in der Datenbank und dem Container werden separat protokolliert, wie es im folgenden Screenshot zu sehen ist:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Protokolle auf Steuerungsebene beim Aktualisieren des Durchsatzes":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifizieren der einem bestimmten Vorgang zugeordneten Identität
 
 Wenn Sie weitere debuggen möchten, können Sie einen bestimmten Vorgang im **Aktivitätsprotokoll** ermitteln, indem Sie die Aktivitäts-ID oder den Zeitstempel des Vorgangs verwenden. Der Zeitstempel wird für einige Resource Manager-Clients verwendet, bei denen die Aktivitäts-ID nicht explizit übermittelt wurde. Das Aktivitätsprotokoll enthält Details zur Identität, mit der der Vorgang initiiert wurde. Der folgende Screenshot veranschaulicht, wie Sie die Aktivitäts-ID verwenden und die damit verbundenen Vorgänge im Aktivitätsprotokoll ermitteln:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Verwenden der Aktivitäts-ID und Suchen der Vorgänge":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vorgänge der Steuerungsebene für Azure Cosmos-Konten
 
@@ -163,36 +164,36 @@ Bei API-spezifischen Vorgängen hat die Vorgangsbezeichnung folgendes Format:
 * CassandraKeyspacesThroughputUpdate
 * SqlContainersUpdate
 
-Die *ResourceDetails*-Eigenschaft enthält den gesamten Ressourcentext als Anforderungsnutzlast und alle Eigenschaften, für die eine Aktualisierung angefordert wurde.
+Die *ResourceDetails* -Eigenschaft enthält den gesamten Ressourcentext als Anforderungsnutzlast und alle Eigenschaften, für die eine Aktualisierung angefordert wurde.
 
 ## <a name="diagnostic-log-queries-for-control-plane-operations"></a>Diagnoseprotokollabfragen für Vorgänge auf Steuerungsebene
 
 Im Folgenden finden Sie einige Beispiele für den Abruf von Diagnoseprotokollen für Vorgänge auf Steuerungsebene:
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 Abfrage zum Abrufen der Aktivitäts-ID und des aufrufenden Benutzers, der den Vorgang zum Löschen des Containers initiiert hat:

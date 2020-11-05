@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825678"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091354"
 ---
 # <a name="encrypt-deployment-data"></a>Verschlüsseln von Bereitstellungsdaten
 
@@ -33,7 +33,7 @@ Sie können entweder von Microsoft verwaltete Schlüssel für die Verschlüsselu
 
 Im restlichen Dokument werden die Schritte beschrieben, die ausgeführt werden müssen, um Ihre ACI-Bereitstellungsdaten mit Ihrem Schlüssel (kundenseitig verwalteter Schlüssel) zu verschlüsseln. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>Verschlüsseln von Daten mit einem kundenseitig verwalteten Schlüssel
 
