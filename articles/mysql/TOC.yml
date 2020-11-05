@@ -1,4 +1,4 @@
-- name: Dokumentation zu Azure Database for MySQL
+- name: Dokumentation zur Azure-Datenbank für MySQL
   href: index.yml
 - name: Übersicht
   items:
@@ -85,7 +85,7 @@
               href: connect-cpp.md
             - name: Go
               href: connect-go.md
-            - name: GitHub-Aktionen
+            - name: GitHub Actions
               href: quickstart-mysql-github-actions.md
     - name: Tutorials
       items:

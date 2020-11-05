@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc5126c0cce89502b0f1d8b17c06519f338fe52
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370847"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043084"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 
@@ -93,7 +93,7 @@ Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation soll
 |Kontoadministrator|Diese klassische Abonnementadministratorrolle ist konzeptionell der Abrechnungsbesitzer eines Abonnements. Sie hat Zugriff auf das [Azure-Kontocenter](https://account.azure.com/Subscriptions) und ermöglicht die Verwaltung sämtlicher Abonnements in einem Konto. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Dienstadministrator|Diese klassische Abonnementadministratorrolle ermöglicht die Verwaltung sämtlicher Azure-Ressourcen (einschließlich Zugriff). Sie hat den gleichen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Besitzer|Diese Rolle hilft Ihnen bei der Verwaltung aller Azure-Ressourcen (einschließlich Zugriff). Sie basiert auf einem neueren Autorisierungssystem namens „rollenbasierte Zugriffssteuerung in Azure“ (Azure Role-Based Access Control, Azure RBAC), das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Globaler Azure AD-Administrator|Diese Administratorrolle wird automatisch dem Ersteller des Azure AD-Mandanten zugewiesen. Globale Administratoren können sämtliche administrativen Funktionen für Azure AD sowie für jeden beliebigen Azure AD-Verbunddienst ausführen. Hierzu zählen etwa Exchange Online, SharePoint Online und Skype for Business Online. Es können mehrere globale Administratoren vorhanden sein, aber nur globale Administratoren können Benutzern Administratorrollen zuweisen (einschließlich der globalen Administratorrolle). Diese Administratorrolle wird im Azure-Portal als globaler Administrator bezeichnet, in der Microsoft Graph-API und in Azure AD PowerShell heißt sie dagegen **Unternehmensadministrator** .Weitere Informationen zu den unterschiedlichen Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../roles/permissions-reference.md).|
+|Globaler Azure AD-Administrator|Diese Administratorrolle wird automatisch dem Ersteller des Azure AD-Mandanten zugewiesen. Globale Administratoren können sämtliche administrativen Funktionen für Azure AD sowie für jeden beliebigen Azure AD-Verbunddienst ausführen. Hierzu zählen etwa Exchange Online, SharePoint Online und Skype for Business Online. Es können mehrere globale Administratoren vorhanden sein, aber nur globale Administratoren können Benutzern Administratorrollen zuweisen (einschließlich der globalen Administratorrolle). Diese Administratorrolle wird im Azure-Portal als globaler Administrator bezeichnet, in der Microsoft Graph-API und in Azure AD PowerShell heißt sie dagegen **Unternehmensadministrator**. Weitere Informationen zu den unterschiedlichen Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../roles/permissions-reference.md).|
 |Azure-Abonnement| Dient zur Bezahlung für Azure-Clouddienste. Sie können über mehrere Abonnements verfügen, und die Abonnements sind mit einer Kreditkarte verknüpft.|
 |Azure-Mandant| Eine dedizierte, vertrauenswürdige Instanz von Azure AD, die automatisch erstellt wird, wenn sich Ihre Organisation für ein Abonnement eines Microsoft-Clouddiensts wie Microsoft Azure, Microsoft Intune oder Microsoft 365 registriert. Ein Azure-Mandant stellt eine einzelne Organisation dar.|
 |Einzelner Mandant| Azure-Mandanten, die auf andere Dienste in einer dedizierten Umgebung zugreifen, werden als einzelne Mandanten betrachtet.|

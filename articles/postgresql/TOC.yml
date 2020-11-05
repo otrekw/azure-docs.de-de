@@ -1,4 +1,4 @@
-- name: Dokumentation zu Azure DB for PostgreSQL
+- name: Dokumentation zu Azure Database for PostgreSQL
   href: index.yml
 - name: Übersicht
   items:
@@ -91,7 +91,7 @@
             - name: Azure-Portal
               href: tutorial-design-database-using-azure-portal.md
               displayName: design database
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -222,14 +222,14 @@
             - name: Azure-Portal
               href: howto-create-manage-server-portal.md
               displayName: 'scale server, reset password'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: how-to-manage-server-cli.md
               displayName: 'scale server, reset password'
         - name: Neustarten des Servers
           items:
             - name: Azure-Portal
               href: howto-restart-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md
@@ -249,12 +249,15 @@
             - name: Azure-Portal
               href: howto-restore-server-portal.md
               displayName: 'restore, georestore, geo-restore, outage'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restore-server-cli.md
               displayName: 'restore, georestore, geo-restore, outage'
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: Wiederherstellen eines gelöschten Servers
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: Authentifizierung aktivieren
           items:
             - name: Erstellen von Benutzern
@@ -290,7 +293,7 @@
             - name: Azure-Portal
               href: howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'application development, server parameters'
             - name: Azure PowerShell
@@ -301,7 +304,7 @@
             - name: Azure-Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'business continuity, scale , storage'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
               displayName: 'business continuity, scale , storage'
             - name: Azure PowerShell
@@ -312,7 +315,7 @@
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'access logs, monitor'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
               displayName: 'access logs, monitor'
         - name: Überwachen
@@ -401,7 +404,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/quickstart-create-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -629,7 +632,7 @@
               displayName: 'connection errors, hyperscale'
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/postgres
     - name: REST-API
       href: /rest/api/postgresql

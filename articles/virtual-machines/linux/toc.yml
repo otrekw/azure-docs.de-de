@@ -582,7 +582,7 @@
     - name: Schützen von virtuellen Computern
       items:
         - name: Empfehlungen
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Just-in-Time-Zugriff
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Verwenden von Bastion
@@ -717,7 +717,7 @@
             - name: Agent-Aktualisierung
               href: ../extensions/update-linux-agent.md
         - name: Maßnahmen im Zusammenhang mit der spekulativen Ausführung
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: Überwachen von Metadaten
           href: instance-metadata-service.md
         - name: Abrufen von Nutzungsmetriken mit REST
@@ -1045,7 +1045,7 @@
         - name: Verwenden des beschleunigten Netzwerkbetriebs
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Zuweisen eines öffentlichen DNS-Namens
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: Suchen und Löschen nicht angefügter Netzwerkadapter
           href: find-unattached-nics.md
         - name: DNS-Auflösung

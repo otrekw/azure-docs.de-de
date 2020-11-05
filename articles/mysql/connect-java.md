@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Java und JDBC mit Azure Database for MySQL
+title: 'Schnellstart: Verwenden von Java und JDBC mit Azure Database for MySQL'
 description: Hier erfahren Sie, wie Sie Java und JDBC mit einer Azure Database for MySQL-Datenbank verwenden.
 author: jdubois
 ms.author: judubois
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745267"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337438"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>Verwenden von Java und JDBC mit Azure Database for MySQL
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Schnellstart: Verwenden von Java und JDBC mit Azure Database for MySQL
 
 In diesem Thema wird die Erstellung einer Beispielanwendung veranschaulicht, die Java und [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) verwendet, um Informationen in [Azure Database for MySQL](./index.yml) zu speichern bzw. daraus abzurufen.
 
@@ -493,7 +493,7 @@ Das Ausführen der Hauptklasse sollte nun die folgende Ausgabe ergeben:
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Zusammenfassung und Ressourcenbereinigung
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Glückwunsch! Sie haben eine Java-Anwendung erstellt, die JDBC zum Speichern und Abrufen von Daten in bzw. aus Azure Database for MySQL verwendet.
 
