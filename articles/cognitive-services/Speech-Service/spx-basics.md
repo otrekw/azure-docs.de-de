@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893814"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286682"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle
 
@@ -72,8 +72,9 @@ In diesem Befehl geben Sie sowohl die Quellsprache (Sprache, **aus** der überse
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurationsdateien im Datenspeicher
 
-Mit der Speech-Befehlszeilenschnittstelle (Speech CLI) können mehrere Einstellungen in Konfigurationsdateien gelesen und geschrieben werden, die im lokalen Datenspeicher der Speech CLI gespeichert sind. In Speech CLI-Aufrufen wird hierbei für die Benennung das Symbol „@“ verwendet. Von der Speech CLI wird versucht, eine neue Einstellung im neuen Unterverzeichnis `./spx/data` zu speichern, das im aktuellen Arbeitsverzeichnis erstellt wird.
-Beim Suchen nach einem Konfigurationswert sucht die Speech CLI in Ihrem aktuellen Arbeitsverzeichnis und anschließend unter dem Pfad `./spx/data`.
+Das Verhalten der Speech-Befehlszeilenschnittstelle (Speech CLI) kann auf Einstellungen in Konfigurationsdateien basieren, auf die Sie in Speech CLI-Aufrufen mit dem Symbol „@“ verweisen können.
+Von der Speech CLI wird eine neue Einstellung im neuen Unterverzeichnis `./spx/data` gespeichert, das im aktuellen Arbeitsverzeichnis erstellt wird.
+Beim Suchen nach einem Konfigurationswert sieht die Speech CLI zuerst in Ihrem aktuellen Arbeitsverzeichnis, anschließend im Datenspeicher unter `./spx/data` und dann in anderen Datenspeichern nach, z. B. in einem schreibgeschützten endgültigen Datenspeicher in der `spx`-Binärdatei.
 Bisher haben Sie den Datenspeicher zum Speichern Ihrer Werte `@key` und `@region` verwendet und mussten sie daher nicht in jedem Befehlszeilenaufruf angeben.
 Sie können Konfigurationsdateien auch verwenden, um Ihre eigenen Konfigurationseinstellungen zu speichern, oder sie sogar nutzen, um URLs oder andere dynamische Inhalte zu übergeben, die zur Laufzeit generiert werden.
 
@@ -164,7 +165,7 @@ Dieser Befehl ist das Äquivalent zur Ausführung von `spx synthesize --text Sam
 * Wenn die Datei auf diese Weise formatiert wird, müssen keine zusätzlichen Argumente an `--foreach` übergeben werden.
 * Achten Sie darauf, jeden Wert in der `.tsv`-Datei mit einem **Tabstopp** zu trennen.
 
-Im Fall einer `.tsv`-Datei wie im folgenden Beispiel jedoch, deren Spaltenüberschriften mit den Befehlszeilenargumenten **nicht übereinstimmen**:
+Im Fall einer `.tsv`-Datei wie im folgenden Beispiel jedoch, deren Spaltenüberschriften mit den Befehlszeilenargumenten **nicht übereinstimmen** :
 
 ```output
 wav_path    str_text
@@ -181,4 +182,4 @@ spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.ts
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Führen Sie die Schnellstarts zur [Spracherkennung](./quickstarts/speech-to-text-from-microphone.md) oder [Sprachsynthese](./quickstarts/text-to-speech.md) mithilfe des SDKs aus.
+* Führen Sie die Schnellstarts zur [Spracherkennung](get-started-speech-to-text.md?pivots=programmer-tool-spx) oder [Sprachsynthese](get-started-text-to-speech.md?pivots=programmer-tool-spx) mithilfe der Speech CLI durch.

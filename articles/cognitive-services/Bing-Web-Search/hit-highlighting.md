@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68854014"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078542"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Verwenden von Dekorationsmarkierungen zum Markieren von Text
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Für Bing wird die Treffermarkierung unterstützt, bei der Abfrageausdrücke (oder andere Ausdrücke, die von Bing als relevant eingestuft werden) in den Anzeigezeichenfolgen einiger Antworten markiert werden. Beispielsweise können die Felder `name`, `displayUrl` und `snippet` der Ergebnisse einer Webseite markierte Abfragebegriffe enthalten. 
 
@@ -36,7 +41,7 @@ Bevor das Ergebnis auf Ihrer Benutzeroberfläche angezeigt wird, sollten Sie die
 
 In Bing haben Sie die Möglichkeit, Unicode-Zeichen oder HTML-Tags als Marker bereitzustellen. Fügen Sie den Abfrageparameter [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) ein, um anzugeben, welche Marker verwendet werden sollen. 
 
-| value             | Marker                       |
+| Wert             | Marker                       |
 |-------------------|------------------------------|
 | `textFormat=Raw`  | Unicode-Zeichen (Standard) |
 | `textFormat=HTML` | HTML-Zeichen              |
@@ -51,7 +56,7 @@ Wenn die Anforderung keine Dekorationen angibt, würde das Feld `expression` den
 
 Wenn `textDecorations` auf `true` festgelegt ist, können in Bing die unten angegebenen Marker in die Anzeigezeichenfolgen von Antworten eingefügt werden. Falls keine Entsprechung als HTML-Tag vorhanden ist, enthält die Tabellenzelle keine Angabe.
 
-|Unicode|HTML|BESCHREIBUNG
+|Unicode|HTML|Beschreibung
 |-|-|-
 |U+E000|\<b>|Markiert den Anfang des Abfrageausdrucks (Treffermarkierung)
 |U+E001|\</b>|Markiert das Ende des Abfrageausdrucks

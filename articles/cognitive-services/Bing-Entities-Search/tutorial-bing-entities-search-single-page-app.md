@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277324"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084628"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
 
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 
@@ -257,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-Die Abfrage für die Bing-Entitätssuche-API erfordert neben Breiten- und Längengrad auch einen *Radius*, der die Genauigkeit der Standortinformationen angibt. Der Radius wird mithilfe des *umgebenden Rechtecks* berechnet, das von der Bing Karten-Antwort bereitgestellt wird. Dabei handelt es sich um ein Rechteck, das den Standort umgibt. Wenn der Benutzer z.B. `NYC` eingibt, enthält das Ergebnis die ungefähren Koordinaten für das Zentrum von New York City und ein umgebendes Rechteck, das die Stadt einschließt. 
+Die Abfrage für die Bing-Entitätssuche-API erfordert neben Breiten- und Längengrad auch einen *Radius* , der die Genauigkeit der Standortinformationen angibt. Der Radius wird mithilfe des *umgebenden Rechtecks* berechnet, das von der Bing Karten-Antwort bereitgestellt wird. Dabei handelt es sich um ein Rechteck, das den Standort umgibt. Wenn der Benutzer z.B. `NYC` eingibt, enthält das Ergebnis die ungefähren Koordinaten für das Zentrum von New York City und ein umgebendes Rechteck, das die Stadt einschließt. 
 
 Zuerst werden die Abstände der primären Koordinaten zu allen vier Ecken des umgebenden Rechtecks verwendet. Dazu wird die Funktion `haversineDistance()` (hier nicht dargestellt) genutzt. Als Radius wird dann der größte der vier Abstände verwendet. Der Mindestradius beträgt ein Kilometer. Dieser Wert wird auch als Standard verwendet, wenn kein umgebendes Rechteck in der Antwort bereitgestellt wird.
 
@@ -442,7 +447,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>Rendern von Ergebniselementen
 
-Im JavaScript-Code dieses Tutorials enthält das `searchItemRenderers`-Objekt *Renderer*, also Funktionen, die für jeden Suchergebnistyp HTML-Code generieren.
+Im JavaScript-Code dieses Tutorials enthält das `searchItemRenderers`-Objekt *Renderer* , also Funktionen, die für jeden Suchergebnistyp HTML-Code generieren.
 
 ```javascript
 searchItemRenderers = { 

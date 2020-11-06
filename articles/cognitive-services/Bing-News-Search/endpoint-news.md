@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c724925a12535c561b035296e374691f3fb2689
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74111482"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098347"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing-News-Suche-API-Endpunkte
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Die **News-Suche-API** gibt Nachrichtenartikel, Webseiten, Bilder, Videos und [Entitäten](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) zurück. Entitäten enthalten zusammenfassende Informationen zur einer Person, einem Ort oder einem Thema.
 
@@ -39,7 +44,7 @@ Gibt Nachrichtenelemente basierend auf einer Suchabfrage zurück. Wenn die Sucha
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Gibt die wichtigsten Nachrichten geordnet nach Kategorien zurück. Mit `category=business`, `category=sports` oder `category=entertainment` können Sie insbesondere die obersten Artikel aus den Bereichen „Wirtschaft“, „Sport“ oder „Unterhaltung“ anfordern.  Der `category`-Parameter kann nur mit der `/news`-URL verwendet werden. Es gibt einige formale Anforderungen für die Angabe von Kategorien; siehe `category` in der Dokumentation der [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters). Senden Sie eine Abfrage durch URL-Codierung Ihres Suchbegriffs, und fügen Sie sie dem `q=""`-Parameter an. Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder/Regionen und Märkte](language-support.md#supported-markets-for-news-endpoint).
+Gibt die wichtigsten Nachrichten geordnet nach Kategorien zurück. Mit `category=business`, `category=sports` oder `category=entertainment` können Sie insbesondere die obersten Artikel aus den Bereichen „Wirtschaft“, „Sport“ oder „Unterhaltung“ anfordern.  Der `category`-Parameter kann nur mit der `/news`-URL verwendet werden. Es gibt einige formale Anforderungen für die Angabe von Kategorien; siehe `category` in der Dokumentation der [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters). Senden Sie eine Abfrage durch URL-Codierung Ihres Suchbegriffs, und fügen Sie sie dem `q=""`-Parameter an. Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder/Regionen und Märkte](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Beliebteste Nachrichtenthemen 
 

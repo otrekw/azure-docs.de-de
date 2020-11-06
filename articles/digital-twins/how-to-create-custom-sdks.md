@@ -8,19 +8,19 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970128"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145598"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
 Zurzeit sind die einzigen veröffentlichten Datenebenen-SDKs für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#), JavaScript und Java bestimmt. Informationen zum diesen SDKs und die APIs im Allgemeinen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes Datenebenen-SDK in der Sprache Ihrer Wahl generieren.
 
 >[!NOTE]
-> Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der neuesten **Swagger-Datei für die Steuerungsebene** (OpenAPI) im [Swagger-Ordner auf Steuerungsebene]](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) anstelle der für die Datenebene aus.
+> Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der neuesten **Swagger-Datei für die Steuerungsebene** (OpenAPI) im [Swagger-Ordner der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) anstelle der Datei für die Datenebene aus.
 
 ## <a name="set-up-your-machine"></a>Einrichten Ihres Computers
 
@@ -55,7 +55,7 @@ AutoRest unterstützt eine breite Palette von Sprachcodegeneratoren.
 
 Sie können die von AutoRest generierten Dateien direkt in eine .NET-Projektmappe einschließen. Wahrscheinlich möchten Sie das Azure Digital Twins SDK jedoch in mehrere separate Projekte (Ihre Client-Apps, Azure Functions-Apps usw.) einbinden. Aus diesem Grund kann es hilfreich sein, ein separates Projekt (eine .NET-Klassenbibliothek) aus den generierten Dateien zu erstellen. Sie können dieses Klassenbibliotheksprojekt dann als Projektverweis in mehrere Projektmappen einbinden.
 
-Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Diese Schritte basieren auf **Visual Studio** ([hier](https://visualstudio.microsoft.com/downloads/) können Sie die neueste Version installieren).
+Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Diese Schritte basieren auf **Visual Studio** ( [hier](https://visualstudio.microsoft.com/downloads/) können Sie die neueste Version installieren).
 
 Im Folgenden werden die Schritte aufgeführt:
 
@@ -64,9 +64,9 @@ Im Folgenden werden die Schritte aufgeführt:
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt *ADTApi* der generierten Lösung, und wählen Sie *Hinzufügen > Vorhandenes Element*.
 4. Suchen Sie den Ordner, in dem Sie das SDK generiert haben, und wählen Sie die Dateien auf der Stammebene aus.
 5. Klicken Sie auf „OK“.
-6. Fügen Sie dem Projekt einen Ordner hinzu (klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie *Hinzufügen > Neuer Ordner*).
+6. Fügen Sie dem Projekt einen Ordner hinzu (klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie *Hinzufügen > Neuer Ordner* ).
 7. Geben Sie dem Ordner den Namen *Models*.
-8. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner *Models*, und wählen Sie *Hinzufügen > Vorhandenes Element* aus.
+8. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner *Models* , und wählen Sie *Hinzufügen > Vorhandenes Element* aus.
 9. Wählen Sie die Dateien im Ordner *Models* des generierten SDK aus, und klicken Sie auf „OK“.
 
 Um das SDK erfolgreich zu erstellen, benötigt das Projekt die folgenden Verweise:
@@ -117,40 +117,25 @@ AutoRest generiert zwei Arten von Pagingmustern für das SDK:
 * Eine für alle APIs außer der Abfrage-API
 * Eine für die Abfrage-API
 
-Beim Pagingmuster ohne Abfrage gibt es zwei Versionen der einzelnen Aufrufe:
-* Eine Version, die den ersten Aufruf durchführen soll (z. B. `DigitalTwins.ListEdges()`)
-* Eine Version zum Abrufen der folgenden Seiten. Diese Aufrufe weisen das Suffix „Next“ auf (z. B. `DigitalTwins.ListEdgesNext()`).
+Im nicht abfragenden Pagingmuster zeigt der folgende Codeausschnitt, wie Sie eine ausgelagerte Liste von ausgehenden Beziehungen von Azure Digital Twins abrufen:
 
-Der folgende Codeausschnitt zeigt, wie Sie eine ausgelagerte Liste von ausgehenden Beziehungen von Azure Digital Twins abrufen:
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

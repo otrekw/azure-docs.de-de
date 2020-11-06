@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776611"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324684"
 ---
 # <a name="getting-started"></a>Erste Schritte
 
@@ -35,15 +35,15 @@ Cloudbasierte Cognitive Services-Instanzen sind intelligente Algorithmen, die in
 
 ### <a name="containerized-services-optional"></a>Dienste in Containern (optional)
 
-Wenn Ihre Anwendung oder Workload extrem große Datasets verwendet, private Netzwerke erfordert oder keine Verbindung mit der Cloud herstellen kann, ist die Kommunikation mit Clouddiensten möglicherweise nicht möglich. In dieser Situation haben Cognitive Services-Instanzen in Containern folgende Vorteile:
+Wenn für Ihre Anwendung oder Workload große Datasets verwendet werden, private Netzwerke erforderlich sind oder keine Verbindung mit der Cloud hergestellt werden kann, ist die Kommunikation mit Clouddiensten unter Umständen nicht möglich. In dieser Situation haben Cognitive Services-Instanzen in Containern folgende Vorteile:
 
-* **Niedrige Konnektivität**: Sie können Cognitive Services in Containern in jeder beliebigen Computerumgebung bereitstellen, sowohl in als auch außerhalb der Cloud. Wenn Ihre Anwendung nicht mit der Cloud in Kontakt treten kann, erwägen Sie die Bereitstellung von Cognitive Services in Containern für Ihre Anwendung.
+* **Niedrige Konnektivität** : Sie können Cognitive Services in Containern in jeder beliebigen Computerumgebung bereitstellen, sowohl in als auch außerhalb der Cloud. Wenn Ihre Anwendung nicht mit der Cloud in Kontakt treten kann, erwägen Sie die Bereitstellung von Cognitive Services in Containern für Ihre Anwendung.
 
-* **Geringe Wartezeit**: Da für Dienste in Containern die Roundtrip-Kommunikation von/zur Cloud nicht erforderlich ist, werden Antworten mit erheblich geringeren Latenzzeiten zurückgegeben.
+* **Geringe Wartezeit** : Da für Dienste in Containern die Roundtrip-Kommunikation von/zur Cloud nicht erforderlich ist, werden Antworten mit erheblich geringeren Latenzzeiten zurückgegeben.
 
-* **Datenschutz und -sicherheit**: Sie können Dienste in Containern in privaten Netzwerken bereitstellen, sodass sensible Daten das Netzwerk nicht verlassen.
+* **Datenschutz und -sicherheit** : Sie können Dienste in Containern in privaten Netzwerken bereitstellen, sodass sensible Daten das Netzwerk nicht verlassen.
 
-* **Hohe Skalierbarkeit**: Für Dienste in Containern gibt es keine Begrenzung der Datenübertragungsrate, und sie werden auf von Benutzern verwalteten Computern ausgeführt. Daher können Sie Cognitive Services ohne Ende skalieren, um weitaus größere Workloads zu verarbeiten.
+* **Hohe Skalierbarkeit** : Für Dienste in Containern gibt es keine Begrenzung der Datenübertragungsrate, und sie werden auf von Benutzern verwalteten Computern ausgeführt. Daher können Sie Cognitive Services ohne Ende skalieren, um weitaus größere Workloads zu verarbeiten.
 
 Befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis), um eine Cognitive Service-Instanz in einem Container zu erstellen.
 
@@ -70,7 +70,7 @@ Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die mit nur ei
 Optional können Sie Synapse Analytics zum Erstellen eines Spark-Clusters verwenden. Azure Synapse vereint Data Warehousing für Unternehmen mit Big Data-Analysen. Er ermöglicht flexible Datenabfragen nach Ihren Vorstellungen, indem serverlose On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang verwendet werden. Für erste Schritte mit Synapse Analytics gehen Sie folgendermaßen vor:
 
 1. [Erstellen Sie einen Synapse-Arbeitsbereich (Vorschau)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Erstellen Sie einen neuen Apache Spark-Pool (Vorschau) mithilfe des Azure-Portals](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Erstellen Sie einen neuen serverlosen Apache Spark-Pool über das Azure-Portal](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
 
 In Synapse Analytics wird Big Data für Cognitive Services standardmäßig installiert.
 
@@ -100,7 +100,7 @@ Zunächst können wir ein Notebooks in Azure Databricks erstellen. Verwenden Sie
 
     Klicken Sie auf **Erstellen**.
 
-1. Fügen Sie den folgenden Codeausschnitt in Ihr neues Notebook ein.
+1. Fügen Sie diesen Codeausschnitt in Ihr neues Notebook ein.
 
 ```python
 from mmlspark.cognitive import *

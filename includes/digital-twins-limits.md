@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 60a5f62d4ea23db1052b2e40d10775dfaa33c632
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989592"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091774"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
-In der folgenden Tabelle sind die funktionalen Grenzwerte von Azure Digital Twins in der aktuellen Vorschau aufgeführt.
+In der folgenden Tabelle werden die funktionalen Grenzwerte von Azure Digital Twins aufgeführt.
 
 | Bereich | Funktion | Standardlimit | Anpassbar? |
 | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ In der folgenden Tabelle sind die funktionalen Grenzwerte von Azure Digital Twin
 | Digital Twins | Anzahl eingehender Beziehungen zu einem einzelnen Zwilling | 5\.000 | Nein |
 | Digital Twins | Anzahl ausgehender Beziehungen von einem einzelnen Zwilling | 5\.000 | Nein |
 | Digital Twins | Maximale Größe eines einzelnen Zwillings | 32 KB | Nein |
-| Digital Twins-API | Maximale Größe der Anforderungspayload | 32 KB | Nein | 
+| Digital Twins | Maximale Größe der Anforderungspayload | 32 KB | Nein | 
 | Routing | Anzahl von Endpunkten für eine einzelne Azure Digital Twins-Instanz | 6 | Nein |
 | Routing | Anzahl von Routen für eine einzelne Azure Digital Twins-Instanz | 6 | Ja |
 | Modelle | Anzahl von Modellen innerhalb einer einzelnen Azure Digital Twins-Instanz | 10.000 | Ja |
@@ -37,12 +37,14 @@ In der folgenden Tabelle sind die funktionalen Grenzwerte von Azure Digital Twin
 
 ### <a name="rate-limits"></a>Ratenbegrenzungen
 
-Diese Tabelle gibt die Ratenbegrenzungen verschiedener APIs an.
+Die folgende Tabelle gibt die Ratengrenzwerte verschiedener APIs an.
 
 | API | Funktion | Standardlimit | Anpassbar? |
 | --- | --- | --- | --- |
 | Modelle-API | Anzahl der Anforderungen pro Sekunde | 100 | Ja |
-| Digital Twins-API | Anzahl der Anforderungen pro Sekunde | 1\.000 | Ja |
+| Digital Twins-API | Anzahl der Anforderungen pro Sekunde | 2\.000 | Ja |
+| Digital Twins-API | Anzahl von create-/delete-Vorgängen pro Sekunde über **alle Zwillinge und Beziehungen** hinweg | 50 | Ja |
+| Digital Twins-API | Anzahl von create-/update-/delete-Vorgängen pro Sekunde für einen **einzelnen Zwilling** oder seine Beziehungen | 10 | Nein |
 | Abfrage-API | Anzahl der Anforderungen pro Sekunde | 500 | Ja |
 | Abfrage-API | [Abfrageeinheiten](../articles/digital-twins/concepts-query-units.md) pro Sekunde | 4\.000 | Ja |
 | Ereignisrouten-API | Anzahl der Anforderungen pro Sekunde | 100 | Ja |
@@ -51,4 +53,4 @@ Diese Tabelle gibt die Ratenbegrenzungen verschiedener APIs an.
 
 Grenzwerte für Datentypen und Felder in DTDL-Dokumenten für Azure Digital Twins-Modelle finden Sie in der Dokumentation zu den entsprechenden Spezifikationen in GitHub: [*Digital Twins Definition Language (DTDL): Version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
  
-Details zur Abfragelatenz und andere Richtlinien zum Schreiben von Abfragen während der Vorschau finden Sie in [*Vorgehensweise: Abfragen des Zwillingsgraphen*](../articles/digital-twins/how-to-query-graph.md).
+Details zur Abfragelatenz und anderen Abfrageeinschränkungen finden Sie unter [*Vorgehensweise: Abfragen des Zwillingsgraphen*](../articles/digital-twins/how-to-query-graph.md).

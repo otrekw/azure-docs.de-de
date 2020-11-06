@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044665"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099112"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
 
@@ -42,7 +42,7 @@ DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu z
 
 ### <a name="live-execution-environment"></a>Liveausführungsumgebung
 
-Bei den digitalen Modellen in Azure Digital Twins handelt es sich um aktuelle Livedarstellungen der realen Welt. Mithilfe der Beziehungen in Ihren benutzerdefinierten DTDL-Modellen verbinden Sie die Zwillinge in einem **Livediagramm**, mit dem Ihre Umgebung dargestellt wird.
+Bei den digitalen Modellen in Azure Digital Twins handelt es sich um aktuelle Livedarstellungen der realen Welt. Mithilfe der Beziehungen in Ihren benutzerdefinierten DTDL-Modellen verbinden Sie die Zwillinge in einem **Livediagramm** , mit dem Ihre Umgebung dargestellt wird.
 
 Sie können eine Visualisierung Ihres Azure Digital Twins-Diagramms mithilfe einer Beispielanwendung anzeigen, [**Azure Digital Twins-Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
@@ -50,7 +50,7 @@ Hier sehen Sie, wie die Beispiel Visualisierung aussieht:
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Screenshot der Beispielanwendung für den Azure Digital Twins-Explorer mit einem Diagramm von Knoten, die digitale Zwillinge darstellen" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
-Azure Digital Twins bietet ein umfangreiches **Ereignissystem**, um sicherzustellen, dass dieses Diagramm mit Datenverarbeitung und Geschäftslogik stets auf dem aktuellen Stand ist. Für eine flexible, individuell angepasste Datenverarbeitung können Sie zudem externe Computeressourcen wie [Azure Functions](../azure-functions/functions-overview.md) verbinden.
+Azure Digital Twins bietet ein umfangreiches **Ereignissystem** , um sicherzustellen, dass dieses Diagramm mit Datenverarbeitung und Geschäftslogik stets auf dem aktuellen Stand ist. Für eine flexible, individuell angepasste Datenverarbeitung können Sie zudem externe Computeressourcen wie [Azure Functions](../azure-functions/functions-overview.md) verbinden.
 
 Darüber hinaus können Sie die leistungsfähige **Abfrage-API** von Azure Digital Twins verwenden, um Erkenntnisse aus der Liveausführungsumgebung zu extrahieren. Diese API ermöglicht Ihnen die Ausführung von Abfragen mit umfangreichen Suchbedingungen, wie z. B. Eigenschaftswerten, Beziehungen, Beziehungseigenschaften, Modellinformationen usw. Außerdem lassen sich Abfragen kombinieren, um eine große Bandbreite an Erkenntnissen zu Ihrer Umgebung zu gewinnen und benutzerdefinierte Fragen zu beantworten, die für Ihre Zwecke wichtig sind.
 
@@ -88,19 +88,15 @@ Eine umfassende Lösung mit Azure Digital Twins könnte folgende Elemente beinha
 
 Die folgende Abbildung zeigt, wie sich Azure Digital Twins im Kontext einer größeren Azure IoT-Lösung einfügt.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Screenshot der Beispielanwendung für den Azure Digital Twins-Explorer mit einem Diagramm von Knoten, die digitale Zwillinge darstellen" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Abbildung mit Eingabequellen, Ausgabediensten und bidirektionaler Kommunikation mit Client-Apps und externen Computeressourcen." border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>Diensteinschränkungen der öffentlichen Vorschauversion
+## <a name="service-limits"></a>Diensteinschränkungen
 
-> [!IMPORTANT]
-> Azure Digital Twins ist zurzeit als öffentliche Vorschau verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie in den [*zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Eine Liste der Einschränkungen, die während der öffentlichen Vorschau für Azure Digital Twins gelten, finden Sie in der [*Referenz: Diensteinschränkungen der öffentlichen Vorschauversion*](reference-service-limits.md).
+Eine Liste mit den Einschränkungen für Azure Digital Twins finden Sie unter [ *Grenzwerte des Diensts in der öffentlichen Vorschauversion*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie bereits mit der vorherigen Vorschauversion von Azure Digital Twins gearbeitet haben, finden Sie hier weitere Informationen zu den Unterschieden zwischen diesen beiden Versionen:
+Wenn Sie bereits mit der ersten Vorschauversion von Azure Digital Twins (Oktober 2018) gearbeitet haben, können Sie hier auf weitere Informationen zu den Unterschieden zwischen diesen beiden Versionen zugreifen:
 * [*Übersicht: Unterschiede zur vorherigen Version*](overview-differences.md)
 
 Alternativ können Sie das erste Tutorial zu Azure Digital Twins durcharbeiten, um sich näher mit der Funktionsweise vertraut zu machen:

@@ -11,14 +11,19 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ba749d671e24e86e2cd0a299e98ba03e47cf354
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85602753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101679"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Was ist die Bing-News-Suche-API?
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
 
 Die Bing-News-Suche-API vereinfacht das Integrieren der Funktionen der kognitiven Bing-News-Suche in Anwendungen. Die API bietet eine ähnliche Oberfläche wie [Bing News](https://www.bing.com/news). Sie können Suchabfragen senden und relevante Nachrichtenartikel empfangen.
 
@@ -28,7 +33,7 @@ Hinweis: Die Bing-News-Suche-API liefert ausschließlich Nachrichten als Sucherg
 
 Die Bing-News-Suche-API dient zwar in erster Linie zum Suchen und Zurückgeben von relevanten Nachrichtenartikeln, sie bietet jedoch auch verschiedene Funktionen für den intelligenten und gezielten Abruf von Nachrichten im Web.
 
-|Funktion  |BESCHREIBUNG  |
+|Funktion  |Beschreibung  |
 |---------|---------|
 |[Vorschlagen und Verwenden von Suchbegriffen](concepts/search-for-news.md#suggest-and-use-search-terms)     | Verwenden Sie die [Bing-Vorschlagssuche-API](../bing-autosuggest/get-suggested-search-terms.md), um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer Suchumgebung zu verbessern.         |
 |[Abrufen allgemeiner Nachrichten](concepts/search-for-news.md#get-general-news)     | Senden Sie eine Suchabfrage an die Bing-News-Suche-API, um eine Liste relevanter Nachrichtenartikel abzurufen.           |

@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73481738"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074096"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Durchblättern der Suchergebnisse der Bing-Suche-APIs
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Wenn Sie einen Aufruf an die Bing-Suche-APIs Web, Custom, Image, News oder Video senden, gibt Bing eine Teilmenge der Gesamtzahl der Ergebnisse zurück, die für die Abfrage relevant sein können. Um die geschätzte Gesamtzahl der verfügbaren Ergebnisse abzurufen, greifen Sie auf das `totalEstimatedMatches`-Feld des Antwortobjekts zu. 
 
@@ -44,7 +49,7 @@ Um durch die verfügbaren Ergebnisse zu blättern, verwenden Sie beim Senden Ihr
 > * Das Durchblättern beschränkt sich bei den Bing-APIs Video, Image und News nur auf allgemeine Video- (`/video/search`), Nachrichten- (`/news/search`) und Bildsuchen (`/image/search`). Das Durchblättern von Trendthemen und Kategorien wird nicht unterstützt.  
 > * Das Feld `TotalEstimatedMatches` gibt eine Schätzung der Gesamtzahl der Suchergebnisse für die aktuelle Abfrage an. Wenn Sie die Parameter `count` und `offset` festlegen, ändert sich diese Schätzung möglicherweise.
 
-| Parameter | BESCHREIBUNG                                                                                                                                                                |
+| Parameter | Beschreibung                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `count`   | Gibt die Anzahl der Ergebnisse an, die in der Antwort zurückgegeben werden sollen. Beachten Sie, dass sich der Standardwert von `count` und die maximale Zahl der Ergebnisse, die abgerufen werden können, bei den einzelnen APIs unterscheiden. Sie finden diese Werte in der Referenzdokumentation unter [Nächste Schritte](#next-steps). |
 | `offset`  | Gibt die Anzahl der zu überspringenden Ergebnisse an. Der `offset`-Parameter ist nullbasiert und sollte kleiner sein als (`totalEstimatedMatches` - `count`).                                           |

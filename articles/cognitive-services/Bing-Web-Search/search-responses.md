@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cea88c2e20c9e96c5ad5504815886b2cc771e44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297789"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100557"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Antwortstruktur und Antworttypen der Bing-Websuche-API  
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Wenn Sie eine Suchanforderung an die Bing-Websuche senden, wird im Antworttext ein [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse)-Objekt zurückgegeben. Das Objekt enthält jeweils ein Feld für jede Antwort, die nach Bewertung von Bing für die Abfrage relevant ist. In diesem Beispiel wird ein Antwortobjekt gezeigt, bei dem Bing alle Antworten zurückgegeben hat:
 
@@ -298,7 +303,7 @@ Ein mathematischer Ausdruck kann folgende Symbole enthalten:
 |*|Multiplikation|
 |^|Power|
 |!|Fakultät|
-|erforderlich.|Decimal|
+|.|Decimal|
 |()|Prioritätsgruppierung|
 |[]|Funktion|
 

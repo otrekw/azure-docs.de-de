@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: ca210f144d56aa56ddbcb959e0240bd4816dc3af
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: b1aa2c098ead7086e670a92ce0657aa5a20a2b61
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92547111"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93323117"
 highlightedContent:
   items:
   - title: Was ist Cognitive Services?
@@ -118,9 +118,12 @@ conceptualContent:
   - title: Cognitive Services-Container
     summary: Dank der Containerunterstützung in Azure Cognitive Services können Entwickler die gleichen umfangreichen APIs verwenden wie in Azure und dabei flexibel entscheiden, wo die mit Docker-Containern verbundenen Dienste bereitgestellt und gehostet werden.
     links:
+    - url: ./containers/index.yml
+      itemType: overview
+      text: Dokumentation zu Cognitive Services-Containern
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Cognitive Services-Container
+      text: Was sind Cognitive Services-Container?
     - url: ./containers/container-reuse-recipe.md
       itemType: learn
       text: Erstellen wiederverwendbarer Container

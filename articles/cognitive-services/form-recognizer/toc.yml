@@ -70,6 +70,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Verwenden von Containerinstanzen
           href: deploy-form-recognizer-on-container-instances.md
+        - name: "Dokumentation zu Cognitive\_Services-Containern"
+          href: ../containers/index.yml
     - name: Sichern und Wiederherstellen von Modellen
       href: disaster-recovery.md
 - name: Verweis
@@ -104,7 +106,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: form-recognizer-encryption-of-data-at-rest.md

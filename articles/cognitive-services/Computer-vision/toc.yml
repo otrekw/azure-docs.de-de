@@ -161,6 +161,8 @@
           href: spatial-analysis-zone-line-placement.md
         - name: Kameraplatzierung
           href: spatial-analysis-camera-placement.md
+    - name: "Dokumentation zu Cognitive\_Services-Containern"
+      href: ../containers/index.yml
 - name: Anleitungen
   items:
     - name: Aufrufen der Maschinelles Sehen-API
@@ -169,7 +171,7 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'

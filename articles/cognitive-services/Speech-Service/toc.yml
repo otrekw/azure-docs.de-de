@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: Verwenden der Batch-Transkriptions-API
           href: batch-transcription.md
-        - name: Bewerten der Aussprache
-          href: how-to-pronunciation-assessment.md
     - name: Tutorials
       items:
         - name: Erkennen von Sprache aus einem Blobspeicher
@@ -146,7 +144,7 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
-    - name: Referenz
+    - name: Verweis
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: Häufig gestellte Fragen zu Containern
           href: speech-container-faq.md
+        - name: "Dokumentation zu Cognitive\_Services-Containern"
+          href: ../containers/index.yml
 - name: Geräte
   items:
     - name: Dokumentation zu Speech-Geräten

@@ -8,16 +8,16 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4c2900ed5ebe0df3ed827acc1a16caff3beaf4d4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047385"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241088"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
-Wenn Sie Ihre Azure Digital Twins-Instanz in eine andere Region verschieben müssen, **erstellen Sie Ihre Ressourcen in der neuen Region neu**, und löschen Sie dann die ursprünglichen Ressourcen. Am Ende dieses Prozesses werden Sie mit einer neuen Azure Digital Twins-Instanz arbeiten, die bis auf den aktualisierten Speicherort mit der ersten identisch ist.
+Wenn Sie Ihre Azure Digital Twins-Instanz in eine andere Region verschieben müssen, **erstellen Sie Ihre Ressourcen in der neuen Region neu** , und löschen Sie dann die ursprünglichen Ressourcen. Am Ende dieses Prozesses werden Sie mit einer neuen Azure Digital Twins-Instanz arbeiten, die bis auf den aktualisierten Speicherort mit der ersten identisch ist.
 
 Dieser Artikel bietet einen Leitfaden, wie Sie eine vollständige Verschiebung durchführen, indem Sie alles kopieren, was Sie benötigen, damit die neue Instanz mit dem Original übereinstimmt.
 
@@ -36,7 +36,7 @@ Bevor Sie versuchen, Ihre Azure Digital Twins-Instanz neu zu erstellen, ist es e
 
 Hier sind einige Fragen, die Sie möglicherweise berücksichtigen möchten:
 * Welche **Modelle** werden in meine Instanz hochgeladen? Wie viele sind es?
-* Welche sind in meiner Instanz die **Zwillinge**? Wie viele sind es?
+* Welche sind in meiner Instanz die **Zwillinge** ? Wie viele sind es?
 * Wie ist die allgemeine Form des **Graphen** in meiner Instanz? Wie viele Beziehungen gibt es?
 * Über welche **Endpunkte** verfüge ich in meiner Instanz?
 * Über welche **Routen** verfüge ich in meiner Instanz? Besitzen sie Filter?
@@ -76,11 +76,12 @@ Wenn die Beispiel-App nicht für die Größe Ihres Graphen geeignet ist, können
 
 Um mit dem ADT-Explorer fortzufahren, laden Sie zunächst den Code der Beispielanwendung herunter, und richten Sie die Anwendung so ein, dass sie auf Ihrem Computer ausgeführt wird. 
 
-Navigieren Sie hier zu dem Beispiel: [ADT Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* des Beispielcodes als _**ADT_Explorer.zip**_ auf Ihren Computer herunterzuladen. Entzippen Sie die Datei.
+Navigieren Sie hier zu dem Beispiel: [ADT Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* des Beispielcodes als _**Azure_Digital_Twins__ADT__explorer.zip**_ auf Ihren Computer herunterzuladen. Entzippen Sie die Datei.
 
-Richten Sie als nächstes die Berechtigungen für ADT Explorer für die Ausführung auf Ihrem Computer ein. Befolgen Sie dazu die Schritte im Abschnitt [*Festlegen der ADT Explorer-Berechtigungen*](quickstart-adt-explorer.md#set-adt-explorer-permissions) des Azure Digital Twins-Schnellstarts.
-
-Führen Sie schließlich ADT Explorer aus und konfigurieren Sie ihn so, dass er sich mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbindet. Folgen Sie den Schritten im Abschnitt [*Ausführen und Konfigurieren von ADT Explorer*](quickstart-adt-explorer.md#run-and-configure-adt-explorer) des Schnellstarts.
+Richten Sie dann Berechtigungen für den ADT-Explorer ein, und konfigurieren Sie diese. Befolgen Sie dazu die Anleitungen im Abschnitt [*Einrichten von Azure Digital Twins und ADT-Explorer*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) des Azure Digital Twins-Schnellstarts. In diesem Abschnitt werden die folgenden Schritte behandelt:
+1. Einrichten einer Instanz von Azure Digital Twins (Sie können diesen Teil überspringen, da Sie bereits über eine Instanz verfügen)
+2. Einrichten lokaler Azure-Anmeldeinformationen zum Bereitstellen des Zugriffs auf Ihre Instanz
+3. Führen Sie den ADT-Explorer aus, und konfigurieren Sie ihn für die Verbindung mit Ihrer Instanz. Sie verwenden den **Hostnamen** der ursprünglichen Instanz von Azure Digital Twins, die Sie verschieben.
 
 Jetzt sollte die ADT Explorer-Beispiel-App in einem Browser auf Ihrem Computer ausgeführt werden. Das Beispiel sollte mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbunden sein.
 
@@ -88,7 +89,7 @@ Jetzt sollte die ADT Explorer-Beispiel-App in einem Browser auf Ihrem Computer a
 
 Zur Überprüfung der Verbindung können Sie die Schaltfläche *Run Query* (Abfrage ausführen) drücken, um die Standardabfrage auszuführen, die alle Zwillinge und Beziehungen im Graphen im Feld *GRAPH EXPLORER* (Graph-Tester) anzeigt.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Hervorgehobene Schaltfläche „Run Query“ (Abfrage ausführen) im oberen Bereich des Fensters" lightbox="media/how-to-move-regions/run-query.png":::
 
 Sie können ADT Explorer weiterhin ausführen, da Sie ihn später in diesem Artikel erneut verwenden werden, um diese Elemente erneut auf Ihre neue Instanz in der Zielregion hochzuladen.
 
@@ -100,9 +101,9 @@ Um alle diese Dateien auf einmal herunterzuladen, stellen Sie zunächst sicher, 
  
 Klicken Sie dann auf das Symbol *Export graph* (Graph exportieren) im Feld *GRAPH VIEW* (Graphansicht).
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Feld „Graph View“ (Graphansicht) mit einem hervorgehobenen Symbol. Es zeigt einen Pfeil, der aus einer Wolke heraus nach unten zeigt." lightbox="media/how-to-move-regions/export-graph.png":::
 
-Dadurch wird ein *Download*-Link in *GRAPH VIEW* (Graphansicht) aktiviert. Wählen Sie ihn aus, um eine JSON-basierte Darstellung des Abfrageergebnisses, einschließlich Ihrer Modelle, Zwillinge und Beziehungen, herunterzuladen. Dies sollte eine *JSON*-Datei auf Ihren Computer herunterladen.
+Dadurch wird ein *Download* -Link in *GRAPH VIEW* (Graphansicht) aktiviert. Wählen Sie ihn aus, um eine JSON-basierte Darstellung des Abfrageergebnisses, einschließlich Ihrer Modelle, Zwillinge und Beziehungen, herunterzuladen. Dies sollte eine *JSON* -Datei auf Ihren Computer herunterladen.
 
 >[!NOTE]
 >Wenn die heruntergeladene Datei eine andere Dateierweiterung aufweist, versuchen Sie, die Erweiterung direkt zu bearbeiten und sie in *JSON* zu ändern.
@@ -116,9 +117,6 @@ Als nächstes schließen Sie die „Verschiebung“ Ihrer Instanz ab, indem Sie 
 Erstellen Sie zunächst **eine neue Azure Digital Twins-Instanz in Ihrer Zielregion**. Führen Sie dazu die Schritte in [*Gewusst wie: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md) aus, wobei Sie diese Hinweise im Auge behalten:
 * Sie können denselben Namen für die neue Instanz beibehalten, **wenn** sie sich in einer anderen Ressourcengruppe befindet. Wenn Sie dieselbe Ressourcengruppe verwenden müssen, die Ihre ursprüngliche Instanz enthält, dann benötigt Ihre neue Instanz einen eigenen, eindeutigen Namen.
 * Geben Sie die neue Zielregion ein, wenn Sie zur Eingabe eines Standorts aufgefordert werden.
-* Sie müssen die Registrierung der App **nicht** erneut erstellen. Ihre neue Instanz kann dieselbe App-Registrierung wiederverwenden, über die Sie bereits verfügen.
-    - Wenn Sie den [skriptbasierten](how-to-set-up-instance-scripted.md) Setup-Artikel verwenden, können Sie die Details Ihrer bestehenden App-Registrierung erneut eingeben, anstatt einen neuen Namen einzugeben, wenn Sie dazu aufgefordert werden.
-    - Wenn Sie die Artikel für das manuelle Setup des [Portals](how-to-set-up-instance-portal.md) oder der [CLI](how-to-set-up-instance-cli.md) verwenden, können Sie nach den Schritten *Erstellen der Azure Digital Twins-Instanz* und *Einrichten von Benutzerzugriffsberechtigungen* anhalten. Es ist nicht mehr notwendig, *Einrichten von Zugriffsberechtigungen für Clientanwendungen* durchzuarbeiten.
 
 Sobald dies abgeschlossen ist, benötigen Sie den **Hostnamen** Ihrer neuen Instanz, um die Einrichtung mit Ihren Daten fortzusetzen. Falls Sie dies bei der Einrichtung nicht notiert haben, können Sie [diese Anweisungen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) befolgen, um sie jetzt vom Azure-Portal abzurufen.
 
@@ -134,11 +132,11 @@ Andernfalls kehren Sie zum Fortfahren zum Browserfenster zurück, in dem **ADT E
 
 ##### <a name="connect-to-the-new-instance"></a>Herstellen einer Verbindung mit der neuen Instanz
 
-Derzeit ist ADT Explorer mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbunden. Wechseln Sie die Verbindung so, dass sie auf Ihre neue Instanz zeigt, indem Sie oben im Fenster auf die Schaltfläche *Anmelden* klicken. 
+Derzeit ist ADT Explorer mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbunden. Ändern Sie die Verbindung so, dass sie auf Ihre neue Instanz zeigt, indem Sie oben im Fenster auf die Schaltfläche *Anmelden* klicken. 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="ADT Explorer mit hervorgehobenem Anmeldesymbol im oberen Bereich des Fensters. Bei dem Symbol handelt es sich um eine einfache Silhouette einer Person mit der Silhouette eines Schlüssels im Vordergrund." lightbox="media/how-to-move-regions/sign-in.png":::
 
-Da Sie die App-Registrierung erneut verwenden, müssen Sie nur die *ADT-URL* ersetzen. Ändern Sie diesen Wert in *https://{neuer Instanzhostname}* .
+Ersetzen Sie die *ADT-URL* , um Ihre neue Instanz widerzuspiegeln. Ändern Sie diesen Wert in *https://{neuer Instanzhostname}* .
 
 Drücken Sie auf *Verbinden*. Möglicherweise werden Sie aufgefordert, sich erneut mit Ihren Anmeldeinformationen in Azure anzumelden und/oder dieser Anwendung die Zustimmung für Ihre Instanz zu erteilen.
 
@@ -148,17 +146,17 @@ Als nächstes laden Sie die Lösungskomponenten, die Sie zuvor heruntergeladen h
 
 Um Ihre **Modelle, Zwillinge und Graphen** hochzuladen, klicken Sie auf das Symbol *Import Graph* (Graph importieren) im Feld *GRAPH VIEW* (Graphansicht). Mit dieser Option werden alle drei dieser Komponenten auf einmal hochgeladen (auch Modelle, die derzeit nicht im Graphen verwendet werden).
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Feld „Graph View“ (Graphansicht) mit einem hervorgehobenen Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/how-to-move-regions/import-graph.png":::
 
-Navigieren Sie im Dateiauswahlfeld zu Ihrem heruntergeladenen Graphen. Wählen Sie die *JSON*-Graphdatei aus, und drücken Sie auf *Öffnen*.
+Navigieren Sie im Dateiauswahlfeld zu Ihrem heruntergeladenen Graphen. Wählen Sie die *JSON* -Graphdatei aus, und drücken Sie auf *Öffnen*.
 
 Nach wenigen Sekunden wird von ADT Explorer eine Importansicht mit einer Vorschau des zu ladenden Graphen angezeigt.
 
-Klicken Sie zum Bestätigen des Graphuploads rechts oben in *GRAPH VIEW* (GRAPHANSICHT) auf das Symbol *Speichern*:
+Klicken Sie zum Bestätigen des Graphuploads rechts oben in *GRAPH VIEW* (GRAPHANSICHT) auf das Symbol *Speichern* :
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Hervorgehobenes Speichersymbol im Bereich mit der Graphvorschau" lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +166,7 @@ ADT Explorer wird jetzt Ihre Modelle und Graphen (einschließlich der Zwillinge 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Dialogfeld mit der Information, dass der Graph erfolgreich importiert wurde. Der Text lautet: „Import successful. 2 models imported. 4 twins imported. 2 relationships imported.“ (Import erfolgreich. 2 Modelle imporiert. 4 Zwillinge importiert. 2 Beziehungen importiert.)" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +176,11 @@ ADT Explorer wird jetzt Ihre Modelle und Graphen (einschließlich der Zwillinge 
 
 Um zu überprüfen, ob alles erfolgreich hochgeladen wurde, drücken Sie die Schaltfläche *Run Query* (Abfrage ausführen) im Feld *GRAPH EXPLORER* (Graph-Tester), um die Standardabfrage auszuführen, die alle Zwillinge und Beziehungen im Graphen anzeigt. Dadurch wird auch die Liste der Modelle in der *MODEL VIEW* (Modellansicht) aktualisiert.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Hervorhebung um dieselbe vorherige Schaltfläche „Run Query“ (Abfrage ausführen), am oberen Fensterrand" lightbox="media/how-to-move-regions/run-query.png":::
 
 Der Graph sollte mit all seinen Zwillingen und Beziehungen im Feld *GRAPH EXPLORER* (Graph-Tester) angezeigt werden. Ihre Modelle sollten auch im Feld *MODEL VIEW* (Modellansicht) aufgelistet sein.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Eine Ansicht von ADT Explorer mit zwei Modellen, die im Feld „Model View“ (Modellansicht) hervorgehoben sind, und ein Graph, der im Feld „Graph Explorer“ (Graph-Tester) hervorgehoben ist" lightbox="media/how-to-move-regions/post-upload.png":::
 
 Damit wird bestätigt, dass Ihre Modelle, Zwillinge und Graphen erneut auf die neue Instanz in der Zielregion hochgeladen wurden.
 
@@ -192,7 +190,7 @@ Wenn Sie **Endpunkte und/oder Routen** in Ihrer ursprünglichen Instanz besitzen
 
 Andernfalls fahren Sie fort. Folgen Sie den Schritten in [*Gewusst wie: Verwalten von Endpunkten und Routen*](how-to-manage-routes-portal.md), wobei Sie die neue Instanz verwenden und diese Hinweise im Auge behalten: 
 * Sie müssen **nicht** die Event Grid-, Event Hub- oder Service Bus-Ressource, die Sie für den Endpunkt verwenden, neu erstellen (Abschnitte zur *Voraussetzung* in den Endpunktanweisungen). Sie müssen den Endpunkt nur auf der Azure Digital Twins-Instanz neu erstellen.
-* Sie können Endpunkt- und Routen**namen** wiederverwenden, da sie auf eine andere Instanz begrenzt sind.
+* Sie können Endpunkt- und Routen **namen** wiederverwenden, da sie auf eine andere Instanz begrenzt sind.
 * Denken Sie daran, alle erforderlichen **Filter** zu den von Ihnen erstellten Routen hinzuzufügen.
 
 #### <a name="re-link-connected-resources"></a>Erneutes Verknüpfen verbundener Ressourcen
@@ -210,7 +208,8 @@ Die genauen Ressourcen, die Sie bearbeiten müssen, hängen von Ihrem Szenario a
 * Time Series Insights
 * Azure Maps
 * Device Provisioning Service (DPS)
-* Persönliche oder Unternehmens-Apps außerhalb von Azure, z. B. die **Client-App**, die im [*Tutorial: Codieren einer Client-App*](tutorial-code.md) erstellt wurde, die eine Verbindung mit der Instanz herstellt und Azure Digital Twins-APIs aufruft.
+* Persönliche oder Unternehmens-Apps außerhalb von Azure, z. B. die **Client-App** , die im [*Tutorial: Codieren einer Client-App*](tutorial-code.md) erstellt wurde, die eine Verbindung mit der Instanz herstellt und Azure Digital Twins-APIs aufruft.
+* Azure AD-App-Registrierungen müssen **nicht** neu erstellt werden. Wenn Sie eine [App-Registrierung](how-to-create-app-registration.md) verwenden, um eine Verbindung mit den Azure Digital Twins-APIs herzustellen, können Sie die gleiche App-Registrierung mit Ihrer neuen Instanz wiederverwenden.
 
 Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der Zielregion eine Kopie der ursprünglichen Instanz sein.
 
@@ -218,7 +217,7 @@ Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der 
 
 Zum Überprüfen, ob Ihre neue Instanz ordnungsgemäß eingerichtet wurde, können Sie die folgenden Tools verwenden:
 * Das [**Azure-Portal**](https://portal.azure.com) (geeignet, um zu überprüfen, ob Ihre neue Instanz existiert und sich in der richtigen Zielregion befindet sowie ebenfalls geeignet, um Endpunkte, Routen und Verbindungen mit anderen Azure-Diensten zu überprüfen)
-* Die [Azure Digital Twins-**CLI-Befehle**](how-to-use-cli.md) (geeignet, um zu überprüfen, ob Ihre neue Instanz existiert und sich in der richtigen Zielregion befindet; kann auch zum Überprüfen von Instanzdaten verwendet werden)
+* Die [Azure Digital Twins- **CLI-Befehle**](how-to-use-cli.md) (geeignet, um zu überprüfen, ob Ihre neue Instanz existiert und sich in der richtigen Zielregion befindet; kann auch zum Überprüfen von Instanzdaten verwendet werden)
 * [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (geeignet, um Instanzdaten wie Modelle, Zwillinge und Graphen zu überprüfen)
 * Die [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md) (geeignet, um Instanzdaten wie Modelle, Zwillinge und Graphen zu überprüfen sowie ebenfalls geeignet, um Endpunkte und Routen zu überprüfen)
 
@@ -232,6 +231,6 @@ Sie können dazu das [Azure-Portal](https://portal.azure.com), die [CLI](how-to-
 
 Um die Instanz über das Azure-Portal zu löschen, [öffnen Sie das Portal](https://portal.azure.com) in einem Browserfenster, und navigieren Sie zu Ihrer ursprünglichen Azure Digital Twins-Instanz, indem Sie in der Portalsuchleiste nach ihrem Namen suchen.
 
-Klicken Sie auf die Schaltfläche *Löschen*, und folgen Sie den Aufforderungen, um den Löschvorgang abzuschließen.
+Klicken Sie auf die Schaltfläche *Löschen* , und folgen Sie den Aufforderungen, um den Löschvorgang abzuschließen.
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden.":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Ansicht der Details der Azure Digital Twins-Instanz im Azure-Portal auf der Registerkarte „Übersicht“. Die Schaltfläche „Löschen“ ist hervorgehoben.":::

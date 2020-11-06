@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 466129e8435ef694821b078592a100a111a43f3a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331565"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242278"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Schnellstart: Untersuchen eines Azure Digital Twins-Beispielszenarios mit ADT Explorer
 
@@ -37,56 +37,40 @@ Für diese Schnellstartanleitung ist ein Azure-Abonnement erforderlich. Bei Beda
 
 Außerdem benötigen Sie **Node.js** auf Ihrem Computer. Die aktuelle Version können Sie unter diesem Link herunterladen: [Node.js](https://nodejs.org/).
 
-Schließlich müssen Sie zwei Beispiele herunterladen, um diesen Schnellstart verwenden zu können:
-* Die Beispielanwendung **ADT Explorer** . Dieses Beispiel enthält die Haupt-App, die im Rahmen der Schnellstartanleitung verwendet wird, um ein Azure Digital Twins-Szenario zu laden und zu erkunden. Die App finden Sie hier: [ADT Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* mit dem Beispielcode auf Ihren Computer herunterzuladen. Ein ZIP-Ordner mit dem Namen _**Azure_Digital_Twins__ADT__explorer.zip**_ wird auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
-* Das **Azure Digital Twins-Beispielszenario** . Es enthält einen vorgefertigten Azure Digital Twins-Graphen, der zur Verwendung in ADT Explorer geladen wird. Das Szenario finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples) Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* mit dem Beispielcode auf Ihren Computer herunterzuladen. Ein ZIP-Ordner mit dem Namen _**Azure_Digital_Twins_end_to_end_samples.zip**_ wird auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
+Zum Schluss müssen Sie auch das Beispiel herunterladen, das in der Schnellstartanleitung verwendet wird: die Beispielanwendung **ADT-Explorer**. Dieses Beispiel enthält die App, die im Rahmen der Schnellstartanleitung zum Laden und Erkunden eines Azure Digital Twins-Szenarios verwendet wird, sowie die Beispielszenariodateien. Das Beispiel finden Sie hier: [ADT Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* mit dem Beispielcode auf Ihren Computer herunterzuladen. Ein ZIP-Ordner mit dem Namen _**Azure_Digital_Twins__ADT__explorer.zip**_ wird auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Einrichten von Azure Digital Twins und ADT Explorer
 
-Für die Verwendung von Azure Digital Twins muss zunächst eine **Azure Digital Twins-Instanz** eingerichtet werden. Die erstellte Instanz des Diensts kann dann im weiteren Verlauf der Schnellstartanleitung mit den Beispieldaten aufgefüllt werden.
+Für die Verwendung von Azure Digital Twins muss zunächst eine **Azure Digital Twins-Instanz eingerichtet werden**. Nachdem Sie eine Instanz des Diensts erstellt und **Ihre Anmeldeinformationen eingerichtet** haben, um die Authentifizierung für ADT-Explorer durchzuführen, können Sie **in ADT-Explorer eine Verbindung mit der Instanz herstellen** und diese zu einem späteren Zeitpunkt der Schnellstartanleitung dann mit den Beispieldaten füllen.
 
-Darüber hinaus müssen Berechtigungen für ADT Explorer eingerichtet werden, damit die Anwendung auf Ihrem Computer ausgeführt werden und auf Ihre Azure Digital Twins-Instanz zugreifen kann. Dadurch können Sie mithilfe der Beispiel-App Ihre Instanz und die zugehörigen Daten erkunden.
+Im restlichen Teil dieses Abschnitts werden diese Schritte beschrieben.
 
-### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Einrichten der Azure Digital Twins-Instanz und der App-Registrierung
+### <a name="set-up-azure-digital-twins-instance"></a>Einrichten einer Azure Digital Twins-Instanz
 
-Richten Sie zunächst eine **Azure Digital Twins-Instanz** und die erforderliche Authentifizierung ein, um damit arbeiten zu können. Anweisungen hierzu finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md). Abhängig von Ihrer bevorzugten Umgebung wird der Setupartikel für das [Azure-Portal](how-to-set-up-instance-portal.md), die [CLI](how-to-set-up-instance-cli.md) oder das [automatisierte Cloud Shell-Bereitstellungsskriptbeispiel](how-to-set-up-instance-scripted.md) bereitgestellt. Alle Versionen der Anleitung enthalten auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
-* Nach dem Einrichten der Azure Digital Twins-Instanz benötigen Sie den  **_Hostnamen der Instanz_** ([im Portal suchen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) der Instanz.
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-Zum Authentifizieren der ADT-Explorer-Anwendung müssen Sie außerdem eine **App-Registrierung** einrichten. Führen Sie die Anweisungen unter [ *Erstellen einer App-Registrierung*](how-to-create-app-registration.md) aus, um diese einzurichten. 
-* Wenn Sie über eine App-Registrierung verfügen, benötigen Sie die **_Anwendungs-ID (Client)_** und die **_Verzeichnis-ID (Mandant)_** ([im Portal suchen](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) der Registrierung.
+### <a name="set-up-local-azure-credentials"></a>Einrichten lokaler Azure-Anmeldeinformationen
 
-### <a name="set-adt-explorer-permissions"></a>Festlegen von Berechtigungen für ADT Explorer
+In der ADT-Explorer-Anwendung wird [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (Teil der `Azure.Identity`-Bibliothek) für die Authentifizierung von Benutzern mit der Azure Digital Twins-Instanz verwendet, wenn Sie diese auf Ihrem lokalen Computer ausführen. Weitere Informationen zu den verschiedenen Möglichkeiten, wie sich eine Client-App bei Azure Digital Twins authentifizieren kann, finden Sie unter [*Vorgehensweise: Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md).
 
-Bereiten Sie nun die von Ihnen erstellte Azure Digital Twins-Instanz für die Arbeit mit ADT Explorer (einer lokal gehosteten Webanwendung) vor. Navigieren Sie im Azure-Portal zur Seite [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), und wählen Sie in der Liste den Namen Ihrer **App-Registrierung** aus, die Sie im vorherigen Abschnitt erstellt haben.
+Bei dieser Art der Authentifizierung sucht ADT-Explorer in Ihrer lokalen Umgebung nach Anmeldeinformationen, z. B. eine Anmeldung bei einer lokalen [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) oder in Visual Studio/Visual Studio Code. Dies bedeutet, dass Sie sich **lokal** über einen dieser Mechanismen bei Azure anmelden, um Anmeldeinformationen für die ADT-Explorer-App einzurichten.
 
-Wählen Sie im Menü der Registrierung die Option *Authentifizierung* aus, und klicken Sie anschließend auf *+ Plattform hinzufügen* .
+Falls Sie sich mit einer dieser Vorgehensweisen bereits bei Azure angemeldet haben, können Sie zum [nächsten Abschnitt](#run-and-configure-adt-explorer) springen.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+Andernfalls können Sie die lokale **Azure CLI** mit den folgenden Schritten installieren:
+1. Befolgen Sie den Prozess unter [**diesem Installationslink**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true), um die richtige Installation für Ihr Betriebssystem durchzuführen.
+2. Öffnen Sie auf Ihrem Computer ein Konsolenfenster.
+3. Führen Sie `az login` aus, und befolgen Sie die Anweisungen in den Eingabeaufforderungen für die Authentifizierung, um sich bei Ihrem Azure-Konto anzumelden.
 
-Wählen Sie auf der Seite *Plattformen konfigurieren* die Option *Web* aus.
-Geben Sie folgende Konfigurationsdetails an:
-* **Umleitungs-URIs** : Fügen Sie *http://localhost:3000* als Umleitungs-URI hinzu.
-* **Implizite Gewährung** : Aktivieren Sie das Kontrollkästchen *Zugriffstoken* .
+Anschließend sollte ADT-Explorer Ihre Azure-Anmeldeinformationen automatisch auswählen, wenn Sie ihn im nächsten Abschnitt ausführen.
 
-Klicken Sie auf *Konfigurieren* , um den Vorgang abzuschließen.
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden.":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-Sie verfügen nun über eine Webkonfiguration für ADT Explorer. Dies sollte im Azure-Portal auf der Registerkarte „Authentifizierung“ zu sehen sein. Nachdem Sie die nachfolgenden Abschnitte überprüft haben, klicken Sie auf *Speichern* .
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden.":::
+Sie können das Konsolenfenster für die Authentifizierung schließen oder zur Verwendung im nächsten Schritt geöffnet lassen.
 
 ### <a name="run-and-configure-adt-explorer"></a>Ausführen und Konfigurieren von ADT Explorer
 
 Führen Sie als Nächstes die ADT Explorer-Anwendung aus, und konfigurieren Sie sie für Ihre Azure Digital Twins-Instanz.
 
-Navigieren Sie zum heruntergeladenen und entpackten Ordner _**Azure_Digital_Twins__ADT__explorer**_ . Öffnen Sie eine Eingabeaufforderung am Speicherort *Azure_Digital_Twins__ADT__explorer/client/src* .
+Navigieren Sie zum heruntergeladenen und entpackten Ordner _**Azure_Digital_Twins__ADT__explorer**_. Öffnen Sie ein Konsolenfenster mit dem Ordnerspeicherort *Azure_Digital_Twins__ADT__explorer/client/src*.
 
 Führen Sie `npm install` aus, um alle erforderlichen Abhängigkeiten herunterzuladen.
 
@@ -94,16 +78,13 @@ Führen Sie dann `npm run start` aus, um die App zu starten.
 
 Nach einigen Sekunden wird ein Browserfenster geöffnet, und die App wird im Browser angezeigt.
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt ADT Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 Klicken Sie im oberen Bereich des Fensters (in der Abbildung unten gezeigt) auf die Schaltfläche *Sign in* (Anmelden), um ADT Explorer für die Verwendung der von Ihnen eingerichteten Instanz zu konfigurieren. 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT Explorer mit hervorgehobenem Anmeldesymbol im oberen Bereich des Fensters. Bei dem Symbol handelt es sich um eine einfache Silhouette einer Person mit der Silhouette eines Schlüssels im Vordergrund." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-Geben Sie die relevanten Informationen ein, die Sie zuvor im Abschnitt [Voraussetzungen](#prerequisites) gesammelt haben:
-* Anwendungs-ID (Client)
-* Verzeichnis-ID (Mandant)
-* Azure Digital Twins-Instanz-URL im Format *https://{Instancehostname}*
+Geben Sie die *URL der Azure Digital Twins-Instanz* , die Sie oben im Abschnitt [Voraussetzungen](#prerequisites) ermittelt haben, im Format *https://{Hostname der Instanz}* ein.
 
 >[!NOTE]
 > Sie können jederzeit zu diesen Informationen zurückkehren und sie bearbeiten. Wählen Sie dazu das gleiche Symbol aus, um das Anmeldefeld aufzurufen. Die von Ihnen übergebenen Werte werden gespeichert.
@@ -115,9 +96,7 @@ Sollte von Microsoft ein Popupfenster vom Typ *Angeforderte Berechtigungen* ange
 
 ## <a name="add-the-sample-data"></a>Hinzufügen der Beispieldaten
 
-Importieren Sie als Nächstes das Beispielszenario und den Graphen in ADT Explorer.
-
-Das Beispielszenario befindet sich im heruntergeladenen und entpackten Ordner _**Azure_Digital_Twins_end_to_end_samples**_ . Navigieren Sie jetzt zu diesem Ordner.
+Importieren Sie als Nächstes das Beispielszenario und den Graphen in ADT Explorer. Das Beispielszenario befindet sich auch im zuvor heruntergeladenen Ordner **Azure_Digital_Twins__ADT__explorer**.
 
 ### <a name="models"></a>Modelle
 
@@ -138,21 +117,21 @@ Für diese Schnellstartanleitung wurden die Modelldateien bereits geschrieben un
 
 Klicken Sie im Feld *MODEL VIEW* (MODELLANSICHT) auf das Symbol *Upload a Model* (Modell hochladen).
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Modellansichtsfeld mit hervorgehobenem mittlerem Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. Navigieren Sie im daraufhin angezeigten Dateiauswahlfeld zum Ordner *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp/models* des heruntergeladenen Repositorys.
-2. Wählen Sie *Room.json* und *Floor.json* aus, und klicken Sie auf „OK“. (Sie können auch die anderen Modelle hochladen, diese werden in der Schnellstartanleitung jedoch nicht verwendet.)
+1. Navigieren Sie im daraufhin angezeigten Dateiauswahlfeld zum Ordner *Azure_Digital_Twins__ADT__explorer/client/examples* des heruntergeladenen Repositorys.
+2. Wählen Sie *Room.json* und *Floor.json* aus, und klicken Sie auf „OK“. (Sie können auch weitere Modelle hochladen, diese werden in der Schnellstartanleitung jedoch nicht verwendet.)
 3. Folgen Sie den Anweisungen in dem Popupdialogfeld, in dem Sie zur Anmeldung bei Ihrem Azure-Konto aufgefordert werden.
 
 >[!NOTE]
->Wenn Sie die folgende Fehlermeldung erhalten: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." border="false"::: 
+>Wenn Sie die folgende Fehlermeldung erhalten: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Popupfenster mit dem Text „Error: Error fetching models: ClientAuthError: Error opening popup window. This can happen if you are using IE or if popups are blocked in the browser.“ (Fehler: Fehler beim Abrufen von Modellen: ClientAuthError: Fehler beim Öffnen des Popupfensters. Dieses Problem kann auftreten, wenn Sie Internet Explorer verwenden oder Popups im Browser blockiert sind.) und der Schaltfläche „Close“ (Schließen) im unteren Bereich." border="false"::: 
 > Deaktivieren Sie Ihren Popupblocker, oder verwenden Sie einen anderen Browser.
 
 Die Modelldateien werden von ADT Explorer in Ihre Azure Digital Twins-Instanz hochgeladen. Sie sollten im Feld *MODEL VIEW* (MODELLANSICHT) mit Anzeigename und vollständiger Modell-ID angezeigt werden. Sie können auf das Informationssymbol *View Model* (Modell anzeigen) klicken, um den zugrunde liegenden DTDL-Code anzuzeigen.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Feld „Model View“ (Modellansicht) mit zwei Modelldefinitionen: „Floor (dtmi:example:Floor;1)“ und „Room (dtmi:example:Room;1)“. Für die Modelle ist jeweils das Symbol „View Model“ (Modell anzeigen) hervorgehoben, das den Buchstaben „i“ in einem Kreis zeigt." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -176,9 +155,9 @@ In diesem Abschnitt werden vorab erstellte Zwillinge hochgeladen, die in einem v
 
 Klicken Sie im Feld *GRAPH VIEW* (GRAPHANSICHT) auf das Symbol *Import Graph* (Graph importieren).
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Feld „Graph View“ (Graphansicht) mit einem hervorgehobenen Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-Navigieren Sie im Dateiauswahlfeld zum Ordner *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp* , und wählen Sie die Tabellenkalkulationsdatei _**buildingScenario.xlsx**_ aus. Diese Datei enthält eine Beschreibung des Beispielgraphen. Klicken Sie auf „OK“.
+Navigieren Sie im Dateiauswahlfeld zum Ordner *Azure_Digital_Twins__ADT__explorer/client/examples* , und wählen Sie die Tabellenkalkulationsdatei _**buildingScenario.xlsx**_ aus. Diese Datei enthält eine Beschreibung des Beispielgraphen. Klicken Sie auf „OK“.
 
 Nach wenigen Sekunden wird von ADT Explorer eine Importansicht mit einer Vorschau des zu ladenden Graphen angezeigt.
 
@@ -186,7 +165,7 @@ Klicken Sie zum Bestätigen des Graphuploads rechts oben in *GRAPH VIEW* (GRAPHA
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Hervorgehobenes Speichersymbol im Bereich mit der Graphvorschau" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -196,7 +175,7 @@ Von ADT Explorer werden nun unter Verwendung der hochgeladenen Datei die angefo
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Dialogfeld mit der Information, dass der Graph erfolgreich importiert wurde. Der Text lautet: „Import successful. 4 twins imported. 2 relationships imported.“ (Import erfolgreich. 2 Modelle imporiert. 4 Zwillinge importiert. 2 Beziehungen importiert.)" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -206,7 +185,7 @@ Von ADT Explorer werden nun unter Verwendung der hochgeladenen Datei die angefo
 
 Der Graph ist nun in ADT Explorer hochgeladen. Klicken Sie im oberen Bereich des Fensters von ADT-Explorer im Feld *GRAPH EXPLORER* (GRAPH-EXPLORER) auf die Schaltfläche *Run Query* (Abfrage ausführen), um den Graphen anzuzeigen. 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Hervorgehobene Schaltfläche „Run Query“ (Abfrage ausführen) im oberen Bereich des Fensters" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Dadurch wird die Standardabfrage zum Auswählen und Anzeigen aller digitalen Zwillinge ausgeführt. ADT Explorer ruft alle Zwillinge und Beziehungen aus dem Dienst ab und zeichnet den durch sie definierten Graphen im Feld *GRAPH VIEW* (GRAPHANSICHT).
 
@@ -214,7 +193,7 @@ Dadurch wird die Standardabfrage zum Auswählen und Anzeigen aller digitalen Zwi
 
 Nun können Sie sich den hochgeladenen Graphen des Beispielszenarios ansehen:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Ansicht des Felds „Graph View“ (Graphansicht) mit enthaltenem Zwillingsgraphen. Ein mit „floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „room1“ (Raum1) verbunden, und ein mit „floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „room0“ (Raum0) verbunden.":::
 
 Die Kreise (Graphknoten) stellen digitale Zwillinge dar. Bei den Linien handelt es sich um Beziehungen. Wie Sie sehen, ist *Room0* (Raum0) im Zwilling *Floor0* (Etage0) und *Room1* (Raum1) im Zwilling *Floor1* (Etage1) enthalten.
 
@@ -228,7 +207,7 @@ Hier sehen Sie die Eigenschaften von *Room0* (Raum0):
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Hervorhebung des Felds „Property Explorer“ (Eigenschaften-Explorer) mit Eigenschaften für „Room0“ (Raum0) – einschließlich des Felds „$dtId“ mit dem Wert „Room0“, eines Temperaturfelds mit dem Wert „70“ und eines Luftfeuchtigkeitsfelds mit dem Wert „30“." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -240,7 +219,7 @@ Hier sehen Sie die Eigenschaften von *Room1* (Raum1):
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Hervorhebung des Felds „Property Explorer“ (Eigenschaften-Explorer) mit Eigenschaften für „Room1“ (Raum1) – einschließlich des Felds „$dtId“ mit dem Wert „Room1“, eines Temperaturfelds mit dem Wert „80“ und eines Luftfeuchtigkeitsfelds mit dem Wert „60“." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -262,16 +241,16 @@ Führen Sie zur Beantwortung dieser Frage im Feld *QUERY EXPLORER* (ABFRAGE-EXPL
 SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 ```
 
-Wie Sie weiter oben bei der Betrachtung der Zwillingseigenschaften gesehen haben, hat *Room0* (Raum0) eine Temperatur von **70** und *Room1* (Raum1) eine Temperatur von **80** . Folglich wird in den Ergebnissen nur _**Room1**_ (Raum1) angezeigt.
+Wie Sie weiter oben bei der Betrachtung der Zwillingseigenschaften gesehen haben, hat *Room0* (Raum0) eine Temperatur von **70** und *Room1* (Raum1) eine Temperatur von **80**. Folglich wird in den Ergebnissen nur _**Room1**_ (Raum1) angezeigt.
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Ergebnisse der Eigenschaftenabfrage, in denen nur „Room1“ (Raum1) angezeigt wird" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > In der obigen Abfrage werden auch andere Vergleichsoperatoren ( *<* , *>* , *=* oder *!=* ) unterstützt. Sie können in der Abfrage mit diesen Operatoren sowie mit anderen Werten und Zwillingseigenschaften experimentieren, um andere Fragen zu beantworten.
 
 ## <a name="edit-data-in-the-graph"></a>Bearbeiten von Daten im Graphen
 
-Sie können ADT Explorer verwenden, um die Eigenschaften der im Graphen dargestellten Zwillinge zu bearbeiten. In diesem Abschnitt **_erhöhen Sie die Temperatur_ von „Room0“ (Raum0) auf 76** .
+Sie können ADT Explorer verwenden, um die Eigenschaften der im Graphen dargestellten Zwillinge zu bearbeiten. In diesem Abschnitt **_erhöhen Sie die Temperatur_ von „Room0“ (Raum0) auf 76**.
 
 Wählen Sie dazu *Room0* (Raum0) aus, um die zugehörige Eigenschaftenliste im Feld *PROPERTY EXPLORER* (EIGENSCHAFTEN-EXPLORER) anzuzeigen.
 
@@ -279,7 +258,7 @@ Die Eigenschaften in dieser Liste können bearbeitet werden. Wählen Sie den Tem
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Das Feld „Property Explorer“ (Eigenschaften-Explorer) mit Eigenschaften für „Room0“ (Raum0). Der Temperaturwert ist ein bearbeitbares Feld, das den Wert „76“ enthält. Außerdem ist das Speichersymbol hervorgehoben." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -297,7 +276,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 Nachdem die Temperatur von *Room0* (Raum0) von **70** in **76** geändert wurde, sollten im Ergebnis beide Zwillinge angezeigt werden.
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Ergebnisse der Eigenschaftenabfrage, in denen „Room0“ (Room0) und „Room1“ (Raum1) angezeigt werden" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>Überprüfen und Kontextualisieren der Erkenntnisse
 
@@ -320,7 +299,7 @@ Falls Sie mit den Tutorials für Azure Digital Twins fortfahren möchten, könne
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Löschen Sie abschließend die Dateien des Beispielprojekts, die Sie auf Ihren lokalen Computer heruntergeladen haben ( _**Azure_Digital_Twins__ADT__explorer**_ und _**Azure_Digital_Twins_end_to_end_samples**_ ). Möglicherweise müssen Sie die gezippten und entzippten Versionen löschen.
+Löschen Sie abschließend den Beispielordner des Projekts, den Sie auf Ihren lokalen Computer heruntergeladen haben ( _**Azure_Digital_Twins__ADT__explorer**_ ). Möglicherweise müssen Sie die gezippten und entzippten Versionen löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

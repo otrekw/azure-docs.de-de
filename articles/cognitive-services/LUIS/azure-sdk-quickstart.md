@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache, NLP, LUIS, Azure LUIS, Verstehen natürlicher Sprache, KI Chatbot, Chatbot Maker, natürliche Sprache verstehen
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e389152292239076f3077e2edfb8d5be52ab815b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327274"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241377"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Schnellstart: LUIS-SDK-Clientbibliotheken (Language Understanding) zum Erstellen und Abfragen Ihrer LUIS-App
 
@@ -21,7 +21,8 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mit den LUIS-SDK-Clientbib
 
 Language Understanding (LUIS) ermöglicht das Anwenden von NLP (Natural Language Processing, Verarbeitung natürlicher Sprache) auf Benutzertext mit natürlicher Sprache, um die allgemeine Bedeutung vorherzusagen sowie relevante, detaillierte Informationen zu extrahieren.
 
-* Mit der Clientbibliothek des **Authoring SDK** können Sie Ihre LUIS-App erstellen, bearbeiten, trainieren und veröffentlichen. * Mit der Clientbibliothek des **Prediction Runtime SDK** können Sie die veröffentlichte App abfragen.
+* Mit der Clientbibliothek des **Authoring SDK** können Sie Ihre LUIS-App erstellen, bearbeiten, trainieren und veröffentlichen.
+* Mit der Clientbibliothek des **Prediction Runtime SDK** können Sie die veröffentlichte App abfragen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [LUIS development with C# SDK](./includes/sdk-csharp.md)]
@@ -41,7 +42,7 @@ Sie können die App über das [LUIS-Portal](https://www.luis.ai) und die Azure-R
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-* Authentifizieren bei der Clientbibliothek: Authentifizierungsfehler weisen in der Regel darauf hin, dass der falsche Schlüssel und Endpunkt verwendet wurden. In dieser Schnellstartanleitung werden zur Vereinfachung der Erstellungsschlüssel und der Endpunkt für die Vorhersagelaufzeit verwendet. Dies ist jedoch nur möglich, wenn Sie das monatliche Kontingent noch nicht aufgebraucht haben. Wenn Sie den Erstellungsschlüssel und den Endpunkt nicht verwenden können, müssen Sie beim Zugriff auf die Clientbibliothek des Prediction Runtime SDK den Schlüssel und den Endpunkt der Vorhersagelaufzeit verwenden.
+* Authentifizieren bei der Clientbibliothek: Authentifizierungsfehler weisen in der Regel darauf hin, dass der falsche Schlüssel und Endpunkt verwendet wurden. In dieser Schnellstartanleitung werden der Einfachheit halber der Erstellungsschlüssel und der Endpunkt für die Vorhersagelaufzeit verwendet. Dies ist aber nur möglich, wenn Sie das monatliche Kontingent noch nicht aufgebraucht haben. Wenn Sie den Erstellungsschlüssel und den Endpunkt nicht verwenden können, müssen Sie beim Zugriff auf die Clientbibliothek des Prediction Runtime SDK den Schlüssel und den Endpunkt der Vorhersagelaufzeit verwenden.
 * Erstellen von Entitäten: Wenn beim Erstellen der in diesem Tutorial verwendeten geschachtelten Machine Learning-Entität ein Fehler auftritt, stellen Sie sicher, dass Sie den Code kopiert und nicht zum Erstellen einer anderen Entität geändert haben.
 * Erstellen von Beispieläußerungen: Wenn beim Erstellen der in diesem Tutorial verwendeten bezeichneten Beispieläußerung ein Fehler auftritt, stellen Sie sicher, dass Sie den Code kopiert und nicht zum Erstellen eines anderen bezeichneten Beispiels geändert haben.
 * Trainieren: Wenn ein Trainingsfehler angezeigt wird, weist dies normalerweise auf eine leere App (keine Absichten mit Beispieläußerungen) oder eine App mit falsch formatierten Absichten oder Entitäten hin.

@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74775539"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078763"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Was sind die Bing-Suche-APIs?
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Die Bing-Suche-APIs ermöglichen Ihnen das Erstellen von verbundenen Web-Apps und Diensten, die Webseiten, Bilder, Nachrichten, Orte u.v.m. ohne Werbung finden. Durch das Senden von Suchanforderungen mit den Bing-Suche-REST-APIs oder -SDKs können Sie relevante Informationen und Inhalte für die Websuchen abrufen. In diesem Artikel erfahren Sie etwas über die verschiedenen Bing-Suche-APIs und wie Sie kognitive Suchvorgänge im Internet in Ihre Apps und Dienste integrieren können. Die Preise und Ratengrenzwerte der einzelnen APIs können variieren.
 
@@ -31,7 +36,7 @@ Ziehen Sie die Bing-Websuche-API in Anwendungen in Betracht, die möglicherweise
 
 Die folgenden Bing-Suche-APIs geben bestimmte Inhalte aus dem Internet zurück, z.B. Bilder, Nachrichten, lokale Unternehmen und Videos.
 
-| Bing-API | BESCHREIBUNG |
+| Bing-API | Beschreibung |
 | -- | -- |
 | [Entitätssuche](../Bing-Entities-Search/overview.md) | Die Bing-Entitätssuche-API gibt Suchergebnisse mit Entitäten zurück. Dies können Personen, Orte oder Dinge sein. Abhängig von der Abfrage gibt die API mindestens eine Entität zurück, die die Kriterien der Abfrage erfüllt. Die Suchabfrage kann namhafte Personen, lokale Unternehmen, Sehenswürdigkeiten, Reiseziele und mehr umfassen. |
 | [Bildersuche](../Bing-Image-Search/overview.md) | Mit der Bing-Bildersuche-API können Sie nach qualitativ hochwertigen statischen und animierten Bildern suchen, ähnlich wie unter [Bing.com/images](https://www.Bing.com/images). Sie können die Suchvorgänge verfeinern, um Bilder nach Attributen wie Größe, Farbe, Lizenz und Aktualität auszuschließen. Außerdem können Sie nach derzeit beliebten Bildern suchen, Bilder hochladen, um Erkenntnisse zu diesen zu gewinnen, und Miniaturansichten als Vorschau anzeigen. |
@@ -48,7 +53,7 @@ Das Erstellen einer Instanz der benutzerdefinierten Suche mit der API für die [
 
 Mit den folgenden Bing-Suche-APIs können Sie Ihre Suchergebnisse noch weiter verbessern, indem Sie sie mit anderen Bing-Suche-APIs kombinieren.
 
-| API | BESCHREIBUNG |
+| API | Beschreibung |
 | -- | -- |
 | [Bing-Vorschlagssuche](../Bing-Autosuggest/get-suggested-search-terms.md) | Verbessern Sie Suchergebnisse Ihrer Anwendung mit der Bing-Vorschlagssuche-API, indem Sie empfohlene Suchbegriffe in Echtzeit zurückgegeben.  |
 | [Bing-Statistik](bing-web-stats.md) | Die Bing-Statistik stellt Analysen für die Bing-Suche-APIs bereit, die Ihre Anwendung verwendet. Einige der verfügbaren Analysen enthalten das Aufrufvolumen, die häufigsten Abfragezeichenfolgen und die geografische Verteilung. |

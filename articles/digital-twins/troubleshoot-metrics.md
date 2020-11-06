@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: b4bc291c21ca1ccabec3cfd9544deaa5d45fcf51
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787192"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091700"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -64,7 +64,7 @@ Metriken im Zusammenhang mit API-Anforderungen:
 Metriken im Zusammenhang mit Abrechnung:
 
 >[!NOTE]
-> Während der Vorschauphase **fallen für die Abrechnung keine Kosten an**. Diese Metriken werden zwar noch in der auswählbaren Liste angezeigt, sie gelten jedoch während der Vorschauphase nicht und bleiben bei Null, bis die Vorschau des Diensts beendet wurde.
+>Diese Metriken werden zwar weiterhin in der auswählbaren Liste angezeigt, bleiben aber auf Null, bis die neuen Preise für den Dienst verfügbar werden. Weitere Informationen finden Sie unter [*Azure Digital Twins-Preise*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 | Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |

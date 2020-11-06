@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8074b2411a053c8b55457f9ace716481f6b107a5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79218916"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102223"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Suchen nach Videos mit der Bing-Videosuche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Die Bing-Videosuche-API vereinfacht das Integrieren der Funktionen der kognitiven Bing-News-Suche in Anwendungen. Die API dient zwar in erster Linie zum Suchen und Zurückgeben von Videos aus dem Web, sie bietet jedoch auch verschiedene Funktionen für den intelligenten und gezielten Abruf von Videos im Web.
 
@@ -144,9 +149,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Erweitern der Abfrage
 
-Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `queryExpansions`. Wenn die Abfrage beispielsweise *Dachrinne reinigen* war, können die erweiterten Abfragen Folgendes sein: Dachrinnenreinigung **Werkzeuge**, Dachrinne reinigen **vom Boden aus**, Dachrinnenreinigung **Maschine** und **einfache** Dachrinnenreinigung.
+Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `queryExpansions`. Wenn die Abfrage beispielsweise *Dachrinne reinigen* war, können die erweiterten Abfragen Folgendes sein: Dachrinnenreinigung **Werkzeuge** , Dachrinne reinigen **vom Boden aus** , Dachrinnenreinigung **Maschine** und **einfache** Dachrinnenreinigung.
 
-Das folgende Beispiel zeigt die erweiterten Abfragen für *Dachrinne reinigen*:
+Das folgende Beispiel zeigt die erweiterten Abfragen für *Dachrinne reinigen* :
 
 ```json
 {
@@ -175,9 +180,9 @@ Das Feld `queryExpansions` enthält eine Liste mit Objekten vom Typ [Query](http
 
 ## <a name="pivoting-the-query"></a>Pivotieren der Abfrage
 
-Wenn Bing die ursprüngliche Suchabfrage segmentieren kann, enthält das Objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `pivotSuggestions`. Lautet die ursprüngliche Abfrage also beispielsweise *Dachrinne reinigen*, kann Bing die Abfrage in *Reinigen* und *Dachrinne* segmentieren.
+Wenn Bing die ursprüngliche Suchabfrage segmentieren kann, enthält das Objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `pivotSuggestions`. Lautet die ursprüngliche Abfrage also beispielsweise *Dachrinne reinigen* , kann Bing die Abfrage in *Reinigen* und *Dachrinne* segmentieren.
 
-Das folgende Beispiel veranschaulicht die Pivotvorschläge für *Dachrinne reinigen*:
+Das folgende Beispiel veranschaulicht die Pivotvorschläge für *Dachrinne reinigen* :
 
 ```json
 {

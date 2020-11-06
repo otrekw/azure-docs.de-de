@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503316"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279893"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -72,7 +72,7 @@ Weitere Informationen zur Definition integrierter Rollen finden Sie in der Azure
 Wenn Sie sich auf Rollen in automatisierten Szenarien beziehen, empfiehlt es sich, auf diese mit ihren **IDs** und nicht mit ihren Namen zu verweisen. Die Namen können sich zwischen den einzelnen Versionen ändern, die IDs jedoch nicht, was sie zu einer beständigeren Referenz in der Automation macht.
 
 > [!TIP]
-> Wenn Sie Rollen mit einem Cmdlet zuweisen, z. B. `New-AzRoleAssignment` ([Verweis](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)), können Sie den Parameter `-RoleDefinitionId` anstelle von `-RoleDefinitionName` verwenden, um eine ID anstelle eines Namens für die Rolle zu übergeben.
+> Wenn Sie Rollen mit einem Cmdlet zuweisen, z. B. `New-AzRoleAssignment` ([Verweis](/powershell/module/az.resources/new-azroleassignment)), können Sie den Parameter `-RoleDefinitionId` anstelle von `-RoleDefinitionName` verwenden, um eine ID anstelle eines Namens für die Rolle zu übergeben.
 
 ### <a name="permission-scopes"></a>Berechtigungsbereiche
 
@@ -88,6 +88,32 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 ### <a name="troubleshooting-permissions"></a>Problembehandlung bei Berechtigungen
 
 Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht zulässig ist, wird möglicherweise der folgende Fehler von der Dienstanforderung zurückgegeben: `403 (Forbidden)`. Weitere Informationen und Hilfe bei der Problembehandlung finden Sie unter [*Problembehandlung: Fehler bei Azure Digital Twins-Anforderung mit dem Status ''403 (Forbidden)'' (403 (Unzulässig))*](troubleshoot-error-403.md).
+
+## <a name="service-tags"></a>Diensttags
+
+Ein **Diensttag** steht für eine Gruppe von IP-Adresspräfixen aus einem bestimmten Azure-Dienst. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert. Weitere Informationen zu Diensttags finden Sie unter  [*Tags für virtuelle Netzwerke*](../virtual-network/service-tags-overview.md). 
+
+Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen für  [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure Firewall](../firewall/service-tags.md) zu definieren, indem Sie Diensttags anstelle spezifischer IP-Adressen verwenden, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (in diesem Fall  **AzureDigitalTwins** ) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. 
+
+Im Folgenden finden Sie die Details zum **AzureDigitalTwins** -Diensttag.
+
+| Tag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>Hinweis: Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um den Zugriff auf Endpunkte einzuschränken, die für [Ereignisrouten](concepts-route-events.md) konfiguriert sind. | Eingehend | Nein | Ja |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Verwenden von Diensttags für den Zugriff auf Ereignisroutenendpunkte 
+
+Die folgenden Schritte sind für den Zugriff auf [Ereignisroutenendpunkte](concepts-route-events.md) mithilfe von Diensttags mit Azure Digital Twins erforderlich.
+
+1. Laden Sie zunächst diese JSON-Dateireferenz mit Azure-IP-Bereichen und -Diensttags herunter: [*Azure-IP-Bereiche und -Diensttags*](https://www.microsoft.com/download/details.aspx?id=56519). 
+
+2. Suchen Sie in der JSON-Datei nach IP-Adressbereichen für „AzureDigitalTwins“.  
+
+3. In der Dokumentation zur externen Ressource, die mit dem Endpunkt verbunden ist (z. B. [Event Grid](../event-grid/overview.md), [Event Hub](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) oder [Azure Storage](../storage/blobs/storage-blobs-overview.md) für [Ereignisse für unzustellbare Nachrichten](concepts-route-events.md#dead-letter-events)), erfahren Sie, wie Sie IP-Filter für diese Ressource festlegen.
+
+4. Legen Sie IP-Filter für die externen Ressourcen mithilfe der IP-Adressbereiche aus *Schritt 2* fest.  
+
+5. Aktualisieren Sie die IP-Adressbereiche regelmäßig nach Bedarf. Die Bereiche können sich im Laufe der Zeit ändern. Daher empfiehlt es sich, diese regelmäßig zu überprüfen und bei Bedarf zu aktualisieren. Die Häufigkeit dieser Updates kann variieren, aber es ist ratsam, sie ein Mal pro Woche zu überprüfen.
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 

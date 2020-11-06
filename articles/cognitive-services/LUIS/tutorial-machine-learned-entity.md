@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334724"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130746"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe von Machine Learning-Entitäten in Language Understanding (LUIS)
 
@@ -72,7 +72,7 @@ Um Details einer Pizzabestellung zu extrahieren, erstellen Sie eine Machine Lear
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    Beginnen Sie mit der Auswahl kurz vor dem linken Text von `pickup` (#1), dann gehen Sie kurz über den rechten Text hinaus, `anchovies` (#2 – damit endet der Bezeichnungsprozess). Ein Popupmenü wird angezeigt. Geben Sie im Popupfeld den Namen der Entität als `Order` (#3) ein. Wählen Sie dann `Order Create new entity` aus der Liste aus (#4).
+    Klicken Sie, und ziehen Sie den Mauszeiger über den Text der ersten Beispielabsicht. Geben Sie im angezeigten Menü `Order` als Namen der Entität ein. Wählen Sie anschließend aus der Liste `Order Create new entity` aus.
 
     ![Bezeichnen von Anfang und Ende des Textes für die vollständige Bestellung](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -236,7 +236,7 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 
     ![Screenshot: LUIS-Schaltfläche zum Veröffentlichen am Endpunkt (im Menü rechts oben)](./media/howto-publish/publish-button.png)
 
-1. Wählen Sie den Slot **Produktion**, dann **Einstellungen ändern**, dann **Standpunktanalyse** und schließlich **Fertig** aus.
+1. Wählen Sie den Slot **Produktion** , dann **Einstellungen ändern** , dann **Standpunktanalyse** und schließlich **Fertig** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: LUIS-Veröffentlichung am Endpunkt](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
@@ -251,7 +251,7 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 
     `2 small cheese pizzas for pickup`
 
-    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung).
+    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage ( **query** ) der Äußerung).
 
     ```json
     {
