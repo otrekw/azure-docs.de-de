@@ -419,8 +419,6 @@
                   href: 'http://aka.ms/speech/va-samples'
                 - name: Häufig gestellte Fragen zu Sprachassistenten
                   href: faq-voice-assistants.md
-                - name: Sprach-SDK
-                  href: speech-sdk.md
                 - name: Verschlüsselung ruhender Daten mithilfe benutzerdefinierter Befehle
                   href: custom-commands-encryption-of-data-at-rest.md
         - name: Direct Line Speech
@@ -583,7 +581,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md
