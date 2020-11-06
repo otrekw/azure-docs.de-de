@@ -6,24 +6,30 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057755"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075788"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage als Netzwerkfreigabe von einem Container in App Service
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage (Vorschau) als Netzwerkfreigabe von einem Container in App Service
 
 ::: zone pivot="container-windows"
 
 In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfreigabe an einen Windows-Container in App Service anfügen. Nur [Azure Files-Dateifreigaben](../storage/files/storage-how-to-use-files-cli.md) und [Premium-Dateifreigaben](../storage/files/storage-how-to-create-premium-fileshare.md) werden unterstützt. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+
+> [!NOTE]
+>Azure Storage in App Service befindet sich **in der Vorschau** und wird für **Produktionsszenarien** noch **nicht unterstützt**.
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
 Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container in App Service anfügen. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, persistente Speicherung, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+
+> [!NOTE]
+>Azure Storage in App Service befindet sich für App Service unter Linux und Web-App für Container **in der Vorschau**. Diese Funktion wird für **Produktionsszenarien** **nicht unterstützt**.
 
 ::: zone-end
 
@@ -53,9 +59,8 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 
 ::: zone pivot="container-windows"
 
-- Azure Storage in App Service befindet sich **in der Vorschau** und wird für **Produktionsszenarien** noch **nicht unterstützt**.
 - Azure Storage in App Service wird zurzeit für Szenarien mit Verwendung von eigenem Code (nicht containerisierte Windows-Apps) **nicht unterstützt**.
-- Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
+- Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall** -Konfiguration.
 - Mit Azure Storage mit App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
 - Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
@@ -63,7 +68,6 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 
 ::: zone pivot="container-linux"
 
-- Azure Storage in App Service befindet sich für App Service unter Linux und Web-App für Container **in der Vorschau**. Diese Funktion wird für **Produktionsszenarien** **nicht unterstützt**.
 - Azure Storage in App Service unterstützt das Bereitstellen von **Azure Files-Containern** (Lese-/Schreibzugriff) und **Azure-Blobcontainern** (schreibgeschützt).
 - Mit Azure Storage in App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
 - Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).

@@ -29,6 +29,9 @@
     - name: Minimieren der Datenbeschädigung
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: Versioning policy (Versionsverwaltungsrichtlinie)
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: Einzelner Server
   expanded: true
   items:

@@ -2,17 +2,17 @@
 title: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 description: In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation mit verknüpften Vorlagen erstellen.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728538"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321595"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie eine [Vorlagenspezifikation](template-specs.md) mit einer [verknüpften Vorlage](linked-templates.md#linked-template) erstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation erstellen, um mithilfe der Eigenschaft `relativePath` der [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) ein Paket mit einer Hauptvorlage und ihren verknüpften Vorlagen zu erstellen.
+Erfahren Sie, wie Sie eine [Vorlagenspezifikation](template-specs.md) mit einer Hauptvorlage und einer [verknüpften Vorlage](linked-templates.md#linked-template) erstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation erstellen, um mithilfe der Eigenschaft `relativePath` der [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) ein Paket mit einer Hauptvorlage und ihren verknüpften Vorlagen zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

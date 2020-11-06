@@ -196,7 +196,7 @@
           href: sql-api-python-samples.md
         - name: PowerShell
           href: powershell-samples.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: cli-samples.md
         - name: Azure Resource Manager
           href: templates-samples-sql.md
@@ -662,6 +662,8 @@
               href: how-to-time-to-live.md
             - name: Definieren eindeutiger Schlüssel
               href: how-to-define-unique-keys.md
+            - name: Ausführen von transaktionalen Batchvorgängen
+              href: transactional-batch.md
         - name: Leistung
           items:
             - name: Abfrage
@@ -753,8 +755,6 @@
               href: create-sql-api-java-changefeed.md
         - name: Serverseitige Programmierung
           items:
-            - name: Ausführen von transaktionalen Batchvorgängen
-              href: transactional-batch.md
             - name: 'Schreiben von gespeicherten Prozeduren, Triggern und UDFs'
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API

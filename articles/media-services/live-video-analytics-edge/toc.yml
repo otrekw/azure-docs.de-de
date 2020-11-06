@@ -95,6 +95,8 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Bereitstellen für Azure Stack Edge
       href: deploy-azure-stack-edge-how-to.md
+    - name: Konfigurieren eines Signalgates
+      href: configure-signal-gate-how-to.md
     - name: Problembehandlung
       href: troubleshoot-how-to.md
 - name: Verweis

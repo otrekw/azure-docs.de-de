@@ -109,6 +109,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: 'Der virtuelle Computer reagiert nicht, wenn eine Sicherheitsrichtlinie angewendet wird.'
           href: unresponsive-vm-apply-security-policy.md
+        - name: 'Der virtuelle Computer reagiert nicht, während auf den lokalen Sitzungs-Manager gewartet wird.'
+          href: vm-unresponsive-wait-local-session-manager.md
         - name: 'Windows-Start-Manager-Fehler: ungültiger Imagehash (Status)'
           href: windows-boot-error-invalid-image-hash.md
         - name: 'Windows-kritischer Fehler: Fehlerhafte Systemkonfigurationsinformationen'
@@ -117,6 +119,8 @@
           href: troubleshoot-windows-stop-error.md
         - name: 'Windows-kritischer Fehler: Systemprozess beendet'
           href: windows-stop-error-system-process-terminated.md
+        - name: 'Windows-kritischer Fehler: Systemthreadausnahme nicht behandelt'
+          href: windows-stop-error-system-thread-exception-not-handled.md
 - name: Es kann keine Verbindung mit meinem virtuellen Computer hergestellt werden
   items:
     - name: RDP

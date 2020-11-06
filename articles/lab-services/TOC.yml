@@ -4,6 +4,10 @@
   items:
     - name: Informationen zu Lab Services
       href: lab-services-overview.md
+- name: Schnellstarts
+  items:
+    - name: Erste Schritte
+      href: get-started-manage-labs.md
 - name: Tutorials
   items:
     - name: Einrichten eines Lab-Kontos

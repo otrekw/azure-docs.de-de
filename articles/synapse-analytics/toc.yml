@@ -14,8 +14,9 @@
     - name: Versionshinweise
       href: release-notes.md
 - name: Schnellstarts
+  expanded: true
   items:
-    - name: Einführung
+    - name: Erste Schritte
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1. Erstellen eines Synapse-Arbeitsbereichs
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: Modelle zum Ressourcenverbrauch
           href: sql/resource-consumption-models.md
-        - name: Best Practices für serverlose SQL-Pools
+        - name: Verarbeitete Datenmenge
+          href: sql/data-processed.md
+        - name: Bewährte Methoden für SQL On-Demand
           href: sql/best-practices-sql-on-demand.md
         - name: Best Practices für dedizierte SQL-Pools
           href: sql/best-practices-sql-pool.md

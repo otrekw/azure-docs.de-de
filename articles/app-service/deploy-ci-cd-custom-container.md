@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a51fbcb7b7504b9a16e8d0025856c2b007070a9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961855"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928007"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Continuous Deployment mit Web-App für Container
 
@@ -29,13 +29,13 @@ In diesem Tutorial konfigurieren Sie Continuous Deployment für ein benutzerdefi
 4. Wählen Sie auf der Seite **Containereinstellungen** die Option **Einzelner Container** aus.
 5. Wählen Sie **Azure Container Registry** aus.
 6. Wählen Sie **Continuous Deployment > Ein**.
-7. Wählen Sie **Speichern**, um Continuous Deployment zu aktivieren.
+7. Wählen Sie **Speichern** , um Continuous Deployment zu aktivieren.
 
 ## <a name="use-the-acr-webhook"></a>Verwenden des ACR-Webhooks
 
 Nachdem Continuous Deployment aktiviert wurde, können Sie den neu erstellten Webhook auf Ihrer Webhooks-Seite in Azure Container Registry anzeigen.
 
-![Screenshot des ACR-Webhooks](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
+![Screenshot, der zeigt, wo Sie den neu erstellten Webhook auf Ihrer Webhooks-Seite in Azure Container Registry anzeigen können.](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
 
 Klicken Sie in Ihrer Container Registry-Instanz auf „Webhooks“, um die aktuellen Webhooks anzuzeigen.
 
@@ -47,7 +47,7 @@ Klicken Sie in Ihrer Container Registry-Instanz auf „Webhooks“, um die aktue
 4. Wählen Sie auf der Seite **Containereinstellungen** die Option **Einzelner Container** aus.
 5. Wählen Sie **Docker Hub**.
 6. Wählen Sie **Continuous Deployment > Ein**.
-7. Wählen Sie **Speichern**, um Continuous Deployment zu aktivieren.
+7. Wählen Sie **Speichern** , um Continuous Deployment zu aktivieren.
 
 ![Screenshot der App-Einstellung](./media/deploy-ci-cd-custom-container/ci-cd-docker-02.png)
 
