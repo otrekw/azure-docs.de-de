@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/06/2020
+ms.date: 10/28/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: a5ea95e0ea958c495e28eaa1fee72e34362157a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859202"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92909060"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -25,10 +25,10 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Gesamtanzahl von Entitäten (z. B. Pipelines, Datasets, Trigger, verknüpfte Dienste, private Endpunkte und Integration Runtimes) in einer Data Factory | 5\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gesamtanzahl CPU-Kerne für Azure-SSIS Integration Runtimes unter einem Abonnement | 256 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige Pipelineausführungen pro Data Factory (von allen Pipelines der Factory gemeinsam genutzt) | 10.000  | 10.000 |
-| Gleichzeitige externe Aktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Externe Aktivitäten werden in der Integration Runtime verwaltet, aber in verknüpften Diensten ausgeführt. Hierzu gehören unter anderem Databricks, gespeicherte Prozeduren, HDInsights und Web.</small> | 3,000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gleichzeitige Pipelineaktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Pipelineaktivitäten werden in der Integration Runtime ausgeführt. Hierzu zählen unter anderem „Lookup“, „GetMetadata“ und „Delete“.</small>| 1\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gleichzeitige Erstellungsvorgänge pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Einschließlich Verbindung testen, Ordnerliste und Tabellenliste durchsuchen und Datenvorschau anzeigen. | 200 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gleichzeitige Nutzung von Datenintegrationseinheiten<sup>1</sup> pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Regionsgruppe 1<sup>2</sup>: 6.000<br>Regionsgruppe 2<sup>2</sup>: 3,000<br>Regionsgruppe 3<sup>2</sup>: 1.500 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gleichzeitige externe Aktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)<br><small>Externe Aktivitäten werden in der Integration Runtime verwaltet, aber in verknüpften Diensten ausgeführt. Hierzu gehören unter anderem Databricks, gespeicherte Prozeduren, HDInsights und Web. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 3,000 | 3,000 |
+| Gleichzeitige Pipelineaktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location) <br><small>Pipelineaktivitäten werden in der Integration Runtime ausgeführt. Hierzu zählen unter anderem „Lookup“, „GetMetadata“ und „Delete“. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 1\.000 | 1\.000                                                        |
+| Gleichzeitige Erstellungsvorgänge pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)<br><small>Einschließlich Verbindung testen, Ordnerliste und Tabellenliste durchsuchen und Datenvorschau anzeigen. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 200 | 200                                                          |
+| Gleichzeitige Nutzung von Datenintegrationseinheiten<sup>1</sup> pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Regionsgruppe 1<sup>2</sup>: 6.000<br>Regionsgruppe 2<sup>2</sup>: 3,000<br>Regionsgruppe 3<sup>2</sup>: 1.500 | Regionsgruppe 1<sup>2</sup>: 6.000<br/>Regionsgruppe 2<sup>2</sup>: 3,000<br/>Regionsgruppe 3<sup>2</sup>: 1.500 |
 | Maximale Aktivitäten pro Pipeline, einschließlich interner Aktivitäten für Container | 40 | 40 |
 | Maximale Anzahl verknüpfter Integration Runtimes, die für eine einzelne selbstgehostete Integration Runtime erstellt werden kann | 100 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximale Parameter pro Pipeline | 50 | 50 |
@@ -40,7 +40,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Maximales Zeitlimit für Ausführungen von Pipelineaktivitäten | 7 Tage | 7 Tage |
 | Bytes pro Objekt für Pipelineobjekte<sup>3</sup> | 200 KB | 200 KB |
 | Bytes pro Objekt für Datasetobjekte und verknüpfte Dienstobjekte<sup>3</sup> | 100 KB | 2\.000 KB |
-| Datenintegrationseinheiten<sup>1</sup> pro Kopieraktivitätsausführung | 256 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Datenintegrationseinheiten<sup>1</sup> pro Kopieraktivitätsausführung | 256 | 256 |
 | Schreiben von API-Aufrufen | 1\.200/h | 1\.200/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. |
 | Lesen von API-Aufrufen | 12.500/h | 12.500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. |
 | Überwachungsabfragen pro Minute | 1\.000 | 1\.000 |
@@ -53,7 +53,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 
 <sup>2</sup> [Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) ist [global verfügbar](https://azure.microsoft.com/global-infrastructure/services/), um Datencompliance, Effizienz und geringere Kosten für ausgehenden Netzwerkdatenverkehr zu gewährleisten. 
 
-| Regionsgruppe | Regions | 
+| Regionsgruppe | Regions |
 | -------- | ------ |
 | Regionsgruppe 1 | „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ „USA, Westen“, „USA, Westen 2“ |
 | Regionsgruppe 2 | „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Indien, Mitte“, „Japan, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Asien, Südosten“, „USA, Westen-Mitte“ |
@@ -71,7 +71,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Bytes pro Objekt für Pipelineobjekte<sup>1</sup> |200 KB |200 KB |
 | Bytes pro Objekt für Datasets und Objekte für verknüpfte Dienste<sup>1</sup> |100 KB |2\.000 KB |
 | Bedarfsgesteuerte Azure HDInsight-Clusterkerne innerhalb eines Abonnements<sup>2</sup> |60 |[Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Einheiten für Clouddatenverschiebungen pro Kopieraktivitätsausführung<sup>3</sup> |32 |[Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Einheiten für Clouddatenverschiebungen pro Kopieraktivitätsausführung<sup>3</sup> |32 |32 |
 | Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten |1\.000 |MaxInt (32 Bit) |
 
 <sup>1</sup> Objekte für Pipelines, Datasets und verknüpfte Dienste stellen eine logische Gruppierung Ihrer Workload dar. Die Grenzwerte für diese Objekte beziehen sich nicht auf die Datenmenge, die Sie mit Azure Data Factory verschieben und verarbeiten können. Data Factory kann so skaliert werden, dass Petabytes an Daten verarbeitet werden können.

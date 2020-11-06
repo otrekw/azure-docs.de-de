@@ -399,6 +399,9 @@
         - name: Verwenden von Remote-Computezielen
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Verwenden von automatisiertem ML mit Databricks
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Automatisches Trainieren eines Vorhersagemodells
           displayName: time series
           href: how-to-auto-train-forecast.md

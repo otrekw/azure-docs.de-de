@@ -120,6 +120,8 @@
           href: customize-branding.md
         - name: Konfigurieren von „Angemeldet bleiben?“
           href: keep-me-signed-in.md
+        - name: Ermitteln der Mandanten-ID
+          href: active-directory-how-to-find-tenant.md
         - name: Zuordnen eines Azure-Abonnements
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Hinzufügen Ihrer Datenschutzinformationen
