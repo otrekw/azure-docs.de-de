@@ -28,6 +28,10 @@
       href: deployment-architecture.md
     - name: Problembehandlung
       href: troubleshoot.md
+- name: Verweis
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/Az.DedicatedHsm
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen

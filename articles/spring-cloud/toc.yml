@@ -31,14 +31,10 @@
       href: spring-cloud-tutorial-setup-autoscale.md
     - name: Warnungen und Aktionsgruppen
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: Verwenden von IntelliJ zum Bereitstellen von Apps
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Dashboard für Leistungsschutzschalter
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Benutzerdefinierter DNS-Name
       href: spring-cloud-tutorial-custom-domain.md
-    - name: "Bereitstellen einer Azure\_Spring\_Cloud-Instanz mit Terraform"
-      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: 'Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure Spring Cloud-App herzustellen'
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Bereitstellen von Azure Spring Cloud im virtuellen Netzwerk
@@ -77,6 +73,8 @@
           href: spring-cloud-howto-staging-environment.md
         - name: Starten einer Java-App über Quellcode
           href: spring-cloud-howto-launch-from-source.md
+        - name: Verwenden von IntelliJ zum Bereitstellen von Apps
+          href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Konfigurieren
       items:
         - name: 'Starten, Beenden und Löschen einer App'
@@ -115,6 +113,8 @@
           href: spring-cloud-howto-github-actions.md
         - name: Authentifizierung mit Key Vault in GitHub-Aktionen
           href: spring-cloud-github-actions-key-vault.md
+        - name: "Bereitstellen einer Azure\_Spring\_Cloud-Instanz mit Terraform"
+          href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Problembehandlung
       items:
         - name: Selbstdiagnose und Problembehandlung

@@ -203,6 +203,8 @@
       href: concepts-roles-permissions.md
     - name: Benennungsregeln
       href: naming-rules.md
+    - name: Datenredundanz
+      href: concepts-data-redundancy.md
 - name: Anleitungen
   items:
     - name: Autor

@@ -284,7 +284,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -618,8 +618,6 @@
                 - name: Web-Apps
                   displayname: java
                   href: app/java-get-started.md
-                - name: Docker-Apps
-                  href: app/docker.md
                 - name: Protokollablaufverfolgungen
                   href: app/java-trace-logs.md
                 - name: UNIX-Metriken
@@ -1346,10 +1344,6 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights-Connector
           href: platform/app-insights-connector.md
-        - name: Application Insights für AKS ohne Code
-          href: app/kubernetes.md
-        - name: Überwachen von Docker-Anwendungen
-          href: app/docker.md
         - name: Einstellung des OMS-Portals
           href: platform/oms-portal-transition.md
         - name: Einstellung von Datenträgermetriken
