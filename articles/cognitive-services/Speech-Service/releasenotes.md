@@ -11,14 +11,70 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 89a87cd881689f58bbc4d2b4bf2a63a992e8dae9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461633"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289633"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
+
+## <a name="speech-sdk-1140-2020-october-release"></a>Speech SDK 1.14.0: Release vom Oktober 2020
+
+**Hinweis** : Für das Speech SDK unter Windows muss das freigegebene Microsoft Visual C++ Redistributable für Visual Studio 2015, 2017 und 2019 installiert sein. Sie können sie [hier](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)herunterladen.
+
+**Neue Features**
+- **Linux:** Unterstützung für Debian 10 und Ubuntu 20.04 LTS wurde hinzugefügt.
+- **Python/Objective-C** : Die Unterstützung für die `KeywordRecognizer`-API wurde hinzugefügt. Die Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics).
+- **C++/Java/C#** : Die Unterstützung zum Festlegen beliebiger `HttpHeader`-Schlüssel/-Werte über `ServicePropertyChannel::HttpHeader` wurde hinzugefügt.
+- **JavaScript:** Die Unterstützung für die `ConversationTranscriber`-API wurde hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript). 
+- **C++/C#** : Die neue `AudioDataStream FromWavFileInput`-Methode (zum Lesen von WAV-Dateien) wurde [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) und [hier (C#)](
+https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) hinzugefügt.
+-  **C++/C#/Java/Python/Objective-C/Swift** : Es wurde eine `stopSpeakingAsync()`-Methode zum Beenden der Sprachsynthese hinzugefügt. Die Referenzdokumentation finden Sie [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [hier (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), [hier (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [hier (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python) und [hier (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
+- **C#, C++, Java** : Es wurde eine `FromDialogServiceConnector()`-Funktion zur Klasse `Connection` hinzugefügt, mit der Ereignisse für `DialogServiceConnector` zum Herstellen oder Aufheben von Verbindungen überwacht werden können. Die Referenzdokumentation finden Sie [hier (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection) und [hier (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
+<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+
+**Fehlerbehebungen**
+- **All** : Die 1.13-Regression wurde in `SetServiceProperty` behoben, bei der Werte mit bestimmten Zeichen ignoriert wurden.
+- **C#** : Windows-Konsolenbeispiele in Visual Studio 2019 wurden behoben, in denen bei der Suche von nativen DLLs Fehler aufgetreten sind.
+- **C#** : Der Absturz bei der Arbeitsspeicherverwaltung wurde behoben, wenn ein Datenstrom als `KeywordRecognizer`-Eingabe verwendet wurde.
+- **ObjectiveC/Swift** : Der Absturz bei der Arbeitsspeicherverwaltung wurde behoben, wenn ein Datenstrom als Eingabe des Erkennungsmoduls verwendet wurde.
+- **Windows** : Es wurde ein Problem mit der Koexistenz von BT HFP/A2DP auf der universellen Windows-Plattform behoben.
+- **JavaScript:** Die Zuordnung von Sitzungs-IDs wurde behoben, um die Protokollierung zu verbessern und bei internen Debug-/Dienstkorrelationen zu helfen.
+- **JavaScript:** Es wurde eine Fehlerbehebung für `DialogServiceConnector` hinzugefügt, die `ListenOnce`-Aufrufe nach dem Ausführen des ersten Aufrufs deaktiviert.
+- **JavaScript:** Es wurde ein Problem behoben, bei dem die Ergebnisausgabe immer nur „simple“ (einfach) ergibt.
+- **JavaScript:** Ein Problem bei der fortlaufenden Erkennung wurde in Safari unter macOS behoben.
+- **JavaScript:** Es wurde eine Risikominderung für die CPU-Last für das Szenario mit hohem Anforderungsdurchsatz durchgeführt.
+- **JavaScript:** Der Zugriff auf Details des Ergebnisses der Sprachprofilregistrierung wurde zugelassen.
+- **JavaScript:** Ein Fehler bei der fortlaufenden Erkennung in `IntentRecognizer` wurde behoben.
+- **C++/C#/Java/Python/Swift/ObjectiveC** : Eine falsche URL für „australiaeast“ und „brazilsouth“ in `IntentRecognizer` wurde behoben.
+- **C++/C#** : Es wurde `VoiceProfileType` als Argument beim Erstellen eines `VoiceProfile`-Objekts hinzugefügt.
+- **C++/C#/Java/Python/Swift/ObjectiveC** : Es wurde ein Problem für das potenzielle `SPX_INVALID_ARG` beim Versuch behoben, `AudioDataStream` von einer angegebenen Position zu lesen.
+- **IOS** : Es wurde der Absturz bei der Spracherkennung unter Unity behoben.
+
+**Beispiele**
+- **ObjectiveC** : Ein Beispiel für die Schlüsselworterkennung wurde [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples) hinzugefügt.
+- **C#/JavaScript** : Ein Schnellstart für die Unterhaltungstranskription wurde [hier (C#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) und [hier (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription) hinzugefügt.
+<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
+- **Xamarin** : Der Schnellstart wurde [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin) auf die neueste Visual Studio-Vorlage aktualisiert.
+
+**Bekanntes Problem**
+- Das DigiCert Global Root G2-Zertifikat wird in HoloLens 2 und Android 4.4 (KitKat) nicht standardmäßig unterstützt und muss zum System hinzugefügt werden, damit das Speech SDK funktioniert. Das Zertifikat wird in naher Zukunft den Betriebssystemimages von HoloLens 2 hinzugefügt werden. Kunden von Android 4.4 müssen das aktualisierte Zertifikat dem System hinzufügen.
+
+**Abgekürzte Tests aufgrund von COVID-19:** Da wir in den letzten Wochen remote gearbeitet haben, konnten wir die manuellen Tests zur Überprüfung nicht im gewohnten Umfang durchführen. Wir haben keine Änderungen vorgenommen, die möglicherweise zu Kompatibilitätsproblemen geführt hätten, und alle unsere automatisierten Tests wurden bestanden. Falls wir doch entgegen aller Wahrscheinlichkeit etwas übersehen haben sollten, informieren Sie uns bitte auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Bleiben Sie gesund!
+
+## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Speech-Befehlszeilenschnittstelle (auch als SPX bezeichnet): Release vom Oktober 2020
+SPX ist die Befehlszeilenschnittstelle, um den Azure Speech-Dienst ohne das Schreiben von Code zu verwenden. Laden Sie die neueste Version [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) herunter. <br>
+
+**Neue Features**
+- `spx csr dataset upload --kind audio|language|acoustic` – Erstellen Sie Datasets aus lokalen Daten, nicht nur aus URLs.
+- `spx csr evaluation create|status|list|update|delete` – Vergleichen Sie neue Modelle mit grundlegenden Tatsachen/anderen Modellen.
+- `spx * list` – Unterstützt die nicht ausgelagerte Umgebung (erfordert kein --top X --skip X).
+- `spx * --http header A=B` – Unterstützen Sie benutzerdefinierte Header (zur benutzerdefinierten Authentifizierung zu Office hinzugefügt). 
+- `spx help` – Verbesserter Text und farbcodierter Graviszeichentext (blau).
+
 
 ## <a name="text-to-speech-2020-august-release"></a>Release der Sprachsynthese vom August 2020
 

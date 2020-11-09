@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851842"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927650"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Konzepte und Definitionen für benutzerdefinierte Befehle
 
@@ -80,42 +80,45 @@ Eine Regel in benutzerdefinierten Befehlen wird durch einen Satz von *Bedingunge
 ### <a name="types"></a>Typen
 Von benutzerdefinierten Befehlen werden folgende Regelkategorien unterstützt:
 
-* **Vervollständigungsregeln**: Diese Regeln müssen bei der Befehlserfüllung ausgeführt werden. Alle in diesem Abschnitt konfigurierten Regeln, für die die Bedingungen erfüllt sind, werden ausgeführt. 
-* **Interaktionsregeln**: Diese Regeln können verwendet werden, um zusätzliche benutzerdefinierte Validierungen, Bestätigungen und eine einstufige Korrektur zu konfigurieren oder um eine beliebige andere benutzerdefinierte Dialoglogik zu erhalten. Interaktionsregeln werden in jeder Runde bei der Verarbeitung ausgewertet und können zum Auslösen von Vervollständigungsregeln verwendet werden.
+* **Vervollständigungsregeln** : Diese Regeln müssen bei der Befehlserfüllung ausgeführt werden. Alle in diesem Abschnitt konfigurierten Regeln, für die die Bedingungen erfüllt sind, werden ausgeführt. 
+* **Interaktionsregeln** : Diese Regeln können verwendet werden, um zusätzliche benutzerdefinierte Validierungen, Bestätigungen und eine einstufige Korrektur zu konfigurieren oder um eine beliebige andere benutzerdefinierte Dialoglogik zu erhalten. Interaktionsregeln werden in jeder Runde bei der Verarbeitung ausgewertet und können zum Auslösen von Vervollständigungsregeln verwendet werden.
 
 Die verschiedenen als Teil einer Regel konfigurierten Aktionen werden in der Reihenfolge ausgeführt, in der sie im Erstellungsportal angezeigt werden.
 
 ### <a name="conditions"></a>Bedingungen
 Bedingungen sind die Anforderungen, die erfüllt sein müssen, damit eine Regel ausgeführt wird. Folgende Arten von Regelbedingungen sind möglich:
 
-* **Parameterwert ist gleich**: Der Wert des konfigurierten Parameters entspricht einem bestimmten Wert.
-* **Kein Parameterwert**: Die konfigurierten Parameter dürfen keinen Wert haben.
-* **Erforderliche Parameter**: Der konfigurierte Parameter hat einen Wert.
-* **Alle erforderlichen Parameter**: Alle als erforderlich markierten Parameter haben einen Wert.
-* **Aktualisierte Parameter**: Mindestens ein Parameterwert wurden infolge der Verarbeitung der aktuellen Eingabe (Äußerung oder Aktivität) aktualisiert.
-* **Bestätigung war erfolgreich**: Die Eingabeäußerung oder -aktivität war eine erfolgreiche Bestätigung („Ja“).
-* **Bestätigung wurde verweigert**: Die Eingabeäußerung oder -aktivität war keine erfolgreiche Bestätigung („Nein“).
-* **Vorheriger Befehl muss aktualisiert werden**: Diese Bedingung wird in Fällen verwendet, in denen Sie eine negierte Bestätigung zusammen mit einer Aktualisierung abfangen möchten. Dies wird im Hintergrund für den Fall konfiguriert, dass das Dialogmodul eine negative Bestätigung erkennt, bei der die Absicht dieselbe ist wie bei der vorherigen Runde, und der Benutzer mit einer Aktualisierung reagiert hat.
+* **Parameterwert ist gleich** : Der Wert des konfigurierten Parameters entspricht einem bestimmten Wert.
+* **Kein Parameterwert** : Die konfigurierten Parameter dürfen keinen Wert haben.
+* **Erforderliche Parameter** : Der konfigurierte Parameter hat einen Wert.
+* **Alle erforderlichen Parameter** : Alle als erforderlich markierten Parameter haben einen Wert.
+* **Aktualisierte Parameter** : Mindestens ein Parameterwert wurden infolge der Verarbeitung der aktuellen Eingabe (Äußerung oder Aktivität) aktualisiert.
+* **Bestätigung war erfolgreich** : Die Eingabeäußerung oder -aktivität war eine erfolgreiche Bestätigung („Ja“).
+* **Bestätigung wurde verweigert** : Die Eingabeäußerung oder -aktivität war keine erfolgreiche Bestätigung („Nein“).
+* **Vorheriger Befehl muss aktualisiert werden** : Diese Bedingung wird in Fällen verwendet, in denen Sie eine negierte Bestätigung zusammen mit einer Aktualisierung abfangen möchten. Dies wird im Hintergrund für den Fall konfiguriert, dass das Dialogmodul eine negative Bestätigung erkennt, bei der die Absicht dieselbe ist wie bei der vorherigen Runde, und der Benutzer mit einer Aktualisierung reagiert hat.
 
 ### <a name="actions"></a>Aktionen
-* **Sprachantwort senden**: Dient zum Senden einer Sprachantwort an den Client.
-* **Parameterwert aktualisieren**: Dient zum Aktualisieren des Werts eines Befehlsparameters auf einen bestimmten Wert.
-* **Parameterwert löschen**: Dient zum Löschen des Befehlsparameterwerts.
-* **Webendpunkt aufrufen**: Dient zum Aufrufen eines Webendpunkts.
-* **Aktivität an Client senden**: Dient zum Senden einer benutzerdefinierten Aktivität an den Client.
+* **Sprachantwort senden** : Dient zum Senden einer Sprachantwort an den Client.
+* **Parameterwert aktualisieren** : Dient zum Aktualisieren des Werts eines Befehlsparameters auf einen bestimmten Wert.
+* **Parameterwert löschen** : Dient zum Löschen des Befehlsparameterwerts.
+* **Webendpunkt aufrufen** : Dient zum Aufrufen eines Webendpunkts.
+* **Aktivität an Client senden** : Dient zum Senden einer benutzerdefinierten Aktivität an den Client.
 
 ### <a name="expectations"></a>Erwartungen
 Erwartungen werden verwendet, um Hinweise für die Verarbeitung der nächsten Benutzereingabe zu konfigurieren. Die folgenden Typen werden unterstützt:
 
-* **Bestätigung vom Benutzer erwarten**: Durch diese Erwartung wird angegeben, dass die Anwendung für die nächste Benutzereingabe eine Bestätigung („Ja“/“Nein“) erwartet.
-* **Parametereingabe(n) vom Benutzer erwarten**: Durch diese Erwartung wird mindestens ein Befehlsparameter angegeben, den die Anwendung in der Benutzereingabe erwartet.
+* **Bestätigung vom Benutzer erwarten** : Durch diese Erwartung wird angegeben, dass die Anwendung für die nächste Benutzereingabe eine Bestätigung („Ja“/“Nein“) erwartet.
+* **Parametereingabe(n) vom Benutzer erwarten** : Durch diese Erwartung wird mindestens ein Befehlsparameter angegeben, den die Anwendung in der Benutzereingabe erwartet.
 
 ### <a name="post-execution-state"></a>Status nach der Ausführung
 Der Status nach der Ausführung ist der Dialogzustand nach der Verarbeitung der aktuellen Eingabe (Äußerung oder Aktivität). Folgende Typen sind verfügbar:
 
-* **Befehl abgeschlossen**: Der Befehl wird abgeschlossen, und es werden keine weiteren Regeln des Befehls verarbeitet.
-* **Vervollständigungsregeln ausführen**: Alle gültigen Vervollständigungsregeln werden ausgeführt.
-* **Auf Benutzereingabe warten**: Es wird auf die nächste Benutzereingabe gewartet.
+* **Aktuellen Zustand beibehalten** : Nur den aktuellen Zustand beibehalten.
+* **Befehl ausführen** : Der Befehl wird abgeschlossen, und es werden keine weiteren Regeln des Befehls verarbeitet.
+* **Vervollständigungsregeln ausführen** : Alle gültigen Vervollständigungsregeln werden ausgeführt.
+* **Auf Benutzereingabe warten** : Es wird auf die nächste Benutzereingabe gewartet.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

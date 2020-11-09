@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516918"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242346"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -96,14 +96,14 @@ Für Anwendungen, die auf Azure Active Directory-Benutzer abzielen, empfehlen wi
 
 **Im Azure-Portal**
 1.    Registrieren Sie Ihre Anwendung in Azure AD als native Anwendung. Im Rahmen der Registrierung müssen Sie festlegen, ob Ihre Anwendung mehrinstanzenfähig sein soll. Außerdem müssen Sie die Umleitungs-URLs angeben, die für Ihre Anwendung zulässig sind.
-1.  Wechseln Sie zur Registerkarte **API-Berechtigungen** .
+1.  Wechseln Sie zur Registerkarte **API-Berechtigungen**.
 2.  Wählen Sie **Berechtigung hinzufügen** aus.
     1.  Wählen Sie auf der Registerkarte **Von meiner Organisation verwendete APIs** die Option **Mixed Reality-Ressourcenanbieter** aus.
     2.  Wählen Sie **Delegierte Berechtigungen** aus.
     3.  Wählen Sie **mixedreality.signin** unter **mixedreality** aus.
     4.  Wählen Sie **Berechtigungen hinzufügen** aus.
 3.  Wählen Sie **Administratoreinwilligung erteilen** aus.
-    
+
 2. Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
    1.    Wechseln Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
    2.    Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
@@ -115,10 +115,10 @@ Für Anwendungen, die auf Azure Active Directory-Benutzer abzielen, empfehlen wi
 **In Ihrem Code**
 1.    Stellen Sie sicher, dass Sie die Anwendungs-ID und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
 2.    Legen Sie die Informationen zum Mandanten fest:
-        1.    Wenn Ihre Anwendung **Nur meine Organisation** unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** . Beispiel: „contoso.microsoft.com“.
+        1.    Wenn Ihre Anwendung **Nur meine Organisation** unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen**. Beispiel: „contoso.microsoft.com“.
         2.    Wenn Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch **Organizations** (Organisationen).
         3.    Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, ersetzen Sie diesen Wert durch **Common** (Allgemein).
-3.    Legen Sie in Ihrer Tokenanforderung den **Bereich** auf **https://sts.mixedreality.azure.com//.default** fest. Dieser Bereich informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Sicherheitstokendienst (Security Token Service, STS) Mixed Reality anfordert.
+3.    Legen Sie für Ihre Tokenanforderung für **scope** den Wert **"`https://sts.<account-domain>//.default`"** fest, wobei `<account-domain>` durch die **Kontodomäne** für Ihr Azure Spatial Anchors-Konto ersetzt wird. Ein Beispiel für ein Azure Spatial Anchors-Konto in der Kontodomäne „USA, Osten 2“ ist **"`https://sts.mixedreality.azure.com//.default`"** . Dieser Bereich informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Sicherheitstokendienst (Security Token Service, STS) Mixed Reality anfordert.
 
 Nachdem Sie diese Schritte ausgeführt haben, sollte Ihre Anwendung in der Lage sein, ein Azure AD-Token von MSAL abzurufen. Sie können dieses Azure AD-Token als `authenticationToken` für Ihr Cloudsitzungs-Konfigurationsobjekt festlegen:
 
@@ -176,28 +176,28 @@ Das Azure AD-Zugriffstoken wird mithilfe von [MSAL](../../active-directory/deve
 1.    Registrieren Ihrer Anwendung bei Azure AD:
         1.    Wählen Sie im Azure-Portal **Azure Active Directory** und anschließend **App-Registrierungen** aus.
         2.    Wählen Sie **Neue Registrierung** aus.
-        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie auf **Erstellen** .
-4.    Wählen Sie in der Anwendung **Einstellungen** und dann die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und wählen Sie **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Geheimniswert speichern. Sie müssen diesen in den Code Ihres Webdiensts aufnehmen.
-2.    Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
+        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie auf **Erstellen**.
+2.    Wählen Sie in der Anwendung **Einstellungen** und dann die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und wählen Sie **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Geheimniswert speichern. Sie müssen diesen in den Code Ihres Webdiensts aufnehmen.
+3.    Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
         1.    Wechseln Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
         2.    Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
         3.    Wählen Sie **Rollenzuweisung hinzufügen** aus.
-        1.    [Wählen Sie eine Rolle aus](#azure-role-based-access-control).
-        2.    Geben Sie im Feld **Auswählen** den oder die Namen der Benutzer der Anwendungen ein, denen Sie Zugriff gewähren möchten. Wenn Sie möchten, dass die Benutzer Ihrer App unterschiedliche Rollen im Spatial Anchors-Konto einnehmen, registrieren Sie mehrere Anwendungen in Azure AD, und weisen Sie jeder eine separate Rolle zu. Implementieren Sie dann Ihre Autorisierungslogik, damit die richtige Rolle für Ihre Benutzer verwendet wird.
-        
-              > [!NOTE] 
-              > Wählen Sie im Bereich **Rollenzuweisung hinzufügen** in **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
-    
-      3.    Wählen Sie **Speichern** aus.
-    
-**In Ihrem Code** 
+        4.    [Wählen Sie eine Rolle aus](#azure-role-based-access-control).
+        5.    Geben Sie im Feld **Auswählen** den oder die Namen der Benutzer der Anwendungen ein, denen Sie Zugriff gewähren möchten. Wenn Sie möchten, dass die Benutzer Ihrer App unterschiedliche Rollen im Spatial Anchors-Konto einnehmen, registrieren Sie mehrere Anwendungen in Azure AD, und weisen Sie jeder eine separate Rolle zu. Implementieren Sie dann Ihre Autorisierungslogik, damit die richtige Rolle für Ihre Benutzer verwendet wird.
 
->[!NOTE] 
+              > [!NOTE]
+              > Wählen Sie im Bereich **Rollenzuweisung hinzufügen** in **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
+
+        6.    Wählen Sie **Speichern** aus.
+
+**In Ihrem Code**
+
+>[!NOTE]
 > Sie können das auf GitHub verfügbare Dienstbeispiel verwenden.
 
 1.    Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID** , **Geheimnis** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
 2.    Legen Sie die Mandanten-ID im **authority** -Parameter in MSAL auf Ihre eigene Azure AD-Mandanten-ID fest.
-3.    Legen Sie in Ihrer Tokenanforderung den **Bereich** auf **https://sts.mixedreality.azure.com//.default** fest.
+3.    Legen Sie für Ihre Tokenanforderung für **scope** den Wert **"`https://sts.<account-domain>//.default`"** fest, wobei `<account-domain>` durch die **Kontodomäne** für Ihr Azure Spatial Anchors-Konto ersetzt wird. Ein Beispiel für ein Azure Spatial Anchors-Konto in der Kontodomäne „USA, Osten 2“ ist **"`https://sts.mixedreality.azure.com//.default`"** .
 
 Nachdem Sie diese Schritte durchgeführt haben, kann Ihr Back-End-Dienst ein Azure AD-Token abrufen. Der Dienst kann dieses Token gegen ein MR-Token austauschen, das er dann an den Client zurückgibt. Der Abruf eines MR-Tokens mithilfe eines Azure AD-Tokens erfolgt über einen REST-Aufruf. Hier sehen Sie einen Beispielaufruf:
 
@@ -266,9 +266,9 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 Damit Sie die Zugriffsebene für Anwendungen, Dienste oder Azure AD-Benutzer Ihres Diensts besser steuern können, können Sie diese bereits vorhandenen Rollen nach Bedarf für Ihre Azure Spatial Anchors-Konten zuweisen:
 
-- **Spatial Anchors-Kontobesitzer** . Anwendungen oder Benutzer mit dieser Rolle können Raumanker erstellen, abfragen und löschen. Wenn Sie sich mit Kontoschlüsseln bei Ihrem Konto authentifizieren, wird dem authentifizierten Prinzipal die Rolle „Spatial Anchors-Kontobesitzer“ zugewiesen.
-- **Spatial Anchors-Kontomitwirkender** . Anwendungen oder Benutzer mit dieser Rolle können Raumanker erstellen, abfragen, aber nicht löschen.
-- **Spatial Anchors-Kontoleser** . Anwendungen oder Benutzer mit dieser Rolle können Raumanker nur abfragen. Sie können keine neuen erstellen, vorhandene löschen oder deren Metadaten aktualisieren. Diese Rolle wird in der Regel für Anwendungen verwendet, bei denen einige Benutzer die Umgebung zusammenstellen, während andere nur Anker zurückrufen können, die zuvor in dieser Umgebung platziert waren.
+- **Spatial Anchors-Kontobesitzer**. Anwendungen oder Benutzer mit dieser Rolle können Raumanker erstellen, abfragen und löschen. Wenn Sie sich mit Kontoschlüsseln bei Ihrem Konto authentifizieren, wird dem authentifizierten Prinzipal die Rolle „Spatial Anchors-Kontobesitzer“ zugewiesen.
+- **Spatial Anchors-Kontomitwirkender**. Anwendungen oder Benutzer mit dieser Rolle können Raumanker erstellen, abfragen, aber nicht löschen.
+- **Spatial Anchors-Kontoleser**. Anwendungen oder Benutzer mit dieser Rolle können Raumanker nur abfragen. Sie können keine neuen erstellen, vorhandene löschen oder deren Metadaten aktualisieren. Diese Rolle wird in der Regel für Anwendungen verwendet, bei denen einige Benutzer die Umgebung zusammenstellen, während andere nur Anker zurückrufen können, die zuvor in dieser Umgebung platziert waren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
