@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371523"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025934"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Tutorial: Laden des Datasets „New York Taxis“
 
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
 
 2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **Ausgewählte** die Option **Azure Synapse Analytics** aus.
 
-    ![Erstellen eines Data Warehouse](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![Der Screenshot zeigt „SQL Data Warehouse“, das im Azure-Portal aus „Datenbanken“ ausgewählt wurde.](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. Füllen Sie das Formular mit den folgenden Informationen aus:
 
@@ -63,7 +63,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
    | **Ressourcengruppe** | myResourceGroup       | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Benennungsregeln und Einschränkungen). |
    | **Quelle auswählen**  | Leere Datenbank        | Gibt an, dass eine leere Datenbank erstellt werden soll. Hinweis: Ein Data Warehouse ist ein Datenbanktyp. |
 
-    ![Erstellen eines Data Warehouse](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![Der Screenshot zeigt den Bereich „SQL Data Warehouse“, in dem Sie diese Werte eingeben können.](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
 4. Wählen Sie **Server** aus, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus:
 
@@ -100,7 +100,7 @@ Eine Firewallregel auf Serverebene verhindert, dass externe Anwendungen und Tool
 > [!NOTE]
 > Azure Synapse Analytics kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 
-1. Wählen Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite **SQL-Datenbanken** und dann auf der Seite **SQL-Datenbanken** die Option **mySampleDatabase** aus. Die Übersichtsseite für Ihre Datenbank wird geöffnet. Auf dieser Seite wird der vollqualifizierte Servername (z. B. **mynewserver-20180430.database.windows.net**) angezeigt, und es werden Optionen zur weiteren Konfiguration bereitgestellt.
+1. Wählen Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite **SQL-Datenbanken** und dann auf der Seite **SQL-Datenbanken** die Option **mySampleDatabase** aus. Die Übersichtsseite für Ihre Datenbank wird geöffnet. Auf dieser Seite wird der vollqualifizierte Servername (z. B. **mynewserver-20180430.database.windows.net** ) angezeigt, und es werden Optionen zur weiteren Konfiguration bereitgestellt.
 
 2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. Wählen Sie den Servernamen aus, um die Servereinstellungen zu öffnen.
 
@@ -155,7 +155,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 3. Wählen Sie **Verbinden**. Das Fenster „Objekt-Explorer“ wird in SSMS geöffnet.
 
-4. Erweitern Sie im Objekt-Explorer den Eintrag **Datenbanken**. Erweitern Sie dann **Systemdatenbanken** und **Master**, um die Objekte in der Masterdatenbank anzuzeigen.  Erweitern Sie **mySampleDatabase**, um die Objekte in der neuen Datenbank anzuzeigen.
+4. Erweitern Sie im Objekt-Explorer den Eintrag **Datenbanken**. Erweitern Sie dann **Systemdatenbanken** und **Master** , um die Objekte in der Masterdatenbank anzuzeigen.  Erweitern Sie **mySampleDatabase** , um die Objekte in der neuen Datenbank anzuzeigen.
 
     ![Datenbankobjekte](./media/load-data-from-azure-blob-storage-using-polybase/connected.png)
 
@@ -178,9 +178,9 @@ Da Sie momentan als Serveradministrator verbunden sind, können Sie Anmeldungen 
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. Wählen Sie **Execute**(Ausführen).
+3. Wählen Sie **Execute** (Ausführen).
 
-4. Klicken Sie mit der rechten Maustaste auf **mySampleDataWarehouse**, und wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.  
+4. Klicken Sie mit der rechten Maustaste auf **mySampleDataWarehouse** , und wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.  
 
     ![Neue Abfrage für Data Warehouse-Beispiel](./media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
 
@@ -192,7 +192,7 @@ Da Sie momentan als Serveradministrator verbunden sind, können Sie Anmeldungen 
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. Wählen Sie **Execute**(Ausführen).
+6. Wählen Sie **Execute** (Ausführen).
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Herstellen einer Verbindung mit dem Server als ladender Benutzer
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 46adbfee24ab463acdc4687c0465bbf50527a329
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f681c6c453c9c0955092c4f1574a54ea2c9973f5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790643"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126650"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -121,7 +121,7 @@ Das folgende Diagramm veranschaulicht, wie Sie die Anwendungsebenen auf mehreren
 ![Anwendungsmuster: Aufskalieren auf Präsentationsebene](./media/application-patterns-development-strategies/IC728010.png)
 
 ### <a name="best-practices-for-2-tier-3-tier-or-n-tier-patterns-that-have-multiple-vms-in-one-tier"></a>Bewährte Methoden für 2-Ebenen-, 3-Ebenen- oder n-Ebenen-Muster, die über mehrere virtuelle Computer auf einer Ebene verfügen
-Es wird empfohlen, dass Sie die virtuellen Computer, die der gleichen Ebene angehören, im selben Clouddienst und in der gleichen Verfügbarkeitsgruppe platzieren. Platzieren Sie z.B. eine Gruppe von Webservern in **Clouddienst1** und **Verfügbarkeitsgruppe1** sowie eine Gruppe von Datenbankservern in **Clouddienst2** und **Verfügbarkeitsgruppe2** . Durch eine Verfügbarkeitsgruppe in Azure können Sie Hochverfügbarkeitsknoten in separaten Fehler- und Upgradedomänen platzieren.
+Es wird empfohlen, dass Sie die virtuellen Computer, die der gleichen Ebene angehören, im selben Clouddienst und in der gleichen Verfügbarkeitsgruppe platzieren. Platzieren Sie z.B. eine Gruppe von Webservern in **Clouddienst1** und **Verfügbarkeitsgruppe1** sowie eine Gruppe von Datenbankservern in **Clouddienst2** und **Verfügbarkeitsgruppe2**. Durch eine Verfügbarkeitsgruppe in Azure können Sie Hochverfügbarkeitsknoten in separaten Fehler- und Upgradedomänen platzieren.
 
 Um mehrere virtuelle Computerinstanzen einer Ebene zu nutzen, müssen Sie Azure Load Balancer zwischen den Anwendungsebenen konfigurieren. Um den Load Balancer für jede Ebene zu konfigurieren, erstellen Sie einen separaten Endpunkt mit Lastenausgleich auf jedem virtuellen Computer. Für eine bestimmte Ebene müssen Sie zuerst virtuelle Computer im selben Clouddienst erstellen. Dies stellt sicher, dass sie alle über die gleiche öffentliche virtuelle IP-Adresse verfügen. Als Nächstes erstellen Sie einen Endpunkt auf einem virtuellen Computer in dieser Ebene. Anschließend weisen Sie diesen Endpunkt für den Lastenausgleich den anderen virtuellen Computer in dieser Ebene zu. Durch das Erstellen einer Gruppe mit Lastenausgleich verteilen Sie den Datenverkehr auf mehrere virtuelle Computer und ermöglichen dem Load Balancer festzustellen, mit welchem Knoten eine Verbindung hergestellt werden soll, wenn ein Back-End-VM-Knoten einen Fehler verursacht. Durch mehrere Webserverinstanzen hinter einem Load Balancer wird beispielsweise die Hochverfügbarkeit der Präsentationsebene sichergestellt.
 
@@ -191,11 +191,11 @@ Das folgende Diagramm zeigt ein lokales Szenario und die zugehörige Cloudlösun
 
 Wie Sie im Diagramm sehen können, verteilt der Azure Load Balancer den Datenverkehr auf mehrere virtuelle Computer und legt fest, mit welchem Webserver oder Anwendungsserver eine Verbindung hergestellt wird. Durch mehrere Anwendungs- und Webserverinstanzen hinter einem Load Balancer wird die Hochverfügbarkeit der Präsentations- und Geschäftsebene sichergestellt. Weitere Informationen finden Sie unter [Bewährte Methoden für Anwendungsmuster, die SQL-HADR erfordern](#best-practices-for-application-patterns-requiring-sql-hadr).
 
-![Anwendungsmuster mit Cloud Services](./media/application-patterns-development-strategies/IC728013.png)
+![Das Diagramm zeigt lokale physische oder virtuelle Computer, die über einen Azure Load Balancer mit Webrolleninstanzen in einem virtuellen Azure-Netzwerk verbunden sind.](./media/application-patterns-development-strategies/IC728013.png)
 
 Ein anderer Ansatz zum Implementieren dieses Anwendungsmusters ist die Verwendung einer konsolidierten Webrolle mit sowohl Präsentations- als auch Geschäftsebenenkomponenten wie im folgenden Diagramm dargestellt. Dieses Anwendungsmuster eignet sich für Anwendungen, die zustandsbehaftetes Design erfordern. Da Azure zustandslose Serverknoten für Web-und Workerrollen bereitstellt, empfiehlt es sich, mithilfe einer der folgenden Technologien eine Logik zum Speichern des Sitzungszustands zu implementieren: [Azure Caching](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/), [Azure Table Storage](../../../cosmos-db/tutorial-develop-table-dotnet.md) oder [Azure SQL-Datenbank](../../database/sql-database-paas-overview.md).
 
-![Anwendungsmuster mit Cloud Services](./media/application-patterns-development-strategies/IC728014.png)
+![Das Diagramm zeigt lokale physische oder virtuelle Computer, die mit konsolidierten Web-/Workerrolleninstanzen in einem virtuellen Azure-Netzwerk verbunden sind.](./media/application-patterns-development-strategies/IC728014.png)
 
 ## <a name="pattern-with-azure-virtual-machines-azure-sql-database-and-azure-app-service-web-apps"></a>Muster mit Azure Virtual Machines, Azure SQL-Datenbank und Azure App Service (Web-Apps)
 Das primäre Ziel dieses Anwendungsmusters ist, aufzuzeigen, wie Sie Azure-IaaS-Komponenten mit Azure-PaaS-Komponenten in Ihrer Lösung kombinieren können. Dieses Muster konzentriert sich auf Azure SQL-Datenbank für relationale Datenspeicher. Es umfasst keine SQL Server auf virtuellen Azure-Computern, die Teil des Azure-IaaS-Angebots sind.

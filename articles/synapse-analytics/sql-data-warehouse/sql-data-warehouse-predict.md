@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048005"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325374"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Bewerten von Machine Learning-Modellen mit PREDICT
 
 Synapse SQL bietet Ihnen die Möglichkeit, Machine Learning-Modelle mit der vertrauten Sprache T-SQL zu bewerten. Mit der T-SQL-Funktion [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) können Sie Ihre vorhandenen Machine Learning-Modelle, die mit Verlaufsdaten trainiert wurden, innerhalb der sicheren Grenzen Ihrer Data Warehouse bewerten. Die PREDICT-Funktion nimmt ein [ONNX-Modell (Open Neural Network Exchange)](https://onnx.ai/) und die Daten als Eingaben an. Dieses Feature beseitigt den Schritt des Verschiebens von wertvollen Daten für die Bewertung an einen Speicherort außerhalb des Data Warehouse. Es soll Datenspezialisten die Möglichkeit geben, Machine Learning-Modelle ganz einfach mit der vertrauten T-SQL-Schnittstelle bereitzustellen und nahtlos mit Data Scientists zusammenzuarbeiten, die mit dem richtigen Framework für ihre Aufgabe arbeiten.
 
 > [!NOTE]
-> Diese Funktionalität wird für SQL On-Demand derzeit nicht unterstützt.
+> Diese Funktionalität wird im serverlosen SQL-Pool zurzeit nicht unterstützt.
 
 Die Funktionalität erfordert, dass das Modell außerhalb von Synapse SQL trainiert wird. Nachdem Sie das Modell erstellt haben, laden Sie es in das Data Warehouse und bewerten es mit der T-SQL-Syntax von PREDICT, um Erkenntnisse aus den Daten zu gewinnen.
 
@@ -80,7 +80,7 @@ WITH (
 
 ## <a name="scoring-the-model"></a>Bewerten des Modells
 
-Nachdem das Modell und die Daten in das Data Warehouse geladen wurden, verwenden Sie die T-SQL-Funktion **PREDICT**, um das Modell zu bewerten. Stellen Sie sicher, dass die neuen Eingabedaten dasselbe Format aufweisen wie die Trainingsdaten, die zum Erstellen des Modells verwendet wurden. Die T-SQL-Funktion PREDICT nimmt zwei Eingaben an: das Modell und neue Eingabedaten für die Bewertung. Mit diesen generiert sie neue Spalten für die Ausgabe. Das Modell kann als Variable, Literal oder skalare Unterabfrage angegeben werden. Verwenden Sie [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15), um ein benanntes Resultset für den DATA-Parameter anzugeben.
+Nachdem das Modell und die Daten in das Data Warehouse geladen wurden, verwenden Sie die T-SQL-Funktion **PREDICT** , um das Modell zu bewerten. Stellen Sie sicher, dass die neuen Eingabedaten dasselbe Format aufweisen wie die Trainingsdaten, die zum Erstellen des Modells verwendet wurden. Die T-SQL-Funktion PREDICT nimmt zwei Eingaben an: das Modell und neue Eingabedaten für die Bewertung. Mit diesen generiert sie neue Spalten für die Ausgabe. Das Modell kann als Variable, Literal oder skalare Unterabfrage angegeben werden. Verwenden Sie [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15), um ein benanntes Resultset für den DATA-Parameter anzugeben.
 
 Das folgende Beispiel zeigt eine Beispielabfrage mit der Funktion PREDICT. Es wird eine zusätzliche Spalte mit dem Namen *Score* und dem Datentyp *float* erstellt, die die Vorhersageergebnisse enthält. Alle Eingabedatenspalten und die Ausgabevorhersagespalten können mit der SELECT-Anweisung angezeigt werden. Weitere Details finden Sie unter [PREDICT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).
 

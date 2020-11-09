@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786495"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289410"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Häufig gestellte Fragen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -97,7 +97,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Sind für den Wechsel des Lizenzierungsmodells Ausfallzeiten für SQL Server erforderlich?**
 
-   Nein. Das [Ändern das Lizenzierungsmodells](licensing-model-azure-hybrid-benefit-ahb-change.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. Um jedoch Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter zu registrieren, ist die [SQL-IaaS-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) eine Voraussetzung, und durch die Installation der SQL-IaaS-Erweiterung im _Vollmodus_ wird der SQL Server-Dienst neu gestartet. Wenn die SQL-IaaS-Erweiterung installiert werden muss, installieren Sie sie entweder im _Lightweight_ -Modus für eingeschränkte Funktionalität, oder installieren Sie sie während eines Wartungsfensters im _Vollmodus_ . Die im _Lightweight_ -Modus installierte SQL-IaaS-Erweiterung kann jederzeit auf den _Vollmodus_ umgestellt werden. Dazu ist jedoch ein Neustart des SQL Server-Diensts erforderlich. 
+   Nein. Das [Ändern das Lizenzierungsmodells](licensing-model-azure-hybrid-benefit-ahb-change.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. Um jedoch Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter zu registrieren, ist die [SQL-IaaS-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) eine Voraussetzung, und durch die Installation der SQL-IaaS-Erweiterung im _Vollmodus_ wird der SQL Server-Dienst neu gestartet. Wenn die SQL-IaaS-Erweiterung installiert werden muss, installieren Sie sie entweder im _Lightweight_ -Modus für eingeschränkte Funktionalität, oder installieren Sie sie während eines Wartungsfensters im _Vollmodus_. Die im _Lightweight_ -Modus installierte SQL-IaaS-Erweiterung kann jederzeit auf den _Vollmodus_ umgestellt werden. Dazu ist jedoch ein Neustart des SQL Server-Diensts erforderlich. 
    
 1. **Ist es möglich, das Lizenzierungsmodell auf einem virtuellen SQL Server-Computer zu wechseln, der mit dem klassischem Modell bereitgestellt wurde?**
 
@@ -169,7 +169,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich die Standardinstanz von SQL Server deinstallieren?**
 
-   Ja. Dabei sind jedoch ein paar Punkte zu beachten: Erstens kann die SQL Server zugeordnete Abrechnung abhängig vom Lizenzmodell für den virtuellen Computer weiterhin stattfinden. Zweitens und wie bereits in der vorhergehenden Antwort erläutert bauen diese Funktionen auf der [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) auf. Wenn Sie die Standardinstanz deinstallieren, ohne auch die IaaS-Erweiterung zu entfernen, sucht die Erweiterung weiterhin nach der Standardinstanz und generiert möglicherweise Fehler im Ereignisprotokoll. Diese Fehler stammen aus den folgenden beiden Quellen: **Microsoft SQL Server-Verwaltung von Anmeldeinformationen** und **Microsoft SQL Server-IaaS-Agent** . Einer der Fehler kann dem Folgenden ähneln:
+   Ja. Dabei sind jedoch ein paar Punkte zu beachten: Erstens kann die SQL Server zugeordnete Abrechnung abhängig vom Lizenzmodell für den virtuellen Computer weiterhin stattfinden. Zweitens und wie bereits in der vorhergehenden Antwort erläutert bauen diese Funktionen auf der [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) auf. Wenn Sie die Standardinstanz deinstallieren, ohne auch die IaaS-Erweiterung zu entfernen, sucht die Erweiterung weiterhin nach der Standardinstanz und generiert möglicherweise Fehler im Ereignisprotokoll. Diese Fehler stammen aus den folgenden beiden Quellen: **Microsoft SQL Server-Verwaltung von Anmeldeinformationen** und **Microsoft SQL Server-IaaS-Agent**. Einer der Fehler kann dem Folgenden ähneln:
 
       Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit SQL Server. Der Server wurde nicht gefunden, oder auf ihn kann nicht zugegriffen werden.
 
@@ -177,7 +177,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich eine benannte Instanz von SQL Server mit der IaaS-Erweiterung verwenden?**
    
-   Ja, wenn die benannte Instanz die einzige SQL Server-Instanz ist und die ursprüngliche Standardinstanz [ordnungsgemäß deinstalliert](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance) wurde. Wenn es keine Standardinstanz gibt und zugleich mehrere benannte Instanzen auf einer einzelnen SQL Server-VM vorhanden sind, kann die SQL Server-IaaS-Agent-Erweiterung nicht installiert werden. 
+   Ja, wenn die benannte Instanz die einzige SQL Server-Instanz ist und die ursprüngliche Standardinstanz [ordnungsgemäß deinstalliert](sql-server-iaas-agent-extension-automate-management.md#named-instance-support) wurde. Wenn es keine Standardinstanz gibt und zugleich mehrere benannte Instanzen auf einer einzelnen SQL Server-VM vorhanden sind, kann die SQL Server-IaaS-Agent-Erweiterung nicht installiert werden.  
 
 1. **Kann ich SQL Server und die zugehörige Lizenzabrechnung aus einer SQL Server-VM entfernen?**
 
@@ -210,7 +210,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich meine SQL Server 2008/2008 R2-Instanz aktualisieren, nachdem sie beim SQL Server-VM-Ressourcenanbieter registriert wurde?**
 
-   Ja. Sie können ein beliebiges Setupmedium für ein Upgrade der Version und Edition von SQL Server verwenden. Anschließend können Sie den [SQL-IaaS-Erweiterungsmodus](sql-vm-resource-provider-register.md#management-modes) von _NoAgent_ auf _Vollständig_ upgraden. Dadurch erhalten Sie Zugriff auf alle Vorteile der SQL-IaaS-Erweiterung, z. B. die Verwaltung im Portal, automatisierte Sicherungen und automatisiertes Patchen. 
+   Wenn das Betriebssystem Windows Server 2008 R2 oder höher ist, ja. Sie können ein beliebiges Setupmedium für ein Upgrade der Version und Edition von SQL Server verwenden. Anschließend können Sie den [SQL-IaaS-Erweiterungsmodus](sql-server-iaas-agent-extension-automate-management.md#management-modes) von _NoAgent_ auf _Vollständig_ upgraden. Dadurch erhalten Sie Zugriff auf alle Vorteile der SQL-IaaS-Erweiterung, z. B. die Verwaltung im Portal, automatisierte Sicherungen und automatisiertes Patchen. Wenn die Betriebssystemversion Windows Server 2008 ist, wird nur der Modus „NoAgent“ unterstützt. 
 
 1. **Wie erhalte ich kostenlose erweiterte Sicherheitsupdates für das Ende der Unterstützung von SQL Server 2008- und SQL Server 2008 R2-Instanzen?**
 

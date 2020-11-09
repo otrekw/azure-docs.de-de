@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791527"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319289"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Datenbank
 
@@ -43,7 +43,7 @@ Um eine einzelne Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal
 
 ## <a name="manage-an-existing-server"></a>Verwalten eines vorhandenen Servers
 
-Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Datenbankseite, die Seite für die **SQL-Server** oder die Seite **Alle Ressourcen** .
+Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Datenbankseite, die Seite für die **SQL-Server** oder die Seite **Alle Ressourcen**.
 
 Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken** , und wählen Sie dann die Datenbank aus, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
 
@@ -123,10 +123,10 @@ Verwenden Sie zum Erstellen der Server, Datenbanken und Firewalls mithilfe von T
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Erstellt eine neue einzelne Datenbank. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Ändert eine Datenbank oder einen Pool für elastische Datenbanken. |
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|Erstellt eine neue einzelne Datenbank. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Ändert eine Datenbank oder einen Pool für elastische Datenbanken. |
 |[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für Azure SQL-Datenbank oder ein Azure Synapse Analytics-SQL-Pool zurück. Wenn eine Anmeldung bei der Masterdatenbank auf einem Server in SQL-Datenbank besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure Synapse Analytics müssen Sie mit der Masterdatenbank verbunden sein, um eine Anmeldung erstellen zu können.|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für Azure SQL-Datenbank oder einen dedizierten SQL-Pool in Azure Synapse Analytics zurück. Wenn eine Anmeldung bei der Masterdatenbank auf einem Server in SQL-Datenbank besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure Synapse Analytics müssen Sie mit der Masterdatenbank verbunden sein, um eine Anmeldung erstellen zu können.|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Mit diesem Befehl werden die CPU-, E/A- und Arbeitsspeichernutzung für eine Datenbank in Azure SQL-Datenbank zurückgegeben. Jede Zeile wird für 15 Sekunden beibehalten, auch wenn keine Aktivität in der Datenbank vorhanden ist.|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Gibt die CPU-Nutzung und Speicherdaten für eine Datenbank in Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Enthält Statistiken zu Verbindungsereignissen für SQL-Datenbank und eine Übersicht über erfolgreiche und nicht erfolgreiche Datenbankverbindungen. |

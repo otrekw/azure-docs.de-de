@@ -1,6 +1,6 @@
 ---
-title: Abfragen von Ordnern und mehreren Dateien mit SQL On-Demand (Vorschauversion)
-description: SQL On-Demand (Vorschauversion) unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind.
+title: Abfragen von Ordnern und mehreren Dateien mithilfe des serverlosen SQL-Pools (Vorschauversion)
+description: Der serverlose SQL-Pool (Vorschauversion) unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288340"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340987"
 ---
 # <a name="query-folders-and-multiple-files"></a>Abfragen von Ordnern und mehreren Dateien  
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics schreiben können.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics schreiben können.
 
-SQL On-Demand unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind. Allerdings ist die Flexibilität größer, da mehrere Platzhalterzeichen erlaubt sind.
+Der serverlose SQL-Pool unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind. Allerdings ist die Flexibilität größer, da mehrere Platzhalterzeichen erlaubt sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im ersten Schritt **erstellen Sie eine Datenbank**, in der Sie die Abfragen ausführen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
+Im ersten Schritt **erstellen Sie eine Datenbank** , in der Sie die Abfragen ausführen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
 
-Sie verwenden den Ordner *csv/taxi*, um die Beispielabfragen nachzuverfolgen. Er enthält Daten der Fahrtenaufzeichnungen für „NYC Taxi – Yellow Taxi“ von Juli 2016 bis Juni 2018. Dateien in *csv/taxi* sind nach Jahr und Monat im folgenden Format benannt: yellow_tripdata_<year>-<month>.csv.
+Sie verwenden den Ordner *csv/taxi* , um die Beispielabfragen nachzuverfolgen. Er enthält Daten der Fahrtenaufzeichnungen für „NYC Taxi – Yellow Taxi“ von Juli 2016 bis Juni 2018. Dateien in *csv/taxi* sind nach Jahr und Monat im folgenden Format benannt: yellow_tripdata_<year>-<month>.csv.
 
 ## <a name="read-all-files-in-folder"></a>Lesen aller Dateien im Ordner
-    
+
 Das folgende Beispiel liest alle Datendateien von „NYC Yellow Taxi“ aus dem Ordner *csv/taxi* und gibt die Gesamtzahl der Fahrgäste und Fahrten pro Jahr zurück. Außerdem wird die Verwendung von Aggregatfunktionen veranschaulicht.
 
 ```sql
@@ -180,6 +180,49 @@ ORDER BY
 > Alle Dateien, auf die mit dem einzelnen OPENROWSET zugegriffen wird, müssen dieselbe Struktur aufweisen (d. h. Anzahl der Spalten und Typ der Daten).
 
 Da Sie nur über einen Ordner verfügen, der den Kriterien entspricht, ist das Abfrageergebnis dasselbe wie unter [Lesen aller Dateien im Ordner](#read-all-files-in-folder).
+
+## <a name="traverse-folders-recursively"></a>Rekursives Durchsuchen von Ordnern
+
+Der serverlose SQL-Pool kann Ordner rekursiv durchsuchen, wenn Sie „/**“ am Ende des Pfads angeben. Mit der folgenden Abfrage werden alle Dateien aus allen Ordnern und Unterordnern gelesen, die im Ordner *csv* gespeichert sind.
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> Alle Dateien, auf die mit dem einzelnen OPENROWSET zugegriffen wird, müssen dieselbe Struktur aufweisen (d. h. Anzahl der Spalten und Typ der Daten).
 
 ## <a name="multiple-wildcards"></a>Mehrere Platzhalterzeichen
 

@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288663"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339392"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
-In diesem Artikel finden Sie Empfehlungen und Beispiele für die Erstellung und Aktualisierung von Abfrageoptimierungsstatistiken unter Verwendung der Synapse SQL-Ressourcen: SQL-Pool und SQL On-Demand (Vorschauversion)
+In diesem Artikel finden Sie Empfehlungen und Beispiele für die Erstellung und Aktualisierung von Abfrageoptimierungsstatistiken mithilfe folgender Synapse SQL-Ressourcen: dedizierter SQL-Pool und serverloser SQL-Pool (Vorschauversion).
 
-## <a name="statistics-in-sql-pool"></a>Statistiken im SQL-Pool
+## <a name="statistics-in-dedicated-sql-pool"></a>Statistiken im dedizierten SQL-Pool
 
 ### <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 
-Je mehr Informationen zu Ihren Daten die SQL-Poolressource besitzt, desto schneller können Abfragen durchgeführt werden. Nach dem Laden der Daten in den SQL-Pool ist das Erstellen von Statistiken zu Ihren Daten eine der wichtigsten Maßnahmen, die Sie zur Abfrageoptimierung treffen können.  
+Je mehr Informationen zu Ihren Daten der dedizierte SQL-Pool hat, desto schneller kann er Abfragen ausführen. Nach dem Laden der Daten in einen dedizierten SQL-Pool ist das Erfassen von Statistiken zu Ihren Daten eine der wichtigsten Maßnahmen, die Sie zur Abfrageoptimierung treffen können.  
 
-Der Abfrageoptimierer im SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird.
+Der Abfrageoptimierer im dedizierten SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird.
 
 Wenn der Abfrageoptimierer beispielsweise schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wählt er einen Plan aus. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatische Erstellung von Statistiken
 
-Der SQL-Pool analysiert eingehende Benutzerabfragen auf fehlende Statistiken, wenn die Datenbankoption AUTO_CREATE_STATISTICS auf `ON` festgelegt ist.  Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung. 
+Die dedizierte SQL-Pool-Engine analysiert eingehende Benutzerabfragen auf fehlende Statistiken hin, wenn die Datenbankoption „AUTO_CREATE_STATISTICS“ auf `ON` festgelegt ist.  Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung. 
 
 Diese Funktion wird verwendet, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern.
 
@@ -74,7 +74,7 @@ Um messbare Leistungseinbußen zu verhindern, sollten Sie zuerst durch Ausführe
 > [!NOTE]
 > Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in einem anderen Benutzerkontext protokolliert.
 
-Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können bereits erstellte Statistiken anzeigen, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ausführen:
+Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_ <8 digit column id in Hex>_<8 digit table id in Hex>. Sie können bereits erstellte Statistiken anzeigen, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -101,7 +101,7 @@ Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
-Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte aufgetreten ist, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
+Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte aufgetreten ist, *ist der Zeitpunkt gekommen* , die Statistiken zu aktualisieren.
 
 Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben. Das Alter Ihrer Statistiken kann Ihnen teilweise als Hinweis auf die Aktualität der Daten dienen. 
 
@@ -166,7 +166,7 @@ In diesen Beispielen wird veranschaulicht, wie Sie verschiedene Optionen zum Ers
 #### <a name="create-single-column-statistics-with-default-options"></a>Erstellen von Einspaltenstatistiken mit Standardoptionen
 
 Zum Erstellen von Statistiken für eine Spalte geben Sie einen Namen für das Statistikobjekt und den Namen der Spalte an.
-Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in SQL-Pools beim Erstellen von Statistiken eine Stichprobenrate von **20 %** der Tabelle verwendet.
+Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in dedizierten SQL-Pools beim Erstellen von Statistiken eine Stichprobenrate von **20 %** der Tabelle verwendet.
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -430,7 +430,7 @@ Die UPDATE STATISTICS-Anweisung ist einfach zu verwenden. Bedenken Sie, dass hie
 Wenn die Leistung kein Problem darstellt, ist diese Methode die einfachste und umfassendste Möglichkeit sicherzustellen, dass die Statistiken aktuell sind.
 
 > [!NOTE]
-> Beim Aktualisieren aller Statistiken einer Tabelle führt der SQL-Pool einen Scan durch, um für jedes Statistikobjekt Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
+> Beim Aktualisieren aller Statistiken einer Tabelle führt der dedizierte SQL-Pool einen Scan durch, um für jedes Statistikobjekt Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
 
 Informationen zur Implementierung einer `UPDATE STATISTICS`-Prozedur finden Sie unter [Temporäre Tabellen](develop-tables-temporary.md). Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Ergebnis ist identisch.
 Die vollständige Syntax finden Sie unter [Aktualisieren der Statistik](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
@@ -512,7 +512,7 @@ Mit DBCC SHOW_STATISTICS() werden die Daten angezeigt, die in einem Statistikobj
 
 Der Header stellt die Metadaten zur Statistik dar. Im Histogramm wird die Verteilung der Werte in der ersten Schlüsselspalte des Statistikobjekts angezeigt. 
 
-Der Dichtevektor misst die spaltenübergreifende Korrelation. Der SQL-Pool berechnet Kardinalitätsschätzungen anhand der Daten im Statistikobjekt.
+Der Dichtevektor misst die spaltenübergreifende Korrelation. Der dedizierte SQL-Pool berechnet Kardinalitätsschätzungen anhand der Daten im Statistikobjekt.
 
 #### <a name="show-header-density-and-histogram"></a>Anzeigen von Header, Dichte und Histogramm
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS()-Unterschiede
 
-`DBCC SHOW_STATISTICS()` ist im Vergleich zu SQL Server strenger in SQL-Pools implementiert:
+`DBCC SHOW_STATISTICS()` ist im Vergleich zu SQL Server im dedizierten SQL-Pool strenger implementiert:
 
 - Nicht dokumentierte Features werden nicht unterstützt.
 - Verwendung von Stats_stream nicht möglich.
@@ -556,25 +556,25 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Spaltennamen können nicht zum Identifizieren von Statistikobjekten verwendet werden.
 - Benutzerdefinierter Fehler 2767 wird nicht unterstützt.
 
-### <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie die Abfrageleistung weiter verbessern, erfahren Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-
-## <a name="statistics-in-sql-on-demand-preview"></a>Statistik in SQL On-Demand (Vorschauversion)
+## <a name="statistics-in-serverless-sql-pool-preview"></a>Statistiken im serverlosen SQL-Pool (Vorschauversion)
 
 Statistiken werden für ein bestimmtes Dataset (Speicherpfad) pro bestimmter Spalte erstellt.
 
+> [!NOTE]
+> Für LOB-Spalten können keine Statistiken erstellt werden.
+
 ### <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 
-Je mehr Informationen zu Ihren Daten SQL On-Demand (Vorschauversion) besitzt, desto schneller können Abfragen dafür durchgeführt werden. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
+Je mehr Informationen zu Ihren Daten der serverlose SQL-Pool (Vorschauversion) hat, desto schneller kann er Abfragen dafür ausführen. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
 
-Der Abfrageoptimierer in SQL On-Demand arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. 
+Der Abfrageoptimierer im serverlosen SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. 
 
 Wenn der Abfrageoptimierer z.B. schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wird er einen Plan auswählen. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatische Erstellung von Statistiken
 
-SQL On-Demand analysiert eingehende Benutzerabfragen auf fehlende Statistiken. Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern.
+Der serverlose SQL-Pool analysiert eingehende Benutzerabfragen auf fehlende Statistiken hin. Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern.
 
 Die SELECT-Anweisung löst die automatische Erstellung von Statistiken aus.
 
@@ -585,7 +585,7 @@ Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherw
 
 ### <a name="manual-creation-of-statistics"></a>Manuelle Erstellung von Statistiken
 
-SQL On-Demand ermöglicht das manuelle Erstellen von Statistiken. Für CSV-Dateien müssen Sie Statistiken manuell erstellen, da die automatische Erstellung von Statistiken für CSV-Dateien nicht aktiviert ist. 
+Der serverlose SQL-Pool ermöglicht Ihnen das manuelle Erstellen von Statistiken. Für CSV-Dateien müssen Sie Statistiken manuell erstellen, da die automatische Erstellung von Statistiken für CSV-Dateien nicht aktiviert ist. 
 
 In den folgenden Beispielen finden Sie Anweisungen zum manuellen Erstellen von Statistiken.
 
@@ -593,7 +593,7 @@ In den folgenden Beispielen finden Sie Anweisungen zum manuellen Erstellen von S
 
 Änderungen an Daten in Dateien sowie das Löschen und Hinzufügen von Dateien führen zu Änderungen der Datenverteilung und bewirken, dass die Statistiken nicht mehr aktuell sind. In diesem Fall müssen die Statistiken aktualisiert werden.
 
-SQL On-Demand erstellt Statistiken automatisch neu, wenn die Daten erheblich geändert werden. Jedes Mal, wenn Statistiken automatisch erstellt werden, wird auch der aktuelle Zustand des Datasets gespeichert: Dateipfade, Größen, Datum der letzten Änderung.
+Der serverlose SQL-Pool erstellt Statistiken automatisch neu, wenn Daten erheblich geändert wurden. Jedes Mal, wenn Statistiken automatisch erstellt werden, wird auch der aktuelle Zustand des Datasets gespeichert: Dateipfade, Größen, Datum der letzten Änderung.
 
 Wenn die Statistiken veraltet sind, werden neue erstellt. Der Algorithmus durchläuft die Daten und vergleicht sie mit dem aktuellen Zustand des Datasets. Wenn der Umfang der Änderungen den angegebenen Schwellenwert überschreitet, werden alte Statistiken gelöscht und für das neue Dataset neu erstellt.
 
@@ -604,7 +604,7 @@ Manuelle Statistiken werden nie als veraltet deklariert.
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
-Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
+Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen* , die Statistiken zu aktualisieren.
 
 > [!NOTE]
 > Immer wenn sich die Verteilung der Werte einer Spalte wesentlich ändert, sollten Sie die Statistiken – unabhängig vom Zeitpunkt des letzten Updates – aktualisieren.
@@ -616,7 +616,7 @@ Sie sollten Ihre Datenpipeline erweitern, um sicherzustellen, dass die Statistik
 Im Folgenden finden Sie einige Richtlinien zur Aktualisierung von Statistiken:
 
 - Stellen Sie sicher, dass das Dataset mindestens über ein aktualisiertes Statistikobjekt verfügt. Im Rahmen der Statistikaktualisierung werden dann die Informationen zur Größe (Zeilen- und Seitenanzahl) aktualisiert.
-- Konzentrieren Sie sich auf Spalten mit JOIN-, GROUP BY-, ORDER BY- und DISTINCT-Klauseln.
+- Konzentrieren Sie sich auf Spalten mit WHERE-, JOIN-, GROUP BY-, ORDER BY- und DISTINCT-Klauseln.
 - Aktualisieren Sie Spalten vom Typ „aufsteigender Schlüssel“, z. B. Transaktionsdaten, häufiger, da diese Werte nicht in das Statistikhistogramm einbezogen werden.
 - Aktualisieren Sie Spalten mit statischer Verteilung weniger häufig.
 
@@ -629,12 +629,12 @@ In den folgenden Beispielen wird veranschaulicht, wie verschiedene Optionen zum 
 > [!NOTE]
 > Im Moment können Sie nur einspaltige Statistiken erstellen.
 >
-> Die Prozedur sp_create_file_statistics wird in sp_create_openrowset_statistics umbenannt. Der öffentlichen Serverrolle besitzt die Berechtigung ADMINISTER BULK OPERATIONS, während die öffentliche Datenbankrolle nur die Berechtigungen für sp_create_file_statistics und sp_drop_file_statistics besitzt. Das wird in Zukunft ggf. geändert.
+> Zum Ausführen von „sp_create_openrowset_statistics“ und „sp_drop_openrowset_statistics“ sind folgende Berechtigungen erforderlich: ADMINISTER BULK OPERATIONS- oder ADMINISTER DATABASE BULK OPERATIONS.
 
 Die folgende gespeicherte Prozedur wird zur Erstellung von Statistiken verwendet:
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 Argumente: [ @stmt = ] N'statement_text' – Gibt eine Transact-SQL-Anweisung an, die Spaltenwerte zurückgibt, die für Statistiken verwendet werden sollen. Mit TABLESAMPLE können Sie Stichproben von zu verwendenden Daten angeben. Wenn TABLESAMPLE nicht angegeben wird, wird FULLSCAN verwendet.
@@ -650,7 +650,7 @@ Argumente: [ @stmt = ] N'statement_text' – Gibt eine Transact-SQL-Anweisung an
 
 Stellen Sie zum Erstellen von Statistiken über eine Spalte eine Abfrage bereit, die die Spalte zurückgibt, für die Sie Statistiken benötigen.
 
-Wenn Sie nichts anderes angeben, verwendet SQL On-Demand bei der Erstellung von Statistiken standardmäßig 100 % der im Dataset bereitgestellten Daten.
+Wenn Sie nichts anderes angeben, verwendet der serverlose SQL-Pool bei der Erstellung von Statistiken standardmäßig 100 % der im Dataset bereitgestellten Daten.
 
 Um z. B. Statistiken mit Standardoptionen (FULLSCAN) für eine Jahresspalte des Datasets auf der Grundlage der Datei „population.csv“ zu erstellen:
 
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 Zum Aktualisieren von Statistiken müssen Sie Statistiken löschen und erstellen. Die folgende gespeicherte Prozedur wird zum Löschen von Statistiken verwendet:
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> Die Prozedur sp_drop_file_statistics wird in sp_drop_openrowset_statistics umbenannt. Der öffentlichen Serverrolle besitzt die Berechtigung ADMINISTER BULK OPERATIONS, während die öffentliche Datenbankrolle nur die Berechtigungen für sp_create_file_statistics und sp_drop_file_statistics besitzt. Das wird in Zukunft ggf. geändert.
+> Zum Ausführen von „sp_create_openrowset_statistics“ und „sp_drop_openrowset_statistics“ sind folgende Berechtigungen erforderlich: ADMINISTER BULK OPERATIONS- oder ADMINISTER DATABASE BULK OPERATIONS.
 
 Argumente: [ @stmt = ] N'statement_text' – Gibt dieselbe Transact-SQL-Anweisung an, die bei der Erstellung der Statistiken verwendet wurde.
 
 Um die Statistiken für die Jahresspalte im Dataset, das auf der Datei „population.csv“ basiert, zu aktualisieren, müssen Sie die Statistiken löschen und erstellen:
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -816,4 +816,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verbesserung der Abfrageleistung finden Sie unter [Bewährte Methoden für den SQL-Pool](best-practices-sql-pool.md#maintain-statistics).
+Informationen zur weiteren Verbesserung der Abfrageleistung bei einem dedizierten SQL-Pool finden Sie unter [Überwachen Ihrer Workload](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) und [Bewährte Methoden für den dedizierten SQL-Pool](best-practices-sql-pool.md#maintain-statistics).
+
+Informationen zur weiteren Verbesserung der Abfrageleistung bei einem serverlosen SQL-Pool finden Sie unter [Bewährte Methoden für den serverlosen SQL-Pool](best-practices-sql-on-demand.md)

@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0515827ab2d93c76ea91e95c2d53a44273b5633b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213787"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321000"
 ---
-# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse Analytics – SQL-Pool-Videos
+# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Azure Synapse Analytics – Videos zum dedizierten SQL-Pool
 
-Sehen Sie sich die neuesten Azure Synapse SQL-Pool-Videos an, um neue Funktionen und Leistungsverbesserungen kennenzulernen. 
+Sehen Sie sich die neuesten Videos zum dedizierten SQL-Pool an, um neue Funktionen und Leistungsverbesserungen kennenzulernen. 
 
-Wählen Sie zum Einstieg das unten aufgeführte Übersichtsvideo aus, um Informationen zu den Neuerungen in Azure Synapse SQL-Pool zu erhalten. Darüber hinaus erfahren Sie, wie Sie mit modernen Data Warehouse-Mustern echte Szenarien wie z. B. Cyberkriminalität meistern können.
+Wählen Sie zum Einstieg das unten aufgeführte Übersichtsvideo aus, um Informationen zu den Neuerungen beim dedizierten SQL-Pool zu erhalten. Darüber hinaus erfahren Sie, wie Sie mit modernen Data Warehouse-Mustern echte Szenarien wie z. B. Cyberkriminalität meistern können.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

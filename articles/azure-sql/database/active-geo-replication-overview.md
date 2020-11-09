@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125341"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Die Sicherungsspeicherredundanz der sekundären Datenbank ist standardmäßig id
 > Die Transaktionsprotokollrate der primären Datenbank kann aus Gründen gedrosselt werden, die nicht mit einer niedrigeren Computegröße einer sekundären Datenbank zusammenhängen. Diese Art der Drosselung kann auch auftreten, wenn die sekundäre Datenbank dieselbe Computegröße wie die primäre Datenbank oder eine höhere aufweist. Weitere Einzelheiten, einschließlich der Wartetypen für unterschiedliche Arten von Protokollratendrosselungen, finden Sie unter [Transaktionsprotokollratengovernance](resource-limits-logical-server.md#transaction-log-rate-governance).
 
 > [!NOTE]
-> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Asien, Südosten“ allgemein verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, so wird das Erstellen einer sekundären Datenbank in einer anderen Azure-Region nicht unterstützt. 
+> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist zurzeit in der Azure-Region „Brasilien, Süden“ als öffentliche Vorschau und in „Asien, Südosten“ allgemein verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, so wird das Erstellen einer sekundären Datenbank in einer anderen Azure-Region nicht unterstützt. 
 
 Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](purchasing-models.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Abfragen von CSV-Dateien mit SQL On-Demand (Vorschauversion)
-description: In diesem Artikel erfahren Sie, wie Sie mit SQL On-Demand (Vorschauversion) einzelne CSV-Dateien mit verschiedenen Dateiformaten abfragen können.
+title: Abfragen von CSV-Dateien mithilfe eines serverlosen SQL-Pools (Vorschauversion)
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools (Vorschauversion) einzelne CSV-Dateien mit verschiedenen Dateiformaten abfragen können.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288289"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321457"
 ---
 # <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
-In diesem Artikel erfahren Sie, wie Sie eine einzelne CSV-Datei mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics abfragen. CSV-Dateien können unterschiedliche Formate aufweisen: 
+In diesem Artikel erfahren Sie, wie Sie in Azure Synapse Analytics eine einzelne CSV-Datei mithilfe eines serverlosen SQL-Pools (Vorschauversion) abfragen können. CSV-Dateien können unterschiedliche Formate aufweisen: 
 
 - Mit und ohne Kopfzeile
 - Werte mit Kommas und Tabstopps als Trennzeichen
@@ -95,7 +95,7 @@ In den folgenden Abschnitten erfahren Sie, wie Sie verschiedene Typen von CSV-Da
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im ersten Schritt erstellen Sie eine **Datenbank**, in der die Tabellen erstellt werden sollen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
+Im ersten Schritt erstellen Sie eine **Datenbank** , in der die Tabellen erstellt werden sollen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
 
 ## <a name="windows-style-new-line"></a>Neue-Zeile-Zeichen im Windows-Stil
 

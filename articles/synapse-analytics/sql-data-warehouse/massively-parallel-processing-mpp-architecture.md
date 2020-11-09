@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479339"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319655"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (ehemals SQL DW)-Architektur
 
@@ -25,8 +25,8 @@ Azure Synapse ist ein unbegrenzter Analysedienst, der Data Warehousing für Unte
 
 - Synapse SQL: Vollständige T-SQL-basierte Analyse
 
-  - SQL-Pool (Bezahlung pro bereitgestellter DWU) – Allgemein verfügbar
-  - SQL On-Demand (Bezahlung pro verarbeitetem TB) – Vorschau
+  - Dedizierter SQL-Pool (Bezahlung pro bereitgestellter DWU) – Allgemein verfügbar
+  - Serverloser SQL-Pool (Bezahlung pro verarbeitetem TB) – (Vorschauversion)
 - Spark: Fest integriertes Apache Spark (Vorschau)
 - Datenintegration: Hybrid-Datenintegration (Vorschau)
 - Studio: einheitliche Benutzeroberfläche.  (Vorschau)
@@ -35,7 +35,7 @@ Azure Synapse ist ein unbegrenzter Analysedienst, der Data Warehousing für Unte
 
 ## <a name="synapse-sql-architecture-components"></a>Architekturkomponenten von Synapse SQL
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) nutzt eine aufskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als [Data Warehouse-Einheit](what-is-a-data-warehouse-unit-dwu-cdwu.md) bezeichnet wird. Compute- und Speicherressourcen sind getrennt, sodass Sie Compute unabhängig von den Daten in Ihrem System skalieren können.
+[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) nutzt eine aufskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als [Data Warehouse-Einheit](what-is-a-data-warehouse-unit-dwu-cdwu.md) bezeichnet wird. Compute- und Speicherressourcen sind getrennt, sodass Sie Compute unabhängig von den Daten in Ihrem System skalieren können.
 
 ![Synapse SQL: Architektur](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

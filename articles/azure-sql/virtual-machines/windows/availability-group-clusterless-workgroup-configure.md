@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124933"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +62,11 @@ Führen Sie zum Konfigurieren des DNS-Suffix diese Schritte aus:
 1. Wählen Sie **Mehr** aus, um das Dialogfeld **DNS-Suffix und NetBIOS-Computername** zu öffnen. 
 1. Geben Sie unter **Primäres DNS-Suffix des Computers** den Namen des DNS-Suffixes ein, z. B. `ag.wgcluster.example.com`, und wählen Sie dann **OK** aus: 
 
-   ![Hinzufügen des DNS-Suffix](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![Der Screenshot zeigt das Dialogfeld „DNS-Suffix und NetBIOS-Computername“, in dem Sie den Wert eingeben können.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. Vergewissern Sie sich, dass unter **Vollständiger Computername** nun das DNS-Suffix angezeigt wird, und wählen Sie dann **OK** aus, um die Änderungen zu speichern: 
 
-   ![Hinzufügen des DNS-Suffix](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![Der Screenshot zeigt, wo Ihr vollständiger Computername angezeigt wird.](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. Starten Sie den Server neu, wenn Sie dazu aufgefordert werden. 
 1. Wiederholen Sie diese Schritte für alle anderen Knoten, die für die Verfügbarkeitsgruppe verwendet werden sollen. 
@@ -107,11 +107,11 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 In diesem Schritt erstellen Sie den Failovercluster. Wenn Sie mit diesen Schritten nicht vertraut sind, können Sie sich im [Tutorial für Failovercluster](failover-cluster-instance-storage-spaces-direct-manually-configure.md) darüber informieren.
 
 Wichtige Unterschiede zwischen dem Tutorial und den Aktionen, die für einen Arbeitsgruppencluster durchgeführt werden sollten:
-- Deaktivieren Sie beim Ausführen der Clusterüberprüfung **Speicher** und **Direkte Speicherplätze** . 
+- Deaktivieren Sie beim Ausführen der Clusterüberprüfung **Speicher** und **Direkte Speicherplätze**. 
 - Fügen Sie beim Hinzufügen der Knoten zum Cluster den vollqualifizierten Namen hinzu, z. B.:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- Deaktivieren Sie **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden** . 
+- Deaktivieren Sie **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden**. 
 
 Weisen Sie nach dem Erstellen des Clusters eine statische Cluster-IP-Adresse zu. Gehen Sie dazu folgendermaßen vor:
 
