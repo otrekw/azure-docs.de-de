@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Azure-Anwendungsangebote
       items:
-        - name: Planen eines Lösungsvorlagenangebots
-          href: marketplace-solution-templates.md
-        - name: Planen eines Angebots für eine verwaltete Anwendung
-          href: marketplace-managed-apps.md
+        - name: Planen von Azure-Anwendungsangeboten
+          items:
+            - name: Planen eines Azure-Anwendungsangebots
+              href: plan-azure-application-offer.md
+            - name: Planen einer Lösungsvorlage
+              href: plan-azure-app-solution-template.md
+            - name: Planen einer verwalteten Anwendung
+              href: plan-azure-app-managed-app.md
         - name: Erstellen und Veröffentlichen eines Azure-Anwendungsangebots
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: Erstellen eines Azure-Anwendungsangebots
+              href: create-new-azure-apps-offer.md
+            - name: Konfigurieren der Eigenschaften von Azure-Anwendungsangeboten
+              href: create-new-azure-apps-offer-properties.md
+            - name: Konfigurieren des Listings für ein Azure-Anwendungsangebot
+              href: create-new-azure-apps-offer-listing.md
+            - name: Hinzufügen einer Vorschauzielgruppe
+              href: create-new-azure-apps-offer-preview.md
+            - name: Hinzufügen technischer Details
+              href: create-new-azure-apps-offer-technical.md
+            - name: Pläne erstellen
+              href: create-new-azure-apps-offer-plans.md
+            - name: Erstellen eines Lösungsvorlagenplans
+              href: create-new-azure-apps-offer-solution.md
+            - name: Erstellen eines Plans für verwaltete Anwendungen
+              href: create-new-azure-apps-offer-managed.md
+            - name: Testen und Veröffentlichen eines Azure-Anwendungsangebots
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: Vermarkten Ihres Azure-Anwendungsangebots
+          href: create-new-azure-apps-offer-marketing.md
         - name: Getaktete Abrechnung für Azure-Anwendungen
           href: partner-center-portal/azure-app-metered-billing.md
         - name: Verarbeiten von Prüfungsfeedback
