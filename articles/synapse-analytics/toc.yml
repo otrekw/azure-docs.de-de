@@ -50,13 +50,13 @@
   items:
     - name: Schnellstarts
       items:
-        - name: Erstellen eines Synapse-Arbeitsbereichs über das Azure-Portal
+        - name: Erstellen eines Arbeitsbereichs über das Azure-Portal
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: Erstellen eines Synapse-Arbeitsbereichs über die Azure CLI
+        - name: Erstellen eines Arbeitsbereichs über die Azure CLI
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: Erstellen eines Synapse-Arbeitsbereichs mithilfe von Azure PowerShell
+        - name: Erstellen eines Arbeitsbereichs mithilfe von Azure PowerShell
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: Bereitstellen mit einer Vorlage
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: Anleitungen
       items:
+        - name: Sichern und Wiederherstellen
+          items:
+            - name: Erstellen von Wiederherstellungspunkten
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: "Wiederherstellen eines Synapse\_SQL-Pools"
+              href: ./backuprestore/restore-sql-pool.md
         - name: Verwalten und Überwachen
           items:
             - name: Überwachen des Gen2-Cache

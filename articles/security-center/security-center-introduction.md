@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332007"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901551"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -29,19 +29,19 @@ Der Schutz Ihrer Ressourcen ist eine gemeinsame Aufgabe, die von Ihrem Cloudanbi
 
 Azure Security Center ist die Lösung für die drei größten Herausforderungen in Bezug auf die Sicherheit:
 
--   **Sich schnell ändernde Workloads**: Dies ist gleichzeitig eine Stärke und eine Schwäche der Cloud. Einerseits werden Benutzer in die Lage versetzt, mehr zu erreichen. Andererseits stellt sich die folgende Frage: Wie können Sie sicherstellen, dass die sich ständig ändernden Dienste, die von Benutzern verwendet und erstellt werden, Ihren Sicherheitsstandards entsprechen und auf den bewährten Sicherheitsmethoden basieren?
+-   **Sich schnell ändernde Workloads** : Dies ist gleichzeitig eine Stärke und eine Schwäche der Cloud. Einerseits werden Benutzer in die Lage versetzt, mehr zu erreichen. Andererseits stellt sich die folgende Frage: Wie können Sie sicherstellen, dass die sich ständig ändernden Dienste, die von Benutzern verwendet und erstellt werden, Ihren Sicherheitsstandards entsprechen und auf den bewährten Sicherheitsmethoden basieren?
 
--   **Immer ausgefeiltere Angriffe**: Unabhängig davon, wo Sie Ihre Workloads ausführen – die Angriffe werden immer komplexer und ausgefeilter. Sie müssen Ihre öffentlichen Cloudworkloads schützen. Bei dieser Aufgabe handelt es sich praktisch um eine internetfähige Workload, die dazu führen kann, dass Sie noch angreifbarer sind, wenn Sie sich nicht an die bewährten Sicherheitsmethoden halten.
+-   **Immer ausgefeiltere Angriffe** : Unabhängig davon, wo Sie Ihre Workloads ausführen – die Angriffe werden immer komplexer und ausgefeilter. Sie müssen Ihre öffentlichen Cloudworkloads schützen. Bei dieser Aufgabe handelt es sich praktisch um eine internetfähige Workload, die dazu führen kann, dass Sie noch angreifbarer sind, wenn Sie sich nicht an die bewährten Sicherheitsmethoden halten.
 
--   **Mangel an Personen mit Sicherheitskenntnissen**: Die Anzahl von Sicherheitswarnungen und Warnsystemen übersteigt bei Weitem die Anzahl von verfügbaren Administratoren mit dem erforderlichen Hintergrund und der Erfahrung, die zum Schützen Ihrer Umgebungen benötigt wird. Es ist eine ständige Herausforderung, hinsichtlich der neuesten Angriffstechniken immer auf dem Laufenden zu bleiben. Da sich der Sicherheitsbereich ständig ändert, ist es unmöglich, auf demselben Stand zu verharren.
+-   **Mangel an Personen mit Sicherheitskenntnissen** : Die Anzahl von Sicherheitswarnungen und Warnsystemen übersteigt bei Weitem die Anzahl von verfügbaren Administratoren mit dem erforderlichen Hintergrund und der Erfahrung, die zum Schützen Ihrer Umgebungen benötigt wird. Es ist eine ständige Herausforderung, hinsichtlich der neuesten Angriffstechniken immer auf dem Laufenden zu bleiben. Da sich der Sicherheitsbereich ständig ändert, ist es unmöglich, auf demselben Stand zu verharren.
 
 Damit Sie diese Herausforderungen in Bezug auf den Schutz bewältigen können, werden mit Security Center Tools für folgende Zwecke bereitgestellt:
 
--   **Erhöhung des Sicherheitsstatus**: Mit Security Center wird Ihre Umgebung bewertet, damit Sie den Status Ihrer Ressourcen verstehen können und ob sie sicher sind oder nicht.
+-   **Erhöhung des Sicherheitsstatus** : Mit Security Center wird Ihre Umgebung bewertet, damit Sie den Status Ihrer Ressourcen verstehen können und ob sie sicher sind oder nicht.
 
--   **Schutz vor Bedrohungen**: Security Center bewertet Ihre Workloads und löst Empfehlungen zur Vermeidung von Bedrohungen sowie Sicherheitswarnungen aus.
+-   **Schutz vor Bedrohungen** : Security Center bewertet Ihre Workloads und löst Empfehlungen zur Vermeidung von Bedrohungen sowie Sicherheitswarnungen aus.
 
--   **Schnellerer Aufbau des Schutzes**: In Security Center werden alle Vorgänge mit Cloudgeschwindigkeit durchgeführt. Aufgrund der nativen Integration ist die Bereitstellung von Security Center einfach, und Sie erhalten eine automatische Bereitstellung und den Schutz durch Azure-Dienste.
+-   **Schnellerer Aufbau des Schutzes** : In Security Center werden alle Vorgänge mit Cloudgeschwindigkeit durchgeführt. Aufgrund der nativen Integration ist die Bereitstellung von Security Center einfach, und Sie erhalten eine automatische Bereitstellung und den Schutz durch Azure-Dienste.
 
 > [!NOTE]
 > Dieser Dienst unterstützt [Azure Lighthouse](../lighthouse/overview.md). Dies ermöglicht es Dienstanbietern, sich bei ihrem eigenen Mandanten anzumelden, um von Kunden delegierte Abonnements und Ressourcengruppen zu verwalten. In Azure Security Center-Szenarien muss ein Abonnement anstelle einzelner Ressourcengruppen delegiert werden.
@@ -68,7 +68,7 @@ Es ist eine grundlegende Sicherheitsanforderung, dass Sie Ihre Workloads kennen 
 
 Mit Security Center können Sie **Schatten-IT-Abonnements identifizieren**. Indem Sie sich in Ihrem Dashboard Abonnements mit dem Hinweis **Nicht abgedeckt** ansehen, können Sie sofort erkennen, wann neu erstellte Abonnements vorhanden sind. Sie können dann sicherstellen, dass diese durch Ihre Richtlinien abgedeckt und mit Azure Security Center geschützt sind.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Seite für die Richtlinienverwaltung":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center-Dashboard für Richtlinien":::
 
 ### <a name="continuous-assessments"></a>Fortlaufende Bewertungen
 
@@ -76,13 +76,13 @@ Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workl
 
 Damit Sie besser nachvollziehen können, wie wichtig die einzelnen Empfehlungen für den gesamten Sicherheitsstatus sind, werden die Empfehlungen von Security Center in Sicherheitskontrollelemente gruppiert, und jedem Sicherheitskontrollelement wird eine **Sicherheitsbewertung** hinzugefügt. Dies ist ein entscheidender Faktor beim **Priorisieren Ihrer Sicherheitsmaßnahmen**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Seite für die Richtlinienverwaltung":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Sicherheitsbewertung von Security Center":::
 
 ### <a name="network-map"></a>Netzwerkübersicht
 
 Eines der leistungsfähigsten Tools, das von Security Center für die ständige Überwachung des Sicherheitsstatus Ihres Netzwerks bereitgestellt wird, ist die **Netzwerkübersicht**. In der Übersicht können Sie die Topologie Ihrer Workloads anzeigen, um zu ermitteln, ob jeder Knoten richtig konfiguriert ist. Sie sehen, wie Ihre Knoten miteinander verbunden sind, und können unerwünschte Verbindungen blockieren, die einem Angreifer unter Umständen die Bewegung durch Ihr Netzwerk erleichtern könnten.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Seite für die Richtlinienverwaltung":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center – Netzwerkübersicht":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimieren und Verbessern der Sicherheit durch die Konfiguration von empfohlenen Kontrollen
@@ -93,7 +93,7 @@ Auf diese Weise können Sie mit Security Center nicht nur die Sicherheitsrichtli
 
 Mit den Empfehlungen können Sie die Angriffsfläche jeder einzelnen Ressource verkleinern. Dies umfasst virtuelle Azure-Computer, Azure-externe Server und Azure PaaS-Dienste, z.B. SQL und Speicherkonten, und mehr. Hierbei wird jeder Ressourcentyp anders bewertet und verfügt über eigene Standards.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Seite für die Richtlinienverwaltung":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Beispiel für Security Center-Empfehlung":::
 
 ## <a name="protect-against-threats"></a>Schutz vor Bedrohungen
 
@@ -101,11 +101,11 @@ Mit dem Bedrohungsschutz von Security Center können Sie Bedrohungen auf IaaS-Eb
 
 Der Bedrohungsschutz von Security Center enthält eine Fusion-Schrittfolgenanalyse, bei der Warnungen in Ihrer Umgebung basierend auf einer Cyber-Schrittfolgenanalyse automatisch korreliert werden. Hiermit können Sie den gesamten Verlauf eines Angriffs, seinen Ausgangspunkt und die Auswirkungen auf Ihre Ressourcen besser verstehen.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Seite für die Richtlinienverwaltung":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Sicherheitswarnungen":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integration in Microsoft Defender Advanced Threat Protection
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integration in Microsoft Defender für Endpunkt
 
-Security Center beinhaltet die automatische native Integration in Microsoft Defender Advanced Threat Protection. Dies bedeutet, dass Ihre virtuellen Windows- und Linux-Computer ohne Konfigurationsaufwand vollständig in die Empfehlungen und Bewertungen von Security Center integriert sind.
+Security Center beinhaltet die automatische native Integration in Microsoft Defender für Endpunkt. Dies bedeutet, dass Ihre virtuellen Windows- und Linux-Computer ohne Konfigurationsaufwand vollständig in die Empfehlungen und Bewertungen von Security Center integriert sind.
 
 Außerdem können Sie mit Security Center die Anwendungssteuerungsrichtlinien in Serverumgebungen automatisieren. Mit den adaptiven Anwendungssteuerungen in Security Center können Sie das End-to-End-App-Genehmigungslisting für Ihre Windows-Server nutzen. Sie müssen keine Regeln erstellen und keine Prüfung auf Verstöße durchführen. Dies wird alles automatisch für Sie erledigt.
 
@@ -123,7 +123,7 @@ Security Center enthält Funktionen, mit denen Sie eine automatische Klassifizie
 
 ## <a name="get-secure-faster"></a>Schnellerer Aufbau des Schutzes
 
-Dank der Kombination aus nativer Azure-Integration (einschließlich Azure Policy und Azure Monitor-Protokollen) und nahtloser Integration in andere Microsoft-Sicherheitslösungen wie etwa Microsoft Cloud App Security und Windows Defender Advanced Threat Protection können Sie sicherstellen, dass Ihre Sicherheitslösung umfassend ist und einfach eingeführt werden kann (Onboarding und Rollout).
+Dank der Kombination aus nativer Azure-Integration (einschließlich Azure Policy und Azure Monitor-Protokollen) und nahtloser Integration in andere Microsoft-Sicherheitslösungen wie etwa Microsoft Cloud App Security und Microsoft Defender für Endpunkt können Sie sicherstellen, dass Ihre Sicherheitslösung umfassend ist und einfach eingeführt werden kann (Onboarding und Rollout).
 
 Darüber hinaus können Sie die vollständige Lösung über Azure hinaus auf weitere Workloads ausdehnen, die in anderen Clouds und in lokalen Rechenzentren ausgeführt werden.
 

@@ -19,6 +19,8 @@
       href: ../networking/working-remotely-support.md?toc=%2fazure%2fbastion%2ftoc.json
     - name: Nutzen von Bastion für die Remotearbeit
       href: work-remotely-support.md
+    - name: Bastion und VNET-Peering
+      href: vnet-peering.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Hosts
