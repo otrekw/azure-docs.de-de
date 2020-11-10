@@ -5,19 +5,20 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 32187b7aedd43a57ffe77c2f8524c54049ba10ae
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460732"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234119"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
-Dieser Artikel enthält schrittweise Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher in Azure Blob Storage zu importieren. Wenn Sie Daten in Azure Blob Storage importieren möchten, müssen Sie als Dienstvoraussetzung verschlüsselte Datenträger mit den Daten an ein Azure-Rechenzentrum senden.  
+Dieser Artikel enthält schrittweise Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher in Azure Blob Storage zu importieren. Wenn Sie Daten in Azure Blob Storage importieren möchten, müssen Sie als Dienstvoraussetzung verschlüsselte Datenträger mit den Daten an ein Azure-Rechenzentrum senden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +35,7 @@ Die Voraussetzungen lauten wie folgt:
 * [Laden Sie die aktuelle Version 1 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=42659) auf das Windows-System herunter. Die Sicherheitsupdates der neuesten Version des Tools bieten eine externe Schutzvorrichtung für den BitLocker-Schlüssel und das aktualisierte Entsperrmodusfeature.
 
   * Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
-* Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.  
+* Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.
   * Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
   * Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
   * Jeder Auftrag benötigt eine separate Nachverfolgungsnummer. Mehrere Aufträge mit derselben Nachverfolgungsnummer werden nicht unterstützt.
@@ -115,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
        * Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
        * Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
    * Wählen Sie ein Abonnement aus.
-   * Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.  
+   * Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.
 
      ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
@@ -221,6 +222,102 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag über die Azure-B
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Führen Sie die folgenden Schritte aus, um einen Importauftrag in Azure PowerShell zu erstellen.
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> Solange nur eine Vorschauversion des PowerShell-Moduls **Az.ImportExport** verfügbar ist, müssen Sie es separat mithilfe des Cmdlets `Install-Module` installieren. Sobald dieses PowerShell-Modul allgemein verfügbar ist, wird es in die zukünftigen Releases des Az PowerShell-Moduls integriert und in Azure Cloud Shell standardmäßig zur Verfügung gestellt.
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>Erstellen eines Auftrags
+
+1. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Zum Erstellen einer Ressourcengruppe führen Sie das Cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) aus:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myierg -Location westus
+   ```
+
+1. Sie können ein vorhandenes Speicherkonto verwenden oder ein neues erstellen. Zum Erstellen eines Speicherkontos führen Sie das Cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) aus:
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName myierg -AccountName myssdocsstorage -SkuName Standard_RAGRS -Location westus -EnableHttpsTrafficOnly $true
+   ```
+
+1. Um eine Liste der Standorte abzurufen, an die Sie Datenträger versenden können, verwenden Sie das Cmdlet [Get-AzImportExportLocation](/powershell/module/az.importexport/get-azimportexportlocation):
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. Verwenden Sie das Cmdlet `Get-AzImportExportLocation` mit dem Parameter `Name`, um Standorte für Ihre Region abzurufen:
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation -Name westus
+   ```
+
+1. Führen Sie das folgende Beispiel für [New-AzImportExport](/powershell/module/az.importexport/new-azimportexport) aus, um einen Importauftrag zu erstellen:
+
+   ```azurepowershell-interactive
+   $driveList = @(@{
+     DriveId = '9CA995BA'
+     BitLockerKey = '439675-460165-128202-905124-487224-524332-851649-442187'
+     ManifestFile = '\\DriveManifest.xml'
+     ManifestHash = '69512026C1E8D4401816A2E5B8D7420D'
+     DriveHeaderHash = 'AZ31BGB1'
+   })
+
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'MyIEjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      DriveList = $driveList
+      JobType = 'Import'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      ReturnShippingCarrierName = 'FedEx'
+      ReturnShippingCarrierAccountNumber = '123456789'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+   > [!TIP]
+   > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
+
+1. Verwenden Sie das Cmdlet [Get-AzImportExport](/powershell/module/az.importexport/get-azimportexport), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie das Cmdlet [Update-AzImportExport](/powershell/module/az.importexport/update-azimportexport) aus:
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
 
 ---
 

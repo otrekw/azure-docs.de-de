@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367736"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336118"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -287,32 +287,32 @@ Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ih
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Webhookaktionen verfügen.
 
-### <a name="service-tag"></a>Diensttag
+Häufige Aktualisierungen der Quell-IP-Adressen können im Webhook recht zeitaufwändig sein. Die Verwendung von **Diensttags** für *ActionGroup* hilft bei der Minimierung der Komplexität von häufigen manuellen Aktualisierungen von IP-Adressen. Die oben angegebenen Präfixe für Quell-IP-Adressbereiche,für die das **Diensttag** gilt, werden automatisch von Microsoft verwaltet.
+
+#### <a name="service-tag"></a>Diensttag
 Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln für eine Aktionsgruppe minimiert.
 
-1. Suchen Sie im Azure-Portal unter „Azure-Dienste“ nach *Netzwerksicherheitsgruppe* .
+1. Suchen Sie im Azure-Portal unter „Azure-Dienste“ nach *Netzwerksicherheitsgruppe*.
 2. Klicken Sie auf **Hinzufügen** , und erstellen Sie eine Netzwerksicherheitsgruppe.
 
    1. Fügen Sie den Ressourcengruppennamen hinzu, und geben Sie die *Instanzdetails* ein.
-   1. Klicken Sie auf **Überprüfen + erstellen** und dann auf *Erstellen* .
+   1. Klicken Sie auf **Überprüfen + erstellen** und dann auf *Erstellen*.
    
    :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Beispiel für das Erstellen einer Netzwerksicherheitsgruppe"border="true":::
 
-3. Wechseln Sie zur Ressourcengruppe, und klicken Sie dann auf die erstellte *Netzwerksicherheitsgruppe* .
+3. Wechseln Sie zur Ressourcengruppe, und klicken Sie dann auf die erstellte *Netzwerksicherheitsgruppe*.
 
-    1. Klicken Sie auf *Eingangssicherheitsregeln* .
-    1. Klicken Sie auf **Hinzufügen** .
+    1. Klicken Sie auf *Eingangssicherheitsregeln*.
+    1. Klicken Sie auf **Hinzufügen**.
     
     :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
 
 4. Im rechten Bereich wird ein neues Fenster geöffnet.
     1.  Auswählen der Quelle: **Diensttag**
     1.  Quelldiensttag: **ActionGroup**
-    1.  Klicken Sie auf **Hinzufügen** .
+    1.  Klicken Sie auf **Hinzufügen**.
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
-
-Die Verwendung von **Diensttags** für „ActionGroup“ hilft bei der Minimierung der Komplexität von häufigen Aktualisierungen von IP-Adressen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](./alerts-sms-behavior.md).  

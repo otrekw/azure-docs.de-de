@@ -4,17 +4,19 @@ description: Informationen zu Zugriffssteuerungskonzepten in Azure Cosmos DB, da
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371731"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340905"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.
 
@@ -118,6 +120,12 @@ Eine Berechtigungsressource ist einem Benutzer zugeordnet und sowohl auf der Con
 
 > [!NOTE]
 > Zum Ausführen von gespeicherten Prozeduren muss der Benutzer über uneingeschränkte Berechtigung für den Container verfügen, in dem die gespeicherte Prozedur ausgeführt wird.
+
+Wenn Sie die [Diagnoseprotokolle für Anforderungen auf Datenebene](cosmosdb-monitor-resource-logs.md) aktivieren, werden die beiden folgenden Eigenschaften entsprechend der Berechtigung protokolliert:
+
+* **resourceTokenPermissionId** : Diese Eigenschaft gibt die von Ihnen festgelegten Ressourcentokenberechtigungs-ID an. 
+
+* **resourceTokenPermissionMode** : Diese Eigenschaft gibt den Berechtigungsmodus an, den Sie beim Erstellen des Ressourcentokens festgelegt haben. Der Berechtigungsmodus kann Werte wie „Alle“ oder „Lesen“ aufweisen.
 
 ### <a name="code-sample-to-create-permission"></a>Codebeispiel für die Berechtigungserstellung
 

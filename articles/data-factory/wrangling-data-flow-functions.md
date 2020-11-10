@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636118"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233949"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformationsfunktionen im Wranglingdatenfluss
 
@@ -25,7 +25,7 @@ Der Wranglingdatenfluss in Azure Data Factory ermöglicht die codefreie agile Da
 
 Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen von Wranglingdatenflüssen wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 Die unterstützten Power Query M-Funktionen sind im Folgenden aufgeführt.
 
@@ -76,7 +76,7 @@ Spalten lassen sich mit den folgenden M-Funktionen hinzufügen oder transformier
 
 Verwenden Sie [Table.Group](/powerquery-m/table-group), um Werte zu aggregieren.
 * Muss mit einer Aggregationsfunktion verwendet werden.
-* Unterstützte Aggregationsfunktionen:   [Table.RowCount](/powerquery-m/table-rowcount), [List.Sum](/powerquery-m/list-sum), [List.Count](/powerquery-m/list-count), [List.Average](/powerquery-m/list-average), [List.Min](/powerquery-m/list-min), [List.Max](/powerquery-m/list-max), [List.StandardDeviation](/powerquery-m/list-standarddeviation), [List.First](/powerquery-m/list-first), [List.Last](/powerquery-m/list-last)
+* Unterstützte Aggregationsfunktionen:   [List.Sum](/powerquery-m/list-sum), [List.Count](/powerquery-m/list-count), [List.Average](/powerquery-m/list-average), [List.Min](/powerquery-m/list-min), [List.Max](/powerquery-m/list-max), [List.StandardDeviation](/powerquery-m/list-standarddeviation), [List.First](/powerquery-m/list-first), [List.Last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Sortierung
 
@@ -96,7 +96,7 @@ Verwenden Sie [Table.Sort](/powerquery-m/table-sort), um Werte zu sortieren.
 | Table.NestedJoin | Wenn Sie nur einen Join durchführen, führt dies zu einem Überprüfungsfehler. Die Spalten müssen erweitert werden, damit der Vorgang funktioniert. |
 | Table.Distinct | Das Entfernen doppelter Zeilen wird nicht unterstützt. |
 | Table.RemoveLastN | Das Entfernen der unteren Zeilen wird nicht unterstützt. |
-| Table.RowCount | Nicht unterstützt. Sie können jedoch eine Spalte mit durchgehend leeren Zellen hinzufügen (Bedingungsspalte kann verwendet werden) und dann „Gruppieren nach“ für diese Spalte ausführen. Table.Group wird unterstützt. | 
+| Table.RowCount | Nicht unterstützt, kann jedoch durch Hinzufügen einer benutzerdefinierten Spalte mit dem Wert „1“ und anschließendes Aggregieren dieser Spalte mit „List.Sum“ erreicht werden. Table.Group wird unterstützt. | 
 | Fehlerbehandlung auf Zeilenebene | Die Fehlerbehandlung auf Zeilenebene wird derzeit nicht unterstützt. Wenn Sie z. B. nicht numerische Werte aus einer Spalte herausfiltern möchten, können Sie u. a. die Textspalte in eine Zahl transformieren. Jede Zelle, die nicht transformiert werden kann, weist einen Fehlerstatus auf und muss gefiltert werden. Dieses Szenario ist in einem Wranglingdatenfluss nicht möglich. |
 | Table.Transpose | Nicht unterstützt |
 | Table.Pivot | Nicht unterstützt |

@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb227ab955ca2ec9ec72b4a86fd321a45dee997f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c0323bed627fd622471724b20677914736c564d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107656"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319910"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Rekursives Festlegen von Zugriffssteuerungslisten (ACLs) für Azure Data Lake Storage Gen2
 
@@ -39,7 +39,7 @@ Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete E
 
 - Verständnis der Anwendung von Zugriffssteuerungslisten auf Verzeichnisse und Dateien. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
-Weitere Informationen zur Installation mit PowerShell, dem .NET SDK und dem Python-SDK finden Sie in diesem Artikel im Abschnitt **Einrichten Ihres Projekts** .
+Weitere Informationen zur Installation mit PowerShell, dem .NET SDK und dem Python-SDK finden Sie in diesem Artikel im Abschnitt **Einrichten Ihres Projekts**.
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
@@ -47,9 +47,7 @@ Installieren Sie die erforderlichen Bibliotheken.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Stellen Sie sicher, dass .NET Framework installiert ist. Siehe [Download .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) (Herunterladen von .NET Framework).
- 
-2. Überprüfen Sie mit dem folgenden Befehl, ob PowerShell Version `5.1` oder höher installiert ist.    
+1. Überprüfen Sie mit dem folgenden Befehl, ob PowerShell Version `5.1` oder höher installiert ist.    
 
    ```powershell
    echo $PSVersionTable.PSVersion.ToString() 
@@ -57,21 +55,24 @@ Installieren Sie die erforderlichen Bibliotheken.
     
    Informationen zum Aktualisieren der PowerShell-Version finden Sie unter [Aktualisieren einer vorhandenen Windows PowerShell-Version](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell).
     
-3. Installieren Sie die aktuelle Version des PowerShellGet-Moduls.
+2. Installieren Sie das Modul **Az.Storage**.
 
    ```powershell
-   install-Module PowerShellGet –Repository PSGallery –Force  
-   ```
-
-4. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
-
-5. Installieren Sie das Vorschaumodul **Az.Storage** .
-
-   ```powershell
-   Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+1. Öffnen Sie [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), oder falls Sie die Azure-Befehlszeilenschnittstelle lokal [installiert](https://docs.microsoft.com/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
+
+2. Überprüfen Sie mit dem folgenden Befehl, ob die installierte Version der Azure-Befehlszeilenschnittstelle `2.14.0` oder höher ist.
+
+   ```azurecli
+    az --version
+   ```
+   Wenn Ihre Version der Azure-Befehlszeilenschnittstelle kleiner als `2.14.0` ist, dann installieren Sie eine neuere Version. Weitere Informationen finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -136,14 +137,14 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
    pip install azure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl
    ```
 
-Fügen Sie diese Importanweisungen am Anfang Ihrer Codedatei hinzu.
+3. Fügen Sie diese Importanweisungen am Anfang Ihrer Codedatei hinzu.
 
-```python
-import os, uuid, sys
-from azure.storage.filedatalake import DataLakeServiceClient
-from azure.core._match_conditions import MatchConditions
-from azure.storage.filedatalake._models import ContentSettings
-```
+   ```python
+   import os, uuid, sys
+   from azure.storage.filedatalake import DataLakeServiceClient
+   from azure.core._match_conditions import MatchConditions
+   from azure.storage.filedatalake._models import ContentSettings
+   ```
 
 ---
 
@@ -190,6 +191,31 @@ Bei diesem Ansatz überprüft das System nicht die Azure RBAC- oder ACL-Berechti
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 $ctx = $storageAccount.Context
 ```
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle lokal verwenden, führen Sie den Anmeldebefehl aus.
+
+   ```azurecli
+   az login
+   ```
+
+   Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
+
+   Öffnen Sie andernfalls die Browserseite [https://aka.ms/devicelogin](https://aka.ms/devicelogin), und geben Sie den in Ihrem Terminal angezeigten Autorisierungscode ein. Melden Sie sich dann im Browser mit Ihren Anmeldeinformationen an.
+
+   Weitere Informationen zu verschiedenen Authentifizierungsmethoden finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI](../common/authorize-data-operations-cli.md).
+
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
+
+   ```azurecli
+   az account set --subscription <subscription-id>
+   ```
+
+   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+
+> [!NOTE]
+> Das in diesem Artikel dargestellte Beispiel zeigt die Azure Active Directory (AD)-Autorisierung. Weitere Informationen zu Autorisierungsmethoden finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI](../common/authorize-data-operations-cli.md).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -363,13 +389,13 @@ except Exception as e:
 
 ## <a name="set-an-acl-recursively"></a>Rekursives Festlegen einer Zugriffssteuerungsliste
 
-Wenn Sie eine Zugriffssteuerungsliste *festlegen* , **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren* . Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert wird, anstatt sie zu ersetzen, finden Sie im Abschnitt [Rekursives Aktualisieren einer Zugriffssteuerungsliste](#update-an-acl-recursively) in diesem Artikel.   
+Wenn Sie eine Zugriffssteuerungsliste *festlegen* , **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren*. Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert wird, anstatt sie zu ersetzen, finden Sie im Abschnitt [Rekursives Aktualisieren einer Zugriffssteuerungsliste](#update-an-acl-recursively) in diesem Artikel.   
 
 Dieser Abschnitt enthält Beispiele, wie eine Zugriffssteuerungsliste festgelegt wird. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Legen Sie mithilfe des Cmdlets `Set-AzDataLakeGen2AclRecursive` rekursiv eine ACL fest.
+Zum rekursiven Festlegen einer Zugriffssteuerungsliste verwenden Sie das Cmdlet **Set-AzDataLakeGen2AclRecursive**.
 
 In diesem Beispiel wird die ACL des Verzeichnisses `my-parent-directory` festgelegt. Mit diesen Einträgen werden dem zuständigen Benutzer Lese-, Schreib- und Ausführungsberechtigungen und der zuständigen Gruppe nur Lese- und Ausführungsberechtigungen gewährt, während allen anderen kein Zugriff gewährt wird. Der letzte ACL-Eintrag in diesem Beispiel gewährt einem bestimmten Benutzer mit der Objekt-ID „xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx“ Lese- und Ausführungsberechtigungen.
 
@@ -389,6 +415,19 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 
 > [!NOTE]
 > Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, verwenden Sie den Parameter **-DefaultScope** , wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Zum rekursiven Festlegen einer Zugriffssteuerungsliste verwenden Sie den Befehl [az storage fs access set-recursive](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive).
+
+In diesem Beispiel wird die ACL des Verzeichnisses `my-parent-directory` festgelegt. Mit diesen Einträgen werden dem zuständigen Benutzer Lese-, Schreib- und Ausführungsberechtigungen und der zuständigen Gruppe nur Lese- und Ausführungsberechtigungen gewährt, während allen anderen kein Zugriff gewährt wird. Der letzte ACL-Eintrag in diesem Beispiel gewährt einem bestimmten Benutzer mit der Objekt-ID „xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx“ Lese- und Ausführungsberechtigungen.
+
+```azurecli
+az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login
+```
+
+> [!NOTE]
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, fügen Sie jedem Eintrag das Präfix `default:` hinzu. Zum Beispiel: `default:user::rwx` oder `default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x`. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -436,7 +475,7 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool is
 
 Legen Sie eine Zugriffssteuerungsliste rekursiv fest, indem Sie die Methode **DataLakeDirectoryClient.setAccessControlRecursive** aufrufen. Übergeben Sie dieser Methode eine [Liste](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Objekte. Jedes [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Element definiert einen ACL-Eintrag. 
 
-Wenn Sie einen **ACL-Standardeintrag** festlegen möchten, rufen Sie die **setDefaultScope** -Methode der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Klasse auf und übergeben den Wert **true** . 
+Wenn Sie einen **ACL-Standardeintrag** festlegen möchten, rufen Sie die **setDefaultScope** -Methode der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Klasse auf und übergeben den Wert **true**. 
 
 In diesem Beispiel wird die ACL des Verzeichnisses `my-parent-directory` festgelegt. Diese Methode akzeptiert einen booleschen Parameter namens `isDefaultScope`, der angibt, ob die Standard-ACL festgelegt werden soll. Dieser Parameter wird bei jedem Aufruf der **setDefaultScope** -Methode der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Klasse verwendet. Mit den Einträgen der ACL werden dem zuständigen Benutzer Lese-, Schreib- und Ausführungsberechtigungen und der zuständigen Gruppe nur Lese- und Ausführungsberechtigungen gewährt, während allen anderen kein Zugriff gewährt wird. Der letzte ACL-Eintrag in diesem Beispiel gewährt einem bestimmten Benutzer mit der Objekt-ID „xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx“ Lese- und Ausführungsberechtigungen.
 
@@ -546,7 +585,7 @@ Dieser Abschnitt enthält Beispiele, wie eine Zugriffssteuerungsliste aktualisie
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Sie aktualisieren eine Zugriffssteuerungsliste rekursiv mithilfe des Cmdlets **Update-AzDataLakeGen2AclRecursive** . 
+Sie aktualisieren eine Zugriffssteuerungsliste rekursiv mithilfe des Cmdlets **Update-AzDataLakeGen2AclRecursive**. 
 
 Dieses Beispiel aktualisiert einen ACL-Eintrag mit Schreibberechtigung. 
 
@@ -563,6 +602,19 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 
 > [!NOTE]
 > Wenn Sie einen **standardmäßigen** ACL-Eintrag aktualisieren möchten, verwenden Sie den Parameter **-DefaultScope** , wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Zum rekursiver Aktualisieren einer Zugriffssteuerungsliste verwenden Sie den Befehl [az storage fs access update-recursive](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive). 
+
+Dieses Beispiel aktualisiert einen ACL-Eintrag mit Schreibberechtigung. 
+
+```azurecli
+az storage fs access update-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login
+```
+
+> [!NOTE]
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag aktualisieren möchten, fügen Sie jedem Eintrag das Präfix `default:` hinzu. Beispiel: `default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x`.
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -670,7 +722,7 @@ Dieser Abschnitt enthält Beispiele, wie eine ACL entfernt wird.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Sie entfernen ACL-Einträge mithilfe des Cmdlets **Remove-AzDataLakeGen2AclRecursive** . 
+Sie entfernen ACL-Einträge mithilfe des Cmdlets **Remove-AzDataLakeGen2AclRecursive**. 
 
 In diesem Beispiel wird ein ACL-Eintrag aus dem Stammverzeichnis des Containers entfernt.  
 
@@ -685,6 +737,19 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 
 > [!NOTE]
 > Wenn Sie einen **standardmäßigen** ACL-Eintrag entfernen möchten, verwenden Sie den Parameter **-DefaultScope** , wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Zum Entfernen von ACL-Einträgen verwenden Sie den Befehl [az storage fs access remove-recursive](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_remove_recursive). 
+
+In diesem Beispiel wird ein ACL-Eintrag aus dem Stammverzeichnis des Containers entfernt.  
+
+```azurecli
+az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login
+```
+
+> [!NOTE]
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag entfernen möchten, fügen Sie jedem Eintrag das Präfix `default:` hinzu. Beispiel: `default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -718,7 +783,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isD
 
 Entfernen Sie ACL-Einträge, indem Sie die Methode **DataLakeDirectoryClient.removeAccessControlRecursive** aufrufen. Übergeben Sie dieser Methode eine [Liste](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Objekte. Jedes [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Element definiert einen ACL-Eintrag. 
 
-Wenn Sie einen **ACL-Standardeintrag** entfernen möchten, rufen Sie die **setDefaultScope** -Methode der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Klasse auf und übergeben den Wert **true** .  
+Wenn Sie einen **ACL-Standardeintrag** entfernen möchten, rufen Sie die **setDefaultScope** -Methode der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Klasse auf und übergeben den Wert **true**.  
 
 In diesem Beispiel wird ein ACL-Eintrag aus der Zugriffssteuerungsliste des Verzeichnisses `my-parent-directory` entfernt. Diese Methode akzeptiert einen booleschen Parameter namens `isDefaultScope`, der angibt, ob der Eintrag aus der Standard-ACL entfernt werden soll. Dieser Parameter wird beim Aufruf der **setDefaultScope** -Methode der [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Klasse verwendet.
 
@@ -782,20 +847,49 @@ Es können Laufzeit- oder Berechtigungsfehler auftreten. Starten Sie den Prozess
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geben Sie Ergebnisse an die Variable zurück. Übergeben Sie fehlerhafte Einträge an eine formatierte Tabelle.
+In diesem Beispiel werden ACLs in Batches festgelegt. Bei jedem Aufruf von **Set-AzDataLakeGen2AclRecursive** wird ein Fortsetzungstoken zurückgegeben, bis alle ACLs festgelegt sind. In diesem Beispiel wird eine Variable namens `$ContinueOnFailure` auf `$false` festgelegt, um anzugeben, dass der Prozess das Festlegen von ACLs im Fall eines Berechtigungsfehlers nicht fortsetzen soll. Das Fortsetzungstoken wird in der Variablen `&token` gespeichert. Im Fall eines Fehlers kann dieses Token verwendet werden, um den Prozess ab dem Fehlerzeitpunkt fortzusetzen.
 
 ```powershell
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-$result
-$result.FailedEntries | ft 
+$ContinueOnFailure = $false
+
+$token = $null
+$TotalDirectoriesSuccess = 0
+$TotalFilesSuccess = 0
+$totalFailure = 0
+$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
+do
+{
+    if ($ContinueOnFailure)
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
+    }
+    else
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
+    }
+    echo $result
+    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
+    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
+    $totalFailure += $result.TotalFailureCount
+    $FailedEntries += $result.FailedEntries
+    $token = $result.ContinuationToken
+} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+echo ""
+echo "[Result Summary]"
+echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
+echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
+echo "FailedEntries:"$($FailedEntries | ft)
+
+
 ```
 
-Basierend auf der Ausgabe der Tabelle können Sie alle Berechtigungsfehler beheben und die Ausführung dann mit dem Fortsetzungstoken fortsetzen.
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-```powershell
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
-$result
+Im Fall eines Fehlers können Sie ein Fortsetzungstoken zurückgeben, indem Sie den Parameter `--continue-on-failure` auf `false` festlegen. Nachdem Sie die Fehler behoben haben, können Sie den Prozess ab dem Fehlerzeitpunkt fortsetzen. Dazu führen Sie den Befehl erneut aus, und legen Sie dann den Parameter `--continuation` auf das Fortsetzungstoken fest. 
 
+```azurecli
+az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --continue-on-failure false --continuation xxxxxxx -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login  
 ```
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
@@ -893,13 +987,152 @@ def resume_set_acl_recursive(continuation_token):
 
 ---
 
+Wenn Sie möchten, dass der Prozess ohne Unterbrechung durch Berechtigungsfehler durchgeführt wird, können Sie dies angeben.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+In diesem Beispiel wird die Variable `$ContinueOnFailure` auf `$true` festgelegt, um anzugeben, dass der Prozess das Festlegen von ACLs im Fall eines Berechtigungsfehlers fortsetzen soll. 
+
+```powershell
+$ContinueOnFailure = $true
+
+$token = $null
+$TotalDirectoriesSuccess = 0
+$TotalFilesSuccess = 0
+$totalFailure = 0
+$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
+do
+{
+    if ($ContinueOnFailure)
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
+    }
+    else
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
+    }
+    echo $result
+    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
+    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
+    $totalFailure += $result.TotalFailureCount
+    $FailedEntries += $result.FailedEntries
+    $token = $result.ContinuationToken
+} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+echo ""
+echo "[Result Summary]"
+echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
+echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
+echo "FailedEntries:"$($FailedEntries | ft)
+
+
+```
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um sicherzustellen, dass der Prozess ohne Unterbrechung durchgeführt wird, legen Sie den Parameter `--continue-on-failure` auf `true` fest. 
+
+```azurecli
+az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --continue-on-failure true --continuation xxxxxxx -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login  
+```
+
+### <a name="net"></a>[.NET](#tab/dotnet)
+
+Um sicherzustellen, dass der Prozess ohne Unterbrechung durchgeführt wird, übergeben Sie ein **AccessControlChangedOptions** -Objekt, und legen Sie die Eigenschaft **ContinueOnFailure** dieses Objekts auf ``true`` fest.
+
+In diesem Beispiel werden ACL-Einträge rekursiv festgelegt. Wenn dieser Code auf einen Berechtigungsfehler stößt, wird dieser Fehler aufgezeichnet und die Ausführung fortgesetzt. In diesem Beispiel wird die Anzahl der Fehler an die Konsole ausgegeben. 
+
+```cs
+public async Task ContinueOnFailureAsync(DataLakeServiceClient serviceClient,
+    DataLakeDirectoryClient directoryClient, 
+    List<PathAccessControlItem> accessControlList)
+{
+    var accessControlChangeResult = 
+        await directoryClient.SetAccessControlRecursiveAsync(
+            accessControlList, null, new AccessControlChangeOptions() 
+            { ContinueOnFailure = true });
+
+    var counters = accessControlChangeResult.Value.Counters;
+
+    Console.WriteLine("Number of directories changed: " +
+        counters.ChangedDirectoriesCount.ToString());
+
+    Console.WriteLine("Number of files changed: " +
+        counters.ChangedFilesCount.ToString());
+
+    Console.WriteLine("Number of failures: " +
+        counters.FailedChangesCount.ToString());
+}
+```
+
+### <a name="java"></a>[Java](#tab/java)
+
+Um sicherzustellen, dass der Prozess ohne Unterbrechung durchgeführt wird, rufen Sie die **setContinueOnFailure** -Methode eines [PathSetAccessControlRecursiveOptions](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)-Objekts auf, und übergeben Sie den Wert **true**.
+
+In diesem Beispiel werden ACL-Einträge rekursiv festgelegt. Wenn dieser Code auf einen Berechtigungsfehler stößt, wird dieser Fehler aufgezeichnet und die Ausführung fortgesetzt. In diesem Beispiel wird die Anzahl der Fehler an die Konsole ausgegeben. 
+
+```java
+static public void ContinueOnFailure(DataLakeFileSystemClient fileSystemClient,
+DataLakeDirectoryClient directoryClient,
+List<PathAccessControlEntry> accessControlList){
+    
+    PathSetAccessControlRecursiveOptions options = 
+        new PathSetAccessControlRecursiveOptions(accessControlList);
+        
+    options.setContinueOnFailure(true);
+    
+    Response<AccessControlChangeResult> accessControlChangeResult =  
+        directoryClient.setAccessControlRecursiveWithResponse(options, null, null);
+
+    AccessControlChangeCounters counters = accessControlChangeResult.getValue().getCounters();
+
+    System.out.println("Number of directories changes: " + 
+        counters.getChangedDirectoriesCount());
+
+    System.out.println("Number of files changed: " + 
+        counters.getChangedDirectoriesCount());
+
+    System.out.println("Number of failures: " + 
+        counters.getChangedDirectoriesCount());
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+Um sicherzustellen, dass der Prozess ohne Unterbrechung durchgeführt wird, übergeben Sie kein Fortsetzungstoken an die **DataLakeDirectoryClient.set_access_control_recursive** -Methode.
+
+In diesem Beispiel werden ACL-Einträge rekursiv festgelegt. Wenn dieser Code auf einen Berechtigungsfehler stößt, wird dieser Fehler aufgezeichnet und die Ausführung fortgesetzt. In diesem Beispiel wird die Anzahl der Fehler an die Konsole ausgegeben. 
+
+```python
+def continue_on_failure():
+    
+    try:
+        file_system_client = service_client.get_file_system_client(file_system="my-container")
+
+        directory_client = file_system_client.get_directory_client("my-parent-directory")
+              
+        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'
+
+        acl_change_result = directory_client.set_access_control_recursive(acl=acl)
+
+        print("Summary: {} directories and {} files were updated successfully, {} failures were counted."
+          .format(acl_change_result.counters.directories_successful, acl_change_result.counters.files_successful,
+                  acl_change_result.counters.failure_count))
+        
+    except Exception as e:
+     print(e)
+```
+
+---
+
 ## <a name="resources"></a>Ressourcen
 
 Dieser Abschnitt enthält Links zu Bibliotheken und Codebeispielen.
 
 #### <a name="libraries"></a>Bibliotheken
 
-- [PowerShell](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.powershellgallery.com%2Fpackages%2FAz.Storage%2F2.5.2-preview&data=02%7C01%7Cnormesta%40microsoft.com%7Ccdabce06132c42132b4008d849a2dfb1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637340311173215017&sdata=FWynO9UKTt7ESMCFgkWaL7J%2F%2BjODaRo5BD6G6yCx9os%3D&reserved=0)
+- [PowerShell](https://www.powershellgallery.com/packages/Az.Storage/3.0.0)
+- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/storage/fs/access)
 - [.NET](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json)
 - [Java](/java/api/overview/azure/storage-file-datalake-readme)
 - [Python](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2Fazure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A47%253A01Z%26se%3D2021-08-25T07%253A47%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DH1XYw4FTLJse%252BYQ%252BfamVL21UPVIKRnnh2mfudA%252BfI0I%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C95a5966d938a4902560e08d84912fe32%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339693209725909&sdata=acv4KWZdzkITw1lP0%2FiA3lZuW7NF5JObjY26IXttfGI%3D&reserved=0)
@@ -908,9 +1141,11 @@ Dieser Abschnitt enthält Links zu Bibliotheken und Codebeispielen.
 
 - Mit PowerShell: [Info](https://recursiveaclpr.blob.core.windows.net/privatedrop/README.txt?sv=2019-02-02&st=2020-08-24T17%3A03%3A18Z&se=2021-08-25T17%3A03%3A00Z&sr=b&sp=r&sig=sPdKiCSXWExV62sByeOYqBTqpGmV2h9o8BLij3iPkNQ%3D) | [Beispiel](https://recursiveaclpr.blob.core.windows.net/privatedrop/samplePS.ps1?sv=2019-02-02&st=2020-08-24T17%3A04%3A44Z&se=2021-08-25T17%3A04%3A00Z&sr=b&sp=r&sig=dNNKS%2BZcp%2F1gl6yOx6QLZ6OpmXkN88ZjBeBtym1Mejo%3D)
 
+- Azure CLI: [Beispiel](https://github.com/Azure/azure-cli/blob/2a55a5350696a3a93a13f364f2104ec8bc82cdd3/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
+
 - .NET: [Info](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520net%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A20%253A42Z%26se%3D2021-08-26T23%253A20%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DKrnHvasHoSoVeUyr2g%252FSc2aDVW3De4A%252Fvx0lFWZs494%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503767961&sdata=gd%2B2LphTtDFVb7pZko9rkGO9OG%2FVvmeXprHB9IOEYXE%3D&reserved=0) | [Beispiel](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)
 
-- Python: [Info](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520python%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A21%253A47Z%26se%3D2021-08-26T23%253A21%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DRq6Bl5lXrtYk79thy8wX7UTbjyd2f%252B6xzVBFFVYbdYg%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503777915&sdata=3e46Lp2miOHj755Gh0odH3M0%2BdTF3loGCCBENrulVTM%3D&reserved=0) | [Beispiel](https://recursiveaclpr.blob.core.windows.net/privatedrop/datalake_samples_access_control_async.py?sv=2019-02-02&st=2020-08-24T07%3A48%3A10Z&se=2021-08-25T07%3A48%3A00Z&sr=b&sp=r&sig=%2F1c540%2BpXYyNcuTmWPWHg2m9SyClXLIMw7ChLZGsyD0%3D)
+- Python: [Info](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520python%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A21%253A47Z%26se%3D2021-08-26T23%253A21%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DRq6Bl5lXrtYk79thy8wX7UTbjyd2f%252B6xzVBFFVYbdYg%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503777915&sdata=3e46Lp2miOHj755Gh0odH3M0%2BdTF3loGCCBENrulVTM%3D&reserved=0) | [Beispiel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)
 
 ## <a name="best-practice-guidelines"></a>Richtlinien zu bewährten Methoden
 

@@ -4,16 +4,18 @@ description: Erfahren Sie etwas über Pagingkonzepte und Fortsetzungstoken.
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8219611ac2334594dc826db3c8191102d7383835
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485034"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338270"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Paginierung in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In Azure Cosmos DB können Abfragen mehrere Ergebnisseiten enthalten. In diesem Dokument werden die Kriterien erläutert, mit denen die Abfrage-Engine von Azure Cosmos DB entscheidet, ob Abfrageergebnisse auf mehrere Seiten aufgeteilt werden. Sie können optional Fortsetzungstoken verwenden, um Abfrageergebnisse zu verwalten, die mehrere Seiten umfassen.
 
@@ -45,12 +47,13 @@ Im Folgenden finden Sie einige Beispiele für die Verarbeitung der Ergebnisse vo
 
 ## <a name="continuation-tokens"></a>Fortsetzungstoken
 
-Sie können im .NET SDK und im Java SDK optional Fortsetzungstoken als Lesezeichen für den Fortschritt der Abfrage verwenden. Azure Cosmos DB-Abfrageausführungen sind auf der Serverseite zustandslos und können jederzeit mit dem Fortsetzungstoken fortgesetzt werden. Fortsetzungstoken werden im Node.js SDK und im Python SDK nicht unterstützt.
+Sie können im .NET SDK und im Java SDK optional Fortsetzungstoken als Lesezeichen für den Fortschritt der Abfrage verwenden. Azure Cosmos DB-Abfrageausführungen sind auf der Serverseite zustandslos und können jederzeit mit dem Fortsetzungstoken fortgesetzt werden. Fortsetzungstoken werden im Node.js SDK nicht unterstützt. Beim Python SDK werden sie für Abfragen in einer einzelnen Partition unterstützt, und der PK muss im Options-Objekt angegeben werden, da das Vorhandensein in der Abfrage selbst nicht ausreicht.
 
 Im Folgenden finden Sie ein Beispiel für die Verwendung von Fortsetzungstoken:
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Wenn die Abfrage ein Fortsetzungstoken zurückgibt, stehen zusätzliche Abfrageergebnisse bereit.
 

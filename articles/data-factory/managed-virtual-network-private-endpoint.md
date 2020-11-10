@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635778"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317075"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -51,7 +51,7 @@ Verwaltete private Endpunkte sind private Endpunkte, die im verwalteten virtuell
 
 ![Neuer verwalteter privater Endpunkt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory unterstützt private Links. Der private Link ermöglicht Ihnen den Zugriff auf Azure-Dienste (PaaS, z. B. Azure Storage, Azure Cosmos DB, Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)).
+Azure Data Factory unterstützt private Links. Der private Link ermöglicht Ihnen den Zugriff auf Azure-Dienste (PaaS, z. B. Azure Storage, Azure Cosmos DB, Azure Synapse Analytics (ehemals SQL Data Warehouse)).
 
 Bei der Verwendung eines privaten Links wird der Datenverkehr zwischen Ihrem Datenspeicher und dem verwalteten virtuellen Netzwerk vollständig über das Microsoft-Backbone-Netzwerk übertragen. Private Link schützt vor einer möglichen Datenexfiltration. Ein privater Link zu einer Ressource wird durch die Erstellung eines privaten Endpunkts eingerichtet.
 
@@ -81,7 +81,7 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL-Datenbank (ohne Azure SQL Managed Instance)
-- Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)
+- Azure Synapse Analytics (ehemals SQL Data Warehouse)
 - Azure Cosmos DB SQL
 - Azure-Schlüsseltresor
 - Azure Private Link-Dienst

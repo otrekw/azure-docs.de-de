@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318502"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -51,10 +51,10 @@ Im Folgenden finden Sie eine Liste der Voraussetzungen für die Freigabe von Dat
 * Ein Azure SQL-Datenbank-Benutzer mit Zugriff vom Typ „db_datareader“ zum Navigieren durch Tabellen und/oder Ansichten sowie zum Auswählen der Tabellen und/oder Ansichten, die Sie freigeben möchten. 
 
 * SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke* .
-    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten* .
-    1. Klicken Sie auf **+Client-IP hinzufügen** . Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
-    1. Klicken Sie auf **Speichern** . 
+    1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
+    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
+    1. Klicken Sie auf **+Client-IP hinzufügen**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
+    1. Klicken Sie auf **Speichern**. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -66,7 +66,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie im Portal links oben die Menüschaltfläche und dann **Ressource erstellen** (+) aus.
 
-1. Suchen Sie nach *Data Share* .
+1. Suchen Sie nach *Data Share*.
 
 1. Wählen Sie „Data Share“ und dann die Option **Erstellen** aus.
 
@@ -82,7 +82,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie **Überprüfen + erstellen** und dann **Erstellen** aus, um Ihr Data Share-Konto bereitzustellen. Die Bereitstellung eines neuen Data Share-Kontos dauert normalerweise maximal ca. 2 Minuten. 
 
-1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln** .
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
 ### <a name="create-a-share"></a>Erstellen einer Freigabe
 
@@ -92,13 +92,13 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie **Start sharing your data** (Mit Freigabe der Daten beginnen).
 
-1. Klicken Sie auf **Erstellen** .   
+1. Klicken Sie auf **Erstellen**.   
 
 1. Geben Sie die Details für Ihre Freigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
 
     ![EnterShareDetails](./media/enter-share-details.png "Eingeben der Details zur Freigabe") 
 
-1. Wählen Sie **Weiter** .
+1. Wählen Sie **Weiter**.
 
 1. Wählen Sie zum Hinzufügen von Datasets zu Ihrer Freigabe **Datasets hinzufügen** aus. 
 
@@ -116,7 +116,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
     ![AddRecipients](./media/add-recipient.png "Hinzufügen von Empfängern") 
 
-1. Wählen Sie **Weiter** .
+1. Wählen Sie **Weiter**.
 
 1. Wenn Sie eine Momentaufnahmefreigabe ausgewählt haben, können Sie einen Momentaufnahmezeitplan konfigurieren, um Aktualisierungen Ihrer Daten für Ihren Datenconsumer bereitzustellen. 
 
@@ -124,9 +124,9 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie eine Startzeit und ein Wiederholungsintervall aus. 
 
-1. Wählen Sie **Weiter** .
+1. Wählen Sie **Weiter**.
 
-1. Überprüfen Sie auf der Registerkarte „Bewerten + erstellen“ die Angaben für Paketinhalt, Einstellungen, Empfänger und Synchronisierungseinstellungen. Klicken Sie auf **Erstellen** .
+1. Überprüfen Sie auf der Registerkarte „Bewerten + erstellen“ die Angaben für Paketinhalt, Einstellungen, Empfänger und Synchronisierungseinstellungen. Klicken Sie auf **Erstellen**.
 
 Ihre Azure Data Share-Instanz wurde jetzt erstellt, und der Empfänger Ihrer Datenfreigabe kann Ihre Einladung nun akzeptieren. 
 
@@ -166,10 +166,10 @@ Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen mö
         Beachten Sie, dass *<share_acc_name>* der Name Ihrer Data Share-Ressource ist. Falls Sie noch keine Data Share-Ressource erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.         
 
 * SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke* .
-    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten* .
-    1. Klicken Sie auf **+Client-IP hinzufügen** . Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
-    1. Klicken Sie auf **Speichern** . 
+    1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
+    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
+    1. Klicken Sie auf **+Client-IP hinzufügen**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
+    1. Klicken Sie auf **Speichern**. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -181,14 +181,14 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
    Wenn Sie die Einladung über die E-Mail öffnen möchten, überprüfen Sie Ihren Posteingang auf eine Einladung von Ihrem Datenanbieter. Die Einladung stammt von Microsoft Azure und hat die Bezeichnung **Azure Data Share-Einladung von <yourdataprovider@domain.com>** . Klicken Sie auf **Einladung anzeigen** , um Ihre Einladung in Azure anzuzeigen. 
 
-   Wenn Sie eine Einladung direkt im Azure-Portal öffnen möchten, suchen Sie im Azure-Portal nach **Einladungen zu Data Share** . Dadurch gelangen Sie zur Liste der Data Share-Einladungen.
+   Wenn Sie eine Einladung direkt im Azure-Portal öffnen möchten, suchen Sie im Azure-Portal nach **Einladungen zu Data Share**. Dadurch gelangen Sie zur Liste der Data Share-Einladungen.
 
    ![Liste mit Einladungen](./media/invitations.png "Liste mit Einladungen") 
 
 1. Wählen Sie die Freigabe aus, die Sie anzeigen möchten. 
 
 ### <a name="accept-invitation"></a>Annehmen der Einladung
-1. Stellen Sie sicher, dass Sie alle Felder überprüfen – auch die **Nutzungsbedingungen** . Wenn Sie den Nutzungsbedingungen zustimmen, müssen Sie das entsprechende Kontrollkästchen aktivieren, um dies anzugeben. 
+1. Stellen Sie sicher, dass Sie alle Felder überprüfen – auch die **Nutzungsbedingungen**. Wenn Sie den Nutzungsbedingungen zustimmen, müssen Sie das entsprechende Kontrollkästchen aktivieren, um dies anzugeben. 
 
    ![Nutzungsbedingungen](./media/terms-of-use.png "Nutzungsbedingungen") 
 
@@ -275,7 +275,7 @@ Wenn Sie Daten aus einer SQL-Quelle freigeben, wird während des Momentaufnahmev
 
 >[!NOTE]
 > 1. Für Datentypen, die dem Zwischendatentyp „Decimal“ zugeordnet sind, unterstützt die Momentaufnahme derzeit eine Genauigkeit von bis zu 28. Wenn Ihre Daten eine höhere Genauigkeit als 28 erfordern, erwägen Sie, sie in eine Zeichenfolge zu konvertieren. 
-> 1.  Wenn Sie Daten aus einer Azure SQL-Datenbank-Instanz in Azure Synapse Analytics freigeben, werden nicht alle Datentypen unterstützt. Weitere Informationen finden Sie unter [Tabellendatentypen in einem Synapse SQL-Pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md). 
+> 1.  Wenn Sie Daten aus einer Azure SQL-Datenbank-Instanz in Azure Synapse Analytics freigeben, werden nicht alle Datentypen unterstützt. Weitere Informationen finden Sie unter [Tabellendatentypen in einem dedizierten SQL-Pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md). 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL mit Always Encrypted oder dynamischer Datenmaskierung
 Derzeit bietet Azure Data Share keine Unterstützung für Azure SQL-Datenbanken, für die Always Encrypted konfiguriert ist. 

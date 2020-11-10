@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636900"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321103"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Laden von 1 TB Daten in Azure Synapse Analytics in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -65,7 +65,7 @@ Dieser Artikel enthält detaillierte Anleitungen zum Verschieben von Daten in Az
   >
   >
 
-    Bewegen Sie den Schieberegler „Leistung“ ganz nach rechts, um einen Synapse SQL-Pool mit 6.000 DWUs zu erstellen:
+    Bewegen Sie den Schieberegler „Leistung“ ganz nach rechts, um einen dedizierten SQL-Pool mit 6.000 DWUs zu erstellen:
 
     ![Schieberegler „Performance“ (Leistung)](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -112,25 +112,25 @@ Dieser Artikel enthält detaillierte Anleitungen zum Verschieben von Daten in Az
 
 ## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory** .
+2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory**.
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
-       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar** . Ändern Sie den Namen der Data Factory (z. B. in „IhrnameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
+       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z. B. in „IhrnameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
    2. Wählen Sie Ihr Azure- **Abonnement** aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
       2. Wählen Sie **Neu erstellen** , um einen Namen für eine Ressourcengruppe einzugeben.
    4. Wählen Sie einen **Standort** für die Data Factory aus.
-   5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften** .  
-   6. Klicken Sie auf **Erstellen** .
+   5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
+   6. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
    ![Data Factory-Startseite](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
 5. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren** , um den **Kopier-Assistenten** zu starten.
 
    > [!NOTE]
-   > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren** , oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com** . Versuchen Sie anschließend erneut, den Assistenten zu starten.
+   > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren** , oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.
    >
    >
 
@@ -141,22 +141,22 @@ Auf der Seite **Eigenschaften** :
 
 1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSqlDataWarehouse** ein.
 2. Wählen Sie die Option **Run once now (Einmalig ausführen)** aus.   
-3. Klicken Sie auf **Weiter** .  
+3. Klicken Sie auf **Weiter**.  
 
     ![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Schritt 2: Konfigurieren der Quelle
 In diesem Abschnitt werden die Schritte zum Konfigurieren der Quelle angezeigt: Azure Blob mit den TPC-H-Elementdateien mit 1 TB.
 
-1. Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter** .
+1. Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter**.
 
     ![Kopier-Assistent – Seite Quelle auswählen](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Geben Sie die Verbindungsinformationen für das Azure Blob Storage-Konto ein, und klicken Sie auf **Weiter** .
+2. Geben Sie die Verbindungsinformationen für das Azure Blob Storage-Konto ein, und klicken Sie auf **Weiter**.
 
     ![Kopier-Assistent – Quellenverbindungsinformation](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. Wählen Sie den **Ordner** mit den TPC-H-Elementdateien und klicken Sie auf **Weiter** .
+3. Wählen Sie den **Ordner** mit den TPC-H-Elementdateien und klicken Sie auf **Weiter**.
 
     ![Kopier-Assistent – Seite Eingabeordner auswählen](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
@@ -167,28 +167,28 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren der Quelle angezeigt: 
 ## <a name="step-3-configure-destination"></a>Schritt 3: Konfigurieren des Ziels
 Dieser Abschnitt beschreibt das Konfigurieren des Ziels (Tabelle `lineitem`) in der Azure Synapse Analytics-Datenbank.
 
-1. Wählen Sie **Azure Synapse Analytics-** als Zielspeicher aus, und klicken Sie auf **Weiter** .
+1. Wählen Sie **Azure Synapse Analytics-** als Zielspeicher aus, und klicken Sie auf **Weiter**.
 
     ![Kopier-Assistent – Ziel-Datenspeicher auswählen](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Geben Sie die Verbindungsinformationen für Azure Synapse Analytics ein.  Stellen Sie sicher, dass Sie den Benutzer angeben, der Mitglied der Rolle `xlargerc` ist (siehe Abschnitt **Voraussetzungen** für detaillierte Anweisungen), und klicken Sie auf **Weiter** .
+2. Geben Sie die Verbindungsinformationen für Azure Synapse Analytics ein.  Stellen Sie sicher, dass Sie den Benutzer angeben, der Mitglied der Rolle `xlargerc` ist (siehe Abschnitt **Voraussetzungen** für detaillierte Anweisungen), und klicken Sie auf **Weiter**.
 
     ![Kopier-Assistent: Zielverbindungsinformation](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Wählen Sie die Zieltabelle aus, und klicken Sie auf **Weiter** .
+3. Wählen Sie die Zieltabelle aus, und klicken Sie auf **Weiter**.
 
     ![Kopier-Assistent – Seite Zuordnung der Tabelle](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. Lassen Sie auf der Seite „Schemazuordnung“ die Option „Spaltenzuordnung anwenden“ deaktiviert, und klicken Sie auf **Weiter** .
+4. Lassen Sie auf der Seite „Schemazuordnung“ die Option „Spaltenzuordnung anwenden“ deaktiviert, und klicken Sie auf **Weiter**.
 
 ## <a name="step-4-performance-settings"></a>Schritt 4: Leistungseinstellungen
 
-**Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter** .
+**Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter**.
 
 ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>Schritt 5: Bereitstellen und Überwachen der Auslastungsergebnisse
-1. Klicken Sie für die Bereitstellung auf **Fertig stellen** .
+1. Klicken Sie für die Bereitstellung auf **Fertig stellen**.
 
     ![Kopier-Assistent: Seite 1 der Zusammenfassung](media/data-factory-load-sql-data-warehouse/summary-page.png)
 

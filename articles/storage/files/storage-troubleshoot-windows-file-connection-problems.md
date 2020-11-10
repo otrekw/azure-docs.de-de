@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075125"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
-Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen.
+Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) verwenden, um sicherzustellen, dass die Windows-Clientumgebung über richtige erforderliche Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen.
 
 > [!IMPORTANT]
 > Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
@@ -177,23 +177,82 @@ Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befinde
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Eine Datei oder ein Verzeichnis in einer Azure-Dateifreigabe kann nicht gelöscht werden
-Wenn Sie versuchen, eine Datei zu löschen, wird möglicherweise folgende Fehlermeldung angezeigt:
+Einer der Hauptzwecke einer Dateifreigabe ist, dass mehrere Benutzer und Anwendungen gleichzeitig mit Dateien und Verzeichnissen in der Freigabe interagieren können. Um diese Interaktion zu unterstützen, bieten Dateifreigaben verschiedene Methoden zur Vermittlung des Zugriffs auf Dateien und Verzeichnisse.
 
-Die angegebene Ressource ist zum Löschen durch einen SMB-Client markiert.
+Wenn Sie eine Datei aus einer bereitgestellten Azure-Dateifreigabe über SMB öffnen, fordert die Anwendung bzw. das Betriebssystem ein Dateihandle an, bei dem es sich um einen Verweis auf die Datei handelt. Unter anderem gibt die Anwendung beim Anfordern eines Dateihandles einen Dateifreigabemodus an, der die Exklusivitätsebene des Zugriffs auf die Datei bestimmt, die durch Azure Files erzwungen wird: 
 
-### <a name="cause"></a>Ursache
-Dieses Problem tritt in der Regel auf, wenn für die Datei oder das Verzeichnis ein geöffnetes Handle vorhanden ist. 
+- `None`: Sie verfügen über exklusiven Zugriff. 
+- `Read`: Andere Benutzer können die Datei lesen, während Sie diese geöffnet haben.
+- `Write`: Andere Benutzer können in die Datei schreiben, während Sie diese geöffnet haben. 
+- `ReadWrite`: Eine Kombination der Freigabemodi `Read` und `Write`.
+- `Delete`: Andere Benutzer können die Datei löschen, während Sie diese geöffnet haben. 
 
-### <a name="solution"></a>Lösung
+Zwar weist das FileREST-Protokoll als statusfreies Protokoll kein Konzept für Dateihandles auf, doch bietet es einen ähnlichen Mechanismus zur Vermittlung des Zugriffs auf Dateien und Ordner, der vom Skript, der Anwendung oder dem Dienst verwendet werden kann: Dateileases. Wenn eine Datei geleast ist, wird Sie wie ein Dateihandle mit dem Dateifreigabemodus `None` behandelt. 
 
-Wenn die SMB-Clients alle geöffneten Handles geschlossen haben und das Problem weiterhin auftritt, führen Sie Folgendes aus:
+Obwohl Dateihandles und Leases einen wichtigen Zweck erfüllen, können sie manchmal verwaist sein. Dies kann dann Probleme beim Ändern oder Löschen von Dateien verursachen. Möglicherweise werden Fehlermeldungen wie die folgenden angezeigt:
 
-- Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles anzuzeigen.
+- Der Prozess kann nicht auf die Datei zugreifen, da sie bereits von einem anderen Prozess verwendet wird.
+- Die Aktion kann nicht ausgeführt werden, weil die Datei in einem anderen Programm geöffnet ist.
+- Das Dokument ist für die Bearbeitung durch einen anderen Benutzer gesperrt.
+- Die angegebene Ressource ist zum Löschen durch einen SMB-Client markiert.
 
-- Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles zu schließen. 
+Die Lösung für dieses Problem hängt davon ab, ob es durch ein verwaistes Dateihandle oder eine verwaiste Lease verursacht wird. 
+
+### <a name="cause-1"></a>Ursache 1
+Ein Dateihandle verhindert, dass eine Datei bzw. ein Verzeichnis geändert oder gelöscht wird. Sie können das PowerShell-Cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) verwenden, um geöffnete Handles anzuzeigen. 
+
+Wenn alle SMB-Clients ihre geöffneten Handles für eine Datei oder ein Verzeichnis geschlossen haben und das Problem weiterhin auftritt, können Sie das Schließen eines Dateihandles erzwingen.
+
+### <a name="solution-1"></a>Lösung 1
+Um das Schließen eines Dateihandles zu erzwingen, verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle). 
 
 > [!Note]  
 > Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
+### <a name="cause-2"></a>Ursache 2
+Eine Dateilease verhindert, dass eine Datei geändert oder gelöscht wird. Mit dem folgenden PowerShell-Cmdlet können Sie überprüfen, ob eine Datei über eine Dateilease verfügt, Dazu ersetzen Sie `<resource-group>`, `<storage-account>`, `<file-share>` und `<path-to-file>` durch die entsprechenden Werte für Ihre Umgebung:
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+Wenn eine Datei über eine Lease verfügt, sollte das zurückgegebene Objekt die folgenden Eigenschaften enthalten:
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>Lösung 2
+Um eine Lease für eine Datei zu entfernen, können Sie die Lease freigeben oder die Lease unterbrechen. Zum Freigeben der Lease benötigen Sie die Lease-ID, die Sie beim Erstellen der Lease festgelegt haben. Sie benötigen die Lease-ID nicht, um die Lease zu unterbrechen.
+
+Im folgenden Beispiel wird gezeigt, wie Sie die Lease für die unter Ursache 2 angegebene Datei unterbrechen (dieses Beispiel wird mit den PowerShell-Variablen aus Ursache 2 fortgesetzt):
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Windows
@@ -287,7 +346,7 @@ Dieses Problem kann auftreten, wenn Sie ein verschlüsselndes Dateisystem (EFS, 
 ### <a name="workaround"></a>Problemumgehung
 Um eine Datei über das Netzwerk zu kopieren, müssen Sie sie zunächst entschlüsseln. Verwenden Sie eine der folgenden Methoden:
 
-- Verwenden Sie den **copy /d**-Befehl. Sie können die verschlüsselten Dateien dadurch als entschlüsselte Dateien am Ziel speichern.
+- Verwenden Sie den **copy /d** -Befehl. Sie können die verschlüsselten Dateien dadurch als entschlüsselte Dateien am Ziel speichern.
 - Legen Sie den folgenden Registrierungsschlüssel fest:
   - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Werttyp = DWORD

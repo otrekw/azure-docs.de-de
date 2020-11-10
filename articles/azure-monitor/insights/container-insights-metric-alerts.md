@@ -2,13 +2,13 @@
 title: Metrikwarnungen von Azure Monitor für Container
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen erläutert, die in Azure Monitor für Container in der öffentlichen Vorschauversion verfügbar sind.
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/28/2020
+ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308641"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927820"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Empfohlene Metrikwarnungen (Vorschau) aus Azure Monitor für Container
 
@@ -24,7 +24,7 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie be
 
 * Benutzerdefinierte Metriken sind nur in einigen Azure-Regionen verfügbar. Eine Liste der unterstützten Regionen finden Sie im Abschnitt [Unterstützte Regionen](../platform/metrics-custom-overview.md#supported-regions).
 
-* Zur Unterstützung von Metrikwarnungen und für die Einführung zusätzlicher Metriken ist für Kubernetes-Cluster, die AKS unterstützen, mindestens die Agent-Version **microsoft/oms:ciprod05262020** erforderlich. Für Kubernetes-Cluster, die Azure Arc unterstützen, ist hingegen mindestens die Version **microsoft/oms:ciprod09252020** erforderlich.
+* Zur Unterstützung von Metrikwarnungen und für die Einführung zusätzlicher Metriken ist für Kubernetes-Cluster, die AKS unterstützen, mindestens die Agent-Version **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod05262020** erforderlich. Für Kubernetes-Cluster, die Azure Arc unterstützen, ist hingegen mindestens die Version **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod09252020** erforderlich.
 
     Sie haben folgende Möglichkeiten, um zu überprüfen, ob in Ihrem Cluster die neuere Version des Agents ausgeführt wird:
 
@@ -150,7 +150,7 @@ Die grundlegenden Schritte lauten wie folgt:
 
 3. Suchen Sie nach **Vorlage** , und wählen Sie dann **Vorlagenbereitstellung** aus.
 
-4. Klicken Sie auf **Erstellen** .
+4. Klicken Sie auf **Erstellen**.
 
 5. Es werden mehrere Optionen zum Erstellen einer Vorlage angezeigt. Wählen Sie **Eigene Vorlage im Editor erstellen** aus.
 
