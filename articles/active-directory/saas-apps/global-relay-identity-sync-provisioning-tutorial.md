@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900296"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927990"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Global Relay Identity Sync für die automatische Benutzerbereitstellung
 
@@ -33,6 +33,10 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Global Rel
 > * Entfernen von Benutzern aus Global Relay Identity Sync, wenn diese keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und Global Relay Identity Sync
 > * Bereitstellen von Gruppen und Gruppenmitgliedschaften in Global Relay Identity Sync
+
+
+> [!NOTE]
+> Der Global Relay Identity Sync-Bereitstellungsconnector verwendet eine SCIM-Autorisierungsmethode, die aus Sicherheitsgründen nicht mehr unterstützt wird. Bei Global Relay sind Bemühungen im Gange, auf eine sicherere Autorisierungsmethode umzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +71,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Global Relay Identity Sync in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -75,7 +79,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Global Relay Identity Sync-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
@@ -87,7 +91,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Schaltfläche für die Autorisierung](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -180,7 +184,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Global Relay Identity Sync zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für Global Relay Identity Sync zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -188,7 +192,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
