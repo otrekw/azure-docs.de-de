@@ -173,7 +173,7 @@
           href: sql/resource-consumption-models.md
         - name: Verarbeitete Datenmenge
           href: sql/data-processed.md
-        - name: Bewährte Methoden für SQL On-Demand
+        - name: Best Practices für serverlose SQL-Pools
           href: sql/best-practices-sql-on-demand.md
         - name: Best Practices für dedizierte SQL-Pools
           href: sql/best-practices-sql-pool.md

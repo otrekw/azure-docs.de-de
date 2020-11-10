@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503282"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311743"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines
 
@@ -94,21 +94,21 @@ Beim Bereitstellen Ihres Arbeitsbereichs mussten Sie ein [Azure Data Lake Storag
 Die Zugriffssteuerung für die zugrunde liegenden Daten ist in drei Bereiche unterteilt:
 
 - Datenebenenzugriff auf das Speicherkonto (wurde bereits oben in Schritt 2 konfiguriert)
-- Datenebenenzugriff auf die SQL-Datenbanken (sowohl für SQL-Pools als auch für SQL On-Demand)
-- Erstellen von Anmeldeinformationen für SQL On-Demand-Datenbanken über das Speicherkonto
+- Datenebenenzugriff auf die SQL-Datenbanken (sowohl für dedizierte SQL-Pools als auch für den serverlosen SQL-Pool)
+- Erstellen von Anmeldeinformationen für Datenbanken im serverlosen SQL-Pool über das Speicherkonto
 
 ## <a name="access-control-to-sql-databases"></a>Zugriffssteuerung für SQL-Datenbanken
 
 > [!TIP]
 > Die folgenden Schritte müssen für **jede** SQL-Datenbank ausgeführt werden, um dem Benutzer Zugriff auf alle SQL-Datenbanken zu gewähren, außer in Abschnitt [Berechtigung auf Serverebene](#server-level-permission), wo Sie dem Benutzer eine Systemadministratorrolle zuweisen können.
 
-### <a name="sql-on-demand"></a>SQL On-Demand
+### <a name="serverless-sql-pool"></a>Serverloser SQL-Pool
 
 In diesem Abschnitt finden Sie Beispiele dafür, wie Sie Benutzern eine Berechtigung für eine bestimmte Datenbank oder uneingeschränkte Berechtigungen für einen Server erteilen können.
 
 #### <a name="database-level-permission"></a>Berechtigung auf Datenbankebene
 
-Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff auf eine **einzelne** SQL On-Demand-Datenbank zu gewähren:
+Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff auf eine **einzelne** Datenbank im serverlosen SQL-Pool zu gewähren:
 
 1. Erstellen Sie eine Anmeldung:
 
@@ -140,14 +140,14 @@ Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff 
 
 #### <a name="server-level-permission"></a>Berechtigung auf Serverebene
 
-Führen Sie den Schritt des folgenden Beispiels aus, um einem Benutzer Vollzugriff auf **alle** SQL On-Demand-Datenbanken zu gewähren:
+Führen Sie den Schritt des folgenden Beispiels aus, um einem Benutzer Vollzugriff auf **alle** Datenbanken im serverlosen SQL-Pool zu gewähren:
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>SQL-Pools
+### <a name="dedicated-sql-pool"></a>Dedizierter SQL-Pool
 
 Führen Sie die folgenden Schritte aus, um einem Benutzer Zugriff auf eine **einzelne** SQL-Datenbank zu gewähren:
 
@@ -167,18 +167,18 @@ Führen Sie die folgenden Schritte aus, um einem Benutzer Zugriff auf eine **ein
 
 > [!IMPORTANT]
 > Wenn Sie die Berechtigung *db_owner* nicht zuweisen möchten, können Sie *db_datareader* und *db_datawriter* für Lese-/Schreibberechtigungen verwenden.
-> Damit ein Spark-Benutzer Daten direkt über Spark aus einem SQL-Pool lesen bzw. in einen SQL-Pool schreiben kann, benötigt er die Berechtigung *db_owner*.
+> Damit ein Spark-Benutzer Daten direkt über Spark aus einem dedizierten SQL-Pool lesen bzw. in einen dedizierten SQL-Pool schreiben kann, benötigt er die Berechtigung *db_owner*.
 
-Vergewissern Sie sich im Anschluss an die Benutzererstellung, dass das Speicherkonto von SQL On-Demand abgefragt werden kann.
+Vergewissern Sie sich im Anschluss an die Benutzererstellung, dass das Speicherkonto von einem serverlosen SQL-Pool abgefragt werden kann.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Zugriffssteuerung für Pipelineausführungen im Arbeitsbereich
 
 ### <a name="workspace-managed-identity"></a>Vom Arbeitsbereich verwaltete Identität
 
 > [!IMPORTANT]
-> Zur erfolgreichen Ausführung von Pipelines mit Datasets oder Aktivitäten, die auf einen SQL-Pool verweisen, muss der Arbeitsbereichsidentität direkter Zugriff auf den SQL-Pool gewährt werden.
+> Zur erfolgreichen Ausführung von Pipelines mit Datasets oder Aktivitäten, die auf einen dedizierten SQL-Pool verweisen, muss der Arbeitsbereichsidentität direkter Zugriff auf den SQL-Pool gewährt werden.
 
-Führen Sie die folgenden Befehle für jeden SQL-Pool aus, um der vom Arbeitsbereich verwalteten Identität das Ausführen von Pipelines für die SQL-Pooldatenbank zu ermöglichen:
+Führen Sie die folgenden Befehle für jeden dedizierten SQL-Pool aus, um der vom Arbeitsbereich verwalteten Identität das Ausführen von Pipelines für die SQL-Pooldatenbank zu ermöglichen:
 
 ```sql
 --Create user in DB

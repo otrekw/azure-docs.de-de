@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558634"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145819"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -32,6 +32,12 @@ Security Center filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein 
 
 Indem Sie nur benachrichtigt werden, wenn Probleme auftreten, reduziert Security Center das Potenzial von unerwünschten Informationswarnungen.
 
+
+> [!TIP]
+> Weitere Informationen zu den Containersicherheitsfeatures von Security Center finden Sie unter:
+>
+> - [Containersicherheit in Security Center](container-security.md)
+> - [Einführung in Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>Wann werden Images überprüft?
 
@@ -81,10 +87,5 @@ Ja. Wenn in Ihrer Organisation eine Suche ignoriert werden muss, anstatt sie zu 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Containersicherheitsfeatures von Security Center finden Sie unter:
-
-- [Containersicherheit in Security Center](container-security.md)
-
-- [Einführung in Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [Überprüfen Ihrer Images auf Sicherheitsrisiken](defender-for-container-registries-usage.md)

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288782"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311125"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "91288782"
 > 
 > 
 
-Sie können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) entweder über SQL On-Demand (Vorschauversion) oder SQL-Poolressourcen eine Verbindung mit Synapse SQL in Azure Synapse Analytics herstellen und Abfragen durchführen. 
+Sie können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) entweder über Ressourcen im serverlosen SQL-Pool (Vorschauversion) oder Ressourcen im dedizierten SQL-Pool eine Verbindung mit Synapse SQL in Azure Synapse Analytics herstellen und Abfragen durchführen. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Unterstützte Tools für SQL On-Demand (Vorschauversion)
+### <a name="supported-tools-for-serverless-sql-pool-preview"></a>Unterstützte Tools für den serverlosen SQL-Pool (Vorschauversion)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wird ab Version 1.18.0 vollständig unterstützt. SSMS wird ab Version 18.5 teilweise unterstützt, kann aber nur zum Herstellen einer Verbindung und für Abfragen verwendet werden.
 
@@ -40,51 +40,51 @@ Sie können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/downloa
 Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* Für den SQL-Pool benötigen Sie ein vorhandenes Data Warehouse. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL-Pools](../quickstart-create-sql-pool-portal.md). Bei SQL On-Demand wird bereits bei der Erstellung ein Data Warehouse in Ihrem Arbeitsbereich bereitgestellt. 
+* Für den dedizierten SQL-Pool benötigen Sie ein vorhandenes Data Warehouse. Informationen zur Erstellung finden Sie unter [Erstellen eines dedizierten SQL-Pools](../quickstart-create-sql-pool-portal.md). Für den serverlosen SQL-Pool wird bereits bei der Erstellung im Arbeitsbereich ein Data Warehouse namens „Integriert“ bereitgestellt. 
 * Den vollqualifizierten SQL Server-Namen. Informationen, wie dieser Name ermittelt wird, finden Sie unter [Herstellen einer Verbindung mit Synapse SQL](connect-overview.md).
 
 ## <a name="connect"></a>Verbinden
 
-### <a name="sql-pool"></a>SQL-Pool
+### <a name="dedicated-sql-pool"></a>Dedizierter SQL-Pool
 
-Führen Sie die folgenden Schritte aus, um mithilfe des SQL-Pools eine Verbindung mit Synapse SQL herzustellen: 
+Führen Sie die folgenden Schritte aus, um mithilfe des dedizierten SQL-Pools eine Verbindung mit Synapse SQL herzustellen: 
 
 1. Öffnen Sie SQL Server Management Studio (SSMS). 
 1. Füllen Sie im Dialogfeld **Mit Server verbinden** die Felder aus, und wählen Sie dann **Verbinden** aus: 
   
     ![Mit Server verbinden 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
+   * **Servername** : Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung:**  Wählen Sie einen Authentifizierungstyp aus, etwa **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
-   * **Benutzername** und **Kennwort**: Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
+   * **Benutzername** und **Kennwort** : Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
 
 1. Erweitern Sie Ihre Azure SQL Server-Instanz im **Objekt-Explorer**. Sie können die dem Server zugeordneten Datenbanken anzeigen, etwa die Beispieldatenbank „AdventureWorksDW“. Sie können die Datenbank erweitern, um die Tabellen anzuzeigen:
    
     ![AdventureWorksDW erkunden 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>SQL On-Demand (Vorschauversion)
+### <a name="serverless-sql-pool-preview"></a>Serverloser SQL-Pool (Vorschauversion)
 
-Führen Sie die folgenden Schritte aus, um mithilfe von SQL On-Demand eine Verbindung mit Synapse SQL herzustellen: 
+Führen Sie die folgenden Schritte aus, um mithilfe des serverlosen SQL-Pools eine Verbindung mit Synapse SQL herzustellen: 
 
 1. Öffnen Sie SQL Server Management Studio (SSMS).
 1. Füllen Sie im Dialogfeld **Mit Server verbinden** die Felder aus, und wählen Sie dann **Verbinden** aus: 
    
     ![Mit Server verbinden 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
+   * **Servername** : Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung:** Wählen Sie einen Authentifizierungstyp aus, etwa **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
-   * **Benutzername** und **Kennwort**: Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
+   * **Benutzername** und **Kennwort** : Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
    * Wählen Sie **Verbinden** aus.
 
-4. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie *Demo*, um den Inhalt in der Beispieldatenbank anzuzeigen.
+4. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie *Demo* , um den Inhalt in der Beispieldatenbank anzuzeigen.
    
     ![AdventureWorksDW erkunden 2](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Ausführen einer Beispielabfrage
 
-### <a name="sql-pool"></a>SQL-Pool
+### <a name="dedicated-sql-pool"></a>Dedizierter SQL-Pool
 
 Nachdem eine Datenbankverbindung hergestellt wurde, können Sie die Daten nun abfragen.
 
@@ -104,7 +104,7 @@ Nachdem eine Datenbankverbindung hergestellt wurde, können Sie die Daten nun ab
    
     ![Abfrageergebnisse 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
-### <a name="sql-on-demand"></a>SQL On-Demand
+### <a name="serverless-sql-pool"></a>Serverloser SQL-Pool
 
 Nachdem eine Datenbankverbindung hergestellt wurde, können Sie die Daten nun abfragen.
 

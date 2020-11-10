@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323820"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio (Vorschau)
 
@@ -42,11 +42,11 @@ Die Verbindung erfordert die folgenden Parameter:
 * **Datenbank:** Datenbankname
 
 > [!NOTE]
-> Wenn Sie **SQL On-Demand (Vorschau)** verwenden möchten, sollte die URL wie folgt aussehen:
+> Wenn Sie einen **serverlosen SQL-Pool (Vorschauversion)** verwenden möchten, sollte die URL wie folgt aussehen:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> Wenn Sie einen **SQL-Pool** verwenden möchten, sollte die URL wie folgt aussehen:
+> Wenn Sie einen **dedizierten SQL-Pool** verwenden möchten, sollte die URL wie folgt aussehen:
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
@@ -77,7 +77,7 @@ Nach dem Herstellen der Verbindung können Sie Synapse SQL mithilfe von unterst
 
 ![Neue Abfrage](./media/get-started-azure-data-studio/5-new-query.png)
 
-Sie können beispielsweise die folgende Transact-SQL-Anweisung verwenden, um mithilfe von SQL On-Demand [Parquet-Dateien abzufragen](query-parquet-files.md):
+Sie können beispielsweise die folgende Transact-SQL-Anweisung verwenden, um mithilfe eines serverlosen SQL-Pools [Parquet-Dateien abzufragen](query-parquet-files.md):
 
 ```sql
 SELECT COUNT(*)

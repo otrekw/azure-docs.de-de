@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075534"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124185"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -45,8 +45,8 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Verwenden Sie die folgenden Optionen:
 
-   * Generieren Sie ein **Maven**-Projekt mit **Java**.
-   * Geben Sie eine **Spring Boot**-Version ab 2.0 an.
+   * Generieren Sie ein **Maven** -Projekt mit **Java**.
+   * Geben Sie eine **Spring Boot** -Version ab 2.0 an.
    * Geben Sie Namen für die **Gruppe** und das **Artefakt** für Ihre Anwendung an.  In diesem Artikel werden `com.example` und `demo` verwendet.
    * Fügen Sie die Abhängigkeit **Spring Web** hinzu.
 
@@ -286,9 +286,9 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Öffnen Sie ein neues Browserfenster, und navigieren Sie zur URL `http://localhost:8080/welcome`.
 
-    ![Schnellstartanleitung: Lokales Starten der App](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Screenshot: Browserfenster mit einer Begrüßungsnachricht](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Wählen Sie im App Configuration-Portal **Feature-Manager** aus, und ändern Sie den Status des **Beta**-Schlüssels in **Ein**:
+1. Wählen Sie im App Configuration-Portal **Feature-Manager** aus, und ändern Sie den Status des **Beta** -Schlüssels in **Ein** :
 
     | Schlüssel | State |
     |---|---|
@@ -296,7 +296,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Aktualisieren Sie die Browserseite, um die neuen Konfigurationseinstellungen anzuzeigen.
 
-    ![Schnellstartanleitung: Lokales Starten der App](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Screenshot: Browserfenster mit einer Begrüßungsnachricht und einem hervorgehobenen Betalink](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

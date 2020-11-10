@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f159e38eb66e1758feaf743c32d8de30c614b234
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288510"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310328"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>In Azure Synapse SQL unterstützte Transact-SQL-Funktionen
 
@@ -54,7 +54,7 @@ Die unterstützten Funktionen der in Synapse SQL verwendeten Abfragesprachen k�
 | **INSERT-Anweisung** | Ja | Nein |
 | **UPDATE-Anweisung** | Ja | Nein |
 | **DELETE-Anweisung** | Ja | Nein |
-| **MERGE-Anweisung** | Nein | Nein |
+| **MERGE-Anweisung** | Nein  | Nein |
 | **[Transaktionen](develop-transactions.md)** | Ja | Nein |
 | **[Bezeichnungen](develop-label.md)** | Ja | Nein |
 | **Ladevorgänge für Daten** | Ja. Das bevorzugte Hilfsprogramm ist zwar die [COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung, vom System werden jedoch auch Massenladen (BCP) sowie [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zum Laden von Daten unterstützt. | Nein |
@@ -79,8 +79,8 @@ Synapse SQL ermöglicht die Verwendung integrierter Sicherheitsfeatures, um Ihre
 | **Benutzer** |  Nicht zutreffend (In Datenbanken werden nur enthaltene Benutzer unterstützt.) | Ja |
 | **[Eigenständige Benutzer](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | Ja. **Hinweis:** Es kann immer nur ein einzelner Azure AD-Benutzer uneingeschränkter Administrator sein. | Ja |
 | **Authentifizierung mit SQL-Benutzername/Kennwort**| Ja | Ja |
-| **Authentifizierung über Azure Active Directory (AAD)**| Ja, Azure AD-Benutzer | Ja, Azure AD-Anmeldungen und -Benutzer |
-| **Passthrough-Authentifizierung für Azure Active Directory-Speicher (AAD)** | Ja | Ja |
+| **Azure Active Directory-Authentifizierung (Azure AD)**| Ja, Azure AD-Benutzer | Ja, Azure AD-Anmeldungen und -Benutzer |
+| **Passthrough-Authentifizierung für Azure Active Directory-Speicher (Azure AD)** | Ja | Ja |
 | **SAS-Tokenauthentifizierung für den Speicher** | Nein | Ja, unter Verwendung von [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oder [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (auf Instanzebene). |
 | **Authentifizierung per Speicherzugriffsschlüssel** | Ja, unter Verwendung von [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). | Nein |
 | **Authentifizierung für den Speicher mittels [verwalteter Identität](../security/synapse-workspace-managed-identity.md)** | Ja, unter Verwendung von [Anmeldeinformationen für eine verwaltete Dienstidentität](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). | Ja, unter Verwendung von Anmeldeinformationen vom Typ `Managed Identity`. |
@@ -103,7 +103,7 @@ Synapse SQL ermöglicht die Verwendung integrierter Sicherheitsfeatures, um Ihre
 | **[Firewallregeln](../security/synapse-workspace-ip-firewall.md)**| Ja | Ja |
 | **[Privater Endpunkt](../security/synapse-workspace-managed-private-endpoints.md)**| Ja | Ja |
 
-Von SQL-Pool- und SQL On-Demand-Instanzen wird die Transact-SQL-Standardsprache verwendet, um Daten abzufragen. Ausführliche Informationen zu den Unterschieden finden Sie in der [Transact-SQL-Sprachreferenz](/sql/t-sql/language-reference).
+Ein dedizierter SQL-Pool und ein serverloser SQL-Pool verwenden die Transact-SQL-Standardsprache, um Daten abzufragen. Ausführliche Informationen zu den Unterschieden finden Sie in der [Transact-SQL-Sprachreferenz](/sql/t-sql/language-reference).
 
 ## <a name="tools"></a>Tools
 
@@ -118,7 +118,7 @@ Sie können verschiedene Tools verwenden, um eine Verbindung mit Synapse SQL he
 | **SQL Server Management Studio** | Ja | Ja, ab Version 18.5 |
 
 > [!NOTE]
-> Sie können mithilfe von SSMS eine Verbindung mit SQL On-Demand (Vorschauversion) herstellen und Abfragen durchführen. Es wird ab Version 18.5 teilweise unterstützt, kann aber nur zum Herstellen einer Verbindung und für Abfragen verwendet werden.
+> Sie können mithilfe von SSMS eine Verbindung mit einem serverlosen SQL-Pool (Vorschauversion) herstellen und Abfragen durchführen. Es wird ab Version 18.5 teilweise unterstützt, kann aber nur zum Herstellen einer Verbindung und für Abfragen verwendet werden.
 
 Die meisten Anwendungen verwenden die Transact-SQL-Standardsprache und können sowohl bereitgestellte als auch serverlose Verbrauchsmodelle von Synapse SQL abfragen.
 
@@ -150,7 +150,7 @@ Zu analysierende Daten können in verschiedenen Speicherformaten gespeichert sei
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | Nein | Nein |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu bewährten Methoden für SQL-Pool- und SQL On-Demand-Instanzen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu bewährten Methoden für dedizierte SQL-Pools und serverlose SQL-Pools finden Sie in den folgenden Artikeln:
 
-- [Bewährte Methoden für SQL-Pools in Azure Synapse Analytics](best-practices-sql-pool.md)
-- [Bewährte Methoden für SQL On-Demand (Vorschauversion) in Azure Synapse Analytics](best-practices-sql-on-demand.md)
+- [Best Practices für dedizierte SQL-Pools](best-practices-sql-pool.md)
+- [Best Practices für serverlose SQL-Pools](best-practices-sql-on-demand.md)

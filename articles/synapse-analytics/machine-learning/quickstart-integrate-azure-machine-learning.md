@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 141cc47adb398cbd5730fbe33bcd90fece809ed3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543299"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307963"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Schnellstart: Erstellen eines neuen verknüpften Azure Machine Learning-Diensts in Synapse
 
@@ -46,11 +46,11 @@ In diesem Schritt wird ein neuer Dienstprinzipal erstellt. Wenn Sie einen vorhan
 
 1. Klicken Sie auf **Neue Registrierung**. Befolgen Sie dann die Anleitung in der Benutzeroberfläche, um eine neue Anwendung zu registrieren.
 
-1. Nach der Registrierung der Anwendung: Generieren Sie ein Geheimnis für die Anwendung. Wechseln Sie zu **Ihre Anwendung** -> **Zertifikat und Geheimnis**. Klicken Sie auf **Geheimen Clientschlüssel hinzufügen**, um ein Geheimnis zu generieren. Bewahren Sie das Geheimnis sicher auf, es wird später verwendet.
+1. Nach der Registrierung der Anwendung: Generieren Sie ein Geheimnis für die Anwendung. Wechseln Sie zu **Ihre Anwendung** -> **Zertifikat und Geheimnis**. Klicken Sie auf **Geheimen Clientschlüssel hinzufügen** , um ein Geheimnis zu generieren. Bewahren Sie das Geheimnis sicher auf, es wird später verwendet.
 
    ![Generieren eines Geheimnisses](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00a.png)
 
-1. Erstellen Sie einen Dienstprinzipal für die Anwendung. Wechseln Sie zu **Ihre Anwendung** -> **Übersicht**, und klicken Sie dann auf **Dienstprinzipal erstellen**. In einigen Fällen wird dieser Dienstprinzipal automatisch erstellt.
+1. Erstellen Sie einen Dienstprinzipal für die Anwendung. Wechseln Sie zu **Ihre Anwendung** -> **Übersicht** , und klicken Sie dann auf **Dienstprinzipal erstellen**. In einigen Fällen wird dieser Dienstprinzipal automatisch erstellt.
 
    ![Erstellen eines Dienstprinzipals](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00b.png)
 
@@ -60,7 +60,7 @@ In diesem Schritt wird ein neuer Dienstprinzipal erstellt. Wenn Sie einen vorhan
 
 ## <a name="create-a-linked-service"></a>Erstellen eines verknüpften Diensts
 
-1. Wechseln Sie in dem Synapse-Arbeitsbereich, in dem Sie den neuen verknüpften Dienst „Azure Machine Learning“ erstellen möchten, zu **Verwaltung** -> **Verknüpfter Dienst**, und erstellen Sie einen neuen verknüpften Dienst mit dem Typ „Azure Machine Learning“.
+1. Wechseln Sie in dem Synapse-Arbeitsbereich, in dem Sie den neuen verknüpften Dienst „Azure Machine Learning“ erstellen möchten, zu **Verwaltung** -> **Verknüpfter Dienst** , und erstellen Sie einen neuen verknüpften Dienst mit dem Typ „Azure Machine Learning“.
 
    ![Erstellen eines verknüpften Diensts](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-create-linked-service-00a.png)
 
@@ -73,11 +73,11 @@ In diesem Schritt wird ein neuer Dienstprinzipal erstellt. Wenn Sie einen vorhan
 
    - Dienstprinzipalschlüssel: Das Geheimnis, das Sie im vorherigen Abschnitt generiert haben.
 
-3. Klicken Sie auf **Verbindung testen**, um zu überprüfen, ob die Konfiguration korrekt ist. Wenn der Verbindungstest bestanden wird, klicken Sie auf **Speichern**.
+3. Klicken Sie auf **Verbindung testen** , um zu überprüfen, ob die Konfiguration korrekt ist. Wenn der Verbindungstest bestanden wird, klicken Sie auf **Speichern**.
 
    Wenn der Verbindungstest fehlschlägt, stellen Sie sicher, dass die Dienstprinzipal-ID und das Geheimnis korrekt sind, und versuchen Sie es noch mal.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Assistent für die Bewertung von Machine Learning-Modellen: SQL-Pool](tutorial-sql-pool-model-scoring-wizard.md)
+- [Tutorial: Assistent für die Bewertung von Machine Learning-Modellen: Dedizierter SQL-Pool](tutorial-sql-pool-model-scoring-wizard.md)
 - [Machine Learning-Funktionen in Azure Synapse Analytics (Vorschau für Arbeitsbereiche)](what-is-machine-learning.md)

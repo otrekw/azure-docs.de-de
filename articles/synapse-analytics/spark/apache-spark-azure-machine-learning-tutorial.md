@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540505"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313620"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Tutorial: Ausführen von Experimenten mit automatisiertem Azure ML und Apache Spark
 
@@ -29,13 +29,16 @@ In diesem Tutorial lernen Sie Folgendes:
 - Berechnen der Modellgenauigkeit
 
 ### <a name="before-you-begin"></a>Voraussetzungen
-- Erstellen Sie einen Apache Spark-Pool, indem Sie das Tutorial [Erstellen eines Apache Spark-Pools](../quickstart-create-apache-spark-pool-studio.md) absolvieren.
+
+- Erstellen Sie anhand der Schnellstartanleitung zum [Erstellen eines serverlosen Apache Spark-Pools](../quickstart-create-apache-spark-pool-studio.md) einen serverlosen Apache Spark-Pool.
 - Absolvieren Sie das [Tutorial für die Einrichtung des Azure Machine Learning-Arbeitsbereichs](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup), falls Sie noch nicht über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen. 
 
 ### <a name="understand-regression-models"></a>Grundlegendes zu logistischen Regressionsmodellen
+
 *Regressionsmodelle* sagen numerische Ausgabewerte auf Grundlage unabhängiger Prädiktoren voraus. Bei der Regression besteht das Ziel darin, die Beziehung zwischen diesen unabhängigen Vorhersagevariablen herzustellen, indem geschätzt wird, wie eine Variable die anderen beeinflusst.  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>Beispiel für eine Regressionsanalyse mit den NYC-Taxidaten
+
 In diesem Beispiel verwenden Sie Spark, um ein paar Analysen zu Trinkgelddaten von Taxifahrten in New York durchzuführen. Die Daten sind über [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) verfügbar. Diese Teilmenge des Datasets enthält Informationen über Taxifahrten von Yellow Cabs, einschließlich Informationen zu jeder einzelnen Fahrt, den Start- und Endzeiten/-orten, den Kosten und andere interessante Attribute.
 
 > [!IMPORTANT]
@@ -52,7 +55,7 @@ In diesem Beispiel verwenden Sie Spark, um ein paar Analysen zu Trinkgelddaten v
    > Durch den PySpark-Kernel müssen Sie keine Kontexte explizit erstellen. Der Spark-Kontext wird automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen.
    >
 
-2. Da die Rohdaten im Parquet-Format vorliegen, können Sie den Spark-Kontext verwenden, um die Datei als Dataframe direkt in den Arbeitsspeicher zu lesen. Erstellen Sie ein Spark-Dataframe, indem Sie die Daten über die Open Datasets-API abrufen. Hier verwenden wir die Spark-Dataframe*Schema beim Lese*-Eigenschaften, um die Datentypen und das Schema abzuleiten. 
+2. Da die Rohdaten im Parquet-Format vorliegen, können Sie den Spark-Kontext verwenden, um die Datei als Dataframe direkt in den Arbeitsspeicher zu lesen. Erstellen Sie ein Spark-Dataframe, indem Sie die Daten über die Open Datasets-API abrufen. Hier verwenden wir die Spark-Dataframe *Schema beim Lese* -Eigenschaften, um die Datentypen und das Schema abzuleiten. 
    
    ```python
    blob_account_name = "azureopendatastorage"
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertieren eines Dataframes in ein Azure Machine Learning-Dataset
-Um ein Remoteexperiment zu übermitteln, müssen wir unser Dataset in ein Azure Machine Learning ```TabularDatset``` konvertieren. Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
+Um ein Remoteexperiment zu übermitteln, müssen wir unser Dataset in ein Azure Machine Learning ```TabularDatset``` konvertieren. Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
 
 Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der Azure Machine Learning-Standarddatenspeicher abgerufen. Anschließend werden der Datenspeicher und die Dateispeicherorte an den Pfadparameter übergeben, um ein neues ```TabularDataset``` zu erstellen. 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![Abbildung des hochgeladenen Datasets.](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>Übermitteln eines automatisierten Machine Learning-Experiments
+## <a name="submit-an-automl-experiment"></a>Senden eines AutoML-Experiments.
 
 #### <a name="define-training-settings"></a>Definieren von Trainingseinstellungen
 

@@ -1,6 +1,6 @@
 ---
-title: Verwenden von OPENROWSET in SQL On-Demand (Vorschauversion)
-description: In diesem Artikel wird die Syntax von OPENROWSET in SQL On-Demand (Vorschauversion) beschrieben und die Verwendung von Argumenten erläutert.
+title: Verwenden von „OPENROWSET“ im serverlosen SQL-Pool (Vorschauversion)
+description: In diesem Artikel wird die Syntax von „OPENROWSET“ im serverlosen SQL-Pool (Vorschauversion) beschrieben und die Verwendung von Argumenten erläutert.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474783"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341330"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Verwenden von OPENROWSET mit SQL On-Demand (Vorschauversion)
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
 
-Die `OPENROWSET(BULK...)`-Funktion ermöglicht den Zugriff auf Dateien in Azure Storage. Die `OPENROWSET`-Funktion liest den Inhalt einer Remotedatenquelle (z. B. einer Datei) und gibt den Inhalt als eine Reihe von Zeilen zurück. Innerhalb der SQL On-Demand-Ressource (Vorschauversion) wird die OPENROWSET-Funktion aufgerufen und die BULK-Option angegeben, um auf den OPENROWSET-Massenrowsetanbieter zuzugreifen.  
+Die `OPENROWSET(BULK...)`-Funktion ermöglicht den Zugriff auf Dateien in Azure Storage. Die `OPENROWSET`-Funktion liest den Inhalt einer Remotedatenquelle (z. B. einer Datei) und gibt den Inhalt als eine Reihe von Zeilen zurück. Innerhalb des serverlosen SQL-Pools (Vorschauversion) wird die OPENROWSET-Funktion aufgerufen und die BULK-Option angegeben, um auf den OPENROWSET-Massenrowsetanbieter zuzugreifen.  
 
 Auf die `OPENROWSET`-Funktion kann in der `FROM`-Klausel einer Abfrage so verwiesen werden, als handele es sich um einen Tabellennamen vom Typ `OPENROWSET`. Sie unterstützt Massenvorgänge über einen integrierten BULK-Anbieter, mit dem Daten aus einer Datei gelesen und als Rowset zurückgegeben werden können.
 
@@ -95,6 +95,8 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
+[ , HEADER_ROW = { TRUE | FALSE } ]
+[ , DATAFILETYPE = { 'char' | 'widechar' } ]
 ```
 
 ## <a name="arguments"></a>Argumente
@@ -111,7 +113,7 @@ Bei dem Pfad für unstrukturierte Daten kann es sich um einen absoluten oder rel
 - Der absolute Pfad im Format \<prefix>://\<storage_account_path>/\<storage_path> ermöglicht einem Benutzer, die Dateien direkt zu lesen.
 - Der relative Pfad im Format '<Speicherpfad>' muss mit dem Parameter `DATA_SOURCE` verwendet werden und beschreibt das Dateimuster innerhalb des Speicherorts <Speicherkontopfad>, der in `EXTERNAL DATA SOURCE` definiert ist. 
 
- Nachfolgend sind die relevanten <storage account path>-Werte für die Verknüpfung mit Ihrer speziellen externen Datenquelle angegeben. 
+Nachfolgend sind die relevanten <storage account path>-Werte für die Verknüpfung mit Ihrer speziellen externen Datenquelle angegeben. 
 
 | Externe Datenquelle       | Präfix | Speicherkontopfad                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -124,18 +126,20 @@ Bei dem Pfad für unstrukturierte Daten kann es sich um einen absoluten oder rel
 
 '\<storage_path>'
 
- Dient zum Angeben eines Pfads innerhalb Ihres Speichers, der auf den zu lesenden Ordner oder auf die zu lesende Datei verweist. Verweist der Pfad auf einen Container oder Ordner, werden alle Dateien aus diesem Container oder Ordner gelesen. Dateien in Unterordnern werden nicht einbezogen. 
+Dient zum Angeben eines Pfads innerhalb Ihres Speichers, der auf den zu lesenden Ordner oder auf die zu lesende Datei verweist. Verweist der Pfad auf einen Container oder Ordner, werden alle Dateien aus diesem Container oder Ordner gelesen. Dateien in Unterordnern werden nicht einbezogen. 
 
- Sie können Platzhalter angeben, um mehrere Dateien oder Ordner zu verwenden. Dabei können mehrere nicht aufeinander folgende Platzhalter verwendet werden.
+Sie können Platzhalter angeben, um mehrere Dateien oder Ordner zu verwenden. Dabei können mehrere nicht aufeinander folgende Platzhalter verwendet werden.
 Im folgenden Beispiel werden alle mit *population* beginnenden *CSV-Dateien* aus allen mit */csv/population* beginnenden Ordnern gelesen:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Wenn Sie den Pfad für unstrukturierte Daten (unstructured_data_path) als Ordner angeben, werden bei einer SQL On-Demand-Abfrage Dateien aus diesem Ordner abgerufen. 
+Wenn Sie den Pfad für unstrukturierte Daten (unstructured_data_path) als Ordner angeben, werden bei einer Abfrage des serverlosen SQL-Pools Dateien aus diesem Ordner abgerufen. 
+
+Durch Angabe von „/**“ am Ende des Pfads können Sie den serverlosen SQL-Pool anweisen, Ordner zu durchlaufen. Beispiel: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Im Gegensatz zu Hadoop und PolyBase werden von SQL On-Demand keine Unterordner zurückgegeben. Außerdem werden von SQL On-Demand anders als bei Hadoop und PolyBase keine Dateien zurückgegeben, deren Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt.
+> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben. Außerdem werden vom serverlosen SQL-Pool anders als bei Hadoop und PolyBase keine Dateien zurückgegeben, deren Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt.
 
-Im folgenden Beispiel wird „unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`“ verwendet, wodurch bei einer SQL On-Demand-Abfrage Zeilen aus „mydata.txt“ und „_hidden.txt“ zurückgegeben werden. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
+Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`“ werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ und „_hidden.txt“ zurückgegeben. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
 
 ![Rekursive Daten für externe Tabellen](./media/develop-openrowset/folder-traversal.png)
 
@@ -144,12 +148,13 @@ Im folgenden Beispiel wird „unstructured_data_path=`https://mystorageaccount.d
 Mit der WITH-Klausel können Sie Spalten angeben, die aus Dateien gelesen werden sollen.
 
 - Geben Sie bei CSV-Datendateien Spaltennamen und den jeweiligen Datentyp an, um alle Spalten zu lesen. Wenn Sie sich nur für eine Teilmenge der Spalten interessieren, verwenden Sie Ordinalzahlen, um die Spalten aus den Ursprungsdatendateien anhand der Ordinalzahl auszuwählen. Spalten werden auf der Grundlage der Ordinalangabe gebunden. 
-
-    > [!IMPORTANT]
-    > Die WITH-Klausel ist für CSV-Dateien obligatorisch.
-    >
+    > [!TIP]
+    > Die WITH-Klausel kann für CSV-Dateien auch weggelassen werden. Datentypen werden automatisch aus Dateiinhalten abgeleitet. Mit dem Argument „HEADER_ROW“ können Sie angeben, dass eine Kopfzeile vorhanden ist. In diesem Fall werden Spaltennamen aus der Kopfzeile gelesen. Ausführliche Informationen finden Sie unter [Automatische Schemaerkennung](#automatic-schema-discovery).
     
-- Geben Sie bei Parquet-Datendateien Spaltennamen an, die den Spaltennamen in den Ursprungsdatendateien entsprechen. Spalten werden auf der Grundlage des Namens gebunden. Ohne Angabe der WITH-Klausel werden alle Spalten aus Parquet-Dateien zurückgegeben.
+- Geben Sie bei Parquet-Datendateien Spaltennamen an, die den Spaltennamen in den Ursprungsdatendateien entsprechen. Die Spalten werden nach Name gebunden, und es wird die Groß-/Kleinschreibung beachtet. Ohne Angabe der WITH-Klausel werden alle Spalten aus Parquet-Dateien zurückgegeben.
+    > [!IMPORTANT]
+    > Bei Spaltennamen in Parquet-Dateien wird die Groß-/Kleinschreibung beachtet. Wenn Sie einen Spaltennamen angeben, dessen Groß-/Kleinschreibung sich von der Schreibweise in der Parquet-Datei unterscheidet, werden für diese Spalte NULL-Werte zurückgegeben.
+
 
 column_name: Der Name für die Ausgabespalte. Bei Angabe dieser Option wird der Spaltenname in der Quelldatei überschrieben.
 
@@ -205,6 +210,10 @@ Gibt die beim Lesen von Dateien zu verwendende Parserversion an. Zurzeit werden 
 
 Die CSV-Parserversion 1.0 ist die funktionsreiche Standardversion. Version 2.0 wurde mit dem Fokus auf Leistung erstellt und unterstützt nicht alle Optionen und Codierungen. 
 
+Einzelheiten zu CSV-Parserversion 1.0:
+
+- Die folgenden Optionen werden nicht unterstützt: HEADER_ROW.
+
 Einzelheiten zu CSV-Parserversion 2.0:
 
 - Nicht alle Datentypen werden unterstützt.
@@ -212,22 +221,97 @@ Einzelheiten zu CSV-Parserversion 2.0:
 - Die folgenden Optionen werden nicht unterstützt: DATA_COMPRESSION.
 - Eine leere Zeichenfolge in Anführungszeichen ("") wird als leere Zeichenfolge interpretiert.
 
+HEADER_ROW = { TRUE | FALSE }
+
+Gibt an, ob die CSV-Datei eine Kopfzeile enthält. Standardwert: FALSE. Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument).
+
+DATAFILETYPE = { 'char' | 'widechar' }
+
+Gibt die Codierung an: „char“ wird für UTF8 verwendet, „widechar“ für UTF16-Dateien.
+
+## <a name="fast-delimited-text-parsing"></a>Schnelle Analyse von Text mit Trennzeichen
+
+Für die Analyse von Text mit Trennzeichen stehen zwei Parserversionen zur Verfügung: Die CSV-Parserversion 1.0 ist die Standardversion und bietet zahlreiche Features. Die Parserversion 2.0 ist dagegen auf hohe Leistung ausgelegt. Die höhere Leistung der Parserversion 2.0 wird durch erweiterte Analysetechniken und Multithreading erreicht. Der Geschwindigkeitsunterschied nimmt zu, je größer die Datei ist.
+
+## <a name="automatic-schema-discovery"></a>Automatische Schemaerkennung
+
+Sie können mühelos CSV- und Parquet-Dateien abfragen, ohne das Schema zu kennen oder anzugeben, indem Sie die WITH-Klausel weglassen. Spaltennamen und Datentypen werden aus Dateien abgeleitet.
+
+Parquet-Dateien enthalten Spaltenmetadaten, die gelesen werden. Typzuordnungen finden Sie unter [Typzuordnung für Parquet](#type-mapping-for-parquet). Beispiele finden Sie unter [Lesen von Parquet-Dateien ohne Angabe eines Schemas](#read-parquet-files-without-specifying-schema).
+
+Bei CSV-Dateien können Spaltennamen aus der Kopfzeile gelesen werden. Mithilfe des Arguments „HEADER_ROW“ können Sie angeben, ob eine Kopfzeile vorhanden ist. Bei „HEADER_ROW = FALSE“ werden generische Spaltennamen verwendet: C1, C2, ... Cn, wobei „n“ die Anzahl von Spalten in der Datei ist. Datentypen werden aus den ersten 100 Datenzeilen abgeleitet. Beispiele finden Sie unter [Lesen von CSV-Dateien ohne Angabe eines Schemas](#read-csv-files-without-specifying-schema).
+
+> [!IMPORTANT]
+> Es kann vorkommen, dass der passende Datentyp aufgrund fehlender Informationen nicht abgeleitet werden kann und stattdessen ein größerer Datentyp verwendet wird. Dies führt zu Mehraufwand und ist insbesondere für Zeichenspalten relevant, die als „varchar(8000)“ abgeleitet werden. Um eine optimale Leistung zu erzielen, [überprüfen Sie die abgeleiteten Datentypen](best-practices-sql-on-demand.md#check-inferred-data-types), und [verwenden Sie passende Datentypen](best-practices-sql-on-demand.md#use-appropriate-data-types).
+
+### <a name="type-mapping-for-parquet"></a>Typzuordnung für Parquet
+
+Parquet-Dateien enthalten Typbeschreibungen für die einzelnen Spalten. In der folgenden Tabelle wird beschrieben, wie Parquet-Typen den nativen SQL-Typen zugeordnet werden.
+
+| Parquet-Typ | Logischer Parquet-Typ (Anmerkung) | SQL-Datentyp |
+| --- | --- | --- |
+| BOOLEAN | | bit |
+| BINARY/BYTE_ARRAY | | varbinary |
+| Double | | float |
+| GLEITKOMMAZAHL | | real |
+| INT32 | | INT |
+| INT64 | | BIGINT |
+| INT96 | |datetime2 |
+| FIXED_LEN_BYTE_ARRAY | |BINARY |
+| BINARY |UTF8 |varchar \*(UTF8-Sortierung) |
+| BINARY |STRING |varchar \*(UTF8-Sortierung) |
+| BINARY |ENUM|varchar \*(UTF8-Sortierung) |
+| BINARY |UUID |UNIQUEIDENTIFIER |
+| BINARY |DECIMAL |Decimal |
+| BINARY |JSON |varchar(max) \*(UTF8-Sortierung) |
+| BINARY |BSON |varbinary(max) |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |Decimal |
+| BYTE_ARRAY |INTERVAL |varchar(max), in ein standardisiertes Format serialisiert |
+| INT32 |INT(8, true) |SMALLINT |
+| INT32 |INT(16, true) |SMALLINT |
+| INT32 |INT(32, true) |INT |
+| INT32 |INT(8, false) |TINYINT |
+| INT32 |INT(16, false) |INT |
+| INT32 |INT(32, false) |BIGINT |
+| INT32 |DATE |date |
+| INT32 |DECIMAL |Decimal |
+| INT32 |TIME (MILLIS)|time |
+| INT64 |INT(64, true) |BIGINT |
+| INT64 |INT(64, false) |decimal(20,0) |
+| INT64 |DECIMAL |Decimal |
+| INT64 |TIME (MICROS/NANOS) |time |
+|INT64 |TIMESTAMP (MILLIS/MICROS/NANOS) |datetime2 |
+|[Komplexer Typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |AUFLISTEN |varchar(max), serialisiert in JSON |
+|[Komplexer Typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max), serialisiert in JSON |
+
 ## <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel werden nur zwei Spalten mit den Ordinalzahlen 1 und 4 aus den Dateien „population*.csv“ zurückgegeben. Da in den Dateien keine Kopfzeile vorhanden ist, beginnt der Lesevorgang in der ersten Zeile:
+### <a name="read-csv-files-without-specifying-schema"></a>Lesen von CSV-Dateien ohne Angabe eines Schemas
+
+Im folgenden Beispiel wird eine CSV-Datei mit einer Kopfzeile gelesen, ohne Spaltennamen und Datentypen anzugeben: 
 
 ```sql
-SELECT * 
+SELECT 
+    *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
-        FORMAT = 'CSV',
-        FIRSTROW = 1
-    )
-WITH (
-    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
-    [population] bigint 4
-) AS [r]
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0',
+    HEADER_ROW = TRUE) as [r]
 ```
+
+Im folgenden Beispiel wird eine CSV-Datei ohne Kopfzeile gelesen, ohne Spaltennamen und Datentypen anzugeben: 
+
+```sql
+SELECT 
+    *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0') as [r]
+```
+
+### <a name="read-parquet-files-without-specifying-schema"></a>Lesen von Parquet-Dateien ohne Angabe eines Schemas
 
 Im folgenden Beispiel werden alle Spalten der ersten Zeile aus dem Zensus-Dataset im Parquet-Format zurückgegeben, ohne dass die Spaltennamen und Datentypen angegeben werden: 
 
@@ -241,6 +325,42 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-specific-columns-from-csv-file"></a>Lesen bestimmter Spalten aus einer CSV-Datei
+
+Im folgenden Beispiel werden nur zwei Spalten mit den Ordinalzahlen 1 und 4 aus den Dateien „population*.csv“ zurückgegeben. Da in den Dateien keine Kopfzeile vorhanden ist, beginnt der Lesevorgang in der ersten Zeile:
+
+```sql
+SELECT 
+    * 
+FROM OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
+        FORMAT = 'CSV',
+        FIRSTROW = 1
+    )
+WITH (
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
+    [population] bigint 4
+) AS [r]
+```
+
+### <a name="read-specific-columns-from-parquet-file"></a>Lesen bestimmter Spalten aus einer Parquet-Datei
+
+Im folgenden Beispiel werden nur zwei Spalten der ersten Zeile aus dem Zensus-Dataset im Parquet-Format zurückgegeben: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    [stateName] VARCHAR (50),
+    [population] bigint
+) AS [r]
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
+Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](best-practices-sql-on-demand.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.

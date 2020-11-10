@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629152"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026716"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -42,27 +42,19 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
 
-Die folgenden 29 neuen Empfehlungen werden zu Security Center hinzugefügt, um die Abdeckung des Vergleichstests zu erhöhen.
+Die folgenden 18 neuen Empfehlungen werden zu Security Center hinzugefügt, um die Abdeckung des Vergleichstests zu erhöhen.
 
 Empfehlungen der Vorschau versetzen keine Ressourcen in einen fehlerhaften Zustand, und sie werden nicht in die Berechnungen Ihrer Sicherheitsbewertung einbezogen. Setzen Sie sie trotzdem um, wann immer möglich, damit sie nach Ablauf des Vorschauzeitraums zu Ihrer Bewertung beitragen. Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md).
 
 - Azure Backup sollte für virtuelle Computer aktiviert sein
-- Die Aufbewahrung der Überprüfung für SQL-Server sollte auf mindestens 90 Tage festgelegt sein
-- Diagnoseprotokolle sollte in App Service aktiviert sein 
 - Erzwingen einer SSL-Verbindung muss für MySQL-Datenbankserver aktiviert sein
 - Erzwingen einer SSL-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
-- FTPS sollte in API-App erforderlich sein
-- FTPS sollte in Funktions-App erforderlich sein
-- FTPS sollte in Web-App erforderlich sein
 - Georedundante Sicherung muss für Azure Database for MariaDB aktiviert sein
 - Georedundante Sicherung muss für Azure Database for MySQL aktiviert sein
 - Georedundante Sicherung muss für Azure Database for PostgreSQL aktiviert sein
 - Java sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
 - Java sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden
 - Java sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
-- API-App sollte verwaltete Identität verwenden
-- Funktions-App sollte verwaltete Identität verwenden
-- Web-App sollte verwaltete Identität verwenden
 - PHP sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
 - PHP sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
 - Privater Endpunkt muss für MariaDB-Server aktiviert sein
@@ -71,9 +63,6 @@ Empfehlungen der Vorschau versetzen keine Ressourcen in einen fehlerhaften Zusta
 - Python sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
 - Python sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden
 - Python sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
-- TLS sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
-- TLS sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden
-- TLS sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
 - Web-Apps sollten ein SSL-Zertifikat für alle eingehenden Anforderungen anfordern
 
 Verwandte Links:

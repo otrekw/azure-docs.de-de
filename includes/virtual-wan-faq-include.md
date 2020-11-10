@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038417"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331149"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Ist Azure Virtual WAN allgemein verfügbar?
 
@@ -33,7 +33,7 @@ Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur 
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welcher Client wird für Azure Virtual WAN-Benutzer-VPN (Point-to-Site) unterstützt?
 
-Virtual WAN unterstützt den [Azure-VPN-](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN- oder einen beliebigen IKEv2-Client. Die Azure AD-Authentifizierung wird mit dem Azure-VPN-Client unterstützt. Es ist mindestens ein Windows 10-Client mit der Betriebssystemversion 17763.0 oder höher erforderlich.  OpenVPN-Clients können die zertifikatbasierte Authentifizierung unterstützen. Nachdem auf dem Gateway die zertifikatbasierte Authentifizierung ausgewählt wurde, wird die *OVPN*-Datei zum Herunterladen Ihres Geräts angezeigt. IKEv2 unterstützt sowohl die Zertifikat- als auch die RADIUS-Authentifizierung. 
+Virtual WAN unterstützt den [Azure-VPN-](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN- oder einen beliebigen IKEv2-Client. Die Azure AD-Authentifizierung wird mit dem Azure-VPN-Client unterstützt. Es ist mindestens ein Windows 10-Client mit der Betriebssystemversion 17763.0 oder höher erforderlich.  OpenVPN-Clients können die zertifikatbasierte Authentifizierung unterstützen. Nachdem auf dem Gateway die zertifikatbasierte Authentifizierung ausgewählt wurde, wird die *OVPN* -Datei zum Herunterladen Ihres Geräts angezeigt. IKEv2 unterstützt sowohl die Zertifikat- als auch die RADIUS-Authentifizierung. 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>Für Benutzer-VPN (Point-to-Site): Warum ist der P2S-Clientpool in zwei Routen unterteilt?
 
@@ -259,6 +259,8 @@ Ja. Diese Option ist zurzeit nur über PowerShell verfügbar. Das Virtual WAN-P
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
 
 IPv6 wird im Virtual WAN-Hub und seinen Gateways nicht unterstützt. Wenn Sie über ein VNET mit IPv4- und IPv6-Unterstützung verfügen und das VNET mit einer Virtual WAN-Instanz verbinden möchten, wird dieses Szenario derzeit nicht unterstützt. 
+
+Für das Point-to-Site-VPN-Szenario (Benutzer) mit Internetabzweigung über Azure Firewall müssen Sie wahrscheinlich IPv6-Konnektivität auf Ihrem Clientgerät deaktivieren, um die Weiterleitung des Datenverkehrs an den Virtual WAN-Hub zu erzwingen. Das liegt daran, dass moderne Geräte standardmäßig IPv6-Adressen verwenden.
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Welche API-Version wird für die Verwendung durch Skripts empfohlen, mit denen verschiedene Virtual WAN-Funktionen automatisiert werden?
 

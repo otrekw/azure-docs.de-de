@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Cache for Redis mit .NET-Apps'
+title: 'Schnellstart: Verwenden von Azure Cache for Redis mit .NET Framework'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie über Ihre .NET-Apps auf Azure Cache for Redis zugreifen.
 author: yegu-ms
 ms.author: yegu
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b3c18fcc0f4ff21eaaea2cbaf664e87d0ff33d60
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537064"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077063"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET Framework-Anwendung
+# <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Schnellstart: Verwenden von Azure Cache for Redis mit .NET Framework
 
 In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .NET Framework-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist. Sie verwenden insbesondere den [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-Client mit C#-Code in einer .NET-Konsolen-App.
 
@@ -30,7 +30,7 @@ In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Erstellen Sie auf Ihrem Computer eine Datei namens *CacheSecrets.config* , und platzieren Sie die Datei an einem Speicherort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config* .
+Erstellen Sie auf Ihrem Computer eine Datei namens *CacheSecrets.config* , und platzieren Sie die Datei an einem Speicherort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
 
 Bearbeiten Sie die Datei *CacheSecrets.config* , und fügen Sie ihr folgende Inhalte hinzu:
 
@@ -47,7 +47,7 @@ Ersetzen Sie `<access-key>` durch den Primärschlüssel für Ihren Cache.
 
 ## <a name="create-a-console-app"></a>Erstellen einer Konsolen-App
 
-Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt** .
+Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 
 Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu konfigurieren. Geben Sie einen **Projektnamen** ein, und klicken Sie auf **Erstellen** , um eine neue Konsolenanwendung zu erstellen.
 
@@ -81,7 +81,7 @@ Nach Abschluss der Installation kann der *StackExchange.Redis* -Cacheclient für
 </configuration>
 ```
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** , und klicken Sie anschließend auf **Verweis hinzufügen** . Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** , und klicken Sie anschließend auf **Verweis hinzufügen**. Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu.
 
 Fügen Sie der Datei *Program.cs* die folgenden `using`-Anweisungen hinzu:
 
@@ -247,13 +247,13 @@ Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie d
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.
 >
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen** .
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen** .
+Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
 
 ![Löschen](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen** .
+Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 

@@ -1,22 +1,24 @@
 ---
 title: 'Schnellstart: Erstellen eines Servers – Azure-Portal – Azure Database for MySQL'
-description: Dieser Artikel führt Sie durch die Verwendung des Azure-Portals, um in etwa fünf Minuten schnell eine Azure-Beispieldatenbank für MySQL-Server zu erstellen.
+description: Diese Schnellstartanleitung führt Sie durch die Verwendung des Azure-Portals, um in etwa fünf Minuten schnell einen Azure Database for MySQL-Server zu erstellen.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: a3438293bcbf656a371b55605c64a005ae4d599a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2cae0187643eb596bd98bcd99a588a4d214e6f6e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541399"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341211"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers im Azure-Portal
 
-Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Azure Database for MySQL-Server erstellen.  
+Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Azure Database for MySQL-Server erstellen.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -39,7 +41,7 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
 3. Geben Sie im Formular für den neuen Server folgende Informationen an:
     
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Option „Azure Database for MySQL“":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Formular für die Servererstellung":::
 
 **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** 
 ---|---|---
@@ -52,7 +54,7 @@ Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministrato
 Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
 Position | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
 Version | *Die aktuelle Hauptversion*| Die aktuelle Hauptversion (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
-Compute + Speicher | **Universell** , **Gen 5** , **2 virtuelle Kerne** , **5 GB** , **7 Tage** , **Georedundant** |Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. Wählen Sie nun den entsprechenden Tarif aus. Weitere Informationen hierzu finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/mysql/). Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK** .
+Compute + Speicher | **Universell** , **Gen 5** , **2 virtuelle Kerne** , **5 GB** , **7 Tage** , **Georedundant** |Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. Wählen Sie nun den entsprechenden Tarif aus. Weitere Informationen hierzu finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/mysql/). Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**.
 
    > [!NOTE]
    > Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. 
@@ -61,13 +63,13 @@ Compute + Speicher | **Universell** , **Gen 5** , **2 virtuelle Kerne** , **5 GB
    
 5. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** (Glockensymbol) aus, um den Bereitstellungsprozess zu überwachen.
    
-Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: **information_schema** , **mysql** , **performance_schema** und **sys** .
+Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: **information_schema** , **mysql** , **performance_schema** und **sys**.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
 Der erstellte Server wird standardmäßig durch eine Firewall geschützt und ist nicht öffentlich zugänglich. Wenn Sie den Zugriff auf Ihre IP-Adresse gewähren möchten, navigieren Sie im Azure-Portal zu Ihrer Serverressource, und wählen Sie im Menü auf der linken Seite die Option **Verbindungssicherheit** für Ihre Serverressource aus. Wenn Sie nicht wissen, wie Sie Ihre Ressource finden können, lesen Sie die Informationen unter [Öffnen von Ressourcen](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Option „Azure Database for MySQL“":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Verbindungssicherheit – Firewallregeln":::
    
 Wählen Sie nun **Aktuelle Client-IP-Adresse hinzufügen** und dann **Speichern** aus. Sie können weitere IP-Adressen hinzufügen oder einen IP-Adressbereich angeben, um über diese IP-Adressen eine Verbindung mit dem Server herzustellen. Weitere Informationen finden Sie unter [Verwalten von Firewallregeln für den Azure Database for MySQL-Server](./concepts-firewall-rules.md).
 
@@ -83,7 +85,7 @@ Sie können [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) oder
     >Wenn Sie Cloud Shell zum ersten Mal starten, wird eine Eingabeaufforderung zum Erstellen einer Ressourcengruppe und eines Speicherkontos angezeigt. Dieser Schritt ist nur ein Mal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. 
 
    >[!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Option „Azure Database for MySQL“":::
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Vollständige Ansicht von Cloud Shell im Portal":::
 2. Führen Sie im Azure Cloud Shell-Terminal den folgenden Befehl aus. Ersetzen Sie die Werte durch den tatsächlichen Servernamen und den Anmeldenamen des Administratorbenutzers. Der Benutzername des Administrators erfordert „@\<servername>“, wie unten für Azure Database for MySQL gezeigt.  
 
   ```azurecli-interactive
@@ -115,7 +117,7 @@ Sie können [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) oder
   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
   mysql>
   ```
-3. Erstellen Sie im gleichen Azure Cloud Shell-Terminal eine Datenbank namens **guest** . 
+3. Erstellen Sie im gleichen Azure Cloud Shell-Terminal eine Datenbank namens **guest**. 
   ```
   mysql> CREATE DATABASE guest;
   Query OK, 1 row affected (0.27 sec)
@@ -136,10 +138,8 @@ Sie haben erfolgreich einen Azure Database for MySQL-Server in einer Ressourceng
 
 Zum Löschen des Servers können Sie auf der Seite **Übersicht** Ihres Servers auf die Schaltfläche **Löschen** klicken, wie hier gezeigt:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Option „Azure Database for MySQL“":::
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Löschen Ihrer Ressourcen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 >[Erstellen einer PHP-App unter Windows mit MySQL](../app-service/tutorial-php-mysql-app.md)
->[Erstellen einer PHP-App unter Linux mit MySQL](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux)
->[Erstellen einer Java-basierten Spring-App mit MySQL](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

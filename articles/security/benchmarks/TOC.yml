@@ -86,7 +86,7 @@
     - name: 'Azure Database for PostgreSQL: Sicherheitsbaseline für Hyperscale'
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks-Sicherheitsbaseline
-      href: ../../azure-databricks/security-baseline.md
+      href: /azure/databricks/scenarios/security-baseline
     - name: Azure DNS-Sicherheitsbaseline
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs-Sicherheitsbaseline
@@ -118,7 +118,7 @@
     - name: "Azure\_Sentinel-Sicherheitsbaseline"
       href: ../../sentinel/security-baseline.md
     - name: Azure SQL-Datenbank-Sicherheitsbaseline
-      href: ../../sql-database/security-baseline.md
+      href: ../../azure-sql/database/security-baseline.md
     - name: Azure Storage-Sicherheitsbaseline
       href: ../../storage/common/security-baseline.md
     - name: Azure Traffic Manager-Sicherheitsbaseline
@@ -154,7 +154,7 @@
     - name: HDInsight-Sicherheitsbaseline
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault-Sicherheitsbaseline
-      href: ../../key-vault/security-baseline.md
+      href: ../../key-vault/general/security-baseline.md
     - name: Logic Apps-Sicherheitsbaseline
       href: ../../logic-apps/security-baseline.md
     - name: Network Watcher-Sicherheitsbaseline

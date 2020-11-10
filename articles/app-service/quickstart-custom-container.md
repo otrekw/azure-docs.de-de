@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425869"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925746"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Ausführen eines benutzerdefinierten Containers in Azure
 
@@ -32,7 +32,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - <a href="https://hub.docker.com/" target="_blank">Registrierung für ein Docker-Hub-Konto</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Installieren Sie Docker für Windows</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Wechseln Sie Docker, um Windows-Container auszuführen</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installieren Sie Visual Studio 2019</a> mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung** . Sie haben Visual Studio 2019 bereits installiert:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installieren Sie Visual Studio 2019</a> mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung**. Sie haben Visual Studio 2019 bereits installiert:
 
     - Installieren Sie in Visual Studio die neuesten Updates, indem Sie **Hilfe** > **Nach Updates suchen** auswählen.
     - Fügen Sie in Visual Studio die Workloads hinzu, indem Sie **Tools** > **Tools und Features abrufen** auswählen.
@@ -51,11 +51,11 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Sie können jede Art von ASP.NET Web-App für Azure bereitstellen. Wählen Sie für diese Schnellstartanleitung die Vorlage **MVC** aus.
 
-1. Wählen Sie **Docker-Unterstützung** aus, und vergewissern Sie sich, dass die Authentifizierung auf **Keine Authentifizierung** festgelegt ist. Klicken Sie auf **Erstellen** .
+1. Wählen Sie **Docker-Unterstützung** aus, und vergewissern Sie sich, dass die Authentifizierung auf **Keine Authentifizierung** festgelegt ist. Klicken Sie auf **Erstellen**.
 
    ![Erstellen einer ASP.NET-Webanwendung](./media/quickstart-custom-container/select-mvc-template-for-container.png)
 
-1. Wenn die _Dockerfile_ -Datei nicht automatisch geöffnet wird, öffnen Sie sie im **Projektmappen-Explorer** .
+1. Wenn die _Dockerfile_ -Datei nicht automatisch geöffnet wird, öffnen Sie sie im **Projektmappen-Explorer**.
 
 1. Sie benötigen ein [unterstütztes übergeordnetes Image](configure-custom-container.md#supported-parent-images). Ändern Sie das übergeordnete Image, indem Sie die Zeile `FROM` durch den folgenden Code ersetzen und die Datei dann speichern:
 
@@ -73,7 +73,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Wählen Sie **App Service** und dann **Veröffentlichen** aus.
 
-1. Wählen Sie unter **Veröffentlichungsziel auswählen** die Optionen **Container Registry** und **Docker Hub** aus, und klicken Sie anschließend auf **Veröffentlichen** .
+1. Wählen Sie unter **Veröffentlichungsziel auswählen** die Optionen **Container Registry** und **Docker Hub** aus, und klicken Sie anschließend auf **Veröffentlichen**.
 
    ![Veröffentlichen über die Projektübersichtsseite](./media/quickstart-custom-container/publish-to-docker-vs2019.png)
 
@@ -81,7 +81,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
    Warten Sie, bis die Bereitstellung abgeschlossen ist. Auf der Seite **Veröffentlichen** wird jetzt der Name des Repositorys zur späteren Verwendung angezeigt.
 
-   ![Veröffentlichen über die Projektübersichtsseite](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![Screenshot: Hervorgehobener Repositoryname](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. Kopieren Sie diesen Repositorynamen für die spätere Verwendung.
 
@@ -89,7 +89,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal]( https://portal.azure.com) an.
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen** .
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
 1. Suchen Sie mithilfe des Suchfelds oberhalb der Azure Marketplace-Ressourcenliste nach **Web-App für Container** , und wählen Sie **Erstellen** aus.
 
@@ -113,9 +113,9 @@ Wenn der Azure-Vorgang abgeschlossen ist, wird ein Benachrichtigungsfeld angezei
 
 ![Bereitstellung erfolgreich](media/quickstart-custom-container/portal-create-finished.png)
 
-1. Klicken Sie auf **Zu Ressource wechseln** .
+1. Klicken Sie auf **Zu Ressource wechseln**.
 
-1. Folgen Sie in der Übersicht dieser Ressource dem Link neben **URL** .
+1. Folgen Sie in der Übersicht dieser Ressource dem Link neben **URL**.
 
 Daraufhin wird eine neue Browserseite geöffnet:
 
@@ -146,7 +146,7 @@ Die gestreamten Protokolle sehen wie folgt aus:
 
 ## <a name="update-locally-and-redeploy"></a>Lokales Aktualisieren und erneutes Bereitstellen
 
-1. Öffnen Sie in Visual Studio im **Projektmappen-Explorer** unter Ihrem Projekt **Ansichten** > **Start** > **Index.cshtml** .
+1. Öffnen Sie in Visual Studio im **Projektmappen-Explorer** unter Ihrem Projekt **Ansichten** > **Start** > **Index.cshtml**.
 
 1. Suchen Sie im oberen Bereich nach dem HTML-Tag `<div class="jumbotron">`, und ersetzen Sie das gesamte Element durch folgenden Code:
 
@@ -161,7 +161,7 @@ Die gestreamten Protokolle sehen wie folgt aus:
 
 1. Wählen Sie auf der Seite „Veröffentlichen“ die Option **Veröffentlichen** aus, und warten Sie, bis die Veröffentlichung abgeschlossen ist.
 
-1. Damit App Service das neue Image von Docker Hub abruft, starten Sie die App neu. Klicken Sie auf der App-Seite im Portal auf **Neu starten** > **Ja** .
+1. Damit App Service das neue Image von Docker Hub abruft, starten Sie die App neu. Klicken Sie auf der App-Seite im Portal auf **Neu starten** > **Ja**.
 
    ![Neustarten der Web-App in Azure](./media/quickstart-custom-container/portal-restart-app.png)
 
@@ -217,7 +217,7 @@ In VS Code sehen Sie Ihre Azure-E-Mail-Adresse in der Statusleiste und Ihr Abonn
 docker --version
 ```
 
-Stellen Sie abschließend sicher, dass Ihre Azure Container Registry-Instanz verbunden ist. Wählen Sie dazu das Docker-Logo in der Aktivitätsleiste aus, und navigieren Sie zu **REGISTRIERUNGEN** .
+Stellen Sie abschließend sicher, dass Ihre Azure Container Registry-Instanz verbunden ist. Wählen Sie dazu das Docker-Logo in der Aktivitätsleiste aus, und navigieren Sie zu **REGISTRIERUNGEN**.
 
 ![Screenshot, der den Wert „Registrierungen“ mit erweitertem Azure und einer Datei mit der Dateinamenerweiterung „.io“ zeigt.](./media/quickstart-docker/registries.png)
 
@@ -225,7 +225,7 @@ Stellen Sie abschließend sicher, dass Ihre Azure Container Registry-Instanz ver
 
 Nachdem alles konfiguriert wurde, können Sie das Image direkt aus dem Docker-Erweiterungsexplorer in [Azure App Service](https://azure.microsoft.com/services/app-service/) bereitstellen.
 
-Suchen Sie das Image unter dem Knoten **Registrierungen** im **DOCKER** -Explorer, und erweitern Sie es, um seine Tags anzuzeigen. Klicken Sie mit der rechten Maustaste auf ein Tag, und wählen Sie dann die Option zum **Bereitstellen des Images in Azure App Service** .
+Suchen Sie das Image unter dem Knoten **Registrierungen** im **DOCKER** -Explorer, und erweitern Sie es, um seine Tags anzuzeigen. Klicken Sie mit der rechten Maustaste auf ein Tag, und wählen Sie dann die Option zum **Bereitstellen des Images in Azure App Service**.
 
 Befolgen Sie dann die Aufforderungen, um ein Abonnement, einen global eindeutigen App-Namen, eine Ressourcengruppe und einen App Service-Plan auszuwählen. Wählen Sie **B1 Basic** als Tarif aus, sowie eine Region.
 

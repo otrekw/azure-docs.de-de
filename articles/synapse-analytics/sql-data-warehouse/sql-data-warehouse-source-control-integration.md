@@ -1,6 +1,6 @@
 ---
 title: Integration der Quellcodeverwaltung
-description: Professionelle DevOps-Datenbankumgebung für den SQL-Pool mit nativer Integration der Quellcodeverwaltung mithilfe von Azure Repos (Git und GitHub)
+description: Professionelle DevOps-Datenbankumgebung für den dedizierten SQL-Pool mit nativer Integration der Quellcodeverwaltung mithilfe von Azure Repos (Git und GitHub)
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313304"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>Integration der Quellcodeverwaltung für den SQL-Pool
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Integration der Quellcodeverwaltung für den dedizierten SQL-Pool in Azure Synapse Analytics
 
-In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) mit Quellcodeverwaltung integrieren.  Die Integration der Quellcodeverwaltung ist der erste Schritt bei der Erstellung Ihrer Continuous Integration- und Continuous Deployment-Pipeline mit der SQL-Pool-Ressource in Azure Synapse Analytics.
+In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) mit Quellcodeverwaltung integrieren.  Die Integration der Quellcodeverwaltung ist der erste Schritt bei der Erstellung Ihrer Continuous Integration- und Continuous Deployment-Pipeline mit der Ressource des dedizierten SQL-Pools in Azure Synapse Analytics.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -85,8 +85,8 @@ Weitere Informationen zum Verbinden von Projekten mithilfe von Visual Studio fin
 
    ![Überprüfen](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Überprüfen der Änderungen")
 
-4. (**Optional**) Verwenden Sie den Schemavergleich, und übertragen Sie die Änderungen mithilfe von SSDT in Ihre Data Warehouse-Zielinstanz, um sicherzustellen, dass die Objektdefinitionen in Ihrem Azure-Repository und im lokalen Repository Ihr Data Warehouse widerspiegeln.
+4. ( **Optional** ) Verwenden Sie den Schemavergleich, und übertragen Sie die Änderungen mithilfe von SSDT in Ihre Data Warehouse-Zielinstanz, um sicherzustellen, dass die Objektdefinitionen in Ihrem Azure-Repository und im lokalen Repository Ihr Data Warehouse widerspiegeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Entwurfsentscheidungen und Programmiertechniken für Data Warehouses in Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)
+- [Entwickeln für den dedizierten SQL-Pool](sql-data-warehouse-overview-develop.md)

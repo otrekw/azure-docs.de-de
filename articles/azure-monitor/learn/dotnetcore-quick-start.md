@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd45284bfea09935ea48445d816f3b91272f68fc
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055480"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925848"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -71,9 +71,9 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 4. Wählen Sie **Projekt** > **NuGet-Pakete verwalten** > **Paketquelle: nuget.org** >  **,** und aktualisieren Sie die Application Insights SDK-Pakete auf die neueste stabile Version.
 
-5. Wählen Sie **Debuggen** > **Ohne Debuggen starten**, oder drücken Sie STRG+F5, um Ihre App zu starten.
+5. Wählen Sie **Debuggen** > **Ohne Debuggen starten** , oder drücken Sie STRG+F5, um Ihre App zu starten.
 
-    ![Application Insights – Menü „Übersicht“](./media/dotnetcore-quick-start/3debug.png)
+    ![Screenshot: Menüoption „Ohne Debuggen starten“](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > Es dauert ca. 3-5 Minuten, bis die ersten Daten im Portal angezeigt werden. Wenn es sich um eine Test-App mit geringem Datenverkehr handelt, denken Sie daran, dass die meisten Metriken nur erfasst werden, wenn aktive Anforderungen oder Vorgänge vorhanden sind.
@@ -84,11 +84,11 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Application Insights – Menü „Übersicht“](./media/dotnetcore-quick-start/4overview.png)
 
-2. Klicken Sie auf **Anwendungsübersicht**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten. Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
+2. Klicken Sie auf **Anwendungsübersicht** , um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten. Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
    ![Anwendungszuordnung](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Klicken Sie auf das **App-Analyse**-Symbol ![Symbol „Anwendungsübersicht“](./media/dotnetcore-quick-start/006.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Klicken Sie auf das **App-Analyse** -Symbol ![Symbol „Anwendungsübersicht“](./media/dotnetcore-quick-start/006.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
    ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -107,7 +107,7 @@ Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und all
 > Wenn Sie eine vorhandene Ressourcengruppe verwendet haben, funktionieren die unten aufgeführten Anweisungen nicht, und Sie müssen einfach die einzelne Application Insights-Ressource löschen. Denken Sie daran: Wenn Sie eine Ressourcengruppe löschen, werden alle zugrunde liegenden Ressourcen, die Mitglieder dieser Gruppe sind, gelöscht.
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf **myResourceGroup**.
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen** , geben Sie im Textfeld **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

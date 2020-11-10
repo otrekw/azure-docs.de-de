@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/25/2020
-ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91361210"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099187"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit Visual Studio Code
 
@@ -20,7 +20,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio C
 
 Obwohl Sie dieselben Aufgaben im [Azure-Portal](https://portal.azure.com) und in Visual Studio ausführen können, können Sie in Visual Studio Code schneller starten, wenn Sie bereits mit Logik-App-Definitionen vertraut sind und direkt im Code arbeiten möchten. Beispielsweise können Sie bereits erstellte Logik-Apps deaktivieren, aktivieren, löschen und aktualisieren. Sie können zudem auf jeder Entwicklungsplattform, auf der Visual Studio Code ausgeführt wird – z.B. Linux, Windows und Mach, an Logik-Apps und Integrationskonten arbeiten.
 
-Für diesen Artikel können Sie die Logik-App aus [dieser Schnellstartanleitung](../logic-apps/quickstart-create-first-logic-app-workflow.md) erstellen, die sich eher mit den grundlegenden Konzepten befasst. In Visual Studio Code sieht die Logik-App wie in diesem Beispiel aus:
+Für diesen Artikel können Sie die Logik-App aus [dieser Schnellstartanleitung](../logic-apps/quickstart-create-first-logic-app-workflow.md) erstellen, die sich eher mit den grundlegenden Konzepten befasst. Sie können sich auch darüber informieren, wie Sie [die Beispiel-App in Visual Studio erstellen](quickstart-create-logic-apps-with-visual-studio.md) und [Apps über die Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) erstellen und verwalten](quickstart-logic-apps-azure-cli.md). In Visual Studio Code sieht die Logik-App wie in diesem Beispiel aus:
 
 ![Beispieldefinition für Logik-App-Workflows](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
@@ -82,7 +82,7 @@ Stellen Sie zunächst sicher, dass Sie über die folgenden Elemente verfügen:
 
    Im Azure-Bereich werden in den Abschnitten **Logik-Apps** und **Integrationskonten** nun die mit Ihrem Konto verknüpften Azure-Abonnements angezeigt. Wenn die erwarteten Abonnements jedoch nicht angezeigt werden, oder wenn in den Abschnitten zu viele Abonnements angezeigt werden, führen Sie die folgenden Schritte aus:
 
-   1. Bewegen Sie den Mauszeiger über die Bezeichnung **Logik-Apps** . Wenn die Symbolleiste angezeigt wird, wählen Sie **Abonnements auswählen** (Filtersymbol) aus.
+   1. Bewegen Sie den Mauszeiger über die Bezeichnung **Logik-Apps**. Wenn die Symbolleiste angezeigt wird, wählen Sie **Abonnements auswählen** (Filtersymbol) aus.
 
       ![Suchen oder Filtern von Azure-Abonnements](./media/quickstart-create-logic-apps-visual-studio-code/find-or-filter-subscriptions.png)
 
@@ -278,7 +278,7 @@ In Visual Studio Code können Sie die früheren Versionen der Logik-App öffnen 
 
 1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
 
-1. Erweitern Sie Ihre Logik-App in Ihrem Abonnement, und erweitern Sie **Versionen** .
+1. Erweitern Sie Ihre Logik-App in Ihrem Abonnement, und erweitern Sie **Versionen**.
 
    In der Liste **Versionen** werden – sofern vorhanden – die früheren Versionen ihrer Logik-App angezeigt.
 

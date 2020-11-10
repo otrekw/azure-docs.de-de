@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8edf782c03300cf22bd349548da425669f492bc1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093530"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317270"
 ---
 # <a name="sql-authentication"></a>SQL-Authentifizierung
 
@@ -22,14 +22,14 @@ Azure Synapse Analytics beinhaltet zwei SQL-Formfaktoren, mit denen Sie den Ress
 
 Für die Autorisierung bei Synapse SQL können Sie zwei Autorisierungstypen verwenden:
 
-- AAD-Autorisierung
+- Azure Active Directory-Autorisierung
 - SQL-Autorisierung
 
-Die AAD-Autorisierung basiert auf Azure Active Directory und bietet Ihnen einen zentralen Ort für die Benutzerverwaltung. Die SQL-Autorisierung ermöglicht Legacy-Anwendungen die Verwendung von Synapse SQL auf vertraute Weise.
+Die Azure Active Directory-Autorisierung bietet Ihnen einen zentralen Ort für die Benutzerverwaltung. Die SQL-Autorisierung ermöglicht Legacy-Anwendungen die Verwendung von Synapse SQL auf vertraute Weise.
 
 ## <a name="administrative-accounts"></a>Verwaltungskonten
 
-Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory-Administrator**), die als Administratoren fungieren. Öffnen Sie das Azure-Portal, und navigieren Sie zur Registerkarte „Eigenschaften“ Ihrer Synapse SQL-Instanz, um diese Administratorkonten für Ihren SQL-Server zu identifizieren.
+Es gibt zwei Administratorkonten ( **Serveradministrator** und **Active Directory-Administrator** ), die als Administratoren fungieren. Öffnen Sie das Azure-Portal, und navigieren Sie zur Registerkarte „Eigenschaften“ Ihrer Synapse SQL-Instanz, um diese Administratorkonten für Ihren SQL-Server zu identifizieren.
 
 ![SQL Server-Administratoren](./media/sql-authentication/sql-admins.png)
 
@@ -51,18 +51,18 @@ Die Konten **Serveradministrator** und **Azure AD-Administrator** weisen die fol
 - Sie können Mitglieder für die Rollen `dbmanager` und `loginmanager` hinzufügen und entfernen.
 - Sie können die `sys.sql_logins`-Systemtabelle anzeigen.
 
-## <a name="sql-on-demand-preview"></a>[SQL On-Demand (Vorschauversion)](#tab/serverless)
+## <a name="serverless-sql-pool-preview"></a>[Serverloser SQL-Pool (Vorschauversion)](#tab/serverless)
 
-Zum Verwalten der Benutzer, die Zugriff auf SQL On-Demand haben, können Sie die nachfolgenden Anweisungen ausführen.
+Zum Verwalten der Benutzer, die Zugriff auf den serverlosen SQL-Pool haben, können Sie die nachfolgenden Anweisungen ausführen.
 
-Verwenden Sie die folgende Syntax, um eine Anmeldung für SQL On-Demand zu erstellen:
+Verwenden Sie die folgende Syntax, um eine Anmeldung für den serverlosen SQL-Pool zu erstellen:
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Sobald die Anmeldung erstellt wurde, können Sie Benutzer in den einzelnen Datenbanken im SQL On-Demand-Endpunkt erstellen und diesen Benutzern die erforderlichen Berechtigungen erteilen. Zum Erstellen eines Benutzers können Sie die folgende Syntax verwenden:
+Sobald die Anmeldung erstellt wurde, können Sie Benutzer in den einzelnen Datenbanken im Endpunkt für den serverlosen SQL-Pool erstellen und diesen Benutzern die erforderlichen Berechtigungen erteilen. Zum Erstellen eines Benutzers können Sie die folgende Syntax verwenden:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -127,7 +127,7 @@ Nun kann der Benutzer eine Verbindung mit der Datenbank `master` herstellen und 
 
 ### <a name="login-managers"></a>Anmeldungs-Manager
 
-Die andere Administratorrolle ist die Rolle „loginmanager“ (Anmeldungs-Manager). Mitglieder dieser Rolle können in der Masterdatenbank neue Anmeldungen erstellen. Bei Bedarf können Sie die gleichen Schritte ausführen (Erstellen einer Anmeldung und eines Benutzers und Hinzufügen eines Benutzers zur Rolle **loginmanager**), um es einem Benutzer zu ermöglichen, im Master neue Anmeldungen zu erstellen. In der Regel sind keine Anmeldungen erforderlich, da Microsoft anstelle von auf Anmeldungen basierenden Benutzern die Verwendung von eigenständigen Datenbankbenutzern empfiehlt, die auf Datenbankebene authentifiziert werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Die andere Administratorrolle ist die Rolle „loginmanager“ (Anmeldungs-Manager). Mitglieder dieser Rolle können in der Masterdatenbank neue Anmeldungen erstellen. Bei Bedarf können Sie die gleichen Schritte ausführen (Erstellen einer Anmeldung und eines Benutzers und Hinzufügen eines Benutzers zur Rolle **loginmanager** ), um es einem Benutzer zu ermöglichen, im Master neue Anmeldungen zu erstellen. In der Regel sind keine Anmeldungen erforderlich, da Microsoft anstelle von auf Anmeldungen basierenden Benutzern die Verwendung von eigenständigen Datenbankbenutzern empfiehlt, die auf Datenbankebene authentifiziert werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ---
 
@@ -158,7 +158,7 @@ Verwenden Sie in Azure SQL-Datenbank oder Synapse (serverlos) die Anweisung `AL
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Verwenden Sie für einen SQL-Pool [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Verwenden Sie für einen dedizierten SQL-Pool [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -187,7 +187,7 @@ Bei der effizienten Zugriffsverwaltung werden Berechtigungen verwendet, die Grup
 
 - Erstellen Sie bei Verwendung der SQL Server-Authentifizierung in der Datenbank eigenständige Datenbankbenutzer. Ordnen Sie einen oder mehrere Datenbankbenutzer in einer [Datenbankrolle](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) an, und weisen Sie der Datenbankrolle dann [Berechtigungen](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zu.
 
-Bei den Datenbankrollen kann es sich um integrierte Rollen handeln, z.B. **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** und **db_denydatareader**. **db_owner** wird häufig verwendet, um nur einigen Benutzern uneingeschränkte Berechtigungen zu erteilen. Die anderen festen Datenbankrollen sind hilfreich, um bei der Entwicklung schnell eine einfache Datenbank zu erhalten, aber sie sind auch für die meisten Produktionsdatenbanken zu empfehlen. 
+Bei den Datenbankrollen kann es sich um integrierte Rollen handeln, z.B. **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** und **db_denydatareader**. **db_owner** wird häufig verwendet, um nur einigen Benutzern uneingeschränkte Berechtigungen zu erteilen. Die anderen festen Datenbankrollen sind hilfreich, um bei der Entwicklung schnell eine einfache Datenbank zu erhalten, aber sie sind auch für die meisten Produktionsdatenbanken zu empfehlen. 
 
 Die feste Datenbankrolle **db_datareader** gewährt beispielsweise Lesezugriff auf jede Tabelle der Datenbank. Dies ist im Normalfall nicht unbedingt erforderlich. 
 

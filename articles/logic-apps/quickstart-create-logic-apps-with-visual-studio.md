@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/07/2020
-ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/27/2020
+ms.openlocfilehash: 1301af3bd17ce44720d77aa1b812b78bbe57ffc9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322443"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101390"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -20,7 +20,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio k
 
 Wenn Sie mit Azure Logic Apps noch nicht vertraut sind und sich nur über die grundlegenden Konzepte informieren möchten, hilft Ihnen der [Schnellstart zur Erstellung einer Logik-App im Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) weiter. Der Logik-App-Designer funktioniert im Azure-Portal und in Visual Studio ähnlich.
 
-In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart zum Azure-Portal, allerdings mit Visual Studio. Mit dieser Logik-App wird der RSS-Feed einer Website überwacht und eine E-Mail für jedes neue Element in diesem Feed gesendet. Ihre fertige Logik-App ähnelt diesem allgemeinen Workflow:
+In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart zum Azure-Portal, allerdings mit Visual Studio. Sie können sich auch darüber informieren, wie Sie [eine Beispiel-App in Visual Studio Code erstellen](quickstart-create-logic-apps-visual-studio-code.md) und [Logik-Apps über die Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) erstellen und verwalten](quickstart-logic-apps-azure-cli.md). Mit dieser Logik-App wird der RSS-Feed einer Website überwacht und eine E-Mail für jedes neue Element in diesem Feed gesendet. Ihre fertige Logik-App ähnelt diesem allgemeinen Workflow:
 
 ![Screenshot, der den allgemeinen Workflow einer fertig gestellten Logik-App zeigt.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
@@ -37,7 +37,7 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
     > [!IMPORTANT]
     > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
 
-  * [Microsoft Azure SDK für .NET (2.9.1 oder höher)](https://azure.microsoft.com/downloads/). Weitere Informationen zu [Azure SDK für .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  * [Microsoft Azure SDK für .NET (2.9.1 oder höher)](https://azure.microsoft.com/downloads/). Weitere Informationen zu [Azure SDK für .NET](/dotnet/azure/dotnet-tools?tabs=vs).
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -70,7 +70,7 @@ Sie können die [Visual Studio-Erweiterung „Azure Environment Selector“ (Az
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-Wenn Sie Azure Government-Abonnements in Azure Logic Apps verwenden möchten, müssen Sie [Visual Studio einen Ermittlungsendpunkt für Azure Government Cloud hinzufügen](../azure-government/documentation-government-connect-vs.md). *Bevor Sie sich jedoch mit Ihrem Azure Government-Konto bei Visual Studio anmelden*, müssen Sie die JSON-Datei umbenennen, die nach dem Hinzufügen des Ermittlungsendpunkts generiert wird. Gehen Sie dazu wie folgt vor:
+Wenn Sie Azure Government-Abonnements in Azure Logic Apps verwenden möchten, müssen Sie [Visual Studio einen Ermittlungsendpunkt für Azure Government Cloud hinzufügen](../azure-government/documentation-government-connect-vs.md). *Bevor Sie sich jedoch mit Ihrem Azure Government-Konto bei Visual Studio anmelden* , müssen Sie die JSON-Datei umbenennen, die nach dem Hinzufügen des Ermittlungsendpunkts generiert wird. Gehen Sie dazu wie folgt vor:
 
 1. Schließen Sie Visual Studio.
 
@@ -145,10 +145,10 @@ Wenn Sie über Ihr Azure-Ressourcengruppenobjekt verfügen, erstellen Sie Ihre L
    | Benutzerkonto | Fabrikam <br> sophia-owen@fabrikam.com | Das Konto, das Sie bei der Anmeldung bei Visual Studio verwendet haben |
    | **Abonnement** | Nutzungsbasierte Bezahlung <br> (sophia-owen@fabrikam.com) | Name für Ihr Azure-Abonnement und das zugeordnete Konto |
    | **Ressourcengruppe** | MyLogicApp-RG <br> (USA, Westen) | Azure-Ressourcengruppe und Standort zum Speichern und Bereitstellen der Ressourcen Ihrer Logik-App |
-   | **Location** | **Identisch mit Ressourcengruppe** | Der Standorttyp und der jeweilige Standort für die Bereitstellung der Logik-App. Der Standorttyp ist entweder eine Azure-Region oder eine vorhandene [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment.md). <p>Behalten Sie bei diesem Schnellstart die Einstellung **Region** für den Standorttyp bei, und legen Sie den Standort auf **Identisch mit Ressourcengruppe** fest. <p>**Hinweis**: Nachdem Sie Ihr Ressourcengruppenprojekt erstellt haben, können Sie [den Standorttyp und den Standort ändern](manage-logic-apps-with-visual-studio.md#change-location), doch wirkt sich ein anderer Standorttyp auf verschiedene Weise auf Ihre Logik-App aus. |
+   | **Location** | **Identisch mit Ressourcengruppe** | Der Standorttyp und der jeweilige Standort für die Bereitstellung der Logik-App. Der Standorttyp ist entweder eine Azure-Region oder eine vorhandene [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment.md). <p>Behalten Sie bei diesem Schnellstart die Einstellung **Region** für den Standorttyp bei, und legen Sie den Standort auf **Identisch mit Ressourcengruppe** fest. <p>**Hinweis** : Nachdem Sie Ihr Ressourcengruppenprojekt erstellt haben, können Sie [den Standorttyp und den Standort ändern](manage-logic-apps-with-visual-studio.md#change-location), doch wirkt sich ein anderer Standorttyp auf verschiedene Weise auf Ihre Logik-App aus. |
    ||||
 
-1. Der Logik-App-Designer öffnet eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern. Scrollen Sie nach unten am Video und den Triggern vorbei zu **Vorlagen**, und wählen Sie **Leere Logik-App** aus.
+1. Der Logik-App-Designer öffnet eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern. Scrollen Sie nach unten am Video und den Triggern vorbei zu **Vorlagen** , und wählen Sie **Leere Logik-App** aus.
 
    ![Auswählen von „Leere Logik-App“](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -222,7 +222,7 @@ Wenn Sie mit Ihrer Logik-App fertig sind, löschen Sie die Ressourcengruppe mit 
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit demselben Konto an, das Sie zum Erstellen Ihrer Logik-App verwendet haben.
 
-1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach **Ressourcengruppen**, und wählen Sie diese Option anschließend aus. Wählen Sie die Ressourcengruppe Ihrer Logik-App aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach **Ressourcengruppen** , und wählen Sie diese Option anschließend aus. Wählen Sie die Ressourcengruppe Ihrer Logik-App aus.
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Ressourcengruppe löschen** aus. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
 

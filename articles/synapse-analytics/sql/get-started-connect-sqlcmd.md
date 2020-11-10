@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit Synapse SQL mithilfe von sqlcmd
-description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit SQL On-Demand (Vorschauversion) und einem SQL-Pool herzustellen und Abfragen durchzuführen.
+description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einem serverlosen SQL-Pool (Vorschauversion) und einem dedizierten SQL-Pool herzustellen und Abfragen durchzuführen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1af42a838463132a241447c11b90bfb489f879ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 10f15ec2108e897164206543358d7a9e7bd40f64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059457"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316501"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von sqlcmd
 
@@ -25,7 +25,7 @@ ms.locfileid: "87059457"
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Sie können das Befehlszeilenprogramm [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) verwenden, um eine Verbindung mit SQL On-Demand (Vorschauversion) und einem SQL-Pool in Synapse SQL herzustellen und Abfragen durchzuführen.  
+Sie können das Befehlszeilenprogramm [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) verwenden, um eine Verbindung mit einem serverlosen SQL-Pool (Vorschauversion) und einem dedizierten SQL-Pool in Synapse SQL herzustellen und Abfragen durchzuführen.  
 
 ## <a name="1-connect"></a>1. Verbinden
 Öffnen Sie zur Verwendung von [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) die Eingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre Synapse SQL-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
@@ -41,13 +41,13 @@ Zur Verwendung der SQL Server-Authentifizierung müssen Sie die Parameter für 
 
 Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 
-**SQL On-Demand**
+**Serverloser SQL-Pool**
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
 ```
 
-**SQL-Pool**
+**Dedizierter SQL-Pool**
 
 ```
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -59,13 +59,13 @@ Um die in Azure Active Directory integrierte Authentifizierung verwenden zu kön
 
 Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 
-**SQL On-Demand**
+**Serverloser SQL-Pool**
 
 ```
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -G -I
 ```
 
-**SQL-Pool**
+**Dedizierter SQL-Pool**
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ## <a name="2-query"></a>2. Abfrage
 
-### <a name="use-sql-pool"></a>Verwenden eines SQL-Pools
+### <a name="use-dedicated-sql-pool"></a>Verwenden eines dedizierten SQL-Pools
 
 Nach dem Herstellen der Verbindung können Sie alle unterstützten [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisungen (T-SQL) für die Instanz ausgeben. In diesem Beispiel werden Abfragen im interaktiven Modus gesendet:
 
@@ -87,7 +87,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-Bei einem SQL-Pool zeigen die folgenden Beispiele, wie Sie Abfragen im Batchmodus ausführen, indem Sie die Option „-Q“ verwenden oder Ihren SQL-Code an „sqlcmd“ übergeben:
+Bei einem dedizierten SQL-Pool zeigen die folgenden Beispiele, wie Sie Abfragen im Batchmodus ausführen, indem Sie die Option „-Q“ verwenden oder Ihren SQL-Code an „sqlcmd“ übergeben:
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -97,7 +97,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-### <a name="use-sql-on-demand"></a>Verwenden von SQL On-Demand
+### <a name="use-serverless-sql-pool"></a>Verwenden eines serverlosen SQL-Pools
 
 Nach dem Herstellen der Verbindung können Sie alle unterstützten [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisungen (T-SQL) für die Instanz ausgeben.  Im folgenden Beispiel werden Abfragen im interaktiven Modus gesendet:
 
@@ -108,7 +108,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-Bei SQL On-Demand zeigen die folgenden Beispiele, wie Sie Abfragen im Batchmodus ausführen, indem Sie die Option „-Q“ verwenden oder Ihren SQL-Code an „sqlcmd“ übergeben:
+Bei einem serverlosen SQL-Pool zeigen die folgenden Beispiele, wie Sie Abfragen im Batchmodus ausführen, indem Sie die Option „-Q“ verwenden oder Ihren SQL-Code an „sqlcmd“ übergeben:
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"

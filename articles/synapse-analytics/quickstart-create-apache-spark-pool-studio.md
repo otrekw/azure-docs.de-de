@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen eines Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio'
-description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen neuen Apache Spark-Pool mithilfe von Synapse Studio.
+title: 'Schnellstart: Erstellen eines serverlosen Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio'
+description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen serverlosen Apache Spark-Pool mithilfe von Synapse Studio.
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748324"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324205"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Schnellstart: Erstellen eines Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Schnellstart: Erstellen eines serverlosen Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio
 
 Azure Synapse Analytics beinhaltet verschiedene Analysemodule, mit denen Sie Ihre Daten erfassen, transformieren, modellieren, analysieren und bereitstellen können. Ein Apache Spark-Pool bietet Open-Source-Computefunktionen für Big Data. Nach der Erstellung eines Apache Spark-Pools in Ihrem Synapse-Arbeitsbereich können Daten geladen, modelliert, verarbeitet und bereitgestellt werden, um Erkenntnisse zu gewinnen.  
 
@@ -47,7 +47,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 ## <a name="launch-synapse-studio"></a>Starten von Synapse Studio 
 
-Wählen Sie in der Arbeitsbereichsübersicht **Synapse Studio starten** aus, um den Speicherort zu öffnen, an dem der Apache Spark-Pool erstellt werden soll. Geben Sie den Dienstnamen oder Ressourcennamen direkt in die Suchleiste ein.
+Wählen Sie in der Arbeitsbereichsübersicht die **Web-URL für den Arbeitsbereich** aus, um Synapse Studio zu öffnen.
 
 ![Synapse-Arbeitsbereichsübersicht im Azure-Portal mit hervorgehobenem „Synapse Studio starten“.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 

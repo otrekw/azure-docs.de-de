@@ -1,6 +1,6 @@
 ---
-title: Zugreifen auf Dateien im Speicher in SQL On-Demand (Vorschau)
-description: In diesem Artikel wird beschrieben, wie Sie Speicherdateien mithilfe von SQL On-Demand (Vorschau) innerhalb von Synapse SQL abfragen.
+title: Zugreifen auf Dateien im Speicher in einem serverlosen SQL-Pool (Vorschauversion)
+description: Hier erfahren Sie, wie Sie Speicherdateien mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics abfragen.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288986"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315937"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Zugreifen auf externen Speicher in Synapse SQL (On-Demand)
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Zugreifen auf externen Speicher mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics
 
-In diesem Dokument wird beschrieben, wie Benutzer Daten aus den Dateien lesen können, die in Azure Storage in Synapse SQL (On-Demand) gespeichert sind. Benutzer haben die folgenden Optionen, um auf Speicher zuzugreifen:
+In diesem Dokument wird beschrieben, wie Benutzer Daten aus den Dateien lesen können, die in Azure Storage in einem serverlosen SQL-Pool gespeichert sind. Benutzer haben die folgenden Optionen, um auf Speicher zuzugreifen:
 
 - Funktion [OPENROWSET](develop-openrowset.md) zum Durchführen von Ad-hoc-Abfragen für die Dateien in Azure Storage.
 - [Externe Tabelle](develop-tables-external-tables.md), bei der es sich um eine vordefinierte Datenstruktur handelt, die auf einer Gruppe von externen Dateien basiert.
@@ -27,7 +27,7 @@ Benutzer können [verschiedene Authentifizierungsmethoden](develop-storage-files
 
 ## <a name="query-files-using-openrowset"></a>Abfragen von Dateien mit OPENROWSET
 
-Mit OPENROWSET können Benutzer externe Dateien in Azure Storage abfragen, sofern sie über Zugriff auf den Speicher verfügen. Der Benutzer, der mit dem Synapse SQL On-Demand-Endpunkt verbunden ist, sollte die folgende Abfrage verwenden, um den Inhalt der Dateien in Azure Storage zu lesen:
+Mit OPENROWSET können Benutzer externe Dateien im Azure-Speicher abfragen, sofern sie über Zugriff auf den Speicher verfügen. Der Benutzer, der mit einem serverlosen SQL-Pool verbunden ist, sollte die folgende Abfrage verwenden, um den Inhalt der Dateien im Azure-Speicher zu lesen:
 
 ```sql
 SELECT * FROM

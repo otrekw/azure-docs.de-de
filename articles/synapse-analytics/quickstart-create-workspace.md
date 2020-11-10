@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fa7faf64e1889ef2d1abe644f23f0be363709a6b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461106"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322722"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Schnellstart: Erstellen eines Synapse-Arbeitsbereichs
 In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal erläutert.
@@ -65,6 +65,6 @@ Verwaltete Identitäten für Ihren Azure Synapse-Arbeitsbereich verfügen unter 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines SQL-Pools](quickstart-create-sql-pool-studio.md) 
-* [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool-portal.md)
-* [Verwenden von SQL On-Demand](quickstart-sql-on-demand.md)
+* [Erstellen eines dedizierten SQL-Pools](quickstart-create-sql-pool-studio.md) 
+* [Erstellen eines serverlosen Apache Spark-Pools](quickstart-create-apache-spark-pool-portal.md)
+* [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)

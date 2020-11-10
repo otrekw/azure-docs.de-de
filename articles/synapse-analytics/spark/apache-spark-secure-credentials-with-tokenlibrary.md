@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249415"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324961"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>Schützen Ihrer Anmeldeinformationen mithilfe von verknüpften Diensten und der Tokenbibliothek
 Es kommt häufig vor, dass auf Daten aus externen Quellen zugegriffen werden muss. Wenn die externe Datenquelle keinen anonymen Zugriff zulässt, müssen Sie die Verbindung wahrscheinlich mithilfe von Anmeldeinformationen, einem geheimen Schlüssel oder einer Verbindungszeichenfolge absichern.  
@@ -122,5 +122,5 @@ print(accountKey)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schreiben in den SQL-Pool](./synapse-spark-sql-pool-import-export.md)
+- [Schreiben in einen dedizierten SQL-Pool](./synapse-spark-sql-pool-import-export.md)
 

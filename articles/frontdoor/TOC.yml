@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: Zwischenspeicherung mit Front Door
       href: front-door-caching.md
+    - name: DDoS-Schutz
+      href: front-door-ddos.md
     - name: 'Front Door: Häufig gestellte Fragen'
       href: front-door-faq.md
     - name: Geofilterung
